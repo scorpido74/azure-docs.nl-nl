@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640949"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148341"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
 
@@ -48,7 +48,7 @@ Profiler schrijft traceer berichten en aangepaste gebeurtenissen naar uw Applica
 * Zorg ervoor dat uw app wordt uitgevoerd op .NET Framework 4,6.
 * Als uw web-app een ASP.NET Core toepassing is, moet er ten minste ASP.NET Core 2,0 worden uitgevoerd.
 * Als de gegevens die u probeert weer te geven ouder zijn dan een paar weken, probeert u het tijd filter te beperken en probeert u het opnieuw. Traceringen worden na zeven dagen verwijderd.
-* Zorg ervoor dat proxy's of een firewall de toegang tot https://gateway.azureserviceprofiler.netheeft geblokkeerd.
+* Zorg ervoor dat proxy's of een firewall de toegang tot heeft geblokkeerd https://gateway.azureserviceprofiler.net .
 * Profilering wordt niet ondersteund voor gratis of gedeelde app service-abonnementen. Als u een van deze abonnementen gebruikt, probeert u omhoog te schalen naar een van de basis plannen en Profiler moet aan de slag gaan.
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Dubbel tellen in parallelle threads
@@ -87,7 +87,7 @@ Profiler werkt alleen goed als:
 
       ![Profiler-Webtaak-logboek]
 
-Als u niet weet waarom Profiler niet werkt voor u, kunt u het logboek downloaden en verzenden naar ons team voor hulp serviceprofilerhelp@microsoft.com. 
+Als u niet weet waarom Profiler niet werkt voor u, kunt u het logboek downloaden en verzenden naar ons team voor hulp serviceprofilerhelp@microsoft.com . 
     
 ### <a name="manual-installation"></a>Handmatige installatie
 
@@ -110,11 +110,11 @@ Wanneer u Profiler configureert, worden er updates uitgevoerd voor de instelling
 
 Op dit moment kunt u Profiler inschakelen voor Maxi maal vier Azure-web-apps en implementatie-sleuven die in hetzelfde service plan worden uitgevoerd. Als u meer dan vier web-apps hebt die in één app service-abonnement worden uitgevoerd, kan Profiler een *micro soft. ServiceProfiler. exceptions. TooManyETWSessionException*genereren. Profiler wordt afzonderlijk uitgevoerd voor elke web-app en probeert een Event Tracing for Windowser-sessie (ETW) voor elke app te starten. Maar een beperkt aantal ETW-sessies kan tegelijkertijd actief zijn. Als de Profiler-Webtaak te veel actieve profilerings sessies rapporteert, verplaatst u enkele web-apps naar een ander service plan.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Implementatie fout: de map is niet leeg\\d\\:\\Home\\site\\wwwroot App_Data Jobs
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Implementatie fout: de map is niet leeg d: \\ Home \\ site \\ wwwroot \\ App_Data \\ Jobs
 
 Als u uw web-app opnieuw implementeert naar een Web Apps resource waarvoor Profiler is ingeschakeld, ziet u mogelijk het volgende bericht:
 
-*Map is niet leeg d\\:\\Home\\site\\wwwroot\\App_Data Jobs*
+*Map is niet leeg d: \\ Home \\ site \\ wwwroot \\ App_Data \\ Jobs*
 
 Deze fout treedt op als u Web Deploy uitvoert vanuit scripts of vanuit de Azure DevOps-implementatie pijplijn. De oplossing is om de volgende aanvullende implementatie parameters toe te voegen aan de Web Deploy-taak:
 
@@ -128,7 +128,7 @@ Met deze para meters wordt de map verwijderd die wordt gebruikt door Application
 
 Profiler wordt uitgevoerd als een doorlopende webtoepassing in de web-app. U kunt de web app-resource openen in de [Azure Portal](https://portal.azure.com). Controleer in het deel venster **webjobs** de status van **ApplicationInsightsProfiler**. Als deze niet wordt uitgevoerd, opent u **Logboeken** voor meer informatie.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Problemen met Profiler en Azure Diagnostics oplossen
+## <a name="troubleshoot-vms-and-cloud-services"></a>Problemen met Vm's en Cloud Services oplossen
 
 >**De fout in de Profiler die in de WAD voor Cloud Services wordt geleverd, is opgelost.** De nieuwste versie van WAD (1.12.2.0) voor Cloud Services werkt met alle recente versies van de app Insights-SDK. Met Cloud service-hosts wordt WAD automatisch bijgewerkt, maar dit is niet direct. U kunt een upgrade forceren door uw service opnieuw te implementeren of het knoop punt opnieuw op te starten.
 
@@ -141,27 +141,45 @@ Ga als volgt te werk om te controleren of Profiler juist is geconfigureerd door 
 
 De instellingen controleren die zijn gebruikt voor het configureren van Azure Diagnostics:
 
-1. Meld u aan bij de virtuele machine (VM) en open vervolgens het logboek bestand op deze locatie. (Het station kan c: of d: zijn en de versie van de invoeg toepassing kan anders zijn.)
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    of
+1. Meld u aan bij de virtuele machine (VM) en open vervolgens het logboek bestand op deze locatie. De versie van de invoeg toepassing is mogelijk nieuwer op uw computer.
+    
+    Voor Vm's:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Voor Cloud Services:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. In het bestand kunt u zoeken naar de teken reeks **WadCfg** om de instellingen te vinden die zijn door gegeven aan de virtuele machine om Azure Diagnostics te configureren. U kunt controleren of de iKey die wordt gebruikt door de Profiler-Sink juist is.
 
-1. Controleer de opdracht regel die wordt gebruikt voor het starten van Profiler. De argumenten die worden gebruikt voor het starten van Profiler bevinden zich in het volgende bestand. (Het station kan c: of d:) zijn
+1. Controleer de opdracht regel die wordt gebruikt voor het starten van Profiler. De argumenten die worden gebruikt voor het starten van Profiler bevinden zich in het volgende bestand. (Het station kan c: of d: zijn en de map kan verborgen zijn.)
 
+    Voor Vm's:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    voor Cloud Services:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Zorg ervoor dat de iKey op de opdracht regel van Profiler juist is. 
 
-1. Controleer het logboek bestand van de Profiler in het voor gaande *config. json* -bestand. De informatie over fout opsporing geeft de instellingen aan die door Profiler worden gebruikt. Er worden ook status-en fout berichten van Profiler weer gegeven.  
+1. Ga naar het logboek bestand met de naam **Boots trapn. log**in het vorige bestand *config. json* . De informatie over fout opsporing geeft de instellingen aan die door Profiler worden gebruikt. Er worden ook status-en fout berichten van Profiler weer gegeven.  
+
+    Voor Vm's is het bestand doorgaans hier:
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Voor Cloud Services:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     Als Profiler wordt uitgevoerd terwijl uw toepassing aanvragen ontvangt, wordt het volgende bericht weer gegeven: *activiteit gedetecteerd vanuit iKey*. 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 9245d00914d47535ff7045a9decb5d4d47e24608
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 94aa82090e03377a9a55af430fcdc944632ed109
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018958"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148324"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -25,7 +25,7 @@ ms.locfileid: "84018958"
 > - [Versie 1](v1/data-factory-azure-sql-connector.md)
 > - [Huidige versie](connector-azure-sql-database.md)
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren van en naar Azure SQL Database, en om gegevens in Azure SQL Database te transformeren met behulp van gegevens stromen. Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
 
@@ -197,7 +197,7 @@ Voer de volgende stappen uit om beheerde identiteits verificatie te gebruiken.
 
 4. Een Azure SQL Database gekoppelde service configureren in Azure Data Factory.
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {

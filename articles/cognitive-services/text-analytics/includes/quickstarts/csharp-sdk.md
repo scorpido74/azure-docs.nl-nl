@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 0e98a10573a2e3abda255c325845190ed5067bb3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 979c714ca5446d3f1eabb76e97535ee5ffa2e359
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778260"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140706"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 documentatie voor v3- [referentie](https://aka.ms/azsdk-net-textanalytics-ref-docs)  |  [bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics)  |  voor de V3-bibliotheek [v3-pakket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples) -voor beelden
 
@@ -42,9 +42,9 @@ documentatie voor v3- [referentie](https://aka.ms/azsdk-net-textanalytics-ref-do
 
 Maak een nieuwe .NET Core-Console-app met behulp van de Visual Studio IDE. Hiermee wordt een ' Hallo wereld '-project gemaakt met één C#-bron bestand: *Program.cs*.
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
-Installeer de client bibliotheek door met de rechter muisknop op de oplossing in de **Solution Explorer** te klikken en **NuGet-pakketten beheren**te selecteren. In package manager, dat wordt geopend, selecteert u **Browse** **Prerelease**en zoekt u naar `Azure.AI.TextAnalytics` . Selecteer versie `1.0.0-preview.4` en vervolgens **installeren**. U kunt ook de [Package Manager-console](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)gebruiken.
+Installeer de client bibliotheek door met de rechter muisknop op de oplossing in de **Solution Explorer** te klikken en **NuGet-pakketten beheren**te selecteren. In package manager, dat wordt geopend, selecteert u **Browse** **Prerelease**en zoekt u naar `Azure.AI.TextAnalytics` . Selecteer versie `1.0.0-preview.5` en vervolgens **installeren**. U kunt ook de [Package Manager-console](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)gebruiken.
 
 > [!TIP]
 > Wilt u het volledige Quick Start-code bestand tegelijk weer geven? U kunt het vinden [op github](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), dat de code voorbeelden in deze Snelstartgids bevat. 
@@ -58,7 +58,7 @@ Installeer de client bibliotheek door met de rechter muisknop op de oplossing in
 
 ---
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Open het *Program.cs* -bestand en voeg de volgende- `using` instructies toe:
 
@@ -121,7 +121,7 @@ Vervang de methode van de toepassing `Main` . U definieert de methoden die hier 
 
 De Text Analytics-client is een `TextAnalyticsClient` object dat met uw sleutel wordt geverifieerd bij Azure, en biedt functies om tekst als afzonderlijke teken reeksen of als batch te accepteren. U kunt tekst synchroon of asynchroon verzenden naar de API. Het antwoord object bevat de analyse-informatie voor elk document dat u verzendt. 
 
-Als u versie `3.0-preview` van de service gebruikt, kunt u een optioneel exemplaar gebruiken `TextAnalyticsClientOptions` om de-client te initialiseren met verschillende standaard instellingen (bijvoorbeeld standaard taal of land/regio hint). U kunt ook verifiëren met een Azure Active Directory-token. 
+Als u versie `3.0` van de service gebruikt, kunt u een optioneel exemplaar gebruiken `TextAnalyticsClientOptions` om de-client te initialiseren met verschillende standaard instellingen (bijvoorbeeld standaard taal of land/regio hint). U kunt ook verifiëren met een Azure Active Directory-token. 
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -133,7 +133,7 @@ Als u versie `3.0-preview` van de service gebruikt, kunt u een optioneel exempla
 
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Zorg ervoor dat met uw hoofd methode eerder een nieuw client object met uw eind punt en referenties wordt gemaakt.
 
@@ -155,7 +155,7 @@ Maak een methode voor het instantiëren van het [TextAnalyticsClient](https://do
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Maak een nieuwe functie `SentimentAnalysisExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `AnalyzeSentiment()` functie op. Het geretourneerde `Response<DocumentSentiment>` object bevat het sentiment label en de Score van het volledige invoer document, evenals een sentiment-analyse voor elke zin als dit is gelukt. Als er een fout optreedt, wordt er een gegenereerd `RequestFailedException` .
 
@@ -169,8 +169,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
+        Console.WriteLine($"\tText: \"{sentence.Text}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
         Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
         Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
@@ -184,14 +183,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -215,7 +212,7 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>Taaldetectie
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 
 Maak een nieuwe functie `LanguageDetectionExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `DetectLanguage()` functie op. Het geretourneerde `Response<DetectedLanguage>` object bevat de gedetecteerde taal, samen met de naam en ISO-6391-code. Als er een fout optreedt, wordt er een gegenereerd `RequestFailedException` .
@@ -258,11 +255,11 @@ Language: English
 
 ## <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 
 > [!NOTE]
-> Nieuw in versie `3.0-preview` :
+> Nieuw in versie `3.0` :
 > * Entiteits koppeling is nu een gescheiden van entiteit herkenning.
 
 
@@ -276,7 +273,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
     foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
+        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -285,11 +282,14 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 
 ```console
 Named Entities:
+        Text: trip,     Category: Event,        Sub-Category:
+                Score: 0.61
+
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Length: 7,      Score: 0.92
+                Score: 0.82
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Length: 9,      Score: 0.80
+                Score: 0.80
 ```
 
 ## <a name="entity-linking"></a>Entiteit koppelen
@@ -313,7 +313,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
+            Console.WriteLine($"\t\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -326,38 +326,38 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Length: 11,     Score: 0.78
+                Score: 0.88
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Length: 10,     Score: 0.55
+                Score: 0.63
 
                 Text: Gates
-                Length: 5,      Score: 0.55
+                Score: 0.63
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Length: 10,     Score: 0.53
+                Score: 0.60
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Length: 7,      Score: 0.25
+                Score: 0.32
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Length: 5,      Score: 0.28
+                Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
@@ -374,7 +374,7 @@ Maak een nieuwe functie `RecognizeEntitiesExample()` met de naam die de client g
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Maak een nieuwe functie `KeyPhraseExtractionExample()` met de naam die de client gaat gebruiken die u eerder hebt gemaakt en roep de `ExtractKeyPhrases()` functie op. Het geretourneerde `<Response<IReadOnlyCollection<string>>` object bevat de lijst met gedetecteerde sleutel zinnen. Als er een fout optreedt, wordt er een gegenereerd `RequestFailedException` .
 

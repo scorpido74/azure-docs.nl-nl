@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82095954"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140702"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
-[V3-referentie documentatie](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [v3-bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | [v3 pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples) -voor beelden
+documentatie voor v3- [referentie](https://aka.ms/azsdk-js-textanalytics-ref-docs)  |  [bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  voor de V3-bibliotheek [v3-pakket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples) -voor beelden
 
 
 #### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
 
-[v2-referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [v2-bibliotheek bron code](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [v2 pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) -voor beelden
+[v2-referentie documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics)  |  [v2-bibliotheek bron code](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics)  |  [v2-pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)  |  [v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) -voor beelden
 
 ---
 
@@ -33,9 +33,9 @@ ms.locfileid: "82095954"
 
 * Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De huidige versie van [node. js](https://nodejs.org/).
-* Wanneer u uw Azure-abonnement hebt <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=", maakt u een"  target="_blank">Text Analytics resource Maak een <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Text Analytics resource in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+* Wanneer u uw Azure-abonnement hebt, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" maakt u een Text Analytics resource Maak "  target="_blank"> een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
     * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
-    * U kunt de gratis prijs categorie (`F0`) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="setting-up"></a>Instellen
 
@@ -56,12 +56,12 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>De client bibliotheek installeren
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Installeer de `@azure/ai-text-analytics` NPM-pakketten:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.4
+npm install --save @azure/ai-text-analytics@1.0.0-preview.5
 ```
 
 > [!TIP]
@@ -80,10 +80,10 @@ npm install --save @azure/cognitiveservices-textanalytics
 
 ---
 
-Het bestand van `package.json` uw app wordt bijgewerkt met de afhankelijkheden.
-Maak een bestand met `index.js` de naam en voeg het volgende toe:
+Het bestand van uw app `package.json` wordt bijgewerkt met de afhankelijkheden.
+Maak een bestand `index.js` met de naam en voeg het volgende toe:
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -111,15 +111,15 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 ## <a name="object-model"></a>Object model
 
-De Text Analytics-client is `TextAnalyticsClient` een object dat met uw sleutel wordt geverifieerd bij Azure. De-client biedt verschillende methoden voor het analyseren van tekst, als één teken reeks of een batch.
+De Text Analytics-client is een `TextAnalyticsClient` object dat met uw sleutel wordt geverifieerd bij Azure. De-client biedt verschillende methoden voor het analyseren van tekst, als één teken reeks of een batch.
 
-Tekst wordt naar de API verzonden als een lijst met `documents` `dictionary` objecten die een combi natie van `id`, `text`en `language` kenmerken bevatten, afhankelijk van de gebruikte methode. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd in de `language`oorsprong, en `id` kan een wille keurige waarde zijn. 
+Tekst wordt naar de API verzonden als een lijst met `documents` `dictionary` objecten die een combi natie van `id` , en kenmerken bevatten, afhankelijk van `text` `language` de gebruikte methode. Het `text` kenmerk slaat de tekst op die moet worden geanalyseerd in de oorsprong `language` , en `id` kan een wille keurige waarde zijn. 
 
 Het antwoord object is een lijst met de analyse-informatie voor elk document. 
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
-* [Client verificatie](#client-authentication)
+* [Clientauthenticatie](#client-authentication)
 * [Sentimentanalyse](#sentiment-analysis) 
 * [Taal detectie](#language-detection)
 * [Herkenning van benoemde entiteiten](#named-entity-recognition-ner)
@@ -128,7 +128,7 @@ Het antwoord object is een lijst met de analyse-informatie voor elk document.
 
 ## <a name="client-authentication"></a>Clientverificatie
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 Maak een nieuw `TextAnalyticsClient` object met uw sleutel en eind punt als para meters.
 
@@ -138,7 +138,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 #### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
 
-Maak een nieuw [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) -object `credentials` met `endpoint` en als para meter.
+Maak een nieuw [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) -object met `credentials` en `endpoint` als para meter.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -146,9 +146,9 @@ Maak een nieuw [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@
 
 ## <a name="sentiment-analysis"></a>Sentimentanalyse
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
-Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van `analyzeSentiment()` de client aan en haal `SentimentBatchResult` het geretourneerde object op. Herhaal de lijst met resultaten en druk de document-ID af op document niveau sentiment met betrouwbaarheids scores. Voor elk document bevat het resultaat sentiment samen met de verschuivingen, de lengte en de betrouwbaarheids scores.
+Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van de client `analyzeSentiment()` aan en haal het geretourneerde `SentimentBatchResult` object op. Herhaal de lijst met resultaten en druk de document-ID af op document niveau sentiment met betrouwbaarheids scores. Voor elk document bevat het resultaat sentiment samen met de verschuivingen, de lengte en de betrouwbaarheids scores.
 
 ```javascript
 async function sentimentAnalysis(client){
@@ -213,9 +213,9 @@ Voer uw code uit `node index.js` in het console venster.
 
 ## <a name="language-detection"></a>Taaldetectie
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
-Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van `detectLanguage()` de client aan en ontvang `DetectLanguageResultCollection`de geretourneerde. Herhaal vervolgens de resultaten en druk elke document-ID af met de betreffende primaire taal.
+Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van de client `detectLanguage()` aan en ontvang de geretourneerde `DetectLanguageResultCollection` . Herhaal vervolgens de resultaten en druk elke document-ID af met de betreffende primaire taal.
 
 ```javascript
 async function languageDetection(client) {
@@ -262,13 +262,13 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>Herkenning van benoemde entiteiten (NER)
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
 > [!NOTE]
-> In versie `3.0-preview`:
+> In versie `3.0-preview` :
 > * Entiteits koppeling is een afzonderlijke aanvraag dan NER.
 
-Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van `recognizeEntities()` de client aan en `RecognizeEntitiesResult` Haal het object op. De lijst met resultaten door lopen en de naam, het type, het subtype, de offset, de lengte en de Score van de entiteit afdrukken.
+Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van de client `recognizeEntities()` aan en haal het `RecognizeEntitiesResult` object op. De lijst met resultaten door lopen en de naam, het type, het subtype, de offset, de lengte en de Score van de entiteit afdrukken.
 
 ```javascript
 async function entityRecognition(client){
@@ -283,7 +283,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.confidenceScore}`);
         });
     });
 }
@@ -297,31 +297,25 @@ Voer uw code uit `node index.js` in het console venster.
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 1
+        Score: 0.29
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Score: 0.67
+        Score: 0.78
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Score: 0.81
+        Score: 0.82
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Score: 0.8
-        Name: interpreters      Category: PersonType    Subcategory: N/A
-        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
         Score: 0.8
 Document ID: 1
-        Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 0.96
-        Name: Redmond   Category: Location      Subcategory: GPE
-        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
-        Score: 0.31
+        Score: 0.25
 ```
 
 ## <a name="entity-linking"></a>Entiteiten koppelen
 
-Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van `recognizeLinkedEntities()` de client aan en `RecognizeLinkedEntitiesResult` Haal het object op. Herhaal de lijst met resultaten en druk de naam van de entiteit, de ID, de gegevens bron, de URL en de overeenkomsten af. Elk object in `matches` de matrix bevat een offset, lengte en score voor die overeenkomst.
+Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van de client `recognizeLinkedEntities()` aan en haal het `RecognizeLinkedEntitiesResult` object op. Herhaal de lijst met resultaten en druk de naam van de entiteit, de ID, de gegevens bron, de URL en de overeenkomsten af. Elk object in `matches` de matrix bevat een offset, lengte en score voor die overeenkomst.
 
 ```javascript
 async function linkedEntityRecognition(client){
@@ -337,8 +331,8 @@ async function linkedEntityRecognition(client){
             console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
-            });
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
         });
     });
 }
@@ -353,24 +347,24 @@ Voer uw code uit `node index.js` in het console venster.
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800       Score: 0.78
+                Text: Altair 8800       Score: 0.88
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates        Score: 0.55
-                Text: Gates     Score: 0.55
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen        Score: 0.53
+                Text: Paul Allen        Score: 0.60
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft         Score: 0.47
-                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4   Score: 0.25
+                Text: April 4   Score: 0.32
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC     Score: 0.28
+                Text: BASIC     Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Versie 2,1](#tab/version-2)
@@ -418,9 +412,9 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Sleuteltermextractie
 
-#### <a name="version-30-preview"></a>[Versie 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Versie 3,0](#tab/version-3)
 
-Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van `extractKeyPhrases()` de client aan en haal `ExtractKeyPhrasesResult` het geretourneerde object op. Herhaal de resultaten en druk de ID van elk document af en alle gedetecteerde sleutel zinnen.
+Maak een matrix met teken reeksen die het document bevat dat u wilt analyseren. Roep de methode van de client `extractKeyPhrases()` aan en haal het geretourneerde `ExtractKeyPhrasesResult` object op. Herhaal de resultaten en druk de ID van elk document af en alle gedetecteerde sleutel zinnen.
 
 ```javascript
 async function keyPhraseExtraction(client){
@@ -470,7 +464,7 @@ Voer uw code uit `node index.js` in het console venster.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `node` de opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de `node` opdracht in uw Quick Start-bestand.
 
 ```console
 node index.js

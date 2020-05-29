@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d2217b9cdd35852e5fb2480dec302ce28d9540b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: c30374b21c1d95b6b710de10da08391d0af4f538
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116894"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141956"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: tekst-en indelings informatie extra heren met behulp van de formulier Recognizer REST API met python
 
@@ -27,6 +27,10 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
 - Een formulier document. U kunt een installatie kopie downloaden uit de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451) voor deze Quick Start.
+
+> [!NOTE]
+> In deze Snelstartgids wordt een lokaal opgeslagen document gebruikt. Zie de [referentie documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)voor meer informatie over het gebruik van externe bestanden die worden geopend via URL.
+
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 

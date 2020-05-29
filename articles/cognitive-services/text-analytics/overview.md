@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: a9519be591581fa434825f1a1fb31749788a21a8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395727"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141854"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Wat is Text Analytics-API?
 
@@ -86,9 +86,9 @@ Alle eindpunten van de Text Analytics-API accepteren onbewerkte tekstgegevens. D
 
 | Limiet | Waarde |
 |------------------------|---------------|
-| Maximale grootte van één document | 5.120 tekens zoals gemeten door [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Maximale grootte van één document | 5.120 tekens zoals gemeten door [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) . |
 | Maximale grootte van de hele aanvraag | 1 MB |
-| Maximum aantal documenten in een aanvraag | 1000 documenten |
+| Maximum aantal documenten in een aanvraag | Maxi maal 1.000 documenten ([varieert voor elke functie](concepts/data-limits.md)) |
 
 De frequentie limiet is afhankelijk van uw prijs categorie.
 

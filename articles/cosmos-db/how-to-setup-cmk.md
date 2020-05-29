@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: 5629ddfe496ef1abd071ab579c885cbe1adeb344
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592088"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148188"
 ---
-# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels voor uw Azure Cosmos-account configureren met Azure Key Vault
+# <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
 Gegevens die zijn opgeslagen in uw Azure Cosmos-account, worden automatisch en naadloos versleuteld met sleutels die worden beheerd door micro soft (door**service beheerde sleutels**). U kunt desgewenst een tweede laag versleuteling toevoegen met sleutels die u beheert (door de**klant beheerde sleutels**).
 
@@ -219,6 +219,10 @@ az cosmosdb show \
     -g $resourceGroupName \
     --query keyVaultKeyUri
 ```
+
+## <a name="error-handling"></a>Foutafhandeling
+
+Bij het gebruik van door de klant beheerde sleutels (CMK) in Azure Cosmos DB, als er fouten zijn, Azure Cosmos DB de fout Details samen met een HTTP-substatuscode in het antwoord. U kunt deze substatuscode gebruiken om fouten in de hoofd oorzaak van het probleem op te sporen. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) artikel om de lijst met ondersteunde HTTP-substatus codes op te halen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 

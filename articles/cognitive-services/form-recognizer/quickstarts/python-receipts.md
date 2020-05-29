@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 926c15a9b96c2ed7967df2b5918a2f3c5f6c5718
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13b9e67a8bd52fef8439b2b20be3a7e4d28af5fe
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116817"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141922"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met python
 
@@ -27,6 +27,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - [Python](https://www.python.org/downloads/) geïnstalleerd (als u het voor beeld lokaal wilt uitvoeren).
 - Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) gebruiken voor deze Quick Start.
+
+> [!NOTE]
+> Deze Snelstartgids maakt gebruik van een externe ontvangst die wordt geopend via URL. Als u in plaats daarvan lokale bestanden wilt gebruiken, raadpleegt u de [naslag documentatie](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 

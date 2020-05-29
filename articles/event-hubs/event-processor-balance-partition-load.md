@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2020
+ms.date: 05/28/2020
 ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628858"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147865"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>De verdeling van partities verdelen over meerdere exemplaren van uw toepassing
 U kunt de toepassing voor het verwerken van gebeurtenissen schalen door meerdere exemplaren van de toepassing uit te voeren en de belasting tussen zichzelf te verdelen. In de oudere versies heeft [EventProcessorHost](event-hubs-event-processor-host.md) u de mogelijkheid om de belasting te verdelen tussen meerdere exemplaren van uw programma en controlepunt gebeurtenissen tijdens ontvangst. In de nieuwere versies (5,0 en hoger), **EventProcessorClient** (.net en Java) of **EventHubConsumerClient** (python en Java script) kunt u hetzelfde doen. Het ontwikkelings model wordt eenvoudiger gemaakt met behulp van gebeurtenissen. U abonneert u op de gebeurtenissen waarin u bent geïnteresseerd door een gebeurtenis-handler te registreren.
@@ -54,7 +54,7 @@ Een gebeurtenis processor instantie is doorgaans eigenaar en verwerkt gebeurteni
 
 Elke gebeurtenis processor krijgt een unieke id en eigendom van de claims van partities door een vermelding toe te voegen aan of bij te werken in een controlepunt opslag. Alle gebeurtenis verwerkers communiceren periodiek met deze Store om de eigen verwerkings status bij te werken en om meer te weten te komen over andere actieve instanties. Deze gegevens worden vervolgens gebruikt om de belasting te verdelen over de actieve processors. Nieuwe exemplaren kunnen worden toegevoegd aan de verwerkings groep om omhoog te schalen. Wanneer instanties uitvallen, hetzij als gevolg van fouten of als u omlaag wilt schalen, wordt het eigendom van de partitie op de juiste wijze overgedragen aan andere actieve processors.
 
-Voor het partitioneren van eigendoms records in de controlepunt opslag worden Event Hubs naam ruimte, de naam van Event Hub, de gebruikers groep, de gebeurtenis processor-id (ook wel eigenaar genoemd), de partitie-id en het tijdstip van de laatste wijziging bijgehouden.
+De partitie van eigendoms records in de controlepunt opslag houden de naam van Event Hubs naam ruimte, de Event Hub name, de gebruikers groep, de gebeurtenis processor-id (ook wel eigenaar genoemd), de partitie-ID en het tijdstip van de laatste wijziging.
 
 
 
@@ -92,7 +92,7 @@ Wanneer het controle punt wordt uitgevoerd om een gebeurtenis te markeren als ve
 
 ## <a name="thread-safety-and-processor-instances"></a>Thread veiligheid en processor instanties
 
-Standaard is een gebeurtenis processor of Consumer thread veilig en gedraagt zich op synchrone wijze. Wanneer gebeurtenissen voor een partitie arriveren, wordt de functie aangeroepen waarmee de gebeurtenissen worden verwerkt. Volgende berichten en aanroepen naar deze functie worden achter de schermen in de wachtrij geplaatst, terwijl de bericht pomp blijft draaien op de achtergrond van andere threads. Deze thread beveiliging verwijdert de nood zaak van thread-safe-verzamelingen en verbetert de prestaties aanzienlijk.
+De functie waarmee de gebeurtenissen worden verwerkt, wordt standaard opeenvolgend aangeroepen voor een bepaalde partitie. Volgende gebeurtenissen en aanroepen van deze functie van dezelfde partitie wachtrij worden achter de schermen geplaatst, terwijl de gebeurtenis pomp blijft draaien op de achtergrond van andere threads. Houd er rekening mee dat gebeurtenissen van verschillende partities gelijktijdig kunnen worden verwerkt en dat alle gedeelde statussen die worden geopend via partities, moeten worden gesynchroniseerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende Quick Start:

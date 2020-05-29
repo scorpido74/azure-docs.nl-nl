@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021395"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147937"
 ---
 # <a name="configure-the-model-conversion"></a>De modelconversie configureren
 
@@ -202,6 +202,51 @@ Stel dat u een Photogrammetry-model hebt, wat de belichtings geïntegreerde in d
 Het conversie programma moet er standaard van uitgaan dat u op een bepaald moment PBR-materialen wilt gebruiken op een model, zodat er `normal` `tangent` `binormal` gegevens voor u worden gegenereerd. Daarom is het geheugen gebruik per vertex `position` (12 bytes) + `texcoord0` (8 bytes) + `normal` (4 bytes) + `tangent` (4 bytes) + `binormal` (4 bytes) = 32 bytes. Grotere modellen van dit type kunnen eenvoudig een groot aantal modellen hebben, waardoor er :::no-loc text="vertices"::: meerdere GB geheugen kan worden opgedeeld. Dergelijke grote hoeveel heden gegevens zijn van invloed op de prestaties. het kan zelfs voor komen dat er onvoldoende geheugen beschikbaar is.
 
 Als u zeker weet dat u nooit dynamische verlichting nodig hebt voor het model en u zeker weet dat alle Texture-coördinaten binnen het `[0; 1]` bereik vallen, kunt u, `normal` `tangent` , en `binormal` tot en met de `NONE` `texcoord0` halve precisie () instellen, `16_16_FLOAT` wat resulteert in slechts 16 bytes per :::no-loc text="vertex"::: . Als u de netgegevens in tweeën knipt, kunt u grotere modellen laden en mogelijk de prestaties verbeteren.
+
+## <a name="memory-optimizations"></a>Geheugen optimalisaties
+
+Het geheugen gebruik van geladen inhoud kan een knel punt op het rendering-systeem worden. Als de nettolading van het geheugen te groot wordt, kan dit de weergave prestaties in beslag nemen of kan het model niet samen worden geladen. In dit artikel worden enkele belang rijke strategieën besproken om het geheugen gebruik te verminderen.
+
+### <a name="instancing"></a>Instancing
+
+Instancing is een concept waarbij netten opnieuw worden gebruikt voor onderdelen met afzonderlijke ruimtelijke trans formaties, in tegens telling tot elk onderdeel dat verwijst naar een eigen unieke geometrie. Instancing heeft aanzienlijke invloed op de geheugen ruimte.
+Voor beelden van use cases voor instancing zijn de schroeven in een engine model of stoelen in een architectuur model.
+
+> [!NOTE]
+> Instancing kan het geheugen gebruik (en dus ook de laad tijd) aanzienlijk verbeteren, maar de verbeteringen van de prestaties van de rendering zijn echter onbeduidend.
+
+De omrekenings service respecteert instancing als onderdelen in overeenstemming worden aangegeven in het bron bestand. De conversie voert echter geen extra diepe analyse van netgegevens uit om herbruikbare onderdelen te identificeren. Het hulp programma voor het maken van inhoud en de export pijplijn zijn dus de doorslaggevende criteria voor de juiste instancing-installatie.
+
+Een eenvoudige manier om te testen of instancing-informatie tijdens de conversie verloren gaat, is door een overzicht te geven van de [uitvoer statistieken](get-information.md#example-info-file), met name het `numMeshPartsInstanced` lid. Als de waarde voor `numMeshPartsInstanced` groter is dan nul, duidt dit erop dat er netten worden gedeeld door verschillende exemplaren.
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>Voor beeld: instancing instellen in 3ds Max
+
+[Auto Desk 3ds Max](https://www.autodesk.de/products/3ds-max) heeft afzonderlijke methoden **`Copy`** voor het klonen **`Instance`** van objecten en **`Reference`** die zich anders gedragen met betrekking tot instancing in het geëxporteerde `.fbx` bestand.
+
+![Klonen in 3ds Max.](./media/3dsmax-clone-object.png)
+
+* **`Copy`**: In deze modus wordt het net gekloond, dus er wordt geen instancing gebruikt ( `numMeshPartsInstanced` = 0).
+* **`Instance`**: De twee objecten delen dezelfde mesh, dus instancing wordt gebruikt ( `numMeshPartsInstanced` = 1).
+* **`Reference`**: DISTINCT-wijzigings functies kunnen worden toegepast op de geometrie, zodat de Exporter een conservatieve benadering kiest en geen instancing ( `numMeshPartsInstanced` = 0) gebruikt.
+
+
+### <a name="depth-based-composition-mode"></a>Op diepte gebaseerde compositie modus
+
+Als het geheugen een probleem is, configureert u de renderer met de [op diepte gebaseerde compositie modus](../../concepts/rendering-modes.md#depthbasedcomposition-mode). In deze modus wordt GPU-Payload gedistribueerd over meerdere Gpu's.
+
+### <a name="decrease-vertex-size"></a>Hoekpunt grootte verlagen
+
+Zoals beschreven in de sectie [Aanbevolen procedures voor het wijzigen van onderdelen opmaak](configure-model-conversion.md#best-practices-for-component-format-changes) , kan het aanpassen van de vertex indeling de geheugen ruimte verminderen. Deze optie moet echter de laatste redmiddel zijn.
+
+### <a name="texture-sizes"></a>Patroon grootten
+
+Afhankelijk van het type scenario, kan de hoeveelheid textuur gegevens zwaarder zijn dan het geheugen dat wordt gebruikt voor netgegevens. Photogrammetry-modellen zijn kandidaten.
+De conversie configuratie biedt geen manier om bitmappatronen automatisch te schalen. Als dat nodig is, moet het schalen van het patroon worden uitgevoerd als een vooraf verwerkings stap aan de client zijde. Tijdens de conversie wordt echter een geschikte [patroon compressie-indeling](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11)gekozen:
+
+* `BC1`voor ondoorzichtige kleur structuren
+* `BC7`voor Bronk leur patronen met alfa kanaal
+
+Aangezien notatie `BC7` twee maal zo groot is als de geheugen footprint in vergelijking tot `BC1` , is het belang rijk om ervoor te zorgen dat de invoer structuren geen alfa kanaal bevatten.
 
 ## <a name="typical-use-cases"></a>Typische gebruiks voorbeelden
 

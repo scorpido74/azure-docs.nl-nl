@@ -3,18 +3,18 @@ title: Een nood herstel van virtuele machines volt ooien
 description: In dit artikel wordt beschreven hoe u een herstel na nood geval voor virtuele machines kunt uitvoeren met behulp van AVS
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740549"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148154"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Een nood herstel van virtuele machines met Azure VMWare-oplossing volt ooien
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Een nood herstel van virtuele machines met Azure VMware-oplossing volt ooien
 
-Dit artikel bevat het proces voor het volt ooien van herstel na nood gevallen van uw virtuele machines met de VMWare Hybrid Cloud extension (HCX)-oplossing en het gebruik van een persoonlijke cloud van Azure VMWare-oplossing als herstel-of doel site.
+Dit artikel bevat het proces voor het volt ooien van herstel na nood gevallen van uw virtuele machines met de VMware Hybrid Cloud extension (HCX)-oplossing en het gebruik van een persoonlijke cloud van Azure VMware-oplossing als herstel-of doel site.
 
-VMWare HCX biedt verschillende bewerkingen die nauw keurig en nauw keuriger kunnen worden beheerd in het replicatie beleid. Beschik bare bewerkingen zijn onder andere:
+VMware HCX biedt verschillende bewerkingen die nauw keurig en nauw keuriger kunnen worden beheerd in het replicatie beleid. Beschik bare bewerkingen zijn onder andere:
 
 - Omgekeerd: nadat een nood geval is opgetreden. Reverse helpt bij het maken van site B de bron site en site waar de beveiligde VM nu woont.
 
@@ -144,7 +144,7 @@ De replicatie kan worden bewaakt in de sectie Details van elke virtuele machine.
 
 ## <a name="disaster-recovery-plan-automation"></a>Automation plan voor herstel na nood gevallen
 
-VMWare HCX heeft momenteel geen ingebouwd mechanisme voor het maken en automatiseren van een plan voor herstel na nood gevallen. Deze functie bestaat niet in HCX. Het biedt echter een set REST-Api's, inclusief Api's voor de bewerking voor herstel na nood geval.
+VMware HCX heeft momenteel geen ingebouwd mechanisme voor het maken en automatiseren van een plan voor herstel na nood gevallen. Deze functie bestaat niet in HCX. Het biedt echter een set REST-Api's, inclusief Api's voor de bewerking voor herstel na nood geval.
 
 De API-specificatie kan worden geopend in HCX manager in de URL.
 
