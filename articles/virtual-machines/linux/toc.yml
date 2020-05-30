@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Een virtuele machine maken
                   items:
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Gegeneraliseerd
                       href: ../vm-generalized-image-version-cli.md
                 - name: Afbeeldingsresources bijwerken

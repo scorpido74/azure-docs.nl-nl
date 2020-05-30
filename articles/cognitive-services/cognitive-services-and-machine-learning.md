@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584617"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220205"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services en machine learning
 
@@ -22,7 +22,7 @@ Cognitive Services biedt machine learning mogelijkheden om algemene problemen op
 
 [Cognitive Services](welcome.md) is een groep services die elk verschillende gegeneraliseerde Voorspellings mogelijkheden ondersteunt. De services zijn onderverdeeld in verschillende categorieën om u te helpen de juiste service te vinden. 
 
-|Service categorie|Doel|
+|Service categorie|Functie|
 |--|--|
 |[Besluit](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bouw apps die aanbevelingen opleveren voor geïnformeerde en efficiënte besluitvorming.|
 |[Taal](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Laat uw apps natuurlijke taal verwerken met vooraf gemaakte scripts, sentiment evalueren en leren herkennen wat gebruikers willen.|
@@ -98,7 +98,7 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
-|[Immersive Reader](./immersive-reader/overview.md)|x|||
+|[Insluitende lezer](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|BxDxH|BxDxH|x|
@@ -106,9 +106,9 @@ In de volgende gegevens wordt elke service gecategoriseerd op basis van het type
 |[Spreker-herkenning](./speaker-recognition/home.md)||x||
 |[Spraak tekst naar spraak (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Spraak-naar-tekst (STT)](speech-service/speech-to-text.md)|x|x||
-|[Speech Translation](speech-service/speech-translation.md)|x|||
-|[Text Analytics](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Spraakomzetting](speech-service/speech-translation.md)|x|||
+|[Tekstanalyse](./text-analytics/overview.md)|x|||
+|[Vertaler](./translator/translator-info-overview.md)|x|||
 |[Translator-aangepaste vertaler](./translator/custom-translator/overview.md)||x||
 
 * Personaler vereist alleen trainings gegevens die door de service worden verzameld (zoals deze in realtime actief zijn) om uw beleid en gegevens te evalueren. Personaler heeft geen grote historische gegevens sets nodig voor de voor-en hands-training. 

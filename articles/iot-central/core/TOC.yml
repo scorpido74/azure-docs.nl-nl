@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: Regels configureren
           href: howto-configure-rules.md
-        - name: Werkstromen gebruiken voor integratie met andere services
-          href: howto-configure-rules-advanced.md
         - name: Uw apparaatgegevens analyseren
           href: howto-create-analytics.md
         - name: Tegels toevoegen aan uw dashboard
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: Webhooks voor regels maken
           href: howto-create-webhooks.md
+        - name: Werkstromen gebruiken voor integratie met andere services
+          href: howto-configure-rules-advanced.md
         - name: Azure Monitor-actiegroepen verbinden met regels
           href: howto-use-action-groups.md
         - name: Aangepaste regels maken
