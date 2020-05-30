@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 375dac3fffc1a49cc3d10999c4969a7365dfb49c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232373"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193443"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migreren van on-premises HDFS-opslag naar Azure Storage met Azure Data Box
 
@@ -59,11 +59,11 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
 
 2. Kopieer in het dialoog venster opslag account voor toegang en gegevens uploaden het **BLOB service-eind punt** en de sleutel van het **opslag account**. Laat de `https://` en de afsluitende slash weg van het eind punt van de BLOB-service.
 
-    In dit geval is het eind punt: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Het host-gedeelte van de URI die u gaat gebruiken, `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`is:. Zie How to [Connect to rest over http](/azure/databox/data-box-deploy-copy-data-via-rest)(Engelstalig) voor een voor beeld. 
+    In dit geval is het eind punt: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Het host-gedeelte van de URI die u gaat gebruiken, is: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Zie How to [Connect to rest over http](/azure/databox/data-box-deploy-copy-data-via-rest)(Engelstalig) voor een voor beeld. 
 
      ![Dialoog venster toegang tot opslag account en gegevens uploaden](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. Voeg het eind punt en het IP-adres van het Data Box `/etc/hosts` -of Data Box Heavy knooppunt toe aan elk knoop punt.
+3. Voeg het eind punt en het IP-adres van het Data Box-of Data Box Heavy knooppunt toe aan `/etc/hosts` elk knoop punt.
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
@@ -71,9 +71,9 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
 
     Als u een ander mechanisme voor DNS gebruikt, moet u ervoor zorgen dat het Data Box-eind punt kan worden omgezet.
 
-4. Stel de shell- `azjars` variabele in op de locatie `hadoop-azure` van `azure-storage` de en JAR-bestanden. U vindt deze bestanden in de map Hadoop-installatie.
+4. Stel de shell-variabele `azjars` in op de locatie van de `hadoop-azure` en `azure-storage` jar-bestanden. U vindt deze bestanden in de map Hadoop-installatie.
 
-    Als u wilt bepalen of deze bestanden bestaan, gebruikt u de `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`volgende opdracht:. Vervang de `<hadoop_install_dir>` tijdelijke aanduiding door het pad naar de map waarin u Hadoop hebt geïnstalleerd. Zorg ervoor dat u volledig gekwalificeerde paden gebruikt.
+    Als u wilt bepalen of deze bestanden bestaan, gebruikt u de volgende opdracht: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` . Vervang de `<hadoop_install_dir>` tijdelijke aanduiding door het pad naar de map waarin u Hadoop hebt geïnstalleerd. Zorg ervoor dat u volledig gekwalificeerde paden gebruikt.
 
     Voorbeelden:
 
@@ -135,7 +135,7 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
 
     * Vervang de `<destination_directory>` tijdelijke aanduiding door de naam van de map waarnaar u uw gegevens wilt kopiëren.
 
-    De `-libjars` optie wordt gebruikt om de `hadoop-azure*.jar` en de afhankelijke `azure-storage*.jar` bestanden beschikbaar te maken `distcp`voor. Dit kan al voor sommige clusters optreden.
+    De `-libjars` optie wordt gebruikt om de `hadoop-azure*.jar` en de afhankelijke `azure-storage*.jar` bestanden beschikbaar te maken voor `distcp` . Dit kan al voor sommige clusters optreden.
 
     In het volgende voor beeld ziet `distcp` u hoe de opdracht wordt gebruikt om gegevens te kopiëren.
 
@@ -151,7 +151,7 @@ Volg deze stappen om gegevens te kopiëren via de REST-Api's van blob/object Sto
   
     De Kopieer snelheid verbeteren:
 
-    * Wijzig het aantal mappers. (In bovenstaand voor beeld `m` worden = 4 mappers gebruikt.)
+    * Wijzig het aantal mappers. (In bovenstaand voor beeld worden `m` = 4 mappers gebruikt.)
 
     * Probeer multiple `distcp` parallel uit te voeren.
 
@@ -206,7 +206,7 @@ Met deze opdracht wordt een lijst met gekopieerde bestanden met hun machtigingen
 
 ### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>Een lijst met identiteiten genereren en deze toewijzen aan Azure Active Directory-identiteiten (toevoegen)
 
-1. Down load `copy-acls.py` het script. Zie de [Help-scripts downloaden en het Edge-knoop punt instellen om deze uit te voeren](#download-helper-scripts) in dit artikel.
+1. Down load het `copy-acls.py` script. Zie de [Help-scripts downloaden en het Edge-knoop punt instellen om deze uit te voeren](#download-helper-scripts) in dit artikel.
 
 2. Voer deze opdracht uit om een lijst met unieke identiteiten te genereren.
 
@@ -215,11 +215,11 @@ Met deze opdracht wordt een lijst met gekopieerde bestanden met hun machtigingen
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Met dit script wordt een bestand `id_map.json` gegenereerd met de naam die de identiteiten bevat die u nodig hebt om toe te wijzen aan identiteiten op basis van een toepassing.
+   Met dit script wordt een bestand gegenereerd `id_map.json` met de naam die de identiteiten bevat die u nodig hebt om toe te wijzen aan identiteiten op basis van een toepassing.
 
 3. Open het `id_map.json` bestand in een tekst editor.
 
-4. Voor elk JSON-object dat in het bestand wordt weer gegeven `target` , werkt u het kenmerk bij van een Aad User Principal Name (UPN) of OBJECTID (OID) met de juiste toegewezen identiteit. Wanneer u klaar bent, slaat u het bestand op. U hebt dit bestand nodig in de volgende stap.
+4. Voor elk JSON-object dat in het bestand wordt weer gegeven, werkt `target` u het kenmerk bij van een Aad User Principal Name (UPN) of ObjectId (OID) met de juiste toegewezen identiteit. Wanneer u klaar bent, slaat u het bestand op. U hebt dit bestand nodig in de volgende stap.
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>Machtigingen Toep assen op gekopieerde bestanden en identiteits toewijzingen Toep assen
 
@@ -239,7 +239,7 @@ Voer deze opdracht uit om machtigingen toe te passen op de gegevens die u hebt g
 
 Voordat u uw gegevens naar een Data Box apparaat verplaatst, moet u sommige Help-scripts downloaden, ervoor zorgen dat uw gegevens zijn geordend op een Data Box apparaat en overbodige bestanden uitsluiten.
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Help-scripts downloaden en het Edge-knoop punt instellen om ze uit te voeren
 
@@ -281,7 +281,7 @@ Als de grootte van uw gegevens groter is dan de grootte van één Data Box appar
 
 Als uw gegevens niet groter zijn dan de grootte van een Data Box apparaat, kunt u door gaan naar de volgende sectie.
 
-1. Voer met verhoogde machtigingen het `generate-file-list` script uit dat u hebt gedownload door de instructies in de vorige sectie te volgen.
+1. Voer met verhoogde machtigingen het script uit `generate-file-list` dat u hebt gedownload door de instructies in de vorige sectie te volgen.
 
    Hier volgt een beschrijving van de opdracht parameters:
 

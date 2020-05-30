@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 60df6597d13ea5c8ca265959b0dba5cb83bcdcba
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044736"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196354"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Aanbevolen procedures voor Azure SQL Data Sync 
 
@@ -34,7 +34,7 @@ Zie [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met
 ### <a name="client-agent"></a>Client agent
 
 -   Installeer de client agent met behulp van het minst bevoegde gebruikers account dat toegang heeft tot de netwerk service.  
--   Installeer de client agent op een computer die niet de on-premises SQL Server computer is.  
+-   Installeer de client agent op een computer die niet de SQL Server computer.  
 -   Registreer een on-premises data base niet met meer dan één agent.    
     -   Vermijd dit, zelfs als u verschillende tabellen synchroniseert voor verschillende synchronisatie groepen.  
     -   Het registreren van een on-premises data base met meerdere client agenten vormt uitdagingen wanneer u een van de synchronisatie groepen verwijdert.
@@ -197,7 +197,7 @@ In sommige gevallen kan het opheffen van de registratie van een Data Base met ee
 
 #### <a name="scenario"></a>Scenario
 
-1. Synchronisatie groep A is gemaakt met behulp van een SQL Database-exemplaar en een on-premises SQL Server-Data Base, die is gekoppeld aan lokale agent 1.
+1. Synchronisatie groep A is gemaakt met behulp van een SQL Database-exemplaar en een SQL Server-Data Base, die is gekoppeld aan lokale agent 1.
 2. Dezelfde on-premises data base is geregistreerd bij lokale agent 2 (deze agent is niet gekoppeld aan een synchronisatie groep).
 3. Bij het ongedaan maken van de registratie van de on-premises data base van lokale agent 2 worden de tracerings-en meta tabellen voor synchronisatie groep A voor de on-premises data base verwijderd.
 4. Een bewerking van de synchronisatie groep mislukt met de volgende fout: ' de huidige bewerking kan niet worden voltooid omdat de data base niet is ingericht voor synchronisatie of u geen machtigingen hebt voor de synchronisatie configuratie tabellen. '
@@ -233,7 +233,7 @@ Voor meer informatie over SQL Data Sync raadpleegt u:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 -   SQL Data Sync instellen
-    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-data-sync-sql-server-configure.md)
+    - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

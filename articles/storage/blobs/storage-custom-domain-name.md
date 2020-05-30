@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370471"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195235"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Een aangepast domein toewijzen aan een Azure Blob Storage-eind punt
 
@@ -23,9 +23,9 @@ U kunt een aangepast domein toewijzen aan een BLOB service-eind punt of een [sta
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> Deze toewijzing werkt alleen voor subdomeinen (bijvoorbeeld: `www.contoso.com`). Als u wilt dat uw web-eind punt beschikbaar is in het hoofd domein (bijvoorbeeld `contoso.com`:), moet u Azure CDN gebruiken. Zie de sectie [een aangepast domein met https-functionaliteit toewijzen](#enable-https) in dit artikel voor meer informatie. Omdat u naar deze sectie van dit artikel gaat om het hoofd domein van uw aangepaste domein in te scha kelen, is de stap in die sectie voor het inschakelen van HTTPS optioneel. 
+> Deze toewijzing werkt alleen voor subdomeinen (bijvoorbeeld: `www.contoso.com` ). Als u wilt dat uw web-eind punt beschikbaar is in het hoofd domein (bijvoorbeeld: `contoso.com` ), moet u Azure CDN gebruiken. Zie de sectie [een aangepast domein met https-functionaliteit toewijzen](#enable-https) in dit artikel voor meer informatie. Omdat u naar deze sectie van dit artikel gaat om het hoofd domein van uw aangepaste domein in te scha kelen, is de stap in die sectie voor het inschakelen van HTTPS optioneel. 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>Een aangepast domein toewijzen met alleen HTTP ingeschakeld
 
@@ -33,7 +33,7 @@ Deze methode is eenvoudiger, maar biedt alleen HTTP-toegang. Als het opslag acco
 
 Als u HTTPS-toegang wilt inschakelen, raadpleegt u de sectie [een aangepast domein met https-functionaliteit toewijzen](#enable-https) in dit artikel. 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>Een aangepast domein toewijzen
 
@@ -50,7 +50,7 @@ Als u zich geen zorgen maakt dat het domein kort niet beschikbaar is voor uw geb
 
 : heavy_check_mark: stap 4: uw aangepaste domein testen.
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Stap 1: de hostnaam van uw opslag eindpunt ophalen 
 
@@ -71,7 +71,7 @@ De hostnaam is de URL van het opslag eindpunt zonder de protocol-id en de afslui
   
    Stel deze waarde in voor later.
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>Stap 2: Maak een canonieke-naam record (CNAME) met uw domein provider
 
@@ -87,11 +87,11 @@ Maak een CNAME-record die verwijst naar de hostnaam. Een CNAME-record is een soo
 
 3. Maak een CNAME-record. Geef als onderdeel van deze record de volgende items op: 
 
-   - De alias van het subdomein `www` , `photos`zoals of. Het subdomein is vereist. hoofd domeinen worden niet ondersteund. 
+   - De alias van het subdomein, zoals `www` of `photos` . Het subdomein is vereist. hoofd domeinen worden niet ondersteund. 
       
    - De hostnaam die u hebt verkregen in de sectie [hostnaam van uw opslag eindpunt ophalen](#endpoint) eerder in dit artikel. 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>Stap 3: uw aangepaste domein bij Azure registreren
 
@@ -105,7 +105,7 @@ Maak een CNAME-record die verwijst naar de hostnaam. Een CNAME-record is een soo
 
 3. Voer in het tekstvak **domein naam** de naam in van uw aangepaste domein, met inbegrip van het subdomein  
    
-   Als uw domein bijvoorbeeld *contoso.com* is en uw subdomein alias is *www*, voert `www.contoso.com`u in. Als uw subdomein *Foto's*is, voert `photos.contoso.com`u in.
+   Als uw domein bijvoorbeeld *contoso.com* is en uw subdomein alias is *www*, voert u in `www.contoso.com` . Als uw subdomein *Foto's*is, voert u in `photos.contoso.com` .
 
 4. Als u het aangepaste domein wilt registreren, klikt u op de knop **Opslaan** .
 
@@ -117,7 +117,7 @@ Om te bevestigen dat uw aangepaste domein is toegewezen aan het eind punt van de
 
 Als u bijvoorbeeld toegang wilt krijgen tot een webformulier in de *myForms* -container in het aangepaste subdomein *Photos.contoso.com* , kunt u de volgende URI gebruiken:`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Een aangepast domein toewijzen met een downtime van nul
 
@@ -136,7 +136,7 @@ Als uw domein momenteel een toepassing ondersteunt met een Service Level Agreeme
 
 : heavy_check_mark: stap 5: uw aangepaste domein testen.
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Stap 1: de hostnaam van uw opslag eindpunt ophalen 
 
@@ -171,13 +171,13 @@ Maak een tijdelijke CNAME-record die verwijst naar de naam van uw host. Een CNAM
 
 3. Maak een CNAME-record. Geef als onderdeel van deze record de volgende items op: 
 
-   - De alias van het subdomein `www` , `photos`zoals of. Het subdomein is vereist. hoofd domeinen worden niet ondersteund.
+   - De alias van het subdomein, zoals `www` of `photos` . Het subdomein is vereist. hoofd domeinen worden niet ondersteund.
 
-     Voeg het `asverify` subdomein toe aan de alias. Bijvoorbeeld: `asverify.www` of `asverify.photos`.
+     Voeg het `asverify` subdomein toe aan de alias. Bijvoorbeeld: `asverify.www` of `asverify.photos` .
        
    - De hostnaam die u hebt verkregen in de sectie [hostnaam van uw opslag eindpunt ophalen](#endpoint) eerder in dit artikel. 
 
-     Voeg het subdomein `asverify` toe aan de naam van de host. Bijvoorbeeld: `asverify.mystorageaccount.blob.core.windows.net`.
+     Voeg het subdomein toe `asverify` aan de naam van de host. Bijvoorbeeld: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Als u het aangepaste domein wilt registreren, klikt u op de knop **Opslaan** .
 
@@ -197,7 +197,7 @@ Wanneer u uw aangepaste domein vooraf registreert bij Azure, staat u toe dat Azu
 
 3. Voer in het tekstvak **domein naam** de naam in van uw aangepaste domein, met inbegrip van het subdomein  
    
-   Als uw domein bijvoorbeeld *contoso.com* is en uw subdomein alias is *www*, voert `www.contoso.com`u in. Als uw subdomein *Foto's*is, voert `photos.contoso.com`u in.
+   Als uw domein bijvoorbeeld *contoso.com* is en uw subdomein alias is *www*, voert u in `www.contoso.com` . Als uw subdomein *Foto's*is, voert u in `photos.contoso.com` .
 
 4. Schakel het selectie vakje **indirecte CNAME-validatie gebruiken** in.
 
@@ -219,7 +219,7 @@ Maak een tijdelijke CNAME-record die verwijst naar de naam van uw host.
 
 3. Maak een CNAME-record. Geef als onderdeel van deze record de volgende items op: 
 
-   - De alias van het subdomein `www` , `photos`zoals of. Het subdomein is vereist. hoofd domeinen worden niet ondersteund.
+   - De alias van het subdomein, zoals `www` of `photos` . Het subdomein is vereist. hoofd domeinen worden niet ondersteund.
       
    - De hostnaam die u hebt verkregen in de sectie [hostnaam van uw opslag eindpunt ophalen](#endpoint-2) eerder in dit artikel. 
 
@@ -250,7 +250,7 @@ Nadat het aangepaste domein is verwijderd, ziet u een portal melding dat uw opsl
 
 #### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de opdracht [AZ Storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI en geeft u een lege`""`teken reeks ( `--custom-domain` ) op voor de argument waarde.
+Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de opdracht [AZ Storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI en geeft u een lege teken reeks ( `""` ) op voor de `--custom-domain` argument waarde.
 
 * Opdracht indeling:
 
@@ -270,11 +270,11 @@ Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de opdracht
       --custom-domain ""
   ```
 
-#### <a name="powershell"></a>[Zo](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de Power shell [-cmdlet Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) en geeft u`""`een lege teken `-CustomDomainName` reeks () op voor de argument waarde.
+Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de Power shell [-cmdlet Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) en geeft u een lege teken reeks ( `""` ) op voor de `-CustomDomainName` argument waarde.
 
 * Opdracht indeling:
 
@@ -295,7 +295,7 @@ Als u een aangepaste domein registratie wilt verwijderen, gebruikt u de Power sh
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>Een aangepast domein toewijzen waarvoor HTTPS is ingeschakeld
 

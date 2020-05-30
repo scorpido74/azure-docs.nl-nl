@@ -13,13 +13,13 @@ author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/14/2019
-ms.openlocfilehash: d82f1d4c24820801e31c2b67b9d590367d89485c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/25/2020
+ms.openlocfilehash: 0cd50e0ad4121798d6d4fb67cd18c7ae3b3b54ae
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84114771"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195413"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Een SSIS-pakket uitvoeren met de activiteit SSIS-pakket uitvoeren in Azure Data Factory
 
@@ -51,87 +51,223 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
    ![Sleep een uitvoeren SSIS-pakket activiteit naar het ontwerp oppervlak](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
 
-1. Geef op het tabblad **Algemeen** voor de activiteit SSIS-pakket uitvoeren een naam en een beschrijving op voor de activiteit. Optionele **time-outwaarden** instellen en waarden **opnieuw proberen** .
+   Selecteer het object activiteit voor het uitvoeren van SSIS-pakket activiteiten om de tabbladen **Algemeen**, **instellingen**, **SSIS-para meters**, **verbindings beheer**en **Eigenschappen onderdrukkingen** te configureren.
+
+#### <a name="general-tab"></a>Tabblad Algemeen
+
+Voer de volgende stappen uit op het tabblad **Algemeen** van de activiteit SSIS-pakket uitvoeren.
 
    ![Eigenschappen instellen op het tabblad Algemeen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
-1. Selecteer op het tabblad **instellingen** voor de activiteit SSIS-pakket uitvoeren een Azure-SSIS IR waar u het pakket wilt uitvoeren. Als uw pakket gebruikmaakt van Windows-verificatie voor toegang tot gegevens archieven (bijvoorbeeld SQL-servers of bestands shares on-premises of Azure Files), schakelt u het selectie vakje **Windows-verificatie** in. Voer de waarden in voor de referenties voor het uitvoeren van het pakket in de vakken **domein**, **gebruikers naam**en **wacht woord** . 
+   1. Voer bij **naam**de naam in van de activiteit voor het uitvoeren van SSIS-pakketten.
 
-    U kunt ook geheimen die zijn opgeslagen in uw Azure-sleutel kluis, gebruiken als waarden. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast de relevante referentie. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de geheime naam of versie voor de referentie waarde.
+   1. Voor **Beschrijving**voert u de beschrijving van de activiteit voor het uitvoeren van SSIS-pakketten in.
 
-    Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheimen ook rechtstreeks invoeren in de volgende indeling: `<Key vault linked service name>/<secret name>/<secret version>` . Als uw pakket 32 bits-runtime nodig heeft om uit te voeren, schakelt u het selectie vakje **32-bits runtime** in.
+   1. Voer bij **time-out**de maximale hoeveelheid tijd in die de activiteit voor het uitvoeren van SSIS-pakketten kan uitvoeren. De standaard waarde is 7 dagen, de notatie is D. uu: MM: SS.
 
-   Voor **de pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)**, **Bestands systeem (project)** of **Inge sloten pakket**. Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS CATALOG (SSISDB) gehoste SQL database of SQL Managed instance, geeft u uw pakket op dat moet worden uitgevoerd en dat is GEÏMPLEMENTEERD in SSISDB. 
+   1. Voor **nieuwe poging**voert u het maximum aantal nieuwe pogingen in voor de activiteit voor het uitvoeren van SSIS-pakketten.
 
-    Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert u naar uw bestaande mappen, projecten, pakketten of omgevingen en selecteert u deze in SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken of selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen van dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
+   1. Voor het **interval voor opnieuw proberen**voert u het aantal seconden in tussen elke nieuwe poging voor de activiteit voor het uitvoeren van SSIS-pakketten. De standaard waarde is 30 seconden.
 
-   Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+   1. Schakel het selectie vakje **beveiligde uitvoer** in om te kiezen of u de uitvoer van de activiteit voor het uitvoeren van SSIS-pakketten wilt uitsluiten van logboek registratie.
+
+   1. Schakel het selectie vakje **beveiligde invoer** in om te kiezen of u de invoer van de activiteit voor het uitvoeren van SSIS-pakketten wilt uitsluiten van logboek registratie.
+
+#### <a name="settings-tab"></a>Tabblad instellingen
+
+Voer de volgende stappen uit op het tabblad **instellingen** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
    ![Eigenschappen instellen op het tabblad Instellingen-automatisch](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
-   Als uw Azure-SSIS IR niet wordt uitgevoerd of het selectie vakje **hand matige invoer** is ingeschakeld, voert u de paden voor het pakket en de omgeving van SSISDB rechtstreeks in de volgende indelingen in: `<folder name>/<project name>/<package name>.dtsx` en `<folder name>/<environment name>` .
+   1. Selecteer voor **Azure-SSIS IR**de aangewezen Azure-SSIS IR om de activiteit voor het uitvoeren van SSIS-pakketten uit te voeren.
+
+   1. Voor **Beschrijving**voert u de beschrijving van de activiteit voor het uitvoeren van SSIS-pakketten in.
+
+   1. Schakel het selectie vakje **Windows-verificatie** in om te kiezen of u Windows-verificatie wilt gebruiken voor toegang tot gegevens archieven, zoals SQL-servers/bestands shares op-locatie of Azure files.
+   
+      Als u dit selectie vakje inschakelt, geeft u de waarden op voor de referenties voor het uitvoeren van het pakket in de vakken **domein**, **gebruikers naam**en **wacht woord** . Bijvoorbeeld: voor toegang tot Azure Files is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` .
+
+      U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` .
+      
+   1. Schakel het selectie vakje **32-bits runtime** in om te kiezen of het pakket moet worden uitgevoerd op een 32-bits runtime.
+
+   1. Voor **de pakket locatie**selecteert **u SSISDB**, **Bestands systeem (pakket)**, **Bestands systeem (project)**, **Inge sloten pakket**of **pakket opslag**. 
+
+##### <a name="package-location-ssisdb"></a>Pakket locatie: SSISDB
+
+**SSISDB** als uw pakket locatie wordt automatisch geselecteerd als uw Azure-SSIS IR is ingericht met een SSIS-catalogus (SSISDB) die wordt gehost door Azure SQL database server/beheerd exemplaar of u kunt het zelf selecteren. Als deze is geselecteerd, voert u de volgende stappen uit.
+
+   1. Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert en selecteert u uw bestaande mappen, projecten, pakketten en omgevingen van SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken en selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen vanuit dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
+
+   1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+
+   1. Als uw Azure-SSIS IR niet wordt uitgevoerd of het selectie vakje **hand matige invoer** is ingeschakeld, voert u de paden voor het pakket en de omgeving van SSISDB rechtstreeks in de volgende indelingen in: `<folder name>/<project name>/<package name>.dtsx` en `<folder name>/<environment name>` .
 
    ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-   Als u **Bestands systeem (pakket)** als uw pakket locatie selecteert, dat automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand ( `.dtsx` ) op te geven in het vak **pakket pad** . Als u bijvoorbeeld uw pakket opslaat in Azure Files, is het pad van het pakket `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` . 
+##### <a name="package-location-file-system-package"></a>Pakket locatie: bestands systeem (pakket)
+
+**Bestands systeem (pakket)** als uw pakket locatie wordt automatisch geselecteerd als uw Azure-SSIS IR is ingericht zonder SSISDB of u kunt het zelf selecteren. Als deze is geselecteerd, voert u de volgende stappen uit.
+
+   ![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (pakket)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
-   Als u uw pakket in een afzonderlijk bestand configureert, moet u ook een UNC-pad naar uw configuratie bestand ( `.dtsConfig` ) in het vak **configuratiepad** opgeven. Als u bijvoorbeeld uw configuratie opslaat in Azure Files, is het configuratiepad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
-
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
-
-   Als u **Bestands systeem (project)** als uw pakket locatie selecteert, geeft u het pakket op dat moet worden uitgevoerd door een UNC-pad naar uw project bestand () op te geven `.ispac` in het vak **pad** naar project en een pakket bestand ( `.dtsx` ) van het project in het vak **pakket naam** . Als u bijvoorbeeld uw project opslaat in Azure Files, is het pad van het project `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` .
-
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
-
-   Geef vervolgens de referenties op voor toegang tot uw project-, pakket-of configuratie bestanden. Als u de waarden voor de referenties voor het uitvoeren van het pakket hebt opgegeven (zie vorige), kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het uitvoeren van de **pakket referenties** in te scha kelen. Voer anders de waarden in voor uw pakket toegangs referenties in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw project, pakket of configuratie in Azure Files opslaat, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . 
-
-   U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige). Deze referenties worden gebruikt om toegang te krijgen tot uw pakket en onderliggende pakketten in de taak pakket uitvoeren, allemaal vanaf hun eigen pad of hetzelfde project, evenals configuraties, die zijn opgegeven in uw pakketten. 
-
-   Als u **Inge sloten pakket** selecteert als uw pakket locatie, sleept u het pakket en verwijdert u **het uit** een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. Als uw Inge sloten pakket niet is versleuteld en het gebruik van de taak voor het uitvoeren van een pakket wordt gedetecteerd, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met de bijbehorende bestandssysteem verwijzingen automatisch toegevoegd zodat u ze ook kunt insluiten. Als we het gebruik van de taak voor het uitvoeren van een pakket niet kunnen detecteren, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en de relevante onderliggende pakketten toevoegen aan het bestands systeem, zodat u deze ook kunt insluiten. Als de onderliggende pakketten SQL Server verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van project verwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
+   1. Geef het pakket op dat moet worden uitgevoerd door een UNC-pad (Universal Naming Convention) naar uw pakket bestand (met `.dtsx` ) in het vak **pakket pad** op te geven. U kunt door het pakket bladeren en selecteren door **Bladeren in bestands opslag** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw pakket opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` . 
    
-   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
-   
-   Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. U kunt ook een geheim dat is opgeslagen in uw sleutel kluis gebruiken als waarde (zie vorige). Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie later). 
+   1. Als u uw pakket in een afzonderlijk bestand configureert, moet u ook een UNC-pad naar uw configuratie bestand (met `.dtsConfig` ) in het vak **configuratiepad** opgeven. U kunt door de configuratie bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw configuratie opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
 
-   Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SQL Server Data Tools of het `dtutil` opdracht regel programma. 
-   
-   Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het pad naar de logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . Er wordt in dit pad een submap gemaakt voor elk afzonderlijk pakket dat wordt uitgevoerd en de naam krijgt na de run-ID van de uitvoering van SSIS-pakket activiteit, waarbij de logboek bestanden om de vijf minuten worden gegenereerd. 
-   
-   Geef ten slotte de referenties voor toegang tot uw logboekmap op. Als u de waarden voor uw pakket toegangs referenties (zie vorige) eerder hebt opgegeven, kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . 
+   1. Geef de referenties op voor toegang tot uw pakket-en configuratie bestanden. Als u de waarden voor de referenties voor het uitvoeren van het pakket (voor **Windows-verificatie**) eerder hebt ingevoerd, kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het **uitvoeren van pakket uitvoerings referenties** in te scha kelen. Voer anders de waarden in voor uw pakket toegangs referenties in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw pakket en configuratie opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . 
 
-    U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige). Deze referenties worden gebruikt om uw logboeken op te slaan. 
+      U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+
+      Deze referenties worden ook gebruikt voor toegang tot uw onderliggende pakketten in de taak pakket uitvoeren waarnaar wordt verwezen door hun eigen pad en andere configuraties die in uw pakketten zijn opgegeven. 
+
+   1. Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt bij het maken van uw pakket via SQL Server Data tools (SSDT), voert u de waarde voor uw wacht woord in het vak **wacht woord voor versleuteling** in. U kunt ook een geheim dat is opgeslagen in uw Azure Key Vault als waarde gebruiken (zie hierboven).
+      
+      Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie hieronder).
+      
+      Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SSDT of het `dtutil` opdracht regel programma. 
+
+   1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+   
+   1. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. U kunt door de map voor het logboek bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het pad naar de logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . Er wordt een submap gemaakt in dit pad voor elke afzonderlijke pakket uitvoering, met de naam na de run-ID van de uitvoering van SSIS-pakket activiteit en de logboek bestanden om de vijf minuten worden gegenereerd. 
+   
+   1. Geef de referenties op voor toegang tot uw Logboekmap. Als u de waarden voor uw pakket toegangs referenties eerder hebt ingevoerd (zie hierboven), kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
    
    Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
 
-1. Als uw Azure-SSIS IR wordt uitgevoerd op het tabblad **SSIS-para meters** voor de activiteit EXECUTe SSIS-pakket, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld. de bestaande SSIS-para meters in het geselecteerde project of pakket van SSISDB worden weer gegeven zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+##### <a name="package-location-file-system-project"></a>Pakket locatie: bestands systeem (project)
+
+Als u **Bestands systeem (project)** als uw pakket locatie selecteert, voert u de volgende stappen uit.
+
+   ![Eigenschappen instellen op het tabblad Instellingen-Bestands systeem (project)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+
+   1. Geef het pakket op dat moet worden uitgevoerd door een UNC-pad op te geven naar uw project bestand (met `.ispac` ) in het vak **pad naar project** en een pakket bestand (met `.dtsx` ) uit uw project in het vak **pakket naam** . U kunt door het project bladeren en selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw project opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` .
+
+   1. Geef de referenties op voor toegang tot uw project-en pakket bestanden. Als u de waarden voor de referenties voor het uitvoeren van het pakket (voor **Windows-verificatie**) eerder hebt ingevoerd, kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het **uitvoeren van pakket uitvoerings referenties** in te scha kelen. Voer anders de waarden in voor uw pakket toegangs referenties in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw project en pakket opslaat in Azure Files, is het domein, de `Azure` gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . 
+
+      U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+
+      Deze referenties worden ook gebruikt om toegang te krijgen tot uw onderliggende pakketten in de taak pakket uitvoeren die vanuit hetzelfde project worden verwezen. 
+
+   1. Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SSDT, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. U kunt ook een geheim dat is opgeslagen in uw Azure Key Vault als waarde gebruiken (zie hierboven).
+      
+      Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in op de tabbladen **SSIS-para meters**, **verbindings beheer**of **eigenschaps onderdrukking** (zie hieronder).
+      
+      Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SSDT of het `dtutil` opdracht regel programma. 
+
+   1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige para meters opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   1. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. U kunt door de map voor het logboek bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het pad naar de logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . Er wordt een submap gemaakt in dit pad voor elke afzonderlijke pakket uitvoering, met de naam na de run-ID van de uitvoering van SSIS-pakket activiteit en de logboek bestanden om de vijf minuten worden gegenereerd. 
    
-   Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
+   1. Geef de referenties op voor toegang tot uw Logboekmap. Als u de waarden voor uw pakket toegangs referenties eerder hebt ingevoerd (zie hierboven), kunt u ze opnieuw gebruiken door **hetzelfde selectie vakje als toegangs referenties** voor het pakket in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor logboek registratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
+   
+   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+
+##### <a name="package-location-embedded-package"></a>Pakket locatie: Inge sloten pakket
+
+Als u **Inge sloten pakket** als uw pakket locatie selecteert, voert u de volgende stappen uit.
+
+   ![Eigenschappen instellen op het tabblad Instellingen-Inge sloten pakket](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+
+   1. Sleep uw pakket om het uit te voeren of te **uploaden** vanuit een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. 
+   
+   1. Als uw Inge sloten pakket niet is versleuteld en het gebruik van de taak voor het uitvoeren van een pakket wordt gedetecteerd, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met de bijbehorende bestandssysteem verwijzingen automatisch toegevoegd zodat u ze ook kunt insluiten. 
+   
+      Als we het gebruik van de taak voor het uitvoeren van een pakket niet kunnen detecteren, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en de relevante onderliggende pakketten toevoegen aan het bestands systeem, zodat u deze ook kunt insluiten. Als de onderliggende pakketten SQL Server verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van project verwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
+   
+   1. Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SSDT, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. 
+   
+      U kunt ook een geheim dat is opgeslagen in uw Azure Key Vault gebruiken als waarde. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast het. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` .
+      
+      Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie hieronder).
+      
+      Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SSDT of het `dtutil` opdracht regel programma.
+
+   1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+   
+   1. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. U kunt door de map voor het logboek bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het pad naar de logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . Er wordt een submap gemaakt in dit pad voor elke afzonderlijke pakket uitvoering, met de naam na de run-ID van de uitvoering van SSIS-pakket activiteit en de logboek bestanden om de vijf minuten worden gegenereerd. 
+   
+   1. Geef de referenties op voor toegang tot uw Logboekmap door hun waarden in de vakken **domein**, **gebruikers naam**en **wacht woord** in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
+   
+   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+
+##### <a name="package-location-package-store"></a>Pakket locatie: pakket archief
+
+Als u **pakket archief** als uw pakket locatie selecteert, voert u de volgende stappen uit.
+
+   ![Eigenschappen instellen op het tabblad Instellingen-pakket archief](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+   
+   1. Voor de naam van het **pakket archief**selecteert u een bestaande pakket opslag die is gekoppeld aan uw Azure-SSIS IR.
+
+   1. Geef uw pakket op dat moet worden uitgevoerd door het pad (zonder) op te geven `.dtsx` van het geselecteerde pakket archief in het vak **pakket pad** . Als het geselecteerde pakket archief zich boven op het bestands systeem/Azure Files bevindt, kunt u door **Bladeren door bestand opslag**selecteren en het pad in de indeling van opgeven `<folder name>\<package name>` . U kunt ook nieuwe pakketten importeren in het geselecteerde pakket archief via SQL Server Management Studio (SSMS), vergelijkbaar met de [verouderde SSIS-pakket opslag](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017). Zie [SSIS-pakketten beheren met Azure-SSIS IR-pakket archieven](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store)voor meer informatie.
+
+   1. Als u uw pakket in een afzonderlijk bestand configureert, moet u een UNC-pad naar uw configuratie bestand opgeven (met `.dtsConfig` ) in het vak **configuratiepad** . U kunt door de configuratie bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw configuratie opslaat in Azure Files, is het pad `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` .
+
+   1. Schakel het selectie vakje **toegangs referenties** voor de configuratie in om te kiezen of u de referenties voor de afzonderlijke toegang tot uw configuratie bestand wilt opgeven. Dit is nodig wanneer het geselecteerde pakket archief zich boven op SQL Server Data Base (MSDB) bevindt dat door uw door Azure SQL beheerde instantie wordt gehost of uw configuratie bestand niet opslaat.
+   
+      Als u de waarden voor de referenties voor het uitvoeren van het pakket (voor **Windows-verificatie**) eerder hebt ingevoerd, kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het **uitvoeren van pakket uitvoerings referenties** in te scha kelen. Voer anders de waarden in voor uw toegangs referenties voor de configuratie in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw configuratie opslaat in Azure Files, is het domein, de `Azure` gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . 
+
+      U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` .
+
+   1. Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SSDT, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. U kunt ook een geheim dat is opgeslagen in uw Azure Key Vault als waarde gebruiken (zie hierboven).
+      
+      Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie hieronder).
+      
+      Als u het beveiligings niveau **EncryptAllWithUserKey** hebt gebruikt, wordt dit niet ondersteund. U moet het pakket opnieuw configureren om een ander beveiligings niveau te gebruiken via SSDT of het `dtutil` opdracht regel programma. 
+
+   1. Voor het **niveau van logboek registratie**selecteert u een vooraf gedefinieerd bereik van logboek registratie voor de uitvoering van het pakket. Schakel het selectie vakje **aangepast** in als u in plaats daarvan de aangepaste logboek naam wilt invoeren. 
+   
+   1. Als u de pakket uitvoeringen wilt vastleggen naast het gebruik van de standaard logboek providers die in uw pakket kunnen worden opgegeven, geeft u uw logboekmap op door het UNC-pad op te geven in het vak **pad naar logboek** bestand. U kunt door de map voor het logboek bladeren en deze selecteren door **Bladeren in file storage** te selecteren of het pad hand matig in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het pad naar de logboek registratie `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` . Er wordt een submap gemaakt in dit pad voor elke afzonderlijke pakket uitvoering, met de naam na de run-ID van de uitvoering van SSIS-pakket activiteit en de logboek bestanden om de vijf minuten worden gegenereerd. 
+   
+   1. Geef de referenties op voor toegang tot uw Logboekmap door hun waarden in de vakken **domein**, **gebruikers naam**en **wacht woord** in te voeren. Als u bijvoorbeeld uw logboeken opslaat in Azure Files, is het domein `Azure` , de gebruikers naam `<storage account name>` en het wacht woord `<storage account key>` . U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault gebruiken als waarden (zie hierboven).
+   
+   Voor alle eerder genoemde UNC-paden moet de volledige naam van het bestand kleiner zijn dan 260 tekens. De mapnaam mag niet langer zijn dan 248 tekens.
+
+#### <a name="ssis-parameters-tab"></a>Tabblad SSIS-para meters
+
+Voer de volgende stappen uit op het tabblad **SSIS-para meters** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
    ![Eigenschappen instellen op het tabblad SSIS-para meters](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
-1. Op het tabblad **verbindings beheer** voor de activiteit voor het uitvoeren van SSIS-pakketten, als uw Azure-SSIS IR wordt uitgevoerd, **SSISDB** is geselecteerd als uw pakket locatie en het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** is uitgeschakeld, worden de bestaande verbindings beheer in uw geselecteerde project of pakket van SSISDB weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
+   1. Als uw Azure-SSIS IR wordt uitgevoerd, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld. de bestaande SSIS-para meters in het geselecteerde project en pakket van SSISDB worden weer gegeven zodat u waarden aan hen kunt toewijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   1. Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt bij het maken van het pakket via SSDT en het **Bestands systeem (pakket)**, het **Bestands systeem (project)**, een **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige para meters opnieuw invoeren om waarden toe te wijzen aan deze op dit tabblad. 
    
-   Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige).
+   Wanneer u waarden toewijst aan uw para meters, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+
+   U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+
+#### <a name="connection-managers-tab"></a>Tabblad verbindings beheer
+
+Voer de volgende stappen uit op het tabblad **verbindings beheer** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
    ![Eigenschappen instellen op het tabblad verbindings beheer](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
-1. Voer op het tabblad **Eigenschappen onderdrukkingen** voor de activiteit uitvoeren SSIS-pakket de paden in van bestaande eigenschappen in het geselecteerde pakket één voor één om hand matig waarden toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value` . 
+   1. Als uw Azure-SSIS IR wordt uitgevoerd, wordt **SSISDB** geselecteerd als uw pakket locatie en wordt het selectie vakje **hand matige vermeldingen** op het tabblad **instellingen** uitgeschakeld, worden de bestaande verbindings beheer in uw geselecteerde project en pakket van SSISDB weer gegeven om waarden aan hun eigenschappen toe te wijzen. Als dat niet het geval is, kunt u ze één voor één invoeren om waarden hand matig toe te wijzen aan hun eigenschappen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. 
    
-   Als u het **EncryptSensitiveWithUserKey** -beveiligings niveau hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools en het **Bestands systeem (pakket)** of het **Bestands systeem (project)** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige eigenschappen opnieuw invoeren om waarden toe te wijzen aan de configuratie bestanden of op dit tabblad. 
+   1. Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SSDT en **Bestands systeem (pakket)**, een **Bestands systeem (project)**, een **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook de eigenschappen van uw gevoelige verbindings beheer opnieuw invoeren om waarden toe te wijzen aan deze op dit tabblad. 
    
-   Wanneer u waarden toewijst aan uw eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+   Wanneer u waarden toewijst aan de eigenschappen van verbindings beheer, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen. 
+
+   U kunt ook geheimen die zijn opgeslagen in uw Azure Key Vault als waarden gebruiken. Als u dit wilt doen, schakelt u het selectie vakje **Azure Key kluis** in naast deze. Selecteer of bewerk uw bestaande sleutel kluis gekoppelde service of maak een nieuwe. Selecteer vervolgens de naam en versie van het geheim voor uw waarde. Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheim ook rechtstreeks in de volgende indeling invoeren: `<key vault linked service name>/<secret name>/<secret version>` . 
+
+#### <a name="property-overrides-tab"></a>Tabblad onderdrukkingen van eigenschappen
+
+Voer de volgende stappen uit op het tabblad **Eigenschappen onderdrukking** van de activiteit voor het uitvoeren van SSIS-pakketten.
 
    ![Eigenschappen instellen op het tabblad Eigenschappen onderdrukkingen](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
+   1. Voer één voor één de paden van bestaande eigenschappen in het geselecteerde pakket in om de waarden hand matig toe te wijzen. Zorg ervoor dat deze bestaan en correct zijn ingevoerd voor het slagen van de pakket uitvoering. Als u bijvoorbeeld de waarde van uw gebruikers variabele wilt overschrijven, voert u het pad in de volgende indeling in: `\Package.Variables[User::<variable name>].Value` . 
+   
+   1. Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt toen u het pakket hebt gemaakt via SSDT en **Bestands systeem (pakket)**, **Bestands systeem (project)**, **Inge sloten pakket**of **pakket archief** is geselecteerd als uw pakket locatie, moet u ook uw gevoelige pakket eigenschappen opnieuw invoeren om waarden toe te wijzen aan hen op dit tabblad. 
+   
+   Wanneer u waarden toewijst aan de pakket eigenschappen, kunt u dynamische inhoud toevoegen met behulp van expressies, functies, Data Factory systeem variabelen en Data Factory pijplijn parameters of-variabelen.
+
    De waarden die zijn toegewezen in configuratie bestanden en op het tabblad **SSIS-para meters** kunnen worden overschreven met behulp van de tabbladen **verbindings beheer** of **eigenschaps onderdrukkingen** . De waarden die zijn toegewezen op het tabblad **verbindings beheer** kunnen ook worden overschreven met behulp van het tabblad **Eigenschappen onderdrukkingen** .
 
-1. Selecteer **valideren** op de werk balk om de configuratie van de pijp lijn te valideren. Selecteer om het **rapport pijplijn validatie**te sluiten **>>** .
+Selecteer **valideren** op de werk balk om de configuratie van de pijp lijn te valideren. Selecteer om het **rapport pijplijn validatie**te sluiten **>>** .
 
-1. Als u de pijp lijn naar Data Factory wilt publiceren, selecteert u **Alles publiceren**. 
+Als u de pijp lijn naar Data Factory wilt publiceren, selecteert u **Alles publiceren**. 
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 In deze stap activeert u een pijplijn uitvoering. 
@@ -179,7 +315,7 @@ U kunt een bestaand data factory gebruiken dat al Azure-SSIS IR ingericht is of 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>Een pijp lijn maken met een activiteit voor het uitvoeren van SSIS-pakketten 
 In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSIS-pakketten. De activiteit voert uw SSIS-pakket uit. 
 
-1. Maak een JSON-bestand met de naam *RunSSISPackagePipeline. json* in de map *C:\ADF\RunSSISPackage* met inhoud die lijkt op het volgende voor beeld.
+1. Maak een JSON-bestand `RunSSISPackagePipeline.json` met de naam in de `C:\ADF\RunSSISPackage` map met inhoud die vergelijkbaar is met het volgende voor beeld.
 
    > [!IMPORTANT]
    > Vervang object namen, beschrijvingen en paden, eigenschaps-of parameter waarden, wacht woorden en andere variabelen waarden voordat u het bestand opslaat. 
@@ -208,8 +344,8 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
-                       "packagePath": "MyFolder/MyProject/MyPackage.dtsx",
-                       "type": "SSISDB"
+                       "type": "SSISDB",
+                       "packagePath": "MyFolder/MyProject/MyPackage.dtsx"
                    },
                    "environmentPath": "MyFolder/MyEnvironment",
                    "projectParameters": {
@@ -289,7 +425,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor uw pakket-en logboek locatie-eigenschappen als volgt in:
+   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systeem/Azure Files, voert u de waarden voor uw pakket-en logboek locatie-eigenschappen als volgt in:
 
    ```json
    {
@@ -297,8 +433,8 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
            {
                {
                    "packageLocation": {
-                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyPackage.dtsx",
                        "type": "File",
+                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyPackage.dtsx",
                        "typeProperties": {
                            "packagePassword": {
                                "type": "SecureString",
@@ -315,8 +451,8 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
                        }
                    },
                    "logLocation": {
-                       "logPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyLogFolder",
                        "type": "File",
+                       "logPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyLogFolder",
                        "typeProperties": {
                            "accessCredential": {
                                "domain": "Azure",
@@ -326,7 +462,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
                                    "store": {
                                        "referenceName": "myAKV",
                                        "type": "LinkedServiceReference"
-                           },
+                                   },
                                    "secretName": "MyAccountKey"
                                }
                            }
@@ -338,7 +474,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor de eigenschap pakket locatie als volgt in:
+   Als u pakketten wilt uitvoeren in projecten die zijn opgeslagen in het bestands systeem/Azure Files, voert u de waarden voor de pakket locatie-eigenschappen als volgt in:
 
    ```json
    {
@@ -346,8 +482,8 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
            {
                {
                    "packageLocation": {
-                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyProject.ispac:MyPackage.dtsx",
                        "type": "File",
+                       "packagePath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyProject.ispac:MyPackage.dtsx",
                        "typeProperties": {
                            "packagePassword": {
                                "type": "SecureString",
@@ -369,7 +505,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u Inge sloten pakketten wilt uitvoeren, voert u de waarden voor de eigenschap pakket locatie als volgt in:
+   Als u Inge sloten pakketten wilt uitvoeren, voert u de waarden voor de pakket locatie-eigenschappen als volgt in:
 
    ```json
    {
@@ -394,7 +530,51 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-2. Ga in Azure PowerShell naar de map *C:\ADF\RunSSISPackage* .
+   Als u pakketten wilt uitvoeren die zijn opgeslagen in pakket archieven, voert u de waarden voor uw pakket-en configuratie locatie eigenschappen als volgt in:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "PackageStore",
+                       "packagePath": "myPackageStore/MyFolder/MyPackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "accessCredential": {
+                               "domain": "Azure",
+                               "username": "MyStorageAccount",
+                               "password": {
+                                   "type": "SecureString",
+                                   "value": "MyAccountKey"
+                               }
+                           },
+                           "configurationPath": "//MyStorageAccount.file.core.windows.net/MyFileShare/MyConfiguration.dtsConfig",
+                           "configurationAccessCredential": {
+                               "domain": "Azure",
+                               "userName": "MyStorageAccount",
+                               "password": {
+                                   "type": "AzureKeyVaultSecret",
+                                   "store": {
+                                       "referenceName": "myAKV",
+                                       "type": "LinkedServiceReference"
+                                   },
+                                   "secretName": "MyAccountKey"
+                               }
+                           }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+2. Ga in Azure PowerShell naar de `C:\ADF\RunSSISPackage` map.
 
 3. Als u de pijp lijn **RunSSISPackagePipeline**wilt maken, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
 
@@ -452,7 +632,7 @@ U kunt de pijp lijn ook bewaken met behulp van de Azure Portal. Zie [de pijp lij
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>De pijp lijn plannen met een trigger
 In de vorige stap hebt u de pijp lijn op aanvraag uitgevoerd. U kunt ook een schema trigger maken om de pijp lijn op een schema uit te voeren, zoals elk uur of dagelijks.
 
-1. Maak een JSON-bestand met de naam *MyTrigger. json* in de map *C:\ADF\RunSSISPackage* met de volgende inhoud: 
+1. Maak een JSON-bestand `MyTrigger.json` met de naam in de `C:\ADF\RunSSISPackage` map met de volgende inhoud: 
         
    ```json
    {
@@ -478,7 +658,7 @@ In de vorige stap hebt u de pijp lijn op aanvraag uitgevoerd. U kunt ook een sch
    }    
    ```
     
-1. Ga in Azure PowerShell naar de map *C:\ADF\RunSSISPackage* .
+1. Ga in Azure PowerShell naar de `C:\ADF\RunSSISPackage` map.
 1. Voer de cmdlet **set-AzDataFactoryV2Trigger** uit om de trigger te maken. 
 
    ```powershell

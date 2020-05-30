@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 68f6977059af84fc7fa98fe5817f9f5b4fbdcf90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2ec92573870ea1e43c45f4b4fc5c552b2932f1c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045415"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195162"
 ---
 # <a name="what-is-azure-sql"></a>Wat is Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84045415"
 Azure SQL is een groep beheerde, veilige en intelligente SQL Server database producten.
 
 - **Azure SQL database**: ondersteuning voor moderne Cloud toepassingen op een intelligente, beheerde database service, waaronder serverloze reken kracht. 
-- **Azure SQL Managed instance**: modern uw bestaande SQL Server toepassingen op schaal met een intelligent volledig beheerd exemplaar als een service, met bijna 100% van de functie pariteit tot de SQL Server on-premises die u gebruikt. Het meest geschikt voor de meeste migraties naar de Cloud.
+- **Azure SQL Managed instance**: modern uw bestaande SQL Server-toepassingen op schaal met een intelligent volledig beheerd exemplaar als een service, met bijna 100% van de functie pariteit met de SQL server-data base-engine. Het meest geschikt voor de meeste migraties naar de Cloud.
 - **SQL Server op virtuele machines van Azure**: til de SQL Server-workloads met 100 gemak en houd de SQL Server compatibiliteit en toegang tot het toegangs niveau van het besturings systeem bij. 
  
 Azure SQL is gebaseerd op de vertrouwde SQL Server-engine, zodat u toepassingen eenvoudig kunt migreren en de hulp middelen, talen en bronnen die u kent, blijven gebruiken. Uw vaardig heden en ervaring worden overgedragen naar de Cloud, zodat u nog meer kunt doen met wat u al hebt. 
@@ -98,7 +98,7 @@ Aanvullende verschillen worden weer gegeven in de volgende tabel, maar ***zowel 
 
 | Azure SQL Database | Azure SQL Managed Instance | SQL Server op virtuele Azure-machine |
 | :--- | :--- | :--- |
-|Ondersteunt de meeste on-premises mogelijkheden op database niveau. De meestgebruikte SQL Server-functies zijn beschikbaar.<br/>gegarandeerde Beschik baarheid van 99,995%.<br/>Ingebouwde back-ups, patches, herstel.<br/>Nieuwste stabiele data base-engine versie.<br/>De mogelijkheid om de benodigde resources (CPU/opslag) toe te wijzen aan afzonderlijke data bases.<br/>Ingebouwde geavanceerde intelligentie en beveiliging.<br/>Online wijziging van resources (CPU/opslag).| Biedt ondersteuning voor vrijwel alle on-premises op het niveau van de instantie en op database niveau. Hoge compatibiliteit met SQL Server on-premises.<br/>gegarandeerde Beschik baarheid van 99,99%.<br/>Ingebouwde back-ups, patches, herstel.<br/>Nieuwste stabiele data base-engine versie.<br/>Eenvoudige migratie van SQL Server.<br/>Privé-IP-adres in azure VNet.<br/>Ingebouwde geavanceerde intelligentie en beveiliging.<br/>Online wijziging van resources (CPU/opslag).| U hebt volledige controle over de SQL Server-engine. Ondersteunt alle on-premises mogelijkheden.<br/>Maxi maal 99,99% Beschik baarheid.<br/>Volledige pariteit met de overeenkomende versie van on-premises SQL Server.<br/>Gecorrigeerde versie van de bekende data base-engine.<br/>Eenvoudige migratie van SQL Server on-premises.<br/>Privé-IP-adres in azure VNet.<br/>U hebt de mogelijkheid om toepassingen of services te implementeren op de host waar SQL Server is geplaatst.|
+|Ondersteunt de meeste on-premises mogelijkheden op database niveau. De meestgebruikte SQL Server-functies zijn beschikbaar.<br/>gegarandeerde Beschik baarheid van 99,995%.<br/>Ingebouwde back-ups, patches, herstel.<br/>Nieuwste stabiele data base-engine versie.<br/>De mogelijkheid om de benodigde resources (CPU/opslag) toe te wijzen aan afzonderlijke data bases.<br/>Ingebouwde geavanceerde intelligentie en beveiliging.<br/>Online wijziging van resources (CPU/opslag).| Biedt ondersteuning voor vrijwel alle on-premises op het niveau van de instantie en op database niveau. Hoge compatibiliteit met SQL Server.<br/>gegarandeerde Beschik baarheid van 99,99%.<br/>Ingebouwde back-ups, patches, herstel.<br/>Nieuwste stabiele data base-engine versie.<br/>Eenvoudige migratie van SQL Server.<br/>Privé-IP-adres in azure VNet.<br/>Ingebouwde geavanceerde intelligentie en beveiliging.<br/>Online wijziging van resources (CPU/opslag).| U hebt volledige controle over de SQL Server-engine. Ondersteunt alle on-premises mogelijkheden.<br/>Maxi maal 99,99% Beschik baarheid.<br/>Volledige pariteit met de overeenkomende versie van on-premises SQL Server.<br/>Gecorrigeerde versie van de bekende data base-engine.<br/>Eenvoudige migratie van SQL Server.<br/>Privé-IP-adres in azure VNet.<br/>U hebt de mogelijkheid om toepassingen of services te implementeren op de host waar SQL Server is geplaatst.|
 |Migratie van SQL Server kan lastig zijn.<br/>Sommige SQL Server functies zijn niet beschikbaar.<br/>Geen gegarandeerd exacte onderhouds tijd (maar bijna transparant).<br/>De compatibiliteit met de SQL Server versie kan alleen worden bereikt door database compatibiliteits niveaus te gebruiken.<br/>Privé-IP-adres kan niet worden toegewezen (u kunt de toegang beperken met behulp van firewall regels).|Er is nog een aantal SQL Server functies die niet beschikbaar zijn.<br/>Geen gegarandeerd exacte onderhouds tijd (maar bijna transparant).<br/>De compatibiliteit met de SQL Server versie kan alleen worden bereikt door database compatibiliteits niveaus te gebruiken.|U moet uw back-ups en patches beheren.<br>U moet uw eigen oplossing voor hoge Beschik baarheid implementeren.<br/>Er is een downtime bij het wijzigen van de resources (CPU/opslag)|
 | Data bases van Maxi maal 100 TB. | Maxi maal 8 TB. | SQL Server instanties met Maxi maal 256 TB aan opslag ruimte. Het exemplaar kan zoveel databases ondersteunen als nodig is. |
 | On-premises toepassing heeft toegang tot gegevens in Azure SQL Database. | [Systeem eigen virtuele netwerk implementatie](managed-instance/vnet-existing-add-subnet.md) en connectiviteit met uw on-premises omgeving met behulp van Azure Express Route of VPN gateway. | Met virtuele SQL-machines kunt u toepassingen hebben die deels in de Cloud en gedeeltelijk op locatie worden uitgevoerd. Zo kunt u uw on-premises netwerk en Active Directory-domein uitbreiden naar de cloud met [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Zie [on-premises gegevens oplossingen uitbreiden naar de Cloud](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)voor meer informatie over hybride cloud oplossingen. |

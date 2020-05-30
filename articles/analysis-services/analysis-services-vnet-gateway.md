@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7622b6b5855850a0150f43863fa117828e23d4bd
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698870"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197201"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Gateway gebruiken voor gegevens bronnen op een Azure Virtual Network (VNet)
 
@@ -22,7 +22,7 @@ In dit artikel wordt de Azure Analysis Services eigenschap **AlwaysUseGateway** 
 
 Als uw gegevens bronnen toegankelijk zijn via een VNet, moet uw Azure Analysis Services-server verbinding maken met deze gegevens bronnen alsof ze on-premises zijn, in uw eigen omgeving. U kunt de **AlwaysUseGateway** -Server eigenschap configureren om de server op te geven voor toegang tot alle gegevens bronnen via een [on-premises gateway](analysis-services-gateway.md). 
 
-Azure SQL Database beheerde exemplaar gegevens bronnen worden uitgevoerd in azure VNet met een privé IP-adres. Als het open bare eind punt is ingeschakeld voor het exemplaar, is een gateway niet vereist. Als het open bare eind punt niet is ingeschakeld, is een on-premises gegevens gateway vereist en moet de eigenschap AlwaysUseGateway worden ingesteld op True.
+Gegevens bronnen van Azure SQL Managed instance worden uitgevoerd in azure VNet met een privé-IP-adres. Als het open bare eind punt is ingeschakeld voor het exemplaar, is een gateway niet vereist. Als het open bare eind punt niet is ingeschakeld, is een on-premises gegevens gateway vereist en moet de eigenschap AlwaysUseGateway worden ingesteld op True.
 
 > [!NOTE]
 > Deze eigenschap is alleen effectief wanneer een [on-premises gegevens gateway](analysis-services-gateway.md) is geïnstalleerd en geconfigureerd. De gateway kan zich in het VNet bevindt.

@@ -3,16 +3,17 @@ title: Metrische gegevens in realtime weer geven met Azure Monitor voor containe
 description: In dit artikel wordt een overzicht gegeven van de real-time weergave van metrische gegevens zonder kubectl te gebruiken met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 54d751769005dabb4708eb198bcc765d830ba605
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216585"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196138"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Metrische gegevens weer geven in realtime
 
-Met Azure Monitor voor de functie Live data (preview) van containers kunt u metrische gegevens over de status van het knoop punt en de pod in realtime visualiseren. Het emuleert directe toegang tot de `kubectl top nodes`-, `kubectl get pods –all-namespaces`-en `kubectl get nodes` -opdrachten voor het aanroepen, parseren en visualiseren van de gegevens in prestatie grafieken die deel uitmaken van dit inzicht. 
+Met Azure Monitor voor de functie Live data (preview) van containers kunt u metrische gegevens over de status van het knoop punt en de pod in realtime visualiseren. Het emuleert directe toegang tot de `kubectl top nodes` -, `kubectl get pods –all-namespaces` -en- `kubectl get nodes` opdrachten voor het aanroepen, parseren en visualiseren van de gegevens in prestatie grafieken die deel uitmaken van dit inzicht. 
 
 Dit artikel bevat een gedetailleerd overzicht en helpt u inzicht te krijgen in het gebruik van deze functie.  
 
@@ -28,7 +29,7 @@ Raadpleeg de [installatie handleiding](container-insights-livedata-setup.md)voor
 
 De functie voor Live gegevens (preview) heeft rechtstreeks toegang tot de Kubernetes-API en aanvullende informatie over het verificatie model vindt u [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 
-Deze functie voert een polling bewerking uit op basis van de metrische gegevens ( `/api/v1/nodes`inclusief `/apis/metrics.k8s.io/v1beta1/nodes`, en `/api/v1/pods`), die standaard elke vijf seconden zijn. Deze gegevens worden in de cache opgeslagen in uw browser en gegrafeerd in de vier prestatie grafieken die zijn opgenomen in Azure Monitor voor containers op het tabblad **cluster** door **Go Live (preview)** te selecteren. Elke volgende poll wordt gediagrameerd in een visualisatie venster van vijf minuten. 
+Deze functie voert een polling bewerking uit op basis van de metrische gegevens (inclusief `/api/v1/nodes` , `/apis/metrics.k8s.io/v1beta1/nodes` en `/api/v1/pods` ), die standaard elke vijf seconden zijn. Deze gegevens worden in de cache opgeslagen in uw browser en gegrafeerd in de vier prestatie grafieken die zijn opgenomen in Azure Monitor voor containers op het tabblad **cluster** door **Go Live (preview)** te selecteren. Elke volgende poll wordt gediagrameerd in een visualisatie venster van vijf minuten. 
 
 ![De optie Live go in de cluster weergave](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
@@ -48,7 +49,7 @@ Deze grafieken kunnen niet worden vastgemaakt aan het laatste Azure-dash board d
 
 ### <a name="node-cpu-utilization---node-memory-utilization-"></a>CPU-gebruik van het knoop punt%/het geheugen gebruik van het knoop punt% 
 
-Deze twee prestatie grafieken zijn gekoppeld aan een equivalent van het `kubectl top nodes` aanroepen en vastleggen van de resultaten van het **CPU-percentage** en het **geheugen%** van de desbetreffende grafiek. 
+Deze twee prestatie grafieken zijn gekoppeld aan een equivalent van het aanroepen `kubectl top nodes` en vastleggen van de resultaten van het **CPU-percentage** en het **geheugen%** van de desbetreffende grafiek. 
 
 ![Voorbeeld resultaten van Kubectl bovenste knoop punten](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
@@ -62,7 +63,7 @@ Dit helpt u ook te begrijpen welke knoop punten worden gepusht naar hun limieten
 
 ### <a name="node-count"></a>Aantal knoop punten
 
-Deze prestatie grafiek is gekoppeld aan een equivalent van het `kubectl get nodes` aanroepen en toewijzen van de kolom **status** aan een grafiek, gegroepeerd op status typen.
+Deze prestatie grafiek is gekoppeld aan een equivalent van het aanroepen `kubectl get nodes` en toewijzen van de kolom **status** aan een grafiek, gegroepeerd op status typen.
 
 ![Voorbeeld resultaten van Kubectl Get-knoop punten](./media/container-insights-livedata-metrics/kubectl-get-nodes-example.png)
 
@@ -80,7 +81,7 @@ Deze prestatie grafiek wordt toegewezen aan een equivalent van aanroepen `kubect
 ![Grafiek pod aantal knoop punten](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->De namen van de status, `kubectl` zoals geïnterpreteerd door, komen mogelijk niet exact overeen in de grafiek. 
+>De namen van de status, zoals geïnterpreteerd door, `kubectl` komen mogelijk niet exact overeen in de grafiek. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

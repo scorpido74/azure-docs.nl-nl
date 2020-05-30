@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 60f3e725a4df619e3cc8ed7e8878fe2a5e5c3406
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780875"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195181"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -23,7 +23,7 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 >
 > Als u een eerdere versie van AzCopy wilt gebruiken, raadpleegt u de sectie [de vorige versie van AzCopy gebruiken](#previous-version) van dit artikel.
 
-<a id="download-and-install-azcopy" />
+<a id="download-and-install-azcopy"></a>
 
 ## <a name="download-azcopy"></a>AzCopy downloaden
 
@@ -42,13 +42,13 @@ Deze bestanden worden gecomprimeerd als een zip-bestand (Windows en Mac) of een 
 
 ## <a name="run-azcopy"></a>AzCopy uitvoeren
 
-Voor het gemak kunt u de maplocatie van het uitvoer bare bestand AzCopy toevoegen aan het systeempad om gebruiks gemak te gebruiken. Op die manier kunt u `azcopy` typen vanuit een wille keurige map op uw systeem.
+Voor het gemak kunt u de maplocatie van het uitvoer bare bestand AzCopy toevoegen aan het systeempad om gebruiks gemak te gebruiken. Op die manier kunt u typen `azcopy` vanuit een wille keurige map op uw systeem.
 
-Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het `azcopy` uitvoer `.\azcopy` bare AzCopy-bestand en-type of in Windows Power shell-opdracht prompts.
+Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het uitvoer bare AzCopy-bestand en-type `azcopy` of `.\azcopy` in Windows Power shell-opdracht prompts.
 
 Typ `azcopy -h` en druk op de Enter-toets om een lijst met opdrachten weer te geven.
 
-Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht `azcopy list -h`op (bijvoorbeeld:).
+Als u meer wilt weten over een specifieke opdracht, neemt u alleen de naam van de opdracht op (bijvoorbeeld: `azcopy list -h` ).
 
 ![Inline-Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
@@ -125,7 +125,7 @@ Met deze opdracht worden een verificatie code en de URL van een website geretour
 
 Er wordt een aanmeldings venster weer gegeven. Meld u in dat venster aan bij uw Azure-account met behulp van de referenties van uw Azure-account. Nadat u zich hebt aangemeld, kunt u het browser venster sluiten en AzCopy gaan gebruiken.
 
-<a id="service-principal" />
+<a id="service-principal"></a>
 
 #### <a name="authenticate-a-service-principal"></a>Een Service-Principal verifiëren
 
@@ -191,7 +191,7 @@ Vervang de `<path-to-certificate-file>` tijdelijke aanduiding door het relatieve
 > [!NOTE]
 > U kunt een prompt gebruiken zoals in dit voor beeld wordt weer gegeven. Op die manier wordt uw wacht woord niet weer gegeven in de opdracht geschiedenis van de console. 
 
-<a id="managed-identity" />
+<a id="managed-identity"></a>
 
 #### <a name="authenticate-a-managed-identity"></a>Een beheerde identiteit verifiëren
 
@@ -277,7 +277,7 @@ Voer de volgende opdracht uit om de koppeling te verkrijgen:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
-> Voor Linux wordt `--strip-components=1` op de `tar` opdracht de map op het hoogste niveau met de versie naam verwijderd en in plaats daarvan wordt het binaire bestand rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de `wget` URL bij te werken.
+> Voor Linux `--strip-components=1` wordt op de `tar` opdracht de map op het hoogste niveau met de versie naam verwijderd en in plaats daarvan wordt het binaire bestand rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de URL bij te werken `wget` .
 
 De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolgens AzCopy downloaden met behulp van deze URL.
 
@@ -288,7 +288,7 @@ De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolg
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Speciale tekens in SAS-tokens escapepen
 
-In batch-bestanden met de `.cmd` extensie moet u de `%` tekens die worden weer gegeven in SAS-tokens weglaten. U kunt dit doen door een extra `%` teken toe te voegen `%` naast de bestaande tekens in de SAS-token teken reeks.
+In batch-bestanden met de `.cmd` extensie moet u de `%` tekens die worden weer gegeven in SAS-tokens weglaten. U kunt dit doen door een extra teken toe te voegen `%` naast `%` de bestaande tekens in de SAS-token teken reeks.
 
 ### <a name="run-scripts-by-using-jenkins"></a>Scripts uitvoeren met behulp van Jenkins
 
@@ -304,7 +304,7 @@ Als u van plan bent [Jenkins](https://jenkins.io/) te gebruiken om scripts uit t
 
 Storage Explorer gebruikt uw account sleutel voor het uitvoeren van bewerkingen, dus nadat u zich hebt aangemeld bij Storage Explorer, hoeft u geen aanvullende autorisatie referenties op te geven.
 
-<a id="previous-version" />
+<a id="previous-version"></a>
 
 ## <a name="use-the-previous-version-of-azcopy"></a>De vorige versie van AzCopy gebruiken
 

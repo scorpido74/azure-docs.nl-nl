@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: b2694d83f3059ac9d291f5164a76acd8b011c9a7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049993"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217919"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Dit document bevat richt lijnen voor het oplossen van algemene beveiligings vere
 
 - Azure SQL Data Warehouse
 - Azure SQL-Vm's (IaaS)
-- On-premises SQL Server
+- SQL Server
 
 ### <a name="audience"></a>Doelgroep
 

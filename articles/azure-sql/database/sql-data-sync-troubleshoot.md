@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0a013d702b48864a182180fa6fe382973bff2cd0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043945"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188247"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Problemen met SQL Data Sync oplossen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ Zie problemen met de [Data Sync-agent oplossen voor informatie](sql-data-sync-ag
 
 - [Ik kan mijn synchronisatie groep niet verwijderen](#setup-delete)
 
-- [Ik kan de registratie van een on-premises SQL Server Data Base niet ongedaan maken](#setup-unreg)
+- [Ik kan de registratie van een SQL Server Data Base niet opheffen](#setup-unreg)
 
 - [Ik heb niet voldoende rechten om systeem services te starten](#setup-perms)
 
@@ -166,11 +166,11 @@ De poging om een synchronisatie groep te verwijderen, is mislukt. Een van de vol
 
 - **Oplossing**. Wacht tot het inrichtings-of synchronisatie proces is voltooid en probeer de synchronisatie groep vervolgens opnieuw te verwijderen.
 
-### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a><a name="setup-unreg"></a>Ik kan de registratie van een on-premises SQL Server Data Base niet ongedaan maken
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Ik kan de registratie van een SQL Server Data Base niet opheffen
 
 - **Oorzaak**. Waarschijnlijk probeert u de registratie van een Data Base die al is verwijderd, te verwijderen.
 
-- **Oplossing**. Als u de registratie van een on-premises SQL Server Data Base ongedaan wilt maken, selecteert u de data base en selecteert u **verwijderen afdwingen**.
+- **Oplossing**. Als u de registratie van een SQL Server Data Base ongedaan wilt maken, selecteert u de data base en selecteert u vervolgens **verwijderen forceren**.
 
   Als deze bewerking de data base niet kan verwijderen uit de synchronisatie groep:
 
@@ -244,7 +244,7 @@ Voor meer informatie over SQL Data Sync raadpleegt u:
 
 -   Overzicht: [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
-    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-data-sync-sql-server-configure.md)
+    - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

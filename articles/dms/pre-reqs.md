@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 904ebb2e97ef84e1b0c2a83e5cb153bdb7e44746
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9aaf334b328b2e20ed94f0c7c87727add1f2baee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018919"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195669"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Overzicht van vereisten voor het gebruik van de Azure Database Migration Service
 
@@ -125,9 +125,9 @@ Wanneer u de Azure Database Migration Service gebruikt voor het uitvoeren van SQ
    > Voor een volledig overzicht van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken om migraties uit te voeren van SQL Server naar Azure SQL Database, raadpleegt u de zelf studie [SQL Server migreren naar Azure SQL database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Vereisten voor het migreren van SQL Server naar een Azure SQL Database beheerd exemplaar
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>Vereisten voor het migreren van SQL Server naar Azure SQL Managed instance
 
-* Maak een beheerde Azure SQL Database-exemplaar door de details in het artikel [een Azure SQL database beheerde instantie in de Azure portal te maken](https://aka.ms/sqldbmi).
+* Maak een door SQL beheerd exemplaar door de details in het artikel [een door Azure SQL beheerd exemplaar maken in de Azure Portal](https://aka.ms/sqldbmi)te volgen.
 * Open uw firewalls om SMB-verkeer op poort 445 toe te staan voor het Azure Database Migration Service IP-adres of het subnet-bereik.
 * Stel uw Windows-firewall open voor toegang van de Azure Database Migration Service tot de brondatabase van SQL Server. Standaard verloopt dit via TCP-poort 1433.
 * Als u meerdere benoemde SQL Server-exemplaren met behulp van dynamische poorten uitvoert, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
@@ -138,7 +138,7 @@ Wanneer u de Azure Database Migration Service gebruikt voor het uitvoeren van SQ
 * Maak een BLOB-container en haal de SAS-URI op met behulp van de stappen in het artikel [Azure Blob Storage-resources beheren met Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Zorg ervoor dat u alle machtigingen (lezen, schrijven, verwijderen, lijst) in het venster beleid selecteert tijdens het maken van de SAS-URI.
 
    > [!NOTE]
-   > Voor een volledige lijst van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken om migraties uit te voeren van SQL Server naar Azure SQL Database beheerde instantie, raadpleegt u de zelf studie [SQL Server migreren naar Azure SQL database beheerde instantie](https://aka.ms/migratetomiusingdms).
+   > Zie voor een volledige lijst van de vereisten die nodig zijn om de Azure Database Migration Service te gebruiken voor het uitvoeren van migraties van SQL Server naar SQL Managed instance de zelf studie [migreren SQL Server naar SQL Managed instance](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb38037b905e9d7f938b648954bcb9e419be5af
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76772103"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217421"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>De vooraf ingestelde coderings voorinstelling gebruiken om de optimale bitrate waarde voor een bepaalde oplossing te vinden
 
@@ -76,8 +76,10 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Voor het coderen van `ContentAwareEncoding` taken met behulp van de voor instelling wordt gefactureerd op basis van de uitvoer minuten. 
+> Voor het coderen van taken met behulp van de `ContentAwareEncoding` voor instelling wordt gefactureerd op basis van de uitvoer minuten. 
 
+Zorg ervoor dat u de **ContentAwareEncoding** -voor instelling niet ContentAwareEncodingExperimental gebruikt.
+  
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Zelf studie: Video's uploaden, coderen en streamen met Media Services v3](stream-files-tutorial-with-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database Managed instance gebruiken met Azure-SQL Server Integration Services (SSIS) in Azure Data Factory
-description: Meer informatie over het gebruik van Azure SQL Database Managed instance met SQL Server Integration Services (SSIS) in Azure Data Factory.
+title: Azure SQL Managed instance met Azure-SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
+description: Meer informatie over het gebruik van Azure SQL Managed instance met SQL Server Integration Services (SSIS) in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015281"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195373"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Database Managed instance met SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure SQL Managed instance met SQL Server Integration Services (SSIS) gebruiken in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en workloads naar de Azure-Cloud verplaatsen. U kunt SSIS-projecten en-pakketten implementeren, uitvoeren en beheren op Azure SQL Database of SQL Database beheerde instantie met vertrouwde hulpprogram ma's zoals SQL Server Management Studio (SSMS). In dit artikel worden de volgende specifieke gebieden uitgelegd bij het gebruik van Azure SQL Database beheerde instantie met Azure-SSIS Integration runtime (IR):
+U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en workloads naar de Azure-Cloud verplaatsen. U kunt SSIS-projecten en-pakketten implementeren, uitvoeren en beheren op Azure SQL Database of een door SQL beheerd exemplaar met vertrouwde hulpprogram ma's zoals SQL Server Management Studio (SSMS). In dit artikel worden de volgende specifieke gebieden voor het gebruik van Azure SQL Managed instance met Azure-SSIS Integration runtime (IR) gemarkeerd.
 
-- [Een Azure-SSIS IR inrichten met een SSIS-catalogus (SSISDB) die wordt gehost door Azure SQL Database beheerde instantie](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
+- [Een Azure-SSIS IR inrichten met een SSIS-catalogus (SSISDB) die wordt gehost door een door Azure SQL beheerd exemplaar](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [SSIS-pakketten uitvoeren met Azure SQL Managed instance agent-taak](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [SSISDB-logboeken opschonen door de Azure SQL Managed instance agent-taak](#clean-up-ssisdb-logs)
-- [Azure-SSIS IR failover met Azure SQL Database beheerd exemplaar](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [On-premises SSIS-workloads migreren naar SSIS in ADF met Azure SQL Database Managed instance als bewerkings werkbelasting doel van data base](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
+- [Azure-SSIS IR failover met Azure SQL Managed instance](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [On-premises SSIS-workloads migreren naar SSIS in ADF met Azure SQL Managed instance as data base workload Destination](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Azure-SSIS IR inrichten met SSISDB die door Azure SQL Managed instance worden gehost
 
 ### <a name="prerequisites"></a>Vereisten
 
-1. [Schakel Azure Active Directory (Azure AD) in op Azure SQL database beheerde instantie](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)bij het kiezen van Azure Active Directory-verificatie.
+1. [Schakel Azure Active Directory (Azure AD) in op Azure SQL Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)bij het kiezen van Azure Active Directory-verificatie.
 
 1. Kies hoe u verbinding wilt maken met SQL Managed instance, via een privé-eind punt of via een openbaar eind punt:
 
@@ -44,13 +44,13 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
             - Binnen hetzelfde virtuele netwerk als een door SQL beheerd exemplaar, met een **ander subnet**.
             - Binnen een ander virtueel netwerk dan het beheerde exemplaar van SQL-netwerk (dat is beperkt tot dezelfde regio als gevolg van globale VNet-peering-beperkingen) of een verbinding van een virtueel netwerk met een virtueel netwerk.
 
-            Zie [uw toepassing verbinden met Azure SQL database beheerde instantie](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)voor meer informatie over de connectiviteit van SQL Managed instance.
+            Zie [uw toepassing verbinden met Azure SQL Managed instance](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app)(Engelstalig) voor meer informatie over de connectiviteit van SQL Managed instance.
 
         1. [Configureer het virtuele netwerk](#configure-virtual-network).
 
     - Via open bare eind punt
 
-        Azure SQL Database beheerde instanties kunnen connectiviteit bieden via [open bare eind punten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure). Voor inkomende en uitgaande vereisten moet worden voldaan om verkeer tussen SQL Managed instance en Azure-SSIS IR toe te staan:
+        Azure SQL Managed instances kunnen connectiviteit bieden via [open bare eind punten](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure). Voor inkomende en uitgaande vereisten moet worden voldaan om verkeer tussen SQL Managed instance en Azure-SSIS IR toe te staan:
 
         - Als Azure-SSIS IR in een virtueel netwerk (voor keur)
 
@@ -147,7 +147,7 @@ U kunt nu uw SQL Server Integration Services (SSIS)-projecten, pakketten en work
 
     ![catalogus-openbaar-eind punt](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Zie voor meer informatie over het inschakelen van Azure AD-verificatie [Azure AD inschakelen op Azure SQL database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+    Zie [Azure AD inschakelen op Azure SQL Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)voor meer informatie over het inschakelen van Azure AD-verificatie.
 
 1. Voeg Azure-SSIS IR toe aan het virtuele netwerk wanneer dit van toepassing is.
 

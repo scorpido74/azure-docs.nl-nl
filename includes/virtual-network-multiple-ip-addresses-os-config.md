@@ -8,22 +8,24 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76159594"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194203"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>IP-adressen toevoegen aan een VM-besturingssysteem
 
 Maak verbinding met en meld u aan bij een virtuele machine die u hebt gemaakt met meerdere privé-IP-adressen. U moet alle privé-IP-adressen (met inbegrip van het primaire) die u aan de virtuele machine hebt toegevoegd, handmatig toevoegen. Voer de stappen uit die volgen voor uw VM-besturings systeem.
 
-### <a name="windows"></a>Windows
+### <a name="windows-server"></a>Windows Server
+<details>
+  <summary>Uitvouwen</summary>
 
 1. Typ vanaf een opdrachtprompt *ipconfig /all*.  U ziet alleen het *primaire* privé-IP-adres (via DHCP).
 2. Typ *ncpa.cpl* in het opdrachtpromptvenster om het venster **Netwerkverbindingen** te openen.
-3. Open de eigenschappen van de geschikte adapter: **LAN-verbinding**.
+3. Open de eigenschappen voor de juiste adapter: **Ethernet**.
 4. Dubbelklik op Internet Protocol versie 4 (IPv4).
 5. Selecteer **Het volgende IP-adres gebruiken** en voer de volgende waarden in:
 
@@ -31,28 +33,30 @@ Maak verbinding met en meld u aan bij een virtuele machine die u hebt gemaakt me
     * **Subnetmasker**: stel dit in op basis van uw subnet. Als het subnet bijvoorbeeld een /24 subnet is, is het subnetmasker 255.255.255.0.
     * **Standaardgateway**: het eerste IP-adres in het subnet. Als uw subnet 10.0.0.0/24 is, is het IP-adres van de gateway 10.0.0.1.
     * Selecteer **de volgende DNS-server adressen gebruiken** en voer de volgende waarden in:
-        * **DNS-voorkeursserver**: als u niet uw eigen DNS-server gebruikt, voert u 168.63.129.16 in.  Als u uw eigen DNS-server gebruikt, voert u het IP-adres voor de server in.
+        * **DNS-voorkeursserver**: als u niet uw eigen DNS-server gebruikt, voert u 168.63.129.16 in.  Als u uw eigen DNS-server gebruikt, voert u het IP-adres voor de server in.  (Voor een alternatieve DNS-server kunt u een gratis openbaar adres van een DNS-server kiezen.)
     * Selecteer de knop **Geavanceerd** en voeg extra IP-adressen toe. Voeg elk van de secundaire privé-IP-adressen die u in een vorige stap hebt toegevoegd aan de Azure-netwerk interface toe aan de Windows-netwerk interface waaraan het primaire IP-adres is toegewezen dat is toegewezen aan de Azure-netwerk interface.
 
         U moet het open bare IP-adres dat is toegewezen aan een virtuele machine van Azure in het besturings systeem van de virtuele machine nooit hand matig toewijzen. Wanneer u het IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) . Wijs nooit een openbaar IP-adres van Azure toe binnen het besturings systeem.
 
     * Klik op **OK** om de TCP/IP-instellingen te sluiten en vervolgens nogmaals op **OK** om de instellingen van de netwerkadapter te sluiten. Uw RDP-verbinding wordt opnieuw tot stand gebracht.
 
-6. Typ vanaf een opdrachtprompt *ipconfig /all*. Alle IP-adressen die u hebt toegevoegd, worden weergegeven en DHCP is uitgeschakeld.
+6. Typ vanaf een opdrachtprompt *ipconfig /all*. Controleer of alle IP-adressen die u hebt toegevoegd worden weer gegeven en DHCP is uitgeschakeld.
 7. Configureer Windows voor het gebruik van het privé IP-adres van de primaire IP-configuratie in azure als primair IP-adres voor Windows. Zie [geen Internet toegang vanaf een Azure Windows-VM met meerdere IP-adressen](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) voor meer informatie. 
 
-### <a name="validation-windows"></a>Validatie (Windows)
+### <a name="validation-windows-server"></a>Validatie (Windows Server)
 
-Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt maken met internet via de openbare IP die eraan is gekoppeld, gebruikt u de volgende opdracht nadat u de bovenstaande stappen hebt gevolgd:
+Als u er zeker van wilt zijn dat u vanuit de secundaire IP-configuratie verbinding kunt maken met Internet via de open bare IP die eraan is gekoppeld, gebruikt u de volgende opdracht (waarbij 10.0.0.7 wordt vervangen door het secundaire IP-adres):
 
 ```bash
-ping -S 10.0.0.5 hotmail.com
+ping -S 10.0.0.7 outlook.com
 ```
 >[!NOTE]
 >Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
+</details>
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
-
+<details>
+  <summary>Uitvouwen</summary>
 We raden u aan de meest recente documentatie te bekijken voor uw Linux-distributie. 
 
 1. Open een terminalvenster.
@@ -112,8 +116,33 @@ We raden u aan de meest recente documentatie te bekijken voor uw Linux-distribut
 
    Het IP-adres dat u hebt toegevoegd, moet nu in de lijst staan.
 
-### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
+### <a name="validation-ubuntu-1416"></a>Validatie (Ubuntu 14/16)
 
+Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt maken met internet via de openbare IP die eraan is gekoppeld, gebruikt u de volgende opdracht:
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
+
+Voor virtuele Linux-machines moet u mogelijk geschikte routes toevoegen wanneer u probeert uitgaande verbindingen te valideren vanaf een secundaire NIC. Er zijn meerdere manieren om dit te doen. Zie de relevante documentatie voor uw Linux-distributie. Hieronder staat één van de mogelijke manieren:
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- Vervang de volgende zaken:
+    - **10.0.0.5** door het privé-IP-adres waaraan een openbaar IP-adres is gekoppeld
+    - **10.0.0.1** door uw standaardgateway
+    - **eth2** met de naam van uw secundaire NIC</details>
+
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
+<details>
+  <summary>Uitvouwen</summary>
 Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk beheer. We raden u aan de meest recente documentatie te bekijken voor uw Linux-distributie. 
 
 1. Open een terminalvenster.
@@ -129,7 +158,7 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
     vi /etc/netplan/60-static.yaml
     ```
 
-4. Voeg de volgende regels toe aan het bestand, `10.0.0.6/24` waarbij u vervangt door uw IP/netmasker:
+4. Voeg de volgende regels toe aan het bestand, waarbij u vervangt `10.0.0.6/24` door uw IP/netmasker:
 
     ```bash
     network:
@@ -155,7 +184,7 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
 > [!NOTE]
 > `netplan try`de wijzigingen worden tijdelijk toegepast en de wijzigingen worden na 120 seconden teruggezet. Als de verbinding is verbroken, wacht u 120 seconden en maakt u opnieuw verbinding. Op dat moment worden de wijzigingen teruggedraaid.
 
-7. Als er geen problemen `netplan try`zijn met, past u de configuratie wijzigingen toe:
+7. Als er geen problemen `netplan try` zijn met, past u de configuratie wijzigingen toe:
 
     ```bash
     netplan apply
@@ -185,8 +214,33 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
         inet6 fe80::20d:3aff:fe8c:14a5/64 scope link
         valid_lft forever preferred_lft forever
     ```
-    
+### <a name="validation-ubuntu-1804"></a>Validatie (Ubuntu 18.04 +)
+
+Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt maken met internet via de openbare IP die eraan is gekoppeld, gebruikt u de volgende opdracht:
+
+```bash
+ping -I 10.0.0.5 outlook.com
+```
+>[!NOTE]
+>Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
+
+Voor virtuele Linux-machines moet u mogelijk geschikte routes toevoegen wanneer u probeert uitgaande verbindingen te valideren vanaf een secundaire NIC. Er zijn meerdere manieren om dit te doen. Zie de relevante documentatie voor uw Linux-distributie. Hieronder staat één van de mogelijke manieren:
+
+```bash
+echo 150 custom >> /etc/iproute2/rt_tables 
+
+ip rule add from 10.0.0.5 lookup custom
+ip route add default via 10.0.0.1 dev eth2 table custom
+
+```
+- Vervang de volgende zaken:
+    - **10.0.0.5** door het privé-IP-adres waaraan een openbaar IP-adres is gekoppeld
+    - **10.0.0.1** door uw standaardgateway
+    - **eth2** met de naam van uw secundaire NIC</details>
+
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS en andere)
+<details>
+  <summary>Uitvouwen</summary>
 
 1. Open een terminalvenster.
 2. Controleer of u de hoofdgebruiker bent. Voer de volgende opdracht in als u niet de hoofdgebruiker bent:
@@ -246,12 +300,12 @@ Ubuntu 18,04 en hoger zijn gewijzigd in `netplan` voor besturingssysteem netwerk
 
     Het IP-adres dat u hebt toegevoegd, *eth0:0*, moet nu in de lijst staan die wordt opgehaald.
 
-### <a name="validation-linux"></a>Validatie (Linux)
+### <a name="validation-red-hat-centos-and-others"></a>Validatie (Red Hat, CentOS en anderen)
 
 Als u wilt controleren of u via uw secundaire IP-configuratie verbinding kunt maken met internet via de openbare IP die eraan is gekoppeld, gebruikt u de volgende opdracht:
 
 ```bash
-ping -I 10.0.0.5 hotmail.com
+ping -I 10.0.0.5 outlook.com
 ```
 >[!NOTE]
 >Voor secundaire IP-configuraties kunt u alleen naar Internet pingen als aan de configuratie een openbaar IP-adres is gekoppeld. Voor primaire IP-configuraties is een openbaar IP-adres niet vereist voor het pingen naar Internet.
@@ -268,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Vervang de volgende zaken:
     - **10.0.0.5** door het privé-IP-adres waaraan een openbaar IP-adres is gekoppeld
     - **10.0.0.1** door uw standaardgateway
-    - **eth2** door de naam van uw secundaire NIC
+    - **eth2** met de naam van uw secundaire NIC</details>

@@ -1,5 +1,5 @@
 ---
-title: Always Encrypted configureren met Windows-certificaat archief
+title: Always Encrypted configureren met behulp van het Windows-certificaat archief
 description: In dit artikel wordt beschreven hoe u met behulp van de wizard Always Encrypted in SQL Server Management Studio (SSMS) gevoelige gegevens in Azure SQL Database kunt beveiligen met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
 keywords: versleutelen van gegevens, SQL-versleuteling, database versleuteling, gevoelige gegevens Always Encrypted
 services: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 0287e5a965710ea5c3b1ada73fc32dda49c05819
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8b1b8297f285a5481909e2e2d91118e15d7d5095
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047704"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190387"
 ---
-# <a name="configure-always-encrypted-using-windows-certificate-store"></a>Always Encrypted configureren met Windows-certificaat archief
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Always Encrypted configureren met behulp van het Windows-certificaat archief
 
-Deze zelf studie laat zien hoe u met behulp van de [Wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)gevoelige gegevens in een data base in Azure SQL database of Azure SQL Managed Instance kunt beveiligen met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+In dit artikel wordt beschreven hoe u met behulp van de [wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)gevoelige gegevens in Azure SQL database of Azure SQL Managed Instance kunt beveiligen met database versleuteling. U ziet ook hoe u de versleutelings sleutels opslaat in het Windows-certificaat archief.
 
 Always Encrypted is een technologie voor gegevens versleuteling waarmee gevoelige gegevens in rust op de server worden beschermd tijdens het verkeer tussen de client en de server, terwijl de gegevens in gebruik zijn, zodat gevoelige gegevens nooit als tekst zonder opmaak in het database systeem worden weer gegeven. Nadat u gegevens hebt versleuteld, hebben alleen client toepassingen of app-servers die toegang hebben tot de sleutels toegang tot tekst zonder opmaak. Zie [Always encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865.aspx)voor meer informatie.
 
@@ -56,7 +57,7 @@ Als u de *toepassings-id en-* *sleutel*wilt ophalen, volgt u de stappen in [Crea
 
 ## <a name="connect-with-ssms"></a>Verbinden met SSMS
 
-Open SQL Server Managed Studio (SSMS) en maak verbinding met de server of worden beheerd met uw data base.
+Open SQL Server Management Studio (SSMS) en maak verbinding met de server of worden beheerd met uw data base.
 
 1. Open SQL Server Management Studio. (Klik op **verbinden**  >  **Data base-engine** om het venster **verbinding maken met server** te openen als het niet is geopend).
 2. Voer uw server naam en referenties in.

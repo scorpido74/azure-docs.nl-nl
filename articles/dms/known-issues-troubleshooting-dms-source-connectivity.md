@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297101"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196336"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>DMS-fouten oplossen bij het verbinden van de brondatabases
 
@@ -30,9 +30,9 @@ Mogelijke problemen met het maken van verbinding met een bron SQL Server Data Ba
 | Fout         | Details van oorzaak en probleem oplossing |
 | ------------- | ------------- |
 | SQL-verbinding is mislukt. Een netwerkgerelateerde of exemplaarspecifieke fout is opgetreden bij het maken van een verbinding met SQL Server. De server wordt niet gevonden of toegang tot de server is niet mogelijk. Controleer of de naam van het exemplaar juist is en of SQL Server is geconfigureerd om externe verbindingen toe te staan.<br> | Deze fout treedt op als de bron server niet kan worden gevonden door de service. Om het probleem op te lossen, raadpleegt u het artikel fout bij het verbinden met de [bron SQL Server bij het gebruik van een dynamische poort of een benoemd exemplaar](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
-| **Fout 53** -SQL-verbinding is mislukt. (Ook voor fout codes 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Deze fout treedt op als de service geen verbinding kan maken met de bron server. Om het probleem op te lossen, raadpleegt u de volgende bronnen en probeert u het opnieuw. <br><br>  [Interactieve gebruikers handleiding voor het oplossen van het verbindings probleem](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Vereisten voor het migreren van SQL Server naar Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Vereisten voor het migreren van SQL Server naar een Azure SQL Database beheerd exemplaar](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **Fout 53** -SQL-verbinding is mislukt. (Ook voor fout codes 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | Deze fout treedt op als de service geen verbinding kan maken met de bron server. Om het probleem op te lossen, raadpleegt u de volgende bronnen en probeert u het opnieuw. <br><br>  [Interactieve gebruikers handleiding voor het oplossen van het verbindings probleem](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Vereisten voor het migreren van SQL Server naar Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Vereisten voor het migreren van SQL Server naar een beheerd exemplaar van Azure SQL](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **Fout 18456** -aanmelden is mislukt.<br> | Deze fout treedt op als de service geen verbinding kan maken met de bron database met behulp van de gegeven T-SQL-referenties. Controleer de ingevoerde referenties om het probleem op te lossen. U kunt ook verwijzen naar [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) of naar de documenten voor het oplossen van problemen die worden vermeld in de opmerking onder deze tabel, en probeer het opnieuw. |
-| Ongeldige waarde{0}van AccountName. Verwachte indeling voor AccountName is DomainName\UserName<br> | Deze fout treedt op als de gebruiker Windows-verificatie selecteert, maar de gebruikers naam heeft een ongeldige indeling. Om het probleem op te lossen, geeft u de gebruikers naam op in de juiste indeling voor Windows-verificatie of selecteert u **SQL-verificatie**. |
+| Ongeldige waarde {0} van AccountName. Verwachte indeling voor AccountName is DomainName\UserName<br> | Deze fout treedt op als de gebruiker Windows-verificatie selecteert, maar de gebruikers naam heeft een ongeldige indeling. Om het probleem op te lossen, geeft u de gebruikers naam op in de juiste indeling voor Windows-verificatie of selecteert u **SQL-verificatie**. |
 
 ## <a name="aws-rds-mysql"></a>AWS RDS MySQL
 

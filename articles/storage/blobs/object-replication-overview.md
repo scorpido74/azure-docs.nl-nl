@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170593"
+ms.locfileid: "84193419"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Object replicatie voor blok-blobs (preview-versie)
 
@@ -73,7 +73,9 @@ Tijdens de preview zijn er geen extra kosten verbonden aan het repliceren van ge
 
 ### <a name="prerequisites-for-object-replication"></a>Vereisten voor object replicatie
 
-Voor object replicatie moeten de volgende Azure Storage-functies zijn ingeschakeld:
+Voor object replicatie moeten de volgende Azure Storage-functies zijn ingeschakeld: 
+- [Feed wijzigen](storage-blob-change-feed.md)
+- [Versiebeheer](versioning-overview.md)
 
 Voordat u object replicatie configureert, moet u de vereiste onderdelen inschakelen. De wijzigings feed moet zijn ingeschakeld voor het bron account en BLOB-versie beheer moet zijn ingeschakeld op zowel het bron-als doel account. Zie de volgende artikelen voor meer informatie over het inschakelen van deze functies:
 
@@ -157,3 +159,5 @@ Neem contact op met micro soft op om vragen te stellen over de preview van objec
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Object replicatie configureren (preview-versie)](object-replication-configure.md)
+- [Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)](storage-blob-change-feed.md)
+- [BLOB-versie beheer inschakelen en beheren](versioning-enable.md)

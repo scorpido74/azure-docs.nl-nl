@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253336"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220138"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -147,25 +147,25 @@ Kopieer alle BLOB-containers, directory's en blobs van het opslag account naar e
 
 Kopieer een enkel object naar Blob Storage van Amazon Web Services (AWS) S3 met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
   
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[object]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [SAS] "
+- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[object]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/BLOB]? [ SAS] "
 
 Kopieer een volledige directory naar Blob Storage van AWS S3 door gebruik te maken van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket]/[map]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [SAS] "--recursief = True
+- azcopy CP " https://s3.amazonaws.com/ [Bucket]/[map]" "https://[destaccount]. blob. core. Windows. net/[container]/[pad/naar/map]? [ SAS] "--recursief = True
 
-Raadpleeg de tijdelijke https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html aanduiding voor [map] voor meer informatie.
+Raadpleeg https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html de tijdelijke aanduiding voor [map] voor meer informatie.
 
 Kopieer alle buckets naar Blob Storage vanuit Amazon Web Services (AWS) met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3.amazonaws.com/" https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP " https://s3.amazonaws.com/ " https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
 
 Kopieer alle buckets naar Blob Storage vanuit een Amazon Web Services (AWS) regio met behulp van een toegangs sleutel en een SAS-token. Stel eerst de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY in voor de AWS S3-bron.
 
-- azcopy CP "https://s3-[regio]. amazonaws. com/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP " https://s3- [regio]. amazonaws. com/" "https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
 
 Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket naam. Net als bij de vorige voor beelden hebt u een toegangs sleutel en een SAS-token nodig. Zorg ervoor dat u de omgevings variabele AWS_ACCESS_KEY_ID en AWS_SECRET_ACCESS_KEY instelt voor de bron AWS S3.
 
-- azcopy CP "https://s3.amazonaws.com/[Bucket * naam]/" "https://[destaccount]. blob. core. Windows. net? [SAS] "--recursief = True
+- azcopy CP " https://s3.amazonaws.com/ [Bucket * naam]/" "https://[destaccount]. blob. core. Windows. net? [ SAS] "--recursief = True
 
 ## <a name="options"></a>Opties
 
@@ -225,11 +225,11 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 
 **--behoud-laatste-gewijzigd-tijd**          Alleen beschikbaar wanneer het doel bestands systeem is.
 
-**--behoud-SMB-machtigingen** teken reeks standaard onwaar. Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files). Voor down loads moet u ook de `--backup` vlag gebruiken om machtigingen te herstellen, waarbij de nieuwe eigenaar niet de gebruiker is die AzCopy uitvoert. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld `include-pattern`).
+**--behoud-SMB-machtigingen** teken reeks standaard onwaar. Hiermee blijven SMB-Acl's behouden tussen de bewuste resources (Windows en Azure Files). Voor down loads moet u ook de vlag gebruiken `--backup` om machtigingen te herstellen, waarbij de nieuwe eigenaar niet de gebruiker is die AzCopy uitvoert. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld `include-pattern` ).
 
 **--behoud-SMB-info** teken reeks standaard onwaar. Hiermee behoudt u SMB-eigenschaps gegevens (laatste schrijf tijd, aanmaak tijd, kenmerk bits) tussen SMB-bewuste resources (Windows en Azure Files). Alleen de kenmerk-bits die door Azure Files worden ondersteund, worden overgedragen; alle andere worden genegeerd. Deze vlag is van toepassing op bestanden en mappen, tenzij een filter voor alleen bestanden is opgegeven (bijvoorbeeld include-Pattern). De gegevens die voor mappen worden overgedragen, zijn hetzelfde als voor bestanden, met uitzonde ring van de laatste schrijf tijd die nooit voor mappen is bewaard.
 
-**--pres Erve-eigenaar**                       Heeft alleen effect op bij het downloaden van gegevens en alleen wanneer het `--preserve-smb-permissions` wordt gebruikt. Als True (de standaard instelling), worden de bestands eigenaar en-groep bewaard in Down loads. Als deze vlag is ingesteld op False, `--preserve-smb-permissions` blijven de acl's behouden, maar de eigenaar en groep worden gebaseerd op de gebruiker die AzCopy uitvoert.
+**--pres Erve-eigenaar**                       Heeft alleen effect op bij het downloaden van gegevens en alleen wanneer het `--preserve-smb-permissions` wordt gebruikt. Als True (de standaard instelling), worden de bestands eigenaar en-groep bewaard in Down loads. Als deze vlag is ingesteld op False, blijven de `--preserve-smb-permissions` acl's behouden, maar de eigenaar en groep worden gebaseerd op de gebruiker die AzCopy uitvoert.
 
 **--put-MD5**                             Maak een MD5-hash van elk bestand en sla de hash op als de eigenschap content-MD5 van de BLOB of het doel bestand. (Standaard wordt de hash niet gemaakt.) Alleen beschikbaar bij het uploaden.
 
@@ -248,6 +248,8 @@ Kopieer een subset van buckets met behulp van een Joker teken (*) in de Bucket n
 **--Cap-Mbps uint32**      De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
 
 **--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst)
+
+**--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
 
 ## <a name="see-also"></a>Zie ook
 

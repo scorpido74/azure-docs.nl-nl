@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366765"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205055"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Privé-eind punten gebruiken voor Azure-app configuratie
 
@@ -36,7 +36,7 @@ Hoewel app-configuratie geen service-eind punten ondersteunt, kunnen privé-eind
 
 Wanneer u een persoonlijk eind punt voor een service in uw VNet maakt, wordt er een aanvraag voor goed keuring verzonden naar de eigenaar van het service account. Als de gebruiker die het persoonlijke eind punt wil maken ook een eigenaar van het account is, wordt deze aanvraag voor toestemming automatisch goedgekeurd.
 
-De eigenaar van het service account kan toestemming aanvragen en persoonlijke eind punten `Private Endpoints` beheren via het tabblad van de configuratie opslag in de [Azure Portal](https://portal.azure.com).
+De eigenaar van het service account kan toestemming aanvragen en persoonlijke eind punten beheren via het `Private Endpoints` tabblad van de configuratie opslag in de [Azure Portal](https://portal.azure.com).
 
 ### <a name="private-endpoints-for-app-configuration"></a>Persoonlijke eind punten voor de app-configuratie 
 
@@ -44,25 +44,21 @@ Wanneer u een persoonlijk eind punt maakt, moet u de app-configuratie opslag opg
 
 ### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privé-eind punten
 
-Azure is afhankelijk van de DNS-omzetting om verbindingen van het VNet naar de configuratie opslag via een persoonlijke koppeling te routeren. U kunt snel verbindings reeksen vinden in de Azure portal door uw app-configuratie archief te selecteren en vervolgens **instellingen** > **toegangs sleutels**te selecteren.  
+Azure is afhankelijk van de DNS-omzetting om verbindingen van het VNet naar de configuratie opslag via een persoonlijke koppeling te routeren. U kunt snel verbindings reeksen vinden in de Azure portal door uw app-configuratie archief te selecteren en vervolgens **instellingen**  >  **toegangs sleutels**te selecteren.  
 
 > [!IMPORTANT]
-> Gebruik hetzelfde connection string om verbinding te maken met uw app-configuratie archief met behulp van persoonlijke eind punten zoals u zou gebruiken voor een openbaar eind punt. Maak geen verbinding met het opslag account met `privatelink` behulp van de subdomein-URL.
+> Gebruik hetzelfde connection string om verbinding te maken met uw app-configuratie archief met behulp van persoonlijke eind punten zoals u zou gebruiken voor een openbaar eind punt. Maak geen verbinding met het archief met behulp van de `privatelink` subdomein-URL.
 
 ## <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
 
-Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor het configuratie archief bijgewerkt naar een alias in een subdomein met `privatelink`het voor voegsel. Azure maakt ook een [persoonlijke DNS-zone](../dns/private-dns-overview.md) die overeenkomt met het `privatelink` subdomein, met de DNS a-bron records voor de privé-eind punten.
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-bron record voor het configuratie archief bijgewerkt naar een alias in een subdomein met het voor voegsel `privatelink` . Azure maakt ook een [persoonlijke DNS-zone](../dns/private-dns-overview.md) die overeenkomt met het `privatelink` subdomein, met de DNS a-bron records voor de privé-eind punten.
 
-Wanneer u de eind punt-URL van buiten het VNet oplost, wordt deze omgezet in het open bare eind punt van de Store. Bij omzetting in het VNet dat als host fungeert voor het persoonlijke eind punt, wordt de eind punt-URL omgezet naar het persoonlijke eind punt.
+Wanneer u de eind punt-URL oplost vanuit het VNet dat als host fungeert voor het persoonlijke eind punt, wordt dit omgezet in het persoonlijke eind punt van de Store. Bij omzetting van buiten het VNet wordt de eind punt-URL omgezet naar het open bare eind punt. Wanneer u een persoonlijk eind punt maakt, wordt het open bare eind punt uitgeschakeld.
 
-U kunt de toegang tot clients buiten het VNet beheren via het open bare eind punt met behulp van de Azure Firewall-service.
-
-Met deze aanpak is toegang tot de Store mogelijk **met dezelfde Connection String** voor clients op het VNet dat als host fungeert voor de persoonlijke eind punten en clients buiten het vnet.
-
-Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het service-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone `AppConfigInstanceA.privatelink.azconfig.io` voor het VNet of configureer de A-records voor met het IP-adres van het privé-eind punt.
+Als u een aangepaste DNS-server in uw netwerk gebruikt, moeten clients de Fully Qualified Domain Name (FQDN) voor het service-eind punt kunnen omzetten naar het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone voor het VNet of configureer de A-records voor `AppConfigInstanceA.privatelink.azconfig.io` met het IP-adres van het privé-eind punt.
 
 > [!TIP]
-> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u de DNS-server zo configureren dat de archief naam in `privatelink` het subdomein wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het `privatelink` subdomein te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
+> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u de DNS-server zo configureren dat de archief naam in het subdomein wordt omgezet in `privatelink` het IP-adres van het privé-eind punt. U kunt dit doen door het `privatelink` subdomein te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
 
 ## <a name="pricing"></a>Prijzen
 

@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050066"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194023"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -63,10 +64,10 @@ De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie
 
 Als u Azure AD-verificatie wilt inschakelen voor uw Windows-Vm's in azure, moet u ervoor zorgen dat de netwerk configuratie van uw Vm's uitgaande toegang tot de volgende eind punten via TCP-poort 443 toestaat:
 
-- https:\//enterpriseregistration.Windows.net
+- https: \/ /enterpriseregistration.Windows.net
 - https:\//login.microsoftonline.com
-- https:\//device.login.microsoftonline.com
-- https:\//pas.Windows.net
+- https: \/ /device.login.microsoftonline.com
+- https: \/ /pas.Windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aanmelden bij Azure AD inschakelen voor Windows VM in azure
 
@@ -188,7 +189,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Als uw AAD-domein en gebruikers naam domein voor aanmelding niet overeenkomen, moet u de object-ID van uw gebruikers `--assignee-object-id`account opgeven, niet alleen de `--assignee`gebruikers naam voor. U kunt de object-ID voor uw gebruikers account verkrijgen met [AZ AD-gebruikers lijst](/cli/azure/ad/user#az-ad-user-list).
+> Als uw AAD-domein en gebruikers naam domein voor aanmelding niet overeenkomen, moet u de object-ID van uw gebruikers account opgeven `--assignee-object-id` , niet alleen de gebruikers naam voor `--assignee` . U kunt de object-ID voor uw gebruikers account verkrijgen met [AZ AD-gebruikers lijst](/cli/azure/ad/user#az-ad-user-list).
 
 Raadpleeg de volgende artikelen voor meer informatie over het gebruik van RBAC om de toegang tot uw Azure-abonnements bronnen te beheren:
 
@@ -243,21 +244,21 @@ De AADLoginForWindows-extensie moet worden geïnstalleerd om de virtuele machine
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Geldig toegangs token dat is uitgegeven door Azure Active Directory voor de beheerde identiteit die aan deze VM is toegewezen |
 
    > [!NOTE]
-   > Het toegangs token kan worden gedecodeerd met een hulp programma [http://calebb.net/](http://calebb.net/)als. Controleer of de ' AppID ' in het toegangs token overeenkomt met de beheerde identiteit die is toegewezen aan de virtuele machine.
+   > Het toegangs token kan worden gedecodeerd met een hulp programma als [http://calebb.net/](http://calebb.net/) . Controleer of de ' AppID ' in het toegangs token overeenkomt met de beheerde identiteit die is toegewezen aan de virtuele machine.
 
 1. Zorg ervoor dat de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
    
-   - krul https:\//login.microsoftonline.com/-D –
-   - krul https:\//login.microsoftonline.com/`<TenantID>`/-D –
+   - krul https: \/ /login.microsoftonline.com/-D –
+   - krul https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > Vervang `<TenantID>` door de id van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement.
+   > Vervang door `<TenantID>` de id van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement.
 
-   - krul https:\//Enterpriseregistration.Windows.net/-D-
-   - krul https:\//device.login.microsoftonline.com/-D-
-   - krul https:\//pas.Windows.net/-D-
+   - krul https: \/ /enterpriseregistration.Windows.net/-D-
+   - krul https: \/ /device.login.microsoftonline.com/-D-
+   - krul https: \/ /pas.Windows.net/-D-
 
-1. De apparaatstatus kan worden weer gegeven door uit `dsregcmd /status`te voeren. Het doel is om de status van het apparaat `AzureAdJoined : YES`weer te geven.
+1. De apparaatstatus kan worden weer gegeven door uit te voeren `dsregcmd /status` . Het doel is om de status van het apparaat weer te geven `AzureAdJoined : YES` .
 
    > [!NOTE]
    > Azure AD-deelname activiteiten worden vastgelegd in Logboeken onder het Registration\Admin-logboek van de gebruiker.
@@ -278,26 +279,26 @@ Deze afsluit code wordt omgezet naar DSREG_E_MSI_TENANTID_UNAVAILABLE omdat de e
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Probleem 2: de AADLoginForWindows-extensie kan niet worden geïnstalleerd met de afsluit code:-2145648607
 
-Deze afsluit code wordt omgezet naar DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het `https://enterpriseregistration.windows.net` eind punt niet kan bereiken.
+Deze afsluit code wordt omgezet naar DSREG_AUTOJOIN_DISC_FAILED omdat de extensie het eind punt niet kan bereiken `https://enterpriseregistration.windows.net` .
 
 1. Controleer of de vereiste eind punten toegankelijk zijn vanaf de virtuele machine met behulp van de opdracht regel:
 
-   - krul https:\//login.microsoftonline.com/-D –
-   - krul https:\//login.microsoftonline.com/`<TenantID>`/-D –
+   - krul https: \/ /login.microsoftonline.com/-D –
+   - krul https: \/ /login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > Vervang `<TenantID>` door de id van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement. Als u de Tenant-ID moet vinden, kunt u met de muis aanwijzer over uw account naam bewegen om de map/Tenant-ID op te halen, of Azure Active Directory > eigenschappen > Directory-ID selecteren in het Azure Portal.
+   > Vervang door `<TenantID>` de id van de Azure AD-Tenant die is gekoppeld aan het Azure-abonnement. Als u de Tenant-ID moet vinden, kunt u met de muis aanwijzer over uw account naam bewegen om de map/Tenant-ID op te halen, of Azure Active Directory > eigenschappen > Directory-ID selecteren in het Azure Portal.
 
-   - krul https:\//Enterpriseregistration.Windows.net/-D-
-   - krul https:\//device.login.microsoftonline.com/-D-
-   - krul https:\//pas.Windows.net/-D-
+   - krul https: \/ /enterpriseregistration.Windows.net/-D-
+   - krul https: \/ /device.login.microsoftonline.com/-D-
+   - krul https: \/ /pas.Windows.net/-D-
 
-1. Als een van de opdrachten mislukt met de melding ' kan de `<URL>`host niet oplossen ', voert u deze opdracht uit om te bepalen welke DNS-server wordt gebruikt door de virtuele machine.
+1. Als een van de opdrachten mislukt met de melding ' kan de host niet oplossen `<URL>` ', voert u deze opdracht uit om te bepalen welke DNS-server wordt gebruikt door de virtuele machine.
    
    `nslookup <URL>`
 
    > [!NOTE] 
-   > Vervang `<URL>` door de volledig gekwalificeerde domein namen die worden gebruikt door de eind punten, zoals ' login.microsoftonline.com '.
+   > Vervang door de `<URL>` volledig gekwalificeerde domein namen die worden gebruikt door de eind punten, zoals ' login.microsoftonline.com '.
 
 1. Bekijk vervolgens of het opgeven van een open bare DNS-server toestaat dat de opdracht slaagt:
 
@@ -315,7 +316,7 @@ Bij open bare preview is de AADLoginForWindows-extensie alleen bedoeld om te wor
 
 Bij een aantal veelvoorkomende fouten bij het gebruik van RDP met Azure AD-referenties zijn geen RBAC-rollen toegewezen, niet-geautoriseerde client of twee ledige-aanmeldings methode vereist. Gebruik de volgende informatie om deze problemen te verhelpen.
 
-Het apparaat en de SSO-status kunnen worden weer `dsregcmd /status`gegeven door uit te voeren. Het doel is om de status van het apparaat `AzureAdJoined : YES` weer `SSO State` te geven `AzureAdPrt : YES`en weer te geven.
+Het apparaat en de SSO-status kunnen worden weer gegeven door uit te voeren `dsregcmd /status` . Het doel is om de status van het apparaat weer te geven `AzureAdJoined : YES` en `SSO State` weer te geven `AzureAdPrt : YES` .
 
 Daarnaast wordt RDP-aanmelding met Azure AD-accounts vastgelegd in Logboeken onder de gebeurtenis logboeken van AAD\Operational.
 

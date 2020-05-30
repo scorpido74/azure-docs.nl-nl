@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393709"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204868"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob-opslag: dynamische en statische toegangslagen, en archieftoegangslaag
 
@@ -59,9 +59,9 @@ De laag voor coole toegang heeft lagere opslag kosten en hogere toegangs kosten 
 
 ## <a name="archive-access-tier"></a>Archive-toegangslaag
 
-De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Het ophalen van gegevens in de archief laag kan enkele uren duren. Gegevens moeten gedurende ten minste 180 dagen in de archief laag blijven of onderhevig zijn aan de kosten voor een vroege verwijdering.
+De toegangs laag voor het archief heeft de laagste opslag kosten. Maar het heeft een hogere kosten voor het ophalen van gegevens vergeleken met de warme en coole lagen. Gegevens moeten gedurende ten minste 180 dagen in de archief laag blijven of onderhevig zijn aan de kosten voor een vroege verwijdering. Het ophalen van gegevens in de archief laag kan enkele uren duren, afhankelijk van de prioriteit van de rehydratatie. Voor kleine objecten kan een met een hoge prioriteit gehydrateerd object binnen één uur worden opgehaald uit het archief. Zie [BLOB-gegevens opnieuw inbreken van de archief laag](storage-blob-rehydration.md) voor meer informatie.
 
-Hoewel een BLOB zich in archief opslag bevindt, zijn de BLOB-gegevens offline en kunnen ze niet worden gelezen, overschreven of gewijzigd. Als u een BLOB in Archive wilt lezen of downloaden, moet u deze eerst opnieuw laten worden gehydrateerd tot een online-laag. U kunt geen moment opnamen maken van een BLOB in archief opslag. De BLOB-meta gegevens blijven echter online en beschikbaar, zodat u de BLOB en de bijbehorende eigenschappen kunt weer geven. Voor blobs in archief zijn de enige geldige bewerkingen GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier, CopyBlob en DeleteBlob. Zie [BLOB-gegevens opnieuw inbreken van de archief laag](storage-blob-rehydration.md) voor meer informatie.
+Hoewel een BLOB zich in archief opslag bevindt, zijn de BLOB-gegevens offline en kunnen ze niet worden gelezen, overschreven of gewijzigd. Als u een BLOB in Archive wilt lezen of downloaden, moet u deze eerst opnieuw laten worden gehydrateerd tot een online-laag. U kunt geen moment opnamen maken van een BLOB in archief opslag. De BLOB-meta gegevens blijven echter online en beschikbaar, zodat u de blob, de eigenschappen, de meta gegevens en de index Tags van de BLOB kunt weer geven. Het is niet toegestaan om de BLOB-meta gegevens in te stellen of te wijzigen in archief. u kunt echter de index Tags van de BLOB instellen en wijzigen. Voor blobs in archief zijn de enige geldige bewerkingen GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, ListBlobs, SetBlobTier, CopyBlob en DeleteBlob.
 
 Voor beelden van gebruiks scenario's voor de Access-laag voor archiveren zijn:
 
@@ -119,7 +119,7 @@ In de volgende tabel ziet u een vergelijking van de toegangs lagen voor het blok
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Beschikbaarheid**                          | 99,9%                     | 99,9%        | 99%                 | Offline           |
 | **Beschikbaarheid** <br> **(RA-GRS-leesbewerkingen)**  | N.v.t.                       | 99,99%       | 99,9%               | Offline           |
-| **Gebruikskosten**                         | Hogere opslag kosten, lagere toegangs-en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
+| **Gebruikskosten**                         | Hogere opslag kosten, lagere toegang en transactie kosten | Hogere opslag kosten, lagere toegang en transactie kosten | Lagere opslag kosten, hogere toegang en transactie kosten | Laagste opslag kosten, hoogste toegang en transactie kosten |
 | **Minimale objectgrootte**                   | N.v.t.                       | N.v.t.          | N.v.t.                 | N.v.t.               |
 | **Minimale opslagduur**              | N.v.t.                       | N.v.t.          | 30 dagen<sup>1</sup> | 180 dagen
 | **Latentie** <br> **(Tijd tot eerste byte)** | Milliseconden met één cijfer | milliseconden | milliseconden        | uur<sup>2</sup> |
@@ -155,7 +155,7 @@ In deze sectie worden de volgende scenario's geïllustreerd met behulp van de Az
 
 ![Laag van opslag account wijzigen](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de account tier te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Laag van opslag account wijzigen](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Het volgende Power shell-script kan worden gebruikt om de BLOB-laag te wijzigen. De `$rgName` variabele moet worden geïnitialiseerd met de naam van de resource groep. De `$accountName` variabele moet worden geïnitialiseerd met de naam van uw opslag account. De `$containerName` variabele moet worden geïnitialiseerd met de container naam. De `$blobName` variabele moet worden geïnitialiseerd met de naam van de blob. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -252,7 +252,7 @@ Blobs in de laag voor coolbar hebben een service niveau met een iets lagere Besc
 
 **Zijn de bewerkingen tussen de dynamische-, statische- en archiefopslaglagen hetzelfde?**
 
-Alle bewerkingen tussen de dynamische en statische laag zijn 100% consistent. Alle geldige archief bewerkingen, waaronder GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier en DeleteBlob, zijn 100% consistent met warm en cool. BLOB-gegevens kunnen niet worden gelezen of gewijzigd in de laag van het archief voordat ze opnieuw worden gehydrateerd. alleen lees bewerkingen voor BLOB-meta gegevens worden ondersteund in het archief.
+Alle bewerkingen tussen de dynamische en statische laag zijn 100% consistent. Alle geldige archief bewerkingen, waaronder GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, ListBlobs, SetBlobTier en DeleteBlob, zijn 100% consistent met warm en cool. BLOB-gegevens kunnen niet worden gelezen of gewijzigd in de laag van het archief voordat ze opnieuw worden gehydrateerd. alleen lees bewerkingen voor BLOB-meta gegevens worden ondersteund in het archief. BLOB index Tags kunnen echter in archief worden gelezen, ingesteld of gewijzigd.
 
 **Als ik een blob reactiveer vanuit de archiefopslaglaag naar de dynamische- of statische-opslaglaag, hoe weet ik dan wanneer de reactivering is voltooid?**
 

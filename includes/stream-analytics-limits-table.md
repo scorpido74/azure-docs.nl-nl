@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67176431"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200353"
 ---
 ---
 | Limiet-id | Limiet | Opmerkingen |
@@ -16,4 +16,5 @@ ms.locfileid: "67176431"
 | Maximum aantal streaming-eenheden per taak |192 |Er is een vaste limiet van 192 streaming-eenheden per Stream Analytics taak. |
 | Maximumaantal taken per regio |1500 |Elk abonnement kan Maxi maal 1.500 taken per geografische regio bevatten. |
 | MB per referentiegegevens-blob | 300 | Referentie gegevens-blobs mogen niet groter zijn dan 300 MB. |
+| Maximum aantal tekens in een query | 512000 | Er is een vaste limiet van 512k tekens in een Azure Stream Analytics-taak query.|
 

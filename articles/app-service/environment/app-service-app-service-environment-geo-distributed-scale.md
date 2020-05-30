@@ -6,13 +6,13 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 04ba8e7b3ccd18306cb8da0fd15d2cd88f363c70
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688818"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193323"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch gedistribueerde schaal met App Service-omgevingen
 ## <a name="overview"></a>Overzicht
@@ -79,7 +79,7 @@ U ziet dat er één aanroep van *add-AzureTrafficManagerEndpointConfig* is voor 
 Alle drie eind punten gebruiken dezelfde waarde (10) voor de *Weight* -para meter.  Dit resulteert in Traffic Manager klant aanvragen relatief gelijkmatig over alle drie app-exemplaren te verspreiden. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Het aangepaste domein van de app op het Traffic Manager domein aanwijzen
-De laatste stap is nodig om het aangepaste domein van de app te laten verwijzen naar het Traffic Manager domein.  Voor de voor beeld-app wordt `www.scalableasedemo.com` verwezen `scalable-ase-demo.trafficmanager.net`naar.  Deze stap moet worden voltooid met de domein registratie-instantie die het aangepaste domein beheert.  
+De laatste stap is nodig om het aangepaste domein van de app te laten verwijzen naar het Traffic Manager domein.  Voor de voor beeld-app wordt verwezen `www.scalableasedemo.com` naar `scalable-ase-demo.trafficmanager.net` .  Deze stap moet worden voltooid met de domein registratie-instantie die het aangepaste domein beheert.  
 
 Met de domein beheer hulpprogramma's van uw registratie service moet u een CNAME-record maken die verwijst naar het aangepaste domein op het Traffic Manager domein.  In de onderstaande afbeelding ziet u een voor beeld van hoe deze CNAME-configuratie er als volgt uitziet:
 
@@ -87,14 +87,14 @@ Met de domein beheer hulpprogramma's van uw registratie service moet u een CNAME
 
 Hoewel dit niet in dit onderwerp wordt behandeld, moet u er rekening mee houden dat voor elk afzonderlijk app-exemplaar ook het aangepaste domein moet worden geregistreerd.  Anders mislukt de aanvraag als een aanvraag wordt gedaan voor een app-exemplaar en de toepassing heeft niet het aangepaste domein dat is geregistreerd bij de app.  
 
-In dit voor beeld is `www.scalableasedemo.com`het aangepaste domein, en aan elk toepassings exemplaar is het aangepaste domein gekoppeld.
+In dit voor beeld is het aangepaste domein `www.scalableasedemo.com` , en aan elk toepassings exemplaar is het aangepaste domein gekoppeld.
 
 ![Aangepast domein][CustomDomain] 
 
 Raadpleeg het volgende artikel over het [registreren van aangepaste domeinen][RegisterCustomDomain]voor een samen vatting van het registreren van een aangepast domein met Azure app service-apps.
 
 ## <a name="trying-out-the-distributed-topology"></a>De gedistribueerde topologie wordt uitgeprobeerd
-Het eind resultaat van de Traffic Manager-en DNS-configuratie is dat `www.scalableasedemo.com` aanvragen voor doorlopend worden door de volgende volg orde:
+Het eind resultaat van de Traffic Manager-en DNS-configuratie is dat aanvragen voor doorlopend `www.scalableasedemo.com` worden door de volgende volg orde:
 
 1. Een browser of apparaat maakt een DNS-zoek opdracht voor`www.scalableasedemo.com`
 2. De CNAME-vermelding in het domein registratie proces zorgt ervoor dat de DNS-zoek opdracht wordt omgeleid naar Azure Traffic Manager.

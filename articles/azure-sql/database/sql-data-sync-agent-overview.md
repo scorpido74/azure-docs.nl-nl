@@ -1,6 +1,6 @@
 ---
 title: Data Sync-agent voor SQL Data Sync
-description: Meer informatie over het installeren en uitvoeren van de Data Sync-agent voor SQL Data Sync in azure om gegevens te synchroniseren met on-premises SQL Server-data bases
+description: Meer informatie over het installeren en uitvoeren van de Data Sync-agent voor SQL Data Sync in azure om gegevens te synchroniseren met SQL Server-data bases
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0026f160c247d2b0bfdd32613676b04d6f350081
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049783"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195468"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Data Sync-agent voor SQL Data Sync
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Synchroniseer gegevens met on-premises SQL Server-data bases door de Data Sync-agent te installeren en configureren voor SQL Data Sync in Azure. Zie voor meer informatie over SQL Data Sync [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md).
+Synchroniseer gegevens met SQL Server data bases door de Data Sync agent te installeren en configureren voor SQL Data Sync in Azure. Zie voor meer informatie over SQL Data Sync [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
 > SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
@@ -36,7 +36,7 @@ Als u de Data Sync-agent op de achtergrond wilt installeren vanaf de opdracht pr
 
 - Als u geen waarde opgeeft voor **TARGETDIR**, is de standaard waarde `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
-- Als u de `LocalSystem` waarde **SERVICEACCOUNT**opgeeft, gebruikt u SQL Server-verificatie wanneer u de agent configureert om verbinding te maken met de on-premises SQL Server.
+- Als u `LocalSystem` de waarde **SERVICEACCOUNT**opgeeft, gebruikt u SQL Server-verificatie wanneer u de agent configureert om verbinding te maken met SQL Server.
 
 - Als u een domein gebruikers account of een lokale gebruikers account opgeeft als waarde voor **SERVICEACCOUNT**, moet u het wacht woord ook opgeven met het argument **SERVICEPASSWORD** . Bijvoorbeeld `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -44,9 +44,9 @@ Als u de Data Sync-agent op de achtergrond wilt installeren vanaf de opdracht pr
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-sql-server-on-premises"></a>Gegevens synchroniseren met SQL Server on-premises
+## <a name="sync-data-with-a-sql-server-database"></a>Gegevens synchroniseren met een SQL Server-Data Base
 
-Zie [een on-premises SQL Server-Data Base toevoegen](sql-data-sync-sql-server-configure.md#add-on-prem)om de Data Sync-agent te configureren, zodat u gegevens kunt synchroniseren met een of meer on-premises SQL server data bases.
+Als u de Data Sync-agent zo wilt configureren dat u gegevens kunt synchroniseren met een of meer SQL Server data bases, raadpleegt u [een SQL Server-Data Base toevoegen](sql-data-sync-sql-server-configure.md#add-on-prem).
 
 ## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Veelgestelde vragen over de Data Sync-agent
 
@@ -321,7 +321,7 @@ Raadpleeg de volgende artikelen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
-    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-data-sync-sql-server-configure.md)
+    - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

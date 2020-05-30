@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527381"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196110"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Copy Activity performance and tuning guide (Gids voor prestaties en configuratie van Activiteit kopiëren)
 
@@ -207,10 +207,10 @@ Configureer de instelling **enableStaging** in de Kopieer activiteit om op te ge
 
 | Eigenschap | Beschrijving | Standaardwaarde | Vereist |
 | --- | --- | --- | --- |
-| **enableStaging** |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |Nee |
+| **enableStaging** |Geef op of u gegevens wilt kopiëren via een tijdelijke faserings opslag. |False |No |
 | **linkedServiceName** |Geef de naam op van een gekoppelde [opslag](data-factory-azure-blob-connector.md#azure-storage-linked-service) -of [azurestoragesas zijn](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) -service, die verwijst naar het exemplaar van de opslag die u gebruikt als een tijdelijke faserings opslag. <br/><br/> U kunt geen opslag gebruiken met een Shared Access Signature voor het laden van gegevens naar SQL Data Warehouse via Poly base. U kunt deze gebruiken in alle andere scenario's. |N.v.t. |Ja, wanneer **enableStaging** is ingesteld op True |
-| **programmapad** |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |Nee |
-| **enableCompression** |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |Nee |
+| **programmapad** |Geef het pad op van de Blob-opslag waarvoor u de gefaseerde gegevens wilt opnemen. Als u geen pad opgeeft, maakt de service een container om tijdelijke gegevens op te slaan. <br/><br/> Geef alleen een pad op als u opslag gebruikt met een hand tekening voor gedeelde toegang of als u wilt dat tijdelijke gegevens zich op een specifieke locatie bevinden. |N.v.t. |No |
+| **enableCompression** |Hiermee geeft u op of gegevens moeten worden gecomprimeerd voordat ze naar het doel worden gekopieerd. Deze instelling vermindert het volume van de gegevens die worden overgedragen. |False |No |
 
 Hier volgt een voor beeld van de definitie van de Kopieer activiteit met de eigenschappen die in de voor gaande tabel worden beschreven:
 
@@ -366,8 +366,8 @@ Als de grootte van de gegevens die u wilt kopiëren groot is, kunt u uw bedrijfs
 
 Wees voorzichtig met het aantal gegevens sets en kopieer activiteiten die tegelijk Data Factory naar de connector naar hetzelfde gegevens archief moeten worden gestuurd. Veel gelijktijdige Kopieer taken kunnen een gegevens opslag beperken en leiden tot gedegradeerde prestaties, het kopiëren van een taak in een interne nieuwe poging, en in sommige gevallen, fouten bij de uitvoering.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Voorbeeld scenario: kopiëren van een on-premises SQL Server naar Blob Storage
-**Scenario**: een pijp lijn is gebouwd om gegevens van een on-premises SQL Server naar Blob Storage te kopiëren in CSV-indeling. Als u de Kopieer taak sneller wilt uitvoeren, moeten de CSV-bestanden worden gecomprimeerd in de bzip2-indeling.
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Voorbeeld scenario: kopiëren van een SQL Server Data Base naar Blob Storage
+**Scenario**: een pijp lijn is gebouwd om gegevens van een SQL Server Data Base naar Blob Storage te kopiëren in CSV-indeling. Als u de Kopieer taak sneller wilt uitvoeren, moeten de CSV-bestanden worden gecomprimeerd in de bzip2-indeling.
 
 **Testen en analyse**: de door Voer van de Kopieer activiteit is minder dan 2 Mbps, wat langzamer is dan de benchmark waarde voor prestaties.
 
@@ -385,7 +385,7 @@ Een of meer van de volgende factoren kunnen de prestatie knelpunt veroorzaken:
 
 * **Bron**: SQL Server zichzelf heeft een lage door Voer vanwege zware belasting.
 * **Data Management Gateway**:
-  * **LAN**: de gateway bevindt zich ver van de SQL Server machine en heeft een verbinding met een lage band breedte.
+  * **LAN**: de gateway bevindt zich ver van de SQL Server computer en heeft een verbinding met een lage band breedte.
   * **Gateway**: de beperkingen voor het laden van de gateway zijn bereikt om de volgende bewerkingen uit te voeren:
     * **Serialisatie**: het serialiseren van de gegevens stroom naar de CSV-indeling heeft een trage door voer.
     * **Compressie**: u hebt een langzame compressie-codec gekozen (bijvoorbeeld bzip2, 2,8 Mbps met Kern i7).

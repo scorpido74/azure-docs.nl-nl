@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 757b11c7fd6eaeac1ef0d6d3bb8cea9be2af983c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047144"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193919"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Prestaties bewaken Microsoft Azure SQL Database en Azure SQL Managed instance met dynamische beheer weergaven
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,7 +43,7 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 In Azure SQL Managed instance zijn voor het uitvoeren van een query op een dynamische beheer weergave de **status machtigingen voor weergave servers** vereist. Zie [dynamische systeem beheer weergaven](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions)voor meer informatie.
 
-In een exemplaar van on-premises SQL Server en in Azure SQL Managed instance retour neren dynamische beheer weergaven de status informatie van de server. In Azure SQL Database retour neren ze alleen informatie over uw huidige logische data base.
+In een exemplaar van SQL Server en in Azure SQL Managed instance retour neren dynamische beheer weergaven de status informatie van de server. In Azure SQL Database retour neren ze alleen informatie over uw huidige logische data base.
 
 Dit artikel bevat een verzameling DMV-query's die u kunt uitvoeren met behulp van SQL Server Management Studio of Azure Data Studio om de volgende typen query prestatie problemen op te sporen:
 
@@ -673,7 +673,7 @@ SELECT COUNT(*) AS [Concurrent_Requests]
 FROM sys.dm_exec_requests R;
 ```
 
-Als u de werk belasting van een on-premises SQL Server-Data Base wilt analyseren, wijzigt u deze query zodat deze kan worden gefilterd op de specifieke data base die u wilt analyseren. Als u bijvoorbeeld een on-premises Data Base hebt met de naam MyDatabase, retourneert deze Transact-SQL-query het aantal gelijktijdige aanvragen in die Data Base:
+Als u de werk belasting van een SQL Server-Data Base wilt analyseren, wijzigt u deze query om te filteren op de specifieke data base die u wilt analyseren. Als u bijvoorbeeld een on-premises Data Base hebt met de naam MyDatabase, retourneert deze Transact-SQL-query het aantal gelijktijdige aanvragen in die Data Base:
 
 ```sql
 SELECT COUNT(*) AS [Concurrent_Requests]
@@ -702,7 +702,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections
 ```
 
-Als u een on-premises SQL Server werk belasting analyseert, wijzigt u de query zodanig dat deze zich op een specifieke Data Base bevindt. Deze query helpt u bij het bepalen van de mogelijke sessie vereisten voor de Data Base als u overweegt om deze naar Azure te verplaatsen.
+Als u een SQL Server workload analyseert, wijzigt u de query zodanig dat deze zich op een specifieke Data Base bevindt. Deze query helpt u bij het bepalen van de mogelijke sessie vereisten voor de Data Base als u overweegt om deze naar Azure te verplaatsen.
 
 ```sql
 SELECT COUNT(*) AS [Sessions]

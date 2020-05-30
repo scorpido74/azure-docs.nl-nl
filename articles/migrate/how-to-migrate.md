@@ -3,12 +3,12 @@ title: Migratie hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van hulpprogram ma's voor migratie in Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901451"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195810"
 ---
 # <a name="add-migration-tools"></a>Migratiehulpprogramma's toevoegen
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u migratie hulpprogramma's toevoegt in [Azur
 2. Selecteer het migratie scenario dat u wilt gebruiken:
 
     - Als u machines en werk belastingen wilt migreren naar Azure, selecteert u **servers beoordelen en migreren**.
-    - Als u on-premises SQL-machines wilt migreren, selecteert u **data bases evalueren en migreren**.
+    - Als u on-premises SQL Server data bases wilt migreren, selecteert u **data bases evalueren en migreren**.
     - Als u on-premises Web-Apps wilt migreren, selecteert u **Web-apps evalueren en migreren**.
     - Als u grote hoeveel heden on-premises gegevens naar Azure wilt migreren in de offline modus, selecteert u **een Data Box order**.
 

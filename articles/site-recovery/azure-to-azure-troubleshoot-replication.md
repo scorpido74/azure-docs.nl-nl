@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c27bf9a29bdb6e75e10fcafc597f40a88f995461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901354"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196092"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in nood herstel voor Azure VM oplossen
 
@@ -28,7 +28,7 @@ In de volgende secties worden oorzaken en oplossingen beschreven.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Hoge snelheid voor gegevenswijzigingen op de virtuele bronmachine
 
-Azure Site Recovery maakt een gebeurtenis als de wijzigings frequentie van de gegevens op de virtuele bron machine hoger is dan de ondersteunde limieten. Als u wilt weten of het probleem wordt veroorzaakt door een hoog verloop, gaat u naar **gerepliceerde items** > **VM** > **-gebeurtenissen-afgelopen 72 uur**.
+Azure Site Recovery maakt een gebeurtenis als de wijzigings frequentie van de gegevens op de virtuele bron machine hoger is dan de ondersteunde limieten. Als u wilt weten of het probleem wordt veroorzaakt door een hoog verloop, gaat u naar **gerepliceerde items**  >  **VM**  >  **-gebeurtenissen-afgelopen 72 uur**.
 U ziet de **wijzigings frequentie voor gebeurtenis gegevens die groter is dan de ondersteunde limieten**:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Azure Site Recovery pagina met een hoge wijzigings frequentie voor gegevens die te hoog is.":::
@@ -105,6 +105,10 @@ Hier volgen enkele van de meest voorkomende problemen.
 ### <a name="youre-using-azure-storage-spaces-direct-configuration"></a>U gebruikt Azure Storage Spaces direct-configuratie
 
 **Oplossen**: Azure site Recovery kan geen toepassings consistent herstel punt maken voor opslagruimten direct configuratie. [Configureer het replicatie beleid](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+
+### <a name="app-consistency-not-enabled-on-linux-servers"></a>App-consistentie niet ingeschakeld op Linux-servers
+
+**Oplossen** : Azure site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt gebruikt door de Azure Site Recovery Mobility-agent voor app-consistentie. [Hier](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) volgen de stappen om deze functie in te scha kelen.
 
 ### <a name="more-causes-because-of-vss-related-issues"></a>Meer oorzaken vanwege VSS-gerelateerde problemen:
 

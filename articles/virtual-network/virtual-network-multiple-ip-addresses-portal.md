@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820e50d9fe60b76639bf74067129e65c7394ff4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146600"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194214"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Meerdere IP-adressen toewijzen aan virtuele machines met behulp van de Azure Portal
 
@@ -52,8 +52,8 @@ U kunt persoonlijke en open bare IP-adressen toevoegen aan een Azure-netwerk int
 
 Voer de volgende stappen uit om een nieuw privé-IP-adres toe te voegen:
 
-1. Volg de stappen in de sectie [kern stappen](#coreadd) van dit artikel.
-2. Klik op **Add**. Maak in het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven een IP-configuratie met de naam *ipconfig-4* met *10.0.0.7* als een *statisch* privé-IP-adres en klik vervolgens op **OK**.
+1. Voer de stappen in de sectie [kern stappen](#coreadd) van dit artikel uit en controleer of u zich in de sectie **IP-configuraties** van de VM-netwerk interface bevindt.  Controleer het subnet dat standaard wordt weer gegeven (bijvoorbeeld 10.0.0.0/24).
+2. Klik op **Toevoegen**. Maak in het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven een IP-configuratie met de naam *ipconfig-4* met een nieuw *statisch* privé-adres door een nieuw nummer voor het laatste octet te kiezen en klik vervolgens op **OK**.  (Voor het subnet 10.0.0.0/24 zou een voor beeld van een IP-adres *10.0.0.7*zijn.)
 
     > [!NOTE]
     > Bij het toevoegen van een statisch IP-adres moet u een niet-gebruikt, geldig adres opgeven in het subnet waarmee de NIC is verbonden. Als het door u geselecteerde adres niet beschikbaar is, wordt in de portal een X weer gegeven voor het IP-adres en moet u een andere naam selecteren.
@@ -75,7 +75,7 @@ Een openbaar IP-adres wordt toegevoegd door een open bare IP-adres resource te k
 Een openbaar IP-adres is één instelling voor een open bare IP-adres resource. Als u een open bare IP-adres resource hebt die momenteel niet is gekoppeld aan een IP-configuratie die u wilt koppelen aan een IP-configuratie, slaat u de volgende stappen over en voert u de stappen in een van de onderstaande secties uit, zoals u dat nodig hebt. Als u geen beschik bare open bare IP-adres hebt, voert u de volgende stappen uit om een resource te maken:
 
 1. Ga naar het Azure Portal https://portal.azure.com en meld u indien nodig aan.
-3. Klik in de portal op **een resource** > **netwerk** > **openbaar IP-adres**maken.
+3. Klik in de portal op **een resource**  >  **netwerk**  >  **openbaar IP-adres**maken.
 4. In het deel venster **openbaar IP-adres maken** dat wordt weer gegeven, voert u een **naam**in, selecteert u een **IP-adres toewijzings** type, een **abonnement**, een **resource groep**en een **locatie**. vervolgens klikt u op **maken**, zoals wordt weer gegeven in de volgende afbeelding:
 
     ![Een resource met een openbaar IP-adres maken](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
@@ -85,7 +85,7 @@ Een openbaar IP-adres is één instelling voor een open bare IP-adres resource. 
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>De resource van het open bare IP-adres koppelen aan een nieuwe IP-configuratie
 
 1. Volg de stappen in de sectie [kern stappen](#coreadd) van dit artikel.
-2. Klik op **Add**. In het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven, maakt u een IP-configuratie met de naam *ipconfig-4*. Schakel het **open bare IP-adres** in en selecteer een bestaande, beschik bare open bare IP-adres resource in het deel venster **openbaar IP-adres kiezen** dat wordt weer gegeven.
+2. Klik op **Toevoegen**. In het deel venster **IP-configuratie toevoegen** dat wordt weer gegeven, maakt u een IP-configuratie met de naam *ipconfig-4*. Schakel het **open bare IP-adres** in en selecteer een bestaande, beschik bare open bare IP-adres resource in het deel venster **openbaar IP-adres kiezen** dat wordt weer gegeven.
 
     Wanneer u de resource voor het open bare IP-adres hebt geselecteerd, klikt u op **OK** om het deel venster te sluiten. Als u geen bestaand openbaar IP-adres hebt, kunt u er een maken door de stappen in de sectie [een open bare IP-adres bron maken](#create-public-ip) in dit artikel te volt ooien. 
 

@@ -1,6 +1,6 @@
 ---
 title: Gegevens van on-premises naar Azure kopiëren met Power shell
-description: Met dit Power shell-script worden gegevens gekopieerd van een on-premises SQL Server Data Base naar een andere Azure-Blob Storage.
+description: Met dit Power shell-script worden gegevens gekopieerd van een SQL Server Data Base naar een andere Azure-Blob Storage.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -10,16 +10,16 @@ author: linda33wj
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: 10555defc4888af66bb88d19190b6543aa8ae0c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f0a1509a97d2d860b43146ffaf69bb241105910
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75974690"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194630"
 ---
-# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-on-premises-to-azure"></a>Power shell gebruiken om een data factory pijp lijn te maken voor het kopiëren van gegevens van on-premises naar Azure
+# <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-from-sql-server-to-azure"></a>Power shell gebruiken om een data factory pijp lijn te maken voor het kopiëren van gegevens van SQL Server naar Azure
 
-Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory waarmee gegevens van een on-premises SQL Server-Data Base naar een Azure-Blob Storage worden gekopieerd.
+Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory waarmee gegevens van een SQL Server-Data Base naar een Azure-Blob Storage worden gekopieerd.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -27,12 +27,12 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **SQL Server**. In dit voor beeld gebruikt u een on-premises SQL Server-Data Base als een **brongegevens** opslag.
+- **SQL Server**. In dit voor beeld gebruikt u een SQL Server-Data Base als een **brongegevens** opslag.
 - **Azure Storage-account**. U gebruikt Azure Blob Storage als een **doel/Sink-** gegevens archief in dit voor beeld. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
 - **Zelf-hostende Integration runtime**. Down load het MSI-bestand uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=39717) en voer het uit om een zelf-hostende Integration runtime op uw computer te installeren.  
 
 ### <a name="create-sample-database-in-sql-server"></a>Voorbeeld database maken in SQL Server
-1. Maak in de on-premises SQL Server-Data Base een tabel met de naam **EMP** met behulp van het volgende SQL-script:
+1. Maak in de SQL Server-Data Base een tabel met de naam **EMP** met behulp van het volgende SQL-script:
 
    ```sql   
      CREATE TABLE dbo.emp
@@ -57,7 +57,7 @@ Met dit Power shell-voorbeeld script maakt u een pijp lijn in Azure Data Factory
 > [!IMPORTANT]
 > Met dit script worden JSON-bestanden gemaakt waarmee Data Factory entiteiten (gekoppelde service, gegevensset en pijp lijn) op de vaste schijf worden gedefinieerd in de c:\ map.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from on-premises SQL Server -> Azure Blob Storage")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/copy-from-onprem-sql-server-to-azure-blob/copy-from-onprem-sql-server-to-azure-blob.ps1 "Copy from SQL Server -> Azure Blob Storage")]
 
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie

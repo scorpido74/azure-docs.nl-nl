@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295410"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219954"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,7 +101,7 @@ Zorg ervoor dat/path/to/my/CERT wordt behandeld als een pad naar een PEM-of PKCS
 
 |Optie|Beschrijving|
 |--|--|
-|--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde`https://login.microsoftonline.com`() is correct voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--Aad-eind punt|Het Azure Active Directory-eind punt dat moet worden gebruikt. De standaard waarde ( `https://login.microsoftonline.com` ) is correct voor de open bare Azure-Cloud. Stel deze para meter in wanneer u een verificatie uitvoert in een nationale Cloud. Zie [Azure AD-verificatie-eind punten](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Deze vlag is niet nodig voor Managed Service Identity.|
 |--reeks van toepassing-id|De toepassings-ID van de door de gebruiker toegewezen identiteit. Vereist voor Service Principal auth.|
 |--teken reeks voor certificaatpad|Het pad naar het certificaat voor SPN-verificatie. Vereist voor verificatie op basis van een service-principal voor certificaten.|
@@ -119,6 +119,7 @@ Deze vlag is niet nodig voor Managed Service Identity.|
 |---|---|
 |--Cap-Mbps uint32|De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.|
 |--type teken reeks voor uitvoer|De indeling van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is "text".|
+|--vertrouwd-micro soft-achtervoegsels teken reeks   |Hiermee geeft u aanvullende domein achtervoegsels op waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.|
 
 ## <a name="see-also"></a>Zie ook
 

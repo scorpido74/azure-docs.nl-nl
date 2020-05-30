@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 968a880568743867c2bdfc11f98de322a591c009
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 13ca1ed4abef1eb367239a60ee7fe3d40ffee8d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117257"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195543"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Een failovergroep voor Azure SQL Database configureren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -344,9 +344,9 @@ Failover naar de secundaire server:
 
 ## <a name="sql-managed-instance"></a>SQL Managed Instance
 
-Maak een failovergroep tussen twee beheerde exemplaren in een SQL-beheerd exemplaar met behulp van de Azure Portal of Power shell.
+Een failover-groep maken tussen twee beheerde exemplaren in een Azure SQL Managed instance met behulp van de Azure Portal of Power shell.
 
-U moet [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) configureren of een gateway maken voor het virtuele netwerk van elk beheerd exemplaar, verbinding maken tussen de twee gateways en vervolgens de failovergroep maken.
+U moet [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) configureren of een gateway maken voor het virtuele netwerk van elk SQL Managed instance, de twee gateways verbinden en vervolgens de failovergroep maken.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -557,7 +557,7 @@ Maak de failovergroep voor uw beheerde instanties met behulp van de Azure Portal
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Maak de failovergroep voor uw beheerde instanties met behulp van Azure Portal.
+Maak de failovergroep voor uw SQL Managed instances met behulp van de Azure Portal.
 
 1. Selecteer **Azure SQL** in het linkermenu van de [Azure Portal](https://portal.azure.com). Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk.
 1. Selecteer de primaire beheerde instantie die u wilt toevoegen aan de failovergroep.  

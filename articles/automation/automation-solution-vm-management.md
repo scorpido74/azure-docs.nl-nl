@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743705"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205123"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
 
@@ -50,24 +50,24 @@ Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/sto
 
 | Machtiging | Bereik|
 | --- | --- |
-| Micro soft. Automation/automationAccounts/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/schedules/write | Resource Group |
-| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/Connections/write | Resource Group |
-| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/modules/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/modules/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/jobSchedules/write | Resource Group |
-| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resource Group |
-| Micro soft. Automation/automationAccounts/Jobs/lezen | Resource Group |
-| Micro soft. OperationsManagement/oplossingen/schrijven | Resource Group |
-| Micro soft. OperationalInsights/werk ruimten/* | Resource Group |
-| Micro soft. Insights/diagnosticSettings/schrijven | Resource Group |
-| Micro soft. Insights/ActionGroups/schrijven | Resource Group |
-| Micro soft. Insights/ActionGroups/lezen | Resource Group |
-| Micro soft. resources/abonnementen/resourceGroups/lezen | Resource Group |
-| Micro soft. resources/implementaties/* | Resource Group |
+| Micro soft. Automation/automationAccounts/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Varia bles/-schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/schedules/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/runbooks/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Connections/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/certificaten/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/modules/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/modules/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/jobSchedules/write | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Jobs/schrijven | Resourcegroep |
+| Micro soft. Automation/automationAccounts/Jobs/lezen | Resourcegroep |
+| Micro soft. OperationsManagement/oplossingen/schrijven | Resourcegroep |
+| Micro soft. OperationalInsights/werk ruimten/* | Resourcegroep |
+| Micro soft. Insights/diagnosticSettings/schrijven | Resourcegroep |
+| Micro soft. Insights/ActionGroups/schrijven | Resourcegroep |
+| Micro soft. Insights/ActionGroups/lezen | Resourcegroep |
+| Micro soft. resources/abonnementen/resourceGroups/lezen | Resourcegroep |
+| Micro soft. resources/implementaties/* | Resourcegroep |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Machtigingen voor het nieuwe Automation-account en de nieuwe Log Analytics-werk ruimte
 
@@ -83,10 +83,10 @@ U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen
 | Micro soft. Authorization/permissions/Read |Abonnement|
 | Micro soft. Authorization/roleAssignments/lezen | Abonnement |
 | Microsoft.Authorization/roleAssignments/write | Abonnement |
-| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resource Group |
-| Micro soft. Automation/automationAccounts/certificaten/lezen | Resource Group |
-| Micro soft. Automation/automationAccounts/schrijven | Resource Group |
-| Micro soft. OperationalInsights/werk ruimten/schrijven | Resource Group |
+| Micro soft. Authorization/roleAssignments/verwijderen | Abonnement || Micro soft. Automation/automationAccounts/Connections/Read | Resourcegroep |
+| Micro soft. Automation/automationAccounts/certificaten/lezen | Resourcegroep |
+| Micro soft. Automation/automationAccounts/schrijven | Resourcegroep |
+| Micro soft. OperationalInsights/werk ruimten/schrijven | Resourcegroep |
 
 ## <a name="components"></a>Onderdelen
 
@@ -104,7 +104,7 @@ Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap
 |Runbook | Parameters | Beschrijving|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Aangeroepen vanuit het bovenliggende runbook. Dit runbook maakt waarschuwingen per resource voor het scenario voor automatisch stoppen.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True of False  | Hiermee worden Azure-waarschuwings regels gemaakt of bijgewerkt op Vm's in het doel abonnement of resource groepen. <br> `VMList`is een door komma's gescheiden lijst met virtuele machines. Bijvoorbeeld `vm1, vm2, vm3`.<br> `WhatIf`Hiermee wordt de validatie van de runbook-logica mogelijk zonder dat deze wordt uitgevoerd.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: True of False  | Hiermee worden Azure-waarschuwings regels gemaakt of bijgewerkt op Vm's in het doel abonnement of resource groepen. <br> `VMList`is een door komma's gescheiden lijst met virtuele machines (zonder spaties), bijvoorbeeld `vm1,vm2,vm3` .<br> `WhatIf`Hiermee wordt de validatie van de runbook-logica mogelijk zonder dat deze wordt uitgevoerd.|
 |AutoStop_Disable | Geen | Hiermee schakelt u waarschuwingen voor automatisch stoppen en standaard schema uit.|
 |AutoStop_VM_Child | WebHookData | Aangeroepen vanuit het bovenliggende runbook. Waarschuwings regels roepen dit runbook aan om een klassieke virtuele machine te stoppen.|
 |AutoStop_VM_Child_ARM | WebHookData |Aangeroepen vanuit het bovenliggende runbook. Waarschuwings regels roepen dit runbook aan om een virtuele machine te stoppen.  |
@@ -112,7 +112,7 @@ Alle bovenliggende runbooks bevatten de `WhatIf` para meter. Als deze eigenschap
 |ScheduledStartStop_Child | VMName <br> Actie: starten of stoppen <br> ResourceGroupName | Aangeroepen vanuit het bovenliggende runbook. Hiermee wordt een start-of stop actie uitgevoerd voor de geplande beëindiging.|
 |ScheduledStartStop_Child_Classic | VMName<br> Actie: starten of stoppen<br> ResourceGroupName | Aangeroepen vanuit het bovenliggende runbook. Hiermee wordt een start-of stop actie uitgevoerd voor de geplande stop voor klassieke Vm's. |
 |ScheduledStartStop_Parent | Actie: starten of stoppen <br>VMList <br> WhatIf: True of False | Hiermee worden alle virtuele machines in het abonnement gestart of gestopt. Bewerk de variabelen `External_Start_ResourceGroupNames` en `External_Stop_ResourceGroupNames` alleen voor het uitvoeren van deze doel resource groepen. U kunt ook specifieke Vm's uitsluiten door de variabele bij te werken `External_ExcludeVMNames` .|
-|SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een positief geheel getal zijn (1, 2, 3) dat overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien die zijn gedefinieerd in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
+|SequencedStartStop_Parent | Actie: starten of stoppen <br> WhatIf: True of False<br>VMList| Maakt labels met de naam **sequencestart** en **sequencestop** op elke virtuele machine waarvoor u de activiteit start/stop wilt sequentieren. Deze label namen zijn hoofdletter gevoelig. De waarde van het label moet een lijst met positieve gehele getallen zijn, bijvoorbeeld `1,2,3` , die overeenkomt met de volg orde waarin u wilt starten of stoppen. <br>**Opmerking**: vm's moeten zich in resource groepen bezien die zijn gedefinieerd in `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` en `External_ExcludeVMNames` variabelen. Ze moeten de juiste labels hebben om de acties van kracht te laten worden.|
 
 ### <a name="variables"></a>Variabelen
 
@@ -170,7 +170,7 @@ Voor het gebruik van de functie met klassieke Vm's hebt u een klassiek uitvoeren
 Als u meer dan 20 Vm's per Cloud service hebt, zijn hier enkele aanbevelingen:
 
 * Meerdere planningen maken met het bovenliggende runbook **ScheduledStartStop_Parent** en 20 vm's per schema opgeven. 
-* In de schema-eigenschappen gebruikt `VMList` u de para meter om VM-namen op te geven als een lijst met door komma's gescheiden waarden. 
+* In de schema-eigenschappen gebruikt `VMList` u de para meter om VM-namen op te geven als een lijst met door komma's gescheiden waarden (geen spaties). 
 
 Als de Automation-taak voor deze functie meer dan drie uur wordt uitgevoerd, wordt deze tijdelijk uit het geheugen verwijderd of gestopt volgens de limiet voor de [billijke share](automation-runbook-execution.md#fair-share) .
 

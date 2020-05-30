@@ -1,6 +1,6 @@
 ---
 title: Advanced Data Security
-description: Meer informatie over de functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het beheren van uw database problemen en het opsporen van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw Azure SQL Database, Azure SQL Managed instance of Azure Synapse.
+description: Meer informatie over de functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het beheren van uw data base-beveiligings problemen en het opsporen van afwijkende activiteiten die kunnen wijzen op een bedreiging voor uw data base in Azure SQL Database, Azure SQL Managed instance of Azure Synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,28 +12,27 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: ed7d4b10219f4d4a3c437331bd1daf870495949d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047851"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195132"
 ---
 # <a name="advanced-data-security"></a>Advanced Data Security
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-Advanced Data Security (ADS) is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. ADS is beschikbaar voor voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse. Het bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het zichtbaar maken en inperken van potentiële beveiligingsproblemen in uw database, en het detecteren van afwijkende activiteiten die kunnen duiden op een bedreiging van de database. Het is tevens een centraal punt voor het inschakelen en beheren van deze mogelijkheden.
+Advanced Data Security (ADS) is een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. ADS is beschikbaar voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics. Het bevat functionaliteit voor het detecteren en classificeren van gevoelige gegevens, het zichtbaar maken en inperken van potentiële beveiligingsproblemen in uw database, en het detecteren van afwijkende activiteiten die kunnen duiden op een bedreiging van de database. Het is tevens een centraal punt voor het inschakelen en beheren van deze mogelijkheden.
 
 ## <a name="overview"></a>Overzicht
 
-Advanced Data Security (ADS) biedt een aantal geavanceerde SQL-beveiligings mogelijkheden, waaronder gegevens detectie & classificatie, evaluatie van beveiligings problemen en geavanceerde beveiliging tegen bedreigingen.
+ADS biedt een aantal geavanceerde SQL-beveiligings mogelijkheden, waaronder gegevens detectie & classificatie, evaluatie van SQL-beveiligings problemen en geavanceerde beveiliging tegen bedreigingen.
+- [Gegevens detectie & classificatie](data-discovery-and-classification-overview.md) biedt mogelijkheden die zijn ingebouwd in Azure SQL database, Azure SQL Managed instance en Azure Synapse voor het detecteren, classificeren, labelen en rapporteren van gevoelige gegevens in uw data bases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
+- De [evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service die u kunt gebruiken om potentiële database problemen op te lossen, op te sporen en te verhelpen. Het biedt inzicht in uw beveiligings status en bevat stappen die kunnen worden uitgevoerd om beveiligings problemen op te lossen en uw data base-Fortifications te verbeteren.
+- [Advanced Threat Protection](threat-detection-overview.md) detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of op aanvallen op uw databases. Het controleert uw data base voortdurend op verdachte activiteiten en biedt onmiddellijke beveiligings waarschuwingen voor mogelijke beveiligings problemen, Azure SQL-injectie aanvallen en afwijkende database toegangs patronen. Meldingen van Advanced Threat Protection bevatten detailinformatie over verdachte activiteiten en aanbevelingen voor het onderzoeken en tegenhouden ervan.
 
-- [Gegevens detectie & classificatie](data-discovery-and-classification-overview.md) biedt mogelijkheden die zijn ingebouwd in Azure SQL database, Azure SQL Managed instance en Azure Synapse voor het detecteren, classificeren, labelen & rapportage van de gevoelige gegevens in uw data bases. Het kan worden gebruikt voor het zichtbaar maken van de classificatiestatus van gegevens in uw database, en het traceren van de toegang tot gevoelige gegevens binnen en buiten de database.
-- [Evaluatie van beveiligingsproblemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee u potentiële zwakke plekken in de beveiliging van de database kunt detecteren, volgen en verhelpen. Deze service biedt u inzicht in de status van de beveiliging en bruikbare stappen om beveiligingsproblemen op te lossen en de beveiliging van uw database te verbeteren.
-- [Advanced Threat Protection](threat-detection-overview.md) detecteert vreemde activiteiten die duiden op ongebruikelijke en mogelijk schadelijke pogingen om toegang te verkrijgen tot of op aanvallen op uw databases. Hiermee wordt uw database continu gecontroleerd op verdachte activiteiten en wordt u onmiddellijk gewaarschuwd bij mogelijke beveiligingsproblemen, SQL-injectieaanvallen en afwijkende databasetoegangspatronen. Meldingen van Advanced Threat Protection bevatten detailinformatie over verdachte activiteiten en aanbevelingen voor het onderzoeken en tegenhouden ervan.
-
-Schakel SQL ADS eenmaal in om al deze opgenomen functies in te scha kelen. Met één klik kunt u ADS inschakelen voor alle data bases op uw [Server](logical-servers.md) in azure (die als host fungeert voor SQL database of Azure Synapse Analytics) of in een exemplaar van een Azure SQL Managed instance. Het inschakelen of beheren van ADS-instellingen vereist deel uitmaakt van de rol [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) , SQL database BEHEERDERSROL of SQL Server-beheerdersrol.
+Geavanceerde gegevens beveiliging één keer inschakelen om al deze opgenomen functies in te scha kelen. Met één klik kunt u ADS inschakelen voor alle data bases op uw [Server](logical-servers.md) in azure of in uw door SQL beheerde exemplaar. Het inschakelen of beheren van ADS-instellingen vereist deel uitmaakt van de rol [SQL Security Manager](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) of een van de data base-of Server beheerders rollen.
 
 Prijzen voor ADS worden uitgelijnd met Azure Security Center Standard-laag, waarbij elke beveiligde server of een beheerd exemplaar als één knoop punt wordt beschouwd. Nieuwe beveiligde resources komen in aanmerking voor een gratis proef versie van Security Center Standard-laag. Zie de pagina met prijzen voor [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/)voor meer informatie.
 

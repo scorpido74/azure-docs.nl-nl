@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414144"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193716"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
 
@@ -70,7 +70,7 @@ Als de prestaties van de Kopieer activiteit niet voldoen aan uw verwachting, kun
 
 - **"Overdrachts bron" heeft langdurige lange werk duur**: Dit betekent dat het inventariseren van bron bestanden of gegevens partities van de bron database traag is.
 
-  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **Joker teken filter** gebruikt voor het pad naar`wildcardFolderPath` de `wildcardFileName`map of de bestands naam (of) of het`modifiedDatetimeStart` **filter Laatst gewijzigd tijd** (of`modifiedDatetimeEnd`) gebruikt, ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
+  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **Joker teken filter** gebruikt voor het pad naar de map of de bestands naam (of `wildcardFolderPath` `wildcardFileName` ) of het **filter Laatst gewijzigd tijd** ( `modifiedDatetimeStart` of `modifiedDatetimeEnd` ) gebruikt, ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
 
     - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
 
@@ -124,7 +124,7 @@ Als de Kopieer prestaties niet voldoen aan uw verwachting, kunt u bij het oploss
 
   - Controleer of de zelf-hostende IR-computer een lage latentie heeft om verbinding te maken met de brongegevens opslag. Als uw bron zich in azure bevindt, kunt u [Dit hulp programma](http://www.azurespeed.com/Azure/Latency) gebruiken om de latentie van de zelf-hostende IR-computer te controleren naar de Azure-regio, hoe minder het is.
 
-  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **Joker teken filter** gebruikt voor het pad naar`wildcardFolderPath` de `wildcardFileName`map of de bestands naam (of) of het`modifiedDatetimeStart` **filter Laatst gewijzigd tijd** (of`modifiedDatetimeEnd`) gebruikt, ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
+  - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **Joker teken filter** gebruikt voor het pad naar de map of de bestands naam (of `wildcardFolderPath` `wildcardFileName` ) of het **filter Laatst gewijzigd tijd** ( `modifiedDatetimeStart` of `modifiedDatetimeEnd` ) gebruikt, ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
 
     - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.
 
@@ -181,13 +181,13 @@ Hier vindt u de prestatie bewaking en het afstemmen van verwijzingen voor een aa
 * Azure SQL Database: u kunt [de prestaties bewaken](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren.
 * Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's). Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../cosmos-db/performance-levels.md).
-* On-premises SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx).
+* SQL Server: [prestaties bewaken en afstemmen](https://msdn.microsoft.com/library/ms189081.aspx).
 * On-premises Bestands server: [prestaties afstemmen voor bestands servers](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
+- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
 - [Gids voor de prestaties en schaal baarheid van de Kopieer activiteit](copy-activity-performance.md)
 - [Functies voor het optimaliseren van de activiteit prestaties](copy-activity-performance-features.md)
 - [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)

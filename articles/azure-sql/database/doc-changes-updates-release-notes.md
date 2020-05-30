@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 07af9fa20fd6a331313050d3ba2cfbbe9c3fe7e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050301"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195108"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat een overzicht van Azure SQL Database en Azure SQL Managed instance-functies die momenteel beschikbaar zijn in de open bare preview. Zie [SQL Database & SQL Managed instance service updates](https://azure.microsoft.com/updates/?product=sql-database)voor SQL database en de updates en verbeteringen van SQL Managed instance. Zie [service-updates](https://azure.microsoft.com/updates)voor updates en verbeteringen voor andere Azure-Services.
@@ -29,7 +30,7 @@ Documentatie voor Azure SQL Database en Azure SQL Managed instance is in afzonde
 
 We hebben dit gedaan omdat sommige functies en functionaliteit aanzienlijk verschillen tussen één data base en een beheerd exemplaar, en het is steeds meer een uitdaging om complexe nuances tussen Azure SQL Database en Azure SQL Managed instance in afzonderlijke ' gedeelde ' artikelen uit te leggen.
 
-Deze verduidelijking tussen de verschillende Azure SQL-producten moet het proces van het werken met de SQL Server data base-engine in azure vereenvoudigen en stroom lijnen, ongeacht of het nu een beheerde data base in Azure SQL Database is, een volledig zelfstandig beheerd exemplaar dat meerdere data bases host in Azure SQL Managed instance of het vertrouwde on-premises SQL Server product, maar gehost op een virtuele machine in Azure.
+Deze verduidelijking tussen de verschillende Azure SQL-producten moet het proces van het werken met de SQL Server data base-engine in azure vereenvoudigen en stroom lijnen, ongeacht of het nu gaat om één beheerde data base in Azure SQL Database, een volledig zelfstandige beheerde instantie die meerdere data bases host in Azure SQL Managed instance of het vertrouwde SQL Server product dat wordt gehost op een virtuele machine in Azure.
 
 Houd er rekening mee dat dit een onderhanden werk is en dat niet elk artikel nog is bijgewerkt. Bijvoorbeeld: Documentatie voor Transact-SQL (T-SQL)-instructies, opgeslagen procedures en veel functies die worden gedeeld tussen Azure SQL Database en Azure SQL Managed instance zijn nog niet voltooid, dus wij danken u voor uw geduld, omdat u doorgaat met het verduidelijken van de inhoud. 
 
@@ -92,7 +93,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor SQL Manag
   - Ondersteuning voor abonnementen met een <a href="https://aka.ms/sql-mi-visual-studio-subscribers">maandelijks Azure-tegoed voor Visual Studio-abonnees</a> en verhoogde [regionale limieten](../managed-instance/resource-limits.md#regional-resource-limitations).
   - Ondersteuning voor <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 en SharePoint 2019 </a> en <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Maak SQL Managed instances met <a href="https://aka.ms/managed-instance-collation">sorteringen op exemplaar niveau</a> en <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">tijd zone</a> van uw keuze.
-  - SQL Managed nstances is nu beveiligd met [ingebouwde firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
+  - SQL Managed instances is nu beveiligd met [ingebouwde firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
   - Configureer SQL Managed instances voor het gebruik van [open bare eind punten](../managed-instance/public-endpoint-configure.md), het negeren van de [proxy](connectivity-architecture.md#connection-policy) voor betere netwerk prestaties, <a href="https://aka.ms/four-cores-sql-mi-update">4 VCores bij het genereren van GEN5-hardware</a> of <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 het configureren van back-ups voor herstel na een</a> bepaald tijdstip. [Lange termijn retentie van back-ups](long-term-retention-overview.md#managed-instance-support) (Maxi maal 10 jaar) is momenteel een beperkte open bare preview.  
   - Dankzij nieuwe functies kunt u <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">uw data base met behulp van Power shell naar een ander Data Center herstellen, de</a> [naam van de data base wijzigen](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), het [virtuele cluster verwijderen](../managed-instance/virtual-cluster-delete.md).
   - Met de nieuwe [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) voor ingebouwde instanties kunt u SoD-naleving met beveiligings principes en naleving van de bedrijfs normen.

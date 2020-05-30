@@ -3,12 +3,12 @@ title: Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 description: Gebruik Advisor om de prestaties van uw Azure-implementaties te optimaliseren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787937"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196419"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor identificeert Traffic Manager profielen met een meer TTL-waarde di
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Databaseprestaties verbeteren met SQL DB Advisor
 
-Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw SQL Azure data base.SQL Database Advisor evalueert de prestaties van uw SQL Azure-data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
+Advisor biedt een consistente, geconsolideerde weer gave van aanbevelingen voor al uw Azure-resources. Het integreert met SQL Database Advisor om u aanbevelingen te doen voor het verbeteren van de prestaties van uw data base.SQL Database Advisor evalueert de prestaties van uw data bases door de gebruiks geschiedenis te analyseren. Vervolgens worden aanbevelingen geboden die het meest geschikt zijn voor het uitvoeren van de normale werk belasting van de data base.
 
 > [!NOTE]
 > Voor het verkrijgen van aanbevelingen moet een Data Base over een week gebruik beschikken en binnen die week een consistente activiteit moeten zijn. SQL Database Advisor kan gemakkelijker worden geoptimaliseerd voor consistente query patronen dan voor wille keurige bursts van de activiteit.
@@ -80,19 +80,19 @@ Een Azure-regio kan Maxi maal 250 opslag accounts per abonnement ondersteunen. Z
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Overweeg de omvang van uw VNet-gateway-SKU te verg Roten naar het gebruik van een hoog P2S
 
-Elke gateway-SKU kan alleen een opgegeven aantal gelijktijdige P2S-verbindingen ondersteunen. Als uw verbinding tot stand is gebracht, wordt de limiet voor het aantal verbindingen mogelijk verbroken. Door de grootte van uw gateway te verg Roten, kunt u meer gelijktijdige P2S-gebruikers ondersteunen. Advisor biedt aanbevelingen en stappen om dit te doen.
+Elke gateway-SKU kan slechts een beperkt aantal gelijktijdige P2S-verbindingen ondersteunen. Als uw verbinding tot stand is gebracht, wordt de limiet voor het aantal verbindingen mogelijk verbroken. Door de grootte van uw gateway te verg Roten, kunt u meer gelijktijdige P2S-gebruikers ondersteunen. Advisor biedt aanbevelingen en stappen om dit te doen.
 
-## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Overweeg de omvang van uw VNet-gateway-SKU te verg Roten voor een hoge CPU
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Overweeg om de gateway-SKU van uw virtuele netwerk te vergroten om het hoge CPU-gebruik te verhelpen
 
-Bij een hoge belasting van het verkeer kan de VPN-gateway pakketten verwijderen vanwege een hoge CPU. U kunt overwegen om uw VPN Gateway-SKU bij te werken, omdat uw VPN op consistente wijze actief is geweest. Door de grootte van uw VPN-gateway te verg Roten, zorgt u ervoor dat de verbindingen niet worden verbroken vanwege een hoge CPU. Advisor provdes-aanbeveling om dit probleem proactief op te lossen. 
+Bij een hoge verkeersbelasting kan de VPN-gateway pakketten verwijderen vanwege een hoge CPU. U kunt overwegen om uw VPN Gateway-SKU bij te werken, omdat uw VPN op consistente wijze actief is geweest. Door de grootte van uw VPN-gateway te verg Roten, zorgt u ervoor dat de verbindingen niet worden verbroken vanwege een hoge CPU. Advisor provdes-aanbeveling om dit probleem proactief op te lossen. 
 
-## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>De Batch grootte verg Roten tijdens het laden om de laad doorvoer, gegevens compressie en query prestaties te maximaliseren
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Batchgrootte vergroten tijdens het laden om de laaddoorvoer, gegevenscompressie en queryprestaties te maximaliseren
 
-Met Advisor kan worden gedetecteerd dat u de belasting prestaties en door Voer kunt verhogen door de Batch grootte te verhogen bij het laden in uw data base. U kunt overwegen de instructie COPY te gebruiken. Als u de instructie COPY niet kunt gebruiken, kunt u overwegen de Batch grootte te verg Roten met het laden van hulpprogram ma's zoals de SQLBulkCopy-API of BCP-een goede vuist regel is een batch grootte tussen 100.000 en 1M rijen. Dit neemt de belasting door Voer, gegevens compressie en query prestaties.
+Met Advisor kan worden gedetecteerd dat u de belasting prestaties en door Voer kunt verhogen door de Batch grootte te verhogen bij het laden in uw data base. U kunt overwegen de instructie COPY te gebruiken. Als u de instructie COPY niet kunt gebruiken, kunt u overwegen de batchgrootte te vergroten bij het gebruik van laadhulpprogramma's zoals de SQLBulkCopy-API of BCP. Een goede vuistregel is een batchgrootte tussen 100.000 en 1 miljoen rijen. Dit neemt de belasting door Voer, gegevens compressie en query prestaties.
 
-## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Het opslag account in dezelfde regio samen zoeken om de latentie tijdens het laden te minimaliseren
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Plaats het opslagaccount in dezelfde regio om de latentie tijdens het laden te minimaliseren
 
-Met Advisor kan worden gedetecteerd dat u vanuit een andere regio dan uw SQL-groep wordt geladen. Overweeg het laden van een opslag account dat zich in dezelfde regio bevindt als uw SQL-groep om de latentie te minimaliseren bij het laden van gegevens. Dit helpt latentie te minimaliseren en de belasting prestaties te verg Roten.
+Met Advisor kan worden gedetecteerd dat u vanuit een andere regio dan uw SQL-groep wordt geladen. Overweeg om een opslagaccount te gebruiken dat zich in dezelfde regio bevindt als uw SQL-pool om de latentie tijdens het laden van gegevens te minimaliseren. Dit helpt latentie te minimaliseren en de belasting prestaties te verg Roten.
 
 ## <a name="unsupported-kubernetes-version-is-detected"></a>Er is een niet-ondersteunde Kubernetes-versie gedetecteerd
 
@@ -107,7 +107,7 @@ Een zeer hoog gebruik van de CPU gedurende een langere periode kan de prestaties
 Een lage cache verhouding kan leiden tot tragere query prestaties en meer IOPS. Dit kan worden veroorzaakt door een beschadigd query plan of door een geheugenintensieve werk belasting uit te voeren. Het herstellen van het query plan of [het verg Roten](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) van het geheugen van de Azure database for PostgreSQL database server, Azure MySQL-database server of Azure MariaDB-server helpt de uitvoering van de werk belasting van de data base te optimaliseren. Azure Advisor identificeert servers die worden beïnvloed door deze hoge verloop tijd van de buffer groep en raadt u aan om het query plan te corrigeren, over te stappen op een hogere SKU met meer geheugen of de opslag grootte te verg Roten om meer IOPS te verkrijgen.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Een Azure MySQL-of Azure PostgreSQL-Lees replica gebruiken om Lees bewerkingen uit te schalen voor intensieve werk belastingen voor lezen
-Azure Advisor maakt gebruik van heuristiek op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Uw Azure data base for PostgreSQL-resource of Azure data base for MySQL-resource met een zeer hoge lees-en schrijf bewerkingen kan resulteren in CPU-en/of geheugen conflicten die leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server, waardoor er geen CPU-en/of geheugen beperkingen zijn op de primaire server. Advisor identificeert servers met zulke hoge lees-intensieve workloads en raadt aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) toe te voegen om een aantal lees workloads te offloaden.
+Azure Advisor maakt gebruik van heuristiek op basis van werk belastingen, zoals de verhouding van Lees bewerkingen op de server gedurende de afgelopen zeven dagen om Lees-intensieve workloads te identificeren. Uw Azure data base for PostgreSQL-resource of Azure data base for MySQL-resource met een zeer hoge lees-en schrijf bewerkingen kan resulteren in CPU-en/of geheugen conflicten die leiden tot trage query prestaties. Het toevoegen van een [replica](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) helpt bij het uitschalen van Lees bewerkingen naar de replica server, waardoor er geen CPU-en/of geheugen beperkingen zijn op de primaire server. Advisor identificeert servers met zulke hoge lees-intensieve workloads en raadt aan een [Lees replica](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)toe te voegen   om een aantal lees workloads te offloaden.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Schaal uw Azure MySQL-, Azure PostgreSQL-of Azure MariaDB-server naar een hogere SKU om verbindings beperkingen te voor komen

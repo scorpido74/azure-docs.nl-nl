@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772117"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193408"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Naslag informatie over SQL-taal voor query versnelling (preview-versie)
 
@@ -32,7 +32,7 @@ De enige SQL-instructie die wordt ondersteund door de query versnelling is de SE
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Voor gegevens in CSV-indeling *table* moet de tabel `BlobStorage`.  Dit betekent dat de query wordt uitgevoerd op basis van welke Blob in de REST-aanroep is opgegeven.
+Voor gegevens in CSV-indeling *table* moet de tabel `BlobStorage` .  Dit betekent dat de query wordt uitgevoerd op basis van welke Blob in de REST-aanroep is opgegeven.
 Voor gegevens in JSON-indeling is *tabel* de tabel descriptor.   Zie de sectie [Table descriptors](#table-descriptors) van dit artikel.
 
 In het volgende voor beeld retourneert deze instructie voor elke rij waarvoor de WHERE- *expressie* waar retourneert, een nieuwe rij die wordt gemaakt van de evaluatie van elk van de projectie-expressies.
@@ -54,7 +54,7 @@ In het volgende voor beeld worden geschikte offsets geretourneerd voor het split
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>Gegevenstypen
 
@@ -109,7 +109,7 @@ Hier volgen enkele voor beelden:
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-De functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) helpt u bij het zoeken naar een patroon. Hier volgen enkele voor beelden van het gebruik van de functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) om de gegevens ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``reeks te doorzoeken.
+De functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) helpt u bij het zoeken naar een patroon. Hier volgen enkele voor beelden van het gebruik van de functie [like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) om de gegevens reeks te doorzoeken ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
 
 |Query’s uitvoeren|Voorbeeld|
 |--|--|
@@ -129,7 +129,7 @@ Momenteel worden alle [datum notaties van standaard-IS08601](https://www.w3.org/
 
 #### <a name="date_add-function"></a>Functie DATE_ADD
 
-De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut en ``DATE_ADD`` seconde voor de functie.
+De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut en seconde voor de ``DATE_ADD`` functie.
 
 Voorbeelden:
 
@@ -140,7 +140,7 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>Functie DATE_DIFF
 
-De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut en ``DATE_DIFF`` seconde voor de functie.
+De SQL-taal voor de query versnelling ondersteunt jaar, maand, dag, uur, minuut en seconde voor de ``DATE_DIFF`` functie.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -167,7 +167,7 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-In deze tabel worden teken reeksen beschreven die u kunt gebruiken om de uitvoer indeling ``TO_STRING`` van de functie op te geven.
+In deze tabel worden teken reeksen beschreven die u kunt gebruiken om de uitvoer indeling van de functie op te geven ``TO_STRING`` .
 
 |Teken reeks voor opmaak    |Uitvoer                               |
 |-----------------|-------------------------------------|
@@ -220,7 +220,7 @@ Een SELECT-instructie kan een of meer projectie-expressies of één statistische
 
 |Expressie|Beschrijving|
 |--|--|
-|[AANTAL (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Retourneert het aantal records dat overeenkomt met de predicaat expressie.|
+|[AANTAL ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Retourneert het aantal records dat overeenkomt met de predicaat expressie.|
 |[AANTAL (expressie)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Retourneert het aantal records waarvoor een expressie niet null is.|
 |[GEMIDDELD (expressie)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Retourneert het gemiddelde van de waarden van de expressie die niet gelijk zijn aan nul.|
 |[MIN (expressie)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Retourneert de minimale niet-null-waarde van een expressie.|
@@ -229,13 +229,13 @@ Een SELECT-instructie kan een of meer projectie-expressies of één statistische
 
 ### <a name="missing"></a>ONGELDIGE
 
-De ``IS MISSING`` operator is de enige niet-standaard die de SQL-taal voor de query versnelling ondersteunt.  Voor JSON-gegevens geldt dat als een veld ontbreekt in een bepaalde invoer record, het expressie ``IS MISSING`` veld resulteert in de Booleaanse waarde True.
+De ``IS MISSING`` operator is de enige niet-standaard die de SQL-taal voor de query versnelling ondersteunt.  Voor JSON-gegevens geldt dat als een veld ontbreekt in een bepaalde invoer record, het expressie veld ``IS MISSING`` resulteert in de Booleaanse waarde True.
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Tabel descriptoren
 
-Voor CSV-gegevens is de naam van de `BlobStorage`tabel altijd.  Bijvoorbeeld:
+Voor CSV-gegevens is de naam van de tabel altijd `BlobStorage` .  Bijvoorbeeld:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -287,22 +287,22 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 De query haalt alle velden op, maar selecteert alleen de breedte graad.
 
-Als u alleen toegang wilt krijgen tot `dimensions` de waarde van het JSON-object, kunt u in uw query verwijzen naar dat object. Bijvoorbeeld:
+Als u alleen toegang wilt krijgen tot de `dimensions` waarde van het JSON-object, kunt u in uw query verwijzen naar dat object. Bijvoorbeeld:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-Hiermee beperkt u ook de toegang tot leden van `dimensions` het object. Als u toegang wilt krijgen tot andere leden van JSON-velden en binnenste waarden van JSON-objecten, kunt u een query gebruiken zoals wordt weer gegeven in het volgende voor beeld:
+Hiermee beperkt u ook de toegang tot leden van het `dimensions` object. Als u toegang wilt krijgen tot andere leden van JSON-velden en binnenste waarden van JSON-objecten, kunt u een query gebruiken zoals wordt weer gegeven in het volgende voor beeld:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage en BlobStorage [\*] verwijzen beide naar het hele object. Als u echter een pad in de component FROM hebt, moet u BlobStorage [\*]. Path gebruiken
+> BlobStorage en BlobStorage [ \* ] verwijzen beide naar het hele object. Als u echter een pad in de component FROM hebt, moet u BlobStorage [ \* ]. Path gebruiken
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys. split
 

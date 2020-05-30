@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fd7900eb9de55b29cc06ed338514e5a46d160f11
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047452"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193933"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Als een groep met automatische failover niet is geconfigureerd, moet uw toepassi
 
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Hoe verandert mijn plan voor herstel na nood gevallen van on-premises naar SQL Database
 
-In samen vatting is de traditionele on-premises SQL Server-installatie vereist dat u uw Beschik baarheid actief beheert door gebruik te maken van functies zoals Failoverclustering, database spiegeling, transactie replicatie of het registreren van back-ups en het onderhouden en beheren van backups om te zorgen voor bedrijfs continuïteit. Met SQL Database beheert het platform deze voor u, zodat u zich kunt concentreren op het ontwikkelen en optimaliseren van uw database toepassing en niet zo veel moeite hoeft te doen met nood beheer. U kunt plannen voor back-ups en herstel na nood gevallen configureren en met slechts enkele klikken op de Azure Portal (of enkele opdrachten die gebruikmaken van de Power shell-Api's).
+SQL Server Setup vereist dat u uw Beschik baarheid actief beheert door gebruik te maken van functies zoals Failoverclustering, database spiegeling, transactie replicatie of het vastleggen en beheren van back-ups voor bedrijfs continuïteit. Met SQL Database beheert het platform deze voor u, zodat u zich kunt concentreren op het ontwikkelen en optimaliseren van uw database toepassing en niet zo veel moeite hoeft te doen met nood beheer. U kunt plannen voor back-ups en herstel na nood gevallen configureren en met slechts enkele klikken op de Azure Portal (of enkele opdrachten die gebruikmaken van de Power shell-Api's).
 
 Zie voor meer informatie over herstel na nood gevallen: [Azure SQL database herstel na nood gevallen 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
@@ -170,7 +170,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Kenmerken**|**Altijd versleuteld**|**Transparante gegevensversleuteling**|
 |---|---|---|
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
-|**De server kan toegang krijgen tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
+|**De server kan toegang krijgen tot gevoelige gegevens**|No|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
 |**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|databaseniveau|
@@ -330,8 +330,8 @@ SQL Database maakt gebruik van een aantal slimme technieken waarmee de IT-server
 
 U kunt dit op verschillende manieren doen:
 
-- **[Gegevens synchronisatie](sql-data-sync-data-sql-server-sql-database.md)** : met deze functie kunt u gegevens bi-directioneel synchroniseren tussen meerdere on-premises SQL server data bases en SQL database. Als u wilt synchroniseren met on-premises SQL Server-data bases, moet u de synchronisatie agent installeren en configureren op een lokale computer en de uitgaande TCP-poort 1433 openen.
-- **[Transactie replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : met transactie replicatie kunt u uw gegevens van on-premises synchroniseren met Azure SQL database waarbij de on-premises de uitgever en de Azure SQL database van de abonnee zijn. Momenteel wordt alleen deze configuratie ondersteund. Zie voor meer informatie over het migreren van uw gegevens van on-premises naar Azure SQL met minimale downtime: [transactie replicatie gebruiken](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
+- **[Gegevens synchronisatie](sql-data-sync-data-sql-server-sql-database.md)** : met deze functie kunt u gegevens in twee richtingen synchroniseren tussen meerdere SQL server data bases en SQL database. Als u wilt synchroniseren met SQL Server-data bases, moet u de synchronisatie agent installeren en configureren op een lokale computer of een virtuele machine en de uitgaande TCP-poort 1433 openen.
+- **[Transactie replicatie](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** : met transactie replicatie kunt u uw gegevens vanuit een SQL Server-Data Base synchroniseren naar Azure SQL database met het SQL Server exemplaar dat de uitgever is en het Azure SQL database de abonnee wordt. Momenteel wordt alleen deze configuratie ondersteund. Zie voor meer informatie over het migreren van uw gegevens van een SQL Server Data Base naar Azure SQL met minimale downtime: [transactie replicatie gebruiken](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Volgende stappen
 
