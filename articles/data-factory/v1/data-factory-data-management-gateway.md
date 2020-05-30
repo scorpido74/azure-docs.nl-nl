@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021565"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188309"
 ---
 # <a name="data-management-gateway"></a>Gegevensbeheergateway
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "84021565"
 
 De Data Management Gateway is een client agent die u in uw on-premises omgeving moet installeren om gegevens te kopiëren tussen de Cloud en on-premises gegevens opslag. De on-premises gegevens archieven die door Data Factory worden ondersteund, worden weer gegeven in de sectie [ondersteunde gegevens bronnen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) .
 
-Dit artikel vormt een aanvulling op de stapsgewijze instructies in het artikel [gegevens verplaatsen tussen on-premises en Cloud gegevens opslag](data-factory-move-data-between-onprem-and-cloud.md) . In de walkthrough maakt u een pijp lijn die gebruikmaakt van de gateway om gegevens te verplaatsen van een on-premises SQL Server Data Base naar een Azure-Blob. In dit artikel vindt u gedetailleerde informatie over de Data Management Gateway.
+Dit artikel vormt een aanvulling op de stapsgewijze instructies in het artikel [gegevens verplaatsen tussen on-premises en Cloud gegevens opslag](data-factory-move-data-between-onprem-and-cloud.md) . In de walkthrough maakt u een pijp lijn die gebruikmaakt van de gateway om gegevens van een SQL Server Data Base naar een Azure-Blob te verplaatsen. In dit artikel vindt u gedetailleerde informatie over de Data Management Gateway.
 
 U kunt een Data Management Gateway uitschalen door meerdere on-premises machines aan de gateway te koppelen. U kunt omhoog schalen door het aantal gegevens verplaatsings taken te verhogen dat gelijktijdig kan worden uitgevoerd op een knoop punt. Deze functie is ook beschikbaar voor een logische gateway met één knoop punt. Zie [gegevens beheer gateway schalen in azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) artikel voor meer informatie.
 
@@ -164,7 +164,7 @@ Als u bijvoorbeeld wilt kopiëren van **een on-premises gegevens archief naar ee
 * Configureer de firewall instellingen van de logische SQL-Server om het IP-adres van de gateway computer toe te voegen aan de lijst met toegestane IP-adressen.
 
 > [!NOTE]
-> Als uw firewall geen uitgaande poort 1433 toestaat, kan de gateway niet rechtstreeks toegang krijgen tot Azure SQL. In dit geval kunt u een [gefaseerde kopie](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) gebruiken om SQL Azure data base/SQL Azure DW. In dit scenario zou u alleen HTTPS (poort 443) nodig hebben voor de verplaatsing van gegevens.
+> Als uw firewall geen uitgaande poort 1433 toestaat, kan de gateway niet rechtstreeks toegang krijgen tot Azure SQL. In dit geval kunt u een [gefaseerde kopie](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) gebruiken voor SQL database/SQL Managed Instance/SQL Azure DW. In dit scenario zou u alleen HTTPS (poort 443) nodig hebben voor de verplaatsing van gegevens.
 >
 >
 
@@ -364,7 +364,7 @@ De volgende tabel bevat beschrijvingen van de kolommen in de lijst met **Gateway
 
 Bewakings eigenschap | Beschrijving
 :------------------ | :----------
-Naam | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway. Knoop punt is een on-premises Windows-computer waarop de gateway is geïnstalleerd. Zie [Data Management Gateway-hoge Beschik baarheid en schaal baarheid](data-factory-data-management-gateway-high-availability-scalability.md)voor meer informatie over het gebruik van meer dan één knoop punt (Maxi maal vier knoop punten) in één logische gateway.
+Name | De naam van de logische gateway en knoop punten die zijn gekoppeld aan de gateway. Knoop punt is een on-premises Windows-computer waarop de gateway is geïnstalleerd. Zie [Data Management Gateway-hoge Beschik baarheid en schaal baarheid](data-factory-data-management-gateway-high-availability-scalability.md)voor meer informatie over het gebruik van meer dan één knoop punt (Maxi maal vier knoop punten) in één logische gateway.
 Status | Status van de logische gateway en de gateway knooppunten. Voor beeld: online/offline/beperkt/etc. Zie de sectie [Gateway status](#gateway-status) voor meer informatie over deze statussen.
 Versie | Hier wordt de versie van de logische gateway en elk gateway knooppunt weer gegeven. De versie van de logische gateway wordt bepaald op basis van de versie van de knoop punten in de groep. Als er knoop punten met verschillende versies in de installatie van de logische gateway zijn, hebben alleen de knoop punten met hetzelfde versie nummer als de logische gateway goed functioneren. Andere bevinden zich in de beperkte modus en moeten hand matig worden bijgewerkt (alleen als de automatische update mislukt).
 Beschikbaar geheugen | Beschikbaar geheugen op een gateway-knoop punt. Deze waarde is een bijna realtime moment opname.
@@ -543,4 +543,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [gegevens verplaatsen tussen on-premises en gegevens opslag in de Cloud](data-factory-move-data-between-onprem-and-cloud.md) . In de walkthrough maakt u een pijp lijn die gebruikmaakt van de gateway om gegevens te verplaatsen van een on-premises SQL Server Data Base naar een Azure-Blob.
+* Zie [gegevens verplaatsen tussen on-premises en gegevens opslag in de Cloud](data-factory-move-data-between-onprem-and-cloud.md) . In de walkthrough maakt u een pijp lijn die gebruikmaakt van de gateway om gegevens van een SQL Server Data Base naar een Azure-Blob te verplaatsen.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42443cac199c4ba9a5df25e13393bb2103cb340e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585883"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205072"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Een Application Gateway ingangs controller (AGIC) installeren met behulp van een nieuwe Application Gateway
 
@@ -38,7 +38,7 @@ Uw [Azure Cloud shell](https://shell.azure.com/) beschikt al over alle benodigde
 
 ## <a name="create-an-identity"></a>Een identiteit maken
 
-Volg de onderstaande stappen om een [Service-Principal-object](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)voor Azure Active Directory (Aad) te maken. Noteer de `appId`waarden, `password`en, `objectId` en deze worden in de volgende stappen gebruikt.
+Volg de onderstaande stappen om een [Service-Principal-object](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)voor Azure Active Directory (Aad) te maken. Noteer de `appId` waarden, `password` en, en `objectId` deze worden in de volgende stappen gebruikt.
 
 1. AD-service-principal maken ([meer informatie over RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
     ```azurecli
@@ -46,14 +46,14 @@ Volg de onderstaande stappen om een [Service-Principal-object](https://docs.micr
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    De `appId` waarden `password` en van de JSON-uitvoer worden in de volgende stappen gebruikt
+    De `appId` `password` waarden en van de JSON-uitvoer worden in de volgende stappen gebruikt
 
 
-1. Gebruik de `appId` van de vorige opdracht uit om de `objectId` nieuwe service-principal op te halen:
+1. Gebruik de `appId` van de vorige opdracht uit om de nieuwe service-principal op te halen `objectId` :
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    De uitvoer van deze opdracht is `objectId`, die wordt gebruikt in de onderstaande Azure Resource Manager sjabloon
+    De uitvoer van deze opdracht is `objectId` , die wordt gebruikt in de onderstaande Azure Resource Manager sjabloon
 
 1. Maak later het parameter bestand dat wordt gebruikt in de implementatie van de Azure Resource Manager sjabloon.
     ```bash
@@ -66,7 +66,7 @@ Volg de onderstaande stappen om een [Service-Principal-object](https://docs.micr
     }
     EOF
     ```
-    Als u een met **RBAC** ingeschakeld cluster wilt implementeren `aksEnabledRBAC` , stelt u het veld in op`true`
+    Als u een met **RBAC** ingeschakeld cluster wilt implementeren, stelt `aksEnableRBAC` u het veld in op`true`
 
 ## <a name="deploy-components"></a>Onderdelen implementeren
 Met deze stap worden de volgende onderdelen aan uw abonnement toegevoegd:
@@ -82,7 +82,7 @@ Met deze stap worden de volgende onderdelen aan uw abonnement toegevoegd:
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. Implementeer de Azure Resource Manager-sjabloon `az cli`met. Dit kan vijf minuten duren.
+1. Implementeer de Azure Resource Manager-sjabloon met `az cli` . Dit kan vijf minuten duren.
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,7 +99,7 @@ Met deze stap worden de volgende onderdelen aan uw abonnement toegevoegd:
             --parameters parameters.json
     ```
 
-1. Zodra de implementatie is voltooid, downloadt u de implementatie-uitvoer naar `deployment-outputs.json`een bestand met de naam.
+1. Zodra de implementatie is voltooid, downloadt u de implementatie-uitvoer naar een bestand met de naam `deployment-outputs.json` .
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory pod-identiteit biedt toegang tot [Azure Resource Manager (arm)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)op basis van tokens.
 
   Met de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity) worden de volgende onderdelen toegevoegd aan uw Kubernetes-cluster:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
    * Onderdeel [Managed Identity controller (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
    * [NMI-onderdeel (node Managed Identity)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
@@ -144,9 +144,9 @@ De AAD pod-identiteit voor uw cluster installeren:
      ```
 
 ### <a name="install-helm"></a>Helm installeren
-[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is een pakket beheerder voor Kubernetes. We gebruiken dit om het `application-gateway-kubernetes-ingress` pakket te installeren:
+[Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) is een pakket beheerder voor Kubernetes. We gebruiken dit om het pakket te installeren `application-gateway-kubernetes-ingress` :
 
-1. Installeer [helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer het volgende uit om `application-gateway-kubernetes-ingress` het helm-pakket toe te voegen:
+1. Installeer [helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) en voer het volgende uit om het helm-pakket toe te voegen `application-gateway-kubernetes-ingress` :
 
     - *RBAC ingeschakeld* AKS-cluster
 
@@ -237,7 +237,7 @@ De AAD pod-identiteit voor uw cluster installeren:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Bewerk de zojuist gedownloade helm-config. yaml en vul de `appgw` secties `armAuth`in en.
+1. Bewerk de zojuist gedownloade helm-config. yaml en vul de secties in `appgw` en `armAuth` .
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -254,12 +254,12 @@ De AAD pod-identiteit voor uw cluster installeren:
      - `appgw.subscriptionId`: De ID van het Azure-abonnement waarin Application Gateway zich bevindt. Voorbeeld: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: De naam van de Azure-resource groep waarin Application Gateway is gemaakt. Voorbeeld: `app-gw-resource-group`
      - `appgw.name`: De naam van de Application Gateway. Voorbeeld: `applicationgatewayd0f0`
-     - `appgw.shared`: Deze Booleaanse vlag moet worden standaard ingesteld op `false`. Ingesteld op `true` moet u een [gedeelde Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)nodig hebben.
+     - `appgw.shared`: Deze Booleaanse vlag moet worden standaard ingesteld op `false` . Ingesteld op `true` moet u een [gedeelde Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)nodig hebben.
      - `kubernetes.watchNamespace`: Geef de naam ruimte op die AGIC moet volgen. Dit kan een enkele teken reeks waarde zijn of een door komma's gescheiden lijst met naam ruimten.
     - `armAuth.type`: mogelijk `aadPodIdentity` of`servicePrincipal`
     - `armAuth.identityResourceID`: Resource-ID van de door Azure beheerde identiteit
     - `armAuth.identityClientId`: De client-ID van de identiteit. Zie hieronder voor meer informatie over identiteiten
-    - `armAuth.secretJSON`: Alleen vereist wanneer het geheim type van de Service-Principal `armAuth.type` is gekozen (wanneer `servicePrincipal`is ingesteld op) 
+    - `armAuth.secretJSON`: Alleen vereist wanneer het geheim type van de Service-Principal is gekozen (wanneer `armAuth.type` is ingesteld op `servicePrincipal` ) 
 
 
    > [!NOTE]

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720500"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195068"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Gegevens verwerving en uitleg van het team data Science process
 
@@ -24,7 +24,7 @@ In dit artikel vindt u een overzicht van de doelen, taken en producten die zijn 
 
    1. **Inzicht in het bedrijf**
    2. **Gegevens verzamelen en begrijpen**
-   3. **Modelleren**
+   3. **Modellen maken**
    4. **Implementatie**
    5. **Aanvaarding van de klant**
 
@@ -55,7 +55,7 @@ TDSP biedt een geautomatiseerd hulp programma met de naam [idee](https://github.
 Nadat u tevreden bent met de kwaliteit van de gereinigde gegevens, is de volgende stap het beter inzicht te krijgen in de patronen die inherent zijn aan de gegevens. Deze gegevens analyse helpt u bij het kiezen en ontwikkelen van een geschikt voorspellend model voor uw doel. Zoek naar bewijs voor het goed verbonden met de gegevens met het doel. Bepaal vervolgens of er voldoende gegevens zijn om door te gaan met de volgende model stappen. Dit proces wordt vaak herhaald. Mogelijk moet u nieuwe gegevens bronnen met nauw keurigere of meer relevante gegevens vinden om de gegevensset die in de vorige fase is geïdentificeerd, te verbeteren. 
 
 ### <a name="set-up-a-data-pipeline"></a>Een gegevens pijplijn instellen
-Naast de eerste opname en reiniging van de gegevens moet u doorgaans een proces instellen om nieuwe gegevens te scoren of de gegevens regel matig te vernieuwen als onderdeel van een doorlopend leer proces. Score kan worden voltooid met een gegevens pijplijn of werk stroom. Het [verplaatsen van gegevens van een on-premises SQL Server-instantie naar Azure SQL database met Azure Data Factory](move-sql-azure-adf.md) artikel geeft een voor beeld van het instellen van een pijp lijn met [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
+Naast de eerste opname en reiniging van de gegevens moet u doorgaans een proces instellen om nieuwe gegevens te scoren of de gegevens regel matig te vernieuwen als onderdeel van een doorlopend leer proces. Score kan worden voltooid met een gegevens pijplijn of werk stroom. Het [verplaatsen van gegevens van een SQL Server-exemplaar naar Azure SQL database met Azure Data Factory](move-sql-azure-adf.md) artikel geeft een voor beeld van het instellen van een pijp lijn met [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
 In deze fase ontwikkelt u een oplossings architectuur van de gegevens pijplijn. U ontwikkelt de pijp lijn parallel met de volgende fase van het data Science-project. Afhankelijk van de behoeften van uw bedrijf en de beperkingen van uw bestaande systemen waarin deze oplossing wordt geïntegreerd, kan de pijp lijn een van de volgende opties zijn: 
 
@@ -63,7 +63,7 @@ In deze fase ontwikkelt u een oplossings architectuur van de gegevens pijplijn. 
    * Streaming of realtime 
    * Een hybride 
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 Hieronder vindt u de producten in deze fase:
 
    * [Rapport gegevens kwaliteit](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): dit rapport bevat gegevens overzichten, de relaties tussen de verschillende kenmerken en doelen, de classificatie van variabelen en meer. Het hulp programma voor het [idee](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) dat is opgegeven als onderdeel van TDSP kan dit rapport snel genereren voor elke tabellaire gegevensset, zoals een CSV-bestand of een relationele tabel. 
@@ -76,7 +76,7 @@ Hier vindt u koppelingen naar elke stap in de levens cyclus van de TDSP:
 
    1. [Inzicht in het bedrijf](lifecycle-business-understanding.md)
    2. [Gegevens verzamelen en begrijpen](lifecycle-data.md)
-   3. [Modelleren](lifecycle-modeling.md)
+   3. [Modellen maken](lifecycle-modeling.md)
    4. [Implementatie](lifecycle-deployment.md)
    5. [Aanvaarding van de klant](lifecycle-acceptance.md)
 

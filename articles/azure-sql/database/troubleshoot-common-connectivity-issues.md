@@ -13,14 +13,15 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 34c790ee77c05e9e8c5a57a23e153bd9898c1cff
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045555"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188057"
 ---
-# <a name="troubleshooting-transient-connection-errors"></a>Problemen met tijdelijke verbindings fouten oplossen
+# <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Tijdelijke verbindings fouten in SQL Database en SQL Managed instance oplossen
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 In dit artikel wordt beschreven hoe u verbindings fouten en tijdelijke fouten voor komt, oplost en verhelpt die uw client toepassing tegen komt wanneer deze communiceert met Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics. Meer informatie over het configureren van de logica voor opnieuw proberen, het bouwen van de connection string en het aanpassen van andere Verbindings instellingen.
@@ -29,7 +30,7 @@ In dit artikel wordt beschreven hoe u verbindings fouten en tijdelijke fouten vo
 
 ## <a name="transient-errors-transient-faults"></a>Tijdelijke fouten (tijdelijke storingen)
 
-Een tijdelijke fout, ook wel bekend als een tijdelijke fout, heeft een onderliggende oorzaak die binnenkort wordt opgelost. Een incidentele oorzaak van tijdelijke fouten is wanneer het Azure-systeem snel hardwarebronnen verschuift voor een betere taak verdeling van verschillende werk belastingen. De meeste van deze herconfiguratie gebeurtenissen eindigen in minder dan 60 seconden. Tijdens deze herconfiguraties periode hebt u mogelijk verbindings problemen met SQL Database. Toepassingen die verbinding maken met SQL Database moeten worden gebouwd om deze tijdelijke fouten te verwachten. Als u deze wilt afhandelen, implementeert u de logica voor opnieuw proberen in hun code in plaats van deze te halen aan gebruikers als toepassings fouten.
+Een tijdelijke fout, ook wel bekend als een tijdelijke fout, heeft een onderliggende oorzaak die binnenkort wordt opgelost. Een incidentele oorzaak van tijdelijke fouten is wanneer het Azure-systeem snel hardwarebronnen verschuift voor een betere taak verdeling van verschillende werk belastingen. De meeste van deze herconfiguratie gebeurtenissen eindigen in minder dan 60 seconden. Tijdens deze herconfiguraties periode hebt u mogelijk problemen met het maken van verbinding met uw data base in SQL Database. Toepassingen die verbinding maken met uw data base moeten worden gebouwd om deze tijdelijke fouten te verwachten. Als u deze wilt afhandelen, implementeert u de logica voor opnieuw proberen in hun code in plaats van deze te halen aan gebruikers als toepassings fouten.
 
 Als uw client programma ADO.NET gebruikt, wordt het programma op de tijdelijke fout gemeld door het genereren van **SQLException**.
 
@@ -37,13 +38,13 @@ Als uw client programma ADO.NET gebruikt, wordt het programma op de tijdelijke f
 
 ### <a name="connection-vs-command"></a>Verbinding versus opdracht
 
-Probeer de SQL-verbinding opnieuw of breng deze opnieuw tot stand, afhankelijk van het volgende:
+Voer de SQL Database en de SQL Managed instance-verbinding opnieuw uit, afhankelijk van het volgende:
 
 - **Er is een tijdelijke fout opgetreden tijdens een verbinding probeer**
 
 Probeer de verbinding na een vertraging van enkele seconden opnieuw.
 
-- **Er is een tijdelijke fout opgetreden tijdens een SQL-query opdracht**
+- **Er treedt een tijdelijke fout op tijdens een query opdracht van SQL Database en SQL Managed instance**
 
 Voer de opdracht niet onmiddellijk opnieuw uit. In plaats daarvan kunt u na een vertraging de verbinding tot stand brengen. Voer de opdracht vervolgens opnieuw uit.
 
@@ -51,15 +52,15 @@ Voer de opdracht niet onmiddellijk opnieuw uit. In plaats daarvan kunt u na een 
 
 ## <a name="retry-logic-for-transient-errors"></a>Pogingslogica voor tijdelijke problemen
 
-Client Programma's die af en toe een tijdelijke fout ondervinden, zijn robuuster wanneer ze logica voor nieuwe pogingen bevatten. Wanneer uw programma communiceert met SQL Database via middleware van een derde partij, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
+Client Programma's die af en toe een tijdelijke fout ondervinden, zijn robuuster wanneer ze logica voor nieuwe pogingen bevatten. Wanneer uw programma communiceert met uw data base in SQL Database via middleware van derden, vraagt u de leverancier of de middleware logica voor tijdelijke fouten bevat.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
 ### <a name="principles-for-retry"></a>Principes voor opnieuw proberen
 
 - Als de fout tijdelijk is, probeert u opnieuw een verbinding te openen.
-- Voer niet rechtstreeks een SQL- `SELECT` instructie opnieuw uit die is mislukt met een tijdelijke fout. Maak in plaats daarvan een nieuwe verbinding tot stand en probeer het opnieuw `SELECT` .
-- Wanneer een SQL `UPDATE` -instructie mislukt met een tijdelijke fout, moet u een nieuwe verbinding maken voordat u de update opnieuw probeert uit te voeren. De logica voor opnieuw proberen moet ervoor zorgen dat de hele database transactie is voltooid of dat de hele trans actie wordt teruggedraaid.
+- Probeer niet rechtstreeks een instructie SQL Database of SQL Managed instance uit `SELECT` te voeren die is mislukt met een tijdelijke fout. Maak in plaats daarvan een nieuwe verbinding tot stand en probeer het opnieuw `SELECT` .
+- Wanneer een SQL Database of SQL Managed instance `UPDATE` -instructie mislukt met een tijdelijke fout, moet u een nieuwe verbinding maken voordat u de update opnieuw probeert uit te voeren. De logica voor opnieuw proberen moet ervoor zorgen dat de hele database transactie is voltooid of dat de hele trans actie wordt teruggedraaid.
 
 ### <a name="other-considerations-for-retry"></a>Andere overwegingen voor nieuwe pogingen
 
@@ -78,8 +79,8 @@ Het is ook mogelijk dat u een maximum aantal nieuwe pogingen wilt instellen voor
 
 Code voorbeelden met de logica voor nieuwe pogingen zijn beschikbaar op:
 
-- [Flexibel verbinding maken met SQL via ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Flexibel verbinding maken met SQL via PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Maak robuuste verbinding met Azure SQL met ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Maak robuuste verbinding met Azure SQL met PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -126,7 +127,7 @@ Als u deze test praktisch wilt uitvoeren, herkent het programma een runtime-para
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>.NET SqlConnection-para meters voor nieuwe verbinding
 
-Als uw client programma verbinding maakt met SQL Database met behulp van de .NET Framework-klasse **System. data. SqlClient. SqlConnection**, gebruikt u .net 4.6.1 of hoger (of .net core), zodat u de nieuwe functie verbinding opnieuw kunt gebruiken. Zie [deze webpagina](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)voor meer informatie over de functie.
+Als uw client programma verbinding maakt met uw data base in SQL Database met behulp van de .NET Framework Class **System. data. SqlClient. SqlConnection**, gebruikt u .net 4.6.1 of hoger (of .net core), zodat u de nieuwe functie verbinding opnieuw kunt gebruiken. Zie [deze webpagina](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection)voor meer informatie over de functie.
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -159,13 +160,13 @@ Stel dat uw toepassing een robuuste, aangepaste logica voor opnieuw proberen hee
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
-## <a name="connections-to-sql-database"></a>Verbindingen met SQL Database
+## <a name="connections-to-your-database-in-sql-database"></a>Verbindingen met uw data base in SQL Database
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
 ### <a name="connection-connection-string"></a>Verbinding: verbindings reeks
 
-De connection string die nodig is om verbinding te maken met SQL Database, wijkt enigszins af van de teken reeks die wordt gebruikt om verbinding te maken met SQL Server. U kunt de connection string voor uw data base kopiëren vanuit de [Azure Portal](https://portal.azure.com/).
+De connection string die nodig is om verbinding te maken met uw data base, wijkt enigszins af van de teken reeks die wordt gebruikt om verbinding te maken met SQL Server. U kunt de connection string voor uw data base kopiëren vanuit de [Azure Portal](https://portal.azure.com/).
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -179,7 +180,7 @@ Als u het IP-adres vergeet te configureren, mislukt het programma met een handig
 
 [!INCLUDE [sql-database-include-ip-address-22-portal](../../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
-Zie [firewall instellingen configureren op SQL database](firewall-configure.md)voor meer informatie.
+Zie [firewall instellingen configureren in SQL database](firewall-configure.md)voor meer informatie.
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
 ### <a name="connection-ports"></a>Verbinding: poorten
@@ -193,7 +194,7 @@ Als uw client programma bijvoorbeeld wordt gehost op een Windows-computer, kunt 
 
 Als uw client programma wordt gehost op een virtuele machine (VM) van Azure, Lees [dan de poorten na 1433 voor ADO.NET 4,5 en SQL database](adonet-v12-develop-direct-route-ports.md).
 
-Zie [Azure SQL database firewall](firewall-configure.md)voor achtergrond informatie over de configuratie van poorten en IP-adressen Azure SQL database.
+Zie [Azure SQL database firewall](firewall-configure.md)voor achtergrond informatie over de configuratie van poorten en IP-adressen in uw data base.
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
@@ -222,7 +223,7 @@ Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voere
 
 ### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnostische gegevens: testen of hulpprogram ma's verbinding kunnen maken
 
-Als uw programma geen verbinding kan maken met SQL Database, moet u een diagnostische optie proberen om verbinding te maken met een hulp programma. In het ideale geval maakt het hulp programma verbinding met behulp van de bibliotheek die uw programma gebruikt.
+Als uw programma geen verbinding kan maken met uw data base in SQL Database, moet u een diagnostische optie proberen om verbinding te maken met een hulp programma. In het ideale geval maakt het hulp programma verbinding met behulp van de bibliotheek die uw programma gebruikt.
 
 Op elke Windows-computer kunt u deze hulpprogram ma's proberen:
 
@@ -242,7 +243,7 @@ In Linux kunnen de volgende hulpprogram ma's handig zijn:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Wijzig de voorbeeld waarde in uw IP-adres.
 
-In Windows kan het hulp programma [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) handig zijn. Hier volgt een voor beeld van de uitvoering van een query op de poort situatie op SQL Database en die is uitgevoerd op een laptop computer:
+In Windows kan het hulp programma [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) handig zijn. Hier volgt een voor beeld van de uitvoering van een query naar de poort situatie op een data base in SQL Database en die werd uitgevoerd op een laptop computer:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -326,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Enter prise-bibliotheek 6
 
-Enter prise Library 6 (EntLib60) is een framework van .NET-klassen waarmee u krachtige clients van Cloud Services kunt implementeren, een van de SQL Database-Service. Zie [Enter prise Library 6-April 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)om onderwerpen te vinden die zijn gericht op elk gebied waarin EntLib60 kan worden geholpen.
+Enter prise Library 6 (EntLib60) is een framework van .NET-klassen waarmee u krachtige clients van Cloud Services kunt implementeren, een van SQL Database. Zie [Enter prise Library 6-April 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)om onderwerpen te vinden die zijn gericht op elk gebied waarin EntLib60 kan worden geholpen.
 
 Pogings logica voor het afhandelen van tijdelijke fouten is één gebied waarin EntLib60 kan helpen. Zie voor meer informatie [4-Perseverance, geheim van alle Triumphs: gebruik het toepassings blok voor de tijdelijke fout afhandeling](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 

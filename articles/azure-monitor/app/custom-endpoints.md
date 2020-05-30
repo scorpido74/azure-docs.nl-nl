@@ -3,16 +3,17 @@ title: Azure-toepassing Insights standaard SDK-eind punten overschrijven
 description: Wijzig de standaard Azure Monitor Application Insights SDK-eind punten voor regio's als Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.custom: references_regions
+ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629181"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194837"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights standaard eindpunten overschrijven
 
-Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen vereisen het aanpassen van de voorbeeld code en het vervangen van `QuickPulse_Endpoint_Address`de `TelemetryChannel_Endpoint_Address`waarden van `Profile_Query_Endpoint_address` de tijdelijke aanduidingen voor, en met de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
+Als u gegevens van Application Insights naar bepaalde regio's wilt verzenden, moet u de standaard eindpunt adressen onderdrukken. Elke SDK vereist iets verschillende wijzigingen, die allemaal in dit artikel worden beschreven. Deze wijzigingen vereisen het aanpassen van de voorbeeld code en het vervangen van de waarden van de tijdelijke aanduidingen voor `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` en `Profile_Query_Endpoint_address` met de werkelijke eindpunt adressen voor uw specifieke regio. Het einde van dit artikel bevat koppelingen naar de eindpunt adressen voor regio's waarvoor deze configuratie is vereist.
 
 > [!NOTE]
 > [Verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) zijn de nieuwe voorkeurs methode voor het instellen van aangepaste eind punten in Application Insights.
@@ -59,7 +60,7 @@ Wijzig het bestand appSettings. json in uw project als volgt om het belangrijkst
   }
 ```
 
-De waarden voor dynamische metrische gegevens en het eind punt voor de profiel query kunnen alleen worden ingesteld via code. Als u de standaard waarden voor alle eindpunt waarden via code wilt overschrijven, moet u de volgende `ConfigureServices` wijzigingen aanbrengen `Startup.cs` in de methode van het bestand:
+De waarden voor dynamische metrische gegevens en het eind punt voor de profiel query kunnen alleen worden ingesteld via code. Als u de standaard waarden voor alle eindpunt waarden via code wilt overschrijven, moet u de volgende wijzigingen aanbrengen in de `ConfigureServices` methode van het `Startup.cs` bestand:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Voor Azure Functions wordt u nu aangeraden [verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) te gebruiken die zijn ingesteld in de toepassings instellingen van de functie. Als u de toepassings instellingen voor de functie wilt openen vanuit het deel venster functies, selecteert u **instellingen** > **configuratie** > **Toepassings instellingen**. 
+Voor Azure Functions wordt u nu aangeraden [verbindings reeksen](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) te gebruiken die zijn ingesteld in de toepassings instellingen van de functie. Als u de toepassings instellingen voor de functie wilt openen vanuit het deel venster functies, selecteert u **instellingen**  >  **configuratie**  >  **Toepassings instellingen**. 
 
 Naam: `APPLICATIONINSIGHTS_CONNECTION_STRING` waarde:`Connection String Value`
 

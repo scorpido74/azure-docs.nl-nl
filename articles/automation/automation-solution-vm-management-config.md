@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827672"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204386"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen configureren
 
@@ -44,11 +44,15 @@ U kunt de actie richten op een abonnement en resource groep, of een specifieke l
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>De start-en stop actie richten op de VM-lijst
 
-1. Voer het **ScheduledStartStop_Parent** runbook uit met de **actie** die is ingesteld om te **starten**, voeg een door komma's gescheiden lijst met Vm's toe in het parameter veld **VMList** en stel het veld **WHATIF** parameter in op True. Bekijk een voor beeld van uw wijzigingen.
+1. Voer het **ScheduledStartStop_Parent** runbook uit met de **actie** ingesteld op **starten**.
 
-2. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
+2. Voeg een door komma's gescheiden lijst met Vm's (zonder spaties) toe in het parameter veld **VMList** . Een voor beeld van een lijst is `vm1,vm2,vm3` .
 
-3. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
+3. Stel het parameter veld **WHATIF** in op waar.
+
+4. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
+
+5. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
 
     > [!NOTE]
     > De waarde voor **doel-ResourceGroup namen** wordt opgeslagen als de waarden voor `External_Start_ResourceGroupNames` zowel `External_Stop_ResourceGroupNames` en. Voor nadere granulariteit kunt u elk van deze variabelen wijzigen in doel verschillende resource groepen. Voor het starten van actie, gebruiken `External_Start_ResourceGroupNames` en gebruiken `External_Stop_ResourceGroupNames` voor stop actie. Vm's worden automatisch toegevoegd aan de planningen starten en stoppen.
@@ -71,13 +75,17 @@ In een omgeving met twee of meer onderdelen op meerdere Vm's die een gedistribue
 
 1. Voeg een `sequencestart` en een `sequencestop` tag met positieve gehele waarden toe aan vm's die u wilt toevoegen aan de `VMList` para meter.
 
-2. Voer het **SequencedStartStop_Parent** runbook uit met de **actie** die is ingesteld op **starten**, voeg een door komma's gescheiden lijst met Vm's toe in het parameter veld **VMList** en stel **WHATIF** in op True. Bekijk een voor beeld van uw wijzigingen.
+2. Voer het **SequencedStartStop_Parent** runbook uit met de **actie** ingesteld op **starten**.
 
-3. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
+3. Voeg een door komma's gescheiden lijst met Vm's (zonder spaties) toe in het parameter veld **VMList** . Een voor beeld van een lijst is `vm1,vm2,vm3` .
 
-4. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
+4. Stel **WHATIF** in op True. 
 
-5. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u hand matig de **bewakings-en-diagnose/bewaking-Action-groupsrunbook** uit met de para meter ingesteld op **Onwaar**. U kunt ook de automatiserings planning **Sequenced-StartVM** en **Sequence-StopVM** automatisch uitvoeren volgens uw voorgeschreven planning.
+5. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines.
+
+6. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
+
+7. Bekijk een voor beeld van de actie en breng de benodigde wijzigingen aan voordat u implementeert op productie-Vm's. Als u klaar bent, voert u hand matig de **bewakings-en-diagnose/bewaking-Action-groupsrunbook** uit met de para meter ingesteld op **Onwaar**. U kunt ook de automatiserings planning **Sequenced-StartVM** en **Sequence-StopVM** automatisch uitvoeren volgens uw voorgeschreven planning.
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Scenario 3: automatisch starten of stoppen op basis van CPU-gebruik
 

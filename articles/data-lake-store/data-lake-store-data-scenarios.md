@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d6f3a7a5fafc643b346d3df1306820114827049
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536153"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193679"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Azure Data Lake Storage Gen1 gebruiken voor big data vereisten
 
@@ -40,7 +40,7 @@ Dit vertegenwoordigt kleinere gegevens sets die worden gebruikt voor het maken v
 
 | Gegevensbron | Het opnemen met |
 | --- | --- |
-| Lokale computer |<ul> <li>[Azure-Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure-CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Lokale computer |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure-CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Hulp programma AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[DistCp uitgevoerd op HDInsight-cluster](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Gestreamde gegevens
@@ -108,7 +108,7 @@ U kunt de volgende voor beelden bekijken.
 ## <a name="download-data-from-data-lake-storage-gen1"></a>Gegevens downloaden van Data Lake Storage Gen1
 U kunt ook gegevens downloaden of verplaatsen van Azure Data Lake Storage Gen1 voor scenario's zoals:
 
-* Verplaats gegevens naar andere opslag plaatsen naar de interface met uw bestaande gegevens verwerkings pijplijnen. Het is bijvoorbeeld mogelijk dat u gegevens wilt verplaatsen van Data Lake Storage Gen1 naar Azure SQL Database of een on-premises SQL Server.
+* Verplaats gegevens naar andere opslag plaatsen naar de interface met uw bestaande gegevens verwerkings pijplijnen. Het is bijvoorbeeld mogelijk dat u gegevens wilt verplaatsen van Data Lake Storage Gen1 naar Azure SQL Database of SQL Server.
 * Down load gegevens naar uw lokale computer voor verwerking in IDE-omgevingen tijdens het maken van prototypen van toepassingen.
 
 ![Uitgaande gegevens van Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Uitgaande gegevens van Data Lake Storage Gen1")

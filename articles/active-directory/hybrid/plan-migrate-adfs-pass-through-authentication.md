@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528639"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219037"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migreren van Federatie naar Pass-Through-verificatie voor Azure Active Directory
 
@@ -25,6 +25,9 @@ In dit artikel wordt beschreven hoe u uw organisatie domeinen kunt verplaatsen v
 
 > [!NOTE]
 > Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](how-to-connect-staged-rollout.md) biedt een alternatieve manier om te testen en geleidelijk te migreren van Federatie naar Cloud verificatie met behulp van Pass-Through-verificatie.
+> 
+> Als u van plan bent gefaseerde implementatie te gebruiken, moet u de functies voor gefaseerde implementatie uitschakelen zodra u klaar bent met knippen.  Zie voor meer informatie [migreren naar Cloud verificatie met behulp van gefaseerde implementatie](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Vereisten voor het migreren naar Pass-Through-verificatie
 
@@ -223,7 +226,7 @@ U hebt uw oplossing gepland. Nu kunt u het implementeren. Implementatie omvat de
 
 Als u wilt dat uw apparaten naadloze SSO gebruiken, moet u een Azure AD-URL toevoegen aan de intranet zone-instellingen van gebruikers met behulp van een groeps beleid in Active Directory.
 
-Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http\/\/: contoso/** wijst toe aan de intranet zone en **http:\/\/intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
+Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http: \/ \/ Contoso/** wijst toe aan de intranet zone en **http: \/ \/ intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
 
 Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) te voeren.
 
@@ -269,7 +272,7 @@ Wijzig eerst de aanmeldings methode:
 
 Volgende. aanvullende verificatie methoden implementeren:
 
-1. Ga in het Azure Portal naar **Azure Active Directory** > **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
+1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
 2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** .
 3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
 
@@ -331,7 +334,7 @@ Schakel eerst Pass-Through-verificatie in:
 
 Implementeer vervolgens extra verificatie agenten:
 
-1. Ga in het Azure Portal naar **Azure Active Directory** > **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
+1. Ga in het Azure Portal naar **Azure Active Directory**  >  **Azure AD CONNECT**en selecteer vervolgens **Pass-Through-verificatie**.
 2. Selecteer op de pagina **Pass-Through-verificatie** de knop **downloaden** . 
 3. Selecteer op de pagina **agent downloaden** de optie **voor waarden accepteren en downloaden**.
  
@@ -359,7 +362,7 @@ De conversie volt ooien met behulp van de Azure AD Power shell-module:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Selecteer in de Azure AD-Portal **Azure Active Directory** > **Azure AD CONNECT**.
+3. Selecteer in de Azure AD-Portal **Azure Active Directory**  >  **Azure AD CONNECT**.
 4. Nadat u alle federatieve domeinen hebt geconverteerd, controleert u deze instellingen:
    * **Federatie** is ingesteld op **uitgeschakeld**.
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
@@ -378,7 +381,7 @@ Wanneer uw Tenant federatieve identiteiten heeft gebruikt, werden gebruikers omg
 Pass-Through-verificatie testen:
 
 1. Open Internet Explorer in de InPrivate-modus, zodat naadloze SSO niet automatisch wordt aangemeld.
-2. Ga naar de Office 365-aanmeldings pagina ([https://portal.office.com](https://portal.office.com/)).
+2. Ga naar de Office 365-aanmeldings pagina ( [https://portal.office.com](https://portal.office.com/) ).
 3. Voer een UPN van de gebruiker in en selecteer **volgende**. Zorg ervoor dat u de UPN van een hybride gebruiker invoert die is gesynchroniseerd vanaf uw on-premises Active Directory-exemplaar en die eerder Federated Authentication heeft gebruikt. Een pagina waarop u de gebruikers naam en het wacht woord opgeeft, wordt weer gegeven:
 
    ![Scherm opname van de aanmeldings pagina waarin u een gebruikers naam invoert](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
@@ -396,8 +399,8 @@ Naadloze SSO testen:
 1. Meld u aan bij een computer die lid is van een domein en die is verbonden met het bedrijfs netwerk.
 2. Ga in Internet Explorer of Chrome naar een van de volgende Url's (Vervang ' Contoso ' door uw domein):
 
-   * https:\/\/MyApps.Microsoft.com/contoso.com
-   * https:\/\/MyApps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ MyApps.Microsoft.com/contoso.com
+   * https: \/ \/ MyApps.Microsoft.com/contoso.onmicrosoft.com
 
    De gebruiker wordt kort omgeleid naar de aanmeldings pagina van Azure AD, waarin het bericht wordt weer gegeven dat u zich probeert aan te melden. De gebruiker wordt niet gevraagd om een gebruikers naam of wacht woord.<br />
 

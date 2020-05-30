@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658639"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221015"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Load Balancer oplossen
 
@@ -28,6 +28,7 @@ In dit artikel worden enkele veelvoorkomende Azure Load Balancer implementatie f
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| Zowel de open bare IP-SKU als de Load Balancer SKU moeten overeenkomen. Zorg ervoor dat Azure Load Balancer en open bare IP Sku's overeenkomen. De standaard-SKU wordt aanbevolen voor productie werkbelastingen. Meer informatie over de [verschillen in sku's](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | Virtuele-machine schaal sets zijn standaard ingesteld op Basic load balancers als SKU niet is opgegeven of zonder standaard open bare Ip's wordt geïmplementeerd. Implementeer de schaalset voor virtuele machines opnieuw met standaard open bare IP-adressen voor de afzonderlijke instanties om ervoor te zorgen Standard Load Balancer is geselecteerd of Selecteer eenvoudigweg een standaard LB bij het implementeren van de schaalset voor virtuele machines vanuit de Azure Portal. |
 |MaxAvailabilitySetsInLoadBalancerReached | De back-end-groep van een Load Balancer kan Maxi maal 150 beschikbaarheids sets bevatten. Als er geen beschikbaarheids sets expliciet zijn gedefinieerd voor uw virtuele machines in de back-endadresgroep, wordt elke virtuele machine in een eigen Beschikbaarheidsset gezet. Implementatie van 150 zelfstandige Vm's zou er dus toe ophouden dat er 150-beschikbaarheids sets zouden zijn, waardoor de limiet wordt bereikt. U kunt een beschikbaarheidsset implementeren en er extra Vm's aan toevoegen als tijdelijke oplossing. |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | Voor basis-SKU load balancer moeten de netwerk interface en de load balancer dezelfde beschikbaarheidsset hebben. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| U kunt niet meer dan één regel voor een gegeven load balancer type (intern, openbaar) met dezelfde back-end-poort en een protocol waarnaar wordt verwezen door dezelfde virtuele-machine schaalset. Werk uw regel bij om deze dubbele regel te maken. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| U kunt niet meer dan één regel voor een gegeven load balancer type (intern, openbaar) met dezelfde back-end-poort en een protocol waarnaar wordt verwezen door dezelfde virtuele-machine schaalset. Werk de regel parameters bij om het maken van deze dubbele regel te wijzigen. |
 |AnotherInternalLoadBalancerExists| U kunt slechts één Load Balancer van het type interne verwijzen naar dezelfde set Vm's/netwerk interfaces in de back-end van de Load Balancer. Werk uw implementatie bij om ervoor te zorgen dat u slechts één Load Balancer van hetzelfde type maakt. |

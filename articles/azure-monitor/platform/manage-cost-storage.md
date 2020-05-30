@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/21/2020
+ms.date: 05/28/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6e6be4cd0f8053d356183a75c5a012dee0bd8c68
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: cded8fef70e22ffebc412ea37898100cda4bb3df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771312"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219025"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -50,7 +50,14 @@ Log Analytics toegewezen clusters zijn verzamelingen van werk ruimten in één b
 
 Het reserverings niveau voor cluster capaciteit wordt geconfigureerd via programmatisch met Azure Resource Manager met behulp van de `Capacity` para meter onder `Sku` . De `Capacity` is opgegeven in eenheden van GB en kan waarden hebben van 1000 GB/dag of meer in stappen van 100 GB/dag. Dit wordt [hier](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)beschreven. Als voor uw cluster een reserve ring nodig is die hoger is dan 2000 GB/dag, neemt u contact met ons op [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
-Omdat de facturering van opgenomen gegevens op het cluster niveau wordt uitgevoerd, hebben werk ruimten die zijn gekoppeld aan een cluster niet langer een prijs categorie. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. Houd er rekening mee dat toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) worden toegepast op het niveau van de werk ruimte vóór deze aggregatie van geaggregeerde gegevens in alle werk ruimten in het cluster. Het bewaren van gegevens wordt nog steeds gefactureerd op het niveau van de werk ruimte. Houd er rekening mee dat het factureren van het cluster begint wanneer het cluster wordt gemaakt, ongeacht of er werk ruimten aan het cluster zijn gekoppeld. 
+Er zijn twee facturerings methoden voor gebruik in een cluster. Deze kunnen worden opgegeven met de `billingType` para meter bij het [configureren van uw cluster](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#cmk-manage). De twee modi zijn: 
+
+1. **Cluster**: in dit geval (dit is de standaard instelling), wordt de facturering voor opgenomen gegevens uitgevoerd op het cluster niveau. De opgenomen gegevens aantallen uit elke werk ruimte die aan een cluster is gekoppeld, worden geaggregeerd voor het berekenen van de dagelijkse factuur voor het cluster. Houd er rekening mee dat toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) worden toegepast op het niveau van de werk ruimte vóór deze aggregatie van geaggregeerde gegevens in alle werk ruimten in het cluster. 
+
+2. **Werk ruimten**: de kosten voor de capaciteits reservering voor uw cluster worden proportioneel toegeschreven aan de werk ruimten in het cluster (na de accounting van toewijzingen per knoop punt van [Azure Security Center](https://docs.microsoft.com/azure/security-center/) voor elke werk ruimte.) Als het totale gegevens volume dat is opgenomen in een werk ruimte voor een dag kleiner is dan de capaciteits reservering, wordt elke werk ruimte gefactureerd voor de gegevens die zijn opgenomen in de capaciteits reservering per GB, waarbij ze een fractie van de capaciteits reservering factureren en het niet-gebruikte deel van de capaciteits reservering wordt gefactureerd aan de cluster bron. Als het totale gegevens volume dat is opgenomen in een werk ruimte voor een dag meer is dan de capaciteits reservering, wordt elke werk ruimte gefactureerd voor een fractie van de capaciteits reservering op basis van de Fractie van de opgenomen gegevens die dag en elke werk ruimte voor een fractie van de opgenomen gegevens boven de capaciteits reservering. Er wordt niets in rekening gebracht voor de cluster resource als het totale gegevens volume dat in een werk ruimte is opgenomen voor een dag de capaciteits reservering overschrijdt.
+
+
+In de facturerings opties van het cluster wordt het bewaren van gegevens op het niveau van de werk ruimte gefactureerd. Houd er rekening mee dat het factureren van het cluster begint wanneer het cluster wordt gemaakt, ongeacht of er werk ruimten aan het cluster zijn gekoppeld. Houd er ook rekening mee dat werk ruimten die zijn gekoppeld aan een cluster geen prijs categorie meer hebben.
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>Schatting van de kosten voor het beheren van uw omgeving 
 
@@ -398,12 +405,13 @@ Als u meer wilt weten over de gegevens bron voor een bepaald gegevens type, vind
 + **AzureDiagnostics**-gegevenstype
   - `AzureDiagnostics | summarize AggregatedValue = count() by ResourceProvider, ResourceId`
 
-### <a name="tips-for-reducing-data-volume"></a>Tips voor het verkleinen van het gegevens volume
+## <a name="tips-for-reducing-data-volume"></a>Tips voor het verkleinen van het gegevens volume
 
 Hieronder vindt u enkele suggesties voor het verkleinen van het aantal logboeken dat wordt verzameld:
 
 | Bron van hoog gegevensvolume | Het gegevensvolume verminderen |
 | -------------------------- | ------------------------- |
+| Container inzichten         | [Configureer container Insights](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost) om alleen de gegevens te verzamelen die u nodig hebt. |
 | Beveiligingsgebeurtenissen            | Selecteer [normale of minimale beveiligingsgebeurtenissen](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> Wijzig het beleid voor beveiligingscontrole zodat alleen de gewenste gebeurtenissen worden verzameld. Controleer vooral de noodzaak voor het verzamelen van gebeurtenissen voor <br> - [filterplatform controleren](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [register controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [bestandssysteem controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [kernel-object controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [greepbewerking controleren](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -Verwissel bare opslag controleren |
 | Prestatiemeteritems       | Wijzig de [Prestatiemeteritemconfiguratie](data-sources-performance-counters.md) in: <br> - Frequentie van het verzamelen van gegevens beperken <br> - Aantal prestatiemeteritems beperken |
 | Gebeurtenislogboeken                 | Wijzig [Configuratie van gebeurtenislogboek](data-sources-windows-events.md) in: <br> - Aantal verzamelde gebeurtenislogboeken beperken <br> - Alleen vereiste gebeurtenisniveaus verzamelen. Bijvoorbeeld, gebeurtenissen op *informatie*niveau niet verzamelen |

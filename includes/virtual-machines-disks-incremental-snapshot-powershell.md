@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3eec6583ebdff35d7e40d2eec305a947de0cb87c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d63ec0c2d82ec316a61771b4642731c932b045cf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299449"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84224938"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -32,11 +32,11 @@ U kunt Azure PowerShell gebruiken om een incrementele moment opname te maken. U 
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Als dat is gebeurd, meldt u zich aan bij `az login`uw Power shell-sessie met.
+Als dat is gebeurd, meldt u zich aan bij uw Power shell-sessie met `Connect-AzAccount` .
 
-Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de `-Incremental` para meter in en geeft u die als een variabele `-Snapshot` door aan [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) door de para meter.
+Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de `-Incremental` para meter in en geeft u die als een variabele door aan [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) door de `-Snapshot` para meter.
 
-Vervang `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, en `<yourDesiredSnapShotNameHere>` met uw waarden, vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
+Vervang `<yourDiskNameHere>` , `<yourResourceGroupNameHere>` , en `<yourDesiredSnapShotNameHere>` met uw waarden, vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -47,9 +47,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen `UniqueId` van de eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` Eigenschappen van moment opnamen. `SourceResourceId`is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId`is de waarde die wordt overgenomen van de `UniqueId` eigenschap van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, verandert de waarde van de `UniqueId` eigenschap.
 
-U kunt en `SourceResourceId` `SourceUniqueId` gebruiken om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang `<yourResourceGroupNameHere>` door uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
+U kunt `SourceResourceId` en gebruiken `SourceUniqueId` om een lijst te maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang door `<yourResourceGroupNameHere>` uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>

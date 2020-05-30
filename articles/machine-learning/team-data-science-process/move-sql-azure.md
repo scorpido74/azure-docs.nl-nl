@@ -1,6 +1,6 @@
 ---
 title: Gegevens verplaatsen naar een Azure SQL Database-team data Science process
-description: Verplaats gegevens uit platte bestanden (CSV-of TSV-indelingen) of van gegevens die zijn opgeslagen in een on-premises SQL Server naar een Azure SQL Database.
+description: Gegevens verplaatsen van platte bestanden (CSV-of TSV-indeling) of van gegevens die zijn opgeslagen in een SQL Server naar een Azure SQL Database.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722455"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194392"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Gegevens voor Azure Machine Learning verplaatsen naar een Azure SQL-database
 
-In dit artikel vindt u een overzicht van de opties voor het verplaatsen van gegevens uit platte bestanden (CSV-of TSV-indelingen) of van gegevens die zijn opgeslagen in een on-premises SQL Server naar een Azure SQL Database. Deze taken voor het verplaatsen van gegevens naar de Cloud maken deel uit van het team data Science process.
+In dit artikel vindt u een overzicht van de opties voor het verplaatsen van gegevens uit platte bestanden (CSV-of TSV-indeling) of van gegevens die zijn opgeslagen in SQL Server naar een Azure SQL Database. Deze taken voor het verplaatsen van gegevens naar de Cloud maken deel uit van het team data Science process.
 
-Zie voor een onderwerp waarin de opties voor het verplaatsen van gegevens naar een on-premises SQL Server voor Machine Learning, [gegevens verplaatsen naar SQL Server op een virtuele machine van Azure](move-sql-server-virtual-machine.md).
+Zie [gegevens verplaatsen naar SQL Server op een virtuele machine van Azure](move-sql-server-virtual-machine.md)voor een onderwerp waarin de opties worden beschreven voor het verplaatsen van gegevens naar SQL Server voor machine learning.
 
 De volgende tabel bevat een overzicht van de opties voor het verplaatsen van gegevens naar een Azure SQL Database.
 
@@ -41,7 +41,7 @@ Voor de procedures die hier worden beschreven, is het volgende vereist:
 
 **Gegevens**: de migratie processen worden gedemonstreerd met behulp van de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/). De NYC taxi-gegevensset bevat informatie over reis gegevens en beurzen en is beschikbaar in Azure Blob-opslag: [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
-U kunt de procedures die hier worden beschreven, aanpassen aan een set met uw eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw on-premises SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload). Deze instructies gelden voor een SQL Server op een virtuele machine van Azure, maar de procedure voor het uploaden naar de on-premises SQL Server is hetzelfde.
+U kunt de procedures die hier worden beschreven, aanpassen aan een set met uw eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 
 ## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Gegevens verplaatsen van een bron met een plat bestand naar een Azure SQL Database
 Gegevens in platte bestanden (CSV of TSV) kunnen worden verplaatst naar een Azure SQL Database met behulp van een Bulk Insert SQL-query.
@@ -49,8 +49,8 @@ Gegevens in platte bestanden (CSV of TSV) kunnen worden verplaatst naar een Azur
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL-query bulksgewijs invoegen
 De stappen voor de procedure met behulp van de bulksgewijze insert SQL-query zijn vergelijkbaar met de instructies voor het verplaatsen van gegevens van een platte bestands bron naar SQL Server op een virtuele machine van Azure. Zie [BULKSGEWIJZE SQL-query invoegen](move-sql-server-virtual-machine.md#insert-tables-bulkquery)voor meer informatie.
 
-## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Gegevens verplaatsen van on-premises SQL Server naar een Azure SQL Database
-Als de bron gegevens worden opgeslagen in een on-premises SQL Server, zijn er verschillende mogelijkheden om de gegevens naar een Azure SQL Database te verplaatsen:
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Gegevens verplaatsen van SQL Server naar een Azure SQL Database
+Als de bron gegevens zijn opgeslagen in SQL Server, zijn er verschillende mogelijkheden om de gegevens naar een Azure SQL Database te verplaatsen:
 
 1. [Exporteren naar plat bestand](#export-flat-file)
 2. [Wizard Migratie SQL Database](#insert-tables-bcp)
@@ -69,6 +69,6 @@ De stappen voor het gebruik van de wizard SQL Database Migration zijn vergelijkb
 De stappen voor het gebruik van back-up en herstel van de Data Base zijn vergelijkbaar met die in de [back-up en herstel bewerking van de data base](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Meer informatie over het verplaatsen van gegevens naar een Azure SQL Database met Azure Data Factory (ADF) in dit onderwerp, [Verplaats gegevens van een on-premises SQL-Server naar SQL Azure met Azure Data Factory](move-sql-azure-adf.md). In dit onderwerp wordt beschreven hoe u ADF gebruikt om gegevens van een on-premises SQL Server Data Base te verplaatsen naar een Azure SQL Database via Azure Blob Storage.
+Informatie over het verplaatsen van gegevens naar een Azure SQL Database met Azure Data Factory (ADF) in dit onderwerp kunt u [gegevens verplaatsen van een SQL Server naar SQL Azure met Azure Data Factory](move-sql-azure-adf.md). In dit onderwerp wordt beschreven hoe u ADF gebruikt om gegevens van een SQL Server Data Base te verplaatsen naar een Azure SQL Database via Azure Blob Storage.
 
 U kunt ADF gebruiken wanneer gegevens voortdurend moeten worden gemigreerd met hybride on-premises en Cloud bronnen.  ADF helpt ook wanneer de gegevens trans formaties nodig hebben of nieuwe bedrijfs logica nodig heeft tijdens de migratie. Met ADF kunnen taken worden gepland en gecontroleerd met behulp van eenvoudige JSON-scripts waarmee de verplaatsing van gegevens periodiek wordt beheerd. ADF heeft ook andere mogelijkheden, zoals ondersteuning voor complexe bewerkingen.

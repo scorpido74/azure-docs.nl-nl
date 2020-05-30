@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 270fa8de3346063d047b38132438f8097d87689d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744106"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193564"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -195,7 +195,37 @@ Ja. Meer informatie over het beperken van de band breedte vindt u in deze artike
 * [Capaciteits planning voor het repliceren van virtuele VMware-machines en fysieke servers](site-recovery-plan-capacity-vmware.md)
 * [Capaciteits planning voor het repliceren van virtuele Hyper-V-machines naar Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kan ik replicatie inschakelen met app-consistentie in Linux-servers? 
+Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt door de Azure Site Recovery Mobility agent gebruikt tijdens de app-consistentie. Hieronder vindt u de stappen om deze functie in te scha kelen.
 
+1. Meld u aan als root in de computer.
+2. Wijzig de map naar Azure Site Recovery installatie locatie voor de Mobility-agent. De standaard waarde is '/usr/local/ASR '<br>
+    `# cd /usr/local/ASR`
+3. Wijzig de map naar "" ""//scripts "onder de installatie locatie<br>
+    `# cd VX/scripts`
+4. Maak een bash-shell script met de naam ' customscript.sh ' met uitvoerings machtigingen voor de hoofd gebruiker.<br>
+    a. Het script moet ondersteuning bieden voor '--pre ' en '--post ' (Let op de dubbele streepjes) opdracht regel opties<br>
+    b. Wanneer het script wordt aangeroepen met de optie vooraf, wordt de invoer/uitvoer van de toepassing geblokkeerd en wanneer deze wordt aangeroepen met de post-optie, moet de toepassings invoer/-uitvoer ontdooien.<br>
+    c. Een voorbeeld sjabloon-<br>
+
+    `# cat customscript.sh`<br>
+
+```
+    #!/bin/bash
+
+    if [ $# -ne 1 ]; then
+        echo "Usage: $0 [--pre | --post]"
+        exit 1
+    elif [ "$1" == "--pre" ]; then
+        echo "Freezing app IO"
+        exit 0
+    elif [ "$1" == "--post" ]; then
+        echo "Thawed app IO"
+        exit 0
+    fi
+```
+
+5. Voeg de opdrachten voor invoer/uitvoer in de voor-en na-stap toe voor de toepassingen die app-consistentie vereisen. U kunt ervoor kiezen om een ander script toe te voegen en deze aan te roepen van ' customscript.sh ' met vooraf en post opties.
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Als ik een failover naar Azure krijg, krijg ik dan na een failover toegang tot de Azure-Vm's?

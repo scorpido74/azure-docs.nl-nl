@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51cb46d3ce1b74681c2ee3e53104cc57e73f1c5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136139"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192234"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>E-mail verificatie uitschakelen tijdens de aanmelding van een klant met behulp van een aangepast beleid in Azure Active Directory B2C
 
@@ -28,17 +28,17 @@ Voer de stappen in aan de [slag met aangepast beleid](custom-policy-get-started.
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>De meta gegevens toevoegen aan het zelf-bebevestigde technische profiel
 
-Het technische profiel voor **LocalAccountSignUpWithLogonEmail** is een [zelfbevestigend](self-asserted-technical-profile.md), dat wordt aangeroepen tijdens de registratie stroom. Als u de e-mail verificatie wilt `EnforceEmailVerification` uitschakelen, stelt u de meta gegevens in op ONWAAR. Overschrijf de technische profielen van LocalAccountSignUpWithLogonEmail in het extensie bestand. 
+Het technische profiel voor **LocalAccountSignUpWithLogonEmail** is een [zelfbevestigend](self-asserted-technical-profile.md), dat wordt aangeroepen tijdens de registratie stroom. Als u de e-mail verificatie wilt uitschakelen, stelt `EnforceEmailVerification` u de meta gegevens in op ONWAAR. Overschrijf de technische profielen van LocalAccountSignUpWithLogonEmail in het extensie bestand. 
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Het `ClaimsProviders` element zoeken. Als het element niet bestaat, voegt u het toe.
-1. Voeg de volgende claim provider toe aan `ClaimsProviders` het-element:
+1. Voeg de volgende claim provider toe aan het- `ClaimsProviders` element:
 
 ```XML
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <Item Key="EnforceEmailVerification">false</Item>
       </Metadata>

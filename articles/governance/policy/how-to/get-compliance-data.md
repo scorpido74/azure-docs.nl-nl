@@ -3,12 +3,12 @@ title: Nalevings gegevens voor beleid ophalen
 description: Azure Policy evaluaties en effecten bepalen de naleving. Meer informatie over hoe u de compatibiliteits Details van uw Azure-resources kunt ophalen.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747093"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204834"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Compatibiliteits gegevens van Azure-resources ophalen
 
@@ -148,6 +148,9 @@ Het nalevings percentage wordt bepaald door het verdelen van de **compatibele** 
 Het _totale aantal resources_ wordt gedefinieerd als de som van de **compatibele**, **niet-compatibele**en **conflicterende** resources. De algemene compatibiliteits aantallen zijn de som van afzonderlijke resources die **compatibel** zijn gedeeld door de som van alle afzonderlijke resources. In de onderstaande afbeelding zijn er 20 afzonderlijke resources die van toepassing zijn en slechts één **niet-compatibel**is. De algemene bron compatibiliteit is 95% (19 van 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Voor beeld van naleving van beleids regels op nalevings pagina" border="false":::
+
+> [!NOTE]
+> Naleving van regelgeving in Azure Policy is een preview-functie. Nalevings eigenschappen van de SDK en pagina's in de portal zijn anders voor ingeschakelde initiatieven. Zie [naleving van regelgeving](../concepts/regulatory-compliance.md) voor meer informatie
 
 ## <a name="portal"></a>Portal
 

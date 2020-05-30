@@ -12,17 +12,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: e55b75b26eec3112472d78c0c22c147a80177007
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e23b772c6f57a2649d626e879d404e76ab2ab380
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118706"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219350"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transactionele replicatie met Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Transactionele replicatie is een functie van Azure SQL Managed instance en SQL Server waarmee u gegevens kunt repliceren uit een tabel in Azure SQL Managed instance of een SQL Server naar tabellen die zijn geplaatst op externe data bases. Met deze functie kunt u meerdere tabellen in verschillende data bases synchroniseren.
+Transactionele replicatie is een functie van Azure SQL Managed instance en SQL Server waarmee u gegevens kunt repliceren uit een tabel in Azure SQL Managed instance of een SQL Server-exemplaar naar tabellen die zijn geplaatst op externe data bases. Met deze functie kunt u meerdere tabellen in verschillende data bases synchroniseren.
 
 ## <a name="overview"></a>Overzicht
 
@@ -43,17 +43,17 @@ De belangrijkste onderdelen in transactionele replicatie zijn de **Uitgever**, *
 
 | Rol | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| **Uitgever** | Nee | Ja |
-| **Verdeler** | Nee | Ja|
-| **Pull-abonnee** | Nee | Ja|
+| **Publisher** | No | Yes |
+| **Verdeler** | No | Yes|
+| **Pull-abonnee** | No | Yes|
 | **Push-abonnee**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
-De **Uitgever** publiceert wijzigingen die zijn aangebracht in sommige tabellen (artikelen) door de updates naar de Distributor te verzenden. De uitgever kan een door Azure SQL beheerd exemplaar of een SQL Server zijn.
+De **Uitgever** publiceert wijzigingen die zijn aangebracht in sommige tabellen (artikelen) door de updates naar de Distributor te verzenden. De uitgever kan een door Azure SQL beheerd exemplaar of een SQL Server-exemplaar zijn.
 
-De **Distributor** verzamelt wijzigingen in de artikelen van een uitgever en distribueert deze naar de abonnees. De Distributor kan een Azure SQL Managed instance of SQL Server zijn (een wille keurige versie zolang deze gelijk is aan of hoger is dan de versie van de uitgever).
+De **Distributor** verzamelt wijzigingen in de artikelen van een uitgever en distribueert deze naar de abonnees. De Distributor kan een door Azure SQL beheerd exemplaar of een SQL Server-exemplaar zijn (een wille keurige versie die gelijk is aan of hoger is dan de versie van de uitgever).
 
-De **abonnee** ontvangt wijzigingen die zijn aangebracht op de Publisher. SQL Server en Azure SQL Managed instance kunnen zowel push-als pull-abonnees zijn, maar een pull-abonnement wordt niet ondersteund wanneer de Distributor een door Azure SQL beheerd exemplaar is en de abonnee niet. Azure SQL Database kan alleen een push-abonnee zijn.
+De **abonnee** ontvangt wijzigingen die zijn aangebracht op de Publisher. Een SQL Server exemplaar en Azure SQL Managed instance kunnen zowel push-als pull-abonnees zijn, maar een pull-abonnement wordt niet ondersteund wanneer de Distributor een door Azure SQL beheerd exemplaar is en de abonnee niet. Een data base in Azure SQL Database kan alleen een push-abonnee zijn.
 
 Azure SQL Managed instance kan ondersteuning bieden voor een abonnee uit de volgende versies van SQL Server:
 
@@ -72,19 +72,19 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja |
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes |
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
+| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
 | [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
 ### <a name="supportability-matrix"></a>Ondersteunings matrix
 
-  De matrix voor de ondersteuning van transactionele replicatie voor een Azure SQL Managed instance is hetzelfde als die voor SQL Server on-premises.
+  De matrix voor de ondersteuning van transactionele replicatie voor een Azure SQL Managed instance is hetzelfde als die voor SQL Server.
   
-| **Uitgever**   | **Verdeler** | **Gehaald** |
+| **Publisher**   | **Verdeler** | **Gehaald** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
@@ -114,15 +114,15 @@ Transactionele replicatie is handig in de volgende scenario's:
 
 Over het algemeen moeten de uitgever en de Distributor zich in de Cloud of on-premises bestaan. De volgende configuraties worden ondersteund:
 
-### <a name="publisher-with-local-distributor-on-sql-mi"></a>Publisher met lokale distributeur op SQL MI
+### <a name="publisher-with-local-distributor-on-sql-managed-instance"></a>Publisher met lokale Distributor op door SQL beheerd exemplaar
 
 ![Eén exemplaar als uitgever en distributeur](./media/replication-transactional-overview/01-single-instance-asdbmi-pubdist.png)
 
-Publisher en Distributor worden geconfigureerd binnen één beheerd exemplaar en distribueren wijzigingen naar andere Azure SQL Server, Azure SQL Managed instance of SQL Server on-premises of in een VM.
+Publisher en Distributor worden geconfigureerd binnen één SQL Managed instance en distribueren wijzigingen naar een ander exemplaar van SQL Managed instance, SQL Database of SQL Server.
 
-### <a name="publisher-with-remote-distributor-on-sql-mi"></a>Publisher met externe Distributor op SQL MI
+### <a name="publisher-with-remote-distributor-on-sql-managed-instance"></a>Publisher met externe Distributor op SQL Managed instance
 
-In deze configuratie publiceert één beheerd exemplaar wijzigingen in de Distributor die zijn geplaatst op een ander beheerd exemplaar die een groot aantal door de bron beheerde instanties kunnen leveren en wijzigingen kan distribueren naar een of meer doelen op Azure SQL Server, Azure SQL Managed instance of SQL Server on-premises of in een VM.
+In deze configuratie publiceert één beheerd exemplaar wijzigingen in een Distributor die zijn geplaatst op een andere SQL Managed instance die een groot aantal exemplaren van SQL-bron beheer kan leveren en wijzigingen kan distribueren naar een of meer doelen op Azure SQL Database, Azure SQL Managed instance of SQL Server.
 
 ![Afzonderlijke instanties voor Publisher en Distributor](./media/replication-transactional-overview/02-separate-instances-asdbmi-pubdist.png)
 
@@ -131,11 +131,11 @@ Publisher en Distributor worden geconfigureerd op twee beheerde exemplaren. Er z
 - Beide beheerde instanties bevinden zich in hetzelfde vNet.
 - Beide beheerde instanties bevinden zich op dezelfde locatie.
 
-### <a name="on-prem-pubdist-with-remote-subscriber"></a>On-premises pub/dist met externe abonnee
+### <a name="on-premises-publisherdistributor-with-remote-subscriber"></a>On-premises Uitgever/distributeur met externe abonnee
 
 ![Azure SQL Database als abonnee](./media/replication-transactional-overview/03-azure-sql-db-subscriber.png)
 
-In deze configuratie is een Azure SQL Database of een Azure SQL Managed instance-data base een abonnee. Deze configuratie biedt ondersteuning voor migratie van on-premises naar Azure. Als een abonnee Azure SQL Database is, moet deze zich in de push-modus bevindt.  
+In deze configuratie is een-data base in Azure SQL Database of een door Azure SQL beheerd exemplaar een abonnee. Deze configuratie biedt ondersteuning voor migratie van on-premises naar Azure. Als een abonnee een data base in Azure SQL Database is, moet deze zich in de push-modus bevindt.  
 
 ## <a name="requirements"></a>Vereisten
 
@@ -193,14 +193,14 @@ Als geo-replicatie is ingeschakeld voor een exemplaar van een **abonnee** in een
 
 Zie de volgende zelf studies voor meer informatie over het configureren van transactionele replicatie:
 
-- [Replicatie tussen een MI-Publisher en een abonnee configureren](../managed-instance/replication-between-two-instances-configure-tutorial.md)
-- [Replicatie tussen een MI-Publisher, MI-distributeur en SQL Server abonnee configureren](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
+- [Replicatie configureren tussen een SQL Managed instance-Uitgever en een abonnee](../managed-instance/replication-between-two-instances-configure-tutorial.md)
+- [Replicatie configureren tussen een SQL Managed instance, distributeur van SQL Managed instance en SQL Server Subscriber](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Maak een publicatie](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication).
-- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de naam van de Azure SQL database als doel database (bijvoorbeeld **AdventureWorks**). )
+- [Maak een push-abonnement](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription) met behulp van de server naam als abonnee (bijvoorbeeld `N'azuresqldbdns.database.windows.net` en de data base in Azure SQL database naam als de doel database (bijvoorbeeld **AdventureWorks**). )
 
 ## <a name="see-also"></a>Zie ook  
 
-- [Replicatie met een MI-en failover-groep](transact-sql-tsql-differences-sql-server.md#replication)
+- [Replicatie met een door SQL beheerd exemplaar en een failovergroep](transact-sql-tsql-differences-sql-server.md#replication)
 - [Replicatie naar SQL Database](../database/replication-to-sql-database.md)
 - [Replicatie naar een beheerd exemplaar](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Een publicatie maken](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

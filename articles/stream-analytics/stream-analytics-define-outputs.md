@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: 5f4988ad5df5507f9d6acd330a8f8bba9062be0d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ead7361ba48a9a1b646310d3a47850545fff3ade
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84012939"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195608"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Meer informatie over de uitvoer van Azure Stream Analytics
 
@@ -51,7 +51,7 @@ De volgende tabel geeft een lijst van eigenschaps namen en de bijbehorende besch
 
 U kunt [Azure SQL database](https://azure.microsoft.com/services/sql-database/) gebruiken als uitvoer voor gegevens die relationeel zijn of voor toepassingen die afhankelijk zijn van inhoud die wordt gehost in een relationele data base. Stream Analytics-taken worden geschreven naar een bestaande tabel in SQL Database. Het tabel schema moet exact overeenkomen met de velden en de bijbehorende typen in de uitvoer van uw taak. U kunt ook [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als uitvoer opgeven via de optie SQL database uitvoer. Zie het artikel [Stream Analytics met Azure SQL database als uitvoer als](stream-analytics-sql-output-perf.md) u meer wilt weten over manieren om de schrijf doorvoer te verbeteren.
 
-U kunt ook [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) gebruiken als uitvoer. U moet een [openbaar eind punt configureren in Azure SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
+U kunt ook [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als uitvoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
 De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschrijvingen voor het maken van een SQL Database uitvoer.
 
@@ -59,7 +59,7 @@ De volgende tabel bevat de namen van de eigenschappen en de bijbehorende beschri
 | --- | --- |
 | Uitvoeralias |Een beschrijvende naam die wordt gebruikt in query's om de uitvoer van de query naar deze data base te sturen. |
 | Database | De naam van de Data Base waarin u uw uitvoer wilt verzenden. |
-| Servernaam | De logische SQL-Server naam of de naam van het beheerde exemplaar. Voor Azure SQL Database beheerde instantie moet het poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342* |
+| Servernaam | De logische SQL-Server naam of de naam van het beheerde exemplaar. Voor het beheerde exemplaar van SQL moet de poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342* |
 | Gebruikersnaam | De gebruikers naam die schrijf toegang tot de data base heeft. Stream Analytics ondersteunt alleen SQL-verificatie. |
 | Wachtwoord | Het wacht woord om verbinding te maken met de data base. |
 | Tabel | De tabel naam waarin de uitvoer wordt geschreven. De tabel naam is hoofdletter gevoelig. Het schema van deze tabel moet exact overeenkomen met het aantal velden en de bijbehorende typen die uw taak uitvoer genereert. |
@@ -351,16 +351,16 @@ De volgende tabel bevat een overzicht van de partitie-ondersteuning en het aanta
 
 | Uitvoer type | Ondersteuning voor partitionering | Partitiesleutel  | Aantal schrijvers van uitvoer |
 | --- | --- | --- | --- |
-| Azure Data Lake Store | Ja | Gebruik {date} en {time} tokens in het pad voor voegsel patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
+| Azure Data Lake Store | Yes | Gebruik {date} en {time} tokens in het pad voor voegsel patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
 | Azure SQL Database | Ja, moet zijn ingeschakeld. | Op basis van de component PARTITION BY in de query. | Wanneer de optie partitioneren overnemen is ingeschakeld, volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). Zie [Azure stream Analytics output to Azure SQL database](stream-analytics-sql-output-perf.md)voor meer informatie over het verbeteren van de prestaties van schrijf doorvoer tijdens het laden van gegevens in Azure SQL database. |
-| Azure Blob Storage | Ja | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime: \<specifier> }. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
+| Azure Blob Storage | Yes | Gebruik {date} en {time} tokens uit uw gebeurtenis velden in het pad patroon. Kies de datum notatie, zoals JJJJ/MM/DD, DD/MM/JJJJ of MM-DD-JJJJ. HH wordt gebruikt voor de tijd notatie. BLOB-uitvoer kan worden gepartitioneerd met één aangepast gebeurtenis kenmerk {FieldName} of {datetime: \<specifier> }. | Volgt de invoer partitionering voor [volledige kan worden opgestart-query's](stream-analytics-scale-jobs.md). |
 | Azure Event Hubs | Ja | Ja | Is afhankelijk van de uitlijning van de partitie.<br /> Wanneer de partitie sleutel voor Event Hub uitvoer gelijk wordt uitgelijnd met de stap upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in Event Hub uitvoer. Elke schrijver maakt gebruik van de [EventHubSender-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) voor het verzenden van gebeurtenissen naar de specifieke partitie. <br /> Wanneer de partitie sleutel voor Event Hub uitvoer niet is afgestemd op de stap van de upstream (vorige), is het aantal schrijvers hetzelfde als het aantal partities in die vorige stap. Elke schrijver maakt gebruik van de [SendBatchAsync-klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) in **EventHubClient** om gebeurtenissen te verzenden naar alle uitvoer partities. |
-| Power BI | Nee | Geen | Niet van toepassing. |
-| Azure Table Storage | Ja | Een uitvoer kolom.  | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
-| Azure Service Bus-onderwerp | Ja | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in het uitvoer onderwerp.  |
-| Azure Service Bus-wachtrij | Ja | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in de uitvoer wachtrij. |
-| Azure Cosmos DB | Ja | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
-| Azure Functions | Ja | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
+| Power BI | No | Geen | Niet van toepassing. |
+| Azure Table Storage | Yes | Een uitvoer kolom.  | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
+| Azure Service Bus-onderwerp | Yes | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in het uitvoer onderwerp.  |
+| Azure Service Bus-wachtrij | Yes | Automatisch gekozen. Het aantal partities is gebaseerd op de [Service Bus SKU en grootte](../service-bus-messaging/service-bus-partitioning.md). De partitie sleutel is een unieke gehele waarde voor elke partitie.| Hetzelfde als het aantal partities in de uitvoer wachtrij. |
+| Azure Cosmos DB | Yes | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
+| Azure Functions | Yes | Op basis van de component PARTITION BY in de query. | Volgt de invoer partitionering voor [volledig parallelle query's](stream-analytics-scale-jobs.md). |
 
 Het aantal schrijvers van uitvoer kan ook worden beheerd met behulp van de `INTO <partition count>` component (Zie [into](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) in uw query. Dit kan handig zijn bij het bereiken van een gewenste taak topologie. Als uw uitvoer adapter niet is gepartitioneerd, heeft het ontbreken van gegevens in één invoer partitie tot een vertraging tot de duur van de late aankomst. In dergelijke gevallen wordt de uitvoer samengevoegd met één schrijver, wat kan leiden tot knel punten in de pijp lijn. Zie [Azure stream Analytics overwegingen voor gebeurtenis orders](stream-analytics-out-of-order-and-late-events.md)voor meer informatie over het beleid voor late ontvangst.
 

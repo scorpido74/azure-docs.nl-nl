@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170304"
+ms.locfileid: "84204885"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw Azure-VM's beheren
 
@@ -211,4 +211,4 @@ Wanneer de update-implementatie is voltooid, ontvangt u de waarschuwing die u ti
 * Zie [Vm's verwijderen uit updatebeheer](automation-remove-vms-from-update-management.md)om uw vm's uit updatebeheer te verwijderen.
 * Zie [Problemen met Updatebeheer oplossen](troubleshoot/update-management.md) voor meer informatie over het oplossen van algemene Updatebeheer-fouten.
 * Zie [Problemen met Windows-updateagent oplossen](troubleshoot/update-agent-issues.md)voor informatie over het oplossen van problemen met de Windows Update-agent.
-* Zie [problemen met Linux Update-agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux Update-agent.
+* Zie problemen met de [Linux-Update agent oplossen](troubleshoot/update-agent-issues-linux.md)voor informatie over het oplossen van problemen met de Linux-Update Agent.

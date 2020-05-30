@@ -3,7 +3,7 @@ title: Hoge Beschik baarheid instellen voor Azure Resource Manager virtuele mach
 description: In deze zelf studie leert u hoe u een AlwaysOn-beschikbaarheids groep maakt met Azure Virtual Machines in Azure Resource Manager modus.
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: f824ef4964a1039c5ed866e470d19e1306107afe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d00d8245f14b042b5fa779697ed74edacaf397a6
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049587"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219602"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>AlwaysOn AlwaysOn-beschikbaarheids groepen in azure Virtual Machines automatisch configureren: Resource Manager
 
@@ -67,10 +67,10 @@ Azure biedt een galerie-afbeelding voor de volledige oplossing. De sjabloon zoek
 1. Meld u aan bij de Azure Portal met uw account.
 2. Selecteer in de Azure Portal **een resource maken** om het **nieuwe** deel venster te openen.
 3. Zoek in het **nieuwe** deel venster naar **AlwaysOn**.
-   ![AlwaysOn-sjabloon zoeken](./media/availability-group-azure-marketplace-template-configure/16-findalwayson.png)
-4. Zoek in de zoek resultaten **SQL Server AlwaysOn-cluster**.
-   ![AlwaysOn-sjabloon](./media/availability-group-azure-marketplace-template-configure/17-alwaysontemplate.png)
-5. Kies in **een implementatie model selecteren de**optie **Resource Manager**.
+  In azure Marketplace worden Zoek resultaten weer gegeven die het SQL Server cluster bevatten. Deze functie is beschikbaar als preview-versie.
+4. Zoek en klik in de zoek resultaten op **SQL Server AlwaysOn-cluster (preview)**. Volg de instructies om de oplossing te maken.
+
+In de volgende secties wordt de invoer voor de oplossing uitgelegd. 
 
 ### <a name="basics"></a>Basisbeginselen
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: f4bec780fcf40b4fbee7ccf6c59463a5efb1adc0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048775"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188717"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Gegevens synchronisatie is gebaseerd op het concept van een synchronisatie groep
 Bij de gegevens synchronisatie wordt gebruikgemaakt van een hub-en spoke-topologie voor het synchroniseren van gegevens. U definieert een van de data bases in de synchronisatie groep als de hub-data base. De rest van de data bases zijn leden databases. Synchronisatie vindt alleen plaats tussen de hub en de afzonderlijke leden.
 
 - De **hub-data base** moet een Azure SQL database zijn.
-- De **leden databases** kunnen Azure SQL database, on-premises SQL server data bases of SQL Server exemplaren op virtuele machines van Azure.
+- De **leden databases** kunnen bestaan uit data bases in Azure SQL database of in exemplaren van SQL Server.
 - De **synchronisatie database** bevat de meta gegevens en het logboek voor de gegevens synchronisatie. De synchronisatie database moet een Azure SQL Database zijn die zich in dezelfde regio bevindt als de hub-data base. De gesynchroniseerde data base is klant gemaakt en is eigenaar van de klant.
 
 > [!NOTE]
@@ -64,7 +64,7 @@ Gegevens synchronisatie is niet de aanbevolen oplossing voor de volgende scenari
 | Herstel na noodgevallen | [Azure geo-redundante back-ups](automated-backups-overview.md) |
 | Schaal lezen | [Alleen-lezen replica's gebruiken om taken te verdelen over alleen-lezen query's (preview-versie)](read-scale-out.md) |
 | ETL (OLTP to OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) of [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) |
-| Migratie van on-premises SQL Server naar Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Migratie van SQL Server naar Azure SQL Database | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
 
 
@@ -184,9 +184,9 @@ SQL Data Sync is in alle regio's beschikbaar.
 
 Ja. U moet een SQL Database-account hebben om de hub-data base te hosten.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kan ik Data Sync gebruiken om te synchroniseren tussen SQL Server on-premises data bases
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-databases-only"></a>Kan ik Data Sync gebruiken om alleen te synchroniseren tussen SQL Server data bases
 
-Niet rechtstreeks. U kunt echter indirect synchroniseren tussen SQL Server on-premises data bases, door een hub-data base in azure te maken en vervolgens de on-premises data bases aan de synchronisatie groep toe te voegen.
+Niet rechtstreeks. U kunt echter indirect synchroniseren tussen SQL Server data bases, door een hub-data base te maken in Azure en vervolgens de on-premises data bases toe te voegen aan de synchronisatie groep.
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Kan ik gegevens synchronisatie gebruiken om te synchroniseren tussen SQL-data bases die deel uitmaken van verschillende abonnementen
 

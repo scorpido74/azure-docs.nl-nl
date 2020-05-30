@@ -10,24 +10,24 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: ed317039e683ef36054d5ace612e09ca75dfa11e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9a02a01bb55e63322964b52a5f4d6113b3280360
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837386"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220724"
 ---
-# <a name="sign-in-to-azure-using-email-as-an-alternate-login-id-preview"></a>Meld u aan bij Azure via e-mail als een alternatieve aanmeldings-ID (preview-versie)
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Meld u aan Azure Active Directory gebruik te maken van een e-mail adres als een alternatieve aanmeldings-ID (preview-versie)
 
-Veel organisaties willen dat gebruikers zich aanmelden bij Azure met dezelfde referenties als de on-premises Directory-omgeving. Bij deze benadering, ook wel hybride verificatie genoemd, hoeven gebruikers slechts één set referenties te onthouden.
+Veel organisaties willen dat gebruikers zich aanmelden bij Azure Active Directory (Azure AD) met dezelfde referenties als de on-premises Directory-omgeving. Bij deze benadering, ook wel hybride verificatie genoemd, hoeven gebruikers slechts één set referenties te onthouden.
 
 Sommige organisaties zijn niet naar hybride verificatie verplaatst om de volgende redenen:
 
-* De Azure Active Directory (Azure AD) user principal name (UPN) is standaard ingesteld op dezelfde UPN als de on-premises Directory.
-* Als u de UPN van Azure AD wijzigt, wordt er een mis-overeenkomst tussen on-premises en Azure-omgevingen gemaakt die problemen met bepaalde toepassingen en services kunnen veroorzaken.
-* Als gevolg van bedrijfs-of nalevings redenen wil de organisatie zich niet aanmelden bij Azure met de lokale UPN.
+* De Azure AD-user principal name (UPN) is standaard ingesteld op dezelfde UPN als de on-premises Directory.
+* Als u de UPN van Azure AD wijzigt, wordt er een mis-overeenkomst tussen on-premises en Azure AD-omgevingen gemaakt die problemen met bepaalde toepassingen en services kunnen veroorzaken.
+* Als gevolg van bedrijfs-of nalevings redenen wil de organisatie zich niet aanmelden bij Azure AD door de lokale UPN te gebruiken.
 
-Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID kunnen aanmelden bij Azure. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam*, in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure met hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
+Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu configureren zodat gebruikers zich kunnen aanmelden met een e-mail adres in uw geverifieerde domein als een alternatieve aanmeldings-ID. Als *Contoso* bijvoorbeeld is gebrandt op *fabrikam*, in plaats van zich te blijven aanmelden met de verouderde `balas@contoso.com` UPN, kan e-mail als alternatieve aanmeldings-id nu worden gebruikt. Om toegang te krijgen tot een toepassing of services, melden gebruikers zich aan bij Azure AD via hun toegewezen e-mail adres, zoals `balas@fabrikam.com` .
 
 |     |
 | --- |
@@ -36,17 +36,15 @@ Om u te helpen bij het verplaatsen naar hybride verificatie kunt u Azure AD nu c
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Overzicht van de benaderingen van Azure AD-aanmelding
 
-Upn's (User Principal Names) zijn unieke id's voor een gebruikers account in uw on-premises Directory en in azure AD. Elk gebruikers account in een directory wordt vertegenwoordigd door een UPN, zoals `balas@contoso.com` . Wanneer u een on-premises Active Directory Domain Services-omgeving (AD DS) synchroniseert met Azure AD, wordt de UPN van Azure AD standaard ingesteld op overeenkomen met de lokale UPN.
+Als gebruikers zich willen aanmelden bij Azure AD, voeren ze een naam in die een unieke identificatie van hun account heeft. U kunt de Azure AD-UPN in het verleden alleen gebruiken als aanmeldings naam.
 
-In veel organisaties is het goed om de on-premises UPN en de UPN van Azure AD te laten overeenkomen. Wanneer gebruikers zich aanmelden bij Azure-toepassingen en-services, gebruiken ze hun Azure AD-UPN. Sommige organisaties kunnen echter geen overeenkomende Upn's gebruiken om zich aan te melden vanwege bedrijfs beleid of problemen met de gebruikers ervaring.
+Voor organisaties waarbij de lokale UPN de aanmeldings-e-mail van de gebruiker is, was deze benadering geweldig. Deze organisaties stellen de Azure AD-UPN in op exact dezelfde waarde als de on-premises UPN en gebruikers hebben een consistente aanmeldings ervaring.
 
-Organisaties die geen overeenkomende Upn's in azure AD kunnen gebruiken, hebben een aantal opties:
+In sommige organisaties wordt de on-premises UPN echter niet gebruikt als aanmeldings naam. In de on-premises omgevingen configureert u de lokale AD DS zodat u zich kunt aanmelden met een alternatieve aanmeldings-ID. Het instellen van de Azure AD-UPN op dezelfde waarde als de on-premises UPN is geen optie als Azure AD zou vereisen dat gebruikers zich aanmelden met die waarde.
 
-* Een manier is om de Azure AD-UPN in te stellen op iets anders op basis van de bedrijfs behoeften, zoals `balas@fabrikam.com` .
-    * Niet alle toepassingen en services zijn echter compatibel met het gebruik van een andere waarde voor de on-premises UPN en de UPN van Azure AD.
-* Een betere benadering is om ervoor te zorgen dat de Azure AD-en on-premises Upn's zijn ingesteld op dezelfde waarde, en Azure AD zo configureren dat gebruikers zich bij Azure aanmelden met hun e-mail adres als een alternatieve aanmeldings-ID.
+De gebruikelijke tijdelijke oplossing voor dit probleem is het instellen van de Azure AD-UPN voor het e-mail adres waarmee de gebruiker zich aanmeldt. Deze benadering werkt, hoewel resulteert in verschillende Upn's tussen de on-premises AD en Azure AD en deze configuratie is niet compatibel met alle Microsoft 365 workloads.
 
-Met e-mail als alternatieve aanmeldings-ID kunnen gebruikers zich nog steeds aanmelden bij Azure door hun UPN in te voeren, maar kunnen ze zich ook aanmelden met hun e-mail adres. Ter ondersteuning hiervan definieert u een e-mail adres in het kenmerk *proxyAddresses* van de gebruiker in de on-premises Directory. Dit *proxyAddress attribuut* -kenmerk ondersteunt een of meer e-mail adressen.
+Een andere manier is om de Azure AD-en on-premises Upn's te synchroniseren met dezelfde waarde en vervolgens Azure AD te configureren zodat gebruikers zich kunnen aanmelden bij Azure AD met een geverifieerd e-mail adres. Als u deze mogelijkheid wilt bieden, definieert u een of meer e-mail adressen in het kenmerk *proxyAddresses* van de gebruiker in de on-premises Directory. *ProxyAddresses* worden vervolgens automatisch met Azure AD Connect gesynchroniseerd met Azure AD.
 
 ## <a name="synchronize-sign-in-email-addresses-to-azure-ad"></a>E-mail adressen voor aanmelden synchroniseren met Azure AD
 

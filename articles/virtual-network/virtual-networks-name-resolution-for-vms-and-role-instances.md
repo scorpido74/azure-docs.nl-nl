@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262193"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204766"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Naamomzetting voor resources in virtuele Azure-netwerken
 
@@ -84,9 +84,9 @@ Punten waarmee u rekening moet houden wanneer u door Azure meegeleverde naam omz
 
 ### <a name="reverse-dns-considerations"></a>Overwegingen voor omgekeerde DNS
 Omgekeerde DNS wordt ondersteund in alle virtuele netwerken op basis van ARM. U kunt reverse DNS-query's (PTR-query's) uitgeven om IP-adressen van virtuele machines toe te wijzen aan de FQDN-namen van virtuele machines.
-* Alle PTR-query's voor IP-adressen van virtuele machines retour neren FQDN- \[namen\]van het formulier vmname. internal.cloudapp.net
-* Forward lookup op FQDN-namen van \[het\]formulier vmname. internal.cloudapp.net wordt omgezet naar het IP-adres dat aan de virtuele machine is toegewezen.
-* Als het virtuele netwerk is gekoppeld aan een [Azure DNS particuliere zones](../dns/private-dns-overview.md) als een virtuele registratie-netwerk, retour neren de reverse DNS-query's twee records. Eén record heeft het formulier \[vmname.\] [priatednszonename] en andere hebben de vorm \[vmname\]. internal.cloudapp.net
+* Alle PTR-query's voor IP-adressen van virtuele machines retour neren FQDN-namen van het formulier \[ vmname \] . internal.cloudapp.net
+* Forward lookup op FQDN-namen van \[ het formulier vmname \] . internal.cloudapp.net wordt omgezet naar het IP-adres dat aan de virtuele machine is toegewezen.
+* Als het virtuele netwerk is gekoppeld aan een [Azure DNS particuliere zones](../dns/private-dns-overview.md) als een virtuele registratie-netwerk, retour neren de reverse DNS-query's twee records. Eén record heeft de van het formulier \[ vmname \] . [ privatednszonename] en andere hebben de vorm \[ vmname \] . internal.cloudapp.net
 * Achterwaartse DNS-zoek opdracht is binnen het bereik van een bepaald virtueel netwerk, zelfs als deze is gekoppeld aan andere virtuele netwerken. Omgekeerde DNS-query's (PTR-query's) voor IP-adressen van virtuele machines die zich in gekoppelde virtuele netwerken bevinden, wordt NXDOMAIN geretourneerd.
 * Als u omgekeerde DNS-functie in een virtueel netwerk wilt uitschakelen, kunt u dit doen door een zone voor reverse lookup te maken met behulp van [Azure DNS particuliere zones](../dns/private-dns-overview.md) en deze zone aan uw virtuele netwerk te koppelen. Als de IP-adres ruimte van uw virtuele netwerk bijvoorbeeld 10.20.0.0/16 is, kunt u een lege privé-DNS-zone 20.10.in-addr. arpa maken en deze koppelen aan het virtuele netwerk. Wanneer u de zone koppelt aan uw virtuele netwerk, moet u automatische registratie op de koppeling uitschakelen. Deze zone overschrijft de standaard zones voor reverse lookup voor het virtuele netwerk en omdat deze zone leeg is, ontvangt u NXDOMAIN voor uw omgekeerde DNS-query's. Raadpleeg onze [Snelstartgids](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) voor meer informatie over het maken van een privé-DNS-zone en het koppelen van deze aan een virtueel netwerk.
 
@@ -108,19 +108,19 @@ De standaard Windows DNS-client heeft een ingebouwde DNS-cache. Voor sommige Lin
 Er zijn een aantal verschillende DNS-cache pakketten beschikbaar (zoals dnsmasq). U kunt als volgt dnsmasq installeren op de meest voorkomende distributies:
 
 * **Ubuntu (maakt gebruik van resolvconf)**:
-  * Installeer het dnsmasq-pakket `sudo apt-get install dnsmasq`met.
+  * Installeer het dnsmasq-pakket met `sudo apt-get install dnsmasq` .
 * **SuSE (gebruikt netconf)**:
-  * Installeer het dnsmasq-pakket `sudo zypper install dnsmasq`met.
-  * Schakel de dnsmasq-service `systemctl enable dnsmasq.service`in met. 
-  * Start de dnsmasq-service `systemctl start dnsmasq.service`met. 
+  * Installeer het dnsmasq-pakket met `sudo zypper install dnsmasq` .
+  * Schakel de dnsmasq-service in met `systemctl enable dnsmasq.service` . 
+  * Start de dnsmasq-service met `systemctl start dnsmasq.service` . 
   * Bewerk **/etc/sysconfig/network/config**en wijzig *NETCONFIG_DNS_FORWARDER = ""* in *dnsmasq*.
-  * Update Resolve. conf `netconfig update`with om de cache in te stellen als de lokale DNS-resolver.
+  * Update Resolve. conf with `netconfig update` om de cache in te stellen als de lokale DNS-resolver.
 * **CentOS (maakt gebruik van NetworkManager)**:
-  * Installeer het dnsmasq-pakket `sudo yum install dnsmasq`met.
-  * Schakel de dnsmasq-service `systemctl enable dnsmasq.service`in met.
-  * Start de dnsmasq-service `systemctl start dnsmasq.service`met.
+  * Installeer het dnsmasq-pakket met `sudo yum install dnsmasq` .
+  * Schakel de dnsmasq-service in met `systemctl enable dnsmasq.service` .
+  * Start de dnsmasq-service met `systemctl start dnsmasq.service` .
   * Voeg *laten voorafgaan door domein naam-servers 127.0.0.1;* toe aan **/etc/dhclient-ETH0.conf**.
-  * Start de netwerk service opnieuw `service network restart`met om de cache in te stellen als de lokale DNS-resolver.
+  * Start de netwerk service opnieuw met `service network restart` om de cache in te stellen als de lokale DNS-resolver.
 
 > [!NOTE]
 > Het dnsmasq-pakket is slechts een van de vele DNS-caches die beschikbaar zijn voor Linux. Controleer voordat u het gebruikt de geschiktheid voor uw specifieke behoeften en controleer of er geen andere cache is geïnstalleerd.
@@ -133,7 +133,7 @@ DNS is voornamelijk een UDP-protocol. Omdat het UDP-protocol geen aflevering van
 * Windows-besturings systemen worden na één seconde opnieuw geprobeerd, en daarna weer na twee seconden, vier seconden en nog eens vier seconden. 
 * De standaard installatie van Linux wordt na vijf seconden herhaald. Het is raadzaam om de specificaties voor opnieuw proberen te wijzigen in vijf keer, met een interval van één seconde.
 
-Controleer de huidige instellingen op een Linux-VM `cat /etc/resolv.conf`met. Bekijk de *optie* regel, bijvoorbeeld:
+Controleer de huidige instellingen op een Linux-VM met `cat /etc/resolv.conf` . Bekijk de *optie* regel, bijvoorbeeld:
 
 ```bash
 options timeout:1 attempts:5
@@ -143,13 +143,13 @@ Het bestand ungenerate. conf wordt doorgaans automatisch gegenereerd en mag niet
 
 * **Ubuntu** (maakt gebruik van resolvconf):
   1. Voeg de *optie* lijn toe aan **/etc/resolvconf/resolv.conf.d/tail**.
-  2. Voer `resolvconf -u` uit om bij te werken.
+  2. Voer uit `resolvconf -u` om bij te werken.
 * **SuSE** (gebruikt netconf):
   1. *Time-out toevoegen: 1 pogingen: 5* tot de para meter **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** in **/etc/sysconfig/network/config**.
-  2. Voer `netconfig update` uit om bij te werken.
+  2. Voer uit `netconfig update` om bij te werken.
 * **CentOS** (maakt gebruik van NetworkManager):
   1. *Echo ' Options time-out: 1 pogingen: 5 '* toevoegen aan **/etc/NetworkManager/dispatcher.d/11-dhclient**.
-  2. Bijwerken met `service network restart`.
+  2. Bijwerken met `service network restart` .
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Naam omzetting die gebruikmaakt van uw eigen DNS-server
 
@@ -218,7 +218,7 @@ Wanneer u het Azure Resource Manager-implementatie model gebruikt, kunt u DNS-se
 Wanneer u het klassieke implementatie model gebruikt, kunt u DNS-servers voor het virtuele netwerk opgeven in het Azure Portal of het [netwerk configuratie bestand](https://msdn.microsoft.com/library/azure/jj157100). Voor Cloud Services kunt u DNS-servers opgeven via het [Service configuratie bestand](https://msdn.microsoft.com/library/azure/ee758710) of met behulp van Power shell, met [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor Vm's waarop het Windows-besturings systeem wordt uitgevoerd, kunt u `ipconfig /renew` dit doen door rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem.
+> Als u de DNS-instellingen voor een virtueel netwerk of een virtuele machine die al is geïmplementeerd, wijzigt, moet u de DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het virtuele netwerk om de nieuwe DNS-instellingen van kracht te laten worden. Voor Vm's waarop het Windows-besturings systeem wordt uitgevoerd, kunt u dit doen door `ipconfig /renew` rechtstreeks in de virtuele machine te typen. De stappen variëren afhankelijk van het besturings systeem. Raadpleeg de relevante documentatie voor het type besturings systeem.
 
 ## <a name="next-steps"></a>Volgende stappen
 

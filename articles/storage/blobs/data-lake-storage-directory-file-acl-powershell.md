@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 580f8652fcfa4e9ff21abc00f6da36caf12dda51
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691079"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193478"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
 In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
-[Gen1 naar Gen2-toewijzing](#gen1-gen2-map) | [geven feedback](https://github.com/Azure/azure-powershell/issues)
+Toewijzing van gen1 [naar Gen2](#gen1-gen2-map)  |  [Feedback geven](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,11 +28,11 @@ In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van 
 > * Een Azure-abonnement. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 > * Een opslag account met een hiërarchische naam ruimte (HNS) ingeschakeld. Volg [deze](data-lake-storage-quickstart-create-account.md) instructies om er een te maken.
 > * .NET Framework is 4.7.2 of hoger geïnstalleerd. Zie [.NET Framework downloaden](https://dotnet.microsoft.com/download/dotnet-framework).
-> * Power shell `5.1` -versie of hoger.
+> * Power shell-versie `5.1` of hoger.
 
 ## <a name="install-the-powershell-module"></a>De Power shell-module installeren
 
-1. Controleer of de versie van Power shell die is geïnstalleerd `5.1` , of hoger is met behulp van de volgende opdracht.    
+1. Controleer of de versie van Power shell die is geïnstalleerd, `5.1` of hoger is met behulp van de volgende opdracht.    
 
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
@@ -50,13 +50,13 @@ In dit artikel leest u hoe u Power shell gebruikt voor het maken en beheren van 
 
 ## <a name="connect-to-the-account"></a>Verbinding maken met het account
 
-Open een Windows Power shell-opdracht venster en meld u vervolgens aan bij uw Azure- `Connect-AzAccount` abonnement met de opdracht en volg de instructies op het scherm.
+Open een Windows Power shell-opdracht venster en meld u vervolgens aan bij uw Azure-abonnement met de `Connect-AzAccount` opdracht en volg de instructies op het scherm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Als uw identiteit is gekoppeld aan meer dan één abonnement, stelt u uw actieve abonnement in op het abonnement van het opslag account waarin u directory's wilt maken en beheren. In dit voor beeld vervangt u `<subscription-id>` de waarde van de tijdelijke aanduiding door de id van uw abonnement.
+Als uw identiteit is gekoppeld aan meer dan één abonnement, stelt u uw actieve abonnement in op het abonnement van het opslag account waarin u directory's wilt maken en beheren. In dit voor beeld vervangt `<subscription-id>` u de waarde van de tijdelijke aanduiding door de id van uw abonnement.
 
 ```powershell
 Select-AzSubscription -SubscriptionId <subscription-id>
@@ -83,9 +83,9 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de `New-AzDatalakeGen2FileSystem` -cmdlet. 
+Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de- `New-AzDatalakeGen2FileSystem` cmdlet. 
 
-In dit voor beeld wordt een bestands `my-file-system`systeem gemaakt met de naam.
+In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -94,9 +94,9 @@ New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
 
 ## <a name="create-a-directory"></a>Een map maken
 
-Een directory verwijzing maken met behulp `New-AzDataLakeGen2Item` van de-cmdlet. 
+Een directory verwijzing maken met behulp van de- `New-AzDataLakeGen2Item` cmdlet. 
 
-In dit voor beeld wordt een `my-directory` map toegevoegd met de naam van een bestands systeem.
+In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -112,7 +112,7 @@ $dir = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $d
 
 ## <a name="show-directory-properties"></a>Mapeigenschappen weer geven
 
-In dit voor beeld wordt een Directory opgehaald `Get-AzDataLakeGen2Item` met behulp van de-cmdlet en worden de eigenschaps waarden vervolgens naar de console afgedrukt.
+In dit voor beeld wordt een Directory opgehaald met behulp van de `Get-AzDataLakeGen2Item` -cmdlet en worden de eigenschaps waarden vervolgens naar de console afgedrukt.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -128,9 +128,9 @@ $dir.Properties.Metadata
 
 ## <a name="rename-or-move-a-directory"></a>Een map een andere naam geven of verplaatsen
 
-Wijzig de naam van een map of verplaats `Move-AzDataLakeGen2Item` deze met behulp van de cmdlet.
+Wijzig de naam van een map of verplaats deze met behulp van de `Move-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt de naam van een map `my-directory` gewijzigd van de `my-new-directory`naam in de naam.
+In dit voor beeld wordt de naam van een map gewijzigd van de naam `my-directory` in de naam `my-new-directory` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -142,7 +142,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 > [!NOTE]
 > Gebruik de `-Force` para meter als u wilt overschrijven zonder prompts.
 
-In dit voor beeld wordt een `my-directory` map verplaatst met de naam `my-directory-2` naar `my-subdirectory`een submap met de naam. 
+In dit voor beeld wordt een map verplaatst met de naam `my-directory` naar een submap met de `my-directory-2` naam `my-subdirectory` . 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -155,7 +155,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 
 Een directory verwijderen met de `Remove-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt een `my-directory`map met de naam verwijderd. 
+In dit voor beeld wordt een map met de naam verwijderd `my-directory` . 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -169,7 +169,7 @@ U kunt de `-Force` para meter gebruiken om het bestand zonder prompt te verwijde
 
 Down load een bestand vanuit een directory met de `Get-AzDataLakeGen2ItemContent` cmdlet.
 
-In dit voor beeld wordt een `upload.txt` bestand gedownload met de `my-directory`naam van een map met de naam. 
+In dit voor beeld wordt een bestand gedownload met de naam `upload.txt` van een map met de naam `my-directory` . 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -180,9 +180,9 @@ Get-AzDataLakeGen2ItemContent -Context $ctx -FileSystem $filesystemName -Path $f
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-De inhoud van een directory weer geven met behulp van de `Get-AzDataLakeGen2ChildItem` -cmdlet. U kunt de optionele para meter `-OutputUserPrincipalName` gebruiken om de naam (in plaats van de object-id) van de gebruikers op te halen.
+De inhoud van een directory weer geven met behulp van de- `Get-AzDataLakeGen2ChildItem` cmdlet. U kunt de optionele para meter gebruiken `-OutputUserPrincipalName` om de naam (in plaats van de object-id) van de gebruikers op te halen.
 
-In dit voor beeld wordt de inhoud weer gegeven `my-directory`van een map met de naam.
+In dit voor beeld wordt de inhoud weer gegeven van een map met de naam `my-directory` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -190,7 +190,7 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -OutputUserPrincipalName
 ```
 
-In het volgende voor beeld `ACL`worden `Permissions`de `Group`eigenschappen, `Owner` , en van elk item in de map weer gegeven. De `-FetchProperty` para meter is vereist om waarden op te `ACL` halen voor de eigenschap. 
+In het volgende voor beeld worden de `ACL` `Permissions` Eigenschappen,, `Group` en `Owner` van elk item in de map weer gegeven. De `-FetchProperty` para meter is vereist om waarden op te halen voor de `ACL` eigenschap. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,13 +202,13 @@ $properties.Group
 $properties.Owner
 ```
 
-Als u de inhoud van een bestands systeem wilt weer geven `-Path` , laat u de para meter van de opdracht weg.
+Als u de inhoud van een bestands systeem wilt weer geven, laat u de `-Path` para meter van de opdracht weg.
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Een bestand uploaden naar een map met behulp `New-AzDataLakeGen2Item` van de-cmdlet.
+Een bestand uploaden naar een map met behulp van de- `New-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt een bestand geüpload `upload.txt` met de naam naar `my-directory`een map met de naam. 
+In dit voor beeld wordt een bestand geüpload `upload.txt` met de naam naar een map met de naam `my-directory` . 
 
 ```powershell
 $localSrcFile =  "upload.txt"
@@ -230,7 +230,7 @@ $file1.Properties.Metadata
 
 ## <a name="show-file-properties"></a>Bestands eigenschappen weer geven
 
-In dit voor beeld wordt een bestand opgehaald `Get-AzDataLakeGen2Item` met behulp van de-cmdlet en worden de eigenschaps waarden vervolgens naar de console afgedrukt.
+In dit voor beeld wordt een bestand opgehaald met behulp van de `Get-AzDataLakeGen2Item` -cmdlet en worden de eigenschaps waarden vervolgens naar de console afgedrukt.
 
 ```powershell
 $filepath =  "my-directory/upload.txt"
@@ -247,9 +247,9 @@ $file.Properties.Metadata
 
 ## <a name="delete-a-file"></a>Een bestand verwijderen
 
-Een bestand verwijderen met behulp `Remove-AzDataLakeGen2Item` van de-cmdlet.
+Een bestand verwijderen met behulp van de- `Remove-AzDataLakeGen2Item` cmdlet.
 
-In dit voor beeld wordt een `upload.txt`bestand met de naam verwijderd. 
+In dit voor beeld wordt een bestand met de naam verwijderd `upload.txt` . 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -268,7 +268,7 @@ U kunt toegangs machtigingen voor bestands systemen, mappen en bestanden ophalen
 
 ### <a name="get-an-acl"></a>Een ACL ophalen
 
-De ACL van een map of bestand ophalen met behulp `Get-AzDataLakeGen2Item`van de-cmdlet.
+De ACL van een map of bestand ophalen met behulp van de- `Get-AzDataLakeGen2Item` cmdlet.
 
 In dit voor beeld wordt de ACL van een **Bestands systeem** opgehaald en wordt de ACL vervolgens naar de console afgedrukt.
 
@@ -351,7 +351,7 @@ In dit voor beeld hebben de gebruiker die eigenaar is en de groep die eigenaar i
 
 ### <a name="set-acls-on-all-items-in-a-file-system"></a>Acl's instellen voor alle items in een bestands systeem
 
-U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` CMDLET recursief gebruiken om de ACL voor mappen en bestanden in een bestands systeem in te stellen. 
+U kunt de `Get-AzDataLakeGen2Item` en de `-Recurse` para meter samen met de `Update-AzDataLakeGen2Item` cmdlet recursief gebruiken om de ACL voor mappen en bestanden in een bestands systeem in te stellen. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -405,7 +405,7 @@ foreach ($a in $aclnew)
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
 ```
 
-<a id="gen1-gen2-map" />
+<a id="gen1-gen2-map"></a>
 
 ## <a name="gen1-to-gen2-mapping"></a>Toewijzing van gen1 naar Gen2
 

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144161"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190743"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Veelvoorkomende scenario's, voor beelden, zelf studies en scenario's voor Azure Logic Apps
 
-[Azure Logic apps](../logic-apps/logic-apps-overview.md) helpt u bij het organiseren en integreren van verschillende services door [honderden kant-en-klare connectors](../connectors/apis-list.md)te bieden, variërend van on-premises SQL Server of SAP naar Azure Cognitive Services. De Logic Apps-service is ' serverloos ', dus u hoeft zich geen zorgen te maken over schalen of instanties. U hoeft alleen de werk stroom te definiëren met een trigger en de acties die de werk stroom uitvoert. Het onderliggende platform zorgt voor schaal, Beschik baarheid en prestaties. Logic Apps is vooral handig voor het gebruik van cases en scenario's waarin u acties tussen meerdere systemen en services moet coördineren.
+[Azure Logic apps](../logic-apps/logic-apps-overview.md) helpt u bij het organiseren en integreren van verschillende services door [honderden kant-en-klare connectors](../connectors/apis-list.md)te bieden, variërend van SQL Server of SAP naar Azure Cognitive Services. De Logic Apps-service is ' serverloos ', dus u hoeft zich geen zorgen te maken over schalen of instanties. U hoeft alleen de werk stroom te definiëren met een trigger en de acties die de werk stroom uitvoert. Het onderliggende platform zorgt voor schaal, Beschik baarheid en prestaties. Logic Apps is vooral handig voor het gebruik van cases en scenario's waarin u acties tussen meerdere systemen en services moet coördineren.
 
 In dit artikel worden veelvoorkomende begin punten, voor beelden en scenario's beschreven, zodat u meer informatie kunt over de mogelijkheden en patronen die Azure Logic Apps ondersteunt.
 
@@ -126,9 +126,9 @@ U kunt Logic apps volledig ontwikkelen en implementeren met Visual Studio, Azure
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Inhouds typen, conversies en trans formaties verwerken
 
-U kunt meerdere inhouds typen openen, converteren en transformeren met behulp van de vele functies in de [werk stroom definitie taal](https://aka.ms/logicappsdocs)van Azure Logic apps. U kunt bijvoorbeeld converteren tussen een teken reeks, JSON en XML met de `@json()` -en `@xml()` -werk stroom expressies. De Logic Apps-Engine behoudt inhouds typen voor de ondersteuning van inhouds overdracht met een verlies vrije manier tussen services.
+U kunt meerdere inhouds typen openen, converteren en transformeren met behulp van de vele functies in de [werk stroom definitie taal](https://aka.ms/logicappsdocs)van Azure Logic apps. U kunt bijvoorbeeld converteren tussen een teken reeks, JSON en XML met de- `@json()` en- `@xml()` werk stroom expressies. De Logic Apps-Engine behoudt inhouds typen voor de ondersteuning van inhouds overdracht met een verlies vrije manier tussen services.
 
-* [Inhouds typen verwerken in azure Logic apps](../logic-apps/logic-apps-content-type.md), zoals `application/`, `application/octet-stream`en`multipart/formdata`
+* [Inhouds typen verwerken in azure Logic apps](../logic-apps/logic-apps-content-type.md), zoals `application/` , `application/octet-stream` en`multipart/formdata`
 * [Naslag Gids voor het gebruik van functies in expressies voor Azure Logic Apps en energie automatisering](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Schema voor werk stroom definitie taal voor Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
 

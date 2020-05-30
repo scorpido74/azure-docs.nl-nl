@@ -1,6 +1,6 @@
 ---
 title: Hoge beschikbaarheid
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database and SQL Managed Instance
 description: Meer informatie over de mogelijkheden en functies voor hoge Beschik baarheid van de Azure SQL Database en SQL Managed instance-service
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: ca340ce86dc4e6c028840fd7bfdb909ea097629e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 527fe8fa2ad8916f9e5209e4823457d81e745034
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043322"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219360"
 ---
-# <a name="high-availability-for-azure-sql-database--sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database & SQL Managed instance
+# <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Hoge Beschik baarheid voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Het doel van de architectuur voor hoge Beschik baarheid in Azure SQL Database en SQL Managed instance is om te garanderen dat uw data base ten minste 99,99% van de tijd actief is (Raadpleeg de [Sla voor Azure SQL Database & SQL Managed instance](https://azure.microsoft.com/support/legal/sla/sql-database/)voor meer informatie over de specifieke sla van de verschillende lagen), zonder dat u zich zorgen hoeft te maken over de invloed van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](develop-overview.md#resiliency) in uw app te gebruiken. SQL Database en SQL Managed instance kunnen snel worden hersteld, zelfs in de meest kritieke omstandigheden om ervoor te zorgen dat uw gegevens altijd beschikbaar zijn.
+Het doel van de architectuur voor hoge Beschik baarheid in Azure SQL Database en SQL Managed instance is om te garanderen dat uw data base ten minste 99,99% van de tijd actief is (Zie voor meer informatie over specifieke SLA voor verschillende lagen de [Sla voor Azure SQL database en SQL Managed instance](https://azure.microsoft.com/support/legal/sla/sql-database/)) zonder dat u zich zorgen hoeft te maken over de invloed van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en Azure SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer de onderliggende data base in Azure SQL Database wordt gerepareerd of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](develop-overview.md#resiliency) in uw app te gebruiken. SQL Database en SQL Managed instance kunnen snel worden hersteld, zelfs in de meest kritieke omstandigheden om ervoor te zorgen dat uw gegevens altijd beschikbaar zijn.
 
 De oplossing voor hoge Beschik baarheid is zodanig ontworpen dat doorgevoerde gegevens nooit verloren gaan als gevolg van fouten, dat de onderhouds bewerkingen geen invloed hebben op uw werk belasting en dat de data base geen Single Point of Failure is in uw software architectuur. Er zijn geen onderhouds Vensters of downtime die vereisen dat u de werk belasting stopt wanneer de data base wordt bijgewerkt of onderhouden.
 
@@ -52,9 +52,9 @@ Premium-en Bedrijfskritiek-service lagen maken gebruik van het Premium-beschikba
 
 ![Cluster van data base-engine knooppunten](./media/high-availability-sla/business-critical-service-tier.png)
 
-De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppelde SSD-opslag om een lage latentie-IO te bieden voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met behulp van een technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Het cluster bevat één primaire replica die toegankelijk is voor werk belastingen van de klant lezen en schrijven, en Maxi maal drie secundaire replica's (Compute en opslag) die kopieën van gegevens bevatten. Het primaire knoop punt duwt voortdurend wijzigingen in de secundaire knoop punten en zorgt ervoor dat de gegevens worden gesynchroniseerd naar ten minste één secundaire replica voordat elke trans actie wordt doorgevoerd. Dit proces zorgt ervoor dat als het primaire knoop punt om een of andere reden vastloopt, er altijd een volledig gesynchroniseerd knoop punt wordt uitgevoerd. De failover wordt gestart door de Azure-Service Fabric. Zodra de secundaire replica het nieuwe primaire knoop punt wordt, wordt er een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knoop punten (quorum set) heeft. Zodra de failover is voltooid, worden SQL-verbindingen automatisch omgeleid naar het nieuwe primaire knoop punt.
+De onderliggende database bestanden (. MDF/. ldf) worden geplaatst op de gekoppelde SSD-opslag om een lage latentie-IO te bieden voor uw werk belasting. Hoge Beschik baarheid wordt geïmplementeerd met behulp van een technologie die vergelijkbaar is met SQL Server AlwaysOn- [beschikbaarheids groepen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Het cluster bevat één primaire replica die toegankelijk is voor werk belastingen van de klant lezen en schrijven, en Maxi maal drie secundaire replica's (Compute en opslag) die kopieën van gegevens bevatten. Het primaire knoop punt duwt voortdurend wijzigingen in de secundaire knoop punten en zorgt ervoor dat de gegevens worden gesynchroniseerd naar ten minste één secundaire replica voordat elke trans actie wordt doorgevoerd. Dit proces zorgt ervoor dat als het primaire knoop punt om een of andere reden vastloopt, er altijd een volledig gesynchroniseerd knoop punt wordt uitgevoerd. De failover wordt gestart door de Azure-Service Fabric. Zodra de secundaire replica het nieuwe primaire knoop punt wordt, wordt er een andere secundaire replica gemaakt om ervoor te zorgen dat het cluster voldoende knoop punten (quorum set) heeft. Zodra de failover is voltooid, worden Azure SQL-verbindingen automatisch omgeleid naar het nieuwe primaire knoop punt.
 
-Een extra voor deel is dat het Premium-beschikbaarheids model de mogelijkheid biedt om alleen-lezen SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
+Als extra voor deel heeft het Premium-beschikbaarheids model de mogelijkheid om alleen-lezen Azure SQL-verbindingen om te leiden naar een van de secundaire replica's. Deze functie heet [Uitschalen lezen](read-scale-out.md). Het biedt 100% extra reken capaciteit zonder extra kosten voor het laden van alleen-lezen bewerkingen, zoals analytische werk belastingen, van de primaire replica.
 
 ## <a name="hyperscale-service-tier-availability"></a>Beschik baarheid van grootschalige-servicelaag
 
@@ -102,7 +102,7 @@ Een failover kan worden gestart met behulp van REST API of Power shell. Zie fail
 
 ## <a name="conclusion"></a>Conclusie
 
-Azure SQL Database en Azure SQL Managed instance bieden een ingebouwde oplossing voor hoge Beschik baarheid, die nauw is geïntegreerd met het Azure-platform. Het is afhankelijk van Service Fabric voor fout detectie en herstel, in Azure Blob-opslag voor gegevens beveiliging en op Beschikbaarheidszones voor hogere fout tolerantie. SQL Database en SQL Managed instance maken bovendien gebruik van de technologie van de AlwaysOn-beschikbaarheids groep van SQL Server voor replicatie en failover. De combi natie van deze technologieën stelt toepassingen in staat om de voor delen van een gemengd opslag model volledig te benutten en de meest veeleisende Sla's te ondersteunen.
+Azure SQL Database en Azure SQL Managed instance bieden een ingebouwde oplossing voor hoge Beschik baarheid, die nauw is geïntegreerd met het Azure-platform. Het is afhankelijk van Service Fabric voor fout detectie en herstel, in Azure Blob-opslag voor gegevens beveiliging en op Beschikbaarheidszones voor hogere fout tolerantie. SQL Database en SQL Managed instance maken bovendien gebruik van de technologie van de AlwaysOn-beschikbaarheids groep van het SQL Server-exemplaar voor replicatie en failover. De combi natie van deze technologieën stelt toepassingen in staat om de voor delen van een gemengd opslag model volledig te benutten en de meest veeleisende Sla's te ondersteunen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

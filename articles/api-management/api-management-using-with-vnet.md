@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
-ms.openlocfilehash: 92473dc7553286867a33100d7328dd0320d55823
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: references_regions
+ms.openlocfilehash: 016a907e3e660ca6da9dc637b2c9c844b7077b84
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799924"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193968"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -96,7 +97,7 @@ Nadat uw API Management-service is verbonden met het VNET, is toegang tot de bac
 
 ![API van VPN toevoegen][api-management-setup-vpn-add-api]
 
-## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>Veelvoorkomende problemen met netwerkconfiguratie
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>Veelvoorkomende problemen met de netwerk configuratie
 Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen tijdens de implementatie van API Management-service in een Virtual Network.
 
 * **Aangepaste installatie van DNS-server**: de API Management-service is afhankelijk van verschillende Azure-Services. Als API Management wordt gehost in een VNET met een aangepaste DNS-server, moet deze de hostnamen van deze Azure-Services omzetten. Volg [deze](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) richt lijnen voor aangepaste DNS-instellingen. Zie de onderstaande tabel poorten en andere netwerk vereisten voor naslag informatie.
@@ -247,8 +248,8 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| Zuid-Afrika - west| 102.133.0.79|
 | Openbare Azure-peering| Duitsland - west-centraal| 51.116.96.0|
 | Openbare Azure-peering| Duitsland - noord| 51.116.0.0|
-| Openbare Azure-peering| Noor wegen-Oost| 51.120.2.185|
-| Openbare Azure-peering| Noor wegen West| 51.120.130.134|
+| Openbare Azure-peering| Noorwegen - oost| 51.120.2.185|
+| Openbare Azure-peering| Noorwegen - west| 51.120.130.134|
 | Azure China 21Vianet| China-noord (globaal)| 139.217.51.16|
 | Azure China 21Vianet| China-oost (globaal)| 139.217.171.176|
 | Azure China 21Vianet| China - noord| 40.125.137.220|

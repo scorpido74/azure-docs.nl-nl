@@ -1,6 +1,6 @@
 ---
-title: Een BACPAC-bestand importeren om een Data Base te maken in Azure SQL
-description: Maak een nieuwe Azure SQL Database of Azure SQL Managed instance-data base vanuit een BACPAC-bestand.
+title: Een BACPAC-bestand importeren om een Data Base te maken in Azure SQL Database
+description: Maak een nieuwe data base in Azure SQL Database of Azure SQL Managed instance vanuit een BACPAC-bestand.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 25e8790ed0fd5a9a9d93458c3c247632defa778a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050672"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218816"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Quick Start: een BACPAC-bestand importeren in een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-U kunt een SQL Server-Data Base importeren in een Azure SQL Database of SQL Managed instance met behulp van een [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -bestand. U kunt de gegevens importeren uit een `BACPAC` bestand dat is opgeslagen in Azure Blob Storage (alleen standaard opslag) of vanuit lokale opslag op een on-premises locatie. Als u de snelheid van het importeren wilt maximaliseren door meer en snellere resources te bieden, schaalt u de database tijdens het importproces naar een hogere servicelaag en een grotere rekenkracht. U kunt vervolgens omlaag schalen nadat het importeren is voltooid.
+U kunt een SQL Server-Data Base importeren in Azure SQL Database of een SQL-beheerd exemplaar met behulp van een [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) -bestand. U kunt de gegevens importeren uit een BACPAC-bestand dat is opgeslagen in Azure Blob-opslag (alleen standaardopslag), of vanuit een lokale opslag op een on-premises locatie. Als u de snelheid van het importeren wilt maximaliseren door meer en snellere resources te bieden, schaalt u de database tijdens het importproces naar een hogere servicelaag en een grotere rekenkracht. U kunt vervolgens omlaag schalen nadat het importeren is voltooid.
 
 > [!NOTE]
 > Het compatibiliteits niveau van de geïmporteerde data base is gebaseerd op het compatibiliteits niveau van de bron database.
@@ -35,7 +35,7 @@ Bekijk deze video om te zien hoe u kunt importeren uit een BACPAC-bestand in de 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-De [Azure Portal](https://portal.azure.com) biedt *alleen* ondersteuning voor het maken van één Azure SQL database en *alleen* vanuit een BACPAC-bestand dat is opgeslagen in Azure Blob Storage.
+De [Azure Portal](https://portal.azure.com) biedt *alleen* ondersteuning voor het maken van één data base in Azure SQL database en *alleen* vanuit een BACPAC-bestand dat is opgeslagen in Azure Blob Storage.
 
 Als u een Data Base wilt migreren naar een met [Azure SQL beheerd exemplaar](../managed-instance/sql-managed-instance-paas-overview.md) vanuit een BACPAC-bestand, gebruikt u SQL Server Management Studio of SQLPackage met behulp van de Azure Portal of Azure PowerShell momenteel niet wordt ondersteund.
 
@@ -48,7 +48,7 @@ Als u een Data Base wilt migreren naar een met [Azure SQL beheerd exemplaar](../
 
 1. Selecteer het opslag account en de container voor het BACPAC-bestand en selecteer vervolgens het BACPAC-bestand waaruit u wilt importeren.
 
-1. Geef de grootte van de nieuwe Data Base op (meestal hetzelfde als die van de oorsprong) en geef de referenties voor de doel SQL Server op. Zie [Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor een lijst met mogelijke waarden voor een nieuwe Azure SQL database.
+1. Geef de grootte van de nieuwe Data Base op (meestal hetzelfde als die van de oorsprong) en geef de referenties voor de doel SQL Server op. Zie [Create Data Base](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor een lijst met mogelijke waarden voor een nieuwe data base in Azure SQL database.
 
    ![Data base-import2](./media/database-import/sql-server-import-database-settings.png)
 
@@ -157,7 +157,7 @@ U kunt deze wizards ook gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor informatie over het maken van verbinding met en het opvragen van een Azure SQL Database, raadpleegt u [Quick Start: Azure SQL database: gebruik SQL Server Management Studio om verbinding te maken en gegevens op te vragen](connect-query-ssms.md).
+- Voor informatie over het maken van verbinding met en het uitvoeren van een query op een data base in Azure SQL Database raadpleegt u [Quick Start: Azure SQL database: SQL Server Management Studio gebruiken om verbinding te maken met en gegevens](connect-query-ssms.md)op te vragen.
 - Raadpleeg dit blogartikel van het SQL Server-klantadviesteam over migratie met behulp van BACPAC-bestanden: [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407) (Migreren van SQL Server naar Azure SQL Database met BACPAC-bestanden).
 - Zie [SQL Server Data Base Migration to Azure SQL database](migrate-to-database-from-sql-server.md)voor een bespreking van het volledige SQL Server database migratie proces, met inbegrip van de aanbevelingen voor de prestaties.
 - Zie [Azure Storage Security Guide (Engelstalig](https://docs.microsoft.com/azure/storage/common/storage-security-guide)) voor meer informatie over het veilig beheren en delen van opslag sleutels en gedeelde toegangs handtekeningen.

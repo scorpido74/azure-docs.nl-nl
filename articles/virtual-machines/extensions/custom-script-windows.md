@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478147"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220958"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste scriptextensie voor Windows
 
@@ -30,7 +30,17 @@ In dit document wordt beschreven hoe u de aangepaste script extensie gebruikt me
 
 ### <a name="operating-system"></a>Besturingssysteem
 
-De aangepaste script extensie voor Windows wordt uitgevoerd op de extensie OSs die wordt ondersteund. Zie deze door Azure- [extensie ondersteunde besturings systemen](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems)voor meer informatie.
+De aangepaste script extensie voor Windows wordt uitgevoerd op de extensie OSs die wordt ondersteund.
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 core
+* Windows Server 2019
+* Windows Server 2019 core
 
 ### <a name="script-location"></a>Locatie van script
 
@@ -110,10 +120,10 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Naam | Waarde/voor beeld | Gegevenstype |
+| Name | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| uitgever | Microsoft.Compute | tekenreeks |
+| publisher | Microsoft.Compute | tekenreeks |
 | type | CustomScriptExtension | tekenreeks |
 | typeHandlerVersion | 1,10 | int |
 | fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | matrix |
@@ -131,7 +141,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `commandToExecute`: (**vereist**, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld als uw opdracht geheimen bevat zoals wacht woorden of als uw fileUris gevoelig zijn.
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
 * `timestamp`(optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
-* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten `fileUris` alle Url's voor Azure-blobs zijn.
+* `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, `fileUris` moeten alle url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
 * `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
   * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
@@ -211,7 +221,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Meerdere scripts gebruiken
 
-In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. `1_Add_Tools.ps1` U kunt bijvoorbeeld aanroepen `2_Add_Features.ps1` door toe te `.\2_Add_Features.ps1` voegen aan het script en dit proces herhalen voor de andere scripts die u `$settings`in definieert.
+In dit voor beeld hebt u drie scripts die worden gebruikt voor het bouwen van uw server. De **commandToExecute** roept het eerste script aan. vervolgens hebt u opties om te zien hoe de andere worden aangeroepen. U kunt bijvoorbeeld een hoofd script hebben dat de uitvoering beheert, met de juiste fout afhandeling, logboek registratie en status beheer. De scripts worden gedownload naar de lokale machine voor het uitvoeren van. U kunt bijvoorbeeld `1_Add_Tools.ps1` aanroepen `2_Add_Features.ps1` door toe te voegen `.\2_Add_Features.ps1` aan het script en dit proces herhalen voor de andere scripts die u in definieert `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -265,7 +275,7 @@ U kunt de eigenschap [updatetag](/dotnet/api/microsoft.azure.management.compute.
 
 ### <a name="using-invoke-webrequest"></a>Invoke-WebRequest gebruiken
 
-Als u [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) in uw script gebruikt, moet u de para meter `-UseBasicParsing` opgeven, anders wordt de volgende fout weer gegeven bij het controleren van de gedetailleerde status:
+Als u [invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) in uw script gebruikt, moet u de para meter opgeven, `-UseBasicParsing` anders wordt de volgende fout weer gegeven bij het controleren van de gedetailleerde status:
 
 ```error
 The response content cannot be parsed because the Internet Explorer engine is not available, or Internet Explorer's first-launch configuration is not complete. Specify the UseBasicParsing parameter and try again.
@@ -328,17 +338,17 @@ De opgegeven bestanden worden gedownload naar de volgende map op de virtuele doe
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-waar `<n>` is een decimaal geheel getal. Dit kan veranderen tussen de uitvoeringen van de uitbrei ding.  De `1.*` waarde komt overeen met de werkelijke `typeHandlerVersion` , huidige waarde van de extensie.  De daad werkelijke map kan bijvoorbeeld zijn `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+waar `<n>` is een decimaal geheel getal. Dit kan veranderen tussen de uitvoeringen van de uitbrei ding.  De `1.*` waarde komt overeen met de werkelijke, huidige `typeHandlerVersion` waarde van de extensie.  De daad werkelijke map kan bijvoorbeeld zijn `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` .  
 
-Wanneer de `commandToExecute` opdracht wordt uitgevoerd, wordt deze map door de extensie ingesteld (bijvoorbeeld `...\Downloads\2`) als de huidige werkmap. Dit proces zorgt ervoor dat relatieve paden kunnen worden gebruikt om de bestanden te vinden `fileURIs` die via de eigenschap zijn gedownload. Zie de onderstaande tabel voor voor beelden.
+Wanneer de opdracht wordt uitgevoerd `commandToExecute` , wordt deze map door de extensie ingesteld (bijvoorbeeld `...\Downloads\2` ) als de huidige werkmap. Dit proces zorgt ervoor dat relatieve paden kunnen worden gebruikt om de bestanden te vinden die via de eigenschap zijn gedownload `fileURIs` . Zie de onderstaande tabel voor voor beelden.
 
-Omdat het absolute Download traject na verloop van tijd kan variëren, is het beter om te kiezen voor relatieve script-en `commandToExecute` bestands paden in de teken reeks, indien mogelijk. Bijvoorbeeld:
+Omdat het absolute Download traject na verloop van tijd kan variëren, is het beter om te kiezen voor relatieve script-en bestands paden in de `commandToExecute` teken reeks, indien mogelijk. Bijvoorbeeld:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Padgegevens na het eerste URI-segment worden bewaard voor bestanden die worden gedownload `fileUris` via de eigenschappen lijst.  Zoals in de onderstaande tabel wordt weer gegeven, worden gedownloade bestanden toegewezen in submappen voor downloaden om de structuur `fileUris` van de waarden weer te geven.  
+Padgegevens na het eerste URI-segment worden bewaard voor bestanden die worden gedownload via de `fileUris` Eigenschappen lijst.  Zoals in de onderstaande tabel wordt weer gegeven, worden gedownloade bestanden toegewezen in submappen voor downloaden om de structuur van de waarden weer te geven `fileUris` .  
 
 #### <a name="examples-of-downloaded-files"></a>Voor beelden van gedownloade bestanden
 

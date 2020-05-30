@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 479e57a6001e143e233457967d55ea0e2fb6d3de
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021047"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195714"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>De Azure SSIS Integration runtime configureren met SQL Database geo-replicatie en failover
 
@@ -29,11 +29,11 @@ Zie [overzicht: actieve geo-replicatie en groepen voor automatische failover](..
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-database-managed-instance"></a>Azure-SSIS IR failover met een door SQL Database beheerd exemplaar
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>Azure-SSIS IR failover met een door SQL beheerd exemplaar
 
 ### <a name="prerequisites"></a>Vereisten
 
-Een Azure SQL Database beheerde instantie gebruikt een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)*. 
+Een door Azure SQL beheerd exemplaar maakt gebruik van een *database hoofd sleutel (DMK)* om gegevens, referenties en verbindings gegevens die zijn opgeslagen in een Data Base te beveiligen. Als u de automatische ontsleuteling van DMK wilt inschakelen, wordt een kopie van de sleutel versleuteld via de *Server hoofd sleutel (SMK)*. 
 
 De SMK wordt niet gerepliceerd in een failover-groep. U moet een wacht woord toevoegen aan de primaire en secundaire instanties voor DMK-ontsleuteling na een failover.
 
@@ -43,7 +43,7 @@ De SMK wordt niet gerepliceerd in een failover-groep. U moet een wacht woord toe
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. Een failover-groep maken op een door Azure SQL Database beheerd exemplaar.
+2. Een failover-groep maken op een door SQL beheerd exemplaar.
 
 3. Voer **sp_control_dbmasterkey_password** uit op het secundaire exemplaar met behulp van het nieuwe versleutelings wachtwoord.
 
@@ -97,9 +97,9 @@ Als er een failover optreedt, voert u de volgende stappen uit:
 
 3. Restart the Azure-SSIS IR.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Database managed instance
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of an Azure SQL Database managed instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
 #### Solution
 

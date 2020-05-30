@@ -7,12 +7,13 @@ ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
-ms.openlocfilehash: be6d2fb590dfefb170b3f23378c507b4d6b2295d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: references_regions
+ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980045"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194321"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Bedrijfscontinuïteit en herstel na noodgevallen (BCDR: gekoppelde Azure-regio’s
 
@@ -66,7 +67,7 @@ Nee. Klanten kunnen Azure-Services gebruiken voor het ontwikkelen van een flexib
 | Noord-Amerika |VS - oost 2 |VS - centraal |
 | Noord-Amerika |VS - noord-centraal |VS - zuid-centraal |
 | Noord-Amerika |VS - west 2 |VS - west-centraal |
-| Noorwegen | Noor wegen-Oost | Noor wegen West |
+| Noorwegen | Noorwegen - oost | Noorwegen - west |
 | Zuid-Afrika | Zuid-Afrika - noord |Zuid-Afrika - west |
 | Zwitserland | Zwitserland - noord |Zwitserland - west |
 | VK |Verenigd Koninkrijk West |Verenigd Koninkrijk Zuid |

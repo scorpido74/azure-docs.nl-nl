@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: e2b37e0f3ccf5fcebe4723c05d644f2cbb7c1d56
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f9e0a137dff6fc2376d156f9c72066055b1f59af
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596944"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196963"
 ---
 # <a name="configure-replication-to-azure-sql-edge-preview"></a>Replicatie naar Azure SQL Edge configureren (preview-versie) 
 
@@ -25,12 +25,12 @@ Een exemplaar van Azure SQL Edge kan worden geconfigureerd als push-abonnee voor
 - Een exemplaar van Azure SQL Edge moet een push-abonnee zijn voor een uitgever.
 - De uitgever en de Distributor kunnen
    - Een exemplaar van SQL Server dat on-premises of een exemplaar van SQL Server wordt uitgevoerd op een virtuele machine van Azure. Zie [SQL Server op Azure virtual machines Overview](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)voor meer informatie. SQL Server exemplaren moeten een versie hebben die groter is dan SQL Server 2016.
-   - Een exemplaar van Azure SQL Database Managed instance. Een beheerd exemplaar kan Publisher-, Distributor-en Subscriber-data bases hosten. Zie [replicatie met SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)voor meer informatie.
+   - Een exemplaar van een door Azure SQL beheerd exemplaar. Een beheerd exemplaar kan Publisher-, Distributor-en Subscriber-data bases hosten. Zie [replicatie met SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)voor meer informatie.
 
 - De distributie database en de replicatie agenten kunnen niet worden geplaatst op een Azure SQL Edge-exemplaar.  
 
 > [!NOTE]
-> Poging tot het configureren van een replicatie met een niet-ondersteunde versie kan resulteren in een fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 (kan de server naam niet openen \<> aangevraagd door de aanmelding. De aanmelding is mislukt.)  
+> Poging tot het configureren van een replicatie met een niet-ondersteunde versie kan leiden tot een fout nummer MSSQL_REPL20084 (het proces kan geen verbinding maken met de abonnee.) en MSSQL_REPL40532 (kan de server \<name> die door de aanmelding is aangevraagd, niet openen. De aanmelding is mislukt.)  
 
 Als u alle functies van Azure SQL Edge wilt gebruiken, moet u de nieuwste versies van [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) en [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)gebruiken.  
 
@@ -40,20 +40,20 @@ Als u alle functies van Azure SQL Edge wilt gebruiken, moet u de nieuwste versie
 - Replicatie kan alleen SQL Server verificatie aanmeldingen gebruiken om verbinding te maken met een Azure SQL Edge-exemplaar.
 - Gerepliceerde tabellen moeten een primaire sleutel hebben.
 - Eén publicatie op SQL Server kan zowel Azure SQL-Edge als SQL Server (on-premises en SQL Server in een virtuele machine van Azure) ondersteunen.  
-- Replicatie beheer, bewaking en probleem oplossing moeten worden uitgevoerd vanaf de on-premises SQL Server.  
+- Replicatie beheer, bewaking en probleem oplossing moeten worden uitgevoerd vanuit het SQL Server-exemplaar.  
 - Alleen push-abonnementen naar Azure SQL Edge worden ondersteund.  
 - `@subscriber_type = 0`Wordt alleen ondersteund in **Sp_addsubscription** voor Azure SQL Edge.  
 - Azure SQL Edge biedt geen ondersteuning voor bidirectionele, onmiddellijke, bijwerk bare of peer-to-peer-replicatie.
-- Azure SQL Edge ondersteunt alleen een subset van functies die beschikbaar zijn in SQL Server of Azure SQL Database beheerde instantie, omdat een poging om een Data Base (of objecten in de data base) te repliceren die een of meer niet-ondersteunde functies bevatten, een fout veroorzaakt. Als u bijvoorbeeld een Data Base probeert te repliceren die objecten bevat met ruimtelijke gegevens typen, resulteert dit in een fout. Zie [ondersteunde functies van Azure SQL Edge](features.md)voor meer informatie over functies die door Azure SQL Edge worden ondersteund.
+- Azure SQL Edge ondersteunt alleen een subset van functies die beschikbaar zijn in SQL Server of een door SQL beheerd exemplaar, omdat een poging om een Data Base (of objecten in de data base) te repliceren die een of meer niet-ondersteunde functies bevatten, een fout veroorzaakt. Als u bijvoorbeeld een Data Base probeert te repliceren die objecten bevat met ruimtelijke gegevens typen, resulteert dit in een fout. Zie [ondersteunde functies van Azure SQL Edge](features.md)voor meer informatie over functies die door Azure SQL Edge worden ondersteund.
 
 ## <a name="scenarios"></a>Scenario's  
 
 ### <a name="initializing-reference-data-on-an-edge-instance"></a>Referentie gegevens voor een Edge-instantie initialiseren
 
-Een veelvoorkomend scenario waarbij replicatie nuttig kan zijn wanneer het Edge-exemplaar moet worden geïnitialiseerd met referentie gegevens die na verloop van tijd worden gewijzigd. U kunt bijvoorbeeld ML-modellen bijwerken op het rand exemplaar nadat ze zijn getraind op een on-premises SQL Server-exemplaar.
+Een veelvoorkomend scenario waarbij replicatie nuttig kan zijn wanneer het Edge-exemplaar moet worden geïnitialiseerd met referentie gegevens die na verloop van tijd worden gewijzigd. U kunt bijvoorbeeld ML-modellen bijwerken op het rand exemplaar nadat ze zijn getraind op een SQL Server-exemplaar.
 
-1. Een transactionele replicatie publicatie maken op een on-premises SQL Server Data Base.  
-2. Gebruik op de on-premises SQL Server de **wizard Nieuw abonnement** of de Transact-SQL-instructies om een push te maken voor een abonnement op Azure SQL Edge.  
+1. Een transactionele replicatie publicatie maken op een SQL Server Data Base.  
+2. Gebruik op het SQL Server-exemplaar de **wizard Nieuw abonnement** of de Transact-SQL-instructies om een push te maken voor een abonnement op Azure SQL Edge.  
 3. De gerepliceerde Data Base op Azure SQL Edge kan worden geïnitialiseerd door gebruik te maken van een moment opname die is gegenereerd door de momentopname agent en die wordt gedistribueerd en geleverd door de distributie agent of een back-up van de data base van de uitgever. Als de back-up van de data base objecten/onderdelen bevat die niet worden ondersteund door Azure SQL Edge, mislukt de herstel bewerking.
 
 ## <a name="limitations"></a>Beperkingen

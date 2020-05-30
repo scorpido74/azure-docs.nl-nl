@@ -12,12 +12,12 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 8536c1cfbeefc36774b5423aee39f345dc23cd18
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 50322f69ff1cbb58cd5461646ca057718696e0eb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042706"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193879"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Toepassingen en data bases voor prestaties afstemmen in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ In dit artikel wordt ervan uitgegaan dat u de Azure SQL Database [Data Base Advi
 
 ## <a name="tune-your-application"></a>Uw toepassing afstemmen
 
-Bij traditionele on-premises SQL Server is het proces van het plannen van de eerste capaciteit vaak gescheiden van het proces van het uitvoeren van een toepassing in de productie omgeving. Hardware-en product licenties worden eerst aangeschaft en het afstemmen van de prestaties wordt later gedaan. Wanneer u Azure SQL Database of Azure SQL Managed instance gebruikt, is het een goed idee om het proces van het uitvoeren van een toepassing en het afstemmen ervan te verfijnen. Met het model van de betaling voor capaciteit op aanvraag kunt u uw toepassing afstemmen op het gebruik van de mini maal benodigde resources, in plaats van de inrichting op hardware op basis van schattingen van toekomstige groei plannen voor een toepassing, die vaak onjuist zijn. Sommige klanten kunnen ervoor kiezen om een toepassing niet af te stemmen en in plaats daarvan te kiezen voor het inrichten van hardwarebronnen. Deze aanpak kan een goed idee zijn als u een belang rijke toepassing niet wilt wijzigen tijdens een drukke periode. Maar het afstemmen van een toepassing kan de resource vereisten minimaliseren en de maandelijkse facturen verlagen wanneer u de service lagen in Azure SQL Database en Azure SQL Managed instance gebruikt.
+Bij traditionele on-premises SQL Server is het proces van het plannen van de eerste capaciteit vaak gescheiden van het proces van het uitvoeren van een toepassing in de productie omgeving. Hardware-en product licenties worden eerst aangeschaft en het afstemmen van de prestaties wordt later gedaan. Wanneer u Azure SQL gebruikt, is het een goed idee om het proces van het uitvoeren van een toepassing en het afstemmen ervan te verfijnen. Met het model van de betaling voor capaciteit op aanvraag kunt u uw toepassing afstemmen op het gebruik van de mini maal benodigde resources, in plaats van de inrichting op hardware op basis van schattingen van toekomstige groei plannen voor een toepassing, die vaak onjuist zijn. Sommige klanten kunnen ervoor kiezen om een toepassing niet af te stemmen en in plaats daarvan te kiezen voor het inrichten van hardwarebronnen. Deze aanpak kan een goed idee zijn als u een belang rijke toepassing niet wilt wijzigen tijdens een drukke periode. Maar het afstemmen van een toepassing kan de resource vereisten minimaliseren en de maandelijkse facturen verlagen wanneer u de service lagen in Azure SQL Database en Azure SQL Managed instance gebruikt.
 
 ### <a name="application-characteristics"></a>Toepassings kenmerken
 

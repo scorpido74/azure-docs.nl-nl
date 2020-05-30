@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170899"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219252"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -143,6 +143,23 @@ Als gedetecteerde Vm's niet worden weer gegeven in de portal of als de VM-gegeve
 ## <a name="deleted-vms-appear-in-portal"></a>Verwijderde Vm's worden weer gegeven in de portal
 
 Als u Vm's verwijdert en deze nog steeds worden weer gegeven in de portal, wacht u 30 minuten. Als deze nog steeds worden weer gegeven, moet u vernieuwen zoals hierboven wordt beschreven.
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Fout: het geüploade bestand heeft niet de verwachte indeling
+Sommige hulpprogram ma's hebben regionale instellingen waarmee het CSV-bestand met een punt komma als scheidings teken wordt gemaakt. Wijzig de instellingen om te controleren of het scheidings teken een komma is.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Ik heb een CSV geïmporteerd, maar ik zie ' detectie wordt uitgevoerd '
+Deze status wordt weer gegeven als het uploaden van CSV-bestanden is mislukt vanwege een validatie fout. Probeer het CSV-bestand opnieuw te importeren. U kunt het fouten rapport van de voor gaande upload downloaden en de herstel richtlijnen in het bestand volgen om de fouten op te lossen. Het fout rapport kan worden gedownload uit de sectie ' Details importeren ' op de pagina computers detecteren.
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Details van toepassing niet zien, zelfs na het bijwerken van gast referenties
+De detectie van de toepassing wordt elke 24 uur uitgevoerd. Als u de details onmiddellijk wilt zien, kunt u het volgende vernieuwen. Dit kan een paar minuten duren, afhankelijk van het aantal. van virtuele machines die zijn gedetecteerd.
+
+1. Selecteer in **servers**  >  **Azure migrate server-evaluatie**de optie **overzicht**.
+2. Selecteer onder **beheren**de optie **status van agent**.
+3. Selecteer **agent vernieuwen**.
+4. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
+
+## <a name="unable-to-export-application-inventory"></a>Kan de toepassings inventaris niet exporteren
+Zorg ervoor dat de gebruiker die de inventaris van de portal downloadt, over Inzender bevoegdheden beschikt voor het abonnement.
 
 ## <a name="common-app-discovery-errors"></a>Veelvoorkomende fouten bij app-detectie
 

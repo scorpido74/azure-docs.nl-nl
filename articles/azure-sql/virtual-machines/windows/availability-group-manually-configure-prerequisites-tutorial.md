@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7fdced5a777c5303e402a5cc58048e076b104b4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bfb273ec0013925076669c99f08933bd10ffc465
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049265"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197131"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op virtuele machines van Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -130,7 +130,7 @@ De volgende tabel geeft een overzicht van de netwerk configuratie-instellingen:
 | **Subnetnaam** |**sqlsubnet** |
 | **Subnetadresbereik** |Deze waarde is afhankelijk van de beschik bare adresbereiken in uw abonnement. Een typische waarde is 10.0.1.0/24. |
 | **Abonnement** |Geef het abonnement op dat u wilt gebruiken. |
-| **Resource groep** |**SQL-HA-RG** |
+| **Resourcegroep** |**SQL-HA-RG** |
 | **Locatie** |Geef dezelfde locatie op die u hebt gekozen voor de resource groep. |
 
 ## <a name="create-availability-sets"></a>Beschikbaarheidssets maken
@@ -230,7 +230,7 @@ In de volgende stappen configureert u de **ad-Primary-DC-** computer als een dom
 12. Klik in de kolom **actie** van het dialoog venster **alle Server taak Details** op **deze server promo veren naar een domein controller**.
 13. Gebruik de volgende waarden in de **Wizard Active Directory Domain Services configuratie**:
 
-    | **Faxvoorblad** | Instelling |
+    | **Pagina** | Instelling |
     | --- | --- |
     | **Implementatieconfiguratie** |**Een nieuw forest toevoegen**<br/> **Naam van hoofd domein** = Corp.contoso.com |
     | **Domeincontrolleropties** |**Wacht woord voor DSRM** = contoso! 0000<br/>**Bevestig het wacht woord** = contoso! 0000 |
@@ -376,7 +376,7 @@ Maak vervolgens drie Vm's: twee SQL Server Vm's en een virtuele machine voor een
 <br/>
 
 > [!NOTE]
-> De computer grootten die hier worden voorgesteld, zijn bedoeld voor het testen van beschikbaarheids groepen in azure-Vm's. Voor de beste prestaties van werk belastingen in de productie raadpleegt u de aanbevelingen voor SQL Server computer grootten en configuratie in [Best practices voor SQL Server in azure virtual machines](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> De computer grootten die hier worden voorgesteld, zijn bedoeld voor het testen van beschikbaarheids groepen in azure-Vm's. Zie de aanbevelingen voor SQL Server grootten van virtuele machines en configuratie in [Best practices voor SQL Server in azure virtual machines](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor de beste prestaties van productie werkbelastingen.
 >
 >
 

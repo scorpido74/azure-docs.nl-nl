@@ -1,6 +1,6 @@
 ---
-title: Auditlogboek controleren
-description: Meer informatie over de structuur van Azure SQL-en Azure Synapse-controle Logboeken.
+title: Indeling van SQL Database audit logboek
+description: Begrijpen hoe Azure SQL Database controle logboeken worden gestructureerd.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,30 +10,30 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
-ms.openlocfilehash: 33a82cb5e4daac96d51f19de21e817b07237ec20
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041659"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190311"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Met [Azure SQL database controle](auditing-overview.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven, of verzonden naar Event Hub of log Analytics voor downstream-verwerking en-analyse.
 
-## <a name="naming-conventions"></a>Naamgevings regels
+## <a name="naming-conventions"></a>Naamconventies
 
 ### <a name="blob-audit"></a>BLOB-controle
 
-Audit logboeken die zijn opgeslagen in Blob Storage worden opgeslagen in een container `sqldbauditlogs` met de naam in het Azure Storage-account. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . De indeling van de BLOB-bestands naam is `<CreationTime>_<FileNumberInSession>.xel` , in de vorm `CreationTime` van `hh_mm_ss_ms` een UTC-indeling, en `FileNumberInSession` is een lopende index in het geval van sessie logboeken over meerdere BLOB-bestanden.
+Audit logboeken die zijn opgeslagen in Azure Blob-opslag worden opgeslagen in een container `sqldbauditlogs` met de naam in het Azure-opslag account. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . De indeling van de bestands naam van de blob is `<CreationTime>_<FileNumberInSession>.xel` , in de vorm `CreationTime` van `hh_mm_ss_ms` een UTC-indeling, en `FileNumberInSession` is een lopende index in het geval van sessie logboeken over meerdere BLOB-bestanden.
 
 Voor de Data Base `Database1` op `Server1` het volgende is bijvoorbeeld een mogelijk geldig pad:
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Alleen-lezen replica's](read-scale-out.md) Audit logboeken worden in dezelfde container opgeslagen. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . De BLOB-bestands naam heeft dezelfde indeling. De audit logboeken van alleen-lezen Replica's worden in dezelfde container opgeslagen.
+[Alleen-lezen replica's](read-scale-out.md) audit logboeken worden opgeslagen in dezelfde container. De Directory-hiërarchie in de container is van het formulier `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . De naam van het BLOB-bestand deelt dezelfde indeling. De audit logboeken van alleen-lezen Replica's worden in dezelfde container opgeslagen.
 
 
 ### <a name="event-hub"></a>Event Hub
@@ -46,7 +46,7 @@ Controle gebeurtenissen worden geschreven naar Log Analytics werk ruimte die tij
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Controle logboek velden
 
-| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Beschrijving | BLOB-type | Type Event Hubs/Log Analytics |
+| Naam (BLOB) | Naam (Event Hubs/Log Analytics) | Beschrijving | Blob-type | Type Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID van de actie | varchar (4) | tekenreeks |
 | action_name | action_name_s | De naam van de actie | N.v.t. | tekenreeks |

@@ -1,5 +1,5 @@
 ---
-title: Replicatie tussen twee door Azure SQL beheerde instanties configureren
+title: Replicatie tussen beheerde instanties configureren
 titleSuffix: Azure SQL Managed Instance
 description: In deze zelf studie leert u transactionele replicatie tussen een Azure SQL Managed instance/Distributor en een SQL Managed instance Subscriber te configureren.
 services: sql-database
@@ -12,54 +12,55 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 5603c6a828eb27bec43cf1fcb1924ad3ec430685
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 507207c9c8de96d18d11299b9ab5c2566c061150
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051827"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219677"
 ---
-# <a name="tutorial-configure-replication-between-two-azure-sql-managed-instances"></a>Zelf studie: replicatie tussen twee door Azure SQL beheerde instanties configureren
+# <a name="tutorial-configure-replication-between-two-managed-instances"></a>Zelf studie: replicatie tussen twee beheerde instanties configureren
+
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Met transactionele replicatie kunt u gegevens van de ene data base repliceren naar een andere die worden gehost op SQL Server, of een [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) (open bare preview). Een door SQL beheerd exemplaar kan een uitgever, distributeur of abonnee zijn in de replicatie topologie. Zie [transactionele replicatie configuraties](replication-transactional-overview.md#common-configurations) voor beschik bare configuraties.
+Met transactionele replicatie kunt u gegevens van de ene data base repliceren naar een andere host die wordt gehost op SQL Server of [Azure SQL Managed instance](sql-managed-instance-paas-overview.md) (open bare preview). SQL Managed instance kan een uitgever, distributeur of abonnee zijn in de replicatie topologie. Zie [transactionele replicatie configuraties](replication-transactional-overview.md#common-configurations) voor beschik bare configuraties.
 
 > [!NOTE]
 > In dit artikel wordt het gebruik van [transactionele replicatie](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in Azure SQL Managed instance beschreven. Het heeft geen betrekking op [failover-groepen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group), een Azure SQL Managed instance-functie waarmee u volledig Lees bare replica's van afzonderlijke instanties kunt maken.
 
-In deze zelf studie leert u hoe u één SQL Managed instance als de uitgever en de Distributor configureert, en vervolgens een tweede SQL-beheerd exemplaar als de abonnee.  
+In deze zelf studie leert u hoe u een beheerd exemplaar configureert als de uitgever en de Distributor en vervolgens een tweede beheerd exemplaar als de abonnee.  
 
 ![Repliceren tussen twee beheerde exemplaren](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
   > [!NOTE]
-  > - Dit artikel is bedoeld om een geavanceerde gebruiker te begeleiden bij het configureren van replicatie met een SQL Managed instance van end-to-end, te beginnen met het maken van de resource groep. Als er al beheerde instanties zijn geïmplementeerd, gaat u verder met [stap 4](#4---create-a-publisher-database) om uw Publisher-data base te maken, of [stap 6](#6---configure-distribution) als u al een Publisher-en abonnee database hebt en u klaar bent om de configuratie van de replicatie te starten.  
-  > - In dit artikel worden uw uitgever en distributie server geconfigureerd op hetzelfde beheerde exemplaar. Als u de Distributor wilt plaatsen op een afzonderlijke beheerd-instantie, raadpleegt u de zelf studie [replicatie configureren tussen een mi-Uitgever en een mi-distributeur](replication-two-instances-and-sql-server-configure-tutorial.md). 
+  > - Dit artikel is bedoeld om een geavanceerde gebruiker te begeleiden bij het configureren van replicatie met SQL Managed instance van end-to-end, beginnend met het maken van de resource groep. Als er al beheerde instanties zijn geïmplementeerd, gaat u verder met [stap 4](#4---create-a-publisher-database) om uw Publisher-data base te maken, of [stap 6](#6---configure-distribution) als u al een Publisher-en abonnee database hebt en u klaar bent om de configuratie van de replicatie te starten.  
+  > - In dit artikel worden uw uitgever en distributie server geconfigureerd op hetzelfde beheerde exemplaar. Als u de Distributor wilt plaatsen op een afzonderlijk beheerd exemplaar, raadpleegt u de zelf studie [transactionele replicatie configureren tussen Azure SQL Managed instance en SQL Server](replication-two-instances-and-sql-server-configure-tutorial.md). 
 
 ## <a name="requirements"></a>Vereisten
 
-Het configureren van een SQL Managed instance voor als een uitgever en/of een distributeur vereist het volgende:
+Het configureren van een door SQL beheerd exemplaar om te functioneren als een uitgever en/of een distributeur vereist het volgende:
 
-- Of het beheerde exemplaar van de Publisher SQL-instantie zich in hetzelfde virtuele netwerk bevindt als de Distributor en de abonnee of dat [vNet-peering](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) is geconfigureerd tussen de virtuele netwerken van alle drie de entiteiten. 
+- Of het beheerde exemplaar van de uitgever zich in hetzelfde virtuele netwerk bevindt als de Distributor en de abonnee, of dat de [peering van het virtuele netwerk](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) is geconfigureerd tussen de virtuele netwerken van alle drie de entiteiten. 
 - Connectiviteit maakt gebruik van SQL-verificatie tussen replicatiedeelnemers.
-- Een Azure Storage-account share voor de werkmap voor replicatie.
-- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de SQL Managed instances voor toegang tot de Azure-bestands share.  Als de fout zich voordoet `failed to connect to azure storage \<storage account name> with os error 53` , moet u een regel voor uitgaande verbindingen toevoegen aan de NSG van het betreffende SQL Managed instance-subnet.
+- Een Azure Storage-account share voor de replicatie werkmap.
+- Poort 445 (TCP uitgaand) is geopend in de beveiligings regels van NSG voor de beheerde instanties voor toegang tot de Azure-bestands share.  Als de fout zich voordoet `failed to connect to azure storage \<storage account name> with os error 53` , moet u een regel voor uitgaande verbindingen toevoegen aan de NSG van het betreffende SQL Managed instance-subnet.
 
 ## <a name="1---create-a-resource-group"></a>1: een resource groep maken
 
 Gebruik de [Azure Portal](https://portal.azure.com) om een resource groep met de naam te maken `SQLMI-Repl` .  
 
-## <a name="2---create-sql-managed-instances"></a>2-SQL Managed instances maken
+## <a name="2---create-managed-instances"></a>2-beheerde instanties maken
 
-Gebruik de [Azure Portal](https://portal.azure.com) om twee [SQL-beheerde exemplaren](instance-create-quickstart.md) op hetzelfde virtuele netwerk en subnet te maken. Noem bijvoorbeeld de twee SQL Managed instances:
+Gebruik de [Azure Portal](https://portal.azure.com) om twee [SQL-beheerde exemplaren](instance-create-quickstart.md) op hetzelfde virtuele netwerk en subnet te maken. Geef bijvoorbeeld de twee beheerde exemplaren een naam:
 
 - `sql-mi-pub`(samen met enkele tekens voor wille keurige)
 - `sql-mi-sub`(samen met enkele tekens voor wille keurige)
 
-U moet ook [een Azure VM configureren om verbinding te maken](connect-vm-instance-configure.md) met uw door SQL beheerde exemplaren. 
+U moet ook [een Azure VM configureren om verbinding te maken](connect-vm-instance-configure.md) met uw beheerde exemplaren. 
 
-## <a name="3---create-azure-storage-account"></a>3-Azure Storage account maken
+## <a name="3---create-an-azure-storage-account"></a>3-een Azure Storage-account maken
 
-[Maak een Azure Storage-account](/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak een [Bestands share](../../storage/files/storage-how-to-create-file-share.md) in het opslag account. 
+[Maak een Azure-opslag account](/azure/storage/common/storage-create-storage-account#create-a-storage-account) voor de werkmap en maak een [Bestands share](../../storage/files/storage-how-to-create-file-share.md) in het opslag account. 
 
 Kopieer het pad naar de bestands share met de volgende indeling:`\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -73,7 +74,7 @@ Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storag
 
 ## <a name="4---create-a-publisher-database"></a>4-een Publisher-data base maken
 
-Maak verbinding met uw `sql-mi-pub` door SQL beheerd exemplaar met behulp van SQL Server Management Studio en voer de volgende Transact-SQL-code (T-SQL) uit om uw Publisher-data base te maken:
+Maak verbinding met uw `sql-mi-pub` beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende Transact-SQL-code (T-SQL) uit om uw Publisher-data base te maken:
 
 ```sql
 USE [master]
@@ -107,7 +108,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5-een abonnee database maken
 
-Maak verbinding met uw `sql-mi-sub` door SQL beheerd exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw lege abonnee database te maken:
+Maak verbinding met uw `sql-mi-sub` beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw lege abonnee database te maken:
 
 ```sql
 USE [master]
@@ -128,7 +129,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6-distributie configureren
 
-Maak verbinding met uw `sql-mi-pub` door SQL beheerd exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw distributie database te configureren.
+Maak verbinding met uw `sql-mi-pub` beheerde exemplaar met behulp van SQL Server Management Studio en voer de volgende T-SQL-code uit om uw distributie database te configureren.
 
 ```sql
 USE [master]
@@ -165,7 +166,7 @@ EXEC sp_adddistpublisher
    > [!NOTE]
    > Zorg ervoor dat u alleen backslashes ( `\` ) voor de para meter file_storage gebruikt. Het gebruik van een slash ( `/` ) kan een fout veroorzaken wanneer er verbinding wordt gemaakt met de bestands share.
 
-Met dit script wordt een lokale uitgever op het beheerde exemplaar van SQL geconfigureerd, wordt een gekoppelde server toegevoegd en wordt een set taken gemaakt voor de SQL Server Agent.
+Met dit script wordt een lokale uitgever op het beheerde exemplaar geconfigureerd, wordt een gekoppelde server toegevoegd en wordt een set taken voor de SQL Server-Agent gemaakt.
 
 ## <a name="8---create-publication-and-subscriber"></a>8-publicatie en abonnee maken
 

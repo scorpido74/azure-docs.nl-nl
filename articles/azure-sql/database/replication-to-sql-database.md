@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: eebf0bb2a5f2a813ff282854b62f10957475e3b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046437"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192954"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replicatie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ U kunt een Azure SQL Database als push-abonnee configureren in een transactionel
 
 Om te repliceren naar een Azure SQL Database, moeten SQL Server uitgevers en distributeurs (ten minste) een van de volgende versies gebruiken: 
 
-Publiceren naar een Azure SQL Database van een on-premises SQL Server wordt ondersteund door de volgende versies van SQL Server:
+Publiceren naar een Azure SQL Database van een SQL Server-Data Base wordt ondersteund door de volgende versies van SQL Server:
 
 - SQL Server 2016 en hoger
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) of [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
@@ -54,11 +54,11 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
+| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ja|
 | [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -84,13 +84,13 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 ### <a name="typical-replication-scenario"></a>Typisch replicatie scenario  
 
-1. Een transactionele replicatie publicatie maken op een on-premises SQL Server Data Base.  
-2. Gebruik op de on-premises SQL Server de **wizard Nieuw abonnement** of de Transact-SQL-instructies voor het maken van een push-naar-Azure SQL database-abonnement.  
+1. Een transactionele replicatie publicatie maken op een SQL Server Data Base.  
+2. Gebruik op SQL Server de **wizard Nieuw abonnement** of de Transact-SQL-instructies om een push-abonnement te maken voor Azure SQL database.  
 3. Met één en gegroepeerde Data bases in Azure SQL Database is de initiële gegevensset een moment opname die wordt gemaakt door de momentopname agent en wordt gedistribueerd en toegepast door de distributie agent. Met een SQL Managed instance-Uitgever kunt u ook een back-up van een Data Base gebruiken om de Azure SQL Database-abonnee te seeden.
 
 ### <a name="data-migration-scenario"></a>Scenario voor gegevens migratie  
 
-1. Transactionele replicatie gebruiken om gegevens van een on-premises SQL Server Data Base te repliceren naar Azure SQL Database.  
+1. Transactionele replicatie gebruiken om gegevens van een SQL Server Data Base naar Azure SQL Database te repliceren.  
 2. Leid de client-of middle-tier-toepassingen om het kopiëren van de data base bij te werken.  
 3. Stop het bijwerken van de SQL Server versie van de tabel en verwijder de publicatie.  
 

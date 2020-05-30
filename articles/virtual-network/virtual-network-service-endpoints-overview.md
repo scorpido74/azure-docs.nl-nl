@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018749"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220434"
 ---
 # <a name="virtual-network-service-endpoints"></a>Service-eindpunten voor virtueel netwerk
 
-Virtual Network (VNet) service-eind punten verlengen uw persoonlijke adres ruimte van uw virtuele netwerk. De eind punten verg Roten ook de identiteit van uw VNet met de Azure-Services via een directe verbinding. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Verkeer van uw VNet naar de Azure-service blijft altijd in het Microsoft Azure-backbonenetwerk.
+Virtual Network (VNet) service-eind punt biedt veilige en directe connectiviteit met Azure-Services via een geoptimaliseerde route via het Azure-backbone-netwerk. Met eindpunten kunt u uw kritieke Azure-serviceresources alleen beveiligen naar uw virtuele netwerken. Met Service-eind punten kunnen privé IP-adressen in het VNet het eind punt van een Azure-service bereiken zonder dat hiervoor een openbaar IP-adres op het VNet nodig is.
 
 Deze functie is beschikbaar voor de volgende Azure-Services en-regio's. *Micro soft. \* * resource bevindt zich tussen haakjes. Schakel deze bron in vanaf de subnetten tijdens het configureren van service-eind punten voor uw service:
 

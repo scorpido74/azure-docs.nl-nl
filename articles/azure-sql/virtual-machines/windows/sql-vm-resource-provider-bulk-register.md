@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d59c022d72269e0e353f52727d36e18f1c321598
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051134"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219313"
 ---
-# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Virtuele SQL Server-machines bulksgewijs registreren in Azure met de SQL VM-resourceprovider
+# <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel wordt beschreven hoe u uw virtuele SQL Server Virtual Machine (VM) in azure bulksgewijs kunt registreren met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet.
+In dit artikel wordt beschreven hoe u uw SQL Server virtuele machines (Vm's) in bulk in azure registreert met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet.
 
 De `Register-SqlVMs` cmdlet kan worden gebruikt voor het registreren van alle virtuele machines in een bepaalde lijst met abonnementen, resource groepen of een lijst met specifieke virtuele machines. De cmdlet registreert de virtuele machines in de modus _licht gewicht_ beheer en genereert vervolgens zowel een [rapport als een logboek bestand](#output-description). 
 
@@ -40,17 +40,17 @@ Als u uw SQL Server-VM wilt registreren bij de resource provider, hebt u het vol
 - De nieuwste versie van [AZ Power shell](/powershell/azure/new-azureps-module-az). 
 - De meest recente versie van [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
-## <a name="getting-started"></a>Aan de slag
+## <a name="get-started"></a>Aan de slag
 
 Voordat u doorgaat, moet u eerst een lokale kopie van het script maken, deze importeren als een Power shell-module en verbinding maken met Azure. 
 
-### <a name="create-script"></a>Script maken
+### <a name="create-the-script"></a>Het script maken
 
 Als u het script wilt maken, kopieert u het [volledige script](#full-script) uit het einde van dit artikel en slaat u het lokaal op als `RegisterSqlVMs.psm1` . 
 
-### <a name="import-script"></a>Script importeren
+### <a name="import-the-script"></a>Het script importeren
 
-Zodra het script is gemaakt, kunt u het importeren als een module in de Power shell-terminal. 
+Nadat het script is gemaakt, kunt u het importeren als een module in de Power shell-terminal. 
 
 Open een Power shell-terminal voor beheer en navigeer naar de locatie waar u het bestand hebt opgeslagen `RegisterSqlVMs.psm1` . Voer vervolgens de volgende Power shell-cmdlet uit om het script te importeren als een module: 
 
@@ -67,7 +67,7 @@ Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-list-of-subscriptions"></a>Alle virtuele machines in de lijst met abonnementen 
+## <a name="register-all-vms-in-a-list-of-subscriptions"></a>Alle Vm's registreren in een lijst met abonnementen 
 
 Gebruik de volgende cmdlet om alle SQL Server virtuele machines in een lijst met abonnementen te registreren:
 
@@ -91,7 +91,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>Alle Vm's in één abonnement
+## <a name="register-all-vms-in-a-single-subscription"></a>Alle Vm's in één abonnement registreren
 
 Gebruik de volgende cmdlet om alle SQL Server virtuele machines in één abonnement te registreren: 
 
@@ -113,7 +113,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>Alle Vm's in meerdere resource groepen
+## <a name="register-all-vms-in-multiple-resource-groups"></a>Alle Vm's in meerdere resource groepen registreren
 
 Gebruik de volgende cmdlet om alle SQL Server virtuele machines in meerdere resource groepen binnen één abonnement te registreren:
 
@@ -134,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>Alle virtuele machines in een resource groep
+## <a name="resister-all-vms-in-a-resource-group"></a>Alle Vm's in een resource groep opnieuw zustereren
 
 Gebruik de volgende cmdlet om alle SQL Server virtuele machines in één resource groep te registreren: 
 
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-single-resource-group"></a>Specifieke Vm's in één resource groep
+## <a name="register-specific-vms-in-single-resource-group"></a>Specifieke Vm's registreren in één resource groep
 
 Gebruik de volgende cmdlet om specifieke SQL Server virtuele machines in één resource groep te registreren:
 
@@ -176,7 +176,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vm"></a>Specifieke VM
+## <a name="register-a-specific-vm"></a>Een specifieke VM registreren
 
 Gebruik de volgende cmdlet om een specifieke SQL Server virtuele machine te registreren: 
 
@@ -197,7 +197,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="output-description"></a>Uitvoer beschrijving
 
-Elke keer `Register-SqlVMs` dat de cmdlet wordt gebruikt, wordt zowel een rapport als een logboek bestand gegenereerd. 
+Elke keer `Register-SqlVMs` dat de cmdlet wordt gebruikt, worden zowel een rapport als een logboek bestand gegenereerd. 
 
 ### <a name="report"></a>Rapport
 
@@ -217,7 +217,7 @@ Het rapport wordt gegenereerd als een `.txt` bestand met `RegisterSqlVMScriptRep
 
 ### <a name="log"></a>Logboek 
 
-Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDueToError<Timestamp>.log` Where time stamp is de tijd waarop het script is gestart. Als de fout zich op het abonnements niveau bevindt, bevat het logboek de door komma's gescheiden SubscriptionID en het fout bericht. Als de fout is opgetreden bij de registratie van de virtuele machine, bevat het logboek de abonnements-ID, de naam van de resource groep, de naam van de virtuele machine, de fout code en het bericht, gescheiden door komma's. 
+Fouten worden vastgelegd in het logboek bestand met de naam `VMsNotRegisteredDueToError<Timestamp>.log` , waarbij tijds tempel het tijdstip is waarop het script is gestart. Als de fout zich op het abonnements niveau bevindt, bevat het logboek de door komma's gescheiden abonnements-ID en het fout bericht. Als de fout is opgetreden bij de registratie van de virtuele machine, bevat het logboek de abonnements-ID, de naam van de resource groep, de naam van de virtuele machine, de fout code en het bericht, gescheiden door komma's. 
 
 ## <a name="remarks"></a>Opmerkingen
 

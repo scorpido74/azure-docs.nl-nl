@@ -1,14 +1,14 @@
 ---
 title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
-ms.date: 04/03/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168502"
+ms.locfileid: "84205021"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -17,14 +17,15 @@ Meer informatie over [voor waarden](#conditions).
 
 Als u conventies definieert, kunt u kosten besparen en uw resources eenvoudiger beheren. U kunt bijvoorbeeld opgeven dat alleen bepaalde typen virtuele machines zijn toegestaan. Of u kunt vereisen dat alle resources een bepaalde tag hebben. Beleids regels worden overgenomen door alle onderliggende resources. Als er een beleid wordt toegepast op een resource groep, is dit van toepassing op alle resources in die resource groep.
 
-Het definitie schema voor het beleid vindt u hier:[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+Het definitie schema voor het beleid vindt u hier:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 U gebruikt JSON om een beleids definitie te maken. De beleids definitie bevat elementen voor:
 
-- mode
-- parameters
 - weergave naam
 - description
+- mode
+- metagegevens
+- parameters
 - beleids regel
   - logische evaluatie
   - effect
@@ -34,7 +35,13 @@ In de volgende JSON wordt bijvoorbeeld een beleid weer gegeven dat de implementa
 ```json
 {
     "properties": {
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "mode": "all",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ In de volgende JSON wordt bijvoorbeeld een beleid weer gegeven dat de implementa
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,7 +68,22 @@ In de volgende JSON wordt bijvoorbeeld een beleid weer gegeven dat de implementa
 }
 ```
 
-Alle Azure Policy-voor beelden zijn Azure Policy-voor [beelden](../samples/index.md).
+Azure Policy ingebouwde toepassingen en patronen bevinden zich op voor [beelden van Azure Policy](../samples/index.md).
+
+## <a name="display-name-and-description"></a>Weergave naam en beschrijving
+
+U gebruikt **DisplayName** en **Beschrijving** om de beleids definitie te identificeren en context op te geven wanneer deze wordt gebruikt. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
+
+> [!NOTE]
+> Tijdens het maken of bijwerken van een beleids definitie, de **id**, het **type**en de **naam** worden gedefinieerd door de Eigenschappen extern van de JSON en zijn deze niet nodig in het JSON-bestand. Het ophalen van de beleids definitie via SDK retourneert de eigenschappen **id**, **type**en **naam** als onderdeel van de JSON, maar elk is een alleen-lezen informatie met betrekking tot de beleids definitie.
+
+## <a name="type"></a>Type
+
+Hoewel de eigenschap **type** niet kan worden ingesteld, zijn er drie waarden die worden geretourneerd door SDK en zichtbaar zijn in de portal:
+
+- `Builtin`: Deze beleids definities worden door micro soft verschaft en onderhouden.
+- `Custom`: Alle beleids definities die zijn gemaakt door klanten hebben deze waarde.
+- `Static`: Geeft een definitie van een [regelgevings nalevings](./regulatory-compliance.md) beleid aan bij micro soft- **eigendom**. De compliantie resultaten voor deze beleids definities zijn de resultaten van controles van derden op micro soft-infra structuur. In de Azure Portal wordt deze waarde soms weer gegeven als **beheerd door micro soft**. Zie [gedeelde verantwoordelijkheid in de Cloud](../../../security/fundamentals/shared-responsibility.md)voor meer informatie.
 
 ## <a name="mode"></a>Modus
 
@@ -93,6 +113,20 @@ De volgende resource provider modi worden momenteel ondersteund tijdens de previ
 > [!NOTE]
 > De resource provider modi bieden alleen ondersteuning voor ingebouwde beleids definities en bieden geen ondersteuning voor initiatieven als er een preview-versie beschikbaar is.
 
+## <a name="metadata"></a>Metagegevens
+
+De optionele `metadata` eigenschap bevat informatie over de beleids definitie. Klanten kunnen alle eigenschappen en waarden definiëren die van toepassing zijn op hun organisatie in `metadata` . Er zijn echter enkele _algemene_ eigenschappen die worden gebruikt door Azure Policy en in ingebouwde modules.
+
+### <a name="common-metadata-properties"></a>Algemene eigenschappen van meta gegevens
+
+- `version`(teken reeks): houdt informatie bij over de versie van de inhoud van een beleids definitie.
+- `category`(teken reeks): bepaalt onder welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
+- `preview`(Booleaans): de vlag True of False voor als de beleids definitie _Preview_is.
+- `deprecated`(Booleaans): de vlag True of False voor als de beleids definitie is gemarkeerd als _afgeschaft_.
+
+> [!NOTE]
+> De Azure Policy-service gebruikt `version` , `preview` en `deprecated` Eigenschappen om het niveau van de wijziging in een ingebouwde beleids definitie of-initiatief en-status over te brengen. De indeling van `version` is: `{Major}.{Minor}.{Patch}` . Specifieke statussen, zoals _afgeschaft_ of _Preview_, worden toegevoegd aan de `version` eigenschap of een andere eigenschap als een **Booleaanse waarde**. Zie [ingebouwde versie beheer](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md)voor meer informatie over de manier waarop Azure Policy ingebouwde versies.
+
 ## <a name="parameters"></a>Parameters
 
 Met para meters kunt u het beleids beheer vereenvoudigen door het aantal beleids definities te verminderen. U kunt para meters zien zoals de velden in een formulier – `name` , `address` ,, `city` , `state` . Deze para meters blijven altijd hetzelfde, maar hun waarden worden gewijzigd op basis van de persoon die het formulier invult.
@@ -105,17 +139,11 @@ Para meters werken op dezelfde manier als wanneer u beleid bouwt. Door para mete
 
 Een para meter heeft de volgende eigenschappen die worden gebruikt in de beleids definitie:
 
-- **naam**: de naam van de para meter. Wordt gebruikt door de `parameters` implementatie functie binnen de beleids regel. Zie [een parameter waarde gebruiken](#using-a-parameter-value)voor meer informatie.
+- `name`: De naam van de para meter. Wordt gebruikt door de `parameters` implementatie functie binnen de beleids regel. Zie [een parameter waarde gebruiken](#using-a-parameter-value)voor meer informatie.
 - `type`: Bepaalt of de para meter een **teken reeks**, een **matrix**, een **object**, een **Booleaanse waarde**, een **geheel getal**, een **float**of een **datum/tijd**is.
 - `metadata`: Definieert subeigenschappen die voornamelijk worden gebruikt door de Azure Portal om gebruikers vriendelijke informatie weer te geven:
   - `description`: De uitleg van het gebruik van de para meter voor. Kan worden gebruikt om voor beelden te bieden van acceptabele waarden.
   - `displayName`: De beschrijvende naam die wordt weer gegeven in de portal voor de para meter.
-  - `version`: (Optioneel) houdt informatie bij over de versie van de inhoud van een beleids definitie.
-
-    > [!NOTE]
-    > De Azure Policy-service gebruikt `version` , `preview` en `deprecated` Eigenschappen om het niveau van de wijziging in een ingebouwde beleids definitie of-initiatief en-status over te brengen. De indeling van `version` is: `{Major}.{Minor}.{Patch}` . Specifieke statussen, zoals _afgeschaft_ of _Preview_, worden toegevoegd aan de `version` eigenschap of een andere eigenschap als een **Booleaanse waarde**.
-
-  - `category`: (Optioneel) bepaalt in welke categorie in Azure Portal de beleids definitie wordt weer gegeven.
   - `strongType`: (Optioneel) gebruikt bij het toewijzen van de beleids definitie via de portal. Biedt een context bewuste lijst. Zie [strongType](#strongtype)voor meer informatie.
   - `assignPermissions`: (Optioneel) Stel in op _waar_ als u wilt dat Azure Portal roltoewijzingen tijdens beleids toewijzing wilt maken. Deze eigenschap is handig voor het geval u machtigingen wilt toewijzen buiten het toewijzings bereik. Er is één roltoewijzing per roldefinitie in het beleid (of per functie definitie in alle beleids regels in het initiatief). De parameter waarde moet een geldige resource of een geldig bereik zijn.
 - `defaultValue`: (Optioneel) Hiermee stelt u de waarde van de para meter in een toewijzing in als er geen waarde is opgegeven.
@@ -180,13 +208,6 @@ Als de definitie locatie een:
 
 - Voor alleen **abonnements** resources binnen dit abonnement kan het beleid worden toegewezen.
 - **Beheer groep** -alleen resources binnen onderliggende beheer groepen en onderliggende abonnementen kunnen het beleid toewijzen. Als u van plan bent de beleids definitie toe te passen op verschillende abonnementen, moet de locatie een beheer groep zijn die die abonnementen bevat.
-
-## <a name="display-name-and-description"></a>Weergave naam en beschrijving
-
-U gebruikt **DisplayName** en **Beschrijving** om de beleids definitie te identificeren en context op te geven wanneer deze wordt gebruikt. **DisplayName** heeft een maximale lengte van _128_ tekens en een **Beschrijving** van Maxi maal _512_ tekens.
-
-> [!NOTE]
-> Tijdens het maken of bijwerken van een beleids definitie, de **id**, het **type**en de **naam** worden gedefinieerd door de Eigenschappen extern van de JSON en zijn deze niet nodig in het JSON-bestand. Het ophalen van de beleids definitie via SDK retourneert de eigenschappen **id**, **type**en **naam** als onderdeel van de JSON, maar elk is een alleen-lezen informatie met betrekking tot de beleids definitie.
 
 ## <a name="policy-rule"></a>Beleidsregel
 
@@ -713,88 +734,9 @@ Deze voorbeeld regel controleert op eventuele overeenkomsten van **ipRules \[ \*
 
 Zie [de \* alias [] evalueren](../how-to/author-policies-for-arrays.md#evaluating-the--alias)voor meer informatie.
 
-## <a name="initiatives"></a>Initiatieven
-
-Met initiatieven kunt u verschillende gerelateerde beleids definities groeperen om toewijzingen en beheer te vereenvoudigen omdat u met een groep werkt als één item. U kunt bijvoorbeeld gerelateerde coderings beleidsregels in één initiatief groeperen. In plaats van elk beleid afzonderlijk toe te wijzen, past u het initiatief toe.
-
-> [!NOTE]
-> Zodra een initiatief is toegewezen, kunnen para meters op initiatief niveau niet worden gewijzigd. Daarom is het aanbeveling om een **DefaultValue** in te stellen bij het definiëren van de para meter.
-
-In het volgende voor beeld ziet u hoe u een initiatief maakt voor het afhandelen van twee Tags: `costCenter` en `productName` . Er worden twee ingebouwde beleids regels gebruikt om de standaard label waarde toe te passen.
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>Volgende stappen
 
+- Zie de [definitie structuur](./initiative-definition-structure.md) van het initiatief
 - Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).

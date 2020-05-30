@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726040"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220296"
 ---
 # <a name="monitor-iot-edge-deployments"></a>IoT Edge-implementaties bewaken
 
@@ -101,4 +101,4 @@ Zie [een implementatie wijzigen](how-to-deploy-cli-at-scale.md#modify-a-deployme
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe u kunt [communiceren met EdgeAgent met behulp van ingebouwde directe methoden](how-to-edgeagent-direct-method.md).
+Meer informatie over het [bewaken van module apparaatdubbels](how-to-monitor-module-twins.md), voornamelijk de IOT Edge Agent en IOT Edge hub runtime modules, voor de connectiviteit en status van uw IOT Edge-implementaties.

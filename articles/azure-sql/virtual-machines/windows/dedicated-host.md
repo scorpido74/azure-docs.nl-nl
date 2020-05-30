@@ -1,6 +1,6 @@
 ---
-title: SQL Server VM op een door Azure toegewezen host
-description: Meer informatie over de Details voor het uitvoeren van een SQL Server VM op een aan Azure toegewezen host.
+title: SQL Server VM uitvoeren op een toegewezen Azure-host
+description: Meer informatie over het uitvoeren van een SQL Server-VM op een toegewezen Azure-host.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,17 +14,17 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a16ec7a3fa1f41d8c9339f84be6a0ffc3842d099
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1c16c2cdae671a9b18a34b88b9490b5b61c24c8e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046024"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220225"
 ---
-# <a name="sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM op een door Azure toegewezen host 
+# <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM uitvoeren op een toegewezen Azure-host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel worden de details van het gebruik van een SQL Server virtuele machine met een voor [Azure toegewezen host](/azure/virtual-machines/windows/dedicated-hosts)beschreven. Meer informatie over de specifieke Azure-host vindt u in het blog bericht [Inleiding tot de toegewezen Azure-host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
+In dit artikel vindt u meer informatie over het gebruik van een SQL Server virtuele machine (VM) met een [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts). Meer informatie over de specifieke Azure-host vindt u in het blog bericht Inleiding tot de [toegewezen Azure-host](https://azure.microsoft.com/blog/introducing-azure-dedicated-host/). 
 
 ## <a name="overview"></a>Overzicht
 De [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts) is een service die fysieke servers biedt en een of meer virtuele machines kan hosten die zijn toegewezen aan één Azure-abonnement. Toegewezen hosts zijn dezelfde fysieke servers die worden gebruikt in Data Centers van micro soft, als een resource. U kunt toegewezen hosts inrichten binnen een regio, een beschikbaarheids zone en een fout domein. Vervolgens kunt u Vm's rechtstreeks op uw ingerichte hosts plaatsen, in welke configuratie het beste voldoet aan uw behoeften.
@@ -36,33 +36,33 @@ De [toegewezen Azure-host](/azure/virtual-machines/windows/dedicated-hosts) is e
 
 ## <a name="licensing"></a>Licentieverlening
 
-U kunt kiezen tussen twee verschillende licentie opties bij het toevoegen van uw SQL Server-VM aan een toegewezen Azure-host. 
+U kunt kiezen tussen twee verschillende licentie opties wanneer u uw SQL Server virtuele machine in een door Azure toegewezen host plaatst. 
 
   - **SQL VM-licentie verlening**: dit is de bestaande licentie optie, waar u voor elke SQL Server VM-licentie afzonderlijk betaalt. 
   - **Dedicated host Licensing**: het nieuwe licentie model dat beschikbaar is voor de toegewezen Azure-host, waarbij SQL Server licenties worden gebundeld en betaald op hostniveau. 
 
 
 Opties op hostniveau voor het gebruik van bestaande SQL Server licenties: 
-  - SQL Server Enterprise Edition Azure Hybrid Benefit
+  - SQL Server Enterprise Edition Azure Hybrid Benefit (AHB)
     - Beschikbaar voor klanten met SA of een abonnement.
     - Licentie voor alle beschik bare fysieke kernen en geniet van onbeperkte virtualisatie (Maxi maal het maximum aantal Vcpu's dat door de host wordt ondersteund).
-        - Zie de [Azure Hybrid Benefit Veelgestelde vragen](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)voor meer informatie over het Toep assen van de Azure Hybrid Benefit op een exclusieve Azure-host. 
+        - Zie [Azure Hybrid Benefit FAQ (Engelstalig](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)) voor meer informatie over het Toep assen van de Ahb op een toegewezen Azure-host. 
   - SQL Server licenties die zijn verkregen vóór 1 oktober
       - SQL Server Enterprise Edition heeft zowel de licentie opties host-niveau als de virtuele machine. 
-      - SQL Server Standard Edition heeft alleen de licentie optie-VM beschikbaar. 
-          - Zie [de product voorwaarden van micro soft](https://www.microsoft.com/licensing/product-licensing/products)voor meer informatie. 
-  - Als er geen SQL Server optie specifieke hostniveau is geselecteerd, kan SQL Server AHB worden geselecteerd op het niveau van afzonderlijke Vm's, net als met Vm's met meerdere tenants.
+      - SQL Server Standard Edition heeft alleen een licentie optie per VM beschikbaar. 
+          - Zie [product voorwaarden van micro soft](https://www.microsoft.com/licensing/product-licensing/products)voor meer informatie. 
+  - Als er geen SQL Server specifieke optie op hostniveau is geselecteerd, kunt u SQL Server AHB selecteren op het niveau van afzonderlijke Vm's, net zoals u dat met Vm's met meerdere tenants zou doen.
 
 
 
 ## <a name="provisioning"></a>Inrichten  
-Het inrichten van een SQL Server-VM naar de toegewezen host is niet anders dan andere virtuele Azure-machines. U kunt dit doen met behulp van [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), de [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)en [Azure cli](../../../virtual-machines/linux/dedicated-hosts-cli.md).
+Het inrichten van een SQL Server-VM naar de toegewezen host is niet anders dan andere virtuele Azure-machines. U kunt dit doen met behulp van [Azure PowerShell](../../../virtual-machines/windows/dedicated-hosts-powershell.md), de [Azure Portal](../../../virtual-machines/windows/dedicated-hosts-portal.md)en de [Azure cli](../../../virtual-machines/linux/dedicated-hosts-cli.md).
 
-Het proces voor het toevoegen van een bestaande SQL Server VM aan de toegewezen host vereist downtime, maar heeft geen invloed op gegevens en heeft geen gegevens verlies. Voor alle data bases, inclusief systeem databases, moet eerst een back-up worden gemaakt voordat deze kan worden verplaatst.
+Het proces voor het toevoegen van een bestaande SQL Server virtuele machine aan de toegewezen host heeft downtime nodig, maar heeft geen invloed op gegevens en heeft geen gegevens verlies. Voor alle data bases, inclusief systeem databases, moet eerst een back-up worden gemaakt voordat deze kan worden verplaatst.
 
 ## <a name="virtualization"></a>Virtualisatie 
 
-Een van de voor delen van een speciale host is een onbeperkte virtualisatie. U kunt bijvoorbeeld licenties hebben voor 64 vCores, maar u kunt de host zo configureren dat deze 128 vCores heeft, zodat u dubbele vCores krijgt, maar u alleen betaalt voor de helft van de SQL Server-licenties. 
+Een van de voor delen van een speciale host is een onbeperkte virtualisatie. U kunt bijvoorbeeld licenties hebben voor 64 vCores, maar u kunt de host zo configureren dat deze 128 vCores heeft, zodat u een dubbele vCores krijgt, maar alleen de helft van wat u zou doen voor de SQL Server-licenties. 
 
 Omdat het de host is, komt u in aanmerking voor het instellen van virtualisatie met een verhouding van 1:2. 
 

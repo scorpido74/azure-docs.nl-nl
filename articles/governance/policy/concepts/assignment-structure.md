@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids toewijzing
 description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9f400aa72508822f8fff2fe41fb17ce98339737
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683219"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205038"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -64,7 +64,7 @@ Deze eigenschap heeft de volgende waarden:
 |Modus |JSON-waarde |Type |Hand matig herstellen |Vermelding in het activiteiten logboek |Beschrijving |
 |-|-|-|-|-|-|
 |Ingeschakeld |Standaard |tekenreeks |Ja |Ja |Het beleids effect wordt afgedwongen tijdens het maken of bijwerken van de resource. |
-|Uitgeschakeld |DoNotEnforce |tekenreeks |Ja |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
+|Uitgeschakeld |DoNotEnforce |tekenreeks |Yes |Nee | Het beleids effect wordt niet afgedwongen tijdens het maken of bijwerken van resources. |
 
 Als **enforcementMode** niet is opgegeven in een beleids-of initiatief definitie, wordt de _standaard_ waarde gebruikt. [Herstel taken](../how-to/remediate-resources.md) kunnen worden gestart voor [deployIfNotExists](./effects.md#deployifnotexists) -beleid, zelfs wanneer **enforcementMode** is ingesteld op _DoNotEnforce_.
 
@@ -75,7 +75,7 @@ Het **bereik** van de toewijzing bevat alle onderliggende resource containers en
 ## <a name="policy-definition-id"></a>Beleids definitie-ID
 
 Dit veld moet de volledige padnaam zijn van ofwel een beleids definitie of een initiatief definitie.
-`policyDefinitionId`is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./definition-structure.md#initiatives) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
+`policyDefinitionId`is een teken reeks en geen matrix. Het is raadzaam om in plaats daarvan een [initiatief](./initiative-definition-structure.md) te gebruiken als er vaak meerdere beleids regels aan elkaar worden toegewezen.
 
 ## <a name="parameters"></a>Parameters
 
@@ -93,7 +93,7 @@ Dit ontwerp maakt het mogelijk om een beleid of initiatief definitie met verschi
 }
 ```
 
-In dit voor beeld zijn de para meters die eerder zijn `prefix` gedefinieerd in `suffix`de beleids definitie, en. Deze specifieke beleids toewijzing is `prefix` ingesteld op **afda** en `suffix` naar **-LC**. Dezelfde beleids definitie kan opnieuw worden gebruikt met een andere set para meters voor een andere afdeling, waardoor het dupliceren en de complexiteit van beleids definities wordt verkort tijdens het bieden van flexibiliteit.
+In dit voor beeld zijn de para meters die eerder zijn gedefinieerd in de beleids definitie, `prefix` en `suffix` . Deze specifieke beleids toewijzing is ingesteld `prefix` op **afda** en `suffix` naar **-LC**. Dezelfde beleids definitie kan opnieuw worden gebruikt met een andere set para meters voor een andere afdeling, waardoor het dupliceren en de complexiteit van beleids definities wordt verkort tijdens het bieden van flexibiliteit.
 
 ## <a name="next-steps"></a>Volgende stappen
 

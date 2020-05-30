@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 66043ae4f569e4151be829ca361232accb2f0ebd
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170474"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219388"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Azure-beveiligings basislijn voor Azure Databricks
 
@@ -404,7 +404,7 @@ Opmerking: voor Azure Databricks Diagnostische logboeken is het Azure Databricks
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
-**Richt lijnen**: Azure AD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. U kunt ook SCIM-Api's en Azure Databricks Diagnostische logboeken implementeren om de gebruikers toegang te controleren. U kunt ook SCIM-Api's en Azure Databricks diagnostische Logboeken gebruiken om de gebruikers toegang te controleren.
+**Richt lijnen**: Azure AD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. U kunt ook SCIM-Api's en Azure Databricks Diagnostische logboeken implementeren om de gebruikers toegang te controleren.
 
 Daarnaast kunt u de gebruikers toegang regel matig bekijken en beheren in de beheer console van Azure Databricks.
 

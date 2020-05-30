@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188583"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204732"
 ---
 # <a name="azure-operational-security-best-practices"></a>Best practices voor Azure Operational Security
 Dit artikel bevat een reeks operationele aanbevolen procedures voor het beveiligen van uw gegevens, toepassingen en andere assets in Azure.
@@ -215,8 +215,8 @@ Zie [beleid maken en beheren om naleving af te dwingen](../../governance/policy/
 **Best Practice**: Identificeer de rollen die verantwoordelijk zijn voor de bewaking van beleids schendingen en zorg ervoor dat de juiste herstel actie snel wordt uitgevoerd.   
 **Details**: de toegewezen Role monitor moet voldoen aan het [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) of via de [opdracht regel](../../governance/policy/how-to/get-compliance-data.md#command-line).
 
-**Best Practice**: Azure Policy is een technische weer gave van het schriftelijke beleid van een organisatie. Wijs Alle Azure-beleids regels toe aan het organisatie beleid om Verwar ring te beperken en de consistentie te verg Roten.   
-**Details**: de document toewijzing in de documentatie van uw organisatie of in de Azure Policy definitie zelf, door een verwijzing naar het organisatie beleid toe te voegen in de [Azure Policy definitie](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van het [Azure Policy initiatief](../../governance/policy/concepts/definition-structure.md#initiatives) .
+**Best Practice**: Azure Policy is een technische weer gave van het schriftelijke beleid van een organisatie. Wijs Alle Azure Policy definities toe aan het organisatie beleid om Verwar ring te beperken en de consistentie te verg Roten.   
+**Details**: de document toewijzing in de documentatie van uw organisatie of in de Azure Policy definitie zelf, door een verwijzing naar het organisatie beleid toe te voegen in de [beleids definitie](../../governance/policy/concepts/definition-structure.md#display-name-and-description) of de beschrijving van de [initiatief definitie](../../governance/policy/concepts/initiative-definition-structure.md#metadata) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Risico rapporten van Azure AD bewaken
 Het overgrote deel van de beveiligings Risico's doen zich voor wanneer aanvallers toegang krijgen tot een omgeving door de identiteit van een gebruiker te stelen. Het detecteren van gemanipuleerde identiteiten is geen eenvoudige taak. Azure AD gebruikt adaptieve machine learning algoritmen en heuristiek om verdachte acties te detecteren die betrekking hebben op uw gebruikers accounts. Elke gedetecteerde verdachte actie wordt opgeslagen in een record met de naam [risico detectie](../../active-directory/reports-monitoring/concept-risk-events.md). Risico detecties worden vastgelegd in azure AD-beveiligings rapporten. Lees voor meer informatie over het beveiligings rapport [gebruikers die risico](../../active-directory/reports-monitoring/concept-user-at-risk.md) lopen, en het [beveiligings rapport Risk ante aanmeldingen](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).

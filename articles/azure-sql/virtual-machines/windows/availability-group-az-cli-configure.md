@@ -1,5 +1,5 @@
 ---
-title: Een beschikbaarheids groep configureren (Azure CLI)
+title: Een beschikbaarheids groep configureren met behulp van de Azure CLI
 description: Gebruik de Azure CLI om het Windows-failovercluster, de beschikbaarheids groep-listener en de interne load balancer op een SQL Server VM in azure te maken.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a48095343fd24071a20d789704b8146be79d02c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041978"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219628"
 ---
-# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>De Azure CLI gebruiken om een AlwaysOn-beschikbaarheids groep te configureren voor SQL Server op een virtuele Azure-machine
+# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>De Azure CLI gebruiken om een AlwaysOn-beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u de [Azure cli](/cli/azure/sql/vm?view=azure-cli-latest/) gebruikt om een Windows-failovercluster te implementeren, SQL Server vm's toe te voegen aan het cluster en de interne Load Balancer en listener te maken voor een always on-beschikbaarheids groep. De implementatie van de AlwaysOn-beschikbaarheids groep wordt nog steeds hand matig uitgevoerd via SQL Server Management Studio (SSMS). 
@@ -38,7 +38,7 @@ Als u de installatie van een always on-beschikbaarheids groep wilt automatiseren
 U hebt de volgende account machtigingen nodig voor het configureren van de AlwaysOn-beschikbaarheids groep met behulp van de Azure CLI: 
 
 - Een bestaand domein gebruikers account met een machtiging voor het **maken van computer objecten** in het domein. Een domein beheerders account heeft bijvoorbeeld doorgaans voldoende machtigingen (bijvoorbeeld: account@domain.com ). _Dit account moet ook lid zijn van de lokale groep Administrators op elke virtuele machine om het cluster te maken._
-- Het domein gebruikers account waarmee de SQL Server-service wordt beheerd. 
+- Het domein gebruikers account dat SQL Server beheert. 
  
 ## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Stap 1: een opslag account maken als een cloudwitness
 Het cluster heeft een opslag account nodig om te fungeren als de cloudwitness. U kunt elk bestaand opslag account gebruiken of u kunt een nieuw opslag account maken. Als u een bestaand opslag account wilt gebruiken, gaat u verder met de volgende sectie. 

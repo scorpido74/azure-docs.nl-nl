@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57e4451f67a75e9101f21d449152d9c6f42aaf02
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76028388"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216603"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory
 
@@ -25,10 +25,14 @@ In dit artikel wordt beschreven hoe u uw organisatie domeinen kunt verplaatsen v
 
 > [!NOTE]
 > Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](how-to-connect-staged-rollout.md) biedt een alternatieve manier om te testen en geleidelijk te migreren van Federatie naar Cloud verificatie met behulp van wachtwoord-hash-synchronisatie.
+>
+> Als u van plan bent gefaseerde implementatie te gebruiken, moet u de functies voor gefaseerde implementatie uitschakelen zodra u klaar bent met knippen.  Zie voor meer informatie [migreren naar Cloud verificatie met behulp van gefaseerde implementatie](how-to-connect-staged-rollout.md)
+
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>Vereisten voor het migreren naar wachtwoord-hash-synchronisatie
 
 De volgende vereisten zijn vereist voor de migratie van met behulp van AD FS om wachtwoord-hash-synchronisatie te gebruiken.
+
 
 ### <a name="update-azure-ad-connect"></a>Azure AD Connect bijwerken
 
@@ -251,7 +255,7 @@ Voor plannings doeleinden moet u ramen dat ongeveer 20.000 gebruikers in één u
 Als u wilt controleren of de synchronisatie van wacht woord-hash correct werkt, voltooit u de taak voor **probleem oplossing** in de Azure AD Connect wizard:
 
 1. Open een nieuwe Windows Power shell-sessie op uw Azure AD Connect server met behulp van de optie als administrator uitvoeren.
-2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted`.
+2. Uitvoeren `Set-ExecutionPolicy RemoteSigned` of `Set-ExecutionPolicy Unrestricted` .
 3. Start de wizard Azure AD Connect.
 4. Ga naar de pagina **extra taken** , selecteer **problemen oplossen**en selecteer **volgende**.
 5. Selecteer op de pagina **probleem oplossing** de optie **starten** om het menu probleem oplossing in Power shell te starten.
@@ -264,7 +268,7 @@ Zie problemen met wachtwoord- [hash-synchronisatie met Azure AD Connect synchron
 
 Als u wilt dat uw apparaten naadloze SSO gebruiken, moet u een Azure AD-URL toevoegen aan de intranet zone-instellingen van gebruikers met behulp van een groeps beleid in Active Directory.
 
-Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http\/\/: contoso/** wijst toe aan de intranet zone en **http:\/\/intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
+Webbrowsers berekenen standaard automatisch de juiste zone, Internet of intranet, van een URL. Bijvoorbeeld **http: \/ \/ Contoso/** wijst toe aan de intranet zone en **http: \/ \/ intranet.contoso.com** wordt toegewezen aan de zone Internet (omdat de URL een punt bevat). Browsers verzenden van Kerberos-tickets naar een Cloud eindpunt, zoals de Azure AD-URL, alleen als u de URL expliciet toevoegt aan de intranet zone van de browser.
 
 Voer de stappen uit om de vereiste wijzigingen op uw apparaten [uit](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) te voeren.
 
@@ -314,7 +318,7 @@ Wijzig eerst de aanmeldings methode:
    > [!IMPORTANT]
    > Op dit moment worden alle federatieve domeinen gewijzigd in beheerde authenticatie. Wachtwoord hash-synchronisatie is de nieuwe verificatie methode.
 
-7. Selecteer in de Azure AD-Portal **Azure Active Directory** > **Azure AD CONNECT**.
+7. Selecteer in de Azure AD-Portal **Azure Active Directory**  >  **Azure AD CONNECT**.
 8. Controleer de volgende instellingen:
    * **Federatie** is ingesteld op **uitgeschakeld**.
    * **Naadloze eenmalige aanmelding** is **ingeschakeld**.
@@ -336,9 +340,9 @@ Gebruik deze optie als u uw federatieve domeinen niet eerst hebt geconfigureerd 
 3. Voer op de pagina **verbinding maken met Azure AD** de gebruikers naam en het wacht woord in voor een account voor globale beheerders.
 4. Op de **aanmeldings** pagina van de gebruiker selecteert u de knop **wachtwoord hash-synchronisatie** . Selecteer **eenmalige aanmelding inschakelen**en selecteer **volgende**.
 
-   Voordat u wachtwoord hash-synchronisatie inschakelt: ![scherm opname met de optie niet configureren op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
+   Voordat u wachtwoord hash-synchronisatie inschakelt: ![ scherm opname met de optie niet configureren op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Nadat u wachtwoord hash-synchronisatie hebt ![ingeschakeld: scherm opname met nieuwe opties op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Nadat u wachtwoord hash-synchronisatie hebt ingeschakeld: ![ scherm opname met nieuwe opties op de aanmeldings pagina van de gebruiker](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Als u begint met Azure AD Connect versie 1.1.880.0, is het selectie vakje **naadloze eenmalige aanmelding** standaard ingeschakeld.
@@ -383,7 +387,7 @@ De conversie volt ooien met behulp van de Azure AD Power shell-module:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
 
-3. Selecteer in de Azure AD-Portal **Azure Active Directory** > **Azure AD CONNECT**.
+3. Selecteer in de Azure AD-Portal **Azure Active Directory**  >  **Azure AD CONNECT**.
 4. Controleer of het domein is geconverteerd naar beheerd door de volgende opdracht uit te voeren:
 
    ``` PowerShell
@@ -401,7 +405,7 @@ Wanneer uw Tenant federatieve identiteiten heeft gebruikt, werden gebruikers omg
 De synchronisatie van wacht woord-hashes testen:
 
 1. Open Internet Explorer in de InPrivate-modus, zodat naadloze SSO niet automatisch wordt aangemeld.
-2. Ga naar de Office 365-aanmeldings pagina ([https://portal.office.com](https://portal.office.com/)).
+2. Ga naar de Office 365-aanmeldings pagina ( [https://portal.office.com](https://portal.office.com/) ).
 3. Voer een UPN van de gebruiker in en selecteer **volgende**. Zorg ervoor dat u de UPN van een hybride gebruiker invoert die is gesynchroniseerd vanaf uw on-premises Active Directory-exemplaar en die eerder Federated Authentication heeft gebruikt. Een pagina waarop u de gebruikers naam en het wacht woord opgeeft, wordt weer gegeven:
 
    ![Scherm opname van de aanmeldings pagina waarin u een gebruikers naam invoert](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)
@@ -418,8 +422,8 @@ De synchronisatie van wacht woord-hashes testen:
 1. Meld u aan bij een computer die lid is van een domein en die is verbonden met het bedrijfs netwerk.
 2. Ga in Internet Explorer of Chrome naar een van de volgende Url's (Vervang ' Contoso ' door uw domein):
 
-   * https:\/\/MyApps.Microsoft.com/contoso.com
-   * https:\/\/MyApps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ MyApps.Microsoft.com/contoso.com
+   * https: \/ \/ MyApps.Microsoft.com/contoso.onmicrosoft.com
 
    De gebruiker wordt kort omgeleid naar de aanmeldings pagina van Azure AD, waarin het bericht wordt weer gegeven dat u zich probeert aan te melden. De gebruiker wordt niet gevraagd om een gebruikers naam of wacht woord.<br />
 

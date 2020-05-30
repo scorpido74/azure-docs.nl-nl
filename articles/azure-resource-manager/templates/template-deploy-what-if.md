@@ -1,23 +1,23 @@
 ---
 title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
-author: mumian
+author: tfitzmac
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: jgao
-ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 05/29/2020
+ms.author: tomfitz
+ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581198"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218298"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
 Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, kunt u een voor beeld bekijken van de wijzigingen die zich voordoen. Azure Resource Manager biedt de What-if-bewerking om te laten zien hoe resources worden gewijzigd als u de sjabloon implementeert. Met de bewerking What-if worden geen wijzigingen aangebracht in bestaande resources. In plaats daarvan worden de wijzigingen voor speld als de opgegeven sjabloon wordt geïmplementeerd.
 
 > [!NOTE]
-> De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+> De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
 U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken.
 
@@ -101,7 +101,7 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Als u de wijzigingen wilt bekijken voordat u een sjabloon `-Whatif` implementeert, voegt u de para meter switch toe aan de implementatie opdracht.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, voegt `-Whatif` u de para meter switch toe aan de implementatie opdracht.
 
 * `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
@@ -118,12 +118,12 @@ De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig k
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u de wijzigingen wilt bekijken voordat u een `what-if` sjabloon implementeert, gebruikt u met de implementatie opdracht.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u `what-if` met de implementatie opdracht.
 
 * `az deployment group what-if`voor implementaties van resource groepen
 * `az deployment sub what-if`voor implementaties op abonnements niveau
 
-U kunt de `--confirm-with-what-if` switch (of het bijbehorende korte formulier `-c`) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
+U kunt de `--confirm-with-what-if` Switch (of het bijbehorende korte formulier `-c` ) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
 
 * `az deployment group create --confirm-with-what-if`of `-c` voor implementaties van resource groepen
 * `az deployment sub create --confirm-with-what-if`of `-c` voor implementaties op abonnements niveau
@@ -150,11 +150,11 @@ Met de bewerking What-if wordt zes verschillende soorten wijzigingen vermeld:
 
 - **Negeren**: de resource bestaat wel, maar is niet gedefinieerd in de sjabloon. De resource wordt niet geïmplementeerd of gewijzigd.
 
-- **Ongewijzigd**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd, maar de eigenschappen van de resource worden niet gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads`. Dit is de standaard waarde.
+- **Ongewijzigd**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd, maar de eigenschappen van de resource worden niet gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads` . Dit is de standaard waarde.
 
-- **Wijzigen**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd en de eigenschappen van de resource worden gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads`. Dit is de standaard waarde.
+- **Wijzigen**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd en de eigenschappen van de resource worden gewijzigd. Dit type wijziging wordt geretourneerd wanneer [ResultFormat](#result-format) is ingesteld op `FullResourcePayloads` . Dit is de standaard waarde.
 
-- **Implementeren**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd. De eigenschappen van de resource kunnen of mogen niet worden gewijzigd. De bewerking retourneert dit wijzigings type wanneer het niet genoeg informatie heeft om te bepalen of eigenschappen worden gewijzigd. U ziet deze voor waarde alleen wanneer [ResultFormat](#result-format) is ingesteld `ResourceIdOnly`op.
+- **Implementeren**: de resource bestaat en is gedefinieerd in de sjabloon. De resource wordt opnieuw geïmplementeerd. De eigenschappen van de resource kunnen of mogen niet worden gewijzigd. De bewerking retourneert dit wijzigings type wanneer het niet genoeg informatie heeft om te bepalen of eigenschappen worden gewijzigd. U ziet deze voor waarde alleen wanneer [ResultFormat](#result-format) is ingesteld op `ResourceIdOnly` .
 
 ## <a name="result-format"></a>Resultaat indeling
 
@@ -165,7 +165,7 @@ U bepaalt het detail niveau dat wordt geretourneerd over de voorspelde wijziging
 
 De standaard waarde is **FullResourcePayloads**.
 
-Voor Power shell-implementatie opdrachten gebruikt `-WhatIfResultFormat` u de para meter. Gebruik de `ResultFormat` para meter in de programmatische-object opdrachten.
+Voor Power shell-implementatie opdrachten gebruikt u de `-WhatIfResultFormat` para meter. Gebruik de para meter in de programmatische-object opdrachten `ResultFormat` .
 
 Voor Azure CLI gebruikt u de `--result-format` para meter.
  
@@ -397,9 +397,19 @@ Are you sure you want to execute the deployment?
 
 U ziet de verwachte wijzigingen en u kunt bevestigen dat u de implementatie wilt uitvoeren.
 
+## <a name="sdks"></a>SDK's
+
+U kunt de What-if-bewerking gebruiken via de Azure Sdk's.
+
+* Gebruik [wat als'](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)voor python.
+
+* Gebruik de [klasse DeploymentWhatIf](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)voor Java.
+
+* Voor .NET gebruikt u de [DeploymentWhatIf-klasse](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u onjuiste resultaten van de preview-versie van What-if ziet, kunt u de problemen [https://aka.ms/whatifissues](https://aka.ms/whatifissues)melden op.
+- Als u onjuiste resultaten van de preview-versie van What-if ziet, kunt u de problemen melden op [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Zie [resources implementeren met arm-sjablonen en Azure PowerShell](deploy-powershell.md)voor meer informatie over het implementeren van sjablonen met Azure PowerShell.
 - Zie [resources implementeren met arm-sjablonen en Azure cli](deploy-cli.md)voor meer informatie over het implementeren van sjablonen met Azure cli.
 - Zie [resources implementeren met arm-sjablonen en Resource Manager rest API](deploy-rest.md)als u sjablonen wilt implementeren met rest.

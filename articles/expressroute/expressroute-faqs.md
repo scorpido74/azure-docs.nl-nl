@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 085830ee1c8e7556a7c3390aaf6e638245d20324
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 99549be75e812668c07d9d71062d9d0f8c7b58ec
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745757"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217530"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -118,7 +118,7 @@ Als u het bericht validatie vereist ziet, verzamelt u de documenten die de open 
 De omgevingen Dynamics 365 en Common Data Service (CDS) worden gehost op Azure en daarom kunnen klanten profiteren van de onderliggende ExpressRoute-ondersteuning voor Azure-resources. U kunt verbinding maken met de service-eind punten als uw router filter de Azure-regio's bevat waarin uw Dynamics 365/CDS-omgevingen worden gehost.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) is **niet** vereist voor Dynamics 365-connectiviteit via Azure ExpressRoute.
+> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) is **niet** vereist voor Dynamics 365-connectiviteit via Azure ExpressRoute als het ExpressRoute-circuit in dezelfde [geopolitieke regio](https://docs.microsoft.com/azure/expressroute/expressroute-locations-providers#expressroute-locations)wordt geïmplementeerd.
 
 ## <a name="data-and-connections"></a>Gegevens en verbindingen
 

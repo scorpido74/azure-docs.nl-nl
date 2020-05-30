@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be6b5f0af17aa8343dcb74fd5f0710d44332ce0e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084988"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193299"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -21,7 +21,7 @@ ms.locfileid: "82084988"
 > GitHub-acties zijn momenteel in een bèta versie. U moet [zich eerst aanmelden om lid te worden van het voor beeld](https://github.com/features/actions) met behulp van uw github-account.
 > 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) `/.github/workflows/` in het pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
+Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het `/.github/workflows/` pad in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom.
 
 Voor een Azure App Service werk stroom heeft het bestand drie secties:
 
@@ -59,12 +59,12 @@ U kunt ook referenties op app-niveau gebruiken, dat wil zeggen, het profiel publ
 
 3. Plak de inhoud van het gedownloade bestand met het publicatie profiel in het veld waarde van het geheim.
 
-4. Nu in het werk stroom bestand in uw vertakking `.github/workflows/workflow.yml` : Vervang het geheim voor de `publish-profile` invoer van de actie Azure web app implementeren.
+4. Nu in het werk stroom bestand in uw vertakking: `.github/workflows/workflow.yml` Vervang het geheim voor de invoer `publish-profile` van de actie Azure web app implementeren.
     
     ```yaml
         - uses: azure/webapps-deploy@v2
           with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
 5. Het geheim wordt weer gegeven, zoals hieronder is gedefinieerd.
@@ -182,9 +182,9 @@ In de volgende voor beelden ziet u het deel van de werk stroom dat de web-app bo
 ```
 ## <a name="deploy-to-app-service"></a>Implementeren naar App Service
 
-Als u uw code wilt implementeren in een App Service-app `azure/webapps-deploy@v2` , gebruikt u de actie. Deze actie heeft vier para meters:
+Als u uw code wilt implementeren in een App Service-app, gebruikt u de `azure/webapps-deploy@v2` actie. Deze actie heeft vier para meters:
 
-| **Bepaalde**  | **Uitleg**  |
+| **Parameter**  | **Uitleg**  |
 |---------|---------|
 | **app-naam** | Lang De naam van de App Service-app | 
 | **publicatie profiel** | Beschrijving Inhoud van profiel bestand publiceren met Web Deploy-geheimen |

@@ -1,7 +1,7 @@
 ---
 title: On-premises SQL Server
 titleSuffix: ML Studio (classic) - Azure
-description: Gegevens uit een on-premises SQL Server Data Base gebruiken om geavanceerde analyses uit te voeren met Azure Machine Learning Studio (klassiek).
+description: Gebruik gegevens uit een SQL Server-Data Base om geavanceerde analyses uit te voeren met Azure Machine Learning Studio (klassiek).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ff0169d0606728898bc6157d05f2013607e48f0c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117795"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193816"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een on-premises SQL Server Data Base
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analyses uitvoeren met Azure Machine Learning Studio (klassiek) met behulp van een SQL Server-Data Base
 
-Bedrijven die werken met on-premises gegevens, willen vaak profiteren van de schaal en flexibiliteit van de Cloud voor hun machine learning werk belastingen. Maar ze willen hun huidige bedrijfs processen en werk stromen niet verstoren door hun on-premises gegevens naar de cloud te verplaatsen. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens van een on-premises SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hoeft de gegevens niet meer hand matig te kopiëren en te synchroniseren tussen de Cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanaf uw on-premises SQL Server-Data Base voor uw trainings-en Score taken.
+Bedrijven die werken met on-premises gegevens, willen vaak profiteren van de schaal en flexibiliteit van de Cloud voor hun machine learning werk belastingen. Maar ze willen hun huidige bedrijfs processen en werk stromen niet verstoren door hun on-premises gegevens naar de cloud te verplaatsen. Azure Machine Learning Studio (klassiek) biedt nu ondersteuning voor het lezen van uw gegevens uit een SQL Server-Data Base en vervolgens de training en het scoren van een model met deze gegevens. U hoeft de gegevens niet meer hand matig te kopiëren en te synchroniseren tussen de Cloud en uw on-premises server. In plaats daarvan kan de module **gegevens importeren** in azure machine learning Studio (klassiek) nu rechtstreeks worden gelezen vanuit uw SQL Server-Data Base voor uw trainings-en Score taken.
 
-Dit artikel bevat een overzicht van hoe u on-premises SQL Server-gegevens indeelt in Azure Machine Learning Studio (klassiek). Hierbij wordt ervan uitgegaan dat u bekend bent met de concepten van Studio (klassiek) zoals werk ruimten, modules, gegevens sets, experimenten, *enzovoort*.
+Dit artikel bevat een overzicht van de inkomende SQL Server gegevens in Azure Machine Learning Studio (klassiek). Hierbij wordt ervan uitgegaan dat u bekend bent met de concepten van Studio (klassiek) zoals werk ruimten, modules, gegevens sets, experimenten, *enzovoort*.
 
 > [!NOTE]
 > Deze functie is niet beschikbaar voor gratis werk ruimten. Zie [Azure machine learning prijzen](https://azure.microsoft.com/pricing/details/machine-learning/)voor meer informatie over machine learning prijzen en-lagen.
@@ -33,7 +33,7 @@ Dit artikel bevat een overzicht van hoe u on-premises SQL Server-gegevens indeel
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Installeer de Data Factory zelf-hostende Integration Runtime
-Als u toegang wilt krijgen tot een on-premises SQL Server-data base in Azure Machine Learning Studio (klassiek), moet u de Data Factory zelf-hostende Integration Runtime, voorheen bekend als de Data Management Gateway, downloaden en installeren. Wanneer u de verbinding in Machine Learning Studio (klassiek) configureert, kunt u de Integration Runtime (IR) downloaden en installeren met behulp van het dialoog venster **gegevens gateway downloaden en registreren** dat hieronder wordt beschreven.
+Als u toegang wilt krijgen tot een SQL Server-data base in Azure Machine Learning Studio (klassiek), moet u de Data Factory zelf-hostende Integration Runtime, voorheen bekend als de Data Management Gateway, downloaden en installeren. Wanneer u de verbinding in Machine Learning Studio (klassiek) configureert, kunt u de Integration Runtime (IR) downloaden en installeren met behulp van het dialoog venster **gegevens gateway downloaden en registreren** dat hieronder wordt beschreven.
 
 
 U kunt ook de IR van tevoren installeren door het MSI-installatie pakket te downloaden en uit te voeren vanuit het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=39717). Het MSI-bestand kan ook worden gebruikt om een bestaande IR te upgraden naar de nieuwste versie, waarbij alle instellingen behouden blijven.
@@ -64,8 +64,8 @@ Houd rekening met het volgende bij het instellen en gebruiken van een Data Facto
 
 Meer informatie over de installatie vereisten, installatie stappen en tips voor probleem oplossing vindt u in het artikel [Integration runtime in Data Factory](../../data-factory/concepts-integration-runtime.md).
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Gegevens uit uw on-premises SQL Server data base in Azure Machine Learning
-In dit scenario stelt u een Azure Data Factory Integration Runtime in een Azure Machine Learning-werk ruimte in, configureert u deze en leest u vervolgens gegevens van een on-premises SQL Server-Data Base.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Gegevens uit uw SQL Server-data base in Azure Machine Learning
+In dit scenario stelt u een Azure Data Factory Integration Runtime in een Azure Machine Learning-werk ruimte in, configureert u deze en leest u vervolgens gegevens uit een SQL Server-Data Base.
 
 > [!TIP]
 > Voordat u begint, schakelt u de pop-upblokkering van uw browser uit voor `studio.azureml.net` . Als u de Google Chrome-browser gebruikt, downloadt en installeert u een van de verschillende invoeg toepassingen die beschikbaar zijn in Google Chrome-webstore. [Klik eenmaal op app-extensie](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
@@ -74,7 +74,7 @@ In dit scenario stelt u een Azure Data Factory Integration Runtime in een Azure 
 > Azure Data Factory zelf-hostende Integration Runtime voorheen bekend als Data Management Gateway. In de zelf studie voor stapsgewijze instructies blijft deze als een gateway verwijzen.  
 
 ### <a name="step-1-create-a-gateway"></a>Stap 1: een gateway maken
-De eerste stap is om de gateway te maken en in te stellen voor toegang tot uw on-premises SQL database.
+De eerste stap is om de gateway te maken en in te stellen voor toegang tot uw SQL database.
 
 1. Meld u aan bij [Azure machine learning Studio (klassiek)](https://studio.azureml.net/Home/) en selecteer de werk ruimte waarin u wilt werken.
 2. Klik op de Blade **instellingen** aan de linkerkant en klik vervolgens op het tabblad **gegevens gateways** bovenaan.
@@ -121,7 +121,7 @@ U bent nu klaar om uw on-premises gegevens te gebruiken.
 U kunt in Studio (klassiek) meerdere gateways maken en instellen voor elke werk ruimte. U kunt bijvoorbeeld een gateway hebben die u tijdens de ontwikkeling verbinding wilt laten maken met uw test gegevens bronnen en een andere gateway voor uw productie gegevens bronnen. Azure Machine Learning Studio (klassiek) biedt u de flexibiliteit om meerdere gateways in te stellen, afhankelijk van uw bedrijfs omgeving. U kunt op dit moment geen gateway delen tussen werk ruimten en slechts één gateway kan op één computer worden geïnstalleerd. Zie [gegevens verplaatsen tussen on-premises bronnen en Cloud met Data Management Gateway](../../data-factory/tutorial-hybrid-copy-portal.md)voor meer informatie.
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Stap 2: de gateway gebruiken om gegevens van een on-premises gegevens bron te lezen
-Nadat u de gateway hebt ingesteld, kunt u een module voor het **importeren van gegevens** toevoegen aan een experiment dat de gegevens van de on-premises SQL Server Data Base instuurt.
+Nadat u de gateway hebt ingesteld, kunt u een module voor **gegevens import** toevoegen aan een experiment dat de gegevens uit de SQL Server-Data Base invoert.
 
 1. In Machine Learning Studio (klassiek) selecteert u het tabblad **experimenten** , klikt u op **+ Nieuw** in de linkerbenedenhoek en selecteert u **leeg experiment** (of selecteert u een van de beschik bare voorbeeld experimenten).
 2. Zoek en sleep de module **gegevens importeren** naar het canvas op het experiment.
@@ -133,7 +133,7 @@ Nadat u de gateway hebt ingesteld, kunt u een module voor het **importeren van g
 
    ![Gegevens gateway selecteren voor de module gegevens importeren](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
 6. Voer de naam van de SQL **Data Base-Server** en de **database naam**in, samen met de SQL **Data Base-query** die u wilt uitvoeren.
-7. Klik op **waarden opgeven** onder **gebruikers naam en wacht woord** en voer uw database referenties in. U kunt geïntegreerde Windows-verificatie of SQL Server verificatie gebruiken, afhankelijk van hoe uw on-premises SQL Server zijn geconfigureerd.
+7. Klik op **waarden opgeven** onder **gebruikers naam en wacht woord** en voer uw database referenties in. U kunt geïntegreerde Windows-verificatie of SQL Server verificatie gebruiken, afhankelijk van hoe uw SQL Server is geconfigureerd.
 
    ![Database referenties opgeven](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
@@ -144,4 +144,4 @@ Nadat u de gateway hebt ingesteld, kunt u een module voor het **importeren van g
 
 Zodra het experiment is voltooid, kunt u de gegevens die u uit de Data Base hebt geïmporteerd, visualiseren door te klikken op de uitvoer poort van de module **gegevens importeren** en **visualiseren**te selecteren.
 
-Wanneer u klaar bent met het ontwikkelen van uw experiment, kunt u uw model implementeren en operationeel maken. Als u de batch Execution-Service gebruikt, worden de gegevens van de on-premises SQL Server-Data Base die is geconfigureerd in de module **gegevens importeren** gelezen en gebruikt voor scores. Hoewel u de aanvraag respons service kunt gebruiken voor het bepalen van on-premises gegevens, raadt micro soft u aan om in plaats daarvan de [Excel-invoeg toepassing](excel-add-in-for-web-services.md) te gebruiken. Het schrijven naar een on-premises SQL Server Data Base via **export gegevens** wordt momenteel niet ondersteund in uw experimenten of gepubliceerde webservices.
+Wanneer u klaar bent met het ontwikkelen van uw experiment, kunt u uw model implementeren en operationeel maken. Als u de batch Execution-Service gebruikt, worden gegevens uit de SQL Server-Data Base die in de **import gegevens** module zijn geconfigureerd, gelezen en gebruikt voor scores. Hoewel u de aanvraag respons service kunt gebruiken voor het bepalen van on-premises gegevens, raadt micro soft u aan om in plaats daarvan de [Excel-invoeg toepassing](excel-add-in-for-web-services.md) te gebruiken. Het schrijven naar een SQL Server-Data Base via **export gegevens** wordt momenteel niet ondersteund in uw experimenten of gepubliceerde webservices.

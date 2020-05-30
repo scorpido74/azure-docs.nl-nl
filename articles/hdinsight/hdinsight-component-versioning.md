@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/20/2020
-ms.openlocfilehash: 036548d61dbe6a6465ca28c72eacb48e61386577
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: 0ce7077300b1c59fcc858197e70a921d1454fd13
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846219"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219701"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Apache-onderdelen en-versies die beschikbaar zijn voor Azure HDInsight
 
@@ -43,7 +43,7 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies, w
 | Apache Storm           | -             | 1.1.0                       |
 | Apache mahout          | -             | 0.9.0 +                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2,4           | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Spark           | 2,4           | 2.3.2, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
 | Apache Kafka           | 2.1           | 1.1                        |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
@@ -51,7 +51,7 @@ De versies van de onderdelen die zijn gekoppeld aan HDInsight-cluster versies, w
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> HDInsight 4,0: Spark 2,4 en Kafka 2,1 worden volledig ondersteund. Spark 2,3 en Kafka 1,1 worden echter niet verwerkt. HDInsight 3,6: Spark 2,3 en Kafka 1,1 worden volledig ondersteund.  
+> HDInsight 4,0: Spark 2,4 en Kafka 2,1 worden volledig ondersteund. Spark 2,3-en Kafka 1,1-cluster typen worden echter niet verwerkt. HDInsight 3,6: Spark 2,3 en Kafka 1,1 worden volledig ondersteund.  
 
 ## <a name="check-for-current-apache-component-version-information"></a>Controleren op huidige versie gegevens van Apache-onderdeel
 
@@ -80,10 +80,10 @@ Deze tabel geeft een lijst van de versies van HDInsight die beschikbaar zijn in 
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |September 24, 2018 | | |Ja |Ja |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |4 april 2017 | 31 december 2020 |31 december 2020 |Ja |Ja |
 
-De ondersteuning voor Spark 2,1, 2,2 en Kafka 1,0 verloopt op 30 juni 2020.
+De ondersteuning voor Spark 2,1, 2,2 en Kafka 1,0-clusters verloopt op 30 juni 2020.
 
 > [!NOTE]
-> Als de ondersteuning voor een versie verloopt, is deze mogelijk niet meer beschikbaar via de Azure Portal. Cluster versies blijven beschikbaar met behulp van de para meter **Version** in de Windows Power shell [New-AzHDInsightCluster-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) opdracht en de .NET SDK tot de datum van beëindiging van de versie.
+> Nadat de ondersteuning voor een cluster versie is verlopen, is deze mogelijk niet meer beschikbaar via de Azure Portal. In sommige gevallen blijven cluster versies beschikbaar met behulp van de para meter **Version** in de Windows Power shell [New-AzHDInsightCluster-](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) opdracht en de .NET SDK tot de datum waarop de versie is uitgevallen.
 
 ### <a name="retired-versions"></a>Buiten gebruik gestelde versies
 

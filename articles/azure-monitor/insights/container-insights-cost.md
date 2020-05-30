@@ -2,13 +2,13 @@
 title: Bewaken van de kosten voor Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel worden de bewakings kosten beschreven voor metrische gegevens & door Azure Monitor voor containers verzamelde inventaris van de bewerkings capaciteit, zodat klanten hun gebruik en de bijbehorende kosten kunnen beheren.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 44802f611919fbf88894576eecf581a668e05b5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/29/2020
+ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122463"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204647"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Inzicht in de berekenings kosten voor Azure Monitor voor containers
 
@@ -140,6 +140,8 @@ Bekijk een scenario waarin de verschillende Business Unit van uw organisatie Kub
 - Ontvangen container logboek gegevens die zijn opgenomen door de logsource-vermelding
 
 - Factureer bare diagnostische gegevens die zijn opgenomen door de logboeken van de diagnostische hoofd knooppunten
+
+Raadpleeg [Access Control](../platform/workbooks-access-control.md)voor meer informatie over het beheren van rechten en machtigingen voor de werkmap.
 
 Na het volt ooien van de analyse om te bepalen welke bron of bronnen de meeste gegevens genereren of meer gegevens die uw vereisten overschrijden, kunt u het verzamelen van gegevens opnieuw configureren. Meer informatie over het configureren van een verzameling van stdout-, stderr-en omgevings variabelen wordt beschreven in het artikel instellingen voor het [verzamelen van agent gegevens configureren](container-insights-agent-config.md) .
 

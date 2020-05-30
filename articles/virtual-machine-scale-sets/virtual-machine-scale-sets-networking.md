@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 07/17/2017
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 46a12006274ca8516c936e37189c9233dde9b410
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 39539f29df48d19b956b8bab6f63da50473453d4
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125193"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221301"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netwerken voor virtuele-machineschaalsets in Azure
 
@@ -51,6 +51,8 @@ Wanneer u werkt met schaal sets voor virtuele machines en load balancer, moet u 
   * Elke schaalset voor virtuele machines moet een binnenkomende NAT-regel hebben.
   * Nadat de schaalset is gemaakt, kan de backend-poort niet worden gewijzigd voor een taakverdelings regel die wordt gebruikt door een status test van de load balancer. Als u de poort wilt wijzigen, kunt u de status test verwijderen door de schaalset voor virtuele Azure-machines bij te werken, de poort bij te werken en de status test vervolgens opnieuw te configureren.
   * Wanneer u de schaalset voor virtuele machines gebruikt in de back-endadresgroep van de load balancer worden de standaard regels voor binnenkomend NAT automatisch gemaakt.
+* **Binnenkomende NAT-groep**:
+  * De binnenkomende NAT-pool is een verzameling van binnenkomende NAT-regels. 1 binnenkomende NAT-groep kan niet meerdere VM Scale Sets ondersteunen.
 * Taakverdelings **regels**:
   * Wanneer u de schaalset voor virtuele machines in de back-endadresgroep van de load balancer gebruikt, wordt de standaard regel voor taak verdeling automatisch gemaakt.
 * **Uitgaande regels**:

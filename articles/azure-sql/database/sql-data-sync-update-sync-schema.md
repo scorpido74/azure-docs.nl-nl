@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: eb0c88797dc23c912ce360dbcfd10f210b694fbd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043938"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188198"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>De replicatie van schema wijzigingen in Azure SQL Data Sync automatiseren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,7 +209,7 @@ Als u de records in de tabel schema wijzigingen bijhouden wilt opschonen, gebrui
 
 -   U kunt alleen schema wijzigingen aanbrengen in de Data Base waarin de DDL-trigger wordt gemaakt.
 
--   Als u een wijziging aanbrengt in een on-premises SQL Server Data Base, moet u ervoor zorgen dat de schema wijziging wordt ondersteund in Azure SQL Database.
+-   Als u een wijziging aanbrengt in een SQL Server-Data Base, moet u ervoor zorgen dat de schema wijziging wordt ondersteund in Azure SQL Database.
 
 -   Als er schema wijzigingen worden aangebracht in andere data bases dan de Data Base waarin de DDL-trigger wordt gemaakt, worden de wijzigingen niet gerepliceerd. Om dit probleem te voor komen, kunt u DDL-triggers maken om wijzigingen op andere eind punten te blok keren.
 
@@ -225,7 +225,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [Gegevens synchroniseren tussen meerdere cloud- en on-premises databases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
-    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-data-sync-sql-server-configure.md)
+    - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

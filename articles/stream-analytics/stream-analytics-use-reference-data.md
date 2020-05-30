@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 5/11/2020
-ms.openlocfilehash: 524fc747e8e3dc70bdcc594a38b2a083b8381daa
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8aae9a0ff3ffdbd4f6bc93db5c6f15dcb938080e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124071"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196424"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Referentie gegevens gebruiken voor Zoek opdrachten in Stream Analytics
 
@@ -96,13 +96,13 @@ Met de optie Delta query Stream Analytics wordt de momentopname query in eerste 
 
 Als u uw SQL Database referentie gegevens wilt configureren, moet u eerst **referentie gegevens** invoer maken. In de onderstaande tabel wordt elke eigenschap uitgelegd die u moet opgeven tijdens het maken van de invoer van referentie gegevens met de beschrijving. Zie [referentie gegevens van een SQL database gebruiken voor een Azure stream Analytics taak](sql-reference-data.md)voor meer informatie.
 
-U kunt [Azure SQL database beheerde instantie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) gebruiken als invoer voor referentie gegevens. U moet een [openbaar eind punt configureren in Azure SQL database Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
+U kunt [Azure SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als referentie gegevens invoer gebruiken. U moet een [openbaar eind punt configureren in het SQL Managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) en vervolgens hand matig de volgende instellingen configureren in azure stream Analytics. Een virtuele Azure-machine met SQL Server met een gekoppelde data base wordt ook ondersteund door de onderstaande instellingen hand matig te configureren.
 
 |**Naam van eigenschap**|**Beschrijving**  |
 |---------|---------|
 |Invoeralias|Een beschrijvende naam die wordt gebruikt in de taak query om te verwijzen naar deze invoer.|
 |Abonnement|Kies uw abonnement|
-|Database|De Azure SQL Database die uw referentie gegevens bevat. Voor Azure SQL Database beheerde instantie moet het poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342*|
+|Database|De Azure SQL Database die uw referentie gegevens bevat. Voor het beheerde exemplaar van SQL moet de poort 3342 worden opgegeven. Bijvoorbeeld *sampleserver. public. data base. Windows. net, 3342*|
 |Gebruikersnaam|De gebruikers naam die aan uw Azure SQL Database is gekoppeld.|
 |Wachtwoord|Het wacht woord dat is gekoppeld aan uw Azure SQL Database.|
 |Periodiek vernieuwen|Met deze optie kunt u een vernieuwings frequentie kiezen. Als u aan kiest, kunt u de vernieuwings frequentie opgeven in DD: uu: MM.|

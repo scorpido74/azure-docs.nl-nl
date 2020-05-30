@@ -2,14 +2,14 @@
 title: Api's en hulpprogram ma's voor ontwikkel aars
 description: Meer informatie over de API's en hulpprogramma's voor het ontwikkelen van oplossingen met de Azure Batch-service.
 ms.topic: conceptual
-ms.date: 05/22/2010
+ms.date: 05/22/2020
 ms.custom: seodec18
-ms.openlocfilehash: cd87419cd8c389be861cb88071884f8da1c3c1a3
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: c05ab55f087710028f51231aec6094b350aface2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870600"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220369"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Overzicht van Batch-API's en -hulpprogramma's
 
@@ -77,7 +77,7 @@ Deze extra hulpprogram ma's zijn mogelijk handig voor het maken en opsporen van 
 - [Azure batch Shipyard](https://github.com/Azure/batch-shipyard): batch Shipyard is een hulp programma voor het inrichten, uitvoeren en bewaken van op containers gebaseerde batch verwerking en HPC-workloads op Azure batch.
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/): Hoewel er geen Azure batch-hulp programma is, is de Storage Explorer nog een waardevol hulp middel om uw batch-oplossingen te ontwikkelen en fouten op te sporen.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Extra resources
 
 - Zie [batch-metrische gegevens, waarschuwingen en logboeken voor diagnostische evaluatie en controle voor](batch-diagnostics.md)meer informatie over het vastleggen van gebeurtenissen in uw batch-toepassing.
 - Zie [batch Analytics](batch-analytics.md)voor naslag informatie over gebeurtenissen die door de batch-service worden veroorzaakt.

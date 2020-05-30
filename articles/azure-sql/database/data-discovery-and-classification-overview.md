@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 387ec3f792b5d61b6c909b4955a588146aa258f5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0f1e43e4300cff6fba1c71d2b7740a3b2b678253
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050679"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218944"
 ---
 # <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -34,7 +34,7 @@ Uw meest gevoelige gegevens kunnen bedrijfs-, financiële, gezondheids zorg of p
 Gegevens detectie & classificatie maakt deel uit van de [geavanceerde gegevens beveiliging](advanced-data-security.md) . Dit is een uniform pakket voor geavanceerde Azure SQL-beveiligings mogelijkheden. U kunt gegevens detectie & classificatie openen en beheren via de sectie **geavanceerde gegevens beveiliging van SQL** van de Azure Portal.
 
 > [!NOTE]
-> Zie [SQL-gegevens detectie en-classificatie](https://go.microsoft.com/fwlink/?linkid=866999)voor informatie over SQL Server (on-premises).
+> Zie voor meer informatie over on-premises SQL Server de [classificatie van SQL-gegevens detectie &](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Wat is de classificatie van gegevens detectie &?
 
@@ -42,7 +42,7 @@ Gegevens detectie & classificatie introduceert een aantal geavanceerde services 
 
 - **Detectie en aanbevelingen:** De classificatie-engine scant uw data base en identificeert kolommen die mogelijk gevoelige gegevens bevatten. Vervolgens krijgt u een eenvoudige manier om de aanbevolen classificatie via de Azure Portal te controleren en toe te passen.
 
-- **Labelen:** U kunt met behulp van nieuwe meta gegevens kenmerken die zijn toegevoegd aan de SQL database-engine, de labels van de gevoeligheids classificatie persistent Toep assen op kolommen. Deze meta gegevens kunnen vervolgens worden gebruikt voor geavanceerde, op gevoeligheid gebaseerde controle-en beveiligings scenario's.
+- **Labelen:** U kunt met behulp van nieuwe meta gegevens kenmerken die zijn toegevoegd aan de SQL Server data base-engine, de labels van de gevoeligheids classificatie persistent Toep assen op kolommen. Deze meta gegevens kunnen vervolgens worden gebruikt voor geavanceerde, op gevoeligheid gebaseerde controle-en beveiligings scenario's.
 
 - **Query resultaten-ingestelde gevoeligheid:** De gevoeligheid van een resultatenset van een query wordt in realtime berekend voor controle doeleinden.
 
@@ -66,9 +66,9 @@ Gegevens detectie & classificatie wordt geleverd met een ingebouwde set van gevo
 
 U kunt uw classificatie taxonomie op één centrale locatie voor uw hele Azure-organisatie definiëren en aanpassen. Deze locatie bevindt zich in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), als onderdeel van uw beveiligings beleid. U kunt deze taak alleen uitvoeren door iemand met beheerders rechten voor de hoofd beheer groep van de organisatie.
 
-Als onderdeel van beleids beheer voor SQL Information Protection kunt u aangepaste labels definiëren, ze rangschikken en koppelen aan een geselecteerde set met gegevens typen. U kunt ook uw eigen aangepaste gegevens typen toevoegen en deze configureren met teken reeks patronen. De patronen worden toegevoegd aan de detectie logica voor het identificeren van dit type gegevens in uw data bases.
+Als onderdeel van beleids beheer voor Information Protection kunt u aangepaste labels definiëren, ze rangschikken en koppelen aan een geselecteerde set met gegevens typen. U kunt ook uw eigen aangepaste gegevens typen toevoegen en deze configureren met teken reeks patronen. De patronen worden toegevoegd aan de detectie logica voor het identificeren van dit type gegevens in uw data bases.
 
-Meer informatie over het aanpassen en beheren van uw beleid in de [hand leiding voor SQL Information Protection-beleid](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+Zie [het SQL Information Protection-beleid aanpassen in azure Security Center (preview)](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)voor meer informatie.
 
 Nadat u het beleid voor de hele organisatie hebt gedefinieerd, kunt u afzonderlijke data bases met behulp van het aangepaste beleid blijven classificeren.
 
@@ -121,7 +121,7 @@ Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om
 
 ![Audit logboek](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="permissions"></a>Machtigingen
+## <a name="permissions"></a><a id="permissions"></a>Bevoegdheden
 
 Deze ingebouwde rollen kunnen de gegevens classificatie van een Data Base lezen:
 
@@ -193,4 +193,4 @@ U kunt de REST API gebruiken om classificaties en aanbevelingen programmatisch t
 
 - Meer informatie over [geavanceerde gegevens beveiliging](advanced-data-security.md).
 - U kunt [Azure SQL auditing](../../azure-sql/database/auditing-overview.md) configureren voor het bewaken en controleren van de toegang tot uw geclassificeerde gevoelige gegevens.
-- Zie detecteren [, classificeren, labelen & beveiliging van SQL-gegevens voor een presentatie met gegevens detectie en-classificatie. Gegevens die worden weer gegeven](https://www.youtube.com/watch?v=itVi9bkJUNc).
+- Zie [detecteren, classificeren, labelen & beveiligen van SQL-gegevens voor een presentatie met gegevens detectie & classificatie. Gegevens die worden weer gegeven](https://www.youtube.com/watch?v=itVi9bkJUNc).

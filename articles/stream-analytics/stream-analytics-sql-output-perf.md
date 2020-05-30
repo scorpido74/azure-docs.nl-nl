@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e0fcbec2e502088024805ebc1f02007c09a12c9d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018783"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192497"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics uitvoer naar Azure SQL Database
 
-In dit artikel worden tips beschreven voor betere schrijf doorvoer prestaties wanneer u gegevens laadt in SQL Azure data base met behulp van Azure Stream Analytics.
+In dit artikel worden tips beschreven voor betere schrijf doorvoer prestaties wanneer u gegevens laadt in Azure SQL Database met behulp van Azure Stream Analytics.
 
-SQL-uitvoer in Azure Stream Analytics ondersteunt schrijven parallel als een optie. Met deze optie kunt u [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) taak topologieën maken waarbij meerdere uitvoer partities parallel worden geschreven naar de doel tabel. Het inschakelen van deze optie in Azure Stream Analytics is echter mogelijk niet voldoende voor hogere door Voer, omdat deze aanzienlijk afhankelijk is van de SQL Azure database configuratie en het tabel schema. De keuze van indexen, cluster sleutel, index opvul factor en compressie hebben invloed op de tijd voor het laden van tabellen. Zie voor meer informatie over het optimaliseren van uw SQL Azure-Data Base voor het verbeteren van de prestaties van query's en laden op basis van interne benchmarks [SQL database prestatie richtlijnen](../azure-sql/database/performance-guidance.md). De volg orde van schrijf bewerkingen is niet gegarandeerd bij het parallel schrijven naar SQL Azure data base.
+SQL-uitvoer in Azure Stream Analytics ondersteunt schrijven parallel als een optie. Met deze optie kunt u [volledig parallelle](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) taak topologieën maken waarbij meerdere uitvoer partities parallel worden geschreven naar de doel tabel. Het inschakelen van deze optie in Azure Stream Analytics is echter mogelijk niet voldoende voor hogere door Voer, omdat deze aanzienlijk afhankelijk is van uw database configuratie en tabel schema. De keuze van indexen, cluster sleutel, index opvul factor en compressie hebben invloed op de tijd voor het laden van tabellen. Zie [SQL database performance guidance](../azure-sql/database/performance-guidance.md)(Engelstalig) voor meer informatie over hoe u uw data base optimaliseert om de prestaties van query's en taken te verbeteren op basis van interne benchmarks. De volg orde van schrijf bewerkingen is niet gegarandeerd bij het parallel schrijven naar SQL Database.
 
 Hier vindt u enkele configuraties binnen elke service die de algehele door Voer van uw oplossing kunnen helpen verbeteren.
 

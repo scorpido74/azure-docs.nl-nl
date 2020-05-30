@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 04/10/2020
-ms.openlocfilehash: 023f00e30809126a1be7df5330f27453477ed9cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048033"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188280"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>Transparent Data Encryption for SQL Database, SQL Managed instance & Azure Synapse
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,7 +65,7 @@ U hoeft geen data bases te ontsleutelen voor bewerkingen binnen Azure. De TDE-in
 
 Wanneer u een met TDE beveiligde data base exporteert, wordt de geëxporteerde inhoud van de data base niet versleuteld. Deze geëxporteerde inhoud wordt opgeslagen in niet-versleutelde BACPAC-bestanden. Zorg ervoor dat u de BACPAC-bestanden op de juiste wijze beveiligt en TDE na het importeren van de nieuwe Data Base hebt ingeschakeld.
 
-Als het BACPAC-bestand bijvoorbeeld wordt geëxporteerd vanuit een on-premises SQL Server-exemplaar, wordt de geïmporteerde inhoud van de nieuwe Data Base niet automatisch versleuteld. Als het BACPAC-bestand wordt geëxporteerd naar een on-premises SQL Server-exemplaar, wordt de nieuwe data base ook niet automatisch versleuteld.
+Als het BACPAC-bestand bijvoorbeeld wordt geëxporteerd uit een SQL Server-exemplaar, wordt de geïmporteerde inhoud van de nieuwe Data Base niet automatisch versleuteld. Als het BACPAC-bestand wordt geïmporteerd in een SQL Server-exemplaar, wordt de nieuwe data base ook niet automatisch versleuteld.
 
 De enige uitzonde ring is wanneer u exporteert naar en van een SQL Database. TDE wordt ingeschakeld in de nieuwe Data Base, maar het BACPAC-bestand zelf is nog steeds niet versleuteld.
 

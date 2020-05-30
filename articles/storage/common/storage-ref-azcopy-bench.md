@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72518302"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220149"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
 
@@ -43,15 +43,15 @@ azcopy bench [destination] [flags]
 
 Voer een bench Mark-test uit met de standaard parameters (geschikt voor benchmarking-netwerken tot 1 Gbps): '
 
-- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS>"
+- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS> "
 
 Voer een bench Mark-test uit die 100 bestanden uploadt, elk 2 GiB in grootte: (geschikt voor benchmarking op een snel netwerk, bijvoorbeeld 10 Gbps): '
 
-- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS>" --bestands aantal 100--grootte-per bestand, 2G
+- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS> " --bestands aantal 100--grootte-per bestand, 2G
 
 Hetzelfde als hierboven, maar gebruik 50.000-bestanden, elke 8 MiB in grootte en bereken de MD5-hashes (op dezelfde manier als met de vlag--put-MD5 wordt gebruikgemaakt van de Kopieer opdracht). Het doel van--put-MD5 wanneer u vergelijkt, is om te testen of de MD5-berekening van invloed is op de door Voer voor het geselecteerde aantal bestanden en de grootte:
 
-- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS>" --bestands aantal 50000--grootte-per-bestand 8 min.--put-MD5
+- azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS> " --bestands aantal 50000--grootte-per-bestand 8 min.--put-MD5
 
 ## <a name="options"></a>Opties
 
@@ -76,6 +76,8 @@ Hetzelfde als hierboven, maar gebruik 50.000-bestanden, elke 8 MiB in grootte en
 **--Cap-Mbps uint32**  De overdrachts frequentie in megabits per seconde. Even door Voer kan enigszins afwijken van het kapje. Als deze optie is ingesteld op nul of wordt wegge laten, wordt de door Voer niet afgetopt.
 
 **--** de teken reeks indeling van het uitvoer type van de uitvoer van de opdracht. De opties zijn onder andere: Text, JSON. De standaard waarde is ' text '. (standaard tekst).
+
+**--vertrouwd-micro soft-achtervoegsels** teken reeks geeft aanvullende domein achtervoegsels aan waar Azure Active Directory aanmeldings tokens kunnen worden verzonden.  De standaard waarde is *. core.Windows.net;*. core.chinacloudapi.cn; *. core.cloudapi.de;*. core.usgovcloudapi.net '. Alle hier vermelde waarden worden toegevoegd aan de standaard instelling. Voor beveiliging moet u Microsoft Azure domeinen hier alleen plaatsen. Scheid meerdere vermeldingen met een punt komma.
 
 ## <a name="see-also"></a>Zie ook
 

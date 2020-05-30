@@ -1,7 +1,7 @@
 ---
 title: Bedrijfs continuïteit in de Cloud-database herstel
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Meer informatie over hoe Azure SQL Database en SQL Managed instance ondersteuning bieden voor Cloud-bedrijfs continuïteit en database herstel, en helpt u bedrijfs kritieke Cloud toepassingen te blijven uitvoeren.
+description: Meer informatie over hoe Azure SQL Database en SQL Managed instance ondersteuning bieden voor Cloud-bedrijfs continuïteit en database herstel, en om bedrijfs kritieke Cloud toepassingen te blijven uitvoeren.
 keywords: bedrijfscontinuïteit, bedrijfscontinuïteit met de cloud, databasenoodherstel, databaseherstel
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ae58cedecf0b1dab488dac00b68e2b9a8c12e46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043602"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189765"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Overzicht van bedrijfscontinuïteit met Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84043602"
 
 - Gebruiker heeft per ongeluk een rij in een tabel verwijderd of bijgewerkt.
 - Kwaadwillende aanvaller heeft gegevens verwijderd of een Data Base verwijderen.
-- Aarding heeft geleid tot een stroom storing en tijdelijk uitgeschakeld Data Center.
+- Aarding heeft geleid tot een stroom storing en een tijdelijk uitgeschakeld Data Center.
 
 In dit overzicht worden de mogelijkheden beschreven die SQL Database en SQL Managed instance bieden voor bedrijfs continuïteit en herstel na nood gevallen. Meer informatie over opties, aanbevelingen en zelf studies voor het herstellen van storende gebeurtenissen die gegevens verlies kunnen veroorzaken of ervoor zorgen dat uw data base en toepassing niet meer beschikbaar zijn. Meer informatie over wat u moet doen wanneer een gebruiker of toepassings fout van invloed is op de gegevens integriteit, een Azure-regio een storing heeft of als uw toepassing onderhoud vereist.
 
@@ -51,7 +51,7 @@ SQL Database en SQL Managed instance bieden ook verschillende functies voor bedr
 - U kunt [een verwijderde data base herstellen](recovery-using-backups.md#deleted-database-restore) naar het punt waarop deze is verwijderd als de **server niet is verwijderd**.
 - Met de [lange termijn retentie van back-ups](long-term-retention-overview.md) kunt u de back-ups tot wel tien jaar bewaren. Dit is een beperkte open bare Preview voor SQL Managed instance
 - Met [actieve geo-replicatie](active-geo-replication-overview.md) kunt u lees bare replica's maken en hand matig failover naar een replica in het geval van een storing in een Data Center of een toepassings upgrade.
-- Met de [groep automatische failover](auto-failover-group-overview.md#terminology-and-capabilities) kan de toepassing automatisch worden hersteld bij een storing in een Data Center.
+- Met de [groep automatische failover](auto-failover-group-overview.md#terminology-and-capabilities) kan de toepassing automatisch worden hersteld in het geval van een storing in het Data Center.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Een Data Base binnen dezelfde Azure-regio herstellen
 
@@ -65,20 +65,20 @@ Met [groepen voor automatische failover](auto-failover-group-overview.md#termino
 
 |                                              | Geo-replicatie | Failover-groepen  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatische failover                           |     Nee          |      Ja         |
-| Gelijktijdige failover van meerdere data bases  |     Nee          |      Ja         |
-| De gebruiker moet connection string bijwerken na een failover      |     Ja         |      Nee          |
-| Ondersteuning voor SQL Managed instance                   |     Nee          |      Ja         |
-| Kan zich in dezelfde regio bevinden als primair             |     Ja         |      Nee          |
-| Meerdere replica's                            |     Ja         |      Nee          |
+| Automatische failover                           |     Nee          |      Yes         |
+| Gelijktijdige failover van meerdere data bases  |     Nee          |      Yes         |
+| De gebruiker moet connection string bijwerken na een failover      |     Yes         |      Nee          |
+| Ondersteuning voor SQL Managed instance                   |     Nee          |      Yes         |
+| Kan zich in dezelfde regio bevinden als primair             |     Yes         |      Nee          |
+| Meerdere replica's                            |     Yes         |      Nee          |
 | Ondersteunt Lees-Scale                          |     Ja         |      Ja         |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Een Data Base naar de bestaande server herstellen
 
-Hoewel zeldzaam, kan er een storing optreden in een Azure-datacenter. Wanneer er een storing optreedt, veroorzaakt deze een bedrijfsonderbreking die mogelijk slechts een paar minuten maar ook enkele uren kan duren.
+Hoewel zeldzame gevallen kan een Azure-Data Center een storing hebben. Wanneer er een storing optreedt, veroorzaakt deze een bedrijfsonderbreking die mogelijk slechts een paar minuten maar ook enkele uren kan duren.
 
-- Een optie is om te wachten tot de database weer online komt wanneer de storing in het datacenter is verholpen. Dit werkt voor toepassingen waarvoor het niet erg is dat de database offline is. Bijvoorbeeld een ontwikkelingsproject of een gratis proefversie waaraan u niet voortdurend hoeft te werken. Wanneer een Data Center een storing heeft, weet u niet hoe lang de onderbreking kan duren, dus deze optie werkt alleen als u de data base enige tijd niet nodig hebt.
+- Een optie is om te wachten tot de Data Base weer online is wanneer de storing van het Data Center is overschreden. Dit werkt voor toepassingen waarvoor het niet erg is dat de database offline is. Bijvoorbeeld een ontwikkelingsproject of een gratis proefversie waaraan u niet voortdurend hoeft te werken. Als er een storing in een Data Center optreedt, weet u niet hoe lang de onderbreking kan duren, dus deze optie werkt alleen als u de data base enige tijd niet nodig hebt.
 - Een andere mogelijkheid is om een Data Base op een wille keurige server in een Azure-regio te herstellen met behulp van [geo-redundante database back-ups](recovery-using-backups.md#geo-restore) (geo-Restore). Geo-Restore gebruikt een geografisch redundante back-up als bron en kan worden gebruikt om een Data Base te herstellen, zelfs als de data base of het Data Center niet toegankelijk is vanwege een storing.
 - Ten slotte kunt u snel de uitval van een storing herstellen als u geo-secundair hebt geconfigureerd met behulp van [actieve geo-replicatie](active-geo-replication-overview.md) of een [groep met automatische failover](auto-failover-group-overview.md) voor uw data base of data bases. Afhankelijk van uw keuze van deze technologieën kunt u hand matig of automatisch een failover gebruiken. Hoewel failover zelf slechts een paar seconden duurt, zal de service ten minste één uur duren om deze te activeren. Dit is nodig om ervoor te zorgen dat de failover gerechtvaardigd is door de schaal van de storing. De failover kan ook leiden tot een klein gegevens verlies als gevolg van de aard van de asynchrone replicatie.
 
@@ -109,7 +109,7 @@ Gebruik groepen voor automatische failover als uw toepassing aan een van deze cr
 
 U kunt ervoor kiezen om een combi natie van database back-ups en actieve geo-replicatie te gebruiken, afhankelijk van de vereisten van uw toepassing. Zie [een toepassing ontwerpen voor nood herstel](designing-cloud-solutions-for-disaster-recovery.md) in de Cloud en [strategieën voor nood herstel voor elastische Pools](disaster-recovery-strategies-for-applications-with-elastic-pool.md)voor een bespreking van ontwerp overwegingen voor zelfstandige data bases en voor elastische Pools met behulp van deze functies voor bedrijfs continuïteit.
 
-In de volgende secties vindt u een overzicht van de stappen die u kunt herstellen met behulp van database back-ups of actieve geo-replicatie. Zie [een SQL database herstellen vanaf een storing](disaster-recovery-guidance.md)voor gedetailleerde stappen, zoals plannings vereisten, stappen na herstel en informatie over het simuleren van een storing voor het uitvoeren van een nood herstel analyse.
+In de volgende secties vindt u een overzicht van de stappen die u kunt herstellen met behulp van database back-ups of actieve geo-replicatie. Zie [een Data Base herstellen in SQL database van een storing](disaster-recovery-guidance.md)voor gedetailleerde stappen, zoals plannings vereisten, stappen na herstel en informatie over het simuleren van een storing voor het uitvoeren van een nood herstel analyse.
 
 ### <a name="prepare-for-an-outage"></a>Voorbereiden op een storing
 
@@ -133,17 +133,17 @@ Als u actieve groepen voor geo-replicatie of automatische failover gebruikt als 
 Als u gebruikmaakt van de automatische back-ups met geografisch redundante opslag (standaard ingeschakeld), kunt u de data base herstellen met behulp van [geo-Restore](disaster-recovery-guidance.md#recover-using-geo-restore). Herstel plaatsvindt doorgaans binnen 12 uur, met gegevens verlies van Maxi maal één uur, afhankelijk van het moment waarop de laatste back-up van het logboek is gemaakt en gerepliceerd. Totdat het herstellen is voltooid, kan de database geen transacties registreren en niet reageren op query's. Opmerking: met geo-Restore wordt de data base alleen teruggezet naar het laatst beschik bare tijdstip.
 
 > [!NOTE]
-> Als het Data Center weer online is voordat u de toepassing overschakelt naar de herstelde data base, kunt u het herstel annuleren.
+> Als het Data Center weer online komt voordat u de toepassing overschakelt naar de herstelde data base, kunt u het herstel annuleren.
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Taken na failover/hersteltaken uitvoeren
 
 Na herstel via een van beide herstelmechanismen moet u de volgende aanvullende taken uitvoeren voordat uw gebruikers en toepassingen opnieuw actief zijn:
 
-- Clients en clienttoepassingen omleiden naar de nieuwe server en herstelde database
+- Clients en client toepassingen omleiden naar de nieuwe server en de data base herstellen.
 - Zorg ervoor dat de juiste IP-firewall regels op server niveau zijn ingesteld voor gebruikers om verbinding te maken met [firewalls op database niveau](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) om de juiste regels in te scha kelen.
-- Ervoor zorgen dat er geschikte aanmeldingen en machtigingen op hoofddatabaseniveau aanwezig zijn (of [ingesloten gebruikers](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) gebruiken)
-- Controles configureren, indien van toepassing
-- Waarschuwingen configureren, indien van toepassing
+- Zorg ervoor dat de juiste aanmeldingen en machtigingen op hoofd database niveau aanwezig zijn (of gebruik [Inge sloten gebruikers](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
+- Configureer de controle, indien van toepassing.
+- Waarschuwingen configureren, indien van toepassing.
 
 > [!NOTE]
 > Als u een failovergroep gebruikt en verbinding maakt met de data bases met behulp van de Read-Write-listener, wordt de omleiding na een failover automatisch en transparant voor de toepassing uitgevoerd.
@@ -154,4 +154,4 @@ Soms moet een toepassing offline worden gehaald vanwege gepland onderhoud, zoals
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [een toepassing ontwerpen voor nood herstel](designing-cloud-solutions-for-disaster-recovery.md) in de Cloud en [strategieën voor nood herstel voor elastische Pools](disaster-recovery-strategies-for-applications-with-elastic-pool.md)voor een bespreking van overwegingen voor het ontwerpen van toepassingen voor zelfstandige data bases en voor elastische Pools.
+Zie [een toepassing ontwerpen voor nood herstel](designing-cloud-solutions-for-disaster-recovery.md) in de Cloud en [strategieën voor nood herstel voor elastische Pools](disaster-recovery-strategies-for-applications-with-elastic-pool.md)voor een bespreking van overwegingen voor het ontwerpen van toepassingen voor afzonderlijke data bases en voor elastische Pools.

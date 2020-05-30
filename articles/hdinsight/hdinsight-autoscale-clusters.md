@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4d4b2f0305e1069ac7873df24d834ab55512aff7
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199743"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219718"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
 Met de gratis functie voor automatisch schalen van Azure HDInsight kunt u het aantal worker-knoop punten in uw cluster, op basis van eerder ingestelde criteria, verg Roten of verkleinen. U stelt een minimum-en maximum aantal knoop punten in tijdens het maken van het cluster, waarbij u de schaal criteria instelt met behulp van een dag-tijd schema of specifieke prestatie gegevens en het HDInsight-platform de rest.
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 De functie voor automatisch schalen maakt gebruik van twee soorten voor waarden voor het activeren van schaal gebeurtenissen: drempel waarden voor diverse metrische gegevens voor cluster prestaties (zogenaamde *op belasting gebaseerd schalen*) en activering op basis van tijd (genoemd *op schema gebaseerd*). Schalen op basis van een belasting wijzigt het aantal knoop punten in het cluster, binnen een bereik dat u instelt, om ervoor te zorgen dat het CPU-gebruik optimaal werkt en de uitgevoerde kosten tot een minimum worden beperkt. Schalen op basis van een schema wijzigt het aantal knoop punten in uw cluster op basis van bewerkingen die u koppelt aan specifieke datums en tijden.
 
@@ -39,7 +39,7 @@ Houd rekening met de volgende factoren bij het kiezen van een schaal type:
 
 Automatisch schalen bewaakt het cluster voortdurend en verzamelt de volgende metrische gegevens:
 
-|Gegevens|Beschrijving|
+|Metrisch|Beschrijving|
 |---|---|
 |Totale CPU in behandeling|Het totale aantal kern geheugens dat nodig is om de uitvoering van alle in behandeling zijnde containers te starten.|
 |Totaal geheugen in behandeling|Het totale geheugen (in MB) dat is vereist om de uitvoering van alle in behandeling zijnde containers te starten.|
@@ -182,12 +182,12 @@ U kunt een HDInsight-cluster maken met behulp van een Azure Resource Manager sja
             "minInstanceCount": 10,
             "maxInstanceCount": 10
           }
-        },
+        }
       ]
     }
   },
   "name": "workernode",
-  "targetInstanceCount": 4,
+  "targetInstanceCount": 4
 }
 ```
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 Gebruik de juiste para meters in de aanvraag lading. De onderstaande JSON-nettolading kan worden gebruikt om automatisch schalen in te scha kelen. Gebruik de payload `{autoscale: null}` om automatisch schalen uit te scha kelen.
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 2 } } }
 ```
 
 Zie de vorige sectie over het [inschakelen van automatisch schalen op basis](#load-based-autoscaling) van een werk belasting voor een volledige beschrijving van alle Payload-para meters.

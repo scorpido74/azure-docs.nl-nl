@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf22e10bc0a4b969c41d4a377ddba7fcadd9c147
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120416"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193379"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
 
@@ -37,7 +37,7 @@ De ondersteuning voor het wijzigen van feeds is heel geschikt voor scenario's wa
 
   - Bouw verbonden toepassings pijplijnen die reageren op wijzigings gebeurtenissen of het plannen van uitvoeringen op basis van een gemaakt of gewijzigd object.
   
-Wijzigings invoer is een vereiste functie voor [herstel naar een bepaald tijdstip voor blok-blobs](point-in-time-restore-overview.md).
+Wijzigings invoer is een vereiste functie voor [object replicatie](object-replication-overview.md) en [herstel naar een bepaald tijdstip voor blok-blobs](point-in-time-restore-overview.md).
 
 > [!NOTE]
 > Wijzigings feed biedt een duurzaam, geordend logboek model van de wijzigingen die zich voordoen op een blob. Wijzigingen worden geschreven en beschikbaar gesteld in het wijzigingslog bestand binnen een bestelling van een paar minuten van de wijziging. Als uw toepassing sneller moet reageren op gebeurtenissen, kunt u in plaats daarvan [Blob Storage gebeurtenissen](storage-blob-event-overview.md) gebruiken. [Blob Storage gebeurtenissen](storage-blob-event-overview.md) biedt realtime eenmalige gebeurtenissen waarmee uw Azure functions of toepassingen snel kunnen reageren op wijzigingen die zich voordoen aan een blob. 
