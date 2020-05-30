@@ -1,6 +1,6 @@
 ---
-title: Bekende problemen en beperkingen met online migraties voor het Azure SQL Database van het beheerde exemplaar
-description: Meer informatie over bekende problemen/migratie beperkingen die zijn gekoppeld aan online migraties naar Azure SQL Database Managed instance.
+title: Bekende problemen en beperkingen met online migraties naar Azure SQL Managed instance
+description: Meer informatie over bekende problemen/migratie beperkingen die zijn gekoppeld aan online migraties naar Azure SQL Managed instance.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648662"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196310"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Database beheerde instantie
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Bekende problemen/migratie beperkingen met online migraties naar Azure SQL Managed instance
 
-Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL Server naar Azure SQL Database beheerde instantie worden hieronder beschreven.
+Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL Server naar Azure SQL Managed instance worden hieronder beschreven.
 
 > [!IMPORTANT]
 > Met online migraties van SQL Server naar Azure SQL Database wordt de migratie van SQL_variant gegevens typen niet ondersteund.
@@ -29,7 +29,7 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL
 
 - **Back-ups met controlesom**
 
-    Azure Database Migration Service maakt gebruik van de methode Backup en Restore om uw on-premises data bases te migreren naar SQL Database Managed instance. Azure Database Migration Service ondersteunt alleen back-ups die zijn gemaakt met behulp van een controlesom.
+    Azure Database Migration Service maakt gebruik van de methode Backup en Restore om uw on-premises data bases te migreren naar SQL Managed instance. Azure Database Migration Service ondersteunt alleen back-ups die zijn gemaakt met behulp van een controlesom.
 
     [Back-upcontrolesoms tijdens het maken of herstellen van back-ups in-of uitschakelen (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
@@ -52,16 +52,16 @@ Bekende problemen en beperkingen die zijn gekoppeld aan online migraties van SQL
 
 - **FileStream-FileTables**
 
-    SQL Database beheerde instantie biedt momenteel geen ondersteuning voor FileStream en FileTables. Voor werk belastingen die afhankelijk zijn van deze functies, raden we u aan om te kiezen voor SQL-servers die worden uitgevoerd op virtuele Azure-machines als uw Azure-doel.
+    SQL Managed instance biedt momenteel geen ondersteuning voor FileStream en FileTables. Voor werk belastingen die afhankelijk zijn van deze functies, raden we u aan om te kiezen voor SQL-servers die worden uitgevoerd op virtuele Azure-machines als uw Azure-doel.
 
 - **In-Memory tabellen**
 
-    OLTP in het geheugen is beschikbaar in de Premium-en Bedrijfskritiek-laag voor SQL Database beheerde instantie; de laag Algemeen biedt geen ondersteuning voor in-Memory OLTP.
+    OLTP in het geheugen is beschikbaar in de Premium-en Bedrijfskritiek-lagen voor SQL Managed instance; de laag Algemeen biedt geen ondersteuning voor in-Memory OLTP.
 
 ## <a name="migration-resets"></a>Migratie opnieuw instellen
 
 - **Implementaties**
 
-    SQL Database Managed instance is een PaaS-service met automatische patches en versie-updates. Tijdens de migratie van uw SQL Database beheerde exemplaar zijn niet-essentiële updates 36 uur. Daarna (en voor essentiële updates), als de migratie wordt onderbroken, wordt het proces opnieuw ingesteld op een volledige herstel status.
+    SQL Managed instance is een PaaS-service met automatische patches en versie-updates. Tijdens de migratie van uw SQL Managed instance zijn niet-essentiële updates een hulp van Maxi maal 36 uur. Daarna (en voor essentiële updates), als de migratie wordt onderbroken, wordt het proces opnieuw ingesteld op een volledige herstel status.
 
     Migratie cutover kan alleen worden aangeroepen nadat de volledige back-up is hersteld en de back-ups van alle logboeken worden onderschept. Als uw productie migratie cutovers wordt beïnvloed, neemt u contact op met de [Azure DMS-feedback alias](mailto:dmsfeedback@microsoft.com).

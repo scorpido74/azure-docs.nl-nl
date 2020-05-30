@@ -3,12 +3,12 @@ title: Beoordelings hulpprogramma's toevoegen in Azure Migrate
 description: Meer informatie over het toevoegen van beoordelings hulpprogramma's in Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901064"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195634"
 ---
 # <a name="add-assessment-tools"></a>Evaluatiehulpprogramma's toevoegen
 
@@ -23,7 +23,7 @@ In dit artikel wordt beschreven hoe u beoordelings hulpprogramma's toevoegt in [
 2. Selecteer het beoordelings scenario dat u wilt gebruiken:
 
     - Als u machines en werk belastingen wilt detecteren en beoordelen voor migratie naar Azure, selecteert u **servers beoordelen en migreren**.
-    - Als u on-premises SQL-machines wilt beoordelen, selecteert u **data bases evalueren en migreren**.
+    - Als u on-premises SQL Server data bases wilt beoordelen, selecteert u **data bases evalueren en migreren**.
     - Als u on-premises Web-Apps wilt beoordelen, selecteert u **Web-apps evalueren en migreren**.
 
     ![Beoordelings scenario](./media/how-to-assess/assess-scenario.png)

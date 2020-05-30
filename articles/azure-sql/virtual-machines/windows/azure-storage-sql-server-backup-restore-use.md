@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: dc7d1140014b3d8aca327c54139b743e3740f5f6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 16f761c7b9f4b78c252d6acb533ba95a43625f28
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049125"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196658"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage gebruiken voor back-up en herstel
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Vanaf SQL Server 2012 SP1 CU2 kunt u nu rechtstreeks SQL Server back-ups naar de Azure Blob Storage-service schrijven. U kunt deze functie gebruiken om een back-up te maken van en te herstellen vanuit Azure Blob service met een on-premises SQL Server-Data Base of een SQL Server-data base in een virtuele Azure-machine. Back-up naar de Cloud biedt voor delen van Beschik baarheid, onbeperkte geografisch gerepliceerde opslag op locatie en gemakkelijke migratie van gegevens van en naar de Cloud. U kunt een back-up-of Restore-instructie verzenden met behulp van Transact-SQL of SMO.
+Vanaf SQL Server 2012 SP1 CU2 kunt u nu rechtstreeks SQL Server back-ups naar de Azure Blob Storage-service schrijven. U kunt deze functionaliteit gebruiken om een back-up te maken van en te herstellen vanuit Azure Blob service en een SQL Server-Data Base. Back-up naar de Cloud biedt voor delen van Beschik baarheid, onbeperkte geografisch gerepliceerde opslag op locatie en gemakkelijke migratie van gegevens van en naar de Cloud. U kunt een back-up-of Restore-instructie verzenden met behulp van Transact-SQL of SMO.
 
 
 ## <a name="overview"></a>Overzicht
@@ -38,7 +38,7 @@ Er zijn verschillende uitdagingen waarbij u een back-up maakt van SQL Server. De
 * **Back-uparchief**: de Azure Blob Storage-service biedt een beter alternatief voor de vaak gebruikte tape optie voor het archiveren van back-ups. Tape opslag vereist mogelijk fysiek Trans Port naar een off-site faciliteit en metingen om de media te beveiligen. Het opslaan van uw back-ups in Azure Blob Storage biedt een onmiddellijke, Maxi maal beschik bare en duurzame archiverings optie.
 * **Beheerde hardware**: er is geen overhead van hardwarematig beheer met Azure-Services. Azure-Services beheren de hardware en bieden geo-replicatie voor redundantie en bescherming tegen hardwarestoringen.
 * **Onbeperkte opslag**: door een directe back-up naar Azure-blobs in te scha kelen, hebt u toegang tot vrijwel onbeperkte opslag. Als u een back-up wilt maken op een virtuele machine van Azure, zijn er beperkingen ingesteld op basis van de computer grootte. Er is een limiet voor het aantal schijven dat u kunt koppelen aan een virtuele machine van Azure voor back-ups. Deze limiet is 16 schijven voor een extra grote instantie en minder voor kleinere exemplaren.
-* **Beschik baarheid van back-ups**: back-ups die zijn opgeslagen in azure-blobs zijn overal en op elk gewenst moment beschikbaar en kunnen eenvoudig worden teruggezet naar een on-premises SQL Server of een andere SQL Server die wordt uitgevoerd op een virtuele machine van Azure, zonder dat de data base moet worden gekoppeld/losgekoppeld of gedownload en gekoppeld.
+* **Beschik baarheid van back-ups**: back-ups die zijn opgeslagen in azure-blobs, zijn overal en op elk gewenst moment beschikbaar en kunnen eenvoudig worden geopend voor herstel naar een SQL Server-exemplaar, zonder dat de data base moet worden gekoppeld/losgekoppeld of gedownload en de VHD wordt gekoppeld.
 * **Kosten**: Betaal alleen voor de service die wordt gebruikt. Kan rendabel zijn als een off-site-en back-uparchief optie. Zie de [Azure-prijs calculator](https://go.microsoft.com/fwlink/?LinkId=277060 "Prijscalculator")en het [artikel over Azure-prijzen](https://go.microsoft.com/fwlink/?LinkId=277059 "Prijs artikel") voor meer informatie.
 * **Opslag momentopnamen**: wanneer database bestanden worden opgeslagen in een Azure-Blob en u SQL Server 2016 gebruikt, kunt u [back-ups van bestands momentopnamen](https://msdn.microsoft.com/library/mt169363.aspx) gebruiken om bijna momentane back-ups en zeer snelle herstel bewerkingen uit te voeren.
 
@@ -51,7 +51,7 @@ De volgende Azure-onderdelen worden gebruikt bij het maken van een back-up naar 
 
 | Onderdeel | Beschrijving |
 | --- | --- |
-| **Opslagaccount** |Het opslag account is het begin punt voor alle opslag Services. Als u toegang wilt krijgen tot een Azure Blob Storage-service, moet u eerst een Azure Storage account maken. Zie [How to use the azure Blob Storage service](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) (Engelstalig) voor meer informatie over de Azure Blob Storage-service |
+| **Opslag account** |Het opslag account is het begin punt voor alle opslag Services. Als u toegang wilt krijgen tot een Azure Blob Storage-service, moet u eerst een Azure Storage account maken. Zie [How to use the azure Blob Storage service](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) (Engelstalig) voor meer informatie over de Azure Blob Storage-service |
 | **Verpakking** |Een container biedt een groepering van een set blobs en kan een onbeperkt aantal blobs bevatten. Als u een SQL Server back-up naar een Azure-Blob service wilt schrijven, moet u ten minste de basis container hebben gemaakt. |
 | **Blobcache** |Een bestand van elk type en elke grootte. Blobs zijn adresseerbaar met behulp van de volgende URL-indeling: **https://[Storage account]. blob. core. Windows. net/[container]/[BLOB]**. Zie [Wat zijn blok-en pagina-blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) ? voor meer informatie over pagina-blobs. |
 

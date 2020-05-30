@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 6aef6ea5881bbde8eb1c9287eafd3ebdc0f1d18e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044022"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188801"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL Data Sync bewaken met Azure Monitor-logboeken 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -203,7 +203,7 @@ Zie de volgende onderwerpen voor meer informatie over SQL Data Sync:
 
 -   Overzicht: [gegevens synchroniseren tussen meerdere Cloud-en on-premises data bases met SQL Data Sync in azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Data Sync instellen
-    - In de portal: [Zelfstudie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL Database en SQL Server on-premises](sql-data-sync-sql-server-configure.md)
+    - In de portal- [zelf studie: SQL Data Sync instellen om gegevens te synchroniseren tussen Azure SQL database en SQL Server](sql-data-sync-sql-server-configure.md)
     - Met PowerShell
         -  [Power shell gebruiken om te synchroniseren tussen meerdere data bases in Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Power shell gebruiken om te synchroniseren tussen een data base in Azure SQL Database en een data base in een SQL Server-exemplaar](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

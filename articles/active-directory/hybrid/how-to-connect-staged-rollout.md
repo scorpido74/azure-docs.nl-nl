@@ -6,20 +6,20 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644152"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221278"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
-Door gebruik te maken van een gefaseerde implementatie kunt u migreren van Federated Authentication naar Cloud authenticatie. In dit artikel wordt beschreven hoe u de switch kunt maken. Voordat u begint met de gefaseerde implementatie, moet u rekening houden met de gevolgen als aan een of meer van de volgende voor waarden wordt voldaan:
+Door gebruik te maken van een gefaseerde implementatie kunt u een cutover van uw hele domein vermijden.  Zo kunt u groepen gebruikers selectief testen met Cloud verificatie mogelijkheden zoals Azure Multi-Factor Authentication (MFA), voorwaardelijke toegang, identiteits beveiliging voor gelekte referenties, identiteits beheer en anderen.  In dit artikel wordt beschreven hoe u de switch kunt maken. Voordat u begint met de gefaseerde implementatie, moet u rekening houden met de gevolgen als aan een of meer van de volgende voor waarden wordt voldaan:
     
 -  U maakt momenteel gebruik van een on-premises Multi-Factor Authentication-Server. 
 -  U gebruikt Smart Cards voor verificatie. 
@@ -38,8 +38,8 @@ Bekijk voor een overzicht van de functie ' Azure Active Directory: wat is gefase
 -   U hebt een Azure Active Directory-Tenant (Azure AD) met federatieve domeinen.
 
 -   U hebt besloten om over te stappen op een van de volgende twee opties:
-    - **Optie A**  -  *synchronisatie van wacht woord-hash (synchronisatie)*  +  *naadloze eenmalige aanmelding (SSO)*
-    - **Optie B**  -  *Pass-Through-verificatie*  +  *naadloze SSO*
+    - **Optie A**  -  *synchronisatie van wacht woord-hash (synchronisatie)*  +  *naadloze eenmalige aanmelding (SSO)*.  Zie [Wat is wachtwoord hash Sync](whatis-phs.md) en [Wat is naadloze SSO](how-to-connect-sso.md) ? voor meer informatie.
+    - **Optie B**  -  *Pass-Through-verificatie*  +  *naadloze SSO*.  Zie [Wat is Pass-Through-verificatie](how-to-connect-pta.md) ? voor meer informatie.  
     
     Hoewel *naadloze SSO* optioneel is, wordt u aangeraden om deze functie in te scha kelen voor gebruikers die computers die lid zijn van een domein in een bedrijfs netwerk.
 
@@ -76,12 +76,14 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
     - Dynamische groepen worden *niet ondersteund* voor gefaseerde implementatie.
     - Met de objecten in de groep wordt de groep geblokkeerd, zodat deze niet meer kan worden toegevoegd.
 
-- U moet nog steeds de uiteindelijke cutover van federatieve naar Cloud authenticatie maken met behulp van Azure AD Connect of Power shell. Gefaseerde implementatie verwisselt geen domeinen van federatieve naar beheerd.
+- U moet nog steeds de uiteindelijke cutover van federatieve naar Cloud authenticatie maken met behulp van Azure AD Connect of Power shell. Gefaseerde implementatie verwisselt geen domeinen van federatieve naar beheerd.  Zie voor meer informatie over Domain cutover [migreren van Federatie naar wacht woord hash-synchronisatie](plan-migrate-adfs-password-hash-sync.md) en [migreren van Federatie naar Pass-Through-verificatie](plan-migrate-adfs-pass-through-authentication.md)
+
+
 
 - Wanneer u voor het eerst een beveiligings groep voor gefaseerde implementatie toevoegt, bent u beperkt tot 200 gebruikers om een UX-time-out te voor komen. Nadat u de groep hebt toegevoegd, kunt u, indien nodig, meer gebruikers toevoegen.
 
 >[!NOTE]
-> Omdat getenantde eind punten geen aanmeldings hints verzenden, worden ze niet ondersteund voor gefaseerde implementatie.  SAML-toepassingen gebruiken de getenantde eind punten en worden ook niet ondersteund voor gefaseerde implementatie.
+> Omdat getenantde eind punten geen aanmeldings hints verzenden, worden ze niet ondersteund voor gefaseerde implementatie. 
 
 ## <a name="get-started-with-staged-rollout"></a>Aan de slag met gefaseerde implementatie
 

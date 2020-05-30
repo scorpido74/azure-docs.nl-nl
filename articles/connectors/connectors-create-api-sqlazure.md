@@ -7,16 +7,16 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020724"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191475"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
-In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [on-premises SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als voor in de [cloud gebaseerde Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+In dit artikel wordt beschreven hoe u toegang kunt krijgen tot gegevens in uw SQL database vanuit een logische app met de SQL Server-connector. Op die manier kunt u taken, processen of werk stromen automatiseren die uw SQL-gegevens en-resources beheren door logische apps te maken. De SQL Server-connector werkt zowel voor [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) als [Azure SQL database](../azure-sql/database/sql-database-paas-overview.md) en [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
 
 U kunt logische apps maken die worden uitgevoerd wanneer deze worden geactiveerd door gebeurtenissen in uw SQL database of in andere systemen, zoals Dynamics CRM Online. Uw Logic apps kunnen ook gegevens ophalen, invoegen en verwijderen, samen met het uitvoeren van SQL-query's en opgeslagen procedures. U kunt bijvoorbeeld een logische app maken die automatisch controleert op nieuwe records in Dynamics CRM Online, items toevoegt aan uw SQL database voor nieuwe records en vervolgens e-mail waarschuwingen over de toegevoegde items verzendt.
 

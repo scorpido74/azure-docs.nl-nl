@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982202"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195980"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway
 > [!NOTE]
@@ -47,7 +47,7 @@ Voordat u met deze procedure begint, moet u beschikken over de volgende vereiste
 
 * **Azure-abonnement**.  Als u geen abonnement hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Raadpleeg het artikel over de [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
 * **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **doel/Sink-** gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
-* **SQL Server**. In deze zelfstudie gebruikt u een on-premises SQL Server-database als een **brongegevensopslag**.
+* **SQL Server**. In deze zelf studie gebruikt u een SQL Server-Data Base als een **brongegevens** opslag.
 
 ## <a name="create-data-factory"></a>Een gegevensfactory maken
 In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te maken met de naam **ADFTutorialOnPremDF**.
@@ -138,7 +138,7 @@ In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te m
    * Het certificaat weer geven of exporteren dat door de gateway wordt gebruikt.
    * Wijzig het HTTPS-eind punt dat wordt gebruikt door de gateway.    
    * Stel een HTTP-proxy in die door de gateway moet worden gebruikt.     
-9. Beschrijving Schakel over naar het tabblad **Diagnostische gegevens** en schakel de optie **uitgebreide logboek registratie inschakelen** in als u uitgebreide logboek registratie wilt inschakelen die u kunt gebruiken om problemen met de gateway op te lossen. De informatie over logboek registratie vindt u in **Logboeken** onder **Logboeken** -> toepassingen en services**Data Management Gateway** knoop punt.
+9. Beschrijving Schakel over naar het tabblad **Diagnostische gegevens** en schakel de optie **uitgebreide logboek registratie inschakelen** in als u uitgebreide logboek registratie wilt inschakelen die u kunt gebruiken om problemen met de gateway op te lossen. De informatie over logboek registratie vindt u in **Logboeken** onder **Logboeken toepassingen en services**  ->  **Data Management Gateway** knoop punt.
 
     ![Tabblad Diagnostische gegevens](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -152,9 +152,9 @@ In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te m
 12. U ziet **adftutorialgateway** onder **gegevens gateways** in de structuur weergave aan de linkerkant.  Als u erop klikt, wordt de bijbehorende JSON weer geven.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
-In deze stap maakt u twee gekoppelde services: **AzureStorageLinkedService** en **SqlServerLinkedService**. De **SqlServerLinkedService** koppelt een on-premises SQL Server Data Base en de gekoppelde **AzureStorageLinkedService** -service koppelt een Azure blob Store aan de Data Factory. U maakt later in dit overzicht een pijp lijn waarmee gegevens worden gekopieerd van de on-premises SQL Server Data Base naar de Azure Blob Store.
+In deze stap maakt u twee gekoppelde services: **AzureStorageLinkedService** en **SqlServerLinkedService**. De **SqlServerLinkedService** koppelt een SQL Server-Data Base en de gekoppelde **AzureStorageLinkedService** -service koppelt een Azure blob Store aan de Data Factory. U maakt later in dit overzicht een pijp lijn waarmee gegevens worden gekopieerd van de SQL Server Data Base naar de Azure Blob Store.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Een gekoppelde service toevoegen aan een on-premises SQL Server-Data Base
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>Een gekoppelde service toevoegen aan een SQL Server-Data Base
 1. Klik in de **Data Factory editor**op **Nieuw gegevens archief** op de werk balk en selecteer **SQL Server**.
 
    ![Nieuwe gekoppelde SQL Server-service](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ In deze stap maakt u invoer- en uitvoergegevenssets die invoer- en uitvoergegeve
 * Maak een blobcontainer met de naam **adftutorial** in het Azure Blob-opslagaccount dat u als gekoppelde service hebt toegevoegd aan de gegevensfactory.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>On-premises SQL Server voorbereiden voor de zelf studie
-1. Gebruik in de database die u hebt opgegeven voor de met de on-premises SQL-server gekoppelde service, (**SqlServerLinkedService**) het volgende SQL-script om de tabel **emp** te maken in de database.
+1. Gebruik in de data base die u hebt opgegeven voor de SQL Server gekoppelde service (**SqlServerLinkedService**) het volgende SQL-script om de **EMP** -tabel in de data base te maken.
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -359,7 +359,7 @@ In deze stap maakt u een **pijp lijn** met een **Kopieer activiteit** die gebrui
    * In de sectie activiteiten is er alleen activiteit waarvan het **type** is ingesteld op **kopiëren**.
    * De **invoer** voor de activiteit is ingesteld op **EmpOnPremSQLTable** en de **uitvoer** voor de activiteit is ingesteld op **OutputBlobTable**.
    * In de sectie **typeProperties** is **SqlSource** opgegeven als **bron type** en **BlobSink** is opgegeven als het sink- **type**.
-   * SQL- `select * from emp` query is opgegeven voor de eigenschap **sqlReaderQuery** van **SqlSource**.
+   * SQL-query `select * from emp` is opgegeven voor de eigenschap **SqlReaderQuery** van **SqlSource**.
 
    Zowel de begin- als einddatum en -tijd moeten de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601) hebben. Bijvoorbeeld: 2014-10-14T16:32:41Z. De **eindtijd** is optioneel, maar we gebruiken hem in deze zelfstudie.
 
@@ -371,7 +371,7 @@ In deze stap maakt u een **pijp lijn** met een **Kopieer activiteit** die gebrui
 3. Klik op **implementeren** op de opdracht balk om de gegevensset te implementeren (tabel is een rechthoekige gegevensset). Controleer of de pijp lijn wordt weer gegeven in de structuur weergave onder het knoop punt **pijp lijnen** .  
 4. Klik nu op **X** twee keer om de pagina te sluiten om terug te gaan naar de **Data Factory** -pagina voor de **ADFTutorialOnPremDF**.
 
-**Voltooid!** U hebt een Azure data factory, gekoppelde services, gegevens sets en een pijp lijn gemaakt en de pijp lijn gepland.
+**Gefeliciteerd** U hebt een Azure data factory, gekoppelde services, gegevens sets en een pijp lijn gemaakt en de pijp lijn gepland.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>De gegevensfactory weergeven in een diagramweergave
 1. Klik in de **Azure Portal**op **diagram** tegel op de start pagina van de **ADFTutorialOnPremDF** -Data Factory. :

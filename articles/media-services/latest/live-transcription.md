@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Meer informatie over Azure Media Services Live transcriptie.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: juliako
-ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: inhenkel
+ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499871"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193614"
 ---
 # <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
 
@@ -41,54 +41,113 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 De bewerking heeft de volgende hoofd tekst (waarbij een Pass-through live-gebeurtenis wordt gemaakt met RTMP als het opname Protocol). Let op de toevoeging van een eigenschap transcripties. De enige toegestane waarde voor de taal en-US.
 
 ```
-{ 
-  "properties": { 
-    "description": "Demonstrate how to enable live transcriptions", 
-    "input": { 
-      "streamingProtocol": "RTMP", 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "preview": { 
-      "accessControl": { 
-        "ip": { 
-          "allow": [ 
-            { 
-              "name": "Allow All", 
-              "address": "0.0.0.0", 
-              "subnetPrefixLength": 0 
-            } 
-          ] 
-        } 
-      } 
-    }, 
-    "encoding": { 
-      "encodingType": "None" 
-    }, 
-    "transcriptions": [ 
-      { 
-        "language": "en-US" 
-      } 
-    ], 
-    "vanityUrl": false, 
-    "streamOptions": [ 
-      "Default" 
-    ] 
-  }, 
-  "location": "West US 2" 
-} 
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions",
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
 ```
 
 U kunt de status van de live-gebeurtenis navragen totdat deze wordt uitgevoerd in de status ' running ', wat aangeeft dat u nu een Contribute-bijdrage-feed verzendt. U kunt nu dezelfde stappen volgen als in deze zelf studie, zoals het controleren van de preview-feed en het maken van live uitvoer.
+
+## <a name="start-transcription-after-live-event-has-started"></a>Transcriptie starten na starten van live gebeurtenis
+
+Live transcriptie kan worden gestart nadat een live gebeurtenis is gestart. Als u live transcripties wilt inschakelen, patcht u de live-gebeurtenis om de eigenschap ' transcripties ' op te slaan. Als u live-transcripties wilt uitschakelen, wordt de eigenschap ' transcripties ' verwijderd uit het Live Event-object.
+
+> [!NOTE]
+> Het is niet mogelijk om de transcriptie in of uit te scha kelen tijdens de live-gebeurtenis.
+
+Dit is de voor beeld-oproep om live-transcripties in te scha kelen.
+
+VERZENDEN```https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview```
+
+```
+{
+  "properties": {
+    "description": "Demonstrate how to enable live transcriptions", 
+    "input": {
+      "streamingProtocol": "RTMP",
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "preview": {
+      "accessControl": {
+        "ip": {
+          "allow": [
+            {
+              "name": "Allow All",
+              "address": "0.0.0.0",
+              "subnetPrefixLength": 0
+            }
+          ]
+        }
+      }
+    },
+    "encoding": {
+      "encodingType": "None"
+    },
+    "transcriptions": [
+      {
+        "language": "en-US"
+      }
+    ],
+    "vanityUrl": false,
+    "streamOptions": [
+      "Default"
+    ]
+  },
+  "location": "West US 2"
+}
+```
 
 ## <a name="transcription-delivery-and-playback"></a>Transcriptiee levering en afspelen
 

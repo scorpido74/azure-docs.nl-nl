@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649104"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196254"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Veelvoorkomende problemen met Azure Database Migration Service oplossen
 
@@ -32,7 +32,7 @@ Wanneer u nieuwe activiteiten in een Azure Database Migration Service project ma
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Maximum aantal data bases dat is geselecteerd voor migratie
 
-De volgende fout treedt op bij het maken van een activiteit voor een database migratie project voor het verplaatsen naar Azure SQL Database of een Azure SQL Database beheerd exemplaar:
+De volgende fout treedt op bij het maken van een activiteit voor een database migratie project voor het verplaatsen naar Azure SQL Database of een door Azure SQL beheerd exemplaar:
 
 * **Fout**: validatie fout van de migratie-instellingen "," errorDetail ":" er is meer dan het maximum aantal ' 4 ' objecten van data bases geselecteerd voor migratie. "
 
@@ -58,7 +58,7 @@ U ontvangt de volgende fout bij het stoppen van het Azure Database Migration Ser
 
 | Oorzaak         | Oplossing |
 | ------------- | ------------- |
-| Deze fout wordt weer gegeven wanneer het service-exemplaar dat u probeert te stoppen, activiteiten bevat die nog in de migratie projecten worden uitgevoerd of aanwezig zijn. <br><br><br><br><br><br> | Zorg ervoor dat er geen activiteiten worden uitgevoerd in het exemplaar van Azure Database Migration Service dat u probeert te stoppen. U kunt ook de activiteiten of projecten verwijderen voordat u probeert de service te stoppen. De volgende stappen laten zien hoe u projecten kunt verwijderen om het migratie service-exemplaar op te schonen door alle actieve taken te verwijderen:<br>1. install-module-name AzureRM. DataMigration <br>2. login-AzureRmAccount <br>3. Select-AzureRmSubscription-Subscriptionname "\<subname>" <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName>-ResourceGroupName \<rgName>-service naam \<ServiceName>-DeleteRunningTask |
+| Deze fout wordt weer gegeven wanneer het service-exemplaar dat u probeert te stoppen, activiteiten bevat die nog in de migratie projecten worden uitgevoerd of aanwezig zijn. <br><br><br><br><br><br> | Zorg ervoor dat er geen activiteiten worden uitgevoerd in het exemplaar van Azure Database Migration Service dat u probeert te stoppen. U kunt ook de activiteiten of projecten verwijderen voordat u probeert de service te stoppen. De volgende stappen laten zien hoe u projecten kunt verwijderen om het migratie service-exemplaar op te schonen door alle actieve taken te verwijderen:<br>1. install-module-name AzureRM. DataMigration <br>2. login-AzureRmAccount <br>3. Select-AzureRmSubscription-Subscriptionname " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Fout bij het starten van Azure Database Migration Service
 
@@ -72,13 +72,13 @@ U ontvangt de volgende fout bij het starten van het Azure Database Migration Ser
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Fout bij het herstellen van de data base tijdens het migreren van SQL naar Azure SQL data base Managed instance
 
-Wanneer u een online migratie uitvoert van SQL Server naar een Azure SQL Database beheerd exemplaar, mislukt de cutover met de volgende fout:
+Wanneer u een online migratie uitvoert van SQL Server naar een beheerd exemplaar van Azure SQL, mislukt de cutover met de volgende fout:
 
 * **Fout**: de herstel bewerking is mislukt voor de bewerkings-id ' operationId '. Code ' AuthorizationFailed ', Message ' de client ' clientId ' met object-id ' objectId ' heeft geen machtiging om de actie ' micro soft. SQL/locations/managedDatabaseRestoreAzureAsyncOperation/read ' over scope '/subscriptions/subscriptionId ' uit te voeren.
 
 | Oorzaak         | Oplossing    |
 | ------------- | ------------- |
-| Deze fout geeft aan dat de toepassings-principal die wordt gebruikt voor online migratie van SQL Server naar een Azure SQL Database beheerde instantie geen bijdrage rechten heeft voor het abonnement. Voor bepaalde API-aanroepen met het beheerde exemplaar is deze machtiging vereist voor de herstel bewerking. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Gebruik de `Get-AzureADServicePrincipal` Power shell- `-ObjectId` cmdlet die beschikbaar is in het fout bericht om een lijst weer te geven met de weergave naam van de toepassings-id die wordt gebruikt.<br><br> Valideer de machtigingen voor deze toepassing en controleer of deze de [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) heeft op het abonnements niveau. <br><br> Het Azure Database Migration Service engineering team is bezig om de vereiste toegang te beperken voor de huidige Contribute-rol bij het abonnement. Als u een zakelijke vereiste hebt die het gebruik van een Contribute-functie niet toestaat, neemt u contact op met de ondersteuning van Azure voor meer informatie. |
+| Deze fout geeft aan dat de toepassings-principal die wordt gebruikt voor online migratie van SQL Server naar SQL Managed instance geen Contribute-machtiging heeft voor het abonnement. Voor bepaalde API-aanroepen met het beheerde exemplaar is deze machtiging vereist voor de herstel bewerking. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Gebruik de `Get-AzureADServicePrincipal` Power shell-cmdlet die `-ObjectId` beschikbaar is in het fout bericht om een lijst weer te geven met de weergave naam van de toepassings-id die wordt gebruikt.<br><br> Valideer de machtigingen voor deze toepassing en controleer of deze de [rol Inzender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) heeft op het abonnements niveau. <br><br> Het Azure Database Migration Service engineering team is bezig om de vereiste toegang te beperken voor de huidige Contribute-rol bij het abonnement. Als u een zakelijke vereiste hebt die het gebruik van een Contribute-functie niet toestaat, neemt u contact op met de ondersteuning van Azure voor meer informatie. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Fout bij het verwijderen van de NIC die is gekoppeld aan Azure Database Migration Service
 

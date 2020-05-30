@@ -1,6 +1,6 @@
 ---
 title: Gegevens verplaatsen naar een SQL Server virtuele machine-team data Science process
-description: Verplaats gegevens van platte bestanden of van een on-premises SQL Server naar SQL Server op Azure VM.
+description: Verplaats gegevens van platte bestanden of van on-premises SQL Server naar SQL Server op Azure VM.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022432"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194375"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
 
@@ -185,7 +185,7 @@ Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQ
 2. Maak de data base en de tabel op SQL Server VM in azure met behulp van de `create database` en `create table` voor het tabel schema dat u in stap 1 hebt geëxporteerd.
 3. Maak een indelings bestand voor het beschrijven van het tabel schema van de gegevens die worden geëxporteerd/geïmporteerd. Details van het indelings bestand worden beschreven in [een indelings bestand maken (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
-    Het genereren van bestanden opmaken bij het uitvoeren van BCP vanaf de SQL Server machine
+    Het genereren van bestanden opmaken bij het uitvoeren van BCP vanaf de SQL Server computer
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
@@ -203,7 +203,7 @@ Verschillende methoden kunnen worden gebruikt om gegevens van een on-premises SQ
 SQL Server ondersteunt:
 
 1. [Data Base back-up en herstel](https://msdn.microsoft.com/library/ms187048.aspx) (zowel naar een lokaal bestand of Bacpac exporteren naar blob) als [gegevenslaag toepassingen](https://msdn.microsoft.com/library/ee210546.aspx) (met behulp van Bacpac).
-2. De mogelijkheid om rechtstreeks SQL Server Vm's in azure te maken met een gekopieerde data base of een kopie naar een bestaande SQL Azure-data base. Zie [de wizard Data Base kopiëren gebruiken](https://msdn.microsoft.com/library/ms188664.aspx)voor meer informatie.
+2. De mogelijkheid om rechtstreeks SQL Server Vm's in azure te maken met een gekopieerde data base of een kopie te kopiëren naar een bestaande data base in SQL Database. Zie [de wizard Data Base kopiëren gebruiken](https://msdn.microsoft.com/library/ms188664.aspx)voor meer informatie.
 
 Hieronder ziet u een scherm opname van de opties data base back-up/herstellen van SQL Server Management Studio.
 

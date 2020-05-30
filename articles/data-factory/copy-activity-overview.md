@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 2557ce7be44f0505b96df06cd2b44a2fa3ce3fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414221"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187670"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
@@ -55,7 +55,7 @@ Als u gegevens wilt kopiëren van een bron naar een sink, voert de service die d
 
 U kunt de Kopieer activiteit gebruiken om bestanden te kopiëren tussen twee op bestanden gebaseerde gegevens archieven. in dat geval worden de gegevens efficiënt gekopieerd zonder serialisatie of deserialisatie. Daarnaast kunt u ook bestanden van een bepaalde indeling parseren of genereren. u kunt bijvoorbeeld het volgende doen:
 
-* Gegevens kopiëren van een on-premises SQL Server Data Base en schrijven naar Azure Data Lake Storage Gen2 in de Parquet-indeling.
+* Gegevens uit een SQL Server-Data Base kopiëren en schrijven naar Azure Data Lake Storage Gen2 in de Parquet-indeling.
 * Kopieer bestanden in de tekst indeling (CSV) van een on-premises bestands systeem en schrijf naar Azure Blob-opslag in de Avro-indeling.
 * Kopieer gezipte bestanden van een on-premises bestands systeem, Decomprimeer ze op de vlucht en schrijf uitgepakte bestanden naar Azure Data Lake Storage Gen2.
 * Kopieer gegevens in de indeling van de tekst in het type gzip (gecomprimeerd) in de vorm van Azure Blob-opslag en schrijf deze naar Azure SQL Database.
@@ -129,18 +129,18 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 
 | Eigenschap | Beschrijving | Vereist? |
 |:--- |:--- |:--- |
-| type | Stel voor een Kopieer activiteit in op`Copy` | Ja |
-| invoer | Geef de gegevensset op die u hebt gemaakt die verwijst naar de bron gegevens. De Kopieer activiteit ondersteunt slechts één invoer. | Ja |
-| uitvoer | Geef de gegevensset op die u hebt gemaakt die verwijst naar de Sink-gegevens. De Kopieer activiteit ondersteunt slechts één uitvoer. | Ja |
-| typeProperties | Geef eigenschappen op voor het configureren van de Kopieer activiteit. | Ja |
-| source | Geef het type Kopieer bron en de bijbehorende eigenschappen op om gegevens op te halen.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
-| tenen | Geef het sink-type voor het kopiëren en de bijbehorende eigenschappen op voor het schrijven van gegevens.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
-| vertalen | Geef expliciete kolom toewijzingen op van de bron naar de sink. Deze eigenschap is van toepassing wanneer het standaard gedrag voor kopiëren niet aan uw behoeften voldoet.<br/>Zie [schema toewijzing in de Kopieer activiteit](copy-activity-schema-and-type-mapping.md)voor meer informatie. | Nee |
-| dataIntegrationUnits | Geef een meting op die staat voor de hoeveelheid kracht die de [Azure Integration runtime](concepts-integration-runtime.md) gebruikt voor het kopiëren van gegevens. Deze eenheden waren voorheen bekend als DMU (Cloud data units). <br/>Zie [gegevens integratie-eenheden](copy-activity-performance-features.md#data-integration-units)voor meer informatie. | Nee |
-| parallelCopies | Geef de parallelle factor op die de Kopieer activiteit moet gebruiken bij het lezen van gegevens van de bron en het schrijven van gegevens naar de sink.<br/>Zie [parallelle kopie](copy-activity-performance-features.md#parallel-copy)voor meer informatie. | Nee |
-| doordat | Opgeven of meta gegevens/Acl's tijdens het kopiëren van de gegevens moeten worden bewaard. <br/>Zie [meta gegevens behouden](copy-activity-preserve-metadata.md)voor meer informatie. |Nee |
-| enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance-features.md#staged-copy). | Nee |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
+| type | Stel voor een Kopieer activiteit in op`Copy` | Yes |
+| invoer | Geef de gegevensset op die u hebt gemaakt die verwijst naar de bron gegevens. De Kopieer activiteit ondersteunt slechts één invoer. | Yes |
+| uitvoer | Geef de gegevensset op die u hebt gemaakt die verwijst naar de Sink-gegevens. De Kopieer activiteit ondersteunt slechts één uitvoer. | Yes |
+| typeProperties | Geef eigenschappen op voor het configureren van de Kopieer activiteit. | Yes |
+| source | Geef het type Kopieer bron en de bijbehorende eigenschappen op om gegevens op te halen.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Yes |
+| tenen | Geef het sink-type voor het kopiëren en de bijbehorende eigenschappen op voor het schrijven van gegevens.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Yes |
+| vertalen | Geef expliciete kolom toewijzingen op van de bron naar de sink. Deze eigenschap is van toepassing wanneer het standaard gedrag voor kopiëren niet aan uw behoeften voldoet.<br/>Zie [schema toewijzing in de Kopieer activiteit](copy-activity-schema-and-type-mapping.md)voor meer informatie. | No |
+| dataIntegrationUnits | Geef een meting op die staat voor de hoeveelheid kracht die de [Azure Integration runtime](concepts-integration-runtime.md) gebruikt voor het kopiëren van gegevens. Deze eenheden waren voorheen bekend als DMU (Cloud data units). <br/>Zie [gegevens integratie-eenheden](copy-activity-performance-features.md#data-integration-units)voor meer informatie. | No |
+| parallelCopies | Geef de parallelle factor op die de Kopieer activiteit moet gebruiken bij het lezen van gegevens van de bron en het schrijven van gegevens naar de sink.<br/>Zie [parallelle kopie](copy-activity-performance-features.md#parallel-copy)voor meer informatie. | No |
+| doordat | Opgeven of meta gegevens/Acl's tijdens het kopiëren van de gegevens moeten worden bewaard. <br/>Zie [meta gegevens behouden](copy-activity-preserve-metadata.md)voor meer informatie. |No |
+| enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance-features.md#staged-copy). | No |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | No |
 
 ## <a name="monitoring"></a>Bewaking
 
@@ -196,13 +196,13 @@ U vindt de volgende configuratie op het tabblad Bron van Kopieer activiteit:
 >[!TIP]
 >Deze functie werkt met het meest recente gegevensset-model. Als deze optie niet wordt weer geven in de gebruikers interface, kunt u een nieuwe gegevensset maken.
 
-Als u het programma wilt configureren, voegt `additionalColumns` u de eigenschap toe aan de bron van de Kopieer activiteit:
+Als u het programma wilt configureren, voegt u de eigenschap toe aan de `additionalColumns` bron van de Kopieer activiteit:
 
 | Eigenschap | Beschrijving | Vereist |
 | --- | --- | --- |
-| additionalColumns | Voeg aanvullende gegevens kolommen toe om te kopiëren naar sink.<br><br>Elk object onder de `additionalColumns` matrix vertegenwoordigt een extra kolom. `name` Hiermee wordt de naam van de kolom gedefinieerd `value` en wordt de waarde van de gegevens van die kolom aangegeven.<br><br>Toegestane gegevens waarden zijn:<br>- **`$$FILEPATH`**-een gereserveerde variabele geeft aan dat het relatieve pad van de bron bestanden moet worden opgeslagen in het mappad dat is opgegeven in de gegevensset. Toep assen op de bron op basis van een bestand.<br>- **Expressie**<br>- **Statische waarde** | Nee |
+| additionalColumns | Voeg aanvullende gegevens kolommen toe om te kopiëren naar sink.<br><br>Elk object onder de `additionalColumns` matrix vertegenwoordigt een extra kolom. `name`Hiermee wordt de naam van de kolom gedefinieerd en `value` wordt de waarde van de gegevens van die kolom aangegeven.<br><br>Toegestane gegevens waarden zijn:<br>- **`$$FILEPATH`**-een gereserveerde variabele geeft aan dat het relatieve pad van de bron bestanden moet worden opgeslagen in het mappad dat is opgegeven in de gegevensset. Toep assen op de bron op basis van een bestand.<br>- **Expressie**<br>- **Statische waarde** | No |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -250,4 +250,4 @@ Bekijk de volgende Quick starts, zelf studies en voor beelden:
 
 - [Gegevens kopiëren van de ene locatie naar een andere locatie in hetzelfde Azure Blob Storage-account](quickstart-create-data-factory-dot-net.md)
 - [Gegevens kopiëren van Azure Blob-opslag naar Azure SQL Database](tutorial-copy-data-dot-net.md)
-- [Gegevens van een on-premises SQL Server Data Base naar Azure kopiëren](tutorial-hybrid-copy-powershell.md)
+- [Gegevens van een SQL Server Data Base naar Azure kopiëren](tutorial-hybrid-copy-powershell.md)

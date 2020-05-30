@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 27336028fb6b141d8ece4d975b7590b3daf875f2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c0b34e17c202cb060773c53aa5775343ade9c2ee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050959"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193777"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migratie van SQL Server-exemplaren naar Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ Op hoog niveau ziet het database migratie proces er als volgt uit:
 
 ## <a name="assess-sql-managed-instance-compatibility"></a>Compatibiliteit met SQL Managed instance evalueren
 
-Bepaal eerst of SQL Managed instance compatibel is met de database vereisten van uw toepassing. SQL Managed instance is ontworpen om eenvoudig lift-en Shift-migratie te bieden voor de meeste bestaande toepassingen die gebruikmaken van SQL Server on-premises of op virtuele machines. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
+Bepaal eerst of SQL Managed instance compatibel is met de database vereisten van uw toepassing. SQL Managed instance is ontworpen om eenvoudig lift-en Shift-migratie te bieden voor de meeste bestaande toepassingen die gebruikmaken van SQL Server. Het kan echter ook voor komen dat u functies of mogelijkheden nodig hebt die nog niet worden ondersteund en dat de kosten voor het implementeren van een tijdelijke oplossing te hoog zijn.
 
 Gebruik [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) om mogelijke compatibiliteits problemen te detecteren die invloed hebben op de database functionaliteit op Azure SQL database. Als er een aantal problemen met de blok kering zijn gerapporteerd, moet u mogelijk rekening houden met een alternatieve optie, zoals [SQL Server op virtuele machines van Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Enkele voorbeelden:
 
@@ -121,7 +121,7 @@ Zie [uw on-premises data base migreren naar een beheerd exemplaar met behulp van
 
 ### <a name="native-restore-from-url"></a>Systeemeigen HERSTEL via URL
 
-Het herstellen van systeem eigen back-ups (. bak-bestanden) die is gemaakt op basis van SQL Server on-premises of [SQL Server op virtual machines](https://azure.microsoft.com/services/virtual-machines/sql-server/), dat beschikbaar is op [Azure Storage](https://azure.microsoft.com/services/storage/), is een van de belangrijkste mogelijkheden van een SQL Managed instance die snelle en eenvoudige database migratie mogelijk maakt.
+HERSTEL van systeem eigen back-ups (. bak-bestanden) die zijn gemaakt van een SQL Server-exemplaar, beschikbaar op [Azure Storage](https://azure.microsoft.com/services/storage/), is een van de belangrijkste mogelijkheden van een SQL Managed instance die snelle en eenvoudige offline database migratie mogelijk maakt.
 
 In het volgende diagram ziet u een overzicht van het proces:
 

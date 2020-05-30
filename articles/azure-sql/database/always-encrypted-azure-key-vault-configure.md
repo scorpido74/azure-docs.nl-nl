@@ -1,6 +1,6 @@
 ---
 title: Always Encrypted configureren met behulp van Azure Key Vault
-description: In deze zelf studie wordt uitgelegd hoe u met de wizard Always Encrypted in SQL Server Management Studio gevoelige gegevens in een Azure SQL Database kunt beveiligen met gegevens versleuteling.
+description: Deze zelf studie laat zien hoe u met behulp van de wizard Always Encrypted in SQL Server Management Studio gevoelige gegevens in een data base in Azure SQL Database kunt beveiligen met gegevens versleuteling.
 keywords: gegevens versleuteling, versleutelings sleutel, Cloud versleuteling
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 8f828d11d5351565c112b7e4b9dccaaef4607056
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2ff3df74c4cf3175fbbec5097a98c51e7f97ac16
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047697"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190507"
 ---
-# <a name="configure-always-encrypted-using-azure-key-vault"></a>Always Encrypted configureren met behulp van Azure Key Vault 
+# <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Always Encrypted configureren met behulp van Azure Key Vault 
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
 
-In dit artikel wordt beschreven hoe u met de [Wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms)gevoelige gegevens voor uw data base beveiligt in Azure SQL database of Azure SQL Managed instance met gegevens versleuteling. Het bevat ook instructies voor het opslaan van elke versleutelings sleutel in Azure Key Vault.
+In dit artikel wordt beschreven hoe u gevoelige gegevens in een data base in Azure SQL Database met gegevens versleuteling kunt beveiligen met behulp van de [wizard always encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms). Het bevat ook instructies voor het opslaan van elke versleutelings sleutel in Azure Key Vault.
 
 Always Encrypted is een technologie voor gegevens versleuteling waarmee u gevoelige gegevens op de server kunt beschermen tijdens het verkeer tussen de client en de server en terwijl de gegevens in gebruik zijn. Always Encrypted zorgt ervoor dat gevoelige gegevens nooit als tekst zonder opmaak in het database systeem worden weer gegeven. Nadat u gegevens versleuteling hebt geconfigureerd, hebben alleen client toepassingen of app-servers die toegang hebben tot de sleutels toegang tot tekst zonder opmaak. Zie [Always encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865.aspx)voor meer informatie.
 
@@ -48,7 +49,7 @@ Volg de stappen in dit artikel en meer informatie over het instellen van Always 
 
 ## <a name="enable-client-application-access"></a>Toegang tot client toepassingen inschakelen
 
-U moet uw client toepassing inschakelen voor toegang tot SQL Database of SQL Managed instance door een Azure Active Directory-toepassing (AAD) in te stellen en de *toepassings-id en-* *sleutel* te kopiëren die u nodig hebt om uw toepassing te verifiëren.
+U moet uw client toepassing inschakelen voor toegang tot uw data base in SQL Database door een Azure Active Directory-toepassing (Azure AD) in te stellen en de *toepassings-id en-* *sleutel* te kopiëren die u nodig hebt om uw toepassing te verifiëren.
 
 Als u de *toepassings-id en-* *sleutel*wilt ophalen, volgt u de stappen in [Create a Azure Active Directory-toepassing en service-principal die toegang heeft tot resources](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -88,7 +89,7 @@ Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceG
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
-$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your database in Azure SQL Database below
 $location = '<datacenterLocation>'
 $vaultName = '<vaultName>'
 
@@ -103,12 +104,9 @@ az keyvault set-policy --name $vaultName --key-permissions create, get, list, si
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
-* * *
-
-
 ## <a name="connect-with-ssms"></a>Verbinden met SSMS
 
-Open SQL Server Managed Studio (SSMS) en maak verbinding met de server of worden beheerd met uw data base.
+Open SQL Server Management Studio (SSMS) en maak verbinding met de server of worden beheerd met uw data base.
 
 1. Open SQL Server Management Studio. (Ga naar **verbinding maken**  >  **Data base-engine** om het venster **verbinding maken met server** te openen als dit niet is geopend.)
 

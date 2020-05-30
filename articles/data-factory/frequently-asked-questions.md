@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118355"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187279"
 ---
 # <a name="azure-data-factory-faq"></a>Veelgestelde vragen over Azure Data Factory
 
@@ -87,7 +87,7 @@ Sinds de eerste open bare preview-versie in 2017, heeft Data Factory de volgende
 -    Elastische pool
 -    Ondersteuning voor een Azure Resource Manager virtueel netwerk boven op een klassiek virtueel netwerk dat u in de toekomst kunt verouderd, waarmee u uw Azure SSIS Integration runtime kunt injecteren/samen voegen met een virtueel netwerk dat is geconfigureerd voor SQL Database met virtuele netwerk service-eind punten/storing/on-premises gegevens toegang. Zie ook [een Azure SSIS Integration runtime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md)voor meer informatie.
 -    Ondersteuning voor Azure Active Directory (Azure AD)-verificatie en SQL-verificatie om verbinding te maken met de SSISDB, zodat Azure AD-verificatie mogelijk is met uw Data Factory beheerde identiteit voor Azure-resources
--    Ondersteuning voor het inbrengen van uw eigen on-premises SQL Server licentie om aanzienlijke kosten besparingen te verdienen via de Azure Hybrid Benefit optie
+-    Ondersteuning voor het meebrengen van uw bestaande SQL Server-licentie om aanzienlijke kosten besparingen te verdienen via de Azure Hybrid Benefit optie
 -    Ondersteuning voor Enter prise Edition van de Azure-SSIS Integration runtime waarmee u geavanceerde/Premium-functies, een aangepaste installatie-interface kunt gebruiken om extra onderdelen/uitbrei dingen en een partner ecosysteem te installeren. Zie ook [Enter prise Edition, Custom Setup en uitbreid baarheid van derden voor SSIS in ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/)voor meer informatie. 
 -    Een diep gaande integratie van SSIS in Data Factory waarmee u eersteklas pakket activiteiten voor het uitvoeren van de eerste klasse kunt aanroepen/activeren in Data Factory pijp lijnen en deze plannen via SSMS. Zie ook [uw ETL/ELT-werk stromen moderniseren en uitbreiden met SSIS-activiteiten in ADF-pijp lijnen](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)voor meer informatie.
 
@@ -126,7 +126,7 @@ Gekoppelde services zijn te vergelijken met verbindingsreeksen, die de verbindin
 
 Gekoppelde services hebben twee doelen in Data Factory:
 
-- Voor het vertegenwoordigen van een *gegevens archief* met, maar niet beperkt tot, een on-premises SQL Server exemplaar, een Oracle data base-exemplaar, een bestands share of een Azure Blob Storage-account. Zie [activiteit kopiëren in azure Data Factory](copy-activity-overview.md)voor een lijst met ondersteunde gegevens archieven.
+- Voor het vertegenwoordigen van een *gegevens archief* met, maar niet beperkt tot, een SQL Server exemplaar, een Oracle data base-exemplaar, een bestands share of een Azure Blob Storage-account. Zie [activiteit kopiëren in azure Data Factory](copy-activity-overview.md)voor een lijst met ondersteunde gegevens archieven.
 - Om een *Compute-resource* voor te stellen die de uitvoering van een activiteit kan hosten. De HDInsight Hive-activiteit wordt bijvoorbeeld uitgevoerd op een HDInsight Hadoop-cluster. Zie [gegevens transformeren in azure Data Factory](transform-data.md)voor een lijst met transformatie activiteiten en ondersteunde reken omgevingen.
 
 ### <a name="triggers"></a>Triggers

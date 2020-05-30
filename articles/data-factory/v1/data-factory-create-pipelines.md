@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1642c90f0a345bdaf5dd69ddb6c0e26c34faba91
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281520"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196009"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pijp lijnen en activiteiten in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -34,7 +34,7 @@ Met behulp van dit artikel krijgt u inzicht in de pijplijnen en activiteiten in 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Overzicht
-Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van een on-premises SQL Server naar Azure Blob Storage te kopiëren. Vervolgens kunt u een Hive-activiteit gebruiken waarmee een Hive-script op een Azure HDInsight-cluster wordt uitgevoerd om gegevens uit Blob Storage te verwerken/transformeren en uitvoergegevens te produceren. Gebruik tot slot een tweede kopieeractiviteit voor het kopiëren van de uitvoergegevens naar een Azure SQL Data Warehouse waarop rapportageoplossingen voor business intelligence (BI) zijn gebouwd.
+Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van een SQL Server-Data Base naar een Azure-Blob Storage. Vervolgens kunt u een Hive-activiteit gebruiken waarmee een Hive-script op een Azure HDInsight-cluster wordt uitgevoerd om gegevens uit Blob Storage te verwerken/transformeren en uitvoergegevens te produceren. Gebruik tot slot een tweede kopieeractiviteit voor het kopiëren van de uitvoergegevens naar een Azure SQL Data Warehouse waarop rapportageoplossingen voor business intelligence (BI) zijn gebouwd.
 
 Een activiteit kan nul of meer [invoergegevenssets](data-factory-create-datasets.md) hebben en een of meer [uitvoergegevenssets](data-factory-create-datasets.md) produceren. Het volgende diagram toont de relatie tussen de pijplijn, activiteit en gegevensset in Data Factory:
 
@@ -94,15 +94,15 @@ We gaan dieper in op hoe een pijplijn wordt gedefinieerd in JSON-indeling. De al
 
 | Label | Beschrijving | Vereist |
 | --- | --- | --- |
-| name |Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken\_()</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ',\*' ', '% ', ' & ', ': ',\\' '</li></ul> |Ja |
-| description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. |Ja |
-| activities | De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Zie de volgende sectie voor meer informatie over het JSON-element activities. | Ja |
-| start | De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: `2016-10-14T16:32:41Z`. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld `2016-02-27T06:00:00-05:00`: '. Dit is 6 uur EST.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |Nee<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
-| beëindigen | Eind datum-tijd voor de pijp lijn. Indien opgegeven moet de ISO-indeling hebben. Bijvoorbeeld: `2016-10-14T17:32:41Z` <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld `2016-02-27T06:00:00-05:00`:, die 6 am EST is.<br/><br/>Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u 9999-09-09 op als waarde voor de eigenschap end. <br/><br/> Een pijp lijn is alleen actief tussen de begin tijd en eind tijd. Deze wordt niet uitgevoerd vóór de begin tijd of na de eind tijd. Als de pijp lijn is onderbroken, wordt deze niet uitgevoerd, ongeacht de begin-en eind tijd. Om een pijp lijn uit te voeren, mag deze niet worden onderbroken. Zie [planning en uitvoering](data-factory-scheduling-and-execution.md) om inzicht te krijgen in de werking van planning en uitvoering in azure Data Factory. |Nee <br/><br/>Als u een waarde voor de eigenschap Start opgeeft, moet u een waarde voor de eigenschap End opgeven.<br/><br/>Zie opmerkingen voor de eigenschap **Start** . |
-| isPaused | Als deze eigenschap is ingesteld op True, wordt de pijp lijn niet uitgevoerd. De status is onderbroken. Standaard waarde = false. U kunt deze eigenschap gebruiken om een pijp lijn in of uit te scha kelen. |Nee |
-| pipelineMode | De methode voor het plannen van uitvoeringen voor de pijp lijn. Toegestane waarden zijn: gepland (standaard), eenmalige.<br/><br/>' Gepland ' geeft aan dat de pijp lijn wordt uitgevoerd op een opgegeven tijds interval op basis van de actieve periode (begin-en eind tijd). ' Eenmalige ' geeft aan dat de pijp lijn slechts één keer wordt uitgevoerd. Eenmalige-pijp lijnen kunnen op dit moment niet worden gewijzigd of bijgewerkt. Zie [eenmalige-pijp lijn](#onetime-pipeline) voor meer informatie over de instelling van eenmalige. |Nee |
-| expirationTime | De tijds duur na het maken van de [eenmalige pijp lijn](#onetime-pipeline) die geldig is en die moet worden ingericht. Als het geen actieve, mislukte of uitgevoerde uitvoeringen heeft, wordt de pijp lijn automatisch verwijderd zodra de verloop tijd is bereikt. De standaard waarde:`"expirationTime": "3.00:00:00"`|Nee |
-| gegevenssets |Lijst met gegevens sets die moeten worden gebruikt door activiteiten die in de pijp lijn zijn gedefinieerd. Deze eigenschap kan worden gebruikt om gegevens sets te definiëren die specifiek zijn voor deze pijp lijn en die niet zijn gedefinieerd in de data factory. Gegevens sets die in deze pijp lijn zijn gedefinieerd, kunnen alleen worden gebruikt door deze pijp lijn en kunnen niet worden gedeeld. Zie [bereik gegevens sets](data-factory-create-datasets.md#scoped-datasets) voor meer informatie. |Nee |
+| name |Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' \* ', '% ', ' & ', ': ', ' \\ '</li></ul> |Yes |
+| description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. |Yes |
+| activities | De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Zie de volgende sectie voor meer informatie over het JSON-element activities. | Yes |
+| start | De begin datum/-tijd voor de pijp lijn. Moet de [ISO-indeling](https://en.wikipedia.org/wiki/ISO_8601)hebben. Bijvoorbeeld: `2016-10-14T16:32:41Z`. <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00-05:00` '. Dit is 6 uur EST.<br/><br/>Met de eigenschappen Start en end geeft u de actieve periode voor de pijp lijn op. Uitvoer segmenten worden alleen geproduceerd in deze actieve periode. |No<br/><br/>Als u een waarde voor de eigenschap end opgeeft, moet u een waarde voor de eigenschap Start opgeven.<br/><br/>De begin-en eind tijd kunnen beide leeg zijn om een pijp lijn te maken. U moet beide waarden opgeven om een actieve periode in te stellen voor het uitvoeren van de pijp lijn. Als u geen begin-en eind tijden opgeeft bij het maken van een pijp lijn, kunt u ze later instellen met de cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| beëindigen | Eind datum-tijd voor de pijp lijn. Indien opgegeven moet de ISO-indeling hebben. Bijvoorbeeld: `2016-10-14T17:32:41Z` <br/><br/>Het is mogelijk om een lokale tijd op te geven, bijvoorbeeld een EST-tijd. Hier volgt een voor beeld: `2016-02-27T06:00:00-05:00` , die 6 am EST is.<br/><br/>Als u de pijplijn voor onbepaalde tijd wilt uitvoeren, geeft u 9999-09-09 op als waarde voor de eigenschap end. <br/><br/> Een pijp lijn is alleen actief tussen de begin tijd en eind tijd. Deze wordt niet uitgevoerd vóór de begin tijd of na de eind tijd. Als de pijp lijn is onderbroken, wordt deze niet uitgevoerd, ongeacht de begin-en eind tijd. Om een pijp lijn uit te voeren, mag deze niet worden onderbroken. Zie [planning en uitvoering](data-factory-scheduling-and-execution.md) om inzicht te krijgen in de werking van planning en uitvoering in azure Data Factory. |No <br/><br/>Als u een waarde voor de eigenschap Start opgeeft, moet u een waarde voor de eigenschap End opgeven.<br/><br/>Zie opmerkingen voor de eigenschap **Start** . |
+| isPaused | Als deze eigenschap is ingesteld op True, wordt de pijp lijn niet uitgevoerd. De status is onderbroken. Standaard waarde = false. U kunt deze eigenschap gebruiken om een pijp lijn in of uit te scha kelen. |No |
+| pipelineMode | De methode voor het plannen van uitvoeringen voor de pijp lijn. Toegestane waarden zijn: gepland (standaard), eenmalige.<br/><br/>' Gepland ' geeft aan dat de pijp lijn wordt uitgevoerd op een opgegeven tijds interval op basis van de actieve periode (begin-en eind tijd). ' Eenmalige ' geeft aan dat de pijp lijn slechts één keer wordt uitgevoerd. Eenmalige-pijp lijnen kunnen op dit moment niet worden gewijzigd of bijgewerkt. Zie [eenmalige-pijp lijn](#onetime-pipeline) voor meer informatie over de instelling van eenmalige. |No |
+| expirationTime | De tijds duur na het maken van de [eenmalige pijp lijn](#onetime-pipeline) die geldig is en die moet worden ingericht. Als het geen actieve, mislukte of uitgevoerde uitvoeringen heeft, wordt de pijp lijn automatisch verwijderd zodra de verloop tijd is bereikt. De standaard waarde:`"expirationTime": "3.00:00:00"`|No |
+| gegevenssets |Lijst met gegevens sets die moeten worden gebruikt door activiteiten die in de pijp lijn zijn gedefinieerd. Deze eigenschap kan worden gebruikt om gegevens sets te definiëren die specifiek zijn voor deze pijp lijn en die niet zijn gedefinieerd in de data factory. Gegevens sets die in deze pijp lijn zijn gedefinieerd, kunnen alleen worden gebruikt door deze pijp lijn en kunnen niet worden gedeeld. Zie [bereik gegevens sets](data-factory-create-datasets.md#scoped-datasets) voor meer informatie. |No |
 
 ## <a name="activity-json"></a>Activity in JSON
 De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Elke activiteit heeft de volgende structuur op het hoogste niveau:
@@ -132,15 +132,15 @@ De volgende tabel beschrijft de eigenschappen in de JSON-definitie activity:
 
 | Label | Beschrijving | Vereist |
 | --- | --- | --- |
-| name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken\_()</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ',\\' '</li></ul> |Ja |
-| description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt |Ja |
-| type | Type activiteit. Zie de secties [activiteiten voor gegevens verplaatsing](#data-movement-activities) en [activiteiten voor gegevens transformatie](#data-transformation-activities) voor verschillende typen activiteiten. |Ja |
-| invoer |Invoer tabellen die worden gebruikt door de activiteit<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ja |
-| uitvoer |Uitvoer tabellen die worden gebruikt door de activiteit.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ja |
+| name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 260</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ' \\ , ': ', ' '</li></ul> |Yes |
+| description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt |Yes |
+| type | Type activiteit. Zie de secties [activiteiten voor gegevens verplaatsing](#data-movement-activities) en [activiteiten voor gegevens transformatie](#data-transformation-activities) voor verschillende typen activiteiten. |Yes |
+| invoer |Invoer tabellen die worden gebruikt door de activiteit<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Yes |
+| uitvoer |Uitvoer tabellen die worden gebruikt door de activiteit.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Yes |
 | linkedServiceName |De naam van de gekoppelde service die door de activiteit wordt gebruikt. <br/><br/>Een activiteit kan vereisen dat u de gekoppelde service opgeeft die is gekoppeld aan de vereiste rekenomgeving. |Ja voor HDInsight-activiteit en Azure Machine Learning-batch Score activiteit <br/><br/>Nee voor alle andere |
-| typeProperties |De eigenschappen in de sectie **typeProperties** zijn afhankelijk van het type van de activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | Nee |
-| policy |Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Als deze niet is opgegeven, wordt standaard beleid gebruikt. |Nee |
-| scheduler | de eigenschap scheduler wordt gebruikt voor het definiëren van de gewenste planning voor de activiteit. De subeigenschappen zijn hetzelfde als die in de [eigenschap Beschik baarheid in een gegevensset](data-factory-create-datasets.md#dataset-availability). |Nee |
+| typeProperties |De eigenschappen in de sectie **typeProperties** zijn afhankelijk van het type van de activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | No |
+| policy |Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Als deze niet is opgegeven, wordt standaard beleid gebruikt. |No |
+| scheduler | de eigenschap scheduler wordt gebruikt voor het definiëren van de gewenste planning voor de activiteit. De subeigenschappen zijn hetzelfde als die in de [eigenschap Beschik baarheid in een gegevensset](data-factory-create-datasets.md#dataset-availability). |No |
 
 ### <a name="policies"></a>Beleidsregels
 Beleids regels zijn van invloed op het runtime gedrag van een activiteit, in het bijzonder wanneer het segment van een tabel wordt verwerkt. De volgende tabel bevat de details.
@@ -261,7 +261,7 @@ Houd rekening met de volgende punten:
 
 * In het gedeelte activities is er slechts één activiteit waarvan **type** is ingesteld op **HDInsightHive**.
 * Het Hive-scriptbestand **partitionweblogs.hql** wordt opgeslagen in het Azure-opslagaccount (opgegeven door de scriptLinkedService met de naam **AzureStorageLinkedService**) en in de map **script** van de container **adfgetstarted**.
-* De `defines` sectie wordt gebruikt om de runtime-instellingen op te geven die worden door gegeven aan het Hive-script als `${hiveconf:inputtable}`Hive `${hiveconf:partitionedtable}`-configuratie waarden (bijvoorbeeld).
+* De `defines` sectie wordt gebruikt om de runtime-instellingen op te geven die worden door gegeven aan het Hive-script als Hive-configuratie waarden (bijvoorbeeld `${hiveconf:inputtable}` `${hiveconf:partitionedtable}` ).
 
 De sectie **typeProperties** verschilt voor elke transformatieactiviteit. Voor meer informatie over type-eigenschappen die worden ondersteund voor een transformatie activiteit, klikt u op de activiteit trans formatie in de tabel [gegevens transformatie activiteiten](#data-transformation-activities) .
 
@@ -344,7 +344,7 @@ U kunt een pijp lijn maken en plannen die regel matig wordt uitgevoerd (bijvoorb
 }
 ```
 
-Houd rekening met het volgende:
+en let op het volgende:
 
 * De **begin** -en **eind** tijden voor de pijp lijn zijn niet opgegeven.
 * De **Beschik baarheid** van invoer-en uitvoer gegevens sets wordt opgegeven (**frequentie** en **interval**), zelfs als Data Factory geen gebruik maakt van de waarden.

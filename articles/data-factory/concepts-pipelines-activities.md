@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: ad4ffa71480a5af06c31872cbafcaab7719c55e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3af10d2a88e6d18a7317a2e7e4106cf14132a1e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418334"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194282"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pijplijnen en activiteiten in Azure Data Factory
 
@@ -28,7 +28,7 @@ Met behulp van dit artikel krijgt u inzicht in de pijplijnen en activiteiten in 
 ## <a name="overview"></a>Overzicht
 Een gegevensfactory kan één of meer pijplijnen hebben. Een pijplijn is een logische groep activiteiten die samen een taak uitvoeren. Een pijp lijn kan bijvoorbeeld een set activiteiten bevatten die logboek gegevens opnemen en verwijderen, en vervolgens een toewijzings gegevens stroom voor het analyseren van de logboek gegevens starten. Met de pijp lijn kunt u de activiteiten beheren als een set in plaats van elk afzonderlijk. U implementeert en plant de pijp lijn in plaats van de activiteiten onafhankelijk.
 
-Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een kopieeractiviteit gebruiken om gegevens van een on-premises SQL Server naar Azure Blob Storage te kopiëren. Gebruik vervolgens een gegevens stroom activiteit of een Databricks notebook-activiteit voor het verwerken en transformeren van gegevens van de Blob-opslag naar een Azure Synapse Analytics-groep op het hoogste niveau waarop business intelligence rapportage oplossingen zijn gebouwd.
+Met activiteiten in een pijplijn definieert u welk acties moeten worden uitgevoerd voor uw gegevens. U kunt bijvoorbeeld een Kopieer activiteit gebruiken om gegevens te kopiëren van SQL Server naar een Azure Blob Storage. Gebruik vervolgens een gegevens stroom activiteit of een Databricks notebook-activiteit voor het verwerken en transformeren van gegevens van de Blob-opslag naar een Azure Synapse Analytics-groep op het hoogste niveau waarop business intelligence rapportage oplossingen zijn gebouwd.
 
 Data Factory heeft drie soorten activiteiten: activiteiten voor [gegevens verplaatsing](copy-activity-overview.md), [activiteiten voor gegevens transformatie](transform-data.md)en [controle activiteiten](control-flow-web-activity.md). Een activiteit kan nul of meer [invoergegevenssets](concepts-datasets-linked-services.md) hebben en een of meer [uitvoergegevenssets](concepts-datasets-linked-services.md) produceren. Het volgende diagram toont de relatie tussen de pijplijn, activiteit en gegevensset in Data Factory:
 
@@ -82,7 +82,7 @@ Controleactiviteit | Beschrijving
 [Until-activiteit](control-flow-until-activity.md) | Hiermee implementeert u een Doen totdat-lus die vergelijkbaar is met een Doen totdat-lusstructuur in computertalen. Er wordt een reeks activiteiten uitgevoerd totdat de voorwaarde die aan de activiteit is gekoppeld, resulteert in waar. U kunt in Data Factory een time-outwaarde voor de Until-activiteit opgeven.
 [Validatie-activiteit](control-flow-validation-activity.md) | Zorg ervoor dat een pijp lijn alleen de uitvoering voortzet als er een referentie gegevensset bestaat die voldoet aan de opgegeven criteria, of dat er een time-out is bereikt.
 [Wachtactiviteit](control-flow-wait-activity.md) | Wanneer u een wait-activiteit in een pijp lijn gebruikt, wacht de pijp lijn op het opgegeven tijdstip voordat de volgende activiteiten worden uitgevoerd.
-[Web Activity](control-flow-web-activity.md) | De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit.
+[Webactiviteit](control-flow-web-activity.md) | De WebActivity kan worden gebruikt om een aangepast REST-eindpunt aan te roepen vanaf een Data Factory-pijplijn. U kunt gegevenssets en gekoppelde services doorgeven die moten worden verbruikt door en die toegankelijk zijn voor de activiteit.
 [Webhook-activiteit](control-flow-webhook-activity.md) | Gebruik de webhook-activiteit om een eind punt aan te roepen en een call back-URL door te geven. De pijplijn uitvoering wacht totdat de retour aanroep is aangeroepen voordat u verdergaat met de volgende activiteit.
 
 ## <a name="pipeline-json"></a>Pijplijn in JSON-indeling
@@ -108,12 +108,12 @@ Een pijplijn wordt als volgt in de JSON-indeling gedefinieerd:
 
 Label | Beschrijving | Type | Vereist
 --- | ----------- | ---- | --------
-name | Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 140</li><li>Moet beginnen met een letter, cijfer of onderstrepings teken (\_)</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" </li></ul> | Tekenreeks | Ja
-description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. | Tekenreeks | Nee
-activities | De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Zie de sectie [Activity in JSON](#activity-json) voor meer informatie over het JSON-element activities. | Matrix | Ja
-parameters | De sectie **parameters** kan één of meer parameters bevatten die zijn gedefinieerd in de pijplijn, waardoor uw pijplijn kan worden hergebruikt. | Lijst | Nee
-gelijktijdigheid | Het maximum aantal gelijktijdige uitvoeringen van de pijp lijn kan hebben. Standaard is er geen maximum. Als de limiet voor gelijktijdigheid is bereikt, worden extra pijplijn uitvoeringen in de wachtrij geplaatst totdat eerdere versies zijn voltooid | Aantal | Nee 
-aantekeningen | Een lijst met tags die zijn gekoppeld aan de pijp lijn | Matrix | Nee
+name | Naam van de pijplijn. Geef een naam op die staat voor de actie die de pijplijn uitvoert. <br/><ul><li>Maximum aantal tekens: 140</li><li>Moet beginnen met een letter, cijfer of onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" </li></ul> | Tekenreeks | Yes
+description | Voer een beschrijving in van het doel waarvoor de pijplijn wordt gebruikt. | Tekenreeks | No
+activities | De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Zie de sectie [Activity in JSON](#activity-json) voor meer informatie over het JSON-element activities. | Matrix | Yes
+parameters | De sectie **parameters** kan één of meer parameters bevatten die zijn gedefinieerd in de pijplijn, waardoor uw pijplijn kan worden hergebruikt. | Lijst | No
+gelijktijdigheid | Het maximum aantal gelijktijdige uitvoeringen van de pijp lijn kan hebben. Standaard is er geen maximum. Als de limiet voor gelijktijdigheid is bereikt, worden extra pijplijn uitvoeringen in de wachtrij geplaatst totdat eerdere versies zijn voltooid | Aantal | No 
+aantekeningen | Een lijst met tags die zijn gekoppeld aan de pijp lijn | Matrix | No
 
 ## <a name="activity-json"></a>Activity in JSON
 De sectie **activities** kan één of meer activiteiten bevatten die zijn gedefinieerd binnen de activiteit. Er zijn twee soorten activiteiten: uitvoerings- en controleactiviteiten.
@@ -143,13 +143,13 @@ De volgende tabel beschrijft de eigenschappen in de JSON-definitie activity:
 
 Label | Beschrijving | Vereist
 --- | ----------- | ---------
-name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter-cijfer of een onderstrepings teken\_()</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Ja</li></ul>
-description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Ja
-type | Type activiteit. Bekijk de secties [activiteiten voor gegevens verplaatsing](#data-movement-activities), [activiteiten voor gegevens transformatie](#data-transformation-activities)en [controle activiteiten](#control-flow-activities) voor verschillende typen activiteiten. | Ja
+name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert. <br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter-cijfer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Yes</li></ul>
+description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Yes
+type | Type activiteit. Bekijk de secties [activiteiten voor gegevens verplaatsing](#data-movement-activities), [activiteiten voor gegevens transformatie](#data-transformation-activities)en [controle activiteiten](#control-flow-activities) voor verschillende typen activiteiten. | Yes
 linkedServiceName | De naam van de gekoppelde service die door de activiteit wordt gebruikt.<br/><br/>Een activiteit kan vereisen dat u de gekoppelde service opgeeft die is gekoppeld aan de vereiste rekenomgeving. | Ja voor HDInsight Activity, Azure Machine Learning Batch Scoring Activity en Stored Procedure Activity. <br/><br/>Nee voor alle andere
-typeProperties | Eigenschappen in de sectie typeProperties zijn afhankelijk van elk type activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | Nee
-policy | Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Deze eigenschap bevat een time-out en het gedrag voor opnieuw proberen. Als deze niet is opgegeven, worden de standaard waarden gebruikt. Zie voor meer informatie de sectie [Beleidsregels voor activiteiten](#activity-policy). | Nee
-dependsOn | Deze eigenschap wordt gebruikt voor het definiëren van afhankelijkheden van de activiteit, en hoe de volgende activiteiten afhankelijk zijn van vorige activiteiten. Zie voor meer informatie de sectie [Afhankelijkheid van activiteiten](#activity-dependency) | Nee
+typeProperties | Eigenschappen in de sectie typeProperties zijn afhankelijk van elk type activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | No
+policy | Beleidsregels die van invloed zijn op het runtimegedrag van de activiteit. Deze eigenschap bevat een time-out en het gedrag voor opnieuw proberen. Als deze niet is opgegeven, worden de standaard waarden gebruikt. Zie voor meer informatie de sectie [Beleidsregels voor activiteiten](#activity-policy). | No
+dependsOn | Deze eigenschap wordt gebruikt voor het definiëren van afhankelijkheden van de activiteit, en hoe de volgende activiteiten afhankelijk zijn van vorige activiteiten. Zie voor meer informatie de sectie [Afhankelijkheid van activiteiten](#activity-dependency) | No
 
 ### <a name="activity-policy"></a>Beleidsregels voor activiteiten
 Beleidsregels beïnvloeden het de runtimegedrag van een activiteit, waarbij configuratiemogelijkheden worden geboden. Beleidsregels voor activiteiten zijn alleen beschikbaar voor uitvoeringsactiviteiten.
@@ -187,7 +187,7 @@ JSON-naam | Beschrijving | Toegestane waarden | Vereist
 timeout | Hiermee geeft u de time-out op voor de activiteit die moet worden uitgevoerd. | Periode | Nee. De standaardwaarde is 7 dagen.
 retry | Maximaal aantal nieuwe pogingen | Geheel getal | Nee. De standaardwaarde is 0
 retryIntervalInSeconds | De vertraging tussen nieuwe pogingen in seconden | Geheel getal | Nee. De standaard waarde is 30 seconden
-secureOutput | Als deze eigenschap is ingesteld op True, wordt de uitvoer van de activiteit beschouwd als beveiligd en niet geregistreerd voor bewaking. | Booleaans | Nee. De standaardinstelling is onwaar.
+secureOutput | Als deze eigenschap is ingesteld op True, wordt de uitvoer van de activiteit beschouwd als beveiligd en niet geregistreerd voor bewaking. | Boolean | Nee. De standaardinstelling is onwaar.
 
 ### <a name="control-activity"></a>Controleactiviteit
 Controleactiviteiten hebben de volgende structuur op het hoogste niveau:
@@ -208,11 +208,11 @@ Controleactiviteiten hebben de volgende structuur op het hoogste niveau:
 
 Label | Beschrijving | Vereist
 --- | ----------- | --------
-name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert.<br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter nummer of een onderstrepings teken\_()</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Ja</li><ul>
-description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Ja
-type | Type activiteit. Bekijk de secties [Activiteiten voor gegevensverplaatsing](#data-movement-activities), [Activiteiten voor gegevenstransformatie](#data-transformation-activities) en [Controleactiviteiten](#control-flow-activities) voor andere typen activiteiten. | Ja
-typeProperties | Eigenschappen in de sectie typeProperties zijn afhankelijk van elk type activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | Nee
-dependsOn | Deze eigenschap wordt gebruikt voor het definiëren van afhankelijkheden van de activiteit, en hoe de volgende activiteiten afhankelijk zijn van vorige activiteiten. Zie [afhankelijkheid van activiteiten](#activity-dependency)voor meer informatie. | Nee
+name | De naam van de activiteit. Geef een naam op die staat voor de actie die de activiteit uitvoert.<br/><ul><li>Maximum aantal tekens: 55</li><li>Moet beginnen met een letter nummer of een onderstrepings teken ( \_ )</li><li>De volgende tekens zijn niet toegestaan: '. ', ' + ', '? ', '/', ' < ', ' > ', ' * ', '% ', ' & ', ': ', '\" | Yes</li><ul>
+description | Beschrijving van het doel waarvoor de activiteit of wordt gebruikt | Yes
+type | Type activiteit. Bekijk de secties [Activiteiten voor gegevensverplaatsing](#data-movement-activities), [Activiteiten voor gegevenstransformatie](#data-transformation-activities) en [Controleactiviteiten](#control-flow-activities) voor andere typen activiteiten. | Yes
+typeProperties | Eigenschappen in de sectie typeProperties zijn afhankelijk van elk type activiteit. Klik op koppelingen naar de activiteiten in de vorige sectie om typeProperties voor een activiteit te bekijken. | No
+dependsOn | Deze eigenschap wordt gebruikt voor het definiëren van afhankelijkheden van de activiteit, en hoe de volgende activiteiten afhankelijk zijn van vorige activiteiten. Zie [afhankelijkheid van activiteiten](#activity-dependency)voor meer informatie. | No
 
 ### <a name="activity-dependency"></a>Afhankelijkheid van activiteiten
 De afhankelijkheid van activiteiten bepaalt hoe latere activiteiten afhankelijk zijn van vorige activiteiten, waarbij de voor waarde wordt bepaald of de volgende taak moet blijven uitvoeren. Een activiteit kan afhankelijk zijn van een of meer eerdere activiteiten met verschillende afhankelijkheidsvoorwaarden.
@@ -358,7 +358,7 @@ De volgende voorbeeldpijplijn bevat een activiteit van het type **HDInsightHive*
 Houd rekening met de volgende punten:
 
 - In het gedeelte activities is er slechts één activiteit waarvan **type** is ingesteld op **HDInsightHive**.
-- Het Hive-script bestand **partitionweblogs. HQL**wordt opgeslagen in het Azure Storage-account (opgegeven door de scriptLinkedService, de naam AzureStorageLinkedService) en in de map script in de `adfgetstarted`container.
+- Het Hive-script bestand **partitionweblogs. HQL**wordt opgeslagen in het Azure Storage-account (opgegeven door de scriptLinkedService, de naam AzureStorageLinkedService) en in de map script in de container `adfgetstarted` .
 - De sectie `defines` wordt gebruikt om de runtime-instellingen op te geven die worden doorgegeven aan het Hive-script, zoals Hive-configuratiewaarden (bijvoorbeeld $`{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`).
 
 De sectie **typeProperties** verschilt voor elke transformatieactiviteit. Voor meer informatie over ondersteunde typeProperties voor een transformatieactiviteit, klikt u op de transformatieactiviteit in [Activiteiten voor gegevenstransformatie](#data-transformation-activities).

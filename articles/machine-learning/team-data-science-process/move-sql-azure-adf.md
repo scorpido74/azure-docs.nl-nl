@@ -1,5 +1,5 @@
 ---
-title: SQL Server gegevens voor het SQL Azure met het proces voor gegevens wetenschap van Azure Data Factory team
+title: SQL Server gegevens voor het SQL Database met het proces voor gegevens wetenschap van Azure Data Factory team
 description: Stel een ADF-pijp lijn in voor het samen stellen van twee gegevens migratie activiteiten die gegevens dagelijks verplaatsen tussen data bases op locatie en in de Cloud.
 services: machine-learning
 author: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722489"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194410"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Gegevens verplaatsen van een on-premises SQL-Server naar SQL Azure met Azure Data Factory
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Gegevens verplaatsen van een SQL Server Data Base naar SQL Database met Azure Data Factory
 
-In dit artikel wordt beschreven hoe u gegevens van een on-premises SQL Server Data Base verplaatst naar een SQL Azure-data base via Azure Blob Storage met behulp van de Azure Data Factory (ADF): deze methode is een ondersteunde verouderde benadering die de voor delen van een gerepliceerde staging-kopie biedt, maar [we raden u aan de pagina gegevens migratie te bekijken voor de nieuwste opties](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+In dit artikel wordt beschreven hoe u gegevens vanuit een SQL Server-Data Base verplaatst naar Azure SQL Database via Azure Blob Storage met behulp van de Azure Data Factory (ADF): deze methode is een ondersteunde verouderde benadering die de voor delen van een gerepliceerde staging-kopie biedt, maar [we raden u aan de pagina gegevens migratie te bekijken voor de nieuwste opties](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
 Zie [gegevens verplaatsen naar een Azure SQL database voor Azure machine learning](move-sql-azure.md)voor een tabel met een overzicht van verschillende opties voor het verplaatsen van gegevens naar een Azure SQL database.
 
@@ -37,13 +37,13 @@ Overweeg het gebruik van ADF:
 Met ADF kunnen taken worden gepland en gecontroleerd met behulp van eenvoudige JSON-scripts waarmee de verplaatsing van gegevens periodiek wordt beheerd. ADF heeft ook andere mogelijkheden, zoals ondersteuning voor complexe bewerkingen. Zie de documentatie op [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)voor meer informatie over ADF.
 
 ## <a name="the-scenario"></a><a name="scenario"></a>Het scenario
-We stellen een ADF-pijp lijn in die twee gegevens migratie activiteiten samen stelt. Samen verplaatsen ze gegevens dagelijks over een on-premises SQL Database en een Azure SQL Database in de Cloud. De twee activiteiten zijn:
+We stellen een ADF-pijp lijn in die twee gegevens migratie activiteiten samen stelt. Samen verplaatsen ze gegevens dagelijks over een SQL Server Data Base en Azure SQL Database. De twee activiteiten zijn:
 
-* gegevens van een on-premises SQL Server Data Base kopiëren naar een Azure Blob Storage-account
-* gegevens van het Azure Blob Storage-account kopiëren naar een Azure SQL Database.
+* Gegevens kopiëren van een SQL Server-Data Base naar een Azure Blob Storage-account
+* Kopieer gegevens van het Azure Blob Storage-account naar Azure SQL Database.
 
 > [!NOTE]
-> De stappen die hier worden weer gegeven, zijn aangepast aan de gedetailleerde zelf studie van het ADF-team: [gegevens kopiëren van een on-premises SQL Server Data Base naar Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) -verwijzingen naar de relevante secties van dat onderwerp worden indien van toepassing.
+> De stappen die hier worden beschreven, zijn aangepast aan de meer gedetailleerde zelf studie van het ADF-team: [gegevens kopiëren van een SQL Server Data Base naar Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) -verwijzingen naar de relevante secties van dat onderwerp worden indien van toepassing.
 >
 >
 
@@ -60,10 +60,10 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>De gegevens uploaden naar uw on-premises SQL Server
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>De gegevens uploaden naar uw SQL Server-exemplaar
 We gebruiken de [NYC taxi-gegevensset](https://chriswhong.com/open-data/foil_nyc_taxi/) om het migratie proces te demonstreren. De NYC taxi-gegevensset is beschikbaar, zoals vermeld in dat bericht, op Azure Blob Storage [NYC taxi-gegevens](https://www.andresmh.com/nyctaxitrips/). De gegevens hebben twee bestanden, het trip_data CSV-bestand, met reis Details en het trip_far. CSV-bestand, dat de details bevat van het tarief dat voor elke reis is betaald. Een voor beeld en een beschrijving van deze bestanden zijn te vinden in de beschrijving van de [NYC taxi trips](sql-walkthrough.md#dataset)van de verzameling.
 
-U kunt de procedure die u hier hebt opgegeven, aanpassen aan een set eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw on-premises SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload). Deze instructies gelden voor een SQL Server op een virtuele machine van Azure, maar de procedure voor het uploaden naar de on-premises SQL Server is hetzelfde.
+U kunt de procedure die u hier hebt opgegeven, aanpassen aan een set eigen gegevens of de stappen volgen die worden beschreven met behulp van de NYC taxi-gegevensset. Als u de NYC taxi-gegevensset wilt uploaden naar uw SQL Server-Data Base, volgt u de procedure die wordt beschreven in [gegevens bulksgewijs importeren in SQL Server-Data Base](sql-walkthrough.md#dbload).
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Een Azure Data Factory maken
 De instructies voor het maken van een nieuwe Azure Data Factory en een resource groep in de [Azure Portal](https://portal.azure.com/) worden door gegeven [een Azure Data Factory maken](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Noem het nieuwe ADF-exemplaar *adfdsp* en geef de resource groep de naam *adfdsprg*.
@@ -93,7 +93,7 @@ Maak tabellen waarmee de structuur, locatie en beschik baarheid van de gegevens 
 
 De JSON-gebaseerde definities in de tabellen gebruiken de volgende namen:
 
-* de **tabel naam** in de on-premises SQL server is *nyctaxi_data*
+* de **tabel naam** in de SQL Server is *nyctaxi_data*
 * de **container naam** in het Azure Blob Storage-account is *containerName*
 
 Er zijn drie tabel definities nodig voor deze ADF-pijp lijn:
@@ -108,7 +108,7 @@ Er zijn drie tabel definities nodig voor deze ADF-pijp lijn:
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>On-premises tabel van SQL
-De tabel definitie voor de on-premises SQL Server is opgegeven in het volgende JSON-bestand:
+De tabel definitie voor de SQL Server is opgegeven in het volgende JSON-bestand:
 
 ```json
 {
@@ -226,12 +226,12 @@ Met behulp van de tabel definities die eerder zijn opgegeven, wordt de pijplijn 
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],

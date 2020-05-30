@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa2b5f17af466d5ea2b6e3ba942fafc24cc94713
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591281"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204256"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren wie gasten kan uitnodigen
 
 In dit artikel wordt beschreven hoe u de samen werking van Azure Active Directory (Azure AD) inschakelt en bepaalt wie gasten kunnen uitnodigen. Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
 
@@ -48,6 +48,9 @@ Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
    - **Gasten kunnen uitnodigen**: als u gasten wilt toestaan andere gasten uit te nodigen, stelt u dit beleid in op **Ja**.
    - **Eenmalige e-mail wachtwoord voor gasten inschakelen (preview-versie)**: Zie [eenmalige verificatie per e-mail (preview)](one-time-passcode.md)voor meer informatie over de functie voor eenmalige wachtwoord code.
    - **Samenwerkings beperkingen**: voor meer informatie over het toestaan of blok keren van uitnodigingen voor specifieke domeinen raadpleegt [u uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](allow-deny-list.md).
+   
+   > [!NOTE]
+   > Als **leden kunnen worden uitgenodigd** is ingesteld op **Nee** en **beheerders en gebruikers in de rol gast uitnodigingen kunnen worden uitgenodigd** is ingesteld op **Ja**, kunnen gebruikers in de rol **gast uitnodiging** nog steeds gasten uitnodigen.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>De rol van de gast-uitnodiging toewijzen aan een gebruiker
 
@@ -66,5 +69,4 @@ Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
 - [Gast gebruikers voor B2B-samen werking toevoegen zonder uitnodiging](add-user-without-invite.md)
 - [Een B2B-samenwerkings gebruiker toevoegen aan een rol](add-guest-to-role.md)
-
 

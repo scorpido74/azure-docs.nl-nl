@@ -1,7 +1,7 @@
 ---
 title: 'Zelf studie: SQL Server offline migreren naar een SQL-data base'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over het migreren van SQL Server on-premises naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline door gebruik te maken van Azure Database Migration Service.
+description: Meer informatie over het migreren van SQL Server naar Azure SQL Database offline met behulp van Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9eb5e5063a4aec69e1f21445cb5278caaea82ce2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a3917443e25589cafe1d68522e13ba60ef634341
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020486"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191501"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Zelf studie: SQL Server naar een enkele data base of gegroepeerde Data base in Azure SQL Database offline migreren met behulp van DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Zelfstudie: SQL Server migreren naar een offline exemplaar van Azure SQL Database met behulp van DMS
 
-U kunt Azure Database Migration Service gebruiken om de data bases te migreren van een on-premises SQL Server instantie naar [Azure SQL database](https://docs.microsoft.com/azure/sql-database/). In deze zelf studie migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 (of hoger) naar een enkele data base of gegroepeerde Data base in Azure SQL database met behulp van Azure database Migration service.
+U kunt Azure Database Migration Service gebruiken om de data bases van een SQL Server exemplaar te migreren naar [Azure SQL database](https://docs.microsoft.com/azure/sql-database/). In deze zelf studie migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 (of hoger) naar een enkele data base of gegroepeerde Data base in Azure SQL database met behulp van Azure database Migration service.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
@@ -74,7 +74,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 ## <a name="assess-your-on-premises-database"></a>Uw on-premises resources evalueren
 
-Voordat u gegevens uit een on-premises SQL Server-exemplaar naar een individuele of pooldatabase in Azure SQL Database kunt migreren, moet u controleren of de SQL Server-database blokkerende problemen bevat die mogelijk de migratie verhinderen. Volg met behulp van de Data Migration Assistant v3.3 of hoger de stappen in het artikel [Uitvoeren van een SQL Server-migratie-evaluatie](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) uit om de on-premises database-evaluatie uit te voeren. Hier volgt een samenvatting van de vereiste stappen:
+Voordat u gegevens kunt migreren van een SQL Server-exemplaar naar een enkele data base of gegroepeerde Data base in Azure SQL Database, moet u de SQL Server-Data Base beoordelen op eventuele belemmeringen die migratie mogelijk verhinderen. Volg met behulp van de Data Migration Assistant v3.3 of hoger de stappen in het artikel [Uitvoeren van een SQL Server-migratie-evaluatie](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem) uit om de on-premises database-evaluatie uit te voeren. Hier volgt een samenvatting van de vereiste stappen:
 
 1. Selecteer het pictogram Nieuw (+) in de Data Migration Assistant, en selecteer vervolgens het projecttype **Evaluatie**.
 2. Geef een projectnaam op, selecteer in het tekstvak **Bronservertype****SQL Server**, in het tekstvak **Doelservertype****Azure SQL Database**, en selecteer vervolgens **Maken** om het project te maken.
@@ -100,7 +100,7 @@ Voordat u gegevens uit een on-premises SQL Server-exemplaar naar een individuele
     Voor individuele databases of pooldatabases in Azure SQL Database, identificeren de beoordelingen problemen met betrekking tot functiepariteit en problemen die de migratie blokkeren bij een implementatie naar een individuele of pooldatabase.
 
     - De categorie **SQL Server-functiepariteit** biedt een uitgebreide set met aanbevelingen, alternatieve methoden die beschikbaar zijn in Azure, en beperkende stappen voor het plannen van de inzet in uw migratieprojecten.
-    - De categorie **compatibiliteitsproblemen** identificeert gedeeltelijk ondersteunde of niet-ondersteunde functies die compatibiliteitsproblemen laten zien die mogelijk de migratie van on-premises SQL Server-databases naar Azure SQL Database blokkeren. Aanbevelingen om deze problemen op te lossen worden ook gegeven.
+    - De categorie **compatibiliteits problemen** bevat gedeeltelijk ondersteunde of niet-ondersteunde functies die betrekking hebben op compatibiliteits problemen die het migreren van SQL Server Data Base (s) kunnen blok keren naar Azure SQL database. Aanbevelingen om deze problemen op te lossen worden ook gegeven.
 
 6. Bekijk de resultaten van de evaluatie voor migratieblokkerende problemen en problemen met de functiepariteit door de specifieke opties te selecteren.
 
@@ -273,7 +273,7 @@ Nadat de service is gemaakt, zoek deze op in de Azure-portal, open hem en maak v
 
 3. Controleer de doel database (s) op de doel-Azure SQL Database.
 
-### <a name="additional-resources"></a>Aanvullende bronnen
+### <a name="additional-resources"></a>Extra resources
 
 - [SQL-migratie met behulp van de Azure Data Migration service](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=3b671509-c3cd-4495-8e8f-354acfa09587) -praktijk op Lab.
 - Zie het artikel [Bekende problemen met en tijdelijke oplossingen voor online migraties naar Azure SQL Database](known-issues-azure-sql-online.md) voor informatie over bekende problemen en beperkingen bij het uitvoeren van online migraties naar Azure SQL Database.

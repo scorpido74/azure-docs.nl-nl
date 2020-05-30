@@ -1,7 +1,7 @@
 ---
 title: Server-en database toegang autoriseren met behulp van aanmeldingen en gebruikers accounts
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: Meer informatie over hoe Azure SQL Database, SQL Managed instance en Azure Synapse gebruikers voor toegang verifieert met behulp van aanmeldingen en gebruikers accounts. Meer informatie over de database rollen en expliciete machtigingen om aanmeldingen en gebruikers te autoriseren om acties uit te voeren en gegevens op te vragen.
+description: Meer informatie over hoe Azure SQL Database, SQL Managed instance en Azure Synapse gebruikers voor toegang verifieert met behulp van aanmeldingen en gebruikers accounts. Meer informatie over het verlenen van database rollen en expliciete machtigingen om aanmeldingen en gebruikers te autoriseren om acties uit te voeren en gegevens op te vragen.
 keywords: sql-databasebeveiliging,beheer databasebeveiliging,aanmeldingsbeveiliging,databasebeveiliging,databasetoegang
 services: sql-database
 ms.service: sql-database
@@ -13,20 +13,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0bf5a16624579a5dc15382b3ec9f2b5641a3b9fc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048390"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220558"
 ---
-# <a name="authorizing-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 In dit artikel vindt u meer informatie over:
 
 - Opties voor het configureren van Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics (voorheen Azure SQL Data Warehouse) om gebruikers in staat te stellen beheer taken uit te voeren en toegang te krijgen tot de gegevens die zijn opgeslagen in deze data bases.
-- De configuratie van toegang en autorisatie na het maken van een nieuwe server. 
+- De configuratie van toegang en autorisatie na het maken van een nieuwe server.
 - Aanmeldingen en gebruikers accounts toevoegen aan de hoofd database en gebruikers accounts en vervolgens deze accounts beheer machtigingen verlenen.
 - Het toevoegen van gebruikers accounts in gebruikers databases, hetzij gekoppeld aan aanmeldingen of als opgenomen gebruikers accounts.
 - Gebruikers accounts met machtigingen in gebruikers databases configureren met behulp van database rollen en expliciete machtigingen.
@@ -44,7 +44,7 @@ Wanneer een gebruiker probeert verbinding te maken met een Data Base, bieden ze 
   Met deze verificatie methode verzendt de gebruiker de naam van een gebruikers account en het bijbehorende wacht woord om een verbinding tot stand te brengen. Dit wacht woord wordt opgeslagen in de hoofd database voor gebruikers accounts die zijn gekoppeld aan een aanmelding of worden opgeslagen in de data base met de gebruikers accounts die *niet* aan een aanmelding zijn gekoppeld.
 - [Azure Active Directory-verificatie](authentication-aad-overview.md)
 
-  Met deze verificatie methode verzendt de gebruiker de naam van een gebruikers account en vraagt hij of de service de referentie gegevens gebruikt die zijn opgeslagen in Azure Active Directory.
+  Met deze verificatie methode verzendt de gebruiker de naam van een gebruikers account en vraagt de service de referentie gegevens te gebruiken die zijn opgeslagen in Azure Active Directory (Azure AD).
 
 **Aanmeldingen en gebruikers**: een gebruikers account in een Data Base kan worden gekoppeld aan een aanmelding die is opgeslagen in de hoofd database of kan een gebruikers naam zijn die is opgeslagen in een afzonderlijke data base.
 
@@ -57,8 +57,8 @@ Wanneer een gebruiker probeert verbinding te maken met een Data Base, bieden ze 
 
 Wanneer u Azure SQL voor het eerst implementeert, geeft u een beheerders aanmelding en een bijbehorend wacht woord op voor die aanmelding. Dit beheerders account wordt **Server beheerder**genoemd. De volgende configuratie van aanmeldingen en gebruikers in de hoofd-en gebruikers databases vindt plaats tijdens de implementatie:
 
-- Er wordt een SQL-aanmelding met Administrator bevoegdheden gemaakt met behulp van de aanmeldings naam die u hebt opgegeven. Een [aanmelding](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) is een afzonderlijke gebruikers account voor aanmelding bij SQL database, SQL Managed instance en Azure Synapse.
-- Aan deze aanmelding worden volledige beheerders machtigingen voor alle data bases verleend als [principal op server niveau](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Deze aanmelding heeft alle beschik bare machtigingen en kan niet worden beperkt. In een SQL Managed instance wordt deze aanmelding toegevoegd aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (deze rol bestaat niet in Azure SQL database).
+- Er wordt een SQL-aanmelding met Administrator bevoegdheden gemaakt met behulp van de aanmeldings naam die u hebt opgegeven. Een [aanmelding](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) is een afzonderlijke gebruikers account waarmee u zich kunt aanmelden bij SQL database, SQL Managed instance en Azure Synapse.
+- Aan deze aanmelding worden volledige beheerders machtigingen voor alle data bases verleend als [principal op server niveau](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). De aanmelding heeft alle beschik bare machtigingen en kan niet worden beperkt. In een SQL Managed instance wordt deze aanmelding toegevoegd aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (deze rol bestaat niet in Azure SQL database).
 - Een [gebruikers account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) met de naam `dbo` wordt gemaakt voor deze aanmelding in elke gebruikers database. De [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) -gebruiker heeft alle database machtigingen in de data base en is toegewezen aan de `db_owner` vaste databaserol. Aanvullende vaste database rollen worden verderop in dit artikel besproken.
 
 Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de Azure Portal en navigeert u naar het tabblad **Eigenschappen** van de server of het beheerde exemplaar.
@@ -74,23 +74,23 @@ Als u de beheerders accounts voor een Data Base wilt identificeren, opent u de A
 
 Op dit punt wordt de server of het beheerde exemplaar alleen geconfigureerd voor toegang met behulp van één SQL-aanmeldings-en-gebruikers account. Als u extra aanmeldingen wilt maken met volledige of gedeeltelijke beheerders machtigingen, hebt u de volgende opties (afhankelijk van de implementatie modus):
 
-- **Een Azure Active Directory beheerders account maken met volledige beheerders machtigingen**
+- **Een Azure Active Directory beheerders account met volledige beheerders machtigingen maken**
 
-  Schakel Azure Active Directory-verificatie in en maak een aanmelding voor Azure AD-beheerders. Een Azure Active Directory-account kan worden geconfigureerd als beheerder van de SQL-implementatie met volledige beheerders machtigingen. Dit account kan een individuele account of een beveiligings groep zijn. Een Azure AD-beheerder **moet** worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database, een door SQL beheerd exemplaar of Azure Synapse. Voor gedetailleerde informatie over het inschakelen van Azure AD-verificatie voor alle SQL-implementatie typen raadpleegt u de volgende artikelen:
+  Schakel Azure Active Directory-verificatie in en maak een aanmelding voor Azure AD-beheerders. Een Azure Active Directory-account kan worden geconfigureerd als beheerder van de Azure SQL-implementatie met volledige beheerders machtigingen. Dit account kan een individuele account of een beveiligings groep zijn. Een Azure AD-beheerder **moet** worden geconfigureerd als u Azure AD-accounts wilt gebruiken om verbinding te maken met SQL database, een door SQL beheerd exemplaar of Azure Synapse. Voor gedetailleerde informatie over het inschakelen van Azure AD-verificatie voor alle Azure SQL-implementatie typen raadpleegt u de volgende artikelen:
 
   - [Azure Active Directory authenticatie gebruiken voor verificatie met SQL](authentication-aad-overview.md)
   - [Verificatie van Azure Active Directory configureren en beheren met SQL](authentication-aad-configure.md)
 
 - **Maak in SQL Managed instance SQL-aanmeldingen met volledige beheerders machtigingen**
 
-  - Een extra SQL-aanmelding in de hoofd database maken
+  - Maak een extra SQL-aanmelding in de hoofd database.
   - Voeg de aanmelding toe aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) met de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) . Deze aanmelding heeft volledige beheerders machtigingen.
   - U kunt ook een [Azure AD-aanmeldings](authentication-aad-configure.md)#provision-Azure-AD-admin-SQL-Managed-instance) maken met behulp van de syntaxis voor het maken van een [aanmelding](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
 
 - **Maak in SQL Database SQL-aanmeldingen met beperkte beheerders machtigingen**
 
-  - Een extra SQL-aanmelding in de hoofd database maken
-  - Een gebruikers account maken in de hoofd database die is gekoppeld aan deze nieuwe aanmelding
+  - Maak een extra SQL-aanmelding in de hoofd database.
+  - Maak een gebruikers account in de hoofd database die is gekoppeld aan deze nieuwe aanmelding.
   - Voeg het gebruikers account toe aan de `dbmanager` , de- `loginmanager` rol of beide in de- `master` Data Base met behulp van de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (voor Azure Synapse gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
@@ -112,13 +112,13 @@ U kunt met een van de volgende twee methoden accounts maken voor gebruikers die 
 
   Maak een gebruikers account in de data base waartoe een gebruiker toegang nodig heeft (ook wel een [Inge sloten gebruiker](/sql/relational-databases/security/contained-database-users-making-your-database-portable)genoemd.
 
-  - Met een SQL Database kunt u altijd dit type gebruikers account maken.
+  - Met SQL Database kunt u altijd dit type gebruikers account maken.
   - Met SQL Managed instance die ondersteuning biedt voor [Azure ad server-principals](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities), kunt u gebruikers accounts maken om te verifiëren bij het SQL Managed instance zonder dat database gebruikers moeten worden gemaakt als Inge sloten database gebruiker.
 
-  Met deze methode worden de verificatie gegevens van de gebruiker opgeslagen in elke Data Base en automatisch gerepliceerd naar geo-gerepliceerde data bases. Als hetzelfde account echter bestaat in meerdere data bases en u SQL-verificatie gebruikt, moet u de wacht woorden hand matig synchroniseren. Als een gebruiker ook een account in verschillende data bases met verschillende wacht woorden heeft, kan het onthouden van die wacht woorden een probleem worden.
+  Met deze methode worden de verificatie gegevens van de gebruiker opgeslagen in elke Data Base en automatisch gerepliceerd naar geo-gerepliceerde data bases. Als hetzelfde account echter bestaat in meerdere data bases en u Azure SQL-verificatie gebruikt, moet u de wacht woorden hand matig synchroniseren. Als een gebruiker ook een account in verschillende data bases met verschillende wacht woorden heeft, kan het onthouden van die wacht woorden een probleem worden.
 
 > [!IMPORTANT]
-> Als u Inge sloten gebruikers wilt maken die zijn toegewezen aan Azure AD-identiteiten, moet u zijn aangemeld met een Azure AD-account dat een beheerder is in de SQL Database. In SQL Managed instance kan een SQL-aanmelding met `sysadmin` machtigingen ook een Azure AD-aanmelding of-gebruiker maken.
+> Als u Inge sloten gebruikers wilt maken die zijn toegewezen aan Azure AD-identiteiten, moet u zijn aangemeld met een Azure AD-account dat een beheerder is in de data base in Azure SQL Database. In SQL Managed instance kan een SQL-aanmelding met `sysadmin` machtigingen ook een Azure AD-aanmelding of-gebruiker maken.
 
 Voor voor beelden van het maken van aanmeldingen en gebruikers raadpleegt u:
 
@@ -171,4 +171,4 @@ Zorg ervoor dat u de volgende functies kunt gebruiken voor het beperken of het v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [overzicht van SQL-beveiliging](security-overview.md)voor een overzicht van alle beveiligings functies van SQL database en SQL Managed instance.
+Zie [Security Overview](security-overview.md)(Engelstalig) voor een overzicht van alle beveiligings functies van Azure SQL database en SQL Managed instance.

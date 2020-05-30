@@ -10,12 +10,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 705b2464285b747ea7999b112733b7e99f761f22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 709ceb465594c566349cf9ea5bfed7db73c9a0cf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419082"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194751"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Voor beelden Azure PowerShell voor Azure Data Factory
 
@@ -27,7 +27,7 @@ De volgende tabel bevat koppelingen naar voor beelden van Azure PowerShell scrip
 |---|---|
 |**Gegevens kopiëren**||
 |[Blobs kopiëren van een map naar een andere map in een Azure-Blob Storage](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script kopieert u blobs uit een map in Azure Blob Storage naar een andere map in dezelfde Blob Storage. |
-|[Gegevens van on-premises SQL Server naar Azure kopiëren Blob Storage](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script worden gegevens gekopieerd van een on-premises SQL Server-Data Base naar een Azure Blob-opslag. |
+|[Gegevens kopiëren van SQL Server naar Azure Blob Storage](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-script worden gegevens uit een SQL Server-Data Base gekopieerd naar een Azure Blob-opslag. |
 |[Bulksgewijs kopiëren](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-voorbeeld script worden gegevens uit meerdere tabellen in een Azure-SQL database gekopieerd naar een Azure SQL-Data Warehouse. |
 |[Incrementele kopie](scripts/incremental-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Met dit Power shell-voorbeeld script worden alleen nieuwe of bijgewerkte records van een brongegevens archief naar een Sink-gegevens archief geladen na de eerste volledige kopie van gegevens van de bron naar de sink. |
 |**Gegevens transformeren**||

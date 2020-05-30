@@ -3,12 +3,12 @@ title: Back-ups maken van SQL Server werk belastingen op Azure Stack
 description: In dit artikel vindt u informatie over het configureren van Microsoft Azure Backup Server (MABS) om SQL Server-data bases op Azure Stack te beveiligen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74172316"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192984"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
 
@@ -65,7 +65,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Methode van initiële replicatie](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Voor de eerste back-upkopie moet de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server machine) naar Azure Backup Server worden overgedragen. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunt u ervoor kiezen om de eerste back-up te verplaatsen: **hand matig** (met behulp van Verwissel bare media) om te voor komen dat er band breedte overbelast wordt of **automatisch via het netwerk** (op een bepaald moment).
+    Voor de eerste back-upkopie moet de volledige gegevens bron (SQL Server-Data Base) van de productie server (SQL Server computer) naar Azure Backup Server worden overgedragen. Deze gegevens zijn mogelijk erg groot en het overdragen van de gegevens via het netwerk kan de band breedte overschrijden. Daarom kunt u ervoor kiezen om de eerste back-up te verplaatsen: **hand matig** (met behulp van Verwissel bare media) om te voor komen dat er band breedte overbelast wordt of **automatisch via het netwerk** (op een bepaald moment).
 
     Zodra de eerste back-up is voltooid, zijn de rest van de back-ups incrementele back-ups op de eerste back-upkopie. Incrementele back-ups zijn vaak klein en kunnen eenvoudig via het netwerk worden overgedragen.
 
@@ -73,7 +73,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Consistentie controle](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    Azure Backup Server voert een consistentie controle uit op de integriteit van het back-uppunt. Azure Backup Server berekent de controlesom van het back-upbestand op de productie server (SQL Server machine in dit scenario) en de gegevens van de back-up voor dat bestand. Als er een conflict optreedt, wordt ervan uitgegaan dat het back-upbestand op Azure Backup Server is beschadigd. Azure Backup Server verholpen de back-upgegevens door de blokken te verzenden die overeenkomen met de controlesom komen niet overeen. Omdat consistentie controles prestaties vergen, kunt u de consistentie controle plannen of automatisch uitvoeren.
+    Azure Backup Server voert een consistentie controle uit op de integriteit van het back-uppunt. Azure Backup Server berekent de controlesom van het back-upbestand op de productie server (SQL Server computer in dit scenario) en de gegevens van de back-up voor dat bestand. Als er een conflict optreedt, wordt ervan uitgegaan dat het back-upbestand op Azure Backup Server is beschadigd. Azure Backup Server verholpen de back-upgegevens door de blokken te verzenden die overeenkomen met de controlesom komen niet overeen. Omdat consistentie controles prestaties vergen, kunt u de consistentie controle plannen of automatisch uitvoeren.
 
 10. Als u de online beveiliging van de gegevens bronnen wilt opgeven, selecteert u de data bases die moeten worden beveiligd met Azure en klikt u op **volgende**.
 

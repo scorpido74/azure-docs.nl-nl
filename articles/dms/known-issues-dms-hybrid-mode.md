@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649599"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196284"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Bekende problemen/migratie beperkingen bij het gebruik van de hybride modus
 
@@ -93,10 +93,10 @@ Als u geen toegang meer hebt tot de werk computer, kunt u de registratie van de 
 
 In de volgende secties worden scenario-specifieke problemen met betrekking tot het gebruik van Azure Database Migration Service hybride modus beschreven om een online migratie uit te voeren.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online migraties naar Azure SQL Database beheerde instantie
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Online migraties naar Azure SQL Managed instance
 
 **Hoog CPU-gebruik**
 
-**Probleem**: voor online migraties van SQL database beheerde instantie, wordt voor de computer met de Hybrid worker een hoog CPU-gebruik verleend als er te veel back-ups zijn of als de back-ups te groot zijn.
+**Probleem**: als er te veel back-ups zijn of als de back-ups te groot zijn voor online migraties naar een SQL-beheerd exemplaar, wordt er een hoog CPU-gebruik uitgevoerd op de computer met de Hybrid Worker.
 
 **Risico beperking**: als u dit probleem wilt verhelpen, gebruikt u gecomprimeerde back-ups, splitst u de migratie zodat deze meerdere shares gebruikt of breidt u de computer met de Hybrid worker uit.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731693"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192545"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -60,7 +60,7 @@ Afhankelijk van het Cloud service model, is er een variabele verantwoordelijkhei
 
 De ingebouwde mogelijkheden zijn ingedeeld in zes functionele gebieden: bewerkingen, toepassingen, opslag, netwerken, compute en identiteit. Meer details over de functies en mogelijkheden die beschikbaar zijn in het Azure-platform in deze zes gebieden worden verstrekt via samenvattings informatie.
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 Deze sectie bevat aanvullende informatie over belang rijke functies in beveiligings bewerkingen en overzichts informatie over deze mogelijkheden.
 
 ### <a name="security-and-audit-dashboard"></a>Beveiliging en audit dash board
@@ -308,7 +308,7 @@ Een belang rijk onderdeel van de strategie voor [bedrijfs continuïteit/herstel 
 
 De Azure Key Vault-service (Azure) is ontworpen voor het verbeteren van de beveiliging en het beheer van deze sleutels op een veilige en Maxi maal beschik bare locatie. Met de SQL Server-connector kan SQL Server deze sleutels vanuit Azure Key Vault gebruiken.
 
-Als u SQL Server met on-premises machines uitvoert, zijn er stappen die u kunt volgen om toegang te krijgen tot Azure Key Vault vanaf uw on-premises SQL Server computer. Maar voor SQL Server in azure-Vm's kunt u tijd besparen door gebruik te maken van de functie voor Azure Key Vault integratie. Met enkele Azure PowerShell-cmdlets om deze functie in te scha kelen, kunt u de configuratie automatiseren die nodig is voor een SQL-VM om toegang te krijgen tot uw sleutel kluis.
+Als u SQL Server met on-premises machines uitvoert, zijn er stappen die u kunt volgen om toegang te krijgen tot Azure Key Vault van uw on-premises SQL Server exemplaar. Maar voor SQL Server in azure-Vm's kunt u tijd besparen door gebruik te maken van de functie voor Azure Key Vault integratie. Met enkele Azure PowerShell-cmdlets om deze functie in te scha kelen, kunt u de configuratie automatiseren die nodig is voor een SQL-VM om toegang te krijgen tot uw sleutel kluis.
 
 ### <a name="vm-disk-encryption"></a>VM-schijf versleuteling
 [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) is een nieuwe mogelijkheid waarmee u uw virtuele Windows-en Linux IaaS-machine schijven kunt versleutelen. Hiermee wordt de industrie standaard BitLocker-functie van Windows en de DM-cryptografie functie van Linux toegepast om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden. De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw Key Vault-abonnement te beheren. De oplossing zorgt er ook voor dat alle gegevens op de schijven van de virtuele machine op rest worden versleuteld in uw Azure-opslag.

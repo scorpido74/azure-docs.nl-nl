@@ -1,7 +1,7 @@
 ---
 title: SSIS-pakketten migreren naar een beheerd exemplaar van SQL
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over het migreren van SQL Server Integration Services (SSIS)-pakketten en-projecten naar een Azure SQL Database beheerd exemplaar met behulp van de Azure Database Migration Service of de Data Migration Assistant.
+description: Informatie over het migreren van SQL Server Integration Services (SSIS)-pakketten en-projecten naar een met Azure SQL beheerd exemplaar met behulp van de Azure Database Migration Service of de Data Migration Assistant.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 97a466ab033a42016c0d82465d1f98e2dcae8080
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d27905acc60e953ec5ed92e77d7a352c1c3fec8b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297187"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196567"
 ---
-# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>SQL Server Integration Services-pakketten migreren naar een beheerd exemplaar van Azure SQL Database
-Als u SQL Server Integration Services (SSIS) gebruikt en u uw SSIS-projecten/-pakketten wilt migreren van de bron-SSISDB die wordt gehost door SQL Server naar de doel-SSISDB die worden gehost door een Azure SQL Database beheerd exemplaar, kunt u Azure Database Migration Service gebruiken.
+# <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services-pakketten migreren naar een beheerd exemplaar van Azure SQL
+Als u SQL Server Integration Services (SSIS) gebruikt en u uw SSIS-projecten/-pakketten wilt migreren van de bron-SSISDB die wordt gehost door SQL Server naar de doel-SSISDB die wordt gehost door een door Azure SQL beheerd exemplaar, kunt u Azure Database Migration Service gebruiken.
 
 Als de gebruikte SSIS-versie ouder is dan 2012 of als u een niet-SSISDB gebruikt voor het migreren van uw SSIS-projecten/-pakketten, moet u deze converteren met behulp van de wizard Integratie Services-project conversie, die ook kan worden gestart vanuit SSMS. Zie het artikel [Converting projects to the project Deployment model](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)(Engelstalig) voor meer informatie.
 
@@ -37,19 +37,19 @@ In dit artikel leert u het volgende:
 
 Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 
-* Als u een Microsoft Azure Virtual Network voor de Azure Database Migration Service wilt maken met behulp van het Azure Resource Manager implementatie model, dat een site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Zie voor meer informatie het artikel [Network-topologieën voor het Azure SQL database van beheerde-instantie migraties met behulp van Azure database Migration service]( https://aka.ms/dmsnetworkformi). Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
+* Als u een Microsoft Azure Virtual Network voor de Azure Database Migration Service wilt maken met behulp van het Azure Resource Manager implementatie model, dat een site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Zie het artikel [netwerktopologieën voor SQL Managed instance-migraties met Azure database Migration service]( https://aka.ms/dmsnetworkformi)voor meer informatie. Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
 * Om ervoor te zorgen dat de regels voor de netwerk beveiligings groep van het virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren om te Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * De Windows Firewall configureren [voor toegang tot de bron database-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
 * Als u uw Windows Firewall wilt openen om de Azure Database Migration Service toegang te geven tot de bron SQL Server, die standaard TCP-poort 1433 is.
 * Als u meerdere benoemde SQL Server-exemplaren uitvoert met behulp van dynamische poorten, kunt u desgewenst de SQL Browser Service inschakelen en toegang tot de UDP-poort 1434 via uw firewalls toestaan, zodat de Azure Database Migration Service verbinding kan maken met een benoemd exemplaar op uw bronserver.
 * Als u een firewallapparaat gebruikt vóór de brondatabases, moet u mogelijk firewallregels toevoegen om de Azure Database Migration Service toegang te geven tot de brondatabase(s) voor migratie. Hetzelfde geldt voor bestanden via SMB-poort 445.
-* Een Azure SQL Database beheerde instantie voor het hosten van SSISDB. Als u er een wilt maken, volgt u de details in het artikel [een Azure SQL database beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
+* Een door SQL beheerd exemplaar voor het hosten van SSISDB. Als u er een wilt maken, volgt u de details in het artikel [een door Azure SQL beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started).
 * Om ervoor te zorgen dat de aanmeldingen die worden gebruikt om verbinding te maken met de bron SQL Server en het beheerde exemplaar van het doel lid zijn van de serverrol sysadmin.
-* Als u wilt controleren of SSIS is ingericht in Azure Data Factory (ADF) met Azure-SSIS Integration Runtime (IR) met de doel-SSISDB die wordt gehost door een Azure SQL Database beheerde instantie (zoals beschreven in het artikel, [maakt u de Azure-SSIS Integration runtime in azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)).
+* Als u wilt controleren of SSIS is ingericht in Azure Data Factory (ADF) met Azure-SSIS Integration Runtime (IR) met de doel-SSISDB die wordt gehost door een SQL Managed instance (zoals beschreven in het artikel, [maakt u de Azure-SSIS Integration runtime in azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)).
 
 ## <a name="assess-source-ssis-projectspackages"></a>Bron-SSIS-projecten/-pakketten beoordelen
 
-Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base Migration Assistant (DMA), worden uw SSIS-projecten/-pakketten beoordeeld/gevalideerd omdat ze opnieuw worden geïmplementeerd naar de doel-SSISDB die worden gehost op een beheerde instantie van Azure SQL Database.
+Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base Migration Assistant (DMA), worden uw SSIS-projecten/-pakketten beoordeeld/gevalideerd omdat ze opnieuw worden geïmplementeerd naar de doel-SSISDB die worden gehost op een door Azure SQL beheerd exemplaar.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registreer de Microsoft.DataMigration-resourceprovider
 
@@ -81,7 +81,7 @@ Hoewel de evaluatie van de bron-SSISDB nog niet is geïntegreerd in de data base
 
 5. Selecteer een bestaand virtueel netwerk of maak een.
 
-    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron SQL Server en het doel Azure SQL Database beheerde exemplaar.
+    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron SQL Server en het doel exemplaar van Azure SQL Managed instance.
 
     Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in azure Portal.
 
@@ -107,7 +107,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
 3. Selecteer + **Nieuw migratieproject**.
 
-4. Geef in het scherm **Nieuw migratie project** een naam op voor het project, Selecteer in het tekstvak **type bron server** de optie **SQL Server**, Selecteer in het tekstvak **doel server type** de optie **Azure SQL database beheerd exemplaar**, en selecteer vervolgens voor **type activiteit** **SSIS-pakket migratie**.
+4. Geef in het scherm **Nieuw migratie project** een naam op voor het project, Selecteer in het tekstvak **type bron server** de optie **SQL Server**, Selecteer in het tekstvak **doel server type** de optie **Azure SQL Managed instance**en selecteer vervolgens voor **type activiteit** **SSIS-pakket migratie**.
 
    ![DMS-project maken](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 

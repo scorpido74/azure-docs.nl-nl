@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065033"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195931"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Problemen oplossen met behulp van Data Management Gateway
 Dit artikel bevat informatie over het oplossen van problemen met het gebruik van Data Management Gateway.
@@ -24,7 +24,7 @@ Dit artikel bevat informatie over het oplossen van problemen met het gebruik van
 > [!NOTE]
 > Dit artikel is van toepassing op versie 1 van Azure Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u [zelf-hostende Integration runtime in Data Factory](../create-self-hosted-integration-runtime.md).
 
-Zie het artikel [Data Management Gateway](data-factory-data-management-gateway.md) voor gedetailleerde informatie over de gateway. Zie het artikel [gegevens verplaatsen tussen on-premises en de Cloud](data-factory-move-data-between-onprem-and-cloud.md) voor een overzicht van het verplaatsen van gegevens van een on-premises SQL server data base naar Microsoft Azure Blob-opslag met behulp van de gateway.
+Zie het artikel [Data Management Gateway](data-factory-data-management-gateway.md) voor gedetailleerde informatie over de gateway. Zie het artikel [gegevens verplaatsen tussen on-premises en de Cloud](data-factory-move-data-between-onprem-and-cloud.md) voor een overzicht van het verplaatsen van gegevens van een SQL server data base naar Microsoft Azure Blob-opslag met behulp van de gateway.
 
 ## <a name="failed-to-install-or-register-gateway"></a>Kan de gateway niet installeren of registreren
 ### <a name="1-problem"></a>1. probleem
@@ -279,7 +279,7 @@ Klik op de koppeling **Archief gateway logboeken** om logboeken te archiveren en
 Gedetailleerde informatie over de gateway Logboeken vindt u in de Windows-gebeurtenis Logboeken.
 
 1. Start Windows **Logboeken**.
-2. Zoek Logboeken in de >  **Logboeken van toepassingen en services****Data Management Gateway** map.
+2. Zoek Logboeken in de **Logboeken van toepassingen en services**  >  **Data Management Gateway** map.
 
    Wanneer u problemen met de gateway wilt oplossen, zoekt u naar fout niveau gebeurtenissen in de logboeken.
 

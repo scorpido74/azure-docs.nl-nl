@@ -1,6 +1,6 @@
 ---
 title: Verbinden met Excel
-description: Meer informatie over hoe u micro soft Excel verbindt met Azure SQL Database. Gegevens importeren in Excel voor rapportage en gegevens verkenning.
+description: Meer informatie over hoe u micro soft Excel verbindt met een data base in Azure SQL Database. Gegevens importeren in Excel voor rapportage en gegevens verkenning.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,27 +11,28 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 08bf78e6cc548ed717d6bc57946067a16ec13e2b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043448"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195489"
 ---
-# <a name="connect-excel-to-azure-sql-database-and-create-a-report"></a>Excel verbinden met Azure SQL Database en een rapport maken
+# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Excel verbinden met een data base in Azure SQL Database en een rapport maken
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Verbinding maken met Excel om gegevens te Azure SQL Database en te importeren en tabellen en grafieken te maken op basis van waarden in de data base. In deze zelfstudie stelt u de verbinding tussen Excel en een databasetabel in, slaat u het bestand met de gegevens en de verbindingsinformatie voor Excel op en maakt u vervolgens een draaigrafiek uit de databasewaarden.
+U kunt Excel verbinden met een data base in Azure SQL Database en vervolgens gegevens importeren en tabellen en grafieken maken op basis van waarden in de data base. In deze zelfstudie stelt u de verbinding tussen Excel en een databasetabel in, slaat u het bestand met de gegevens en de verbindingsinformatie voor Excel op en maakt u vervolgens een draaigrafiek uit de databasewaarden.
 
-U hebt een SQL Database nodig om aan de slag te gaan. Als u er nog geen hebt, raadpleegt u [een Azure SQL database maken](single-database-create-quickstart.md) en een [IP-firewall op server niveau maken](firewall-create-server-level-portal-quickstart.md) om een SQL database te krijgen met voorbeeld gegevens die in een paar minuten actief zijn.
+U moet een Data Base maken in SQL Database voordat u aan de slag gaat. Als u er nog geen hebt, raadpleegt u [een Data Base maken in Azure SQL database](single-database-create-quickstart.md) en maakt u een [IP-firewall op server niveau](firewall-create-server-level-portal-quickstart.md) om een Data Base te verkrijgen met voorbeeld gegevens die in een paar minuten actief zijn.
 
 In dit artikel importeert u voorbeeld gegevens uit dat artikel in Excel, maar u kunt dezelfde stappen volgen met uw eigen gegevens.
 
 U hebt ook een kopie van Excel nodig. Dit artikel gebruikt [Microsoft Excel 2016](https://products.office.com/).
 
-## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Excel verbinden met een SQL Database en gegevens laden
+## <a name="connect-excel-and-load-data"></a>Excel verbinden en gegevens laden
 
-1. Als u Excel wilt verbinden met een SQL Database, opent u Excel en maakt u een nieuwe werkmap of opent u een bestaande Excel-werkmap.
+1. Als u Excel wilt verbinden met een data base in SQL Database, opent u Excel en maakt u een nieuwe werkmap of opent u een bestaande Excel-werkmap.
 2. Selecteer in de menu balk boven aan de pagina het tabblad **gegevens** , selecteer **gegevens ophalen**, selecteer uit Azure en selecteer vervolgens **uit Azure SQL database**.
 
    ![Selecteer een gegevens Bron: verbinden Excel met SQL Database.](./media/connect-excel/excel_data_source.png)
@@ -53,7 +54,7 @@ U hebt ook een kopie van Excel nodig. Dit artikel gebruikt [Microsoft Excel 2016
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Importeer de gegevens in Excel en maak een draaigrafiek.
 
-Nu u de verbinding tot stand hebt gebracht, hebt u verschillende opties voor het laden van de gegevens. Met de volgende stappen kunt u bijvoorbeeld een draai grafiek maken op basis van de gegevens die in uw SQL Database zijn gevonden.
+Nu u de verbinding tot stand hebt gebracht, hebt u verschillende opties voor het laden van de gegevens. Met de volgende stappen maakt u bijvoorbeeld een draai grafiek op basis van de gegevens in uw data base in SQL Database.
 
 1. Volg de stappen in de vorige sectie, maar dit keer, in plaats van **laden**te selecteren, selecteert **u laden naar** in de vervolg keuzelijst **laden** .
 2. Selecteer vervolgens hoe u deze gegevens in uw werkmap wilt weer geven. We hebben **draaigrafiek** gekozen. U kunt ook kiezen voor **Nieuw werkblad** of **Deze gegevens toevoegen aan een gegevensmodel**. Zie voor meer informatie over gegevensmodellen [Een gegevensmodel maken in Excel](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).
@@ -79,10 +80,10 @@ Als u de verbindings gegevens permanent wilt opslaan, kunt u een. ODC-bestand ma
 
       ![Dialoog venster nieuwe verbinding](./media/connect-excel/new-connection.png)
 
-2. Typ in de **wizard gegevens verbinding**de naam van uw server en uw SQL database referenties. Selecteer **Next**.
+2. Typ in de **wizard gegevens verbinding**de naam van uw server en uw SQL database referenties. Selecteer **Volgende**.
    1. Selecteer de data base die uw gegevens bevat uit de vervolg keuzelijst.
    2. Selecteer de tabel of weer gave waarin u geïnteresseerd bent. We hebben gekozen voor vGetAllCategories.
-   3. Selecteer **Next**.
+   3. Selecteer **Volgende**.
 
       ![Wizard gegevens verbinding](./media/connect-excel/data-connection-wizard.png)
 

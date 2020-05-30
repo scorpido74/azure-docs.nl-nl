@@ -11,17 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/28/2020
 ms.author: spelluru
-ms.openlocfilehash: aef5cd13742c0265851f5ba2918d557b4e1026d0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7ae0fa5a8816f353636c9b4d58293e825361b207
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592641"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204292"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Een galerie met gedeelde afbeeldingen koppelen of ontkoppelen in Azure Lab Services
 In dit artikel wordt beschreven hoe u een galerie met gedeelde afbeeldingen koppelt aan of koppelt aan een Lab-account. 
+
+> [!NOTE]
+> Wanneer u [een sjabloon afbeelding van een Lab](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) in Azure Lab Services opslaat in een galerie met gedeelde afbeeldingen, wordt de afbeelding geüpload naar de galerie als een gespecialiseerde afbeelding. [Gespecialiseerde installatie kopieën](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) blijven computerspecifieke informatie en gebruikers profielen. U kunt nog steeds rechtstreeks een gegeneraliseerde installatie kopie uploaden naar de galerie buiten Azure Lab Services. 
+>
+> Een Lab-Maker kan een sjabloon-VM maken op basis van gegeneraliseerde en gespecialiseerde installatie kopieën in Azure Lab Services. 
 
 ## <a name="scenarios"></a>Scenario's
 Hier volgen enkele scenario's die door deze functie worden ondersteund: 
@@ -29,11 +34,7 @@ Hier volgen enkele scenario's die door deze functie worden ondersteund:
 - Een Lab-account beheerder koppelt een galerie met gedeelde afbeeldingen aan het lab-account en uploadt een afbeelding naar de galerie met gedeelde afbeeldingen buiten de context van een lab. Vervolgens kunnen Lab-ontwikkel aars die installatie kopie uit de galerie met gedeelde afbeeldingen gebruiken om Labs te maken. 
 - Een Lab-account beheerder koppelt een galerie met gedeelde afbeeldingen aan het lab-account. Met een Lab Creator (docent) wordt de aangepaste afbeelding van zijn/haar Lab opgeslagen in de galerie met gedeelde afbeeldingen. Vervolgens kunnen andere Lab-makers deze afbeelding selecteren in de galerie met gedeelde afbeeldingen om een sjabloon voor hun Labs te maken. 
 
-    Wanneer een afbeelding wordt opgeslagen in een galerie met gedeelde afbeeldingen, Azure Lab Services de opgeslagen installatie kopie repliceren naar andere regio's die beschikbaar zijn in dezelfde [geografie](https://azure.microsoft.com/global-infrastructure/geographies/). Het zorgt ervoor dat de installatie kopie beschikbaar is voor Labs die is gemaakt in andere regio's in dezelfde geografie. Het opslaan van afbeeldingen naar een galerie met gedeelde afbeeldingen brengt extra kosten met zich mee voor alle gerepliceerde installatie kopieën. Deze kosten zijn gescheiden van de kosten voor het Azure Lab Services gebruik. Voor meer informatie over de prijzen voor de galerie met gedeelde afbeeldingen raadpleegt u [Galerie met gedeelde afbeeldingen-facturering]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
-
-    > [!NOTE]
-    > Azure Lab Services ondersteunt het maken van sjabloon-Vm's op basis van **gegeneraliseerde** en **gespecialiseerde** installatie kopieën in een galerie met gedeelde installatie kopieën. 
-
+    Wanneer een afbeelding wordt opgeslagen in een galerie met gedeelde afbeeldingen, Azure Lab Services de opgeslagen installatie kopie repliceren naar andere regio's die beschikbaar zijn in dezelfde [geografie](https://azure.microsoft.com/global-infrastructure/geographies/). Het zorgt ervoor dat de installatie kopie beschikbaar is voor Labs die is gemaakt in andere regio's in dezelfde geografie. Het opslaan van afbeeldingen naar een galerie met gedeelde afbeeldingen brengt extra kosten met zich mee voor alle gerepliceerde installatie kopieën. Deze kosten zijn gescheiden van de kosten voor het Azure Lab Services gebruik. Voor meer informatie over de prijzen voor de galerie met gedeelde afbeeldingen raadpleegt u [Galerie met gedeelde afbeeldingen-facturering](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Configureren op het moment dat het lab-account wordt gemaakt
 Wanneer u een Lab-account maakt, kunt u een galerie met gedeelde afbeeldingen koppelen aan het lab-account. U kunt een bestaande galerie met gedeelde afbeeldingen selecteren in de vervolg keuzelijst of een nieuwe maken. Als u een galerie met gedeelde afbeeldingen wilt maken en koppelen aan het lab-account, selecteert u **Nieuw maken**, voert u een naam in voor de galerie en voert u **OK**in. 
@@ -48,10 +49,10 @@ Nadat het lab-account is gemaakt, kunt u de volgende taken uitvoeren:
 - Een galerie met gedeelde afbeeldingen loskoppelen van het lab-account
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Een galerie met gedeelde afbeeldingen maken en koppelen
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS** . Als u ster ( `*` ) naast Lab- **Services**selecteert, wordt deze toegevoegd aan de sectie **Favorieten** in het menu links. Vanaf de volgende keer kunt u **Lab-Services** selecteren onder **Favorieten**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+2. Selecteer in het menu links **Alle services**. Selecteer **Lab Services** in de sectie **DEVOPS** . Selecteer de ster (`*`) naast de **Lab Services** om er een toe te voegen aan de sectie **FAVORIETEN** in het menu links. Vanaf de volgende keer selecteert u **Lab Services** onder **FAVORIETEN**.
 
-    ![Alle services-> Lab-Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+    ![Alle Services -> Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. Selecteer uw Lab-account om de pagina **Lab-account** weer te geven. 
 4. Selecteer in het menu links **gedeelde installatie kopie galerie** en selecteer **+ maken** op de werk balk.  
 
@@ -95,4 +96,4 @@ Er kan slechts één galerie met gedeelde afbeeldingen worden gekoppeld aan een 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de [Galerie met gedeelde afbeeldingen gebruiken](how-to-use-shared-image-gallery.md)voor meer informatie over het opslaan van een Lab-afbeelding in de galerie met gedeelde afbeeldingen of het gebruik van een afbeelding uit de galerie met gedeelde afbeeldingen om een virtuele machine te maken.
 
-Zie [Galerie met gedeelde afbeeldingen](../../virtual-machines/windows/shared-image-galleries.md)voor meer informatie over gedeelde afbeeldings galerieën in het algemeen.
+Zie [Galerie met gedeelde afbeeldingen](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)voor meer informatie over gedeelde afbeeldings galerieën in het algemeen.

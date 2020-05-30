@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/27/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118671"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220503"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen in Azure Logic Apps
 
@@ -28,12 +28,12 @@ In dit artikel wordt beschreven hoe u met de SAP-connector toegang kunt krijgen 
 De SAP-connector maakt gebruik van de [SAP .net connector (NCo)-bibliotheek](https://support.sap.com/en/product/connectors/msnet.html) en biedt de volgende acties:
 
 * **Bericht verzenden naar SAP**: IDOC verzenden via TRFC, BAPI-functies aanroepen via RFC of RFC/tRFC aanroepen in SAP-systemen.
+
 * **Wanneer een bericht wordt ontvangen van SAP**: IDOC ontvangen via TRFC, BAPI-functies aanroepen via TRFC of RFC/tRFC aanroepen in SAP-systemen.
+
 * **Schema's genereren**: schema's genereren voor de SAP-artefacten voor IDOC, BAPI of RFC.
 
 Voor deze bewerkingen ondersteunt de SAP-connector basis verificatie via gebruikers namen en wacht woorden. De connector biedt ook ondersteuning voor [beveiligde netwerk communicatie (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). SNC kan worden gebruikt voor SAP NetWeaver single sign-on (SSO) of voor aanvullende beveiligings mogelijkheden van een extern beveiligings product.
-
-De SAP-connector integreert met on-premises SAP-systemen via de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md). Bij het verzenden van scenario's, bijvoorbeeld wanneer een bericht wordt verzonden vanuit een logische app naar een SAP-systeem, fungeert de gegevens gateway als een RFC-client en worden de aanvragen doorgestuurd van de logische app naar SAP. In ontvangst scenario's fungeert de gegevens gateway ook als een RFC-server die aanvragen van SAP ontvangt en deze doorstuurt naar de logische app.
 
 In dit artikel wordt uitgelegd hoe u logische apps maakt die met SAP worden geïntegreerd, terwijl u de eerder beschreven integratie scenario's bestrijkt. In dit artikel wordt beschreven hoe u logische apps kunt migreren naar de meest recente SAP-connector voor Logic apps die gebruikmaken van de oudere SAP-connectors.
 
@@ -49,42 +49,121 @@ Als u dit artikel wilt volgen, hebt u de volgende items nodig:
 
 * Uw [SAP-toepassings server](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) of [SAP-berichten server](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* [Down load en installeer de on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) op uw lokale computer. Maak vervolgens [een Azure gateway-resource](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) voor die gateway in het Azure Portal. De gateway helpt u veilig toegang te krijgen tot on-premises gegevens en bronnen. 
-
-  * Zorg er als best practice voor dat u een ondersteunde versie van de on-premises gegevens gateway gebruikt. Micro soft brengt elke maand een nieuwe versie uit. Op dit moment ondersteunt micro soft de laatste zes versies. Als u een probleem met uw gateway ondervindt, voert u [een upgrade uit naar de nieuwste versie](https://aka.ms/on-premises-data-gateway-installer), die mogelijk updates bevat om het probleem op te lossen.
-
-* [Down load, installeer en configureer de meest recente SAP-client bibliotheek](#sap-client-library-prerequisites) op dezelfde computer als de on-premises gegevens gateway.
-
 * Bericht inhoud die u kunt verzenden naar uw SAP-server, zoals een voor beeld van een IDoc-bestand, moet de XML-indeling hebben en de naam ruimte bevatten voor de SAP-actie die u wilt gebruiken.
+
+* Als u de trigger **Wanneer een bericht wordt ontvangen van SAP** wilt gebruiken, moet u deze installatie stappen ook uitvoeren:
+
+  * Stel de beveiligings machtigingen voor uw SAP-gateway in met deze instelling:
+
+    `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
+
+  * Stel de beveiligings logboeken van de SAP-gateway in, waarmee u fouten in de Access Control lijst (ACL) kunt vinden en niet standaard is ingeschakeld. Anders wordt de volgende fout weer geven:
+
+    `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
+
+    Zie voor meer informatie het SAP Help-onderwerp, het [instellen van Gateway logboek registratie](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm).
+
+<a name="multi-tenant"></a>
+
+### <a name="multi-tenant-azure-prerequisites"></a>Azure-vereisten voor meerdere tenants
+
+Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in een multi tenant Azure en u de beheerde SAP-connector wilt gebruiken, die niet systeem eigen wordt uitgevoerd in een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Als u gebruikmaakt van een ISE op Premium niveau en u de SAP-connector wilt gebruiken die systeem eigen wordt uitgevoerd in de ISE, raadpleegt u de [vereisten voor Integration service Environment (ISE)](#sap-ise).
+
+De beheerde SAP-connector (non-ISE) kan worden geïntegreerd met on-premises SAP-systemen via de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-connection.md). Als bijvoorbeeld in scenario's voor het verzenden van berichten een bericht vanuit een logische app naar een SAP-systeem wordt verzonden, fungeert de gegevens gateway als een RFC-client en worden de aanvragen die van de logische app worden ontvangen, doorgestuurd naar SAP. Evenzo fungeert de gegevens gateway in scenario's voor het ontvangen van berichten als een RFC-server die aanvragen van SAP ontvangt en deze doorstuurt naar de logische app.
+
+* [Down load en installeer de on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) op uw lokale computer. Maak vervolgens [een Azure gateway-resource](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) voor die gateway in het Azure Portal. De gateway helpt u veilig toegang te krijgen tot on-premises gegevens en bronnen.
+
+  Zorg er als best practice voor dat u een ondersteunde versie van de on-premises gegevens gateway gebruikt. Micro soft brengt elke maand een nieuwe versie uit. Op dit moment ondersteunt micro soft de laatste zes versies. Als u een probleem met uw gateway ondervindt, voert u [een upgrade uit naar de nieuwste versie](https://aka.ms/on-premises-data-gateway-installer), die mogelijk updates bevat om het probleem op te lossen.
+
+* [Down load en installeer de meest recente SAP-client bibliotheek](#sap-client-library-prerequisites) op dezelfde computer als de on-premises gegevens gateway.
+
+<a name="sap-ise"></a>
+
+### <a name="integration-service-environment-ise-prerequisites"></a>Vereisten voor de integratie service omgeving (ISE)
+
+Deze vereisten zijn van toepassing wanneer uw Logic apps worden uitgevoerd in een [integratie service omgeving](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)op Premium-niveau (niet op ontwikkelaars niveau) en u de SAP-connector wilt gebruiken die systeem eigen wordt uitgevoerd in een ISE. Een ISE biedt toegang tot bronnen die worden beveiligd met een virtueel Azure-netwerk en biedt andere ISE-systeem eigen connectors waarmee Logic apps rechtstreeks toegang hebben tot on-premises resources zonder gebruik te maken van een on-premises gegevens gateway.
+
+> [!NOTE]
+> Hoewel de SAP ISE-connector zichtbaar is binnen een ISE op ontwikkelaars niveau, mislukt de installatie van de connector.
+
+1. Als u nog geen Azure Storage-account en een BLOB-container hebt, moet u die container maken met behulp van de [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) of de [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+
+1. [Down load en installeer de meest recente SAP-client bibliotheek](#sap-client-library-prerequisites) op uw lokale computer. U moet de volgende assembly bestanden hebben:
+
+   * libicudecnumber. dll
+   * rscp4n. dll
+   * sapnco. dll
+   * sapnco_utils. dll
+
+1. Maak een zip-bestand dat deze assembly's bevat en upload dit pakket naar uw BLOB-container in Azure Storage.
+
+1. Blader in het Azure Portal of Azure Storage Explorer naar de container locatie waar u het zip-bestand hebt geüpload.
+
+1. Kopieer de URL voor die locatie en zorg ervoor dat u het SAS-token (Shared Access Signature) opneemt.
+
+   Anders wordt het SAS-token niet toegestaan en wordt de implementatie van de SAP ISE-connector mislukt.
+
+1. Voordat u de SAP ISE-connector kunt gebruiken, moet u de connector in uw ISE installeren en implementeren.
+
+   1. Zoek en open uw ISE in de [Azure Portal](https://portal.azure.com).
+   
+   1. Selecteer in het menu ISE **beheerde connectors**  >  **toevoegen**. Zoek en selecteer **SAP**in de lijst connectors.
+   
+   1. Plak in het deel venster **een nieuwe beheerde connector toevoegen** , in het vak **SAP package** , de URL voor het zip-bestand dat de SAP-assembly's bevat. *Zorg ervoor dat u het SAS-token opneemt.*
+
+   1. Als u gereed bent, selecteert u **Maken**.
+
+   Zie [ISE-connectors toevoegen](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment)voor meer informatie.
+
+1. Als uw SAP-exemplaar en ISE zich in verschillende virtuele netwerken bevinden, moet u [deze netwerken ook peeren](../virtual-network/tutorial-connect-virtual-networks-portal.md) zodat het virtuele netwerk van uw ISE verbinding heeft met het virtuele netwerk van uw SAP-exemplaar.
+
+<a name="sap-client-library-prerequisites"></a>
 
 ### <a name="sap-client-library-prerequisites"></a>Vereisten voor SAP-client bibliotheek
 
-* Standaard plaatst het SAP-installatie programma de assembly bestanden in de standaardmap voor installatie. Kopieer de assembly bestanden uit de standaardmap voor installatie naar de installatiemap van de gateway.
+* Zorg ervoor dat u de meest recente versie [van SAP connector (NCo 3,0) installeert voor Microsoft .net 3.0.22.0 gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://softwaredownloads.sap.com/file/0020000001000932019). Eerdere versies kunnen leiden tot compatibiliteits problemen. Zie versies van SAP- [client bibliotheek](#sap-library-versions)voor meer informatie.
 
-    * Als uw SAP-verbinding mislukt met het fout bericht "Controleer de account gegevens en/of de machtigingen en probeer het opnieuw", de assembly bestanden kunnen zich op de verkeerde locatie bevindt. Zorg ervoor dat u de assembly bestanden hebt gekopieerd naar de installatiemap van de gateway. Gebruik vervolgens [de logboek viewer voor .NET-assembly-bindingen voor het oplossen van problemen](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), waarmee u kunt controleren of de assembly bestanden zich op de juiste locatie bevinden.
+* Standaard plaatst het SAP-installatie programma de assembly bestanden in de standaardmap voor installatie. U moet de volgende assembly bestanden naar een andere locatie kopiëren, op basis van uw scenario:
 
-    * U kunt eventueel de optie **globale assembly-cache registratie** selecteren wanneer u de SAP-client bibliotheek installeert.
+  Voor Logic apps die worden uitgevoerd in een ISE, volgt u de stappen die worden beschreven in de vereisten voor de [integratie service omgeving](#sap-ise). Voor logische apps die worden uitgevoerd in een multi tenant Azure en de on-premises gegevens gateway te gebruiken, kopieert u de assembly bestanden uit de standaardinstallatiemap naar de installatiemap van de gegevens gateway. Als u problemen ondervindt met de gegevens gateway, raadpleegt u de volgende problemen:
 
-* Zorg ervoor dat u de nieuwste versie, [SAP connector (NCo 3,0) voor Microsoft .net 3.0.22.0 die is gecompileerd met .NET Framework 4,0-Windows 64-bits (x64)](https://softwaredownloads.sap.com/file/0020000001000932019), om de volgende redenen hebt geïnstalleerd:
+  * U moet de 64-bits versie voor de SAP-client bibliotheek installeren omdat de gegevens gateway alleen op 64-bits systemen kan worden uitgevoerd. Anders krijgt u een fout bericht over een onjuiste afbeelding omdat de data gateway-hostservice geen 32-bits-assembly's ondersteunt.
 
-    * Eerdere SAP NCo-versies kunnen worden gedeadlockd wanneer meer dan één IDoc-bericht tegelijk wordt verzonden. Deze voor waarde blokkeert alle latere berichten die worden verzonden naar de SAP-bestemming, waardoor er een time-out optreedt voor de berichten.
-    * De on-premises gegevens gateway wordt alleen uitgevoerd op 64-bits systemen. Anders krijgt u een fout bericht over een onjuiste afbeelding omdat de data gateway-hostservice geen 32-bits-assembly's ondersteunt.
+  * Als uw SAP-verbinding mislukt met het fout bericht "Controleer de account gegevens en/of de machtigingen en probeer het opnieuw", de assembly bestanden kunnen zich op de verkeerde locatie bevindt. Zorg ervoor dat u de assembly bestanden hebt gekopieerd naar de installatiemap van de gegevens gateway.
 
-    * Zowel de data gateway-hostservice als de micro soft SAP-adapter gebruiken .NET Framework 4,5. De SAP-NCo voor .NET Framework 4,0 werkt met processen die .NET runtime 4,0 gebruiken in 4.7.1. De SAP-NCo voor .NET Framework 2,0 werkt met processen die gebruikmaken van .NET runtime 2,0 tot 3,5, maar werkt niet meer met de meest recente on-premises gegevens gateway.
+    Om u te helpen problemen op te lossen, [gebruikt u de logboek viewer voor .NET-assembly-binding](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), waarmee u kunt controleren of de assembly bestanden zich op de juiste locatie bevinden. U kunt eventueel de optie **globale assembly-cache registratie** selecteren wanneer u de SAP-client bibliotheek installeert.
 
-### <a name="snc-prerequisites"></a>Vereisten voor SNC
+<a name="sap-library-versions"></a>
 
-Configureer deze instellingen als u SNC (optioneel) gebruikt:
+#### <a name="sap-client-library-versions"></a>SAP-client bibliotheek versies
 
-* Als u SNC gebruikt met SSO, moet u ervoor zorgen dat de gateway wordt uitgevoerd als een gebruiker die is toegewezen aan de SAP-gebruiker. Als u het standaard account wilt wijzigen, selecteert u **account wijzigen**en voert u de gebruikers referenties in.
+Eerdere SAP NCo-versies kunnen worden gedeadlockd wanneer meer dan één IDoc-bericht tegelijk wordt verzonden. Deze voor waarde blokkeert alle latere berichten die worden verzonden naar de SAP-bestemming, waardoor er een time-out optreedt voor de berichten.
 
-  ![Gateway account wijzigen](./media/logic-apps-using-sap-connector/gateway-account.png)
+Dit zijn de relaties tussen de SAP-client bibliotheek, de .NET Framework, de .NET-runtime en de gateway:
 
-* Als u SNC inschakelt met een extern beveiligings product, kopieert u de SNC-bibliotheek of-bestanden op dezelfde computer waarop de gateway is geïnstalleerd. Enkele voor beelden van SNC-producten zijn [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos en NTLM.
+* Zowel de micro soft SAP-adapter als de gateway-hostservice gebruiken .NET Framework 4,5.
+
+* De SAP-NCo voor .NET Framework 4,0 werkt met processen die .NET runtime 4,0 gebruiken in 4.7.1.
+
+* De SAP-NCo voor .NET Framework 2,0 werkt met processen die gebruikmaken van .NET runtime 2,0 tot 3,5, maar werkt niet meer met de nieuwste gateway.
+
+### <a name="secure-network-communications-prerequisites"></a>Vereisten voor beveiligde netwerk communicatie
+
+Als u de on-premises gegevens gateway gebruikt met de optionele beveiligde netwerk communicatie (SNC), die alleen wordt ondersteund in azure met meerdere tenants, moet u deze instellingen ook configureren:
+
+* Als u SNC gebruikt met eenmalige aanmelding (SSO), zorg er dan voor dat de gegevens gateway wordt uitgevoerd als een gebruiker die is toegewezen aan de SAP-gebruiker. Als u het standaard account wilt wijzigen, selecteert u **account wijzigen**en voert u de gebruikers referenties in.
+
+  ![Gegevens gateway-account wijzigen](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Als u SNC inschakelt met een extern beveiligings product, kopieert u de SNC-bibliotheek of-bestanden op dezelfde computer waarop de gegevens gateway is geïnstalleerd. Enkele voor beelden van SNC-producten zijn [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos en NTLM.
+
+Zie [veilige netwerk communicatie inschakelen](#secure-network-communications)voor meer informatie over het inschakelen van SNC voor de gegevens gateway.
 
 <a name="migrate"></a>
 
 ## <a name="migrate-to-current-connector"></a>Migreren naar de huidige connector
+
+Voer de volgende stappen uit om de migratie uit te voeren vanaf een eerder beheerde SAP-connector (niet ISE) naar de huidige beheerde SAP-connector:
 
 1. Als u dit nog niet hebt gedaan, werkt u de [on-premises gegevens gateway](https://www.microsoft.com/download/details.aspx?id=53127) bij, zodat u over de meest recente versie beschikt. Zie [een on-premises gegevens gateway installeren voor Azure Logic apps](../logic-apps/logic-apps-gateway-install.md)voor meer informatie.
 
@@ -139,13 +218,15 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
    ![Selecteer de actie bericht verzenden naar SAP van het tabblad onderneming](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Als uw verbinding al bestaat, gaat u door met de volgende stap, zodat u uw SAP-actie kunt instellen. Als u echter om de verbindings gegevens wordt gevraagd, geeft u de informatie op zodat u nu een verbinding met uw on-premises SAP-server kunt maken.
+1. Als uw verbinding al bestaat, gaat u door met de volgende stap, zodat u uw SAP-actie kunt instellen. Als u echter om de verbindings gegevens wordt gevraagd, geeft u de informatie op zodat u een verbinding kunt maken met uw on-premises SAP-server.
 
    1. Geef een naam op voor de verbinding.
 
-   1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gateway resource die u hebt gemaakt in de Azure portal voor de installatie van de gateway. 
+   1. Als u de gegevens gateway gebruikt, voert u de volgende stappen uit:
    
-   1. Selecteer uw gateway resource onder **verbindings gateway**.
+      1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gegevens gateway resource die u hebt gemaakt in de Azure portal voor uw data Gateway-installatie.
+   
+      1. Onder **verbindings gateway**selecteert u uw gegevens gateway resource in Azure.
 
    1. Ga door met het verstrekken van informatie over de verbinding. Volg voor de eigenschap **aanmeldings type** de stap op basis van het feit of de eigenschap is ingesteld op **toepassings server** of **groep**:
    
@@ -257,9 +338,11 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
    1. Geef een naam op voor de verbinding.
 
-   1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gateway resource die u hebt gemaakt in de Azure portal voor de installatie van de gateway. 
+   1. Als u de gegevens gateway gebruikt, voert u de volgende stappen uit:
 
-   1. Selecteer uw gateway resource onder **verbindings gateway**.
+      1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gegevens gateway resource die u hebt gemaakt in de Azure portal voor uw data Gateway-installatie.
+
+      1. Onder **verbindings gateway**selecteert u uw gegevens gateway resource in Azure.
 
    1. Ga door met het verstrekken van informatie over de verbinding. Volg voor de eigenschap **aanmeldings type** de stap op basis van het feit of de eigenschap is ingesteld op **toepassings server** of **groep**:
 
@@ -279,7 +362,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 
 1. Geef de [vereiste para meters](#parameters) op op basis van de configuratie van uw SAP-systeem.
 
-   U kunt desgewenst een of meer SAP-acties opgeven. Met deze lijst met acties worden de berichten opgegeven die de trigger via de gegevens gateway van uw SAP-server ontvangt. Een lege lijst geeft aan dat de trigger alle berichten ontvangt. Als de lijst meer dan één bericht bevat, ontvangt de trigger alleen de berichten die in de lijst zijn opgegeven. Alle andere berichten die vanaf uw SAP-server worden verzonden, worden geweigerd door de gateway.
+   U kunt desgewenst een of meer SAP-acties opgeven. Met deze lijst met acties worden de berichten opgegeven die de trigger van uw SAP-server ontvangt. Een lege lijst geeft aan dat de trigger alle berichten ontvangt. Als de lijst meer dan één bericht bevat, ontvangt de trigger alleen de berichten die in de lijst zijn opgegeven. Alle andere berichten die vanaf uw SAP-server worden verzonden, worden geweigerd.
 
    U kunt een SAP-actie selecteren in de bestands kiezer:
 
@@ -300,7 +383,7 @@ In dit voor beeld wordt een logische app gebruikt die wordt geactiveerd wanneer 
 Uw logische app is nu klaar om berichten te ontvangen van uw SAP-systeem.
 
 > [!NOTE]
-> De SAP-trigger is geen polling-trigger, maar is in plaats daarvan een webhook-trigger. De trigger wordt alleen aangeroepen vanuit de gateway als er een bericht bestaat, dus er is geen polling nodig.
+> De SAP-trigger is geen polling-trigger, maar is in plaats daarvan een webhook-trigger. Als u de gegevens gateway gebruikt, wordt de trigger alleen vanuit de gegevens gateway aangeroepen wanneer er een bericht bestaat. er is dus geen polling nodig.
 
 <a name="parameters"></a>
 
@@ -320,11 +403,11 @@ De SAP-connector accepteert samen met eenvoudige teken reeks-en nummer invoer de
 
 1. Open de meest recente uitvoering, waarin het bericht wordt weer gegeven dat vanuit uw SAP-systeem is verzonden in de sectie trigger uitvoer.
 
-## <a name="receive-idoc-packets-from-sap"></a>IDOC pakketten ontvangen van SAP
+## <a name="receive-idoc-packets-from-sap"></a>IDoc pakketten ontvangen van SAP
 
-U kunt SAP instellen voor het [verzenden van IDOCs in pakketten](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), die batches of groepen van IDOCs zijn. Voor het ontvangen van IDOC-pakketten, de SAP-connector en de specifiek de trigger, hebt u geen extra configuratie nodig. Als u elk item in een IDOC-pakket echter wilt verwerken nadat de trigger het pakket heeft ontvangen, zijn er aanvullende stappen vereist om het pakket te splitsen in afzonderlijke IDOCs.
+U kunt SAP instellen voor het [verzenden van IDocs in pakketten](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), die batches of groepen van IDocs zijn. Voor het ontvangen van IDoc-pakketten, de SAP-connector en de specifiek de trigger, hebt u geen extra configuratie nodig. Als u elk item in een IDoc-pakket echter wilt verwerken nadat de trigger het pakket heeft ontvangen, zijn er aanvullende stappen vereist om het pakket te splitsen in afzonderlijke IDocs.
 
-Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit een pakket kunt ophalen met behulp van de [ `xpath()` functie](./workflow-definition-language-functions-reference.md#xpath):
+Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDocs uit een pakket kunt ophalen met behulp van de [ `xpath()` functie](./workflow-definition-language-functions-reference.md#xpath):
 
 1. Voordat u begint, hebt u een logische app met een SAP-trigger nodig. Als u deze logische app nog niet hebt, volgt u de vorige stappen in dit onderwerp om [een logische app in te stellen met een SAP-trigger](#receive-from-sap).
 
@@ -332,23 +415,23 @@ Hier volgt een voor beeld waarin wordt uitgelegd hoe u afzonderlijke IDOCs uit e
 
    ![SAP-trigger toevoegen aan de logische app](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Haal de hoofd naam ruimte op uit de XML-IDOC die uw logische app van SAP ontvangt. Als u deze naam ruimte uit het XML-document wilt extra heren, voegt u een stap toe die een lokale teken reeks variabele maakt en slaat die naam ruimte op met behulp van een `xpath()` expressie:
+1. Haal de hoofd naam ruimte op uit de XML-IDoc die uw logische app van SAP ontvangt. Als u deze naam ruimte uit het XML-document wilt extra heren, voegt u een stap toe die een lokale teken reeks variabele maakt en slaat die naam ruimte op met behulp van een `xpath()` expressie:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Hoofd naam ruimte ophalen van IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Hoofd naam ruimte ophalen van IDoc](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Als u een afzonderlijke IDOC wilt extra heren, voegt u een stap toe waarmee een matrix variabele wordt gemaakt en wordt de IDOC-verzameling opgeslagen met behulp van een andere `xpath()` expressie:
+1. Als u een afzonderlijke IDoc wilt extra heren, voegt u een stap toe waarmee een matrix variabele wordt gemaakt en wordt de IDoc-verzameling opgeslagen met behulp van een andere `xpath()` expressie:
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Matrix van items ophalen](./media/logic-apps-using-sap-connector/get-array.png)
 
-   De matrix variabele maakt elk IDOC beschikbaar voor uw logische app door het inventariseren van de verzameling. In dit voor beeld stuurt de logische app elke IDOC naar een SFTP-server met behulp van een lus:
+   De matrix variabele maakt elk IDoc beschikbaar voor uw logische app door het inventariseren van de verzameling. In dit voor beeld stuurt de logische app elke IDoc naar een SFTP-server met behulp van een lus:
 
-   ![IDOC naar SFTP-server verzenden](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![IDoc naar SFTP-server verzenden](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Elke IDOC moet de hoofd naam ruimte bevatten. Dit is de reden waarom de bestands inhoud in een- `<Receive></Receive` element samen met de hoofd naam ruimte wordt verpakt voordat de IDOC naar de downstream-app of de sftp-server in dit geval wordt verzonden.
+   Elke IDoc moet de hoofd naam ruimte bevatten. Dit is de reden waarom de bestands inhoud in een- `<Receive></Receive` element samen met de hoofd naam ruimte wordt verpakt voordat de IDOC naar de downstream-app of de sftp-server in dit geval wordt verzonden.
 
 U kunt de Quick Start-sjabloon voor dit patroon gebruiken door deze sjabloon te selecteren in de ontwerp functie voor logische apps wanneer u een nieuwe logische app maakt.
 
@@ -391,9 +474,9 @@ Selecteer **Opslaan**op de werk balk van de ontwerp functie.
 
    1. Geef een naam op voor de verbinding.
 
-   1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gateway resource die u hebt gemaakt in de Azure portal voor de installatie van de gateway. 
+   1. Selecteer in de sectie **gegevens gateway** , onder **abonnement**, eerst het Azure-abonnement voor de gegevens gateway resource die u hebt gemaakt in de Azure portal voor uw data Gateway-installatie. 
    
-   1. Selecteer uw gateway resource onder **verbindings gateway**.
+   1. Onder **verbindings gateway**selecteert u uw gegevens gateway resource in Azure.
 
    1. Ga door met het verstrekken van informatie over de verbinding. Volg voor de eigenschap **aanmeldings type** de stap op basis van het feit of de eigenschap is ingesteld op **toepassings server** of **groep**:
    
@@ -480,12 +563,16 @@ U kunt de gegenereerde schema's ook downloaden of opslaan in opslag plaatsen, zo
 
 1. Als de uitvoering is geslaagd, gaat u naar het integratie account en controleert u of de gegenereerde schema's bestaan.
 
+<a name="secure-network-communications"></a>
+
 ## <a name="enable-secure-network-communications"></a>Veilige netwerk communicatie inschakelen
 
-Voordat u begint, moet u ervoor zorgen dat u voldoet aan de eerder genoemde [vereisten](#pre-reqs):
+Voordat u begint, moet u ervoor zorgen dat u voldoet aan de eerder vermelde [vereisten](#pre-reqs), die alleen van toepassing zijn wanneer u de gegevens gateway en Logic apps uitvoert in een multi tenant-Azure:
 
-* De on-premises gegevens gateway is geïnstalleerd op een computer die zich in hetzelfde netwerk bevindt als uw SAP-systeem.
-* Voor SSO wordt de gateway uitgevoerd als een gebruiker die is toegewezen aan een SAP-gebruiker.
+* Zorg ervoor dat de on-premises gegevens gateway is geïnstalleerd op een computer die zich in hetzelfde netwerk bevindt als uw SAP-systeem.
+
+* Voor eenmalige aanmelding (SSO) wordt de gegevens gateway uitgevoerd als een gebruiker die is toegewezen aan een SAP-gebruiker.
+
 * De SNC-bibliotheek die de aanvullende beveiligings functies biedt, wordt geïnstalleerd op dezelfde computer als de gegevens gateway. Enkele voor beelden zijn [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos en NTLM.
 
    Als u SNC voor uw aanvragen naar of van het SAP-systeem wilt inschakelen, schakelt u het selectie vakje **SNC gebruiken** in de SAP-verbinding in en geeft u de volgende eigenschappen op:
@@ -554,7 +641,7 @@ Wanneer berichten worden verzonden met een **veilig type** ingeschakeld, ziet he
 
 ### <a name="confirm-transaction-explicitly"></a>Trans actie expliciet bevestigen
 
-Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, [transactionele RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDOC verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
+Wanneer u trans acties verzendt naar SAP vanuit Logic Apps, vindt deze uitwisseling plaats in twee stappen zoals beschreven in het SAP-document, [transactionele RFC server-Program ma's](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). De actie **verzenden naar SAP** verwerkt standaard zowel de stappen voor de functie overdracht als voor de transactie bevestiging in één aanroep. De SAP-connector biedt u de mogelijkheid om deze stappen uit te voeren. U kunt een IDoc verzenden en in plaats van de trans actie automatisch te bevestigen, kunt u de actie voor de expliciete **trans actie-id bevestigen** gebruiken.
 
 Deze mogelijkheid om de trans actie-ID-bevestiging te ontkoppelen is handig wanneer u trans acties niet wilt dupliceren in SAP, bijvoorbeeld in scenario's waarin storingen optreden vanwege oorzaken van problemen met het netwerk. Door de trans actie-ID afzonderlijk te bevestigen, wordt de trans actie slechts één keer in uw SAP-systeem uitgevoerd.
 
@@ -562,7 +649,7 @@ Hier volgt een voor beeld waarin dit patroon wordt weer gegeven:
 
 1. Maak een lege logische app en voeg een HTTP-trigger toe.
 
-1. Voeg de actie **IDOC verzenden** toe vanuit de SAP-connector. Geef de details op voor de IDOC die u naar uw SAP-systeem verzendt.
+1. Voeg de actie **IDOC verzenden** toe vanuit de SAP-connector. Geef de details op voor de IDoc die u naar uw SAP-systeem verzendt.
 
 1. Als u de trans actie-ID expliciet wilt bevestigen in een afzonderlijke stap, selecteert u **Nee**in het veld **TID bevestigen** . Voor het optionele **trans actie-ID-GUID** veld kunt u de waarde hand matig opgeven of de connector automatisch genereren en deze GUID retour neren in de reactie van de actie IDOC verzenden.
 
@@ -576,7 +663,7 @@ Hier volgt een voor beeld waarin dit patroon wordt weer gegeven:
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
-Dit zijn de bekende problemen en beperkingen voor de SAP-connector:
+Dit zijn de bekende problemen en beperkingen voor de beheerde SAP-connector (niet ISE):
 
 * De SAP-trigger biedt geen ondersteuning voor gegevens gateway clusters. In sommige failover-gevallen kan het knoop punt van de gegevens gateway dat met het SAP-systeem communiceert, afwijken van het actieve knoop punt, wat leidt tot onverwacht gedrag. Voor scenario's voor verzenden worden gegevens gateway clusters ondersteund.
 

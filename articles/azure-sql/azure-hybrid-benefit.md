@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: d57eb2718f79e9243426a59245abc44c98dc6249
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118606"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196454"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit-Azure SQL Database & beheerde instantie van SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u uw bestaande licenties uitwisselen voor kortings tarieven op Azure SQL Database en Azure SQL Managed instance met behulp van [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Met dit voor deel van Azure kunt u tot wel 30% of zelfs meer besparen op SQL Database & SQL Managed instance met behulp van uw on-premises SQL Server licenties met Software Assurance. De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) pagina heeft een reken machine om te helpen bij het bepalen van de besparingen.  Houd er rekening mee dat de Azure Hybrid Benefit niet van toepassing is op Azure SQL Database Server.
+In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u uw bestaande licenties uitwisselen voor kortings tarieven op Azure SQL Database en Azure SQL Managed instance met behulp van [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/). Met dit voor deel van Azure kunt u tot wel 30% of zelfs meer besparen op SQL Database & SQL Managed instance met behulp van uw SQL Server licenties met Software Assurance. De [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) pagina heeft een reken machine om te helpen bij het bepalen van de besparingen.  Houd er rekening mee dat de Azure Hybrid Benefit niet van toepassing is op Azure SQL Database Server.
 
 > [!NOTE]
 > Voor het wijzigen van Azure Hybrid Benefit is geen uitval tijd vereist.
@@ -77,7 +77,7 @@ We bieden de voor delen van License Mobility aan SQL Server klanten met Software
 Azure Hybrid Benefit voor SQL Server wijkt af van de mobiliteit van licenties op twee belang rijke gebieden:
 
 - Dit biedt economische voor delen voor het verplaatsen van uiterst gevirtualiseerde werk belastingen naar Azure. SQL Server Enterprise Edition-klanten kunnen in de Algemeen SKU vier kernen krijgen in azure voor elke kern waarover ze on-premises beschikken voor zeer gevirtualiseerde toepassingen. Licentie mobiliteit staat geen bijzondere kosten voordelen toe voor het verplaatsen van gevirtualiseerde werk belastingen naar de Cloud.
-- Het biedt een PaaS-doel op Azure (SQL Database Managed instance) dat zeer compatibel is met SQL Server on-premises.
+- Het biedt een PaaS-doel op Azure (SQL Database Managed instance) dat zeer compatibel is met SQL Server.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Wat zijn de specifieke rechten van de Azure Hybrid Benefit voor SQL Server?
 

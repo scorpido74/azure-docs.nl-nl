@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 58cf3358a9e908070ce9003d05dd0b576b1d2d3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b624e521ee102f331100f2836d2e33fd8f2b3ec8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429692"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193657"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Met HSM beveiligde sleutels importeren in Key Vault
 
@@ -33,11 +33,14 @@ Het overdragen van met HSM beveiligde sleutels naar Key Vault wordt ondersteund 
 
 |Leveranciers naam|Leveranciers type|Ondersteunde HSM-modellen|Ondersteunde methode voor het overdragen van HSM-sleutels|
 |---|---|---|---|
-|nCipher|Fabrikant|<ul><li>nShield-serie van Hsm's</li></ul>|[Verouderde BYOK-methode gebruiken](hsm-protected-keys-legacy.md)|
-|Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [De nieuwe methode BYOK gebruiken (preview-versie)](hsm-protected-keys-vendor-agnostic-byok.md)|
-|Fortanix|HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li></ul>|[De nieuwe methode BYOK gebruiken (preview-versie)](hsm-protected-keys-vendor-agnostic-byok.md)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Fabricage<br/>HSM as a Service|<ul><li>nShield-serie van Hsm's</li><li>nShield als een service</ul>|**Methode 1:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (met sterke Attestation voor sleutel import en HSM-validatie)<br/>**Methode 2:** de [New BYOK-methode gebruiken](hsm-protected-keys-byok.md) |
+|Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
+|Fortanix|HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li></ul>|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
+|Marvell|Fabrikant|Alle LiquidSecurity-Hsm's met<ul><li>Firmware versie 2.0.4 of hoger</li><li>Firmware versie 3,2 of hoger</li></ul>|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
+|Cryptomathic|ISV (Enter prise Key Management System)|Meerdere HSM-merken en-modellen, inclusief<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Zie [Cryptopmathic-site voor meer informatie](https://www.cryptomathic.com/azurebyok)|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg [Key Vault aanbevolen procedures](../general/best-practices.md) om de beveiliging, duurzaamheid en bewaking voor uw sleutels te garanderen.
+* Volg [Key Vault aanbevolen procedures](../general/best-practices.md) om de beveiliging, duurzaamheid en bewaking voor uw sleutels te garanderen.
+* Raadpleeg de [BYOK-specificatie](https://docs.microsoft.com/azure/key-vault/keys/byok-specification) voor een volledige beschrijving van de nieuwe methode BYOK

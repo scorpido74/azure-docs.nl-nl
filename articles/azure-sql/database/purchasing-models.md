@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/09/2020
-ms.openlocfilehash: a2f1ee064660b8a34d97875cdf5ddd3a2ac2959f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048145"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219863"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Met Azure SQL Database & SQL Managed instanties kunt u eenvoudig een volledig beheerd platform as a service-data base-engine (PaaS) aanschaffen dat aan uw prestatie-en kosten behoeften voldoet. Afhankelijk van het implementatie model dat u hebt gekozen voor Azure SQL Database, kunt u het inkoop model selecteren dat voor u geschikt is:
+Met Azure SQL Database & SQL Managed Instance kunt u eenvoudig een volledig beheerd platform as a Service (PaaS)-data base-engine aanschaffen die aan uw prestatie-en kosten behoeften voldoet. Afhankelijk van het implementatie model dat u hebt gekozen voor Azure SQL Database, kunt u het inkoop model selecteren dat voor u geschikt is:
 
 - [Op virtuele kern (vCore) gebaseerd inkoop model](service-tiers-vcore.md) (aanbevolen). Dit aankoop model biedt een keuze tussen een ingerichte Compute-laag en een serverloze Compute-laag. Met de ingerichte Compute-laag kiest u de exacte hoeveelheid reken resources die altijd worden ingericht voor uw werk belasting. Met de compute-laag zonder server geeft u het automatisch schalen van de reken resources over een configureerbaar reken bereik op. Met deze Compute-laag kunt u de data base ook automatisch onderbreken en hervatten op basis van de activiteit van de werk belasting. De vCore eenheids prijs per tijds eenheid is lager in de ingerichte Compute-laag dan in de serverloze Compute-laag.
 - [Op DTU (data base Trans Action Unit) gebaseerd aankoop model](service-tiers-dtu.md). Dit aankoop model bevat gebundelde reken-en opslag pakketten die zijn afgebalanceerd voor algemene werk belastingen.

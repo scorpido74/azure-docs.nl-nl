@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612500"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203851"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Probleemoplossingsoverzicht, feedback en ondersteuning
 
@@ -21,7 +21,7 @@ ms.locfileid: "82612500"
 >Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
 >
 > De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Dit artikel bevat een overzicht van de problemen die zich kunnen voordoen bij het instellen van een Windows Virtual Desktop-Tenant omgeving en biedt manieren om de problemen op te lossen.
 
@@ -53,6 +53,7 @@ Gebruik de volgende tabel voor het identificeren en oplossen van problemen die z
 | Licentie berichten of-fouten                                                          | Neem contact op met het team dat verantwoordelijk is voor het desbetreffende product als er problemen zijn gekoppeld aan een specifieke toepassing of product. |
 | Problemen met verificatie methoden van derden | Controleer of uw externe provider Windows Virtual Desktop-scenario's ondersteunt en hoe u deze aanpakt met betrekking tot bekende problemen. |
 | Problemen met het gebruik van Log Analytics voor virtueel bureau blad van Windows | Voor problemen met het diagnostische schema [opent u een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/).<br><br>Voor query's, visualisaties of andere problemen in Log Analytics selecteert u het juiste probleem type onder Log Analytics. |
+| Problemen met het gebruik van M365-apps | Neem contact op met het M365-beheer centrum met een van de Help-opties voor het [M365-beheer centrum](/microsoft-365/admin/contact-support-for-business-products/). |
 
 ## <a name="next-steps"></a>Volgende stappen
 

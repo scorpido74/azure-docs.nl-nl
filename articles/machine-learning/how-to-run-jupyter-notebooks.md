@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681442"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220195"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Hoe u Jupyter-notebooks uitvoert in uw werkruimte
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jupyter-notebooks uitvoeren in uw werk ruimte (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Meer informatie over het rechtstreeks uitvoeren van uw Jupyter-notebook in uw werk ruimte in Azure Machine Learning Studio. Hoewel u [Jupyter](https://jupyter.org/) of [jjupyterlab](https://jupyterlab.readthedocs.io)kunt starten, kunt u uw notitie blokken ook bewerken en uitvoeren zonder de werk ruimte te verlaten.
@@ -31,7 +31,7 @@ Bekijk hoe u het volgende kunt doen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
 * Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Notitie blokken maken
@@ -101,7 +101,7 @@ U kunt Jupyter of Jjupyterlab ook starten via de werk balk van het notitie blok.
 
 ### <a name="useful-keyboard-shortcuts"></a>Nuttige sneltoetsen
 
-|Toetsenbord  |Actie  |
+|Toetsenbord  |Bewerking  |
 |---------|---------|
 |SHIFT + ENTER     |  Een cel uitvoeren       |
 |CTRL + M (Windows)     |  Tabblad overvulling in notebook in-of uitschakelen.       |
@@ -140,14 +140,14 @@ Op de werk balk van notitie blokken kunt u de omgeving wijzigen waarop uw notiti
 
 Met deze acties worden de status van het notitie blok of de waarden van variabelen in het notitie blok niet gewijzigd:
 
-|Actie  |Resultaat  |
+|Bewerking  |Resultaat  |
 |---------|---------| --------|
 |De kernel stoppen     |  Stopt elke actieve cel. Als u een cel uitvoert, wordt de kernel automatisch opnieuw gestart. |
 |Naar een andere sectie van de werk ruimte navigeren     |     Actieve cellen worden gestopt. |
 
 Met deze acties wordt de status van het notitie blok opnieuw ingesteld en worden alle variabelen in het notitie blok opnieuw ingesteld.
 
-|Actie  |Resultaat  |
+|Bewerking  |Resultaat  |
 |---------|---------| --------|
 | De kernel wijzigen | Notebook maakt gebruik van nieuwe kernel |
 | Scha kelen tussen compute    |     In de notitie blok wordt automatisch de nieuwe Compute gebruikt. |

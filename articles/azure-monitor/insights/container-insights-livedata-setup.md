@@ -3,12 +3,13 @@ title: Azure Monitor instellen voor containers live data (preview) | Microsoft D
 description: In dit artikel wordt beschreven hoe u de real-time-weer gave van container Logboeken (stdout/stderr) en gebeurtenissen kunt instellen zonder kubectl te gebruiken met Azure Monitor voor containers.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: ec75cc0a014b8a4f8c9b9d89a5bdca93936eb68a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275371"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196043"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>De functie voor live data (preview) instellen
 
@@ -36,15 +37,15 @@ In dit artikel wordt uitgelegd hoe u verificatie configureert om de toegang tot 
 
 ## <a name="authentication-model"></a>Verificatiemodel
 
-De functies van live data (preview) maken gebruik van de Kubernetes-API, `kubectl` identiek aan het opdracht regel programma. In de Kubernetes API-eind punten wordt gebruikgemaakt van een zelfondertekend certificaat, dat niet kan worden gevalideerd door de browser. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
+De functies van live data (preview) maken gebruik van de Kubernetes-API, identiek aan het `kubectl` opdracht regel programma. In de Kubernetes API-eind punten wordt gebruikgemaakt van een zelfondertekend certificaat, dat niet kan worden gevalideerd door de browser. Deze functie maakt gebruik van een interne proxy om het certificaat te valideren met de AKS-service, zodat het verkeer wordt vertrouwd.
 
-De Azure Portal vraagt u uw aanmeldings referenties voor een Azure Active Directory cluster te valideren en u te omleiden naar de installatie van de client registratie tijdens het maken van het cluster (en opnieuw geconfigureerd in dit artikel). Dit gedrag is vergelijkbaar met het verificatie proces dat wordt `kubectl`vereist door. 
+De Azure Portal vraagt u uw aanmeldings referenties voor een Azure Active Directory cluster te valideren en u te omleiden naar de installatie van de client registratie tijdens het maken van het cluster (en opnieuw geconfigureerd in dit artikel). Dit gedrag is vergelijkbaar met het verificatie proces dat wordt vereist door `kubectl` . 
 
 >[!NOTE]
->Autorisatie voor uw cluster wordt beheerd door Kubernetes en het beveiligings model waarin het is geconfigureerd. Gebruikers die deze functie gebruiken, hebben toestemming nodig om de Kubernetes-configuratie (*kubeconfig*) te `az aks get-credentials -n {your cluster name} -g {your resource group}`downloaden, vergelijkbaar met het uitvoeren. Dit configuratie bestand bevat het autorisatie-en verificatie token voor de **Azure Kubernetes-service cluster**gebruikersrol, in het geval van Azure RBAC-ingeschakelde en AKS-clusters waarvoor geen RBAC-autorisatie is ingeschakeld. Het bevat informatie over Azure AD en client registratiegegevens wanneer AKS is ingeschakeld met Azure Active Directory (AD) op SAML gebaseerde eenmalige aanmelding.
+>Autorisatie voor uw cluster wordt beheerd door Kubernetes en het beveiligings model waarin het is geconfigureerd. Gebruikers die deze functie gebruiken, hebben toestemming nodig om de Kubernetes-configuratie (*kubeconfig*) te downloaden, vergelijkbaar met het uitvoeren `az aks get-credentials -n {your cluster name} -g {your resource group}` . Dit configuratie bestand bevat het autorisatie-en verificatie token voor de **Azure Kubernetes-service cluster**gebruikersrol, in het geval van Azure RBAC-ingeschakelde en AKS-clusters waarvoor geen RBAC-autorisatie is ingeschakeld. Het bevat informatie over Azure AD en client registratiegegevens wanneer AKS is ingeschakeld met Azure Active Directory (AD) op SAML gebaseerde eenmalige aanmelding.
 
 >[!IMPORTANT]
->Gebruikers van deze functies hebben [Azure Kubernetes-cluster](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) gebruikersrol voor het cluster nodig om deze functie te `kubeconfig` kunnen downloaden en gebruiken. Gebruikers hebben **geen** Inzender toegang tot het cluster nodig om deze functie te gebruiken. 
+>Gebruikers van deze functies hebben [Azure Kubernetes-cluster](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) gebruikersrol voor het cluster nodig om deze functie te kunnen downloaden `kubeconfig` en gebruiken. Gebruikers hebben **geen** Inzender toegang tot het cluster nodig om deze functie te gebruiken. 
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>ClusterMonitoringUser gebruiken met clusters met RBAC-functionaliteit
 
@@ -60,7 +61,7 @@ Als u een Kubernetes-cluster hebt dat niet is geconfigureerd met Kubernetes RBAC
 
 ## <a name="configure-kubernetes-rbac-authorization"></a>RBAC-autorisatie Kubernetes configureren
 
-Wanneer u de RBAC-autorisatie Kubernetes inschakelt, worden er twee gebruikers gebruikt: **clusterUser** en **clusterAdmin** om toegang te krijgen tot de Kubernetes-API. Dit is vergelijkbaar met het `az aks get-credentials -n {cluster_name} -g {rg_name}` uitvoeren van zonder de optie beheer. Dit betekent dat aan de **clusterUser** toegang moet worden verleend tot de eind punten in de KUBERNETES-API.
+Wanneer u de RBAC-autorisatie Kubernetes inschakelt, worden er twee gebruikers gebruikt: **clusterUser** en **clusterAdmin** om toegang te krijgen tot de Kubernetes-API. Dit is vergelijkbaar met het uitvoeren van `az aks get-credentials -n {cluster_name} -g {rg_name}` zonder de optie beheer. Dit betekent dat aan de **clusterUser** toegang moet worden verleend tot de eind punten in de KUBERNETES-API.
 
 De volgende voorbeeld stappen laten zien hoe u de binding van een cluster functie configureert vanuit deze yaml-configuratie sjabloon.
 
@@ -96,10 +97,10 @@ De volgende voorbeeld stappen laten zien hoe u de binding van een cluster functi
       apiGroup: rbac.authorization.k8s.io 
     ```
 
-2. Voer de volgende opdracht uit om uw configuratie bij te `kubectl apply -f LogReaderRBAC.yaml`werken:.
+2. Voer de volgende opdracht uit om uw configuratie bij te werken: `kubectl apply -f LogReaderRBAC.yaml` .
 
 >[!NOTE] 
-> Als u een vorige versie van het `LogReaderRBAC.yaml` bestand hebt toegepast op het cluster, werkt u het bij door de nieuwe code te kopiëren en plakken die in stap 1 hierboven is weer gegeven. Voer vervolgens de opdracht uit stap 2 uit om deze toe te passen op uw cluster.
+> Als u een vorige versie van het bestand hebt toegepast `LogReaderRBAC.yaml` op het cluster, werkt u het bij door de nieuwe code te kopiëren en plakken die in stap 1 hierboven is weer gegeven. Voer vervolgens de opdracht uit stap 2 uit om deze toe te passen op uw cluster.
 
 ## <a name="configure-ad-integrated-authentication"></a>Geïntegreerde AD-verificatie configureren 
 
@@ -118,10 +119,10 @@ Raadpleeg de [Kubernetes-documentatie](https://kubernetes.io/docs/reference/acce
 
 2. Selecteer **verificatie** in het linkerdeel venster. 
 
-3. Voeg twee omleidings-Url's toe aan deze lijst als typen **webtoepassingen** . De eerste basis-URL-waarde `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` moet zijn en de tweede basis-URL `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`-waarde moet zijn.
+3. Voeg twee omleidings-Url's toe aan deze lijst als typen **webtoepassingen** . De eerste basis-URL-waarde moet zijn `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` en de tweede basis-URL-waarde moet zijn `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` .
 
     >[!NOTE]
-    >Als u deze functie gebruikt in azure China, moet de waarde van de eerste basis- `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` URL en de tweede basis-URL- `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`waarde zijn. 
+    >Als u deze functie gebruikt in azure China, moet de waarde van de eerste basis-URL `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` en de tweede basis-URL-waarde zijn `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` . 
     
 4. Nadat u de omleidings-Url's hebt geregistreerd, selecteert u onder **impliciete toekenning**de opties **toegangs tokens** en **id-tokens** en slaat u de wijzigingen op.
 

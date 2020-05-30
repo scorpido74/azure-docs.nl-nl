@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366581"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220161"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
 
@@ -98,7 +98,10 @@ De volgende voor instellingen worden momenteel ondersteund:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: produceert één MP4-bestand met alleen stereo audio dat is gecodeerd met 192 kbps.
 - **EncoderNamedPreset. AdaptiveStreaming** (aanbevolen): Zie [automatisch genereren van een bitrate ladder](autogen-bitrate-ladder.md)voor meer informatie.
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: beschrijft een experimentele voor instelling voor code ring met inhoud. Op basis van de invoer inhoud probeert de service automatisch het optimale aantal lagen en de juiste bitrate-en resolutie-instellingen te bepalen voor levering door adaptieve streaming. De onderliggende algoritmen blijven in de loop van de tijd worden uitgevoerd. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie voor meer informatie [experimentele voor instelling voor code ring met inhoud](content-aware-encoding.md).
+- **EncoderNamedPreset. ContentAwareEncoding**: beschrijft een voor instelling voor code ring met inhoud. Op basis van de invoer inhoud probeert de service automatisch het optimale aantal lagen en de juiste bitrate-en resolutie-instellingen te bepalen voor levering door adaptieve streaming. De onderliggende algoritmen blijven in de loop van de tijd worden uitgevoerd. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie voor meer informatie [code ring met inhoud](content-aware-encoding.md).
+
+  > [!NOTE]
+  > Zorg ervoor dat u **ContentAwareEncoding** niet ContentAwareEncodingExperimental gebruikt.
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: produceert een set van acht GOP terug-afgevulde MP4-bestanden, variërend van 6000 kbps tot 400 kbps en stereo AAC-audio. De oplossing begint om 1080p en gaat omlaag naar 360p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: produceert een set van zes GOP terug-afgevulde MP4-bestanden, variërend van 3400 kbps tot 400 kbps en stereo AAC-audio. De oplossing begint op 720p en gaat omlaag naar 360p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: produceert een set van vijf GOP terug-afgevulde MP4-bestanden, variërend van 1600 kbps tot 400 kbps en stereo AAC-audio. De oplossing begint bij 480p en gaat omlaag naar 360p.
@@ -139,7 +142,7 @@ In Media Services v3 zijn de voor instellingen sterk getypeerde entiteiten in de
 
 Zie [schalen met CLI](media-reserved-units-cli-how-to.md)voor informatie over het schalen van media verwerking.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 Media Services worden geen geannuleerde of fout taken gefactureerd. Een taak die bijvoorbeeld een voortgang van 50% heeft bereikt en wordt geannuleerd, wordt niet in rekening gebracht tegen 50% van de taak minuten. Er worden alleen kosten in rekening gebracht voor voltooide taken.
 

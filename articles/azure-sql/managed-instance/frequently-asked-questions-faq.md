@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: c1a7f22314af472037194150b78e881395c14c2e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 518c4b83721e80aeaadfbdf5b03cddc62ae5479f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117386"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216332"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Dit artikel bevat de meest voorkomende vragen over [Azure SQL Managed instance](
 
 Zie [functies van Azure SQL Managed instance](../database/features-comparison.md)voor een lijst met ondersteunde functies in SQL Managed instance.
 
-Zie voor verschillen in de syntaxis en het gedrag tussen Azure SQL Managed instance en on-premises SQL Server [T-SQL-verschillen van SQL Server](transact-sql-tsql-differences-sql-server.md).
+Zie voor verschillen in de syntaxis en het gedrag tussen Azure SQL Managed instance en SQL Server [T-SQL-verschillen van SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
 ## <a name="tech-spec--resource-limits"></a>Technische specificaties & resource limieten
@@ -60,7 +60,7 @@ De verwachte tijd voor het maken van een SQL Managed instance of het wijzigen va
 
 ## <a name="naming-convention"></a>Naamgevings Conventie
 
-**Kan een SQL Managed instance dezelfde naam hebben als de on-premises SQL Server?**
+**Kan een SQL Managed instance dezelfde naam hebben als een on-premises SQL Server exemplaar?**
 
 Het wijzigen van de naam van een SQL-beheerde exemplaar wordt niet ondersteund.
 
@@ -240,3 +240,44 @@ Zodra u de versleutelings beveiliging beschikbaar maakt voor een SQL-beheerd exe
 **Hoe kan ik migreren van Azure SQL Database naar een beheerd exemplaar van SQL?**
 
 SQL Managed instance biedt dezelfde prestatie niveaus per reken-en opslag grootte als Azure SQL Database. Als u gegevens wilt consolideren voor één exemplaar of als u alleen een functie nodig hebt die uitsluitend wordt ondersteund in een SQL Managed instance, kunt u uw gegevens migreren met behulp van de functionaliteit voor exporteren/importeren (BACPAC).
+
+## <a name="password-policy"></a>Wachtwoord beleid 
+
+**Welke beleids regels voor wacht woorden worden toegepast op SQL-aanmeldingen voor SQL Managed instance?**
+
+Het wachtwoord beleid voor SQL-beheerde exemplaren voor SQL-aanmeldingen neemt het Azure-platform beleid over dat wordt toegepast op de virtuele machines die het beheerde exemplaar hebben. Op het moment is het niet mogelijk om een van deze instellingen te wijzigen, omdat deze instellingen worden gedefinieerd door Azure en worden overgenomen door een beheerd exemplaar.
+
+ > [!IMPORTANT]
+ > Het Azure-platform kan beleids vereisten wijzigen zonder dat u op de hoogte hoeft te zijn van de services die op dat beleid zijn gebaseerd.
+
+**Wat is het huidige Azure-platform beleid?**
+
+Bij elke aanmelding moet het wacht woord bij aanmelding worden ingesteld en het bijbehorende wacht woord worden gewijzigd nadat het maximum aantal leeftijden is bereikt.
+
+| **Beleid** | **Beveiligingsinstelling** |
+| --- | --- |
+| Maximale wachtwoord duur | 42 dagen |
+| Minimale wachtwoord duur | 1 dag |
+| Minimale wachtwoordlengte | 10 tekens |
+| Wacht woord moet voldoen aan complexiteits vereisten | Ingeschakeld |
+
+**Is het mogelijk om wachtwoord complexiteit en verloop tijd in SQL Managed instance op aanmeldings niveau uit te scha kelen?**
+
+Ja, u kunt CHECK_POLICY en CHECK_EXPIRATION velden op aanmeldings niveau beheren. U kunt de huidige instellingen controleren door de volgende T-SQL-opdracht uit te voeren:
+
+```sql
+SELECT *
+FROM sys.sql_logins
+```
+
+Daarna kunt u de opgegeven aanmeldings instellingen wijzigen door het volgende uit te voeren:
+
+```sql
+ALTER LOGIN test WITH CHECK_POLICY = ON;
+ALTER LOGIN test WITH CHECK_EXPIRATION = ON;
+```
+
+(Vervang ' test ' door de gewenste aanmeldings naam)
+
+ > [!Note]
+ > Standaard waarden voor CHECK_POLICY en CHECK_EXPIRATION zijn ingesteld op uit.

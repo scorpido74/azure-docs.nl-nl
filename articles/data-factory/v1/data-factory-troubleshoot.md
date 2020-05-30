@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931583"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195906"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problemen met Data Factory oplossen
 > [!NOTE]
@@ -49,7 +49,7 @@ Waarschijnlijk gebruikt u een verkeerd Azure-account of -abonnement met de Azure
 
 1. Connect-AzAccount-juiste gebruikers-ID en wacht woord gebruiken
 2. Get-AzSubscription: alle abonnementen voor het account weer geven.
-3. Selecteer de naam &lt;&gt; van het AzSubscription-abonnement: Selecteer het juiste abonnement. Gebruik dezelfde versie die u gebruikt om een data factory te maken op de Azure Portal.
+3. Selecteer &lt; de naam van &gt; het AzSubscription-abonnement: Selecteer het juiste abonnement. Gebruik dezelfde versie die u gebruikt om een data factory te maken op de Azure Portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probleem: starten van Data Management Gateway snelle installatie mislukt vanuit Azure Portal
 Voor de snelle installatie voor Data Management Gateway is Internet Explorer vereist of een webbrowser die compatibel is met Microsoft ClickOnce. Als u de snelle installatie niet kunt starten, voert u een van de volgende handelingen uit:
@@ -61,10 +61,10 @@ Voor de snelle installatie voor Data Management Gateway is Internet Explorer ver
     Doe hetzelfde voor Firefox (invoeg toepassing installeren). Klik op de knop Menu openen op de werkbalk (drie horizontale lijnen in de rechterbovenhoek). Klik vervolgens op Invoegtoepassingen, zoek op het trefwoord 'ClickOnce', kies een van de ClickOnce-extensies en installeer deze.
 * Gebruik de koppeling **hand matige installatie** die wordt weer gegeven op dezelfde Blade in de portal. U kunt deze methode gebruiken om het installatie bestand te downloaden en het hand matig uit te voeren. Nadat de installatie is voltooid, ziet u het dialoog venster Data Management Gateway configuratie. Kopieer de **sleutel** uit het portalscherm en gebruik deze in Configuratiebeheer om de gateway handmatig bij de service te registreren.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Probleem: kan geen verbinding maken met on-premises SQL Server
+### <a name="problem-fail-to-connect-to-sql-server"></a>Probleem: kan geen verbinding maken met SQL Server
 Start **Data Management Gateway Configuration Manager** op de gateway computer en gebruik het tabblad **probleem oplossing** om de verbinding met SQL Server vanaf de gateway computer te testen. Zie problemen [met gateway problemen oplossen](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) voor tips over het oplossen van problemen met verbinding/gateway.   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Probleem: invoer segmenten hebben een wacht status voor ooit
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Probleem: de invoer segmenten bevinden zich in de wacht status permanent
 Het segment kan om verschillende redenen een **wacht** status hebben. Een van de meest voorkomende redenen is dat de eigenschap **External** niet is ingesteld op **True**. Een gegevensset die buiten het bereik van Azure Data Factory wordt geproduceerd, moet worden gemarkeerd met een **externe** eigenschap. Deze eigenschap geeft aan dat de gegevens extern zijn en niet worden ondersteund door pijp lijnen in de data factory. De gegevenssegmenten worden gemarkeerd als **Gereed** wanneer de gegevens beschikbaar zijn in het desbetreffende archief.
 
 Raadpleeg het volgende voorbeeld voor het gebruik van de eigenschap **external**. U kunt optioneel **externalData*** opgeven wanneer u external instelt op True.

@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: d0380239fde2c58e7c9a2e7dc3638881dbd8fd73
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043973"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188702"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Zelf studie: SQL Data Sync instellen tussen Azure SQL Database en SQL Server on-premises
+# <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Zelf studie: SQL Data Sync instellen tussen data bases in Azure SQL Database en SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelf studie leert u hoe u SQL Data Sync kunt instellen door een synchronisatie groep te maken die zowel Azure SQL Database als SQL Server exemplaren bevat. De synchronisatie groep is aangepast geconfigureerd en gesynchroniseerd op het schema dat u hebt ingesteld.
@@ -27,7 +27,7 @@ In de zelf studie wordt ervan uitgegaan dat u ten minste een eerdere ervaring he
 
 Zie voor een overzicht van SQL Data Sync [gegevens synchroniseren in de Cloud en on-premises data bases met SQL Data Sync](sql-data-sync-data-sql-server-sql-database.md).
 
-Zie voor voor beelden van Power shell voor informatie over het configureren van SQL Data Sync de [synchronisatie tussen data bases in SQL database](scripts/sql-data-sync-sync-data-between-sql-databases.md) of [een Azure SQL Database en een SQL Server on-premises data base](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
+Zie voor voor beelden van Power shell voor informatie over het configureren van SQL Data Sync de [synchronisatie tussen data bases in SQL database](scripts/sql-data-sync-sync-data-between-sql-databases.md) of [tussen data bases in Azure SQL database en SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
 > [!IMPORTANT]
 > SQL Data Sync biedt op dit moment **geen** ondersteuning voor het beheerde exemplaar van Azure SQL.
@@ -96,9 +96,9 @@ Voeg in de sectie **lid data base** optioneel een Azure SQL database toe aan de 
 
 <a name="add-on-prem"></a>
 
-### <a name="to-add-an-on-premises-sql-server-database"></a>Een on-premises SQL Server-Data Base toevoegen
+### <a name="to-add-a-sql-server-database"></a>Een SQL Server-Data Base toevoegen
 
-Voeg in de sectie **lid data base** optioneel een on-premises SQL Server toe aan de synchronisatie groep door **een on-premises data base toevoegen**te selecteren. De pagina **on-premises configureren** wordt geopend, waar u de volgende dingen kunt doen:
+Voeg in de sectie **lid data base** optioneel een SQL Server Data Base toe aan de synchronisatie groep door **een on-premises data base toevoegen**te selecteren. De pagina **on-premises configureren** wordt geopend, waar u de volgende dingen kunt doen:
 
 1. Selecteer **de gateway voor de synchronisatie agent kiezen**. De pagina **synchronisatie agent selecteren** wordt geopend.
 

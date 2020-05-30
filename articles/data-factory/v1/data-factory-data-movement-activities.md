@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281884"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195970"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Gegevens verplaatsen met behulp van Kopieer activiteit
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -81,7 +81,7 @@ Kopieer activiteit leest ook van en schrijft naar bestanden in de opgegeven inde
 
 U kunt bijvoorbeeld de volgende Kopieer activiteiten uitvoeren:
 
-* Kopieer gegevens in on-premises SQL Server en schrijf naar Azure Data Lake Store in de ORC-indeling.
+* Gegevens kopiëren in een SQL Server-Data Base en naar Azure Data Lake Store schrijven in de ORC-indeling.
 * Kopieer bestanden in de tekst indeling (CSV) van on-premises bestands systeem en schrijf naar Azure Blob in de Avro-indeling.
 * Kopieer gezipte bestanden van het on-premises bestands systeem en decomprimeren vervolgens land tot Azure Data Lake Store.
 * Kopieer gegevens in de indeling voor gecomprimeerde tekst van GZip (CSV) van Azure Blob en schrijf naar Azure SQL Database.
@@ -121,10 +121,10 @@ Wanneer zowel de bron-als de Sink-gegevens opslag zich in de cloud bevinden, geb
 | Korea | Korea - centraal | Korea - centraal |
 | &nbsp; | Korea - zuid | Korea - centraal |
 
-U kunt de regio van Data Factory service die moet worden gebruikt voor het uitvoeren van de kopie, ook expliciet aangeven `executionLocation` door de eigenschap op `typeProperties`te geven onder Kopieer activiteit. Ondersteunde waarden voor deze eigenschap worden weer gegeven in de bovenstaande **regio die wordt gebruikt voor de kolom gegevens verplaatsing** . Houd er rekening mee dat uw gegevens tijdens het kopiëren over de kabel heen gaan. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, kunt u `"executionLocation": "Japan East"` opgeven om te routeren via een Japanse regio (Zie voor [beeld van JSON](#by-using-json-scripts) als referentie).
+U kunt de regio van Data Factory service die moet worden gebruikt voor het uitvoeren van de kopie, ook expliciet aangeven door de eigenschap op te geven `executionLocation` onder Kopieer activiteit `typeProperties` . Ondersteunde waarden voor deze eigenschap worden weer gegeven in de bovenstaande **regio die wordt gebruikt voor de kolom gegevens verplaatsing** . Houd er rekening mee dat uw gegevens tijdens het kopiëren over de kabel heen gaan. Als u bijvoorbeeld wilt kopiëren tussen Azure-winkels in Korea, kunt u opgeven `"executionLocation": "Japan East"` om te routeren via een Japanse regio (Zie voor [beeld van JSON](#by-using-json-scripts) als referentie).
 
 > [!NOTE]
-> Als de regio van het doel gegevens archief zich niet in de voor gaande lijst bevindt of niet detecteerbaar is, mislukt de standaard Kopieer activiteit in plaats van `executionLocation` een alternatieve regio, tenzij is opgegeven. De lijst met ondersteunde regio's wordt na verloop van tijd uitgebreid.
+> Als de regio van het doel gegevens archief zich niet in de voor gaande lijst bevindt of niet detecteerbaar is, mislukt de standaard Kopieer activiteit in plaats van een alternatieve regio, tenzij `executionLocation` is opgegeven. De lijst met ondersteunde regio's wordt na verloop van tijd uitgebreid.
 >
 
 ### <a name="copy-data-between-an-on-premises-data-store-and-a-cloud-data-store"></a>Gegevens kopiëren tussen een on-premises gegevens opslag en een gegevens archief in de Cloud
@@ -139,7 +139,7 @@ De wizard Data Factory kopiëren helpt u bij het maken van een pijp lijn met Kop
 ### <a name="by-using-json-scripts"></a>Met behulp van JSON-scripts
 U kunt Data Factory editor gebruiken in Visual Studio of Azure PowerShell om een JSON-definitie voor een pijp lijn te maken (met behulp van Kopieer activiteit). Vervolgens kunt u de app implementeren om de pijp lijn te maken in Data Factory. Zie [zelf studie: Kopieer activiteit gebruiken in een Azure Data Factory pijp lijn](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor een zelf studie met stapsgewijze instructies.    
 
-JSON-eigenschappen (zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels) zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in `typeProperties` de sectie van de activiteit, verschillen per type activiteit.
+JSON-eigenschappen (zoals naam, beschrijving, invoer-en uitvoer tabellen en beleids regels) zijn beschikbaar voor alle typen activiteiten. De eigenschappen die beschikbaar zijn in de `typeProperties` sectie van de activiteit, verschillen per type activiteit.
 
 Voor kopieer activiteiten is de `typeProperties` sectie afhankelijk van de typen bronnen en Sinks. Klik op een bron/sink in de sectie [ondersteunde bronnen en sinks](#supported-data-stores-and-formats) voor meer informatie over type-eigenschappen die door de Kopieer activiteit worden ondersteund voor die gegevens opslag.
 

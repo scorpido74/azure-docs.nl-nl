@@ -3,12 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537403"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204715"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -26,6 +26,10 @@ In dit artikel wordt uitgelegd hoe u:
 
 - Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up. Raadpleeg [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)de ondersteunings matrix.
 - Zorg ervoor dat u Azure Backup Server hebt ingesteld. Als u dat nog [niet hebt gedaan, moet u dat doen](backup-azure-microsoft-azure-backup.md) voordat u begint. U moet Azure Backup Server uitvoeren met de nieuwste updates.
+- Controleer of de volgende netwerk poorten zijn geopend:
+    - TCP 443 tussen MABS en vCenter
+    - TCP 443 en TCP 902 tussen de MABS-en ESXi-host
+
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Een beveiligde verbinding met de vCenter Server maken
 
@@ -58,7 +62,7 @@ Stel als volgt een beveiligd kanaal in:
 
 4. Sla het bestand op de Azure Backup Server machine op met de extensie. zip.
 
-5. Klik met de rechter muisknop op **down load. zip** > **extract**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
+5. Klik met de rechter muisknop op **down load. zip**  >  **extract**. Het zip-bestand extraheert de inhoud naar de map **certs** , die de volgende bevat:
    - Het basis certificaat bestand met een extensie die begint met een genummerde reeks, zoals 0 en 1.
    - Het CRL-bestand heeft een extensie die begint met een Sequence zoals. R0 of. R1. Het CRL-bestand is gekoppeld aan een certificaat.
 
@@ -115,11 +119,11 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
     ![Beheer](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. Klik in **beheerders** > **rollen**op het pictogram rol toevoegen (het plus teken).
+3. Klik in **beheerders**  >  **rollen**op het pictogram rol toevoegen (het plus teken).
 
     ![Rol toevoegen](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. Voer *BackupAdminRole*in bij > **naam**van Rolnaam van **rol maken**. De rolnaam kan wille keurig zijn, maar deze moet herkenbaar zijn voor het doel van de functie.
+4. Voer BackupAdminRole in bij naam van **Rolnaam van rol maken**  >  **Role name**. *BackupAdminRole* De rolnaam kan wille keurig zijn, maar deze moet herkenbaar zijn voor het doel van de functie.
 
 5. Selecteer in de onderstaande tabel de bevoegdheden die u wilt samenvatten en klik vervolgens op **OK**.  De nieuwe rol wordt weer gegeven in de lijst in het deel venster **rollen** .
    - Klik op het pictogram naast het bovenliggende label om het bovenliggende item uit te vouwen en de onderliggende bevoegdheden weer te geven.
@@ -221,11 +225,11 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
     ![Gebruiker of groep selecteren](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. Kies in **gebruikers/groepen selecteren**de optie **BackupAdmin** > **toevoegen**. In **gebruikers**wordt de notatie *domein\gebruikersnaam* gebruikt voor het gebruikers account. Als u een ander domein wilt gebruiken, kiest u het in de lijst **domein** . Klik op **OK** om de geselecteerde gebruikers toe te voegen aan het dialoog venster **machtiging toevoegen** .
+6. Kies in **gebruikers/groepen selecteren**de optie **BackupAdmin**  >  **toevoegen**. In **gebruikers**wordt de notatie *domein\gebruikersnaam* gebruikt voor het gebruikers account. Als u een ander domein wilt gebruiken, kiest u het in de lijst **domein** . Klik op **OK** om de geselecteerde gebruikers toe te voegen aan het dialoog venster **machtiging toevoegen** .
 
     ![BackupAdmin-gebruiker toevoegen](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-7. Selecteer in **toegewezen rol**in de vervolg keuzelijst de optie **BackupAdminRole** > **OK**.
+7. Selecteer in **toegewezen rol**in de vervolg keuzelijst de optie **BackupAdminRole**  >  **OK**.
 
     ![Gebruiker toewijzen aan rol](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
@@ -237,7 +241,7 @@ Op het tabblad **beheren** in het deel venster **algemene machtigingen** worden 
 
     ![Azure Backup Server pictogram](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. Klik in de Azure backup server-console op **beheer** >  **productie servers** > **VMware beheren**.
+2. Klik in de Azure backup server-console op **beheer**  >   **productie servers**  >  **VMware beheren**.
 
     ![Azure Backup Server-console](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -257,11 +261,11 @@ Op het tabblad **beheren** in het deel venster **algemene machtigingen** worden 
 
 Voeg de vCenter Server toe aan Azure Backup Server.
 
-1. Klik in de Azure backup server-console op **beheer** > **productie servers** > **toevoegen**.
+1. Klik in de Azure backup server-console op **beheer**  >  **productie servers**  >  **toevoegen**.
 
     ![Wizard voor het toevoegen van productie servers](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. Selecteer in > de **wizard productie server toevoegen**de pagina**type productie server** , selecteer **VMware-servers**en klik vervolgens op **volgende**.
+2. Selecteer in de **wizard productie server toevoegen**de  >  pagina**type productie server** , selecteer VMware- **servers**en klik vervolgens op **volgende**.
 
     ![Wizard voor het toevoegen van productie servers](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -275,7 +279,7 @@ Voeg de vCenter Server toe aan Azure Backup Server.
 
     ![Referentie opgeven](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Klik op **toevoegen** om de VMware-Server toe te voegen aan de lijst met servers. Klik vervolgens op **Volgende**.
+6. Klik op **toevoegen** om de VMware-Server toe te voegen aan de lijst met servers. Klik of tik op **Volgende**.
 
     ![VMWare-Server en-referentie toevoegen](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -303,14 +307,14 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
 1. Selecteer op de pagina **type beveiligings groep selecteren** de optie **servers** en klik vervolgens op **volgende**. De pagina **groeps leden selecteren** wordt weer gegeven.
 
-1. In **groeps leden selecteren**selecteert u de virtuele machines (of VM-mappen) waarvan u een back-up wilt maken. Klik vervolgens op **Volgende**.
+1. In **groeps leden selecteren**selecteert u de virtuele machines (of VM-mappen) waarvan u een back-up wilt maken. Klik of tik op **Volgende**.
 
     - Wanneer u een map selecteert, worden er ook Vm's of mappen in die map geselecteerd voor back-up. U kunt de selectie van mappen of Vm's die u niet wilt maken, uitschakelen.
 1. Als er al een back-up van een virtuele machine of map wordt gemaakt, kunt u deze niet selecteren. Dit zorgt ervoor dat er geen dubbele herstel punten worden gemaakt voor een virtuele machine.
 
     ![Groeps leden selecteren](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik vervolgens op **Volgende**.
+1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik of tik op **Volgende**.
 
     ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -341,17 +345,17 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
     ![Methode voor maken van replica selecteren](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. Selecteer in **Opties voor consistentie controle**hoe en wanneer de consistentie controles moeten worden geautomatiseerd. Klik vervolgens op **Volgende**.
+1. Selecteer in **Opties voor consistentie controle**hoe en wanneer de consistentie controles moeten worden geautomatiseerd. Klik of tik op **Volgende**.
       - U kunt consistentie controles uitvoeren wanneer de replica gegevens inconsistent worden, of volgens een ingesteld schema.
       - Als u geen automatische consistentie controles wilt configureren, kunt u een hand matige controle uitvoeren. U doet dit door met de rechter muisknop op de beveiligings groep te klikken > **consistentie controle uit te voeren**.
 
-1. Selecteer op de pagina **gegevens voor online beveiliging opgeven** de vm's of de mappen van de virtuele machine waarvan u een back-up wilt maken. U kunt de leden afzonderlijk selecteren of op **Alles selecteren** klikken om alle leden te kiezen. Klik vervolgens op **Volgende**.
+1. Selecteer op de pagina **gegevens voor online beveiliging opgeven** de vm's of de mappen van de virtuele machine waarvan u een back-up wilt maken. U kunt de leden afzonderlijk selecteren of op **Alles selecteren** klikken om alle leden te kiezen. Klik of tik op **Volgende**.
 
     ![Gegevens voor online beveiliging opgeven](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Op de pagina **online back-upschema opgeven** geeft u op hoe vaak u een back-up wilt maken van gegevens van de lokale opslag naar Azure.
 
-    - De Cloud herstel punten voor de gegevens worden gegenereerd volgens het schema. Klik vervolgens op **Volgende**.
+    - De Cloud herstel punten voor de gegevens worden gegenereerd volgens het schema. Klik of tik op **Volgende**.
     - Nadat het herstel punt is gegenereerd, wordt het overgedragen naar de Recovery Services kluis in Azure.
 
     ![Online back-upschema opgeven](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

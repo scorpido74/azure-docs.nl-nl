@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065001"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194476"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Releaseopmerkingen voor Data Management Gateway
 > [!NOTE]
@@ -49,8 +49,8 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 -   U kunt DNS-vermeldingen toevoegen aan white list Service Bus in plaats van alle IP-adressen van Azure uit uw firewall te white list (indien nodig). Hier vindt u meer informatie.
 -   U kunt nu gegevens kopiëren van/naar een enkele blok-BLOB tot 4,75 TB. Dit is de Maxi maal ondersteunde grootte van een blok-blob. (eerdere limiet is 195 GB).
 -   Opgelost: onvoldoende geheugen bij het uitgepakt van verschillende kleine bestanden tijdens de Kopieer activiteit.
--   Opgelost: probleem bij het kopiëren van het bereik van de document database naar een on-premises SQL Server met de functie idempotentie.
--   Opgelost: SQL Cleanup script werkt niet met on-premises SQL Server van de wizard kopiëren.
+-   Opgelost: probleem bij het kopiëren van de document database naar SQL Server met de functie idempotentie.
+-   Opgelost: SQL Cleanup script werkt niet met SQL Server van de wizard kopiëren.
 -   Fixed: de naam van de kolom met de ruimte aan het einde werkt niet in de Kopieer activiteit.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
 *  Het DB2-stuur programma ondersteunt nu z/OS en DB2 voor i (als/400) samen met de platforms die al worden ondersteund (Linux, UNIX en Windows).
 *  Ondersteunt het gebruik van Azure Cosmos DB als bron of doel voor on-premises gegevens opslag
 *  Ondersteunt het kopiëren van gegevens van/naar koude/Hot Blob Storage samen met het al ondersteunde opslag account voor algemeen gebruik.
-*  Met kunt u verbinding maken met on-premises SQL Server via een gateway met externe aanmeldings bevoegdheden.  
+*  Met kunt u verbinding maken met SQL Server via gateway met externe aanmeldings bevoegdheden.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,7 +126,7 @@ De release opmerkingen worden hier niet meer onderhouden. Lees [hier](https://go
     *  De besturings elementen zijn ingedeeld en vereenvoudigd.
 
     *  U kunt gegevens uit een opslag kopiëren met behulp van het programma voor het [gratis kopiëren van code](data-factory-copy-data-wizard-tutorial.md). Zie [gefaseerde kopie](data-factory-copy-activity-performance.md#staged-copy) voor meer informatie over deze functie in het algemeen.
-*  U kunt Data Management Gateway gebruiken om gegevens rechtstreeks vanuit een on-premises SQL Server data base in Azure Machine Learning uit te brengen.
+*  U kunt Data Management Gateway gebruiken om gegevens rechtstreeks vanuit een SQL Server-data base in Azure Machine Learning uit te brengen.
 
 *  Prestatieverbeteringen
 

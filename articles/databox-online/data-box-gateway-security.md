@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562471"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195877"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Beveiligings-en gegevens beveiliging Azure Data Box Gateway
 
@@ -27,7 +27,6 @@ De Data Box Gateway oplossing bestaat uit vier hoofd onderdelen die met elkaar c
 - **Data Box gateway apparaat**. Het virtuele apparaat dat u inricht in de Hyper Visor van het systeem dat u opgeeft. Dit virtuele apparaat wordt gebruikt voor het importeren van uw on-premises gegevens in Azure.
 - **Clients/hosts die zijn verbonden met het apparaat**. De clients in uw infra structuur die verbinding maken met het Data Box Gateway apparaat en gegevens bevatten die moeten worden beveiligd.
 - **Cloud opslag**. De locatie in het Azure-Cloud platform waar gegevens worden opgeslagen. Deze locatie is doorgaans het opslag account dat is gekoppeld aan de Data Box Gateway bron die u maakt.
-
 
 ## <a name="data-box-gateway-service-protection"></a>Data Box Gateway Service beveiliging
 
@@ -56,14 +55,13 @@ Zie [een activerings sleutel ophalen](data-box-gateway-deploy-prep.md#get-the-ac
 
 Wacht woorden zorgen ervoor dat alleen geautoriseerde gebruikers toegang hebben tot uw gegevens. Data Box Gateway apparaten worden opgestart met een vergrendelde status.
 
-U kunt het volgende doen:
+U kunt:
 
 - Verbinding maken met de lokale web-UI van het apparaat via een browser en vervolgens een wacht woord opgeven om zich aan te melden bij het apparaat.
 - Extern verbinding maken met de Power shell-interface van het apparaat via HTTP. Extern beheer is standaard ingeschakeld. Vervolgens kunt u het wacht woord van het apparaat opgeven om u aan te melden bij het apparaat. Zie [extern verbinding maken met uw data Box gateway apparaat](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface)voor meer informatie.
 
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - Gebruik de lokale web-UI om [het wacht woord te wijzigen](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Als u het wacht woord wijzigt, moet u alle RAS-gebruikers hiervan op de hoogte stellen, zodat er geen problemen zijn bij het aanmelden.
-
 
 ## <a name="protect-your-data"></a>Uw gegevens beveiligen
 
@@ -77,10 +75,18 @@ In deze sectie worden de Data Box Gateway beveiligings functies beschreven die i
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Gegevens beveiligen via opslag accounts
+### <a name="protect-data-using-storage-accounts"></a>Gegevens beveiligen met opslag accounts
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - Roteer en [Synchroniseer vervolgens uw opslag account sleutels](data-box-gateway-manage-shares.md#sync-storage-keys) regel matig om uw opslag account te beschermen tegen onbevoegde gebruikers.
+
+### <a name="protect-the-device-data-using-bitlocker"></a>De apparaatgegevens beveiligen met BitLocker
+
+Als u de virtuele schijven op uw Data Box Gateway virtuele machine wilt beveiligen, wordt u aangeraden BitLocker in te scha kelen. BitLocker is standaard niet ingeschakeld. Zie voor meer informatie:
+
+- [Versleutelingsinstellingen voor ondersteuning in Hyper-V-beheer](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [BitLocker-ondersteuning in een virtuele machine](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Persoonlijke gegevens beheren
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef77037526beba1be2e4e8a834dbd09c8a73310c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273738"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197232"
 ---
 # <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Consul installeren en gebruiken in azure Kubernetes service (AKS)
 
@@ -20,9 +20,9 @@ ms.locfileid: "78273738"
 In dit artikel wordt beschreven hoe u consul installeert. De consul-onderdelen worden in een Kubernetes-cluster op AKS geïnstalleerd.
 
 > [!NOTE]
-> Deze instructies verwijzen naar consul `1.6.0`-versie en gebruiken ten minste helm `2.14.2`-versie.
+> Deze instructies verwijzen naar consul `1.6.0` -versie en gebruiken ten minste helm-versie `2.14.2` .
 >
-> De consul `1.6.x` -releases kunnen worden uitgevoerd op Kubernetes `1.13+`-versies. U kunt aanvullende consul-versies vinden op [github-consul releases][consul-github-releases] en informatie over elk van de releases op [consul-release opmerkingen][consul-release-notes].
+> De consul- `1.6.x` releases kunnen worden uitgevoerd op Kubernetes-versies `1.13+` . U kunt aanvullende consul-versies vinden op [github-consul releases][consul-github-releases] en informatie over elk van de releases op [consul-release opmerkingen][consul-release-notes].
 
 In dit artikel leert u het volgende:
 
@@ -33,7 +33,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor de stappen in dit artikel wordt ervan uitgegaan dat u een AKS-cluster `1.13` hebt gemaakt (Kubernetes en hoger, met RBAC ingeschakeld) `kubectl` en een verbinding met het cluster tot stand hebt gebracht. Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart]start. Zorg ervoor dat uw cluster ten minste drie knoop punten in de Linux-knooppunt groep bevat.
+Voor de stappen in dit artikel wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt (Kubernetes `1.13` en hoger, met RBAC ingeschakeld) en een `kubectl` verbinding met het cluster tot stand hebt gebracht. Als u hulp nodig hebt bij een van deze items, raadpleegt u de [AKS Quick][aks-quickstart]start. Zorg ervoor dat uw cluster ten minste drie knoop punten in de Linux-knooppunt groep bevat.
 
 U hebt [helm][helm] nodig om deze instructies te volgen en consul te installeren. Het is raadzaam dat u de nieuwste stabiele versie correct hebt geïnstalleerd en geconfigureerd in uw cluster. Als u hulp nodig hebt bij het installeren van helm, raadpleegt u de [AKS helm Installation guidance][helm-install](Engelstalig). Alle consul-peulen moeten ook worden gepland om te worden uitgevoerd op Linux-knoop punten.
 
@@ -41,7 +41,7 @@ In dit artikel worden de consul-installatie richtlijnen gescheiden in verschille
 
 ### <a name="install-the-consul-components-on-aks"></a>De consul-onderdelen installeren op AKS
 
-We beginnen met het downloaden van `v0.10.0` de versie van het consul helm-diagram. Deze versie van de grafiek bevat consul- `1.6.0`versie.
+We beginnen met `v0.10.0` het downloaden van de versie van het consul helm-diagram. Deze versie van de grafiek bevat consul-versie `1.6.0` .
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -100,7 +100,7 @@ Op dit moment hebt u consul geïmplementeerd op uw AKS-cluster. Om ervoor te zor
 
 ## <a name="validate-the-consul-installation"></a>De consul-installatie valideren
 
-Controleer of de resources zijn gemaakt. Gebruik de opdrachten [kubectl Get SVC][kubectl-get] en [kubectl Get POD][kubectl-get] om de `consul` naam ruimte op te vragen, waarbij de consul-onderdelen `helm install` zijn geïnstalleerd met behulp van de opdracht:
+Controleer of de resources zijn gemaakt. Gebruik de opdrachten [kubectl Get SVC][kubectl-get] en [kubectl Get POD][kubectl-get] om de naam ruimte op te vragen `consul` , waarbij de consul-onderdelen zijn geïnstalleerd met behulp van de `helm install` opdracht:
 
 ```console
 kubectl get svc --namespace consul --output wide
@@ -128,7 +128,7 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Alle peulen moeten de status van `Running`hebben. Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
+Alle peulen moeten de status van hebben `Running` . Als uw peul niet over deze status beschikt, moet u een paar minuten wachten totdat dit het geval is. Als een van de peulen een probleem rapporteert, gebruikt u de [kubectl pod][kubectl-describe] opdracht om de uitvoer en status te controleren.
 
 ## <a name="accessing-the-consul-ui"></a>Toegang tot de consul-gebruikers interface
 
@@ -138,7 +138,7 @@ De consul-gebruikers interface is in onze installatie hierboven geïnstalleerd e
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-U kunt nu een browser openen en deze aanwijzen om de consul-gebruikers interface `http://localhost:8080/ui` te openen. Wanneer u de gebruikers interface opent, ziet u het volgende:
+U kunt nu een browser openen en deze aanwijzen om `http://localhost:8080/ui` de consul-gebruikers interface te openen. Wanneer u de gebruikers interface opent, ziet u het volgende:
 
 ![Consul-gebruikers interface](./media/servicemesh/consul/consul-ui.png)
 
@@ -149,7 +149,7 @@ U kunt nu een browser openen en deze aanwijzen om de consul-gebruikers interface
 
 ### <a name="remove-consul-components-and-namespace"></a>Consul-onderdelen en naam ruimte verwijderen
 
-Gebruik de volgende opdrachten om consul te verwijderen uit uw AKS-cluster. Met `helm delete` de opdrachten wordt de `consul` grafiek verwijderd en wordt `kubectl delete namespace` de `consul` naam ruimte verwijderd met de opdracht.
+Gebruik de volgende opdrachten om consul te verwijderen uit uw AKS-cluster. `helm delete`Met de opdrachten wordt de `consul` grafiek verwijderd en `kubectl delete namespace` wordt de naam ruimte verwijderd met de opdracht `consul` .
 
 ```console
 helm delete --purge consul
@@ -166,6 +166,8 @@ Als u meer wilt weten over de installatie-en configuratie opties voor consul, ra
 U kunt ook aanvullende scenario's volgen met behulp van:
 
 - [Voorbeeld toepassing consul][consul-app-example]
+- [Consul Kubernetes-referentie architectuur][consul-reference]
+- [Consul mesh-gateways][consul-mesh-gateways]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
@@ -177,9 +179,11 @@ U kunt ook aanvullende scenario's volgen met behulp van:
 [consul-github-releases]: https://github.com/hashicorp/consul/releases
 [consul-release-notes]: https://github.com/hashicorp/consul/blob/master/CHANGELOG.md
 [consul-install-download]: https://www.consul.io/downloads.html
-[consul-install-k8]: https://www.consul.io/docs/platform/k8s/run.html
+[consul-install-k8]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-deployment-guide
 [consul-install-helm-options]: https://www.consul.io/docs/platform/k8s/helm.html#configuration-values-
-[consul-app-example]: https://github.com/hashicorp/demo-consul-101/tree/master/k8s
+[consul-mesh-gateways]: https://learn.hashicorp.com/consul/kubernetes/mesh-gateways
+[consul-reference]: https://learn.hashicorp.com/consul/kubernetes/kubernetes-reference
+[consul-app-example]: https://learn.hashicorp.com/consul?track=gs-consul-service-mesh#gs-consul-service-mesh
 [install-wsl]: https://docs.microsoft.com/windows/wsl/install-win10
 
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

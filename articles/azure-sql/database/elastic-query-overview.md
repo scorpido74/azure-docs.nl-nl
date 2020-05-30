@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: ab104463ad0bd3db88af47176d541dd4074037d7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048439"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195090"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Overzicht van elastische query's Azure SQL Database (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Met de functie elastische query's (in Preview) kunt u een Transact-SQL-query uit
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-Query's uitvoeren op data bases in Azure SQL Database volledig in T-SQL. Hiermee kunnen alleen-lezen query's worden uitgevoerd voor externe data bases en wordt een optie geboden voor huidige on-premises SQL Server klanten om toepassingen te migreren met behulp van drie-en vier deel namen of gekoppelde server naar SQL Database.
+Query's uitvoeren op data bases in Azure SQL Database volledig in T-SQL. Hiermee kunnen alleen-lezen query's van externe data bases worden uitgevoerd en biedt de huidige SQL Server klanten de mogelijkheid om toepassingen te migreren met behulp van drie-en vier deel namen of een gekoppelde server naar SQL Database.
 
 ### <a name="available-on-standard-tier"></a>Beschikbaar in de laag standaard
 
@@ -146,7 +146,7 @@ Elastische query's zijn opgenomen in de kosten van Azure SQL Database. Houd er r
 * Met uitzonde ring van nvarchar (max) worden LOB-typen (met inbegrip van ruimtelijke typen) niet ondersteund in externe tabel definities. Als tijdelijke oplossing kunt u een weer gave maken voor de externe data base waarmee het LOB-type wordt omgezet in nvarchar (max), uw externe tabel definiëren via de weer gave in plaats van de basis tabel en deze vervolgens weer omzetten in het oorspronkelijke LOB-type in uw query's.
 * Kolommen van het gegevens type nvarchar (max) in de resultatenset geavanceerde batch verwerking uitschakelen die wordt gebruikt in de implementatie van elastische Query's en kan invloed hebben op de prestaties van de query voor een orde van omvang, of zelfs twee bestellingen van grootte in niet-canonieke situaties waarbij een grote hoeveelheid niet-geaggregeerde gegevens worden overgedragen als resultaat van de query.
 * Kolom statistieken over externe tabellen worden momenteel niet ondersteund. Tabel statistieken worden ondersteund, maar moeten hand matig worden gemaakt.
-* Elastische query's werken alleen met Azure SQL Database. U kunt deze niet gebruiken voor het opvragen van on-premises SQL Server, of SQL Server in een VM.
+* Elastische query's werken alleen met Azure SQL Database. U kunt deze niet gebruiken voor het uitvoeren van een query op een SQL Server-exemplaar.
 
 ## <a name="feedback"></a>Feedback
 

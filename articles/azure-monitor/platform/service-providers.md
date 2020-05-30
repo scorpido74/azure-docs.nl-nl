@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658877"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190420"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor logboeken voor service providers
 
@@ -19,7 +19,7 @@ Log Analytics-werk ruimten in Azure Monitor kunnen Msp's (Managed Service Provid
 
 Grote bedrijven delen veel overeenkomsten met service providers, met name wanneer er sprake is van een gecentraliseerd IT-team dat verantwoordelijk is voor het beheer van een groot aantal verschillende bedrijfs eenheden. Voor het gemak gebruikt dit document de term *service provider* , maar dezelfde functionaliteit is ook beschikbaar voor ondernemingen en andere klanten.
 
-Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in azure CSP-abonnementen.
+Voor partners en service providers die deel uitmaken van het programma [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , is Log Analytics in azure monitor een van de Azure-Services die beschikbaar zijn in azure CSP-abonnementen.
 
 Log Analytics in Azure Monitor kunnen ook worden gebruikt door een service provider die klant resources beheert via de Azure-beheer functie voor gedelegeerde resources in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
 

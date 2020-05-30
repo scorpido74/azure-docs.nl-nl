@@ -3,12 +3,12 @@ title: Voor beeld-Azure Policy leren voor Kubernetes
 description: Lees hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters met Kubernetes in azure of on-premises. Dit is een preview-functie.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828624"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221145"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Azure Policy voor Kubernetes-clusters begrijpen (preview-versie)
 
@@ -35,6 +35,9 @@ Als u Azure Policy met uw Kubernetes-cluster wilt inschakelen en gebruiken, voer
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Kubernetes met Azure Arc](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [AKS-engine](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > Zie [probleem oplossing-Azure Policy-invoeg toepassing](../troubleshoot/general.md#add-on-installation-errors)voor veelvoorkomende problemen met de installatie.
 
 1. [Inzicht in de Azure Policy taal voor Kubernetes](#policy-language)
 

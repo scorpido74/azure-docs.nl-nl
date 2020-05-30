@@ -1,6 +1,6 @@
 ---
-title: Gegevens laden in Azure SQL Data Warehouse
-description: Azure Data Factory gebruiken om gegevens te kopiëren naar Azure SQL Data Warehouse
+title: Gegevens laden in azure Synapse Analytics
+description: Azure Data Factory gebruiken om gegevens te kopiëren naar Azure Synapse Analytics
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,38 +10,38 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2020
-ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020554"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194758"
 ---
-# <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
+# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Gegevens laden in azure Synapse Analytics met behulp van Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een scale-out-data base op basis van de cloud die kan verwerken van enorme hoeveel heden gegevens, zowel relationele als niet-relationeel. SQL Data Warehouse is gebaseerd op de MPP-architectuur (enorm parallelle verwerking) die is geoptimaliseerd voor werk belastingen van het Enter prise-Data Warehouse. De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
+[Azure Synapse Analytics (voorheen SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) is een op de cloud gebaseerde scale-out data base waarmee grote hoeveel heden gegevens, zowel relationele als niet-relationeel, kunnen worden verwerkt. Azure Synapse Analytics is gebaseerd op de MPP-architectuur (enorm parallelle verwerking) die is geoptimaliseerd voor bedrijfsdata Warehouse-workloads. De service biedt de flexibiliteit van de cloud om opslag te schalen en onafhankelijk te berekenen.
 
-Het is nu eenvoudiger dan ooit om aan de slag te gaan met Azure SQL Data Warehouse met behulp van Azure Data Factory. Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud. U kunt de service gebruiken om een SQL Data Warehouse te vullen met gegevens van uw bestaande systeem en tijd te besparen bij het bouwen van uw analyse oplossingen.
+Het is nu eenvoudiger dan ooit om aan de slag te gaan met Azure Synapse Analytics wanneer u Azure Data Factory gebruikt. Azure Data Factory is een volledig beheerde service voor gegevens integratie in de Cloud. U kunt de service gebruiken om een Azure Synapse-analyse te vullen met gegevens van uw bestaande systeem en tijd te besparen bij het bouwen van uw analyse oplossingen.
 
-Azure Data Factory biedt de volgende voor delen voor het laden van gegevens in Azure SQL Data Warehouse:
+Azure Data Factory biedt de volgende voor delen voor het laden van gegevens in azure Synapse Analytics:
 
 * **Eenvoudig in te stellen**: een intuïtieve 5-stap wizard zonder scripting vereist.
 * **Ondersteuning voor uitgebreide gegevens opslag**: ingebouwde ondersteuning voor een uitgebreide set on-premises en cloud-gebaseerde gegevens archieven. Zie de tabel met [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een gedetailleerde lijst.
 * **Beveiligd en compatibel**: gegevens worden overgebracht via https of ExpressRoute. De wereld wijde service aanwezigheid zorgt ervoor dat uw gegevens de geografische grens nooit verlaten.
-* **Ongeëvenaarde prestaties met poly base**: poly Base is de meest efficiënte manier om gegevens naar Azure SQL Data Warehouse te verplaatsen. Gebruik de functie voor het maken van een staging-blob om hoge belasting snelheden te realiseren van alle typen gegevens archieven, waaronder Azure Blob-opslag en Data Lake Store. (Poly Base biedt standaard ondersteuning voor Azure Blob Storage en Azure Data Lake Store.) Zie [prestaties van Kopieer activiteit](copy-activity-performance.md)voor meer informatie.
+* **Ongeëvenaarde prestaties met poly base**: poly Base is de meest efficiënte manier om gegevens te verplaatsen naar Azure Synapse Analytics. Gebruik de functie voor het maken van een staging-blob om hoge belasting snelheden te realiseren van alle typen gegevens archieven, waaronder Azure Blob-opslag en Data Lake Store. (Poly Base biedt standaard ondersteuning voor Azure Blob Storage en Azure Data Lake Store.) Zie [prestaties van Kopieer activiteit](copy-activity-performance.md)voor meer informatie.
 
-In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp programma gebruikt om _gegevens van Azure SQL database in Azure SQL Data Warehouse te laden_. U kunt vergelijk bare stappen volgen om gegevens te kopiëren van andere typen gegevens archieven.
+Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopiëren _gegevens van Azure SQL database in azure Synapse Analytics kunt laden_. U kunt vergelijk bare stappen volgen om gegevens te kopiëren van andere typen gegevens archieven.
 
 > [!NOTE]
-> Zie [gegevens kopiëren naar of van Azure SQL data warehouse met behulp van Azure Data Factory](connector-azure-sql-data-warehouse.md)voor meer informatie.
+> Zie [gegevens kopiëren naar of van Azure Synapse Analytics met behulp van Azure Data Factory](connector-azure-sql-data-warehouse.md)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
-* Azure SQL Data Warehouse: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure SQL Data Warehouse hebt, raadpleegt u de instructies in [Create a SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
+* Azure Synapse Analytics: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure Synapse Analytics hebt, raadpleegt u de instructies in [Create a Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../azure-sql/database/single-database-create-quickstart.md)te volgen.
 * Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 
@@ -64,7 +64,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
    Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Gegevens laden in Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse-analytics"></a>Gegevens laden in azure Synapse Analytics
 
 1. Selecteer op de pagina **Aan de slag** de tegel **Gegevens kopiëren** om het hulpprogramma Gegevens kopiëren te openen.
 
@@ -115,7 +115,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 1. Bekijk de inhoud op de pagina **tabel toewijzing** en selecteer **volgende**. Een intelligente tabel toewijzing wordt weer gegeven. De bron tabellen worden toegewezen aan de doel tabellen op basis van de tabel namen. Als een bron tabel niet bestaat op de doel locatie, maakt Azure Data Factory standaard een doel tabel met dezelfde naam. U kunt ook een bron tabel toewijzen aan een bestaande doel tabel.
 
    > [!NOTE]
-   > Het automatisch maken van tabellen voor de SQL Data Warehouse Sink geldt wanneer SQL Server of Azure SQL Database de bron is. Als u gegevens uit een ander brongegevens archief kopieert, moet u het schema vooraf maken in de Sink-Azure SQL Data Warehouse voordat u de gegevens kopie uitvoert.
+   > Het automatisch maken van tabellen voor de Azure Synapse Analytics-Sink geldt wanneer SQL Server of Azure SQL Database de bron is. Als u gegevens uit een ander brongegevens archief kopieert, moet u het schema vooraf maken in de Sink Azure Synapse Analytics voordat u de gegevens kopie uitvoert.
 
    ![De pagina Tabeltoewijzing](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
@@ -125,7 +125,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 1. Voer op de pagina **instellingen** de volgende stappen uit:
 
-    a. Klik in de sectie **faserings instellingen** op **+ Nieuw** voor een nieuwe staging-opslag. De opslag wordt gebruikt voor het faseren van de gegevens voordat deze in SQL Data Warehouse wordt geladen met poly base. Nadat de kopie is voltooid, worden de tussenliggende gegevens in Azure Blob Storage automatisch opgeschoond.
+    a. Klik in de sectie **faserings instellingen** op **+ Nieuw** voor een nieuwe staging-opslag. De opslag wordt gebruikt voor het faseren van de gegevens voordat deze in azure Synapse Analytics wordt geladen met poly base. Nadat de kopie is voltooid, worden de tussenliggende gegevens in Azure Blob Storage automatisch opgeschoond.
 
     b. Selecteer uw opslag account op de pagina **nieuwe gekoppelde service** en selecteer **maken** om de gekoppelde service te implementeren.
 
@@ -152,7 +152,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure SQL Data Warehouse:
+Ga naar het volgende artikel voor meer informatie over ondersteuning voor Azure Synapse Analytics:
 
 > [!div class="nextstepaction"]
->[Azure SQL Data Warehouse-connector](connector-azure-sql-data-warehouse.md)
+>[Azure Synapse Analytics-connector](connector-azure-sql-data-warehouse.md)

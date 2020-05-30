@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460729"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194463"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sjablonen gebruiken om Azure Data Factory entiteiten te maken
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460729"
 ## <a name="overview"></a>Overzicht
 Bij het gebruik van Azure Data Factory voor uw behoeften op het gebied van gegevens integratie, kunt u het hetzelfde patroon gebruiken voor verschillende omgevingen, of dezelfde taak herhaaldelijk in dezelfde oplossing implementeren. Met sjablonen kunt u deze scenario's op een eenvoudige manier implementeren en beheren. Sjablonen in Azure Data Factory zijn ideaal voor scenario's waarbij herbruikbaarheid en herhalingen betrokken zijn.
 
-Denk na over de situatie waarin een organisatie tien productie bedrijven wereld wijd heeft. De logboeken van elke fabriek worden opgeslagen in een afzonderlijke on-premises SQL Server-Data Base. Het bedrijf wil één data warehouse in de Cloud bouwen voor ad-hoc-analyses. Het wil ook dezelfde logica maar verschillende configuraties hebben voor ontwikkelings-, test-en productie omgevingen.
+Denk na over de situatie waarin een organisatie tien productie bedrijven wereld wijd heeft. De logboeken van elke fabriek worden opgeslagen in een afzonderlijke SQL Server-Data Base. Het bedrijf wil één data warehouse in de Cloud bouwen voor ad-hoc-analyses. Het wil ook dezelfde logica maar verschillende configuraties hebben voor ontwikkelings-, test-en productie omgevingen.
 
 In dit geval moet een taak in dezelfde omgeving worden herhaald, maar met verschillende waarden voor de 10 gegevens fabrieken voor elke fabriek. In feite is **herhaling** aanwezig. Sjabloon staat de abstractie van deze algemene stroom (dat wil zeggen, pijp lijnen met dezelfde activiteiten in elke data factory) toe, maar gebruikt een apart parameter bestand voor elke productie-fabriek.
 
@@ -48,7 +48,7 @@ Bekijk de volgende Azure Quick Start-sjablonen op GitHub:
 * [Een gegevensfactory maken voor het kopiëren van gegevens uit Sales Force naar Azure-blobs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [Een gegevensfactory maken die activiteiten koppelt: kopieert gegevens van een FTP-server naar Azure-blobs, roept een Hive-script op een HDInsight-cluster op aanvraag om de gegevens te transformeren en kopieert resultaat naar Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-U kunt uw Azure Data Factory sjablonen gratis delen in [Azure Quick Start](https://azure.microsoft.com/documentation/templates/). Raadpleeg de [bijdrage gids](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) bij het ontwikkelen van sjablonen die kunnen worden gedeeld via deze opslag plaats.
+U kunt uw Azure Data Factory sjablonen gratis delen via [Azure Quick](https://azure.microsoft.com/documentation/templates/)start. Raadpleeg de [bijdrage gids](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) bij het ontwikkelen van sjablonen die kunnen worden gedeeld via deze opslag plaats.
 
 De volgende secties bevatten informatie over het definiëren van Data Factory resources in een resource manager-sjabloon.
 

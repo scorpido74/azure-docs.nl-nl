@@ -13,14 +13,15 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141837"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190076"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Zowel Azure SQL Database als Azure SQL Managed instance maken database back-ups die gedurende de duur van de geconfigureerde Bewaar periode worden bewaard. Ze maken gebruik van [geografisch redundante opslag met lees toegang (RA-GRS)](../../storage/common/storage-redundancy.md) om ervoor te zorgen dat back-ups worden bewaard, zelfs als het Data Center niet beschikbaar is.
@@ -43,7 +44,7 @@ U kunt deze back-ups gebruiken om:
 Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herstel bewerking uit te voeren.
 
 > [!NOTE]
-> In Azure Storage verwijst de term *replicatie* naar het kopiëren van bestanden van de ene locatie naar een andere. In SQL verwijst *database replicatie* naar het houden van meerdere secundaire data bases gesynchroniseerd met een primaire data base.
+> In Azure Storage verwijst de term *replicatie* naar het kopiëren van bestanden van de ene locatie naar een andere. In Azure SQL Database en SQL Managed instance verwijst *database replicatie* naar het houden van meerdere secundaire data bases gesynchroniseerd met een primaire data base.
 
 U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
@@ -61,7 +62,7 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
 SQL Database en SQL Managed instance ondersteunen self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt en differentiële back-ups van data bases worden over het algemeen elke 12 uur gemaakt. Back-ups van transactie logboeken worden over het algemeen elke vijf tot tien minuten gemaakt. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
 
-De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle database back-ups wordt bepaald door de SQL Database of de SQL Managed instance service, omdat deze de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen.
+De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle database back-ups wordt bepaald door SQL Database of een door SQL beheerd exemplaar, omdat het de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen.
 
 ### <a name="default-backup-retention-period"></a>Standaard retentie periode voor back-ups
 
@@ -142,7 +143,7 @@ Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base
 
 ## <a name="backup-retention"></a>Retentie van back-ups
 
-Alle data bases in Microsoft Azure SQL hebben een standaard periode van 7 dagen voor het bewaren van back-ups. U kunt [de Bewaar periode voor back-ups wijzigen](#change-the-pitr-backup-retention-period) naar elke locatie tussen 1-35 dagen.
+Alle data bases in SQL Database en SQL Managed instance hebben een standaard periode van 7 dagen voor het bewaren van back-ups. U kunt [de Bewaar periode voor back-ups wijzigen naar een](#change-the-pitr-backup-retention-period) waarde van 35 dagen.
 
 Als u een Data Base verwijdert, houdt Azure de back-ups op dezelfde manier als voor een online-data base. Als u bijvoorbeeld een eenvoudige data base verwijdert met een Bewaar periode van zeven dagen, wordt een back-up die vier dagen oud is, drie dagen lang opgeslagen.
 
@@ -156,7 +157,7 @@ Als u de back-ups langer wilt bewaren dan de maximale Bewaar periode, kunt u de 
 
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 
-Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Wanneer TDE is ingeschakeld voor SQL Database of SQL Managed instance, worden back-ups ook versleuteld. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
+Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Wanneer TDE is ingeschakeld voor SQL Database of SQL Managed instance, worden back-ups ook versleuteld. Alle nieuwe data bases in SQL Database en SQL Managed instance worden standaard geconfigureerd met TDE ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
 
 ## <a name="backup-integrity"></a>Back-upintegriteit
 

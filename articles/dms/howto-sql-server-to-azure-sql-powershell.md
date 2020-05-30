@@ -1,7 +1,7 @@
 ---
 title: 'Power shell: SQL Server migreren naar SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Meer informatie over het migreren van on-premises SQL Server naar Azure SQL Database met behulp van Azure PowerShell met de Azure Database Migration Service.
+description: Meer informatie over het migreren van een datagbase van SQL Server naar Azure SQL Database met behulp van Azure PowerShell met de Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021480"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192650"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>SQL Server on-premises migreren naar Azure SQL Database met behulp van Azure PowerShell
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Een SQL Server-Data Base migreren naar Azure SQL Database met behulp van Azure PowerShell
 
-In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar een Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een on-premises SQL Server-exemplaar migreren naar Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
+In dit artikel migreert u de **Adventureworks2012** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2016 of hoger naar een Azure SQL database met behulp van Microsoft Azure PowerShell. U kunt data bases van een SQL Server-exemplaar migreren naar Azure SQL Database met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
 
 In dit artikel leert u het volgende:
 > [!div class="checklist"]

@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: 204ac3be46ac7ba0e1ea96e50379ca417b1299ce
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1a9e38d2718643212848105e09c60d93f497a34a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847630"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193535"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Virtuele Azure-machines repliceren die worden uitgevoerd in proximity-plaatsings groepen naar een andere regio
 
@@ -27,6 +27,9 @@ In een typisch scenario is het mogelijk dat uw virtuele machines worden uitgevoe
 - De beste poging is om de virtuele machines te failoveren/failback uit te stellen in een proximity-plaatsings groep. Als de virtuele machine tijdens de failover/failback echter niet in de nabijheid kan worden gebracht, worden er nog steeds failover/failback uitgevoerd en worden de virtuele machines gemaakt buiten een proximity-plaatsings groep.
 -  Als een Beschikbaarheidsset is vastgemaakt aan een proximity-plaatsings groep en tijdens failover/failback-Vm's in de beschikbaarheidsset een toewijzings beperking hebben, worden de virtuele machines gemaakt buiten de beschikbaarheidsset en proximity-plaatsings groep.
 -  Site Recovery voor proximity-plaatsings groepen wordt niet ondersteund voor niet-beheerde schijven.
+
+> [!Note]
+> Azure Site Recovery biedt geen ondersteuning voor failback van beheerde schijven voor Hyper-V naar Azure-scenario's. Daarom wordt failback van proximity-plaatsings groep in azure naar Hyper-V niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -1,5 +1,5 @@
 ---
-title: Een SQL-beheerd exemplaar implementeren op een exemplaar groep
+title: Een door SQL beheerd exemplaar implementeren op een exemplaar groep
 titleSuffix: Azure SQL Managed Instance
 description: In dit artikel wordt beschreven hoe u Azure SQL Managed instance-groepen (preview) maakt en beheert.
 services: sql-database
@@ -12,17 +12,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c781e23b23f5dbaf8eba9efe4c27428ef35c7be1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113630"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216375"
 ---
-# <a name="deploy-an-azure-sql-managed-instance-to-an-instance-pool"></a>Een door Azure SQL beheerd exemplaar implementeren in een exemplaar groep
+# <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed instance implementeren in een instantie groep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In dit artikel vindt u informatie over het maken van een [exemplaar groep](instance-pools-overview.md) en het implementeren van een Azure SQL Managed instance. 
+In dit artikel vindt u informatie over het maken van een [exemplaar groep](instance-pools-overview.md) en het implementeren van Azure SQL Managed instance. 
 
 ## <a name="instance-pool-operations"></a>Bewerkingen voor exemplaar groepen
 
@@ -30,23 +30,23 @@ In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemp
 
 |Opdracht|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Instantie-pool maken|Nee|Ja|
-|Exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
-|Gebruik en eigenschappen van exemplaar groep controleren|Nee|Ja |
-|Exemplaar groep verwijderen|Nee|Ja|
-|Een door SQL beheerd exemplaar in een exemplaar groep maken|Nee|Ja|
-|Resource gebruik van SQL Managed instance bijwerken|Ja |Ja|
-|Gebruik en eigenschappen van SQL Managed instance controleren|Ja|Ja|
-|Een door SQL beheerd exemplaar uit de groep verwijderen|Ja|Ja|
+|Een exemplaar groep maken|Nee|Yes|
+|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Yes |
+|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Yes |
+|Een exemplaar groep verwijderen|Nee|Yes|
+|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Yes|
+|Resource gebruik voor een beheerd exemplaar bijwerken|Ja |Ja|
+|Gebruik en eigenschappen voor een beheerd exemplaar controleren|Ja|Ja|
+|Een beheerd exemplaar uit de groep verwijderen|Ja|Ja|
 |Een Data Base maken in het exemplaar van de groep|Ja|Ja|
 |Een Data Base verwijderen uit een SQL-beheerd exemplaar|Ja|Ja|
 
-Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/)
+Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/module/az.sql/):
 
 |Cmdlet |Beschrijving |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Hiermee maakt u een door SQL beheerde exemplaar groep. |
-|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over de exemplaar groep. |
+|[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Retourneert informatie over een exemplaar groep. |
 |[Set-AzSqlInstancePool](/powershell/module/az.sql/set-azsqlinstancepool/) | Hiermee stelt u eigenschappen in voor een exemplaar groep in het SQL-beheerde exemplaar. |
 |[Remove-AzSqlInstancePool](/powershell/module/az.sql/remove-azsqlinstancepool/) | Hiermee verwijdert u een exemplaar groep in het door SQL beheerde exemplaar. |
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Retourneert informatie over het gebruik van SQL Managed instance-groep. |
@@ -58,29 +58,29 @@ Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instant
 
 ## <a name="deployment-process"></a>Implementatieproces
 
-Als u een SQL-beheerd exemplaar in een exemplaar groep wilt implementeren, moet u eerst de exemplaar groep implementeren. Dit is een eenmalige, langdurige bewerking waarbij de duur hetzelfde is als de implementatie [van één exemplaar dat is gemaakt in een leeg subnet](sql-managed-instance-paas-overview.md#management-operations). Daarna kunt u SQL Managed instances in de groep implementeren. Dit is een relatief snelle bewerking die doorgaans vijf minuten in beslag neemt. De para meter voor de exemplaar groep moet expliciet worden opgegeven als onderdeel van deze bewerking.
+Als u een beheerd exemplaar in een exemplaar groep wilt implementeren, moet u eerst de exemplaar groep implementeren. Dit is een eenmalige, langdurige bewerking waarbij de duur hetzelfde is als de implementatie [van één exemplaar dat is gemaakt in een leeg subnet](sql-managed-instance-paas-overview.md#management-operations). Daarna kunt u een beheerd exemplaar in de groep implementeren. Dit is een relatief snelle bewerking die doorgaans tot vijf minuten duurt. De para meter voor de exemplaar groep moet expliciet worden opgegeven als onderdeel van deze bewerking.
 
-In de open bare preview worden beide acties alleen ondersteund met Power shell en Resource Manager-sjablonen. De Azure Portal-ervaring is momenteel niet beschikbaar.
+In de open bare preview worden beide acties alleen ondersteund met behulp van Power shell en Azure Resource Manager sjablonen. De Azure Portal-ervaring is momenteel niet beschikbaar.
 
-Nadat het beheerde exemplaar van SQL is geïmplementeerd in een pool, *kunt* u de Azure Portal gebruiken om de eigenschappen ervan te wijzigen op de pagina prijs categorie.
+Nadat een beheerd exemplaar is geïmplementeerd in een pool, *kunt* u de Azure Portal gebruiken om de eigenschappen ervan te wijzigen op de pagina prijs categorie.
 
-## <a name="create-virtual-network-with-a-subnet"></a>Een virtueel netwerk maken met een subnet 
+## <a name="create-a-virtual-network-with-a-subnet"></a>Een virtueel netwerk met een subnet maken 
 
 Als u meerdere instantie groepen binnen hetzelfde virtuele netwerk wilt plaatsen, raadpleegt u de volgende artikelen:
 
-- [De grootte van het VNet-subnet bepalen voor een door Azure SQL beheerd exemplaar](vnet-subnet-determine-size.md).
+- De [grootte van het VNet-subnet bepalen voor een beheerd exemplaar van Azure SQL](vnet-subnet-determine-size.md).
 - Maak een nieuw virtueel netwerk en subnet met behulp van de [Azure Portal sjabloon](virtual-network-subnet-create-arm-template.md) of volg de instructies voor [het voorbereiden van een bestaand virtueel netwerk](vnet-existing-add-subnet.md).
  
 
-## <a name="create-instance-pool"></a>Instantie-pool maken 
+## <a name="create-an-instance-pool"></a>Een exemplaar groep maken 
 
 Nadat u de voor gaande stappen hebt voltooid, bent u klaar om een exemplaar groep te maken.
 
 De volgende beperkingen zijn van toepassing op exemplaar groepen:
 
 - Alleen Algemeen en GEN5 zijn beschikbaar als open bare preview.
-- De groeps naam mag alleen kleine letters, cijfers en afbreek streepjes bevatten en mag niet beginnen met een koppel teken.
-- Als u AHB (Azure Hybrid Benefit) wilt gebruiken, wordt dit toegepast op het niveau van de instantie groep. U kunt het licentie type instellen tijdens het maken van een groep of deze op elk gewenst moment bijwerken na het maken.
+- De naam van de groep mag alleen kleine letters, cijfers en afbreek streepjes bevatten en mag niet beginnen met een koppel teken.
+- Als u Azure Hybrid Benefit wilt gebruiken, wordt dit toegepast op het niveau van de instantie groep. U kunt het licentie type instellen tijdens het maken van een groep of deze op elk gewenst moment bijwerken na het maken.
 
 > [!IMPORTANT]
 > Het implementeren van een exemplaar groep is een langlopende bewerking die ongeveer 4,5 uur in beslag neemt.
@@ -109,11 +109,11 @@ $instancePool = New-AzSqlInstancePool `
 > [!IMPORTANT]
 > Omdat het implementeren van een exemplaar groep een langlopende bewerking is, moet u wachten totdat deze is voltooid voordat u een van de volgende stappen in dit artikel uitvoert.
 
-## <a name="create-sql-managed-instance"></a>Door SQL beheerd exemplaar maken
+## <a name="create-a-managed-instance"></a>Een beheerd exemplaar maken
 
-Na de geslaagde implementatie van de exemplaar groep is het tijd om een door SQL beheerd exemplaar te maken.
+Na de geslaagde implementatie van de exemplaar groep is het tijd om een beheerd exemplaar in het te maken.
 
-Als u een SQL Managed instance wilt maken, voert u de volgende opdracht uit:
+Als u een beheerd exemplaar wilt maken, voert u de volgende opdracht uit:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
@@ -127,9 +127,9 @@ $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -
 
 ## <a name="create-a-database"></a>Een database maken 
 
-Voor het maken en beheren van data bases in een SQL Managed instance die zich in een groep bevinden, gebruikt u de opdrachten voor één exemplaar.
+Voor het maken en beheren van data bases in een beheerd exemplaar dat zich in een groep bevindt, gebruikt u de opdrachten voor één exemplaar.
 
-Een Data Base maken binnen een SQL Managed instance:
+Een Data Base maken in een beheerd exemplaar:
 
 ```powershell
 $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poolmi-001" -ResourceGroupName "myResourceGroup"
@@ -172,8 +172,8 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 ## <a name="scale"></a>Schalen 
 
 
-Nadat u een SQL-beheerd exemplaar hebt gevuld met data bases, kunt u de instantie limieten aanraken met betrekking tot opslag of prestaties. Als het gebruik van de groep niet is overschreden, kunt u in dat geval uw exemplaar schalen.
-Het schalen van een SQL Managed instance binnen een pool is een bewerking die een paar minuten in beslag neemt. De vereiste voor schalen is beschikbaar vCores en opslag op het niveau van de instantie groep.
+Nadat u een beheerd exemplaar hebt gevuld met data bases, kunt u de instantie limieten voor opslag of prestaties aanraken. Als het gebruik van de groep niet is overschreden, kunt u in dat geval uw exemplaar schalen.
+Het schalen van een beheerd exemplaar binnen een pool is een bewerking die een paar minuten in beslag neemt. De vereiste voor schalen is beschikbaar vCores en opslag op het niveau van de instantie groep.
 
 Het aantal vCores en de opslag grootte bijwerken:
 
@@ -190,14 +190,14 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 ## <a name="connect"></a>Verbinding maken 
 
-Als u verbinding wilt maken met een door SQL beheerd exemplaar in een groep, zijn de volgende twee stappen vereist:
+De volgende twee stappen zijn vereist om verbinding te maken met een beheerd exemplaar in een groep:
 
-1. [Schakel het open bare eind punt in voor het exemplaar](#enable-public-endpoint).
+1. [Schakel het open bare eind punt in voor het exemplaar](#enable-the-public-endpoint).
 2. [Voeg een regel voor binnenkomende verbindingen toe aan de netwerk beveiligings groep (NSG)](#add-an-inbound-rule-to-the-network-security-group).
 
 Nadat beide stappen zijn voltooid, kunt u verbinding maken met het exemplaar met behulp van een openbaar eindpunt adres, poort en referenties die zijn gegeven tijdens het maken van het exemplaar. 
 
-### <a name="enable-public-endpoint"></a>Openbaar eind punt inschakelen
+### <a name="enable-the-public-endpoint"></a>Het open bare eind punt inschakelen
 
 Het inschakelen van het open bare eind punt voor een exemplaar kan worden uitgevoerd via de Azure Portal of met behulp van de volgende Power shell-opdracht:
 
@@ -215,7 +215,7 @@ Deze stap kan worden uitgevoerd met behulp van de Azure Portal of met Power shel
 Zie [verkeer van open bare eind punten toestaan voor de netwerk beveiligings groep](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group)voor meer informatie.
 
 
-## <a name="move-existing-single-instance-to-pool"></a>Bestaande ene instantie verplaatsen naar groep
+## <a name="move-an-existing-single-instance-to-a-pool"></a>Een bestaande enkele instantie verplaatsen naar een pool
  
 Het verplaatsen van exemplaren in en uit een pool is een van de beperkingen voor de open bare preview. Een tijdelijke oplossing is afhankelijk van herstel naar een bepaald tijdstip van data bases van een exemplaar buiten een groep naar een exemplaar dat zich al in een groep bevindt. 
 
@@ -225,7 +225,7 @@ Voor dit proces geldt een periode van uitval tijd.
 
 Bestaande data bases verplaatsen:
 
-1. Werk workloads voor het SQL-beheerde exemplaar dat u migreert,.
+1. Werk belastingen voor het beheerde exemplaar dat u migreert, te onderbreken.
 2. Genereer scripts om systeem databases te maken en voer deze uit op het exemplaar dat zich in de exemplaar groep bevindt.
 3. Een herstel bewerking van elke Data Base naar het exemplaar in de groep uitvoeren.
 
@@ -248,7 +248,7 @@ Bestaande data bases verplaatsen:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Ga naar het nieuwe exemplaar van uw toepassing en hervat de workloads.
+4. Ga naar het nieuwe exemplaar van uw toepassing en hervat de werk belastingen.
 
 Als er meerdere data bases zijn, herhaalt u het proces voor elke Data Base.
 
@@ -257,7 +257,7 @@ Als er meerdere data bases zijn, herhaalt u het proces voor elke Data Base.
 
 - Zie [algemene SQL-functies](../database/features-comparison.md)voor een lijst met functies en vergelijkingen.
 - Zie [vnet-configuratie voor SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over vnet-configuraties.
-- Zie [een SQL Managed instance maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
-- Zie voor een zelf studie met behulp van de Azure Database Migration Service (DMS) voor migratie de [migratie van SQL-beheerde exemplaren met behulp van DMS](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Zie [een beheerd exemplaar maken](instance-create-quickstart.md)voor een Snelstartgids die een beheerd exemplaar maakt en een Data Base herstelt vanuit een back-upbestand.
+- Voor een zelf studie over het gebruik van Azure Database Migration Service voor migratie raadpleegt u [migratie van SQL-beheerde exemplaren met behulp van database Migration service](../../dms/tutorial-sql-server-to-managed-instance.md).
 - Zie [Azure SQL Managed instance bewaken met Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor geavanceerde bewaking van prestaties van SQL Managed instance-data bases met ingebouwde probleemoplossings informatie.
 - Zie [prijzen van SQL Managed instance](https://azure.microsoft.com/pricing/details/sql-database/managed/)voor prijs informatie.

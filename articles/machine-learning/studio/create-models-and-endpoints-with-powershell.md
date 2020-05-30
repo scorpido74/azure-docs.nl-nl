@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117298"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195346"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Meerdere webservice-eind punten maken van een experiment met ML Studio (klassiek) en Power shell
 
@@ -50,7 +50,7 @@ Houd er rekening mee dat een webservice-module voor het **uitvoeren van webservi
 Wanneer dit experiment wordt geïmplementeerd als een webservice, retourneert het eind punt dat is gekoppeld aan de uitvoer, het getrainde model in de indeling van een. ilearner-bestand.
 
 U kunt ook een webservice-para meter instellen waarmee de URL wordt gedefinieerd die wordt gebruikt in de module **import data** . Zo kunt u de para meter gebruiken om afzonderlijke trainings gegevens sets op te geven voor het trainen van het model voor elke locatie.
-U kunt dit op andere manieren doen. U kunt een SQL-query met een webservice-para meter gebruiken om gegevens op te halen uit een SQL Azure-data base. U kunt ook een module voor het **invoeren van webservices** gebruiken om in een gegevensset door te geven aan de webservice.
+U kunt dit op andere manieren doen. U kunt een SQL-query met een webservice-para meter gebruiken om gegevens op te halen uit een data base in Azure SQL Database. U kunt ook een module voor het **invoeren van webservices** gebruiken om in een gegevensset door te geven aan de webservice.
 
 ![Een getrainde model module wordt uitgevoerd in een webservice-module voor het uitvoeren van webservices](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

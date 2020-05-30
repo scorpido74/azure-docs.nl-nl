@@ -4,12 +4,13 @@ description: Meer informatie over het gebruik van de Azure Portal om een AKS-clu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7fa547ca8a3907669c9e7671b11fe3a6307d97f4
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: references_regions
+ms.openlocfilehash: e27a920aea18affd78f840d3063b8082f716745b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773420"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193942"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Een AKS-cluster (Azure Kubernetes Services) maken en configureren voor het gebruik van virtuele knoop punten in de Azure Portal
 
@@ -93,7 +94,7 @@ Standaard wordt een Azure Active Directory Service-Principal gemaakt. Deze servi
 
 Het cluster is ook geconfigureerd voor geavanceerde netwerken. De virtuele knoop punten zijn geconfigureerd voor het gebruik van hun eigen subnet van het virtuele netwerk van Azure. Dit subnet heeft gedelegeerde machtigingen voor het verbinden van Azure-resources tussen het AKS-cluster. Als u nog geen overgedragen subnet hebt, wordt het virtuele Azure-netwerk en-subnet door de Azure Portal gemaakt en geconfigureerd voor gebruik met de virtuele knoop punten.
 
-Selecteer **controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**.
+Selecteer **Controleren + maken**. Nadat de validatie is voltooid, selecteert u **maken**.
 
 Het duurt enkele minuten om het AKS-cluster te maken en voor te bereiden voor gebruik.
 

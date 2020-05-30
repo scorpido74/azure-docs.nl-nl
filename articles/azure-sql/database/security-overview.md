@@ -1,7 +1,7 @@
 ---
 title: Beveiligings overzicht
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Meer informatie over beveiliging in Azure SQL Database en Azure SQL Managed instance, met inbegrip van de manier waarop deze van on-premises SQL Server verschilt.
+description: Meer informatie over beveiliging in Azure SQL Database en Azure SQL Managed instance, met inbegrip van de verschillen van SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,14 +12,15 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 0f2f412045ddb86996ec98965a147d80944c642a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049958"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191708"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database & SQL Managed instance
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In dit artikel vindt u een overzicht van de basis principes van het beveiligen van de gegevenslaag van een toepassing met behulp van [Azure SQL database](sql-database-paas-overview.md) en [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md). De beschreven beveiligings strategie volgt de gelaagde ingrijpende aanpak zoals wordt weer gegeven in de onderstaande afbeelding, en verplaatst van de buiten kant naar:
@@ -41,7 +42,7 @@ Met [virtuele netwerk service-eind punten](../../virtual-network/virtual-network
 Met [regels voor virtuele netwerken](vnet-service-endpoint-rule-overview.md) kunnen Azure SQL database alleen communicatie accepteren die worden verzonden vanuit geselecteerde subnetten binnen een virtueel netwerk.
 
 > [!NOTE]
-> Het beheren van toegang met firewall regels is *niet* van toepassing op **een door SQL beheerd exemplaar**. Zie [verbinding maken met een SQL Managed instance](../managed-instance/connect-application-instance.md) voor meer informatie over de benodigde netwerk configuratie
+> Het beheren van toegang met firewall regels is *niet* van toepassing op **een door SQL beheerd exemplaar**. Zie [verbinding maken met een SQL Managed instance](../managed-instance/connect-application-instance.md)voor meer informatie over de benodigde netwerk configuratie.
 
 ## <a name="access-management"></a>Toegangsbeheer
 

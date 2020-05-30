@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 209445378b71b4d6da2f40ea2744d3a2da0d8c45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4b4a852f0f102277701191eb24158763998e7b5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046325"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195771"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Toepassings patronen en ontwikkelings strategieën voor SQL Server in azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,8 +59,9 @@ Voordat u begint met het lezen van dit artikel, moet u kennis hebben van de basi
 In dit artikel worden verschillende toepassings patronen beschreven die geschikt kunnen zijn voor uw eenvoudige toepassingen, evenals de zeer complexe zakelijke toepassingen. Voordat u elk patroon bijwerkt, raden we u aan om vertrouwd te raken met de beschik bare Services voor gegevens opslag in azure, zoals [Azure Storage](../../../storage/common/storage-introduction.md), [Azure SQL database](../../database/sql-database-paas-overview.md)en [SQL Server in een virtuele machine van Azure](sql-server-on-azure-vm-iaas-what-is-overview.md). Als u de beste ontwerp beslissingen voor uw toepassingen wilt maken, moet u weten wanneer u de gegevens opslag service duidelijk wilt gebruiken.
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>Kies SQL Server in een virtuele machine van Azure, wanneer:
+
 * U hebt controle over SQL Server en Windows. Dit kan bijvoorbeeld de SQL Server versie, speciale hotfixes, prestatie configuratie, enzovoort zijn.
-* U hebt een volledige compatibiliteit met SQL Server on-premises nodig en u wilt bestaande toepassingen verplaatsen naar Azure.
+* U hebt een volledige compatibiliteit met SQL Server nodig en u wilt bestaande toepassingen verplaatsen naar Azure.
 * U wilt gebruikmaken van de mogelijkheden van de Azure-omgeving, maar Azure SQL Database biedt geen ondersteuning voor alle functies die uw toepassing nodig heeft. Dit kan de volgende gebieden omvatten:
   
   * **Data Base-grootte**: op het moment dat dit artikel is bijgewerkt, ondersteunt SQL database een Data Base van Maxi maal 1 TB aan gegevens. Als uw toepassing meer dan 1 TB aan gegevens vereist en u geen aangepaste sharding-oplossingen wilt implementeren, is het raadzaam om SQL Server te gebruiken in een virtuele Azure-machine. Zie voor de meest recente informatie [Uitschalen Azure SQL database](https://msdn.microsoft.com/library/azure/dn495641.aspx), [op DTU gebaseerd inkoop model](../../database/service-tiers-dtu.md)en [inkoop model op basis van vCore](../../database/service-tiers-vcore.md)(preview).

@@ -6,69 +6,74 @@ ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263229"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220616"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Wat is de voor waarde van de locatie in Azure Active Directory voorwaardelijke toegang? 
+# <a name="using-the-location-condition-in-a-conditional-access-policy"></a>De locatie voorwaarde gebruiken in een beleid voor voorwaardelijke toegang 
 
-Met [Azure Active Directory (Azure AD) voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md)kunt u bepalen hoe geautoriseerde gebruikers toegang hebben tot uw Cloud-apps. De locatie voorwaarde van een beleid voor voorwaardelijke toegang stelt u in staat om instellingen voor toegangs beheer te koppelen aan de netwerk locaties van uw gebruikers.
+Zoals uitgelegd in het [overzichts artikel](overview.md) beleid voor voorwaardelijke toegang zijn de meest eenvoudige een instructie if-then waarmee signalen worden gecombineerd, om beslissingen te nemen en organisatie beleid af te dwingen. Een van de signalen die kunnen worden opgenomen in het besluitvormings proces is de netwerk locatie.
 
-In dit artikel vindt u de informatie die u nodig hebt om de locatie voorwaarde te configureren.
+![Conceptuele voorwaardelijke signalen plus beslissing voor het afdwingen van afdwinging](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-## <a name="locations"></a>Locaties
-
-Met Azure AD kunt u eenmalige aanmelding op apparaten, apps en services vanaf een wille keurige locatie op het open bare Internet. Met de locatie voorwaarde kunt u de toegang tot uw Cloud-apps beheren op basis van de netwerk locatie van een gebruiker. Veelvoorkomende use cases voor de locatie voorwaarde zijn:
+Organisaties kunnen deze netwerk locatie gebruiken voor algemene taken, zoals: 
 
 - Vereisen multi-factor Authentication voor gebruikers die toegang hebben tot een service wanneer ze zijn uitgeschakeld in het bedrijfs netwerk.
 - Toegang blok keren voor gebruikers die toegang hebben tot een service van specifieke landen of regio's.
 
-Een locatie is een label voor een netwerk locatie die een benoemde locatie of multi-factor Authentication-betrouw bare Ip's vertegenwoordigt.
+De netwerk locatie wordt bepaald door het open bare IP-adres dat een client biedt om Azure Active Directory. Beleid voor voorwaardelijke toegang is standaard van toepassing op alle IPv4-en IPv6-adressen. 
+
+> [!TIP]
+> IPV6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
 
 ## <a name="named-locations"></a>Benoemde locaties
 
-Met benoemde locaties kunt u logische groeperingen van IP-adresbereiken of landen en regio's maken.
+Locaties worden aangeduid in het Azure portal onder **Azure Active Directory**  >  **beveiligings**  >  **voorwaardelijke toegang**met de  >  **naam locaties**. Deze benoemde netwerk locaties kunnen locaties bevatten zoals de hoofd netwerkbereiken van een organisatie, bereiken van VPN-netwerken of bereiken die u wilt blok keren. 
 
-U kunt toegang krijgen tot uw benoemde locaties in het gedeelte **beheren** van de pagina voorwaardelijke toegang.
+![Benoemde locaties in de Azure Portal](./media/location-condition/new-named-location.png)
 
-![Benoemde locaties in voorwaardelijke toegang](./media/location-condition/02.png)
-
-Een benoemde locatie heeft de volgende onderdelen:
-
-![Een nieuwe benoemde locatie maken](./media/location-condition/42.png)
-
-- **Naam** : de weergave naam van een benoemde locatie.
-- **IP-adresbereiken** : een of meer IPv4-adresbereiken in CIDR-indeling. Het opgeven van een IPv6-adres bereik wordt niet ondersteund.
-
-   > [!NOTE]
-   > IPv6-adresbereiken kunnen momenteel niet worden opgenomen in een benoemde locatie. Dit betekent dat IPv6-bereiken niet kunnen worden uitgesloten van een beleid voor voorwaardelijke toegang.
-
-- **Markeren als vertrouwde locatie** : een vlag die u kunt instellen voor een benoemde locatie om een vertrouwde locatie aan te duiden. Normaal gesp roken zijn vertrouwde locaties netwerk gebieden die worden beheerd door uw IT-afdeling. Naast voorwaardelijke toegang worden vertrouwde benoemde locaties ook gebruikt door Azure Identity Protection en Azure AD-beveiligings rapporten om fout- [positieven](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)te reduceren.
-- **Landen/regio's** : met deze optie kunt u een of meer land of regio selecteren om een benoemde locatie te definiëren.
-- **Onbekende gebieden bevatten** -sommige IP-adressen zijn niet toegewezen aan een bepaald land of bepaalde regio. Met deze optie kunt u kiezen of deze IP-adressen op de genoemde locatie moeten worden opgenomen. Gebruik deze instelling wanneer het beleid dat gebruikmaakt van de benoemde locatie, moet worden toegepast op onbekende locaties.
+Als u een locatie wilt configureren, moet u ten minste een **naam** en het IP-bereik opgeven. 
 
 Het aantal benoemde locaties dat u kunt configureren, is beperkt door de grootte van het gerelateerde object in azure AD. U kunt locaties configureren op basis van de volgende beperkingen:
 
-- Eén benoemde locatie met Maxi maal 1200 IP-bereiken.
+- Eén benoemde locatie met Maxi maal 1200 IPv4-bereiken.
 - Maxi maal 90 benoemde locaties waaraan één IP-bereik is toegewezen.
 
-Beleid voor voorwaardelijke toegang is van toepassing op IPv4-en IPv6-verkeer. Op momenteel benoemde locaties mogen geen IPv6-bereiken worden geconfigureerd. Deze beperking veroorzaakt de volgende situaties:
+> [!TIP]
+> IPV6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
 
-- Beleid voor voorwaardelijke toegang kan niet worden gericht op specifieke IPv6-bereiken
-- Beleid voor voorwaardelijke toegang kan specifieke IPV6-bereiken niet uitsluiten
+### <a name="trusted-locations"></a>Vertrouwde locaties
 
-Als een beleid is geconfigureerd om te worden toegepast op een wille keurige locatie, is dit van toepassing op IPv4-en IPv6-verkeer. Benoemde locaties die zijn geconfigureerd voor opgegeven landen en regio's ondersteunen alleen IPv4-adressen. IPv6-verkeer wordt alleen opgenomen als de optie voor het opnemen van onbekende gebieden is geselecteerd.
+Bij het maken van een netwerk locatie heeft een beheerder de mogelijkheid om een locatie te markeren als een vertrouwde locatie. 
 
-## <a name="trusted-ips"></a>Goedgekeurde IP-adressen
+![Vertrouwde locaties in de Azure Portal](./media/location-condition/new-trusted-location.png)
+
+Met deze optie kunt u bepalen in het beleid voor voorwaardelijke toegang, waarbij u bijvoorbeeld registratie voor multi-factor Authentication van een vertrouwde netwerk locatie wilt vereisen. Dit is ook van toepassing op het Azure AD Identity Protection risico berekening, waardoor het risico van een gebruiker wordt verkort wanneer dit afkomstig is van een locatie die als vertrouwd is gemarkeerd.
+
+### <a name="countries-and-regions"></a>Landen en regio's
+
+Sommige organisaties kunnen ervoor kiezen om volledige IP-grenzen van landen of regio's te definiëren als benoemde locaties voor beleids regels voor voorwaardelijke toegang. Ze kunnen deze locaties gebruiken bij het blok keren van onnodig verkeer wanneer ze weten dat gebruikers nooit van een locatie, zoals Noord-Korea, zijn. Deze toewijzingen van het IP-adres aan het land worden regel matig bijgewerkt. 
+
+> [!NOTE]
+> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken.
+
+![Maak een nieuwe locatie op basis van een land of regio in de Azure Portal](./media/location-condition/new-named-location-country-region.png)
+
+#### <a name="include-unknown-areas"></a>Onbekende gebieden bevatten
+
+Sommige IP-adressen zijn niet toegewezen aan een bepaald land of bepaalde regio. Als u deze IP-locaties wilt vastleggen, schakelt u het selectie vakje **onbekende gebieden opnemen** bij het definiëren van een locatie in. Met deze optie kunt u kiezen of deze IP-adressen op de genoemde locatie moeten worden opgenomen. Gebruik deze instelling wanneer het beleid dat gebruikmaakt van de benoemde locatie, moet worden toegepast op onbekende locaties.
+
+### <a name="configure-mfa-trusted-ips"></a>Vertrouwde IP-adressen van MFA configureren
 
 U kunt ook IP-adresbereiken configureren die het lokale intranet van uw organisatie vertegenwoordigen in de instellingen van de [multi-factor Authentication-Service](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx). Met deze functie kunt u Maxi maal 50 IP-adresbereiken configureren. De IP-adresbereiken bevinden zich in CIDR-indeling. Zie [Trusted ip's](../authentication/howto-mfa-mfasettings.md#trusted-ips)(Engelstalig) voor meer informatie.  
 
@@ -83,19 +88,44 @@ Nadat u deze optie hebt ingeschakeld, worden door de benoemde locatie die door *
 Voor mobiele en desktop toepassingen, met een lange levens duur van sessies, wordt voorwaardelijke toegang regel matig opnieuw geëvalueerd. De standaard waarde is eenmaal per uur. Wanneer de binnen bedrijfs netwerk claim alleen wordt uitgegeven op het moment van de eerste authenticatie, heeft Azure AD mogelijk geen lijst met vertrouwde IP-adresbereiken. In dit geval is het moeilijker om te bepalen of de gebruiker zich nog in het bedrijfs netwerk bevindt:
 
 1. Controleer of het IP-adres van de gebruiker zich in een van de vertrouwde IP-adresbereiken bevindt.
-2. Controleer of de eerste drie octetten van het IP-adres van de gebruiker overeenkomen met de eerste drie octetten van het IP-adres van de eerste verificatie. Het IP-adres wordt vergeleken met de eerste verificatie wanneer de interne claim van het bedrijfs netwerk oorspronkelijk werd uitgegeven en de locatie van de gebruiker is gevalideerd.
+1. Controleer of de eerste drie octetten van het IP-adres van de gebruiker overeenkomen met de eerste drie octetten van het IP-adres van de eerste verificatie. Het IP-adres wordt vergeleken met de eerste verificatie wanneer de interne claim van het bedrijfs netwerk oorspronkelijk werd uitgegeven en de locatie van de gebruiker is gevalideerd.
 
 Als beide stappen mislukken, wordt een gebruiker beschouwd als niet meer op een vertrouwd IP-adres.
 
-## <a name="location-condition-configuration"></a>Configuratie van locatie voorwaarde
+## <a name="preview-features"></a>Preview-functies
+
+Naast de algemeen beschik bare benoemde locatie functie is er ook een benoemde locatie (preview-versie). U kunt de voor beeld van een benoemde locatie openen met behulp van de banner aan de bovenkant van de Blade huidige benoemde locatie.
+
+![De preview-versie voor benoemde locaties uitproberen](./media/location-condition/preview-features.png)
+
+Met de voor beeld van benoemde locatie kunt u
+
+- Maxi maal 195 benoemde locaties configureren
+- Maxi maal 2000 IP-bereiken per benoemde locatie configureren
+- Maxi maal IPv6-adressen configureren
+
+Er zijn ook extra controles toegevoegd om de wijziging van de onjuiste configuratie te verminderen.
+
+- Privé-IP-adresbereiken kunnen niet meer worden geconfigureerd
+- Het aantal IP-adressen dat kan worden opgenomen in een bereik, is beperkt. Alleen CIDR-maskers die groter zijn dan/8, zijn toegestaan bij het configureren van een IP-bereik.
+
+Er zijn nu twee opties voor het maken van de preview-versie: 
+
+- **Locatie van landen**
+- **Locatie van IP-bereiken**
+
+> [!NOTE]
+> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken.
+
+![Preview-interface voor benoemde locaties](./media/location-condition/named-location-preview.png)
+
+## <a name="location-condition-in-policy"></a>Voor waarde voor locatie in beleid
 
 Wanneer u de locatie voorwaarde configureert, hebt u de mogelijkheid om onderscheid te maken tussen:
 
 - Elke locatie
 - Alle vertrouwde locaties
 - Geselecteerde locaties
-
-![Configuratie van locatie voorwaarde](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>Elke locatie
 
@@ -129,12 +159,9 @@ Standaard geeft Azure AD per uur een token uit. Nadat het bedrijfs netwerk is ve
 
 Het IP-adres dat wordt gebruikt in de beleids evaluatie is het open bare IP-adres van de gebruiker. Voor apparaten in een particulier netwerk is dit IP-adres niet het client-IP-adres van het apparaat van de gebruiker op het intranet. het is het door het netwerk gebruikte adressen om verbinding te maken met het open bare Internet.
 
-> [!WARNING]
-> Als uw apparaat alleen een IPv6-adres heeft, wordt het configureren van de locatie voorwaarde niet ondersteund.
-
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Bulksgewijs uploaden en downloaden van benoemde locaties
 
-Wanneer u benoemde locaties maakt of bijwerkt voor bulk updates, kunt u een CSV-bestand uploaden of downloaden met de IP-bereiken. Bij een upload worden de IP-bereiken in de lijst vervangen door die van het bestand. Elke rij van het bestand bevat één IP-adres bereik in CIDR-notatie.
+Wanneer u benoemde locaties maakt of bijwerkt voor bulk updates, kunt u een CSV-bestand uploaden of downloaden met de IP-bereiken. Bij een upload worden de IP-bereiken in de lijst vervangen door die bereiken uit het bestand. Elke rij van het bestand bevat één IP-adres bereik in CIDR-notatie.
 
 ### <a name="cloud-proxies-and-vpns"></a>Cloud-proxy's en Vpn's
 
@@ -144,9 +171,9 @@ Als er een Cloud proxy is ingesteld, kan een beleid dat wordt gebruikt om een aa
 
 ### <a name="api-support-and-powershell"></a>API-ondersteuning en Power shell
 
-API en Power shell worden nog niet ondersteund voor benoemde locaties of voor beleids regels voor voorwaardelijke toegang.
+API en Power shell worden nog niet ondersteund voor benoemde locaties.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
-- Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md).
+- Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u het artikel [buil ding a Conditional Access Policy](concept-conditional-access-policies.md).
+- Zoekt u een voor beeld beleid met behulp van de locatie voorwaarde? Zie het artikel [voorwaardelijke toegang: toegang blok keren op locatie](howto-conditional-access-policy-location.md)

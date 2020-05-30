@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4f026a6a0155f9d4add15adb26951b4913d11685
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 83a5543aa2d1f30696bed05caf85b04ed6685bae
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019806"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197205"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Ondersteunde gegevensbronnen in Azure Analysis Services
 
@@ -24,20 +24,20 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 |---------|---------|---------|---------|
 |Azure SQL Database      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL Data Warehouse)      |   Ja      |   Ja       |<sup>[twee](#azprovider)</sup>|
-|Azure Blob Storage      |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup> |
-|Azure-tabelopslag     |   Ja       |    Nee      | <sup>[i](#tab1400a)</sup>|
-|Azure Cosmos DB     |  Ja        |  Nee        |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen1      |   Ja       |    Nee      |<sup>[i](#tab1400a)</sup> |
-|Azure Data Lake Store Gen2       |   Ja       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
-|Azure HDInsight HDFS    |     Ja     |   Nee       |<sup>[i](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   Ja       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
+|Azure Blob Storage      |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup> |
+|Azure-tabelopslag     |   Yes       |    Nee      | <sup>[i](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Yes        |  Nee        |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Yes       |    Nee      |<sup>[i](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Yes       |    Nee      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     Yes     |   Nee       |<sup>[i](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Yes       |   Nee       |<sup>[1](#tab1400a)</sup>, <sup> [4](#databricks)</sup>|
 ||||
 
 **Noten**
 
 <a name="tab1400a">1</a> : alleen modellen in tabel vorm 1400 en hoger.  
 <a name="azprovider">2</a> -als de gegevens bron van een *provider* in tabellaire 1200 en hoger modellen is opgegeven, is voor zowel in-Memory als DirectQuery-modellen micro soft OLE DB-stuur programma vereist voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0 of .NET Framework gegevens provider voor SQL Server.  
-<a name="azsqlmanaged">3</a> -Azure SQL database beheerde instantie wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.  
+<a name="azsqlmanaged">3</a> -Azure SQL Managed instance wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een [on-premises gegevens gateway](analysis-services-gateway.md) vereist.  
 <a name="databricks">4</a> -Azure Databricks het gebruik van de Spark-connector wordt momenteel niet ondersteund.  
 <a name="gen2">5</a> -ADLS Gen2 connector wordt momenteel niet ondersteund, maar de Azure Blob Storage-connector kan worden gebruikt met een ADLS Gen2-gegevens bron.
 
@@ -45,35 +45,35 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 |Gegevensbron | In het geheugen | DirectQuery |Opmerkingen   |
 |  --- | --- | --- | --- |
-|Access-database     |  Ja | Nee |  |
-|Active Directory     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup>  |
-|Analysis Services     |  Ja | Nee |  |
-|Analytics platform systeem     |  Ja | Nee |  |
-|CSV-bestand  |Ja | Nee |  |
-|Dynamics 365     |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Excel-werkmap     |  Ja | Nee |  |
-|Exchange      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Map      |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|IBM Informix  |Ja | Nee |  |
-|JSON-document      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Regels van binair bestand      | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|MySQL-database     | Ja | Nee |  |
-|OData-feed      |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|ODBC-query     | Ja | Nee |  |
-|OLE DB     |   Ja | Nee |  |
+|Access-database     |  Yes | Nee |  |
+|Active Directory     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup>  |
+|Analysis Services     |  Yes | Nee |  |
+|Analytics platform systeem     |  Yes | Nee |  |
+|CSV-bestand  |Yes | Nee |  |
+|Dynamics 365     |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Excel-werkmap     |  Yes | Nee |  |
+|Exchange      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Map      |Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|IBM Informix  |Yes | Nee |  |
+|JSON-document      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Regels van binair bestand      | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|MySQL-database     | Yes | Nee |  |
+|OData-feed      |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|ODBC-query     | Yes | Nee |  |
+|OLE DB     |   Yes | Nee |  |
 |Oracle  | Ja  |Ja  | <sup>[9,4](#oracle)</sup> |
-|PostgreSQL-database   | Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-objecten|  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|Salesforce-rapporten |Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|SAP HANA     |  Ja | Nee |  |
-|SAP Business Warehouse    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
-|SharePoint-lijst      |   Ja | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|PostgreSQL-database   | Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Salesforce-objecten|  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|Salesforce-rapporten |Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|SAP HANA     |  Yes | Nee |  |
+|SAP Business Warehouse    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
+|SharePoint-lijst      |   Yes | Nee | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
 |SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
-|Sybase-database     |  Ja | Nee |  |
+|Sybase-database     |  Yes | Nee |  |
 |Teradata | Ja  | Ja  | <sup>[6](#teradata)</sup> |
-|TXT-bestand  |Ja | Nee |  |
-|XML-tabel    |  Ja | Nee | <sup>[6,5](#tab1400b)</sup> |
+|TXT-bestand  |Yes | Nee |  |
+|XML-tabel    |  Yes | Nee | <sup>[6,5](#tab1400b)</sup> |
 | | | |
 
 **Noten**  
@@ -88,7 +88,7 @@ Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Ana
 
 ## <a name="understanding-providers"></a>Wat zijn providers?
 
-Bij het maken van in tabel vorm 1400 en een hoger model project in Visual Studio, geeft u standaard geen gegevens provider op wanneer u verbinding maakt met een gegevens bron met behulp van **gegevens ophalen**. In tabel vorm 1400 en hogere modellen wordt gebruikgemaakt van [Power query](/power-query/power-query-what-is-power-query) connectors voor het beheren van verbindingen, gegevens query's en mashups tussen de gegevens bron en Analysis Services. Dit worden ook wel *gestructureerde* gegevens bron verbindingen genoemd in die instellingen voor de verbindings eigenschappen voor u zijn ingesteld. U kunt echter verouderde gegevens bronnen inschakelen voor een model project in Visual Studio. Als u deze functie inschakelt, kunt u de **wizard tabel importeren** gebruiken om verbinding te maken met bepaalde gegevens bronnen die traditioneel worden ondersteund in tabel 1200 en lagere modellen als *verouderde*of gegevens bronnen van *providers* . Wanneer u de gegevens bron van een provider opgeeft, kunt u een bepaalde gegevens provider en andere geavanceerde verbindings eigenschappen opgeven. U kunt bijvoorbeeld verbinding maken met een on-premises SQL Server Data Warehouse of zelfs een Azure SQL Database als een verouderde gegevens bron. U kunt vervolgens het OLE DB stuur programma voor SQL Server MSOLEDBSQL-gegevens provider selecteren. In dit geval kan het selecteren van een OLE DB gegevens provider betere prestaties bieden ten opzichte van de Power Query-connector. 
+Bij het maken van in tabel vorm 1400 en een hoger model project in Visual Studio, geeft u standaard geen gegevens provider op wanneer u verbinding maakt met een gegevens bron met behulp van **gegevens ophalen**. In tabel vorm 1400 en hogere modellen wordt gebruikgemaakt van [Power query](/power-query/power-query-what-is-power-query) connectors voor het beheren van verbindingen, gegevens query's en mashups tussen de gegevens bron en Analysis Services. Dit worden ook wel *gestructureerde* gegevens bron verbindingen genoemd in die instellingen voor de verbindings eigenschappen voor u zijn ingesteld. U kunt echter verouderde gegevens bronnen inschakelen voor een model project in Visual Studio. Als u deze functie inschakelt, kunt u de **wizard tabel importeren** gebruiken om verbinding te maken met bepaalde gegevens bronnen die traditioneel worden ondersteund in tabel 1200 en lagere modellen als *verouderde*of gegevens bronnen van *providers* . Wanneer u de gegevens bron van een provider opgeeft, kunt u een bepaalde gegevens provider en andere geavanceerde verbindings eigenschappen opgeven. U kunt bijvoorbeeld verbinding maken met een SQL Server Data Warehouse-instantie of zelfs een Azure SQL Database als een verouderde gegevens bron. U kunt vervolgens het OLE DB stuur programma voor SQL Server MSOLEDBSQL-gegevens provider selecteren. In dit geval kan het selecteren van een OLE DB gegevens provider betere prestaties bieden ten opzichte van de Power Query-connector. 
 
 Wanneer u de wizard tabel importeren gebruikt in Visual Studio, is voor verbindingen met een gegevens bron een gegevens provider vereist. Er wordt een standaard gegevens provider voor u geselecteerd. U kunt de gegevens provider zo nodig wijzigen. Het type provider dat u kiest, kan afhankelijk zijn van de prestaties, ongeacht of het model gebruikmaakt van in-Memory opslag of DirectQuery, en op welke Analysis Services platform u uw model implementeert.
 

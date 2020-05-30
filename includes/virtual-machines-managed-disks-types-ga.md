@@ -1,6 +1,6 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6740ea320f2d950386da12eb44726e2c826b60a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d263a1fb329f5a18fec760413300296643768c1d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80386086"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200538"
 ---
 ## <a name="premium-ssd"></a>Premium - SSD
 
@@ -60,7 +60,7 @@ Azure Standard Hdd's levert betrouw bare, voordelige schijf ondersteuning voor v
 
 Voor standaard Hdd's wordt elke IO-bewerking beschouwd als één trans actie, ongeacht de I/O-grootte. Deze trans acties hebben een facturerings impact.
 
-## <a name="billing"></a>Billing
+## <a name="billing"></a>Facturering
 
 Bij het gebruik van beheerde schijven gelden de volgende facturerings overwegingen:
 
@@ -70,6 +70,6 @@ Bij het gebruik van beheerde schijven gelden de volgende facturerings overweging
 - Uitgaande gegevens overdracht
 - Aantal trans acties
 
-**Beheerde schijf grootte**: beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de Premium Storage aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
+**Beheerde schijf grootte**: beheerde schijven worden gefactureerd op de ingerichte grootte. Azure wijst de ingerichte grootte (afgerond) toe aan de dichtstbijzijnde schijf grootte. Zie de vorige tabellen voor meer informatie over de geboden schijf groottes. Elke schijf wordt toegewezen aan een ondersteunde aanbieding van de ingerichte schijf en wordt dienovereenkomstig gefactureerd. Als u bijvoorbeeld een 200 GiB-Standard-SSD hebt ingericht, wordt deze toegewezen aan de aanbieding voor de schijf grootte van E15 (256 GiB). Facturering voor een ingerichte schijf wordt per uur naar beneden gefactureerd met behulp van de maandelijkse prijs voor de opslag aanbieding. Als u bijvoorbeeld een E10-schijf hebt ingericht en deze na 20 uur hebt verwijderd, wordt u gefactureerd voor het E10-aanbod dat Maxi maal 20 uur in rekening wordt gebracht. Dit is ongeacht de hoeveelheid gegevens die naar de schijf wordt geschreven.
 
 **Moment opnamen**: moment opnamen worden gefactureerd op basis van de gebruikte grootte. Als u bijvoorbeeld een moment opname maakt van een beheerde schijf met een ingerichte capaciteit van 64 GiB en de daad werkelijke gebruikte gegevens grootte van 10 GiB, wordt de moment opname alleen gefactureerd voor de gebruikte gegevens grootte van 10 GiB.

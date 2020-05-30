@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 8d4e9a1e255884b9250879ab486d7a4e2849473a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2a9b149bd76ed276f3210f27ea0f60bbc7b7662
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192090"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190893"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Op Linux gebaseerde clusters maken in HDInsight met behulp van de Azure Portal
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
     ![Een nieuw cluster maken in de Azure Portal](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-create-resource.png "Een nieuw cluster maken in de Azure Portal")
 
-1. Selecteer **Analytics** > **Azure HDInsight** om naar de pagina **HDInsight-cluster maken** te gaan.
+1. Selecteer **Analytics**  >  **Azure HDInsight** om naar de pagina **HDInsight-cluster maken** te gaan.
 
 ## <a name="basics"></a>Basisbeginselen
 
@@ -62,6 +62,9 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 Selecteer **volgende: opslag >>** om naar het volgende tabblad te gaan.
 
 ## <a name="storage"></a>Storage
+
+> [!WARNING] 
+> Vanaf 15 juni 2020 kunnen klanten geen nieuwe service-principal maken met HDInsight. Zie [Service-Principal en certificaten maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) met behulp van Azure Active Directory.
 
 ![HDInsight-cluster opslag maken](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-storage.png "Een nieuw cluster maken in de Azure Portal-opslag")
 
@@ -118,7 +121,7 @@ Geef op het tabblad **configuratie en prijzen** de volgende informatie op:
 
 Selecteer **controleren + >>maken** om de cluster configuratie te valideren en door te gaan naar het tabblad definitief.
 
-## <a name="review--create"></a>Controleren en maken
+## <a name="review--create"></a>Beoordelen en maken
 
 ![HDInsight-cluster overzicht maken](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-review-create-hadoop.png "Aantal cluster knooppunten opgeven")
 

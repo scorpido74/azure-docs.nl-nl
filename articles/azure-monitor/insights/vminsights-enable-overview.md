@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bb5d5dd5110f176b59a99f6a3aa223184158da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 3c9c5e69eea72b20da485ffb1edf806f2c9f3b41
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982307"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195307"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Overzicht van Azure Monitor voor VM's inschakelen
 
@@ -60,7 +60,7 @@ Azure Monitor voor VM's ondersteunt een Log Analytics-werk ruimte in de volgende
 
 Als u geen Log Analytics-werk ruimte hebt, kunt u er een maken met behulp van een van de volgende resources:
 * [Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [Zo](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -80,7 +80,7 @@ Gebruik een van de volgende methoden om uw werk ruimte te configureren voor het 
 
 De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen die Azure Monitor voor VM's ondersteunt. Verderop in dit gedeelte vindt u een volledige lijst met informatie over de belangrijkste en secundaire versie van het Linux-besturings systeem en de ondersteunde kernel-versies.
 
-|Versie van het besturingssysteem |Prestaties |Kaarten |
+|Besturingssysteemversie |Prestaties |Maps |
 |-----------|------------|-----|
 |Windows Server 2019 | X | X |
 |Windows Server 2016 1803 | X | X |
@@ -110,7 +110,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 7,6 | 3.10.0-957 |
 | 7,5 | 3.10.0-862 |
@@ -118,29 +118,29 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 6,10 | 2.6.32-754 |
 | 6,9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 6,10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
 | 6,9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
-| 18,04 | 5,0 (inclusief door Azure afgestemde kernel)<br>4,18*<br>4,15* |
+| 18,04 | 5.3.0-1020<br>5,0 (inclusief door Azure afgestemde kernel)<br>4,18* <br> 4,15* |
 | 16.04.3 | 4,15. * |
 | 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enter prise server
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 |12 SP4 | 4,12. * (inclusief door Azure afgestemde kernel) |
 |12 SP3 | 4,4. * |
@@ -148,7 +148,7 @@ De volgende tabel geeft een lijst van de Windows-en Linux-besturings systemen di
 
 #### <a name="debian"></a>Debian 
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 9 | 4,9 | 
 
@@ -167,16 +167,16 @@ De volgende tabel beschrijft de verbonden bronnen die de kaart functie ondersteu
 
 | Verbonden bron | Ondersteund | Beschrijving |
 |:--|:--|:--|
-| Windows-agents | Ja | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Linux-agents | Ja | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
-| Beheergroep System Center Operations Manager | Nee | |
+| Windows-agents | Yes | Naast de [log Analytics-agent voor Windows](../../azure-monitor/platform/log-analytics-agent.md), hebben Windows-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Linux-agents | Yes | Naast de [log Analytics-agent voor Linux](../../azure-monitor/platform/log-analytics-agent.md)hebben Linux-agents de afhankelijkheids agent nodig. Zie [ondersteunde besturings systemen](#supported-operating-systems)voor meer informatie. |
+| Beheergroep System Center Operations Manager | No | |
 
 U kunt de afhankelijkheids agent downloaden van de volgende locaties:
 
-| File | OS | Versie | SHA-256 |
+| Bestand | Besturingssysteem | Versie | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.3.9380 | 40763BD0A5B60707DF3F9E7BCC17D917F5CE995F2F5A4633D8B733F3BE143921  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.3.9380 | BB41BB59BDD293968F02A9EF821F9639406AA1BDF1F67925DB9EE00D54AA7F0B |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
 
 ## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
@@ -199,7 +199,7 @@ Schakel Azure Monitor voor VM's in met een van de methoden die in deze tabel wor
 
 Wanneer Azure Monitor voor VM's is ingeschakeld en geconfigureerd met een Log Analytics-werk ruimte, wordt een management pack doorgestuurd naar alle Windows-computers die aan die werk ruimte rapporteren. Als u [uw System Center Operations Manager-beheer groep hebt geïntegreerd](../../azure-monitor/platform/om-agents.md) met de log Analytics-werk ruimte, wordt de servicetoewijzing Management Pack van de beheer groep geïmplementeerd naar de Windows-computers die rapporteren aan de beheer groep.  
 
-De management pack heet *micro soft. intelligence packs. ApplicationDependencyMonitor*. De map die `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` is geschreven naar. De gegevens bron die de management pack gebruikt, `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`is.
+De management pack heet *micro soft. intelligence packs. ApplicationDependencyMonitor*. De map die is geschreven naar `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` . De gegevens bron die de management pack gebruikt, is `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostische en gebruiks gegevens
 
