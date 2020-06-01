@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76292855"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236304"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Netwerkconfiguraties van de beoogde Azure-VM aanpassen
 
@@ -28,7 +28,7 @@ Meer informatie over hoe Site Recovery herstel na nood gevallen biedt voor [dit 
 U kunt de volgende belang rijke bron configuraties voor de failover-VM opgeven tijdens het repliceren van virtuele Azure-machines:
 
 - [Interne load balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
-- [Openbaar IP-adres](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
+- [Openbare IP](../virtual-network/public-ip-addresses.md)
 - [Netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) zowel voor het subnet als voor de NIC
 
 ## <a name="prerequisites"></a>Vereisten

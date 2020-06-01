@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f00df1bc204e4d271f1c903ec50759cba3c56774
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774450"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235872"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Een machine learning-app bouwen met Apache Spark MLlib en Azure Synapse Analytics
 
@@ -70,48 +70,32 @@ In de volgende stappen ontwikkelt u een model om te voors pellen of een bepaalde
 
 Omdat de onbewerkte gegevens zich in een Parquet-indeling bevindt, kunt u de Spark-context gebruiken om het bestand rechtstreeks in het geheugen te halen als een data frame. Hoewel in de volgende code de standaard opties worden gebruikt, is het mogelijk om zo nodig de toewijzing van gegevens typen en andere schema kenmerken te forceren.
 
-1. Voer de volgende regels uit om een Spark-data frame te maken door de code in een nieuwe cel te plakken. In de eerste sectie worden Azure Storage-toegangs gegevens aan variabelen toegewezen. In het tweede gedeelte kan Spark van de Blob-opslag op afstand worden gelezen. De laatste regel code leest Parquet, maar er worden op dit moment geen gegevens geladen.
+1. Voer de volgende regels uit om een Spark-data frame te maken door de code in een nieuwe cel te plakken. Hiermee haalt u de gegevens op via de API open data sets. Als u al deze gegevens ophaalt, worden er meer dan 1.500.000.000 rijen gegenereerd. Afhankelijk van de grootte van uw Spark-groep (preview) kunnen de onbewerkte gegevens te groot zijn of te veel tijd in beslag nemen. U kunt deze gegevens naar een kleiner filter filteren. Het gebruik van start_date en end_date past een filter toe waarmee een maand aan gegevens wordt geretourneerd.
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Als u al deze gegevens ophaalt, worden er meer dan 1.500.000.000 rijen gegenereerd. Afhankelijk van de grootte van uw Spark-groep (preview) kunnen de onbewerkte gegevens te groot zijn of te veel tijd in beslag nemen. U kunt deze gegevens naar een kleiner filter filteren. Voeg, indien nodig, de volgende regels toe om de gegevens te filteren op ongeveer 2.000.000 rijen voor een snellere ervaring. Gebruik deze para meters om één week van gegevens te verzamelen.
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. Het nadeel van eenvoudige filtering is dat, vanuit een statistisch perspectief, het kan leiden tot een afwijking in de gegevens. Een andere benadering is het gebruik van de in Spark ingebouwde steek proeven. Met de volgende code wordt de gegevensset in ongeveer 2000 rijen kleiner als deze na de bovenstaande code wordt toegepast. Deze steekproef stap kan worden gebruikt in plaats van het eenvoudige filter of in combi natie met het eenvoudige filter.
+2. Het nadeel van eenvoudige filtering is dat, vanuit een statistisch perspectief, het kan leiden tot een afwijking in de gegevens. Een andere benadering is het gebruik van de in Spark ingebouwde steek proeven. Met de volgende code wordt de gegevensset in ongeveer 2000 rijen kleiner als deze na de bovenstaande code wordt toegepast. Deze steekproef stap kan worden gebruikt in plaats van het eenvoudige filter of in combi natie met het eenvoudige filter.
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. Het is nu mogelijk om de gegevens te bekijken om te zien wat er is gelezen. Normaal gesp roken is het beter om gegevens met een subset te bekijken in plaats van de volledige set, afhankelijk van de grootte van de gegevensset. De volgende code biedt twee manieren om de gegevens weer te geven: de eerste basis en de laatste die een veel rijkere raster ervaring bieden, evenals de mogelijkheid om de gegevens grafisch te visualiseren.
+3. Het is nu mogelijk om de gegevens te bekijken om te zien wat er is gelezen. Normaal gesp roken is het beter om gegevens met een subset te bekijken in plaats van de volledige set, afhankelijk van de grootte van de gegevensset. De volgende code biedt twee manieren om de gegevens weer te geven: de eerste basis en de laatste die een veel rijkere raster ervaring bieden, evenals de mogelijkheid om de gegevens grafisch te visualiseren.
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. Afhankelijk van de grootte van de gegenereerde gegevensset en de nood zaak om het notitie blok meermaals te experimenteren of uit te voeren, kan het raadzaam zijn om de gegevensset lokaal in de cache op te slaan in de werk ruimte. Er zijn drie manieren om expliciet caching uit te voeren:
+4. Afhankelijk van de grootte van de gegenereerde gegevensset en de nood zaak om het notitie blok meermaals te experimenteren of uit te voeren, kan het raadzaam zijn om de gegevensset lokaal in de cache op te slaan in de werk ruimte. Er zijn drie manieren om expliciet caching uit te voeren:
 
    - Sla het data frame lokaal op als een bestand
    - De data frame opslaan als een tijdelijke tabel of weer gave
@@ -299,9 +283,9 @@ Wanneer u klaar bent met het uitvoeren van de toepassing, sluit u het notitie bl
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Spark officiële documentatie](https://spark.apache.org/docs/latest/)
+- [Officiële documentatie voor Apache Spark](https://spark.apache.org/docs/latest/)
 
 >[!NOTE]
-> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die niet beschikbaar is in azure Synapse Spark. Gebruik in plaats daarvan de ervaring [notebook](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) of [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
+> Sommige van de officiële Apache Spark documentatie is gebaseerd op het gebruik van de Spark-console, die echter niet beschikbaar is in Azure Synapse Spark. Gebruik in plaats daarvan de ervaring met [notebooks](../quickstart-apache-spark-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) of [IntelliJ](../spark/intellij-tool-synapse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

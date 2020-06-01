@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140885"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229866"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -57,21 +57,19 @@ We hebben ook de meest algemene toepassings Stuur Programma's getest. u kunt mee
 
 Dit zijn de stappen die een gebruiker/toepassing nodig heeft om zich te verifiëren met Azure AD zoals hieronder wordt beschreven:
 
+### <a name="prerequisites"></a>Vereisten
+
+U kunt de Azure Cloud Shell, een Azure-VM of op uw lokale machine volgen. Zorg ervoor dat de [Azure cli is geïnstalleerd](/cli/azure/install-azure-cli).
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Stap 1: verifiëren met Azure AD
 
-Zorg ervoor dat de [Azure cli is geïnstalleerd](/cli/azure/install-azure-cli).
-
-Roep het Azure CLI-hulp programma aan om te verifiëren met Azure AD. Hiervoor moet u uw gebruikers-ID en wacht woord voor Azure AD opgeven.
+Begin door te verifiëren met Azure AD met het Azure CLI-hulp programma. Deze stap is niet vereist in Azure Cloud Shell.
 
 ```
 az login
 ```
 
-Met deze opdracht wordt een browser venster geopend op de Azure AD-verificatie pagina.
-
-> [!NOTE]
-> U kunt Azure Cloud Shell ook gebruiken om deze stappen uit te voeren.
-> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het expliciet aanroept `az login` en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
+Met de opdracht wordt een browser venster geopend op de Azure AD-verificatie pagina. Hiervoor moet u uw gebruikers-ID en wacht woord voor Azure AD opgeven.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Stap 2: het Azure AD-toegangs Token ophalen
 
@@ -79,19 +77,19 @@ Roep het Azure CLI-hulp programma aan om een toegangs token te verkrijgen voor d
 
 Voor beeld (voor open bare Cloud):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 De bovenstaande resource waarde moet exact worden opgegeven zoals wordt weer gegeven. Voor andere Clouds kan de resource waarde worden opgezocht met:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Voor Azure CLI versie 2.0.71 en hoger kan de opdracht worden opgegeven in de volgende, handigere versie voor alle Clouds:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 

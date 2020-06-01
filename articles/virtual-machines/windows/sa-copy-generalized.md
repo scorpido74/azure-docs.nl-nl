@@ -9,14 +9,14 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 130764ad5504ded398a9fdf9fa27d6cb936fbacc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099781"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232909"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een installatie kopie van een niet-beheerde virtuele machine maken op basis van een Azure-VM
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Een niet-beheerde VM-installatiekopie maken van een Azure-VM
 
 In dit artikel wordt beschreven hoe u opslag accounts gebruikt. U wordt aangeraden beheerde schijven en beheerde installatie kopieën te gebruiken in plaats van een opslag account. Zie [een beheerde installatie kopie van een gegeneraliseerde vm in azure vastleggen](capture-image-resource.md)voor meer informatie.
 
@@ -97,7 +97,7 @@ U kunt een virtuele Linux-machine ook generaliseren met `sudo waagent -deprovisi
 
 ## <a name="create-the-image"></a>De installatiekopie maken
 
-Maak met behulp van deze opdracht een niet-beheerde installatie kopie van een virtuele machine in de doel opslag container. De installatie kopie wordt gemaakt in hetzelfde opslag account als de oorspronkelijke virtuele machine. Met `-Path` de para meter wordt een kopie van de JSON-sjabloon voor de bron-VM opgeslagen op de lokale computer. De `-DestinationContainerName` para meter is de naam van de container die u in uw afbeeldingen wilt opslaan. Als de container niet bestaat, wordt deze voor u gemaakt.
+Maak met behulp van deze opdracht een niet-beheerde installatie kopie van een virtuele machine in de doel opslag container. De installatie kopie wordt gemaakt in hetzelfde opslag account als de oorspronkelijke virtuele machine. Met de `-Path` para meter wordt een kopie van de JSON-sjabloon voor de bron-VM opgeslagen op de lokale computer. De `-DestinationContainerName` para meter is de naam van de container die u in uw afbeeldingen wilt opslaan. Als de container niet bestaat, wordt deze voor u gemaakt.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -105,7 +105,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-U kunt de URL van uw installatie kopie ophalen uit de sjabloon voor het JSON-bestand. Ga **naar de** > **sectie storageProfile** > van**osDisk** >  > **uri** voor het volledige pad van de**installatie kopie.** De URL van de afbeelding ziet er als `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`volgt uit:.
+U kunt de URL van uw installatie kopie ophalen uit de sjabloon voor het JSON-bestand. Ga **naar de**  >  sectie**storageProfile**  >  **osDisk**  >  **image**  >  **uri** van osDisk voor het volledige pad van de installatie kopie. De URL van de afbeelding ziet er als volgt uit: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` .
    
 U kunt ook de URI in de portal controleren. De installatie kopie wordt gekopieerd naar een container met de naam **System** in uw opslag account. 
 
@@ -115,7 +115,7 @@ U kunt nu een of meer virtuele machines maken op basis van de niet-beheerde inst
 
 ### <a name="set-the-uri-of-the-vhd"></a>De URI van de VHD instellen
 
-De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
+De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer** / **MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -142,7 +142,7 @@ Maak het vNet en het subnet van het [virtuele netwerk](../../virtual-network/vir
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Een openbaar IP-adres en een netwerk interface maken
-Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerkinterface nodig.
+Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) en een netwerkinterface nodig.
 
 1. Maak een openbaar IP-adres. In dit voor beeld wordt een openbaar IP-adres gemaakt met de naam **myPip**. 
    
@@ -243,7 +243,7 @@ De volgende Power shell voltooit de configuraties van de virtuele machine en maa
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten:
+Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder **Browse**  >  **virtuele machines**bladeren of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

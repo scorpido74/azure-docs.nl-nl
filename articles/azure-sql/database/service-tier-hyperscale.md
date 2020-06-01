@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/01/2019
-ms.openlocfilehash: 3a3bbe384b91307471786fe904e880fb7e1a9af8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 65d7cb60d0d3df43323833f254278c20abacc9d1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049888"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231223"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,20 +209,20 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 
 | Probleem | Beschrijving |
 | :---- | :--------- |
-| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. deze worden dan in de weer gave gefilterd  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups, en omdat de Bewaar periode voor lange termijn retentie en het tijdstip voor het bewaren van back-ups niet van toepassing zijn/zijn ongeldig. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren. |
-| Terugzetten naar eerder tijdstip | U kunt een grootschalige-data base herstellen in een niet-grootschalige-data base binnen de retentie periode van een niet-grootschalige-data base. U kunt een niet-grootschalige-data base niet herstellen in een grootschalige-data base.|
+| In het deel venster Back-ups beheren voor een server worden geen grootschalige-data bases weer gegeven. deze worden dan in de weer gave gefilterd  | Grootschalige heeft een afzonderlijke methode voor het beheren van back-ups en omdat de Bewaar instellingen voor lange termijn retentie en tijdstippen voor het bewaren van back-ups niet van toepassing zijn. Daarom worden grootschalige-data bases niet weer gegeven in het deel venster back-up beheren.|
+| Terugzetten naar eerder tijdstip | Een niet-grootschalige-data base kan niet worden teruggezet als een grootschalige-data base en een grootschalige-data base kan niet worden teruggezet als een niet-grootschalige-data base. Voor een niet-grootschalige-data base die is gemigreerd naar grootschalige door de servicelaag te wijzigen, herstelt u een tijdstip voordat de migratie en binnen de Bewaar periode voor back-ups van de data base mogelijk [is.](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups) De herstelde data base is niet-grootschalige. |
 | Als een Data Base een of meer gegevens bestanden heeft die groter zijn dan 1 TB, mislukt de migratie | In sommige gevallen is het mogelijk om dit probleem te omzeilen door de grote bestanden kleiner te maken dan 1 TB. Als u een Data Base migreert die tijdens het migratie proces wordt gebruikt, moet u ervoor zorgen dat er geen bestanden groter zijn dan 1 TB. Gebruik de volgende query om de grootte van database bestanden te bepalen. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | Azure SQL Managed instance wordt momenteel niet ondersteund met grootschalige-data bases. |
-| Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
+| Elastische pools |  Elastische Pools worden momenteel niet ondersteund met grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een Bacpac-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort). Bacpac exporteren/importeren uit Azure Portal, vanuit Power shell met [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) of [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), vanuit Azure CLI met [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) en [az SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import), en van [rest API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wordt niet ondersteund. Bacpac import/export voor kleinere grootschalige-data bases (tot 200 GB) wordt ondersteund met behulp van SSMS en [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) versie 18,4 of hoger. Voor grotere data bases kan het maken van een Bacpac-export/-import enige tijd duren en kan om verschillende redenen mislukken.|
-| Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
+| Migratie van data bases met persistente in-Memory OLTP-objecten | Grootschalige ondersteunt alleen niet-permanente in-Memory OLTP-objecten (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory OLTP-tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als op schijf gebaseerde objecten voordat een Data Base naar de grootschalige wordt gemigreerd.|
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
-| TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |
-|Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
-|Inzicht in queryprestaties | Query performance Insights wordt momenteel niet ondersteund voor grootschalige-data bases. |
+| TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (vaak uw eigen sleutel of BYOK genoemd) is momenteel beschikbaar als preview-versie. |
+| Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
+| Inzicht in queryprestaties | Query performance Insights wordt momenteel niet ondersteund voor grootschalige-data bases. |
 | Data base verkleinen | DBCC SHRINKDATABASE of DBCC SHRINKFILE wordt momenteel niet ondersteund voor grootschalige-data bases. |
-| Integriteits controle van data base | DBCC CHECKDB wordt momenteel niet ondersteund voor grootschalige-data bases. Zie [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) voor meer informatie over het beheer van gegevens integriteit in Azure SQL database. |
+| Integriteits controle van data base | DBCC CHECKDB wordt momenteel niet ondersteund voor grootschalige-data bases. DBCC CHECKFILEGROUP en DBCC CHECKTABLE kunnen worden gebruikt als tijdelijke oplossing. Zie [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) voor meer informatie over het beheer van gegevens integriteit in Azure SQL database. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

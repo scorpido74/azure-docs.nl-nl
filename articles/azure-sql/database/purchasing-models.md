@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/09/2020
-ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 05/28/2020
+ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219863"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231247"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>Kiezen tussen de vCore-en DTU-aankoop modellen-Azure SQL Database & SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -82,15 +82,7 @@ Met het op vCore gebaseerde aankoop model kunt u afzonderlijke reken-en opslag R
 
 Als uw Azure SQL Database meer dan 300 Dtu's verbruikt, kan het converteren naar het op vCore gebaseerde aankoop model uw kosten verlagen. U kunt converteren met behulp van de API van Choice of met behulp van de Azure Portal, zonder uitval tijd. Conversie is echter niet vereist en wordt niet automatisch uitgevoerd. Als het op DTU gebaseerde aankoop model voldoet aan uw prestatie-en bedrijfs vereisten, moet u het blijven gebruiken.
 
-Als u wilt omzetten van het op DTU gebaseerde aankoop model naar het op vCore gebaseerde aankoop model, selecteert u de reken grootte met behulp van de volgende vuist regels:
-
-- Voor elke 100 Dtu's in de laag standaard is ten minste één vCore in de servicelaag Algemeen vereist.
-- Voor elke 125 Dtu's in de Premium-laag is ten minste één vCore in de servicelaag Bedrijfskritiek vereist.
-
-> [!NOTE]
-> De richt lijnen voor de DTU naar vCore-grootte zijn ongeveer en zijn voorzien van de eerste schatting van de service doelstelling van de doel database. De optimale configuratie van de doel database is afhankelijk van de werk belasting.
->
-> Voor het bereiken van de optimale prijs-prestatie verhouding moet u mogelijk gebruikmaken van de flexibiliteit van het vCore-model voor het aanpassen van het aantal vCores, de generatie van de [Hardware](service-tiers-vcore.md#hardware-generations), de [service](service-tiers-vcore.md#service-tiers) en de [reken](service-tiers-vcore.md#compute-tiers) lagen, en het afstemmen van andere database configuratie parameters, zoals de [maximale mate van parallelle](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)uitvoering.
+Als u wilt omzetten van het op DTU gebaseerde aankoop model naar het op vCore gebaseerde aankoop model, raadpleegt u [Migrate from DTU to vCore](migrate-dtu-to-vcore.md).
 
 ## <a name="dtu-based-purchasing-model"></a>Op DTU gebaseerd inkoop model
 

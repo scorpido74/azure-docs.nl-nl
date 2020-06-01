@@ -1,24 +1,24 @@
 ---
-title: Verplaats Azure open bare IP naar een andere Azure-regio met behulp van de Azure Portal
-description: Gebruik Azure Resource Manager sjabloon om de open bare Azure-IP van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
+title: De open bare IP-configuratie van Azure verplaatsen naar een andere Azure-regio Azure Portal
+description: Gebruik een sjabloon om de open bare IP-configuratie van Azure van de ene Azure-regio naar de andere te verplaatsen met behulp van de Azure Portal.
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 6dd4b3279fc0110fff2ee0397a785c87b63644d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147831"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235398"
 ---
-# <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verplaats Azure open bare IP naar een andere regio met behulp van de Azure Portal
+# <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>De open bare IP-configuratie van Azure naar een andere regio verplaatsen met behulp van de Azure Portal
 
-Er zijn verschillende scenario's waarin u uw bestaande open bare Azure-Ip's wilt verplaatsen van de ene regio naar een andere. U kunt bijvoorbeeld een openbaar IP-adres maken met dezelfde configuratie en SKU voor testen. Het is ook mogelijk dat u een openbaar IP-adres naar een andere regio wilt verplaatsen als onderdeel van de planning voor nood herstel.
+Er zijn verschillende scenario's waarin u uw bestaande open bare IP-configuraties van Azure naar een andere regio wilt verplaatsen. U kunt bijvoorbeeld een openbaar IP-adres maken met dezelfde configuratie en SKU voor testen. Het is ook mogelijk dat u een open bare IP-configuratie wilt verplaatsen naar een andere regio als onderdeel van de planning voor nood herstel.
 
-Open bare Azure-Ip's zijn regio specifiek en kunnen niet worden verplaatst van de ene regio naar de andere. U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van een openbaar IP-adres te exporteren.  U kunt de resource vervolgens in een andere regio zetten door het open bare IP-adres naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio.  Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+**Open bare Azure-Ip's zijn regio specifiek en kunnen niet worden verplaatst van de ene regio naar de andere.** U kunt echter een Azure Resource Manager sjabloon gebruiken om de bestaande configuratie van een openbaar IP-adres te exporteren.  U kunt de resource vervolgens in een andere regio zetten door het open bare IP-adres naar een sjabloon te exporteren, de para meters te wijzigen zodat deze overeenkomen met de doel regio en vervolgens de sjabloon te implementeren in de nieuwe regio.  Voor meer informatie over Resource Manager en sjablonen raadpleegt [u Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -41,12 +41,12 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>De sjabloon exporteren en implementeren vanuit een script
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) > -**resource groepen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)-  >  **resource groepen**.
 2. Zoek de resource groep die de open bare bron-IP bevat en klik erop.
-3. Selecteer > **instellingen** > **sjabloon exporteren**.
+3. Selecteer > **instellingen**  >  **sjabloon exporteren**.
 4. Kies **implementeren** op de Blade **sjabloon exporteren** .
-5. Klik op **sjabloon** > **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
-8. Als u de para meter van de open bare IP-naam wilt bewerken, wijzigt u de eigenschap onder **parameter** > **waarde** van de naam van het open bare IP-bron adres in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
+5. Klik op **sjabloon**  >  **bewerken para meters** om het bestand **para meters. json** in de online-editor te openen.
+8. Als u de para meter van de open bare IP-naam wilt bewerken, wijzigt u de eigenschap onder **parameter**  >  **waarde** van de naam van het open bare IP-bron adres in de naam van het open bare IP-adres. Controleer of de naam tussen aanhalings tekens is:
 
     ```json
             {
@@ -62,7 +62,7 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
     ```
 8.  Klik op **Opslaan** in de editor.
 
-9.   > Klik **op sjabloon****bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
+9.  Klik **op sjabloon**  >  **bewerken sjabloon** om het bestand **Template. json** in de online-editor te openen.
 
 10. Als u de doel regio wilt bewerken waar het open bare IP-adres wordt verplaatst, wijzigt u de eigenschap **Location** onder **resources**:
 
@@ -90,11 +90,11 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
              ]
     ```
 
-11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS** = -**Midden**.
+11. Zie [Azure-locaties](https://azure.microsoft.com/global-infrastructure/locations/)voor het verkrijgen van regio-locatie codes.  De code voor een regio is de naam van de regio zonder spaties, **Central VS**-  =  **Midden**.
 
 12. U kunt ook andere para meters in de sjabloon wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU** > -**naam** te wijzigen in het bestand **sjabloon. json** :
+    * **SKU** : u kunt de SKU van het open bare IP-adres in de configuratie wijzigen van standaard in Basic of Basic naar Standard door de eigenschap **SKU**-  >  **naam** te wijzigen in het bestand **sjabloon. json** :
 
         ```json
           "resources": [
@@ -140,11 +140,11 @@ De volgende stappen laten zien hoe u het open bare IP-adres voor de configuratie
 
 13. Klik op **Opslaan** in de online editor.
 
-14. Klik op **basis** > **abonnement** om het abonnement te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.
+14. Klik op **basis**  >  **abonnement** om het abonnement te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.
 
-15. Klik op **basis** > **bronnen groep** om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het open bare doel-IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP.
+15. Klik op **basis**  >  **bronnen groep** om de resource groep te kiezen waarin het open bare doel-IP-adres wordt geïmplementeerd.  U kunt op **Nieuw maken** klikken om een nieuwe resource groep te maken voor het open bare doel-IP-adres.  Zorg ervoor dat de naam niet hetzelfde is als de bron resource groep van de bestaande open bare bron-IP.
 
-16. De**locatie** van de **basis beginselen** > controleren is ingesteld op de doel locatie waar u het open bare IP-adres wilt implementeren.
+16. De **BASICS**  >  **locatie** van de basis beginselen controleren is ingesteld op de doel locatie waar u het open bare IP-adres wilt implementeren.
 
 17. Controleer onder **instellingen** of de naam overeenkomt met de naam die u hebt ingevoerd in de bovenstaande para meters-editor.
 

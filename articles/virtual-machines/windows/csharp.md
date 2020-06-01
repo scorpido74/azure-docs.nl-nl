@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082880"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234518"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Virtuele Windows-machines maken en beheren in azure met behulp van C # #
 
@@ -32,14 +32,14 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
 1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **.net desktop Development** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **.NET Framework 4-4,6-ontwikkel Programma's** automatisch voor u worden geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de .NET-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik in Visual Studio op **bestand** > **Nieuw** > **project**.
-3. In **sjablonen** > **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
+2. Klik in Visual Studio op **bestand**  >  **Nieuw**  >  **project**.
+3. In **sjablonen**  >  **Visual C#** selecteert u **console-app (.NET Framework)**, voert u *myDotnetProject* in voor de naam van het project, selecteert u de locatie van het project en klikt u vervolgens op **OK**.
 
 ## <a name="install-the-package"></a>Het pakket installeren
 
 NuGet-pakketten zijn de eenvoudigste manier om de bibliotheken te installeren die u nodig hebt om deze stappen te volt ooien. Ga als volgt te werk om de bibliotheken te verkrijgen die u nodig hebt in Visual Studio:
 
-1. Klik op **extra** > **Nuget package manager**en klik vervolgens op **Package Manager-console**.
+1. Klik op **extra**  >  **Nuget package manager**en klik vervolgens op **Package Manager-console**.
 2. Typ deze opdracht in de-console:
 
     ```
@@ -52,7 +52,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject* > **Add** > **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
+1. Klik in Solution Explorer met de rechter muisknop op *myDotnetProject*  >  **Add**  >  **Nieuw item**toevoegen en selecteer vervolgens **tekst bestand** in *Visual C#-items*. Noem het bestand *azureauth. Properties*en klik vervolgens op **toevoegen**.
 2. Voeg deze autorisatie-eigenschappen toe:
 
     ```
@@ -66,7 +66,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     graphURL=https://graph.microsoft.com/
     ```
 
-    Vervang ** &lt;abonnement-id&gt; ** door uw abonnements-id, ** &lt;toepassings-&gt; id** met de Active Directory toepassings-id, ** &lt;verificatie&gt; sleutel** met de toepassings sleutel en ** &lt;Tenant-id&gt; ** met de Tenant-id.
+    Vervang ** &lt; abonnement-id &gt; ** door uw abonnements-id, ** &lt; toepassings- &gt; id** met de Active Directory toepassings-id, ** &lt; verificatie &gt; sleutel** met de toepassings sleutel en ** &lt; Tenant-id &gt; ** met de Tenant-id.
 
 3. Sla het bestand azureauth. Properties op. 
 4. Stel een omgevings variabele in Windows met de naam AZURE_AUTH_LOCATION met het volledige pad naar het autorisatie bestand dat u hebt gemaakt. U kunt bijvoorbeeld de volgende Power shell-opdracht gebruiken:
@@ -136,7 +136,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>Het open bare IP-adres maken
 
-Een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) is nodig om te communiceren met de virtuele machine.
+Een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) is nodig om te communiceren met de virtuele machine.
 
 Als u het open bare IP-adres voor de virtuele machine wilt maken, voegt u deze code toe aan de methode Main:
    

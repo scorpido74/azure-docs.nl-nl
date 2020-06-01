@@ -9,12 +9,12 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 60b0a0f0d83b9b83c9cf8d530881508af591de59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2466cc1d36206d0a6a382c948969ad6c28a199f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099645"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232812"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Een virtuele machine maken op basis van een gespecialiseerde VHD in een opslag account
 
@@ -72,7 +72,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
     ```
    
 ### <a name="upload-the-vhd-to-your-storage-account"></a>De VHD uploaden naar uw opslagaccount
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload `"C:\Users\Public\Documents\Virtual hard disks\"` van naar een opslag account met de naam **Mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -112,7 +112,7 @@ Zorg ervoor dat:
 ### <a name="deallocate-the-vm"></a>De toewijzing van de virtuele machine ongedaan maken
 Maak de toewijzing van de virtuele machine ongedaan, waardoor de VHD wordt gekopieerd. 
 
-* **Portal**: Klik op **virtuele machines** > **myVM** > stoppen
+* **Portal**: Klik op **virtuele machines**  >  **myVM** > stoppen
 * **Power shell**: gebruik [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) om de virtuele machine met de naam **myVM** in de **myResourceGroup**van de resource groep te stoppen (de toewijzing ongedaan te maken).
 
 ```powershell
@@ -122,11 +122,11 @@ Stop-AzVM -ResourceGroupName myResourceGroup -Name myVM
 De **status** van de virtuele machine in de Azure Portal verandert van **gestopt** in **gestopt (toewijzing opgeheven)**.
 
 ### <a name="get-the-storage-account-urls"></a>De Url's van het opslag account ophalen
-U hebt de Url's van de bron-en doel opslag accounts nodig. De Url's zien er als `https://<storageaccount>.blob.core.windows.net/<containerName>/`volgt uit:. Als u al bekend bent met het opslag account en de naam van de container, kunt u alleen de informatie tussen de haakjes vervangen om uw URL te maken. 
+U hebt de Url's van de bron-en doel opslag accounts nodig. De Url's zien er als volgt uit: `https://<storageaccount>.blob.core.windows.net/<containerName>/` . Als u al bekend bent met het opslag account en de naam van de container, kunt u alleen de informatie tussen de haakjes vervangen om uw URL te maken. 
 
 U kunt de Azure Portal of Azure Power shell gebruiken om de URL op te halen:
 
-* **Portal**: Klik op **>** de voor **alle services** > **opslag accounts** > Storage-*account* > -**blobs** en uw bron-VHD-bestand bevindt zich waarschijnlijk in de **vhd's** container. Klik op **Eigenschappen** voor de container en kopieer de tekst met de label **URL**. U hebt de Url's nodig van zowel de bron-als de doel container. 
+* **Portal**: Klik op de **>** voor **alle services**  >  **opslag accounts**Storage-  >  *account*-  >  **blobs** en uw bron-VHD-bestand bevindt zich waarschijnlijk in de **vhd's** container. Klik op **Eigenschappen** voor de container en kopieer de tekst met de label **URL**. U hebt de Url's nodig van zowel de bron-als de doel container. 
 * **Power shell**: gebruik [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) voor het ophalen van de informatie voor de virtuele machine met de naam **MyVM** in de resource groep **myResourceGroup**. Zoek in de resultaten in de sectie **opslag profiel** voor de **VHD-URI**. Het eerste deel van de URI is de URL naar de container en het laatste deel is de VHD-naam van het besturings systeem voor de virtuele machine.
 
 ```powershell
@@ -136,7 +136,7 @@ Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>De toegangs sleutels voor opslag ophalen
 Zoek de toegangs sleutels voor de bron-en doel opslag accounts. Zie [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md)voor meer informatie over toegangs sleutels.
 
-* **Portal**: Klik op **alle services** > **opslag accounts** > opslag*account* > **toegangs sleutels**. Kopieer de sleutel met de naam **key1**.
+* **Portal**: Klik op **alle services**  >  **opslag accounts**opslag  >  *account*  >  **toegangs sleutels**. Kopieer de sleutel met de naam **key1**.
 * **Power shell**: gebruik [Get-AzStorageAccountKey](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) om de opslag sleutel op te halen voor de **mystorageaccount** van het opslag account in de resource groep **myResourceGroup**. Kopieer de sleutel met de label **key1**.
 
 ```powershell
@@ -225,7 +225,7 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $location
 Zie [poorten openen voor een virtuele machine in azure met behulp van Power shell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over eind punten en NSG regels.
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Een openbaar IP-adres en een NIC maken
-Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerkinterface nodig.
+Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) en een netwerkinterface nodig.
 
 1. Maak het open bare IP-adres. In dit voor beeld is de naam van het open bare IP-adres ingesteld op **myIP**.
    
@@ -278,7 +278,7 @@ $dataDiskName = $vmName + "dataDisk"
 $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -CreateOption attach
 ```
 
-Wanneer u een opslag account gebruikt, zien de Url's van de gegevens en de besturingssysteem schijf er `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`ongeveer als volgt uit:. U kunt dit vinden in de portal door te bladeren naar de doel opslag container, te klikken op het besturings systeem of de gegevens-VHD die is gekopieerd en vervolgens de inhoud van de URL te kopiëren.
+Wanneer u een opslag account gebruikt, zien de Url's van de gegevens en de besturingssysteem schijf er ongeveer als volgt uit: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd` . U kunt dit vinden in de portal door te bladeren naar de doel opslag container, te klikken op het besturings systeem of de gegevens-VHD die is gekopieerd en vervolgens de inhoud van de URL te kopiëren.
 
 
 ### <a name="complete-the-vm"></a>De virtuele machine volt ooien 
@@ -300,7 +300,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com), onder **alle services** > **virtuele machines**, of met behulp van de volgende Power shell-opdrachten:
+U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com), onder **alle services**  >  **virtuele machines**, of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $rgName

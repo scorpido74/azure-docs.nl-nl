@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098065"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233353"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Windows-Vm's maken en beheren in azure met behulp van python
 
@@ -32,8 +32,8 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
 1. Als u dat nog niet hebt gedaan, installeert u [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Selecteer **python-ontwikkeling** op de pagina workloads en klik vervolgens op **installeren**. In de samen vatting ziet u dat **Python 3 64-bits (3.6.0)** automatisch voor u wordt geselecteerd. Als u Visual Studio al hebt geïnstalleerd, kunt u de python-workload toevoegen met behulp van de Visual Studio Launcher.
-2. Klik na het installeren en starten van Visual Studio op **bestand** > **Nieuw** > **project**.
-3. Klik op **sjablonen** > **python** > **python-toepassing**, Voer *myPythonProject* in als de naam van het project, selecteer de locatie van het project en klik vervolgens op **OK**.
+2. Klik na het installeren en starten van Visual Studio op **bestand**  >  **Nieuw**  >  **project**.
+3. Klik op **sjablonen**  >  **python**  >  **python-toepassing**, Voer *myPythonProject* in als de naam van het project, selecteer de locatie van het project en klik vervolgens op **OK**.
 
 ## <a name="install-packages"></a>Pakketten installeren
 
@@ -164,7 +164,7 @@ Met [beschikbaarheids sets](tutorial-availability-sets.md) kunt u gemakkelijker 
     input('Availability set created. Press enter to continue...')
     ```
 
-Een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) is nodig om te communiceren met de virtuele machine.
+Een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) is nodig om te communiceren met de virtuele machine.
 
 1. Als u een openbaar IP-adres voor de virtuele machine wilt maken, voegt u deze functie toe na de variabelen in het. py-bestand:
 

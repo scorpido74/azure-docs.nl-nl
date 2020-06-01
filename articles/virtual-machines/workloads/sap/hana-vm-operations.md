@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606148"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230139"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Configuraties en bewerkingen van SAP HANA-infrastructuur in Azure
 Dit document bevat richt lijnen voor het configureren van Azure-infra structuur en-besturings SAP HANA systemen die zijn geïmplementeerd op Azure native virtual machines (Vm's). Het document bevat ook configuratie-informatie voor SAP HANA scale-out voor de M128s VM-SKU. Dit document is niet bedoeld als vervanging van de Standard SAP-documentatie, die de volgende inhoud bevat:
@@ -104,7 +104,7 @@ De artikelen [Azure Virtual Data Center: een netwerk perspectief](https://docs.m
 >Voor verkeer dat stroomt tussen een hub VNet en spoke VNet met behulp van [Azure VNet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) , worden extra [kosten](https://azure.microsoft.com/pricing/details/virtual-network/)in rekening gebracht. Op basis van deze kosten moet u wellicht overwegen om inbreuk te maken op het uitvoeren van een strikt hub-en spoke-netwerk ontwerp en het uitvoeren van meerdere [Azure ExpressRoute-gateways](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) waarmee u verbinding maakt met ' spokes ' om VNet-peering over te slaan. Azure ExpressRoute-gateways introduceren echter ook extra [kosten](https://azure.microsoft.com/pricing/details/vpn-gateway/) . Er kunnen ook extra kosten voor software van derden optreden die u gebruikt voor het vastleggen van netwerk verkeer, controle en bewaking. Afhankelijk van de kosten voor het uitwisselen van gegevens met behulp van VNet-peering aan de ene kant en de kosten die zijn gemaakt door extra Azure ExpressRoute-gateways en extra software licenties, kunt u kiezen voor micro segmentering binnen één VNet door subnetten als isolatie-eenheid te gebruiken in plaats van VNets.
 
 
-Zie [IP-adres typen en toewijzings methoden in azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)voor een overzicht van de verschillende methoden voor het toewijzen van IP-adressen. 
+Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor een overzicht van de verschillende methoden voor het toewijzen van IP-adressen. 
 
 Voor Vm's met SAP HANA moet u werken met vaste IP-adressen die zijn toegewezen. Reden is dat sommige configuratie kenmerken voor HANA-referentie-IP-adressen.
 
@@ -175,7 +175,7 @@ Als uw Azure VM-infra structuur wordt geïmplementeerd en alle andere voor berei
 - Installeer het SAP HANA-hoofd knooppunt volgens de documentatie van SAP
 - In het geval van het gebruik van Azure Premium Storage of Ultra Disk Storage met niet-gedeelde schijven van/Hana/data en/Hana/log, moet u het bestand Global. ini wijzigen en de para meter ' basepath_shared = no ' toevoegen aan het bestand Global. ini. Met deze para meter kunnen SAP HANA worden uitgevoerd in scale-out zonder gedeelde **/Hana/data** -en **/Hana/log** -volumes tussen de knoop punten. Details worden beschreven in [SAP Note #2080991](https://launchpad.support.sap.com/#/notes/2080991). Als u NFS-volumes gebruikt op basis van ANF voor/Hana/data en/Hana/log, hoeft u deze wijziging niet aan te brengen
 - Start na de uiteindelijke wijziging in de para meter Global. ini het SAP HANA-exemplaar opnieuw
-- Voeg extra worker-knoop punten toe. Zie ook <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Geef het interne netwerk voor SAP HANA communicatie tussen knoop punten op tijdens de installatie of later met behulp van bijvoorbeeld de lokale hdblcm. Zie ook [SAP opmerking #2183363](https://launchpad.support.sap.com/#/notes/2183363)voor gedetailleerdere documentatie. 
+- Voeg extra worker-knoop punten toe. Zie ook <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> . Geef het interne netwerk voor SAP HANA communicatie tussen knoop punten op tijdens de installatie of later met behulp van bijvoorbeeld de lokale hdblcm. Zie ook [SAP opmerking #2183363](https://launchpad.support.sap.com/#/notes/2183363)voor gedetailleerdere documentatie. 
 
 Details voor het instellen van een SAP HANA scale-out systeem met een stand-by-knoop punt in SUSE Linux wordt uitvoerig beschreven in [een SAP Hana scale-out systeem implementeren met stand-by-knoop punt op Azure-vm's met behulp van Azure NetApp files op SuSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Gelijkwaardige documentatie voor Red Hat vindt u in het artikel [een SAP Hana scale-out systeem met stand-by-knoop punt op virtuele machines van Azure implementeren met behulp van Azure NetApp files op Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 
 

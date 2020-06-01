@@ -9,12 +9,12 @@ ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: e2ecdb6f436806f93610325b4d5adf28cb3253e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc2e2ff0edc09e613b1da0a503eff9d53ebcf7a9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099628"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234628"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Een gegeneraliseerde VHD uploaden naar Azure om een nieuwe virtuele machine te maken
 
@@ -75,7 +75,7 @@ Als u Power shell-versie 1,4 of hoger nog niet hebt geïnstalleerd, leest u [hoe
     ```powershell
     Get-AzSubscription
     ```
-3. Stel het juiste abonnement in met de abonnements-ID. Vervang `<subscriptionID>` door de id van het juiste abonnement.
+3. Stel het juiste abonnement in met de abonnements-ID. Vervang door `<subscriptionID>` de id van het juiste abonnement.
    
     ```powershell
     Select-AzSubscription -SubscriptionId "<subscriptionID>"
@@ -115,7 +115,7 @@ Als u een opslag account wilt maken, voert u de volgende stappen uit:
  
 ### <a name="start-the-upload"></a>Het uploaden starten 
 
-Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload `"C:\Users\Public\Documents\Virtual hard disks\"` van naar een opslag account met de naam **Mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
+Gebruik de cmdlet [add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) om de installatie kopie te uploaden naar een container in uw opslag account. In dit voor beeld wordt het bestand **myVHD. VHD** geüpload van `"C:\Users\Public\Documents\Virtual hard disks\"` naar een opslag account met de naam **mystorageaccount** in de resource groep **myResourceGroup** . Het bestand wordt in de container met de naam **mycontainer** geplaatst en de nieuwe bestands naam wordt **myUploadedVHD. VHD**.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -148,7 +148,7 @@ U kunt nu de geüploade VHD gebruiken om een nieuwe virtuele machine te maken.
 
 ### <a name="set-the-uri-of-the-vhd"></a>De URI van de VHD instellen
 
-De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer**/**MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
+De URI voor de VHD die moet worden gebruikt, heeft de volgende indeling: https://**mystorageaccount**. blob.core.Windows.net/**mycontainer** / **MyVhdName**. VHD. In dit voor beeld bevindt de VHD met de naam **myVHD** zich in het opslag account **mystorageaccount** in de container **mycontainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -175,7 +175,7 @@ Maak het vNet en het subnet van het [virtuele netwerk](../../virtual-network/vir
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Een openbaar IP-adres en een netwerk interface maken
-Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerkinterface nodig.
+Om te kunnen communiceren met de virtuele machine in het virtuele netwerk, hebt u een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) en een netwerkinterface nodig.
 
 1. Maak een openbaar IP-adres. In dit voor beeld wordt een openbaar IP-adres gemaakt met de naam **myPip**. 
    
@@ -276,7 +276,7 @@ In het volgende Power shell-script ziet u hoe u de configuraties van virtuele ma
 ```
 
 ## <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten:
+Als u klaar bent, ziet u de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder **Browse**  >  **virtuele machines**bladeren of met behulp van de volgende Power shell-opdrachten:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

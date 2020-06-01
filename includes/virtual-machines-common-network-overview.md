@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a665c3c27cca03a084896895ae51c56732ceb7b6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461821"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237700"
 ---
 Wanneer u een virtuele Azure-machine maakt, moet u een [virtueel netwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) maken of een bestaand VNet gebruiken. U moet ook bepalen hoe uw virtuele machines kunnen worden geopend via de VNet. Het is belangrijk om [een planning te maken voordat u resources maakt](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) en ervoor te zorgen dat u op de hoogte bent van de [limieten van netwerkresources](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -51,7 +51,7 @@ Deze tabel bevat de methoden die u kunt gebruiken voor het maken van een netwerk
 
 ## <a name="ip-addresses"></a>IP-adressen 
 
-U kunt deze soorten [IP-adressen](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md) toewijzen aan een NIC in Azure:
+U kunt deze soorten [IP-adressen](../articles/virtual-network/public-ip-addresses.md) toewijzen aan een NIC in Azure:
 
 - **Openbare IP-adressen**: worden gebruikt om inkomend en uitgaand te communiceren (zonder NAT (netwerkadresomzetting)) met internet en andere Azure-resources die niet zijn verbonden met een VNet. Het toewijzen van een openbaar IP-adres aan een NIC is optioneel. Open bare IP-adressen hebben een nominale belasting en er is een maximum aantal dat per abonnement kan worden gebruikt.
 - **Privé IP-adressen**: worden gebruikt voor communicatie binnen een VNet, uw on-premises netwerk en internet (met NAT). U moet ten minste één privé IP-adres toewijzen aan een virtuele machine. Lees [Uitgaande verbindingen in Azure](../articles/load-balancer/load-balancer-outbound-connections.md) voor meer informatie over NAT in Azure.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 03/03/2020
-ms.openlocfilehash: 48f37a29b227c714552596337d3ff3c692830488
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041407"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235748"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -151,7 +151,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. aantal gegevens IOPS per pool <sup>2</sup> |6.400|7.200|8,000|9600|12.800|16.000|32.000|
+|Max. aantal gegevens IOPS per pool <sup>2</sup> |6.400|7.200|8,000|9600|12.800|16.000|16.000|
 |Maximale logboek frequentie per pool (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) <sup>3</sup>|1680|1890|2100|2520|3360|4200|8400|
@@ -178,7 +178,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |vCores|72|
 |Geheugen (GB)|136,2|
 |Maximum aantal Db's per pool <sup>1</sup>|500|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -347,7 +347,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |vCores|128|
 |Geheugen (GB)|3767,1|
 |Maximum aantal Db's per pool <sup>1</sup>|100|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -361,8 +361,8 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0-128|
 |Aantal replica's|4|
-|Meerdere AZ|Ja|
-|Uitschalen voor leesbewerking|Ja|
+|Meerdere AZ|Yes|
+|Uitschalen voor leesbewerking|Yes|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 <sup>1</sup> Zie [resource beheer in compacte elastische Pools](elastic-pool-resource-management.md) voor aanvullende overwegingen.

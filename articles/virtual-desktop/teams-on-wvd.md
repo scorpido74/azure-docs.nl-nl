@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65f0cf66dc6cef33e98258106e5f1573efdf39e5
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203854"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234573"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -94,7 +94,7 @@ Na de installatie van de WebSocket-service en de bureau blad-app teams, voert u 
 
 3. Selecteer de installatie kopie van uw gebruikers profiel en selecteer vervolgens **instellingen**.
 
-      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio**wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, controleert u of alle bovenstaande installatie stappen zijn uitgevoerd.
+      Als media optimalisaties zijn geladen, worden de audio apparaten en camera's die lokaal beschikbaar zijn, geïnventariseerd in het menu apparaat. Als in het menu **externe audio**wordt weer gegeven, sluit u de app teams en probeert u het opnieuw. Als de apparaten nog steeds niet worden weer gegeven in het menu, gaat u terug naar [micro soft-teams installeren](#install-microsoft-teams) en zorgt u ervoor dat het installatie proces is voltooid.
 
 ## <a name="known-issues-and-limitations"></a>Bekende problemen en beperkingen
 
@@ -140,10 +140,8 @@ Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wi
 
 Stel de volgende RDP-eigenschappen in om de omleiding van de microfoon en camera in te scha kelen:
 
-|RDP-eigenschappen   | Beschrijving |
-|-----------------|-------------|
-|audiocapturemode: i: 1  | Audio-opname van het lokale apparaat en omleiding naar een audio toepassing in de externe sessie inschakelen |
-|Audio mode: i: 0         | Audio afspelen op de lokale computer |
-|camerastoredirect: s: * | Alle camera's omleiden |
+- `audiocapturemode:i:1`Hiermee schakelt u audio-opname in van het lokale apparaat en redirets audio-toepassingen in de externe sessie.
+- `audiomode:i:0`Audio afspelen op de lokale computer.
+- `camerastoredirect:s:*`alle camera's worden omgeleid.
 
 Ga voor meer informatie naar [aanpassen Remote Desktop Protocol eigenschappen voor een hostgroep](customize-rdp-properties.md).

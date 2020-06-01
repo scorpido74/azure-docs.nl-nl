@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870033"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232976"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Virtuele Windows-machines maken en beheren in azure met behulp van Java
 
@@ -45,7 +45,7 @@ Het duurt ongeveer 20 minuten om deze stappen uit te voeren.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-1. Open in `testAzureApp` de map het `pom.xml` bestand en voeg de opbouw configuratie toe aan &lt;project&gt; om het bouwen van uw toepassing in te scha kelen:
+1. Open in de `testAzureApp` map het `pom.xml` bestand en voeg de opbouw configuratie toe aan &lt; project &gt; om het bouwen van uw toepassing in te scha kelen:
 
     ```xml
     <build>
@@ -114,7 +114,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-authorization-file"></a>Het autorisatie bestand maken
 
-1. Maak een bestand met `azureauth.properties` de naam en voeg deze eigenschappen toe:
+1. Maak een bestand `azureauth.properties` met de naam en voeg deze eigenschappen toe:
 
     ```
     subscription=<subscription-id>
@@ -127,7 +127,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
     graphURL=https://graph.microsoft.com/
     ```
 
-    Vervang ** &lt;abonnement-id&gt; ** door uw abonnements-id, ** &lt;toepassings-&gt; id** met de Active Directory toepassings-id, ** &lt;verificatie&gt; sleutel** met de toepassings sleutel en ** &lt;Tenant-id&gt; ** met de Tenant-id.
+    Vervang ** &lt; abonnement-id &gt; ** door uw abonnements-id, ** &lt; toepassings- &gt; id** met de Active Directory toepassings-id, ** &lt; verificatie &gt; sleutel** met de toepassings sleutel en ** &lt; Tenant-id &gt; ** met de Tenant-id.
 
 2. Sla het bestand op.
 3. Stel een omgevings variabele met de naam AZURE_AUTH_LOCATION in uw shell in met het volledige pad naar het verificatie bestand.
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Het open bare IP-adres maken
 
-Een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) is nodig om te communiceren met de virtuele machine.
+Een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) is nodig om te communiceren met de virtuele machine.
 
 Als u het open bare IP-adres voor de virtuele machine wilt maken, voegt u deze code toe aan het blok try in de methode Main:
 

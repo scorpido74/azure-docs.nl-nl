@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657242"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235550"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problemen identificeren en diagnosticeren
 
@@ -161,7 +161,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 
 |Numerieke code|Foutcode|Voorgestelde oplossing|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|De gebruiker is geen lid van Azure Active Directory. Volg de instructies in [Active Directory-beheercentrum](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) om ze toe te voegen.|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|De gebruiker is geen lid van Active Directory. Volg de instructies in [Active Directory-beheercentrum](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) om ze toe te voegen.|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|De sessiehost is niet juist gekoppeld aan de Active Directory.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|De verbindingen zijn mislukt omdat de sessiehost niet beschikbaar is. Controleer de status van de sessie-host.|
 |-2146233088|ConnectionFailedClientDisconnect|Als deze fout regel matig wordt weer geven, controleert u of de computer van de gebruiker is verbonden met het netwerk.|
@@ -172,6 +172,7 @@ De volgende tabel bevat algemene fouten die door uw beheerders kunnen worden uit
 |8|ConnectionBroken|De verbinding tussen de client en de gateway of server is verbroken. Er is geen actie vereist, tenzij deze onverwacht plaatsvindt.|
 |14|UnexpectedNetworkDisconnect|De verbinding met het netwerk is verbroken. Vraag de gebruiker om opnieuw verbinding te maken.|
 |24|ReverseConnectFailed|De virtuele machine van de host heeft geen directe regel van het gezichts vermogen om te RD-gateway. Zorg ervoor dat het IP-adres van de gateway kan worden omgezet.|
+|1322|ConnectionFailedNoMappingOfSIDinAD|De gebruiker is geen lid van Active Directory. Volg de instructies in [Active Directory-beheercentrum](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) om ze toe te voegen.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd28117350913bc25f5bf7cec08d28683ad9daca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020061"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234558"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics gebruiken voor de functie voor diagnostische gegevens
 
@@ -117,6 +117,9 @@ U hebt toegang tot Log Analytics-werk ruimten op het Azure Portal of Azure Monit
 4. Volg de instructies op de pagina logboek registratie om het bereik van uw query in te stellen.  
 
 5. U kunt een query uitvoeren op diagnostische gegevens. Alle diagnostische tabellen hebben het voor voegsel ' WVD '.
+
+>[!NOTE]
+>Voor meer informatie over de tabellen die zijn opgeslagen in Azure Monitor logboeken, raadpleegt u de [Azure monitor gegevens opnieuw opfence](https://docs.microsoft.com/azure/azure-monitor/reference/). Alle tabellen die betrekking hebben op virtuele Bureau bladen van Windows, hebben de naam ' WVD '.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Uitgebracht voor het verzenden van diagnostische gebeurtenissen
 
@@ -239,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+Zoeken naar een fout voor alle gebruikers:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+Voer de volgende query uit om query's uit te voeren op apps:
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->De belangrijkste tabel voor het oplossen van problemen is WVDErrors. Gebruik deze query om te begrijpen welke problemen optreden voor gebruikers activiteiten als verbindingen of feeds wanneer een gebruiker zich abonneert op de lijst met apps of Bureau bladen. In de tabel worden beheer fouten en registratie problemen van hosts weer gegeven.
->
->Als u tijdens de open bare preview hulp nodig hebt bij het oplossen van een probleem, zorg er dan voor dat u de CorrelationID voor de fout in uw Help-verzoek geeft. Zorg er ook voor dat de waarde van de service fout altijd ServiceError = "false" aangeeft. Een ' onwaar ' betekent dat het probleem kan worden opgelost door een beheer taak aan het eind. Als ServiceError = "True", moet u het probleem escaleren naar micro soft.
+>- Wanneer een gebruiker volledig bureau blad opent, wordt het app-gebruik in de sessie niet bijgehouden als controle punten in de tabel WVDCheckpoints.
+>- De kolom ResourcesAlias in de tabel WVDConnections geeft aan of een gebruiker verbinding heeft met een volledig bureau blad of een gepubliceerde app. In de kolom wordt alleen de eerste app weer gegeven die wordt geopend tijdens de verbinding. Alle gepubliceerde apps die de gebruiker opent, worden bijgehouden in WVDCheckpoints.
+>- De tabel WVDErrors toont u beheer fouten, registratie problemen voor hosts en andere problemen die zich voordoen wanneer de gebruiker zich abonneert op een lijst met apps of Bureau bladen.
+>- WVDErrors helpt u bij het identificeren van problemen die door beheer taken kunnen worden opgelost. De waarde op ServiceError geeft altijd ' false ' aan voor dit soort problemen. Als ServiceError = "True", moet u het probleem escaleren naar micro soft. Zorg ervoor dat u de CorrelationID opgeeft voor de fouten die u wilt escaleren.
 
 ## <a name="next-steps"></a>Volgende stappen 
 

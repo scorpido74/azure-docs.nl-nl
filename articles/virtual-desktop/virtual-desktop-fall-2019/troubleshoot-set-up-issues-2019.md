@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615394"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235896"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -28,13 +28,29 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>De afbeelding voor meerdere sessies van Windows 10 Enter prise ophalen
 
-Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag** > met**micro soft Windows 10** > en [Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Als u de Windows 10 Enter prise-installatie kopie voor meerdere sessies wilt gebruiken, gaat u naar Azure Marketplace en selecteert u aan de **slag**met  >  **micro soft Windows 10** > en [Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ![Een scherm opname van het selecteren van Windows 10 Enter prise voor virtuele Bureau bladen, versie 1809.](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Tenant voor Windows virtueel bureau blad maken
 
 In deze sectie worden mogelijke problemen beschreven bij het maken van de virtuele bureau blad-Tenant van Windows.
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Fout: de app heeft toegang tot een service nodig voor de AADSTS650052.
+
+Voor beeld van onbewerkte fout:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**Oorzaak:** Er is geen toestemming verleend aan het virtuele bureau blad van Windows in het Azure Active Directory-exemplaar.
+
+**Fix:** [Volg deze hand leiding](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) om toestemming te verlenen.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Fout: de gebruiker is niet gemachtigd om een query uit te zoeken op de beheer service
 
@@ -122,7 +138,7 @@ Volg deze instructies voor het oplossen van problemen met mislukte implementatie
 3. Wanneer de fout is geïdentificeerd, gebruikt u het fout bericht en de resources in [problemen met veelvoorkomende Azure-implementatie fouten oplossen met Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) om het probleem op te lossen.
 4. Verwijder alle resources die tijdens de vorige implementatie zijn gemaakt en probeer de sjabloon opnieuw te implementeren.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt...\<. hostnaam>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Fout: de implementatie is mislukt.... \<hostname> /JoinDomain
 
 ![De scherm afbeelding van de implementatie is mislukt.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 

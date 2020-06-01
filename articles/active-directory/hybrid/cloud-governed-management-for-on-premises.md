@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109523"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234079"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Hoe Azure AD onderhevige beheer van de Cloud biedt voor on-premises workloads
 
@@ -93,7 +93,7 @@ Voor een organisatie die al gebruikmaakt van een on-premises ID-provider, kunt u
 
 ![Ontwikkeling van Azure AD](media/cloud-governed-management-for-on-premises/image5.png)
 
-Als u wilt beginnen met het migreren van federatieve toepassingen naar Azure AD als id- https://aka.ms/migrateapps provider, raadpleegt u de volgende koppelingen:
+Als u wilt beginnen met het migreren van federatieve toepassingen naar Azure AD als id-provider, raadpleegt u de https://aka.ms/migrateapps volgende koppelingen:
 
 * Het White paper [over het migreren van uw toepassingen naar Azure Active Directory](https://aka.ms/migrateapps/whitepaper), die de voor delen van de migratie biedt en beschrijft hoe u de migratie plant in vier duidelijk beschreven fasen: detectie, classificatie, migratie en continu beheer. U wordt begeleid bij het bepalen van het proces en het verbreken van het project in gemakkelijk te gebruiken onderdelen. In het hele document vindt u koppelingen naar belang rijke bronnen die u op weg helpen.
 
@@ -117,4 +117,4 @@ In hybride omgevingen is de strategie van micro soft om implementaties in te sch
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over hoe u aan de slag kunt gaan de Azure AD-implementatie plannen, te vinden <https://aka.ms/deploymentplans> op. Ze bieden end-to-end hulp voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden. Elk plan bevat uitleg over de bedrijfs waarde, plannings overwegingen, ontwerp en operationele procedures die nodig zijn om algemene Azure AD-mogelijkheden uit te kunnen rollen. Micro soft werkt de implementatie plannen voortdurend bij met de best practices die zijn geleerd van klant implementaties en andere feedback wanneer we nieuwe mogelijkheden toevoegen voor het beheer vanuit de Cloud met Azure AD.
+Zie voor meer informatie over hoe u aan de slag kunt gaan de Azure AD-implementatie plannen, te vinden op <https://aka.ms/deploymentplans> . Ze bieden end-to-end hulp voor het implementeren van Azure Active Directory (Azure AD)-mogelijkheden. Elk plan bevat uitleg over de bedrijfs waarde, plannings overwegingen, ontwerp en operationele procedures die nodig zijn om algemene Azure AD-mogelijkheden uit te kunnen rollen. Micro soft werkt de implementatie plannen voortdurend bij met de best practices die zijn geleerd van klant implementaties en andere feedback wanneer we nieuwe mogelijkheden toevoegen voor het beheer vanuit de Cloud met Azure AD.

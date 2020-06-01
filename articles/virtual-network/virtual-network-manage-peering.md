@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
-ms.author: anavin
-ms.openlocfilehash: 0f01ea47a01c700580e8c3172d1b445a098c164f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: altambaw
+ms.openlocfilehash: ba4acf32e13304c62ec5091670fe0b45ec3cb32c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187491"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235254"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -33,9 +33,9 @@ Meer informatie over het maken, wijzigen of verwijderen van peering op een virtu
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 - Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, https://portal.azure.comopent u en meldt u zich aan met een account dat de [benodigde machtigingen](#permissions) heeft om met peerings te werken.
+- Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met een account dat de [benodigde machtigingen](#permissions) heeft om met peerings te werken.
 - Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u Power shell lokaal uitvoert, moet u ook uitvoeren `Connect-AzAccount` met een account dat beschikt over de [vereiste machtigingen](#permissions) om te werken met peering om een verbinding te maken met Azure.
-- Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` met een account met de [vereiste machtigingen](#permissions) om met peering te werken, om een verbinding te maken met Azure.
+- Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` met een account met de [vereiste machtigingen](#permissions) om met peering te werken, om een verbinding te maken met Azure.
 
 Het account waarmee u zich aanmeldt of verbinding maakt met Azure met, moet worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
@@ -50,7 +50,7 @@ Voordat u een peering maakt, moet u vertrouwd raken met de vereisten en beperkin
 5. <a name="add-peering"></a>Typ of selecteer waarden voor de volgende instellingen:
     - **Naam:** De naam voor de peering moet uniek zijn binnen het virtuele netwerk.
     - **Implementatie model van het virtuele netwerk:** Selecteer het implementatie model van het virtuele netwerk waarmee u een peer wilt uitvoeren, dat is geïmplementeerd via.
-    - **Ik weet wat mijn resource-id is:** Als u lees toegang hebt tot het virtuele netwerk waarmee u wilt peeren, laat u dit selectie vakje uitgeschakeld. Schakel dit selectie vakje in als u geen lees toegang hebt tot het virtuele netwerk of het abonnement waarmee u wilt worden gepeerd. Voer de volledige Resource-ID in van het virtuele netwerk waarmee u een peer wilt doen, in het vak **resource-id** dat werd weer gegeven wanneer u het selectie vakje inschakelt. De resource-ID die u invoert, moet voor een virtueel netwerk zijn dat zich in dezelfde of een [ondersteunde](#requirements-and-constraints) Azure- [regio](https://azure.microsoft.com/regions) bevindt als dit virtuele netwerk. De volledige Resource-ID ziet er `/subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>`als volgt uit. U kunt de resource-ID voor een virtueel netwerk ophalen door de eigenschappen voor een virtueel netwerk weer te geven. Zie [virtuele netwerken beheren](manage-virtual-network.md#view-virtual-networks-and-settings)voor meer informatie over het weer geven van de eigenschappen voor een virtueel netwerk. Als het abonnement is gekoppeld aan een andere Azure Active Directory Tenant dan het abonnement met het virtuele netwerk waarvan u de peering maakt, voegt u eerst een gebruiker toe van elke Tenant als [gast gebruiker](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) in de tegenoverliggende Tenant.
+    - **Ik weet wat mijn resource-id is:** Als u lees toegang hebt tot het virtuele netwerk waarmee u wilt peeren, laat u dit selectie vakje uitgeschakeld. Schakel dit selectie vakje in als u geen lees toegang hebt tot het virtuele netwerk of het abonnement waarmee u wilt worden gepeerd. Voer de volledige Resource-ID in van het virtuele netwerk waarmee u een peer wilt doen, in het vak **resource-id** dat werd weer gegeven wanneer u het selectie vakje inschakelt. De resource-ID die u invoert, moet voor een virtueel netwerk zijn dat zich in dezelfde of een [ondersteunde](#requirements-and-constraints) Azure- [regio](https://azure.microsoft.com/regions) bevindt als dit virtuele netwerk. De volledige Resource-ID ziet er als volgt uit `/subscriptions/<Id>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>` . U kunt de resource-ID voor een virtueel netwerk ophalen door de eigenschappen voor een virtueel netwerk weer te geven. Zie [virtuele netwerken beheren](manage-virtual-network.md#view-virtual-networks-and-settings)voor meer informatie over het weer geven van de eigenschappen voor een virtueel netwerk. Als het abonnement is gekoppeld aan een andere Azure Active Directory Tenant dan het abonnement met het virtuele netwerk waarvan u de peering maakt, voegt u eerst een gebruiker toe van elke Tenant als [gast gebruiker](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) in de tegenoverliggende Tenant.
     - **Abonnement:** Selecteer het [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) van het virtuele netwerk waarmee u een peer wilt met. Een of meer abonnementen worden weer gegeven, afhankelijk van het aantal abonnementen waarvoor uw account lees toegang heeft. Als u het selectie vakje voor de **resource-id** hebt ingeschakeld, is deze instelling niet beschikbaar.
     - **Virtueel netwerk:** Selecteer het virtuele netwerk waarmee u een peer wilt met. U kunt een virtueel netwerk selecteren dat is gemaakt via een Azure-implementatie model. Als u een virtueel netwerk in een andere regio wilt selecteren, moet u een virtueel netwerk in een [ondersteunde regio](#cross-region)selecteren. U moet lees toegang tot het virtuele netwerk hebben om te kunnen worden weer gegeven in de lijst. Als een virtueel netwerk wordt vermeld, maar grijs wordt weer gegeven, kan het zijn dat de adres ruimte voor het virtuele netwerk overlapt met de adres ruimte voor dit virtuele netwerk. Als de adres ruimten van het virtuele netwerk elkaar overlappen, kunnen ze niet worden gekoppeld. Als u het selectie vakje voor de **resource-id** hebt ingeschakeld, is deze instelling niet beschikbaar.
     - **Toegang tot virtueel netwerk toestaan:** Selecteer **ingeschakeld** (standaard) als u communicatie tussen de twee virtuele netwerken wilt inschakelen. Door communicatie tussen virtuele netwerken in te scha kelen, kunnen resources die zijn verbonden met een virtueel netwerk communiceren met elkaar met dezelfde band breedte en latentie alsof ze zijn verbonden met hetzelfde virtuele netwerk. Alle communicatie tussen resources in de twee virtuele netwerken bevindt zich in het particuliere netwerk van Azure. Het **VirtualNetwork** -service label voor netwerk beveiligings groepen omvat het virtuele netwerk en het gekoppelde virtuele netwerk. Zie [overzicht van netwerk beveiligings groepen](security-overview.md#service-tags)voor meer informatie over de service tags voor de netwerk beveiligings groep. Selecteer **uitgeschakeld** als u niet wilt dat verkeer naar het gekoppelde virtuele netwerk stromen. U kunt **uitgeschakeld** selecteren als u een virtueel netwerk met een ander virtueel netwerk hebt gekoppeld, maar af en toe de verkeers stroom tussen de twee virtuele netwerken wilt uitschakelen. Het is mogelijk dat u het in-en uitschakelen van de peers kunt vergemakkelijken. Als deze instelling is uitgeschakeld, loopt verkeer niet tussen de gekoppelde virtuele netwerken.
@@ -72,7 +72,7 @@ Voordat u een peering maakt, moet u vertrouwd raken met de vereisten en beperkin
 
 Zie [volgende stappen](#next-steps)voor stapsgewijze instructies voor het implementeren van peering tussen virtuele netwerken in verschillende abonnementen en implementatie modellen.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 - **Azure cli**: [AZ Network vnet peering Create](/cli/azure/network/vnet/peering)
 - **Power shell**: [add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
@@ -88,7 +88,7 @@ Voordat u een peering wijzigt, moet u vertrouwd raken met de vereisten en beperk
 5. Wijzig de juiste instelling. Meer informatie over de opties voor elke instelling in [stap 5](#add-peering) van een peering maken.
 6. Selecteer **Opslaan**.
 
-**Opdrachten**
+**Opdracht**
 
 - **Azure cli**: [AZ Network vnet peering List](/cli/azure/network/vnet/peering) to list peerings voor een virtueel netwerk, [AZ Network vnet peering laat](/cli/azure/network/vnet/peering) instellingen weer geven voor een specifieke peering en [AZ Network vnet peering update](/cli/azure/network/vnet/peering) om instellingen voor peering te wijzigen. |
 - **Power shell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) voor het ophalen van instellingen voor het weer geven van peering en [set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) om instellingen te wijzigen.
@@ -107,7 +107,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 4. Selecteer aan de rechter kant van de peering die u wilt verwijderen **...**, selecteer **verwijderen**en selecteer vervolgens **Ja** om de peering uit het eerste virtuele netwerk te verwijderen.
 5. Voltooi de voor gaande stappen om de peering te verwijderen uit het andere virtuele netwerk in de peering.
 
-**Opdrachten**
+**Opdracht**
 
 - **Azure cli**: [AZ Network vnet peering verwijderen](/cli/azure/network/vnet/peering)
 - **Power shell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)
@@ -146,7 +146,7 @@ De accounts die u gebruikt om te werken met de peering van het virtuele netwerk 
 
 Als uw account niet is toegewezen aan een van de vorige rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Bewerking                                                          | Naam |
+| Bewerking                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vereist voor het maken van een peering van een virtueel netwerk A naar een virtueel netwerk B. virtueel netwerk A moet een virtueel netwerk zijn (Resource Manager)          |
 | Micro soft. Network/virtualNetworks/peer/Action                   | Vereist voor het maken van een peering van een virtueel netwerk B (Resource Manager) naar een virtueel netwerk                                                       |

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 562b1f80397c730b5ea72fe2cd4f3dfdaea1e3f3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086212"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235546"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Verbinding maken en aanmelden bij een virtuele machine van Azure waarop Windows wordt uitgevoerd
 U gebruikt de knop **Verbinden** in Azure Portal om een Extern bureaublad-sessie (RDP) te starten vanaf een Windows-computer. Eerst maakt u verbinding met de virtuele machine en meldt u zich aan.
@@ -24,7 +24,7 @@ Als u vanaf een Mac verbinding wilt maken met een Windows-VM, moet u een RDP-cli
 2. Selecteer de virtuele machine in de lijst.
 3. Selecteer op het begin van de pagina virtuele machine **verbinding maken**.
 4. Selecteer op de pagina **verbinding maken met virtuele machine** **RDP**en selecteer vervolgens het juiste **IP-adres** en **poort nummer**. In de meeste gevallen moeten het IP-adres en de standaard poort worden gebruikt. Selecteer **RDP-bestand downloaden**. Als er een just-in-time-beleid is ingesteld voor de VM, moet u eerst de knop **toegang aanvragen** selecteren om toegang aan te vragen voordat u het RDP-bestand kunt downloaden. Zie [toegang tot virtuele machines beheren met de just-in-time-beleids regels](../../security-center/security-center-just-in-time.md)voor meer informatie over het just-in-time-beleid.
-5. Open het gedownloade RDP-bestand en selecteer **Verbinden** wanneer dit wordt gevraagd. Er wordt een waarschuwing weer gegeven dat `.rdp` het bestand van een onbekende uitgever is. Dit is normaal gedrag. Selecteer in het venster **verbinding met extern bureaublad** de optie **verbinding maken** om door te gaan.
+5. Open het gedownloade RDP-bestand en selecteer **Verbinden** wanneer dit wordt gevraagd. Er wordt een waarschuwing weer gegeven dat het `.rdp` bestand van een onbekende uitgever is. Dit is normaal. Selecteer in het venster **verbinding met extern bureaublad** de optie **verbinding maken** om door te gaan.
    
     ![Schermafbeelding met waarschuwing over een onbekende uitgever](./media/connect-logon/rdp-warn.png)
 3. Selecteer in het venster **Windows-beveiliging****Meer opties** en vervolgens **Een ander account gebruiken**. Voer de referenties voor een account op de virtuele machine in en selecteer **OK**.
@@ -40,7 +40,7 @@ Als u vanaf een Mac verbinding wilt maken met een Windows-VM, moet u een RDP-cli
 
 
    > [!TIP]
-   > Als de knop **verbinden** in de portal grijs wordt weer gegeven en u niet met Azure bent verbonden via een [snelle route](../../expressroute/expressroute-introduction.md) of een [site-naar-site-VPN-](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) verbinding, moet u een openbaar IP-adres maken en toewijzen aan uw virtuele machine voordat u RDP kunt gebruiken. Zie [open bare IP-adressen in azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie.
+   > Als de knop **verbinden** in de portal grijs wordt weer gegeven en u niet met Azure bent verbonden via een [snelle route](../../expressroute/expressroute-introduction.md) of een [site-naar-site-VPN-](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) verbinding, moet u een openbaar IP-adres maken en toewijzen aan uw virtuele machine voordat u RDP kunt gebruiken. Zie [open bare IP-adressen in azure](../../virtual-network/public-ip-addresses.md)voor meer informatie.
    > 
    > 
 
@@ -48,7 +48,7 @@ Als u vanaf een Mac verbinding wilt maken met een Windows-VM, moet u een RDP-cli
 
  
 
-Als u Power shell gebruikt en de module Azure PowerShell geïnstalleerd hebt, kunt u ook verbinding maken `Get-AzRemoteDesktopFile` via de cmdlet, zoals hieronder wordt weer gegeven.
+Als u Power shell gebruikt en de module Azure PowerShell geïnstalleerd hebt, kunt u ook verbinding maken via de `Get-AzRemoteDesktopFile` cmdlet, zoals hieronder wordt weer gegeven.
 
 In dit voor beeld wordt de RDP-verbinding onmiddellijk gestart, waarbij u dezelfde prompts krijgt als hierboven.
 

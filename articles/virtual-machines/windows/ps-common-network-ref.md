@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098438"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233370"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Algemene Power shell-opdrachten voor virtuele Azure-netwerken
 
@@ -31,7 +31,7 @@ Sommige variabelen kunnen nuttig zijn wanneer u meer dan een van de opdrachten i
 | ---- | ------- |
 | Subnetconfiguraties maken |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Een typisch netwerk heeft mogelijk een subnet voor een [Internet gerichte Load Balancer](../../load-balancer/load-balancer-internet-overview.md) en een afzonderlijk subnet voor een [interne Load Balancer](../../load-balancer/load-balancer-internal-overview.md). |
 | Een virtueel netwerk maken |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -name "myVNet"-ResourceGroupName $MyResourceGroup-location $location-AddressPrefix xx. X. X. X/XX-subnet $subnet 1, $subnet 2 |
-| Testen op een unieke domein naam |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -domeinnaam label "myDNS"-locatie $location<BR><BR>U kunt een DNS-domein naam opgeven voor een [open bare IP-resource](../../virtual-network/virtual-network-ip-addresses-overview-arm.md), waarmee een toewijzing voor domainname.location.cloudapp.Azure.com wordt gemaakt aan het open bare IP-adres op de door Azure beheerde DNS-servers. De naam mag alleen letters, cijfers en afbreekstreepjes bevatten. Het eerste en laatste teken moeten een letter of cijfer zijn en de domein naam moet uniek zijn binnen de Azure-locatie. Als **waar** wordt geretourneerd, is de voorgestelde naam wereld wijd uniek. |
+| Testen op een unieke domein naam |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -domeinnaam label "myDNS"-locatie $location<BR><BR>U kunt een DNS-domein naam opgeven voor een [open bare IP-resource](../../virtual-network/public-ip-addresses.md), waarmee een toewijzing voor domainname.location.cloudapp.Azure.com wordt gemaakt aan het open bare IP-adres op de door Azure beheerde DNS-servers. De naam mag alleen letters, cijfers en afbreekstreepjes bevatten. Het eerste en laatste teken moeten een letter of cijfer zijn en de domein naam moet uniek zijn binnen de Azure-locatie. Als **waar** wordt geretourneerd, is de voorgestelde naam wereld wijd uniek. |
 | Een openbaar IP-adres maken |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -name "myPublicIp"-ResourceGroupName $MyResourceGroup-domeinnaam label "myDNS"-location $location-AllocationMethod Dynamic<BR><BR>Het open bare IP-adres gebruikt de domein naam die u eerder hebt getest en wordt gebruikt door de front-end-configuratie van de load balancer. |
 | Een front-end-IP-configuratie maken |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -name "myFrontendIP"-PublicIpAddress $PIP<BR><BR>De front-end-configuratie bevat het open bare IP-adres dat u eerder hebt gemaakt voor binnenkomend netwerk verkeer. |
 | Een back-endadresgroep maken |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -name "myBackendAddressPool"<BR><BR>Biedt interne adressen voor de back-end van de load balancer die toegankelijk zijn via een netwerk interface. |

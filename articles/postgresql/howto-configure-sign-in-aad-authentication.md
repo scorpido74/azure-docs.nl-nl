@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652548"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236320"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
@@ -54,21 +54,19 @@ Momenteel zijn de volgende clients getest:
 
 Dit zijn de stappen die een gebruiker/toepassing nodig heeft om zich te verifiëren met Azure AD zoals hieronder wordt beschreven:
 
+### <a name="prerequisites"></a>Vereisten
+
+U kunt de Azure Cloud Shell, een Azure-VM of op uw lokale machine volgen. Zorg ervoor dat de [Azure cli is geïnstalleerd](/cli/azure/install-azure-cli).
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Stap 1: verifiëren met Azure AD
 
-Zorg ervoor dat de [Azure cli is geïnstalleerd](/cli/azure/install-azure-cli).
+Begin door te verifiëren met Azure AD met het Azure CLI-hulp programma. Deze stap is niet vereist in Azure Cloud Shell.
 
-Roep het Azure CLI-hulp programma aan om te verifiëren met Azure AD. Hiervoor moet u uw gebruikers-ID en wacht woord voor Azure AD opgeven.
-
-```azurecli-interactive
+```
 az login
 ```
 
-Met deze opdracht wordt een browser venster geopend op de Azure AD-verificatie pagina.
-
-> [!NOTE]
-> U kunt Azure Cloud Shell ook gebruiken om deze stappen uit te voeren.
-> Houd er rekening mee dat bij het ophalen van het Azure AD-toegangs token in de Azure Cloud Shell u het expliciet aanroept `az login` en zich opnieuw moet aanmelden (in het afzonderlijke venster met een code). Nadat het aanmelden in de `get-access-token` opdracht werkt zoals verwacht.
+Met de opdracht wordt een browser venster geopend op de Azure AD-verificatie pagina. Hiervoor moet u uw gebruikers-ID en wacht woord voor Azure AD opgeven.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Stap 2: het Azure AD-toegangs Token ophalen
 

@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e916e005687c1f0a197f8c97f643e5a26552c23c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b60b815c62b34fb0dc5024a85d7dcb905f3df9da
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046199"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234311"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,12 +69,12 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 ### <a name="networking"></a>Netwerken
 
 * [Overzicht van Virtual Network](../../../virtual-network/virtual-networks-overview.md)
-* [IP-adressen in Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP-adressen in Azure](../../../virtual-network/public-ip-addresses.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](../../../virtual-machines/windows/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 
-* [Documentatie voor SQL Server op Linux](https://docs.microsoft.com/sql/linux)
+* [Documentatie over SQL Server on Linux](https://docs.microsoft.com/sql/linux)
 * [Vergelijking met Azure SQL Database](../../azure-sql-iaas-vs-paas-what-is-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen

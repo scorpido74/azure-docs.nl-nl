@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/11/2020
-ms.openlocfilehash: 4a49d4ba4d0e82273c06afa178630be32ca1c463
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043070"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235692"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -300,7 +300,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|5120|5760|6400|7680|10240|12800|25600|
+|Max. gegevensiops *|5120|5760|6400|7680|10240|12800|12800|
 |Maximale logboek frequentie (MBps)|30|30|30|30|30|30|30|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1600|1800|2000|2400|3200|4000|8000|
 |Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
@@ -320,7 +320,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|Fsv2-serie|
 |vCores|72|
 |Geheugen (GB)|136,2|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -459,7 +459,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|M-serie|
 |vCores|128|
 |Geheugen (GB)|3767,1|
-|Column Store-ondersteuning|Ja|
+|Column Store-ondersteuning|Yes|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -472,8 +472,8 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Maximaal aantal gelijktijdige aanmeldingen|12.800|
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Aantal replica's|4|
-|Meerdere AZ|Ja|
-|Uitschalen voor leesbewerking|Ja|
+|Meerdere AZ|Yes|
+|Uitschalen voor leesbewerking|Yes|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 \*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 8896aba104a99d323b3c39cfaeab6043d1c12f9d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 620628b244bf107ad0dc2e2242d174ef798450da
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832007"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235630"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -98,10 +98,16 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
   **Ik heb een bestand rechtstreeks in mijn Azure-bestands share gemaakt met behulp van SMB of in de portal. Hoe lang duurt het voordat het bestand is gesynchroniseerd met de servers in de synchronisatie groep?**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
+
+* <a id="afs-sync-time"></a>
+  **Hoe lang duurt het voordat Azure File Sync 1TiB van gegevens uploadt?**
+  
+    Prestaties zijn afhankelijk van uw omgevings instellingen, configuratie en of dit een initiële synchronisatie of een voortdurende synchronisatie is. Zie voor meer informatie [Azure file sync metrische gegevens over prestaties](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
+
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
     Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op twee servers tegelijk worden gewijzigd, worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand heeft de computer ' Bron ' en het conflict nummer dat is toegevoegd aan de naam. Deze is gebaseerd op deze taxonomie: 
    
-    \<FileNameWithoutExtension \> - \< MachineName \> \[ -# \] . \< Brei\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
     Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101369"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232655"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Overwegingen voor de implementatie van Azure Virtual Machines DBMS voor SAP-workloads
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -280,7 +280,7 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 
 - De virtuele netwerken waarmee de SAP-toepassing wordt geïmplementeerd, hebben geen toegang tot internet.
 - De data base-Vm's worden uitgevoerd in hetzelfde virtuele netwerk als de toepassingslaag.
-- De virtuele machines in het virtuele netwerk hebben een statische toewijzing van het privé-IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)voor meer informatie.
+- De virtuele machines in het virtuele netwerk hebben een statische toewijzing van het privé-IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../../../virtual-network/public-ip-addresses.md)voor meer informatie.
 - Routerings beperkingen van en naar de DBMS-Vm's zijn *niet* ingesteld met firewalls die zijn geïnstalleerd op de lokale DBMS-vm's. In plaats daarvan wordt verkeers routering gedefinieerd met [netwerk beveiligings groepen (nsg's)](https://docs.microsoft.com/azure/virtual-network/security-overview).
 - Wijs verschillende Nic's toe aan de virtuele machine om verkeer te scheiden en te isoleren naar de DBMS-VM. Elke NIC krijgt een ander IP-adres en elke NIC wordt toegewezen aan een ander subnet van het virtuele netwerk. Elk subnet heeft verschillende NSG-regels. De isolatie of schei ding van netwerk verkeer is een meting voor route ring. Het wordt niet gebruikt voor het instellen van quota's voor netwerk doorvoer.
 

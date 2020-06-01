@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086399"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234539"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Een virtuele Windows-machine maken vanaf een speciale schijf met PowerShell
 
@@ -112,7 +112,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoog moet worden uitgevoerd, `-AccountType Premium_LRS` voegt u de para meter toe aan de opdracht New-AzSnapshotConfig. Met deze para meter wordt de moment opname gemaakt zodat deze wordt opgeslagen als Premium-beheerde schijf. Premium-Managed Disks zijn duurder dan standaard. Zorg er dus voor dat u Premium nodig hebt voordat u deze para meter gebruikt.
+Als u deze moment opname wilt gebruiken om een virtuele machine te maken die hoog moet worden uitgevoerd, voegt u de para meter toe `-AccountType Premium_LRS` aan de opdracht New-AzSnapshotConfig. Met deze para meter wordt de moment opname gemaakt zodat deze wordt opgeslagen als Premium-beheerde schijf. Premium-Managed Disks zijn duurder dan standaard. Zorg er dus voor dat u Premium nodig hebt voordat u deze para meter gebruikt.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Een nieuwe schijf maken op basis van de moment opname
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
 Zie [poorten openen voor een virtuele machine in azure met behulp van Power shell](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor meer informatie over eind punten en NSG regels.
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Een openbaar IP-adres en een NIC maken
-Als u communicatie met de virtuele machine in het virtuele netwerk wilt inschakelen, hebt u een [openbaar IP-adres](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) en een netwerk interface nodig.
+Als u communicatie met de virtuele machine in het virtuele netwerk wilt inschakelen, hebt u een [openbaar IP-adres](../../virtual-network/public-ip-addresses.md) en een netwerk interface nodig.
 
 1. Maak het open bare IP-adres. In dit voor beeld is de naam van het open bare IP-adres ingesteld op *myIP*.
    
@@ -261,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Controleren of de virtuele machine is gemaakt
-U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder**virtuele machines** **Bladeren** > of met behulp van de volgende Power shell-opdrachten.
+U ziet de zojuist gemaakte vm in de [Azure Portal](https://portal.azure.com) onder **Browse**  >  **virtuele machines**bladeren of met behulp van de volgende Power shell-opdrachten.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup
