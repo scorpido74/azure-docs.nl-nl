@@ -3,12 +3,12 @@ title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met het maken van beleids definities, de verschillende SDK en de invoeg toepassing voor Kubernetes.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8935176badabf559d494c3d60fb1dec236efbdc2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221375"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234176"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Fouten oplossen met behulp van Azure Policy
 
@@ -130,7 +130,7 @@ Het gegenereerde wacht woord bevat een komma ( `,` ) waarin helm-grafiek wordt g
 
 #### <a name="resolution"></a>Oplossing
 
-Escape de komma ( `,` ) in de wachtwoord waarde wanneer deze wordt uitgevoerd `helm install azure-policy-addon` met een Backspace ( `\` ).
+Escape de komma ( `,` ) in de wachtwoord waarde wanneer deze wordt uitgevoerd `helm install azure-policy-addon` met een back slash ( `\` ).
 
 ### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Scenario: de installatie met behulp van de helm-grafiek mislukt, omdat er al een naam bestaat
 

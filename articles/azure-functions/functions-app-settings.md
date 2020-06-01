@@ -3,12 +3,12 @@ title: Naslaginformatie over app-instellingen voor Azure Functions
 description: Referentie documentatie voor de Azure Functions app-instellingen of omgevings variabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690762"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235350"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over app-instellingen voor Azure Functions
 
@@ -20,27 +20,27 @@ Er zijn andere globale configuratie opties in het bestand [host. json](functions
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTIONSTRING`. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie. 
+De instrumentatie sleutel voor Application Insights. Gebruik alleen een van `APPINSIGHTS_INSTRUMENTATIONKEY` of `APPLICATIONINSIGHTS_CONNECTION_STRING` . Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|55555555-af77-484b-9032-64f83bb83bb|
 
-## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+## <a name="applicationinsights_connection_string"></a>APPLICATIONINSIGHTS_CONNECTION_STRING
 
-De connection string voor Application Insights. Gebruik `APPLICATIONINSIGHTS_CONNECTIONSTRING` in plaats `APPINSIGHTS_INSTRUMENTATIONKEY` van wanneer uw functie-app de toegevoegde aanpassingen moet worden ondersteund met behulp van de Connection String. Zie [verbindings reeksen](../azure-monitor/app/sdk-connection-string.md)voor meer informatie. 
+De connection string voor Application Insights. Gebruik `APPLICATIONINSIGHTS_CONNECTION_STRING` in plaats van `APPINSIGHTS_INSTRUMENTATIONKEY` wanneer uw functie-app de toegevoegde aanpassingen moet worden ondersteund met behulp van de Connection String. Zie [verbindings reeksen](../azure-monitor/app/sdk-connection-string.md)voor meer informatie. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey = [sleutel]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
+|APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [sleutel]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-In versie 2. x en latere versies van de functions runtime configureert het app-gedrag op basis van de runtime-omgeving. Deze waarde wordt [tijdens de initialisatie gelezen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). U kunt elke `AZURE_FUNCTIONS_ENVIRONMENT` waarde instellen, maar [drie waarden](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) worden ondersteund: [ontwikkeling](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [fase ring](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)en [productie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Als `AZURE_FUNCTIONS_ENVIRONMENT` niet is ingesteld, wordt standaard `Development` de waarde in een lokale `Production` omgeving en op Azure gebruikt. Deze instelling moet worden gebruikt in plaats `ASPNETCORE_ENVIRONMENT` van om de runtime-omgeving in te stellen. 
+In versie 2. x en latere versies van de functions runtime configureert het app-gedrag op basis van de runtime-omgeving. Deze waarde wordt [tijdens de initialisatie gelezen](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43). U kunt `AZURE_FUNCTIONS_ENVIRONMENT` elke waarde instellen, maar [drie waarden](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) worden ondersteund: [ontwikkeling](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [fase ring](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)en [productie](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Als `AZURE_FUNCTIONS_ENVIRONMENT` niet is ingesteld, wordt standaard `Development` de waarde in een lokale omgeving en `Production` op Azure gebruikt. Deze instelling moet worden gebruikt in plaats van `ASPNETCORE_ENVIRONMENT` om de runtime-omgeving in te stellen. 
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
-In versie 2. x en latere versies van de functions runtime kunnen de instellingen van de [host. json](functions-host-json.md) in de huidige omgeving worden overschreven. Deze onderdrukkingen worden weer gegeven als toepassings instellingen met `AzureFunctionsJobHost__path__to__setting`de naam. Zie [host. json-waarden onderdrukken](functions-host-json.md#override-hostjson-values)voor meer informatie.
+In versie 2. x en latere versies van de functions runtime kunnen de instellingen van de [host. json](functions-host-json.md) in de huidige omgeving worden overschreven. Deze onderdrukkingen worden weer gegeven als toepassings instellingen met de naam `AzureFunctionsJobHost__path__to__setting` . Zie [host. json-waarden onderdrukken](functions-host-json.md#override-hostjson-values)voor meer informatie.
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
@@ -48,10 +48,10 @@ Optioneel opslag account connection string voor het opslaan van Logboeken en wee
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName =<name>; AccountKey =<key>|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = <name> ; AccountKey =<key>|
 
 > [!NOTE]
-> Voor betere prestaties en ervaring gebruiken runtime versie 2. x en latere versies APPINSIGHTS_INSTRUMENTATIONKEY en app Insights voor bewaking in plaats van `AzureWebJobsDashboard`.
+> Voor betere prestaties en ervaring gebruiken runtime versie 2. x en latere versies APPINSIGHTS_INSTRUMENTATIONKEY en app Insights voor bewaking in plaats van `AzureWebJobsDashboard` .
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -61,13 +61,13 @@ Optioneel opslag account connection string voor het opslaan van Logboeken en wee
 |---|------------|
 |AzureWebJobsDisableHomepage|waar|
 
-Als deze app-instelling wordt wegge laten of is `false`ingesteld op, wordt een pagina die lijkt op het volgende voor beeld weer gegeven `<functionappname>.azurewebsites.net`als reactie op de URL.
+Als deze app-instelling wordt wegge laten of is ingesteld op `false` , wordt een pagina die lijkt op het volgende voor beeld weer gegeven als reactie op de URL `<functionappname>.azurewebsites.net` .
 
 ![Landings pagina voor functie-app](media/functions-app-settings/function-app-landing-page.png)
 
 ## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
 
-`true`betekent release modus gebruiken bij het compileren van .NET-code. `false` betekent de foutopsporingsmodus gebruiken. De standaardwaarde is `true`.
+`true`betekent release modus gebruiken bij het compileren van .NET-code. `false`betekent de foutopsporingsmodus gebruiken. De standaardwaarde is `true`.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
@@ -105,51 +105,51 @@ Het pad naar het Compileer programma dat wordt gebruikt voor type script. Hierme
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
-## <a name="function_app_edit_mode"></a>\_bewerkings\_modus van functie-app\_
+## <a name="function_app_edit_mode"></a>bewerkings modus van functie- \_ app \_ \_
 
 Hiermee wordt bepaald of bewerken in de Azure Portal is ingeschakeld. Geldige waarden zijn ' readwrite ' en ' readonly '.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|\_bewerkings\_modus van functie-app\_|alleen-lezen|
+|bewerkings modus van functie- \_ app \_ \_|alleen-lezen|
 
-## <a name="functions_extension_version"></a>extensie\_\_versie van functies
+## <a name="functions_extension_version"></a>\_extensie \_ versie van functies
 
 De versie van de functions-runtime die moet worden gebruikt in deze functie-app. Een tilde met een primaire versie houdt in dat u de nieuwste versie van die primaire versie gebruikt (bijvoorbeeld "~ 2"). Wanneer er nieuwe versies voor dezelfde primaire versie beschikbaar zijn, worden deze automatisch geïnstalleerd in de functie-app. Als u de app wilt vastmaken aan een specifieke versie, gebruikt u het volledige versie nummer (bijvoorbeeld ' 2.0.12345 '). De standaard waarde is "~ 2". Een waarde voor `~1` het vastpinnen van uw app naar versie 1. x van de runtime.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|extensie\_\_versie van functies|~ 2|
+|\_extensie \_ versie van functies|~ 2|
 
-## <a name="functions_v2_compatibility_mode"></a>Function\_v2\_-\_compatibiliteits modus
+## <a name="functions_v2_compatibility_mode"></a>Function \_ v2- \_ compatibiliteits \_ modus
 
 Met deze instelling kan de functie-app worden uitgevoerd in een modus die compatibel is met versie 2. x in de runtime van versie 3. x. Gebruik deze instelling alleen als er problemen optreden bij [het upgraden van de functie-app van versie 2. x naar 3. x van de runtime](functions-versions.md#migrating-from-2x-to-3x). 
 
 >[!IMPORTANT]
 > Deze instelling is alleen bedoeld als tijdelijke oplossing wanneer u uw app bijwerkt zodat deze correct wordt uitgevoerd op versie 3. x. Deze instelling wordt ondersteund zolang de [runtime 2. x wordt ondersteund](functions-versions.md). Als u problemen ondervindt waardoor uw app niet kan worden uitgevoerd op versie 3. x zonder deze instelling te gebruiken, meldt u [uw probleem](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
 
-Hiervoor moet [de\_versie\_](functions-app-settings.md#functions_extension_version) van de functie- `~3`extensie worden ingesteld op.
+Hiervoor moet [de \_ \_ versie](functions-app-settings.md#functions_extension_version) van de functie-extensie worden ingesteld op `~3` .
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|Function\_v2\_-\_compatibiliteits modus|waar|
+|Function \_ v2- \_ compatibiliteits \_ modus|waar|
 
-## <a name="functions_worker_process_count"></a>aantal\_functies\_werk\_proces
+## <a name="functions_worker_process_count"></a>\_aantal functies werk \_ proces \_
 
-Hiermee geeft u het maximum aantal taal werk processen op, met een standaard `1`waarde van. De toegestane maximum waarde is `10`. Functie aanroepen worden gelijkmatig verdeeld over werk processen van de taal. Werk processen in de taal worden elke tien seconden uitgevoerd\_\_\_tot het aantal dat is ingesteld door functions van het aantal werk processen is bereikt. Het gebruik van werk processen in meerdere talen is niet hetzelfde als het [schalen](functions-scale.md). U kunt deze instelling gebruiken als uw werk belasting een combi natie van aan CPU gebonden en I/O-gebonden aanroepen heeft. Deze instelling is van toepassing op alle non-.NET talen.
-
-|Sleutel|Voorbeeldwaarde|
-|---|------------|
-|aantal\_functies\_werk\_proces|2|
-
-
-## <a name="functions_worker_runtime"></a>\_functions\_runtime van worker
-
-De Language worker-runtime die in de functie-app moet worden geladen.  Dit komt overeen met de taal die wordt gebruikt in uw toepassing (bijvoorbeeld ' DotNet '). Voor functies in meerdere talen moet u deze publiceren naar meerdere apps, elk met een bijbehorende runtime-waarde voor werk nemers.  Geldige waarden zijn `dotnet` (C#/f #), `node` (Java script/type script) `java` , (Java) `powershell` , (Power shell) `python` en (python).
+Hiermee geeft u het maximum aantal taal werk processen op, met een standaard waarde van `1` . De toegestane maximum waarde is `10` . Functie aanroepen worden gelijkmatig verdeeld over werk processen van de taal. Werk processen in de taal worden elke tien seconden uitgevoerd tot het aantal dat is ingesteld door FUNCTIONs van het \_ aantal werk processen \_ \_ is bereikt. Het gebruik van werk processen in meerdere talen is niet hetzelfde als het [schalen](functions-scale.md). U kunt deze instelling gebruiken als uw werk belasting een combi natie van aan CPU gebonden en I/O-gebonden aanroepen heeft. Deze instelling is van toepassing op alle non-.NET talen.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|\_functions\_runtime van worker|dotnet|
+|\_aantal functies werk \_ proces \_|2|
+
+
+## <a name="functions_worker_runtime"></a>FUNCTIONs \_ runtime van worker \_
+
+De Language worker-runtime die in de functie-app moet worden geladen.  Dit komt overeen met de taal die wordt gebruikt in uw toepassing (bijvoorbeeld ' DotNet '). Voor functies in meerdere talen moet u deze publiceren naar meerdere apps, elk met een bijbehorende runtime-waarde voor werk nemers.  Geldige waarden zijn `dotnet` (C#/f #), `node` (Java script/type script), `java` (Java), `powershell` (Power shell) en `python` (python).
+
+|Sleutel|Voorbeeldwaarde|
+|---|------------|
+|FUNCTIONs \_ runtime van worker \_|dotnet|
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -159,7 +159,7 @@ Alleen voor verbruik & Premium-abonnementen. De verbindings reeks voor het opsla
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [sleutel]|
 
-## <a name="website_contentshare"></a>WEBSITE\_-CONTENTSHARE
+## <a name="website_contentshare"></a>WEBSITE- \_ CONTENTSHARE
 
 Alleen voor verbruik & Premium-abonnementen. Het bestandspad naar de code en configuratie van de functie-app. Gebruikt met WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. De standaard waarde is een unieke teken reeks die begint met de naam van de functie-app. Zie [een functie-app maken](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -167,7 +167,7 @@ Alleen voor verbruik & Premium-abonnementen. Het bestandspad naar de code en con
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
-## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_maximum\_aantal\_\_uitschalen\_van dynamische toepassing
+## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE \_ maximum \_ aantal \_ uitschalen van dynamische toepassing \_ \_
 
 Het maximum aantal exemplaren waarmee de functie-app kan worden uitgeschaald. De standaard waarde is geen limiet.
 
@@ -176,26 +176,26 @@ Het maximum aantal exemplaren waarmee de functie-app kan worden uitgeschaald. De
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|WEBSITE\_maximum\_aantal\_\_uitschalen\_van dynamische toepassing|5|
+|WEBSITE \_ maximum \_ aantal \_ uitschalen van dynamische toepassing \_ \_|5|
 
-## <a name="website_node_default_version"></a>DEFAULT_VERSION\_van\_website knooppunt
+## <a name="website_node_default_version"></a>DEFAULT_VERSION van WEBSITE \_ knooppunt \_
 
 _Alleen Windows._  
-Hiermee stelt u de versie van node. js in die moet worden gebruikt voor het uitvoeren van uw functie-app in Windows. U moet een tilde (~) gebruiken om de runtime de meest recente beschik bare versie van de doel primaire versie te laten gebruiken. Wanneer deze bijvoorbeeld is ingesteld op `~10`, wordt de meest recente versie van node. js 10 gebruikt. Wanneer een primaire versie is gericht op een tilde, hoeft u de secundaire versie niet hand matig bij te werken. 
+Hiermee stelt u de versie van node. js in die moet worden gebruikt voor het uitvoeren van uw functie-app in Windows. U moet een tilde (~) gebruiken om de runtime de meest recente beschik bare versie van de doel primaire versie te laten gebruiken. Wanneer deze bijvoorbeeld is ingesteld op `~10` , wordt de meest recente versie van node. js 10 gebruikt. Wanneer een primaire versie is gericht op een tilde, hoeft u de secundaire versie niet hand matig bij te werken. 
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|DEFAULT_VERSION\_van\_website knooppunt|~ 10|
+|DEFAULT_VERSION van WEBSITE \_ knooppunt \_|~ 10|
 
-## <a name="website_run_from_package"></a>WEBSITE\_uitvoeren\_vanuit\_pakket
+## <a name="website_run_from_package"></a>WEBSITE \_ uitvoeren \_ vanuit \_ pakket
 
 Hiermee kan uw functie-app vanuit een gekoppeld pakket bestand worden uitgevoerd.
 
 |Sleutel|Voorbeeldwaarde|
 |---|------------|
-|WEBSITE\_uitvoeren\_vanuit\_pakket|1|
+|WEBSITE \_ uitvoeren \_ vanuit \_ pakket|1|
 
-Geldige waarden zijn ofwel een URL die wordt omgezet in de locatie van een implementatie pakket bestand of `1`. Als deze is `1`ingesteld op, moet het pakket zich `d:\home\data\SitePackages` in de map bevinden. Bij gebruik van een zip-implementatie met deze instelling wordt het pakket automatisch naar deze locatie geüpload. In de preview-versie heet `WEBSITE_RUN_FROM_ZIP`deze instelling. Zie [uw functies uitvoeren vanuit een pakket bestand](run-functions-from-deployment-package.md)voor meer informatie.
+Geldige waarden zijn ofwel een URL die wordt omgezet in de locatie van een implementatie pakket bestand of `1` . Als deze is ingesteld op `1` , moet het pakket zich in de map bevinden `d:\home\data\SitePackages` . Bij gebruik van een zip-implementatie met deze instelling wordt het pakket automatisch naar deze locatie geüpload. In de preview-versie heet deze instelling `WEBSITE_RUN_FROM_ZIP` . Zie [uw functies uitvoeren vanuit een pakket bestand](run-functions-from-deployment-package.md)voor meer informatie.
 
 ## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
 

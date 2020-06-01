@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: bc1568c53cdb5518f694d77a2f28f3cf77296ee2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b7a318f73a513d699de97f0973ece9b6481b93
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460378"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230634"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten met Azure-implementatie oplossen met Azure Resource Manager
 
@@ -62,8 +62,8 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | OperationNotAllowed | Er wordt geprobeerd een bewerking uit te voeren die het quotum voor het abonnement, de resource groep of de regio overschrijdt. Als dat mogelijk is, kunt u uw implementatie herzien zodat deze binnen de quota's blijft. Als dat niet het geval is, kunt u een wijziging aanvragen voor uw quota's. | [Quota's omzetten](error-resource-quota.md) |
 | ParentResourceNotFound | Zorg ervoor dat er een bovenliggende resource bestaat voordat u de onderliggende resources maakt. | [Bovenliggende resource omzetten](error-parent-resource.md) |
 | PasswordTooLong | Mogelijk hebt u een wacht woord met te veel tekens geselecteerd of hebt u uw wachtwoord waarde naar een beveiligde teken reeks geconverteerd voordat u deze als een para meter door gegeven. Als de sjabloon een **beveiligde teken reeks** parameter bevat, hoeft u de waarde niet te converteren naar een veilige teken reeks. Geef de wachtwoord waarde op als tekst. |  |
-| PrivateIPAddressInReservedRange | Het opgegeven IP-adres bevat een adres bereik dat vereist is voor Azure. Wijzig het IP-adres om gereserveerd bereik te voor komen. | [IP-adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
-| PrivateIPAddressNotInSubnet | Het opgegeven IP-adres valt buiten het bereik van het subnet. Wijzig het IP-adres in het bereik van het subnet. | [IP-adressen](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| PrivateIPAddressInReservedRange | Het opgegeven IP-adres bevat een adres bereik dat vereist is voor Azure. Wijzig het IP-adres om gereserveerd bereik te voor komen. | [IP-adressen](../../virtual-network/public-ip-addresses.md) |
+| PrivateIPAddressNotInSubnet | Het opgegeven IP-adres valt buiten het bereik van het subnet. Wijzig het IP-adres in het bereik van het subnet. | [IP-adressen](../../virtual-network/public-ip-addresses.md) |
 | PropertyChangeNotAllowed | Sommige eigenschappen kunnen niet worden gewijzigd op een geïmplementeerde resource. Wanneer u een resource bijwerkt, kunt u de wijzigingen beperken tot toegestane eigenschappen. | [Bron bijwerken](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Uw abonnement bevat een resource beleid waarmee wordt voor komen dat u tijdens de implementatie een actie probeert uit te voeren. Zoek het beleid waarmee de actie wordt geblokkeerd. Wijzig, indien mogelijk, uw implementatie zodat deze voldoet aan de beperkingen van het beleid. | [Beleid oplossen](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Geef een resource naam op die geen gereserveerde naam bevat. | [Gereserveerde resource namen](error-reserved-resource-name.md) |

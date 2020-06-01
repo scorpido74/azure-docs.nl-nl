@@ -3,12 +3,12 @@ title: Een back-up maken van een share point-Farm naar Azure met MABS
 description: Gebruik Azure Backup Server om back-ups te maken van uw share point-gegevens en deze te herstellen. In dit artikel vindt u informatie over het configureren van uw share point-Farm zodat gewenste gegevens kunnen worden opgeslagen in Azure. U kunt beveiligde share point-gegevens herstellen vanaf schijf of Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657282"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234795"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Een back-up maken van een share point-Farm naar Azure met MABS
 
@@ -68,10 +68,9 @@ Als u een back-up wilt maken van de share point-Farm, configureert u beveiliging
 
     * Geef de referenties van de farmbeheerder op. Deze account moet een lid zijn van een lokale beheerdersgroep op de WFE-server. Als de farm beheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
 
-        * Verleen de WSS \_ admin \_ WPG-groep volledig beheer voor de map MABS \( % Program Files% \\ Data Protection Manager \\ DPM \) .
-            -A
+        * Ken de **WSS_Admin_WPG** groep volledig beheer toe aan de map MABS ( `%Program Files%\Data Protection Manager\DPM\` ).
 
-        * Verleen de WSS \_ admin \_ WPG-groep lees toegang tot de MABS-register sleutel \( HKEY \_ lokale \_ machine \\ Software micro soft \\ \\ Data Protection Manager \) .
+        * Verleen de **WSS_Admin_WPG** -groep lees toegang tot de register sleutel MABS ( `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` ).
 
         Na het uitvoeren van ConfigureSharePoint. exe moet u deze opnieuw uitvoeren als er een wijziging is in de referenties van de share point-farm beheerder.
 

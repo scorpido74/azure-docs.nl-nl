@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998073"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237664"
 ---
 Deze snelstart op basis van Postman begeleidt u bij het ophalen van een antwoord uit een knowledge base.
 
@@ -37,7 +37,7 @@ Gebruik deze procedure voor het configureren van Postman en lees elke volgende s
 
 1. Selecteer op de pagina **instellingen** van de Knowledge Base het tabblad **postman** voor een overzicht van de configuratie die wordt gebruikt voor het genereren van een antwoord uit de Knowledge Base. Kopieer de volgende informatie om te gebruiken in postman.
 
-    |Naam|Instelling|Doel en waarde|
+    |Name|Instelling|Doel en waarde|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Dit is de HTTP-methode en route voor de URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Dit is de host van de URL. Voeg de host en post-waarden toe om de volledige generateAnswer-URL op te halen.|
@@ -108,7 +108,7 @@ In een vorige Snelstartgids zijn meta gegevens toegevoegd aan twee QnA-paren om 
 ## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
 
 > [!NOTE]
->Het is niet raadzaam om debug poreperty te gebruiken voor een afhankelijkheid. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen.
+>Het gebruik van de eigenschap debug voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen.
 
 Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
 

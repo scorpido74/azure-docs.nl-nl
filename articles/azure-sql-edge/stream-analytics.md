@@ -2,19 +2,19 @@
 title: Azure Stream Analytics Edge-taken gebruiken met Azure SQL Edge (preview)
 description: Meer informatie over het gebruik van Stream Analytics-taken in Azure SQL Edge (preview)
 keywords: SQL-rand, stream Analytics,
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597315"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233146"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Azure Stream Analytics-taken gebruiken met SQL Edge
 
@@ -88,7 +88,7 @@ Azure SQL Edge heeft een systeem eigen implementatie van de stream Analytics-run
 
 5. Stel de instellingen voor het opslag account voor de Edge-taak in. Het opslag account wordt gebruikt als het publicatie doel voor de Edge-taak.
 
-6. Selecteer onder **configureren**de optie **publiceren**en selecteer vervolgens de knop **publiceren** . Sla de SAS-URI op voor gebruik met de SQL Edge-module.
+6. Selecteer **Publiceren** onder **Configureren** en selecteer de knop **Publiceren**. Sla de SAS-URI op voor gebruik met de SQL Edge-module.
 
 ## <a name="deploy-azure-stream-analytics-edge-job-to-sql-edge"></a>Azure Stream Analytics Edge-taak implementeren naar SQL-rand
 

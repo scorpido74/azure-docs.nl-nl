@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758942"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235344"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -98,7 +98,7 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 
 ### <a name="public-cloud-urls"></a>Url's voor open bare Clouds
 
-**URL** | **Details**  
+**URL** | **Nadere**  
 --- | --- |
 *.portal.azure.com  | Ga naar Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Meld u aan bij uw Azure-abonnement.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
 
 ### <a name="government-cloud-urls"></a>Cloud-Url's voor de overheid
 
-**URL** | **Details**  
+**URL** | **Nadere**  
 --- | --- |
 *. portal.azure.us  | Ga naar Azure Portal.
 graph.windows.net | Meld u aan bij uw Azure-abonnement.
@@ -157,9 +157,9 @@ Besturingssysteemtype | VM. SummaryConfig.GuestFullName
 Opstart type | VM. Config. firmware
 Aantal kerngeheugens | VM. Config. hardware. NumCPU
 Geheugen (MB) | VM. Config. hardware. MemoryMB
-Aantal schijven | VM. Config. hardware. device. ToList (). FindAll (x => is VirtualDisk). Count
-Lijst met schijf grootte | VM. Config. hardware. device. ToList (). FindAll (x => is VirtualDisk)
-Lijst met netwerk adapters | VM. Config. hardware. device. ToList (). FindAll (x => is VirtualEthernet). Count
+Aantal schijven | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk). Count
+Lijst met schijf grootte | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk)
+Lijst met netwerk adapters | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualEthernet). Count
 CPU-gebruik | CPU. usage. Average
 Geheugen gebruik |mem. usage. Average
 **Details per schijf** | 
@@ -206,11 +206,77 @@ Schrijf bewerkingen per seconde van schijf | virtualDisk. numberWriteAveraged. A
 Lees doorvoer van NIC (MB per seconde) | net. received. Average | Berekening voor VM-grootte
 Doorvoer capaciteit van NIC (MB per seconde) | net. verzonden. gemiddeld  |Berekening voor VM-grootte
 
+
+### <a name="installed-apps-metadata"></a>Geïnstalleerde meta gegevens voor apps
+
+Toepassings detectie verzamelt geïnstalleerde toepassingen en gegevens van het besturings systeem.
+
+#### <a name="windows-vm-apps-data"></a>Gegevens van Windows VM-apps
+
+Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van elke VM die is ingeschakeld voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
+
+**Gegevens** | **Registerlocatie** | **Sleutel**
+--- | --- | ---
+Naam van de toepassing  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Versie  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Provider  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Windows VM-onderdelen gegevens
+
+Dit zijn de functies die het apparaat verzamelt van elke virtuele machine die is ingeschakeld voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
+
+**Gegevens**  | **Power shell-cmdlet** | **Eigenschap**
+--- | --- | ---
+Name  | Get-WindowsFeature  | Name
+Onderdeel type | Get-WindowsFeature  | FeatureType
+Bovenliggend  | Get-WindowsFeature  | Bovenliggend
+
+#### <a name="windows-vm-sql-server-metadata"></a>Meta gegevens van Windows-VM SQL Server
+
+Dit zijn de SQL Server-meta gegevens die het apparaat verzamelt van Vm's waarop micro soft SQL Server wordt uitgevoerd voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
+
+**Gegevens**  | **Registerlocatie**  | **Sleutel**
+--- | --- | ---
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Editie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Editie 
+Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
+Versie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Versie 
+
+#### <a name="windows-vm-operating-system-data"></a>Gegevens van het Windows-VM-besturings systeem
+
+Hier ziet u de gegevens van het besturings systeem die door het apparaat worden verzameld voor de detectie van toepassingen. Deze gegevens worden naar Azure verzonden.
+
+Gegevens  | WMI-klasse  | WMI-klasse-eigenschap
+--- | --- | ---
+Name  | Win32_operatingsystem  | Caption
+Versie  | Win32_operatingsystem  | Versie
+Architectuur  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Gegevens van Linux VM-apps
+
+Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van elke VM die is ingeschakeld voor toepassings detectie. Op basis van het besturings systeem van de virtuele machine worden een of meer van de opdrachten uitgevoerd. Deze gegevens worden naar Azure verzonden.
+
+Gegevens  | Opdracht
+--- | --- 
+Name | rpm, met dpkg-query, uitlijnen
+Versie | rpm, met dpkg-query, uitlijnen
+Provider | rpm, met dpkg-query, uitlijnen
+
+#### <a name="linux-vm-operating-system-data"></a>Gegevens van het Linux-VM-besturings systeem
+
+Hier ziet u de gegevens van het besturings systeem die door het apparaat worden verzameld voor de detectie van toepassingen. Deze gegevens worden naar Azure verzonden.
+
+**Gegevens**  | **Cmd** 
+--- | --- | ---
+Name <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Architectuur | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Meta gegevens van app-afhankelijkheden
 
 Bij een afhankelijkheids analyse zonder agent worden verbindings-en proces gegevens verzameld.
 
-#### <a name="connection-data"></a>Verbindings gegevens
+#### <a name="windows-vm-app-dependencies-data"></a>Afhankelijkheids gegevens voor Windows VM-app
 
 Dit zijn de verbindings gegevens die het apparaat verzamelt van elke virtuele machine die is ingeschakeld voor een afhankelijkheids analyse zonder agent. Deze gegevens worden naar Azure verzonden.
 
@@ -224,7 +290,7 @@ TCP-verbindings status | netstat
 Proces-id | netstat
 Aantal actieve verbindingen | netstat
 
-#### <a name="process-data"></a>Gegevens verwerken
+
 Dit zijn de proces gegevens die het apparaat verzamelt van elke virtuele machine die is ingeschakeld voor een afhankelijkheids analyse zonder agent. Deze gegevens worden naar Azure verzonden.
 
 **Gegevens** | **WMI-klasse** | **WMI-klasse-eigenschap**
@@ -233,7 +299,7 @@ Procesnaam | Win32_Process | ExecutablePath
 Proces argumenten | Win32_Process | CommandLine
 De naam van de toepassing | Win32_Process | De para meter VersionInfo. ProductName van de eigenschap ExecutablePath
 
-#### <a name="linux-vm-data"></a>Gegevens van Linux-VM
+#### <a name="linux-vm-app-dependencies-data"></a>Afhankelijkheids gegevens voor Linux VM-app
 
 Dit zijn de verbindings-en proces gegevens die het apparaat verzamelt van elke Linux-VM die is ingeschakeld voor de afhankelijkheids analyse zonder agent. Deze gegevens worden naar Azure verzonden.
 

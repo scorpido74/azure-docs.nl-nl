@@ -2,19 +2,19 @@
 title: Een T-SQL streaming-taak in Azure SQL Edge maken (preview)
 description: Meer informatie over het maken van Stream Analytics taken in Azure SQL Edge (preview)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685175"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233311"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
@@ -44,10 +44,10 @@ Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als inv
 
 | Gegevensbrontype | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen/schrijven naar een Azure IoT Edge hub. Raadpleeg [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) voor meer informatie over Azure IOT Edge hub.|
-| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. Het SQL Database kan een lokale SQL EDGE-Data Base of een externe SQL Server of Azure SQL Database|
-| Azure Blob Storage | N | J | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
-| Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel/AMD-versie van Azure SQL Edge en is niet beschikbaar voor de ARM64-versie van SQL Edge.|
+| Azure IoT Edge hub | Y | Y | Gegevens bron om streaminggegevens te lezen/schrijven naar een Azure IoT Edge hub. Raadpleeg [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) voor meer informatie over Azure IOT Edge hub.|
+| SQL Database | N | Y | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. Het SQL Database kan een lokale SQL EDGE-Data Base of een externe SQL Server of Azure SQL Database|
+| Azure Blob Storage | N | Y | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
+| Kafka | Y | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel/AMD-versie van Azure SQL Edge en is niet beschikbaar voor de ARM64-versie van SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Voor beeld: een extern stream-invoer/uitvoer-object maken voor Azure IoT Edge hub
 

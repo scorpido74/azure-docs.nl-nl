@@ -2,19 +2,19 @@
 title: Ondersteunde functies van de Azure SQL-rand (preview-versie)
 description: Meer informatie over de functies die worden ondersteund door Azure SQL Edge (preview)
 keywords: Inleiding tot SQL Edge, wat is SQL Edge, overzicht van SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e3bac1cbb0e57f9be4a489207f2fe8b30b5d457e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684365"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233214"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Ondersteunde functies van de Azure SQL-rand (preview-versie) 
 
@@ -68,7 +68,7 @@ De onderstaande lijst bevat de SQL Server 2019 in Linux-functies die momenteel n
 | &nbsp; | Data Base-en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven uitrekken |
 | &nbsp; | Volledige-tekst indexen en zoek-en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven|
 | &nbsp; | Bestands tabel-, FILESTREAM-en gerelateerde DDL-opdrachten en Transact-SQL-functies, catalogus weergaven en dynamische beheer weergaven|
-| **Database Engine** | Replicatie. Azure SQL Edge kan echter worden geconfigureerd als een push-abonnee van een replicatie topologie. |
+| **Database Engine** | Replicat. Azure SQL Edge kan echter worden geconfigureerd als een push-abonnee van een replicatie topologie. |
 | &nbsp; | Poly base. Azure SQL Edge kan echter worden geconfigureerd als een doel voor externe tabellen in poly base |
 | &nbsp; | Taal uitbreid baarheid via Java en Spark |
 | &nbsp; | Integratie in Active Directory |
@@ -88,7 +88,7 @@ De onderstaande lijst bevat de SQL Server 2019 in Linux-functies die momenteel n
 | **SQL Server Agent** |  Subsystemen: CmdExec, Power shell, Queue Reader, SSIS, SSAS, SSRS |
 | &nbsp; | Waarschuwingen |
 | &nbsp; | Beheerde back-up |
-| **Hoge beschikbaarheid** | AlwaysOn-beschikbaarheids groepen  |
+| **Hoge Beschik baarheid** | AlwaysOn-beschikbaarheids groepen  |
 | &nbsp; | Basis beschikbaarheids groepen |
 | &nbsp; | Altijd op het failovercluster-exemplaar |
 | &nbsp; | Databasespiegeling |

@@ -2,19 +2,19 @@
 title: Date_Bucket (Transact-SQL)-Azure SQL Edge (preview-versie)
 description: Meer informatie over het gebruik van Date_Bucket in Azure SQL Edge (preview)
 keywords: Date_Bucket, SQL-rand
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682742"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233301"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -50,16 +50,16 @@ Het deel van de *datum* dat met de para meter ' Number ' wordt gebruikt. Bijvoor
 |**tweede**|**SS**, **s**|  
 |**milliseconde**|**Mevrouw**|  
 
-*getal*
+*Telwoord*
 
 Het gehele getal dat de breedte van de Bucket in combi natie met het argument *date Part* bepaalt. Dit vertegenwoordigt de breedte van de data Part bevindt buckets van de oorspronkelijke tijd. **`This argument cannot be a negative integer value`**. 
 
-*datum*
+*vallen*
 
 Een expressie die kan worden omgezet in een van de volgende waarden:
 
-+ **datum**
-+ **datum/tijd**
++ **vallen**
++ **datetime**
 + **date time offset**
 + **datetime2**
 + **smalldatetime**
@@ -134,7 +134,7 @@ Gebruik `DATE_BUCKET` in de volgende componenten:
 + GROUP BY
 + HAVING
 + ORDER BY
-+ \<Lijst> selecteren
++ UITGESCHAKELD\<list>
 + WHERE
 
 ## <a name="examples"></a>Voorbeelden

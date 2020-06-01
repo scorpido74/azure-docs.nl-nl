@@ -3,12 +3,12 @@ title: Een QnA Maker-service instellen-QnA Maker
 description: Voordat u QnA Maker Knowledge bases kunt maken, moet u eerst een QnA Maker service in azure instellen. Iedereen met een machtiging voor het maken van nieuwe resources in een abonnement kan een QnA Maker-service instellen.
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: 521d0388e4ee739b1ac840e482174ac466781f5f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 106796533f42250a2656735d97878ea04d6fa57f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171171"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235525"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-resources beheren
 
@@ -210,6 +210,11 @@ Als u de app voor Voorspellings eindpunt wilt laden, zelfs wanneer er geen verke
 1. U wordt gevraagd of u de app opnieuw wilt starten voor het gebruik van de nieuwe instelling. Selecteer **Doorgaan**.
 
 Meer informatie over het configureren van de App Service [algemene instellingen](../../../app-service/configure-common.md#configure-general-settings).
+## <a name="configure-app-service-environment-to-host-qna-maker-app-service"></a>App Service Environment configureren voor het hosten van QnA Maker App Service
+De App Service Environment kan worden gebruikt om QnA Maker app service te hosten. Als de App Service Environment intern is, moet u deze stappen volgen:
+1. Maak een app service en een Azure Search-service.
+2. Zorg ervoor dat de app service wordt weer gegeven op een open bare DNS-en white list QnA Maker servicetag: CognitiveServicesManagement of houd het Internet op de hoogte.
+3. Maak een QnA Maker cognitieve service-exemplaar (micro soft. CognitiveServices/accounts) met behulp van Azure Resource Manager, waarbij QnA Maker eind punt moet worden ingesteld op App Service Environment. 
 
 ## <a name="business-continuity-with-traffic-manager"></a>Bedrijfs continuïteit met Traffic Manager
 

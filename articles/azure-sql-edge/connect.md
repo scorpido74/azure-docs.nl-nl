@@ -2,19 +2,19 @@
 title: Verbinding maken met Azure SQL Edge en query's uitvoeren (preview-versie)
 description: Meer informatie over het maken van verbinding en het uitvoeren van query's op Azure SQL Edge (preview)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 17bb5afebe0335bcdcf40298490f94999c04a621
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e7034c3f664eeba802341510b109ba9cc57845a8
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596916"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235139"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Verbinding maken met Azure SQL Edge en Query's uitvoeren (preview-versie)
 
@@ -32,7 +32,7 @@ Verbindingen met een exemplaar van Azure SQL Edge kunnen worden gemaakt op basis
 * [Sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) -Sqlcmd-client hulpprogramma's zijn al opgenomen in de Azure SQL Edge-container installatie kopie. Als u aan een actieve container met een interactieve bash-shell koppelt, kunt u de hulpprogram ma's lokaal uitvoeren.
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
-* [Visual Studio code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
+* [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
 
 Als u verbinding wilt maken met een Azure SQL Edge data base-engine vanaf een netwerk computer, hebt u het volgende nodig:
 

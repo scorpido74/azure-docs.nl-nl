@@ -3,12 +3,12 @@ title: Azure-resources-QnA Maker
 description: QnA Maker maakt gebruik van verschillende Azure-bronnen, elk met een ander doel. Als u begrijpt hoe deze afzonderlijk worden gebruikt, kunt u de juiste prijs categorie plannen en selecteren of u moet weten wanneer u de prijs categorie wilt wijzigen. Als u begrijpt hoe ze in combi natie worden gebruikt, kunt u problemen opsporen en oplossen wanneer deze zich voordoen.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80873902"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236087"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-resources voor QnA Maker
 
@@ -72,7 +72,7 @@ Down load de nieuwste runtime-updates door [uw app service in de Azure portal bi
 
 ## <a name="resource-naming-considerations"></a>Overwegingen voor het benoemen van resources
 
-De resource naam voor de QnA Maker resource, zoals `qna-westus-f0-b`, wordt ook gebruikt voor het benoemen van de andere resources.
+De resource naam voor de QnA Maker resource, zoals `qna-westus-f0-b` , wordt ook gebruikt voor het benoemen van de andere resources.
 
 In het venster Azure Portal maken kunt u een QnA Maker resource maken en de prijs categorieën voor de andere resources selecteren.
 
@@ -150,7 +150,7 @@ QnA Maker maakt verschillende Azure-resources. Gebruik de volgende tabel om te b
 |App Service-plan|✔|Er is een vaste schijf ruimte toegewezen voor een App Service plan. Als andere apps die hetzelfde App Service plan delen, veel schijf ruimte gebruiken, ondervinden de QnAMaker App Service-instantie problemen.|
 |App Service|X|Niet mogelijk door het ontwerp|
 |Application Insights|✔|Kan worden gedeeld|
-|Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-service. het kan niet worden gebruikt door anderen.<br>2. het synoniem van de map `synonym-map` met de naam is gereserveerd voor de QnAMaker-service.<br>3. het aantal gepubliceerde kennis grondslagen is beperkt door de zoek service laag. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
+|Zoekservice|✔|1. `testkb` is een gereserveerde naam voor de QnAMaker-service en kan niet worden gebruikt door anderen.<br>2. het synoniem van de map met de naam `synonym-map` is gereserveerd voor de QnAMaker-service.<br>3. het aantal gepubliceerde kennis grondslagen is beperkt door de zoek service laag. Als er gratis indexen beschikbaar zijn, kunnen andere services deze gebruiken.|
 
 ### <a name="using-a-single-cognitive-search-service"></a>Eén Cognitive Search-service gebruiken
 
@@ -172,7 +172,7 @@ Gebruik deze sleutels bij het indienen van aanvragen bij de service via Api's.
 
 ![Sleutelbeheer](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Naam|Locatie|Doel|
+|Name|Locatie|Functie|
 |--|--|--|
 |Sleutel ontwerpen|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Deze sleutels worden gebruikt voor toegang tot de Api's van de [QnA Maker Management-service](https://go.microsoft.com/fwlink/?linkid=2092179). Met deze Api's kunt u de vragen en antwoorden in uw Knowledge Base bewerken en uw kennis database publiceren. Deze sleutels worden gemaakt wanneer u een nieuwe QnA Maker-service maakt.<br><br>Deze sleutels vindt u op de pagina **sleutels** van de **Cognitive Services** resource.|
 |Query-eindpunt sleutel|[QnA Maker-portal](https://www.qnamaker.ai)|Deze sleutels worden gebruikt om een query uit te geven op het gepubliceerde Knowledge Base-eind punt om een antwoord te krijgen op de vraag van een gebruiker. Normaal gesp roken gebruikt u dit query-eind punt in uw chat-bot of in de client toepassings code die verbinding maakt met de QnA Maker-service. Deze sleutels worden gemaakt wanneer u uw QnA Maker Knowledge Base publiceert.<br><br>Deze sleutels vindt u op de pagina **Service-instellingen** . Ga naar deze pagina vanuit het menu van de gebruiker in de rechter bovenhoek van de pagina in de vervolg keuzelijst.|
@@ -182,6 +182,14 @@ Gebruik deze sleutels bij het indienen van aanvragen bij de service via Api's.
 De termen ontwerpen en query-eind punt sleutel zijn herstel voorwaarden. De vorige term is **abonnements sleutel**. Als u andere documentatie raadpleegt die verwijst naar abonnements sleutels, zijn deze gelijk aan de ontwerp-en query-eindpunt sleutels (gebruikt in de runtime).
 
 U moet weten welke sleutel u wilt zoeken met beinformatie over de toegang tot de sleutel, het Knowledge Base-beheer of de Knowledge Base-query.
+
+## <a name="recommended-settings-for-network-isolation"></a>Aanbevolen instellingen voor netwerk isolatie
+
+* Beveilig de cognitieve service resource van open bare toegang door [het virtuele netwerk te configureren](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal).
+* App Service van open bare toegang beveiligen (QnA runtime):
+    * Alleen verkeer van de cognitieve service Ip's toestaan. Deze zijn al opgenomen in de service tags ' CognitiveServicesManagement '. Dit is vereist voor het ontwerpen van Api's (Create/update KB) om de app service te kunnen aanroepen en Azure Search-service dienovereenkomstig bij te werken.
+    * Zorg ervoor dat u ook andere toegangs punten als bot-service, QnA Maker-Portal (mogelijk uw Corpnet), enzovoort kunt gebruiken. voor de voor spelling ' GenerateAnswer ' API-toegang.
+    * Bekijk [meer informatie over service tags.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>Volgende stappen
 

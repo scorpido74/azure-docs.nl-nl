@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte PHP-c
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142109"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234940"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Een Linux PHP-app voor Azure App Service configureren
 
@@ -109,7 +109,7 @@ Populaire webframeworks bieden toegang tot de `X-Forwarded-*`-informatie in het 
 Als u wijzigingen moet aanbrengen in uw PHP-installatie, kunt u de [php. ini-instructies](https://www.php.net/manual/ini.list.php) wijzigen door de volgende stappen uit te voeren.
 
 > [!NOTE]
-> De beste manier om de PHP-versie en de huidige *php. ini* -configuratie te bekijken, is door [phpinfo ()](https://php.net/manual/function.phpinfo.php) aan te roepen in uw app.
+> De beste manier om de PHP-versie en de huidige *php. ini* -configuratie te bekijken, is door [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) aan te roepen in uw app.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Aanpassen-niet-PHP_INI_SYSTEM-instructies

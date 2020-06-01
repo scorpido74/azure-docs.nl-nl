@@ -2,19 +2,19 @@
 title: EXTERNE STREAM maken (Transact-SQL)-Azure SQL Edge (preview)
 description: Meer informatie over de instructie externe STREAM maken in Azure SQL Edge (preview)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: d4ad446d43c90eee1c48ee2ba94585242805fa7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9e1f672a62ee7687fec9cea96ca03240c893ba95
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597931"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233335"
 ---
 # <a name="create-external-stream-transact-sql"></a>EXTERNE STREAM maken (Transact-SQL)
 
@@ -120,7 +120,7 @@ Parameters:
   - Serialisatie-indeling voor gebeurtenissen 
   - Encoding 
 - Alleen invoer: 
-  - Type gebeurtenis compressie 
+  - Gebeurteniscompressietype 
 
 Syntaxis:
 
@@ -318,7 +318,7 @@ Parameters:
   - Encoding 
 - Alleen invoer: 
   - Event Hub-consumentengroep 
-  - Type gebeurtenis compressie 
+  - Gebeurteniscompressietype 
 - Alleen uitvoer: 
   - Partitie sleutel kolom 
   - Eigenschappen kolommen 
@@ -377,7 +377,7 @@ Parameters:
 - Consumentengroep 
 - Serialisatie-indeling voor gebeurtenissen 
 - Encoding 
-- Type gebeurtenis compressie 
+- Gebeurteniscompressietype 
 
 Syntaxis:
 
@@ -418,7 +418,7 @@ Type: uitvoer<br>
 Parameters:
 - Uitvoeralias 
 - Database 
-- Server 
+- server 
 - Gebruikersnaam 
 - Wachtwoord 
 - Tabel 

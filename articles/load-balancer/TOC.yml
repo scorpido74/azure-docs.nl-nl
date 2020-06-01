@@ -60,8 +60,6 @@
       href: load-balancer-multivip-overview.md
     - name: Uitgaande verbindingen
       href: load-balancer-outbound-connections.md
-    - name: Regels voor uitgaand verkeer
-      href: load-balancer-outbound-rules-overview.md
     - name: TCP opnieuw instellen bij time-out wegens inactiviteit
       href: load-balancer-tcp-reset.md
     - name: Load Balancer van het type Standard en beschikbaarheidszones

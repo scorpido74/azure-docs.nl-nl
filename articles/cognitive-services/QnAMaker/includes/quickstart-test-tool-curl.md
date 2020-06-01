@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998032"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237673"
 ---
 In deze op krul gebaseerde Snelstartgids wordt u begeleid bij het verkrijgen van een antwoord uit uw Knowledge Base.
 
@@ -80,6 +80,8 @@ Gebruik de Knowledge Base van de vorige snel om een antwoord te zoeken op basis 
     Als er een vraag-en antwoord paar is dat niet voldoet aan de zoek term maar wel aan het filter voldoet, wordt het niet geretourneerd. In plaats daarvan wordt het algemene antwoord `No good match found in KB.` geretourneerd.
 
 ## <a name="use-debug-query-property"></a>Eigenschap debug query gebruiken
+> [!NOTE]
+>Het gebruik van de eigenschap debug voor een afhankelijkheid wordt niet aanbevolen. Deze eigenschap is toegevoegd om het product team te helpen bij het oplossen van problemen.
 
 Informatie over fout opsporing helpt u te begrijpen hoe het geretourneerde antwoord is vastgesteld. Hoewel het handig is, is het niet nodig. Als u een antwoord met foutopsporingsinformatie wilt genereren, voegt u de `debug` eigenschap toe:
 

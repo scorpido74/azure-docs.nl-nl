@@ -3,13 +3,13 @@ title: Partners die integreren met Azure Monitor
 description: Meer informatie over de partners van Azure Monitor en hoe u toegang kunt krijgen tot documentatie voor de integratie met deze.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854949"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233401"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -108,6 +108,9 @@ Grafana is een open-source toepassing waarmee u metrische gegevens over de time 
 
 InfluxData, de maker van InfluxDB, levert een moderne, open-source platform dat is gebouwd op basis van de grond voor het analyseren van metrische gegevens en gebeurtenissen (Time Series Data) voor DevOps-en IoT-toepassingen. Of de gegevens afkomstig zijn van mensen, Sens oren of machines, InfluxData biedt ontwikkel aars de mogelijkheid om de bewakings-, analyse-en IoT-toepassingen van de volgende generatie sneller, eenvoudiger en schaalbaar te maken. InfluxData is gebaseerd op San Francisco en bevat meer dan 420 klanten Cisco, eBay, IBM en Siemens.
 
+InfluxData is de maker van InfluxDB, de open source time series-data base. Onze technologie is speciaal ontworpen om de enorme hoeveel heden tijdgebonden gegevens te verwerken die worden geproduceerd door IoT-apparaten, toepassingen, netwerken, containers en computers. We zijn op de hoogte om ontwikkel aars en organisaties, zoals IBM, Visa, Siemens, Tesla en NASA, in staat te stellen om realtime gegevens op te slaan en te analyseren. zo kunnen ze sneller en snel en eenvoudig transformatieve bewaking, analyses en IoT-toepassingen bouwen. De metrische gegevens en gebeurtenissen van de verzameling van de Microsoft Azure-monitor kunnen worden uitgebreid met de telegrafie agent van InfluxData, zodat micro soft-gebruikers profiteren van een toonaangevende database oplossing voor de tijd reeks en gebruikmaken van de groeiende open-source bijdragen aan telegrafie.
+
+
 [Ga naar de documentatie.][influxdata-doc]
 
 
@@ -115,7 +118,7 @@ InfluxData, de maker van InfluxDB, levert een moderne, open-source platform dat 
 
 ![Logo van Logic monitor](./media/partners/logicmonitor.png)
 
-LogicMonitor&reg; is het toonaangevende, op SaaS gebaseerde, prestatie bewakings platform voor een complexe IT-infra structuur. Met dekking voor duizenden technologieën biedt LogicMonitor gedetailleerde inzicht in de prestaties van infra structuur en toepassingen. Met de uitgebreide Azure-bewaking van de LM-Cloud kunnen gebruikers de prestaties van de Azure-Cloud, on-premises en hybride cloud resources correleren, allemaal vanaf één platform. Geautomatiseerde bron detectie, gebouwd in bewakings sjablonen, vooraf geconfigureerde waarschuwings drempels en aanpas bare Dash boards, waarmee u de snelheid, flexibiliteit en zicht baarheid van kunt slagen.
+LogicMonitor &reg; is het toonaangevende, op SaaS gebaseerde, prestatie bewakings platform voor een complexe IT-infra structuur. Met dekking voor duizenden technologieën biedt LogicMonitor gedetailleerde inzicht in de prestaties van infra structuur en toepassingen. Met de uitgebreide Azure-bewaking van de LM-Cloud kunnen gebruikers de prestaties van de Azure-Cloud, on-premises en hybride cloud resources correleren, allemaal vanaf één platform. Geautomatiseerde bron detectie, gebouwd in bewakings sjablonen, vooraf geconfigureerde waarschuwings drempels en aanpas bare Dash boards, waarmee u de snelheid, flexibiliteit en zicht baarheid van kunt slagen.
 
 [Ga naar de documentatie.][logicmonitor-doc]
 
@@ -137,7 +140,7 @@ De **ArcSight** van de MicroFocus heeft een slimme connector voor Azure monitor 
 
 Met de micro focus- **Operations Bridge** worden automatisch alle hybride IT-resources bewaakt: elk apparaat, besturings systeem, Data Base, toepassing of service, ongeacht waar het wordt uitgevoerd en past AIOps toe op alle gegevens typen: gebeurtenissen, metrieken, logboeken en afhankelijkheden. Het biedt een unieke combi natie van Quality of Service-bewaking, in combi natie met diepe analyse van toepassings status en bevat een uitgebreide prestatie-en beschikbaarheids bewaking van Microsoft Azure Services. Met Operations Bridge kunnen klanten een enkel glas venster bieden, dat beschikbaar is op elk apparaat met een browser, op basis van de manier waarop zowel bedrijven als IT-belanghebbenden kunnen begrijpen.
 
-Meer informatie
+Lees meer
 - [Overzicht van OB Suite](https://www.microfocus.com/products/operations-bridge-suite/overview)
 - [Downloaden](https://marketplace.microfocus.com/itom/content/obm-management-pack-for-microsoft-azure)
 - [Sitescope](https://docs.microfocus.com/itom/SiteScope:2019.05/MSAzureMonitor) -sitescope is een onderdeel in de operations Bridge Suite.

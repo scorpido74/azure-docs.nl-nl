@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117171"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235413"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Query's uitvoeren op mappen en meerdere CSV-bestanden  
 
@@ -27,10 +27,6 @@ SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met behulp van
 De eerste stap bestaat uit het **maken van een Data Base** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 U gebruikt de map *CSV/taxi* om de voorbeeld query's te volgen. Het bevat NYC-Gelee taxi-excursie records van 2016 juli tot juni 2018. Bestanden in *CSV/taxi* worden na jaar en maand benoemd met het volgende patroon: yellow_tripdata_ <year> - <month> . CSV
-        
-Elk bestand heeft de volgende structuur:
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
 ## <a name="read-all-files-in-folder"></a>Alle bestanden in de map lezen
     

@@ -2,19 +2,19 @@
 title: Azure SQL Edge (preview) implementeren met behulp van de Azure Portal
 description: Meer informatie over het implementeren van Azure SQL Edge (preview) met behulp van de Azure Portal
 keywords: SQL-rand implementeren
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681215"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233243"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge implementeren (preview-versie) 
 
@@ -22,8 +22,8 @@ Azure SQL Edge (preview) is een relationele data base-engine die is geoptimalise
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/).
-* Meld u aan bij [Azure Portal](https://portal.azure.com/).
+* Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan.
+* Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 * Een [Azure-IOT hub](../iot-hub/iot-hub-create-through-portal.md)maken.
 * Registreer een [IOT edge apparaat vanuit de Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Bereid het IoT Edge apparaat voor om [IOT Edge module te implementeren vanuit de Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).

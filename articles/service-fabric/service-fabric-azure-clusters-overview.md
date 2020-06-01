@@ -7,12 +7,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c1be30750e6a6d1c541f244c4d0c3875e7dd927
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75614669"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234697"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Overzicht van Service Fabric clusters op Azure
 Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
@@ -48,9 +48,9 @@ U kunt schaal sets gebruiken voor het implementeren en beheren van een verzameli
 Lees [service Fabric knooppunt typen en schaal sets voor virtuele machines](service-fabric-cluster-nodetypes.md)voor meer informatie.
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM-exemplaren worden toegevoegd achter een [Azure-Load Balancer](/azure/load-balancer/load-balancer-overview), die is gekoppeld aan een [openbaar IP-adres](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses) en een DNS-label.  Bij het inrichten van een cluster met * &lt;clustername&gt;*, de DNS-naam, * &lt;clustername&gt;.&lt; Location&gt;. cloudapp.Azure.com* is het DNS-label dat is gekoppeld aan de Load Balancer vóór de schaalset.
+VM-exemplaren worden toegevoegd achter een [Azure-Load Balancer](/azure/load-balancer/load-balancer-overview), die is gekoppeld aan een [openbaar IP-adres](../virtual-network/public-ip-addresses.md) en een DNS-label.  Bij het inrichten van een cluster met * &lt; clustername &gt; *, de DNS-naam, * &lt; clustername &gt; . &lt; Location &gt; . cloudapp.Azure.com* is het DNS-label dat is gekoppeld aan de Load Balancer vóór de schaalset.
 
-Vm's in een cluster hebben alleen [privé-IP-adressen](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses).  Verkeer van beheer en service verkeer wordt gerouteerd via de open bare load balancer.  Netwerk verkeer wordt doorgestuurd naar deze machines via NAT-regels (clients maken verbinding met specifieke knoop punten/instanties) of taakverdelings regels (verkeer gaat naar Vm's round robin).  Een Load Balancer heeft een openbaar IP-adres dat is gekoppeld aan een DNS-naam in de indeling: * &lt;clustername&gt;.&lt; Location&gt;. cloudapp.Azure.com*.  Een openbaar IP-adres is een andere Azure-resource in de resource groep.  Als u meerdere knooppunt typen in een cluster definieert, wordt er een load balancer gemaakt voor elk type knoop punt/schaalset. U kunt ook één load balancer instellen voor meerdere knooppunt typen.  Het primaire knooppunt type heeft de DNS-label * &lt;cluster&gt;naam&lt; . Location&gt;. cloudapp.Azure.com*, andere knooppunt typen hebben het DNS- * &lt;label cluster&gt;-&lt;naam&gt;NodeType&lt; . Location&gt;. cloudapp.Azure.com*.
+Vm's in een cluster hebben alleen [privé-IP-adressen](../virtual-network/private-ip-addresses.md).  Verkeer van beheer en service verkeer wordt gerouteerd via de open bare load balancer.  Netwerk verkeer wordt doorgestuurd naar deze machines via NAT-regels (clients maken verbinding met specifieke knoop punten/instanties) of taakverdelings regels (verkeer gaat naar Vm's round robin).  Een load balancer heeft een openbaar IP-adres dat is gekoppeld aan een DNS-naam in de indeling: * &lt; clustername &gt; . &lt; Location &gt; . cloudapp.Azure.com*.  Een openbaar IP-adres is een andere Azure-resource in de resource groep.  Als u meerdere knooppunt typen in een cluster definieert, wordt er een load balancer gemaakt voor elk type knoop punt/schaalset. U kunt ook één load balancer instellen voor meerdere knooppunt typen.  Het primaire knooppunt type heeft de DNS-label * &lt; cluster naam &gt; . &lt; Location &gt; . cloudapp.Azure.com*, andere knooppunt typen hebben het DNS-label * &lt; cluster naam &gt; - &lt; NodeType &gt; . &lt; Location &gt; . cloudapp.Azure.com*.
 
 ### <a name="storage-accounts"></a>Opslagaccounts
 Elk type cluster knooppunt wordt ondersteund door een [Azure-opslag account](/azure/storage/common/storage-introduction) en beheerde schijven.

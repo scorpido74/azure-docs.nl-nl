@@ -3,16 +3,16 @@ title: Azure Recovery Services-kluizen en-servers beheren
 description: In dit artikel leert u hoe u het overzichts Dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131980"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234597"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
-In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, taken in uitvoering en mislukte back-ups en de hoeveelheid lokaal redundante opslag (LRS) en geo redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
+In dit artikel wordt uitgelegd hoe u het **overzichts** dashboard van Recovery Services kluis kunt gebruiken om uw Recovery Services kluizen te controleren en te beheren. Wanneer u een Recovery Services kluis in de lijst opent, wordt het **overzichts** dashboard voor de geselecteerde kluis geopend. Het dash board biedt verschillende details over de kluis. Er zijn *tegels* die worden weer gegeven: de status van kritieke en waarschuwings meldingen, in uitvoering en mislukte back-uptaken en de hoeveelheid lokaal redundante opslag (LRS) en geo-redundante opslag (GRS). Als u een back-up maakt van virtuele Azure-machines in de kluis, worden in de [tegel **status van back-up** voor het controleren alle kritieke items weer gegeven](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). De volgende afbeelding is het **overzichts** dashboard voor **Contoso-kluis**. Op de tegel **Back-upitems** ziet u dat er negen items zijn geregistreerd bij de kluis.
 
 ![Recovery Services-kluis dashboard](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -110,7 +110,7 @@ Standaard worden alle details, met uitzonde ring van de **laatste tijdstippen**,
 * Waarschuwing
 * Back-upitem
 * Beveiligde server
-* Severity
+* Ernst
 * Duur
 * Aanmaak tijd
 * Status
@@ -244,7 +244,7 @@ U kunt alle statussen of één weer geven. U kunt twee of drie statussen niet se
 
 * Alle statussen
 * Voltooid
-* Wordt uitgevoerd
+* Actief
 * Mislukt
 * Geannuleerd
 * Voltooid met waarschuwingen
@@ -274,9 +274,9 @@ De tegel back-upopslag in het dash board toont de opslag die wordt gebruikt in A
 
 **Probleem:** Taken en/of waarschuwingen van de Azure Backup Agent worden niet weer gegeven in de portal.
 
-**Stappen voor probleem oplossing:** Het proces, ```OBRecoveryServicesManagementAgent```, verzendt de taak-en waarschuwings gegevens naar de Azure backup-service. Dit proces kan af en toe worden vastgelopen of afgesloten.
+**Stappen voor probleem oplossing:** Het proces, ```OBRecoveryServicesManagementAgent``` , verzendt de taak-en waarschuwings gegevens naar de Azure backup-service. Dit proces kan af en toe worden vastgelopen of afgesloten.
 
-1. Als u wilt controleren of het proces niet wordt uitgevoerd, opent u ```OBRecoveryServicesManagementAgent``` **taak beheer**en voert u de opdracht uit.
+1. Als u wilt controleren of het proces niet wordt uitgevoerd, opent u **taak beheer**en voert u de opdracht uit ```OBRecoveryServicesManagementAgent``` .
 
 2. Als het proces niet wordt uitgevoerd, opent u het **configuratie scherm**en bladert u naar de lijst met Services. **Microsoft Azure Recovery Services beheer agent**te starten of opnieuw te starten.
 

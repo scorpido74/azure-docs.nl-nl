@@ -4,12 +4,12 @@ description: Meer informatie over standaard Azure Batch quota's, limieten en bep
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780006"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229837"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -37,7 +37,7 @@ Als u een batch-account hebt gemaakt met de groeps toewijzings modus ingesteld o
 
 Limieten voor groeps grootte worden ingesteld door de batch-service. In tegens telling tot [resource quota](#resource-quotas)kunnen deze waarden niet worden gewijzigd. Alleen groepen met communicatie tussen knoop punten en aangepaste installatie kopieën hebben andere beperkingen dan het standaard quotum.
 
-| **Resource** | **Maximumaantal** |
+| **Resource** | **Maximum limiet** |
 | --- | --- |
 | **Reken knooppunten in de [groep communicatie tussen knoop](batch-mpi.md) punten**  ||
 | Pool toewijzings modus Batch-service | 100 |
@@ -52,7 +52,7 @@ Limieten voor groeps grootte worden ingesteld door de batch-service. In tegens t
 
 Aanvullende limieten die zijn ingesteld door de batch-service. In tegens telling tot [resource quota](#resource-quotas)kunnen deze waarden niet worden gewijzigd.
 
-| **Resource** | **Maximumaantal** |
+| **Resource** | **Maximum limiet** |
 | --- | --- |
 | [Gelijktijdige taken](batch-parallel-node-tasks.md) per reken knooppunt | 4 x het aantal knooppunt kernen |
 | [Toepassingen](batch-application-packages.md) per batch-account | 20 |
@@ -89,7 +89,7 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
    
     c. **Quotum type**  >  **Batch**
       
-    Selecteer **Next**.
+    Selecteer **Volgende**.
     
 1. In **Details**:
       
@@ -109,7 +109,7 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 
     b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Next**.
+    Selecteer **Volgende**.
 
 1. Bij **contact gegevens**:
    
@@ -126,7 +126,7 @@ Zodra u uw ondersteunings aanvraag hebt ingediend, neemt de ondersteuning van Az
 Batch-Pools in de virtuele-machine configuratie die is geïmplementeerd in een virtueel Azure-netwerk, worden automatisch extra Azure-netwerk resources toegewezen. De volgende resources zijn nodig voor elk 50 pool-knoop punten in een virtueel netwerk:
 
 * Eén [netwerk beveiligings groep](../virtual-network/security-overview.md#network-security-groups)
-* Eén [openbaar IP-adres](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* Eén [openbaar IP-adres](../virtual-network/public-ip-addresses.md)
 * Een [Load Balancer](../load-balancer/load-balancer-overview.md)
 
 Deze resources worden toegewezen in het abonnement met het virtuele netwerk dat is geleverd bij het maken van de batch-pool. De beperkingen die voor deze resources gelden, worden bepaald door de [resourcequota](../azure-resource-manager/management/azure-subscription-service-limits.md) van het abonnement. Als u implementaties van grote groepen plant in een virtueel netwerk, controleert u de quota van het abonnement voor deze resources. Vraag, indien nodig, een verhoging van de Azure Portal aan door **Help en ondersteuning**te selecteren.
