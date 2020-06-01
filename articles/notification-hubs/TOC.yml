@@ -14,6 +14,7 @@
     - name: Notification Hub maken - Azure CLI
       href: create-notification-hub-azure-cli.md
     - name: Notification Hub maken - ARM-sjabloon
+      displayName: Resource Manager
       href: create-notification-hub-template.md
     - name: Een Notification Hub configureren
       href: configure-notification-hub-portal-pns-settings.md
@@ -23,7 +24,9 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Pushmeldingen verzenden naar alle geregistreerde apparaten
+            - name: Pushmeldingen verzenden naar alle geregistreerde apparaten (SDK-versie 1.0.0-preview1)
+              href: android-sdk.md
+            - name: Pushmeldingen verzenden naar alle geregistreerde apparaten (SDK-versie 0.6)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
             - name: Pushmeldingen verzenden naar specifieke apparaten
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
@@ -139,7 +142,7 @@
     - name: Registreren bij back-end van toepassing
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: Verificatie op basis van tokens gebruiken met Apple-apparaten
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: Problemen met verloren meldingen oplossen
       href: notification-hubs-push-notification-fixer.md
     - name: Pushmeldingen verzenden met behulp van Baidu Cloud Push

@@ -42,6 +42,8 @@
   items:
     - name: Form Recognizer gebruiken met Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
+    - name: Form Recognizer gebruiken met Cognitive Search
+      href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
 - name: Instructiegidsen
   items:
     - name: Een set met trainingsgegevens samenstellen
