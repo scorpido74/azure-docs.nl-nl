@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: Exchange-peering maken of wijzigen met routeserver
+      items:
+        - name: Portal
+          href: how-to-exchange-route-server-portal.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI

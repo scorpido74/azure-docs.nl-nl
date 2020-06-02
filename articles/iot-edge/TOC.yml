@@ -177,6 +177,8 @@
       items:
         - name: IoT Edge-implementaties bewaken
           href: how-to-monitor-iot-edge-deployments.md
+        - name: Dubbele modules bewaken
+          href: how-to-monitor-module-twins.md
         - name: Directe methoden van EdgeAgent
           href: how-to-edgeagent-direct-method.md
     - name: IoT Edge-apparaten als gateways gebruiken

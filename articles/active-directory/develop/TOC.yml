@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: Toegangstokens
               href: access-tokens.md
+            - name: Eindpunt voor gebruikersinfo
+              href: userinfo.md
             - name: Certificaatreferenties
               href: active-directory-certificate-credentials.md
         - name: SAML 2.0-protocol

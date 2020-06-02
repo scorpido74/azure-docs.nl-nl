@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Een data factory maken - Resource Manager-sjabloon
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Beveiliging - Door de klant beheerde sleutelversleuteling inschakelen
+      href: quickstart-enable-customer-managed-key.md
     - name: Gegevensstroom maken
       href: data-flow-create.md
 - name: Zelfstudies
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: Van een on-premises SQL Server-database naar Azure Blob Storage
+        - name: Van een SQL Server-database naar Azure Blob Storage
           items:
             - name: Hulpprogramma voor het kopiëren van gegevens
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: Van meerdere on-premises SQL Server-tabellen
+            - name: Uit meerdere SQL Server-databasetabellen
               items:
                 - name: Gebruikersinterface (UI)
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -605,6 +607,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Azure AD-verificatie inschakelen voor Azure-SSIS-integratieruntime
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Verbinding maken met gegevens met Windows-verificatie
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Bestanden opslaan en koppelen aan bestandsshares
+          href: ssis-azure-files-file-shares.md
         - name: Enterprise Edition inrichten voor Azure-SSIS-integratieruntime
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Ingebouwde en vooraf geïnstalleerde onderdelen in Azure-SSIS IR
@@ -623,6 +629,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: SSIS-taken migreren met SSMS
           href: how-to-migrate-ssis-job-ssms.md
+        - name: Pakketten beheren met Azure-SSIS IR-pakketopslag
+          href: azure-ssis-integration-runtime-package-store.md
     - name: Triggers maken
       items:
         - name: Een trigger op basis van gebeurtenissen maken

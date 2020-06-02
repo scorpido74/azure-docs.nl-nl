@@ -1,0 +1,82 @@
+- name: Documentatie voor Live Video Analytics in IoT Edge (preview)
+  href: index.yml
+- name: Documentatie voor overschakelen naar Azure Media Services v3
+  href: ../latest/index.yml
+- name: Overzicht
+  items:
+    - name: Over Live Video Analytics in IoT Edge
+      href: overview.md
+    - name: Terminologie
+      href: terminology.md
+    - name: Nieuwe functies
+      items:
+        - name: Releaseopmerkingen
+          href: release-notes.md
+- name: Snelstartgidsen
+  items:
+    - name: Over Live Video Analytics in IoT Edge
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 'Beweging detecteren, video opnemen in Media Services'
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: Beweging detecteren en gebeurtenissen verzenden
+      href: detect-motion-emit-events-quickstart.md
+    - name: 'Beweging detecteren, video opnemen op Edge-apparaten'
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Live Video Analytics uitvoeren met uw eigen model
+      href: use-your-model-quickstart.md
+- name: Zelfstudies
+  items:
+    - name: Continue video-opname
+      href: continuous-video-recording-tutorial.md
+    - name: Video-opname op basis van gebeurtenissen
+      href: event-based-video-recording-tutorial.md
+    - name: Opnamen van meerdere dagen afspelen
+      href: playback-multi-day-recordings-tutorial.md
+- name: Voorbeelden
+  items:
+    - name: 'Voorbeelden van Live Video Analytics in IoT Edge C#'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: Concepten
+  items:
+    - name: Mediagrafiek
+      href: media-graph-concept.md
+    - name: Video-opname
+      href: video-recording-concept.md
+    - name: Video afspelen
+      href: video-playback-concept.md
+    - name: Scenario's
+      items:
+        - name: Continue video-opname
+          href: continuous-video-recording-concept.md
+        - name: Video-opname op basis van gebeurtenissen
+          href: event-based-video-recording-concept.md
+        - name: Live Video Analytics zonder video-opname
+          href: analyze-live-video-concept.md
+- name: Instructiegidsen
+  items:
+    - name: Aangepaste Azure Resource Manager-rol maken
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: Implementeren naar een IoT Edge-apparaat
+      href: deploy-iot-edge-device.md
+    - name: Bewaking en registratie
+      href: monitoring-logging.md
+    - name: Een opname afspelen
+      href: playback-recordings-how-to.md
+    - name: Opnamebeleid beheren
+      href: manage-recording-policy-how-to.md
+    - name: Livevideo analyseren met de AI van uw keuze
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: Problemen oplossen
+      href: troubleshoot-how-to.md
+- name: Naslaginformatie
+  items:
+    - name: Directe methoden
+      href: direct-methods.md
+    - name: Configuratieschema van moduledubbel
+      href: module-twin-configuration-schema.md
+    - name: Quota en beperkingen
+      href: quotas-limitations.md
+    - name: Veelgestelde vragen
+      href: faq.md
+    - name: Productiegereedheid en best practices
+      href: production-readiness.md

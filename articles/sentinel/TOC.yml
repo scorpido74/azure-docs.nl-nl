@@ -84,6 +84,8 @@
               href: connect-syslog.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
+            - name: Logstash gebruiken
+              href: connect-logstash.md
             - name: Oplossingen op basis van CEF
               href: connect-common-event-format.md
               items:

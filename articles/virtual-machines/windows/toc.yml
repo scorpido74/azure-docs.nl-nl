@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Een virtuele machine maken
                   items:
+                    - name: Gespecialiseerd
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Gegeneraliseerd
                       href: ../vm-generalized-image-version-cli.md
                 - name: Afbeeldingsresources bijwerken
@@ -664,7 +666,7 @@
                       items:
                         - name: Virtuele machine
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: VM-schaalset
+                        - name: Schaalset
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Verzenden naar Event Hubs
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

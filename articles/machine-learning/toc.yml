@@ -67,15 +67,17 @@
         - name: Uw eerste Machine Learning-experiment maken (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine learning-CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: Trainen en implementeren met CLI
+          href: tutorial-train-deploy-model-cli.md
+        - name: Werkruimten maken met Resource Manager-sjablonen
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning-extensie instellen
           href: tutorial-setup-vscode-extension.md
         - name: Een classificatiemodel van een TensorFlow-installatiekopie trainen en implementeren
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Een werkruimte maken met een Resource Manager-sjabloon
-      href: tutorial-resource-manager-workspace.md
 - name: Voorbeelden
   items:
     - name: Jupyter Notebooks

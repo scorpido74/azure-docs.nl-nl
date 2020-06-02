@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Documentatie voor Live Video Analytics in IoT Edge
+summary: Meer informatie over Live Video Analytics in IoT Edge
+metadata:
+  title: Documentatie voor Live Video Analytics in IoT Edge
+  description: Meer informatie over Live Video Analytics in IoT Edge
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259886"
+landingContent:
+- title: Over Live Video Analytics in IoT Edge (preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over Live Video Analytics in IoT Edge
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Mediagrafiek
+      url: media-graph-concept.md
+    - text: Video-opname
+      url: video-recording-concept.md
+    - text: Video afspelen
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: Continue video-opname
+      url: continuous-video-recording-concept.md
+    - text: Video-opname op basis van gebeurtenissen
+      url: event-based-video-recording-concept.md
+    - text: Livevideo's analyseren
+      url: analyze-live-video-concept.md
+- title: Scenario's
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Over Live Video Analytics in IoT Edge
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: Beweging detecteren, videofragmenten opnemen in Azure Media Services
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: Beweging detecteren en gebeurtenissen verzenden
+      url: detect-motion-emit-events-quickstart.md
+    - text: Beweging detecteren
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: Live Video Analytics uitvoeren met uw eigen model
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Continue video-opname
+      url: continuous-video-recording-tutorial.md
+    - text: Video-opname op basis van gebeurtenissen
+      url: event-based-video-recording-tutorial.md
+    - text: Opnamen van meerdere dagen afspelen
+      url: playback-multi-day-recordings-tutorial.md
+- title: Ontwikkelen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste Azure Resource Manager-rol maken
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: Implementeren naar een IoT Edge-apparaat
+      url: deploy-iot-edge-device.md
+    - text: Bewaking en registratie
+      url: monitoring-logging.md
+    - text: Een opname afspelen
+      url: playback-recordings-how-to.md
+    - text: Opnamebeleid beheren
+      url: manage-recording-policy-how-to.md
+    - text: Problemen oplossen
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: Directe methoden
+      url: direct-methods.md
+    - text: Configuratieschema van moduledubbel
+      url: module-twin-configuration-schema.md
+    - text: Quota en beperkingen
+      url: quotas-limitations.md

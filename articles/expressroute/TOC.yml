@@ -24,28 +24,28 @@
           href: work-remotely-support.md
     - name: Connectiviteitsmodellen
       href: expressroute-connectivity-models.md
-    - name: Circuits en peering
-      href: expressroute-circuit-peerings.md
     - name: Locaties en partners
       items:
         - name: Providers per locatie
           href: expressroute-locations-providers.md
         - name: Locaties per provider
           href: expressroute-locations.md
-    - name: Over virtuele netwerkgateways
-      href: expressroute-about-virtual-network-gateways.md
     - name: Vereisten
       href: expressroute-prerequisites.md
     - name: Werkstromen
       href: expressroute-workflows.md
     - name: Routeringsvereisten
       href: expressroute-routing.md
+    - name: Circuits en peering
+      items:
+        - name: Over circuits en peering
+          href: expressroute-circuit-peerings.md
+        - name: Circuits verplaatsen van klassiek naar Resource Manager
+          href: expressroute-move.md
     - name: BFD via ExpressRoute
       href: expressroute-bfd.md
     - name: QoS-vereisten
       href: expressroute-qos.md
-    - name: Circuits verplaatsen van het klassieke model naar Resource Manager
-      href: expressroute-move.md
     - name: Over ExpressRoute FastPath
       href: about-fastpath.md
     - name: Over ExpressRoute Direct
@@ -54,6 +54,10 @@
       href: expressroute-global-reach.md
     - name: Over ExpressRoute-versleuteling
       href: expressroute-about-encryption.md
+    - name: Beveiligingsmaatregelen
+      href: expressroute-security-controls.md
+    - name: Over virtuele netwerkgateways
+      href: expressroute-about-virtual-network-gateways.md
     - name: Azure verbinden met openbare cloud
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Interoperabiliteit van back-endconnectiviteit
@@ -68,11 +72,9 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Onderlinge netwerkconnectiviteit
       href: cross-network-connectivity.md
-    - name: Ingebouwde beveiligingsmaatregelen
-      href: expressroute-security-controls.md
-    - name: Ontwerpen voor hoge beschikbaarheid
+    - name: Hoge beschikbaarheid - ontwerp
       href: designing-for-high-availability-with-expressroute.md
-    - name: Ontwerpen voor herstel na noodgeval
+    - name: Herstel na noodgevallen - ontwerp
       items:
         - name: Persoonlijke peering
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
@@ -165,6 +167,8 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: Netwerkprestatiemeter configureren voor ExpressRoute
           href: how-to-npm.md
+        - name: Aangepaste waarschuwingen configureren voor het bewaken van aangekondigde routes
+          href: how-to-custom-route-alert.md
     - name: Klassieke en verouderde artikelen
       items:
         - name: Een circuit wijzigen

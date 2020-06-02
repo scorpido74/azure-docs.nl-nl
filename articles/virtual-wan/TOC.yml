@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: Efficiënte routes voor virtuele hubs weergeven
           href: effective-routes-virtual-hub.md
+        - name: Meerdere ISP-koppelingen - selectie van Azure-pad
+          href: path-selection-multiple-links.md
     - name: Beveiliging
       items:
         - name: Azure Firewall installeren in een hub

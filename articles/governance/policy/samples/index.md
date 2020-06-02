@@ -1,14 +1,14 @@
 ---
 title: Index van beleidsvoorbeelden
 description: Index van inbouwingen in Azure Policy. Categorietags, naleving van regelgeving, Key Vault, Kubernetes, gastconfiguratie en meer.
-ms.date: 03/25/2020
+ms.date: 05/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6e9c3b92942f24ae0a9972fa61340775262af761
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697194"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203899"
 ---
 # <a name="azure-policy-samples"></a>Voorbeelden van Azure Policy
 
@@ -32,6 +32,14 @@ Hier volgen voorbeelden van verschillende patronen die de taal en operators in A
 - [Tel-operator](./pattern-count-operator.md)
 - [Beleidsdefinities in een initiatief groeperen](./pattern-group-with-initiative.md)
 - [Resources implementeren met deployIfNotExists](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>Naleving van regelgeving
+
+Hieronder vindt u de ingebouwde modules voor [Naleving van regelgeving](../concepts/regulatory-compliance.md):
+
+- [Azure Security-benchmark](./azure-security-benchmark.md)
+- [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 
 ## <a name="other-samples"></a>Andere voorbeelden
 

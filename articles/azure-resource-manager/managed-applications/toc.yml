@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: Just-in-time-toegang aanvragen
           href: request-just-in-time-access.md
+        - name: Bestaand virtueel netwerk gebruiken
+          href: existing-vnet-integration.md
         - name: Beheerde bronnen bijwerken
           href: update-managed-resources.md
         - name: Portal gebruiken om toepassingsdefinitie te publiceren

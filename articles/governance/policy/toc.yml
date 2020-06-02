@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: Resources implementeren
           href: ./samples/pattern-deploy-resources.md
+    - name: Ingebouwde modules voor naleving van regelgeving
+      items:
+        - name: Azure Security-benchmark
+          href: ./samples/azure-security-benchmark.md
+        - name: CIS Microsoft Azure Foundations Benchmark
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: Concepten
   items:
-    - name: Structuur van Azure-beleidsdefinities
+    - name: Definitiestructuur
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: Inzicht in de effecten van het beleid
+    - name: Inzicht in effecten
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Azure Policy-toewijzingsstructuur
+    - name: Initiatiefstructuur
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Toewijzingsstructuur
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: De impact van een nieuw beleid evalueren
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Naleving van regelgeving
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: Beleid ontwerpen als codewerkstromen
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: Azure Monitor voor VM's inschakelen (preview)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Problemen oplossen
+  href: ./troubleshoot/general.md
 - name: Naslaginformatie
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub - Community Policy-opslagplaats
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A voor Azure Policy
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: YouTube-kanaal Governance
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Video's over gastconfiguratie

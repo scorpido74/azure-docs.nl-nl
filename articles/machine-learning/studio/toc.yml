@@ -58,7 +58,7 @@
       items:
         - name: Gegevens importeren
           href: import-data.md
-        - name: Gegevens van on-premises SQL gebruiken
+        - name: Gegevens uit SQL Server gebruiken
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: Modellen trainen

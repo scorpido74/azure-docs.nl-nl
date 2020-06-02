@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: Aangepaste opdrachten (preview)
       items:
-        - name: Wat de app voor aangepaste opdrachten?
+        - name: Wat zijn aangepaste opdrachten?
           href: custom-commands.md
         - name: Snelstartgidsen
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Aangepaste trefwoordherkenning
           href: speech-devices-sdk-create-kws.md
+- name: Speaker Recognition
+  items:
+    - name: Overzicht
+      items:
+        - name: Wat is Sprekerherkenning?
+          href: speaker-recognition-overview.md
+    - name: Naslaginformatie
+      items:
+        - name: REST-API’s
+          items:
+            - name: Spraakherkenning REST API
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:
     - name: Documentatie over hosting

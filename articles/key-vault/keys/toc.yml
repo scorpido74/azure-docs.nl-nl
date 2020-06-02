@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: Zelfstudies
   items:
-    - name: Met HSM beveiligde sleutels importeren
+    - name: Met HSM beveiligde sleutels importeren (overzicht)
       href: hsm-protected-keys.md
-    - name: Met HSM beveiligde sleutels importeren (preview)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: Met HSM beveiligde sleutels importeren (verouderd)
-      href: hsm-protected-keys-legacy.md
+    - name: Met HSM beveiligde sleutels importeren (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: Met HSM beveiligde sleutels importeren (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: Voorbeelden
   items:
     - name: Ingebouwde modules voor Azure Policy
@@ -47,6 +47,8 @@
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: BYOK-specificatie (Bring Your Own Key)
+      href: byok-specification.md
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
