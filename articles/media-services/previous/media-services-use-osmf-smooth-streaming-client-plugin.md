@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681953"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265315"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>De micro soft Smooth Streaming-invoeg toepassing voor het Adobe Open source-media Framework gebruiken  
 ## <a name="overview"></a>Overzicht
@@ -43,7 +43,7 @@ De invoeg toepassing ondersteunt het laden en afspelen van Smooth Streaming inho
 * Meerdere audio taal wisseling met OSMF ingebouwde Api's
 * Maximale selectie van afspeel kwaliteit met ingebouwde Api's van OSMF
 * Ondertiteling closed captioning with OSMF Captions-invoeg toepassing
-* Adobe&reg; Flash&reg; Player 11,4 of hoger.
+* Adobe &reg; Flash &reg; Player 11,4 of hoger.
 * Deze versie ondersteunt alleen OSMF 2,0.
 
 ## <a name="supported-features-and-known-issues"></a>Ondersteunde functies en bekende problemen
@@ -328,10 +328,10 @@ pakket
 }
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Afspelen van een stroboscopisch-media met de dynamische invoeg toepassing SS ODMF
-De Smooth Streaming voor de dynamische invoeg toepassing OSMF is compatibel met het afspelen van een [stroboscopisch-media (SMP)](http://osmf.org/strobe_mediaplayback.html). U kunt de OSMF-invoeg toepassing voor de SS gebruiken om Smooth Streaming inhoud af te spelen op SMP. Om dit te doen, kopieert u "MSAdaptiveStreamingPlugin-v 1.0.3-osmf 2.0. swf" onder een webserver voor HTTP-belasting door de volgende stappen uit te voeren:
+De Smooth Streaming voor de dynamische invoeg toepassing OSMF is compatibel met het afspelen van een [stroboscopisch-media (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). U kunt de OSMF-invoeg toepassing voor de SS gebruiken om Smooth Streaming inhoud af te spelen op SMP. Om dit te doen, kopieert u "MSAdaptiveStreamingPlugin-v 1.0.3-osmf 2.0. swf" onder een webserver voor HTTP-belasting door de volgende stappen uit te voeren:
 
 1. Blader door de [pagina afspelen van de modus van stroboscopisch media](http://osmf.org/dev/2.0gm/setup.html). 
-2. De src instellen op een Smooth Streaming bron, (bijvoorbeeld http:\//devplatem.vo.msecnd.net/sintel/Sintel_H264.ISM/manifest) 
+2. De src instellen op een Smooth Streaming bron, (bijvoorbeeld http: \/ /devplatem.vo.msecnd.net/sintel/Sintel_H264.ISM/manifest) 
 3. Breng de gewenste wijzigingen aan in de configuratie en klik op voor beeld en bijwerken.
    
    **Opmerking** De webserver voor inhoud moet een geldig crossdomain. XML-bestand hebben. 
@@ -380,8 +380,8 @@ De Smooth Streaming voor de dynamische invoeg toepassing OSMF is compatibel met 
         </embed>
         </object>
         </html>
-2. Sla uw HTML-pagina op en publiceer deze op een webserver. Blader naar de gepubliceerde webpagina met behulp van uw&reg; favoriete Flash Player-Internet browser (Internet Explorer, Chrome, Firefox, enzovoort).
-3. Profiteer van Smooth Streaming inhoud in&reg; Adobe&reg; Flash Player.
+2. Sla uw HTML-pagina op en publiceer deze op een webserver. Blader naar de gepubliceerde webpagina met behulp van uw favoriete Flash &reg; Player-Internet browser (Internet Explorer, Chrome, Firefox, enzovoort).
+3. Profiteer van Smooth Streaming inhoud in Adobe &reg; Flash &reg; Player.
 
 Raadpleeg de officiële [OSMF-ontwikkelings pagina](http://osmf.org/resources.html)voor meer informatie over de ontwikkeling van algemene OSMF.
 

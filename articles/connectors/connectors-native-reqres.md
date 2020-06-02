@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171528"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249158"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Inkomende HTTPS-aanvragen ontvangen en erop reageren in Azure Logic Apps
 
@@ -63,8 +63,8 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST-URL** | geen | Ja | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
-   | **JSON-schema van aanvraag tekst** | `schema` | Nee | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
+   | **HTTP POST-URL** | geen | Yes | De eind punt-URL die wordt gegenereerd na het opslaan van de logische app en wordt gebruikt voor het aanroepen van uw logische app |
+   | **JSON-schema van aanvraag tekst** | `schema` | No | Het JSON-schema dat de eigenschappen en waarden in de hoofd tekst van de binnenkomende aanvraag beschrijft |
    |||||
 
 1. Voer desgewenst in het vak **JSON-schema van aanvraag tekst** een JSON-schema in dat de hoofd tekst in de binnenkomende aanvraag beschrijft, bijvoorbeeld:
@@ -158,12 +158,20 @@ Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *a
       }
       ```
 
+1. Voer de volgende stappen uit om te controleren of de inkomende oproep een aanvraag tekst heeft die overeenkomt met het opgegeven schema:
+
+   1. Selecteer de knop met weglatings tekens (**...**) in de titel balk van de trigger voor de aanvraag.
+   
+   1. Schakel in de instellingen van de trigger **schema validatie**in en selecteer **gereed**.
+   
+      Als de aanvraag tekst van de inkomende oproep niet overeenkomt met uw schema, retourneert de trigger een `HTTP 400 Bad Request` fout.
+
 1. Als u aanvullende eigenschappen wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Methode** | `method` | Nee | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
-   | **Relatief pad** | `relativePath` | Nee | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
+   | **Methode** | `method` | No | De methode die de inkomende aanvraag moet gebruiken om de logische app aan te roepen |
+   | **Relatief pad** | `relativePath` | No | Het relatieve pad voor de para meter die door de eind punt-URL van de logische app kan worden geaccepteerd |
    |||||
 
    In dit voor beeld wordt de eigenschap **Method** toegevoegd:
@@ -256,9 +264,9 @@ Uw logische app houdt de inkomende aanvraag alleen gedurende een [beperkte perio
 
    | Naam van eigenschap | JSON-eigenschaps naam | Vereist | Beschrijving |
    |---------------|--------------------|----------|-------------|
-   | **Status code** | `statusCode` | Ja | De status code die in het antwoord moet worden geretourneerd |
-   | **Kopteksten** | `headers` | Nee | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
-   | **Hoofdtekst** | `body` | Nee | De antwoord tekst |
+   | **Status code** | `statusCode` | Yes | De status code die in het antwoord moet worden geretourneerd |
+   | **Kopteksten** | `headers` | No | Een JSON-object dat een of meer headers beschrijft die in het antwoord moeten worden meegenomen |
+   | **Hoofdtekst** | `body` | No | De antwoord tekst |
    |||||
 
 1. Als u aanvullende eigenschappen, zoals een JSON-schema voor de antwoord tekst, wilt opgeven, opent u de lijst **nieuwe para meter toevoegen** en selecteert u de para meters die u wilt toevoegen.

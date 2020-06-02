@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: 46dd7949dde1890035053a7a985f2f1d921e141e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82737892"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266658"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Diagnostische instelling maken voor het verzamelen van bron logboeken en metrische gegevens in azure
 
@@ -49,7 +49,7 @@ Platform-logboeken en-metrische gegevens kunnen worden verzonden naar de doelen 
 | [Event hubs](resource-logs-stream-event-hubs.md) | Door Logboeken en metrische gegevens naar Event Hubs te verzenden, kunt u met externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen. |
 | [Azure-opslag account](resource-logs-collect-storage.md) | Het archiveren van Logboeken en metrische gegevens naar een Azure-opslag account is handig voor controle, statische analyses of back-ups. Vergeleken met Azure Monitor-logboeken en een Log Analytics-werk ruimte is Azure Storage minder kostbaar en kunnen de logboeken voor onbepaalde tijd worden bewaard. |
 
-## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnostische instellingen maken in Azure Portal
+## <a name="create-diagnostic-settings-in-azure-portal"></a>Diagnostische instellingen maken in Azure-portal
 
 U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Azure Monitor of in het menu voor de resource.
 
@@ -116,7 +116,7 @@ U kunt Diagnostische instellingen configureren in de Azure Portal in het menu Az
 
 Na enkele ogen blikken wordt de nieuwe instelling weer gegeven in de lijst met instellingen voor deze resource en worden logboeken naar de opgegeven doelen gestreamd wanneer er nieuwe gebeurtenis gegevens worden gegenereerd. Het kan tot vijf tien minuten duren voordat een gebeurtenis wordt verzonden en wanneer deze [in een log Analytics-werk ruimte wordt weer gegeven](data-ingestion-time.md).
 
-## <a name="create-diagnostic-settings-using-powershell"></a>Diagnostische instellingen maken met behulp van Power shell
+## <a name="create-diagnostic-settings-using-powershell"></a>Diagnostische instellingen maken met behulp van Powershell
 
 Gebruik de cmdlet [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) om een diagnostische instelling met [Azure PowerShell](powershell-quickstart-samples.md)te maken. Raadpleeg de documentatie voor deze cmdlet voor beschrijvingen van de para meters.
 
@@ -149,11 +149,11 @@ az monitor diagnostic-settings create  \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
 
-### <a name="configure-diagnostic-settings-using-rest-api"></a>Diagnostische instellingen configureren met behulp van REST API
+## <a name="configure-diagnostic-settings-using-rest-api"></a>Diagnostische instellingen configureren met behulp van REST API
 
 Zie [Diagnostische instellingen](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) voor het maken of bijwerken van diagnostische instellingen met behulp van de [Azure monitor rest API](https://docs.microsoft.com/rest/api/monitor/).
 
-### <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Diagnostische instellingen configureren met Resource Manager-sjabloon
+## <a name="configure-diagnostic-settings-using-resource-manager-template"></a>Diagnostische instellingen configureren met Resource Manager-sjabloon
 
 Zie [Diagnostische instelling maken in azure monitor met behulp van een resource manager-sjabloon](diagnostic-settings-template.md) voor het maken of bijwerken van diagnostische instellingen met een resource manager-sjabloon.
 

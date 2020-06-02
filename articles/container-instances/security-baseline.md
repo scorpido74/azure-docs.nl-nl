@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5845a49dbb003c184b9520f85e6f1be14315081b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3897ef75be34d4413e06dc5459739baec3afdcec
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118996"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267998"
 ---
 # <a name="azure-security-baseline-for-container-instances"></a>Azure-beveiligings basislijn voor Container Instances
 
@@ -157,7 +157,7 @@ U kunt ook toepassings beveiligings groepen gebruiken om complexe beveiligings c
 
 **Richt lijnen**: u kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door belang rijke omgevings artefacten, zoals Azure Resources Manager-sjablonen, RBAC-besturings elementen en beleids regels, in één definitie van een blauw druk te verpakken. U kunt de blauw druk Toep assen op nieuwe abonnementen en het beheer en beheer verfijnen met behulp van versies. 
 
-* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manag)
+* [Azure Policy configureren en beheren](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
 * [Voor beelden Azure Policy voor netwerken](https://docs.microsoft.com/azure/governance/policy/samples/#network)
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 6da9517f822c9c157d26a1bda8dab2c694b08b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609975"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259368"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Een Azure Service Fabric-cluster implementeren via Beschikbaarheidszones
 Beschikbaarheidszones in Azure is een aanbieding met hoge Beschik baarheid die uw toepassingen en gegevens beveiligt tegen Data Center-fouten. Een beschikbaarheids zone is een unieke fysieke locatie die is voorzien van onafhankelijke voeding, koeling en netwerken binnen een Azure-regio.
@@ -140,6 +140,10 @@ Standard Load Balancer en standaard open bare IP introduceren nieuwe mogelijkhed
 
 >[!NOTE]
 > De standaard sjabloon verwijst naar een NSG waarmee al het uitgaande verkeer standaard wordt toegestaan. Binnenkomend verkeer is beperkt tot de poorten die vereist zijn voor Service Fabric-beheer bewerkingen. De NSG-regels kunnen worden aangepast om te voldoen aan uw vereisten.
+
+>[!NOTE]
+> Een Service Fabric cluster dat gebruikmaakt van een standaard SKU SLB moet ervoor zorgen dat elk knooppunt type een regel voor uitgaand verkeer op poort 443 toestaat. Dit is nodig voor het volt ooien van de installatie van het cluster en een implementatie zonder een dergelijke regel zal mislukken.
+
 
 ### <a name="enabling-zones-on-a-virtual-machine-scale-set"></a>Zones inschakelen op een schaalset voor virtuele machines
 Als u een zone wilt inschakelen, moet u op een schaalset voor virtuele machines de volgende drie waarden in de resource van de virtuele-machine schaalset opgeven.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283018"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265196"
 ---
 # <a name="getting-started-with-ai-enrichment"></a>Aan de slag met AI-verrijking
 
@@ -80,7 +80,7 @@ Intern genereert de pijp lijn een verzameling verrijkte documenten. U kunt bepal
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Een knowledgeStore-element toevoegen om verrijkingen op te slaan
 
-[Search rest API-Version = 2019-05 -06-preview](search-api-preview.md) breidt vaardig heden uit `knowledgeStore` met een definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie voor meer informatie [kennis archief (preview)](knowledge-store-concept-intro.md).
+[Search rest API-Version = 2019-05 -06-preview](search-api-preview.md) breidt vaardig heden uit met een `knowledgeStore` definitie die een Azure Storage-verbinding en projecties biedt die beschrijven hoe de verrijkingen worden opgeslagen. Dit is een aanvulling op uw index. In een Standard AI-pijp lijn zijn verrijkte documenten onwaar, die alleen tijdens het indexeren worden gebruikt en vervolgens worden verwijderd. In het kennis archief worden verrijkte documenten bewaard. Zie voor meer informatie [kennis archief (preview)](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Stap 3: zoek index en op query's gebaseerde toegang
 
@@ -102,7 +102,7 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 
 1. Definieer het [index schema](https://docs.microsoft.com/rest/api/searchservice/create-index). De verzameling *velden* bevat velden uit de bron gegevens. U moet ook extra velden uitstuben voor het opslaan van gegenereerde waarden voor inhoud die tijdens verrijking is gemaakt.
 
-1. Definieer de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-skillset) die verwijst naar de gegevens bron, de vaardig heden en de index.
+1. Definieer de [Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer) die verwijst naar de gegevens bron, de vaardig heden en de index.
 
 1. Voeg in de Indexeer functie *outputFieldMappings*toe. In deze sectie wordt de uitvoer van de vaardig heden (in stap 3) toegewezen aan de invoer velden in het index schema (in stap 4).
 

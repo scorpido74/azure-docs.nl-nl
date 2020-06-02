@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 36d580b7659325d4bf5f13889f774ddaa2ab0702
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597126"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259266"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Lokale ontwikkeling voor Azure static Web Apps-Preview instellen
 
@@ -29,7 +29,7 @@ In dit artikel worden de aanbevolen procedures voor lokale ontwikkeling beschrev
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Visual Studio code](https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/)
 - [Azure functions-extensie](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) voor Visual Studio code
 - [Live server-extensie](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) voor Visual Studio code
   - Alleen vereist als u geen front-end Java script-Framework of de CLI van een statische site generator gebruikt
@@ -62,9 +62,9 @@ Als u een CLI-hulp programma gebruikt voor uw site, kunt u door gaan naar de sec
 
 De live server-extensie voor Visual Studio code biedt een lokale ontwikkel webserver die statische inhoud verzendt.
 
-#### <a name="create-a-repository"></a>Een opslag plaats maken
+#### <a name="create-a-repository"></a>Een opslagplaats maken
 
-1. Ga naar [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) en maak een nieuw github-project met de naam **vanille-API**, met behulp van deze sjabloon.
+1. Zorg ervoor dat u bent aangemeld bij GitHub en ga naar [https://github.com/staticwebdev/vanilla-api/generate](https://github.com/staticwebdev/vanilla-api/generate) en maak een nieuw github-project met de naam **vanille-API**, met behulp van deze sjabloon.
 
     :::image type="content" source="media/local-development/vanilla-api.png" alt-text="GitHub nieuw opslag plaats-venster":::
 

@@ -3,12 +3,12 @@ title: Overzicht van Recovery Services-kluizen
 description: Een overzicht en vergelijking tussen Recovery Services kluizen en Azure Backup kluizen.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597944"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248903"
 ---
 # <a name="recovery-services-vaults-overview"></a>Overzicht van Recovery Services-kluizen
 
@@ -20,7 +20,7 @@ Binnen een Azure-abonnement kunt u Maxi maal 500 Recovery Services kluizen per a
 
 Als u nog steeds back-upkluizen hebt, worden deze automatisch bijgewerkt naar Recovery Services-kluizen. Vanaf november 2017 zijn alle back-upkluizen bijgewerkt naar Recovery Services kluizen.
 
-Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van Azure, terwijl back-upkluizen zijn gebaseerd op het Azure Service Manager model. Wanneer u een back-upkluis bijwerkt naar een Recovery Services kluis, blijven de back-upgegevens intact tijdens en na het upgrade proces. Recovery Services kluizen bieden functies die niet beschikbaar zijn voor back-upkluizen, zoals:
+Recovery Services kluizen zijn gebaseerd op het Azure Resource Manager model van Azure, maar back-upkluizen waren gebaseerd op het Azure Service Manager model. Wanneer u een back-upkluis bijwerkt naar een Recovery Services kluis, blijven de back-upgegevens intact tijdens en na het upgrade proces. Recovery Services kluizen bieden functies die niet beschikbaar zijn voor back-upkluizen, zoals:
 
 - **Verbeterde mogelijkheden voor het beveiligen van back-upgegevens**: met Recovery Services kluizen biedt Azure backup beveiligings mogelijkheden voor het beveiligen van Cloud back-ups. Met de beveiligings functies kunt u uw back-ups beveiligen en veilig gegevens herstellen, zelfs als er inbreuk is gemaakt op de productie-en back-upservers. [Meer informatie](backup-azure-security-feature.md)
 

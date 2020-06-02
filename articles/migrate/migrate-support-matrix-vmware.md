@@ -3,12 +3,12 @@ title: VMware-evaluatie ondersteuning in Azure Migrate
 description: Meer informatie over ondersteuning voor VMware VM-evaluatie met Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849362"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267882"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Ondersteunings matrix voor VMware-evaluatie 
 
@@ -18,7 +18,7 @@ Als u virtuele VMware-machines wilt beoordelen, maakt u een Azure Migrate projec
 
 ## <a name="limitations"></a>Beperkingen
 
-**Ondersteuning** | **Details**
+**Ondersteuning** | **Nadere**
 --- | ---
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement.<br/><br/> U kunt Maxi maal 35.000 VMware-Vm's in één [project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen. Een project kan ook fysieke servers en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
 **Detectie** | Het Azure Migrate-apparaat kan Maxi maal 10.000 VMware-Vm's detecteren op een vCenter Server.
@@ -31,7 +31,7 @@ Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 Naast het detecteren van computers kunnen server analyses apps, rollen en functies vinden die op machines worden uitgevoerd. Als u uw app-inventaris detecteert, kunt u een migratie traject identificeren en plannen dat is afgestemd op uw on-premises workloads. 
 
-**Ondersteuning** | **Details**
+**Ondersteuning** | **Nadere**
 --- | ---
 **Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
 **Detectie** | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
@@ -47,9 +47,9 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 ## <a name="vmware-requirements"></a>VMware-vereisten
 
-**VMware** | **Details**
+**VMware** | **Nadere**
 --- | ---
-**Virtuele VMware-machines** | De evaluatie wordt ondersteund voor alle Windows-en Linux-besturings systemen.
+**Virtuele VMware-machines** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. 
 **vCenter Server** | Machines die u wilt detecteren en beoordelen, moeten worden beheerd door vCenter Server versie 5,5, 6,0, 6,5 of 6,7.
 **Machtigingen (beoordeling)** | vCenter Server alleen-lezen-account.
 **Machtigingen (app-detectie)** | vCenter Server account met alleen-lezen toegang en bevoegdheden ingeschakeld voor **virtuele machines > gast bewerkingen**.
@@ -77,7 +77,7 @@ ESXi-hosts (app-detectie/agentloze afhankelijkheids analyse) | Als u [app-detect
 
 Naast het detecteren van computers kunnen server analyses apps, rollen en functies vinden die op machines worden uitgevoerd. Als u uw app-inventaris detecteert, kunt u een migratie traject identificeren en plannen dat is afgestemd op uw on-premises workloads. 
 
-**Ondersteuning** | **Details**
+**Ondersteuning** | **Nadere**
 --- | ---
 **Ondersteunde computers** | App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines.
 **Detectie** | App-detectie is zonder agent. Hierbij worden de gast referenties van de machine gebruikt en kunnen computers op afstand worden benaderd met WMI-en SSH-aanroepen.
@@ -94,7 +94,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van een afhankelijkheids analyse zonder agent. 
 
-**Vereiste** | **Details**
+**Vereiste** | **Nadere**
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises VMWare-machines te detecteren.<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> [Meer informatie over](how-to-set-up-appliance-vmware.md) het instellen van het Azure migrate-apparaat voor de evaluatie van virtuele VMware-machines.
 **VM-ondersteuning** | Momenteel alleen ondersteund voor virtuele VMware-machines.
@@ -113,7 +113,7 @@ Naast het detecteren van computers kunnen server analyses apps, rollen en functi
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van afhankelijkheids analyse op basis van een agent. 
 
-**Vereiste** | **Details** 
+**Vereiste** | **Nadere** 
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project.<br/><br/>  U kunt een afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises computers te detecteren<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
 **Azure Government** | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.

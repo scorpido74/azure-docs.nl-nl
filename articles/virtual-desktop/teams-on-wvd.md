@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234573"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267134"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -32,8 +32,9 @@ Met media optimalisatie voor micro soft-teams verwerkt de Windows desktop-client
 Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Windows, moet u de volgende dingen doen:
 
 - [Bereid uw netwerk](/microsoftteams/prepare-network/) voor op micro soft teams.
-- Installeer de [Windows desktop-client](connect-windows-7-and-10.md) op een Windows 10-apparaat dat voldoet aan de [hardwarevereisten](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)voor micro soft-teams.
+- Installeer de [Windows desktop-client](connect-windows-7-and-10.md) op een Windows 10-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Verbinding maken met een Windows 10-of Windows 10 Enter prise virtual machine (VM).
+- Installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 
 ## <a name="install-the-teams-desktop-app"></a>De teams bureau blad-app installeren
 
@@ -59,6 +60,10 @@ Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/ap
 U kunt de teams bureau blad-app implementeren met behulp van een installatie per computer. Micro soft teams installeren in uw virtueel-bureaublad omgeving van Windows:
 
 1. Down load het [MSI-pakket voor teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) dat overeenkomt met uw omgeving. Het is raadzaam om het 64-bits installatie programma te gebruiken op een 64-bits besturings systeem.
+
+      > [!NOTE]
+      > Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
+
 2. Voer deze opdracht uit om de MSI te installeren op de host-VM.
 
       ```console
@@ -138,7 +143,7 @@ Ga naar het [Microsoft 365-beheer centrum](https://docs.microsoft.com/microsoft-
 
 Als u de eigenschappen van de Remote Desktop Protocol (RDP) van een hostgroep wilt aanpassen, zoals de ervaring op meerdere monitors of het inschakelen van microfoon-en audio-omleiding, kunt u een optimale ervaring bieden voor uw gebruikers op basis van hun behoeften.
 
-Stel de volgende RDP-eigenschappen in om de omleiding van de microfoon en camera in te scha kelen:
+Het inschakelen van apparaatomleiding is niet vereist wanneer teams met media optimalisatie gebruiken. Als u teams zonder media optimalisatie gebruikt, stelt u de volgende RDP-eigenschappen in om de omleiding van de microfoon en camera in te scha kelen:
 
 - `audiocapturemode:i:1`Hiermee schakelt u audio-opname in van het lokale apparaat en redirets audio-toepassingen in de externe sessie.
 - `audiomode:i:0`Audio afspelen op de lokale computer.

@@ -4,12 +4,12 @@ description: Bekijk een overzicht van wat u met metrische waarschuwingen kunt do
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855035"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248818"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Begrijpen hoe waarschuwingen voor metrische gegevens werken in Azure Monitor
 
@@ -34,7 +34,7 @@ Stel dat u als volgt een eenvoudige waarschuwings regel voor een statische dremp
 
 Vanaf het moment dat de waarschuwings regel wordt gemaakt, wordt de monitor elke 1 minuut uitgevoerd en wordt gekeken naar metrische waarden voor de laatste 5 minuten en wordt gecontroleerd of het gemiddelde van die waarden 70 overschrijdt. Als aan de voor waarde wordt voldaan, is het gemiddelde percentage CPU voor de laatste 5 minuten hoger dan 70, de waarschuwings regel geactiveerd een geactiveerde melding. Als u een e-mail bericht of een actie voor een webhook hebt geconfigureerd in de actie groep die is gekoppeld aan de waarschuwings regel, ontvangt u een geactiveerde melding op beide.
 
-Wanneer u meerdere voor waarden in één regel gebruikt, de regel ' and ' de voor waarden tegelijk.  Dat wil zeggen dat de waarschuwing wordt geactiveerd wanneer alle voor waarden in de waarschuwing worden geëvalueerd als waar en worden opgelost wanneer een van de voor waarden niet meer waar is. Een voor beeld van dit type waarschuwing is een waarschuwing wanneer ' CPU groter dan 90% ' en ' wachtrij lengte meer dan 300 items ' is. 
+Wanneer u meerdere voor waarden in één regel gebruikt, de regel ' and ' de voor waarden tegelijk. Dat wil zeggen dat een waarschuwing wordt geactiveerd wanneer alle voor waarden in de waarschuwings regel worden geëvalueerd als waar en worden opgelost wanneer een van de voor waarden niet meer waar is. Een voor beeld van dit type waarschuwings regel is om een virtuele machine van Azure te bewaken en een waarschuwing te ontvangen wanneer beide ' percentage CPU is hoger dan 90% ' en ' wachtrij lengte meer dan 300 items ' is.
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Waarschuwings regel met dynamisch type voor waarde
 
@@ -129,9 +129,9 @@ Deze functie wordt momenteel ondersteund voor platform metrieken (geen aangepast
 | Service | Open bare Azure | Overheid | China |
 |:--------|:--------|:--------|:--------|
 | Virtuele machines  | **Ja** | Nee | Nee |
-| SQL server-data bases | **Ja** | **Ja** | Nee |
-| Elastische Pools van SQL Server | **Ja** | **Ja** | Nee |
-| Data Box edge-apparaten | **Ja** | **Ja** | Nee |
+| SQL server-data bases | **Ja** | **Ja** | No |
+| Elastische Pools van SQL Server | **Ja** | **Ja** | No |
+| Data Box edge-apparaten | **Ja** | **Ja** | No |
 
 U kunt op een van de drie manieren het bewakings bereik opgeven voor één metrische waarschuwings regel. Met virtuele machines kunt u bijvoorbeeld het bereik opgeven als:  
 

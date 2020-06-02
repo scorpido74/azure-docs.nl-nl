@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d1080abb35e556e97c34e77fdce4d553c169ee9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128369"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266862"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB implementeren en Azure App Service Web Apps met behulp van een Azure Resource Manager sjabloon
 In deze zelf studie wordt uitgelegd hoe u een Azure Resource Manager sjabloon gebruikt om [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714) web-app en een voor beeld-webtoepassing te implementeren en te integreren.
@@ -36,8 +36,8 @@ Voordat u de instructies in deze zelf studie volgt, moet u ervoor zorgen dat u o
 ## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>Stap 1: de sjabloon bestanden downloaden
 Laten we beginnen met het downloaden van de sjabloon bestanden die deze zelf studie nodig heeft.
 
-1. Down load het [Azure Cosmos DB-account maken, Web apps en implementeer een voorbeeld](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) sjabloon voor een demonstratie toepassing naar een lokale map (bijvoorbeeld C:\Azure Cosmos DBTemplates). Met deze sjabloon wordt een Azure Cosmos DB-account, een App Service web-app en een webtoepassing geïmplementeerd.  Ook wordt de webtoepassing automatisch geconfigureerd om verbinding te maken met het Azure Cosmos DB-account.
-2. Down load het [Azure Cosmos DB-account maken en web apps voorbeeld](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) sjabloon naar een lokale map (bijvoorbeeld C:\Azure Cosmos DBTemplates). Met deze sjabloon implementeert u een Azure Cosmos DB-account, een App Service web-app en wijzigt u de toepassings instellingen van de site om eenvoudig Azure Cosmos DB verbindings gegevens in te stellen, maar bevat geen webtoepassing.  
+1. Down load het **Azure Cosmos DB-account maken, Web apps en implementeer een voorbeeld** sjabloon voor een demonstratie toepassing ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json` ) naar een lokale map (bijvoorbeeld C:\Azure Cosmos DBTemplates). Met deze sjabloon wordt een Azure Cosmos DB-account, een App Service web-app en een webtoepassing geïmplementeerd.  Ook wordt de webtoepassing automatisch geconfigureerd om verbinding te maken met het Azure Cosmos DB-account.
+2. Down load de sjabloon **een Azure Cosmos DB-account maken en web apps voor beeld** ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json` ) naar een lokale map (bijvoorbeeld C:\Azure Cosmos DBTemplates). Met deze sjabloon implementeert u een Azure Cosmos DB-account, een App Service web-app en wijzigt u de toepassings instellingen van de site om eenvoudig Azure Cosmos DB verbindings gegevens in te stellen, maar bevat geen webtoepassing.  
 
 <a id="Build"></a>
 
@@ -51,12 +51,12 @@ We gaan nu uw eerste sjabloon implementeren.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com), klik op nieuw en zoek naar "Sjabloonimlementatie".
     ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment1.png)
-2. Selecteer het Sjabloonimlementatie item en klik op scherm opname van de gebruikers interface van de sjabloon implementatie **maken** ![](./media/create-website/TemplateDeployment2.png)
+2. Selecteer het Sjabloonimlementatie item en klik **Create** op ![ scherm opname van de gebruikers interface van de sjabloon implementatie maken](./media/create-website/TemplateDeployment2.png)
 3. Klik op **sjabloon bewerken**, plak de inhoud van het sjabloon bestand DocDBWebsiteTodo. json en klik op **Opslaan**.
    ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment3.png)
 4. Klik op **para meters bewerken**, geef waarden op voor elk van de verplichte para meters en klik op **OK**.  De parameters zijn als volgt:
    
-   1. SITEROL: Hiermee geeft u de naam van de App Service web-app op. deze wordt gebruikt om de URL te maken die u gebruikt voor toegang tot de web-app (bijvoorbeeld als u ' mydemodocdbwebapp ' opgeeft, is dit de URL `mydemodocdbwebapp.azurewebsites.net`waarmee u toegang tot de web-app hebt).
+   1. SITEROL: Hiermee geeft u de naam van de App Service web-app op. deze wordt gebruikt om de URL te maken die u gebruikt voor toegang tot de web-app (bijvoorbeeld als u ' mydemodocdbwebapp ' opgeeft, is dit de URL waarmee u toegang tot de web-app hebt `mydemodocdbwebapp.azurewebsites.net` ).
    2. HOSTINGPLANNAME: Hiermee geeft u de naam op van App Service hosting plan dat moet worden gemaakt.
    3. Locatie: Hiermee geeft u de Azure-locatie op waar u de Azure Cosmos DB-en web-app-resources wilt maken.
    4. DATABASEACCOUNTNAME: Hiermee geeft u de naam op van het Azure Cosmos DB-account dat moet worden gemaakt.   
@@ -69,7 +69,7 @@ We gaan nu uw eerste sjabloon implementeren.
    ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment6.png)
 7. Wanneer de implementatie is voltooid, wordt het deel venster Resource groep geopend.
    ![Scherm opname van het deel venster Resource groep](./media/create-website/TemplateDeployment7.png)  
-8. Als u de toepassing wilt gebruiken, navigeert u naar de URL van de web-app (in bovenstaand `http://mydemodocdbwebapp.azurewebsites.net`voor beeld is dit de URL).  U ziet de volgende webtoepassing:
+8. Als u de toepassing wilt gebruiken, navigeert u naar de URL van de web-app (in bovenstaand voor beeld is dit de URL `http://mydemodocdbwebapp.azurewebsites.net` ).  U ziet de volgende webtoepassing:
    
    ![Voor beeld van een TODO-toepassing](./media/create-website/image2.png)
 9. Maak een aantal taken in de web-app en ga vervolgens terug naar het deel venster Resource groep in de Azure Portal. Klik in de lijst met resources op de resource Azure Cosmos DB account en klik vervolgens op **Data Explorer**.
@@ -88,7 +88,7 @@ We gaan nu uw tweede sjabloon implementeren.  Deze sjabloon is handig om te late
 
 1. Klik in [Azure Portal](https://portal.azure.com)op nieuw en zoek naar ' Sjabloonimlementatie '.
     ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment1.png)
-2. Selecteer het Sjabloonimlementatie item en klik op scherm opname van de gebruikers interface van de sjabloon implementatie **maken** ![](./media/create-website/TemplateDeployment2.png)
+2. Selecteer het Sjabloonimlementatie item en klik **Create** op ![ scherm opname van de gebruikers interface van de sjabloon implementatie maken](./media/create-website/TemplateDeployment2.png)
 3. Klik op **sjabloon bewerken**, plak de inhoud van het sjabloon bestand DocDBWebSite. json en klik op **Opslaan**.
    ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment3.png)
 4. Klik op **para meters bewerken**, geef waarden op voor elk van de verplichte para meters en klik op **OK**.  De parameters zijn als volgt:
@@ -106,7 +106,7 @@ We gaan nu uw tweede sjabloon implementeren.  Deze sjabloon is handig om te late
    ![Scherm afbeelding van de gebruikers interface van de sjabloon implementatie](./media/create-website/TemplateDeployment6.png)
 7. Wanneer de implementatie is voltooid, wordt het deel venster Resource groep geopend.
    ![Scherm opname van het deel venster Resource groep](./media/create-website/TemplateDeployment7.png)  
-8. Klik op de resource van de web-app in de lijst met resources en klik vervolgens op de scherm afbeelding **Toepassings instellingen** ![van de resource groep](./media/create-website/TemplateDeployment9.png)  
+8. Klik op de resource van de web-app in de lijst met resources en klik vervolgens op de scherm afbeelding **Toepassings instellingen** ![ van de resource groep](./media/create-website/TemplateDeployment9.png)  
 9. Houd er rekening mee dat er toepassings instellingen aanwezig zijn voor het Azure Cosmos DB-eind punt en elk van de Azure Cosmos DB hoofd sleutels.
 
     ![Scherm opname van toepassings instellingen](./media/create-website/TemplateDeployment10.png)  
@@ -115,7 +115,7 @@ We gaan nu uw tweede sjabloon implementeren.  Deze sjabloon is handig om te late
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd! U hebt Azure Cosmos DB, App Service web-app en een voor beeld-webtoepassing geïmplementeerd met behulp van Azure Resource Manager sjablonen.
+Gefeliciteerd U hebt Azure Cosmos DB, App Service web-app en een voor beeld-webtoepassing geïmplementeerd met behulp van Azure Resource Manager sjablonen.
 
 * Klik [hier](https://azure.microsoft.com/services/cosmos-db/)voor meer informatie over Azure Cosmos db.
 * Klik [hier](https://go.microsoft.com/fwlink/?LinkId=325362)voor meer informatie over Azure app service Web-apps.

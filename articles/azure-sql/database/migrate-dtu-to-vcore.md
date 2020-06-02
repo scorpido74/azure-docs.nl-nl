@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 05/28/2020
-ms.openlocfilehash: e9ba6f2e2f6b6e6c4c4738576816e4473b4951a5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4802e9e6fa2fdd918266d3ddc58b783bdb6bb83e
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235835"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258459"
 ---
 # <a name="migrate-azure-sql-database-from-the-dtu-based-model-to-the-vcore-based-model"></a>Azure SQL Database migreren van het DTU-model naar het model op basis van vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -187,7 +187,7 @@ U kunt een secundaire data base met geo-replicatie (een geo-secundair) alleen ma
 
 Als u een geo-secundair maakt in de elastische pool voor één primaire data base, moet u ervoor zorgen dat de `maxVCore` instelling voor de pool overeenkomt met de reken grootte van de primaire data base. Als u een geo-secundair maakt voor een primaire groep in een andere elastische pool, raden we aan dat de groepen dezelfde `maxVCore` instellingen hebben.
 
-## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Database kopie gebruiken om een DTU-gebaseerde data base te converteren naar een op vCore gebaseerde data base
+## <a name="use-database-copy-to-migrate-from-dtu-to-vcore"></a>Database kopie gebruiken om van DTU naar vCore te migreren
 
 U kunt elke Data Base met een op DTU gebaseerde reken grootte kopiëren naar een Data Base met een op vCore gebaseerde reken grootte zonder beperkingen of speciale sequentiëren, zolang de doel berekenings grootte de maximale database grootte van de bron database ondersteunt. De kopie van de data base maakt een moment opname van de gegevens vanaf de begin tijd van de Kopieer bewerking en synchroniseert geen gegevens tussen de bron en het doel.
 

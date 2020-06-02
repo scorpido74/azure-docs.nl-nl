@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het configureren, initiëren
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d037339d9ff9a891fcc595a3eff75097204a77ab
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248162"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248682"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -29,7 +29,7 @@ Ten eerste moet de kluis de virtuele machine van Azure kunnen identificeren. Dit
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
 ```
 
-De post-URI `{subscriptionId}`heeft `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` , para meters. De `{fabricName}` is ' Azure '. Volgens ons voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
+De post-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` , `{fabricName}` para meters. De `{fabricName}` is ' Azure '. Volgens ons voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
@@ -149,7 +149,7 @@ X-Powered-By: ASP.NET
 > [!TIP]
 > Het aantal waarden in een *Get* -antwoord is beperkt tot 200 voor een ' page '. Gebruik het veld ' nextLink ' om de URL voor de volgende set antwoorden op te halen.
 
-Het antwoord bevat de lijst met alle niet-beveiligde virtuele machines van Azure `{value}` en bevat alle informatie die nodig is voor de Azure Recovery-service voor het configureren van de back-up. Als u een back-up `{name}` wilt configureren, `{virtualMachineId}` noteert `{properties}` u het veld en het veld in het gedeelte. Maak twee variabelen van deze veld waarden zoals hieronder wordt vermeld.
+Het antwoord bevat de lijst met alle niet-beveiligde virtuele machines van Azure en `{value}` bevat alle informatie die nodig is voor de Azure Recovery-service voor het configureren van de back-up. Als u een back-up wilt configureren, noteert u het `{name}` veld en het `{virtualMachineId}` veld in het `{properties}` gedeelte. Maak twee variabelen van deze veld waarden zoals hieronder wordt vermeld.
 
 - containerName = "iaasvmcontainer;" +`{name}`
 - protectedItemName = "VM;" +`{name}`
@@ -200,7 +200,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 }
 ```
 
-De `{sourceResourceId}` hierboven `{virtualMachineId}` vermelde is van het antwoord op het [aanbieden van Beveilig bare items](#example-responses-1).
+De `{sourceResourceId}` `{virtualMachineId}` hierboven vermelde is van het antwoord op het [aanbieden van Beveilig bare items](#example-responses-1).
 
 #### <a name="responses"></a>Antwoorden
 
@@ -272,7 +272,7 @@ Zodra de bewerking is voltooid, wordt 200 (OK) geretourneerd met de inhoud van h
 }
 ```
 
-Hiermee wordt bevestigd dat de beveiliging is ingeschakeld voor de virtuele machine en de eerste back-up wordt geactiveerd conform het beleids schema.
+Hiermee wordt bevestigd dat de beveiliging is ingeschakeld voor de virtuele machine en de eerste back-up wordt geactiveerd volgens het beleids schema.
 
 ## <a name="trigger-an-on-demand-backup-for-a-protected-azure-vm"></a>Een back-up op aanvraag activeren voor een beveiligde Azure VM
 

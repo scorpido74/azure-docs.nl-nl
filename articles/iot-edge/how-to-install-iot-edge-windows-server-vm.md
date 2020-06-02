@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045906"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266471"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge uitvoeren op Windows Server Virtual Machines
 
@@ -22,11 +22,11 @@ Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaa
 
 Voor meer informatie over de werking van de IoT Edge runtime en welke onderdelen zijn opgenomen, raadpleegt u [de Azure IOT Edge runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 
-In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Windows Server 2019, met behulp van de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding. Volg de instructies in [de Azure IOT Edge runtime installeren](how-to-install-iot-edge-windows.md) op Windows voor gebruik met andere versies.
+In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Windows Server 2019, met behulp van de [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace-aanbieding. Volg de instructies in [de Azure IOT Edge runtime installeren](how-to-install-iot-edge-windows.md) op Windows voor gebruik met andere versies.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Implementeren vanuit Azure Marketplace
 
-1. Ga naar de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding of zoek in Windows Server op [Azure Marketplace](https://azuremarketplace.microsoft.com/)
+1. Ga naar de [Windows Server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace-aanbieding of zoek in Windows Server op [Azure Marketplace](https://azuremarketplace.microsoft.com/)
 2. Selecteer **nu downloaden**
 3. Zoek in **Software plan**' Windows Server 2019 Data Center Server Core with containers ' en selecteer vervolgens **door gaan** in het volgende dialoog venster.
     * U kunt deze instructies ook gebruiken voor andere versies van Windows Server met containers
@@ -87,8 +87,8 @@ In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT 
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
-   * Met deze opdracht wordt u gevraagd om een wacht woord, maar u kunt de `--admin-password` optie voor het eenvoudiger in een script toevoegen.
-   * De Windows Server Core-installatie kopie heeft alleen opdracht regel ondersteuning met extern bureau blad, dus als u de volledige bureaublad ervaring wilt `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` , geeft u als de installatie kopie op.
+   * Met deze opdracht wordt u gevraagd om een wacht woord, maar u kunt de optie `--admin-password` voor het eenvoudiger in een script toevoegen.
+   * De Windows Server Core-installatie kopie heeft alleen opdracht regel ondersteuning met extern bureau blad, dus als u de volledige bureaublad ervaring wilt, geeft u als `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` de installatie kopie op.
 
 1. Stel de connection string van het apparaat in (u kunt de procedure [voor het ophalen van de Connection String met Azure cli](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) volgen als u niet bekend bent met dit proces):
 

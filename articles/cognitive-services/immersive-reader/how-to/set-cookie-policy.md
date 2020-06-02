@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: pasta
-ms.openlocfilehash: 6de651f1eb51ea1bc941c2af675c8a8d5b0f9cd7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 876379a211038933cf665bd1a4a4daae9c9b2787
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946109"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267066"
 ---
 # <a name="how-to-set-the-cookie-policy-for-the-immersive-reader"></a>Het cookie beleid voor de insluitende lezer instellen
 
@@ -45,7 +45,7 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [Snelstartgids voor node. js](../quickstart-nodejs.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
+* Bekijk de [Snelstartgids voor node. js](../quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
 * Bekijk de [python-zelf studie](../tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
 * Bekijk de [SWIFT-zelf studie](../tutorial-ios-picture-immersive-reader.md) om te zien wat u nog meer met de insluitende lezer-SDK kunt doen met behulp van SWIFT
 * Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](../reference.md)

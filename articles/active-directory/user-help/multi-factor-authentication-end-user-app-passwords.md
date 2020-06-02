@@ -10,26 +10,26 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/13/2019
+ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 62723e56bf78a4d80a6e026185d50537fdfa847f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8c6a9304927f5d4bcad895b725955c522b60207a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738889"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266233"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>App-wacht woorden beheren voor verificatie in twee stappen
 
 >[!Important]
 >Uw beheerder staat mogelijk niet toe dat u app-wacht woorden gebruikt. Als u app- **wacht woorden** niet ziet als een optie, zijn ze niet beschikbaar in uw organisatie.
 
-Wanneer u app-wacht woorden gebruikt, is het belang rijk om het volgende te onthouden:
+Wanneer u app-wachtwoorden gebruikt, is het belangrijk om het volgende te onthouden:
 
 - App-wacht woorden worden automatisch gegenereerd en moeten eenmaal per app worden gemaakt en ingevoerd.
 
-- Er is een limiet van 40 wacht woorden per gebruiker. Als u later een van deze limieten probeert te maken, wordt u gevraagd een bestaand wacht woord te verwijderen voordat u de nieuwe kunt maken.
+- Er is een limiet van 40 wachtwoorden per gebruiker. Als u meer wachtwoorden wilt maken dan dat, wordt u gevraagd een bestaand wachtwoord te verwijderen voordat u het nieuwe wachtwoord kunt maken.
 
     >[!Note]
     >Office 2013-clients (inclusief Outlook) ondersteunen nieuwe verificatie protocollen en kunnen worden gebruikt met verificatie in twee stappen. Deze ondersteuning betekent dat als u verificatie in twee stappen hebt ingeschakeld, u geen app-wacht woorden meer nodig hebt voor Office 2013-clients. Zie voor meer informatie het artikel [hoe moderne verificatie werkt voor office 2013-en office 2016-client-apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517) .

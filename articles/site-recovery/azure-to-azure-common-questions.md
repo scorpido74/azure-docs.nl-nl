@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834574"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248342"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -172,6 +172,10 @@ Het eerste herstel punt dat wordt gegenereerd, heeft de volledige kopie. Eventue
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Verhoogt de Bewaar periode van herstel punten de opslag kosten?
 
 Ja, als u de retentie periode van 24 uur tot 72 uur verhoogt, worden de herstel punten door Site Recovery voor een extra 48 uur opgeslagen. De toegevoegde tijd maakt kosten voor opslag. Eén herstel punt kan bijvoorbeeld Delta wijzigingen van 10 GB hebben, met een kosten per GB van $0,16 per maand. Meer kosten zijn $1,60 × 48 per maand.
+
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Kan ik replicatie inschakelen met app-consistentie in Linux-servers?
+
+Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scripts voor toepassingen voor app-consistentie. Het aangepaste script met de voor-en post opties wordt door de Azure Site Recovery Mobility agent gebruikt tijdens de app-consistentie. [Meer informatie](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Multi-VM-consistentie
 

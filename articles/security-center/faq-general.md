@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106573"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248546"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen: algemene vragen over Azure Security Center
 
@@ -59,7 +59,7 @@ Het beveiligings beleid dat is ingeschakeld in Azure Security Center aanbeveling
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Wie kan een beveiligings beleid wijzigen?
-Als u een beveiligings beleid wilt wijzigen, moet u een beveiligings beheerder of een eigenaar of bijdrager van het abonnement zijn.
+Als u een beveiligings beleid wilt wijzigen, moet u een **beveiligings beheerder** of **eigenaar** van het abonnement zijn.
 
 Zie [beveiligings beleid instellen in azure Security Center](tutorial-security-policy.md)voor meer informatie over het configureren van een beveiligings beleid.
 

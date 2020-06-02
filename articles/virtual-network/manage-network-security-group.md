@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 62972be5b363c0a22a24a9056b6f3f8b11829566
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cac67e85383f36aee0a1535d69fa075f92bd6dbf
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182902"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267712"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken, wijzigen of verwijderen
 
@@ -26,7 +26,7 @@ Met beveiligings regels in netwerk beveiligings groepen kunt u het type netwerk 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Voer een van de volgende taken uit voordat u de rest van dit artikel start:
+Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Voer een van de volgende taken uit voordat u de rest van dit artikel start:
 
 - **Portal gebruikers**: Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
@@ -34,7 +34,7 @@ Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. 
 
     Als u Power shell lokaal uitvoert, gebruikt u Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az.Network` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
-- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.28 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Voer `az login` uit om een verbinding op te zetten met Azure.
+- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.28 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Voer `az login` uit om een verbinding op te zetten met Azure.
 
 Het account waarmee u zich aanmeldt of verbinding maakt met Azure, moet worden toegewezen aan de [rol netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
@@ -59,7 +59,7 @@ Er is een limiet voor het aantal netwerk beveiligings groepen dat u kunt maken v
     | **Naam** | Voer een unieke teken reeks in een resource groep in. |
     | **Regio** | Kies de gewenste locatie. |
 
-4. Selecteer **controleren + maken**.
+4. Selecteer **Controleren + maken**.
 
 5. Nadat u het bericht **validatie geslaagd** hebt weer gegeven, selecteert u **maken**.
 
@@ -162,17 +162,17 @@ Er is een limiet voor het aantal regels per netwerk beveiligings groep dat u kun
 
     | Instelling | Waarde | Details |
     | ------- | ----- | ------- |
-    | **Bron** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (binnenkomende** beveiligings regel) of **VirtualNetwork** (uitgaande beveiligings regel)</li><li>**Toepassings&nbsp;beveiligings&nbsp;groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **bron-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **service label**kiest, kunt u ook een **bron service label**kiezen.</p><p>Als u **toepassings beveiligings groep**kiest, moet u ook een bestaande toepassings beveiligings groep kiezen. Als u **toepassings beveiligings groep** voor zowel de **bron** als de **bestemming**kiest, moeten de netwerk interfaces binnen beide toepassings beveiligings groepen zich in hetzelfde virtuele netwerk bevallen.</p> |
-    | **IP-adressen van bron/CIDR-bereiken** | Een door komma's gescheiden lijst met IP-adressen en CIDR-bereiken (Classloos interdomein-route ring) | <p>Deze instelling wordt weer gegeven als u **bron** wijzigt in **IP-adressen**. U moet een enkele waarde of een door komma's gescheiden lijst met meerdere waarden opgeven. Een voor beeld van meerdere waarden `10.0.0.0/16, 192.188.1.1`is. Er zijn limieten voor het aantal waarden dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.</p><p>Als het door u opgegeven IP-adres is toegewezen aan een virtuele machine van Azure, geeft u het persoonlijke IP-adres op, niet het open bare IP-adres. Azure verwerkt beveiligings regels nadat het open bare IP-adres is omgezet naar een privé-IP-adres voor binnenkomende beveiligings regels, maar voordat een privé-IP-adres wordt omgezet in een openbaar IP-adres voor uitgaande regels. Zie [IP-adres typen](virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare en privé-IP-adressen in Azure.</p> |
+    | **Bron** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (binnenkomende** beveiligings regel) of **VirtualNetwork** (uitgaande beveiligings regel)</li><li>**Toepassings &nbsp; beveiligings &nbsp; groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **bron-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **service label**kiest, kunt u ook een **bron service label**kiezen.</p><p>Als u **toepassings beveiligings groep**kiest, moet u ook een bestaande toepassings beveiligings groep kiezen. Als u **toepassings beveiligings groep** voor zowel de **bron** als de **bestemming**kiest, moeten de netwerk interfaces binnen beide toepassings beveiligings groepen zich in hetzelfde virtuele netwerk bevallen.</p> |
+    | **IP-adressen van bron/CIDR-bereiken** | Een door komma's gescheiden lijst met IP-adressen en CIDR-bereiken (Classloos interdomein-route ring) | <p>Deze instelling wordt weer gegeven als u **bron** wijzigt in **IP-adressen**. U moet een enkele waarde of een door komma's gescheiden lijst met meerdere waarden opgeven. Een voor beeld van meerdere waarden is `10.0.0.0/16, 192.188.1.1` . Er zijn limieten voor het aantal waarden dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.</p><p>Als het door u opgegeven IP-adres is toegewezen aan een virtuele machine van Azure, geeft u het persoonlijke IP-adres op, niet het open bare IP-adres. Azure verwerkt beveiligings regels nadat het open bare IP-adres is omgezet naar een privé-IP-adres voor binnenkomende beveiligings regels, maar voordat een privé-IP-adres wordt omgezet in een openbaar IP-adres voor uitgaande regels. Zie [IP-adres typen](virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare en privé-IP-adressen in Azure.</p> |
     | **Bron servicetag** | Een servicetag in de vervolg keuzelijst | Deze optionele instelling wordt weer gegeven als u **bron** -naar- **service-tag** voor een binnenkomende beveiligings regel instelt. Een servicetag is een vooraf gedefinieerde id voor een categorie met IP-adressen. Zie [service Tags](security-overview.md#service-tags)voor meer informatie over de beschik bare service tags en wat elke tag vertegenwoordigt. |
     | **Beveiligings groep voor de bron toepassing** | Een bestaande toepassings beveiligings groep | Deze instelling wordt weer gegeven als u **bron** instelt op **toepassings beveiligings groep**. Selecteer een toepassings beveiligings groep die zich in dezelfde regio bevindt als de netwerk interface. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group). |
-    | **Poortbereiken van bron** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk (`*`) om verkeer toe te staan op een wille keurige poort</li></ul> | Met deze instelling geeft u de poorten op waarop de regel verkeer toestaat of weigert. Er zijn limieten voor het aantal poorten dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
-    | **Beoogde** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (uitgaande** beveiligings regel) of **VirtualNetwork** (binnenkomende beveiligings regel)</li><li>**Toepassings&nbsp;beveiligings&nbsp;groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **doel-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **VirtualNetwork**kiest, wordt verkeer toegestaan voor alle IP-adressen binnen de adres ruimte van het virtuele netwerk. **VirtualNetwork** is een servicetag.</p><p>Als u **toepassings beveiligings groep**selecteert, moet u vervolgens een bestaande toepassings beveiligings groep selecteren. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group).</p> |
+    | **Poortbereiken van bron** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk ( `*` ) om verkeer toe te staan op een wille keurige poort</li></ul> | Met deze instelling geeft u de poorten op waarop de regel verkeer toestaat of weigert. Er zijn limieten voor het aantal poorten dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
+    | **Beoogde** | Een van de volgende opties:<ul><li>**Alle**</li><li>**IP-adressen**</li><li>**Servicetag (uitgaande** beveiligings regel) of **VirtualNetwork** (binnenkomende beveiligings regel)</li><li>**Toepassings &nbsp; beveiligings &nbsp; groep**</li></ul> | <p>Als u **IP-adressen**kiest, moet u ook **doel-IP-adressen/CIDR-bereiken**opgeven.</p><p>Als u **VirtualNetwork**kiest, wordt verkeer toegestaan voor alle IP-adressen binnen de adres ruimte van het virtuele netwerk. **VirtualNetwork** is een servicetag.</p><p>Als u **toepassings beveiligings groep**selecteert, moet u vervolgens een bestaande toepassings beveiligings groep selecteren. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group).</p> |
     | **Doel-IP-adressen/CIDR-bereiken** | Een door komma's gescheiden lijst met IP-adressen en CIDR-bereiken | <p>Deze instelling wordt weer gegeven als u de **bestemming** wijzigt in **IP-adressen**. Net als **bron** **-en bron-IP-adressen/CIDR-bereiken**, kunt u één of meerdere adressen of bereiken opgeven. Er zijn limieten voor het aantal dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie.</p><p>Als het door u opgegeven IP-adres is toegewezen aan een virtuele machine van Azure, moet u ervoor zorgen dat u het privé-IP-adres opgeeft, niet het open bare IP-adressen. Azure verwerkt beveiligings regels nadat het open bare IP-adres is omgezet naar een privé-IP-adres voor binnenkomende beveiligings regels, maar voordat Azure een privé-IP-adres omzet in een openbaar IP-adres voor uitgaande regels. Zie [IP-adres typen](virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare en privé-IP-adressen in Azure.</p> |
     | **Doelservicetag** | Een servicetag in de vervolg keuzelijst | Deze optionele instelling wordt weer gegeven als **Destination** u doel **wijzigt in servicetag voor een** uitgaande beveiligings regel. Een servicetag is een vooraf gedefinieerde id voor een categorie met IP-adressen. Zie [service Tags](security-overview.md#service-tags)voor meer informatie over de beschik bare service tags en wat elke tag vertegenwoordigt. |
     | **Beveiligings groep voor de doel toepassing** | Een bestaande toepassings beveiligings groep | Deze instelling wordt weer gegeven als u **doel** instelt op **toepassings beveiligings groep**. Selecteer een toepassings beveiligings groep die zich in dezelfde regio bevindt als de netwerk interface. Meer informatie over het [maken van een toepassings beveiligings groep](#create-an-application-security-group). |
-    | **Poortbereiken van doel** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk (`*`) om verkeer toe te staan op een wille keurige poort</li></ul> | Net als bij **bron poortbereiken**kunt u enkele of meerdere poorten en bereiken opgeven. Er zijn limieten voor het aantal dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
-    | **Protocolsubstatus** | **Any**, **TCP**, **UDP**of **ICMP** | U kunt de regel beperken tot de Transmission Control Protocol (TCP), User Data gram Protocol (UDP) of Internet Control Message Protocol (ICMP). De standaard waarde is voor de regel die op alle protocollen moet worden toegepast. |
+    | **Poortbereiken van doel** | Een van de volgende opties:<ul><li>Eén poort, zoals`80`</li><li>Een bereik van poorten, zoals`1024-65535`</li><li>Een door komma's gescheiden lijst met enkele poorten en/of poortbereiken, zoals`80, 1024-65535`</li><li>Een asterisk ( `*` ) om verkeer toe te staan op een wille keurige poort</li></ul> | Net als bij **bron poortbereiken**kunt u enkele of meerdere poorten en bereiken opgeven. Er zijn limieten voor het aantal dat u kunt opgeven. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)voor meer informatie. |
+    | **Protocol** | **Any**, **TCP**, **UDP**of **ICMP** | U kunt de regel beperken tot de Transmission Control Protocol (TCP), User Data gram Protocol (UDP) of Internet Control Message Protocol (ICMP). De standaard waarde is voor de regel die op alle protocollen moet worden toegepast. |
     | **Actie** | **Toestaan** of **weigeren** | Met deze instelling geeft u op of deze regel de toegang voor de opgegeven bron-en doel configuratie toestaat of weigert. |
     | **Prioriteiten** | Een waarde tussen 100 en 4096 die uniek is voor alle beveiligings regels in de netwerk beveiligings groep | Azure verwerkt beveiligings regels in volg orde van prioriteit. Hoe lager het getal, des te hoger de prioriteit. We raden u aan een hiaat tussen prioriteits nummers te laten wanneer u regels maakt, zoals 100, 200 en 300. Als u hiaten hebt, is het eenvoudiger om regels in de toekomst toe te voegen, zodat u ze een hogere of lagere prioriteit kunt geven dan bestaande regels. |
     | **Naam** | Een unieke naam voor de regel in de netwerk beveiligings groep | De naam mag Maxi maal 80 tekens lang zijn. De naam moet beginnen met een letter of cijfer en moet eindigen met een letter, cijfer of onderstrepings teken. De naam mag alleen letters, cijfers, onderstrepings tekens, punten of afbreek streepjes bevatten. |
@@ -277,7 +277,7 @@ Een toepassings beveiligings groep bevat geen of meer netwerk interfaces. Zie [t
     | **Naam** | Voer een unieke teken reeks in een resource groep in. |
     | **Regio** | Kies de gewenste locatie. |
 
-5. Selecteer **controleren + maken**.
+5. Selecteer **Controleren + maken**.
 
 6. Klik op het tabblad **controleren en maken** , nadat u het bericht validatie is geslaagd hebt weer **gegeven** , en selecteer **maken**.
 
@@ -355,7 +355,7 @@ Om taken uit te voeren op netwerk beveiligings groepen, beveiligings regels en t
 
 ### <a name="network-security-group"></a>Netwerkbeveiligingsgroep
 
-| Bewerking                                                        |   Naam                                                                |
+| Bewerking                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
 | Micro soft. Network/networkSecurityGroups/lezen                  |   Netwerk beveiligings groep ophalen                                          |
 | Micro soft. Network/networkSecurityGroups/schrijven                 |   Een netwerk beveiligings groep maken of bijwerken                             |
@@ -364,15 +364,15 @@ Om taken uit te voeren op netwerk beveiligings groepen, beveiligings regels en t
 
 ### <a name="network-security-group-rule"></a>Regel voor netwerk beveiligings groep
 
-| Bewerking                                                        |   Naam                                                                |
+| Bewerking                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Micro soft. Network/networkSecurityGroups/Rules/Read            |   Regel ophalen                                                            |
-| Micro soft. Network/networkSecurityGroups/Rules/write           |   Regel maken of bijwerken                                               |
-| Micro soft. Network/networkSecurityGroups/Rules/Delete          |   Regel verwijderen                                                         |
+| Micro soft. Network/networkSecurityGroups/securityRules/lezen            |   Regel ophalen                                                            |
+| Micro soft. Network/networkSecurityGroups/securityRules/schrijven           |   Regel maken of bijwerken                                               |
+| Micro soft. Network/networkSecurityGroups/securityRules/verwijderen          |   Regel verwijderen                                                         |
 
 ### <a name="application-security-group"></a>Toepassingsbeveiligingsgroep
 
-| Bewerking                                                                     | Naam                                                     |
+| Bewerking                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
 | Micro soft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Een IP-configuratie toevoegen aan een toepassings beveiligings groep|
 | Micro soft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Een beveiligings regel toevoegen aan een toepassings beveiligings groep    |

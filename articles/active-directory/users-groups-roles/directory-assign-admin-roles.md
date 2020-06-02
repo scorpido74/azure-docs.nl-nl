@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 451d0709a8b0a1c0993ff879d675eb056e721c36
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b4ed0b011e7b82ce95c002d2af68e577f1d10c84
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116638"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266199"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -458,6 +458,9 @@ Gebruikers met deze rol hebben algemene machtigingen in micro soft share point o
 
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als share point-service beheerder. Het is share point-beheerder in de [Azure Portal](https://portal.azure.com).
+
+> [!NOTE]
+> Deze rol verleent ook scoped-machtigingen voor de Microsoft Graph-API voor Microsoft Intune, waardoor het beheer en de configuratie van beleids regels die betrekking hebben op share point-en Onedrive-resources.
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype voor bedrijven/Lync-beheerder](#lync-service-administrator-permissions)
 

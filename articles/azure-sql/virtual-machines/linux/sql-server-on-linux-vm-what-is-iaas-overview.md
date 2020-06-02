@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b60b815c62b34fb0dc5024a85d7dcb905f3df9da
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 61b8982868bf14a7b5a5441049cb7fa21cdd9d6d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234311"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266029"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "84234311"
 
 Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
 
-Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/windows/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen.
+Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/windows/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen. 
 
 ## <a name="get-started-with-sql-vms"></a><a id="create"></a>Aan de slag met SQL-Vm's
 

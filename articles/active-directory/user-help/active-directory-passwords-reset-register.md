@@ -10,14 +10,14 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 3deb59b04f3c0ba90e270bc064e3ece3c21229b3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739603"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266097"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Uw informatie over de verificatie methode registreren om uw eigen wacht woord opnieuw in te stellen
 
@@ -26,7 +26,7 @@ Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt on
 Uw beheerder moet deze functie inschakelen om uw gegevens te kunnen registreren en uw eigen wacht woord opnieuw in te stellen. Als u de optie **mijn wacht woord verg eten** niet ziet, betekent dit dat uw beheerder de functie voor uw organisatie niet heeft ingeschakeld. Als u denkt dat dit onjuist is, neemt u contact op met de Help Desk voor ondersteuning.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die zich aanmelden voor selfservice voor wachtwoord herstel willen gebruiken. Dit betekent dat u uw eigen werk-of school wachtwoord opnieuw kunt instellen (zoals, alain@contoso.com ), zonder dat u hiervoor de hulp van de beheerder hoeft te gebruiken. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
+>Dit artikel is bedoeld voor gebruikers die zich aanmelden voor selfservice voor wachtwoord herstel willen gebruiken. Dit betekent dat u uw eigen werk-of school wachtwoord opnieuw kunt instellen (zoals alain@contoso.com ), zonder dat u hiervoor de hulp van de beheerder hoeft te gebruiken. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>De verificatie methode voor het opnieuw instellen van het wacht woord instellen
 

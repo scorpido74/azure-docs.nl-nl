@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800293"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266760"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Beveiligde toepassingen ontwikkelen in Azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -128,7 +128,7 @@ Dynamische test op toepassings beveiliging (DAST) is een proces van het testen v
 
 DAST wijkt af van de statische test van de toepassings beveiliging (SAST). SAST-hulpprogram ma's analyseren bron code of gecompileerde versies van code wanneer de code niet wordt uitgevoerd om beveiligings fouten te vinden.
 
-Voer DAST uit, bij voor keur met de hulp van een beveiligings Professional (een [indringings tester](../fundamentals/pen-testing.md) of beveiligings ervaring). Als een beveiligings Professional niet beschikbaar is, kunt u DAST zelf uitvoeren met een webproxy scanner en een aantal trainingen. Sluit in een vroeg stadium een DAST-scanner aan om ervoor te zorgen dat u geen duidelijke beveiligings problemen in uw code kunt introduceren. Zie de [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) -site voor een lijst met scanners voor beveiligings problemen met webtoepassingen.
+Voer DAST uit, bij voor keur met de hulp van een beveiligings Professional (een [indringings tester](../fundamentals/pen-testing.md) of beveiligings ervaring). Als een beveiligings Professional niet beschikbaar is, kunt u DAST zelf uitvoeren met een webproxy scanner en een aantal trainingen. Sluit in een vroeg stadium een DAST-scanner aan om ervoor te zorgen dat u geen duidelijke beveiligings problemen in uw code kunt introduceren. Zie de [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) -site voor een lijst met scanners voor beveiligings problemen met webtoepassingen.
 
 ### <a name="perform-fuzz-testing"></a>Fuzzy tests uitvoeren
 

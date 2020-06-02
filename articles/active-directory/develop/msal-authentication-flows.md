@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772128"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266607"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -43,7 +43,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Hybride OIDC-stroom](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
 |[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |

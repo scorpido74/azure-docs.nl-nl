@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403429"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263989"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Java
 
@@ -248,7 +248,7 @@ Compileer de code en voer deze uit. Bij een geslaagd antwoord worden de Face-geg
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een eenvoudige Java-Console toepassing gemaakt die REST-aanroepen gebruikt naar de Azure-Face-API om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Vervolgens leert u hoe u meer kunt doen met deze functionaliteit in een Android-toepassing.
+In deze Quick Start hebt u een eenvoudige Java-Console toepassing gemaakt die REST-aanroepen gebruikt naar de Azure-Face-API om gezichten in een installatie kopie te detecteren en hun kenmerken te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie over de ondersteunde scenario's.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: een Android-app maken om gezichten te herkennen en omlijsten](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

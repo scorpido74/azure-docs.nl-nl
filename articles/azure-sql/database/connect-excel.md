@@ -1,30 +1,30 @@
 ---
 title: Verbinden met Excel
-description: Meer informatie over hoe u micro soft Excel verbindt met een data base in Azure SQL Database. Gegevens importeren in Excel voor rapportage en gegevens verkenning.
+description: Meer informatie over hoe u micro soft Excel verbindt met een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL. Gegevens importeren in Excel voor rapportage en gegevens verkenning.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joseidz
-ms.author: craigg
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/12/2019
-ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195489"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267508"
 ---
-# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Excel verbinden met een data base in Azure SQL Database en een rapport maken
+# <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Excel verbinden met een data base in Azure SQL Database of een beheerd exemplaar van Azure SQL en een rapport maken
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+U kunt Excel verbinden met een Data Base en vervolgens gegevens importeren en tabellen en grafieken maken op basis van waarden in de data base. In deze zelfstudie stelt u de verbinding tussen Excel en een databasetabel in, slaat u het bestand met de gegevens en de verbindingsinformatie voor Excel op en maakt u vervolgens een draaigrafiek uit de databasewaarden.
 
-U kunt Excel verbinden met een data base in Azure SQL Database en vervolgens gegevens importeren en tabellen en grafieken maken op basis van waarden in de data base. In deze zelfstudie stelt u de verbinding tussen Excel en een databasetabel in, slaat u het bestand met de gegevens en de verbindingsinformatie voor Excel op en maakt u vervolgens een draaigrafiek uit de databasewaarden.
-
-U moet een Data Base maken in SQL Database voordat u aan de slag gaat. Als u er nog geen hebt, raadpleegt u [een Data Base maken in Azure SQL database](single-database-create-quickstart.md) en maakt u een [IP-firewall op server niveau](firewall-create-server-level-portal-quickstart.md) om een Data Base te verkrijgen met voorbeeld gegevens die in een paar minuten actief zijn.
+U moet een Data Base maken voordat u aan de slag gaat. Als u er nog geen hebt, raadpleegt u [een Data Base maken in Azure SQL database](single-database-create-quickstart.md) en maakt u een [IP-firewall op server niveau](firewall-create-server-level-portal-quickstart.md) om een Data Base te verkrijgen met voorbeeld gegevens die in een paar minuten actief zijn.
 
 In dit artikel importeert u voorbeeld gegevens uit dat artikel in Excel, maar u kunt dezelfde stappen volgen met uw eigen gegevens.
 
@@ -101,6 +101,6 @@ Als u de verbindings gegevens permanent wilt opslaan, kunt u een. ODC-bestand ma
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Leer hoe u [SQL Database koppelt met SQL Server Management Studio](connect-query-ssms.md) voor geavanceerd uitvoeren van query's en analyses.
+* Meer informatie over het [maken van verbinding en query's met SQL Server Management Studio](connect-query-ssms.md) voor geavanceerde query's en analyses.
 * Meer informatie over de voordelen van [elastische groepen](elastic-pool-overview.md).
-* Leer hoe u [ een webtoepassing maakt die verbinding maakt met SQL Database op de back-end](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).
+* Meer informatie over het [maken van een webtoepassing die verbinding maakt met Azure SQL database op de back-end](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).

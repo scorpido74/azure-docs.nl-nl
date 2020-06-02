@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79014d318da1732d48eeb893aa383e948e1036cd
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78330716"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267100"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Een resource voor insluitende lezer maken en Azure Active Directory authenticatie configureren
 
@@ -29,7 +29,7 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 
 ## <a name="set-up-powershell-environment"></a>Power shell-omgeving instellen
 
-1. Begin met het openen van de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview). Zorg ervoor dat de Cloud shell is ingesteld op Power shell in de vervolg keuzelijst linksboven of door te `pwsh`typen.
+1. Begin met het openen van de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview). Zorg ervoor dat Cloud Shell is ingesteld op Power shell in de vervolg keuzelijst linksboven of door te typen `pwsh` .
 
 1. Kopieer het volgende code fragment en plak het in de shell.
 
@@ -141,7 +141,7 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
     }
     ```
 
-1. Voer de functie `Create-ImmersiveReaderResource`uit en geef zo nodig de para meters op.
+1. Voer de functie uit `Create-ImmersiveReaderResource` en geef zo nodig de para meters op.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -162,10 +162,10 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
     | SubscriptionName |De naam van het Azure-abonnement dat moet worden gebruikt voor uw insluitende lezer-resource. U moet een abonnement hebben om een resource te kunnen maken. |
     | ResourceName |  Moet alfanumeriek zijn en kan '-' bevatten, zolang het niet het eerste of laatste teken is. De lengte mag niet langer zijn dan 63 tekens.|
     | ResourceSubdomain |Er is een aangepast subdomein nodig voor uw insluitende lezer-resource. Het subdomein wordt gebruikt door de SDK bij het aanroepen van de insluitende lezer-service om de lezer te starten. Het subdomein moet globaal uniek zijn. Het subdomein moet alfanumeriek zijn en kan '-' bevatten, zolang het niet het eerste of laatste teken is. De lengte mag niet langer zijn dan 63 tekens. Deze para meter is optioneel als de resource al bestaat. |
-    | ResourceSKU |Opties: `S0`. Ga naar onze [pagina met Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) voor meer informatie over elke beschik bare SKU. Deze para meter is optioneel als de resource al bestaat. |
-    | ResourceLocation |Opties: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Deze para meter is optioneel als de resource al bestaat. |
+    | ResourceSKU |Opties: `S0` . Ga naar onze [pagina met Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) voor meer informatie over elke beschik bare SKU. Deze para meter is optioneel als de resource al bestaat. |
+    | ResourceLocation |Opties: `eastus` , `eastus2` , `southcentralus` , `westus` , `westus2` , `australiaeast` , `southeastasia` , `centralindia` , `japaneast` , `northeurope` , `uksouth` , `westeurope` . Deze para meter is optioneel als de resource al bestaat. |
     | ResourceGroupName |Resources worden gemaakt in resource groepen binnen abonnementen. Geef de naam van een bestaande resource groep op. Als de resource groep nog niet bestaat, wordt er een nieuwe met deze naam gemaakt. |
-    | ResourceGroupLocation |Als uw resource groep niet bestaat, moet u een locatie opgeven voor het maken van de groep. Voer uit `az account list-locations`om een lijst met locaties te vinden. Gebruik de eigenschap *name* (zonder spaties) van het geretourneerde resultaat. Deze para meter is optioneel als uw resource groep al bestaat. |
+    | ResourceGroupLocation |Als uw resource groep niet bestaat, moet u een locatie opgeven voor het maken van de groep. Voer uit om een lijst met locaties te vinden `az account list-locations` . Gebruik de eigenschap *name* (zonder spaties) van het geretourneerde resultaat. Deze para meter is optioneel als uw resource groep al bestaat. |
     | AADAppDisplayName |De weergave naam van de Azure Active Directory-toepassing. Als een bestaande Azure AD-toepassing niet wordt gevonden, wordt er een nieuw item met deze naam gemaakt. Deze para meter is optioneel als de Azure AD-toepassing al bestaat. |
     | AADAppIdentifierUri |De URI voor de Azure AD-app. Als een bestaande Azure AD-app niet wordt gevonden, wordt er een nieuw item met deze URI gemaakt. Bijvoorbeeld `https://immersivereaderaad-mycompany`. |
     | AADAppClientSecret |Een wacht woord dat u maakt, wordt later gebruikt voor verificatie bij het ophalen van een token om de insluitende lezer te starten. Het wacht woord moet ten minste 16 tekens lang zijn, ten minste één speciaal teken bevatten en ten minste één numeriek teken bevatten. |
@@ -183,7 +183,7 @@ Het script is zo ontworpen dat het flexibel is. Er wordt eerst gezocht naar best
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Bekijk de [Snelstartgids voor node. js](./quickstart-nodejs.md) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
+* Bekijk de [Snelstartgids voor node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) om te zien wat u nog meer kunt doen met de insluitende lezer-SDK met behulp van node. js
 * Bekijk de [python-zelf studie](./tutorial-python.md) om te zien wat u nog meer kunt doen met de insluitende Reader SDK met behulp van python
 * Bekijk de [SWIFT-zelf studie](./tutorial-ios-picture-immersive-reader.md) om te zien wat u nog meer met de insluitende lezer-SDK kunt doen met behulp van SWIFT
 * Verken de [insluitende lezer SDK](https://github.com/microsoft/immersive-reader-sdk) en de referentie voor de [insluitende lezer SDK](./reference.md)

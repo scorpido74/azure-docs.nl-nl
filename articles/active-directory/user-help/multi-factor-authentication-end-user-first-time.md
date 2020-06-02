@@ -1,6 +1,6 @@
 ---
 title: Wat is de pagina Aanvullende verificatie? - Azure AD
-description: Hoe kom ik bij de pagina Aanvullende beveiligingsverificatie pagina voor tweeledige verificatie?
+description: De aanvullende beveiligings verificatie pagina voor twee ledige verificatie weer geven
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,38 +8,47 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 47220bc721092005c7e4d65a00eb933cd5c49a8c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746772"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266250"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Wat is de pagina Aanvullende verificatie?
 
-U hebt een e-mail ontvangen van iemand op de IT-afdeling of van uw baas met de mededeling dat in de organisatie extra beveiligingsverificatie is toegevoegd aan uw account. Wat houdt dit in? Dit houdt in dat in uw organisatie extra stappen worden ondernomen om uw identiteit te controleren bij het aanmelden. Deze extra verificatie, ook wel tweeledige verificatie genoemd, is een combinatie van uw gebruikersnaam, uw wachtwoord en een mobiel apparaat of mobiele telefoon.
+Uw organisatie neemt extra stappen uit om ervoor te zorgen dat u bent wie u zegt wanneer u zich aanmeldt. Deze extra beveiligings verificatie wordt ook wel twee ledige verificatie genoemd. Het bestaat uit een combi natie van uw gebruikers naam, wacht woord en een mobiel apparaat of telefoon nummer. Als u de twee ledige verificatie voor een Microsoft-account bijvoorbeeld wilt uitschakelen alain@outlook.com , gebruikt u de instructies bij het [inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-Tweeledige verificatie is veiliger dat alleen een wachtwoord omdat het is gebaseerd op twee soorten verificatie: iets dat u weet, en iets dat u bij u hebt. Iets dat u weet, is uw wachtwoord. Iets dat u bij u hebt, is een telefoon of apparaat dat u meestal met u meeneemt. Tweeledige verificatie kan helpen voorkomen dat hackers zich voordoen als u, omdat ze - zelfs als ze uw wachtwoord hebben achterhaald - waarschijnlijk niet ook nog beschikken over uw apparaat.
+<center>
+
+![Afbeelding van de conceptuele verificatie methoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
+
+Verificatie met twee factoren is veiliger dan alleen een wacht woord omdat het afhankelijk is van twee vormen van verificatie:
+
+- Iets wat u weet, zoals uw wacht woord.
+- Iets wat u hebt, zoals een telefoon of een ander apparaat dat u uitvoert.
+
+Verificatie met twee factoren kan helpen voor komen dat kwaadwillende hackers zich voordoen. Zelfs als ze uw wacht woord hebben, zijn de conflicteert dat ze niet uw apparaat hebben.
 
 >[!Important]
->Dit artikel is bedoeld voor gebruikers die tweeledige verificatie gebruiken voor een werk- of schoolaccount (zoals alain@contoso.com). Als u een beheerder bent die op zoek is naar informatie over het inschakelen van tweeledige verificatie voor uw werknemers of andere gebruikers, raadpleegt u de [documentatie voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/).
+>Als u een beheerder bent die op zoek is naar informatie over het inschakelen van tweeledige verificatie voor uw werknemers of andere gebruikers, raadpleegt u de [documentatie voor Azure Active Directory-verificatie](https://docs.microsoft.com/azure/active-directory/authentication/). Dit artikel is bedoeld voor gebruikers die proberen twee ledige verificatie te gebruiken met een werk-of school account (zoals alain@contoso.com ).
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Wie besluit of u deze functie gebruikt?
 
-Afhankelijk van uw accounttype kan uw organisatie besluiten dat u gebruik moet maken van verificatie in twee stappen, maar het is ook mogelijk dat u dat zelf kunt bepalen.
+Wie beslist of u twee ledige verificatie gebruikt, is afhankelijk van het type account dat u hebt:
 
-- **Werk- of schoolaccount.** Als u een werk- of schoolaccount gebruikt (zoals alain@contoso.com), is het aan uw organisatie of u verificatie in twee stappen moet gebruiken, samen met de specifieke verificatiemethoden. Omdat uw organisatie u heeft besloten dat u deze functie moet gebruiken, is het niet mogelijk deze afzonderlijk uit te schakelen.
+- **Werk- of schoolaccount.** Als u een werk-of school account gebruikt (zoals alain@contoso.com ), is het aan uw organisatie gekoppeld, of u nu twee ledige verificatie gebruikt, samen met de specifieke verificatie methoden. Omdat uw organisatie u heeft besloten om deze functie te gebruiken, is het niet mogelijk om deze afzonderlijk in te scha kelen.
 
-- **Persoonlijk Microsoft-account.** U kunt ervoor kiezen verificatie in twee stappen in te stellen voor uw persoonlijke Microsoft-accounts (zoals alain@outlook.com). Als u problemen ondervindt met tweeledige verificatie en uw persoonlijke Microsoft-account, raadpleegt u [Tweeledige verificatie in- of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off). Omdat u zelf kiest of u deze functie wilt gebruiken, kunt u deze op elk gewenst moment in- of uitschakelen.
+- **Persoonlijk Microsoft-account.** U kunt ervoor kiezen om twee ledige verificatie in te stellen voor uw persoonlijke micro soft-accounts (zoals alain@outlook.com ). U kunt deze functie op elk gewenst moment in-of uitschakelen met behulp van de eenvoudige instructies bij het [inschakelen van twee ledige verificatie in-of uitschakelen voor uw Microsoft-account](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
     >[!Note]
-    >Als u problemen ondervindt met tweeledige verificatie en een van uw persoonlijke Microsoft-accounts (bijvoorbeeld danielle@outlook.com), kunt u gebruikmaken van de suggesties in [Tweeledige verificatie gebruiken voor uw Microsoft-account](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
+    >Als u andere problemen ondervindt met twee ledige verificatie en een van uw persoonlijke micro soft-accounts, zijn er meer suggesties in [het gebruik van verificatie in twee stappen met uw Microsoft-account](https://support.microsoft.com/help/12408/microsoft-account-how-to-use-two-step-verification).
 
-## <a name="access-the-additional-security-verification-page"></a>Toegang tot de pagina Aanvullende beveiligingsverificatie
+## <a name="open-the-additional-security-verification-page"></a>De extra beveiligings verificatie pagina openen
 
-Nadat uw organisatie tweeledige verificatie heeft ingeschakeld en ingesteld, wordt u gevraagd om meer gegevens te verstrekken om uw account veilig te houden.
+Wanneer uw organisatie twee ledige verificatie heeft ingeschakeld, ontvangt u elke keer dat u zich aanmeldt u een prompt om u meer informatie te geven om uw account veilig te houden.
 
 ![Vraag om meer info te verstrekken](media/multi-factor-authentication-verification-methods/multi-factor-authentication-initial-prompt.png)
 
@@ -49,17 +58,17 @@ Nadat uw organisatie tweeledige verificatie heeft ingeschakeld en ingesteld, wor
 
     De pagina **Aanvullende beveiligingsverificatie** wordt weergegeven.
 
-2. Op de pagina **Aanvullende beveiligingsverificatie** moet u besluiten welke tweeledige verificatiemethode u wilt gebruiken om te controleren of u bent wie u zegt nadat u zich hebt aangemeld bij uw werk- of schoolaccount. U kunt het volgende selecteren:
+2. Selecteer op de pagina **aanvullende beveiligings verificatie** de twee ledige verificatie methode die u wilt gebruiken om te controleren of u bent wie u zegt wanneer u zich aanmeldt bij uw werk-of school account. U kunt het volgende selecteren:
 
     | Contactmethode | Beschrijving |
     | --- | --- |
-    | Mobiele app | <ul><li>**Meldingen ontvangen voor verificatie.** Met deze optie wordt een melding naar de verificator-app op uw smartphone of tablet gepusht. Bekijk de melding en, indien deze in orde is, selecteer **Verifiëren** in de app. Uw werk of onderwijsinstelling kan vereisen dat u een pincode invoert voordat u zich verifieert.</li><li>**Verificatiecode gebruiken.** In deze modus genereert de verificator-app een verificatiecode die elke dertig seconden wordt bijgewerkt. Voer de meest actuele verificatiecode in het aanmeldingsscherm in.<br>De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594) en [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
+    | Mobiele app | <ul><li>**Meldingen ontvangen voor verificatie.** Met deze optie wordt een melding naar de verificator-app op uw smartphone of tablet gepusht. Bekijk de melding en, indien deze in orde is, selecteer **Verifiëren** in de app. Uw werk of onderwijsinstelling kan vereisen dat u een pincode invoert voordat u zich verifieert.</li><li>**Verificatiecode gebruiken.** In deze modus genereert de app een verificatie code die elke 30 seconden wordt bijgewerkt. Voer de meest actuele verificatiecode in het aanmeldingsscherm in.<br>De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?linkid=866594) en [iOS](https://go.microsoft.com/fwlink/?linkid=866594).</li></ul> |
     | Telefoonnummer voor verificatie | <ul><li>**Telefonische oproep** voert een automatische spraakoproep uit naar het door u verstrekte nummer. Beantwoord de oproep en druk op het hekje (#) op het toetsenblok om u te verifiëren.</li><li>**Sms-bericht** verzendt een sms-bericht met een verificatiecode. Na de prompt in de tekst antwoordt u op het sms-bericht of voert u de opgegeven verificatiecode in de aanmeldingsinterface in.</li></ul> |
     | Bureautelefoon | Voert een automatische spraakoproep uit naar het door u verstrekte nummer. Beantwoord de oproep en druk op het hekje (#) op het toetsenblok om u te verifiëren. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de pagina **Aanvullende beveiligingsverificatie** hebt geopend, moet u de tweeledige verificatiemethode selecteren en instellen:
+Nadat u een twee ledige verificatie methode op de pagina **aanvullende beveiligings verificatie** hebt geselecteerd, moet u deze instellen:
 
 - [Uw mobiele apparaat instellen als uw verificatiemethode](multi-factor-authentication-setup-phone-number.md)
 
@@ -69,10 +78,6 @@ Nadat u de pagina **Aanvullende beveiligingsverificatie** hebt geopend, moet u d
 
 ## <a name="related-resources"></a>Gerelateerde resources
 
-- [Instellingen voor tweeledige verificatiemethode beheren](multi-factor-authentication-end-user-manage-settings.md)
-
-- [App-wachtwoorden beheren](multi-factor-authentication-end-user-app-passwords.md)
-
 - [Aanmelden met behulp van tweeledige verificatie](multi-factor-authentication-end-user-signin.md)
 
-- [Hulp krijgen bij tweeledige verificatie](multi-factor-authentication-end-user-troubleshoot.md) 
+- [Hulp krijgen bij tweeledige verificatie](multi-factor-authentication-end-user-troubleshoot.md)

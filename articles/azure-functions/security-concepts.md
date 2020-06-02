@@ -3,12 +3,12 @@ title: Azure Functions beveiligen
 description: Meer informatie over hoe u de functie code die wordt uitgevoerd in azure beter kunt beveiligen tegen veelvoorkomende aanvallen.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07d099ae3ce8a544994208436770674e6674e6f0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744068"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259419"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions beveiligen
 
@@ -83,7 +83,7 @@ Net als bij elke toepassing of service voert het doel uw functie-app uit met de 
 
 #### <a name="user-management-permissions"></a>Machtigingen voor gebruikers beheer
 
-Functies bieden ondersteuning voor het bouwen van [Azure op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md). RBAC-rollen die worden ondersteund door-functies zijn [Inzender](../role-based-access-control/built-in-roles.md#contributor), [eigenaar](../role-based-access-control/built-in-roles.md#owner)en [lezer](../role-based-access-control/built-in-roles.md#owner). 
+Functies ondersteunen ingebouwde op [rollen gebaseerd toegangs beheer (RBAC) van Azure](../role-based-access-control/overview.md). RBAC-rollen die worden ondersteund door-functies zijn [Inzender](../role-based-access-control/built-in-roles.md#contributor), [eigenaar](../role-based-access-control/built-in-roles.md#owner)en [lezer](../role-based-access-control/built-in-roles.md#owner). 
 
 Machtigingen zijn van kracht op het niveau van de functie-app. De rol Inzender is vereist voor het uitvoeren van de meeste taken op app-niveau. Alleen de rol eigenaar kan een functie-app verwijderen. 
 

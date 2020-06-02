@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720976"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267989"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Toegang tot gegevenssets met Python met behulp van de clientbibliotheek van Azure Machine Learning Python
 Met de preview-versie van Microsoft Azure Machine Learning python-client bibliotheek kan beveiligde toegang tot uw Azure Machine Learning gegevens sets worden ingeschakeld vanuit een lokale python-omgeving en kunnen gegevens sets in een werk ruimte worden gemaakt en beheerd.
@@ -40,7 +40,7 @@ Het is afhankelijk van de volgende pakketten:
 * python-dateutil
 * Pandas
 
-U kunt het beste een python-distributie gebruiken, zoals [Anaconda](http://continuum.io/downloads#all) of [Canopy](https://store.enthought.com/downloads/), die wordt geleverd met python, IPython en de drie bovenstaande pakketten die hierboven zijn geïnstalleerd. Hoewel IPython niet strikt vereist is, is het een fantastische omgeving voor het interactief bewerken en visualiseren van gegevens.
+U kunt het beste een python-distributie gebruiken, zoals [Anaconda](https://www.anaconda.com/) of [Canopy](https://store.enthought.com/downloads/), die wordt geleverd met python, IPython en de drie bovenstaande pakketten die hierboven zijn geïnstalleerd. Hoewel IPython niet strikt vereist is, is het een fantastische omgeving voor het interactief bewerken en visualiseren van gegevens.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>De Azure Machine Learning python-client bibliotheek installeren
 Installeer de Azure Machine Learning python-client bibliotheek om de taken uit te voeren die in dit onderwerp worden beschreven. Deze bibliotheek is beschikbaar vanuit de [python-pakket index](https://pypi.python.org/pypi/azureml). Als u deze wilt installeren in uw python-omgeving, voert u de volgende opdracht uit vanuit uw lokale python-omgeving:
@@ -100,7 +100,7 @@ Nadat een experiment is uitgevoerd in Machine Learning Studio (klassiek), is het
 
 Tussenliggende gegevens sets kunnen worden geopend, zolang de Data-indeling compatibel is met de python-client bibliotheek.
 
-De volgende indelingen worden ondersteund (constanten voor deze indelingen bevinden zich `azureml.DataTypeIds` in de klasse):
+De volgende indelingen worden ondersteund (constanten voor deze indelingen bevinden zich in de `azureml.DataTypeIds` klasse):
 
 * PlainText
 * GenericCSV
@@ -110,7 +110,7 @@ De volgende indelingen worden ondersteund (constanten voor deze indelingen bevin
 
 U kunt de indeling bepalen door boven een module-uitvoer knooppunt te bewegen. Het wordt samen met de naam van het knoop punt weer gegeven in de knop info.
 
-Sommige modules, zoals de [gesplitste][split] module, worden uitgevoerd naar een indeling met `Dataset`de naam, die niet wordt ondersteund door de python-client bibliotheek.
+Sommige modules, zoals de [gesplitste][split] module, worden uitgevoerd naar een indeling met `Dataset` de naam, die niet wordt ondersteund door de python-client bibliotheek.
 
 ![Indeling van gegevensset][dataset-format]
 
@@ -191,7 +191,7 @@ Andere zijn waarden die worden toegewezen door Azure ML:
 Zie de `SourceDataset` klasse voor meer informatie over de beschik bare meta gegevens.
 
 ### <a name="read-contents"></a>Inhoud lezen
-De code fragmenten die worden verschaft door Machine Learning Studio (klassiek), downloaden en deserialiseren de gegevensset automatisch naar een Panda data frame-object. Dit wordt gedaan met de `to_dataframe` -methode:
+De code fragmenten die worden verschaft door Machine Learning Studio (klassiek), downloaden en deserialiseren de gegevensset automatisch naar een Panda data frame-object. Dit wordt gedaan met de- `to_dataframe` methode:
 
     frame = ds.to_dataframe()
 
@@ -265,7 +265,7 @@ Vervolgens gebruikt `update_from_dataframe` u om de inhoud van de gegevensset in
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-Als u de gegevens wilt serialiseren naar een andere indeling, geeft u een waarde op voor de `data_type_id` optionele para meter.
+Als u de gegevens wilt serialiseren naar een andere indeling, geeft u een waarde op voor de optionele `data_type_id` para meter.
 
     from azureml import DataTypeIds
 
@@ -280,7 +280,7 @@ Als u de gegevens wilt serialiseren naar een andere indeling, geeft u een waarde
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to jan 2015'
 
-U kunt desgewenst een nieuwe beschrijving instellen door een waarde voor de `description` para meter op te geven.
+U kunt desgewenst een nieuwe beschrijving instellen door een waarde voor de para meter op te geven `description` .
 
     dataset = ws.datasets['existing dataset']
 
@@ -293,7 +293,7 @@ U kunt desgewenst een nieuwe beschrijving instellen door een waarde voor de `des
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-U kunt desgewenst een nieuwe naam instellen door een waarde voor de `name` para meter op te geven. Vanaf nu haalt u de gegevensset op met behulp van de nieuwe naam. Met de volgende code worden de gegevens, naam en beschrijving bijgewerkt.
+U kunt desgewenst een nieuwe naam instellen door een waarde voor de para meter op te geven `name` . Vanaf nu haalt u de gegevensset op met behulp van de nieuwe naam. Met de volgende code worden de gegevens, naam en beschrijving bijgewerkt.
 
     dataset = ws.datasets['existing dataset']
 
@@ -310,9 +310,9 @@ U kunt desgewenst een nieuwe naam instellen door een waarde voor de `name` para 
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-`name` De `data_type_id` `description` para meters en zijn optioneel en zijn standaard ingesteld op de vorige waarde. De `dataframe` para meter is altijd vereist.
+De `data_type_id` `name` `description` para meters en zijn optioneel en zijn standaard ingesteld op de vorige waarde. De `dataframe` para meter is altijd vereist.
 
-Als uw gegevens al zijn geserialiseerd, gebruikt u `update_from_raw_data` in plaats `update_from_dataframe`van. Als u zojuist doorgeeft `raw_data` in plaats `dataframe`van, werkt het op een vergelijk bare manier.
+Als uw gegevens al zijn geserialiseerd, gebruikt u `update_from_raw_data` in plaats van `update_from_dataframe` . Als u zojuist doorgeeft in `raw_data` plaats van `dataframe` , werkt het op een vergelijk bare manier.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

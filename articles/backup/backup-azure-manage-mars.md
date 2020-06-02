@@ -4,12 +4,12 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025098"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248597"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
@@ -22,7 +22,7 @@ Wanneer u het back-upbeleid wijzigt, kunt u nieuwe items toevoegen, bestaande it
 - **Items toevoegen** gebruik deze optie alleen voor het toevoegen van nieuwe items om een back-up te maken. Als u bestaande items wilt verwijderen, gebruikt u de optie **items verwijderen** of **uitsluitings instellingen** .  
 - **Items verwijderen** gebruik deze optie om items te verwijderen waarvan u een back-up wilt maken.
   - Gebruik **uitsluitings instellingen** voor het verwijderen van alle items binnen een volume in plaats van **items te verwijderen**.
-  - Als alle selecties in een volume worden gewist, worden oude back-ups van de items bewaard op het moment van de laatste back-up, zonder aanpassings bereik.
+  - Als alle selecties in een volume worden gewist, worden oude back-ups van de items bewaard op basis van de Bewaar instellingen op het moment van de laatste back-up, zonder aanpassings bereik.
   - Als u deze items opnieuw selecteert, worden er geen back-ups gemaakt van de eerste back-up en nieuwe beleids wijzigingen.
   - Als u de selectie van het hele volume uitschakelt, blijft de vorige back-up zonder enige bereik voor het wijzigen van het Bewaar beleid.
 - **Instellingen voor uitsluiting** gebruik deze optie om specifieke items uit te sluiten waarvan u een back-up wilt maken.
@@ -125,7 +125,7 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 
     ![Een geplande back-up stoppen.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. U wordt gevraagd een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
-5. Ga naar **Recovery Services** > **Settings** > **Eigenschappen**van de kluis instellingen.
+5. Ga naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 6. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Deze pincode kopiëren. De pincode is slechts vijf minuten geldig.
 7. Plak de pincode in de beheer console en selecteer **OK**.
 
@@ -156,7 +156,7 @@ Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten
 
 Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegevens tijdens het maken van een back-up of het herstellen van uw on-premises of lokale computer met de MARS-agent naar of van Azure. Als u de wachtwoordzin kwijtraakt of verg eten bent, kunt u de wachtwoordzin opnieuw genereren (mits uw computer nog steeds is geregistreerd bij de Recovery Services kluis en de back-up is geconfigureerd) door de volgende stappen te volgen:
 
-- Ga in de Mars agent-console naar het **deel venster** > acties en**Wijzig de eigenschappen** >. Ga vervolgens naar het **tabblad versleuteling**.<br>
+- Ga in de Mars agent-console naar het **deel venster acties**en  >  **Wijzig de eigenschappen** >. Ga vervolgens naar het **tabblad versleuteling**.<br>
 - Selecteer selectie vakje **wachtwoordzin wijzigen** .<br>
 - Voer een nieuwe wachtwoordzin in of klik op **wachtwoordzin genereren**.
 - Klik op **Bladeren** om de nieuwe wachtwoordzin op te slaan.

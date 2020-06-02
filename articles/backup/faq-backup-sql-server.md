@@ -4,12 +4,12 @@ description: Vind antwoorden op veelgestelde vragen over het maken van back-ups 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11657a5dda79fc550f4c07d4020d75c671335da4
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247707"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248257"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Veelgestelde vragen over SQL Server-data bases die worden uitgevoerd op een back-up van Azure VM
 
@@ -52,7 +52,7 @@ De standaard waarde van DefaultBackupTasksThreshold is **20**.
  Hoewel deze methode ervoor zorgt dat de back-uptoepassing een groot aantal resources verbruikt, is SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017) een meer algemene manier om limieten op te geven voor de hoeveelheid CPU, fysieke io en het geheugen die door binnenkomende toepassings aanvragen kunnen worden gebruikt.
 
 > [!NOTE]
-> In de UX kunt u nog steeds een aantal back-ups op elk gewenst moment plannen, maar deze worden verwerkt in een sliding window van zeg, 5, conform het bovenstaande voor beeld.
+> In de UX kunt u nog steeds een aantal back-ups op elk gewenst moment plannen, maar deze worden verwerkt in een sliding window van de melding 5, volgens het bovenstaande voor beeld.
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>Kan ik een volledige back-up van een secundaire replica uitvoeren?
 

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 5/21/2020
 ms.author: derekol
-ms.openlocfilehash: f9f93bc434a2eea34e8c0d1256cd72fa5527204f
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e4f9f5b59b61065c300b58fb1cdb88e12b7ddbe0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849498"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247220"
 ---
 # <a name="convert-a-legacy-exchange-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Een verouderde Exchange-peering converteren naar een Azure-resource met behulp van de Azure Portal
 
@@ -26,12 +26,11 @@ Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](how
 
 ## <a name="convert-a-legacy-exchange-peering-to-an-azure-resource"></a>Een verouderde Exchange-peering converteren naar een Azure-resource
 
-Als Internet Exchange-provider kunt u een aanvraag voor uitwisseling van peer maken door [een peering te maken]( https://go.microsoft.com/fwlink/?linkid=2129593).
+Als Internet Exchange-provider kunt u een uitwisselings aanvraag maken door [een peering te maken]( https://go.microsoft.com/fwlink/?linkid=2129593).
 
 1. Vul op de pagina **een peering maken** op het tabblad **basis beginselen** de selectie vakjes in, zoals hier wordt weer gegeven:
 
-
->   ![Peering Service registreren](./media/setup-basics-tab.png)
+   ![Peering Service registreren](./media/setup-basics-tab.png)
 
 * Selecteer uw Azure-abonnement.
 
@@ -41,38 +40,15 @@ Als Internet Exchange-provider kunt u een aanvraag voor uitwisseling van peer ma
 
 * De regio wordt automatisch geselecteerd als u een bestaande resource groep hebt gekozen. Als u ervoor hebt gekozen om een nieuwe resource groep te maken, moet u ook de Azure-regio kiezen waar u de resource wilt opslaan.
 
->[!NOTE]
->De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
+  >[!NOTE]
+  >De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
 
 * Selecteer uw ASN in het vak **PeerASN** .
 
->[!IMPORTANT]  
->U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van **[peer ASN koppelen aan Azure-abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)**.
+  >[!IMPORTANT]  
+  >U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van **[peer ASN koppelen aan Azure-abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)**.
 
 * Selecteer **volgende: Configuratie** om door te gaan.
-
-### <a name="convert-legacy-exchange-peering"></a><a name=create></a>Verouderde uitwisseling van peering converteren
-
-U kunt verouderde peering-verbindingen converteren met behulp van het [maken van een peering]( https://go.microsoft.com/fwlink/?linkid=2129593).
-
-####  <a name="configure-basic-settings"></a>Basisinstellingen configureren
->   ![Peering Service registreren](./media/setup-basics-tab.png)
-
-* Selecteer uw Azure-abonnement.
-
-* Voor resource groep kunt u een bestaande resource groep in de vervolg keuzelijst kiezen of een nieuwe groep maken door nieuw maken te selecteren. We maken een nieuwe resource groep voor dit voor beeld.
-
-* De naam komt overeen met de naam van de resource en kan alles zijn wat u kiest.
-
-* De regio wordt automatisch geselecteerd als u een bestaande resource groep hebt gekozen. Als u ervoor hebt gekozen om een nieuwe resource groep te maken, moet u ook de Azure-regio kiezen waar u de resource wilt opslaan.
-
->[!NOTE]
-    De regio waar een resource groep zich bevindt, is onafhankelijk van de locatie waar u peering met micro soft wilt maken. Maar het is een best practice om uw peering resources te organiseren in resource groepen die zich in de dichtstbijzijnde Azure-regio's bevinden. U kunt bijvoorbeeld voor peerings in Ashburn een resource groep maken in VS-Oost of Oost-VS2.
-
-* Selecteer uw ASN in het vak **PeerASN** .
-
->[!IMPORTANT]  
-    U kunt alleen een ASN met ValidationState als goedgekeurd kiezen voordat u een peering-aanvraag indient. Als u zojuist uw PeerAsn-aanvraag hebt verzonden, wacht u 12 uur of voor een ASN-koppeling die u wilt goed keuren. Als de ASN die u hebt geselecteerd, in afwachting is van validatie, wordt een fout bericht weer gegeven. Als u de ASN die u nodig hebt, niet ziet, controleert u of u het juiste abonnement hebt geselecteerd. Als dit het geval is, controleert u of u PeerAsn al hebt gemaakt met behulp van **[peer ASN koppelen aan Azure-abonnement](https://go.microsoft.com/fwlink/?linkid=2129592)**.
 
 
 #### <a name="configure-connections-and-submit"></a>Verbindingen configureren en verzenden

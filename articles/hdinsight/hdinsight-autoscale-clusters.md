@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 4d4b2f0305e1069ac7873df24d834ab55512aff7
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: ccd729510341a9232764b1c211aa18c197ad5a37
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219718"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248631"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 Gebruik de juiste para meters in de aanvraag lading. De onderstaande JSON-nettolading kan worden gebruikt om automatisch schalen in te scha kelen. Gebruik de payload `{autoscale: null}` om automatisch schalen uit te scha kelen.
 
 ```json
-{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 5 } } }
 ```
 
 Zie de vorige sectie over het [inschakelen van automatisch schalen op basis](#load-based-autoscaling) van een werk belasting voor een volledige beschrijving van alle Payload-para meters.

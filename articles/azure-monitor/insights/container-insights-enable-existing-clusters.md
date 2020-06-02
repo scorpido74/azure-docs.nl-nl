@@ -3,12 +3,12 @@ title: Een AKS-cluster (Azure Kubernetes service) bewaken dat is geïmplementeer
 description: Meer informatie over het inschakelen van bewaking van een Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers die al zijn geïmplementeerd in uw abonnement.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275449"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264197"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -19,7 +19,7 @@ U kunt de bewaking van een AKS-cluster inschakelen dat al is geïmplementeerd me
 * Azure CLI
 * Terraform
 * [Vanuit Azure monitor](#enable-from-azure-monitor-in-the-portal) of [rechtstreeks vanuit het AKS-cluster](#enable-directly-from-aks-cluster-in-the-portal) in de Azure Portal
-* Met de [meegeleverde Azure Resource Manager sjabloon](#enable-using-an-azure-resource-manager-template) met behulp van de `New-AzResourceGroupDeployment` Azure PowerShell CMDLET of met Azure cli.
+* Met de [meegeleverde Azure Resource Manager sjabloon](#enable-using-an-azure-resource-manager-template) met behulp van de Azure PowerShell cmdlet `New-AzResourceGroupDeployment` of met Azure cli.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -27,7 +27,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
 
-Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld hoeft u geen bestaande werk ruimte te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van de *DefaultWorkspace-\<GUID>\<-regio>*.  
+Met de volgende stap wordt het controleren van uw AKS-cluster ingeschakeld met behulp van Azure CLI. In dit voor beeld hoeft u geen bestaande werk ruimte te maken of op te geven. Met deze opdracht wordt het proces voor u vereenvoudigd door een standaard werk ruimte te maken in de standaard resource groep van het AKS-cluster abonnement als er nog geen bestaat in de regio.  De standaardwerk ruimte die wordt gemaakt, lijkt op de indeling van *DefaultWorkspace- \<GUID> - \<Region> *.  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
@@ -41,7 +41,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integreren met een bestaande werk ruimte
 
-Als u liever met een bestaande werk ruimte integreert, voert u de volgende stappen uit om eerst de volledige Resource-ID te identificeren van uw `--workspace-resource-id` log Analytics werk ruimte die voor de para meter is vereist en voert u vervolgens de opdracht uit om de invoeg toepassing bewaking voor de opgegeven werk ruimte in te scha kelen.  
+Als u liever met een bestaande werk ruimte integreert, voert u de volgende stappen uit om eerst de volledige Resource-ID te identificeren van uw Log Analytics werk ruimte die voor de `--workspace-resource-id` para meter is vereist en voert u vervolgens de opdracht uit om de invoeg toepassing bewaking voor de opgegeven werk ruimte in te scha kelen.  
 
 1. Een lijst met alle abonnementen waartoe u toegang hebt met behulp van de volgende opdracht:
 
@@ -73,7 +73,7 @@ Als u liever met een bestaande werk ruimte integreert, voert u de volgende stapp
 
     Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
 
-4. Voer de volgende opdracht uit om de invoeg toepassing bewaking in te scha kelen, waarbij u `--workspace-resource-id` de waarde voor de para meter vervangt. De teken reeks waarde moet binnen de dubbele aanhalings tekens staan:
+4. Voer de volgende opdracht uit om de invoeg toepassing bewaking in te scha kelen, waarbij u de waarde voor de `--workspace-resource-id` para meter vervangt. De teken reeks waarde moet binnen de dubbele aanhalings tekens staan:
 
     ```azurecli
     az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>"
@@ -108,9 +108,9 @@ Ga als volgt te werk om de bewaking van uw AKS-cluster in de Azure Portal van Az
 
 2. Selecteer **containers** in de lijst.
 
-3. Selecteer de **niet-bewaakte clusters**op de pagina **monitor-containers** .
+3. Selecteer op de pagina **monitor-containers** de optie niet- **bewaakte clusters**.
 
-4. Zoek in de lijst met niet-bewaakte clusters de container in de lijst en klik op **inschakelen**.   
+4. Zoek in de lijst met niet-bewaakte clusters de container in de lijst en klik op **inschakelen**.
 
 5. Als u een bestaande Log Analytics-werk ruimte hebt in hetzelfde abonnement als het cluster, selecteert u in de vervolg keuzelijst de pagina **onboarding to Azure monitor voor containers** .  
     De lijst preselecteert de standaard werkruimte en de locatie waar de AKS-container in het abonnement is geïmplementeerd.
@@ -167,7 +167,7 @@ Als u niet bekend bent met het concept van het implementeren van resources met b
 
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit `az --version`om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Een sjabloon maken en uitvoeren
 

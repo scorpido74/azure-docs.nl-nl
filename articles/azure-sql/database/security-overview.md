@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 617c06c9f9a86e8377f32a5e80102eb92e9f029c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7beaae92d8f08aaaa3625240bc2c70256ed0e1d4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191708"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266046"
 ---
 # <a name="an-overview-of-azure-sql-database--sql-managed-instance-security-capabilities"></a>Een overzicht van de beveiligings mogelijkheden van Azure SQL Database & SQL Managed instance
 
@@ -109,7 +109,7 @@ Als u bijvoorbeeld het ADO.NET-stuur programma gebruikt, wordt dit bereikt via *
 > [!IMPORTANT]
 > Houd er rekening mee dat sommige niet-micro soft-Stuur Programma's standaard geen gebruikmaken van TLS of gebruikmaken van een oudere versie van TLS (<1,2) om te kunnen werken. In dit geval kunt u met de server nog steeds verbinding maken met uw data base. We raden u echter aan de beveiligings Risico's te evalueren waarmee dergelijke Stuur Programma's en toepassingen verbinding kunnen maken met SQL Database, met name als u gevoelige gegevens opslaat.
 >
-> Zie voor meer informatie over TLS en connectiviteit [TLS-overwegingen](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity)
+> Zie voor meer informatie over TLS en connectiviteit [TLS-overwegingen](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (versleuteling-at-rest)
 

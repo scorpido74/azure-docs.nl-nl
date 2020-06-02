@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872017"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263496"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -97,7 +97,7 @@ U kunt dit probleem oplossen door uw installatie van [Azure cli](/cli/azure/inst
 
 Mogelijk ziet u deze fout wanneer Azure dev Spaces geen verbinding kunnen maken met de API-server van uw AKS-cluster.
 
-Als de toegang tot uw AKS-cluster-API-server is vergrendeld of als u de [API-server geautoriseerde IP-](../aks/api-server-authorized-ip-ranges.md) adresbereiken hebt ingeschakeld voor uw AKS-cluster, moet u ook uw cluster [maken](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) of [bijwerken](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) om [extra bereiken op basis van uw regio toe te staan](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+Als de toegang tot uw AKS-cluster-API-server is vergrendeld of als u de [API-server geautoriseerde IP-](../aks/api-server-authorized-ip-ranges.md) adresbereiken hebt ingeschakeld voor uw AKS-cluster, moet u ook uw cluster [maken](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) of [bijwerken](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) om [extra bereiken op basis van uw regio toe te staan](configure-networking.md#aks-cluster-network-requirements)
 
 Zorg ervoor dat de API-server beschikbaar is door kubectl-opdrachten uit te voeren. Als de API-server niet beschikbaar is, neemt u contact op met de AKS-ondersteuning en probeert u het opnieuw wanneer de API-server werkt.
 
@@ -150,7 +150,7 @@ Deze fout treedt op als de helm-client niet meer kan communiceren met de Tiller-
 
 U kunt dit probleem oplossen door de agent knooppunten in het cluster opnieuw op te starten.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Fout ' release azds- \< id = \> - \< \> - \< servicenaam ' \> mislukt: de service ' \< ServiceName ' \> bestaat al ' of ' pull-toegang geweigerd voor \< servicenaam \> , opslag plaats bestaat niet of ' docker aanmelding ' is vereist.
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Fout ' release azds- \<identifier\> - \<spacename\> - \<servicename\> failed: Services \<servicename\> bestaat al ' of ' pull-toegang geweigerd voor \<servicename\> , bestaat niet of ' docker aanmelding ' is vereist.
 
 Deze fouten kunnen zich voordoen als u direct helm-opdrachten (zoals `helm install` , `helm upgrade` of `helm delete` ) combineert met de opdracht dev Spaces (zoals `azds up` en `azds down` ) binnen dezelfde ontwikkel ruimte. Dit gebeurt omdat ontwikkel ruimten een eigen Tiller-exemplaar hebben, wat een conflict veroorzaakt met uw eigen Tiller-exemplaar dat wordt uitgevoerd in dezelfde dev-ruimte.
 
@@ -272,7 +272,7 @@ U kunt bijvoorbeeld de *Windows BranchCache* -service stoppen en uitschakelen:
 * U kunt deze ook uitschakelen door *opstart type* in te stellen op *uitgeschakeld*.
 * Klik op *OK*.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Fout ' geen AzureAssignedIdentity gevonden voor Pod: azds/azds-webhook-implementatie- \< id \> in toegewezen status '
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Fout ' geen AzureAssignedIdentity gevonden voor Pod: azds/azds-webhook-implementatie- \<id\> in toegewezen status '
 
 Bij het uitvoeren van een service met Azure-ontwikkel ruimten in een AKS-cluster met een [beheerde identiteit](../aks/use-managed-identity.md) en [pod beheerde identiteiten](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , kan het proces vastlopen na de installatie stap van de *grafiek* . Als u de *azds-injectie-webhook* in de *azds* -naam ruimte inspecteert, ziet u deze fout mogelijk.
 
@@ -591,7 +591,7 @@ Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het u
 | storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | azds- <guid> . <location> . azds.io | HTTPS: 443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE% \. azds\settings.json|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout ' kan het cluster cluster niet \< vinden \> in het abonnement \< subscriptionId \> '
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster niet vinden \<cluster\> in het abonnement \<subscriptionId\>
 
 Deze fout kan optreden als uw kubeconfig-bestand is gericht op een ander cluster of abonnement dan u probeert te gebruiken met het Azure dev Spaces-programma aan de client zijde. Met het hulp programma voor het gebruik van Azure dev Spaces aan de client zijde wordt het gedrag van *kubectl*gerepliceerd, dat gebruikmaakt van [een of meer kubeconfig-bestanden](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) om te selecteren en te communiceren met het cluster.
 

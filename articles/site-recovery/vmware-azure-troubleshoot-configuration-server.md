@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478305"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246880"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Problemen met de configuratieserver oplossen
 
@@ -43,15 +43,17 @@ De bron machine wordt geregistreerd bij de configuratie server wanneer u de Mobi
     4. Wanneer netwerk problemen zijn opgelost, voert u de registratie opnieuw uit door de richt lijnen te volgen in de [bron machine registreren bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
 6. Als de teken reeks **post-aanvraag: (7)-kan geen verbinding maken met de server** is niet gevonden. Zoek in hetzelfde logboek bestand naar de teken reeks **aanvraag: (60)-peer certificaat kan niet worden geverifieerd met de opgegeven CA-certificaten**. Deze fout kan optreden omdat het configuratie server certificaat is verlopen of de bron machine geen ondersteuning biedt voor TLS 1,0-of later-protocollen. Dit kan ook optreden als een firewall TLS-communicatie blokkeert tussen de bron computer en de configuratie server. Als de teken reeks wordt gevonden: 
-    1. Als u wilt oplossen, maakt u verbinding met het IP-adres van de configuratie server met behulp van een webbrowser op de bron machine. Gebruik de URI https:\/ \/<IP-adres\>van de configuratie server: 443/. Zorg ervoor dat de bron machine de configuratie server kan bereiken via poort 443.
+    1. Als u wilt oplossen, maakt u verbinding met het IP-adres van de configuratie server met behulp van een webbrowser op de bron machine. Gebruik de URI https: \/ \/<IP-adres van de configuratie server \> : 443/. Zorg ervoor dat de bron machine de configuratie server kan bereiken via poort 443.
     2. Controleer of er firewall regels op de bron machine moeten worden toegevoegd of verwijderd voor de bron machine om te communiceren met de configuratie server. Vanwege de verschillende firewall software die mogelijk in gebruik is, kunnen we niet alle vereiste firewall configuraties weer geven. Werk samen met uw netwerk beheerders om verbindings problemen te blok keren.
     3. Zorg ervoor dat de mappen die worden vermeld in [site Recovery map uitsluitingen van antivirus Programma's](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) worden uitgesloten van de antivirus software.  
     4. Nadat u de problemen hebt opgelost, voert u de registratie opnieuw uit door de richt lijnen te volgen in [Registreer de bron machine bij de configuratie server](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. Als de waarde van het platform in <INSTALLATION_DIR\>/etc/drscout.conf is beschadigd, mislukt de registratie op Linux. Als u dit probleem wilt identificeren, opent u het bestand/var/log/ua_install. log. Zoek naar de teken reeks **die de configuratie afbreekt, omdat VM_PLATFORM waarde Null is of niet VMware/Azure is**. Het platform moet worden ingesteld op **VMware** of **Azure**. Als het bestand drscout. conf beschadigd is, raden wij u aan [de Mobility-agent te verwijderen](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) en vervolgens de Mobility-agent opnieuw te installeren. Als de installatie mislukt, voert u de volgende stappen uit: a. Open het/Uninstall.sh-bestand van de Installation_Directory en Bekijk de aanroep van de functie **StopServices** .
+7. Als de waarde van het platform in <INSTALLATION_DIR \> /etc/drscout.conf is beschadigd, mislukt de registratie op Linux. Als u dit probleem wilt identificeren, opent u het bestand/var/log/ua_install. log. Zoek naar de teken reeks **die de configuratie afbreekt, omdat VM_PLATFORM waarde Null is of niet VMware/Azure is**. Het platform moet worden ingesteld op **VMware** of **Azure**. Als het bestand drscout. conf beschadigd is, raden wij u aan [de Mobility-agent te verwijderen](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) en vervolgens de Mobility-agent opnieuw te installeren. Als de installatie mislukt, voert u de volgende stappen uit: a. Open het/Uninstall.sh-bestand van de Installation_Directory en Bekijk de aanroep van de functie **StopServices** .
     b. Open het/VX/bin/uninstall.sh-bestand van de Installation_Directory en opmerkingen bij de aanroep van de functie **stop_services** .
     c. Open het/FX/uninstall.sh-bestand van Installation_Directory en bewerk de volledige sectie waarin wordt geprobeerd de FX-service te stoppen.
     d. [Verwijder](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) de Mobility-agent. Nadat de installatie is voltooid, start u het systeem opnieuw op en probeert u de Mobility-agent opnieuw te installeren.
+
+8. Zorg ervoor dat multi-factor Authentication niet is ingeschakeld voor een gebruikers account. Azure Site Recovery biedt momenteel geen ondersteuning voor multi-factor Authentication voor gebruikers accounts. Registreer de configuratie server zonder multi-factor Authentication-gebruikers account.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Installatie fout: kan de accounts niet laden
 
@@ -97,7 +99,7 @@ Voer de volgende opdracht uit op de bron computer:
 
 Instelling | Details
 --- | ---
-Gebruik | UnifiedAgentConfigurator. exe/CSEndPoint <configuratie server IP-\> adres/PassphraseFilePath <pad van de wachtwoordzin\>
+Gebruik | UnifiedAgentConfigurator. exe/CSEndPoint < configuratie server IP-adres \> /PassphraseFilePath < pad van de wachtwoordzin\>
 Agent configuratie logboeken | Bevindt zich onder%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 /PassphraseFilePath |  Verplicht. De locatie van de wachtwoordzin. Gebruik een geldig UNC-pad of een lokaal bestandspad.
@@ -112,7 +114,7 @@ Voer de volgende opdracht uit op de bron computer:
 
 Instelling | Details
 --- | ---
-Gebruik | cd-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <IP-adres\> van de configuratie server-P <pad naar de wachtwoordzin\>
+Gebruik | cd-/usr/local/ASR/Vx/bin<br /><br /> UnifiedAgentConfigurator.sh-i <IP-adres van de configuratie server \> -P <pad naar de wachtwoordzin\>
 -i | Verplichte para meter. Hiermee geeft u het IP-adres van de configuratie server. Gebruik een geldig IP-adres.
 -P |  Verplicht. Het volledige bestandspad van het bestand waarin de wachtwoordzin wordt opgeslagen. Gebruik een geldige map.
 
@@ -203,7 +205,7 @@ Dit wordt meestal veroorzaakt door een fout met poort 443. Gebruik de volgende s
 
 Als u wilt controleren of de hoofddoel agent een TCP-sessie kan maken voor het IP-adres van de configuratie server, zoekt u naar een tracering die vergelijkbaar is met de volgende in de logboeken van de hoofd doel agent:
 
-TCP \<vervangt IP met cs ip hier>:52739 \<Vervang IP met cs ip hier>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here> : 52739 \<Replace IP with CS IP here> : 443 SYN_SENT 
 
 TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//Vervang het IP-adres door het CS-IP-adres
 

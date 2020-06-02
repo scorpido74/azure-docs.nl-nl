@@ -4,12 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 357c8ea4da2a07864215225f7d618f9eb58b7e49
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640057"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266182"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -133,7 +133,7 @@ Zie voor meer informatie [beveiligings concepten voor toepassingen en clusters i
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
-[dev-spaces-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-ranges]: ../dev-spaces/configure-networking.md#aks-cluster-network-requirements
 [kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
 
 <!-- LINKS - internal -->

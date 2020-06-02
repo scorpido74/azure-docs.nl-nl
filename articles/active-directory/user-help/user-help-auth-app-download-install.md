@@ -9,38 +9,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741371"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266216"
 ---
-# <a name="download-and-install-the-microsoft-authenticator-app"></a>De Microsoft Authenticator-app downloaden en installeren
+# <a name="download-and-install-the-microsoft-authenticator-app"></a>De app Microsoft Authenticator downloaden en installeren
 
 >[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over het instellen en beheren van uw Azure Active Directory (Azure AD)-omgeving in de [beheer documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>
+> Als u problemen ondervindt met aanmelden bij uw account, gaat u naar [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429) voor hulp.  U kunt ook meer informatie over wat u moet doen wanneer u het bericht [' dat Microsoft-account niet bestaat '](https://support.microsoft.com/help/13811) ontvangt wanneer u zich probeert aan te melden bij uw Microsoft-account.
 
-Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u gebruikmaakt van verificatie in twee stappen. Verificatie in twee stappen helpt u veiliger toegang te krijgen tot uw accounts, vooral als u gevoelige informatie bekijkt. Omdat wachtwoorden kunnen worden vergeten, gestolen of gewijzigd, is verificatie in twee stappen een extra beveiligingsstap waarmee u uw account beschermt door het voor anderen lastiger te maken om in te breken.
-
-U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbeeld:
+Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u twee ledige verificatie gebruikt. Met twee ledige verificatie kunt u uw accounts veiliger gebruiken omdat wacht woorden kunnen worden verg eten, gestolen of geknoeid. Verificatie op basis van twee factoren gebruikt een tweede factor zoals uw telefoon, zodat anderen moeilijker op uw account kunnen worden opgedeeld. U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbeeld:
 
 - **Verificatie met twee factoren.** De standaard verificatie methode, waarbij een van de factoren uw wacht woord is. Nadat u zich hebt aangemeld met uw gebruikers naam en wacht woord, kunt u een melding goed keuren of een opgegeven verificatie code invoeren.
 
 - **Aanmelden via de telefoon.** Een versie van twee ledige verificatie waarmee u zich kunt aanmelden zonder dat hiervoor een wacht woord is vereist, met uw gebruikers naam en uw mobiele apparaat met uw vinger afdruk, gezicht of pincode.
 
-- **Genereren van code.** Als code generator voor andere accounts die ondersteuning bieden voor verificator-apps.
+- **Genereren van code.** Als codegenerator voor andere accounts die verificator-apps ondersteunen.
 
-> [!Important]
-> De Microsoft Authenticator-app werkt met een account dat gebruikmaakt van twee ledige verificatie en ondersteunt de op tijd gebaseerde mobiele TOTP-standaarden (one-time password).
->
-> Mogelijk moet u voor uw organisatie gebruikmaken van een verificator-app om u aan te melden en de gegevens en documenten van uw organisatie te openen. Hoewel uw gebruikersnaam mogelijk in de app wordt weergegeven, wordt het account pas echt ingesteld om te fungeren als een verificatiemethode wanneer u het registratieproces voltooit. Zie [Uw werk- of schoolaccount toevoegen](user-help-auth-app-add-work-school-account.md) voor meer informatie.
-> 
-> [!NOTE]
-> Als u problemen ondervindt met aanmelden bij uw account, gaat u naar [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429) voor hulp.  Bekijk meer informatie over wat u kunt doen wanneer het bericht ['Dat Microsoft-account bestaat niet'](https://support.microsoft.com/help/13811) wordt weergegeven wanneer u zich aanmeldt bij uw Microsoft-account.
+Verificator werkt met een account dat gebruikmaakt van twee ledige verificatie en ondersteunt de op tijd gebaseerde mobiele TOTP-standaarden (one-time password).
+
+Uw organisatie vereist mogelijk dat u de verificator-app moet gebruiken om u aan te melden en toegang te krijgen tot de gegevens en documenten van uw organisatie. Zelfs als uw gebruikers naam wordt weer gegeven in de app, wordt het account niet ingesteld als een verificatie methode totdat u de registratie voltooit. Zie [Uw werk- of schoolaccount toevoegen](user-help-auth-app-add-work-school-account.md) voor meer informatie.
 
 ## <a name="download-and-install-the-app"></a>De app downloaden en installeren
 
@@ -55,7 +51,7 @@ Installeer de nieuwste versie van de Microsoft Authenticator-app op basis van uw
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de app hebt gedownload en geïnstalleerd, moet u uw diverse accounts toevoegen. Zie voor meer informatie:
+Nadat u de app hebt gedownload en geïnstalleerd, raadpleegt u het overzicht van de [verificator-app](user-help-auth-app-overview.md) voor meer informatie. Zie voor meer installatie opties:
 
 - **Verificator-app.** Down load en gebruik een verificator-app om een goedkeurings melding of een wille keurig gegenereerde goedkeurings code te verkrijgen voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een verificator-app](security-info-setup-auth-app.md)voor stapsgewijze instructies voor het instellen en gebruiken van de app Microsoft Authenticator.
 

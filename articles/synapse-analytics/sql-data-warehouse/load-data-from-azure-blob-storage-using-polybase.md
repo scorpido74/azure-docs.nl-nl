@@ -1,26 +1,26 @@
 ---
 title: "Zelf studie: over taxi's-gegevens voor New York laden"
-description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van nieuwe over taxi's-gegevens uit een globale Azure-Blob voor Synapse SQL.
+description: In de zelf studie worden Azure Portal en SQL Server Management Studio gebruikt voor het laden van nieuwe over taxi's-gegevens uit een Azure-Blob voor Synapse SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 05/31/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f3d4a14f92aa9271f094db5e2315b64b0fe3151
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5f2d1d517db9ab0e4ccfbfff1cef3a5a0de738c9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014992"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267772"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Zelf studie: de over taxi's-gegevensset van New York laden
 
-In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van New York over taxi's-gegevens uit een globaal Azure Blob-opslag account. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
+In deze zelf studie wordt de [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) gebruikt voor het laden van een New York over taxi's-gegevensset vanuit een Azure Blob Storage-account. De zelfstudie gebruikt [Azure Portal](https://portal.azure.com) en [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) voor het volgende:
 
 > [!div class="checklist"]
 >
@@ -28,10 +28,9 @@ In deze zelf studie wordt gebruikgemaakt van poly Base voor het laden van New Yo
 > * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding maken met het datawarehouse met SMMS
 > * Een gebruiker maken die wordt aangewezen om gegevens te laden
-> * Externe tabellen maken voor gegevens in Azure Blob Storage
-> * De instructie CTAS T-SQL gebruiken om gegevens in uw datawarehouse te laden
+> * De tabellen voor de voor beeld-gegevensset maken 
+> * De instructie COPY T-SQL gebruiken om gegevens in uw data warehouse te laden
 > * De voortgang van de gegevens weergeven terwijl deze worden geladen
-> * Statistieken maken voor de nieuw geladen gegevens
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -211,9 +210,9 @@ De eerste stap voor het laden van gegevens bestaat uit aanmelding als LoaderRC20
 
     ![Verbinding geslaagd](./media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
 
-## <a name="create-external-tables-for-the-sample-data"></a>Externe tabellen voor de voorbeeldgegevens maken
+## <a name="create-tables-for-the-sample-data"></a>Tabellen maken voor de voorbeeld gegevens
 
-U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. In deze zelf studie leert u hoe u externe tabellen kunt gebruiken voor het laden van een taxi cab-gegevens van New York in een Azure Storage-blob. Zie het [overzicht van laden](design-elt-data-loading.md)voor meer informatie over het ophalen van uw gegevens naar Azure Blob-opslag of het rechtstreeks laden vanuit uw bron.
+U bent klaar om te beginnen met het laden van gegevens in uw nieuwe datawarehouse. In dit deel van de zelf studie ziet u hoe u de instructie COPY kunt gebruiken om de gegevens van het nieuwe taxi-CAB-bestand in de Utrecht te laden vanuit een Azure Storage-blob. Zie het [overzicht van laden](design-elt-data-loading.md)voor meer informatie over het ophalen van uw gegevens naar Azure Blob-opslag of het rechtstreeks laden vanuit uw bron.
 
 Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wilt laden. Deze informatie omvat de locatie waar de gegevens zich bevinden, de indeling van de inhoud van de gegevens en de tabeldefinitie voor de gegevens.
 
@@ -223,58 +222,10 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
 
 2. Vergelijk uw queryvenster met de vorige afbeelding.  Controleer of uw nieuwe queryvenster wordt uitgevoerd als LoaderRC20 en query's uitvoert op uw MySampleDataWarehouse-database. Gebruik dit queryvenster om alle laadstappen uit te voeren.
 
-3. Maak een hoofdsleutel voor de MySampleDataWarehouse-database. U hoeft maar één hoofdsleutel per database te maken.
+7. Voer de volgende T-SQL-instructies uit om de tabellen te maken:
 
     ```sql
-    CREATE MASTER KEY;
-    ```
-
-4. Voer de volgende instructie [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om de locatie van de Azure-blob te definiëren. Dit is de locatie van de externe taxigegevens.  Als u een opdracht wilt uitvoeren die u aan het query venster hebt toegevoegd, markeert u de opdrachten die u wilt uitvoeren en selecteert u **uitvoeren**.
-
-    ```sql
-    CREATE EXTERNAL DATA SOURCE NYTPublic
-    WITH
-    (
-        TYPE = Hadoop,
-        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
-    );
-    ```
-
-5. Voer de volgende T-SQL-instructie [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om opmaakeigenschappen en -opties voor het externe gegevensbestand op te geven. Deze instructie geeft aan dat de externe gegevens zijn opgeslagen als tekst en de waarden worden gescheiden door het pipe-teken ('| '). Het externe bestand wordt gecomprimeerd met Gzip.
-
-    ```sql
-    CREATE EXTERNAL FILE FORMAT uncompressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS (
-            FIELD_TERMINATOR = ',',
-            STRING_DELIMITER = '',
-            DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        )
-    );
-    CREATE EXTERNAL FILE FORMAT compressedcsv
-    WITH (
-        FORMAT_TYPE = DELIMITEDTEXT,
-        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
-            STRING_DELIMITER = '',
-        DATE_FORMAT = '',
-            USE_TYPE_DEFAULT = False
-        ),
-        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
-    );
-    ```
-
-6. Voer de volgende instructie [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uit om een schema te maken voor de externe bestandsindeling. Het schema biedt een manier om de externe tabellen die u gaat maken te organiseren.
-
-    ```sql
-    CREATE SCHEMA ext;
-    ```
-
-7. Maak de externe tabellen. De tabel definities worden opgeslagen in het Data Warehouse, maar de tabellen verwijzen naar gegevens die zijn opgeslagen in Azure Blob Storage. Voer de volgende T-SQL-opdrachten uit om verschillende externe tabellen te maken die allemaal verwijzen naar de Azure-blob die eerder is gedefinieerd in de externe gegevensbron.
-
-    ```sql
-    CREATE EXTERNAL TABLE [ext].[Date]
+    CREATE TABLE [dbo].[Date]
     (
         [DateID] int NOT NULL,
         [Date] datetime NULL,
@@ -311,13 +262,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Date',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Geography]
+    
+    CREATE TABLE [dbo].[Geography]
     (
         [GeographyID] int NOT NULL,
         [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -329,13 +278,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Geography',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[HackneyLicense]
+    
+    CREATE TABLE [dbo].[HackneyLicense]
     (
         [HackneyLicenseID] int NOT NULL,
         [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -343,13 +290,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'HackneyLicense',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Medallion]
+    
+    CREATE TABLE [dbo].[Medallion]
     (
         [MedallionID] int NOT NULL,
         [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -357,14 +302,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Medallion',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;  
-    CREATE EXTERNAL TABLE [ext].[Time]
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
+    
+    CREATE TABLE [dbo].[Time]
     (
         [TimeID] int NOT NULL,
         [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
@@ -378,13 +320,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Time',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Trip]
+    
+    CREATE TABLE [dbo].[Trip]
     (
         [DateID] int NOT NULL,
         [MedallionID] int NOT NULL,
@@ -412,13 +352,11 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Trip2013',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = compressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
     );
-    CREATE EXTERNAL TABLE [ext].[Weather]
+    
+    CREATE TABLE [dbo].[Weather]
     (
         [DateID] int NOT NULL,
         [GeographyID] int NOT NULL,
@@ -427,127 +365,123 @@ Voer de volgende SQL-scripts uit en geef informatie op over de gegevens die u wi
     )
     WITH
     (
-        LOCATION = 'Weather',
-        DATA_SOURCE = NYTPublic,
-        FILE_FORMAT = uncompressedcsv,
-        REJECT_TYPE = value,
-        REJECT_VALUE = 0
-    )
-    ;
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    );
     ```
-
-8. Vouw in Objectverkenner mySampleDataWarehouse uit om de lijst met externe tabellen die u zojuist hebt gemaakt te bekijken.
-
-    ![Externe tabellen weergeven](./media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+    
 
 ## <a name="load-the-data-into-your-data-warehouse"></a>De gegevens in uw datawarehouse laden
 
-In deze sectie worden de externe tabellen gebruikt die u zojuist hebt gedefinieerd voor het laden van de voorbeeld gegevens van Azure Storage Blob.  
+In deze sectie wordt de [instructie Copy gebruikt om](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) de voorbeeld gegevens van Azure Storage BLOB te laden.  
 
 > [!NOTE]
-> In deze zelfstudie worden de gegevens rechtstreeks in de definitieve tabel geladen. In een productieomgeving gebruikt u meestal CREATE TABLE AS SELECT om naar een faseringstabel te laden. U kunt alle benodigde transformaties uitvoeren wanneer de gegevens zich in de faseringstabel bevinden. Als u de gegevens in de faseringstabel wilt toevoegen aan een productietabel, kunt u de instructie INSERT... SELECT gebruiken. Zie [Gegevens in een productietabel invoegen](guidance-for-loading-data.md#inserting-data-into-a-production-table) voor meer informatie.
+> In deze zelfstudie worden de gegevens rechtstreeks in de definitieve tabel geladen. Normaal gesp roken laadt u in een faserings tabel voor de werk belasting van uw productie. U kunt alle benodigde transformaties uitvoeren wanneer de gegevens zich in de faseringstabel bevinden. 
 
-Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) om de gegevens uit Azure Storage Blob naar de nieuwe tabellen in het datawarehouse te laden. CTAS maakt een nieuwe tabel op basis van de resultaten van een SELECT-instructie. De nieuwe tabel heeft dezelfde gegevenstypen en kolommen als de resultaten van de selecteerinstructie. Wanneer de SELECT-instructie uit een externe tabel wordt geselecteerd, worden gegevens in een relationele tabel in het Data Warehouse geïmporteerd.
-
-1. Voer het volgende script uit om de gegevens in de nieuwe tabellen in uw datawarehouse te laden.
+1. Voer de volgende instructies uit om de gegevens te laden:
 
     ```sql
-    CREATE TABLE [dbo].[Date]
+    COPY INTO [dbo].[Date]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Date'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Date]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
-    ;
-    CREATE TABLE [dbo].[Geography]
+    OPTION (LABEL = 'COPY : Load [dbo].[Date] - Taxi dataset');
+    
+    
+    COPY INTO [dbo].[Geography]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Geography'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS
-    SELECT * FROM [ext].[Geography]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
-    ;
-    CREATE TABLE [dbo].[HackneyLicense]
+    OPTION (LABEL = 'COPY : Load [dbo].[Geography] - Taxi dataset');
+    
+    COPY INTO [dbo].[HackneyLicense]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/HackneyLicense'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[HackneyLicense]
-    OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
-    ;
-    CREATE TABLE [dbo].[Medallion]
+    OPTION (LABEL = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset');
+    
+    COPY INTO [dbo].[Medallion]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Medallion'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Medallion]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
-    ;
-    CREATE TABLE [dbo].[Time]
+    OPTION (LABEL = 'COPY : Load [dbo].[Medallion] - Taxi dataset');
+    
+    COPY INTO [dbo].[Time]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Time'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = ''
     )
-    AS SELECT * FROM [ext].[Time]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
-    ;
-    CREATE TABLE [dbo].[Weather]
+    OPTION (LABEL = 'COPY : Load [dbo].[Time] - Taxi dataset');
+    
+    COPY INTO [dbo].[Weather]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Weather'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = ',',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A'
     )
-    AS SELECT * FROM [ext].[Weather]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
-    ;
-    CREATE TABLE [dbo].[Trip]
+    OPTION (LABEL = 'COPY : Load [dbo].[Weather] - Taxi dataset');
+    
+    COPY INTO [dbo].[Trip]
+    FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013'
     WITH
     (
-        DISTRIBUTION = ROUND_ROBIN,
-        CLUSTERED COLUMNSTORE INDEX
+        FILE_TYPE = 'CSV',
+        FIELDTERMINATOR = '|',
+        FIELDQUOTE = '',
+        ROWTERMINATOR='0X0A',
+        COMPRESSION = 'GZIP'
     )
-    AS SELECT * FROM [ext].[Trip]
-    OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
-    ;
+    OPTION (LABEL = 'COPY : Load [dbo].[Trip] - Taxi dataset');
     ```
 
 2. Bekijk uw gegevens tijdens het laden. U laadt verschillende GB van gegevens en comprimeert deze in zeer krachtige, geclusterde column Store-indexen. Voer de volgende query uit, die gebruikmaakt van dynamische beheerweergaven (DMV's) om de status van de belasting weer te geven.
 
     ```sql
-    SELECT
-        r.command,
-        s.request_id,
-        r.status,
-        count(distinct input_name) as nbr_files,
-        sum(s.bytes_processed)/1024/1024/1024.0 as gb_processed
-    FROM
-        sys.dm_pdw_exec_requests r
-        INNER JOIN sys.dm_pdw_dms_external_work s
-        ON r.request_id = s.request_id
-    WHERE
-        r.[label] = 'CTAS : Load [dbo].[Date]' OR
-        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
-        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
-        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
-        r.[label] = 'CTAS : Load [dbo].[Time]' OR
-        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
-        r.[label] = 'CTAS : Load [dbo].[Trip]'
-    GROUP BY
-        r.command,
-        s.request_id,
-        r.status
-    ORDER BY
-        nbr_files desc,
-        gb_processed desc;
+    SELECT  r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command
+    ,       sum(bytes_processed) AS bytes_processed
+    ,       sum(rows_processed) AS rows_processed
+    FROM    sys.dm_pdw_exec_requests r
+                  JOIN sys.dm_pdw_dms_workers w
+                         ON r.[request_id] = w.request_id
+    WHERE [label] = 'COPY : Load [dbo].[Date] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Geography] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[HackneyLicense] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Medallion] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Time] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Weather] - Taxi dataset' OR
+        [label] = 'COPY : Load [dbo].[Trip] - Taxi dataset' 
+    and session_id <> session_id() and type = 'WRITER'
+    GROUP BY r.[request_id]                           
+    ,       r.[status]                               
+    ,       r.resource_class                         
+    ,       r.command;
     ```
-
+    
 3. Bekijk alle systeemquery's.
 
     ```sql
@@ -557,55 +491,6 @@ Het script gebruikt de T-SQL-instructie [CREATE TABLE AS SELECT (CTAS)](/sql/t-s
 4. Al uw gegevens zijn netjes geladen in uw datawarehouse.
 
     ![Geladen tabellen weergeven](./media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
-
-## <a name="authenticate-using-managed-identities-to-load-optional"></a>Verifiëren met behulp van beheerde identiteiten om te laden (optioneel)
-
-Het laden met poly base en verificatie via beheerde identiteiten is het veiligste mechanisme en maakt het u mogelijk om service-eind punten van virtuele netwerken te gebruiken met Azure Storage.
-
-### <a name="prerequisites"></a>Vereisten
-
-1. Installeer Azure PowerShell met behulp van deze [hand leiding](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-2. Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u eerst een upgrade uitvoeren naar de v2 voor algemeen gebruik met behulp van deze [hand leiding](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-3. U moet **vertrouwde micro soft-Services toegang geven tot dit opslag account** ingeschakeld onder Azure Storage account **firewalls en instellingen voor virtuele netwerken** . Raadpleeg deze [hand leiding](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) voor meer informatie.
-
-#### <a name="steps"></a>Stappen
-
-1. **Registreer uw server** bij Azure Active Directory (Aad) in Power shell:
-
-   ```powershell
-   Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-   ```
-
-2. Maak met behulp van deze [hand leiding](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)een **v2-opslag account voor algemeen** gebruik.
-
-   > [!NOTE]
-   > Als u een v1-of Blob-opslag account voor algemeen gebruik hebt, moet u **eerst een upgrade uitvoeren naar v2** met behulp van deze [hand leiding](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
-
-3. Navigeer onder uw opslag account naar **Access Control (IAM)** en selecteer **roltoewijzing toevoegen**. Wijs de RBAC-rol voor **opslag-BLOB-gegevens** toe aan uw server.
-
-   > [!NOTE]
-   > Alleen leden met de bevoegdheid eigenaar kunnen deze stap uitvoeren. Raadpleeg deze [hand leiding](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)voor verschillende ingebouwde rollen voor Azure-resources.
-  
-**Poly base-verbinding met het Azure Storage-account:**
-
-1. Maak een Data Base-bereik referentie met **identiteit = ' managed service Identity '**:
-
-   ```SQL
-   CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-   ```
-
-   > [!NOTE]
-   >
-   > * U hoeft geen geheim op te geven met Azure Storage toegangs sleutel, omdat dit mechanisme gebruikmaakt van [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) onder de voor vallen.
-   > * De IDENTITEITs naam moet **Managed Service Identity** zijn voor poly base-connectiviteit om met Azure Storage-account te kunnen werken.
-
-2. Maak de externe gegevens bron waarmee de data base met bereik referenties wordt opgegeven met de Managed Service Identity.
-
-3. Query's uitvoeren als normaal met [externe tabellen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-
-Raadpleeg de volgende [documentatie](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) als u service-eind punten voor virtuele netwerken wilt instellen voor Azure Synapse Analytics.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -630,7 +515,7 @@ Volg deze stappen om de resources op te schonen zoals gewenst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor het laden van gegevens maakt. U hebt externe tabellen gemaakt om de structuur te definiëren voor gegevens die zijn opgeslagen in Azure Storage Blob en vervolgens de PolyBase-instructie CREATE TABLE AS SELECT gebruikt voor het laden van gegevens in uw datawarehouse.
+In deze zelfstudie hebt u geleerd hoe u een datawarehouse en een gebruiker voor het laden van gegevens maakt. U hebt de [instructie Simple Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#examples) gebruikt voor het laden van gegevens in uw data warehouse.
 
 U hebt het volgende gedaan:
 > [!div class="checklist"]
@@ -639,12 +524,17 @@ U hebt het volgende gedaan:
 > * Een serverfirewallregel ingesteld in Azure Portal
 > * Verbinding gemaakt met het datawarehouse met SMMS
 > * Een gebruiker gemaakt die wordt aangewezen om gegevens te laden
-> * Externe tabellen gemaakt voor gegevens in Azure Storage Blob
-> * De instructie CTAS T-SQL gebruikt om gegevens in uw datawarehouse te laden
+> * De tabellen voor de voorbeeld gegevens zijn gemaakt
+> * De COPY T-SQL-instructie is gebruikt om gegevens in uw data warehouse te laden
 > * De voortgang van de gegevens weergegeven terwijl deze werden geladen
-> * Statistieken gemaakt voor de nieuw geladen gegevens
 
-Ga naar het overzicht voor ontwikkel aars voor meer informatie over het migreren van een bestaande Data Base naar Azure Synapse Analytics.
+Ga naar het overzicht voor ontwikkel aars voor meer informatie over het migreren van een bestaande Data Base naar Azure Synapse Analytics:
 
 > [!div class="nextstepaction"]
 > [Ontwerp beslissingen voor het migreren van een bestaande Data Base naar Azure Synapse Analytics](sql-data-warehouse-overview-develop.md)
+
+Raadpleeg de volgende documentatie voor meer informatie over het laden van voor beelden en verwijzingen:
+
+- [Naslag documentatie over het kopiëren van instructies](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [Voor beelden kopiëren voor elke authenticatie methode](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples)
+- [Quick start voor één tabel kopiëren](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql)

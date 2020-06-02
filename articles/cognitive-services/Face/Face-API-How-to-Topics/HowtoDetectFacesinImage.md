@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3fd308ede17f510b3e9188f2bebc93a08a61181
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169876"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263175"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
@@ -29,7 +29,7 @@ In deze hand leiding wordt uitgelegd hoe u:
 
 ## <a name="setup"></a>Instellen
 
-In deze hand leiding wordt ervan uitgegaan dat [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) u al een FaceClient `faceClient`-object met de naam hebt gemaakt met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
+In deze hand leiding wordt ervan uitgegaan dat u al een [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) -object met de naam hebt gemaakt `faceClient` met een face-abonnements sleutel en eind punt-URL. Hier kunt u de functie voor gezichts herkenning gebruiken door het aanroepen van [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), dat wordt gebruikt in deze hand leiding of [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Volg een van de Quick starts voor instructies over het instellen van deze functie.
 
 Deze hand leiding is gericht op de details van de detectie aanroep, zoals de argumenten die u kunt door geven en wat u met de geretourneerde gegevens kunt doen. U wordt aangeraden alleen een query uit te voeren voor de functies die u nodig hebt. Elke bewerking heeft meer tijd nodig om te volt ooien.
 
@@ -145,7 +145,6 @@ Zie de conceptuele hand leiding voor [gezichts detectie en kenmerken](../concept
 In deze hand leiding hebt u geleerd hoe u de verschillende functies van gezicht detectie kunt gebruiken. Vervolgens integreert u deze functies in uw app door een diep gaande zelf studie te volgen.
 
 - [Zelfstudie: een WPF-app maken om gegevens van gezichten in een afbeelding weer te geven](../Tutorials/FaceAPIinCSharpTutorial.md)
-- [Zelfstudie: een Android-app maken om gezichten in een afbeelding te herkennen en te omlijsten](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
 
 ## <a name="related-topics"></a>Verwante onderwerpen
 

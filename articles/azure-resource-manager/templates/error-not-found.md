@@ -2,13 +2,13 @@
 title: Fouten bij niet-gevonden resources
 description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
 ms.topic: troubleshooting
-ms.date: 01/21/2020
-ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773247"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259351"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
 
@@ -93,10 +93,27 @@ Zoek naar een expressie die de functie [Reference](template-functions-resource.m
 
 Als u een resource implementeert die impliciet een [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)maakt, moet u wachten tot de resource is geïmplementeerd voordat u waarden ophaalt voor de beheerde identiteit. Als u de naam van de beheerde identiteit doorgeeft aan de [referentie](template-functions-resource.md#reference) functie, probeert Resource Manager de referentie op te lossen voordat de resource en de identiteit worden geïmplementeerd. In plaats daarvan geeft u de naam op van de resource waarmee de identiteit wordt toegepast. Deze aanpak zorgt ervoor dat de resource en de beheerde identiteit worden geïmplementeerd voordat Resource Manager de referentie functie verhelpt.
 
-Gebruik `Full` in de functie Reference om alle eigenschappen op te halen, inclusief de beheerde identiteit.
+Gebruik in de functie Reference `Full` om alle eigenschappen op te halen, inclusief de beheerde identiteit.
 
-Als u bijvoorbeeld de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een schaalset voor virtuele machines, gebruikt u:
+Het patroon is:
+
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+
+> [!IMPORTANT]
+> Gebruik niet het patroon:
+>
+> `"[reference(concat(resourceId(<resource-provider-namespace>, <resource-name>),'/providers/Microsoft.ManagedIdentity/Identities/default'),<API-version>).principalId]"`
+>
+> De sjabloon kan niet worden uitgevoerd.
+
+Als u bijvoorbeeld de principal-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een virtuele machine, gebruikt u:
 
 ```json
-"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
+```
+
+Als u de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een schaalset voor virtuele machines, gebruikt u:
+
+```json
+"[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
 ```

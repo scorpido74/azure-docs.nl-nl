@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685512"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265247"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>ID-Broker (preview-versie) gebruiken voor referentie beheer
 
@@ -47,7 +47,7 @@ Met de functie ID Broker wordt één extra virtuele machine aan het cluster toeg
 ![Optie voor het inschakelen van ID-Broker](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
-Als u een nieuwe rol met de `idbrokernode` naam met de volgende kenmerken aan het reken Profiel van uw sjabloon toevoegt, wordt het cluster gemaakt met het ID Broker-knoop punt ingeschakeld:
+Als u een nieuwe rol `idbrokernode` met de naam met de volgende kenmerken aan het reken Profiel van uw sjabloon toevoegt, wordt het cluster gemaakt met het id Broker-knoop punt ingeschakeld:
 
 ```json
 .
@@ -92,7 +92,7 @@ De HDInsight [IntelliJ-invoeg toepassing](https://docs.microsoft.com/azure/hdins
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>SSH-toegang zonder wacht woord-hash in azure AD DS
 
-Nadat ID Broker is ingeschakeld, hebt u nog steeds een wacht woord-hash die is opgeslagen in azure AD DS voor SSH-scenario's met domein accounts. Als u SSH wilt maken naar een VM die lid is van een `kinit` domein of als u de opdracht wilt uitvoeren, moet u een wacht woord opgeven. 
+Nadat ID Broker is ingeschakeld, hebt u nog steeds een wacht woord-hash die is opgeslagen in azure AD DS voor SSH-scenario's met domein accounts. Als u SSH wilt maken naar een VM die lid is van een domein of als u de opdracht wilt uitvoeren `kinit` , moet u een wacht woord opgeven. 
 
 Voor SSH-verificatie moet de hash beschikbaar zijn in azure AD DS. Als u SSH alleen wilt gebruiken voor beheer scenario's, kunt u één alleen-Cloud account maken en gebruiken om te SSHen naar het cluster. Andere gebruikers kunnen nog steeds gebruikmaken van Ambari-of HDInsight-hulpprogram ma's (zoals de IntelliJ-invoeg toepassing) zonder dat de wacht woord-hash beschikbaar is in azure AD DS.
 
@@ -100,7 +100,7 @@ Voor SSH-verificatie moet de hash beschikbaar zijn in azure AD DS. Als u SSH all
 
 In de Setup van ID Broker kunnen aangepaste apps en clients die verbinding maken met de gateway, worden bijgewerkt om eerst het vereiste OAuth-token te verkrijgen. U kunt de stappen in dit [document](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) volgen om het token te verkrijgen met de volgende informatie:
 
-*   OAuth-resource-URI:https://hib.azurehdinsight.net 
+*   OAuth-resource-URI:`https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
 *   Machtiging: (naam: cluster. ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 

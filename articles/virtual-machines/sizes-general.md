@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: fc263eb6fbe6c6402aaf529229bb7025f070b8d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e597eebda6a730d301eefdbd2d7e6859f5a7cc
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269666"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248308"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Grootte van virtuele machines voor algemene doel einden
 
@@ -40,7 +40,8 @@ VM-grootten voor algemeen gebruik bieden evenwichtige verhouding tussen CPU en g
 
 - [Dv3 en Dsv3-serie](dv3-dsv3-series.md) Vm's worden uitgevoerd op Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 v4 2,3 GHz (Broadwell), of de Intel® Xeon-® E5-2673 v3 2,4 GHz (Haswell)-processors in een configuratie met Hyper-Threading, waardoor u een betere waarde hebt voor de meeste werk belastingen in het algemeen. Het geheugen is uitgevouwen (van ~ 3,5 GiB/vCPU naar 4 GiB/vCPU), terwijl de schijf-en netwerk limieten per kern zijn aangepast om te worden uitgelijnd met de verplaatsing van hyperthreading. De Dv3-serie heeft niet langer de VM-grootten van het hoge geheugen van de D/dv2-serie, die zijn verplaatst naar de Ev3 voor geoptimaliseerd geheugen [en de Esv3-serie](ev3-esv3-series.md).
 
-Voor beelden van use-cases van de D-serie zijn zakelijke toepassingen, relationele data bases, caching in het geheugen en analyse.
+- [Ddv4 en Ddsv4-serie](ddv4-ddsv4-series.md) Vm's worden uitgevoerd op de 2e generatie Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake), zodat u een betere toegevoegde waarde hebt voor de meeste werk belastingen voor algemeen gebruik. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz en biedt een [Intel &reg; Turbo Boost-technologie van 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
+
 
 ## <a name="other-sizes"></a>Andere grootten
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c26f50d858d316cab0d4533187494e023cea5071
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749415"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266165"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Zelf-beheerde verzen ding voor Azure Data Box gebruiken in de Azure Portal
 
@@ -41,7 +41,7 @@ Wanneer u een Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen 
 3. Zodra u uw verzend adres hebt ingevoerd, moet u dit valideren en uw bestelling volt ooien.
    ![Zelf beheerde verzen ding](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Zodra het apparaat is voor bereid, kunt u een ophaling plannen.
+4. Zodra het apparaat is voor bereid en u een e-mail melding voor de apparaten hebt ontvangen, kunt u een ophaling plannen.
 
    Ga in uw Azure Data Box order naar **overzicht** en selecteer vervolgens **ophalen plannen**.
 
@@ -57,7 +57,7 @@ Wanneer u een Data Box order plaatst, kunt u de optie voor zelf-beheerde verzen 
 
    ![Uw autorisatie code weer geven](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Noteer deze **autorisatie code**. Volgens de beveiligings vereisten, op het moment van het plannen van het opschonen en afvinken, is het nodig de naam van de persoon op te geven die bij het ophalen en verwijderen zou arriveren.
+   Noteer deze **autorisatie code**. Volgens de beveiligings vereisten, op het moment van het plannen van het verzamelen van de planning, moet de naam van de persoon die de registratie aankomt, worden weer gegeven.
 
    U moet ook details opgeven van wie gaat naar het Data Center voor ophalen. U of het contact punt moet een door de overheid goedgekeurde foto-ID hebben die wordt gevalideerd op het Data Center.
 

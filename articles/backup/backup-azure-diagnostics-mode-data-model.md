@@ -3,12 +3,12 @@ title: Gegevens model van Azure Monitor logboeken
 description: In dit artikel vindt u informatie over de Azure Monitor Log Analytics gegevens model gegevens voor Azure Backup gegevens.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707986"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248920"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics gegevens model voor Azure Backup gegevens
 
@@ -22,7 +22,7 @@ Gebruik het Log Analytics gegevens model om aangepaste waarschuwingen van Log An
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup gegevens model gebruiken
 
-U kunt de volgende velden als onderdeel van het gegevens model gebruiken om visuele elementen, aangepaste query's en dash boards te maken conform uw vereisten.
+U kunt de volgende velden gebruiken als onderdeel van het gegevens model voor het maken van visuele elementen, aangepaste query's en dash boards op basis van uw vereisten.
 
 ### <a name="alert"></a>Waarschuwing
 

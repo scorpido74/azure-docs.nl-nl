@@ -11,12 +11,12 @@ ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e3464c0fc3946e47400f87063ef6f83ceb942abb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: fc5316e2d6509f3e4db9a6cba150efc42c8bc548
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192448"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266369"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Strategieën voor het laden van gegevens voor de SQL-groep Synapse
 
@@ -46,15 +46,13 @@ De basis stappen voor het implementeren van ELT zijn:
 5. Transformeer de gegevens.
 6. Voeg de gegevens in productietabellen in.
 
-Zie poly [Base gebruiken voor het laden van gegevens uit Azure Blob Storage](load-data-from-azure-blob-storage-using-polybase.md)voor een zelf studie over het laden van poly bases.
-
-Zie [blog voor het laden van patronen](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)voor meer informatie.
+Zie [gegevens laden uit Azure Blob-opslag](load-data-from-azure-blob-storage-using-polybase.md)voor een zelf studie over het laden van.
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1. Extraheer de bron gegevens in tekst bestanden
 
-Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locatie.  Het doel is om de gegevens naar poly Base te verplaatsen en de kopie ondersteunt tekst of CSV-bestanden met scheidings tekens.
+Het ophalen van gegevens uit uw bron systeem is afhankelijk van de opslag locatie. Het doel is om de gegevens te verplaatsen naar ondersteunde gescheiden tekst of CSV-bestanden.
 
-### <a name="polybase-and-copy-external-file-formats"></a>Poly base en kopiëren van externe bestands indelingen
+### <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
 
 Met poly base en de instructie COPY kunt u gegevens laden van UTF-8-en UTF-16-gecodeerde tekst of CSV-bestanden met scheidings tekens. Behalve tekst-of CSV-bestanden, worden ze geladen vanuit de Hadoop-bestands indelingen, zoals ORC en Parquet. Poly base en de instructie COPY kunnen ook gegevens laden uit gzip-en Snappy gecomprimeerde bestanden.
 
@@ -74,11 +72,11 @@ Hulpprogram ma's en services die u kunt gebruiken om gegevens naar Azure Storage
 
 Mogelijk moet u de gegevens in uw opslag account voorbereiden en opschonen voordat u ze laadt. Gegevens voorbereiding kan worden uitgevoerd terwijl de gegevens zich in de bron bevinden, terwijl u de gegevens naar tekst bestanden exporteert of wanneer de gegevens zich in Azure Storage bevinden.  Het is eenvoudig om zo snel mogelijk in het proces te werken met de gegevens.  
 
-### <a name="define-external-tables"></a>Externe tabellen definiëren
+### <a name="define-the-tables"></a>De tabellen definiëren
 
-Als u poly base gebruikt, moet u externe tabellen definiëren in uw SQL-groep voordat u ze laadt. Externe tabellen zijn niet vereist voor de instructie COPY. Poly base gebruikt externe tabellen voor het definiëren en openen van de gegevens in Azure Storage.
+U moet eerst de tabel (len) die u in de SQL-groep laadt, definiëren wanneer u de instructie COPY gebruikt.
 
-Een externe tabel is vergelijkbaar met een database weergave. De externe tabel bevat het tabel schema en verwijst naar gegevens die buiten de SQL-groep zijn opgeslagen.
+Als u poly base gebruikt, moet u externe tabellen definiëren in uw SQL-groep voordat u ze laadt. Poly base gebruikt externe tabellen voor het definiëren en openen van de gegevens in Azure Storage. Een externe tabel is vergelijkbaar met een database weergave. De externe tabel bevat het tabel schema en verwijst naar gegevens die buiten de SQL-groep zijn opgeslagen.
 
 Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de tekst bestanden en de tabel definities opgeven. Naslag informatie over T-SQL-syntaxis die u nodig hebt, zijn:
 
@@ -86,7 +84,7 @@ Als u externe tabellen definieert, moet u de gegevens bron, de indeling van de t
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [EXTERNE TABEL MAKEN](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Bij het laden van Parquet is de toewijzing van het SQL-gegevens type:
+Gebruik de volgende SQL-gegevens type toewijzing bij het laden van Parquet-bestanden:
 
 |                         Type Parquet                         |   Parquet logische type (annotatie)   |  SQL-gegevens type   |
 | :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
@@ -126,7 +124,7 @@ Bij het laden van Parquet is de toewijzing van het SQL-gegevens type:
 
 
 
-Voor een voor beeld van het maken van externe objecten raadpleegt u de stap [externe tabellen maken](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) in de zelf studie voor het laden van.
+Zie voor een voor beeld van het maken van externe objecten [externe tabellen maken](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
 
 ### <a name="format-text-files"></a>Tekst bestanden opmaken
 
@@ -139,17 +137,16 @@ De tekst bestanden opmaken:
 
 ## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. gegevens laden met poly base of de instructie COPY
 
-Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de SQL-pool-MPP te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
+Het is best practice om gegevens in een faserings tabel te laden. Met faserings tabellen kunt u fouten afhandelen zonder de productie tabellen te verstoren. Een faserings tabel biedt u ook de mogelijkheid om de parallelle verwerkings architectuur van de SQL-groep te gebruiken voor gegevens transformaties voordat u de gegevens in productie tabellen invoegt.
 
-De tabel moet vooraf worden gemaakt wanneer deze in een faserings tabel met een kopie wordt geladen.
+### <a name="options-for-loading"></a>Opties voor het laden van
 
-### <a name="options-for-loading-with-polybase-and-copy-statement"></a>Opties voor het laden met de instructie poly base en kopiëren
+Als u gegevens wilt laden, kunt u een van de volgende laad opties gebruiken:
 
-Als u gegevens wilt laden met poly Base, kunt u een van de volgende laad opties gebruiken:
-
-- [Poly Base met T-SQL](load-data-from-azure-blob-storage-using-polybase.md) werkt goed als uw gegevens zich in Azure Blob storage of Azure data Lake Store bevinden. Het biedt u de meeste controle over het laad proces, maar u moet ook externe gegevens objecten definiëren. Met de andere methoden worden deze objecten achter de schermen gedefinieerd wanneer u bron tabellen aan doel tabellen toewijst.  U kunt met behulp van Azure Data Factory-, SSIS-of Azure-functies voor het organiseren van T-SQL-belasting.
-- [Poly Base met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) werkt goed als uw bron gegevens zich in SQL Server bevinden. SSIS definieert de bron-naar-doel tabel toewijzingen en organiseert ook de belasting. Als u al SSIS-pakketten hebt, kunt u de pakketten wijzigen om met de nieuwe Data Warehouse-bestemming te werken.
+- De [instructie Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) is het aanbevolen laad hulpprogramma waarmee u gegevens naadloos en flexibel kunt laden. De instructie bevat veel extra laad mogelijkheden die poly Base niet biedt. 
+- [Poly Base met T-SQL](load-data-from-azure-blob-storage-using-polybase.md) vereist dat u externe gegevens objecten definieert.
 - [Poly base-en copy-instructie met Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) is een andere Orchestration-tool.  Hierin worden een pijp lijn en plannings taken gedefinieerd.
+- [Poly Base met SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) werkt goed als uw bron gegevens zich in SQL Server bevinden. SSIS definieert de bron-naar-doel tabel toewijzingen en organiseert ook de belasting. Als u al SSIS-pakketten hebt, kunt u de pakketten wijzigen om met de nieuwe Data Warehouse-bestemming te werken.
 - [Poly Base met Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) gegevens overdraagt van een tabel naar een Databricks data frame en/of schrijft gegevens van een Databricks data frame naar een tabel met poly base.
 
 ### <a name="other-loading-options"></a>Andere opties voor laden

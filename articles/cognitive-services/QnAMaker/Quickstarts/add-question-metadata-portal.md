@@ -3,12 +3,12 @@ title: 'Snelstartgids: vragen en antwoorden toevoegen in QnA Maker Portal'
 description: Deze Quick Start laat zien hoe u vraag-en antwoord paren kunt toevoegen met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994660"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266573"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Snelstartgids: vragen toevoegen en antwoord geven met QnA Maker Portal
 
@@ -85,7 +85,7 @@ Door meta gegevens toe te voegen aan een vraag-en-antwoord-paar kan uw client to
 1. Voeg Meta gegevensparen toe voor dezelfde twee meta gegevenslabels:
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     U hebt nu twee vragen met dezelfde meta gegevenslabels met verschillende waarden.
 

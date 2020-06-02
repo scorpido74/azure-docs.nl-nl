@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 91a9a761b35a945fcd105465ae8dea7cb6623f42
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62933a0e83a7494bc208068cb418f9ccc29ba637
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643344"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266352"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -65,9 +65,9 @@ Nadat de registratie bij Azure Multi-Factor Authentication is voltooid, moeten d
 - Exchange-beheerder
 - Beheerder van voorwaardelijke toegang
 - Beveiligingsbeheerder
-- Helpdesk beheerder of wachtwoord beheerder
+- Helpdesk beheerder
 - Factureringsbeheerder
-- Gebruikers beheerder
+- Gebruikersbeheerder
 - Verificatie beheerder
 
 ### <a name="protecting-all-users"></a>Alle gebruikers beveiligen
@@ -147,7 +147,7 @@ Hier vindt u stapsgewijze hand leidingen over hoe u voorwaardelijke toegang kunt
 
 - [MFA vereisen voor beheerders](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [MFA vereisen voor Azure-beheer](../conditional-access/howto-conditional-access-policy-azure-management.md)
-- [Verouderde verificatie blok keren](../conditional-access/howto-conditional-access-policy-block-legacy.md)
+- [Verouderde verificatie blokkeren](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [MFA vereisen voor alle gebruikers](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
 - [Azure MFA-registratie vereisen](../identity-protection/howto-identity-protection-configure-mfa-policy.md) : vereist Azure AD Identity Protection onderdeel van Azure AD Premium P2.
 

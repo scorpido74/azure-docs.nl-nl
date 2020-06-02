@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded8aa0587ecb6bb756f3faa07cc816b7d46b561
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255312"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259572"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systeemvereisten voor Azure Import/Export
 
@@ -50,7 +50,7 @@ Zie [overzicht van Azure Storage-accounts](storage-account-overview.md)voor meer
 Elke taak kan worden gebruikt om gegevens over te dragen van slechts één opslag account. Met andere woorden, één import/export-taak kan niet over meerdere opslag accounts worden verdeeld. Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een nieuw opslag account.
 
 > [!IMPORTANT]
-> De Azure import-export service biedt geen ondersteuning voor opslag accounts waarvoor de functie voor het [Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md)is ingeschakeld. 
+> De Azure import-export service biedt geen ondersteuning voor opslag accounts waarvoor de functie voor het [Virtual Network Service-eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md)   is ingeschakeld. 
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
 
@@ -78,11 +78,13 @@ De volgende lijst met schijven wordt ondersteund voor gebruik met de import/expo
 |HDD     |  2,5 '<br>3,5 '       |SATA II, SATA III         |
 
 De volgende schijf typen worden niet ondersteund:
+
 - USBs.
 - Externe HDD met ingebouwde USB-adapter.
 - Schijven die zich in het hoofdletter gebruik van een externe HDD bevinden.
 
 Eén import/export-taak kan het volgende hebben:
+
 - Maxi maal 10 HDD/Ssd's.
 - Een combi natie van HDD/SSD van elke grootte.
 
@@ -90,9 +92,6 @@ Een groot aantal stations kan worden verdeeld over meerdere taken en er zijn gee
 
 Bij het voorbereiden van harde schijven en het kopiëren van de gegevens met het WAImportExport-hulp programma kunt u externe USB-adapters gebruiken. De meeste kant-en-klare USB 3,0-adapters of hoger moeten werken.
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Het hulp programma WAImportExport instellen](storage-import-export-tool-how-to.md)
 * [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](storage-use-azcopy.md)
-* [Voor beeld van Azure import-export REST API](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

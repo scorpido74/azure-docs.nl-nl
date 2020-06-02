@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9870b239ca0501e63df3d800b8e4847cb0f390ac
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860933"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266845"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Expressies en functies in Azure Data Factory
 
@@ -148,7 +148,7 @@ In het volgende voor beeld worden de para meters **inputPath** en **outputPath**
 In deze [zelf studie](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) leert u hoe u para meters kunt door geven tussen een pijp lijn en activiteit en tussen de activiteiten.
 
   
-## <a name="functions"></a>Functies
+## <a name="functions"></a>Functions
 
 U kunt functies aanroepen binnen expressies. De volgende secties bevatten informatie over de functies die kunnen worden gebruikt in een expressie.  
 
@@ -195,7 +195,7 @@ Deze functies zijn handig in voor waarden en kunnen worden gebruikt om elk type 
   
 | Logische vergelijkings functie | Taak |
 | --------------------------- | ---- |
-| [maar](control-flow-expression-language-functions.md#and) | Controleer of alle expressies waar zijn. |
+| [en](control-flow-expression-language-functions.md#and) | Controleer of alle expressies waar zijn. |
 | [equals](control-flow-expression-language-functions.md#equals) | Controleer of beide waarden gelijk zijn. |
 | [greater](control-flow-expression-language-functions.md#greater) | Controleer of de eerste waarde groter is dan de tweede waarde. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | Controleer of de eerste waarde groter is dan of gelijk is aan de tweede waarde. |
@@ -235,7 +235,7 @@ Deze functies zijn handig in voor waarden en kunnen worden gebruikt om elk type 
 | [float](control-flow-expression-language-functions.md#float) | Retourneert een drijvende-komma waarde voor een invoer waarde. |
 | [int](control-flow-expression-language-functions.md#int) | Retourneert de versie met gehele getallen voor een teken reeks. |
 | [JSON](control-flow-expression-language-functions.md#json) | De waarde of het object van het type JavaScript Object Notation (JSON) retour neren voor een teken reeks of XML. |
-| [tekenreeksexpressie](control-flow-expression-language-functions.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
+| [tekenreeks](control-flow-expression-language-functions.md#string) | Retourneert de teken reeks versie voor een invoer waarde. |
 | [uriComponent](control-flow-expression-language-functions.md#uriComponent) | De versie van de URI-code ring retour neren voor een invoer waarde door onveilige URL-tekens te vervangen door Escape tekens. |
 | [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | Retourneert de binaire versie voor een teken reeks met URI-code ring. |
 | [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | Retourneert de versie van de teken reeks voor een teken reeks met URI-code ring. |
@@ -532,26 +532,26 @@ En retourneert het resultaat met de optionele D-indeling:`"Tuesday, January 2, 2
 
 ### <a name="and"></a>en
 
-Controleer of alle expressies waar zijn.
-Retourneert waar als alle expressies waar zijn, of retourneert onwaar als ten minste één expressie onwaar is.
+Controleer of beide expressies waar zijn.
+Retourneert waar als beide expressies waar zijn, of retourneert onwaar als ten minste één expressie onwaar is.
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie1*>, <*Expressie2*>,... | Yes | Boolean | De te controleren expressies |
+| <*expressie1*>, <*Expressie2*> | Yes | Boolean | De te controleren expressies |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | -----| ----------- |
-| waar of onwaar | Boolean | Retourneert waar als alle expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
+| waar of onwaar | Boolean | Retourneert waar als beide expressies waar zijn. Retourneert onwaar wanneer ten minste één expressie onwaar is. |
 ||||
 
 *Voorbeeld 1*
 
-In deze voor beelden wordt gecontroleerd of de opgegeven Booleaanse waarden allemaal waar zijn:
+In deze voor beelden wordt gecontroleerd of de opgegeven Booleaanse waarden beide waar zijn:
 
 ```
 and(true, true)
@@ -567,7 +567,7 @@ En retourneert deze resultaten:
 
 *Voorbeeld 2*
 
-In deze voor beelden wordt gecontroleerd of de opgegeven expressies allemaal waar zijn:
+In deze voor beelden wordt gecontroleerd of de opgegeven expressies beide waar zijn:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -2389,20 +2389,20 @@ En retour neren deze resultaten:
 ### <a name="or"></a>of
 
 Controleer of ten minste één expressie waar is.
-Retourneert waar als ten minste één expressie waar is, of retourneert onwaar als alle zijn ingesteld op ONWAAR.
+Retourneert waar als ten minste één expressie waar is, of retourneert False als beide zijn ingesteld op ONWAAR.
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | Parameter | Vereist | Type | Beschrijving |
 | --------- | -------- | ---- | ----------- |
-| <*expressie1*>, <*Expressie2*>,... | Yes | Boolean | De te controleren expressies |
+| <*expressie1*>, <*Expressie2*> | Yes | Boolean | De te controleren expressies |
 |||||
 
 | Retourwaarde | Type | Beschrijving |
 | ------------ | ---- | ----------- |
-| waar of onwaar | Boolean | Retourneert waar als ten minste één expressie waar is. Retourneert onwaar als alle expressies onwaar zijn. |
+| waar of onwaar | Boolean | Retourneert waar als ten minste één expressie waar is. Retourneert onwaar als beide expressies onwaar zijn. |
 ||||
 
 *Voorbeeld 1*
