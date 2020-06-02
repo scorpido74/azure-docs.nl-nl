@@ -7,12 +7,8 @@
 - name: Snelstartgidsen
   expanded: true
   items:
-    - name: 'C# gebruiken'
-      href: Quickstart.md
-    - name: Node.js gebruiken
-      href: quickstart-nodejs.md
-    - name: Swift (iOS) gebruiken
-      href: ios-quickstart.md
+    - name: De clientbibliotheek gebruiken
+      href: ./quickstarts/client-libraries.md
 - name: Zelfstudies
   items:
     - name: De Insluitende lezer starten (Python)

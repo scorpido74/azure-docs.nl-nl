@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: Advanced Threat Protection
               href: database/threat-detection-overview.md
+            - name: Gegevensdetectie en -classificatie
+              href: database/data-discovery-and-classification-overview.md
             - name: Dynamische gegevensmaskering
               href: database/dynamic-data-masking-overview.md
             - name: Evaluatie van SQL-beveiligingsproblemen
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Bring Your Own Key (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: Gegevensdetectie en -classificatie
-                  href: database/data-discovery-and-classification-overview.md
         - name: Bedrijfscontinuïteit
           displayName: 'Backup, back up, restore, recovery'
           items:

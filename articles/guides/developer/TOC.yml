@@ -18,7 +18,7 @@
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function'
     - name: Microservices
       items:
-        - name: Infrastructuur van service
+        - name: Service Fabric
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
@@ -132,7 +132,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Microservice-apps
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: Beveiligd
+    - name: Beveiligen
       items:
         - name: Web- en mobiele apps
           href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
@@ -142,7 +142,7 @@
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
         - name: Virtuele machines
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
-    - name: Bewaken
+    - name: Controleren
       items:
         - name: Web- en mobiele apps
           href: 'https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs'
@@ -175,7 +175,7 @@
         - name: PHP
           href: 'https://github.com/Azure/azure-sdk-for-php/blob/master/README.md'
         - name: Python
-          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/'
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/README.md'
         - name: Ruby
           href: 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md'
     - name: Opdrachtregelinterfaces
@@ -184,9 +184,9 @@
           href: 'https://docs.microsoft.com/cli/azure/'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/'
-    - name: Facturering
+    - name: Billing
       href: 'https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview'
-- name: Bronnen
+- name: Resources
   items:
     - name: Limieten en quota in Azure
       href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json

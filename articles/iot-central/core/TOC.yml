@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: Uw toepassing exporteren
               href: howto-use-app-templates.md
+            - name: De status van de toepassing bewaken
+              href: howto-monitor-application-health.md
         - name: Beheren vanuit andere locaties
           items:
             - name: Beheren vanuit de Azure-portal
