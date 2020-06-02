@@ -1,54 +1,54 @@
 ---
-title: Zelf studie-een lokale Azure Resource Manager-sjabloon implementeren
-description: Meer informatie over het implementeren van een Azure Resource Manager-sjabloon vanaf uw lokale computer
-ms.date: 03/13/2020
+title: 'Zelfstudie: een lokaal Azure Resource Manager-sjabloon implementeren'
+description: Ontdek hoe u een Azure Resource Manager-sjabloon kunt implementeren vanaf uw lokale computer
+ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 01f04d18ae54c3c512010dd005e9d820b914e536
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188821"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714063"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Zelf studie: een lokale Azure Resource Manager-sjabloon implementeren
+# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Zelfstudie: een lokaal Azure Resource Manager-sjabloon implementeren
 
-Meer informatie over het implementeren van een Azure Resource Manager-sjabloon vanaf uw lokale computer. Het duurt ongeveer **acht minuten** om te volt ooien.
+Ontdek hoe u een Azure Resource Manager-sjabloon kunt implementeren vanaf uw lokale computer. Dit neemt ongeveer **8 minuten** in beslag.
 
-Deze zelf studie is het eerste van een reeks. Tijdens de voortgang van de reeks kunt u de sjabloon modularize door een gekoppelde sjabloon te maken, de gekoppelde sjabloon op te slaan in een opslag account en de gekoppelde sjabloon te beveiligen met behulp van SAS-token, en u leert hoe u een DevOp-pijp lijn kunt maken voor het implementeren van sjablonen. Deze reeks is gericht op het implementeren van sjablonen.  Als u meer wilt weten over het ontwikkelen van sjablonen, raadpleegt u de [zelf studies van beginners](./template-tutorial-create-first-template.md).
+Deze zelfstudie is de eerste van een reeks. In deze reeks deelt u het sjabloon op in modules door een gekoppelde sjabloon te maken. U slaat het gekoppelde sjabloon op in een opslagaccount en beveiligt dit met een SAS-token. U leert ook hoe u een DevOps-pijplijn maakt om sjablonen te implementeren. Deze reeks gaat over de implementatie van sjablonen.  Als u wilt leren hoe u een sjabloon kunt implementeren, bekijk dan de [zelfstudies voor beginners](./template-tutorial-create-first-template.md).
 
-## <a name="get-tools"></a>Hulp middelen ophalen
+## <a name="get-tools"></a>Hulpprogramma's installeren
 
-Laten we beginnen door ervoor te zorgen dat u beschikt over de hulpprogram ma's die u nodig hebt voor het implementeren van sjablonen.
+Laten we er allereerst voor zorgen dat u de nodige hulpprogramma's heeft om sjablonen te implementeren.
 
-### <a name="command-line-deployment"></a>Opdracht regel implementatie
+### <a name="command-line-deployment"></a>Implementatie via opdrachtregels
 
-U hebt een Azure PowerShell of Azure CLI nodig om de sjabloon te implementeren. Zie voor de installatie-instructies:
+U heeft Azure PowerShell of Azure CLI nodig om het sjabloon te implementeren. Zie voor installatie-instructies:
 
 - [Azure PowerShell installeren](/powershell/azure/install-az-ps)
 - [Azure CLI installeren in Windows](/cli/azure/install-azure-cli-windows)
 - [Azure CLI installeren in Linux](/cli/azure/install-azure-cli-linux)
 
-Nadat u Azure PowerShell of Azure CLI hebt geïnstalleerd, moet u zich voor de eerste keer aanmelden. Zie [Aanmelden bij Power shell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden-Azure cli](/cli/azure/get-started-with-azure-cli#sign-in)voor meer informatie.
+Nadat u Azure PowerShell of Azure CLI heeft geïnstalleerd moet u zich voor de eerste keer aanmelden. Bekijk [Aanmelden - PowerShell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) voor ondersteuning.
 
-### <a name="editor-optional"></a>Redacteur (optioneel)
+### <a name="editor-optional"></a>Editor (optioneel)
 
-Sjablonen zijn JSON-bestanden. Als u sjablonen wilt bekijken/bewerken, hebt u een goede JSON-editor nodig. We raden Visual Studio code aan met de uitbrei ding Resource Manager-Hulpprogram Ma's. Als u deze hulpprogram ma's wilt installeren, raadpleegt u [Visual Studio code gebruiken om Azure Resource Manager sjablonen te maken](use-vs-code-to-create-template.md).
+Sjablonen zijn JSON-bestanden. Om sjablonen te controleren/bewerken heeft u een goede JSON-editor nodig. We raden Visual Studio Code met de extensie Resource Manager Tools aan. Bekijk [Visual Studio Code-extensie gebruiken om Azure Resource Manager-sjablonen te maken](use-vs-code-to-create-template.md) om deze hulpprogramma's te installeren.
 
 ## <a name="review-template"></a>Sjabloon controleren
 
-Met de sjabloon wordt een opslag account, een app service-abonnement en een web-app geïmplementeerd. Als u geïnteresseerd bent in het maken van de sjabloon, kunt u [zelf studie over Quick](template-tutorial-quickstart-template.md)start-sjablonen door nemen. Het is echter niet vereist voor het volt ooien van deze zelf studie.
+Het sjabloon implementeert een opslagaccount, App Service-plan en webtoepassing. Als u het sjabloon wilt aanmaken, doorloop dan de [zelfstudie over Snelstartsjablonen](template-tutorial-quickstart-template.md). Dat is echter geen vereiste om deze zelfstudie te voltooien.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. De naam moet uniek zijn. In de sjabloon is de naam van het opslag account de project naam ' Store ' toegevoegd en de project naam moet tussen de 3 en 11 tekens lang zijn. De project naam moet dus voldoen aan de naam vereisten voor het opslag account en mag uit minder dan 11 tekens bestaan.
+> Opslagaccountnamen moeten tussen 3 en 24 tekens lang zijn en mogen alleen getallen en kleine letters bevatten. De naam moet uniek zijn. In het sjabloon is de opslagaccountnaam de projectnaam met 'store' daaraan toegevoegd. De projectnaam moet tussen 3 en 11 tekens lang zijn. De projectnaam moet dus voldoen aan de vereisten voor de opslagaccountnaam en minder dan 11 tekens lang zijn.
 
-Sla een kopie van de sjabloon op uw lokale computer op met de extensie. json, bijvoorbeeld azuredeploy. json. U implementeert deze sjabloon later in de zelf studie.
+Sla een kopie van de sjabloon op uw lokale computer op met de extensie .json, bijvoorbeeld azuredeploy.json. Verderop in deze sjabloon implementeert u deze sjabloon.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan met uw Azure-referenties om aan de slag te gaan met Azure PowerShell/Azure CLI voor het implementeren van een sjabloon.
+Meld u aan met uw Azure-referenties om aan de slag te gaan met Azure PowerShell/Azure CLI en een sjabloon te implementeren.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,7 +69,7 @@ Als u meerdere Azure-abonnementen hebt, selecteert u het abonnement dat u wilt g
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
-Select-AzSubscription [SubscriptionID/SubscriptionName]
+Set-AzContext [SubscriptionID/SubscriptionName]
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
@@ -82,7 +82,7 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Wanneer u een sjabloon implementeert, geeft u een resource groep op die de resources zal bevatten. Voordat u de implementatie opdracht uitvoert, maakt u de resource groep met behulp van Azure CLI of Azure PowerShell. Selecteer de tabbladen in het volgende code gedeelte om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voor beelden in dit artikel zijn geschreven voor de bash-shell.
+Wanneer u een sjabloon implementeert, geeft u een resourcegroep op die de resources zal bevatten. Voordat u de opdracht voor de implementatie uitvoert, maakt u de resourcegroep met behulp van Azure CLI of Azure PowerShell. Selecteer de tabbladen in de volgende codesectie om te kiezen tussen Azure PowerShell en Azure CLI. De CLI-voorbeelden in dit artikel zijn geschreven voor de Bash-shell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -111,7 +111,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Sjabloon implementeren
 
-Gebruik een of beide implementatie opties voor het implementeren van de sjabloon.
+Gebruik een of beide implementatie-opties om de sjabloon te implementeren.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -128,7 +128,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](./deploy-powershell.md)voor meer informatie over het implementeren van een sjabloon met behulp van Azure PowerShell.
+Zie [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](./deploy-powershell.md) voor meer informatie over de implementatie van sjablonen met Azure PowerShell.
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
@@ -147,22 +147,22 @@ az deployment group create \
   --verbose
 ```
 
-Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](./deploy-cli.md)voor meer informatie over het implementeren van een sjabloon met behulp van Azure cli.
+Zie [Resources implementeren met Resource Manager-sjablonen en Azure CLI](./deploy-cli.md) voor meer informatie over de implementatie van sjablonen met Azure CLI.
 
 ---
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Opschonen van de resources die u hebt geïmplementeerd door de resource groep te verwijderen.
+Schoon de geïmplementeerd resources op door de resourcegroep te verwijderen.
 
-1. Selecteer in de Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu van Azure Portal.
 2. Voer de naam van de resourcegroep in het veld **Filter by name** in.
 3. Selecteer de naam van de resourcegroep.
-4. Selecteer **resource groep verwijderen** in het bovenste menu.
+4. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u een lokale sjabloon implementeert. In de volgende zelf studie scheidt u de sjabloon in een hoofd sjabloon en een gekoppelde sjabloon en leert u hoe u de gekoppelde sjabloon kunt opslaan en beveiligen.
+U hebt geleerd hoe u een lokale sjabloon kunt implementeren. In de volgende zelfstudie splitst u de sjabloon op in een hoofdsjabloon en een gekoppelde sjabloon en leert u hoe u de gekoppelde sjabloon kunt opslaan en beveiligen.
 
 > [!div class="nextstepaction"]
 > [Een gekoppelde sjabloon implementeren](./deployment-tutorial-linked-template.md)

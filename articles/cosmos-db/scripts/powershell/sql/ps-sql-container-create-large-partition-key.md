@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het maken van een Azure Cosmos DB container met een grote partitie sleutel
-description: 'Azure PowerShell-voorbeeld script: een container met een grote partitie sleutel maken in een Azure Cosmos DB-account'
+title: PowerShell-script om een Azure Cosmos DB-container te maken met een grote partitiesleutel
+description: Voorbeeld van een Azure PowerShell-script - Maak een container met een grote partitiesleutel in een Azure Cosmos DB-account
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 7746154fe89b655d09345a2de655fa85a0d4cbae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4f05d4dd13e63d8022ffb61be4451cb5350ba68f
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365926"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715559"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>Een container met een grote partitie sleutel in een Azure Cosmos DB-account maken met behulp van Power shell
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>Maak een container met een grote partitiesleutel in een Azure Cosmos DB-account met PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -34,15 +34,15 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
-| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Hiermee wordt een bestaande Cosmos DB SQL Database gemaakt of bijgewerkt. |
-| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Hiermee wordt een bestaande Cosmos DB SQL-container gemaakt of bijgewerkt. |
-|**Azure-resource groepen**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Maakt een Cosmos DB-account. |
+| [New-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqldatabase) | Maakt een Cosmos DB SQL-database. |
+| [New-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer) | Maakt een Cosmos DB SQL-container. |
+|**Azure-resourcegroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

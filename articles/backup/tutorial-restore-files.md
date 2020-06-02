@@ -1,15 +1,15 @@
 ---
-title: 'Zelf studie: bestanden herstellen naar een virtuele machine met Azure Backup'
+title: 'Tutorial: bestanden herstellen naar een VM met Azure Backup'
 description: Informatie over hoe u herstelacties op bestandsniveau uitvoert op een Azure-VM met Backup en Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 439ffeed7f0e37f04eda39380ddcabe1fa4e06c3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171725"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653260"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Bestanden herstellen naar een virtuele machine in Azure
 
@@ -23,7 +23,7 @@ Azure Backup maakt herstelpunten die worden opgeslagen in geografisch redundante
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of nieuwer uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.18 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,6 +118,9 @@ Als u uw bestanden wilt herstellen, biedt Azure Backup een op uw VM uit te voere
 
 Nu u het herstelscript hebt gekopieerd naar uw VM, kunt u de herstelpunten verbinden en bestanden herstellen.
 
+>[!NOTE]
+> Kijk [hier](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) om te zien of u het script kunt uitvoeren op uw virtuele machine voordat u doorgaat.
+
 1. Maak verbinding met uw VM via SSH. Vervang *publicIPAddress* als volgt door het IP-adres van uw VM:
 
     ```bash
@@ -202,4 +205,4 @@ In deze zelfstudie hebt u een herstelpunt met een VM verbonden en voor een webse
 Ga naar de volgende zelfstudie voor meer informatie over hoe u een back-up van een Windows-server naar Azure maakt.
 
 > [!div class="nextstepaction"]
-> [Een back-up maken van een Windows-server naar Azure](tutorial-backup-windows-server-to-azure.md)
+> [Back-up maken van een Windows-server naar Azure](tutorial-backup-windows-server-to-azure.md)
