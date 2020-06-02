@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 31d326b19c560981531ebf0716b614046b2337b6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217244"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258637"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -31,7 +31,7 @@ U kunt serverloze Api's toevoegen aan statische Azure-Web Apps via integratie me
 
 De volgende stappen laten zien hoe u een nieuwe opslag plaats maakt en de bestanden naar uw computer kloont.
 
-1. Ga naar https://github.com/staticwebdev/vanilla-basic/generate om een nieuwe opslag plaats te maken.
+1. Zorg ervoor dat u bent aangemeld bij GitHub en ga naar https://github.com/staticwebdev/vanilla-basic/generate om een nieuwe opslag plaats te maken.
 1. Voer in het vak _naam van opslag plaats_ **mijn-vanille-API**in.
 1. Klik op **opslagplaats maken op basis van sjabloon**.
 

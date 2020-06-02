@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 6909bcbc67680f9205af8a79782907d4671d668b
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 3fa9de1057160340fdf10d72809a104cae985162
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860712"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248155"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -122,6 +122,7 @@ Meer informatie over Windows Defender exploit Guard in [een exploit Guard-beleid
 Meer informatie over beveiligings controles in [Enhanced Secure Score (preview) in azure Security Center](secure-score-security-controls.md).
 
 
+
 ### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Aangepaste beleids regels met aangepaste meta gegevens zijn nu algemeen beschikbaar
 
 Aangepaste beleids regels maken nu deel uit van de Security Center aanbevelingen, beveiligde scores en het dash board nalevings normen voor regelgeving. Deze functie is nu algemeen beschikbaar en biedt u de mogelijkheid om de beveiligings beoordelings dekking van uw organisatie in Security Center uit te breiden. 
@@ -133,13 +134,14 @@ We hebben nu ook de optie toegevoegd voor het bewerken van de aangepaste aanbeve
 Meer informatie over [het verbeteren van uw aangepaste aanbevelingen met gedetailleerde informatie](custom-security-policies.md#enhancing-your-custom-recommendations-with-detailed-information).
 
 
+
 ### <a name="crash-dump-analysis-capabilities-migrating-to-fileless-attack-detection"></a>Crash dump analyse mogelijkheden migreren naar aanval op bestandsloze detectie 
 
 De detectie mogelijkheden van Windows Crash Dump Analysis (CDA) worden geïntegreerd in de [detectie van aanvalen bestanden](https://docs.microsoft.com/azure/security-center/threat-protection#windows-fileless). Detectie van conflicten met een aanval op een bestand biedt verbeterde versies van de volgende beveiligings waarschuwingen voor Windows-computers: code-injectie gedetecteerd, er is een verwerkte shell code gedetecteerd, gedetecteerde en verdacht code segment gedetecteerd.
 
 Enkele van de voor delen van deze overgang:
 
-- **Proactieve en tijdige detectie van malware** : de CDA-benadering die is betrokken bij het wachten op een crash, en het uitvoeren van analyses om actieve malware te vinden. Bij het gebruik van een aanval zonder bestanden wordt er tijdens de uitvoering een proactieve identificatie van de bedreigingen in het geheugen gebruikt. 
+- **Proactieve en tijdige detectie van malware** : de CDA-benadering die is betrokken bij het wachten op een crash, en het uitvoeren van analyses om schadelijke artefacten te vinden. Bij het gebruik van een aanval zonder bestanden wordt er tijdens de uitvoering een proactieve identificatie van de bedreigingen in het geheugen gebruikt. 
 
 - **Verrijkte waarschuwingen** : de beveiligings waarschuwingen van aanval via bestanden bevatten verrijkingen die niet beschikbaar zijn via CDA, zoals de actieve netwerk verbindings gegevens. 
 

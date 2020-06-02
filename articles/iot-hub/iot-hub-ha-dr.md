@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499109"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267627"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hoge beschikbaarheid en herstel na noodgevallen van IoT Hub
 
@@ -60,7 +60,7 @@ Beide failover-opties bieden de volgende herstel punt doelstellingen (Rpo's):
 Zodra de failoverbewerking voor de IoT-hub is voltooid, worden alle bewerkingen van het apparaat en de back-end-toepassingen verwacht te blijven werken zonder dat hiervoor hand matige interventie nodig is. Dit betekent dat uw apparaat-naar-Cloud-berichten moeten blijven werken en dat het hele REGI ster van het apparaat intact is. Gebeurtenissen die via Event Grid worden gegenereerd, kunnen worden gebruikt via dezelfde abonnement (en) die eerder zijn geconfigureerd, mits deze Event Grid abonnementen nog steeds beschikbaar zijn.
 
 > [!CAUTION]
-> - De Event hub-compatibele naam en het eind punt van de IoT Hub ingebouwde gebeurtenissen van het eind punt wijzigen na een failover, en geconfigureerde consumenten groepen worden verwijderd (dit is een fout die wordt opgelost vóór 2020). Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event hub-client of de Event processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw toepassing rechtstreeks gebruikt, moet u [de gebruikers groep die ze gebruiken opnieuw configureren en het nieuwe event hub-compatibele eind punt na de failover ophalen om de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) bewerkingen voort te zetten. Als u Azure Functions of Azure Stream Analytics om verbinding te maken met het ingebouwde eind punt, moet u de computer mogelijk **opnieuw opstarten**.
+> - De Event hub-compatibele naam en het eind punt van het eind punt van de IoT Hub ingebouwde gebeurtenissen na een failover wijzigen. Bij het ontvangen van telemetriegegevens van het ingebouwde eind punt met behulp van de Event hub-client of de Event processor host, moet u [de Connection String IOT hub gebruiken](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) om de verbinding tot stand te brengen. Zo zorgt u ervoor dat uw back-end-toepassingen blijven werken zonder dat er hand matige interventie post-failover is vereist. Als u de Event hub-compatibele naam en het eind punt in uw toepassing rechtstreeks gebruikt, moet u na [de failover het nieuwe event hub-compatibele eind punt ophalen om de](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) bewerkingen voort te zetten. Als u Azure Functions of Azure Stream Analytics om verbinding te maken met het ingebouwde eind punt, moet u de computer mogelijk **opnieuw opstarten**.
 >
 > - Bij het door sturen naar de opslag wordt u aangeraden de blobs of bestanden weer te geven en vervolgens te herhalen, om ervoor te zorgen dat alle blobs of bestanden worden gelezen zonder dat er veronderstellingen worden gemaakt van de partitie. Het partitie bereik kan mogelijk worden gewijzigd tijdens een door micro soft geïnitieerde failover of hand matige failover. U kunt de [List blobs API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruiken om de lijst met blobs of de [lijst ADLS Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) voor de lijst met bestanden op te sommen. 
 
@@ -130,9 +130,9 @@ Hier volgt een samen vatting van de HA/DR-opties die in dit artikel worden gepre
 
 | HA/DR-optie | RTO | RPO | Is hand matige interventie vereist? | Implementatie complexiteit | Extra kosten impact|
 | --- | --- | --- | --- | --- | --- |
-| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|Nee|Geen|Geen|
-| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Ja|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
-| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|Nee|Hoog|> 1x de kosten van 1 IoT hub|
+| Door micro soft geïnitieerde failover |2-26 uur|Bovenstaande RPO-tabel verwijzen|No|Geen|Geen|
+| Handmatige failover |10 min-2 uur|Bovenstaande RPO-tabel verwijzen|Yes|Zeer laag. U hoeft alleen deze bewerking vanuit de portal te activeren.|Geen|
+| Kruis regio HA |< 1 minuut|Is afhankelijk van de replicatie frequentie van uw aangepaste HA-oplossing|No|Hoog|> 1x de kosten van 1 IoT hub|
 
 ## <a name="next-steps"></a>Volgende stappen
 

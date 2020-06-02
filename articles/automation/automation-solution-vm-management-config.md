@@ -3,14 +3,14 @@ title: Azure Automation VM's buiten bedrijfsuren starten/stoppen configureren
 description: In dit artikel leest u hoe u de VM's buiten bedrijfsuren starten/stoppen-functie kunt configureren voor het ondersteunen van verschillende use cases of scenario's.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204386"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266712"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM's buiten bedrijfsuren starten/stoppen configureren
 
@@ -50,7 +50,7 @@ U kunt de actie richten op een abonnement en resource groep, of een specifieke l
 
 3. Stel het parameter veld **WHATIF** in op waar.
 
-4. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3).
+4. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines (VM1, VM2, VM3), zonder spaties tussen door komma's gescheiden waarden.
 
 5. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
 
@@ -81,7 +81,7 @@ In een omgeving met twee of meer onderdelen op meerdere Vm's die een gedistribue
 
 4. Stel **WHATIF** in op True. 
 
-5. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met virtuele machines.
+5. Configureer de `External_ExcludeVMNames` variabele met een door komma's gescheiden lijst met vm's, zonder spaties tussen door komma's gescheiden waarden.
 
 6. In dit scenario worden de `External_Start_ResourceGroupNames` variabelen en niet nageleefd `External_Stop_ResourceGroupnames` . Voor dit scenario moet u uw eigen Automation-schema maken. Zie [een Runbook plannen in azure Automation](shared-resources/schedules.md)voor meer informatie.
 
@@ -128,7 +128,7 @@ Wanneer u het **AutoStop_CreateAlert_Parent** runbook uitvoert, wordt gecontrole
 
 1. Maak een nieuwe [planning](shared-resources/schedules.md#create-a-schedule) en koppel deze aan het **AutoStop_CreateAlert_Parent** runbook en voeg een door KOMMA'S gescheiden lijst met VM-namen toe aan de `VMList` para meter.
 
-2. Als u sommige Vm's wilt uitsluiten van de actie voor autostop, kunt u een door komma's gescheiden lijst met VM-namen toevoegen aan de `External_ExcludeVMNames` variabele.
+2. Als u sommige Vm's wilt uitsluiten van de actie voor autostop, kunt u een door komma's gescheiden lijst met VM-namen (zonder spaties) toevoegen aan de `External_ExcludeVMNames` variabele.
 
 ## <a name="configure-email-notifications"></a>E-mailmeldingen configureren
 
@@ -159,13 +159,13 @@ Met de functie kunt u Vm's toevoegen die moeten worden aangeduid of uitgesloten.
 
 Er zijn twee manieren om ervoor te zorgen dat een virtuele machine wordt opgenomen wanneer de functie wordt uitgevoerd:
 
-* Elk van de bovenliggende [runbooks](automation-solution-vm-management.md#runbooks) van de functie heeft een `VMList` para meter. U kunt een door komma's gescheiden lijst met VM-namen door geven aan deze para meter bij het plannen van het juiste bovenliggende runbook voor uw situatie en deze Vm's worden opgenomen wanneer de functie wordt uitgevoerd.
+* Elk van de bovenliggende [runbooks](automation-solution-vm-management.md#runbooks) van de functie heeft een `VMList` para meter. U kunt een door komma's gescheiden lijst met VM-namen (zonder spaties) door geven aan deze para meter bij het plannen van het juiste bovenliggende runbook voor uw situatie en deze Vm's worden opgenomen wanneer de functie wordt uitgevoerd.
 
 * Als u meerdere Vm's wilt selecteren, stelt `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` u en met de namen van de resource groepen die de vm's bevatten die u wilt starten of stoppen. U kunt ook de variabelen instellen op een waarde van `*` om de functie uit te voeren op alle resource groepen in het abonnement.
 
 ### <a name="exclude-a-vm"></a>Een VM uitsluiten
 
-Als u een virtuele machine wilt uitsluiten van het stoppen/starten van Vm's buiten kantoor uren, kunt u de naam ervan toevoegen aan de `External_ExcludeVMNames` variabele. Deze variabele is een door komma's gescheiden lijst met specifieke Vm's die moeten worden uitgesloten van de functie. Deze lijst is beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan deze lijst toevoegt, kunnen de Vm's die zijn ingesteld om te worden uitgesloten, per ongeluk worden gestart of gestopt.
+Als u een virtuele machine wilt uitsluiten van het stoppen/starten van Vm's buiten kantoor uren, kunt u de naam ervan toevoegen aan de `External_ExcludeVMNames` variabele. Deze variabele is een door komma's gescheiden lijst met specifieke Vm's (zonder spaties) die moeten worden uitgesloten van de functie. Deze lijst is beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan deze lijst toevoegt, kunnen de Vm's die zijn ingesteld om te worden uitgesloten, per ongeluk worden gestart of gestopt.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>De planningen voor opstarten en afsluiten wijzigen
 

@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649795"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259300"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken instellen voor een Azure Event Hub
 
@@ -209,7 +209,7 @@ De JSON-verbindings gebeurtenis van het Event Hubs virtuele netwerk (VNet) bevat
 | SubscriptionId | Azure-abonnements-ID |
 | NamespaceName | Naam van naamruimte |
 | IPAddress | IP-adres van een client die verbinding maakt met de Event Hubs-service |
-| Actie | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
+| Bewerking | De actie die door de Event Hubs-service wordt uitgevoerd bij de evaluatie van verbindings aanvragen. Ondersteunde acties zijn **verbinding accepteren** en **verbinding weigeren**. |
 | Reden | Geeft een reden waarom de actie is uitgevoerd |
 | Count | Aantal exemplaren voor de opgegeven actie |
 | ResourceId | Azure Resource Manager Resource-ID. |
@@ -247,7 +247,7 @@ Door de klant beheerde Key gebruikers logboek JSON bevat elementen die in de vol
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Inleiding tot Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Event Hubs-API-overzicht](event-hubs-api-overview.md)
+- [Event Hubs-voor beelden](sdks.md)
 - Aan de slag met Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

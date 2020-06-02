@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828403"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266114"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
 Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en [uw eigen wacht woord opnieuw instelt](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
 
-Als u uw wacht woord kent, maar dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) in dit artikel.
+Als u uw wacht woord kent en u dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) in dit artikel.
 
 >[!Important]
 >Dit artikel is bedoeld voor gebruikers die proberen een verg eten of onbekend werk-of school account-wacht woord opnieuw in te stellen. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
@@ -103,7 +103,7 @@ Als u geen toegang hebt tot uw Azure Active Directory-account (Azure AD), kan di
 
      Als u nog steeds geen toegang hebt tot uw account, neemt u contact op met de beheerder van uw organisatie voor meer hulp.
 
-Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail ontvangen van een account als ' micro soft namens \< *your_organization*> '. Als u een soortgelijk e-mail bericht krijgt, maar u het wacht woord niet onlangs opnieuw hebt ingesteld, moet u onmiddellijk contact opnemen met de beheerder van uw organisatie.
+Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail ontvangen die afkomstig is van een account zoals ' micro soft namens \<*your_organization*> '. Als u een soortgelijk e-mail bericht krijgt, maar u het wacht woord niet onlangs opnieuw hebt ingesteld, moet u onmiddellijk contact opnemen met de beheerder van uw organisatie.
 
 ## <a name="how-to-change-your-password"></a>Uw wachtwoord wijzigen
 

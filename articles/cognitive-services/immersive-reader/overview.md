@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052389"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267270"
 ---
 # <a name="what-is-immersive-reader"></a>Wat is Insluitende lezer?
 
@@ -31,7 +31,7 @@ De insluitende lezer is ontworpen om het lezen van iedereen toegankelijk te make
 
 * Hiermee wordt inhoud in een minimale Lees weergave weer gegeven
 
-  ![Insluitende lezer](./media/immersive-reader.png)
+  ![Immersive Reader](./media/immersive-reader.png)
 
 * Afbeeldingen van veelgebruikte woorden weer geven
 
@@ -55,12 +55,12 @@ De insluitende lezer is ontworpen om het lezen van iedereen toegankelijk te make
 
 ## <a name="how-does-immersive-reader-work"></a>Hoe werkt insluitende lezer?
 
-De insluitende lezer is een zelfstandige web-app die, wanneer deze wordt aangeroepen met behulp van de Java script SDK van de insluitende lezer, boven `iframe`op uw bestaande web-app wordt weer gegeven via een. Wanneer u de API aanroept om de insluitende lezer te starten, geeft u de inhoud op die u wilt weer geven in de insluitende lezer. Onze SDK verwerkt het maken en de stijl van `iframe` de en communicatie met de back-end van de insluitende lezer, die de inhoud verwerkt voor onderdelen van spraak, tekst naar spraak, vertaling, enzovoort.
+De insluitende lezer is een zelfstandige web-app die, wanneer deze wordt aangeroepen met behulp van de Java script SDK van de insluitende lezer, boven op uw bestaande web-app wordt weer gegeven via een `iframe` . Wanneer u de API aanroept om de insluitende lezer te starten, geeft u de inhoud op die u wilt weer geven in de insluitende lezer. Onze SDK verwerkt het maken en de stijl van de `iframe` en communicatie met de back-end van de insluitende lezer, die de inhoud verwerkt voor onderdelen van spraak, tekst naar spraak, vertaling, enzovoort.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Aan de slag met Insluitende lezer:
 
-* Ga naar de [Snelstartgids](./quickstart.md)
+* Ga naar de [Quick](./quickstarts/client-libraries.md?pivots=programming-language-csharp) starts
 * De [insluitende lezer-SDK op github](https://github.com/microsoft/immersive-reader-sdk) verkennen
 * Lees de [referentie voor de insluitende lezer-SDK](./reference.md)

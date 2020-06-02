@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 51567ff07930599b0c13d8a9546ebeca396c4b45
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993538"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266590"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fout codes voor Azure AD-verificatie en-autorisatie
 
@@ -63,7 +63,7 @@ Het `error` veld heeft verschillende mogelijke waarden: Controleer de koppelinge
 | Foutcode         | Beschrijving        | Client actie    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protocol fout, zoals een ontbrekende vereiste para meter. | Corrigeer en verzend de aanvraag opnieuw.|
-| `invalid_grant`    | Sommige van de verificatie materialen (verificatie code, vernieuwings token, toegangs token, PKCE uitdaging) zijn ongeldig, niet-geparseerd, ontbreken of anderszins onbruikbaar | Probeer een nieuwe aanvraag naar het `/authorize` eind punt uit om een nieuwe autorisatie code op te halen.  Overweeg het gebruik van de protocollen te controleren en te valideren. |
+| `invalid_grant`    | Sommige van de verificatie materiaal (auth-code, vernieuwings token, toegangs token, PKCE Challenge) is ongeldig, niet-geparseerd, ontbreekt of anderszins onbruikbaar | Probeer een nieuwe aanvraag naar het `/authorize` eind punt uit om een nieuwe autorisatie code op te halen.  Overweeg het gebruik van de protocollen te controleren en te valideren. |
 | `unauthorized_client` | De geverifieerde client is niet gemachtigd om dit type autorisatie toekenning te gebruiken. | Dit gebeurt meestal wanneer de client toepassing niet is geregistreerd in azure AD of niet is toegevoegd aan de Azure AD-Tenant van de gebruiker. De toepassing kan de gebruiker vragen met instructies voor het installeren van de toepassing en het toevoegen aan Azure AD. |
 | `invalid_client` | Client verificatie is mislukt.  | De referenties van de client zijn niet geldig. De toepassings beheerder werkt de referenties bij om deze te herstellen.   |
 | `unsupported_grant_type` | De autorisatie server biedt geen ondersteuning voor het type autorisatie toekenning. | Wijzig het toekennings type in de aanvraag. Dit type fout moet alleen tijdens de ontwikkeling optreden en tijdens de eerste test worden gedetecteerd. |
@@ -126,8 +126,8 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided: door Tenant geïdentificeerde gegevens zijn niet gevonden in de aanvraag of geïmpliceerd door de verstrekte referenties. De gebruiker kan contact opnemen met de Tenant beheerder om het probleem op te lossen. |
 | AADSTS50061 | SignoutInvalidRequest-de afmeldings aanvraag is ongeldig. |
 | AADSTS50064 | CredentialAuthenticationError: referentie validatie voor gebruikers naam of wacht woord is mislukt. |
-| AADSTS50068 | SignoutInitiatorNotParticipant-afmelden is mislukt. De app die het afmelden heeft gestart, is geen deel nemer in de huidige sessie. |
-| AADSTS50070 | SignoutUnknownSessionIdentifier-afmelden is mislukt. De aanvraag voor afmelden heeft een naam-id opgegeven die niet overeenkomt met de bestaande sessie (s). |
+| AADSTS50068 | SignoutInitiatorNotParticipant-afmelden is mislukt. De app die zich heeft afgemeld, is geen deel nemer van de huidige sessie. |
+| AADSTS50070 | SignoutUnknownSessionIdentifier-afmelden is mislukt. De aanvraag voor het afmelden heeft een naam-id opgegeven die niet overeenkomt met de bestaande sessie (s). |
 | AADSTS50071 | SignoutMessageExpired-de afmeldings aanvraag is verlopen. |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt: de gebruiker moet zich inschrijven voor de tweede factor Authentication (interactief). |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt: sterke verificatie is vereist en de gebruiker heeft de MFA-Challenge niet door gegeven. |
@@ -173,14 +173,14 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50187 | DeviceInformationNotProvided: de service kan de verificatie van het apparaat niet uitvoeren. |
 | AADSTS50196 | LoopDetected-er is een client-lus gedetecteerd. Controleer de logica van de app om te controleren of de tokens in de cache zijn geïmplementeerd en of de fout condities correct worden afgehandeld.  De app heeft te veel van dezelfde aanvraag in te korte tijd gedaan, wat aangeeft dat het een fout status heeft of abusively aanvraag tokens. |
 | AADSTS50197 | ConflictingIdentities-de gebruiker is niet gevonden. Probeer opnieuw aan te melden. |
-| AADSTS50199 | CmsiInterrupt: om veiligheids redenen is gebruikers bevestiging vereist voor deze aanvraag.  Omdat dit een interaction_required-fout is, moet de client interactieve verificatie uitvoeren.  Dit gebeurt omdat een webweergave van het systeem is gebruikt voor het aanvragen van een token voor een systeem eigen toepassing. de gebruiker moet daarom worden gevraagd of dit eigenlijk de app is waarmee ze zich kunnen aanmelden.|
+| AADSTS50199 | CmsiInterrupt: om veiligheids redenen is gebruikers bevestiging vereist voor deze aanvraag.  Omdat dit een interaction_required-fout is, moet de client interactieve verificatie uitvoeren.  Dit gebeurt omdat een webweergave van het systeem is gebruikt voor het aanvragen van een token voor een systeem eigen toepassing. de gebruiker moet daarom worden gevraagd of dit eigenlijk de app is waarmee ze zich kunnen aanmelden. Om deze vraag te voor komen, moet de omleidings-URI deel uitmaken van de volgende lijst met veilige onderdelen: <br />http://<br />https://<br />msauth://(alleen iOS)<br />msauthv2://(alleen iOS)<br />Chrome-extensie://(alleen voor desktop Chrome-browser) |
 | AADSTS51000 | RequiredFeatureNotEnabled: de functie is uitgeschakeld. |
 | AADSTS51001 | De DomainHintMustbePresent-domein Hint moet aanwezig zijn met een lokale beveiligings-id of een on-premises UPN. |
 | AADSTS51004 | UserAccountNotInDirectory: het gebruikers account bestaat niet in de Directory. |
 | AADSTS51005 | TemporaryRedirect: gelijk aan HTTP-status 307, wat aangeeft dat de aangevraagde informatie zich bevindt in de URI die is opgegeven in de locatie-header. Wanneer deze status wordt weer gegeven, volgt u de locatie header die is gekoppeld aan het antwoord. Wanneer de oorspronkelijke aanvraag methode is gepost, gebruikt de omgeleide aanvraag ook de POST-methode. |
 | AADSTS51006 | Geïntegreerde Windows-verificatie is vereist voor ForceReauthDueToInsufficientAuth. Er is een gebruiker aangemeld met een sessie token waarvoor de geïntegreerde Windows-authenticatie claim ontbreekt. Vraag de gebruiker zich opnieuw aan te melden. |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn: de gebruiker heeft geen toestemming gegeven voor toegang tot LinkedIn-resources. |
-| AADSTS53000 | DeviceNotCompliant-beleid voor voorwaardelijke toegang vereist een compatibel apparaat en het apparaat is niet compatibel. De gebruiker moet hun apparaat inschrijven bij een goedgekeurde MDM-provider, zoals intune. |
+| AADSTS53000 | DeviceNotCompliant-beleid voor voorwaardelijke toegang vereist een compatibel apparaat en het apparaat is niet compatibel. De gebruiker moet het apparaat inschrijven bij een goedgekeurde MDM-provider zoals Intune. |
 | AADSTS53001 | DeviceNotDomainJoined-beleid voor voorwaardelijke toegang vereist een apparaat dat lid is van een domein en het apparaat is niet gekoppeld aan een domein. Laat de gebruiker een apparaat gebruiken dat lid is van een domein. |
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp: de app die wordt gebruikt, is geen goedgekeurde app voor voorwaardelijke toegang. De gebruiker moet een van de apps uit de lijst met goedgekeurde apps gebruiken om toegang te krijgen. |
 | AADSTS53003 | BlockedByConditionalAccess-toegang is geblokkeerd door beleid voor voorwaardelijke toegang. Het toegangs beleid staat geen token uitgifte toe. |
@@ -314,7 +314,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS700022 | InvalidMultipleResourcesScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig omdat deze meer dan één resource bevat. |
 | AADSTS700023 | InvalidResourcelessScope: de opgegeven waarde voor het bereik van de invoer parameter is niet geldig bij het aanvragen van een toegangs token. |
 | AADSTS7000215 | Er is een ongeldig client geheim gegeven. Ontwikkelaars fout: de app probeert zich aan te melden zonder de vereiste of juiste verificatie parameters.|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided-de aangestuurde geheime sleutels van de client zijn verlopen. Ga naar de Azure-Portal om nieuwe sleutels voor uw app te maken of overweeg de certificaat referenties te gebruiken voor extra beveiliging:https://aka.ms/certCreds |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided-de aangestuurde geheime sleutels van de client zijn verlopen. Ga naar de Azure Portal om nieuwe sleutels voor uw app te maken of overweeg de certificaat referenties te gebruiken voor extra beveiliging:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | De InvalidGrantRedeemAgainstWrongTenant-meegeleverde autorisatie code is bedoeld voor gebruik met andere tenants en daarom afgewezen. De OAuth2-autorisatie code moet worden ingewisseld voor dezelfde Tenant die is verkregen voor (/veelvoorkomende of/{tenant-ID} indien van toepassing) |
 | AADSTS1000000 | UserNotBoundError-voor de BIND-API moet de Azure AD-gebruiker ook worden geverifieerd met een externe IDP, die nog niet heeft plaatsgevonden. |
 | AADSTS1000002 | BindCompleteInterruptError: de binding is voltooid, maar de gebruiker moet hiervan op de hoogte zijn. |

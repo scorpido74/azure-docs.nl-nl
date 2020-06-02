@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735868"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247271"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -95,7 +95,7 @@ De instelling voor opslagreplicatie bewerken:
 
 ### <a name="downloading-the-software-package"></a>Het software pakket downloaden
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Als er al een Recovery Services kluis is geopend, gaat u verder met stap 3. Als er geen Recovery Services kluis is geopend, maar wel in de Azure Portal, klikt u in het hoofd menu op **Bladeren**.
 
    * Typ in de lijst met resources **Recovery Services**.
@@ -186,9 +186,9 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
 
     Gebruik de volgende waarden voor de SSRS-configuratie:
     * Service account: ' ingebouwd account gebruiken ' moet netwerk service zijn
-    * URL van webservice: ' virtuele map ' moet worden ReportServer_ \< SQL-instructie>
-    * Data Base: DATABASENAME moet Report Server $ SQL-database \<>
-    * URL van webportal: ' virtuele map ' moet Reports_ SQL-Server-instructie \<>
+    * URL van webservice: ' virtuele map ' moet worden ReportServer_\<SQLInstanceName>
+    * Data Base: DATABASENAME moet Report Server $\<SQLInstanceName>
+    * URL van webportal: ' virtuele map ' moet worden Reports_\<SQLInstanceName>
 
     Meer [informatie](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) over de configuratie van SSRS.
 
@@ -311,8 +311,8 @@ Als u een firewall of proxy hebt die toegang tot Azure blokkeert, moet u de volg
 Als u ExpressRoute micro soft-peering gebruikt, selecteert u de volgende services/regio's:
 
 * Azure Active Directory (12076:5060)
-* Microsoft Azure regio (per locatie van uw Recovery Services kluis)
-* Azure Storage (volgens de locatie van uw Recovery Services kluis)
+* Microsoft Azure regio (op basis van de locatie van uw Recovery Services kluis)
+* Azure Storage (op basis van de locatie van uw Recovery Services kluis)
 
 Ga naar [ExpressRoute-routerings vereisten](https://docs.microsoft.com/azure/expressroute/expressroute-routing)voor meer informatie.
 
@@ -343,7 +343,7 @@ Gebruik de volgende stappen om MABS bij te werken:
 
    > [!NOTE]
    >
-   > Sluit niet af terwijl uw SQL-exemplaar wordt geüpgraded. Als u een upgrade uitvoert, wordt het SQL Reporting-exemplaar verwijderd en wordt een poging om MABS opnieuw te upgraden mislukt.
+   > Sluit niet af terwijl uw SQL-exemplaar wordt geüpgraded. Als u een upgrade uitvoert, wordt het SQL Reporting-exemplaar verwijderd en mislukt het opnieuw bijwerken van MABS.
 
    > [!IMPORTANT]
    >

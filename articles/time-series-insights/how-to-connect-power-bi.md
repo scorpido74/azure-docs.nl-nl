@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f51f6867d773c906d2df24c7e61ad897a4304f6
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75863839"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258880"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
 
@@ -111,8 +111,10 @@ Nu u de gegevens in Power BI hebt geïmporteerd, is het tijd om een rapport met 
     [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-the-report-view.png)](media/how-to-connect-power-bi/select-the-report-view.png#lightbox)
 
 1.  Selecteer in de kolom **Visualisaties** uw visuele element van uw keuze. Selecteer bijvoorbeeld **lijn diagram**. Hiermee wordt een leeg lijn diagram aan uw canvas toegevoegd.
- 
-1.  Selecteer in de lijst **velden** de optie **tijds tempel** en sleep deze naar het **asveld** om items weer te geven langs de X-as.
+
+1.  Selecteer in de lijst **velden** **_Timestamp** en sleep het veld naar het **asveld** om items weer te geven langs de X-as. Zorg ervoor dat u overschakelt naar **_Timestamp** als de waarde voor de **as** (standaard is **datum hiërarchie**).
+
+    [![De rapport weergave selecteren](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
 1.  Klik opnieuw in de lijst **velden** op **TimeSeriesId** en sleep deze naar het veld **waarden** om items weer te geven op de Y-as.
 

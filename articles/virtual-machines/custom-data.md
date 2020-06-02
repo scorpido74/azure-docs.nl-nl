@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 9497e665d024b583c261ade3e6fb5393a9322ce0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759134"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259113"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Aangepaste gegevens en Cloud-init op Azure Virtual Machines
 
@@ -84,7 +84,7 @@ Raadpleeg de [documentatie](https://docs.microsoft.com/azure/virtual-machines/li
 
 ## <a name="faq"></a>Veelgestelde vragen
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>Kan ik aangepaste gegevens bijwerken nadat de virtuele machine is gemaakt?
-Voor één virtuele machine kunnen aangepaste gegevens in het VM-model niet worden bijgewerkt, maar voor VMSS kunt u VMSS aangepaste gegevens bijwerken via REST API (niet van toepassing op PS-of AZ CLI-clients). Wanneer u aangepaste gegevens in het VMSS-model bijwerkt:
+Voor één virtuele machine kunnen aangepaste gegevens in het VM-model niet worden bijgewerkt, maar voor VMSS kunt u VMSS aangepaste gegevens bijwerken via [rest API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (niet van toepassing op PS-of AZ cli-clients). Wanneer u aangepaste gegevens in het VMSS-model bijwerkt:
 * Bestaande exemplaren in de VMSS krijgen alleen de bijgewerkte aangepaste gegevens, totdat de installatie kopie wordt gewijzigd.
 * Bestaande exemplaren in de VMSS die worden bijgewerkt, krijgen niet de bijgewerkte aangepaste gegevens.
 * Nieuwe exemplaren ontvangen de nieuwe aangepaste gegevens.

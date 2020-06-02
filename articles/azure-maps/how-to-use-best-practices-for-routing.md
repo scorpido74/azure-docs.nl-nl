@@ -1,6 +1,6 @@
 ---
 title: Aanbevolen procedures voor het Azure Maps van Route Service | Microsoft Azure kaarten
-description: Meer informatie over hoe u efficiënt kunt routeren met behulp van Route Service van Microsoft Azure Maps.
+description: Meer informatie over het routeren van Voer tuigen met behulp van Route Service van Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335407"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266692"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Aanbevolen procedures voor Azure Maps route service
 
@@ -56,7 +56,7 @@ Overweeg de API voor de route ring van de matrix aan te roepen als uw scenario:
 
 Hier volgt een vergelijking om enkele mogelijkheden van de route richtingen en matrix-Api's weer te geven:
 
-| Azure Maps-API | Maximum aantal query's in de aanvraag | Gebieden voor komen | Route ring van vracht wagen en elektrisch Voer tuig | waypoints en Traveling Salesman Optimization | Ondersteunende punten |
+| Azure Maps-API | Maximum aantal query's in de aanvraag | Gebieden voor komen | Route ring van vracht wagen en elektrisch Voer tuig | Waypoints en Traveling Salesman Optimization | Ondersteunende punten |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
 | Route beschrijving ophalen | 1 | | X | X | |
 | Route beschrijving plaatsen | 1 | X | X | X | X |
@@ -67,7 +67,7 @@ Voor meer informatie over routerings mogelijkheden voor elektrische auto's raadp
 
 ## <a name="request-historic-and-real-time-data"></a>Historische en real-time gegevens aanvragen
 
-De route service gaat standaard ervan uit dat de Traveling modus een auto is en de vertrek tijd nu. Het retourneert route op basis van real-time verkeers omstandigheden, tenzij een aanvraag voor route berekening anders aangeeft. Vaste, afhankelijk van de verkeers beperkingen, zoals links, zijn niet toegestaan tussen 4:00 en 6:00 uur, en worden beschouwd door de routerings engine. Voor wegsluitingen, zoals roadworks, wordt rekening gehouden tenzij u specifiek een route aanvraagt die het huidige live verkeer negeert. Als u het huidige verkeer wilt negeren `traffic` , `false` stelt u in op uw API-aanvraag.
+De route service gaat standaard ervan uit dat de Traveling modus een auto is en de vertrek tijd nu. Het retourneert route op basis van real-time verkeers omstandigheden, tenzij een aanvraag voor route berekening anders aangeeft. Vaste, afhankelijk van de verkeers beperkingen, zoals links, zijn niet toegestaan tussen 4:00 en 6:00 uur, en worden beschouwd door de routerings engine. Voor wegsluitingen, zoals roadworks, wordt rekening gehouden tenzij u specifiek een route aanvraagt die het huidige live verkeer negeert. Als u het huidige verkeer wilt negeren, stelt `traffic` u `false` in op uw API-aanvraag.
 
 De **travelTimeInSeconds** -waarde van de route berekening bevat de vertraging als gevolg van het verkeer. De gegevens worden gegenereerd door gebruik te maken van de huidige en historische reis tijd, wanneer de vertrek tijd is ingesteld op nu. Als uw vertrek tijd in de toekomst is ingesteld, retour neren de Api's voorspelde reis tijden op basis van historische gegevens.
 
@@ -129,9 +129,9 @@ Het antwoord bevat een samen vatting zoals hieronder wordt weer gegeven. Vanwege
 
 ## <a name="request-route-and-leg-details"></a>Route-en poot Details aanvragen
 
-De route service retourneert standaard een matrix met coördinaten. Het antwoord bevat de coördinaten waaruit het pad bestaat in een lijst met de naam `points`. Route antwoord omvat ook de afstand van het begin van de route en de geschatte verstreken tijd. Deze waarden kunnen worden gebruikt om de gemiddelde snelheid voor de volledige route te berekenen.
+De route service retourneert standaard een matrix met coördinaten. Het antwoord bevat de coördinaten waaruit het pad bestaat in een lijst met de naam `points` . Route antwoord omvat ook de afstand van het begin van de route en de geschatte verstreken tijd. Deze waarden kunnen worden gebruikt om de gemiddelde snelheid voor de volledige route te berekenen.
 
-In de volgende afbeelding wordt `points` het element weer gegeven.
+In de volgende afbeelding wordt het element weer gegeven `points` .
 
 <center>
 
@@ -149,7 +149,7 @@ Vouw het `point` element uit om de lijst met coördinaten voor het pad weer te g
 
 De route beschrijvingen Api's ondersteunen verschillende indelingen van instructies die kunnen worden gebruikt door de para meter **instructionsType** op te geven. Gebruik **instructionsType = code ring**om instructies te Format teren voor een eenvoudige verwerking van de computer. Gebruik **instructionsType = label** om instructies weer te geven als tekst voor de gebruiker. Instructies kunnen ook worden opgemaakt als tekst waarbij sommige elementen van de instructies zijn gemarkeerd en de instructie wordt weer gegeven met speciale opmaak. Zie de [lijst met ondersteunde instructie typen](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype)voor meer informatie.
 
-Als er instructies worden aangevraagd, retourneert het antwoord een nieuw element `guidance`met de naam. Het `guidance` element bevat twee soorten informatie: instructies en overzicht van de instructie.
+Als er instructies worden aangevraagd, retourneert het antwoord een nieuw element met de naam `guidance` . Het `guidance` element bevat twee soorten informatie: instructies en overzicht van de instructie.
 
 <center>
 
@@ -183,7 +183,7 @@ Met de voorbeeld aanvraag hieronder wordt een route voor een commerciële truck 
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-De route-API retourneert Route beschrijvingen die geschikt zijn voor de afmetingen van de vracht wagen en gevaarlijke afval stoffen. U kunt de route-instructies lezen door het `guidance` element uit te vouwen.
+De route-API retourneert Route beschrijvingen die geschikt zijn voor de afmetingen van de vracht wagen en gevaarlijke afval stoffen. U kunt de route-instructies lezen door het element uit te vouwen `guidance` .
 
 <center>
 
@@ -199,7 +199,7 @@ Als u de Amerikaanse Hazmat-klasse van de bovenstaande query wijzigt, resulteert
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
-De onderstaande reactie geldt voor een truck die een gevaarlijk materiaal van klasse 9 vervoert. Dit is minder gevaarlijk dan een gevaarlijk materiaal van klasse 1. Wanneer u het `guidance` element uitvouwt om de richtingen te lezen, zult u merken dat de richtingen niet hetzelfde zijn. Er zijn meer route-instructies voor de vracht wagen met klasse 1 gevaarlijk materiaal.
+De onderstaande reactie geldt voor een truck die een gevaarlijk materiaal van klasse 9 vervoert. Dit is minder gevaarlijk dan een gevaarlijk materiaal van klasse 1. Wanneer u het element uitvouwt `guidance` om de richtingen te lezen, zult u merken dat de richtingen niet hetzelfde zijn. Er zijn meer route-instructies voor de vracht wagen met klasse 1 gevaarlijk materiaal.
 
 <center>
 
@@ -213,7 +213,7 @@ Met de Azure Maps route Direction-Api's kunnen ontwikkel aars Details aanvragen 
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
-Met de volgende query wordt `sectionType` de `traffic`to. Het vraagt de secties die verkeers gegevens van Seattle naar San Diego bevatten.
+Met de volgende query wordt de `sectionType` to `traffic` . Het vraagt de secties die verkeers gegevens van Seattle naar San Diego bevatten.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +249,7 @@ Als u de beste volg orde wilt optimaliseren om de opgegeven waypoints te bezoeke
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
-De volgende query vraagt het pad voor zes waypoints, waarbij de `computeBestOrder` para meter is `false`ingesteld op. Het is ook de standaard waarde voor de `computeBestOrder` para meter.
+De volgende query vraagt het pad voor zes waypoints, waarbij de `computeBestOrder` para meter is ingesteld op `false` . Het is ook de standaard waarde voor de `computeBestOrder` para meter.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -275,7 +275,7 @@ Deze route waypoint order is: 0, 1, 2, 3, 4, 5 en 6.
 
 ### <a name="sample-query"></a>Voorbeeldquery
 
-De volgende query vraagt het pad voor dezelfde zes waypoints, zoals in het bovenstaande voor beeld. Deze keer wordt de `computeBestOrder` para meter ingesteld `true` op (de Traveling Salesman Optimization).
+De volgende query vraagt het pad voor dezelfde zes waypoints, zoals in het bovenstaande voor beeld. Deze keer wordt de `computeBestOrder` para meter ingesteld op `true` (de Traveling Salesman Optimization).
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861

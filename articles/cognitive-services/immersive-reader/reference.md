@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231914"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267236"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
@@ -33,7 +33,7 @@ De SDK biedt de volgende functies beschikbaar:
 
 ## <a name="launchasync"></a>launchAsync
 
-Hiermee start u de insluitende `iframe` lezer binnen een in uw webtoepassing.
+Hiermee start u de insluitende lezer binnen een `iframe` in uw webtoepassing.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,16 +41,16 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parameters
 
-| Naam | Type | Beschrijving |
+| Naam | Type | Description |
 | ---- | ---- |------------ |
 | `token` | tekenreeks | Het Azure AD-verificatie token. |
 | `subdomain` | tekenreeks | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. |
 | `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
 | `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
 
-### <a name="returns"></a>Retourneert
+### <a name="returns"></a>Retouren
 
-Retourneert een `Promise<LaunchResponse>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet in een [`LaunchResponse`](#launchresponse) -object.
+Retourneert een `Promise<LaunchResponse>` , die wordt omgezet wanneer de insluitende lezer wordt geladen. De wordt `Promise` omgezet in een- [`LaunchResponse`](#launchresponse) object.
 
 ### <a name="exceptions"></a>Uitzonderingen
 
@@ -60,7 +60,7 @@ De geretourneerde `Promise` wordt met een [`Error`](#error) object afgewezen als
 
 Hiermee wordt de insluitende lezer gesloten.
 
-Een voor beeld van een use-case voor deze functie is als de knop Afsluiten ```hideExitButton: true``` verborgen is door in de [Opties](#options)in te stellen. Vervolgens kan een andere knop (bijvoorbeeld de pijl-terug van een mobiele koptekst) deze ```close``` functie aanroepen wanneer erop wordt geklikt.
+Een voor beeld van een use-case voor deze functie is als de knop Afsluiten verborgen is door ```hideExitButton: true``` in de [Opties](#options)in te stellen. Vervolgens kan een andere knop (bijvoorbeeld de pijl-terug van een mobiele koptekst) deze functie aanroepen ```close``` Wanneer erop wordt geklikt.
 
 ```typescript
 close(): void;
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Deze functie stijlen en werkt de elementen van de insluitende lezer van het document bij. Als ```options.elements``` is vermeld, worden in deze functie knoppen in ```options.elements```weer gegeven. Anders worden de knoppen weer gegeven in de elementen van het document die de klasse ```immersive-reader-button```hebben.
+Deze functie stijlen en werkt de elementen van de insluitende lezer van het document bij. Als ```options.elements``` is vermeld, worden in deze functie knoppen in weer gegeven ```options.elements``` . Anders worden de knoppen weer gegeven in de elementen van het document die de klasse hebben ```immersive-reader-button``` .
 
 Deze functie wordt automatisch aangeroepen door de SDK wanneer het venster wordt geladen.
 
@@ -111,7 +111,7 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync`.
+Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync` .
 
 ```typescript
 {
@@ -190,7 +190,7 @@ Bevat informatie over de fout.
 
 | Code | Beschrijving |
 | ---- | ----------- |
-| BadArgument | Het opgegeven argument is ongeldig. `message` Zie voor meer informatie. |
+| BadArgument | Het opgegeven argument is ongeldig `message` . Zie voor meer informatie. |
 | Time-out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
 | TokenExpired | Het opgegeven token is verlopen. |
 | Beperkt | De limiet voor de aanroep frequentie is overschreden. |
@@ -209,8 +209,8 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text`of `iconAndText`. Wordt standaard `icon`ingesteld op. |
-| `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. Wordt standaard ingesteld `en`op Engels. |
+| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon` , `text` of `iconAndText` . Wordt standaard ingesteld op `icon` . |
+| `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. Wordt standaard ingesteld op Engels `en` . |
 | `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
 
 ## <a name="browser-support"></a>Browserondersteuning
@@ -226,4 +226,4 @@ Gebruik de meest recente versies van de volgende browsers voor de beste ervaring
 ## <a name="next-steps"></a>Volgende stappen
 
 * De [insluitende lezer-SDK op github](https://github.com/microsoft/immersive-reader-sdk) verkennen
-* [Snelstartgids: een web-app maken die de insluitende lezer (C#) start](./quickstart.md)
+* [Snelstartgids: een web-app maken die de insluitende lezer (C#) start](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

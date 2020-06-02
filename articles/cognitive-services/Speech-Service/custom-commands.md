@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79367836"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266012"
 ---
-# <a name="what-are-custom-commands-preview"></a>Wat zijn aangepaste opdrachten (preview)?
+# <a name="what-is-custom-commands-preview"></a>Wat zijn aangepaste opdrachten (preview)?
 
-Spraak toepassingen, zoals [spraak assistenten](voice-assistants.md) , Luis teren naar gebruikers en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het `DialogServiceConnector` object Speech SDK.
+Spraak toepassingen, zoals [spraak assistenten](voice-assistants.md) , Luis teren naar gebruikers en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het object Speech SDK `DialogServiceConnector` .
 
 **Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van spraak toepassingen. Het biedt een geïntegreerde ontwerp ervaring, een automatisch hosting model en relatief lagere complexiteit en andere opties, zoals [directe lijn spraak](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen. Het is met name goed afgestemd op Internet of Things (IoT) en headless apparaten.
 

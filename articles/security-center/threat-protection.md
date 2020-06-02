@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744163"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267151"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bescherming tegen bedreiging in Azure Security Center
 
@@ -162,11 +162,15 @@ Zie voor meer informatie:
 
 ## <a name="threat-protection-for-azure-storage"></a>Bedreigings beveiliging voor Azure Storage<a name="azure-storage"></a>
 
-Geavanceerde bedreigings beveiliging voor opslag detecteert ongebruikelijke en mogelijk schadelijke pogingen om opslag accounts te openen of misbruik te maken. Deze beveiligingslaag biedt u de mogelijkheid om bedreigingen te verhelpen zonder dat u een beveiligings expert hoeft te zijn, en helpt u bij het beheren van uw systemen voor beveiligings bewaking.
+Advanced Threat Protection voor Azure Storage detecteert ongebruikelijke en mogelijk schadelijke pogingen om opslag accounts te openen of misbruik te maken. Deze beveiligingslaag biedt u de mogelijkheid om bedreigingen te verhelpen zonder dat u een beveiligings expert hoeft te zijn, en helpt u bij het beheren van uw systemen voor beveiligings bewaking. 
 
-Advanced Threat Protection voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage](https://azure.microsoft.com/services/storage/blobs/). 
+Beveiligings waarschuwingen worden geactiveerd wanneer er verdachte activiteiten zijn op uw opslag account of afwijkend gedrag wordt gedetecteerd. Verdachte activiteiten kunnen de upload van een BLOB bevatten die is verdacht op schadelijke software. Waarschuwingen voor afwijkend gedrag omvatten wijzigingen in het toegangs patroon op een opslag account.
 
-Deze service is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar geen andere soevereine of Azure Government Cloud regio's.
+De waarschuwingen bevatten details over het incident waarmee ze zijn geactiveerd, evenals aanbevelingen voor het onderzoeken en oplossen van bedreigingen.
+
+Bedreigings beveiliging voor Azure Storage is momenteel alleen beschikbaar voor [Blob Storage](https://azure.microsoft.com/services/storage/blobs/). 
+
+Deze service is beschikbaar in alle open bare Clouds en Amerikaanse overheids Clouds, maar geen andere soevereine of Azure Government Cloud regio's. 
 
 Voor prijs informatie, inclusief een gratis proef versie van 30 dagen, raadpleegt u de [pagina met Azure Security Center prijzen](https://azure.microsoft.com/pricing/details/security-center/).
 

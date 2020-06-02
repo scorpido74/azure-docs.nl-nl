@@ -3,12 +3,12 @@ title: Ondersteuning voor de beoordeling van fysieke servers in Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 31fd676a339a6c82cec84e0f355ac875f68a653c
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983666"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267919"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -20,22 +20,22 @@ Voor het beoordelen van fysieke servers maakt u een Azure Migrate project en voe
 
 ## <a name="limitations"></a>Beperkingen
 
-**Ondersteuning** | **Details**
+**Ondersteuning** | **Nadere**
 --- | ---
 **Beoordelings limieten** | U kunt Maxi maal 35.000 fysieke servers in één [Azure migrate project](migrate-support-matrix.md#azure-migrate-projects)detecteren en beoordelen.
 **Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement. Naast fysieke servers kan een project VMware-Vm's en virtuele Hyper-V-machines bevatten, tot aan de evaluatie limieten voor elke.
 **Detectie** | Het Azure Migrate-apparaat kan Maxi maal 250 fysieke servers detecteren.
-**Beoordeling** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 computers in één evaluatie evalueren.
+**Onderzoek** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 computers in één evaluatie evalueren.
 
 Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 ## <a name="physical-server-requirements"></a>Vereisten voor fysieke servers
 
-| **Ondersteuning**                | **Details**               
+| **Ondersteuning**                | **Nadere**               
 | :-------------------       | :------------------- |
 | **Fysieke server implementatie**       | De fysieke server kan zelfstandig of in een cluster worden geïmplementeerd. |
 | **Machtigingen**           | **Windows:** U moet een domein beheerder of lokale beheerder zijn op alle Windows-servers die u wilt detecteren. Het gebruikers account moet worden toegevoegd aan deze groepen: gebruikers van extern beheer, gebruikers van prestatie meter en prestatie logboek gebruikers. <br/><br/> **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren. |
-| **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) server-besturings systemen die worden ondersteund door Azure, met uitzonde ring van Windows Server 2003 en SUSE Linux.<br/><br/> Windows 10-en Windows 8 client-besturings systemen. |
+| **Besturingssysteem** | Alle besturings systemen kunnen worden geëvalueerd voor migratie. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-apparaatvereisten
@@ -51,7 +51,7 @@ Implementeer het apparaat in Azure Government [met dit script](deploy-appliance-
 
 De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
-**Apparaat** | **Combi**
+**Apparaat** | **Verbinding**
 --- | ---
 **Apparaat** | Binnenkomende verbindingen op TCP-poort 3389, om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368, om op afstand toegang te krijgen tot de app voor het beheren van het apparaat met behulp van de URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Uitgaande verbindingen op poort 443 (HTTPS) voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Fysieke servers** | **Windows:** Binnenkomende verbindingen op WinRM-poorten 5985 (HTTP) en 5986 (HTTPS), voor het ophalen van meta gegevens van de configuratie en prestaties van Windows-servers. <br/><br/> **Linux:**  Binnenkomende verbindingen op poort 22 (UDP), voor het ophalen van meta gegevens van de configuratie en prestaties van Linux-servers. |
@@ -60,7 +60,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 [Afhankelijkheids analyse](concepts-dependency-visualization.md) helpt u bij het identificeren van afhankelijkheden tussen on-premises machines die u wilt beoordelen en migreren naar Azure. De tabel bevat een overzicht van de vereisten voor het instellen van afhankelijkheids analyse op basis van een agent. Momenteel wordt alleen op agents gebaseerde afhankelijkheids analyse ondersteund voor fysieke servers.
 
-**Vereiste** | **Details** 
+**Vereiste** | **Nadere** 
 --- | --- 
 **Vóór implementatie** | Er moet een Azure Migrate project aanwezig zijn met het hulp programma voor Server evaluatie dat is toegevoegd aan het project.<br/><br/>  U kunt een afhankelijkheids visualisatie implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises computers te detecteren<br/><br/> [Meer informatie over](create-manage-projects.md) het maken van een project voor de eerste keer.<br/> [Meer informatie over het](how-to-assess.md) toevoegen van een evaluatie programma aan een bestaand project.<br/> Meer informatie over het instellen van het Azure Migrate-apparaat voor de evaluatie van [Hyper-V](how-to-set-up-appliance-hyper-v.md)-, [VMware](how-to-set-up-appliance-vmware.md)-en fysieke servers.
 **Azure Government** | Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
@@ -69,7 +69,7 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 **Log Analytics-werkruimte** | De werk ruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> Azure Migrate ondersteunt werk ruimten die zich in het VS-Oost, Zuidoost-Azië en Europa-west regio's bevinden.<br/><br/>  De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd.
 **Kosten** | De Servicetoewijzing oplossing heeft geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics koppelt aan het Azure Migrate project)/<br/><br/> Na 180 dagen gelden de standaardkosten voor Log Analytics.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden [standaard kosten](https://azure.microsoft.com/pricing/details/log-analytics/) in rekening gebracht voor log Analytics.<br/><br/> Wanneer het Azure Migrate project wordt verwijderd, wordt de werk ruimte samen niet verwijderd. Na het verwijderen van het project is Servicetoewijzing gebruik niet gratis en worden voor elk knoop punt de kosten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte/<br/><br/>Als u projecten hebt die u hebt gemaakt vóór Azure Migrate algemene Beschik baarheid (GA 28 februari 2018), hebt u mogelijk extra Servicetoewijzing kosten in rekening gebracht. Om ervoor te zorgen dat u na 180 dagen alleen betaalt, is het raadzaam om een nieuw project te maken, omdat bestaande werk ruimten voor GA nog steeds toerekenbaar zijn.
 **Beheer** | Wanneer u agents registreert bij de werk ruimte, gebruikt u de ID en de sleutel van het Azure Migrate project.<br/><br/> U kunt de Log Analytics-werk ruimte gebruiken buiten Azure Migrate.<br/><br/> Als u het gekoppelde Azure Migrate project verwijdert, wordt de werk ruimte niet automatisch verwijderd. [Verwijder deze hand matig](../azure-monitor/platform/manage-access.md).<br/><br/> Verwijder de werk ruimte die is gemaakt door Azure Migrate, tenzij u het Azure Migrate project verwijdert. Als u dat wel doet, werkt de visualisatie functionaliteit voor afhankelijkheden niet zoals verwacht.
-**Verbinding met internet** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
+**Internetconnectiviteit** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
 **Azure Government** | Afhankelijkheids analyse op basis van een agent wordt niet ondersteund.
 
 ## <a name="next-steps"></a>Volgende stappen

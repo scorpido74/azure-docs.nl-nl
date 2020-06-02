@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5cac4eaf1f87e6e704bb643279637902c792c7c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262040"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267525"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
 
@@ -33,9 +33,8 @@ Azure dev Spaces heeft ingangs-en uitgangs verkeer nodig voor de volgende FQDN-t
 | cloudflare.docker.com      | HTTPS: 443 | Docker-installatie kopieën ophalen voor Azure dev Spaces |
 | gcr.io                     | HTTPS: 443 | Helm-installatie kopieën voor Azure-ontwikkel ruimten ophalen |
 | storage.googleapis.com     | HTTPS: 443 | Helm-installatie kopieën voor Azure-ontwikkel ruimten ophalen |
-| azds-*. azds. io             | HTTPS: 443 | Om te communiceren met Azure dev Spaces back-upservices voor de Azure dev Spaces-controller. De exacte FQDN vindt u in *dataplaneFqdn* in`USERPROFILE\.azds\settings.json` |
 
-Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staan van en naar alle bovenstaande FQDN-namen. Als u bijvoorbeeld een firewall gebruikt om uw netwerk te beveiligen, moeten de bovenstaande FQDN-namen worden toegevoegd aan de toepassings regel van de firewall om verkeer toe te staan van en naar deze domeinen.
+Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staan van en naar de bovenstaande FQDN-namen en [Azure dev Spaces-infrastructuur services][service-tags]. Als u bijvoorbeeld een firewall gebruikt om uw netwerk te beveiligen, moeten de bovenstaande FQDN-namen worden toegevoegd aan de toepassings regel van de firewall en moet het Azure dev Spaces-service label ook worden [toegevoegd aan de firewall][firewall-service-tags]. Beide updates voor de firewall zijn vereist voor het toestaan van verkeer naar en van deze domeinen.
 
 ### <a name="ingress-only-network-traffic-requirements"></a>Alleen inkomend netwerk verkeer vereisten
 
@@ -47,7 +46,7 @@ Met AKS kunt u [netwerk beleid][aks-network-policies] gebruiken voor het beheren
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Netwerk verkeer vereisten voor ingangs-en uitgangs gegevens
 
-Met Azure dev Spaces kunt u rechtstreeks communiceren met een pod in een dev-ruimte op uw cluster voor fout opsporing. Als u deze functie wilt gebruiken, voegt u een netwerk beleid toe waarmee binnenkomend en uitgaand verkeer wordt toegestaan aan de IP-adressen van de Azure dev Spaces-infra structuur, die [per regio verschillen][dev-spaces-ip-auth-range-regions].
+Met Azure dev Spaces kunt u rechtstreeks communiceren met een pod in een dev-ruimte op uw cluster voor fout opsporing. Als u deze functie wilt gebruiken, voegt u een netwerk beleid toe waarmee binnenkomend en uitgaand verkeer wordt toegestaan aan de IP-adressen van de Azure dev Spaces-infra structuur, die [per regio verschillen][service-tags].
 
 ### <a name="ingress-only-network-traffic-requirements"></a>Alleen inkomend netwerk verkeer vereisten
 
@@ -59,7 +58,7 @@ AKS-clusters zijn standaard geconfigureerd voor het gebruik van [kubenet][aks-ku
 
 ## <a name="using-api-server-authorized-ip-ranges"></a>Met API server geautoriseerde IP-adresbereiken gebruiken
 
-Met AKS-clusters kunt u extra beveiliging configureren waarmee het IP-adres kan communiceren met uw clusters, bijvoorbeeld met behulp van aangepaste virtuele netwerken of [het beveiligen van toegang tot de API-server met behulp van geautoriseerde IP-bereiken][aks-ip-auth-ranges]. Als u Azure dev Spaces wilt gebruiken wanneer u deze extra beveiliging gebruikt tijdens het [maken][aks-ip-auth-range-create] van het cluster, moet u [extra bereiken op basis van uw regio toestaan][dev-spaces-ip-auth-range-regions]. U kunt ook een bestaand cluster [bijwerken][aks-ip-auth-range-update] om deze extra bereiken toe te staan. U moet ook het IP-adres van alle ontwikkel computers toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
+Met AKS-clusters kunt u extra beveiliging configureren waarmee het IP-adres kan communiceren met uw clusters, bijvoorbeeld met behulp van aangepaste virtuele netwerken of [het beveiligen van toegang tot de API-server met behulp van geautoriseerde IP-bereiken][aks-ip-auth-ranges]. Als u Azure dev Spaces wilt gebruiken wanneer u deze extra beveiliging gebruikt tijdens het [maken][aks-ip-auth-range-create] van het cluster, moet u [extra bereiken op basis van uw regio toestaan][service-tags]. U kunt ook een bestaand cluster [bijwerken][aks-ip-auth-range-update] om deze extra bereiken toe te staan. U moet ook het IP-adres van alle ontwikkel computers toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 
 ## <a name="using-aks-private-clusters"></a>AKS persoonlijke clusters gebruiken
 
@@ -69,14 +68,14 @@ Op dit moment wordt Azure dev Spaces niet ondersteund met [persoonlijke AKS-clus
 
 Azure dev Spaces biedt de mogelijkheid om eind punten beschikbaar te stellen voor uw services die worden uitgevoerd op AKS. Wanneer u Azure dev-ruimten in uw cluster inschakelt, hebt u de volgende opties voor het configureren van het eindpunt type voor uw cluster:
 
-* Een *openbaar* eind punt, dat de standaard waarde is, implementeert een ingangs controller met een openbaar IP-adres. Het open bare IP-adres wordt geregistreerd op de DNS van het cluster, waardoor open bare toegang tot uw services mogelijk is via een URL. U kunt deze URL weer geven `azds list-uris`met.
-* Een *persoonlijk* eind punt implementeert een ingangs controller met een privé-IP-adres. Met een privé-IP-adres is de load balancer voor uw cluster alleen toegankelijk vanuit het virtuele netwerk van het cluster. Het privé IP-adres van de load balancer is geregistreerd op de DNS van het cluster, zodat de services in het virtuele netwerk van het cluster kunnen worden geopend met behulp van een URL. U kunt deze URL weer geven `azds list-uris`met.
+* Een *openbaar* eind punt, dat de standaard waarde is, implementeert een ingangs controller met een openbaar IP-adres. Het open bare IP-adres wordt geregistreerd op de DNS van het cluster, waardoor open bare toegang tot uw services mogelijk is via een URL. U kunt deze URL weer geven met `azds list-uris` .
+* Een *persoonlijk* eind punt implementeert een ingangs controller met een privé-IP-adres. Met een privé-IP-adres is de load balancer voor uw cluster alleen toegankelijk vanuit het virtuele netwerk van het cluster. Het privé IP-adres van de load balancer is geregistreerd op de DNS van het cluster, zodat de services in het virtuele netwerk van het cluster kunnen worden geopend met behulp van een URL. U kunt deze URL weer geven met `azds list-uris` .
 * Als u *geen* instelt voor de eindpunt optie, wordt er geen ingangs controller geïmplementeerd. Als er geen ingangs controller is geïmplementeerd, werken de [routerings mogelijkheden van Azure dev Spaces][dev-spaces-routing] niet. U kunt desgewenst uw eigen ingangs controller implementeren met behulp van [traefik][traefik-ingress] of [NGINX][nginx-ingress], zodat de routerings mogelijkheden weer werken.
 
 Als u uw eindpunt optie wilt configureren, gebruikt u *-e* of *--eind punt* bij het inschakelen van Azure dev-ruimten in uw cluster. Bijvoorbeeld:
 
 > [!NOTE]
-> Voor de eindpunt optie moet u Azure CLI versie 2.2.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+> Voor de eindpunt optie moet u Azure CLI versie 2.2.0 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
@@ -84,7 +83,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>Clientvereisten
 
-Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u het hulp programma voor de Azure dev Spaces client-side wilt gebruiken, moet u verkeer van de ontwikkel machines naar het *azds-. azds.io-\** domein toestaan. Zie *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` voor de exacte FQDN. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
+Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u het hulp programma voor de Azure dev Spaces client-side wilt gebruiken, moet u verkeer van de ontwikkel machines naar het *azds- \* . azds.io-* domein toestaan. Zie *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` voor de exacte FQDN. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -104,10 +103,11 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
 [azure-cli-install]: /cli/azure/install-azure-cli
-[dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [dev-spaces-routing]: how-dev-spaces-works-routing.md
 [endpoint-options]: #using-different-endpoint-options
+[firewall-service-tags]: ../firewall/service-tags.md
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
+[service-tags]: ../virtual-network/service-tags-overview.md#available-service-tags
 [team-quickstart]: quickstart-team-development.md

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744318"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266063"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Problemen met runbooks oplossen
 
@@ -50,7 +50,7 @@ Wanneer u fouten ontvangt tijdens het uitvoeren van een runbook in Azure Automat
 
 1. Voer deze stap uit als de runbook-taak of de omgeving op Hybrid Runbook Worker niet reageert.
 
-    Als u uw runbooks uitvoert op een Hybrid Runbook Worker in plaats van in Azure Automation, moet u mogelijk [de Hybrid worker zelf oplossen](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
+    Als u uw runbooks uitvoert op een Hybrid Runbook Worker in plaats van in Azure Automation, moet u mogelijk [de Hybrid worker zelf oplossen](hybrid-runbook-worker.md).
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Scenario: het Runbook is mislukt met een machtiging of een verboden 403-fout
 
@@ -64,7 +64,7 @@ Run as-accounts hebben mogelijk niet dezelfde machtigingen voor Azure-resources 
 
 ### <a name="resolution"></a>Oplossing
 
-Zorg ervoor dat uw uitvoeren als-account [machtigingen heeft voor toegang tot alle resources](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) die worden gebruikt in uw script.
+Zorg ervoor dat uw uitvoeren als-account [machtigingen heeft voor toegang tot alle resources](../../role-based-access-control/role-assignments-portal.md) die worden gebruikt in uw script.
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Scenario: aanmelden bij het Azure-account is mislukt
 
@@ -99,7 +99,7 @@ Voer de volgende stappen uit om te bepalen wat er mis is:
    Connect-AzAccount –Credential $Cred
    ```
 
-1. Als uw verificatie lokaal mislukt, hebt u de referenties van uw Azure Active Directory (Azure AD) niet juist ingesteld. Als u wilt dat het Azure AD-account correct is ingesteld, raadpleegt u het blog bericht [verifiëren naar Azure met behulp van Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/).
+1. Als uw verificatie lokaal mislukt, hebt u de referenties van uw Azure Active Directory (Azure AD) niet juist ingesteld. Zie het artikel [verifiëren met Azure met Azure Active Directory](../automation-use-azure-ad.md)voor het correct instellen van het Azure ad-account.
 
 1. Als de fout tijdelijk wordt weer gegeven, kunt u proberen logica toe te voegen aan uw verificatie routine om te zorgen voor een betere verificatie.
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden wanneer u geen uitvoeren als-account gebruikt of als het run as-account is verlopen. Zie [Azure Automation uitvoeren als-accounts beheren](https://docs.microsoft.com/azure/automation/manage-runas-account)voor meer informatie.
+Deze fout kan optreden wanneer u geen uitvoeren als-account gebruikt of als het run as-account is verlopen. Zie [Azure Automation uitvoeren als-accounts beheren](../manage-runas-account.md)voor meer informatie.
 
 Deze fout heeft twee primaire oorzaken:
 
@@ -274,7 +274,7 @@ Als u multi-factor Authentication voor uw Azure-account hebt, kunt u geen Azure 
 
 ### <a name="resolution"></a>Oplossing
 
-Zie [een certificaat maken en toevoegen voor het beheren van Azure-Services](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)voor het gebruik van een certificaat met cmdlets voor het klassieke Azure-implementatie model. Zie Service-Principal [maken met behulp van Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) en [verificatie van een service-principal met Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)om een service-principal met Azure Resource Manager-cmdlets te gebruiken.
+Zie [een klassiek uitvoeren als-account maken voor het beheren van Azure-Services](../automation-create-standalone-account.md#create-a-classic-run-as-account)voor het gebruik van een klassiek uitvoeren als-account met cmdlets van het klassieke Azure-implementatie model. Zie Service-Principal [maken met behulp van Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) en [verificatie van een service-principal met Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)om een service-principal met Azure Resource Manager-cmdlets te gebruiken.
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Scenario: het fout bericht ' een taak is geannuleerd ' in het Runbook is mislukt
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Oorzaak
 
-Deze fout kan optreden als het runbook de juiste stappen niet uitvoert voordat wordt aangeroepen `Add-AzAccount` om het Automation-account toe te voegen. Een voor beeld van een van de benodigde stappen is aanmelden met een uitvoeren als-account. Zie [runbook-uitvoering in azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)voor de juiste bewerkingen voor het gebruik van uw runbook.
+Deze fout kan optreden als het runbook de juiste stappen niet uitvoert voordat wordt aangeroepen `Add-AzAccount` om het Automation-account toe te voegen. Een voor beeld van een van de benodigde stappen is aanmelden met een uitvoeren als-account. Zie [runbook-uitvoering in azure Automation](../automation-runbook-execution.md)voor de juiste bewerkingen voor het gebruik van uw runbook.
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Scenario: de object verwijzing is niet ingesteld op een exemplaar van een object
 
@@ -652,16 +652,16 @@ Mogelijke oorzaken van dit probleem zijn:
 
 #### <a name="not-using-a-run-as-account"></a>Geen uitvoeren als-account gebruiken
 
-Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault.
+Volg [stap 5: Voeg verificatie toe om Azure-resources te beheren](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) om ervoor te zorgen dat u een uitvoeren als-account gebruikt om toegang te krijgen tot Key Vault.
 
 #### <a name="insufficient-permissions"></a>Onvoldoende machtigingen
 
-[Voeg machtigingen toe aan Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) om ervoor te zorgen dat uw uitvoeren als-account voldoende machtigingen heeft voor toegang tot Key Vault.
+[Voeg machtigingen toe aan Key Vault](../manage-runas-account.md#add-permissions-to-key-vault) om ervoor te zorgen dat uw uitvoeren als-account voldoende machtigingen heeft voor toegang tot Key Vault.
 
 ## <a name="recommended-documents"></a>Aanbevolen documenten
 
 * [Uitvoering van runbooks in Azure Automation](../automation-runbook-execution.md)
-* [Een runbook starten in Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Een runbook starten in Azure Automation](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

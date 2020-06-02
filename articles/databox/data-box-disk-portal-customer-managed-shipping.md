@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 70c37b60d3b01c939b9b06d6b053b526e036904a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749310"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266505"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Zelf-beheerde verzen ding voor Azure Data Box Disk gebruiken in de Azure Portal
 
@@ -43,7 +43,7 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
    ![Zelf beheerde verzen ding](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Zodra het apparaat is voor bereid, kunt u een ophaling plannen. Ga in uw Azure Data Box Disk order naar **overzicht** en selecteer vervolgens **ophalen plannen**.
+4. Zodra het apparaat is voor bereid en u een e-mail melding hebt ontvangen, kunt u een ophaling plannen. Ga in uw Azure Data Box Disk order naar **overzicht** en selecteer vervolgens **ophalen plannen**.
 
    ![Een Data Box-apparaat best Ellen voor ophalen](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -57,11 +57,11 @@ Wanneer u een Data Box Disk order plaatst, kunt u de optie voor zelf-beheerde ve
 
    Noteer deze **autorisatie code**.
 
-   Volgens de beveiligings vereisten, op het moment van het plannen van het opschonen en afvinken, is het nodig de naam van de persoon op te geven die bij het ophalen en verwijderen zou arriveren.
+   Volgens de beveiligings vereisten, op het moment van het plannen van de planning, is het nodig om de naam van de persoon op te geven die wordt opgehaald voor het ophalen.
 
    U moet ook details opgeven van wie gaat naar het Data Center voor ophalen. U of het contact punt moet een door de overheid goedgekeurde foto-ID hebben die wordt gevalideerd op het Data Center.
 
-   Daarnaast moet de persoon die het apparaat ophaalt ook de **autorisatie code**hebben. De autorisatie code wordt gevalideerd op het tijdstip van ophalen van het Data Center.
+   Daarnaast moet de persoon die het apparaat ophaalt ook de **autorisatie code**hebben. De autorisatie code is uniek voor een ophaling of een afgifte en wordt gevalideerd op het Data Center.
 
 7. Uw bestelling wordt automatisch verplaatst naar de status **opgehaald** wanneer het apparaat is opgehaald van het Data Center.
 

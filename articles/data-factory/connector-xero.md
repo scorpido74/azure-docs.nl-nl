@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 8a704c3891c687edbb7c5aac206f4b6c7766fa8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409990"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263887"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Gegevens kopiëren van Xero met behulp van Azure Data Factory
 
@@ -35,7 +35,7 @@ U kunt gegevens van Xero kopiëren naar elk ondersteund Sink-gegevens archief. Z
 
 Deze Xero-connector ondersteunt met name:
 
-- Xero [persoonlijke toepassing](https://developer.xero.com/documentation/getting-started/api-application-types) , maar geen open bare toepassing.
+- Xero [persoonlijke toepassing](https://developer.xero.com/documentation/getting-started/getting-started-guide) , maar geen open bare toepassing.
 - Alle Xero-tabellen (API-eind punten), behalve ' rapporten '. 
 
 Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
@@ -52,15 +52,15 @@ De volgende eigenschappen worden ondersteund voor Xero gekoppelde service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **Xero** | Ja |
-| host | Het eind punt van de Xero-`api.xero.com`server ().  | Ja |
-| consumerKey | De consumenten sleutel die is gekoppeld aan de Xero-toepassing. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| privateKey | De persoonlijke sleutel uit het. pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, vindt u in [een openbaar/persoonlijk sleutel paar maken](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Opmerking voor **het genereren van privatekey. pem met numbits van 512** met `openssl genrsa -out privatekey.pem 512`; 1024 wordt niet ondersteund. Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n), zie voor beeld hieronder.<br/><br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
-| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
+| type | De eigenschap type moet worden ingesteld op: **Xero** | Yes |
+| host | Het eind punt van de Xero-server ( `api.xero.com` ).  | Yes |
+| consumerKey | De consumenten sleutel die is gekoppeld aan de Xero-toepassing. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| privateKey | De persoonlijke sleutel uit het. pem-bestand dat is gegenereerd voor uw persoonlijke Xero-toepassing, vindt u in [een openbaar/persoonlijk sleutel paar maken](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Opmerking voor **het genereren van privatekey. pem met numbits van 512** met `openssl genrsa -out privatekey.pem 512` ; 1024 wordt niet ondersteund. Voeg alle tekst uit het. pem-bestand toe, inclusief de Unix-regel eindigt op (\n), zie voor beeld hieronder.<br/><br/>Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaardwaarde is waar.  | No |
+| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | No |
+| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | No |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -98,10 +98,10 @@ Als u gegevens van Xero wilt kopiëren, stelt u de eigenschap type van de gegeve
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Ja |
+| type | De eigenschap type van de gegevensset moet worden ingesteld op: **XeroObject** | Yes |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {
@@ -128,10 +128,10 @@ Als u gegevens wilt kopiëren uit Xero, stelt u het bron type in de Kopieer acti
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **XeroSource** | Ja |
+| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **XeroSource** | Yes |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Contacts"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -165,9 +165,9 @@ Als u gegevens wilt kopiëren uit Xero, stelt u het bron type in de Kopieer acti
 
 Let op het volgende wanneer u de Xero-query opgeeft:
 
-- Tabellen met complexe items worden op meerdere tabellen gesplitst. Bank transacties hebben bijvoorbeeld een complexe gegevens structuur ' regel items ', dus gegevens van Bank transacties worden toegewezen aan een tabel `Bank_Transaction` en `Bank_Transaction_Line_Items`, met `Bank_Transaction_ID` als refererende sleutel, om ze samen te koppelen.
+- Tabellen met complexe items worden op meerdere tabellen gesplitst. Bank transacties hebben bijvoorbeeld een complexe gegevens structuur ' regel items ', dus gegevens van Bank transacties worden toegewezen aan een tabel `Bank_Transaction` en `Bank_Transaction_Line_Items` , met `Bank_Transaction_ID` als refererende sleutel, om ze samen te koppelen.
 
-- Xero-gegevens zijn beschikbaar via twee schema's: `Minimal` (standaard) en `Complete`. Het volledige schema bevat vereiste aanroep tabellen waarvoor extra gegevens (bijvoorbeeld ID-kolom) nodig zijn voordat de gewenste query wordt uitgevoerd.
+- Xero-gegevens zijn beschikbaar via twee schema's: `Minimal` (standaard) en `Complete` . Het volledige schema bevat vereiste aanroep tabellen waarvoor extra gegevens (bijvoorbeeld ID-kolom) nodig zijn voordat de gewenste query wordt uitgevoerd.
 
 De volgende tabellen hebben dezelfde informatie in het minimale en volledige schema. Gebruik Mini maal schema (standaard) om het aantal API-aanroepen te verminderen.
 

@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u de configuratie van de kluis kunt bijw
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744570"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248223"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Recovery Services kluis configuraties van Azure bijwerken met behulp van REST API
 
@@ -21,7 +21,7 @@ Het verwijderen van back-ups van een beveiligd item is een belang rijke bewerkin
 
 Maar er zijn scenario's waarin deze mogelijkheid niet is vereist. Een Azure Recovery Services kluis kan niet worden verwijderd als er back-upitems in zijn, zelfs als deze worden verwijderd. Dit kan een probleem vormen als de kluis onmiddellijk moet worden verwijderd. Bijvoorbeeld: implementatie bewerkingen schonen vaak de gemaakte resources in dezelfde werk stroom. Een implementatie kan een kluis maken, back-ups voor een item configureren, een test herstellen en vervolgens door gaan met het verwijderen van de back-upitems en de kluis. Als het verwijderen van de kluis mislukt, kan de volledige implementatie mislukken. Het uitschakelen van zacht verwijderen is de enige manier om direct verwijderen te garanderen.
 
-Daarom moet de klant zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde kluis wilt uitschakelen, afhankelijk van het scenario. Zie het [artikel voorlopig verwijderen](backup-azure-security-feature-cloud.md)voor meer informatie.
+Daarom moet u zorgvuldig bepalen of u het voorlopig verwijderen van een bepaalde kluis wilt uitschakelen, afhankelijk van het scenario. Zie het [artikel voorlopig verwijderen](backup-azure-security-feature-cloud.md)voor meer informatie.
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Status van voorlopig verwijderen ophalen met REST API
 
@@ -33,7 +33,7 @@ Als u de huidige status van het voorlopig verwijderen van een kluis wilt ophalen
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-De Get-URI `{subscriptionId}`heeft `{vaultName}`, `{vaultresourceGroupName}` , para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
+De Get-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Aangezien alle vereiste para meters in de URI worden opgegeven, is er geen afzonderlijke aanvraag tekst nodig.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -71,7 +71,7 @@ Als u de voorlopig verwijderings status van de Recovery Services-kluis wilt bijw
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-De patch-URI `{subscriptionId}`heeft `{vaultName}`, `{vaultresourceGroupName}` , para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Als de URI wordt vervangen door de bovenstaande waarden, ziet de URI er als volgt uit.
+De patch-URI heeft `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` para meters. In dit voor beeld `{vaultName}` is ' testVault ' en `{vaultresourceGroupName}` is ' testVaultRG '. Als de URI wordt vervangen door de bovenstaande waarden, ziet de URI er als volgt uit.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -83,10 +83,10 @@ De volgende algemene definities worden gebruikt voor het maken van een aanvraag 
 
 Raadpleeg [de rest API-documentatie](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) voor meer informatie.
 
-|Naam  |Vereist  |Type  |Beschrijving  |
+|Name  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  waar       |Tekenreeks         |   Resourcelocatie      |
+|location     |  waar       |Tekenreeks         |   Resource locatie      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |tags     |         | Object        |     Resourcetags    |
 

@@ -3,21 +3,21 @@ title: Peer-ASN koppelen aan Azure-abonnement met de portal
 titleSuffix: Azure
 description: Peer-ASN koppelen aan Azure-abonnement met de portal
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 9feefa8801892a668784ed7406f46dba2afd69da
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683955"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266947"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer-ASN koppelen aan Azure-abonnement met de portal
 
-Voordat u een peering-aanvraag indient, moet u eerst uw ASN met het Azure-abonnement koppelen met behulp van de onderstaande stappen.
+Als Internet serviceprovider of Internet Exchange-provider moet u eerst uw ASN koppelen aan een Azure-abonnement met behulp van de onderstaande stappen voordat u een peering-aanvraag indient.
 
 Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](howto-subscription-association-powershell.md).
 
@@ -55,8 +55,7 @@ Registreer u voor de resource provider voor de peering in uw abonnement door de 
     > ![Registratie is voltooid](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn maken
-Als Internet provider of provider van Internet Exchange kunt u een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement. U kunt meerdere Asn's koppelen aan een abonnement door te navigeren naar de [pagina een PeerASN koppelen](https://go.microsoft.com/fwlink/?linkid=2129592) voor elke ASN die u wilt koppelen.
-
+Als Internet provider of provider van Internet Exchange kunt u een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement op de [pagina een peer-ASN koppelen](https://go.microsoft.com/fwlink/?linkid=2129592) . U kunt meerdere Asn's koppelen aan een abonnement door een **PeerAsn** te maken voor elke ASN die u moet koppelen.
 
 1. Vul op de pagina **een peer-ASN koppelen** onder het tabblad **basis beginselen** de velden in zoals hieronder wordt weer gegeven.
 

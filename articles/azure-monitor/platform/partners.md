@@ -4,12 +4,12 @@ description: Meer informatie over de partners van Azure Monitor en hoe u toegang
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233401"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248968"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integraties van Azure Monitor-partner
 
@@ -105,8 +105,6 @@ Grafana is een open-source toepassing waarmee u metrische gegevens over de time 
 ## <a name="influxdata"></a>InfluxData
 
 ![InfluxData-logo](./media/partners/Influxdata.png)
-
-InfluxData, de maker van InfluxDB, levert een moderne, open-source platform dat is gebouwd op basis van de grond voor het analyseren van metrische gegevens en gebeurtenissen (Time Series Data) voor DevOps-en IoT-toepassingen. Of de gegevens afkomstig zijn van mensen, Sens oren of machines, InfluxData biedt ontwikkel aars de mogelijkheid om de bewakings-, analyse-en IoT-toepassingen van de volgende generatie sneller, eenvoudiger en schaalbaar te maken. InfluxData is gebaseerd op San Francisco en bevat meer dan 420 klanten Cisco, eBay, IBM en Siemens.
 
 InfluxData is de maker van InfluxDB, de open source time series-data base. Onze technologie is speciaal ontworpen om de enorme hoeveel heden tijdgebonden gegevens te verwerken die worden geproduceerd door IoT-apparaten, toepassingen, netwerken, containers en computers. We zijn op de hoogte om ontwikkel aars en organisaties, zoals IBM, Visa, Siemens, Tesla en NASA, in staat te stellen om realtime gegevens op te slaan en te analyseren. zo kunnen ze sneller en snel en eenvoudig transformatieve bewaking, analyses en IoT-toepassingen bouwen. De metrische gegevens en gebeurtenissen van de verzameling van de Microsoft Azure-monitor kunnen worden uitgebreid met de telegrafie agent van InfluxData, zodat micro soft-gebruikers profiteren van een toonaangevende database oplossing voor de tijd reeks en gebruikmaken van de groeiende open-source bijdragen aan telegrafie.
 

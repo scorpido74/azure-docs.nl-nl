@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 79d29ef228fc27655da30edbeb64abcb01e45d5e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5edba7f5a7576cac189aa44936f9d8f24f3ffcaf
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237176"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248993"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash gebruiken om gegevens bronnen te verbinden met Azure Sentinel
 
@@ -51,7 +51,7 @@ De Azure Sentinel output-invoeg toepassing voor Logstash verzendt gegevens in JS
 - Meer [informatie over de Log Analytics rest API](https://docs.microsoft.com/rest/api/loganalytics/create-request).
 - Meer [informatie over aangepaste logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
 
-## <a name="installing-and-configuring-the-azure-sentinel-output-plugin-in-logstash"></a>De Azure Sentinel output-invoeg toepassing installeren en configureren in Logstash
+## <a name="deploying-the-azure-sentinel-output-plugin-in-logstash"></a>De Azure Sentinel output-invoeg toepassing implementeren in Logstash
 
 1. **Installatie**
 
@@ -112,11 +112,11 @@ De Azure Sentinel output-invoeg toepassing voor Logstash verzendt gegevens in JS
 
     1. Klik in het navigatie menu van de Azure-Sentinel op **Logboeken**. Vouw onder de kop **tabellen** de categorie **aangepaste logboeken** uit. Zoek en klik op de naam van de tabel die u hebt opgegeven (met een `_CL` achtervoegsel) in de configuratie.
 
-        ![Aangepaste logboeken van Logstash](./media/connect-logstash/logstash-custom-logs-menu.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Aangepaste logboeken van Logstash":::
 
     1. Als u records in de tabel wilt weer geven, moet u een query uitvoeren op de tabel met behulp van de tabel naam als schema.
 
-        ![Query voor aangepaste logboeken van Logstash](./media/connect-logstash/logstash-custom-logs-query.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Query voor aangepaste logboeken van Logstash":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Audit logboeken voor uitvoer van invoeg toepassingen bewaken
 

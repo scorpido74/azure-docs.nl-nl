@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148188"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267083"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -222,7 +222,7 @@ az cosmosdb show \
 
 ## <a name="error-handling"></a>Foutafhandeling
 
-Bij het gebruik van door de klant beheerde sleutels (CMK) in Azure Cosmos DB, als er fouten zijn, Azure Cosmos DB de fout Details samen met een HTTP-substatuscode in het antwoord. U kunt deze substatuscode gebruiken om fouten in de hoofd oorzaak van het probleem op te sporen. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) artikel om de lijst met ondersteunde HTTP-substatus codes op te halen.
+Bij het gebruik van door de klant beheerde sleutels (CMK) in Azure Cosmos DB, als er fouten zijn, Azure Cosmos DB de fout Details samen met een HTTP-substatuscode in het antwoord. U kunt deze substatuscode gebruiken om fouten in de hoofd oorzaak van het probleem op te sporen. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) artikel om de lijst met ondersteunde HTTP-substatus codes op te halen.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
 

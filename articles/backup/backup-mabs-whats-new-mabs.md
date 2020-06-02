@@ -3,12 +3,12 @@ title: Nieuw in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server biedt uitgebreide back-upmogelijkheden voor het beveiligen van Vm's, bestanden en mappen, werk belastingen en nog veel meer. Meer informatie over het installeren of upgraden van Azure Backup Server v3.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 358de6f2986036621accde90550e2afcc47f9135
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582803"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247543"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Nieuw in Microsoft Azure Backup Server
 
@@ -26,7 +26,7 @@ In ondernemingen wordt MABS beheerd door een team van beheerders. Hoewel er rich
 
 ## <a name="custom-size-allocation"></a>Toewijzing van aangepaste grootte
 
-Modern Backup Storage (MBS) verbruikt opslag dun, indien nodig. Om dit te doen, berekent MABS de grootte van de gegevens waarvan een back-up wordt gemaakt wanneer deze is geconfigureerd voor beveiliging. Als er echter meerdere bestanden en mappen samen een back-up worden gemaakt, zoals in het geval van een bestands server, kan de grootte berekening lang duren. Met MABS v3 kunt u MABS zo configureren dat de grootte van het volume als standaard wordt geaccepteerd, in plaats van de grootte van elk bestand te berekenen, waardoor de tijd wordt bespaard.
+Modern Backup Storage (MBS) verbruikt opslag dun, indien nodig. Om dit te doen, berekent MABS de grootte van de gegevens waarvan een back-up wordt gemaakt wanneer deze is geconfigureerd voor beveiliging. Als er echter meerdere bestanden en mappen samen een back-up worden gemaakt, zoals in het geval van een bestands server, kan de grootte berekening lang duren. Met MABS v3 kunt u MABS zo configureren dat de volume grootte als standaard wordt geaccepteerd, in plaats van de grootte van elk bestand te berekenen, wat tijd bespaart.
 
 ## <a name="optimized-cc-for-rct-vms"></a>Geoptimaliseerde CC voor RCT-Vm's
 

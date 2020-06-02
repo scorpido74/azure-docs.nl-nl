@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4ad793ee27d00359dd63f3394b8d7fd4a70b297f
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195108"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266675"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Wat is er nieuw in Azure SQL Database & SQL Managed instance?
 
@@ -53,17 +53,13 @@ Deze tabel bevat een snelle vergelijking voor de wijziging in de terminologie:
 | ---| --- |
 | Nieuwe hardware gegenereerd met de Fsv2-serie en M-serie| Zie [Hardware-generaties](service-tiers-vcore.md#hardware-generations)voor meer informatie.|
 | Versneld database herstel met afzonderlijke data bases en elastische Pools | Zie [versneld database herstel](../accelerated-database-recovery.md)voor meer informatie.|
-|Aantal benadering|Zie [geschatte aantallen DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)voor meer informatie.|
-|Batch-modus op Rowstore (onder compatibiliteits niveau 150)|Zie [batch-modus op Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)voor meer informatie.|
 | Gegevensdetectie en -classificatie  |Zie [Azure SQL database en Azure Synapse Analytics data discovery & classificatie](data-discovery-and-classification-overview.md)voor meer informatie.|
 | Taken voor Elastic Database | Zie [elastische taken maken, configureren en beheren](elastic-jobs-overview.md)voor meer informatie. |
 | Elastische query’s | Zie [overzicht van elastische query's](elastic-query-overview.md)voor meer informatie. |
 | Elastische transacties | [Gedistribueerde trans acties over Cloud databases](elastic-transactions-overview.md). |
-|Feedback over geheugen toekenning (rij-modus) (onder compatibiliteits niveau 150)|Zie [feedback over geheugen toekenning (rij-modus)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)voor meer informatie.|
 | Query-Editor in het Azure Portal |Zie [de SQL-query editor van het Azure Portal gebruiken om verbinding te maken en gegevens op te vragen](connect-query-portal.md)voor meer informatie.|
 | R Services/machine learning met afzonderlijke data bases en elastische Pools |Zie [Machine Learning Services in Azure SQL database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)voor meer informatie.|
 |SQL Analytics|Zie [Azure SQL-analyse](../../azure-monitor/insights/azure-sql.md)voor meer informatie.|
-|Uitgestelde compilatie van tabel variabele (onder compatibiliteits niveau 150)|Zie voor meer informatie [tabel variabele uitgestelde compilatie](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)

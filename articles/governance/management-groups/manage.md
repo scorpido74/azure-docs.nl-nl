@@ -3,12 +3,12 @@ title: Werken met uw beheer groepen-Azure governance
 description: Meer informatie over het weer geven, onderhouden, bijwerken en verwijderen van uw beheer groeps hiërarchie.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: e3d92e0785e54c0999b8cc0f055b7de355a4c4f5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747479"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259402"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Uw resources beheren met beheer groepen
 
@@ -205,7 +205,7 @@ Wanneer u een beheer groep of een abonnement naar een onderliggend niveau van ee
 Als u de verplaatsings actie uitvoert, hebt u het volgende nodig: 
 
 - Schrijf machtigingen voor schrijven en rollen toewijzen aan de beheer groep voor het onderliggende abonnement of de beheer groep.
-  - Voor beeld **eigenaar** van ingebouwde rol
+  - Voor beeld van ingebouwde rol **eigenaar**
 - Schrijf toegang van de beheer groep op de bovenliggende doel beheer groep.
   - Voor beeld van ingebouwde rol: **eigenaar**, **Inzender**, **Inzender voor beheer groepen**
 - Schrijf toegang van de beheer groep voor de bestaande bovenliggende beheer groep.

@@ -7,17 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480008"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248733"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor logboeken connector voor Logic Apps en flow
 Met [Azure Logic apps](/azure/logic-apps/) en [energie automatisering](https://ms.flow.microsoft.com) kunt u geautomatiseerde werk stromen maken met honderden acties voor diverse services. Met de Azure Monitor logs connector kunt u werk stromen bouwen waarmee gegevens worden opgehaald uit een Log Analytics-werk ruimte of een Application Insights-toepassing in Azure Monitor. In dit artikel worden de acties beschreven die zijn opgenomen in de connector en vindt u een overzicht van het maken van een werk stroom met behulp van deze gegevens.
 
 U kunt bijvoorbeeld een logische app maken om Azure Monitor logboek gegevens te gebruiken in een e-mail melding van Office 365, een bug in azure DevOps te maken of een bericht over een toegestane vertraging te plaatsen.  U kunt een werk stroom activeren op basis van een eenvoudig schema of van een actie in een verbonden service, zoals wanneer een e-mail of een tweet wordt ontvangen. 
+
+## <a name="connector-limits"></a>Limieten voor connector
+De Azure Monitor logs connector heeft de volgende limieten:
+* Maximale gegevens grootte: 16 MB
+* Maximale grootte van query response 100 MB
+* Maximum aantal records: 500.000
+* Maximale querytime-out 110 seconde.
+
+Afhankelijk van de grootte van uw gegevens en de query die u gebruikt, kan het zijn dat de connector de limieten bereikt en mislukt. U kunt dergelijke gevallen omzeilen wanneer u het terugkeer patroon van de trigger bijwerkt om vaker te worden uitgevoerd en minder gegevens op te vragen. U kunt query's gebruiken om uw gegevens samen te voegen om minder records en kolommen te retour neren.
 
 ## <a name="actions"></a>Acties
 In de volgende tabel worden de acties beschreven die zijn opgenomen in de Azure Monitor logs connector. Beide bieden u de mogelijkheid om een logboek query uit te voeren op een Log Analytics werk ruimte of Application Insights toepassing. Het verschil bevindt zich in de manier waarop de gegevens worden geretourneerd.

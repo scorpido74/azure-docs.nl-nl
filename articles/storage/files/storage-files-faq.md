@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 620628b244bf107ad0dc2e2242d174ef798450da
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235630"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265162"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -170,7 +170,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="ad-support"></a>
 **Wordt verificatie op basis van identiteit en toegangs beheer ondersteund door Azure Files?**  
     
-    Ja, Azure Files ondersteunt verificatie en toegangs beheer op basis van een identiteit. U kunt een van de twee manieren kiezen voor het gebruik van toegangs beheer op basis van de identiteit: on-premises Active Directory Domain Services (preview) of Azure Active Directory Domain Services (Azure AD DS). On-premises Active Directory Domain Services (AD DS) ondersteunt verificatie met behulp van AD DS machines die lid zijn van een domein, on-premises of in azure, om toegang te krijgen tot Azure-bestands shares via SMB. Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
+    Ja, Azure Files ondersteunt verificatie en toegangs beheer op basis van een identiteit. U kunt kiezen uit een van de twee manieren om op id's gebaseerd toegangs beheer te gebruiken: on-premises Active Directory Domain Services of Azure Active Directory Domain Services (Azure AD DS). On-premises Active Directory Domain Services (AD DS) ondersteunt verificatie met behulp van AD DS machines die lid zijn van een domein, on-premises of in azure, om toegang te krijgen tot Azure-bestands shares via SMB. Met Azure AD DS-verificatie via SMB voor Azure Files kunnen AD DS Azure-Windows-Vm's die lid zijn van een domein, toegang krijgen tot shares, directory's en bestanden met behulp van Azure AD-referenties. Zie [overzicht van Azure files op identiteit gebaseerde verificatie voor SMB-toegang](storage-files-active-directory-overview.md)voor meer informatie. 
 
     Azure Files biedt twee extra manieren om toegangs beheer te beheren:
 
@@ -179,41 +179,6 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     - Azure File Sync behoudt en repliceert alle discretionaire Acl's, of DACL'S, (of Active Directory of lokaal) naar alle server eindpunten die worden gesynchroniseerd. 
     
     U kunt de [toegang tot Azure Storage machtigen](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor een uitgebreide weer gave van alle protocollen die worden ondersteund op Azure Storage services. 
-
-* <a id="ad-support-devices"></a>
-**Ondersteunt Azure Files verificatie van Azure Active Directory Domain Services (Azure AD DS) SMB-toegang via Azure AD-referenties van apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD?**
-
-    Nee, dit scenario wordt niet ondersteund.
-
-* <a id="ad-support-rest-apis"></a>
-**Zijn er REST-Api's ter ondersteuning van Get/set/Copy map/file NTFS Acl's?**
-
-    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API.
-
-* <a id="ad-vm-subscription"></a>
-**Kan ik toegang krijgen tot Azure-bestands shares met Azure AD-referenties van een VM onder een ander abonnement?**
-
-    Als het abonnement waarmee de bestands share is geïmplementeerd, is gekoppeld aan dezelfde Azure AD-Tenant als de Azure AD DS-implementatie waaraan de virtuele machine is toegevoegd aan een domein, kunt u toegang krijgen tot Azure-bestands shares met dezelfde Azure AD-referenties. De beperking wordt niet toegepast op het abonnement, maar op de gekoppelde Azure AD-Tenant.
-    
-* <a id="ad-support-subscription"></a>
-**Kan ik Azure AD DS of on-premises AD DS-verificatie inschakelen voor Azure-bestands shares met behulp van een Azure AD-Tenant die verschilt van de primaire Tenant van de Azure-bestands share?**
-
-    Nee, Azure Files ondersteunt alleen Azure AD DS of on-premises AD DS integratie met een Azure AD-Tenant die zich in hetzelfde abonnement als de bestands share bevindt. Er kan slechts één abonnement worden gekoppeld aan een Azure AD-Tenant. Deze beperking is van toepassing op Azure AD DS en on-premises AD DS-verificatie methoden. Wanneer u on-premises AD DS voor verificatie gebruikt, [moet de AD DS referentie worden gesynchroniseerd met de Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) waaraan het opslag account is gekoppeld.
-
-* <a id="ad-linux-vms"></a>
-**Ondersteunt Azure-AD DS of on-premises AD DS-verificatie voor Azure-bestands shares virtuele Linux-machines?**
-
-    Nee, authenticatie vanuit Linux-Vm's wordt niet ondersteund.
-
-* <a id="ad-aad-smb-afs"></a>
-**Bieden bestands shares die worden beheerd door Azure File Sync de verificatie van Azure AD DS of on-premises AD DS (preview)?**
-
-    Ja, u kunt Azure AD DS-of on-premises AD DS-verificatie inschakelen op een bestands share die wordt beheerd door Azure File Sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
-
-* <a id="ad-aad-smb-files"></a>
-**Hoe kan ik controleren of ik AD DS verificatie op mijn opslag account heb ingeschakeld en de domein gegevens ophaal?**
-
-    Zie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)voor instructies.
     
 * <a id="encryption-at-rest"></a>
 **Hoe kan ik ervoor zorgen dat mijn Azure-bestands share op rest versleuteld is?**  
@@ -240,7 +205,37 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 
    Azure Files wordt uitgevoerd boven op dezelfde opslag architectuur die wordt gebruikt in andere opslag Services in Azure Storage. Azure Files past hetzelfde beleid voor gegevens naleving toe dat in andere Azure Storage-services wordt gebruikt. Raadpleeg voor meer informatie over de naleving van Azure Storage gegevens [Azure Storage compliance-aanbiedingen](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)en ga naar het [vertrouwens centrum van micro soft](https://microsoft.com/trustcenter/default.aspx).
    
-### <a name="ad-authentication"></a>AD-verificatie
+### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS-verificatie
+* <a id="ad-support-devices"></a>
+**Ondersteunt Azure Files verificatie van Azure Active Directory Domain Services (Azure AD DS) SMB-toegang via Azure AD-referenties van apparaten die zijn gekoppeld aan of zijn geregistreerd bij Azure AD?**
+
+    Nee, dit scenario wordt niet ondersteund.
+
+* <a id="ad-vm-subscription"></a>
+**Kan ik toegang krijgen tot Azure-bestands shares met Azure AD-referenties van een VM onder een ander abonnement?**
+
+    Als het abonnement waarmee de bestands share is geïmplementeerd, is gekoppeld aan dezelfde Azure AD-Tenant als de Azure AD DS-implementatie waaraan de virtuele machine is toegevoegd aan een domein, kunt u toegang krijgen tot Azure-bestands shares met dezelfde Azure AD-referenties. De beperking wordt niet toegepast op het abonnement, maar op de gekoppelde Azure AD-Tenant.
+    
+* <a id="ad-support-subscription"></a>
+**Kan ik Azure AD DS of on-premises AD DS-verificatie inschakelen voor Azure-bestands shares met behulp van een Azure AD-Tenant die verschilt van de primaire Tenant van de Azure-bestands share?**
+
+    Nee, Azure Files ondersteunt alleen Azure AD DS of on-premises AD DS integratie met een Azure AD-Tenant die zich in hetzelfde abonnement als de bestands share bevindt. Er kan slechts één abonnement worden gekoppeld aan een Azure AD-Tenant. Deze beperking is van toepassing op Azure AD DS en on-premises AD DS-verificatie methoden. Wanneer u on-premises AD DS voor verificatie gebruikt, [moet de AD DS referentie worden gesynchroniseerd met de Azure AD](../../active-directory/hybrid/how-to-connect-install-roadmap.md) waaraan het opslag account is gekoppeld.
+
+* <a id="ad-linux-vms"></a>
+**Ondersteunt Azure-AD DS of on-premises AD DS-verificatie voor Azure-bestands shares virtuele Linux-machines?**
+
+    Nee, authenticatie vanuit Linux-Vm's wordt niet ondersteund.
+
+* <a id="ad-aad-smb-afs"></a>
+**Bieden bestands shares die worden beheerd door Azure File Sync Azure AD DS of een on-premises AD DS verificatie?**
+
+    Ja, u kunt Azure AD DS-of on-premises AD DS-verificatie inschakelen op een bestands share die wordt beheerd door Azure File Sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
+
+* <a id="ad-aad-smb-files"></a>
+**Hoe kan ik controleren of ik AD DS verificatie op mijn opslag account heb ingeschakeld en de domein gegevens ophaal?**
+
+    Zie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account)voor instructies.
+
 * <a id=""></a>
 **Ondersteunt Azure Files Azure AD-verificatie Linux Vm's?**
 
@@ -252,12 +247,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
     Azure Files on-premises AD DS authenticatie alleen worden geïntegreerd met het forest van de domein service waarop het opslag account is geregistreerd. Als u verificatie van een ander forest wilt ondersteunen, moet uw omgeving een forest-vertrouwens relatie juist hebben geconfigureerd. De manier waarop Azure Files zich in AD DS bijna hetzelfde bevinden als een gewone bestands server, waar het een identiteit (computer-of service-aanmeldings account) in AD DS voor verificatie maakt. Het enige verschil is dat de geregistreerde SPN van het opslag account eindigt op ' file.core.windows.net ', wat niet overeenkomt met het domein achtervoegsel. Neem contact op met uw domein beheerder om te controleren of er een update van uw DNS-routerings beleid is vereist om meerdere Forest-verificatie mogelijk te maken vanwege het andere domein achtervoegsel.
 
 * <a id=""></a>
-**Welke regio's zijn beschikbaar voor Azure Files AD DS-verificatie (preview)?**
+**Welke regio's zijn beschikbaar voor Azure Files AD DS-verificatie?**
 
     Raadpleeg [AD DS regionale Beschik baarheid](storage-files-identity-auth-active-directory-enable.md#regional-availability) voor meer informatie.
     
 * <a id="ad-aad-smb-afs"></a>
-**Kan ik gebruikmaken van Azure Files Active Directory (AD)-verificatie (preview) op bestands shares die worden beheerd door Azure File Sync?**
+**Kan ik gebruikmaken van Azure Files-verificatie Active Directory (AD) op bestands shares die worden beheerd door Azure File Sync?**
 
     Ja, u kunt AD-verificatie inschakelen op een bestands share die wordt beheerd door Azure file sync. Wijzigingen in de map/bestand NTFS Acl's op lokale bestands servers worden trapsgewijs gelaagd en Azure Files en vice versa.
 
@@ -270,6 +265,12 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 **Is er een verschil in het maken van een computer account of een service-aanmeldings account voor het weer geven van mijn opslag account in AD?**
 
     Het maken van een [computer account](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (standaard) of een [service aanmeldings account](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) heeft geen verschil op de manier waarop de verificatie met Azure files zou werken. U kunt uw eigen keuze maken voor het weer geven van een opslag account als identiteit in uw AD-omgeving. De standaard DomainAccountType die in de cmdlet voor samen voegen AzStorageAccountForAuth is ingesteld, is het computer account. De leeftijd van het wacht woord die in uw AD-omgeving is geconfigureerd, kan echter verschillen voor de computer-of service-aanmeldings account en u moet rekening houden om [het wacht woord van de identiteit van uw opslag account in AD bij te werken](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+ 
+* <a id="ad-support-rest-apis"></a>
+**Zijn er REST-Api's ter ondersteuning van Get/set/Copy-Windows-Acl's voor mappen/bestanden?**
+
+    Ja, we ondersteunen REST-Api's waarmee NTFS-Acl's voor mappen of bestanden worden opgehaald, ingesteld of gekopieerd wanneer de [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (of hoger) wordt gebruikt rest API. We bieden ook ondersteuning voor persistentie van Windows-Acl's in REST-hulpprogram ma's: [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases).
+
 
 ## <a name="on-premises-access"></a>Lokale toegang
 

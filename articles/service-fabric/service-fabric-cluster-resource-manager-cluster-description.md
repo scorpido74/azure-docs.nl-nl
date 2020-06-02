@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258770"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259470"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Een Service Fabric cluster beschrijven met cluster resource manager
 De functie cluster resource manager van Azure Service Fabric biedt verschillende methoden voor het beschrijven van een cluster:
@@ -83,9 +83,9 @@ In het volgende diagram ziet u drie upgrade domeinen die zijn gesegmenteerd over
 
 Er zijn voor-en nadelen voor een groot aantal upgrade domeinen. Meer upgrade domeinen betekenen dat elke stap van de upgrade nauw keuriger is en invloed heeft op een kleiner aantal knoop punten of services. Er moeten minder services tegelijk worden verplaatst, zodat er minder verloop in het systeem wordt geïntroduceerd. Dit is doorgaans de betrouw baarheid verbeterd, omdat het minder van de service wordt beïnvloed door een probleem dat tijdens de upgrade wordt geïntroduceerd. Meer upgrade domeinen betekenen ook dat u minder beschik bare buffer op andere knoop punten nodig hebt om de impact van de upgrade te kunnen afhandelen. 
 
-Als u bijvoorbeeld vijf upgrade domeinen hebt, worden de knoop punten in elk ongeveer 20 procent van uw verkeer verwerkt. Als u het upgrade domein wilt uitvoeren voor een upgrade, moet die belasting meestal ergens anders gaan. Omdat u vier resterende upgrade domeinen hebt, moet er voldoende ruimte zijn voor ongeveer 5 procent van het totale verkeer. Meer upgrade domeinen betekenen dat u minder buffers nodig hebt voor de knoop punten in het cluster. 
+Als u bijvoorbeeld vijf upgrade domeinen hebt, worden de knoop punten in elk ongeveer 20 procent van uw verkeer verwerkt. Als u het upgrade domein wilt uitvoeren voor een upgrade, moet die belasting meestal ergens anders gaan. Omdat u vier resterende upgrade domeinen hebt, moeten er voor elk 25 procent van het totale verkeer voldoende ruimte zijn. Meer upgrade domeinen betekenen dat u minder buffers nodig hebt voor de knoop punten in het cluster.
 
-Houd rekening met het gebruik van 10 upgrade domeinen. In dat geval verwerkt elk upgrade domein slechts 10 procent van het totale verkeer. Wanneer een upgrade stappen door het cluster worden uitgevoerd, moet elk domein voldoende ruimte hebben voor slechts ongeveer 1,1 procent van het totale verkeer. Meer upgrade domeinen maken het meestal mogelijk om uw knoop punten uit te voeren op een hoger gebruik, omdat u minder gereserveerde capaciteit nodig hebt. Dit geldt ook voor fout domeinen.  
+Houd rekening met het gebruik van 10 upgrade domeinen. In dat geval verwerkt elk upgrade domein slechts 10 procent van het totale verkeer. Wanneer een upgrade stappen door het cluster worden uitgevoerd, moet elk domein voldoende ruimte hebben voor slechts ongeveer 11 procent van het totale verkeer. Meer upgrade domeinen maken het meestal mogelijk om uw knoop punten uit te voeren op een hoger gebruik, omdat u minder gereserveerde capaciteit nodig hebt. Dit geldt ook voor fout domeinen.  
 
 Het nadeel van veel upgrade domeinen is dat upgrades meer tijd in beslag nemen. Service Fabric wacht een korte periode nadat een upgrade domein is voltooid en voert controles uit voordat u begint met het upgraden van de volgende. Deze vertragingen zorgen ervoor dat detectie problemen die door de upgrade worden geïntroduceerd, worden gedetecteerd voordat de upgrade wordt uitgevoerd. De balans is acceptabel omdat het voor komt dat onjuiste wijzigingen van invloed zijn op een groot deel van de service.
 
@@ -363,7 +363,7 @@ Service Fabric bevat Tags die u kunt Toep assen op knoop punten voor ondersteuni
 ### <a name="built-in-node-properties"></a>Ingebouwde knooppunt eigenschappen
 Service Fabric definieert een aantal standaard knooppunt eigenschappen die automatisch kunnen worden gebruikt, zodat u ze niet hoeft te definiëren. De standaard eigenschappen die op elk knoop punt worden gedefinieerd, zijn **NodeType** en **knooppuntnaam**. 
 
-U kunt bijvoorbeeld een plaatsings beperking schrijven als `"(NodeType == NodeType03)"`. **NodeType** is een veelgebruikte eigenschap. Het is nuttig omdat deze 1:1 overeenkomt met een type machine. Elk type computer komt overeen met een type werk belasting in een traditionele toepassing met n-tier.
+U kunt bijvoorbeeld een plaatsings beperking schrijven als `"(NodeType == NodeType03)"` . **NodeType** is een veelgebruikte eigenschap. Het is nuttig omdat deze 1:1 overeenkomt met een type machine. Elk type computer komt overeen met een type werk belasting in een traditionele toepassing met n-tier.
 
 <center>
 
@@ -447,7 +447,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Als alle knoop punten van NodeType01 geldig zijn, kunt u het knooppunt type ook selecteren met de `"(NodeType == NodeType01)"`beperking.
+Als alle knoop punten van NodeType01 geldig zijn, kunt u het knooppunt type ook selecteren met de beperking `"(NodeType == NodeType01)"` .
 
 De plaatsings beperkingen van een service kunnen dynamisch worden bijgewerkt tijdens runtime. Indien nodig kunt u een service in het cluster verplaatsen, vereisten toevoegen en verwijderen, enzovoort. Service Fabric zorgt ervoor dat de service actief blijft, zelfs wanneer deze typen wijzigingen worden aangebracht.
 

@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: bf09994e8ebae09771ce110f9284aa3e99fc1816
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122477"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267117"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Minimale TLS-versie configureren in Azure SQL Managed instance
 Met de instelling minimale versie van [Transport Layer Security (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) kunnen klanten de versie van TLS beheren die wordt gebruikt door hun Azure SQL Managed instance.
@@ -24,7 +24,7 @@ Momenteel ondersteunen we TLS 1,0, 1,1 en 1,2. Als u een minimale TLS-versie ins
 
 Voor klanten met toepassingen die afhankelijk zijn van oudere versies van TLS, wordt u aangeraden de minimale TLS-versie in te stellen volgens de vereisten van uw toepassingen. Voor klanten die afhankelijk zijn van toepassingen om verbinding te maken met behulp van een niet-versleutelde verbinding, wordt u aangeraden geen minimale TLS-versie in te stellen. 
 
-Zie [TLS-overwegingen voor SQL database connectiviteit](../database/connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity)voor meer informatie.
+Zie [TLS-overwegingen voor SQL database connectiviteit](../database/connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity)voor meer informatie.
 
 Nadat u de minimale versie van TLS hebt ingesteld, mislukken aanmeldings pogingen van clients die een TLS-versie gebruiken die lager is dan de minimale TLS-versie van de server, mislukt met de volgende fout:
 

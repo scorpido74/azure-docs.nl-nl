@@ -3,12 +3,12 @@ title: Geavanceerde onderwerpen over toepassings upgrades
 description: In dit artikel vindt u een aantal geavanceerde onderwerpen met betrekking tot het bijwerken van een Service Fabric-toepassing.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414490"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263088"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric toepassings upgrade: geavanceerde onderwerpen
 
@@ -20,18 +20,18 @@ Daarnaast kunnen service typen uit een toepassing worden verwijderd als onderdee
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Voor komen dat verbinding wordt verbroken tijdens stateless service geplande downtime
 
-Voor geplande downtime van stateless instanties, zoals het bijwerken van de toepassing/cluster of het deactiveren van een knoop punt, kunnen verbindingen verloren gaan als gevolg van het blootgestelde eind punt nadat het exemplaar is uitgeschakeld, wat resulteert in geforceerde verbinding sluitingen.
+Voor geplande downtime van stateless instanties, zoals het upgraden van toepassingen of clusters of het deactiveren van knoop punten, kunnen verbindingen worden verwijderd wanneer het weer gegeven eind punt wordt verwijderd nadat het exemplaar is uitgeschakeld, wat resulteert in geforceerde-verbinding.
 
-Om dit te voor komen, configureert u de *RequestDrain* -functie (preview-versie) door een *vertraagde tijds duur* voor het sluiten van een exemplaar toe te voegen in de service configuratie om de werk afvoer toe te staan tijdens het ontvangen van aanvragen van andere services in het cluster en met behulp van de API voor het bijwerken van eind punten. Dit zorgt ervoor dat het eind punt dat door het stateless exemplaar wordt geadverteerd, wordt verwijderd *voordat* de vertraging begint voordat het exemplaar wordt gesloten. Deze vertraging maakt het mogelijk om bestaande aanvragen op de juiste wijze af te zuigen voordat het exemplaar wordt uitgeschakeld. Clients wordt op de hoogte gesteld van de wijziging van het eind punt door een call back-functie op het moment dat de vertraging wordt gestart, zodat ze het eind punt opnieuw kunnen oplossen en voor komen dat nieuwe aanvragen naar het exemplaar worden verzonden.
+Om dit te voor komen, moet u de functie *RequestDrain* configureren door een *vertraagde tijds duur* voor het sluiten van een exemplaar toe te voegen in de service configuratie zodat bestaande aanvragen in het cluster kunnen worden geafvoer op de weer gegeven eind punten. Dit wordt bereikt omdat het eind punt dat door het stateless exemplaar wordt geadverteerd, wordt verwijderd *voordat* de vertraging begint voordat het exemplaar wordt gesloten. Deze vertraging maakt het mogelijk om bestaande aanvragen op de juiste wijze af te zuigen voordat het exemplaar wordt uitgeschakeld. Clients wordt op de hoogte gesteld van de wijziging van het eind punt door een call back-functie op het moment dat de vertraging wordt gestart, zodat ze het eind punt opnieuw kunnen oplossen en voor komen dat nieuwe aanvragen naar het exemplaar worden verzonden. Deze aanvragen kunnen afkomstig zijn van clients die gebruikmaken van een [reverse proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) of het gebruik van service-eindpunt resolutie-api's met het notification model ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) voor het bijwerken van de eind punten.
 
 ### <a name="service-configuration"></a>Serviceconfiguratie
 
 Er zijn verschillende manieren om de vertraging aan de kant van de service te configureren.
 
- * Geef **bij het maken van een nieuwe service**een `-InstanceCloseDelayDuration`:
+ * Geef **bij het maken van een nieuwe service**een `-InstanceCloseDelayDuration` :
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * Wijs **tijdens het definiëren van de service in het gedeelte standaard instellingen in het manifest van de toepassing**de `InstanceCloseDelayDurationSeconds` eigenschap toe:
@@ -42,10 +42,37 @@ Er zijn verschillende manieren om de vertraging aan de kant van de service te co
           </StatelessService>
     ```
 
- * **Wanneer u een bestaande service bijwerkt**, geeft u een `-InstanceCloseDelayDuration`:
+ * **Wanneer u een bestaande service bijwerkt**, geeft u een `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **Wanneer u een bestaande service via de arm-sjabloon maakt of bijwerkt**, geeft u de `InstanceCloseDelayDuration` waarde op (mini maal ondersteunde API-versie: 2019-11-01-preview):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>Clientconfiguratie
@@ -55,7 +82,7 @@ De wijzigings melding geeft aan dat de eind punten zijn gewijzigd. de client moe
 
 ### <a name="optional-upgrade-overrides"></a>Optionele upgrade onderdrukkingen
 
-Naast het instellen van de standaard vertragings duur per service, kunt u ook de vertraging negeren tijdens het upgraden van de toepassing/cluster`InstanceCloseDelayDurationSec`met behulp van dezelfde ()-optie:
+Naast het instellen van de standaard vertragings duur per service, kunt u ook de vertraging negeren tijdens het upgraden van de toepassing/cluster met behulp van dezelfde ( `InstanceCloseDelayDurationSec` )-optie:
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,15 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-De vertragings duur is alleen van toepassing op het aangeroepen upgrade-exemplaar en wijzigt de afzonderlijke service vertragings configuraties niet. U kunt dit bijvoorbeeld gebruiken om een vertraging van `0` op te geven om vooraf geconfigureerde upgrade vertragingen over te slaan.
+De genegeerde vertragings duur is alleen van toepassing op het aangeroepen upgrade-exemplaar en wijzigt de afzonderlijke service vertragings configuraties niet. U kunt dit bijvoorbeeld gebruiken om een vertraging van op te geven `0` om vooraf geconfigureerde upgrade vertragingen over te slaan.
 
 > [!NOTE]
-> De instelling voor afvoer aanvragen wordt niet gehonoreerd voor aanvragen van Azure Load Balancer. De instelling wordt niet gehonoreerd als de aanroepende service gebruikmaakt van een probleem oplossing.
+> * De instellingen voor afvoer aanvragen kunnen niet voor komen dat de Azure Load Balancer nieuwe aanvragen verzendt naar de eind punten die worden verwijderd.
+> * Een oplossings mechanisme op basis van een klacht leidt niet tot een probleemloze afvoer van aanvragen, omdat er na een storing een service oplossing wordt geactiveerd. Zoals eerder beschreven, moet dit in plaats daarvan worden uitgebreid om u te abonneren op de wijzigings meldingen voor eind punten met behulp van [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+> * De instellingen worden niet gehonoreerd wanneer de upgrade van invloed is op een Wanneer de replica's tijdens de upgrade niet worden uitgevoerd.
 >
 >
 
 > [!NOTE]
-> Deze functie kan worden geconfigureerd in bestaande services met de cmdlet Update-ServiceFabricService zoals hierboven wordt vermeld, wanneer de cluster code versie 7.1.XXX of hoger is.
+> Deze functie kan worden geconfigureerd in bestaande services met behulp van de cmdlet Update-ServiceFabricService of de ARM-sjabloon zoals hierboven wordt vermeld, wanneer de cluster code versie 7.1.XXX of hoger is.
 >
 >
 

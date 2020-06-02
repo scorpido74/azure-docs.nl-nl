@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2e3a08521e503a9f73bdccca3a125c7d2416b534
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 13cafdcd7ac4b7f46bd5f7c3b007372228234ba6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219662"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267797"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatische back-up versie 2 voor virtuele machines van Azure (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,13 +37,11 @@ Als u automatische back-up v2 wilt gebruiken, controleert u de volgende vereiste
 
 **Besturings systeem**:
 
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 R2 of hoger
 
 **SQL Server versie/editie**:
 
-- SQL Server 2016: Developer, Standard of ENTER prise
-- SQL Server 2017: Developer, Standard of ENTER prise
+- SQL Server 2016 of hoger: Developer, Standard of ENTER prise
 
 > [!IMPORTANT]
 > Automatische back-up v2 werkt met SQL Server 2016 of hoger. Als u SQL Server 2014 gebruikt, kunt u automatische back-up v1 gebruiken om een back-up van uw data bases te maken. Zie voor meer informatie [automatische back-up voor SQL Server 2014 Azure virtual machines (vm's)](automated-backup-sql-2014.md).

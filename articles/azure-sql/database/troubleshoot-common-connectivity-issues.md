@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188057"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266964"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Tijdelijke verbindings fouten in SQL Database en SQL Managed instance oplossen
 
@@ -357,7 +357,7 @@ In de naam ruimte **Microsoft. practices. EnterpriseLibrary. TransientFaultHandl
 Hier vindt u enkele koppelingen naar informatie over EntLib60:
 
 - Gratis boek downloaden: [ontwikkelaars handleiding voor micro soft Enter prise Library, 2e editie](https://www.microsoft.com/download/details.aspx?id=41145).
-- Best practices: [algemene richt lijnen voor opnieuw proberen](/architecture/best-practices/transient-faults) hebben een uitstekende uitgebreide beschrijving van de logica voor opnieuw proberen.
+- Best practices: [algemene richt lijnen voor opnieuw proberen](/azure/architecture/best-practices/transient-faults) hebben een uitstekende uitgebreide beschrijving van de logica voor opnieuw proberen.
 - NuGet downloaden: [Enter prise Library-Application Block 6,0 voor tijdelijke fout afhandeling](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

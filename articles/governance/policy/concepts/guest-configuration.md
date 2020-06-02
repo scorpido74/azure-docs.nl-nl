@@ -3,16 +3,16 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy de gast configuratie agent gebruikt om instellingen in virtuele machines te controleren.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684294"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259147"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>De gast configuratie van Azure Policy begrijpen
 
-Om Azure-resources te controleren en te [herstellen](../how-to/remediate-resources.md) , kunnen Azure Policy instellingen in een machine controleren. De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
+Azure Policy kunt instellingen in een computer controleren. De validatie wordt uitgevoerd door de extensie en client voor gastconfiguratie. De extensie valideert, via de client, instellingen zoals:
 
 - De configuratie van het besturings systeem
 - Configuratie of aanwezigheid van toepassingen
@@ -46,8 +46,8 @@ De volgende tabel bevat een lijst met de lokale hulpprogram ma's die op elk onde
 
 |Besturingssysteem|Validatie programma|Opmerkingen|
 |-|-|-|
-|Windows|[Windows Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Als Ruby en python zich niet op de computer bevinden, worden ze geïnstalleerd door de extensie gast configuratie. |
+|Windows|[Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| Een kant geladen naar een map die alleen door Azure Policy wordt gebruikt. Er is geen conflict met Windows Power shell DSC. Power shell Core is niet toegevoegd aan het systeempad.|
+|Linux|[Chef-specificatie](https://www.chef.io/inspec/)| Installeert chef Inspec-versie 2.2.61 op de standaard locatie en wordt toegevoegd aan het systeempad. Dependenices voor het INSPEC-pakket, inclusief ruby en Python, worden ook geïnstalleerd. |
 
 ### <a name="validation-frequency"></a>Validatie frequentie
 
@@ -87,7 +87,7 @@ De **DeployIfNotExists** -beleids regels die de uitbrei ding toevoegen aan virtu
 
 ## <a name="guest-configuration-definition-requirements"></a>Vereisten voor gast configuratie definitie
 
-Voor elke controle die wordt uitgevoerd per gast configuratie zijn twee beleids definities, een **DeployIfNotExists** -definitie en een **AuditIfNotExists** -definitie vereist.
+Voor elke controle die wordt uitgevoerd per gast configuratie zijn twee beleids definities, een **DeployIfNotExists** -definitie en een **AuditIfNotExists** -definitie vereist. De **DeployIfNotExists** -beleids definities beheren afhankelijkheden voor het uitvoeren van controles op elke machine.
 
 De **DeployIfNotExists** -beleids definitie valideert en corrigeert de volgende items:
 

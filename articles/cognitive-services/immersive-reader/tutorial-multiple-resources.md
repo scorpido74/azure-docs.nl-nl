@@ -9,16 +9,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195618"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267202"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Zelf studie: meerdere bronnen voor insluitende lezer integreren
 
-In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In de [Snelstartgids voor node. js](./quickstart-nodejs.md)hebt u geleerd hoe u insluitende lezer met één resource kunt gebruiken. In deze zelf studie wordt uitgelegd hoe u meerdere insluitende lezers bronnen in dezelfde toepassing kunt integreren. In deze zelfstudie leert u het volgende:
+In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In de [Snelstartgids voor node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)hebt u geleerd hoe u insluitende lezer met één resource kunt gebruiken. In deze zelf studie wordt uitgelegd hoe u meerdere insluitende lezers bronnen in dezelfde toepassing kunt integreren. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Meerdere resources van de insluitende lezer maken onder een bestaande resource groep
@@ -28,13 +28,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volg de [Quick](./quickstart-nodejs.md) start om een web-app te maken waarmee de insluitende lezer met NodeJS wordt gestart. In die Snelstartgids configureert u één insluitende lezer-resource. In deze zelf studie gaan we hier op bouwen.
+* Volg de [Quick](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) start om een web-app te maken waarmee de insluitende lezer met NodeJS wordt gestart. In die Snelstartgids configureert u één insluitende lezer-resource. In deze zelf studie gaan we hier op bouwen.
 
 ## <a name="create-the-immersive-reader-resources"></a>De resources voor insluitende lezer maken
 
-Volg [deze instructies](./how-to-create-immersive-reader.md) voor het maken van elke insluitende lezer-resource. Het script **Create-ImmersiveReaderResource** heeft `ResourceName`, `ResourceSubdomain`en `ResourceLocation` als para meters. Deze moeten uniek zijn voor elke resource die wordt gemaakt. De overige para meters moeten hetzelfde zijn als de waarde die u hebt gebruikt bij het instellen van uw eerste insluitende lezer-resource. Op deze manier kan elke resource worden gekoppeld aan dezelfde Azure-resource groep en Azure AD-toepassing.
+Volg [deze instructies](./how-to-create-immersive-reader.md) voor het maken van elke insluitende lezer-resource. Het script **Create-ImmersiveReaderResource** heeft `ResourceName` , `ResourceSubdomain` en `ResourceLocation` als para meters. Deze moeten uniek zijn voor elke resource die wordt gemaakt. De overige para meters moeten hetzelfde zijn als de waarde die u hebt gebruikt bij het instellen van uw eerste insluitende lezer-resource. Op deze manier kan elke resource worden gekoppeld aan dezelfde Azure-resource groep en Azure AD-toepassing.
 
-In het onderstaande voor beeld ziet u hoe u twee resources maakt, een in Westus en een andere in Oost-Timor. Let op de unieke waarden `ResourceName`voor `ResourceSubdomain`, en `ResourceLocation`.
+In het onderstaande voor beeld ziet u hoe u twee resources maakt, een in Westus en een andere in Oost-Timor. Let op de unieke waarden voor `ResourceName` , `ResourceSubdomain` en `ResourceLocation` .
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -64,7 +64,7 @@ Create-ImmersiveReaderResource
 
 ## <a name="add-resources-to-environment-configuration"></a>Resources toevoegen aan de omgevings configuratie
 
-In de Quick Start hebt u een omgevings configuratie bestand gemaakt dat `TenantId`de `ClientId`para `ClientSecret`meters `Subdomain` ,, en bevat. Omdat al uw resources dezelfde Azure AD-toepassing gebruiken, kunnen we dezelfde waarden gebruiken voor de `TenantId`, `ClientId`en. `ClientSecret` De enige wijziging die moet worden aangebracht, is om een lijst te maken van elk subdomein voor elke resource.
+In de Quick Start hebt u een omgevings configuratie bestand gemaakt dat `TenantId` de `ClientId` `ClientSecret` para meters,, en bevat `Subdomain` . Omdat al uw resources dezelfde Azure AD-toepassing gebruiken, kunnen we dezelfde waarden gebruiken voor de `TenantId` , `ClientId` en `ClientSecret` . De enige wijziging die moet worden aangebracht, is om een lijst te maken van elk subdomein voor elke resource.
 
 Het nieuwe __. env__ -bestand ziet er nu ongeveer als volgt uit:
 
@@ -258,7 +258,7 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
     npm start
     ```
 
-4. Open uw browser en ga naar `http://localhost:3000`. De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop **Oost-US insluitende lezer** of de knop **Westus insluitende lezer** om de insluitende lezer te starten met behulp van die respectieve bronnen.
+4. Open uw browser en ga naar `http://localhost:3000` . De bovenstaande inhoud wordt weer geven op de pagina. Klik op de knop **Oost-US insluitende lezer** of de knop **Westus insluitende lezer** om de insluitende lezer te starten met behulp van die respectieve bronnen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

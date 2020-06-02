@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420834"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249141"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -32,7 +32,7 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 
 **Server** | **Vereisten** | **Nadere**
 --- | --- | ---
-Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (inclusief Server Core-installatie), Windows Server 2012 R2 met de nieuwste updates | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. 
+Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (inclusief Server Core-installatie), Windows Server 2012 R2 met de nieuwste updates | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. <br/><br/> Opmerking: failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
 Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/> Opmerking: failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
 
 
@@ -51,8 +51,8 @@ Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor A
 
 **Actie** | **Nadere**
 --- | ---
-Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
-Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Wordt niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
+Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
 
 ## <a name="hyper-v-network-configuration"></a>Configuratie van Hyper-V-netwerk
 
@@ -64,7 +64,7 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | Nee | Ja
+VM-netwerk van de gast: IPv6 | No | Yes
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
@@ -92,7 +92,7 @@ Versneld netwerken | Nee | Nee
 
 **Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | --- 
-NFS | N.v.t. | N.v.t.
+NFS | NA | NA
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
 Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM voor CLARiiON | Ja | Ja
@@ -101,15 +101,15 @@ Meerdere paden (MPIO). Getest met:<br></br> Micro soft DSM, EMC PowerPath 5,7 SP
 
 **Storage** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
-VMDK | N.v.t. | N.v.t.
+VMDK | NA | NA
 VHD/VHDX | Ja | Ja
 Generatie 2 VM | Ja | Ja
 EFI/UEFI<br></br>De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM. Op de VM moet Windows Server 2012 en hoger worden uitgevoerd. De besturingssysteem schijf moet Maxi maal vijf partities of minder hebben en de grootte van de besturingssysteem schijf moet kleiner zijn dan 300 GB.| Ja | Ja
 Gedeelde cluster schijf | Nee | Nee
 Versleutelde schijf | Nee | Nee
-NFS | N.v.t. | N.v.t.
+NFS | NA | NA
 SMB 3.0 | Nee | Nee
-RDM | N.v.t. | N.v.t.
+RDM | NA | NA
 Schijf >1 TB | Ja, Maxi maal 4.095 GB | Ja, Maxi maal 4.095 GB
 Schijf: logische en fysieke sector van 4 KB | Niet ondersteund: gen 1/gen 2 | Niet ondersteund: gen 1/gen 2
 Schijf: 4 KB logische en 512-bytes fysieke sector | Ja |  Ja
@@ -135,7 +135,7 @@ Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijv
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies

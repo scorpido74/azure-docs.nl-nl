@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 99549be75e812668c07d9d71062d9d0f8c7b58ec
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217530"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266641"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -87,15 +87,15 @@ Als uw ExpressRoute-circuit is ingeschakeld voor Azure micro soft-peering, kunt 
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI-beschikbaar via een regionale community van Azure, Zie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) voor meer informatie over de regio van uw Power bi Tenant.
 * Azure Active Directory
-* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure-DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services Community)
-* Open bare IP-adressen van Azure voor IaaS (Virtual Machines, Virtual Network gateways, load balancers, enzovoort)  
+* Open bare IP-adressen van Azure voor IaaS (Virtual Machines, Virtual Network gateways, load balancers, enz.)  
 * De meeste andere Azure-Services worden ook ondersteund. Neem rechtstreeks contact op met de service die u wilt gebruiken om de ondersteuning te controleren.
 
 **Niet ondersteund:**
 
 * CDN
 * Azure Front Door
+* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-factor Authentication-Server (verouderd)
 * Traffic Manager
 

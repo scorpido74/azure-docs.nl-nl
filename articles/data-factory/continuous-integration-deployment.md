@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022398"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268044"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -570,7 +570,7 @@ Vergeet niet om de Data Factory scripts in uw CI/CD-pijp lijn vóór en na de im
 
 Als u geen git hebt geconfigureerd, kunt u de gekoppelde sjablonen openen via **arm-sjabloon exporteren** in de lijst met **arm** -sjablonen.
 
-## <a name="hotfix-production-branch"></a>Productie vertakking hotfix
+## <a name="hotfix-production-environment"></a>Hotfix-productie omgeving
 
 Als u een Factory implementeert voor productie en beseft dat er een fout is die direct moet worden opgelost, maar u niet de huidige collaboration Branch kunt implementeren, moet u mogelijk een hotfix implementeren. Deze aanpak is net zo bekend als snelle herstel techniek of QFE.
 
@@ -611,7 +611,7 @@ Als u gebruik wilt maken van Git-integratie met uw data factory en een CI/CD-pij
 - Data Factory is standaard niet toegestaan Cherry-orderverzamelen van door voeringen of selectief publiceren van resources. De publicatie bevat alle wijzigingen die zijn aangebracht in de data factory.
 
     - Data Factory-entiteiten zijn afhankelijk van elkaar. Triggers zijn bijvoorbeeld afhankelijk van pijp lijnen, en pijp lijnen zijn afhankelijk van gegevens sets en andere pijp lijnen. Selectief publiceren van een subset van bronnen kan leiden tot onverwacht gedrag en fouten.
-    - In zeldzame gevallen wanneer u selectief publiceren nodig hebt, kunt u overwegen om een hotfix te gebruiken. Zie [hotfix Production Branch](#hotfix-production-branch)(Engelstalig) voor meer informatie.
+    - In zeldzame gevallen wanneer u selectief publiceren nodig hebt, kunt u overwegen om een hotfix te gebruiken. Zie [hotfix production environment](#hotfix-production-environment)(Engelstalig) voor meer informatie.
 
 -   U kunt niet publiceren vanuit privé-filialen.
 

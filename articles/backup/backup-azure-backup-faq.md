@@ -3,12 +3,12 @@ title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4ec2f9101f724d0c5c6c5e52bb69fea82513efe5
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 04921cd617a688ebcf31bcec29cf26681914f44b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118022"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247662"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - veelgestelde vragen
 
@@ -75,7 +75,7 @@ Ja.
 
 Azure Backup biedt ondersteuning voor deze besturingssystemen voor het maken van back-ups van bestanden en mappen, en apps die worden beveiligd met Azure Backup Server en SCDPM.
 
-**Besturingssysteem** | **SKU** | **Details**
+**Besturingssysteem** | **SKU** | **Nadere**
 --- | --- | ---
 Werkstation | |
 Windows 10 64-bits | Enterprise, Pro, Home | Op machines moeten de nieuwste servicepacks en updates worden uitgevoerd.
@@ -113,7 +113,7 @@ Azure VM | Zie de [ondersteunings matrix voor Azure VM backup](https://docs.micr
 
 In de volgende tabel wordt uitgelegd hoe de grootte voor elke gegevensbron wordt bepaald.
 
-**Gegevensbron** | **Details**
+**Gegevensbron** | **Nadere**
 --- | ---
 Volume |De hoeveelheid gegevens van één volume-VM waarvan een back-up wordt gemaakt.
 SQL Server-database |Grootte van één SQL-database waarvan een back-up wordt gemaakt.
@@ -190,7 +190,7 @@ Nee. Herstellen is gratis en er worden geen kosten in rekening gebracht voor het
 
 Wanneer een nieuw beleid wordt toegepast, worden het schema en de retentie van het nieuwe beleid gevolgd.
 
-- Als de retentie is uitgebreid, worden de bestaande herstelpunten gemarkeerd voor bewaring conform het nieuwe beleid.
+- Als de retentie is uitgebreid, worden de bestaande herstel punten gemarkeerd om ze te bewaren volgens het nieuwe beleid.
 - Als de retentie is beperkt, worden de bestaande herstelpunten gemarkeerd voor verwijdering in de eerstvolgende opschoontaak, en worden ze vervolgens verwijderd.
 
 ## <a name="encryption"></a>Versleuteling

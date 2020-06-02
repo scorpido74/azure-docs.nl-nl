@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686755"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267975"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-hand leiding voor voorspellende onderhouds oplossingen
 
@@ -231,7 +231,7 @@ Technische specificaties van de apparatuur, zoals de datum van productie, model 
 
 De gegevens voorbereidings inspanningen die tot nu toe worden besproken, moeten leiden tot de gegevens die worden georganiseerd, zoals hieronder wordt weer gegeven. Trainings-, test-en validatie gegevens moeten dit logische schema hebben (in dit voor beeld wordt de tijd in eenheden van dagen weer gegeven).
 
-| Activa-ID | Time | \<Functie kolommen> | Label |
+| Activa-ID | Tijd | \<Feature Columns> | Label |
 | ---- | ---- | --- | --- |
 | A123 |Dag 1 | . . . | . |
 | A123 |Dag 2 | . . . | . |
@@ -427,12 +427,11 @@ In het laatste gedeelte van deze hand leiding vindt u een lijst met oplossingen 
 |--:|:------|-------------|
 | 2 | [Oplossings sjabloon Azure predictief onderhoud](https://github.com/Azure/AI-PredictiveMaintenance) | Een open-source oplossings sjabloon waarmee Azure ML-modellering en een volledige Azure-infra structuur kunnen worden ondersteund die ondersteuning bieden voor voorspellende onderhouds scenario's in de context van IoT externe controle. |
 | 3 | [Deep Learning voor predictief onderhoud](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook met een demo oplossing voor het gebruik van LSTM (Long Short-Term Memory) netwerken (een klasse van huidige Neural-netwerken) voor predictief onderhoud, met een [blog bericht over dit voor beeld](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
-| 4 | [Model gids voor voor speld onderhoud in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | PdM-modelleer gids met scripts in R.|
-| 5 | [Azure predictief onderhoud voor B.v.](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Een van de eerste PdM-oplossings sjablonen op basis van Azure ML v 1.0 voor het onderhoud van vlieg tuigen. Deze hand leiding is afkomstig uit dit project. |
-| 6 | [Azure AI-werkset voor IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI in het IoT Edge met behulp van tensor flow; Toolkit verpakt uitgebreide leer modellen in Azure IoT Edge-compatibele docker-containers en maakt deze modellen beschikbaar als REST Api's.
-| 7 | [Azure IoT-voor speld onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PC'S-vooraf geconfigureerde oplossing. PdM-sjabloon voor vliegtuig onderhoud met IoT Suite. [Een ander document en een](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) [scenario](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) met betrekking tot hetzelfde project. |
-| 8 | [Voorspellende onderhouds sjabloon met SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Demo van een resterend bruikbaar leven-scenario op basis van R Services. |
-| 9 | [Model gids voor voor speld onderhoud](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Functie voor het bijhouden van vlieg tuigen die zijn ontworpen met R met [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) en [gegevens sets](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) en [Azure notebook](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) en [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) in AzureML v 1.0|
+| 4 | [Azure predictief onderhoud voor B.v.](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Een van de eerste PdM-oplossings sjablonen op basis van Azure ML v 1.0 voor het onderhoud van vlieg tuigen. Deze hand leiding is afkomstig uit dit project. |
+| 5 | [Azure AI-werkset voor IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI in het IoT Edge met behulp van tensor flow; Toolkit verpakt uitgebreide leer modellen in Azure IoT Edge-compatibele docker-containers en maakt deze modellen beschikbaar als REST Api's.
+| 6 | [Azure IoT-voor speld onderhoud](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite PC'S-vooraf geconfigureerde oplossing. PdM-sjabloon voor vliegtuig onderhoud met IoT Suite. [Een ander document en een](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) [scenario](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) met betrekking tot hetzelfde project. |
+| 7 | [Voorspellende onderhouds sjabloon met SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Demo van een resterend bruikbaar leven-scenario op basis van R Services. |
+| 8 | [Model gids voor voor speld onderhoud](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Functie voor het bijhouden van vlieg tuigen die zijn ontworpen met R met [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) en [gegevens sets](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) en Azure notebook en [experimenten](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) in AzureML v 1.0|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Trainings bronnen voor predictief onderhoud
 

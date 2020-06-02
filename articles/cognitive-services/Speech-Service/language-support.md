@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 423d65cc77cb06a6084ad9ad56f3d7274e057ffb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 437dc18dc16e879e95ff4ec7c1a9ab7ec3f17bef
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746513"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265995"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -41,48 +41,48 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | Landinstelling  | Taal                          | Ondersteund | Aanpassingen                                    |
 |---------|-----------------------------------|-----------|---------------------------------------------------|
 | `ar-AE` | Arabisch (VAE)                      | Ja       | Nee                                                |
-| `ar-BH` | Arabisch (Bahrein), modern, standaard | Ja       | Taalmodel                                    |
-| `ar-EG` | Arabisch (Egypte)                    | Ja       | Taalmodel                                    |
+| `ar-BH` | Arabisch (Bahrein), modern, standaard | Yes       | Taalmodel                                    |
+| `ar-EG` | Arabisch (Egypte)                    | Yes       | Taalmodel                                    |
 | `ar-IL` | Arabisch (Israël)                   | Ja       | Nee                                                |
 | `ar-KW` | Arabisch (Koeweit)                   | Ja       | Nee                                                |
 | `ar-PS` | Arabisch (Palestijnse)                | Ja       | Nee                                                |
 | `ar-QA` | Arabisch (Qatar)                    | Ja       | Nee                                                |
 | `ar-SA` | Arabisch (Saoedi-Arabië)             | Ja       | Nee                                                |
-| `ar-SY` | Arabisch (Syrië)                    | Ja       | Taalmodel                                    |
-| `ca-ES` | Catalaans                           | Ja       | Taalmodel                                    |
-| `da-DK` | Deens (Denemarken)                  | Ja       | Taalmodel                                    |
-| `de-DE` | Duits (Duitsland)                  | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `en-AU` | Engels (Australië)               | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-CA` | Engels (Canada)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-GB` | Engels (Verenigd Koninkrijk)          | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `en-IN` | Engels (India)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-NZ` | Engels (Nieuw-Zeeland)             | Ja       | Akoestisch model<br>Taalmodel                  |
-| `en-US` | Engels (Verenigde Staten)           | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `es-ES` | Spaans (Spanje)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `es-MX` | Spaans (Mexico)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `fi-FI` | Fins (Finland)                 | Ja       | Taalmodel                                    |
-| `fr-CA` | Frans (Canada)                   | Ja       | Akoestisch model<br>Taalmodel                  |
-| `fr-FR` | Frans (Frankrijk)                   | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `gu-IN` | Gujarati (Indiase)                 | Ja       | Taalmodel                                    |
-| `hi-IN` | Hindi (India)                     | Ja       | Akoestisch model<br>Taalmodel                  |
-| `it-IT` | Italiaans (Italië)                   | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `ja-JP` | Japans (Japan)                  | Ja       | Taalmodel                                    |
-| `ko-KR` | Koreaans (Korea)                    | Ja       | Taalmodel                                    |
-| `mr-IN` | Marathi (India)                   | Ja       | Taalmodel                                    |
-| `nb-NO` | Noors (Bokmål) (Noor wegen)       | Ja       | Taalmodel                                    |
-| `nl-NL` | Nederlands (Nederland)               | Ja       | Taalmodel                                    |
-| `pl-PL` | Pools (Polen)                   | Ja       | Taalmodel                                    |
-| `pt-BR` | Portugees (Brazilië)               | Ja       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
-| `pt-PT` | Portugees (Portugal)             | Ja       | Taalmodel                                    |
-| `ru-RU` | Russisch (Rusland)                  | Ja       | Akoestisch model<br>Taalmodel                  |
-| `sv-SE` | Zweeds (Zweden)                  | Ja       | Taalmodel                                    |
-| `ta-IN` | Tamil (India)                     | Ja       | Taalmodel                                    |
+| `ar-SY` | Arabisch (Syrië)                    | Yes       | Taalmodel                                    |
+| `ca-ES` | Catalaans                           | Yes       | Taalmodel                                    |
+| `da-DK` | Deens (Denemarken)                  | Yes       | Taalmodel                                    |
+| `de-DE` | Duits (Duitsland)                  | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `en-AU` | Engels (Australië)               | Yes       | Akoestisch model<br>Taalmodel                  |
+| `en-CA` | Engels (Canada)                  | Yes       | Akoestisch model<br>Taalmodel                  |
+| `en-GB` | Engels (Verenigd Koninkrijk)          | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `en-IN` | Engels (India)                   | Yes       | Akoestisch model<br>Taalmodel                  |
+| `en-NZ` | Engels (Nieuw-Zeeland)             | Yes       | Akoestisch model<br>Taalmodel                  |
+| `en-US` | Engels (Verenigde Staten)           | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `es-ES` | Spaans (Spanje)                   | Yes       | Akoestisch model<br>Taalmodel                  |
+| `es-MX` | Spaans (Mexico)                  | Yes       | Akoestisch model<br>Taalmodel                  |
+| `fi-FI` | Fins (Finland)                 | Yes       | Taalmodel                                    |
+| `fr-CA` | Frans (Canada)                   | Yes       | Akoestisch model<br>Taalmodel                  |
+| `fr-FR` | Frans (Frankrijk)                   | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `gu-IN` | Gujarati (Indiase)                 | Yes       | Taalmodel                                    |
+| `hi-IN` | Hindi (India)                     | Yes       | Akoestisch model<br>Taalmodel                  |
+| `it-IT` | Italiaans (Italië)                   | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `ja-JP` | Japans (Japan)                  | Yes       | Taalmodel                                    |
+| `ko-KR` | Koreaans (Korea)                    | Yes       | Taalmodel                                    |
+| `mr-IN` | Marathi (India)                   | Yes       | Taalmodel                                    |
+| `nb-NO` | Noors (Bokmål) (Noor wegen)       | Yes       | Taalmodel                                    |
+| `nl-NL` | Nederlands (Nederland)               | Yes       | Taalmodel                                    |
+| `pl-PL` | Pools (Polen)                   | Yes       | Taalmodel                                    |
+| `pt-BR` | Portugees (Brazilië)               | Yes       | Akoestisch model<br>Taalmodel<br>Uitspraak van |
+| `pt-PT` | Portugees (Portugal)             | Yes       | Taalmodel                                    |
+| `ru-RU` | Russisch (Rusland)                  | Yes       | Akoestisch model<br>Taalmodel                  |
+| `sv-SE` | Zweeds (Zweden)                  | Yes       | Taalmodel                                    |
+| `ta-IN` | Tamil (India)                     | Yes       | Taalmodel                                    |
 | `te-IN` | Telugu (India)                    | Ja       | Nee                                                |
 | `th-TH` | Thai (Thailand)                   | Ja       | Nee                                                |
-| `tr-TR` | Turks (Turkije)                  | Ja       | Taalmodel                                    |
-| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Ja       | Akoestisch model<br>Taalmodel                  |
-| `zh-HK` | Chinees (Kantonees, traditioneel)  | Ja       | Taalmodel                                    |
-| `zh-TW` | Chinees (Taiwan Mandarijn)      | Ja       | Taalmodel                                    |
+| `tr-TR` | Turks (Turkije)                  | Yes       | Taalmodel                                    |
+| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)    | Yes       | Akoestisch model<br>Taalmodel                  |
+| `zh-HK` | Chinees (Kantonees, traditioneel)  | Yes       | Taalmodel                                    |
+| `zh-TW` | Chinees (Taiwan Mandarijn)      | Yes       | Taalmodel                                    |
 
 ## <a name="text-to-speech"></a>Tekst naar spraak
 
@@ -101,27 +101,27 @@ Zie [regio's](regions.md#standard-and-neural-voices)voor meer informatie over re
 
 |Landinstelling  | Taal            | Geslacht | Spraak naam | Stijl ondersteuning |
 |--|--|--|--|--|
-| `de-DE` | Duits (Duitsland)                | Vrouw | "de-DE-KatjaNeural"      | Algemeen |
-| `en-AU` | Engels (Australië)             | Vrouw | "en-AU-NatashaNeural"    | Algemeen |
-| `en-CA` | Engels (Canada)                | Vrouw | "en-CA-ClaraNeural"      | Algemeen |
-| `en-GB` | Engels (UK)                    | Vrouw | "en-GB-LibbyNeural"      | Algemeen |
-|         |                                 | Vrouw | "en-GB-MiaNeural"        | Algemeen |
-| `en-US` | Engels (VS)                    | Vrouw | "en-US-AriaNeural"       | Algemeen, meerdere spraak stijlen beschikbaar |
-|         |                                 | Man   | "en-US-GuyNeural"        | Algemeen |
-| `es-ES` | Spaans (Spanje)                 | Vrouw | "es-ES-ElviraNeural"     | Algemeen |
-| `es-MX` | Spaans (Mexico)                | Vrouw | "es-MX-DaliaNeural"      | Algemeen |
-| `fr-CA` | Frans (Canada)                 | Vrouw | "FR-CA-SylvieNeural"     | Algemeen |
-| `fr-FR` | Frans (Frankrijk)                 | Vrouw | "fr-FR-DeniseNeural"     | Algemeen |
-| `it-IT` | Italiaans (Italië)                 | Vrouw | ' it-IT-ElsaNeural '       | Algemeen |
-| `ja-JP` | Japans                        | Vrouw | "ja-JP-NanamiNeural"     | Algemeen |
-| `ko-KR` | Koreaans                          | Vrouw | "ko-KR-SunHiNeural"      | Algemeen |
-| `nb-NO` | Noors                       | Vrouw | "nb-NO-IselinNeural"     | Algemeen |
-| `pt-BR` | Portugees (Brazilië)             | Vrouw | "pt-BR-FranciscaNeural"  | Algemeen |
-| `tr-TR` | Turks                         | Vrouw | "tr-TR-EmelNeural"       | Algemeen |
-| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)  | Vrouw | "zh-CN-XiaoxiaoNeural"   | Algemeen, meerdere spraak stijlen beschikbaar |
-|         |                                 | Vrouw | "zh-CN-XiaoyouNeural"    | Kid Voice, geoptimaliseerd voor het opnemen van tekst in een verhaal |
-|         |                                 | Man   | "zh-CN-YunyangNeural"    | Geoptimaliseerd voor nieuws lezen, meerdere spraak stijlen beschikbaar |
-|         |                                 | Man   | "zh-CN-YunyeNeural"      | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
+| `de-DE` | Duits (Duitsland)                | `Female` | "de-DE-KatjaNeural"      | Algemeen |
+| `en-AU` | Engels (Australië)             | `Female` | "en-AU-NatashaNeural"    | Algemeen |
+| `en-CA` | Engels (Canada)                | `Female` | "en-CA-ClaraNeural"      | Algemeen |
+| `en-GB` | Engels (UK)                    | `Female` | "en-GB-LibbyNeural"      | Algemeen |
+|         |                                 | `Female` | "en-GB-MiaNeural"        | Algemeen |
+| `en-US` | Engels (VS)                    | `Female` | "en-US-AriaNeural"       | Algemeen, meerdere spraak stijlen beschikbaar |
+|         |                                 | `Male`   | "en-US-GuyNeural"        | Algemeen |
+| `es-ES` | Spaans (Spanje)                 | `Female` | "es-ES-ElviraNeural"     | Algemeen |
+| `es-MX` | Spaans (Mexico)                | `Female` | "es-MX-DaliaNeural"      | Algemeen |
+| `fr-CA` | Frans (Canada)                 | `Female` | "FR-CA-SylvieNeural"     | Algemeen |
+| `fr-FR` | Frans (Frankrijk)                 | `Female` | "fr-FR-DeniseNeural"     | Algemeen |
+| `it-IT` | Italiaans (Italië)                 | `Female` | ' it-IT-ElsaNeural '       | Algemeen |
+| `ja-JP` | Japans                        | `Female` | "ja-JP-NanamiNeural"     | Algemeen |
+| `ko-KR` | Koreaans                          | `Female` | "ko-KR-SunHiNeural"      | Algemeen |
+| `nb-NO` | Noors                       | `Female` | "nb-NO-IselinNeural"     | Algemeen |
+| `pt-BR` | Portugees (Brazilië)             | `Female` | "pt-BR-FranciscaNeural"  | Algemeen |
+| `tr-TR` | Turks                         | `Female` | "tr-TR-EmelNeural"       | Algemeen |
+| `zh-CN` | Chinees (Mandarijn, vereenvoudigd)  | `Female` | "zh-CN-XiaoxiaoNeural"   | Algemeen, meerdere spraak stijlen beschikbaar |
+|         |                                 | `Female` | "zh-CN-XiaoyouNeural"    | Kid Voice, geoptimaliseerd voor het opnemen van tekst in een verhaal |
+|         |                                 | `Male`   | "zh-CN-YunyangNeural"    | Geoptimaliseerd voor nieuws lezen, meerdere spraak stijlen beschikbaar |
+|         |                                 | `Male`   | "zh-CN-YunyeNeural"      | Geoptimaliseerd voor het opnemen van tekst in een verhaal |
 
 > [!IMPORTANT]
 > De `en-US-JessaNeural` stem is gewijzigd in `en-US-AriaNeural` . Als u ' Jessa ' eerder gebruikt, converteer dan naar ' Aria '.
@@ -137,86 +137,86 @@ Meer dan 75 standaard stemmen zijn beschikbaar in meer dan 45 talen en land inst
 
 | Landinstelling | Taal | Geslacht | Spraak naam |
 |--|--|--|--|
-| <sup>i</sup>`ar-EG` | Arabisch (Egypte) | Vrouw | "ar-EG-Hoda" |
-| `ar-SA` | Arabisch (Saoedi-Arabië) | Man | "AR-SA-Naayf" |
-| `bg-BG` | Bulgaars | Man |  "bg-BG-Ivan" |
-| `ca-ES` | Catalaans | Vrouw |  "ca-ES-HerenaRUS" |
-| `cs-CZ` | Tsjechisch | Man | "CS-CZ-Jakub" |
-| `da-DK` | Deens | Vrouw |  "da-DK-HelleRUS" |
-| `de-AT` | Duits (Oostenrijk) | Man | "de-Michael" |
-| `de-CH` | Duits (Zwitserland) | Man |  "de-CH-Karsten" |
-| `de-DE` | Duits (Duitsland) | Vrouw |  "de-DE-Hedda" |
-|  |  | Vrouw | "de-DE-HeddaRUS" |
-|  |  | Man |  "de-DE-Stefan-Apollo" |
-| `el-GR` | Grieks | Man | "El-GR-Stefanos" |
-| `en-AU` | Engels (Australië) | Vrouw |  "en-AU-Catherine" |
-|  |  | Vrouw |  "en-AU-HayleyRUS" |
-| `en-CA` | Engels (Canada) | Vrouw |  "en-CA-Linda" |
-|  |  | Vrouw |  "en-CA-HeatherRUS" |
-| `en-GB` | Engels (UK) | Vrouw |  "en-GB-Susan-Apollo" |
-|  |  | Vrouw |  "en-GB-HazelRUS" |
-|  |  | Man |  "en-GB-George-Apollo" |
-| `en-IE` | Engels (Ierland) | Man | "en-IE-Johan" |
-| `en-IN` | Engels (India) | Vrouw | "en-IN-heera-Apollo" |
-|  |  | Vrouw |  "en-IN-PriyaRUS" |
-|  |  | Man |  "en-IN-Ravi-Apollo" |
-| `en-US` | Engels (VS) | Vrouw |  "en-US-ZiraRUS" |
-|  |  | Vrouw | "en-US-AriaRUS" |
-|  |  | Man | "en-US-BenjaminRUS" |
-|  |  | Man |  "en-US-Guy24kRUS" |
-| `es-ES` | Spaans (Spanje) | Vrouw |  "es-ES-Laura-Apollo" |
-|  |  | Vrouw | "es-ES-HelenaRUS" |
-|  |  | Man | "es-ES-Pablo-Apollo" |
-| `es-MX` | Spaans (Mexico) | Vrouw |  "es-MX-HildaRUS" |
-|  |  | Man | "es-MX-Raul-Apollo" |
-| `fi-FI` | Fins | Vrouw | "fi-FI-HeidiRUS" |
-| `fr-CA` | Frans (Canada) | Vrouw | "FR-CA-Caroline" |
-|  |  | Vrouw | "FR-CA-HarmonieRUS" |
-| `fr-CH` | Frans (Zwitserland) | Man | "FR-CH-Guillaume" |
-| `fr-FR` | Frans (Frankrijk) | Vrouw |  "fr-FR-Pascaline-Apollo" |
-|  |  | Vrouw |"fr-FR-HortenseRUS" |
-|  |  | Man |  "fr-FR-Paul-Apollo" |
-| `he-IL` | Hebreeuws (Israël) | Man |  "he IL-Asaf" |
-| `hi-IN` | Hindi (India) | Vrouw | "Hi-IN-Kalpana-Apollo" |
-|  |  | Vrouw |  "Hi-IN-Kalpana" |
-|  |  | Man |  "Hi-IN-Hemant" |
-| `hr-HR` | Kroatisch | Man | "HR-HR-Matej" |
-| `hu-HU` | Hongaars | Man |  "hu-HU-Szabolcs" |
-| `id-ID` | Indonesisch | Man | "id-ID-andika" |
-| `it-IT` | Italiaans | Man |  "it-IT-Cosimo-Apollo" |
-|  |  | Vrouw |  ' it-IT-LuciaRUS ' |
-| `ja-JP` | Japans | Vrouw |  "ja-JP-Ayumi-Apollo" |
-|  |  | Man | "ja-JP-Ichiro-Apollo" |
-|  |  | Vrouw |  "ja-JP-HarukaRUS" |
-| `ko-KR` | Koreaans | Vrouw | "ko-KR-HeamiRUS" |
-| `ms-MY` | Maleisisch | Man |  ' MS-MY-Rizwan ' |
-| `nb-NO` | Noors | Vrouw |  "nb-NO-HuldaRUS" |
-| `nl-NL` | Nederlands | Vrouw |  "nl-NL-HannaRUS" |
-| `pl-PL` | Pools | Vrouw |  "pl-PL-PaulinaRUS" |
-| `pt-BR` | Portugees (Brazilië) | Vrouw | "pt-BR-HeloisaRUS" |
-|  |  | Man |  "pt-BR-Apollo" |
-| `pt-PT` | Portugees (Portugal) | Vrouw | "pt-PT-HeliaRUS" |
-| `ro-RO` | Roemeens | Man | "ro-RO-Andrei" |
-| `ru-RU` | Russisch | Vrouw |  "ru-RU-Irina-Apollo" |
-|  |  | Man | "ru-RU-Pavel-Apollo" |
-|  |  | Vrouw |  ru-RU-EkaterinaRUS |
-| `sk-SK` | Slowaaks | Man | "sk-SK-Filip" |
-| `sl-SI` | Sloveens | Man |  "sl-SI-lado" |
-| `sv-SE` | Zweeds | Vrouw | "sv-SE-HedvigRUS" |
-| `ta-IN` | Tamil (India) | Man |  "TA-IN-Valluvar" |
-| `te-IN` | Telugu (India) | Vrouw |  "te-IN-Chitra" |
-| `th-TH` | Thai | Man |  ' th-do-Pattara ' |
-| `tr-TR` | Turks (Turkije) | Vrouw | "tr-TR-SedaRUS" |
-| `vi-VN` | Vietnamees | Man |  "VI-VN-a" |
-| `zh-CN` | Chinees (Mandarijn, vereenvoudigd) | Vrouw |  "zh-CN-HuihuiRUS" |
-|  |  | Vrouw | "zh-CN-Yaoyao-Apollo" |
-|  |  | Man | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | Chinees (Kantonees, traditioneel) | Vrouw |  "zh-HK-Tracy-Apollo" |
-|  |  | Vrouw | "zh-HK-TracyRUS" |
-|  |  | Man |  "zh-HK-Danny-Apollo" |
-| `zh-TW` | Chinees (Taiwan Mandarijn) | Vrouw |  "zh-TW-Yating-Apollo" |
-|  |  | Vrouw | "zh-TW-HanHanRUS" |
-|  |  | Man |  "zh-TW-Zhiwei-Apollo" |
+| <sup>i</sup>`ar-EG` | Arabisch (Egypte) | `Female` | "ar-EG-Hoda" |
+| `ar-SA` | Arabisch (Saoedi-Arabië) | `Male` | "AR-SA-Naayf" |
+| `bg-BG` | Bulgaars | `Male` |  "bg-BG-Ivan" |
+| `ca-ES` | Catalaans | `Female` |  "ca-ES-HerenaRUS" |
+| `cs-CZ` | Tsjechisch | `Male` | "CS-CZ-Jakub" |
+| `da-DK` | Deens | `Female` |  "da-DK-HelleRUS" |
+| `de-AT` | Duits (Oostenrijk) | `Male` | "de-Michael" |
+| `de-CH` | Duits (Zwitserland) | `Male` |  "de-CH-Karsten" |
+| `de-DE` | Duits (Duitsland) | `Female` |  "de-DE-Hedda" |
+|  |  | `Female` | "de-DE-HeddaRUS" |
+|  |  | `Male` |  "de-DE-Stefan-Apollo" |
+| `el-GR` | Grieks | `Male` | "El-GR-Stefanos" |
+| `en-AU` | Engels (Australië) | `Female` |  "en-AU-Catherine" |
+|  |  | `Female` |  "en-AU-HayleyRUS" |
+| `en-CA` | Engels (Canada) | `Female` |  "en-CA-Linda" |
+|  |  | `Female` |  "en-CA-HeatherRUS" |
+| `en-GB` | Engels (UK) | `Female` |  "en-GB-Susan-Apollo" |
+|  |  | `Female` |  "en-GB-HazelRUS" |
+|  |  | `Male` |  "en-GB-George-Apollo" |
+| `en-IE` | Engels (Ierland) | `Male` | "en-IE-Johan" |
+| `en-IN` | Engels (India) | `Female` | "en-IN-heera-Apollo" |
+|  |  | `Female` |  "en-IN-PriyaRUS" |
+|  |  | `Male` |  "en-IN-Ravi-Apollo" |
+| `en-US` | Engels (VS) | `Female` |  "en-US-ZiraRUS" |
+|  |  | `Female` | "en-US-AriaRUS" |
+|  |  | `Male` | "en-US-BenjaminRUS" |
+|  |  | `Male` |  "en-US-Guy24kRUS" |
+| `es-ES` | Spaans (Spanje) | `Female` |  "es-ES-Laura-Apollo" |
+|  |  | `Female` | "es-ES-HelenaRUS" |
+|  |  | `Male` | "es-ES-Pablo-Apollo" |
+| `es-MX` | Spaans (Mexico) | `Female` |  "es-MX-HildaRUS" |
+|  |  | `Male` | "es-MX-Raul-Apollo" |
+| `fi-FI` | Fins | `Female` | "fi-FI-HeidiRUS" |
+| `fr-CA` | Frans (Canada) | `Female` | "FR-CA-Caroline" |
+|  |  | `Female` | "FR-CA-HarmonieRUS" |
+| `fr-CH` | Frans (Zwitserland) | `Male` | "FR-CH-Guillaume" |
+| `fr-FR` | Frans (Frankrijk) | `Female` |  "fr-FR-Pascaline-Apollo" |
+|  |  | `Female` |"fr-FR-HortenseRUS" |
+|  |  | `Male` |  "fr-FR-Paul-Apollo" |
+| `he-IL` | Hebreeuws (Israël) | `Male` |  "he IL-Asaf" |
+| `hi-IN` | Hindi (India) | `Female` | "Hi-IN-Kalpana-Apollo" |
+|  |  | `Female` |  "Hi-IN-Kalpana" |
+|  |  | `Male` |  "Hi-IN-Hemant" |
+| `hr-HR` | Kroatisch | `Male` | "HR-HR-Matej" |
+| `hu-HU` | Hongaars | `Male` |  "hu-HU-Szabolcs" |
+| `id-ID` | Indonesisch | `Male` | "id-ID-andika" |
+| `it-IT` | Italiaans | `Male` |  "it-IT-Cosimo-Apollo" |
+|  |  | `Female` |  ' it-IT-LuciaRUS ' |
+| `ja-JP` | Japans | `Female` |  "ja-JP-Ayumi-Apollo" |
+|  |  | `Male` | "ja-JP-Ichiro-Apollo" |
+|  |  | `Female` |  "ja-JP-HarukaRUS" |
+| `ko-KR` | Koreaans | `Female` | "ko-KR-HeamiRUS" |
+| `ms-MY` | Maleisisch | `Male` |  ' MS-MY-Rizwan ' |
+| `nb-NO` | Noors | `Female` |  "nb-NO-HuldaRUS" |
+| `nl-NL` | Nederlands | `Female` |  "nl-NL-HannaRUS" |
+| `pl-PL` | Pools | `Female` |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | Portugees (Brazilië) | `Female` | "pt-BR-HeloisaRUS" |
+|  |  | `Male` |  "pt-BR-Apollo" |
+| `pt-PT` | Portugees (Portugal) | `Female` | "pt-PT-HeliaRUS" |
+| `ro-RO` | Roemeens | `Male` | "ro-RO-Andrei" |
+| `ru-RU` | Russisch | `Female` |  "ru-RU-Irina-Apollo" |
+|  |  | `Male` | "ru-RU-Pavel-Apollo" |
+|  |  | `Female` |  ru-RU-EkaterinaRUS |
+| `sk-SK` | Slowaaks | `Male` | "sk-SK-Filip" |
+| `sl-SI` | Sloveens | `Male` |  "sl-SI-lado" |
+| `sv-SE` | Zweeds | `Female` | "sv-SE-HedvigRUS" |
+| `ta-IN` | Tamil (India) | `Male` |  "TA-IN-Valluvar" |
+| `te-IN` | Telugu (India) | `Female` |  "te-IN-Chitra" |
+| `th-TH` | Thai | `Male` |  ' th-do-Pattara ' |
+| `tr-TR` | Turks (Turkije) | `Female` | "tr-TR-SedaRUS" |
+| `vi-VN` | Vietnamees | `Male` |  "VI-VN-a" |
+| `zh-CN` | Chinees (Mandarijn, vereenvoudigd) | `Female` |  "zh-CN-HuihuiRUS" |
+|  |  | `Female` | "zh-CN-Yaoyao-Apollo" |
+|  |  | `Male` | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | Chinees (Kantonees, traditioneel) | `Female` |  "zh-HK-Tracy-Apollo" |
+|  |  | `Female` | "zh-HK-TracyRUS" |
+|  |  | `Male` |  "zh-HK-Danny-Apollo" |
+| `zh-TW` | Chinees (Taiwan Mandarijn) | `Female` |  "zh-TW-Yating-Apollo" |
+|  |  | `Female` | "zh-TW-HanHanRUS" |
+|  |  | `Male` |  "zh-TW-Zhiwei-Apollo" |
 
 **1** *AR-voor beeld: ondersteuning voor modern Standard-Arabisch (MSA).*
 

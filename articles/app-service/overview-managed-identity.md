@@ -3,15 +3,15 @@ title: Beheerde identiteiten
 description: Meer informatie over hoe beheerde identiteiten werken in Azure App Service en Azure Functions, hoe u een beheerde identiteit kunt configureren en een token voor een back-end-bron kunt genereren.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779971"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258450"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -79,7 +79,9 @@ De volgende stappen helpen u bij het maken van een web-app en het toewijzen van 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-De volgende stappen helpen u bij het maken van een web-app en het toewijzen van een identiteit met behulp van Azure PowerShell:
+De volgende stappen helpen u bij het maken van een app en het toewijzen van een id met behulp van Azure PowerShell. De instructies voor het maken van een web-app en een functie-app verschillen.
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Azure PowerShell gebruiken voor een web-app
 
 1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
 
@@ -87,20 +89,39 @@ De volgende stappen helpen u bij het maken van een web-app en het toewijzen van 
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. Voer de `Set-AzWebApp -AssignIdentity` opdracht uit om de identiteit voor deze toepassing te maken:
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>Azure PowerShell gebruiken voor een functie-app
+
+1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
+
+2. Maak een functie-app met behulp van Azure PowerShell. Zie voor meer voor beelden van het gebruik van Azure PowerShell met Azure Functions de [verwijzing AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+U kunt ook een bestaande functie-app bijwerken met behulp van `Update-AzFunctionApp` in plaats daarvan.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon gebruiken
 
@@ -176,6 +197,35 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Toevoegen**.
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Azure PowerShell gebruiken
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+De volgende stappen helpen u bij het maken van een app en het toewijzen van een id met behulp van Azure PowerShell.
+
+> [!NOTE]
+> De huidige versie van de Azure PowerShell Commandlets voor Azure App Service biedt geen ondersteuning voor door de gebruiker toegewezen identiteiten. De onderstaande instructies zijn voor Azure Functions.
+
+1. Als dat nodig is, installeert u de Azure PowerShell met behulp van de instructies in de [Azure PowerShell Guide](/powershell/azure/overview)en voert `Login-AzAccount` u uit om een verbinding te maken met Azure.
+
+2. Maak een functie-app met behulp van Azure PowerShell. Zie de [Naslag informatie over AZ. functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions)(Engelstalig) voor meer voor beelden van het gebruik van Azure PowerShell met Azure functions. Het onderstaande script maakt ook gebruik van `New-AzUserAssignedIdentity` dat afzonderlijk moet worden geïnstalleerd als per [Create, lijst of een door de gebruiker toegewezen beheerde identiteit te verwijderen met behulp van Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+U kunt ook een bestaande functie-app bijwerken met behulp van `Update-AzFunctionApp` in plaats daarvan.
 
 ### <a name="using-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon gebruiken
 
@@ -428,7 +478,11 @@ Voor Java-toepassingen en-functies is de eenvoudigste manier om te werken met ee
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Een identiteit verwijderen
 
-Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te scha kelen met behulp van de portal, Power shell of CLI op dezelfde manier als waarop deze is gemaakt. Door de gebruiker toegewezen identiteiten kunnen afzonderlijk worden verwijderd. Als u alle identiteiten wilt verwijderen, stelt u het type in op ' geen ' in de [arm-sjabloon](#using-an-azure-resource-manager-template):
+Een door het systeem toegewezen identiteit kan worden verwijderd door de functie uit te scha kelen met behulp van de portal, Power shell of CLI op dezelfde manier als waarop deze is gemaakt. Door de gebruiker toegewezen identiteiten kunnen afzonderlijk worden verwijderd. Als u alle identiteiten wilt verwijderen, stelt u het identiteits type in op geen.
+
+Als u een door het systeem toegewezen identiteit op deze manier verwijdert, wordt deze ook uit Azure AD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch verwijderd uit Azure AD wanneer de app-resource wordt verwijderd.
+
+Alle identiteiten in een [arm-sjabloon](#using-an-azure-resource-manager-template)verwijderen:
 
 ```json
 "identity": {
@@ -436,7 +490,12 @@ Een door het systeem toegewezen identiteit kan worden verwijderd door de functie
 }
 ```
 
-Als u een door het systeem toegewezen identiteit op deze manier verwijdert, wordt deze ook uit Azure AD verwijderd. Door het systeem toegewezen identiteiten worden ook automatisch verwijderd uit Azure AD wanneer de app-resource wordt verwijderd.
+Alle identiteiten in Azure PowerShell verwijderen (alleen Azure Functions):
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > Er is ook een toepassings instelling die kan worden ingesteld, WEBSITE_DISABLE_MSI, waarmee de lokale token service wordt uitgeschakeld. De identiteit blijft echter aanwezig en er wordt nog steeds de beheerde identiteit weer gegeven als ' aan ' of ' ingeschakeld '. Als gevolg hiervan wordt het gebruik van deze instelling niet aanbevolen.

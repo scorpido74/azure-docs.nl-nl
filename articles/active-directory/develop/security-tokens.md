@@ -13,14 +13,14 @@ ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 88dc4bb86459cd0390c4c01deb871aa93e39c6d1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115792"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266743"
 ---
-# <a name="security-tokens"></a>Beveiligings tokens
+# <a name="security-tokens"></a>Beveiligingstokens
 
 Een gecentraliseerde ID-provider is vooral nuttig voor apps die gebruikers op de hele wereld hebben die zich niet per se aanmelden vanuit het netwerk van de onderneming. Micro soft Identity platform verifieert gebruikers en biedt beveiligings tokens, zoals [toegangs token](developer-glossary.md#access-token), [vernieuwings token](developer-glossary.md#refresh-token)en [id-token](developer-glossary.md#id-token), waarmee een [client toepassing](developer-glossary.md#client-application) toegang kan krijgen tot beveiligde bronnen op een [bron server](developer-glossary.md#resource-server).
 
@@ -77,7 +77,7 @@ Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verifica
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Hybride OIDC-stroom](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
 |[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |

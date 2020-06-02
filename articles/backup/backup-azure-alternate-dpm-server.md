@@ -3,12 +3,12 @@ title: Gegevens herstellen vanuit een Azure Backup Server
 description: Herstel de gegevens die u hebt beveiligd met een Recovery Services kluis van een Azure Backup Server die is geregistreerd bij die kluis.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 2a89697899fc244848854978de4b25e79ef6f184
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5531a2a9599465bd5ad3410504cbf341fb6c0c0f
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74173501"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249073"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Gegevens herstellen vanaf Azure Backup Server
 
@@ -83,7 +83,7 @@ Gegevens herstellen vanaf een Azure Backup Server:
 | 1. |Deze server is niet geregistreerd bij de kluis die is opgegeven door de kluis referentie. |**Oorzaak:** Deze fout wordt weer gegeven wanneer het kluis referentie bestand dat is geselecteerd niet hoort bij de Recovery Services kluis die is gekoppeld aan Azure Backup Server waarop de herstel poging is uitgevoerd. <br> **Oplossing:** Down load het kluis referentie bestand van de Recovery Services kluis waarnaar de Azure Backup Server is geregistreerd. |
 | 2. |De herstel bare gegevens zijn niet beschikbaar of de geselecteerde server is geen DPM-server. |**Oorzaak:** Er zijn geen andere Azure Backup-servers geregistreerd bij de Recovery Services kluis, of de servers hebben de meta gegevens nog niet geüpload of de geselecteerde server is geen Azure Backup Server (met behulp van Windows Server of Windows-client). <br> **Oplossing:** Als er andere Azure Backup-servers zijn geregistreerd bij de Recovery Services kluis, controleert u of de meest recente Azure Backup-Agent is geïnstalleerd. <br>Als er andere Azure Backup-servers zijn geregistreerd bij de Recovery Services kluis, wacht u op een dag na de installatie om het herstel proces te starten. De taken voor de hele nacht worden geüpload de meta gegevens voor alle beveiligde back-ups naar de Cloud. De gegevens zijn beschikbaar voor herstel. |
 | 3. |Er is geen andere DPM-server geregistreerd in deze kluis. |**Oorzaak:** Er zijn geen andere Azure Backup-servers die zijn geregistreerd bij de kluis van waaruit de herstel bewerking wordt uitgevoerd.<br>**Oplossing:** Als er andere Azure Backup-servers zijn geregistreerd bij de Recovery Services kluis, controleert u of de meest recente Azure Backup-Agent is geïnstalleerd.<br>Als er andere Azure Backup-servers zijn geregistreerd bij de Recovery Services kluis, wacht u op een dag na de installatie om het herstel proces te starten. De werk lastly uploadt de meta gegevens voor alle beveiligde back-ups naar de Cloud. De gegevens zijn beschikbaar voor herstel. |
-| 4. |De opgegeven wachtwoordzin voor versleuteling komt niet overeen met de wachtwoordzin die is gekoppeld aan de volgende server: ** \<server naam>** |**Oorzaak:** De wachtwoordzin voor versleuteling die wordt gebruikt bij het versleutelen van de gegevens van de Azure Backup Server gegevens die worden hersteld, komt niet overeen met de opgegeven versleutelings wachtwoordzin. De agent kan de gegevens niet ontsleutelen. Daarom mislukt het herstel.<br>**Oplossing:** Geef precies dezelfde wachtwoordzin voor versleuteling op die is gekoppeld aan de Azure Backup Server waarvan de gegevens worden hersteld. |
+| 4. |De opgegeven wachtwoordzin voor versleuteling komt niet overeen met de wachtwoordzin die is gekoppeld aan de volgende server:**\<server name>** |**Oorzaak:** De wachtwoordzin voor versleuteling die wordt gebruikt bij het versleutelen van de gegevens van de Azure Backup Server gegevens die worden hersteld, komt niet overeen met de opgegeven versleutelings wachtwoordzin. De agent kan de gegevens niet ontsleutelen, waardoor het herstel mislukt.<br>**Oplossing:** Geef precies dezelfde wachtwoordzin voor versleuteling op die is gekoppeld aan de Azure Backup Server waarvan de gegevens worden hersteld. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

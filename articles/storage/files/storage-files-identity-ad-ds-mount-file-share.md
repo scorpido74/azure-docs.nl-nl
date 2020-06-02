@@ -1,0 +1,49 @@
+---
+title: Een Azure-bestands share koppelen aan een aan een AD DS gekoppelde VM
+description: Meer informatie over het koppelen van een bestands share aan uw on-premises Active Directory Domain Services-computers.
+author: roygara
+ms.service: storage
+ms.subservice: files
+ms.topic: conceptual
+ms.date: 05/29/2020
+ms.author: rogarana
+ms.openlocfilehash: 1b07025fb7ba21607f52c43bdde653429f7a7835
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268469"
+---
+# <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Deel vier: een bestands share koppelen vanaf een virtuele machine die lid is van een domein
+
+Voordat u aan dit artikel begint, moet u ervoor zorgen dat u het vorige artikel hebt voltooid, [machtigingen voor mappen en bestands niveau via SMB configureert](storage-files-identity-ad-ds-configure-permissions.md).
+
+Het proces dat in dit artikel wordt beschreven, controleert of uw bestands share en toegangs machtigingen juist zijn ingesteld en dat u toegang hebt tot een Azure-bestands share vanaf een virtuele machine die lid is van een domein. De toewijzing van RBAC-rollen op share niveau kan enige tijd in beslag nemen. 
+
+Meld u aan bij de client met behulp van de referenties waaraan u machtigingen hebt verleend, zoals wordt weer gegeven in de volgende afbeelding.
+
+![Scherm afbeelding van het aanmeldings scherm van Azure AD voor gebruikers verificatie](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
+
+## <a name="mounting-prerequisites"></a>Vereisten koppelen
+
+Voordat u de bestands share kunt koppelen, moet u ervoor zorgen dat u de volgende vereisten hebt door lopen:
+
+- Als u de bestands share koppelt van een client die eerder de bestands share heeft gekoppeld met behulp van de sleutel van uw opslag account, moet u ervoor zorgen dat u de verbinding met de share hebt verbroken, de permanente referenties van de sleutel van het opslag account hebt verwijderd en momenteel AD DS referenties gebruikt voor verificatie.
+- Uw-client moet een gezichts lijn hebben voor uw AD DS. Als uw computer of virtuele machine zich buiten het netwerk bevindt dat wordt beheerd door uw AD DS, moet u VPN inschakelen om AD DS voor verificatie te bereiken.
+
+Vervang de waarden van de tijdelijke aanduiding door uw eigen waarden en gebruik vervolgens de volgende opdracht om de Azure-bestands share te koppelen:
+
+```cli
+# Always mount your share using.file.core.windows.net, even if you setup a private endpoint for your share.
+net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+```
+
+Als u problemen ondervindt met het koppelen van AD DS referenties, raadpleegt u [Azure files niet koppelen aan AD-referenties](storage-troubleshoot-windows-file-connection-problems.md#unable-to-mount-azure-files-with-ad-credentials) voor hulp.
+
+Als het koppelen van uw bestands share is geslaagd, hebt u de on-premises AD DS verificatie voor uw Azure-bestands shares ingeschakeld en geconfigureerd.
+
+## <a name="next-steps"></a>Volgende stappen
+
+Als de identiteit die u hebt gemaakt in AD DS voor de weer gave van het opslag account zich in een domein of OE bevindt waarin het roteren van wacht woorden afdwingt, gaat u door naar het volgende artikel voor instructies voor het bijwerken van uw wacht woord:
+
+[Het wacht woord van de identiteit van uw opslag account bijwerken in AD DS](storage-files-identity-ad-ds-update-password.md)

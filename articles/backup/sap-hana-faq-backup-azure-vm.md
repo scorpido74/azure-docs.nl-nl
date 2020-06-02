@@ -3,12 +3,12 @@ title: Veelgestelde vragen over back-ups maken van SAP HANA-databases in virtuel
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van SAP HANA-data bases met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701005"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248801"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Veelgestelde vragen: back-ups maken van SAP HANA-data bases op virtuele Azure-machines
 
@@ -86,6 +86,10 @@ Zorg ervoor dat de optie voor **overschrijven afdwingen** is geselecteerd tijden
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Waarom zie ik de fout ' bron-en doel systemen voor herstel zijn niet compatibel '?
 
 Raadpleeg de SAP HANA nota [1642148](https://launchpad.support.sap.com/#/notes/1642148) om te zien welke typen herstel bewerkingen momenteel worden ondersteund.
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Kan ik een back-up van een Data Base die wordt uitgevoerd op SLES gebruiken om terug te zetten naar een RHEL HANA-systeem of andersom?
+
+Ja, u kunt streaming-back-ups die zijn geactiveerd in een HANA-data base die wordt uitgevoerd op SLES, gebruiken om deze te herstellen naar een RHEL HANA-systeem en vice versa. Dat wil zeggen dat het terugzetten van meerdere besturings systemen mogelijk is met behulp van streaming-back-ups. U moet er echter voor zorgen dat het HANA-systeem waarnaar u wilt herstellen, en het HANA-systeem dat wordt gebruikt voor herstel, beide compatibel zijn voor herstel volgens SAP. Raadpleeg SAP HANA nota [1642148](https://launchpad.support.sap.com/#/notes/1642148) om te zien welke typen herstel compatibel zijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

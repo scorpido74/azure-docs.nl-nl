@@ -5,19 +5,19 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 7d9f8ccb4273d1378c4826dea420c4edca2f8ac3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536574"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263339"
 ---
-# <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Overzicht van Azure Files verificatie op basis van identiteiten voor SMB-toegang
+# <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Overzicht van Azure Files verificatie opties op basis van een identiteit voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Zie [on-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)voor meer informatie over het inschakelen van on-premises Active Directory Domain Services verificatie voor Azure-bestands shares (preview).
+Zie [on-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md)voor meer informatie over het inschakelen van on-premises Active Directory Domain Services verificatie voor Azure-bestands shares.
 
 Zie [Azure Active Directory Domain Services-verificatie inschakelen voor Azure files](storage-files-identity-auth-active-directory-domain-service-enable.md)voor meer informatie over het inschakelen van Azure AD DS-verificatie voor Azure-bestands shares.
 
@@ -42,7 +42,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
 - **On-premises Active Directory Domain Services (AD DS)**
 
-    De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files (preview) biedt de methoden voor het opslaan van Directory gegevens en deze beschikbaar maken voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
+    De integratie van on-premises Active Directory Domain Services (AD DS) met Azure Files biedt de methoden voor het opslaan van Directory gegevens wanneer deze beschikbaar zijn voor netwerk gebruikers en beheerders. Beveiliging is geïntegreerd met AD DS via aanmeldings verificatie en toegangs beheer voor objecten in de Directory. Met één netwerk aanmelding kunnen beheerders Directory gegevens en organisatie beheren in hun netwerk, en geautoriseerde netwerk gebruikers kunnen overal toegang krijgen tot bronnen in het netwerk. AD DS wordt doorgaans goedgekeurd door ondernemingen in on-premises omgevingen en AD DS referenties worden gebruikt als de identiteit voor toegangs beheer. Zie [Active Directory Domain Services Overview](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)voor meer informatie.
 
 -   **Access Control op basis van Azure Role (RBAC)**
 
@@ -54,11 +54,11 @@ Verificatie op basis van identiteit en ondersteuning voor Windows-Acl's op Azure
 
 ### <a name="replace-on-premises-file-servers"></a>On-premises bestands servers vervangen
 
-Het afmaken en vervangen van verspreide on-premises bestands servers is een veelvoorkomend probleem dat elke onderneming in hun IT-moderniserings traject tegen komt. Azure-bestands shares met on-premises AD DS (preview)-verificatie is het meest geschikt wanneer u de gegevens naar Azure Files kunt migreren. Met een volledige migratie kunt u profiteren van de hoge Beschik baarheid en schaal baarheid, terwijl ook de wijzigingen aan de client zijde worden geminimaliseerd. Het biedt een naadloze migratie-ervaring voor eind gebruikers, zodat ze hun gegevens met dezelfde referenties kunnen blijven gebruiken met hun bestaande computers die lid zijn van een domein.
+Het afmaken en vervangen van verspreide on-premises bestands servers is een veelvoorkomend probleem dat elke onderneming in hun IT-moderniserings traject tegen komt. Azure-bestands shares met on-premises AD DS verificatie is het meest geschikt wanneer u de gegevens naar Azure Files kunt migreren. Met een volledige migratie kunt u profiteren van de hoge Beschik baarheid en schaal baarheid, terwijl ook de wijzigingen aan de client zijde worden geminimaliseerd. Het biedt een naadloze migratie-ervaring voor eind gebruikers, zodat ze hun gegevens met dezelfde referenties kunnen blijven gebruiken met hun bestaande computers die lid zijn van een domein.
 
 ### <a name="lift-and-shift-applications-to-azure"></a>Toepassingen naar Azure tillen en verplaatsen
 
-Wanneer u toepassingen naar de Cloud verplaatst en verschuift, wilt u hetzelfde verificatie model blijven gebruiken voor uw gegevens. Als we de op id's gebaseerde ervaring voor toegangs beheer uitbreiden naar Azure-bestands shares, is het niet meer nodig om uw toepassing te wijzigen in moderne authenticatie methoden en de acceptatie van de cloud te versnellen. Azure-bestands shares bieden de mogelijkheid om te integreren met Azure AD DS of een on-premises AD DS (preview) voor verificatie. Als uw abonnement een 100% in de Cloud is en de inspanningen voor het beheer van Cloud infrastructuren tot een minimum beperken, is Azure AD DS beter geschikt als een volledig beheerde domein service. Als u volledige compatibiliteit met AD DS mogelijkheden nodig hebt, kunt u overwegen uw AD DS omgeving uit te breiden naar de Cloud door zelf hosting van domein controllers op Vm's. In beide gevallen bieden we de flexibiliteit om de domein services te kiezen die geschikt zijn voor uw bedrijf.
+Wanneer u toepassingen naar de Cloud verplaatst en verschuift, wilt u hetzelfde verificatie model blijven gebruiken voor uw gegevens. Als we de op id's gebaseerde ervaring voor toegangs beheer uitbreiden naar Azure-bestands shares, is het niet meer nodig om uw toepassing te wijzigen in moderne authenticatie methoden en de acceptatie van de cloud te versnellen. Azure-bestands shares bieden de mogelijkheid om te integreren met Azure AD DS of een on-premises AD DS voor verificatie. Als uw abonnement een 100% in de Cloud is en de inspanningen voor het beheer van Cloud infrastructuren tot een minimum beperken, is Azure AD DS beter geschikt als een volledig beheerde domein service. Als u volledige compatibiliteit met AD DS mogelijkheden nodig hebt, kunt u overwegen uw AD DS omgeving uit te breiden naar de Cloud door zelf hosting van domein controllers op Vm's. In beide gevallen bieden we de flexibiliteit om de domein services te kiezen die geschikt zijn voor uw bedrijf.
 
 ### <a name="backup-and-disaster-recovery-dr"></a>Back-ups en herstel na nood gevallen (DR)
 
@@ -66,17 +66,18 @@ Als u uw primaire bestands opslag on-premises houdt, kunnen Azure-bestands share
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-De volgende tabel bevat een overzicht van de ondersteunde Azure file shares-verificatie scenario's voor Azure AD DS en on-premises AD DS (preview). U kunt het beste de domein service selecteren die u voor uw client omgeving hebt gekozen voor de integratie met Azure Files. Als u AD DS (preview) al on-premises of in azure hebt geïnstalleerd waarbij uw apparaten zijn gekoppeld aan uw AD, moet u AD DS (preview) gebruiken voor de verificatie van Azure-bestands shares. Als u Azure AD DS (GA) al hebt toegepast, moet u dit ook gebruiken voor de verificatie van Azure-bestands shares.
+De volgende tabel bevat een overzicht van de ondersteunde Azure file shares-verificatie scenario's voor Azure AD DS en on-premises AD DS. U kunt het beste de domein service selecteren die u voor uw client omgeving hebt gekozen voor de integratie met Azure Files. Als u AD DS al on-premises of in azure hebt geïnstalleerd waarbij uw apparaten zijn gekoppeld aan uw AD, moet u ervoor kiezen om AD DS te gebruiken voor de verificatie van Azure-bestands shares. Als u Azure AD DS al hebt toegepast, moet u dit ook gebruiken voor verificatie bij Azure-bestands shares.
 
 
-|Azure AD DS-verificatie  | verificatie van on-premises AD DS (preview-versie)  |
+|Azure AD DS-verificatie  | On-premises AD DS verificatie  |
 |---------|---------|
-|Azure-AD DS die lid zijn van een Windows-computer hebben toegang tot Azure-bestands shares met Azure AD-referenties via SMB.     |On-premises AD DS-gekoppelde Windows-computers hebben toegang tot Azure-bestands shares met on-premises Active Directory referenties die worden gesynchroniseerd met Azure AD via SMB.         |
+|Azure-AD DS die lid zijn van een Windows-computer hebben toegang tot Azure-bestands shares met Azure AD-referenties via SMB.     |On-premises AD DS-of Azure AD DS-gekoppelde Windows-machines hebben toegang tot Azure-bestands shares met on-premises Active Directory referenties die zijn gesynchroniseerd met Azure AD via SMB. Uw-client moet een gezichts lijn hebben voor uw AD DS.        |
 
-### <a name="unsupported-scenarios"></a>Niet-ondersteunde scenario's
+### <a name="restrictions"></a>Beperkingen
 
 - Azure AD DS en on-premises AD DS verificatie bieden geen ondersteuning voor verificatie voor computer accounts. U kunt in plaats daarvan een service aanmeldings account gebruiken.
-- Azure AD DS-verificatie biedt geen ondersteuning voor verificatie voor apparaten die lid zijn van Azure AD.
+- Geen van de Azure AD DS-verificatie en on-premises AD DS-verificatie wordt ondersteund voor apparaten die zijn toegevoegd aan Azure AD of Azure AD-geregistreerde apparaten.
+- Azure-bestands shares bieden alleen ondersteuning voor verificatie op basis van identiteiten met een van de volgende domein Services, [Azure Active Directory Domain Services (Azure AD DS)](#azure-ad-ds) of [on-premises Active Directory Domain Services (AD DS)](#ad-ds).
 
 ## <a name="advantages-of-identity-based-authentication"></a>Voor delen van verificatie op basis van identiteit
 Verificatie op basis van identiteit voor Azure Files biedt verschillende voor delen ten opzichte van het gebruik van gedeelde sleutel verificatie:
@@ -92,19 +93,37 @@ Verificatie op basis van identiteit voor Azure Files biedt verschillende voor de
 
 ## <a name="how-it-works"></a>Hoe werkt het?
 
-Azure-bestands shares biedt ondersteuning voor Kerberos-verificatie voor de integratie met Azure AD DS of on-premises AD DS (preview). Voordat u verificatie in azure-bestands shares kunt inschakelen, moet u eerst uw domein omgeving instellen. Voor Azure AD DS-verificatie moet u Azure AD Domain Services en domein inschakelen die lid zijn van de Vm's die u wilt gebruiken om toegang tot bestands gegevens te krijgen. De virtuele machine die aan een domein is gekoppeld, moet zich in hetzelfde virtuele netwerk (VNET) bevinden als uw Azure-AD DS. Op dezelfde manier moet u voor de verificatie van on-premises AD DS (preview) uw domein controller en domein toevoegen aan uw machines of Vm's.
+Azure-bestands shares maken gebruik van het Kerberos-protocol voor verificatie met on-premises AD DS of Azure AD DS. Wanneer een identiteit die is gekoppeld aan een gebruiker of toepassing die wordt uitgevoerd op een client, probeert toegang te krijgen tot gegevens in azure-bestands shares, wordt de aanvraag verzonden naar de domein service, een AD DS of Azure AD DS, om de identiteit te verifiëren. Als de verificatie is geslaagd, wordt een Kerberos-token geretourneerd. De client verzendt een aanvraag met het Kerberos-token en Azure-bestands shares die token gebruiken om de aanvraag te autoriseren. Azure-bestands shares ontvangen alleen het Kerberos-token, geen toegang tot referenties.
 
-Wanneer een identiteit die is gekoppeld aan een toepassing die op een virtuele machine wordt uitgevoerd, probeert toegang te krijgen tot gegevens in azure-bestands shares, wordt de aanvraag verzonden naar Azure AD DS om de identiteit te verifiëren. Als de verificatie is geslaagd, retourneert Azure AD DS een Kerberos-token. De toepassing verzendt een aanvraag die het Kerberos-token bevat en Azure-bestands shares gebruiken die token om de aanvraag te autoriseren. Azure-bestands shares ontvangen alleen het token en blijven geen Azure AD DS-referenties. On-premises AD DS verificatie werkt op een vergelijk bare manier, waarbij uw AD DS het Kerberos-token biedt.
+Voordat u verificatie op basis van identiteiten op Azure-bestands shares kunt inschakelen, moet u eerst uw domein omgeving instellen.
 
-![Scherm opname van diagram van Azure AD-verificatie via SMB](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
+### <a name="ad-ds"></a>AD DS
+
+Voor on-premises AD DS-verificatie moet u uw AD-domein controllers en domein instellen als lid worden van uw machines of Vm's. U kunt uw domein controllers hosten op virtuele machines van Azure of on-premises. In beide gevallen moet de client die lid is van het domein een regel voor het gezichts vermogen van de domein service hebben, zodat deze zich binnen het bedrijfs netwerk of het virtuele netwerk (VNET) van uw domein service bevinden.
+
+In het volgende diagram ziet u on-premises AD DS verificatie voor Azure-bestands shares via SMB. De on-premises AD DS moeten worden gesynchroniseerd met Azure AD met behulp van Azure AD Connect-synchronisatie. Alleen hybride gebruikers in zowel on-premises AD DS als Azure AD kunnen worden geverifieerd en geautoriseerd voor toegang tot de Azure-bestands share. Dit komt omdat de machtiging op share niveau is geconfigureerd op basis van de identiteit die wordt weer gegeven in azure AD, waarbij de machtiging op het niveau van de map/bestand wordt afgedwongen in AD DS. Zorg ervoor dat u de machtigingen correct configureert voor dezelfde hybride gebruiker.
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Diagram":::
+
+### <a name="azure-ad-ds"></a>Azure AD DS
+
+Voor Azure AD DS-verificatie moet u Azure AD Domain Services en domein inschakelen die lid zijn van de Vm's die u wilt gebruiken om toegang tot bestands gegevens te krijgen. De virtuele machine die aan een domein is gekoppeld, moet zich in hetzelfde virtuele netwerk (VNET) bevinden als uw Azure-AD DS. 
+
+Het volgende diagram vertegenwoordigt de werk stroom voor Azure AD DS-verificatie voor Azure-bestands shares via SMB. Het volgt een vergelijkbaar patroon voor on-premises AD DS verificatie voor Azure-bestands shares. Er zijn twee belang rijke verschillen:
+
+- Eerst hoeft u niet de identiteit in azure AD DS te maken om het opslag account aan te duiden. Dit wordt uitgevoerd door het activerings proces op de achtergrond.
+
+- Ten tweede kunnen alle gebruikers in azure AD worden geverifieerd en geautoriseerd. De gebruiker kan alleen Cloud of Hybrid zijn. De synchronisatie van Azure AD naar Azure AD DS wordt beheerd door het platform zonder dat er gebruikers configuratie is vereist. De client moet echter lid zijn van een domein aan Azure AD DS en kan niet worden opgenomen in azure AD. 
+
+:::image type="content" source="media/storage-files-active-directory-overview/Files-Azure-AD-DS-Diagram.png" alt-text="Diagram":::
 
 ### <a name="enable-identity-based-authentication"></a>Verificatie op basis van identiteit inschakelen
 
-U kunt verificatie op basis van een identiteit inschakelen met behulp van Azure AD DS of een on-premises AD DS (preview) voor Azure-bestands shares in uw nieuwe en bestaande opslag accounts. Er kan slechts één domein service worden gebruikt voor verificatie van bestands toegang op het opslag account. Dit is van toepassing op alle bestands shares in het account. Gedetailleerde richt lijnen voor het instellen van uw bestands shares voor verificatie met Azure AD DS in ons artikel [inschakelen Azure Active Directory Domain Services verificatie op Azure files](storage-files-identity-auth-active-directory-domain-service-enable.md) en richt lijnen voor on-premises AD DS (preview) in het andere artikel, [on-premises Active Directory Domain Services authenticatie inschakelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md).
+U kunt verificatie op basis van een identiteit inschakelen met Azure AD DS of on-premises AD DS voor Azure-bestands shares in uw nieuwe en bestaande opslag accounts. Er kan slechts één domein service worden gebruikt voor verificatie van bestands toegang op het opslag account. Dit is van toepassing op alle bestands shares in het account. Gedetailleerde richt lijnen voor het instellen van uw bestands shares voor verificatie met Azure AD DS in ons artikel [schakel Azure Active Directory Domain Services-verificatie in op Azure files](storage-files-identity-auth-active-directory-domain-service-enable.md) en richt lijnen voor on-premises AD DS in ons andere artikel, om [on-premises Active Directory Domain Services verificatie in te SCHA kelen via SMB voor Azure-bestands shares](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Machtigingen op share niveau voor Azure Files configureren
 
-Als de verificatie van Azure AD DS of on-premises AD DS (preview) is ingeschakeld, kunt u ingebouwde RBAC-rollen gebruiken of aangepaste rollen configureren voor Azure AD-identiteiten en toegangs rechten toewijzen aan bestands shares in uw opslag accounts. Met de toegewezen machtiging kan de verleende identiteit alleen toegang krijgen tot de share, niets anders, niet zelfs de hoofdmap. U moet nog steeds machtigingen op Directory-of bestands niveau configureren voor Azure-bestands shares.
+Als Azure AD DS of een on-premises AD DS-verificatie is ingeschakeld, kunt u ingebouwde RBAC-rollen gebruiken of aangepaste rollen configureren voor Azure AD-identiteiten en toegangs rechten toewijzen aan bestands shares in uw opslag accounts. Met de toegewezen machtiging kan de verleende identiteit alleen toegang krijgen tot de share, niets anders, niet zelfs de hoofdmap. U moet nog steeds machtigingen op Directory-of bestands niveau configureren voor Azure-bestands shares.
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Machtigingen op Directory-of bestands niveau configureren voor Azure Files
 
@@ -119,7 +138,7 @@ Een gebruiker met de sleutel van het opslag account kan toegang krijgen tot Azur
 
 ### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>Map-en bestands-Acl's behouden bij het importeren van gegevens in azure-bestands shares
 
-Azure Files ondersteunt het behouden van Acl's op Directory-of bestands niveau bij het kopiëren van gegevens naar Azure-bestands shares. U kunt Acl's op een map of bestand naar Azure-bestands shares kopiëren met behulp van Azure File Sync of gemeen schappelijke sluit voor bestands verplaatsing. U kunt [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) bijvoorbeeld gebruiken met de vlag voor `/copy:s` het kopiëren van gegevens en acl's naar een Azure-bestands share. Acl's blijven standaard behouden, u bent niet verplicht om verificatie op basis van een identiteit in te scha kelen voor uw opslag account om Acl's te behouden.
+Azure Files ondersteunt het behouden van Acl's op Directory-of bestands niveau bij het kopiëren van gegevens naar Azure-bestands shares. U kunt Acl's op een map of bestand naar Azure-bestands shares kopiëren met behulp van Azure File Sync of gemeen schappelijke sluit voor bestands verplaatsing. U kunt [Robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) bijvoorbeeld gebruiken met de `/copy:s` vlag voor het kopiëren van gegevens en Acl's naar een Azure-bestands share. Acl's blijven standaard behouden, u bent niet verplicht om verificatie op basis van een identiteit in te scha kelen voor uw opslag account om Acl's te behouden.
 
 ## <a name="pricing"></a>Prijzen
 Er worden geen extra kosten in rekening gebracht voor het inschakelen van verificatie op basis van identiteit via SMB voor uw opslag account. Zie [Azure files prijzen](https://azure.microsoft.com/pricing/details/storage/files/) en [Azure AD Domain Services prijzen](https://azure.microsoft.com/pricing/details/active-directory-ds/)voor meer informatie over prijzen.

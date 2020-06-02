@@ -4,18 +4,18 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/13/2020
 ms.author: glenga
-ms.openlocfilehash: 960bbfc82e6cea0b868f93f784103b8ea1743e00
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fcca11e4e27a8ad291cffeda68d9e32e02a0912
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76964006"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268999"
 ---
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Voordat u de app kunt publiceren, moet u zich aanmelden bij Azure. 
 
-1. Als u nog niet bent aangemeld, kiest u het pictogram van Azure in de activiteiten balk en kiest u **Aanmelden bij Azure**in het gebied **Azure: functions** . Als u er nog geen hebt, kunt u **een gratis Azure-account maken**. 
+1. Als u nog niet bent aangemeld, kiest u het pictogram van Azure in de activiteiten balk en kiest u **Aanmelden bij Azure**in het gebied **Azure: functions** . Als u er nog geen hebt, kunt u **[een gratis Azure-account maken](https://azure.microsoft.com/free/)**. Studenten kunnen hier klikken om ** [een gratis Azure for students-account te maken](https://azure.microsoft.com/free/students/)**
 
     ![De reactie van de lokale host van de functie in de browser](./media/functions-sign-in-vs-code/functions-sign-into-azure.png)
 

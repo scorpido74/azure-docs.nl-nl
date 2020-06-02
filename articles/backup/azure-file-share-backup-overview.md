@@ -3,12 +3,12 @@ title: Over back-ups van Azure-bestands share
 description: Meer informatie over het maken van back-ups van Azure-bestands shares in de Recovery Services kluis
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d4129b3618810d80df7d5289a7a7417d74fd077
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105740"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259015"
 ---
 # <a name="about-azure-file-share-backup"></a>Over back-ups van Azure-bestands share
 
@@ -21,6 +21,7 @@ Azure file share Backup is een systeem eigen, op de cloud gebaseerde back-upoplo
 * Ingebouwde beheer mogelijkheden: u kunt back-ups plannen en de gewenste Bewaar periode opgeven zonder de extra overhead voor het weghalen van gegevens.
 * Direct terugzetten: back-up van Azure-bestands share maakt gebruik van moment opnamen van bestands shares, zodat u alleen de bestanden kunt selecteren die u onmiddellijk wilt herstellen.
 * Waarschuwingen en rapportage: u kunt waarschuwingen configureren voor back-up-en herstel fouten en de rapportage oplossing van Azure Backup gebruiken om inzicht te krijgen in de back-ups van uw bestands shares.
+* Bescherming tegen onbedoeld verwijderen van bestands shares: Azure Backup maakt de [functie voor voorlopig verwijderen](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) op een opslag account niveau mogelijk met een Bewaar periode van 14 dagen. Zelfs als een schadelijke actor de bestands share verwijdert, worden de inhoud en herstel punten (moment opnamen) van de bestands share bewaard voor een Configureer bare Bewaar periode, waardoor het herstel van de bron inhoud en moment opnamen zonder gegevens verlies kan worden voltooid.
 
 ## <a name="architecture"></a>Architectuur
 

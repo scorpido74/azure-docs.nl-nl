@@ -4,16 +4,16 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294925"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247050"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
-Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er in alle oplossingen gebeurt en naar verwachting in belang rijke scenario's wordt gewaarschuwd. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
+Azure Backup biedt meerdere back-upoplossingen op basis van de back-upvereisten en infrastructuur topologie (on-premises versus Azure). Elke back-upgebruiker of beheerder moet zien wat er in alle oplossingen gebeurt en kan worden geïnformeerd over belang rijke scenario's. In dit artikel vindt u meer informatie over de bewakings-en meldings mogelijkheden van Azure Backup service.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Back-uptaken in Recovery Services kluis
 
@@ -27,13 +27,13 @@ Taken van de volgende Azure Backup oplossingen worden hier weer gegeven:
 
 - Azure VM Backup
 - Back-up van Azure-bestand
-- Back-ups van Azure-workloads, zoals SQL en SAP HANA
+- Azure-workload back-up, zoals SQL en SAP HANA
 - Azure Backup-agent (MAB)
 
 Taken van System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup-Server (MABS) worden niet weer gegeven.
 
 > [!NOTE]
-> Azure-werk belastingen, zoals SQL en SAP HANA back-ups in azure Vm's, hebben een groot aantal back-uptaken. Logboek back-ups kunnen bijvoorbeeld elke 15 minuten worden uitgevoerd. Voor dergelijke DB-workloads worden dus alleen door de gebruiker geactiveerde bewerkingen weer gegeven. Geplande back-upbewerkingen worden niet weer gegeven.
+> Azure-werk belastingen, zoals SQL en SAP HANA back-ups in azure Vm's, hebben een groot aantal back-uptaken. Logboek back-ups kunnen bijvoorbeeld elke 15 minuten worden uitgevoerd. Voor dergelijke DB-workloads worden alleen door de gebruiker geactiveerde bewerkingen weer gegeven. Geplande back-upbewerkingen worden niet weer gegeven.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Back-upwaarschuwingen in Recovery Services kluis
 
@@ -59,7 +59,7 @@ De volgende scenario's worden door de service gedefinieerd als scenario's met wa
 
 ### <a name="consolidated-alerts"></a>Geconsolideerde waarschuwingen
 
-Voor back-upoplossingen van Azure, zoals SQL en SAP HANA, kunnen logboek back-ups zeer vaak worden gegenereerd (Maxi maal elke 15 minuten volgens het beleid). Het is dus ook mogelijk dat de back-upfouten van het logboek ook heel vaak worden (Maxi maal elke 15 minuten). In dit scenario wordt de eind gebruiker overbelast als er een waarschuwing wordt gegenereerd voor elk fout voorval. Er wordt dus een waarschuwing verzonden voor het eerste exemplaar en als de volgende fouten worden veroorzaakt door dezelfde hoofd oorzaak, worden er geen verdere waarschuwingen gegenereerd. De eerste waarschuwing wordt bijgewerkt met het aantal fouten. Maar als de waarschuwing wordt gedeactiveerd door de gebruiker, wordt door de volgende keer dat er een waarschuwing wordt gegenereerd een andere melding weer en wordt dit beschouwd als de eerste waarschuwing voor die gebeurtenis. Zo wordt de consolidatie van waarschuwingen voor SQL-en SAP HANA back-ups door Azure Backup uitgevoerd.
+Voor back-upoplossingen van Azure, zoals SQL en SAP HANA, kunnen logboek back-ups zeer vaak worden gegenereerd (Maxi maal elke 15 minuten volgens het beleid). Het is dus ook mogelijk dat de back-upfouten van het logboek ook heel vaak worden (Maxi maal elke 15 minuten). In dit scenario wordt de eind gebruiker overbelast als er een waarschuwing wordt gegenereerd voor elk fout voorval. Er wordt dus een waarschuwing verzonden voor het eerste exemplaar en als de latere fouten worden veroorzaakt door dezelfde hoofd oorzaak, worden er geen verdere waarschuwingen gegenereerd. De eerste waarschuwing wordt bijgewerkt met het aantal fouten. Maar als de waarschuwing wordt gedeactiveerd door de gebruiker, wordt door de volgende keer dat er een waarschuwing wordt gegenereerd een andere melding weer en wordt dit beschouwd als de eerste waarschuwing voor die gebeurtenis. Zo wordt de consolidatie van waarschuwingen voor SQL-en SAP HANA back-ups door Azure Backup uitgevoerd.
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd
 
@@ -77,8 +77,8 @@ De bovenstaande uitzonde ringen zijn ontworpen op basis van de uitleg dat het re
 Waarschuwingen zijn gebaseerd op ernst van waarschuwingen en kunnen worden gedefinieerd in drie typen:
 
 - **Kritiek**: in principe zou elke back-up-of herstel fout (gepland of door de gebruiker geactiveerd) leiden tot het genereren van een waarschuwing en worden weer gegeven als een kritieke waarschuwing en ook destructieve bewerkingen, zoals het verwijderen van back-ups.
-- **Waarschuwing**: als de back-upbewerking is geslaagd, maar met weinig waarschuwingen, worden deze weer gegeven als waarschuwings meldingen.
-- **Ter informatie**: vanaf vandaag wordt er geen informatieve waarschuwing gegenereerd door Azure backup service.
+- **Waarschuwing**: als de back-upbewerking is geslaagd, maar met weinig waarschuwingen, worden ze weer gegeven als waarschuwings meldingen.
+- **Ter informatie**: er wordt momenteel geen informatieve waarschuwing gegenereerd door Azure backup service.
 
 ## <a name="notification-for-backup-alerts"></a>Melding voor back-upwaarschuwingen
 
@@ -91,7 +91,7 @@ Zodra een waarschuwing is gegenereerd, worden gebruikers hiervan op de hoogte ge
 
 Wanneer de melding is geconfigureerd, ontvangt u een welkomst-of inkomend e-mail bericht. Hiermee wordt bevestigd dat Azure Backup e-mail berichten naar deze adressen kunt verzenden wanneer er een waarschuwing wordt gegenereerd.<br>
 
-Als de frequentie is ingesteld op een samen vatting per uur en er binnen een uur een waarschuwing is gegenereerd en opgelost, zal deze geen deel uitmaken van het komende uur overzicht.
+Als de frequentie is ingesteld op een samen vatting per uur en er binnen een uur een waarschuwing is gegenereerd en opgelost, maakt het geen deel uit van het komende uur overzicht.
 
 > [!NOTE]
 >

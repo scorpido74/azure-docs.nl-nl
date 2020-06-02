@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f50c7e8dcb33fd2ed95829286aaf815926d9fb3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e05256d26da2c061559bcc8e50e9ecce6d8425a0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80157602"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248206"
 ---
 # <a name="export-your-application"></a>Uw toepassing exporteren
-
-
 
 In dit artikel wordt beschreven hoe, als oplossings beheerder, een IoT Central toepassing moet exporteren om deze opnieuw te kunnen gebruiken.
 
@@ -93,4 +91,4 @@ Als u uw toepassings sjabloon wilt bijwerken, wijzigt u de naam of beschrijving 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u toepassings sjablonen kunt gebruiken, is de voorgestelde volgende stap informatie over het [beheren van IOT Central van de Azure Portal](howto-manage-iot-central-from-portal.md)
+Nu u hebt geleerd hoe u toepassings sjablonen gebruikt, is de voorgestelde volgende stap informatie over [het bewaken van de algemene status van de apparaten die zijn verbonden met een IOT Central-toepassing](howto-monitor-application-health.md)

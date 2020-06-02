@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: bea815dbf9f0da6c0acda000478203f514b2fb2f
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220384"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258569"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -309,8 +309,8 @@ We gaan ervan uit dat exemplaar A het primaire exemplaar is, instantie B is de b
 ### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>Scenario's die afhankelijk zijn van objecten in de systeem databases inschakelen
 Systeem databases worden niet gerepliceerd naar het secundaire exemplaar in een failovergroep. Voor het inschakelen van scenario's die afhankelijk zijn van objecten uit de systeem databases, op het secundaire exemplaar, moet u ervoor zorgen dat u dezelfde objecten op de secundaire maakt. Als u bijvoorbeeld van plan bent om dezelfde aanmeldingen te gebruiken op de secundaire instantie, moet u deze maken met dezelfde SID. 
 ```SQL
--- Sample code to create login on the secondary instance
-CREATE LOGIN foo WITH PASSWORD = 'password', SID = 0x12345
+-- Code to create login on the secondary instance
+CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 ``` 
 
 

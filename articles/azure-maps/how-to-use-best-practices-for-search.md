@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742757"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264363"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Aanbevolen procedures voor het Azure Maps van Search Service
 
-Azure Maps [Search service](https://docs.microsoft.com/rest/api/maps/search) bevat api's die verschillende mogelijkheden bieden. De zoek adres-API kan bijvoorbeeld POI (Points of interest) of gegevens rond een specifieke locatie vinden. 
+Azure Maps [Search service](https://docs.microsoft.com/rest/api/maps/search) bevat api's die verschillende mogelijkheden bieden om ontwikkel aars te helpen bij het zoeken naar adressen, plaatsen, bedrijfs vermeldingen op naam of categorie en andere geografische informatie. Met[fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) kunnen gebruikers bijvoorbeeld zoeken naar een adres of een POI.
 
 In dit artikel wordt uitgelegd hoe u geluids procedures toepast wanneer u gegevens aanroept vanuit Azure Maps Search Service. U leert het volgende:
 
-* Bouw query's om relevante overeenkomsten te retour neren.
-* Beperk de zoek resultaten.
-* Meer informatie over de verschillen tussen resultaat typen.
-* Lees de structuur van het adres voor zoeken en antwoorden.
+* Query's bouwen om relevante overeenkomsten te retour neren
+* Zoek resultaten beperken
+* Meer informatie over de verschillen tussen resultaat typen
+* Lees de adres structuur voor zoeken en antwoorden
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -33,7 +33,7 @@ Als u aanroepen naar de Azure Maps-service-Api's wilt maken, hebt u een Azure Ma
 Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 > [!TIP]
-> Als u een query wilt uitvoeren op Search Service, kunt u de [app postman](https://www.getpostman.com/apps) gebruiken om rest-aanroepen te bouwen. U kunt ook een wille keurige API-ontwikkel omgeving gebruiken.
+> Als u een query wilt uitvoeren op Search Service, kunt u de [app postman](https://www.getpostman.com/apps) gebruiken om rest API-aanroepen te maken. U kunt ook een wille keurige API-ontwikkel omgeving gebruiken.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Aanbevolen procedures voor het geocoderen van adressen
 
@@ -61,7 +61,7 @@ Als u de resultaten van de gebruiker wilt geobias, voegt u altijd zoveel mogelij
 
 #### <a name="fuzzy-search-parameters"></a>Zoek parameters voor fuzzy
 
-U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) te gebruiken wanneer u de invoer van uw gebruikers niet kent voor een zoek opdracht. De API combineert POI-zoek acties en geocodering in een canonieke *Zoek opdracht op één regel*: 
+U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) te gebruiken wanneer u de invoer van uw gebruikers niet kent voor een zoek opdracht. De invoer van de gebruiker kan bijvoorbeeld een adres zijn of het type van een punt (POI), zoals *winkel centrum*. De API combineert POI-zoek acties en geocodering in een canonieke *Zoek opdracht op één regel*: 
 
 * De `minFuzzyLevel` `maxFuzzyLevel` para meters en kunnen relevante overeenkomsten retour neren, zelfs wanneer de query parameters niet exact overeenkomen met de informatie die de gebruiker wil. Stel Zoek query's in op standaard waarden van en om de prestaties te maximaliseren en ongebruikelijke resultaten te verminderen `minFuzzyLevel=1` `maxFuzzyLevel=2` . 
 
@@ -85,7 +85,7 @@ U wordt aangeraden de Azure Maps [Zoek actie voor fuzzy](https://docs.microsoft.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Reverse-Geocode en filter voor het entiteits type Geografie
 
-Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten, neemt u de `entityType` para meter op in uw aanvragen. 
+Wanneer u een omgekeerde Geocode zoekt in de [Reverse API voor zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), kan de service veelhoeken retour neren voor administratieve gebieden. Yoi kan bijvoorbeeld de gebieds veelhoek voor een stad ophalen.Als u de zoek opdracht wilt beperken tot specifieke typen geografie entiteiten, neemt u de `entityType` para meter op in uw aanvragen. 
 
 De resulterende reactie bevat de geografie-ID en het entiteits type dat overeenkomt. Als u meer dan één entiteit opgeeft, wordt met het eind punt de *kleinste beschik bare entiteit*geretourneerd. U kunt de geretourneerde geometrie-ID gebruiken om de geometrie van het geografie te verkrijgen via de [Search veelhoek-service](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 
