@@ -1,6 +1,6 @@
 ---
-title: Azure-app configuratie integreren met Kubernetes-implementatie met behulp van helm
-description: Meer informatie over het gebruik van dynamische configuraties in Kubernetes-implementatie met helm.
+title: Azure App Configuration integreren met Kubernetes-implementatie met Helm
+description: Ontdek hoe u dynamische configuraties in Kubernetes-implementatie gebruikt met Helm.
 services: azure-app-configuration
 author: shenmuxiaosen
 manager: zhenlan
@@ -8,70 +8,70 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: 2aebccdf18aaba345beb344a8b6fc3b37754a4a1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793615"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83725666"
 ---
-# <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integreren met Kubernetes-implementatie met behulp van helm
+# <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integreren met Kubernetes-implementatie met Helm
 
-Helm biedt een manier om toepassingen te definiëren, te installeren en te upgraden die in Kubernetes worden uitgevoerd. Een helm-grafiek bevat de informatie die nodig is om een exemplaar van een Kubernetes-toepassing te maken. De configuratie wordt buiten het diagram zelf opgeslagen, in een bestand met de naam *Values. yaml*. 
+Helm biedt een manier om toepassingen die in Kubernetes worden uitgevoerd te definiëren, installeren en upgraden. Een Helm-grafiek bevat de informatie die nodig is om een exemplaar van een Kubernetes-toepassing te maken. De configuratie wordt buiten de grafiek zelf opgeslagen, in een bestand genaamd *values.yaml*. 
 
-Tijdens het release proces voegt helm de grafiek samen met de juiste configuratie om de toepassing uit te voeren. Variabelen die zijn gedefinieerd in *Values. yaml* kunnen bijvoorbeeld worden verwezen als omgevings variabelen in de actieve containers. Helm biedt ook ondersteuning voor het maken van Kubernetes-geheimen die kunnen worden gekoppeld als gegevens volumes of als omgevings variabelen worden weer gegeven.
+Tijdens het releaseproces voegt Helm de grafiek samen met de juiste configuratie om de toepassing uit te voeren. Er kan bijvoorbeeld naar variabelen die in *values.yaml* zijn gedefinieerd, worden verwezen met omgevingsvariabelen in de actieve containers. Helm ondersteunt ook het maken van Kubernetes-geheimen, die als gegevensvolumes kunnen worden gekoppeld of als omgevingsvariabelen kunnen worden weergegeven.
 
-U kunt de waarden die zijn opgeslagen in *Values. yaml* overschrijven door extra op YAML gebaseerde configuratie bestanden op de opdracht regel op te geven bij het uitvoeren van helm. Azure-app-configuratie ondersteunt het exporteren van configuratie waarden naar YAML-bestanden. Door deze export functionaliteit in uw implementatie te integreren, kunnen uw Kubernetes-toepassingen configuratie waarden gebruiken die zijn opgeslagen in de app-configuratie.
+U kunt de waarden die in *values.yaml* zijn opgeslagen, overschrijven door aanvullende YAML-gebaseerde configuratiebestanden op de opdrachtregel op te geven wanneer Helm wordt uitgevoerd. Azure App Configuration ondersteunt het exporteren van configuratiewaarden naar YAML-bestanden. Door deze exportmogelijkheid in uw implementatie te integreren, kunnen uw Kubernetes-toepassingen configuratiewaarden benutten die in App Configuration zijn opgeslagen.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Gebruik waarden uit app-configuratie bij het implementeren van een toepassing naar Kubernetes met behulp van helm.
-> * Een Kubernetes-geheim maken op basis van een Key Vault verwijzing in de app-configuratie.
+> * Gebruik waarden uit App Configuration wanneer u een toepassing in Kubernetes implementeert met Helm.
+> * Maak een Kubernetes-geheim op basis van een sleutelkluisverwijzing in App Configuration.
 
-In deze zelf studie wordt ervan uitgegaan dat u basis informatie krijgt over het beheren van Kubernetes met helm. Meer informatie over het installeren van toepassingen met helm in de [Azure Kubernetes-service](https://docs.microsoft.com/azure/aks/kubernetes-helm).
+In deze zelfstudie wordt ervan uitgegaan dat u basisbegrip hebt van het beheren van Kubernetes met Helm. Meer informatie over het installeren van toepassingen met Helm in [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/kubernetes-helm).
 
 ## <a name="prerequisites"></a>Vereisten
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-- [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installeren (versie 2.4.0 of hoger)
-- [Helm](https://helm.sh/docs/intro/install/) installeren (versie 2.14.0 of hoger)
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) (versie 2.4.0 of hoger) installeren
+- [Helm](https://helm.sh/docs/intro/install/) (versie 2.14.0 of hoger) installeren
 - Een Kubernetes-cluster.
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
+## <a name="create-an-app-configuration-store"></a>Een App Configuration-archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **Configuration Explorer** > **maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **Configuratieverkenner** > **Maken** om de volgende sleutel-waardeparen toe te voegen:
 
     | Sleutel | Waarde |
     |---|---|
-    | Settings. Color | Wit |
-    | instellingen. bericht | Gegevens van Azure App Configuration |
+    | settings.color | Wit |
+    | settings.message | Gegevens van Azure App Configuration |
 
-    Laat het **Label** en het **inhouds type** nu leeg.
+    Laat **Label** en **Inhoudstype** nog even leeg.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een Key Vault verwijzing toevoegen aan de app-configuratie
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en voeg een geheim toe aan [Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) met de naam **wacht woord** en de waarde **myPassword**. 
-2. Selecteer het exemplaar van het app-configuratie archief dat u in de vorige sectie hebt gemaakt.
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Een sleutelkluisverwijzing toevoegen aan App Configuration
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en voeg een geheim aan [Sleutelkluis](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault) toe met de naam **Wachtwoord** en de waarde **mijnwachtwoord**. 
+2. Selecteer het App Configuration-archiefexemplaar dat u in de vorige sectie hebt gemaakt.
 
-3. Selecteer **Configuration Explorer**.
+3. Selecteer **Configuratieverkenner**.
 
-4. Selecteer **+** > **verwijzing naar sleutel kluis**maken en geef vervolgens de volgende waarden op:
-    - **Sleutel**: Selecteer **geheimen. wacht woord**.
-    - **Label**: laat deze waarde leeg.
-    - **Abonnement**, **resource groep**en **sleutel kluis**: Voer de waarden in die overeenkomen met die in de sleutel kluis die u in de vorige stap hebt gemaakt.
-    - **Geheim**: Selecteer het geheime **wacht woord** dat u in de vorige sectie hebt gemaakt.
+4. Selecteer **+ Maken** > **Sleutelkluisverwijzing** en geef de volgende waarden op:
+    - **Sleutel**: Selecteer **secrets.password**.
+    - **Label**: Laat deze waarde leeg.
+    - **Abonnement**, **Resourcegroep** en **Sleutelkluis**: Voer de waarden in die overeenkomen met de waarden in de sleutelkluis die u in de vorige stap hebt gemaakt.
+    - **Geheim**: Selecteer het geheim genaamd **Wachtwoord** dat u in de vorige sectie hebt gemaakt.
 
 ## <a name="create-helm-chart"></a>Helm-grafiek maken ##
-Maak eerst een voor beeld van een helm-grafiek met de volgende opdracht
+Maak eerst een Helm-voorbeeldgrafiek met de volgende opdracht
 ```console
 helm create mychart
 ```
 
-Helm maakt een nieuwe map met de naam myChart met de structuur die hieronder wordt weer gegeven. 
+Helm maakt een nieuwe directory genaamd ‘mychart’ met de structuur die hieronder wordt weergegeven. 
 
 > [!TIP]
-> Volg deze [grafieken gids](https://helm.sh/docs/chart_template_guide/getting_started/) voor meer informatie.
+> Volg deze [grafiekhandleiding](https://helm.sh/docs/chart_template_guide/getting_started/) voor meer informatie.
 
 ```
 mychart
@@ -86,7 +86,7 @@ mychart
 `-- values.yaml
 ```
 
-Werk vervolgens de sectie **spec: Temp late: spec: containers** van het bestand *Deployment. yaml* . Met het volgende code fragment worden twee omgevings variabelen toegevoegd aan de container. U kunt hun waarden dynamisch instellen tijdens de implementatie.
+Werk vervolgens de sectie **spec:template:spec:containers** van het bestand *deployment.yaml* bij. Het volgende fragment voegt twee omgevingsvariabelen aan de container toe. U zult de waarden ervan dynamisch instellen tijdens de implementatie.
 
 ```yaml
 env:
@@ -96,7 +96,7 @@ env:
     value: {{ .Values.settings.message }}
 ``` 
 
-Het volledige *implementatie. yaml* -bestand na de update moet er als volgt uitzien.
+Na de update moet het volledige *deployment.yaml*-bestand eruitzien zoals hieronder.
 
 ```yaml
 apiVersion: apps/v1beta2
@@ -157,10 +157,10 @@ spec:
     {{- end }}
 ```
 
-Als u gevoelige gegevens wilt opslaan als Kubernetes geheimen, voegt u een *geheimen. yaml* -bestand toe onder de map Sjablonen.
+Als u gevoelige gegevens als Kubernetes-geheimen wilt opslaan, voegt u een *secrets.yaml*-bestand toe onder de map met sjablonen.
 
 > [!TIP]
-> Meer informatie over het gebruik van [Kubernetes-geheimen](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets).
+> Meer informatie over het gebruiken van [Kubernetes-geheimen](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets).
 
 ```yaml
 apiVersion: v1
@@ -169,10 +169,10 @@ metadata:
   name: mysecret
 type: Opaque
 data:
-  password: {{ .Values.secrets.password }}
+  password: {{ .Values.secrets.password | b64enc }}
 ```
 
-Werk tot slot het bestand *Values. yaml* bij met de volgende inhoud om optioneel de standaard waarden te bieden van de configuratie-instellingen en-geheimen waarnaar wordt verwezen in de *implementatie. yaml* -en *geheimen. yaml* -bestanden. De werkelijke waarden worden overschreven door de configuratie die wordt opgehaald uit de app-configuratie.
+Tot slot werkt u het bestand *values.yaml* met de volgende inhoud bij om desgewenst standaardwaarden van de configuratie-instellingen en geheimen te bieden waarnaar wordt verwezen in de bestanden *deployment.yaml* en *secrets.yaml*. De daadwerkelijke waarden ervan worden overschreven door configuratie die uit App Configuration wordt opgehaald.
 
 ```yaml
 # settings will be overwritten by App Configuration
@@ -181,32 +181,32 @@ settings:
     message: myMessage
 ```
 
-## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Configuratie door geven van app-configuratie in helm-installatie ##
-Down load eerst de configuratie van de app-configuratie naar een *myConfig. yaml* -bestand. Gebruik een sleutel filter om de sleutels die beginnen met instellingen te downloaden **.**.. Als het sleutel filter in uw geval niet voldoende is om sleutels van Key Vault verwijzingen uit te sluiten, kunt u het argument **----overs Laan** gebruiken om ze uit te sluiten. 
+## <a name="pass-configuration-from-app-configuration-in-helm-install"></a>Configuratie uit App Configuration doorgeven aan Helm-installatie ##
+Download de configuratie uit App Configuration eerst naar een *myConfig.yaml*-bestand. Gebruik een sleutelfilter om alleen de sleutels te downloaden die met **settings.** beginnen. Als het sleutelfilter in uw geval niet voldoende is om sleutels uit te sluiten van sleutelkluisverwijzingen, kunt u het argument **--skip-keyvault** gebruiken om ze uit te sluiten. 
 
 > [!TIP]
-> Meer informatie over de [export opdracht](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
+> Meer informatie over de [exportopdracht](https://docs.microsoft.com/cli/azure/appconfig/kv?view=azure-cli-latest#az-appconfig-kv-export). 
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path myConfig.yaml --key "settings.*"  --separator "." --format yaml
 ```
 
-Down load geheimen vervolgens naar een bestand met de naam *mySecrets. yaml*. Het opdracht regel argument **--Resolve-met sleutel kluis** worden de Key Vault verwijzingen omgezet door de werkelijke waarden op te halen in Key Vault. U moet deze opdracht uitvoeren met referenties die toegangs machtigingen hebben voor de bijbehorende Key Vault.
+Download vervolgens geheimen naar een bestand genaamd *mySecrets.yaml*. Het opdrachtregelargument **--resolve-keyvault** lost de sleutelkluisverwijzingen op door de daadwerkelijke waarden op te halen in Sleutelkluis. U moet deze opdracht uitvoeren met aanmeldingsgegevens die toegangsmachtigingen voor de bijbehorende sleutelkluis hebben.
 
 > [!WARNING]
-> Wanneer dit bestand gevoelige informatie bevat, moet u het bestand zorgvuldig en opschonen wanneer het niet meer nodig is.
+> Aangezien dit bestand gevoelige gegevens bevat, moet u het veilig opslaan en moet u het verwijderen wanneer u het niet meer nodig hebt.
 
 ```azurecli-interactive
 az appconfig kv export -n myAppConfiguration -d file --path mySecrets.yaml --key "secrets.*" --separator "." --resolve-keyvault --format yaml
 ```
 
-Gebruik helm upgrade **-f** argument voor het door geven van de twee configuratie bestanden die u hebt gemaakt. Ze overschrijven de configuratie waarden die zijn gedefinieerd in *Values. yaml* met de waarden die zijn geëxporteerd uit de app-configuratie.
+Gebruik het argument **-f** van de Helm-upgrade om de twee configuratiebestanden door te geven die u hebt gemaakt. Ze overschrijven de configuratiewaarden die in *values.yaml* zijn gedefinieerd met de waarden die uit App Configuration zijn geëxporteerd.
 
 ```console
 helm upgrade --install -f myConfig.yaml -f mySecrets.yaml "example" ./mychart 
 ```
 
-U kunt ook het argument **--set** gebruiken voor helm-upgrade om letterlijke sleutel waarden door te geven. Het gebruik van het argument **--set** is een goede manier om te voor komen dat gevoelige gegevens worden bewaard op schijf. 
+U kunt ook het argument **--set** voor de Helm-upgrade gebruiken om letterlijke sleutelwaarden door te geven. Het gebruik van het argument **--set** is een goede manier om permanente gevoelige gegevens op schijf te voorkomen. 
 
 ```powershell
 $secrets = az appconfig kv list -n myAppConfiguration --key "secrets.*" --resolve-keyvault --query "[*].{name:key, value:value}" | ConvertFrom-Json
@@ -225,11 +225,11 @@ else{
 
 ```
 
-Controleer of de configuraties en geheimen zijn ingesteld door toegang te krijgen tot het [Kubernetes-dash board](https://docs.microsoft.com/azure/aks/kubernetes-dashboard). U ziet dat de **kleur** en **bericht** waarden van de app-configuratie zijn ingevuld in de omgevings variabelen van de container.
+Verifieer dat configuraties en geheimen succesvol zijn ingesteld door het [Kubernetes-dashboard](https://docs.microsoft.com/azure/aks/kubernetes-dashboard) te openen. U ziet dat de waarden voor **color** en **message** uit App Configuration zijn ingevuld in de omgevingsvariabelen van de container.
 
 ![Quickstart voor het lokaal starten van een app](./media/kubernetes-dashboard-env-variables.png)
 
-Er is ook een geheim, **wacht woord**, opgeslagen als Key Vault referentie in de app-configuratie toegevoegd aan Kubernetes geheimen. 
+Eén geheim, **password**, dat als sleutelkluisverwijzing in App Configuration is opgeslagen, is ook toegevoegd aan Kubernetes-geheimen. 
 
 ![Quickstart voor het lokaal starten van een app](./media/kubernetes-dashboard-secrets.png)
 
@@ -239,7 +239,7 @@ Er is ook een geheim, **wacht woord**, opgeslagen als Key Vault referentie in de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u Azure-app configuratie gegevens geëxporteerd die moeten worden gebruikt in een Kubernetes-implementatie met helm. Ga verder met de voor beelden van Azure CLI voor meer informatie over het gebruik van app-configuratie.
+In deze zelfstudie hebt u Azure App Configuration-gegevens geëxporteerd die moeten worden gebruikt in een Kubernetes-implementatie met Helm. Voor meer informatie over het gebruik van App Configuration gaat u verder naar de Azure CLI-voorbeelden.
 
 > [!div class="nextstepaction"]
 > [Azure-CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)

@@ -1,6 +1,6 @@
 ---
-title: Zelf studie-Azure-toolkit voor IntelliJ (Spark-toepassing)
-description: 'Zelf studie: gebruik de Azure-toolkit voor IntelliJ voor het ontwikkelen van Spark-toepassingen die zijn geschreven in scala en verzend deze naar een Apache Spark groep (preview).'
+title: Zelfstudie - Azure-toolkit voor IntelliJ (Spark-toepassing)
+description: Zelfstudie - Gebruik de Azure-toolkit voor IntelliJ om Spark-toepassingen, die in Scala worden geschreven, te ontwikkelen en naar een Apache Spark-pool te verzenden (preview).
 services: synapse-analytics
 author: v-jiche
 ms.author: v-jiche
@@ -8,266 +8,267 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 62546fc98429c3a28217b1992f803aa40ce615c8
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982340"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644862"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Zelf studie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor Spark-Pools te maken (preview)
+# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Zelfstudie: Azure-toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor Spark-pools te maken (preview)
 
-In deze zelf studie wordt gedemonstreerd hoe u de Azure-toolkit voor IntelliJ-invoeg toepassing gebruikt voor het ontwikkelen van Apache Spark toepassingen, die zijn geschreven in [scala](https://www.scala-lang.org/), en ze vervolgens rechtstreeks vanuit de IntelliJ Integrated Development Environment (IDE) naar een Spark-groep (preview) verzenden. U kunt de invoeg toepassing op een paar manieren gebruiken:
+Deze zelfstudie demonstreert hoe u de invoegtoepassing Azure-toolkit voor IntelliJ gebruikt om Apache Spark-toepassingen, die in [Scala](https://www.scala-lang.org/) worden geschreven, te ontwikkelen en naar een Spark-pool te verzenden (preview), rechtstreeks vanuit de IntelliJ-IDE (Integrated Development Environment). U kunt de invoegtoepassing op een paar manieren gebruiken:
 
-- Ontwikkel en verzend een scala Spark-toepassing in een Spark-pool.
-- Toegang tot uw Spark-Pools resources.
-- Ontwikkel en voer lokaal een scala Spark-toepassing uit.
+- Ontwikkel een Scala Spark-toepassing en verzend deze naar een Spark-pool.
+- Verkrijg toegang tot de resources van uw Spark-pools.
+- Ontwikkel een Scala Spark-toepassing en voer deze lokaal uit.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 >
-> - De Azure-toolkit voor IntelliJ-invoeg toepassing gebruiken
+> - De invoegtoepassing Azure-toolkit voor IntelliJ gebruiken
 > - Apache Spark-toepassingen ontwikkelen
-> - Toepassing naar Spark-Pools verzenden
+> - Toepassingen naar Spark-pools verzenden
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [IntelliJ-idee Community-versie](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
-- Azure Toolkit-invoeg toepassing 3.27.0-2019.2-installeren vanuit [IntelliJ-invoeg toepassing opslag plaats](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-- [Jdk (versie 1,8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
-- Scala-invoeg toepassing: installeren vanuit [IntelliJ-invoeg toepassing](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
-- Deze vereiste is alleen voor Windows-gebruikers.
+- [IntelliJ IDEA-communityversie](https://www.jetbrains.com/idea/download/download-thanks.html?platform=windows&code=IIC).
+- Invoegtoepassing Azure-toolkit 3.27.0-2019.2 – Installeren vanuit [Opslagplaats voor IntelliJ-invoegtoepassingen](/java/azure/intellij/azure-toolkit-for-intellij-installation?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [JDK (versie 1.8)](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
+- Scala-invoegtoepassing – Installeren vanuit [Opslagplaats voor IntelliJ-invoegtoepassingen](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
+- Deze vereiste geldt alleen voor Windows-gebruikers.
 
-  Terwijl u de lokale Spark scala-toepassing uitvoert op een Windows-computer, kunt u een uitzonde ring krijgen, zoals wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). De uitzonde ring treedt op omdat WinUtils. exe ontbreekt in Windows.
-  U kunt deze fout oplossen door het [uitvoer bare bestand WinUtils](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) te downloaden naar een locatie zoals **C:\WinUtils\bin**. Voeg vervolgens de omgevings variabele **HADOOP_HOME**toe en stel de waarde van de variabele in op **C:\WinUtils**.
+  Terwijl u de lokale Spark Scala-toepassing uitvoert op een Windows-computer, kan er een uitzondering optreden, zoals uitgelegd in [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356). De uitzondering treedt op omdat WinUtils.exe ontbreekt op Windows.
+  Om deze fout op te lossen, downloadt u het [uitvoerbare bestand WinUtils](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) naar een locatie zoals **C:\WinUtils\bin**. Vervolgens voegt u de omgevingsvariabele **HADOOP_HOME** toe en stelt u de waarde van de variabele in op **C:\WinUtils**.
 
-## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Een Spark scala-toepassing maken voor een Spark-groep
+## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Een Spark Scala-toepassing maken voor een Spark-pool
 
 1. Start IntelliJ IDEA en selecteer **Create New Project** om het venster **New Project** te openen.
-2. Selecteer **Apache Spark/HDInsight** in het linkerdeel venster.
-3. Selecteer **Spark-project met voor beelden (scala)** in het hoofd venster.
-4. Selecteer een van de volgende typen in de vervolg keuzelijst **Build Tool** :
+2. Selecteer **Apache Spark/HDInsight** in het linkerdeelvenster.
+3. Selecteer **Spark Project met voorbeelden (Scala)** in het hoofdvenster.
+4. Selecteer in de vervolgkeuzelijst **Build-hulpprogramma** een van de volgende typen:
 
    - **Maven**, voor de ondersteuning van de wizard Scala-project maken.
    - **SBT**, voor het beheren van de afhankelijkheden en het maken van het Scala-project.
 
-    ![Het dialoog venster IntelliJ-idee nieuw project](./media/intellij-tool-synapse/create-synapse-application01.png)
+    ![IntelliJ IDEA-dialoogvenster Nieuw project](./media/intellij-tool-synapse/create-synapse-application01.png)
 
-5. Selecteer **Volgende**.
+5. Selecteer **Next**.
 6. Geef in het venster **New project** de volgende gegevens op:
 
     | Eigenschap | Beschrijving |
     | ----- | ----- |
     |Projectnaam| Voer een naam in. In deze zelfstudie wordt `myApp` gebruikt.|
-    |Project&nbsp;location| Voer de gewenste locatie in om uw project op te slaan.|
-    |Project SDK| Dit kan leeg zijn in uw eerste gebruik van het idee. Selecteer **New...** en ga naar uw JDK.|
-    |Spark version|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Synapse ondersteunt alleen **Spark 2.4.0**.|
+    |Project&nbsp;location| Voer de gewenste locatie in om uw project in op te slaan.|
+    |Project SDK| Als u IDEA voor het eerst gebruikt, is dit veld wellicht leeg. Selecteer **New...** en ga naar uw JDK.|
+    |Spark-versie|De wizard voor het maken van het project integreert de juiste versie voor Spark SDK en Scala SDK. Synapse ondersteunt alleen **Spark 2.4.0**.|
+    |||
 
     ![De Apache Spark SDK selecteren](./media/intellij-tool-synapse/create-synapse-application02.png)
 
 7. Selecteer **Finish**. Het kan enkele minuten duren voordat het project beschikbaar wordt.
-8. Het Spark-project maakt automatisch een artefact voor u. Ga als volgt te werk om het artefact weer te geven:
+8. Het Spark-project maakt automatisch een artefact voor u. Doe het volgende om het artefact te bekijken:
 
-   a. Navigeer in de menu balk naar **bestand** > **project structuur...**.
+   a. Navigeer in de menubalk naar **Bestand** > **Projectstructuur...** .
 
-   b. Selecteer **artefacten**in het venster **project structuur** .
+   b. Selecteer in het venster **Projectstructuur** de optie **Artefacten**.
 
-   c. Selecteer **Annuleren** nadat u het artefact hebt weer gegeven.
+   c. Selecteer **Annuleren** nadat u het artefact hebt bekeken.
 
-    ![Artefact gegevens in het dialoog venster](./media/intellij-tool-synapse/default-artifact-dialog.png)
+    ![Artefactgegevens in het dialoogvenster](./media/intellij-tool-synapse/default-artifact-dialog.png)
 
-9. Zoeken **naar LogQuery** van de**main** > **scala** **myApp** > **src** > > **sample**-voorbeeld> **LogQuery**van Mijntoep src. Deze zelf studie maakt gebruik van **LogQuery** om uit te voeren.
+9. Zoek **LogQuery** in **myApp** > **src** > **main** > **scala**> **sample**> **LogQuery**. Deze zelfstudie maakt gebruik van **LogQuery** om te worden uitgevoerd.
 
-   ![Opdrachten voor het maken van een scala-klasse van project](./media/intellij-tool-synapse/select-run-file.png)
+   ![Opdrachten voor het maken van een Scala-klasse uit Project](./media/intellij-tool-synapse/select-run-file.png)
 
-## <a name="connect-to-your-spark-pools"></a>Verbinding maken met uw Spark-Pools
+## <a name="connect-to-your-spark-pools"></a>Verbinding maken met uw Spark-pools
 
-Meld u aan bij het Azure-abonnement om verbinding te maken met uw Spark-Pools.
+Meld u aan bij uw Azure-abonnement om verbinding te maken met uw Spark-pools.
 
-### <a name="sign-in-to-your-azure-subscription"></a>Meld u aan bij uw Azure-abonnement
+### <a name="sign-in-to-your-azure-subscription"></a>Aanmelden bij uw Azure-abonnement
 
-1. Ga in de menu balk naar het **View** > **hulp programma Windows** > **Azure Verkenner**bekijken.
+1. Navigeer in de menubalk naar **Beeld** > **Hulpprogrammavensters** > **Azure Explorer**.
 
-   ![IntelliJ-idee toont Azure Explorer](./media/intellij-tool-synapse/show-azure-explorer1.png)
+   ![IntelliJ IDEA toont Azure Explorer](./media/intellij-tool-synapse/show-azure-explorer1.png)
 
-2. Klik in azure Verkenner met de rechter muisknop op het **Azure** -knoop punt en selecteer **Aanmelden**.
+2. Klik in Azure Explorer met de rechtermuisknop op het knooppunt **Azure** en selecteer **Aanmelden**.
 
-   ![IntelliJ-ideeën Verkenner met de rechter muisknop op Azure](./media/intellij-tool-synapse/explorer-rightclick-azure.png)
+   ![Met rechtermuisknop op Azure klikken in IntelliJ IDEA-verkenner](./media/intellij-tool-synapse/explorer-rightclick-azure.png)
 
-3. Kies **apparaat aanmelden**in het dialoog venster **Azure-aanmelding** en selecteer **Aanmelden**.
+3. Kies in het dialoogvenster **Azure-aanmelding** de optie **Apparaataanmelding** en selecteer **Aanmelden**.
 
-    ![IntelliJ-idee Azure-aanmelding](./media/intellij-tool-synapse/intellij-view-explorer2.png)
+    ![Azure-aanmelding in IntelliJ IDEA](./media/intellij-tool-synapse/intellij-view-explorer2.png)
 
-4. Klik in het dialoog venster **Aanmelden bij Azure-apparaat** op **kopiëren&openen**.
+4. Klik in het dialoogvenster **Azure-apparaataanmelding** op **Kopiëren en openen**.
 
-   ![IntelliJ-idee Azure-apparaat aanmelden](./media/intellij-tool-synapse/intellij-view-explorer5.png)
+   ![Azure-apparaataanmelding in IntelliJ IDEA](./media/intellij-tool-synapse/intellij-view-explorer5.png)
 
-5. Plak de code in de browser interface en klik vervolgens op **volgende**.
+5. Plak de code in de browserinterface en klik op **Volgende**.
 
-   ![Micro soft voert het dialoog venster code in voor HDI](./media/intellij-tool-synapse/intellij-view-explorer6.png)
+   ![Microsoft betreedt codedialoogvenster voor HDI](./media/intellij-tool-synapse/intellij-view-explorer6.png)
 
-6. Voer uw Azure-referenties in en sluit de browser.
+6. Voer uw referenties voor Azure in en sluit de browser.
 
-   ![Micro soft voert het dialoog venster e-mail voor HDI in](./media/intellij-tool-synapse/intellij-view-explorer7.png)
+   ![Microsoft betreedt e-maildialoogvenster voor HDI](./media/intellij-tool-synapse/intellij-view-explorer7.png)
 
-7. Nadat u bent aangemeld, worden in het dialoog venster **abonnementen selecteren** een lijst weer gegeven met alle Azure-abonnementen die zijn gekoppeld aan de referenties. Selecteer uw abonnement en klik vervolgens op **selecteren**.
+7. Zodra u bent aangemeld, toont het dialoogvenster **Abonnementen selecteren** alle Azure-abonnementen die aan de referenties zijn gekoppeld. Selecteer uw abonnement en klik op **Selecteren**.
 
     ![Het dialoogvenster Abonnementen selecteren](./media/intellij-tool-synapse/Select-Subscriptions.png)
 
-8. Vouw in **Azure Explorer** **Apache Spark uit op Synapse** om de werk ruimten in uw abonnementen weer te geven.
+8. Vouw in **Azure Explorer** de optie **Apache Spark in Synapse** uit om de werkruimten te bekijken die in uw abonnementen staan.
 
-    ![Hoofd weergave van IntelliJ-idee Azure Explorer](./media/intellij-tool-synapse/azure-explorer-workspace.png)
+    ![Azure Explorer-hoofdweergave in IntelliJ IDEA](./media/intellij-tool-synapse/azure-explorer-workspace.png)
 
-9. Als u de Spark-groepen wilt weer geven, kunt u een werk ruimte verder uitbreiden.
+9. Als u de Spark-pools wilt bekijken, kunt u een werkruimte verder uitvouwen.
 
-    ![Azure Explorer-opslag accounts](./media/intellij-tool-synapse/azure-explorer-pool.png)
+    ![Azure Explorer-opslagaccounts](./media/intellij-tool-synapse/azure-explorer-pool.png)
 
-## <a name="remote-run-a-spark-scala-application-on-a-spark-pool"></a>Extern een Spark scala-toepassing uitvoeren op een Spark-groep
+## <a name="remote-run-a-spark-scala-application-on-a-spark-pool"></a>Een Spark Scala-toepassing extern uitvoeren in een Spark-pool
 
-Nadat u een scala-toepassing hebt gemaakt, kunt u deze op afstand uitvoeren.
+Nadat u een Scala-toepassing hebt gemaakt, kunt u deze extern uitvoeren.
 
-1. Klik op het pictogram **uitvoeren/configuratie van fouten opsporen** .
+1. Open het venster **Uitvoeren/fouten opsporen van configuraties** door op het pictogram te klikken.
 
     ![De opdracht Spark-toepassing verzenden naar HDInsight](./media/intellij-tool-synapse/open-configuration-window.png)
 
-2. Klik in het dialoog venster **configuraties voor uitvoeren/fout opsporing** op **+** en selecteer **Apache Spark op Synapse**.
+2. Klik in het dialoogvenster **Uitvoeren/fouten opsporen van configuraties** op **+** en selecteer **Apache Spark in Synapse**.
 
     ![De opdracht Spark-toepassing verzenden naar HDInsight](./media/intellij-tool-synapse/create-synapse-configuration02.png)
 
-3. Geef in het venster **configuraties voor uitvoeren/fout opsporing** de volgende waarden op en selecteer **OK**:
+3. Geef in het venster **Uitvoeren/fouten opsporen van configuraties** de volgende waarden op en selecteer **OK**:
 
     |Eigenschap |Waarde |
     |----|----|
-    |Spark-Pools|Selecteer de Spark-Pools waarop u de toepassing wilt uitvoeren.|
-    |Een artefact selecteren om in te dienen|De standaard instelling ongewijzigd.|
-    |Naam van hoofd klasse|De standaard waarde is de hoofd klasse van het geselecteerde bestand. U kunt de klasse wijzigen door het beletsel teken (**...**) te selecteren en een andere klasse te kiezen.|
-    |Taak configuraties|U kunt de standaard sleutel en-waarden wijzigen. Zie [Apache Livy rest API](https://livy.incubator.apache.org./docs/latest/rest-api.html)voor meer informatie.|
-    |Opdrachtregelargumenten|Als dat nodig is, kunt u argumenten door geven die worden gescheiden door de ruimte voor de hoofd klasse.|
-    |Potten waarnaar wordt verwezen en waarnaar wordt verwezen|U kunt de paden voor de potten en bestanden waarnaar wordt verwezen, opgeven. U kunt ook bladeren door bestanden in het virtuele bestands systeem van Azure, dat momenteel alleen ondersteuning biedt voor ADLS Gen2 cluster. Voor meer informatie: [Apache Spark configuratie](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) en [het uploaden van resources naar het cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
-    |Upload opslag van taken|Uitvouwen om extra opties weer te geven.|
-    |Opslagtype|Selecteer **Azure-Blob gebruiken om te uploaden** uit de vervolg keuzelijst.|
-    |Opslagaccount|Voer uw opslag account in.|
-    |Opslag sleutel|Voer uw opslag sleutel in.|
-    |Opslag container|Selecteer uw opslag container in de vervolg keuzelijst zodra het **opslag account** en de **opslag sleutel** zijn ingevoerd.|
+    |Spark-pools|Selecteer de Spark-pools waarop u uw toepassing wilt uitvoeren.|
+    |Selecteer een artefact om te verzenden|Laat de standaardinstelling staan.|
+    |Hoofdklassenaam|De standaardwaarde is de hoofdklasse uit het geselecteerde bestand. U kunt de klasse wijzigen door het beletselteken ( **...** ) te selecteren en een andere klasse te kiezen.|
+    |Taakconfiguraties|U kunt de standaardsleutel en -waarden wijzigen. Zie [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) voor meer informatie.|
+    |Opdrachtregelargumenten|U kunt voor de hoofdklasse argumenten invoeren, gescheiden door een spatie, indien nodig.|
+    |JAR’s en bestanden waarnaar wordt verwezen|U kunt de paden invoeren voor de JAR’s en bestanden waarnaar wordt verwezen, indien aanwezig. U kunt ook bladeren door bestanden in het virtuele Azure-bestandssysteem, dat momenteel alleen ADLS Gen2-cluster ondersteunt. Voor meer informatie: [Apache Spark-configuratie](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) en [Resources uploaden naar cluster](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Opslag van taakuploads|Vouw uit om aanvullende opties te onthullen.|
+    |Opslagtype|Selecteer **Azure Blob gebruiken om te uploaden** in de vervolgkeuzelijst.|
+    |Opslagaccount|Voer uw opslagaccount in.|
+    |Opslagsleutel|Voer uw opslagsleutel in.|
+    |Opslagcontainer|Selecteer uw opslagcontainer in de vervolgkeuzelijst zodra **Opslagaccount** en **Opslagsleutel** zijn ingevoerd.|
 
-    ![Het dialoog venster voor de verzen ding van Spark](./media/intellij-tool-synapse/create-synapse-configuration03.png)
+    ![Het dialoogvenster voor de verzending van Spark](./media/intellij-tool-synapse/create-synapse-configuration03.png)
 
-4. Klik op **SparkJobRun** pictogram om het project naar de geselecteerde Spark-groep te verzenden. Op de **externe Spark-taak in** het tabblad cluster wordt de voortgang van de taak uitvoering onderaan weer gegeven. U kunt de toepassing stoppen door te klikken op de knop rood.
+4. Klik op het pictogram **SparkJobRun** om uw project te verzenden naar de geselecteerde Spark-pool. Onderaan het tabblad **Externe Spark-taak in cluster** wordt de voortgang van de taakuitvoering weergegeven. U kunt de toepassing stoppen door op de rode knop te klikken.
 
-    ![Inzendings venster Apache Spark](./media/intellij-tool-synapse/remotely-run-synapse.png)
+    ![Venster voor verzending van Apache Spark](./media/intellij-tool-synapse/remotely-run-synapse.png)
 
-    ![Het dialoog venster voor de verzen ding van Spark](./media/intellij-tool-synapse/remotely-run-result.png)
+    ![Het dialoogvenster voor de verzending van Spark](./media/intellij-tool-synapse/remotely-run-result.png)
 
-## <a name="local-rundebug-apache-spark-applications"></a>Lokale toepassingen voor uitvoeren/fouten opsporen Apache Spark
+## <a name="local-rundebug-apache-spark-applications"></a>Lokaal uitvoeren/fouten opsporen van Apache Spark-toepassingen
 
-U kunt de onderstaande instructies volgen om uw lokale uitvoerings-en lokale fout opsporing in te stellen voor uw Apache Spark-taak.
+U kunt de onderstaande instructies volgen om uw lokale uitvoering en lokale foutopsporing voor uw Apache Spark-taak in te stellen.
 
-### <a name="scenario-1-do-local-run"></a>Scenario 1: lokale uitvoering uitvoeren
+### <a name="scenario-1-do-local-run"></a>Scenario 1: Lokaal uitvoeren
 
-1. Open het dialoog venster **configuraties voor uitvoeren/fout opsporing** en selecteer het**+** plus teken (). Selecteer vervolgens de optie **Apache Spark op Synapse** . Voer informatie in voor **naam**, **naam van hoofd klasse** om op te slaan.
+1. Open het dialoogvenster **Uitvoeren/fouten opsporen van configuraties** en selecteer het plusteken ( **+** ). Selecteer vervolgens de optie **Apache Spark in Synapse**. Voer informatie in voor **Naam**, **Hoofdklassenaam** om op te slaan.
 
-    ![IntelliJ voor fout opsporing uitvoeren in lokale uitvoering](./media/intellij-tool-synapse/local-run-synapse.png)
+    ![Lokaal uitvoeren in Uitvoeren/fouten opsporen van configuraties in IntelliJ](./media/intellij-tool-synapse/local-run-synapse.png)
 
-    - Omgevings variabelen en WinUtils. exe-locatie zijn alleen voor Windows-gebruikers.
-    - Omgevings variabelen: de systeem omgevingsvariabele kan automatisch worden gedetecteerd als u deze eerder hebt ingesteld en niet hand matig moet worden toegevoegd.
-    - [Locatie van WinUtils. exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): u kunt de locatie van de WinUtils opgeven door aan de rechter kant op het mappictogram te klikken.
+    - Omgevingsvariabelen en WinUtils.exe-locatie zijn alleen voor Windows-gebruikers.
+    - Omgevingsvariabelen: De systeemomgevingsvariabele kan automatisch worden gedetecteerd als u deze eerder hebt ingesteld, zodat u deze niet handmatig hoeft toe te voegen.
+    - [WinUtils.exe-locatie](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): U kunt de WinUtils-locatie opgeven door aan de rechterkant op het mappictogram te klikken.
 
-2. Klik vervolgens op de knop lokaal afspelen.
+2. Klik vervolgens op de knop Lokaal afspelen.
 
-    ![IntelliJ voor fout opsporing uitvoeren in lokale uitvoering](./media/intellij-tool-synapse/local-run-synapse01.png)
+    ![Lokaal uitvoeren in Uitvoeren/fouten opsporen van configuraties in IntelliJ](./media/intellij-tool-synapse/local-run-synapse01.png)
 
-3. Zodra de lokale uitvoering is voltooid, kunt u het uitvoer bestand **controleren op basis** > van de**__standaard__** waarden als het script uitvoer bevat.
+3. Zodra de lokale uitvoering is voltooid, kunt u (als het script uitvoer bevat) het uitvoerbestand controleren via **gegevens** > **__standaard__**.
 
-    ![Resultaat van lokale uitvoering van IntelliJ-project](./media/intellij-tool-synapse/spark-local-run-result.png)
+    ![Resultaat lokale uitvoering IntelliJ-project](./media/intellij-tool-synapse/spark-local-run-result.png)
 
-### <a name="scenario-2-do-local-debugging"></a>Scenario 2: lokale fout opsporing uitvoeren
+### <a name="scenario-2-do-local-debugging"></a>Scenario 2: Lokaal fouten opsporen
 
-1. Open het script **LogQuery** en stel onderbrekings punten in.
-2. Klik op **lokaal debug** -pictogram om lokale fout opsporing uit te voeren.
+1. Open het **LogQuery**-script en stel onderbrekingspunten in.
+2. Klik op het pictogram **Lokale foutopsporing** om lokaal fouten op te sporen.
 
-    ![Resultaat van lokale uitvoering van IntelliJ-project](./media/intellij-tool-synapse/local-debug-synapse.png)
+    ![Resultaat lokale uitvoering IntelliJ-project](./media/intellij-tool-synapse/local-debug-synapse.png)
 
-## <a name="access-and-manage-synapse-workspace"></a>Toegang tot en beheer van de Synapse-werk ruimte
+## <a name="access-and-manage-synapse-workspace"></a>Synapse-werkruimte openen en beheren
 
-U kunt binnen Azure-toolkit voor IntelliJ verschillende bewerkingen uitvoeren in azure Verkenner. Ga in de menu balk naar het **View** > **hulp programma Windows** > **Azure Verkenner**bekijken.
+U kunt verschillende bewerkingen in Azure Explorer uitvoeren in Azure-toolkit voor IntelliJ. Navigeer in de menubalk naar **Beeld** > **Hulpprogrammavensters** > **Azure Explorer**.
 
-### <a name="launch-workspace"></a>Werk ruimte starten
+### <a name="launch-workspace"></a>Werkruimte starten
 
-1. Ga in azure Verkenner naar **Apache Spark op Synapse**en vouw dit uit.
+1. Navigeer in Azure Explorer naar **Apache Spark in Synapse** en vouw het uit.
 
-    ![Hoofd weergave van IntelliJ-idee Azure Explorer](./media/intellij-tool-synapse/azure-explorer-workspace.png)
+    ![Azure Explorer-hoofdweergave in IntelliJ IDEA](./media/intellij-tool-synapse/azure-explorer-workspace.png)
 
-2. Klik met de rechter muisknop op een werk ruimte en selecteer vervolgens **werk ruimte starten**, website wordt geopend.
+2. Klik met de rechtermuisknop op een werkruimte en selecteer **Werkruimte starten**, waarna een website wordt geopend.
 
-    ![Details van de toepassing Spark-taak weergave](./media/intellij-tool-synapse/launch-workspace-synapse.png)
+    ![Toepassingsdetails weergeven in Spark-taak](./media/intellij-tool-synapse/launch-workspace-synapse.png)
 
-    ![Details van de toepassing Spark-taak weergave](./media/intellij-tool-synapse/launch-workspace-result.png)
+    ![Toepassingsdetails weergeven in Spark-taak](./media/intellij-tool-synapse/launch-workspace-result.png)
 
 ## <a name="spark-console"></a>Spark-console
 
-U kunt een lokale Spark-console (scala) uitvoeren of een Spark livy-console (scala) uitvoeren.
+U kunt de lokale Spark-console (Scala) uitvoeren of de interactieve Spark Livy-sessieconsole (Scala) uitvoeren.
 
-### <a name="spark-local-console-scala"></a>Spark lokale console (scala)
+### <a name="spark-local-console-scala"></a>Lokale Spark-console (Scala)
 
-Zorg ervoor dat u tevreden bent over de WINUTILS. EXE-vereiste.
+Verzeker dat u aan de WINUTILS.EXE-vereiste voldoet.
 
-1. Navigeer in de menu balk naar > **bewerkings configuraties uitvoeren...**. **Run**
-2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op Synapse** > **[Spark op Synapse] MyApp**.
-3. Selecteer in het hoofd venster het tabblad **lokaal uitvoeren** .
+1. Navigeer in de menubalk naar **Uitvoeren** > **Configuraties bewerken...** .
+2. Navigeer in het linkerdeelvenster van het venster **Uitvoeren/fouten opsporen van configuraties** naar **Apache Spark in Synapse** >  **[Spark in Synapse] myApp**.
+3. Selecteer in het hoofdvenster het tabblad **Lokaal uitvoeren**.
 4. Geef de volgende waarden op en selecteer **OK**:
 
     |Eigenschap |Waarde |
     |----|----|
-    |Omgevingsvariabelen|Zorg ervoor dat de waarde voor HADOOP_HOME juist is.|
-    |Locatie van WINUTILS. exe|Zorg ervoor dat het pad juist is.|
+    |Omgevingsvariabelen|Verzeker dat de waarde voor HADOOP_HOME correct is.|
+    |WINUTILS.exe-locatie|Verzeker dat het pad correct is.|
 
-    ![Configuratie van lokale console instellen](./media/intellij-tool-synapse/local-console-synapse01.png)
+    ![Configuratie lokale consoleset](./media/intellij-tool-synapse/local-console-synapse01.png)
 
-5. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > **scala** > **Mijntoep**.
-6. Ga in de menu balk naar **extra** > **Spark console** > **uitvoeren Spark Local Console (scala)**.
-7. Vervolgens worden er twee dialoog vensters weer gegeven waarin u wordt gevraagd of u afhankelijkheden automatisch wilt oplossen. Als dit het geval is, selecteert u **automatisch oplossen**.
+5. Navigeer in Project naar **myApp** > **src** > **main** > **scala** > **myApp**.
+6. Navigeer in de menubalk naar **Hulpprogramma’s** > **Spark-console** > **Lokale Spark-console (Scala) uitvoeren**.
+7. Er kunnen dan twee dialoogvensters worden weergegeven waarin u wordt gevraagd of u afhankelijkheden automatisch wilt oplossen. Als u dat wilt doen, selecteert u **Automatisch oplossen**.
 
-    ![IntelliJ-idee Spark automatisch oplossen Dialog1](./media/intellij-tool-synapse/intellij-console-autofix1.png)
+    ![Dialoogvenster1 Automatisch oplossen in Spark in IntelliJ IDEA](./media/intellij-tool-synapse/intellij-console-autofix1.png)
 
-    ![IntelliJ-idee Spark automatisch oplossen dialog2](./media/intellij-tool-synapse/intellij-console-autofix2.png)
+    ![Dialoogvenster2 Automatisch oplossen in Spark in IntelliJ IDEA](./media/intellij-tool-synapse/intellij-console-autofix2.png)
 
-8. De-console moet er ongeveer als volgt uitzien. In het console venster typt `sc.appName`en druk vervolgens op CTRL + ENTER. Het resultaat wordt weer gegeven. U kunt de lokale console stoppen door te klikken op de knop rood.
+8. De console moet er ongeveer uitzien zoals in de onderstaande afbeelding. Typ `sc.appName` in het consolevenster en druk op Ctrl+Enter. Het resultaat wordt weergegeven. U kunt de lokale console stoppen door op de rode knop te klikken.
 
-    ![Resultaat van lokale console voor IntelliJ-ideeën](./media/intellij-tool-synapse/local-console-result.png)
+    ![Resultaat lokale console in IntelliJ IDEA](./media/intellij-tool-synapse/local-console-result.png)
 
-### <a name="spark-livy-interactive-session-console-scala"></a>Livy (scala) voor de interactieve sessie van Spark
+### <a name="spark-livy-interactive-session-console-scala"></a>Interactieve Spark Livy-sessieconsole (Scala)
 
-Het wordt alleen ondersteund op IntelliJ 2018,2 en 2018,3.
+Deze wordt alleen ondersteund in IntelliJ 2018.2 en 2018.3.
 
-1. Navigeer in de menu balk naar > **bewerkings configuraties uitvoeren...**. **Run**
+1. Navigeer in de menubalk naar **Uitvoeren** > **Configuraties bewerken...** .
 
-2. Ga in het linkerdeel venster van het venster **configuraties voor uitvoeren/fout opsporing** naar **Apache Spark op Synapse** > **[Spark op Synapse] MyApp**.
+2. Navigeer in het linkerdeelvenster van het venster **Uitvoeren/fouten opsporen van configuraties** naar **Apache Spark in Synapse** >  **[Spark in Synapse] myApp**.
 
-3. Selecteer in het hoofd venster het tabblad op **afstand uitvoeren op het cluster** .
+3. Selecteer in het hoofdvenster het tabblad **Extern uitvoeren in cluster**.
 
 4. Geef de volgende waarden op en selecteer **OK**:
 
     |Eigenschap |Waarde |
     |----|----|
-    |Spark-Pools|Selecteer de Spark-Pools waarop u de toepassing wilt uitvoeren.|
+    |Spark-pools|Selecteer de Spark-pools waarop u uw toepassing wilt uitvoeren.|
     ||
 
-    ![Configuratie van een interactieve console instellen](./media/intellij-tool-synapse/interactive-console-configuration.png)
+    ![Configuratie interactieve consoleset](./media/intellij-tool-synapse/interactive-console-configuration.png)
 
-5. Ga vanuit Project naar **Mijntoep** > **src** > **Main** > **scala** > **Mijntoep**.
+5. Navigeer in Project naar **myApp** > **src** > **main** > **scala** > **myApp**.
 
-6. Ga in de menu balk naar **extra** > **Spark-console** > en**Voer Spark livy Interactive Session console (scala)** uit.
-7. De-console moet er ongeveer als volgt uitzien. In het console venster typt `sc.appName`en druk vervolgens op CTRL + ENTER. Het resultaat wordt weer gegeven. U kunt de lokale console stoppen door te klikken op de knop rood.
+6. Navigeer in de menubalk naar **Hulpprogramma’s** > **Spark-console** > **Interactieve Spark Livy-sessieconsole (Scala) uitvoeren**.
+7. De console moet er ongeveer uitzien zoals in de onderstaande afbeelding. Typ `sc.appName` in het consolevenster en druk op Ctrl+Enter. Het resultaat wordt weergegeven. U kunt de lokale console stoppen door op de rode knop te klikken.
 
-    ![Resultaat van interactieve console van IntelliJ-ideeën](./media/intellij-tool-synapse/interactive-console-result.png)
+    ![Resultaat interactieve console in IntelliJ IDEA](./media/intellij-tool-synapse/interactive-console-result.png)
 
-### <a name="send-selection-to-spark-console"></a>Selectie naar Spark-console verzenden
+### <a name="send-selection-to-spark-console"></a>Selectie verzenden naar Spark-console
 
-Het is handig om te voorzien in het script resultaat door het verzenden van code naar de lokale console of livy Interactive Session console (scala). U kunt bepaalde code markeren in het scala-bestand en vervolgens met de rechter muisknop op **selectie verzenden klikken naar Spark-console**. De geselecteerde code wordt naar de console verzonden en wordt uitgevoerd. Het resultaat wordt weer gegeven na de code in de-console. De console controleert de fouten als deze zich voordoen.
+Het is handig voor u om het scriptresultaat te voorzien door wat code naar de lokale console of de interactieve Livy-sessieconsole (Scala) te verzenden. U kunt wat code in het Scala-bestand markeren en vervolgens met de rechtermuisknop op **Selectie verzenden naar Spark-console** klikken. De geselecteerde code wordt dan naar de console verzonden en uitgevoerd. Het resultaat wordt achter de code weergegeven in de console. De console controleert de fouten, indien aanwezig.
 
-   ![Selectie naar Spark-console verzenden](./media/intellij-tool-synapse/send-selection-to-console.png)
+   ![Selectie verzenden naar Spark-console](./media/intellij-tool-synapse/send-selection-to-console.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Een nieuwe Apache Spark groep maken voor een Azure Synapse Analytics-werk ruimte](../../synapse-analytics/quickstart-create-apache-spark-pool.md)
+- [Een nieuwe Apache Spark-pool maken voor een Azure Synapse Analytics-werkruimte](../../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)

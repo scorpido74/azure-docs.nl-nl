@@ -60,6 +60,8 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Containerinstanties gebruiken
           href: deploy-form-recognizer-on-container-instances.md
+    - name: Modellen voor herstel na noodgeval kopiëren
+      href: disaster-recovery.md
 - name: Naslaginformatie
   items:
     - name: Form Recognizer-API v2.0
