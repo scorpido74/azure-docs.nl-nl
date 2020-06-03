@@ -3,24 +3,26 @@ title: Stromen exporteren van automatische stroom naar Azure Logic Apps
 description: Migreer stromen van automatische stroom naar Azure Logic Apps door te exporteren als Azure Resource Manager sjablonen
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75428887"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298717"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
 Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die stroom migreren van [Automatische stroom](https://flow.microsoft.com) naar [Azure Logic apps](../logic-apps/logic-apps-overview.md). U kunt uw stroom exporteren als een Azure Resource Manager sjabloon voor een logische app, de sjabloon Logic app implementeren naar een Azure-resource groep en die logische app vervolgens openen in de ontwerp functie voor logische apps.
 
 > [!NOTE]
-> Niet alle stroom verautomatiseerde connectors zijn beschikbaar in Azure Logic Apps. U kunt stromen met [gelijkwaardige connectors](../connectors/apis-list.md) importeren in azure Logic apps. De knop trigger, de goedkeurings connector en de notification connector zijn bijvoorbeeld specifiek voor het automatiseren van het energie verbruik.
+> Niet alle stroom verautomatiseerde connectors zijn beschikbaar in Azure Logic Apps. U kunt alleen stroom geautomatiseerde stromen met de equivalente connectors in Azure Logic Apps migreren. De knop trigger, de goedkeurings connector en de notification connector zijn bijvoorbeeld specifiek voor het automatiseren van het energie verbruik. Op dit moment worden OpenAPI stromen in energie automatisering niet ondersteund voor exporteren en implementeren als sjablonen voor logische apps.
 >
-> OpenAPI stromen die zijn geëxporteerd uit het automatiseren van de stroom worden momenteel niet ondersteund voor implementatie als sjablonen voor logische apps. 
+> * Als u wilt weten welke stroom lijnen voor automatische automatisering geen Logic Apps equivalenten hebben, raadpleegt u [connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)voor het automatiseren van de stroom.
+>
+> * Zie [Logic apps connectors](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)als u wilt weten welke Logic apps connectors geen energie automatisering hebben.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +32,7 @@ Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die s
 
 ## <a name="export-a-flow"></a>Een stroom exporteren
 
-1. Meld u aan bij [energie automatisering](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens (**...**). Selecteer **Export** > **Logic apps sjabloon exporteren (. json)**.
+1. Meld u aan bij [energie automatisering](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens (**...**). Selecteer **Export**  >  **Logic apps sjabloon exporteren (. json)**.
 
    ![Stroom exporteren](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -131,7 +133,7 @@ Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-c
 
    1. Sla uw oplossing op voordat u de logische app implementeert.
 
-1. Open in Solution Explorer het snelmenu project en selecteer**nieuwe** **implementeren** > . Meld u aan met uw Azure-account als u daarom wordt gevraagd.
+1. Open in Solution Explorer het snelmenu project en selecteer **Deploy**  >  **nieuwe**implementeren. Meld u aan met uw Azure-account als u daarom wordt gevraagd.
 
 1. Wanneer u hierom wordt gevraagd, bevestigt u het Azure-abonnement, de Azure-resource groep en alle andere instellingen die u wilt gebruiken voor implementatie, zoals een [parameter bestand](../azure-resource-manager/templates/parameter-files.md) dat moet worden gebruikt voor het door geven van sjabloon parameter waarden, en selecteer vervolgens **implementeren**.
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193716"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299771"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
 
@@ -40,6 +40,7 @@ Als referentie bieden de tips voor het afstemmen van prestaties momenteel sugges
 | Specifiek gegevens archief   | Gegevens laden in **Azure Synpase Analytics (voorheen SQL DW)**: suggesties voor het gebruik van de instructie poly base of Copy als deze niet wordt gebruikt. |
 | &nbsp;                | Gegevens kopiëren van/naar **Azure SQL database**: wanneer DTU onder een hoog gebruik komt, wordt er Voorst Ellen om een upgrade naar een hogere laag te maken. |
 | &nbsp;                | Kopiëren van gegevens van/naar **Azure Cosmos DB**: Wanneer ru onder een hoog gebruik komt, wordt een upgrade naar grotere ru Voorst Ellen. |
+|                       | Gegevens kopiëren uit **SAP-tabel**: bij het kopiëren van een grote hoeveelheid gegevens kunt u de optie voor het gebruik van de SAP-connector gebruiken om parallelle belasting in te scha kelen en het maximum partitie nummer te verhogen. |
 | &nbsp;                | Gegevens opnemen van **Amazon Redshift**: suggesties voor het gebruik van Unload als dit niet wordt gebruikt. |
 | Beperking van gegevens opslag | Als er tijdens het kopiëren een aantal lees-en schrijf bewerkingen worden beperkt door het gegevens archief, wordt er Voorst Ellen om de toegestane aanvraag snelheid voor het gegevens archief te controleren en te verhogen, of om de gelijktijdige werk belasting te verminderen. |
 | Integration runtime  | Als u een **zelf-hostend Integration runtime (IR)** gebruikt en de Kopieer activiteit lang in de wachtrij wacht totdat de IR beschik bare bron heeft om te worden uitgevoerd, kunt u de infra rood uitschalen. |
@@ -187,7 +188,7 @@ Hier vindt u de prestatie bewaking en het afstemmen van verwijzingen voor een aa
 ## <a name="next-steps"></a>Volgende stappen
 Zie de andere artikelen over Kopieer activiteiten:
 
-- [Overzicht van kopieeractiviteiten](copy-activity-overview.md)
+- [Overzicht van de Kopieer activiteit](copy-activity-overview.md)
 - [Gids voor de prestaties en schaal baarheid van de Kopieer activiteit](copy-activity-performance.md)
 - [Functies voor het optimaliseren van de activiteit prestaties](copy-activity-performance-features.md)
 - [Azure Data Factory gebruiken om gegevens van uw data Lake of Data Warehouse te migreren naar Azure](data-migration-guidance-overview.md)

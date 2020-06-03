@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ccb1a31761298d9dc4376684380702cf7cbd9a1f
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297129"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310067"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Problemen oplossen die verband houden met Azure Data Box Blob-opslag
 
@@ -26,7 +26,7 @@ In deze sectie vindt u een aantal problemen met het gebruik van Azure Storage Ex
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
 |Kan geen onderliggende resources ophalen. De waarde voor een van de HTTP-headers heeft niet de juiste indeling.|Selecteer in het menu **bewerken** de optie **doel-Azure stack-api's**. <br>Start Azure Storage Explorer opnieuw.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts-bestand op dit pad: <li>`C:\Windows\System32\drivers\etc\hosts`in Windows of </li><li> `/etc/hosts`op Linux.</li>|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op dit pad: <li>`C:\Windows\System32\drivers\etc\hosts`in Windows of </li><li> `/etc/hosts`op Linux.</li>|
 |Kan geen onderliggende resources ophalen. <br>Details: zelfondertekend certificaat |Importeer het TLS/SSL-certificaat voor uw apparaat in Azure Storage Explorer: <li>Down load het certificaat van de Azure Portal. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.</li><li>Selecteer in het menu **bewerken** de optie **SSL-certificaten** en selecteer vervolgens **certificaten importeren**.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>Fouten die worden weer gegeven in AzCopy voor Windows
@@ -35,8 +35,8 @@ In deze sectie vindt u een aantal problemen met het gebruik van AzCopy voor Wind
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven: <br>Kan de map https://niet inventariseren... De externe naam kan niet worden omgezet`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts `C:\Windows\System32\drivers\etc\hosts`-bestand op:.|
-|De AzCopy-opdracht lijkt een minuut vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie. De onderliggende verbinding is gesloten: er kan geen vertrouwens relatie tot stand worden gebracht voor het beveiligde SSL/TLS-kanaal.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
+|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven: <br>Kan de map https://niet inventariseren... De externe naam kan niet worden omgezet`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `C:\Windows\System32\drivers\etc\hosts` .|
+|De AzCopy-opdracht lijkt niet meer te reageren gedurende een minuut voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie. De onderliggende verbinding is gesloten: er kan geen vertrouwens relatie tot stand worden gebracht voor het beveiligde SSL/TLS-kanaal.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>Fouten die worden weer gegeven in AzCopy voor Linux
@@ -45,8 +45,8 @@ In deze sectie vindt u een aantal problemen met het gebruik van AzCopy voor Linu
 
 |Foutbericht  |Aanbevolen actie |
 |---------|---------|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. Apparaat of adres is niet beschikbaar|Controleer of de naam `<accountname>.blob.<serialnumber>.microsoftdatabox.com` van het eind punt is toegevoegd aan het hosts `/etc/hosts`-bestand op:.|
-|De AzCopy-opdracht lijkt 20 minuten vast te lopen voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie... De SSL-verbinding kan niet tot stand worden gebracht.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>` . Apparaat of adres is niet beschikbaar|Controleer of de naam van het eind punt `<accountname>.blob.<serialnumber>.microsoftdatabox.com` is toegevoegd aan het hosts-bestand op: `/etc/hosts` .|
+|De AzCopy-opdracht lijkt 20 minuten niet meer te reageren voordat deze fout wordt weer gegeven: <br>Fout bij het parseren van de bron locatie... De SSL-verbinding kan niet tot stand worden gebracht.|Importeer het TLS/SSL-certificaat voor uw apparaat in het certificaat archief van het systeem. Ga naar [het certificaat downloaden](data-box-deploy-copy-data-via-rest.md#download-certificate)voor meer informatie.|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>Fouten die worden weer gegeven in Azure Storage bibliotheek voor python
 
