@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u met Visual Studio code en Azure dev Spaces fouten oplost en snel uw Kubernetes-toepassingen kunt herhalen
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: c2f6f2ef072748bddee5b3004dc69f3a9c03be16
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996224"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307347"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hoe Visual Studio code werkt met Azure dev Spaces
 
@@ -42,7 +42,6 @@ Voor .NET core-projecten moet de C#- [extensie][csharp-extension] zijn geïnstal
 ## <a name="debug-your-service-in-aks"></a>Fout opsporing voor uw service in AKS
 
 Nadat u uw project hebt gestart, kunt u fouten opsporen in uw Java-, node. js-en .NET Core-Services die rechtstreeks vanuit Visual Studio code worden uitgevoerd in een dev-ruimte. De start configuratie in de `.vscode` Directory biedt extra informatie over fout opsporing voor het uitvoeren van een service met fout opsporing ingeschakeld in een dev-ruimte. Visual Studio code wordt ook gekoppeld aan het debugproces in de container die wordt uitgevoerd in uw ontwikkel ruimten, zodat u Verbreek punten kunt instellen, variabelen kunt inspecteren en andere fout opsporing kunt uitvoeren.
-
 
 ## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio code gebruiken met Azure dev Spaces
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158963"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299941"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Beveiligingswaarschuwingen en aanbevelingen exporteren
 
@@ -28,6 +28,21 @@ Met deze hulpprogram ma's kunt u het volgende doen:
 * Exporteren naar CSV (één keer)
 
 
+
+
+## <a name="availability"></a>Beschikbaarheid
+
+- Release status: **algemeen beschikbaar**
+- Vereiste rollen en machtigingen:
+    - **Lezer** op het abonnement dat de export configuratie bevat
+    - **Rol van beveiligings beheerder** voor de resource groep (of **eigenaar**)
+    - Moet ook schrijf machtigingen hebben voor de doel resource
+- Clouds 
+    - ✔ Commerciële Clouds
+    - ✔ US Gov
+    - ✘ China gov, andere gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>Een continue export instellen
 
 De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics werk ruimte of Azure Event Hubs in te stellen.
@@ -38,7 +53,7 @@ De onderstaande stappen zijn nodig om een doorlopende export naar Log Analytics 
     
 1. Selecteer in de zijbalk van de pagina instellingen voor dat abonnement **doorlopend exporteren**.
 
-    [Opties voor exporteren in azure Security Center ![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Hier ziet u de export opties. Er is een tabblad voor elk beschik bare export doel. 
+    [ ![ Export opties in azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) hier ziet u de export opties. Er is een tabblad voor elk beschik bare export doel. 
 
 1. Selecteer het gegevens type dat u wilt exporteren en kies uit de filters voor elk type (bijvoorbeeld alleen waarschuwingen met hoge Ernst exporteren).
 
@@ -128,5 +143,5 @@ Raadpleeg de volgende documentatie voor gerelateerde materialen:
 
 - [Documentatie over Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Informatie over Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/)
-- [Documentatie over Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Documentatie voor Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schema's voor werk stroom automatisering en doorlopend exporteren van gegevens typen](https://aka.ms/ASCAutomationSchemas)

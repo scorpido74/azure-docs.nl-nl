@@ -4,15 +4,15 @@ description: Beschrijft de vereiste client bibliotheken voor client toepassingen
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ee3de593e7795f155e8ca38ffac02cfaa80d171
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c02be378febacc4db0b077a3be69339ff9710a0
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232952"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300906"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Client bibliotheken voor het maken van verbinding met Analysis Services
 
@@ -20,12 +20,12 @@ Er zijn client bibliotheken nodig voor client toepassingen en hulpprogram ma's o
 
 ## <a name="download-the-latest-client-libraries-windows-installer"></a>Down load de nieuwste client bibliotheken (Windows Installer)  
 
-|Download  |Productversie  | 
+|Downloaden  |Productversie  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.37.40    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.37.40       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.7.0.1    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.7.0.1     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.42.26    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.42.26       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.2.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.2.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO en ADOMD (NuGet-pakketten)
 
@@ -33,8 +33,8 @@ Analysis Services-beheer objecten (AMO) en ADOMD-client bibliotheken zijn beschi
 
 |Pakket  | Productversie  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.7.0.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.7.0.1      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.2.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.2.0.2      |
 
 NuGet-pakket-assemblies AssemblyVersion volgen van semantische versie: primair. Secundair. Verzenden. NuGet verwijst naar de verwachte versie, zelfs als er sprake is van een andere versie in de GAC (als gevolg van MSI-installatie). De PATCH wordt voor elke release verhoogd. AMO-en ADOMD-versies worden in-sync bewaard.
 
@@ -54,11 +54,11 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
  De Analysis Services OLE DB-provider wordt automatisch geïnstalleerd door de meeste hulpprogram ma's en client toepassingen die worden gebruikt voor toegang tot Analysis Services-data bases. Het moet worden geïnstalleerd op computers die worden gebruikt om toegang te krijgen tot Analysis Services gegevens.  
   
- OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP. \<versie>. dll.
+ OLE DB providers worden vaak opgegeven in verbindings reeksen. Een Analysis Services connection string een andere nomenclatuur gebruikt om te verwijzen naar de OLE DB provider: MSOLAP. \<version> . bestand.
 
 ### <a name="amo"></a>AMO  
 
- AMO is een beheerde client bibliotheek die wordt gebruikt voor Server beheer en gegevens definitie. Het wordt geïnstalleerd en gebruikt door hulpprogram ma's en client toepassingen. SQL Server Management Studio (SSMS) gebruikt bijvoorbeeld AMO om verbinding te maken met Analysis Services. Een verbinding met AMO is doorgaans mini maal, bestaande uit `"data source=\<servername>"`. Nadat een verbinding tot stand is gebracht, gebruikt u de API om met database verzamelingen en hoofd objecten te werken. Zowel Visual Studio als SSMS gebruiken AMO om verbinding te maken met een Analysis Services-exemplaar.  
+ AMO is een beheerde client bibliotheek die wordt gebruikt voor Server beheer en gegevens definitie. Het wordt geïnstalleerd en gebruikt door hulpprogram ma's en client toepassingen. SQL Server Management Studio (SSMS) gebruikt bijvoorbeeld AMO om verbinding te maken met Analysis Services. Een verbinding met AMO is doorgaans mini maal, bestaande uit `"data source=\<servername>"` . Nadat een verbinding tot stand is gebracht, gebruikt u de API om met database verzamelingen en hoofd objecten te werken. Zowel Visual Studio als SSMS gebruiken AMO om verbinding te maken met een Analysis Services-exemplaar.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -74,7 +74,7 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
   
 1.  Ga naar `C:\Program Files\Microsoft Analysis Services\AS OLEDB\`. Als u meer dan één map hebt, kiest u het hogere nummer.
   
-2.  Klik met de rechter muisknop op **Msolap. dll** > -**Eigenschappen** > **Details**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
+2.  Klik met de rechter muisknop op **Msolap. dll**-  >  **Eigenschappen**  >  **Details**. Als de bestands naam msolap140. dll is, is deze ouder dan de meest recente versie en moet een upgrade worden uitgevoerd.
     
     ![Details van de client bibliotheek](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,12 +82,12 @@ Client bibliotheken voor client verbindingen verschillen van gegevens providers 
 ### <a name="amo"></a>AMO
 
 1. Ga naar `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`. Als u meer dan één map hebt, kiest u het hogere nummer.
-2. Klik met de rechter muisknop op**Eigenschappen** > **Details**van **micro soft. AnalysisServices** > .  
+2. Klik met de rechter muisknop op Eigenschappen van **micro soft. AnalysisServices**  >  **Properties**  >  **Details**.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. Ga naar `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`. Als u meer dan één map hebt, kiest u het hogere nummer.
-2. Klik met de rechter muisknop op**Eigenschappen** > **Details**van **micro soft. AnalysisServices. AdomdClient** > .  
+2. Klik met de rechter muisknop op Eigenschappen van **micro soft. AnalysisServices. AdomdClient**  >  **Properties**  >  **Details**.  
 
 
 ## <a name="next-steps"></a>Volgende stappen

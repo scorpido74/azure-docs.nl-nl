@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607381"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296354"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
 
@@ -45,7 +45,7 @@ Voordat u een FSLogix-profiel container voor een hostgroep kunt maken, moet u he
 
 Als u aan de slag wilt gaan, moet u een Azure NetApp Files-account instellen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Zorg ervoor dat uw account Inzender-of beheerders machtigingen heeft.
 
 2. Selecteer het **Azure Cloud shell pictogram** rechts van de zoek balk om Azure Cloud shell te openen.
 
@@ -132,7 +132,7 @@ Vervolgens moet u een nieuw volume maken.
     - Voor **virtueel netwerk**selecteert u een bestaand virtueel netwerk dat is verbonden met de domein controller in de vervolg keuzelijst.
     - Selecteer onder **subnet**de optie **nieuwe maken**. Houd er rekening mee dat dit subnet wordt gedelegeerd aan Azure NetApp Files.
 
-3.  Selecteer **volgende: protocol \> ** om het tabblad Protocol te openen en uw volume toegangs parameters in te stellen.
+3.  Selecteer **volgende: protocol \> \> ** om het tabblad Protocol te openen en uw volume toegangs parameters in te stellen.
 
 ## <a name="configure-volume-access-parameters"></a>Volume toegangs parameters configureren
 
@@ -158,7 +158,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 2. Pak het gedownloade bestand uit.
 
-3. Ga in het bestand naar **x64** > -**releases** en voer **FSLogixAppsSetup. exe**uit. Het installatie menu wordt geopend.
+3. Ga in het bestand naar **x64**-  >  **releases** en voer **FSLogixAppsSetup. exe**uit. Het installatie menu wordt geopend.
 
 4.  Als u een product code hebt, voert u deze in het tekstvak product code in.
 
@@ -166,11 +166,11 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 6. Selecteer **Installeren**.
 
-7. Navigeer naar **C:\\Program Files\\FSLogix\\apps** om te bevestigen dat de agent is geïnstalleerd.
+7. Navigeer naar **C: \\ Program Files \\ FSLogix \\ apps** om te bevestigen dat de agent is geïnstalleerd.
 
 8. Voer in het menu Start **regedit** als Administrator uit.
 
-9. Navigeer naar **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. Navigeer naar **Computer \\ HKEY_LOCAL_MACHINE \\ software \\ FSLogix**.
 
 10. Maak een sleutel met de naam **profielen**.
 
@@ -210,7 +210,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Zorg ervoor dat gebruikers toegang hebben tot de bestands share van Azure NetApp
 
-1. Open uw Internet browser en ga naar <https://rdweb.wvd.microsoft.com/arm/webclient>.
+1. Open uw Internet browser en ga naar <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 2. Meld u aan met de referenties van een gebruiker die is toegewezen aan de Extern bureaublad groep.
 
@@ -222,7 +222,7 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 
 5. Ga naar het tabblad **overzicht** en controleer of in de FSLogix-profiel container ruimte wordt gebruikt.
 
-6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is \\ \\het koppelingspad ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF vol).
+6. Maak rechtstreeks verbinding met een VM-onderdeel van de hostgroep met Extern bureaublad en open de **bestanden Verkenner.** Ga vervolgens naar het **koppelingspad** (in het volgende voor beeld is het koppelingspad \\ \\ ANF-SMB-3863.gt1107.onmicrosoft.com \\ ANF vol).
 
    In deze map moet er een VHD (of VHDX) van het profiel staan, zoals in het volgende voor beeld.
 
@@ -231,3 +231,5 @@ Deze sectie is gebaseerd op het [maken van een profiel container voor een hostgr
 ## <a name="next-steps"></a>Volgende stappen
 
 U kunt FSLogix-profiel containers gebruiken om een gebruikers profiel share in te stellen. Zie [een profiel container maken voor een hostgroep met een bestands share voor](create-host-pools-user-profile.md)meer informatie over het maken van gebruikers profiel shares met uw nieuwe containers.
+
+U kunt ook een Azure Files bestands share maken om uw FSLogix-profiel op te slaan in. Zie [een Azure files bestands share maken met een domein controller](create-file-share.md)voor meer informatie.

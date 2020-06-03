@@ -1,16 +1,16 @@
 ---
 title: Hoe Azure Dev Spaces werkt
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dca9f1246a093471cd9538d010bf78116be1b3c7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234962"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307364"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
 
@@ -22,9 +22,9 @@ Met Azure dev Spaces kunt u op verschillende manieren snel en probleem oplossing
 
 Azure dev Spaces vermindert de inspanningen voor het ontwikkelen, testen en herhalen van uw Kubernetes-toepassing in de context van uw AKS-cluster. Met deze reductie in inspanningen kunnen ontwikkel aars zich richten op de bedrijfs logica van hun toepassingen en hun services niet configureren om te worden uitgevoerd in Kubernetes.
 
-### <a name="connect-your-development-machine-to-aks"></a>Uw ontwikkel machine verbinden met AKS
+### <a name="local-process-with-kubernetes"></a>Lokaal proces met Kubernetes
 
-Met Azure dev Spaces kunt u uw ontwikkel computer verbinden met uw AKS-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Azure dev Spaces omleidt verkeer tussen uw verbonden AKS-cluster door een pod op uw cluster uit te voeren dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en-services die worden uitgevoerd in uw AKS-cluster communiceren alsof ze zich in hetzelfde AKS-cluster bevonden. Zie [How to connect your Development computer to your AKS cluster Works][how-it-works-connect](Engelstalig) voor meer informatie over het verbinden van uw ontwikkel computer met AKS.
+Met een lokaal proces met Kubernetes kunt u uw ontwikkel computer verbinden met uw Kubernetes-cluster, zodat u code op uw ontwikkel computer uitvoert, alsof deze op het cluster wordt uitgevoerd. Azure dev Spaces omleidt verkeer tussen uw verbonden cluster door een pod uit te voeren in uw cluster dat fungeert als een externe agent om verkeer tussen uw ontwikkel computer en het cluster om te leiden. Met deze omleidings functie voor verkeer kan code op uw ontwikkel computer en services die in uw cluster worden uitgevoerd, communiceren alsof ze zich in hetzelfde cluster bevonden. Zie [How Local process with Kubernetes][how-it-works-local-process-kubernetes](Engelstalig) voor meer informatie over het verbinden van uw ontwikkel computer met een Kubernetes-cluster.
 
 ### <a name="run-your-code-in-aks"></a>Uw code uitvoeren in AKS
 
@@ -44,12 +44,12 @@ U kunt ook GitHub-acties met Azure-ontwikkel ruimten gebruiken om wijzigingen in
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [uw ontwikkel machine verbinden met een AKS-cluster][connect]om aan de slag te gaan met het koppelen van uw lokale ontwikkel computer aan uw AKS-cluster.
+Zie [uw ontwikkel computer verbinden met een AKS-cluster][connect]om aan de slag te gaan met het verbinden van uw lokale ontwikkel computer met uw AKS-cluster.
 
 Als u aan de slag wilt gaan met Azure dev Spaces voor team ontwikkeling, raadpleegt u de [team ontwikkeling in azure dev Spaces][quickstart-team] Quick Start.
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: how-to/local-process-kubernetes-vs-code.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

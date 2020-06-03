@@ -1,18 +1,18 @@
 ---
 title: Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
-description: Meer informatie over het gebruik van een resource manager-sjabloon voor het maken van een metrische waarschuwing.
+description: Ontdek hoe u een Resource Manager-sjabloon kunt gebruiken om een waarschuwing voor metrische gegevens te maken.
 author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676997"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299295"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -21,18 +21,18 @@ ms.locfileid: "80676997"
 In dit artikel wordt beschreven hoe u een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) kunt gebruiken om [nieuwe metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) te configureren in azure monitor. Met Resource Manager-sjablonen kunt u via programma code waarschuwingen instellen op een consistente en reproduceer bare manier in uw omgevingen. Er zijn momenteel nieuwere metrische waarschuwingen beschikbaar voor [Deze set met resource typen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Resource sjabloon voor het maken van metrische waarschuwingen voor het resource type: Azure Log Analytics-werk `Microsoft.OperationalInsights/workspaces`ruimte (i.e.) vereist extra stappen. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
+> Resourcesjabloon om waarschuwingen voor metrische gegevens te maken voor resourcetype: Voor Azure Log Analytics-werkruimte (bijvoorbeeld) `Microsoft.OperationalInsights/workspaces`zijn aanvullende stappen vereist. Zie het artikel over [metrische waarschuwing voor logboeken-resource sjabloon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)voor meer informatie.
 
 De basis stappen zijn als volgt:
 
 1. Gebruik een van de volgende sjablonen als een JSON-bestand met een beschrijving van het maken van de waarschuwing.
 2. Bewerk en gebruik het bijbehorende parameter bestand als een JSON om de waarschuwing aan te passen.
-3. Zie de `metricName` beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor de para meter.
+3. `metricName`Zie de beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor de para meter.
 4. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sjabloon voor een eenvoudige waarschuwing voor een statische drempel waarde voor waarschuwingen
 
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, `Microsoft.Insights/metricAlerts` maakt u een bron van het type en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
+Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een bron van het type `Microsoft.Insights/metricAlerts` en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
 
 Sla de JSON hieronder op als simplestaticmetricalert. json voor het doel van deze procedure.
 
@@ -281,9 +281,9 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Sjabloon voor een waarschuwing met metrische gegevens voor eenvoudige dynamische drempel waarden
 
-Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, `Microsoft.Insights/metricAlerts` maakt u een bron van het type en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
+Als u een waarschuwing wilt maken met behulp van een resource manager-sjabloon, maakt u een bron van het type `Microsoft.Insights/metricAlerts` en vult u alle gerelateerde eigenschappen in. Hieronder volgt een voorbeeld sjabloon waarmee een waarschuwing regel voor metrische gegevens wordt gemaakt.
 
-Sla de JSON hieronder op als simpledynamicmetricalert. json voor het doel van deze procedure.
+Sla de onderstaande json op als simpledynamicmetricalert.json voor deze stapsgewijze handleiding.
 
 ```json
 {
@@ -566,10 +566,10 @@ az group deployment create \
 Nieuwere metrische waarschuwingen ondersteunen waarschuwingen over multidimensionale metrische gegevens en bieden ondersteuning voor het definiëren van meerdere criteria (Maxi maal 5 criteria per waarschuwings regel). U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor metrische gegevens te maken over dimensionale metrische gegevens en meerdere criteria op te geven.
 
 Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwings regel die meerdere criteria bevat:
-- U kunt in elk criterium slechts één waarde per dimensie selecteren.
-- U kunt '\*' niet als dimensie waarde gebruiken.
+- U kunt slechts één waarde per dimensie in elk criterium selecteren.
+- U kunt '\*' niet als dimensiewaarde gebruiken.
 - Wanneer de metrische gegevens die in verschillende criteria zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante criteria).
-    - In het onderstaande voor beeld, omdat zowel de metrische gegevens van **trans acties** als **SuccessE2ELatency** een **ApiName** -dimensie hebben, en *criterion1* de waarde *GetBlob* opgeeft voor de dimensie **ApiName** , moet *criterion2* ook een *' GetBlob* -waarde instellen voor de dimensie **ApiName** .
+    - In het onderstaande voorbeeld hebben zowel de metrische waarden **Transactions** en **SuccessE2ELatency** een dimensie **ApiName** en geeft *criterion1* de waarde *"GetBlob"* voor de dimensie **ApiName**. Daarom moet *criterion2* ook een waarde *"GetBlob"* hebben voor de dimensie **ApiName**.
 
 
 Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van deze procedure.
@@ -804,17 +804,17 @@ az group deployment create \
 
 U kunt de volgende sjabloon gebruiken om een statische metrische waarschuwings regel te maken op dimensionale metrische gegevens.
 
-Eén waarschuwings regel kan meerdere metrische tijd reeksen tegelijk bewaken, wat leidt tot minder waarschuwings regels om te beheren.
+Eén waarschuwingsregel kan meerdere metrische tijdreeksen tegelijk controleren, waardoor er minder waarschuwingsregels beheerd moeten worden.
 
 In het onderstaande voor beeld bewaakt de waarschuwings regel de dimensie waarden combinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** :
-1. **ResponsType** : het gebruik van het\*Joker teken betekent dat voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, een andere tijd reeks afzonderlijk wordt gecontroleerd.
-2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
+1. **ResponsType**: het gebruik van het jokerteken "\*" betekent dat er voor elke waarde van de dimensie **ResponseType**, inclusief toekomstige waarden, een andere tijdreeks individueel gecontroleerd wordt.
+2. **ApiName**: er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
 
-Een aantal van de mogelijke tijd reeksen die worden bewaakt door deze waarschuwings regel zijn bijvoorbeeld:
-- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
-- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
-- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
-- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *PutBlob*
+Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsregel zijn bijvoorbeeld:
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 Sla de JSON hieronder op als multidimensionalstaticmetricalert. json voor het doel van deze procedure.
 
@@ -1027,14 +1027,14 @@ U kunt de volgende sjabloon gebruiken om een geavanceerdere waarschuwings regel 
 Een waarschuwings regel met enkele dynamische drempel waarden kan aangepaste drempel waarden maken voor honderden meettijd reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
 
 In het onderstaande voor beeld bewaakt de waarschuwings regel de dimensie waarden combinaties van de dimensies **ResponseType** en **ApiName** voor de metrische gegevens van de **trans acties** :
-1. **ResponsType** : voor elke waarde van de dimensie **ResponseType** , met inbegrip van toekomstige waarden, wordt een andere tijd reeks afzonderlijk gecontroleerd.
-2. **ApiName** : een andere tijd reeks wordt alleen bewaakt voor de dimensie waarden **GetBlob** en **PutBlob** .
+1. **ResponsType**: voor elke waarde van de dimensie **ResponseType**, inclusief toekomstige waarden, wordt een andere tijdreeks individueel bewaakt.
+2. **ApiName**: er wordt een andere tijdreeks gecontroleerd alleen voor de dimensiewaarden **GetBlob** en **PutBlob**.
 
-Een aantal van de mogelijke tijd reeksen die worden bewaakt door deze waarschuwings regel zijn bijvoorbeeld:
-- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *GetBlob*
-- Metrische waarde = *trans acties*, ResponseType = *geslaagd*, ApiName = *PutBlob*
-- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *GetBlob*
-- Metrische waarde = *trans acties*, ResponseType = *time-out van server*, ApiName = *PutBlob*
+Enkele mogelijke tijdreeksen die gecontroleerd worden door deze waarschuwingsregel zijn bijvoorbeeld:
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 Sla de JSON hieronder op als advanceddynamicmetricalert. json voor het doel van deze procedure.
 
@@ -1246,13 +1246,13 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Sjabloon voor een waarschuwing over een statische drempel waarde die een aangepaste metriek bewaakt
 
-U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor een vaste drempel waarde voor metrische gegevens te maken op een aangepaste metriek.
+U kunt het volgende sjabloon gebruiken om een meer geavanceerde waarschuwingsregel voor metrische gegevens met statische drempelwaarde te maken voor aangepaste metrische gegevens.
 
-Zie [aangepaste metrische gegevens in azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)voor meer informatie over aangepaste metrische gegevens in azure monitor.
+Bekijk [Aangepaste metrische gegevens in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) voor meer informatie over aangepaste metrische gegevens in Azure Monitor.
 
-Wanneer u een waarschuwings regel voor een aangepaste metriek maakt, moet u zowel de naam van de metriek als de metrische naam ruimte opgeven. U moet er ook voor zorgen dat de aangepaste metriek al wordt gerapporteerd. u kunt geen waarschuwings regel maken voor een aangepaste metriek die nog niet bestaat.
+Wanneer u een waarschuwingsregel maakt voor aangepaste metrische gegevens, moet u zowel de metrische naam als de metrische naamruimte opgeven. Zorg er ook voor dat er al over de aangepaste metrische gegevens wordt gerapporteerd, want u kunt geen waarschuwingsregel maken voor aangepaste metrische gegevens die nog niet bestaan.
 
-Sla de JSON hieronder op als customstaticmetricalert. json voor het doel van deze procedure.
+Sla de onderstaande json op als customstaticmetricalert.json voor deze stapsgewijze handleiding.
 
 ```json
 {
@@ -1504,30 +1504,30 @@ az group deployment create \
 
 >[!NOTE]
 >
-> U kunt de metrische naam ruimte van een specifieke aangepaste metriek vinden door te [Bladeren door uw aangepaste metrische gegevens via de Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
+> U vindt de metrische naamruimte van specifieke aangepaste metrische gegevens door [te zoeken naar uw aangepaste metrische gegevens via het Azure-portal](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal)
 
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Sjabloon voor een metrische waarschuwing waarmee meerdere bronnen worden bewaakt
 
-In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwings regel, voor resources die zich in dezelfde Azure-regio bevinden. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL server-data bases, SQL Server elastische Pools en Databox edge-apparaten. Deze functie is ook alleen beschikbaar voor platform metrieken en wordt niet ondersteund voor aangepaste metrische gegevens.
+In de vorige secties beschreven voor beelden van Azure Resource Manager sjablonen voor het maken van metrische waarschuwingen die één resource bewaken. Azure Monitor ondersteunt nu het bewaken van meerdere resources (van hetzelfde type) met één metrische waarschuwings regel, voor resources die zich in dezelfde Azure-regio bevinden. Deze functie wordt momenteel alleen ondersteund in de open bare Azure-Cloud en alleen voor virtuele machines, SQL server-data bases, SQL Server elastische Pools en Databox edge-apparaten. Daarnaast is deze functie enkel beschikbaar voor metrische gegevens op platforms en niet voor aangepaste metrische gegevens.
 
-Waarschuwings regel voor dynamische drempel waarden kan ook helpen bij het maken van aangepaste drempel waarden voor honderden metrische reeksen (zelfs verschillende typen) tegelijk, wat leidt tot minder waarschuwings regels om te beheren.
+Waarschuwingsregels voor dynamische drempelwaarden kunnen ook helpen om aangepaste drempelwaarden te maken voor honderden metrische reeksen (zelfs verschillende typen) tegelijkertijd, waardoor er minder waarschuwingsregels beheerd moeten worden.
 
-In deze sectie worden Azure Resource Manager sjablonen beschreven voor drie scenario's voor het bewaken van meerdere resources met één regel.
+In deze sectie worden Azure Resource Manager-sjablonen beschreven voor drie scenario's om meerdere resources te controleren met één regel.
 
-- Alle virtuele machines (in één Azure-regio) bewaken in een of meer resource groepen.
-- Alle virtuele machines (in één Azure-regio) bewaken in een abonnement.
-- Een lijst met virtuele machines (in één Azure-regio) bewaken in een abonnement.
+- Alle virtuele machines (in één Azure-regio) in een of meer resourcegroepen controleren.
+- Alle virtuele machines (in één Azure-regio) in een abonnement controleren.
+- Een lijst met virtuele machines (in één Azure-regio) in een abonnement controleren.
 
 > [!NOTE]
 >
-> In een metrische waarschuwings regel waarmee meerdere bronnen worden bewaakt, is slechts één voor waarde toegestaan.
+> In een metrische waarschuwingsregel die meerdere resources controleert is slechts één voorwaarde toegestaan.
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Statische drempel waarschuwing voor alle virtuele machines in een of meer resource groepen
+### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Waarschuwing voor een statische drempelwaarde voor alle virtuele machines in een of meer resourcegroepen
 
-Met deze sjabloon wordt een regel voor een statische drempel waarde voor metrische gegevens gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een of meer resource groepen wordt gecontroleerd.
+Dit sjabloon maakt een metrische waarschuwingsregel voor een statische drempelwaarde die het CPU-percentage controleert voor alle virtuele machines (in één Azure-regio) in een of meer resourcegroepen.
 
-Sla de JSON hieronder op als alle-vm's-in-Resource-Group-static. json voor het doel van deze procedure.
+Sla de onderstaande json op als all-vms-in-resource-group-static.json voor deze stapsgewijze handleiding.
 
 ```json
 {
@@ -1835,7 +1835,7 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Waarschuwing voor dynamische drempel waarden voor alle virtuele machines in een of meer resource groepen
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Waarschuwingen voor een dynamische drempelwaarden voor alle virtuele machines in een of meer resourcegroepen
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een of meer resource groepen wordt gecontroleerd.
 
@@ -2170,7 +2170,7 @@ az group deployment create \
     --parameters @all-vms-in-resource-group-dynamic.parameters.json
 ```
 
-### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Statische drempel waarschuwing voor alle virtuele machines in een abonnement
+### <a name="static-threshold-alert-on-all-virtual-machines-in-a-subscription"></a>Waarschuwing voor een statische drempelwaarde voor alle virtuele machines in een abonnement
 
 Met deze sjabloon wordt een regel voor een statische drempel waarde voor metrische gegevens gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
@@ -2480,7 +2480,7 @@ az group deployment create \
     --parameters @all-vms-in-subscription.parameters-static.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Waarschuwing voor dynamische drempel waarden voor alle virtuele machines in een abonnement
+### <a name="dynamic-thresholds-alert-on-all-virtual-machines-in-a-subscription"></a>Waarschuwing voor een dynamische drempelwaarde voor alle virtuele machines in een abonnement
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor alle virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
@@ -2812,7 +2812,7 @@ az group deployment create \
     --parameters @all-vms-in-subscription-dynamic.parameter-dynamics.json
 ```
 
-### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Statische drempel waarschuwing voor een lijst met virtuele machines
+### <a name="static-threshold-alert-on-a-list-of-virtual-machines"></a>Waarschuwing voor een statische drempelwaarde voor een lijst van virtuele machines
 
 Met deze sjabloon wordt een regel voor een statische drempel waarde voor metrische gegevens gemaakt waarmee het percentage CPU voor een lijst met virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
@@ -3125,7 +3125,7 @@ az group deployment create \
     --parameters @list-of-vms-static.parameters.json
 ```
 
-### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Waarschuwing voor dynamische drempel waarden voor een lijst met virtuele machines
+### <a name="dynamic-thresholds-alert-on-a-list-of-virtual-machines"></a>Waarschuwing voor een dynamische drempelwaarde voor een lijst van virtuele machines
 
 Met deze sjabloon wordt een regel voor metrische waarschuwingen voor dynamische drempel waarden gemaakt waarmee het percentage CPU voor een lijst met virtuele machines (in één Azure-regio) in een abonnement wordt gecontroleerd.
 
@@ -3462,8 +3462,8 @@ az group deployment create \
 
 ## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Sjabloon voor een beschikbaarheids test samen met een metrische waarschuwing
 
-Met [Application Insights beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) kunt u de beschik baarheid van uw website of toepassing bewaken vanaf verschillende locaties over de hele wereld. Waarschuwingen voor beschikbaarheids testen geven een melding wanneer beschikbaarheids tests van een bepaald aantal locaties mislukken.
-Beschikbaarheids test waarschuwingen van hetzelfde resource type als metrische waarschuwingen (micro soft. Insights/metricAlerts). De volgende voorbeeld Azure Resource Manager sjabloon kan worden gebruikt om een eenvoudige beschikbaarheids test en een bijbehorende waarschuwing in te stellen.
+[Beschikbaarheidstests voor Application Insights](../../azure-monitor/app/monitor-web-app-availability.md) helpen u om de beschikbaarheid van uw website/app vanaf verschillende locaties wereldwijd te controleren. U ontvangt een waarschuwing van de beschikbaarheidstest wanneer deze mislukt vanaf een bepaald aantal locaties.
+Waarschuwingen van beschikbaarheidstests van hetzelfde resourcetype als waarschuwingen voor metrische gegevens (Microsoft.Insights/metricAlerts). De volgende voorbeeld Azure Resource Manager sjabloon kan worden gebruikt om een eenvoudige beschikbaarheids test en een bijbehorende waarschuwing in te stellen.
 
 Sla de JSON hieronder op als availabilityalert. json voor het doel van deze procedure.
 
@@ -3549,7 +3549,6 @@ Sla de JSON hieronder op als availabilityalert. json voor het doel van deze proc
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,7 +3571,7 @@ U kunt de waarden voor de para meters instellen op de opdracht regel of via een 
 
 > [!NOTE]
 >
-> `&amp`; is de verwijzing naar de HTML-entiteit voor &. URL-para meters worden nog steeds gescheiden door één &, maar als u de URL in HTML vermeldt, moet u deze coderen. Als u dus een ' & ' hebt in de waarde van de para meter pingURL, moet u deze met '`&amp`; ' weglaten.
+> `&amp`; is de HTML-entiteitsverwijzing voor &. URL-parameters worden nog steeds gescheiden door één &, maar als u de URL vermeldt in HTML moet u deze coderen. Als er dus een '&' staat in uw parameterwaarde voor pingURL dan moet u "`&amp`;" gebruiken als escapeteken.
 
 Sla de JSON hieronder op als availabilityalert. para meters. json en wijzig deze indien nodig.
 

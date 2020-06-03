@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890876"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298598"
 ---
 # <a name="data-flow-script-dfs"></a>Gegevens stroom script (DFS)
 
@@ -22,7 +22,7 @@ Data flow script (DFS) is de onderliggende meta gegevens, vergelijkbaar met een 
 
 ![Script knop](media/data-flow/scriptbutton.png "Script knop")
 
-In een bron `allowSchemaDrift: true,` transformatie vertelt de service bijvoorbeeld dat alle kolommen uit de bron-gegevensset in de gegevens stroom moeten worden opgenomen, zelfs als deze niet zijn opgenomen in de schema projectie.
+`allowSchemaDrift: true,`In een bron transformatie vertelt de service bijvoorbeeld dat alle kolommen uit de bron-gegevensset in de gegevens stroom moeten worden opgenomen, zelfs als deze niet zijn opgenomen in de schema projectie.
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
 De DFS wordt automatisch geproduceerd door de gebruikers interface. U kunt op de knop script klikken om het script weer te geven en aan te passen. U kunt ook scripts maken buiten de ADF-gebruikers interface en vervolgens door geven aan de Power shell-cmdlet. Wanneer u fouten opspoort in complexe gegevens stromen, is het mogelijk dat u de script code achtereen kunt scannen in plaats van de UI-grafiek weergave van uw stromen te scannen.
@@ -52,7 +52,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Als we besluiten een afgeleide trans formatie toe te voegen, moet u eerst de tekst van de kern transformatie maken, met een eenvoudige expressie voor het toevoegen `upperCaseTitle`van een nieuwe hoofd kolom met de naam:
+Als we besluiten een afgeleide trans formatie toe te voegen, moet u eerst de tekst van de kern transformatie maken, met een eenvoudige expressie voor het toevoegen van een nieuwe hoofd kolom met de naam `upperCaseTitle` :
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-En de inkomende stroom wordt nu omgeleid door de trans formatie te identificeren waarnaar de nieuwe trans formatie moet worden verzonden (in dit `source1`geval) en het kopiëren van de naam van de stroom naar de nieuwe trans formatie:
+En de inkomende stroom wordt nu omgeleid door de trans formatie te identificeren waarnaar de nieuwe trans formatie moet worden verzonden (in dit geval `source1` ) en het kopiëren van de naam van de stroom naar de nieuwe trans formatie:
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Ten slotte wordt de trans formatie geïdentificeerd die na deze nieuwe trans formatie moet worden uitgevoerd en wordt de invoer stroom (in dit `sink1`geval) vervangen door de naam van de uitvoer stroom van de nieuwe trans formatie:
+Ten slotte wordt de trans formatie geïdentificeerd die na deze nieuwe trans formatie moet worden uitgevoerd en wordt de invoer stroom (in dit geval `sink1` ) vervangen door de naam van de uitvoer stroom van de nieuwe trans formatie:
 ```
 source(output(
         movieId as string,
@@ -173,7 +173,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>Rij-hash-vinger afdruk maken 
-Gebruik deze code in uw gegevensstroom script om een nieuwe afgeleide kolom ```DWhash``` te maken met ```sha1``` de naam die een hash van drie kolommen produceert.
+Gebruik deze code in uw gegevensstroom script om een nieuwe afgeleide kolom te maken met de naam ```DWhash``` die een ```sha1``` hash van drie kolommen produceert.
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -186,12 +186,22 @@ derive(DWhash = sha1(columns()))
 ```
 
 ### <a name="string_agg-equivalent"></a>String_agg equivalent
-Deze code fungeert als de T-SQL ```string_agg()``` -functie, en voegt teken reeks waarden samen in een matrix. U kunt die matrix vervolgens casten naar een teken reeks om te gebruiken met SQL-doelen.
+Deze code fungeert als de T-SQL- ```string_agg()``` functie, en voegt teken reeks waarden samen in een matrix. U kunt die matrix vervolgens casten naar een teken reeks om te gebruiken met SQL-doelen.
 
 ```
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Aantal updates, upsert, invoeg acties, verwijderen
+Wanneer u een alter Row trans formatie gebruikt, wilt u mogelijk het aantal updates, upsert, invoeg acties, verwijderen dat het resultaat is van uw beleid voor het wijzigen van rijen. Voeg een geaggregeerde trans formatie toe na de Alter Row en plak dit gegevensstroom script in de cumulatieve definitie voor die aantallen:
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

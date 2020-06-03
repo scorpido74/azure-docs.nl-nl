@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117140"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317715"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
 Dit is afhankelijk van de gateway-SKU. Zie [Gateway-sku's](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het aantal ondersteunde verbindingen.
 
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welke clientbesturingssystemen kan ik met punt-naar-site gebruiken?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welke client besturingssystemen kan ik met punt-naar-site gebruiken?
 
 De volgende clientbesturingssystemen worden ondersteund:
 
@@ -29,6 +29,7 @@ De volgende clientbesturingssystemen worden ondersteund:
 * Windows Server 2012 (alleen 64-bits)
 * Windows Server 2012 R2 (alleen 64-bits)
 * Windows Server 2016 (alleen 64-bits)
+* Windows Server 2019 (alleen 64-bits)
 * Windows 10
 * Mac OS X-versie 10,11 of hoger
 * Linux (StrongSwan)
@@ -82,7 +83,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Versie van het besturingssysteem | Date | Aantal/koppeling |
+   | Besturingssysteemversie | Datum | Aantal/koppeling |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

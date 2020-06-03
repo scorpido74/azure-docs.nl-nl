@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 661cfb4798ef553918ddc238a5388b11a54e23f9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547504"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298683"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectiviteits architectuur in Azure Database for MySQL
 In dit artikel wordt uitgelegd wat de Azure Database for MySQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for MySQL exemplaar van clients, zowel binnen als buiten Azure.
@@ -44,6 +44,7 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | VS - oost | 40.121.158.30, 191.238.6.43  |
 | VS - oost 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Frankrijk - centraal | 40.79.137.0, 40.79.129.1  |
+| Frankrijk - zuid | 40.79.177.0     |
 | Duitsland - centraal | 51.4.144.100     |
 | Duitsland-noord Oost | 51.5.144.179  |
 | India - centraal | 104.211.96.159     |

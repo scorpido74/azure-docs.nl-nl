@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 0296d6410e869c75df9b7d2b3cc7a63ad219c120
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b03e9c6148243376c5e1c588e2b4a82e1a1adb40
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84198984"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298887"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Met HSM beveiligde sleutels importeren in Key Vault (BYOK)
 
@@ -58,11 +58,11 @@ De volgende tabel bevat de vereisten voor het gebruik van BYOK in Azure Key Vaul
 
 |Leveranciers naam|Leveranciers type|Ondersteunde HSM-modellen|Meer informatie|
 |---|---|---|---|
-|nCipher|Fabrikant, HSM as a Service|<ul><li>nShield-serie van Hsm's</li><li>nShield als een service</ul>|[nCipher nieuw BYOK-hulp programma en documentatie](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
+|nCipher|Fabricage<br/>HSM as a Service|<ul><li>nShield-serie van Hsm's</li><li>nShield als een service</ul>|[nCipher nieuw BYOK-hulp programma en documentatie](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
 |Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [SafeNet Luna BYOK tool en documentatie](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanix|HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li></ul>|[SDKMS-sleutels exporteren naar cloud providers voor BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|Fortanix|Fabricage<br/>HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS-sleutels exporteren naar cloud providers voor BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Fabrikant|Alle LiquidSecurity-Hsm's met<ul><li>Firmware versie 2.0.4 of hoger</li><li>Firmware versie 3,2 of hoger</li></ul>|[Hulp programma voor Marvell-BYOK en-documentatie](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
-|Cryptomathic|ISV (Enter prise Key Management System)|Meerdere HSM-merken en-modellen, inclusief<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Zie [Cryptopmathic-site voor meer informatie](https://www.cryptomathic.com/azurebyok)|[Hulp programma en documentatie voor Cryptomathic BYOK](https://www.cryptomathic.com/azurebyok)|
+|Cryptomathic|ISV (Enter prise Key Management System)|Meerdere HSM-merken en-modellen, inclusief<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Zie [Cryptomathic-site voor meer informatie](https://www.cryptomathic.com/azurebyok)|[Hulp programma en documentatie voor Cryptomathic BYOK](https://www.cryptomathic.com/azurebyok)|
 
 
 

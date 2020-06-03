@@ -3,12 +3,12 @@ title: Azure Resource Manager-voorbeeldsjablonen
 description: Azure Resource Manager sjabloon voorbeelden zoeken om Azure Container Instances te implementeren in verschillende configuraties
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981654"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299754"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager sjablonen voor Azure Container Instances
 
@@ -26,11 +26,11 @@ Zie de sectie [implementatie](#deployment) voor implementatie opties. Als u uw e
 | **Omvang** ||
 | [emptyDir][vol-emptydir] | Hiermee worden twee Linux-containers geïmplementeerd die een emptyDir-volume delen. |
 | [gitRepo][vol-gitrepo] | Hiermee wordt een Linux-container geïmplementeerd waarmee een GitHub-opslag plaats wordt gekloond en gekoppeld als een volume. |
-| [geheim][vol-secret] | Hiermee implementeert u een Linux-container met een PFX-certificaat dat is gekoppeld als een geheim volume. |
+| [gescheiden][vol-secret] | Hiermee implementeert u een Linux-container met een PFX-certificaat dat is gekoppeld als een geheim volume. |
 | **Netwerken** ||
 | [UDP-weer gegeven container][net-udp] | Hiermee wordt een Windows-of Linux-container geïmplementeerd die een UDP-poort beschikbaar maakt. |
 | [Linux-container met openbaar IP-adres][net-publicip] | Implementeert één Linux-container die toegankelijk is via een openbaar IP-adres. |
-| [Een container groep met een virtueel netwerk (preview-versie) implementeren][net-vnet] | Hiermee implementeert u een nieuw virtueel netwerk, subnet, netwerk profiel en container groep. |
+| [Een container groep implementeren met een virtueel netwerk][net-vnet] | Hiermee implementeert u een nieuw virtueel netwerk, subnet, netwerk profiel en container groep. |
 | **Azure-resources** ||
 | [Azure Storage account en bestanden share maken][az-files] | Maakt gebruik van de Azure CLI in een container exemplaar voor het maken van een opslag account en een Azure Files share.
 
@@ -44,7 +44,7 @@ U hebt verschillende mogelijkheden voor het implementeren van resources met Reso
 
 [Azure Portal][deploy-portal]
 
-[REST-API][deploy-rest]
+[REST API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav

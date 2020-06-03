@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Meer informatie over het oplossen van veelvoorkomende problemen bij het inschakelen en gebruiken van Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263496"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309642"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problemen met Azure dev Spaces oplossen
 
@@ -27,6 +27,14 @@ Voor Visual Studio stelt u de `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` omgev
 In de CLI kunt u meer informatie tijdens het uitvoeren van de opdracht uitvoeren met behulp van de `--verbose` Switch. U kunt ook meer gedetailleerde logboeken bekijken in `%TEMP%\Azure Dev Spaces` . Op een Mac kan de map *temp* worden gevonden door `echo $TMPDIR` vanuit een Terminal venster te worden uitgevoerd. Op een Linux-computer is de map *temp* doorgaans `/tmp` . Controleer bovendien of logboek registratie is ingeschakeld in uw [Azure cli-configuratie bestand](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables).
 
 Azure dev Spaces werkt ook het beste bij het opsporen van fouten in één exemplaar of pod. Het `azds.yaml` bestand bevat een instelling, *replicaCount*, die het aantal peulen aangeeft dat Kubernetes voor uw service wordt uitgevoerd. Als u de *replicaCount* wijzigt om uw toepassing te configureren voor het uitvoeren van meerdere peulen voor een bepaalde service, wordt het fout opsporingsprogramma gekoppeld aan de eerste Pod, wanneer deze alfabetisch wordt weer gegeven. Het fout opsporingsprogramma koppelt aan een andere pod wanneer de oorspronkelijke pod wordt gerecycled, mogelijk als gevolg van onverwacht gedrag.
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Veelvoorkomende problemen bij het gebruik van lokaal proces met Kubernetes
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>De oorspronkelijke configuratie van de implementatie op het cluster kan niet worden hersteld
+
+Wanneer een lokaal proces met Kubernetes wordt gebruikt en het lokale proces met Kubernetes-client plotseling vastloopt of onverwacht wordt beëindigd, kan de service die lokaal proces met Kubernetes wordt omgeleid, mogelijk niet worden hersteld naar de oorspronkelijke status voordat het lokale proces met Kubernetes is verbonden.
+
+U kunt dit probleem oplossen door de service opnieuw te implementeren in uw cluster.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Veelvoorkomende problemen bij het inschakelen van Azure dev Spaces
 
@@ -259,7 +267,7 @@ Deze fout treedt op omdat Azure dev Spaces momenteel geen builds van meerdere fa
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Netwerk verkeer wordt niet doorgestuurd naar uw AKS-cluster bij het verbinden van uw ontwikkel computer
 
-Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](how-to/connect.md), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
+Wanneer u [Azure dev Spaces gebruikt om uw AKS-cluster te verbinden met uw ontwikkel computer](how-to/local-process-kubernetes-vs-code.md), kan er een probleem optreden waarbij het netwerk verkeer niet wordt doorgestuurd tussen uw ontwikkel computer en het AKS-cluster.
 
 Wanneer u uw ontwikkel machine verbindt met uw AKS-cluster, stuurt Azure dev Spaces het netwerk verkeer tussen uw AKS-cluster en uw ontwikkel computer door het bestand van uw ontwikkel machine te wijzigen `hosts` . Met Azure dev Spaces maakt u een vermelding in het `hosts` adres van de Kubernetes-service die u vervangt als een hostnaam. Dit item wordt gebruikt bij het door sturen van poorten om het netwerk verkeer tussen uw ontwikkel computer en het AKS-cluster te omleiden. Als een service op uw ontwikkel computer een conflict veroorzaakt met de poort van de Kubernetes-service die u vervangt, kunnen Azure-ontwikkel ruimten geen netwerk verkeer door sturen voor de Kubernetes-service. De *Windows BranchCache* -service is bijvoorbeeld doorgaans gebonden aan *0.0.0.0:80*, wat conflicten veroorzaakt voor poort 80 op alle lokale IP-adressen.
 
@@ -274,7 +282,7 @@ U kunt bijvoorbeeld de *Windows BranchCache* -service stoppen en uitschakelen:
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Fout ' geen AzureAssignedIdentity gevonden voor Pod: azds/azds-webhook-implementatie- \<id\> in toegewezen status '
 
-Bij het uitvoeren van een service met Azure-ontwikkel ruimten in een AKS-cluster met een [beheerde identiteit](../aks/use-managed-identity.md) en [pod beheerde identiteiten](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , kan het proces vastlopen na de installatie stap van de *grafiek* . Als u de *azds-injectie-webhook* in de *azds* -naam ruimte inspecteert, ziet u deze fout mogelijk.
+Bij het uitvoeren van een service met Azure-ontwikkel ruimten in een AKS-cluster met een [beheerde identiteit](../aks/use-managed-identity.md) en [pod beheerde identiteiten](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , reageert het proces mogelijk niet meer na de installatie stap van de *grafiek* . Als u de *azds-injectie-webhook* in de *azds* -naam ruimte inspecteert, ziet u deze fout mogelijk.
 
 De services Azure dev Spaces worden uitgevoerd op uw cluster. Gebruik de beheerde identiteit van het cluster om te communiceren met de back-upservers van Azure dev buiten het cluster. Wanneer de beheerde identiteit Pod is geïnstalleerd, worden er netwerk regels geconfigureerd op de knoop punten van uw cluster om alle aanroepen voor beheerde identiteits referenties om te leiden naar een [NMI-daemon (node Managed Identity) die op het cluster is geïnstalleerd](https://github.com/Azure/aad-pod-identity#node-managed-identity). Deze NMI-Daemonset identificeert de aanroepende pod en zorgt ervoor dat Pod is gelabeld om toegang te krijgen tot de aangevraagde beheerde identiteit. Azure dev Spaces kunnen niet detecteren of pod beheerde identiteit is geïnstalleerd op een cluster, waardoor de benodigde configuratie niet kan worden uitgevoerd om Azure dev Spaces-Services toegang te geven tot de beheerde identiteit van het cluster. Omdat de Azure dev Spaces-Services niet zijn geconfigureerd voor toegang tot de beheerde identiteit van het cluster, staat de NMI-Daemonset niet toe dat ze een AAD-token voor de beheerde identiteit verkrijgen en niet kunnen communiceren met Azure dev Spaces back-upservices.
 
@@ -589,7 +597,8 @@ Als u Azure-ontwikkel ruimten wilt inschakelen op een AKS-cluster waarvoor het u
 | cloudflare.docker.com | HTTPS: 443 | Voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
 | gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
 | storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
-| azds- <guid> . <location> . azds.io | HTTPS: 443 | Om te communiceren met Azure dev Spaces back-upservices voor uw controller. De exacte FQDN kan worden gevonden in de ' dataplaneFqdn ' in% USERPROFILE% \. azds\settings.json|
+
+Werk uw firewall of beveiligings configuratie bij om netwerk verkeer toe te staan van en naar de bovenstaande FQDN-namen en [Azure dev Spaces-infrastructuur services](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations).
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fout: kan het cluster niet vinden \<cluster\> in het abonnement \<subscriptionId\>
 

@@ -1,5 +1,5 @@
 ---
-title: Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen
+title: Niet-aangesloten beheerde en niet-beheerde Azure-schijven zoeken en verwijderen
 description: Het zoeken en verwijderen van niet-gekoppelde, door Azure beheerde en onbeheerde en niet-beheerde schijven (Vhd's/pagina-blobs) met behulp van Azure PowerShell.
 author: roygara
 ms.service: virtual-machines-windows
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cac192186c91259a5573dc27442137729816991a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea3a4452b87fbb1c8663a66ef29c4e9fb891a6b3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869600"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300634"
 ---
-# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-gekoppelde door Azure beheerde en onbeheerde schijven zoeken en verwijderen
+# <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Niet-aangesloten beheerde en niet-beheerde Azure-schijven zoeken en verwijderen
 
 Wanneer u een virtuele machine (VM) in azure verwijdert, worden schijven die zijn gekoppeld aan de VM standaard niet verwijderd. Deze functie helpt gegevens verlies te voor komen vanwege de onbedoelde verwijdering van Vm's. Nadat een virtuele machine is verwijderd, blijft u betalen voor niet-gekoppelde schijven. In dit artikel leest u hoe u niet-gekoppelde schijven kunt zoeken en verwijderen en overbodige kosten kunt verlagen.
 
@@ -49,7 +49,7 @@ foreach ($md in $managedDisks) {
 
 ## <a name="unmanaged-disks-find-and-delete-unattached-disks"></a>Niet-beheerde schijven: niet-gekoppelde schijven zoeken en verwijderen
 
-Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als [pagina-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure-opslag accounts](../../storage/common/storage-create-storage-account.md). Het volgende script zoekt naar niet-gekoppelde niet-beheerde schijven (pagina-blobs) door de waarde van de eigenschap **LeaseStatus** te controleren. Wanneer een niet-beheerde schijf is gekoppeld aan een virtuele machine, wordt de eigenschap **LeaseStatus** ingesteld op **vergrendeld**. Wanneer een onbeheerde schijf niet is gekoppeld, wordt de eigenschap **LeaseStatus** ingesteld op **ontgrendeld**. Het script onderzoekt alle niet-beheerde schijven in alle Azure Storage-accounts in een Azure-abonnement. Wanneer het script een onbeheerde schijf zoekt waarvan de eigenschap **LeaseStatus** is ingesteld op **ontgrendeld**, wordt door het script bepaald dat de schijf niet is gekoppeld.
+Onbeheerde schijven zijn VHD-bestanden die zijn opgeslagen als [pagina-blobs](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-page-blobs) in [Azure-opslag accounts](../../storage/common/storage-account-overview.md). Het volgende script zoekt naar niet-gekoppelde niet-beheerde schijven (pagina-blobs) door de waarde van de eigenschap **LeaseStatus** te controleren. Wanneer een niet-beheerde schijf is gekoppeld aan een virtuele machine, wordt de eigenschap **LeaseStatus** ingesteld op **vergrendeld**. Wanneer een onbeheerde schijf niet is gekoppeld, wordt de eigenschap **LeaseStatus** ingesteld op **ontgrendeld**. Het script onderzoekt alle niet-beheerde schijven in alle Azure Storage-accounts in een Azure-abonnement. Wanneer het script een onbeheerde schijf zoekt waarvan de eigenschap **LeaseStatus** is ingesteld op **ontgrendeld**, wordt door het script bepaald dat de schijf niet is gekoppeld.
 
 >[!IMPORTANT]
 >Voer eerst het script uit door de variabele **deleteUnattachedVHDs** in te stellen op 0. Met deze actie kunt u alle niet-gekoppelde onbeheerde Vhd's vinden en weer geven.
@@ -87,4 +87,4 @@ foreach($storageAccount in $storageAccounts){
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [opslag account verwijderen](../../storage/common/storage-create-storage-account.md) en [zwevende schijven identificeren met Power shell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/) voor meer informatie.
+Zie [een opslag account verwijderen](../../storage/common/storage-account-create.md#delete-a-storage-account) en [zwevende schijven identificeren met Power shell](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/) voor meer informatie.

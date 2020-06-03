@@ -9,23 +9,23 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 097301a8704da24918dac70760f0540576975353
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191721"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299640"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
-Een Kubernetes-cluster verbinden met Azure Arc. 
+Een Kubernetes-cluster verbinden met Azure Arc.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Controleer of u de volgende vereisten hebt voor bereid:
 
 * Een Kubernetes-cluster dat actief is
-* U hebt toegang nodig met kubeconfig en toegang tot cluster beheerders. 
+* U hebt toegang nodig met kubeconfig en toegang tot cluster beheerders.
 * De gebruiker of service-principal die wordt gebruikt met `az login` en `az connectedk8s connect` opdrachten moeten de machtigingen lezen en schrijven hebben voor het resource type micro soft. Kubernetes/connectedclusters. De rol ' Azure Arc for Kubernetes-onboarding ' met deze machtigingen kan worden gebruikt voor roltoewijzingen op de gebruiker of service-principal die wordt gebruikt met Azure CLI voor onboarding.
 * Nieuwste versie van de *connectedk8s* -en *k8sconfiguration* -extensies
 
@@ -70,7 +70,8 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="install-azure-cli-extensions"></a>Azure CLI-extensies installeren
+## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Azure CLI-en Arc ingeschakelde Kubernetes-extensies installeren
+De Azure CLI-versie 2.3 + is vereist voor de installatie van de Azure Arc enabled Kubernetes CLI-extensies. [Installeer Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) of werk bij naar de nieuwste versie om ervoor te zorgen dat u beschikt over Azure CLI-versie 2.3 +.
 
 Installeer de `connectedk8s` extensie, waarmee u Kubernetes-clusters kunt verbinden met Azure:
 
@@ -90,6 +91,9 @@ Voer de volgende opdrachten uit om de extensies bij te werken naar de meest rece
 az extension update --name connectedk8s
 az extension update --name k8sconfiguration
 ```
+
+## <a name="install-helm"></a>Helm installeren
+Helm 3 is vereist voor de onboarding van het cluster met behulp van de connectedk8s-extensie. [Installeer de nieuwste versie van helm 3](https://helm.sh/docs/intro/install) om te voldoen aan deze vereiste.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -167,6 +171,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+U kunt deze resource ook bekijken in de [Azure preview-Portal](https://preview.portal.azure.com/). Zodra u de portal in uw browser hebt geopend, navigeert u naar de resource groep en de Azure Arc-Kubernetes-resource op basis van de resource naam en de naam invoer van de resource groep die eerder in de opdracht zijn gebruikt `az connectedk8s connect` .
+
 Azure Arc enabled Kubernetes implementeert enkele opera tors in de `azure-arc` naam ruimte. U kunt deze implementaties en peulen hier bekijken:
 
 ```console
@@ -211,11 +217,18 @@ Azure Arc enabled Kubernetes bestaat uit een aantal agents (opera tors) die in u
 
 U kunt een `Microsoft.Kubernetes/connectedcluster` resource verwijderen met behulp van Azure CLI of Azure Portal.
 
-Met de Azure CLI-opdracht `az connectedk8s delete` wordt de `Microsoft.Kubernetes/connectedCluster` resource in azure verwijderd. De Azure CLI verwijdert alle gekoppelde `sourcecontrolconfiguration` resources in Azure. De Azure CLI maakt gebruik van helm uninstall om de agents in het cluster te verwijderen.
 
-De Azure Portal verwijdert de `Microsoft.Kubernetes/connectedcluster` resource in Azure en verwijdert alle gekoppelde `sourcecontrolconfiguration` resources in Azure.
+* **Verwijderen met Azure cli**: de volgende Azure cli-opdracht kan worden gebruikt om het verwijderen van de Azure-Kubernetes-resource te initiëren.
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  Hiermee verwijdert u de `Microsoft.Kubernetes/connectedCluster` resource en eventuele bijbehorende `sourcecontrolconfiguration` resources in Azure. De Azure CLI maakt gebruik van helm uninstall om de agents die op het cluster worden uitgevoerd, te verwijderen.
 
-Als u de agents in het cluster wilt verwijderen, moet u of worden uitgevoerd `az connectedk8s delete` `helm uninstall azurearcfork8s` .
+* **Verwijderen bij Azure Portal**: als u de Azure-Kubernetes-resource op Azure Portal verwijdert, worden de `Microsoft.Kubernetes/connectedcluster` resource en alle bijbehorende `sourcecontrolconfiguration` resources in azure verwijderd, maar worden de agents die op het cluster worden uitgevoerd, niet verwijderd. Voer de volgende opdracht uit om de agents die op het cluster worden uitgevoerd, te verwijderen.
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

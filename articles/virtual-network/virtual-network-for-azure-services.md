@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: b215e938bb4de7d6831e45997148a84b655611be
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: d3d1b8a9e822d3a314df887ad9aff8fe70b93210
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84230988"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298649"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Speciale Azure-Services implementeren in virtuele netwerken
 
@@ -28,7 +28,7 @@ Wanneer u toegewezen Azure-Services in een [virtueel netwerk](virtual-networks-o
 Het implementeren van services binnen een virtueel netwerk biedt de volgende mogelijkheden:
 
 - Resources binnen het virtuele netwerk kunnen met elkaar communiceren via privé-IP-adressen. Zo kunt u gegevens rechtstreeks overbrengen tussen HDInsight en SQL Server die worden uitgevoerd op een virtuele machine, in het virtuele netwerk.
-- On-premises resources hebben toegang tot bronnen in een virtueel netwerk met behulp van privé-IP-adressen via een [site-to-site VPN (VPN gateway)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) of [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- On-premises resources hebben toegang tot bronnen in een virtueel netwerk met behulp van privé-IP-adressen via een [site-to-site VPN (VPN gateway)](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti) of [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Virtuele netwerken kunnen worden gekoppeld om resources in de virtuele netwerken met [elkaar te laten](virtual-network-peering-overview.md) communiceren met behulp van privé-IP-adressen.
 - Service-exemplaren in een virtueel netwerk worden doorgaans volledig beheerd door de Azure-service. Dit omvat het controleren van de status van de resources en schalen met laden.
 - Service-exemplaren worden geïmplementeerd in een subnet in een virtueel netwerk. Binnenkomende en uitgaande netwerk toegang voor het subnet moet worden geopend via [netwerk beveiligings groepen](security-overview.md#network-security-groups), volgens de richt lijnen van de service.
@@ -40,7 +40,7 @@ Het implementeren van services binnen een virtueel netwerk biedt de volgende mog
 
 |Categorie|Service| Toegewezen<sup>1</sup>sup>1 </sup> subnet
 |-|-|-|
-| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele-machineschaalsets](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud service](https://msdn.microsoft.com/library/azure/jj156091): alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/nodes-and-pools.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Geen<sup>2</sup>sup>2</sup>
+| Compute | Virtuele machines: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Schaal sets voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Cloud service](https://msdn.microsoft.com/library/azure/jj156091): alleen virtueel netwerk (klassiek)<br/> [Azure Batch](../batch/nodes-and-pools.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Nee <br/> Nee <br/> Nee <br/> Geen<sup>2</sup>sup>2</sup>
 | Netwerk | [Application Gateway-WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Firewall](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Virtuele netwerk apparaten](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Ja <br/> Ja <br/> Ja <br/> No
 |Gegevens|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Managed Instance](../azure-sql/managed-instance/connectivity-architecture-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Ja <br/> Ja <br/> 
 |Analyse | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Geen<sup>2</sup>sup>2</su<sup>2</sup>> <br/> Geen<sup>2</sup> <br/> 

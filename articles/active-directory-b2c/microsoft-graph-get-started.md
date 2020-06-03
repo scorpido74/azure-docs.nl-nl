@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184338"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298914"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C beheren met Microsoft Graph
 
@@ -36,9 +36,11 @@ Er zijn twee modi voor communicatie die u kunt gebruiken bij het werken met de M
 
 * **Interactief** : geschikt voor taken die eenmaal kunnen worden uitgevoerd, gebruikt u een beheerders account in de B2C-Tenant om de beheer taken uit te voeren. Voor deze modus moet een beheerder zich aanmelden met hun referenties voordat de Microsoft Graph-API wordt aangeroepen.
 
-* **Automatisch** : voor geplande of voortdurend uitgevoerde taken gebruikt deze methode een service account dat u configureert met de vereiste machtigingen voor het uitvoeren van beheer taken. U maakt het ' Service account ' in Azure AD B2C door een toepassing te registreren die door uw toepassingen en scripts wordt gebruikt voor verificatie met behulp van de *toepassings-id* en de OAuth 2,0-client referenties verlenen. In dit geval fungeert de toepassing als zichzelf om de Microsoft Graph-API aan te roepen, niet de beheerder gebruiker, zoals in de eerder beschreven interactieve methode.
+* **Automatisch** : voor geplande of voortdurend uitgevoerde taken gebruikt deze methode een service account dat u configureert met de vereiste machtigingen voor het uitvoeren van beheer taken. U maakt het ' Service account ' in Azure AD B2C door een toepassing te registreren die door uw toepassingen en scripts wordt gebruikt voor verificatie met behulp van de *toepassings-id* en de **OAuth 2,0-client referenties** verlenen. In dit geval fungeert de toepassing als zichzelf om de Microsoft Graph-API aan te roepen, niet de beheerder gebruiker, zoals in de eerder beschreven interactieve methode.
 
 U schakelt het **geautomatiseerde** interactie scenario in door een toepassings registratie te maken die wordt weer gegeven in de volgende secties.
+
+Hoewel de OAuth 2,0-toewijzings stroom voor client referenties momenteel niet rechtstreeks wordt ondersteund door de Azure AD B2C Authentication-Service, kunt u de client referentie stroom instellen met behulp van Azure AD en het micro soft Identity platform/token-eind punt voor een toepassing in uw Azure AD B2C-Tenant. Een Azure AD B2C-Tenant deelt een aantal functies met Azure AD-tenants voor bedrijven.
 
 ## <a name="register-management-application"></a>Beheer toepassing registreren
 
@@ -73,9 +75,10 @@ Als voor uw toepassing of script gebruikers moeten worden verwijderd of hun wach
 1. Selecteer **Toevoegen**. Het kan enkele minuten duren voordat de machtigingen volledig zijn door gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
+Nu u uw beheer toepassing hebt geregistreerd en de vereiste machtigingen hebt verleend, kunnen uw toepassingen en services (bijvoorbeeld Azure-pijp lijnen) de referenties en machtigingen gebruiken om te communiceren met de Microsoft Graph-API. 
 
-Nu u uw beheer toepassing hebt geregistreerd en de vereiste machtigingen hebt verleend, kunnen uw toepassingen en services (bijvoorbeeld Azure-pijp lijnen) de referenties en machtigingen gebruiken om te communiceren met de Microsoft Graph-API.
-
+* [Een toegangstoken ophalen uit Azure AD](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [Het toegangs token gebruiken om Microsoft Graph aan te roepen](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [B2C-bewerkingen die door Microsoft Graph worden ondersteund](microsoft-graph-operations.md)
 * [Azure AD B2C gebruikers accounts beheren met Microsoft Graph](manage-user-accounts-graph-api.md)
 * [Audit logboeken ophalen met de rapportage-API van Azure AD](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

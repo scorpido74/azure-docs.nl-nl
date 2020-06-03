@@ -1,16 +1,16 @@
 ---
 title: Media Graph-concept-Azure
-description: Met media Graph kunt u bepalen waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Dit artikel bevat een gedetailleerde beschrijving van het concept van media Graph.
+description: Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Dit artikel bevat een gedetailleerde beschrijving van het concept van media Graph.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: ee055c34fd37d2d1cc5e7d0bb5147c945dcbff94
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 05/01/2020
+ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260965"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300804"
 ---
-# <a name="media-graph-concept"></a>Concept van media grafiek
+# <a name="media-graph"></a>Mediagrafiek
 
 ## <a name="suggested-pre-reading"></a>Aanbevolen voor lezen
 
@@ -19,10 +19,11 @@ ms.locfileid: "84260965"
 
 ## <a name="overview"></a>Overzicht
 
-Met media Graph kunt u bepalen waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. Een media grafiek bestaat uit bron-, processor-en Sink-knoop punten. In het onderstaande diagram ziet u een grafische weer gave van een media grafiek.   
+Met een media grafiek kunt u definiëren waar media moeten worden vastgelegd, hoe deze moeten worden verwerkt en waar de resultaten moeten worden bezorgd. U kunt dit doen door onderdelen of knoop punten op de gewenste manier te koppelen. In het onderstaande diagram ziet u een grafische weer gave van een media grafiek.  
 
 ![Een grafische weer gave van een media grafiek](./media/media-graph/overview.png)
 
+Live video Analytics op IoT Edge ondersteunt verschillende soorten bronnen, processors en Sinks.
 
 * **Bron knooppunten** maken het vastleggen van media in de media grafiek mogelijk. Media in deze context kunnen conceptueel gezien een audio stroom, een video stroom, een gegevens stroom of een stroom met audio, video en/of gegevens die samen in één stroom worden gecombineerd.
 * **Processor knooppunten** maken het verwerken van media in de media grafiek mogelijk.
@@ -30,11 +31,13 @@ Met media Graph kunt u bepalen waar media moeten worden vastgelegd, hoe deze moe
 
 ## <a name="media-graph-topologies-and-instances"></a>Media Graph-topologieën en-exemplaren 
 
-Met live video Analytics in IoT Edge kunt u media grafieken beheren via twee concepten: "grafiek topologie" en "Graph-exemplaar". Met een grafiek topologie kunt u een blauw druk van een grafiek definiëren, met para meters als tijdelijke aanduidingen voor waarden. In de topologie wordt gedefinieerd welke knoop punten worden gebruikt in de media grafiek en hoe deze in de media grafiek zijn verbonden. Waarden voor de para meters kunnen worden opgegeven bij het maken van grafiek exemplaren die verwijzen naar de topologie. Hierdoor kunt u meerdere exemplaren maken die verwijzen naar dezelfde topologie, maar met verschillende waarden voor de para meters die zijn opgegeven in de topologie. 
+Met live video Analytics in IoT Edge kunt u media grafieken beheren via twee concepten: "grafiek topologie" en "Graph-exemplaar". Met een grafiek topologie kunt u de blauw druk van een grafiek definiëren, met para meters als tijdelijke aanduidingen voor waarden. In de topologie wordt gedefinieerd welke knoop punten worden gebruikt in de media grafiek en hoe deze in de media grafiek zijn verbonden. Als u bijvoorbeeld de feed wilt vastleggen vanuit een camera, hebt u een grafiek nodig met een bron knooppunt dat video ontvangt en een Sink-knoop punt dat de video schrijft.
+
+De waarden voor de para meters in de topologie worden opgegeven wanneer u grafiek exemplaren maakt die naar de topologie verwijzen. Hierdoor kunt u meerdere exemplaren maken die verwijzen naar dezelfde topologie, maar met verschillende waarden voor de para meters die zijn opgegeven in de topologie. In het bovenstaande voor beeld kunt u para meters gebruiken om het IP-adres van de camera en de naam van de opgenomen video weer te geven. U kunt een groot aantal exemplaren van grafieken maken met die topologie-één exemplaar voor elke camera in een gebouw, bijvoorbeeld elk met het specifieke IP-adres en de specifieke naam.
 
 ## <a name="media-graph-states"></a>Status van media grafiek  
 
-Media grafiek kan een van de volgende statussen hebben:
+Een media grafiek kan een van de volgende statussen hebben:
 
 * Inactief: geeft de status aan waar een media grafiek is geconfigureerd, maar niet actief is.
 * Activeren: de status wanneer een media grafiek wordt geïnstantieerd (dat wil zeggen, de status van de overgang tussen inactieve en actieve).
@@ -56,11 +59,11 @@ Live video Analytics op IoT Edge ondersteunt de volgende typen knoop punten in e
 
 #### <a name="rtsp-source"></a>RTSP-bron 
 
-Met een RTSP-bron kunnen media van een [RTSP](https://tools.ietf.org/html/rfc2326) -server worden vastgelegd. RTSP wordt gebruikt voor het instellen en beheren van de media sessies tussen een server en een client. Het RTSP-bron knooppunt in de media grafiek fungeert als een-client en kan een sessie met de opgegeven RTSP-server tot stand brengen. Veel apparaten, zoals de meeste [IP-camera's](https://en.wikipedia.org/wiki/IP_camera) , hebben een ingebouwde RTSP-server. [ONVIF](https://www.onvif.org/) vereist dat RTSP wordt ondersteund in de definitie van [profielen G, S & T-](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) compatibele apparaten. Voor het RTSP-bron knooppunt in Media Graph moet u een RTSP-URL opgeven, samen met referenties voor het inschakelen van een geverifieerde verbinding.
+Met een RTSP-bron knooppunt kunt u media opnemen vanaf een [RTSP] ( https://tools.ietf.org/html/rfc2326 server. Bewakings-en op IP gebaseerde camera's verzenden hun gegevens in een protocol met de naam RTSP (Realtime-Streaming-Protocol) dat verschilt van andere typen apparaten, zoals telefoons en video camera's. Dit protocol wordt gebruikt voor het instellen en beheren van de media sessies tussen een server (de camera) en een client. Het RTSP-bron knooppunt in een media grafiek fungeert als een-client en kan een sessie met een RTSP-server tot stand brengen. Veel apparaten, zoals de meeste [IP-camera's](https://en.wikipedia.org/wiki/IP_camera) , hebben een ingebouwde RTSP-server. [ONVIF](https://www.onvif.org/) vereist dat RTSP wordt ondersteund in de definitie van [profielen G, S & T-](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) compatibele apparaten. Het RTSP-bron knooppunt vereist dat u een RTSP-URL opgeeft, samen met referenties voor het inschakelen van een geverifieerde verbinding.
 
 #### <a name="iot-hub-message-source"></a>Bron van IoT Hub bericht 
 
-Net als andere [IOT Edge modules](../../iot-edge/iot-edge-glossary.md#iot-edge-module)kan live video Analytics op IOT Edge-module berichten ontvangen via de [IOT Edge hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Deze berichten kunnen worden verzonden vanuit andere modules of apps die worden uitgevoerd op het edge-apparaat of vanuit de Cloud. Dergelijke berichten kunnen worden geleverd (gerouteerd) naar een [benoemde invoer](../../iot-edge/module-composition.md#sink) in de module. Met een IoT Hub bericht bron kunnen dergelijke berichten worden doorgestuurd naar een exemplaar van media Graph. Deze berichten of signalen kunnen vervolgens intern worden gebruikt in de media grafiek, meestal om signaal poorten te activeren (Zie de [Signal Gate-processor](#signal-gate-processor) hieronder). 
+Net als andere [IOT Edge modules](../../iot-edge/iot-edge-glossary.md#iot-edge-module)kan live video Analytics op IOT Edge-module berichten ontvangen via de [IOT Edge hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Deze berichten kunnen worden verzonden vanuit andere modules of apps die worden uitgevoerd op het edge-apparaat of vanuit de Cloud. Dergelijke berichten worden verzonden naar een [benoemde invoer](../../iot-edge/module-composition.md#sink) in de module. Met een IoT Hub bron knooppunt van berichten kunnen dergelijke berichten een media grafiek bereiken. Deze berichten of signalen kunnen vervolgens intern worden gebruikt in de media grafiek, normaal gesp roken om signaal poorten te activeren (zie onderstaande [signaal poorten](#signal-gate-processor) ). 
 
 U kunt bijvoorbeeld een IoT Edge module hebben waarmee een bericht wordt gegenereerd wanneer een deur wordt geopend. Het bericht van die module kan worden doorgestuurd naar IoT Edge hub, vanaf waar het kan worden doorgestuurd naar de IoT hub-bericht bron van een media grafiek. In de media grafiek kan de bericht bron van de IoT hub de gebeurtenis door geven aan een signaal Gate-processor, waardoor de video van een RTSP-bron in een bestand kan worden opgenomen. 
 
@@ -68,42 +71,46 @@ U kunt bijvoorbeeld een IoT Edge module hebben waarmee een bericht wordt gegener
 
 #### <a name="motion-detection-processor"></a>Bewegings detectie processor 
 
-Met de bewegings detectie processor kunt u bewegingen in live video detecteren. Hiermee wordt de inkomende video onderzocht en wordt bepaald of er bewegingen in de video zijn. Als er bewegingen worden gedetecteerd, wordt de video door gegeven aan het downstream-knoop punt en wordt er een gebeurtenis verzonden. De bewegings detectie processor (in combi natie met andere media grafiek knooppunten) kan worden gebruikt voor het activeren van de opname van de binnenkomende video wanneer er beweging is gedetecteerd.
+Met het knoop punt bewegings detectie processor kunt u bewegingen in live video detecteren. Er worden inkomende video frames onderzocht en er wordt bepaald of er bewegingen in de video zijn. Als er bewegingen worden gedetecteerd, worden de video frames door gegeven aan het downstream-onderdeel en wordt er een gebeurtenis verzonden. Het knoop punt voor de bewegings detectie processor (in combi natie met andere knoop punten) kan worden gebruikt voor het activeren van de opname van de binnenkomende video wanneer er beweging is gedetecteerd.
 
 #### <a name="frame-rate-filter-processor"></a>Processor voor frame frequentie filter  
 
-Met de filter processor voor frame snelheid kunt u frames uit de inkomende video stroom met een opgegeven frame snelheid bemonsteren. Zo kunt u het aantal frames dat wordt verzonden naar de knoop punten met een lagere stroom (zoals de HTTP-extensie processor) beperken voor verdere verwerking.
+Met het knoop punt filter voor frame snelheid kunt u frames uit de inkomende video stroom met een opgegeven snelheid bemonsteren. Op deze manier kunt u het aantal frames dat wordt verzonden naar onderdelen met een lagere stroom (zoals een HTTP extension-processor knooppunt) beperken voor verdere verwerking.
 
-#### <a name="http-extension-processor"></a>HTTP-extensie processor 
+#### <a name="http-extension-processor"></a>HTTP-extensie processor
 
-Met de HTTP-extensie processor kunt u uw eigen AI met een media grafiek aansluiten. De HTTP-extensie processor gaat in als invoer gedecodeerde video frames en stuurt deze frames door naar een HTTP-eind punt. De processor kan, indien nodig, met het HTTP-eind punt verifiëren. Daarnaast heeft de processor een ingebouwde afbeeldings indelings functie waarmee video frames kunnen worden geschaald en gecoded voordat ze worden doorgestuurd. Schalen heeft opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt terwijl de code ring opties biedt voor de verschillende code ring van afbeeldingen, zoals JPEG, PNG of bmp.
+Met het knoop punt voor de HTTP-extensie processor kunt u uw eigen IoT Edge-module verbinden met een media grafiek. Met dit knoop punt worden video frames gedecodeerd als invoer en worden deze frames doorgestuurd naar een HTTP REST-eind punt dat wordt weer gegeven door uw module. Dit knoop punt kan, indien nodig, worden geverifieerd met het REST-eind punt. Daarnaast heeft het knoop punt een ingebouwde afbeeldings indeling voor het schalen en coderen van video frames voordat ze worden doorgestuurd naar het REST-eind punt. De schaalset bevat opties voor de hoogte-breedte verhouding van de afbeelding die moet worden behouden, aangevuld of uitgerekt. De afbeeldings encoder ondersteunt de indelingen JPEG, PNG of bmp.
 
 #### <a name="signal-gate-processor"></a>Signal Gate-processor  
 
-Met de signaal Gate-processor kan de media voorwaardelijk worden doorgestuurd van het ene knoop punt naar het andere. Het fungeert ook als een buffer, zodat media en gebeurtenissen kunnen worden gesynchroniseerd. Een voor beeld is het gebruik van een signaal Gate-processor tussen een RTSP-bron en een Asset-Sink en het gebruik van de uitvoer van een bewegings detector-processor om de poort te activeren. Met een dergelijke media grafiek kunt u alleen de opname van media activeren wanneer er bewegingen worden gedetecteerd in de binnenkomende video. 
+Met het knoop punt Signal Gate processor kunt u op een voorwaardelijke manier media van het ene naar het andere knoop punt door sturen. Het fungeert ook als een buffer, zodat media en gebeurtenissen kunnen worden gesynchroniseerd. Een typische use-case is het invoegen van een signaal Gate-processor knooppunt tussen het RTSP-bron knooppunt en het knoop punt Asset sink, en het gebruik van de uitvoer van een knoop punt van een bewegings detector om de poort te activeren. Met een dergelijke media grafiek zou u video alleen opnemen wanneer er beweging wordt gedetecteerd.
 
 ### <a name="sinks"></a>Wastafel  
 
 #### <a name="asset-sink"></a>Asset Sink  
 
-Een Asset sink maakt het mogelijk dat een media grafiek media gegevens (video-en/of audio) naar een Azure Media Services Asset schrijft. Zie de sectie [Asset](terminology.md#asset) voor meer informatie over assets en hun rol in het vastleggen en afspelen van media.  
+Met een Asset Sink-knoop punt kunt u media gegevens (video en/of audio) schrijven naar een Azure Media Services-Asset. Er kan slechts één Asset Sink-knoop punt in een media grafiek zijn. Zie de sectie [Asset](terminology.md#asset) voor meer informatie over assets en hun rol in het vastleggen en afspelen van media. U kunt ook het artikel [doorlopende video-opname](continuous-video-recording-concept.md) bekijken voor meer informatie over de manier waarop de eigenschappen van dit knoop punt worden gebruikt.
 
 #### <a name="file-sink"></a>Bestands Sink  
 
-Met de bestands Sink kan een media grafiek media gegevens (video en/of audio) schrijven naar een locatie op het lokale bestands systeem van het IoT Edge apparaat. De bestands Sink moet worden downstream van een Signal Gate-processor. Hiermee wordt de duur van de uitvoer bestanden beperkt tot waarden die zijn opgegeven in de eigenschappen van de signaal Gate-processor.
+Met het knoop punt bestands sink kunt u media gegevens (video en/of audio) schrijven naar een locatie op het lokale bestands systeem van het IoT Edge apparaat. Er kan slechts één bestand Sink-knoop punt in een media grafiek zijn en het moet downstream van een signaal poort-processor knooppunt zijn. Hiermee wordt de duur van de uitvoer bestanden beperkt tot waarden die zijn opgegeven in de knooppunt eigenschappen van de signaal Gate-processor.
 
 #### <a name="iot-hub-message-sink"></a>Bericht Sink IoT Hub  
 
-Met een IoT Hub bericht sink kunt u gebeurtenissen publiceren naar IoT Edge hub. De Edge hub kan de gegevens vervolgens door sturen naar andere modules of apps op het edge-apparaat of naar IoT Hub in de Cloud (per routes die zijn opgegeven in het implementatie manifest). De IoT Hub-bericht Sink kan gebeurtenissen van upstream-processors, zoals een bewegings detectie processor of vanuit een externe service voor het afwijzen van een uitgevallen, accepteren via HTTP-extensie processor.
+Met een IoT Hub Message Sink-knoop punt kunt u gebeurtenissen publiceren naar IoT Edge hub. De IoT Edge hub kan de gegevens vervolgens door sturen naar andere modules of apps op het edge-apparaat of naar IoT Hub in de Cloud (per routes die zijn opgegeven in het implementatie manifest). Het knoop punt voor de IoT Hub Message Sink kan gebeurtenissen van upstream-processors, zoals een knoop punt voor bewegings detectie of van een externe service voor het afwijzen van een processor, accepteren via een knoop punt van de HTTP-extensie.
+
+## <a name="rules-on-the-use-of-nodes"></a>Regels voor het gebruik van knoop punten
+
+Zie [quota's](quotas-limitations.md#limitations-on-graph-topologies-at-preview) voor aanvullende regels over hoe verschillende knoop punten kunnen worden gebruikt in een media grafiek.
 
 ## <a name="scenarios"></a>Scenario's
 
-Met een combi natie van de bron-, processor-en Sink-knoop punten, die hierboven zijn gedefinieerd, kunt u media grafieken maken voor verschillende scenario's. Hier volgen enkele voor beelden van scenario's
+Met een combi natie van de hierboven gedefinieerde bronnen, processors en sinks kunt u media grafieken maken voor verschillende scenario's met betrekking tot de analyse van live video. Voorbeeld scenario's zijn:
 
 * [Continue video-opname](continuous-video-recording-concept.md)
 * [Video-opname op basis van gebeurtenissen](event-based-video-recording-concept.md)
-* [Live video analyses zonder video-opname](analyze-live-video-concept.md)
+* [Live Video Analytics zonder video-opname](analyze-live-video-concept.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg de [Snelstartgids: Live video Analytics uitvoeren met uw eigen model](use-your-model-quickstart.md) artikel voor meer informatie over het uitvoeren van bewegings detectie in een live video-feed.
+Zie [Quick Start: Live video Analytics uitvoeren met uw eigen model](use-your-model-quickstart.md)om te zien hoe u bewegings detectie kunt uitvoeren in een live video-feed.

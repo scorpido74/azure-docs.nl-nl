@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 20f8e0bea460c20ed3af0c2844ebc3510bd2d6b6
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9c70f8d728786e8aff8da33f9a39b8c2cfaafdc4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800795"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295572"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Commerciële Marketplace-partner en toewijzing van klant gebruik
 
@@ -58,6 +58,9 @@ U kunt het gebruik ook op een meer gedetailleerd niveau bijhouden door extra GUI
 De GUID'S moeten worden geregistreerd in het partner centrum om het gebruik van de klant mogelijk te maken.
 
 Nadat u een GUID hebt toegevoegd aan de sjabloon of in de gebruikers agent en de GUID registreert in Partner Center, worden toekomstige implementaties bijgehouden.
+
+> [!NOTE]
+> Als u uw [Azure-toepassing](./partner-center-portal/create-new-azure-apps-offer.md) -aanbod publiceert naar de Azure Marketplace via partner centrum, wordt een nieuwe GUID die wordt gebruikt in uw sjabloon, automatisch geregistreerd bij het partner centrum-profiel wanneer de sjabloon wordt geüpload.  
 
 1. Meld u aan bij [Partner Center](https://partner.microsoft.com/dashboard).
 
@@ -238,15 +241,15 @@ Kies bijgehouden sjabloon in de keuze lijst van het type partner koppeling om he
 
 ## <a name="notify-your-customers"></a>Uw klanten op de hoogte stellen
 
-Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang in de voor beelden \< PARTNER> door de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
+Partners moeten hun klanten informeren over implementaties die gebruikmaken van de toewijzing van klant gebruik. Micro soft rapporteert het Azure-gebruik dat is gekoppeld aan deze implementaties aan de partner. De volgende voor beelden bevatten inhoud die u kunt gebruiken om uw klanten op de hoogte te stellen van deze implementaties. Vervang in de voor beelden door \<PARTNER> de naam van uw bedrijf. Partners moeten ervoor zorgen dat de melding wordt uitgelijnd met hun privacy-en verzamelings beleid voor gegevens, waaronder opties voor klanten die moeten worden uitgesloten van het bijhouden van wijzigingen.
 
 ### <a name="notification-for-resource-manager-template-deployments"></a>Melding voor implementaties van Resource Manager-sjablonen
 
-Wanneer u deze sjabloon implementeert, kan micro soft de installatie van \< PARTNER> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
+Wanneer u deze sjabloon implementeert, kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
 
 ### <a name="notification-for-sdk-or-api-deployments"></a>Melding voor SDK-of API-implementaties
 
-Wanneer u \< partner> software implementeert, kan micro soft de installatie van \< partner> software identificeren met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
+Wanneer u software implementeert \<PARTNER> , kan micro soft de software-installatie identificeren \<PARTNER> met de Azure-resources die zijn geïmplementeerd. Micro soft kan de Azure-resources correleren die worden gebruikt ter ondersteuning van de software. Micro soft verzamelt deze informatie om de beste ervaring met hun producten te bieden en hun bedrijf te kunnen bedienen. De gegevens worden verzameld en geregeld door het privacybeleid van micro soft, dat u kunt vinden op https://www.microsoft.com/trustcenter .
 
 ## <a name="get-support"></a>Ondersteuning krijgen
 
