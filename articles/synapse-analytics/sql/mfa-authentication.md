@@ -1,6 +1,6 @@
 ---
-title: Multi-factor AAD-verificatie gebruiken
-description: Synapse SQL-ondersteunings verbindingen van SQL Server Management Studio (SSMS) met behulp van Active Directory universele authenticatie.
+title: Multi-Factor Authentication van AAD gebruiken
+description: Synapse SQL biedt ondersteuning voor verbindingen vanuit SQL Server Management Studio (SSMS) met behulp van universele verificatie van Active Directory.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -8,89 +8,90 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e8f17f54f52aef6f552b7c211aa8f0e498b94df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: has-adal-ref
+ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424921"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197661"
 ---
-# <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-factor AAD-verificatie gebruiken met Synapse SQL (SSMS-ondersteuning voor MFA)
+# <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>Multi-Factor Authentication van AAD gebruiken met Synapse SQL (SSMS-ondersteuning voor MFA)
 
-Synapse SQL-ondersteunings verbindingen van SQL Server Management Studio (SSMS) met behulp van *Active Directory universele authenticatie*. 
+Synapse SQL biedt ondersteuning voor verbindingen vanuit SQL Server Management Studio (SSMS) met behulp van *universele verificatie van Active Directory*. 
 
-In dit artikel worden de verschillen tussen de verschillende verificatie opties beschreven, evenals de beperkingen die zijn gekoppeld aan het gebruik van universele authenticatie. 
+In dit artikel worden de verschillen beschreven tussen de verschillende verificatie-opties, evenals de beperkingen van universele verificatie. 
 
-**Down load de nieuwste SSMS** -op de client computer, down load de meest recente versie van SSMS, van [down load SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). 
+**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) (SQL Server Management Studio (SSMS) downloaden). 
 
-**Down load de nieuwste SSMS** -op de client computer, down load de meest recente versie van SSMS, van [down load SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+**Download de nieuwste versie van SSMS** Download op de clientcomputer de meest recente versie van SSMS. Ga hiervoor naar de pagina [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio (SSMS) downloaden).
 
-Voor alle functies die in dit artikel worden besproken, gebruikt u ten minste juli 2017, versie 17,2.  Het dialoog venster meest recente verbinding moet er ongeveer uitzien als in de volgende afbeelding:
+Voor alle functies die in dit artikel worden besproken, hebt u ten minste versie 17.2 van juli 2017 nodig.  Het meest recente dialoogvenster Verbinding maken met server moet er ongeveer uitzien als in de volgende afbeelding:
 
-![1mfa-Universal-Connect](./media/mfa-authentication/1mfa-universal-connect.png "Hiermee wordt het vak gebruikers naam ingevuld.")  
+![1mfa-universal-connect](./media/mfa-authentication/1mfa-universal-connect.png "Vult het vak Gebruikersnaam in.")  
 
-## <a name="the-five-authentication-options"></a>De vijf verificatie opties  
+## <a name="the-five-authentication-options"></a>De vijf verificatieopties  
 
-Active Directory universele verificatie ondersteunt de twee niet-interactieve verificatie methoden:
-    - `Active Directory - Password`verificatie
-    - `Active Directory - Integrated`verificatie
+Universele verificatie met Active Directory ondersteunt de twee niet-interactieve verificatiemethoden:
+    - `Active Directory - Password`
+    - `Active Directory - Integrated`
 
-Er zijn ook twee niet-interactieve verificatie modellen, die kunnen worden gebruikt in veel verschillende toepassingen (ADO.NET, JDCB, ODC, enzovoort). Deze twee methoden resulteren nooit in pop-updialoogvensters:
+Er zijn ook twee niet-interactieve verificatiemodellen, die kunnen worden gebruikt in allerlei verschillende toepassingen (ADO.NET, JDCB, ODC, enzovoort). Voor deze twee methoden worden nooit pop-upvensters weergegeven:
 
 - `Active Directory - Password`
 - `Active Directory - Integrated`
 
-De interactieve methode biedt ook ondersteuning voor Azure multi-factor Authentication (MFA):
+De interactieve methode die ook ondersteuning biedt voor Multi-Factor Authentication (MFA) van Azure is:
 
 - `Active Directory - Universal with MFA`
 
-Azure MFA helpt bij het bewaken van de toegang tot uw gegevens en toepassingen en komt tegemoet aan de wensen van gebruikers die een eenvoudige aanmeldprocedure willen. Het biedt krachtige verificatie met een scala aan eenvoudige verificatie opties (telefoon oproep, tekst bericht, Smart Cards met pincode of mobiele app-melding), zodat gebruikers de gewenste methode kunnen kiezen. Interactieve MFA met Azure AD kan resulteren in een pop-upvenster voor validatie.
+Azure MFA helpt bij het bewaken van de toegang tot uw gegevens en toepassingen en komt tegemoet aan de wensen van gebruikers die een eenvoudige aanmeldprocedure willen. Azure MFA biedt krachtige verificatie met een scala aan gebruikersvriendelijke verificatieopties (zoals telefoonoproepen, sms-berichten, smartcards met pincode of melding in mobiele app), zodat gebruikers de gewenste methode kunnen kiezen. Bij interactieve MFA met Azure AD kunnen er pop-upvensters worden weergegeven voor validatie.
 
-Zie [multi-factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een beschrijving van multi-factor Authentication.
+Zie [Multi-Factor Authentication](../../active-directory/authentication//concept-mfa-howitworks.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)voor een beschrijving van Multi-Factor Authentication.
 
-### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-domein naam of Tenant-ID-para meter
+### <a name="azure-ad-domain-name-or-tenant-id-parameter"></a>Azure AD-domeinnaam of tenant-id als parameter
 
-Vanaf [SSMS versie 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kunnen gebruikers die in de huidige Active Directory van andere Azure Active Directory-gebruikers worden geïmporteerd, de naam van het Azure AD-domein of de Tenant-id opgeven wanneer ze verbinding maken. 
+Vanaf [SSMS versie 17](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen gebruikers die vanuit andere Azure Active Directory's zijn geïmporteerd als gastgebruiker, de naam van het Azure AD-domein of hun tenant-id opgeven wanneer ze verbinding willen maken. 
 
-Gast gebruikers bevatten gebruikers die zijn uitgenodigd van andere Azure ADs, micro soft-accounts zoals outlook.com, hotmail.com, live.com of andere accounts, zoals gmail.com. Met deze informatie kan **Active Directory universeel met MFA-verificatie** de juiste verificatie-instantie identificeren. Deze optie is ook vereist voor de ondersteuning van micro soft-accounts (MSA) zoals outlook.com, hotmail.com, live.com of niet-MSA-accounts. 
+Gastgebruikers zijn gebruikers die zijn uitgenodigd bij andere Azure ADs, Microsoft-accounts zoals outlook.com, hotmail.com, live.com of andere accounts zoals gmail.com. Aan de hand van deze gegevens kan de verificatiemethode **Active Directory Universeel met MFA** de juiste verificatie-instantie identificeren. Deze optie is ook vereist voor de ondersteuning van Microsoft-accounts (MSA) zoals outlook.com, hotmail.com, live.com, of niet-MSA-accounts. 
 
-Al deze gebruikers die willen worden geverifieerd met behulp van universele verificatie, moeten hun Azure AD-domein naam of Tenant-ID invoeren. Deze para meter vertegenwoordigt de huidige naam van het Azure AD-domein/de Tenant-ID waaraan de Azure-server is gekoppeld. 
+Al deze gebruikers die willen worden geverifieerd met behulp van universele verificatie, moeten hun Azure AD-domeinnaam of tenant-id invoeren. Deze parameter vertegenwoordigt de huidige Azure AD-domeinnaam/tenant-id waaraan de Azure-server is gekoppeld. 
 
-Als Azure server bijvoorbeeld is gekoppeld aan een Azure AD-domein `contosotest.onmicrosoft.com` waarbij de `joe@contosodev.onmicrosoft.com` gebruiker wordt gehost als een geïmporteerde gebruiker vanuit een Azure `contosodev.onmicrosoft.com`AD-domein, is `contosotest.onmicrosoft.com`de domein naam vereist om deze gebruiker te verifiëren. 
+Als de Azure server bijvoorbeeld is gekoppeld aan het Azure AD-domein `contosotest.onmicrosoft.com` waar de gebruiker `joe@contosodev.onmicrosoft.com` wordt gehost als een geïmporteerde gebruiker uit het Azure AD-domein `contosodev.onmicrosoft.com`, is `contosotest.onmicrosoft.com` de domeinnaam die vereist is om deze gebruiker te verifiëren. 
 
-Als de gebruiker een systeem eigen gebruiker is van de Azure AD die is gekoppeld aan Azure server en geen MSA-account is, is er geen domein naam of Tenant-ID vereist. 
+Als de gebruiker een systeemeigen gebruiker is van de Azure AD die is gekoppeld aan de Azure-server, en geen MSA-account is, hoeft er geen domeinnaam of tenant-id te worden ingevoerd. 
 
-Om de para meter in te voeren (vanaf SSMS versie 17,2), vult u in het dialoog venster **verbinding maken met data base** het dialoog venster in, selecteert u **Active Directory-universeel met MFA-** verificatie, klikt u op **Opties**, vult u het vak **gebruikers naam** in en klikt u vervolgens op het tabblad **verbindings eigenschappen** . 
+Als u de parameter wilt invoeren (vanaf SSMS versie 17.2), vult u het dialoogvenster **Verbinding maken met database** in, waarbij u de verificatiemethode **Active Directory - Universeel met MFA** selecteert, klikt op **Opties**, het vak **Gebruikersnaam** invult en vervolgens op het tabblad **Verbindingseigenschappen** klikt. 
 
-Schakel het selectie vakje **AD-domein naam of Tenant-id** in en geef de verificatie autoriteit, zoals de domein naam (**contosotest.onmicrosoft.com**) of de GUID van de Tenant-id op.  
+Schakel het selectievakje **AD-domeinnaam of tenant-id** in en geef de gegevens van de verificatie-instantie op, zoals de domeinnaam (**contosotest.onmicrosoft.com**) of de GUID van de tenant-id.  
 
-   ![MFA-Tenant-SSMS](./media/mfa-authentication/mfa-tenant-ssms.png)
+   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-tenant-ssms.png)
 
-Als u SSMS 18. x of hoger gebruikt, is de AD-domein naam of Tenant-ID niet langer nodig voor gast gebruikers omdat 18. x of hoger deze automatisch herkent.
+Als u SSMS 18.x of hoger gebruikt, is de AD-domeinnaam of tenant-id niet meer nodig voor gastgebruikers omdat 18.x of hoger deze automatisch herkent.
 
-   ![MFA-Tenant-SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
+   ![mfa-tenant-ssms](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
-### <a name="azure-ad-business-to-business-support"></a>Ondersteuning voor Azure AD Business naar Business   
-Azure AD-gebruikers die worden ondersteund voor Azure AD B2B-scenario's als gast gebruikers (Zie [Wat is Azure B2B Collaboration](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kan alleen verbinding maken met Synapse SQL als onderdeel van een groep die is gemaakt in huidige Azure AD en hand `CREATE USER` matig is toegewezen met behulp van de Transact-SQL-instructie in een bepaalde data base. 
+### <a name="azure-ad-business-to-business-support"></a>Ondersteuning voor Azure AD B2B   
+Azure AD-gebruikers die worden ondersteund voor Azure AD B2B-scenario's als gastgebruikers (zie [Wat is Azure B2B-samenwerking](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kunnen alleen verbinding maken met Synapse SQL als leden van een groep die is gemaakt in de huidige Azure AD en die handmatig zijn toegewezen met behulp van de Transact-SQL-instructie `CREATE USER` in een bepaalde database. 
 
-`steve@gmail.com` Als bijvoorbeeld wordt uitgenodigd voor Azure AD `contosotest` (met het Azure AD-domein `contosotest.onmicrosoft.com`), wordt een Azure AD-groep, zoals `usergroup` moet worden gemaakt in de Azure AD die het `steve@gmail.com` lid bevat. Vervolgens moet deze groep worden gemaakt voor een specifieke data base (MyDatabase) door Azure AD SQL-beheerder of Azure AD DBO door een Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` -instructie uit te voeren. 
+Als `steve@gmail.com` bijvoorbeeld wordt uitgenodigd voor Azure AD `contosotest` (met het Azure AD-domein `contosotest.onmicrosoft.com`), moet er een Azure AD-groep, zoals `usergroup`, worden gemaakt in de Azure AD die het lid `steve@gmail.com` bevat. Vervolgens moet deze groep worden gemaakt voor een specifieke database (MyDatabase) door een Azure AD SQL-beheerder of Azure AD DBO door een Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER`-instructie uit te voeren. 
 
-Nadat de database gebruiker is gemaakt, kan de gebruiker `steve@gmail.com` zich aanmelden `MyDatabase` met de verificatie optie `Active Directory – Universal with MFA support`SSMS. 
+Nadat de databasegebruiker is gemaakt, kan de gebruiker `steve@gmail.com` zich aanmelden bij `MyDatabase` met behulp van de SSMS-verificatieoptie `Active Directory – Universal with MFA support`. 
 
-De usergroup heeft standaard alleen de machtiging Connect en alle verdere gegevens toegang die op de normale manier moeten worden verleend. 
+De gebruikersgroep heeft standaard alleen de machtiging om verbinding te maken en alle verdere gegevenstoegang moet op de gebruikelijke manier worden verleend. 
 
-Houd er rekening `steve@gmail.com` mee dat gebruiker als gast gebruiker het vakje moet inschakelen en voeg de naam `contosotest.onmicrosoft.com` van het AD-domein toe in het dialoog venster SSMS- **verbindings eigenschap** . De optie **AD-domein naam of Tenant-id** wordt alleen ondersteund voor de Universal met MFA-verbindings opties, anders wordt deze grijs weer gegeven.
+De gebruiker `steve@gmail.com` moet als gastgebruiker het selectievakje inschakelen en de AD-domeinnaam `contosotest.onmicrosoft.com` toevoegen in het dialoogvenster **Verbindingseigenschap** van SSMS. De optie **AD-domeinnaam of tenant-id** wordt alleen ondersteund voor de verbindingsopties van Universeel met MFA; anders wordt deze grijs weergegeven.
 
-## <a name="universal-authentication-limitations-for-synapse-sql"></a>Universele verificatie beperkingen voor Synapse SQL
+## <a name="universal-authentication-limitations-for-synapse-sql"></a>Beperkingen van universele verificatie voor Synapse SQL
 
-- SSMS en SqlPackage. exe zijn de enige hulpprogram ma's die momenteel zijn ingeschakeld voor MFA via Active Directory universele verificatie.
-- SSMS versie 17,2 ondersteunt gelijktijdige toegang met meerdere gebruikers met behulp van universele verificatie met MFA. Versie 17,0 en 17,1, beperkt een aanmelding voor een exemplaar van SSMS met behulp van universele verificatie voor één Azure Active Directory account. Als u zich als een ander Azure AD-account wilt aanmelden, moet u een ander exemplaar van SSMS gebruiken. (Deze beperking is beperkt tot Active Directory universele verificatie. u kunt zich aanmelden bij verschillende servers met behulp van Active Directory wachtwoord verificatie, Active Directory geïntegreerde verificatie of SQL Server verificatie).
-- SSMS ondersteunt Active Directory universele verificatie voor Objectverkenner, de query-editor en de visualisatie van het query archief.
-- SSMS versie 17,2 biedt ondersteuning voor de DacFx-wizard voor het exporteren/extra heren/implementeren van gegevens database. Zodra een specifieke gebruiker is geverifieerd via het dialoog venster voor initiële verificatie met behulp van universele verificatie, werkt de wizard DacFx op dezelfde manier als voor alle andere verificatie methoden.
-- De SSMS-tabelontwerpfunctie biedt geen ondersteuning voor universele verificatie.
-- Er zijn geen aanvullende software vereisten voor Active Directory universele verificatie, behalve dat u een ondersteunde versie van SSMS moet gebruiken.  
-- De versie van Active Directory Authentication Library (ADAL) voor universele verificatie is bijgewerkt naar de nieuwste versie van ADAL. dll 3.13.9 beschikbaar uitgebracht. Zie [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
+- SSMS en SqlPackage.exe zijn de enige hulpprogramma's die momenteel zijn ingeschakeld voor MFA via universele verificatie van Active Directory.
+- SSMS versie 17.2 ondersteunt gelijktijdige toegang door meerdere gebruikers met behulp van universele verificatie met MFA. In versies 17.0 en 17.1 wordt de aanmelding voor een exemplaar van SSMS met behulp van universele verificatie beperkt tot één Azure Active Directory-account. Als u zich als een ander Azure AD-account wilt aanmelden, moet u een ander exemplaar van SSMS gebruiken. (Deze beperking geldt alleen voor universele verificatie met Active Directory. U kunt zich aanmelden bij verschillende servers met behulp van Active Directory-wachtwoordverificatie, geïntegreerde Active Directory-verificatie of SQL Server-verificatie).
+- SSMS ondersteunt universele verificatie van Active Directory voor Objectverkenner, Query-editor en visualisatie van Query Store.
+- SSMS versie 17.2 biedt ondersteuning voor de DacFx-wizard voor het exporteren/extraheren/implementeren van databases. Zodra een specifieke gebruiker is geverifieerd via het dialoogvenster voor initiële verificatie met behulp van universele verificatie, werkt de DacFx-wizard op dezelfde manier als voor alle andere verificatiemethoden.
+- De tabelontwerpfunctie van SSMS biedt geen ondersteuning voor universele verificatie.
+- Er zijn geen aanvullende softwarevereisten voor universele verificatie van Active Directory, behalve dat u een ondersteunde versie van SSMS moet gebruiken.  
+- De versie van Active Directory Authentication Library (ADAL) voor universele verificatie is bijgewerkt naar de nieuwste versie van ADAL.dll, te weten 3.13.9. Zie [Active Directory Authentication Library 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor meer informatie.  
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het artikel [verbinding maken met Synapse SQL met SQL Server Management Studio](get-started-ssms.md) voor meer informatie. 
+Zie het artikel [Connect to Azure Synapse Analytics with SQL Server Management Studio (SSMS)](get-started-ssms.md) (Verbinding maken met Azure Synapse Analytics met SQL Server Management Studio (SSMS)) voor meer informatie. 
 
