@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75498100"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309948"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Problemen met failback naar on-premises vanuit Azure oplossen
 
@@ -69,7 +69,7 @@ Los dit probleem als volgt op:
 
 ### <a name="error-code-78093"></a>Fout code 78093
 
-**De VM wordt niet uitgevoerd, is vastgelopen of is niet toegankelijk.**
+**De VM wordt niet uitgevoerd, reageert niet of is niet toegankelijk.**
 
 Los dit probleem als volgt op:
 

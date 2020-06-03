@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361529"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317725"
 ---
 ### <a name="database-tier"></a>Database laag
 
@@ -17,7 +17,7 @@ De data base-laag bevat de data base-exemplaren voor de toepassing. De data base
 
 Als u Oracle DB wilt gebruiken, kan het data base-exemplaar op Azure worden geïmplementeerd via de Oracle DB installatie kopieën die beschikbaar zijn op de Azure Marketplace. U kunt ook de Interconnect tussen Azure en OCI gebruiken om de Oracle DB te implementeren in een PaaS-model op OCI.
 
-Voor Oracle RAC kunt u Oracle RAC implementeren op Azure CloudSimple in IaaS-model of in OCI in het PaaS-model. Het is raadzaam om een RAC-systeem met twee knoop punten te gebruiken. 
+Voor Oracle RAC kunt u OCI gebruiken in PaaS-model. Het is raadzaam om een RAC-systeem met twee knoop punten te gebruiken. Hoewel het mogelijk is om Oracle RAC te implementeren in azure CloudSimple in het IaaS-model, is dit geen ondersteunde configuratie door Oracle. Raadpleeg [Oracle-Program ma's die in aanmerking komen voor geautoriseerde Cloud omgevingen](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf).
 
 Ten slotte gebruikt u voor Exadata-systemen de OCI Interconnect en implementeert u het Exadata-systeem in OCI. In het bovenstaande voor gaande architectuur diagram ziet u een Exadata-systeem dat is geïmplementeerd in OCI over twee subnetten.
 

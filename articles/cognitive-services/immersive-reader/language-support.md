@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538745"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309302"
 ---
 # <a name="language-support-for-immersive-reader"></a>Taal ondersteuning voor insluitende lezer
 
@@ -27,22 +27,22 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Taal | Label |
 |----------|-----|
 | Arabisch (Egyptisch) | AR-bijvoorbeeld |
-| Arabisch (Saudi-Arabië) | ar-SA |
+| Arabisch (Saoedi-Arabië) | ar-SA |
 | Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
 | Catalaans | ca-ES |
 | Chinees | zh |
 | Chinees (China) | zh-CN |
-| Chinees (Hongkong) | zh-HK |
-| Chinees (Macau) | zh-MO |
+| Chinees (Hong Kong SAR) | zh-HK |
+| Chinees (Macau SAR) | zh-MO |
 | Chinees (Singapore) | zh-SG |
 | Chinees (Taiwan) | zh-TW |
 | Vereenvoudigd Chinees | zh-Hans |
 | Vereenvoudigd Chinees (China) | zh-Hans-CN |
 | Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
 | Traditioneel Chinees | zh-hant-CN |
-| Traditioneel Chinees (Hongkong) | zh-hant-HK |
-| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Hong Kong SAR) | zh-hant-HK |
+| Traditioneel Chinees (Macau SAR) | zh-hant-MO |
 | Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
@@ -127,7 +127,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 |----------|-----|
 | Afrikaans | f |
 | Arabisch (Egyptisch) | AR-bijvoorbeeld |
-| Arabisch (Saudi-Arabië) | ar-SA |
+| Arabisch (Saoedi-Arabië) | ar-SA |
 | Bengalese | bn |
 | Bosnisch | balans |
 | Bulgaars | bg |
@@ -135,16 +135,16 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Catalaans | ca-ES |
 | Chinees | zh |
 | Chinees (China) | zh-CN |
-| Chinees (Hongkong) | zh-HK |
-| Chinees (Macau) | zh-MO |
+| Chinees (Hong Kong SAR) | zh-HK |
+| Chinees (Macau SAR) | zh-MO |
 | Chinees (Singapore) | zh-SG |
 | Chinees (Taiwan) | zh-TW |
 | Vereenvoudigd Chinees | zh-Hans |
 | Vereenvoudigd Chinees (China) | zh-Hans-CN |
 | Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
 | Traditioneel Chinees | zh-hant-CN |
-| Traditioneel Chinees (Hongkong) | zh-hant-HK |
-| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Hong Kong SAR) | zh-hant-HK |
+| Traditioneel Chinees (Macau SAR) | zh-hant-MO |
 | Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
@@ -258,7 +258,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Taal | Label |
 |----------|-----|
 | Arabisch (Egyptisch) | AR-bijvoorbeeld |
-| Arabisch (Saudi-Arabië) | ar-SA |
+| Arabisch (Saoedi-Arabië) | ar-SA |
 | Baskisch | EU |
 | Bulgaars | bg |
 | Bulgaars (Bulgarije) | bg-BG |
@@ -267,8 +267,8 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Vereenvoudigd Chinees (China) | zh-Hans-CN |
 | Vereenvoudigd Chinees (Singapore) | zh-Hans-SG |
 | Traditioneel Chinees | zh-hant-CN |
-| Traditioneel Chinees (Hongkong) | zh-hant-HK |
-| Traditioneel Chinees (Macau) | zh-hant-MO |
+| Traditioneel Chinees (Hong Kong SAR) | zh-hant-HK |
+| Traditioneel Chinees (Macau SAR) | zh-hant-MO |
 | Traditioneel Chinees (Taiwan) | zh-hant-TW |
 | Kroatisch | uur |
 | Kroatisch (Kroatië) | hr-HR |
@@ -323,7 +323,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Maleis (Maleisië) | ms-MY |
 | Noors Bokmål| NB |
 | Noors Bokmål (Noor wegen) | nb-NO |
-| Noors Nynorsk | nn |
+| Noors (Nynorsk) | nn |
 | Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
@@ -407,7 +407,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Litouws | lt |
 | Noors Bokmål| NB |
 | Noors Bokmål (Noor wegen) | nb-NO |
-| Noors Nynorsk | nn |
+| Noors (Nynorsk) | nn |
 | Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |
@@ -488,7 +488,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Taal | Label |
 |----------|-----|
 | Arabisch (Egyptisch) | AR-bijvoorbeeld |
-| Arabisch (Saudi-Arabië) | ar-SA |
+| Arabisch (Saoedi-Arabië) | ar-SA |
 | Deens | da |
 | Deens (Denemarken) | da-DK |
 | Nederlands | nl |
@@ -520,7 +520,7 @@ In dit artikel vindt u een lijst met ondersteunde menselijke talen voor functies
 | Koreaans (Korea) | ko-KR |
 | Noors Bokmål| NB |
 | Noors Bokmål (Noor wegen) | nb-NO |
-| Noors Nynorsk | nn |
+| Noors (Nynorsk) | nn |
 | Pools | pl |
 | Pools (Polen) | pl-PL |
 | Portugees | pt |

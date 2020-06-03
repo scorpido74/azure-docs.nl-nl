@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 91e7b1c0be9a38c3d79440f07d944d182980dc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159231"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298224"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Visual Studio en Visual Studio code gebruiken om IoT Plug en Play-apparaten te bouwen
 
@@ -25,7 +25,7 @@ In dit artikel leest u informatie over:
 - Gebruik de gegenereerde code in het project van uw apparaat.
 - Herhaal door het opnieuw genereren van de skelet code.
 
-Zie [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench)voor meer informatie over het gebruik van de VS code voor het ontwikkelen van IOT-apparaten.
+Zie voor meer informatie over het gebruik van de VS code voor het ontwikkelen van IoT-apparaten [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench) .
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -53,11 +53,11 @@ In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen, **IO
 
 - **Project type**. De code generator genereert ook een CMake-of Arduino-project. Momenteel zijn de ondersteunde project typen:
 
-    - **Cmake-project in Windows**: voor een apparaat-project dat gebruikmaakt van [cmake](https://cmake.org/) als build-systeem in Windows. Met deze optie `CMakeLists.txt` worden de SDK-configuraties van apparaten in dezelfde map als de C-code gegenereerd.
-    - **Cmake-project in Linux**: voor een apparaat-project dat gebruikmaakt van [cmake](https://cmake.org/) als build system op Linux. Met deze optie `CMakeLists.txt` worden de SDK-configuraties van apparaten in dezelfde map als de C-code gegenereerd.
+    - **Cmake-project in Windows**: voor een apparaat-project dat gebruikmaakt van [cmake](https://cmake.org/) als build-systeem in Windows. Met deze optie worden de `CMakeLists.txt` SDK-configuraties van apparaten in dezelfde map als de C-code gegenereerd.
+    - **Cmake-project in Linux**: voor een apparaat-project dat gebruikmaakt van [cmake](https://cmake.org/) als build system op Linux. Met deze optie worden de `CMakeLists.txt` SDK-configuraties van apparaten in dezelfde map als de C-code gegenereerd.
     - **MXChip IOT DevKit-project**: voor een Device-project dat wordt uitgevoerd op een [MXChip IOT DevKit](https://aka.ms/iot-devkit) -apparaat. Met deze optie wordt een Arduino-project gegenereerd dat u kunt [gebruiken in VS code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) of in de Arduino IDE om te bouwen en uit te voeren op een IOT DevKit-apparaat.
 
-- **Type apparaat-SDK**. Als u CMake als project type selecteert, is dit de stap om te configureren hoe gegenereerde code de Azure IoT C-SDK bevat `CMakeLists.txt`in de:
+- **Type apparaat-SDK**. Als u CMake als project type selecteert, is dit de stap om te configureren hoe gegenereerde code de Azure IoT C-SDK bevat in de `CMakeLists.txt` :
 
     - **Via bron code**: de gegenereerde code is afhankelijk van de [apparaat-SDK-bron code](https://github.com/Azure/azure-iot-sdk-c) die u wilt insluiten en samen te bouwen. Dit wordt aanbevolen wanneer u de SDK-bron code van het apparaat hebt aangepast.
     - **Via Vcpkg**: de gegenereerde code is afhankelijk van de [SDK Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) van het apparaat om samen te voegen en te bouwen. Dit is de aanbevolen manier voor apparaten met Windows, Linux of macOS.
@@ -71,7 +71,7 @@ Wanneer het genereren van code is voltooid, wordt met de uitbrei ding een nieuw 
 
 1. In VS code gebruikt u **CTRL + SHIFT + P** om het opdracht palet te openen. Typ en selecteer **C/C++: Edit configurations (JSON)** om het bestand **c_cpp_properties. json** te openen.
 
-1. Voeg het pad van de SDK van het apparaat `includePath` toe aan de sectie:
+1. Voeg het pad van de SDK van het apparaat toe aan de `includePath` sectie:
 
     ```json
     "includePath": [
@@ -92,14 +92,14 @@ Als u de apparaatcode samen met het apparaat C SDK Vcpkg wilt maken met behulp v
 
 1. Open een Terminal-toepassing.
 
-1. Installeer **gcc**, **Git**, `cmake`en alle afhankelijkheden met behulp van de `apt-get` opdracht:
+1. Installeer **gcc**, **Git**, `cmake` en alle afhankelijkheden met behulp van de `apt-get` opdracht:
 
     ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Controleer of de versie `cmake` van is boven **2.8.12** en de versie van **gcc** hoger is dan **4.4.7**.
+    Controleer of de versie van `cmake` is boven **2.8.12** en de versie van **gcc** hoger is dan **4.4.7**.
 
     ```bash
     cmake --version
@@ -127,7 +127,7 @@ Als u de apparaatcode samen met het apparaat C SDK Vcpkg wilt maken met behulp v
     ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
-1. Maak een `cmake` submap in de map met de gegenereerde code-stub en navigeer naar die map:
+1. Maak een submap `cmake` in de map met de gegenereerde code-stub en navigeer naar die map:
 
     ```bash
     mkdir cmake
@@ -176,7 +176,7 @@ Als u de apparaatcode samen met de SDK van het apparaat C op Windows wilt bouwen
 
     ![CMake uitvoer](media/howto-develop-with-vs-vscode/vs-cmake-output.png)
 
-1. Klik in de **Solution Explorer**met de rechter muisknop op `CMakeLists.txt` de hoofdmap en selecteer vervolgens **bouwen** in het context menu om de gegenereerde code-stub te bouwen met de SDK van het apparaat.
+1. Klik in de **Solution Explorer**met de rechter muisknop op de `CMakeLists.txt` hoofdmap en selecteer vervolgens **bouwen** in het context menu om de gegenereerde code-STUB te bouwen met de SDK van het apparaat.
 
 1. Nadat de build is geslaagd, voert u bij de opdracht prompt de toepassing uit die het IoT Hub apparaat connection string als een para meter opgeven.
 
@@ -193,7 +193,7 @@ De volgende stappen laten zien hoe u de apparaatcode samen met de bron code van 
 
 1. Open Terminal-toepassing.
 
-1. Gebruik [homebrew](https://homebrew.sh) om alle afhankelijkheden te installeren:
+1. Gebruik [homebrew](https://brew.sh) om alle afhankelijkheden te installeren:
 
     ```bash
     brew update
@@ -216,7 +216,7 @@ De volgende stappen laten zien hoe u de apparaatcode samen met de bron code van 
 
     Deze bewerking kan enkele minuten in beslag nemen.
 
-1. Maak een map met `cmake` de naam onder de map die de gegenereerde code bevat en navigeer naar die map.
+1. Maak een map `cmake` met de naam onder de map die de gegenereerde code bevat en navigeer naar die map.
 
     ```bash
     mkdir cmake
@@ -247,10 +247,10 @@ De code generator kan de code opnieuw genereren als u uw DCM-of interface-bestan
 
 1. Selecteer **code opnieuw genereren voor {project naam}**.
 
-1. De code generator maakt gebruik van de vorige instelling die u hebt geconfigureerd en genereert de code opnieuw. Er worden echter geen bestanden overschreven die gebruikers code kunnen bevatten, zoals `main.c` en `{project_name}_impl.c`.
+1. De code generator maakt gebruik van de vorige instelling die u hebt geconfigureerd en genereert de code opnieuw. Er worden echter geen bestanden overschreven die gebruikers code kunnen bevatten, zoals `main.c` en `{project_name}_impl.c` .
 
 > [!NOTE]
-> Als u de URN-id in uw interface bestand bijwerkt, wordt deze als een nieuwe interface beschouwd. Wanneer u de code opnieuw genereert, genereert de code generator code voor de interface, maar overschrijft de oorspronkelijke niet in `{project_name}_impl.c` het bestand.
+> Als u de URN-id in uw interface bestand bijwerkt, wordt deze als een nieuwe interface beschouwd. Wanneer u de code opnieuw genereert, genereert de code generator code voor de interface, maar overschrijft de oorspronkelijke niet in het `{project_name}_impl.c` bestand.
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 

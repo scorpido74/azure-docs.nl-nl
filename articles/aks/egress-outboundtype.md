@@ -3,45 +3,27 @@ title: Door de gebruiker gedefinieerde routes (UDR) aanpassen in azure Kubernete
 description: Meer informatie over het definiëren van een aangepaste uitgangs route in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/05/2020
+ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677886"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310866"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route (preview-versie)
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
 Een AKS-cluster kan worden aangepast aan specifieke scenario's. AKS zal standaard een standaard-SKU inrichten Load Balancer worden ingesteld en gebruikt voor uitgaand verkeer. Het is echter mogelijk dat de standaard instelling niet voldoet aan de vereisten van alle scenario's als open bare IP-adressen zijn niet toegestaan of extra hops zijn vereist voor het uitvallen van de gegevens.
 
 In dit artikel wordt beschreven hoe u de uitgangs route van een cluster kunt aanpassen ter ondersteuning van aangepaste netwerk scenario's, zoals die voor het niet toestaan van open bare IP-adressen en het cluster vereist achter een virtueel netwerk apparaat (NVA).
 
-> [!IMPORTANT]
-> De preview-functies van AKS zijn self-service en worden op een opt-basis aangeboden. Previews worden aangeboden *als is* en *als beschikbaar* en zijn uitgesloten van de Service Level Agreement (Sla) en beperkte garantie. AKS-previews worden gedeeltelijk gedekt *door de klant* ondersteuning. De functies zijn daarom niet bedoeld voor productie gebruik. Zie de volgende ondersteunings artikelen voor meer informatie:
->
-> * [AKS-ondersteunings beleid](support-policies.md)
-> * [Veelgestelde vragen over ondersteuning voor Azure](faq.md)
-
 ## <a name="prerequisites"></a>Vereisten
 * Azure CLI-versie 2.0.81 of hoger
-* Azure CLI preview-extensie versie 0.4.28 of hoger
 * API-versie van `2020-01-01` of hoger
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>De nieuwste Azure CLI AKS preview-extensie installeren
-Als u het uitgaande type van een cluster wilt instellen, hebt u de Azure CLI AKS preview-extensie versie 0.4.18 of hoger nodig. Installeer de Azure CLI AKS preview-extensie met behulp van de opdracht AZ extension add en controleer vervolgens of er beschik bare updates zijn met behulp van de volgende opdracht AZ extension update:
-
-```azure-cli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="limitations"></a>Beperkingen
-* Tijdens de preview- `outboundType` periode kan alleen worden gedefinieerd tijdens het maken van het cluster en kan later niet worden bijgewerkt.
-* Tijdens de preview `outboundType` moeten AKS-clusters gebruikmaken van Azure cni. Kubenet kan worden geconfigureerd. voor het gebruik moet hand matig koppelingen van de route tabel worden gemaakt met het AKS-subnet.
+* OutboundType kan alleen worden gedefinieerd tijdens het maken van het cluster en kan later niet worden bijgewerkt.
 * Voor `outboundType` de instelling zijn AKS-clusters met een `vm-set-type` van `VirtualMachineScaleSets` en van vereist `load-balancer-sku` `Standard` .
 * Voor `outboundType` het instellen van een waarde van `UDR` is een door de gebruiker gedefinieerde route met geldige uitgaande connectiviteit voor het cluster vereist.
 * `outboundType`Als u de waarde instelt op ' `UDR` impliceert het binnenkomende bron-IP-adres dat naar de Load Balancer wordt doorgestuurd, mogelijk niet hetzelfde als het uitgaande **afwijkings** doel van het cluster.
@@ -53,14 +35,17 @@ Een AKS-cluster kan worden aangepast met een uniek `outboundType` type Load Bala
 > [!IMPORTANT]
 > Uitgaand type is alleen van invloed op het uitgaande verkeer van uw cluster. Zie [ingangs controllers instellen](ingress-basic.md) voor meer informatie.
 
+> [!NOTE]
+> U kunt uw eigen [route tabel][byo-route-table] gebruiken met UDR-en kubenet-netwerken.
+
 ### <a name="outbound-type-of-loadbalancer"></a>Uitgaand type loadBalancer
 
-Als `loadBalancer` is ingesteld, aks de volgende installatie automatisch volt ooien. De load balancer wordt gebruikt voor uitgaand verkeer via een AKS toegewezen openbaar IP-adres. Een uitgaand type van `loadBalancer` ondersteunt Kubernetes services van `loadBalancer` het type, dat wordt verwacht uit het Load Balancer dat is gemaakt door de resource provider AKS.
+Als `loadBalancer` is ingesteld, aks de volgende configuratie automatisch volt ooien. De load balancer wordt gebruikt voor uitgaand verkeer via een AKS toegewezen openbaar IP-adres. Een uitgaand type van `loadBalancer` ondersteunt Kubernetes services van `loadBalancer` het type, dat wordt verwacht uit het Load Balancer dat is gemaakt door de resource provider AKS.
 
-De volgende installatie wordt uitgevoerd door AKS.
+De volgende configuratie wordt uitgevoerd door AKS.
    * Een openbaar IP-adres is ingericht voor het uituitgangs cluster.
    * Het open bare IP-adres wordt toegewezen aan de load balancer resource.
-   * Back-end-Pools voor de load balancer zijn ingesteld voor agent knooppunten in het cluster.
+   * Back-endservers voor de load balancer worden ingesteld voor agent knooppunten in het cluster.
 
 Hieronder vindt u een netwerk topologie die standaard wordt geïmplementeerd in AKS-clusters, waarbij een van wordt gebruikt `outboundType` `loadBalancer` .
 
@@ -173,9 +158,9 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>Een Azure Firewall met een UDR maken en instellen
+## <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>Een Azure Firewall met een UDR maken en instellen
 
-Azure Firewall binnenkomende en uitgaande regels moeten worden geconfigureerd. Het belangrijkste doel van de firewall is om organisaties in staat te stellen granulair inkomend en uitgaand verkeer naar en uit het AKS-cluster te installeren.
+Azure Firewall binnenkomende en uitgaande regels moeten worden geconfigureerd. Het belangrijkste doel van de firewall is om organisaties in staat te stellen gedetailleerde inkomende en uitgaande verkeers regels in en uit het AKS-cluster te configureren.
 
 ![Firewall-en UDR](media/egress-outboundtype/firewall-udr.png)
 
@@ -198,7 +183,7 @@ az network firewall create -g $RG -n $FWNAME -l $LOC
 
 Het eerder gemaakte IP-adres kan nu worden toegewezen aan de firewall-frontend.
 > [!NOTE]
-> Het instellen van het open bare IP-adres voor de Azure Firewall kan een paar minuten duren.
+> Het kan enkele minuten duren voordat het open bare IP-adres is ingesteld op de Azure Firewall.
 > 
 > Als er herhaaldelijk fouten worden ontvangen, verwijdert u de bestaande firewall en het open bare IP-adres en richt u het open bare IP-adres en het Azure Firewall in via de portal.
 
@@ -217,7 +202,13 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
+> [!Note]
+> Als u gebruikmaakt van beveiligde toegang tot de AKS API-server met [geautoriseerde IP-](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)adresbereiken, moet u het open bare IP-adres van de firewall toevoegen aan het toegestane IP-bereik.
+
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Een UDR maken met een hop naar Azure Firewall
+
+> [!IMPORTANT]
+> Uitgaand type UDR vereist dat er een route voor 0.0.0.0/0 en de volgende hop-bestemming van NVA (virtueel netwerk apparaat) in de route tabel is.
 
 Azure routeert automatisch verkeer tussen Azure-subnetten, virtuele netwerken en on-premises netwerken. Als u de standaard routering van Azure wilt wijzigen, doet u dat door een route tabel te maken.
 
@@ -284,7 +275,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>AKS met uitgaand type UDR implementeren in het bestaande netwerk
 
-Nu kan een AKS-cluster worden geïmplementeerd in de bestaande virtuele-netwerk installatie. Als u een uitgaand cluster type wilt instellen op door de gebruiker gedefinieerde route ring, moet een bestaand subnet worden opgegeven bij AKS.
+Nu kan een AKS-cluster worden geïmplementeerd in het bestaande virtuele netwerk. Als u een uitgaand cluster type wilt instellen op door de gebruiker gedefinieerde route ring, moet een bestaand subnet worden opgegeven bij AKS.
 
 ![AKS-implementeren](media/egress-outboundtype/outboundtype-udr.png)
 
@@ -321,7 +312,7 @@ Ten slotte kan het AKS-cluster worden geïmplementeerd in het bestaande subnet d
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
 ```
 
-Het uitgaande type wordt gedefinieerd om de UDR te volgen die bestaat op het subnet, waardoor de installatie van AKS overs laan voor de load balancer dat nu strikt intern kan zijn.
+Definieer het uitgaande type om de UDR die zich in het subnet bevindt, in te scha kelen voor AKS voor de load balancer die nu strikt intern kan zijn.
 
 De AKS-functie voor door de [API server geautoriseerde IP-adresbereiken](api-server-authorized-ip-ranges.md) kan worden toegevoegd om de API-server toegang alleen te beperken tot het open bare eind punt van de firewall. De functie voor geautoriseerde IP-bereiken wordt in het diagram aangeduid als de NSG die moet worden door gegeven om toegang te krijgen tot het besturings vlak. Wanneer u de functie geautoriseerd IP-bereik inschakelt om de toegang tot de API-server te beperken, moeten uw ontwikkel hulpprogramma's gebruikmaken van een JumpBox in het virtuele netwerk van de firewall of moet u alle ontwikkel eindpunten toevoegen aan het geautoriseerde IP-bereik.
 
@@ -345,7 +336,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>Ontwikkel aars toegang tot de API-server inschakelen
 
-Als gevolg van de instelling van het geautoriseerde IP-bereik voor het cluster, moet u de IP-adressen van ontwikkel aars toevoegen aan de AKS-cluster lijst met goedgekeurde IP-bereiken om toegang te krijgen tot de API-server. Een andere optie is het configureren van een JumpBox met het benodigde hulp programma binnen een afzonderlijk subnet in het virtuele netwerk van de firewall.
+Als gevolg van de toegestane IP-bereiken voor het cluster, moet u de IP-adressen van ontwikkel aars toevoegen aan de AKS-cluster lijst met goedgekeurde IP-bereiken om toegang te krijgen tot de API-server. Een andere optie is het configureren van een JumpBox met het benodigde hulp programma binnen een afzonderlijk subnet in het virtuele netwerk van de firewall.
 
 Voeg een ander IP-adres toe aan de goedgekeurde bereiken met de volgende opdracht
 
@@ -364,7 +355,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
-### <a name="setup-the-internal-load-balancer"></a>De interne load balancer instellen
+### <a name="set-up-the-internal-load-balancer"></a>De interne load balancer instellen
 
 AKS heeft een load balancer geïmplementeerd met het cluster dat kan worden ingesteld als een [interne Load Balancer](internal-lb.md).
 
@@ -542,3 +533,4 @@ Zie [een route tabel maken, wijzigen of verwijderen](https://docs.microsoft.com/
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

@@ -5,13 +5,13 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154892"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309812"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Installatie kopieën van een Azure container Registry naar een Kubernetes-cluster halen
 
@@ -36,14 +36,14 @@ Met deze opdracht wordt een nieuw, geldig wacht woord voor uw Service-Principal 
 
 Kubernetes maakt gebruik van een *installatie kopie pull-geheim* voor het opslaan van gegevens die nodig zijn voor de verificatie van het REGI ster. Als u het pull-geheim voor een Azure container Registry wilt maken, geeft u de Service-Principal-ID, het wacht woord en de register-URL op. 
 
-Maak een installatie kopie pull Secret met de `kubectl` volgende opdracht:
+Maak een installatie kopie pull Secret met de volgende `kubectl` opdracht:
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 Hierbij
 
@@ -51,30 +51,30 @@ Hierbij
 | :--- | :--- |
 | `secret-name` | De naam van de installatie kopie pull Secret, bijvoorbeeld *ACR-Secret* |
 | `namespace` | Naam ruimte Kubernetes om het geheim in te zetten <br/> Alleen nodig als u het geheim wilt plaatsen in een andere naam ruimte dan de standaard naam ruimte |
-| `container-registry-name` | De naam van uw Azure container Registry |
+| `container-registry-name` | De naam van uw Azure container Registry, bijvoorbeeld *myregistry*<br/><br/>De `--docker-server` is de volledig gekwalificeerde naam van de aanmeldings server van het REGI ster  |
 | `service-principal-ID` | ID van de service-principal die wordt gebruikt door Kubernetes om toegang te krijgen tot uw REGI ster |
 | `service-principal-password` | Service-Principal-wacht woord |
 
 ## <a name="use-the-image-pull-secret"></a>De afbeelding pull Secret gebruiken
 
-Zodra u de installatie kopie hebt gemaakt, kunt u deze gebruiken voor het maken van Kubernetes en-implementaties. Geef de naam van het geheim op `imagePullSecrets` onder in het implementatie bestand. Bijvoorbeeld:
+Zodra u de installatie kopie hebt gemaakt, kunt u deze gebruiken voor het maken van Kubernetes en-implementaties. Geef de naam van het geheim `imagePullSecrets` op onder in het implementatie bestand. Bijvoorbeeld:
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-In het vorige voor beeld `your-awesome-app:v1` is de naam van de afbeelding die moet worden opgehaald uit het Azure container Registry `acr-secret` en is de naam van het pull-geheim dat u hebt gemaakt voor toegang tot het REGI ster. Wanneer u de pod implementeert, haalt Kubernetes automatisch de installatie kopie uit het REGI ster, als deze nog niet aanwezig is in het cluster.
+In het vorige voor beeld `my-awesome-app:v1` is de naam van de afbeelding die moet worden opgehaald uit het Azure container Registry en `acr-secret` is de naam van het pull-geheim dat u hebt gemaakt voor toegang tot het REGI ster. Wanneer u de pod implementeert, haalt Kubernetes automatisch de installatie kopie uit het REGI ster, als deze nog niet aanwezig is in het cluster.
 
 
 ## <a name="next-steps"></a>Volgende stappen

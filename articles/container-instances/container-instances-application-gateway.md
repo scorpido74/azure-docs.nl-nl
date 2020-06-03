@@ -3,12 +3,12 @@ title: Statisch IP-adres voor container groep
 description: Een container groep maken in een virtueel netwerk en een Azure Application gateway gebruiken om een statisch frontend-IP-adres beschikbaar te stellen voor een web-app met container
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481786"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299159"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Een statisch IP-adres voor een container groep beschikbaar maken
 
@@ -17,7 +17,7 @@ In dit artikel wordt één manier getoond om een statisch, openbaar IP-adres voo
 In dit artikel gebruikt u de Azure CLI om de resources voor dit scenario te maken:
 
 * Een virtueel Azure-netwerk
-* Een container groep die [in het virtuele netwerk (preview)](container-instances-vnet.md) is geïmplementeerd en die als host fungeert voor een kleine web-app
+* Een container groep die [in het virtuele netwerk](container-instances-vnet.md) is geïmplementeerd en die als host fungeert voor een kleine web-app
 * Een toepassings gateway met een openbaar front-end-IP-adres, een listener voor het hosten van een website op de gateway en een route naar de back-end-container groep
 
 Zolang de Application Gateway wordt uitgevoerd en de container groep een stabiel privé IP-adres in het overgedragen subnet van het netwerk beschikbaar maakt, is de container groep toegankelijk op dit open bare IP-adres.
@@ -136,7 +136,7 @@ az network public-ip show \
 --output tsv
 ```
 
-Output is een openbaar IP-adres, vergelijkbaar met `52.142.18.133`:.
+Output is een openbaar IP-adres, vergelijkbaar met: `52.142.18.133` .
 
 Als u de actieve web-app wilt weer geven wanneer deze is geconfigureerd, gaat u naar het open bare IP-adres van de gateway in uw browser. Geslaagde toegang is vergelijkbaar met:
 

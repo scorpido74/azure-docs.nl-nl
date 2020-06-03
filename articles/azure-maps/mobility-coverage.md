@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334386"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310237"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobiliteits dekking Azure Maps
 
@@ -85,7 +85,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Bulgarije       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Sliven, Stara Zagora, Vratsa, Yambol, Varna, Veliko, Sofia</P> |
 | Kroatië | Crikvenica, Dubrovnik, Rijeka, Slovanski Brod, Zagreb | 
 | Cyprus | Larnaca, Limassol, Nicosia | 
-| Tsjechië | Brno, Jablonec, Karlovy variëren, Liberec, Ostrava, Praag | 
+| Tsjechische Republiek | Brno, Jablonec, Karlovy variëren, Liberec, Ostrava, Praag | 
 | Denemarken   | Denemarken |
 | Estland   | Estland |   
 | Finland   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajaani, Kouvola-Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, knoei, Turku, Vaasa|
@@ -130,7 +130,7 @@ De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-servi
 | Egypte | Cairo    |
 | Israël| Israël  |
 | Kenia | Nairobi  | 
-| Madagascar | Antananarivo |
+| Madagaskar | Antananarivo |
 | Marokko | Casablanca, Khouribga, Tétouan|
 | Qatar| Doha|
 | Saoedi-Arabië | Thuwal |

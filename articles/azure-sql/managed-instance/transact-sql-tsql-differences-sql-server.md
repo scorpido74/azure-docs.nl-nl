@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: f6909acc5e4d4f56fb301a225f6dd854ba6f21e4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259555"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308010"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>T-SQL-verschillen tussen SQL Server & Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,7 +54,7 @@ Tijdelijke bekende problemen die worden gedetecteerd in het SQL Managed instance
 
 ### <a name="backup"></a>Backup
 
-SQL Managed instances heeft automatische back-ups, zodat gebruikers volledige database `COPY_ONLY` back-ups kunnen maken. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
+SQL Managed instance heeft automatische back-ups, zodat gebruikers volledige database `COPY_ONLY` back-ups kunnen maken. Differentiële back-ups, logboek bestanden en moment opnamen van bestands momentopnamen worden niet ondersteund.
 
 - Met een SQL Managed Instance kunt u een back-up maken van een exemplaar database alleen naar een Azure Blob Storage-account:
   - Alleen `BACKUP TO URL` wordt ondersteund.
@@ -69,16 +69,16 @@ Beperkingen:
 
 - Met een SQL Managed Instance kunt u een back-up maken van een exemplaar database met Maxi maal 32 Stripes, die voldoende is voor data bases tot 4 TB als back-upcompressie wordt gebruikt.
 - U kunt niet uitvoeren `BACKUP DATABASE ... WITH COPY_ONLY` op een Data Base die is versleuteld met door service beheerde transparent Data Encryption (TDE). Door service beheerde TDE zorgt ervoor dat back-ups worden versleuteld met een interne TDE-sleutel. De sleutel kan niet worden geëxporteerd, dus u kunt de back-up niet herstellen. Gebruik automatische back-ups en herstel naar een bepaald tijdstip, of gebruik in plaats daarvan door de [klant beheerde (BYOK) TDe](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) . U kunt versleuteling ook uitschakelen voor de data base.
-- De maximale grootte van de back-upstripe met behulp van de `BACKUP` opdracht in een SQL Managed instance is 195 GB. Dit is de maximale grootte voor de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
+- De maximale grootte van de back-upstripe met behulp van de `BACKUP` opdracht in het SQL Managed instance is 195 GB. Dit is de maximale grootte voor de blob. Verhoog het aantal Stripes in de back-upopdracht om de afzonderlijke Stripe-grootte te verminderen en binnen deze limiet te blijven.
 
     > [!TIP]
     > Als u een back-up van een Data Base maakt vanuit een van SQL Server in een on-premises omgeving of op een virtuele machine, kunt u het volgende doen om deze beperking te omzeilen:
     >
     > - Maak een back-up in `DISK` plaats van een back-up te maken naar `URL` .
     > - Upload de back-upbestanden naar de Blob-opslag.
-    > - Herstel in het SQL Managed instance.
+    > - Herstellen naar een door SQL beheerd exemplaar.
     >
-    > De `Restore` opdracht in een door SQL beheerd exemplaar ondersteunt grotere BLOB-grootten in de back-upbestanden omdat een ander type BLOB wordt gebruikt voor het opslaan van de geüploade back-upbestanden.
+    > De `Restore` opdracht in een SQL Managed instance ondersteunt grotere BLOB-grootten in de back-upbestanden omdat een ander type BLOB wordt gebruikt voor het opslaan van de geüploade back-upbestanden.
 
 Zie [back-up](/sql/t-sql/statements/backup-transact-sql)voor informatie over back-ups met behulp van T-SQL.
 
@@ -107,7 +107,7 @@ Zie voor meer informatie:
 
 ### <a name="certificates"></a>Certificaten
 
-Een door SQL beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen, dus de volgende beperkingen zijn van toepassing:
+SQL Managed instance heeft geen toegang tot bestands shares en Windows-mappen, dus de volgende beperkingen zijn van toepassing:
 
 - Het `CREATE FROM` / `BACKUP TO` bestand wordt niet ondersteund voor certificaten.
 - Het `CREATE` / `BACKUP` certificaat van `FILE` / `ASSEMBLY` wordt niet ondersteund. Persoonlijke sleutel bestanden kunnen niet worden gebruikt. 
@@ -130,7 +130,7 @@ Zie [referentie maken](/sql/t-sql/statements/create-credential-transact-sql) en 
 
 ### <a name="cryptographic-providers"></a>Cryptografische providers
 
-Een door SQL beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen cryptografische providers kunnen worden gemaakt:
+SQL Managed instance heeft geen toegang tot bestanden, zodat er geen cryptografische providers kunnen worden gemaakt:
 
 - `CREATE CRYPTOGRAPHIC PROVIDER`wordt niet ondersteund. Zie [Cryptografische provider maken](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER`wordt niet ondersteund. Zie [ALTER CRYPTOGRAPHIC provider](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
@@ -165,13 +165,13 @@ Een door SQL beheerd exemplaar heeft geen toegang tot bestanden, zodat er geen c
     - Exporteer een Data Base van een SQL Managed instance en importeer deze in SQL Database binnen hetzelfde Azure AD-domein. 
     - Een Data Base exporteren uit SQL Database en importeren in een SQL Managed instance binnen hetzelfde Azure AD-domein.
     - Een Data Base exporteren uit SQL Managed instance en importeren in SQL Server (versie 2012 of hoger).
-      - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL database-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als SQL (zichtbaar als SQL_USER in sys. database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
+      - In deze configuratie worden alle Azure AD-gebruikers gemaakt als SQL Server Data Base-principals (gebruikers) zonder aanmeldingen. Het type gebruikers wordt weer gegeven als `SQL` en is zichtbaar als `SQL_USER` in sys. database_principals). De machtigingen en rollen blijven aanwezig in de meta gegevens van de data base van SQL Server en kunnen worden gebruikt voor imitatie. Ze kunnen echter niet worden gebruikt voor toegang tot en aanmelding bij de SQL Server met behulp van hun referenties.
 
 - Alleen de principal-aanmelding op server niveau, die wordt gemaakt door de SQL Managed instance Provisioning proces, leden van de server functies, zoals `securityadmin` of `sysadmin` , of andere aanmeldingen met wijziging van de machtiging Aanmelden op server niveau, kunnen Azure ad server-principals (aanmeldingen) maken in de hoofd database voor SQL Managed instance.
 - Als de aanmelding een SQL-principal is, kunnen alleen aanmeldingen die deel uitmaken van de `sysadmin` rol de opdracht Create gebruiken om aanmeldingen voor een Azure ad-account te maken.
 - De Azure AD-aanmelding moet lid zijn van een Azure AD in dezelfde map die wordt gebruikt voor Azure SQL Managed instance.
 - Azure AD server-principals (aanmeldingen) zijn zichtbaar in Objectverkenner vanaf SQL Server Management Studio 18,0 Preview 5.
-- Het is niet toegestaan Azure AD-server-principals (aanmeldingen) te overlappen met een Azure AD-beheerders account. Azure AD server-principals (aanmeldingen) hebben voor rang op de Azure AD-beheerder wanneer u de principal verhelpt en machtigingen toepast op het SQL Managed instance.
+- Het is niet toegestaan Azure AD-server-principals (aanmeldingen) te overlappen met een Azure AD-beheerders account. Azure AD server-principals (aanmeldingen) hebben voor rang op de Azure AD-beheerder wanneer u de principal verhelpt en machtigingen toepast op een SQL Managed instance.
 - Tijdens de verificatie wordt de volgende reeks toegepast om de verificatie-principal op te lossen:
 
     1. Als het Azure AD-account is gekoppeld aan de principal van de Azure AD-server (aanmelden), dat aanwezig is in sys. server_principals als type "E," toegang verlenen en machtigingen Toep assen van de Azure AD server-principal (aanmelden).
@@ -243,7 +243,7 @@ Zie [Create Data Base](/sql/t-sql/statements/create-database-sql-server-transact
 
 Sommige bestands eigenschappen kunnen niet worden ingesteld of gewijzigd:
 
-- Er kan geen bestandspad worden opgegeven in de `ALTER DATABASE ADD FILE (FILENAME='path')` t-SQL-instructie. Verwijderen `FILENAME` uit het script omdat een SQL Managed instance automatisch de bestanden plaatst. 
+- Er kan geen bestandspad worden opgegeven in de `ALTER DATABASE ADD FILE (FILENAME='path')` t-SQL-instructie. Verwijderen `FILENAME` uit het script omdat SQL Managed instance automatisch de bestanden plaatst. 
 - Een bestands naam kan niet worden gewijzigd met behulp van de- `ALTER DATABASE` instructie.
 
 De volgende opties zijn standaard ingesteld en kunnen niet worden gewijzigd:
@@ -291,8 +291,8 @@ Zie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql-file-and
     - De taak stap voor samenvoeg replicatie wordt niet ondersteund. 
     - Queue Reader wordt niet ondersteund. 
     - De opdracht shell wordt nog niet ondersteund.
-  - SQL Managed instances heeft geen toegang tot externe bronnen, bijvoorbeeld netwerk shares via Robocopy. 
-  - SQL Server Analysis Services worden niet ondersteund.
+  - SQL Managed instance heeft geen toegang tot externe bronnen, bijvoorbeeld netwerk shares via Robocopy. 
+  - SQL Server Analysis Services wordt niet ondersteund.
 - Meldingen worden gedeeltelijk ondersteund.
 - E-mail meldingen worden ondersteund, maar hiervoor moet u een Database Mail profiel configureren. SQL Server Agent kunt slechts één Database Mail profiel gebruiken en het moet worden aangeroepen `AzureManagedInstance_dbmail_profile` . 
   - Paginering wordt niet ondersteund.
@@ -325,11 +325,11 @@ Zie [Create Table](/sql/t-sql/statements/create-table-transact-sql) en [ALTER TA
 
 ### <a name="bulk-insert--openrowset"></a>Bulksgewijs invoegen/OPENROWSET
 
-Een door SQL beheerd exemplaar heeft geen toegang tot bestands shares en Windows-mappen. Daarom moeten de bestanden vanuit Azure Blob Storage worden geïmporteerd:
+SQL Managed instance heeft geen toegang tot bestands shares en Windows-mappen, dus moeten de bestanden vanuit Azure Blob Storage worden geïmporteerd:
 
 - `DATASOURCE`is vereist in de `BULK INSERT` opdracht tijdens het importeren van bestanden vanuit Azure Blob-opslag. Zie [Bulk Insert](/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE`is vereist in de `OPENROWSET` functie wanneer u de inhoud van een bestand leest uit Azure Blob-opslag. Zie [OPENrowset](/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENROWSET`kan worden gebruikt voor het lezen van gegevens uit andere Azure SQL-data bases, SQL Managed instances of SQL Server instances. Andere bronnen, zoals Oracle-data bases of Excel-bestanden, worden niet ondersteund.
+- `OPENROWSET`kan worden gebruikt om gegevens te lezen van Azure SQL Database, Azure SQL Managed instance of SQL Server instances. Andere bronnen, zoals Oracle-data bases of Excel-bestanden, worden niet ondersteund.
 
 ### <a name="clr"></a>-
 
@@ -345,7 +345,7 @@ Een door SQL beheerd exemplaar heeft geen toegang tot bestands shares en Windows
  
 ### <a name="dbcc"></a>DBCC
 
-Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worden niet ondersteund in SQL Managed instances.
+Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worden niet ondersteund in een SQL-beheerd exemplaar.
 
 - Slechts een beperkt aantal globale tracerings vlaggen wordt ondersteund. Sessie niveau wordt `Trace flags` niet ondersteund. Zie [tracerings vlaggen](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) en [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) werken met het beperkte aantal globale traceer vlaggen.
@@ -353,7 +353,7 @@ Niet-gedocumenteerde DBCC-instructies die zijn ingeschakeld in SQL Server, worde
 
 ### <a name="distributed-transactions"></a>Gedistribueerde transacties
 
-MSDTC-en [elastische trans acties](../database/elastic-transactions-overview.md) worden momenteel niet ondersteund in SQL Managed instances.
+MSDTC-en [elastische trans acties](../database/elastic-transactions-overview.md) worden momenteel niet ondersteund in een SQL Managed instance.
 
 ### <a name="extended-events"></a>Uitgebreide gebeurtenissen
 
@@ -387,7 +387,7 @@ Zie [FILESTREAM](/sql/relational-databases/blob/filestream-sql-server) en [FileT
 
 ### <a name="linked-servers"></a>Gekoppelde servers
 
-Gekoppelde servers in SQL Managed instances ondersteunen een beperkt aantal doelen:
+Gekoppelde servers in SQL Managed instance ondersteunen een beperkt aantal doelen:
 
 - Ondersteunde doelen zijn SQL Managed instance, SQL Database, Azure Synapse SQL en SQL Server instances. 
 - Gekoppelde servers ondersteunen geen gedistribueerde Beschrijf bare trans acties (MS DTC).
@@ -409,8 +409,8 @@ Externe tabellen die verwijzen naar de bestanden in HDFS of Azure Blob Storage, 
 
 - De typen moment opname en bidirectionele replicatie worden ondersteund. Samenvoeg replicatie, peer-to-peer-replicatie en bij te werken abonnementen worden niet ondersteund.
 - [Transactionele replicatie](replication-transactional-overview.md) is beschikbaar voor de open bare preview van een SQL Managed instance met enkele beperkingen:
-    - Alle typen replicatie deelnemers (uitgever, distributeur, pull-abonnee en push-abonnee) kunnen worden geplaatst op SQL Managed instances, maar de uitgever en de distributeur moeten beide in de Cloud of on-premises zijn.
-    - SQL Managed instances kan communiceren met de recente versies van SQL Server. Zie de [matrix ondersteunde versies](replication-transactional-overview.md#supportability-matrix) voor meer informatie.
+    - Alle typen replicatie deelnemers (uitgever, distributeur, pull-abonnee en push-abonnee) kunnen worden geplaatst op een SQL Managed instance, maar de uitgever en de distributeur moeten zowel in de Cloud als in beide on-premises zijn.
+    - SQL Managed instance kan communiceren met de recente versies van SQL Server. Zie de [matrix ondersteunde versies](replication-transactional-overview.md#supportability-matrix) voor meer informatie.
     - Transactionele replicatie heeft enkele [extra netwerk vereisten](replication-transactional-overview.md#requirements).
 
 Zie de volgende zelf studies voor meer informatie over het configureren van transactionele replicatie:
@@ -486,10 +486,10 @@ Service Broker met meerdere exemplaren wordt niet ondersteund:
 De volgende variabelen, functies en weer gaven retour neren verschillende resultaten:
 
 - `SERVERPROPERTY('EngineEdition')`retourneert de waarde 8. Met deze eigenschap wordt een unieke id van een SQL beheerd exemplaar aangeduid. Zie [Server Property](/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')`retourneert NULL omdat het concept van instance bestaat voor SQL Server niet van toepassing is op een door SQL beheerd exemplaar. Zie [Server Property (' instanceName ')](/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')`retourneert NULL omdat het concept van instance bestaat voor SQL Server niet van toepassing is op een SQL-beheerd exemplaar. Zie [Server Property (' instanceName ')](/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME`retourneert een volledige DNS-naam (' connectable '), bijvoorbeeld my-managed-instance.wcus17662feb9ce98.database.windows.net. Zie [@ @SERVERNAME ](/sql/t-sql/functions/servername-transact-sql). 
 - `SYS.SERVERS`retourneert de volledige DNS-naam ' connectable ', zoals `myinstance.domain.database.windows.net` voor de eigenschappen ' name ' en ' data_source '. Zie [sys. SERVERS](/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME`retourneert NULL omdat het concept van de service bestaat voor SQL Server niet van toepassing is op een door SQL beheerd exemplaar. Zie [@ @SERVICENAME ](/sql/t-sql/functions/servicename-transact-sql).
+- `@@SERVICENAME`retourneert NULL omdat het concept van de service bestaat voor SQL Server niet van toepassing is op een SQL-beheerd exemplaar. Zie [@ @SERVICENAME ](/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID`wordt ondersteund. Retourneert NULL als de Azure AD-aanmelding zich niet in sys. syslogins bevindt. Zie [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID`wordt niet ondersteund. De verkeerde gegevens worden geretourneerd. Dit is een tijdelijk bekend probleem. Zie [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
@@ -505,7 +505,7 @@ De volgende variabelen, functies en weer gaven retour neren verschillende result
 ### <a name="vnet"></a>VNET
 - VNet kan worden geïmplementeerd met behulp van resource model-Klassiek model voor VNet wordt niet ondersteund.
 - Nadat een door SQL beheerd exemplaar is gemaakt, wordt het door SQL beheerde exemplaar of VNet naar een andere resource groep of een ander abonnement niet ondersteund.
-- Sommige services, zoals App Service omgevingen, Logic apps en SQL Managed instances (gebruikt voor geo-replicatie, transactionele replicatie of via gekoppelde servers), hebben geen toegang tot SQL Managed instances in verschillende regio's als hun VNets zijn verbonden met behulp van [globale peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
+- Sommige services, zoals App Service omgevingen, Logic apps en SQL Managed instance (gebruikt voor geo-replicatie, transactionele replicatie of via gekoppelde servers), hebben geen toegang tot SQL Managed instance in verschillende regio's als hun VNets zijn verbonden via [globale peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). U kunt via VNet-gateways verbinding maken met deze resources via ExpressRoute of VNet-naar-VNet.
 
 ### <a name="failover-groups"></a>Failover-groepen
 Systeem databases worden niet gerepliceerd naar het secundaire exemplaar in een failovergroep. Daarom zijn scenario's die afhankelijk zijn van objecten van de systeem databases niet mogelijk op het secundaire exemplaar, tenzij de objecten hand matig op de secundaire instantie worden gemaakt.
@@ -536,11 +536,11 @@ De volgende MSDB-schema's in het SQL Managed instance moeten het eigendom zijn v
 
 ### <a name="error-logs"></a>Foutenlogboeken
 
-Een door SQL beheerd exemplaar plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie voor meer informatie [SQL Managed instance-sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) of [SQL Managed instance extension (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) voor Azure Data Studio.
+SQL Managed instance plaatst uitgebreide informatie in fouten Logboeken. Er zijn veel interne systeem gebeurtenissen vastgelegd in het fouten logboek. Gebruik een aangepaste procedure om fout logboeken te lezen die een aantal irrelevante vermeldingen filteren. Zie voor meer informatie [SQL Managed instance-sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) of [SQL Managed instance extension (preview)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) voor Azure Data Studio.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Wat is SQL Managed instance?](sql-managed-instance-paas-overview.md) voor meer informatie over SQL Managed instances.
+- Zie [Wat is SQL Managed instance?](sql-managed-instance-paas-overview.md) voor meer informatie over SQL Managed instance?
 - Zie [functie vergelijking van Azure SQL Managed instance](../database/features-comparison.md)voor een overzicht van functies en vergelijkingen.
 - Zie [release opmerkingen voor SQL Managed instance](../database/doc-changes-updates-release-notes.md) (Engelstalig) voor release-updates en bekende problemen.
 - Zie [Create a SQL Managed instance](instance-create-quickstart.md)(Engelstalig) voor een Snelstartgids waarin wordt uitgelegd hoe u een nieuw exemplaar van SQL Managed maakt.

@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170712"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299655"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor
 
@@ -74,11 +74,17 @@ Als uw interne virtuele netwerken bijvoorbeeld VNet1 en VNet2 verbinding moeten 
 
 Maak eerst een Azure Monitor-bron voor een persoonlijk koppelings bereik.
 
-1. Ga naar **een resource maken** in de Azure Portal en zoek naar **Azure monitor persoonlijk koppelings bereik**. 
-2. Klik op **maken**. 
-3. Kies een abonnement en resource groep. 
-4. Geef een naam op voor de AMPLS. Het is raadzaam om een naam te gebruiken die duidelijk is wat doel is en de beveiligings grens waarin de scope wordt gebruikt, zodat iemand niet per ongeluk netwerk beveiligings grenzen afbreekt. Bijvoorbeeld ' AppServerProdTelem '. 
+1. Ga naar **een resource maken** in de Azure Portal en zoek naar **Azure monitor persoonlijk koppelings bereik**.
+
+   ![Azure Monitor bereik van een persoonlijke koppeling zoeken](./media/private-link-security/ampls-find-1c.png)
+
+2. Klik op **maken**.
+3. Kies een abonnement en resource groep.
+4. Geef een naam op voor de AMPLS. Het is raadzaam om een naam te gebruiken die duidelijk is wat doel is en de beveiligings grens waarin de scope wordt gebruikt, zodat iemand niet per ongeluk netwerk beveiligings grenzen afbreekt. Bijvoorbeeld ' AppServerProdTelem '.
 5. Klik op **beoordeling + maken**. 
+
+   ![Azure Monitor bereik voor persoonlijke koppelingen maken](./media/private-link-security/ampls-create-1d.png)
+
 6. Laat de validatie slagen en klik vervolgens op **maken**.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Monitor-resources verbinden
@@ -123,7 +129,7 @@ Nu u resources hebt verbonden met uw AMPLS, maakt u een persoonlijk eind punt om
  
    d.    Laat de validatie slagen. 
  
-   e.    Klik op **Maken**. 
+   e.    Klik op **Create**. 
 
     ![Scherm opname van Selecteer persoonlijke Endpoint2 maken](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -224,3 +230,6 @@ Als u de Log Analytics-agent wilt toestaan om oplossings pakketten te downloaden
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Uitgaand
 |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Uitgaand
 
+## <a name="next-steps"></a>Volgende stappen
+
+- Meer informatie over [privé opslag](private-storage.md)

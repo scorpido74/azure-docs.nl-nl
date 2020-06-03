@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746905"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308877"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -316,7 +316,7 @@ Voor beeld: Hiermee worden SQL Server data bases geëvalueerd om te bepalen of t
 
 Dit effect is handig voor het testen van situaties of voor wanneer de beleids definitie van invloed is op de para meter. Deze flexibiliteit maakt het mogelijk een enkele toewijzing uit te scha kelen in plaats van alle toewijzingen van dat beleid uit te scha kelen.
 
-Een alternatief voor het uitgeschakelde effect is * * enforcementMode, dat is ingesteld op de beleids toewijzing.
+Een alternatief voor het uitgeschakelde effect is **enforcementMode**, dat is ingesteld op de beleids toewijzing.
 Wanneer **enforcementMode** is _uitgeschakeld_, worden er nog steeds resources geëvalueerd. Logboek registratie, zoals activiteiten logboeken, en het beleids effect vindt niet plaats. Zie [beleids toewijzing-afdwingings modus](./assignment-structure.md#enforcement-mode)voor meer informatie.
 
 
