@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 05/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 4560560b3677030a66e277e96eb552d39f5c82c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7fd5cb3c6c8a991a8b5ef9b6460e9dce35dd873
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416326"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298581"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binaire indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,11 +32,11 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | De eigenschap type van de DataSet moet worden ingesteld op **binary**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen `location`onder. **Zie de sectie Details in connector artikel-> eigenschappen van gegevensset**. | Ja      |
-| compressie | Groep eigenschappen voor het configureren van bestands compressie. Configureer deze sectie als u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | Nee |
-| type | De compressie-codec die wordt gebruikt om binaire bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. te gebruiken bij het opslaan van het bestand.<br>Opmerking Wanneer u Kopieer activiteit gebruikt om ZipDeflate-bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden `<path specified in dataset>/<folder named as source zip file>/`bestanden uitgepakt naar de map:. | Nee       |
-| niveau | De compressie ratio. Toep assen wanneer gegevensset wordt gebruikt in Sink voor kopieer activiteit.<br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
+| type             | De eigenschap type van de DataSet moet worden ingesteld op **binary**. | Yes      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location` . **Zie de sectie Details in connector artikel-> eigenschappen van gegevensset**. | Yes      |
+| compressie | Groep eigenschappen voor het configureren van bestands compressie. Configureer deze sectie als u compressie/decompressie wilt uitvoeren tijdens de uitvoering van de activiteit. | No |
+| type | De compressie-codec die wordt gebruikt om binaire bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. te gebruiken bij het opslaan van het bestand.<br>**Opmerking** wanneer u de Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden standaard bestanden uitgepakt naar de map:. `<path specified in dataset>/<folder named as source zip file>/` Gebruik de `preserveZipFileNameAsFolder` bron van de [Kopieer activiteit](#binary-as-source) om te bepalen of de zip-bestands naam moet worden behouden als mapstructuur.| No       |
+| niveau | De compressie ratio. Toep assen wanneer gegevensset wordt gebruikt in Sink voor kopieer activiteit.<br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | No       |
 
 Hieronder ziet u een voor beeld van een binaire gegevensset op Azure Blob Storage:
 
@@ -72,21 +72,57 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="binary-as-source"></a>Binair als bron
 
-De volgende eigenschappen worden ondersteund in de sectie *** \*bron\* *** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in de sectie *** \* bron \* *** van de Kopieer activiteit.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **BinarySource**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees `storeSettings`instellingen onder. **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **BinarySource**. | Yes      |
+| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **binaire Lees instellingen** . | No       |
+| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | No       |
+
+Ondersteunde **binaire Lees instellingen** onder `formatSettings` :
+
+| Eigenschap      | Beschrijving                                                  | Vereist |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | Het type formatSettings moet zijn ingesteld op **BinaryReadSettings**. | Yes      |
+| compressionProperties | Een groep eigenschappen voor het decomprimeren van gegevens voor een bepaalde compressie-codec. | No       |
+| preserveZipFileNameAsFolder<br>(*onder `compressionProperties` *) | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur. Als deze eigenschap is ingesteld op True (standaard) Data Factory worden uitgepakte bestanden naar; genoteerd `<path specified in dataset>/<folder named as source zip file>/` . Als u deze instelt op ONWAAR Data Factory, worden uitgepakte bestanden rechtstreeks naar opgeslagen `<path specified in dataset>` .  | No |
+
+```json
+"activities": [
+    {
+        "name": "CopyFromBinary",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "BinarySource",
+                "storeSettings": {
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true
+                },
+                "formatSettings": {
+                    "type": "BinaryReadSettings",
+                    "compressionProperties": {
+                        "type": "ZipDeflateReadSettings",
+                        "preserveZipFileNameAsFolder": false
+                    }
+                }
+            },
+            ...
+        }
+        ...
+    }
+]
+```
 
 ### <a name="binary-as-sink"></a>Binair als Sink
 
-De volgende eigenschappen worden ondersteund in het gedeelte *** \*Sink\* *** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** van de Kopieer activiteit.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **BinarySink**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+| type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **BinarySink**. | Yes      |
+| storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
 
 ## <a name="next-steps"></a>Volgende stappen
 

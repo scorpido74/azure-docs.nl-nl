@@ -10,12 +10,12 @@ author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 03/04/2020
-ms.openlocfilehash: 8af412fb2660625ffb413052b06d4429d7844e70
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cca09f53f90b43713c2b9b764568fb0a6d157c5d
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656512"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118964"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -224,7 +224,7 @@ In deze zelfstudie over geautomatiseerde machine learning heeft u de geautomatis
 
 + Meer informatie over [geautomatiseerde machine learning](concept-automated-ml.md).
 + Raadpleeg het artikel [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md#classification) voor meer informatie over metrische classificatiegegevens en grafieken.
-+ Meer informatie over [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Meer informatie over [featurization](how-to-configure-auto-features.md#featurization).
 + Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile).
 
 

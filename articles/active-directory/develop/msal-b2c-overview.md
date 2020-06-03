@@ -1,5 +1,5 @@
 ---
-title: MSAL gebruiken met Azure Active Directory B2CLearn | Azure
+title: MSAL. js gebruiken met Azure AD B2C
 titleSuffix: Microsoft identity platform
 description: Met de micro soft-verificatie bibliotheek voor Java script (MSAL. js) kunnen toepassingen met Azure AD B2C werken en tokens verkrijgen voor het aanroepen van beveiligde web-Api's. Deze web-Api's kunnen worden Microsoft Graph, andere Api's van micro soft, Web-Api's van anderen of uw eigen web-API.
 services: active-directory
@@ -9,44 +9,42 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534479"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308562"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Micro soft-verificatie bibliotheek voor Java script gebruiken om te werken met Azure AD B2C
 
-Met de [micro soft-verificatie bibliotheek voor Java script (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen java script-ontwikkel aars gebruikers verifiëren met sociale en lokale identiteiten met behulp van [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Door Azure AD B2C als een service voor identiteits beheer te gebruiken, kunt u aanpassen en bepalen hoe klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken.
+Met de [micro soft-verificatie bibliotheek voor Java script (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) kunnen java script-ontwikkel aars gebruikers verifiëren met sociale en lokale identiteiten met behulp van [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
 
-Met Azure AD B2C kunt u ook de gebruikers interface van uw toepassingen tijdens het verificatie proces branden en aanpassen om uw klanten een naadloze ervaring te bieden.
+Door Azure AD B2C als een service voor identiteits beheer te gebruiken, kunt u aanpassen en bepalen hoe uw klanten zich registreren, aanmelden en hun profielen beheren wanneer ze uw toepassingen gebruiken. Met Azure AD B2C kunt u ook de gebruikers interface merken en aanpassen die door uw toepassing worden weer gegeven tijdens het verificatie proces.
 
-In dit artikel wordt gedemonstreerd hoe u MSAL. js kunt gebruiken om te werken met Azure AD B2C en hoe u belang rijke punten samenvat waarvan u rekening moet houden. Raadpleeg de [documentatie van Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview)voor een volledige bespreking en zelf studie.
+In de volgende secties ziet u hoe u:
+
+- Een node. js-Web-API beveiligen
+- Ondersteuning voor aanmelden in een toepassing met één pagina (SPA) en *de* beveiligde web-API aanroepen
+- Ondersteuning voor het opnieuw instellen van wacht woorden inschakelen
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen eigen [Azure AD B2C Tenant](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)hebt gemaakt, begint u met het maken van een nu (u kunt ook een bestaande Azure AD B2C Tenant gebruiken als u er al een hebt).
-
-Deze demonstratie bevat twee onderdelen:
-
-- een web-API beveiligen.
-- een toepassing met één pagina registreren om *die* Web-API te verifiëren en aan te roepen.
+Als u dit nog niet hebt gedaan, maakt u een [Azure AD B2C-Tenant](../../active-directory-b2c/tutorial-create-tenant.md).
 
 ## <a name="nodejs-web-api"></a>Node.js-web-API
 
-> [!NOTE]
-> Op dit moment is MSAL. js voor het knoop punt nog in ontwikkeling (Zie het [schema](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). In de tussen tijd maken we gebruik van [Pass Port-Azure-AD](https://github.com/AzureAD/passport-azure-ad), een verificatie bibliotheek voor node. js ontwikkeld en ondersteund door micro soft.
-
 De volgende stappen laten zien hoe een **Web-API** Azure AD B2C kan gebruiken om zichzelf te beschermen en geselecteerde bereiken beschikbaar te maken voor een client toepassing.
+
+MSAL. js voor het knoop punt is momenteel in ontwikkeling. Zie het [schema](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) op github voor meer informatie. We raden u aan gebruik te maken van [Pass Port-Azure-AD](https://github.com/AzureAD/passport-azure-ad), een verificatie bibliotheek voor node. js die is ontwikkeld en ondersteund door micro soft.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u uw web-API met Azure AD B2C wilt beveiligen, moet u deze eerst registreren. Zie [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) voor gedetailleerde stappen.
+Als u uw web-API met Azure AD B2C wilt beveiligen, moet u deze eerst registreren. Zie [uw toepassing registreren](../../active-directory-b2c/add-web-application.md) voor gedetailleerde stappen.
 
 ### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
 
@@ -71,19 +69,17 @@ const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsig
 
 Bekijk voor meer informatie dit [node. js B2C Web-API](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)-voor beeld.
 
----
-
 ## <a name="javascript-spa"></a>Java script SPA
 
 De volgende stappen laten zien hoe een **toepassing met één pagina** kan Azure AD B2C gebruiken om zich aan te melden, zich aan te melden en een beveiligde web-API aan te roepen.
 
 ### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 
-Als u verificatie wilt implementeren, moet u de toepassing eerst registreren. Zie [uw toepassing registreren](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) voor gedetailleerde stappen.
+Als u verificatie wilt implementeren, moet u de toepassing eerst registreren. Zie [uw toepassing registreren](../../active-directory-b2c/tutorial-register-applications.md) voor gedetailleerde stappen.
 
 ### <a name="step-2-download-the-sample-application"></a>Stap 2: de voorbeeld toepassing downloaden
 
-Down load het voor beeld als een zip-bestand of kloon het uit GitHub:
+Down load het code voorbeeld [. ZIP-archief](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) of kloon de GitHub-opslag plaats:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
@@ -96,7 +92,7 @@ Er zijn twee belang rijke punten bij het configureren van uw toepassing:
 - API-eind punt en weer gegeven bereiken configureren
 - Verificatie parameters en Token scopes configureren
 
-1. Open het bestand `apiConfig.js` in het voorbeeld.
+1. Open het bestand *apiConfig. js* in het voor beeld.
 
 2. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw web-API. Wijzig de volgende regels code door de waarden te vervangen door het adres van uw web-API en weer gegeven bereiken.
 
@@ -108,9 +104,9 @@ Er zijn twee belang rijke punten bij het configureren van uw toepassing:
     };
    ```
 
-3. Open het bestand `authConfig.js` in het voorbeeld.
+1. Open het bestand *authConfig. js* in het voor beeld.
 
-4. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw toepassing met één pagina. Wijzig de volgende regels code door de waarden te vervangen door uw ClientId-, Authority-meta gegevens en Token aanvraag scopes.
+1. Configureer het voor beeld met de para meters die u eerder hebt verkregen tijdens het registreren van uw toepassing met één pagina. Wijzig de volgende regels code door de waarden te vervangen door uw ClientId-, Authority-meta gegevens en Token aanvraag scopes.
 
    ```javascript
     // Config object to be passed to Msal on creation.
@@ -134,11 +130,85 @@ Er zijn twee belang rijke punten bij het configureren van uw toepassing:
 
 Lees voor meer informatie dit [Java script B2C-voorbeeld toepassing voor één pagina](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 
----
+## <a name="support-password-reset"></a>Ondersteuning voor wacht woord opnieuw instellen
+
+In deze sectie breidt u uw toepassing met één pagina uit voor het gebruik van de Azure AD B2C wacht woord opnieuw instellen gebruikers stroom. Hoewel MSAL. js momenteel geen ondersteuning biedt voor meerdere gebruikers stromen of aangepaste beleids regels, kunt u de tape wisselaar gebruiken voor het afhandelen van veelvoorkomende gebruiks voorbeelden zoals het opnieuw instellen van wacht woorden.
+
+Bij de volgende stappen wordt ervan uitgegaan dat u de stappen in de voor gaande [Java script-Spa](#javascript-spa) -sectie al hebt gevolgd.
+
+### <a name="step-1-define-the-authority-string-for-password-reset-user-flow"></a>Stap 1: de instantie teken reeks definiëren voor de gebruikers stroom voor het opnieuw instellen van wacht woorden
+
+1. Maak eerst een object waar u de CA-Uri's opslaat:
+
+    ```javascript
+        const b2cPolicies = {
+            names: {
+                signUpSignIn: "b2c_1_susi",
+                forgotPassword: "b2c_1_reset"
+            },
+            authorities: {
+                signUpSignIn: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+                },
+                forgotPassword: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+                },
+            },
+        }
+    ```
+
+1. Initialiseer vervolgens uw MSAL-object met het `signInSignUp` beleid als standaard (Zie het voor gaande code fragment). Wanneer een gebruiker zich probeert aan te melden, wordt het volgende scherm weer gegeven:
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-01-signin.png" alt-text="Aanmeldings scherm weer gegeven door Azure AD B2C":::
+
+### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Stap 2: authenticatie fouten in uw aanmeldings methode ondervangen en verwerken
+
+Wanneer een gebruiker een **verg eten wacht woord**selecteert, genereert uw toepassing een fout die u moet opvangen in uw code en gaat u vervolgens door met de juiste gebruikers stroom. In dit geval wordt de `b2c_1_reset` stroom voor het opnieuw instellen van het wacht woord.
+
+1. Breid uw aanmeldings methode als volgt uit:
+
+    ```javascript
+    function signIn() {
+      myMSALObj.loginPopup(loginRequest)
+        .then(loginResponse => {
+            console.log("id_token acquired at: " + new Date().toString());
+
+            if (myMSALObj.getAccount()) {
+              updateUI();
+            }
+
+        }).catch(function (error) {
+          console.log(error);
+
+          // error handling
+          if (error.errorMessage) {
+            // check for forgot password error
+            if (error.errorMessage.indexOf("AADB2C90118") > -1) {
+
+              //call login method again with the password reset user flow
+              myMSALObj.loginPopup(b2cPolicies.authorities.forgotPassword)
+                .then(loginResponse => {
+                  console.log(loginResponse);
+                  window.alert("Password has been reset successfully. \nPlease sign-in with your new password.");
+                })
+            }
+          }
+        });
+    }
+    ```
+
+1. In het voor gaande code fragment ziet u hoe u het scherm wacht woord opnieuw instellen kunt weer geven nadat de fout is opgetreden met de code `AADB2C90118` .
+
+    Nadat het wacht woord opnieuw is ingesteld, keert de gebruiker terug naar de toepassing om u opnieuw aan te melden.
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Scherm voor wachtwoord herstel wordt weer gegeven door Azure AD B2C" border="false":::
+
+    Zie [MSAL-fout-en uitzonderings codes](msal-handling-exceptions.md)voor meer informatie over fout codes en het verwerken van uitzonde ringen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over:
-- [Gebruikers stromen](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
-- [Aangepast beleid](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [UX-aanpassing](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)
+Meer informatie over deze Azure AD B2C-concepten:
+
+- [Gebruikers stromen](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Aangepast beleid](../../active-directory-b2c/custom-policy-get-started.md)
+- [UX-aanpassing](../../active-directory-b2c/custom-policy-configure-user-input.md)

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 9e4ec8ae9f62ccf1ff7f98ff06a43218b90e6c75
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190337"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310900"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure AD-verificatie configureren en beheren met Azure SQL
 
@@ -52,7 +52,7 @@ Zie [Uw on-premises identiteiten integreren met Azure Active Directory](../../ac
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen
 
-1. Koppel uw Azure-abonnement aan Azure Active Directory door de Directory een vertrouwde Directory te maken voor het Azure-abonnement dat als host fungeert voor de data base. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure AD](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
+1. Koppel uw Azure-abonnement aan Azure Active Directory door de Directory een vertrouwde Directory te maken voor het Azure-abonnement dat als host fungeert voor de data base. Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory-Tenant](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)voor meer informatie.
 
 2. Gebruik de Directory wisselaar in de Azure Portal om over te scha kelen naar het abonnement dat is gekoppeld aan het domein.
 

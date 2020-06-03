@@ -6,13 +6,13 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fdc90ffaf3cef3c594e7d84e32af9ef78fe08b0d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: e9438e2e82a6d903b74973fe489b0a67d66c9a72
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849447"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296949"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark en Apache Hive integreren met hive Warehouse connector in azure HDInsight
 
@@ -93,9 +93,17 @@ Naast de configuraties die in de vorige sectie worden genoemd, voegt u de volgen
 
     | Configuratie | Waarde |
     |----|----|
-    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<headnode-FQDN>@<AAD-Domain>` |
+    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    Vervang door `<headnode-FQDN>` de volledig gekwalificeerde domein naam van het hoofd knooppunt van het interactieve query cluster. Vervang door `<AAD-DOMAIN>` de naam van de Azure Active Directory (Aad) waaraan het cluster is gekoppeld. Gebruik een letterlijke teken reeks voor de `<AAD-DOMAIN>` waarde, anders wordt de referentie niet gevonden. Controleer, indien nodig, de/etc/krb5.conf voor de realm-namen.
+    * Navigeer vanuit een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` de naam van het interactieve query cluster. Klik op **HiveServer2 Interactive**. U ziet de FQDN-naam (Fully Qualified Domain Name) van het hoofd knooppunt waarop LLAP wordt uitgevoerd, zoals wordt weer gegeven in de scherm opname. Vervang door `<llap-headnode>` deze waarde.
+
+        ![Hoofd knooppunt van de component Warehouse-connector](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw interactieve query cluster. Zoek naar `default_realm` de para meter in het `/etc/krb5.conf` bestand. Vervang door `<AAD-DOMAIN>` deze waarde als een hoofd letter teken reeks, anders wordt de referentie niet gevonden.
+
+        ![AAD-domein van Hive Warehouse connector](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * Bijvoorbeeld `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET`.
     
 1. Sla de wijzigingen op en start de onderdelen indien nodig opnieuw op.
 
@@ -215,7 +223,7 @@ kinit USERNAME
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [HWC-en Apache Spark-bewerkingen](./apache-hive-warehouse-connector-operations.md)
+* [HWC- en Apache Spark-bewerkingen](./apache-hive-warehouse-connector-operations.md)
 * [Interactieve query gebruiken met HDInsight](./apache-interactive-query-get-started.md)
 * [HWC-integratie met Apache Zeppelin](./apache-hive-warehouse-connector-zeppelin.md)
 * [Voor beelden van interactie met hive Warehouse connector met Zeppelin, livy, Spark-Submit en pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)
