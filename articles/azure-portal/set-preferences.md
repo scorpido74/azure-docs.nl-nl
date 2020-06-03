@@ -9,19 +9,19 @@ ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3f51c356f4476782bb830b2702a8fe87c79235c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310676"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308061"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Uw voorkeuren voor de Azure-portal instellen
 
 U kunt de standaard instellingen van de Azure Portal wijzigen om te voldoen aan uw eigen voor keuren. Elk van de onderstaande instellingen kan worden gewijzigd:
 
 * [Time-out voor inactieve sessie](#change-the-idle-duration-for-inactive-sign-out)
-* [Standaardweergave](#choose-your-default-view)
+* [Standaard weergave](#choose-your-default-view)
 * [Menu modus van de portal](#choose-a-portal-menu-mode)
 * [Thema kleur en hoog contrast](#choose-a-theme)
 * [Pop-upmeldingen](#enable-or-disable-pop-up-notifications)
@@ -79,7 +79,7 @@ Het thema dat u kiest, is van invloed op de achtergrond-en lettertype kleuren di
 
    ![Scherm opname van Azure Portal instellingen met Thema's gemarkeerd](./media/set-preferences/theme.png)
 
-U kunt in plaats daarvan een van de Thema's met een hoog contrast kiezen. Met de instellingen voor hoog contrast kunt u de Azure Portal gemakkelijker lezen voor visueel gehandicapt gebruikers en alle andere thema selecties negeren. Zie voor meer informatie [inschakelen hoog contrast of thema wijzigen](azure-portal-change-theme-high-contrast.md).
+U kunt in plaats daarvan een van de Thema's met een hoog contrast kiezen. Met de instellingen voor hoog contrast kan de Azure Portal gemakkelijker te lezen zijn voor mensen die een visuele uitzondelijke waardevermindering hebben en alle andere thema selecties overschrijven. Zie voor meer informatie [inschakelen hoog contrast of thema wijzigen](azure-portal-change-theme-high-contrast.md).
 
 ### <a name="enable-or-disable-pop-up-notifications"></a>Pop-upmeldingen in-of uitschakelen
 

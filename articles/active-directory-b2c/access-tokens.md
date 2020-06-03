@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a659d8929f845b1c58bd64f628b2d3f47a96674e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635453"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297527"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Een toegangs token aanvragen in Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u een toegangs token kunt aanvragen voor een
 ## <a name="prerequisites"></a>Vereisten
 
 - [Maak een gebruikers stroom](tutorial-create-user-flows.md) zodat gebruikers zich kunnen registreren en zich kunnen aanmelden bij uw toepassing.
-- Als u dit nog niet hebt gedaan, [voegt u een web-API-toepassing toe aan uw Azure Active Directory B2C-Tenant](add-web-application.md).
+- Als u dit nog niet hebt gedaan, [voegt u een web-API-toepassing toe aan uw Azure Active Directory B2C-Tenant](add-web-api-application.md).
 
 ## <a name="scopes"></a>Bereiken
 

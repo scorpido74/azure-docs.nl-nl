@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190076"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299805"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -36,8 +36,8 @@ Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om 
 
 U kunt deze back-ups gebruiken om:
 
-- **Een bestaande data base herstellen naar een bepaald tijdstip in het verleden** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke data base. In een beheerd exemplaar kan deze bewerking een kopie maken van de data base of dezelfde of een ander beheerd exemplaar onder hetzelfde abonnement.
-- **Een verwijderde data base herstellen naar het tijdstip van de verwijdering** of op elk moment binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt.
+- **Een bestaande data base herstellen naar een bepaald tijdstip in het verleden** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server in hetzelfde abonnement als de oorspronkelijke data base. In een beheerd exemplaar kan deze bewerking een kopie maken van de data base of dezelfde of een ander beheerd exemplaar onder hetzelfde abonnement.
+- **Een verwijderde data base herstellen naar het tijdstip van de verwijdering** of op elk moment binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op dezelfde server of hetzelfde beheerde exemplaar en in hetzelfde abonnement als waarin de oorspronkelijke Data Base is gemaakt.
 - **Een Data Base herstellen naar een andere geografische regio**. Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw server en data base. Er wordt een nieuwe Data Base op een bestaande server gemaakt, waar dan ook ter wereld.
 - **Een Data Base herstellen op basis van een specifieke lange termijn back-up** op een enkele data base of gegroepeerde Data Base, als de data base is geconfigureerd met een Bewaar beleid voor de lange termijn (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 

@@ -2,20 +2,20 @@
 title: Cassandra-API tabel gegevens lezen met behulp van Spark
 titleSufix: Azure Cosmos DB
 description: In dit artikel wordt beschreven hoe u gegevens uit Cassandra-API tabellen in Azure Cosmos DB kunt lezen.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893387"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309715"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Gegevens uit Azure Cosmos DB Cassandra-API tabellen lezen met Spark
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Filters toepassen
 
-Het huidige predicaat pushdown wordt niet ondersteund. de onderstaande voor beelden zijn gebaseerd op client filters. 
+U kunt predikaten naar de data base pushen om betere geoptimaliseerde Spark-query's toe te staan. Een predikaat is een voor waarde voor een query die waar of onwaar retourneert, meestal in de component WHERE. Met een predicaat-push omlaag worden de gegevens in de database query gefilterd, waardoor het aantal vermeldingen dat wordt opgehaald uit de data base en de query prestaties worden verbeterd. Standaard worden in de Spark-gegevensset-API automatisch geldige WHERE-componenten naar de data base gepusht. 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+De sectie PushedFilters van het fysieke plan bevat het GreaterThan-push filter. 
+
+![partitions](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>RDD-API
 

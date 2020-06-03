@@ -2,37 +2,37 @@
 title: Logboeken van Azure Monitor voor containers opvragen | Microsoft Docs
 description: Azure Monitor voor containers worden metrische gegevens en logboek registraties verzameld, en in dit artikel worden de records beschreven en worden voorbeeld query's opgenomen.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333481"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298300"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Logboeken van Azure Monitor voor containers opvragen
 
-Azure Monitor voor containers worden metrische gegevens over prestaties, inventaris gegevens en informatie over de status van container hosts en containers verzameld en doorgestuurd naar de Log Analytics-werk ruimte in Azure Monitor. De gegevens worden elke drie minuten verzameld. Deze gegevens zijn beschikbaar voor [query's](../../azure-monitor/log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
+Azure Monitor voor containers verzamelt prestatie gegevens, inventaris gegevens en informatie over de status van container hosts en containers. De gegevens worden elke drie minuten verzameld en doorgestuurd naar de Log Analytics-werk ruimte in Azure Monitor. Deze gegevens zijn beschikbaar voor [query's](../../azure-monitor/log-query/log-query-overview.md) in azure monitor. U kunt deze gegevens Toep assen op scenario's met inbegrip van migratie planning, capaciteits analyse, detectie en prestatie problemen oplossen op aanvraag.
 
 ## <a name="container-records"></a>Container records
 
-Voor beelden van records die worden verzameld door Azure Monitor voor containers en de gegevens typen die worden weer gegeven in de zoek resultaten voor logboeken worden weer gegeven in de volgende tabel:
+In de volgende tabel vindt u de details van de records die worden verzameld door Azure Monitor voor containers. 
 
-| Gegevenstype | Gegevens type in zoeken in Logboeken | Velden |
-| --- | --- | --- |
-| Prestaties voor hosts en containers | `Perf` | Computer, ObjectName, CounterName &#40;% processor tijd, schijf lezen MB, schijf schrijf bewerkingen, geheugen gebruik MB, ontvangen bytes van het netwerk, verzonden bytes van de CPU, processor gebruik sec, netwerk&#41;, CounterValue, TimeGenerated, CounterPath, hebben |
-| Container voorraad | `ContainerInventory` | TimeGenerated, computer, container naam, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, hebben, ContainerID, ImageID |
-| Container logboek | `ContainerLog` | TimeGenerated, computer, afbeeldings-ID, container naam, LogEntrySource, LogEntry, hebben, ContainerID |
-| Container-knooppunt inventaris | `ContainerNodeInventory`| TimeGenerated, computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, hebben|
-| Inventaris van Peul in een Kubernetes-cluster | `KubePodInventory` | TimeGenerated, computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, controller naam, container status, ContainerStatusReason, ContainerID, containerName, naam, PodLabel, namespace, PodStatus, clustername, PodIp, hebben |
-| Inventaris van knoop punten die deel uitmaken van een Kubernetes-cluster | `KubeNodeInventory` | TimeGenerated, computer, clustername, ClusterId, LastTransitionTimeReady, labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, hebben | 
-| Kubernetes-gebeurtenissen | `KubeEvents` | TimeGenerated, computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, bericht, hebben | 
-| Services in het Kubernetes-cluster | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, hebben | 
-| Prestatie gegevens voor knoop punten die deel uitmaken van het Kubernetes-cluster | Perf &#124; waarbij ObjectName = = "K8SNode" | Computer, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, hebben | 
-| Prestatie gegevens voor containers onderdeel van het Kubernetes-cluster | Perf &#124; waarbij ObjectName = = "K8SContainer" | Tellernaam &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, hebben | 
-| Aangepaste metrische gegevens |`InsightsMetrics` | Computer, naam, naam ruimte, oorsprong, hebben, tags<sup>1</sup>, TimeGenerated, type, Va, _ResourceId | 
+| Gegevens | Gegevensbron | Gegevenstype | Velden |
+|------|-------------|-----------|--------|
+| Prestaties voor hosts en containers | Metrische gegevens over gebruik worden opgehaald uit cAdvisor en limieten van de uitvoeren-API | `Perf` | Computer, ObjectName, CounterName &#40;% processor tijd, schijf lezen MB, schijf schrijf bewerkingen, geheugen gebruik MB, ontvangen bytes van het netwerk, verzonden bytes van de CPU, processor gebruik sec, netwerk&#41;, CounterValue, TimeGenerated, CounterPath, hebben |
+| Container voorraad | Docker | `ContainerInventory` | TimeGenerated, computer, container naam, ContainerHostname, Image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, hebben, ContainerID, ImageID |
+| Container logboek | Docker | `ContainerLog` | TimeGenerated, computer, afbeeldings-ID, container naam, LogEntrySource, LogEntry, hebben, ContainerID |
+| Container-knooppunt inventaris | Uitvoeren-API | `ContainerNodeInventory`| TimeGenerated, computer, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, hebben|
+| Inventaris van Peul in een Kubernetes-cluster | Uitvoeren-API | `KubePodInventory` | TimeGenerated, computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, controller naam, container status, ContainerStatusReason, ContainerID, containerName, naam, PodLabel, namespace, PodStatus, clustername, PodIp, hebben |
+| Inventaris van knoop punten die deel uitmaken van een Kubernetes-cluster | Uitvoeren-API | `KubeNodeInventory` | TimeGenerated, computer, clustername, ClusterId, LastTransitionTimeReady, labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, hebben | 
+| Kubernetes-gebeurtenissen | Uitvoeren-API | `KubeEvents` | TimeGenerated, computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, bericht, hebben | 
+| Services in het Kubernetes-cluster | Uitvoeren-API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, hebben | 
+| Prestatie gegevens voor knoop punten die deel uitmaken van het Kubernetes-cluster || Perf &#124; waarbij ObjectName = = "K8SNode" | Computer, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, hebben | 
+| Prestatie gegevens voor containers onderdeel van het Kubernetes-cluster || Perf &#124; waarbij ObjectName = = "K8SContainer" | Tellernaam &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, hebben | 
+| Aangepaste metrische gegevens ||`InsightsMetrics` | Computer, naam, naam ruimte, oorsprong, hebben, tags<sup>1</sup>, TimeGenerated, type, Va, _ResourceId | 
 
-<sup>1</sup> de eigenschap *Tags* vertegenwoordigt [meerdere dimensies](../platform/data-platform-metrics.md#multi-dimensional-metrics) voor de bijbehorende metriek. Zie [overzicht van InsightsMetrics](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)voor meer informatie over de metrische gegevens die `InsightsMetrics` worden verzameld en opgeslagen in de tabel en een beschrijving van de record eigenschappen.
+<sup>1</sup> de eigenschap *Tags* vertegenwoordigt [meerdere dimensies](../platform/data-platform-metrics.md#multi-dimensional-metrics) voor de bijbehorende metriek. Zie overzicht van InsightsMetrics voor meer informatie over de metrische gegevens die in de tabel worden verzameld en opgeslagen `InsightsMetrics` en een beschrijving [InsightsMetrics overview](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)van de record eigenschappen.
 
 ## <a name="search-logs-to-analyze-data"></a>Zoek Logboeken om gegevens te analyseren
 
@@ -80,7 +80,7 @@ InsightsMetrics
 
 ```
 
-Als u de metrische gegevens van Prometheus wilt weer geven die door Azure Monitor gefilterd op naam ruimte, geeft u Prometheus op. Hier volgt een voor beeld van een query voor het weer geven `default` van metrische gegevens over Prometheus van de kubernetes-naam ruimte.
+Als u de metrische gegevens van Prometheus wilt weer geven die door Azure Monitor gefilterd op naam ruimte, geeft u Prometheus op. Hier volgt een voor beeld van een query voor het weer geven van metrische gegevens over Prometheus van de `default` kubernetes-naam ruimte.
 
 ```
 InsightsMetrics 
@@ -99,13 +99,13 @@ InsightsMetrics
 
 ### <a name="query-config-or-scraping-errors"></a>Query configuratie of uitval fouten
 
-De volgende voorbeeld query retourneert informatieve gebeurtenissen uit de `KubeMonAgentEvents` tabel om eventuele configuratie-of uitval fouten te onderzoeken.
+De volgende voorbeeld query retourneert informatieve gebeurtenissen uit de tabel om eventuele configuratie-of uitval fouten te onderzoeken `KubeMonAgentEvents` .
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-De uitvoer ziet er ongeveer als volgt uit:
+De uitvoer toont resultaten die vergelijkbaar zijn met het volgende voor beeld:
 
 ![Query resultaten van informatieve gebeurtenissen van agent vastleggen in logboek](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 

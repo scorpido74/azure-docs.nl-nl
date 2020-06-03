@@ -1,7 +1,7 @@
 ---
 title: Bronlimieten
 titleSuffix: Azure SQL Managed Instance
-description: Dit artikel bevat een overzicht van de resource limieten voor Azure SQL Managed instances.
+description: Dit artikel bevat een overzicht van de resource limieten voor Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,20 +12,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 27b46a5511313e8ebc31618fe382e7108cdaa160
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118649"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309098"
 ---
-# <a name="overview-azure-sql-managed-instance-resource-limits"></a>Overzicht van Azure SQL Managed instance resource limieten
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Dit artikel bevat een overzicht van de technische kenmerken en resource limieten voor Azure SQL Managed instance en bevat informatie over het aanvragen van een verhoging van deze limieten.
 
 > [!NOTE]
-> Zie voor verschillen in ondersteunde functies en T-SQL-instructies [functie verschillen](../database/features-comparison.md) en [ondersteuning voor t-SQL-instructie](transact-sql-tsql-differences-sql-server.md). Zie de [vergelijking](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison)van de servicelaag voor algemene verschillen tussen de service lagen voor SQL database en SQL Managed instance.
+> Zie voor verschillen in ondersteunde functies en T-SQL-instructies [functie verschillen](../database/features-comparison.md) en [ondersteuning voor t-SQL-instructie](transact-sql-tsql-differences-sql-server.md). Zie de [vergelijking](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison)van de servicelaag voor algemene verschillen tussen de service lagen voor Azure SQL database en SQL Managed instance.
 
 ## <a name="hardware-generation-characteristics"></a>Kenmerken voor het genereren van hardware
 
@@ -40,12 +40,12 @@ SQL Managed instance heeft kenmerken en resource limieten die afhankelijk zijn v
 | Maximum aantal gereserveerde exemplaren |  Algemeen: 8 TB<br/>Bedrijfskritiek: 1 TB | Algemeen: 8 TB<br/> Bedrijfskritiek 1 TB, 2 TB of 4 TB afhankelijk van het aantal kernen |
 
 > [!IMPORTANT]
-> - Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Alle nieuwe SQL Managed instances moeten worden geïmplementeerd op GEN5-hardware.
-> - Overweeg [uw SQL Managed instances naar Gen 5](../database/service-tiers-vcore.md) -hardware te verplaatsen om een breder scala aan vCore-en opslag schaal baarheid, versneld netwerken, de beste IO-prestaties en een minimale latentie te ervaren.
+> - Gen4-hardware wordt gefaseerd uitgevoerd en is niet meer beschikbaar voor nieuwe implementaties. Alle nieuwe exemplaren van SQL Managed instance moeten worden geïmplementeerd op GEN5-hardware.
+> - Overweeg om [uw exemplaar van SQL Managed instance te verplaatsen naar Gen 5](../database/service-tiers-vcore.md) -hardware, zodat u een breder scala aan vCore-en opslag schaal baarheid, versneld netwerken, beste IO-prestaties en minimale latentie kunt ervaren.
 
 ### <a name="in-memory-oltp-available-space"></a>Beschik bare ruimte in geheugen voor OLTP 
 
-De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](../database/service-tier-business-critical.md) servicelaag is afhankelijk van het aantal vCores en de generatie van hardware. De volgende tabel vermeldt de geheugen limieten die kunnen worden gebruikt voor in-Memory OLTP-objecten.
+De hoeveelheid OLTP-ruimte in het geheugen in [bedrijfskritiek](../database/service-tier-business-critical.md) servicelaag is afhankelijk van het aantal vCores en de generatie van hardware. De volgende tabel geeft een lijst van geheugen limieten die kunnen worden gebruikt voor in-Memory OLTP-objecten.
 
 | OLTP-ruimte in het geheugen  | **GEN5** | **Gen4** |
 | --- | --- | --- |
@@ -111,7 +111,7 @@ Er is ook een limiet op exemplaar niveau voor de maximale schrijf doorvoer in he
 
 ## <a name="supported-regions"></a>Ondersteunde regio’s
 
-SQL Managed instances kunnen alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
+Een SQL Managed instance kan alleen worden gemaakt in [ondersteunde regio's](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Als u een SQL Managed instance wilt maken in een regio die momenteel niet wordt ondersteund, kunt u [via de Azure Portal een ondersteunings aanvraag verzenden](../database/quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Ondersteunde abonnementstypen
 
@@ -128,11 +128,11 @@ SQL Managed instance biedt momenteel alleen ondersteuning voor de implementatie 
 
 Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. SQL Managed instance heeft twee standaard limieten per Azure-regio (die op aanvraag kan worden verhoogd door een speciale [ondersteunings aanvraag in de Azure Portal](../database/quota-increase-request.md) te maken, afhankelijk van een type abonnements type:
 
-- **Subnet limiet**: het maximum aantal subnetten waar SQL Managed instances in één regio worden geïmplementeerd.
+- **Subnet limiet**: het maximum aantal subnetten waar exemplaren van een door SQL beheerd exemplaar worden geïmplementeerd in een enkele regio.
 - **limiet vCore**: het maximum aantal vCore-eenheden dat kan worden geïmplementeerd in alle instanties in één regio. Eén GP-vCore maakt gebruik van één vCore-eenheid en één BC vCore neemt vier vCore eenheden in beslag. Het totale aantal exemplaren is niet beperkt zolang het zich binnen de limiet van de vCore-eenheid bevindt.
 
 > [!Note]
-> Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](../database/quota-increase-request.md) als u meer SQL-beheerde instanties in de huidige regio nodig hebt. Als alternatief kunt u nieuwe SQL-beheerde exemplaren in een andere Azure-regio maken zonder ondersteunings aanvragen te verzenden.
+> Deze limieten zijn standaard instellingen en niet van technische beperkingen. De limieten kunnen op aanvraag worden verhoogd door een speciale [ondersteunings aanvraag te maken in de Azure Portal](../database/quota-increase-request.md) als u meer exemplaren in de huidige regio nodig hebt. Als alternatief kunt u nieuwe exemplaren van SQL Managed instance in een andere Azure-regio maken zonder ondersteunings aanvragen te verzenden.
 
 De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde abonnements typen (standaard limieten kunnen worden uitgebreid met ondersteunings aanvraag die hieronder wordt beschreven):
 
@@ -146,13 +146,13 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional en MSDN Platforms|2|32|
 
-\*In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, geeft u de vCore-eenheden voor alle subnetten in de regio waar SQL Managed instances worden geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
+\*In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, samenvatten we de vCore-eenheden in alle subnetten in de regio waar SQL Managed instance wordt geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
 
 \*\*Grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
 
 ## <a name="request-a-quota-increase"></a>Een quotum verhoging aanvragen
 
-Als u meer SQL Managed instances nodig hebt in uw huidige regio's, verzendt u een ondersteunings aanvraag om het quotum uit te breiden met behulp van de Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](../database/quota-increase-request.md)voor meer informatie.
+Als u meer exemplaren nodig hebt in uw huidige regio's, verzendt u een ondersteunings aanvraag om het quotum uit te breiden met behulp van de Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](../database/quota-increase-request.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,19 +4,19 @@ description: Een Azure IoT Edge apparaat gebruiken als een transparante gateway 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/03/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e563e67b5e951b43e5782f8c845c8ec46ff3e9bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1e14fe6764a9f5e850d3b975ef3bcc6cb28bf78
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687168"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309149"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway
 
@@ -30,9 +30,9 @@ In dit artikel vindt u gedetailleerde instructies voor het configureren van een 
 
 Er zijn drie algemene stappen voor het instellen van een geslaagde transparante gateway verbinding. In dit artikel wordt de eerste stap behandeld:
 
-1. **Het gateway apparaat moet in staat zijn om veilig verbinding te maken met downstream-apparaten, communicaties te ontvangen van downstream-apparaten en berichten te routeren naar de juiste bestemming.**
-2. Het downstream-apparaat moet een apparaat-id hebben om te kunnen worden geverifieerd met IoT Hub en u moet communiceren via het gateway apparaat. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
-3. Het downstream-apparaat moet een beveiligde verbinding maken met het gateway apparaat. Zie [verbinding maken tussen een downstream-apparaat en een Azure IOT Edge-gateway](how-to-connect-downstream-device.md)voor meer informatie.
+1. **Configureer het gateway apparaat als een server zodat downstream-apparaten veilig verbinding kunnen maken. Stel de gateway in voor het ontvangen van berichten van downstream-apparaten en stuur ze naar de juiste bestemming.**
+2. Maak een apparaat-id voor het downstream-apparaat, zodat het kan worden geverifieerd met IoT Hub. Configureer het downstream-apparaat om berichten te verzenden via het gateway apparaat. Zie [een downstream-apparaat verifiëren voor Azure IOT hub](how-to-authenticate-downstream-device.md)voor meer informatie.
+3. Verbind het downstream-apparaat met het gateway apparaat en begin met het verzenden van berichten. Zie [verbinding maken tussen een downstream-apparaat en een Azure IOT Edge-gateway](how-to-connect-downstream-device.md)voor meer informatie.
 
 Een apparaat kan alleen als gateway functioneren als het op een veilige manier verbinding kan maken met de downstream-apparaten. Met Azure IoT Edge kunt u een open bare-sleutel infrastructuur (PKI) gebruiken om beveiligde verbindingen tussen apparaten in te stellen. In dit geval kunnen we een downstream-apparaat verbinding laten maken met een IoT Edge apparaat dat als transparante gateway fungeert. Om redelijke beveiliging te behouden, moet het downstream-apparaat de identiteit van het gateway-apparaat bevestigen. Met deze identiteits controle voor komt u dat uw apparaten verbinding maken met mogelijk schadelijke gateways.
 
@@ -40,18 +40,58 @@ Een downstream-apparaat in een transparant Gateway scenario kan elke toepassing 
 
 U kunt een certificaat infrastructuur maken waarmee de vertrouwens relatie die is vereist voor de gateway topologie van uw apparaat wordt ingeschakeld. In dit artikel wordt ervan uitgegaan dat u dezelfde certificaat instelling gebruikt voor het inschakelen van [x. 509 ca-beveiliging](../iot-hub/iot-hub-x509ca-overview.md) in IOT hub, waarbij een x. 509 CA-certificaat is gekoppeld aan een specifieke IOT-hub (de basis-CA van de IOT-hub), een reeks certificaten die zijn ondertekend met deze certificerings instantie en een certificerings instantie voor het IOT edge apparaat.
 
-![Installatie van Gateway certificaat](./media/how-to-create-transparent-gateway/gateway-setup.png)
-
 >[!NOTE]
->De term ' basis-CA ' die in dit artikel wordt gebruikt, verwijst naar het open bare certificaat van de bovenste certificerings instantie van de PKI-certificaat keten, en niet noodzakelijkerwijs de hoofdmap van het certificaat van een extern gepubliceerde certificerings instantie. In veel gevallen is het eigenlijk een openbaar certificaat van een tussenliggend CA.
-
-De IoT Edge Security daemon maakt gebruik van het CA-certificaat van IoT Edge apparaat om een CA-certificaat van een werk belasting te ondertekenen, dat op zijn beurt een server certificaat voor IoT Edge hub ondertekent. De gateway presenteert het server certificaat voor het downstream-apparaat tijdens de start van de verbinding. Het downstream-apparaat controleert of het server certificaat deel uitmaakt van een certificaat keten die naar het basis-CA-certificaat rolt. Met dit proces kan het downstream-apparaat controleren of de gateway afkomstig is van een vertrouwde bron. Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie.
+>Het basis-CA-certificaat dat in deze artikelen wordt gebruikt, verwijst naar het open bare certificaat van de bovenste *certificerings* instantie van de PKI-certificaat keten en niet noodzakelijkerwijs de hoofdmap van het certificaat van een extern gepubliceerde certificerings instantie. In veel gevallen is het eigenlijk een openbaar certificaat van een tussenliggend CA.
 
 De volgende stappen leiden u door het proces van het maken van de certificaten en het installeren ervan op de juiste plaatsen op de gateway. U kunt elke computer gebruiken om de certificaten te genereren en deze vervolgens naar uw IoT Edge apparaat kopiëren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Azure IoT Edge apparaat, geconfigureerd met [productie certificaten](how-to-manage-device-certificates.md).
+Een Linux-of Windows-apparaat met IoT Edge geïnstalleerd.
+
+## <a name="set-up-the-device-ca-certificate"></a>Het CA-certificaat van het apparaat instellen
+
+Voor alle IoT Edge gateways moet een CA-certificaat van een apparaat zijn geïnstalleerd. De IoT Edge Security daemon maakt gebruik van het CA-certificaat van IoT Edge apparaat om een CA-certificaat van een werk belasting te ondertekenen, dat op zijn beurt een server certificaat voor IoT Edge hub ondertekent. De gateway presenteert het server certificaat voor het downstream-apparaat tijdens de start van de verbinding. Het downstream-apparaat controleert of het server certificaat deel uitmaakt van een certificaat keten die naar het basis-CA-certificaat rolt. Met dit proces kan het downstream-apparaat controleren of de gateway afkomstig is van een vertrouwde bron. Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie.
+
+![Installatie van Gateway certificaat](./media/how-to-create-transparent-gateway/gateway-setup.png)
+
+Het basis-CA-certificaat en het CA-certificaat (met de persoonlijke sleutel) moeten aanwezig zijn op het IoT Edge gateway-apparaat en worden geconfigureerd in het bestand IoT Edge config. yaml. Houd er rekening mee dat in dit geval het *basis-CA-certificaat* de bovenste certificerings instantie voor dit IOT Edge scenario aangeeft. Het CA-certificaat van de gateway-apparaat en de certificaten van het downstream-apparaat moeten worden getotaliseerd op hetzelfde basis-CA-certificaat.
+
+>[!TIP]
+>Het proces voor het installeren van het basis-CA-certificaat en het CA-certificaat van het apparaat op een IoT Edge apparaat wordt ook gedetailleerd beschreven in [certificaten op een IOT edge apparaat beheren](how-to-manage-device-certificates.md).
+
+De volgende bestanden zijn gereed:
+
+* Basis-CA-certificaat
+* CA-certificaat van apparaat
+* Persoonlijke sleutel van de apparaat-CA
+
+Voor productie scenario's moet u deze bestanden met uw eigen certificerings instantie genereren. Voor ontwikkelings-en test scenario's kunt u demo certificaten gebruiken.
+
+1. Als u demo certificaten gebruikt, gebruikt u de volgende reeks stappen om uw bestanden te maken:
+   1. [Basis-CA-certificaat maken](how-to-create-test-certificates.md#create-root-ca-certificate). Aan het einde van deze instructies hebt u een basis-CA-certificaat bestand:
+      * `<path>/certs/azure-iot-test-only.root.ca.cert.pem`.
+
+   2. [IOT Edge CA-certificaat voor het apparaat maken](how-to-create-test-certificates.md#create-iot-edge-device-ca-certificates). Aan het einde van deze instructies hebt u twee bestanden, een CA-certificaat voor apparaten en de persoonlijke sleutel:
+      * `<path>/certs/iot-edge-device-<cert name>-full-chain.cert.pem`maar
+      * `<path>/private/iot-edge-device-<cert name>.key.pem`
+
+2. Als u deze bestanden op een andere computer hebt gemaakt, kopieert u deze naar uw IoT Edge-apparaat.
+
+3. Open het configuratie bestand van de beveiligings-daemon op uw IoT Edge-apparaat.
+   * Windows`C:\ProgramData\iotedge\config.yaml`
+   * Spreek`/etc/iotedge/config.yaml`
+
+4. Zoek de sectie **certificaten** van het bestand en geef de bestands-uri's op uw drie bestanden op als waarden voor de volgende eigenschappen:
+   * **device_ca_cert**: CA-certificaat van apparaat
+   * **device_ca_pk**: privé sleutel van de apparaat-ca
+   * **trusted_ca_certs**: basis-CA-certificaat
+
+5. Sla het bestand op en sluit het.
+
+6. Start IoT Edge opnieuw.
+   * Windows`Restart-Service iotedge`
+   * Spreek`sudo systemctl restart iotedge`
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>EdgeHub implementeren op de gateway
 
@@ -59,7 +99,7 @@ Wanneer u IoT Edge voor het eerst op een apparaat installeert, wordt slechts é�
 
 De IoT Edge hub is verantwoordelijk voor het ontvangen van inkomende berichten van downstream-apparaten en het routeren naar de volgende bestemming. Als de **edgeHub** -module niet op uw apparaat wordt uitgevoerd, maakt u een eerste implementatie voor uw apparaat. De implementatie ziet er leeg uit omdat u geen modules toevoegt, maar dit zorgt ervoor dat beide systeem modules worden uitgevoerd.
 
-U kunt controleren welke modules worden uitgevoerd op een apparaat door de apparaatgegevens in de Azure Portal te controleren, de status van het apparaat weer te geven in Visual Studio of Visual Studio code of `iotedge list` door de opdracht op het apparaat zelf uit te voeren.
+U kunt controleren welke modules worden uitgevoerd op een apparaat door de apparaatgegevens in de Azure Portal te controleren, de status van het apparaat weer te geven in Visual Studio of Visual Studio code of door de opdracht `iotedge list` op het apparaat zelf uit te voeren.
 
 Als de **edgeAgent** -module wordt uitgevoerd zonder de **edgeHub** -module, voert u de volgende stappen uit:
 
@@ -69,19 +109,13 @@ Als de **edgeAgent** -module wordt uitgevoerd zonder de **edgeHub** -module, voe
 
 3. Selecteer **modules instellen**.
 
-4. Selecteer **Next**.
+4. Selecteer **volgende: routes**.
 
-5. Op de pagina **routes opgeven** moet u een standaard route hebben waarmee alle berichten van alle modules naar IOT hub worden verzonden. Voeg anders de volgende code toe en selecteer **Volgende**.
+5. Op de pagina **routes** moet u een standaard route hebben waarmee alle berichten, of van een module of van een downstream-apparaat, naar IOT hub worden verzonden. Als dat niet het geval is, voegt u een nieuwe route toe met de volgende waarden en selecteert u vervolgens **controleren + maken**:
+   * **Naam**:`route`
+   * **Waarde**:`FROM /messages/* INTO $upstream`
 
-   ```JSON
-   {
-       "routes": {
-           "route": "FROM /messages/* INTO $upstream"
-       }
-   }
-   ```
-
-6. Selecteer op de pagina **controle sjabloon** de optie **verzenden**.
+6. Selecteer op de pagina **controleren en maken** de optie **maken**.
 
 ## <a name="open-ports-on-gateway-device"></a>Poorten op gateway apparaat openen
 
@@ -101,7 +135,7 @@ De IoT Edge runtime kan berichten verzenden die zijn verzonden vanaf downstream-
 
 Op dit moment kunt u berichten die door downstream-apparaten worden verzonden, op een andere manier onderscheiden van berichten die door modules worden verzonden. Berichten die door modules worden verzonden, bevatten een systeem eigenschap met de naam **connectionModuleId** , maar berichten die door downstream-apparaten worden verzonden, worden niet uitgevoerd. U kunt de component WHERE van de route gebruiken om berichten met die systeem eigenschap uit te sluiten.
 
-De onderstaande route is een voor beeld waarmee berichten van elk downstream-apparaat naar een module met `ai_insights`de naam worden verzonden `ai_insights` en vervolgens worden IOT hub.
+De onderstaande route is een voor beeld waarmee berichten van elk downstream-apparaat naar een module met de naam worden verzonden `ai_insights` en vervolgens worden `ai_insights` IOT hub.
 
 ```json
 {
@@ -116,12 +150,12 @@ Zie [modules implementeren en routes instellen](./module-composition.md#declare-
 
 ## <a name="enable-extended-offline-operation"></a>Uitgebreide offline bewerking inschakelen
 
-Vanaf de release van de [v-1.0.4](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) van de IOT Edge runtime kunnen het gateway apparaat en de downstream-apparaten waarmee verbinding wordt gemaakt, worden geconfigureerd voor een uitgebreide offline bewerking.
+Vanaf de [1.0.4-versie](https://github.com/Azure/azure-iotedge/releases/tag/1.0.4) van de runtime van IOT Edge kunnen het gateway apparaat en de downstream-apparaten waarmee verbinding wordt gemaakt, worden geconfigureerd voor een uitgebreide offline bewerking.
 
 Met deze mogelijkheid kunnen lokale modules of downstream-apparaten opnieuw worden geverifieerd met het IoT Edge apparaat en met elkaar communiceren met behulp van berichten en methoden, zelfs wanneer de verbinding met de IoT-hub is verbroken. Zie voor meer informatie [uitgebreide offline mogelijkheden voor IOT edge apparaten, modules en onderliggende apparaten begrijpen](offline-capabilities.md).
 
-Als u uitgebreide offline mogelijkheden wilt inschakelen, stelt u een relatie tussen een bovenliggend/onderliggend item in tussen een IoT Edge gateway apparaat en downstream-apparaten waarmee er verbinding mee wordt gemaakt. Deze stappen worden uitgebreid beschreven in [een downstream-apparaat verifiëren bij Azure IOT hub](how-to-authenticate-downstream-device.md).
+Als u uitgebreide offline mogelijkheden wilt inschakelen, stelt u een relatie tussen een bovenliggend/onderliggend item in tussen een IoT Edge gateway apparaat en downstream-apparaten waarmee er verbinding mee wordt gemaakt. Deze stappen worden uitgebreid beschreven in het volgende artikel van deze serie, [een downstream-apparaat verifiëren bij Azure IOT hub](how-to-authenticate-downstream-device.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Edge apparaat werkt als een transparante gateway, moet u uw downstream-apparaten configureren om de gateway te vertrouwen en er berichten naar toe te sturen. Ga door met het [verifiëren van een downstream-apparaat bij Azure IOT hub](how-to-authenticate-downstream-device.md) voor de volgende stappen in het instellen van uw transparante Gateway scenario.
+Nu u een IoT Edge apparaat hebt ingesteld als een transparante gateway, moet u uw downstream-apparaten configureren om de gateway te vertrouwen en er berichten naar toe te sturen. Ga door met het [verifiëren van een downstream-apparaat bij Azure IOT hub](how-to-authenticate-downstream-device.md) voor de volgende stappen in het instellen van uw transparante Gateway scenario.

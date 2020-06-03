@@ -4,19 +4,19 @@ description: In dit overzicht worden SQL Data Sync voor Azure geïntroduceerd, w
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: data sync, sqldbrb=1
+ms.custom: data sync, sqldbrb=1, fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 73f0a733d4f32042e5ea3439282f88db0c065433
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188717"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297952"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -169,6 +169,18 @@ Met gegevens synchronisatie kunnen alleen-lezen of door het systeem gegenereerde
 
 > [!NOTE]
 > Er kunnen Maxi maal 30 eind punten in één synchronisatie groep bestaan als er slechts één synchronisatie groep is. Als er meer dan één synchronisatie groep is, kan het totale aantal eind punten voor alle synchronisatie groepen niet meer dan 30 zijn. Als een Data Base deel uitmaakt van meerdere synchronisatie groepen, wordt deze als meerdere eind punten geteld, niet een.
+
+### <a name="network-requirements"></a>Netwerkvereisten
+
+Wanneer de synchronisatie groep tot stand is gebracht, moet de Data Sync-service verbinding maken met de hub-data base. Op het moment dat u de synchronisatie groep instelt, moet de Azure SQL-Server de volgende configuratie hebben in de `Firewalls and virtual networks` instellingen:
+
+ * *Toegang tot open bare netwerk weigeren* moet worden ingesteld op *uit*.
+ * *Toestaan dat Azure-Services en-resources toegang hebben tot deze server* moet zijn ingesteld op *Ja*of moet u IP-regels maken voor de [IP-adressen die worden gebruikt door de Data Sync-Service](network-access-controls-overview.md#data-sync).
+
+Zodra de synchronisatie groep is gemaakt en ingericht, kunt u deze instellingen uitschakelen. De synchronisatie agent maakt rechtstreeks verbinding met de hub-data base en u kunt de [Firewall-IP-regels](firewall-configure.md) of [particuliere eind punten](private-endpoint-overview.md) van de server gebruiken om de agent toegang te geven tot de hub-server.
+
+> [!NOTE]
+> Als u de schema-instellingen van de synchronisatie groep wijzigt, moet u ervoor zorgen dat de Data Sync-service weer toegang heeft tot de server, zodat de hub-data base opnieuw kan worden ingericht.
 
 ## <a name="faq-about-sql-data-sync"></a>Veelgestelde vragen over SQL Data Sync
 

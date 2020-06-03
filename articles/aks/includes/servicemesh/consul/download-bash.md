@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594241"
 ---
-In een op bash gebaseerde shell op Linux, het [Windows-subsysteem voor Linux][install-wsl] of `curl` MacOS kunt u de consul helm-grafiek release als volgt downloaden:
+In een op bash gebaseerde shell op Linux, het [Windows-subsysteem voor Linux][install-wsl] of MacOS kunt u `curl` de consul helm-grafiek release als volgt downloaden:
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

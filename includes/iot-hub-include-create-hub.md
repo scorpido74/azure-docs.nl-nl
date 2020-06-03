@@ -52,7 +52,7 @@ In deze sectie wordt beschreven hoe u een IoT-hub maakt met behulp van de [Azure
 
     - **Azure Security Center**: Schakel dit in om een extra beveiligingslaag van dreigingen toe te voegen aan IOT en uw apparaten. Deze optie is niet beschikbaar voor hubs in de gratis laag. Zie [Azure Security Center voor IOT voor](https://docs.microsoft.com/azure/asc-for-iot/)meer informatie over deze functie.
 
-    - **Geavanceerde instellingen** > voor**apparaat-naar-Cloud-partities**: met deze eigenschap worden de apparaat-naar-Cloud-berichten gekoppeld aan het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben slechts vier partities nodig.
+    - **Geavanceerde instellingen**  >  **Apparaat-naar-Cloud-partities**: met deze eigenschap worden de apparaat-naar-Cloud-berichten gekoppeld aan het aantal gelijktijdige lezers van de berichten. De meeste hubs hebben slechts vier partities nodig.
 
 1.  Selecteer **volgende: Tags** om door te gaan naar het volgende scherm.
 

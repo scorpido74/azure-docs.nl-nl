@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 274f8d985304ee27776017dfee7d263df8271fbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047102"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310084"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Een Shard multi tenant-toepassing implementeren en verkennen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -265,7 +265,7 @@ In deze zelfstudie hebt u het volgende geleerd:
 > - Pool gebruik weer geven voor het bewaken van Tenant activiteit.
 > - Voorbeeld resources verwijderen om gerelateerde facturering te stoppen.
 
-Probeer nu de [zelf studie voor het inrichten en de catalogus](saas-dbpertenant-provision-and-catalog.md).
+Probeer nu de [zelf studie voor het inrichten en de catalogus](saas-multitenantdb-provision-and-catalog.md).
 
 
 <!--  Link references.

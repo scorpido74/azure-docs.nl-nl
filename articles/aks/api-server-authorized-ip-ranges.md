@@ -4,12 +4,12 @@ description: Meer informatie over het beveiligen van uw cluster met behulp van e
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 357c8ea4da2a07864215225f7d618f9eb58b7e49
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266182"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299567"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Veilige toegang tot de API-server met behulp van geautoriseerde IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -36,7 +36,7 @@ Zie [Kubernetes core-concepten voor AKS][concepts-clusters-workloads]voor meer i
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Een AKS-cluster maken waarvoor een API-server geautoriseerde IP-adresbereiken is ingeschakeld
 
-Door API server geautoriseerde IP-adresbereiken werken alleen voor nieuwe AKS-clusters. Maak een cluster met de para meter [AZ AKS Create][az-aks-create] en geef de *--API-server-Authorized-IP-Ranges* op om een lijst met geautoriseerde IP-adresbereiken op te geven. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken of open bare Ip's. Wanneer u een CIDR-bereik opgeeft, begint u met het eerste IP-adres in het bereik. *137.117.106.90/29* is bijvoorbeeld een geldig bereik, maar zorg ervoor dat u het eerste IP-adres in het bereik opgeeft, zoals *137.117.106.88/29*.
+Geautoriseerde IP-adresbereiken van de API-server werken alleen voor nieuwe AKS-clusters en worden niet ondersteund voor particuliere AKS-clusters. Maak een cluster met de para meter [AZ AKS Create][az-aks-create] en geef de *--API-server-Authorized-IP-Ranges* op om een lijst met geautoriseerde IP-adresbereiken op te geven. Deze IP-adresbereiken zijn meestal adresbereiken die worden gebruikt door uw on-premises netwerken of open bare Ip's. Wanneer u een CIDR-bereik opgeeft, begint u met het eerste IP-adres in het bereik. *137.117.106.90/29* is bijvoorbeeld een geldig bereik, maar zorg ervoor dat u het eerste IP-adres in het bereik opgeeft, zoals *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Uw cluster maakt standaard gebruik van de [standaard-SKU Load Balancer][standard-sku-lb] die u kunt gebruiken om de uitgaande gateway te configureren. Wanneer u toegestane IP-bereiken van de API-server inschakelt tijdens het maken van het cluster, is het open bare IP-adres voor uw cluster standaard ook toegestaan naast de bereiken die u opgeeft. Als u *' '* of geen waarde opgeeft voor *--API-server-geautoriseerde IP-bereiken*, wordt de API-server geautoriseerde IP-adresbereiken uitgeschakeld. Als u Power shell gebruikt, moet u *--API-server-Authorized-IP-Ranges = ""* (met een gelijkteken) gebruiken om problemen met het parseren te voor komen.

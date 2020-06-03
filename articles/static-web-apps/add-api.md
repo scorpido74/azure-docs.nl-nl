@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 1720ea31c8f0b15485df194e62e463671d092b26
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258637"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310849"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Een API toevoegen aan de preview-versie van statische Web Apps van Azure met Azure Functions
 
@@ -127,7 +127,7 @@ Vervolgens wijzigt u de `GetMessage` functie om een bericht naar de front-end te
 
 Met de bovenstaande instellingen is het API-eind punt:
 
-- Er wordt een HTTP-aanvraag geactiveerd met de functie
+- Geactiveerd wanneer een HTTP-aanvraag wordt gedaan voor de functie
 - Beschikbaar voor alle aanvragen ongeacht de verificatie status
 - Beschikbaar via de _/API/Message_ -route
 
