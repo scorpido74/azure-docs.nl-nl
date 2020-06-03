@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: ca54d5a0d196cbc39256668f21e19bdf9162dfbf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202787"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018379"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Toepassing van de reserveringskorting op virtuele machines
 
@@ -102,7 +102,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 - [Wat zijn reserveringen voor Azure?](../reservations/save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Reserveringen voor Azure beheren](../reservations/manage-reserved-vm-instance.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../reservations/understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../reservations/understand-reserved-instance-usage-ea.md)

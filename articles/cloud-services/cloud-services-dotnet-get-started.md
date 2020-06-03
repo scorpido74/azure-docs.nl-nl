@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015366"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310645"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -124,7 +124,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **Maken**.
+5. Klik op **Create**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -153,7 +153,7 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 9. Klik op **Selecteren** voor de nieuwe server.
 
     ![Nieuwe server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **Maken**.
+10. Klik op **Create**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -176,7 +176,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **Maken**.
+7. Klik op **Create**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -530,7 +530,7 @@ Het bestand *Views\Home\Index.cshtml* geeft categoriekoppelingen weer op de star
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb - AdController.cs
 De constructor roept in het *AdController.cs* -bestand de `InitializeStorage` methode aan om Azure Storage-client bibliotheek objecten te maken die een API bieden voor het werken met blobs en wacht rijen.
 
-Vervolgens haalt de code een verwijzing op naar de blobcontainer met *afbeeldingen*, zoals u eerder hebt gezien in *Global.asax.cs*. Tijdens het uitvoeren hiervan wordt standaard [beleid voor opnieuw proberen](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) ingesteld dat geschikt is voor een web-app. Toepassing van het standaardbeleid voor opnieuw proberen met exponentieel uitstel kan ertoe leiden dat de web-app bij een tijdelijke fout langer dan een minuut blijft hangen vanwege herhaalde pogingen om het opnieuw te proberen. Het beleid dat hier is opgegeven, schrijft voor dat er na elke poging drie seconden wordt gewacht en dat het aantal pogingen maximaal drie bedraagt.
+Vervolgens haalt de code een verwijzing op naar de blobcontainer met *afbeeldingen*, zoals u eerder hebt gezien in *Global.asax.cs*. Tijdens het uitvoeren hiervan wordt standaard [beleid voor opnieuw proberen](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling) ingesteld dat geschikt is voor een web-app. Het standaard beleid voor opnieuw proberen van exponentiële uitstel kan ertoe leiden dat de web-app langer dan een minuut niet meer reageert bij herhaalde pogingen voor een tijdelijke fout. Het beleid dat hier is opgegeven, schrijft voor dat er na elke poging drie seconden wordt gewacht en dat het aantal pogingen maximaal drie bedraagt.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +776,3 @@ Zie de volgende bronnen voor meer informatie:
 * [Cloud Services beheren](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Een cloudserviceprovider kiezen](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

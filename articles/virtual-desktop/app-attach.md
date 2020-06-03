@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742939"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310611"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
 > [!IMPORTANT]
-> MSIX app attach bevindt zich momenteel in een persoonlijke preview.
-> Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> MSIX app attach is momenteel beschikbaar als open bare preview.
+> Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeling in een virtueel-bureaublad omgeving van Windows.
 
@@ -28,13 +28,14 @@ In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeli
 Voordat u aan de slag gaat, hebt u het volgende nodig om de MSIX-app-koppeling te configureren:
 
 - Toegang tot de Windows Insider-portal voor het verkrijgen van de versie van Windows 10 met ondersteuning voor de MSIX app attach-Api's.
-- Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in virtueel bureau blad van Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)voor meer informatie.
+- Een werkende implementatie van virtueel bureau blad in Windows. Zie [een Tenant maken in het virtuele bureau blad van Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)voor meer informatie over het implementeren van de Windows Virtual Desktop-versie van 2019. Zie [een hostgroep maken met de Azure Portal](./create-host-pools-azure-marketplace.md)voor meer informatie over het implementeren van de Windows Virtual Desktop lente 2020-release.
+
 - Het MSIX-verpakkings programma
 - Een netwerk share in uw Windows-implementatie voor virtueel bureau blad waar het MSIX-pakket wordt opgeslagen
 
-## <a name="get-the-os-image"></a>De installatie kopie van het besturings systeem ophalen
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>De installatie kopie van het besturings systeem downloaden van het technologie-acceptatie programma (tik)-Portal
 
-Eerst moet u de installatie kopie van het besturings systeem ophalen die u voor de MSIX-app gaat gebruiken. De installatie kopie van het besturings systeem ophalen:
+De installatie kopie van het besturings systeem ophalen van de Windows Insider-portal:
 
 1. Open de [Windows Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) en meld u aan.
 
@@ -49,6 +50,21 @@ Eerst moet u de installatie kopie van het besturings systeem ophalen die u voor 
      >Op het moment is Engels de enige taal die met de functie is getest. U kunt andere talen selecteren, maar deze kunnen niet worden weer gegeven zoals bedoeld.
     
 4. Wanneer de download koppeling is gegenereerd, selecteert u de **64-bits downloaden** en slaat u deze op de lokale harde schijf op.
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>De installatie kopie van het besturings systeem ophalen uit de Azure Portal
+
+De installatie kopie van het besturings systeem ophalen van de Azure Portal:
+
+1. Open de [Azure Portal](https://portal.azure.com) en meld u aan.
+
+2. Ga naar **een virtuele machine maken**.
+
+3. Op het tabblad **basis** selecteert u **Windows 10 Enter prise multi-session, versie 2004**.
+      
+4. Volg de overige instructies om het maken van de virtuele machine te volt ooien.
+
+     >[!NOTE]
+     >U kunt deze VM gebruiken om een MSIX-app-koppeling rechtstreeks te testen. Voor meer informatie gaat u verder met [het genereren van een VHD-of VHDX-pakket voor MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lees deze sectie anders door.
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>De VHD-installatie kopie voorbereiden voor Azure 
 
@@ -77,7 +93,7 @@ sc config wuauserv start=disabled
 Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de heuvel-VHD-opdracht voor fase ring en ontkoppeling-VHD gebruikt voor het destage. 
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >Bij deze wijziging moet u de virtuele machine opnieuw opstarten.

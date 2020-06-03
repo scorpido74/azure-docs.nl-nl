@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/29/2020
-ms.openlocfilehash: e08dca8fee93aa80b585f0df30a1534b6705821c
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c2a3b40f5ac79d11e0a80ba31c3bbc10f4e82276
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221357"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299584"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar SQL Server met behulp van Azure Data Factory
 
@@ -521,7 +521,7 @@ Wanneer u gegevens van en naar SQL Server kopieert, worden de volgende toewijzin
 | xml |Xml |
 
 >[!NOTE]
-> Voor gegevens typen die worden toegewezen aan het type van de tijdelijke decimalen, Azure Data Factory op dit moment de precisie Maxi maal 28 ondersteunen. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks in een SQL-query.
+> Voor gegevens typen die worden toegewezen aan het type van de decimale waarde, wordt op dat moment de functie voor het kopiëren van de precisie ondersteund tot 28. Als u gegevens hebt die een grotere nauw keurigheid dan 28 vereisen, kunt u overwegen om te converteren naar een teken reeks in een SQL-query.
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 

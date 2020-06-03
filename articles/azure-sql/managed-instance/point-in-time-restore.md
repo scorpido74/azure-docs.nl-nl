@@ -12,17 +12,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 238d9ec814b19499e73533d067202641193aa574
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046899"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310169"
 ---
-# <a name="restore-an-azure-sql-managed-instance-database-to-a-previous-point-in-time"></a>Een Azure SQL Managed instance-data base herstellen naar een eerder tijdstip
+# <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Een data base in een Azure SQL Managed instance herstellen naar een eerder tijdstip
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Gebruik PITR (Point-in-time Restore) om een Data Base van enige tijd in het verleden te maken als een kopie van een andere data base. In dit artikel wordt beschreven hoe u een herstel bewerking op een bepaald tijdstip van een data base in een door Azure SQL beheerd exemplaar.
+Gebruik PITR (Point-in-time Restore) om een Data Base van enige tijd in het verleden te maken als een kopie van een andere data base. In dit artikel wordt beschreven hoe u een herstel bewerking naar een bepaald tijdstip van een data base in Azure SQL Managed instance.
 
 Herstel naar een bepaald tijdstip is handig in herstel scenario's, zoals incidenten die worden veroorzaakt door fouten, onjuist geladen gegevens of het verwijderen van cruciale gegevens. U kunt het ook alleen voor testen of controleren gebruiken. Back-upbestanden worden 7 tot 35 dagen bewaard, afhankelijk van de instellingen van uw data base.
 
@@ -34,19 +34,19 @@ Herstel naar een bepaald tijdstip kan een Data Base herstellen:
 
 ## <a name="limitations"></a>Beperkingen
 
-Herstel naar een SQL Managed instance op een bepaald moment heeft de volgende beperkingen:
+Herstel naar een bepaald tijd punt naar een SQL Managed instance heeft de volgende beperkingen:
 
-- Wanneer u van de ene SQL Managed instance naar een andere probeert te herstellen, moeten beide exemplaren zich in hetzelfde abonnement en dezelfde regio bevinden. Herstel van meerdere regio's en meerdere abonnementen wordt momenteel niet ondersteund.
-- Herstel naar een bepaald tijdstip van een volledig SQL-beheerd exemplaar is niet mogelijk. In dit artikel wordt alleen uitgelegd wat er mogelijk is: herstel naar een bepaald tijdstip van een Data Base die wordt gehost op een door SQL beheerd exemplaar.
+- Wanneer u van het ene exemplaar van het SQL-beheerde exemplaar naar het andere probeert te herstellen, moeten beide exemplaren zich in hetzelfde abonnement en dezelfde regio bevinden. Herstel van meerdere regio's en meerdere abonnementen wordt momenteel niet ondersteund.
+- Herstel naar een bepaald tijdstip van een volledig SQL-beheerd exemplaar is niet mogelijk. In dit artikel wordt alleen uitgelegd wat er mogelijk is: herstel naar een bepaald tijdstip van een Data Base die wordt gehost op een SQL Managed instance.
 
 > [!WARNING]
 > Houd rekening met de opslag grootte van uw SQL Managed instance. Afhankelijk van de grootte van de gegevens die moeten worden hersteld, kunt u mogelijk geen exemplaar van de opslag uitvoeren. Als er onvoldoende ruimte is voor de herstelde gegevens, gebruikt u een andere methode.
 
-In de volgende tabel worden scenario's voor herstel naar een bepaald tijdstip voor SQL Managed instances weer gegeven:
+In de volgende tabel worden scenario's voor herstel naar een bepaald tijdstip voor een SQL-beheerd exemplaar weer gegeven:
 
-|           |Een bestaande Data Base naar hetzelfde beheerde exemplaar van SQL herstellen| Bestaande data base herstellen naar een ander SQL-beheerd exemplaar|Verwijderde data base herstellen naar hetzelfde beheerde exemplaar van SQL|Verwijderde data base herstellen naar een ander SQL-beheerd exemplaar|
+|           |Bestaande data base herstellen naar hetzelfde exemplaar van SQL Managed instance| Bestaande data base herstellen naar een ander SQL-beheerd exemplaar|Verwijderde data base herstellen naar hetzelfde beheerde exemplaar van SQL|Verwijderde data base herstellen naar een ander SQL-beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Ja|Nee |Ja|Nee|
+|**Azure Portal**| Yes|No |Yes|No|
 |**Azure-CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
@@ -245,7 +245,7 @@ Maak rechtstreeks verbinding met het SQL Managed instance en start SQL Server Ma
 ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
-Gebruik een van de volgende methoden om verbinding te maken met uw data base in het SQL Managed instance:
+Gebruik een van de volgende methoden om verbinding te maken met uw data base in SQL Managed instance:
 
 - [Virtuele Azure-machine](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Punt-naar-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
