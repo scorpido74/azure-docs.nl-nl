@@ -1,17 +1,16 @@
 ---
-title: 'Quick Start: een back-up maken van een VM met de Azure Portal'
-description: In deze Quick Start leert u hoe u een Recovery Services kluis kunt maken, beveiliging kunt inschakelen op een virtuele Azure-machine en een back-up maakt van de virtuele machine met de Azure Portal.
-ms.reviewer: saurse
+title: Quickstart - Een back-up van een VM maken met Azure Portal
+description: In deze quickstart leert u hoe u een Recovery Services-kluis kunt maken, beveiliging kunt inschakelen op een virtuele Azure-machine en een back-up maakt van de virtuele machine met Azure Portal.
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 02/06/2020
+ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240448"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656925"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Een back-up van een virtuele machine maken in Azure
 
@@ -60,7 +59,7 @@ U kunt een back-up direct starten in plaats van te wachten totdat de back-up vol
 
 ## <a name="monitor-the-backup-job"></a>Uitvoering van back-uptaak volgen
 
-In het venster **Back-up** voor de VM ziet u de status van de back-up en het aantal voltooide herstelpunten. Zodra de back-up van de VM is voltooid, wordt aan de rechterkant van het venster ** Overzicht** informatie weergegeven zoals **Tijd van de laatste back-up**, **Laatste herstelpunt** en **Oudste herstelpunt**.
+In het venster **Back-up** voor de VM ziet u de status van de back-up en het aantal voltooide herstelpunten. Zodra de back-up van de VM is voltooid, wordt aan de rechterkant van het venster  **Overzicht** informatie weergegeven zoals **Tijd van de laatste back-up**, **Laatste herstelpunt** en **Oudste herstelpunt**.
 
 ## <a name="clean-up-deployment"></a>Opschonen van implementatie
 
@@ -70,13 +69,13 @@ Als u nog een zelfstudie wilt volgen waarin wordt uitgelegd hoe u gegevens terug
 
 1. Selecteer de optie **Back-up** voor uw VM.
 
-2. Selecteer **...Meer** om extra opties weer te geven en kies vervolgens **Back-up stoppen**.
+2. Kies **Back-up stoppen**.
 
     ![Back-up van VM stoppen vanuit Azure Portal](./media/quick-backup-vm-portal/stop-backup.png)
 
 3. Selecteer **Back-upgegevens verwijderen** in de vervolgkeuzelijst.
 
-4. Voer in het dialoogvenster **Typ de naam van het back-upitem** de naam van de VM in, zoals *myVM*. Selecteer **back-up stoppen**.
+4. Voer in het dialoogvenster **Typ de naam van het back-upitem** de naam van de VM in, zoals *myVM*. Selecteer **Back-up stoppen**.
 
     Zodra de back-up van de VM is gestopt en de herstelpunten zijn verwijderd, kunt u de resourcegroep verwijderen. Als u een bestaande VM hebt gebruikt, kunt u de resourcegroep en de VM houden.
 
@@ -91,4 +90,4 @@ Als u nog een zelfstudie wilt volgen waarin wordt uitgelegd hoe u gegevens terug
 In deze quickstart hebt u een Recovery Services-kluis gemaakt, de beveiliging op een VM ingeschakeld en het eerste herstelpunt gemaakt. Volg de andere zelfstudies als u nog meer wilt weten over Azure Backup en Recovery Services.
 
 > [!div class="nextstepaction"]
-> [Back-up maken van meerdere Azure-VM’s](./tutorial-backup-vm-at-scale.md)
+> [Back-up maken van meerdere virtuele Azure-machines](./tutorial-backup-vm-at-scale.md)
