@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161721"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308623"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Woorden lijst voor ontwikkel aars van micro soft Identity platform
 
@@ -115,7 +115,7 @@ Een [OpenID Connect Connect-][OpenIDConnect-ID-Token] [beveiligings token](#secu
 
 Zie de naslag informatie over [micro soft Identity platform-tokens][AAD-Tokens-Claims] voor meer details.
 
-## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
+## <a name="microsoft-identity-platform"></a>Microsoft-identiteitsplatform
 
 Het Microsoft Identity Platform bouwt voort op de identiteitsservice en het ontwikkelaarsplatform van Azure Active Directory (Azure AD). Met het Microsoft Identity Platform kunnen ontwikkelaars toepassingen maken waarbij gebruikers zich met alle Microsoft-identiteiten kunnen aanmelden en waarmee tokens worden opgehaald voor het aanroepen van Microsoft Graph, andere Microsoft-API's of API's die door ontwikkelaars zijn gemaakt. Het is een volledig uitgeruste platform dat bestaat uit een verificatie service, Bibliotheken, toepassings registratie en-configuratie, volledige documentatie voor ontwikkel aars, code voorbeelden en andere inhoud voor ontwikkel aars. Het Microsoft Identity Platform biedt ondersteuning voor standaardprotocollen als OAuth 2.0 en OpenID Connect. Zie [over micro soft Identity platform](about-microsoft-identity-platform.md) voor meer informatie.
 
@@ -129,7 +129,7 @@ Zie [een Azure AD-gebruiker aanmelden met behulp van het patroon voor multi tena
 
 Een type [client toepassing](#client-application) dat systeem eigen wordt geïnstalleerd op een apparaat. Omdat alle code op een apparaat wordt uitgevoerd, wordt dit beschouwd als een ' open bare ' client, omdat het niet mogelijk is om referenties persoonlijk of vertrouwelijk op te slaan. Zie [OAuth2-client typen en-profielen][OAuth2-Client-Types] voor meer informatie.
 
-## <a name="permissions"></a>bevoegdheden
+## <a name="permissions"></a>permissions
 
 Een [client toepassing](#client-application) krijgt toegang tot een [bron server](#resource-server) door het declareren van machtigings aanvragen. Er zijn twee typen beschikbaar:
 
@@ -202,7 +202,7 @@ Een exemplaar van een Azure AD-Directory wordt een Azure AD-Tenant genoemd. Het 
 * verificatie van gebruikers accounts en geregistreerde toepassingen
 * REST-eind punten die vereist zijn voor de ondersteuning van verschillende protocollen, waaronder OAuth2 en SAML, met inbegrip van het [autorisatie-eind](#authorization-endpoint)punt, [token eindpunt](#token-endpoint) en het ' algemene ' eind punt dat wordt gebruikt door [multi tenant-toepassingen](#multi-tenant-application).
 
-Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Office 365-abonnementen, waardoor identiteits & de toegangs beheer functies voor het abonnement. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant.
+Azure AD-tenants worden tijdens de registratie gemaakt/gekoppeld aan Azure-en Office 365-abonnementen, waardoor identiteits & de toegangs beheer functies voor het abonnement. Beheerders van Azure-abonnementen kunnen ook extra Azure AD-tenants maken via de Azure Portal. Zie [een Azure Active Directory-Tenant verkrijgen][AAD-How-To-Tenant] voor meer informatie over de verschillende manieren waarop u toegang kunt krijgen tot een Tenant. Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory-Tenant][AAD-How-Subscriptions-Assoc] voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant, en voor instructies over het koppelen of toevoegen van een abonnement aan een Azure AD-Tenant.
 
 ## <a name="token-endpoint"></a>token eindpunt
 

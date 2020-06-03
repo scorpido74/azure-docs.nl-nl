@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248342"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299779"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -52,6 +52,14 @@ Ja. Site Recovery ondersteunt herstel na nood gevallen van Vm's waarvoor Azure D
 - Site Recovery ondersteunt Azure Disk Encryption versie 0,1, die een schema heeft waarvoor Azure Active Directory (Azure AD) is vereist. Site Recovery biedt ook ondersteuning voor versie 1,1, waarvoor Azure AD niet is vereist. Meer [informatie over het extensie schema voor Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
   - Voor Azure Disk Encryption versie 1,1 moet u de virtuele Windows-machines met beheerde schijven gebruiken.
   - [Meer informatie](azure-to-azure-how-to-enable-replication-ade-vms.md) over het inschakelen van replicatie voor versleutelde vm's.
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Kan ik een Automation-account selecteren uit een andere resource groep?
+
+Dit wordt momenteel niet ondersteund via de portal, maar u kunt een Automation-account kiezen vanuit een andere resource groep via Power shell.
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>Als u een Automation-account hebt opgegeven dat zich in een andere resource groep bevindt dan de kluis, mag ik het runbook verwijderen als er geen andere kluis is om op te geven?
+
+Het aangepaste runbook dat wordt gemaakt, is een hulp programma dat veilig kan worden verwijderd als deze niet meer nodig is.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Kan ik virtuele machines repliceren naar een ander abonnement?
 

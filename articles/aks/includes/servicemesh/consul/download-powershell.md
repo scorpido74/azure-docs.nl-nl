@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594243"
 ---
-Gebruik `Invoke-WebRequest` in een Power shell-shell in Windows om de consul helm-grafiek release te downloaden en vervolgens `Expand-Archive` als volgt op te halen:
+Gebruik in een Power shell-shell in Windows `Invoke-WebRequest` om de consul helm-grafiek release te downloaden en vervolgens als volgt op te halen `Expand-Archive` :
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

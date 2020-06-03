@@ -2,29 +2,30 @@
 title: bestand opnemen
 description: bestand opnemen
 services: event-hubs
-author: sethmanheim
+author: spelluru
 ms.service: event-hubs
 ms.topic: include
 ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 2aca4f2c236112b80e9fc985cf80ccad6d82bde3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 333f2317fcc834a10b7336bbda9a43ba16a7ad38
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75901595"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317798"
 ---
 De volgende tabellen bevatten quota's en limieten die specifiek zijn voor [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/). Zie [Event hubs prijzen](https://azure.microsoft.com/pricing/details/event-hubs/)voor meer informatie over Event hubs prijzen.
 
-De volgende limieten zijn gebruikelijk voor de lagen basis, standaard en toegewezen. 
+De volgende limieten zijn gebruikelijk voor de lagen basis en standaard. 
 
 | Limiet | Bereik | Opmerkingen | Waarde |
 | --- | --- | --- | --- |
 | Aantal Event Hubs-naam ruimten per abonnement |Abonnement |- |100 |
 | Aantal Event hubs per naam ruimte |Naamruimte |Volgende aanvragen voor het maken van een nieuwe Event Hub worden geweigerd. |10 |
 | Aantal partities per Event Hub |Entiteit |- |32 |
-| Maximale grootte van een Event Hub naam |Entiteit |- |50 tekens |
+| Maximale grootte van een Event Hub naam |Entiteit |- | 256 tekens |
+| Maximum grootte van de naam van een Consumer groep |Entiteit |- | 256 tekens |
 | Aantal niet-epoche receivers per consumenten groep |Entiteit |- |5 |
 | Maximale doorvoer eenheden |Naamruimte |Door de limiet voor de doorvoer eenheid te overschrijden, worden uw gegevens beperkt en wordt er een [Server uitzondering](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception)gegenereerd. Als u een groter aantal doorvoer eenheden wilt aanvragen voor een Standard-laag, moet u een [ondersteunings aanvraag](/azure/azure-portal/supportability/how-to-create-azure-support-request)indienen. [Extra doorvoer eenheden](../articles/event-hubs/event-hubs-auto-inflate.md) zijn beschikbaar in blokken van 20 op basis van een vastgelegde aankoop. |20 |
 | Aantal autorisatie regels per naam ruimte |Naamruimte|Volgende aanvragen voor het maken van een autorisatie regel worden geweigerd.|12 |
@@ -45,7 +46,7 @@ De volgende limieten zijn gebruikelijk voor de lagen basis, standaard en toegewe
 ### <a name="event-hubs-dedicated---quotas-and-limits"></a>Event Hubs Dedicated quota's en limieten
 De Event Hubs Dedicated aanbieding wordt gefactureerd tegen een vaste maandelijkse prijs, met een minimum van 4 uur gebruik. De toegewezen laag biedt alle functies van het Standard-abonnement, maar met de schaal capaciteit van bedrijven en limieten voor klanten met veeleisende workloads. 
 
-| Onderdeel | Limieten |
+| Functie | Limieten |
 | --- | ---|
 | Bandbreedte |  20 CUs |
 | Naamruimten | 50 per CU |

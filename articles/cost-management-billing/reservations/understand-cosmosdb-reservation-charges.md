@@ -7,12 +7,12 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 81818cc5ba2af1f9f0f70f7aa27fe62ed2c90c77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bfa84a993fafe9240ba765de8d87ea4afb69cbd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065673"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015944"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Reserveringskorting toepassen op Azure Cosmos DB
 
@@ -117,7 +117,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 * [Wat zijn reserveringen voor Azure](save-compute-costs-reservations.md)  
 * [Vooruitbetalen voor Azure Cosmos DB-resources met gereserveerde capaciteit van Azure Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)  
-* [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)  
+* [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)  
 * [Reserveringen voor Azure beheren](manage-reserved-vm-instance.md)  
 * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)  
 * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)

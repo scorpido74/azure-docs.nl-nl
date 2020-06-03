@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4ed0b011e7b82ce95c002d2af68e577f1d10c84
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266199"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310747"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -1943,4 +1943,4 @@ Werkplek apparaat toevoegen | Afgeschaft | [Documentatie over afgeschafte functi
 
 * Zie [toegang beheren met Azure roles (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over het toewijzen van een gebruiker als beheerder van een Azure-abonnement.
 * Zie [inzicht in de verschillende rollen](../../role-based-access-control/rbac-and-directory-admin-roles.md) voor meer informatie over het beheren van toegang tot resources in Microsoft Azure.
-* Zie [Hoe Azure-abonnementen worden gekoppeld aan Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over hoe Azure Active Directory aan uw Azure-abonnement wordt gekoppeld
+* Zie [een Azure-abonnement koppelen aan of toevoegen aan uw Azure Active Directory Tenant](../fundamentals/active-directory-how-subscriptions-associated-directory.md) voor meer informatie over de relatie tussen abonnementen en een Azure AD-Tenant, of voor instructies om een abonnement te koppelen of toe te voegen.

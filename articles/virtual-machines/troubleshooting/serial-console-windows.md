@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410121"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309778"
 ---
 # <a name="azure-serial-console-for-windows"></a>Azure Serial console voor Windows
 
@@ -60,7 +60,7 @@ U kunt ook de seriële console voor Windows Vm's/virtuele-machine schaal sets di
 
 1. Verbinding maken met uw virtuele Windows-machine met behulp van Extern bureaublad
 1. Voer de volgende opdrachten uit vanaf een opdracht prompt:
-    - `bcdedit /ems {current} on`, of `bcdedit /ems '{current}' on` als u Power shell gebruikt
+    - `bcdedit /ems {current} on`, of `bcdedit /ems '{current}' on` Als u Power shell gebruikt
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Start het systeem opnieuw op om de SAC-console in te scha kelen.
 
@@ -104,13 +104,13 @@ Als u het Windows-opstart laad programma moet inschakelen om weer te geven in de
 
 1.    Voer `cmd` in om een kanaal te maken dat een cmd-exemplaar heeft.
 
-1.    Voer `ch -si 1` sneltoetsen in `<esc>+<tab>` of druk op ENTER om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
+1.    Voer `ch -si 1` sneltoetsen in of druk op ENTER `<esc>+<tab>` om over te scha kelen naar het kanaal waarop het cmd-exemplaar wordt uitgevoerd.
 
 1.    Druk op **Enter**en voer aanmeldings referenties in met beheerders machtigingen.
 
 1.    Nadat u geldige referenties hebt ingevoerd, wordt het CMD-exemplaar geopend.
 
-1.    Als u een Power shell-exemplaar `PowerShell` wilt starten, voert u in het cmd-exemplaar in en drukt u vervolgens op **Enter**.
+1.    Als u een Power shell-exemplaar wilt starten, voert u `PowerShell` in het cmd-exemplaar in en drukt u vervolgens op **Enter**.
 
     ![Power shell-exemplaar openen](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -124,7 +124,7 @@ De seriële console kan worden gebruikt om een NMI te verzenden naar een virtuel
 Voor informatie over het configureren van Windows voor het maken van een crash dump bestand bij het ontvangen van een NMI, Zie [How to generate an crash dump file (een bestand met NMI genereren](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)).
 
 ### <a name="use-function-keys-in-serial-console"></a>Functie toetsen gebruiken in seriële console
-Functie sleutels zijn ingeschakeld voor gebruik van seriële console in Windows-Vm's. Met de F8 in de vervolg keuzelijst van de seriële console kunt u eenvoudig het menu Geavanceerde opstart instellingen openen, maar de seriële console is compatibel met alle andere functie sleutels. Mogelijk moet u op **FN** + **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
+Functie sleutels zijn ingeschakeld voor gebruik van seriële console in Windows-Vm's. Met de F8 in de vervolg keuzelijst van de seriële console kunt u eenvoudig het menu Geavanceerde opstart instellingen openen, maar de seriële console is compatibel met alle andere functie sleutels. Mogelijk moet u op **FN**  +  **F1** drukken (of F2, F3, etc.) op het toetsen bord, afhankelijk van de computer waarvan u de seriële console gebruikt.
 
 ### <a name="use-wsl-in-serial-console"></a>WSL gebruiken in de seriële console
 Het Windows-subsysteem voor Linux (WSL) is ingeschakeld voor Windows Server 2019 of hoger, dus het is ook mogelijk om WSL in te scha kelen voor gebruik in de seriële console als u Windows Server 2019 of hoger uitvoert. Dit kan handig zijn voor gebruikers die ook vertrouwd zijn met Linux-opdrachten. Raadpleeg de [installatie handleiding](https://docs.microsoft.com/windows/wsl/install-on-server)voor instructies voor het inschakelen van WSL voor Windows Server.
@@ -160,10 +160,10 @@ Als een gebruiker is verbonden met de seriële console en een andere gebruiker d
 > Dit betekent dat een gebruiker die de verbinding is verbroken niet afmeldt. De mogelijkheid om een afmelding af te dwingen bij het verbreken van de verbinding (met behulp van SIGHUP of soortgelijk mechanisme) bevindt zich nog in het schema Voor Windows is er een automatische time-out in SAC ingeschakeld. voor Linux kunt u de time-outinstelling van de terminal configureren.
 
 ## <a name="accessibility"></a>Toegankelijkheid
-Toegankelijkheid is een belang rijke focus voor de Azure Serial console. In dat geval hebben we ervoor gezorgd dat de seriële console toegankelijk is voor het visuele en slechthorenden, evenals mensen die mogelijk geen muis gebruiken.
+Toegankelijkheid is een belang rijke focus voor de Azure Serial console. Daarom hebben we ervoor gezorgd dat de seriële console toegankelijk is voor mensen met een slechtere bijzondere waardevermindering of voor wie er sprake is van een moeilijk te gebruiken persoon.
 
 ### <a name="keyboard-navigation"></a>Toetsenbordnavigatie
-Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt op het scherm gemarkeerd. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **CTRL**+**F6** op het toetsen bord.
+Gebruik de **Tab** -toets op het toetsen bord om te navigeren in de interface van de seriële console van de Azure Portal. Uw locatie wordt op het scherm gemarkeerd. Als u de focus van het venster van de seriële console wilt verlaten, drukt u op **CTRL** + **F6** op het toetsen bord.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>De seriële console gebruiken met een scherm lezer
 De seriële console heeft ingebouwde ondersteuning voor scherm lezers. Door te navigeren met een ingeschakelde scherm lezer, kan de ALT-tekst voor de momenteel geselecteerde knop hardop worden gelezen door de scherm lezer.
@@ -186,8 +186,8 @@ Probleem                             |   Oplossing
 Wanneer u op **Enter** drukt na de verbindings banner, wordt er geen aanmeldings prompt weer gegeven. | Voor meer informatie, zie op ' door [voeren Enter ' niets](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Deze fout kan optreden als u een aangepaste VM, een vrijgemaakt apparaat of een opstart configuratie uitvoert die ervoor zorgt dat Windows niet op de juiste wijze verbinding maakt met de seriële poort. Deze fout treedt ook op als u een Windows 10-VM uitvoert, omdat alleen virtuele machines met Windows Server zijn geconfigureerd om EMS te kunnen inschakelen.
 Er wordt alleen status informatie weer gegeven wanneer u verbinding maakt met een Windows-VM| Deze fout treedt op als de speciale beheer console niet is ingeschakeld voor uw Windows-installatie kopie. Zie [de seriële console inschakelen in aangepaste of oudere installatie kopieën](#enable-the-serial-console-in-custom-or-older-images) voor instructies over het hand matig inschakelen van SAC op uw Windows-VM. Zie [Windows Health Signals](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)(Engelstalig) voor meer informatie.
 SAC behaalt niet het volledige seriële console gebied in de browser | Dit is een bekend probleem met Windows en de terminal emulator. We volgen dit probleem met beide teams, maar nu is er geen oplossing.
-Kan niet op SAC-prompt typen als fout opsporing voor kernel is ingeschakeld. | RDP naar VM en wordt `bcdedit /debug {current} off` uitgevoerd vanaf een opdracht prompt met verhoogde bevoegdheid. Als u geen RDP hebt, kunt u in plaats daarvan de besturingssysteem schijf aan een andere Azure-VM koppelen en deze wijzigen terwijl deze wordt `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`gekoppeld als een gegevens schijf door uit te voeren. vervolgens wordt de schijf opnieuw gewisseld.
-Plakken in Power shell in SAC resulteert in een derde teken als de oorspronkelijke inhoud een herhalend teken bevat. | Voer `Remove-Module PSReadLine` voor een tijdelijke oplossing uit om de PSReadLine-module uit de huidige sessie te verwijderen. Met deze actie wordt de module niet verwijderd of verwijderd.
+Kan niet op SAC-prompt typen als fout opsporing voor kernel is ingeschakeld. | RDP naar VM en wordt uitgevoerd `bcdedit /debug {current} off` vanaf een opdracht prompt met verhoogde bevoegdheid. Als u geen RDP hebt, kunt u in plaats daarvan de besturingssysteem schijf aan een andere Azure-VM koppelen en deze wijzigen terwijl deze wordt gekoppeld als een gegevens schijf door uit `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` te voeren. vervolgens wordt de schijf opnieuw gewisseld.
+Plakken in Power shell in SAC resulteert in een derde teken als de oorspronkelijke inhoud een herhalend teken bevat. | Voer voor een tijdelijke oplossing `Remove-Module PSReadLine` uit om de PSReadLine-module uit de huidige sessie te verwijderen. Met deze actie wordt de module niet verwijderd of verwijderd.
 Sommige toetsenbord ingangen produceren een vreemde SAC-uitvoer (bijvoorbeeld **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) -escape reeksen worden niet ondersteund door de SAC-prompt.
 Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de lengte van teken reeksen die in de terminal worden geplakt tot 2048 tekens om te voor komen dat de band breedte van de seriële poort wordt overbelast.
 
@@ -195,11 +195,11 @@ Het plakken van lange teken reeksen werkt niet. | De seriële console beperkt de
 
 **V. Hoe kan ik feedback verzenden?**
 
-A. Geef feedback door het maken van een GitHub https://aka.ms/serialconsolefeedback-probleem op. Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie https://feedback.azure.comvan.
+A. Geef feedback door het maken van een GitHub-probleem op https://aka.ms/serialconsolefeedback . Als alternatief (minder voor keur) kunt u feedback verzenden via azserialhelp@microsoft.com of in de virtuele-machine categorie van https://feedback.azure.com .
 
 **V. ondersteunt de seriële console kopiëren/plakken?**
 
-A. Ja. Gebruik **CTRL**+**SHIFT**+**C** en **CTRL**+**Shift**SHIFT+**V** om de Terminal te kopiëren en plakken.
+A. Ja. Gebruik **CTRL** + **SHIFT** + **C** en **CTRL** + **SHIFT** + **V** om de Terminal te kopiëren en plakken.
 
 **V. wie kan de seriële console voor mijn abonnement in-of uitschakelen?**
 
