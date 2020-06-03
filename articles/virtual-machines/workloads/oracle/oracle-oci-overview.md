@@ -11,15 +11,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660561"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299873"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle-toepassings oplossingen die Microsoft Azure en Oracle-Cloud infrastructuur integreren
 
@@ -35,10 +35,7 @@ Als u geïnteresseerd bent in het volledig implementeren van Oracle-oplossingen 
 
 Connectiviteit tussen de Cloud biedt een oplossing voor het uitvoeren van toonaangevende toepassingen van Oracle en uw eigen aangepaste toepassingen, op virtuele machines van Azure, terwijl u profiteert van de voor delen van gehoste database services in OCI. 
 
-> [!IMPORTANT]
-> Oracle zal deze toepassingen certificeren om uit te voeren in azure wanneer de Azure/Oracle-Cloud Interconnect-oplossing wordt gebruikt door mei 2020.
-
-Toepassingen die u kunt uitvoeren in een configuratie met meerdere clouds zijn:
+Vanaf mei 2020 worden de volgende toepassingen gecertificeerd in een configuratie voor meerdere Clouds:
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
