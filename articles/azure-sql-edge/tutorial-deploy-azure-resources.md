@@ -2,19 +2,19 @@
 title: Resources instellen voor het implementeren van een ML-model in Azure SQL Edge
 description: In deel één van deze driedelige Azure SQL Edge-zelfstudie voor het voorspellen van verontreinigingen in ijzererts installeert u de vereiste software en stelt u de benodigde Azure-resources in voor het implementeren van een machine learning-model in Azure SQL Edge.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: c74e402fa1faa883b1e456f11a8d9d7b1e750d27
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 30c024aafc1cf8f479de77107b7f0aaaa262d47c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772825"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235084"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>Software installeren en resources instellen voor de zelfstudie
 

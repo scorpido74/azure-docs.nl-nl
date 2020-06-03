@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678257"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295402"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: aangepaste kenmerken in een aangepast profiel beleid inschakelen
 
@@ -47,9 +47,9 @@ De *extensie-eigenschap*, het *aangepaste kenmerk*en de *aangepaste claim* verwi
 ## <a name="get-the-application-properties"></a>De toepassings eigenschappen ophalen
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens **alle toepassingen**.
+1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
+1. Selecteer **app-registraties**en selecteer vervolgens **alle toepassingen**.
 1. Selecteer de `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` toepassing.
 1. Kopieer de volgende id's naar het klem bord en sla ze op:
     * **Toepassings-id**. Bijvoorbeeld: `11111111-1111-1111-1111-111111111111`.
@@ -59,9 +59,9 @@ De *extensie-eigenschap*, het *aangepaste kenmerk*en de *aangepaste claim* verwi
 
 Als u aangepaste kenmerken in uw beleid wilt inschakelen, geeft u de **toepassings-id** en toepassings **object-id** op in de Aad-algemene technische profiel meta gegevens. Het *Aad-algemene* technische profiel is te vinden in het basis [Azure Active Directory](active-directory-technical-profile.md) technische profiel en biedt ondersteuning voor Azure AD-gebruikers beheer. Andere technische profielen van Azure AD bevatten de AAD-common om de configuratie ervan te benutten. Het AAD-algemene technische profiel in het extensie bestand overschrijven.
 
-1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em> `SocialAndLocalAccounts/` </em>.
+1. Open het bestand extensies van uw beleid. Bijvoorbeeld <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Zoek het element ClaimsProviders. Voeg een nieuwe ClaimsProvider toe aan het ClaimsProviders-element.
-1. Vervang `ApplicationObjectId` door de object-id die u eerder hebt vastgelegd. Vervang `ClientId` vervolgens door de toepassings-id die u eerder in het onderstaande fragment hebt vastgelegd.
+1. Vervang door `ApplicationObjectId` de object-id die u eerder hebt vastgelegd. Vervang vervolgens door `ClientId` de toepassings-id die u eerder in het onderstaande fragment hebt vastgelegd.
 
     ```xml
     <ClaimsProvider>
