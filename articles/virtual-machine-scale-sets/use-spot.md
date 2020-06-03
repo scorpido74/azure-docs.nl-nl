@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125040"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310560"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot-Vm's voor schaal sets voor virtuele machines 
 
@@ -47,7 +47,7 @@ Als u virtuele-machine bewerkingen wilt implementeren op schaal sets, kunt u de 
 - [Azure Portal](#portal)
 - [Azure-CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Azure Resource Manager sjablonen](#resource-manager-templates)
+- [Azure Resource Manager-sjablonen](#resource-manager-templates)
 
 ## <a name="portal"></a>Portal
 
@@ -156,11 +156,11 @@ Als u het exemplaar wilt verwijderen nadat het is verwijderd, wijzigt `evictionP
 
 | Azure-kanalen               | Beschik baarheid van Azure spot Vm's       |
 |------------------------------|-----------------------------------|
-| Enterprise Agreement         | Ja                               |
-| Betalen naar gebruik                | Ja                               |
+| Enterprise Agreement         | Yes                               |
+| Betalen naar gebruik                | Yes                               |
 | Cloud serviceprovider (CSP) | [Neem contact op met uw partner](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Voordelen                     | Niet beschikbaar                     |
-| Gesponsorde                    | Niet beschikbaar                     |
+| Gesponsorde                    | Yes                               |
 | Gratis proefversie                   | Niet beschikbaar                     |
 
 

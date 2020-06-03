@@ -3,12 +3,12 @@ title: Veelgestelde vragen over Azure Kubernetes service (AKS)
 description: Vind antwoorden op enkele veelgestelde vragen over Azure Kubernetes service (AKS).
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 767b5b80aab7d98af92f86bf66cc2ff83242ff92
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677781"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300923"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Veelgestelde vragen over AKS (Azure Kubernetes Service)
 
@@ -75,11 +75,13 @@ Houd er bij het werken met de knooppunt resource groep voor dat u niet:
 * Geef een ander abonnement op voor de knooppunt resource groep.
 * Wijzig de naam van de resource groep van het knoop punt nadat het cluster is gemaakt.
 * Geef namen voor de beheerde resources op in de resource groep van het knoop punt.
-* Labels wijzigen of verwijderen van beheerde resources binnen de resource groep van het knoop punt. (Zie de volgende sectie voor meer informatie.)
+* Door Azure gemaakte Tags van beheerde resources wijzigen of verwijderen in de resource groep van het knoop punt. (Zie de volgende sectie voor meer informatie.)
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kan ik tags en andere eigenschappen van de AKS-resources in de knooppunt resource groep wijzigen?
 
-Als u door Azure gemaakte Tags en andere bron eigenschappen in de knooppunt resource groep wijzigt of verwijdert, kunt u onverwachte resultaten krijgen, zoals het schalen en upgraden van fouten. Met AKS kunt u aangepaste tags maken en wijzigen. Het is raadzaam om aangepaste labels te maken of te wijzigen, bijvoorbeeld om een bedrijfs eenheid of kosten plaats toe te wijzen. Door de resources in de resource groep node te wijzigen in het AKS-cluster, verbreekt u de serviceniveau doelstelling (SLO). Zie voor meer informatie [AKS biedt een service overeenkomst?](#does-aks-offer-a-service-level-agreement)
+Als u door Azure gemaakte Tags en andere bron eigenschappen in de knooppunt resource groep wijzigt of verwijdert, kunt u onverwachte resultaten krijgen, zoals het schalen en upgraden van fouten. Met AKS kunt u aangepaste tags maken en wijzigen die zijn gemaakt door eind gebruikers. Het is raadzaam om aangepaste labels te maken of te wijzigen, bijvoorbeeld om een bedrijfs eenheid of kosten plaats toe te wijzen. Dit kan worden bereikt door Azure-beleids regels te maken met een bereik voor de beheerde resource groep.
+
+Het wijzigen van door **Azure gemaakte Tags** op resources onder de knooppunt resource groep in het AKS-cluster is echter een niet-ondersteunde actie, waardoor de serviceniveau doelstelling (SLO) wordt verbroken. Zie voor meer informatie [AKS biedt een service overeenkomst?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welke Kubernetes-toegangs controllers ondersteunt AKS? Kunnen Admission controllers worden toegevoegd of verwijderd?
 

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273057"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310122"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Veelvoorkomende opstart taken voor de Cloud service
 Dit artikel bevat enkele voor beelden van veelvoorkomende opstart taken die u in uw Cloud service wilt uitvoeren. U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces. 
@@ -67,7 +67,7 @@ Het error level dat door *Appcmd. exe* wordt geretourneerd, wordt weer gegeven i
 ### <a name="example-of-managing-the-error-level"></a>Voor beeld van het beheren van het fout niveau
 In dit voor beeld wordt een sectie compressie en een compressie vermelding voor JSON toegevoegd aan het bestand *Web. config* , met fout afhandeling en logboek registratie.
 
-De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer gegeven, waaronder het instellen van het kenmerk `elevated` [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) om *Appcmd. exe* voldoende machtigingen te geven voor het wijzigen van de instellingen in het bestand *Web. config* :
+De relevante secties van het bestand [ServiceDefinition. csdef] worden hier weer gegeven, waaronder het instellen van het kenmerk [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) om `elevated` *Appcmd. exe* voldoende machtigingen te geven voor het wijzigen van de instellingen in het bestand *Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -121,7 +121,7 @@ EXIT %ERRORLEVEL%
 ## <a name="add-firewall-rules"></a>Firewall regels toevoegen
 In azure zijn er effectief twee firewalls. De eerste firewall beheert verbindingen tussen de virtuele machine en de buiten wereld. Deze firewall wordt bepaald door het element [endpoints] in het bestand [ServiceDefinition. csdef] .
 
-De tweede firewall regelt de verbindingen tussen de virtuele machine en de processen in die virtuele machine. Deze firewall kan worden beheerd met behulp van het `netsh advfirewall firewall` opdracht regel programma.
+De tweede firewall regelt de verbindingen tussen de virtuele machine en de processen in die virtuele machine. Deze firewall kan worden beheerd met `netsh advfirewall firewall` behulp van het opdracht regel programma.
 
 Azure maakt firewall regels voor de processen die zijn gestart binnen uw rollen. Wanneer u bijvoorbeeld een service of programma start, worden automatisch de benodigde firewall regels gemaakt om ervoor te zorgen dat de service kan communiceren met internet. Als u echter een service maakt die is gestart door een proces buiten uw rol (zoals een COM+-service of een geplande taak van Windows), moet u hand matig een firewall regel maken om toegang tot die service toe te staan. Deze firewall regels kunnen worden gemaakt met behulp van een opstart taak.
 
@@ -138,7 +138,7 @@ Een opstart taak waarmee een firewall regel wordt gemaakt, moet een [executionCo
 </ServiceDefinition>
 ```
 
-Als u de firewall regel wilt toevoegen, moet u de `netsh advfirewall firewall` juiste opdrachten in het opstart batch bestand gebruiken. In dit voor beeld is voor de opstart taak beveiliging en versleuteling vereist voor TCP-poort 80.
+Als u de firewall regel wilt toevoegen, moet u de juiste `netsh advfirewall firewall` opdrachten in het opstart batch bestand gebruiken. In dit voor beeld is voor de opstart taak beveiliging en versleuteling vereist voor TCP-poort 80.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -300,7 +300,7 @@ U kunt de opstart taak gebruiken om verschillende stappen uit te voeren wanneer 
 
 Deze mogelijkheid om verschillende acties uit te voeren op de compute-emulator en de cloud kan worden gerealiseerd door een omgevings variabele te maken in het bestand [ServiceDefinition. csdef] . Vervolgens test u de omgevings variabele voor een waarde in de opstart taak.
 
-Als u de omgevings variabele wilt maken, voegt u het[RoleInstanceValue] -element [variabele]/toe `/RoleEnvironment/Deployment/@emulated`en maakt u een XPath-waarde van. De waarde van de omgevings variabele **% ComputeEmulatorRunning%** is `true` wanneer deze wordt uitgevoerd op de compute-emulator en `false` wanneer deze wordt uitgevoerd in de Cloud.
+Als u de omgevings variabele wilt maken [Variable], voegt u het / [RoleInstanceValue] -element variabele toe en maakt u een XPath-waarde van `/RoleEnvironment/Deployment/@emulated` . De waarde van de omgevings variabele **% ComputeEmulatorRunning%** is `true` wanneer deze wordt uitgevoerd op de compute-emulator en `false` wanneer deze wordt uitgevoerd in de Cloud.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -377,15 +377,15 @@ EXIT /B 0
 Hier volgen enkele aanbevolen procedures voor het configureren van de taak voor uw web-of worker-rol.
 
 ### <a name="always-log-startup-activities"></a>Opstart activiteiten altijd vastleggen in logboek
-Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt registreren in het StartupLog. txt-bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings `>>  "%TEMP%\\StartupLog.txt" 2>&1` variabele, voegt u de tekst toe aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld Setup. exe wilt uitvoeren in de map **% PathToApp1Install%** :
+Visual Studio biedt geen fout opsporing voor het uitvoeren van batch-bestanden, zodat u zoveel mogelijk gegevens kunt ophalen over de werking van batch-bestanden. Het registreren van de uitvoer van batch bestanden, **stdout** en **stderr**, kan u belang rijke informatie geven bij het opsporen van fouten en het herstellen van batch bestanden. Als u **stdout** en **stderr** wilt registreren in het StartupLog. txt-bestand in de map waarnaar wordt geverwijst door de **% temp%** -omgevings variabele, voegt u de tekst `>>  "%TEMP%\\StartupLog.txt" 2>&1` toe aan het einde van specifieke regels die u wilt registreren. Als u bijvoorbeeld Setup. exe wilt uitvoeren in de map **% PathToApp1Install%** :
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
 Als u uw XML wilt vereenvoudigen, kunt u een wrapper- *cmd* -bestand maken dat alle opstart taken samen met logboek registratie aanroept en zorgt ervoor dat alle onderliggende taken dezelfde omgevings variabelen delen.
 
-Het kan voor komen dat u aan het `>> "%TEMP%\StartupLog.txt" 2>&1` einde van elke opstart taak kunt gebruiken. U kunt de taak logboek registratie afdwingen door een wrapper te maken waarmee logboek registratie voor u wordt afgehandeld. Deze wrapper roept het daad werkelijke batch-bestand op dat u wilt uitvoeren. Alle uitvoer van het doel batch bestand wordt omgeleid naar het bestand *Startuplog. txt* .
+Het kan voor komen dat u aan `>> "%TEMP%\StartupLog.txt" 2>&1` het einde van elke opstart taak kunt gebruiken. U kunt de taak logboek registratie afdwingen door een wrapper te maken waarmee logboek registratie voor u wordt afgehandeld. Deze wrapper roept het daad werkelijke batch-bestand op dat u wilt uitvoeren. Alle uitvoer van het doel batch bestand wordt omgeleid naar het bestand *Startuplog. txt* .
 
-In het volgende voor beeld ziet u hoe u alle uitvoer van een batch-opstart bestand omleidt. In dit voor beeld maakt het bestand ServerDefinition. csdef een opstart taak die *logwrap. cmd*aanroept. *logwrap. cmd* roept *Startup2. cmd*aan, waarbij alle uitvoer wordt omgeleid naar **%\\Temp% StartupLog. txt**.
+In het volgende voor beeld ziet u hoe u alle uitvoer van een batch-opstart bestand omleidt. In dit voor beeld maakt het bestand ServerDefinition. csdef een opstart taak die *logwrap. cmd*aanroept. *logwrap. cmd* roept *Startup2. cmd*aan, waarbij alle uitvoer wordt omgeleid naar **% temp% \\ StartupLog. txt**.
 
 ServiceDefinition. cmd:
 
@@ -459,16 +459,16 @@ Voorbeeld uitvoer in het bestand **StartupLog. txt** :
 ```
 
 > [!TIP]
-> Het **StartupLog. txt** -bestand bevindt zich in de map *C:\Resources\temp\\{Role Identifier} \RoleTemp* .
+> Het **StartupLog. txt** -bestand bevindt zich in de map *C:\Resources\temp \\ {Role Identifier} \RoleTemp* .
 > 
 > 
 
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>ExecutionContext op de juiste wijze instellen voor opstart taken
 Stel de machtigingen op de juiste wijze in voor de opstart taak. Soms moeten opstart taken worden uitgevoerd met verhoogde bevoegdheden, zelfs als de rol wordt uitgevoerd met normale bevoegdheden.
 
-Met het[taak] kenmerk [executionContext]wordt het bevoegdheden niveau van de opstart taak ingesteld. Als `executionContext="limited"` u gebruikt, heeft de opstart taak hetzelfde bevoegdheids niveau als de rol. Gebruiken `executionContext="elevated"` houdt in dat de opstart taak beheerders bevoegdheden heeft, waarmee de opstart taak beheerders taken kan uitvoeren zonder beheerders bevoegdheden voor uw rol te geven.
+Met het[taak] kenmerk [executionContext]wordt het bevoegdheden niveau van de opstart taak ingesteld. Als u gebruikt `executionContext="limited"` , heeft de opstart taak hetzelfde bevoegdheids niveau als de rol. Gebruiken `executionContext="elevated"` houdt in dat de opstart taak beheerders bevoegdheden heeft, waarmee de opstart taak beheerders taken kan uitvoeren zonder beheerders bevoegdheden voor uw rol te geven.
 
-Een voor beeld van een opstart taak waarvoor verhoogde bevoegdheden zijn vereist, is een opstart taak die gebruikmaakt van **Appcmd. exe** om IIS te configureren. **Appcmd. exe** vereist `executionContext="elevated"`.
+Een voor beeld van een opstart taak waarvoor verhoogde bevoegdheden zijn vereist, is een opstart taak die gebruikmaakt van **Appcmd. exe** om IIS te configureren. **Appcmd. exe** vereist `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>De juiste taskType gebruiken
 Het [TaskType]-[taak] kenmerk bepaalt hoe de opstart taak wordt uitgevoerd. Er zijn drie waarden: **eenvoudig**, op de **achtergrond**en op de voor **grond**. De achtergrond-en voorgrond taken worden asynchroon gestart, waarna de eenvoudige taken synchroon worden uitgevoerd.
@@ -478,12 +478,12 @@ Met **eenvoudige** opstart taken kunt u de volg orde instellen waarin de taken w
 Het verschil tussen opstart taken op de **achtergrond** en opstart taken op de voor **grond** **is dat de** functie wordt uitgevoerd totdat de **voorgrond** taak wordt beëindigd. Dit betekent ook dat als de **voorgrond** taak vastloopt of vastloopt, de rol niet opnieuw wordt gerecycled totdat de **voorgrond** taak geforceerd is gesloten. Daarom worden **achtergrond** taken aanbevolen voor asynchrone opstart taken, tenzij u die functie van de **voorgrond** taak nodig hebt.
 
 ### <a name="end-batch-files-with-exit-b-0"></a>Batch-bestanden beëindigen met EXIT/B 0
-De rol wordt alleen gestart als de **Error level** van elk van uw eenvoudige opstart taken nul is. Niet alle Program ma's hebben de status van **Error level** (afsluit code) correct ingesteld, dus het batch `EXIT /B 0` bestand moet eindigen met een als alles goed is uitgevoerd.
+De rol wordt alleen gestart als de **Error level** van elk van uw eenvoudige opstart taken nul is. Niet alle Program ma's hebben de status van **Error level** (afsluit code) correct ingesteld, dus het batch bestand moet eindigen met een `EXIT /B 0` als alles goed is uitgevoerd.
 
 Een ontbrekend `EXIT /B 0` aan het einde van een batch bestand voor opstarten is een veelvoorkomende oorzaak van de functies die niet worden gestart.
 
 > [!NOTE]
-> Ik heb opgemerkt dat geneste batch bestanden soms vastlopen `/B` wanneer de para meter wordt gebruikt. U kunt er ook voor zorgen dat dit probleem blijft optreden als een ander batch bestand het huidige batch bestand aanroept, bijvoorbeeld als u de [logboek-wrapper](#always-log-startup-activities)gebruikt. U kunt de `/B` para meter in dit geval weglaten.
+> Ik heb opgemerkt dat geneste batch bestanden soms niet meer reageren wanneer de `/B` para meter wordt gebruikt. U kunt er ook voor zorgen dat dit probleem niet optreedt als een ander batch bestand het huidige batch bestand aanroept, bijvoorbeeld als u de [logboek-wrapper](#always-log-startup-activities)gebruikt. U kunt de `/B` para meter in dit geval weglaten.
 > 
 > 
 
@@ -512,6 +512,3 @@ Meer informatie over hoe [taken](cloud-services-startup-tasks.md) werken.
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-

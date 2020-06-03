@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262890"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309829"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proactief garanderen dat u toegang hebt tot GRUB en SYSRQ u veel tijd bespaart
 
@@ -98,7 +98,7 @@ In dit artikel gaan we verschillende Linux-distributies en document configuratie
 De SYSRQ-sleutel is standaard ingeschakeld op sommige nieuwere Linux-distributies, hoewel deze mogelijk worden geconfigureerd voor het accepteren van waarden voor bepaalde SysRq-functies.
 Op oudere distributies is het mogelijk volledig uitgeschakeld.
 
-De functie SysRq is nuttig voor het opnieuw opstarten van een vastgelopen of vastgelopen virtuele machine rechtstreeks vanuit de Azure-seriële console, ook handig om toegang te krijgen tot het menu GRUB, het kan ook zijn dat een VM vanuit een ander portal venster of SSH-sessie opnieuw wordt opgestart, waardoor de huidige console verbinding mogelijk wordt verwijderd, zodat de GRUB-time-outs worden gebruikt voor het weer geven van het menu
+De functie SysRq is nuttig voor het opnieuw opstarten van een gecrashde of niet-reagerende virtuele machine rechtstreeks vanuit de Azure-seriële console, ook handig voor het verkrijgen van toegang tot het menu GRUB, het kan ook zijn dat een virtuele machine opnieuw wordt opgestart vanuit een ander portal venster of dat de SSH-sessie uw huidige console verbinding kan verwijderen, zodat het menu GRUB wordt weer gegeven.
 De virtuele machine moet worden geconfigureerd om een waarde van 1 te accepteren voor de para meter kernel, waarmee alle functies van SYSRQ of 128 kunnen worden gestart/uitgeschakeld.
 
 
@@ -123,7 +123,7 @@ Met de Azure Portal bewerkingen-> uitvoeren opdracht > RunShellScript-functie mo
 
 `sysctl -w kernel.sysrq=1 ; echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
-Zoals hier wordt weer ![gegeven: sysrq2 inschakelen](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
+Zoals hier wordt weer gegeven: ![ sysrq2 inschakelen](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
 
 Zodra het is voltooid, kunt u proberen om toegang te krijgen tot **SYSRQ** en ziet u dat de computer mogelijk opnieuw moet worden opgestart.
 
@@ -173,7 +173,7 @@ GRUB_TIMEOUT_STYLE=countdown
 ```
 
 
-## <a name="ubuntu-1204"></a>Ubuntu 12\.04
+## <a name="ubuntu-1204"></a>Ubuntu 12 \. 04
 
 Met Ubuntu 12,04 krijgt u toegang tot de seriële console, maar biedt de mogelijkheid om niet te communiceren. Een **aanmelding:** prompt wordt niet weer gegeven
 
@@ -236,7 +236,7 @@ Als alles goed gaat, worden deze extra opties weer geven die u kunnen helpen and
 
 ## <a name="red-hat-grub-configuration"></a>Configuratie van Red Hat GRUB
 
-## <a name="red-hat-74-grub-configuration"></a>Red Hat 7\.4\+ grub-configuratie
+## <a name="red-hat-74-grub-configuration"></a>Red Hat 7 \. 4 \+ grub-configuratie
 De standaard/etc/default/grub-configuratie op deze versies is voldoende geconfigureerd
 
 ```
@@ -256,7 +256,7 @@ De SysRq-sleutel inschakelen
 sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq
 ```
 
-## <a name="red-hat-72-and-73-grub-configuration"></a>Red Hat 7\.2 en 7\.3 grub-configuratie
+## <a name="red-hat-72-and-73-grub-configuration"></a>Red Hat 7 \. 2 en 7 \. 3 grub-configuratie
 Het bestand dat moet worden gewijzigd, is/etc/default/grub: een standaard configuratie ziet er als volgt uit:
 
 ```
@@ -320,8 +320,8 @@ U kunt GRUB en SysRq ook configureren met behulp van één regel in de shell of 
 `cp /etc/default/grub /etc/default/grub.bak; sed -i 's/GRUB_TIMEOUT=1/GRUB_TIMEOUT=5/g' /etc/default/grub; sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL="serial console"/g' /etc/default/grub; echo "GRUB_SERIAL_COMMAND=\"serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1\"" >> /etc/default/grub;grub2-mkconfig -o /boot/grub2/grub.cfg;sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
 
-## <a name="red-hat-6x-grub-configuration"></a>Red Hat 6\.x grub-configuratie
-Het bestand dat moet worden gewijzigd, is/boot/grub/grub.conf. Met `timeout` deze waarde wordt bepaald hoe lang grub wordt weer gegeven.
+## <a name="red-hat-6x-grub-configuration"></a>Red Hat 6 \. x grub-configuratie
+Het bestand dat moet worden gewijzigd, is/boot/grub/grub.conf. Met deze `timeout` waarde wordt bepaald hoe lang grub wordt weer gegeven.
 
 ```
 #boot=/dev/vda

@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67746ebd8a16eb02b8f02d238b0e3c0125989189
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393157"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308265"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systeem onderwerpen in Azure Event Grid
 De Azure Event Grid-Service maakt systeem onderwerpen wanneer u een eerste gebeurtenis abonnement voor een Azure-gebeurtenis bron maakt. Event Grid maakt momenteel geen systeem onderwerpen voor de Onderwerpgegevens die zijn gemaakt vóór mrt, 15, 2020. Voor alle onderwerps bronnen die u op of na deze datum hebt gemaakt, maakt Event Grid automatisch systeem onderwerpen. In dit artikel worden **systeem onderwerpen** beschreven in azure Event grid.
@@ -25,6 +25,9 @@ Wanneer u een eerste gebeurtenis abonnement maakt voor een Azure-gebeurtenis bro
 
 Systeem onderwerp is niet van toepassing op aangepaste scenario's, dat wil zeggen, Event Grid onderwerpen en Event Grid domeinen. 
 
+## <a name="name"></a>Naam 
+Wanneer u eerder een abonnement hebt gemaakt voor een gebeurtenis die door Azure-bronnen wordt gegenereerd, maakt de Event Grid-Service automatisch een systeem onderwerp met een **wille keurig gegenereerde naam**. U kunt nu een naam opgeven voor het onderwerp System tijdens het maken van het onderwerp in de Azure Portal. U kunt deze systeem onderwerp Resource gebruiken om metrische gegevens en Diagnostische logboeken te detecteren.
+
 ## <a name="location"></a>Locatie
 Voor Azure-gebeurtenis bronnen die zich in een specifieke regio/locatie bevinden, wordt het systeem onderwerp gemaakt op dezelfde locatie als de Azure-gebeurtenis bron. Als u bijvoorbeeld een gebeurtenis abonnement maakt voor een Azure Blob-opslag in VS-Oost, wordt het onderwerp System gemaakt in VS-Oost. Voor algemene Azure-gebeurtenis bronnen, zoals Azure-abonnementen, resource groepen of Azure Maps, maakt Event Grid het onderwerp System op de **globale** locatie. 
 
@@ -35,8 +38,6 @@ Wanneer u de resource groep probeert te verwijderen met het opslag account, word
 
 ![Resourcegroep verwijderen](./media/system-topics/delete-resource-group.png)
 
-## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen: 
 
-- [Aangepaste onderwerpen](custom-topics.md)
-- [Domeinen](event-domains.md)
+## <a name="next-steps"></a>Volgende stappen
+Raadpleeg het volgende artikel: [systeem onderwerpen maken, weer geven en beheren](create-view-manage-system-topics.md).

@@ -1,18 +1,18 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789030"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317646"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -48,7 +48,7 @@ Afbeeldings definities zijn een logische groepering voor versies van een install
 
 Er zijn drie para meters voor elke definitie van de installatie kopie die worden gebruikt in combi natie: **Publisher**, **aanbieding** en **SKU**. Deze worden gebruikt om een specifieke definitie van een installatie kopie te vinden. U kunt installatie kopie versies die een of twee delen, maar niet alle drie waarden bevatten.  Dit zijn bijvoorbeeld drie afbeeldings definities en hun waarden:
 
-|Definitie van installatiekopie|Uitgever|Aanbieding|Sku|
+|Definitie van installatiekopie|Publisher|Aanbieding|Sku|
 |---|---|---|---|
 |myImage1|Contoso|Finance|Back-end|
 |myImage2|Contoso|Finance|Front-end|
@@ -71,14 +71,14 @@ Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definiti
 
 ## <a name="generalized-and-specialized-images"></a>Gegeneraliseerde en gespecialiseerde installatie kopieën
 
-Er zijn twee statussen van het besturings systeem die worden ondersteund door de galerie met gedeelde afbeeldingen. Normaal gesp roken moeten installatie kopieën ervoor zorgen dat de virtuele machine die wordt gebruikt om de installatie kopie te maken, wordt gegeneraliseerd voordat de installatie kopie wordt gemaakt. Generalisatie is een proces waarbij computer-en gebruikersspecifieke gegevens van de virtuele machine worden verwijderd. Voor Windows wordt ook het Sysprep-bestand gebruikt. Voor Linux kunt u [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` para meters gebruiken.
+Er zijn twee statussen van het besturings systeem die worden ondersteund door de galerie met gedeelde afbeeldingen. Normaal gesp roken moeten installatie kopieën ervoor zorgen dat de virtuele machine die wordt gebruikt om de installatie kopie te maken, wordt gegeneraliseerd voordat de installatie kopie wordt gemaakt. Generalisatie is een proces waarbij computer-en gebruikersspecifieke gegevens van de virtuele machine worden verwijderd. Het hulp programma Sysprep wordt gebruikt voor Windows. Voor Linux kunt u [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` of `-deprovision+user` para meters gebruiken.
 
-Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computerspecifieke informatie en-accounts. Daarnaast hebben Vm's die zijn gemaakt op basis van gespecialiseerde installatie `osProfile` kopieën er geen gekoppeld aan. Dit betekent dat gespecialiseerde installatie kopieën naast enkele voor delen enkele beperkingen zullen hebben.
+Gespecialiseerde Vm's zijn niet via een proces voor het verwijderen van computerspecifieke informatie en-accounts. Daarnaast hebben Vm's die zijn gemaakt op basis van gespecialiseerde installatie kopieën er geen `osProfile` gekoppeld aan. Dit betekent dat gespecialiseerde installatie kopieën naast enkele voor delen enkele beperkingen zullen hebben.
 
 - Vm's en schaal sets die zijn gemaakt op basis van gespecialiseerde installatie kopieën, kunnen sneller worden uitgevoerd. Omdat deze zijn gemaakt op basis van een bron die al via de eerste keer werd opgestart, worden Vm's die zijn gemaakt door deze installatie kopieën sneller opgestart.
 - Accounts die kunnen worden gebruikt om zich aan te melden bij de virtuele machine, kunnen ook worden gebruikt op elke virtuele machine die is gemaakt met behulp van de gespecialiseerde installatie kopie die is gemaakt op basis van die VM.
 - Vm's krijgen de **computer naam** van de virtuele machine waaruit de installatie kopie is gemaakt. Wijzig de computer naam om conflicten te voor komen.
-- De `osProfile` is hoe gevoelige informatie wordt door gegeven aan de virtuele machine, `secrets`met behulp van. Dit kan problemen veroorzaken met behulp van de sleutel kluis, WinRM en `secrets` andere functionaliteit `osProfile`die wordt gebruikt in de. In sommige gevallen kunt u de beheerde service-identiteiten (MSI) gebruiken om deze beperkingen te omzeilen.
+- De `osProfile` is hoe gevoelige informatie wordt door gegeven aan de virtuele machine, met behulp van `secrets` . Dit kan problemen veroorzaken met behulp van de sleutel kluis, WinRM en andere functionaliteit die wordt gebruikt `secrets` in de `osProfile` . In sommige gevallen kunt u de beheerde service-identiteiten (MSI) gebruiken om deze beperkingen te omzeilen.
 
 ## <a name="regional-support"></a>Regionale ondersteuning
 
@@ -139,7 +139,7 @@ De regio's waarvan een versie van de gedeelde installatie kopie wordt gereplicee
 
 ![Afbeelding die laat zien hoe u installatie kopieën kunt repliceren](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Toegang
+## <a name="access"></a>Access
 
 Aangezien de galerie met gedeelde afbeeldingen, de afbeeldings definitie en de versie van de installatie kopie alle resources zijn, kunnen ze worden gedeeld met behulp van de ingebouwde systeem eigen Azure RBAC-besturings elementen. Met RBAC kunt u deze resources delen met andere gebruikers, service-principals en groepen. U kunt zelfs toegang delen voor personen buiten de Tenant waarin deze zijn gemaakt. Zodra een gebruiker toegang heeft tot de versie van de gedeelde installatie kopie, kunnen ze een virtuele machine of een VM-Schaalset implementeren.  Dit is de matrix voor delen waarmee u begrijpt waarover de gebruiker toegang krijgt:
 

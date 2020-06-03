@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: a5cac4eaf1f87e6e704bb643279637902c792c7c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267525"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300688"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
 
@@ -83,7 +83,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>Clientvereisten
 
-Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u het hulp programma voor de Azure dev Spaces client-side wilt gebruiken, moet u verkeer van de ontwikkel machines naar het *azds- \* . azds.io-* domein toestaan. Zie *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` voor de exacte FQDN. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
+Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u de Azure dev Spaces-client-side Tool wilt gebruiken, moet u verkeer van de ontwikkel machines naar de [Azure dev Spaces-infra structuur][dev-spaces-allow-infrastructure]toestaan. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -103,6 +103,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
 [azure-cli-install]: /cli/azure/install-azure-cli
+[dev-spaces-allow-infrastructure]: #virtual-network-or-subnet-configurations
 [dev-spaces-routing]: how-dev-spaces-works-routing.md
 [endpoint-options]: #using-different-endpoint-options
 [firewall-service-tags]: ../firewall/service-tags.md
