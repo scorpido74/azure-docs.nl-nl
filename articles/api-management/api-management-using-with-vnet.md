@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 016a907e3e660ca6da9dc637b2c9c844b7077b84
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193968"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300067"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -266,7 +266,7 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Azure Government| USDoD-Oost| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>Gerelateerde inhoud
-* [Een Virtual Network met back-end verbinden via een VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Een Virtual Network met back-end verbinden via een VPN-gateway](../vpn-gateway/design.md#s2smulti)
 * [Een Virtual Network van verschillende implementatie modellen verbinden](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [De API-Inspector gebruiken voor het traceren van aanroepen in azure API Management](api-management-howto-api-inspector.md)
 * [Veelgestelde vragen over Virtual Network](../virtual-network/virtual-networks-faq.md)

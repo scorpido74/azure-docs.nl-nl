@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411133"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300603"
 ---
 # <a name="system-requirements"></a>Systeemvereisten
 
 > [!IMPORTANT]
 > De **externe rendering van Azure** is momenteel beschikbaar als open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Dit hoofd stuk bevat de minimale systeem vereisten voor het werken met *Azure remote rendering* (arr).
 
@@ -69,6 +69,9 @@ Raadpleeg de [hand leiding](../resources/troubleshoot.md#unstable-holograms)voor
 De volgende software moet zijn geïnstalleerd:
 
 * De nieuwste versie van **Visual Studio 2019** [(down load)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio Tools voor gemengde realiteit](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Met name de volgende installatie van de *werk belasting* is verplicht:
+  * **Desktop ontwikkeling met C++**
+  * **Universeel Windows-platform-ontwikkeling (UWP)**
 * **Windows SDK 10.0.18362.0** [(down load)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(down load)](https://git-scm.com/downloads)
 * Optioneel: als u de video stroom van de server op een desktop computer wilt weer geven, hebt u de **HEVC-video-extensie** [(Microsoft Store link)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7)nodig.

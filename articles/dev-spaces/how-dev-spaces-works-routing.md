@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de processen beschreven die Power Azure dev Spaces en hoe route ring werkt
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241385"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307415"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hoe route ring werkt met Azure dev Spaces
 
@@ -20,22 +20,22 @@ In dit artikel wordt beschreven hoe route ring werkt met dev Spaces.
 
 ## <a name="how-routing-works"></a>Hoe werkt route ring?
 
-Een dev-ruimte is gebaseerd op AKS en maakt gebruik van dezelfde [netwerk concepten](../aks/concepts-network.md). Azure dev Spaces heeft ook een gecentraliseerde *ingressmanager* -service en implementeert zijn eigen ingangs controller naar het AKS-cluster. De *ingressmanager* -Service bewaakt AKS-clusters met ontwikkel ruimten en breidt de Azure dev Spaces-controller uit in het cluster met ingangs objecten voor route ring naar toepassing. De devspaces-proxy container in elke pod voegt een `azds-route-as` http-header voor http-verkeer toe aan een ontwikkel ruimte op basis van de URL. Zo krijgt een aanvraag naar de URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* een http-header met. `azds-route-as: azureuser` De devspaces-proxy container voegt geen `azds-route-as` header toe als deze al aanwezig is.
+Een dev-ruimte is gebaseerd op AKS en maakt gebruik van dezelfde [netwerk concepten](../aks/concepts-network.md). Azure dev Spaces heeft ook een gecentraliseerde *ingressmanager* -service en implementeert zijn eigen ingangs controller naar het AKS-cluster. De *ingressmanager* -Service bewaakt AKS-clusters met ontwikkel ruimten en breidt de Azure dev Spaces-controller uit in het cluster met ingangs objecten voor route ring naar toepassing. De devspaces-proxy container in elke pod voegt een `azds-route-as` http-header voor HTTP-verkeer toe aan een ontwikkel ruimte op basis van de URL. Zo krijgt een aanvraag naar de URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* een HTTP-header met `azds-route-as: azureuser` . De devspaces-proxy container voegt geen header toe `azds-route-as` als deze al aanwezig is.
 
 Wanneer een HTTP-aanvraag wordt gedaan bij een service van buiten het cluster, gaat de aanvraag naar de ingangs controller. De ingangs controller stuurt de aanvraag rechtstreeks naar de juiste pod op basis van de inkomende objecten en regels. De devspaces-proxy container in de Pod ontvangt de aanvraag, voegt de `azds-route-as` header toe op basis van de URL en stuurt de aanvraag door naar de toepassings container.
 
-Wanneer een HTTP-aanvraag wordt gedaan bij een service van een andere service binnen het cluster, loopt de aanvraag eerst door de devspaces-proxy container van de aanroepende service. De devspaces-proxy container zoekt naar de HTTP-aanvraag en controleert `azds-route-as` de header. Op basis van de header zoekt de devspaces-proxy container het IP-adres van de service die is gekoppeld aan de waarde van de header. Als er een IP-adres wordt gevonden, wordt de aanvraag door de devspaces-proxy container omgeleid naar dat IP-adres. Als er geen IP-adres wordt gevonden, stuurt de devspaces-proxy container de aanvraag door naar de bovenliggende toepassings container.
+Wanneer een HTTP-aanvraag wordt gedaan bij een service van een andere service binnen het cluster, loopt de aanvraag eerst door de devspaces-proxy container van de aanroepende service. De devspaces-proxy container zoekt naar de HTTP-aanvraag en controleert de `azds-route-as` header. Op basis van de header zoekt de devspaces-proxy container het IP-adres van de service die is gekoppeld aan de waarde van de header. Als er een IP-adres wordt gevonden, wordt de aanvraag door de devspaces-proxy container omgeleid naar dat IP-adres. Als er geen IP-adres wordt gevonden, stuurt de devspaces-proxy container de aanvraag door naar de bovenliggende toepassings container.
 
-De toepassingen *servicea* en *serviceB* worden bijvoorbeeld geïmplementeerd naar een bovenliggende ontwikkel ruimte met de naam *standaard*. *servicea* is afhankelijk van *serviceB* en maakt http-aanroepen. Azure-gebruiker maakt een onderliggende ontwikkel ruimte op basis van de *standaard* ruimte met de naam *azureuser*. Azure-gebruiker implementeert ook hun eigen versie van *servicea* op hun onderliggende ruimte. Wanneer een aanvraag wordt ingediend bij *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+De toepassingen *servicea* en *serviceB* worden bijvoorbeeld geïmplementeerd naar een bovenliggende ontwikkel ruimte met de naam *standaard*. *servicea* is afhankelijk van *serviceB* en maakt http-aanroepen. Azure-gebruiker maakt een onderliggende ontwikkel ruimte op basis van de *standaard* ruimte met de naam *azureuser*. Azure-gebruiker implementeert ook hun eigen versie van *servicea* op hun onderliggende ruimte. Wanneer een aanvraag wordt ingediend bij *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Route ring van Azure dev Spaces](media/how-dev-spaces-works/routing.svg)
 
 1. De ingangs controller zoekt naar het IP-adres voor de pod die is gekoppeld aan de URL. Dit is *servicea. azureuser*.
 1. De ingangs controller vindt het IP-adres voor de pod in de ontwikkel ruimte van Azure User en stuurt de aanvraag door naar de *servicea. azureuser* pod.
-1. De devspaces-proxy container in de *servicea. azureuser* Pod ontvangt de aanvraag en voegt `azds-route-as: azureuser` deze toe als een http-header.
+1. De devspaces-proxy container in de *servicea. azureuser* Pod ontvangt de aanvraag en voegt deze toe `azds-route-as: azureuser` als een http-header.
 1. De devspaces-proxy container in de *servicea. azureuser* pod stuurt de aanvraag door naar de *servicea* -toepassings container in de *servicea. azureuser* pod.
-1. De *servicea* -toepassing in de *servicea. azureuser* pod maakt een aanroep van *serviceB*. De *servicea* -toepassing bevat ook code voor het bewaren `azds-route-as` van de bestaande header, in dit `azds-route-as: azureuser`geval.
-1. De devspaces-proxy container in de *servicea. azureuser* Pod ontvangt de aanvraag en zoekt het IP-adres van *serviceB* op basis van de waarde `azds-route-as` van de header.
+1. De *servicea* -toepassing in de *servicea. azureuser* pod maakt een aanroep van *serviceB*. De *servicea* -toepassing bevat ook code voor het bewaren `azds-route-as` van de bestaande header, in dit geval `azds-route-as: azureuser` .
+1. De devspaces-proxy container in de *servicea. azureuser* Pod ontvangt de aanvraag en zoekt het IP-adres van *serviceB* op basis van de waarde van de `azds-route-as` header.
 1. De devspaces-proxy container in de *servicea. azureuser* Pod heeft geen IP-adres voor *serviceB. azureuser*.
 1. De devspaces-proxy container in de *servicea. azureuser* pod zoekt het IP-adres voor *serviceB* in de bovenliggende ruimte. Dit is *serviceB. default*.
 1. De devspaces-proxy container in de *servicea. azureuser* pod vindt het IP-adres voor *serviceB. default* en stuurt de aanvraag door naar de *serviceB. default* pod.
@@ -64,12 +64,12 @@ Wanneer *azureuser*wordt gebruikt, worden alle aanvragen naar *servicea* doorges
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor enkele voor beelden van hoe Azure dev Spaces route ring gebruiken om snel te kunnen iteratieen en te ontwikkelen, raadpleegt u [hoe u uw ontwikkelings machine verbindt met uw ontwikkel ruimte][how-it-works-connect], hoe u uw code op afstand kunt [debuggen met Azure dev Spaces werkt][how-it-works-remote-debugging]en [github acties & Azure Kubernetes-service][pr-flow].
+Voor enkele voor beelden van hoe Azure dev Spaces route ring gebruiken om snel te kunnen iteratieen en te ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes], [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging]en [github acties & Azure Kubernetes-service][pr-flow].
 
 Zie voor meer informatie over het gebruik van route ring met Azure dev Spaces voor team ontwikkeling het [team Development in azure dev Spaces][quickstart-team] Quick Start.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

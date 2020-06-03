@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Hierin worden de procedures beschreven voor het uitvoeren van uw code in azure Kubernetes service met Azure dev Spaces
 keywords: azds. yaml, Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02b928009b1f82e2b6a193a41376265f8bfb9ea7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241359"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307466"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Hoe u uw code uitvoert met Azure dev Spaces werkt
 
@@ -20,19 +20,19 @@ In dit artikel wordt beschreven wat er gebeurt met het uitvoeren van uw code in 
 
 ## <a name="run-your-code"></a>Uw code uitvoeren
 
-Als u uw code in een ontwikkel ruimte wilt uitvoeren, `up` geeft u de opdracht op in dezelfde `azds.yaml` map als uw bestand:
+Als u uw code in een ontwikkel ruimte wilt uitvoeren, geeft u de `up` opdracht op in dezelfde map als uw `azds.yaml` bestand:
 
 ```cmd
 azds up
 ```
 
-Met `up` de opdracht worden de bron bestanden van de toepassing en andere artefacten geüpload die nodig zijn om uw project te bouwen en uit te voeren op de dev-ruimte. Van daaruit, de controller in uw deel ruimte voor ontwikkel aars:
+Met de `up` opdracht worden de bron bestanden van de toepassing en andere artefacten geüpload die nodig zijn om uw project te bouwen en uit te voeren op de dev-ruimte. Van daaruit, de controller in uw deel ruimte voor ontwikkel aars:
 
 1. Hiermee maakt u de Kubernetes-objecten om uw toepassing te implementeren.
 1. Bouwt de container voor uw toepassing.
 1. Implementeert uw toepassing naar de ontwikkel ruimte.
 1. Hiermee maakt u een openbaar toegankelijke DNS-naam voor het eind punt van uw toepassing, indien geconfigureerd.
-1. Maakt gebruik van *port-forward* om toegang te bieden tot het http://localhosteind punt van de toepassing met behulp van.
+1. Maakt gebruik van *port-forward* om toegang te bieden tot het eind punt van de toepassing met behulp van http://localhost .
 1. Stdout en stderr worden doorgestuurd naar het hulp programma aan de client zijde.
 
 
@@ -40,14 +40,14 @@ Met `up` de opdracht worden de bron bestanden van de toepassing en andere artefa
 
 Wanneer u een service in een dev-ruimte start, werken het hulp programma en de controller aan de client zijde samen om uw bron bestanden te synchroniseren, uw container-en Kubernetes-objecten te maken en uw toepassing uit te voeren.
 
-Op een meer gedetailleerd niveau ziet u hier wat er gebeurt wanneer u `azds up`uitvoert:
+Op een meer gedetailleerd niveau ziet u hier wat er gebeurt wanneer u uitvoert `azds up` :
 
 1. [Bestanden worden gesynchroniseerd][sync-section] van de computer van de gebruiker naar een Azure-bestands opslag die uniek is voor het AKS-cluster van de gebruiker. De bron code, het helm-diagram en de configuratie bestanden worden geüpload.
 1. De controller maakt een aanvraag om een nieuwe sessie te starten. Deze aanvraag bevat verschillende eigenschappen, met inbegrip van een unieke ID, naam van de ruimte, het pad naar de bron code en een vlag voor fout opsporing.
 1. De controller vervangt de tijdelijke aanduiding *$ (tag)* in het helm-diagram met de unieke sessie-id en installeert de helm-grafiek voor uw service. Door een verwijzing naar de unieke sessie-ID toe te voegen aan de helm-grafiek, kan de container die is geïmplementeerd op het AKS-cluster voor deze specifieke sessie worden gekoppeld aan de sessie aanvraag en de bijbehorende gegevens.
 1. Tijdens de installatie van de helm-grafiek voegt de Kubernetes-webhook-Admission server extra containers toe aan de pod van uw toepassing voor instrumentatie en toegang tot de bron code van uw project. De containers devspaces-proxy en devspaces-proxy-init worden toegevoegd om HTTP-tracering en ruimte routering te bieden. De devspaces-build-container wordt toegevoegd om de pod toegang te geven tot het docker-exemplaar en de project bron code voor het bouwen van de container van uw toepassing.
 1. Wanneer de pod van de toepassing is gestart, worden de container devspaces-build en de container devspaces-proxy-init gebruikt voor het bouwen van de toepassings container. Vervolgens worden de toepassings container-en devspaces-proxy containers gestart.
-1. Nadat de toepassings container is gestart, gebruikt de client-side-functionaliteit de functionaliteit voor Kubernetes *-poorten* om HTTP-toegang tot uw toepassing http://localhostmogelijk te maken. Door deze poort door te sturen verbindt u uw ontwikkel computer met de service in uw dev-ruimte.
+1. Nadat de toepassings container is gestart, gebruikt de client-side-functionaliteit de functionaliteit voor Kubernetes *-poorten* om HTTP-toegang tot uw toepassing mogelijk te maken http://localhost . Door deze poort door te sturen verbindt u uw ontwikkel computer met de service in uw dev-ruimte.
 1. Wanneer alle containers in het Pod zijn gestart, wordt de service uitgevoerd. Op dit punt begint de client-side-functionaliteit de HTTP-traceringen, stdout en stderr te streamen. Deze informatie wordt weer gegeven door de client-side-functionaliteit voor de ontwikkelaar.
 
 ## <a name="updating-a-running-service"></a>Een actieve service bijwerken
@@ -76,7 +76,7 @@ Voor updates voor Project bestanden zoals Dockerfiles, csproj-bestanden of een d
 
 De eerste keer dat een toepassing wordt gestart in een dev-ruimte, worden alle bron bestanden van de toepassing geüpload. Terwijl de toepassing wordt uitgevoerd en later opnieuw wordt opgestart, worden alleen de gewijzigde bestanden geüpload. Er worden twee bestanden gebruikt om dit proces te coördineren: een bestand aan de client zijde en een bestand aan de spel besturing.
 
-Het bestand aan de client zijde wordt opgeslagen in een tijdelijke map en krijgt de naam op basis van een hash van de projectmap die u uitvoert in dev Spaces. In Windows hebt u bijvoorbeeld een bestand zoals *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* voor uw project. In Linux wordt het bestand aan de client zijde opgeslagen in de *map/tmp* -map. U kunt de directory op macOS vinden door de `echo $TMPDIR` opdracht uit te voeren.
+Het bestand aan de client zijde wordt opgeslagen in een tijdelijke map en krijgt de naam op basis van een hash van de projectmap die u uitvoert in dev Spaces. In Windows hebt u bijvoorbeeld een bestand zoals *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* voor uw project. In Linux wordt het bestand aan de client zijde opgeslagen in de *map/tmp* -map. U kunt de directory op macOS vinden door de opdracht uit te voeren `echo $TMPDIR` .
 
 Dit bestand bevindt zich in JSON-indeling en bevat:
 
@@ -94,7 +94,7 @@ Alle project bestanden worden gesynchroniseerd als het bestand aan de client zij
 
 ## <a name="how-running-your-code-is-configured"></a>Hoe het uitvoeren van uw code is geconfigureerd
 
-Azure dev Spaces maken `azds.yaml` gebruik van het bestand om uw service te installeren en te configureren. De controller gebruikt de `install` eigenschap in het `azds.yaml` bestand voor het installeren van het helm-diagram en het maken van de Kubernetes-objecten:
+Azure dev Spaces maken gebruik van het `azds.yaml` bestand om uw service te installeren en te configureren. De controller gebruikt de `install` eigenschap in het `azds.yaml` bestand voor het installeren van het helm-diagram en het maken van de Kubernetes-objecten:
 
 ```yaml
 ...
@@ -120,9 +120,9 @@ install:
 ...
 ```
 
-Standaard wordt de helm `prep` -grafiek gegenereerd met de opdracht. Ook de eigenschap *install. Chart* wordt ingesteld op de map van het helm-diagram. Als u een helm-diagram wilt gebruiken op een andere locatie, kunt u deze eigenschap bijwerken om die locatie te gebruiken.
+Standaard `prep` wordt de helm-grafiek gegenereerd met de opdracht. Ook de eigenschap *install. Chart* wordt ingesteld op de map van het helm-diagram. Als u een helm-diagram wilt gebruiken op een andere locatie, kunt u deze eigenschap bijwerken om die locatie te gebruiken.
 
-Bij de installatie van de helm-grafieken biedt Azure dev Spaces een manier om waarden in de helm-grafiek te overschrijven. De standaard waarden voor de helm-grafiek zijn `charts/APP_NAME/values.yaml`in.
+Bij de installatie van de helm-grafieken biedt Azure dev Spaces een manier om waarden in de helm-grafiek te overschrijven. De standaard waarden voor de helm-grafiek zijn in `charts/APP_NAME/values.yaml` .
 
 Met de eigenschap *install. values* kunt u een of meer bestanden weer geven waarmee waarden worden gedefinieerd die u wilt vervangen in het helm-diagram. Als u bijvoorbeeld een hostnaam of database configuratie specifiek wilt gebruiken voor het uitvoeren van uw toepassing in een dev-ruimte, kunt u deze onderdrukkings functionaliteit. U kunt ook een *?* toevoegen aan het einde van de bestands namen om deze in te stellen als optioneel.
 
@@ -130,15 +130,15 @@ Met de eigenschap *install. set* kunt u een of meer waarden configureren die u w
 
 In het bovenstaande voor beeld vertelt de eigenschap *install. set. replicaCount* aan de controller hoeveel exemplaren van uw toepassing moeten worden uitgevoerd in uw dev-ruimte. Afhankelijk van uw scenario kunt u deze waarde verg Roten, maar dit heeft gevolgen voor het koppelen van een fout opsporingsprogramma aan de pod van uw toepassing. Zie het [artikel over probleem oplossing][troubleshooting]voor meer informatie.
 
-In de gegenereerde helm-grafiek is de container installatie kopie ingesteld op *{{. Values. image. repository}}: {{. Values. image. tag}}*. In `azds.yaml` het bestand wordt de eigenschap *install. set. image. tag* gedefinieerd als *$ (tag)* standaard, die wordt gebruikt als de waarde voor *{{. Values. image. tag}}*. Door de eigenschap *install. set. image. tag* op deze manier in te stellen, kan de container installatie kopie voor uw toepassing op een unieke manier worden gelabeld wanneer Azure-ontwikkel ruimten worden uitgevoerd. In dit specifieke geval wordt de afbeelding gelabeld als * \<waarde van de afbeelding. repository>: $ (tag)*. U moet de variabele *$ (tag)* gebruiken als de waarde *install. set. image. tag* , zodat ontwikkel ruimten de container herkennen en vinden in het AKS-cluster.
+In de gegenereerde helm-grafiek is de container installatie kopie ingesteld op *{{. Values. image. repository}}: {{. Values. image. tag}}*. In het bestand wordt de `azds.yaml` eigenschap *install. set. image. tag* gedefinieerd als *$ (tag)* standaard, die wordt gebruikt als de waarde voor *{{. Values. image. tag}}*. Door de eigenschap *install. set. image. tag* op deze manier in te stellen, kan de container installatie kopie voor uw toepassing op een unieke manier worden gelabeld wanneer Azure-ontwikkel ruimten worden uitgevoerd. In dit specifieke geval wordt de afbeelding gelabeld als * \<value from image.repository> : $ (tag)*. U moet de variabele *$ (tag)* gebruiken als de waarde *install. set. image. tag* , zodat ontwikkel ruimten de container herkennen en vinden in het AKS-cluster.
 
 In het bovenstaande voor beeld `azds.yaml` definieert u *install. set. ingress. hosts*. De eigenschap *install. set. ingress. hosts* definieert een indeling voor de hostnaam voor open bare eind punten. Deze eigenschap gebruikt ook *$ (spacePrefix)*, *$ (rootSpacePrefix)* en *$ (hostSuffix)*. Dit zijn de waarden die door de controller worden verschaft.
 
-*$ (SpacePrefix)* is de naam van de onderliggende dev-ruimte, waarbij de notatie Space naam *. s*wordt gebruikt. *$ (RootSpacePrefix)* is de naam van de bovenliggende ruimte. Als *azureuser* bijvoorbeeld een onderliggend gebied *is, is*de waarde voor *$ (rootSpacePrefix)* *standaard* en is de waarde van *$ (spacePrefix)* *azureuser. s*. Als de ruimte geen onderliggende ruimte is, *$ (spacePrefix)* is leeg. Als de *standaard* ruimte bijvoorbeeld geen bovenliggende ruimte heeft, is de waarde voor *$ (rootSpacePrefix)* *standaard* en is de waarde van *$ (spacePrefix)* leeg. *$ (HostSuffix)* is een DNS-achtervoegsel dat verwijst naar de Azure dev Spaces-controller die wordt uitgevoerd in uw AKS-cluster. Dit DNS-achtervoegsel komt bijvoorbeeld * \*overeen met een DNS-vermelding met Joker tekens. RANDOM_VALUE. Eus. azds. io*, dat is gemaakt toen de Azure dev Spaces-controller werd toegevoegd aan uw AKS-cluster.
+*$ (SpacePrefix)* is de naam van de onderliggende dev-ruimte, waarbij de notatie Space naam *. s*wordt gebruikt. *$ (RootSpacePrefix)* is de naam van de bovenliggende ruimte. Als *azureuser* bijvoorbeeld een onderliggend gebied *is, is*de waarde voor *$ (rootSpacePrefix)* *standaard* en is de waarde van *$ (spacePrefix)* *azureuser. s*. Als de ruimte geen onderliggende ruimte is, *$ (spacePrefix)* is leeg. Als de *standaard* ruimte bijvoorbeeld geen bovenliggende ruimte heeft, is de waarde voor *$ (rootSpacePrefix)* *standaard* en is de waarde van *$ (spacePrefix)* leeg. *$ (HostSuffix)* is een DNS-achtervoegsel dat verwijst naar de Azure dev Spaces-controller die wordt uitgevoerd in uw AKS-cluster. Dit DNS-achtervoegsel komt bijvoorbeeld overeen met een DNS-vermelding met Joker tekens * \* . RANDOM_VALUE. Eus. azds. io*, dat is gemaakt toen de Azure dev Spaces-controller werd toegevoegd aan uw AKS-cluster.
 
 In het bovenstaande `azds.yaml` bestand kunt u ook *install. set. ingress. hosts* bijwerken om de hostnaam van uw toepassing te wijzigen. Bijvoorbeeld, als u de hostnaam van uw toepassing wilt vereenvoudigen van *$ (spacePrefix) $ (rootSpacePrefix) webfrontend $ (hostSuffix)* naar $ ( *spacePrefix) $ (rootSpacePrefix) Web $ (hostSuffix*).
 
-De controller maakt gebruik van de volgende secties van het `azds.yaml` configuratie bestand om de container voor uw toepassing te maken:
+De controller maakt gebruik van de volgende secties van het configuratie bestand om de container voor uw toepassing te maken `azds.yaml` :
 
 ```yaml
 build:
@@ -188,7 +188,7 @@ De eigenschap *configurations. develope. container. ITER. buildCommands* geeft a
 
 De *configuraties. develope. container. ITER. processesToKill* geeft een lijst van de processen die u wilt beëindigen om de toepassing te stoppen. U kunt deze eigenschap bijwerken als u tijdens de ontwikkeling het gedrag voor opnieuw opstarten van uw toepassing wilt wijzigen. Als u bijvoorbeeld de configuraties hebt bijgewerkt *. ontwikkelen. container. ITER. buildCommands* of configurations. de eigenschappen van de *opdracht develope. container. Command* om te wijzigen hoe de toepassing wordt gebouwd of gestart, moet u mogelijk wijzigen welke processen worden gestopt.
 
-Wanneer u de code voorbereidt met behulp van de `azds prep` opdracht, kunt `--enable-ingress` u de markering toevoegen. Als u `--enable-ingress` de vlag toevoegt, maakt u een openbaar toegankelijke URL voor uw toepassing. Als u deze vlag weglaat, is de toepassing alleen toegankelijk binnen het cluster of met behulp van de localhost-tunnel. Nadat u de `azds prep` opdracht hebt uitgevoerd, kunt u deze instelling wijzigen van de eigenschap binnenkomend *. enabled* in `charts/APPNAME/values.yaml`:
+Wanneer u de code voorbereidt met behulp `azds prep` van de opdracht, kunt u de `--enable-ingress` markering toevoegen. Als u de vlag toevoegt, `--enable-ingress` maakt u een openbaar toegankelijke URL voor uw toepassing. Als u deze vlag weglaat, is de toepassing alleen toegankelijk binnen het cluster of met behulp van de localhost-tunnel. Nadat u de opdracht hebt uitgevoerd `azds prep` , kunt u deze instelling wijzigen van de eigenschap binnenkomend *. enabled* in `charts/APPNAME/values.yaml` :
 
 ```yaml
 ingress:
@@ -199,7 +199,7 @@ ingress:
 
 Zie [hoe route ring werkt met Azure dev Spaces][how-it-works-routing]voor meer informatie over netwerken en hoe aanvragen worden gerouteerd in azure dev Spaces.
 
-Voor meer informatie over het gebruik van Azure dev Spaces voor het snel herhalen en ontwikkelen kunt u zien [hoe u verbinding maakt met uw ontwikkel computer met uw ontwikkel ruimte][how-it-works-connect] en hoe u [uw code op afstand kunt debuggen met Azure dev Spaces][how-it-works-remote-debugging].
+Voor meer informatie over het gebruik van Azure dev Spaces voor het snel herhalen en ontwikkelen, Zie [hoe lokaal proces met Kubernetes werkt][how-it-works-local-process-kubernetes] en [hoe externe fout opsporing van uw code met Azure dev Spaces werkt][how-it-works-remote-debugging].
 
 Om aan de slag te gaan met Azure dev Spaces om uw project uit te voeren, raadpleegt u de volgende Quick starts:
 
@@ -212,7 +212,7 @@ Om aan de slag te gaan met Azure dev Spaces om uw project uit te voeren, raadple
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
