@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 385814677a868c0e631bd13bad3308609b174ed3
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: d8bca97cfaa3aff3cb3ca5a5eb9019f96576626e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800103"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309013"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Dekking Azure CDN per metro lijn 
 > [!div class="op_single_selector"]
@@ -44,10 +44,9 @@ In dit artikel vindt u een overzicht van de huidige metro lijnen die POP-locatie
 | Afrika | Kaap stad, Zuid-Afrika<br />Johannes Burg, Zuid-Afrika<br />Lagos, Nigeria<br />Nairobi, Kenia | Johannes Burg, Zuid-Afrika | Zuid-Afrika |
 | Midden-Oosten | Dubai, Verenigde Arabische Emiraten<br />Tel Aviv, Israël<br />Istanboel, Turkije | Muscat, Oman<br />Fujirah, Verenigde Arabische Emiraten | Qatar<br />Verenigde Arabische Emiraten |
 | India | Chennai, India<br />Hyderabad, India<br />Mumbai, India<br />Nieuwe Delhi, India | Bengaluru (Bangalore), India<br />Chennai, India<br />Mumbai, India<br />Nieuwe Delhi, India<br /> | India |
-| Azië | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Maleisië<br />Jakarta, Indonesië<br />Manilla, Filipijnen<br />Singapore<br />Busan, Zuid-Korea<br />Seoul, Zuid-Korea<br />Taipei, Taiwan<br />Bangkok, Thai land<br />Saigon, Vietnam | Hongkong<br />Batam, Indonesië<br />Jakarta, Indonesië<br />Osaka, Japan<br />Tokio, Japan<br />Singapore<br />Seoul, Zuid-Korea<br />Kaohsiung, Taiwan<br />Taipei, Taiwan | Hongkong<br />Indonesië<br />Israël<br />Japan<br />Macau<br />Maleisië<br />Filipijnen<br />Singapore<br />Zuid-Korea<br />Taiwan<br />Thailand<br />Turkije<br />Vietnam |
+| Azië | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Maleisië<br />Jakarta, Indonesië<br />Manilla, Filipijnen<br />Singapore<br />Busan, Zuid-Korea<br />Seoul, Zuid-Korea<br />Taipei, Taiwan<br />Bangkok, Thai land<br />Ho Chi Minh City, Vietnam | Hongkong<br />Batam, Indonesië<br />Jakarta, Indonesië<br />Osaka, Japan<br />Tokio, Japan<br />Singapore<br />Seoul, Zuid-Korea<br />Kaohsiung, Taiwan<br />Taipei, Taiwan | Hongkong<br />Indonesië<br />Israël<br />Japan<br />Macau<br />Maleisië<br />Filipijnen<br />Singapore<br />Zuid-Korea<br />Taiwan<br />Thailand<br />Turkije<br />Vietnam |
 | Australië en Nieuw-Zeeland | Brisbane, Australië<br />Melbourne, Australië<br />Perth, Australië<br />Sydney, Australië<br />Auckland, Nieuw-Zeeland | Melbourne, Australië<br />Sydney, Australië<br />Auckland, Nieuw-Zeeland | Australië<br />Nieuw-Zeeland |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Als u de meest recente IP-adressen voor White List wilt ophalen, raadpleegt u de [API voor Azure CDN Edge-knoop punten](https://docs.microsoft.com/rest/api/cdn/edgenodes).
-

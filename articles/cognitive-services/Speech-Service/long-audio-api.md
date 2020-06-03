@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587337"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310594"
 ---
 # <a name="long-audio-api-preview"></a>Lange audio-API (preview-versie)
 
@@ -48,7 +48,7 @@ Wanneer u het tekst bestand voorbereidt, moet u het volgende controleren:
   * Voor tekst zonder opmaak wordt elke alinea gescheiden door op **Enter/Return** - [invoer voor beeld tekst zonder opmaak](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) weer te geven
   * Voor SSML tekst wordt elk SSML-stuk beschouwd als een alinea. SSML stuks moeten worden gescheiden door verschillende alinea's- [voor beeld van SSML-tekst invoer](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) weer geven
 > [!NOTE]
-> Voor Chinees (vasteland), Chinees (Hongkong), Chinees (Taiwan), Japans en Koreaans wordt één woord als twee tekens beschouwd. 
+> Voor Chinees (vasteland), Chinees (Hong Kong SAR), Chinees (Taiwan), Japans en Koreaans wordt één woord als twee tekens beschouwd. 
 
 ## <a name="submit-synthesis-requests"></a>Synthese aanvragen verzenden
 
@@ -108,7 +108,7 @@ Flexibele indelingen voor audio-uitvoer worden ondersteund. U kunt audio-uitvoer
 * Audio-24khz-96kbitrate-mono-mp3
 * Audio-24khz-160kbitrate-mono-mp3
 
-## <a name="quickstarts"></a>Snelstarts
+## <a name="quickstarts"></a>Snelstartgidsen
 
 We bieden Quick starts die zijn ontworpen om u te helpen de lange audio-API uit te voeren. Deze tabel bevat een lijst met lange audio-API-Quick starts, geordend op taal.
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800054"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298207"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>De Transact-mogelijkheden voor commerciële Marketplace
 
@@ -53,7 +53,7 @@ Afhankelijk van de gebruikte transactie optie zijn de kosten voor software licen
 - **Gratis** : er worden geen kosten in rekening gebracht voor software licenties.
 - **Bring your own License** (BYOL): alle toepasselijke kosten voor software licenties worden rechtstreeks beheerd tussen de uitgever en de klant. Micro soft passeert alleen de gebruiks kosten voor Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
 - **Betalen** per gebruik: software licentie kosten worden weer gegeven als een vCPU-prijs tarief, gebaseerd op de gebruikte Azure-infra structuur. Dit geldt alleen voor Virtual Machines en Azure-toepassingen.
-- **Abonnements prijzen** : software licentie kosten worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit geldt alleen voor SaaS-apps en door Azure-toepassingen beheerde apps.
+- **Abonnements prijzen** : software licentie kosten worden weer gegeven als maandelijks of jaarlijks, terugkerend bedrag in rekening gebracht als een vast tarief of per seat. Dit geldt alleen voor SaaS-apps (maandelijks of jaarlijks) en door Azure toepassingen beheerde apps (maandelijks).
 - **Gratis software-proef versie** : er worden gedurende 30 of 90 dagen geen kosten in rekening gebracht voor software licenties.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Gratis en BYOL-prijzen (uw eigen licentie)

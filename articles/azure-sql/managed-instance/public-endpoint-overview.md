@@ -1,5 +1,5 @@
 ---
-title: Open bare eind punten voor beveiligde beheerde exemplaren
+title: Open bare eind punten van Azure SQL Managed instance
 description: Veilig gebruik van open bare eind punten in Azure SQL Managed instance
 services: sql-database
 ms.service: sql-database
@@ -10,14 +10,14 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 396b52609eeab93d4e5c07c162ceb060ff05bc3d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 3fa59620c07cc17435ca29bffbc98e88e35b0ca7
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118728"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310135"
 ---
-# <a name="use--azure-sql-managed-instance-securely-with-public-endpoints"></a>Veilig Azure SQL Managed instance met open bare eind punten gebruiken
+# <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>Veilig Azure SQL Managed instance met open bare eind punten gebruiken
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Azure SQL Managed instance kan gebruikers connectiviteit bieden via [open bare eind punten](../../virtual-network/virtual-network-service-endpoints-overview.md). In dit artikel wordt uitgelegd hoe u deze configuratie beter kunt beveiligen.

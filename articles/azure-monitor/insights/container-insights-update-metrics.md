@@ -2,13 +2,13 @@
 title: Azure Monitor voor containers bijwerken voor metrische gegevens | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers bijwerkt om de functie voor aangepaste metrische gegevens in te scha kelen die ondersteuning biedt voor het verkennen en waarschuwen van geaggregeerde metrische gegevens.
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76715917"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298258"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Azure Monitor voor containers bijwerken om metrische gegevens in te schakelen
 
@@ -20,14 +20,14 @@ Azure Monitor voor containers wordt ondersteuning geïntroduceerd voor het verza
 
 De volgende metrische gegevens zijn ingeschakeld als onderdeel van deze functie:
 
-| Metrische naam ruimte | Gegevens | Beschrijving |
+| Metrische naam ruimte | Metrisch | Beschrijving |
 |------------------|--------|-------------|
 | inzichten. container/knoop punten | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dit zijn metrische gegevens van *knoop punten* en *host* als een dimensie, en ze bevatten ook de<br> de naam van het knoop punt als waarde voor de *host* -dimensie. |
 | inzichten. container/peul | podCount | Dit zijn *pod* metrische gegevens en bevatten de volgende dimensies: dimensie-controller naam, naam ruimte van Kubernetes, name, Phase. |
 
 Het bijwerken van het cluster ter ondersteuning van deze nieuwe mogelijkheden kan worden uitgevoerd vanuit de Azure Portal, Azure PowerShell of met Azure CLI. Met Azure PowerShell en CLI kunt u dit per cluster of voor alle clusters in uw abonnement inschakelen. Nieuwe implementaties van AKS bevatten automatisch deze configuratie wijziging en mogelijkheden.
 
-Met beide processen wordt de rol **bewakings metrieken van uitgever** toegewezen aan de service-principal van het cluster, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd in de resource van uw clusters. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
+In beide gevallen wordt de rol **bewakings metrieken** voor de uitgever toegewezen aan de service-principal van het cluster of de door de gebruiker toegewezen MSI voor de invoeg toepassing voor bewaking, zodat de gegevens die door de agent worden verzameld, kunnen worden gepubliceerd naar de cluster bron. Bewaking van metrische gegevens van de uitgever heeft alleen toestemming voor het pushen van metrische gegevens naar de resource, het kan geen status wijzigen, de resource bijwerken of gegevens lezen. Zie voor meer informatie over de rol [bewaking metrische gegevens van uitgever](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -36,7 +36,7 @@ Voordat u begint, controleert u het volgende:
 * Aangepaste metrische gegevens zijn alleen beschikbaar in een subset van Azure-regio's. [Hier](../platform/metrics-custom-overview.md#supported-regions)wordt een lijst met ondersteunde regio's beschreven.
 * U bent lid van de rol **[eigenaar](../../role-based-access-control/built-in-roles.md#owner)** op de AKS-cluster bron om het verzamelen van aangepaste prestatie gegevens voor knoop punten en pod in te scha kelen. 
 
-Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit `az --version`om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de Azure CLI te gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voer uit om uw versie te identificeren `az --version` . Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Een cluster upgraden van de Azure Portal
 
@@ -68,264 +68,33 @@ Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met
 
 Voer de volgende stappen uit om een specifiek cluster in uw abonnement bij te werken met Azure CLI.
 
-1. Voer de volgende opdracht uit met behulp van de Azure CLI. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.  Om de waarde van **clientIdOfSPN**op te halen, wordt deze geretourneerd wanneer u de `az aks show` opdracht uitvoert, zoals wordt weer gegeven in het onderstaande voor beeld.
+1. Voer de volgende opdracht uit met behulp van de Azure CLI. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.  Om de waarde van **clientIdOfSPN**op te halen, wordt deze geretourneerd wanneer u de opdracht uitvoert, `az aks show` zoals wordt weer gegeven in het onderstaande voor beeld.
 
     ```azurecli
     az login
-    az account set --subscription "Subscription Name"
+    az account set --subscription "<subscriptionName>"
     az aks show -g <resourceGroupName> -n <clusterName> 
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
-    ``` 
+    ```
+
+    Als u de waarde voor **clientIdOfSPNOrMsi**wilt ophalen, kunt u de opdracht uitvoeren `az aks show` zoals wordt weer gegeven in het onderstaande voor beeld. Als het **servicePrincipalProfile** -object een geldige *ClientID* -waarde heeft, kunt u die gebruiken. Anders, als deze is ingesteld op *MSI*, moet u de ClientID door geven van `addonProfiles.omsagent.identity.clientId` .
+
+    ```azurecli
+    az login
+    az account set --subscription "<subscriptionName>"
+    az aks show -g <resourceGroupName> -n <clusterName> 
+    az role assignment create --assignee <clientIdOfSPNOrMsi> --scope <clusterResourceId> --role "Monitoring Metrics Publisher"
+    ```
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Alle clusters bijwerken met behulp van Azure PowerShell
 
 Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met Azure PowerShell.
 
-1. Kopieer en plak het volgende script in uw bestand:
+1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding_atscale.ps1) het script **mdm_onboarding_atscale. ps1** en sla het op in een lokale map vanuit onze github opslag plaats.
+2. Voer de volgende opdracht uit met behulp van de Azure PowerShell.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde op de pagina **overzicht van AKS** voor het AKS-cluster.
 
     ```powershell
-    <# 
-    .DESCRIPTION 
-        Adds the Monitoring Metrics Publisher role assignment to the all AKS clusters in specified subscription        
-      
-    
-    .PARAMETER SubscriptionId
-        Subscription Id that the AKS cluster is in
-
-    #>
-
-    param(
-    [Parameter(mandatory = $true)]
-    [string]$SubscriptionId 
-    )
-
-
-    # checks the required Powershell modules exist and if not exists, request the user permission to install
-    $azAccountModule = Get-Module -ListAvailable -Name Az.Accounts
-    $azAksModule = Get-Module -ListAvailable -Name Az.Aks 
-    $azResourcesModule = Get-Module -ListAvailable -Name Az.Resources
-
-    if (($null -eq $azAccountModule) -or ( $null -eq $azAksModule ) -or ($null -eq $azResourcesModule)) {
-
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-
-    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Host("Running script as an admin...")
-        Write-Host("")
-    }
-    else {
-        Write-Host("Please run the script as an administrator") -ForegroundColor Red
-        Stop-Transcript
-        exit
-    }
-
-
-    $message = "This script will try to install the latest versions of the following Modules : `
-                Az.Resources, Az.Accounts and Az.Aks using the command if not installed already`
-                `'Install-Module {Insert Module Name} -Repository PSGallery -Force -AllowClobber -ErrorAction Stop -WarningAction Stop'
-                `If you do not have the latest version of these Modules, this troubleshooting script may not run."
-    $question = "Do you want to Install the modules and run the script or just run the script?"
-
-    $choices = New-Object Collections.ObjectModel.Collection[Management.Automation.Host.ChoiceDescription]
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Yes, Install and run'))
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Continue without installing the Module'))
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Quit'))
-
-    $decision = $Host.UI.PromptForChoice($message, $question, $choices, 0)
-
-    switch ($decision) {
-        0 { 
-
-            if ($null -eq $azResourcesModule)   {
-                try {
-                    Write-Host("Installing Az.Resources...")
-                    Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules forAz.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    exit
-                }
-            }
-
-            if ($null -eq $azAccountModule) {
-                try {
-                    Write-Host("Installing Az.Accounts...")
-                    Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules forAz.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    exit
-                }
-            }
-
-            if ($null -eq $azAksModule) {
-                try {
-                    Write-Host("Installing Az.Aks...")
-                    Install-Module Az.Aks -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Aks in a new powershell window: eg. 'Install-Module Az.Aks -Repository PSGallery -Force'") -ForegroundColor Red 
-                    exit
-                }   
-            }
-           
-        }
-        1 {
-
-            if ($null -eq $azResourcesModule)   {
-                try {
-                    Import-Module Az.Resources -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Resources...") -ForegroundColor Red
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Resources in a new powershell window: eg. 'Install-Module Az.Resources -Repository PSGallery -Force'") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }
-            }
-            if ($null -eq $azAccountModule) {
-                try {
-                    Import-Module Az.Accounts -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Accounts...") -ForegroundColor Red
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }
-            }
-            if ($null -eq $azAksModule) {
-                try {
-                    Import-Module Az.Aks -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Aks... Please reinstall this Module") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }    
-            }     
-    
-        }
-        2 { 
-            Write-Host("")
-            Stop-Transcript
-            exit
-        }
-      }
-    }
-
-    try {
-    Write-Host("")
-    Write-Host("Trying to get the current Az login context...")
-    $account = Get-AzContext -ErrorAction Stop
-    Write-Host("Successfully fetched current AzContext context...") -ForegroundColor Green
-    Write-Host("")
-    }
-    catch {
-    Write-Host("")
-    Write-Host("Could not fetch AzContext..." ) -ForegroundColor Red
-    Write-Host("")
-    }
-
-    if ($account.Account -eq $null) {
-    try {
-        Write-Host("Please login...")
-        Connect-AzAccount -subscriptionid $SubscriptionId
-    }
-    catch {
-        Write-Host("")
-        Write-Host("Could not select subscription with ID : " + $SubscriptionId + ". Please make sure the ID you entered is correct and you have access to the cluster" ) -ForegroundColor Red
-        Write-Host("")
-        Stop-Transcript
-        exit
-     }
-    }
-    else {
-    if ($account.Subscription.Id -eq $SubscriptionId) {
-        Write-Host("Subscription: $SubscriptionId is already selected. Account details: ")
-        $account
-    }
-    else {
-        try {
-            Write-Host("Current Subscription:")
-            $account
-            Write-Host("Changing to subscription: $SubscriptionId")
-            Set-AzContext -SubscriptionId $SubscriptionId
-        }
-        catch {
-            Write-Host("")
-            Write-Host("Could not select subscription with ID : " + $SubscriptionId + ". Please make sure the ID you entered is correct and you have access to the cluster" ) -ForegroundColor Red
-            Write-Host("")
-            Stop-Transcript
-            exit
-        }
-      }
-    } 
-
-    #
-    #   get all the AKS clusters in specified subscription
-    #
-    Write-Host("getting all aks clusters in specified subscription ...")
-    $allClusters = Get-AzAks -ErrorVariable notPresent -ErrorAction SilentlyContinue
-    if ($notPresent) {
-    Write-Host("")
-    Write-Host("Failed to get Aks clusters in specified subscription. Please make sure that you have access to the existing clusters") -ForegroundColor Red
-    Write-Host("")
-    Stop-Transcript
-    exit
-    }
-    Write-Host("Successfully got all aks clusters ...") -ForegroundColor Green
-
-    $clustersCount = $allClusters.Id.Length
-
-    Write-Host("Adding role assignment for the clusters ...")
-
-    for ($index = 0 ; $index -lt $clustersCount ; $index++) {  
-
-    #
-    #  Add Monitoring Metrics Publisher role assignment to the AKS cluster resource
-    #
-
-    $servicePrincipalClientId = $allClusters.ServicePrincipalProfile[$index].ClientId
-    $clusterResourceId = $allClusters.Id[$index]
-    $clusterName = $allClusters.Name[$index]
-
-
-    Write-Host("Adding role assignment for the cluster: $clusterResourceId, servicePrincipalClientId: $servicePrincipalClientId ...")
-
-  
-    New-AzRoleAssignment -ApplicationId $servicePrincipalClientId -scope $clusterResourceId -RoleDefinitionName "Monitoring Metrics Publisher"  -ErrorVariable assignmentError -ErrorAction SilentlyContinue
-
-    if ($assignmentError) {
-
-        $roleAssignment = Get-AzRoleAssignment -scope $clusterResourceId -RoleDefinitionName "Monitoring Metrics Publisher" -ErrorVariable getAssignmentError -ErrorAction SilentlyContinue     
-        if ($assignmentError.Exception -match "role assignment already exists" -or ( $roleAssignment -and $roleAssignment.ObjectType -like "ServicePrincipal" )) {
-            Write-Host("Monitoring Metrics Publisher role assignment already exists on the cluster resource : '" + $clusterName + "'") -ForegroundColor Green 
-        }
-        else { 
-        
-            Write-Host("Failed to add Monitoring Metrics Publisher role assignment to cluster : '" + $clusterName + "' , error : $assignmentError") -ForegroundColor Red      
-        }
-
-    }
-    else {
-
-        Write-Host("Successfully added Monitoring Metrics Publisher role assignment to cluster : '" + $clusterName + "'") -ForegroundColor Green 
-   
-    }   
-
-    Write-Host("Completed adding role assignment for the cluster: $clusterName ...")
-        
-    }
-
-    Write-Host("Completed adding role assignment for the aks clusters in subscriptionId :$SubscriptionId")   
-    ```
-
-2. Sla dit bestand op als **onboard_metrics_atscale. ps1** naar een lokale map.
-3. Voer de volgende opdracht uit met behulp van de Azure PowerShell.  Bewerk de waarde voor **subscriptionId** met behulp van de waarde op de pagina **overzicht van AKS** voor het AKS-cluster.
-
-    ```powershell
-    .\onboard_metrics_atscale.ps1 subscriptionId
+    .\mdm_onboarding_atscale.ps1 subscriptionId
     ```
     Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
 
@@ -337,245 +106,12 @@ Voer de volgende stappen uit om alle clusters in uw abonnement bij te werken met
 
 Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure PowerShell.
 
-1. Kopieer en plak het volgende script in uw bestand:
+1. [Down load](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/docs/aks/mdmonboarding/mdm_onboarding.ps1) het script **mdm_onboarding. ps1** en sla het op in een lokale map vanuit onze github opslag plaats.
+
+2. Voer de volgende opdracht uit met behulp van de Azure PowerShell. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.
 
     ```powershell
-    <# 
-    .DESCRIPTION 
-        Adds the Monitoring Metrics Publisher role assignment to the specified AKS cluster        
-      
-    
-    .PARAMETER SubscriptionId
-        Subscription Id that the AKS cluster is in
-
-    .PARAMETER resourceGroupName
-        Resource Group name that the AKS cluster is in
-            
-     .PARAMETER clusterName
-        Name of the AKS cluster.
-    #>
-
-    param(
-       [Parameter(mandatory = $true)]
-       [string]$SubscriptionId,
-       [Parameter(mandatory = $true)]
-       [string]$resourceGroupName,
-       [Parameter(mandatory = $true)]
-       [string] $clusterName
-    )
-
-    # checks the required Powershell modules exist and if not exists, request the user permission to install
-    $azAccountModule = Get-Module -ListAvailable -Name Az.Accounts
-    $azAksModule = Get-Module -ListAvailable -Name Az.Aks 
-    $azResourcesModule = Get-Module -ListAvailable -Name Az.Resources
-
-    if (($null -eq $azAccountModule) -or ($null -eq $azAksModule) -or ($null -eq $azResourcesModule)) {
-
-
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-
-    if ($currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        Write-Host("Running script as an admin...")
-        Write-Host("")
-    }
-    else {
-        Write-Host("Please run the script as an administrator") -ForegroundColor Red
-        Stop-Transcript
-        exit
-    }
-
-
-    $message = "This script will try to install the latest versions of the following Modules : `
-                Az.Resources, Az.Accounts and Az.Aks using the command`
-                `'Install-Module {Insert Module Name} -Repository PSGallery -Force -AllowClobber -ErrorAction Stop -WarningAction Stop'
-                `If you do not have the latest version of these Modules, this troubleshooting script may not run."
-    $question = "Do you want to Install the modules and run the script or just run the script?"
-
-    $choices = New-Object Collections.ObjectModel.Collection[Management.Automation.Host.ChoiceDescription]
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Yes, Install and run'))
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Continue without installing the Module'))
-    $choices.Add((New-Object Management.Automation.Host.ChoiceDescription -ArgumentList '&Quit'))
-
-    $decision = $Host.UI.PromptForChoice($message, $question, $choices, 0)
-
-    switch ($decision) {
-        0 { 
-
-            if ($null -eq $azResourcesModule) {
-                try {
-                    Write-Host("Installing Az.Resources...")
-                    Install-Module Az.Resources -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules forAz.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    exit
-                }
-            }
-
-            if ($null -eq $azAccountModule) {
-                try {
-                    Write-Host("Installing Az.Accounts...")
-                    Install-Module Az.Accounts -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules forAz.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    exit
-                }
-            }
-
-            if ($null -eq $azAksModule) {
-                try {
-                    Write-Host("Installing Az.Aks...")
-                    Install-Module Az.Aks -Repository PSGallery -Force -AllowClobber -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Aks in a new powershell window: eg. 'Install-Module Az.Aks -Repository PSGallery -Force'") -ForegroundColor Red 
-                    exit
-                }
-            }
-           
-        }
-        1 {
-
-            if ($null -eq $azResourcesModule) {
-                try {
-                    Import-Module Az.Resources -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Resources...") -ForegroundColor Red
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Resources in a new powershell window: eg. 'Install-Module Az.Resources -Repository PSGallery -Force'") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }
-            }
-            if ($null -eq $azAccountModule) {
-                try {
-                    Import-Module Az.Accounts -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Accounts...") -ForegroundColor Red
-                    Write-Host("Close other powershell logins and try installing the latest modules for Az.Accounts in a new powershell window: eg. 'Install-Module Az.Accounts -Repository PSGallery -Force'") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }
-            }
-            if ($null -eq $azAksModule) {
-                try {
-                    Import-Module Az.Aks -ErrorAction Stop
-                }
-                catch {
-                    Write-Host("Could not import Az.Aks... Please reinstall this Module") -ForegroundColor Red
-                    Stop-Transcript
-                    exit
-                }   
-            }      
-    
-        }
-        2 { 
-            Write-Host("")
-            Stop-Transcript
-            exit
-        }
-     }
-    }
-
-    try {
-       Write-Host("")
-       Write-Host("Trying to get the current Az login context...")
-       $account = Get-AzContext -ErrorAction Stop
-       Write-Host("Successfully fetched current AzContext context...") -ForegroundColor Green
-       Write-Host("")
-    }
-    catch {
-      Write-Host("")
-      Write-Host("Could not fetch AzContext..." ) -ForegroundColor Red
-      Write-Host("")
-    }
-
-
-    if ($account.Account -eq $null) {
-    try {
-        Write-Host("Please login...")
-        Connect-AzAccount -subscriptionid $SubscriptionId
-    }
-    catch {
-        Write-Host("")
-        Write-Host("Could not select subscription with ID : " + $SubscriptionId + ". Please make sure the ID you entered is correct and you have access to the cluster" ) -ForegroundColor Red
-        Write-Host("")
-        Stop-Transcript
-        exit
-     }
-    }
-    else {
-    if ($account.Subscription.Id -eq $SubscriptionId) {
-        Write-Host("Subscription: $SubscriptionId is already selected. Account details: ")
-        $account
-    }
-    else {
-        try {
-            Write-Host("Current Subscription:")
-            $account
-            Write-Host("Changing to subscription: $SubscriptionId")
-            Set-AzContext -SubscriptionId $SubscriptionId
-        }
-        catch {
-            Write-Host("")
-            Write-Host("Could not select subscription with ID : " + $SubscriptionId + ". Please make sure the ID you entered is correct and you have access to the cluster" ) -ForegroundColor Red
-            Write-Host("")
-            Stop-Transcript
-            exit
-        }
-      }
-    }
-
-    #
-    #   Check AKS cluster existence and access check
-    #
-    Write-Host("Checking aks cluster exists...")
-    $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $clusterName  -ErrorVariable notPresent -ErrorAction SilentlyContinue
-    if ($notPresent) {
-       Write-Host("")
-       Write-Host("Could not find Aks cluster. Please make sure that specified cluster exists: '" + $clusterName + "'is correct and you have access to the cluster") -ForegroundColor Red
-       Write-Host("")
-       Stop-Transcript
-       exit
-    }
-    Write-Host("Successfully checked specified cluster exists details...") -ForegroundColor Green
-
-    $servicePrincipalClientId = $cluster.ServicePrincipalProfile.clientId
-    $clusterResourceId = $cluster.Id
-
-    #
-    #  Add Monitoring Metrics Publisher role assignment to the AKS cluster resource
-    #
-
-    New-AzRoleAssignment -ApplicationId $servicePrincipalClientId -scope $clusterResourceId -RoleDefinitionName "Monitoring Metrics Publisher"  -ErrorVariable assignmentError -ErrorAction SilentlyContinue
-
-    if ($assignmentError) {
-
-    $roleAssignment = Get-AzRoleAssignment -scope $clusterResourceId -RoleDefinitionName "Monitoring Metrics Publisher" -ErrorVariable getAssignmentError -ErrorAction SilentlyContinue     
-
-    if ($assignmentError.Exception -match "role assignment already exists" -or ( $roleAssignment -and $roleAssignment.ObjectType -like "ServicePrincipal" )) {           
-        Write-Host("Monitoring Metrics Publisher role assignment already exists on the cluster resource : '" + $clusterName + "'") -ForegroundColor Green 
-    }
-    else { 
-        
-        Write-Host("Failed to add Monitoring Metrics Publisher role assignment to cluster : '" + $clusterName + "' , error : $assignmentError") -ForegroundColor Red      
-    }
-
-    }
-    else {
-
-    Write-Host("Successfully added Monitoring Metrics Publisher role assignment to cluster : '" + $clusterName + "'") -ForegroundColor Green 
-   
-    }
-    ```
-
-2. Sla dit bestand op als **onboard_metrics. ps1** naar een lokale map.
-3. Voer de volgende opdracht uit met behulp van de Azure PowerShell. Bewerk de waarden voor **subscriptionId**, **resourceGroupName**en **clustername** met de waarden op de **OVERZICHTs** pagina van AKS voor het AKS-cluster.
-
-    ```powershell
-    .\onboard_metrics.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
+    .\mdm_onboarding.ps1 subscriptionId <subscriptionId> resourceGroupName <resourceGroupName> clusterName <clusterName>
     ```
 
     Het kan een paar seconden duren voordat de configuratie wijziging is voltooid. Wanneer de service is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat:
@@ -584,6 +120,6 @@ Voer de volgende stappen uit om een specifiek cluster bij te werken met Azure Po
     Successfully added Monitoring Metrics Publisher role assignment to cluster : <clusterName>
     ```
 
-## <a name="verify-update"></a>Update controleren 
+## <a name="verify-update"></a>Update controleren
 
 Nadat u de update hebt gestart met een van de methoden die eerder zijn beschreven, kunt u Azure Monitor Metrics Explorer gebruiken en controleren of de **metrische naam ruimte** die **inzichten** bevat wordt weer gegeven. Als dit het geval is, geeft dit aan dat u kunt door gaan met het instellen van [metrische waarschuwingen](../platform/alerts-metric.md) of het vastmaken van uw grafieken aan [Dash boards](../../azure-portal/azure-portal-dashboards.md).  

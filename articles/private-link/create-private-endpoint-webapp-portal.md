@@ -4,16 +4,16 @@ description: Privé verbinden met een web-app met behulp van een persoonlijk Azu
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287812"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298700"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Privé verbinden met een web-app met behulp van een persoonlijk Azure-eind punt (preview-versie)
 
@@ -23,7 +23,7 @@ In deze Quick Start leert u hoe u een web-app implementeert met een persoonlijk 
 Zie voor meer informatie [privé-eind punten gebruiken voor Azure-web-app][privatenedpointwebapp].
 
 > [!Note]
->Het voor beeld is beschikbaar in de regio's VS-Oost en VS-West 2 voor alle PremiumV2 Windows-en Linux-Web Apps. 
+>Het voor beeld is beschikbaar in open bare regio's voor PremiumV2 voor Windows en Linux Web Apps-en elastische Premium-functies. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -37,7 +37,7 @@ In deze sectie maakt u het virtuele netwerk en het subnet voor het hosten van de
 
 In deze sectie maakt u een virtueel netwerk en een subnet.
 
-1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource** > **netwerken** > **virtueel netwerk** maken of zoeken naar **virtueel netwerk** in het zoekvak.
+1. Selecteer in de linkerbovenhoek van het scherm de optie **een resource**  >  **netwerken**  >  **virtueel netwerk** maken of zoeken naar **virtueel netwerk** in het zoekvak.
 
 1. In **virtueel netwerk maken**typt of selecteert u deze informatie op het tabblad basis beginselen:
 
@@ -60,7 +60,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet.
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal een**virtuele machine** voor het**berekenen** > van **een resource maken** > 
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een**  >  **Compute**  >  **virtuele machine** voor het berekenen van een resource maken
 
 1. Typ of selecteer in Een virtuele machine maken - Basisprincipes de volgende gegevens:
 
@@ -89,7 +89,7 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 
 ### <a name="web-app"></a>Web-app
 
-1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal **een resource** > **maken web** > **Web app** .
+1. Selecteer in de linkerbovenhoek van het scherm in de Azure Portal **een resource maken**  >  **Web**  >  **Web app** .
 
 1. Voer in web-app maken de volgende gegevens in of Selecteer deze:
 
@@ -102,7 +102,7 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 
 ### <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken
 
-1. Selecteer in de eigenschappen van de web-app **instellingen** > **netwerken** en klik op **uw particuliere endpoint-verbindingen configureren** .
+1. Selecteer in de eigenschappen van de web-app **instellingen**  >  **netwerken** en klik op **uw particuliere endpoint-verbindingen configureren** .
 
    > [!div class="mx-imgBorder"]
    >![Web-app-netwerken][7]
@@ -120,8 +120,8 @@ In deze sectie maakt u een persoonlijke web-app met behulp van een persoonlijk e
 1. Het maken van het persoonlijke eind punt controleren
 
    > [!div class="mx-imgBorder"]
-   >![Definitieve][10]
-   >![weer gave van het persoonlijke eind punt controleren][11]
+   >![][10]
+   > ![ Definitieve weer gave van het persoonlijke eind punt controleren][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 

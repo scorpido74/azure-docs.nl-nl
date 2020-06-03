@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131195"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300787"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -42,7 +42,7 @@ U wordt aangeraden de [algemene controle vragen](monitoring-common-questions.md)
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Site Recovery configureren voor het verzenden van Logboeken
 
-1. Klik in de kluis op **Diagnostische instellingen** > **Diagnostische instelling toevoegen**.
+1. Klik in de kluis op **Diagnostische instellingen**  >  **Diagnostische instelling toevoegen**.
 
     ![Bron logboek registratie selecteren](./media/monitoring-log-analytics/add-diagnostic.png)
 
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Waarschuwingen instellen-voor beelden
 
-U kunt Site Recovery waarschuwingen instellen op basis van Azure Monitor gegevens. Meer [informatie](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) over het instellen van logboek waarschuwingen. 
+U kunt Site Recovery waarschuwingen instellen op basis van Azure Monitor gegevens. Meer [informatie](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) over het instellen van logboek waarschuwingen. 
 
 > [!NOTE]
 > Enkele voor beelden gebruiken **replicationProviderName_s** ingesteld op **A2A**. Hiermee stelt u waarschuwingen in voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio. In deze voor beelden kunt u **A2A** vervangen door **InMageAzureV2** als u waarschuwingen wilt instellen voor on-premises virtuele VMware-machines of fysieke servers die worden gerepliceerd naar Azure.

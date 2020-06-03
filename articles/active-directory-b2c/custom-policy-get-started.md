@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247985"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295521"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Aan de slag met aangepast beleid in Azure Active Directory B2C
 
@@ -74,22 +74,9 @@ U moet deze twee toepassingen in uw Azure AD B2C-Tenant slechts eenmaal registre
 
 ### <a name="register-the-identityexperienceframework-application"></a>De IdentityExperienceFramework-toepassing registreren
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app-registraties (verouderde)** ervaring of onze nieuwe geïntegreerde **app-registraties (preview-versie)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de **app-registraties** -ervaring gebruiken.
 
-#### <a name="applications"></a>[Toepassingen](#tab/applications/)
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
-1. Selecteer in het menu **Azure Active Directory** overzicht onder **beheren**de optie **app-registraties (verouderd)**.
-1. Selecteer **Nieuwe toepassing registreren**.
-1. Voer **Name**in bij naam `IdentityExperienceFramework` .
-1. Kies voor **toepassings type** **Web-app/API**.
-1. Voer bij **aanmeldings-URL**in `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de naam van uw Azure AD B2C Tenant domein. Alle Url's moeten nu gebruikmaken van [b2clogin.com](b2clogin.md).
-1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
-
-#### <a name="app-registrations-preview"></a>[App-registraties (preview)](#tab/app-reg-preview/)
-
-1. Selecteer **App-registraties (preview)** en selecteer daarna **Nieuwe registratie**.
+1. Selecteer **app-registraties**en selecteer vervolgens **nieuwe registratie**.
 1. Voer **Name**in bij naam `IdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Onder **omleidings-URI**selecteert u **Web**en vervolgens ENTER `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , waarbij `your-tenant-name` de domein naam van uw Azure AD B2C Tenant.
@@ -111,21 +98,7 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>De ProxyIdentityExperienceFramework-toepassing registreren
 
-#### <a name="applications"></a>[Toepassingen](#tab/applications/)
-
-1. Selecteer in **app-registraties (verouderd)** de optie **nieuwe toepassing registreren**.
-1. Voer **Name**in bij naam `ProxyIdentityExperienceFramework` .
-1. Kies voor **toepassings type** **systeem eigen**.
-1. Voer voor **omleidings-URI**in `myapp://auth` .
-1. Selecteer **Maken**. Nadat de app is gemaakt, kopieert u de toepassings-ID en slaat u deze op voor later gebruik.
-1. Selecteer **instellingen**, selecteer de **gewenste machtigingen**en selecteer vervolgens **toevoegen**.
-1. Kies **een API selecteren**, zoek naar en selecteer **IdentityExperienceFramework**, en klik vervolgens op **selecteren**.
-1. Schakel het selectie vakje naast **toegangs IdentityExperienceFramework**in, klik op **selecteren**en klik vervolgens op **gereed**.
-1. Selecteer **machtigingen verlenen**en Bevestig door **Ja**te selecteren.
-
-#### <a name="app-registrations-preview"></a>[App-registraties (preview)](#tab/app-reg-preview/)
-
-1. Selecteer **App-registraties (preview)** en selecteer daarna **Nieuwe registratie**.
+1. Selecteer **app-registraties**en selecteer vervolgens **nieuwe registratie**.
 1. Voer **Name**in bij naam `ProxyIdentityExperienceFramework` .
 1. Onder **ondersteunde account typen**selecteert u **alleen accounts in deze organisatie Directory**.
 1. Gebruik **Omleidings-URI**, gebruik het vervolgkeuzemenu om **Openbare client/systeemeigen (mobiel en desktop)** te selecteren.
@@ -137,7 +110,6 @@ Vervolgens maakt u de API zichtbaar door een bereik toe te voegen:
 Geef vervolgens op dat de toepassing moet worden behandeld als een open bare client:
 
 1. Selecteer onder **beheren**de optie **verificatie**.
-1. Selecteer **de nieuwe ervaring uitproberen** (indien weer gegeven).
 1. Schakel onder **Geavanceerde instellingen** **de optie toepassing behandelen als een open bare client** in (Selecteer **Ja**). Zorg ervoor dat **' allowPublicClient ': True '** is ingesteld in het manifest van de toepassing. 
 1. Selecteer **Opslaan**.
 

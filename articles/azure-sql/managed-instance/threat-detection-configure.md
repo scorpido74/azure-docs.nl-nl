@@ -12,12 +12,12 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: a60156762a4d8dfb6b11ae70e608fb26b07e5764
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045758"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310815"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Geavanceerde bedreigingen beveiliging configureren in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,7 +31,7 @@ U kunt meldingen over de gedetecteerde bedreigingen ontvangen via [e-mail meldin
 ##  <a name="azure-portal"></a>Azure Portal
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
-2. Ga naar de configuratie pagina van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer op de pagina **instellingen** de optie **geavanceerde gegevens beveiliging**.
+2. Ga naar de configuratie pagina van het exemplaar van het SQL-beheerde exemplaar dat u wilt beveiligen. Selecteer op de pagina **instellingen** de optie **geavanceerde gegevens beveiliging**.
 3. Op de pagina Geavanceerde gegevens beveiliging configuratie
    - Geavanceerde **gegevens** beveiliging inschakelen.
    - De **lijst met e-mail** berichten configureren voor het ontvangen van beveiligings waarschuwingen bij het detecteren van afwijkende database activiteiten.

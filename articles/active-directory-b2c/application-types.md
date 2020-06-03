@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29a82c1aed4ea79673b4019270a334eac722bc96
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78190140"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295419"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Toepassings typen die kunnen worden gebruikt in Active Directory B2C
 
@@ -97,7 +97,7 @@ Een web-API kan tokens ontvangen van een groot aantal typen clients, waaronder w
 4. De webserver valideert de `id_token` en stelt een sessie cookie in.
 5. De webserver vraagt Azure AD B2C om een `access_token` door de verificatie code, de client-id van de toepassing en de client referenties op te geven.
 6. De `access_token` en `refresh_token` worden geretourneerd naar de webserver.
-7. De Web-API wordt aangeroepen met `access_token` de in een autorisatie-header.
+7. De Web-API wordt aangeroepen met de `access_token` in een autorisatie-header.
 8. De Web-API valideert het token.
 9. Beveiligde gegevens worden geretourneerd naar de webtoepassing.
 
@@ -109,7 +109,7 @@ Voor meer informatie over het beveiligen van een web-API met behulp van Azure AD
 
 Toepassingen die zijn geïnstalleerd op apparaten, zoals mobiele en desktop toepassingen, moeten vaak toegang hebben tot back-end-services of Web-Api's namens gebruikers. U kunt aangepaste ervaring voor identiteits beheer toevoegen aan uw systeem eigen toepassingen en back-end-services veilig aanroepen met behulp van Azure AD B2C en de [OAuth 2,0-autorisatie code stroom](authorization-code-flow.md).
 
-In deze stroom voert de toepassing [beleid](user-flow-overview.md) uit en ontvangt het een `authorization_code` van Azure AD nadat de gebruiker het beleid heeft voltooid. De `authorization_code` vertegenwoordigt de machtiging van de toepassing voor het aanroepen van back-end-services namens de gebruiker die momenteel is aangemeld. De toepassing kan vervolgens de `authorization_code` op de achtergrond voor een `access_token` -en een `refresh_token`-op-een.  De toepassing kan de `access_token` gebruiken om te verifiëren bij een back-end web-API in HTTP-aanvragen. Het `refresh_token` kan ook worden gebruikt om nieuwe `access_token` te verkrijgen wanneer de oudere zijn verlopen.
+In deze stroom voert de toepassing [beleid](user-flow-overview.md) uit en ontvangt het een `authorization_code` van Azure AD nadat de gebruiker het beleid heeft voltooid. De `authorization_code` vertegenwoordigt de machtiging van de toepassing voor het aanroepen van back-end-services namens de gebruiker die momenteel is aangemeld. De toepassing kan vervolgens de `authorization_code` op de achtergrond voor een- `access_token` en een-op-een `refresh_token` .  De toepassing kan de gebruiken `access_token` om te verifiëren bij een back-end web-API in HTTP-aanvragen. Het `refresh_token` kan ook worden gebruikt om nieuwe `access_token` te verkrijgen wanneer de oudere zijn verlopen.
 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
@@ -119,9 +119,11 @@ In deze stroom voert de toepassing [beleid](user-flow-overview.md) uit en ontvan
 
 Toepassingen die langlopende processen bevatten of die werken zonder de aanwezigheid van een gebruiker, hebben ook een manier nodig om toegang te krijgen tot beveiligde resources, zoals web-Api's. Deze toepassingen kunnen tokens verifiëren en ophalen met behulp van de identiteit van de toepassing (in plaats van de gedelegeerde identiteit van een gebruiker) en met behulp van de OAuth 2,0-client referenties stroom. De stroom van de client referenties is niet hetzelfde als namens flow en namens flow mag niet worden gebruikt voor server-naar-Server-verificatie.
 
-Hoewel de client referentie stroom momenteel niet wordt ondersteund door Azure AD B2C, kunt u de client referentie stroom instellen met behulp van Azure AD. Een Azure AD B2C-Tenant deelt een aantal functies met Azure AD-tenants voor bedrijven.  De client referentie stroom wordt ondersteund met behulp van de Azure AD-functionaliteit van de Azure AD B2C Tenant.
+Hoewel de OAuth 2,0-toewijzings stroom voor client referenties momenteel niet rechtstreeks wordt ondersteund door de Azure AD B2C Authentication-Service, kunt u de client referentie stroom instellen met behulp van Azure AD en het micro soft Identity platform/token-eind punt voor een toepassing in uw Azure AD B2C-Tenant. Een Azure AD B2C-Tenant deelt een aantal functies met Azure AD-tenants voor bedrijven.
 
 Zie [Azure Active Directory v 2.0 en de OAuth 2,0-client referenties stroom voor het](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds)instellen van de client referentie stroom. Een geslaagde verificatie resulteert in de ontvangst van een token dat is geformatteerd zodat deze kan worden gebruikt door Azure AD, zoals beschreven in [Azure AD-token verwijzing](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+
+Zie [Azure AD B2C beheren met Microsoft Graph](microsoft-graph-get-started.md)voor instructies voor het registreren van een beheer toepassing.
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web-API-ketens (namens-stroom)
 
