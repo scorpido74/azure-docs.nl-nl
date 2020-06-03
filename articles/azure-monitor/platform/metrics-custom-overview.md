@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018528"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299822"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Aangepaste metrische gegevens in Azure Monitor (preview-versie)
 
@@ -30,9 +30,9 @@ Aangepaste metrische gegevens kunnen via verschillende methoden naar Azure Monit
 - Installeer de [InfluxData-telegrafa-agent](collect-custom-metrics-linux-telegraf.md) op uw virtuele Azure Linux-machine en verzend metrische gegevens met behulp van de invoeg toepassing Azure monitor-uitvoer.
 - Aangepaste metrische gegevens [rechtstreeks naar de Azure Monitor rest API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)verzenden `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
-## <a name="pricing-model-and-rentention"></a>Prijs model en retentiegerelateerde
+## <a name="pricing-model-and-retention"></a>Prijs model en retentie
 
-Controleer de [Azure monitor prijs pagina](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie over wanneer facturering wordt ingeschakeld voor aangepaste metrische gegevens en metrische query's. Specifieke prijs informatie voor alle metrische gegevens, zoals aangepaste metrische gegevens en metrische query's, zijn beschikbaar op deze pagina. In samen vatting zijn er geen kosten verbonden aan het opnemen van standaard metrische gegevens (platform metrieken) in Azure Monitor metrische opslag, maar aangepaste metrische gegevens worden kosten in rekening gebracht wanneer ze algemene Beschik baarheid invoeren. Metrische API-query's worden kosten in rekening gebracht.
+Controleer de [Azure monitor prijs pagina](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie over wanneer facturering wordt ingeschakeld voor aangepaste metrische gegevens en metrische query's. Specifieke prijs informatie voor alle metrische gegevens, zoals aangepaste metrische gegevens en metrische query's, zijn beschikbaar op deze pagina. In samen vatting zijn er geen kosten verbonden aan het opnemen van standaard metrische gegevens (platform metrieken) in Azure Monitor metrische opslag, maar aangepaste metrische gegevens worden kosten in rekening gebracht wanneer ze algemene Beschik baarheid invoeren. Met metrische API-query's kunnen kosten in rekening worden gebracht.
 
 Aangepaste metrische gegevens worden bewaard voor [dezelfde hoeveelheid tijd als de metrische gegevens](data-platform-metrics.md#retention-of-metrics)van het platform. 
 
@@ -196,6 +196,7 @@ Tijdens de open bare preview-periode is de mogelijkheid om aangepaste metrische 
 |VS - centraal      | https: \/ /centralus.monitoring.Azure.com |
 |Canada - midden | https: \/ /canadacentral.monitoring.Azure.comc
 |VS - oost| https: \/ /eastus.monitoring.Azure.com/ |
+|VS - oost 2 | https: \/ /eastus2.monitoring.Azure.com/
 | **Europa** | |
 |Europa - noord    | https: \/ /northeurope.monitoring.Azure.com/ |
 |Europa -west     | https: \/ /westeurope.monitoring.Azure.com/ |

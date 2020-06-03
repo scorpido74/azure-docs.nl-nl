@@ -1,5 +1,5 @@
 ---
-title: Tijd zones beheerde instantie
+title: Tijd zones van Azure SQL Managed instance
 description: Meer informatie over de tijdzone specificaties van Azure SQL Managed instance
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: ef8572f03ddb3df8dae5f823c2d8d6d12f3e1a31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046815"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309659"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Tijd zones in Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ Coordinated Universal Time (UTC) is de aanbevolen tijd zone voor de gegevenslaag
 T-SQL-functies [, zoals getdate ()](/sql/t-sql/functions/getdate-transact-sql) of CLR-code, observeren de tijd zone die is ingesteld op instantie niveau. SQL Server Agent taken volgen ook schema's volgens de tijd zone van het exemplaar.
 
   > [!NOTE]
-  > Azure SQL Database ondersteunt geen tijd zone-instellingen; de waarde wordt altijd UTC. Gebruik [op tijd zone](/sql/t-sql/queries/at-time-zone-transact-sql) in SQL-data bases als u datum-en tijd gegevens in een niet-UTC-tijd zone wilt interpreteren.
+  > Azure SQL Database ondersteunt geen tijd zone-instellingen; de waarde wordt altijd UTC. Gebruik [op tijd zone](/sql/t-sql/queries/at-time-zone-transact-sql) in SQL database als u datum-en tijd gegevens in een niet-UTC-tijd zone wilt interpreteren.
 
 ## <a name="supported-time-zones"></a>Ondersteunde tijd zones
 

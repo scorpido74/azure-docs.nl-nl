@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2737da028d8fea1c31b728c8e9864ad421d08ec
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457923"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309588"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Een Azure-abonnement aan uw Azure Active Directory-tenant toevoegen of koppelen
 
@@ -42,7 +42,7 @@ Al uw gebruikers hebben één *basis* Directory voor verificatie. Uw gebruikers 
 
 Voordat u uw abonnement kunt koppelen of toevoegen, moet u de volgende taken uitvoeren:
 
-- Bekijk de volgende lijst met wijzigingen en de manier waarop u dit kunt beïnvloeden:
+- Bekijk de volgende lijst met wijzigingen die zich voordoen nadat u uw abonnement hebt gekoppeld of toegevoegd, en hoe u dit kunt beïnvloeden:
 
   - Gebruikers aan wie rollen zijn toegewezen via RBAC, raken hun toegang kwijt
   - Service beheerder en mede beheerders hebben geen toegang meer
@@ -71,13 +71,13 @@ Voer de volgende stappen uit om een bestaand abonnement aan uw Azure AD-adres li
 
     ![Wijzig de Directory-pagina met de Directory waarnaar moet worden gewijzigd](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    De map wordt gewijzigd voor het abonnement en er wordt een bericht weer gegeven.
+    Nadat de Directory voor het abonnement is gewijzigd, wordt een bericht weer gegeven.
 
-    ![Geslaagd bericht over Directory wijziging](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. Selecteer **wisselende directory's** op de pagina abonnement om naar de nieuwe map te gaan. 
 
-Gebruik de **Active** Directory om naar uw nieuwe map te gaan. Het kan enkele uren duren voordat alles goed wordt weer gegeven. Als het te lang lijkt te duren, controleert u het **filter voor algemeen abonnement**. Zorg ervoor dat het verplaatste abonnement niet is verborgen. Mogelijk moet u zich afmelden bij de Azure Portal en u opnieuw aanmelden om de nieuwe map te zien.
+      ![Pagina Directory-wisselaar, met voorbeeld gegevens](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![Pagina Directory-wisselaar, met voorbeeld gegevens](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      Het kan enkele uren duren voordat alles goed wordt weer gegeven. Als het te lang lijkt te duren, controleert u het **filter voor algemeen abonnement**. Zorg ervoor dat het verplaatste abonnement niet is verborgen. Mogelijk moet u zich afmelden bij de Azure Portal en u opnieuw aanmelden om de nieuwe map te zien.
 
 Het wijzigen van de abonnements Directory is een bewerking op service niveau. Dit heeft geen invloed op het eigendom van het abonnement. De account beheerder kan de service beheerder nog steeds wijzigen vanuit het [account centrum](https://account.azure.com/subscriptions). Als u de oorspronkelijke map wilt verwijderen, moet u het eigendom van het abonnement overdragen aan een nieuwe account beheerder. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../../cost-management-billing/manage/billing-subscription-transfer.md)voor meer informatie over het overdragen van het eigendom van de facturering.
 

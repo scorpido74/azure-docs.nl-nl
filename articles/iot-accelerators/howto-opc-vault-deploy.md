@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686944"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307925"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>De OPC kluis Certificate Management-service bouwen en implementeren
 
@@ -51,11 +51,11 @@ U kunt de opslag plaats ook rechtstreeks klonen in Visual Studio 2017.
 Een Power shell-script biedt een eenvoudige manier om de OPC-kluis micro service en de toepassing te implementeren.
 
 1. Open een Power shell-venster in de hoofdmap opslag plaats. 
-3. Ga naar de map `cd deploy`Deploy.
+3. Ga naar de map Deploy `cd deploy` .
 3. Kies een naam `myResourceGroup` die waarschijnlijk geen conflict veroorzaakt met andere geïmplementeerde webpagina's. Zie de sectie "website naam al in gebruik" verderop in dit artikel.
 5. Start de implementatie met `.\deploy.ps1` voor interactieve installatie of voer een volledige opdracht regel in:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Als u van plan bent om te ontwikkelen met deze `-development 1` implementatie, voegt u toe om de Swagger-gebruikers interface in te scha kelen en om debug-builds te implementeren.
+7. Als u van plan bent om te ontwikkelen met deze implementatie, voegt u toe `-development 1` om de Swagger-gebruikers interface in te scha kelen en om debug-builds te implementeren.
 6. Volg de instructies in het script om u aan te melden bij uw abonnement en om aanvullende informatie te geven.
 9. Nadat de bewerking is voltooid, wordt het volgende bericht weer gegeven:
    ```
@@ -76,13 +76,13 @@ Een Power shell-script biedt een eenvoudige manier om de OPC-kluis micro service
    > In het geval van problemen raadpleegt u de sectie ' problemen met implementatie fouten oplossen ' verderop in dit artikel.
 
 8. Open uw favoriete browser en open de toepassings pagina:`https://myResourceGroup.azurewebsites.net`
-8. Geef de web-app en de OPC-kluis micro service een paar minuten om na de implementatie te warmten. De start pagina van het web loopt mogelijk vast bij het eerste gebruik, tot een minuut, totdat u de eerste reacties krijgt.
+8. Geef de web-app en de OPC-kluis micro service een paar minuten om na de implementatie te warmten. De start pagina van het web reageert mogelijk niet meer bij het eerste gebruik, Maxi maal een minuut, totdat u de eerste reacties krijgt.
 11. Als u de Swagger API wilt bekijken, opent u:`https://myResourceGroup-service.azurewebsites.net`
-13. Start `.\myResourceGroup-gds.cmd`om een lokale GDS-server te starten met dotnet. Start `.\myResourceGroup-dockergds.cmd`met docker.
+13. Start om een lokale GDS-server te starten met DotNet `.\myResourceGroup-gds.cmd` . Start met docker `.\myResourceGroup-dockergds.cmd` .
 
 Het is mogelijk om een build opnieuw te implementeren met precies dezelfde instellingen. Houd er rekening mee dat een dergelijke bewerking alle toepassings geheimen vernieuwt en mogelijk sommige instellingen in de toepassings registraties van de Azure Active Directory (Azure AD) opnieuw kan instellen.
 
-Het is ook mogelijk alleen de binaire bestanden van de web-app te implementeren. Met de para `-onlyBuild 1`meter worden nieuwe ZIP-pakketten van de service en de app geïmplementeerd naar de webtoepassingen.
+Het is ook mogelijk alleen de binaire bestanden van de web-app te implementeren. Met de para meter `-onlyBuild 1` worden nieuwe ZIP-pakketten van de service en de app geïmplementeerd naar de webtoepassingen.
 
 Nadat de implementatie is voltooid, kunt u beginnen met het gebruik van de services. Zie [de OPC-kluis certificaat beheer service beheren](howto-opc-vault-manage.md).
 
@@ -94,8 +94,8 @@ Dit doet u al volgt:
 2. Ga naar de resource groep waarin de service is geïmplementeerd.
 3. Selecteer **Resourcegroep verwijderen** en bevestig dit.
 4. Na enkele ogen blikken worden alle geïmplementeerde service onderdelen verwijderd.
-5. Ga naar **Azure Active Directory** > **app-registraties**.
-6. Er moeten drie registraties worden vermeld voor elke geïmplementeerde resource groep. De registraties hebben de volgende namen: `resourcegroup-client`, `resourcegroup-module`, `resourcegroup-service`. Verwijder elke registratie afzonderlijk.
+5. Ga naar **Azure Active Directory**  >  **app-registraties**.
+6. Er moeten drie registraties worden vermeld voor elke geïmplementeerde resource groep. De registraties hebben de volgende namen: `resourcegroup-client` , `resourcegroup-module` , `resourcegroup-service` . Verwijder elke registratie afzonderlijk.
 
 Nu worden alle geïmplementeerde onderdelen verwijderd.
 
@@ -107,7 +107,7 @@ Gebruik een korte en eenvoudige naam voor de resource groep. De naam wordt ook g
 
 ### <a name="website-name-already-in-use"></a>De naam van de website wordt al gebruikt
 
-Het is mogelijk dat de naam van de website al in gebruik is. U moet een andere naam voor de resource groep gebruiken. De hostnamen die worden gebruikt door het implementatie script zijn: https\/:/resourcegroupname.azurewebsites.net en HTTPS\/:/resourgroupname-service.azurewebsites.net.
+Het is mogelijk dat de naam van de website al in gebruik is. U moet een andere naam voor de resource groep gebruiken. De hostnamen die worden gebruikt door het implementatie script zijn: https: \/ /resourcegroupname.azurewebsites.net en https: \/ /resourgroupname-service.azurewebsites.net.
 Andere namen van services worden gebouwd op basis van de combi natie van korte naam-hashes en zijn waarschijnlijk niet strijdig met andere services.
 
 ### <a name="azure-ad-registration"></a>Azure AD-registratie 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683313"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310382"
 ---
-# <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen
+# <a name="frequently-asked-questions-faq"></a>Veelgestelde vragen (FAQ's)
 
 Vind antwoorden op veelgestelde vragen over Microsoft Azure specifieke HSM.
 
@@ -115,7 +115,7 @@ Ja, als u on-premises Gemalto SafeNet Hsm's hebt. Er zijn meerdere methoden. Raa
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>V: welke besturings systemen worden ondersteund door toegewezen HSM-client software?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD
-* Virtual: VMware, Hyper, xen, KVM
+* Virtual: VMware, Hyper-V, xen, KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>V: Hoe kan ik mijn client toepassing configureren om een configuratie met een hoge Beschik baarheid te maken met meerdere partities van meerdere Hsm's?
 
@@ -242,7 +242,7 @@ Micro soft heeft niet de mogelijkheid om verbinding te maken met Hsm's die aan k
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>V: wat moet ik doen als ik mijn HSM opnieuw opstart?
 
-De HSM heeft een optie voor opnieuw opstarten van de opdracht regel. er zijn echter problemen met het opnieuw opstarten van de computer en daarom wordt het aanbevolen om de veiligste keer dat u een ondersteunings aanvraag met micro soft hebt uitgevoerd om het apparaat fysiek opnieuw op te starten. 
+De HSM heeft een optie voor opnieuw opstarten van de opdracht regel. Er treden echter problemen op waarbij het opnieuw opstarten van de computer niet meer reageert en daarom wordt aanbevolen voor de veiligste keer dat u een ondersteunings aanvraag bij micro soft opvraagt, zodat het apparaat fysiek opnieuw wordt opgestart. 
 
 ## <a name="cryptography-and-standards"></a>Crypto grafie en standaarden
 

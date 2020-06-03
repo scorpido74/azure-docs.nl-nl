@@ -121,7 +121,7 @@ Een belang rijk aspect van het gegevens beveiligings model is de mogelijkheid om
 
 ![Audit logboek](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="permissions"></a>Bevoegdheden
+## <a name="permissions"></a><a id="permissions"></a>Machtigingen
 
 Deze ingebouwde rollen kunnen de gegevens classificatie van een Data Base lezen:
 

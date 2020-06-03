@@ -3,14 +3,14 @@ title: Kubenet-netwerken configureren in azure Kubernetes service (AKS)
 description: Meer informatie over het configureren van kubenet (Basic) in azure Kubernetes service (AKS) voor het implementeren van een AKS-cluster in een bestaand virtueel netwerk en subnet.
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120909"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309665"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Gebruik kubenet-netwerken met uw eigen IP-adresbereiken in azure Kubernetes service (AKS)
 
@@ -91,7 +91,7 @@ Zie [netwerk modellen vergelijken en hun ondersteunings bereik][network-comparis
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Een virtueel netwerk en een subnet maken
 
-Om aan de slag te gaan met het gebruik van *kubenet* en uw eigen virtuele netwerk subnet, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Om aan de slag te gaan met het gebruik van *kubenet* en uw eigen virtuele netwerk subnet, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen * \< AppID>* op, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
+Wijs nu de service-principal voor uw AKS-cluster *Inzender* machtigingen toe aan het virtuele netwerk met behulp van de opdracht [AZ Role Assignment Create][az-role-assignment-create] . Geef uw eigen *\<appId>* op zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Een AKS-cluster maken in het virtuele netwerk
 
-U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen Service-Principal * \< AppID>* en * \< wacht woord>*, zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
+U hebt nu een virtueel netwerk en subnet gemaakt en machtigingen voor een service-principal gemaakt en toegewezen voor het gebruik van deze netwerk resources. Maak nu een AKS-cluster in uw virtuele netwerk en subnet met behulp van de opdracht [AZ AKS Create][az-aks-create] . Definieer uw eigen service *\<appId>* -principal en *\<password>* , zoals wordt weer gegeven in de uitvoer van de vorige opdracht om de service-principal te maken.
 
 De volgende IP-adresbereiken worden ook gedefinieerd als onderdeel van het proces voor het maken van een cluster:
 
@@ -195,7 +195,22 @@ az aks create \
     --client-secret <password>
 ```
 
-Wanneer u een AKS-cluster maakt, worden er een netwerk beveiligings groep en route tabel gemaakt. Deze netwerk bronnen worden beheerd door het AKS-besturings vlak. De netwerk beveiligings groep wordt automatisch gekoppeld aan de virtuele Nic's op uw knoop punten. De route tabel wordt automatisch gekoppeld aan het subnet van het virtuele netwerk. Regels voor netwerk beveiligings groepen en route tabellen worden automatisch bijgewerkt wanneer u Services maakt en weergeeft.
+Wanneer u een AKS-cluster maakt, worden er automatisch een netwerk beveiligings groep en route tabel gemaakt. Deze netwerk bronnen worden beheerd door het AKS-besturings vlak. De netwerk beveiligings groep wordt automatisch gekoppeld aan de virtuele Nic's op uw knoop punten. De route tabel wordt automatisch gekoppeld aan het subnet van het virtuele netwerk. Regels voor netwerk beveiligings groepen en route tabellen worden automatisch bijgewerkt wanneer u Services maakt en weergeeft.
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>Uw eigen subnet en route tabel meenemen met kubenet
+
+Met kubenet moet er een route tabel bestaan op de subnetten van het cluster. AKS ondersteunt uw eigen bestaande subnet en route tabel.
+
+Als uw aangepaste subnet geen route tabel bevat, wordt er door AKS een voor u gemaakt en worden er regels aan toegevoegd. Als uw aangepaste subnet een route tabel bevat wanneer u uw cluster maakt, erkent AKS de bestaande route tabel tijdens cluster bewerkingen en worden de regels dienovereenkomstig bijgewerkt voor Cloud provider bewerkingen.
+
+Beperkingen:
+
+* Machtigingen moeten worden toegewezen voordat het cluster kan worden gemaakt. Controleer of u een Service-Principal gebruikt met schrijf machtigingen voor uw aangepaste subnet en aangepaste route tabel.
+* Beheerde identiteiten worden momenteel niet ondersteund met aangepaste route tabellen in kubenet.
+* Een aangepaste route tabel moet aan het subnet zijn gekoppeld voordat u het AKS-cluster maakt. Deze route tabel kan niet worden bijgewerkt en alle routerings regels moeten worden toegevoegd aan of verwijderd uit de eerste route tabel voordat u het AKS-cluster maakt.
+* Alle subnetten in een virtueel AKS-netwerk moeten worden gebruikt om te worden gekoppeld aan dezelfde route tabel.
+* Elk AKS-cluster moet een unieke route tabel gebruiken. U kunt een route tabel niet opnieuw gebruiken met meerdere clusters.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

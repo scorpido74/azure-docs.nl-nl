@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: ba4acf32e13304c62ec5091670fe0b45ec3cb32c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 452cef0a65dd9c994b5d010676e402013b195ed3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235254"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300627"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Een peering op een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -72,7 +72,7 @@ Voordat u een peering maakt, moet u vertrouwd raken met de vereisten en beperkin
 
 Zie [volgende stappen](#next-steps)voor stapsgewijze instructies voor het implementeren van peering tussen virtuele netwerken in verschillende abonnementen en implementatie modellen.
 
-### <a name="commands"></a>Opdracht
+### <a name="commands"></a>Opdrachten
 
 - **Azure cli**: [AZ Network vnet peering Create](/cli/azure/network/vnet/peering)
 - **Power shell**: [add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
@@ -88,7 +88,7 @@ Voordat u een peering wijzigt, moet u vertrouwd raken met de vereisten en beperk
 5. Wijzig de juiste instelling. Meer informatie over de opties voor elke instelling in [stap 5](#add-peering) van een peering maken.
 6. Selecteer **Opslaan**.
 
-**Opdracht**
+**Opdrachten**
 
 - **Azure cli**: [AZ Network vnet peering List](/cli/azure/network/vnet/peering) to list peerings voor een virtueel netwerk, [AZ Network vnet peering laat](/cli/azure/network/vnet/peering) instellingen weer geven voor een specifieke peering en [AZ Network vnet peering update](/cli/azure/network/vnet/peering) om instellingen voor peering te wijzigen. |
 - **Power shell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) voor het ophalen van instellingen voor het weer geven van peering en [set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) om instellingen te wijzigen.
@@ -107,7 +107,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 4. Selecteer aan de rechter kant van de peering die u wilt verwijderen **...**, selecteer **verwijderen**en selecteer vervolgens **Ja** om de peering uit het eerste virtuele netwerk te verwijderen.
 5. Voltooi de voor gaande stappen om de peering te verwijderen uit het andere virtuele netwerk in de peering.
 
-**Opdracht**
+**Opdrachten**
 
 - **Azure cli**: [AZ Network vnet peering verwijderen](/cli/azure/network/vnet/peering)
 - **Power shell**: [Remove-AzVirtualNetworkPeering](/powershell/module/az.network/remove-azvirtualnetworkpeering)
@@ -121,7 +121,7 @@ Als u wilt dat virtuele netwerken soms communiceren, maar niet altijd, in plaats
 - De virtuele netwerken kunnen zich in dezelfde of verschillende abonnementen bevindt. Wanneer u virtuele netwerken in verschillende abonnementen peert, kunnen beide abonnementen worden gekoppeld aan dezelfde of een andere Azure Active Directory Tenant. Als u nog geen AD-Tenant hebt, kunt u [er een maken](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Ondersteuning voor peering in virtuele netwerken vanuit abonnementen die zijn gekoppeld aan verschillende Azure Active Directory tenants is niet beschikbaar in de portal. U kunt CLI, Power shell of sjablonen gebruiken.
 - De virtuele netwerken die u peert, moeten niet-overlappende IP-adres ruimten hebben.
 - U kunt geen adresbereiken toevoegen aan of verwijderen uit de adres ruimte van een virtueel netwerk wanneer een virtueel netwerk is gekoppeld aan een ander virtueel netwerk. Om adresbereiken toe te voegen of te verwijderen, verwijdert u de peering, voegt u de adresbereiken toe of verwijdert u de peering en maakt u deze opnieuw. Zie [virtuele netwerken beheren](manage-virtual-network.md)als u adresbereiken wilt toevoegen aan of adresbereiken uit virtuele netwerken wilt verwijderen.
-- U kunt twee virtuele netwerken die zijn geïmplementeerd met Resource Manager of een virtueel netwerk dat is geïmplementeerd via Resource Manager, peeren met een virtueel netwerk dat is geïmplementeerd via het klassieke implementatie model. U kunt niet twee virtuele netwerken peeren die zijn gemaakt via het klassieke implementatie model. Als u niet bekend bent met Azure-implementatie modellen, lees dan het artikel over [Azure-implementatie modellen begrijpen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . U kunt [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) gebruiken om twee virtuele netwerken te koppelen die zijn gemaakt via het klassieke implementatiemodel.
+- U kunt twee virtuele netwerken die zijn geïmplementeerd met Resource Manager of een virtueel netwerk dat is geïmplementeerd via Resource Manager, peeren met een virtueel netwerk dat is geïmplementeerd via het klassieke implementatie model. U kunt niet twee virtuele netwerken peeren die zijn gemaakt via het klassieke implementatie model. Als u niet bekend bent met Azure-implementatie modellen, lees dan het artikel over [Azure-implementatie modellen begrijpen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . U kunt [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) gebruiken om twee virtuele netwerken te koppelen die zijn gemaakt via het klassieke implementatiemodel.
 - Wanneer u twee virtuele netwerken koppelt die zijn gemaakt via Resource Manager, moet voor elk virtueel netwerk een peering worden geconfigureerd. U ziet een van de volgende typen voor de peering-status: 
   - *Gestart:* Wanneer u de peering maakt voor het tweede virtuele netwerk vanuit het eerste virtuele netwerk, wordt de status van de peering *geïnitieerd*. 
   - *Verbonden:* Wanneer u de peering van het tweede virtuele netwerk naar het eerste virtuele netwerk maakt, is de peering-status *verbonden*. Als u de status van de peering voor het eerste virtuele netwerk bekijkt, ziet u dat de status is gewijzigd van *geactiveerd* in *verbonden*. De peering wordt pas tot stand gebracht als de peering-status voor beide peering van virtuele netwerken is *verbonden*.
@@ -146,7 +146,7 @@ De accounts die u gebruikt om te werken met de peering van het virtuele netwerk 
 
 Als uw account niet is toegewezen aan een van de vorige rollen, moet dit worden toegewezen aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Bewerking                                                          | Name |
+| Bewerking                                                          | Naam |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vereist voor het maken van een peering van een virtueel netwerk A naar een virtueel netwerk B. virtueel netwerk A moet een virtueel netwerk zijn (Resource Manager)          |
 | Micro soft. Network/virtualNetworks/peer/Action                   | Vereist voor het maken van een peering van een virtueel netwerk B (Resource Manager) naar een virtueel netwerk                                                       |
