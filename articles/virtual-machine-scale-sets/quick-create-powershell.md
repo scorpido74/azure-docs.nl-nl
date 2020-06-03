@@ -1,21 +1,22 @@
 ---
-title: 'Snelstartgids: een schaalset voor virtuele machines maken met Azure PowerShell'
-description: Ga aan de slag met uw implementaties door te leren hoe u snel een schaal van een virtuele machine kunt maken met Azure PowerShell.
+title: 'Quickstart: Een schaalset voor virtuele machines maken met Azure PowerShell'
+description: Ga aan de slag met uw implementaties door te leren hoe u snel een schaalset voor virtuele machines kunt maken met Azure PowerShell.
 author: ju-shim
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: quickstart
-ms.custom: mvc
-ms.date: 11/08/2018
 ms.author: jushiman
-ms.openlocfilehash: ab5efc84ed88ef5ef245bfead2cc709405dc79ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: powershell
+ms.date: 11/08/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 6d23a8c06048eec50f947b16b61fe818907720dc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008604"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201423"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Snelstartgids: Een schaalset voor virtuele machines maken met Azure PowerShell
+# <a name="quickstart-create-a-virtual-machine-scale-set-with-azure-powershell"></a>Quickstart: Een virtuele-machineschaalset maken met Azure PowerShell
 
 
 
@@ -27,7 +28,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-Voordat u een schaalset kunt maken, moet u een resource groep maken met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Voordat u een schaalset kunt maken, moet u eerst een resourcegroep maken met [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"

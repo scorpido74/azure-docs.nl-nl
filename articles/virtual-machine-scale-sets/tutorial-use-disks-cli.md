@@ -1,21 +1,22 @@
 ---
-title: Zelf studie-schijven voor schaal sets maken en gebruiken met Azure CLI
+title: Zelfstudie - Schijven voor schaalsets maken en gebruiken met Azure CLI
 description: Leer hoe u met Azure CLI beheerde schijven kunt maken en gebruiken met schaalsets voor virtuele machines, waaronder het toevoegen, voorbereiden, opvragen en loskoppelen van schijven.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 3759fa426a712308e1956376d559c1ac84eadbd7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008825"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198255"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie - Schijven maken en gebruiken met schaalset voor virtuele machines met Azure CLI
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Zelfstudie: Schijven maken en gebruiken met schaalset voor virtuele machines met Azure CLI
 Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan van het besturingssysteem, toepassingen en gegevens van het VM-exemplaar. Bij het maken en beheren van een schaalset is het belangrijk dat u een schijfgrootte en configuratie kiest die geschikt zijn voor de verwachte werkbelasting. Deze zelfstudie bevat informatie over het maken en beheren van VM-schijven. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
@@ -25,11 +26,11 @@ Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan va
 > * Schijfprestaties
 > * Gegevensschijven koppelen en voorbereiden
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 
 ## <a name="default-azure-disks"></a>Standaard Azure-schijven
@@ -51,7 +52,7 @@ Op het moment dat u een schaalset maakt, worden er automatisch twee schijven aan
 
 
 ## <a name="azure-data-disks"></a>Azure-gegevensschijven
-Er kunnen extra gegevensschijven worden toegevoegd voor het installeren van toepassingen en het opslaan van gegevens. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. Elke gegevensschijf heeft een maximale capaciteit van 4 TB. De grootte van het VM-exemplaar bepaalt hoeveel gegevensschijven er kunnen worden gekoppeld. Voor elke VM-vCPU kunnen twee gegevens schijven worden aangesloten op Maxi maal 64 schijven per virtuele machine.
+Er kunnen extra gegevensschijven worden toegevoegd voor het installeren van toepassingen en het opslaan van gegevens. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. Elke gegevensschijf heeft een maximale capaciteit van 4 TB. De grootte van het VM-exemplaar bepaalt hoeveel gegevensschijven er kunnen worden gekoppeld. Voor elke VM-vCPU kunnen twee gegevensschijven worden aangesloten op een absoluut maximum van 64 schijven per virtuele machine.
 
 ## <a name="vm-disk-types"></a>Typen VM-schijven
 Azure biedt twee typen schijven.
@@ -65,8 +66,8 @@ Premium-schijven worden ondersteund door hoogwaardige schijven met een lage late
 ### <a name="premium-disk-performance"></a>Prestaties Premium-schijf
 |Schijftype voor Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Schijfgrootte (afronden) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024 GB (1 TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
-| Max. aantal IOP's per schijf | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+| Schijfgrootte (afronden) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024 GB (1 TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
+| Max. aantal IOP's per schijf | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
 Doorvoer per schijf | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan een hoger prestatieniveau worden bereikt door striping van meerdere gegevensschijven. Een virtuele machine van het type Standard_GS5 kan bijvoorbeeld maximaal 80.000 IOPS bereiken. Zie [Linux VM-grootten](../virtual-machines/linux/sizes.md) voor gedetailleerde informatie over het maximum aantal IOP's per VM.
@@ -82,7 +83,7 @@ Maak eerst een resourcegroep met de opdracht [az group create](/cli/azure/group)
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak een schaalset voor virtuele machines met de opdracht [az vmss create](/cli/azure/vmss). In het volgende voor beeld wordt een schaalset gemaakt met de naam *myScaleSet*, en worden SSH-sleutels gegenereerd als deze nog niet bestaan. Er worden twee schijven gemaakt met de parameter `--data-disk-sizes-gb`. De eerste schijf is *64* GB en de tweede schijf *128* GB:
+Maak een schaalset voor virtuele machines met de opdracht [az vmss create](/cli/azure/vmss). In het volgende voorbeeld wordt een schaalset gemaakt met de naam *myScaleSet*, en worden SSH-sleutels gegenereerd als deze nog niet bestaan. Er worden twee schijven gemaakt met de parameter `--data-disk-sizes-gb`. De eerste schijf is *64* GB en de tweede schijf *128* GB:
 
 ```azurecli-interactive
 az vmss create \

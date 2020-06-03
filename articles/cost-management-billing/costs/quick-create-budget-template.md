@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103630"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830307"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Quickstart: Een budget maken met een Azure Resource Manager-sjabloon
 
@@ -39,21 +39,23 @@ In abonnementen worden de volgende Azure-machtigingen, of bereiken, ondersteund 
 
 Zie [Toegang tot gegevens van Cost Management toewijzen](assign-access-acm-data.md) voor meer informatie over het toewijzen van toegang tot de gegevens van Cost Management.
 
-## <a name="review-the-template"></a>De sjabloon controleren
+## <a name="create-a-budget"></a>Een budget maken
+
+### <a name="review-the-template"></a>De sjabloon controleren
 
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 Er is één Azure-resource gedefinieerd in de sjabloon:
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Een Azure-budget maken.
 
-## <a name="deploy-the-template"></a>De sjabloon implementeren
+### <a name="deploy-the-template"></a>De sjabloon implementeren
 
 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon wordt een budget gemaakt.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. Typ of selecteer de volgende waarden.
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Wanneer u een budget niet meer nodig hebt, verwijdert u het met behulp van een van de volgende methoden:
+
+### <a name="azure-portal"></a>Azure Portal
+
+Ga naar **Kostenbeheer en facturering** > selecteer een factureringsbereik > **Budgetten** > selecteer een budget > selecteer vervolgens **Budget verwijderen**.
+
+### <a name="command-line"></a>Opdrachtregel
+
+U kunt het budget verwijderen met behulp van Azure CLI of Azure PowerShell.
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

@@ -1,21 +1,22 @@
 ---
-title: Zelf studie-schijven voor schaal sets maken en gebruiken met Azure PowerShell
+title: Zelfstudie - Schijven voor schaalsets maken en gebruiken met Azure PowerShell
 description: Leer hoe u met Azure PowerShell beheerde schijven kunt maken en gebruiken met schaalsets met virtuele machines, waaronder het toevoegen, voorbereiden, opvragen en loskoppelen van schijven.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 6cdd1ee3c18d63e1a8c7734a9efc2573f6b04b33
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: disks
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011188"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198246"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie - Schijven maken en gebruiken met schaalset met virtuele machines met Azure PowerShell
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Schijven met virtuele-machineschaalset maken en gebruiken met Azure PowerShell
 
 Schaalsets voor virtuele machines maken gebruik van schijven voor het opslaan van het besturingssysteem, toepassingen en gegevens van het VM-exemplaar. Bij het maken en beheren van een schaalset is het belangrijk dat u een schijfgrootte en configuratie kiest die geschikt zijn voor de verwachte werkbelasting. Deze zelfstudie bevat informatie over het maken en beheren van VM-schijven. In deze zelfstudie leert u het volgende:
 
@@ -77,8 +78,8 @@ Premium-schijven worden ondersteund door hoogwaardige SSD-schijven met een lage 
 ### <a name="premium-disk-performance"></a>Prestaties Premium-schijf
 |Schijftype voor Premium Storage | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Schijfgrootte (afronden) | 32 GB | 64 GB | 128 GB | 512 GB | 1.024 GB (1 TB) | 2.048 GB (2 TB) | 4.095 GB (4 TB) |
-| Max. aantal IOP's per schijf | 120 | 240 | 500 | 2.300 | 5.000 | 7.500 | 7.500 |
+| Schijfgrootte (afronden) | 32 GB | 64 GB | 128 GB | 512 GB | 1\.024 GB (1 TB) | 2\.048 GB (2 TB) | 4\.095 GB (4 TB) |
+| Max. aantal IOP's per schijf | 120 | 240 | 500 | 2\.300 | 5\.000 | 7\.500 | 7\.500 |
 Doorvoer per schijf | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 In de bovenstaande tabel wordt het max. IOP's per schijf aangegeven, maar er kan een hoger prestatieniveau worden bereikt door striping van meerdere gegevensschijven. Een virtuele machine van het type Standard_GS5 kan bijvoorbeeld maximaal 80.000 IOPS bereiken. Zie [Windows VM-grootten](../virtual-machines/windows/sizes.md) voor gedetailleerde informatie over het maximum aantal IOP's per VM.
@@ -90,7 +91,7 @@ U kunt schijven maken en koppelen wanneer u een schaalset maakt, maar ook voor e
 ### <a name="attach-disks-at-scale-set-creation"></a>Schijven koppelen bij het maken van een schaalset
 Maak een virtuele-machineschaalset met behulp van [New-AzVmss](/powershell/module/az.compute/new-azvmss). Geef desgevraagd een gebruikersnaam en wachtwoord op voor de VM-exemplaren. Om het verkeer te distribueren naar de verschillende VM-exemplaren, wordt er ook een load balancer gemaakt. De load balancer bevat regels voor het distribueren van verkeer op TCP-poort 80, en voor het toestaan van verkeer van Extern bureaublad op TCP-poort 3389 en externe toegang via PowerShell op TCP-poort 5985.
 
-Er worden twee schijven gemaakt met de parameter `-DataDiskSizeGb`. De eerste schijf is *64* GB groot en de tweede schijf is *128* GB. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+Er worden twee schijven gemaakt met de parameter `-DataDiskSizeGb`. De eerste schijf is *64* GB en de tweede schijf *128* GB. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```azurepowershell-interactive
 New-AzVmss `

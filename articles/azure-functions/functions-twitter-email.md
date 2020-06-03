@@ -4,21 +4,21 @@ description: Maak een functie die met Azure Logic Apps en Azure Cognitive Servic
 author: craigshoemaker
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.topic: tutorial
-ms.date: 11/06/2018
+ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f6698bcc8125cd00dcb1cd6c86a8d69153242b35
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190296"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116321"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Een functie maken die kan worden geïntegreerd met Azure Logic Apps
 
 Azure Functions integreert met Azure Logic Apps in de Logic Apps Designer. Met deze integratie kunt u de rekenkracht van Functions gebruiken in indelingen met andere Azure-services en services van derden. 
 
-In deze zelfstudie wordt getoond hoe u in Azure Functions gebruikt met Logic Apps en Cognitive Services om gevoelsanalyse van Twitter-posts uit te voeren. Een door HTTP geactiveerde functie categoriseert tweets als groen, geel of rood, op basis van de gevoelsscore. Er wordt een e-mail verzonden als er een slecht gevoel wordt gedetecteerd. 
+In deze zelfstudie wordt getoond hoe u in Azure Functions gebruikt met Logic Apps en Cognitive Services om gevoelsanalyse van Twitter-posts uit te voeren. Een HTTP-triggerfunctie categoriseert tweets als groen, geel of rood, op basis van de gevoelsscore. Er wordt een e-mail verzonden als er een slecht gevoel wordt gedetecteerd. 
 
 ![afbeelding van de eerste twee stappen van de app in Logic App Designer](media/functions-twitter-email/00-logic-app-overview.png)
 
@@ -38,7 +38,7 @@ In deze zelfstudie leert u het volgende:
 + Een [Outlook.com](https://outlook.com/)-account (om meldingen te verzenden).
 
 > [!NOTE]
-> Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfs accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u de Gmail-connector gebruiken met alleen specifieke Google-Apps en-services, of kunt u [een Google-client-app maken die voor verificatie in uw Gmail-connector moet worden gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+> Als u de Gmail-connector wilt gebruiken, kunnen alleen bedrijfsaccounts van G Suite deze connector zonder beperkingen in logische apps gebruiken. Als u een Gmail-consumentenaccount hebt, kunt u de Gmail-connector alleen gebruiken met specifieke door Google goedgekeurde apps en services, of u kunt [een Google-client-app maken voor verificatie in uw Gmail-connector](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 + Als startpunt van dit artikel dienen de resources die zijn gemaakt in [Uw eerste functie maken in de Azure-portal](functions-create-first-azure-function.md).
 Doorloop nu deze stappen om de functie-app te maken, als u dit nog niet hebt gedaan.
@@ -49,9 +49,9 @@ De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azur
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Klik op **een resource maken** in de linkerbovenhoek van de Azure Portal.
+2. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 
-3. Klik op **AI + machine learning** > **Text Analytics**. Gebruik vervolgens de instellingen zoals die in de tabel zijn opgegeven om de resource te maken.
+3. Klik op **AI + Machine Learning** > **Text Analytics**. Gebruik vervolgens de instellingen zoals die in de tabel zijn opgegeven om de resource te maken.
 
     ![Cognitieve resourcepagina maken](media/functions-twitter-email/01-create-text-analytics.png)
 
@@ -59,7 +59,7 @@ De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azur
     | --- | --- | --- |
     | **Naam** | MyCognitiveServicesAccnt | Kies een unieke naam voor het account. |
     | **Locatie** | VS - west | Gebruik de dichtstbijzijnde locatie. |
-    | **Prijs categorie** | F0 | Begin met de laagste categorie. Als u geen aanroepen meer hebt, schaalt u naar een hogere categorie.|
+    | **Prijscategorie** | F0 | Begin met de laagste categorie. Als u geen aanroepen meer hebt, schaalt u naar een hogere categorie.|
     | **Resourcegroep** | myResourceGroup | Gebruik dezelfde resourcegroep voor alle services in deze tutorial.|
 
 4. Klik op **Maken** om de resource te maken. 
@@ -74,21 +74,21 @@ De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azur
 
 ## <a name="create-the-function-app"></a>De functie-app maken
 
-Functies bieden een handige manier voor de offload van verwerkingstaken in een werkstroom van een logische app. In deze zelfstudie wordt een door HTTP geactiveerde functie gebruikt om de gevoelsscore van Cognitive Services voor tweets te categoriseren en een categoriewaarde te retourneren.  
+Azure Functions biedt een handige manier voor offload van verwerkingstaken in een werkstroom van een logische app. In deze zelfstudie wordt een HTTP-triggerfunctie gebruikt om de gevoelsscore van Cognitive Services voor tweets te categoriseren en een categoriewaarde te retourneren.  
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-## <a name="create-an-http-triggered-function"></a>Een door HTTP geactiveerde functie maken  
+## <a name="create-an-http-trigger-function"></a>Een HTTP-triggerfunctie maken  
 
-1. Vouw de functie-app uit en **+** Klik op de knop naast **functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal**.
+1. Selecteer in het menu links van het venster **Functies** de optie **Functies** en selecteer vervolgens **Toevoegen** in het bovenste menu.
 
-    ![De Quick Start-pagina van Functions in Azure Portal](media/functions-twitter-email/05-function-app-create-portal.png)
+2. Selecteer **HTTP-trigger** in het venster **Nieuwe functie**.
 
-2. Selecteer vervolgens **Webhook + API** en klik op **Maken**. 
+    ![HTTP-triggerfunctie kiezen](./media/functions-twitter-email/06-function-http-trigger.png)
 
-    ![Kies de HTTP-trigger](./media/functions-twitter-email/06-function-webhook.png)
+3. Selecteer op de pagina **Nieuwe functie** de optie **Functie maken**.
 
-3. Vervang de inhoud van het bestand `run.csx` door de volgende code en klik vervolgens op **Opslaan**:
+4. Selecteer in de nieuwe HTTP-triggerfunctie **Code + testen** in het menu links, vervang de inhoud van het bestand `run.csx` door de volgende code en selecteer **Opslaan**:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -123,19 +123,20 @@ Functies bieden een handige manier voor de offload van verwerkingstaken in een w
             : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
+
     Deze functiecode retourneert een kleurcategorie op basis van de gevoelsscore die in de aanvraag is ontvangen. 
 
-4. Als u de functie wilt testen, klikt u helemaal rechts op **testen** om het tabblad testen uit te vouwen. `0.2` Typ een waarde voor de **hoofd tekst**van de aanvraag en klik vervolgens op **uitvoeren**. Er wordt een **RODE** waarde geretourneerd in de hoofdtekst van het antwoord. 
+5. Als u de functie wilt testen, selecteert u **Testen** in het bovenste menu. Voer op het tabblad **Invoer** de waarde `0.2` in **Hoofdgedeelte** in en selecteer **Uitvoeren**. De waarde **RED** wordt geretourneerd in de **inhoud van de HTTP-reactie** op het tabblad **Uitvoer**. 
 
-    ![Test de functie in de Azure Portal](./media/functions-twitter-email/07-function-test.png)
+    :::image type="content" source="./media/functions-twitter-email/07-function-test.png" alt-text="Definieer de proxyinstellingen":::
 
 U hebt nu een functie die gevoelsscores categoriseert. Maak vervolgens een logische app die uw functie integreert met uw Twitter-account en Cognitive Services-API. 
 
 ## <a name="create-a-logic-app"></a>Een logische app maken   
 
-1. Klik in de Azure Portal op de knop **een resource maken** in de linkerbovenhoek van de Azure Portal.
+1. Klik op de knop **Een resource maken** in de linkerbovenhoek van de Azure-portal.
 
-2. Klik op **Web** > **Logic app**.
+2. Klik op **Web** > **Logische app**.
  
 3. Typ vervolgens een waarde voor **Naam**, bijvoorbeeld `TweetSentiment`, en gebruik de instellingen zoals opgegeven in de tabel.
 
@@ -168,7 +169,7 @@ Maak eerst verbinding met uw Twitter-account. De logische app peilt tweets, waar
     | Instelling      |  Voorgestelde waarde   | Beschrijving                                        |
     | ----------------- | ------------ | ------------- |
     | **Zoektekst** | #Azure | Gebruik een hashtag die populair genoeg is om in het gekozen interval nieuwe tweets te genereren. Wanneer u gebruikmaakt van de gratis categorie en uw hashtag is te populair, wordt het transactiequotum in uw Cognitive Services-API mogelijk snel verbruikt. |
-    | **Bereik** | 15 | De tijd tussen Twitter-aanvragen, in frequentie-eenheden. |
+    | **Interval** | 15 | De tijd tussen Twitter-aanvragen, in frequentie-eenheden. |
     | **Frequentie** | Minuut | De frequentie-eenheid die wordt gebruikt om Twitter te peilen.  |
 
 3.  Klik op **Opslaan** om verbinding te maken met uw Twitter-account. 
@@ -187,7 +188,7 @@ Uw app is nu verbonden met Twitter. Vervolgens maakt u verbinding met Text Analy
 
     ![Nieuwe stap en vervolgens Een actie toevoegen](media/functions-twitter-email/12-connection-settings.png)
 
-4. Voer vervolgens **Tekst van de tweet** in het tekstvak en klik op **Nieuwe stap**.
+4. Voer vervolgens **tekst voor de tweet** in het tekstvak in en klik op **Nieuwe stap**.
 
     ![Te analyseren tekst definiëren](media/functions-twitter-email/13-analyze-tweet-text.png)
 
@@ -195,7 +196,7 @@ Nu de gevoelsdetectie is geconfigureerd, kunt u een verbinding met uw functie to
 
 ## <a name="connect-sentiment-output-to-your-function"></a>Gevoelsuitvoer verbinden met functie
 
-1. Klik in de Logic apps Designer op **nieuwe stap** > **een actie toevoegen**, filter op **Azure functions** en klik op **een Azure-functie kiezen**.
+1. Klik in de ontwerpfunctie van logische apps op **Nieuwe stap** > **Een actie toevoegen**, filter op **Azure Functions** en klik op **Een Azure-functie kiezen**.
 
     ![Gevoel detecteren](media/functions-twitter-email/14-azure-functions.png)
   
@@ -215,9 +216,9 @@ Uw functie wordt nu geactiveerd wanneer er een gevoelsscore wordt verzonden vanu
 
 ## <a name="add-email-notifications"></a>E-mailmeldingen toevoegen
 
-Het laatste deel van de werkstroom bestaat uit het activeren van een e-mail wanneer de gevoelsscore _RED_ is. In dit onderwerp wordt een Outlook.com-connector gebruikt. U kunt dezelfde stappen uitvoeren als u een Gmail- of Office 365 Outlook-connector wilt gebruiken.   
+Het laatste deel van de werkstroom bestaat uit het activeren van een e-mail wanneer de gevoelsscore _RED_ is. In dit artikel wordt een Outlook.com-connector gebruikt. U kunt dezelfde stappen uitvoeren als u een Gmail- of Office 365 Outlook-connector wilt gebruiken.   
 
-1. Klik in de Logic apps Designer op **nieuwe stap** > **een voor waarde toevoegen**. 
+1. Klik in de Logic Apps Designer op **Nieuwe stap** > **Een voorwaarde toevoegen**. 
 
     ![Voeg een voorwaarde aan de logische app toe.](media/functions-twitter-email/18-add-condition.png)
 

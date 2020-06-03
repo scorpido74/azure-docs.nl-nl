@@ -1,62 +1,62 @@
 ---
-title: Azure Functions verbinding maken met Azure Storage met behulp van Visual Studio code
-description: Informatie over het verbinden van Azure Functions met een Azure Storage wachtrij door een uitvoer binding toe te voegen aan uw Visual Studio-code project.
+title: Azure Functions verbinden met Azure Storage met behulp van Visual Studio Code
+description: Informatie over het verbinden van Azure Functions met een Azure Storage-wachtrij door een uitvoerbinding toe te voegen aan uw Visual Studio Code-project.
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673463"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125832"
 ---
-# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions verbinding maken met Azure Storage met behulp van Visual Studio code
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions verbinden met Azure Storage met behulp van Visual Studio Code
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
-In dit artikel wordt beschreven hoe u Visual Studio code gebruikt om de functie die u hebt gemaakt in het [vorige Quick](functions-create-first-function-vs-code.md) start-artikel te koppelen aan Azure Storage. De uitvoer binding die u aan deze functie toevoegt, schrijft gegevens van de HTTP-aanvraag naar een bericht in een Azure Queue-opslag wachtrij. 
+In dit artikel leest u hoe u Visual Studio Code gebruikt om verbinding te maken met Azure Storage, met behulp van de functie die u hebt gemaakt in het [vorige snelstartgids-artikel](functions-create-first-function-vs-code.md). De uitvoerbinding die u aan deze functie toevoegt, schrijft gegevens van een HTTP-aanvraag naar een bericht in een Azure Queue Storage-wachtrij. 
 
-Voor de meeste bindingen is een opgeslagen connection string vereist die functies gebruiken om toegang te krijgen tot de gebonden service. Om het eenvoudiger te maken, gebruikt u het opslag account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling `AzureWebJobsStorage`met de naam.  
+Voor de meeste bindingen is een opgeslagen verbindingsreeks vereist die Functions gebruikt om toegang te krijgen tot de gebonden service. Om het eenvoudiger te maken, gebruikt u het Storage-account dat u hebt gemaakt met uw functie-app. De verbinding met dit account is al opgeslagen in een app-instelling met de naam `AzureWebJobsStorage`.  
 
 ## <a name="configure-your-local-environment"></a>Uw lokale omgeving configureren
 
 Voordat u aan dit artikel begint, moet aan de volgende vereisten worden voldaan:
 
-* Installeer de [Azure Storage-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage).
+* De [Azure Storage-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage) installeren.
 
-* Installeer [Azure Storage Explorer](https://storageexplorer.com/). Storage Explorer is een hulp programma dat u gebruikt om wachtrij berichten te onderzoeken die zijn gegenereerd door de uitvoer binding. Storage Explorer wordt ondersteund op macOS-, Windows-en Linux-besturings systemen.
+* [Azure Storage Explorer](https://storageexplorer.com/) installeren. Storage Explorer is een hulpprogramma dat u gebruikt om wachtrijberichten te onderzoeken die worden gegenereerd door uw uitvoerbinding. Storage Explorer wordt ondersteund op macOS-, Windows- en Linux-besturingssystemen.
 
 ::: zone pivot="programming-language-csharp"
-* Installeer [.net core SLI-hulpprogram ma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x).
+* [.NET Core CLI-hulpprogramma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) installeren.
 ::: zone-end
 
-* Voltooi de stappen in [deel 1 van de Snelstartgids voor Visual Studio code](functions-create-first-function-vs-code.md). 
+* Voer de stappen in [deel 1 van de Visual Studio Code-snelstartgids](functions-create-first-function-vs-code.md). 
 
-In dit artikel wordt ervan uitgegaan dat u al bent aangemeld bij uw Azure-abonnement vanuit Visual Studio code. U kunt zich aanmelden door vanuit `Azure: Sign In` het opdracht palet uit te voeren. 
+In dit artikel wordt ervan uitgegaan dat u al bent aangemeld bij uw Azure-abonnement vanuit Visual Studio Code. U kunt zich aanmelden door `Azure: Sign In` vanuit het opdrachtpalet uit te voeren. 
 
-## <a name="download-the-function-app-settings"></a>De instellingen van de functie-app downloaden
+## <a name="download-the-function-app-settings"></a>De instellingen voor functie-apps downloaden
 
-In het [vorige Quick](functions-create-first-function-vs-code.md)start-artikel hebt u een functie-app gemaakt in azure, samen met het vereiste opslag account. De connection string voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. In dit artikel schrijft u berichten naar een opslag wachtrij in hetzelfde account. Als u verbinding wilt maken met uw opslag account wanneer u de functie lokaal uitvoert, moet u de app-instellingen downloaden naar het bestand local. settings. json. 
+In het [vorige snelstartgids-artikel](functions-create-first-function-vs-code.md)hebt u een functie-app gemaakt in Azure, met het vereiste Storage-account. De verbindingsreeks voor dit account wordt veilig opgeslagen in de app-instellingen in Azure. In dit artikel schrijft u berichten naar een opslagwachtrij in hetzelfde account. Als u verbinding wilt maken met uw Storage-account wanneer u de functie lokaal uitvoert, moet u de app-instellingen downloaden naar het bestand local.settings.json. 
 
-1. Druk op de F1-toets om het opdracht palet te openen, zoek de opdracht `Azure Functions: Download Remote Settings....`en voer deze uit. 
+1. Druk op de toets F1 om het opdrachtpalet te openen, zoek naar de opdracht `Azure Functions: Download Remote Settings....` en voer deze uit. 
 
-1. Kies de functie-app die u in het vorige artikel hebt gemaakt. Selecteer **Ja op alles** om de bestaande lokale instellingen te overschrijven. 
+1. Kies de functie-app die u in het vorige artikel hebt gemaakt. Selecteer **Ja op alle** om de bestaande lokale instellingen te overschrijven. 
 
     > [!IMPORTANT]  
-    > Omdat deze geheimen bevat, wordt het bestand local. settings. json nooit gepubliceerd en wordt het bron beheer uitgesloten.
+    > Omdat deze geheimen bevat, wordt het bestand local.settings.json nooit gepubliceerd en wordt deze uitgesloten van het broncodebeheer.
 
-1. Kopieer de waarde `AzureWebJobsStorage`. Dit is de sleutel voor de Connection String waarde van het opslag account. U gebruikt deze verbinding om te controleren of de uitvoer binding werkt zoals verwacht.
+1. Kopieer de waarde `AzureWebJobsStorage`. Dit is de sleutel voor het verbindingsreekswaarde van de Storage-account. U gebruikt deze verbinding om te controleren of de uitvoerbinding werkt zoals verwacht.
 
 ## <a name="register-binding-extensions"></a>Binding-extensies registreren
 
-Omdat u een uitvoer binding voor de wachtrij opslag gebruikt, moet u de extensie opslag bindingen hebben geïnstalleerd voordat u het project uitvoert. 
+Omdat u een Queue Storage-uitvoerbinding gebruikt, moet u de extensie voor Storage-bindingen hebben geïnstalleerd voordat u het project uitvoert. 
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-Uw project is geconfigureerd voor het gebruik van [uitbreidings bundels](functions-bindings-register.md#extension-bundles), waarmee automatisch een vooraf gedefinieerde set uitbreidings pakketten wordt geïnstalleerd. 
+Uw project is geconfigureerd voor het gebruik van [uitbreidingsbundels](functions-bindings-register.md#extension-bundles), waarmee automatisch een vooraf gedefinieerde set uitbreidingspakketten wordt geïnstalleerd. 
 
-Uitbreidings bundels zijn ingeschakeld in het bestand host. json in de hoofdmap van het project, die er als volgt uitziet:
+Het gebruik van uitbreidingsbundels wordt ingeschakeld in het bestand host.json in de hoofdmap van het project, dat er als volgt uitziet:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -64,7 +64,7 @@ Uitbreidings bundels zijn ingeschakeld in het bestand host. json in de hoofdmap 
 
 ::: zone pivot="programming-language-csharp"
 
-Met uitzonde ring van HTTP-en timer triggers worden bindingen geïmplementeerd als uitbreidings pakketten. Voer de volgende [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit in het Terminal venster om het opslag extensie pakket toe te voegen aan uw project.
+Met uitzondering van HTTP- en timertriggers worden bindingen geïmplementeerd als uitbreidingspakketten. Voer de volgende [dotnet add package](/dotnet/core/tools/dotnet-add-package)-opdracht in het terminalvenster uit om het Storage-extensiepakket toe te voegen aan uw project.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
@@ -72,11 +72,11 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 ::: zone-end
 
-Nu kunt u de opslag-uitvoer binding toevoegen aan uw project.
+Nu kunt u de Storage-uitvoerbinding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In functies moet voor elk type binding een `direction`, `type`en een unieke `name` naam worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
+In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function.json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
@@ -98,7 +98,7 @@ In functies moet voor elk type binding een `direction`, `type`en een unieke `nam
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-Nadat de binding is gedefinieerd, kunt u de `name` binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoer binding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor authenticatie, het ophalen van een wachtrij verwijzing of het schrijven van gegevens. De functies runtime en wachtrij-uitvoer binding voeren deze taken voor u uit.
+Nadat de binding is gedefinieerd, kunt u de `name` van de binding gebruiken om deze te openen als een kenmerk in de functie handtekening. Als u een uitvoerbinding gebruikt, hoeft u niet de Azure Storage SDK-code te gebruiken voor verificatie, het ophalen van een wachtrijverwijzing of het schrijven van gegevens. Deze taken worden voor u verwerkt via Functions-runtime en Queue Storage-uitvoerbinding.
 
 ::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
@@ -148,7 +148,7 @@ Nadat de binding is gedefinieerd, kunt u de `name` binding gebruiken om deze te 
 
 ::: zone-end
 
-Er wordt een nieuwe wachtrij met de naam **outqueue** in uw opslag account gemaakt door de functions-runtime wanneer de uitvoer binding voor het eerst wordt gebruikt. U gebruikt Storage Explorer om te controleren of de wachtrij samen met het nieuwe bericht is gemaakt.
+Wanneer de uitvoerbinding voor het eerst wordt gebruikt, wordt er door de runtime van Functions een nieuwe wachtrij met de naam **outqueue** gemaakt in uw opslagaccount. U gebruikt Storage Explorer om te controleren of de wachtrij is gemaakt met het nieuwe bericht.
 
 ::: zone pivot="programming-language-java"  
 
@@ -158,13 +158,13 @@ Er wordt een nieuwe wachtrij met de naam **outqueue** in uw opslag account gemaa
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Storage Explorer verbinden met uw account
 
-Sla deze sectie over als u Azure Storage Explorer al hebt geïnstalleerd en deze hebt verbonden met uw Azure-account.
+Sla deze sectie over als u Azure Storage Explorer al hebt geïnstalleerd en met uw Azure-account hebt verbonden.
 
-1. Voer het hulp programma [Azure Storage Explorer] uit, selecteer aan de linkerkant het pictogram verbinding maken en selecteer **een account toevoegen**.
+1. Voer het hulpprogramma [Azure Storage Explorer] uit, selecteer aan de linkerkant het pictogram Verbinding maken en selecteer **Een account toevoegen**.
 
     ![Een Azure-account toevoegen aan Microsoft Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
-1. Kies in **Connect** het dialoog venster verbinden **een Azure-account toevoegen**, kies uw **Azure-omgeving**en selecteer **aanmelden...**. 
+1. Kies in het dialoogvenster **Verbinding maken** **Een Azure-account toevoegen**, kies uw **Azure-omgeving**en selecteer **Aanmelden...** . 
 
     ![Aanmelden bij uw Azure-account](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
@@ -172,35 +172,35 @@ Nadat u zich hebt aangemeld bij uw account, ziet u alle Azure-abonnementen die z
 
 ### <a name="examine-the-output-queue"></a>De uitvoerwachtrij controleren
 
-1. Druk in Visual Studio code op de F1-toets om het opdracht palet te openen, zoek de opdracht `Azure Storage: Open in Storage Explorer` en voer deze uit en kies de naam van het opslag account. Uw opslag account wordt geopend in Azure Storage Explorer.  
+1. Druk in Visual Studio Code op de F1-toets om het opdrachtpalet te openen, zoek de opdracht en voer deze uit `Azure Storage: Open in Storage Explorer` en kies de naam van uw Storage-accountaccount. Uw opslagaccount wordt geopend in Azure Storage Explorer.  
 
 1. Vouw het knooppunt **Wachtrijen** uit en selecteer vervolgens de wachtrij met de naam **outqueue**. 
 
-   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde `name` van *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
+   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde voor `name`, namelijk *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
 
-    ![Wachtrij bericht weer gegeven in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
+    ![Wachtrijbericht weergegeven in Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
-1. Voer de functie opnieuw uit, verzend een andere aanvraag en er wordt een nieuw bericht weer gegeven in de wachtrij.  
+1. Voer de functie opnieuw uit en stuur een nieuwe aanvraag. Er wordt nu een nieuw bericht weergegeven in de wachtrij.  
 
 Nu is het tijd om de bijgewerkte functie-app opnieuw te publiceren naar Azure.
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>De bijgewerkte app opnieuw implementeren en verifiëren
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Deploy to function app...`.
+1. Druk in Visual Studio Code op F1 om het opdrachtenpalet te openen. In het opdrachtenpalet zoekt en selecteert u `Azure Functions: Deploy to function app...`.
 
-1. Kies de functie-app die u in het eerste artikel hebt gemaakt. Omdat u uw project opnieuw implementeert naar dezelfde app, selecteert u **implementeren** om de waarschuwing over het overschrijven van bestanden te negeren.
+1. Kies de functie-app die u in het eerste artikel hebt gemaakt. Omdat u uw project opnieuw implementeert voor dezelfde app, selecteert u **Implementeren** om de waarschuwing over het overschrijven van bestanden te negeren.
 
-1. Nadat de implementatie is voltooid, kunt u de opnieuw geïmplementeerde functie weer testen door krul of een browser te gebruiken. Voeg, net als voorheen, de `&name=<yourname>` query reeks toe aan de URL, zoals in het volgende voor beeld:
+1. Nadat de implementatie is voltooid, kunt u de opnieuw geïmplementeerde functie weer testen door cURL of een browser te gebruiken. Voeg, net als voorheen, de queryreeks `&name=<yourname>` toe aan de URL, zoals in het volgende voorbeeld:
 
     ```bash
     curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
     ```
 
-1. [Bekijk nogmaals het bericht in de opslag wachtrij](#examine-the-output-queue) om te controleren of de uitvoer binding opnieuw een nieuw bericht in de wachtrij genereert.
+1. [Bekijk het bericht in de opslagwachtrij](#examine-the-output-queue) om te controleren of de uitvoerbinding opnieuw een nieuw bericht in de wachtrij genereert.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-*Resources* verwijst in Azure naar functie-apps, functies, opslagaccounts enzovoort. Deze zijn gegroepeerd in *resourcegroepen*. U kunt alle resources in een groep verwijderen door de groep zelf te verwijderen.
+In Azure verwijzen *Resources* naar functie-apps, functies, opslagaccounts enzovoort. Deze zijn gegroepeerd in *resourcegroepen*. U kunt alle resources in een groep verwijderen door de groep zelf te verwijderen.
 
 U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources kunnen bij u in rekening worden gebracht, afhankelijk van de [accountstatus](https://azure.microsoft.com/account/) en [serviceprijzen](https://azure.microsoft.com/pricing/). Als u de resources niet meer nodig hebt, kunt u ze als volgt verwijderen:
 
@@ -208,29 +208,29 @@ U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources ku
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Nu kunt u meer te weten komen over het ontwikkelen van functies met Visual Studio code:
+U hebt uw HTTP-geactiveerde functie bijgewerkt om gegevens naar een opslagwachtrij te schrijven. Nu kunt u meer informatie vinden over het ontwikkelen van functies met Visual Studio Code:
 
-+ [Azure Functions ontwikkelen met Visual Studio code](functions-develop-vs-code.md)
++ [Azure Functions ontwikkelen met Visual Studio Code](functions-develop-vs-code.md)
 ::: zone pivot="programming-language-csharp"  
-+ [Voor beelden van complete functie projecten in C#](/samples/browse/?products=azure-functions&languages=csharp).
-+ [Naslag informatie voor Azure Functions C#-ontwikkel aars](functions-dotnet-class-library.md)  
++ [Voorbeelden van complete Function-projecten in C#](/samples/browse/?products=azure-functions&languages=csharp).
++ [Naslaginformatie over Azure Functions C# voor ontwikkelaars](functions-dotnet-class-library.md)  
 ::: zone-end 
 ::: zone pivot="programming-language-javascript"  
-+ [Voor beelden van complete functie projecten in Java script](/samples/browse/?products=azure-functions&languages=javascript).
-+ [Ontwikkelaars handleiding voor Azure Functions java script](functions-reference-node.md)  
++ [Voorbeelden van complete Function-projecten in Javascript](/samples/browse/?products=azure-functions&languages=javascript).
++ [Ontwikkelaarshandleiding voor Azure Functions Javascript](functions-reference-node.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-+ [Voor beelden van complete functie projecten in type script](/samples/browse/?products=azure-functions&languages=typescript).
-+ [Ontwikkelaars handleiding voor Azure Functions type script](functions-reference-node.md#typescript)  
++ [Voorbeelden van complete Function-projecten in TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
++ [Ontwikkelaarshandleiding voor Azure Functions TypeScript](functions-reference-node.md#typescript)  
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-+ [Voor beelden van complete functie projecten in python](/samples/browse/?products=azure-functions&languages=python).
-+ [Azure Functions python-ontwikkelaars handleiding](functions-reference-python.md)  
++ [Voorbeelden van complete Function-projecten in Python](/samples/browse/?products=azure-functions&languages=python).
++ [Ontwikkelaarshandleiding voor Azure Functions Python](functions-reference-python.md)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-+ [Voor beelden van complete functie projecten in Power shell](/samples/browse/?products=azure-functions&languages=azurepowershell).
-+ [Azure Functions Power shell-ontwikkelaars handleiding](functions-reference-powershell.md) 
++ [Voorbeelden van complete Function-projecten in PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
++ [Ontwikkelaarshandleiding voor Azure Functions PowerShell](functions-reference-powershell.md) 
 ::: zone-end
-+ [Azure functions triggers en bindingen](functions-triggers-bindings.md).
-+ [Pagina met prijzen voor functies](https://azure.microsoft.com/pricing/details/functions/)
-+ Het artikel [kosten voor verbruiks plan schatten](functions-consumption-costs.md) .
++ [Azure Functions-triggers en -bindingen](functions-triggers-bindings.md).
++ [Prijzen met prijzen van Functions](https://azure.microsoft.com/pricing/details/functions/)
++ Artikel over [Kosten schatten voor verbruiksabonnement](functions-consumption-costs.md).

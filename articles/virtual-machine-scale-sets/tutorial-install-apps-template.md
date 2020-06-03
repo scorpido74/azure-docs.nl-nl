@@ -1,19 +1,20 @@
 ---
-title: 'Zelf studie: apps installeren in een schaalset met Azure-sjablonen'
+title: Zelfstudie - Toepassingen installeren in een schaalset met Azure-sjablonen
 description: Leer hoe u met behulp van sjablonen van Azure Resource Manager en de aangepaste scriptextensie toepassingen kunt installeren in schaalsets voor virtuele machines
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: aa5ce8876675b4332b92ee09295409540a5e6e66
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: template
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: a497b8c6e237f2476ecce9422a6328725b22eeb6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011205"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197489"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Zelfstudie: Toepassingen installeren in een schaalset met een Azure-sjabloon
 Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM) in een schaalset, moet u eerst de toepassingsonderdelen en de vereiste bestanden installeren. In een vorige zelfstudie hebt u geleerd om een aangepaste VM-installatiekopie te maken en te gebruiken voor het implementeren van uw VM-exemplaren. Deze aangepaste installatiekopie bevat handmatige installaties van toepassingen en configuraties. U kunt de installatie van toepassingen op een schaalset ook automatiseren nadat elk VM-exemplaar is geïmplementeerd. Bovendien kunt u toepassingen bijwerken die al worden uitgevoerd in een schaalset. In deze zelfstudie leert u het volgende:
@@ -23,17 +24,17 @@ Als u toepassingen wilt uitvoeren op de exemplaren van een virtuele machine (VM)
 > * De aangepaste scriptextensie van Azure gebruiken
 > * Een actieve toepassing in een schaalset bijwerken
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 
 ## <a name="what-is-the-azure-custom-script-extension"></a>Wat is de aangepaste scriptextensie van Azure?
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies.
 
-De aangepaste scriptextensie kan worden geïntegreerd met Azure Resource Manager-sjablonen en ook worden uitgevoerd met Azure CLI, Azure PowerShell, Azure Portal of de REST API. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/linux/extensions-customscript.md).
+De aangepaste scriptextensie kan worden geïntegreerd met Azure Resource Manager-sjablonen en ook worden uitgevoerd met Azure CLI, Azure PowerShell, de Azure-portal of de REST API. Zie voor meer informatie het [overzicht van de aangepaste scriptextensie](../virtual-machines/linux/extensions-customscript.md).
 
 Als u de aangepaste scriptextensie in actie wilt zien, maakt u een schaalset die de IIS-webserver installeert en de hostnaam levert van het VM-exemplaar in de schaalset. Met de volgende definitie van de aangepaste scriptextensie wordt er een voorbeeldscript gedownload vanuit GitHub, waarna de vereiste pakketten worden geïnstalleerd en de hostnaam van het VM-exemplaar wordt weggeschreven naar een standaard-HTML-pagina.
 
@@ -65,11 +66,11 @@ De eigenschap *fileUris* wordt gebruikt voor het definiëren van de bron-install
 }
 ```
 
-Zie [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json)voor een volledig voor beeld van een Azure-sjabloon waarmee een schaalset en de aangepaste script extensie worden geïmplementeerd. Deze voorbeeldsjabloon wordt gebruikt in de volgende sectie.
+Zie [https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/azuredeploy.json) voor een compleet voorbeeld van een Azure-sjabloon waarmee een schaalset en de aangepaste scriptextensie wordt geïmplementeerd. Deze voorbeeldsjabloon wordt gebruikt in de volgende sectie.
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-We gaan de voorbeeldsjabloon gebruiken om een schaalset te maken en de aangepaste scriptextensie toe te passen. Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+We gaan de voorbeeldsjabloon gebruiken om een schaalset te maken en de aangepaste scriptextensie toe te passen. Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -107,7 +108,7 @@ Sluit de webbrowser niet af, zodat u in de volgende stap een bijgewerkte versie 
 
 
 ## <a name="update-app-deployment"></a>App-implementatie bijwerken
-Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Wanneer de schaalset in een vorige stap is gemaakt, is de *upgrade Policy* ingesteld op *automatisch*. Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
+Gedurende de levenscyclus van een schaalset moet u wellicht een bijgewerkte versie van uw toepassing implementeren. U kunt met de aangepaste scriptextensie verwijzen naar een bijgewerkt implementatiescript en vervolgens de extensie opnieuw op uw schaalset toepassen. Bij het maken van de schaalset in een vorige stap is *upgradePolicy* ingesteld op *Automatic*. Met deze instelling kunnen de VM-exemplaren in de schaalset automatisch de meest recente versie van uw toepassing bijwerken en toepassen.
 
 Als u de aangepaste scriptextensie wilt bijwerken, wijzigt u de sjabloon om deze te laten verwijzen naar een nieuw installatiescript. U moet een nieuwe bestandsnaam gebruiken, anders wordt de wijziging niet herkend door de aangepaste scriptextensie. De scriptextensie kijkt namelijk niet naar de inhoud van het script om eventuele wijzigingen vast te stellen. In de volgende definitie wordt een bijgewerkt installatiescript gebruikt waarbij *_v2* is toegevoegd aan de naam:
 
@@ -147,7 +148,7 @@ Alle VM-exemplaren in de schaalset worden automatisch bijgewerkt met de meest re
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resource groep en alle bijbehorende resources met [AZ Group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
+Als u de schaalset en aanvullende resources wilt verwijderen, verwijdert u de resourcegroep en alle bijbehorende resources met [az group delete](/cli/azure/group). De parameter `--no-wait` retourneert het besturingselement naar de prompt zonder te wachten totdat de bewerking is voltooid. De parameter `--yes` bevestigt dat u de resources wilt verwijderen, zonder een extra prompt om dit te doen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

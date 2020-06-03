@@ -1,33 +1,33 @@
 ---
-title: 'Snelstartgids: een schaalset voor virtuele machines maken met Azure CLI'
+title: 'Quickstart: Een schaalset voor virtuele machines maken met Azure CLI'
 description: Ga aan de slag met uw implementaties door te leren hoe u snel een schaalset voor virtuele machines kunt maken met Azure CLI.
 author: ju-shim
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.devlang: azurecli
-ms.topic: quickstart
-ms.custom: mvc
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.openlocfilehash: 392af4d96efc9b60cedc8488dc1cebbfd68a92c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: cli
+ms.date: 03/27/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: af69b4d80ef6f7216bdf13a7e7314e8b0616f376
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011324"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197715"
 ---
-# <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Snelstart: Een schaalset voor virtuele machines maken met de Azure CLI
+# <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Quickstart: Een virtuele-machineschaalset maken met Azure CLI
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. Een Azure load balancer verdeelt het verkeer vervolgens naar de VM-exemplaren in de schaalset. In deze snelstart gebruikt u de Azure CLI om een schaalset voor virtuele machines te maken en een voorbeeldtoepassing te implementeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 
 ## <a name="create-a-scale-set"></a>Een schaalset maken
-Voordat u een schaalset kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Voordat u een schaalset kunt maken, moet u eerst een resourcegroep maken met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus

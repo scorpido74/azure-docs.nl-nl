@@ -1,7 +1,7 @@
 ---
-title: Zelf studie voor app met één pagina-Azure
+title: Zelfstudie voor Angular-apps met één pagina - Azure
 titleSuffix: Microsoft identity platform
-description: Meer informatie over hoe hoek-SPA-toepassingen een API kunnen aanroepen die toegangs tokens van het micro soft Identity platform-eind punt vereist.
+description: Meer informatie over hoe Angular SPA-toepassingen een API kunnen aanroepen die toegangstokens vereisen van het Microsoft-identiteitsplatformeindpunt.
 services: active-directory
 author: hahamil
 manager: CelesteDG
@@ -12,56 +12,56 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181593"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201330"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Zelf studie: gebruikers aanmelden en de Microsoft Graph-API aanroepen vanuit een hoek toepassing met één pagina
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Zelfstudie: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een Angular-app met één pagina
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie kunnen worden gewijzigd vóór algemene Beschik baarheid (GA).
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
-In deze zelf studie wordt gedemonstreerd hoe een hoek van een enkele toepassing met één pagina (SPA) kan:
-- Persoonlijke accounts, werk accounts of school accounts aanmelden.
-- Haal een toegangs token op.
-- Roep de Microsoft Graph-API of andere Api's aan waarvoor toegangs tokens van het *micro soft Identity platform-eind punt*zijn vereist.
+In deze zelfstudie leert u hoe u een Angular-app met één pagina (SPA):
+- Persoonlijke accounts, werkaccounts of schoolaccounts aanmeldt.
+- Een toegangstoken verkrijgt.
+- De Microsoft Graph API of andere API's aanroept die toegangstokens nodig hebben van het *Microsoft-identiteitsplatformeindpunt*.
 
 >[!NOTE]
->In deze zelf studie leert u hoe u een nieuw hoek-beveiligd-wachtwoord verificatie maakt met behulp van micro soft Authentication Library (MSAL). Als u een voor beeld-app wilt downloaden, raadpleegt u [Quick](quickstart-v2-angular.md)start.
+>In deze zelfstudie wordt uitgelegd hoe u een nieuwe Angular SPA maakt met behulp van Microsoft Authentication Library (MSAL). Als u een voorbeeld-app wilt downloaden, raadpleegt u de [quickstart](quickstart-v2-angular.md).
 
-## <a name="how-the-sample-app-works"></a>De werking van de voor beeld-app
+## <a name="how-the-sample-app-works"></a>Hoe de voorbeeld-app werkt
 
-![Diagram dat laat zien hoe de voor beeld-app die in deze zelf studie is gegenereerd, werkt](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Diagram dat laat zien hoe de voorbeeld-app werkt die wordt gegenereerd in deze zelfstudie](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
 ### <a name="more-information"></a>Meer informatie
 
-Met de voorbeeld toepassing die in deze zelf studie wordt gemaakt, kan een hoek beveiligd-wachtwoord verificatie query's uitvoeren op de Microsoft Graph-API of een web-API die tokens accepteert van het micro soft Identity platform-eind punt. De MSAL voor hoek bibliotheek is een wrapper van de core MSAL. JS-bibliotheek. Met deze functie kunnen gebruikers van een hoek (6 +) zakelijke gebruikers verifiëren door gebruik te maken van Microsoft Azure Active Directory, Microsoft-account gebruikers en sociale identiteiten, zoals Facebook, Google en LinkedIn. Met de bibliotheek kunnen toepassingen ook toegang krijgen tot micro soft-Cloud Services of-Microsoft Graph.
+Met de voorbeeldtoepassing die in deze zelfstudie wordt gemaakt, kan een Angular SPA een query uitvoeren bij de Microsoft Graph API of een web-API die tokens accepteert van het Microsoft-identiteitsplatformeindpunt. De MSAL voor de Angular-bibliotheek is een wrapper van de core MSAL.js-bibliotheek. Daarmee kunnen Angular-toepassingen (6+) enterprise-gebruikers verifiëren met behulp van Microsoft Azure Active Directory, Microsoft-accountgebruikers en gebruikers van een sociale identiteit (zoals Facebook, Google en LinkedIn). De bibliotheek zorgt er ook voor dat toepassingen toegang krijgen tot Microsoft-cloudservices of Microsoft Graph.
 
-Wanneer een gebruiker zich aanmeldt, wordt in dit scenario een toegangs token aangevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Het ophalen en vernieuwen van tokens worden verwerkt door MSAL.
+Wanneer in dit scenario een gebruiker zich aanmeldt, wordt er een toegangstoken gevraagd en toegevoegd aan HTTP-aanvragen via de autorisatie-header. Tokens worden opgehaald en verlengd door MSAL.
 
 ### <a name="libraries"></a>Bibliotheken
 
-In deze zelf studie wordt de volgende bibliotheek gebruikt:
+Deze zelfstudie maakt gebruik van de volgende bibliotheek:
 
 |Bibliotheek|Beschrijving|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Micro soft-verificatie bibliotheek voor hoek-wrapper voor Java script|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Micro Authentication Library voor JavaScript Angular Wrapper|
 
-U vindt de bron code voor de bibliotheek MSAL. js in de [AzureAD/micro soft-Authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) -opslag plaats op github.
+U vindt de broncode voor de MSAL.js-bibliotheek in de opslagplaats [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) op GitHub.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelf studie wilt uitvoeren, hebt u het volgende nodig:
+U hebt het volgende nodig om deze zelfstudie te volgen:
 
-* Een lokale webserver, zoals [node. js](https://nodejs.org/en/download/). De instructies in deze zelf studie zijn gebaseerd op node. js.
-* Een Integrated Development Environment (IDE), zoals [Visual Studio code](https://code.visualstudio.com/download), voor het bewerken van de project bestanden.
+* Een lokale webserver, zoals [Node.js](https://nodejs.org/en/download/). De instructies in deze zelfstudie zijn gebaseerd op Node.js.
+* Een Integrated Development Environment (IDE), zoals [Visual Studio Code](https://code.visualstudio.com/download), om de projectbestanden te bewerken.
 
 ## <a name="create-your-project"></a>Uw project maken
 
-Genereer een nieuwe hoek toepassing met behulp van de volgende NPM-opdrachten:
+Genereer een nieuw Angular-toepassing aan de hand van de volgende npm-opdrachten:
 
 ```Bash
 npm install -g @angular/cli@8                    # Install the Angular CLI
@@ -73,15 +73,15 @@ ng generate component page-name                  # To add a new page (such as a 
 
 ## <a name="register-your-application"></a>Uw toepassing registreren
 
-Volg de [instructies voor het registreren van een toepassing met één pagina](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in de Azure Portal.
+Volg de [instructies om een toepassing met één pagina te registreren](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) in de Azure-portal.
 
-Noteer de waarde van de **toepassings-id** voor later gebruik op de pagina **overzicht** van apps van uw registratie.
+Noteer op de pagina **Overzicht** van uw registratie de waarde **Toepassings-id (client)** voor later gebruik.
 
-Registreer uw **omleidings** - **http://localhost:4200/** URI-waarde als en schakel instellingen voor impliciete toekenning in.
+Registreer de waarde van uw **Omleidings-URI** als **http://localhost:4200/** en schakel instellingen voor impliciete toekenning in.
 
 ## <a name="configure-the-application"></a>De toepassing configureren
 
-1. Bewerk *app. module. TS* `MSALModule` in de map *src/app* en voeg deze toe `imports` aan de `isIE` constante:
+1. Bewerk in de map *src/app* *app.module.TS* en voeg `MSALModule` toe aan de constant `imports` en `isIE`:
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -125,20 +125,20 @@ Registreer uw **omleidings** - **http://localhost:4200/** URI-waarde als en scha
 
     |Waardenaam|Info|
     |---------|---------|
-    |Enter_the_Application_Id_Here|Op de pagina **overzicht** van de registratie van uw toepassing is dit de waarde van uw **toepassing (client)** . |
-    |Enter_the_Cloud_Instance_Id_Here|Dit is het exemplaar van de Azure-Cloud. Voer **https://login.microsoftonline.com**in voor de hoofd-of wereld wijde Azure-Cloud. Zie [nationale Clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)voor nationale Clouds (bijvoorbeeld China).|
-    |Enter_the_Tenant_Info_Here| Stel in op een van de volgende opties: als uw toepassing *accounts in deze organisatie-Directory*ondersteunt, vervangt u deze waarde door de Directory-id (Tenant) of Tenant naam (bijvoorbeeld **contoso.Microsoft.com**). Als uw toepassing *accounts in een organisatorische Directory*ondersteunt, vervangt u deze waarde door **organisaties**. Als uw toepassing *accounts in een organisatorische map en persoonlijke micro soft-accounts*ondersteunt, vervangt u deze waarde door **common**. Als u de ondersteuning voor *persoonlijke micro soft-accounts*wilt beperken, moet u deze waarde vervangen door **consumenten**. |
-    |Enter_the_Redirect_Uri_Here|Vervang door **http://localhost:4200**.|
+    |Voer_hier_de_toepassings-id_in|Op de pagina **Overzicht** van de registratie van uw toepassing, is dit uw waarde voor **Toepassings-id (client)** . |
+    |Voer_hier_het_cloud-exemplaar_in|Dit is het exemplaar van de Azure-cloud. Voer **https://login.microsoftonline.com** in voor de primaire of algemene Azure-cloud. Raadpleeg [Nationale clouds](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) voor nationale clouds (bijvoorbeeld China).|
+    |Voer_hier_tenantgegevens_in| Stel een van de volgende opties in: Als uw toepassing *accounts in deze organisatiemap ondersteunt*, vervangt u deze waarde door de map-id (tenant) of tenantnaam (bijvoorbeeld **contoso.microsoft.com**). Als uw toepassing *accounts in elke organisatiemap* ondersteunt, vervang deze waarde dan door **organisaties**. Als uw toepassing *accounts in elke organisatiemap en persoonlijke Microsoft-accounts* ondersteunt, vervang deze waarde dan door **algemeen**. Als u de ondersteuning wilt beperken tot *alleen persoonlijke Microsoft-accounts*, vervang deze waarde dan door **consumenten**. |
+    |Voer_hier_de_omleidings-URI_in|Vervang door **http://localhost:4200** .|
 
-    Zie [client toepassingen initialiseren](msal-js-initializing-client-applications.md)voor meer informatie over beschik bare opties die kunnen worden geconfigureerd.
+    Raadpleeg [Clienttoepassingen initialiseren](msal-js-initializing-client-applications.md) voor meer informatie over beschikbare opties die u kunt configureren.
 
-2. Voeg boven aan hetzelfde bestand de volgende import instructie toe:
+2. Voeg boven in hetzelfde bestand de volgende importinstructie toe:
 
     ```javascript
     import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
     ```
 
-3. Voeg de volgende import instructies toe aan het begin `src/app/app.component.ts`van:
+3. Voeg de volgende importinstructies toe boven in `src/app/app.component.ts`:
 
     ```javascript
     import { MsalService } from '@azure/msal-angular';
@@ -146,7 +146,7 @@ Registreer uw **omleidings** - **http://localhost:4200/** URI-waarde als en scha
     ```
 ## <a name="sign-in-a-user"></a>Een gebruiker aanmelden
 
-Voeg de volgende code toe `AppComponent` om u aan te melden bij een gebruiker:
+Voeg de volgende code toe aan `AppComponent` om een gebruiker aan te melden:
 
 ```javascript
 export class AppComponent implements OnInit {
@@ -169,15 +169,15 @@ export class AppComponent implements OnInit {
 ```
 
 > [!TIP]
-> U wordt aangeraden voor gebruikers van Internet Explorer te gebruiken `loginRedirect` .
+> We raden `loginRedirect` te gebruiken voor Internet Explorer-gebruikers.
 
 ## <a name="acquire-a-token"></a>Een token verkrijgen
 
-### <a name="angular-interceptor"></a>Hoek-Interceptor
+### <a name="angular-interceptor"></a>Angular-interceptor
 
-MSAL hoek biedt een `Interceptor` klasse die automatisch tokens ophaalt voor uitgaande aanvragen die gebruikmaken van `http` de hoek-client naar bekende beveiligde bronnen.
+MSAL Angular biedt de klasse `Interceptor` die automatisch tokens ophaalt voor uitgaande aanvragen naar bekende beveiligde bronnen en die gebruikmaken van de Angular `http`-client.
 
-Voeg eerst de `Interceptor` klasse toe als een provider voor uw toepassing:
+Neem eerste de klasse `Interceptor` op als provider voor je toepassing:
 
 ```javascript
 import { MsalInterceptor, MsalModule } from "@azure/msal-angular";
@@ -195,7 +195,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Geef vervolgens een kaart van beveiligde resources op `MsalModule.forRoot()` als `protectedResourceMap` en deze scopes in `consentScopes`gebruiken:
+Geef vervolgens een map beschermde resources op voor `MsalModule.forRoot()` als `protectedResourceMap` en neem de bereiken op in `consentScopes`:
 
 ```javascript
 @NgModule({
@@ -230,7 +230,7 @@ Geef vervolgens een kaart van beveiligde resources op `MsalModule.forRoot()` als
 });
 ```
 
-Haal tot slot het profiel van een gebruiker op met een HTTP-aanvraag:
+Haal als laatst een gebruikersprofiel op met een HTTP-aanvraag:
 
 ```JavaScript
 const graphMeEndpoint = "https://graph.microsoft.com/v1.0/me";
@@ -244,11 +244,11 @@ getProfile() {
 ```
 
 ### <a name="acquiretokensilent-acquiretokenpopup-acquiretokenredirect"></a>acquireTokenSilent, acquireTokenPopup, acquireTokenRedirect
-MSAL maakt gebruik van drie methoden om tokens `acquireTokenRedirect`te `acquireTokenPopup`verkrijgen: `acquireTokenSilent`, en. We raden u echter aan de `MsalInterceptor` klasse te gebruiken voor hoek-apps, zoals wordt weer gegeven in de vorige sectie.
+MSAL gebruikt drie methoden om tokens op te halen: `acquireTokenRedirect`, `acquireTokenPopup` en `acquireTokenSilent`. Het wordt echter aanbevolen om de klasse `MsalInterceptor` te gebruiken voor Angular-apps, zoals in het vorige gedeelte is laten zien.
 
 #### <a name="get-a-user-token-silently"></a>Een gebruikerstoken op de achtergrond ophalen
 
-De `acquireTokenSilent` -methode verwerkt het ophalen van tokens en verlengingen zonder tussen komst van de gebruiker. Nadat de `loginRedirect` or `loginPopup` -methode voor de eerste keer is uitgevoerd `acquireTokenSilent` , wordt doorgaans gebruikt om tokens te verkrijgen die worden gebruikt voor toegang tot beveiligde resources in latere aanroepen. Aanroepen voor het aanvragen of vernieuwen van tokens worden op de achtergrond uitgevoerd.
+Met de methode `acquireTokenSilent` wordt het verkrijgen en vernieuwen van tokens verwerkt zonder tussenkomst van de gebruiker. Nadat de methode `loginRedirect` of `loginPopup` de eerste keer is uitgevoerd, wordt voor volgende aanroepen meestal `acquireTokenSilent` gebruikt om tokens te verkrijgen die worden gebruikt voor toegang tot beveiligde resources. Aanroepen voor het aanvragen of vernieuwen van tokens worden op de achtergrond uitgevoerd.
 
 ```javascript
 const requestObj = {
@@ -263,24 +263,24 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 });
 ```
 
-In die code `scopes` bevat de scopes die worden aangevraagd om te worden geretourneerd in het toegangs token voor de API.
+In die code bevat `scopes` bereiken die worden gevraagd om te worden geretourneerd in de toegangstoken voor de API.
 
 Bijvoorbeeld:
 
-* `["user.read"]`voor Microsoft Graph
-* `["<Application ID URL>/scope"]`voor aangepaste web-Api's (dat wil `api://<Application ID>/access_as_user`zeggen)
+* `["user.read"]` voor Microsoft Graph
+* `["<Application ID URL>/scope"]` voor aangepaste web-API's (`api://<Application ID>/access_as_user`)
 
 #### <a name="get-a-user-token-interactively"></a>Een gebruikerstoken interactief ophalen
 
-Soms hebt u de gebruiker nodig om te kunnen communiceren met het micro soft Identity platform-eind punt. Bijvoorbeeld:
+Soms moet de gebruiker het Microsoft-identiteitsplatformeindpunt gebruiken. Bijvoorbeeld:
 
-* Gebruikers moeten mogelijk hun referenties opnieuw invoeren, omdat het wacht woord is verlopen.
-* Uw toepassing vraagt toegang tot extra resource scopes aan die de gebruiker nodig heeft om toestemming te geven.
-* Verificatie met twee factoren is vereist.
+* Gebruikers moeten mogelijk hun referenties opnieuw opgeven omdat het wachtwoord is verlopen.
+* De toepassing vraagt toegang tot aanvullende resourcebereiken waarvoor de gebruiker toestemming moet geven.
+* Wanneer verificatie in twee stappen is vereist.
 
-Het aanbevolen patroon voor de meeste toepassingen is om `acquireTokenSilent` het eerst aan te roepen, vervolgens de uitzonde `acquireTokenPopup` ring op `acquireTokenRedirect`te vangen en vervolgens (of) aan te roepen om een interactieve aanvraag te starten.
+Het patroon dat wordt aanbevolen voor de meeste toepassingen: eerst `acquireTokenSilent` aanroepen, vervolgens de uitzondering detecteren, en daarna `acquireTokenPopup` (of `acquireTokenRedirect`) aanroepen om een interactieve aanvraag te starten.
 
-Resultaten `acquireTokenPopup` worden aangeroepen in een pop-upvenster. `acquireTokenRedirect` U kunt ook gebruikers omleiden naar het micro soft Identity platform-eind punt. In dat venster moeten gebruikers hun referenties bevestigen, toestemming geven voor de vereiste resource of twee ledige verificatie volt ooien.
+Als u `acquireTokenPopup` aanroept, wordt er een aanmeldvenster geopend. Het is ook mogelijk dat `acquireTokenRedirect` gebruikers omleidt naar het Microsoft-identiteitsplatformeindpunt. In dat venster moeten gebruikers hun referenties bevestigen, toestemming geven aan de vereiste resource of tweeledige verificatie uitvoeren.
 
 ```javascript
   const requestObj = {
@@ -296,7 +296,7 @@ Resultaten `acquireTokenPopup` worden aangeroepen in een pop-upvenster. `acquire
 ```
 
 > [!NOTE]
-> Deze Snelstartgids maakt gebruik `loginRedirect` van `acquireTokenRedirect` de methoden en van micro soft Internet Explorer vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) met betrekking tot het verwerken van pop-upvensters door Internet Explorer.
+> In deze quickstart wordt gebruikgemaakt van de methoden `loginRedirect` en `acquireTokenRedirect` met Internet Explorer, vanwege een [bekend probleem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) dat te maken heeft met het verwerken van pop-upvensters in Internet Explorer.
 
 ## <a name="log-out"></a>Afmelden
 
@@ -309,33 +309,33 @@ logout() {
 ```
 
 ## <a name="add-ui"></a>Gebruikersinterface toevoegen
-Zie de [voorbeeld toepassing](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular)voor een voor beeld van het toevoegen van de gebruikers interface met behulp van de component bibliotheek voor hoek materiaal.
+Voor een voorbeeld over hoe u een gebruikersinterface toevoegt aan de Angular Material-onderdeelbibliotheek, raadpleegt u de [voorbeeldtoepassing](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular).
 
 ## <a name="test-your-code"></a>Uw code testen
 
-1.  Start de webserver om naar de poort te Luis teren door de volgende opdrachten uit te voeren op de opdracht regel prompt vanuit de toepassingsmap:
+1.  Start de webserver om te luisteren naar de poort door de volgende opdrachten in een opdrachtregelprompt in de toepassingsmap uit te voeren:
 
     ```bash
     npm install
     npm start
     ```
-1. Voer **http://localhost:4200** in uw browser in of **http://localhost:{port}**, waarbij *poort* de poort is waarop uw webserver luistert.
+1. Voer in uw browser **http://localhost:4200** of **http://localhost:{port}** in, waarbij *poort* de poort is waarop uw webserver luistert.
 
 
-### <a name="provide-consent-for-application-access"></a>Toestemming geven voor toegang tot toepassingen
+### <a name="provide-consent-for-application-access"></a>Toestemming voor toepassingstoegang geven
 
-De eerste keer dat u zich bij uw toepassing aanmeldt, wordt u gevraagd de toegang tot uw profiel te verlenen en u toe te staan om u aan te melden:
+De eerste keer dat u zich aanmeldt bij uw toepassing, wordt u gevraagd om deze toegang te geven tot uw profiel en om u aan te melden:
 
-![Het venster machtigingen aangevraagd](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+![Het venster 'Machtiging gegeven'](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
-## <a name="add-scopes-and-delegated-permissions"></a>Bereiken en gedelegeerde machtigingen toevoegen
+## <a name="add-scopes-and-delegated-permissions"></a>Bereiken en gedelegeerde toestemmingen toevoegen
 
-Voor de Microsoft Graph-API is het bereik *User. Read* vereist om het profiel van een gebruiker te lezen. Deze scope wordt standaard automatisch toegevoegd in elke toepassing die is geregistreerd op de registratie Portal. Andere Api's voor Microsoft Graph, evenals aangepaste Api's voor uw back-endserver, vereisen mogelijk extra scopes. De Microsoft Graph-API vereist bijvoorbeeld het bereik *Calendars. Read* om de agenda's van de gebruiker weer te geven.
+De Microsoft Graph-API vereist het bereik *user.read* om het profiel van een gebruiker te lezen. Dit bereik wordt standaard automatisch toegevoegd in elke toepassing die is geregistreerd in de registratieportal. Overige API's voor Microsoft Graph, evenals aangepaste API's voor uw back-endserver, vereisen mogelijk aanvullende bereiken. De Microsoft Graph API vereist bijvoorbeeld het bereik *Calendars.Read* om te luisteren naar de agenda van de gebruiker.
 
-Als u toegang wilt krijgen tot de agenda's van de gebruiker in de context van een toepassing, voegt u de *agenda's toe.* gedelegeerde machtigingen lezen voor de registratie gegevens van de toepassing. Voeg vervolgens de *agenda's* toe aan de `acquireTokenSilent` aanroep.
+Als u toegang wilt krijgen tot de agenda van de gebruiker in de context van een toepassing, voegt u de gedelegeerde toestemming *Calendars.Read* toe aan de toepassingsregistratiegegevens. Voeg vervolgens het bereik *Calendars.Read* toe aan de oproep `acquireTokenSilent`.
 
 >[!NOTE]
->De gebruiker wordt mogelijk gevraagd om aanvullende toestemmingen wanneer u het aantal bereiken verhoogt.
+>De gebruiker wordt mogelijk gevraagd om aanvullende machtigingen te geven naarmate u het aantal bereiken verhoogt.
 
 Als voor een back-end-API geen bereik is vereist (niet aanbevolen), kunt u *clientId* gebruiken als het bereik in de aanroepen om tokens te verkrijgen.
 
@@ -343,7 +343,6 @@ Als voor een back-end-API geen bereik is vereist (niet aanbevolen), kunt u *clie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Lees vervolgens hoe u zich aanmeldt bij een gebruiker en tokens aanschaft in de hoek zelf studie:
+Als u geen ervaring hebt met identiteits- en toegangsbeheer, zijn er verschillende artikelen die u helpen moderne verificatieconcepten te leren, beginnend met [verificatie vs. autorisatie](authentication-vs-authorization.md).
 
-> [!div class="nextstepaction"]
-> [Zelf studie voor hoek](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Als u meer wilt weten over het ontwikkelen van toepassingen met één pagina op het Microsoft-identiteitsplatform, is de reeks artikelen [Scenario: Een toepassing met één pagina](scenario-spa-overview.md) nuttig om mee aan de slag te gaan.

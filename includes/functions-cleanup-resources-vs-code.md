@@ -4,20 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: 2d95055e79356b9e0fe9c4c0e64f5935619204b3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eb8b988d7d65b444fe41ecb21dddfab4ff4cfa1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81112859"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125831"
 ---
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Open in portal`.
+1. Druk in Visual Studio Code op F1 om het opdrachtenpalet te openen. In het opdrachtenpalet zoekt en selecteert u `Azure Functions: Open in portal`.
 
-1. Kies uw functie-app en druk op ENTER. De pagina functie-app wordt geopend in de Azure Portal.
+1. Kies uw functie-app en druk op Enter. De functie-app wordt geopend in de Azure-portal.
 
-1. Selecteer op het tabblad **overzicht** de benoemde koppeling onder **resource groep**.
+1. Selecteer op het tabblad **Overzicht** de benoemde koppeling naast **Resourcegroep**.
 
-    ![Selecteer op de pagina Functie-app de resourcegroep die u wilt verwijderen.](./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png)
+   :::image type="content" source="./media/functions-cleanup-resources-vs-code/functions-app-delete-resource-group.png" alt-text="Selecteer op de pagina Functie-app de resourcegroep die u wilt verwijderen.":::
 
 1. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen resources en controleer of dit de resources zijn die u wilt verwijderen.
  

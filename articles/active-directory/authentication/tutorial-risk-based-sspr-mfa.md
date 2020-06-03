@@ -1,92 +1,137 @@
 ---
-title: Op risicogebeurtenissen gebaseerde MFA en SSPR met Azure Identity Protection
-description: In deze zelfstudie gaat u integraties met Azure Identity Protection inschakelen voor Multi-Factor Authentication en de selfservice voor het opnieuw instellen van wachtwoorden, om de kansen op risicovol gedrag te verkleinen.
-services: multi-factor-authentication
+title: Op risico gebaseerde bescherming van gebruikersaanmeldingen in Azure Active Directory
+description: In deze zelfstudie leert u hoe u Azure Identity Protection inschakelt om gebruikers te beschermen wanneer riskant aanmeldingsgedrag wordt gedetecteerd in een account.
+services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 01/31/2018
+ms.date: 05/11/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1a6858d5eda8227b3f7c1b90dee86f44273a258
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74846348"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116043"
 ---
-# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Zelf studie: risico detecties gebruiken om Multi-Factor Authentication en wachtwoord wijzigingen te activeren
+# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Zelfstudie: Risicodetectie voor gebruikersaanmeldingen gebruiken als trigger voor Azure Multi-Factor Authentication of het wijzigen van wachtwoorden
 
-In deze zelfstudie gaat u functies van Azure Active Directory (Azure AD) Identity Protection inschakelen. Dit is een Azure AD Premium P2-functie en is meer dan alleen een controle- en rapportagehulpmiddel. Ter bescherming van identiteiten binnen uw organisatie, kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren die automatisch op risicovol gedrag reageren. Deze beleidsregels kunnen automatisch herstelstappen blokkeren of initiëren, zoals onder andere het verplicht wijzigen van wachtwoorden en het afdwingen van Multi-Factor Authentication.
+Ter bescherming van gebruikers kunt u op risicogebeurtenissen gebaseerde beleidsregels configureren in Azure Active Directory (Azure AD) die automatisch op risicovol gedrag reageren. Azure AD Identity Protection-beleid kan automatisch een aanmeldingspoging blokkeren of extra actie vereisen, zoals een wachtwoordwijziging of Azure Multi-Factor Authentication. Deze beleidsregels werken met bestaande beleidsregels voor voorwaardelijke toegang van Azure AD als extra beveiligingslaag voor organisaties. Gebruikers activeren mogelijk nooit riskant gedrag in een van deze beleidsregels, maar uw organisatie is beschermd wanneer er inbraakpoging op uw beleid wordt gedaan.
 
-Azure AD Identity Protection-beleid kan worden gebruikt naast bestaande beleids regels voor voorwaardelijke toegang als een extra beveiligingslaag. Misschien dat het nooit voorkomt dat gebruikers risicovol gedrag activeren waarvoor een van deze beleidsregels is vereist, maar u als beheerder weet dat ze zijn beveiligd.
-
-Enkele items die mogelijk een risico detectie activeren, zijn onder andere:
-
-* Gebruikers van wie de referenties zijn gelekt
-* Aanmeldingen vanaf anonieme IP-adressen
-* Onmogelijke reis naar ongewone locaties
-* Aanmeldingen vanaf geïnfecteerde apparaten
-* Aanmeldingen van IP-adressen met verdachte activiteit
-* Aanmeldingen vanaf onbekende locaties
-
-Meer informatie over Azure AD Identity Protection vindt u in het artikel [Wat is Azure AD Identity Protection](../active-directory-identityprotection.md)
+In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Registratie bij Azure MFA inschakelen
+> * Inzicht in het beschikbare beleid voor Azure AD Identity Protection
+> * Azure Multi-Factor Authentication-registratie inschakelen
 > * Op risicogebeurtenissen gebaseerde wachtwoordwijzigingen inschakelen
 > * Op risicogebeurtenissen gebaseerde Multi-Factor Authentication inschakelen
+> * Op risico gebaseerd beleid voor aanmeldingspogingen van gebruikers
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Toegang tot een werkende Azure AD-tenant waaraan ten minste een proefversie van een Azure AD Premium P2-licentie is toegewezen.
-* Een account met de bevoegdheden van een globale beheerder op de Azure AD-tenant.
-* U hebt de voorgaande zelfstudies over de selfservice voor wachtwoordherstel (SSPR) en Multi-Factor Authentication (MFA) voltooid.
+Om deze zelfstudie te voltooien, hebt u de volgende resources en machtigingen nodig:
 
-## <a name="enable-risk-based-policies-for-sspr-and-mfa"></a>Op risicogebeurtenissen gebaseerde beleidsregels voor SSPR en MFA inschakelen
+* Een werkende Azure AD-tenant waarop minimaal een Azure Ad Premium P2-proeflicentie is ingeschakeld.
+    * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
+* Een account met de bevoegdheden van een *globale beheerder*.
+* Azure AD dat is geconfigureerd voor self-service voor wachtwoordherstel en Azure Multi-Factor Authentication
+    * Voltooi indien nodig [de zelfstudie om Azure Active Directory SSPR in te schakelen](tutorial-enable-sspr.md).
+    * Voltooi indien nodig [de zelfstudie om Azure Multi-Factor Authentication in te schakelen](tutorial-enable-azure-mfa.md).
 
-Het inschakelen van het beleid op basis van risicogebeurtenissen is een eenvoudig proces. De onderstaande stappen leiden u door een voorbeeldconfiguratie.
+## <a name="overview-of-azure-ad-identity-protection"></a>Overzicht van Azure AD Identity Protection
 
-### <a name="enable-users-to-register-for-multi-factor-authentication"></a>Gebruikers in staat stellen zich voor Multi-Factor Authentication te registeren.
+Elke dag verzamelt en analyseert Microsoft triljoenen geanonimiseerde signalen als onderdeel van aanmeldingspogingen van gebruikers. Deze signalen helpen patronen van goed aanmeldingsgedrag van gebruikers te bouwen en mogelijk riskante aanmeldingen te identificeren. Azure AD Identity Protection kan aanmeldingspogingen van gebruikers beoordelen en extra actie nemen als er verdacht gedrag optreedt:
 
-Azure AD Identity Protection bevat een standaardbeleid dat u kan helpen bij het registreren van uw gebruikers voor Multi-Factor Authentication en om hun huidige registratiestatus vast te stellen. Door dit beleid in te schakelen, worden gebruikers niet meteen verplicht om Multi-Factor Authentication uit te voeren, maar wordt hen gevraagd zich vooraf te registreren.
+Sommige van de volgende acties activeren mogelijk Azure AD Identity Protection-risicodetectie:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Klik op **Alle services** en blader vervolgens naar **Azure AD Identity Protection**.
-1. Klik op **Registratie bij MFA**.
-1. Stel Beleid afdwingen in op **Aan**.
-   1. Door beleid in te stellen, moeten alle gebruikers methoden registreren ter voorbereiding van het gebruik van Multi-Factor Authentication.
-1. Klik op **Opslaan**.
+* Gebruikers van wie de referenties zijn gelekt.
+* Aanmeldingen vanaf anonieme IP-adressen.
+* Onmogelijke reis naar ongewone locaties.
+* Aanmeldingen vanaf geïnfecteerde apparaten.
+* Aanmeldingen van IP-adressen met verdachte activiteit.
+* Aanmeldingen vanaf onbekende locaties.
 
-   ![Vereisen dat gebruikers zich bij het aanmelden registreren voor MFA](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+De volgende drie beleidsregels zijn beschikbaar in Azure AD Identity Protection om gebruikers te beschermen en te reageren op verdachte activiteit. U kunt ervoor kiezen om beleidsafdwinging in of uit te schakelen, gebruiker of groepen selecteren om het beleid op toe te passen en besluiten of u toegang bij aanmelding wilt blokkeren of extra actie wilt vragen.
 
-### <a name="enable-risk-based-password-changes"></a>Op risicogebeurtenissen gebaseerde wachtwoordwijzigingen inschakelen
+* Beleid voor gebruikersrisico's
+    * Identificeert en reageert op gebruikersaccounts met mogelijk gecompromitteerde referenties. Kan de gebruiker vragen een nieuw wachtwoord te maken.
+* Beleid voor aanmeldingsrisico's
+    * Identificeert en reageert op verdachte aanmeldingspogingen. Kan de gebruiker om aanvullende vormen van verificatie met behulp van Azure Multi-Factor Authentication.
+* MFA-registratiebeleid
+    * Hiermee wordt ervoor gezorgd dat gebruikers zijn geregistreerd voor Azure Multi-Factor Authentication. Als beleid voor aanmeldingsrisico's vraagt om MFA, moet de gebruiker al zijn geregistreerd voor Azure Multi-Factor Authentication.
 
-Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiligingsteams bij Microsoft en andere betrouwbare bronnen om naar paren van gebruikersnamen en wachtwoorden te zoeken. Wanneer een van deze paren overeenkomt met een account in uw omgeving, kan een op risicogebeurtenissen gebaseerde wachtwoordwijziging worden geactiveerd met behulp van het volgende beleid.
+Wanneer u gebruikersbeleid of aanmeldingsrisicobeleid inschakelt, kunt u ook de drempelwaarde voor het risico instellen: *laag en hoger*, *gemiddeld en hoger* of *hoog*. Met deze flexibiliteit kunt u bepalen hoe agressief u de controles voor verdachte aanmeldingsgebeurtenissen wilt afdwingen.
 
-1. Klik op Beleid voor gebruikersrisico's.
-1. Selecteer bij **Voorwaarden** de optie **Gebruikersrisico** en kies vervolgens **Gemiddeld en hoger**.
-1. Klik op Selecteren en vervolgens op Voltooid.
-1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Wachtwoordwijziging vereisen**.
-1. Klik op Selecteren.
-1. Stel Beleid afdwingen in op **Aan**.
-1. Klik op **Opslaan**
+Voor meer informatie over Azure AD Identity Protection raadpleegt u [Wat is Azure AD Identity Protection?](../identity-protection/overview-identity-protection.md)
 
-### <a name="enable-risk-based-multi-factor-authentication"></a>Op risicogebeurtenissen gebaseerde Multi-Factor Authentication inschakelen
+## <a name="enable-mfa-registration-policy"></a>Beleid voor MFA-registratie inschakelen
 
-De meeste gebruikers vertonen normaal gedrag dat kan worden getraceerd. Wanneer ze buiten de norm hiervoor vallen, zou het riskant kunnen zijn om hen toe te staan zich zomaar aan te melden. Mogelijk wilt u die gebruiker blokkeren of misschien alleen maar vragen een Multi-Factor Authentication uit te voeren om te bewijzen dat ze echt zijn wie ze beweren te zijn. Als u een beleid wilt inschakelen waarbij MFA is vereist als er een risicovolle aanmelding wordt gedetecteerd, schakelt u het volgende beleid in.
+Azure AD Identity Protection bevat een standaardbeleid waarmee gebruikers kunnen worden ingeschreven voor Azure Multi-Factor Authentication. Als u aanvullend beleid gebruikt om aanmeldingsgebeurtenissen te beschermen, hebt u gebruikers nodig die al zijn geregistreerd voor MFA. Wanneer u dit beleid inschakelt, zijn er geen gebruikers nodig om MFA uit te voeren bij elke aanmeldingsgebeurtenis. Het beleid controleert alleen de registratiestatus van een gebruiker en vraagt hen vooraf te registreren indien dat nodig is.
 
-1. Klik op Beleid voor aanmeldingsrisico's instellen.
-1. Selecteer bij **Voorwaarden** de optie **Gebruikersrisico** en kies vervolgens **Gemiddeld en hoger**.
-1. Klik op Selecteren en vervolgens op Voltooid.
-1. Bij **Toegang** kiest u **Toegang toestaan** en selecteert u vervolgens **Multi-Factor Authentication vereisen**.
-1. Klik op Selecteren.
-1. Stel Beleid afdwingen in op **Aan**.
-1. Klik op **Opslaan**
+Het wordt aanbevolen om het MFA-registratiebeleid in te schakelen voor gebruikers waarvoor ook aanvullend Azure AD Identity Protection-beleid wordt ingeschakeld. Voer de volgende stappen uit om dit beleid in te schakelen:
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een globale-beheerdersaccount.
+1. Zoek en selecteer **Azure Active Directory**, selecteer **Beveiliging** en kies onder het menu *Bescherming* **Identiteitsbescherming**.
+1. Selecteer het **MFA-registratiebeleid** in het menu aan de linkerkant.
+1. Het beleid is standaard van toepassing op *Alle gebruikers*. Selecteer desgewenst **Toewijzingen** en kies vervolgens de gebruikers of groepen waarop u het beleid wilt toepassen.
+1. Selecteer **Toegang** onder *Controles*. Zorg ervoor dat de optie voor *Azure MFA-registratie vereisen* is ingeschakeld en kies vervolgens **Selecteren**.
+1. Stel **Beleid afdwingen** in op *Aan* en selecteer vervolgens **Opslaan**.
+
+    ![Schermopname over hoe u instelt dat gebruikers zich registreren voor MFA in de Azure-portal](./media/tutorial-risk-based-sspr-mfa/enable-mfa-registration.png)
+
+## <a name="enable-user-risk-policy-for-password-change"></a>Beleid voor gebruikersrisico's inschakelen voor wachtwoordwijziging
+
+Microsoft werkt samen met onderzoekers, justitie en politie, diverse beveiligingsteams bij Microsoft en andere betrouwbare bronnen om naar paren van gebruikersnamen en wachtwoorden te zoeken. Wanneer een van deze paren overeenkomt met een account in uw omgeving, kan een op risicogebeurtenissen gebaseerde wachtwoordwijziging worden aangevraagd. Voor dit beleid en deze actie moet de gebruiker het wachtwoord bijwerken voordat de gebruiker zich kan aanmelden om ervoor te zorgen dat eerder openbaargemaakte referenties niet langer werken.
+
+Voer de volgende stappen uit om dit beleid in te schakelen:
+
+1. Selecteer het **Beleid voor gebruikersrisico's** in het menu aan de linkerkant.
+1. Het beleid is standaard van toepassing op *Alle gebruikers*. Selecteer desgewenst **Toewijzingen** en kies vervolgens de gebruikers of groepen waarop u het beleid wilt toepassen.
+1. Kies onder *Voorwaarden* de optie **Voorwaarden selecteren > Een risiconiveau selecteren** en kies vervolgens *Gemiddeld en hoger*.
+1. Kies **Selecteren** en vervolgens **Voltooid**.
+1. Selecteer onder *Toegang* de optie **Toegang**. Zorg ervoor dat de optie voor **Toegang toestaan** en *Wachtwoordwijziging vereisen* is ingeschakeld en kies vervolgens **Selecteren**.
+1. Stel **Beleid afdwingen** in op *Aan* en selecteer vervolgens **Opslaan**.
+
+    ![Schermopname over hoe u het beleid voor gebruikersrisico's in de Azure-portal inschakelt](./media/tutorial-risk-based-sspr-mfa/enable-user-risk-policy.png)
+
+## <a name="enable-sign-in-risk-policy-for-mfa"></a>Beleid voor aanmeldingsrisico's inschakelen voor MFA
+
+De meeste gebruikers hebben een normaal gedrag dat kan worden gevolgd. Wanneer ze buiten deze norm vallen, is het mogelijk riskant om ze zich te laten aanmelden. In plaats daarvan kunt u die gebruiker blokkeren of ze meervoudige verificatie laten uitvoeren. Als de gebruiker de meervoudige verificatie afrondt, kunt u dit zien al geldige aanmeldingspoging en toegang geven tot de toepassing of service.
+
+Voer de volgende stappen uit om dit beleid in te schakelen:
+
+1. Selecteer het **Beleid voor aanmeldingsrisico's** in het menu aan de linkerkant.
+1. Het beleid is standaard van toepassing op *Alle gebruikers*. Selecteer desgewenst **Toewijzingen** en kies vervolgens de gebruikers of groepen waarop u het beleid wilt toepassen.
+1. Kies onder *Voorwaarden* de optie **Voorwaarden selecteren > Een risiconiveau selecteren** en kies vervolgens *Gemiddeld en hoger*.
+1. Kies **Selecteren** en vervolgens **Voltooid**.
+1. Kies **Een controle selecteren** onder *Toegang*. Zorg ervoor dat de optie voor **Toegang toestaan** en *Meervoudige verificatie vereisen* is ingeschakeld en kies vervolgens **Selecteren**.
+1. Stel **Beleid afdwingen** in op *Aan* en selecteer vervolgens **Opslaan**.
+
+    ![Schermopname over hoe u het beleid voor aanmeldingsrisico's in de Azure-portal inschakelt](./media/tutorial-risk-based-sspr-mfa/enable-sign-in-risk-policy.png)
+
+## <a name="test-risky-sign-events"></a>Riskante aanmeldingsgebeurtenissen testen
+
+De meeste aanmeldingen van gebruikers activeren het op risico gebaseerde beleid dat in de vorige stappen is geconfigureerd niet. Het kan zijn dat een gebruiker nooit een vraag voor MFA ziet of zijn of haar wachtwoord opnieuw moet instellen. Als hun referenties beveiligd blijven en hun gedrag consistent is, slagen hun aanmeldingspogingen.
+
+Als u Azure AD Identity Protection-beleid wilt testen dat in de vorige stappen is gemaakt, moet u een manier hebben om riskant gedrag of potentiële aanvallen te simuleren. De stappen om deze tests uit te voeren variëren op basis van het Azure AD Identity Protection-beleid dat u wilt testen. Raadpleeg [Risicodetectie simuleren in Azure AD Identity Protection](../identity-protection/howto-identity-protection-simulate-risk.md) voor meer informatie over scenario's en stappen.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u klaar bent met testen en er geen behoefte meer aan hebt dat het op risicogebeurtenissen gebaseerd beleid is ingeschakeld, gaat u terug naar elk beleid dat u wilt uitschakelen en stelt u **Beleid afdwingen** in op **Uit**.
+Als u klaar bent met testen en er geen behoefte meer aan hebt dat het op risicogebeurtenissen gebaseerd beleid is ingeschakeld, gaat u terug naar elk beleid dat u wilt uitschakelen en stelt u **Beleid afdwingen** in op *Uit*.
+
+## <a name="next-steps"></a>Volgende stappen
+
+In deze zelf studie hebt u op risico gebaseerd gebruikersbeleid voor Azure AD Identity Protection ingeschakeld. U hebt geleerd hoe u:
+
+> [!div class="checklist"]
+> * Inzicht in het beschikbare beleid voor Azure AD Identity Protection
+> * Azure Multi-Factor Authentication-registratie inschakelen
+> * Op risicogebeurtenissen gebaseerde wachtwoordwijzigingen inschakelen
+> * Op risicogebeurtenissen gebaseerde Multi-Factor Authentication inschakelen
+> * Op risico gebaseerd beleid voor aanmeldingspogingen van gebruikers
+
+> [!div class="nextstepaction"]
+> [Meer informatie over Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)

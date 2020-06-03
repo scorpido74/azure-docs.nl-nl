@@ -1,31 +1,24 @@
 ---
-title: 'Zelf studie: een schaalset voor een virtuele Linux-machine maken'
-description: Meer informatie over het gebruik van de Azure CLI voor het maken en implementeren van een Maxi maal beschik bare toepassing op Linux Vm's met behulp van een schaalset voor virtuele machines
-services: virtual-machine-scale-sets
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
+title: 'Zelfstudie: Een schaalset voor virtuele Linux-machines maken'
+description: U leert hoe u Azure CLI gebruikt om een maximaal beschikbare toepassing te maken en implementeren op virtuele Linux-machines met behulp van een virtuele-machineschaalset
+author: ju-shim
+ms.author: jushiman
 ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
 ms.date: 06/01/2018
-ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: e97611cdfdca28b2c2b22f21d3aedcc79c4ee6d0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238592"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198110"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Zelfstudie: Een virtuele-machineschaalset maken en een toepassing met hoge beschikbaarheid implementeren in Linux met Azure CLI
 
-Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. In deze zelfstudie implementeert u een virtuele-machineschaalset in Azure. Procedures voor:
+Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. In deze zelfstudie implementeert u een virtuele-machineschaalset in Azure. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Cloud-init gebruiken voor het maken van een app op schaal
@@ -35,9 +28,9 @@ Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines m
 > * Verbindingsgegevens voor schaalsetinstanties weergeven
 > * Gegevensschijven in een schaalset gebruiken
 
-In deze zelf studie wordt gebruikgemaakt van de CLI binnen de [Azure Cloud shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **deze** in het begin van een wille keurig code blok.
+In deze zelfstudie wordt gebruikgemaakt van de CLI in de [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), die voortdurend wordt bijgewerkt naar de nieuwste versie. Als u de Cloud Shell wilt openen, selecteert u **Probeer het** bovenaan een willekeurig codeblok.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u Azure CLI 2.0.30 of hoger gebruiken voor deze zelfstudie. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="scale-set-overview"></a>Overzicht van schaalsets
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Virtuele machines in een schaalset worden verdeeld over logische fout- en updatedomeinen in een of meer *plaatsingsgroepen*. Dit zijn groepen van op soortgelijke wijze geconfigureerde virtuele machines, vergelijkbaar met [beschikbaarheidssets](tutorial-availability-sets.md).

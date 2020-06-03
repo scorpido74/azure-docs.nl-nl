@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Sales Force | Microsoft Docs'
+title: 'Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Salesforce | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Salesforce.
 services: active-directory
 documentationCenter: na
@@ -15,86 +15,92 @@ ms.topic: tutorial
 ms.date: 02/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a875cee7e6796a2c865bde4a62f2f0463eb12130
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f66a5ba491a5afed4007f73b88a38719ec71fb63
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78967738"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849158"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Sales Force
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) van Azure Active Directory met Salesforce
 
-In deze zelf studie leert u hoe u Sales Force kunt integreren met Azure Active Directory (Azure AD). Wanneer u Sales Force integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Salesforce integreert met Azure Active Directory (Azure AD). Wanneer u Salesforce integreert met Azure AD, kunt u:
 
-* Controle in azure AD die toegang heeft tot Sales Force.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Sales Force met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* in Azure AD bepalen wie er toegang heeft tot Salesforce.
+* ervoor zorgen dat gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Salesforce.
+* uw accounts op één centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Eenmalige aanmelding voor het Sales Force-abonnement (SSO) ingeschakeld.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Salesforce waarvoor eenmalige aanmelding (SSO) is ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Salesforce biedt ondersteuning voor met **SP** geïnitieerde eenmalige aanmelding
 
-* Sales Force ondersteunt [ **automatische** gebruikers inrichting en](salesforce-provisioning-tutorial.md) het ongedaan maken van de inrichting (aanbevolen)
+* Salesforce biedt ondersteuning voor het [**automatisch** inrichten van gebruikers](salesforce-provisioning-tutorial.md) (aanbevolen)
 
 * Salesforce biedt ondersteuning voor het **Just-In-Time** inrichten van gebruikers
 
-* Een Sales Force-app kan nu worden geconfigureerd met Azure AD om SSO in te scha kelen. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
-* Zodra u Sales Force hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* De mobiele Salesforce-toepassing kan nu worden geconfigureerd met Azure AD voor het inschakelen van eenmalige aanmelding. In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+* Zodra u Salesforce hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer, uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-from-the-gallery"></a>Salesforce toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van Salesforce in Azure AD moet u Salesforce vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in het gedeelte **toevoegen vanuit de galerie** de tekst **Sales Force** in het zoekvak.
-1. Selecteer **Sales Force** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen vanuit de galerie**, **Salesforce** in het zoekvak.
+1. Selecteer **Salesforce** in het resultatenvenster en voeg de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Sales Force
+## <a name="configure-and-test-azure-ad-single-sign-on-for-salesforce"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Salesforce
 
-Azure AD SSO met Sales Force configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Sales Force.
+Configureer en test eenmalige aanmelding van Azure AD met Salesforce met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Salesforce.
 
-Als u Azure AD SSO met Sales Force wilt configureren en testen, voert u de volgende bouw stenen uit:
+Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Salesforce te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[CONFIGUREER SSO van Sales Force](#configure-salesforce-sso)** -om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
-    * Een **[Sales Force-test gebruiker maken](#create-salesforce-test-user)** : u hebt een equivalent van B. Simon in Sales Force dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    * **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    * **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Salesforce-eenmalige aanmelding configureren](#configure-salesforce-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+    * **[Een Salesforce-testgebruiker maken](#create-salesforce-test-user)** : als u een equivalent van B.Simon in Salesforce wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
 
-1. Ga in het [Azure Portal](https://portal.azure.com/)naar de pagina **Sales Force** -toepassing, zoek de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Salesforce** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
     a. Typ in het tekstvak **Aanmeldings-URL** een URL met de volgende indeling:
 
     Bedrijfsaccount: `https://<subdomain>.my.salesforce.com`
 
     Ontwikkelaarsaccount: `https://<subdomain>-dev-ed.my.salesforce.com`
+    
+    b. Typ in het tekstvak **Antwoord-URL** een URL met de volgende indeling:
 
-    b. Typ in het tekstvak **Id** een waarde met de volgende indeling:
+    Bedrijfsaccount: `https://<subdomain>.my.salesforce.com`
+
+    Ontwikkelaarsaccount: `https://<subdomain>-dev-ed.my.salesforce.com`
+
+    c. Typ in het tekstvak **Id** een waarde met de volgende indeling:
 
     Bedrijfsaccount: `https://<subdomain>.my.salesforce.com`
 
@@ -103,55 +109,55 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en -id. Neem contact op met het [Salesforce-klantondersteuningsteam](https://help.salesforce.com/support) om deze waarden te verkrijgen.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Op de sectie **Sales Force instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
+1. In de sectie **Salesforce instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Sales Force.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Salesforce.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 1. Selecteer **Salesforce** in de lijst met toepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-salesforce-sso"></a>Sales Force-SSO configureren
+## <a name="configure-salesforce-sso"></a>Eenmalige aanmelding configureren voor Salesforce
 
-1. Als u de configuratie binnen Sales Force wilt automatiseren, moet u de **uitbrei ding mijn apps Secure Sign-in browser** installeren door te klikken op **de uitbrei ding installeren**.
+1. Als u de configuratie in Salesforce wilt automatiseren, moet u **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-    ![Uitbrei ding voor mijn apps](common/install-myappssecure-extension.png)
+    ![Uitbreiding van Mijn apps](common/install-myappssecure-extension.png)
 
-1. Nadat u de extensie hebt toegevoegd aan de browser, klikt u op **Sales Force instellen** , wordt u naar de toepassing voor eenmalige aanmelding in Sales Force geleid. Geef de beheerders referenties op om u aan te melden bij eenmalige aanmelding voor Sales Force. Met de browser uitbreiding wordt de toepassing automatisch voor u geconfigureerd en wordt stap 3-13 geautomatiseerd.
+1. Na de toevoeging van de extensie aan de browser, klikt u op **Salesforce instellen** om naar de toepassing voor eenmalige aanmelding in Salesforce te worden geleid. Geef hier de Administrator-referenties op om u aan te melden bij Eenmalige aanmelding in Salesforce. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen 3-13 geautomatiseerd.
 
-    ![Configuratie van Setup](common/setup-sso.png)
+    ![Instelling configureren](common/setup-sso.png)
 
-1. Als u Sales Force hand matig wilt installeren, opent u een nieuw webbrowser venster en meldt u zich aan bij uw Sales Force-bedrijfs site als beheerder en voert u de volgende stappen uit:
+1. Als u Salesforce handmatig wilt instellen, opent u een nieuw browservenster en meldt u zich als beheerder aan bij de Salesforce-bedrijfssite. Voer daarna de volgende stappen uit:
 
 1. Klik op **Instellen** onder het **instellingenpictogram** in de rechterbovenhoek van de pagina.
 
@@ -180,7 +186,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/xmlchoose.png)
 
-1. Op de **instellingen pagina voor eenmalige SAML-aanmelding** worden velden automatisch ingevuld. Selecteer de **gebruikers inrichting ingeschakeld** en klik vervolgens op **Opslaan**.
+1. Op de pagina **SAML-instellingen voor eenmalige aanmelding** worden de velden automatisch ingevuld. Selecteer de **Gebruikers inrichten ingeschakeld** en klik dan op **Opslaan**.
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/salesforcexml.png)
 
@@ -192,7 +198,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-edit-auth-config.png)
 
-1. In het gedeelte **Verificatieconfiguratie** schakelt u **AzureSSO** in als **verificatieservice** voor de SAML-configuratie voor eenmalige aanmelding. Klik dan op **Opslaan **.
+1. In het gedeelte **Verificatieconfiguratie** schakelt u **AzureSSO** in als **verificatieservice** voor de SAML-configuratie voor eenmalige aanmelding. Klik dan op **Opslaan** .
 
     ![Eenmalige aanmelding configureren](./media/salesforce-tutorial/sf-auth-config.png)
 
@@ -201,48 +207,48 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ### <a name="create-salesforce-test-user"></a>Een Salesforce-testgebruiker maken
 
-In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Sales Force. Salesforce biedt ondersteuning voor just-in-time inrichten, wat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Salesforce, wordt er een nieuwe gemaakt wanneer u Salesforce opent. Salesforce ondersteunt ook automatische inrichting van gebruikers. Meer details over het configureren van automatische inrichting van gebruikers vindt u [hier](salesforce-provisioning-tutorial.md).
+In deze sectie wordt een gebruiker met de naam B.Simon gemaakt in Salesforce. Salesforce biedt ondersteuning voor just-in-time inrichten, wat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Salesforce, wordt er een nieuwe gemaakt wanneer u Salesforce opent. Salesforce ondersteunt ook automatische inrichting van gebruikers. Meer details over het configureren van automatische inrichting van gebruikers vindt u [hier](salesforce-provisioning-tutorial.md).
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de Salesforce-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Salesforce waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="test-sso-for-salesforce-mobile"></a>SSO voor Sales Force (Mobile) testen
+## <a name="test-sso-for-salesforce-mobile"></a>Test voor eenmalige aanmelding in Salesforce (mobiel)
 
-1. Open Sales Force Mobile Application. Klik op de pagina aanmelden op **aangepast domein gebruiken**.
+1. Open de mobiele Salesforce-toepassing. Klik op de aanmeldpagina op **Aangepast domein gebruiken**.
 
-    ![Mobiele Sales Force-app](media/salesforce-tutorial/mobile-app1.png)
+    ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app1.png)
 
-1. Voer in het tekstvak **aangepast domein** de geregistreerde aangepaste domein naam in en klik op **door gaan**.
+1. Voer in het tekstvak **Aangepast domein** uw geregistreerde aangepaste domeinnaam in en klik op **Doorgaan**.
 
-    ![Mobiele Sales Force-app](media/salesforce-tutorial/mobile-app2.png)
+    ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app2.png)
 
-1. Voer uw Azure AD-referenties in om u aan te melden bij de Sales Force-toepassing en klik op **volgende**.
+1. Voer uw Azure AD-referenties in om u aan te melden bij de Salesforce-toepassing en klik op **Volgende**.
 
-    ![Mobiele Sales Force-app](media/salesforce-tutorial/mobile-app3.png)
+    ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app3.png)
 
-1. Klik op de pagina **toegang toestaan** , zoals hieronder wordt weer gegeven, op **toestaan** om toegang te geven tot de Sales Force-toepassing.
+1. Klik op de pagina **Toegang toestaan** op **Toestaan** om toegang te verlenen tot de Salesforce-toepassing.
 
-    ![Mobiele Sales Force-app](media/salesforce-tutorial/mobile-app4.png)
+    ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app4.png)
 
-1. Als het aanmelden is voltooid, wordt de start pagina van de toepassing weer gegeven.
+1. Als het aanmelden is gelukt, wordt de startpagina van de toepassing weergegeven.
 
-    ![Mobiele Sales Force](media/salesforce-tutorial/mobile-app5.png) ![Mobile App Sales Force-app](media/salesforce-tutorial/mobile-app6.png)
+    ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app5.png) ![Mobiele Salesforce-toepassing](media/salesforce-tutorial/mobile-app6.png)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Gebruikers inrichten configureren](salesforce-provisioning-tutorial.md)
+- [Inrichten van gebruikers configureren](salesforce-provisioning-tutorial.md)
 
-- [Probeer Sales Force met Azure AD](https://aad.portal.azure.com)
+- [Salesforce proberen met Azure AD](https://aad.portal.azure.com)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Sales Force beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+- [Salesforce beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/protect-salesforce)

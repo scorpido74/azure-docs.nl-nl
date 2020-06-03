@@ -1,21 +1,22 @@
 ---
-title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken en beheren'
+title: Zelfstudie - Een schaalset voor virtuele Azure-machines maken en beheren
 description: Ontdek hoe u met Azure PowerShell een schaalset met virtuele Azure-machines maakt. Leer daarnaast hoe u enkele veelvoorkomende beheertaken uitvoert, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 05/18/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/18/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011231"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195173"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie - Een schaalset met virtuele Azure-machines maken met Azure PowerShell
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset maken met Azure PowerShell
 
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. In deze zelfstudie leert u het volgende:
 
@@ -35,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
-Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. U kunt pas een schaalset voor virtuele machines maken als er al een resourcegroep is gemaakt. Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In dit voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . 
+Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. U kunt pas een schaalset voor virtuele machines maken als er al een resourcegroep is gemaakt. Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In dit voorbeeld wordt er een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *EastUS*. 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -93,7 +94,7 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 ## <a name="list-connection-information"></a>Verbindingsgegevens opvragen
 Er wordt een openbaar IP-adres toegewezen aan de load balancer die verkeer routeert naar de afzonderlijke VM-exemplaren. Standaard worden er regels voor NAT (Network Address Translation) toegevoegd aan de load balancer van Azure waarmee verkeer van externe verbindingen wordt doorgestuurd naar elke VM op een opgegeven poort. Om verbinding te maken met de VM-exemplaren in een schaalset, maakt u een externe verbinding met een toegewezen openbare IP-adres en poortnummer.
 
-Als u de NAT-poorten wilt opvragen die u moet verbinden met VM-exemplaren in een schaalset, moet u eerst het load balancer-object opvragen met [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Bekijk vervolgens de binnenkomende NAT-regels met [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
+Als u de NAT-poorten wilt opvragen die u moet verbinden met VM-exemplaren in een schaalset, moet u eerst het load balancer-object opvragen met [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Bekijk vervolgens de inkomende NAT-regels met [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig):
 
 
 ```azurepowershell-interactive
@@ -132,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Wanneer u hierom wordt gevraagd, geeft u de referenties op die worden gebruikt bij het maken van de schaalset (standaard in de voorbeeld opdrachten *azureuser* en *\@P ssw0rd!*). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *1*:
+Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Voer desgevraagd de referenties in die u hebt gebruikt bij het maken van de schaalset (standaard *azureuser* en *P\@ssw0rd!* in de voorbeeldopdrachten). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001

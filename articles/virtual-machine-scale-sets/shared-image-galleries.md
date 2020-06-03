@@ -1,22 +1,22 @@
 ---
-title: VM-installatie kopieën delen met gedeelde galerieën
-description: Meer informatie over het gebruik van de gemeen schappelijke afbeeldings galerieën om VM-installatie kopieën te delen in uw organisatie.
-author: cynthn
+title: VM-installatiekopieën delen met gedeelde galerieën
+description: Meer informatie over het gebruik van galerieën met gedeelde installatiekopieën om VM-installatiekopieën te delen in uw organisatie.
+author: axayjo
+ms.author: akjosh
+ms.topic: overview
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
-ms.topic: conceptual
-ms.workload: infrastructure
 ms.date: 05/04/2020
-ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 130fe0cc4813c764ceacec0fc7c800fc38f88741
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: MT
+ms.reviewer: cynthn
+ms.custom: akjosh
+ms.openlocfilehash: c8e1f33f36b07a754620ad36aa60b00794291e59
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792817"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119685"
 ---
-# <a name="shared-image-galleries-overview"></a>Overzicht van galerieën met gedeelde afbeeldingen
+# <a name="shared-image-galleries-overview"></a>Galerieën met gedeelde installatiekopieën (overzicht)
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -24,4 +24,4 @@ ms.locfileid: "82792817"
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het implementeren van gedeelde installatie kopieën met behulp van [Azure cli](shared-images-cli.md) en [Azure PowerShell](shared-images-powershell.md)
+Meer informatie over het implementeren van gedeelde installatiekopieën met behulp van de [Azure CLI](shared-images-cli.md) en [Azure PowerShell](shared-images-powershell.md)
