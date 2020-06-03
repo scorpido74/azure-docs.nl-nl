@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0aa90aa054f99e8f65233887703965eedcd6bd90
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ccaa1945101c252f7dd32be6f9340b51541ed48d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264499"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296631"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services authenticatie inschakelen op Azure Files
 
@@ -22,6 +22,7 @@ Voor een overzicht van Azure AD-verificatie via SMB voor Azure-bestands shares, 
 
 > [!NOTE]
 > Azure Files ondersteunt Kerberos-verificatie met Azure AD DS met RC4-HMAC-versleuteling. AES Kerberos-versleuteling wordt nog niet ondersteund.
+> Azure Files ondersteunt verificatie voor Azure AD DS met volledige synchronisatie met Azure AD. Als u scoped Synchronization hebt ingeschakeld in azure AD DS dat alleen een beperkt aantal identiteiten vanuit Azure AD synchroniseert, wordt verificatie en autorisatie niet ondersteund.
 
 ## <a name="prerequisites"></a>Vereisten
 

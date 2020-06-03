@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263826"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307381"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Push meldingen met Azure Notification Hubs: veelgestelde vragen
 
@@ -56,7 +56,7 @@ Voor de lagen basis en Standard Notification Hubs kunnen correct geconfigureerde
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Wilt u de hub of naam ruimte Hoe kan ik upgraden of downgrade uitvoeren naar een andere laag?
 
-Ga naar de **[Azure Portal]** > **Notification hubs naam ruimten** of **Notification hubs**. Selecteer de resource die u wilt bijwerken en ga naar de **prijs categorie**. Houd rekening met de volgende vereisten:
+Ga naar de **[Azure Portal]**  >  **Notification hubs naam ruimten** of **Notification hubs**. Selecteer de resource die u wilt bijwerken en ga naar de **prijs categorie**. Houd rekening met de volgende vereisten:
 
 * De bijgewerkte prijs categorie is van toepassing op *alle* hubs in de naam ruimte waarmee u werkt.
 * Als het aantal apparaten de limiet overschrijdt van de laag die u wilt downgradeen, moet u apparaten verwijderen voordat u een downgrade uitvoert.
@@ -79,7 +79,7 @@ Notification Hubs verzendt meldingen naar apparaten met mobiele apps. Het biedt 
 
 Raadpleeg de pagina met [prijzen voor notification hubs] voor meer informatie over het aantal ondersteunde apparaten.
 
-Als u ondersteuning nodig hebt voor meer dan 10.000.000 geregistreerde apparaten, moet u uw apparaten op meerdere hubs partitioneren.
+Als u ondersteuning nodig hebt voor meer dan 10.000.000 geregistreerde apparaten, moet u uw apparaten partitioneren over meerdere naam ruimten.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Hoeveel push meldingen kan ik verzenden?
 

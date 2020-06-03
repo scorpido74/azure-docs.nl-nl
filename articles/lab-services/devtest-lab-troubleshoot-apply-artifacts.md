@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456989"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310271"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Problemen oplossen bij het Toep assen van artefacten in een Azure DevTest Labs virtuele machine
 Het Toep assen van artefacten op een virtuele machine kan om verschillende redenen mislukken. In dit artikel wordt stapsgewijs beschreven hoe u mogelijke oorzaken kunt identificeren.
@@ -57,8 +57,9 @@ U kunt virtuele machines die zijn gemaakt met DevTest Labs en het Resource Manag
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Symptomen, oorzaken en mogelijke oplossingen 
 
-### <a name="artifact-appears-to-hang"></a>Artefact lijkt vast te lopen   
-Een artefact lijkt vast te lopen totdat een vooraf gedefinieerde time-outperiode verloopt en het artefact is gemarkeerd als **mislukt**.
+### <a name="artifact-appears-to-stop-responding"></a>Artefact lijkt niet meer te reageren
+
+Een artefact lijkt niet meer te reageren totdat een vooraf gedefinieerde time-outperiode is verstreken en het artefact is gemarkeerd als **mislukt**.
 
 Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Een artefact kan tijdens de uitvoering worden geblokkeerd met een van de volgende stappen:
 
@@ -67,14 +68,14 @@ Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Ee
     - Zoek naar fouten onder deze vermeldingen. De fout wordt soms niet dienovereenkomstig gelabeld en u moet elk item onderzoeken.
     - Zorg ervoor dat u de inhoud van de JSON-nettolading bekijkt wanneer u de details van elke vermelding onderzoekt. Er wordt mogelijk een fout weer geven aan de onderkant van het document.
 - **Bij het uitvoeren van het artefact**. Dit kan worden veroorzaakt door netwerk-of opslag problemen. Zie de betreffende sectie verderop in dit artikel voor meer informatie. Dit kan ook gebeuren door de manier waarop het script is gemaakt. Bijvoorbeeld:
-    - Een Power shell-script heeft **verplichte para meters**, maar er kan wel een waarde worden door gegeven, omdat u de gebruiker de optie leeg laat of omdat u geen standaard waarde voor de eigenschap hebt in het definitie bestand artifactfile. json. Het script is vastgelopen omdat het wacht op invoer van de gebruiker.
+    - Een Power shell-script heeft **verplichte para meters**, maar er kan wel een waarde worden door gegeven, omdat u de gebruiker de optie leeg laat of omdat u geen standaard waarde voor de eigenschap hebt in het definitie bestand artifactfile. json. Het script reageert niet meer omdat het wacht op invoer van de gebruiker.
     - Een Power shell-script **vereist invoer** van de gebruiker als onderdeel van de uitvoering. Scripts moeten zonder tussen komst van de gebruiker worden geschreven om op de achtergrond te worden uitgevoerd.
 - **Het duurt lang voordat de VM-agent gereed is**. Wanneer de virtuele machine voor het eerst wordt gestart, of wanneer de aangepaste script extensie voor het eerst wordt geïnstalleerd om artefacten toe te passen, moet de VM mogelijk een upgrade van de VM-agent uitvoeren of wachten tot de VM-agent is geïnitialiseerd. Het kan voor komen dat de VM-agent veel tijd in beslag neemt. In dergelijke gevallen raadpleegt u [overzicht van Azure virtual machine agent](../virtual-machines/extensions/agent-windows.md) voor verdere probleem oplossing.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Controleren of het artefact lijkt vast te lopen vanwege het script
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>Controleren of het artefact lijkt te reageren vanwege het script
 
 1. Meld u aan bij de betreffende virtuele machine.
-2. Kopieer het script lokaal in de virtuele machine of zoek het naar de virtuele machine onder `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`. Het is de locatie waar de artefact scripts worden gedownload.
+2. Kopieer het script lokaal in de virtuele machine of zoek het naar de virtuele machine onder `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>` . Het is de locatie waar de artefact scripts worden gedownload.
 3. Voer het script lokaal uit met behulp van een opdracht prompt met verhoogde bevoegdheid, zodat dezelfde parameter waarden worden gebruikt om het probleem te veroorzaken.
 4. Bepaal of het script te lijden heeft aan ongewenste gedrag. Indien dit het geval is, moet u een update aanvragen bij het artefact (als deze afkomstig is van de open bare opslag plaats). of maak de correcties zelf (als deze afkomstig zijn van uw persoonlijke opslag plaats).
 
@@ -83,7 +84,7 @@ Wanneer een artefact vastloopt, moet u eerst bepalen waar deze zich bevinden. Ee
 > 
 > Zie [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) -document voor meer informatie over het schrijven van uw eigen artefacten.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>Controleren of het artefact lijkt vast te lopen vanwege de VM-agent:
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>Ga als volgt te werk om te controleren of het artefact lijkt te reageren vanwege de VM-agent:
 1. Meld u aan bij de betreffende virtuele machine.
 2. Ga in bestanden Verkenner naar **C:\WindowsAzure\logs**.
 3. Zoek en open bestand **WaAppAgent. log**.
@@ -119,7 +120,7 @@ De bovenstaande fout wordt weer gegeven in de sectie **implementatie bericht** v
 ### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Om ervoor te zorgen dat de communicatie met de Azure Storage-service niet wordt geblokkeerd:
 
 - **Controleren op toegevoegde netwerk beveiligings groepen (NSG)**. Het kan zijn dat er een abonnements beleid is toegevoegd waar Nsg's automatisch worden geconfigureerd in alle virtuele netwerken. Dit is ook van invloed op het virtuele standaard netwerk van de Lab, indien gebruikt, of een ander virtueel netwerk dat in uw Lab is geconfigureerd, dat wordt gebruikt voor het maken van Vm's.
-- **Controleer het standaard-Lab-opslag account** (dat wil zeggen, het eerste opslag account dat is gemaakt tijdens het maken van het lab, waarvan de naam begint met de letter ' a ' en eindigt met een nummer met meerdere\<cijfers\>', een labname #).
+- **Controleer het standaard-Lab-opslag account** (dat wil zeggen, het eerste opslag account dat is gemaakt tijdens het maken van het lab, waarvan de naam begint met de letter ' a ' en eindigt met een nummer dat uit meerdere cijfers bestaat \<labname\> ).
     1. Navigeer naar de resource groep van de test omgeving.
     2. Zoek de bron van het type **opslag account**, waarvan de naam overeenkomt met de Conventie.
     3. Navigeer naar de pagina voor het opslag account met de naam **firewalls en virtuele netwerken**.
@@ -137,4 +138,3 @@ Er zijn andere minder voorkomende fout bronnen beschikbaar. Controleer elke beoo
 
 ## <a name="next-steps"></a>Volgende stappen
 Als er geen fouten zijn opgetreden en u nog steeds geen artefacten kunt Toep assen, kan een ondersteunings incident voor Azure worden vastgelegd. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
-

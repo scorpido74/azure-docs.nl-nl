@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: 7f937c18e2012baa430129ff16200a5e6b215f28
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4c79779d9ce87a2596e5ccd3888e323fd27e0115
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220311"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298071"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Gegevens in Azure SQL Database kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -644,7 +644,7 @@ Wanneer gegevens worden gekopieerd van of naar Azure SQL Database, worden de vol
 | xml |Xml |
 
 >[!NOTE]
-> Voor gegevens typen die worden toegewezen aan het type van de tijdelijke decimalen, Azure Data Factory op dit moment de precisie Maxi maal 28 ondersteunen. Als u gegevens hebt die een grotere precisie hebben dan 28, kunt u overwegen om te converteren naar een teken reeks in SQL-query.
+> Voor gegevens typen die worden toegewezen aan het type van de decimale waarde, wordt op dat moment de functie voor het kopiëren van de precisie ondersteund tot 28. Als u gegevens hebt die een grotere precisie hebben dan 28, kunt u overwegen om te converteren naar een teken reeks in SQL-query.
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
@@ -674,7 +674,7 @@ Met name:
 
     - **Data Factory beheerde identiteits verificatie**gebruiken: 
 
-        1. Volg dezelfde [vereisten](#managed-identity) om database gebruiker te maken voor de beheerde identiteit en de juiste rol in uw data base te verlenen.
+        1. Volg dezelfde [vereisten](#managed-identity) voor het maken van een database gebruiker voor de beheerde identiteit en het verlenen van de juiste rol in uw data base.
         2. Geef in gekoppelde service de ODBC-connection string op onder en selecteer **anonieme** verificatie als de connection string zelf aangeeft `Authentication=ActiveDirectoryMsi` .
 
         ```

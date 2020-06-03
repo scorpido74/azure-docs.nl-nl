@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660541"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299839"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
@@ -29,7 +29,9 @@ Voer Oracle-data bases uit op de Azure-infra structuur met Oracle Database op Or
 
 * Oracle Database 12,1, 12,2 en 18,3 Enter prise Edition 
 
-* Oracle Database 12,1, 12,2 en 18,3 Standard Edition 
+* Oracle Database 12,1, 12,2 en 18,3 Standard Edition
+
+* Oracle Database 19,3
 
 U kunt er ook voor kiezen om Oracle Database in te stellen op een niet-Oracle Linux installatie kopie die beschikbaar is in azure, een oplossing baseren op een aangepaste installatie kopie die u helemaal zelf maakt in azure of een aangepaste installatie kopie uit uw on-premises omgeving kunt uploaden.
 
@@ -45,7 +47,7 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux met de onbreekbare Enter prise kernel (UEK) 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 en 7,6 
+* Oracle Linux met de onbreekbare Enter prise kernel (UEK) 6,8, 6,9, 6,10, 7,3 tot 7,7, 8,0, 8,1. 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Opties voor hoge Beschik baarheid en herstel na nood gevallen
 
@@ -72,8 +74,7 @@ Voer Oracle-toepassingen uit in de Azure-infra structuur, die zijn verbonden met
 
 Gebruik terraform-sjablonen om een Azure-infra structuur in te stellen en Oracle-toepassingen te installeren. 
 
-> [!IMPORTANT]
-> Oracle zal deze toepassingen certificeren om uit te voeren in azure wanneer de Azure/Oracle-Cloud Interconnect-oplossing wordt gebruikt door mei 2020.
+Vanaf mei 2020 zijn de volgende Oracle-toepassingen gecertificeerd om uit te voeren in azure bij gebruik van de Azure/Oracle-oplossing voor verbinding met Cloud:
 
 * E-Business Suite
 * JD Edwards EnterpriseOne

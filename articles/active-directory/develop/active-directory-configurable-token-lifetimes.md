@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 3e66cd6a05a7c616b22eefffdd9d132aa0f4d36d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bf53afc0168417bc223a55cd73f9a97b5bb3ac47
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853969"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299975"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
@@ -45,11 +45,11 @@ Clients gebruiken toegangs tokens om toegang te krijgen tot een beveiligde bron.
 
 ### <a name="saml-tokens"></a>SAML-tokens
 
-SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory. Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation. De standaard levensduur van het token is 1 uur. Vanuit het oogpunt van een toepassing wordt de geldigheids periode van het token opgegeven door de NotOnOrAfter-waarde `<conditions …>` van het element in het token. Nadat de geldigheids periode van het token is beëindigd, moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
+SAML-tokens worden gebruikt door veel op internet gebaseerde SAAS-toepassingen en worden verkregen met behulp van het SAML2-protocol eindpunt van Azure Active Directory. Ze worden ook gebruikt door toepassingen die gebruikmaken van WS-Federation. De standaard levensduur van het token is 1 uur. Vanuit het oogpunt van een toepassing wordt de geldigheids periode van het token opgegeven door de NotOnOrAfter-waarde van het `<conditions …>` element in het token. Nadat de geldigheids periode van het token is beëindigd, moet de client een nieuwe verificatie aanvraag initiëren, die vaak wordt vervuld zonder interactief aanmelden als gevolg van de sessie token voor eenmalige aanmelding (SSO).
 
-De waarde van NotOnOrAfter kan worden gewijzigd met behulp van `AccessTokenLifetime` de `TokenLifetimePolicy`para meter in een. Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
+De waarde van NotOnOrAfter kan worden gewijzigd met behulp `AccessTokenLifetime` van de para meter in een `TokenLifetimePolicy` . Deze wordt ingesteld op de levens duur die in het beleid is geconfigureerd, plus een klok scheefheid factor van vijf minuten.
 
-Houd er rekening mee dat de bevestiging van de `<SubjectConfirmationData>` NotOnOrAfter die is opgegeven in het-element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
+Houd er rekening mee dat de bevestiging van de NotOnOrAfter die is opgegeven in het- `<SubjectConfirmationData>` element niet wordt beïnvloed door de configuratie van de levens duur van het token. 
 
 ### <a name="refresh-tokens"></a>Tokens vernieuwen
 
@@ -58,11 +58,11 @@ Wanneer een client een toegangs token verkrijgt om toegang te krijgen tot een be
 Het is belang rijk om onderscheid te maken tussen vertrouwelijke clients en open bare clients, omdat dit van invloed is op hoe lang vernieuwings tokens kunnen worden gebruikt. Zie [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1)voor meer informatie over verschillende typen clients.
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Levens duur van tokens met vertrouwelijke client vernieuwings tokens
-Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, kunnen de standaard levensduur van vernieuwings tokens die worden uitgegeven aan `until-revoked`deze stromen, niet worden gewijzigd met behulp van beleid en worden ze niet ingetrokken voor het opnieuw instellen van het wacht woord.
+Vertrouwelijke clients zijn toepassingen die een client wachtwoord (geheim) veilig kunnen opslaan. Ze kunnen bewijzen dat aanvragen afkomstig zijn van de beveiligde client toepassing en niet van een schadelijke actor. Een web-app is bijvoorbeeld een vertrouwelijke client omdat hiermee een client geheim kan worden opgeslagen op de webserver. Het wordt niet weer gegeven. Omdat deze stromen veiliger zijn, kunnen de standaard levensduur van vernieuwings tokens die worden uitgegeven aan deze stromen `until-revoked` , niet worden gewijzigd met behulp van beleid en worden ze niet ingetrokken voor het opnieuw instellen van het wacht woord.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Levens duur van tokens met open bare client vernieuwings tokens
 
-Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. (Als u dit wilt doen, gebruikt u de eigenschap voor het vernieuwen van`MaxInactiveTime`het token voor de maximale inactieve tijd ().) U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. (Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token vernieuwen.) U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
+Open bare clients kunnen een client wachtwoord (geheim) niet veilig opslaan. Een iOS/Android-app kan bijvoorbeeld geen geheim van de resource-eigenaar maken, dus wordt het beschouwd als een open bare client. U kunt beleids regels instellen op resources om te voor komen dat de vernieuwings tokens van open bare clients ouder dan een opgegeven periode een nieuw token paar voor toegang/vernieuwing verkrijgen. (Als u dit wilt doen, gebruikt u de eigenschap voor het vernieuwen van het token voor de maximale inactieve tijd ( `MaxInactiveTime` ).) U kunt ook beleid gebruiken om een periode in te stellen waarboven de vernieuwings tokens niet langer worden geaccepteerd. (Als u dit wilt doen, gebruikt u de eigenschap maximum leeftijd van het token vernieuwen.) U kunt de levens duur van een vernieuwings token aanpassen om te bepalen wanneer en hoe vaak de gebruiker de referenties opnieuw moet invoeren, in plaats van dat deze wordt geauthenticeerd wanneer een open bare client toepassing wordt gebruikt.
 
 > [!NOTE]
 > De maximale leeftijds eigenschap is de tijds duur dat één token kan worden gebruikt. 
@@ -116,7 +116,7 @@ Zie [Application and Service Principal Objects in azure Active Directory](app-ob
 
 De geldigheid van een token wordt geëvalueerd op het moment dat het token wordt gebruikt. Het beleid met de hoogste prioriteit voor de toepassing die wordt geopend, treedt in werking.
 
-Alle TimeSpans die hier worden gebruikt, zijn ingedeeld volgens het C# [time](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden zijn `80.00:30:00`.  De voorloop D kan worden verwijderd als de waarde nul is, dus 90 `00:90:00`minuten.  
+Alle TimeSpans die hier worden gebruikt, zijn ingedeeld volgens het C# [time](/dotnet/api/system.timespan) -object-D. uu: mm: SS.  80 dagen en 30 minuten zouden zijn `80.00:30:00` .  De voorloop D kan worden verwijderd als de waarde nul is, dus 90 minuten `00:90:00` .  
 
 > [!NOTE]
 > Hier volgt een voorbeeld scenario.
@@ -545,3 +545,9 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectId (id)** van de toepassing. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**ObjectId** van het beleid. | `-PolicyId <ObjectId of Policy>` |
+
+## <a name="license-requirements"></a>Licentievereisten
+
+Voor het gebruik van deze functie is een Azure AD Premium P1-licentie vereist. Zie [Algemeen beschik bare functies van de gratis en Premium-edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
+
+Klanten met [Microsoft 365 Business licenties](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot functies voor voorwaardelijke toegang.

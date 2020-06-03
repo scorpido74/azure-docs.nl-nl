@@ -1,5 +1,5 @@
 ---
-title: Handleiding voor het oplossen van problemen met de implementatie
+title: Problemen met docker-implementatie oplossen
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het omzeilen, oplossen en oplossen van problemen met veelvoorkomende docker-implementatie fouten met de Azure Kubernetes-service en Azure Container Instances het gebruik van Azure Machine Learning.
 services: machine-learning
@@ -10,31 +10,17 @@ author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: contperfq4
+ms.openlocfilehash: f65b263bb90356a4d739ebc963458cc7e992863c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873385"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307942"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Problemen met docker-implementatie van modellen met Azure Kubernetes service en Azure Container Instances 
 
-Meer informatie over het oplossen van veelvoorkomende docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
-
-Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit.
-
-De aanbevolen en meest recente benadering voor model implementatie is via de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met behulp van een [omgevings](how-to-use-environments.md) object als invoer parameter. In dit geval maakt onze service een basis-docker-installatie kopie voor u tijdens de implementatie fase en koppelt u de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
-
-1. Registreer het model in het werkruimte model register.
-
-2. Configuratie voor in-of afleiding definiëren:
-    1. Maak een [omgevings](how-to-use-environments.md) object op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving of gebruik een van onze aangeschafte omgevingen.
-    2. Maak een Afleidings configuratie (InferenceConfig-object) op basis van de omgeving en het Score script.
-
-3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
-
-Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-management-and-deployment.md) -inleiding.
+Meer informatie over het oplossen van problemen en het oplossen van algemene docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -45,6 +31,22 @@ Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-manage
 * Om lokaal fouten op te sporen, moet u een werkende docker-installatie op uw lokale systeem hebben.
 
     Als u de docker-installatie wilt controleren, gebruikt u de opdracht `docker run hello-world` vanaf een Terminal of opdracht prompt. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het installeren van docker of het oplossen van problemen met docker-fouten.
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Stappen voor docker-implementatie van machine learning modellen
+
+Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit.
+
+De aanbevolen aanpak voor model implementatie is via de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met behulp van een [omgevings](how-to-use-environments.md) object als invoer parameter. In dit geval maakt de service een basis-docker-installatie kopie tijdens de implementatie fase en koppelt de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
+
+1. Registreer het model in het werkruimte model register.
+
+2. Configuratie voor in-of afleiding definiëren:
+    1. Maak een [omgevings](how-to-use-environments.md) object op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving of gebruik een van onze aangeschafte omgevingen.
+    2. Maak een Afleidings configuratie (InferenceConfig-object) op basis van de omgeving en het Score script.
+
+3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
+
+Meer informatie over dit proces vindt u in de [ModelBeheer](concept-model-management-and-deployment.md) -inleiding.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
@@ -124,7 +126,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Houd er rekening mee dat als u uw eigen Conda-specificatie YAML definieert, u de waarden van azureml-standaard gebruikt met versie >= 1.0.45 als een PIP-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
+Als u uw eigen Conda-specificatie YAML definieert, moet u de waarden van azureml-standaard met versie >= 1.0.45 als PIP-afhankelijkheid vermelden. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
 
 Op dit moment kunt u de service als normaal gebruiken. De volgende code toont bijvoorbeeld de verzen ding van gegevens naar de service:
 
