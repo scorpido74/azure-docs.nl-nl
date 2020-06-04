@@ -11,14 +11,14 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f7c90791025f14e743a83693503fe235792c603
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051953"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324387"
 ---
-# <a name="configure--manage-content-reference---azure-sql-database"></a>Inhouds verwijzing & beheren-Azure SQL Database configureren
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>Inhouds referentie configureren en beheren-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen, scripts en uitleg die u kunnen helpen bij het beheren en configureren van uw Azure SQL Database. 
@@ -35,10 +35,10 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 
 ## <a name="configure-features"></a>Functies configureren
 
-- [Azure AD-verificatie configureren](authentication-aad-configure.md)
+- [Verificatie van Azure Active Directory (Azure AD) configureren](authentication-aad-configure.md)
 - [Voorwaardelijke toegang configureren](conditional-access-configure.md)
-- [Multi-Factor AAD-verificatie](authentication-mfa-ssms-overview.md)
-- [Multi-Factor Authentication instellen](authentication-mfa-ssms-configure.md)
+- [Multi-factor Azure AD-verificatie](authentication-mfa-ssms-overview.md)
+- [Multi-Factor Authentication configureren](authentication-mfa-ssms-configure.md)
 - [Tijdelijk bewaarbeleid configureren](temporal-tables-retention-policy.md)
 - [TDE met BYOK (Bring Your Own Key) configureren](transparent-data-encryption-byok-configure.md)
 - [TDE BYOK-sleutels roteren](transparent-data-encryption-byok-key-rotation.md)
@@ -128,11 +128,12 @@ In dit artikel vindt u een inhouds verwijzing naar verschillende hand leidingen,
 - [Ontwerpen voor elastische pools](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Ontwerpen voor app-upgrades](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Multi tenant SaaS-toepassingen ontwerpen
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>Multi tenant-toepassingen voor software als een service (SaaS) ontwerpen
 
 - [SaaS-ontwerppatronen](saas-tenancy-app-design-patterns.md)
 - [Indexeerfunctie voor SaaS-video](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [Beveiliging van SaaS-app](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [hand leidingen voor SQL Managed instance](../managed-instance/how-to-content-reference-guide.md)
+
+- Meer informatie over [hand leidingen voor Azure SQL Managed instance](../managed-instance/how-to-content-reference-guide.md)

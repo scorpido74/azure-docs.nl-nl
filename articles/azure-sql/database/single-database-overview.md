@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041762"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343316"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Wat is een enkele data base in Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Het resource type voor één data base maakt een data base in Azure SQL Database met een eigen set resources en wordt beheerd via een [Server](logical-servers.md). Met één data base is elke Data Base geïsoleerd van elkaar en draagbaar, elk met een eigen servicelaag in het [op DTU gebaseerde aankoop model](service-tiers-dtu.md) of [op vCore gebaseerde aankoop model](service-tiers-vcore.md) en een gegarandeerde reken grootte.
+Het resource type voor één data base maakt een data base in Azure SQL Database met een eigen set resources en wordt beheerd via een [Server](logical-servers.md). Met één data base is elke Data Base geïsoleerd en draagbaar. Elk heeft een eigen servicelaag in het [op DTU gebaseerde aankoop model](service-tiers-dtu.md) of [op vCore gebaseerde aankoop model](service-tiers-vcore.md) en een gegarandeerde reken grootte.
 
 > [!IMPORTANT]
 > Eén data base is een resource type voor Azure SQL Database. De andere is [elastische Pools](elastic-pool-overview.md).
@@ -46,7 +46,7 @@ Afzonderlijke data bases en elastische Pools bieden veel beschik baarheids kenme
 
 De meeste Transact-SQL-functies die toepassingen gebruiken, worden volledig ondersteund in zowel Microsoft SQL Server als Azure SQL Database. De belangrijkste SQL-onderdelen, zoals gegevens typen, Opera Tors, teken reeks, reken kundige, logische en cursor functies, werken bijvoorbeeld hetzelfde in SQL Server en SQL Database. Er zijn echter enkele T-SQL-verschillen in DDL-elementen (Data Definition Language) en DML (Data Manipulation Language) die resulteren in T-SQL-instructies en query's die slechts gedeeltelijk worden ondersteund (wat verderop in dit artikel wordt besproken).
 
-Bovendien zijn er enkele functies en syntaxis die niet worden ondersteund omdat Azure SQL Database is ontworpen om functies te isoleren op basis van afhankelijkheden van de hoofd database en het besturings systeem. Daarom zijn de meeste activiteiten op server niveau niet geschikt voor SQL Database. T-SQL-instructies en-opties zijn niet beschikbaar als ze opties op server niveau, onderdelen van het besturings systeem of de configuratie van het bestands systeem opgeven. Wanneer dergelijke mogelijkheden vereist zijn, is een geschikt alternatief op een andere manier vaak beschikbaar vanaf SQL Database of vanuit een andere Azure-functie of-service.
+Bovendien zijn er enkele functies en syntaxis die niet worden ondersteund omdat Azure SQL Database is ontworpen om functies te isoleren op basis van afhankelijkheden van de hoofd database en het besturings systeem. Daarom zijn de meeste activiteiten op server niveau niet geschikt voor SQL Database. T-SQL-instructies en-opties zijn niet beschikbaar als ze opties op server niveau configureren, onderdelen van het besturings systeem configureren of de bestandssysteem configuratie opgeven. Wanneer dergelijke mogelijkheden vereist zijn, is een geschikt alternatief op een andere manier vaak beschikbaar vanaf SQL Database of vanuit een andere Azure-functie of-service.
 
 Zie voor meer informatie [Transact-SQL-verschillen oplossen tijdens de migratie naar SQL database](transact-sql-tsql-differences-sql-server.md).
 
@@ -55,7 +55,7 @@ Zie voor meer informatie [Transact-SQL-verschillen oplossen tijdens de migratie 
 SQL Database biedt een reeks ingebouwde functies voor [beveiliging en naleving](security-overview.md) om uw toepassing te helpen voldoen aan verschillende vereisten op het gebied van beveiliging en naleving.
 
 > [!IMPORTANT]
-> Azure SQL Database, is gecertificeerd op basis van een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
+> Azure SQL Database is gecertificeerd op basis van een aantal nalevings standaarden. Raadpleeg voor meer informatie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), waar u de meest recente lijst met SQL database nalevings certificeringen kunt vinden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

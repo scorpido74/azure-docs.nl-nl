@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 767bdeef48ed78b32ad5e3b0e43002a21cb1c9b6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259521"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343707"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele SQL Server-machine inrichten in Azure Portal
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Richt een virtuele Linux-machine in met SQL Server in het Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "84259521"
 In deze quickstart-zelfstudie gaat u Azure Portal gebruiken om een virtuele Linux-machine te maken waarop SQL Server 2017 is geïnstalleerd. U leert het volgende: 
 
 
-* [Een virtuele Linux SQL-machine vanuit de galerie te maken](#create)
+* [Een virtuele Linux-machine met SQL Server maken vanuit de galerie](#create)
 * [Verbinding te maken met de nieuwe virtuele machine via ssh](#connect)
 * [Het SA-wacht woord wijzigen](#password)
 * [Configureren voor externe verbindingen](#remote)
@@ -125,7 +125,7 @@ Als u Windows gebruikt en geen BASH-shell hebt, installeert u een SSH-client, zo
 
 Zie [Een virtuele Linux-machine in Azure maken met behulp van de portal](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal) voor meer informatie over verbinding maken met virtuele Linux-machines.
 
-> [!Note]
+> [!NOTE]
 > Als er een PuTTY-beveiligingswaarschuwing wordt weergegeven dat de hostsleutel van de server niet in het register wordt opgeslagen, kunt u uit de volgende opties kiezen. Als u deze host vertrouwt, selecteert u **Ja** om de sleutel aan de PuTTy-cache toe te voegen en door te gaan met verbinding maken. Als u eenmalig verbinding wilt maken, zonder de sleutel aan de cache toe te voegen, selecteert u **Nee**. Als u deze host niet vertrouwt, selecteert u **Annuleren** om de verbinding te verbreken.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a>Het SA-wachtwoord wijzigen

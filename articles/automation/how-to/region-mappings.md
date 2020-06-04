@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: process-automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: d594d5a9dd263817023d2b5987c03aa50828191c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1ccf87bfd387182af269670abf1d86833854834d
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191864"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331624"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Ondersteunde regio's voor gekoppelde Log Analytics-werkruimte
 
@@ -37,6 +37,7 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 |AustraliaSoutheast|AustraliaSoutheast|
 |SoutheastAsia|SoutheastAsia|
 |CentralIndia|CentralIndia|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Europa**||
 |UKSouth|UKSouth|
@@ -47,6 +48,8 @@ De volgende tabel bevat de ondersteunde toewijzingen:
 <sup>1</sup> -oostus toewijzing voor log Analytics-werk ruimten aan Automation-accounts is niet exact een regionale toewijzing, maar is de juiste toewijzing.
 
 <sup>2</sup> vanwege capaciteits beperkingen is de regio niet beschikbaar wanneer u nieuwe resources maakt. Dit omvat Automation-accounts en Log Analytics-werk ruimten. Al bestaande gekoppelde resources in de regio moeten echter blijven werken.
+
+<sup>3</sup> in azure China worden alleen updatebeheer ondersteund en andere functies, zoals wijzigingen bijhouden en inventaris, zijn op dit moment niet beschikbaar. 
 
 ## <a name="unlink-a-workspace"></a>Een werk ruimte ontkoppelen
 

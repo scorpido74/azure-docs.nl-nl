@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e9eebc9e977c6065f08b996f5ab3f3e46bc1a134
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871408"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344268"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Aanvullende instellingen voor de Azure HPC-cache configureren
 
@@ -22,6 +22,9 @@ In dit artikel wordt ook beschreven hoe u de functie snap shot gebruikt voor Azu
 Als u de instellingen wilt zien, opent u de pagina **configuratie** van de cache in de Azure Portal.
 
 ![scherm afbeelding van de configuratie pagina in Azure Portal](media/configuration.png)
+
+> [!TIP]
+> De [video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) voor het beheren van de HPC-cache van Azure bevat de configuratie pagina en de bijbehorende instellingen.
 
 ## <a name="adjust-mtu-value"></a>MTU-waarde aanpassen
 <!-- linked from troubleshoot-nas article -->
@@ -48,7 +51,7 @@ Wanneer root Squash is ingeschakeld, worden hoofd gebruikers van een client auto
 
 Als hoofdmap Squash is uitgeschakeld, wordt een aanvraag van de client root user (UID 0) door gegeven aan een back-end-NFS-opslag systeem als root. Deze configuratie kan ongepaste bestands toegang toestaan.
 
-Met het instellen van basis-squash in de cache kunt u de ``no_root_squash`` vereiste instelling compenseren op NAS-systemen die worden gebruikt als opslag doelen. (Lees meer over de [vereisten voor NFS-opslag doel](hpc-cache-prereqs.md#nfs-storage-requirements).) Het kan ook de beveiliging verbeteren wanneer deze wordt gebruikt met Azure Blob Storage-doelen.
+Met het instellen van basis-squash in de cache kunt u de vereiste ``no_root_squash`` instelling compenseren op NAS-systemen die worden gebruikt als opslag doelen. (Lees meer over de [vereisten voor NFS-opslag doel](hpc-cache-prereqs.md#nfs-storage-requirements).) Het kan ook de beveiliging verbeteren wanneer deze wordt gebruikt met Azure Blob Storage-doelen.
 
 De standaard instelling is **Ja**. (Caches die vóór april 2020 zijn gemaakt, kunnen de standaard instelling **Nee**hebben.)
 

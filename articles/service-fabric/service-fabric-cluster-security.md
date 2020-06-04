@@ -4,12 +4,12 @@ description: Meer informatie over beveiligings scenario's voor een Azure Service
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461579"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324008"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Beveiligings scenario's voor Service Fabric cluster
 
@@ -33,7 +33,7 @@ Clusters die worden uitgevoerd op Azure en zelfstandige clusters die op Windows 
 
 Service Fabric maakt gebruik van X. 509-server certificaten die u opgeeft als onderdeel van de configuratie van het knooppunt type wanneer u een cluster maakt. Aan het einde van dit artikel ziet u een beknopt overzicht van wat deze certificaten zijn en hoe u deze kunt verkrijgen of maken.
 
-Certificaat beveiliging instellen wanneer u het cluster maakt, hetzij in het Azure Portal, met behulp van een Azure Resource Manager sjabloon of met behulp van een zelfstandige JSON-sjabloon. Het standaard gedrag van de SDK van Service Fabric is het implementeren en installeren van het certificaat met het achterblijvend certificaat in het toekomstig verlopende getuig schrift; het klassieke gedrag heeft betrekking op het definiëren van primaire en secundaire certificaten, om hand matig geïnitieerde Rollo vers toe te staan en wordt niet aanbevolen voor gebruik over de nieuwe functionaliteit. De primaire certificaten die worden gebruikt, hebben de meest recente verval datum, moeten afwijken van de admin-client en alleen-lezen client certificaten die u hebt ingesteld voor beveiliging van [client-naar-knoop punt](#client-to-node-security).
+Certificaat beveiliging instellen wanneer u het cluster maakt, hetzij in het Azure Portal, met behulp van een Azure Resource Manager sjabloon of met behulp van een zelfstandige JSON-sjabloon. Het standaard gedrag van Service Fabric SDK bestaat uit het implementeren en installeren van het certificaat met de nieuwe datum in de toekomst. het klassieke gedrag heeft betrekking op het definiëren van primaire en secundaire certificaten, om hand matig geïnitieerde Rollo vers toe te staan en wordt niet aanbevolen voor gebruik over de nieuwe functionaliteit. De primaire certificaten die worden gebruikt, hebben de meest recente verval datum, moeten afwijken van de admin-client en alleen-lezen client certificaten die u hebt ingesteld voor beveiliging van [client-naar-knoop punt](#client-to-node-security).
 
 Zie [een cluster instellen met behulp van een Azure Resource Manager sjabloon](service-fabric-cluster-creation-via-arm.md)voor meer informatie over het instellen van certificaat beveiliging in een cluster voor Azure.
 
@@ -113,7 +113,7 @@ Het certificaat moet voldoen aan de volgende vereisten:
 
 Enkele andere zaken die u moet overwegen:
 
-* Het veld **onderwerp** kan meerdere waarden hebben. Elke waarde wordt voorafgegaan door een initialisatie om het waardetype aan te geven. Normaal gesp roken is de initialisatie **CN** (voor *algemene naam*); bijvoorbeeld: **CN = www\.-contoso.com**.
+* Het veld **onderwerp** kan meerdere waarden hebben. Elke waarde wordt voorafgegaan door een initialisatie om het waardetype aan te geven. Normaal gesp roken is de initialisatie **CN** (voor *algemene naam*); bijvoorbeeld: **CN = www- \. contoso.com**.
 * Het veld **onderwerp** kan leeg zijn.
 * Als het optionele veld **alternatieve naam voor onderwerp** is ingevuld, moet het de algemene naam van het certificaat en één vermelding per San bevatten. Deze worden ingevoerd als **DNS-naam** waarden. Zie [een alternatieve naam voor een onderwerp toevoegen aan een beveiligd LDAP-certificaat](https://support.microsoft.com/kb/931351)voor meer informatie over het genereren van certificaten die san's hebben.
 * De waarde van het veld **beoogde doel einden** van het certificaat moet een geschikte waarde bevatten, zoals **Server verificatie** of **client verificatie**.

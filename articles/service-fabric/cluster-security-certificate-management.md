@@ -4,12 +4,12 @@ description: Meer informatie over het beheren van certificaten in een Service Fa
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196242"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324739"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Certificaat beheer in Service Fabric clusters
 
@@ -82,7 +82,8 @@ In dit onderwerp wordt gedetailleerd beschreven in de Key Vault [documentatie](.
     - Zodra de uitgever (certificerings instantie) antwoordt met het ondertekende certificaat, wordt het resultaat in de kluis samengevoegd en is het certificaat beschikbaar voor de volgende bewerkingen:
       - onder {vaultUri}/certificates/{name}: het certificaat met de open bare sleutel en meta gegevens
       - onder {vaultUri}/Keys/{name}: de persoonlijke sleutel van het certificaat, beschikbaar voor cryptografische bewerkingen (terugloop/uitpakken, ondertekenen/controleren)
-      - onder {vaultUri}/Secrets/{name}: het certificaat dat is inbegrepen in de persoonlijke sleutel, dat kan worden gedownload als een niet-beveiligd PFX-of PEM-bestand dat een kluis certificaat in feite een chronologische regel van certificaat instanties is en een beleid deelt. Certificaat versies worden gemaakt op basis van de levens duur en vernieuwings kenmerken van het beleid. Het wordt ten zeerste aanbevolen dat kluis certificaten geen onderwerpen of domeinen en DNS-namen delen. het kan storend zijn in een cluster voor het inrichten van certificerings instanties van verschillende kluis certificaten, met identieke onderwerpen, maar wel in essentie andere kenmerken, zoals verlener, sleutel gebruik, enzovoort.
+      - onder {vaultUri}/Secrets/{name}: het certificaat dat is inclusief de persoonlijke sleutel, dat kan worden gedownload als een niet-beveiligd PFX-of PEM-bestand  
+    U herinnert zich dat een kluis certificaat, in feite, een chronologische regel van certificaat instanties is, door een beleid te delen. Certificaat versies worden gemaakt op basis van de levens duur en vernieuwings kenmerken van het beleid. Het wordt ten zeerste aanbevolen dat kluis certificaten geen onderwerpen of domeinen en DNS-namen delen. het kan storend zijn in een cluster voor het inrichten van certificerings instanties van verschillende kluis certificaten, met identieke onderwerpen, maar wel in essentie andere kenmerken, zoals verlener, sleutel gebruik, enzovoort.
 
 Op dit punt bevindt zich in de kluis een certificaat dat gereed is voor gebruik. Naar:
 
@@ -202,7 +203,7 @@ Dit is een JSON-fragment van een sjabloon die overeenkomt met een dergelijke sta
   ]
 ```   
 
-In het bovenstaande wordt in wezen aangegeven dat ```json [parameters('primaryClusterCertificateTP')] ``` het certificaat met de vinger afdruk ```json [parameters('clusterCertificateUrlValue')] ``` en de sleutel kluis-URI is gedeclareerd als het enige certificaat van het cluster, via de vinger afdruk. Vervolgens stellen we de extra resources in die nodig zijn om de autorollover van het certificaat te garanderen.
+In het bovenstaande wordt in wezen aangegeven dat het certificaat met de vinger afdruk ```json [parameters('primaryClusterCertificateTP')] ``` en de sleutel kluis ```json [parameters('clusterCertificateUrlValue')] ``` -URI is gedeclareerd als het enige certificaat van het cluster, via de vinger afdruk. Vervolgens stellen we de extra resources in die nodig zijn om de autorollover van het certificaat te garanderen.
 
 ### <a name="setting-up-prerequisite-resources"></a>Vereiste resources instellen
 Zoals eerder vermeld, wordt een certificaat dat is ingericht als een geheim voor een schaalset voor virtuele machines, opgehaald uit de kluis door de service micro soft. Compute resource provider, met behulp van de identiteit van de eerste partij en namens de implementatie operator. Voor automatische rollover wordt dat gewijzigd: er wordt overgeschakeld naar het gebruik van een beheerde identiteit die is toegewezen aan de virtuele-machine schaalset en die machtigingen heeft voor de geheimen van de kluis.
@@ -414,7 +415,7 @@ Op dit moment kunt u de hierboven vermelde updates uitvoeren in één implementa
 Dit gedeelte bevat een catch-all voor uitleg over de stappen die hierboven worden beschreven, en het tekenen van aandacht op belang rijke aspecten.
 
 #### <a name="certificate-provisioning-explained"></a>Certificaten inrichten, uitleg
-De KVVM-extensie, als inrichtings agent, wordt continu uitgevoerd op basis van een vooraf ingestelde frequentie. Als een waargenomen certificaat niet kan worden opgehaald, wordt het volgende in de regel voortgezet en vervolgens de sluimer stand tot de volgende cyclus. De SFVM-extensie, als de Boots Trapper-agent van het cluster, vereist de gedeclareerde certificaten voordat het cluster kan vormen. Dit betekent dat de uitbrei ding SFVM alleen kan worden uitgevoerd na het ophalen van de cluster certificaten die hier worden aangegeven door de ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` -component, en door de instelling van ```json "requireInitialSync": true``` de KeyVaultVM-uitbrei ding. Dit geeft aan de KVVM-uitbrei ding die bij de eerste uitvoering (na implementatie of opnieuw opstarten) de geobserveerde certificaten moet door lopen totdat alle fouten zijn gedownload. Als deze para meter wordt ingesteld op False en er een fout is opgetreden bij het ophalen van de cluster certificaten, resulteert dit in een fout in de cluster implementatie. Als een eerste synchronisatie met een onjuiste/ongeldige lijst van geobserveerde certificaten is vereist, resulteert dit in een fout in de KVVM-extensie en dus opnieuw, een fout bij het implementeren van het cluster.  
+De KVVM-extensie, als inrichtings agent, wordt continu uitgevoerd op basis van een vooraf ingestelde frequentie. Als een waargenomen certificaat niet kan worden opgehaald, wordt het volgende in de regel voortgezet en vervolgens de sluimer stand tot de volgende cyclus. De SFVM-extensie, als de Boots Trapper-agent van het cluster, vereist de gedeclareerde certificaten voordat het cluster kan vormen. Dit betekent dat de uitbrei ding SFVM alleen kan worden uitgevoerd na het ophalen van de cluster certificaten die hier worden aangegeven door de ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` -component, en door de instelling van de KeyVaultVM-uitbrei ding ```json "requireInitialSync": true``` . Dit geeft aan de KVVM-uitbrei ding die bij de eerste uitvoering (na implementatie of opnieuw opstarten) de geobserveerde certificaten moet door lopen totdat alle fouten zijn gedownload. Als deze para meter wordt ingesteld op False en er een fout is opgetreden bij het ophalen van de cluster certificaten, resulteert dit in een fout in de cluster implementatie. Als een eerste synchronisatie met een onjuiste/ongeldige lijst van geobserveerde certificaten is vereist, resulteert dit in een fout in de KVVM-extensie en dus opnieuw, een fout bij het implementeren van het cluster.  
 
 #### <a name="certificate-linking-explained"></a>Certificaat koppeling, uitleg
 Mogelijk hebt u de vlag ' linkOnRenewal ' van de KVVM-extensie gezien en is het feit dat deze is ingesteld op false. We adresseren hier dieper aan het gedrag dat door deze vlag wordt geregeld en de implicaties voor het functioneren van een cluster. Houd er rekening mee dat dit gedrag specifiek is voor Windows.
@@ -441,7 +442,7 @@ In beide gevallen mislukt het Trans Port en kan het cluster uitvallen. de sympto
 
 Voor het oplossen van dergelijke incidenten, raden we het volgende aan:
   - Combi neer geen San's van verschillende kluis certificaten. elk kluis certificaat moet een uniek doel hebben, en het onderwerp en het SAN moeten overeenkomen met de specificiteit
-  - de algemene naam van het onderwerp opnemen in de SAN-lijst (zoals letterlijk, CN<subject common name>=)  
+  - de algemene naam van het onderwerp opnemen in de SAN-lijst (zoals letterlijk, CN = <subject common name> )  
   - Als dit niet het geval is, schakelt u koppeling bij vernieuwen uit voor certificaten die zijn ingericht met de KVVM-extensie 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>Waarom een door de gebruiker toegewezen beheerde identiteit gebruiken? Wat zijn de gevolgen van het gebruik ervan?

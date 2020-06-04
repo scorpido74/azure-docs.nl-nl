@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9ec21657f871211df575b56ff56962aad3f5c88
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043392"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324709"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database verkeer migratie naar nieuwere gateways
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ De eerste afronding van verkeer migratie naar nieuwere gateways is gepland voor 
 - VS - oost 2
 - Azië - oost
 
-Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw SQL Database verhelpt.
+Bij de migratie van verkeer wordt het open bare IP-adres gewijzigd dat DNS voor uw data base in Azure SQL Database oplost.
 U hebt de volgende gevolgen:
 
 - Het IP-adres voor een bepaalde gateway in uw on-premises firewall is vastgelegd.

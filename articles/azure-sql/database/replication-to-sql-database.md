@@ -1,6 +1,6 @@
 ---
-title: Replicatie SQL Server naar Azure SQL Database
-description: U kunt een Azure SQL Database als push-abonnee configureren in een transactionele trans actie-of momentopname replicatie topologie.
+title: Replicatie van Azure SQL Server naar Azure SQL Database
+description: U kunt een data base in Azure SQL Database configureren als de push-abonnee in een transactionele of momentopname replicatie topologie.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192954"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324144"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replicatie naar Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ U kunt een Azure SQL Database als push-abonnee configureren in een transactionel
 ## <a name="supported-configurations"></a>Ondersteunde configuraties
   
 - Azure SQL Database kan alleen de push-abonnee zijn van een SQL Server Uitgever en distributie server.  
-- De SQL Server die als uitgever en/of distributeur fungeert, kan een exemplaar zijn van [SQL Server die on-premises](https://www.microsoft.com/sql-server/sql-server-downloads), een door [Azure SQL beheerd exemplaar](../managed-instance/instance-create-quickstart.md)of een exemplaar van [SQL Server worden uitgevoerd op een virtuele machine van Azure in de Cloud](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
-- De distributie database en de replicatie agenten kunnen niet worden geplaatst op een Azure SQL Database.  
+- Het SQL Server-exemplaar dat fungeert als uitgever en/of distributeur kan een exemplaar zijn van [SQL Server die on-premises](https://www.microsoft.com/sql-server/sql-server-downloads), een door [Azure SQL beheerd exemplaar](../managed-instance/instance-create-quickstart.md)of een exemplaar van [SQL Server worden uitgevoerd op een virtuele machine van Azure in de Cloud](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
+- De distributie database en de replicatie agenten kunnen niet worden geplaatst in een data base in Azure SQL Database.  
 - [Snap shot](/sql/relational-databases/replication/snapshot-replication) en [eenrichtings transactionele](/sql/relational-databases/replication/transactional/transactional-replication) replicatie worden ondersteund. Peer-to-peer transactionele replicatie en samenvoeg replicatie worden niet ondersteund.
 
 ### <a name="versions"></a>Versies  
 
-Om te repliceren naar een Azure SQL Database, moeten SQL Server uitgevers en distributeurs (ten minste) een van de volgende versies gebruiken: 
+Als u wilt repliceren naar een data base in Azure SQL Database, moeten SQL Server-uitgevers en-distributeurs (ten minste) een van de volgende versies gebruiken:
 
 Publiceren naar een Azure SQL Database van een SQL Server-Data Base wordt ondersteund door de volgende versies van SQL Server:
 
@@ -54,11 +54,11 @@ Er zijn verschillende [typen replicatie](https://docs.microsoft.com/sql/relation
 
 | Replicatie | Azure SQL Database | Azure SQL Managed Instance |
 | :----| :------------- | :--------------- |
-| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Yes | 
-| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Yes|
+| [**Standaard transactionele**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (alleen als abonnee) | Ja | 
+| [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (alleen als abonnee) | Ja|
 | [**Samenvoeg replicatie**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nee | Nee|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nee | Nee|
-| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ja|
+| [**Bidirectioneel**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nee | Ja|
 | [**Bij te werken abonnementen**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nee | Nee|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -116,7 +116,6 @@ De volgende opties worden niet ondersteund voor Azure SQL Database-abonnementen:
 - Hierarchyid naar MAX-gegevens typen converteren  
 - Ruimtelijke naar maximum aantal gegevens typen converteren  
 - Uitgebreide eigenschappen kopiëren  
-- Machtigingen kopiëren  
 
 ### <a name="limitations-to-be-determined"></a>Te bepalen beperkingen
 

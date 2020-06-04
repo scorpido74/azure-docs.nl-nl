@@ -2,13 +2,13 @@
 title: Resource logboeken verzamelen & analyseren
 description: Registreer en analyseer bron logboek gebeurtenissen voor Azure Container Registry zoals verificatie, installatie kopie push en installatie kopie ophalen.
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409640"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343180"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logboeken voor diagnostische evaluatie en controle
 
@@ -24,12 +24,14 @@ Het verzamelen van bron logboek gegevens met behulp van Azure Monitor kan extra 
 
 De volgende gebeurtenissen op opslagplaats niveau voor installatie kopieën en andere artefacten worden momenteel geregistreerd:
 
-* **Push gebeurtenissen**
-* **Pull-gebeurtenissen**
-* **Tag-gebeurtenissen**
-* **Gebeurtenissen verwijderen** (waaronder gebeurtenissen voor het verwijderen van de opslag plaats)
+* **Push**
+* **Citat**
+* **Tag**
+* **Verwijderen** (inclusief opslag plaats gebeurtenissen verwijderen)
+* **Label leegmaken** en **manifest leegmaken**
 
-Gebeurtenissen op opslagplaats niveau die momenteel niet zijn geregistreerd: gebeurtenissen opschonen.
+> [!NOTE]
+> Het opschonen van gebeurtenissen wordt alleen vastgelegd als er een [Bewaar beleid](container-registry-retention-policy.md) voor het REGI ster is geconfigureerd.
 
 ## <a name="registry-resource-logs"></a>Register bron logboeken
 
@@ -37,7 +39,7 @@ Bron logboeken bevatten gegevens die worden verzonden door Azure-resources die h
 
 * **ContainerRegistryLoginEvents** -register verificatie gebeurtenissen en status, met inbegrip van de binnenkomende identiteit en het IP-adres
 * **ContainerRegistryRepositoryEvents** : bewerkingen zoals pushen en pullen voor installatie kopieën en andere artefacten in register opslagplaatsen
-* **Metrische AzureMetrics** - in[container register](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , zoals geaggregeerde push-en pull-aantallen.
+* **AzureMetrics**  -  [Metrische gegevens van container register](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , zoals geaggregeerde push-en pull-aantallen.
 
 Voor bewerkingen zijn logboek gegevens inclusief:
   * Status geslaagd of mislukt
@@ -83,16 +85,58 @@ Zie [aan de slag met Azure Monitor Log Analytics](../azure-monitor/log-query/get
 
 Zie [overzicht van logboek query's in azure monitor](../azure-monitor/log-query/log-query-overview.md)voor meer informatie over logboek query's.
 
-### <a name="additional-query-examples"></a>Aanvullende query voorbeelden
+## <a name="query-examples"></a>Voorbeelden van query's
 
-#### <a name="100-most-recent-registry-events"></a>100 meest recente register gebeurtenissen
+### <a name="error-events-from-the-last-hour"></a>Fout gebeurtenissen van het afgelopen uur
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>100 meest recente register gebeurtenissen
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>Identiteit van de gebruiker of het object dat de opslag plaats heeft verwijderd
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>Identiteit van de gebruiker of het object dat de tag heeft verwijderd
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>Mislukte Reposity
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>Register authenticatie fouten
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>Aanvullende logboek doelen
 

@@ -3,15 +3,15 @@ title: Toegang en gegevens beveiligen
 description: Veilige toegang tot invoer, uitvoer, op aanvragen gebaseerde triggers, uitvoerings geschiedenis, beheer taken en toegang tot andere resources in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 8fe53b7a27c922462f9134bc78ff648aca3aca62
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.date: 05/28/2020
+ms.openlocfilehash: f7796674efc8c8f8b9e58adb760153b409134488
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715542"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322427"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -27,7 +27,7 @@ Voor het beheren van de toegang tot en het beveiligen van gevoelige gegevens in 
 
 ## <a name="access-to-request-based-triggers"></a>Toegang tot activeringen op basis van een aanvraag
 
-Als uw logische app gebruikmaakt van een trigger op basis van een aanvraag, die inkomende aanroepen of aanvragen ontvangt, zoals de trigger van de [aanvraag](../connectors/connectors-native-reqres.md) of de [webhook](../connectors/connectors-native-webhook.md) , kunt u de toegang beperken zodat alleen geautoriseerde clients uw logische app kunnen aanroepen. Alle aanvragen die door een logische app worden ontvangen, worden versleuteld en beveiligd met Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), protocol.
+Als uw logische app gebruikmaakt van een trigger op basis van een aanvraag, die inkomende aanroepen of aanvragen ontvangt, zoals de trigger van de [aanvraag](../connectors/connectors-native-reqres.md) of de [webhook](../connectors/connectors-native-webhook.md) , kunt u de toegang beperken zodat alleen geautoriseerde clients uw logische app kunnen aanroepen. Alle aanvragen die door een logische app worden ontvangen, zijn versleuteld en beveiligd met het Transport Layer Security TLS-protocol (voorheen bekend als Secure Sockets Layer (SSL).
 
 Hier vindt u opties die u kunnen helpen bij het beveiligen van de toegang tot dit trigger type:
 
@@ -719,7 +719,7 @@ Als de optie [basis](../active-directory-b2c/secure-rest-api.md) beschikbaar is,
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | Basic | Het te gebruiken verificatie type |
-| **Gebruikers** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
+| **Gebruikersnaam** | `username` | Ja | <*gebruikers naam*>| De gebruikers naam voor het verifiëren van de toegang tot het eind punt van de doel service |
 | **Wachtwoord** | `password` | Ja | <*wacht woord*> | Het wacht woord voor het verifiëren van de toegang tot het eind punt van de doel service |
 ||||||
 
@@ -749,7 +749,7 @@ Als de optie [client certificaat](../active-directory/authentication/active-dire
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor TLS/SSL-client certificaten <p><p>**Opmerking**: Hoewel zelfondertekende certificaten worden ondersteund, worden zelfondertekende certificaten voor TLS/SSL niet ondersteund. De HTTP-connector biedt geen ondersteuning voor tussenliggende TLS/SSL-certificaten. |
+| **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt. U kunt certificaten beheren met [Azure API Management](../api-management/api-management-howto-mutual-certificates.md). <p></p>**Opmerking**: aangepaste connectors bieden geen ondersteuning voor verificatie op basis van certificaten voor zowel binnenkomende als uitgaande oproepen. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een base64-gecodeerde indeling, kunt u Power shell gebruiken door de volgende stappen uit te voeren: <p>1. Sla de certificaat inhoud op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de certificaat inhoud met behulp van de `ToBase64String()` functie en sla die inhoud op in een tekst bestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Wachtwoord** | `password`| Nee | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand |
 |||||

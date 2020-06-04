@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 08645fa08bdb19d9a5f29daec4035da0b21a356b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745447"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344489"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-assets beveiligen met token verificatie
 
@@ -29,7 +29,7 @@ ms.locfileid: "83745447"
 
 Token verificatie is een mechanisme waarmee u kunt voor komen dat de Azure-Content Delivery Network (CDN) assets levert aan niet-geautoriseerde clients. Token verificatie wordt doorgaans uitgevoerd om *hotlinking* te voor komen, waarbij een andere website, zoals een berichten bord, uw assets zonder toestemming gebruikt. Hotlinking kan invloed hebben op de leverings kosten van uw inhoud. Door token verificatie in CDN in te scha kelen, worden aanvragen door de CDN Edge-server geverifieerd voordat de CDN de inhoud levert. 
 
-## <a name="how-it-works"></a>Hoe het werkt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 Token verificatie verifieert of aanvragen worden gegenereerd door een vertrouwde site door aanvragen te vereisen die een token waarde bevatten die gecodeerde informatie over de aanvrager bevat. Inhoud wordt alleen aan een aanvrager geleverd als de gecodeerde gegevens voldoen aan de vereisten. anders worden aanvragen geweigerd. U kunt de vereisten instellen met behulp van een of meer van de volgende para meters:
 
@@ -173,17 +173,17 @@ Het volgende stroom diagram beschrijft hoe Azure CDN een client aanvraag validee
 3. Onder **http large**selecteert u **regel engine**. U gebruikt de regel Engine om paden te definiëren om de functie toe te passen, de functie voor token verificatie in te scha kelen en aanvullende mogelijkheden voor token authenticatie in te scha kelen. Zie voor meer informatie [regel engine verwijzing](cdn-rules-engine-reference.md).
 
    1. Selecteer een bestaande regel of maak een nieuwe regel om het activum of pad te definiëren waarvoor u token verificatie wilt Toep assen. 
-   2. Als u verificatie op basis van tokens voor een regel wilt inschakelen, selecteert u **[token auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** in de lijst **onderdelen** en selecteert u **ingeschakeld**. Selecteer **bijwerken** als u een regel bijwerkt of **toevoegen** als u een regel maakt.
+   2. Als u verificatie op basis van tokens voor een regel wilt inschakelen, selecteert u **[token auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** in de lijst **onderdelen** en selecteert u **ingeschakeld**. Selecteer **bijwerken** als u een regel bijwerkt of **toevoegen** als u een regel maakt.
         
       ![Voor beeld van token verificatie van de CDN-regels](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. In de regel engine kunt u ook aanvullende functies met betrekking tot token authenticatie inschakelen. Als u een van de volgende functies wilt inschakelen, selecteert u deze in de lijst met **onderdelen** en selecteert u **ingeschakeld**.
     
-   - **[Weigerings code voor token auth](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: bepaalt het type reactie dat wordt geretourneerd naar een gebruiker wanneer een aanvraag wordt geweigerd. De regels die hier zijn ingesteld, overschrijven de antwoord code die is ingesteld in het gedeelte **aangepaste afhandeling** van de op tokens gebaseerde verificatie pagina.
+   - **[Weigerings code voor token auth](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: bepaalt het type reactie dat wordt geretourneerd naar een gebruiker wanneer een aanvraag wordt geweigerd. De regels die hier zijn ingesteld, overschrijven de antwoord code die is ingesteld in het gedeelte **aangepaste afhandeling** van de op tokens gebaseerde verificatie pagina.
 
-   - **[Token verificatie negeren URL-Case](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Hiermee wordt bepaald of de URL die wordt gebruikt om het token te valideren, hoofdletter gevoelig is.
+   - **[Token verificatie negeren URL-Case](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: Hiermee wordt bepaald of de URL die wordt gebruikt om het token te valideren, hoofdletter gevoelig is.
 
-   - **[Token auth para meter](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: de naam van de query teken reeks parameter token verificatie die wordt weer gegeven in de aangevraagde URL. 
+   - **[Token auth para meter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: de naam van de query teken reeks parameter token verificatie die wordt weer gegeven in de aangevraagde URL. 
         
      ![Voor beeld van verificatie-instellingen voor het engine voor CDN-regels](./media/cdn-token-auth/cdn-rules-engine2.png)
 

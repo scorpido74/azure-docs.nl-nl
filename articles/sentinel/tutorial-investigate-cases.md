@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4118ef8de6d9289b67dd76c710fc11758768262
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587189"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331819"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
 > [!IMPORTANT]
 > De onderzoek grafiek is momenteel beschikbaar als open bare preview.
 > Deze functie wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
 Deze zelf studie helpt u bij het onderzoeken van incidenten met Azure Sentinel. Nadat u uw gegevens bronnen hebt verbonden met Azure Sentinel, wilt u een melding ontvangen wanneer er iets verdacht is. Hiervoor kunt u met Azure Sentinel geavanceerde waarschuwings regels maken waarmee incidenten worden gegenereerd die u kunt toewijzen en onderzoeken.
@@ -97,7 +97,7 @@ De onderzoek grafiek gebruiken:
 
     ![Gerelateerde waarschuwingen weer geven](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen\>** te selecteren.
+1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen \> **te selecteren.
 
 1. Om het incident te begrijpen, biedt de grafiek een parallelle tijd lijn.
 
@@ -107,7 +107,21 @@ De onderzoek grafiek gebruiken:
 
     ![Tijd lijn gebruiken in kaart voor het onderzoeken van waarschuwingen](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>Een incident sluiten
 
+Zodra u een bepaald incident hebt opgelost (bijvoorbeeld wanneer uw onderzoek de conclusie heeft bereikt), moet u de status van het incident instellen op **gesloten**. Wanneer u dit doet, wordt u gevraagd om het incident te classificeren door de reden op te geven dat u het wilt sluiten. Deze stap is verplicht. Klik op **classificatie selecteren** en kies een van de volgende opties in de vervolg keuzelijst:
+
+- Echte positieve verdachte activiteit
+- Goed aardig positief-verdacht maar verwacht
+- Onjuist positief-onjuiste waarschuwings logica
+- Onjuist positieve-onjuiste gegevens
+- Onbepaald
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-tekst}":::
+
+Nadat u de juiste classificatie hebt gekozen, voegt u een beschrijvende tekst in het veld **Opmerking** toe. Dit is handig in het geval dat u terug naar dit incident moet verwijzen. Klik op **Toep assen** wanneer u klaar bent en het incident wordt gesloten.
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-tekst}":::
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelf studie hebt u geleerd hoe u aan de slag gaat met het onderzoeken van incidenten met behulp van Azure Sentinel. Ga verder met de zelf studie voor het [reageren op bedreigingen met behulp van automatische playbooks](tutorial-respond-threats-playbook.md).

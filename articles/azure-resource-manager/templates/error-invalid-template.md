@@ -3,12 +3,12 @@ title: Ongeldige sjabloon fouten
 description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: bb053f59c417827a7c07ca193ccea0b8509244d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832518"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324059"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Fouten met een ongeldige sjabloon oplossen
 
@@ -29,7 +29,7 @@ Het fout bericht is afhankelijk van het type fout.
 
 Deze fout kan worden veroorzaakt door verschillende soorten fouten. Normaal gesp roken is er sprake van een syntaxis-of structureel fout in de sjabloon.
 
-<a id="syntax-error" />
+<a id="syntax-error"></a>
 
 ## <a name="solution-1---syntax-error"></a>Oplossing 1: syntaxis fout
 
@@ -50,7 +50,7 @@ Als u de overeenkomende syntaxis niet opgeeft, produceert de sjabloon een waarde
 
 Wanneer u dit type fout ontvangt, controleert u de syntaxis van de expressie zorgvuldig. U kunt een JSON-editor gebruiken, zoals [Visual Studio](create-visual-studio-deployment-project.md) of [Visual Studio code](use-vs-code-to-create-template.md), die u kan waarschuwen over syntaxis fouten.
 
-<a id="incorrect-segment-lengths" />
+<a id="incorrect-segment-lengths"></a>
 
 ## <a name="solution-2---incorrect-segment-lengths"></a>Oplossing 2: onjuiste segment lengten
 
@@ -111,7 +111,7 @@ Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worde
 }
 ```
 
-<a id="parameter-not-valid" />
+<a id="parameter-not-valid"></a>
 
 ## <a name="solution-3---parameter-is-not-valid"></a>Oplossing 3-para meter is niet geldig
 
@@ -126,13 +126,13 @@ part of the allowed values
 
 Controleer de toegestane waarden in de sjabloon en geef er een op tijdens de implementatie. Zie [para meters in het gedeelte met Azure Resource Manager sjablonen](template-syntax.md#parameters)voor meer informatie over toegestane parameter waarden.
 
-<a id="too-many-resource-groups" />
+<a id="too-many-resource-groups"></a>
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Oplossing 4: te veel doel resource groepen
 
 Mogelijk ziet u deze fout in eerdere implementaties omdat u beperkt tot vijf doel resource groepen hebt in één implementatie. In mei 2020 is die limiet verhoogd naar 800 resource groepen. Zie [Azure-resources implementeren voor meer dan één abonnement of resource groep](cross-resource-group-deployment.md)voor meer informatie.
 
-<a id="circular-dependency" />
+<a id="circular-dependency"></a>
 
 ## <a name="solution-5---circular-dependency-detected"></a>Oplossing 5-circulaire afhankelijkheid gedetecteerd
 

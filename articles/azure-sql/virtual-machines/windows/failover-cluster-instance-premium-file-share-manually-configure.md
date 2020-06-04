@@ -1,6 +1,6 @@
 ---
 title: SQL Server FCI met Premium-bestands share-Azure Virtual Machines
-description: In dit artikel wordt uitgelegd hoe u een SQL Server failover-cluster exemplaar maakt met behulp van een Premium-bestands share op virtuele machines van Azure.
+description: In dit artikel wordt uitgelegd hoe u een SQL Server failover-cluster exemplaar maakt met behulp van een Premium-bestands share op Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
 author: MashaMSFT
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 60526dbeb3e221e6a2e4c6b900ff3a109d4cdf8f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01787fbf3339a7e079b705fb4be27ba1e30aee1b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045961"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342865"
 ---
-# <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
+# <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server failover-cluster exemplaar configureren met Premium-bestands share op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In dit artikel wordt uitgelegd hoe u een SQL Server failovercluster (FCI) maakt op virtuele machines van Azure met behulp van een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md).
+In dit artikel wordt uitgelegd hoe u een SQL Server failover cluster instance (FCI) maakt op Azure Virtual Machines met behulp van een [Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md).
 
 Premium-bestands shares zijn met een SSD-back-up, consistente bestands shares met lage latentie die volledig worden ondersteund voor gebruik met exemplaren van failoverclusters voor SQL Server 2012 of hoger op Windows Server 2012 of hoger. Premium-bestands shares bieden meer flexibiliteit, waardoor u een bestands share zonder uitval tijd kunt verg Roten of verkleinen en schalen.
 
@@ -46,7 +46,7 @@ U moet ook algemene informatie over deze technologieën hebben:
 - [Azure-resourcegroepen](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight-beheer modus](sql-vm-resource-provider-register.md#management-modes) van de [SQL Server IaaS agent-extensie](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
+> Op dit moment worden SQL Server failover-cluster instanties in azure Virtual Machines alleen ondersteund in de [Lightweight-beheer modus](sql-vm-resource-provider-register.md#management-modes) van de [uitbrei ding SQL Server IaaS agent](sql-server-iaas-agent-extension-automate-management.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
 
 Premium-bestands shares bieden IOPS en doorvoer capaciteit die voldoet aan de behoeften van veel werk belastingen. Voor i/o-intensieve workloads kunt u [SQL Server failover-cluster instanties met opslagruimten direct](failover-cluster-instance-storage-spaces-direct-manually-configure.md), op basis van beheerde Premium-schijven of Ultra disks.  
 
@@ -58,13 +58,13 @@ Zie [prestatie lagen voor bestands shares](https://docs.microsoft.com/azure/stor
 
 ### <a name="licensing-and-pricing"></a>Licentie verlening en prijzen
 
-Op virtuele machines van Azure kunt u een licentie SQL Server met behulp van betalen per gebruik (PAYG) of uw BYOL-VM-installatie kopieën (your-own-License). Welk type installatie kopie u kiest, is van invloed op de manier waarop u in rekening wordt gebracht.
+In azure Virtual Machines kunt u een licentie SQL Server met behulp van betalen per gebruik (PAYG) of BYOL-VM-installatie kopieën (your-own-License). Welk type installatie kopie u kiest, is van invloed op de manier waarop u in rekening wordt gebracht.
 
-Met betalen per gebruik-licenties is een FCI (failover cluster instance) van SQL Server op virtuele machines van Azure de kosten voor alle knoop punten van de FCI, met inbegrip van de passieve knoop punten. Zie [SQL Server Enterprise virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)voor meer informatie.
+Met betalen per gebruik-licenties, een FCI (failover cluster instance) van SQL Server op Azure Virtual Machines kosten voor alle knoop punten van de FCI, met inbegrip van de passieve knoop punten. Zie [SQL Server Enterprise virtual machines prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)voor meer informatie.
 
 Als u Enterprise Agreement met Software Assurance hebt, kunt u één gratis passieve FCI-knoop punt voor elk actief knoop punt gebruiken. Als u gebruik wilt maken van dit voor deel in azure, gebruikt u BYOL VM-installatie kopieën en gebruikt u dezelfde licentie op de actieve en passieve knoop punten van de FCI. Zie [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx)voor meer informatie.
 
-Zie aan de [slag met SQL vm's](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms)om betalen per gebruik en BYOL-licenties te vergelijken voor SQL Server op virtuele machines van Azure.
+Zie aan de [slag met SQL vm's](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)om betalen per gebruik en BYOL-licenties te vergelijken voor SQL Server op Azure virtual machines.
 
 Zie [prijzen](https://www.microsoft.com/sql-server/sql-server-2017-pricing)voor volledige informatie over licentie SQL Server.
 
@@ -77,8 +77,8 @@ FileStream wordt niet ondersteund voor een failovercluster met een Premium-besta
 Voordat u de stappen in dit artikel hebt voltooid, hebt u het volgende nodig:
 
 - Een Microsoft Azure-abonnement.
-- Een Windows-domein op virtuele machines van Azure.
-- Een domein gebruikers account dat machtigingen heeft om objecten te maken op virtuele machines van Azure en in Active Directory.
+- Een Windows-domein in azure Virtual Machines.
+- Een domein gebruikers account dat machtigingen heeft om objecten te maken op zowel Azure Virtual Machines als Active Directory.
 - Een domein gebruikers account om de SQL Server-service uit te voeren en dat u bij de virtuele machine kunt aanmelden bij het koppelen van de bestands share.  
 - Een virtueel Azure-netwerk en subnet met voldoende IP-adres ruimte voor deze onderdelen:
    - Twee virtuele machines.
@@ -126,7 +126,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
       >[!IMPORTANT]
       >U kunt de beschikbaarheidsset niet instellen of wijzigen nadat u een virtuele machine hebt gemaakt.
 
-   Kies een installatie kopie van Azure Marketplace. U kunt een Azure Marketplace-installatie kopie gebruiken die Windows Server en SQL Server bevat, of u moet er een gebruiken die alleen Windows Server bevat. Zie [overzicht van SQL Server op virtuele machines van Azure](sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie.
+   Kies een installatie kopie van Azure Marketplace. U kunt een Azure Marketplace-installatie kopie gebruiken die Windows Server en SQL Server bevat, of u moet er een gebruiken die alleen Windows Server bevat. Zie [overzicht van SQL Server op Azure virtual machines](sql-server-on-azure-vm-iaas-what-is-overview.md)voor meer informatie.
 
    De officiële SQL Server installatie kopieën in de Azure-galerie bevatten een geïnstalleerd SQL Server exemplaar, de SQL Server installatie software en de vereiste sleutel.
 
@@ -154,7 +154,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
 
    Open op elke virtuele machine deze poorten op het Windows Firewall:
 
-   | Doel | TCP-poort | Opmerkingen
+   | Functie | TCP-poort | Opmerkingen
    | ------ | ------ | ------
    | SQL Server | 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend.
    | Statustest | 59999 | Een open TCP-poort. Configureer in een latere stap de load balancer [Health probe](#probe) en het cluster om deze poort te gebruiken.
@@ -321,7 +321,7 @@ Nadat u het failovercluster hebt geconfigureerd, kunt u de SQL Server FCI maken.
 
 ## <a name="step-6-create-the-azure-load-balancer"></a>Stap 6: de Azure load balancer maken
 
-Op virtuele machines van Azure gebruiken clusters een load balancer voor het opslaan van een IP-adres dat op één cluster knooppunt tegelijk moet zijn. In deze oplossing bevat de load balancer het IP-adres voor de SQL Server FCI.
+In azure Virtual Machines gebruiken clusters een load balancer om een IP-adres op te slaan dat op één cluster knooppunt tegelijk moet zijn. In deze oplossing bevat de load balancer het IP-adres voor de SQL Server FCI.
 
 Zie [een Azure-Load Balancer maken en configureren](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)voor meer informatie.
 
@@ -388,7 +388,7 @@ De load balancer maken:
 
 1. De para meters voor de taakverdelings regel instellen:
 
-   - **Naam**: een naam voor de taakverdelings regels.
+   - **Naam**: een naam voor de regels voor taak verdeling.
    - **Frontend-IP-adres**: het IP-adres voor de SQL Server cluster netwerk bron van het FCI.
    - **Poort**: de SQL Server FCI TCP-poort. De standaard instantie poort is 1433.
    - **Back-endserver**: maakt gebruik van dezelfde poort als de **poort** waarde wanneer u **zwevende IP (direct server return)** inschakelt.
@@ -459,9 +459,9 @@ Als u de verbinding wilt testen, meldt u zich aan bij een andere virtuele machin
 
 ## <a name="limitations"></a>Beperkingen
 
-Azure virtual machines ondersteunen micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en een [standaard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
+Azure Virtual Machines ondersteunt micro soft Distributed Transaction Coordinator (MSDTC) op Windows Server 2019 met opslag op geclusterde gedeelde volumes (CSV) en een [standaard Load Balancer](../../../load-balancer/load-balancer-standard-overview.md).
 
-Op virtuele machines van Azure wordt MSDTC niet ondersteund in Windows Server 2016 of eerder omdat:
+Op Azure Virtual Machines wordt MSDTC niet ondersteund in Windows Server 2016 of eerder omdat:
 
 - De geclusterde MSDTC-bron kan niet worden geconfigureerd voor het gebruik van gedeelde opslag. Als u in Windows Server 2016 een MSDTC-bron maakt, wordt er geen gedeelde opslag weer gegeven die beschikbaar is voor gebruik, zelfs als de opslag ruimte beschikbaar is. Dit probleem is opgelost in Windows Server 2019.
 - Met de basis load balancer worden geen RPC-poorten afgehandeld.

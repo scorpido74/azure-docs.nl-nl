@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 870182af6a00e4d2e2a762ce92b569fb9eeb7f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046913"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345305"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP gebruiken om de prestaties van uw toepassingen in Azure SQL Database en Azure SQL Managed instance te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84046913"
 [In-Memory OLTP](in-memory-oltp-overview.md) kan worden gebruikt voor het verbeteren van de prestaties van transactie verwerking, gegevens opname en tijdelijke gegevens Scenario's in [Premium-en bedrijfskritiek-laag](database/service-tiers-vcore.md) databases zonder de prijs categorie te verhogen.
 
 > [!NOTE]
-> Meer informatie over hoe [quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met SQL database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Meer informatie over hoe [quorum de werk belasting van de Key Data Base verdubbelt tijdens het verlagen van DTU met 70% met Azure SQL database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 Volg deze stappen voor het aannemen van in-Memory OLTP in uw bestaande data base.
 

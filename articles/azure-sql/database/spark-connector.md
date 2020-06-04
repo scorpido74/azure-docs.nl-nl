@@ -1,6 +1,6 @@
 ---
-title: Spark-connector gebruiken met Microsoft Azure SQL en SQL Server
-description: Meer informatie over het gebruik van de Spark-connector met Microsoft Azure SQL en SQL Server
+title: De Spark-connector gebruiken met Microsoft Azure SQL en SQL Server
+description: Meer informatie over het gebruik van de Spark-connector met Azure SQL Database, Azure SQL Managed instance en SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,19 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: b2e042f2c3a7c6e1528ff96fb4fb96f392274855
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eb48773b2816ac801ea1ddc6752a86b13ca7dd1d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041225"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343299"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Big data analyse in realtime versnellen met behulp van de Spark-connector 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Met de Spark-connector kunnen Azure SQL Database, door Azure SQL beheerde exemplaren en SQL Server data bases fungeren als invoer gegevens bron of uitvoer gegevens Sink voor Spark-taken. Hiermee kunt u realtime transactionele gegevens gebruiken in big data Analytics en de resultaten van ad hoc query's of rapportages behouden. Vergeleken met de ingebouwde JDBC-connector biedt deze connector de mogelijkheid om gegevens bulksgewijs in te voegen in Microsoft Azure SQL-en SQL Server-data bases. De leverde kan rij by Row invoeging met 10x voor 20x snellere prestaties. De Spark-connector ondersteunt AAD-verificatie voor het maken van verbinding met Azure SQL-data bases. Hiermee kunt u veilig verbinding maken met uw Azure-SQL database van Azure Databricks met behulp van uw AAD-account. Het biedt vergelijk bare interfaces met de ingebouwde JDBC-connector. Het is eenvoudig om uw bestaande Spark-taken te migreren om deze nieuwe connector te gebruiken.
+De Spark-connector maakt data bases in Azure SQL Database, Azure SQL Managed instance en SQL Server om te fungeren als invoer gegevens bron of uitvoer gegevens filter voor Spark-taken. U kunt hiermee realtime transactionele gegevens gebruiken in big data Analytics en de resultaten voor ad-hoc-query's of-rapporten behouden. Vergeleken met de ingebouwde JDBC-connector biedt deze connector de mogelijkheid om gegevens bulksgewijs in te voegen in uw data base. Hiermee kan leverde rij-voor-rij worden ingevoegd met 10x voor snellere prestaties van 20x. De Spark-connector ondersteunt Azure Active Directory-verificatie (Azure AD) om verbinding te maken met Azure SQL Database en Azure SQL Managed instance, zodat u verbinding kunt maken tussen uw data base en Azure Databricks met uw Azure AD-account. Het biedt vergelijk bare interfaces met de ingebouwde JDBC-connector. Het is eenvoudig om uw bestaande Spark-taken te migreren om deze nieuwe connector te gebruiken.
 
-## <a name="download-and-build-spark-connector"></a>Spark-connector downloaden en bouwen
+## <a name="download-and-build-a-spark-connector"></a>Een Spark-connector downloaden en bouwen
 
 Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Spark-opslag plaats](https://github.com/Azure/azure-sqldb-spark) op github.
 
@@ -35,16 +35,16 @@ Om aan de slag te gaan, downloadt u de Spark-connector vanuit de [Azure-sqldb-Sp
 | Scala                                 | 2,10 of hoger            |
 | Micro soft JDBC-stuur programma voor SQL Server  | 6,2 of hoger             |
 | Microsoft SQL Server                  | SQL Server 2008 of hoger |
-| Azure SQL-database                    | Ondersteund                |
+| Azure SQL Database                    | Ondersteund                |
 | Azure SQL Managed Instance            | Ondersteund                |
 
-De Spark-connector maakt gebruik van het micro soft JDBC-stuur programma voor SQL Server om gegevens tussen Spark-werk knooppunten en SQL-data bases te verplaatsen:
+De Spark-connector maakt gebruik van het micro soft JDBC-stuur programma voor SQL Server om gegevens tussen Spark-werk knooppunten en data bases te verplaatsen:
 
 De gegevens stroom is als volgt:
 
-1. Het Spark-hoofd knooppunt maakt verbinding met een Azure SQL-of SQL Server-Data Base en laadt gegevens uit een specifieke tabel of gebruikt een specifieke SQL-query
+1. Het Spark-hoofd knooppunt maakt verbinding met data bases in SQL Database of SQL Server en laadt gegevens uit een specifieke tabel of gebruikt een specifieke SQL-query.
 2. Het Spark-hoofd knooppunt distribueert gegevens naar worker-knoop punten voor trans formatie.
-3. Het worker-knoop punt maakt verbinding met een Azure SQL-of SQL Server-Data Base en schrijft gegevens naar de data base. De gebruiker kan ervoor kiezen om rijen in te voegen of bulksgewijs in te voegen.
+3. Het worker-knoop punt maakt verbinding met data bases die verbinding maken met SQL Database en SQL Server en schrijft gegevens naar de data base. De gebruiker kan ervoor kiezen om rijen in te voegen of bulksgewijs in te voegen.
 
 In het volgende diagram ziet u de gegevens stroom.
 
@@ -60,7 +60,7 @@ Op dit moment gebruikt het connector project maven. Als u de connector zonder af
 
 ## <a name="connect-and-read-data-using-the-spark-connector"></a>Verbinding maken en gegevens lezen met behulp van de Spark-connector
 
-U kunt verbinding maken met een Azure SQL-of SQL Server-Data Base vanuit een Spark-taak, gegevens lezen of schrijven. U kunt ook een DML-of DDL-query uitvoeren in de data base in Azure SQL en SQL Server.
+U kunt verbinding maken met data bases in SQL Database en SQL Server vanuit een Spark-taak om gegevens te lezen of te schrijven. U kunt ook een DML-of DDL-query uitvoeren in data bases in SQL Database en SQL Server.
 
 ### <a name="read-data-from-azure-sql-and-sql-server"></a>Gegevens lezen van Azure SQL en SQL Server
 
@@ -143,9 +143,9 @@ val config = Config(Map(
 sqlContext.sqlDBQuery(config)
 ```
 
-## <a name="connect-from-spark-to-azure-sql-using-aad-authentication"></a>Verbinding maken tussen Spark en Azure SQL met AAD-verificatie
+## <a name="connect-from-spark-using-azure-ad-authentication"></a>Verbinding maken vanuit Spark met behulp van Azure AD-verificatie
 
-U kunt verbinding maken met Azure SQL using Azure Active Directory (AAD)-verificatie. Gebruik AAD-verificatie voor het centraal beheren van identiteiten van database gebruikers en als alternatief voor SQL Server-verificatie.
+U kunt verbinding maken met Azure SQL Database en SQL Managed instance met behulp van Azure AD-verificatie. Gebruik Azure AD-verificatie om identiteiten van database gebruikers centraal en als alternatief voor SQL Server-verificatie te beheren.
 
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>Verbinding maken met behulp van de ActiveDirectoryPassword-verificatie modus
 
@@ -170,7 +170,7 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="connecting-using-access-token"></a>Verbinding maken met behulp van toegangs token
+### <a name="connecting-using-an-access-token"></a>Verbinding maken met behulp van een toegangs token
 
 #### <a name="setup-requirement"></a>Installatie vereiste
 
@@ -194,9 +194,9 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-## <a name="write-data-to-azure-sql-and-sql-server-using-bulk-insert"></a>Gegevens schrijven naar Azure SQL en SQL Server met bulksgewijs invoegen
+## <a name="write-data-using-bulk-insert"></a>Gegevens schrijven met bulksgewijs invoegen
 
-De traditionele JDBC-connector schrijft gegevens naar Azure SQL en SQL Server het invoegen van rijen per rij. U kunt Spark-connector gebruiken om gegevens te schrijven naar Azure SQL en SQL Server met bulksgewijs invoegen. De schrijf prestaties worden aanzienlijk verbeterd bij het laden van grote gegevens sets of het laden van gegevens in tabellen waarin een column store-index wordt gebruikt.
+De traditionele JDBC-connector schrijft gegevens in uw data base met behulp van rijen per rij. U kunt de Spark-connector gebruiken om gegevens te schrijven naar Azure SQL en SQL Server met bulksgewijs invoegen. De schrijf prestaties worden aanzienlijk verbeterd bij het laden van grote gegevens sets of het laden van gegevens in tabellen waarin een column store-index wordt gebruikt.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.bulkcopy.BulkCopyMetadata

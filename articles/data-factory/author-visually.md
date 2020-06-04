@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832774"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343107"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visueel ontwerpen in Azure Data Factory
 
@@ -42,6 +42,12 @@ Voor resources op het hoogste niveau, zoals pijp lijnen, gegevens sets en data s
 ![Canvas ontwerpen](media/author-visually/properties-pane.png)
 
 Het deel venster Eigenschappen wordt alleen standaard geopend bij het maken van resources. Als u deze wilt bewerken, klikt u op het deel venster Eigenschappen in de rechter bovenhoek van het canvas.
+
+## <a name="management-hub"></a>Beheer hub
+
+De beheer-hub, toegankelijk via het tabblad *beheren* in de Azure Data Factory UX, is een portal die de algemene beheer acties voor uw Data Factory host. Hier kunt u uw verbindingen met gegevens archieven en externe berekeningen, configuratie van broncode beheer en trigger instellingen beheren. Meer informatie over de mogelijkheden van de [Management hub](author-management-hub.md).
+
+![Gekoppelde services beheren](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>Expressies en functies
 

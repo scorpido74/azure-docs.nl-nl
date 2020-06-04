@@ -1,5 +1,5 @@
 ---
-title: Gegevens streamen met behulp van Stream Analytics-integratie (preview-versie)
+title: Gegevens streamen met behulp van Azure Stream Analytics-integratie (preview-versie)
 description: Gebruik Azure Stream Analytics-integratie voor het streamen van gegevens naar Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,16 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: ea129902e5ab30a5d7f7a70c3606d4aa73cd84a5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044652"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345356"
 ---
-# <a name="stream-data-into-azure-sql-database-using-stream-analytics-integration-preview"></a>Gegevens streamen naar Azure SQL Database met behulp van Stream Analytics-integratie (preview)
-[!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
+# <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Gegevens streamen naar Azure SQL Database met behulp van Azure Stream Analytics-integratie (preview)
 
-Gebruikers kunnen nu direct vanuit een SQL database in het Azure Portal met behulp van [Azure stream Analytics](../../stream-analytics/stream-analytics-introduction.md)gegevens opnemen, verwerken, bekijken en analyseren in een tabel. Deze ervaring maakt een groot aantal scenario's mogelijk, zoals verbonden auto, externe controle, fraude detectie en nog veel meer. In de Azure Portal kunt u een bron van gebeurtenissen (Event hub/IoT Hub) selecteren, inkomende realtime gebeurtenissen weer geven en een tabel selecteren om gebeurtenissen op te slaan. U kunt ook Stream Analytics query taal query's in de portal schrijven om binnenkomende gebeurtenissen te transformeren en op te slaan in de geselecteerde tabel. Dit nieuwe toegangs punt bevindt zich naast het maken en configureren van ervaringen die al bestaan in Stream Analytics. Deze ervaring begint met de context van uw data base, zodat u snel een Stream Analytics-taak kunt instellen en naadloos tussen de Azure SQL Database en Stream Analytics ervaring kunt navigeren.
+Gebruikers kunnen nu direct vanuit een data base in Azure SQL Database gegevens in realtime streamen, verwerken, bekijken en analyseren in een tabel. Dit doet u in het Azure Portal met behulp van [Azure stream Analytics](../../stream-analytics/stream-analytics-introduction.md). Deze ervaring maakt een groot aantal scenario's mogelijk, zoals verbonden auto, externe controle, fraude detectie en nog veel meer. In de Azure Portal kunt u een bron van gebeurtenissen (Event hub/IoT Hub) selecteren, inkomende realtime gebeurtenissen weer geven en een tabel selecteren om gebeurtenissen op te slaan. U kunt ook Azure Stream Analytics query taal query's in de portal schrijven om binnenkomende gebeurtenissen te transformeren en op te slaan in de geselecteerde tabel. Dit nieuwe toegangs punt bevindt zich naast het maken en configureren van ervaringen die al bestaan in Stream Analytics. Deze ervaring begint met de context van uw data base, zodat u snel een Stream Analytics-taak kunt instellen en naadloos tussen de data base in Azure SQL Database en Stream Analytics ervaring kunt navigeren.
 
 ![Stream Analytics stroom](./media/stream-data-stream-analytics-integration/stream-analytics-flow.png)
 
@@ -32,7 +31,7 @@ Gebruikers kunnen nu direct vanuit een SQL database in het Azure Portal met behu
 - Extra gebruiks gemak met voorbeeld gegevens: binnenkomende gegevens van de bron van de gebeurtenissen (Event hub/IoT Hub) in de context van de geselecteerde tabel bekijken
 
 > [!IMPORTANT]
-> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse (voorheen Azure SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)voor meer informatie.
+> Een Azure Stream Analytics-taak kan worden uitgevoerd naar Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Zie [uitvoer](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +48,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
     ![Stream Analytics](./media/stream-data-stream-analytics-integration/stream-analytics.png)
 
-3. Als u uw streaminggegevens wilt opnemen in deze SQL database, selecteert u **maken** en geeft u een naam op voor de streaming-taak en selecteert u vervolgens **volgende: invoer**.
+3. Als u uw streaminggegevens wilt opnemen in deze data base, selecteert u **maken** en geeft u een naam op voor de streaming-taak en selecteert u vervolgens **volgende: invoer**.
 
     ![Stream Analytics-taak maken](./media/stream-data-stream-analytics-integration/create-job.png)
 
@@ -76,7 +75,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 6. Er wordt een query pagina geopend met de volgende details:
 
-   - Uw **invoer** (bron van invoer gebeurtenissen) waaruit u gegevens opneemt  
+   - Uw **invoer** (bron van invoer gebeurtenissen) van waaruit u gegevens opneemt  
    - Uw **uitvoer** (uitvoer tabel) waarmee getransformeerde gegevens worden opgeslagen
    - Een voor beeld van een [SAQL-query](../../stream-analytics/stream-analytics-stream-analytics-query-patterns.md) met een SELECT-instructie.
    - **Invoer voorbeeld: een**moment opname van de meest recente binnenkomende gegevens van de bron van de invoer gebeurtenissen weer geven.
@@ -99,7 +98,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
    - **Uitvoer schema**: dit bevat het schema van de tabel die u in stap 5 (nieuw of bestaand) hebt geselecteerd.
 
       - Nieuwe maken: als u deze optie in stap 5 hebt geselecteerd, wordt het schema nog niet weer geven tot u de streaming-taak start. Selecteer de juiste tabel index bij het maken van een nieuwe tabel. Zie [geclusterde en niet-geclusterde indexen beschreven](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described/)voor meer informatie over het indexeren van tabellen.
-      - Bestaande gebruiken: als u deze optie in stap 5 hebt geselecteerd, wordt het schema van de geselecteerde tabel weer geven.
+      - Bestaande gebruiken: als u deze optie in stap 5 hebt geselecteerd, ziet u het schema van de geselecteerde tabel.
 
 7. Nadat u klaar bent met het ontwerpen van & de query te testen, selecteert u **query opslaan**. Selecteer **starten stream Analytics taak** om het opnemen van getransformeerde gegevens in de SQL-tabel te starten. Zodra u de volgende velden hebt voltooid, **Start** u de taak.
    - **Begin tijd uitvoer**: Hiermee definieert u de tijd van de eerste uitvoer van de taak.  
@@ -108,7 +107,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
    - **Streaming-eenheden**: de prijs van Azure stream Analytics is afhankelijk van het aantal streaming-eenheden dat nodig is voor het verwerken van de gegevens in de service. Zie [Azure stream Analytics prijzen](https://azure.microsoft.com/pricing/details/stream-analytics/)voor meer informatie.
    - **Fout afhandeling van uitvoer gegevens**:  
      - Opnieuw proberen: wanneer er een fout optreedt, wordt Azure Stream Analytics de gebeurtenis voor onbepaalde tijd opnieuw geprobeerd te schrijven totdat de schrijf bewerking slaagt. Er is geen time-out voor nieuwe pogingen. Uiteindelijk zijn alle volgende gebeurtenissen geblokkeerd voor verwerking door de gebeurtenis die opnieuw wordt geprobeerd. Deze optie is het standaard beleid voor het afhandelen van uitvoer fouten.
-     - Drop: er wordt een uitvoer gebeurtenis door Azure Stream Analytics verwijderd die resulteert in een fout in de gegevens conversie. De verwijderde gebeurtenissen kunnen niet worden hersteld voor latere verwerking. Alle tijdelijke fouten (bijvoorbeeld netwerk fouten) worden opnieuw geprobeerd, ongeacht de configuratie van het afhandelings beleid voor uitvoer fouten.
+     - Drop: er wordt een uitvoer gebeurtenis door Azure Stream Analytics verwijderd die resulteert in een fout in de gegevens conversie. De neergezette gebeurtenissen kunnen later niet worden hersteld voor reverwerking. Alle tijdelijke fouten (bijvoorbeeld netwerk fouten) worden opnieuw geprobeerd, ongeacht de configuratie van het afhandelings beleid voor uitvoer fouten.
    - **SQL database uitvoer instellingen**: een optie voor het overnemen van het partitie schema van uw vorige query stap, om een volledig parallelle topologie met meerdere schrijvers voor de tabel in te scha kelen. Zie [Azure stream Analytics uitvoer naar Azure SQL database](../../stream-analytics/stream-analytics-sql-output-perf.md)voor meer informatie.
    - **Maximum aantal batches**: de aanbevolen bovengrens voor het aantal records dat wordt verzonden met elke bulksgewijze insert-trans actie.  
     Zie [uitvoer fout beleid in azure stream Analytics](../../stream-analytics/stream-analytics-output-error-policy.md)voor meer informatie over het afhandelen van uitvoer fouten.  
@@ -119,7 +118,7 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
    - **De taak starten/stoppen**: als de taak wordt uitgevoerd, kunt u de taak stoppen. Als de taak is gestopt, kunt u de taak starten.
    - **Taak bewerken**: u kunt de query bewerken. Als u meer wijzigingen wilt aanbrengen aan het project ex, voegt u meer invoer/uitvoer toe en opent u de taak in Stream Analytics. De optie bewerken is uitgeschakeld wanneer de taak wordt uitgevoerd.
    - **Voorbeeld uitvoer tabel**: u kunt een voor beeld van de tabel in de SQL-query-editor bekijken.
-   - **Open in stream Analytics**: Open de taak in stream Analytics service om de bewaking te bekijken, Details van de fout opsporing van de taak.
+   - **Open in stream Analytics**: Open de taak in stream Analytics om de bewaking te bekijken, fout opsporingsgegevens over de taak.
 
      ![Stream Analytics-taken](./media/stream-data-stream-analytics-integration/jobs.png)
 
@@ -127,3 +126,4 @@ U hebt de volgende resources nodig om de stappen in dit artikel uit te voeren:
 
 - [Documentatie voor Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)
 - [Azure Stream Analytics-oplossingspatronen](../../stream-analytics/stream-analytics-solution-patterns.md)
+ 

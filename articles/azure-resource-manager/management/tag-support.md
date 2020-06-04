@@ -3,12 +3,12 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8acf2f9087646a76617368a6b61eb5097796c72c
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609286"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331913"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -48,7 +48,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Micro soft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Micro soft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
@@ -277,7 +277,7 @@ Ga naar de naam ruimte van een resource provider:
 > | elevateAccess | Nee | Nee |
 > | findOrphanRoleAssignments | Nee | Nee |
 > | vergren delingen | Nee | Nee |
-> | bevoegdheden | Nee | Nee |
+> | permissions | Nee | Nee |
 > | policyAssignments | Nee | Nee |
 > | policyDefinitions | Nee | Nee |
 > | policySetDefinitions | Nee | Nee |
@@ -602,7 +602,7 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nee | Nee |
 > | virtualNetworks/virtualNetworkPeerings | Nee | Nee |
 
-## <a name="microsoftclassicstorage"></a>Micro soft. ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
@@ -693,7 +693,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Prognoses | Nee | Nee |
 > | extra | Nee | Nee |
 > | Markt plaatsen | Nee | Nee |
-> | Prijzenoverzichten | Nee | Nee |
+> | Pricesheets | Nee | Nee |
 > | producten | Nee | Nee |
 > | ReservationDetails | Nee | Nee |
 > | ReservationRecommendations | Nee | Nee |
@@ -1313,7 +1313,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | commitmentPlans | Ja | Ja |
 > | webservices | Ja | Ja |
-> | Workspaces | Ja | Ja |
+> | Werkruimten | Ja | Ja |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -1558,7 +1558,7 @@ Ga naar de naam ruimte van een resource provider:
 > | vpnSites | Ja | Ja |
 > | webApplicationFirewallPolicies | Ja | Ja |
 
-<a id="frontdoor" />
+<a id="frontdoor"></a>
 
 > [!NOTE]
 > Voor de Azure front-deur service kunt u Tags Toep assen bij het maken van de resource, maar het bijwerken of toevoegen van labels wordt momenteel niet ondersteund.
@@ -1680,7 +1680,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | Workspaces | Ja | Ja |
+> | Werkruimten | Ja | Ja |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1971,7 +1971,7 @@ Ga naar de naam ruimte van een resource provider:
 > | servers/tdeCertificates | Nee | Nee |
 > | virtualClusters | Nee | Nee |
 
-<a id="sqlnote" />
+<a id="sqlnote"></a>
 
 > [!NOTE]
 > De hoofd database ondersteunt geen tags, maar andere data bases, inclusief Azure SQL Data Warehouse data bases, ondersteunings Tags. Azure SQL Data Warehouse-data bases moeten de status actief (niet onderbroken) hebben.

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569990"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339889"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Een C# IoT Edge-module ontwikkelen om bestanden te verplaatsen op Azure Stack rand
 
@@ -24,6 +24,7 @@ U kunt Azure IoT Edge modules met uw Azure Stack-rand gebruiken om de gegevens t
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Maak een container register om uw modules (docker-installatie kopieën) op te slaan en te beheren.
 > * Maak een IoT Edge module om te implementeren op uw Azure Stack edge-apparaat. 
 
@@ -52,7 +53,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 
 - De volgende ontwikkel bronnen:
 
-    - [Visual Studio code](https://code.visualstudio.com/).
+    - [Visual Studio Code](https://code.visualstudio.com/).
     - [De extensie C# voor Visual Studio Code (van OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
     - [Azure IOT Edge-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
     - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
@@ -63,7 +64,7 @@ Voordat u begint, controleert u of u over het volgende beschikt:
 Een Azure-containerregister is een persoonlijk Docker-register in Azure waar u uw persoonlijke installatiekopieën van de Docker-container kunt opslaan en beheren. De twee populaire docker-register services die beschikbaar zijn in de Cloud, zijn Azure Container Registry en docker hub. In dit artikel wordt gebruikgemaakt van de Container Registry.
 
 1. Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azure.com).
-2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Maken**.
+2. Selecteer **een resource maken > Containers > container Registry**. Klik op **Create**.
 3. Geleverd
 
    1. Een unieke **register naam** in azure die 5 tot 50 alfanumerieke tekens bevat.
@@ -107,7 +108,7 @@ Maak een C#-oplossingssjabloon die u met uw eigen code kunt aanpassen.
 
     5. Geef het container register op dat u in de vorige sectie hebt gemaakt als de opslag plaats voor installatie kopieën voor uw eerste module. Vervang **localhost:5000** door de gekopieerde waarde voor de aanmeldingsserver.
 
-        De uiteindelijke teken reeks ziet `<Login server name>/<Module name>`er als volgt uit. In dit voor beeld is de teken reeks `mycontreg2.azurecr.io/filecopymodule`:.
+        De uiteindelijke teken reeks ziet er als volgt uit `<Login server name>/<Module name>` . In dit voor beeld is de teken reeks: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![Nieuwe oplossing 3 maken](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,7 +273,7 @@ In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan
 
     *Program. cs (77, 44): waarschuwing CS1998: deze async-methode heeft geen ' await ' Opera tors en wordt synchroon uitgevoerd. Overweeg het gebruik van de operator await om niet-blokkerende API-aanroepen of ' await-taak. run (...) ' te gebruiken voor het CPU-gebonden werk op een achtergrond thread.*
 
-4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie die zich in het bestand module. json `<repository>:<version>-<platform>`bevindt met de indeling. In dit artikel moet er als volgt `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`uitzien.
+4. U kunt het volledige adres van de containerinstallatiekopie, inclusief de tag, zien in de geïntegreerde terminal van VS Code. Het adres van de installatie kopie is gebaseerd op informatie die zich in het bestand module. json bevindt met de indeling `<repository>:<version>-<platform>` . In dit artikel moet er als volgt uitzien `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

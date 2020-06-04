@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 27ec09f1286f4e7999db56acdedaba1a37122aad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592947"
+ms.locfileid: "83656190"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Quickstart: Een Apache Spark-pool (preview) maken in Azure Synapse Analytics met behulp van webhulpprogramma's
 
@@ -29,7 +29,7 @@ Als u geen Azure-abonnement hebt, [maakt u een gratis account voordat u begint](
 
 - Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
 - [Synapse Analytics-werkruimte](quickstart-create-workspace.md)
-- [Apache Spark-pool](quickstart-create-apache-spark-pool.md)
+- [Apache Spark-pool](quickstart-create-apache-spark-pool-studio.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -133,7 +133,9 @@ SQL (Structured Query Language) is de meest voorkomende en gebruikte taal voor h
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Uw gegevens worden door Azure Synapse opgeslagen in Azure Data Lake Storage. U kunt een Spark-instantie dan ook veilig uitschakelen wanneer deze niet in gebruik is. Er worden namelijk kosten in rekening gebracht voor een Azure Synapse Apache Spark-pool zolang deze wordt uitgevoerd, zelfs als de pool niet in gebruik is. De kosten voor de pool zijn vaak hoger dan de kosten voor opslag. Het is dan ook verstandig om Spark-instanties af te sluiten wanneer u ze niet nodig hebt.
+Uw gegevens worden door Azure Synapse opgeslagen in Azure Data Lake Storage. U kunt een Spark-instantie veilig laten uitschakelen wanneer deze niet in gebruik is. Er worden namelijk kosten in rekening gebracht voor een Azure Synapse Apache Spark-pool zolang deze wordt uitgevoerd, zelfs als de pool niet in gebruik is. 
+
+Aangezien de kosten voor de pool vaak veel hoger zijn dan de kosten voor opslag, is het financieel gezien logischer om Spark-instanties te laten uitschakelen wanneer ze niet worden gebruikt.
 
 Om ervoor te zorgen dat de Spark-instantie wordt afgesloten, beëindigt u alle verbonden sessies (notebooks). De pool wordt afgesloten wanneer de **niet-actieve tijd** is bereikt die is opgegeven in de Apache Spark-pool. U kunt ook **sessie beëindigen** selecteren op de statusbalk onder aan de notebook.
 

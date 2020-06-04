@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 3db9dc260cb8546109870834f364c62305aa3fbb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248546"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324518"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Veelgestelde vragen: algemene vragen over Azure Security Center
 
@@ -37,14 +37,8 @@ Azure Security Center bewaakt de volgende Azure-resources:
 
 * Virtuele machines (Vm's) (inclusief [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Virtuele-machineschaalsets
-* Virtuele netwerken van Azure
-* Containers
-* Azure SQL-service
-* Azure Storage-account
-* Azure-Web Apps (in [app service Environment](../app-service/environment/intro.md))
 * Partner oplossingen die zijn geïntegreerd met uw Azure-abonnement, zoals een Web Application Firewall op Vm's en op App Service Environment
-
-Daarnaast kunnen niet-Azure-machines (inclusief on-premises) ook worden bewaakt door Azure Security Center. Zowel [Windows-computers](./quick-onboard-windows-computer.md) als [Linux-machines](./quick-onboard-linux-computer.md) worden ondersteund.
+* [De vele Azure PaaS services die worden vermeld in het product overzicht](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Hoe kan ik de huidige beveiligings status van mijn Azure-resources weer geven?

@@ -1,14 +1,14 @@
 ---
 title: Personalizer configureren
 description: Service configuratie bevat de manier waarop de service beloningen behandelt, hoe vaak de service bekijkt, hoe vaak het model opnieuw wordt getraind en hoeveel gegevens worden opgeslagen.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4c0cbf35a37f6b3eb134992b34b23fd9d7be47ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584651"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344336"
 ---
 # <a name="configure-personalizer-learning-loop"></a>De learning-lus van Personaler configureren
 
@@ -43,7 +43,7 @@ Configureer de service voor het gebruik van beloningen van uw leer proces. Als u
 > [!div class="mx-imgBorder"]
 > ![De belonings waarden voor de feedback-lus configureren](media/settings/configure-model-reward-settings.png)
 
-|Waarde|Doel|
+|Waarde|Functie|
 |--|--|
 |Wacht tijd op beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door te vragen: ' hoe lang moet Personaler wachten op de aanroepen van beloningen? ' Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
 |Standaard beloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul (0).|
@@ -67,7 +67,7 @@ Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
 Met de frequentie van de **model updates** wordt aangegeven hoe vaak het model wordt getraind.
 
-|Frequentie-instelling|Doel|
+|Frequentie-instelling|Functie|
 |--|--|
 |1 minuut|Update frequenties van één minuut zijn handig bij het **opsporen van fouten in** de code van een toepassing met behulp van personaler, het uitvoeren van demo's of het interactief testen van machine learning aspecten.|
 |15 minuten|High model-update frequenties zijn nuttig voor situaties waarin u de wijzigingen in het gedrag van gebruikers **nauw keurig wilt bijhouden** . Voor beelden zijn onder andere sites die worden uitgevoerd op Live nieuws, virale inhoud of Live-product biedingen. In deze scenario's kunt u een frequentie van 15 minuten gebruiken. |

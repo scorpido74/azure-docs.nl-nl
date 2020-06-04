@@ -1,20 +1,45 @@
 ---
-title: Beheer van Azure Automation-gegevens
-description: Dit artikel bevat concepten van gegevens beheer in Azure Automation, waaronder het bewaren van gegevens en het maken van back-ups.
+title: Azure Automation gegevens beveiliging
+description: In dit artikel leest u hoe Azure Automation uw privacy beschermt en uw gegevens beveiligt.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/23/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: de60ef31a39a698f9a797a5836546f9b75b67594
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 2dbaebac2228c11aef5fb33af4588f75ea15677a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835203"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343051"
 ---
 # <a name="management-of-azure-automation-data"></a>Beheer van Azure Automation-gegevens
 
-Dit artikel bevat verschillende onderwerpen over het beheren van gegevens in een Azure Automation omgeving.
+Dit artikel bevat verschillende onderwerpen waarin wordt uitgelegd hoe gegevens worden beveiligd en beveiligd in een Azure Automation omgeving.
+
+## <a name="tls-12-enforcement-for-azure-automation"></a>TLS 1,2 afdwingen voor Azure Automation
+
+Om de beveiliging van gegevens die onderweg zijn naar Azure Automation te verzekeren, raden we u aan om het gebruik van Transport Layer Security (TLS) 1,2 te configureren. Hieronder vindt u een lijst met methoden of clients die via HTTPS communiceren met de Automation-Service:
+
+* Webhook-aanroepen
+
+* Hybrid Runbook Workers, die machines bevatten die worden beheerd door Updatebeheer en Wijzigingen bijhouden en inventaris.
+
+* DSC-knoop punten
+
+Er zijn oudere versies van TLS/Secure Sockets Layer (SSL) gevonden die kwetsbaar zijn en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**. Vanaf september 2020 beginnen we met het afdwingen van TLS 1,2 en latere versies van het versleutelings protocol.
+
+Het wordt niet aanbevolen om uw agent expliciet in te stellen voor gebruik van TLS 1,2, tenzij dit absoluut nood zakelijk is, omdat de beveiligings functies op platform niveau kunnen worden vermeden, zodat u nieuwe beveiligde protocollen automatisch kunt detecteren en gebruiken wanneer deze beschikbaar zijn, zoals TLS 1,3.
+
+Zie [log Analytics agent Overview-TLS 1,2](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)voor informatie over ondersteuning van TLS 1,2 met de log Analytics-agent voor Windows en Linux. Dit is een afhankelijkheid voor de Hybrid Runbook worker-rol. 
+
+### <a name="platform-specific-guidance"></a>Platformspecifieke richt lijnen
+
+|Platform/taal | Ondersteuning | Meer informatie |
+| --- | --- | --- |
+|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
+| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
+| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
 
 ## <a name="data-retention"></a>Bewaartijd van gegevens
 
@@ -25,7 +50,7 @@ De volgende tabel bevat een overzicht van het Bewaar beleid voor verschillende r
 | Gegevens | Beleid |
 |:--- |:--- |
 | Accounts |Een account wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd. |
-| Activa |Een activum wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd, of 30 dagen nadat een gebruiker een account heeft verwijderd dat de Asset bevat. |
+| Assets |Een activum wordt definitief verwijderd 30 dagen nadat een gebruiker het heeft verwijderd, of 30 dagen nadat een gebruiker een account heeft verwijderd dat de Asset bevat. |
 | DSC-knoop punten |Een DSC-knoop punt wordt permanent verwijderd 30 dagen nadat de registratie van een Automation-account is ongedaan gemaakt met Azure Portal of de cmdlet [unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) in Windows Power shell. Een knoop punt wordt ook 30 dagen nadat een gebruiker het account dat het knoop punt bevat verwijderd, definitief verwijderd. |
 | Taken |Een taak wordt verwijderd en wordt 30 dagen na de wijziging permanent verwijderd, bijvoorbeeld nadat de taak is voltooid, is gestopt of is onderbroken. |
 | Modules |Een module wordt definitief verwijderd 30 dagen nadat een gebruiker deze heeft verwijderd, of 30 dagen nadat een gebruiker het account heeft verwijderd dat de module bevat. |
@@ -47,22 +72,22 @@ U kunt uw runbooks exporteren naar script bestanden met behulp van de Azure Port
 
 U kunt geen integratie modules exporteren van Azure Automation. U moet deze beschikbaar maken buiten het Automation-account.
 
-### <a name="assets"></a>Activa
+### <a name="assets"></a>Assets
 
 U kunt Azure Automation assets niet exporteren: certificaten, verbindingen, referenties, schema's en variabelen. In plaats daarvan kunt u de Azure Portal-en Azure-cmdlets gebruiken om de details van deze activa te noteren. Gebruik vervolgens deze gegevens om activa te maken die worden gebruikt door runbooks die u importeert in een ander Automation-account.
 
 U kunt de waarden voor versleutelde variabelen of de wachtwoord velden van referenties niet ophalen met behulp van cmdlets. Als u deze waarden niet weet, kunt u ze ophalen in een runbook. Zie [variabele assets in azure Automation](shared-resources/variables.md)voor het ophalen van variabele waarden. Zie [referentie-assets in azure Automation](shared-resources/credentials.md)voor meer informatie over het ophalen van referentie waarden.
 
- ### <a name="dsc-configurations"></a>DSC-configuraties
+### <a name="dsc-configurations"></a>DSC-configuraties
 
 U kunt uw DSC-configuraties exporteren naar script bestanden met behulp van de Azure Portal of de cmdlet [export-AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
 ) in Windows Power shell. U kunt deze configuraties importeren en gebruiken in een ander Automation-account.
 
 ## <a name="geo-replication-in-azure-automation"></a>Geo-replicatie in Azure Automation
 
-Geo-replicatie is standaard in Azure Automation-accounts. U kiest een primaire regio bij het instellen van uw account. Met de interne Automation geo-Replication-service wordt automatisch een secundaire regio aan het account toegewezen. De service maakt vervolgens voortdurend een back-up van de account gegevens van de primaire regio naar de secundaire regio. U kunt de volledige lijst met primaire en secundaire regio's vinden op [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+Geo-replicatie is standaard in Azure Automation-accounts. U kiest een primaire regio bij het instellen van uw account. Met de interne Automation geo-Replication-service wordt automatisch een secundaire regio aan het account toegewezen. De service maakt vervolgens voortdurend een back-up van de account gegevens van de primaire regio naar de secundaire regio. U kunt de volledige lijst met primaire en secundaire regio's vinden op [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md).
 
-De back-up die is gemaakt door de geo-replicatie service voor automatisering is een volledige kopie van Automation-assets, configuraties en dergelijke. Deze back-up kan worden gebruikt als de primaire regio uitvalt en gegevens verliest. In het onwaarschijnlijke geval dat de gegevens voor een primaire regio verloren zijn gegaan, probeert micro soft deze te herstellen. Als het bedrijf de primaire gegevens niet kan herstellen, wordt automatische failover gebruikt en wordt u geïnformeerd over de situatie via uw Azure-abonnement. 
+De back-up die is gemaakt door de geo-replicatie service voor automatisering is een volledige kopie van Automation-assets, configuraties en dergelijke. Deze back-up kan worden gebruikt als de primaire regio uitvalt en gegevens verliest. In het onwaarschijnlijke geval dat de gegevens voor een primaire regio verloren zijn gegaan, probeert micro soft deze te herstellen. Als het bedrijf de primaire gegevens niet kan herstellen, wordt automatische failover gebruikt en wordt u geïnformeerd over de situatie via uw Azure-abonnement.
 
 De geo-replicatie service voor automatisering is niet rechtstreeks toegankelijk voor externe klanten als er sprake is van een regionale storing. Als u de automatiserings configuratie en runbooks wilt behouden tijdens regionale storingen:
 
@@ -77,4 +102,5 @@ De geo-replicatie service voor automatisering is niet rechtstreeks toegankelijk 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie voor meer informatie over beveiligde assets in Azure Automation [versleuteling van beveiligde assets in azure Automation](automation-secure-asset-encryption.md).
-* Zie [actieve geo-replicatie maken en gebruiken](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)om meer te weten te komen over geo-replicatie.
+
+* Zie [actieve geo-replicatie maken en gebruiken](../sql-database/sql-database-active-geo-replication.md)om meer te weten te komen over geo-replicatie.

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605384"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324161"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Expressies bouwen in gegevens stroom toewijzen
 
@@ -76,16 +76,12 @@ Enkele voor beelden van interpolatie van teken reeksen:
 
 Voeg opmerkingen toe aan uw expressies door gebruik te maken van de syntaxis van een meerregelige opmerking met één regel.
 
-![Syntaxis van één regel en een opmerking in meerdere regels](media/data-flow/comments.png "Opmerkingen")
-
 De volgende voor beelden zijn geldige opmerkingen:
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in het tekstvak trans formatie om uw transformatie expressies te documenteren.
 
@@ -93,7 +89,7 @@ Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in h
 
 ## <a name="regular-expressions"></a>Reguliere expressies
 
-Veel expressie taal functies gebruiken reguliere expressie syntaxis. Wanneer u reguliere-expressie functies gebruikt, probeert Expression Builder een back slash (\\) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in accents graves\`() of een dubbele back slash gebruiken.
+Veel expressie taal functies gebruiken reguliere expressie syntaxis. Wanneer u reguliere-expressie functies gebruikt, probeert Expression Builder een back slash ( \\ ) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in accents graves ( \` ) of een dubbele back slash gebruiken.
 
 Een voor beeld waarin accents graves wordt gebruikt:
 
@@ -124,11 +120,11 @@ Met expressie functies die matrices retour neren, gebruikt u vier Kante haken ([
 
 ## <a name="convert-to-dates-or-timestamps"></a>Converteren naar datums of tijds tempels
 
-Als u letterlijke teken reeksen wilt toevoegen aan de uitvoer van de tijds ```toString()```tempel, zet u de conversie in.
+Als u letterlijke teken reeksen wilt toevoegen aan de uitvoer van de tijds tempel, zet u de conversie in ```toString()``` .
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Als u milliseconden wilt converteren van epoche naar een datum of `toTimestamp(<number of milliseconds>)`tijds tempel, gebruikt u. Als de tijd in seconden is, vermenigvuldigt u met 1.000.
+Als u milliseconden wilt converteren van epoche naar een datum of tijds tempel, gebruikt u `toTimestamp(<number of milliseconds>)` . Als de tijd in seconden is, vermenigvuldigt u met 1.000.
 
 ```toTimestamp(1574127407*1000l)```
 

@@ -1,6 +1,6 @@
 ---
 title: Playbook voor het adresseren van algemene beveiligings vereisten
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Dit artikel bevat algemene beveiligings vereisten en aanbevolen procedures in Azure SQL Database en Azure SQL Managed instance
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,14 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: a462c3480d58a7895429863cb3d09874cd6ef0f8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 5a35d9f9ff611576f26a55cb5792bc4b1718bee0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217919"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323838"
 ---
-# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database--sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database & SQL Managed instance
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook voor het adresseren van algemene beveiligings vereisten met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Dit artikel bevat aanbevolen procedures voor het oplossen van veelvoorkomende beveiligings vereisten. Niet alle vereisten zijn van toepassing op alle omgevingen en u moet uw data base en beveiligings team raadplegen voor de functies die moeten worden geïmplementeerd.
@@ -28,10 +28,10 @@ Dit document bevat richt lijnen voor het oplossen van algemene beveiligings vere
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>Azure SQL Database implementatie aanbiedingen die in deze hand leiding worden behandeld
 
-- [Azure SQL-data bases](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [afzonderlijke data bases](single-database-overview.md) en [elastische Pools](elastic-pool-overview.md) in [servers](logical-servers.md)
-- [Azure SQL Managed instances](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
+- [Azure SQL database](https://docs.microsoft.com/azure/sql-database/sql-database-single-index): [afzonderlijke data bases](single-database-overview.md) en [elastische Pools](elastic-pool-overview.md) in [servers](logical-servers.md)
+- [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)
 
-### <a name="sql-deployment-offers-not-covered-in-this-guide"></a>SQL-implementatie aanbiedingen die niet worden behandeld in deze hand leiding
+### <a name="deployment-offers-not-covered-in-this-guide"></a>Implementatie aanbiedingen die niet worden behandeld in deze hand leiding
 
 - Azure SQL Data Warehouse
 - Azure SQL-Vm's (IaaS)
@@ -78,7 +78,7 @@ Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Databas
 
 Centraal identiteits beheer biedt de volgende voor delen:
 
-- Groeps accounts beheren en gebruikers machtigingen controleren zonder dat aanmeldingen worden gedupliceerd op servers, data bases en SQL Managed instances.
+- Groeps accounts beheren en gebruikers machtigingen controleren zonder dat aanmeldingen worden gedupliceerd op servers, data bases en beheerde exemplaren.
 - Vereenvoudigd en flexibel machtigings beheer.
 - Beheer van toepassingen op schaal.
 
@@ -103,52 +103,52 @@ Centraal identiteits beheer biedt de volgende voor delen:
 
 - Wijzigingen in azure AD-groepslid maatschap bewaken met Azure AD-controle activiteiten rapporten.
 
-- Voor een SQL Managed instance is een afzonderlijke stap vereist voor het maken van een Azure AD-beheerder.
+- Voor een beheerd exemplaar is een afzonderlijke stap vereist voor het maken van een Azure AD-beheerder.
   - Zie het artikel [een Azure Active Directory beheerder inrichten voor uw beheerde exemplaar](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
 > [!NOTE]
 >
 > - Azure AD-verificatie wordt vastgelegd in Azure SQL-audit logboeken, maar niet in Logboeken van Azure AD-aanmelding.
 > - RBAC-machtigingen die in Azure worden verleend, zijn niet van toepassing op Azure SQL Database of machtigingen voor SQL Managed instance. Dergelijke machtigingen moeten hand matig worden gemaakt/toegewezen met behulp van bestaande SQL-machtigingen.
-> - Aan de client zijde moet Azure AD-verificatie toegang hebben tot internet of via door de gebruiker gedefinieerde route (UDR) naar een VNet.
+> - Aan de client zijde moet Azure AD-verificatie toegang hebben tot internet of via door de gebruiker gedefinieerde route (UDR) naar een virtueel netwerk.
 > - Het Azure AD-toegangs token wordt opgeslagen in de cache aan de client zijde en de levens duur is afhankelijk van de configuratie van het token. Zie het artikel [levens duur van Configureer bare tokens in azure Active Directory](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Zie voor hulp bij het oplossen van problemen met Azure AD-verificatie de volgende blog: [problemen met Azure AD oplossen](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991).
 
-### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
+### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
 > Vermeld in: OSA-Oefen #2, ISO-Access Control (AC)
 
-Azure Multi-Factor Authentication (MFA) helpt extra beveiliging te bieden doordat er meer dan één vorm van verificatie is vereist.
+Azure Multi-Factor Authentication biedt extra beveiliging doordat er meer dan één vorm van verificatie is vereist.
 
 **Implementeren**:
 
-- [Schakel MFA](../../active-directory/authentication/concept-mfa-howitworks.md) in azure AD in met behulp van voorwaardelijke toegang en gebruik interactieve verificatie.
+- [Multi-factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) in azure AD inschakelen met behulp van voorwaardelijke toegang en interactieve verificatie gebruiken.
 
-- Het alternatief is MFA in te scha kelen voor het hele Azure AD-of AD-domein.
+- Het alternatief is om Multi-Factor Authentication in te scha kelen voor het hele Azure AD-of AD-domein.
 
 **Aanbevolen procedures**:
 
 - Voorwaardelijke toegang activeren in azure AD (Premium-abonnement vereist).
   - Zie het artikel [voorwaardelijke toegang in azure AD](../../active-directory/conditional-access/overview.md).  
 
-- Maak een Azure AD-groep (en) en schakel MFA-beleid in voor geselecteerde groepen met behulp van voorwaardelijke toegang voor Azure AD.
+- Maak een Azure AD-groep (en) en schakel Multi-Factor Authentication beleid in voor geselecteerde groepen met behulp van voorwaardelijke toegang voor Azure AD.
   - Zie het artikel de [implementatie van voorwaardelijke toegang plannen](../../active-directory/conditional-access/plan-conditional-access.md).
 
-- MFA kan worden ingeschakeld voor de hele Azure AD of voor de hele Active Directory federatieve met Azure AD.
+- Multi-Factor Authentication kunnen worden ingeschakeld voor de hele Azure AD of voor het hele Active Directory federatieve met Azure AD.
 
-- Gebruik de interactieve verificatie modus van Azure AD voor Azure SQL Database en Azure SQL Managed instance waarbij een wacht woord interactief wordt aangevraagd, gevolgd door MFA-verificatie:
-  - Gebruik universele verificatie in SSMS. Zie het artikel [using multi-factor Aad-verificatie met Azure SQL database, SQL Managed instance, Azure Synapse (SSMS-ondersteuning voor MFA)](authentication-mfa-ssms-overview.md).
+- Gebruik de interactieve verificatie modus van Azure AD voor Azure SQL Database en Azure SQL Managed instance waarbij een wacht woord interactief wordt aangevraagd, gevolgd door Multi-Factor Authentication:
+  - Gebruik universele verificatie in SSMS. Zie het artikel [using multi-factor Azure AD Authentication with Azure SQL database, SQL Managed instance, Azure Synapse (SSMS-ondersteuning voor multi-factor Authentication) voor](authentication-mfa-ssms-overview.md)meer informatie.
   - Interactieve verificatie gebruiken die wordt ondersteund in SQL Server Data Tools (SSDT). Zie het artikel [Azure Active Directory ondersteuning in SQL Server Data tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory?view=azuresqldb-current).
-  - Gebruik andere SQL-hulpprogram ma's die MFA ondersteunen.
+  - Gebruik andere SQL-hulpprogram ma's die Multi-Factor Authentication ondersteunen.
     - Ondersteuning van de wizard SSMS voor het exporteren/extra heren/implementeren van de data base  
     - [sqlpackage. exe](https://docs.microsoft.com/sql/tools/sqlpackage): optie '/UA '
     - [Sqlcmd-hulp programma](https://docs.microsoft.com/sql/tools/sqlcmd-utility): Option-G (interactief)
     - [bcp-hulp programma](https://docs.microsoft.com/sql/tools/bcp-utility): Option-G (interactief)
 
-- Implementeer uw toepassingen om verbinding te maken met Azure SQL Database of een door Azure SQL beheerd exemplaar met behulp van interactieve verificatie met MFA-ondersteuning.
+- Implementeer uw toepassingen om verbinding te maken met Azure SQL Database of een door Azure SQL beheerd exemplaar met behulp van interactieve verificatie met Multi-Factor Authentication ondersteuning.
   - Zie het artikel [verbinding maken met Azure SQL database met Azure multi-factor Authentication](active-directory-interactive-connect-azure-sql-db.md).
   > [!NOTE]
-  > Deze verificatie modus vereist identiteiten op basis van gebruikers. In gevallen waarin een vertrouwd identiteits model wordt gebruikt dat individuele gebruikers verificatie van Azure AD overs Laan (bijvoorbeeld door beheerde identiteiten te gebruiken voor Azure-resources), is MFA niet van toepassing.
+  > Deze verificatie modus vereist identiteiten op basis van gebruikers. In gevallen waarin een vertrouwd identiteits model wordt gebruikt dat afzonderlijke gebruikers verificatie van Azure AD overs Laan (bijvoorbeeld door beheerde identiteiten te gebruiken voor Azure-resources), is Multi-Factor Authentication niet van toepassing.
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>Het gebruik van verificatie op basis van wacht woorden minimaliseren voor gebruikers
 
@@ -178,7 +178,7 @@ Verificatie methoden op basis van wacht woorden zijn een zwakkere vorm van verif
 - [Beheerde identiteiten gebruiken voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md).
   - [Door het systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md)
   - [Door een gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
-  - [Azure SQL Database van app service met beheerde identiteit gebruiken (zonder code wijzigingen)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
+  - [Azure SQL Database gebruiken van Azure App Service met een beheerde identiteit (zonder code wijzigingen)](https://github.com/Azure-Samples/app-service-msi-entityframework-dotnet)
 
 - Authenticatie op basis van certificaten voor een toepassing gebruiken.
   - Zie dit [code voorbeeld](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/security/azure-active-directory-auth/token).
@@ -192,7 +192,7 @@ Als wacht woorden niet kunnen worden voor komen, moet u ervoor zorgen dat deze z
 
 **Implementeren**:
 
-- Gebruik Azure Key Vault om wacht woorden en geheimen op te slaan. Gebruik MFA voor Azure SQL Database met Azure AD-gebruikers, indien van toepassing.
+- Gebruik Azure Key Vault om wacht woorden en geheimen op te slaan. Gebruik Multi-Factor Authentication voor Azure SQL Database met Azure AD-gebruikers, indien van toepassing.
 
 **Aanbevolen procedures**:
 
@@ -242,7 +242,7 @@ Wijs alleen de benodigde [machtigingen](https://docs.microsoft.com/sql/relationa
   - Zorg ervoor dat u geen gebruikers toewijst aan overbodige rollen.
 
 - In Azure Resource Manager:
-  - Gebruik Builtin-roles als beschikbaar of aangepast RBAC-rollen en wijs de benodigde machtigingen toe.
+  - Gebruik ingebouwde rollen als beschikbaar of aangepast RBAC-rollen en wijs de benodigde machtigingen toe.
     - [Ingebouwde rollen voor Azure](../../role-based-access-control/built-in-roles.md)
     - [Aangepaste rollen voor Azure-resources](../../role-based-access-control/custom-roles.md)
 
@@ -294,7 +294,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 
 - Rollen maken op basis van de benodigde gebruikers groepen en machtigingen toewijzen aan rollen.
   - Voor taken op beheer niveau in Azure Portal of via Power shell-Automation kunt u RBAC-rollen gebruiken. Zoek een ingebouwde rol die overeenkomt met de vereiste of maak een aangepaste RBAC-rol met behulp van de beschik bare machtigingen
-  - Server functies maken voor Server-brede taken (het maken van nieuwe aanmeldingen, data bases) in een door SQL beheerd exemplaar.
+  - Server functies maken voor Server-brede taken (het maken van nieuwe aanmeldingen, data bases) in een beheerd exemplaar.
   - Maak database rollen voor taken op database niveau.
 
 - Voor bepaalde gevoelige taken kunt u speciale opgeslagen procedures maken die zijn ondertekend door een certificaat om de taken namens de gebruikers uit te voeren. Een belang rijk voor deel van digitaal ondertekende opgeslagen procedures is dat als de procedure wordt gewijzigd, de machtigingen die zijn verleend aan de vorige versie van de procedure onmiddellijk worden verwijderd.
@@ -312,7 +312,7 @@ Schei ding van taken, ook wel schei ding van taken genoemd, beschrijft de vereis
 
 **Aanbevolen procedures**:
 
-- Zorg ervoor dat er verschillende accounts worden gebruikt voor ontwikkelings-en test-en productie omgevingen. Verschillende accounts helpen te voldoen aan de schei ding van test & productie systemen.
+- Zorg ervoor dat er verschillende accounts worden gebruikt voor ontwikkelings-en test-en productie omgevingen. Verschillende accounts helpen te voldoen aan de schei ding van test-en productie systemen.
 
 - U hoeft geen machtigingen voor afzonderlijke gebruikers toe te wijzen. Gebruik in plaats daarvan functies (Data Base-of Server functies). Met rollen kunt u de machtigingen voor rapportage en probleem oplossing aanzienlijk verbeteren.
 
@@ -352,7 +352,7 @@ Voor de lezers die dieper willen zijn in SoD, raden we de volgende bronnen aan:
 
 > Vermeld in: PCI: 6.3.2, SOC: SDL-3
 
-Schei ding van taken is niet beperkt tot de gegevens in de data base, maar bevat toepassings code. Schadelijke code kan beveiligings controles mogelijk omzeilen. Voordat u aangepaste code naar productie implementeert, is het essentieel om te controleren wat er wordt geïmplementeerd.
+Schei ding van taken is niet beperkt tot de gegevens in een Data Base, maar bevat toepassings code. Schadelijke code kan beveiligings controles mogelijk omzeilen. Voordat u aangepaste code naar productie implementeert, is het essentieel om te controleren wat er wordt geïmplementeerd.
 
 **Implementeren**:
 
@@ -400,7 +400,7 @@ Versleuteling op rest is de cryptografische beveiliging van gegevens wanneer dez
 **Implementeren**:
 
 - [Transparent data base Encryption (TDE)](transparent-data-encryption-tde-overview.md) met door service beheerde sleutels zijn standaard ingeschakeld voor data bases die zijn gemaakt na 2017 in Azure SQL database en SQL Managed instance.
-- Als de data base wordt gemaakt op basis van een herstel bewerking met een on-premises server, wordt in een SQL Managed instance de TDE-instelling van de oorspronkelijke data base nageleefd. Als TDE niet is ingeschakeld voor de oorspronkelijke Data Base, is het raadzaam om TDE hand matig in te scha kelen voor het SQL Managed instance.
+- Als de data base wordt gemaakt op basis van een herstel bewerking met een on-premises server, wordt in een beheerd exemplaar de TDE-instelling van de oorspronkelijke data base nageleefd. Als TDE niet is ingeschakeld voor de oorspronkelijke Data Base, is het raadzaam om TDE hand matig in te scha kelen voor het beheerde exemplaar.
 
 **Aanbevolen procedures**:
 
@@ -503,7 +503,7 @@ Best practices voor het voor komen van client computers en-toepassingen met beke
 
 **Implementeren**:
 
-- Zorg ervoor dat client computers die verbinding maken met Azure SQL Database en SQL Managed instance gebruikmaken van [Transport Layer Security (TLS)](security-overview.md#transport-layer-security-tls-encryption-in-transit).
+- Zorg ervoor dat client computers die verbinding maken met Azure SQL Database en SQL Managed instance gebruikmaken van [Transport Layer Security (TLS)](security-overview.md#transport-layer-security-encryption-in-transit).
 
 **Aanbevolen procedures**:
 
@@ -534,30 +534,30 @@ In SQL Database:
 - VNet-service-eind punten en VNet-firewall regels gebruiken.
 - Persoonlijke koppeling gebruiken (preview-versie).
 
-In een door SQL beheerd exemplaar:
+In SQL Managed instance:
 
 - Volg de richt lijnen in [netwerk vereisten](../managed-instance/connectivity-architecture-overview.md#network-requirements).
 
 **Aanbevolen procedures**:
 
 - De toegang tot Azure SQL Database en SQL Managed instance beperken door verbinding te maken met een persoonlijk eind punt (bijvoorbeeld met behulp van een pad naar een persoonlijke gegevens):
-  - Een door SQL beheerd exemplaar kan worden geïsoleerd in een VNet om externe toegang te voor komen. Toepassingen en hulpprogram ma's die zich in dezelfde regio bevinden of een gepeerd VNet hebben, kunnen rechtstreeks toegang krijgen tot de app. Toepassingen en hulpprogram ma's die zich in verschillende regio's bevinden, kunnen gebruikmaken van VNet-naar-VNet-verbindingen of ExpressRoute-circuit peering om verbinding te maken. De klant moet netwerk beveiligings groepen (NSG) gebruiken om de toegang via poort 1433 alleen te beperken tot bronnen die toegang nodig hebben tot een beheerd exemplaar.
-  - Gebruik voor een SQL Database de functie voor [persoonlijke koppelingen](../../private-link/private-endpoint-overview.md) waarmee een speciaal particulier IP-adres voor de server binnen uw VNet wordt verstrekt. U kunt ook [vnet-service-eind punten met vnet-firewall regels](vnet-service-endpoint-rule-overview.md) gebruiken om de toegang tot uw servers te beperken.
+  - Een beheerd exemplaar kan worden geïsoleerd in een virtueel netwerk om externe toegang te voor komen. Toepassingen en hulpprogram ma's die zich in hetzelfde virtuele netwerk in dezelfde regio bevinden, hebben rechtstreeks toegang tot de toepassing. Toepassingen en hulpprogram ma's die zich in verschillende regio's bevinden, kunnen gebruikmaken van Virtual-to-Virtual netwerk-verbinding of ExpressRoute-circuit peering om verbinding te maken. De klant moet netwerk beveiligings groepen (NSG) gebruiken om de toegang via poort 1433 alleen te beperken tot bronnen die toegang nodig hebben tot een beheerd exemplaar.
+  - Gebruik voor een SQL Database de functie voor [persoonlijke koppelingen](../../private-link/private-endpoint-overview.md) waarmee een speciaal particulier IP-adres voor de server in het virtuele netwerk wordt verstrekt. U kunt ook [service-eind punten van het virtuele netwerk met de firewall regels van het virtuele netwerk](vnet-service-endpoint-rule-overview.md) gebruiken om de toegang tot uw servers te beperken.
   - Mobiele gebruikers moeten punt-naar-site-VPN-verbindingen gebruiken om verbinding te maken via het gegevenspad.
   - Gebruikers die verbinding hebben met hun on-premises netwerk, moeten gebruikmaken van site-naar-site VPN-verbinding of ExpressRoute om verbinding te maken via het gegevenspad.
 
 - U kunt toegang krijgen tot Azure SQL Database en SQL Managed instance door verbinding te maken met een openbaar eind punt (bijvoorbeeld met behulp van een openbaar gegevenspad). U moet rekening houden met de volgende aanbevolen procedures:
   - Gebruik [IP-firewall regels](firewall-configure.md) voor een server in SQL database om de toegang te beperken tot alleen geautoriseerde IP-adressen.
-  - Gebruik netwerk beveiligings groepen (NSG) voor een instantie in een SQL Managed instance om de toegang tot de vereiste bronnen te beperken via poort 3342. Zie [een Azure SQL Managed instance veilig met open bare eind punten gebruiken](../managed-instance/public-endpoint-overview.md)voor meer informatie.
+  - Gebruik netwerk beveiligings groepen (NSG) voor SQL Managed instance om de toegang tot vereiste bronnen te beperken via poort 3342. Zie [een beheerd exemplaar veilig gebruiken met open bare eind punten](../managed-instance/public-endpoint-overview.md)voor meer informatie.
 
 > [!NOTE]
-> Een openbaar eind punt voor een beheerd exemplaar van SQL is niet standaard ingeschakeld en moet expliciet worden ingeschakeld. Als het bedrijfs beleid het gebruik van open bare eind punten niet toestaat, gebruikt u [Azure Policy](../../governance/policy/overview.md) om te voor komen dat open bare eind punten in de eerste plaats worden ingeschakeld.
+> Het open bare eind punt van het SQL Managed instance is standaard niet ingeschakeld en moet expliciet worden ingeschakeld. Als het bedrijfs beleid het gebruik van open bare eind punten niet toestaat, gebruikt u [Azure Policy](../../governance/policy/overview.md) om te voor komen dat open bare eind punten in de eerste plaats worden ingeschakeld.
 
 - Azure-netwerk onderdelen instellen:
   - Volg de [Aanbevolen procedures voor Azure voor netwerk beveiliging](../../security/fundamentals/network-best-practices.md).
-  - Plan Virtual Network (VNet)-configuratie volgens aanbevolen procedures die worden beschreven in [Azure Virtual Network Veelgestelde vragen](../../virtual-network/virtual-networks-faq.md) en abonnementen.
-  - Een VNet in meerdere subnetten segmenteren en resources voor een vergelijk bare rol toewijzen aan hetzelfde subnet (bijvoorbeeld front-end VS back-end-resources).
-  - Gebruik [netwerk beveiligings groepen (nsg's)](../../virtual-network/security-overview.md) om verkeer tussen subnetten binnen de Azure VNet-grens te beheren.
+  - Plan Virtual Network configuratie per aanbevolen procedures die worden beschreven in [Azure Virtual Network Veelgestelde vragen](../../virtual-network/virtual-networks-faq.md) en plan.
+  - Een virtueel netwerk in meerdere subnetten segmenteren en resources voor een soort gelijke rol toewijzen aan hetzelfde subnet (bijvoorbeeld front-end VS back-end-resources).
+  - Gebruik [netwerk beveiligings groepen (nsg's)](../../virtual-network/security-overview.md) om verkeer tussen subnetten binnen de grens van het virtuele Azure-netwerk te beheren.
   - Schakel [Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) in voor uw abonnement om binnenkomend en uitgaand netwerk verkeer te bewaken.
 
 ### <a name="configure-power-bi-for-secure-connections-to-sql-databasesql-managed-instance"></a>Power BI configureren voor beveiligde verbindingen met een door SQL Database/SQL beheerd exemplaar
@@ -578,23 +578,23 @@ In een door SQL beheerd exemplaar:
 
 - Voor een eenvoudige web-app moet u voor het verbinden van het open bare eind punt **Azure-Services toestaan** in te stellen op.
 
-- [Integreer uw app met een Azure-Virtual Network](../../app-service/web-sites-integrate-with-vnet.md) voor de connectiviteit van een persoonlijk gegevenspad met een door SQL beheerd exemplaar. U kunt eventueel ook een web-app implementeren met [app service omgevingen (ASE)](../../app-service/environment/intro.md).
+- [Integreer uw app met een Azure-Virtual Network](../../app-service/web-sites-integrate-with-vnet.md) voor de connectiviteit van een persoonlijk gegevenspad naar een beheerd exemplaar. U kunt eventueel ook een web-app implementeren met [app service omgevingen (ASE)](../../app-service/environment/intro.md).
 
-- Voor web-apps met ASE of VNet geïntegreerde web-app die verbinding maakt met een data base in SQL Database, kunt u [vnet-service-eind punten en vnet-firewall regels](vnet-service-endpoint-rule-overview.md) gebruiken om de toegang te beperken vanaf een specifiek VNet en subnet. Vervolgens stelt u in **dat Azure-Services kunnen** worden uitgeschakeld. U kunt ASE ook verbinden met een beheerd exemplaar in een door SQL beheerd exemplaar over een persoonlijk gegevenspad.  
+- Voor web-apps met een geïntegreerde web-app met ASE of een virtueel netwerk die verbinding maakt met een data base in SQL Database, kunt u [service-eind punten voor virtuele netwerken en firewall regels voor virtuele netwerken](vnet-service-endpoint-rule-overview.md) gebruiken om de toegang van een specifiek virtueel netwerk en subnet te beperken. Vervolgens stelt u in **dat Azure-Services kunnen** worden uitgeschakeld. U kunt ASE ook verbinden met een beheerd exemplaar in een door SQL beheerd exemplaar over een persoonlijk gegevenspad.  
 
-- Zorg ervoor dat uw web-app is geconfigureerd volgens het artikel, [Aanbevolen procedures voor het beveiligen van PaaS web-en mobiele toepassingen met Azure app service](../../security/fundamentals/paas-applications-using-app-services.md).
+- Zorg ervoor dat uw web-app is geconfigureerd volgens het artikel, [Aanbevolen procedures voor het beveiligen van PaaS-web-en mobiele toepassingen (platform as a Service) met behulp van Azure app service](../../security/fundamentals/paas-applications-using-app-services.md).
 
 - Installeer [Web Application firewall (WAF)](../../web-application-firewall/ag/ag-overview.md) om uw web-app te beschermen tegen veelvoorkomende aanvallen en beveiligings problemen.
 
-### <a name="configure-azure-vm-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>Azure VM-hosting configureren voor beveiligde verbindingen met een door SQL Database/SQL beheerd exemplaar
+### <a name="configure-azure-virtual-machine-hosting-for-secure-connections-to-sql-databasesql-managed-instance"></a>Virtuele Azure-machine hosting configureren voor beveiligde verbindingen met een door SQL Database/SQL beheerd exemplaar
 
 **Aanbevolen procedures**:
 
-- Gebruik een combi natie van regels voor toestaan en weigeren op de Nsg's van Azure-Vm's om te bepalen welke regio's toegankelijk zijn vanaf de virtuele machine.
+- Gebruik een combi natie van regels voor toestaan en weigeren op de Nsg's van virtuele machines van Azure om te bepalen welke regio's toegankelijk zijn vanaf de virtuele machine.
 
 - Zorg ervoor dat uw virtuele machine is geconfigureerd volgens het artikel, [Aanbevolen procedures voor beveiliging voor IaaS-workloads in azure](../../security/fundamentals/iaas.md).
 
-- Zorg ervoor dat alle Vm's zijn gekoppeld aan een specifiek VNet en subnet.
+- Zorg ervoor dat alle Vm's zijn gekoppeld aan een specifiek virtueel netwerk en subnet.
 
 - Evalueren of u de standaard route 0.0.0.0/Internet nodig hebt volgens de richt lijnen in het geval [van geforceerde tunneling](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md#about-forced-tunneling).
   - Zo ja, bijvoorbeeld een front-end-subnet en de standaard route blijven gebruiken.
@@ -602,9 +602,9 @@ In een door SQL beheerd exemplaar:
 
 - Implementeer [optionele standaard routes](../../virtual-network/virtual-networks-udr-overview.md#optional-default-routes) als u peering gebruikt of verbinding maakt met on-premises.
 
-- Door de [gebruiker gedefinieerde routes](../../virtual-network/virtual-networks-udr-overview.md#user-defined) implementeren als u al het verkeer in het VNet naar een virtueel netwerk apparaat moet verzenden voor pakket inspectie.
+- Door de [gebruiker gedefinieerde routes](../../virtual-network/virtual-networks-udr-overview.md#user-defined) implementeren als u al het verkeer in het virtuele netwerk naar een virtueel netwerk apparaat moet verzenden voor pakket inspectie.
 
-- [VNet-service-eind punten](vnet-service-endpoint-rule-overview.md) gebruiken voor beveiligde toegang tot PaaS-Services, zoals Azure Storage via het Azure-backbone-netwerk.
+- Gebruik [service-eind punten voor virtuele netwerken](vnet-service-endpoint-rule-overview.md) voor beveiligde toegang tot PaaS-Services, zoals Azure Storage via het Azure-backbone-netwerk.
 
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>Beveiligen tegen DDoS-aanvallen (Distributed Denial of service)
 
@@ -616,7 +616,7 @@ DDoS-aanvallen (Distributed Denial of service) zijn pogingen door een kwaadwille
 
 DDoS Protection wordt automatisch ingeschakeld als onderdeel van het Azure-platform. Het bevat permanente verkeers bewaking en real-time beperking van aanvallen op netwerk niveau op open bare eind punten.
 
-- Gebruik [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) voor het bewaken van open bare IP-adressen die zijn gekoppeld aan resources die zijn geïmplementeerd in VNets.
+- Gebruik [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md) voor het bewaken van open bare IP-adressen die zijn gekoppeld aan resources die in virtuele netwerken zijn geïmplementeerd.
 
 - Gebruik [Advanced Threat Protection voor Azure SQL database](threat-detection-overview.md) om DOS-aanvallen (Denial of service) te detecteren op data bases.
 
@@ -666,7 +666,7 @@ Het bijhouden van database gebeurtenissen helpt u bij het begrijpen van database
 **Aanbevolen procedures**:
 
 - Door [SQL database controle](../../azure-sql/database/auditing-overview.md) op de server of de [controle van beheerde exemplaren](../managed-instance/auditing-configure.md) te configureren om gebeurtenissen te controleren, worden alle bestaande en nieuw gemaakte data bases op die server gecontroleerd.
-- Standaard bevat het controle beleid alle acties (query's, opgeslagen procedures en geslaagde en mislukte aanmeldingen) voor de data bases, wat kan leiden tot grote hoeveel heden audit Logboeken. Het is raadzaam dat klanten [controle configureren voor verschillende soorten acties en actie groepen met behulp van Power shell](../../sql-database/sql-database-auditing.md#manage-auditing). Met deze configuratie kunt u het aantal gecontroleerde acties beheren en het risico op gebeurtenis verlies minimaliseren. Met de aangepaste controle configuratie kunnen klanten alleen de controle gegevens vastleggen die nodig zijn.
+- Standaard bevat het controle beleid alle acties (query's, opgeslagen procedures en geslaagde en mislukte aanmeldingen) voor de data bases, wat kan leiden tot grote hoeveel heden audit Logboeken. Het is raadzaam dat klanten [controle configureren voor verschillende soorten acties en actie groepen met behulp van Power shell](../../sql-database/sql-database-auditing.md#manage-auditing). Met deze configuratie kunt u het aantal gecontroleerde acties beheren en het risico op gebeurtenis verlies minimaliseren. Met aangepaste controle configuraties kunnen klanten alleen de controle gegevens vastleggen die nodig zijn.
 - Audit logboeken kunnen rechtstreeks worden gebruikt in de [Azure Portal](https://portal.azure.com/), of vanaf de opslag locatie die is geconfigureerd.
 
 > [!NOTE]
@@ -696,7 +696,7 @@ Beperk de toegang tot het opslag account ter ondersteuning van de schei ding van
 
 In deze sectie worden de verschillende aspecten en aanbevolen procedures voor het beheren van uw data bases-beveiligings postuur beschreven. Het bevat aanbevolen procedures om ervoor te zorgen dat uw data bases worden geconfigureerd om te voldoen aan de beveiligings normen, voor detectie en het classificeren en bijhouden van toegang tot mogelijk gevoelige gegevens in uw data bases.
 
-### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>Zorg ervoor dat de data base (s) zijn geconfigureerd om te voldoen aan de aanbevolen beveiligings procedures
+### <a name="ensure-that-the-databases-are-configured-to-meet-security-best-practices"></a>Zorg ervoor dat de data bases zijn geconfigureerd om te voldoen aan de aanbevolen procedures voor beveiliging
 
 Verbeter uw database beveiliging proactief door mogelijke beveiligings lekken in de Data Base op te sporen en te verhelpen.
 
@@ -728,7 +728,7 @@ Detecteer kolommen die mogelijk gevoelige gegevens bevatten. Wat wordt beschouwd
 - Gebruik [SQL-gegevens detectie en-classificatie](data-discovery-and-classification-overview.md) voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases.
   - Bekijk de classificatie aanbevelingen die zijn gemaakt door de geautomatiseerde detectie in het dash board voor SQL-gegevens detectie en-classificatie. Accepteer de relevante classificaties, zodat uw gevoelige gegevens permanent zijn gelabeld met classificatie labels.
   - Hand matig classificaties toevoegen voor aanvullende gevoelige gegevens velden die niet door het geautomatiseerde mechanisme zijn gedetecteerd.
-- Zie voor meer informatie de [classificatie van SQL-gegevens detectie &](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
+- Zie [SQL-gegevens detectie en-classificatie](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification)voor meer informatie.
 
 **Aanbevolen procedures**:
 
@@ -745,7 +745,7 @@ Bewaak wie gevoelige gegevens opent en query's vastlegt op gevoelige gegevens in
 **Implementeren**:
 
 - Gebruik de SQL-controle en de gegevens classificatie in combi natie.
-  - In uw [SQL database controle](../../azure-sql/database/auditing-overview.md) logboek kunt u de toegang tot gevoelige gegevens bijhouden. U kunt ook informatie weer geven zoals de gegevens die zijn geopend, evenals het gevoeligheids label. Zie [gegevens detectie & classificatie](data-discovery-and-classification-overview.md) en [controle van toegang tot gevoelige gegevens](data-discovery-and-classification-overview.md#audit-sensitive-data)voor meer informatie.
+  - In uw [SQL database controle](../../azure-sql/database/auditing-overview.md) logboek kunt u de toegang tot gevoelige gegevens bijhouden. U kunt ook informatie weer geven zoals de gegevens die zijn geopend, evenals het gevoeligheids label. Zie [gegevens detectie en-classificatie](data-discovery-and-classification-overview.md) en [toegang tot gevoelige gegevens controleren](data-discovery-and-classification-overview.md#audit-sensitive-data)voor meer informatie.
 
 **Aanbevolen procedures**:
 
@@ -755,7 +755,7 @@ Bewaak wie gevoelige gegevens opent en query's vastlegt op gevoelige gegevens in
 
 ### <a name="visualize-security-and-compliance-status"></a>Beveiligings-en nalevings status visualiseren
 
-Gebruik een systeem voor beveiligings beheer met geïntegreerde infra structuur dat de beveiligings postuur van uw Data Centers (inclusief SQL-data bases) versterkt. Bekijk een lijst met aanbevelingen met betrekking tot de beveiliging van uw data bases en de nalevings status.
+Gebruik een systeem voor beveiligings beheer met geïntegreerde infra structuur dat de beveiligings postuur van uw Data Centers (inclusief data bases in SQL Database) versterkt. Bekijk een lijst met aanbevelingen met betrekking tot de beveiliging van uw data bases en de nalevings status.
 
 **Implementeren**:
 
@@ -784,14 +784,14 @@ Vandaag, Azure SQL Database en SQL Managed instance bieden de volgende technieke
   - Hiermee staat u Azure-Services uit.
   - Alleen verkeer toestaan van het subnet met uw Azure-VM door een VNet-firewall regel in te stellen.
   - [Persoonlijke koppeling](../../private-link/private-endpoint-overview.md) gebruiken
-- Voor een SQL Managed instance wordt met behulp van privé-IP-toegang standaard de eerste gegevens exfiltration bezorgdheid over een Rogue-VM. Schakel de functie voor het delegeren van subnetten in een subnet in om automatisch het meest beperkende beleid in te stellen voor een subnet met SQL-beheerd exemplaar.
-- Het probleem van de Rogue-DBA is meer beschikbaar met een SQL Managed instance omdat het een groter surface area en de netwerk vereisten voor klanten zichtbaar zijn. De beste beperking hiervoor is het Toep assen van alle procedures in deze beveiligings handleiding om te voor komen dat het Rogue DBA-scenario in de eerste plaats (niet alleen voor gegevens exfiltration). Always Encrypted is een methode om gevoelige gegevens te beveiligen door deze te versleutelen en de sleutel niet toegankelijk te maken voor de DBA.
+- Voor SQL Managed instance wordt met behulp van privé-IP-toegang standaard de eerste gegevens exfiltration bezorgdheid over een Rogue-VM. Schakel de functie voor het delegeren van subnetten in een subnet in om automatisch het meest beperkende beleid in te stellen voor een subnet met SQL-beheerd exemplaar.
+- Het probleem van de Rogue-DBA is meer beschikbaar met SQL Managed instance omdat het een grotere surface area heeft en de netwerk vereisten voor klanten zichtbaar zijn. De beste beperking hiervoor is het Toep assen van alle procedures in deze beveiligings handleiding om te voor komen dat het Rogue DBA-scenario in de eerste plaats (niet alleen voor gegevens exfiltration). Always Encrypted is een methode om gevoelige gegevens te beveiligen door deze te versleutelen en de sleutel niet toegankelijk te maken voor de DBA.
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>Beveiligings aspecten van bedrijfs continuïteit en beschik baarheid
 
 De meeste beveiligings standaarden zijn van toepassing op de beschik baarheid van gegevens in het kader van operationele continuïteit, behaald door de implementatie van redundantie en failover om individuele storings punten te voor komen. Voor scenario's met nood gevallen is het een veelvoorkomende manier om back-ups van gegevens en logboek bestanden te maken.De volgende sectie bevat een overzicht van de mogelijkheden die zijn ingebouwd in Azure. Het bevat ook extra opties die kunnen worden geconfigureerd om te voldoen aan specifieke behoeften:
 
-- Azure biedt ingebouwde, hoge Beschik baarheid [met SQL Database & SQL Managed instance](high-availability-sla.md)
+- Azure biedt ingebouwde, hoge Beschik baarheid [met SQL database en SQL Managed instance](high-availability-sla.md)
 
 - De laag Bedrijfskritiek bevat failover-groepen, zones voor meerdere Beschik baarheid, volledige en differentiële logboek back-ups en herstel naar een bepaald tijdstip, back-ups die standaard zijn ingeschakeld:  
   - [Redundante configuratie met hoge Beschik baarheid-zone](high-availability-sla.md#zone-redundant-configuration)

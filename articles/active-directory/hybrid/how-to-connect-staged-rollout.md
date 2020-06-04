@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 16b26d63c11bce073c544848db4a9cc9987efd77
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221278"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338421"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migreren naar Cloud authenticatie met behulp van gefaseerde implementatie (preview-versie)
 
@@ -82,8 +82,6 @@ De volgende scenario's worden niet ondersteund voor gefaseerde implementatie:
 
 - Wanneer u voor het eerst een beveiligings groep voor gefaseerde implementatie toevoegt, bent u beperkt tot 200 gebruikers om een UX-time-out te voor komen. Nadat u de groep hebt toegevoegd, kunt u, indien nodig, meer gebruikers toevoegen.
 
->[!NOTE]
-> Omdat getenantde eind punten geen aanmeldings hints verzenden, worden ze niet ondersteund voor gefaseerde implementatie. 
 
 ## <a name="get-started-with-staged-rollout"></a>Aan de slag met gefaseerde implementatie
 

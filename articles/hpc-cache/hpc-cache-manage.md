@@ -4,14 +4,14 @@ description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Por
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 34f29eda703cb019cca3e9ca293e31288c6e151b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537947"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343661"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
 
@@ -30,6 +30,10 @@ Met de knoppen boven aan de pagina kunt u de cache beheren:
 * [**Verwijderen**](#delete-the-cache) : de cache wordt definitief vernietigd
 
 Meer informatie over deze opties vindt u hieronder.
+
+Klik op de onderstaande afbeelding om een [video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) te bekijken waarin cache beheer taken worden getoond.
+
+[![Video miniatuur: Azure HPC-cache: beheren (Klik hier om naar de video pagina te bezoeken)](media/video5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>De cache stoppen
 

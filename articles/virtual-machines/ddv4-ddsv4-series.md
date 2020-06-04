@@ -8,21 +8,18 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 23644736370d4a875d1f9c0e65f3097fcffa07f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263242"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338699"
 ---
-# <a name="ddv4-and-ddsv4-series"></a>Ddv4 en Ddsv4-serie
+# <a name="ddv4-and-ddsv4-series"></a>Ddv4- en Ddsv4-serie
 
 De Ddv4-en Ddsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Dv3/Dsv3-](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) grootten met [Gen2-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
 Gebruiks voorbeelden van de D-serie zijn onder andere zakelijke toepassingen, relationele data bases, caching in het geheugen en analyse.
-
-> [!IMPORTANT]
-> Als u een nieuwe virtuele machine implementeert met behulp van de Ddv4-of Ddsv4-serie en een Linux-installatie kopie wilt gebruiken, moet u RHEL 8. x, CentOS 8. x of Oracle 7. x of hoger gebruiken. Als u RHEL 7. x, CentOS 7. x of Orcale 6. x kiest, wordt er een fout in de kernel voor de kernelmodus weer. Micro soft implementeert een oplossing actief. Alleen RHEL, CentOS en Oracle worden beïnvloed. 
 
 ## <a name="ddv4-series"></a>Ddv4-serie
 

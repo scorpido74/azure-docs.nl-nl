@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127681"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342626"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -50,13 +50,16 @@ Kan de geschiktheid voor een of meer netwerk adapters niet bepalen vanwege een i
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Linux-Vm's zijn ' voorwaardelijk gereed '
 
-Server Assessment markeert Linux Vm's als ' voorwaardelijk gereed ' vanwege een bekende onderbreking in Server evaluatie.
+In het geval van VMware-en Hyper-V-Vm's, markeert server Assessment Linux-Vm's als ' conditioneel Ready ' vanwege een bekende tussen ruimte in Server evaluatie. 
 
 - De tussen ruimte voor komt dat de secundaire versie van het Linux-besturings systeem dat is geïnstalleerd op de on-premises Vm's kan worden gedetecteerd.
-- Voor RHEL 6,10 wordt momenteel alleen RHEL 6 als de versie van het besturings systeem gedetecteerd.
+- Voor RHEL 6,10 wordt momenteel alleen RHEL 6 als de versie van het besturings systeem gedetecteerd. Dit komt doordat de vCenter Server ar de Hyper-V-host niet de kernel-versie van de Linux-VM-besturings systemen bevat.
 -  Omdat Azure alleen specifieke versies van Linux afschrijft, zijn de virtuele Linux-machines momenteel gemarkeerd als voorwaardelijk gereed in Server evaluatie.
 - U kunt bepalen of het Linux-besturings systeem dat wordt uitgevoerd op de on-premises VM, wordt goedgekeurd in azure door [Azure Linux-ondersteuning](https://aka.ms/migrate/selfhost/azureendorseddistros)te controleren.
 -  Nadat u de geviseerde distributie hebt gecontroleerd, kunt u deze waarschuwing negeren.
+
+Dit gat kan worden opgelost door [toepassings detectie](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) in te scha kelen op de virtuele VMware-machines. Server assessment maakt gebruik van het besturings systeem dat is gedetecteerd van de virtuele machine met behulp van de gast referenties. Deze besturingssysteem gegevens identificeren de juiste besturingssysteem gegevens in het geval van zowel Windows-als Linux-Vm's.
+
 
 ## <a name="azure-skus-bigger-than-on-premises"></a>Azure-Sku's die groter zijn dan on-premises
 
@@ -102,6 +105,8 @@ Azure Migrate server-evaluatie beschouwt momenteel alleen de licentie kosten van
 
 Met Server Assessment worden doorlopend prestatiegegevens van on-premises machines verzameld, die vervolgens worden gebruikt om SKU's voor VM en schijf aan te bevelen in Azure. [Meer informatie over het](concepts-assessment-calculation.md#calculate-sizing-performance-based) verzamelen van gegevens op basis van prestaties.
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Waarom toont mijn evaluatie een waarschuwing dat deze is gemaakt met een ongeldige combintion van gereserveerde instanties, VM-uptime en korting (%)?
+Wanneer u gereserveerde instanties selecteert, wordt de korting (%) de eigenschappen van de uptime van de VM zijn niet van toepassing. Als uw evaluatie is gemaakt met een ongeldige combi natie van deze eigenschappen, worden de knoppen bewerken en opnieuw berekenen uitgeschakeld. Maak een nieuwe evaluatie. [Meer informatie](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Afhankelijkheids visualisatie in Azure Government
 
@@ -113,7 +118,7 @@ Nadat u de afhankelijkheids visualisatie agenten hebt geïnstalleerd op on-premi
 
 Voor Windows-Vm's:
 1. Start MMA in het configuratie scherm.
-2. Controleer > in de **Eigenschappen van micro soft Monitoring Agent****Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
+2. Controleer in de **Eigenschappen van micro soft Monitoring Agent**  >  **Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
 3. Als de status niet groen is, probeert u de werk ruimte te verwijderen en toe te voegen aan MMA.
 
     ![MMA-status](./media/troubleshoot-assessment/mma-properties.png)
@@ -165,6 +170,15 @@ Verzamel logboeken voor netwerk verkeer als volgt:
    - Klik in Chrome met de rechter muisknop op een wille keurige plaats in het console logboek. Selecteer **Opslaan als**, om het logboek te exporteren en uit te voeren.
    - Klik in micro soft Edge of Internet Explorer met de rechter muisknop op de fouten en selecteer **Alles kopiëren**.
 7. Ontwikkelhulpprogramma's sluiten.
+
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>Waar worden de gegevens van het besturings systeem in mijn beoordeling gedetecteerd?
+
+- Voor VMware-Vm's zijn standaard de gegevens van het besturings systeem die door de vCenter worden verschaft. 
+   - Als toepassings detectie is ingeschakeld voor VMware Linux-Vm's, worden de details van het besturings systeem opgehaald van de gast-VM. Als u de details van het besturings systeem in de beoordeling wilt controleren, gaat u naar de weer gave gedetecteerde servers en klikt u op de waarde in de kolom besturings systeem. In de tekst die wordt weer gegeven, kunt u zien of de besturingssysteem gegevens die u ziet, worden verzameld van de vCenter-Server of van de gast-VM met behulp van de VM-referenties. 
+   - Voor Windows-Vm's worden de details van het besturings systeem altijd opgehaald uit de vCenter Server.
+- Voor virtuele Hyper-V-machines worden de gegevens van het besturings systeem verzameld vanaf de Hyper-V-host
+- Voor fysieke servers wordt deze opgehaald van de server.
 
 ## <a name="next-steps"></a>Volgende stappen
 

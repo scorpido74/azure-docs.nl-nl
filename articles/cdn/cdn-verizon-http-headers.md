@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
-ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253557"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343214"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-specifieke HTTP-headers voor de engine van Azure CDN-regels
 
 Wanneer een HTTP-aanvraag wordt verzonden naar de bron server, kan de POP-server (Point-of-Presence) een of meer gereserveerde headers (of proxy Special headers) toevoegen aan de POP voor **Azure CDN Premium van Verizon** -producten. Deze headers zijn naast de standaard-doorstuur headers ontvangen. Zie [aanvraag velden](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields)voor informatie over standaard aanvraag headers.
 
-Als u wilt voor komen dat een van deze gereserveerde headers wordt toegevoegd aan de POP-aanvraag Azure CDN (Content Delivery Network) op de bron server, moet u een regel maken met de [functie speciale headers proxy](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) in de regel engine. In deze regel sluit u de koptekst die u wilt verwijderen uit in de standaard lijst met kopteksten in het veld headers. Als u de [functie debug cache response headers](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers)hebt ingeschakeld, moet u de vereiste `X-EC-Debug` headers toevoegen. 
+Als u wilt voor komen dat een van deze gereserveerde headers wordt toegevoegd aan de POP-aanvraag Azure CDN (Content Delivery Network) op de bron server, moet u een regel maken met de [functie speciale headers proxy](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) in de regel engine. In deze regel sluit u de koptekst die u wilt verwijderen uit in de standaard lijst met kopteksten in het veld headers. Als u de [functie debug cache response headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm)hebt ingeschakeld, moet u de vereiste headers toevoegen `X-EC-Debug` . 
 
-Als u bijvoorbeeld de `Via` header wilt verwijderen, moet het veld headers van de regel de volgende lijst met headers bevatten: *x-doorgestuurd-voor, x-doorgestuurde proto, x-host, x-Midgress, x-gateway-lijst, x-EG-naam, host*. 
+Als u bijvoorbeeld de header wilt verwijderen `Via` , moet het veld headers van de regel de volgende lijst met headers bevatten: *x-doorgestuurd-voor, x-doorgestuurde proto, x-host, x-Midgress, x-gateway-lijst, x-EG-naam, host*. 
 
 ![Proxy-regel voor speciale headers](./media/cdn-http-headers/cdn-proxy-special-header-rule.png)
 
@@ -42,7 +42,7 @@ X-host | Geeft de hostnaam van de aanvraag aan. | cdn.mydomain.com
 X-Midgress | Geeft aan of de aanvraag via een extra CDN-server via een proxy is verzonden. Een voor beeld: een POP server-to-Origin Shield-Server of een POP-server-naar-ADN-Gateway server. <br />Deze header wordt alleen toegevoegd aan de aanvraag wanneer midgress verkeer plaatsvindt. In dit geval wordt de header ingesteld op 1 om aan te geven dat de aanvraag via een extra CDN-server via een proxy is verzonden.| 1
 [Host](#host-request-header) | Identificeert de host en de poort waarop de aangevraagde inhoud kan worden gevonden. | marketing.mydomain.com:80
 [X-gateway-lijst](#x-gateway-list-request-header) | ADN: identificeert de failoverlijst van ADN Gateway servers die zijn toegewezen aan de oorsprong van een klant. <br />Schild van oorsprong: geeft de set van originele afschermings servers aan die zijn toegewezen aan de oorsprong van een klant. | `icn1,hhp1,hnd1`
-X-EG-_&lt;naam&gt;_ | Aanvraag headers die beginnen met *x-EG* (bijvoorbeeld x-EG-tag, [x-EG-debug](cdn-http-debug-headers.md)) zijn gereserveerd voor gebruik door het CDN.| WAF-productie
+X-EG-_ &lt; naam &gt; _ | Aanvraag headers die beginnen met *x-EG* (bijvoorbeeld x-EG-tag, [x-EG-debug](cdn-http-debug-headers.md)) zijn gereserveerd voor gebruik door het CDN.| WAF-productie
 
 ## <a name="via-request-header"></a>Via aanvraag header
 De indeling waarmee de `Via` aanvraag header een pop-server identificeert, wordt opgegeven met de volgende syntaxis:
@@ -73,8 +73,8 @@ De POP-servers overschrijven de `Host` header wanneer aan de volgende voor waard
 - De bron voor de aangevraagde inhoud is een server van de oorsprong van de klant.
 - De optie voor de HTTP-host-header van de bijbehorende klant is niet leeg.
 
-De `Host` aanvraag header wordt overschreven om de waarde weer te geven die is gedefinieerd in de optie http-Host-header.
-Als de optie voor de HTTP-host-header van de klant is ingesteld op `Host` leeg, wordt de aanvraag header die wordt verzonden door de aanvrager doorgestuurd naar de oorspronkelijke server van de klant.
+De `Host` aanvraag header wordt overschreven om de waarde weer te geven die is gedefinieerd in de optie HTTP-host-header.
+Als de optie voor de HTTP-host-header van de klant is ingesteld op leeg, wordt de `Host` aanvraag header die wordt verzonden door de aanvrager doorgestuurd naar de oorspronkelijke server van de klant.
 
 ## <a name="x-gateway-list-request-header"></a>X-gateway-aanvraag header
 Een POP-server voegt de aanvraag ' X-gateway-List ' toe of overschreven wanneer aan een van de volgende voor waarden wordt voldaan:

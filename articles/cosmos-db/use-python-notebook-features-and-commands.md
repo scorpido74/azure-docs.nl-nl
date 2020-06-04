@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: a16b95249562db98d9382f8ca56bf4a27beba2fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d455490f6eed0f928dc69c8f51f8d335a1dfe145
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743493"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321322"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Ingebouwde notebook opdrachten en-functies gebruiken in Azure Cosmos DB python-notebooks (preview)
 
@@ -23,7 +23,7 @@ Nadat u de ondersteuning voor notebooks voor uw Azure Cosmos-accounts hebt inges
 In een nieuwe code-cel, voegt u de volgende code in en voert u deze uit, waarbij u vervangt ``PackageToBeInstalled`` door het gewenste python-pakket.
 ```python
 import sys
-!{sys.executable} -m pip install PackageToBeInstalled –user
+!{sys.executable} -m pip install PackageToBeInstalled --user
 ```
 Dit pakket is beschikbaar voor gebruik vanuit elk notebook in de Azure Cosmos-account werkruimte. 
 

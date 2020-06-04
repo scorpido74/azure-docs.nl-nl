@@ -1,7 +1,7 @@
 ---
 title: Transparent Data Encryption
-titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse
-description: Een overzicht van transparante gegevens versleuteling voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse. In het document worden de voor delen en de opties voor de configuratie beschreven, waaronder door de service beheerde transparante gegevens versleuteling en Bring Your Own Key.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
+description: Een overzicht van transparante gegevens versleuteling voor Azure SQL Database, Azure SQL Managed instance en Azure Synapse Analytics. In het document worden de voor delen en de opties voor de configuratie beschreven, waaronder door de service beheerde transparante gegevens versleuteling en Bring Your Own Key.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,24 +12,24 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 04/10/2020
-ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4ea4ad98fcea022a22196e359e24f56cb3d0f4d8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188280"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321373"
 ---
-# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>Transparent Data Encryption for SQL Database, SQL Managed instance & Azure Synapse
+# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparante gegevens versleuteling voor SQL Database, SQL Managed instance en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) helpt bij het beschermen van Azure SQL database, Azure SQL Managed instance en Synapse SQL in azure Synapse Analytics tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle zojuist geïmplementeerde data bases en moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, Azure SQL Managed instance of Azure Synapse.
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) helpt Azure SQL database, Azure SQL Managed instance en Azure Synapse Analytics te beschermen tegen de dreiging van schadelijke offline activiteiten door het versleutelen van gegevens in rust. Het voert in realtime versleuteling en ontsleuteling van de database, bijbehorende back-ups en transactielogboekbestanden 'at-rest' uit, zonder dat er wijzigingen in de toepassing moeten worden aangebracht. TDE is standaard ingeschakeld voor alle zojuist geïmplementeerde data bases en moet hand matig worden ingeschakeld voor oudere data bases van Azure SQL Database, Azure SQL Managed instance of Azure Synapse Analytics.
 
 TDE voert realtime-I/O-versleuteling en ontsleuteling van de gegevens op pagina niveau uit. Elke pagina wordt ontsleuteld wanneer deze wordt ingelezen in het geheugen en vervolgens versleuteld voordat deze naar een schijf wordt geschreven. TDE versleutelt de opslag van een volledige data base met behulp van een symmetrische sleutel die de database versleutelings sleutel (DEK) wordt genoemd. Bij het opstarten van de data base wordt de versleutelde DEK ontsleuteld en vervolgens gebruikt voor ontsleuteling en opnieuw versleutelen van de database bestanden in het proces van de SQL Server data base-engine. DEK wordt beveiligd door de TDE-Protector. TDE Protector is een door een service beheerd certificaat (door de service beheerde transparante gegevens versleuteling) of een asymmetrische sleutel die is opgeslagen in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (door de klant beheerde transparante gegevens versleuteling).
 
 Voor Azure SQL Database en Azure Synapse wordt de TDE-Protector ingesteld op [Server](logical-servers.md) niveau en overgenomen door alle data bases die aan die server zijn gekoppeld. Voor Azure SQL Managed instance (BYOK-functie in Preview) wordt de TDE-Protector ingesteld op het niveau van de instantie en overgenomen door alle versleutelde data bases op dat exemplaar. De term *Server* verwijst naar de server en het exemplaar in dit document, tenzij anders aangegeven.
 
 > [!IMPORTANT]
-> Alle nieuw gemaakte data bases in SQL Database en Azure Synapse worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande beheerde exemplaar databases die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. Beheerde exemplaar databases die zijn gemaakt via Restore, nemen de versleutelings status over van de bron.
+> Alle nieuw gemaakte data bases in SQL Database en Azure Synapse worden standaard versleuteld met behulp van door de service beheerde transparante gegevens versleuteling. Bestaande SQL-data bases die zijn gemaakt vóór 2017 en SQL-data bases die zijn gemaakt via Restore, geo-replicatie en database kopie, worden niet standaard versleuteld. Bestaande data bases van SQL Managed instances die vóór februari 2019 zijn gemaakt, worden niet standaard versleuteld. SQL Managed instance-data bases die zijn gemaakt via herstellen, nemen versleutelings status van de bron over.
 
 > [!NOTE]
 > TDE kan niet worden gebruikt voor het versleutelen van de **hoofd** database in SQL database.  De **hoofd** database bevat objecten die nodig zijn om de TDe-bewerkingen uit te voeren op de gebruikers databases.
@@ -67,11 +67,11 @@ Wanneer u een met TDE beveiligde data base exporteert, wordt de geëxporteerde i
 
 Als het BACPAC-bestand bijvoorbeeld wordt geëxporteerd uit een SQL Server-exemplaar, wordt de geïmporteerde inhoud van de nieuwe Data Base niet automatisch versleuteld. Als het BACPAC-bestand wordt geïmporteerd in een SQL Server-exemplaar, wordt de nieuwe data base ook niet automatisch versleuteld.
 
-De enige uitzonde ring is wanneer u exporteert naar en van een SQL Database. TDE wordt ingeschakeld in de nieuwe Data Base, maar het BACPAC-bestand zelf is nog steeds niet versleuteld.
+De enige uitzonde ring is wanneer u een Data Base exporteert van en naar SQL Database. TDE is ingeschakeld voor de nieuwe Data Base, maar het BACPAC-bestand zelf is nog steeds niet versleuteld.
 
 ## <a name="manage-transparent-data-encryption"></a>Transparante gegevens versleuteling beheren
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 TDE beheren in de Azure Portal.
 

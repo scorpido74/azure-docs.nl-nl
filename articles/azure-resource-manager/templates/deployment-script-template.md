@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: jgao
-ms.openlocfilehash: e3f3301ac78480c4d8ebbf909bafcefa025ff395
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168570"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344710"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -131,7 +131,7 @@ De volgende JSON is een voor beeld.  Het meest recente sjabloon schema kunt u [h
 ```
 
 > [!NOTE]
-> Het voor beeld is voor demonstratie doeleinden.  **scriptContent** en **primaryScriptUris** kunnen niet worden gecombineerd in een sjabloon.
+> Het voor beeld is voor demonstratie doeleinden.  **scriptContent** en **primaryScriptUri** kunnen niet worden gecombineerd in een sjabloon.
 
 Details van eigenschaps waarde:
 

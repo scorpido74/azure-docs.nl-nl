@@ -1,6 +1,6 @@
 ---
 title: SQL Data Sync bewaken met Azure Monitor-logboeken
-description: Meer informatie over het bewaken van SQL Data Sync met behulp van Azure Monitor-logboeken
+description: Meer informatie over het bewaken van SQL Data Sync met behulp van Azure Monitor-Logboeken.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188801"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343231"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL Data Sync bewaken met Azure Monitor-logboeken 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Als u het SQL Data Sync-activiteiten logboek wilt controleren en fouten en waarschuwingen wilt detecteren, moet u SQL Data Sync eerder in de Azure Portal controleren of Power shell of de REST API gebruiken. Volg de stappen in dit artikel voor het configureren van een aangepaste oplossing voor het verbeteren van de bewakings ervaring voor gegevens synchronisatie. U kunt deze oplossing aanpassen aan uw scenario.
 
@@ -100,7 +99,7 @@ Zie [mijn eerste Power shell-runbook](https://docs.microsoft.com/azure/automatio
 
     1.  Azure-gegevens.
 
-    2.  Groeps gegevens synchroniseren.
+    2.  groeps gegevens synchroniseren.
 
     3.  Azure Monitor logboek gegevens. Deze informatie zoeken in Azure Portal | Instellingen | Verbonden bronnen. Zie voor meer informatie over het verzenden van gegevens naar Azure Monitor [-Logboeken gegevens verzenden naar Azure monitor logboeken met de http data collector API (preview)](../../azure-monitor/platform/data-collector-api.md).
 

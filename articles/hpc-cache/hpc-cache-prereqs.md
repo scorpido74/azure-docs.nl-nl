@@ -4,18 +4,34 @@ description: Vereisten voor het gebruik van Azure HPC cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106505"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343615"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
 Voordat u de Azure Portal gebruikt om een nieuwe Azure HPC-cache te maken, moet u ervoor zorgen dat uw omgeving aan deze vereisten voldoet.
+
+## <a name="video-overviews"></a>Video overzichten
+
+Bekijk deze Video's voor een snel overzicht van de onderdelen van het systeem en wat ze nodig hebben om samen te werken.
+
+(Klik op de video afbeelding of op de koppeling om te kijken.)
+
+* [Hoe werkt het](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) ? in dit artikel wordt uitgelegd hoe Azure HPC cache communiceert met opslag en clients
+
+  [![Video miniatuur afbeelding: Azure HPC cache: Hoe werkt het? (Klik hier om de video pagina te bezoeken)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [Vereisten: hierin](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) worden de vereisten voor NAS-opslag, Azure Blob-opslag, netwerk toegang en client toegang beschreven
+
+  [![afbeelding van video miniatuur: Azure HPC-cache: vereisten (Klik om de video-pagina te bezoeken)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+Lees de rest van dit artikel voor specifieke aanbevelingen.
 
 ## <a name="azure-subscription"></a>Azure-abonnement
 
@@ -111,9 +127,9 @@ Meer informatie vindt u in het oplossen van problemen [met NAS-configuratie en N
     rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
     ```
 
-  Zorg ervoor dat alle poorten die door de ``rpcinfo`` query zijn geretourneerd, onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
+  Zorg ervoor dat alle poorten die door de query zijn geretourneerd, ``rpcinfo`` onbeperkt verkeer van het subnet van de Azure HPC-cache toestaan.
 
-  * Als u de `rpcinfo` opdracht niet kunt gebruiken, zorg er dan voor dat deze veelgebruikte poorten binnenkomend en uitgaand verkeer toestaan:
+  * Als u de opdracht niet kunt gebruiken `rpcinfo` , zorg er dan voor dat deze veelgebruikte poorten binnenkomend en uitgaand verkeer toestaan:
 
     | Protocol | Poort  | Service  |
     |----------|-------|----------|
@@ -136,7 +152,7 @@ Meer informatie vindt u in het oplossen van problemen [met NAS-configuratie en N
 
 * **Hoofd toegang** (lezen/schrijven): de cache maakt verbinding met het back-end-systeem als gebruiker-id 0. Controleer deze instellingen op uw opslag systeem:
   
-  * Inschakelen `no_root_squash`. Deze optie zorgt ervoor dat de externe hoofd gebruiker toegang kan krijgen tot bestanden die eigendom zijn van de hoofdmap.
+  * Inschakelen `no_root_squash` . Deze optie zorgt ervoor dat de externe hoofd gebruiker toegang kan krijgen tot bestanden die eigendom zijn van de hoofdmap.
 
   * Controleer het export beleid om er zeker van te zijn dat er geen beperkingen zijn voor toegang tot de hoofdmap vanuit het subnet van de cache.
 

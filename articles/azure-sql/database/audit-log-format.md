@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/03/2020
+ms.openlocfilehash: 760720d133dc382ba7af4aa5f0519d4d918e93cd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190311"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322206"
 ---
 # <a name="sql-database-audit-log-format"></a>Indeling van SQL Database audit logboek
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Met [Azure SQL database controle](auditing-overview.md) worden database gebeurtenissen bijgehouden en naar een audit logboek in uw Azure Storage-account geschreven, of verzonden naar Event Hub of log Analytics voor downstream-verwerking en-analyse.
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b8d47d1036473af1b367cc0266aae3ea1bceeada
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584095"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343928"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Gebruikers maken in Azure Database for PostgreSQL-grootschalige (Citus)
 
@@ -28,23 +28,23 @@ De PostgreSQL-engine gebruikt [rollen](https://www.postgresql.org/docs/current/s
 * `postgres`
 * `citus`
 
-Omdat grootschalige een beheerde PaaS-service is, kan alleen micro soft zich aanmelden `postgres` met de rol van super gebruiker. Voor beperkte beheerders toegang biedt grootschalige de `citus` rol.
+Omdat grootschalige een beheerde PaaS-service is, kan alleen micro soft zich aanmelden met de `postgres` rol van super gebruiker. Voor beperkte beheerders toegang biedt grootschalige de `citus` rol.
 
 Machtigingen voor de `citus` rol:
 
 * Lees alle configuratie variabelen, zelfs variabelen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
-* Lees alles over\_alle\_ \* pagina's met statistieken en gebruik verschillende,, zelfs weer gaven of uitbrei dingen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
+* Lees alles over alle pagina's \_ \_ \* met statistieken en gebruik verschillende,, zelfs weer gaven of uitbrei dingen die normaal gesp roken alleen zichtbaar zijn voor supergebruikers.
 * Voer bewakings functies uit die toegangs vergrendelingen kunnen hebben voor tabellen, mogelijk gedurende een lange periode.
-* [Maak postgresql-extensies](concepts-hyperscale-extensions.md) (omdat de rol lid is van `azure_pg_admin`).
+* [Maak postgresql-extensies](concepts-hyperscale-extensions.md) (omdat de rol lid is van `azure_pg_admin` ).
 
-Met name voor `citus` de rol gelden enkele beperkingen:
+Met name voor de `citus` rol gelden enkele beperkingen:
 
 * Kan geen rollen maken
 * Kan geen data bases maken
 
 ## <a name="how-to-create-additional-user-roles"></a>Aanvullende gebruikers rollen maken
 
-Zoals vermeld, heeft `citus` het beheerders account geen toestemming om extra gebruikers te maken. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
+Zoals vermeld, heeft het `citus` beheerders account geen toestemming om extra gebruikers te maken. Gebruik de Azure Portal-interface om een gebruiker toe te voegen.
 
 1. Ga naar de pagina **rollen** voor uw grootschalige-Server groep en klik op **+ toevoegen**:
 
@@ -54,28 +54,23 @@ Zoals vermeld, heeft `citus` het beheerders account geen toestemming om extra ge
 
    ![Rol toevoegen](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
-De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten. Rollen die zijn gemaakt via de Azure Portal `LOGIN` hebben het kenmerk, wat betekent dat ze echte gebruikers zijn die zich kunnen aanmelden bij de data base.
+De gebruiker wordt gemaakt op het coördinator knooppunt van de Server groep en door gegeven aan alle worker-knoop punten. Rollen die zijn gemaakt via de Azure Portal hebben het `LOGIN` kenmerk, wat betekent dat ze echte gebruikers zijn die zich kunnen aanmelden bij de data base.
 
 ## <a name="how-to-modify-privileges-for-user-role"></a>Bevoegdheden voor een gebruikersrol wijzigen
 
 Nieuwe gebruikers rollen worden meestal gebruikt om toegang tot data bases te bieden met beperkte bevoegdheden. Als u gebruikers bevoegdheden wilt wijzigen, gebruikt u de standaard PostgreSQL-opdrachten met een hulp programma zoals PgAdmin of psql. (Zie [verbinding maken met psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) in de grootschalige (Citus) Quick Start.)
 
-Als u bijvoorbeeld het volgende `db_user` wilt toestaan `mytable`, verleent u de machtiging:
+Als u bijvoorbeeld het volgende wilt toestaan `db_user` `mytable` , verleent u de machtiging:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Subsidies die voor het hele systeem zijn (bijvoorbeeld voor alle tabellen in een schema), moeten op elk datum knooppunt worden uitgevoerd.  Gebruik de `run_command_on_workers()` Help-functie:
+Met grootschalige (Citus) worden GRANT-instructies met één tabel via het hele cluster door gegeven en toegepast op alle worker-knoop punten. Daarnaast worden er subsidies voor het hele systeem door gegeven (bijvoorbeeld voor alle tabellen in een schema):
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Een gebruikersrol verwijderen of het wacht woord wijzigen

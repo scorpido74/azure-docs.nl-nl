@@ -10,40 +10,39 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/14/2020
+ms.date: 6/2/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9ea1caff5a0aba99bcd0d21b97650d075b830d2a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 89344c38c719a06d8241ec34136a75c96de9f901
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656388"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322869"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
 
 ## <a name="may-2020-guest-os"></a>Mei 2020-gast besturingssysteem
->[!NOTE]
->Het besturings systeem van april gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem van april gast. Deze lijst is onderhevig aan wijzigingen. "
+
 
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  2,98, 3,85, 4,78  |  12 mei 2020  |
-|  Rel 20-05   |  [4556813]  |  Meest recente cumulatieve update (LCU)   |  5,43  |  12 mei 2020  |
-|  Rel 20-05   |  [4551853]  |  Meest recente cumulatieve update (LCU)   |  6,19  |  12 mei 2020  |
-|  Rel 20-05   |  [4552940]  |  Maandelijks samen vouwen   |  2,98  |  12 mei 2020  |
-|  Rel 20-05   |  [4556836]  |  Maandelijks samen vouwen   |  2,98  |  12 mei 2020  |
-|  Rel 20-05   |  [4555449]  |  Onderhouds stack-update   |  2,98  |  12 mei 2020  |
-|  Rel 20-05   |  [4552920]  |  Maandelijks samen vouwen   |  2,98  |  12 mei 2020  |
-|  Rel 20-05   |  [4552979]  |  Maandelijks samen vouwen   |  3,85  |  12 mei 2020  |
-|  Rel 20-05   |  [4556840]  |  Maandelijks samen vouwen   |  3,85  |  12 mei 2020  |
-|  Rel 20-05   |  [4552947]  |  Maandelijks samen vouwen   |  3,85  |  12 mei 2020  |
-|  Rel 20-05   |  [4552982]  |  Maandelijks samen vouwen   |  3,85  |  12 mei 2020  |
-|  Rel 20-05   |  [4552946]  |  Maandelijks samen vouwen   |  4,78  |  12 mei 2020  |
-|  Rel 20-05   |  [4556846]  |  Maandelijks samen vouwen   |  4,78  |  12 mei 2020  |
-|  Rel 20-05   |  [4550994]  |  Onderhouds stack-update   |  5,43  |  Apr 14, 2020  |
-|  Rel 20-05   |  [4552924]  |  Maandelijks samen vouwen   |  6,19  |  12 mei 2020  |
-|  Rel 20-05   |  [4549947]  |  Onderhouds stack-update   |  6,19  |  Apr 14, 2020  |
+|  Rel 20-05   |  [4556798]  |  Internet Explorer   |  [2,98], [3,85], [4,78]  |  12 mei 2020  |
+|  Rel 20-05   |  [4556813]  |  Meest recente cumulatieve update (LCU)   |  [5,43]  |  12 mei 2020  |
+|  Rel 20-05   |  [4551853]  |  Meest recente cumulatieve update (LCU)   |  [6,19]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552940]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05   |  [4556836]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05   |  [4555449]  |  Onderhouds stack-update   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552920]  |  Maandelijks samen vouwen   |  [2,98]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552979]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05   |  [4556840]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552947]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552982]  |  Maandelijks samen vouwen   |  [3,85]  |  12 mei 2020  |
+|  Rel 20-05   |  [4552946]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
+|  Rel 20-05   |  [4556846]  |  Maandelijks samen vouwen   |  [4,78]  |  12 mei 2020  |
+|  Rel 20-05   |  [4550994]  |  Onderhouds stack-update   |  [5,43]  |  Apr 14, 2020  |
+|  Rel 20-05   |  [4552924]  |  Maandelijks samen vouwen   |  [6,19]  |  12 mei 2020  |
+|  Rel 20-05   |  [4549947]  |  Onderhouds stack-update   |  [6,19]  |  Apr 14, 2020  |
 
 
 [4556798]: https://support.microsoft.com/kb/4556798
@@ -62,7 +61,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4550994]: https://support.microsoft.com/kb/4550994
 [4552924]: https://support.microsoft.com/kb/4552924
 [4549947]: https://support.microsoft.com/kb/4549947
-
+[2,98]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,85]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,43]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,19]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 ## <a name="april-2020-guest-os"></a>April 2020-gast besturingssysteem
 

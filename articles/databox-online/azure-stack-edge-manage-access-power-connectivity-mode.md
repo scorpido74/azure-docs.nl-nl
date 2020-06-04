@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569613"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339719"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>De toegang, de kracht en de connectiviteits modus voor uw Azure Stack Edge beheren
 
@@ -66,7 +66,7 @@ Bij het genereren van de activerings sleutel voor het Azure Stack edge-apparaat 
 -  Een share maken met een gekoppeld opslag account.
 -  Het maken van een gebruiker die toegang heeft tot de shares op het apparaat.
 
-U moet `User` toegang hebben tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects`. U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects`. Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack edge-apparaat, het maken van een gebruiker, de configuratie van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat niet uitgevoerd.
+U moet toegang hebben `User` tot Active Directory Tenant als u dit moet kunnen doen `Read all directory objects` . U kunt geen gast gebruiker zijn omdat ze geen machtigingen hebben voor `Read all directory objects` . Als u een gast bent, worden de bewerkingen, zoals het genereren van een activerings sleutel, het maken van een share op uw Azure Stack edge-apparaat, het maken van een gebruiker, de configuratie van de Edge Compute-functie, het opnieuw instellen van het wacht woord voor het apparaat niet uitgevoerd.
 
 Zie [Microsoft Graph permissions Reference](https://docs.microsoft.com/graph/permissions-reference)(Engelstalig) voor meer informatie over het verlenen van toegang aan gebruikers om de API te Microsoft Graph.
 
@@ -80,7 +80,7 @@ U hoeft geen toegangs machtigingen voor het abonnements niveau te verlenen zodat
 
 Voordat u probeert een resource te maken, moet u ervoor zorgen dat de resource provider is geregistreerd in het abonnement. Als de resource provider niet is geregistreerd, moet u ervoor zorgen dat de gebruiker die de nieuwe resource maakt, voldoende rechten heeft om de vereiste resource provider te registreren op het abonnements niveau. Als u dit nog niet hebt gedaan, ziet u de volgende fout:
 
-*\<De abonnements naam> heeft geen machtigingen voor het registreren van de resource provider (s): micro soft. DataBoxEdge.*
+*Het abonnement \<Subscription name> heeft geen machtigingen voor het registreren van de resource provider (s): micro soft. DataBoxEdge.*
 
 
 Voer de volgende opdracht uit om een lijst met geregistreerde resource providers in het huidige abonnement op te halen:
@@ -89,7 +89,7 @@ Voer de volgende opdracht uit om een lijst met geregistreerde resource providers
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Voor Azure Stack Edge- `Microsoft.DataBoxEdge` apparaat moet worden geregistreerd. Als u `Microsoft.DataBoxEdge`de registratie wilt registreren, moet u de volgende opdracht uitvoeren:
+Voor Azure Stack edge-apparaat `Microsoft.DataBoxEdge` moet worden geregistreerd. Als u de registratie wilt registreren `Microsoft.DataBoxEdge` , moet u de volgende opdracht uitvoeren:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

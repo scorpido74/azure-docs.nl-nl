@@ -12,17 +12,17 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/29/2020
-ms.openlocfilehash: 385a7594de48f1bcf04d79d0dcd9dfb521d4ff08
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f7625f7dda4553a160f11ecd7f6d5c44943f6a6b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045114"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338733"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Lange termijn back-ups van Azure SQL Managed instance beheren (Power shell)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-In Azure SQL Managed Instance kunt u een [lange termijn voor het bewaren van back-ups](../database/long-term-retention-overview.md#managed-instance-support) (LTR) configureren als een beperkte open bare preview-functie. Zo kunt u automatisch back-ups van data bases in afzonderlijke Azure Blob-opslag containers bewaren gedurende Maxi maal tien jaar. U kunt vervolgens een Data Base met behulp van deze back-ups herstellen met Power shell.
+In Azure SQL Managed Instance kunt u een [lange termijn voor het bewaren van back-ups](../database/long-term-retention-overview.md#sql-managed-instance-support) (LTR) configureren als een beperkte open bare preview-functie. Zo kunt u automatisch back-ups van data bases in afzonderlijke Azure Blob-opslag containers bewaren gedurende Maxi maal tien jaar. U kunt vervolgens een Data Base met behulp van deze back-ups herstellen met Power shell.
 
    > [!IMPORTANT]
    > LTR voor beheerde instanties is momenteel een beperkte preview-versie en is per geval beschikbaar voor EA-en CSP-abonnementen. Als u de inschrijving wilt aanvragen, moet u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/)maken. Voor het probleem type SELECT Technical issue, voor service Kies SQL Database Managed instance en voor het probleem type Selecteer **back-up, herstel en bedrijfs continuïteit/lange termijn retentie van back-ups**. In uw aanvraag moet u aangeven dat u wilt worden inge schreven in de beperkte open bare preview van LTR voor een beheerd exemplaar.

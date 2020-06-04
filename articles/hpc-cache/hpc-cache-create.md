@@ -4,20 +4,24 @@ description: Een Azure HPC-cache-exemplaar maken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 122ef938aad51e83f88cd7f1e4ab18e3975d7d80
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195006"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344290"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Een HPC-cache van Azure maken
 
 Gebruik de Azure Portal om uw cache te maken.
 
 ![scherm opname van het cache-overzicht in Azure Portal, met de knop maken onderaan](media/hpc-cache-home-page.png)
+
+Klik op de onderstaande afbeelding om een [video demonstratie](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) te bekijken van het maken van een cache en het toevoegen van een opslag doel.
+
+[![Video miniatuur: Azure HPC cache: Setup (Klik om de video pagina te bezoeken)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="define-basic-details"></a>Basis Details definiëren
 

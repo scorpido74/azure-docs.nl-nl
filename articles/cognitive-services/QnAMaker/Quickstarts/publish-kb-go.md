@@ -4,13 +4,13 @@ description: Deze go op REST gebaseerde Snelstartgids publiceert uw Knowledge Ba
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 4ce655bdc7a913ecb281ce8a75e7ec4f2009a2ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 4bfa523c6a42c8848f30ceb88770d3ce3fb03fae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851694"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342711"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Snelstart: Een knowledge base publiceren in QnA Maker met behulp van Go
 
@@ -24,7 +24,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 * [Go 1.10.1](https://golang.org/dl/)
 * U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
 
-* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in `kbid` de query teken reeks parameter, zoals hieronder wordt weer gegeven.
+* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in de `kbid` query teken reeks parameter, zoals hieronder wordt weer gegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 

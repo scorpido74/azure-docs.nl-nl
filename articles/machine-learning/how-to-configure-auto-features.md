@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93e18a95e30c21a44f9ca7df92925323930a9ce8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 87cb5714a1f4b362e2f73879d93f5739f0fc20cf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122428"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324280"
 ---
 # <a name="featurization-with-automated-machine-learning"></a>Parametrisatie met geautomatiseerde machine learning
 
@@ -50,7 +50,7 @@ De volgende tabel bevat de geaccepteerde instellingen voor `featurization` in de
 
 <a name="featurization"></a>
 
-## <a name="automatic-featurization"></a>Automatische parametrisatie
+## <a name="automatic-featurization"></a>Automatische featurization
 
 De volgende tabel bevat een overzicht van de technieken die automatisch worden toegepast op uw gegevens. Dit gebeurt voor experimenten die zijn geconfigureerd via de SDK of de Studio. Als u dit gedrag wilt uitschakelen, stelt u `"featurization": 'off'` in uw `AutoMLConfig` object in.
 
@@ -99,7 +99,7 @@ In de volgende tabel worden de gegevens Guardrails beschreven die momenteel word
 Guardrail|Status|Voor waarde &nbsp; voor &nbsp; trigger
 ---|---|---
 **Ontbrekende functie waarden toerekening** |*Buffer* <br><br><br> *Gereed*| Er zijn geen ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens. Meer informatie over [ontbrekende waarden toegerekend.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn ontbrekende onderdeel waarden gedetecteerd in uw trainings gegevens en toegerekend.
-**Functie verwerking met hoge kardinaliteit** |*Buffer* <br><br><br> *Gereed*| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over de [detectie van hoge functies voor kardinaliteit.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
+**Functie verwerking met hoge kardinaliteit** |*Buffer* <br><br><br> *Gereed*| Uw invoer is geanalyseerd en er zijn geen functies met een hoge kardinaliteit gedetecteerd. Meer informatie over de [detectie van hoge functies voor kardinaliteit.](#automatic-featurization) <br><br> Er zijn functies met een hoge kardinaliteit gedetecteerd in uw invoer en zijn afgehandeld.
 **Verwerking van splitsing van validatie** |*Gereed*| De validatie configuratie is ingesteld op auto en de trainings gegevens bevatten **minder dan 20.000 rijen**. <br> Elke iteratie van het getrainde model is door Kruis validatie gevalideerd. Meer informatie over [validatie gegevens.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> De validatie configuratie is ingesteld op ' auto ' en de trainings gegevens bevatten **meer dan 20.000 rijen**. <br> De invoer gegevens zijn gesplitst in een trainings gegevensset en een validatie gegevensset voor validatie van het model.
 **Detectie van klasse-verdeling** |*Buffer* <br><br><br><br><br> *Gewaarschuwd* | Uw invoer is geanalyseerd en alle klassen zijn evenwichtig in uw trainings gegevens. Een gegevensset wordt als evenwichtig beschouwd als elke klasse een goede representatie in de gegevensset heeft, gemeten op basis van het aantal en de verhouding van steek proeven. <br><br><br> Er zijn niet-sluitende klassen gedetecteerd in uw invoer. Los het probleem met de oplossing op om model afwijking te herstellen. Meer informatie over [gegevens](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data) die niet in balans zijn.
 **Detectie van geheugen problemen** |*Buffer* <br><br><br><br> *Gereed* |<br> De geselecteerde {horizon, vertraging, rollend venster} waarde (n) zijn geanalyseerd en er zijn geen mogelijke problemen met de geheugen detectie gedetecteerd. Meer informatie over [prognose configuraties](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) voor time series. <br><br><br>De geselecteerde waarden voor {Horizon, lag, Rolling venster} zijn geanalyseerd en kunnen ertoe leiden dat uw experiment te weinig geheugen beschikbaar heeft. De configuratie van de vertraging of het uitrollen venster is uitgeschakeld.

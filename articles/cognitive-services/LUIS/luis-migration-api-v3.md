@@ -1,15 +1,15 @@
 ---
 title: Wijzigingen in het Voorspellings eindpunt in de V3 API
 description: De V3 Api's voor de query Voorspellings-endpoint zijn gewijzigd. Gebruik deze hand leiding voor informatie over het migreren naar versie 3-eindpunt-Api's.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: diberry
-ms.openlocfilehash: 84afcbcd348c3fd91014096877de2315722b53a0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 293cbd583e1493c5f142604457a00a8055c7a802
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849328"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338189"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
 
@@ -88,7 +88,7 @@ Als u een query wilt uitvoeren op versie, moet u eerst [via API publiceren](http
 
 De V3 API heeft verschillende query reeks parameters.
 
-|Parameter naam|Type|Versie|Standaard|Doel|
+|Parameter naam|Type|Versie|Standaard|Functie|
 |--|--|--|--|--|
 |`log`|booleaans|V2 & V3|onjuist|Sla de query op in het logboek bestand. De standaard waarde is False.|
 |`query`|tekenreeks|Alleen v3|Geen standaard-dit is vereist in de GET-aanvraag|**In v2**bevindt de utterance die moet worden voor speld in de `q` para meter. <br><br>**In v3**wordt de functionaliteit door gegeven in de `query` para meter.|
@@ -112,7 +112,7 @@ De V3 API heeft verschillende query reeks parameters.
 }
 ```
 
-|Eigenschap|Type|Versie|Standaard|Doel|
+|Eigenschap|Type|Versie|Standaard|Functie|
 |--|--|--|--|--|
 |`dynamicLists`|matrix|Alleen v3|Niet vereist.|Met [dynamische lijsten](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de Luis-app.|
 |`externalEntities`|matrix|Alleen v3|Niet vereist.|[Externe entiteiten](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) bieden uw Luis-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. |

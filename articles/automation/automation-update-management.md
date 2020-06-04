@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Updatebeheer
 description: Dit artikel bevat een overzicht van de functie Updatebeheer die updates implementeert voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847325"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342949"
 ---
 # <a name="update-management-overview"></a>Overzicht van updatebeheer
 
@@ -103,7 +103,7 @@ De volgende tabel bevat een lijst met niet-ondersteunde besturings systemen:
 
 ### <a name="client-requirements"></a>Clientvereisten
 
-De volgende informatie beschrijft specifieke client vereisten voor het besturings systeem. Zie [netwerk planning](#ports)voor meer informatie.
+De volgende informatie beschrijft specifieke client vereisten voor het besturings systeem. Zie [netwerk planning](#ports)voor meer informatie.  Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
 #### <a name="windows"></a>Windows
 

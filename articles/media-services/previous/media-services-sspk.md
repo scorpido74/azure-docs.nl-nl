@@ -1,6 +1,6 @@
 ---
-title: Licenties voor&reg; micro soft Smooth streaming client Porting kit
-description: Meer informatie over licenties voor de micro&reg; Soft Smooth streaming client Porting kit.
+title: Licenties voor micro soft &reg; Smooth streaming client Porting kit
+description: Meer informatie over licenties voor de micro soft &reg; Smooth streaming client Porting kit.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686900"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344030"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor&reg; micro soft Smooth streaming client Porting kit 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft &reg; Smooth streaming client Porting kit 
 ## <a name="overview"></a>Overzicht
 Micro soft Smooth Streaming client Porting kit (**SSPK** for Short) is een Smooth streaming-client implementatie die is geoptimaliseerd voor het helpen van Inge sloten hardwarefabrikanten, kabel en mobiele Opera Tors, aanbieders van leveranciers, leveranciers van Hoorn, onafhankelijke software leveranciers (isv's) en oplossingen voor het maken van adaptieve inhoud in Smooth streaming indeling. SSPK is een apparaat-en platform onafhankelijke implementatie van Smooth Streaming-client die door de licentie kan worden getransporteerd naar elk apparaat en platform. 
 
@@ -75,7 +75,7 @@ E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) voor alle licenti
 
 De SSPK-distributie Portal is toegankelijk voor geregistreerde interim-licenties.
 
-Interim-en definitieve SSPK-licenties kunnen technische vragen [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)verzenden naar.
+Interim-en definitieve SSPK-licenties kunnen technische vragen verzenden naar [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) .
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Licentie voor micro soft Smooth Streaming client interim-product overeenkomst
 
@@ -144,6 +144,7 @@ Interim-en definitieve SSPK-licenties kunnen technische vragen [smoothpk@microso
 * Shenzhen Chuangwei-RGB co., Ltd.
 * Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin industrieel Corp.

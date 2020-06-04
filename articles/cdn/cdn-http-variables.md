@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747654"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340671"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-variabelen voor Azure CDN-regel engine
 HTTP-variabelen bieden de manier waarop u HTTP-aanvraag-en respons meta gegevens kunt ophalen. Deze meta gegevens kunnen vervolgens worden gebruikt om een aanvraag of antwoord dynamisch te wijzigen. Het gebruik van HTTP-variabelen is beperkt tot de volgende functies van de regel Engine:
 
-- [Cache sleutel opnieuw schrijven](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Header van client aanvraag wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Reactie header van client wijzigen](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL-omleiding](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [URL opnieuw genereren](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Cache sleutel opnieuw schrijven](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Header van client aanvraag wijzigen](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Reactie header van client wijzigen](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [URL-omleiding](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [URL opnieuw schrijven](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>Definities
 In de volgende tabel worden de ondersteunde HTTP-variabelen beschreven. Er wordt een lege waarde geretourneerd als GEO-meta gegevens (bijvoorbeeld post code) niet beschikbaar zijn voor een bepaalde aanvraag.
 
 
-| Name | Variabele | Beschrijving | Voorbeeldwaarde |
+| Naam | Variabele | Beschrijving | Voorbeeldwaarde |
 | ---- | -------- | ----------- | ------------ |
 | ASN (aanvrager) | % {geo_asnum} | Hiermee wordt het AS-nummer van de aanvrager aangegeven. <br /><br />**Afgeschaft:** % {virt_dst_asnum}. <br />Deze variabele is vervangen door% {geo_asnum}. Hoewel een regel die gebruikmaakt van deze afgeschafte variabele, blijft werken, moet u deze bijwerken om de nieuwe variabele te gebruiken. | AS15133 |
 | Plaats (aanvrager) | % {geo_city} | Hiermee wordt de plaats van de aanvrager aangegeven. | Los Angeles |
