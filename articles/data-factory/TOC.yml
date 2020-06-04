@@ -90,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: CDC gebruiken in Azure SQL MI
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: Nieuwe bestanden op laatst bewerkte gegevens
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Nieuwe bestanden op laatst gepartitioneerde bestandsnaam
@@ -196,6 +200,8 @@
       items:
         - name: Visueel gegevensfabrieken maken
           href: author-visually.md
+        - name: Beheerhub
+          href: author-management-hub.md
         - name: Broncodebeheer
           href: source-control.md
         - name: Continue integratie en levering
