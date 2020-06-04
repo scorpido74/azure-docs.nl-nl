@@ -3,16 +3,16 @@ title: 'Snelstartgids: vragen en antwoorden toevoegen in QnA Maker Portal'
 description: Deze Quick Start laat zien hoe u vraag-en antwoord paren kunt toevoegen met meta gegevens zodat uw gebruikers het juiste antwoord op hun vraag kunnen vinden.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331386"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Snelstartgids: vragen toevoegen en antwoord geven met QnA Maker Portal
 
-Nadat u een Knowledge Base hebt gemaakt, voegt u de paren vraag en antwoord (QnA) met meta gegevens toe om het antwoord te filteren. De vragen in de volgende tabel zijn informatie over de limieten voor Azure-Services, maar moeten allemaal met een andere Azure-service.
+Nadat u een Knowledge Base hebt gemaakt, voegt u de paren vraag en antwoord (QnA) met meta gegevens toe om het antwoord te filteren. De vragen in de volgende tabel zijn informatie over de limieten voor Azure-Services, maar ze moeten worden uitgevoerd met een andere Azure Search-service.
 
 <a name="qna-table"></a>
 
