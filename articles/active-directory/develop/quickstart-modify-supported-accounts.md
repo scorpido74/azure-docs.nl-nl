@@ -1,5 +1,5 @@
 ---
-title: Micro soft identify platform app-accounts wijzigen | Azure
+title: Account voor Microsoft Identify Platform-apps wijzigen | Azure
 description: Een toepassing configureren die is geregistreerd bij het Microsoft Identity Platform om te wijzigen wie, of welke accounts, toegang hebben tot de toepassing.
 services: active-directory
 author: rwike77
@@ -12,14 +12,14 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2850ca3f23e61be54702878c0683af9fdb1fad91
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050244"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83826856"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Snelstartgids: de accounts wijzigen die worden ondersteund door een toepassing
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Quickstart: De accounts wijzigen die worden ondersteund door een toepassing
 
 Bij het registreren van een toepassing op het Microsoft Identity Platform, wilt u mogelijk dat uw toepassing alleen kan worden geopend door gebruikers in uw organisatie. Ook kan het zijn dat u wilt dat uw toepassing toegankelijk is voor gebruikers in externe organisaties, of gebruikers in externe organisaties evenals de gebruikers die niet noodzakelijkerwijs deel uitmaken van een organisatie (persoonlijke accounts).
 
@@ -30,7 +30,7 @@ In deze snelstart leert u hoe u de configuratie van uw toepassing aanpast om te 
 Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
 
 * Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
-* U beschikt over een tenant waarvoor toepassingen zijn geregistreerd.
+* U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
   * Als u uw apps niet hebt geregistreerd, [kunt u hier lezen hoe u toepassingen registreert bij het Microsoft Identity Platform](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Aanmelden bij de Azure-portal en de app selecteren
@@ -38,9 +38,9 @@ Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
 Voordat u de app kunt configureren, volgt u deze stappen:
 
 1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
-1. Als u via uw account toegang tot meer dan één tenant hebt, selecteert u uw account in de rechterbovenhoek en stelt u uw portalsessie in op de gewenste Azure Active Directory-tenant.
-1. Selecteer in het navigatie deel venster aan de linkerkant de **Azure Active Directory** -service en selecteer vervolgens **app-registraties**.
-1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u het **Overzicht** of de hoofdregistratiepagina van de toepassing.
+1. Als u via uw account toegang hebt tot meer dan één tenant, selecteert u uw account in de rechterbovenhoek en stelt u de portalsessie in op de gewenste Azure Active Directory-tenant.
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory**-service en selecteer vervolgens **App-registraties**.
+1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Volg de stappen voor het [wijzigen van de registratie van de toepassing om verschillende accounts te ondersteunen](#change-the-application-registration-to-support-different-accounts).
 1. Als u een toepassing met één pagina hebt, [schakelt u impliciete goedkeuring voor OAuth 2.0 in](#enable-oauth-20-implicit-grant-for-single-page-applications).
 
@@ -69,6 +69,8 @@ Impliciete goedkeuring voor OAuth 2.0 is standaard uitgeschakeld voor toepassing
 
 ### <a name="to-enable-oauth-20-implicit-grant"></a>Impliciete goedkeuring voor OAuth 2.0 inschakelen
 
+1. Selecteer in het linkernavigatiedeelvenster de **Azure Active Directory**-service en selecteer vervolgens **App-registraties**.
+1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Selecteer op de pagina **Overzicht** van de app de sectie **Verificatie**.
 1. Zoek onder **Geavanceerde instellingen** de sectie **Impliciete toewijzing** op.
 1. Selecteer **ID-tokens**, **Toegangstokens** of beide.
@@ -78,7 +80,7 @@ Impliciete goedkeuring voor OAuth 2.0 is standaard uitgeschakeld voor toepassing
 
 Lees meer in deze andere gerelateerde snelstarts voor app-beheer:
 
-* [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
+* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een clienttoepassing configureren voor toegang tot web-API's](quickstart-configure-app-access-web-apis.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
 * [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)

@@ -1,5 +1,5 @@
 ---
-title: Bouw een Xamarin-app met .NET en de API van Azure Cosmos DB voor MongoDB
+title: Een Xamarin-app ontwikkelen met .NET en Azure Cosmos DB-API voor MongoDB
 description: Deze snelstart bevat een voorbeeld van Xamarin-code dat u kunt gebruiken om verbinding te maken met de Azure Cosmos DB-API voor MongoDB en er query's op uit te voeren
 author: codemillmatt
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: db28455c47541b49b38ddbbc4d5e83ae20e2279d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79481684"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659173"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Quick Start: een Xamarin. Forms-app maken met .NET SDK en de API van Azure Cosmos DB voor MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Snelstartgids: Een Xamarin.Forms-app ontwikkelen met de .NET SDK en Azure Cosmos DB-API voor MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -23,10 +23,10 @@ ms.locfileid: "79481684"
 > * [Node.js](create-mongodb-nodejs.md)
 > * [Python](create-mongodb-flask.md)
 > * [Xamarin](create-mongodb-xamarin.md)
-> * [Golang](create-mongodb-golang.md)
+> * [Golang](create-mongodb-go.md)
 >  
 
-Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafen en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de wereldwijde distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB.
+Azure Cosmos DB is de wereldwijd gedistribueerde multimodel-databaseservice van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query’s op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Azure Cosmos DB.
 
 In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfigureerd met Azure Cosmos DB-API voor MongoDB](mongodb-introduction.md) en een documentdatabase en verzameling kunt maken met behulp van Azure Portal. U bouwt vervolgens een todo-app van de app Xamarin.Forms met behulp van het [MongoDB .NET-stuurprogramma](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
@@ -34,7 +34,7 @@ In deze snelstart laten we u zien hoe u een [Cosmos-account maakt dat is geconfi
 
 Als u het voorbeeld wilt uitvoeren, hebt u [Visual Studio](https://www.visualstudio.com/downloads/) of [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en een geldig Azure Cosmos DB-account nodig.
 
-Als u Visual Studio nog niet hebt, downloadt u [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) met de **mobiele ontwikkeling met de .net** -werk belasting die is geïnstalleerd met Setup.
+Als u Visual Studio nog niet hebt, downloadt u [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) waarbij de workload **Mobile development with .NET** tijdens het instellen wordt geïnstalleerd.
 
 Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://visualstudio.microsoft.com/vs/mac/) en voer de installatie uit.
 
@@ -46,7 +46,7 @@ Als u liever op een Mac werkt, download dan [Visual Studio voor Mac](https://vis
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
-Het voorbeeld dat in dit artikel is beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
+Het voorbeeld dat in dit artikel wordt beschreven, is compatibel met MongoDB.Driver versie 2.6.1.
 
 ## <a name="clone-the-sample-app"></a>De voorbeeld-app klonen
 
@@ -56,7 +56,7 @@ Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-ap
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-1. Open in Windows een opdracht prompt of op Mac de terminal openen, maak een nieuwe map met de naam Git-samples en sluit het venster.
+1. Open in Windows een opdrachtprompt of op Mac de terminal, maak een nieuwe map met de naam git-samples en sluit het venster.
 
     ```batch
     md "C:\git-samples"
@@ -78,7 +78,7 @@ Download eerst de voorbeeld-app uit GitHub. Deze implementeert een takenlijst-ap
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
     ```
 
-Als u Git niet wilt gebruiken, kunt u [het project ook downloaden als een zip-bestand](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
+Als u niet git wilt gebruiken, kunt u ook [het project als een ZIP-bestand downloaden](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
 
 ## <a name="review-the-code"></a>De code bekijken
 
@@ -170,10 +170,10 @@ Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en ko
 
 3. Kopieer de waarde van uw **primaire verbindingsreeks** uit de portal (met behulp van de knop Kopiëren) en maak deze de waarde van het veld **ConnectionString** in uw **APIKeys.cs**-bestand.
 
-4. Verwijder `&replicaSet=globaldb` uit het Connection String. U krijgt een runtime-fout als u die waarde niet uit de query teken reeks verwijdert.
+4. Verwijder `&replicaSet=globaldb` uit de verbindingsreeks. U krijgt een runtime-fout als u die waarde niet uit de querytekenreeks verwijdert.
 
 > [!IMPORTANT]
-> U moet het `&replicaSet=globaldb` sleutel/waardepaar verwijderen uit de query reeks van de Connection String om een runtime-fout te voor komen.
+> U moet het sleutel/waarde-paar `&replicaSet=globaldb` uit de querytekenreeks van de verbindingsreeks verwijderen om een runtime-fout te voorkomen.
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
 

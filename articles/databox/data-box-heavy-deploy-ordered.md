@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 91d78975106299c3b3a6df6d8dee05f337dd339a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415163"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742979"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Zelfstudie: Azure Data Box Heavy bestellen
 
@@ -75,7 +75,7 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |---------|---------|
     |Abonnement     | Selecteer een EA-, CSP- of Azure Sponsorship-abonnement voor de Data Box-service. <br> Het abonnement is gekoppeld aan uw factureringsrekening.       |
     |Type overdracht     | Selecteer **Importeren in Azure**.        |
-    |Bronland     | Selecteer het land/de regio waar uw gegevens zich momenteel bevinden.         |
+    |Bronland/-regio     | Selecteer het land/de regio waar uw gegevens zich momenteel bevinden.         |
     |Doel-Azure-regio     | Selecteer de Azure-regio waarnaar u uw gegevens wilt overdragen.        |
 
     [![Beschikbaarheid van Data Box-familie selecteren](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
@@ -91,7 +91,7 @@ Voer de volgende stappen uit in de Azure-portal om een apparaat te bestellen.
     |Naam     | Geef een beschrijvende naam op om de bestelling te volgen. <br> De naam kan tussen 3 en 24 tekens bevatten (letters, cijfers en afbreekstreepjes). <br> De naam moet beginnen en eindigen met een letter of cijfer.      |
     |Resourcegroep     | Gebruik een bestaande of maak een nieuwe. <br> Een resourcegroep is een logische container voor resources die samen kunnen worden beheerd of geïmplementeerd.         |
     |Doel-Azure-regio     | Selecteer een regio voor uw opslagaccount. <br> Ga naar [Beschikbaarheid in de regio](https://azure.microsoft.com/global-infrastructure/services/?products=databox) voor meer informatie.        |
-    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. <br>Data Box Heavy kan worden gekoppeld aan maximaal tien opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br> Gen 2-accounts van Azure Data Lake Storage worden niet ondersteund. Bekijk de [opslagaccounts die worden ondersteund door uw apparaat](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box-service toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions) voor meer informatie.|
+    |Opslaglocatie     | Kies een opslagaccount, beheerde schijven of beide. <br> Selecteer een of meer opslagaccounts in de gefilterde lijst van een bestaand opslagaccount, gebaseerd op de opgegeven Azure-regio. <br>Data Box Heavy kan worden gekoppeld aan maximaal tien opslagaccounts. <br> U kunt ook een nieuw account van het type **Algemeen gebruik v1**, **Algemeen gebruik v2** of **Blob-opslag** maken. <br>Bekijk de [opslagaccounts die worden ondersteund door uw apparaat](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Opslagaccounts met virtuele netwerken worden ondersteund. Als u wilt dat de Data Box-service kan werken met beveiligde opslagaccounts, schakelt u in de firewallinstellingen van het opslagaccount de vertrouwde services in. Zie [Azure Data Box-service toevoegen als een vertrouwde service](../storage/common/storage-network-security.md#exceptions) voor meer informatie.|
 
     Als u een opslagaccount selecteert als de opslaglocatie, ziet u het volgende scherm:
 

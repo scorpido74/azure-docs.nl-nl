@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een HoloLens-app maken met DirectX'
+title: 'Quickstart: Een HoloLens-app maken met DirectX'
 description: In deze quickstart leert u een HoloLens-app maken met behulp van Spatial Anchors.
 author: craigktreasure
 manager: virivera
@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 01a9a8239e2997335f5123d63cfc664027cffa02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376355"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870991"
 ---
-# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Snelstartgids: een HoloLens-app maken met behulp van Azure spatiale ankers in C++/WinRT en DirectX
+# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Quickstart: HoloLens-app maken met Azure Spatial Anchors, in C++/WinRT en DirectX
 
-In deze quickstart wordt besproken hoe u een HoloLens-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in C++/WinRT en DirectX. Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een HoloLens-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
+In deze quickstart wordt besproken hoe u een HoloLens-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in C++/WinRT en DirectX. Azure Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een HoloLens-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
 U leert het volgende:
 
@@ -31,7 +31,7 @@ U leert het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
-- Een Windows-machine met <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> geïnstalleerd met de **universeel Windows-platform Development** -werk belasting en het onderdeel **Windows 10 SDK (10.0.18362.0 of hoger)** . U moet ook <a href="https://git-scm.com/download/win" target="_blank">git installeren voor Windows</a> en <a href="https://git-lfs.github.com/">Git LF</a>.
+- Een Windows-computer waarop <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> is geïnstalleerd met de workload **Universeel Windows-platform-ontwikkeling** en het onderdeel **Windows 10 SDK (10.0.18362.0 of later)** . U moet ook <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a> en <a href="https://git-lfs.github.com/">Git LFS</a> installeren.
 - De [C++/WinRT Visual Studio Extension (VSIX)](https://aka.ms/cppwinrt/vsix) voor Visual Studio moet worden geïnstalleerd vanuit de [Visual Studio Marketplace](https://marketplace.visualstudio.com/).
 - Een HoloLens-apparaat waarvoor de [ontwikkelaarsmodus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) is ingeschakeld. Dit artikel vereist een HoloLens-apparaat met de [Update voor Windows van 10 oktober 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (ook wel bekend als RS5). Als u wilt bijwerken naar de nieuwste release op HoloLens, opent u de app **Instellingen**, gaat u naar **Bijwerken en beveiliging** en selecteert u vervolgens de knop **Controleren op updates**.
 - Uw app moet de mogelijkheid **spatialPerception** instellen in het bijbehorende AppX-manifest.
@@ -46,25 +46,27 @@ Open `HoloLens\DirectX\SampleHoloLens.sln` in Visual Studio.
 
 ## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
-De volgende stap is het configureren van de app voor het gebruik van uw account-id en de account sleutel. U hebt deze in een tekst editor gekopieerd bij [het instellen van de bron voor ruimtelijke ankers](#create-a-spatial-anchors-resource).
+De volgende stap is om de app te configureren om uw account-id en accountsleutel te gebruiken. U hebt ze naar een teksteditor gekopieerd bij het [instellen van de Spatial Anchors-resource](#create-a-spatial-anchors-resource).
 
 Open `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
+Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+
+Zoek `case DemoStep::ConfigSession:` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `configuration.AccountDomain("MyAccountDomain");`.
 
 ## <a name="deploy-the-app-to-your-hololens"></a>De app implementeren op uw HoloLens
 
 Wijzig **Solution Configuration** in **Release**, wijzig **Solution Platform** in **x86** en selecteer **Device** uit de opties voor het implementatiedoel.
 
-Als u HoloLens 2 gebruikt, gebruikt u **ARM64** als het **oplossings platform**in plaats van **x86**.
+Als u HoloLens 2 gebruikt, gebruikt u **ARM64** als het **Solution Platform**, in plaats van **x86**.
 
 ![Configuratie van Visual Studio](./media/get-started-hololens/visual-studio-configuration.png)
 
 Start het HoloLens-apparaat, meld u aan en sluit het aan op de pc via een USB-kabel.
 
-Selecteer **debug** > **Start Debugging** om uw app te implementeren en de fout opsporing te starten.
+Selecteer **Debug** > **Start debugging** om de app te implementeren en de foutopsporing te starten.
 
 Volg de instructies in de app om een anker te plaatsen en terug te halen.
 
@@ -75,4 +77,4 @@ Stop de app in Visual Studio door **Stop Debugging** te selecteren of door op **
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelfstudie: Spatial Anchors met meerdere apparaten delen](../tutorials/tutorial-share-anchors-across-devices.md)

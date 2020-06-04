@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: Filters
               href: platform/view-designer-filters.md
-        - name: Aangepaste oplossingen
-          items:
-            - name: Ontwerpen en bouwen
-              href: insights/solutions-creating.md
-            - name: Oplossingsbestand
-              href: insights/solutions-solution-file.md
-            - name: Automation-resources
-              href: insights/solutions-resources-automation.md
-            - name: Zoekopdrachten en waarschuwingen vastleggen
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Weergaven
-              href: insights/solutions-resources-views.md
-            - name: Aanbevolen procedures
-              href: insights/solutions-best-practices.md
     - name: Werkmappen
       items:
         - name: Overzicht

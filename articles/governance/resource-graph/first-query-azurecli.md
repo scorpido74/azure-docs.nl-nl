@@ -1,16 +1,16 @@
 ---
-title: 'Quick Start: uw eerste Azure CLI-query'
-description: In deze Snelstartgids volgt u de stappen voor het inschakelen van de extensie voor de resource grafiek voor Azure CLI en het uitvoeren van uw eerste query.
-ms.date: 11/21/2019
+title: 'Quickstart: Uw eerste Azure CLI-query'
+description: In deze quickstart volgt u de stappen om de Resource Graph-extensie voor Azure CLI in te schakelen en uw eerste query uit te voeren.
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1c7c3a37c2fc5b6aebaa42cacba71897684b2207
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240665"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83871981"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure CLI
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure CLI
 
 De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het controleren of de extensie voor [Azure CLI](/cli/azure/) is geïnstalleerd. In deze snelstartgids doorloopt u het proces voor het toevoegen van de extensie aan uw Azure CLI-installatie. U kunt de extensie gebruiken met een lokale installatie van Azure CLI of via de [Azure Cloud Shell](https://shell.azure.com).
 
@@ -18,7 +18,7 @@ Aan het einde van dit proces hebt u de extensie toegevoegd aan de Azure CLI-inst
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +26,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.mic
 
 De extensie moet worden toegevoegd opdat Azure CLI query's kan uitvoeren voor Azure Resource Graph. Deze extensie werkt overal waar Azure CLI kan worden gebruikt, met inbegrip van [bash in Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (zowel zelfstandige als in de portal), de [Azure CLI Docker-installatiekopie](https://hub.docker.com/r/microsoft/azure-cli/), of lokaal geïnstalleerd.
 
-1. Controleer of de meest recente versie van Azure CLI is geïnstalleerd (ten minste **2.0.76**). Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) op.
+1. Controleer of de meest recente versie van Azure CLI is geïnstalleerd (minimaal **2.0.76**). Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) op.
 
 1. In de gewenste Azure CLI-omgeving kunt u deze importeren met de volgende opdracht:
 
@@ -35,7 +35,7 @@ De extensie moet worden toegevoegd opdat Azure CLI query's kan uitvoeren voor Az
    az extension add --name resource-graph
    ```
 
-1. Controleer of de uitbrei ding is geïnstalleerd en de verwachte versie is (ten minste **1.0.0**):
+1. Valideer of de extensie is geïnstalleerd en of het de verwachte versie is (ten minste **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -69,7 +69,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
    ```
 
    > [!NOTE]
-   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Hiermee worden de queryresultaten eerst beperkt en daarna geordend.
+   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Met deze opdracht worden de queryresultaten eerst beperkt en vervolgens gerangschikt.
 
 1. Werk de query als volgt bij om eerst te `order by` op de eigenschap **naam** en daarna de resultaten van de top vijf te `limit`:
 
@@ -78,7 +78,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
    az graph query -q 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.
+Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en gesorteerd op de eigenschap **Naam**, maar nog steeds beperkt tot de top vijf.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -91,7 +91,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de extensie resource grafiek toegevoegd aan uw Azure CLI-omgeving en wordt uw eerste query uitgevoerd. Ga verder naar de pagina met details van de query taal voor meer informatie over de taal van de resource grafiek.
+In deze quickstart hebt u de Resource Graph-extensie toegevoegd aan uw Azure CLI-omgeving en uw eerste query uitgevoerd. Ga verder naar de pagina met details van de querytaal voor meer informatie over de taal van Resource Graph.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de query taal](./concepts/query-language.md)
+> [Meer informatie over de querytaal](./concepts/query-language.md)
