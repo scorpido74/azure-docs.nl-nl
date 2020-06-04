@@ -129,6 +129,8 @@
           href: batch-custom-images.md
         - name: Een pool in een virtueel netwerk maken
           href: batch-virtual-network.md
+        - name: Een groep met openbare IP-adressen maken
+          href: create-pool-public-ip.md
         - name: Een virtueel bestandssysteem koppelen
           href: virtual-file-mount.md
         - name: Azure-bestandsshare koppelen

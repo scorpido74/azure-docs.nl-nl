@@ -952,8 +952,10 @@
               href: configure-raid.md
             - name: LVM configureren
               href: configure-lvm.md
-        - name: Niet-gekoppelde schijven zoeken
+        - name: Niet-gekoppelde schijven zoeken - CLI
           href: find-unattached-disks.md
+        - name: Niet-gekoppelde schijven zoeken - Portal
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Bestandsopslag gebruiken
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: Veelgestelde vragen over schijven

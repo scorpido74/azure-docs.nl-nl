@@ -69,6 +69,8 @@
       items:
         - name: Diagnostische gegevens over opstarten
           href: boot-diagnostics.md
+        - name: Opstartfout - Er is een schijfleesfout opgetreden
+          href: boot-error-disk-read-error-occurred.md
         - name: BitLocker-fouten
           href: troubleshoot-bitlocker-boot-error.md
         - name: Blue screen-fouten

@@ -548,6 +548,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: Promptgedrag
               href: msal-js-prompt-behavior.md
+            - name: SPA migreren van impliciet naar auth code-stroom
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: MSAL voor iOS en macOS
           items:
             - name: Verschillen tussen MSAL voor iOS en macOS

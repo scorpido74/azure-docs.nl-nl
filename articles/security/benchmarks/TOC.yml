@@ -41,6 +41,8 @@
       href: ../../backup/security-baseline.md
     - name: Basislijn voor batch-beveiliging
       href: ../../batch/security-baseline.md
+    - name: Container Instances-beveiligingsbasislijn
+      href: ../../container-instances/security-baseline.md
     - name: Container Registry-beveiligingsbasislijn
       href: ../../container-registry/security-baseline.md
     - name: Cosmos DB-beveiligingsbasislijn

@@ -87,11 +87,11 @@
         - name: Een SAML-serviceprovider registreren
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Een Graph-toepassing registreren
+        - name: Een Microsoft Graph-toepassing registreren
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Een web-API-toepassing toevoegen
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Een systeemeigen clienttoepassing toevoegen
           href: add-native-application.md
         - name: iOS ObjC met App Auth
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: Naslaginformatie
   items:
+    - name: App-registraties
+      href: app-registrations-training-guide.md
     - name: Factureringsmodel
       href: billing.md
     - name: Codevoorbeelden

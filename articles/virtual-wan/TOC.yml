@@ -48,8 +48,6 @@
       href: upgrade-virtual-wan.md
     - name: Aangepast IPsec-beleid configureren
       href: virtual-wan-custom-ipsec-portal.md
-    - name: Azure Firewall installeren in een hub
-      href: howto-firewall.md
     - name: ExpressRoute
       items:
         - name: Een ExpressRoute-verbinding maken
@@ -60,6 +58,8 @@
       items:
         - name: Een site-naar-site-verbinding maken
           href: virtual-wan-site-to-site-portal.md
+        - name: Meerdere ISP-koppelingen - selectie van Azure-pad
+          href: path-selection-multiple-links.md
     - name: Gebruikers-VPN (punt-naar-site)
       items:
         - name: Gebruikers-VPN-verbinding maken
@@ -86,8 +86,6 @@
           href: openvpn-azure-ad-client.md
         - name: Azure AD-verificatie met meerde toepassingen instellen
           href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Azure Firewall installeren in een hub
-          href: howto-firewall.md
     - name: Routering
       items:
         - name: Verkeer routeren van een virtuele hub naar een NVA
@@ -98,12 +96,14 @@
               href: virtual-wan-route-table.md
         - name: Efficiënte routes voor virtuele hubs weergeven
           href: effective-routes-virtual-hub.md
-        - name: Meerdere ISP-koppelingen - selectie van Azure-pad
-          href: path-selection-multiple-links.md
     - name: Beveiliging
       items:
         - name: Azure Firewall installeren in een hub
           href: howto-firewall.md
+    - name: Bewaking
+      items:
+        - name: Logboeken en metrische gegevens
+          href: logs-metrics.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell

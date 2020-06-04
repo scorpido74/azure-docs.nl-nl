@@ -11,7 +11,8 @@
       href: create-member.md
     - name: Leden maken met CLI
       href: create-member-cli.md
-    - name: Leden maken met een sjabloon
+    - name: Leden maken met een ARM-sjabloon
+      displayName: Resource Manager
       href: create-member-template.md
     - name: Verbinding maken met transactieknooppunt
       items:

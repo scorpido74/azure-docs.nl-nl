@@ -24,6 +24,8 @@
           href: work-remotely-support.md
         - name: NVA-configuraties en werken op afstand
           href: nva-work-remotely-support.md
+    - name: Over VPN Gateway-design
+      href: design.md
     - name: Over instellingen voor VPN Gateway
       href: vpn-gateway-about-vpn-gateway-settings.md
     - name: Over VPN-apparaten

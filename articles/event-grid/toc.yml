@@ -194,6 +194,8 @@
           href: metrics.md
 - name: Instructiegidsen
   items:
+    - name: 'Systeemonderwerpen maken, bekijken en beheren'
+      href: create-view-manage-system-topics.md
     - name: Posten naar een aangepast onderwerp
       href: post-to-custom-topic.md
     - name: Abonneren op Auth0-gebeurtenissen
