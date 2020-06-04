@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743643"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339362"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Uw Azure Stack edge-apparaat retour neren of vervangen
 
@@ -22,6 +22,7 @@ In dit artikel wordt beschreven hoe u de gegevens wist en vervolgens uw Azure St
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * De gegevens van de gegevens schijven op het apparaat wissen
 > * Een ondersteunings ticket openen om uw apparaat te retour neren
 > * Het apparaat inpakken en een ophaling plannen

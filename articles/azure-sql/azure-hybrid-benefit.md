@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196454"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344676"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit-Azure SQL Database & beheerde instantie van SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u u
 
 ## <a name="choose-a-license-model"></a>Een licentie model kiezen
 
-Met Azure Hybrid Benefit kunt u ervoor kiezen om alleen te betalen voor de onderliggende Azure-infra structuur met behulp van uw bestaande SQL Server licentie voor de SQL database engine zelf (prijzen voor basis berekeningen), of u kunt betalen voor zowel de onderliggende infra structuur als de SQL Server licentie (prijs in licentie inbegrepen).
+Met Azure Hybrid Benefit kunt u ervoor kiezen om alleen te betalen voor de onderliggende Azure-infra structuur met behulp van uw bestaande SQL Server licentie voor de SQL Server-data base-engine zelf (prijzen voor basis berekeningen), of u kunt betalen voor zowel de onderliggende infra structuur als de SQL Server licentie (prijs in licentie inbegrepen).
 
 U kunt uw licentie model kiezen of wijzigen met behulp van de Azure Portal of door gebruik te maken van een van de volgende Api's:
 
@@ -77,7 +77,7 @@ We bieden de voor delen van License Mobility aan SQL Server klanten met Software
 Azure Hybrid Benefit voor SQL Server wijkt af van de mobiliteit van licenties op twee belang rijke gebieden:
 
 - Dit biedt economische voor delen voor het verplaatsen van uiterst gevirtualiseerde werk belastingen naar Azure. SQL Server Enterprise Edition-klanten kunnen in de Algemeen SKU vier kernen krijgen in azure voor elke kern waarover ze on-premises beschikken voor zeer gevirtualiseerde toepassingen. Licentie mobiliteit staat geen bijzondere kosten voordelen toe voor het verplaatsen van gevirtualiseerde werk belastingen naar de Cloud.
-- Het biedt een PaaS-doel op Azure (SQL Database Managed instance) dat zeer compatibel is met SQL Server.
+- Het biedt een PaaS-doel op Azure (SQL Managed instance) dat zeer compatibel is met SQL Server.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Wat zijn de specifieke rechten van de Azure Hybrid Benefit voor SQL Server?
 

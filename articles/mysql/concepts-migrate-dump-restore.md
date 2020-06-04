@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845543"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323549"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Uw MySQL-database migreren naar Azure Database voor MySQL met behulp van dumpen en terugzetten
 In dit artikel worden twee algemene manieren uitgelegd voor het maken van back-ups en het herstellen van data bases in uw Azure Database for MySQL
@@ -98,7 +98,8 @@ De volgende server parameters en configuratie moeten worden gewijzigd om de doel
 - slow_query_log: ingesteld op uit om het langzame query logboek uit te scha kelen. Hiermee elimineert u de overhead die wordt veroorzaakt door het langzaam registreren van query's tijdens het laden van gegevens.
 - query_store_capture_mode: Stel beide in op geen om het query archief uit te scha kelen. Dit elimineert de overhead die wordt veroorzaakt door steekproef activiteiten door de query Store.
 - innodb_buffer_pool_size: de server omhoog schalen naar 32 vCore geoptimaliseerd voor geheugen van de prijs categorie van de portal tijdens de migratie om de innodb_buffer_pool_size te verg Roten. Innodb_buffer_pool_size kunnen alleen worden verhoogd door de reken kracht voor Azure Database for MySQL server omhoog te schalen.
-- innodb_write_io_threads & innodb_write_io_threads-Wijzig in 16 van de server parameters in Azure Portal om de snelheid van de migratie te verbeteren.
+- innodb_io_capacity & innodb_io_capacity_max-Wijzig in 9000 van de server parameters in Azure Portal om het IO-gebruik te verbeteren en te optimaliseren voor de migratie snelheid.
+- innodb_write_io_threads & innodb_write_io_threads-Wijzig in 4 van de server parameters in Azure Portal om de snelheid van de migratie te verbeteren.
 - Opslaglaag omhoog schalen: de IOPs voor Azure Database for MySQL server neemt geleidelijk toe met de toename van de opslaglaag. Als u sneller wilt laden, kunt u de opslaglaag verhogen om de ingerichte IOPs te verg Roten. Houd er rekening mee dat de opslag alleen omhoog kan worden geschaald.
 
 Zodra de migratie is voltooid, kunt u de server parameters en de configuratie van de compute-laag herstellen naar de vorige waarden. 

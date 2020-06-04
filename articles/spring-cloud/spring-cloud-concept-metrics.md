@@ -6,18 +6,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: f3283e70ec3e0b559b417285c4b154494a88980e
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 746366675501c80776f0a4308e22250f344a00c9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248391"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343435"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Informatie over metrische gegevens voor Azure lente-Cloud
 
 De functie Verkenner van Azure is een onderdeel van de Microsoft Azure-portal waarmee u grafieken kunt uitzetten, trends visueel kunt correleren en pieken en spannings dips in metrische gegevens kan onderzoeken. Gebruik metrische gegevens Verkenner om de status en het gebruik van uw resources te onderzoeken. 
 
-In azure lente Cloud zijn er twee weergave punten voor metrische gegevens.
+In azure lente Cloud zijn er twee gezichts punten voor metrische gegevens.
 * Grafieken op elke toepassings overzichts pagina
 * Pagina algemene metrische gegevens
 
@@ -52,7 +52,7 @@ Selecteer eerst de metrische gegevens die u wilt weer geven:
 
 ![Metrische weer gave selecteren](media/metrics/metrics-4.png)
 
-Meer informatie over de optie voor metrische gegevens vindt u in de volgende [sectie](#user-metrics-options) .
+Meer informatie over de opties voor metrische gegevens vindt u in de volgende [sectie](#user-metrics-options) .
 
 Selecteer vervolgens aggregatie type voor elke metriek:
 
@@ -63,7 +63,7 @@ Het samenvoegings type geeft aan hoe meet punten in het diagram op tijd worden g
 * Gemiddelde: gebruik de gemiddelde waarde in de periode als doel uitvoer.
 * Maximum/min: gebruik de waarde max/min in de periode als doel uitvoer.
 
-Het weer te geven tijds bereik kan ook worden gewijzigd. Het tijds bereik kan worden gekozen van de laatste 30 minuten tot de laatste 30 dagen of een aangepast tijds bereik.
+Het tijds bereik kan ook worden aangepast van de laatste 30 minuten tot de laatste 30 dagen of een aangepast tijds bereik.
 
 ![Metrische wijzigingen](media/metrics/metrics-6.png)
 
@@ -80,7 +80,7 @@ U kunt ook de optie **splitsing Toep assen** gebruiken om meerdere regels voor �
 ![Metrische splitsing](media/metrics/metrics-8.png)
 
 >[!TIP]
-> U kunt uw eigen grafieken maken op de pagina metrische gegevens en deze vastmaken aan uw **dash board**. Maak eerst een naam voor de grafiek.  Selecteer vervolgens **vastmaken aan dash board in de rechter bovenhoek**. U kunt nu uw toepassing op het **dash board**van de portal controleren.
+> U kunt uw eigen grafieken bouwen op de pagina metrische gegevens en deze vastmaken aan uw **dash board**. Maak eerst een naam voor de grafiek.  Selecteer vervolgens **vastmaken aan dash board in de rechter bovenhoek**. U kunt nu uw toepassing op het **dash board**van de portal controleren.
 
 ## <a name="user-metrics-options"></a>Opties voor metrische gegevens van gebruikers
 
@@ -88,69 +88,65 @@ In de volgende tabellen worden de beschik bare metrische gegevens en details wee
 
 ### <a name="error"></a>Fout
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
->| TomcatErrorCount<br><br>Tomcat globale fout (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Global. error | Count | Aantal fouten bij verwerkte aanvragen |
+>| Tomcat globale fout (afgeschaft)<br><br>(te verwijderen na 1 juli 2020)  | Tomcat. Global. error | Count | Aantal fouten bij verwerkte aanvragen |
 >| Tomcat. Global. error | Tomcat. Global. error | Count | Aantal fouten bij verwerkte aanvragen |
 
 ### <a name="performance"></a>Prestaties
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
->| SystemCpuUsagePercentage<br><br>CPU-gebruiks percentage van het systeem (afgeschaft) (verwijderd op 1 juli 2020) | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
+>| CPU-gebruiks percentage van systeem (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
 >| System. CPU. Usage | System. CPU. Usage | Percentage | Recent CPU-gebruik voor het hele systeem. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat alle Cpu's inactief zijn geweest tijdens de meest recente periode, terwijl een waarde van 1,0 betekent dat alle Cpu's op dit moment 100% van de tijd actief werden tijdens de meest recente periode.|
->| AppCpuUsagePercentage<br><br>CPU-gebruiks percentage van de app (afgeschaft) (verwijderd op 1 juli 2020) | CPU-gebruiks percentage van app | Percentage | Recent CPU-gebruik voor het Java Virtual Machine proces. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat geen van de Cpu's threads uit het JVM-proces heeft uitgevoerd gedurende de recent gebruikte periode, terwijl een waarde van 1,0 betekent dat alle Cpu's actief threads van de JVM 100% van de tijd tijdens de laatste periode hebben uitgevoerd. Threads van de JVM bevatten de Application threads en de JVM interne threads.|
+>| CPU-gebruiks percentage van de app (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | CPU-gebruiks percentage van app | Percentage | Recent CPU-gebruik voor het Java Virtual Machine proces. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat geen van de Cpu's threads uit het JVM-proces heeft uitgevoerd gedurende de recent gebruikte periode, terwijl een waarde van 1,0 betekent dat alle Cpu's actief threads van de JVM 100% van de tijd tijdens de laatste periode hebben uitgevoerd. Threads van de JVM bevatten de Application threads en de JVM interne threads.|
 >| proces. CPU. Usage | CPU-gebruiks percentage van app | Percentage | Recent CPU-gebruik voor het Java Virtual Machine proces. Deze waarde is een double in het interval van [0,0, 1,0]. Een waarde van 0,0 betekent dat geen van de Cpu's threads uit het JVM-proces heeft uitgevoerd gedurende de recent gebruikte periode, terwijl een waarde van 1,0 betekent dat alle Cpu's actief threads van de JVM 100% van de tijd tijdens de laatste periode hebben uitgevoerd. Threads van de JVM bevatten de Application threads en de JVM interne threads.|
->| AppMemoryCommitted<br><br>Toegewezen app-geheugen (afgeschaft)) (verwijderd op 1 juli 2020) | JVM. Memory. committed | Bytes | Vertegenwoordigt de hoeveelheid geheugen die gegarandeerd beschikbaar is voor gebruik door de JVM. De JVM kan geheugen vrijgeven aan het systeem en de toegewezen kan minder zijn dan init. doorgevoerd is altijd groter dan of gelijk aan het gebruik. |
+>| Toegewezen app-geheugen (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. Memory. committed | Bytes | Vertegenwoordigt de hoeveelheid geheugen die gegarandeerd beschikbaar is voor gebruik door de JVM. De JVM kan geheugen vrijgeven aan het systeem en de toegewezen kan minder zijn dan init. doorgevoerd is altijd groter dan of gelijk aan het gebruik. |
 >| JVM. Memory. committed | JVM. Memory. committed | Bytes | Vertegenwoordigt de hoeveelheid geheugen die gegarandeerd beschikbaar is voor gebruik door de JVM. De JVM kan geheugen vrijgeven aan het systeem en de toegewezen kan minder zijn dan init. doorgevoerd is altijd groter dan of gelijk aan het gebruik. |
->| AppMemoryUsed <br><br>Gebruikt app-geheugen (afgeschaft) (verwijderd op 1 juli 2020) | JVM. Memory. used | Bytes | Vertegenwoordigt de hoeveelheid geheugen die momenteel wordt gebruikt in bytes. |
+>| Gebruikt app-geheugen (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. Memory. used | Bytes | Vertegenwoordigt de hoeveelheid geheugen die momenteel wordt gebruikt in bytes. |
 >| JVM. Memory. used | JVM. Memory. used | Bytes | Vertegenwoordigt de hoeveelheid geheugen die momenteel wordt gebruikt in bytes. |
->| AppMemoryMax<br><br>Maxi maal app-geheugen (afgeschaft) (verwijderd op 1 juli 2020) | JVM. Memory. Max | Bytes | Hiermee wordt de maximale hoeveelheid geheugen aangegeven die kan worden gebruikt voor geheugen beheer. De hoeveelheid gebruikt en toegewezen geheugen is altijd kleiner dan of gelijk aan maximum als maximum is gedefinieerd. Een geheugen toewijzing kan mislukken als er wordt geprobeerd het gebruikte geheugen te verg Roten, zoals het gebruik van > vastgelegd, zelfs als dit wordt gebruikt <= Max zou wel waar zijn (bijvoorbeeld wanneer het systeem weinig virtueel geheugen heeft). |
+>| Maxi maal app-geheugen (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. Memory. Max | Bytes | Hiermee wordt de maximale hoeveelheid geheugen aangegeven die kan worden gebruikt voor geheugen beheer. De hoeveelheid gebruikt en toegewezen geheugen is altijd kleiner dan of gelijk aan maximum als maximum is gedefinieerd. Een geheugen toewijzing kan mislukken als er wordt geprobeerd het gebruikte geheugen te verg Roten, zoals het gebruik van > vastgelegd, zelfs als dit wordt gebruikt <= Max zou wel waar zijn (bijvoorbeeld wanneer het systeem weinig virtueel geheugen heeft). |
 >| JVM. Memory. Max | JVM. Memory. Max | Bytes | Hiermee wordt de maximale hoeveelheid geheugen aangegeven die kan worden gebruikt voor geheugen beheer. De hoeveelheid gebruikt en toegewezen geheugen is altijd kleiner dan of gelijk aan maximum als maximum is gedefinieerd. Een geheugen toewijzing kan mislukken als er wordt geprobeerd het gebruikte geheugen te verg Roten, zoals het gebruik van > vastgelegd, zelfs als dit wordt gebruikt <= Max zou wel waar zijn (bijvoorbeeld wanneer het systeem weinig virtueel geheugen heeft). |
->| MaxOldGenMemoryPoolBytes<br><br>Maxi maal beschik bare oude generatie gegevens grootte (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. max. data. size | Bytes | Het piek geheugen gebruik van de oude generatie geheugen groep sinds de virtuele Java-machine is gestart. |
+>| Maximale hoeveelheid beschik bare oude generatie gegevens (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. max. data. size | Bytes | Het piek geheugen gebruik van de oude generatie geheugen groep sinds de virtuele Java-machine is gestart. |
 >| JVM. gc. max. data. size | JVM. gc. max. data. size | Bytes | Het piek geheugen gebruik van de oude generatie geheugen groep sinds de virtuele Java-machine is gestart. |
->| OldGenMemoryPoolBytes<br><br>Oude generatie gegevens grootte (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. live. data. size | Bytes | Grootte van de geheugen groep van de oude generatie na een volledige GC. |
+>| Grootte van oude generatie gegevens (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. live. data. size | Bytes | Grootte van de geheugen groep van de oude generatie na een volledige GC. |
 >| JVM. gc. live. data. size | JVM. gc. live. data. size | Bytes | Grootte van de geheugen groep van de oude generatie na een volledige GC. |
->| OldGenPromotedBytes<br><br>Promo veren tot oude generatie grootte van gegevens (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. Memory. bevorderd | Bytes | Aantal positieve toename van de omvang van de oude generatie geheugengroep v처처r GC tot na GC. |
+>| Grootte van oude generatie gegevens (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. Memory. bevorderd | Bytes | Aantal positieve toename van de omvang van de oude generatie geheugengroep v처처r GC tot na GC. |
 >| JVM. gc. Memory. bevorderd | JVM. gc. Memory. bevorderd | Bytes | Aantal positieve toename van de omvang van de oude generatie geheugengroep v처처r GC tot na GC. |
->| YoungGenPromotedBytes<br><br>Promo veren tot jonge generatie gegevens grootte (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. toegewezen geheugen | Bytes | Wordt opgehoogd voor een toename van de grootte van de Memory pool voor de jonge generatie na een GC tot de volgende. |
+>| Promo veren tot jonge generatie gegevens grootte (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. toegewezen geheugen | Bytes | Wordt opgehoogd voor een toename van de grootte van de Memory pool voor de jonge generatie na een GC tot de volgende. |
 >| JVM. gc. toegewezen geheugen | JVM. gc. toegewezen geheugen | Bytes | Wordt opgehoogd voor een toename van de grootte van de Memory pool voor de jonge generatie na een GC tot de volgende. |
->| GCPauseTotalCount<br><br>Aantal GC-onderbrekingen (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. pause (totaal aantal) | Count | Totaal aantal GC-pogingen nadat deze JMV is gestart, inclusief Young en oud GC. |
+>| Aantal gepauzeerde GC (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. pause (totaal aantal) | Count | Totaal aantal GC-pogingen nadat deze JMV is gestart, inclusief Young en oud GC. |
 >| JVM. gc. pause. Total. Count | JVM. gc. pause (totaal aantal) | Count | Totaal aantal GC-pogingen nadat deze JMV is gestart, inclusief Young en oud GC. |
->| GCPauseTotalTime<br><br>Totale tijd van de GC-onderbreking (afgeschaft) (verwijderd op 1 juli 2020) | JVM. gc. pause (Total-Time) | Milliseconden | Totale aantal geconsumeerde GC-tijd nadat deze JMV is gestart, met inbegrip van Young en oud GC. |
+>| Totale tijd van de GC-onderbreking (afgeschaft)<br><br>(te verwijderen na 1 juli 2020) | JVM. gc. pause (Total-Time) | Milliseconden | Totale aantal geconsumeerde GC-tijd nadat deze JMV is gestart, met inbegrip van Young en oud GC. |
 >| JVM. gc. pause. Total. time | JVM. gc. pause (Total-Time) | Milliseconden | Totale aantal geconsumeerde GC-tijd nadat deze JMV is gestart, met inbegrip van Young en oud GC. |
->| Tomcat. threads. config. Max | Tomcat. threads. config. Max | Count | Maximum aantal threads van Tomcat-configuratie |
->| Tomcat. threads. current | Tomcat. threads. current | Count | Aantal huidige threads van Tomcat |
->| Tomcat. Global. Request. Gem. tijd | Tomcat. Global. Request. Gem. tijd | Milliseconden | Gemiddelde tijd Tomcat-aanvraag |
-
 
 ### <a name="request"></a>Aanvraag
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
->| TomcatSentBytes<br><br>Tomcat totaal aantal verzonden bytes (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
+>| Tomcat totaal aantal verzonden bytes (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
 >| Tomcat. Global. sent | Tomcat. Global. sent | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft verzonden |
->| TomcatReceivedBytes<br><br>Tomcat totaal aantal ontvangen bytes (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Global. ontvangen | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft ontvangen |
+>| Totaal aantal ontvangen Tomcat-bytes (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. ontvangen | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft ontvangen |
 >| Tomcat. Global. ontvangen | Tomcat. Global. ontvangen | Bytes | De hoeveelheid gegevens die Tomcat webserver heeft ontvangen |
->| TomcatRequestTotalTime<br><br>Totale tijd van Tomcat-aanvraag (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Global. Request (Total-Time) | Milliseconden | Totale tijd van de Tomcat-webserver om de aanvragen te verwerken |
->| TomcatRequestTotalCount<br><br>Aantal Tomcat-aanvragen (verouderd) (verwijderd op 1 juli 2020) | Tomcat. Global. Request (totaal aantal) | Count | Totaal aantal verwerkte aanvragen van Tomcat-webserver |
+>| Totale tijd van Tomcat-aanvraag (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. Request (Total-Time) | Milliseconden | Totale tijd van de Tomcat-webserver om de aanvragen te verwerken |
+>| Aantal Tomcat-aanvragen (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. Request (totaal aantal) | Count | Totaal aantal verwerkte aanvragen van Tomcat-webserver |
 >| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (totaal aantal) | Count | Totaal aantal verwerkte aanvragen van Tomcat-webserver |
->| TomcatRequestMaxTime<br><br>Maximale duur van de Tomcat-aanvraag (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Global. Request. Max | Milliseconden | Maximale tijd van de Tomcat-webserver voor het verwerken van een aanvraag |
+>| Maximale duur van de Tomcat-aanvraag (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Global. Request. Max | Milliseconden | Maximale tijd van de Tomcat-webserver voor het verwerken van een aanvraag |
 >| Tomcat. Global. Request. Max | Tomcat. Global. Request. Max | Milliseconden | Maximale tijd van de Tomcat-webserver voor het verwerken van een aanvraag |
 
 ### <a name="session"></a>Sessie
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Naam van bron van Lente aandrijving | Eenheid | Details |
+>| Naam | Naam van bron van Lente aandrijving | Eenheid | Details |
 >|----|----|----|------------|
->| TomcatSessionActiveMaxCount<br><br>Aantal actieve Tomcat-sessies (verouderd) (verwijderd op 1 juli 2020) | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
+>| Aantal actieve Tomcat-sessies (verouderd)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
 >| Tomcat. Sessions. Active. Max | Tomcat. Sessions. Active. Max | Count | Het maximum aantal sessies dat tegelijkertijd actief is geweest |
->| TomcatSessionAliveMaxTime<br><br>Tijds duur van de Tomcat-sessie (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Sessions. Alive. Max | Milliseconden | Langste tijd (in seconden) dat een verlopen sessie actief was |
+>| Tijds duur van de Tomcat-sessie (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. Alive. Max | Milliseconden | Langste tijd (in seconden) dat een verlopen sessie actief was |
 >| Tomcat. Sessions. Alive. Max | Tomcat. Sessions. Alive. Max | Milliseconden | Langste tijd (in seconden) dat een verlopen sessie actief was |
->| TomcatSessionCreatedCount<br><br>Aantal gemaakte Tomcat-sessies (verouderd) (verwijderd op 1 juli 2020) | Tomcat. Sessions. created | Count | Aantal sessies dat is gemaakt |
+>| Aantal gemaakte Tomcat-sessies (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. created | Count | Aantal sessies dat is gemaakt |
 >| Tomcat. Sessions. created | Tomcat. Sessions. created | Count | Aantal sessies dat is gemaakt |
->| TomcatSessionExpiredCount<br><br>Aantal verlopen Tomcat-sessies (verouderd) (verwijderd op 1 juli 2020) | Tomcat. Sessions. Expires | Count | Aantal sessies dat is verlopen |
+>| Aantal verlopen Tomcat-sessies (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. Expires | Count | Aantal sessies dat is verlopen |
 >| Tomcat. Sessions. Expires | Tomcat. Sessions. Expires | Count | Aantal sessies dat is verlopen |
->| TomcatSessionRejectedCount<br><br>Aantal geweigerde Tomcat-sessies (afgeschaft) (verwijderd op 1 juli 2020) | Tomcat. Sessions. rejected | Count | Het aantal sessies dat niet is gemaakt, omdat het maximum aantal actieve sessies is bereikt. |
+>| Aantal geweigerde Tomcat-sessies (afgeschaft)<br><br>(verwijderd na 1 juli 2020) | Tomcat. Sessions. rejected | Count | Het aantal sessies dat niet is gemaakt, omdat het maximum aantal actieve sessies is bereikt. |
 >| Tomcat. Sessions. rejected | Tomcat. Sessions. rejected | Count | Het aantal sessies dat niet is gemaakt, omdat het maximum aantal actieve sessies is bereikt. |
 >| Tomcat. Sessions. Active. current | Tomcat. Sessions. Active. current | Count | Aantal actieve sessies van Tomcat |
 

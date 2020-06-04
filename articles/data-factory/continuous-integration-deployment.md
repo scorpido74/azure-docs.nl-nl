@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268044"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331964"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -98,7 +98,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pijp lijnen 
 
     ![Fase weergave](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Een nieuwe taak maken. Zoek naar de implementatie van een **Azure-resource groep**en selecteer vervolgens **toevoegen**.
+    b.  Een nieuwe taak maken. Zoek naar **arm-sjabloon implementatie**en selecteer **toevoegen**.
 
     c.  Selecteer in de implementatie taak het abonnement, de resource groep en de locatie voor het doel data factory. Geef indien nodig referenties op.
 

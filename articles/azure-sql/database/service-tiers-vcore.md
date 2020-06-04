@@ -1,6 +1,6 @@
 ---
 title: overzicht van vCore-inkoop model
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Met het vCore-aankoop model kunt u de reken-en opslag resources onafhankelijk van elkaar schalen, de on-premises prestaties afstemmen en de prijs optimaliseren voor Azure SQL Database en Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -10,28 +10,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044092"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324433"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database & SQL Managed instance 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>overzicht van vCore-model-Azure SQL Database en Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Het Virtual core (vCore)-aankoop model dat wordt gebruikt door Azure SQL Database en Azure SQL Managed instance biedt diverse voor delen:
 
-- Hogere reken-, geheugen-, i/o-en opslag limieten.
+- Hogere reken-, geheugen-, I/O-en opslag limieten.
 - Controle over de hardware-generatie om beter te voldoen aan de reken-en geheugen vereisten van de werk belasting.
 - Prijs kortingen voor [Azure Hybrid Benefit (AHB)](../azure-hybrid-benefit.md) en [gereserveerde instanties (RI)](reserved-capacity-overview.md).
 - Grotere transparantie in de hardware-details die de reken kracht stroomt; vereenvoudigt het plannen van migraties van on-premises implementaties.
 
 ## <a name="service-tiers"></a>Servicelagen
 
-Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek en grootschalige. De servicelaag definieert in het algemeen de opslag architectuur, ruimte-en IO-limieten en opties voor bedrijfs continuïteit die betrekking hebben op Beschik baarheid en herstel na nood gevallen.
+Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek en grootschalige. De servicelaag definieert in het algemeen de opslag architectuur, ruimte en I/O-limieten en opties voor bedrijfs continuïteit die betrekking hebben op Beschik baarheid en herstel na nood gevallen.
 
-||**Algemeen doel**|**Bedrijfs kritiek**|**Hyperscale**|
+||**Algemeen**|**Bedrijfskritiek**|**Hyperscale**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
 |Storage|Maakt gebruik van externe opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**SQL Managed instance**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**SQL database voorziene Compute**:<br/>5 GB – 4 TB<br/>**SQL-beheerd exemplaar**:<br/>32 GB-4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
@@ -46,7 +46,7 @@ Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek
 
 Raadpleeg de volgende artikelen voor meer informatie over het selecteren van een servicelaag voor uw specifieke workload:
 
-- [Wanneer u de servicelaag voor algemeen gebruik kiest](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Wanneer u de laag Algemeen-Service kiest](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [Wanneer u de laag Bedrijfskritiek-service kiest](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Wanneer u de grootschalige-servicelaag kiest](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -112,7 +112,7 @@ Zie [resource limieten voor afzonderlijke data bases (vCore)](resource-limits-vc
 
 ### <a name="selecting-a-hardware-generation"></a>Een hardware-generatie selecteren
 
-In de Azure Portal kunt u de hardware-generatie voor een SQL Database of groep selecteren op het moment dat deze wordt gemaakt, of u kunt de hardware-generatie van een bestaande SQL database of groep wijzigen.
+In de Azure Portal kunt u de hardware-generatie voor een Data Base of groep in SQL Database selecteren op het moment dat deze wordt gemaakt, of u kunt de hardware-generatie van een bestaande SQL database of groep wijzigen.
 
 **Een hardwarematige generatie selecteren bij het maken van een SQL Database of groep**
 
@@ -147,7 +147,7 @@ Selecteer op het tabblad **basis beginselen** de koppeling **Data Base configure
   
 **Het genereren van de hardware van een bestaand SQL Managed instance wijzigen**
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Selecteer op de pagina SQL Managed instance de **prijs categorie** koppeling die in de sectie instellingen is geplaatst
 
@@ -165,7 +165,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 Raadpleeg de opdracht [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) voor meer informatie.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 Gebruik de volgende CLI-opdracht:
 
@@ -228,7 +228,7 @@ Als u aan de slag wilt gaan, raadpleegt u:
 
 Zie de pagina met prijzen voor [Azure SQL database](https://azure.microsoft.com/pricing/details/sql-database/single/)voor prijs informatie.
 
-Zie voor meer informatie over de specifieke berekenings-en opslag grootten die beschikbaar zijn in de laag algemeen en bedrijfskritische service lagen: 
+Zie voor meer informatie over de specifieke berekenings-en opslag grootten die beschikbaar zijn in de laag algemeen en bedrijfskritische service lagen:
 
 - [vCore resource limieten voor Azure SQL database](resource-limits-vcore-single-databases.md).
 - [vCore resource limieten voor gegroepeerde Azure SQL database](resource-limits-vcore-elastic-pools.md).

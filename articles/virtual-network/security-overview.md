@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269870"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321493"
 ---
 # <a name="network-security-groups"></a>Netwerkbeveiligingsgroepen
 <a name="network-security-groups"></a>
 
 U kunt de Azure-netwerk beveiligings groep gebruiken voor het filteren van netwerk verkeer naar en van Azure-resources in een virtueel Azure-netwerk. Een netwerk beveiligings groep bevat [beveiligings regels](#security-rules) voor het toestaan of weigeren van binnenkomend netwerk verkeer naar of uitgaand netwerk verkeer van verschillende typen Azure-resources. Voor elke regel kunt u de bron en het doel, de poort en het protocol opgeven.
+
 In dit artikel worden de eigenschappen van een regel voor de netwerk beveiligings groep, de [standaard beveiligings regels](#default-security-rules) die worden toegepast en de regel eigenschappen beschreven die u kunt wijzigen om een uitgebreide [beveiligings regel](#augmented-security-rules)te maken.
 
 ## <a name="security-rules"></a><a name="security-rules"></a>Beveiligings regels
@@ -34,7 +35,7 @@ Een netwerkbeveiligingsgroep bevat nul regels of zoveel regels als u wilt binnen
 |---------|---------|
 |Naam|Een unieke naam binnen de netwerkbeveiligingsgroep.|
 |Prioriteit | Een getal tussen 100 en 4096. Regels worden verwerkt in volgorde van prioriteit, waarbij lagere getallen worden verwerkt vóór hogere getallen omdat lagere getallen een hogere prioriteit hebben. Zodra het verkeer overeenkomt met een regel, wordt de verwerking beëindigd. Daardoor worden regels met een lagere prioriteit (een hoger getal) die dezelfde kenmerken hebben als regels met een hogere prioriteit, niet verwerkt.|
-|Bron of doel| Een IP-adres, CIDR-blok (bijvoorbeeld 10.0.0.0/24), [servicetag](service-tags-overview.md) of [toepassingsbeveiligingsgroep](#application-security-groups). Als u een adres opgeeft voor een Azure-resource, geeft u het privé-IP-adres op dat aan de resource is toegewezen. Netwerkbeveiligingsgroepen worden verwerkt nadat Azure een openbaar IP-adres vertaalt naar een privé-IP-adres voor binnenkomend verkeer en voordat Azure een privé-IP-adres naar een openbaar IP-adres voor uitgaand verkeer vertaalt. Meer informatie over de [IP-adressen](virtual-network-ip-addresses-overview-arm.md) van Azure. Als u een bereik, servicetag of toepassingsbeveiligingsgroep opgeeft, hoeft u minder beveiligingsregels te maken. De mogelijkheid om meerdere afzonderlijke IP-adressen en-bereiken op te geven (u kunt niet meerdere service tags of toepassings groepen opgeven) in een regel worden uitgebreide [beveiligings regels](#augmented-security-rules)genoemd. Uitgebreide beveiligingsregels kunnen alleen worden gemaakt in netwerkbeveiligingsgroepen die zijn gemaakt via het Resource Manager-implementatiemodel. U kunt niet meerdere IP-adressen en IP-adresbereiken opgeven in netwerkbeveiligingsgroepen die zijn gemaakt via het klassieke implementatiemodel. Meer informatie over [implementatiemodellen van Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|Bron of doel| Een IP-adres, CIDR-blok (bijvoorbeeld 10.0.0.0/24), servicetag of toepassingsbeveiligingsgroep. Als u een adres opgeeft voor een Azure-resource, geeft u het privé-IP-adres op dat aan de resource is toegewezen. Netwerkbeveiligingsgroepen worden verwerkt nadat Azure een openbaar IP-adres vertaalt naar een privé-IP-adres voor binnenkomend verkeer en voordat Azure een privé-IP-adres naar een openbaar IP-adres voor uitgaand verkeer vertaalt. . Als u een bereik, servicetag of toepassingsbeveiligingsgroep opgeeft, hoeft u minder beveiligingsregels te maken. De mogelijkheid om meerdere afzonderlijke IP-adressen en-bereiken op te geven (u kunt niet meerdere service tags of toepassings groepen opgeven) in een regel worden uitgebreide [beveiligings regels](#augmented-security-rules)genoemd. Uitgebreide beveiligingsregels kunnen alleen worden gemaakt in netwerkbeveiligingsgroepen die zijn gemaakt via het Resource Manager-implementatiemodel. U kunt niet meerdere IP-adressen en IP-adresbereiken opgeven in netwerkbeveiligingsgroepen die zijn gemaakt via het klassieke implementatiemodel.|
 |Protocol     | TCP, UDP, ICMP of any.|
 |Richting| Hiermee wordt aangegeven of de regel van toepassing is op binnenkomend of uitgaand verkeer.|
 |Poortbereik     |U kunt één poort of een poortbereik opgeven. U kunt bijvoorbeeld 80 of 10000-10005 opgeven. Als u bereiken opgeeft, hoeft u minder beveiligingsregels te maken. Uitgebreide beveiligingsregels kunnen alleen worden gemaakt in netwerkbeveiligingsgroepen die zijn gemaakt via het Resource Manager-implementatiemodel. U kunt niet meerdere poorten of poortbereiken opgeven in dezelfde beveiligingsregel in netwerkbeveiligingsgroepen die zijn gemaakt via het klassieke implementatiemodel.   |
@@ -53,19 +54,19 @@ Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u m
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Toegang|
+|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Alle|Toestaan|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Toegang|
+|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Alle|Toestaan|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Toegang|
+|Prioriteit|Bron|Bronpoorten|Doel|Doelpoorten|Protocol|Access|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Alle|Weigeren|
 
@@ -73,19 +74,19 @@ Azure maakt de volgende standaardregels in elke netwerkbeveiligingsgroep die u m
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Alle | Toestaan |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | Alle | Toestaan |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Toegang |
+|Prioriteit|Bron|Bronpoorten| Doel | Doelpoorten | Protocol | Access |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Alle | Weigeren |
 
@@ -148,7 +149,7 @@ U kunt eenvoudig de cumulatieve regels bekijken die op een netwerkinterface word
 > Netwerk beveiligings groepen zijn gekoppeld aan subnetten of virtuele machines en Cloud Services die zijn geïmplementeerd in het klassieke implementatie model, en op subnetten of netwerk interfaces in het Resource Manager-implementatie model. Zie [Over Azure-implementatiemodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over Azure-implementatiemodellen.
 
 > [!TIP]
-> Het wordt aangeraden een netwerkbeveiligingsgroep aan hetzij een subnet, hetzij een netwerkinterface te koppelen, tenzij u een bepaalde reden hebt om ze aan beide te koppelen. Aangezien regels in een netwerkbeveiligingsgroep die aan een subnet is gekoppeld, kunnen conflicteren met regels in een netwerkbeveiligingsgroep die aan een netwerkinterface is gekoppeld, kunnen er onverwachte communicatieproblemen optreden waarvoor een probleemoplossing dient te worden uitgevoerd.
+> Tenzij u een specifieke reden hebt voor, wordt u aangeraden een netwerk beveiligings groep te koppelen aan een subnet of een netwerk interface, maar niet beide. Aangezien regels in een netwerkbeveiligingsgroep die aan een subnet is gekoppeld, kunnen conflicteren met regels in een netwerkbeveiligingsgroep die aan een netwerkinterface is gekoppeld, kunnen er onverwachte communicatieproblemen optreden waarvoor een probleemoplossing dient te worden uitgevoerd.
 
 ## <a name="azure-platform-considerations"></a>Overwegingen bij het Azure-platform
 

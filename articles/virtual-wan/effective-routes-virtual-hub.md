@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 06/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f0785f8ce2528d0c17a8aca520212df931bf394
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73515848"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343367"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>Efficiënte routes van een virtuele hub weer geven
 
@@ -40,16 +40,16 @@ Om dit in perspectief te brengen, impliceert de eerste regel dat de VS-hub de ro
 
 Gebruik de schuif balk aan de onderkant van de tabel om het "AS-pad" weer te geven.
 
-| **Beleids** |  **Volgend hoptype** | **Volgende hop** |  **Route oorsprong** |**ALS pad** |
+| **Voorvoegsel** |  **Volgend hoptype** | **Volgende hop** |  **Route oorsprong** |**ALS pad** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20.000|
-|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
-|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
+| 10.20.1.0/24|VPN |10.1.0.6, 10.1.0.7| /Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw| 20.000|
+|10.21.1.0/24 |ExpressRoute|10.1.0.10, 10.1.0.11|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/expressRouteGateways/4444a6ac74e4d85555-eastus-gw|21000|
+|10.23.1.0/24| VPN |10.1.0.6, 10.1.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/vpnGateways/343a19aa6ac74e4d81f05ccccf1536cf-eastus-gw|23000|
 |10.4.0.0/16|Virtual Network verbinding| On-link |  |  |
-|10.5.0.0/16| IP-adres| 10.4.0.6|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|0.0.0.0/0| IP-adres| `<Azure Firewall IP>` |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
-|10.22.1.0/16| Externe hub|10.8.0.6, 10.8.0.7|/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
-|10.9.0.0/16| Externe hub|  On-link |/Subscriptions/`<sub>`/resourceGroups/`<rg>`/providers/Microsoft.Network/virtualhubs/westhub_1| |
+|10.5.0.0/16| IP-adres| 10.4.0.6|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
+|0.0.0.0/0| IP-adres| `<Azure Firewall IP>` |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/easthub_1/routetables/table_1| |
+|10.22.1.0/16| Externe hub|10.8.0.6, 10.8.0.7|/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_| 4848-22000 |
+|10.9.0.0/16| Externe hub|  On-link |/Subscriptions/ `<sub>` /ResourceGroups/ `<rg>` /providers/Microsoft.Network/virtualhubs/westhub_1| |
 
 >[!NOTE]
 > Als het VS-Oost en de Europa-west hubs niet communiceren met elkaar in de voorbeeld topologie, is de door u geleerde route (10.9.0.0/16) niet aanwezig. Hubs adverteren alleen netwerken die rechtstreeks met hen zijn verbonden.
@@ -59,7 +59,7 @@ Gebruik de schuif balk aan de onderkant van de tabel om het "AS-pad" weer te gev
 
 ### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Over de route tabel van de hub
 
-U kunt een virtuele hub-route maken en de route Toep assen op de route tabel van de virtuele hub. U kunt meerdere routes toepassen op de routetabel van de virtuele hub. Hiermee kunt u een route voor het doel-VNet instellen via een IP-adres (meestal het virtuele netwerk apparaat (NVA) in een spoke-VNet). Zie [verkeer van een virtuele hub naar een NVA routeren](virtual-wan-route-table-portal.md)voor meer informatie over nva's.
+U kunt een virtuele hub-route maken en de route Toep assen op de route tabel van de virtuele hub. U kunt meerdere routes toepassen op de routetabel van de virtuele hub. Hiermee kunt u een route voor het doel-VNet instellen via een IP-adres (meestal het virtuele netwerk apparaat (NVA) in een spoke-VNet). Zie [verkeer van een virtuele hub naar een NVA routeren](virtual-wan-route-table-portal.md)voor meer informatie over nva's. Houd er rekening mee dat deze routes niet worden weer gegeven in de juiste route tabel. De tabel met actieve routes bevat alleen de voor voegsels voor lokale en externe hubs plus verbonden Virtual Network adres ruimte en routes die via BGP zijn geleerd.
 
 ### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Over de standaard route (0.0.0.0/0)
 

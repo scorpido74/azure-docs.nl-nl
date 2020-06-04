@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6a0a4c0885552d7f8697a1f13b8750e084d8770a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5aba4c690f91b515424eb866d387652ca9f40e7e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041722"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344608"
 ---
 # <a name="get-the-required-values-for-authenticating-an-application-to-access-azure-sql-database-from-code"></a>De vereiste waarden ophalen voor het verifiëren van een toepassing voor toegang tot Azure SQL Database vanuit code
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Als u SQL Database wilt maken en beheren met code, moet u uw app registreren in het Azure Active Directory (AAD)-domein in het abonnement waar uw Azure-resources zijn gemaakt.
+Als u Azure SQL Database wilt maken en beheren, moet u uw app registreren in het Azure Active Directory Azure AD-domein in het abonnement waar uw Azure-resources zijn gemaakt.
 
 ## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Een service-principal maken voor toegang tot resources vanuit een toepassing
 

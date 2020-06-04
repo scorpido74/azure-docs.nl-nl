@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800659"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340467"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -274,9 +274,12 @@ Klanten worden meestal maandelijks gefactureerd voor aankopen in de vorige factu
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Hoe vaak ontvang ik uitbetalingen voor verkoop via de commerciële Marketplace?
 
-Uitbetalingen gebeuren maandelijks. Verzamelingen die in de afgelopen maand zijn verwerkt, worden eenmaal uitgekeerd en de verkoop moet een minimale gecombineerde waarde van $50,00 hebben.
+Uitbetalingen gebeuren maandelijks. Zie voor meer informatie over betalings schema's uw aanstaande uitbetalingen in partner centrum en de manier waarop de klant niet-betalingen doen, de [Details van het uitbetalings beleid](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details).
 
-Creditcard abonnementen en-aankopen worden maandelijks gefactureerd en facturen op basis van een micro soft-klant overeenkomst of Enterprise Agreement zijn mogelijk minder vaak. Vanaf het moment dat klanten worden gefactureerd, geven we deze 30 dagen aan. Nadat we de betaling hebben ontvangen, gaan de creditcard transacties in een periode van 30 dagen duren.
+- Voor trans acties waarbij de klant een Enterprise Agreement heeft gebruikt, worden uitbetalingen in de volgende uitbetalings cyclus in 30 dagen na de klant factuur uitgegeven. 
+- Voor trans acties waarbij de klant een credit card heeft gebruikt, is er een extra periode van 30 dagen nadat we een betaling hebben ontvangen om de middelen duidelijk te maken en zijn er geen terugstortingen of verdachte fraude.
+
+Uitbetalingen worden alleen verleend wanneer de verkoop een minimale gecombineerde waarde van $50,00 heeft bereikt.
 
 Zie [betalings drempels, methoden en tijd frames](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes)voor meer informatie.
 

@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 0b0ece8adf58d894d9ccafbbc97dea9fba2b3c5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046794"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343826"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Batch verwerking gebruiken om de prestaties van Azure SQL Database en Azure SQL Managed instance-toepassingen te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Met batch bewerkingen voor Azure SQL Database en Azure SQL Managed instance worden de prestaties en schaal baarheid van uw toepassingen aanzienlijk verbeterd. Het eerste deel van dit artikel bevat een aantal voor beelden van test resultaten waarmee opeenvolgende en batch-aanvragen worden vergeleken met een data base in Azure SQL Database of Azure SQL Managed instance om de voor delen te begrijpen. In de rest van het artikel ziet u de technieken, scenario's en aandachtspunten om u te helpen bij het gebruik van batch verwerking in uw Azure-toepassingen.
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Waarom is batching belang rijk voor Azure SQL Database en Azure SQL Managed instance
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Waarom is batching belang rijk voor Azure SQL Database en Azure SQL Managed instance?
 
 Het batch-aanroepen van een externe service is een bekende strategie voor het verbeteren van de prestaties en schaal baarheid. Er zijn vaste verwerkings kosten voor alle interacties met een externe service, zoals serialisatie, netwerk overdracht en deserialisatie. Als u veel afzonderlijke trans acties inpakt in één batch, worden deze kosten geminimaliseerd.
 
@@ -331,7 +331,7 @@ In onze tests is het niet handig om grote batches te verbreken in kleinere segme
 > [!NOTE]
 > Resultaten zijn geen benchmarks. Zie de [Opmerking over timing resultaten in dit artikel](#note-about-timing-results-in-this-article).
 
-U kunt zien dat de beste prestaties voor 1000 rijen allemaal tegelijk worden verzonden. In andere tests (hier niet weer gegeven) is er een kleine prestatie verbetering opgetreden bij het opsplitsen van een batch van 10000 in twee batches van 5000. Maar het tabel schema voor deze tests is relatief eenvoudig. u moet dus testen uitvoeren op uw specifieke gegevens en batch grootten om deze resultaten te controleren.
+U kunt zien dat de beste prestaties voor 1000 rijen allemaal tegelijk worden verzonden. In andere tests (hier niet weer gegeven) is er een kleine prestatie verbetering opgetreden bij het opsplitsen van een 10000-tabelrij batch in twee batches van 5000. Maar het tabel schema voor deze tests is relatief eenvoudig. u moet dus testen uitvoeren op uw specifieke gegevens en batch grootten om deze resultaten te controleren.
 
 Een andere factor waarmee u rekening moet houden, is dat als de totale batch te groot wordt, Azure SQL Database of Azure SQL Managed instance de batch mogelijk beperkt en weigert. Test uw specifieke scenario om te bepalen of er sprake is van een ideale Batch grootte voor de beste resultaten. Maak de Batch grootte configureerbaar tijdens runtime om snelle aanpassingen mogelijk te maken op basis van de prestaties of fouten.
 

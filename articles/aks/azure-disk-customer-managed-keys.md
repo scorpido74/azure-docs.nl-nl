@@ -4,12 +4,12 @@ description: Gebruik uw eigen sleutels (BYOK) om AKS-besturings systeem en gegev
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c16bdb613c60a8eef3efd1be8d7ab1a78e002f98
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141531"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325096"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Breng uw eigen sleutels (BYOK) met Azure-schijven in azure Kubernetes service (AKS)
 
@@ -110,9 +110,8 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 Wanneer er nieuwe knooppunt groepen worden toegevoegd aan het hierboven gemaakte cluster, wordt de door de klant beheerde sleutel die tijdens het maken is gegeven, gebruikt voor het versleutelen van de besturingssysteem schijf.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>Uw AKS-cluster gegevens schijf versleutelen
-
-U kunt de AKS-gegevens schijven ook versleutelen met uw eigen sleutels.
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>Uw AKS-cluster gegevens schijf versleutelen (optioneel)
+De coderings sleutel van de besturingssysteem schijf wordt gebruikt voor het versleutelen van de gegevens schijf als er geen sleutel wordt gegeven voor de gegevens schijf van v 1.17.2, en u kunt ook AKS-gegevens schijven met uw andere sleutels versleutelen.
 
 > [!IMPORTANT]
 > Zorg ervoor dat u beschikt over de juiste AKS-referenties. De Service-Principal moet Inzender toegang hebben tot de resource groep waar de diskencryptionset wordt geïmplementeerd. Anders wordt er een fout bericht weer geven dat de service-principal geen machtigingen heeft.
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>Beperkingen
 
 * BYOK is momenteel alleen beschikbaar in GA en preview in bepaalde [Azure-regio's][supported-regions]
-* Schijf versleuteling van het besturings systeem wordt ondersteund met Kubernetes-versie 1,17 en hoger   
+* Versleuteling van gegevens schijven ondersteund met Kubernetes-versie 1,17 en hoger   
 * Alleen beschikbaar in regio's waar BYOK wordt ondersteund
 * Versleuteling met door de klant beheerde sleutels is momenteel alleen beschikbaar voor nieuwe AKS-clusters, maar bestaande clusters kunnen niet worden bijgewerkt
-* AKS-cluster met Virtual Machine Scale Sets is vereist, geen ondersteuning voor beschikbaarheids sets voor virtuele machines
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

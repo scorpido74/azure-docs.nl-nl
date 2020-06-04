@@ -4,12 +4,12 @@ description: In dit artikel worden populaire algemene vragen over Azure Site Rec
 ms.topic: conceptual
 ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 2e6cbac9896fc2bc6b3d4d95a28a25d8177bd7a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: b16301bb092395ac71a5bfd6f53f392ab708b10c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193564"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345169"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -226,6 +226,9 @@ Ja. Azure Site Recovery voor Linux-besturings systeem ondersteunt aangepaste scr
 ```
 
 5. Voeg de opdrachten voor invoer/uitvoer in de voor-en na-stap toe voor de toepassingen die app-consistentie vereisen. U kunt ervoor kiezen om een ander script toe te voegen en deze aan te roepen van ' customscript.sh ' met vooraf en post opties.
+
+>[!Note]
+>De versie van de Site Recovery-agent moet 9,24 of hoger zijn om aangepaste scripts te kunnen ondersteunen.
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Als ik een failover naar Azure krijg, krijg ik dan na een failover toegang tot de Azure-Vm's?

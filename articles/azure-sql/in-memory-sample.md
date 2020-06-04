@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aa26b0c6e30413366e06673a0890b21434fc842b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047340"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345271"
 ---
 # <a name="in-memory-sample"></a>Voor beeld in het geheugen
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Voor een meer vereenvoudigde, maar visueel aantrekkelijke prestatie demo voor in
 
 ### <a name="installation-steps"></a>Installatiestappen
 
-1. Maak in de [Azure Portal](https://portal.azure.com/)een Premium-of bedrijfskritiek-Data Base op een server. Stel de **bron** in op de voorbeeld database AdventureWorksLT. Zie [uw eerste Azure-SQL database maken](database/single-database-create-quickstart.md)voor gedetailleerde instructies.
+1. Maak in de [Azure Portal](https://portal.azure.com/)een Premium-of bedrijfskritiek-Data Base op een server. Stel de **bron** in op de voorbeeld database AdventureWorksLT. Zie [uw eerste data base maken in Azure SQL database](database/single-database-create-quickstart.md)voor gedetailleerde instructies.
 
 2. Maak verbinding met de data base met SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
@@ -365,7 +365,7 @@ In een Data Base met de prijs categorie P2 kunt u ongeveer negen keer de prestat
 
 #### <a name="tools"></a>Hulpprogramma's
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure-portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

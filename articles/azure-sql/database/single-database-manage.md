@@ -1,6 +1,6 @@
 ---
 title: Servers en individuele data bases maken & beheren
-description: Meer informatie over het maken en beheren van servers en individuele data bases in Azure SQL Database met behulp van de Azure Portal, Power shell, de AZ CLI, Transact-SQL (T-SQL) en rest-API.
+description: Meer informatie over het maken en beheren van servers en individuele data bases in Azure SQL Database met behulp van de Azure Portal, Power shell, de Azure CLI, Transact-SQL (T-SQL) en rest-API.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,21 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 301d881e2065234bbd1a38e39eb1806d23c6809a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0f348ea67583d10dae2ebc548a48b7e74b66a958
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041204"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343345"
 ---
 # <a name="create-and-manage-servers-and-single-databases-in-azure-sql-database"></a>Servers en individuele data bases maken en beheren in Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-U kunt met behulp van de Azure Portal, Power shell, Azure CLI, REST API en Transact-SQL servers en afzonderlijke data bases maken en beheren in Azure SQL Database.
+U kunt servers en individuele data bases maken en beheren in Azure SQL Database met behulp van de Azure Portal, Power shell, de Azure CLI, REST API en Transact-SQL.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="the-azure-portal"></a>Azure Portal
 
-U kunt de resource groep voor de Azure SQL Database van tevoren of tijdens het maken van de server maken.
+U kunt de resource groep voor Azure SQL Database van tevoren of tijdens het maken van de server maken.
 
 ### <a name="create-a-server"></a>Een server maken
 
@@ -64,7 +63,7 @@ Als u een bestaande Data Base wilt beheren, gaat u naar de pagina **SQL-data bas
 Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerde Data bases en firewalls op server niveau met Azure PowerShell te maken en te beheren. Als u Power shell wilt installeren of upgraden, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> Zie [Power shell-voorbeeld scripts gebruiken om een Azure SQL-Data Base te maken en een firewall regel op server niveau te configureren](scripts/create-and-configure-database-powershell.md) en een [SQL-Data Base te bewaken en te schalen met behulp van Power](scripts/monitor-and-scale-database-powershell.md)shell.
+> Zie Power [shell gebruiken om een Data Base te maken in SQL database en een firewall regel op server niveau te configureren](scripts/create-and-configure-database-powershell.md) en een [data base in SQL database te controleren en te schalen met behulp van Power](scripts/monitor-and-scale-database-powershell.md)shell voor voorbeeld scripts voor Power shell.
 
 | Cmdlet | Beschrijving |
 | --- | --- |
@@ -83,12 +82,12 @@ Gebruik de volgende Power shell-cmdlets om servers, afzonderlijke en gegroepeerd
 |[Remove-AzSqlServerFirewallRule](/powershell/module/az.sql/remove-azsqlserverfirewallrule)|Hiermee verwijdert u een firewall regel van een server.|
 | New-AzSqlServerVirtualNetworkRule | Hiermee maakt u een regel voor het [*virtuele netwerk*](vnet-service-endpoint-rule-overview.md), op basis van een subnet dat Virtual Network Service-eind punt is. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="the-azure-cli"></a>De Azure CLI
 
-Als u de servers, data bases en firewalls met [Azure cli](/cli/azure)wilt maken en beheren, gebruikt u de volgende [Azure cli](/cli/azure/sql/db) -opdrachten. Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
+Gebruik de volgende [Azure cli](/cli/azure/sql/db) -opdrachten om de servers, data bases en firewalls te maken en te beheren met [de Azure cli](/cli/azure). Gebruik de [Cloud Shell](/azure/cloud-shell/overview) om de CLI in uw browser uit te voeren of [installeer](/cli/azure/install-azure-cli) de CLI op macOS, Linux of Windows. Zie [elastische Pools](elastic-pool-overview.md)voor het maken en beheren van elastische Pools.
 
 > [!TIP]
-> Zie [een enkele Azure SQL database maken met behulp van de Azure cli](az-cli-script-samples-content-guide.md)voor een Snelstartgids van Azure cli. Zie voor voor beelden van Azure CLI-scripts [gebruik van CLI om één Azure SQL database te maken en een SQL database firewall regel te configureren](scripts/create-and-configure-database-cli.md) en [CLI te gebruiken om één Azure SQL database te controleren en te schalen](scripts/monitor-and-scale-database-cli.md).
+> Zie [een enkele Azure SQL database maken met behulp van de Azure cli](az-cli-script-samples-content-guide.md)voor een Snelstartgids van Azure cli. Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een Data Base te maken in Azure SQL database en een SQL database firewall regel configureren](scripts/create-and-configure-database-cli.md) en [CLI gebruiken om een data base in Azure SQL database te controleren en te schalen](scripts/monitor-and-scale-database-cli.md).
 >
 
 | Cmdlet | Beschrijving |
@@ -127,16 +126,16 @@ Gebruik de volgende T-SQL-opdrachten om de servers, data bases en firewalls te m
 |[DATA BASE MAKEN](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)|Hiermee maakt u een nieuwe afzonderlijke data base. U moet zijn verbonden met de hoofd database om een nieuwe Data Base te kunnen maken.|
 | [ALTER DATA BASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Hiermee wijzigt u een Data Base of elastische pool. |
 |[DATA BASE VERWIJDEREN](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
-|[sys. database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor Azure SQL Database of een Azure Synapse SQL-groep. Als u bent aangemeld bij de hoofd database op een server in SQL Database, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
-|[sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
-|[sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
+|[sys. database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor Azure SQL Database of een Azure Synapse Analytics SQL-groep. Als u bent aangemeld bij de hoofd database op een server in SQL Database, wordt er informatie weer gegeven over alle data bases. Voor Azure Synapse Analytics moet u verbinding hebben met de hoofd database.|
+|[sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
+|[sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een data base in Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
 |[sys. database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor SQL Database connectiviteits gebeurtenissen, met een overzicht van geslaagde en mislukte database verbindingen. |
 |[sys. event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database verbindingen, verbindings fouten en deadlocks geretourneerd. U kunt deze informatie gebruiken om uw database activiteit bij SQL Database bij te houden of problemen op te lossen.|
 |[sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Hiermee worden de firewall instellingen op server niveau voor uw server gemaakt of bijgewerkt. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau. Een firewall regel op server niveau kan alleen worden gemaakt met behulp van Transact-SQL nadat de eerste firewall regel op server niveau is gemaakt door een gebruiker met machtigingen op Azure-niveau|
-|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan uw Azure SQL Database.|
+|[sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan uw data base in Azure SQL Database.|
 |[sp_delete_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Hiermee verwijdert u Firewall instellingen op server niveau van uw server. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau.|
-|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Hiermee worden de firewall regels op database niveau voor uw Azure SQL Database gemaakt of bijgewerkt. De firewall regels voor de data base kunnen worden geconfigureerd voor de hoofd database en voor gebruikers databases op SQL Database. Database firewall regels zijn handig wanneer u Inge sloten database gebruikers gebruikt. |
-|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op database niveau die zijn gekoppeld aan uw Azure SQL Database. |
+|[sp_set_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Hiermee worden de firewall regels op database niveau voor uw data base in Azure SQL Database gemaakt of bijgewerkt. De firewall regels voor de data base kunnen worden geconfigureerd voor de hoofd database en voor gebruikers databases op SQL Database. Database firewall regels zijn handig wanneer u Inge sloten database gebruikers gebruikt. |
+|[sys.database_firewall_rules](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op database niveau die zijn gekoppeld aan uw data base in Azure SQL Database. |
 |[sp_delete_database_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Hiermee verwijdert u de firewall-instelling op database niveau uit een Data Base. |
 
 ## <a name="rest-api"></a>REST-API
@@ -166,3 +165,4 @@ Gebruik deze REST API aanvragen om de servers, data bases en firewalls te maken 
 
 - Zie [migreren naar Azure SQL database](migrate-to-database-from-sql-server.md)voor meer informatie over het migreren van een SQL Server Data Base naar Azure.
 - Zie [functies](features-comparison.md)voor meer informatie over ondersteunde functies.
+ 

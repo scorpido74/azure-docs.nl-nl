@@ -4,13 +4,13 @@ description: Met deze python REST-gebaseerde Snelstartgids publiceert u uw Knowl
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 6f053ecbd58d3c2527c1b904437dcc4715c76af1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 6805ac21ff36e76fd07c3d38b34e7de8d16963a3
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851650"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342677"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Snelstart: Een knowledge base in QnA Maker publiceren met behulp van Python
 
@@ -23,7 +23,7 @@ Deze Snelstartgids roept QnA Maker REST Api's aan:
 
 * [Python 3.7](https://www.python.org/downloads/)
 * U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
-* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in `kbid` de query teken reeks parameter, zoals hieronder wordt weer gegeven.
+* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in de `kbid` query teken reeks parameter, zoals hieronder wordt weer gegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 

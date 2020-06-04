@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1536773840693e943b1e32f0ae7358b8b2ee7ce9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846049"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324637"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -106,6 +106,9 @@ Meer informatie over het [stoppen van replicatie naar een replica](howto-read-re
 ### <a name="pricing-tiers"></a>Prijscategorieën
 
 Het lezen van replica's is momenteel alleen beschikbaar in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
+
+> [!NOTE]
+> De kosten voor het uitvoeren van de replica server zijn gebaseerd op de regio waarin de replica-server wordt uitgevoerd.
 
 ### <a name="master-server-restart"></a>Hoofd server opnieuw opstarten
 

@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639628"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337747"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Azure-Multi-Factor Authentication per gebruiker inschakelen om aanmeldings gebeurtenissen te beveiligen
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Microsoft Azure Multi-Factor Authentication per gebruiker inschakelen om aanmeldingsgebeurtenissen te beveiligen
 
 Er zijn twee manieren om aanmeldings gebeurtenissen van gebruikers te beveiligen door multi-factor Authentication in azure AD te vereisen. De eerste en de voorkeurs optie is het instellen van een beleid voor voorwaardelijke toegang waarvoor multi-factor Authentication onder bepaalde voor waarden is vereist. De tweede optie is om elke gebruiker in te scha kelen voor Azure Multi-Factor Authentication. Wanneer gebruikers afzonderlijk worden ingeschakeld, voeren ze multi-factor Authentication elke keer dat ze zich aanmelden (met enkele uitzonde ringen, zoals wanneer ze zich aanmelden vanaf vertrouwde IP-adressen of wanneer de functie _onthouden apparaten_ is ingeschakeld).
 
 > [!NOTE]
-> Het inschakelen van Azure Multi-Factor Authentication met beleids regels voor voorwaardelijke toegang is de aanbevolen methode. Het wijzigen van de gebruikers status wordt niet meer aanbevolen, tenzij uw licenties geen voorwaardelijke toegang bevatten, omdat gebruikers elke keer dat ze zich aanmelden, MFA moeten uitvoeren.
+> Het inschakelen van Azure Multi-Factor Authentication met beleids regels voor voorwaardelijke toegang is de aanbevolen methode. Het wijzigen van de gebruikers status wordt niet meer aanbevolen, tenzij uw licenties geen voorwaardelijke toegang bevatten, omdat gebruikers elke keer dat ze zich aanmelden, MFA moeten uitvoeren. Zie [zelf studie: aanmeldings gebeurtenissen voor beveiligde gebruikers met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met behulp van voorwaardelijke toegang.
 >
-> Zie [zelf studie: aanmeldings gebeurtenissen voor beveiligde gebruikers met Azure multi-factor Authentication](tutorial-enable-azure-mfa.md)om aan de slag te gaan met behulp van voorwaardelijke toegang.
+> Voor Azure AD-gratis tenants zonder voorwaardelijke toegang kunt u de [standaard instellingen voor beveiliging gebruiken om gebruikers te beveiligen](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Gebruikers statussen van Azure Multi-Factor Authentication
 

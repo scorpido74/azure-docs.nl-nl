@@ -1,6 +1,6 @@
 ---
 title: Algemene verbindingsfouten oplossen Azure SQL-database
-description: Biedt stappen voor het oplossen van problemen met Azure SQL Database verbindingen en het oplossen van andere Azure SQL Database of SQL Managed instance-specifieke problemen
+description: Biedt stappen voor het oplossen van problemen met Azure SQL Database verbindingen en het oplossen van andere Azure SQL Database of Azure SQL Managed instance-specifieke problemen
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
@@ -9,17 +9,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0420138ac7366916e8b83cf40abcab1a376017bd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e22f962c69091e783b8f6ab55905a02025213f5e
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116798"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321390"
 ---
-# <a name="troubleshooting-connectivity-issues-and-other-errors-with-sql-database-and-sql-managed-instance"></a>Verbindings problemen en andere fouten oplossen met SQL Database en SQL Managed instance
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Verbindings problemen en andere fouten oplossen met Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Er worden fout berichten weer gegeven wanneer de verbinding met Azure SQL Database of een door SQL beheerd exemplaar mislukt. Deze verbindings problemen kunnen worden veroorzaakt door herconfiguratie, Firewall instellingen, een time-out voor de verbinding, onjuiste aanmeldings gegevens of het Toep assen van aanbevolen procedures en ontwerp richtlijnen tijdens het ontwerp proces van de [toepassing](develop-overview.md) . Daarnaast kunt u geen verbinding meer maken als de maximum limiet van sommige bronnen voor Azure SQL Database of SQL Managed instance wordt bereikt.
+Er worden fout berichten weer gegeven wanneer de verbinding met Azure SQL Database of een door Azure SQL beheerd exemplaar mislukt. Deze verbindings problemen kunnen worden veroorzaakt door herconfiguratie, Firewall instellingen, een time-out voor de verbinding, onjuiste aanmeldings gegevens of het Toep assen van aanbevolen procedures en ontwerp richtlijnen tijdens het ontwerp proces van de [toepassing](develop-overview.md) . Daarnaast kunt u geen verbinding meer maken als de maximum limiet van sommige bronnen voor Azure SQL Database of SQL Managed instance wordt bereikt.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Tijdelijke fout berichten voor fouten (40197, 40613 en andere)
 
@@ -30,7 +30,7 @@ De Azure-infrastructuur biedt de mogelijkheid om servers dynamisch opnieuw te co
 | Foutcode | Ernst | Beschrijving |
 | ---:| ---:|:--- |
 | 4060 |16 |Kan de data base%. &#x2a;ls niet openen die door de aanmelding is aangevraagd. De aanmelding is mislukt. Zie [fouten 4000 tot 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) voor meer informatie.|
-| 40197 |17 |De service heeft een fout aangetroffen bij het verwerken van uw aanvraag. Probeer het opnieuw. Fout code% d.<br/><br/>U ontvangt deze fout melding wanneer de service niet beschikbaar is vanwege software-of hardware-upgrades, hardwarefouten of andere failover-problemen. De fout code (% d) Inge sloten in het bericht van fout 40197] bevat aanvullende informatie over het soort fout of failover dat heeft plaatsgevonden. Enkele voor beelden van de fout codes zijn Inge sloten in het bericht met de fout 40197 zijn 40020, 40143, 40166 en 40540.<br/><br/>Als u opnieuw verbinding maakt, wordt u automatisch verbonden met een gezonde kopie van uw data base. Uw toepassing moet fout 40197 opvangen, de Inge sloten fout code (% d) in het bericht voor het oplossen van problemen registreren en opnieuw proberen verbinding te maken met SQL Database totdat de resources beschikbaar zijn en uw verbinding opnieuw tot stand is gebracht. Zie [tijdelijke fouten](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)voor meer informatie.|
+| 40197 |17 |De service heeft een fout aangetroffen bij het verwerken van uw aanvraag. Probeer het opnieuw. Fout code% d.<br/><br/>U ontvangt deze fout melding wanneer de service niet beschikbaar is vanwege software-of hardware-upgrades, hardwarefouten of andere failover-problemen. De fout code (% d) Inge sloten in het bericht van fout 40197 bevat aanvullende informatie over het soort fout of failover dat heeft plaatsgevonden. Enkele voor beelden van de fout codes zijn Inge sloten in het bericht met de fout 40197 zijn 40020, 40143, 40166 en 40540.<br/><br/>Als u opnieuw verbinding maakt, wordt u automatisch verbonden met een gezonde kopie van uw data base. Uw toepassing moet fout 40197 opvangen, de Inge sloten fout code (% d) in het bericht voor het oplossen van problemen registreren en opnieuw proberen verbinding te maken met SQL Database totdat de resources beschikbaar zijn en uw verbinding opnieuw tot stand is gebracht. Zie [tijdelijke fouten](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)voor meer informatie.|
 | 40501 |20 |De service is momenteel te druk. Voer de aanvraag na 10 seconden opnieuw uit. Incident-ID:% ls. Code:% d. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md).|
 | 40613 |17 |Data Base%. &#x2a;ls op server%. &#x2a;LS is momenteel niet beschikbaar. Probeer de verbinding later opnieuw. Als het probleem zich blijft voordoen, neemt u contact op met de klant ondersteuning en geeft u de sessie tracering-ID%. &#x2a;ls.<br/><br/> Deze fout kan optreden als er al een DAC (dedicated Administrator Connection) is ingesteld op de data base. Zie [tijdelijke fouten](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)voor meer informatie.|
 | 49918 |16 |Kan aanvraag niet verwerken. Er zijn onvoldoende bronnen om de aanvraag te verwerken.<br/><br/>De service is momenteel te druk. Voer de aanvraag later opnieuw uit. Zie voor meer informatie: <br/>&bull;&nbsp; [Logische SQL Server-Resource limieten](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor afzonderlijke data bases](service-tiers-dtu.md)<br/>&bull;&nbsp; [Op DTU gebaseerde limieten voor elastische Pools](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor afzonderlijke data bases](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [limieten op basis van vCore voor elastische Pools](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Resource limieten voor Azure SQL Managed instance](../managed-instance/resource-limits.md). |
@@ -390,4 +390,4 @@ Zie [logboek registratie van diagnostische gegevens inschakelen voor apps in azu
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Azure SQL Database connectiviteits architectuur](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Netwerk toegangs beheer van Azure SQL Database en Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL Database-en Azure Synapse Analytics-netwerk toegangs beheer](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

@@ -2,14 +2,14 @@
 title: Ontwerpen en runtime-sleutels gebruiken-LUIS
 description: Wanneer u Language Understanding (LUIS) voor het eerst gebruikt, hoeft u geen ontwerp sleutel te maken. Wanneer u van plan bent om de app te publiceren, moet u het runtime-eind punt gebruiken om de runtime sleutel te maken en toe te wijzen aan de app.
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101022"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344455"
 ---
 # <a name="create-luis-resources"></a>LUIS-resources maken
 
@@ -51,7 +51,7 @@ Wanneer u klaar bent om uw Voorspellings eindpunt te publiceren, [maakt](#create
 
 Gebruik de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) om elke resource afzonderlijk te maken.
 
-Resource `kind`:
+Resource `kind` :
 
 * Ontwerp`LUIS.Authoring`
 * Voorspellings`LUIS`
@@ -64,13 +64,13 @@ Resource `kind`:
 
     Hiermee opent u een browser waarmee u het juiste account en verificatie kunt selecteren.
 
-1. Maak een **Luis-ontwerp bron**, van de `LUIS.Authoring`soort, `my-luis-authoring-resource` met de naam in de _bestaande_ resource groep met de naam `my-resource-group` voor de `westus` regio.
+1. Maak een **Luis-ontwerp bron**, van `LUIS.Authoring` de soort, met `my-luis-authoring-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio.
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Maak een **Luis-Voorspellings eindpunt bron**, van `LUIS`het type `my-luis-prediction-resource` , met de naam in de `my-resource-group` _bestaande_ resource groep met de naam voor de `westus` regio. Als u een hogere door voer wilt dan de gratis laag, `F0` wijzigt `S0`u in. Meer informatie over [prijs categorieën en door Voer](luis-limits.md#key-limits).
+1. Maak een **Luis-Voorspellings eindpunt bron**, van `LUIS` het type, met `my-luis-prediction-resource` de naam in de _bestaande_ resource groep met `my-resource-group` de naam voor de `westus` regio. Als u een hogere door voer wilt dan de gratis laag, wijzigt u `F0` in `S0` . Meer informatie over [prijs categorieën en door Voer](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -111,9 +111,9 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     Deze bericht-API vereist de volgende instellingen:
 
-    |Header|Waarde|
+    |Koptekst|Waarde|
     |--|--|
-    |`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de token waarde moet worden voorafgegaan door het `Bearer` woord en een spatie.|
+    |`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
     |`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
 
     Deze API retourneert een matrix van JSON-objecten van uw LUIS-abonnementen, waaronder de abonnements-ID, resource groep en resource naam, geretourneerd als account naam. Zoek het ene item in de matrix die de LUIS-resource is die u wilt toewijzen aan de LUIS-app.
@@ -124,9 +124,9 @@ Voor Automation-doel einden, zoals een CI/CD-pijp lijn, wilt u mogelijk de toewi
 
     |Type|Instelling|Waarde|
     |--|--|--|
-    |Header|`Authorization`|De waarde van `Authorization` is `Bearer {token}`. U ziet dat de token waarde moet worden voorafgegaan door het `Bearer` woord en een spatie.|
-    |Header|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
-    |Header|`Content-type`|`application/json`|
+    |Koptekst|`Authorization`|De waarde van `Authorization` is `Bearer {token}` . U ziet dat de token waarde moet worden voorafgegaan door het woord `Bearer` en een spatie.|
+    |Koptekst|`Ocp-Apim-Subscription-Key`|Uw ontwerp sleutel.|
+    |Koptekst|`Content-type`|`application/json`|
     |String|`appid`|De id van de LUIS-app.
     |Hoofdtekst||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "ResourceGroup-2",<br>"AccountName": "Luis-uswest-S0-2"}|
 

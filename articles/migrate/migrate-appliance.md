@@ -3,12 +3,12 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235344"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323804"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -49,7 +49,7 @@ De volgende tabel bevat een overzicht van de Azure Migrate vereisten voor VMware
 **Detectie limieten** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
 **EICELLEN-sjabloon** | Downloaden van portal of van https://aka.ms/migrate/appliance/vmware .<br/><br/> De download grootte is 11,2 GB.<br/><br/> De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 **PowerShell-script** | [Downloaden](https://go.microsoft.com/fwlink/?linkid=2105112)van script.<br/><br/> 
-**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een virtuele VMware-machine uitvoert, hebt u voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen die aan de vereisten voldoet.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten. 
+**Software/hardware** |  Het apparaat moet worden uitgevoerd op de computer met Windows Server 2016, 32-GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/><br/> Als u het apparaat op een virtuele VMware-machine uitvoert, hebt u voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen die aan de vereisten voldoet.<br/><br/> Als u het apparaat op een fysieke computer uitvoert, moet u ervoor zorgen dat Windows Server 2016 wordt uitgevoerd en voldoet aan de hardwarevereisten.
 **VMware-vereisten** | Als u het apparaat als een virtuele VMware-machine implementeert, moet dit worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
 **VDDK (migratie zonder agent)** | Als u het apparaat als een virtuele VMware-machine implementeert en u een migratie zonder agent uitvoert, moet de VMware vSphere-VDDK op de apparaat-VM zijn geïnstalleerd.
 **Hashwaarde-eicellen** | [Controleer](tutorial-assess-vmware.md#verify-security) de hash-waarden van de eicellen-sjabloon.
@@ -98,7 +98,7 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 
 ### <a name="public-cloud-urls"></a>Url's voor open bare Clouds
 
-**URL** | **Nadere**  
+**URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Ga naar Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Meld u aan bij uw Azure-abonnement.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
 
 ### <a name="government-cloud-urls"></a>Cloud-Url's voor de overheid
 
-**URL** | **Nadere**  
+**URL** | **Details**  
 --- | --- |
 *. portal.azure.us  | Ga naar Azure Portal.
 graph.windows.net | Meld u aan bij uw Azure-abonnement.
@@ -180,7 +180,7 @@ IPv6-adressen | VM. Guest.Net
 Lees doorvoer (MB per seconde) | net. received. Average
 Schrijf doorvoer (MB per seconde) | net. verzonden. gemiddeld
 **Details van configuratiepad** | 
-Name | verpakking. GetType (). Naam
+Naam | verpakking. GetType (). Naam
 Type onderliggend object | verpakking. ChildType
 Referentie Details | verpakking. MoRef
 Details van bovenliggend item | Container. Parent
@@ -215,7 +215,7 @@ Toepassings detectie verzamelt geïnstalleerde toepassingen en gegevens van het 
 
 Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van elke VM die is ingeschakeld voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
 
-**Gegevens** | **Registerlocatie** | **Sleutel**
+**Gegevens** | **Registerlocatie** | **Prestatie**
 --- | --- | ---
 Naam van de toepassing  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 Versie  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -227,7 +227,7 @@ Dit zijn de functies die het apparaat verzamelt van elke virtuele machine die is
 
 **Gegevens**  | **Power shell-cmdlet** | **Eigenschap**
 --- | --- | ---
-Name  | Get-WindowsFeature  | Name
+Naam  | Get-WindowsFeature  | Naam
 Onderdeel type | Get-WindowsFeature  | FeatureType
 Bovenliggend  | Get-WindowsFeature  | Bovenliggend
 
@@ -235,9 +235,9 @@ Bovenliggend  | Get-WindowsFeature  | Bovenliggend
 
 Dit zijn de SQL Server-meta gegevens die het apparaat verzamelt van Vm's waarop micro soft SQL Server wordt uitgevoerd voor toepassings detectie. Deze gegevens worden naar Azure verzonden.
 
-**Gegevens**  | **Registerlocatie**  | **Sleutel**
+**Gegevens**  | **Registerlocatie**  | **Prestatie**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Naam  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Editie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Editie 
 Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | SP
 Versie  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \Setup  | Versie 
@@ -248,7 +248,7 @@ Hier ziet u de gegevens van het besturings systeem die door het apparaat worden 
 
 Gegevens  | WMI-klasse  | WMI-klasse-eigenschap
 --- | --- | ---
-Name  | Win32_operatingsystem  | Caption
+Naam  | Win32_operatingsystem  | Caption
 Versie  | Win32_operatingsystem  | Versie
 Architectuur  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Hier zijn de geïnstalleerde toepassings gegevens die het apparaat verzamelt van
 
 Gegevens  | Opdracht
 --- | --- 
-Name | rpm, met dpkg-query, uitlijnen
+Naam | rpm, met dpkg-query, uitlijnen
 Versie | rpm, met dpkg-query, uitlijnen
 Provider | rpm, met dpkg-query, uitlijnen
 
@@ -266,9 +266,9 @@ Provider | rpm, met dpkg-query, uitlijnen
 
 Hier ziet u de gegevens van het besturings systeem die door het apparaat worden verzameld voor de detectie van toepassingen. Deze gegevens worden naar Azure verzonden.
 
-**Gegevens**  | **Cmd** 
+**Gegevens**  | **Opdracht** 
 --- | --- | ---
-Name <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Naam <br/> versie | Verzameld van een of meer van de volgende bestanden:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architectuur | uname
 
 

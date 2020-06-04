@@ -4,12 +4,12 @@ description: Meer informatie over het instellen van een Azure Migrate apparaat v
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538270"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331777"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 
@@ -35,8 +35,8 @@ Als u het apparaat wilt instellen, doet u het volgende:
 
 Down load het zip-bestand voor het apparaat.
 
-1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2. Zijn uw machines in **Discover-computers** > **gevirtualiseerde?** Klik op **niet gevirtualiseerd/Overig**.
+1. In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
+2. **Discover machines**  >  **Zijn uw machines**in Discover-computers gevirtualiseerde? Klik op **niet gevirtualiseerd/Overig**.
 3. Klik op **downloaden** om het zip-bestand te downloaden.
 
     ![Virtuele machine downloaden](./media/tutorial-assess-physical/download-appliance.png)
@@ -51,20 +51,19 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voor beeld van gebruik voor open bare Cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Voor beeld van gebruik voor Government Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Hash-waarden verifiëren:
+3.  Controleer de nieuwste versie van het apparaat en de hash-waarden:
  
-    - Voor de open bare Cloud (voor de meest recente versie van het apparaat):
+    - Voor de open bare Cloud:
 
-        **Algoritme** | **Hash-waarde**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Scenario** | **Update*** | **Hash-waarde**
+        --- | --- | ---
+        Fysiek (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Voor Azure Government (voor de nieuwste versie van het apparaat):
+    - Voor Azure Government:
 
-        **Algoritme** | **Hash-waarde**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Scenario** | **Update*** | **Hash-waarde**
+        --- | --- | ---
+        Fysiek (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
@@ -108,7 +107,7 @@ Het apparaat voor de eerste keer instellen.
 2. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
     - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
     - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
-        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in http://ProxyIPAddress het http://ProxyFQDNformulier of.
+        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in het formulier http://ProxyIPAddress of http://ProxyFQDN .
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
     - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat de machine detectie goed werkt.
@@ -123,7 +122,7 @@ Het apparaat voor de eerste keer instellen.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
 4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
 5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
-6. Klik op **registreren**.
+6. Klik op **Registreren**.
 
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
@@ -146,7 +145,7 @@ De detectie wordt gestart. Het duurt ongeveer 15 minuten voor de meta gegevens v
 Nadat de detectie is voltooid, kunt u controleren of de servers worden weer gegeven in de portal.
 
 1. Open het Azure Migrate dash board.
-2. Klik op de pagina **Azure migrate servers** > **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
+2. Klik op de pagina **Azure migrate servers**  >  **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

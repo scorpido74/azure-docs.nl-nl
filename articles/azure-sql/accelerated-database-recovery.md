@@ -1,7 +1,7 @@
 ---
 title: Versneld databaseherstel
 titleSuffix: Azure SQL
-description: Versneld database herstel biedt snelle en consistente herstel van de data base, het terugdraaien van momentane trans acties en een agressieve afkap ping van Logboeken voor data bases in de Azure SQL service-Port Folio.
+description: Versneld database herstel biedt snelle en consistente herstel van de data base, het terugdraaien van momentane trans acties en het afkappen van agressief logboeken voor data bases in Azure SQL Port Folio.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 05/19/2020
-ms.openlocfilehash: c0243ecea778a02238b205f1659d796165f7b316
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044358"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344693"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Versneld database herstel in Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Versneld database herstel (ADR)** is een functie van SQL database engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name als er langlopende trans acties worden uitgevoerd, door het herstel proces van de SQL database-engine opnieuw te ontwerpen. ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance, SQL Server op Azure Vm's en data bases in azure Synapse (momenteel in preview-versie). De belangrijkste voor delen van ADR zijn:
+**Versneld database herstel (ADR)** is een functie van SQL server data base-engine waarmee de beschik baarheid van de data base aanzienlijk wordt verbeterd, met name als er langlopende trans acties worden uitgevoerd, door het herstel proces van de SQL server data base-engine opnieuw te ontwerpen. ADR is momenteel beschikbaar voor Azure SQL Database, Azure SQL Managed instance, SQL Server op Azure VM en data bases in azure Synapse Analytics (momenteel als preview-versie). De belangrijkste voor delen van ADR zijn:
 
 - **Snel en consistent herstel van de data base**
 
@@ -53,15 +53,15 @@ Database herstel volgt het [Aries](https://people.eecs.berkeley.edu/~brewer/cs26
 
   Voor elke trans actie die actief was op het moment van de crash, doorloopt het logboek achterwaarts, waardoor de bewerkingen die deze trans actie hebben uitgevoerd, worden ongedaan gemaakt.
 
-Op basis van dit ontwerp is de tijd die het SQL database-programma nodig heeft om te herstellen na een onverwachte herstart (ruwweg) evenredig met de grootte van de langste actieve trans actie in het systeem op het moment van de crash. Voor het herstel moeten alle onvolledige trans acties worden teruggedraaid. De vereiste hoeveelheid tijd is evenredig met het werk dat de trans actie heeft uitgevoerd en de tijd die het is actief. Daarom kan het herstel proces enige tijd in beslag nemen in de aanwezigheid van langlopende trans acties (zoals grote bulksgewijze bewerkingen of het bouwen van index bewerkingen voor een grote tabel).
+Op basis van dit ontwerp is de tijd die het kost om de SQL Server data base-engine te herstellen na een onverwachte herstart (ruwweg) evenredig met de grootte van de langste actieve trans actie in het systeem op het moment van de crash. Voor het herstel moeten alle onvolledige trans acties worden teruggedraaid. De vereiste hoeveelheid tijd is evenredig met het werk dat de trans actie heeft uitgevoerd en de tijd die het is actief. Daarom kan het herstel proces enige tijd in beslag nemen in de aanwezigheid van langlopende trans acties (zoals grote bulksgewijze bewerkingen of het bouwen van index bewerkingen voor een grote tabel).
 
 Het annuleren/terugdraaien van een grote trans actie op basis van dit ontwerp kan ook lang duren omdat deze dezelfde fase voor het ongedaan maken van de herstel bewerking gebruikt, zoals hierboven wordt beschreven.
 
-Daarnaast kan de SQL database-engine het transactie logboek niet afkappen wanneer er langlopende trans acties zijn, omdat de bijbehorende logboek records nodig zijn voor de herstel-en terugdraai processen. Als gevolg van dit ontwerp van de SQL database-engine, hebben sommige klanten gebruikt om het probleem te verhelpen dat de omvang van het transactie logboek erg groot wordt en veel schijf ruimte verbruikt.
+Daarnaast kan de SQL Server data base-engine het transactie logboek niet afkappen wanneer er langlopende trans acties zijn, omdat de bijbehorende logboek records nodig zijn voor de herstel-en terugdraai processen. Als gevolg van dit ontwerp van de SQL Server data base-engine, hebben sommige klanten gebruikt om het probleem te verhelpen dat de omvang van het transactie logboek erg groot wordt en grote hoeveel heden schijf ruimte verbruikt.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Het herstel proces voor versneld data base
 
-ADR behandelt de bovenstaande problemen door het herstel proces van de SQL database-engine volledig opnieuw te ontwerpen voor:
+ADR behandelt de bovenstaande problemen door het herstel proces van de SQL Server data base-engine volledig opnieuw te ontwerpen:
 
 - Maak deze constant tijd/direct door te voor komen dat u het logboek van/naar het begin van de oudste actieve trans actie moet scannen. Met ADR wordt het transactie logboek alleen verwerkt vanaf het laatste geslaagde controle punt (of het oudste LSN (Dirty page log Sequence Number)). Als gevolg hiervan worden de herstel tijd niet beïnvloed door langlopende trans acties.
 - Minimaliseer de vereiste transactie logboek ruimte, omdat het logboek voor de hele trans actie niet meer hoeft te worden verwerkt. Als gevolg hiervan kan het transactie logboek agressief worden afgekapt als controle punten en back-ups worden uitgevoerd.
@@ -97,7 +97,7 @@ De vier belangrijkste onderdelen van ADR zijn:
 
 - **Permanente versie opslag (PVS)**
 
-  De permanente versie opslag is een nieuw SQL database engine mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd in plaats van in de traditionele `tempdb` versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
+  De permanente versie opslag is een nieuw SQL Server data base engine-mechanisme voor het persistent maken van de rijdefinities die in de data base zelf zijn gegenereerd, in plaats van naar de traditionele `tempdb` versie opslag. PVS maakt het isoleren van bronnen mogelijk en verbetert de beschik baarheid van Lees bare secundaire zones.
 
 - **Logische terugzet actie**
 

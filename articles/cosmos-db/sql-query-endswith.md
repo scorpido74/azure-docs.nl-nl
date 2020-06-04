@@ -4,19 +4,19 @@ description: Meer informatie over de functie ENDSWITH SQL System in Azure Cosmos
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844961"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322683"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie eindigt op de tweede.  
+Retourneert een Booleaanse waarde die aangeeft of de eerste teken reeks expressie eindigt op de tweede.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -75,6 +75,8 @@ Denk bijvoorbeeld aan twee eigenschappen: stad en land. De kardinaliteit van de 
 ```
 
 De eerste query gebruikt waarschijnlijk meer RUs dan de tweede query, omdat de kardinaliteit van de stad hoger is dan het land.
+
+Als de grootte van de eigenschap in EndsWith groter is dan 1 KB voor sommige documenten, moet deze documenten worden geladen met de query-engine. In dit geval kan de query-engine EndsWith niet volledig evalueren met een index. De RU-kosten voor EndsWith zijn hoog als u een groot aantal documenten hebt met een eigenschaps grootte van meer dan 1 KB.
 
 ## <a name="next-steps"></a>Volgende stappen
 

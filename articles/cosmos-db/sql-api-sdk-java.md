@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 799f38cff1c10da1b0d280121a7a5ab4a380152d
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171613"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331420"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
@@ -47,6 +47,12 @@ Dit is de oorspronkelijke Azure Cosmos DB Java SDK v2 voor de SQL-API die synchr
 |**Minimale ondersteunde runtime**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* Hiermee wordt het probleem met de hoofd partitie cache op de documentCollection-query opgelost.
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* Ondersteuning toegevoegd voor 449 aangepaste configuratie opnieuw proberen.
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * Oplossen van problemen met time-out van verbindings groep.
@@ -268,6 +274,8 @@ Alle aanvragen voor het Cosmos DB met behulp van een buiten gebruik gestelde SDK
 
 | Versie | Release datum | Buitengebruikstellings datum |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |03 juni 2020 |--- |
+| [2.5.0](#2.5.0) |12 mei 2020 |--- |
 | [2.4.7](#2.4.7) |20 februari 2020 |--- |
 | [2.4.6](#2.4.6) |24 januari 2020 |--- |
 | [2.4.5](#2.4.5) |10 november 2019 |--- |

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046920"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345339"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Detecteer bare typen query prestaties knelpunten in Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ Trage query prestaties die geen betrekking hebben op suboptimale query plannen e
 - Bron limieten detecteren met behulp van [intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Problemen met bronnen detecteren met [dmv's](database/monitoring-with-dmvs.md):
 
-  - De [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor een SQL database. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
+  - De [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert CPU, I/O en geheugen verbruik voor de data base. Er bestaat één rij voor elk interval van 15 seconden, zelfs als er geen activiteit in de data base is. Historische gegevens worden één uur bewaard.
   - De [sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) dmv retourneert het CPU-gebruik en de opslag gegevens voor Azure SQL database. De gegevens worden verzameld en samengevoegd in intervallen van vijf minuten.
   - [Veel afzonderlijke query's die cumulatief hoge CPU verbruiken](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-Als u het probleem identificeert als onvoldoende resource, kunt u resources upgraden om de capaciteit van uw SQL database te verg Roten om de CPU-vereisten te absorberen. Zie voor meer informatie bronnen voor het [schalen van één data base in Azure SQL database](database/single-database-scale.md) en het [schalen van elastische pool resources in Azure SQL database](database/elastic-pool-scale.md). Zie [resource limieten voor service lagen](managed-instance/resource-limits.md#service-tier-characteristics) voor meer informatie over het schalen van een beheerd exemplaar
+Als u het probleem identificeert als onvoldoende resource, kunt u resources upgraden om de capaciteit van uw data base te verg Roten om de CPU-vereisten te absorberen. Zie voor meer informatie bronnen voor het [schalen van één data base in Azure SQL database](database/single-database-scale.md) en het [schalen van elastische pool resources in Azure SQL database](database/elastic-pool-scale.md). Zie [resource limieten voor service lagen](managed-instance/resource-limits.md#service-tier-characteristics) voor meer informatie over het schalen van een beheerd exemplaar
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>Prestatie problemen als gevolg van een toegenomen hoeveelheid werk belasting
 

@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f784d6ef56ad5cb800c0061fbb5d0d4ca3252fa0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d7f33dd782b46afa1aa3845d2acb5712a76ea420
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048229"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324195"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Werken met R-en SQL-gegevens in Azure SQL Database Machine Learning Services (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In dit artikel worden enkele veelvoorkomende problemen besproken die kunnen optreden bij het verplaatsen van gegevens tussen R en SQL Database in [Machine Learning Services (met R) in Azure SQL database](machine-learning-services-overview.md). De ervaring die u in deze oefening krijgt, biedt essentiële achtergrond bij het werken met gegevens in uw eigen script.
+In dit artikel worden enkele veelvoorkomende problemen besproken die kunnen optreden bij het verplaatsen van gegevens tussen R en Azure SQL Database in [Machine Learning Services (met R) in Azure SQL database](machine-learning-services-overview.md). De ervaring die u in deze oefening krijgt, biedt essentiële achtergrond bij het werken met gegevens in uw eigen script.
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 

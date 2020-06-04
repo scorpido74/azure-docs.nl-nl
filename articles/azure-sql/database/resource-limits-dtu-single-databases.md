@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 5adb09389e1d5be13f766240d9fac5a644190d6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051008"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341997"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Resource limieten voor afzonderlijke data bases met behulp van het DTU-aankoop model-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Zie [DTU-resource limieten-elastische Pools](resource-limits-dtu-elastic-pools.m
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Eén Data Base: opslag grootten en berekenings grootten
 
-In de volgende tabellen ziet u de beschik bare resources voor één data base in elke servicelaag en de reken grootte. U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#azure-cli)of de [rest API](single-database-manage.md#rest-api).
+In de volgende tabellen ziet u de beschik bare resources voor één data base in elke servicelaag en de reken grootte. U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#the-azure-cli)of de [rest API](single-database-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Zie [Eén data base schalen](single-database-scale.md) voor meer informatie over schaling en overwegingen

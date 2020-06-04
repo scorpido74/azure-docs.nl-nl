@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309098"
+ms.locfileid: "84324178"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Overzicht van resource limieten voor Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,6 +82,7 @@ SQL Managed instance heeft twee service lagen: [Algemeen](../database/service-ti
 | I/o-latentie van opslag (ongeveer) | 5-10 MS | 1-2 MS |
 | OLTP in het geheugen | Niet ondersteund | Beschikbaar, [grootte is afhankelijk van het aantal vCore](#in-memory-oltp-available-space) |
 | Maximum aantal sessies | 30.000 | 30.000 |
+| Maxi maal aantal gelijktijdige werk nemers (aanvragen) | Gen4:210 * aantal vCores + 800<br>GEN5:105 * aantal vCores + 800 | Gen4:210 * vCore aantal + 800<br>GEN5:105 * vCore aantal + 800 |
 | [Alleen-lezen replica's](../database/read-scale-out.md) | 0 | 1 (inclusief prijs) |
 | Reken isolatie | GEN5<br/>-ondersteund voor 80 vCores<br/>-niet ondersteund voor andere grootten<br/><br/>Gen4 wordt niet ondersteund vanwege afschaffing|GEN5<br/>-ondersteund voor 60, 64, 80 vCores<br/>-niet ondersteund voor andere grootten<br/><br/>Gen4 wordt niet ondersteund vanwege afschaffing|
 
@@ -126,6 +127,9 @@ SQL Managed instance biedt momenteel alleen ondersteuning voor de implementatie 
 
 ## <a name="regional-resource-limitations"></a>Regionale resource beperkingen
 
+> [!Note]
+> Voor de meest recente informatie over de beschik baarheid van regio's voor abonnementen raadpleegt u eerst [officiële COVID-19 blog post](https://aka.ms/sqlcapacity).
+
 Ondersteunde abonnements typen kunnen een beperkt aantal resources per regio bevatten. SQL Managed instance heeft twee standaard limieten per Azure-regio (die op aanvraag kan worden verhoogd door een speciale [ondersteunings aanvraag in de Azure Portal](../database/quota-increase-request.md) te maken, afhankelijk van een type abonnements type:
 
 - **Subnet limiet**: het maximum aantal subnetten waar exemplaren van een door SQL beheerd exemplaar worden geïmplementeerd in een enkele regio.
@@ -149,6 +153,9 @@ De volgende tabel bevat de **standaard regionale limieten** voor ondersteunde ab
 \*In het plannen van implementaties moet u rekening houden dat de service tier van Bedrijfskritiek (BC) vier (4) keer zoveel vCore capaciteit nodig heeft dan de servicelaag van Algemeen (GP). Bijvoorbeeld: 1 GP vCore = 1 vCore-eenheid en 1 BC vCore = 4 vCore-eenheden. Als u de verbruiks analyse wilt vereenvoudigen met de standaard limieten, samenvatten we de vCore-eenheden in alle subnetten in de regio waar SQL Managed instance wordt geïmplementeerd en vergelijkt u de resultaten met de limieten van de exemplaar eenheid voor uw abonnements type. De limiet voor het **maximum aantal vCore-eenheden** is van toepassing op elk abonnement in een regio. Er is geen limiet per afzonderlijke subnetten, behalve dat de som van alle vCores die in meerdere subnetten zijn geïmplementeerd, kleiner of gelijk moet zijn aan het **maximum aantal vCore-eenheden**.
 
 \*\*Grotere subnet-en vCore-limieten zijn beschikbaar in de volgende regio's: Australië-oost, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, UK-zuid, Europa-west, VS-West 2.
+
+> [!IMPORTANT]
+> Als uw vCore-en subnet-limiet 0 is, betekent dit dat de standaard regionale limiet voor uw abonnements type niet is ingesteld. U kunt ook de aanvraag quotum verhogen gebruiken voor het verkrijgen van toegang tot het abonnement in een specifieke regio volgens dezelfde procedure: de vereiste vCore-en subnet-waarden opgeven.
 
 ## <a name="request-a-quota-increase"></a>Een quotum verhoging aanvragen
 

@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: bf96cea2f64c52714ed6c63b0e973d0d26999856
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 960e013413f0d057556337428556ee6c06b8fc06
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864382"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323855"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Een Windows VHD of VHDX voorbereiden om te uploaden naar Azure
 
-Voordat u een virtuele Windows-machine (VM) van on-premises naar Azure uploadt, moet u de virtuele harde schijf (VHD of VHDX) voorbereiden. Azure biedt ondersteuning voor virtuele machines van de eerste en tweede generatie die in VHD-bestands indeling zijn en die een schijf met een vaste grootte hebben. De Maxi maal toegestane grootte voor de VHD is 2 TB.
+Voordat u een virtuele Windows-machine (VM) van on-premises naar Azure uploadt, moet u de virtuele harde schijf (VHD of VHDX) voorbereiden. Azure biedt ondersteuning voor virtuele machines van de eerste en tweede generatie die in VHD-bestands indeling zijn en die een schijf met een vaste grootte hebben. De Maxi maal toegestane grootte voor de VHD van het besturings systeem op een virtuele machine van de eerste generatie is 2 TB.
 
-In een virtuele machine van de eerste generatie kunt u een VHDX-bestands systeem converteren naar VHD. U kunt ook een dynamisch uitbreid bare schijf converteren naar een schijf met een vaste grootte. Maar u kunt de generatie van een virtuele machine niet wijzigen. Zie [moet ik een generatie 1 of 2 virtuele machine in Hyper-V maken](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) en [ondersteuning voor virtuele machines van de tweede generatie op Azure](generation-2.md).
+U kunt een VHDX-bestand converteren naar VHD, een dynamisch uitbreid bare schijf converteren naar een schijf met een vaste grootte, maar u kunt de generatie van een virtuele machine niet wijzigen. Zie [moet ik een generatie 1 of 2 virtuele machine in Hyper-V maken](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) en [ondersteuning voor virtuele machines van de tweede generatie op Azure](generation-2.md).
 
 Zie [micro soft-server software ondersteuning voor Azure-vm's](https://support.microsoft.com/help/2721672/)voor meer informatie over het ondersteunings beleid voor virtuele Azure-machines.
 
@@ -28,6 +28,73 @@ Zie [micro soft-server software ondersteuning voor Azure-vm's](https://support.m
 >
 > - De 64-bits versie van Windows Server 2008 R2 en latere Windows Server-besturings systemen. Voor informatie over het uitvoeren van een 32-bits besturings systeem in azure, Zie [ondersteuning voor 32-bits besturings systemen in azure vm's](https://support.microsoft.com/help/4021388/).
 > - Als een hulp programma voor herstel na nood gevallen wordt gebruikt voor het migreren van de werk belasting, zoals Azure Site Recovery of Azure Migrate, is dit proces nog vereist op het gast besturingssysteem om de installatie kopie voor te bereiden voor de migratie.
+
+## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>De virtuele schijf converteren naar een VHD met een vaste grootte
+
+Gebruik een van de methoden in deze sectie om de virtuele schijf om te zetten en te verg Roten of verkleinen naar de vereiste indeling voor Azure:
+
+1. Maak een back-up van de VM voordat u de conversie van de virtuele schijf of het formaat van het proces uitvoert.
+
+1. Zorg ervoor dat de VHD met Windows correct werkt op de lokale server. Los eventuele fouten op in de virtuele machine zelf voordat u deze converteert of uploadt naar Azure.
+
+1. Converteer de virtuele schijf naar type Fixed.
+
+1. Wijzig de grootte van de virtuele schijf zodat deze voldoet aan de vereisten van Azure:
+
+   1. Schijven in azure moeten een virtuele grootte hebben die is afgestemd op 1 MiB. Als uw VHD een fractie van 1 MiB is, moet u het formaat van de schijf wijzigen in een meervoud van 1 MiB. Schijven die fracties zijn van een MiB veroorzaken fouten bij het maken van installatie kopieën van de geüploade VHD. Als u dit wilt controleren, kunt u de Power shell [Get-VHD](/powershell/module/hyper-v/get-vhd) comdlet gebruiken om ' size ' weer te geven. dit moet een meervoud van 1 MIB zijn in Azure en ' filesize ', dat gelijk is aan ' size ' plus 512 bytes voor de VHD-voet tekst.
+   
+   1. De maximale grootte die is toegestaan voor de besturingssysteem-VHD met een virtuele machine van de eerste generatie is 2.048 GiB (2 TiB), 
+   1. De maximale grootte voor een gegevens schijf is 32.767 GiB (32 TiB).
+
+> [!NOTE]
+> - Als u een schijf met een Windows-besturings systeem voorbereidt nadat u deze naar een vaste schijf hebt geconverteerd en de grootte zo nodig hebt gewijzigd, maakt u een virtuele machine die gebruikmaakt van de schijf. Start en meld u aan bij de virtuele machine en ga door met de secties in dit artikel om de voor bereiding voor het uploaden te volt ooien.  
+> - Als u een gegevens schijf voorbereidt, kunt u stoppen met deze sectie en door gaan met het uploaden van uw schijf.
+
+### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V-beheer gebruiken om de schijf te converteren
+
+1. Open Hyper-V-beheer en selecteer uw lokale computer aan de linkerkant. Selecteer in het menu boven de computer lijst **actie**  >  **bewerken schijf**.
+1. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
+1. Selecteer op de pagina **actie kiezen** de **Convert**optie  >  **volgende**omzetten.
+1. Als u wilt converteren van VHDX, selecteert u **VHD**  >  **volgende**.
+1. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u de optie **vaste grootte**  >  **volgende**.
+1. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
+1. Selecteer **Finish**.
+
+### <a name="use-powershell-to-convert-the-disk"></a>Power shell gebruiken om de schijf te converteren
+
+U kunt een virtuele schijf converteren met behulp van de cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) in Power shell. Klik [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
+
+In het volgende voor beeld wordt de schijf van VHDX naar VHD geconverteerd. De schijf wordt ook geconverteerd van een dynamisch uitbreid bare schijf naar een schijf met een vaste grootte.
+
+```powershell
+Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
+```
+
+Vervang in dit voor beeld de waarde voor **pad** door het pad naar de virtuele harde schijf die u wilt converteren. Vervang de waarde voor **doelpad** door het nieuwe pad en de naam van de geconverteerde schijf.
+
+### <a name="convert-from-vmware-vmdk-disk-format"></a>Converteren van VMware VMDK-schijf indeling
+
+Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en.wikipedia.org/wiki/VMDK)hebt, gebruikt u het [conversie programma van micro soft virtual machine](https://www.microsoft.com/download/details.aspx?id=42497) om het te converteren naar de VHD-indeling. Zie [How to convert a VMware VMDK to Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)(Engelstalig) voor meer informatie.
+
+### <a name="use-hyper-v-manager-to-resize-the-disk"></a>Hyper-V-beheer gebruiken om de grootte van de schijf te wijzigen
+
+1. Open Hyper-V-beheer en selecteer uw lokale computer aan de linkerkant. Selecteer in het menu boven de computer lijst **actie**  >  **bewerken schijf**.
+1. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
+1. Selecteer op de pagina **actie kiezen** de optie **uitvouwen**  >  **volgende**.
+1. Voer op de pagina **virtuele harde schijf zoeken** de nieuwe grootte in GiB > **volgende**.
+1. Selecteer **Finish**.
+
+### <a name="use-powershell-to-resize-the-disk"></a>Het formaat van de schijf wijzigen met Power shell
+
+U kunt de grootte van een virtuele schijf wijzigen met behulp van de cmdlet [Resize-VHD](/powershell/module/hyper-v/resize-vhd) in Power shell. Klik [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)als u meer informatie wilt over het installeren van deze cmdlet.
+
+In het volgende voor beeld wordt de grootte van de schijf van 100,5 MiB gewijzigd in 101 MiB om te voldoen aan de vereisten voor Azure-uitlijning.
+
+```powershell
+Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
+```
+
+Vervang in dit voor beeld de waarde voor **pad** door het pad naar de virtuele harde schijf die u wilt verg Roten of verkleinen. Vervang de waarde voor **SizeBytes** door de nieuwe grootte in bytes voor de schijf.
 
 ## <a name="system-file-checker"></a> Systeembestandscontrole
 
@@ -55,49 +122,6 @@ Windows Resource Protection did not find any integrity violations.
 
 Nadat de SFC-scan is voltooid, installeert u Windows-updates en start u de computer opnieuw op.
 
-## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>De virtuele schijf converteren naar een VHD met een vaste grootte
-
-Gebruik een van de methoden in deze sectie om de virtuele schijf te converteren naar de vereiste indeling voor Azure:
-
-1. Maak een back-up van de VM voordat u het conversie proces voor de virtuele schijf uitvoert.
-
-1. Zorg ervoor dat de VHD met Windows correct werkt op de lokale server. Los eventuele fouten op in de virtuele machine zelf voordat u deze converteert of uploadt naar Azure.
-
-1. VHD-grootte:
-
-   1. Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar een VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1 MB is vóór de conversie.
-      Fracties van een Mega byte veroorzaken fouten bij het maken van installatie kopieën van de geüploade VHD.
-
-   1. De Maxi maal toegestane grootte voor de VHD van het besturings systeem is 2 TB.
-
-Nadat u de schijf hebt geconverteerd, maakt u een virtuele machine die gebruikmaakt van de schijf. Start en meld u aan bij de virtuele machine om deze voor te bereiden voor het uploaden.
-
-### <a name="use-hyper-v-manager-to-convert-the-disk"></a>Hyper-V-beheer gebruiken om de schijf te converteren
-
-1. Open Hyper-V-beheer en selecteer uw lokale computer aan de linkerkant. Selecteer in het menu boven de computer lijst **actie** > **bewerken schijf**.
-1. Selecteer uw virtuele schijf op de pagina **virtuele harde schijf zoeken** .
-1. Selecteer op de pagina **actie kiezen** de optie**volgende** **omzetten** > .
-1. Als u wilt converteren van VHDX, selecteert u **VHD** > **volgende**.
-1. Als u wilt converteren van een dynamisch uitbreid bare schijf, selecteert u de optie **vaste grootte** > **volgende**.
-1. Zoek en selecteer een pad om het nieuwe VHD-bestand op te slaan.
-1. Selecteer **Finish**.
-
-### <a name="use-powershell-to-convert-the-disk"></a>Power shell gebruiken om de schijf te converteren
-
-U kunt een virtuele schijf converteren met behulp van de cmdlet [Convert-VHD](/powershell/module/hyper-v/convert-vhd) in Power shell.
-
-In het volgende voor beeld wordt de schijf van VHDX naar VHD geconverteerd. De schijf wordt ook geconverteerd van een dynamisch uitbreid bare schijf naar een schijf met een vaste grootte.
-
-```powershell
-Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDType Fixed
-```
-
-Vervang in dit voor beeld de waarde voor **pad** door het pad naar de virtuele harde schijf die u wilt converteren. Vervang de waarde voor **doelpad** door het nieuwe pad en de naam van de geconverteerde schijf.
-
-### <a name="convert-from-vmware-vmdk-disk-format"></a>Converteren van VMware VMDK-schijf indeling
-
-Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en.wikipedia.org/wiki/VMDK)hebt, gebruikt u het [conversie programma van micro soft virtual machine](https://www.microsoft.com/download/details.aspx?id=42497) om het te converteren naar de VHD-indeling. Zie [How to convert a VMware VMDK to Hyper-V VHD](/archive/blogs/timomta/how-to-convert-a-vmware-vmdk-to-hyper-v-vhd)(Engelstalig) voor meer informatie.
-
 ## <a name="set-windows-configurations-for-azure"></a>Windows-configuraties instellen voor Azure
 
 > [!NOTE]
@@ -105,8 +129,8 @@ Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en
 
 1. Verwijder alle statische permanente routes in de routerings tabel:
 
-   - Als u de routerings tabel wilt `route.exe print`weer geven, voert u uit.
-   - Controleer de sectie **persistentie routes** . Als er een permanente route is, gebruikt u `route.exe delete` de opdracht om deze te verwijderen.
+   - Als u de routerings tabel wilt weer geven, voert u uit `route.exe print` .
+   - Controleer de sectie **persistentie routes** . Als er een permanente route is, gebruikt `route.exe delete` u de opdracht om deze te verwijderen.
 
 1. De WinHTTP-proxy verwijderen:
 
@@ -128,7 +152,7 @@ Als u een Windows VM-installatie kopie in de [VMDK-bestands indeling](https://en
    diskpart.exe
    ```
 
-   Stel het SAN-beleid van [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11))de schijf in op:
+   Stel het SAN-beleid van de schijf in op [`Onlineall`](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/gg252636(v=ws.11)) :
 
    ```DiskPart
    DISKPART> san policy=onlineall
@@ -174,7 +198,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 Controleer of de volgende instellingen juist zijn geconfigureerd voor externe toegang:
 
 > [!NOTE]
-> Als er een fout bericht wordt weer gegeven `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>`wanneer deze wordt uitgevoerd, kunt u dit veilig negeren. Dit betekent dat de configuratie niet door het domein wordt ingesteld via een groepsbeleid-object.
+> Als er een fout bericht wordt weer gegeven wanneer deze wordt uitgevoerd `Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services -Name <string> -Value <object>` , kunt u dit veilig negeren. Dit betekent dat de configuratie niet door het domein wordt ingesteld via een groepsbeleid-object.
 
 1. Remote Desktop Protocol (RDP) is ingeschakeld:
 
@@ -347,7 +371,7 @@ Zorg ervoor dat de VM in orde, veilig en RDP toegankelijk is:
 
    Als de opslag plaats is beschadigd, raadpleegt u [WMI: beschadiging van opslag plaats of niet](https://techcommunity.microsoft.com/t5/ask-the-performance-team/wmi-repository-corruption-or-not/ba-p/375484).
 
-1. Zorg ervoor dat er geen andere toepassing gebruikmaakt van poort 3389. Deze poort wordt gebruikt voor de RDP-service in Azure. Voer het volgende uit `netstat.exe -anob`om te zien welke poorten op de VM worden gebruikt:
+1. Zorg ervoor dat er geen andere toepassing gebruikmaakt van poort 3389. Deze poort wordt gebruikt voor de RDP-service in Azure. Voer het volgende uit om te zien welke poorten op de VM worden gebruikt `netstat.exe -anob` :
 
    ```powershell
    netstat.exe -anob
@@ -436,14 +460,14 @@ In het ideale geval moet u de computer bijwerken op het niveau van de *patch*. A
 |                         |                | KB4103712                                 | KB4103726                                   | KB4103715                           |                                             |                            |                                             |                                             |
 
 > [!NOTE]
-> Om te voor komen dat een onbedoeld opnieuw wordt opgestart tijdens het inrichten van de VM, is het raadzaam om ervoor te zorgen dat alle Windows Update-installaties zijn voltooid en dat er geen updates in behandeling zijn. Een manier om dit te doen is door alle mogelijke Windows-updates te installeren en één keer opnieuw `sysprep.exe` op te starten voordat u de opdracht uitvoert.
+> Om te voor komen dat een onbedoeld opnieuw wordt opgestart tijdens het inrichten van de VM, is het raadzaam om ervoor te zorgen dat alle Windows Update-installaties zijn voltooid en dat er geen updates in behandeling zijn. Een manier om dit te doen is door alle mogelijke Windows-updates te installeren en één keer opnieuw op te starten voordat u de `sysprep.exe` opdracht uitvoert.
 
 ### <a name="determine-when-to-use-sysprep"></a>Bepalen wanneer u Sysprep wilt gebruiken
 
-Het hulp programma voor`sysprep.exe`systeem voorbereiding () is een proces dat u kunt uitvoeren om een Windows-installatie opnieuw in te stellen.
+Het hulp programma voor systeem voorbereiding ( `sysprep.exe` ) is een proces dat u kunt uitvoeren om een Windows-installatie opnieuw in te stellen.
 Sysprep biedt een "out-of-Box"-ervaring door alle persoonlijke gegevens te verwijderen en verschillende onderdelen opnieuw in te stellen.
 
-Normaal gesp roken `sysprep.exe` voert u uit om een sjabloon te maken van waaruit u verschillende virtuele machines kunt implementeren die een specifieke configuratie hebben. De sjabloon wordt een *gegeneraliseerde installatie kopie*genoemd.
+Normaal gesp roken voert u `sysprep.exe` uit om een sjabloon te maken van waaruit u verschillende virtuele machines kunt implementeren die een specifieke configuratie hebben. De sjabloon wordt een *gegeneraliseerde installatie kopie*genoemd.
 
 Als u slechts één VM van één schijf wilt maken, hoeft u geen Sysprep te gebruiken. In plaats daarvan kunt u de virtuele machine maken op basis van een *gespecialiseerde installatie kopie*. Zie voor informatie over het maken van een virtuele machine op basis van een gespecialiseerde schijf:
 
@@ -457,11 +481,11 @@ Niet elke rol of toepassing die is geïnstalleerd op een Windows-computer, onder
 ### <a name="generalize-a-vhd"></a>Een VHD generaliseren
 
 >[!NOTE]
-> Nadat u in `sysprep.exe` de volgende stappen hebt uitgevoerd, schakelt u de virtuele machine uit. Schakel deze optie niet weer in totdat u een installatie kopie maakt in Azure.
+> Nadat u `sysprep.exe` in de volgende stappen hebt uitgevoerd, schakelt u de virtuele machine uit. Schakel deze optie niet weer in totdat u een installatie kopie maakt in Azure.
 
 1. Meld u aan bij de Windows-VM.
 1. Een Power shell-sessie uitvoeren als beheerder.
-1. Wijzig de Directory in `%windir%\system32\sysprep`. Voer vervolgens `sysprep.exe` uit.
+1. Wijzig de Directory in `%windir%\system32\sysprep` . Voer vervolgens `sysprep.exe` uit.
 1. Selecteer in het dialoog venster **hulp programma voor systeem voorbereiding** de optie **systeem out-of-Box Experience (OOBE) opgeven**en zorg ervoor dat het selectie vakje **generalize** is geselecteerd.
 
     ![Hulp programma voor systeem voorbereiding](media/prepare-for-upload-vhd-image/syspre.png)

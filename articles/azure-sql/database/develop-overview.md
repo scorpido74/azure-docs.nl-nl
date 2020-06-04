@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: c2556cb1dcf59cdb8ae5014b7dd95fa2c431dc93
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050420"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344591"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Overzicht van toepassings ontwikkeling-SQL Database & SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,7 +53,7 @@ Zie voor meer informatie over het voorbereiden van geplande onderhouds gebeurten
 - Zorg er op de computer die als host fungeert voor uw clientprogramma voor dat de firewall uitgaande TCP-communicatie toestaat via poort 1433.  Meer informatie: [een Azure SQL database firewall configureren](firewall-configure.md).
 - Als uw client programma verbinding maakt met SQL Database terwijl uw client wordt uitgevoerd op een virtuele machine (VM) van Azure, moet u bepaalde poortbereiken openen op de VM. Meer informatie: [poorten boven 1433 voor ADO.NET 4,5 en SQL database](adonet-v12-develop-direct-route-ports.md).
 - Client verbindingen met Azure SQL Database soms de proxy omzeilen en rechtstreeks communiceren met de data base. Andere poorten dan poort 1433 worden belangrijk. [Azure SQL database connectiviteits architectuur](connectivity-architecture.md) en [poorten hoger dan 1433 voor ADO.NET 4,5 en SQL database](adonet-v12-develop-direct-route-ports.md)voor meer informatie.
-- Zie [netwerk configuratie voor SQL Managed](../managed-instance/how-to-content-reference-guide.md#network-configuration)instances voor een netwerk configuratie voor een door SQL beheerd exemplaar.
+- Zie [netwerk configuratie voor SQL Managed instance](../managed-instance/how-to-content-reference-guide.md#network-configuration)voor een netwerk configuratie voor een exemplaar van SQL Managed instance.
 
 ## <a name="next-steps"></a>Volgende stappen
 

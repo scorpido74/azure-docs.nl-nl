@@ -2,14 +2,14 @@
 title: Servicequota en -limieten
 description: Meer informatie over standaard Azure Batch quota's, limieten en beperkingen, en het aanvragen van quotum verhogingen
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 45eefd10f7227509e7db8730e5e7192bd5833721
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229837"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323877"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Quota en limieten voor Batch-service
 
@@ -83,41 +83,41 @@ Volg deze stappen om een quotum verhoging aan te vragen voor uw batch-account of
 1. Selecteer basis principes **nieuwe ondersteunings aanvraag**  >  **Basics**.
 1. In de **basis beginselen**:
    
-    a. **Probleem type**  >  **Service-en abonnements limieten (quota's)**
+    1. **Probleem type**  >  **Service-en abonnements limieten (quota's)**
    
-    b. Selecteer uw abonnement.
+    1. Selecteer uw abonnement.
    
-    c. **Quotum type**  >  **Batch**
+    1. **Quotum type**  >  **Batch**
       
-    Selecteer **Volgende**.
+       Selecteer **Next**.
     
 1. In **Details**:
       
-    a. Geef in **Details**opgeven de locatie, het quotum type en het batch-account op.
+    1. Geef in **Details**opgeven de locatie, het quotum type en het batch-account op.
     
-    ![Verhoging van batch quotum][quota_increase]
+       ![Verhoging van batch quotum][quota_increase]
 
-    De volgende quota typen zijn beschikbaar:
+       De volgende quota typen zijn beschikbaar:
 
-    * **Per batch-account**  
-        Waarden die specifiek zijn voor één batch-account, inclusief specifieke kernen met een lage prioriteit en het aantal taken en Pools.
+       * **Per batch-account**  
+         Waarden die specifiek zijn voor één batch-account, inclusief specifieke kernen met een lage prioriteit en het aantal taken en Pools.
         
-    * **Per regio**  
-        Waarden die van toepassing zijn op alle batch-accounts in een regio en bevat het aantal batch-accounts per regio per abonnement.
+       * **Per regio**  
+         Waarden die van toepassing zijn op alle batch-accounts in een regio en bevat het aantal batch-accounts per regio per abonnement.
 
-    Quota met lage prioriteit is één waarde in alle VM-reeksen. Als u beperkte Sku's nodig hebt, moet u **kernen met een lage prioriteit** selecteren en de te aanvragen VM-families toevoegen.
+       Quota met lage prioriteit is één waarde in alle VM-reeksen. Als u beperkte Sku's nodig hebt, moet u **kernen met een lage prioriteit** selecteren en de te aanvragen VM-families toevoegen.
 
-    b. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
+    1. Selecteer een **Ernst** op basis van uw [bedrijfs impact][support_sev].
 
-    Selecteer **Volgende**.
+       Selecteer **Next**.
 
 1. Bij **contact gegevens**:
    
-    a. Selecteer een **Voorkeurs methode voor contact personen**.
+    1. Selecteer een **Voorkeurs methode voor contact personen**.
    
-    b. Controleer de vereiste contact gegevens en geef deze op.
+    1. Controleer de vereiste contact gegevens en geef deze op.
    
-    Selecteer **maken** om de ondersteunings aanvraag in te dienen.
+       Selecteer **maken** om de ondersteunings aanvraag in te dienen.
 
 Zodra u uw ondersteunings aanvraag hebt ingediend, neemt de ondersteuning van Azure contact met u op. Quota aanvragen kunnen binnen een paar minuten of Maxi maal twee werk dagen worden voltooid.
 

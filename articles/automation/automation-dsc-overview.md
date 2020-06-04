@@ -7,15 +7,15 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/06/2018
+ms.date: 06/03/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9880915061c0639aebe30bdb33258d7c79e155d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: d2109baf077b1b4c1074cfae9edd0d2b5ef5030d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836886"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343000"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
@@ -88,9 +88,11 @@ Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende p
 * Poort: alleen TCP 443 vereist voor uitgaande internet toegang
 * Globale URL: ***. Azure-Automation.net**
 * Globale URL van US Gov-Virginia: ***. Azure-Automation.us**
-* Agent service: **https:// \< workspaceId \> . agentsvc.Azure-Automation.net**
+* Agent service: **https:// \<workspaceId\> . agentsvc.Azure-Automation.net**
 
 Als u gebruikmaakt van DSC-resources die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan. Raadpleeg de documentatie voor elke DSC-resource voor meer informatie over deze netwerk vereisten.
+
+Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
 #### <a name="proxy-support"></a>Proxy ondersteuning
 

@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen met een script
 description: Meer informatie over het instellen van een Azure Migrate apparaat met een script
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c4d85909bbfa623b5ad8590e973250474d9d95a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20dbe4ba3b1b4858cb7022bb72129ee419ea2540
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676302"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331981"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Een apparaat met een script instellen
 
@@ -34,8 +34,8 @@ Als u het apparaat voor VMware wilt instellen, downloadt u een zip-bestand van d
 
 ### <a name="download-the-script"></a>Het script downloaden
 
-1.  In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2.  **Zijn uw machines**in **Discover-computers** > gevirtualiseerd?, selecteert u **Ja, met VMware vSphere Hyper Visor**.
+1.  In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
+2.  Zijn uw machines in **Discover-computers**  >  **gevirtualiseerd?**, selecteert u **Ja, met VMware vSphere Hyper Visor**.
 3.  Klik op **downloaden**om het zip-bestand te downloaden. 
 
 
@@ -47,12 +47,11 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-3. Controleer de gegenereerde hash-waarde. Voor de meest recente versie van het apparaat:
+3. Controleer de meest recente versie en het script van het apparaat voor de open bare Azure-Cloud:
 
-    **Algoritme** | **Hash-waarde**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Algoritme** | **Downloaden** | **SHA256**
+    --- | --- | ---
+    VMware (10,9 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
 
 
@@ -89,8 +88,8 @@ Als u het apparaat voor Hyper-V wilt instellen, downloadt u een zip-bestand van 
 
 ### <a name="download-the-script"></a>Het script downloaden
 
-1.  In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2.  In **Discover-machines** > **zijn uw machines gevirtualiseerd?**, selecteert u **Ja, met Hyper-V**.
+1.  In **migratie doelen**  >  **servers**  >  **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
+2.  In **Discover-machines**  >  **zijn uw machines gevirtualiseerd?**, selecteert u **Ja, met Hyper-V**.
 3.  Klik op **downloaden**om het zip-bestand te downloaden. 
 
 
@@ -103,12 +102,11 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Voorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3. Controleer de gegenereerde hash-waarden. Voor de meest recente versie van het apparaat:
+3. Controleer de meest recente versie en het script van het apparaat voor de open bare Azure-Cloud:
 
-    **Algoritme** | **Hash-waarde**
-    --- | ---
-    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+    **Scenario** | **Downloaden** | **SHA256**
+    --- | --- | ---
+    Hyper-V (8,93 MB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
 
 ### <a name="run-the-script"></a>Het script uitvoeren
 

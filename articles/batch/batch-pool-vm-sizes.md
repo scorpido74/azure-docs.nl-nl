@@ -1,15 +1,15 @@
 ---
 title: VM-grootten kiezen voor Pools
 description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Azure Batch Pools
-ms.topic: how-to
-ms.date: 09/12/2019
+ms.topic: conceptual
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 1e3bcc51fafe10f4a753bdc79795f9afd00821d7
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779155"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323821"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -35,9 +35,11 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 | DC | Geen |
 | Dv2, DSv2 | Alle grootten |
 | Dv3, Dsv3 | Alle grootten |
-| Dav4, Dasv4 | Geen-nog niet beschikbaar |
+| Dav4<sup>1</sup> | Geen-nog niet beschikbaar |
+| Dasv4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_D48as_v4, Standard_D64as_v4 Standard_D96as_v4 |
 | Ev3, Esv3 | Alle grootten, met uitzonde ring van E64is_v3 en E64i_v3 |
-| Eav4, Easv4 | Geen-nog niet beschikbaar |
+| Eav4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_E48a_v4, Standard_E64a_v4 Standard_E96a_v4 |
+| Easv4<sup>1</sup> | Alle grootten, met uitzonde ring van Standard_E48as_v4, Standard_E64as_v4 Standard_E96as_v4 |
 | F, FS | Alle grootten |
 | Fsv2 | Alle grootten |
 | G, GS | Alle grootten |
@@ -46,8 +48,8 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 | HBv2<sup>1</sup> | Alle grootten |
 | HC<sup>1</sup> | Alle grootten |
 | Ls | Alle grootten |
-| Lsv2 | Geen-nog niet beschikbaar |
-| M<sup>1</sup> | Alle grootten, met uitzonde ring van M64, M64m, M128, M128m |
+| Lsv2<sup>1</sup> | Alle grootten |
+| M<sup>1</sup> | Alle grootten |
 | Mv2 | Geen-nog niet beschikbaar |
 | NC | Alle grootten |
 | NCv2<sup>1</sup> | Alle grootten |

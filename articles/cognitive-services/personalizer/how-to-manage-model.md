@@ -1,14 +1,14 @@
 ---
 title: Model-en leer instellingen beheren-persoonlijker
 description: De door de machine geleerde model-en leer instellingen kunnen worden geëxporteerd voor back-up in uw eigen broncode beheersysteem.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c544d058019c8d507f65dc6bfd854376b364abd1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 59af5a64ea5752ec03fb44df91440e8d395e3782
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624295"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344353"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Model-en leer instellingen beheren
 
@@ -27,7 +27,7 @@ Bekijk in het gedeelte resource beheer voor **model-en leer instellingen**het ma
 
     ![In Azure Portal gegevens wissen uit de resource personaliseren.](./media/settings/clear-data-from-personalizer-resource.png)
 
-    |Waarde|Doel|
+    |Waarde|Functie|
     |--|--|
     |Vastgelegde persoonlijke instellingen en belonings gegevens.|Deze logboek registratie gegevens worden gebruikt in offline-evaluaties. Wis de gegevens als u uw resource opnieuw instelt.|
     |Stel het persoonlijke model opnieuw in.|Dit model wordt bij elke retraining gewijzigd. Deze frequentie van training is opgegeven bij **Upload model frequentie** op de **configuratie** pagina. |
@@ -49,7 +49,7 @@ De [leer beleids](concept-active-learning.md#understand-learning-policy-settings
 
 1. Open de [Azure Portal](https://portal.azure.com)en selecteer uw persoonlijke resource.
 1. Selecteer **model en leer instellingen** in het gedeelte **resource beheer** .
-1. Selecteer de knop **Learning Settings exporteren** voor de **leer instellingen voor importeren** . Hiermee slaat u `json` het bestand op uw lokale computer op.
+1. Selecteer de knop **Learning Settings exporteren** voor de **leer instellingen voor importeren** . Hiermee slaat `json` u het bestand op uw lokale computer op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

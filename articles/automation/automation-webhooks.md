@@ -3,14 +3,14 @@ title: Een Azure Automation runbook starten vanuit een webhook
 description: In dit artikel leest u hoe u een webhook gebruikt om een runbook in Azure Automation te starten vanuit een HTTP-aanroep.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830494"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342966"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Een runbook starten vanuit een webhook
 
@@ -20,6 +20,8 @@ Met een webhook kan een externe service een bepaald runbook in Azure Automation 
 > Het gebruik van een webhook voor het starten van een python-runbook wordt niet ondersteund.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+
+Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2 met webhooks.
 
 ## <a name="webhook-properties"></a>Eigenschappen van webhook
 
@@ -101,7 +103,8 @@ Gebruik de volgende procedure om een nieuwe webhook te maken die is gekoppeld aa
    ![Webhook-URL](media/automation-webhooks/copy-webhook-url.png)
 
 1. Klik op **para meters** om waarden voor de runbook-para meters op te geven. Als het runbook verplichte para meters bevat, kunt u de webhook alleen maken als u waarden opgeeft.
-1. Klik op **Maken** om de webhook te maken.
+
+2. Klik op **Maken** om de webhook te maken.
 
 ## <a name="use-a-webhook"></a>Een webhook gebruiken
 
@@ -144,7 +147,7 @@ U kunt een webhook uitbreiden waarvan de verloop tijd nog niet is bereikt. Een w
 Het volgende voor beeld-runbook accepteert de webhookgegevens en start de virtuele machines die zijn opgegeven in de hoofd tekst van de aanvraag. Als u dit runbook wilt testen, klikt u in uw Automation-account onder **Runbooks**op **een runbook maken**. Als u niet weet hoe u een runbook moet maken, raadpleegt u [een Runbook maken](automation-quickstart-create-runbook.md).
 
 > [!NOTE]
-> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules](automation-update-azure-modules.md) in uw Automation-account bijwerken naar de meest recente versies. Mogelijk moet u uw modules bijwerken, zelfs als u zojuist een nieuw Automation-account hebt gemaakt.
+> Voor niet-grafische power shell-runbooks `Add-AzAccount` en `Add-AzureRMAccount` aliassen voor [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). U kunt deze cmdlets gebruiken of u kunt [uw modules bijwerken](automation-update-azure-modules.md) naar de nieuwste versie in uw Automation-account. Zelfs wanneer u zojuist een nieuw Automation-account hebt aangemaakt, moet u mogelijk uw modules bijwerken.
 
 ```powershell
 param

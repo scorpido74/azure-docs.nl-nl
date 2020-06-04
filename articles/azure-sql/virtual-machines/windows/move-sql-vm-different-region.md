@@ -1,5 +1,5 @@
 ---
-title: Verplaats de virtuele machine naar een andere regio (Azure Site Recovery)
+title: Een virtuele machine verplaatsen naar een andere regio (Azure Site Recovery)
 description: Meer informatie over hoe u uw SQL Server virtuele machine vanuit de ene regio naar de andere kunt migreren in Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,24 +15,24 @@ ms.date: 07/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bca7237b38c1164d14ccf796e18980ba326090ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4211909a577adf7c16a99610654907ce58908fdf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042748"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337764"
 ---
-# <a name="move-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery-services"></a>SQL Server VM verplaatsen naar een andere regio binnen Azure met Azure Site Recovery Services
+# <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Een SQL Server VM verplaatsen naar een andere regio in azure met Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel leert u hoe u Azure Site Recovery kunt gebruiken om uw SQL Server virtuele machine (VM) te migreren van de ene regio naar een andere in Azure. 
 
 Als u een SQL Server VM naar een andere regio wilt verplaatsen, moet u het volgende doen:
-1. [**Voorbereiden**](#prepare-to-move): Controleer of de bron SQL Server virtuele machine en de doel regio adequaat zijn voor bereid voor de verplaatsing. 
-1. [**Configureren**](#configure-azure-site-recovery-vault): het verplaatsen van uw SQL Server VM vereist dat het een gerepliceerd object binnen de Azure site Recovery kluis is. U moet uw SQL Server-VM toevoegen aan de Azure Site Recovery kluis. 
-1. [**Testen**](#test-move-process): het migreren van de SQL Server VM vereist een failover van de bron regio naar de gerepliceerde doel regio. Om ervoor te zorgen dat het proces wordt verplaatst, moet u eerst testen of uw SQL Server virtuele machine een failover naar de doel regio kan uitvoeren. Op deze manier kunt u alle problemen weer geven en voor komen wanneer u de daad werkelijke verplaatsing uitvoert. 
-1. [**Verplaatsen**](#move-the-sql-server-vm): zodra de testfailover is voltooid en u weet dat u veilig bent om uw SQL Server virtuele machine te migreren, kunt u de virtuele machine verplaatsen naar de doel regio. 
-1. [**Opschonen**](#clean-up-source-resources): als u facturerings kosten wilt voor komen, verwijdert u de SQL Server virtuele machine uit de kluis en overbodige resources die resteren in de resource groep. 
+1. [Voorbereiden](#prepare-to-move): Controleer of de bron SQL Server virtuele machine en de doel regio adequaat zijn voor bereid voor de verplaatsing. 
+1. [Configureren](#configure-azure-site-recovery-vault): het verplaatsen van uw SQL Server VM vereist dat het een gerepliceerd object binnen de Azure site Recovery kluis is. U moet uw SQL Server-VM toevoegen aan de Azure Site Recovery kluis. 
+1. [Testen](#test-move-process): het migreren van de SQL Server VM vereist een failover van de bron regio naar de gerepliceerde doel regio. Om ervoor te zorgen dat het proces kan worden voltooid, moet u eerst testen of de failover van uw SQL Server-VM naar de doel regio kan worden uitgevoerd. Op deze manier kunt u alle problemen weer geven en voor komen wanneer u de daad werkelijke verplaatsing uitvoert. 
+1. [Verplaatsen](#move-the-sql-server-vm): zodra de testfailover is voltooid en u weet dat u veilig bent om uw SQL Server virtuele machine te migreren, kunt u de virtuele machine verplaatsen naar de doel regio. 
+1. [Opschonen](#clean-up-source-resources): als u facturerings kosten wilt voor komen, verwijdert u de SQL Server virtuele machine uit de kluis en overbodige resources die resteren in de resource groep. 
 
 ## <a name="verify-prerequisites"></a>De vereisten controleren 
 
@@ -51,7 +51,7 @@ Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor.
 ### <a name="prepare-the-source-sql-server-vm"></a>De bron SQL Server VM voorbereiden
 
 - Zorg ervoor dat alle meest recente basis certificaten zich op de SQL Server VM bevinden die u wilt verplaatsen. Als de meest recente basis certificaten niet aanwezig zijn, voor komt u dat de gegevens naar de doel regio worden gekopieerd. 
-- Voor virtuele Windows-machines installeert u alle meest recente Windows-updates op de VM, zodat alle vertrouwde basis certificaten zich op de computer bevinden. In een niet-verbonden omgeving voert u het standaard Windows UPdate-en certificaat update proces voor uw organisatie uit. 
+- Voor virtuele Windows-machines installeert u alle meest recente Windows-updates op de VM, zodat alle vertrouwde basis certificaten zich op de computer bevinden. In een niet-verbonden omgeving volgt u de standaard Windows Update en het update proces van het certificaat voor uw organisatie. 
 - Voor Linux-Vm's volgt u de richt lijnen van uw Linux-distributeur om de meest recente vertrouwde basis certificaten en certificaatintrekkingslijsten te verkrijgen op de virtuele machine. 
 - Zorg ervoor dat u geen verificatie proxy gebruikt voor het beheren van de netwerk verbinding voor de virtuele machines die u wilt verplaatsen. 
 - Als de virtuele machine die u wilt verplaatsen geen toegang tot internet heeft of een firewall proxy gebruikt om uitgaande toegang te beheren, controleert u de vereisten. 
@@ -74,7 +74,7 @@ Bereid de bron SQL Server-VM en de doel regio voor de verplaatsing voor.
 
 De volgende stappen laten zien hoe u Azure Site Recovery kunt gebruiken om gegevens te kopiëren naar de doel regio. Maak de Recovery Services kluis in een andere regio dan de bron regio. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Kies ervoor om **een resource te maken** in de linkerbovenhoek van het navigatie deel venster. 
 1. Selecteer **deze &-beheer hulpprogramma's** en selecteer vervolgens **back-up en site Recovery**. 
 1. Op het tabblad **basis beginselen** onder **Project Details**maakt u een nieuwe resource groep in de doel regio of selecteert u een bestaande resource groep in de doel regio. 
@@ -132,7 +132,7 @@ De volgende stappen laten zien hoe u de SQL Server VM van de bron regio kunt ver
 1. U kunt het failoverproces bewaken op dezelfde **site Recovery** -pagina die u hebt bekeken bij het controleren van de failover-test in de vorige sectie. 
 1. Nadat de taak is voltooid, controleert u of de SQL Server virtuele machine wordt weer gegeven in de doel regio zoals verwacht. 
 1. Ga terug naar de kluis, selecteer **gerepliceerde items**, selecteer de SQL Server virtuele machine en selecteer **door voeren** om het verplaatsings proces te volt ooien naar de doel regio. Wacht tot de doorvoer taak is voltooid. 
-1. Registreer uw SQL Server-VM met de resource provider van de SQL-VM om de beheer baarheid van **virtuele SQL-machines** in te scha kelen in de Azure Portal en functies die zijn gekoppeld aan de resource provider. Zie [SQL Server VM registreren bij SQL VM resource provider](sql-vm-resource-provider-register.md)voor meer informatie. 
+1. Registreer uw SQL Server-VM met de resource provider van de SQL-VM om de beheer baarheid van **virtuele SQL-machines** in te scha kelen in de Azure Portal en functies die zijn gekoppeld aan de resource provider. Zie [SQL Server VM registreren bij de resource provider van de SQL-VM](sql-vm-resource-provider-register.md)voor meer informatie. 
 
   > [!WARNING]
   > SQL Server consistentie van gegevens wordt alleen gegarandeerd met app-consistente moment opnamen. De **laatste verwerkte** moment opname kan niet worden gebruikt voor SQL Server failover, omdat een moment opname van een crash herstel niet kan garanderen SQL Server consistentie van de gegevens. 

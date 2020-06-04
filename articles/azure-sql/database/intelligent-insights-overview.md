@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 08904b3a5a1053d64e3b54582189da5d82f62dee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051925"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344047"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,8 +75,8 @@ Intelligent Insights beschik bare opties zijn:
 | :----------------------------- | ----- | ----- |
 | **Intelligent Insights configureren** : Configureer intelligent Insights analyse voor uw data bases. | Ja | Ja |
 | **Stream inzichten naar Azure SQL-analyse** --stream Insights Azure SQL-analyse. | Ja | Ja |
-| **Stream Insights naar Event hub** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja |
-| **Stream inzichten om** inzicht te krijgen in azure Storage streamen om te Azure Storage voor verdere analyse en lange termijn archivering. | Ja | Ja |
+| **Stream inzichten naar Azure Event hubs** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja |
+| **Stream inzichten om** inzicht te krijgen in azure Storage streamen om te Azure Storage voor verdere analyse en langdurige archivering. | Ja | Ja |
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>De export van het Intelligent Insights-logboek configureren
 
@@ -86,7 +86,7 @@ De uitvoer van de Intelligent Insights kan worden gestreamd naar een van de volg
 - Uitvoer die naar Azure Event Hubs is gestreamd, kan worden gebruikt voor de ontwikkeling van aangepaste bewakings-en waarschuwings scenario's
 - Uitvoer die naar Azure Storage is gestreamd, kan worden gebruikt voor aangepaste toepassings ontwikkeling, zoals aangepaste rapportage, gegevens archivering op lange termijn, enzovoort.
 
-De integratie van Azure SQL-analyse, Azure Event hub, Azure Storage of producten van derden voor verbruik wordt uitgevoerd via eerst Intelligent Insights logboek registratie (het ' SQLInsights-logboek) in te scha kelen in de Blade Diagnostische instellingen van een Data Base en vervolgens het configureren van Intelligent Insights logboek gegevens naar een van deze bestemmingen te streamen.
+Integratie van Azure SQL-analyse, Azure Event Hubs, Azure Storage of producten van derden voor gebruik wordt uitgevoerd via eerst Intelligent Insights logboek registratie (het "SQLInsights"-logboek) inschakelen op de Blade Diagnostische instellingen van een Data Base en vervolgens de configuratie van Intelligent Insights logboek gegevens naar een van deze bestemmingen.
 
 Zie [metrische gegevens en Diagnostische logboeken](metrics-diagnostic-telemetry-logging-streaming-export-configure.md)voor meer informatie over het inschakelen van intelligent Insights logboek registratie en het configureren van metrieke en bron logboeken die moeten worden gestreamd naar een verbruikte product.
 
@@ -104,9 +104,9 @@ In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeve
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
-Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u de [logboek registratie voor metingen en diagnostiek](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) en [registreert u Azure Diagnostics-logboeken naar Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Als u Intelligent Insights met Event Hubs wilt gebruiken, configureert u Intelligent Insights logboek gegevens die moeten worden gestreamd naar Event Hubs, raadpleegt u de [logboek registratie voor metrieke en diagnostische](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) informatie en [registreert u logboeken van Azure diagnostics naar Event hubs](../../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
-Zie [wat te doen met metrische gegevens en Diagnostische logboeken in Event hubs](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)om event hubs te gebruiken voor het instellen van aangepaste bewaking en waarschuwingen.
+Zie [wat u kunt doen met metrische gegevens en Diagnostische logboeken in Event hubs](metrics-diagnostic-telemetry-logging-streaming-export-configure.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs)voor informatie over het gebruik van Event hubs om aangepaste bewaking en waarschuwingen in te stellen.
 
 ### <a name="set-up-with-azure-storage"></a>Instellen met Azure Storage
 
@@ -114,7 +114,7 @@ Als u Intelligent Insights met opslag wilt gebruiken, moet u Intelligent Insight
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Aangepaste integraties van Intelligent Insights logboek
 
-Zie [het logboek voor diagnostische gegevens over de Intelligent Insights-data base](intelligent-insights-use-diagnostics-log.md)gebruiken om intelligent Insights te gebruiken met hulpprogram ma's van derden of voor aangepaste waarschuwingen en bewakings ontwikkeling.
+Zie [het logboek voor diagnostische gegevens over het intelligent Insights-Data Base gebruiken](intelligent-insights-use-diagnostics-log.md)om intelligent Insights te gebruiken met hulp middelen van derden of voor aangepaste waarschuwingen en bewakings ontwikkeling.
 
 ## <a name="detection-metrics"></a>Detectie gegevens
 
@@ -133,7 +133,7 @@ Alle metrische gegevens worden beschouwd als samen in verschillende relaties via
 
 - Details van het prestatie probleem dat is gedetecteerd.
 - Er is een analyse van de hoofd oorzaak van het probleem gedetecteerd.
-- Aanbevelingen voor het verbeteren van de prestaties van de bewaakte SQL database, waar mogelijk.
+- Aanbevelingen voor het verbeteren van de prestaties van de bewaakte data base, waar mogelijk.
 
 ## <a name="query-duration"></a>Query duur
 

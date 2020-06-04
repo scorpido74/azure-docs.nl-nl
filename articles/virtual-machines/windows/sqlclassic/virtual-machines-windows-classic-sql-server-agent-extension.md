@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017530"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338404"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Beheer taken op Azure Virtual Machines automatiseren met de SQL Server Agent extensie (klassiek)
 > [!div class="op_single_selector"]
@@ -82,7 +82,7 @@ Als u de nieuwste versie van de SQL IaaS agent-extensie bijwerkt, moet u de virt
 > Klassieke virtuele machines hebben geen optie voor het installeren en configureren van de SQL IaaS agent-extensie via de portal.
 
 > [!NOTE]
-> De uitbrei ding voor de SQL Server IaaS-agent wordt alleen ondersteund op [SQL Server VM-galerie kopieën](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (betalen per gebruik of uw eigen licentie). Het wordt niet ondersteund als u SQL Server hand matig installeert op een virtuele Windows Server-machine met alleen een besturings systeem of als u een aangepaste SQL Server VM-VHD implementeert. In dergelijke gevallen is het mogelijk om de uitbrei ding hand matig te installeren en beheren met behulp van Power shell, maar het wordt ten zeerste aanbevolen om in plaats daarvan een SQL Server VM-galerie afbeelding te installeren en deze vervolgens aan te passen.
+> De uitbrei ding voor de SQL Server IaaS-agent wordt alleen ondersteund op [SQL Server VM-galerie kopieën](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) (betalen per gebruik of uw eigen licentie). Het wordt niet ondersteund als u SQL Server hand matig installeert op een virtuele Windows Server-machine met alleen een besturings systeem of als u een aangepaste SQL Server VM-VHD implementeert. In dergelijke gevallen is het mogelijk om de uitbrei ding hand matig te installeren en beheren met behulp van Power shell, maar het wordt ten zeerste aanbevolen om in plaats daarvan een SQL Server VM-galerie afbeelding te installeren en deze vervolgens aan te passen.
 
 ## <a name="status"></a>Status
 Een manier om te controleren of de uitbrei ding is geïnstalleerd, is de agent status weer geven in azure Portal. Selecteer een virtuele machine die wordt weer gegeven op de Blade van de virtuele machine en klik vervolgens op **extensies**. De uitbrei ding **SQLIaaSAgent** wordt weer gegeven.

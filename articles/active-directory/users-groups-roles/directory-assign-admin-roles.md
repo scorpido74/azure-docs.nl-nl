@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310747"
+ms.locfileid: "84340263"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerrol in Azure Active Directory
 
@@ -224,7 +224,7 @@ Deze beheerder beheert Federatie tussen Azure AD-organisaties en externe ID-prov
 
 ### <a name="global-administrator--company-administrator"></a>[Beheerder van globale beheerder/bedrijf](#company-administrator-permissions)
 
-Gebruikers met deze rol hebben toegang tot alle beheer functies in Azure Active Directory en services die gebruikmaken van Azure Active Directory identiteiten, zoals Microsoft 365 Security Center, Microsoft 365 compliance Center, Exchange Online, share point online en Skype voor bedrijven online. De persoon die zich aanmeldt voor de Azure AD-organisatie, wordt een globale beheerder. Uw bedrijf kan meer dan één globale beheerder zijn. Globale beheerders kunnen het wachtwoord voor elke gebruiker en alle andere beheerders opnieuw instellen.
+Gebruikers met deze rol hebben toegang tot alle beheer functies in Azure Active Directory en services die gebruikmaken van Azure Active Directory identiteiten, zoals Microsoft 365 Security Center, Microsoft 365 compliance Center, Exchange Online, share point online en Skype voor bedrijven online. Bovendien kunnen globale beheerders [hun toegang verhogen](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) om alle Azure-abonnementen en-beheer groepen te beheren. Hierdoor kunnen globale beheerders volledige toegang krijgen tot alle Azure-resources met behulp van de respectieve Azure AD-Tenant. De persoon die zich aanmeldt voor de Azure AD-organisatie, wordt een globale beheerder. Uw bedrijf kan meer dan één globale beheerder zijn. Globale beheerders kunnen het wachtwoord voor elke gebruiker en alle andere beheerders opnieuw instellen.
 
 > [!NOTE]
 > In de Microsoft Graph-API en Azure AD Power shell wordt deze rol aangeduid als ' bedrijfs beheerder '. Het is "globale beheerder" in de [Azure Portal](https://portal.azure.com).
@@ -389,7 +389,7 @@ Gebruikers met deze rol kunnen gegevens over gebruiks rapportage en het dash boa
 
 ### <a name="search-administrator"></a>[Beheerder zoeken](#search-administrator-permissions)
 
-Gebruikers met deze rol hebben volledige toegang tot alle micro soft Search-beheer functies in het Microsoft 365-beheer centrum. Beheerders van zoeken kunnen de rollen Zoek beheerders en zoek editor delegeren naar gebruikers, en inhoud maken en beheren, zoals blad wijzers, Q&als en locaties. Daarnaast kunnen deze gebruikers het berichten centrum bekijken, service status bewaken en service aanvragen maken.
+Gebruikers met deze rol hebben volledige toegang tot alle micro soft Search-beheer functies in het Microsoft 365-beheer centrum. Daarnaast kunnen deze gebruikers het berichten centrum bekijken, service status bewaken en service aanvragen maken.
 
 ### <a name="search-editor"></a>[Zoek editor](#search-editor-permissions)
 

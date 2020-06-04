@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/22/2018
+ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 9228d33ac8ad4dd2d274c8ae642861bf3fbdc888
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f609cfb0945d79cfa8ae21b786a5761b92b9dabb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118257"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324620"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>De Azure-SSIS-integratieruntime opnieuw configureren
 
@@ -27,19 +27,15 @@ In dit artikel wordt beschreven hoe u een bestaande Azure SSIS Integration runti
 ## <a name="data-factory-ui"></a>Gebruikersinterface van Data Factory 
 U kunt Data Factory gebruikers interface gebruiken om een Azure-SSIS IR te stoppen, te bewerken/opnieuw te configureren of te verwijderen. 
 
-1. Ga in de **Data Factory-gebruikers interface**naar het tabblad **bewerken** . Als u Data Factory gebruikers interface wilt starten, klikt u op de start pagina van uw data factory op **& controle** maken.
-2. Klik in het linkerdeel venster op **verbindingen**.
-3. Schakel in het rechterdeel venster over naar de **Integration Runtimes**. 
-4. U kunt de knoppen in de kolom acties gebruiken om de Integration runtime te **stoppen**, te **bewerken**of te **verwijderen** . Met de **code** knop in de kolom **acties** kunt u de JSON-definitie weer geven die aan de Integration runtime is gekoppeld.  
-    
-    ![Acties voor Azure SSIS IR](./media/manage-azure-ssis-integration-runtime/actions-for-azure-ssis-ir.png)
+1. Open Data Factory gebruikers interface door de tegel **Author & monitor** te selecteren op de start pagina van uw Data Factory.
+2. Selecteer de hub **beheren** onder **Start**, **bewerken**en **controleren** hubs om het deel venster **verbindingen** weer te geven.
 
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Een Azure-SSIS IR opnieuw configureren
-1. Stop de Integration runtime door te klikken op **stoppen** in de kolom **acties** . Als u de lijst weergave wilt vernieuwen, klikt u op **vernieuwen** op de werk balk. Nadat de IR is gestopt, ziet u dat u met de eerste actie de IR kunt starten. 
+Ga in het deel venster **verbindingen** van hub **beheren** naar de pagina **Integration Runtimes** en selecteer **vernieuwen**. 
 
-    ![Acties voor Azure SSIS IR-na het stoppen](./media/manage-azure-ssis-integration-runtime/actions-after-ssis-ir-stopped.png)
-2. Bewerk/Wijzig IR door te klikken op de knop **bewerken** in de kolom **acties** . Wijzig in het venster **Integration runtime Setup** de instellingen (bijvoorbeeld grootte van het knoop punt, het aantal knoop punten of het maximum aantal parallelle uitvoeringen per knoop punt). 
-3. Als u de IR opnieuw wilt opstarten, klikt u op de knop **Start** in de kolom **acties** .     
+   ![Deel venster verbindingen](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+
+   U kunt uw Azure-SSIS IR bewerken/opnieuw configureren door de naam ervan te selecteren. U kunt ook de relevante knoppen voor het bewaken/starten/stoppen/verwijderen van uw Azure-SSIS IR selecteren, automatisch een ADF-pijp lijn genereren met de activiteit voor het uitvoeren van SSIS-pakketten om op uw Azure-SSIS IR uit te voeren en de JSON-code/payload van uw Azure-SSIS IR weer te geven.  Het bewerken/verwijderen van uw Azure-SSIS IR kan alleen worden uitgevoerd wanneer het is gestopt.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -51,46 +47,46 @@ Nadat u een exemplaar van Azure SSIS Integration runtime hebt ingericht en gesta
 
 1. Stop eerst de Azure SSIS Integration runtime met behulp van de cmdlet [Stop-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/stop-Azdatafactoryv2integrationruntime) . Met deze opdracht worden alle knoop punten vrijgegeven en wordt de facturering gestopt.
 
-    ```powershell
-    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
-    ```
+   ```powershell
+   Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName 
+   ```
 2. Configureer vervolgens de Azure-SSIS IR opnieuw met behulp van de cmdlet [set-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/set-Azdatafactoryv2integrationruntime) . Met de volgende voorbeeld opdracht wordt een Azure-SSIS-integratie-runtime geschaald naar vijf knoop punten.
 
-    ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
-    ```  
+   ```powershell
+   Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -NodeCount 5
+   ```  
 3. Start vervolgens de Azure SSIS Integration runtime met behulp van de cmdlet [Start-AzDataFactoryV2IntegrationRuntime](/powershell/module/az.datafactory/start-Azdatafactoryv2integrationruntime) . Met deze opdracht worden alle knoop punten toegewezen voor het uitvoeren van SSIS-pakketten.   
 
-    ```powershell
-    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
-    ```
+   ```powershell
+   Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName
+   ```
 
 ### <a name="delete-an-azure-ssis-ir"></a>Een Azure-SSIS IR verwijderen
 1. Eerst een lijst van alle bestaande Azure SSIS-IRs onder uw data factory.
 
-    ```powershell
-    Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
-    ```
+   ```powershell
+   Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName -Status
+   ```
 2. Stop vervolgens alle bestaande Azure SSIS IRs in uw data factory.
 
-    ```powershell
-    Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
-    ```
+   ```powershell
+   Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+   ```
 3. Verwijder vervolgens alle bestaande Azure SSIS-IRs in uw data factory een voor een.
 
-    ```powershell
-    Remove-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
-    ```
+   ```powershell
+   Remove-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+   ```
 4. Verwijder ten slotte de data factory.
 
-    ```powershell
-    Remove-AzDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
-    ```
+   ```powershell
+   Remove-AzDataFactoryV2 -Name $DataFactoryName -ResourceGroupName $ResourceGroupName -Force
+   ```
 5. Als u een nieuwe resource groep hebt gemaakt, verwijdert u de resource groep.
 
-    ```powershell
-    Remove-AzResourceGroup -Name $ResourceGroupName -Force 
-    ```
+   ```powershell
+   Remove-AzResourceGroup -Name $ResourceGroupName -Force 
+   ```
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende onderwerpen voor meer informatie over Azure-SSIS runtime: 
@@ -99,5 +95,4 @@ Zie de volgende onderwerpen voor meer informatie over Azure-SSIS runtime:
 - [Zelfstudie: SSIS-pakketten implementeren in Azure](tutorial-create-azure-ssis-runtime-portal.md). In dit artikel vindt u stapsgewijze instructies voor het maken van een Azure-SSIS IR en het gebruik van Azure SQL Database voor het hosten van de SSIS-catalogus. 
 - [Procedure: Een Azure SSIS Integration Runtime maken](create-azure-ssis-integration-runtime.md). In dit artikel wordt de zelf studie uitgebreid en vindt u instructies voor het gebruik van Azure SQL Managed instance en het toevoegen van de IR aan een virtueel netwerk. 
 - [Een Azure-SSIS-integratieruntime toevoegen aan een virtueel netwerk](join-azure-ssis-integration-runtime-virtual-network.md). Dit artikel bevat algemene informatie over het toevoegen van een Azure-SSIS IR aan een virtueel netwerk van Azure. Er wordt ook beschreven hoe u Azure Portal gebruikt om een virtueel netwerk te configureren voor het deelnemen van Azure-SSIS IR aan het virtueel netwerk. 
-- [Een Azure-SSIS IR controleren](monitor-integration-runtime.md#azure-ssis-integration-runtime). In dit artikel leest u hoe u informatie over een Azure-SSIS IR ophaalt. Daarnaast bevat het artikel beschrijvingen van statuswaarden die worden gebruikt in de geretourneerde informatie. 
- 
+- [Een Azure-SSIS IR controleren](monitor-integration-runtime.md#azure-ssis-integration-runtime). In dit artikel leest u hoe u informatie over een Azure-SSIS IR ophaalt. Daarnaast bevat het artikel beschrijvingen van statuswaarden die worden gebruikt in de geretourneerde informatie.

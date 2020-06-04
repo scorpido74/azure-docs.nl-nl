@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 716d40a0b86ec3385f236a3d81f651d24a36845a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594131"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342104"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Veelgestelde vragen over de voor deur van Azure
 
@@ -46,7 +46,7 @@ De belangrijkste scenario's waarvan een moet worden gebruikt Application Gateway
 
 - Met de voor deur kan alleen op het globale niveau taak verdeling op basis van een pad worden uitgevoerd, maar als er nog meer verkeer in het virtuele netwerk (VNET) moet worden geladen, moeten ze Application Gateway gebruiken.
 - Omdat de voor deur niet werkt op een VM-of container niveau, kan er geen verbinding worden verbroken. Met Application Gateway kunt u echter de verbinding verbreken. 
-- Met een Application Gateway achter AFD, kan een van 100% TLS/SSL-offload worden gerealiseerd en kunnen alleen HTTP-aanvragen worden gerouteerd binnen hun virtuele netwerk (VNET).
+- Met een Application Gateway achter de deur kan één van 100% TLS/SSL-offload worden gerealiseerd en kunnen alleen HTTP-aanvragen worden gerouteerd binnen hun virtuele netwerk (VNET).
 - De voor deur en Application Gateway de affiniteit van de ondersteunings sessie. Hoewel de front-deur volgend verkeer van een gebruikers sessie naar hetzelfde cluster of dezelfde back-end in een bepaalde regio kan omleiden, kan Application Gateway het verkeer naar dezelfde server in het cluster affinitize.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Kunnen we Azure Load Balancer implementeren achter de voor deur?
@@ -93,12 +93,12 @@ Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor 
  
     - Raadpleeg de sectie *AzureFrontDoor. back-end* in [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor het IPv4-back-end-IP-adres bereik van de front deur of u kunt ook de service label *AzureFrontDoor. back-end* gebruiken in uw [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules).
     - De **IPv6** -back-end van de front-ends tijdens de dekking van de servicetag wordt niet weer gegeven in het JSON-bestand van het Azure IP-bereik. Als u op zoek bent naar een expliciet IPv6-adres bereik, is dit momenteel beperkt tot`2a01:111:2050::/44`
-    - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP `168.63.129.16` -adressen: en`169.254.169.254`
+    - De [basis infrastructuur services](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) van Azure via gevirtualiseerde host-IP-adressen: `168.63.129.16` en`169.254.169.254`
 
     > [!WARNING]
     > De backend-back-end van de voor deur kan later worden gewijzigd, maar we zorgen ervoor dat voordat dat gebeurt, dat we hebben geïntegreerd met [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519). U wordt aangeraden om u te abonneren op [Azure IP-bereiken en service Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor eventuele wijzigingen of updates.
 
--    Voer een GET-bewerking uit op uw voor deur met de `2020-01-01` API-versie of hoger. Zoek in de API-aanroep naar `frontdoorID` veld. Filter op de inkomende header '**X-Azure-FDID**' die door de voor deur naar uw back-end wordt verzonden met de waarde `frontdoorID`van het veld. 
+-    Voer een GET-bewerking uit op uw voor deur met de API-versie `2020-01-01` of hoger. Zoek in de API-aanroep naar `frontdoorID` veld. Filter op de inkomende header '**X-Azure-FDID**' die door de voor deur naar uw back-end wordt verzonden met de waarde van het veld `frontdoorID` . 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kan het anycast-IP-adres worden gewijzigd gedurende de levens duur van mijn front-deur?
 
@@ -213,7 +213,7 @@ Nee, zelfondertekende certificaten worden niet op de voor deur ondersteund en de
 
 Als u een geslaagde HTTPS-verbinding met de back-end wilt maken, ongeacht of de status test of aanvragen worden doorgestuurd, kunnen er twee redenen zijn waarom HTTPS-verkeer kan mislukken:
 
-1. De naam van het **certificaat onderwerp komt niet overeen**: voor HTTPS-verbindingen verwacht de voor deur dat uw back-end een certificaat van een geldige CA met de naam van de back-end (en) overeenkomt met de backend-hostnaam. Als bijvoorbeeld de hostnaam `myapp-centralus.contosonews.net` `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` van de back-end is ingesteld op en het certificaat dat uw back-end presenteert tijdens de TLS-Handshake, noch de naam van het onderwerp, wordt de verbinding door de voor deur geweigerd en wordt er een fout geretourneerd. 
+1. De naam van het **certificaat onderwerp komt niet overeen**: voor HTTPS-verbindingen verwacht de voor deur dat uw back-end een certificaat van een geldige CA met de naam van de back-end (en) overeenkomt met de backend-hostnaam. Als bijvoorbeeld de hostnaam van de back-end is ingesteld op `myapp-centralus.contosonews.net` en het certificaat dat uw back-end presenteert tijdens de TLS `myapp-centralus.contosonews.net` -Handshake, noch de `*myapp-centralus*.contosonews.net` naam van het onderwerp, wordt de verbinding door de voor deur geweigerd en wordt er een fout geretourneerd. 
     1. **Oplossing**: Hoewel het niet wordt aangeraden om het probleem op te lossen, kunt u deze fout omzeilen door de naam van de certificaat houder voor uw deur te controleren. Dit is aanwezig onder instellingen in Azure Portal en onder BackendPoolsSettings in de API.
 2. **Backend-hosting certificaat van ongeldige ca**: alleen certificaten van [geldige certificerings instanties](/azure/frontdoor/front-door-troubleshoot-allowed-ca) kunnen worden gebruikt op de back-end met de voor deur. Certificaten van interne Ca's of zelfondertekende certificaten zijn niet toegestaan.
 

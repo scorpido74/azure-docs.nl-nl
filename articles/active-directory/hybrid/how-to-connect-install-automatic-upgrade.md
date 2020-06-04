@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680213"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324212"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
 Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md#111050).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md#115610) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
@@ -89,18 +89,11 @@ Hier volgt een lijst met de meest voorkomende berichten die u vindt. Er worden n
 | UpgradeAbortedSyncExeInUse |De [gebruikers interface van Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) is geopend op de server. |
 | UpgradeAbortedSyncOrConfigurationInProgress |De installatie wizard wordt uitgevoerd of een synchronisatie is gepland buiten de scheduler. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | U hebt ADFS als de aanmeldings methode geselecteerd. |
 | UpgradeNotSupportedCustomizedSyncRules |U hebt uw eigen aangepaste regels toegevoegd aan de configuratie. |
-| UpgradeNotSupportedDeviceWritebackEnabled |U hebt de functie voor het [terugschrijven van apparaten](how-to-connect-device-writeback.md) ingeschakeld. |
-| UpgradeNotSupportedGroupWritebackEnabled |U hebt de functie voor het terugschrijven van groepen ingeschakeld. |
 | UpgradeNotSupportedInvalidPersistedState |De installatie is geen snelle instellingen of een DirSync-upgrade. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |U hebt meer dan 100.000 objecten in de tekst. |
-| UpgradeNotSupportedMultiForestSetup |U maakt verbinding met meer dan één forest. Snelle installatie maakt alleen verbinding met één forest. |
 | UpgradeNotSupportedNonLocalDbInstall |U gebruikt geen SQL Server Express LocalDB-data base. |
-| UpgradeNotSupportedNonMsolAccount |Het [AD DS Connector-account](reference-connect-accounts-permissions.md#ad-ds-connector-account) is niet het standaard MSOL_-account. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Bij het instellen van AAD Connect kiest u *niet configureren* wanneer u de aanmeldings methode selecteert. |
-| UpgradeNotSupportedStagingModeEnabled |De server is ingesteld om te worden uitgevoerd in de [faserings modus](how-to-connect-sync-staging-server.md). |
-| UpgradeNotSupportedUserWritebackEnabled |De functie voor het [terugschrijven van gebruikers](how-to-connect-preview.md#user-writeback) is ingeschakeld. |
+|UpgradeNotSupportedLocalDbSizeExceeded|Lokale data base-grootte is groter dan of gelijk aan 8 GB|
+|UpgradeNotSupportedAADHealthUploadDisabled|De status gegevens uploads zijn uitgeschakeld vanuit de portal|
 
 ## <a name="next-steps"></a>Volgende stappen
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300125"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344846"
 ---
 # <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Een Azure Files bestands share maken met een domein controller
 
@@ -43,7 +43,7 @@ Een opslag account instellen:
     - Voer een unieke naam in voor het opslagaccount.
     - Voor de **locatie**raden we u aan om dezelfde locatie te kiezen als de Windows-hostgroep voor virtueel bureau blad.
     - Selecteer bij **Prestaties** de optie **Standaard**. (Afhankelijk van uw IOPS-vereisten. Zie [opslag opties voor FSLogix-profiel containers in Windows Virtual Desktop](store-fslogix-profile.md)voor meer informatie.)
-    - Selecteer voor **account type** **StorageV2**.
+    - Selecteer voor **account type** **StorageV2** of **FileStorage**.
     - Voor **replicatie**selecteert u **lokaal redundante opslag (LRS)**.
 
 5. Wanneer u klaar bent, selecteert u **controleren + maken**en selecteert u **maken**.
@@ -64,15 +64,15 @@ Een bestandsshare maken:
 
 4. Selecteer **Maken**.
 
-## <a name="enable-azure-active-directory-authentication"></a>Azure Active Directory-verificatie inschakelen
+## <a name="enable-active-directory-authentication"></a>Active Directory-verificatie inschakelen
 
-Vervolgens moet u Azure Active Directory (AD)-verificatie inschakelen. Als u dit beleid wilt inschakelen, moet u de instructies in deze sectie volgen op een computer die al lid is van een domein. Als u verificatie wilt inschakelen, volgt u deze instructies op de VM waarop de domein controller wordt uitgevoerd:
+Vervolgens moet u Active Directory (AD)-verificatie inschakelen. Als u dit beleid wilt inschakelen, moet u de instructies in deze sectie volgen op een computer die al lid is van een domein. Als u verificatie wilt inschakelen, volgt u deze instructies op de VM waarop de domein controller wordt uitgevoerd:
 
 1. Remote Desktop Protocol de virtuele machine die lid is van het domein.
 
 2. Volg de instructies in [azure AD DS-verificatie inschakelen voor uw Azure-bestands shares](../storage/files/storage-files-identity-ad-ds-enable.md) om de AzFilesHybrid-module te installeren en verificatie in te scha kelen.
 
-3.  Open de Azure Portal, open uw opslag account, selecteer **configuratie**en bevestig dat **Azure Active Directory (AD)** is ingesteld op **ingeschakeld**.
+3.  Open de Azure Portal, open uw opslag account, selecteer **configuratie**en bevestig dat **Active Directory (AD)** is ingesteld op **ingeschakeld**.
 
      ![Een scherm afbeelding van de configuratie pagina waarop Azure Active Directory (AD) is ingeschakeld.](media/active-directory-enabled.png)
 

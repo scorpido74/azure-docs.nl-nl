@@ -4,13 +4,13 @@ description: In deze Quick start ziet u hoe u aan de slag gaat met de QnA Maker 
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851672"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342728"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Snelstartgids: QnA Maker REST-Api's voor node. js
 
@@ -25,7 +25,7 @@ Gebruik de QnA Maker REST-Api's voor node. js voor het volgende:
 * Een Knowledge base downloaden
 * Status van een bewerking ophalen
 
-[Voor beelden van referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referentie documentatie](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  Voor [beelden van node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -41,7 +41,7 @@ Gebruik de QnA Maker REST-Api's voor node. js voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine.
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_RESOURCE_KEY` de `QNAMAKER_AUTHORING_ENDPOINT`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **Quick** start-pagina van de resource in het Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de resource met de naam `QNAMAKER_RESOURCE_KEY` en `QNAMAKER_AUTHORING_ENDPOINT` . Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **Quick** start-pagina van de resource in het Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
@@ -76,7 +76,7 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de QnA Maker RE
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
-Maak een bestand met `rest-apis.js` de naam en voeg _de volgende instructie_ toe om HTTP-aanvragen te maken.
+Maak een bestand `rest-apis.js` met de naam en voeg _requires_ de volgende instructie toe om HTTP-aanvragen te maken.
 
 ```javascript
 const request = require("requestretry");
@@ -89,7 +89,7 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 Stel de volgende omgevings waarden in:
 
 * `QNAMAKER_RESOURCE_KEY`-De **sleutel** is een teken reeks van 32 en is beschikbaar in het Azure Portal op de QnA Maker-resource op de pagina **snel starten** . Dit is niet hetzelfde als de Voorspellings eindpunt sleutel.
-* `QNAMAKER_AUTHORING_ENDPOINT`-Uw ontwerp-eind punt in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
+* `QNAMAKER_AUTHORING_ENDPOINT`-Uw ontwerp-eind punt in de indeling van `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` bevat de naam van uw **resource**. Dit is niet dezelfde URL die wordt gebruikt om een query uit te zoeken op het Voorspellings eindpunt.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -136,7 +136,7 @@ Gebruik de [rest API om een Knowledge Base te verwijderen](https://docs.microsof
 
 ## <a name="get-status-of-an-operation"></a>Status van een bewerking ophalen
 
-Langlopende processen, zoals het aanmaak proces, retourneert een bewerkings-ID, die moet worden gecontroleerd met een afzonderlijke REST API aanroep. Deze functie neemt de hoofd tekst van het antwoord Create. De belang rijke sleutel is `operationState`de, waarmee wordt bepaald of u wilt door gaan met polling.
+Langlopende processen, zoals het aanmaak proces, retourneert een bewerkings-ID, die moet worden gecontroleerd met een afzonderlijke REST API aanroep. Deze functie neemt de hoofd tekst van het antwoord Create. De belang rijke sleutel is de `operationState` , waarmee wordt bepaald of u wilt door gaan met polling.
 
 Gebruik de [rest API om bewerkingen op een Knowledge Base te bewaken](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
@@ -146,7 +146,7 @@ Gebruik de [rest API om bewerkingen op een Knowledge Base te bewaken](https://do
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit `node rest-apis.js` met de opdracht uit de toepassingsmap.
+Voer de toepassing uit met de `node rest-apis.js` opdracht uit de toepassingsmap.
 
 ```console
 node rest-apis.js

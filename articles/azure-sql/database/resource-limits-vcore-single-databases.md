@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a916d6b181acfc8b32b243ee14ed35aa8565a76e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235692"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343333"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ In dit artikel vindt u gedetailleerde resource limieten voor afzonderlijke data 
 
 Zie [overzicht van resource limieten op een server](resource-limits-logical-server.md)voor de limieten voor DTU-aankoop modellen voor afzonderlijke data bases op een server.
 
-U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#azure-cli)of de [rest API](single-database-manage.md#rest-api).
+U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#the-azure-cli)of de [rest API](single-database-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Zie [Eén data base schalen](single-database-scale.md)voor richt lijnen en overwegingen voor schalen.
@@ -320,7 +320,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|Fsv2-serie|
 |vCores|72|
 |Geheugen (GB)|136,2|
-|Column Store-ondersteuning|Yes|
+|Column Store-ondersteuning|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -459,7 +459,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Compute genereren|M-serie|
 |vCores|128|
 |Geheugen (GB)|3767,1|
-|Column Store-ondersteuning|Yes|
+|Column Store-ondersteuning|Ja|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -472,8 +472,8 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 |Maximaal aantal gelijktijdige aanmeldingen|12.800|
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Aantal replica's|4|
-|Meerdere AZ|Yes|
-|Uitschalen voor leesbewerking|Yes|
+|Meerdere AZ|Ja|
+|Uitschalen voor leesbewerking|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 \*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.

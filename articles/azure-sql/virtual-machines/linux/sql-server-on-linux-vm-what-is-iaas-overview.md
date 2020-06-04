@@ -1,6 +1,6 @@
 ---
-title: Overzicht van SQL Server op virtuele Linux-machines in Azure | Microsoft Docs
-description: Meer informatie over het uitvoeren van volledige SQL Server-edities op virtuele Linux-machines in Azure. U vindt hier rechtstreekse koppelingen naar alle installatiekopieën voor virtuele Linux-machines met SQL Server en gerelateerde inhoud.
+title: Overzicht van SQL Server op Azure Virtual Machines voor Linux | Microsoft Docs
+description: Meer informatie over het uitvoeren van volledige SQL Server-edities op Azure Virtual Machines voor Linux. U vindt hier rechtstreekse koppelingen naar alle installatiekopieën voor virtuele Linux-machines met SQL Server en gerelateerde inhoud.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 61b8982868bf14a7b5a5441049cb7fa21cdd9d6d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f9ef33c40da70910c99d18339da66faaec9d39cd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266029"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343741"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Overzicht van SQL Server op virtuele machines in Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,16 +26,16 @@ ms.locfileid: "84266029"
 > * [Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 > * [Linux](sql-server-on-linux-vm-what-is-iaas-overview.md)
 
-Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server in de cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
+Met SQL Server op Azure Virtual Machines kunt u volledige versies van SQL Server in de Cloud gebruiken zonder dat u on-premises hardware hoeft te beheren. SQL Server-VM's vereenvoudigen ook de licentiekosten als u betaalt naar gebruik.
 
 Virtuele machines van Azure worden uitgevoerd in talloze verschillende [geografische regio's](https://azure.microsoft.com/regions/) ter wereld. Er zijn ook diverse [formaten](../../../virtual-machines/windows/sizes.md). In de galerie met installatiekopieën voor virtuele machines kunt u een SQL Server-VM met de juiste versie, de juiste editie en het juiste besturingssysteem maken. Daarom zijn virtuele machines een goede optie voor diverse verschillende SQL Server-werkbelastingen. 
 
-## <a name="get-started-with-sql-vms"></a><a id="create"></a>Aan de slag met SQL-Vm's
+## <a name="get-started-with-sql-server-vms"></a><a id="create"></a>Aan de slag met SQL Server-Vm's
 
 Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine voor SQL Server met de vereiste versie, de vereiste editie en het vereiste besturingssysteem. De volgende gedeelten bevatten directe koppelingen naar Azure Portal voor de galerie met installatiekopieën van virtuele SQL Server-machines.
 
 > [!TIP]
-> Zie [de prijzenpagina voor virtuele Linux-machines met SQL Server](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) voor informatie over de prijzen voor SQL-installatiekopieën.
+> Zie [de pagina met prijzen voor Linux-vm's met SQL Server](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)voor meer informatie over het begrijpen van de prijzen voor SQL Server installatie kopieën.
 
 | Versie | Besturingssysteem | Editie |
 | --- | --- | --- |
@@ -44,13 +44,13 @@ Als u aan de slag wilt, kiest u een installatiekopie voor een virtuele machine v
 | **SQL Server 2017** | Ubuntu 16.04 LTS |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS), [Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS), [Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS), [Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS), [Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) |
 
 > [!NOTE]
-> Zie [Overzicht van SQL Server op virtuele Azure-machines (Windows)](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md) voor de beschikbare installatiekopieën van SQL Server voor virtuele Windows-machines.
+> Zie [overzicht van SQL Server op Azure virtual machines (Windows)](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)voor een overzicht van de beschik bare SQL Server installatie kopieën voor virtuele machines voor Windows.
 
 ## <a name="installed-packages"></a><a id="packages"></a> Geïnstalleerde pakketten
 
-Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pakket en vervolgens verschillende optionele pakketten afhankelijk van uw vereisten. De installatiekopieën van SQL Server voor de virtuele Linux-machines installeren de meeste pakketten automatisch voor u. De volgende tabel laat zien welke pakketten zijn geïnstalleerd voor elke distributie.
+Wanneer u SQL Server on Linux configureert, installeert u het data base-engine pakket en vervolgens verschillende optionele pakketten, afhankelijk van uw vereisten. De installatiekopieën van SQL Server voor de virtuele Linux-machines installeren de meeste pakketten automatisch voor u. De volgende tabel laat zien welke pakketten zijn geïnstalleerd voor elke distributie.
 
-| Distributie | [Database Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Zoek opdracht in volledige tekst](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
+| Distributie | [Database Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Hulpprogramma's](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server-Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Zoekopdracht in volledige tekst](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-invoegtoepassing](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
 | RHEL | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nee](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
 | SLES | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![ja](./media/sql-server-on-linux-vm-what-is-iaas-overview/yes.png) | ![nee](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) | ![nee](./media/sql-server-on-linux-vm-what-is-iaas-overview/no.png) |
@@ -58,9 +58,9 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 
 ## <a name="related-products-and-services"></a>Gerelateerde producten en services
 
-### <a name="linux-virtual-machines"></a>Linux Virtual Machines
+### <a name="linux-virtual-machines"></a>Virtuele Linux-machines
 
-* [Overzicht van Virtual Machines](../../../virtual-machines/linux/overview.md)
+* [Overzicht van Azure Virtual Machines](../../../virtual-machines/linux/overview.md)
 
 ### <a name="storage"></a>Storage
 
@@ -79,10 +79,10 @@ Wanneer u SQL Server op Linux configureert, installeert u het database-engine-pa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Aan de slag met SQL Server op virtuele Linux-machines van Azure:
+Aan de slag met SQL Server on Linux virtuele machines:
 
 * [Create a SQL Server VM in the Azure portal](sql-vm-create-portal-quickstart.md) (Een SQL Server-VM maken in Azure Portal)
 
-Vind antwoorden op veelgestelde vragen over virtuele SQL-machines op Linux:
+Antwoorden vinden op veelgestelde vragen over SQL Server Vm's op Linux:
 
-* [Veelgestelde vragen over SQL Server op virtuele Linux-machines van Azure](frequently-asked-questions-faq.md)
+* [Veelgestelde vragen over SQL Server op virtuele machines van Azure](frequently-asked-questions-faq.md)

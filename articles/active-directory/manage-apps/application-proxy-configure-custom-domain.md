@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dd3958022a5947a04b8bca4db4bee3ad059c7e17
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736480"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331947"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Aangepaste domeinen configureren met Azure AD-toepassingsproxy
 
@@ -138,7 +138,7 @@ Het is niet raadzaam om een persoonlijke basis certificerings instantie te gebru
 
 Alle certificaat beheer gaat via de afzonderlijke toepassings pagina's. Ga naar de **toepassings proxy** pagina van de toepassing om toegang te krijgen tot het veld **certificaat** .
 
-U kunt hetzelfde certificaat gebruiken voor meerdere toepassingen. Als een geüpload certificaat werkt met een andere toepassing, wordt het automatisch toegepast. U wordt niet gevraagd om het opnieuw te uploaden wanneer u de app toevoegt of configureert. 
+Zodra een certificaat is geüpload voor een toepassing, wordt het ook automatisch toegepast op **nieuwe** apps die gebruikmaken van hetzelfde certificaat. U moet het certificaat opnieuw uploaden voor bestaande apps in uw Tenant.
 
 Wanneer een certificaat verloopt, wordt een waarschuwing weer gegeven waarin u wordt gevraagd om een ander certificaat te uploaden. Als het certificaat wordt ingetrokken, zien uw gebruikers mogelijk een beveiligings waarschuwing bij het openen van de app. Als u het certificaat voor een app wilt bijwerken, gaat u naar de pagina **toepassings proxy** voor de app, selecteert u **certificaat**en uploadt u een nieuw certificaat. Als het oude certificaat niet door andere apps wordt gebruikt, wordt het automatisch verwijderd. 
 

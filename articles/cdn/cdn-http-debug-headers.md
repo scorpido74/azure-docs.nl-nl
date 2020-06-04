@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
-ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260493"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343017"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-fouten opsporen in HTTP-headers voor de engine van Azure CDN regels
-De header debug cache-aanvraag `X-EC-Debug`, bevat aanvullende informatie over het cache beleid dat wordt toegepast op de aangevraagde Asset. Deze headers zijn specifiek voor **Azure CDN Premium van Verizon** -producten.
+De header debug cache-aanvraag, `X-EC-Debug` bevat aanvullende informatie over het cache beleid dat wordt toegepast op de aangevraagde Asset. Deze headers zijn specifiek voor **Azure CDN Premium van Verizon** -producten.
 
 ## <a name="usage"></a>Gebruik
-Het antwoord van de POP-servers naar een gebruiker bevat alleen `X-EC-Debug` de header wanneer aan de volgende voor waarden wordt voldaan:
+Het antwoord van de POP-servers naar een gebruiker bevat `X-EC-Debug` alleen de header wanneer aan de volgende voor waarden wordt voldaan:
 
-- De [functie debug cache response headers](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) is ingeschakeld op de regel engine voor de opgegeven aanvraag.
+- De [functie debug cache response headers](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm) is ingeschakeld op de regel engine voor de opgegeven aanvraag.
 - Met de opgegeven aanvraag wordt de set debug cache response headers gedefinieerd die worden opgenomen in het antwoord.
 
 ## <a name="requesting-debug-cache-information"></a>Cache gegevens voor fout opsporing aanvragen
@@ -54,7 +54,7 @@ Fouten in de cache reactie van debug kunnen worden aangevraagd door de volgende 
 ## <a name="cache-status-code-information"></a>Informatie over cache status code
 De reactie header X-EC-debug kan een server identificeren en hoe deze het antwoord verwerkt via de volgende instructies:
 
-Header | Beschrijving
+Koptekst | Beschrijving
 -------|------------
 X-EC-debug: x-EC-cache | Deze header wordt gerapporteerd wanneer de inhoud via het CDN wordt doorgestuurd. Hiermee wordt de POP-server geïdentificeerd die de aanvraag heeft voltooid.
 X-EC-debug: x-EC-cache-Remote | Deze header wordt alleen gerapporteerd wanneer de aangevraagde inhoud in de cache is opgeslagen op een originele schild server of een ADN-Gateway server.
@@ -122,7 +122,7 @@ Deze fysieke cache sleutel begint met een dubbele slash (/), gevolgd door het pr
 
 HTTP-platforms zijn standaard geconfigureerd voor het gebruik van *standaard-cache*, wat betekent dat query reeksen worden genegeerd door het mechanisme voor caching. Met dit type configuratie kan de cache sleutel geen query teken reeks gegevens opnemen.
 
-Als een query reeks wordt vastgelegd in de cache sleutel, wordt deze geconverteerd naar het bijbehorende hash-equivalent en vervolgens ingevoegd tussen de naam van het aangevraagde activum en de bijbehorende bestands extensie (&lt;bijvoorbeeld activum&gt;hashwaarde. html).
+Als een query reeks wordt vastgelegd in de cache sleutel, wordt deze geconverteerd naar het bijbehorende hash-equivalent en vervolgens ingevoegd tussen de naam van het aangevraagde activum en de bijbehorende bestands extensie (bijvoorbeeld activum &lt; hashwaarde &gt; . html).
 
 ### <a name="response-header-format"></a>Indeling van de antwoord header
 
@@ -163,7 +163,7 @@ De termen die in de bovenstaande syntaxis van de reactie header worden gebruikt,
 
 - RTTimePeriod: converteert de resterende TTL-waarde (dat wil zeggen, RTSeconds) naar het geschatte equivalent van een grotere eenheid (bijvoorbeeld dagen).
 
-- ExpiresSeconds: geeft het aantal seconden aan dat moet zijn vóór de datum/tijd die `Expires` in de antwoord header is opgegeven. Als de `Expires` antwoord header niet is opgenomen in het antwoord, is de waarde van deze term *geen*.
+- ExpiresSeconds: geeft het aantal seconden aan dat moet zijn vóór de datum/tijd die in de `Expires` antwoord header is opgegeven. Als de `Expires` antwoord header niet is opgenomen in het antwoord, is de waarde van deze term *geen*.
 
 ### <a name="sample-response-header"></a>Voor beeld van reactie header
 

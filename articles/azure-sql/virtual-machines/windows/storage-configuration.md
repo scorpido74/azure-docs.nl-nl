@@ -1,6 +1,6 @@
 ---
 title: Opslag configuratie voor SQL Server Vm's | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe Azure opslag configureert voor SQL Server Vm's tijdens het inrichten (Resource Manager-implementatie model). Ook wordt uitgelegd hoe u opslag kunt configureren voor uw bestaande SQL Server Vm's.
+description: In dit onderwerp wordt beschreven hoe Azure opslag configureert voor SQL Server Vm's tijdens het inrichten (Azure Resource Manager implementatie model). Ook wordt uitgelegd hoe u opslag kunt configureren voor uw bestaande SQL Server Vm's.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e84c58ba1b3037f770f4809d48356d5ec3f9a138
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044267"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342394"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslagconfiguratie voor SQL Server-VM's
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Wanneer u een installatie kopie van een SQL Server virtuele machine in azure configureert, helpt de portal u bij het automatiseren van uw opslag configuratie. Dit omvat het koppelen van opslag aan de VM, waardoor die opslag toegankelijk is voor SQL Server en deze kan worden geconfigureerd om te worden geoptimaliseerd voor uw specifieke prestatie vereisten.
+Wanneer u een VM-installatie kopie (SQL Server virtuele machine) configureert in azure, helpt de Azure Portal bij het automatiseren van uw opslag configuratie. Dit omvat het koppelen van opslag aan de VM, waardoor die opslag toegankelijk is voor SQL Server en deze kan worden geconfigureerd om te worden geoptimaliseerd voor uw specifieke prestatie vereisten.
 
 In dit onderwerp wordt uitgelegd hoe Azure opslag voor uw SQL Server Vm's configureert tijdens het inrichten en voor bestaande virtuele machines. Deze configuratie is gebaseerd op de [Aanbevolen prestatie procedures](performance-guidelines-best-practices.md) voor Azure-vm's met SQL Server.
 
@@ -57,7 +57,7 @@ Daarnaast hebt u de mogelijkheid om de cache voor de schijven in te stellen. Azu
 
 Schijf cache voor Premium-SSD kan *alleen-lezen*, *readwrite* of *geen*zijn. 
 
-- *ReadOnly* -caching is zeer nuttig voor SQL Server gegevens bestanden die zijn opgeslagen op Premium Storage. *Alleen* -lezen cache levert lage lees latentie, grote Lees-IOPS en door Voer als, lees bewerkingen worden uitgevoerd vanuit de cache, die zich in het geheugen van de virtuele machine bevindt en de lokale SSD. Deze Lees bewerkingen zijn veel sneller dan lees bewerkingen van gegevens schijf, afkomstig uit de Azure Blob-opslag. Premium-opslag telt niet de Lees bewerkingen van de cache naar de schijf-IOPS en door voer. Daarom kan uw toepas bare totale IOPS en door voer worden gerealiseerd. 
+- *ReadOnly* -caching is zeer nuttig voor SQL Server gegevens bestanden die zijn opgeslagen op Premium Storage. *Alleen* -lezen cache levert lage lees latentie, grote Lees-IOPS en door Voer als, lees bewerkingen worden uitgevoerd vanuit de cache, die zich in het geheugen van de virtuele machine bevindt en de lokale SSD. Deze Lees bewerkingen zijn veel sneller dan lees bewerkingen van gegevens schijf, die afkomstig zijn van Azure Blob-opslag. Premium-opslag telt niet de Lees bewerkingen van de cache naar de schijf-IOPS en door voer. Daarom kan uw toepas bare totale IOPS en door voer worden gerealiseerd. 
 - *Geen* cache configuratie moet worden gebruikt voor de schijven die worden gehost SQL Server logboek bestand, terwijl het logboek bestand opeenvolgend wordt geschreven en niet in aanmerking komt voor *ReadOnly* -caching. 
 - *Readwrite* -caching mag niet worden gebruikt voor het hosten van SQL Server-bestanden omdat SQL Server geen consistentie van gegevens met de *readwrite* -cache ondersteunt. Schrijft de verspilings capaciteit van de *alleen-lezen* BLOB-cache en de latenties lichter toe als schrijf bewerkingen via *alleen-lezen* BLOB-cache lagen passeren. 
 
@@ -76,7 +76,7 @@ Op basis van uw keuzes voert Azure de volgende opslag configuratie taken uit na 
 
 Zie de [sectie opslag configuratie](#storage-configuration)voor meer informatie over hoe Azure opslag instellingen configureert. Zie [de zelf studie over het inrichten](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)voor een volledig overzicht van het maken van een SQL Server-VM in de Azure Portal.
 
-### <a name="resource-manage-templates"></a>Resource beheer sjablonen
+### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
 Als u de volgende Resource Manager-sjablonen gebruikt, worden standaard twee Premium-gegevens schijven gekoppeld zonder configuratie van de opslag groep. U kunt deze sjablonen echter aanpassen om het aantal Premium-gegevens schijven te wijzigen dat aan de virtuele machine is gekoppeld.
 
@@ -113,7 +113,7 @@ U kunt de schijf instellingen wijzigen voor de stations die zijn geconfigureerd 
 
 ## <a name="storage-configuration"></a>Opslagconfiguratie
 
-Deze sectie bevat een Naslag informatie over de opslag configuratie wijzigingen die Azure automatisch uitvoert tijdens het inrichten of configureren van een SQL-VM in de Azure Portal.
+Deze sectie bevat een verwijzing naar de opslag configuratie wijzigingen die Azure automatisch uitvoert tijdens SQL Server VM-inrichting of-configuratie in de Azure Portal.
 
 * Azure configureert een opslag groep van opslag die is geselecteerd op de VM. In de volgende sectie van dit onderwerp vindt u meer informatie over de configuratie van de opslag groep.
 * Automatische opslag configuratie maakt altijd gebruik van [Premium ssd's](../../../virtual-machines/windows/disks-types.md) P30-gegevens schijven. Daarom is er een 1:1-toewijzing tussen het geselecteerde aantal terabytes en het aantal gegevens schijven dat aan uw virtuele machine is gekoppeld.
@@ -148,7 +148,7 @@ In de volgende tabel worden de drie beschik bare opties voor werkbelasting typen
 | **Gegevens opslag** |Optimaliseert de opslag voor analyse-en rapportage werk belastingen |Tracerings vlag 610<br/>Tracerings vlag 1117 |
 
 > [!NOTE]
-> U kunt het type werk belasting alleen opgeven wanneer u een virtuele SQL-machine inricht door deze te selecteren in de stap opslag configuratie.
+> U kunt alleen het type werk belasting opgeven wanneer u een SQL Server virtuele machine inricht door deze te selecteren in de stap opslag configuratie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

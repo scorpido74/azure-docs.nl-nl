@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6d96737e276dce69b7f3867ab16727119a38d4b1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047242"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342438"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -61,7 +61,7 @@ SQL Server vereist toepassings consistente Azure Site Recovery moment opnamen om
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-De [database Migration service](/azure/dms/dms-overview) is een optie voor klanten als ze worden gemigreerd van on-premises naar een virtuele Azure-machine door SQL Server te upgraden naar versie 2012 of hoger.
+De [Azure database Migration service](/azure/dms/dms-overview) is een optie voor klanten als ze worden gemigreerd van on-premises naar een virtuele Azure-machine door SQL Server te upgraden naar versie 2012 of hoger.
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval
 
@@ -74,7 +74,7 @@ Oplossingen voor nood herstel voor EOS SQL Server op een Azure VM zijn als volgt
 ## <a name="security-patching"></a>Beveiligings patches
 Uitgebreide beveiligings updates voor SQL Server Vm's worden geleverd via de Microsoft Update kanalen nadat de SQL Server VM is geregistreerd bij de [resource provider](sql-vm-resource-provider-register.md)van de SQL-VM. Patches kunnen hand matig of automatisch worden gedownload.
 
-*Automatisch patchen* is standaard ingeschakeld. Met automatisch patchen kan Azure automatisch een patch uitvoeren voor SQL Server en het besturingssysteem. U kunt een dag van de week, tijd en duur van een onderhouds venster opgeven als de SQL Server IaaS-extensie is geïnstalleerd. Azure voert de patch uit tijdens deze onderhoudssessie. Het onderhoudsschema maakt voor de tijd gebruik van de landinstellingen van de virtuele machine.  Zie voor meer informatie [automatische patching voor SQL Server op Azure virtual machines](automated-patching.md).
+*Automatisch patchen* is standaard ingeschakeld. Met automatisch patchen kan Azure automatisch een patch uitvoeren voor SQL Server en het besturingssysteem. U kunt een dag van de week, tijd en duur van een onderhouds venster opgeven als de SQL Server IaaS-extensie is geïnstalleerd. Azure voert de patch uit tijdens deze onderhoudssessie. Het onderhoudsschema maakt voor de tijd gebruik van de landinstellingen van de virtuele machine. Zie voor meer informatie [automatische patching voor SQL Server op Azure virtual machines](automated-patching.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

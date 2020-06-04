@@ -3,12 +3,12 @@ title: Over herstel plannen in Azure Site Recovery
 description: Meer informatie over herstel plannen in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257769"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343911"
 ---
 # <a name="about-recovery-plans"></a>Over herstelplannen
 
@@ -17,7 +17,7 @@ In dit artikel vindt u een overzicht van herstel plannen in [Azure site Recovery
 Een herstel plan verzamelt computers in herstel groepen voor het doel van de failover. Met een herstel plan kunt u een systematisch herstel proces definiëren door kleine onafhankelijke eenheden te maken waarvoor u een failover wilt uitvoeren. Een eenheid vertegenwoordigt meestal een app in uw omgeving.
 
 - Een herstel plan definieert hoe machine failover wordt uitgevoerd en de volg orde waarin ze worden gestart na een failover.
-- Herstel plannen worden gebruikt voor failover naar Azure, maar kunnen niet worden gebruikt voor failback vanuit Azure.
+- Herstel plannen kunnen worden gebruikt voor zowel failover naar als failback vanuit Azure.
 - Maxi maal 100 beveiligde instanties kunnen worden toegevoegd aan één herstel plan.
 - U kunt een plan aanpassen door er bestellingen, instructies en taken aan toe te voegen.
 - Nadat een plan is gedefinieerd, kunt u er een failover op uitvoeren.

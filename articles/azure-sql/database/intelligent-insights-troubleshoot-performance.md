@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045604"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344778"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Problemen met prestatie problemen met Azure SQL Database en Azure SQL Managed instance oplossen met Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ Het diagnostische logboek voert het aantal query's uit waarvan de uitvoering is 
 
 U kunt overwegen de werk belastingen gelijkmatig te verdelen over de data base. Overweeg het optimaliseren van de query die de prestaties beïnvloedt door indexen toe te voegen. U kunt uw werk belasting ook verdelen over meerdere data bases. Als deze oplossingen niet mogelijk zijn, kunt u overwegen de prijs categorie van uw data base-abonnement te verhogen om de hoeveelheid beschik bare resources te verg Roten.
 
-## <a name="memory-pressure"></a>Geheugenbelasting
+## <a name="memory-pressure"></a>Geheugendruk
 
 ### <a name="what-is-happening"></a>Wat gebeurt er
 
@@ -283,7 +283,7 @@ Wijzigingen in het database bereik configuratie kunnen worden ingesteld voor elk
 
 ### <a name="troubleshooting"></a>Problemen oplossen
 
-In het logboek voor diagnostische gegevens zijn wijzigingen in de configuratie van de data base vastgelegd die onlangs zijn aangebracht en die de prestaties verslechteren ten opzichte van het vorige werkings gedrag van zeven dagen. U kunt de wijzigingen in de configuratie herstellen naar de vorige waarden. U kunt ook de waarde op waarde afstemmen tot het gewenste prestatie niveau is bereikt. U kunt configuratie waarden voor database bereik kopiëren uit een vergelijk bare data base met voldoende prestaties. Als u de prestaties niet kunt oplossen, keert u terug naar de standaard waarden en probeert u de verfijning uit te voeren vanuit deze basis lijn.
+In het logboek voor diagnostische gegevens zijn wijzigingen in de configuratie van de data base vastgelegd die onlangs zijn aangebracht en die de prestaties verslechteren ten opzichte van het vorige werkings gedrag van zeven dagen. U kunt de wijzigingen in de configuratie herstellen naar de vorige waarden. U kunt ook de waarde op waarde afstemmen tot het gewenste prestatie niveau is bereikt. U kunt configuratie waarden voor database bereik kopiëren uit een vergelijk bare data base met voldoende prestaties. Als u de prestaties niet kunt oplossen, keert u terug naar de standaard waarden en probeert u het probleem op te lossen vanaf deze basis lijn.
 
 Zie [ALTER data base-scoped Configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx)voor meer informatie over het optimaliseren van de database bereik configuratie en de T-SQL-syntaxis bij het wijzigen van de configuratie.
 

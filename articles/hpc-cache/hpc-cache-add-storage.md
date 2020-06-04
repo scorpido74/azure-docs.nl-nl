@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195040"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344931"
 ---
 # <a name="add-storage-targets"></a>Opslagdoelen toevoegen
 
@@ -22,6 +22,10 @@ U kunt Maxi maal tien verschillende opslag doelen definiëren voor één cache. 
 Houd er rekening mee dat de export van de opslag toegankelijk moet zijn vanuit het virtuele netwerk van uw cache. Voor on-premises hardwarematige opslag moet u mogelijk een DNS-server instellen die hostnamen voor NFS-opslag toegang kan omzetten. Meer informatie vindt u in [DNS-toegang](hpc-cache-prereqs.md#dns-access).
 
 Voeg opslag doelen toe nadat u de cache hebt gemaakt. De procedure wijkt enigszins af, afhankelijk van of u Azure Blob-opslag of een NFS-export toevoegt. Hieronder vindt u meer informatie.
+
+Klik op de onderstaande afbeelding om een [video demonstratie](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) te bekijken van het maken van een cache en het toevoegen van een opslag doel.
+
+[![Video miniatuur: Azure HPC cache: Setup (Klik om de video pagina te bezoeken)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>De pagina opslag doelen openen
 
@@ -70,7 +74,7 @@ Stappen voor het toevoegen van de RBAC-rollen:
 
 1. Open de pagina **toegangs beheer (IAM)** voor het opslag account. (De koppeling op de pagina **opslag doel toevoegen** opent deze pagina automatisch voor het geselecteerde account.)
 
-1. **+** Klik boven aan de pagina en kies **een roltoewijzing toevoegen**.
+1. Klik **+** boven aan de pagina en kies **een roltoewijzing toevoegen**.
 
 1. Selecteer de rol ' Inzender voor opslag accounts ' in de lijst.
 
@@ -157,7 +161,7 @@ Deze tabel bevat een overzicht van de verschillen in het gebruiks model:
 
 Nadat u opslag doelen hebt gemaakt, kunt u een van de volgende taken uitvoeren:
 
-* [De Azure HPC-cache koppelen](hpc-cache-mount.md)
+* [De Azure HPC Cache koppelen](hpc-cache-mount.md)
 * [Gegevens verplaatsen naar Azure Blob-opslag](hpc-cache-ingest.md)
 
 Als u instellingen moet bijwerken, kunt u [een opslag doel bewerken](hpc-cache-edit-storage.md).

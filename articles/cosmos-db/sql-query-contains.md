@@ -4,19 +4,19 @@ description: Meer informatie over hoe de CONTAINs-functie voor SQL-systeem in Az
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848971"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322700"
 ---
 # <a name="contains-azure-cosmos-db"></a>BEVAT (Azure Cosmos DB)
 
- Retourneert een Booleaanse waarde die aangeeft of de eerste tekenreeksexpressie de tweede bevat.  
+Retourneert een Booleaanse waarde die aangeeft of de eerste tekenreeksexpressie de tweede bevat.  
   
 ## <a name="syntax"></a>Syntaxis
   
@@ -75,6 +75,8 @@ Denk bijvoorbeeld aan twee eigenschappen: stad en land. De kardinaliteit van de 
 ```
 
 De eerste query gebruikt waarschijnlijk meer RUs dan de tweede query, omdat de kardinaliteit van de stad hoger is dan het land.
+
+Als de grootte van de eigenschap in contains groter is dan 1 KB voor sommige documenten, moet deze documenten worden geladen met de query-engine. In dit geval kan de query-engine de contains-functie niet volledig evalueren met een index. De RU-kosten voor contains zijn hoog als u een groot aantal documenten hebt met een eigenschaps grootte van meer dan 1 KB.
 
 ## <a name="next-steps"></a>Volgende stappen
 

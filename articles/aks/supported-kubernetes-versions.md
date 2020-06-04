@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593441"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345033"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Ondersteunde Kubernetes-versies in AKS (Azure Kubernetes Service)
 
@@ -95,10 +95,10 @@ New Supported Version List
 * Voor nieuwe **secundaire** versies van Kubernetes
   * Alle gebruikers worden op de hoogte gesteld van de nieuwe versie en de versie die wordt verwijderd.
   * Wanneer een nieuwe patch versie wordt uitgebracht, wordt de oudste patch release op hetzelfde moment verwijderd.
-  * Klanten hebben **30 dagen** na de datum van de open bare melding voor een upgrade naar een ondersteunde versie van de secundaire release.
+  * Met Azure-ondersteuning kunnen klanten **30 dagen** na de datum van de open bare melding een upgrade uitvoeren naar een ondersteunde versie van de secundaire release. Zodra de 30 dagen zijn verstreken, bent u verplicht uw secundaire versie bij te werken om ondersteuning te blijven ontvangen.
 * Voor nieuwe **patch** versies van Kubernetes
   * Alle gebruikers ontvangen een melding dat de nieuwe patch versie wordt vrijgegeven en een upgrade naar de nieuwste patch release.
-  * Gebruikers hebben **30 dagen** een upgrade naar een nieuwere, ondersteunde patch release voordat de oudste wordt verwijderd.
+  * De ondersteuning van Azure biedt klanten **30 dagen** om een upgrade naar een ondersteunde patch release uit te kunnen geven na het verwijderen van een oudere patch versie. Zodra de 30 dagen zijn verstreken, bent u verplicht uw patch versie bij te werken om ondersteuning te blijven ontvangen.
 
 AKS definieert een ' vrijgegeven versie ' als de algemeen beschik bare versies, ingeschakeld in alle ondergeschikten voor SLO/Quality of Service en beschikbaar in alle regio's. AKS kan ook ondersteuning bieden voor Preview-versies die expliciet zijn voorzien van een voor beeld van voor waarden en bepalingen.
 
@@ -155,7 +155,7 @@ Voor secundaire versies die niet worden ondersteund door AKS, moet u de schaal i
 
 **Kan een klant permanent blijven beschikken over een Kubernetes-versie?**
 
-Ja. Als het cluster echter niet is opgenomen in een van de versies die worden ondersteund door AKS, heeft het cluster geen ondersteuning meer voor het AKS-ondersteunings beleid. Uw cluster wordt niet automatisch bijgewerkt of verwijderd door Azure.
+Als er geen ondersteuning meer is voor een cluster voor meer dan 3 secundaire versies en er beveiligings Risico's zijn gevonden, kunt u met Azure contact met u opdoen om uw cluster proactief bij te werken. Als u geen verdere actie onderneemt, behoudt Azure het recht om namens u uw cluster af te dwingen.
 
 **Welke versie van het besturings element wordt ondersteund als de knooppunt groep zich niet in een van de ondersteunde AKS-versies bevindt?**
 

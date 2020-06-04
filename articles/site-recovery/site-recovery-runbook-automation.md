@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257483"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345135"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Azure Automation-runbooks aan herstelplannen toevoegen
 
@@ -56,6 +56,9 @@ Wanneer een script wordt uitgevoerd, wordt een context voor het herstel plan ing
 | CloudServiceName |De naam van de Azure-Cloud service waaronder de virtuele machine is gemaakt. |
 | RoleName |De naam van de Azure-VM. |
 | RecoveryPointId|De tijds tempel voor het herstel van de virtuele machine. |
+
+>[!Note]
+>De waarde voor de variabele ' FailoverDirection ' is ' PrimaryToSecondary ' in het geval van een failover en ' SecondaryToPrimary ' in het geval van failback.
 
 In het volgende voor beeld ziet u een context variabele:
 
@@ -117,7 +120,7 @@ De Aman-blog van Sharma in de [oogst van Clouds](http://harvestingclouds.com) is
 
     ![Klik op de knop aanpassen](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klik op de weglatings tekens (...) naast **groep 1:** > de**actie post toevoegen**starten.
+2. Klik op de weglatings tekens (...) naast **groep 1:** de  >  **actie post toevoegen**starten.
 3. Controleer in **actie invoegen**of **script** is geselecteerd en geef een naam op voor het script (**Hallo wereld**).
 4. Geef een Automation-account op en selecteer een runbook. Klik op **OK**om het script op te slaan. Het script wordt toegevoegd aan **groep 1: post-stappen**.
 
