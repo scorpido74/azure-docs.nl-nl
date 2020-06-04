@@ -6,5 +6,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84023919"
 ---
-<Token>**van toepassing op:** ![ Ja ](../media/applies-to/yes.png) SQL Server op Azure VM</Token>
+<Token>**VAN TOEPASSING OP:** ![ja](../media/applies-to/yes.png)SQL Server op een Azure-VM </Token>
 

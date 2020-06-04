@@ -17,28 +17,28 @@ ms.locfileid: "73182198"
 ---
 ### <a name="what-is-expressroute-direct"></a>Wat is ExpressRoute Direct?
 
-ExpressRoute Direct biedt klanten de mogelijkheid om rechtstreeks verbinding te maken met het wereldwijde netwerk van Microsoft op peeringlocaties die zich strategisch verdeeld over de hele wereld bevinden. ExpressRoute direct biedt een Dual 100-of 10 Gbps-connectiviteit, die ondersteuning biedt voor actieve/actieve connectiviteit op schaal. 
+ExpressRoute Direct biedt klanten de mogelijkheid om rechtstreeks verbinding te maken met het wereldwijde netwerk van Microsoft op peeringlocaties die zich strategisch verdeeld over de hele wereld bevinden. ExpressRoute Direct biedt twee verbindingsmogelijkheden van 100 of 10 Gbps, die ondersteuning bieden voor actief/actief-verbindingen op schaal. 
 
-### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hoe maken klanten verbinding met ExpressRoute direct? 
+### <a name="how-do-customers-connect-to-expressroute-direct"></a>Hoe maken klanten verbinding met ExpressRoute Direct? 
 
-Klanten moeten samen werken met hun lokale vervoerders en co-locatie providers om verbinding te maken met ExpressRoute-routers om gebruik te kunnen maken van ExpressRoute direct.
+Klanten moeten samenwerken met hun lokale vervoerders en co-locatieproviders om verbinding te maken met ExpressRoute-routers, om gebruik te kunnen maken van de voordelen van ExpressRoute Direct.
 
-### <a name="what-locations-currently-support-expressroute-direct"></a>Welke locaties ondersteunen momenteel ExpressRoute direct? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Welke locaties bieden momenteel ondersteuning voor ExpressRoute Direct? 
 
-Controleer de beschik baarheid op de [pagina Locatie](../articles/expressroute/expressroute-locations-providers.md). 
+Controleer de beschikbaarheid op de [locatiepagina](../articles/expressroute/expressroute-locations-providers.md). 
 
-### <a name="what-is-the-sla-for-expressroute-direct"></a>Wat is de SLA voor ExpressRoute direct?
+### <a name="what-is-the-sla-for-expressroute-direct"></a>Wat is de SLA voor ExpressRoute Direct?
 
-ExpressRoute direct maakt gebruik [van dezelfde bedrijfs kwaliteit als ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
+ExpressRoute Direct maakt gebruik van het [bedrijfsniveau van ExpressRoute](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/). 
 
-### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Welke scenario's moeten klanten overwegen met ExpressRoute direct?  
+### <a name="what-scenarios-should-customers-consider-with-expressroute-direct"></a>Welke scenario's moeten klanten overwegen met ExpressRoute Direct?  
 
-ExpressRoute direct biedt klanten direct 100 of 10 Gbps poort paren in de globale backbone van micro soft. De scenario's die klanten de beste voor delen bieden, zijn onder andere: enorme gegevens opname, fysieke isolatie voor gereglementeerde markten en toegewezen capaciteit voor burst-scenario, zoals rendering. 
+ExpressRoute Direct biedt klanten direct 100 of 10 Gbps poortparen in de wereldwijde backbone van Microsoft. De scenario's die klanten de grootste voordelen bieden, zijn onder andere: Enorme gegevensopname, fysieke isolatie voor gereglementeerde markten, en toegewezen capaciteit voor burst-scenario, zoals rendering. 
 
-### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Wat is het facturerings model voor ExpressRoute direct? 
+### <a name="what-is-the-billing-model-for-expressroute-direct"></a>Wat is het factureringsmodel voor ExpressRoute Direct? 
 
-ExpressRoute direct wordt in rekening gebracht voor het poort paar met een vast bedrag. Standaard circuits worden zonder extra uren opgenomen en Premium heeft een kleine invoeg toepassing. Uitgang wordt gefactureerd op basis van het circuit op basis van de zone van de locatie van de peering.
+Met ExpressRoute Direct worden kosten in rekening gebracht voor het poortpaar, tegen een vast bedrag. Standard-circuits zijn opgenomen zonder extra uren te berekenen, en voor Premium moet u een geringe extra vergoeding betalen. Uitgaand verkeer wordt gefactureerd per circuit, op basis van de zone van de peeringlocatie.
 
-### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Wanneer begint de facturering voor de directe poort paren voor ExpressRoute?
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>Wanneer begint de facturering voor de ExpressRoute Direct-poortparen?
 
-Poort paren van ExpressRoute direct worden 45 dagen in rekening gebracht bij het maken van de ExpressRoute direct-resource of wanneer 1 of beide koppelingen zijn ingeschakeld, afhankelijk van wat het eerste komt. De respijt periode van 45 dagen wordt verleend zodat klanten het cross-Connection proces kunnen volt ooien met de co-locatie provider.
+Poortparen van ExpressRoute Direct worden 45 dagen na het maken van de ExpressRoute Direct-resource in rekening gebracht, of wanneer 1 of beide koppelingen worden ingeschakeld, naar gelang wat het eerst plaatsvindt. De respijtperiode van 45 dagen wordt verleend om klanten de mogelijkheid te bieden het kruisverbindingsproces met de co-locatieprovider te voltooien.

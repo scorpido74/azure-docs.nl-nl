@@ -6,5 +6,5 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84041652"
 ---
-<Token>**van toepassing op:** ![ Ja ](../media/applies-to/yes.png) Azure SQL database ![ Ja ](../media/applies-to/yes.png) Azure Synapse Analytics (preview)</Token>
+<Token>**VAN TOEPASSING op:** ![ja](../media/applies-to/yes.png)Azure SQL Database ![ja](../media/applies-to/yes.png)Azure Synapse Analytics (preview) </Token>
 

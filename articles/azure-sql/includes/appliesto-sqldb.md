@@ -6,4 +6,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84023897"
 ---
-<Token>**van toepassing op:** ![ Ja ](../media/applies-to/yes.png) Azure SQL database</Token>
+<Token>**VAN TOEPASSING OP:** ![ja](../media/applies-to/yes.png)Azure SQL Database </Token>

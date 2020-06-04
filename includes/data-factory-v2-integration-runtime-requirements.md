@@ -14,7 +14,7 @@ ms.locfileid: "68966368"
 <!--
     Separate the generic requirement on Self-hosted Integration Runtime set-up from connector articles.
 -->
-Als uw gegevens archief op een van de volgende manieren is geconfigureerd, moet u een [zelf-hostende Integration runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) instellen om verbinding te maken met dit gegevens archief:
+Als uw gegevensopslag op een van de volgende manieren is geconfigureerd, moet u een [zelf-hostende Integration Runtime](../articles/data-factory/create-self-hosted-integration-runtime.md) instellen om verbinding te kunnen maken met deze gegevensopslag:
 
-- Het gegevens archief bevindt zich in een on-premises netwerk, in azure Virtual Network, of in de virtuele particuliere cloud van Amazon.
-- Het gegevens archief is een beheerde Cloud gegevens service waarbij de toegang wordt beperkt tot Ip's white list in de firewall regels.
+- De gegevensopslag bevindt zich in een on-premises netwerk, binnen Azure Virtual Network of binnen Amazon Virtual Private Cloud.
+- De gegevensopslag is een beheerde cloudgegevensservice waarbij de toegang is beperkt tot IP-adressen die in de whitelist zijn opgenomen in de firewallregels.

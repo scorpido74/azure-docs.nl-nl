@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Herstellen
           items:
+            - name: Over Azure-VM herstellen
+              href: about-azure-vm-restore.md
             - name: Azure-VM's herstellen in de portal
               href: backup-azure-arm-restore-vms.md
             - name: Bestanden herstellen vanuit back-ups van virtuele Azure-machines

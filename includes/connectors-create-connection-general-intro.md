@@ -11,4 +11,4 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "74786879"
 ---
-Wanneer u een trigger of actie gebruikt waarmee een service voor de eerste keer wordt geopend, wordt u door de Logic Apps Designer gevraagd om een *verbinding* met die service te maken. Vervolgens kunt u de benodigde verbindings gegevens rechtstreeks vanuit uw logische app in de ontwerp functie opgeven.
+Wanneer u een trigger of actie gebruikt die een service de eerste keer opent, ziet u een prompt van Logic Apps Designer waarin u wordt gevraagd om een *verbinding* met deze service tot stand te brengen. Vervolgens kunt u de benodigde verbindingsgegevens opgeven, rechtstreeks vanuit uw logische app in de ontwerpfunctie.

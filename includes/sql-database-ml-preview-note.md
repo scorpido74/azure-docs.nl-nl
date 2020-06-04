@@ -13,8 +13,8 @@ ms.lasthandoff: 05/27/2020
 ms.locfileid: "84014193"
 ---
 > [!IMPORTANT]
-> Azure SQL Database Machine Learning Services is momenteel beschikbaar als preview-versie. Registreren voor de preview is momenteel **gesloten**.
+> Azure SQL Database Machine Learning Services is momenteel in de preview-fase. Registreren voor de preview-versie is momenteel **gesloten**.
 >
-> Vanaf 30 juni 2020 wordt de ondersteuning stopgezet en wordt de preview-versie niet vrijgegeven voor algemene Beschik baarheid. R-scripts die worden gebruikt na 30 juni 2020, werken niet.
+> Vanaf 30 juni 2020 wordt de ondersteuning stopgezet, en de preview-versie wordt niet vrijgegeven voor algemene beschikbaarheid. R-scripts die na 30 juni 2020 nog in gebruik zijn, werken niet.
 >
-> Zie [ **Machine Learning Services in Azure SQL Managed instance** (preview)](../articles/azure-sql/managed-instance/machine-learning-services-overview.md)als u wilt blijven werken met machine learning in Azure SQL.
+> Raadpleeg [**Machine Learning Services in Met Azure SQL beheerd exemplaar** (preview)](../articles/azure-sql/managed-instance/machine-learning-services-overview.md) als u wilt blijven werken met machine learning in Azure SQL.
