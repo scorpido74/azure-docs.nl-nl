@@ -3,12 +3,12 @@ title: Evaluaties in Azure Migrate server-evaluatie
 description: Meer informatie over evaluaties in Azure Migrate server-evaluatie
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee6b13edd12109b7f748abeaf13a5e8f3ded2a8e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171001"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343945"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Evaluaties in Azure Migrate: Server evaluatie
 
@@ -25,7 +25,7 @@ Een evaluatie met het hulp programma voor Server evaluatie meet de gereedheid en
 
 Beoordelingen die u maakt met server evaluatie zijn een tijdgebonden moment opname van gegevens. Server evaluatie biedt twee soorten evaluaties.
 
-**Beoordelings type** | **Nadere** | **Gegevens**
+**Beoordelings type** | **Details** | **Gegevens**
 --- | --- | ---
 **Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | De aanbeveling van de VM-grootte is gebaseerd op de CPU-en RAM-gebruiks gegevens.<br/><br/> De aanbeveling van het schijf type is gebaseerd op de invoer/uitvoer-bewerkingen per seconde (IOPS) en de door Voer van de on-premises schijven. Schijf typen zijn Azure-Standard-HDD, Azure Standard-SSD en Azure Premium-schijven.
 **As-is on-premises** | Beoordelingen die geen prestatie gegevens gebruiken om aanbevelingen te doen | De aanbeveling van de VM-grootte is gebaseerd op de grootte van de on-premises VM.<br/><br> Het aanbevolen schijf type is gebaseerd op het geselecteerde opslag type voor de evaluatie.
@@ -110,7 +110,7 @@ Eigenschap | Details
 **Doel locatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, VS-Oost 2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-Zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US gov-Texas US gov-Virginia , West-Centraal VS, Europa-west, West-India, VS-West en VS-West 2.
 **Doel opslag schijf (in grootte)** | Het type schijf dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard-SSD beheerd of Standard-HDD beheerd.
 **Doel opslag schijf (grootte op basis van prestaties)** | Hiermee geeft u het type doel opslag schijf op als automatische, door een Standard-HDD beheerd of door Standard-SSD beheerd beheer.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven, wat de IOPS en door Voer is.<br/><br/>**Premium of Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM met één exemplaar van 99,9% wilt maken, kunt u overwegen om Premium-beheerde schijven te gebruiken. Dit gebruik zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate ondersteunt alleen beheerde schijven voor migratie beoordeling.
-**Azure Reserved VM Instances** | Hiermee worden [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) opgegeven, zodat rekening wordt gehouden met kosten ramingen in de evaluatie.<br/><br/> Als gereserveerde instanties zijn geselecteerd, blijven de standaard instellingen in korting (%) en VM-uptime-eigenschappen.<br/><br/> Azure Migrate ondersteunt momenteel alleen Azure Reserved VM Instances voor aanbiedingen met betalen per gebruik.
+**Azure Reserved VM Instances** | Hiermee worden [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) opgegeven, zodat rekening wordt gehouden met kosten ramingen in de evaluatie.<br/><br/> Wanneer u gereserveerde instanties selecteert, wordt de korting (%) de eigenschappen van de uptime van de VM zijn niet van toepassing.<br/><br/> Azure Migrate ondersteunt momenteel alleen Azure Reserved VM Instances voor aanbiedingen met betalen per gebruik.
 **Grootte criteria** | Wordt gebruikt voor het optimaliseren van de Azure-VM.<br/><br/> Gebruiken als is formaat of op basis van de prestaties.
 **Prestatiegeschiedenis** | Wordt gebruikt met een grootte op basis van prestaties. Met de prestatie geschiedenis wordt de duur opgegeven die wordt gebruikt wanneer prestatie gegevens worden geëvalueerd.
 **Percentiel gebruik** | Wordt gebruikt met een grootte op basis van prestaties. Percentiel gebruik geeft de percentiel waarde van het voor beeld van de prestaties die wordt gebruikt voor supportte.
@@ -154,11 +154,12 @@ Eigenschap | Details | Status van Azure-gereedheid
 Naast het controleren van de eigenschappen van de virtuele machine controleert de server evaluatie op het gast besturingssysteem van een computer om te bepalen of het op Azure kan worden uitgevoerd.
 
 > [!NOTE]
-> Voor het afhandelen van de gast analyse voor VMware-Vm's gebruikt server assessment het besturings systeem dat is opgegeven voor de virtuele machine in vCenter Server. Voor Linux-Vm's die worden uitgevoerd op VMware, herkent server evaluatie momenteel niet de kernel-versie van het gast besturingssysteem.
+> Voor het afhandelen van de gast analyse voor VMware-Vm's gebruikt server assessment het besturings systeem dat is opgegeven voor de virtuele machine in vCenter Server. VCenter Server biedt echter niet de kernel-versie voor Linux VM-besturings systemen. Als u de versie wilt detecteren, moet u [toepassings detectie](https://docs.microsoft.com/azure/migrate/how-to-discover-applications)instellen. Het apparaat detecteert vervolgens versie-informatie met behulp van de gast referenties die u opgeeft bij het instellen van app-detectie.
+
 
 Server assessment maakt gebruik van de volgende logica om de Azure-gereedheid op basis van het besturings systeem te identificeren:
 
-**Besturingssysteem** | **Nadere** | **Status van Azure-gereedheid**
+**Besturingssysteem** | **Details** | **Status van Azure-gereedheid**
 --- | --- | ---
 Windows Server 2016 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure.
 Windows Server 2012 R2 en alle SPs | Azure biedt volledige ondersteuning. | Gereed voor Azure.
@@ -199,7 +200,8 @@ Als u de grootte op basis van prestaties gebruikt, worden in de server evaluatie
 
 Voor opslag grootte Azure Migrate probeert elke schijf die aan de machine is gekoppeld, toe te wijzen aan een Azure-schijf. De grootte werkt als volgt:
 
-1. De server analyse voegt de IOPS voor lezen en schrijven van een schijf toe om het totale aantal IOPS dat is vereist te verkrijgen. Op dezelfde manier worden de doorvoer-en schrijf waarden toegevoegd om de totale door Voer van elke schijf te verkrijgen.
+1. De server analyse voegt de IOPS voor lezen en schrijven van een schijf toe om het totale aantal IOPS dat is vereist te verkrijgen. Op dezelfde manier worden de doorvoer-en schrijf waarden toegevoegd om de totale door Voer van elke schijf te verkrijgen. In het geval van evaluaties op basis van een import hebt u de mogelijkheid om het totale aantal IOPS, de totale door Voer en het totaal aantal op te geven. van schijven in het geïmporteerde bestand zonder de afzonderlijke schijf instellingen op te geven. Als u dit doet, wordt de grootte van de afzonderlijke schijf overgeslagen en worden de opgegeven gegevens direct gebruikt voor het berekenen van de grootte en selecteert u een geschikte VM-SKU.
+
 1. Als u het opslag type hebt opgegeven als automatisch, is het geselecteerde type gebaseerd op de ingangs waarden van de werkelijke IOPS en door voer. Server analyse bepaalt of de schijf moet worden toegewezen aan een Standard-HDD, Standard-SSD of Premium-schijf in Azure. Als het opslag type is ingesteld op een van deze schijf typen, probeert de server analyse een schijf-SKU te vinden binnen het geselecteerde opslag type.
 1. Schijven worden als volgt geselecteerd:
     - Als met de server bepaling geen schijf met de vereiste IOPS en door Voer wordt gevonden, wordt de machine als niet geschikt voor Azure gemarkeerd.

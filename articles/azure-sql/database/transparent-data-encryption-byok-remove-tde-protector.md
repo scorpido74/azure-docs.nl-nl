@@ -1,7 +1,7 @@
 ---
-title: TDE-beveiliging verwijderen (Power shell & Azure CLI)
+title: TDE-beveiliging (Power shell & de Azure CLI) verwijderen
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Meer informatie over hoe u kunt reageren op een mogelijk aangetast TDE-Protector voor een Azure SQL Database of Azure Synapse Analytics met behulp van TDE met de ondersteuning van uw eigen sleutel (BYOK).
+description: Lees hoe u kunt reageren op een mogelijk aangetast TDE-Protector voor Azure SQL Database of Azure Synapse Analytics met behulp van TDE met uw eigen key-service (BYOK).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: e0817e21369824769a9248d7ac7c947bcc98ace5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050966"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324450"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Een Transparent Data Encryption-Protector (TDE) verwijderen met behulp van Power shell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-In dit onderwerp wordt beschreven hoe u kunt reageren op een mogelijk aangetast TDE-Protector voor een Azure SQL Database of Azure Synapse Analytics die gebruikmaakt van TDE met door de klant beheerde sleutels in Azure Key Vault-Bring Your Own Key (BYOK)-ondersteuning. Zie de [pagina overzicht](transparent-data-encryption-byok-overview.md)voor meer informatie over BYOK-ondersteuning voor TDe.
+In dit onderwerp wordt beschreven hoe u kunt reageren op een mogelijk aangetast TDE-bescherming voor Azure SQL Database of Azure Synapse Analytics die gebruikmaakt van TDE met door de klant beheerde sleutels in Azure Key Vault-Bring Your Own Key (BYOK)-ondersteuning. Zie de [pagina overzicht](transparent-data-encryption-byok-overview.md)voor meer informatie over BYOK-ondersteuning voor TDe.
 
 > [!CAUTION]
 > De procedures die in dit artikel worden beschreven, mogen alleen in uitzonderlijke gevallen of in test omgevingen worden uitgevoerd. Bekijk de stappen zorgvuldig, omdat het verwijderen van actief gebruikte TDE-Protectors van Azure Key Vault ertoe leidt dat de **Data Base niet meer beschikbaar**is.
@@ -34,8 +34,8 @@ Houd er rekening mee dat wanneer de TDE-Protector wordt verwijderd in Key Vault,
 
 Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resultaat na een reactie op incidenten:
 
-- Data bases in Azure SQL Database/Azure Synapse **toegankelijk** maken
-- De data bases in Azure SQL Database/data warehouses **ontoegankelijk** maken
+- De data bases in Azure SQL Database/Azure Synapse Analytics **ontoegankelijk**maken.
+- De data bases in Azure SQL Database/Azure SQL Data Warehouse niet **toegankelijk**maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,9 +50,9 @@ Deze hand leiding gaat over twee benaderingen, afhankelijk van het gewenste resu
 > [!IMPORTANT]
 > De module Power shell Azure Resource Manager (RM) wordt nog steeds ondersteund, maar alle toekomstige ontwikkel aars voor de module AZ. SQL. De AzureRM-module blijft oplossingen ontvangen tot ten minste december 2020.  De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek. Zie [Inleiding tot de nieuwe Azure PowerShell AZ-module](/powershell/azure/new-azureps-module-az)voor meer informatie over de compatibiliteit.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
-Zie [Azure cli installeren](/cli/azure/install-azure-cli)voor installatie.
+Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor installatie.
 
 * * *
 
@@ -81,7 +81,7 @@ U kunt ook Power shell of de Azure CLI gebruiken:
 
 De Power shell **-opdracht Get-AzureRmSqlServerKeyVaultKey**   biedt de vinger afdruk van de TDe-Protector die in de query wordt gebruikt, zodat u kunt zien welke sleutels moeten worden bewaard en welke sleutels moeten worden verwijderd in Azure. Alleen sleutels die niet meer door de Data Base worden gebruikt, kunnen veilig worden verwijderd uit Azure Key Vault.
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 De Power shell-opdracht **AZ SQL Server key show**   biedt de vinger afdruk van de TDe-Protector die in de query wordt gebruikt, zodat u kunt zien welke sleutels moeten worden bewaard en welke sleutels moeten worden verwijderd in Azure. Alleen sleutels die niet meer door de Data Base worden gebruikt, kunnen veilig worden verwijderd uit Azure Key Vault.
 
@@ -132,7 +132,7 @@ De Power shell-opdracht **AZ SQL Server key show**   biedt de vinger afdruk va
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 Zie de [Azure cli](/cli/azure/keyvault/key)-sleutel kluis voor naslag informatie over de opdracht.
 

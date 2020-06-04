@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: c9b69b751067ba36daad614b84367aee882d17b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051946"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324386"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostische gegevens voor het oplossen van problemen met SQL grootschalige-prestaties
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ De reken replica's slaan geen volledige kopie van de data base lokaal op in de c
 
 Als er een lees bewerking wordt uitgevoerd op een berekenings replica en de gegevens niet in de buffer groep of de lokale RBPEX-cache bestaan, wordt een getPage (pageId, LSN)-functie aanroep uitgegeven en wordt de pagina opgehaald van de bijbehorende pagina Server. Lees bewerkingen van pagina servers zijn op afstand lezen en zijn daardoor trager dan lees bewerkingen van de lokale RBPEX. Bij het oplossen van problemen met betrekking tot de prestaties van IO, moeten we kunnen zien hoeveel IOs is uitgevoerd via relatief trage externe pagina-Server Lees bewerkingen.
 
-Verschillende Dmv's-en Extended Events hebben kolommen en velden die het aantal externe Lees bewerkingen van een pagina Server opgeven, die kunnen worden vergeleken met de totale Lees bewerkingen. In query Store worden ook externe Lees bewerkingen vastgelegd als onderdeel van de statistieken van de uitvoerings tijd van de query.
+Diverse dynamische beheerde weer gaven (Dmv's) en uitgebreide gebeurtenissen hebben kolommen en velden die het aantal externe Lees bewerkingen van een pagina Server opgeven, die kunnen worden vergeleken met het totale aantal lees bewerkingen. In query Store worden ook externe Lees bewerkingen vastgelegd als onderdeel van de statistieken van de uitvoerings tijd van de query.
 
 - Kolommen voor het rapporteren van pagina-Server zijn beschikbaar in uitvoerings-Dmv's en catalogus weergaven, zoals:
 
@@ -79,10 +79,10 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 
 ### <a name="data-reads"></a>Gegevens lezen
 
-- Wanneer Lees bewerkingen worden uitgegeven door de SQL database-engine op een reken replica, kunnen ze worden geleverd door de lokale RBPEX-cache of door externe pagina servers, of door een combi natie van de twee als er meerdere pagina's worden gelezen.
+- Wanneer Lees bewerkingen worden uitgegeven door de SQL Server data base-engine op een compute-replica, kunnen ze worden geleverd door de lokale RBPEX-cache of door externe pagina servers, of door een combi natie van de twee als er meerdere pagina's worden gelezen.
 - Wanneer de reken replica sommige pagina's van een specifiek bestand leest, bijvoorbeeld file_id 1, als deze gegevens uitsluitend in de lokale RBPEX-cache zijn opgeslagen, wordt alle i/o voor deze Lees bewerking verwerkt op file_id 0 (RBPEX). Als een deel van die gegevens zich in de lokale RBPEX-cache bevindt en een deel ervan op een externe pagina server bevindt, wordt de i/o in rekening gezet met file_id 0 voor het onderdeel dat wordt aangeboden vanuit RBPEX, en wordt het onderdeel dat wordt aangeboden vanaf de externe pagina Server, verwerkt naar file_id 1.
 - Wanneer een berekenings replica een pagina van een bepaalde [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) van een pagina server aanvraagt en de pagina Server niet heeft geresulteerd in het aangevraagde LSN, wordt de Lees bewerking op de reken replica gewacht totdat de pagina wordt geretourneerd naar de berekenings replica. Voor alle Lees bewerkingen van een pagina op de compute-replica ziet u het PAGEIOLATCH_ * wait-type als het wacht op die i/o. In grootschalige bevat deze wacht tijd zowel de tijd die nodig is voor het opvangen van de aangevraagde pagina op de pagina Server naar de vereiste LSN, en de benodigde tijd voor het overzetten van de pagina van de pagina Server naar de compute replica.
-- Grote Lees bewerkingen, zoals lezen-vooruit, worden vaak uitgevoerd met behulp van de [Lees bewerkingen van ' sprei ding-gather '](/sql/relational-databases/reading-pages/). Op deze manier kunnen Lees bewerkingen van Maxi maal 4 MB aan pagina's tegelijk worden beschouwd als één Lees bewerking in de SQL database-engine. Als er echter gegevens worden gelezen in RBPEX, worden deze Lees bewerkingen beschouwd als meerdere afzonderlijke 8 KB-Lees bewerkingen, omdat de buffer groep en RBPEX altijd 8 KB-pagina's gebruiken. Als gevolg hiervan kan het aantal gelezen IOs-apparaten op RBPEX groter zijn dan het werkelijke aantal IOs dat door de engine wordt uitgevoerd.
+- Grote Lees bewerkingen, zoals lezen-vooruit, worden vaak uitgevoerd met behulp van de [Lees bewerkingen van ' sprei ding-gather '](/sql/relational-databases/reading-pages/). Op deze manier kunnen Lees bewerkingen van Maxi maal 4 MB aan pagina's tegelijk worden beschouwd als één Lees bewerking in de SQL Server data base-engine. Als er echter gegevens worden gelezen in RBPEX, worden deze Lees bewerkingen beschouwd als meerdere afzonderlijke 8 KB-Lees bewerkingen, omdat de buffer groep en RBPEX altijd 8 KB-pagina's gebruiken. Als gevolg hiervan kan het aantal gelezen IOs-apparaten op RBPEX groter zijn dan het werkelijke aantal IOs dat door de engine wordt uitgevoerd.
 
 ### <a name="data-writes"></a>Gegevens schrijven
 
@@ -97,9 +97,9 @@ Een verhouding van Lees bewerkingen die worden uitgevoerd op RBPEX naar geaggreg
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Gegevens-IO in statistieken van resource gebruik
 
-In een niet-grootschalige-Data Base worden de gecombineerde Lees-en schrijf-IOPS voor gegevens bestanden, ten opzichte van de limiet van de [resource governance](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) -gegevens IOPS, gerapporteerd in de kolommen [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) `avg_data_io_percent` Dezelfde waarde wordt als een gegevens-IO- _percentage_gerapporteerd in de portal.
+In een niet-grootschalige-Data Base worden de gecombineerde Lees-en schrijf-IOPS voor gegevens bestanden, ten opzichte van de limiet van de [resource governance](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) -gegevens IOPS, gerapporteerd in de kolommen [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) en [sys. resource_stats.](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) `avg_data_io_percent` Dezelfde waarde wordt in het Azure Portal gerapporteerd als een _gegevens-io-percentage_.
 
-In een grootschalige-data base wordt in deze kolom gerapporteerde over gegevensiops-gebruik ten opzichte van de limiet voor lokale opslag op alleen Compute replica, met name IO tegen RBPEX en `tempdb` . Een waarde van 100% in deze kolom geeft aan dat resource governance de IOPS van lokale opslag beperkt. Als dit is gekoppeld aan een prestatie probleem, stemt u de werk belasting af om minder IO te genereren of breidt u de database service doelstelling uit om de maximale [limiet](resource-limits-vcore-single-databases.md)voor _gegevens IOPS_ van de resource governance te verhogen. Voor resource governance van RBPEX leest en schrijft, telt het systeem een afzonderlijke 8 KB IOs in plaats van een groter IOs dat door de SQL database-engine kan worden uitgegeven.
+In een grootschalige-data base wordt in deze kolom gerapporteerde over gegevensiops-gebruik ten opzichte van de limiet voor lokale opslag op alleen Compute replica, met name IO tegen RBPEX en `tempdb` . Een waarde van 100% in deze kolom geeft aan dat resource governance de IOPS van lokale opslag beperkt. Als dit is gekoppeld aan een prestatie probleem, stemt u de werk belasting af om minder IO te genereren of breidt u de database service doelstelling uit om de maximale [limiet](resource-limits-vcore-single-databases.md)voor _gegevens IOPS_ van de resource governance te verhogen. Voor resource governance van RBPEX Lees-en schrijf bewerkingen telt het systeem afzonderlijke IOs-KB op in plaats van een groter IOs dat kan worden uitgegeven door de SQL Server data base-engine.
 
 Gegevens-IO voor externe pagina servers wordt niet gerapporteerd in weer gaven van resource gebruik of in de portal, maar wordt gerapporteerd in de [sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF, zoals eerder is aangegeven.
 

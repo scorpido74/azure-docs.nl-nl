@@ -11,19 +11,16 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c488b2ad6fcb5228de0e89bd036e299632c5dd4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475442"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337407"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
-
->[!IMPORTANT]
-> De Azure Machine Learning monitoring-SDK wordt binnenkort ingetrokken. De SDK is nog steeds geschikt voor ontwikkel aars die momenteel de SDK gebruiken om gegevens drift in modellen te bewaken. Voor nieuwe klanten raden wij u echter aan de vereenvoudigde [gegevens bewaking met Application Insights](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)te gebruiken.
 
 In dit artikel wordt uitgelegd hoe u invoer model gegevens van Azure Machine Learning kunt verzamelen. Ook wordt uitgelegd hoe u de invoer gegevens implementeert in een AKS-cluster (Azure Kubernetes service) en de uitvoer gegevens opslaat in Azure Blob-opslag.
 
@@ -56,7 +53,7 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 ```
 
 >[!NOTE]
-> In versies van de Azure Machine Learning SDK voor python ouder dan versie 0.1.0 A16 wordt het `designation` argument genoemd `identifier`. Als u uw code hebt ontwikkeld met een eerdere versie, moet u deze dienovereenkomstig bijwerken.
+> In versies van de Azure Machine Learning SDK voor python ouder dan versie 0.1.0 A16 wordt het `designation` argument genoemd `identifier` . Als u uw code hebt ontwikkeld met een eerdere versie, moet u deze dienovereenkomstig bijwerken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -84,7 +81,7 @@ Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
    from azureml.monitoring import ModelDataCollector
    ```
 
-1. Declareer de variabelen voor het verzamelen `init` van gegevens in uw functie:
+1. Declareer de variabelen voor het verzamelen van gegevens in uw `init` functie:
 
     ```python
     global inputs_dc, prediction_dc
@@ -121,11 +118,11 @@ Als u gegevens verzameling wilt inschakelen, moet u het volgende doen:
 
 Als u al een service hebt met de afhankelijkheden die zijn geïnstalleerd in uw omgevings bestand en Score bestand, schakelt u het verzamelen van gegevens in door de volgende stappen uit te voeren:
 
-1. Ga naar [Azure machine learning](https://ml.azure.com).
+1. Ga naar [Azure Machine Learning](https://ml.azure.com).
 
 1. Open uw werk ruimte.
 
-1. Selecteer **implementaties** > **selecteren service** > **bewerken**.
+1. Selecteer **implementaties**  >  **selecteren service**  >  **bewerken**.
 
    ![De service bewerken](././media/how-to-enable-data-collection/EditService.PNG)
 
@@ -139,11 +136,11 @@ U kunt het verzamelen van gegevens op elk gewenst moment stoppen. Gebruik python
 
 ### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>Optie 1: het verzamelen van gegevens in Azure Machine Learning uitschakelen
 
-1. Meld u aan bij [Azure machine learning](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
 
 1. Open uw werk ruimte.
 
-1. Selecteer **implementaties** > **selecteren service** > **bewerken**.
+1. Selecteer **implementaties**  >  **selecteren service**  >  **bewerken**.
 
    [![Selecteer de optie bewerken](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
@@ -166,7 +163,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 ### <a name="quickly-access-your-blob-data"></a>Snel toegang krijgen tot uw BLOB-gegevens
 
-1. Meld u aan bij [Azure machine learning](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning](https://ml.azure.com).
 
 1. Open uw werk ruimte.
 
@@ -189,7 +186,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
     [![Setup van Power BI BLOB](./media/how-to-enable-data-collection/PBIBlob.png)](././media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
-1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden door **instellingen** > **toegangs sleutels** in uw BLOB te selecteren.
+1. Voeg de naam van uw opslag account toe en voer uw opslag sleutel in. U kunt deze informatie vinden door **instellingen**  >  **toegangs sleutels** in uw BLOB te selecteren.
 
 1. Selecteer de container **model gegevens** en selecteer **bewerken**.
 
@@ -199,7 +196,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
 1. Voer het pad naar het model in het filter in. Als u alleen wilt zoeken naar bestanden van een bepaald jaar of per maand, vouwt u het pad naar het filter uit. Als u bijvoorbeeld alleen in maart gegevens wilt bekijken, gebruikt u dit pad naar het filter:
 
-   /modeldata/\<subscriptionid>/\<resourcegroupname>/\<werkruimte>/\<webservicenaam\<>/modelnaam>/\<modelversion>/\<aanwijzing>/\<jaar>/3
+   /modeldata/ \<subscriptionid> / \<resourcegroupname> / \<workspacename> / \<webservicename> / \<modelname> / \<modelversion> / \<designation> / \<year> /3
 
 1. Filter de gegevens die relevant zijn voor u op basis van **naam** waarden. Als u voor spellingen en invoer hebt opgeslagen, moet u een query maken voor elke.
 
@@ -227,7 +224,7 @@ U kunt een hulp programma kiezen van uw voor keur voor het analyseren van de geg
 
     [![De optie Databricks-gegevens uploaden selecteren](./media/how-to-enable-data-collection/dbupload.png)](././media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Selecteer **nieuwe tabel maken** en selecteer **andere gegevens bronnen** > **Azure Blob Storage** > **tabel maken in notitie blok**.
+1. Selecteer **nieuwe tabel maken** en selecteer **andere gegevens bronnen**  >  **Azure Blob Storage**  >  **tabel maken in notitie blok**.
 
     [![Databricks-tabel maken](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 

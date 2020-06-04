@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/03/2020
+ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298717"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324833"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Stromen exporteren vanuit Power Automate en implementeren in Azure Logic Apps
 
@@ -30,13 +30,13 @@ Om de mogelijkheden van uw stroom uit te breiden en uit te breiden, kunt u die s
 
 * De stroom die u wilt exporteren uit automatische energie
 
-## <a name="export-a-flow"></a>Een stroom exporteren
+## <a name="export-your-flow"></a>Uw stroom exporteren
 
-1. Meld u aan bij [energie automatisering](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens (**...**). Selecteer **Export**  >  **Logic apps sjabloon exporteren (. json)**.
+1. Meld u aan bij [energie automatisering](https://flow.microsoft.com)en selecteer **mijn stromen**. Zoek en selecteer uw stroom. Selecteer op de werk balk de knop met weglatings tekens (**...**) > **Export**  >  **Logic apps sjabloon (. json)** te exporteren.
 
-   ![Stroom exporteren](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![Stroom exporteren uit het automatiseren van de stroom](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
-1. Sla uw sjabloon op naar de gewenste locatie.
+1. Sla het JSON-bestand van de sjabloon op de gewenste locatie op.
 
 Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-logic-apps/)voor meer informatie.
 
@@ -44,42 +44,51 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
-1. Selecteer **Een resource maken** in het hoofdmenu van Azure. Voer in het zoekvak ' sjabloon implementatie ' in. Selecteer **Sjabloonimlementatie (Implementeer met aangepaste sjablonen)** en selecteer vervolgens **maken**.
+1. Typ op de start pagina van Azure in het zoekvak `custom template` . Selecteer in de resultaten de optie **een aangepaste sjabloon implementeren**  >  **maken**.
 
-   ![Selecteer Sjabloonimlementatie](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
+   ![Zoek en selecteer ' Sjabloonimlementatie '](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
 1. Onder **aangepaste implementatie**selecteert u **uw eigen sjabloon bouwen in de editor**.
 
    ![Selecteer ' uw eigen sjabloon bouwen in de editor '](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. Selecteer in de werk balk **sjabloon bewerken** de optie **bestand laden**. Zoek en selecteer de JSON-sjabloon die u hebt geëxporteerd uit automatische stroom en selecteer **openen**.
+1. Selecteer op de werk balk **sjabloon bewerken** de optie **bestand laden**.
 
    ![Selecteer bestand laden](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
+1. Blader naar de locatie waar u het JSON-sjabloon bestand hebt opgeslagen dat u hebt geëxporteerd uit het automatiseren van de stroom. Selecteer het sjabloon bestand dat > **geopend**.
+
 1. Selecteer **Opslaan**nadat de JSON, para meters en resources in uw sjabloon zijn weer gegeven in de editor.
-  
+
    ![Sjabloon opslaan](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
-1. Geef nu de volgende invoer parameters op voor de sjabloon:
+1. Geef nu meer informatie over uw logische app.
 
-   * Azure-abonnement dat moet worden gebruikt voor facturering
-   * Azure-resourcegroep
-   * Locatie voor de Azure-resource groep
-   * Naam voor de logische app-resource
-   * Locatie voor de logische app-resource, als deze afwijkt van de Azure-resource groep
-   * De naam voor eerder gemaakte verbindingen die de logische app kan hergebruiken
+   1. De waarden voor de invoer parameters voor uw sjabloon selecteren of opgeven.
 
-      Als u uw eerste logische app maakt, worden alle verbindingen als nieuw gemaakt, zodat u de standaard namen kunt accepteren. Anders kunt u de namen opgeven voor eerder gemaakte verbindingen, die u kunt gebruiken in meerdere logische apps.
+      | Eigenschap | Beschrijving |
+      |----------|-------------|
+      | **Abonnement** | Het Azure-abonnement dat moet worden gebruikt voor facturering |
+      | **Resourcegroep** | De Azure-resource groep die moet worden gebruikt voor uw logische app. U kunt een bestaande groep gebruiken of een nieuwe groep maken. |
+      | **Locatie** | De Azure-regio die moet worden gebruikt als u een nieuwe resource groep maakt |
+      | **Naam van logische app** | De naam die moet worden gebruikt voor de logische app-resource |
+      | **Locatie van logische app** | De Azure-regio waar u de logische app-resource wilt maken, als deze verschilt van de Azure-resource groep |
+      | <*verbindings naam*> | Een of meer namen voor eerder gemaakte verbindingen die de logische app kan hergebruiken <p><p>**Opmerking**: als deze logische app uw eerste is, worden alle verbindingen gemaakt als nieuw, zodat u de standaard namen kunt accepteren. Anders kunt u de namen opgeven voor eerder gemaakte verbindingen, die u kunt gebruiken in meerdere logische apps. |
+      |||
 
-   Nadat u deze informatie hebt opgegeven voor de sjabloon, controleert en gaat u akkoord met de Azure Marketplace-voor waarden voor het maken van de benodigde Azure-resources en het factureren van uw Azure-abonnement, en selecteert u vervolgens **aanschaffen**.
-  
-   ![Invoer parameters voor sjabloon opgeven](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
+      Bijvoorbeeld:
 
-   Azure implementeert uw sjabloon als een logische app voor uw opgegeven resource groep. Alle Logic apps die u migreert vanuit automatische energie, worden geïmplementeerd met een uitgeschakelde status.
+      ![Invoer parameters voor sjabloon opgeven](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-1. Voordat u uw logische app activeert, moet u nieuwe verbindingen toestaan door de volgende stappen uit te voeren:
+   1. Wanneer u klaar bent, bekijkt u de **voor waarden** voor het maken van de benodigde Azure-resources en het factureren van uw Azure-abonnement.
 
-   1. Open de logische app die u hebt gemaakt. Selecteer in het menu van de logische app de optie **Logic app Designer**.
+   1. Wanneer u klaar bent, selecteert u **Ik ga akkoord met de voor waarden die hierboven worden vermeld**  >  **Purchase**.
+
+      Azure implementeert uw sjabloon als een logische app voor uw opgegeven resource groep.
+
+1. Alle Logic apps die u migreert vanuit automatische energie, worden geïmplementeerd met een uitgeschakelde status. Voordat u uw logische app inschakelt, moet u de volgende stappen uitvoeren om nieuwe verbindingen te autoriseren:
+
+   1. Open de logische app die u hebt gemaakt in de Azure Portal. Selecteer in het menu van de logische app de optie **Logic app Designer**.
 
       Voor elke verbinding waarvoor autorisatie is vereist, wordt een waarschuwings pictogram weer gegeven:
 
@@ -91,7 +100,9 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
    1. Meld u aan bij elke service of geef de benodigde referenties op om de verbinding te autoriseren.
 
-1. Sla uw logische app op. Wanneer u klaar bent om uw logische app te activeren, selecteert u **overzicht**in het menu van de logische app en selecteert u vervolgens **inschakelen**.
+   1. Nadat u uw verbindingen hebt bijgewerkt, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+
+1. Wanneer u klaar bent om uw logische app te activeren, selecteert u **overzicht**in het menu van de logische app en selecteert u vervolgens **inschakelen**.
 
    ![Logische app inschakelen](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -99,15 +110,17 @@ Zie [groeien tot Azure Logic apps](https://flow.microsoft.com/blog/grow-up-to-lo
 
 ## <a name="deploy-template-by-using-visual-studio"></a>Een sjabloon implementeren met behulp van Visual Studio
 
-Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) voor het maken van Logic apps, kunt u de geëxporteerde sjabloon vanuit Visual Studio implementeren naar Azure Logic apps.
+Als u Visual Studio hebt ingesteld met de [vereisten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) voor het maken van Logic apps, kunt u de geëxporteerde sjabloon implementeren naar Azure Logic apps met behulp van Visual Studio.
 
-1. Open in Visual Studio het sjabloon bestand dat u hebt geëxporteerd uit automatische stroom automatisering.
+1. Ga in Visual Studio naar en open het. JSON-bestand voor de sjabloon van de logische app die u hebt geëxporteerd uit automatische stroom.
 
-1. Maak in Visual Studio een Azure-resource groep-project en selecteer de sjabloon voor **logische apps** door de stappen te volgen in [Quick Start: Maak geautomatiseerde taken, processen en werk stromen met Azure Logic apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md), bijvoorbeeld:
+1. Maak in Visual Studio een **Azure-resource groep** -project dat gebruikmaakt van de sjabloon **Logic app** door de stappen in Quick Start te volgen [: Maak geautomatiseerde taken, processen en werk stromen met Azure Logic apps-Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+   In dit voor beeld wordt een Visual Studio-oplossing met de naam ' ImportedLogicApp ' gemaakt.
 
    ![Een Azure-resourcegroepproject maken](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Open vanuit Solution Explorer het bestand **LogicApp. json** als het bestand nog niet is geopend.
+1. Nadat de oplossing is gemaakt, opent u in Solution Explorer het bestand **LogicApp. json** als het bestand nog niet is geopend.
 
 1. Kopieer de inhoud van de geëxporteerde sjabloon en vervang de inhoud in het bestand **LogicApp. json** .
 

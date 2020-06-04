@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 6ae38bb81ad0b229d6bb5a9e2f626d17810d7b01
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 57b0c6286cbf40d1694d1f7fda08bc9b02641658
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048341"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324263"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database lange termijn retentie van back-ups beheren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 In Azure SQL Database kunt u een Data Base configureren met een [Bewaar beleid voor lange termijn back-ups](long-term-retention-overview.md) (LTR) om de back-ups van de data base automatisch in afzonderlijke Azure Blob-opslag containers te bewaren gedurende Maxi maal tien jaar. U kunt vervolgens met behulp van de Azure Portal of Power shell een Data Base herstellen met behulp van deze back-ups. U kunt ook lange termijn retentie voor een [Azure SQL Managed instance](../managed-instance/long-term-backup-retention-configure.md) configureren, maar dit is momenteel een beperkte open bare preview-versie.
 
-## <a name="using-azure-portal"></a>Azure Portal gebruiken
+## <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
 In de volgende secties ziet u hoe u de Azure Portal kunt gebruiken voor het configureren van de lange termijn retentie, het weer geven van back-ups voor lange termijn retentie en het terugzetten van back-ups voor lange termijn retentie.
 
@@ -32,7 +32,7 @@ In de volgende secties ziet u hoe u de Azure Portal kunt gebruiken voor het conf
 
 U kunt SQL Database configureren om [automatische back-ups te bewaren](long-term-retention-overview.md) gedurende een periode die langer is dan de retentie periode voor uw servicelaag.
 
-1. Selecteer in de Azure Portal uw SQL Server en klik vervolgens op **back-ups beheren**. Schakel op het tabblad **beleid configureren** het selectie vakje in voor de data base waarvoor u het Bewaar beleid voor back-ups op lange termijn wilt instellen of wijzigen. Als het selectie vakje naast de data base niet is ingeschakeld, zijn de wijzigingen voor het beleid niet van toepassing op die data base.  
+1. Selecteer in de Azure Portal uw SQL Server-exemplaar en klik vervolgens op **back-ups beheren**. Schakel op het tabblad **beleid configureren** het selectie vakje in voor de data base waarvoor u het Bewaar beleid voor back-ups op lange termijn wilt instellen of wijzigen. Als het selectie vakje naast de data base niet is ingeschakeld, zijn de wijzigingen voor het beleid niet van toepassing op die data base.  
 
    ![koppeling back-ups beheren](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
 
@@ -61,7 +61,7 @@ Bekijk de back-ups die worden bewaard voor een specifieke data base met een LTR-
 
    ![De pagina Restore](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. Klik op **OK** om de data base terug te zetten van de back-up in Azure SQL Storage naar de nieuwe data base.
+1. Klik op **OK** om de data base terug te zetten van de back-up in azure Storage naar de nieuwe data base.
 
 1. Klik op de werkbalk op het meldingspictogram om de status van de hersteltaak weer te geven.
 
@@ -79,7 +79,7 @@ Bekijk de back-ups die worden bewaard voor een specifieke data base met een LTR-
 > [!IMPORTANT]
 > De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
 
-In de volgende secties ziet u hoe u Power shell kunt gebruiken voor het configureren van de lange termijn retentie van back-ups, het weer geven van back-ups in Azure SQL Storage en het herstellen van een back-up in Azure SQL Storage.
+In de volgende secties ziet u hoe u Power shell kunt gebruiken voor het configureren van de lange termijn retentie van back-ups, het weer geven van back-ups in azure Storage en het terugzetten van een back-up in azure Storage.
 
 ### <a name="rbac-roles-to-manage-long-term-retention"></a>RBAC-rollen voor het beheren van lange termijn retentie
 

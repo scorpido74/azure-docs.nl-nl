@@ -1258,7 +1258,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + U hebt klassen toegevoegd om Amerikaanse populatie per regio en post te krijgen.
   + **azureml-pipeline-core**
     + De eigenschap label is toegevoegd aan de definitie van de invoer-en uitvoer poort.
-  + **azureml-telemetry**
+  + **azureml-telemetrie**
     + Er is een onjuiste telemetrie-configuratie hersteld.
   + **azureml-Train-automl**
     + Er is een fout opgetreden bij het uitvoeren van een probleem waarbij tijdens de installatie fouten geen logboek wordt ontvangen van het veld ' Errors ' voor de installatie en daarom niet is opgeslagen in de bovenliggende run ' Errors '.

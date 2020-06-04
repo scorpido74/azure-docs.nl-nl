@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4c0ae83a0ed3a7f9fc550af2d64d5fcd1f42c998
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188702"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324661"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Zelf studie: SQL Data Sync instellen tussen data bases in Azure SQL Database en SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ Zie voor voor beelden van Power shell voor informatie over het configureren van 
 
 ## <a name="create-sync-group"></a>Synchronisatie groep maken
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) om uw SQL database te vinden. Zoek en selecteer **SQL-data bases**.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw data base te vinden in SQL database. Zoek en selecteer **SQL-data bases**.
 
     ![Zoeken naar SQL-data bases, Microsoft Azure-portal](./media/sql-data-sync-sql-server-configure/search-for-sql-databases.png)
 
@@ -75,9 +75,9 @@ Voer in de sectie **hub-data base** de bestaande referenties in voor de server w
 
 ![Stap 2-instellingen](./media/sql-data-sync-sql-server-configure/steptwo.png)
 
-### <a name="to-add-an-azure-sql-database"></a>Een Azure SQL Database toevoegen
+### <a name="to-add-a-database-in-azure-sql-database"></a>Een Data Base toevoegen in Azure SQL Database
 
-Voeg in de sectie **lid data base** optioneel een Azure SQL database toe aan de synchronisatie groep door **een Azure SQL database toevoegen**te selecteren. De pagina **Azure SQL database configureren** wordt geopend.
+Voeg in de sectie **lid data base** eventueel een data base in Azure SQL database toe aan de synchronisatie groep door **een Azure SQL database toevoegen**te selecteren. De pagina **Azure SQL database configureren** wordt geopend.
 
   ![Stap 2: data base configureren](./media/sql-data-sync-sql-server-configure/steptwo-configure.png)
 
@@ -88,7 +88,7 @@ Voeg in de sectie **lid data base** optioneel een Azure SQL database toe aan de 
   | **Lidnaam synchroniseren** | Geef een naam op voor het nieuwe lid Sync. Deze naam is niet hetzelfde als de naam van de data base zelf. |
   | **Abonnement** | Selecteer het bijbehorende Azure-abonnement voor facturerings doeleinden. |
   | **Azure SQL Server** | Selecteer de bestaande server. |
-  | **Azure SQL Database** | Selecteer de bestaande SQL database. |
+  | **Azure SQL Database** | Selecteer de bestaande data base in SQL Database. |
   | **Synchronisatie richtingen** | Selecteer **bidirectionele synchronisatie**, **naar de hub**of **vanuit de hub**. |
   | **Gebruikers naam** en **wacht woord** | Voer de bestaande referenties in voor de server waarop de member-data base zich bevindt. Voer in deze sectie geen *nieuwe* referenties in. |
 
@@ -110,7 +110,7 @@ Voeg in de sectie **lid data base** optioneel een SQL Server Data Base toe aan d
 
    Als u **een nieuwe agent maken**kiest, doet u het volgende:
 
-   1. Down load de Data Sync-agent via de koppeling en installeer deze op de computer waarop de SQL Server zich bevindt. U kunt de agent ook rechtstreeks downloaden vanuit [SQL Azure Data Sync agent](https://www.microsoft.com/download/details.aspx?id=27693).
+   1. Down load de Data Sync-agent via de koppeling en installeer deze op de computer waarop de SQL Server zich bevindt. U kunt de agent ook rechtstreeks vanuit [Azure SQL Data Sync-agent](https://www.microsoft.com/download/details.aspx?id=27693)downloaden.
 
       > [!IMPORTANT]
       > U moet de uitgaande TCP-poort 1433 in de firewall openen om de client agent te laten communiceren met de-server.
@@ -167,7 +167,7 @@ Nadat de leden van de nieuwe synchronisatie groep zijn gemaakt en geïmplementee
 
 1. Selecteer **Opslaan**.
 
-1. Standaard worden data bases pas gesynchroniseerd wanneer ze zijn gepland of hand matig worden uitgevoerd. Als u een hand matige synchronisatie wilt uitvoeren, gaat u naar de SQL database in het Azure Portal, selecteert **u synchroniseren met andere data bases**en selecteert u de synchronisatie groep. De pagina **gegevens synchronisatie** wordt geopend. Selecteer **Synchroniseren**.
+1. Standaard worden data bases pas gesynchroniseerd wanneer ze zijn gepland of hand matig worden uitgevoerd. Als u een hand matige synchronisatie wilt uitvoeren, bladert u naar uw data base in SQL Database in het Azure Portal, selecteert **u synchroniseren met andere data bases**en selecteert u de synchronisatie groep. De pagina **gegevens synchronisatie** wordt geopend. Selecteer **Synchroniseren**.
 
     ![Hand matige synchronisatie](./media/sql-data-sync-sql-server-configure/datasync-sync.png)
 

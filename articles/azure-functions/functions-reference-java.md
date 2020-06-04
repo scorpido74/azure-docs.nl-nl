@@ -3,12 +3,12 @@ title: Naslag informatie voor Java-Ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648229"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340331"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -30,7 +30,7 @@ Om het maken van Java-functies te vereenvoudigen, zijn er maven hulp middelen en
 
 De volgende omgevingen met ontwikkel aars hebben Azure Functions hulp middelen waarmee u Java-functie projecten kunt maken: 
 
-+ [Visual Studio code](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
 + [Eclipse](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
@@ -391,7 +391,7 @@ In het vorige voor beeld `queryValue` is de is gebonden aan de query teken reeks
 
 ## <a name="execution-context"></a>Context voor uitvoering
 
-`ExecutionContext`, gedefinieerd in de `azure-functions-java-library` , bevat helper-methoden om te communiceren met de functions-runtime.
+`ExecutionContext`, gedefinieerd in de `azure-functions-java-library` , bevat helper-methoden om te communiceren met de functions-runtime. Zie het [ExecutionContext-referentie artikel](/java/api/com.microsoft.azure.functions.executioncontext)voor meer informatie.
 
 ### <a name="logger"></a>Logger
 

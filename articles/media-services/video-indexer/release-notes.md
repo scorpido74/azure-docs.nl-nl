@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124581"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325062"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
@@ -29,6 +29,20 @@ Dit artikel bevat informatie over het volgende om up-to-date te blijven met de m
 * Bekende problemen
 * Opgeloste fouten
 * Afgeschafte functionaliteit
+
+## <a name="may-2020"></a>Mei 2020
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>Video Indexer geïmplementeerd in het VS-Oost
+
+U kunt nu een Video Indexer betaalde account maken in de regio VS-Oost.
+ 
+### <a name="video-indexer-url"></a>Video Indexer URL
+
+Video Indexer regionale eind punten zijn allemaal gecombineerd om te starten met www. Er is geen actie-item vereist.
+
+Vanaf nu bereikt u www.videoindexer.ai of het gaat om widgets in te sluiten of u aan te melden Video Indexer webtoepassingen.
+
+Wus.videoindexer.ai wordt ook omgeleid naar www. Meer informatie is beschikbaar in [Inge sloten video indexer widgets in uw apps](video-indexer-embed-widgets.md).
 
 ## <a name="april-2020"></a>April 2020
 

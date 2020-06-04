@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 5/13/2020
-ms.openlocfilehash: fd552e3236732fd37b2fc5d23dd234f0a87f0f27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049937"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322058"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Serverloos is een compute-laag voor één Azure SQL-data base waarmee de bereken
 
 ## <a name="serverless-compute-tier"></a>Serverloze compute-laag
 
-De compute-laag zonder server voor één Azure SQL-Data Base wordt vastgelegd door een bereik voor automatisch schalen van berekeningen en een vertraging van automatische onderbrekingen.  De configuratie van deze para meters vormen de prestaties van de data base en reken kosten.
+De compute-laag zonder server voor afzonderlijke data bases in Azure SQL Database wordt vastgelegd door een bereik voor automatisch schalen van berekeningen en een vertraging van automatische onderbrekingen. De configuratie van deze para meters vormen de prestaties en reken kosten voor de data base.
 
 ![facturering zonder server](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -183,11 +183,11 @@ Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Bas
    |Vertraging van autopause|Minimum: 60 minuten (1 uur)<br>Maximum: 10080 minuten (7 dagen)<br>Stappen: 10 minuten<br>Autopause uitschakelen:-1|60 minuten|
 
 
-### <a name="create-new-database-in-serverless-compute-tier"></a>Nieuwe data base maken in serverloze Compute-laag 
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Een nieuwe data base maken in de compute-laag zonder server
 
 In de volgende voor beelden wordt een nieuwe data base gemaakt in de serverloze Compute-laag.
 
-#### <a name="use-azure-portal"></a>Azure Portal gebruiken
+#### <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
 Zie [Quick Start: een enkele data base maken in Azure SQL database met behulp van de Azure Portal](single-database-create-quickstart.md).
 
@@ -199,7 +199,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-azure-cli"></a>Azure CLI gebruiken
+#### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -218,7 +218,7 @@ CREATE DATABASE testdb
 
 Zie [Create Data Base](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor meer informatie.  
 
-### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Data base verplaatsen van ingerichte Compute-laag naar serverloze Compute-laag
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Een Data Base van de ingerichte Compute-laag naar de serverloze Compute-laag verplaatsen
 
 In de volgende voor beelden wordt een Data Base van de ingerichte Compute-laag verplaatst naar de serverloze Compute-laag.
 
@@ -231,7 +231,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-azure-cli"></a>Azure CLI gebruiken
+#### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
@@ -250,7 +250,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Zie [ALTER data base](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)(Engelstalig) voor meer informatie.
 
-### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Data base verplaatsen van serverloze Compute-laag naar ingerichte Compute-laag
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Een Data Base van de serverloze Compute-laag naar de ingerichte Compute-laag verplaatsen
 
 Een serverloze data base kan op dezelfde manier worden verplaatst naar een ingerichte Compute-laag als het verplaatsen van een ingerichte Compute-Data Base naar een serverloze Compute-laag.
 
@@ -260,12 +260,12 @@ Een serverloze data base kan op dezelfde manier worden verplaatst naar een inger
 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) opdracht in Power shell met behulp van de `MaxVcore` `MinVcore` argumenten, en `AutoPauseDelayInMinutes` .
 
-### <a name="use-azure-cli"></a>Azure CLI gebruiken
+### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de `capacity` `min-capacity` argumenten, en `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -307,7 +307,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-azure-cli"></a>Azure CLI gebruiken
+#### <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
@@ -318,7 +318,7 @@ az sql db show --name $databasename --resource-group $resourcegroupname --server
 
 Zie [serverloze Compute-laag](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)voor resource limieten.
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 De hoeveelheid berekenings kosten is het maximum van CPU-gebruik en het geheugen dat elke seconde wordt gebruikt. Als de gebruikte hoeveelheid CPU en het gebruikte geheugen kleiner is dan het minimum aantal dat voor elk is ingericht, wordt de ingerichte hoeveelheid gefactureerd. Als u de CPU wilt vergelijken met geheugen voor facturerings doeleinden, wordt geheugen genormaliseerd in eenheden van vCores door de hoeveelheid geheugen in GB met 3 GB per vCore opnieuw te schalen.
 

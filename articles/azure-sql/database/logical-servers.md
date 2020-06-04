@@ -1,7 +1,7 @@
 ---
-title: Wat is een server in Azure SQL Database en Azure Synapse?
+title: Wat is een server in Azure SQL Database en Azure Synapse Analytics?
 titleSuffix: ''
-description: Meer informatie over logische SQL-servers die worden gebruikt door Azure SQL Database en Azure Synapse, en hoe u deze kunt beheren.
+description: Meer informatie over logische SQL-servers die worden gebruikt door Azure SQL Database en Azure Synapse Analytics en hoe u deze kunt beheren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,21 +12,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 6df3cd82413f9a1c352be4349006accd52c24490
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 596967a918dc3a94061ce907848e7e502660b97c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048418"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324365"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Wat is een logische SQL-Server in Azure SQL Database en Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-In Azure SQL Database en Azure Synapse is een server een logische constructie die fungeert als een centraal beheer punt voor een verzameling data bases. Op server niveau kunt u [aanmeldingen](logins-create-manage.md), [firewall regels](firewall-configure.md), [controle regels](../../azure-sql/database/auditing-overview.md), beleid voor [detectie van dreigingen](threat-detection-configure.md)en [groepen voor automatische failover](auto-failover-group-overview.md)beheren. Een server kan zich in een andere regio bevinden dan de bijbehorende resource groep. De server moet bestaan voordat u een Data Base kunt maken in Azure SQL Database of een Data Warehouse-data base in azure Synapse. Alle data bases die worden beheerd door één server, worden in dezelfde regio gemaakt als de-server.
+In Azure SQL Database en Azure Synapse Analytics is een server een logische construct die fungeert als een centraal beheer punt voor een verzameling data bases. Op server niveau kunt u [aanmeldingen](logins-create-manage.md), [firewall regels](firewall-configure.md), [controle regels](../../azure-sql/database/auditing-overview.md), beleid voor [detectie van dreigingen](threat-detection-configure.md)en [groepen voor automatische failover](auto-failover-group-overview.md)beheren. Een server kan zich in een andere regio bevinden dan de bijbehorende resource groep. De server moet bestaan voordat u een data base in Azure SQL Database of een Data Warehouse-data base in azure Synapse Analytics kunt maken. Alle data bases die worden beheerd door één server, worden in dezelfde regio gemaakt als de-server.
 
 Deze server verschilt van een SQL Server exemplaar dat u mogelijk kent in de on-premises wereld. Er zijn met name geen garanties met betrekking tot de locatie van de data bases of Data Warehouse-data bases ten opzichte van de server die deze beheert. Bovendien geven Azure SQL Database noch Azure Synapse toegang tot of functies op exemplaar niveau toe. De instantie databases in een beheerd exemplaar zijn daarentegen allemaal fysiek op dezelfde manier als u bekend bent met SQL Server op de on-premises of virtuele machine wereld.
 
-Wanneer u een server maakt, geeft u een aanmeldings account voor de server en het wacht woord op die beheerders rechten heeft voor de hoofd database op die server en alle data bases die op die server worden gemaakt. Dit eerste account is een SQL-aanmeldings account. Azure SQL Database en Synapse Analytics ondersteunt SQL-verificatie en Azure Active Directory verificatie voor verificatie. Zie [data bases en aanmeldingen beheren in Azure SQL database](logins-create-manage.md)voor meer informatie over aanmeldingen en verificatie. Windows-verificatie wordt niet ondersteund.
+Wanneer u een server maakt, geeft u een aanmeldings account voor de server en het wacht woord op die beheerders rechten heeft voor de hoofd database op die server en alle data bases die op die server worden gemaakt. Dit eerste account is een SQL-aanmeldings account. Azure SQL Database en Synapse Analytics bieden ondersteuning voor SQL-verificatie en Azure Active Directory verificatie voor verificatie. Zie [data bases en aanmeldingen beheren in Azure SQL database](logins-create-manage.md)voor meer informatie over aanmeldingen en verificatie. Windows-verificatie wordt niet ondersteund.
 
 Een server in SQL Database en Azure Synapse:
 
@@ -53,7 +53,7 @@ U kunt de resource groep voor een server van tevoren of tijdens het maken van de
 
 ### <a name="create-a-blank-server"></a>Een lege server maken
 
-Als u een server (zonder een Data Base, elastische pool of Data Warehouse-data base) wilt maken met behulp van de [Azure Portal](https://portal.azure.com), gaat u naar een leeg SQL Server-formulier (logische server).
+Als u een server (zonder een Data Base, elastische pool of Data Warehouse-data base) wilt maken met behulp van de [Azure Portal](https://portal.azure.com), gaat u naar een leeg SQL Server-formulier (logische SQL-Server).
 
 ### <a name="create-a-blank-or-sample-sql-database-in-azure-sql-database"></a>Een leeg of voor beeld-SQL database maken in Azure SQL Database
 
@@ -105,7 +105,7 @@ Als u servers, data bases en firewalls met Azure PowerShell wilt maken en behere
 | New-AzSqlServerVirtualNetworkRule | Hiermee maakt u een regel voor het [*virtuele netwerk*](vnet-service-endpoint-rule-overview.md), op basis van een subnet dat Virtual Network Service-eind punt is. |
 
 > [!TIP]
-> Zie [een Azure SQL-data base maken met behulp van Power shell](single-database-create-quickstart.md)voor een Power shell-Snelstartgids. Zie Power shell-voorbeeld scripts [gebruiken om een Azure SQL-Data Base te maken en een firewall regel te configureren](scripts/create-and-configure-database-powershell.md) en een [Azure SQL-Data Base te bewaken en te schalen met behulp van Power](scripts/monitor-and-scale-database-powershell.md)shell.
+> Zie [een Data Base maken in Azure SQL database met behulp van Power shell](single-database-create-quickstart.md)voor een Power shell-Quick Start. Zie Power [shell gebruiken om een Data Base te maken in Azure SQL database en een firewall regel te configureren](scripts/create-and-configure-database-powershell.md) en [een data base in Azure SQL database te bewaken en te schalen met behulp van Power](scripts/monitor-and-scale-database-powershell.md)shell voor voorbeeld scripts voor Power shell.
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-the-azure-cli"></a>Servers, data bases en firewalls beheren met de Azure CLI
@@ -135,7 +135,7 @@ Als u servers, data bases en firewalls wilt maken en beheren met de [Azure cli](
 |[AZ SQL Server firewall-Rule Delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Hiermee verwijdert u een firewall regel|
 
 > [!TIP]
-> Zie voor een Azure CLI Quick Start [een Azure SQL-data base maken met behulp van de Azure cli](az-cli-script-samples-content-guide.md). Zie voor voor beelden van Azure CLI-scripts [CLI gebruiken om een Azure SQL-Data Base te maken en een firewall regel te configureren](scripts/create-and-configure-database-cli.md) en [om een enkele data base van Azure SQL te bewaken en te schalen](scripts/monitor-and-scale-database-cli.md).
+> Zie [een Data Base maken in Azure SQL database met behulp van de Azure cli](az-cli-script-samples-content-guide.md)voor een Snelstartgids van Azure cli. Zie [de CLI gebruiken voor het maken van een data base in Azure SQL database en een firewall regel configureren](scripts/create-and-configure-database-cli.md) en [de CLI gebruiken om een data base in Azure SQL database te bewaken en te schalen voor een](scripts/monitor-and-scale-database-cli.md)voor beeld van Azure CLI-scripts.
 >
 
 ## <a name="manage-servers-databases-and-firewalls-using-transact-sql"></a>Servers, data bases en firewalls beheren met behulp van Transact-SQL
@@ -154,15 +154,15 @@ Gebruik de volgende T-SQL-opdrachten om servers, data bases en firewalls te make
 |[DROP data base (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Hiermee verwijdert u een Data Base.|
 |[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Retourneert de editie (service tier), de service doelstelling (prijs categorie) en de naam van de elastische groep, indien van toepassing, voor een Data Base. Als u bent aangemeld bij de hoofd database voor een-server, retourneert informatie over alle data bases. Voor Azure Synapse moet u verbinding hebben met de hoofd database.|
 |[sys. dm_db_resource_stats (Azure SQL Database)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Retourneert CPU, i/o en geheugen verbruik voor een data base in Azure SQL Database. Er bestaat één rij voor elke 15 seconden, zelfs als er geen activiteit in de data base is.|
-|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
+|[sys. resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Retourneert het CPU-gebruik en de opslag gegevens voor een data base in Azure SQL Database. De gegevens worden binnen een interval van vijf minuten verzameld en geaggregeerd.|
 |[sys. database_connection_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Bevat statistieken voor database connectiviteits gebeurtenissen voor Azure SQL Database, waarmee u een overzicht krijgt van geslaagde en mislukte database verbindingen. |
 |[sys. event_log (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Hiermee worden geslaagde Azure SQL Database database verbindingen, verbindings fouten en deadlocks voor Azure SQL Database geretourneerd. U kunt deze informatie gebruiken om de activiteit van uw data base bij te houden of problemen op te lossen.|
 |[sp_set_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Hiermee worden de firewall instellingen op server niveau voor uw server gemaakt of bijgewerkt. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau. Een firewall regel op server niveau kan alleen worden gemaakt met behulp van Transact-SQL nadat de eerste firewall regel op server niveau is gemaakt door een gebruiker met machtigingen op Azure-niveau|
 |[sys. firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op server niveau die zijn gekoppeld aan een server.|
 |[sp_delete_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Hiermee verwijdert u Firewall instellingen op server niveau van een server. Deze opgeslagen procedure is alleen beschikbaar in de hoofd database voor de principal-aanmelding op server niveau.|
-|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Hiermee worden de firewall regels op database niveau voor een data base in Azure SQL Database gemaakt of bijgewerkt. De firewall regels voor de data base kunnen worden geconfigureerd voor de hoofd database en voor gebruikers databases op SQL Database. Database firewall regels zijn handig wanneer u Inge sloten database gebruikers gebruikt. De firewall regels voor de Data Base worden niet ondersteund in azure Synapse.|
+|[sp_set_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Hiermee worden de firewall regels op database niveau voor een data base in Azure SQL Database gemaakt of bijgewerkt. Database firewall regels kunnen worden geconfigureerd voor de hoofd database en voor gebruikers databases in SQL Database. Database firewall regels zijn handig wanneer u Inge sloten database gebruikers gebruikt. De firewall regels voor de Data Base worden niet ondersteund in azure Synapse.|
 |[sys. database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Retourneert informatie over de firewall instellingen op database niveau voor een data base in Azure SQL Database. |
-|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Hiermee verwijdert u de firewall-instelling op database niveau voor een Data Base van uw Azure SQL Database. |
+|[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Hiermee verwijdert u de firewall-instelling op database niveau voor een Data Base van uw bedrijf in Azure SQL Database. |
 
 > [!TIP]
 > Voor een Snelstartgids met SQL Server Management Studio in micro soft Windows raadpleegt u [Azure SQL database: gebruik SQL Server Management Studio om verbinding te maken en gegevens op te vragen](connect-query-ssms.md). Zie [Azure SQL database: Visual Studio code gebruiken om verbinding te maken en gegevens op te vragen](connect-query-vscode.md)voor een Snelstartgids met Visual Studio code op het MacOS, Linux of Windows.

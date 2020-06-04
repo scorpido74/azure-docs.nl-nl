@@ -13,12 +13,12 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e3bd464b5b93155e8ca8c3ba012b883f2b08f80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c45d52b89d23b2b030f6292a2257dfd732e8f766
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051435"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344761"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services met R (preview-versie)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ Machine Learning Services is een functie van Azure SQL Database die wordt gebrui
 
 ## <a name="what-you-can-do-with-r"></a>Wat u kunt doen met R
 
-Gebruik de kracht van de taal R om geavanceerde analyses en in-database machine learning te bieden. Deze mogelijkheid zorgt voor berekeningen en verwerking op de plaats waar de gegevens zich bevinden, u hoeft de gegevens niet op te halen via het netwerk. Daarnaast kunt u gebruikmaken van de kracht van ENTER prise R-pakketten voor het leveren van geavanceerde analyses op schaal.
+Gebruik de kracht van de R-taal voor het leveren van geavanceerde analyses en machine learning in de data base. Deze mogelijkheid zorgt voor berekeningen en verwerking op de plaats waar de gegevens zich bevinden, u hoeft de gegevens niet op te halen via het netwerk. Daarnaast kunt u gebruikmaken van de kracht van ENTER prise R-pakketten voor het leveren van geavanceerde analyses op schaal.
 
 Machine Learning-services bevatten een basisdistributie van R, overlapt met zakelijke R-pakketten van Microsoft. R-functies en -algoritmen van Microsoft zijn ontworpen voor zowel schaal als bruikbaarheid en bieden voorspellende analyses, statistische modellen, gegevensvisualisaties en toonaangevende algoritmen voor machine learning.
 
@@ -57,3 +57,4 @@ Naast de vooraf geïnstalleerde pakketten kunt u [aanvullende pakketten installe
 - Bekijk de belangrijkste verschillen ten opzichte [van SQL Server machine learning Services](machine-learning-services-differences.md).
 - Zie de [Snelstartgids](connect-query-r.md)voor meer informatie over het gebruik van R voor het opvragen van Azure SQL database machine learning Services (preview).
 - Zie [eenvoudige r-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview)](r-script-create-quickstart.md)om aan de slag te gaan met een aantal eenvoudige r-scripts.
+ 

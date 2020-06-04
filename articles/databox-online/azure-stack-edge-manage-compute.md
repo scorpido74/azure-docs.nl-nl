@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 08cc91bc9aa8187dc18f70cc4fbcc363521b8e29
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9d34bd1750b798407b493dcde01b04118d66a2d5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569067"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339821"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge"></a>Reken kracht beheren op uw Azure Stack rand
 
@@ -54,7 +54,7 @@ Voer de volgende stappen uit in de Azure Portal om een trigger te maken.
 
     - **Geplande trigger** : Geef de begin datum/-tijd en het herhalings interval in uren, minuten of seconden op. Voer ook de naam in voor een onderwerp. Een onderwerp biedt u de flexibiliteit om de trigger te routeren naar een module die op het apparaat is geïmplementeerd.
 
-        Een voor beeld van een route `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"`teken reeks is:.
+        Een voor beeld van een route teken reeks is: `"route3": "FROM /* WHERE topic = 'topicname' INTO BrokeredEndpoint("modules/modulename/inputs/input1")"` .
 
         ![NFS-share toevoegen](media/azure-stack-edge-manage-compute/add-scheduled-trigger.png)
 

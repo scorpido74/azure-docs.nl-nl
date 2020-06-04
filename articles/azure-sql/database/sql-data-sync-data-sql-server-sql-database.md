@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297952"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343265"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Wat is SQL Data Sync voor Azure?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 SQL Data Sync is een service die is gebouwd op Azure SQL Database waarmee u de gegevens die u in twee richtingen selecteert, kunt synchroniseren in meerdere data bases, zowel on-premises als in de Cloud. 
 
@@ -200,16 +199,16 @@ Ja. U moet een SQL Database-account hebben om de hub-data base te hosten.
 
 Niet rechtstreeks. U kunt echter indirect synchroniseren tussen SQL Server data bases, door een hub-data base te maken in Azure en vervolgens de on-premises data bases toe te voegen aan de synchronisatie groep.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Kan ik gegevens synchronisatie gebruiken om te synchroniseren tussen SQL-data bases die deel uitmaken van verschillende abonnementen
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Kan ik Data Sync gebruiken om te synchroniseren tussen data bases in SQL Database die tot verschillende abonnementen behoren
 
-Ja. U kunt synchroniseren tussen SQL-data bases die deel uitmaken van resource groepen die eigendom zijn van verschillende abonnementen.
+Ja. U kunt synchroniseren tussen data bases die deel uitmaken van resource groepen die eigendom zijn van verschillende abonnementen.
 
 - Als de abonnementen deel uitmaken van dezelfde Tenant en u gemachtigd bent voor alle abonnementen, kunt u de synchronisatie groep configureren in de Azure Portal.
 - Anders moet u Power shell gebruiken om de synchronisatie leden toe te voegen die deel uitmaken van verschillende abonnementen.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kan ik gegevens synchronisatie gebruiken om te synchroniseren tussen SQL-data bases die deel uitmaken van verschillende Clouds (zoals Azure open bare Cloud en Azure China 21Vianet)
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kan ik Data Sync gebruiken om te synchroniseren tussen data bases in SQL Database die deel uitmaken van verschillende Clouds (zoals Azure Public Cloud en Azure China 21Vianet)
 
-Ja. U kunt synchroniseren tussen SQL-data bases die deel uitmaken van verschillende Clouds. u moet Power shell gebruiken om de synchronisatie leden toe te voegen die deel uitmaken van de verschillende abonnementen.
+Ja. U kunt synchroniseren tussen data bases die deel uitmaken van verschillende Clouds. U moet Power shell gebruiken om de synchronisatie leden toe te voegen die deel uitmaken van de verschillende abonnementen.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kan ik gegevens synchronisatie gebruiken voor het seeden van gegevens van mijn productie database naar een lege data base en deze vervolgens synchroniseren
 
@@ -217,7 +216,7 @@ Ja. Maak het schema hand matig in de nieuwe Data Base door het uit te schrijven 
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Moet ik SQL Data Sync gebruiken om een back-up te maken van mijn data bases en deze te herstellen
 
-Het is niet raadzaam om SQL Data Sync te gebruiken om een back-up van uw gegevens te maken. U kunt geen back-up-en herstel bewerking naar een bepaald punt in de tijd, omdat SQL Data Sync synchronisaties geen versie hebben. Bovendien maakt SQL Data Sync geen back-up van andere SQL-objecten, zoals opgeslagen procedures, en wordt het equivalent van een herstel bewerking niet snel uitgevoerd.
+Het is niet raadzaam om SQL Data Sync te gebruiken om een back-up van uw gegevens te maken. U kunt geen back-up-en herstel bewerking naar een bepaald punt in de tijd, omdat SQL Data Sync-synchronisaties geen versie hebben. Daarnaast wordt SQL Data Sync geen back-up gemaakt van andere SQL-objecten, zoals opgeslagen procedures, en wordt het equivalent van een herstel bewerking niet snel uitgevoerd.
 
 Zie [een Azure-SQL database kopiëren](database-copy.md)voor een aanbevolen back-uptechniek.
 
@@ -259,3 +258,4 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure SQL Database:
 
 - [Wat is de Azure SQL Database-service?](sql-database-paas-overview.md)
 - [Database Lifecycle Management (DLM)](https://msdn.microsoft.com/library/jj907294.aspx)
+ 

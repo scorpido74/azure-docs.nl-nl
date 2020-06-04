@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: e2414873db06ada4d0a260e007998ef2ba2f2cf9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050497"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344642"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Wereld wijd beschik bare Services ontwerpen met behulp van Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ In het volgende diagram ziet u deze configuratie vóór een storing:
 
 ![Scenario 1. Configuratie vóór de storing.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Na een storing in de primaire regio, SQL Database detecteert dat de primaire data base niet toegankelijk is en de failover naar de secundaire regio wordt geactiveerd op basis van de para meters van het beleid voor automatische failover (1). Afhankelijk van de SLA van uw toepassing kunt u een respijt periode configureren die de tijd bepaalt tussen de detectie van de storing en de failover zelf. Het is mogelijk dat Traffic Manager de failover van het eind punt initieert voordat de failovergroep de failover van de data base activeert. In dat geval kan de webtoepassing niet onmiddellijk opnieuw verbinding maken met de data base. De verbindingen worden echter automatisch uitgevoerd zodra de data base-failover is voltooid. Wanneer de regio mislukt en weer online wordt gezet, wordt de oude primaire automatisch opnieuw verbonden als een nieuwe secundaire. In het onderstaande diagram ziet u de configuratie na een failover.
+Na een storing in de primaire regio, SQL Database detecteert dat de primaire data base niet toegankelijk is en de failover naar de secundaire regio wordt geactiveerd op basis van de para meters van het beleid voor automatische failover (1). Afhankelijk van de SLA van uw toepassing kunt u een respijt periode configureren die de tijd bepaalt tussen de detectie van de storing en de failover zelf. Het is mogelijk dat Azure Traffic Manager de failover van het eind punt initieert voordat de failover-groep de failover van de data base activeert. In dat geval kan de webtoepassing niet onmiddellijk opnieuw verbinding maken met de data base. De verbindingen worden echter automatisch uitgevoerd zodra de data base-failover is voltooid. Wanneer de regio mislukt en weer online wordt gezet, wordt de oude primaire automatisch opnieuw verbonden als een nieuwe secundaire. In het onderstaande diagram ziet u de configuratie na een failover.
 
 > [!NOTE]
 > Alle trans acties die zijn doorgevoerd na de failover, gaan verloren tijdens het opnieuw verbinden. Nadat de failover is voltooid, kan de toepassing in regio B opnieuw verbinding maken en opnieuw starten met het verwerken van de gebruikers aanvragen. Zowel de webtoepassing als de primaire data base bevinden zich nu in regio B en blijven co-locatie.
@@ -111,7 +111,7 @@ In dit scenario heeft de toepassing de volgende kenmerken:
 * Schrijf toegang tot gegevens moet worden ondersteund in dezelfde geografie voor het meren deel van de gebruikers
 * Lees latentie is essentieel voor de ervaring van de eind gebruiker
 
-Om te voldoen aan deze vereisten moet worden gegarandeerd dat het gebruikers apparaat **altijd** verbinding maakt met de toepassing die is geïmplementeerd in dezelfde geografie voor de alleen-lezen bewerkingen, zoals het bladeren door gegevens, analyses, enzovoort. Overwegende dat de OLTP-bewerkingen in de **meeste tijd**worden verwerkt. Gedurende de tijd dat de OLTP-bewerkingen van de dag worden uitgevoerd, worden deze in dezelfde geografie verwerkt, maar gedurende de buitenste uren die ze in een andere Geografie kunnen verwerken. Als de activiteit van de eind gebruiker voornamelijk plaatsvindt tijdens de werk uren, kunt u de optimale prestaties voor de meeste gebruikers van de tijd garanderen. In het volgende diagram ziet u deze topologie.
+Om te voldoen aan deze vereisten moet worden gegarandeerd dat het gebruikers apparaat **altijd** verbinding maakt met de toepassing die is geïmplementeerd in dezelfde geografie voor de alleen-lezen bewerkingen, zoals het bladeren door gegevens, analyses, enzovoort. Terwijl de OLTP-bewerkingen in de **meeste tijd**worden verwerkt. Gedurende de tijd dat de OLTP-bewerkingen van de dag worden uitgevoerd, worden deze in dezelfde geografie verwerkt, maar gedurende de buitenste uren die ze in een andere Geografie kunnen verwerken. Als de activiteit van de eind gebruiker voornamelijk plaatsvindt tijdens de werk uren, kunt u de optimale prestaties voor de meeste gebruikers van de tijd garanderen. In het volgende diagram ziet u deze topologie.
 
 De resources van de toepassing moeten in elke geografie worden geïmplementeerd, waar u een substantiële gebruiks vraag hebt. Als uw toepassing bijvoorbeeld actief wordt gebruikt in de Verenigde Staten, moeten de Europese Unie en Zuid Azië-oost de toepassing worden geïmplementeerd in al deze geografische gebieden. De primaire data base moet dynamisch worden overgeschakeld van het ene geografie naar het volgende aan het einde van de werk uren. Deze methode wordt ' de zon volgen ' genoemd. De OLTP-werk belasting maakt altijd verbinding met de data base via de Read-Write-listener ** &lt; failover-group-name &gt; . database.Windows.net** (1). De alleen-lezen workload maakt rechtstreeks verbinding met de lokale data base met behulp van de server ** &lt; naam &gt; . database.Windows.net** (2) van de data baseserver. Traffic Manager is geconfigureerd met de [methode voor de route ring van prestaties](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Hiermee zorgt u ervoor dat het apparaat van de eind gebruiker is verbonden met de webservice in de dichtstbijzijnde regio. Traffic Manager moet worden ingesteld als de eindpunt bewaking is ingeschakeld voor elk eind punt van de webservice (3).
 
@@ -131,7 +131,7 @@ In het volgende diagram ziet u de nieuwe configuratie na de geplande failover:
 
 ![Scenario 3. Overgang van de primaire naar Europa-noord.](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-b.png)
 
-Als er zich een storing voordoet in Europa-noord bijvoorbeeld, wordt de failover van de automatische data base geïnitieerd door de failoverrelatie, waardoor de toepassing effectief wordt verplaatst naar de volgende regio voor planning (1).  In dat geval is de VS-Oost de enige resterende secundaire regio totdat Europa-noord weer online is. De overige twee regio's leveren de klanten in alle drie de geografische gebieden door rollen te scha kelen. Azure Logic Apps moet dienovereenkomstig worden aangepast. Omdat de resterende regio's extra gebruikers verkeer van Europa verkrijgen, worden de prestaties van de toepassing niet alleen beïnvloed door extra latentie, maar ook door een groter aantal eind gebruikers. Zodra de onderbreking in Europa-noord is verholpen, wordt de secundaire data base onmiddellijk gesynchroniseerd met de huidige primaire. Het volgende diagram illustreert een onderbreking in Europa-noord:
+Als er zich een storing voordoet in Europa-noord bijvoorbeeld, wordt de failover van de automatische data base geïnitieerd door de failoverrelatie, waardoor de toepassing effectief wordt verplaatst naar de volgende regio voor planning (1).  In dat geval is de VS-Oost de enige resterende secundaire regio totdat Europa-noord weer online is. De overige twee regio's leveren de klanten in alle drie de geografische gebieden door rollen te scha kelen. Azure Logic Apps moet dienovereenkomstig worden aangepast. Omdat de resterende regio's extra gebruikers verkeer van Europa verkrijgen, worden de prestaties van de toepassing niet alleen beïnvloed door extra latentie, maar ook door een verhoogd aantal verbindingen voor eind gebruikers. Zodra de onderbreking in Europa-noord is verholpen, wordt de secundaire data base onmiddellijk gesynchroniseerd met de huidige primaire. Het volgende diagram illustreert een onderbreking in Europa-noord:
 
 ![Scenario 3. Uitval in Europa-noord.](./media/designing-cloud-solutions-for-disaster-recovery/scenario3-c.png)
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793190"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321662"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -86,7 +86,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MariaDB levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
 
-Deze metrische gegevens worden berekend met `seconds_behind_master` behulp van de beschik bare metrische gegevens in de opdracht van `SHOW SLAVE STATUS` MariaDB.
+Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` beschik bare metrische gegevens in de opdracht van MariaDB `SHOW SLAVE STATUS` .
 
 Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
@@ -107,6 +107,9 @@ Meer informatie over het [stoppen van replicatie naar een replica](howto-read-re
 ### <a name="pricing-tiers"></a>Prijscategorieën
 
 Het lezen van replica's is momenteel alleen beschikbaar in de prijs Categorieën Algemeen en geoptimaliseerd voor geheugen.
+
+> [!NOTE]
+> De kosten voor het uitvoeren van de replica server zijn gebaseerd op de regio waarin de replica-server wordt uitgevoerd.
 
 ### <a name="master-server-restart"></a>Hoofd server opnieuw opstarten
 
@@ -149,7 +152,7 @@ De [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables
 
 Als u een van de bovenstaande para meters op de hoofd server wilt bijwerken, verwijdert u de replica servers, werkt u de parameter waarde op de Master bij en maakt u de replica's opnieuw.
 
-### <a name="other"></a>Overige
+### <a name="other"></a>Anders
 
 - Het maken van een replica van een replica wordt niet ondersteund.
 - In-Memory tabellen kunnen ertoe leiden dat replica's niet meer synchroon zijn. Dit is een beperking van de MariaDB-replicatie technologie.

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 5592a3c53a57e9cd96468bfca187e02faef28b05
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268504"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324093"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Deel 1: Schakel AD DS verificatie in voor uw Azure-bestands shares 
 
@@ -89,7 +89,18 @@ Eerst moet u de status van uw omgeving controleren. U moet in het bijzonder cont
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Een identiteit maken die het opslag account in uw AD hand matig weergeeft
 
-Als u dit account hand matig wilt maken, maakt u een nieuwe Kerberos-sleutel voor uw opslag account met behulp van `New-AzStorageAccountKey -KeyName kerb1` . Gebruik vervolgens die Kerberos-sleutel als wacht woord voor uw account. Deze sleutel wordt alleen gebruikt tijdens de installatie en kan niet worden gebruikt voor beheer-of gegevenslaag bewerkingen voor het opslag account. Wanneer u deze sleutel hebt, moet u een service-of computer account maken onder uw organisatie-eenheid. Gebruik de volgende specificatie (Vergeet niet om de voorbeeld tekst te vervangen door de naam van uw opslag account):
+Als u dit account hand matig wilt maken, maakt u een nieuwe Kerberos-sleutel voor uw opslag account. Gebruik vervolgens die Kerberos-sleutel als wacht woord voor uw account met de onderstaande Power shell-cmdlets. Deze sleutel wordt alleen gebruikt tijdens de installatie en kan niet worden gebruikt voor beheer-of gegevenslaag bewerkingen voor het opslag account. 
+
+```PowerShell
+# Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName kerb1
+Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
+```
+
+Wanneer u deze sleutel hebt, moet u een service-of computer account maken onder uw organisatie-eenheid. Gebruik de volgende specificatie (Vergeet niet om de voorbeeld tekst te vervangen door de naam van uw opslag account):
 
 SPN: ' CIFS/uw-Storage-account-name-hier. file. core. Windows. net ' wacht woord: Kerberos-sleutel voor uw opslag account.
 

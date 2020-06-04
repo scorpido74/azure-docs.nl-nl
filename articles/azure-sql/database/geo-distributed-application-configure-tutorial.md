@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043378"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324710"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Zelf studie: een geografisch gedistribueerde data base implementeren (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Een data base in SQL Database en client toepassing configureren voor failover naar een externe regio en een failover-plan testen. Procedures voor:
+Een data base in SQL Database en client toepassing configureren voor failover naar een externe regio en een failover-plan testen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 >
@@ -42,8 +42,8 @@ Als u de zelf studie wilt volt ooien, moet u ervoor zorgen dat u de volgende ite
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Een enkele data base in Azure SQL Database. Als u één gebruik wilt maken,
-  - [Portal](single-database-create-quickstart.md)
-  - [CLI](az-cli-script-samples-content-guide.md)
+  - [De Azure-Portal](single-database-create-quickstart.md)
+  - [De Azure CLI](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 > [!IMPORTANT]
 > Voer uit `az login` om u aan te melden bij Azure.
@@ -344,7 +344,7 @@ Een failover testen:
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 U kunt de rol van de server voor herstel na nood gevallen tijdens de test controleren met de volgende opdracht:
 
@@ -370,7 +370,7 @@ Een failover testen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een Azure SQL Database en toepassing geconfigureerd voor failover naar een externe regio en een failover-plan getest. U hebt geleerd hoe u:
+In deze zelf studie hebt u een data base in Azure SQL Database en een toepassing voor failover naar een externe regio geconfigureerd en een failover-plan getest. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ In deze zelf studie hebt u een Azure SQL Database en toepassing geconfigureerd v
 > - Een Java-toepassing uitvoeren om een query uit te voeren op een data base in SQL Database
 > - Testfailover
 
-Ga verder met de volgende zelf studie over het toevoegen van een door Azure SQL beheerd exemplaar aan een failovergroep:
+Ga door naar de volgende zelf studie over het toevoegen van een exemplaar van een door Azure SQL beheerd exemplaar aan een failovergroep:
 
 > [!div class="nextstepaction"]
-> [Een door Azure SQL beheerd exemplaar toevoegen aan een failovergroep](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Een exemplaar van een door Azure SQL beheerd exemplaar toevoegen aan een failovergroep](../managed-instance/failover-group-add-instance-tutorial.md)

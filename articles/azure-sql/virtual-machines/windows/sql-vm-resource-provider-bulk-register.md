@@ -13,15 +13,15 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219313"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338438"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Meerdere virtuele SQL-machines registreren in azure met de resource provider van de SQL-VM
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt beschreven hoe u uw SQL Server virtuele machines (Vm's) in bulk in azure registreert met de resource provider van de SQL-VM met behulp van de `Register-SqlVMs` Power shell-cmdlet.
 
@@ -35,7 +35,7 @@ Zie [SQL VM resource provider](sql-vm-resource-provider-register.md)voor meer in
 
 Als u uw SQL Server-VM wilt registreren bij de resource provider, hebt u het volgende nodig: 
 
-- Een [Azure-abonnement](https://azure.microsoft.com/free/) dat is [geregistreerd bij de resource provider](sql-vm-resource-provider-register.md#register-subscription-with-rp) en geen geregistreerde SQL Server virtuele machines bevat. 
+- Een [Azure-abonnement](https://azure.microsoft.com/free/) dat is [geregistreerd bij de resource provider](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) en geen geregistreerde SQL Server virtuele machines bevat. 
 - De client referenties die worden gebruikt om de virtuele machines te registreren, bestaan in een van de volgende RBAC-rollen: Inzender, **Inzender**of **eigenaar**van de **virtuele machine**. 
 - De nieuwste versie van [AZ Power shell](/powershell/azure/new-azureps-module-az). 
 - De meest recente versie van [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
@@ -78,7 +78,7 @@ Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
 Voorbeelduitvoer: 
 
 ```
-Number of Subscriptions registration failed for 
+Number of subscriptions registration failed for 
 because you do not have access or credentials are wrong: 1
 Total VMs Found: 10
 VMs Already registered: 1
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-single-resource-group"></a>Specifieke Vm's registreren in één resource groep
+## <a name="register-specific-vms-in-a-single-resource-group"></a>Specifieke Vm's registreren in één resource groep
 
 Gebruik de volgende cmdlet om specifieke SQL Server virtuele machines in één resource groep te registreren:
 

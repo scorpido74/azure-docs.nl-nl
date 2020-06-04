@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: eb5e15f5387628fea293c767202ece77b14f656c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113338"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344999"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integration Runtime in Azure Data Factory 
 
@@ -30,6 +30,8 @@ De Integratie Runtime (IR) is de rekeninfrastructuur die Azure Data Factory gebr
 - **SSIS-pakketuitvoering**: systeemeigen SSIS-pakketten (SQL Server Integration Services) uitvoeren in een beheerde Azure-rekenomgeving.
 
 In de Data Factory definieert een activiteit de actie die moet worden uitgevoerd. Een gekoppelde service definieert een doelgegevensarchief of een rekenservice. Een Integration Runtime vormt de brug tussen de activiteit en de gekoppelde services.  Er wordt naar verwezen door de gekoppelde service of activiteit, en biedt de reken omgeving waar de activiteit wordt uitgevoerd of verzonden. Op deze manier kan de activiteit optimaal worden uitgevoerd in de regio die het dichtst mogelijk bij het doelgegevensarchief of de rekenservice ligt, terwijl wordt voldaan aan vereisten rondom beveiliging en naleving.
+
+Integration Runtimes kunnen worden gemaakt in de Azure Data Factory UX via de [beheer hub](author-management-hub.md) en alle activiteiten, gegevens sets of data stromen die ernaar verwijzen.
 
 ## <a name="integration-runtime-types"></a>Typen Integration Runtime
 

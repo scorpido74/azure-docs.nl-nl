@@ -1,6 +1,6 @@
 ---
 title: Over clouddatabases gedistribueerde transacties
-description: Overzicht van Elastic Database transacties met Azure SQL Database
+description: Overzicht van Elastic Database transacties met Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
@@ -11,30 +11,30 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c1ecd5e66986df6affc186770b9da0decf2e92c6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cd0116a417d2710d330c4be406a5d9d770f76461
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045233"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344540"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Over clouddatabases gedistribueerde transacties
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Met Elastic data base-trans acties voor Azure SQL Database kunt u trans acties uitvoeren die meerdere data bases omvatten in SQL Database. Elastic data base-trans acties voor SQL Database zijn beschikbaar voor .NET-toepassingen met behulp van ADO .NET en kunnen worden geïntegreerd met de bekende programmeer ervaring met behulp van de [System. Trans Action](https://msdn.microsoft.com/library/system.transactions.aspx) -klassen. Zie [.NET Framework 4.6.1 (web installer)](https://www.microsoft.com/download/details.aspx?id=49981)om de tape wisselaar op te halen.
 
-On-premises, een scenario dat doorgaans vereist is voor het uitvoeren van micro soft Distributed Transaction Coordinator (MSDTC). Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL Database. Toepassingen kunnen verbinding maken met alle SQL Database om gedistribueerde trans acties te starten. een van de data bases kan de gedistribueerde trans actie transparant coördineren, zoals in de volgende afbeelding wordt weer gegeven.
+In een on-premises-scenario moet micro soft Distributed Transaction Coordinator (MSDTC) meestal worden uitgevoerd. Omdat MSDTC niet beschikbaar is voor platform-as-a-service-toepassingen in azure, is de mogelijkheid om gedistribueerde trans acties te coördineren, nu rechtstreeks geïntegreerd in SQL Database. Toepassingen kunnen verbinding maken met elke data base in SQL Database om gedistribueerde trans acties te starten. een van de data bases kan de gedistribueerde trans actie transparant coördineren, zoals in de volgende afbeelding wordt weer gegeven.
 
   ![Gedistribueerde trans acties met Azure SQL Database met Elastic data base-trans acties ][1]
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
-Met Elastic data base-trans acties voor SQL Database kunnen toepassingen atomische wijzigingen aanbrengen in de gegevens die zijn opgeslagen in verschillende SQL-data bases. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring met T-SQL is gepland voor een later tijdstip.  
-Elastische-database transacties zijn gericht op de volgende scenario's:
+Met Elastic data base-trans acties voor SQL Database kunnen toepassingen atomische wijzigingen aanbrengen in de gegevens die zijn opgeslagen in verschillende data bases in SQL Database. Het voor beeld is gericht op de ontwikkelings ervaringen aan client zijde in C# en .NET. Een server ervaring met T-SQL is gepland voor een later tijdstip.  
+Elastische-database transacties richten zich op de volgende scenario's:
 
-* Toepassingen voor meerdere data bases in Azure: in dit scenario worden gegevens verticaal gepartitioneerd over verschillende data bases in SQL Database zodanig dat verschillende soorten gegevens zich op verschillende data bases bevinden. Voor sommige bewerkingen zijn wijzigingen in gegevens vereist die in twee of meer data bases worden bewaard. De toepassing maakt gebruik van Elastic data base-trans acties voor het coördineren van de wijzigingen in data bases en zorgt voor een atomiciteit.
-* Shard data base-toepassingen in Azure: in dit scenario gebruikt de gegevenslaag de [Elastic database-client bibliotheek](elastic-database-client-library.md) of zelf-sharding om de gegevens Horizon taal te partitioneren over veel data bases in SQL database. Eén prominente use case is de nood zaak om atomische wijzigingen uit te voeren voor een Shard multi tenant-toepassing wanneer de tenants worden gewijzigd. Denk na over een overdracht van de ene Tenant naar de andere, beide op verschillende data bases. Een tweede geval is een nauw keurige sharding om de capaciteits behoeften voor een grote Tenant in te passen die doorgaans in de praktijk impliceert dat sommige atomische bewerkingen moeten worden uitgerekt over verschillende data bases die voor dezelfde Tenant worden gebruikt. Een derde geval is atomische updates om te verwijzen naar gegevens die in data bases worden gerepliceerd. Atomische, transactionele bewerkingen op deze regels kunnen nu worden gecoördineerd over verschillende data bases met behulp van de preview-versie.
-  Elastische-database transacties gebruiken twee fasen door voeren om transactie atomiciteit in data bases te garanderen. Het is geschikt voor trans acties met minder dan 100 data bases tegelijk binnen één trans actie. Deze limieten worden niet afgedwongen, maar één moet rekening houden met prestaties en succes percentages voor Elastic data base-trans acties wanneer deze limieten worden overschreden.
+* Toepassingen voor meerdere data bases in Azure: in dit scenario worden gegevens verticaal gepartitioneerd over verschillende data bases in SQL Database zodanig dat verschillende soorten gegevens zich op verschillende data bases bevinden. Voor sommige bewerkingen zijn wijzigingen in gegevens vereist, die in twee of meer data bases worden bewaard. De toepassing maakt gebruik van Elastic data base-trans acties voor het coördineren van de wijzigingen in data bases en zorgt voor een atomiciteit.
+* Shard data base-toepassingen in Azure: in dit scenario gebruikt de gegevenslaag de [Elastic database-client bibliotheek](elastic-database-client-library.md) of zelf-sharding om de gegevens Horizon taal te partitioneren over veel data bases in SQL database. Eén prominente use case is de nood zaak om atomische wijzigingen uit te voeren voor een Shard multi tenant-toepassing wanneer de tenants worden gewijzigd. Denk na over een overdracht van de ene Tenant naar de andere, beide op verschillende data bases. Een tweede geval is een nauw keurige sharding voor de capaciteits behoeften van een grote Tenant, die op zijn beurt doorgaans impliceert dat sommige atomische bewerkingen moeten worden uitgerekt over verschillende data bases die worden gebruikt voor dezelfde Tenant. Een derde geval is atomische updates om te verwijzen naar gegevens die in data bases worden gerepliceerd. Atomische, transactionele bewerkingen op deze regels kunnen nu worden gecoördineerd over verschillende data bases met behulp van de preview-versie.
+  Elastische-database transacties gebruiken twee fasen door voeren om transactie atomiciteit in data bases te garanderen. Het is geschikt voor trans acties die minder dan 100 data bases tegelijk binnen één trans actie omvatten. Deze limieten worden niet afgedwongen, maar één moet rekening houden met prestaties en succes percentages voor Elastic data base-trans acties wanneer deze limieten worden overschreden.
 
 ## <a name="installation-and-migration"></a>Installatie en migratie
 
@@ -42,7 +42,7 @@ De mogelijkheden voor Elastic data base-trans acties in SQL Database worden gebo
 
 Na de installatie kunt u gebruikmaken van de Distributed Trans Action-Api's in System. Trans actions met verbindingen met SQL Database. Als u beschikt over bestaande MSDTC-toepassingen die gebruikmaken van deze Api's, bouwt u uw bestaande toepassingen voor .NET 4,6 opnieuw op nadat u het 4.6.1-Framework hebt geïnstalleerd. Als uw projecten .NET 4,6 doel hebben, gebruiken ze automatisch de bijgewerkte dll-bestanden van de nieuwe Framework-versie en gedistribueerde trans actie API-aanroepen in combi natie met verbindingen met SQL Database worden nu voltooid.
 
-Houd er rekening mee dat voor Elastic data base-trans acties geen MSDTC moet worden geïnstalleerd. In plaats daarvan worden Elastic data base-trans acties rechtstreeks beheerd door en binnen SQL Database. Hierdoor worden Cloud scenario's aanzienlijk vereenvoudigd omdat een implementatie van MSDTC niet nodig is om gedistribueerde trans acties met SQL Database te gebruiken. Sectie 4 bevat meer informatie over het implementeren van elastische database transacties en de vereiste .NET Framework samen met uw Cloud toepassingen naar Azure.
+Houd er rekening mee dat voor Elastic data base-trans acties geen MSDTC moet worden geïnstalleerd. In plaats daarvan worden Elastic data base-trans acties rechtstreeks beheerd door en binnen SQL Database. Dit vereenvoudigt de Cloud scenario's omdat een implementatie van MSDTC niet nodig is voor het gebruik van gedistribueerde trans acties met SQL Database. Sectie 4 bevat meer informatie over het implementeren van elastische database transacties en de vereiste .NET Framework samen met uw Cloud toepassingen naar Azure.
 
 ## <a name="development-experience"></a>Ontwikkel ervaring
 
@@ -101,7 +101,7 @@ In het volgende code voorbeeld ziet u deze aanpak. Hierbij wordt ervan uitgegaan
 
 Azure biedt verschillende aanbiedingen voor het hosten van .NET-toepassingen. Een vergelijking van de verschillende aanbiedingen is beschikbaar in [Azure app service, Cloud Services en virtual machines vergelijking](/azure/architecture/guide/technology-choices/compute-decision-tree). Als het gast besturingssysteem van de aanbieding kleiner is dan .NET 4.6.1 die vereist zijn voor elastische trans acties, moet u het gast besturingssysteem upgraden naar 4.6.1.
 
-Voor Azure-app services worden upgrades naar het gast besturingssysteem momenteel niet ondersteund. Voor Azure Virtual Machines meldt u zich aan bij de virtuele machine en voert u het installatie programma uit voor de nieuwste versie van .NET Framework. Voor Azure Cloud Services moet u de installatie van een nieuwere versie van .NET toevoegen aan de opstart taken van uw implementatie. De concepten en stappen worden beschreven in [.net installeren op een Cloud service functie](../../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+Voor Azure App Service worden upgrades naar het gast besturingssysteem momenteel niet ondersteund. Voor Azure Virtual Machines meldt u zich aan bij de virtuele machine en voert u het installatie programma uit voor de nieuwste versie van .NET Framework. Voor Azure Cloud Services moet u de installatie van een nieuwere versie van .NET toevoegen aan de opstart taken van uw implementatie. De concepten en stappen worden beschreven in [.net installeren op een Cloud service functie](../../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
 Houd er rekening mee dat het installatie programma voor .NET 4.6.1 mogelijk meer tijdelijke opslag vereist tijdens het Boots trap proces van Azure Cloud Services dan het installatie programma voor .NET 4,6. Om ervoor te zorgen dat de installatie is voltooid, moet u de tijdelijke opslag voor uw Azure-Cloud service verhogen in het bestand ServiceDefinition. csdef in het gedeelte LocalResources en de omgevings instellingen van de opstart taak, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -158,7 +158,8 @@ De volgende beperkingen zijn momenteel van toepassing op elastische data base-tr
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Neem voor vragen contact op met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) en voeg deze toe aan het [feedback forum van SQL database](https://feedback.azure.com/forums/217321-sql-database/).
+Neem voor vragen contact op met ons op de [pagina micro soft Q&een vraag voor SQL database](https://docs.microsoft.com/answers/topics/azure-sql-database.html). Voor functie aanvragen voegt u deze toe aan het [Feedback forum van SQL database](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-transactions-overview/distributed-transactions.png
+ 

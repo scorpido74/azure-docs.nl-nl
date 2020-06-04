@@ -11,12 +11,12 @@ ms.date: 05/18/2020
 ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7d370c49d4571b7b46d0d5db121955afd62fd45
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4af27d841beb21b364b499231a422112eb3ad78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664450"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324127"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Start partners van Azure Synapse Analytics
 
@@ -40,7 +40,6 @@ Azure Synapse Analytics-partners worden geleverd met diep gaande integratie Prog
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Vind inzicht in de detectie van schijven met de app voor gegevens visualisatie die door iedereen kan worden gebruikt. Met Qlik Sense kunnen iedereen in uw organisatie eenvoudig flexibele, interactieve visualisaties maken en zinvolle beslissingen nemen. |[Product pagina](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/qlik.qlik-sense) |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM is een op de cloud gebaseerd hulp programma voor gegevens modellering dat u een eenvoudige en handige manier biedt om uw data base overal op elke browser te ontwikkelen. Alle benodigde database regels en-objecten zoals database sleutels, schema's, indexen, kolom beperkingen en relaties. |[Product pagina](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend-Cloud**<br>Talend Cloud is een platform voor gegevens integratie voor ondernemingen waarmee u gegevens in de Cloud of on-premises kunt verbinden, benaderen en transformeren. Het is een integratie platform-as-a-Service (iPaaS) dat zorgt voor een brede connectiviteit, ingebouwde gegevens kwaliteit en systeem eigen ondersteuning voor de nieuwste big data-en Cloud technologieën. |[Product pagina](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Gebruik zoeken om gedetailleerde inzichten te verkrijgen uit miljarden rijen met gegevens, of laat AI inzicht krijgen in vragen die u mogelijk niet wilt vragen. ThoughtSpot helpt businesspeople om in enkele seconden verborgen inzichten in hun bedrijfs gegevens te vinden. Gebruik zoeken om uw gegevens te analyseren en geautomatiseerd inzicht te krijgen wanneer u ze nodig hebt.|[Product pagina](https://www.thoughtspot.com)<br>|
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Business Intelligence-partners](sql-data-warehouse-partner-business-intelligence.md), [partners voor gegevens integratie](sql-data-warehouse-partner-data-integration.md)en [Gegevensbeheer partners](sql-data-warehouse-partner-data-management.md)voor meer informatie over een aantal van onze andere partners.

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686500"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322087"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Trans formatie selecteren in gegevens stroom toewijzen
 
@@ -39,7 +39,10 @@ Vaste toewijzingen kunnen worden gebruikt om een subkolom van een hiërarchische
 
 ## <a name="rule-based-mapping"></a>Toewijzing op basis van een regel
 
-Als u veel kolommen tegelijk wilt toewijzen of geplaatste kolommen downstream wilt gebruiken, gebruikt u toewijzing op basis van regels om uw toewijzingen te definiëren met behulp van kolom patronen. Overeenkomst op basis van `name`de `type`kolommen `stream`,, `position` en. U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard ingesteld op een op een regel gebaseerde toewijzing die overeenkomt met elke kolom en de naam die is gegenereerd, wordt uitgevoerd. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
+
+Als u veel kolommen tegelijk wilt toewijzen of geplaatste kolommen downstream wilt gebruiken, gebruikt u toewijzing op basis van regels om uw toewijzingen te definiëren met behulp van kolom patronen. Overeenkomst op basis van `name` de `type` kolommen,, en `stream` `position` . U kunt een combi natie van vaste en op regels gebaseerde toewijzingen hebben. Standaard worden alle projecties met meer dan 50 kolommen standaard ingesteld op een op een regel gebaseerde toewijzing die overeenkomt met elke kolom en de naam die is gegenereerd, wordt uitgevoerd. 
 
 Als u een op een regel gebaseerde toewijzing wilt toevoegen, klikt u op **toewijzing toevoegen** en selecteert u **toewijzing op basis van een regel**.
 
@@ -49,7 +52,7 @@ Voor elke op een regel gebaseerde toewijzing zijn twee invoer waarden vereist: d
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-mapping.png "Toewijzing op basis van een regel")
 
-Gebruik `$$` syntaxis om te verwijzen naar de invoer naam van een overeenkomende kolom. Gebruik de bovenstaande afbeelding als voor beeld. Stel dat een gebruiker wilt zoeken op alle teken reeks kolommen waarvan de namen korter zijn dan zes tekens. Als de naam van één binnenkomende `test`kolom is opgegeven `$$ + '_short'` , wordt de naam `test_short`van de kolom gewijzigd in de expressie. Als dat de enige toewijzing is die bestaat, worden alle kolommen verwijderd die niet aan de voor waarde voldoen.
+Gebruik `$$` syntaxis om te verwijzen naar de invoer naam van een overeenkomende kolom. Gebruik de bovenstaande afbeelding als voor beeld. Stel dat een gebruiker wilt zoeken op alle teken reeks kolommen waarvan de namen korter zijn dan zes tekens. Als de naam van één binnenkomende kolom is opgegeven `test` , `$$ + '_short'` wordt de naam van de kolom gewijzigd in de expressie `test_short` . Als dat de enige toewijzing is die bestaat, worden alle kolommen verwijderd die niet aan de voor waarde voldoen.
 
 Patronen komen overeen met zowel gedrijfde als gedefinieerde kolommen. Als u wilt zien welke gedefinieerde kolommen worden toegewezen door een regel, klikt u op het pictogram bril naast de regel. Controleer uw uitvoer met behulp van de voorbeeld gegevens.
 
@@ -59,9 +62,9 @@ Als u op het pictogram met de pijl omlaag klikt, kunt u een voor waarde voor reg
 
 ![toewijzing op basis van een regel](media/data-flow/regex-matching.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met `(r)` het regex-patroon of een kolom naam die een kleine letter r bevat. Net als bij standaard toewijzing op basis van regels worden alle overeenkomende kolommen gewijzigd aan de hand van de voor waarde `$$` aan de rechter kant met de syntaxis.
+Het bovenstaande voor beeld komt overeen met het regex-patroon `(r)` of een kolom naam die een kleine letter r bevat. Net als bij standaard toewijzing op basis van regels worden alle overeenkomende kolommen gewijzigd aan de hand van de voor waarde aan de rechter kant met de `$$` syntaxis.
 
-Als u meerdere regex-overeenkomsten in uw kolom naam hebt, kunt u verwijzen naar specifieke overeenkomsten `$n` waarbij ' n ' verwijst naar de overeenkomst. Bijvoorbeeld: ' $2 ' verwijst naar de tweede overeenkomst in een kolom naam.
+Als u meerdere regex-overeenkomsten in uw kolom naam hebt, kunt u verwijzen naar specifieke overeenkomsten waarbij `$n` ' n ' verwijst naar de overeenkomst. Bijvoorbeeld: ' $2 ' verwijst naar de tweede overeenkomst in een kolom naam.
 
 ### <a name="rule-based-hierarchies"></a>Op regels gebaseerde hiërarchieën
 
@@ -69,11 +72,11 @@ Als uw gedefinieerde projectie een hiërarchie heeft, kunt u toewijzing op basis
 
 ![toewijzing op basis van een regel](media/data-flow/rule-based-hierarchy.png "Toewijzing op basis van een regel")
 
-Het bovenstaande voor beeld komt overeen met alle subkolomsen van `a`een complexe kolom. `a`bevat twee subkoloms `b` en `c`. Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is. `$$`
+Het bovenstaande voor beeld komt overeen met alle subkolomsen van een complexe kolom `a` . `a`bevat twee subkoloms `b` en `c` . Het uitvoer schema bevat twee kolommen `b` en `c` de voor waarde ' name als ' is `$$` .
 
 ### <a name="parameterization"></a>Parameterisering
 
-U kunt kolom namen para meters met toewijzing op basis van een regel. Gebruik het sleutel ```name``` woord om binnenkomende kolom namen te vergelijken met een para meter. Als u bijvoorbeeld een para meter ```mycolumn```voor de gegevens stroom hebt, kunt u een regel maken die overeenkomt met een kolom naam die ```mycolumn```gelijk is aan. U kunt de naam van de overeenkomende kolom wijzigen in een in code vastgelegde teken reeks, zoals ' bedrijfs sleutel ', en ernaar verwijzen. In dit voor beeld is ```name == $mycolumn``` de voor waarde matching en de naam voorwaarde is bedrijfs sleutel. 
+U kunt kolom namen para meters met toewijzing op basis van een regel. Gebruik het sleutel woord ```name``` om binnenkomende kolom namen te vergelijken met een para meter. Als u bijvoorbeeld een para meter voor de gegevens stroom hebt ```mycolumn``` , kunt u een regel maken die overeenkomt met een kolom naam die gelijk is aan ```mycolumn``` . U kunt de naam van de overeenkomende kolom wijzigen in een in code vastgelegde teken reeks, zoals ' bedrijfs sleutel ', en ernaar verwijzen. In dit voor beeld is de voor waarde matching ```name == $mycolumn``` en de naam voorwaarde is bedrijfs sleutel. 
 
 ## <a name="auto-mapping"></a>Automatische toewijzing
 

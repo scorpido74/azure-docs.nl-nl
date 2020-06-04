@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b480dca46e544caabdf3be62b57b38652ee973ae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096619"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337985"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migreren naar een Azure-resource bewerkings sleutel
 
@@ -61,12 +61,12 @@ U kunt het migratie proces vertragen door het venster af te sluiten. U wordt reg
 
 ### <a name="before-you-migrate"></a>Voordat u migreert
 
-* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis (`F0`) gebruiken wanneer u Luis gebruikt.
+* **Vereist**, u moet een Azure- [abonnement](https://azure.microsoft.com/free/)hebben. Voor een deel van het abonnements proces zijn facturerings gegevens vereist. U kunt echter de prijs categorie gratis ( `F0` ) gebruiken wanneer u Luis gebruikt.
 * U **kunt ook**een back-up maken van de apps uit de lijst met apps van de Luis-portal door elke app te exporteren of de export- [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)te gebruiken.
 * U **kunt desgewenst**de collaborator's-lijst van elke app opslaan. Deze e-mail lijst wordt aangeboden als onderdeel van het migratie proces.
 
 
-Het **ontwerpen van uw Luis-app is gratis**, wat `F0` wordt aangegeven door de laag. Meer informatie [over prijs categorieën](luis-limits.md#key-limits).
+Het **ontwerpen van uw Luis-app is gratis**, wat wordt aangegeven door de `F0` laag. Meer informatie [over prijs categorieën](luis-limits.md#key-limits).
 
 Als u geen Azure-abonnement hebt, [meldt u zich](https://azure.microsoft.com/free/)aan.
 
@@ -82,7 +82,7 @@ U kunt meer ontwerp resources maken en toewijzen via de pagina **Manage-> Azure-
 
 U kunt mede werkers toevoegen aan de ontwerp bron vanuit het _Azure Portal_op de pagina **Access Control (IAM)** voor die resource. Zie [toegang tot Inzender toevoegen](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)voor meer informatie.
 
-|Portal|Doel|
+|Portal|Functie|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* Voor spelling-en ontwerp resources maken.<br>* Mede werkers toewijzen.|
 |[LUIS](https://www.luis.ai)|* Migreren naar nieuwe ontwerp resources.<br>* Het toewijzen of opheffen van voor spelling-en ontwerp resources voor apps op de pagina **beheer van > Azure-resources** .|

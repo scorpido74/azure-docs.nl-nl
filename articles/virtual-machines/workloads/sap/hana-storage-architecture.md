@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/20/2020
+ms.date: 06/01/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a12c454906d6c6ff702b7f635a91361bbe3994c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d790bf20da8cc0d10c8fa47d750014de4f3d285
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77616893"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331726"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Opslag architectuur van SAP HANA (grote exemplaren)
 
@@ -36,8 +36,6 @@ Zie de volgende tabel voor meer informatie over de opslag toewijzing. De tabel b
 | S192 | 4.608 GB | 1.024 GB | 1.536 GB | 1.024 GB |
 | S192m | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S192xm |  11.520 GB |  1.536 GB |  1.792 GB |  1.536 GB |
-| S224 |  4.224 GB |  512 GB |  1.024 GB |  512 GB |
-| S224m |  8.448 GB |  512 GB |  1.024 GB |  512 GB |
 | S384 | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S384m | 12.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
 | S384xm | 16.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
@@ -47,6 +45,35 @@ Zie de volgende tabel voor meer informatie over de opslag toewijzing. De tabel b
 | S768m | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
 | S768xm | 40.960 GB | 6.144 GB | 4.096 GB | 6.144 GB |
 | S960m | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
+
+Meer recente Sku's van HANA grote instanties worden geleverd met opslag configuraties die er ongeveer als volgt uitzien:
+
+| De SKU voor grote instanties van HANA | Hana/gegevens | Hana/logboek | Hana/gedeeld | Hana/logbackups |
+| --- | --- | --- | --- | --- |
+| S224 | 4.224 GB | 512 GB | 1.024 GB | 512 GB |
+| S224oo | 6.336 GB | 512 GB | 1.024 GB | 512 GB |
+| S224m | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S224om | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S224ooo | 10.560 GB | 512 GB | 1.024 GB | 512 GB |
+| S224oom | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S448 | 8.448 GB | 512 GB | 1.024 GB | 512 GB |
+| S448oo | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S448m | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S448om | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S448ooo | 21.120 GB | 512 GB | 1.024 GB | 512 GB |
+| S448oom | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672 | 12.672 GB | 512 GB | 1.024 GB | 512 GB |
+| S672oo | 19.008 GB | 512 GB | 1.024 GB | 512 GB |
+| S672m | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672om | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S672ooo | 31.680 GB | 512 GB | 1.024 GB | 512 GB |
+| S672oom | 38.016 GB | 512 GB | 1.024 GB | 512 GB |
+| S896 | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
+| S896oo | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
+| S896m | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
+| S896om | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
+| S896ooo | 42.240 GB | 512 GB | 1.024 GB | 512 GB |
+| S896oom | 50.688 GB | 512 GB | 1.024 GB | 512 GB |
 
 
 De daad werkelijke geïmplementeerde volumes kunnen variëren op basis van de implementatie en het hulp programma dat wordt gebruikt om de volume grootten weer te geven.
@@ -96,7 +123,7 @@ De opslag die wordt gebruikt voor de HANA grote instantie gebruikt transparante 
 Met de klasse van type I van Sku's wordt het volume waarop de opstart-LUN is opgeslagen, versleuteld. In revisie 3 HANA grote instantie tempels, met behulp van de klasse type II van Sku's van HANA grote instantie, moet u de opstart-LUN versleutelen met OS-methoden. In revisie 4 HANA grote instantie stem pels, met behulp van type II-eenheden het volume waarop de opstart-LUN is opgeslagen en is ook standaard versleuteld. 
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>Vereiste instellingen voor grotere HANA-instanties in HANA grote instanties
-De opslag die wordt gebruikt in HANA grote instanties heeft een beperking voor de bestands grootte. De limiet voor de [grootte is 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) per bestand. In tegens telling tot beperkingen van de bestands grootte in de EXT3-bestands systemen is HANA niet impliciet van de opslag beperking die wordt afgedwongen door de HANA-opslag voor grote instanties. Als gevolg van een resultaat van HANA wordt niet automatisch een nieuw gegevens bestand gemaakt wanneer de maximale bestands grootte van 16TB is bereikt. Aangezien HANA probeert het bestand groter dan 16 TB te laten groeien, worden fouten gerapporteerd en de index server wordt aan het einde gecrasht.
+De opslag die wordt gebruikt in HANA grote instanties heeft een beperking voor de bestands grootte. De limiet voor de [grootte is 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) per bestand. In tegens telling tot beperkingen van de bestands grootte in de EXT3-bestands systemen is HANA niet impliciet van de opslag beperking die wordt afgedwongen door de HANA-opslag voor grote instanties. Als gevolg van een resultaat van HANA wordt niet automatisch een nieuw gegevens bestand gemaakt wanneer de maximale bestands grootte van 16 TB is bereikt. Aangezien HANA probeert het bestand groter dan 16 TB te laten groeien, worden fouten gerapporteerd en de index server wordt aan het einde gecrasht.
 
 > [!IMPORTANT]
 > U moet de volgende para meters in het bestand Global. ini van HANA instellen om te voor komen dat HANA probeert gegevens bestanden te verg Roten dan de bestands grootte limiet van 16 TB van HANA grote exemplaren.

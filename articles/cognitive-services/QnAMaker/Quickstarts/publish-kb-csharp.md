@@ -4,13 +4,13 @@ description: Met deze op C# REST gebaseerde Snelstartgids publiceert u uw Knowle
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851705"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342745"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Snelstart: Een knowledge base publiceren in QnA Maker met behulp van C#
 
@@ -23,7 +23,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 
 * De meest recente [**Visual Studio Community edition**](https://www.visualstudio.com/downloads/).
 * U moet een [QnA Maker-service](../How-To/set-up-qnamaker-service-azure.md)hebben. Als u de sleutel en het eind punt (inclusief de resource naam) wilt ophalen, selecteert u **Quick** start voor uw resource in het Azure Portal.
-* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in `kbid` de query teken reeks parameter, zoals hieronder wordt weer gegeven.
+* QnA Maker Knowledge Base-ID (KB) gevonden in de URL in de `kbid` query teken reeks parameter, zoals hieronder wordt weer gegeven.
 
     ![Id voor knowledge base in QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -35,7 +35,7 @@ In deze snelstart worden QnA Maker-API's aangeroepen:
 ## <a name="create-knowledge-base-project"></a>Een project met knowledge base maken
 
 1. Open Visual Studio 2019 Community Edition.
-1. Maak een nieuw **console-app (.net core)-** project en noem `QnaMakerQuickstart`het project. Accepteer de standaardwaarden voor de overige instellingen.
+1. Maak een nieuw **console-app (.net core)-** project en noem het project `QnaMakerQuickstart` . Accepteer de standaardwaarden voor de overige instellingen.
 
 ## <a name="add-required-dependencies"></a>Vereiste afhankelijkheden toevoegen
 

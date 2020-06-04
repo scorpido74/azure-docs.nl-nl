@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 75c25454451b733870f8a674b292cd131454f4d2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3f4d49b42fa4b978db93fd3fee08e3f9017667e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045884"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342847"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren op virtuele machines van Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Met betalen per gebruik-licenties is een FCI (failover cluster instance) van SQL
 
 Als u Enterprise Agreement met Software Assurance hebt, kunt u één gratis passieve FCI-knoop punt voor elk actief knoop punt gebruiken. Als u gebruik wilt maken van dit voor deel in azure, gebruikt u BYOL VM-installatie kopieën en gebruikt u dezelfde licentie op de actieve en passieve knoop punten van de FCI. Zie [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx)voor meer informatie.
 
-Zie aan de [slag met SQL vm's](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms)om betalen per gebruik en BYOL-licenties te vergelijken voor SQL Server op virtuele machines van Azure.
+Zie aan de [slag met SQL vm's](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)om betalen per gebruik en BYOL-licenties te vergelijken voor SQL Server op virtuele machines van Azure.
 
 Zie [prijzen](https://www.microsoft.com/sql-server/sql-server-2017-pricing)voor volledige informatie over licentie SQL Server.
 
@@ -175,7 +175,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
 
    Open op elke virtuele machine deze poorten op het Windows Firewall:
 
-   | Doel | TCP-poort | Opmerkingen
+   | Functie | TCP-poort | Opmerkingen
    | ------ | ------ | ------
    | SQL Server | 1433 | Normale poort voor standaard exemplaren van SQL Server. Als u een installatie kopie uit de galerie hebt gebruikt, wordt deze poort automatisch geopend.
    | Statustest | 59999 | Een open TCP-poort. Configureer in een latere stap de load balancer [Health probe](#probe) en het cluster om deze poort te gebruiken.  

@@ -1,7 +1,7 @@
 ---
 title: Beheren na migratie
 titleSuffix: Azure SQL Database
-description: Meer informatie over het beheren van één en gepoolde data base na migratie naar Azure SQL Database.
+description: Meer informatie over het beheren van uw afzonderlijke en gepoolde data bases na de migratie naar Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193933"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322666"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Als u van de traditionele zelf beheerde, zelf beheerd omgeving naar een PaaS-omgeving gaat, kan het om de eerste stap gaan. Als een app-ontwikkelaar of een DBA wilt u weten wat de kern mogelijkheden van het platform zijn die u helpen uw toepassing beschikbaar te houden, te presen teren, veilig en robuust-altijd. In dit artikel wordt ernaar gestreefd dat. In het artikel worden de resources beknopt ingedeeld en krijgt u enkele richt lijnen voor het beste gebruik van de belangrijkste mogelijkheden van SQL Database met één en gegroepeerde Data bases om te beheren en uw toepassing efficiënt te laten werken en optimale resultaten te krijgen in de Cloud. Een typische doel groep voor dit artikel is de gebruikers die:
+Als u van de traditionele zelf beheerde, zelf beheerd omgeving naar een PaaS-omgeving gaat, kan het om de eerste stap gaan. Als een app-ontwikkelaar of een DBA wilt u weten wat de kern mogelijkheden van het platform zijn die u helpen uw toepassing beschikbaar te houden, te presen teren, veilig en robuust-altijd. In dit artikel wordt ernaar gestreefd dat. In het artikel worden de resources beknopt ingedeeld en krijgt u enkele richt lijnen voor het beste gebruik van de belangrijkste mogelijkheden van Azure SQL Database met één en gegroepeerde Data bases om te beheren en uw toepassing efficiënt te laten werken en optimale resultaten te krijgen in de Cloud. Een typische doel groep voor dit artikel is de gebruikers die:
 
 - Evalueren van de migratie van hun toepassing (en) naar Azure SQL Database-moderniseren van uw toepassing (en).
 - Zijn in het proces voor het migreren van hun toepassings-en migratie scenario.
@@ -30,7 +30,7 @@ Als u van de traditionele zelf beheerde, zelf beheerd omgeving naar een PaaS-omg
 
 In dit artikel worden enkele van de belangrijkste kenmerken van Azure SQL Database als platform beschreven die u gemakkelijk kunt gebruiken bij het werken met afzonderlijke data bases en gepoolde data bases in elastische Pools. Dit zijn de volgende:
 
-- Data base bewaken met behulp van de Azure Portal
+- Databases bewaken via de Azure-portal
 - Bedrijfscontinuïteit en herstel na noodgeval (BCDR)
 - Beveiliging en naleving
 - Intelligente database bewaking en onderhoud
@@ -90,7 +90,7 @@ Zie voor meer informatie over herstel na nood gevallen: [Azure SQL database hers
 
 SQL Database is zeer serieus beveiligd en privacy. Beveiliging binnen SQL Database is beschikbaar op het niveau van de data base en op platform niveau en is het meest geschikt wanneer het in meerdere lagen wordt ingedeeld. Op elke laag krijgt u de controle en optimale beveiliging voor uw toepassing. De lagen zijn:
 
-- Identiteits & authenticatie ([SQL-verificatie en Azure Active Directory [Aad]-verificatie](logins-create-manage.md)).
+- Identiteits & authenticatie ([SQL-verificatie en Azure Active Directory [Azure AD]-verificatie](logins-create-manage.md)).
 - Bewakings activiteit ([controle](../../azure-sql/database/auditing-overview.md) en [detectie van bedreigingen](threat-detection-configure.md)).
 - Het beveiligen van werkelijke gegevens ([transparent Data Encryption [TDe]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) en [Always encrypted [ae]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Toegang tot gevoelige en beschermde gegevens beheren ([beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) en [dynamische gegevens maskering](/sql/relational-databases/security/dynamic-data-masking)).
@@ -104,13 +104,13 @@ Er zijn twee verificatie methoden beschikbaar in SQL Database:
 - [Azure Active Directory-verificatie](authentication-aad-overview.md)
 - [SQL-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. AAD ondersteunt [MFA (multi-factor Authentication)](authentication-mfa-ssms-overview.md) en met een [paar klikken](../../active-directory/hybrid/how-to-connect-install-express.md) Aad kunnen worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde server. Hierdoor kunnen SQL Database en SQL Data Warehouse multi-factor Authentication-en gast gebruikers accounts binnen een Azure AD-domein aanbieden. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
+De traditionele Windows-verificatie wordt niet ondersteund. Azure Active Directory (Azure AD) is een gecentraliseerde service voor identiteits-en toegangs beheer. Zo kunt u eenvoudig een eenmalige aanmelding (SSO) voor alle mede werkers in uw organisatie bieden. Dit betekent dat de referenties worden gedeeld in alle Azure-Services voor een eenvoudigere verificatie. Azure AD biedt ondersteuning voor [azure multi-factor Authentication](authentication-mfa-ssms-overview.md) en met een [paar klikken](../../active-directory/hybrid/how-to-connect-install-express.md) Azure AD kan worden geïntegreerd met Windows Server Active Directory. SQL-verificatie werkt precies zoals u deze in het verleden hebt gebruikt. U geeft een gebruikers naam en wacht woord op en u kunt gebruikers verifiëren voor elke Data Base op een bepaalde server. Op deze manier kunnen SQL Database en SQL Data Warehouse Multi-Factor Authentication-en gast gebruikers accounts binnen een Azure AD-domein aanbieden. Als u al een on-premises Active Directory hebt, kunt u de adres lijst met Azure Active Directory om uw directory uit te breiden naar Azure.
 
 |**Als u...**|**SQL Database/SQL Data Warehouse**|
 |---|---|
-|Geen gebruik van Azure Active Directory (AD) in azure|[SQL-verificatie](security-overview.md) gebruiken|
+|Geen gebruik van Azure Active Directory (Azure AD) in azure|[SQL-verificatie](security-overview.md) gebruiken|
 |On-premises AD gebruiken op SQL Server|Vervoer [AD met Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)en gebruik Azure AD-verificatie. Met deze kunt u eenmalige aanmelding gebruiken.|
-|Multi-factor Authentication (MFA) moet worden afgedwongen|Vereis MFA als beleid via [voorwaardelijke toegang van micro soft](conditional-access-configure.md)en gebruik [Azure AD Universal-verificatie met MFA-ondersteuning](authentication-mfa-ssms-overview.md).|
+|Multi-Factor Authentication moet worden afgedwongen|Multi-Factor Authentication als beleid vereisen via [voorwaardelijke toegang van micro soft](conditional-access-configure.md)en [Azure AD Universal-verificatie gebruiken met multi-factor Authentication ondersteuning](authentication-mfa-ssms-overview.md).|
 |Gast accounts van micro soft-accounts (live.com, outlook.com) of andere domeinen (gmail.com) hebben|Gebruik [Azure AD Universal-verificatie](authentication-mfa-ssms-overview.md) in SQL database/Data Warehouse, dat gebruikmaakt van [Azure AD B2B-samen werking](../../active-directory/b2b/what-is-b2b.md).|
 |Worden aangemeld bij Windows met uw Azure AD-referenties van een federatief domein|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
 |Worden aangemeld bij Windows met behulp van referenties van een domein dat niet federatief is met Azure|[Geïntegreerde Azure AD-verificatie](authentication-aad-configure.md)gebruiken.|
@@ -170,7 +170,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Kenmerken**|**Altijd versleuteld**|**Transparante gegevensversleuteling**|
 |---|---|---|
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
-|**De server kan toegang krijgen tot gevoelige gegevens**|No|Ja, omdat versleuteling voor de Data-at-rest is|
+|**De server kan toegang krijgen tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
 |**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|databaseniveau|
@@ -211,13 +211,13 @@ In het volgende diagram ziet u de opties voor de sleutel opslag voor de kolom ho
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Hoe kan ik het verkeer tussen mijn organisatie en SQL Database optimaliseren en beveiligen
 
-Het netwerk verkeer tussen uw organisatie en SQL Database wordt doorgaans gerouteerd via het open bare netwerk. Als u er echter voor kiest om dit pad te optimaliseren en het veiliger te maken, kunt u in Express route kijken. Met Express route kunt u uw bedrijfs netwerk uitbreiden naar het Azure-platform via een particuliere verbinding. Door dit te doen, gaat u niet via het open bare Internet. U krijgt ook betere beveiliging, betrouw baarheid en optimalisatie van route ring die worden omgezet naar lagere netwerk latenties en veel snellere snelheden dan u normaal gesp roken zou doen via het open bare Internet. Als u van plan bent een aanzienlijk deel van gegevens over te brengen tussen uw organisatie en Azure, kunt u met Express route kosten voordelen opleveren. U kunt kiezen uit drie verschillende connectiviteits modellen voor de verbinding tussen uw organisatie en Azure:
+Het netwerk verkeer tussen uw organisatie en SQL Database wordt doorgaans gerouteerd via het open bare netwerk. Als u ervoor kiest om dit pad te optimaliseren en het veiliger te maken, kunt u ook naar Azure ExpressRoute kijken. Met ExpressRoute kunt u uw bedrijfs netwerk uitbreiden naar het Azure-platform via een particuliere verbinding. Door dit te doen, gaat u niet via het open bare Internet. U krijgt ook betere beveiliging, betrouw baarheid en optimalisatie van route ring die worden omgezet naar lagere netwerk latenties en veel snellere snelheden dan u normaal gesp roken zou doen via het open bare Internet. Als u van plan bent een aanzienlijk deel van gegevens over te brengen tussen uw organisatie en Azure, kunt u met ExpressRoute kosten voordelen opleveren. U kunt kiezen uit drie verschillende connectiviteits modellen voor de verbinding tussen uw organisatie en Azure:
 
 - [Co-locatie van Cloud Exchange](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-any](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Punt-naar-punt](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Met Express route kunt u ook Maxi maal twee keer zoveel bandbreedte limieten aanschaffen als u wilt. Het is ook mogelijk om connectiviteit tussen regio's te configureren met behulp van Express route. Zie voor een overzicht van de connectiviteits providers van het bedrijf: [Express route-partners en peering-locaties](../../expressroute/expressroute-locations.md). In de volgende artikelen wordt een gedetailleerde beschrijving gegeven van Express route:
+Met ExpressRoute kunt u ook tot twee maal de limiet voor de band breedte die u aanschaft, opwaarderen. Het is ook mogelijk om connectiviteit tussen regio's te configureren met behulp van ExpressRoute. Zie voor een lijst met ExpressRoute-connectiviteits providers: [ExpressRoute-partners en peering-locaties](../../expressroute/expressroute-locations.md). In de volgende artikelen wordt een gedetailleerde beschrijving gegeven van Express route:
 
 - [Inleiding op Express route](../../expressroute/expressroute-introduction.md)
 - [Vereisten](../../expressroute/expressroute-prerequisites.md)
@@ -237,7 +237,7 @@ Wanneer u uw Data Base naar SQL Database hebt gemigreerd, kunt u uw data base be
 
 ### <a name="performance-monitoring-and-optimization"></a>Prestaties bewaken en optimaliseren
 
-Met query performance Insights kunt u op maat gemaakte aanbevelingen voor uw data base-workload krijgen zodat uw toepassingen op een optimaal niveau kunnen blijven werken. U kunt deze ook zo instellen dat deze aanbevelingen automatisch worden toegepast en u hoeft geen onderhouds taken uit te voeren. Met Index Advisor kunt u automatisch index aanbevelingen implementeren op basis van uw workload. dit wordt automatisch afstemmen genoemd. De aanbevelingen worden ontwikkeld om de werk belasting van uw toepassing te wijzigen zodat u de meest relevante suggesties krijgt. U krijgt ook de mogelijkheid om deze aanbevelingen hand matig te controleren en deze op uw keuze toe te passen.  
+Met query performance Insights kunt u op maat gemaakte aanbevelingen voor uw data base-workload krijgen zodat uw toepassingen op een optimaal niveau kunnen blijven werken. U kunt deze ook zo instellen dat deze aanbevelingen automatisch worden toegepast en u hoeft geen onderhouds taken uit te voeren. Met SQL Database Advisor kunt u automatisch index aanbevelingen implementeren op basis van uw workload. dit wordt automatisch afstemmen genoemd. De aanbevelingen worden ontwikkeld om de werk belasting van uw toepassing te wijzigen zodat u de meest relevante suggesties krijgt. U krijgt ook de mogelijkheid om deze aanbevelingen hand matig te controleren en deze op uw keuze toe te passen.  
 
 ### <a name="security-optimization"></a>Beveiligings optimalisatie
 
@@ -269,7 +269,7 @@ Het Azure Portal toont het gebruik van een Data Base door de data base te select
 
 Vanuit deze grafiek kunt u ook waarschuwingen per resource configureren. Met deze waarschuwingen kunt u reageren op resource voorwaarden met een e-mail bericht, schrijven naar een HTTPS/HTTP-eind punt of een actie uitvoeren. Zie [Create Alerts](alerts-insights-configure-portal.md)(Engelstalig) voor meer informatie.
 
-#### <a name="dynamic-management-views"></a>Dynamische beheerweergaven
+#### <a name="dynamic-management-views"></a>Dynamische beheer weergaven
 
 U kunt een query uitvoeren op de weer gave [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) Dynamic Management om de geschiedenis van de gegevens over het verbruik van de resource te retour neren van het afgelopen uur en de [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) -catalogus weergave om de afgelopen 14 dagen geschiedenis te retour neren.
 
@@ -281,7 +281,7 @@ Met [query Performance Insight](query-performance-insight-use.md) kunt u een ges
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL-analyse (preview) in Azure Monitor-logboeken
 
-Met [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md) kunt u belang rijke Azure SQL database prestatie gegevens verzamelen en visualiseren, met ondersteuning voor maxi maal 150.000 SQL-data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
+Met [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md) kunt u belang rijke Azure SQL database prestatie gegevens verzamelen en visualiseren, die ondersteuning bieden voor maxi maal 150.000 data bases en ELASTISCHe SQL-pools van 5.000 per werk ruimte. U kunt deze gebruiken om meldingen te bewaken en te ontvangen. U kunt de metrische gegevens van SQL Database en elastische groepen bewaken in meerdere Azure-abonnementen en elastische Pools en kunnen worden gebruikt om problemen te identificeren in elke laag van een toepassings stack.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik merkt prestatie problemen: Hoe verschilt mijn SQL Database-probleemoplossings methodologie van SQL Server
 
@@ -302,7 +302,7 @@ SQL Database biedt diverse service lagen Basic, Standard en Premium. Elke servic
 |**Servicelaag**|**Algemene use-case Scenario's**|
 |---|---|
 |**Standaard**|Toepassingen met een gekente gebruiker en een Data Base die geen hoge gelijktijdigheids-, schaal-en prestatie vereisten hebben. |
-|**Standaard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
+|**Standard**|Toepassingen met een aanzienlijke gelijktijdigheids-, schaal-en prestatie vereisten in combi natie met lage tot gemiddelde i/o-aanvragen. |
 |**Premium**|Toepassingen met veel gelijktijdige gebruikers, hoge CPU/geheugen en hoge IO-vereisten. Met hoge gelijktijdigheid, hoge door Voer en latentie gevoelige apps kunt u gebruikmaken van het Premium-niveau. |
 |||
 

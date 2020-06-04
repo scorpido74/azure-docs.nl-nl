@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 62e8bbbc3781c7e27671e8cb303ef2dcad2a30f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299805"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324331"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -39,7 +39,7 @@ U kunt deze back-ups gebruiken om:
 - **Een bestaande data base herstellen naar een bepaald tijdstip in het verleden** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server in hetzelfde abonnement als de oorspronkelijke data base. In een beheerd exemplaar kan deze bewerking een kopie maken van de data base of dezelfde of een ander beheerd exemplaar onder hetzelfde abonnement.
 - **Een verwijderde data base herstellen naar het tijdstip van de verwijdering** of op elk moment binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op dezelfde server of hetzelfde beheerde exemplaar en in hetzelfde abonnement als waarin de oorspronkelijke Data Base is gemaakt.
 - **Een Data Base herstellen naar een andere geografische regio**. Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw server en data base. Er wordt een nieuwe Data Base op een bestaande server gemaakt, waar dan ook ter wereld.
-- **Een Data Base herstellen op basis van een specifieke lange termijn back-up** op een enkele data base of gegroepeerde Data Base, als de data base is geconfigureerd met een Bewaar beleid voor de lange termijn (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
+- **Een Data Base herstellen op basis van een specifieke lange termijn back-up** op een enkele data base of gegroepeerde Data Base, als de data base is geconfigureerd met een Bewaar beleid voor de lange termijn (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 
 Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herstel bewerking uit te voeren.
 

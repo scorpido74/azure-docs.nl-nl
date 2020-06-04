@@ -1,5 +1,5 @@
 ---
-title: In-Memory technologieën
+title: In-memory technologieën
 description: In-Memory technologieën worden de prestaties van transactionele en analytische workloads in Azure SQL Database en Azure SQL Managed instance aanzienlijk verbeterd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046892"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345288"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimaliseer de prestaties met behulp van in-Memory technologieën in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Gegevens grootte en opslag limiet voor OLTP in het geheugen
 
-In-Memory OLTP bevat tabellen die zijn geoptimaliseerd voor geheugen, die worden gebruikt voor het opslaan van gebruikers gegevens. Deze tabellen moeten in het geheugen passen. Omdat u het geheugen rechtstreeks beheert in de SQL Database-Service, hebben we het concept van een quotum voor gebruikers gegevens. Dit wordt aangeduid als *OLTP-opslag in het geheugen*.
+In-Memory OLTP bevat tabellen die zijn geoptimaliseerd voor geheugen, die worden gebruikt voor het opslaan van gebruikers gegevens. Deze tabellen moeten in het geheugen passen. Omdat u het geheugen rechtstreeks beheert in SQL Database, hebben we het concept van een quotum voor gebruikers gegevens. Dit wordt aangeduid als *OLTP-opslag in het geheugen*.
 
 Elke ondersteunde prijs categorie voor één data base en elke prijs categorie voor elastische Pools bevat een bepaalde hoeveelheid OLTP-opslag in het geheugen.
 
@@ -183,7 +183,7 @@ Het *downgradeen van één Data Base naar Basic of Standard* is mogelijk niet mo
 Als u een **geclusterde** column store-index hebt, wordt de hele tabel na de downgrade niet meer beschikbaar. Daarom wordt u aangeraden alle *geclusterde* column Store-indexen weg te halen voordat u de data base downgradet naar een niet-ondersteunde laag of een niet-ondersteund niveau.
 
 > [!Note]
-> Een beheerd exemplaar ondersteunt column Store-indexen in alle lagen.
+> Een door SQL beheerd exemplaar ondersteunt column Store-indexen in alle lagen.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -192,7 +192,7 @@ Als u een **geclusterde** column store-index hebt, wordt de hele tabel na de dow
 - [Snelstartgids 1: OLTP-technologieën in het geheugen voor snellere T-SQL-prestaties](https://msdn.microsoft.com/library/mt694156.aspx)
 - [In-Memory OLTP gebruiken in een bestaande Azure SQL-toepassing](in-memory-oltp-configure.md)
 - [OLTP-opslag in het geheugen bewaken](in-memory-oltp-monitor-space.md) voor OLTP in het geheugen
-- [De functies in het geheugen uitproberen](in-memory-sample.md)
+- [Functies in het geheugen proberen](in-memory-sample.md)
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
@@ -212,6 +212,6 @@ Als u een **geclusterde** column store-index hebt, wordt de hele tabel na de dow
 
 ### <a name="tools"></a>Hulpprogramma's
 
-- [Azure Portal](https://portal.azure.com/)
+- [Azure-portal](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

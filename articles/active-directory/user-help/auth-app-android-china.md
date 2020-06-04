@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
-ms.translationtype: HT
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739495"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323022"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator voor Android in de openbare cloud in China
 
@@ -44,7 +44,7 @@ Als een gebruiker eerder in staat is geweest aanmelden via de telefoon of meervo
 
 ## <a name="multi-factor-authentication-workaround"></a>Tijdelijke oplossing voor meervoudige verificatie
 
-In plaats van pushmeldingen voor meervoudige verificatie te gebruiken, kunnen gebruikers hun MFA instellen om verificatiecodes op hun apparaat te ontvangen, die ze vervolgens kunnen gebruiken om hun identiteit te verifiëren. Deze verificatiecodes zijn gedurende dertig seconden geldig en om ze te kunnen gebruiken, moeten beheerders hun tenant in staat stellen verificatie uit te voeren met behulp van verificatiecodes op basis van Time-Based One-Time Passwords (TOTP).
+In plaats van push meldingen voor multi-factor Authentication te gebruiken, kunnen gebruikers [hun verificator-app instellen om verificatie codes](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) op hun apparaat te ontvangen die ze voor MFA kunnen gebruiken om hun identiteit te verifiëren. Deze verificatiecodes zijn gedurende dertig seconden geldig en om ze te kunnen gebruiken, moeten beheerders hun tenant in staat stellen verificatie uit te voeren met behulp van verificatiecodes op basis van Time-Based One-Time Passwords (TOTP).
 
 ## <a name="availability"></a>Beschikbaarheid
 

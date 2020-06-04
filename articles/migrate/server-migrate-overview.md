@@ -2,13 +2,13 @@
 title: Selecteer een optie voor VMware-migratie met Azure Migrate server migratie | Microsoft Docs
 description: Biedt een overzicht van de opties voor het migreren van virtuele VMware-machines naar Azure met Azure Migrate server migratie
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 196b80f600d9895e9fcb6471bfb5df5fb5bbe8d1
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76028711"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324501"
 ---
 # <a name="select-a-vmware-migration-option"></a>Selecteer een VMware-migratie optie
 
@@ -27,7 +27,7 @@ Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode
 **Instelling** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---
 **Azure-machtigingen** | U hebt machtigingen nodig voor het maken van een Azure Migrate project en voor het registreren van Azure AD-apps die zijn gemaakt bij het implementeren van het Azure Migrate apparaat. | U hebt Inzender machtigingen nodig voor het Azure-abonnement. 
-**Gelijktijdige replicatie** | Er kunnen Maxi maal 100 Vm's gelijktijdig worden gerepliceerd vanuit een vCenter Server.<br/> Als u meer dan 50 Vm's voor migratie hebt, maakt u meerdere batches met virtuele machines.<br/> Het repliceren van meer dan één keer is van invloed op de prestaties. | N.v.t.
+**Gelijktijdige replicatie** | Er kunnen Maxi maal 100 Vm's gelijktijdig worden gerepliceerd vanuit een vCenter Server.<br/> Als u meer dan 50 Vm's voor migratie hebt, maakt u meerdere batches met virtuele machines.<br/> Het repliceren van meer dan één keer is van invloed op de prestaties. | NA
 **Implementatie van het apparaat** | Het [Azure migrate apparaat](migrate-appliance.md) wordt on-premises geïmplementeerd. | Het [Azure migrate replicatie apparaat](migrate-replication-appliance.md) wordt on-premises geïmplementeerd.
 **Site Recovery compatibiliteit** | Browsercompatibele. | U kunt niet repliceren met Azure Migrate server migratie als u replicatie voor een machine hebt ingesteld met behulp van Site Recovery.
 **Doel schijf** | Managed Disks | Managed Disks
@@ -40,9 +40,9 @@ Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode
 
 Nadat u de beperkingen hebt bekeken, kunt u aan de hand van de stappen in de implementatie van elke oplossing bepalen welke optie u moet kiezen.
 
-**Taak** | **Nadere** |**Zonder agent** | **Op basis van een agent**
+**Taak** | **Details** |**Zonder agent** | **Op basis van een agent**
 --- | --- | --- | ---
-**Beoordeling** | Evalueer servers vóór de migratie.  De evaluatie is optioneel. U wordt aangeraden machines te beoordelen voordat u ze migreert, maar u hoeft dit niet te doen. <br/><br/> Voor beoordeling wordt Azure Migrate een licht gewicht in te stellen voor het detecteren en beoordelen van Vm's. | Als u na de evaluatie een agentloze migratie uitvoert, wordt hetzelfde Azure Migrate apparaat dat is ingesteld voor evaluatie, gebruikt voor migratie zonder agent.  |  Als u na de evaluatie een migratie op basis van een agent uitvoert, wordt het apparaat dat is ingesteld voor evaluatie niet gebruikt tijdens migratie zonder agent. U kunt het apparaat laten staan of het verwijderen als u geen verdere detectie en evaluatie wilt uitvoeren.
+**Onderzoek** | Evalueer servers vóór de migratie.  De evaluatie is optioneel. U wordt aangeraden machines te beoordelen voordat u ze migreert, maar u hoeft dit niet te doen. <br/><br/> Voor beoordeling wordt Azure Migrate een licht gewicht in te stellen voor het detecteren en beoordelen van Vm's. | Als u na de evaluatie een agentloze migratie uitvoert, wordt hetzelfde Azure Migrate apparaat dat is ingesteld voor evaluatie, gebruikt voor migratie zonder agent.  |  Als u na de evaluatie een migratie op basis van een agent uitvoert, wordt het apparaat dat is ingesteld voor evaluatie niet gebruikt tijdens migratie op basis van een agent. U kunt het apparaat laten staan of het verwijderen als u geen verdere detectie en evaluatie wilt uitvoeren.
 **VMware-servers en virtuele machines voorbereiden voor migratie** | Configureer een aantal instellingen op VMware-servers en virtuele machines. | Vereist | Vereist
 **Het hulp programma voor server migratie toevoegen** | Voeg het hulp programma voor migratie van Azure Migrate-server toe in het Azure Migrate-project. | Vereist | Vereist
 **Het Azure Migrate apparaat implementeren** | Stel een licht gewicht in op een virtuele VMware-machine voor detectie en evaluatie van VM'S. | Vereist | Niet vereist.

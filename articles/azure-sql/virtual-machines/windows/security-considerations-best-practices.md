@@ -1,5 +1,5 @@
 ---
-title: Beveiligings overwegingen voor SQL Server in azure | Microsoft Docs
+title: Beveiligings overwegingen | Microsoft Docs
 description: Dit onderwerp bevat algemene richt lijnen voor het beveiligen van SQL Server die worden uitgevoerd op een virtuele machine van Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a9c3588d75bbad3ed7feb2d8a53c0a698286861a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047263"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342541"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Veiligheidsoverwegingen voor SQL Server in virtuele Azure-machines
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Beveiligings overwegingen voor SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Dit onderwerp bevat algemene beveiligings richtlijnen die u helpen bij het opzetten van beveiligde toegang tot SQL Server exemplaren in een virtuele Azure-machine (VM).
@@ -31,7 +31,7 @@ Azure voldoet aan verschillende industriële voor schriften en standaarden waarm
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>Toegang tot de SQL-VM beheren
+## <a name="control-access-to-the-sql-virtual-machine"></a>Toegang tot de virtuele SQL-machine beheren
 
 Wanneer u uw SQL Server virtuele machine maakt, moet u overwegen hoe u zorgvuldig kunt bepalen wie toegang heeft tot de machine en SQL Server. Over het algemeen moet u het volgende doen:
 
@@ -46,7 +46,7 @@ Wanneer u een SQL Server virtuele machine maakt met een galerie-afbeelding, bied
 
 ![SQL Server connectiviteit](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-Voor de beste beveiliging kiest u de meest beperkende optie voor uw scenario. Als u bijvoorbeeld een toepassing uitvoert die toegang heeft tot SQL Server op dezelfde VM, is **lokaal** de veiligste keuze. Als u een Azure-toepassing uitvoert waarvoor toegang tot de SQL Server vereist is, wordt de communicatie met **privé** alleen SQL Server binnen de opgegeven [Azure-Virtual Network](../../../virtual-network/virtual-networks-overview.md). Als u **open bare** (Internet) toegang tot de SQL Server virtuele machine nodig hebt, moet u ervoor zorgen dat u andere aanbevolen procedures in dit onderwerp volgt om uw aanval Surface Area te verminderen.
+Voor de beste beveiliging kiest u de meest beperkende optie voor uw scenario. Als u bijvoorbeeld een toepassing uitvoert die toegang heeft tot SQL Server op dezelfde VM, is **lokaal** de veiligste keuze. Als u een Azure-toepassing uitvoert waarvoor toegang tot de SQL Server vereist is, wordt de communicatie met **privé** alleen SQL Server binnen het opgegeven [virtuele Azure-netwerk](../../../virtual-network/virtual-networks-overview.md). Als u **open bare** (Internet) toegang tot de SQL Server virtuele machine nodig hebt, moet u ervoor zorgen dat u andere aanbevolen procedures in dit onderwerp volgt om uw aanval Surface Area te verminderen.
 
 De geselecteerde opties in de portal gebruiken binnenkomende beveiligings regels op de [netwerk beveiligings groep](../../../active-directory/identity-protection/security-overview.md) van de VM (NSG) om netwerk verkeer naar uw virtuele machine toe te staan of te weigeren. U kunt nieuwe regels voor binnenkomende NSG wijzigen of maken om verkeer toe te staan voor de SQL Server poort (standaard 1433). U kunt ook specifieke IP-adressen opgeven die via deze poort mogen communiceren.
 
@@ -54,13 +54,13 @@ De geselecteerde opties in de portal gebruiken binnenkomende beveiligings regels
 
 Naast NSG-regels om netwerk verkeer te beperken, kunt u ook de Windows Firewall op de virtuele machine gebruiken.
 
-Als u eind punten met het klassieke implementatie model gebruikt, verwijdert u alle eind punten op de virtuele machine als u deze niet gebruikt. Zie [de ACL voor een eind punt beheren](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)voor instructies over het gebruik van acl's met eind punten. Dit is niet nodig voor Vm's die gebruikmaken van Resource Manager.
+Als u eind punten met het klassieke implementatie model gebruikt, verwijdert u alle eind punten op de virtuele machine als u deze niet gebruikt. Zie [de ACL voor een eind punt beheren](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)voor instructies over het gebruik van acl's met eind punten. Dit is niet nodig voor Vm's die gebruikmaken van de Azure Resource Manager.
 
 Ten slotte kunt u versleutelde verbindingen inschakelen voor het exemplaar van de SQL Server data base-engine in uw virtuele Azure-machine. Configureer het SQL Server-exemplaar met een ondertekend certificaat. Zie [versleutelde verbindingen met de data base-engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) en de [syntaxis van de verbindings reeks](https://msdn.microsoft.com/library/ms254500.aspx)inschakelen voor meer informatie.
 
 ## <a name="encryption"></a>Versleuteling
 
-Beheerde schijven bieden versleuteling aan de server zijde en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beschermt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) maakt gebruik van een BitLocker-of DM-cryptografie technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
+Beheerde schijven bieden versleuteling aan de server zijde en Azure Disk Encryption. [Versleuteling aan de server zijde](/azure/virtual-machines/windows/disk-encryption) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) maakt gebruik van een BitLocker-of DM-cryptografie technologie en integreert met Azure Key Vault om zowel het besturings systeem als de gegevens schijven te versleutelen. 
 
 ## <a name="use-a-non-default-port"></a>Een niet-standaard poort gebruiken
 
@@ -109,7 +109,7 @@ Voor meer informatie over beveiliging van de virtuele machine raadpleegt u het [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Aanbevolen procedures voor de prestaties van SQL Server in Azure virtual machines](performance-guidelines-best-practices.md)als u ook geïnteresseerd bent in Aanbevolen procedures voor de prestaties.
+Zie [Aanbevolen procedures voor de prestaties van SQL Server op Azure virtual machines](performance-guidelines-best-practices.md)als u ook geïnteresseerd bent in Aanbevolen procedures voor de prestaties.
 
 Zie [SQL Server op azure virtual machines Overview](sql-server-on-azure-vm-iaas-what-is-overview.md)voor andere onderwerpen met betrekking tot het uitvoeren van SQL Server in azure vm's. Als u vragen hebt over virtuele machines met SQL Server, raadpleegt u [Veelgestelde vragen](frequently-asked-questions-faq.md).
 

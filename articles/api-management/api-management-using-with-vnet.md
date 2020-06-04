@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/21/2020
+ms.date: 06/02/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 970c20edd3a24594f22ff7e72cd4275118193845
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300067"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323787"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -120,14 +120,13 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 | */445                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | Afhankelijkheid van de Azure-bestands share voor [Git](api-management-configuration-repository-git.md)                      | Externe & intern  |
 | */1886                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-Cloud            | Vereist voor het publiceren van de status naar Resource Health          | Externe & intern  |
 | */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md) publiceren                       | Externe & intern  |
-| */25                       | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
-| */587                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
-| */25028                    | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
-| */6381-6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot de redis-service voor beleids regels voor [frequentie limieten](api-management-access-restriction-policies.md#LimitCallRateByKey) tussen computers         | Externe & intern  |
+| */25, 587, 25028                       | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
+| */6381-6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot de redis-service voor [cache](api-management-caching-policies.md) beleidsregels tussen computers         | Externe & intern  |
+| */4290              | Binnenkomende &-uitgaand | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisatie tellers voor beleids regels voor [frequentie limiet](api-management-access-restriction-policies.md#LimitCallRateByKey) tussen computers         | Externe & intern  |
 | * / *                        | Inkomend            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Load Balancer van Azure-infra structuur                          | Externe & intern  |
 
 >[!IMPORTANT]
-> De poorten waarvoor het *doel* **vet** is, zijn vereist voor het implementeren van API Management service. Als u de andere poorten blokkeert, zal dit echter de mogelijkheid hebben om de actieve service te gebruiken en te bewaken.
+> De poorten waarvoor het *doel* **vet** is, zijn vereist voor het implementeren van API Management service. Het blok keren van de andere poorten leidt echter tot **degradatie** van de mogelijkheid om de actieve service te gebruiken en te **bewaken en de vastgelegde Sla**aan te bieden.
 
 + **TLS-functionaliteit**: voor het inschakelen van TLS/SSL-certificaat keten maken en valideren van de API Management-service is uitgaande netwerk verbinding vereist met ocsp.msocsp.com, mscrl.microsoft.com en CRL.Microsoft.com. Deze afhankelijkheid is niet vereist als een certificaat dat u uploadt naar API Management de volledige keten naar de basis van de CA bevatten.
 

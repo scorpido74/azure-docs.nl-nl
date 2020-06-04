@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 9a80adbbeda2754f9f08a4d2f16b8caf9263b087
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310883"
+ms.locfileid: "84340845"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor door de klant beheerde sleutel 
 
@@ -40,7 +40,7 @@ Azure Monitor maakt gebruik van door het systeem toegewezen beheerde identiteit 
 Na de configuratie van CMK worden gegevens die zijn opgenomen in werk ruimten die zijn gekoppeld aan uw *cluster* bron, versleuteld met uw sleutel in Key Vault. U kunt werk ruimten op elk gewenst moment loskoppelen van de *cluster* resource. Nieuwe gegevens worden opgenomen in Log Analytics opslag en versleuteld met de micro soft-sleutel, terwijl u uw nieuwe en oude gegevens naadloos kunt opvragen.
 
 
-![Overzicht van CMK](media/customer-managed-keys/cmk-overview-8bit.png)
+![Overzicht van CMK](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics *cluster* bron met beheerde identiteit met machtigingen voor Key Vault--de identiteit wordt door gegeven aan de toegewezen log Analytics-cluster opslag van aan

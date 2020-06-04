@@ -3,14 +3,14 @@ title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
 description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u de wijzigingen in de software en micro soft-Services in uw omgeving kunt identificeren.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117528"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342915"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Overzicht van Wijzigingen bijhouden en inventaris
 
@@ -52,7 +52,9 @@ Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
-Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [overzicht van log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)voor besturings systemen die log Analytics ondersteunen. 
+Wijzigingen bijhouden en inventarisatie wordt ondersteund op alle besturings systemen die voldoen aan de vereisten van Log Analytics agent. De officiële versies van het besturings systeem zijn Windows Server 2008 SP1 of hoger en Windows 7 SP1 of hoger. De functie wordt ook ondersteund op een aantal Linux-besturings systemen. Zie [overzicht van log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)voor besturings systemen die log Analytics ondersteunen.
+
+Zie [TLS 1,2 Enforcement voor Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation)voor meer informatie over de client vereisten voor TLS 1,2.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
 
@@ -112,7 +114,7 @@ Met Wijzigingen bijhouden en inventaris kunt u de inhoud van een Windows-of Linu
 Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register sleutels controleren. Met bewaking kunt u uitbreid bare punten herkennen waarbij code en malware van derden kunnen worden geactiveerd. De volgende tabel geeft een lijst van vooraf geconfigureerde register sleutels (maar niet ingeschakeld). Als u deze sleutels wilt bijhouden, moet u deze inschakelen.
 
 > [!div class="mx-tdBreakAll"]
-> |Registersleutel | Doel |
+> |Registersleutel | Functie |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Bewaakt de scripts die worden uitgevoerd bij het opstarten.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Bewaakt de scripts die worden uitgevoerd bij het afsluiten.
@@ -158,7 +160,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 
 | **Resource** | **Limiet** |
 |---|---|---|
-|File|500|
+|Bestand|500|
 |Register|250|
 |Windows-software (exclusief hotfixes) |250|
 |Linux-pakketten|1250|

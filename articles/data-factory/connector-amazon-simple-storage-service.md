@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: 94de2f9043c8c86036331a2cce2d2720e8c9b423
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 55e1d42eccf8f2545d1295bd082dd999e29c4679
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651014"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344965"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Gegevens kopiëren van de Amazon Simple Storage-service met behulp van Azure Data Factory
+# <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Gegevens kopiëren uit de Amazon Simple Storage-service met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 >
 > * [Versie 1](v1/data-factory-amazon-simple-storage-service-connector.md)
@@ -29,7 +29,7 @@ ms.locfileid: "83651014"
 In dit artikel wordt beschreven hoe u gegevens kopieert van de Amazon Simple Storage-service (Amazon S3). Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
 
 >[!TIP]
->Voor het scenario voor gegevens migratie van Amazon S3 naar Azure Storage leert u meer over het [gebruik van Azure Data Factory om gegevens van Amazon S3 te migreren naar Azure Storage](data-migration-guidance-s3-azure-storage.md).
+>Zie [Azure Data Factory gebruiken om gegevens van Amazon S3 te migreren naar Azure Storage](data-migration-guidance-s3-azure-storage.md)voor meer informatie over het gegevens migratie scenario van amazon s3 naar Azure Storage.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
@@ -40,19 +40,19 @@ Deze Amazon S3-connector wordt ondersteund voor de volgende activiteiten:
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)
 
-Met name deze Amazon S3-connector ondersteunt het kopiëren van bestanden als is of het parseren van bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md). U kunt er ook voor kiezen om de [meta gegevens van een bestand te bewaren tijdens het kopiëren](#preserve-metadata-during-copy). De connector gebruikt [AWS Signature versie 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) om aanvragen voor S3 te verifiëren.
+Met name deze Amazon S3-connector ondersteunt het kopiëren van bestanden in de vorm van of het parseren van bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md). U kunt er ook voor kiezen om de [meta gegevens van een bestand te bewaren tijdens het kopiëren](#preserve-metadata-during-copy). De connector gebruikt [AWS Signature versie 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) om aanvragen voor S3 te verifiëren.
 
 >[!TIP]
->U kunt deze Amazon S3-connector gebruiken om gegevens te kopiëren van **elke S3-compatibele opslag provider,** bijvoorbeeld [Google Cloud Storage](connector-google-cloud-storage.md). Geef de corresponderende service-URL op in de configuratie van de gekoppelde service.
+>U kunt deze Amazon S3-connector gebruiken om gegevens te kopiëren van *elke S3-compatibele opslag provider*, zoals [Google Cloud Storage](connector-google-cloud-storage.md). Geef de corresponderende service-URL op in de configuratie van de gekoppelde service.
 
 ## <a name="required-permissions"></a>Vereiste machtigingen
 
 Als u gegevens wilt kopiëren uit Amazon S3, moet u ervoor zorgen dat u de volgende machtigingen hebt gekregen:
 
-- **Voor het uitvoeren van Kopieer activiteit:**: `s3:GetObject` en `s3:GetObjectVersion` voor de bewerkingen van het Amazon S3-object.
-- **Voor Data Factory gebruikers interface ontwerpen**: `s3:ListAllMyBuckets` en `s3:ListBucket` / `s3:GetBucketLocation` voor Amazon S3-Bucket bewerkingen zijn ook vereist voor bewerkingen zoals het testen van de verbinding en bladeren/navigeren door bestands paden. Als u deze machtiging niet wilt verlenen, slaat u de test verbinding op de pagina gekoppelde service maken over en geeft u het pad rechtstreeks op in de instellingen van de gegevensset.
+- **Voor het uitvoeren van Kopieer activiteit**: `s3:GetObject` en `s3:GetObjectVersion` voor de bewerkingen van het Amazon S3-object.
+- **Voor Data Factory gebruikers interface ontwerpen**: `s3:ListAllMyBuckets` en `s3:ListBucket` / `s3:GetBucketLocation` voor Amazon S3-Bucket bewerkingen. Er zijn ook machtigingen vereist voor bewerkingen zoals het testen van verbindingen en het bladeren naar bestands paden. Als u deze machtigingen niet wilt verlenen, slaat u de test verbinding op de pagina gekoppelde service maken over en geeft u het pad rechtstreeks op in de instellingen van de gegevensset.
 
-Zie [machtigingen opgeven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)voor meer informatie over de volledige lijst met Amazon S3-machtigingen.
+Zie [machtigingen opgeven in een beleid](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html) op de AWS-site voor een volledige lijst met Amazon S3-machtigingen.
 
 ## <a name="getting-started"></a>Aan de slag
 
@@ -62,21 +62,21 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amazon S3:
+De volgende eigenschappen worden ondersteund voor een gekoppelde service van Amazon S3:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op **AmazonS3**. | Ja |
+| type | De eigenschap **type** moet worden ingesteld op **AmazonS3**. | Ja |
 | accessKeyId | ID van de geheime toegangs sleutel. |Ja |
-| secretAccessKey | De geheime toegangs sleutel zelf. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| secretAccessKey | De geheime toegangs sleutel zelf. Markeer dit veld als **SecureString** om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | serviceUrl | Geef het aangepaste S3-eind punt op als u gegevens kopieert van een andere S3-compatibele opslag provider dan de officiële service van Amazon S3. Als u bijvoorbeeld gegevens uit Google Cloud Storage wilt kopiëren, geeft u op `https://storage.googleapis.com` . | Nee |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt Azure Integration Runtime of zelf-hostende Integration Runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. U kunt de Azure Integration runtime of de zelf-hostende Integration runtime gebruiken (als uw gegevens archief zich in een particulier netwerk bevindt). Als deze eigenschap niet is opgegeven, gebruikt de service de standaard Azure Integration runtime. |Nee |
 
 >[!TIP]
->Geef de URL van de aangepaste S3-service op als u gegevens kopieert van een S3-compatibele opslag, anders dan de officiële service van Amazon S3.
+>Geef de URL van de aangepaste S3-service op als u gegevens wilt kopiëren uit een S3-compatibele opslag, anders dan de officiële service van Amazon S3.
 
 >[!NOTE]
->Deze connector vereist toegangs sleutels voor IAM-account om gegevens te kopiëren van Amazon S3. [Tijdelijke beveiligings referenties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) worden niet ondersteund.
+>Deze connector vereist toegangs sleutels voor een IAM-account (AWS Identity and Access Management) om gegevens van Amazon S3 te kopiëren. [Tijdelijke beveiligings referenties](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) worden niet ondersteund.
 >
 
 Hier volgt een voorbeeld:
@@ -107,15 +107,15 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund voor Amazon S3 onder `location` instellingen in gegevensset op basis van indeling:
+De volgende eigenschappen worden ondersteund voor Amazon S3 onder `location` instellingen in een gegevensset op basis van een indeling:
 
 | Eigenschap   | Beschrijving                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | De eigenschap type onder `location` in DataSet moet worden ingesteld op **AmazonS3Location**. | Ja      |
+| type       | De eigenschap **type** onder `location` in een gegevensset moet worden ingesteld op **AmazonS3Location**. | Ja      |
 | Bucket | De naam van de S3-Bucket.                                          | Ja      |
-| folderPath | Het pad naar de map onder de opgegeven Bucket. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u de instellingen voor de activiteit bron op. | Nee       |
-| fileName   | De bestands naam onder de opgegeven Bucket-folderPath. Als u Joker tekens wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de instellingen van de activiteit bron op. | Nee       |
-| versie | De versie van het S3-object, als S3-versie beheer is ingeschakeld. Als u niets opgeeft, wordt de meest recente versie opgehaald. |Nee |
+| folderPath | Het pad naar de map onder de opgegeven Bucket. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u op dat in de bron instellingen voor de activiteit. | Nee       |
+| fileName   | De bestands naam onder de opgegeven Bucket en mappad. Als u een Joker teken wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u op dat in de bron instellingen voor de activiteit. | Nee       |
+| versie | De versie van het S3-object, als S3-versie beheer is ingeschakeld. Als deze niet is opgegeven, wordt de meest recente versie opgehaald. |Nee |
 
 **Voorbeeld:**
 
@@ -148,26 +148,26 @@ De volgende eigenschappen worden ondersteund voor Amazon S3 onder `location` ins
 
 Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die door de Amazon S3-bron worden ondersteund.
 
-### <a name="amazon-s3-as-source"></a>Amazon S3 als bron
+### <a name="amazon-s3-as-a-source-type"></a>Amazon S3 als bron type
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund voor Amazon S3 onder `storeSettings` instellingen in op indeling gebaseerde kopie bron:
+De volgende eigenschappen worden ondersteund voor Amazon S3 onder `storeSettings` instellingen in een op indeling gebaseerde kopie bron:
 
 | Eigenschap                 | Beschrijving                                                  | Vereist                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **AmazonS3ReadSettings**. | Ja                                                         |
+| type                     | De eigenschap **type** onder `storeSettings` moet worden ingesteld op **AmazonS3ReadSettings**. | Ja                                                         |
 | ***Zoek de bestanden die moeten worden gekopieerd:*** |  |  |
-| OPTIE 1: statisch pad<br> | Kopiëren van de opgegeven Bucket of map/bestandspad die is opgegeven in de gegevensset. Als u alle bestanden van een Bucket/map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
-| OPTIE 2: S3-voor voegsel<br>-voor voegsel | Voor voegsel voor de S3-sleutel naam onder de opgegeven Bucket die in de gegevensset is geconfigureerd voor het filteren van S3-bestanden van de bron. S3-sleutels waarvan de naam begint met `bucket_in_dataset/this_prefix` zijn geselecteerd. Er wordt gebruikgemaakt van S3's service side filter dat betere prestaties biedt dan het Joker filter. | Nee |
-| OPTIE 3: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens onder de opgegeven Bucket die is geconfigureerd in de gegevensset om bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
-| OPTIE 3: Joker teken<br>- wildcardFileName | De bestands naam met Joker tekens onder de opgegeven Bucket + folderPath/wildcardFolderPath om bron bestanden te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja |
-| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven bestandenset moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren, één bestand per regel dat het relatieve pad is naar het pad dat is geconfigureerd in de gegevensset.<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in DataSet. Meer voor beelden vindt u in [voor beelden van bestands lijsten](#file-list-examples). |Nee |
+| OPTIE 1: statisch pad<br> | Kopiëren van de opgegeven Bucket of map/bestandspad die is opgegeven in de gegevensset. Als u alle bestanden van een Bucket of map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
+| OPTIE 2: S3-voor voegsel<br>-voor voegsel | Voor voegsel voor de S3-sleutel naam onder de opgegeven Bucket die in een gegevensset is geconfigureerd voor het filteren van S3-bron bestanden. S3-sleutels waarvan de naam begint met `bucket_in_dataset/this_prefix` zijn geselecteerd. Er wordt gebruikgemaakt van S3's service-side filter, dat betere prestaties levert dan een filter voor joker tekens. | Nee |
+| OPTIE 3: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens onder de opgegeven Bucket die is geconfigureerd in een gegevensset om bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken). Gebruik `^` dit om te escapen als uw mapnaam een Joker teken of escape tekens bevat in. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
+| OPTIE 3: Joker teken<br>- wildcardFileName | De bestands naam met Joker tekens onder de opgegeven Bucket en mappad (of pad naar de map met Joker tekens) om bron bestanden te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken). Gebruik `^` dit om te escapen als uw mapnaam een Joker teken of escape tekens bevat in.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja |
+| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven bestandenset moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren, één bestand per regel, het relatieve pad naar het pad dat is geconfigureerd in de gegevensset.<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in de gegevensset. Meer voor beelden vindt u in [voor beelden van bestands lijsten](#file-list-examples). |Nee |
 | ***Aanvullende instellingen:*** |  | |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Houd er rekening mee dat wanneer recursief is ingesteld op True en de Sink een archief op basis van bestanden is, een lege map of submap niet wordt gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn **True** (standaard) en **Onwaar**.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
-| modifiedDatetimeStart    | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | Nee                                            |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Houd er rekening mee dat wanneer **recursief** is ingesteld op **True** en de Sink een archief op basis van bestanden is, een lege map of submap niet wordt gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn **True** (standaard) en **Onwaar**.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
+| modifiedDatetimeStart    | Bestanden worden gefilterd op basis van het kenmerk: laatst gewijzigd. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op een UTC-tijd zone met de notatie "2018-12-01T05:00:00Z". <br> De eigenschappen kunnen **Null**zijn, wat betekent dat er geen bestands kenmerk filter op de gegevensset wordt toegepast.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar is **Null**, worden de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk aan de datum/tijd-waarde, geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is **Null**, worden de bestanden waarvan het kenmerk laatst gewijzigd is kleiner dan de datum/tijd-waarde, geselecteerd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | Nee                                            |
 | modifiedDatetimeEnd      | Hetzelfde als hierboven.                                               | Nee                                                          |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee                                                          |
+| maxConcurrentConnections | Het aantal gelijktijdige verbindingen met de gegevens opslag. Geef alleen op wanneer u gelijktijdige verbindingen met het gegevens archief wilt beperken. | Nee                                                          |
 
 **Voorbeeld:**
 
@@ -223,17 +223,17 @@ In deze sectie wordt het resulterende gedrag van het mappad en de bestands naam 
 
 ### <a name="file-list-examples"></a>Voor beelden van bestands lijst
 
-In deze sectie wordt het resulterende gedrag van het gebruik van het pad naar een bestands lijst in de bron van de Kopieer activiteit beschreven.
+In deze sectie wordt het resulterende gedrag van het gebruik van een bestands lijst pad in een bron van een Kopieer activiteit beschreven.
 
-Ervan uitgaande dat u de volgende structuur van de bronmap hebt en de bestanden vet wilt kopiëren:
+Stel dat u de volgende structuur van de bronmap hebt en de bestanden vet wilt kopiëren:
 
-| Voorbeeld bron structuur                                      | Inhoud in FileListToCopy. txt                             | ADF-configuratie                                            |
+| Voorbeeld bron structuur                                      | Inhoud in FileListToCopy. txt                             | Data Factory configuratie                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| verzamelingen<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metagegevensarchiefmethode<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | Bestand1. CSV<br>Subfolder1/File3. CSV<br>Subfolder1/File5. CSV | **In gegevensset:**<br>Verzamelingen`bucket`<br>-Mappad:`FolderA`<br><br>**Bron van Kopieer activiteit:**<br>-Pad naar bestands lijst:`bucket/Metadata/FileListToCopy.txt` <br><br>Het pad naar de bestands lijst verwijst naar een tekst bestand in hetzelfde gegevens archief dat een lijst bevat met bestanden die u wilt kopiëren, één bestand per regel met het relatieve pad naar het pad dat is geconfigureerd in de gegevensset. |
+| verzamelingen<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metagegevensarchiefmethode<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | Bestand1. CSV<br>Subfolder1/File3. CSV<br>Subfolder1/File5. CSV | **In gegevensset:**<br>Verzamelingen`bucket`<br>-Mappad:`FolderA`<br><br>**Bron van Kopieer activiteit:**<br>-Pad naar bestands lijst:`bucket/Metadata/FileListToCopy.txt` <br><br>Het pad naar de bestands lijst verwijst naar een tekst bestand in hetzelfde gegevens archief dat een lijst bevat met bestanden die u wilt kopiëren, één bestand per regel, met het relatieve pad naar het pad dat is geconfigureerd in de gegevensset. |
 
 ## <a name="preserve-metadata-during-copy"></a>Meta gegevens bewaren tijdens kopiëren
 
-Wanneer u bestanden van Amazon S3 naar Azure Data Lake Storage Gen2/Azure-Blob kopieert, kunt u ervoor kiezen om de meta gegevens van het bestand te behouden, samen met de gegevens. Meer informatie over het [bewaren van meta gegevens](copy-activity-preserve-metadata.md#preserve-metadata).
+Wanneer u bestanden kopieert van Amazon S3 naar Azure Data Lake Storage Gen2 of Azure Blob-opslag, kunt u ervoor kiezen om de meta gegevens van het bestand te behouden, samen met de gegevens. Meer informatie over het [bewaren van meta gegevens](copy-activity-preserve-metadata.md#preserve-metadata).
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
@@ -241,33 +241,37 @@ Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer info
 
 ## <a name="getmetadata-activity-properties"></a>Eigenschappen van GetMetadata-activiteit
 
-Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activiteit](control-flow-get-metadata-activity.md) 
+Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activiteit](control-flow-get-metadata-activity.md). 
 
 ## <a name="delete-activity-properties"></a>Eigenschappen van activiteit verwijderen
 
-Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwijderen](delete-activity.md)
+Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwijderen](delete-activity.md).
 
 ## <a name="legacy-models"></a>Verouderde modellen
 
 >[!NOTE]
->De volgende modellen worden nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
+>De volgende modellen worden nog steeds ondersteund voor achterwaartse compatibiliteit. We raden u aan om het nieuwe model te gebruiken, totdat de Data Factory ontwerp interface voor het genereren van het nieuwe model is gewijzigd.
 
 ### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **AmazonS3Object** |Ja |
-| Bucket | De naam van de S3-Bucket. Het Joker teken filter wordt niet ondersteund. |Ja voor de activiteit kopiëren/opzoeken, geen voor GetMetadata-activiteit |
-| sleutel | De **naam of het Joker teken filter** van de S3-object sleutel onder de opgegeven Bucket. Is alleen van toepassing wanneer de eigenschap prefix niet is opgegeven. <br/><br/>Het Joker teken filter wordt ondersteund voor zowel het deel van de map als de bestands naam. Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"key": "rootfolder/subfolder/*.csv"`<br/>-Voor beeld 2:`"key": "rootfolder/subfolder/???20180427.txt"`<br/>Zie meer voor [beelden van mappen en bestands filters](#folder-and-file-filter-examples). Gebruik `^` om te escapen als uw werkelijke map/bestands naam Joker teken of escape-teken bevat. |Nee |
-| beleids | Voor voegsel voor de object sleutel S3. Objecten waarvan de sleutels beginnen met dit voor voegsel worden geselecteerd. Is alleen van toepassing wanneer de eigenschap Key niet is opgegeven. |Nee |
-| versie | De versie van het S3-object, als S3-versie beheer is ingeschakeld. Als u niets opgeeft, wordt de meest recente versie opgehaald. |Nee |
-| modifiedDatetimeStart | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat de prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van enorme hoeveel heden bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.| Nee |
-| modifiedDatetimeEnd | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat de prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van enorme hoeveel heden bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.| Nee |
-| formaat | Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over.<br/><br/>Als u bestanden wilt parseren of genereren met een specifieke indeling, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, [Orc-indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nee (alleen voor het scenario binair kopiëren) |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus zijn: **optimaal** en **snelst**. |Nee |
+| type | De eigenschap **type** van de DataSet moet worden ingesteld op **AmazonS3Object**. |Ja |
+| Bucket | De naam van de S3-Bucket. Het Joker teken filter wordt niet ondersteund. |Ja voor de activiteit kopiëren of opzoeken, geen voor de activiteit GetMetadata |
+| sleutel | De naam of het Joker teken filter van de S3-object sleutel onder de opgegeven Bucket. Is alleen van toepassing wanneer de eigenschap **prefix** niet is opgegeven. <br/><br/>Het Joker teken filter wordt ondersteund voor zowel het deel van de map als het bestands naam gedeelte. Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"key": "rootfolder/subfolder/*.csv"`<br/>-Voor beeld 2:`"key": "rootfolder/subfolder/???20180427.txt"`<br/>Zie meer voor [beelden van mappen en bestands filters](#folder-and-file-filter-examples). Gebruik `^` dit om te escapen als uw daad werkelijke map of bestands naam een Joker teken of escape tekens bevat. |Nee |
+| beleids | Voor voegsel voor de object sleutel S3. Objecten waarvan de sleutels beginnen met dit voor voegsel worden geselecteerd. Is alleen van toepassing als de **sleutel** eigenschap niet is opgegeven. |Nee |
+| versie | De versie van het S3-object, als S3-versie beheer is ingeschakeld. Als er geen versie is opgegeven, wordt de meest recente versie opgehaald. |Nee |
+| modifiedDatetimeStart | Bestanden worden gefilterd op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat het inschakelen van deze instelling van invloed is op de algehele prestaties van de verplaatsing van gegevens wanneer u grote hoeveel heden bestanden wilt filteren. <br/><br/> De eigenschappen kunnen **Null**zijn, wat betekent dat er geen bestands kenmerk filter op de gegevensset wordt toegepast.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar is **Null**, worden de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk aan de datum/tijd-waarde, geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, worden de bestanden waarvan het kenmerk laatst gewijzigd is kleiner dan de datum/tijd-waarde, geselecteerd.| Nee |
+| modifiedDatetimeEnd | Bestanden worden gefilterd op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat het inschakelen van deze instelling van invloed is op de algehele prestaties van de verplaatsing van gegevens wanneer u grote hoeveel heden bestanden wilt filteren. <br/><br/> De eigenschappen kunnen **Null**zijn, wat betekent dat er geen bestands kenmerk filter op de gegevensset wordt toegepast.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar is **Null**, worden de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk aan de datum/tijd-waarde, geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is **Null**, worden de bestanden waarvan het kenmerk laatst gewijzigd is kleiner dan de datum/tijd-waarde, geselecteerd.| Nee |
+| formaat | Als u bestanden wilt kopiëren als zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak over in de gegevensset voor invoer en uitvoer.<br/><br/>Als u bestanden wilt parseren of genereren met een specifieke indeling, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder **indeling** in op een van deze waarden. Zie de secties [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, [Orc-indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en [Parquet-indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) voor meer informatie. |Nee (alleen voor het scenario binair kopiëren) |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus zijn **optimaal** en **snelst**. |Nee |
 
 >[!TIP]
->Als u alle bestanden onder een map wilt kopiëren, geeft u **Bucket** op voor Bucket en voor **voegsel** voor het deel van de map.<br>Als u één bestand met een opgegeven naam wilt kopiëren, geeft u **Bucket** op voor Bucket en de **sleutel** voor het deel van de map plus de bestands naam.<br>Als u een subset van bestanden onder een map wilt kopiëren, geeft u **Bucket** op voor Bucket en de **sleutel** voor het deel van het Joker teken.
+>Als u alle bestanden onder een map wilt kopiëren, geeft u **Bucket** op voor de Bucket en het voor **voegsel** voor het deel van de map.
+>
+>Als u één bestand met een opgegeven naam wilt kopiëren, geeft u **Bucket** op voor de Bucket en de **sleutel** voor de map plus de bestands naam.
+>
+>Als u een subset van bestanden onder een map wilt kopiëren, geeft u **Bucket** op voor de Bucket en de **sleutel** voor het deel van de map plus joker tekens.
 
 **Voor beeld: voor voegsel gebruiken**
 
@@ -328,13 +332,13 @@ Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwij
 }
 ```
 
-### <a name="legacy-copy-activity-source-model"></a>Bron model van verouderde Kopieer activiteit
+### <a name="legacy-source-model-for-the-copy-activity"></a>Verouderd bron model voor de Kopieer activiteit
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **FileSystemSource** |Ja |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Opmerking Wanneer recursief is ingesteld op True en Sink is op bestanden gebaseerd archief, wordt lege map/submap niet gekopieerd/gemaakt bij sink.<br/>Toegestane waarden zijn: **True** (standaard), **False** | Nee |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee |
+| type | De eigenschap **type** van de bron van de Kopieer activiteit moet zijn ingesteld op **FileSystemSource**. |Ja |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Houd er rekening mee dat wanneer **recursief** is ingesteld op **True** en de Sink een archief op basis van bestanden is, er geen lege map of submap wordt gekopieerd of gemaakt bij de sink.<br/>Toegestane waarden zijn **True** (standaard) en **Onwaar**. | Nee |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u gelijktijdige verbindingen met het gegevens archief wilt beperken. | Nee |
 
 **Voorbeeld:**
 
@@ -369,4 +373,4 @@ Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwij
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die de Kopieer activiteit in azure Data Factory ondersteunt als bronnen en Sinks.

@@ -1,5 +1,5 @@
 ---
-title: SQL Server Vm's beheren in azure met behulp van de Azure Portal | Microsoft Docs
+title: SQL Server virtuele machines in azure beheren met behulp van de Azure Portal | Microsoft Docs
 description: Meer informatie over toegang tot de resource van de virtuele SQL-machine in de Azure Portal voor een SQL Server VM gehost op Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6cf6fac84abd1d996c77aae7240c0322c5ec53fb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8d04099bc4b384c4b8554a77bafd5d669f0d0e76
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049069"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344222"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>SQL Server Vm's in azure beheren door gebruik te maken van de Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

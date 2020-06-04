@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: ef5f6967b7ad9500672d00d93dd8acaca99e5948
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b9646f2bab4c17449c6683ae7924af87b184167
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73499468"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340178"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Een LUIS-app bouwen met behulp van node. js
 
-LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-regions.md) -website doet. Dit kan tijd besparen wanneer u al bestaande gegevens hebt en u kunt sneller een LUIS-app maken dan door hand matig gegevens in te voeren. 
+LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-regions.md) -website doet. Dit kan tijd besparen wanneer u al bestaande gegevens hebt en u kunt sneller een LUIS-app maken dan door hand matig gegevens in te voeren.
 
 [!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
@@ -32,14 +32,14 @@ LUIS biedt een programmatische API die alles doet wat de [Luis](luis-reference-r
 * Installeer de meest recente node. js met NPM. U kunt het [hier](https://nodejs.org/en/download/) downloaden.
 * **[Aanbevolen]** Visual Studio [code voor IntelliSense](https://code.visualstudio.com/) en fout opsporing kunt u deze gratis downloaden.
 
-Alle code in dit artikel is beschikbaar in de [github-opslag plaats Azure-samples language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv). 
+Alle code in dit artikel is beschikbaar in de [github-opslag plaats Azure-samples language Understanding](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv).
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>Bestaande gegevens aan intenties en entiteiten toewijzen
 Zelfs als u een systeem hebt dat niet met LUIS is gemaakt, kunt u, als het tekstuele gegevens bevat die zijn gekoppeld aan verschillende gebruikers, een toewijzing van de bestaande categorieën gebruikers invoer aan intenties in LUIS. Als u belang rijke woorden of zinsdelen kunt identificeren in wat de gebruikers zei, kunnen deze woorden worden toegewezen aan entiteiten.
 
-Open het [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) bestand. Het bevat een logboek van gebruikers query's naar een hypothetische Home Automation-Service, waaronder de manier waarop ze zijn gecategoriseerd, wat de gebruiker zei en sommige kolommen met nuttige informatie die ze uit hen hebben gehaald. 
+Open het [`IoT.csv`](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv) bestand. Het bevat een logboek van gebruikers query's naar een hypothetische Home Automation-Service, waaronder de manier waarop ze zijn gecategoriseerd, wat de gebruiker zei en sommige kolommen met nuttige informatie die ze uit hen hebben gehaald.
 
-![CSV-bestand met vooraf bestaande gegevens](./media/luis-tutorial-node-import-utterances-csv/csv.png) 
+![CSV-bestand met vooraf bestaande gegevens](./media/luis-tutorial-node-import-utterances-csv/csv.png)
 
 U ziet dat de **RequestType** -kolom mogelijk intenties is en de kolom **aanvraag** bevat een voor beeld van een utterance. De andere velden kunnen entiteiten zijn als deze zich in de utterance voordoen. Omdat er intenties, entiteiten en voor beeld uitingen zijn, hebt u de vereisten voor een eenvoudige, voor beeld-app.
 
@@ -47,21 +47,21 @@ U ziet dat de **RequestType** -kolom mogelijk intenties is en de kolom **aanvraa
 Een nieuwe LUIS-app genereren vanuit het CSV-bestand:
 
 * De gegevens uit het CSV-bestand parseren:
-    * Converteer naar een indeling die u kunt uploaden naar LUIS met behulp van de API voor ontwerpen. 
-    * Verzamel uit de geparseerde gegevens informatie over intents en entiteiten. 
+    * Converteer naar een indeling die u kunt uploaden naar LUIS met behulp van de API voor ontwerpen.
+    * Verzamel uit de geparseerde gegevens informatie over intents en entiteiten.
 * Maak ontwerp-API-aanroepen naar:
     * Maak de app.
-    * Voeg intents en entiteiten toe die zijn verzameld uit de geparseerde gegevens. 
-    * Nadat u de LUIS-app hebt gemaakt, kunt u het voor beeld uitingen toevoegen uit de geparseerde gegevens. 
+    * Voeg intents en entiteiten toe die zijn verzameld uit de geparseerde gegevens.
+    * Nadat u de LUIS-app hebt gemaakt, kunt u het voor beeld uitingen toevoegen uit de geparseerde gegevens.
 
-U kunt deze programma stroom bekijken in het laatste deel van het `index.js` bestand. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) deze code en sla deze `index.js`op in.
+U kunt deze programma stroom bekijken in het laatste deel van het `index.js` bestand. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/index.js) deze code en sla deze op in `index.js` .
 
    [!code-javascript[Node.js code for calling the steps to build a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/index.js)]
 
 
 ## <a name="parse-the-csv"></a>De CSV parseren
 
-De kolom vermeldingen die de uitingen in het CSV bevatten moeten worden geparseerd naar een JSON-indeling die LUIS kan begrijpen. Deze JSON-indeling moet een `intentName` veld bevatten waarin het doel van de utterance wordt geïdentificeerd. Het moet ook een `entityLabels` veld bevatten. Dit kan leeg zijn als er geen entiteiten in de utterance zijn. 
+De kolom vermeldingen die de uitingen in het CSV bevatten moeten worden geparseerd naar een JSON-indeling die LUIS kan begrijpen. Deze JSON-indeling moet een `intentName` veld bevatten waarin het doel van de utterance wordt geïdentificeerd. Het moet ook een `entityLabels` veld bevatten. Dit kan leeg zijn als er geen entiteiten in de utterance zijn.
 
 Bijvoorbeeld: de vermelding ' verlichting inschakelen ' aan deze JSON
 
@@ -84,33 +84,33 @@ Bijvoorbeeld: de vermelding ' verlichting inschakelen ' aan deze JSON
         }
 ```
 
-In dit voor beeld is `intentName` het afkomstig van de gebruikers aanvraag onder de kolomkop **aanvraag** in het CSV-bestand, en `entityName` de afkomstig van de andere kolommen met belang rijke informatie. Als er bijvoorbeeld een vermelding is voor de **bewerking** of het **apparaat**, en die teken reeks ook voor komt in de daad werkelijke aanvraag, kan deze worden aangeduid als een entiteit. De volgende code laat zien hoe dit proces wordt geparseerd. U kunt het kopiëren of [downloaden](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) en opslaan in `_parse.js`.
+In dit voor beeld `intentName` is het afkomstig van de gebruikers aanvraag onder de kolomkop **aanvraag** in het CSV-bestand, en de `entityName` afkomstig van de andere kolommen met belang rijke informatie. Als er bijvoorbeeld een vermelding is voor de **bewerking** of het **apparaat**, en die teken reeks ook voor komt in de daad werkelijke aanvraag, kan deze worden aangeduid als een entiteit. De volgende code laat zien hoe dit proces wordt geparseerd. U kunt het kopiëren of [downloaden](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_parse.js) en opslaan in `_parse.js` .
 
    [!code-javascript[Node.js code for parsing a CSV file to extract intents, entities, and labeled utterances](~/samples-luis/examples/build-app-programmatically-csv/_parse.js)]
 
 
 
 ## <a name="create-the-luis-app"></a>De LUIS-app maken
-Zodra de gegevens zijn geparseerd in JSON, voegt u deze toe aan een LUIS-app. Met de volgende code wordt de LUIS-app gemaakt. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) deze en sla het op `_create.js`in.
+Zodra de gegevens zijn geparseerd in JSON, voegt u deze toe aan een LUIS-app. Met de volgende code wordt de LUIS-app gemaakt. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_create.js) deze en sla het op in `_create.js` .
 
    [!code-javascript[Node.js code for creating a LUIS app](~/samples-luis/examples/build-app-programmatically-csv/_create.js)]
 
 
 ## <a name="add-intents"></a>Intents toevoegen
-Zodra u een app hebt, moet u deze aan het doel hebben. Met de volgende code wordt de LUIS-app gemaakt. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) deze en sla het op `_intents.js`in.
+Zodra u een app hebt, moet u deze aan het doel hebben. Met de volgende code wordt de LUIS-app gemaakt. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_intents.js) deze en sla het op in `_intents.js` .
 
    [!code-javascript[Node.js code for creating a series of intents](~/samples-luis/examples/build-app-programmatically-csv/_intents.js)]
 
 
 ## <a name="add-entities"></a>Entiteiten toevoegen
-Met de volgende code worden de entiteiten toegevoegd aan de LUIS-app. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) deze en sla het op `_entities.js`in.
+Met de volgende code worden de entiteiten toegevoegd aan de LUIS-app. Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_entities.js) deze en sla het op in `_entities.js` .
 
    [!code-javascript[Node.js code for creating entities](~/samples-luis/examples/build-app-programmatically-csv/_entities.js)]
-   
+
 
 
 ## <a name="add-utterances"></a>Utterances toevoegen
-Zodra de entiteiten en intenties zijn gedefinieerd in de LUIS-app, kunt u de uitingen toevoegen. De volgende code maakt gebruik van de [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) -API, waarmee u maxi maal 100 uitingen per keer kunt toevoegen.  Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) deze en sla het op `_upload.js`in.
+Zodra de entiteiten en intenties zijn gedefinieerd in de LUIS-app, kunt u de uitingen toevoegen. De volgende code maakt gebruik van de [Utterances_AddBatch](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09) -API, waarmee u maxi maal 100 uitingen per keer kunt toevoegen.  Kopieer of [down load](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/_upload.js) deze en sla het op in `_upload.js` .
 
    [!code-javascript[Node.js code for adding utterances](~/samples-luis/examples/build-app-programmatically-csv/_upload.js)]
 
@@ -135,7 +135,7 @@ Open het bestand index. js en wijzig deze waarden boven aan het bestand.
 // Change these values
 const LUIS_programmaticKey = "YOUR_AUTHORING_KEY";
 const LUIS_appName = "Sample App";
-const LUIS_appCulture = "en-us"; 
+const LUIS_appCulture = "en-us";
 const LUIS_versionId = "0.1";
 ```
 
@@ -196,5 +196,5 @@ Zodra het script is voltooid, kunt u zich aanmelden bij [Luis](luis-reference-re
 Deze voorbeeld toepassing maakt gebruik van de volgende LUIS-Api's:
 - [app maken](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)
 - [intenties toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0c)
-- [entiteiten toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e) 
+- [entiteiten toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0e)
 - [uitingen toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c09)

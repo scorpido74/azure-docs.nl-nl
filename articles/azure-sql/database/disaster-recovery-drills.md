@@ -11,14 +11,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: b2ba1d07983021e376a950fba789db0b51c11d4b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050427"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344574"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Nood herstel analyse uitvoeren
+# <a name="performing-disaster-recovery-drills"></a>Nood herstel analyse uitvoeren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 U kunt het beste de validatie van de gereedheid van de toepassing voor de herstel werk stroom periodiek uitvoeren. Het controleren van het gedrag van de toepassing en de implicaties van gegevens verlies en/of de onderbreking van de failover is een goede technische praktijk. Het is ook een vereiste voor de meeste industrie normen als onderdeel van de certificering voor bedrijfs continuïteit.

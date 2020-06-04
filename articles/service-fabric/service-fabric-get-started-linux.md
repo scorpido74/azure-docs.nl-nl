@@ -3,12 +3,12 @@ title: Uw ontwikkel omgeving instellen in Linux
 description: Installeer de runtime en SDK en maak een lokaal ontwikkelcluster in Linux. Zodra u dit hebt gedaan, kunt u toepassingen bouwen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38ea94e14a182671b3540a87c3bf90e861479fe5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193408"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338461"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Uw ontwikkelomgeving voorbereiden in Linux
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Het installeren van de Service Fabric-runtime en -SDK op Windows Subsystem voor 
 
 Deze besturingssysteemversies worden ondersteund voor ontwikkeling.
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
 
     Zorg ervoor dat het pakket `apt-transport-https` is geïnstalleerd.
          
@@ -60,46 +60,41 @@ Voor het installeren van de SDK en het bijbehorende runtimepakket via het apt-ge
 ### <a name="ubuntu"></a>Ubuntu
 
 1. Open een terminal.
-2. Voeg de Service Fabric-opslagplaats toe aan uw lijst met bronnen.
+
+2. Voeg de `dotnet`-opslagplaats toe aan uw lijst met bronnen.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. Voeg de `dotnet`-opslagplaats toe aan uw lijst met bronnen.
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. Voeg de nieuwe Gnu Privacy Guard-code (GnuPG of GPG) toe aan uw APT-sleutelring.
+3. Voeg de nieuwe Gnu Privacy Guard-code (GnuPG of GPG) toe aan uw APT-sleutelring.
 
     ```bash
     curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. Voeg de officiële GPG-sleutel van Docker toe aan uw APT-sleutelring.
+4. Voeg de officiële GPG-sleutel van Docker toe aan uw APT-sleutelring.
 
     ```bash
     sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Stel de Docker-opslagplaats in.
+5. Stel de Docker-opslagplaats in.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Voeg Azul JDK-sleutel toe aan uw APT sleutel hanger en stel de opslag plaats in.
+6. Voeg Azul JDK-sleutel toe aan uw APT sleutel hanger en stel de opslag plaats in.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Vernieuw uw pakketlijsten op basis van de net toegevoegde opslagplaatsen.
+7. Vernieuw uw pakketlijsten op basis van de net toegevoegde opslagplaatsen.
 
     ```bash
     sudo apt-get update
@@ -179,7 +174,7 @@ Start een lokaal cluster nadat de installatie is voltooid.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Open een webbrowser en ga naar **service Fabric Explorer** (`http://localhost:19080/Explorer`). Wanneer het cluster is gestart, ziet u het Service Fabric Explorer-dashboard. Het kan enkele minuten duren voordat het cluster volledig is ingesteld. Als het openen van de browser is mislukt of als in Service Fabric Explorer niet wordt aangegeven dat het systeem gereed is, wacht u enkele minuten en probeert u het opnieuw.
+2. Open een webbrowser en ga naar **service Fabric Explorer** ( `http://localhost:19080/Explorer` ). Wanneer het cluster is gestart, ziet u het Service Fabric Explorer-dashboard. Het kan enkele minuten duren voordat het cluster volledig is ingesteld. Als het openen van de browser is mislukt of als in Service Fabric Explorer niet wordt aangegeven dat het systeem gereed is, wacht u enkele minuten en probeert u het opnieuw.
 
     ![Service Fabric Explorer in Linux][sfx-linux]
 
@@ -261,11 +256,11 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 > 
 > Voor Ubuntu wordt u aangeraden de installatie rechtstreeks vanaf de site van Eclipse uit te voeren en niet door middel van een installatieprogramma voor pakketten (`apt` of `apt-get`). Daardoor weet u zeker dat u de meest recente versie van Eclipse hebt. U kunt de Eclipse IDE installeren voor Java-ontwikkelaars of voor Java EE-ontwikkelaars.
 
-1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help** > **over** > de**installatie Details**van de eclips te selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
+1. Controleer in Eclipse of u Eclipse Neon of later en Buildship versie 2.2.1 of later hebt geïnstalleerd. Controleer de versies van geïnstalleerde onderdelen door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. U kunt Buildship bijwerken met behulp van de instructies in [Eclipse Buildship: Eclipse-invoegtoepassingen voor Gradle][buildship-update].
 
-2. Als u de service Fabric-invoeg toepassing wilt installeren, selecteert u **Help** > **nieuwe software installeren**.
+2. Als u de service Fabric-invoeg toepassing wilt installeren, selecteert u **Help**  >  **nieuwe software installeren**.
 
-3. Voer in het vak **werken met** **https\/:/dl.Microsoft.com/Eclipse**in.
+3. Voer in het vak **werken met** **https: \/ /DL.Microsoft.com/Eclipse**in.
 
 4. Selecteer **Toevoegen**.
 
@@ -275,7 +270,7 @@ U kunt de Eclipse-invoegtoepassing voor Service Fabric installeren vanuit de Ecl
 
 6. Voer de installatiestappen uit. Ga vervolgens akkoord met de gebruiksrechtovereenkomst.
 
-Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help** > **over** > de**installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **Update** als er een nieuwere versie beschikbaar is.
+Als u de Eclipse-invoegtoepassing voor Service Fabric al hebt geïnstalleerd, controleert u of u de meest recente versie gebruikt. Controleer door **Help**  >  **over**de  >  **installatie Details**van de eclips te selecteren. Zoek vervolgens naar Service Fabric in de lijst met geïnstalleerde invoeg toepassingen. Selecteer **Update** als er een nieuwere versie beschikbaar is.
 
 Zie [Service Fabric-invoegtoepassing voor de ontwikkeling van Eclipse Java-toepassingen](service-fabric-get-started-eclipse.md) voor meer informatie.
 

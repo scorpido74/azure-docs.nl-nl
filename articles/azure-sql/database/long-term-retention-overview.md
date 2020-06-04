@@ -1,7 +1,7 @@
 ---
 title: Langetermijnretentie van back-ups
-titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Meer informatie over hoe Azure SQL Database en SQL Managed instance ondersteuning bieden voor een volledige back-up van Maxi maal tien jaar, via het Bewaar beleid voor de lange termijn.
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
+description: Meer informatie over hoe Azure SQL Database & Azure SQL Managed instance ondersteuning biedt voor Maxi maal tien jaar back-ups van de volledige data base via het Bewaar beleid voor de lange termijn.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,15 +12,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0e562b92db16456956ff2fe1cbec0f1addde87ef
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048285"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344506"
 ---
-# <a name="long-term-retention---azure-sql-database--sql-managed-instance"></a>Lange termijn retentie-Azure SQL Database & SQL Managed instance
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Lange termijn retentie-Azure SQL Database en Azure SQL Managed instance
 
 Veel toepassingen hebben wettelijke, nalevings-of andere zakelijke doel einden waarvoor u database back-ups wilt behouden die groter zijn dan de 7-35 dagen die worden verschaft door Azure SQL Database en Azure SQL Managed instance [automatische back-ups](automated-backups-overview.md). Door gebruik te maken van de functie voor lange termijn retentie (LTR) kunt u de volledige back-ups van de opgegeven SQL Database en SQL Managed instance in Azure Blob-opslag met geografisch redundante opslag met lees toegang voor Maxi maal tien jaar opslaan. U kunt vervolgens een back-up herstellen als een nieuwe data base. Zie [Azure Storage redundantie](../../storage/common/storage-redundancy.md)voor meer informatie over Azure Storage redundantie. 
 
@@ -32,7 +31,7 @@ Lange tijd retentie kan worden ingeschakeld voor Azure SQL Database en heeft een
 
 ## <a name="how-long-term-retention-works"></a>Hoe lange termijn retentie werkt
      
-Lange termijn retentie van back-ups (LTR) maakt gebruik van de volledige database back-ups die [automatisch worden gemaakt](automated-backups-overview.md) voor het inschakelen van punt-tijd herstel (PITR). Als een LTR-beleid is geconfigureerd, worden deze back-ups gekopieerd naar verschillende blobs voor lange termijn opslag. De kopie is een achtergrond taak die geen invloed heeft op de prestaties van de data base-workload. Het LTR-beleid voor elke SQL database kan ook bepalen hoe vaak de LTR-back-ups worden gemaakt.
+Lange termijn retentie van back-ups (LTR) maakt gebruik van de volledige database back-ups die [automatisch worden gemaakt](automated-backups-overview.md) voor het inschakelen van punt-tijd herstel (PITR). Als een LTR-beleid is geconfigureerd, worden deze back-ups gekopieerd naar verschillende blobs voor lange termijn opslag. De kopie is een achtergrond taak die geen invloed heeft op de prestaties van de data base-workload. Het LTR-beleid voor elke data base in SQL Database kan ook opgeven hoe vaak de LTR-back-ups worden gemaakt.
 
 Als u LTR wilt inschakelen, kunt u een beleid definiëren met behulp van een combi natie van vier para meters: wekelijks retentie van back-ups (W), maandelijkse back-up (M), jaarlijks back-upbewaaring (Y) en week van jaar (WeekOfYear). Als u W opgeeft, wordt één back-up elke week gekopieerd naar de lange termijn opslag. Als u M opgeeft, wordt de eerste back-up van elke maand gekopieerd naar de lange termijn opslag. Als u Y opgeeft, wordt één back-up in de week die is opgegeven door WeekOfYear gekopieerd naar de lange termijn opslag. Als de opgegeven WeekOfYear zich in het verleden bevindt toen het beleid werd geconfigureerd, wordt de eerste LTR-back-up in het volgende jaar gemaakt. Elke back-up wordt opgeslagen in de lange termijn opslag op basis van de beleids parameters die worden geconfigureerd wanneer de LTR-back-up wordt gemaakt.
 
@@ -78,25 +77,26 @@ Als u gebruikmaakt van actieve geo-replicatie of failover-groepen als uw bedrijf
 > [!NOTE]
 > Wanneer de oorspronkelijke primaire data base herstelt van een storing die de failover heeft veroorzaakt, wordt deze een nieuwe secundaire. Daarom wordt het maken van de back-up niet hervat en wordt het bestaande LTR-beleid pas van kracht nadat het opnieuw wordt ingesteld als primair. 
 
-## <a name="managed-instance-support"></a>Ondersteuning voor beheerde exemplaren
+## <a name="sql-managed-instance-support"></a>Ondersteuning voor SQL Managed instance
 
-Het gebruik van een lange termijn voor retentie van back-ups met een Azure SQL Managed instance heeft de volgende beperkingen:
+Voor een lange termijn retentie van back-ups met Azure SQL Managed instance gelden de volgende beperkingen:
 
 - **Beperkte open bare preview** -deze preview is alleen beschikbaar voor EA-en CSP-abonnementen en is onderhevig aan beperkte Beschik baarheid.  
 - [**Alleen Power shell**](../managed-instance/long-term-backup-retention-configure.md) : er is momenteel geen ondersteuning voor Azure Portal. LTR moet zijn ingeschakeld met behulp van Power shell. 
 
-Als u de inschrijving wilt aanvragen, maakt u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/). Voor het probleem type SELECT Technical issue, voor service Kies SQL Database Managed instance en voor het probleem type Selecteer **back-up, herstel en bedrijfs continuïteit/lange termijn retentie van back-ups**. In uw aanvraag moet u aangeven dat u wilt inschrijven voor een beperkte open bare preview van LTR voor een beheerd exemplaar.
+Als u de inschrijving wilt aanvragen, maakt u een [ondersteunings ticket voor Azure](https://azure.microsoft.com/support/create-ticket/). Voor het probleem type SELECT Technical issue, voor service Kies SQL Managed instance en voor het probleem type Selecteer **back-up, herstel en bedrijfs continuïteit/lange termijn retentie van back-ups**. In uw aanvraag moet u aangeven dat u wilt worden inge schreven als beperkte open bare preview-versie voor een SQL Managed instance.
 
 ## <a name="configure-long-term-backup-retention"></a>Langetermijnretentie van back-ups configureren
 
-U kunt lange termijn retentie van back-ups configureren met behulp van de Azure Portal en Power shell voor een Azure SQL Database, en Power shell voor een door Azure SQL beheerd exemplaar. Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server of een beheerd exemplaar onder hetzelfde abonnement als de oorspronkelijke data base.
+U kunt lange termijn retentie van back-ups configureren met behulp van de Azure Portal en Power shell voor Azure SQL Database en Power shell voor Azure SQL Managed instance. Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server of een beheerd exemplaar onder hetzelfde abonnement als de oorspronkelijke data base.
 
-Voor informatie over het configureren van lange termijn retentie of het herstellen van een Data Base van een back-up voor een Azure SQL Database met behulp van de Azure Portal of Power shell, raadpleegt u [Azure SQL database lange termijn retentie van back-ups beheren](long-term-backup-retention-configure.md)
+Voor informatie over het configureren van lange termijn retentie of het herstellen van een Data Base vanuit een back-up voor SQL Database met behulp van de Azure Portal of Power shell, Zie [beheren Azure SQL database lange termijn retentie van back-ups](long-term-backup-retention-configure.md)
 
-Zie voor meer informatie over het configureren van lange termijn retentie of het herstellen van een Data Base van een back-up voor een Azure SQL Managed instance met behulp van Power shell de [Azure SQL Managed instance retentie van back-ups op lange termijn beheren](../managed-instance/long-term-backup-retention-configure.md). 
+Zie voor meer informatie over het configureren van een lange termijn retentie of het herstellen van een Data Base van een back-up voor een SQL Managed instance met behulp van Power shell de [Azure SQL Managed instance retentie van back-ups op lange termijn beheren](../managed-instance/long-term-backup-retention-configure.md).
 
-Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server onder hetzelfde abonnement als de oorspronkelijke data base. Zie voor meer informatie over het herstellen van een Data Base uit een LTR-back-up, met behulp van de Azure Portal of Power shell [Azure SQL database lange termijn retentie van back-ups beheren](long-term-backup-retention-configure.md). In uw aanvraag moet u aangeven dat u wilt worden inge schreven in de beperkte open bare preview van LTR voor een beheerd exemplaar.
+Als u een Data Base wilt herstellen vanuit de LTR-opslag, kunt u een specifieke back-up selecteren op basis van de tijds tempel. De data base kan worden hersteld naar een bestaande server onder hetzelfde abonnement als de oorspronkelijke data base. Zie voor meer informatie over het herstellen van een Data Base uit een LTR-back-up, met behulp van de Azure Portal of Power shell [Azure SQL database lange termijn retentie van back-ups beheren](long-term-backup-retention-configure.md). In uw aanvraag moet u aangeven dat u wilt worden inge schreven in de beperkte open bare preview van LTR voor SQL Managed instance.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Omdat database back-ups gegevens beveiligen tegen onbedoelde beschadiging of verwijdering, vormen ze een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen. Zie [overzicht van bedrijfs continuïteit](business-continuity-high-availability-disaster-recover-hadr-overview.md)voor meer informatie over de andere SQL database oplossingen voor bedrijfs continuïteit.
+ 

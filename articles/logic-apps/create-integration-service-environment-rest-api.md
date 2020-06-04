@@ -3,15 +3,15 @@ title: Integratie service omgevingen (ISEs) met Logic Apps REST API maken
 description: Maak een integratie service omgeving (ISE) met behulp van de Logic Apps REST API zodat u Azure Virtual Networks (VNETs) kunt openen vanuit Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: 7b163c65c0bf781a068abcd6434d75149a1de20b
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478831"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324756"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Maak een integratie service omgeving (ISE) met behulp van de Logic Apps REST API
 
@@ -50,13 +50,15 @@ Het volt ooien van de implementatie duurt gewoonlijk binnen twee uur. De impleme
 
 Neem de volgende eigenschappen op in de aanvraag header:
 
-* `Content-type`: Stel de waarde van deze `application/json`eigenschap in op.
+* `Content-type`: Stel de waarde van deze eigenschap in op `application/json` .
 
 * `Authorization`: Stel deze eigenschaps waarde in op het Bearer-token voor de klant die toegang heeft tot het Azure-abonnement of de resource groep die u wilt gebruiken.
 
-### <a name="request-body-syntax"></a>Syntaxis van aanvraag tekst
+<a name="request-body"></a>
 
-Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschappen worden beschreven die moeten worden gebruikt bij het maken van uw ISE:
+## <a name="request-body"></a>Aanvraagbody
+
+Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschappen worden beschreven die moeten worden gebruikt bij het maken van uw ISE. Als u een ISE wilt maken die het gebruik van een zelfondertekend certificaat dat is geïnstalleerd op de `TrustedRoot` locatie, neemt u het `certificates` object op in de sectie ISE-definitie `properties` . Voor een bestaande ISE kunt u een PATCH aanvraag alleen voor het object verzenden `certificates` . Zie ook [http-connector-zelfondertekende certificaten](../connectors/connectors-native-http.md#self-signed)voor meer informatie over het gebruik van zelfondertekende certificaten.
 
 ```json
 {
@@ -88,6 +90,13 @@ Hier volgt de syntaxis van de hoofd tekst van de aanvraag, waarin de eigenschapp
                "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Network/virtualNetworks/{virtual-network-name}/subnets/{subnet-4}",
             }
          ]
+      },
+      // Include `certificates` object to enable self-signed certificate support
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
       }
    }
 }
@@ -127,7 +136,12 @@ In dit voor beeld van de aanvraag tekst worden de voorbeeld waarden weer gegeven
                "id": "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.Network/virtualNetworks/Fabrikam-VNET/subnets/subnet-4",
             }
          ]
-      }
+      },
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
+            "kind": "TrustedRoot"
+         }
    }
 }
 ```

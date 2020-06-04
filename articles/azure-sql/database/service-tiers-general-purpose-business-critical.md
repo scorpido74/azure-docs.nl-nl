@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 01/30/2020
-ms.openlocfilehash: 1783285704870dbcaeac731dc085bddf8851c7be
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6b56d96a9684b2da3889219d4a5e13302e7e22e3
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049825"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343894"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Service lagen van Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ In de volgende tabel worden de belangrijkste verschillen tussen service lagen vo
 | **Reken grootte**| SQL Database | 1 tot 80 vCores | 1 tot 80 vCores | 1 tot 80 vCores |
 | | SQL Managed Instance | 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | 4, 8, 16, 24, 32, 40, 64, 80 vCores |
 | | Door SQL beheerde exemplaar groepen | 2, 4, 8, 16, 24, 32, 40, 64, 80 vCores | N.v.t. | N.v.t. |
-| **Opslagtype** | Alles | Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
+| **Opslag type** | Alles | Premium externe opslag (per instantie) | Niet-gekoppelde opslag met lokale SSD-cache (per instantie) | Super snelle lokale SSD-opslag (per instantie) |
 | **Databasegrootte** | SQL Database | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
 | | SQL Managed Instance  | 32 GB – 8 TB | N.v.t. | 32 GB – 4 TB |
 | **Opslag grootte** | SQL Database | 5 GB – 4 TB | Tot 100 TB | 5 GB – 4 TB |
@@ -94,7 +94,7 @@ Gebruik [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/syste
 Opslag voor back-ups van data bases wordt toegewezen ter ondersteuning van de mogelijkheden voor PITR (Point-in-time Restore) en [ltr (Long-term retention)](long-term-retention-overview.md) van SQL database en SQL Managed instance. Deze opslag wordt afzonderlijk voor elke Data Base toegewezen en gefactureerd als twee afzonderlijke kosten per data base.
 
 - **PITR**: afzonderlijke database back-ups worden automatisch naar [geografisch redundante opslag met lees toegang (RA-GRS)](../../storage/common/geo-redundant-design.md) gekopieerd. De opslag grootte neemt dynamisch toe wanneer er nieuwe back-ups worden gemaakt. De opslag wordt gebruikt door wekelijkse volledige back-ups, dagelijkse differentiële back-ups en back-ups van transactie logboeken, die elke vijf minuten worden gekopieerd. Het opslag verbruik is afhankelijk van de frequentie waarmee de data base wordt gewijzigd en de retentie periode voor back-ups. U kunt tussen 7 en 35 dagen een afzonderlijke Bewaar periode configureren voor elke Data Base. Er wordt geen extra kosten in rekening gebracht voor een minimale opslag hoeveelheid die gelijk is aan 100 procent (1x) van de grootte van de data base. Voor de meeste data bases is deze hoeveelheid voldoende om zeven dagen back-ups op te slaan.
-- **LTR**: u hebt ook de mogelijkheid om lange termijn retentie van volledige back-ups te configureren voor Maxi maal tien jaar (deze functie is in [beperkte open bare preview-versie van SQL Managed instance](long-term-retention-overview.md#managed-instance-support). Als u een LTR-beleid instelt, worden deze back-ups automatisch opgeslagen in RA-GRS-opslag, maar u kunt bepalen hoe vaak de back-ups worden gekopieerd. Als u wilt voldoen aan verschillende nalevings vereisten, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. De configuratie die u kiest, bepaalt hoeveel opslag ruimte wordt gebruikt voor V.L.N.R.-back-ups. U kunt de LTR-prijs calculator gebruiken om de kosten van V.L.N.R.-opslag te schatten. Zie [SQL database lange termijn retentie](long-term-retention-overview.md)voor meer informatie.
+- **LTR**: u hebt ook de mogelijkheid om lange termijn retentie van volledige back-ups te configureren voor Maxi maal tien jaar (deze functie is in [beperkte open bare preview-versie van SQL Managed instance](long-term-retention-overview.md#sql-managed-instance-support). Als u een LTR-beleid instelt, worden deze back-ups automatisch opgeslagen in RA-GRS-opslag, maar u kunt bepalen hoe vaak de back-ups worden gekopieerd. Als u wilt voldoen aan verschillende nalevings vereisten, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. De configuratie die u kiest, bepaalt hoeveel opslag ruimte wordt gebruikt voor V.L.N.R.-back-ups. U kunt de LTR-prijs calculator gebruiken om de kosten van V.L.N.R.-opslag te schatten. Zie [SQL database lange termijn retentie](long-term-retention-overview.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176155"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341008"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -28,7 +28,7 @@ AzCopy is een opdracht regel programma dat u kunt gebruiken voor het kopiëren v
 
 ## <a name="configure-proxy-settings"></a>Proxyinstellingen configureren
 
-Stel de `https_proxy` omgevings variabele in om de proxy-instellingen voor AzCopy te configureren. Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
+Stel de omgevings variabele in om de proxy-instellingen voor AzCopy te configureren `https_proxy` . Als u AzCopy uitvoert in Windows, detecteert AzCopy automatisch proxy-instellingen. u hoeft deze instelling niet te gebruiken in Windows. Als u kiest voor het gebruik van deze instelling in Windows, wordt automatische detectie vervangen.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
@@ -37,6 +37,17 @@ Stel de `https_proxy` omgevings variabele in om de proxy-instellingen voor AzCop
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Momenteel biedt AzCopy geen ondersteuning voor proxy's waarvoor authenticatie met NTLM of Kerberos is vereist.
+
+### <a name="bypassing-a-proxy"></a>Een proxy overs Laan ###
+
+Als u AzCopy uitvoert in Windows en u wilt weten dat u _geen_ proxy kunt gebruiken (in plaats van de instellingen automatisch te detecteren), gebruikt u deze opdrachten. Met deze instellingen zal AzCopy niet zoeken naar of proberen om een proxy te gebruiken.
+
+| Besturingssysteem | Omgeving | Opdrachten  |
+|--------|-----------|----------|
+| **Windows** | Opdracht prompt (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+Op andere besturings systemen hoeft u de HTTPS_PROXY variabele niet uit te laten staan als u geen proxy wilt gebruiken.
 
 ## <a name="optimize-performance"></a>Prestaties optimaliseren
 
@@ -59,7 +70,7 @@ Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voere
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Voorbeeld** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Hierbij** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > In dit voor beeld worden padvariabelen met enkele aanhalings tekens (' ') Inge sloten. Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
@@ -68,11 +79,11 @@ Met deze opdracht wordt een prestatie Bench Mark uitgevoerd door test gegevens n
 
 Zie [azcopy Bank](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie.
 
-Als u gedetailleerde Help-informatie voor deze opdracht wilt `azcopy bench -h` weer geven, typt u en drukt u vervolgens op ENTER.
+Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u `azcopy bench -h` en drukt u vervolgens op ENTER.
 
 ### <a name="optimize-throughput"></a>Door Voer optimaliseren
 
-U kunt de `cap-mbps` vlag in uw opdrachten gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een taak en een CapsLock-door Voer `10` naar mega bytes (MB) per seconde hervat. 
+U kunt de `cap-mbps` vlag in uw opdrachten gebruiken om een plafond te plaatsen op basis van het gegevens aantal door voer. Met de volgende opdracht wordt bijvoorbeeld een taak en een CapsLock-door voer naar `10` mega bytes (MB) per seconde hervat. 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -80,7 +91,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 De door Voer kan afnemen bij het overbrengen van kleine bestanden. U kunt de door Voer verhogen door de `AZCOPY_CONCURRENCY_VALUE` omgevings variabele in te stellen. Met deze variabele geeft u het aantal gelijktijdige aanvragen op dat kan worden uitgevoerd.  
 
-Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32`. Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `3000`, maar u kunt deze waarde ook op een hoger of lager niveau instellen. 
+Als uw computer minder dan 5 Cpu's heeft, wordt de waarde van deze variabele ingesteld op `32` . Anders is de standaard waarde gelijk aan 16 vermenigvuldigd met het aantal Cpu's. De maximale standaard waarde van deze variabele is `3000` , maar u kunt deze waarde ook op een hoger of lager niveau instellen. 
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
@@ -107,26 +118,26 @@ Deze waarde in gigabytes (GB) uitdrukken.
 
 De [Sync](storage-ref-azcopy-sync.md) -opdracht identificeert alle bestanden op de bestemming en vergelijkt vervolgens bestands namen en tijdstippen die het laatst zijn gewijzigd voordat de synchronisatie bewerking wordt gestart. Als u een groot aantal bestanden hebt, kunt u de prestaties verbeteren door deze bewerking vooraf uit te scha kelen. 
 
-U kunt dit doen door in plaats daarvan de azcopy-opdracht [copy](storage-ref-azcopy-copy.md) te `--overwrite` gebruiken en `ifSourceNewer`de vlag in te stellen op. AzCopy vergelijkt bestanden als ze worden gekopieerd zonder dat er vooraf scans en vergelijkingen worden uitgevoerd. Dit biedt een prestatie rand in gevallen waarin een groot aantal bestanden moet worden vergeleken.
+U kunt dit doen door in plaats daarvan de azcopy-opdracht [copy](storage-ref-azcopy-copy.md) te gebruiken en de `--overwrite` vlag in te stellen op `ifSourceNewer` . AzCopy vergelijkt bestanden als ze worden gekopieerd zonder dat er vooraf scans en vergelijkingen worden uitgevoerd. Dit biedt een prestatie rand in gevallen waarin een groot aantal bestanden moet worden vergeleken.
 
-Met de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht worden geen bestanden van de bestemming verwijderd. Als u de bestanden op de bestemming wilt verwijderen wanneer deze niet meer op de bron aanwezig zijn, gebruikt u de [azcopy Sync](storage-ref-azcopy-sync.md) - `--delete-destination` opdracht met de vlag ingesteld op `true` een `prompt`waarde van of. 
+Met de [azcopy Copy](storage-ref-azcopy-copy.md) opdracht worden geen bestanden van de bestemming verwijderd. Als u de bestanden op de bestemming wilt verwijderen wanneer deze niet meer op de bron aanwezig zijn, gebruikt u de [azcopy Sync](storage-ref-azcopy-sync.md) -opdracht met de `--delete-destination` vlag ingesteld op een waarde van `true` of `prompt` . 
 
 ## <a name="troubleshoot-issues"></a>Problemen oplossen
 
 AzCopy maakt logboek-en plan bestanden voor elke taak. U kunt de Logboeken gebruiken om potentiële problemen te onderzoeken en op te lossen. 
 
-De logboeken bevatten de status van fout (`UPLOADFAILED`, `COPYFAILED`, en `DOWNLOADFAILED`), het volledige pad en de reden van de fout.
+De logboeken bevatten de status van fout ( `UPLOADFAILED` , `COPYFAILED` , en `DOWNLOADFAILED` ), het volledige pad en de reden van de fout.
 
 De logboek-en plan bestanden bevinden zich standaard in de `%USERPROFILE%\.azcopy` map in Windows of `$HOME$\.azcopy` in de map op Mac en Linux, maar u kunt deze locatie desgewenst wijzigen.
 
-De relevante fout is niet noodzakelijkerwijs de eerste fout die in het bestand wordt weer gegeven. Voor fouten, zoals netwerk fouten, time-outs en fouten bij de server bezet, zal AzCopy Maxi maal 20 keer opnieuw proberen en wordt het proces voor nieuwe pogingen meestal voltooid.  De eerste fout die u ziet kan iets onschadelijk zijn.  In plaats van de eerste fout in het bestand te bekijken, zoekt u naar de fouten die bijna `UPLOADFAILED`, `COPYFAILED`of `DOWNLOADFAILED`. 
+De relevante fout is niet noodzakelijkerwijs de eerste fout die in het bestand wordt weer gegeven. Voor fouten, zoals netwerk fouten, time-outs en fouten bij de server bezet, zal AzCopy Maxi maal 20 keer opnieuw proberen en wordt het proces voor nieuwe pogingen meestal voltooid.  De eerste fout die u ziet kan iets onschadelijk zijn.  In plaats van de eerste fout in het bestand te bekijken, zoekt u naar de fouten die bijna `UPLOADFAILED` , `COPYFAILED` of `DOWNLOADFAILED` . 
 
 > [!IMPORTANT]
 > Wanneer u een aanvraag indient om Microsoft Ondersteuning (of het probleem met een derde partij op te lossen), deelt u de geredigeerde versie van de opdracht die u wilt uitvoeren. Dit zorgt ervoor dat de SAS niet per ongeluk met iedereen wordt gedeeld. U kunt de geredigeerde versie vinden aan het begin van het logboek bestand.
 
 ### <a name="review-the-logs-for-errors"></a>De logboeken controleren op fouten
 
-Met `UPLOADFAILED` de volgende opdracht worden alle fouten uit het `04dc9ca9-158f-7945-5933-564021086c79` logboek opgehaald:
+Met de volgende opdracht worden alle fouten `UPLOADFAILED` uit het logboek opgehaald `04dc9ca9-158f-7945-5933-564021086c79` :
 
 **Windows (Power shell)**
 
@@ -202,14 +213,14 @@ Gebruik de `azcopy env` om de huidige waarde van deze variabele te controleren. 
 
 ## <a name="change-the-default-log-level"></a>Het standaard logboek niveau wijzigen
 
-AzCopy-logboek niveau is standaard ingesteld op `INFO`. Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven ``--log-level`` met behulp van de optie. 
+AzCopy-logboek niveau is standaard ingesteld op `INFO` . Als u de uitgebreidheid van het logboek wilt beperken om schijf ruimte te besparen, kunt u deze instelling overschrijven met behulp van de ``--log-level`` optie. 
 
-Beschik bare logboek niveaus `NONE`zijn `DEBUG`: `INFO`, `WARNING`, `ERROR`, `PANIC`,, `FATAL`en.
+Beschik bare logboek niveaus zijn: `NONE` ,, `DEBUG` `INFO` ,,, en `WARNING` `ERROR` `PANIC` `FATAL` .
 
 ## <a name="remove-plan-and-log-files"></a>Plan-en logboek bestanden verwijderen
 
-Als u alle plannings-en logboek bestanden van uw lokale computer wilt verwijderen om schijf ruimte te besparen, `azcopy jobs clean` gebruikt u de opdracht.
+Als u alle plannings-en logboek bestanden van uw lokale computer wilt verwijderen om schijf ruimte te besparen, gebruikt u de `azcopy jobs clean` opdracht.
 
-Als u de plannings-en logboek bestanden wilt verwijderen die zijn gekoppeld `azcopy jobs rm <job-id>`aan één taak, gebruikt u. Vervang de `<job-id>` tijdelijke aanduiding in dit voor beeld door de taak-id van de taak.
+Als u de plannings-en logboek bestanden wilt verwijderen die zijn gekoppeld aan één taak, gebruikt u `azcopy jobs rm <job-id>` . Vervang de `<job-id>` tijdelijke aanduiding in dit voor beeld door de taak-id van de taak.
 
 

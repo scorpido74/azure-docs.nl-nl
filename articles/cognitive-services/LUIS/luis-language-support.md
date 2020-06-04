@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 69ff3aa3f649b054192f9dd001af83dc8dbc2317
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745698"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340195"
 ---
 # <a name="language-and-region-support-for-luis"></a>Taal-en regio ondersteuning voor LUIS
 
@@ -111,7 +111,7 @@ Om machine learning uit te voeren, breekt LUIS een utterance in [tokens](luis-gl
 
 De volgende cult uren hebben aangepaste tokenizer-versies:
 
-|Cultuur|Versie|Doel|
+|Cultuur|Versie|Functie|
 |--|--|--|
 |Duits<br>`de-de`|1.0.0|Tokenizes woorden door ze te splitsen met behulp van een tokenizer op basis van machine learning dat probeert samengestelde woorden op te splitsen in hun afzonderlijke onderdelen.<br>Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, wordt deze ingeschakeld `Ich fahre einen kranken wagen` . Het markeren van `kranken` en `wagen` onafhankelijk van verschillende entiteiten toestaan.|
 |Duits<br>`de-de`|1.0.2|Tokenizes woorden door ze te splitsen op spaties.<br> Als een gebruiker `Ich fahre einen krankenwagen` als een utterance wordt ingevoerd, blijft het één token. `krankenwagen`Is daarom gemarkeerd als één entiteit. |

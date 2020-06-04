@@ -2,18 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: batch
-author: LauraBrenner
+author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 05/28/2019
-ms.author: labrenne
+ms.date: 06/03/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: a0d74aa38dffdd41fbe617066391ef271a507349
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d23da1c3a45ed12193dfd4c1fc2ede453fc6ac7
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81737957"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323876"
 ---
 | **Resource** | **Standaardlimiet** | **Maximumlimiet** |
 | --- | --- | --- |
@@ -24,6 +24,9 @@ ms.locfileid: "81737957"
 | Pools per Batch-account | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup>Neem contact op met de ondersteuning van Azure als u een grotere hoeveelheid wilt aanvragen.
+
+> [!IMPORTANT]
+> We wijzigen de manier waarop u toegewezen quota aanvraagt en beheert.  Het totale toegewezen Vcpu's is de momenteel afgedwongen waarde, maar binnenkort wordt het toegewezen quotum per VM-serie afgedwongen. Quota met een lage prioriteit worden nog steeds afgedwongen op basis van de totale limiet; deze wordt niet afgedwongen door de VM-serie.
 
 > [!NOTE]
 > De standaardlimieten variëren afhankelijk van het type abonnement dat u gebruikt voor het maken van een Batch-account. De weergegeven kerngeheugenquota zijn voor Batch-accounts in de modus Batch-service. [Bekijk de quota in uw Batch-account](../articles/batch/batch-quota-limit.md#view-batch-quotas).

@@ -8,18 +8,18 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c5880aac01e0611565afb825a61b682197baf5d6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68932696"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344744"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 naar v2-migratie handleiding voor LUIS-apps
-De api's voor het versie 1- [eind punt](https://aka.ms/v1-endpoint-api-docs) en het [ontwerp](https://aka.ms/v1-authoring-api-docs) zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's. 
+De api's voor het versie 1- [eind punt](https://aka.ms/v1-endpoint-api-docs) en het [ontwerp](https://aka.ms/v1-authoring-api-docs) zijn afgeschaft. Gebruik deze hand leiding om te begrijpen hoe u kunt migreren naar versie 2- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's.
 
 ## <a name="new-azure-regions"></a>Nieuwe Azure-regio's
 LUIS heeft nieuwe [regio's](https://aka.ms/LUIS-regions) voor de Luis-api's. LUIS biedt een andere portal voor regio groepen. De toepassing moet worden gemaakt in dezelfde regio als die waarvoor u de query verwacht. In toepassingen worden regio's niet automatisch gemigreerd. U exporteert de app uit de ene regio en importeert deze vervolgens in een nieuwe regio.
@@ -112,7 +112,7 @@ De Api's voor het abonnements-endpoint zijn afgeschaft en retour neren 410 weg.
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure- [eindpunt sleutels](luis-how-to-azure-subscription.md) worden gegenereerd in de Azure Portal. U wijst de sleutel toe aan een LUIS-app op de pagina **[publiceren](luis-how-to-azure-subscription.md)** . U hoeft niet meer te weten over de daad werkelijke sleutel waarde. LUIS maakt gebruik van de naam van het abonnement om de toewijzing te maken. 
+Azure- [eindpunt sleutels](luis-how-to-azure-subscription.md) worden gegenereerd in de Azure Portal. U wijst de sleutel toe aan een LUIS-app op de pagina **[publiceren](luis-how-to-azure-subscription.md)** . U hoeft niet meer te weten over de daad werkelijke sleutel waarde. LUIS maakt gebruik van de naam van het abonnement om de toewijzing te maken.
 
 ## <a name="new-versioning-route"></a>Nieuwe versie route
 Het v2-model is nu opgenomen in een [versie](luis-how-to-manage-versions.md). Een versie naam is 10 tekens in de route. De standaard versie is ' 0,1 '.
@@ -153,22 +153,22 @@ Vooraf [ontwikkelde domeinen](luis-how-to-use-prebuilt-domains.md) bieden een vo
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |ophalen|
 
 ## <a name="importing-1x-app-into-2x"></a>De 1. x-app wordt geïmporteerd in 2. x
-De geëxporteerde JSON van de 1. x-app heeft enkele gebieden die u moet wijzigen voordat u deze importeert in [LUIS][LUIS] 2,0. 
+De geëxporteerde JSON van de 1. x-app heeft enkele gebieden die u moet wijzigen voordat u deze importeert in [LUIS][LUIS] 2,0.
 
-### <a name="prebuilt-entities"></a>Vooraf gemaakte entiteiten 
-De [vooraf gemaakte entiteiten](luis-prebuilt-entities.md) zijn gewijzigd. Zorg ervoor dat u de v2 vooraf gedefinieerde entiteiten gebruikt. Dit omvat het gebruik van [datetimeV2](luis-reference-prebuilt-datetimev2.md)in plaats van DateTime. 
+### <a name="prebuilt-entities"></a>Vooraf gemaakte entiteiten
+De [vooraf gemaakte entiteiten](luis-prebuilt-entities.md) zijn gewijzigd. Zorg ervoor dat u de v2 vooraf gedefinieerde entiteiten gebruikt. Dit omvat het gebruik van [datetimeV2](luis-reference-prebuilt-datetimev2.md)in plaats van DateTime.
 
 ### <a name="actions"></a>Acties
-De eigenschap actions is niet meer geldig. Deze moet leeg zijn 
+De eigenschap actions is niet meer geldig. Deze moet leeg zijn
 
 ### <a name="labeled-utterances"></a>Gelabelde uitingen
-V1 heeft uitingen toegestaan om spaties toe te voegen aan het begin of einde van het woord of de woord groep. De spaties zijn verwijderd. 
+V1 heeft uitingen toegestaan om spaties toe te voegen aan het begin of einde van het woord of de woord groep. De spaties zijn verwijderd.
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>Veelvoorkomende redenen voor HTTP-antwoord status codes
 Zie [Luis-API-respons codes](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Gebruik de v2 API-documentatie om bestaande REST-aanroepen bij te werken naar LUIS- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's. 
+Gebruik de v2 API-documentatie om bestaande REST-aanroepen bij te werken naar LUIS- [eind punt](https://go.microsoft.com/fwlink/?linkid=2092356) -en [ontwerp](https://go.microsoft.com/fwlink/?linkid=2092087) -api's.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

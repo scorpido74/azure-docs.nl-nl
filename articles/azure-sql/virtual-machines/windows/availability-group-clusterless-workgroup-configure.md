@@ -1,6 +1,6 @@
 ---
 title: Een domein onafhankelijke groep beschikbaarheids groep configureren
-description: Meer informatie over het configureren van een Active Directory-domein-onafhankelijke werk groep altijd on-beschikbaarheids groep op een SQL Server virtuele machine in Azure.
+description: Meer informatie over het configureren van een Active Directory domein onafhankelijke werk groep altijd on-beschikbaarheids groep op een SQL Server virtuele machine in Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049328"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343690"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Een beschikbaarheids groep voor werk groepen configureren 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Als u een beschikbaarheids groep voor werk groepen wilt configureren, hebt u het
 
 Ter referentie worden de volgende para meters in dit artikel gebruikt, maar kunnen ze zo nodig worden gewijzigd: 
 
-| **Naam** | **Bepaalde** |
+| **Naam** | **Parameter** |
 | :------ | :---------------------------------- |
 | **Knooppunt1**   | AGNode1 (10.0.0.4) |
 | **Knooppunt2**   | AGNode2 (10.0.0.5) |
@@ -46,13 +46,13 @@ Ter referentie worden de volgende para meters in dit artikel gebruikt, maar kunn
 | **Naam van werk groep** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>DNS-achtervoegsel instellen 
+## <a name="set-a-dns-suffix"></a>Een DNS-achtervoegsel instellen 
 
 In deze stap configureert u het DNS-achtervoegsel voor beide servers. Bijvoorbeeld `ag.wgcluster.example.com`. Zo kunt u de naam van het object gebruiken waarmee u verbinding wilt maken als een volledig gekwalificeerd adres binnen uw netwerk, zoals `AGNode1.ag.wgcluster.example.com` . 
 
 Voer de volgende stappen uit om het DNS-achtervoegsel te configureren:
 
-1. RDP in uw eerste knoop punt en Open Serverbeheer. 
+1. RDP in op het eerste knoop punt en Open Serverbeheer. 
 1. Selecteer **lokale server** en selecteer vervolgens de naam van uw virtuele machine onder **computer naam**. 
 1. Selecteer **wijzigen...** onder **om de naam van deze computer te wijzigen...**. 
 1. Wijzig de naam van de werkgroepnaam zodat deze een zinvol is, zoals `AGWORKGROUP` : 
@@ -71,13 +71,13 @@ Voer de volgende stappen uit om het DNS-achtervoegsel te configureren:
 1. Start de server opnieuw op wanneer u hierom wordt gevraagd. 
 1. Herhaal deze stappen op alle andere knoop punten die moeten worden gebruikt voor de beschikbaarheids groep. 
 
-## <a name="edit-host-file"></a>Hostbestand bewerken
+## <a name="edit-a-host-file"></a>Een hostbestand bewerken
 
 Omdat er geen Active Directory is, is er geen manier om Windows-verbindingen te verifiëren. Wijs als zodanig vertrouwen toe door het hostbestand te bewerken met een tekst editor. 
 
 Voer de volgende stappen uit om het hostbestand te bewerken:
 
-1. RDP in uw virtuele machine. 
+1. RDP in op de virtuele machine. 
 1. Ga naar in **Verkenner** `c:\windows\system32\drivers\etc` . 
 1. Klik met de rechter muisknop op het bestand **hosts** en open het bestand met **Klad blok** (of een andere tekst editor).
 1. Voeg aan het einde van het bestand een vermelding toe voor elk knoop punt, de beschikbaarheids groep en de listener in de vorm van `IP Address, DNS Suffix #comment` als: 
@@ -132,11 +132,11 @@ Nadat het cluster is gemaakt, wijst u een statisch cluster-IP-adres toe. Hiervoo
 
 In deze stap configureert u een Cloud share-Witness. Als u niet bekend bent met de stappen, raadpleegt u de [zelf studie over failover-clusters](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
 
-## <a name="enable-availability-group-feature"></a>Functie beschikbaarheids groep inschakelen 
+## <a name="enable-the-availability-group-feature"></a>De functie beschikbaarheids groep inschakelen 
 
 In deze stap schakelt u de functie beschikbaarheids groep in. Als u niet bekend bent met de stappen, raadpleegt u de [zelf studie over de beschikbaarheids groep](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
 
-## <a name="create-keys-and-certificate"></a>Sleutels en certificaat maken
+## <a name="create-keys-and-certificates"></a>Sleutels en certificaten maken
 
 In deze stap maakt u certificaten die een SQL-aanmelding op het versleutelde eind punt gebruikt. Maak op elk knoop punt een map om de certificaat back-ups op te slaan, zoals `c:\certs` . 
 
@@ -277,16 +277,16 @@ GO
 
 Als er andere knoop punten in het cluster zijn, herhaalt u deze stappen ook om de betreffende certificaten en gebruikers namen te wijzigen. 
 
-## <a name="configure-availability-group"></a>Beschikbaarheids groep configureren
+## <a name="configure-an-availability-group"></a>Een beschikbaarheids groep configureren
 
 In deze stap configureert u uw beschikbaarheids groep en voegt u de data bases hieraan toe. Maak op dit moment geen listener. Als u niet bekend bent met de stappen, raadpleegt u de [zelf studie over de beschikbaarheids groep](availability-group-manually-configure-tutorial.md#create-the-availability-group). Zorg ervoor dat u een failover en failback initieert om te controleren of alles werkt zoals het zou moeten zijn. 
 
    > [!NOTE]
    > Als er een fout optreedt tijdens het synchronisatie proces, moet u mogelijk `NT AUTHORITY\SYSTEM` sysadmin-rechten verlenen voor het maken van cluster bronnen op het eerste knoop punt, zoals `AGNode1` tijdelijk. 
 
-## <a name="configure-load-balancer"></a>load balancer configureren
+## <a name="configure-a-load-balancer"></a>Een load balancer configureren
 
-In deze laatste stap configureert u de load balancer met behulp van de [Azure Portal](availability-group-load-balancer-portal-configure.md) of [Power shell](availability-group-listener-powershell-configure.md)
+In deze laatste stap configureert u de load balancer met behulp van de [Azure Portal](availability-group-load-balancer-portal-configure.md) of [Power shell](availability-group-listener-powershell-configure.md).
 
 
 ## <a name="next-steps"></a>Volgende stappen

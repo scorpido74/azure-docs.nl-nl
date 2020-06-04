@@ -8,19 +8,19 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 913a2b26f67773d9fafbc0a8430d121fbabb97cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1aed6b1c03a2b83e3b4fd91f1106614adb5a701
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053444"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344387"
 ---
 # <a name="add-contributors-to-your-app"></a>Inzenders toevoegen aan uw app
 
-Een app-eigenaar kan mede werkers toevoegen aan apps. Deze mede werkers kunnen het model, de training en de publicatie van de app, wijzigen. 
+Een app-eigenaar kan mede werkers toevoegen aan apps. Deze mede werkers kunnen het model, de training en de publicatie van de app, wijzigen.
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -30,7 +30,7 @@ De volgende procedure geldt voor alle gebruikers die zijn **gemigreerd** om de A
 
 U hebt gemigreerd als uw LUIS-ontwerp ervaring is gekoppeld aan een bewerkings resource op de pagina **Manage-> Azure-resources** in de Luis-Portal.
 
-1. Zoek de Language Understanding (LUIS) authoring resource in het Azure Portal. Hiermee wordt het type `LUIS.Authoring`.
+1. Zoek de Language Understanding (LUIS) authoring resource in het Azure Portal. Hiermee wordt het type `LUIS.Authoring` .
 1. Selecteer op de pagina Access Control van de resource **(IAM)** **+ toevoegen** en selecteer vervolgens **functie toewijzing toevoegen**.
 
     ![Voeg in Azure Portal roltoewijzing toe voor het ontwerpen van resources.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
@@ -39,7 +39,7 @@ U hebt gemigreerd als uw LUIS-ontwerp ervaring is gekoppeld aan een bewerkings r
 
     ![E-mail adres van gebruiker toevoegen aan de rol Inzender voor Azure AD](./media/luis-how-to-collaborate/add-role-assignment-for-contributor.png)
 
-    Wanneer het e-mail adres van de gebruiker wordt gevonden, selecteert u het account en selecteert u **Opslaan**. 
+    Wanneer het e-mail adres van de gebruiker wordt gevonden, selecteert u het account en selecteert u **Opslaan**.
 
     Als u problemen ondervindt met deze roltoewijzing, raadpleegt u [Azure-roltoewijzingen](../../role-based-access-control/role-assignments-portal.md) en [probleem oplossing voor Azure-toegangs beheer](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
@@ -60,7 +60,7 @@ Een app heeft één auteur, de eigenaar, maar kan veel deel nemers hebben. Als u
     ![E-mail adres van de mede werker toevoegen](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
 
 
-### <a name="users-with-multiple-emails"></a>Gebruikers met meerdere e-mail berichten 
+### <a name="users-with-multiple-emails"></a>Gebruikers met meerdere e-mail berichten
 
 Als u inzenders/mede werkers aan een LUIS-app toevoegt, geeft u precies het e-mail adres op. Terwijl Azure Active Directory (Azure AD) toestaat dat één gebruiker meer dan één e-mail account heeft gebruikt, moet de gebruiker zich aanmelden met het e-mail adres dat is opgegeven bij het toevoegen van de mede werker/samen werker.
 
@@ -68,7 +68,7 @@ Als u inzenders/mede werkers aan een LUIS-app toevoegt, geeft u precies het e-ma
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory resources
 
-Als u [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) in uw organisatie gebruikt, moet language UNDERSTANDING (Luis) toestemming hebben voor de informatie over de toegang van gebruikers wanneer ze Luis willen gebruiken. De resources die LUIS nodig hebben, zijn mini maal. 
+Als u [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) in uw organisatie gebruikt, moet language UNDERSTANDING (Luis) toestemming hebben voor de informatie over de toegang van gebruikers wanneer ze Luis willen gebruiken. De resources die LUIS nodig hebben, zijn mini maal.
 
 De gedetailleerde beschrijving wordt weer gegeven wanneer u zich probeert aan te melden met een account met beheerders toestemming of geen beheerder toestemming vereist, zoals toestemming van de beheerder:
 
@@ -78,20 +78,20 @@ De gedetailleerde beschrijving wordt weer gegeven wanneer u zich probeert aan te
 
 ### <a name="azure-active-directory-tenant-user"></a>Azure Active Directory Tenant gebruiker
 
-LUIS maakt gebruik van de toestemmings stroom van de standaard Azure Active Directory (Azure AD). 
+LUIS maakt gebruik van de toestemmings stroom van de standaard Azure Active Directory (Azure AD).
 
-De Tenant beheerder moet direct samen werken met de gebruiker die toegang nodig heeft om LUIS te gebruiken in azure AD. 
+De Tenant beheerder moet direct samen werken met de gebruiker die toegang nodig heeft om LUIS te gebruiken in azure AD.
 
-* Eerst meldt de gebruiker zich aan bij LUIS en ziet u het pop-updialoogvenster dat door de beheerder moet worden goedgekeurd. De gebruiker neemt contact op met de Tenant beheerder voordat u doorgaat. 
-* Ten tweede meldt de Tenant beheerder zich aan bij LUIS en ziet hij een pop-upvenster met goedkeurings stroom. Dit is het dialoog venster dat de beheerder moet machtigen voor de gebruiker. Zodra de beheerder de machtiging heeft geaccepteerd, kan de gebruiker door gaan met LUIS. Als de Tenant beheerder zich niet bij LUIS aanmeldt, heeft de beheerder toegang tot [toestemming](https://account.activedirectory.windowsazure.com/r#/applications) voor Luis, zoals weer gegeven in de volgende scherm afbeelding. U ziet dat de lijst is gefilterd op items `LUIS`die de naam bevatten.
+* Eerst meldt de gebruiker zich aan bij LUIS en ziet u het pop-updialoogvenster dat door de beheerder moet worden goedgekeurd. De gebruiker neemt contact op met de Tenant beheerder voordat u doorgaat.
+* Ten tweede meldt de Tenant beheerder zich aan bij LUIS en ziet hij een pop-upvenster met goedkeurings stroom. Dit is het dialoog venster dat de beheerder moet machtigen voor de gebruiker. Zodra de beheerder de machtiging heeft geaccepteerd, kan de gebruiker door gaan met LUIS. Als de Tenant beheerder zich niet bij LUIS aanmeldt, heeft de beheerder toegang tot [toestemming](https://account.activedirectory.windowsazure.com/r#/applications) voor Luis, zoals weer gegeven in de volgende scherm afbeelding. U ziet dat de lijst is gefilterd op items die de naam bevatten `LUIS` .
 
 ![Toestemming van Azure Active Directory per app-website](./media/luis-how-to-collaborate/tenant-permissions.png)
 
 Als de Tenant beheerder alleen bepaalde gebruikers in staat wilt stellen om LUIS te gebruiken, zijn er enkele mogelijke oplossingen:
 * De "toestemming van de beheerder" (toestemming geven aan alle gebruikers van de Azure AD), maar vervolgens ingesteld op "ja" de "gebruikers toewijzing vereist" onder eigenschappen van bedrijfs toepassing en uiteindelijk alleen de gewenste gebruikers aan de toepassing toewijzen/toevoegen. Met deze methode wordt de beheerder nog steeds ' toestemming van de beheerder ' gegeven aan de app, maar het is mogelijk om de gebruikers te beheren die er toegang toe hebben.
-* Een tweede oplossing is het gebruik van de [Azure AD Identity and Access Management API in Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) om toestemming te geven aan elke specifieke gebruiker. 
+* Een tweede oplossing is het gebruik van de [Azure AD Identity and Access Management API in Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) om toestemming te geven aan elke specifieke gebruiker.
 
-Meer informatie over Azure Active Directory-gebruikers en-toestemming: 
+Meer informatie over Azure Active Directory-gebruikers en-toestemming:
 * [Uw app beperken](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) tot een set gebruikers
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -99,4 +99,4 @@ Meer informatie over Azure Active Directory-gebruikers en-toestemming:
 * Meer informatie [over het gebruik van versies](luis-how-to-manage-versions.md) om de levens cyclus van uw app te beheren.
 * Inzicht in de concepten, waaronder de [ontwerp resource](luis-concept-keys.md#authoring-key) en [inzenders](luis-concept-keys.md#contributions-from-other-authors) voor die bron.
 * Meer informatie [over het maken](luis-how-to-azure-subscription.md) van ontwerp-en runtime-resources
-* Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md) 
+* Migreren naar de nieuwe [ontwerp bron](luis-migration-authoring.md)
