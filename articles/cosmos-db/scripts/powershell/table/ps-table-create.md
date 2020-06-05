@@ -1,20 +1,20 @@
 ---
-title: Power shell-script voor het maken van een tabel in Azure Cosmos DB Table-API
-description: Meer informatie over het gebruik van een Power shell-script voor het bijwerken van de door Voer voor een Data Base of een container in Azure Cosmos DB Table-API
+title: PowerShell-script voor het maken van een tabel in Azure Cosmos DB Table-API
+description: Leer hoe u een PowerShell-script kunt gebruiken om de doorvoer voor een database of een container in de Azure Cosmos DB Table-API bij te werken
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/01/2020
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 2be2934d53e3546a913a4842d16897c5fd1e51c5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: MT
+ms.openlocfilehash: ba5a9561242219652d3f72300f0b0559cfb867b3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652938"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659956"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Een tabel maken voor Azure Cosmos DB-Table-API
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Een tabel maken voor Azure Cosmos DB - Table-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -34,14 +34,14 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
 |**Azure Cosmos DB**| |
-| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Hiermee maakt u een nieuw Cosmos DB-account. |
-| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Hiermee wordt een Table-API tabel gemaakt of bijgewerkt. |
-|**Azure-resource groepen**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Maakt een Cosmos DB-account. |
+| [New-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbtable) | Maakt een Table-API-tabel. |
+|**Azure-resourcegroepen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
 |||
 

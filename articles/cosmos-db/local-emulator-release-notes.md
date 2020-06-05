@@ -1,57 +1,66 @@
 ---
-title: Azure Cosmos-emulator downloaden en release-opmerkingen
-description: Down load de release opmerkingen voor de Azure Cosmos-emulator voor verschillende versies en down load gegevens.
+title: Azure Cosmos-emulator downloaden en opmerkingen bij de release
+description: Download de opmerkingen bij de release voor de Azure Cosmos-emulator voor verschillende versies en downloadgegevens.
 ms.service: cosmos-db
 ms.topic: tutorial
 author: milismsft
 ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: 4dffe169908d0dd3effa4e46140b5f6696805a3e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6dad625bbbcb8279e83ac42e1492c251d5b0299c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168654"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747009"
 ---
-# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator-opmerkingen bij de release en informatie over downloaden
+# <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-emulator - opmerkingen bij de release en downloadgegevens
 
-Dit artikel bevat de release opmerkingen voor de Azure Cosmos-emulator met een lijst met onderdeel updates die zijn gemaakt in elke release. Ook wordt de meest recente versie van de emulator weer gegeven die u kunt downloaden en gebruiken.
+Dit artikel bevat de opmerkingen bij de release voor Azure Cosmos-emulator met een lijst met functie-updates die in elke release zijn uitgevoerd. Ook wordt de meest recente versie van de emulator weergegeven die u kunt downloaden en gebruiken.
 
-## <a name="download"></a>Download
+## <a name="download"></a>Downloaden
 
 | | |
 |---------|---------|
-|**MSI downloaden**|[Microsoft Downloadcentrum](https://aka.ms/cosmosdb-emulator)|
-|**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md)|
+|**MSI-download**|[Microsoft Downloadcentrum](https://aka.ms/cosmosdb-emulator)|
+|**Aan de slag**|[Lokaal ontwikkelen met Azure Cosmos DB-emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
+### <a name="2110"></a>2.11.0
+
+- In deze release wordt ondersteuning geïntroduceerd voor automatische schaalaanpassing van ingerichte doorvoer. Deze nieuwe functies omvatten de mogelijkheid om een aangepast maximaal doorvoerniveau in te stellen in aanvraageenheden (RU/s), automatische schaalaanpassing in te schakelen voor bestaande databases en containers en programmatische ondersteuning via Azure Cosmos DB SDK's.
+- Oplossing voor een probleem tijdens het uitvoeren van een query op een grote hoeveelheid documenten (meer dan 1 GB), waarbij de emulator uitvalt met interne foutstatuscode 500.
+
+### <a name="292"></a>2.9.2
+
+- In deze release wordt een bug gecorrigeerd en tegelijk ondersteuning ingeschakeld voor MongoDB-eindpunt versie 3.2. Er wordt ook ondersteuning toegevoegd voor het genereren van ETL-traceringen voor het oplossen van problemen met behulp van WPR in plaats van LOGMAN.
+
 ### <a name="291"></a>2.9.1
 
-- Deze release corrigeert problemen in de query-API en herstelt de compatibiliteit met oudere OSs, zoals Windows Server 2012.
+- In deze release worden problemen in de query-API gecorrigeerd en de compatibiliteit met oudere besturingssystemen hersteld, zoals Windows Server 2012.
 
 ### <a name="290"></a>2.9.0
 
-- Deze release voegt de optie toe om de consistentie in te stellen op consistent voor voegsel en verg root de maximum limieten voor gebruikers en machtigingen.
+- In deze release wordt de optie toegevoegd om de consistentie in te stellen op consistent voorvoegsel en worden de maximum limieten verhoogd voor gebruikers en machtigingen.
 
 ### <a name="272"></a>2.7.2
 
-- Deze release voegt MongoDB versie 3,6-server ondersteuning toe aan de Cosmos-emulator. Als u een MongoDB-eind punt met de doel versie 3,6 van de service wilt starten, start u de emulator vanaf een opdracht regel van de beheerder met de optie '/EnableMongoDBEndpoint = 3.6 '.
+- In deze release wordt MongoDB-serverondersteuning versie 3.6 toegevoegd aan de Cosmos-emulator. Als u een MongoDB-eindpunt met doelversie 3.6 van de service wilt starten, start u de emulator vanaf een beheerdersopdrachtregel met de optie '/EnableMongoDBEndpoint = 3.6 '.
 
 ### <a name="270"></a>2.7.0
 
-- Deze release corrigeert een regressie waarmee wordt voor komen dat gebruikers query's uitvoeren op het SQL-API-account van de emulator bij gebruik van .NET core-of x86 .NET-clients.
+- In deze release wordt een regressie gecorrigeerd waarmee wordt voorkomen dat gebruikers query's uitvoeren op het SQL-API-account van de emulator bij gebruik van .NET core- of x86 .NET-clients.
 
 ### <a name="246"></a>2.4.6
 
-- Deze release biedt pariteit met de functies van de Azure Cosmos-service vanaf juli 2019, met de uitzonde ringen die worden vermeld in [lokaal ontwikkelen met de Azure Cosmos-emulator](local-emulator.md). Daarnaast worden verschillende fouten met betrekking tot het afsluiten van de emulator opgelost wanneer deze via de opdracht regel en het interne IP-adres worden overschreven voor SDK-clients die gebruikmaken van de directe modus connectiviteit.
+- Deze release biedt pariteit met de functies van de Azure Cosmos-service vanaf juli 2019, met de uitzonderingen die worden vermeld in [Lokaal ontwikkelen met Azure Cosmos-emulator](local-emulator.md). Daarnaast worden verschillende fouten met betrekking tot het afsluiten van de emulator opgelost wanneer deze via de opdrachtregel wordt aangeroepen, en bij overschrijvingen van het interne IP-adres voor SDK-clients die gebruikmaken van een verbinding in directe modus.
 
 ### <a name="243"></a>2.4.3
 
-- Standaard het starten van de MongoDB-service is uitgeschakeld. Alleen het SQL-eind punt is standaard ingeschakeld. De gebruiker moet het eind punt hand matig starten met de opdracht regel optie '/EnableMongoDbEndpoint ' van de emulator. Nu ziet u alle andere service-eind punten, zoals Gremlin, Cassandra en Table.
-- Er is een fout opgelost in de emulator tijdens het starten met '/AllowNetworkAccess ', waarbij de Gremlin, Cassandra en Table-eind punten geen aanvragen van externe clients goed kunnen verwerken.
-- Voeg directe verbindings poorten toe aan de instellingen van de firewall regels.
+- Het starten van de MongoDB-service is standaard uitgeschakeld. Alleen het SQL-eindpunt is standaard ingeschakeld. De gebruiker moet het eindpunt handmatig starten met de opdrachtregeloptie '/EnableMongoDbEndpoint' van de emulator. Nu is deze gelijk aan alle andere service-eindpunten, zoals Gremlin, Cassandra en Table.
+- Er is een fout opgelost in de emulator tijdens het starten met '/AllowNetworkAccess', waarbij de Gremlin-, Cassandra- en Table-eindpunten aanvragen van externe clients niet goed konden verwerken.
+- Directe verbindingspoorten toegevoegd aan de instellingen van de firewallregels.
 
 ### <a name="240"></a>2.4.0
 
-- Er is een probleem opgelost waarbij een emulator niet kan worden gestart wanneer netwerk bewaking-apps, zoals pulse-client, aanwezig zijn op de hostcomputer.
+- Er is een probleem opgelost waarbij de emulator niet kon worden gestart wanneer netwerkbewaking-apps, zoals Pulse Client, aanwezig waren op de hostcomputer.

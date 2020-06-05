@@ -1,6 +1,6 @@
 ---
 title: Toepassingen beheren met Azure Active Directory | Microsoft Docs
-description: In dit artikel worden de voor delen beschreven van het integreren van Azure Active Directory met uw on-premises, Cloud-en SaaS-toepassingen.
+description: Dit artikel beschrijft de voordelen van het integreren van Azure Active Directory met uw on-premises, cloud- en SaaS-toepassingen.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,44 +12,44 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77063319"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739750"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Toepassingsbeheer met Azure Active Directory
 
-Azure Active Directory (Azure AD) vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteits systeem te bieden voor uw Cloud-en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (line-of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmaal aan voor veilige en naadloze toegang tot deze toepassingen, samen met Office 365 en andere zakelijke toepassingen van micro soft. U kunt de beheer kosten verlagen door de [gebruikers inrichting te automatiseren](../app-provisioning/user-provisioning.md). U kunt ook multi-factor Authentication en beleid voor voorwaardelijke toegang gebruiken om toegang tot beveiligde toepassingen te bieden.
+Azure Active Directory (Azure AD) vereenvoudigt de manier waarop u uw toepassingen beheert door één identiteitssysteem te bieden voor uw cloud- en on-premises apps. U kunt uw SaaS-toepassingen (Software as a Service), on-premises toepassingen en LOB-apps (Line-Of-Business) toevoegen aan Azure AD. Gebruikers melden zich vervolgens eenmalig aan voor veilige en naadloze toegang tot deze toepassingen, samen met Office 365 en andere zakelijke toepassingen van Microsoft. U kunt de administratieve kosten verlagen door het [inrichten van gebruikers te automatiseren](../app-provisioning/user-provisioning.md). U kunt ook meervoudige verificatie en beleid voor voorwaardelijke toegang gebruiken om op een veilige manier toegang te bieden tot toepassingen.
 
-![Diagram waarin de apps worden weer gegeven die Federated zijn via Azure AD](media/what-is-application-management/app-management-overview.png)
+![Diagram waarin de apps worden weer gegeven die zijn gefedereerd via Azure AD](media/what-is-application-management/app-management-overview.png)
 
 ## <a name="why-manage-applications-with-a-cloud-solution"></a>Waarom toepassingen beheren met een cloud-oplossing?
 
-Organisaties hebben vaak honderden toepassingen waar gebruikers afhankelijk van zijn voor hun werk. Gebruikers hebben toegang tot deze toepassingen van groot aantal apparaten en -locaties. Elke dag worden nieuwe toepassingen toegevoegd, ontwikkeld en buiten gebruik gesteld. Met zoveel toepassingen en toegangs punten is het belang rijker dan ooit om een Cloud oplossing te gebruiken voor het beheren van gebruikers toegang tot alle toepassingen.
+Organisaties hebben vaak honderden toepassingen waar gebruikers afhankelijk van zijn voor hun werk. Gebruikers hebben toegang tot deze toepassingen van groot aantal apparaten en -locaties. Elke dag worden nieuwe toepassingen toegevoegd, ontwikkeld en buiten gebruik gesteld. Met zo veel toepassingen en toegangspunten is het belangrijker dan ooit om een op de cloud gebaseerde oplossing te gebruiken voor het beheren van gebruikerstoegang tot alle toepassingen.
 
 ## <a name="what-types-of-applications-can-i-integrate-with-azure-ad"></a>Welke typen toepassingen kan ik integreren met Azure AD?
 
-Er zijn vier hoofd typen toepassingen die u aan uw **bedrijfs toepassingen** kunt toevoegen en beheren met Azure AD:
+Er zijn vier hoofdtypen toepassingen die u kunt toevoegen aan **Bedrijfstoepassingen** en vervolgens kunt beheren met Azure AD:
 
-- **Azure AD Gallery-toepassingen** : Azure AD bevat een galerie met duizenden toepassingen die vooraf zijn geïntegreerd voor eenmalige aanmelding met Azure AD. Sommige toepassingen die worden gebruikt in uw organisatie, bevinden zich waarschijnlijk in de galerie. [Meer informatie over het plannen van uw app-integratie](plan-an-application-integration.md)of over het verkrijgen van gedetailleerde integratie stappen voor afzonderlijke apps in de [zelf studies voor SaaS-toepassingen](https://docs.microsoft.com/azure/active-directory/saas-apps/).
+- **Toepassingen uit galerie van Azure AD**: Azure AD bevat een galerie met duizenden toepassingen die vooraf zijn geïntegreerd voor eenmalige aanmelding met Azure AD. Sommige toepassingen die worden gebruikt in uw organisatie, bevinden zich waarschijnlijk in de galerie. [Lees meer over het plannen van uw app-integratie](plan-an-application-integration.md) of raadpleeg gedetailleerde integratiestappen voor afzonderlijke apps in de [zelfstudies voor SaaS-toepassingen](https://docs.microsoft.com/azure/active-directory/saas-apps/).
 
-- **On-premises toepassingen met toepassings proxy** – met Azure AD-toepassingsproxy kunt u uw on-premises web-apps integreren met Azure AD ter ondersteuning van eenmalige aanmelding. Eind gebruikers hebben dan toegang tot uw on-premises web-apps op dezelfde manier als ze toegang hebben tot Office 365 en andere SaaS-apps. [Meer informatie over het gebruik van toepassings proxy en hoe deze werkt](what-is-application-proxy.md).
+- **On-premises toepassingen met Application Proxy**: met Azure AD Application Proxy kunt u uw on-premises web-apps integreren met Azure AD om ondersteuning voor eenmalige aanmelding te bieden. Eindgebruikers hebben dan toegang tot on-premises web-apps op dezelfde manier als ze toegang hebben tot Office 365 en andere SaaS-apps. [Lees meer over het gebruik van Application Proxy en hoe dit werkt](what-is-application-proxy.md).
 
-- **Aangepaste toepassingen** : bij het bouwen van uw eigen line-of-business-toepassingen kunt u ze integreren met Azure AD voor de ondersteuning van eenmalige aanmelding. Door uw toepassing te registreren bij Azure AD, hebt u controle over het verificatie beleid voor de toepassing. Zie [richt lijnen voor ontwikkel aars](developer-guidance-for-integrating-applications.md)voor meer informatie.
+- **Aangepaste toepassingen**: wanneer u uw eigen LOB-toepassingen bouwt, kunt u deze integreren met Azure AD voor de ondersteuning van eenmalige aanmelding. Door uw toepassing te registreren bij Azure AD, hebt u controle over het verificatiebeleid voor de toepassing. Zie de [richtlijnen voor ontwikkelaars](developer-guidance-for-integrating-applications.md) voor meer informatie.
 
-- **Niet-galerie toepassingen** : Breng uw eigen toepassingen. Ondersteuning voor eenmalige aanmelding voor andere apps door deze toe te voegen aan Azure AD. U kunt elke gewenste webkoppeling of een toepassing die een gebruikers naam en wachtwoord veld weergeeft, integreren met SAML-of OpenID Connect Connect-protocollen, of SCIM ondersteunen. Zie [eenmalige aanmelding configureren voor niet-galerie-apps](configure-single-sign-on-non-gallery-applications.md)voor meer informatie.
+- **Toepassingen niet in galerie**: neem uw eigen toepassingen mee. Biedt ondersteuning voor eenmalige aanmelding voor andere apps door deze toe te voegen aan Azure AD. U kunt elke webkoppeling integreren, of elke toepassing die velden voor gebruikersnaam en wachtwoord weergeeft, SAML of OpenID Connect-protocollen ondersteunt, of SCIM ondersteunt. Zie [Wachtwoord voor eenmalige aanmelding configureren voor een toepassing buiten de galerie](configure-single-sign-on-non-gallery-applications.md) voor meer informatie.
 
-## <a name="manage-risk-with-conditional-access-policies"></a>Risico's beheren met beleid voor voorwaardelijke toegang
+## <a name="manage-risk-with-conditional-access-policies"></a>Risico beheersen met beleid voor voorwaardelijke toegang
 
-Koppelen van Azure AD eenmalige aanmelding (SSO) met [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) biedt een hoog beveiligings niveau voor het openen van toepassingen. Tot de beveiligings mogelijkheden behoren identiteits beveiliging op Cloud niveau, Toegangs beheer op basis van Risico's, systeem eigen multi-factor Authentication en beleid voor voorwaardelijke toegang. Dankzij deze mogelijkheden kunt een nauwkeurig beheer creëren op basis van toepassingen of van groepen die een hoger niveau van beveiliging nodig hebben.
+Het koppelen van eenmalige aanmelding van Azure AD aan beleid voor [voorwaardelijke toegang](../conditional-access/concept-conditional-access-cloud-apps.md) biedt een hoge mate van beveiliging voor toegang tot toepassingen. Mogelijkheden voor beveiliging zijn schaalbare cloud-identiteitsbeveiliging, risicogebaseerde meervoudige verificatie en beleid voor voorwaardelijke toegang. Dankzij deze mogelijkheden kunt een nauwkeurig beheer creëren op basis van toepassingen of van groepen die een hoger niveau van beveiliging nodig hebben.
 
 ## <a name="improve-productivity-with-single-sign-on"></a>Verhoog de productiviteit met eenmalige aanmelding
 
 Eenmalige aanmelding (SSO) voor toepassingen en Office 365 biedt een superieure aanmeldingservaring voor bestaande gebruikers door verschillende aanmeldingen te elimineren. Er wordt een samenhangende gebruikersomgeving gecreëerd zonder afleiding door meerdere aanmeldschermen of de noodzaak om meerdere wachtwoorden te beheren. De bedrijfsgroep kan toegang beheren en goedkeuren via selfservice en dynamisch lidmaatschap. De zorg dat alleen de juiste personen in het bedrijf toegang hebben tot een toepassing verbetert de beveiliging van het identiteitssysteem.
 
-SSO verbetert de beveiliging. *Zonder eenmalige aanmelding* moeten beheerders gebruikersaccounts maken en bijwerken voor elke afzonderlijke toepassing. Dat kost waardevolle tijd. Gebruikers moeten meerdere referenties bijhouden voor toegang tot hun toepassingen. Als gevolg hiervan schrijven gebruikers vaak hun wachtwoorden op of gebruiken andere oplossingen voor wachtwoordbeheer waarmee het beveiligingsrisico stijgt. [Meer informatie over eenmalige aanmelding](what-is-single-sign-on.md).
+SSO verbetert de beveiliging. *Zonder eenmalige aanmelding* moeten beheerders gebruikersaccounts maken en bijwerken voor elke afzonderlijke toepassing. Dat kost waardevolle tijd. Gebruikers moeten meerdere referenties bijhouden voor toegang tot hun toepassingen. Als gevolg hiervan schrijven gebruikers vaak hun wachtwoorden op of gebruiken andere oplossingen voor wachtwoordbeheer waarmee het beveiligingsrisico stijgt. [Lees meer over eenmalige aanmelding](what-is-single-sign-on.md).
 
 ## <a name="address-governance-and-compliance"></a>Voeg governance en naleving toe
 
@@ -61,5 +61,5 @@ Door te migreren naar Azure AD, kunt u kosten besparen en wordt het beheer van o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat is toepassingsproxy?](what-is-application-proxy.md)
-- [Snelstartgids: een galerie toepassing toevoegen aan uw Azure AD-Tenant](add-application-portal.md)
+- [Wat is Application Proxy?](what-is-application-proxy.md)
+- [Snelstart: Een galerietoepassing toevoegen aan uw Azure AD-tenant](add-application-portal.md)

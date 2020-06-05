@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS) | Microsoft Docs'
+title: 'Zelfstudie: Integratie van eenmalige aanmelding in Azure Active Directory met Amazon Web Services (AWS) | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Amazon Web Services (AWS).
 services: active-directory
 documentationCenter: na
@@ -15,239 +15,239 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af0390ab7ef8f84860d1d62fa86b8ec87a42210
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890806"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683594"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS)
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelfstudie: Integratie van eenmalige aanmelding in Azure Active Directory met Amazon Web Services (AWS)
 
-In deze zelf studie leert u hoe u Amazon Web Services (AWS) integreert met Azure Active Directory (Azure AD). Wanneer u Amazon Web Services (AWS) integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Amazon Web Services (AWS) kunt integreren met Azure Active Directory (Azure AD). Wanneer u Amazon Web Services integreert met Azure Active Directory, kunt u:
 
-* Controle in azure AD die toegang heeft tot Amazon Web Services (AWS).
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Amazon Web Services (AWS) met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* In Azure Active Directory beheren wie toegang heeft tot Amazon Web Services (AWS).
+* Uw gebruikers zich automatisch laten aanmelden bij Amazon Web Services (AWS) met hun Azure Active Directory-account.
+* Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
-![Diagram van Azure AD en AWS-relatie](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
+![Diagram van de relatie tussen Azure Active Directory en AWS](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-U kunt meerdere id's voor meerdere exemplaren configureren. Bijvoorbeeld:
+U kunt meerdere id's voor meerdere instanties configureren. Bijvoorbeeld:
 
 * `https://signin.aws.amazon.com/saml#1`
 
 * `https://signin.aws.amazon.com/saml#2`
 
-Met deze waarden verwijdert Azure AD de waarde van **#** en verzendt de juiste waarde `https://signin.aws.amazon.com/saml` als de URL van de doel groep in het SAML-token.
+Met deze waarden verwijdert Azure Active Directory de waarde van **#** en stuurt de juiste waarde `https://signin.aws.amazon.com/saml` als de doelgroep-URL in het SAML-token.
 
-We raden deze methode aan om de volgende redenen:
+We raden u om de volgende redenen aan deze methode te gebruiken:
 
-- Elke toepassing biedt u een uniek x509-certificaat. Elk exemplaar van een AWS-app-exemplaar kan vervolgens een andere verloop datum voor het certificaat hebben, die kan worden beheerd op basis van een afzonderlijk AWS-account. De algehele rollover van het certificaat is in dit geval gemakkelijker.
+- Elke toepassing biedt u een uniek x509-certificaat. Elk exemplaar van een AWS-app-instantie kan vervolgens een andere verloopdatum voor het certificaat hebben, die kan worden beheerd op basis van een afzonderlijk AWS-account. In dit geval is een algemene certificaatrollover gemakkelijker.
 
-- U kunt het inrichten van gebruikers met een AWS-app in azure AD inschakelen, en vervolgens worden alle rollen uit dat AWS-account opgehaald. U hoeft de AWS-rollen niet hand matig toe te voegen of bij te werken in de app.
+- U kunt het inrichten van gebruikers inschakelen met de AWS-app in Azure Active Directory. Onze service haalt dan alle rollen van dat AWS-account op. U hoeft de AWS-rollen in de app niet handmatig toe te voegen of bij te werken.
 
-- U kunt de app-eigenaar voor de app afzonderlijk toewijzen. Deze persoon kan de app rechtstreeks in azure AD beheren.
+- U kunt de app-eigenaar voor de app afzonderlijk toewijzen. Deze persoon kan de app rechtstreeks in Azure Active Directory beheren.
 
 > [!Note]
-> Zorg ervoor dat u alleen een galerie toepassing gebruikt.
+> Zorg ervoor dat u alleen een galerietoepassing gebruikt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Een AWS-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
+* Een AWS-abonnement dat geschikt is voor eenmalige aanmelding.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
 * Amazon Web Services (AWS) ondersteunt door **SP en IDP** gestarte SSO
-* Nadat u Amazon Web Services (AWS) hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* Zodra u Amazon Web Services (AWS) hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Amazon Web Services (AWS) toevoegen uit de galerie
 
 Om de integratie van Amazon Web Services (AWS) met Azure AD te configureren, moet u Amazon Web Services (AWS) vanuit de galerie toevoegen aan de lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met een werk account, school account of persoonlijke Microsoft-account.
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
-1. Kies in het menu Azure Active Directory overzicht de optie **bedrijfs toepassingen** > **alle toepassingen**.
-1. Selecteer **nieuwe toepassing** om een toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **Amazon Web Services (AWS)** in het zoekvak.
-1. Selecteer **Amazon Web Services (AWS)** in het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
+1. Kies in het overzichtsmenu van Azure Active Directory **Ondernemingstoepassingen** > **alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een toepassing toe te voegen.
+1. Typ **Amazon Web Services (AWS)** in het zoekvak in het gedeelte **Toevoegen uit de galerie**.
+1. Selecteer **Amazon Web Services (AWS)** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>Eenmalige aanmelding van Azure AD voor Amazon Web Services configureren en testen (AWS)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>Eenmalige aanmelding van Azure Active Directory voor Amazon Web Services (AWS) configureren en testen
 
-Azure AD SSO met Amazon Web Services (AWS) configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Amazon Web Services (AWS).
+Configureer en test eenmalige aanmelding van Azure Active Directory met Amazon Web Services (AWS) met behulp van een testgebruiker met de naam **B.Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure Active Directory-gebruiker en de bijbehorende gebruiker in Amazon Web Services (AWS).
 
-Als u Azure AD SSO wilt configureren en testen met Amazon Web Services (AWS), voltooit u de volgende bouw stenen:
+U moet de volgende bouwstenen voltooien om eenmalige aanmelding van Azure Active Directory voor Amazon Web Services (AWS) te configureren en testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Amazon Web Services-SSO (AWS) configureren](#configure-amazon-web-services-aws-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak Amazon Web Services (AWS) test gebruiker](#create-amazon-web-services-aws-test-user)** : als u een equivalent van B. Simon in Amazon Web Services (AWS) wilt hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-    1. **[Rollen inrichten configureren in Amazon Web Services (AWS)](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding voor Amazon Web Services (AWS) configureren](#configure-amazon-web-services-aws-sso)** : de instellingen voor eenmalige aanmelding aan de clientzijde configureren.
+    1. **[Testgebruiker voor Amazon Web Services (AWS) maken](#create-amazon-web-services-aws-test-user)** : als u een tegenhanger van B. Simon in Amazon Web Services (AWS) wilt hebben die is gekoppeld aan de Azure Active Directory-weergave van de gebruiker.
+    1. **[Het inrichten van rollen configureren in Amazon Web Services (AWS)](#how-to-configure-role-provisioning-in-amazon-web-services-aws)**
+1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Amazon Web Services (AWS)** Application Integration de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Amazon Web Services (AWS)** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en zijn de benodigde url's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door **Opslaan**te selecteren.
+1. In de sectie **SAML-basisconfiguratie** is de toepassing vooraf geconfigureerd en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op **Opslaan** te klikken.
 
-1. Als u meer dan één exemplaar configureert, geeft u een id-waarde op. Gebruik vanaf tweede exemplaar de volgende indeling, inclusief een **#** teken om een unieke SPN-waarde op te geven.
+1. Geef de id-waarde op als u meer dan één instantie configureert. Gebruik vanaf de tweede instantie de volgende indeling, met inbegrip van een **#** -teken om een unieke SPN-waarde op te geven.
 
     `https://signin.aws.amazon.com/saml#2`
 
-1. De AWS-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+1. In de AWS-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/default-attributes.png)
+    ![image](common/default-attributes.png)
 
-1. Daarnaast verwacht AWS toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+1. Bovendien verwacht de toepassing AWS nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. Deze worden hieronder weergegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze herzien volgens uw vereisten.
     
     | Naam  | Bronkenmerk  | Naamruimte |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Rol            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | "Geef een waarde op tussen 900 seconden (15 minuten) en 43200 seconden (12 uur)" |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
+    | Rol            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | SessionDuration             | "Geef een waarde op tussen 900 seconden (15 minuten) en 43200 seconden (12 uur)" |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** naar **XML-bestand met federatieve metagegevens** en selecteer **Downloaden** om het certificaat te downloaden. Sla dit vervolgens op de computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-1. Kopieer op de sectie **Amazon Web Services instellen (AWS)** de gewenste URL ('s) op basis van uw vereiste.
+1. In het gedeelte **Amazon Web Services (AWS) instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
-1. Kies in het menu Azure Active Directory overzicht de optie **gebruikers** > **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
+1. Kies in het overzichtsmenu van Azure Active Directory **Gebruikers** > **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **Maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Amazon Web Services (AWS).
+In dit gedeelte gaat u B. Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot Amazon Web Services (AWS).
 
-1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
-1. Kies in het menu Azure Active Directory overzicht de optie **bedrijfs toepassingen** > **alle toepassingen**.
-1. Selecteer **Amazon Web Services (AWS)** in de lijst met toepassingen.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Zoek en selecteer in de Azure-portal de optie **Azure Active Directory**.
+1. Kies in het overzichtsmenu van Azure Active Directory **Ondernemingstoepassingen** > **alle toepassingen**.
+1. Selecter **Amazon Web Services (AWS)** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-amazon-web-services-aws-sso"></a>Amazon Web Services-SSO (AWS) configureren
+## <a name="configure-amazon-web-services-aws-sso"></a>Eenmalige aanmelding bij Amazon Web Services (AWS) configureren
 
-1. Meld u in een ander browser venster aan bij uw AWS-bedrijfs site als beheerder.
+1. Meld u in een andere browser als beheerder aan bij de bedrijfssite van AWS.
 
 2. Selecteer **AWS Home**.
 
-    ![Scherm opname van AWS bedrijfs site, met AWS start pictogram gemarkeerd][11]
+    ![Schermopname van de AWS-bedrijfssite, met het AWS Home-pictogram gemarkeerd][11]
 
-3. Selecteer **identiteits-en toegangs beheer**.
+3. Klik op **Identity and Access Management**.
 
-    ![Scherm opname van de pagina AWS Services, met IAM gemarkeerd][12]
+    ![Schermopname van de pagina AWS Services, met IAM gemarkeerd][12]
 
-4. Selecteer **id-providers** > **maken provider**.
+4. Selecteer **Identity Providers** > **Create Provider**.
 
-    ![Scherm afbeelding van IAM-pagina met id-providers en gemaakte provider gemarkeerd][13]
+    ![Schermafbeelding van IAM-pagina met Identity Providers en Create provider gemarkeerd][13]
 
-5. Voer de volgende stappen uit op de pagina **provider configureren** :
+5. Voer op de pagina **Configure Provider** de volgende stappen uit:
 
-    ![Scherm opname van provider configureren][14]
+    ![Schermopname van Configure Provider][14]
 
-    a. Selecteer voor **provider type**de optie **SAML**.
+    a. Selecteer **SAML** als **Provider Type**.
 
-    b. Typ bij **provider naam**een provider naam (bijvoorbeeld: *WAAD*).
+    b. Typ bij **Provider Name** de naam van een provider (bijvoorbeeld: *WAAD*).
 
-    c. Als u het gedownloade **META gegevensbestand** wilt uploaden uit de Azure Portal, selecteert u **bestand kiezen**.
+    c. Selecteer **Choose File** om het uit de Azure Portal gedownloade **metagegevensbestand** te uploaden.
 
-    d. Selecteer **volgende stap**.
+    d. Selecteer **Next Step**.
 
-6. Selecteer op de pagina **provider gegevens verifiëren** de optie **maken**.
+6. Klik op de pagina **Verify Provider Information** op **Create**.
 
-    ![Scherm opname van provider gegevens controleren, met gemarkeerd maken][15]
+    ![Schermopname van Verify Provider Information, met Create gemarkeerd][15]
 
-7. Selecteer **rollen** > **maken rol**.
+7. Selecteer **Roles** > **Create role**.
 
-    ![Scherm afbeelding van de pagina rollen][16]
+    ![Schermopname van de pagina Roles][16]
 
 8. Voer op de pagina **Create role** de volgende stappen uit:  
 
-    ![Scherm afbeelding van de pagina voor het maken van een rol][19]
+    ![Schermopname van de pagina Create role][19]
 
-    a. Selecteer onder **type vertrouwde entiteit selecteren**de optie **SAML 2,0-Federatie**.
+    a. Selecteer **SAML 2.0 federation** onder **Select type of trusted entity**.
 
-    b. Selecteer onder **een saml 2,0-provider kiezen**de **SAML-provider** die u eerder hebt gemaakt (bijvoorbeeld: *WAAD*).
+    b. Selecteer onder **Choose a SAML 2.0 Provider** de **SAML-provider** die u eerder hebt gemaakt (bijvoorbeeld: *WAAD*).
 
     c. Selecteer **Allow programmatic and AWS Management Console access**.
   
     d. Selecteer **Volgende: Permissions**.
 
-9. In het dialoog venster **machtigings beleid koppelen** voegt u het juiste beleid toe, afhankelijk van uw organisatie. Selecteer **volgende: controleren**.  
+9. Voeg in het dialoogvenster **Attach permissions policies** het juiste beleid voor uw organisatie toe. Selecteer vervolgens**Volgende: Review**.  
 
-    ![Scherm afbeelding van het dialoog venster machtigings beleid koppelen][33]
+    ![Schermopname van het dialoogvenster Attach permissions policy][33]
 
-10. Voer in het dialoog venster **controleren** de volgende stappen uit:
+10. Voer in het dialoogvenster **Review** de volgende stappen uit:
 
-    ![Scherm afbeelding van het dialoog venster controleren][34]
+    ![Schermopname van het dialoogvenster Review][34]
 
-    a. Voer in **rolnaam**de naam van uw rol in.
+    a. In **Role name**voert u de naam van uw rol in.
 
-    b. In **Beschrijving van rol**voert u de beschrijving in.
+    b. Voer bij **Role description** de omschrijving van de rol in.
 
-    c. Selecteer **rol maken**.
+    c. Selecteer **Create role**.
 
-    d. Maak zoveel rollen als nodig en wijs ze toe aan de ID-provider.
+    d. Maak zoveel rollen als nodig is en wijs ze toe aan de id-provider.
 
-11. Gebruik de referenties van het AWS-service account voor het ophalen van de functies uit het AWS-account in azure AD-gebruikers inrichting. Open hiervoor de startpagina van de AWS-console.
+11. Gebruik de aanmeldingsgegevens van uw AWS-serviceaccount voor het ophalen van de rollen van het AWS-account voor het inrichten van gebruikers in Azure Active Directory. Open hiervoor de startpagina van de AWS-console.
 
-12. Selecteer **Services**. Selecteer onder **beveiliging, identiteit & naleving**de optie **iam**.
+12. Selecteer **Services**. Selecteer onder **Security, Identity & Compliance** de optie **IAM**.
 
-    ![Scherm opname van de start pagina van de AWS-console, met Services en IAM gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole1.png)
+    ![Schermopname van de startpagina van de AWS-console, met Services and IAM gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole1.png)
 
-13. Selecteer in de sectie IAM de optie **beleids regels**.
+13. Selecteer in de sectie IAM **Policies**.
 
-    ![Scherm afbeelding van IAM sectie met beleids regels gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole2.png)
+    ![Schermopname van de sectie IAM met Policies gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole2.png)
 
-14. Maak een nieuw beleid door **beleid maken** te selecteren voor het ophalen van de functies van het AWS-account in azure AD-gebruikers inrichting.
+14. Maak een nieuw beleid door op **Create policy** te klikken voor het ophalen van de rollen van het AWS-account voor het inrichten van gebruikers in Azure Active Directory.
 
-    ![Scherm afbeelding van de pagina rol maken, met de instelling beleid maken gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole3.png)
+    ![Schermopname van de pagina Create role, met Create policy gemarkeerd](./media/amazon-web-service-tutorial/fetchingrole3.png)
 
-15. Maak uw eigen beleid om alle rollen op te halen uit AWS-accounts.
+15. Maak uw eigen beleid om alle rollen van AWS-accounts op te halen.
 
-    ![Scherm afbeelding van de pagina beleid maken, met gemarkeerde JSON](./media/amazon-web-service-tutorial/policy1.png)
+    ![Schermopname van de pagina Create policy, met JSON gemarkeerd](./media/amazon-web-service-tutorial/policy1.png)
 
-    a. Selecteer in **beleid maken**het tabblad **JSON** .
+    a. Selecteer in **Create policy** het tabblad **JSON**.
 
-    b. Voeg in het beleids document de volgende JSON toe:
+    b. Voeg de volgende JSON toe in het beleidsdocument:
 
     ```json
     {
@@ -264,101 +264,101 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
     }
     ```
 
-    c. Selecteer **controle beleid** om het beleid te valideren.
+    c. Selecteer **Review policy** om het beleid te valideren.
 
-    ![Scherm afbeelding van de pagina beleid maken](./media/amazon-web-service-tutorial/policy5.png)
+    ![Schermopname van de pagina Create policy](./media/amazon-web-service-tutorial/policy5.png)
 
 16. Definieer het nieuwe beleid.
 
-    ![Scherm afbeelding van de pagina beleid maken, waarin de velden naam en beschrijving zijn gemarkeerd](./media/amazon-web-service-tutorial/policy2.png)
+    ![Schermopname van de pagina Create policy, waarin de velden Name en Description zijn gemarkeerd](./media/amazon-web-service-tutorial/policy2.png)
 
-    a. Voer bij **naam** **AzureAD_SSOUserRole_Policy**in.
+    a. Voer **AzureAD_SSOUserRole_Policy** in bij **Name**.
 
-    b. Voer voor **Beschrijving** **dit beleid in om de functies van AWS-accounts op te halen**.
+    b. Voer bij **Description** het volgende in: **Met dit beleid kunnen de rollen van AWS-accounts worden opgehaald**.
 
     c. Selecteer **Beleid maken**.
 
-17. Maak een nieuw gebruikers account in de AWS IAM-service.
+17. Maak een nieuw gebruikersaccount in de AWS IAM-service.
 
-    a. Selecteer in de AWS IAM-console de optie **gebruikers**.
+    a. Selecteer in de AWS IAM-console de optie **Users**.
 
-    ![Scherm opname van de AWS IAM-console, met gemarkeerde gebruikers](./media/amazon-web-service-tutorial/policy3.png)
+    ![Schermopname van de AWS IAM-console, met Users gemarkeerd](./media/amazon-web-service-tutorial/policy3.png)
 
-    b. Selecteer **gebruiker toevoegen**om een nieuwe gebruiker te maken.
+    b. Als u een nieuwe gebruiker wilt maken, selecteert u **Add user**.
 
-    ![Scherm afbeelding van de knop gebruiker toevoegen](./media/amazon-web-service-tutorial/policy4.png)
+    ![Schermopname van de knop Add user](./media/amazon-web-service-tutorial/policy4.png)
 
-    c. In de sectie **gebruiker toevoegen** :
+    c. In de sectie **Add user**:
 
-    ![Scherm afbeelding van de pagina gebruiker toevoegen, met de gebruikers naam en het toegangs type gemarkeerd](./media/amazon-web-service-tutorial/adduser1.png)
+    ![Schermopname van de pagina Add user, met User name en Access type gemarkeerd](./media/amazon-web-service-tutorial/adduser1.png)
 
     * Voer de naam van de gebruiker in als **AzureADRoleManager**.
 
-    * Selecteer **programmatische toegang**voor het toegangs type. Op deze manier kan de gebruiker de Api's aanroepen en de rollen ophalen van het AWS-account.
+    * Selecteer bij Access type de optie **Programmatic access**. Op deze manier kan de gebruiker de API's aanroepen en de rollen van het AWS-account ophalen.
 
-    * Selecteer **volgende machtigingen**.
+    * Selecteer **Next Permissions**.
 
 18. Maak een nieuw beleid voor deze gebruiker.
 
-    ![Scherm opname van gebruiker toevoegen](./media/amazon-web-service-tutorial/adduser2.png)
+    ![Schermopname van Add user](./media/amazon-web-service-tutorial/adduser2.png)
 
-    a. Selecteer **bestaande beleids regels rechtstreeks koppelen**.
+    a. Selecteer **Attach existing policies directly**.
 
     b. Zoek het zojuist gemaakte beleid op in de filtersectie **AzureAD_SSOUserRole_Policy**.
 
-    c. Selecteer het beleid en selecteer vervolgens **volgende: controleren**.
+    c. Selecteer het beleid en klik vervolgens op de knop **Next: Review**.
 
-19. Controleer het beleid op de gekoppelde gebruiker.
+19. Controleer het beleid bij de gekoppelde gebruiker.
 
-    ![Scherm afbeelding van de pagina gebruiker toevoegen met gemarkeerd door gebruiker maken](./media/amazon-web-service-tutorial/adduser3.png)
+    ![Schermopname van de pagina Add user, met Create user gemarkeerd](./media/amazon-web-service-tutorial/adduser3.png)
 
     a. Controleer de gebruikersnaam, het toegangstype en het beleid dat is toegewezen aan de gebruiker.
 
-    b. Selecteer **gebruiker maken**.
+    b. Selecteer **Create user**.
 
-20. De gebruikers referenties van een gebruiker downloaden.
+20. Download de referenties van een gebruiker.
 
-    ![Scherm opname van gebruiker toevoegen](./media/amazon-web-service-tutorial/adduser4.png)
+    ![Schermopname van Add user](./media/amazon-web-service-tutorial/adduser4.png)
 
     a. Kopieer de **Access key ID** en **Secret access key** van de gebruiker.
 
-    b. Voer deze referenties in het gedeelte Azure AD-gebruikers inrichten in om de rollen op te halen uit de AWS-console.
+    b. Voer deze referenties in in de sectie voor het inrichten van gebruikers van Azure Active Directory om de rollen op te halen uit de AWS-console.
 
     c. Selecteer **Sluiten**.
 
-### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>Rollen inrichten configureren in Amazon Web Services (AWS)
+### <a name="how-to-configure-role-provisioning-in-amazon-web-services-aws"></a>Het inrichten van rollen configureren in Amazon Web Services (AWS)
 
-1. Ga in de Azure AD-beheer Portal naar **inrichten**in de AWS-app.
+1. Ga in de Azure Active Directory-portal in de AWS-app naar **Inrichten** in de AWS-app.
 
-    ![Scherm opname van de AWS-app, waarbij de inrichting is gemarkeerd](./media/amazon-web-service-tutorial/provisioning.png)
+    ![Schermopname van de AWS-app, met Inrichten gemarkeerd](./media/amazon-web-service-tutorial/provisioning.png)
 
-2. Voer respectievelijk de toegangs sleutel en het geheim in de velden **clientsecret** en **geheim-token** in.
+2. Voer de toegangssleutel en het geheim in het veld **Clientgeheim** respectievelijk **Token voor geheim** in.
 
-    ![Scherm afbeelding van het dialoog venster beheerders referenties](./media/amazon-web-service-tutorial/provisioning1.png)
+    ![Schermopname van het dialoogvenster Beheerdersreferenties](./media/amazon-web-service-tutorial/provisioning1.png)
 
     a. Voer de gebruikerstoegangssleutel van AWS in het veld **Clientgeheim** in.
 
     b. Voer het gebruikersgeheim van AWS in het veld **Token voor geheim** in.
 
-    c. Selecteer **verbinding testen**.
+    c. Selecteer **Verbinding testen**.
 
-    d. Sla de instelling op door **Opslaan**te selecteren.
+    d. Sla de instelling op door **Opslaan** te selecteren.
 
-3. Selecteer **aan**in de sectie **instellingen** voor de **inrichtings status**. Selecteer vervolgens **Opslaan**.
+3. Selecteer in de sectie **Instellingen** bij **Inrichtingsstatus** de optie **Aan**. Selecteer vervolgens **Opslaan**.
 
-    ![Scherm afbeelding van de sectie instellingen, met bij gemarkeerd](./media/amazon-web-service-tutorial/provisioning2.png)
-
-> [!NOTE]
-> De inrichtings service importeert rollen alleen van AWS naar Azure AD. Met de service worden geen gebruikers en groepen van Azure AD naar AWS ingericht.
+    ![Schermopname van de sectie Instellingen, met Aan gemarkeerd](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Nadat u de inrichtings referenties hebt opgeslagen, moet u wachten tot de eerste synchronisatie cyclus is uitgevoerd. Het volt ooien van de synchronisatie duurt meestal ongeveer 40 minuten. U kunt de status onder aan de **inrichtings** pagina zien onder **huidige status**.
+> De inrichtingsservice importeert rollen alleen van AWS naar Azure Active Directory. Met de service worden geen gebruikers en groepen van Azure Active Directory naar AWS geïmporteerd.
+
+> [!NOTE]
+> Nadat u de inrichtingsreferenties hebt opgeslagen, moet u wachten tot de eerste synchronisatiecyclus is uitgevoerd. Het voltooien van de synchronisatie duurt meestal ongeveer 40 minuten. U kunt de status onder aan de pagina **Inrichten** zien, bij **Huidige status**.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Testgebruiker voor Amazon Web Services (AWS) maken
 
 Het doel van deze sectie is het maken van een gebruiker met de naam B. Simon in Amazon Web Services (AWS). Amazon Web Services (AWS) vereist niet dat een gebruiker is aangemaakt in hun systeem voor eenmalige aanmelding, dus u hoeft hier niets te doen.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -366,33 +366,33 @@ Wanneer u in het toegangsvenster op de tegel Amazon Web Services (AWS) klikt, zo
 
 ## <a name="known-issues"></a>Bekende problemen
 
- * De Subsectie **toewijzingen** in de sectie **inrichten** bevat een ' laden... ' en worden nooit de kenmerk toewijzingen weer gegeven. De enige werk stroom voor inrichting die nu wordt ondersteund, is het importeren van functies uit AWS in azure AD voor selectie tijdens een gebruikers-of groeps toewijzing. De kenmerk toewijzingen voor dit zijn vooraf bepaald en kunnen niet worden geconfigureerd.
+ * In de sectie **Inrichten** onder de subsectie **Toewijzingen**, wordt het bericht 'Laden...' weergeven, maar nooit de kenmerktoewijzingen. De enige inrichtingswerkstroom die tegenwoordig wordt ondersteund is het importeren van de rollen van AWS naar Azure Active Directory voor selectie tijdens de toewijzing van de gebruiker of groep. De kenmerktoewijzingen hiervoor zijn vooraf bepaald en kunnen niet worden geconfigureerd.
 
- * De sectie **Inrichten** ondersteunt alleen de invoer van één set referenties per AWS-tenant tegelijk. Alle geïmporteerde rollen worden geschreven naar de `appRoles` eigenschap van het Azure AD [ `servicePrincipal` -object](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) voor de AWS-Tenant.
+ * De sectie **Inrichten** ondersteunt alleen de invoer van één set referenties per AWS-tenant tegelijk. Alle geïmporteerde rollen worden geschreven naar de eigenschap `appRoles` van het Azure Active Directory [`servicePrincipal`-object](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) voor de AWS-tenant.
 
-   Meerdere AWS-tenants (vertegenwoordigd `servicePrincipals`door) kunnen worden toegevoegd aan Azure AD vanuit de galerie voor het inrichten van. Er is echter een bekend probleem waarbij niet alle geïmporteerde rollen automatisch kunnen worden geschreven van de meerdere AWS `servicePrincipals` die worden gebruikt voor het inrichten van de enkelvoudige `servicePrincipal` voor SSO.
+   Meerdere AWS-tenants (vertegenwoordigd door `servicePrincipals`) kunnen worden toegevoegd aan Azure Active Directory vanuit de galerie voor het inrichten. Er is echter een bekend probleem waarbij niet alle geïmporteerde rollen automatisch kunnen worden geschreven uit meerdere AWS-`servicePrincipals` die worden gebruikt voor het inrichten van de `servicePrincipal` die wordt gebruikt voor eenmalige aanmelding.
 
-   Als tijdelijke oplossing kunt u de Microsoft Graph- [API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) gebruiken om alle geïmporteerde in elke `appRoles` AWS `servicePrincipal` op te halen waarbij het inrichten is geconfigureerd. U kunt deze functie teken reeksen vervolgens toevoegen aan de `servicePrincipal` AWS waar SSO is geconfigureerd.
+   Als tijdelijke oplossing kunt u de [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) gebruiken om alle `appRoles` op te halen die zijn geïmporteerd in elke AWS-`servicePrincipal` waar de inrichting is geconfigureerd. U kunt deze tekenreeksen vervolgens toevoegen aan de AWS-`servicePrincipal` waar eenmalige aanmelding is geconfigureerd.
 
-* Rollen moeten voldoen aan de volgende vereisten om in aanmerking te komen voor importeren vanuit AWS in azure AD:
+* Rollen moeten voldoen aan de volgende vereisten om in aanmerking te komen voor importeren vanuit AWS in Azure Active Directory:
 
   * Rollen moeten precies één SAML-provider hebben gedefinieerd in AWS
 
-  * De gecombineerde lengte van de ARN van de rol en de SAML-provider ARN voor een rol die wordt geïmporteerd, mag Maxi maal 119 tekens bevatten
+  * De gecombineerde lengte van de rol-ARN en de ARN van de SAML-provider voor een rol die wordt geïmporteerd, mag maximaal 119 tekens bevatten
 
-## <a name="additional-resources"></a>Extra resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Amazon Web Services (AWS) met Azure AD](https://aad.portal.azure.com/)
+- [Probeer Amazon Web Services (AWS) met Azure Active Directory](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Amazon Web Services beveiligen (AWS) met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/protect-aws)
+- [Amazon Web Services (AWS) beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/protect-aws)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

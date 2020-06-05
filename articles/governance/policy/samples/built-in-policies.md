@@ -1,21 +1,21 @@
 ---
-title: Lijst met ingebouwde beleids definities
-description: Lijst met ingebouwde beleids definities voor Azure Policy. Categorieën zijn Tags, naleving van regelgeving, Key Vault, Kubernetes, gast configuratie en meer.
-ms.date: 05/05/2020
+title: Lijst met ingebouwde beleidsdefinities
+description: Lijst met ingebouwde beleidsdefinities voor Azure Policy. Categorieën zijn tags, naleving van regelgeving, Key Vault, Kubernetes, gastconfiguratie en meer.
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 2ff75ce7d6f0df5906894c50a25fede0f2a19f1a
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: c6a7f128dd2479645cc379f36532563c0ade5d14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838003"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651651"
 ---
-# <a name="azure-policy-built-in-policy-definitions"></a>Ingebouwde beleids definities Azure Policy
+# <a name="azure-policy-built-in-policy-definitions"></a>Ingebouwde beleidsdefinities voor Azure Policy
 
-Deze pagina bevat een index van Azure Policy ingebouwde beleids definities.
+Deze pagina is een index van ingebouwde Azure Policy-beleidsdefinities.
 
-De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal. Gebruik de koppeling in de kolom **bron** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy). De ingebouwde invoeg toepassingen worden gegroepeerd op basis van de eigenschap **Category** in **meta data**. Als u naar een specifieke **categorie**wilt gaan, gebruikt u het menu aan de rechter kant van de pagina. Gebruik anders <kbd>CTRL</kbd>-<kbd>F</kbd> om de zoek functie van uw browser te gebruiken.
+De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de kolom **Bron** om de bron te bekijken in de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy). De ingebouwde beleidsdefinities worden gegroepeerd op de eigenschap **categorie** in **metagegevens**. Als u naar een specifieke **categorie** wilt springen, gebruikt u het menu aan de rechterkant van de pagina. Druk anders op <kbd>Ctrl</kbd>-<kbd>F</kbd> om de zoekfunctie van uw browser te gebruiken.
 
 ## <a name="app-configuration"></a>App Configuration
 
@@ -105,7 +105,7 @@ De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal.
 
 [!INCLUDE [azure-policy-samples-policies-managed-application](../../../../includes/policy/samples/bycat/policies-managed-application.md)]
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](../../../../includes/policy/samples/bycat/policies-monitoring.md)]
 
@@ -113,7 +113,7 @@ De naam van elke ingebouwde koppeling naar de beleids definitie in Azure Portal.
 
 [!INCLUDE [azure-policy-samples-policies-network](../../../../includes/policy/samples/bycat/policies-network.md)]
 
-## <a name="search"></a>Zoeken
+## <a name="search"></a>Search
 
 [!INCLUDE [azure-policy-samples-policies-search](../../../../includes/policy/samples/bycat/policies-search.md)]
 

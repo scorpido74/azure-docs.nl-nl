@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201020"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83778725"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Zelfstudie: Hybride Azure Active Directory-gekoppelde apparaten handmatig configureren
 
@@ -72,7 +72,7 @@ Voor Windows 10-apparaten met versie 1703 of eerder: als uw organisatie toegang 
 
 Vanaf Windows 10 1803 probeert een apparaat het koppelen van de hybride Azure AD te voltooien via de gesynchroniseerde computer of het gesynchroniseerde apparaat, zelfs als het via AD FS koppelen van de hybride Azure AD wordt uitgevoerd vanaf een apparaat in een federatief domein mislukt en Azure AD Connect is geconfigureerd om de computer-/apparaatobjecten te synchroniseren met Azure AD.
 
-Als u wilt controleren of het apparaat toegang heeft tot de bovenstaande micro soft-resources onder het systeem account, kunt u het verbindings script voor het [registreren van apparaten](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) gebruiken.
+Om te controleren of het apparaat toegang heeft tot de bovenstaande Microsoft-resources onder het systeemaccount, kunt u het script [Test Device Registration Connectivity](https://gallery.technet.microsoft.com/Test-Device-Registration-3dc944c0) gebruiken.
 
 ## <a name="verify-configuration-steps"></a>Configuratiestappen controleren
 
@@ -140,8 +140,8 @@ Het volgende script toont een voorbeeld van hoe de cmdlet kan worden gebruikt. I
 De cmdlet `Initialize-ADSyncDomainJoinedComputerSync`:
 
 * Maakt gebruik van de Active Directory PowerShell-module en Azure AD DS-hulpprogramma's (Azure Active Directory Domain Services). Deze hulpprogramma's maken op hun beurt gebruik van Active Directory Web Services dat wordt uitgevoerd op een domeincontroller. Active Directory Web Services wordt ondersteund op domeincontrollers waarop Windows Server 2008 R2 of hoger wordt uitgevoerd.
-* Wordt alleen ondersteund door MSOnline PowerShell-module versie 1.1.166.0. Gebruik [deze koppeling](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)om deze module te downloaden.
-* Als de AD DS-hulpprogram ma's niet zijn `Initialize-ADSyncDomainJoinedComputerSync` geïnstalleerd, mislukt de installatie. U kunt de AD DS-hulpprogram ma's installeren via Serverbeheer onder **functies** > **Remote Server Administration Tools** > **hulpprogram ma's voor functie beheer**.
+* Wordt alleen ondersteund door MSOnline PowerShell-module versie 1.1.166.0. Gebruik deze [koppeling](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0) om deze module te downloaden.
+* Als de AD DS-hulpprogramma's niet zijn geïnstalleerd, mislukt `Initialize-ADSyncDomainJoinedComputerSync`. U kunt de AD DS-hulpprogramma’s installeren via Serverbeheer onder **Functies** > **Remote Server Administration Tools** > **Hulpprogramma's voor functiebeheer**.
 
 Voor domeincontrollers waarop Windows Server 2008 of een eerdere versie wordt uitgevoerd, gebruikt u het volgende script om het serviceverbindingspunt te maken. In een configuratie met meerdere forests gebruikt u het volgende script om het serviceverbindingspunt te maken in elke forest waarin computers bestaan:
 
@@ -176,7 +176,7 @@ In een gefedereerde Azure AD-configuratie zijn apparaten afhankelijk van AD FS o
 
 Actuele Windows-apparaten verifiëren met behulp van Geïntegreerde Windows-verificatie bij een actief WS-Trust-eindpunt (versie 1.3 of 2005) dat wordt gehost door de on-premises federatieve service.
 
-Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
+Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eindpunten inschakelen
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -185,7 +185,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Services/Trust/2005/windowstransport** en **ADFS/Services/Trust/13/windowstransport** moeten alleen worden ingeschakeld als intranet gerichte eind punten en mogen niet worden weer gegeven als aan een extranet gerichte eind punten via de Web Application proxy. Zie [Windows-eind punten van WS-Trust uitschakelen op de proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)voor meer informatie over het uitschakelen van WS-Trust Windows-eind punten. U kunt zien welke eind punten zijn ingeschakeld via de AD FS-beheer console onder **service** > -**eind punten**.
+> Zowel **adfs/services/trust/2005/windowstransport** als **adfs/services/trust/13/windowstransport** dienen alleen te worden ingeschakeld als naar intranet gerichte eindpunten en mogen NIET beschikbaar worden gemaakt als naar extranet gerichte eindpunten via de webtoepassingsproxy. Zie voor meer informatie over het uitschakelen van WS-Trust Windows eindpunten [Disable WS-Trust Windows endpoints on the proxy](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Onder **Service** > **Eindpunten** in de AD FS-beheerconsole kunt u zien welke eindpunten zijn ingeschakeld.
 
 > [!NOTE]
 >Als u AD FS niet als uw on-premises federatieve service hebt, volgt u de instructies van uw leverancier om te verzekeren dat ze WS-Trust 1.3- of WS-Trust 2005-eindpunten ondersteunen en dat deze via het MEX-bestand (Metadata Exchange) worden gepubliceerd.
@@ -200,7 +200,7 @@ Als u meer dan één geverifieerde domeinnaam hebt, moet u de volgende claim voo
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid`
 
-Als u al een ImmutableID-claim (bijvoorbeeld een alternatieve aanmeldings-id) uitgeeft, moet u één overeenkomende claim voor computers opgeven:
+Als u al een ImmutableID-claim (bijvoorbeeld met `mS-DS-ConsistencyGuid` of een ander attribuut als de bronwaarde voor ImmutableID) uitgeeft, moet u één overeenkomende claim voor computers opgeven:
 
 * `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`
 
@@ -329,7 +329,7 @@ Om een lijst met uw geverifieerde bedrijfsdomeinen op te halen, kunt u de cmdlet
 
 ![Lijst met domeinen van bedrijf](./media/hybrid-azuread-join-manual/01.png)
 
-### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-an-alternate-login-id-is-set"></a>ImmutableID voor de computer uitgeven wanneer er een bestaat voor gebruikers (er is bijvoorbeeld een alternatieve aanmeldings-id ingesteld)
+### <a name="issue-immutableid-for-the-computer-when-one-for-users-exists-for-example-using-ms-ds-consistencyguid-as-the-source-for-immutableid"></a>ImmutableID uitgeven voor de computer wanneer er een voor gebruikers bestaat (bijvoorbeeld met mS-DS-ConsistencyGuid als bron voor ImmutableID)
 
 De claim `http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID` moet een geldige waarde bevatten voor computers. In AD FS kunt u als volgt een uitgiftetransformatieregel maken:
 
@@ -481,7 +481,7 @@ Het volgende script helpt u bij het maken van de eerder beschreven uitgiftetrans
 #### <a name="remarks"></a>Opmerkingen
 
 * Dit script voegt de regels aan de bestaande regels toe. Voer het script niet tweemaal uit, anders wordt de verzameling regels tweemaal toegevoegd. Zorg dat er geen overeenkomende regels voor deze claims bestaan (onder de overeenkomende voorwaarden) voordat u het script nogmaals uitvoert.
-* Als u meerdere geverifieerde domeinnamen hebt (zoals wordt weergegeven in de Azure AD-portal of via de cmdlet **Get-MsolDomain**), stelt u **$multipleVerifiedDomainNames** in het script in op **$true**. Zorg er ook voor dat u de bestaande **issuerID** -claim verwijdert die mogelijk is gemaakt door Azure AD Connect of op een andere manier. Hier is een voorbeeld voor deze regel:
+* Als u meerdere geverifieerde domeinnamen hebt (zoals wordt weergegeven in de Azure AD-portal of via de cmdlet **Get-MsolDomain**), stelt u **$multipleVerifiedDomainNames** in het script in op **$true**. Zorg ook dat u een bestaande **issuerID**-claim verwijdert die mogelijk door Azure AD Connect of via een andere methode is gemaakt. Hier is een voorbeeld voor deze regel:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -501,9 +501,9 @@ Als sommige van uw domein-gekoppelde apparaten downlevel Windows-apparaten zijn,
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Een beleid in Azure AD instellen om gebruikers in staat te stellen apparaten te registreren
 
-Om downlevel Windows-apparaten te registreren, moet u ervoor zorgen dat de instelling is ingeschakeld die gebruikers in staat stelt apparaten te registreren in Azure AD. In de Azure Portal, kunt u deze instelling vinden onder **Azure Active Directory** > **gebruikers en groepen** > **Apparaatinstellingen**.
+Om downlevel Windows-apparaten te registreren, moet u ervoor zorgen dat de instelling is ingeschakeld die gebruikers in staat stelt apparaten te registreren in Azure AD. In de Azure-portal vindt u deze instelling onder **Azure Active Directory** > **Gebruikers en groepen** > **Apparaatinstellingen**.
 
-Het volgende beleid moet worden ingesteld op **alle**: **gebruikers kunnen hun apparaten registreren bij Azure AD**.
+Het volgende beleid moet zijn ingesteld op **Alle**: **Gebruikers mogen hun apparaten met Azure AD registreren**
 
 ![De knop Alles waarmee gebruikers apparaten kunnen registreren](./media/hybrid-azuread-join-manual/23.png)
 
@@ -523,7 +523,7 @@ Wanneer een dergelijke aanvraagt wordt ontvangen, moet de on-premises federatiev
 
 In AD FS moet u een uitgiftetransformatieregel toevoegen die wordt doorgegeven via de verificatiemethode. Ga als volgt te werk om deze regel toe te voegen:
 
-1. Ga in de AD FS-beheer console naar **AD FS** > vertrouwens**relaties** > **Relying Party trusts**.
+1. Ga in de AD FS-beheerconsole naar **AD FS** > **Vertrouwensrelaties** > **Relying Party-vertrouwensrelaties**.
 1. Klik met de rechtermuisknop op het object Relying Party-vertrouwensrelatie van het identiteitsplatform van Microsoft Office 365 en selecteer vervolgens **Claimregels bewerken**.
 1. Selecteer op het tabblad **Uitgiftetransformatieregels** de optie **Regel toevoegen**.
 1. Selecteer in de sjabloonlijst **Claimregel** de optie **Claim verzenden met een aangepaste regel**.
@@ -533,7 +533,7 @@ In AD FS moet u een uitgiftetransformatieregel toevoegen die wordt doorgegeven v
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Voer de volgende PowerShell-opdracht uit op de federatieserver. Vervang ** \<RPObjectName\> ** door de Relying Party-object naam voor uw Azure AD Relying Party Trust-object. Dit object heet meestal **Identiteitsplatform van Microsoft Office 365**.
+1. Voer de volgende PowerShell-opdracht uit op de federatieserver. Vervang **\<RPObjectName\>** door de naam van het Relying Party-object voor het object Relying Party-vertrouwensrelatie van Azure AD. Dit object heet meestal **Identiteitsplatform van Microsoft Office 365**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -545,20 +545,75 @@ Om certificaatprompts te vermijden wanneer gebruikers van geregistreerde apparat
 
 ### <a name="control-windows-down-level-devices"></a>Downlevel Windows-apparaten beheren
 
-Als u downlevel Windows-apparaten wilt registreren, dient u een Windows Installer-pakket (.msi) in het Downloadcentrum te downloaden en installeren. Zie de sectie [gecontroleerde validatie van hybride Azure AD-deelname op Windows-apparaten op het lagere niveau](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices)voor meer informatie.
+Als u downlevel Windows-apparaten wilt registreren, dient u een Windows Installer-pakket (.msi) in het Downloadcentrum te downloaden en installeren. Zie voor meer informatie de sectie [Gecontroleerde validatie van hybride Azure AD-deelname op Windows-apparaten op het lagere niveau](hybrid-azuread-join-control.md#controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices).
 
 ## <a name="verify-joined-devices"></a>Gekoppelde apparaten verifiëren
 
-U kunt controleren op succesvol gekoppelde apparaten in uw organisatie met behulp van de cmdlet [Get-MsolDevice](/powershell/msonline/v1/get-msoldevice) in de [Azure Active Directory PowerShell-module](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+Hier volgen drie manieren om de status van het apparaat te zoeken en te controleren:
 
-De uitvoer van deze cmdlet toont apparaten die zijn geregistreerd en gekoppeld met Azure AD. Om alle apparaten te bekijken, gebruikt u de parameter **-All** en filtert u ze vervolgens met behulp van de eigenschap **deviceTrustType**. Domein-gekoppelde apparaten hebben de waarde **Domain Joined**.
+### <a name="locally-on-the-device"></a>Lokaal op het apparaat
+
+1. Open Windows PowerShell.
+2. Voer `dsregcmd /status` in.
+3. Controleer of zowel **AzureAdJoined** als **DomainJoined** zijn ingesteld op **JA**.
+4. U kunt de **DeviceId** gebruiken en de status van de service vergelijken met behulp van de Azure-portal of PowerShell.
+
+### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
+
+1. Ga naar de apparatenpagina met behulp van een [directe link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices).
+2. Informatie over het vinden van een apparaat vindt u in [How to manage device identities using the Azure portal](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices) (Apparaat-id's beheren met de Azure-portal).
+3. Als er **In behandeling** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling niet voltooid. In federatieve omgevingen kan dit alleen gebeuren als het registreren niet is gelukt en AAD Connect is geconfigureerd voor het synchroniseren van de apparaten.
+4. Als er een **datum/tijd** in de kolom **Geregistreerd** staat, is de hybride Azure AD-koppeling wel voltooid.
+
+### <a name="using-powershell"></a>PowerShell gebruiken
+
+Controleer de registratiestatus van apparaten in uw Azure-tenant met behulp van **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** . Deze cmdlet bevindt zich in de [Azure Active Directory PowerShell-module](/powershell/azure/install-msonlinev1?view=azureadps-2.0).
+
+Wanneer u de cmdlet **Get-MSolDevice** gebruikt om de servicedetails te controleren:
+
+- Moet er een object bestaan met de **apparaat-id** die overeenkomt met de id op de Windows-client.
+- Is de waarde voor **DeviceTrustType** **Toegevoegd aan domein**. Deze instelling is equivalent aan de status **Toegevoegd aan hybride Azure AD** op de pagina **Apparaten** in de Azure AD-portal.
+- Voor apparaten die met Voorwaardelijke toegang worden gebruikt, is de waarde voor **Ingeschakeld** **Waar** en voor **DeviceTrustLevel** **Beheerd**.
+
+1. Open Windows PowerShell als beheerder.
+2. Voer `Connect-MsolService` in om verbinding te maken met uw Azure-tenant.
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-excluding-pending-state"></a>Tel alle hybride Azure AD-gekoppelde apparaten (met uitzondering van die met de status **In behandeling** )
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="count-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Tel alle hybride Azure AD-gekoppelde apparaten met de status **In behandeling**
+
+```azurepowershell
+(Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}).count
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices"></a>Maak een lijst van alle hybride Azure AD-gekoppelde apparaten
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-all-hybrid-azure-ad-joined-devices-with-pending-state"></a>Maak een lijst van alle hybride Azure AD-gekoppelde apparaten met de status **In behandeling**
+
+```azurepowershell
+Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -eq 'Domain Joined') -and (-not([string]($_.AlternativeSecurityIds)).StartsWith("X509:"))}
+```
+
+#### <a name="list-details-of-a-single-device"></a>De details van één apparaat weergeven:
+
+1. Voer `get-msoldevice -deviceId <deviceId>` in (dit is de **DeviceId** die lokaal van het apparaat wordt opgehaald).
+2. Verifieer dat **Ingeschakeld** is ingesteld op **Waar**.
 
 ## <a name="troubleshoot-your-implementation"></a>Problemen met uw implementatie oplossen
 
 Als er problemen zijn met het voltooien van de hybride Azure AD-koppeling voor domein-gekoppelde Windows-apparaten, raadpleegt u:
 
-* [Problemen met hybride Azure AD-koppeling oplossen voor actuele Windows-apparaten](troubleshoot-hybrid-join-windows-current.md)
-* [Problemen met hybride Azure AD-koppeling oplossen voor downlevel Windows-apparaten](troubleshoot-hybrid-join-windows-legacy.md)
+- [Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [Problemen met hybride Azure Active Directory-gekoppelde apparaten oplossen](troubleshoot-hybrid-join-windows-current.md)
+- [Problemen oplossen met hybride Azure Active Directory-gekoppelde, downlevel apparaten](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

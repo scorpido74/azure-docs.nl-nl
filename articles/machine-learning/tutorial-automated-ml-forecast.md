@@ -1,7 +1,7 @@
 ---
-title: De vraag van het delen van fietsen met geautomatiseerd ML experiment
+title: 'Zelfstudie: vraagprognose en AutoML'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen en implementeren van een vraag prognose model met geautomatiseerde machine learning in Azure Machine Learning Studio.
+description: Meer informatie over het trainen en implementeren van een vraagprognosemodel met geautomatiseerde machine learning in Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,207 +9,210 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 01/27/2020
-ms.openlocfilehash: 11e0a8a0076fb2e68c379b279f471ff74846df2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77088240"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656564"
 ---
-# <a name="tutorial-forecast-bike-sharing-demand-with-automated-machine-learning"></a>Zelf studie: prognose voor delen van de vraag met automatische machine learning
+# <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In deze zelf studie gebruikt u geautomatiseerde machine learning, of geautomatiseerd ML, in Azure Machine Learning Studio om een time series-prognose model te maken om de huur vraag voor een service voor het delen van fietsen te voors pellen.
+In deze zelfstudie gebruikt u geautomatiseerde machine learning, of geautomatiseerde ML, in de Azure Machine Learning Studio om een prognosemodel voor tijdreeksen te maken om de huurvraag voor een service voor het delen van fietsen te voorspellen.
 
-In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
+Voor een voorbeeld van een classificatiemodel, zie [zelfstudie: Een classificatiemodel maken met geautomatiseerde ML in Azure Machine Learning](tutorial-first-experiment-automated-ml.md).
+
+In deze zelfstudie leert u hoe u de volgende taken uitvoert:
 
 > [!div class="checklist"]
 > * Een gegevensset maken en laden.
-> * Een automatische ML experiment configureren en uitvoeren.
-> * Bekijk de resultaten van het experiment.
-> * Implementeer het beste model.
+> * Een automatisch ML-experiment configureren en uitvoeren.
+> * Prognose-instellingen specificeren.
+> * De resultaten van het experiment verkennen.
+> * Het beste model implementeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Enter prise Edition Azure Machine Learning-werk ruimte. Als u geen werk ruimte hebt, [maakt u een werk ruimte in de Enter prise-editie](how-to-manage-workspace.md). 
-    * Automatische machine learning in Azure Machine Learning Studio is alleen beschikbaar voor werk ruimten in de Enter prise-editie. 
-* Het gegevens bestand [Bike-No. CSV](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) downloaden
+* Een Enterprise Edition Azure Machine Learning-werkruimte. Als u geen werkruimte hebt, kunt u [een Enterprise Edition-werkruimte maken](how-to-manage-workspace.md). 
+    * Automatische machine learning in Azure Machine Learning Studio is alleen beschikbaar voor werkruimten in de Enterprise-editie. 
+* Het gegevensbestand [bike-no.csv](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv) downloaden
 
-## <a name="get-started-in-azure-machine-learning-studio"></a>Aan de slag in Azure Machine Learning Studio
+## <a name="get-started-in-azure-machine-learning-studio"></a>Aan de slag met Azure Machine Learning Studio
 
-Voor deze zelf studie maakt u uw automatische ML-experiment in Azure Machine Learning Studio, een geconsolideerde interface met machine learning-hulpprogram ma's voor het uitvoeren van data Science-scenario's voor data Wetenschappen van alle vaardigheids niveaus. De Studio wordt niet ondersteund in Internet Explorer-browsers.
+Voor deze zelfstudie maakt u een geautomatiseerd ML-experiment in Azure Machine Learning Studio, een geconsolideerde interface met hulpmiddelen voor machine learning waar gegevenswetenschappers, ongeacht hun vaardigheidsniveaus, scenario's kunnen uitvoeren. De Studio wordt niet ondersteund in Internet Explorer-browsers.
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
-1. Selecteer uw abonnement en de werk ruimte die u hebt gemaakt.
+1. Selecteer uw abonnement en de werkruimte die u hebt gecreëerd.
 
-1. Selecteer **aan de slag**.
+1. Selecteer **Aan de slag**.
 
-1. Selecteer in het linkerdeel venster **automatische ml** onder het gedeelte **Auteur** .
+1. Selecteer in het linkerdeelvenster **Geautomatiseerde ML** in de sectie **Maken**.
 
-1. Selecteer **+ New Automated ml run**. 
+1. Selecteer **Nieuwe geautomatiseerde ML-uitvoering**. 
 
 ## <a name="create-and-load-dataset"></a>Gegevensset maken en laden
 
-Voordat u uw experiment gaat configureren, uploadt u uw gegevens bestand naar uw werk ruimte in de vorm van een Azure Machine Learning-gegevensset. Als u dit doet, kunt u ervoor zorgen dat uw gegevens op de juiste wijze zijn opgemaakt voor uw experiment.
+Voordat u uw experiment gaat configureren, uploadt u uw gegevensbestand naar uw werkruimte in de vorm van een Azure Machine Learning-gegevensset. Als u dit doet, kunt u ervoor zorgen dat uw gegevens op de juiste wijze zijn opgemaakt voor uw experiment.
 
-1. Selecteer op het formulier **gegevensset selecteren** de optie **op basis van lokale bestanden** in de vervolg keuzelijst **gegevensset maken** . 
+1. Op het formulier **Gegevensset selecteren**, selecteert u **Uit lokale bestanden** in de keuzelijst **+Gegevensset maken**. 
 
-    1. Geef in het formulier **basis informatie** uw gegevensset een naam en geef een optionele beschrijving op. Het type gegevensset wordt standaard ingesteld op **tabellair**, omdat automatische milliliters in azure machine learning Studio momenteel alleen ondersteuning bieden voor gegevens sets in tabel vorm.
+    1. Geef uw gegevensset een naam en een optionele beschrijving in het formulier **Basisinformatie**. Het type gegevensset moet standaard in **Tabelvorm** zijn, omdat automatische ML in Azure Machine Learning Studio momenteel alleen ondersteuning biedt voor gegevenssets in tabelvorm.
     
-    1. Selecteer **volgende** linksonder
+    1. Selecteer **Volgende** in de linkerbenedenhoek
 
-    1. Selecteer op het formulier **gegevens opslag en bestands selectie** de standaard gegevens opslag die automatisch is ingesteld tijdens het maken van de werk ruimte, **workspaceblobstore (Azure Blob Storage)**. Dit is de opslag locatie waar u uw gegevens bestand uploadt. 
+    1. Selecteer in het formulier **Gegevensarchief- en bestandsselectie** het standaard gegevensarchief dat automatisch is ingesteld bij het maken van uw werkruimte, **workspaceblobstore (Azure Blob Storage)** . Dit is de opslaglocatie waar u uw gegevensbestand uploadt. 
 
     1. Selecteer **Bladeren**. 
     
-    1. Kies het bestand **Bike-No. CSV** op de lokale computer. Dit is het bestand dat u hebt gedownload als een [vereiste](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv).
+    1. Kies het bestand **bike-no.csv** op uw lokale computer. Dit is het bestand dat u hebt gedownload als [vereiste](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-bike-share/bike-no.csv).
 
-    1. Selecteer **volgende**
+    1. Selecteer **Volgende**
 
-       Wanneer het uploaden is voltooid, worden de instellingen en het voorbeeld formulier vooraf ingevuld op basis van het bestands type. 
+       Wanneer het uploaden is voltooid, worden de instellingen en het voorbeeldformulier automatisch ingevuld op basis van het bestandstype. 
        
-    1. Controleer of de **instellingen en het voorbeeld** formulier als volgt zijn ingevuld en selecteer **volgende**.
+    1. Controleer of het formulier **Instellingen en voorbeeld** als volgt is ingevuld en selecteer **Volgende**.
         
-        Veld|Beschrijving| Waarde voor zelf studie
+        Veld|Beschrijving| Waarde voor zelfstudie
         ---|---|---
-        Bestands indeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Gescheiden
-        Scheidingsteken|Een of meer tekens voor het opgeven van de&nbsp; grens tussen afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Komma
-        Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
-        Kolomkoppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Kopteksten van het eerste bestand gebruiken
-        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
+        Bestandsindeling|Definieert de indeling en het type gegevens dat is opgeslagen in een bestand.| Met scheidingstekens
+        Scheidingsteken|Een of meer tekens die de grens aangeven tussen &nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevensstromen. |Komma
+        Encoding|Identificeert welke bit-naar-tekenschematabel er moet gebruikt worden om uw gegevensset te lezen.| UTF-8
+        Kolomkoppen| Geeft aan hoe koppen van de gegevensset eventueel worden behandeld.| Kopteksten uit het eerste bestand gebruiken
+        Rijen overslaan | Geeft aan hoeveel rijen er eventueel worden overgeslagen in de gegevensset.| Geen
 
-    1. Met het **schema** formulier kunt u uw gegevens voor dit experiment verder configureren. 
+    1. Met het formulier **Schema** kunt u uw gegevens verder configureren voor dit experiment. 
     
-        1. Voor dit voor beeld moet u ervoor kiezen om de kolommen **informele** en **Gereg** te negeren. Deze kolommen vormen een uitsplitsing van de kolom **cnt** , dus we nemen deze niet op.
+        1. Voor dit voorbeeld negeert u de kolommen **Informeel** en **Geregistreerd**. Deze kolommen vormen een uitsplitsing van de kolom **cnt**, dus we nemen deze niet op.
 
-        1. Voor dit voor beeld moet u ook de standaard waarden voor de **Eigenschappen** en het **type opgeven**. 
+        1. Voor dit voorbeeld moet u ook de standaardwaarden voor de **Eigenschappen** en **Type** opgeven. 
         
         1. Selecteer **Next**.
 
-    1. Controleer op het formulier **Details bevestigen** of de informatie overeenkomt met wat u eerder hebt ingevuld in de **basis informatie** en- **instellingen en de preview** -formulieren.
+    1. Controleer of de informatie in het formulier **Details bevestigen** overeenkomt met wat voorheen in de formulieren **Basisinformatie** en **Instellingen en voorbeeld** is ingevuld.
 
-    1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
+    1. Selecteren **Maken** om uw gegevensset te voltooien.
 
-    1. Selecteer uw gegevensset zodra deze in de lijst wordt weer gegeven.
+    1. Selecteer uw gegevensset wanneer deze verschijnt in de lijst.
 
-    1. Selecteer **volgende**.
+    1. Selecteer **Volgende**.
 
-## <a name="configure-experiment-run"></a>Experiment-uitvoering configureren
+## <a name="configure-experiment-run"></a>Uitgevoerde experiment configureren
 
-Nadat u uw gegevens hebt geladen en geconfigureerd, stelt u uw externe Compute-doel in en selecteert u welke kolom in uw gegevens u wilt voors pellen.
+Nadat u uw gegevens hebt geladen en geconfigureerd, stelt u uw externe rekendoel in en selecteert u welke kolom in uw gegevens u wilt voorspellen.
 
-1. Vul het formulier voor het uitvoeren van de **Configure** als volgt in:
-    1. Voer een naam voor het experiment in:`automl-bikeshare`
+1. Vul het formulier **Uitvoering configureren** als volgt in:
+    1. Een naam voor het experiment invoeren: `automl-bikeshare`
 
-    1. Selecteer **cnt** als doel kolom, wat u wilt voors pellen. In deze kolom wordt het totale aantal huren van de fiets delen aangegeven.
+    1. Selecteer **cnt** als doelkolom, wat u wilt voorspellen. In deze kolom wordt het totale aantal gehuurde fietsen van bikeshare aangegeven.
 
-    1. Selecteer **een nieuwe berekening maken** en configureer uw reken doel. Automatische ML ondersteunt alleen Azure Machine Learning compute. 
+    1. Selecteer **Een nieuwe berekening maken** en configureer uw rekendoel. Automatische ML ondersteunt alleen Azure Machine Learning-berekeningen. 
 
-        Veld | Beschrijving | Waarde voor zelf studie
+        Veld | Beschrijving | Waarde voor zelfstudie
         ----|---|---
-        Compute name |Een unieke naam die uw Compute-context identificeert.|fiets-compute
-        Grootte&nbsp;van&nbsp;virtuele machine| Selecteer de grootte van de virtuele machine voor de reken kracht.|Standard_DS12_V2
-        Min-maximum aantal knoop punten (in geavanceerde instellingen)| Als u wilt profiel gegevens, moet u één of meer knoop punten opgeven.|Minimum aantal knoop punten: 1<br>Maximum aantal knoop punten: 6
+        Naam berekening |Een unieke naam die de context van uw berekening identificeert.|bike-compute
+        Grootte&nbsp;virtuele&nbsp;machine| Selecteer de grootte van de virtuele machine voor uw berekening.|Standard_DS12_V2
+        Min. / max. knooppunten (in Geavanceerde instellingen)| U moet u één of meer knooppunten opgeven om gegevens te profileren.|Min. knooppunten: 1<br>Max. knooppunten: 6
   
-        1. Selecteer **maken** om het Compute-doel op te halen. 
+        1. Selecteer **Maken** om het rekendoel op te halen. 
 
             **Dit duurt enkele minuten.** 
 
-        1. Nadat u hebt gemaakt, selecteert u uw nieuwe reken doel in de vervolg keuzelijst.
+        1. Wanneer dit is voltooid, selecteert u uw nieuwe rekendoel uit de vervolgkeuzelijst.
 
     1. Selecteer **Next**.
 
-## <a name="select-task-type-and-settings"></a>Taak type en instellingen selecteren
+## <a name="select-task-type-and-settings"></a>Taaktype en -instellingen selecteren
 
-Voltooi de installatie voor uw automatische ML experiment door het machine learning taak type en configuratie-instellingen op te geven.
+Voltooi de installatie voor uw automatische ML-experiment door het taaktype en de configuratie-instellingen van de machine learning op te geven.
 
-1. Selecteer op het **taak type en het instellingen** formulier **Time Series-prognose** als het taak type machine learning.
+1. Selecteer op het formulier **Taaktype en instellingen** de optie **Prognose tijdreeks** als het type machine learning-taak.
 
-1. Selecteer **datum** als uw **tijd kolom** en laat **groeperen op kolom (men)** leeg. 
+1. Selecteer **datum** als uw **Tijdkolom** en laat **Groeperen op kolom(men)** leeg. 
 
-    1. Selecteer **aanvullende configuratie-instellingen weer geven** en vul de velden in als volgt. Deze instellingen zijn een betere controle over de trainings taak. Anders worden de standaard waarden toegepast op basis van het experiment en de gegevens.
+    1. Selecteer **Aanvullende configuratie-instellingen weergeven** en vul de velden als volgt in. Deze instellingen zijn bedoeld om de trainingstaak beter te besturen en om instellingen voor uw prognose op te geven. Anders worden de standaardinstellingen toegepast op basis van de selectie en gegevens van het experiment.
 
   
-        Aanvullende&nbsp;configuraties|Beschrijving|Waarde&nbsp;voor&nbsp;zelf studie
+        Aanvullende&nbsp;configuraties|Beschrijving|Waarde&nbsp;voor&nbsp;zelfstudie
         ------|---------|---
-        Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|Genormaliseerde hoofd gemiddelde fout
-        Automatische parametrisatie| Hiermee wordt voor verwerking ingeschakeld. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
-        Aanbevolen model uitleggen (preview-versie)| Toont automatisch uitleg over het beste model dat is gemaakt met automatische MILLILITERs.| Inschakelen
-        Geblokkeerde algoritmen | Algoritmen die u wilt uitsluiten van de trainings taak| Extreme, wille keurige structuren
-        Aanvullende prognose-instellingen| Deze instellingen helpen de nauw keurigheid van het model te verbeteren <br><br> _**Prognose horizon**_: tijds duur in de toekomst die u wilt voors pellen <br> _**Prognose doel lags:**_ hoe ver terug u de lags van een doel variabele wilt maken <br> _**Doel venster**_: Hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *som*, worden gegenereerd. |Prognose horizon: 14 <br> Prognose&nbsp;doel&nbsp;lags: geen <br> Grootte&nbsp;van&nbsp;doel&nbsp;venster: geen
-        Criterium afsluiten| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |Tijd&nbsp;trainings&nbsp;taak (uren): 3 <br> Drempel&nbsp;waarde&nbsp;voor metrische Score: geen
-        Validatie | Kies een type Kruis validatie en aantal testen.|Validatie type:<br>&nbsp;Kruis validatie met&nbsp;k-vouwen <br> <br> Aantal validaties: 5
-        Gelijktijdigheid| Het maximum aantal parallelle iteraties dat per iteratie wordt uitgevoerd| Maximum&nbsp;aantal&nbsp;gelijktijdige herhalingen: 6
+        Primaire metrische gegevens| Evaluatiewaarde waarmee het machine learning-algoritme wordt gemeten.|Genormaliseerde wortel gemiddelde kwadraatfout
+        Automatische featurization| Schakelt voorverwerking in. Dit omvat automatische opschoning, voorbereiding en transformatie van gegevens om synthetische functies te genereren.| Inschakelen
+        Aanbevolen model uitleggen (preview)| Hiermee wordt automatisch uitleg gegeven over het beste model dat is gemaakt met geautomatiseerde ML.| Inschakelen
+        Geblokkeerde algoritmen | Algoritmen die u niet wilt opnemen in de trainingstaak| Extreme willekeurige structuren
+        Aanvullende prognose-instellingen| Deze instellingen helpen de nauwkeurigheid van het model te verbeteren <br><br> _**Prognoseperiode**_: hoe ver in de toekomst u voorspellingen wilt maken <br> _**Doelvertragingen voor prognose:**_ hoe ver terug u de vertragingen van een doelvariabele wilt maken <br> _**Doorlopend doel**_: hiermee geeft u de grootte van het doorlopende venster op waarover de functies, zoals de *Max, min* en *Som*, worden gegenereerd. |Prognoseperiode: 14 <br> Doelvertragingen &nbsp;voor&nbsp;prognose: Geen <br> Formaat&nbsp;doorlopende &nbsp;doelgrootte&nbsp;: Geen
+        Criterium voor afsluiten| Als er aan een criterium is voldaan, wordt de trainingstaak gestopt. |Tijd voor&nbsp;trainingstaak&nbsp; (uur): 3 <br> Drempelwaarde&nbsp;metrische&nbsp;score: Geen
+        Validatie | Kies een kruisvalidatietype en een aantal tests.|Validatietype:<br>&nbsp;k-voudige&nbsp;kruisvalidatie <br> <br> Aantal validaties: 5
+        Gelijktijdigheid| Het maximum aantal parallelle iteraties uitgevoerd per iteratie| Maximumaantal&nbsp;gelijktijdige&nbsp;iteraties: 6
         
         Selecteer **Opslaan**.
 
 ## <a name="run-experiment"></a>Experiment uitvoeren
 
-Selecteer **volt ooien**om uw experiment uit te voeren. Het scherm **Details uitvoeren** wordt geopend met de **uitvoerings status** boven naast het uitvoerings nummer. Deze status wordt bijgewerkt wanneer het experiment wordt uitgevoerd.
+Selecteer **Voltooien** om uw experiment uit te voeren. Het scherm **Uitvoergegevens** wordt geopend met de **Uitvoerstatus** bovenaan naast het uitvoernummer. Deze status wordt bijgewerkt wanneer het experiment wordt uitgevoerd.
 
 >[!IMPORTANT]
-> Voor bereiding duurt **10-15 minuten** om de uitvoering van het experiment voor te bereiden.
-> Na de uitvoering duurt **2-3 minuten meer voor elke iteratie**.  <br> <br>
-> In productie zou u waarschijnlijk een beetje weglopen omdat dit proces tijd in beslag neemt. Terwijl u wacht, wordt u aangeraden om de geteste algoritmen te verkennen op het tabblad **modellen** , wanneer deze zijn voltooid. 
+> Het duurt **10-15 minuten** om de experimentele uitvoerbewerking voor te bereiden.
+> Zodra de uitvoering is gestart duurt het **2-3 minuten langer per iteratie**.  <br> <br>
+> In productie zou u waarschijnlijk even weglopen omdat dit proces tijd in beslag neemt. Terwijl u wacht, wordt u aangeraden de geteste algoritmen te verkennen op het tabblad **Modellen**. 
 
-##  <a name="explore-models"></a>Modellen verkennen
+##  <a name="explore-models"></a>Modellen bekijken
 
-Ga naar het tabblad **modellen** om de algoritmen (modellen) te zien die zijn getest. Standaard worden de modellen gesorteerd op basis van de metrische Score wanneer ze zijn voltooid. Voor deze zelf studie wordt het model met het hoogste score op basis van het gekozen **genormaliseerde hoofd gemiddelde fout** metriek boven aan de lijst weer gegeven.
+Ga naar het tabblad **Modellen** om de geteste algoritmen (modellen) te bekijken. De modellen worden standaard gerangschikt op hun metrische score terwijl ze worden voltooid. Voor deze zelfstudie staat het model dat het hoogst scoort op basis van de gekozen metrische gegevens **Genormaliseerde wortel gemiddelde kwadraatfout** bovenaan de lijst.
 
-Terwijl u wacht tot alle experimentele modellen zijn voltooid, selecteert u de naam van het **algoritme** van een voltooid model om de prestatie details te verkennen. 
+Terwijl u wacht tot alle experimentmodellen zijn voltooid, kunt u de **Algoritmenaam** van een volledig model selecteren om de prestatiedetails te bekijken. 
 
-In het volgende voor beeld wordt genavigeerd door de **model Details** en de **Visualisaties** tabbladen om de eigenschappen, metrische gegevens en prestatie grafieken van het geselecteerde model weer te geven. 
+In het volgende voorbeeld kunt u naar de tabbladen **Modeldetails** en **Visualisaties** gaan om de eigenschappen, metrische gegevens en prestatiegrafieken van het geselecteerde model te bekijken. 
 
-![Details uitvoeren](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Uitvoeringsdetails](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
-Met geautomatiseerde machine learning in Azure Machine Learning Studio kunt u in een paar stappen het beste model als een webservice implementeren. Implementatie is de integratie van het model, zodat dit kan voors pellen op nieuwe gegevens en mogelijke verkoop kansen kan identificeren. 
+Met geautomatiseerde machine learning in Azure Machine Learning Studio kunt u met enkele stappen het beste model implementeren als webservice. Implementatie is de integratie van het model zodat het nieuwe gegevens kan voorspellen en potentiële kansgebieden kan identificeren. 
 
-Voor dit experiment houdt het implementeren naar een webservice voor dat het aandeel van de fiets share nu een iteratieve en schaal bare weboplossing heeft voor het voors pellen van het huren van fietsen. 
+Voor dit experiment houdt het implementeren naar een webservice in dat het BikeShare-bedrijf nu een iteratieve en schaalbare weboplossing heeft voor het voorspellen van de vraag naar het huren van fietsen. 
 
-Zodra de uitvoering is voltooid, gaat u terug naar de **detail pagina uitvoeren** en selecteert u het tabblad **modellen** .
+Zodra de uitvoering is voltooid, gaat u terug naar de pagina **Details van de uitvoering** en selecteert u het tabblad **Modellen**.
 
-In deze experimentele context wordt **StackEnsemble** beschouwd als het beste model, op basis van het **genormaliseerde hoofd gemiddelde** van de fout metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien. Het implementatie proces omvat verschillende stappen, waaronder het registreren van het model, het genereren van resources en het configureren van deze voor de webservice.
+In dit experiment wordt **StackEnsemble** beschouwd als het beste model, op basis van de metrische gegevens **genormaliseerde wortel gemiddelde kwadraatfout**.  We implementeren dit model, maar houd er rekening mee dat implementatie ongeveer 20 minuten duurt. Het implementatieproces omvat verschillende stappen, waaronder het model registreren, resources genereren en ze configureren voor de webservice.
 
-1. Selecteer de knop **beste model implementeren** in de linkerbenedenhoek.
+1. Selecteer de knop **Beste model implementeren** in de linkerbenedenhoek.
 
-1. Vul het deel venster **een model implementeren** als volgt in:
+1. Vul het deelvenster **Een model implementeren** als volgt in:
 
     Veld| Waarde
     ----|----
-    Implementatie naam| Bike share-implementeren
-    Beschrijving van implementatie| implementatie van fiets share-vraag
-    Reken type | Azure Compute-instantie (ACI) selecteren
-    Verificatie inschakelen| Uitschakelen 
-    Aangepaste implementatie-assets gebruiken| Uitschakelen Als u dit uitschakelt, kan het standaard stuurprogrammabestand (Score script) en het omgevings bestand automatisch worden gegenereerd. 
+    Naam van implementatie| Implementeren Bike share
+    Beschrijving van implementatie| implementatie van vraag naar bike share
+    Rekentype | Azure Compute Instance (ACI) selecteren
+    Verificatie inschakelen| Uitgeschakeld. 
+    Aangepaste implementatie-assets gebruiken| Uitgeschakeld. Met Uitschakelen staat u toe dat het standaard stuurprogrammabestand (scorescript) en het omgevingsbestand automatisch worden gegenereerd. 
     
-    In dit voor beeld gebruiken we de standaard instellingen in het menu *Geavanceerd* . 
+    In dit voorbeeld gebruiken we de standaardwaarden in het menu *Geavanceerd*. 
 
 1. Selecteer **Implementeren**.  
 
-    Boven aan het scherm **uitvoeren** wordt een groen bericht weer gegeven dat de implementatie is gestart. De voortgang van de implementatie kan worden gevonden  
-    in het deel venster **Aanbevolen model** onder **Implementatie status**.
+    Bovenaan het scherm **Uitvoeren** wordt een groen bericht weergegeven dat de implementatie is gestart. De voortgang van de implementatie kan worden gevonden  
+    in het deelvenster **Aanbevolen model** onder **Implementatiestatus**.
     
-Zodra de implementatie is voltooid, hebt u een Operational web service voor het genereren van voor spellingen. 
+Zodra de implementatie is voltooid, hebt u een operationele webservice om voorspellingen te genereren. 
 
-Ga verder met de [**volgende stappen**](#next-steps) om meer te weten te komen over het gebruik van uw nieuwe webservice en test uw voor spellingen met behulp van de ingebouwde Azure machine learning ondersteuning van Power bi.
+Ga verder met de [**Volgende stappen**](#next-steps) voor meer informatie over het gebruik van uw nieuwe webservice en test uw voorspellingen met de ingebouwde ondersteuning voor Azure Machine Learning van Power BI.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Implementatie bestanden zijn groter dan gegevens en experimenteer bestanden, zodat ze meer kosten in beslaan. Verwijder alleen de implementatie bestanden om de kosten voor uw account te minimaliseren, of als u uw werk ruimte en de bestanden wilt laten experimenteren. U kunt ook de hele resource groep verwijderen als u niet van plan bent om een van de bestanden te gebruiken.  
+Implementatiebestanden zijn groter dan gegevens- en experimentbestanden. Daarom kost het meer om ze op te slaan. Verwijder alleen de implementatiebestanden om de kosten voor uw account te beperken, of als u uw werkruimte en experimentbestanden wilt behouden. Zo niet, verwijder dan de volledige resourcegroep als u geen enkel bestand wilt gebruiken.  
 
 ### <a name="delete-the-deployment-instance"></a>Het implementatie-exemplaar verwijderen
 
-Verwijder alleen het implementatie-exemplaar uit de Azure Machine Learning Studio als u de resource groep en-werk ruimte wilt blijven gebruiken voor andere zelf studies en verkennen. 
+Verwijder alleen het implementatie-exemplaar van Azure Machine Learning indien u de resourcegroep en werkruimte wilt behouden voor andere zelfstudies en verkenning. 
 
-1. Ga naar de [Azure machine learning Studio](https://ml.azure.com/). Navigeer naar uw werk ruimte en selecteer aan de linkerkant onder het deel venster **assets** de optie **eind punten**. 
+1. Ga naar de [Azure Machine Learning Studio](https://ml.azure.com/). Ga naar uw werkruimte en selecteer **Eindpunten** aan de linkerkant onder het deelvenster **Assets**. 
 
-1. Selecteer de implementatie die u wilt verwijderen en selecteer **verwijderen**. 
+1. Selecteer de implementatie die u wilt verwijderen en vervolgens **Verwijderen**. 
 
-1. Selecteer **door gaan**.
+1. Selecteer **Doorgaan**.
 
 ### <a name="delete-the-resource-group"></a>De resourcegroep verwijderen
 
@@ -217,14 +220,18 @@ Verwijder alleen het implementatie-exemplaar uit de Azure Machine Learning Studi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u gebruikgemaakt van automatische MILLILITERs in de Azure Machine Learning Studio voor het maken en implementeren van een time series-prognose model waarmee de vraag naar aandelen huren wordt voor speld. 
+In deze zelfstudie hebt u gebruikgemaakt van geautomatiseerde ML in de Azure Machine Learning Studio voor het maken en implementeren van een tijdreeks-prognosemodel waarmee de vraag naar bikeshare-verhuur wordt voorspeld. 
 
-Raadpleeg dit artikel voor stappen voor het maken van een Power BI ondersteund schema om het gebruik van uw pas geïmplementeerde webservice te vergemakkelijken:
+Raadpleeg dit artikel voor stappen voor het maken van een door Power BI ondersteund schema om het gebruik van uw pas geïmplementeerde webservice te faciliteren:
 
 > [!div class="nextstepaction"]
 > [Een webservice gebruiken](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
++ Meer informatie over [geautomatiseerde machine learning](concept-automated-ml.md).
++ Raadpleeg het artikel [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md#classification) voor meer informatie over metrische classificatiegegevens en grafieken.
++ Meer informatie over [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]
-> Deze fiets share gegevensset is gewijzigd voor deze zelf studie. Deze gegevensset is beschikbaar gemaakt als onderdeel van een [Kaggle-competitie](https://www.kaggle.com/c/bike-sharing-demand/data) en was oorspronkelijk verkrijgbaar via het [kapitaal Bike share](https://www.capitalbikeshare.com/system-data). Dit kan ook worden gevonden in de [icb machine learning-data base](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>
-> Bron: Fanaee-T, Hadi en Gama, Joao, Event labeling combineert ensembles detectoren en achtergrond kennis, voortgang in kunst matige intelligentie (2013): pp. 1-15, Springer Berlijn Heidelberg.
+> Deze bikeshare-gegevensset is gewijzigd voor deze zelfstudie. Deze gegevensset is beschikbaar gemaakt als onderdeel van een [Kaggle-wedstrijd](https://www.kaggle.com/c/bike-sharing-demand/data) en was oorspronkelijk beschikbaar via [Capital Bikeshare](https://www.capitalbikeshare.com/system-data). Hij kan ook worden gevonden in de [UCI Machine Learning-database](http://archive.ics.uci.edu/ml/datasets/Bike+Sharing+Dataset).<br><br>
+> Bron: Fanaee-T, Hadi, en Gama, Joao, Event labeling combining ensemble detectors and background knowledge, Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg.

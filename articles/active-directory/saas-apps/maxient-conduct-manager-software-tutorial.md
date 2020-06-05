@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met de Maxient-uitvoering Manager-software | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Maxient-beheer software.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Maxient Conduct Manager Software | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Maxient Conduct Manager Software.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,140 +16,112 @@ ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1a657a7d57b3e725b0ae92b5110935c0aecf73f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75533851"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83847171"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Zelf studie: Azure Active Directory SSO-integratie (single sign-on) met Maxient-beheer software
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Maxient Conduct Manager Software
 
-In deze zelf studie leert u hoe u Maxient-test beheer software integreert met Azure Active Directory (Azure AD). Wanneer u Maxient-uitvoering Manager-software integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Maxient Conduct Manager Software kunt integreren met Azure Active Directory (Azure AD). Wanneer u Maxient Conduct Manager Software integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot de Maxient-beheer software.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij Maxient-beheer software met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Azure AD gebruiken om uw gebruikers te verifiëren voor Maxient Conduct Manager Software
+* Gebruikers zich automatisch laten aanmelden met hun Azure AD-account bij Maxient Conduct Manager Software.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Maxient-beheer (SSO)-abonnement met eenmalige aanmelding.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
+* Een Maxient Conduct Manager Software-abonnement met eenmalige aanmelding ingeschakeld.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u Azure AD configureren voor gebruik met Maxient Conduct Manager Software.
 
 
-
-* Maxient-beheer software ondersteunt door **SP en IDP** GEÏNITIEERDe SSO
+* Maxient Conduct Manager Software ondersteunt door **SP en IDP** geïnitieerde eenmalige aanmelding
 
 > [!NOTE]
-> De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
+> De id van deze toepassing is een vaste tekenreekswaarde zodat maar één exemplaar in één tenant kan worden geconfigureerd.
 
-## <a name="adding-maxient-conduct-manager-software-from-the-gallery"></a>Maxient-uitvoering beheer software toevoegen vanuit de galerie
+## <a name="adding-maxient-conduct-manager-software-from-the-gallery"></a>Maxient Conduct Manager Software toevoegen vanuit de galerie
 
-Als u de integratie van Maxient-uitvoering Manager-software wilt configureren in azure AD, moet u Maxient-uitvoering Manager-software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Voor het configureren van de integratie van Maxient Conduct Manager Software met Azure Active Directory moet u Maxient Conduct Manager Software uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. Typ in de sectie **toevoegen vanuit de galerie** **Maxient uitvoeren Manager-software** in het zoekvak.
-1. Selecteer de **Maxient-beheer software** van het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **Toevoegen uit de galerie** **Maxient Conduct Manager Software** in het zoekvak.
+1. Selecteer **Maxient Conduct Manager Software** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-maxient-conduct-manager-software"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Maxient-uitvoerings beheer software
+## <a name="configure-and-test-azure-ad-single-sign-on-for-maxient-conduct-manager-software"></a>Eenmalige aanmelding van Azure AD voor Maxient Conduct Manager Software configureren en testen
 
-Azure AD SSO configureren en testen met Maxient-beheer software met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Maxient-beheer software.
+Test en configureer eenmalige aanmelding van Azure AD bij Maxient Conduct Manager Software. Voor eenmalige aanmelding moet u een verbinding tot stand brengen tussen Azure AD en Maxient Conduct Manager Software.
 
-Als u Azure AD SSO wilt configureren en testen met Maxient-beheer software, voltooit u de volgende bouw stenen:
+Voltooi de volgende stappen om eenmalige aanmelding van Azure AD met Maxient Conduct Manager Software te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Maxient-uitvoeren van software-SSO configureren](#configure-maxient-conduct-manager-software-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een Maxient-gebruiker voor het uitvoeren van test Manager-gebruikers](#create-maxient-conduct-manager-software-test-user)** van de Maxient-software die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : hiermee stelt u uw gebruikers in staat te verifiëren voor gebruik met Maxient Conduct Manager Software
+    1. **[Alle gebruikers toewijzen om Maxient te gebruiken](#assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software)** : hiermee staat u iedereen in uw organisatie toe om te verifiëren.
+1. **[Azure AD-instelling testen met Maxient](#test-with-maxient)** : hiermee controleert u of de configuratie werkt en of de juiste kenmerken worden vrijgegeven
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **Maxient-beheer** van de software toepassing de sectie **beheren** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Maxient Conduct Manager Software** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. In het gedeelte **basis configuratie** van SAML is de toepassing vooraf geconfigureerd in de gestarte modus **IDP** en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
+1. In de sectie  **SAML-basisconfiguratie**  is de toepassing vooraf geconfigureerd in de  **IDP** -geïnitieerde modus en zijn de benodigde URL's al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door op de knop  **Opslaan**  te klikken.
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://cm.maxient.com/<SCHOOLCODE>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://cm.maxient.com/<SCHOOLCODE>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team](mailto:support@maxient.com) van de software-client van Maxient om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met uw Maxient-vertegenwoordiger voor implementatie en ondersteuning om de waarde te krijgen.
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.  U dient deze URL aan uw Maxient-vertegenwoordiger voor implementatie en ondersteuning te verstrekken.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+### <a name="assign-all-users-to-be-able-to-authenticate-for-the-maxient-conduct-manager-software"></a>Alle gebruikers toewijzen om kunnen te verifiëren voor Maxient Conduct Manager Software
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie verleent u alle accounts toegang voor verificatie met behulp van het Azure-systeem voor Maxient Conduct Manager Software.  Deze stap is **vereist** voor een goede werking van Maxient.  Maxient maakt gebruik van uw Azure AD-systeem om gebruikers te *verifiëren*. De *autorisatie* van gebruikers wordt uitgevoerd in het Maxient-systeem voor de specifieke functie die ze willen uitvoeren. Maxient gebruikt geen kenmerken uit uw map om deze beslissingen te nemen.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan de Maxient-beheer software.
-
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Maxient-beheer software**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Maxient Conduct Manager Software** in de lijst met toepassingen.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** alle gebruikers (of de juiste groepen) en **wijs ze toe** om verifiëren met Maxient mogelijk te maken.
 
-## <a name="configure-maxient-conduct-manager-software-sso"></a>Software-SSO van Maxient-uitvoering beheren configureren
+## <a name="test-with-maxient"></a>Testen met Maxient 
 
-Als u eenmalige aanmelding wilt configureren op de **Maxient-beheer software** zijde, moet u de **URL voor de app-federatieve meta gegevens** verzenden naar [Maxient-team voor software ondersteuning](mailto:support@maxient.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
-
-### <a name="create-maxient-conduct-manager-software-test-user"></a>Gebruiker van Maxient-test beheerder maken
-
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Maxient-uitvoering Manager-software. Werk met het [team van Maxient-software ondersteuning](mailto:support@maxient.com) om de gebruikers toe te voegen in het software platform Maxient-beheer. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
-
-## <a name="test-sso"></a>SSO testen 
-
-In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
-
-Wanneer u op de tegel software van Maxient-beheer in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Maxient-beheer software waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
-
+Als er nog geen ondersteuningsticket is geopend bij een Maxient- vertegenwoordiger voor implementatie en ondersteuning, stuurt u een e-mail naar [support@maxient.com](mailto:support@maxient.com) met het onderwerp "Campus Based Authentication/Azure Setup - \<\<Schoolnaam\>\>". Geef in de hoofdtekst van het e-mailbericht de **App-URL voor federatieve metagegevens** op. Een medewerker van Maxient reageert met een testlink om te controleren of de juiste kenmerken worden vrijgegeven.  
+    
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer Maxient-beheer software met Azure AD](https://aad.portal.azure.com/)
+- [Maxient Conduct Manager Software proberen met Azure AD](https://aad.portal.azure.com/)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Panopto | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Panopto.
+title: 'Zelfstudie: Azure Active Directory-integratie met Panopto | Microsoft Docs'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Panopto.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 027876e3d8d669d2ab41d37e24f4171c2349adaa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a1d4836586bac359c3208147ec7bf59061cf0928
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67095013"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648587"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Zelf studie: integratie Azure Active Directory met Panopto
+# <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Zelfstudie: Azure Active Directory-integratie met Panopto
 
-In deze zelf studie leert u hoe u Panopto integreert met Azure Active Directory (Azure AD).
-Het integreren van Panopto met Azure AD biedt de volgende voor delen:
+In deze zelfstudie leert u hoe u Panopto kunt integreren met Azure Active Directory (Azure AD).
+De integratie van Panopto met Azure AD biedt de volgende voordelen:
 
-* U kunt beheren in azure AD die toegang heeft tot Panopto.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Panopto (eenmalige aanmelding) met hun Azure AD-accounts.
+* U kunt in Azure AD regelen wie toegang tot Panopto heeft.
+* U kunt instellen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij Panopto (eenmalige aanmelding).
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Panopto wilt configureren, hebt u de volgende items nodig:
+Voor het configureren van Azure AD-integratie met Panopto hebt u het volgende nodig:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding Panopto ingeschakeld
+* Een abonnement op Panopto waarvoor eenmalige aanmelding is ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Panopto ondersteunt door **SP** GEÏNITIEERDe SSO
+* Panopto ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
-* Panopto ondersteunt **just-in-time** -gebruikers inrichting
+* Panopto ondersteunt het **Just-In-Time** inrichten van gebruikers
 
 ## <a name="adding-panopto-from-the-gallery"></a>Panopto toevoegen uit de galerie
 
-Als u de integratie van Panopto in azure AD wilt configureren, moet u Panopto uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Om de integratie van Panopto in Azure AD te configureren, moet u Panopto vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Panopto toe te voegen uit de galerie:**
+**Voer de volgende stappen uit om Panopto toe te voegen vanuit de galerie:**
 
 1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van Panopto in azure AD wilt configureren, moet u Panopto ui
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Panopto**in het zoekvak, selecteer **Panopto** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. Typ **Panopto** in het zoekvak, selecteer **Panopto** in het deelvenster met resultaten en klik op de knop **Toevoegen** om de toepassing toe te voegen.
 
-     ![Panopto in de lijst met resultaten](common/search-new-app.png)
+     ![Panopto in de resultatenlijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Panopto op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Panopto tot stand worden gebracht.
+In deze sectie gaat u Azure AD-eenmalige aanmelding bij Panopto configureren en testen op basis van een testgebruiker met de naam **Britta Simon**.
+Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in Panopto tot stand is gebracht.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Panopto, moet u de volgende bouw stenen volt ooien:
+Als u Azure AD-eenmalige aanmelding met Panopto wilt configureren en testen, moet u de volgende bouwstenen voltooien:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Panopto eenmalige aanmelding configureren](#configure-panopto-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)**: als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)**: als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Panopto-test gebruiker](#create-panopto-test-user)** -om een equivalent van Julia Simon in Panopto te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**: als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Panopto voor eenmalige aanmelding configureren](#configure-panopto-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Testgebruiker maken voor Panopto](#create-panopto-test-user)** : als u een tegenhanger van Britta Simon in Panopto wilt hebben die is gekoppeld aan de Azure AD-weergave van de gebruiker.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Panopto:
+Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configureren met Panopto:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Panopto** Application Integration de optie **eenmalige aanmelding**.
+1. In [Azure Portal](https://portal.azure.com/) selecteert u **Eenmalige aanmelding** op de integratiepagina van de toepassing **Panopto**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,18 +105,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Panopto domein en Url's](common/sp-signonurl.png)
+    ![Domein- en URL-gegevens voor eenmalige aanmelding bij Panopto](common/sp-signonurl.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<tenant-name>.panopto.com`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenant-name>.panopto.com`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Panopto](mailto:support@panopto.com%E2%80%8E) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [klantondersteuningsteam van Panopto](mailto:support@panopto.com) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **Panopto instellen** de gewenste URL ('s) volgens uw vereiste.
+6. In de sectie **Panopto instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,33 +126,33 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-panopto-single-sign-on"></a>Eenmalige aanmelding voor Panopto configureren
+### <a name="configure-panopto-single-sign-on"></a>Panopto voor eenmalige aanmelding configureren
 
-1. Meld u in een ander webbrowser venster aan bij uw Panopto-bedrijfs site als beheerder.
+1. Meld u in een ander browservenster als beheerder aan bij de bedrijfssite van Panopto.
 
-2. Klik in de werk balk aan de linkerkant op **systeem**en klik vervolgens op **id-providers**.
+2. Klik in de werkbalk aan de linkerkant op **Systeem**en klik vervolgens op **Id-providers**.
    
     ![Systeem](./media/panopto-tutorial/ic777670.png "Systeem")
 
-3. Klik op **provider toevoegen**.
+3. Klik op **Provider toevoegen**.
    
     ![Id-providers](./media/panopto-tutorial/ic777671.png "Id-providers")
    
-4. Voer de volgende stappen uit in de sectie van de SAML-provider:
+4. Voer de volgende stappen uit in de sectie SAML-provider:
    
     ![SaaS-configuratie](./media/panopto-tutorial/ic777672.png "SaaS-configuratie")
     
-    a. Selecteer **SAML20**in de lijst **provider type** .    
+    a. Selecteer **SAML20** in de lijst **Providertype**.    
     
-    b. Typ in het tekstvak **exemplaar naam** een naam voor het exemplaar.
+    b. Typ in het tekstvak **Exemplaarnaam** een naam voor het exemplaar in.
 
-    c. Typ een beschrijving in het tekstvak **beschrijvende beschrijving** .
+    c. Typ een beschrijving in het tekstvak **Beschrijving** .
     
-    d. Plak in het tekstvak **URL voor pagina stuiteren** de waarde van de **aanmeldings-URL**die u van Azure Portal hebt gekopieerd.
+    d. Plak in het tekstvak **URL Bounce-pagina** de waarde van de **Aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
 
-    e. Plak in het tekstvak **Uitgever** de waarde van de **Azure ad-id**die u van Azure Portal hebt gekopieerd.
+    e. Plak in het tekstvak **Verlener** de waarde van **Azure AD-id**, die u hebt gekopieerd uit Azure Portal.
 
-    f. Open uw met base 64 versleutelde certificaat dat u hebt gedownload van Azure Portal, kopieer de inhoud ervan naar het klem bord en plak het in het tekstvak voor de **open bare sleutel** .
+    f. Open uw met Base 64 gecodeerde certificaat dat u hebt gedownload uit Azure Portal, kopieer de inhoud ervan naar het Klembord en plak deze in het tekstvak **Public Key**.
 
 5. Klik op **Opslaan**.
 
@@ -164,7 +164,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
 
-2. Selecteer **nieuwe gebruiker** boven aan het scherm.
+2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
     ![Knop Nieuwe gebruiker](common/new-user.png)
 
@@ -172,24 +172,24 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
-    a. Voer in het veld **Naam****Britta Simon**in.
+    a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension**.  
+    b. In het veld **Gebruikersnaam** typt u **brittasimon@yourcompanydomain.extension** .  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Panopto.
+In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van Azure-eenmalige aanmelding door haar toegang te geven tot Panopto.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Panopto**.
+1. Selecteer **Bedrijfstoepassingen** in Azure Portal, selecteer **Alle toepassingen** en selecteer vervolgens **Panopto**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Panopto**.
+2. Selecteer **Panopto** in de lijst met toepassingen.
 
     ![De koppeling Panopto in de lijst met toepassingen](common/all-applications.png)
 
@@ -201,31 +201,31 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
     ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
 
-5. Selecteer in het dialoog venster **gebruikers en groepen** **Julia Simon** in de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
 
-6. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-panopto-test-user"></a>Panopto-test gebruiker maken
+### <a name="create-panopto-test-user"></a>Een testgebruiker maken voor Panopto
 
-In deze sectie wordt een gebruiker met de naam Julia Simon gemaakt in Panopto. Panopto biedt ondersteuning voor Just-in-time-gebruikers inrichting, die standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet bestaat in Panopto, wordt er een nieuwe gemaakt na verificatie.
+In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Panopto. Panopto biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker in Panopto bestaat, wordt na verificatie een nieuwe gebruiker gemaakt.
 
 >[!NOTE]
->U kunt alle andere hulpprogram ma's voor het maken van Panopto-gebruikers accounts of Api's die worden geleverd door Panopto, gebruiken om Azure AD-gebruikers accounts in te richten.
+>U kunt ook alle andere hulpprogramma's voor het maken van gebruikersaccounts of API's van Panopto gebruiken om Microsoft Azure Active Directory-gebruikersaccounts in te richten.
 >
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Panopto in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Panopto waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster op de tegel Panopto klikt, wordt u automatisch aangemeld bij het exemplaar van Panopto waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

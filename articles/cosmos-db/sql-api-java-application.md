@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: zelf studie voor de ontwikkeling van Java-toepassingen met Azure Cosmos DB'
-description: 'Zelf studie: in deze zelf studie over Java-webtoepassingen ziet u hoe u de Azure Cosmos DB en de SQL-API kunt gebruiken om gegevens op te slaan en te openen vanuit een Java-toepassing die wordt gehost op Azure websites.'
-author: tknandu
+title: 'Zelfstudie: Een Java-web-app maken met Azure Cosmos DB en de SQL-API'
+description: 'Zelfstudie: In deze zelfstudie over Java-webtoepassingen wordt uitgelegd hoe u Azure Cosmos DB en de SQL-API gebruikt voor het opslaan van en de toegang tot een Java-toepassing die wordt gehost op Azure Websites.'
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
-ms.date: 11/05/2019
-ms.author: ramkris
-ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/12/2020
+ms.author: anfeldma
+ms.openlocfilehash: 6f8431bfd3be75651f3a08fe9b07fc3902436331
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985266"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657288"
 ---
-# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Zelf studie: een Java-webtoepassing bouwen met behulp van Azure Cosmos DB en de SQL-API
+# <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Zelfstudie: Een Java-webtoepassing maken met Azure Cosmos DB en de SQL-API
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -36,10 +36,10 @@ In deze zelfstudie over het maken van een Java-toepassing wordt uitgelegd hoe u 
 
 > [!TIP]
 > In deze zelfstudie voor het ontwikkelen van toepassingen wordt ervan uitgegaan dat u ervaring met Java hebt. Als u niet bekend bent met Java of de [vereiste hulpprogramma's](#Prerequisites), is het raadzaam het volledige [todo](https://github.com/Azure-Samples/documentdb-java-todo-app)-project via GitHub te downloaden. Vervolgens kunt u [de instructies aan het eind van dit artikel gebruiken](#GetProject) om het project op te bouwen. Zodra u klaar bent, kunt u het artikel lezen voor meer informatie over de code in de context van het project.  
-> 
-> 
+>
 
 ## <a name="prerequisites-for-this-java-web-application-tutorial"></a><a id="Prerequisites"></a>Vereisten voor deze zelfstudie over Java-webtoepassingen
+
 Voordat u met deze zelfstudie over het ontwikkelen van toepassingen aan de slag gaat, moet u beschikken over het volgende:
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
@@ -50,708 +50,205 @@ Voordat u met deze zelfstudie over het ontwikkelen van toepassingen aan de slag 
 * [Eclipse IDE voor Java EE-ontwikkelaars.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Azure Web Sites waarvoor een Java Runtime Environment (bijvoorbeeld Tomcat of Jetty) is ingeschakeld.](../app-service/app-service-web-get-started-java.md)
 
-Als u deze hulpprogramma's voor het eerst installeert, kunt u op coreservlets.com in de Quick Start-sectie van het artikel[Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Zelfstudie: TomCat7 installeren en gebruiken met Eclipse) een overzicht van het installatieproces vinden.
+Als u deze hulpprogramma's voor het eerst installeert, kunt u op coreservlets.com in de quickstart-sectie van het artikel [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Zelfstudie: TomCat7 installeren en gebruiken met Eclipse) een overzicht van het installatieproces vinden.
 
-## <a name="step-1-create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Stap 1: een Azure Cosmos DB-account maken
-Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: de Java JSP-toepassing maken](#CreateJSP).
+## <a name="create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Een Azure Cosmos DB-account maken
+
+Begin met het maken van een Azure Cosmos DB-account. Als u al een account hebt of de Azure Cosmos DB-emulator gebruikt voor deze zelfstudie, kunt u direct doorgaan naar [Stap 2: De Java JSP-toepassing maken](#CreateJSP).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 [!INCLUDE [keys](../../includes/cosmos-db-keys.md)]
 
-## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>Stap 2: De Java JSP-toepassing maken
+## <a name="create-the-java-jsp-application"></a><a id="CreateJSP"></a>De Java JSP-toepassing maken
+
 De JSP-toepassing maken:
 
-1. Eerst gaan we beginnen met het maken van een Java-project. Start Eclipse en klik achtereenvolgens op **File** (Bestand), **New** (Nieuw) en **Dynamic Web Project** (Dynamisch webproject). Als u het **dynamische webproject** niet ziet als een beschikbaar project, doet u het volgende: Klik op **bestand**, klik op **Nieuw**, klik op **project**..., vouw het **Web**uit, klik op **dynamisch webproject**en klik op **volgende**.
+1. Als eerste moet u een Java-project maken. Start Eclipse en klik achtereenvolgens op **File** (Bestand), **New** (Nieuw) en **Dynamic Web Project** (Dynamisch webproject). Als er geen **dynamisch webproject** beschikbaar is, gaat u als volg te werk: klik achtereenvolgens op **File** (Bestand), **New** (Nieuw), **Project**, vouw **Web** uit en klik op **Dynamic Web Project** (Dynamische webproject) en **Next** (Volgende).
    
     ![JSP Java-toepassing ontwikkelen](./media/sql-api-java-application/image10.png)
-2. Voer in het vak **Project name** (Projectnaam) een projectnaam in en selecteer in de vervolgkeuzelijst **Target Runtime** (Doelruntime) eventueel een waarde (bijvoorbeeld Apache Tomcat v7.0) en klik vervolgens op **Finish** (Voltooien). Door een doelruntime te selecteren, kunt u het project lokaal via Eclipse uitvoeren.
-3. Vouw in de weergave Project Explorer (Projectverkenner) van Eclipse uw project uit. Klik met de rechtermuisknop op **WebContent**(Webinhoud) en klik vervolgens op **New** (Nieuw) en **JSP File** (JSP-bestand).
-4. Geef in het dialoogvenster **New JSP File** (Nieuw JSP-bestand) de naam **index.jsp** voor het bestand op. Bewaar de bovenliggende map als **WebContent**, zoals weergegeven in de volgende afbeelding, en klik vervolgens op **Next** (Volgende).
+
+1. Voer in het vak **Project name** (Projectnaam) een projectnaam in en selecteer in de vervolgkeuzelijst **Target Runtime** (Doelruntime) eventueel een waarde (bijvoorbeeld Apache Tomcat v7.0) en klik vervolgens op **Finish** (Voltooien). Door een doelruntime te selecteren, kunt u het project lokaal via Eclipse uitvoeren.
+
+1. Vouw in de weergave Project Explorer (Projectverkenner) van Eclipse uw project uit. Klik met de rechtermuisknop op **WebContent**(Webinhoud) en klik vervolgens op **New** (Nieuw) en **JSP File** (JSP-bestand).
+
+1. Geef in het dialoogvenster **New JSP File** (Nieuw JSP-bestand) de naam **index.jsp** voor het bestand op. Bewaar de bovenliggende map als **WebContent**, zoals weergegeven in de volgende afbeelding, en klik vervolgens op **Next** (Volgende).
    
     ![Een nieuw JSP-bestand maken - Zelfstudie Java-webtoepassing](./media/sql-api-java-application/image11.png)
-5. Selecteer voor deze zelfstudie in het dialoogvenster **Select JSP Template** (JSP-sjabloon selecteren) de optie **New JSP File (html)** (Nieuw JSP-bestand (html)) en klik vervolgens op **Finish** (Voltooien).
-6. Wanneer het bestand index.jsp wordt geopend in Eclipse, voegt u tekst toe om **Hello World!** weer te geven in het bestaande `<body>`-element. De bijgewerkte `<body>`-inhoud moet eruitzien als de volgende code:
-   
-        <body>
-            <% out.println("Hello World!"); %>
-        </body>
-7. Sla het bestand index.jsp op.
-8. Als u een doelruntime in stap 2 hebt ingesteld, kunt u achtereenvolgens op **Project** en **Run** klikken om uw JSP-toepassing lokaal uit te voeren:
-   
-    ![Hello World – Zelfstudie Java-toepassing](./media/sql-api-java-application/image12.png)
 
-## <a name="step-3-install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Stap 3: de SQL Java SDK installeren
-De eenvoudigste manier om de SQL Java SDK en de bijbehorende afhankelijkheden op te halen, is via [Apache Maven](https://maven.apache.org/).
+1. Selecteer voor deze zelfstudie in het dialoogvenster **Select JSP Template** (JSP-sjabloon selecteren) de optie **New JSP File (html)** (Nieuw JSP-bestand (html)) en klik vervolgens op **Finish** (Voltooien).
 
-Hiervoor moet u de volgende stappen uitvoeren om het project te converteren naar een Maven-project:
+1. Wanneer het bestand *index.jsp* wordt geopend in Eclipse, voegt u tekst toe om **Hallo wereld!** weer te geven. in het bestaande `<body>`-element. De bijgewerkte `<body>`-inhoud moet eruitzien als de volgende code:
+
+   ```html
+   <body>
+     <% out.println("Hello World!"); %>
+   </body>
+   ```
+
+1. Sla het bestand *index.jsp* op.
+
+1. Als u een doelruntime in stap 2 hebt ingesteld, kunt u achtereenvolgens op **Project** en **Run** klikken om uw JSP-toepassing lokaal uit te voeren:
+
+  ![Hello World – Zelfstudie Java-toepassing](./media/sql-api-java-application/image12.png)
+
+## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>De SQL Java SDK installeren
+
+De eenvoudigste manier om de SQL Java SDK en de bijbehorende afhankelijkheden op te halen, is via [Apache Maven](https://maven.apache.org/). Hiervoor moet u met behulp van de volgende stappen het project converteren naar een Maven-project:
 
 1. Klik met de rechtermuisknop in de Projectverkenner, klik op **Configure** (Configureren) en klik vervolgens op **Convert to Maven Project** (Configureren naar een Maven-project).
-2. Accepteer de standaard instellingen in het venster **nieuwe pom maken** en klik op **volt ooien**.
-3. Ga naar de **Projectverkenner** en open het bestand pom.xml.
-4. Klik op het tabblad **Dependencies** (Afhankelijkheden) van het deelvenster **Dependencies** (Afhankelijkheden) op **Add** (Toevoegen).
-5. Ga in het venster **Select Dependency** (Afhankelijkheid selecteren) als volgt te werk:
-   
-   * Typ com.microsoft.azure in het vak **Groeps-id**.
-   * Voer in het vak **artefact-id** Azure-documentdb in.
-   * Typ 1.5.1 in het vak **versie** .
-     
-   ![SQL Java Application SDK installeren](./media/sql-api-java-application/image13.png)
-     
-   * Of voeg via een teksteditor de afhankelijkheids-XML voor de groeps- en artefact-id rechtstreeks toe aan pom.xml:
-        ```xml
-        <dependency>
-            <groupId>com.microsoft.azure</groupId>
-            <artifactId>azure-documentdb</artifactId>
-            <version>1.9.1</version>
-        </dependency>
-        ```
-6. Klik op **OK** zodat Maven de SQL Java SDK installeert.
-7. Sla het bestand pom.xml op.
 
-## <a name="step-4-using-the-azure-cosmos-db-service-in-a-java-application"></a><a id="UseService"></a>Stap 4: de Azure Cosmos DB-service in een Java-toepassing gebruiken
-1. Laten we eerst het object TodoItem in TodoItem.java definiëren:
-   
-        @Data
-        @Builder
-        public class TodoItem {
-            private String category;
-            private boolean complete;
-            private String id;
-            private String name;
-        }
-   
-    In dit project, gebruikt u [Project Lombok](https://projectlombok.org/) om de constructor, getters, setters en een opbouwfunctie te genereren. U kunt u deze code eventueel ook handmatig schrijven of door de IDE laten genereren.
-2. Als u de Azure Cosmos DB-service wilt aanroepen, moet u een nieuwe **DocumentClient** maken. Doorgaans kunt u de **DocumentClient** het best opnieuw gebruiken, zodat u niet voor elke volgende aanvraag en nieuwe client hoeft te maken. De client kan opnieuw worden gebruikt door deze in een **DocumentClientFactory** te verpakken. In DocumentClientFactory.java moet u de URI en de waarde voor PRIMARY KEY plakken die u in [stap 1](#CreateDB) naar het klembord hebt gekopieerd. Vervang [YOUR\_ENDPOINT\_HERE] door de URI en vervang [YOUR\_KEY\_HERE] door uw PRIMAIRE SLEUTEL.
-   
-        private static final String HOST = "[YOUR_ENDPOINT_HERE]";
-        private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
-   
-        private static DocumentClient documentClient = new DocumentClient(HOST, MASTER_KEY,
-                        ConnectionPolicy.GetDefault(), ConsistencyLevel.Session);
-   
-        public static DocumentClient getDocumentClient() {
-            return documentClient;
-        }
-3. U kunt nu een Data Access-object (DAO) maken om de ToDo-items naar Azure Cosmos DB te abstraheren.
-   
-    De client moet weten welke database en verzameling moeten worden gebruikt (waarnaar wordt verwezen via self link-elementen) om de ToDo-items op te kunnen slaan naar een verzameling. Indien mogelijk slaat u de database en verzameling op in het cachegeheugen om extra retouren naar de database te voorkomen.
-   
-    De volgende code laat zien hoe u de database en verzameling ophaalt, indien de verzameling bestaat, of hoe u een nieuwe verzameling maakt als de verzameling niet bestaat:
-   
-        public class DocDbDao implements TodoDao {
-            // The name of our database.
-            private static final String DATABASE_ID = "TodoDB";
-   
-            // The name of our collection.
-            private static final String COLLECTION_ID = "TodoCollection";
-   
-            // The Azure Cosmos DB Client
-            private static DocumentClient documentClient = DocumentClientFactory
-                    .getDocumentClient();
-   
-            // Cache for the database object, so we don't have to query for it to
-            // retrieve self links.
-            private static Database databaseCache;
-   
-            // Cache for the collection object, so we don't have to query for it to
-            // retrieve self links.
-            private static DocumentCollection collectionCache;
-   
-            private Database getTodoDatabase() {
-                if (databaseCache == null) {
-                    // Get the database if it exists
-                    List<Database> databaseList = documentClient
-                            .queryDatabases(
-                                    "SELECT * FROM root r WHERE r.id='" + DATABASE_ID
-                                            + "'", null).getQueryIterable().toList();
-   
-                    if (databaseList.size() > 0) {
-                        // Cache the database object so we won't have to query for it
-                        // later to retrieve the selfLink.
-                        databaseCache = databaseList.get(0);
-                    } else {
-                        // Create the database if it doesn't exist.
-                        try {
-                            Database databaseDefinition = new Database();
-                            databaseDefinition.setId(DATABASE_ID);
-   
-                            databaseCache = documentClient.createDatabase(
-                                    databaseDefinition, null).getResource();
-                        } catch (DocumentClientException e) {
-                            // TODO: Something has gone terribly wrong - the app wasn't
-                            // able to query or create the collection.
-                            // Verify your connection, endpoint, and key.
-                            e.printStackTrace();
-                        }
-                    }
-                }
-   
-                return databaseCache;
-            }
-   
-            private DocumentCollection getTodoCollection() {
-                if (collectionCache == null) {
-                    // Get the collection if it exists.
-                    List<DocumentCollection> collectionList = documentClient
-                            .queryCollections(
-                                    getTodoDatabase().getSelfLink(),
-                                    "SELECT * FROM root r WHERE r.id='" + COLLECTION_ID
-                                            + "'", null).getQueryIterable().toList();
-   
-                    if (collectionList.size() > 0) {
-                        // Cache the collection object so we won't have to query for it
-                        // later to retrieve the selfLink.
-                        collectionCache = collectionList.get(0);
-                    } else {
-                        // Create the collection if it doesn't exist.
-                        try {
-                            DocumentCollection collectionDefinition = new DocumentCollection();
-                            collectionDefinition.setId(COLLECTION_ID);
-   
-                            collectionCache = documentClient.createCollection(
-                                    getTodoDatabase().getSelfLink(),
-                                    collectionDefinition, null).getResource();
-                        } catch (DocumentClientException e) {
-                            // TODO: Something has gone terribly wrong - the app wasn't
-                            // able to query or create the collection.
-                            // Verify your connection, endpoint, and key.
-                            e.printStackTrace();
-                        }
-                    }
-                }
-   
-                return collectionCache;
-            }
-        }
-4. Vervolgens moet u code schrijven om de TodoItems door te geven aan de verzameling. In dit voorbeeld gebruiken we [Gson](https://code.google.com/p/google-gson/) om TodoItem POJO's (Plain Old Java Objects) naar JSON-documenten te serialiseren en te deserialiseren.
-   
-        // We'll use Gson for POJO <=> JSON serialization for this example.
-        private static Gson gson = new Gson();
-   
-        @Override
-        public TodoItem createTodoItem(TodoItem todoItem) {
-            // Serialize the TodoItem as a JSON Document.
-            Document todoItemDocument = new Document(gson.toJson(todoItem));
-   
-            // Annotate the document as a TodoItem for retrieval (so that we can
-            // store multiple entity types in the collection).
-            todoItemDocument.set("entityType", "todoItem");
-   
-            try {
-                // Persist the document using the DocumentClient.
-                todoItemDocument = documentClient.createDocument(
-                        getTodoCollection().getSelfLink(), todoItemDocument, null,
-                        false).getResource();
-            } catch (DocumentClientException e) {
-                e.printStackTrace();
-                return null;
-            }
-   
-            return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
-        }
-5. Net als bij Azure Cosmos-data bases en-verzamelingen worden documenten ook verwezen door Self links. Met de volgende Help-functie kunt u documenten ophalen met een ander kenmerk (bijvoorbeeld 'id') in plaats van een self link-element:
-   
-        private Document getDocumentById(String id) {
-            // Retrieve the document using the DocumentClient.
-            List<Document> documentList = documentClient
-                    .queryDocuments(getTodoCollection().getSelfLink(),
-                            "SELECT * FROM root r WHERE r.id='" + id + "'", null)
-                    .getQueryIterable().toList();
-   
-            if (documentList.size() > 0) {
-                return documentList.get(0);
-            } else {
-                return null;
-            }
-        }
-6. We kunnen de Help-methode in stap 5 gebruiken om een TodoItem JSON-document op te halen op basis van de id om het document vervolgens te deserialiseren naar een POJO:
-   
-        @Override
-        public TodoItem readTodoItem(String id) {
-            // Retrieve the document by id using our helper method.
-            Document todoItemDocument = getDocumentById(id);
-   
-            if (todoItemDocument != null) {
-                // De-serialize the document in to a TodoItem.
-                return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
-            } else {
-                return null;
-            }
-        }
-7. We kunnen ook de DocumentClient gebruiken om een verzameling of lijst met TodoItems op te halen met SQL:
-   
-        @Override
-        public List<TodoItem> readTodoItems() {
-            List<TodoItem> todoItems = new ArrayList<TodoItem>();
-   
-            // Retrieve the TodoItem documents
-            List<Document> documentList = documentClient
-                    .queryDocuments(getTodoCollection().getSelfLink(),
-                            "SELECT * FROM root r WHERE r.entityType = 'todoItem'",
-                            null).getQueryIterable().toList();
-   
-            // De-serialize the documents in to TodoItems.
-            for (Document todoItemDocument : documentList) {
-                todoItems.add(gson.fromJson(todoItemDocument.toString(),
-                        TodoItem.class));
-            }
-   
-            return todoItems;
-        }
-8. Er zijn verschillende manieren waarop een document kan worden bijgewerkt met de DocumentClient. In onze takenlijsttoepassing moeten we kunnen aangeven of een TodoItem is voltooid of niet. Dit kan worden gerealiseerd door het kenmerk 'complete' in het document bij te werken:
-   
-        @Override
-        public TodoItem updateTodoItem(String id, boolean isComplete) {
-            // Retrieve the document from the database
-            Document todoItemDocument = getDocumentById(id);
-   
-            // You can update the document as a JSON document directly.
-            // For more complex operations - you could de-serialize the document in
-            // to a POJO, update the POJO, and then re-serialize the POJO back in to
-            // a document.
-            todoItemDocument.set("complete", isComplete);
-   
-            try {
-                // Persist/replace the updated document.
-                todoItemDocument = documentClient.replaceDocument(todoItemDocument,
-                        null).getResource();
-            } catch (DocumentClientException e) {
-                e.printStackTrace();
-                return null;
-            }
-   
-            return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
-        }
-9. Tot slot willen we de mogelijkheid hebben om een TodoItem uit onze lijst te verwijderen. Hiervoor kunnen we de eerder geschreven Help-methode gebruiken om het self link-element op te halen en de client vervolgens instrueren dat deze moet worden verwijderd:
-   
-        @Override
-        public boolean deleteTodoItem(String id) {
-            // Azure Cosmos DB refers to documents by self link rather than id.
-   
-            // Query for the document to retrieve the self link.
-            Document todoItemDocument = getDocumentById(id);
-   
-            try {
-                // Delete the document by self link.
-                documentClient.deleteDocument(todoItemDocument.getSelfLink(), null);
-            } catch (DocumentClientException e) {
-                e.printStackTrace();
-                return false;
-            }
-   
-            return true;
-        }
+1. Accepteer in het venster **Nieuwe POM maken** de standaardinstellingen en klik op **Voltooien**.
 
-## <a name="step-5-wiring-the-rest-of-the-of-java-application-development-project-together"></a><a id="Wire"></a>Stap 5: De rest van het project voor de ontwikkeling van een Java-toepassing aaneen koppelen
-Nu het merendeel van het werk is voltooid, hoeven we alleen nog maar een gebruikersinterface te maken en deze te verbinden met onze DAO.
+1. Ga naar de **Projectverkenner** en open het bestand pom.xml.
 
-1. Laten we eerst een controller bouwen waarmee we onze DAO kunnen aanroepen:
-   
-        public class TodoItemController {
-            public static TodoItemController getInstance() {
-                if (todoItemController == null) {
-                    todoItemController = new TodoItemController(TodoDaoFactory.getDao());
-                }
-                return todoItemController;
-            }
-   
-            private static TodoItemController todoItemController;
-   
-            private final TodoDao todoDao;
-   
-            TodoItemController(TodoDao todoDao) {
-                this.todoDao = todoDao;
-            }
-   
-            public TodoItem createTodoItem(@NonNull String name,
-                    @NonNull String category, boolean isComplete) {
-                TodoItem todoItem = TodoItem.builder().name(name).category(category)
-                        .complete(isComplete).build();
-                return todoDao.createTodoItem(todoItem);
-            }
-   
-            public boolean deleteTodoItem(@NonNull String id) {
-                return todoDao.deleteTodoItem(id);
-            }
-   
-            public TodoItem getTodoItemById(@NonNull String id) {
-                return todoDao.readTodoItem(id);
-            }
-   
-            public List<TodoItem> getTodoItems() {
-                return todoDao.readTodoItems();
-            }
-   
-            public TodoItem updateTodoItem(@NonNull String id, boolean isComplete) {
-                return todoDao.updateTodoItem(id, isComplete);
-            }
-        }
-   
-    In complexere toepassing is het mogelijk dat de controller naast de DAO gecompliceerde bedrijfslogica bevat.
-2. Vervolgens maken we een servlet om HTTP-aanvragen naar de controller te sturen:
-   
-        public class TodoServlet extends HttpServlet {
-            // API Keys
-            public static final String API_METHOD = "method";
-   
-            // API Methods
-            public static final String CREATE_TODO_ITEM = "createTodoItem";
-            public static final String GET_TODO_ITEMS = "getTodoItems";
-            public static final String UPDATE_TODO_ITEM = "updateTodoItem";
-   
-            // API Parameters
-            public static final String TODO_ITEM_ID = "todoItemId";
-            public static final String TODO_ITEM_NAME = "todoItemName";
-            public static final String TODO_ITEM_CATEGORY = "todoItemCategory";
-            public static final String TODO_ITEM_COMPLETE = "todoItemComplete";
-   
-            public static final String MESSAGE_ERROR_INVALID_METHOD = "{'error': 'Invalid method'}";
-   
-            private static final long serialVersionUID = 1L;
-            private static final Gson gson = new Gson();
-   
-            @Override
-            protected void doGet(HttpServletRequest request,
-                    HttpServletResponse response) throws ServletException, IOException {
-   
-                String apiResponse = MESSAGE_ERROR_INVALID_METHOD;
-   
-                TodoItemController todoItemController = TodoItemController
-                        .getInstance();
-   
-                String id = request.getParameter(TODO_ITEM_ID);
-                String name = request.getParameter(TODO_ITEM_NAME);
-                String category = request.getParameter(TODO_ITEM_CATEGORY);
-                boolean isComplete = StringUtils.equalsIgnoreCase("true",
-                        request.getParameter(TODO_ITEM_COMPLETE)) ? true : false;
-   
-                switch (request.getParameter(API_METHOD)) {
-                case CREATE_TODO_ITEM:
-                    apiResponse = gson.toJson(todoItemController.createTodoItem(name,
-                            category, isComplete));
-                    break;
-                case GET_TODO_ITEMS:
-                    apiResponse = gson.toJson(todoItemController.getTodoItems());
-                    break;
-                case UPDATE_TODO_ITEM:
-                    apiResponse = gson.toJson(todoItemController.updateTodoItem(id,
-                            isComplete));
-                    break;
-                default:
-                    break;
-                }
-   
-                response.getWriter().println(apiResponse);
-            }
-   
-            @Override
-            protected void doPost(HttpServletRequest request,
-                    HttpServletResponse response) throws ServletException, IOException {
-                doGet(request, response);
-            }
-        }
-3. We hebben een online gebruikersinterface nodig die voor de gebruiker kan worden weergegeven. Laten we het bestand index.jsp dat we eerder hebben gemaakt, herschrijven:
-    ```html
-        <html>
-        <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
-          <title>Azure Cosmos DB Java Sample</title>
-   
-          <!-- Bootstrap -->
-          <link href="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-   
-          <style>
-            /* Add padding to body for fixed nav bar */
-            body {
-              padding-top: 50px;
-            }
-          </style>
-        </head>
-        <body>
-          <!-- Nav Bar -->
-          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="#">My Tasks</a>
-              </div>
-            </div>
-          </div>
-   
-          <!-- Body -->
-          <div class="container">
-            <h1>My ToDo List</h1>
-   
-            <hr/>
-   
-            <!-- The ToDo List -->
-            <div class = "todoList">
-              <table class="table table-bordered table-striped" id="todoItems">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Complete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-   
-              <!-- Update Button -->
-              <div class="todoUpdatePanel">
-                <form class="form-horizontal" role="form">
-                  <button type="button" class="btn btn-primary">Update Tasks</button>
-                </form>
-              </div>
-   
-            </div>
-   
-            <hr/>
-   
-            <!-- Item Input Form -->
-            <div class="todoForm">
-              <form class="form-horizontal" role="form">
-                <div class="form-group">
-                  <label for="inputItemName" class="col-sm-2">Task Name</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputItemName" placeholder="Enter name">
-                  </div>
-                </div>
-   
-                <div class="form-group">
-                  <label for="inputItemCategory" class="col-sm-2">Task Category</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputItemCategory" placeholder="Enter category">
-                  </div>
-                </div>
-   
-                <button type="button" class="btn btn-primary">Add Task</button>
-              </form>
-            </div>
-   
-          </div>
-   
-          <!-- Placed at the end of the document so the pages load faster -->
-          <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
-          <script src="//ajax.aspnetcdn.com/ajax/bootstrap/3.2.0/bootstrap.min.js"></script>
-          <script src="assets/todo.js"></script>
-        </body>
-        </html>
-    ```
-4. Schrijf tot slot wat JavaScript aan de clientzijde om de onlinegebruikersinterface en de servlet te koppelen:
-   
-        var todoApp = {
-          /*
-           * API methods to call Java backend.
-           */
-          apiEndpoint: "api",
-   
-          createTodoItem: function(name, category, isComplete) {
-            $.post(todoApp.apiEndpoint, {
-                "method": "createTodoItem",
-                "todoItemName": name,
-                "todoItemCategory": category,
-                "todoItemComplete": isComplete
-              },
-              function(data) {
-                var todoItem = data;
-                todoApp.addTodoItemToTable(todoItem.id, todoItem.name, todoItem.category, todoItem.complete);
-              },
-              "json");
-          },
-   
-          getTodoItems: function() {
-            $.post(todoApp.apiEndpoint, {
-                "method": "getTodoItems"
-              },
-              function(data) {
-                var todoItemArr = data;
-                $.each(todoItemArr, function(index, value) {
-                  todoApp.addTodoItemToTable(value.id, value.name, value.category, value.complete);
-                });
-              },
-              "json");
-          },
-   
-          updateTodoItem: function(id, isComplete) {
-            $.post(todoApp.apiEndpoint, {
-                "method": "updateTodoItem",
-                "todoItemId": id,
-                "todoItemComplete": isComplete
-              },
-              function(data) {},
-              "json");
-          },
-   
-          /*
-           * UI Methods
-           */
-          addTodoItemToTable: function(id, name, category, isComplete) {
-            var rowColor = isComplete ? "active" : "warning";
-   
-            todoApp.ui_table().append($("<tr>")
-              .append($("<td>").text(name))
-              .append($("<td>").text(category))
-              .append($("<td>")
-                .append($("<input>")
-                  .attr("type", "checkbox")
-                  .attr("id", id)
-                  .attr("checked", isComplete)
-                  .attr("class", "isComplete")
-                ))
-              .addClass(rowColor)
-            );
-          },
-   
-          /*
-           * UI Bindings
-           */
-          bindCreateButton: function() {
-            todoApp.ui_createButton().click(function() {
-              todoApp.createTodoItem(todoApp.ui_createNameInput().val(), todoApp.ui_createCategoryInput().val(), false);
-              todoApp.ui_createNameInput().val("");
-              todoApp.ui_createCategoryInput().val("");
-            });
-          },
-   
-          bindUpdateButton: function() {
-            todoApp.ui_updateButton().click(function() {
-              // Disable button temporarily.
-              var myButton = $(this);
-              var originalText = myButton.text();
-              $(this).text("Updating...");
-              $(this).prop("disabled", true);
-   
-              // Call api to update todo items.
-              $.each(todoApp.ui_updateId(), function(index, value) {
-                todoApp.updateTodoItem(value.name, value.value);
-                $(value).remove();
-              });
-   
-              // Re-enable button.
-              setTimeout(function() {
-                myButton.prop("disabled", false);
-                myButton.text(originalText);
-              }, 500);
-            });
-          },
-   
-          bindUpdateCheckboxes: function() {
-            todoApp.ui_table().on("click", ".isComplete", function(event) {
-              var checkboxElement = $(event.currentTarget);
-              var rowElement = $(event.currentTarget).parents('tr');
-              var id = checkboxElement.attr('id');
-              var isComplete = checkboxElement.is(':checked');
-   
-              // Toggle table row color
-              if (isComplete) {
-                rowElement.addClass("active");
-                rowElement.removeClass("warning");
-              } else {
-                rowElement.removeClass("active");
-                rowElement.addClass("warning");
-              }
-   
-              // Update hidden inputs for update panel.
-              todoApp.ui_updateForm().children("input[name='" + id + "']").remove();
-   
-              todoApp.ui_updateForm().append($("<input>")
-                .attr("type", "hidden")
-                .attr("class", "updateComplete")
-                .attr("name", id)
-                .attr("value", isComplete));
-   
-            });
-          },
-   
-          /*
-           * UI Elements
-           */
-          ui_createNameInput: function() {
-            return $(".todoForm #inputItemName");
-          },
-   
-          ui_createCategoryInput: function() {
-            return $(".todoForm #inputItemCategory");
-          },
-   
-          ui_createButton: function() {
-            return $(".todoForm button");
-          },
-   
-          ui_table: function() {
-            return $(".todoList table tbody");
-          },
-   
-          ui_updateButton: function() {
-            return $(".todoUpdatePanel button");
-          },
-   
-          ui_updateForm: function() {
-            return $(".todoUpdatePanel form");
-          },
-   
-          ui_updateId: function() {
-            return $(".todoUpdatePanel .updateComplete");
-          },
-   
-          /*
-           * Install the TodoApp
-           */
-          install: function() {
-            todoApp.bindCreateButton();
-            todoApp.bindUpdateButton();
-            todoApp.bindUpdateCheckboxes();
-   
-            todoApp.getTodoItems();
-          }
-        };
-   
-        $(document).ready(function() {
-          todoApp.install();
-        });
-5. Mooi. Nu hoeft de toepassing alleen nog maar te worden getest. Voer de toepassing lokaal uit en voeg enkele Todo-items toe door de itemnaam en categorie in te vullen en op **Taak toevoegen** te klikken.
-6. Zodra het item wordt weergegeven, kunt u bijwerken of het item is voltooid door het selectievakje in of uit te schakelen en op **Taken bijwerken** te klikken.
+1. Klik op het tabblad **Dependencies** (Afhankelijkheden) van het deelvenster **Dependencies** (Afhankelijkheden) op **Add** (Toevoegen).
 
-## <a name="step-6-deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>Stap 6: de Java-toepassing implementeren op Azure Web Sites
+1. Ga in het venster **Select Dependency** (Afhankelijkheid selecteren) als volgt te werk:
+   
+   * Voer `com.azure` in het vak **Groeps-id** in.
+   * Voer `azure-cosmos` in het vak **Artefact-id** in.
+   * Voer `4.0.1-beta.1` in het vak **Versie** in.
+  
+   Of voeg de afhankelijkheids-XML voor de groeps- en artefact-id rechtstreeks toe aan het bestand *pom.xml*:
+
+   ```xml
+   <dependency>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-cosmos</artifactId>
+      <version>4.0.1-beta.1</version>
+   </dependency>
+   ```
+
+1. Klik op **OK** zodat Maven de SQL Java SDK installeert of het bestand pom.xml opslaat.
+
+## <a name="use-the-azure-cosmos-db-service-in-your-java-application"></a><a id="UseService"></a>De Azure Cosmos DB-service in uw Java-toepassing gebruiken
+
+U kunt nu de modellen, weergaven en controllers toevoegen aan uw webtoepassing.
+
+### <a name="add-a-model"></a>Een model toevoegen
+
+Eerst gaan we een model definiëren in een nieuw bestand *TodoItem.java*. Met de `TodoItem`-klasse wordt het schema van een item gedefinieerd, samen met de ophaal- en installatiemethoden:
+
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/model/TodoItem.java":::
+
+### <a name="add-the-data-access-objectdao-classes"></a>De DAO-klassen (Data Access Object) toevoegen
+
+Maak een Data Access-object (DAO) om de ToDo-items naar Azure Cosmos DB te abstraheren. De client moet weten welke database en verzameling moeten worden gebruikt (waarnaar wordt verwezen via self link-elementen) om de ToDo-items op te kunnen slaan naar een verzameling. Indien mogelijk slaat u de database en verzameling op in het cachegeheugen om extra retouren naar de database te voorkomen.
+
+1. Als u de Azure Cosmos DB-service wilt aanroepen, moet u een nieuw `cosmosClient`-object maken. Doorgaans kunt u het `cosmosClient`-object het best opnieuw gebruiken, zodat u het niet voor elke volgende aanvraag en nieuwe client hoeft te maken. U kunt de client opnieuw gebruiken door deze te definiëren in de `cosmosClientFactory`-klasse. Werk de HOST- en MASTER_KEY-waarden die u hebt opgeslagen in [stap 1](#CreateDB) bij. Vervang de HOST-variabele door uw URI en vervang de MASTER_KEY door uw PRIMARY KEY. Gebruik de volgende code om de `CosmosClientFactory`-klasse te maken in het bestand *CosmosClientFactory.java*:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/CosmosClientFactory.java":::
+
+1. Maak een nieuw *TodoDao.java*-bestand en voeg de `TodoDao`-klasse toe om de TODO-items te maken, bij te werken, te lezen en te verwijderen:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDao.java":::
+
+1. Maak een nieuw *MockDao.java*-bestand en voeg de `MockDao`-klasse toe; met deze klasse wordt de `TodoDao`-klasse geïmplementeerd om CRUD-bewerkingen op de items uit te voeren:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/MockDao.java":::
+
+1. Maak een nieuw *DocDbDao.java*-bestand en voeg de `DocDbDao`-klasse toe. In deze klasse wordt code gedefinieerd om de TodoItems in de container op te slaan, worden uw database en verzameling opgehaald, indien aanwezig, of wordt een nieuwe gemaakt als deze nog niet bestaat. In dit voorbeeld wordt [Gson](https://code.google.com/p/google-gson/) gebruikt om TodoItem POJO's (Plain Old Java Objects) naar JSON-documenten te serialiseren en te deserialiseren. De client moet weten welke database en verzameling moeten worden gebruikt (waarnaar wordt verwezen via self link-elementen) om de ToDo-items op te kunnen slaan naar een verzameling. In deze klasse wordt ook de Help-functie gedefinieerd om de documenten op te halen door een ander kenmerk (bijvoorbeeld id) in plaats van self link. U kunt de Help-methode gebruiken om een TodoItem JSON-document op te halen op basis van de id om het document vervolgens te deserialiseren naar een POJO.
+
+   U kunt ook het clientobject `cosmosClient` gebruiken om een verzameling of lijst met TodoItems op te halen via een SQL-query. Ten slotte definieert u de verwijderingsmethode voor het verwijderen van een TodoItem uit uw lijst. De volgende code toont de inhoud van de `DocDbDao`-klasse:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/DocDbDao.java":::
+
+1. Maak vervolgens een nieuw *TodoDaoFactory.java*-bestand en voeg de `TodoDaoFactory`-klasse toe, waarmee een nieuw DocDbDao-object wordt gemaakt:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/dao/TodoDaoFactory.java":::
+
+### <a name="add-a-controller"></a>Een controller toevoegen
+
+Voeg de *TodoItemController*-controller toe aan uw toepassing. In dit project, gebruikt u [Project Lombok](https://projectlombok.org/) om de constructor, getters, setters en een opbouwfunctie te genereren. U kunt u deze code eventueel ook handmatig schrijven of door de IDE laten genereren:
+
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/controller/TodoItemController.java":::
+
+### <a name="create-a-servlet"></a>Een servlet maken
+
+Maak vervolgens een servlet om HTTP-aanvragen naar de controller te sturen. Maak het bestand *ApiServlet. java* en definieer hieronder de volgende code:
+
+:::code language="java" source="~/samples-cosmosdb-java-v4-web-app/src/com/microsoft/azure/documentdb/sample/ApiServlet.java":::
+
+## <a name="wire-the-rest-of-the-of-java-app-together"></a><a id="Wire"></a>Zet de rest van de Java-app in elkaar
+
+Nu het merendeel van het werk is voltooid, hoeven we alleen nog maar een gebruikersinterface te maken en deze te verbinden met uw DAO.
+
+1. U hebt een online gebruikersinterface nodig die voor de gebruiker kan worden weergegeven. Laten we het bestand *index.jsp* dat we eerder hebben gemaakt, herschrijven met de volgende code:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/index.jsp":::
+
+1. Schrijf tot slot wat JavaScript aan de clientzijde om de onlinegebruikersinterface en de servlet te koppelen:
+
+   :::code language="java" source="~/samples-cosmosdb-java-v4-web-app/WebContent/assets/todo.js":::
+
+1. Nu hoeft de toepassing alleen nog maar te worden getest. Voer de toepassing lokaal uit en voeg enkele Todo-items toe door de itemnaam en categorie in te vullen en op **Taak toevoegen** te klikken. Wanneer het item wordt weergegeven, kunt u bijwerken of het item is voltooid door het selectievakje in of uit te schakelen en op **Taken bijwerken** te klikken.
+
+## <a name="deploy-your-java-application-to-azure-web-sites"></a><a id="Deploy"></a>Uw Java-toepassing implementeren op Azure Web Sites
+
 Met Azure Web Sites kunt u heel eenvoudig, alsof u de toepassing als een WAR-bestand exporteert, Java-toepassingen implementeren en uploaden via broncodebeheer (bijvoorbeeld Git) of FTP.
 
 1. Als u de toepassing wilt exporteren als een WAR-bestand, klikt u met de rechtermuisknop op uw project in **Projectverkenner** en klikt u achtereenvolgens op **Exporteren** en **WAR-bestand**.
-2. Ga in het venster **WAR exporteren** als volgt te werk:
+
+1. Ga in het venster **WAR exporteren** als volgt te werk:
    
    * Typ in het vak Webproject azure-documentdb-java-sample.
    * Kies in het vak Doel de bestemming waarnaar u het WAR-bestand wilt opslaan.
    * Klik op **Voltooien**.
-3. Nu u over een WAR-bestand beschikt, kunt u dit uploaden naar de map **webapps** voor Azure Web Sites. Zie [Een Java-toepassing aan Azure App Service Web Apps toevoegen](../app-service/web-sites-java-add-app.md) voor instructies over het uploaden van het bestand.
-   
-    Zodra het WAR-bestand is geüpload naar de map webapps, detecteert de runtime-omgeving dat u het bestand hebt toegevoegd en wordt het bestand automatisch geladen.
-4. Als u het voltooide product wilt bekijken, gaat u naar `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` en begint u met het toevoegen van uw taken.
+
+1. Nu u over een WAR-bestand beschikt, kunt u dit uploaden naar de map **webapps** voor Azure Web Sites. Zie [Een Java-toepassing aan Azure App Service Web Apps toevoegen](../app-service/web-sites-java-add-app.md) voor instructies over het uploaden van het bestand. Wanneer het WAR-bestand is geüpload naar de map webapps, detecteert de runtime-omgeving dat u het bestand hebt toegevoegd en wordt het bestand automatisch geladen.
+
+1. Als u het voltooide product wilt bekijken, gaat u naar `http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` en begint u met het toevoegen van uw taken.
 
 ## <a name="get-the-project-from-github"></a><a id="GetProject"></a>Het project ophalen van GitHub
+
 Alle voorbeelden in deze zelfstudie zijn opgenomen in het [todo](https://github.com/Azure-Samples/documentdb-java-todo-app)-project op GitHub. Als u het todo-project wilt importeren in Eclipse, moet u over de software en resources beschikken die worden vermeld in de sectie [Vereisten](#Prerequisites) en gaat u als volgt te werk:
 
 1. Installeer [Project Lombok](https://projectlombok.org/). Lombok wordt gebruikt om de constructors, getters, setters in het project te genereren. Zodra u het bestand lombok.jar hebt gedownload, dubbelklikt u op het bestand om het te installeren of installeert u het bestand vanaf de opdrachtregel.
-2. Als Eclipse is geopend, sluit en opent u Eclipse opnieuw om Lombok te laden.
-3. Klik in Eclipse in het menu **File** (Bestand) op **Import** (Importeren).
-4. Klik in het venster the **Import** (Importeren) achtereenvolgens op **Git**, **Projects from Git** (Projecten van Git) en **Next** (Volgende).
-5. Klik in het venster **Select Repository Source** (Opslagplaatsbron selecteren) op **Clone URI** (URI klonen).
-6. Voer op het scherm **Git-opslagplaats voor broncode** in het vak **URI** het webadres https://github.com/Azure-Samples/documentdb-java-todo-app.git in en klik vervolgens op **Volgende**.
-7. Zorg er in het scherm **Branch Selection** (Vertakking selecteren) voor dat **master** is geselecteerd en klik op **Next** (Volgende).
-8. Klik in het scherm **Local Destination** (Lokale bestemming) op **Browse** (Bladeren) om een map te selecteren waarnaar de opslag kan worden gekopieerd en klik op **Next** (Volgende).
-9. Zorg er in het scherm **Select a wizard to use for importing projects** (Een wizard selecteren waarmee projecten worden geïmporteerd) voor dat **Import existing projects** (Bestaande projecten selecteren) is geselecteerd en klik op **Next** (Volgende).
-10. Schakel in het scherm **Import Projects** (Projecten importeren) het selectievakje uit voor het **DocumentDB-project** en klik op **Finish** (Voltooien). Het DocumentDB-project bevat de Azure Cosmos DB Java SDK die we in plaats daarvan als een afhankelijkheid zullen toevoegen.
-11. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie stap 1 voor meer informatie [. Een Azure Cosmos-database account maken](#CreateDB).
-12. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample**, klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren**.
-13. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK**.
-14. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Targeted Runtimes** (Beoogde runtimes).
-15. Klik in het scherm **Targeted Runtimes** (Beoogde runtimes) op **New** (Nieuw), selecteer **Apache Tomcat v7.0** en klik vervolgens op **OK**.
-16. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Project Facets** (Projectfacetten).
-17. Selecteer in het scherm **Project Facets** (Projectfacetten) achtereenvolgens **Dynamic Web Module** (Dynamische webmodule) en **Java** en klik vervolgens op **OK**.
-18. Klik op het tabblad **Servers** onder aan het scherm met de rechtermuisknop op **Tomcat v7.0 Server at localhost** (Tomcat v7.0 Server op localhost) en klik vervolgens op **Add and Remove** (Toevoegen en verwijderen).
-19. Verplaats in het venster **Add and Remove** (Toevoegen en verwijderen) **azure-documentdb-java-sample** naar het vak **Configured** (Geconfigureerd) en klik vervolgens op **Finish** (Voltooien).
-20. Klik op het tabblad **Servers** met de rechtermuisknop op **Tomcat v7.0-server op localhost** en klik vervolgens op **Opnieuw starten**.
-21. Ga in een browser naar `http://localhost:8080/azure-documentdb-java-sample/` en begin met het toevoegen van taken aan uw takenlijst. Als u de standaardpoortwaarden hebt gewijzigd, wijzigt u 8080 in de waarde die u hebt geselecteerd.
-22. Zie stap 6 als u uw project wilt implementeren op een Azure-website [. Implementeer uw toepassing op Azure websites](#Deploy).
 
+1. Als Eclipse is geopend, sluit en opent u Eclipse opnieuw om Lombok te laden.
+
+1. Klik in Eclipse in het menu **File** (Bestand) op **Import** (Importeren).
+
+1. Klik in het venster the **Import** (Importeren) achtereenvolgens op **Git**, **Projects from Git** (Projecten van Git) en **Next** (Volgende).
+
+1. Klik in het venster **Select Repository Source** (Opslagplaatsbron selecteren) op **Clone URI** (URI klonen).
+
+1. Voer op het scherm **Git-opslagplaats voor broncode** in het vak **URI** het webadres https://github.com/Azure-Samples/documentdb-java-todo-app.git in en klik vervolgens op **Volgende**.
+
+1. Zorg er in het scherm **Branch Selection** (Vertakking selecteren) voor dat **master** is geselecteerd en klik op **Next** (Volgende).
+
+1. Klik in het scherm **Local Destination** (Lokale bestemming) op **Browse** (Bladeren) om een map te selecteren waarnaar de opslag kan worden gekopieerd en klik op **Next** (Volgende).
+
+1. Zorg er in het scherm **Select a wizard to use for importing projects** (Een wizard selecteren waarmee projecten worden geïmporteerd) voor dat **Import existing projects** (Bestaande projecten selecteren) is geselecteerd en klik op **Next** (Volgende).
+
+1. Schakel in het scherm **Import Projects** (Projecten importeren) het selectievakje uit voor het **DocumentDB-project** en klik op **Finish** (Voltooien). Het DocumentDB-project bevat de Azure Cosmos DB Java SDK die we in plaats daarvan als een afhankelijkheid zullen toevoegen.
+
+1. Navigeer in **Projectverkenner** naar azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java en vervang de waarden voor HOST en MASTER_KEY door de URI en PRIMAIRE SLEUTEL voor uw Azure Cosmos DB-account en sla het bestand vervolgens op. Zie [Stap 1: Een Azure Cosmos-databaseaccount maken](#CreateDB).
+
+1. Klik in **Projectverkenner** met de rechtermuisknop op **azure-documentdb-java-sample**, klik op **Opbouwpad** en vervolgens op **Opbouwpad configureren**.
+
+1. Selecteer in het rechterdeelvenster van het scherm **Java Build Path** (Java-opbouwpad) het tabblad **Libraries** (Bibliotheken) en klik vervolgens op **Add External JARs** (Externe JAR's toevoegen). Navigeer naar de locatie van het bestand lombok.jar en klik op **Open** (Openen) en **OK**.
+
+1. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Targeted Runtimes** (Beoogde runtimes).
+
+1. Klik in het scherm **Targeted Runtimes** (Beoogde runtimes) op **New** (Nieuw), selecteer **Apache Tomcat v7.0** en klik vervolgens op **OK**.
+
+1. Gebruik stap 12 om het venster **Properties** (Eigenschappen) opnieuw te openen en klik in het linkerdeelvenster vervolgens op **Project Facets** (Projectfacetten).
+
+1. Selecteer in het scherm **Project Facets** (Projectfacetten) achtereenvolgens **Dynamic Web Module** (Dynamische webmodule) en **Java** en klik vervolgens op **OK**.
+
+1. Klik op het tabblad **Servers** onder aan het scherm met de rechtermuisknop op **Tomcat v7.0 Server at localhost** (Tomcat v7.0 Server op localhost) en klik vervolgens op **Add and Remove** (Toevoegen en verwijderen).
+
+1. Verplaats in het venster **Add and Remove** (Toevoegen en verwijderen) **azure-documentdb-java-sample** naar het vak **Configured** (Geconfigureerd) en klik vervolgens op **Finish** (Voltooien).
+
+1. Klik op het tabblad **Servers** met de rechtermuisknop op **Tomcat v7.0-server op localhost** en klik vervolgens op **Opnieuw starten**.
+
+1. Ga in een browser naar `http://localhost:8080/azure-documentdb-java-sample/` en begin met het toevoegen van taken aan uw takenlijst. Als u de standaardpoortwaarden hebt gewijzigd, wijzigt u 8080 in de waarde die u hebt geselecteerd.
+
+1. Zie [Stap 6: Uw toepassing implementeren op Azure Web Sites](#Deploy).
+
+## <a name="next-steps"></a>Volgende stappen
+
+> [!div class="nextstepaction"]
+> [Een node.js-toepassing maken met Azure Cosmos DB](sql-api-nodejs-application.md)

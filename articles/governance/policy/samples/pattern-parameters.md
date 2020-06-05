@@ -1,52 +1,71 @@
 ---
-title: 'Patroon: para meters in een beleids definitie'
-description: Dit Azure Policy patroon bevat een voor beeld van het gebruik van para meters in een beleids definitie.
-ms.date: 01/31/2020
+title: 'Patroon: Parameters in een beleidsdefinitie'
+description: Dit Azure Policy-patroon biedt een voorbeeld van het gebruik van parameters in een beleidsdefinitie.
+ms.date: 05/20/2020
 ms.topic: sample
-ms.openlocfilehash: 4921bb216ef67b561bc8986cf48239e6448beafc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77172805"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696723"
 ---
-# <a name="azure-policy-pattern-parameters"></a>Azure Policy patroon: para meters
+# <a name="azure-policy-pattern-parameters"></a>Azure Policy-patroon: parameters
 
-Een beleids definitie kan dynamisch worden gemaakt om het aantal beleids definities te beperken dat nodig is met behulp van [para meters](../concepts/definition-structure.md#parameters). De para meter wordt gedefinieerd tijdens de beleids toewijzing. Para meters hebben een aantal vooraf gedefinieerde eigenschappen die de para meter en de manier waarop deze worden gebruikt, beschrijven.
+Een beleidsdefinitie kan via [parameters](../concepts/definition-structure.md#parameters) dynamisch worden gemaakt om het aantal beleidsdefinities te beperken dat nodig is. De parameter wordt gedefinieerd tijdens de beleidstoewijzing. Parameters hebben een aantal vooraf gedefinieerde eigenschappen die de parameter en de manier waarop deze worden gebruikt, beschrijven.
 
-## <a name="sample-1-string-parameters"></a>Voor beeld 1: teken reeks parameters
+## <a name="sample-1-string-parameters"></a>Voorbeeld 1: Tekenreeksparameters
 
-Deze beleids definitie gebruikt twee para meters, **tagName** en **tagValue** om in te stellen wat de beleids toewijzing op zoek is naar bronnen. Met deze indeling kan het beleid worden gebruikt voor een wille keurig aantal combi Naties van label namen en tags. u hoeft slechts één beleids definitie te onderhouden.
+Deze beleidsdefinitie gebruikt twee parameters, **tagName** en **tagValue**, om in te stellen waar de beleidstoewijzing naar zoekt bij resources. Dankzij deze indeling kan de beleidsdefinitie worden gebruikt voor alle combinaties van tagnaam en tagwaarde, met behoud van één beleidsdefinitie.
+
+> [!NOTE]
+> Als u een voorbeeld met een tag wilt zien waarin **mode** _All_ wordt gebruikt en dat gebruikmaakt van een resourcegroep, gaat u naar [Patroon: Tags - Voorbeeld 1](./pattern-tags.md#sample-1-parameterize-tags).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json":::
 
-### <a name="sample-1-explanation"></a>Voor beeld 1: uitleg
+### <a name="sample-1-explanation"></a>Voorbeeld 1: Uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json" range="8-13":::
 
-In dit gedeelte van de beleids definitie wordt de para meter **tagName** gedefinieerd als een _teken reeks_ en wordt een beschrijving opgegeven voor het gebruik ervan.
+In dit gedeelte van de beleidsdefinitie wordt de parameter **tagName** gedefinieerd als een _string_ (tekenreeks), met inbegrip van een beschrijving voor het gebruik van de parameter.
 
-De para meter wordt vervolgens gebruikt in de **policyRule. If** -blok om het beleid dynamisch te maken. Hier wordt het gebruikt om het veld te definiëren dat wordt geëvalueerd. Dit is een tag met de waarde **tagName**.
+De parameter wordt vervolgens gebruikt in het blok **policyRule.if** om het beleid dynamisch te maken. Hier wordt het gebruikt om het veld te definiëren dat wordt geëvalueerd. Dit is een tag met de waarde **tagName**.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-1.json" range="22-27" highlight="3":::
 
-## <a name="sample-2-array-parameters"></a>Voor beeld 2: matrix parameters
+## <a name="sample-2-array-parameters"></a>Voorbeeld 2: Matrixparameters
 
-Deze beleids definitie maakt gebruik van één para meter, **listOfBandwidthinMbps**om te controleren of de resource voor Express route-Circuit de band breedte-instelling heeft geconfigureerd voor een van de goedgekeurde waarden. Als deze niet overeenkomt, wordt het maken of bijwerken van de resource [geweigerd](../concepts/effects.md#deny).
+In deze beleidsdefinitie wordt één parameter gebruikt, **listOfBandwidthinMbps**, om te controleren of voor de Express Route Circuit-resource de bandbreedte-instelling is geconfigureerd op een van de goedgekeurde waarden. Als dat niet zo is, wordt het maken of bijwerken van de resource [geweigerd](../concepts/effects.md#deny).
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json":::
 
-### <a name="sample-2-explanation"></a>Voor beeld 2: uitleg
+### <a name="sample-2-explanation"></a>Voorbeeld 2: Uitleg
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="6-12":::
 
-In dit gedeelte van de beleids definitie wordt de para meter **listOfBandwidthinMbps** gedefinieerd als een _matrix_ en wordt een beschrijving opgegeven voor het gebruik ervan. Als _matrix_, worden er meerdere waarden gevonden.
+In dit gedeelte van de beleidsdefinitie wordt de parameter **listOfBandwidthinMbps** gedefinieerd als een _array_ (matrix), met inbegrip van een beschrijving voor het gebruik van de parameter. Als een _array_zijn er meerdere waarden die moeten overeenkomen.
 
-De para meter wordt vervolgens gebruikt in de **policyRule. If** -blok. Als _matrix_ parameter moet een _matrix_
-[voorwaarde](../concepts/definition-structure.md#conditions) **in** of **notIn** worden gebruikt.
-Hier wordt het gebruikt voor de alias **serviceProvider. bandwidthInMbps** als een van de gedefinieerde waarden.
+De parameter wordt vervolgens gebruikt in het blok **policyRule.if**. Als een _array_-parameter, moet de 
+[voorwaarde](../concepts/definition-structure.md#conditions) **in** of **notIn** van _array_ worden gebruikt.
+Hier wordt de parameter gebruikt met de alias **serviceProvider.bandwidthInMbps** als een van de gedefinieerde waarden.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-parameters-2.json" range="21-24" highlight="3":::
+
+## <a name="sample-3-parameterized-effect"></a>Voorbeeld 3: Geparameteriseerd effect
+
+Een veelgebruikte manier om beleidsdefinities geschikt te maken voor hergebruik, is om het effect zelf te parameteriseren. In dit voorbeeld wordt slechts één parameter gebruikt, **effect**. Door het effect te parameteriseren, is het mogelijk om dezelfde definitie toe te wijzen aan verschillende bereiken met verschillende effecten.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json":::
+
+### <a name="sample-3-explanation"></a>Voorbeeld 3: Uitleg
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="11-25":::
+
+In dit gedeelte van de beleidsdefinitie wordt de parameter **effect** gedefinieerd als _string_. Met de beleidsdefinitie wordt de standaardwaarde voor een toewijzing ingesteld op _audit_ en worden de andere opties beperkt tot _disabled_ en _deny_.
+
+De parameter wordt vervolgens gebruikt in het blok **policyRule.then** voor het _effect_.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-parameters-3.json" range="38-40" highlight="2":::
 
 ## <a name="next-steps"></a>Volgende stappen
 

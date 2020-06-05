@@ -1,6 +1,6 @@
 ---
-title: Wat is Azure Active Directory Identity Protection
-description: Het risico met Azure AD Identity Protection detecteren, herstellen, onderzoeken en analyseren
+title: Wat is Azure Active Directory Identity Protection?
+description: Risico's detecteren, oplossen, onderzoeken en analyseren met Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,103 +11,105 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79497670"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647351"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Wat is Azure Active Directory Identity Protection
+# <a name="what-is-azure-active-directory-identity-protection"></a>Wat is Azure Active Directory Identity Protection?
 
-Identiteits beveiliging is een hulp programma waarmee organisaties drie belang rijke taken kunnen uitvoeren:
+Identity Protection is een hulpprogramma waarmee organisaties drie belangrijke taken kunnen uitvoeren:
 
-- Automatiseer de detectie en het herstel van Risico's op basis van de identiteit.
-- Onderzoek Risico's met behulp van gegevens in de portal.
-- Gegevens van risico detectie exporteren naar hulpprogram ma's van derden voor verdere analyse.
+- Het detecteren en oplossen van risico's op basis van de identiteit automatiseren.
+- Risico's onderzoeken met behulp van gegevens in de portal.
+- Gegevens van risicodetectie exporteren naar hulpprogramma's van derden voor verdere analyse.
 
-Identiteits bescherming maakt gebruik van de informatie die micro soft heeft verkregen van hun positie in organisaties met Azure AD, de consument ruimte met micro soft-accounts en in games met Xbox om uw gebruikers te beschermen. Micro soft analyseert 6.500.000.000.000 signalen per dag om klanten te identificeren en beveiligen tegen bedreigingen.
+Identity Protection maakt gebruik van de informatie die Microsoft heeft verkregen dankzij zijn positie in organisaties met Azure AD, in de consumentenwereld met Microsoft-accounts en in gaming met Xbox om uw gebruikers te beschermen. Microsoft analyseert 6.500.000.000.000 signalen per dag om bedreigingen te identificeren en klanten ertegen te beveiligen.
 
-De signalen die worden gegenereerd door en worden gevoederd tot identiteits beveiliging, kunnen verder worden gevoederd in hulpprogram ma's zoals voorwaardelijke toegang om toegang te krijgen tot beslissingen, of worden teruggedraaid naar een SIEM-hulp programma (Security Information and Event Management) voor verdere onderzoek op basis van het afgedwongen beleid van uw organisatie.
+De signalen die worden gegenereerd door en worden doorgevoerd naar Identity Protection, kunnen verder worden doorgevoerd naar hulpprogramma's zoals voorwaardelijke toegang om toegangsbeslissingen te maken, of worden teruggevoerd naar een hulpprogramma voor beveiligingsgegevens en gebeurtenisbeheer (SIEM) voor verder onderzoek op basis van het beleid van uw organisatie.
 
-## <a name="why-is-automation-important"></a>Waarom is automatisering belang rijk?
+## <a name="why-is-automation-important"></a>Waarom is automatisering belangrijk?
 
-In zijn [blog post in oktober 2018](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) Alex Weinert, die het micro soft-team voor identiteits beveiliging en-bescherming aanleidt, wordt uitgelegd waarom automatisering zo belang rijk is voor het verwerken van het volume gebeurtenissen:
+In zijn [blogpost van oktober 2018](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) legde Alex Weinert, die het Identity Security and Protection van Microsoft leidt, uit waarom automatisering zo belangrijk is voor het verwerken van grote volumes gebeurtenissen:
 
-> Elke dag bieden onze machine learning-en heuristische systemen risico scores voor 18.000.000.000 aanmeldings pogingen voor meer dan 800.000.000 afzonderlijke accounts, 300.000.000 van discernibly die worden uitgevoerd door aanvallers (entiteiten zoals criminele actoren, hackers).
+> Elke dag bieden onze machine learning- en heuristische systemen risicoscores voor 18.000.000.000 aanmeldingspogingen voor meer dan 800.000.000 afzonderlijke accounts, waarvan 300.000.000 waarschijnlijk worden uitgevoerd door aanvallers (bijvoorbeeld criminele organisaties, hackers).
 >
-> Op Ignite vorig jaar spoke ik op onze identiteits systemen over de belangrijkste 3-aanvallen. Dit is het recente volume van deze aanvallen
+> Vorig jaar op Ignite sprak ik over de drie meest voorkomende aanvallen op onze identiteitssystemen. Dit zijn recente cijfers voor deze aanvallen
 >   
->   - **Inbreuk opnieuw afspelen**: 4.6 bn-aanvallen gedetecteerd in mei 2018
->   - **Wachtwoord spuit**: 350K in april 2018
->   - **Phishing**: dit is moeilijk te kwantificeren, maar we hebben 23M-risico gebeurtenissen in maart 2018 gezien, waarvan veel phishing gerelateerd zijn
+>   - **Herhaalde schendingen**: 4,6 miljard aanvallen gedetecteerd in mei 2018
+>   - **Wachtwoordspray**: 350.000 in april 2018
+>   - **Phishing**: het is moeilijk om een precies aantal te geven, maar we hebben 23 miljoen risicogebeurtenissen gedetecteerd in maart 2018, waarvan er veel met phishing te maken hebben
 
-## <a name="risk-detection-and-remediation"></a>Risico detectie en herstel
+## <a name="risk-detection-and-remediation"></a>Risicodetectie en -herstel
 
-Identiteits beveiliging identificeert Risico's in de volgende classificaties:
+Identity Protection identificeert risico's in de volgende classificaties:
 
-| Type risico detectie | Beschrijving |
+| Risicodetectietype | Beschrijving |
 | --- | --- |
-| Ongewoone reis | Meld u vanaf een ongewoone locatie aan op basis van de recente aanmeldingen van de gebruiker. |
-| Anoniem IP-adres | Meld u aan vanaf een anoniem IP-adres (bijvoorbeeld: Tor browser, Anonymizer Vpn's). |
-| Onbekende aanmeldings eigenschappen | Meld u aan met de eigenschappen die niet recent voor de gegeven gebruiker zijn weer gegeven. |
-| Gekoppeld IP-adres van malware | Meld u aan bij een IP-adres dat is gekoppeld aan malware |
-| Gelekte referenties | Met deze risico detectie wordt aangegeven dat de geldige referenties van de gebruiker zijn gelekt |
-| Azure AD Threat Intelligence | De interne en externe Threat Intelligence-bronnen van micro soft hebben een bekend aanvals patroon geïdentificeerd |
+| Ongewoon traject | Aanmelding vanaf een ongewone locatie op basis van recente aanmeldingen van de gebruiker. |
+| Anoniem IP-adres | Aanmelding vanaf een anoniem IP-adres (bijvoorbeeld een Tor-browser, anonymizer-VPN's). |
+| Onbekende aanmeldingseigenschappen | Aanmelding met eigenschappen die niet recent zijn waargenomen voor de gebruiker. |
+| Aan malware gekoppeld IP-adres | Aanmelding via een aan malware gekoppeld IP-adres |
+| Gelekte aanmeldingsgegevens | Deze risicodetectie duidt erop dat de geldige aanmeldingsgegevens van de gebruiker zijn gelekt |
+| Azure AD-bedreigingsinformatie | De interne en externe bedreigingsinformatiebronnen van Microsoft hebben een bekend aanvalspatroon geïdentificeerd |
 
-Meer informatie over deze Risico's en hoe/wanneer deze worden berekend, vindt u in het artikel, [wat risico](concept-identity-protection-risks.md)loopt.
+Meer informatie over deze risico's en hoe/wanneer deze worden vastgesteld, vindt u in het artikel [What is risk](concept-identity-protection-risks.md) (Wat is een risico?).
 
-De risico signalen kunnen herstel pogingen doen, zoals het vereisen van gebruikers om: Azure Multi-Factor Authentication uit te voeren, hun wacht woord opnieuw in te stellen met selfservice voor wachtwoord herstel of door te blok keren totdat een beheerder actie onderneemt.
+De risicosignalen kunnen herstelpogingen activeren, zoals gebruikers vragen om Azure Multi-Factor Authentication uit te voeren, gebruikers vragen hun wachtwoord opnieuw in te stellen met selfservice voor wachtwoordherstel of door een account te blokkeren totdat een beheerder actie onderneemt.
 
-## <a name="risk-investigation"></a>Risico onderzoek
+## <a name="risk-investigation"></a>Risico-onderzoek
 
-Beheerders kunnen detecties bekijken en zo nodig hand matig actie ondernemen. Er zijn drie belang rijke rapporten die door beheerders worden gebruikt voor het onderzoeken van identiteits beveiliging:
+Beheerders kunnen detecties bekijken en zo nodig handmatig actie ondernemen. Er zijn drie belangrijke rapporten die door beheerders worden gebruikt voor onderzoeken in Identity Protection:
 
-- Risk ante gebruikers
+- Riskante gebruikers
 - Riskante aanmeldingen
 - Risicodetectie
 
-Meer informatie vindt u in het artikel, [How to: risico onderzoeken](howto-identity-protection-investigate-risk.md).
+Meer informatie vindt u in het artikel [How To: Investigate risk](howto-identity-protection-investigate-risk.md) (Procedure: risico onderzoeken).
 
-## <a name="exporting-risk-data"></a>Risico gegevens exporteren
+## <a name="exporting-risk-data"></a>Risicogegevens exporteren
 
-Gegevens van identiteits beveiliging kunnen worden geëxporteerd naar andere hulpprogram ma's voor archivering en verder onderzoek en samen hang. Met de op Microsoft Graph gebaseerde Api's kunnen organisaties deze gegevens verzamelen voor verdere verwerking in een hulp programma zoals hun SIEM. Informatie over het openen van de API voor identiteits beveiliging vindt u in het artikel, aan de [slag met Azure Active Directory Identity Protection en Microsoft Graph](howto-identity-protection-graph-api.md)
+Gegevens van Identity Protection kunnen worden geëxporteerd naar andere hulpprogramma's voor archivering en verder onderzoek en samenhang. Met de op Microsoft Graph gebaseerde API's kunnen organisaties deze gegevens verzamelen voor verdere verwerking in een hulpprogramma zoals hun SIEM. Informatie over het openen van de Identity Protection-API vindt u in het artikel [Get started with Azure Active Directory Identity Protection and Microsoft Graph](howto-identity-protection-graph-api.md) (Aan de slag met Azure Active Directory Identity Protection en Microsoft Graph)
 
-Informatie over het integreren van gegevens over identiteits beveiliging met Azure Sentinel vindt u in het artikel [Connecting data from Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md).
+Informatie over het integreren van Identity Protection-gegevens met Azure Sentinel vindt u in het artikel [Connect data from Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md) (Gegevens uit Azure AD Identity Protection koppelen).
 
 ## <a name="permissions"></a>Machtigingen
 
-Voor identiteits beveiliging moeten gebruikers een beveiligings lezer, beveiligings operator, beveiligings beheerder, globale lezer of globale beheerder zijn om toegang te krijgen.
+Voor toegang tot Identity Protection moeten gebruikers een Beveiligingslezer, Beveiligingsoperator, Beveiligingsbeheerder, Globale lezer of Globale beheerder zijn.
 
-| Rol | Kan doen | Kan niet |
+| Rol | Wel | Niet |
 | --- | --- | --- |
-| Globale beheerder | Volledige toegang tot identiteits beveiliging |   |
-| Beveiligingsbeheerder | Volledige toegang tot identiteits beveiliging | Wacht woord opnieuw instellen voor een gebruiker |
-| Beveiligings operator | Alle rapporten van identiteits beveiliging en overzicht weer geven <br><br> Gebruikers risico negeren, aanmeld aanmelding bevestigen, inbreuk bevestigen | Beleid configureren of wijzigen <br><br> Wacht woord opnieuw instellen voor een gebruiker <br><br> Waarschuwingen configureren |
-| Beveiligingslezer | Alle rapporten van identiteits beveiliging en overzicht weer geven | Beleid configureren of wijzigen <br><br> Wacht woord opnieuw instellen voor een gebruiker <br><br> Waarschuwingen configureren <br><br> Feedback geven over detecties |
+| Globale beheerder | Volledige toegang tot Identity Protection |   |
+| Beveiligingsbeheerder | Volledige toegang tot Identity Protection | Wachtwoord opnieuw instellen voor een gebruiker |
+| Beveiligingsoperator | Alle rapporten en de overzichts-blade van Identity Protection bekijken <br><br> Gebruikersrisico's negeren, veilige aanmelding bevestigen, inbreuk bevestigen | Beleid configureren of wijzigen <br><br> Wachtwoord opnieuw instellen voor een gebruiker <br><br> Waarschuwingen configureren |
+| Beveiligingslezer | Alle rapporten en de overzichts-blade van Identity Protection bekijken | Beleid configureren of wijzigen <br><br> Wachtwoord opnieuw instellen voor een gebruiker <br><br> Waarschuwingen configureren <br><br> Feedback geven op detecties |
 
-Beheerders van voorwaardelijke toegang kunnen ook beleids regels maken die als voor waarde worden opgenomen in het geval van een bepaalde factor, meer informatie vindt u in het artikel [voorwaardelijke toegang: voor waarden](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
+De rol van beveiligingsoperator heeft momenteel geen toegang tot het rapport Riskante aanmeldingen.
+
+Beheerders met voorwaardelijke toegang kunnen ook beleidsregels maken met aanmeldrisico's als een voorwaarde. Meer informatie vindt u in het artikel [Conditional Access: Conditions](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) (Voorwaardelijke toegang: voorwaarden).
 
 ## <a name="license-requirements"></a>Licentievereisten
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/gratis |
+| Mogelijkheid | Details | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
 | --- | --- | --- | --- | --- |
-| Risico beleid | Beleid voor gebruikers risico's (via identiteits beveiliging) | Ja | Nee | Nee |
-| Risico beleid | Beleid voor aanmeldings risico's (via identiteits beveiliging of voorwaardelijke toegang) | Ja | Nee | Nee |
+| Risicobeleid | Beleid voor gebruikersrisico's (via Identity Protection) | Ja | Nee | Nee |
+| Risicobeleid | Beleid voor aanmeldingsrisico's (via Identity Protection of voorwaardelijke toegang) | Ja | Nee | Nee |
 | Beveiligingsrapporten | Overzicht | Ja | Nee | Nee |
-| Beveiligingsrapporten | Risk ante gebruikers | Volledige toegang | Beperkte informatie | Beperkte informatie |
+| Beveiligingsrapporten | Riskante gebruikers | Volledige toegang | Beperkte informatie | Beperkte informatie |
 | Beveiligingsrapporten | Riskante aanmeldingen | Volledige toegang | Beperkte informatie | Beperkte informatie |
 | Beveiligingsrapporten | Risicodetectie | Volledige toegang | Beperkte informatie | Nee |
-| Meldingen | Gebruikers met risico waarschuwingen gedetecteerd | Ja | Nee | Nee |
-| Meldingen | Wekelijkse samen vatting | Ja | Nee | Nee |
-| | MFA-registratie beleid | Ja | Nee | Nee |
+| Meldingen | Waarschuwingen bij gebruikers die risico lopen | Ja | Nee | Nee |
+| Meldingen | Wekelijkse samenvatting | Ja | Nee | Nee |
+| | MFA-registratiebeleid | Ja | Nee | Nee |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Beveiligingsoverzicht](concept-identity-protection-security-overview.md)
 
-- [Wat is risico](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md) (Wat is een risico?)
 
-- [Beleids regels beschikbaar om Risico's te beperken](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md) (Beschikbare beleidsregels om risico's te beperken)

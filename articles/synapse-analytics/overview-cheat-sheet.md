@@ -1,6 +1,6 @@
 ---
-title: Cheat-blad-Azure Synapse Analytics
-description: Naslag Gids voor de gebruiker via Azure Synapse Analytics
+title: 'Cheatsheet: Azure Synapse Analytics'
+description: Naslaggids waarmee de gebruiker Azure Synapse Analytics leert kennen
 services: synapse-analytics
 author: ArnoMicrosoft
 ms.service: synapse-analytics
@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7ae76128e90dbd9328c4bc5adcbddc334ab11cc
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983156"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652655"
 ---
-# <a name="azure-synapse-analytics-cheat-sheet"></a>Cheat-blad voor Azure Synapse Analytics
+# <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet voor Azure Synapse Analytics
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-Het Azure Synapse Analytics Cheat-blad bevat een overzicht van de basis concepten van de service en belang rijke opdrachten. Dit artikel is nuttig voor zowel nieuwe kennissen als mensen die belang rijke Azure Synapse-onderwerpen willen markeren.
+Het cheatsheet voor Azure Synapse Analytics bevat een overzicht van de basisconcepten en belangrijke opdrachten van de service. Dit artikel is nuttig voor zowel nieuwe gebruikers als mensen die meer over belangrijke Azure Synapse-onderwerpen willen weten.
 
 ## <a name="architecture"></a>Architectuur
 
@@ -28,34 +28,34 @@ Het Azure Synapse Analytics Cheat-blad bevat een overzicht van de basis concepte
 >![Synapse-architectuur](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
 ## <a name="concepts"></a>Concepten
-| Zelfstandig naam woord en werk woord                         | Wat het doet       |
+| Zelfstandig naamwoorden en werkwoorden                         | Wat het doet       |
 |:---                                 |:---                 |
-| **Synapse-werk ruimte (preview-versie)** | Een Beveilig bare samenwerkings grens voor het uitvoeren van cloud-based Enter prise-analyses in Azure. Een werk ruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2 account en bestands systeem (voor het opslaan van tijdelijke gegevens). Een werk ruimte bevindt zich onder een resource groep. |
-| **SQL Analytics**   | Voer analyses uit met Pools of met mogelijkheden op aanvraag.  |
-| **SQL-pool**   | met de bijbehorende data bases kunnen 0-naar-N SQL-ingerichte resources worden geïmplementeerd in een werk ruimte. Elke SQL-groep heeft een gekoppelde data base. Een SQL-groep kan worden geschaald, gepauzeerd en hand matig of automatisch worden hervat. Een SQL-pool kan worden geschaald van 100 DWU tot 30.000 DWU.       |
-| **SQL op aanvraag (preview-versie)**   | Het systeem voor gedistribueerde gegevens verwerking is gebouwd voor grootschalige gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data Lake. Het is serverloos, zodat u de infra structuur niet hoeft te beheren.       |
-|**Apache Spark** | Spark-uitvoerings tijd die wordt gebruikt in een Spark-groep. De huidige versie die wordt ondersteund is Spark 2,4 met python 3.6.1, scala 2.11.12, .NET support voor Apache Spark 0,5 en Delta Lake 0,3.  | 
-| **Apache Spark pool (preview-versie)**  | van 0 tot N mousserend ingerichte resources met de bijbehorende data bases kunnen in een werk ruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
-| **Spark-toepassing**  |   Het bestaat uit een stuur programma en een reeks procedures voor het uitvoeren van een proces. Een Spark-toepassing wordt uitgevoerd op een Spark-groep.            |
-| **Spark-sessie**  |   Uniform ingangs punt van een Spark-toepassing. Het biedt een manier om te communiceren met de verschillende functies van Spark en met een kleiner aantal constructs. Als u een notitie blok wilt uitvoeren, moet u een sessie maken. Een sessie kan worden geconfigureerd om te worden uitgevoerd op een specifiek aantal uitvoerender van een specifieke grootte. De standaard configuratie voor een notitieblok sessie is om twee middel grote runers uit te voeren. |
-| **SQL-aanvraag**  |   Een bewerking zoals een query wordt uitgevoerd via SQL-pool of SQL on-demand. |
-|**Gegevens integratie**| Biedt de mogelijkheid om gegevens op te nemen tussen verschillende bronnen en activiteiten te organiseren die worden uitgevoerd in een werk ruimte of buiten een werk ruimte.| 
-|**Artefacten**| Concept dat alle objecten inkapselt die nodig zijn voor een gebruiker om gegevens bronnen te beheren, te ontwikkelen, te organiseren en te visualiseren.|
-|**Notebook**| Interactieve en reactieve gegevens wetenschap en technische interface die ondersteuning bieden voor scala, PySpark, C# en SparkSQL. |
-|**Spark-taak definitie**|Interface voor het verzenden van een Spark-taak met assembly jar met de code en de bijbehorende afhankelijkheden.|
-|**Gegevensstroom**|  Biedt een volledig visuele ervaring zonder code ring vereist om big data trans formatie uit te voeren. Alle Optima Lise ring en uitvoering worden op serverloze wijze afgehandeld. |
-|**SQL-script**| Een set met SQL-opdrachten die zijn opgeslagen in een bestand. Een SQL-script kan een of meer SQL-instructies bevatten. Het kan worden gebruikt om SQL-aanvragen uit te voeren via SQL-groep of SQL on-demand.|
-|**Pijp lijn**| Logische groepering van activiteiten die samen een taak uitvoeren.|
-|**Activiteit**| Definieert acties die moeten worden uitgevoerd op gegevens zoals het kopiëren van gegevens, het uitvoeren van een notitie blok of een SQL-script.|
-|**Trigger**| Voert een pijp lijn uit. Het kan hand matig of automatisch worden uitgevoerd (planning, tumblingvenstertriggers venster of op gebeurtenis gebaseerd).|
-|**Gekoppelde service**| Verbindings reeksen waarmee de verbindings gegevens worden gedefinieerd die nodig zijn om de werk ruimte te verbinden met externe resources.|
-|**Sets**|  Een benoemde weer gave van gegevens die simpelweg verwijzen naar of verwijzen naar de gegevens die in een activiteit moeten worden gebruikt als invoer en uitvoer. Het hoort bij een gekoppelde service.|
+| **Synapse-werkruimte (preview)** | Een beveiligbare samenwerkingsgrens voor het uitvoeren van zakelijke cloudanalyses in Azure. Een werkruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2-account en -bestandssysteem (voor het opslaan van tijdelijke gegevens). Een werkruimte bevindt zich onder een resourcegroep. |
+| **Synapse SQL**   | Hiermee kunt u analyses uitvoeren met pools of met on-demand functies.  |
+| **SQL-pool**   | 0-to-N in SQL ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Elke SQL-pool heeft een gekoppelde database. Een SQL-pool kan handmatig of automatisch worden geschaald, onderbroken en hervat. Een SQL-pool kan worden geschaald van 100 DWU's tot 30.000 DWU's.       |
+| **SQL on-demand (preview)**   | Het verwerkingssysteem voor gedistribueerde gegevens dat is gebouwd voor grote volumes gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data lake. Het is serverloos, zodat u de infrastructuur niet hoeft te beheren.       |
+|**Apache Spark** | Spark-runtime die wordt gebruikt in een Spark-pool. De huidige versie die wordt ondersteund is Spark 2.4 met python 3.6.1, scala 2.11.12, .NET-ondersteuning voor Apache Spark 0.5 en Delta Lake 0.3.  | 
+| **Apache Spark-pool (preview)**  | 0-to-N in Spark ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
+| **Spark-toepassing**  |   Het bestaat uit een stuurprogrammaproces en een reeks uitvoeringsprocedures. Een Spark-toepassing wordt uitgevoerd in een Spark-pool.            |
+| **Spark-sessie**  |   Uniform invoerpunt van een Spark-toepassing. Een sessie biedt een manier om te communiceren met de verschillende functies van Spark en met een kleiner aantal constructs. Als u een notebook wilt uitvoeren, moet u een sessie maken. Een sessie kan worden geconfigureerd om te worden uitgevoerd op een specifiek aantal uitvoerders van een specifiek formaat. De standaardconfiguratie voor een notebook-sessie is om op twee middelgrote uitvoerders te worden uitgevoerd. |
+| **SQL-aanvraag**  |   Een bewerking zoals een query die wordt uitgevoerd via een SQL-pool of SQL on-demand. |
+|**Gegevensintegratie**| Biedt de mogelijkheid om gegevens op te nemen in verschillende bronnen en activiteiten te organiseren die worden uitgevoerd binnen of buiten een werkruimte.| 
+|**Artefacten**| Een concept dat alle objecten omvat die een gebruiker nodig heeft om gegevensbronnen te beheren, te ontwikkelen, te organiseren en te visualiseren.|
+|**Notebook**| Interactieve en reactieve interface voor gegevenswetenschap en engineering die ondersteuning biedt voor Scala, PySpark, C# en SparkSQL. |
+|**Spark-taakdefinitie**|Interface voor het verzenden van een Spark-taak met een assembly-JAR die de code en de bijbehorende afhankelijkheden bevat.|
+|**Gegevensstroom**|  Biedt een volledig visuele ervaring zonder codering om big data-transformatie uit te voeren. Alle optimalisatie- en uitvoeringstaken worden op serverloze wijze afgehandeld. |
+|**SQL-script**| Een set met SQL-opdrachten die zijn opgeslagen in een bestand. Een SQL-script kan een of meer SQL-instructies bevatten. Het kan worden gebruikt om SQL-aanvragen uit te voeren via een SQL-pool of SQL on-demand.|
+|**Pijplijn**| Een logische groep activiteiten die samen een taak uitvoeren.|
+|**Activiteit**| Staat voor acties die moeten worden uitgevoerd op gegevens, zoals het kopiëren van gegevens of het uitvoeren van een notebook of een SQL-script.|
+|**Trigger**| Voert een pijplijn uit. Deze kan handmatig of automatisch worden uitgevoerd (planning, tumblingvenster of op gebeurtenis gebaseerd).|
+|**Gekoppelde service**| Verbindingsreeksen waarmee de verbindingsgegevens worden gedefinieerd die nodig zijn om de werkruimte aan externe resources te koppelen.|
+|**Gegevensset**|  Een weergave van gegevens met een naam die simpelweg verwijst naar de gegevens die in een activiteit moeten worden gebruikt als invoer en uitvoer. Deze hoort bij een gekoppelde service.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Een werkruimte maken](quickstart-create-workspace.md)
 - [Synapse Studio gebruiken](quickstart-synapse-studio.md)
-- [Een SQL-groep maken](quickstart-create-sql-pool.md)
+- [Een SQL-pool maken](quickstart-create-sql-pool-portal.md)
 - [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
-- [Een Apache Spark groep maken](quickstart-create-apache-spark-pool.md)
+- [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool-portal.md)
 

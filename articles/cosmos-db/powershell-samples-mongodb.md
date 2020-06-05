@@ -1,36 +1,36 @@
 ---
-title: Azure PowerShell-voor beelden voor Azure Cosmos DB-MongoDB-API
-description: Bekijk de Azure PowerShell-voor beelden om verschillende algemene taken uit te voeren in de API van Azure Cosmos DB voor MongoDB
+title: Azure PowerShell-voorbeelden voor Azure Cosmos DB-API voor MongoDB
+description: De Azure PowerShell-voorbeelden verschillende algemene taken laten uitvoeren in de Azure Cosmos DB-API voor MongoDB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 12/02/2019
+ms.date: 05/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 810161268df405d84f6c190d4d7f3b67f2a1def8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c8e0a7a60a3512d19a1dfdfdb07b20e523ce7b92
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80366202"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649708"
 ---
-# <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell-voor beelden voor Azure Cosmos DB MongoDB-API
+# <a name="azure-powershell-samples-for-azure-cosmos-db-mongodb-api"></a>Azure PowerShell-voorbeelden voor Azure Cosmos DB-API voor MongoDB
 
-De volgende tabel bevat koppelingen naar voor beelden Azure PowerShell scripts voor Azure Cosmos DB voor MongoDB-API.
-
-> [!NOTE]
-> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken `*.documents.azure.com`van het eind punt in de indeling) van de API van Azure Cosmos DB voor MongoDb-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
+De volgende tabel bevat koppelingen naar Azure PowerShell-voorbeeldscripts voor de Azure Cosmos DB-API voor MongoDB.
 
 > [!NOTE]
-> De voor beelden gebruiken [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) Management-cmdlets. Houd er rekening mee `Az.CosmosDB` dat de cmdlets nog in Preview zijn en kunnen worden gewijzigd voordat de release wordt uitgebracht. Controleer `Az.CosmosDB` regel matig of er updates zijn.
+> Op dit moment kunt u alleen de 3.2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eindpunt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van PowerShell, CLI en Resource Manager-sjablonen. Als u de 3.6-versie van accounts wilt maken, gebruikt u in plaats daarvan Azure Portal.
+
+> [!NOTE]
+> In de voorbeelden wordt gebruikgemaakt van beheer-cmdlets voor [AZ. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb). Controleer regelmatig of er updates zijn van `Az.CosmosDB`.
 
 | | |
 |---|---|
-|[Een account, data base en verzameling maken](scripts/powershell/mongodb/ps-mongodb-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account,-data base en-verzameling. |
-|[Data bases of verzamelingen weer geven of ophalen](scripts/powershell/mongodb/ps-mongodb-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Data Base of verzameling weer geven of ophalen. |
-|[Ophalen van RU/s](scripts/powershell/mongodb/ps-mongodb-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ophalen van RU/s voor een Data Base of verzameling. |
-|[RU/s bijwerken](scripts/powershell/mongodb/ps-mongodb-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Update RU/s voor een Data Base of verzameling. |
-|[Een account bijwerken of een regio toevoegen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voeg een regio toe aan een Cosmos-account. Kan ook worden gebruikt om andere account eigenschappen te wijzigen, maar deze moeten gescheiden zijn van wijzigingen in regio's. |
-|[Failover-prioriteit of trigger-failover wijzigen](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of Activeer een hand matige failover. |
-|[Account sleutels of verbindings reeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de primaire en secundaire sleutels, verbindings reeksen of een account sleutel van een Azure Cosmos-account op. |
+|[Een account, database en verzameling maken](scripts/powershell/mongodb/ps-mongodb-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Hiermee maakt u een Azure Cosmos-account, -database en -verzameling. |
+|[Databases of verzamelingen in een lijst weergeven of ophalen](scripts/powershell/mongodb/ps-mongodb-list-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Geef de database of verzameling in een lijst weer of haal deze op. |
+|[RU/s ophalen](scripts/powershell/mongodb/ps-mongodb-ru-get.md?toc=%2fpowershell%2fmodule%2ftoc.json)| RU/s ophalen voor een database of verzameling. |
+|[RU/s bijwerken](scripts/powershell/mongodb/ps-mongodb-ru-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Werk RU/s bij voor een database of verzameling. |
+|[Een account bijwerken of een regio toevoegen](scripts/powershell/common/ps-account-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Voeg een regio toe aan een Cosmos-account. Kan ook worden gebruikt om andere accounteigenschappen te wijzigen, maar deze moeten gescheiden zijn van wijzigingen in regio's. |
+|[Failoverprioriteit wijzigen of failover activeren](scripts/powershell/common/ps-account-failover-priority-update.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Wijzig de prioriteit van de regionale failover van een Azure Cosmos-account of activeer een handmatige failover. |
+|[Accountsleutels of verbindingsreeksen](scripts/powershell/common/ps-account-keys-connection-strings.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Haal de primaire en secundaire sleutels en verbindingsreeksen op of genereer opnieuw een accountsleutel van een Azure Cosmos-account. |
 |[Een Cosmos-account maken met een IP-firewall](scripts/powershell/common/ps-account-firewall-create.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Maak een Azure Cosmos-account waarvoor IP-firewall is ingeschakeld. |
 |||

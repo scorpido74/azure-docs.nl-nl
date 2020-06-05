@@ -1,20 +1,20 @@
 ---
-title: Overzicht van Azure Notebooks preview
-description: Voer Jupyter-notebooks uit in de Cloud met behulp van de preview-service gratis Azure Notebooks, waarbij geen installatie of configuratie vereist is.
+title: Overzicht van Azure Notebooks Preview
+description: Jupyter Notebooks in de cloud uitvoeren met behulp van de gratis Azure Notebooks Preview-service, waarvoor geen installatie of configuratie is vereist.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: bd2355bdefcedca5026a25915dc1da55fdc33a36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e40b7056aef7e59759c9e04ba9d98fbfb7d28ca3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646327"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647555"
 ---
-# <a name="overview-of-azure-notebooks-preview"></a>Overzicht van Azure Notebooks preview
+# <a name="overview-of-azure-notebooks-preview"></a>Overzicht van Azure Notebooks Preview
 
-Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. [Jupyter](https://jupyter.org/) (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, het *notebook* (de afbeelding is ter beschikking gesteld door jupyter.org):
+Azure Notebooks is een gratis gehoste service om Jupyter-notebooks te ontwikkelen en uitvoeren in de cloud, zonder installatie. [Jupyter](https://jupyter.org/) (voorheen IPython) is een opensourceproject waarmee u eenvoudig Markdown-tekst, uitvoerbare code en permanente gegevens, afbeeldingen en visualisaties kunt combineren op één deelbaar canvas, het *notebook* genaamd (de afbeelding is ter beschikking gesteld door jupyter.org):
 
-[![Voor beelden van Jupyter-notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Voorbeelden van Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Vanwege deze krachtige combinatie van code, afbeeldingen en verklarende tekst is Jupyter populair geworden voor vele toepassingen, waaronder onderwijs in datawetenschap, het opschonen en transformeren van gegevens, numerieke simulatie, statistisch modelleren en de ontwikkeling van modellen voor machine learning.
 
@@ -51,7 +51,7 @@ Azure Notebooks is een gratis service, maar om misbruik te voorkomen is elk proj
 
 Als u alle beperkingen wilt opheffen, meld u zich met behulp van Azure Active Directory aan bij Azure Notebooks met een account (bijvoorbeeld een zakelijk account). Als dit account is gekoppeld aan een Azure-abonnement, kunt u elk Azure Data Science Virtual Machine-exemplaar binnen dat abonnement verbinden. Zie [Manage and configure projects - Compute tier](configure-manage-azure-notebooks-projects.md#compute-tier) (Projecten beheren en configureren - Compute-laag) voor meer informatie.
 
-Notebook servers zijn gegarandeerd Maxi maal 8 uur beschikbaar. In de meeste gevallen is de container niet onderhevig aan deze limiet en blijft deze later worden uitgevoerd, maar er kunnen soms langdurige sessies worden afgesloten voor een systeem stabiliteit.
+Het bestaan van Notebook-servers is hoogstens 8 uur gegarandeerd. In de meeste gevallen is de container niet onderhevig aan deze limiet en blijft deze ook na deze tijd actief, maar langlopende sessies kunnen soms worden afgesloten ten behoeve van de stabiliteit van het systeem.
 
 ## <a name="available-kernels-and-environments"></a>Beschikbare kernels en omgevingen
 
@@ -65,7 +65,7 @@ Voor elke notebook selecteert u de kernel (d.w.z. de runtime-omgeving) waarin de
 
 Azure Notebooks bevat naast de basisdistributies tevens extra pakketten. De Python-kernels bijvoorbeeld, omvatten de numpy-, pandas-, scikit-learn-, matplotlib- en bokeh-bibliotheken.
 
-U kunt een project ook aanpassen om een omgeving te maken voor alle notebooks in dat project. Zie [Quickstart: Een project met een aangepaste omgeving maken](quickstart-create-jupyter-notebook-project-environment.md) voor meer informatie.
+U kunt een project ook aanpassen om een omgeving te maken voor alle notebooks in dat project. Zie voor meer informatie [Snelstart: Een project met een aangepaste omgeving maken](quickstart-create-jupyter-notebook-project-environment.md).
 
 Naast de basisdistributies zijn in Azure Notebooks vele extra pakketten vooraf geïnstalleerd die handig zijn van datawetenschappers. U kunt ook uw eigen pakketten installeren met behulp van het voor elke taal eigen proces.
 
@@ -73,11 +73,11 @@ Naast de basisdistributies zijn in Azure Notebooks vele extra pakketten vooraf g
 
 Azure Notebooks is vooraf geconfigureerd met de volgende Jupyter-uitbreidingen:
 
-- [RISE](https://github.com/damianavila/RISE): een Jupyter-uitbreiding voor diavoorstellingen (ook wel live_reveal genoemd). Zie [Een diavoorstelling uitvoeren](present-jupyter-notebooks-slideshow.md) voor meer informatie.
-- [JupyterLab](https://github.com/jupyterlab/jupyterlab): een volledige rekenomgeving om te werken met Jupyter Notebooks.
-- [Altair](https://github.com/ellisonbg/altair): een declaratieve, statistische visualisatiebibliotheek voor Python.
-- [BQPlot](https://github.com/bloomberg/bqplot): een interactief tekenframework voor Jupyter Notebooks.
-- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): interactieve HTML-widgets voor Jupyter Notebooks.
+- [RISE](https://github.com/damianavila/RISE): Een Jupyter-uitbreiding voor diavoorstellingen (ook wel live_reveal genoemd). Zie [Een diavoorstelling uitvoeren](present-jupyter-notebooks-slideshow.md) voor meer informatie.
+- [Jupyterlab](https://github.com/jupyterlab/jupyterlab): Een volledige rekenomgeving om te werken met Jupyter Notebooks.
+- [Altair](https://github.com/ellisonbg/altair): Een declaratieve, statistische visualisatiebibliotheek voor Python.
+- [BQPlot](https://github.com/bloomberg/bqplot): Een interactief tekenframework voor Jupyter Notebooks.
+- [IpyWidgets](https://github.com/jupyter-widgets/ipywidgets): Interactieve HTML-widgets voor Jupyter Notebooks.
 
 ## <a name="issues-and-getting-help"></a>Problemen en Help
 
@@ -110,5 +110,5 @@ Voor vragen over Azure Notebooks kunt u een vraag stellen op de [GitHub-opslagpl
   - [Pakketten vanuit een notebook installeren](install-packages-jupyter-notebook.md)
   - [Een diavoorstelling presenteren](present-jupyter-notebooks-slideshow.md)
   - [Werken met gegevensbestanden](work-with-project-data-files.md)
-  - [Toegang tot gegevensresources](access-data-resources-jupyter-notebooks.md)
+  - [Toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)
   - [Azure Machine Learning gebruiken](use-machine-learning-services-jupyter-notebooks.md)

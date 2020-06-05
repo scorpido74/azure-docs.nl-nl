@@ -1,41 +1,42 @@
 ---
-title: Python-scripts uitvoeren via Data Factory-Azure Batch python
-description: 'Zelf studie: informatie over het uitvoeren van python-scripts als onderdeel van een pijp lijn via Azure Data Factory met behulp van Azure Batch.'
+title: Python-scripts via Data Factory uitvoeren
+description: Zelfstudie - informatie over het uitvoeren van Python-scripts als onderdeel van een pijplijn via Azure Data Factory met behulp van Azure Batch.
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
-ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 433a652ffa3fa3ae5a570fac6160ef8a04ee11c8
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117060"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773182"
 ---
-# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Zelf studie: python-scripts uitvoeren via Azure Data Factory met behulp van Azure Batch
+# <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Zelfstudie: Python-scripts uitvoeren via Azure Data Factory met behulp van Azure Batch
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Verifiëren met uw Batch- en Storage-accounts
-> * Een script ontwikkelen en uitvoeren in python
+> * Verifiëren met Batch- en Storage-accounts
+> * Een script ontwikkelen en uitvoeren in Python
 > * Een pool van rekenknooppunten maken om een toepassing uit te voeren
-> * Uw python-workloads plannen
-> * Uw analyse pijplijn bewaken
-> * Toegang tot uw logboeken
+> * Uw Python-workloads plannen
+> * Uw analysepijplijn bewaken
+> * Toegang tot uw logboekbestanden
 
-In het volgende voor beeld wordt een python-script uitgevoerd dat CSV-invoer van een BLOB storage-container ontvangt, een gegevensbewerkings proces uitvoert en de uitvoer naar een afzonderlijke Blob Storage-container schrijft.
+In het volgende voorbeeld wordt een Python-script uitgevoerd dat CSV-invoer van een blob-opslagcontainer ontvangt, een gegevensbewerkingsproces uitvoert en de uitvoer naar een afzonderlijke blob-opslagcontainer schrijft.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een geïnstalleerde [python](https://www.python.org/downloads/) -distributie voor lokale tests.
-* Het [Azure](https://pypi.org/project/azure/) `pip` -pakket.
-* Een Azure Batch-account en een gekoppeld Azure Storage-account. Zie [een batch-account maken](quick-create-portal.md#create-a-batch-account) voor meer informatie over het maken en koppelen van batch-accounts aan opslag accounts.
-* Een Azure Data Factory-account. Zie [een Data Factory maken](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) voor meer informatie over het maken van een Data Factory via de Azure Portal.
+* Een geïnstalleerde [Python](https://www.python.org/downloads/)-distributie voor lokaal testen.
+* Het [Azure](https://pypi.org/project/azure/) `pip`-pakket.
+* De [iris.csv-gegevensset](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
+* Een Azure Batch-account en een gekoppeld Azure Storage-account. Zie [Een Batch-account maken](quick-create-portal.md#create-a-batch-account) voor meer informatie over het maken en koppelen van Batch-accounts aan opslagaccounts.
+* Een Azure Data Factory-account. Zie [Een data factory maken](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory) voor meer informatie over het maken van een data factory via de Azure-portal.
 * [Batch Explorer](https://azure.github.io/BatchExplorer/).
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
@@ -47,31 +48,31 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-a-batch-pool-using-batch-explorer"></a>Een batch-pool maken met behulp van Batch Explorer
 
-In deze sectie gebruikt u Batch Explorer om de batch-pool te maken die wordt gebruikt door uw Azure Data Factory-pijp lijn. 
+In deze sectie gebruikt u Batch Explorer om de batch-pool te maken die wordt gebruikt door uw Azure Data Factory-pijplijn. 
 
 1. Meld u aan bij Batch Explorer met uw Azure-referenties.
-1. Uw batch-account selecteren
-1. Maak een pool door **Pools** te selecteren op de balk aan de linkerkant en klik vervolgens op de knop **toevoegen** boven het zoek formulier. 
-    1. Kies een ID en weergave naam. Voor dit voor `custom-activity-pool` beeld gebruiken we.
-    1. Stel het schaal type in op **vaste grootte**en stel het toegewezen aantal knoop punten in op 2.
-    1. Onder **Data Science**selecteert u **Dsvm Windows** als het besturings systeem.
-    1. Kies `Standard_f2s_v2` als grootte van de virtuele machine.
-    1. Schakel de start taak in en voeg de `cmd /c "pip install pandas"`opdracht toe. De gebruikers-id kan blijven als de standaard **groeps gebruiker**.
+1. Selecteer uw Batch-account
+1. Maak een pool door **Pools** aan de linkerkant te selecteren en klik vervolgens op de knop **Toevoegen** boven het zoekformulier. 
+    1. Kies een id en weergavenaam. In dit voorbeeld gebruiken we `custom-activity-pool`.
+    1. Stel het schaaltype in op **Vaste grootte** en stel het toegewezen aantal knooppunten in op 2.
+    1. Onder **Gegevenswetenschap**selecteert u **Dsvm Windows** als besturingssysteem.
+    1. Kies `Standard_f2s_v2` als de grootte van de virtuele machine.
+    1. Schakel de begintaak in en voeg de opdracht `cmd /c "pip install pandas"`toe. De gebruikers-id kan blijven als standaard **Pool-gebruiker**.
     1. Selecteer **OK**.
 
-## <a name="create-blob-containers"></a>BLOB-containers maken
+## <a name="create-blob-containers"></a>Blob-containers maken
 
-Hier maakt u BLOB-containers waarmee de invoer-en uitvoer bestanden voor de OCR batch-taak worden opgeslagen.
+Hier maakt u blob-containers waarmee de invoer- en uitvoer bestanden voor de OCR Batch-taak worden opgeslagen.
 
 1. Meld u aan bij Storage Explorer met uw Azure-referenties.
-1. Met het opslag account dat is gekoppeld aan uw batch-account, maakt u twee BLOB-containers (één voor invoer bestanden, één voor uitvoer bestanden) door de stappen te volgen in [een BLOB-container maken](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
-    * In dit voor beeld noemen we onze invoer container `input`en onze uitvoer container. `output`
-1. Upload `main.py` en `iris.csv` naar uw invoer container `input` met behulp van Storage Explorer door de stappen te volgen bij het [beheren van blobs in een BLOB-container](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
+1. Met het opslagaccount dat is gekoppeld aan uw Batch-account, maakt u twee blob-containers (één voor invoerbestanden, één voor uitvoerbestanden) door de stappen te volgen op [Een blob-container maken](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container).
+    * In dit voorbeeld roepen we onze invoercontainer `input`en onze uitvoercontainer`output` aan.
+1. Upload `main.py` en [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) naar uw invoercontainer `input` met behulp van Storage Explorer door de stappen te volgen in [Blobs in een BLOB-container beheren](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)
 
 
-## <a name="develop-a-script-in-python"></a>Een script ontwikkelen in python
+## <a name="develop-a-script-in-python"></a>Een script ontwikkelen in Python
 
-Met het volgende python-script `iris.csv` wordt de gegevensset `input` uit uw container geladen, wordt een gegevensverwerkings proces uitgevoerd en worden de `output` resultaten weer opgeslagen in de container.
+Het volgende Python-script laadt de `iris.csv` gegevensset uit uw `input` container, voert een gegevensverwerkingsproces uit en slaat de resultaten op in de `output`-container.
 
 ``` python
 # Load libraries
@@ -101,58 +102,58 @@ df.to_csv("iris_setosa.csv", index = False)
 blobService.create_blob_from_text(containerName, "iris_setosa.csv", "iris_setosa.csv")
 ```
 
-Sla het script op `main.py` als en upload het naar de **Azure Storage** -container. Zorg ervoor dat u de functionaliteit lokaal test en valideert voordat u deze uploadt naar de BLOB-container:
+Sla het script op als `main.py` en uploadt dit script naar de **Azure Storage**-container. Zorg ervoor dat u de functionaliteit lokaal test en valideert voordat u deze uploadt naar uw blob-container:
 
 ``` bash
 python main.py
 ```
 
-## <a name="set-up-an-azure-data-factory-pipeline"></a>Een Azure Data Factory pijp lijn instellen
+## <a name="set-up-an-azure-data-factory-pipeline"></a>Een Azure Data Factory-pijplijn instellen
 
-In deze sectie maakt en valideert u een pijp lijn met behulp van uw python-script.
+In deze sectie maakt en valideert u een pijplijn met behulp van uw Python-script.
 
-1. Volg de stappen voor het maken van een data factory in het gedeelte ' een data factory maken ' van [dit artikel](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
-1. Selecteer in het vak **Factory resources** de knop + (plus) en selecteer vervolgens **pijp lijn**
-1. Stel op het tabblad **Algemeen** de naam van de pijp lijn in als ' python uitvoeren '
+1. Volg de stappen voor het maken van een data factory in het gedeelte "Een data factory maken" van [dit artikel](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory).
+1. Selecteer in het vak **Factory-resources** de +-knop (plusteken) en selecteer vervolgens **Pijplijn**
+1. Stel op het tabblad **Algemeen** de naam van de pijplijn in als "Python uitvoeren"
 
     ![](./media/run-python-batch-azure-data-factory/create-pipeline.png)
 
-1. In het vak **activiteiten** vouwt u **batch-service**uit. Sleep de aangepaste activiteit vanuit de werkset **activiteiten** naar het ontwerp oppervlak voor pijp lijnen.
-1. Geef op het tabblad **Algemeen** **testPipeline** op naam op
+1. Vouw in het vak **Activiteiten** **Batch-service** uit. Sleep de aangepaste activiteit uit de werkset **Activiteiten** naar het ontwerpoppervlak voor pijplijnen.
+1. Geef op het tabblad **Algemeen** **testPipeline** op als Naam
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. Voeg op het tabblad **Azure batch** het **batch-account** toe dat in de vorige stappen is gemaakt en **test de verbinding** om er zeker van te zijn dat het goed is
+1. Voeg op het tabblad **Azure Batch** de **Batch-account** toe die in de vorige stappen is gemaakt en kies **Verbinding testen** om ervoor te zorgen dat het succesvol is
 
     ![](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
-1. Voer op het tabblad **instellingen** de opdracht `python main.py`in.
-1. Voor de **gekoppelde resource service**voegt u het opslag account toe dat in de vorige stappen is gemaakt. Test de verbinding om er zeker van te zijn dat deze is geslaagd.
-1. Selecteer in het **mappad**de naam van de **Azure Blob Storage** -container die het python-script en de bijbehorende invoer bevat. Hiermee worden de geselecteerde bestanden van de container naar de groeps knooppunt instanties gedownload voordat het python-script wordt uitgevoerd.
+1. Voer de opdracht **in op het tabblad**Instellingen`python main.py`.
+1. Voeg voor de **Resource gekoppelde service** het opslagaccount toe dat in de vorige stappen is gemaakt. Test de verbinding om er zeker van te zijn dat deze is geslaagd.
+1. Selecteer in het pad **Map** de naam van de **Azure Blob Storage**-container die het Python-script en de bijbehorende invoer bevat. Hiermee worden de geselecteerde bestanden van de container naar de exemplaren voor het groepsknooppunt gedownload voordat het Python-script wordt uitgevoerd.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-script-command.png)
 1. Klik in de pijplijnwerkbalk boven het canvas op **Valideren** om de instellingen voor de pijplijn te valideren. Controleer of de pijplijn is gevalideerd. Klik op de &gt;&gt; (pijl-rechts) om de uitvoergegevens van de validatie te sluiten.
-1. Klik op **debug** om de pijp lijn te testen en te controleren of deze correct werkt.
-1. Klik op **publiceren** om de pijp lijn te publiceren.
-1. Klik op **trigger** om het python-script uit te voeren als onderdeel van een batch proces.
+1. Klik op **fouten opsporen** om de pijplijn te testen en te controleren of deze correct werkt.
+1. Klik op **Publiceren** om de pijplijn te publiceren.
+1. Klik op **Activeren** om het Python-script uit te voeren als onderdeel van een batch-proces.
 
     ![](./media/run-python-batch-azure-data-factory/create-custom-task-py-success-run.png)
 
-### <a name="monitor-the-log-files"></a>De logboek bestanden bewaken
+### <a name="monitor-the-log-files"></a>De logboekbestanden bewaken
 
-Als er waarschuwingen of fouten worden gegenereerd door de uitvoering van het script, kunt u het uitchecken `stdout.txt` of `stderr.txt` voor meer informatie over de geregistreerde uitvoer.
+Als er waarschuwingen of fouten worden gegenereerd door de uitvoering van het script, kunt u `stdout.txt` of `stderr.txt` uitchecken voor meer informatie over de geregistreerde uitvoer.
 
-1. Selecteer **taken** aan de linkerkant van batch Explorer.
-1. Kies de taak die door uw data factory is gemaakt. Als u de naam van `custom-activity-pool`uw groep `adfv2-custom-activity-pool`hebt opgegeven, selecteert u.
-1. Klik op de taak met de afsluit code voor de fout.
-1. Bekijk `stdout.txt` en `stderr.txt` onderzoek uw probleem en Analyseer deze.
+1. Selecteer **Taken** aan de linkerkant van Batch Explorer.
+1. Kies de taak die door uw data factory is gemaakt. Als u de naam van de pool `custom-activity-pool` hebt opgegeven, selecteert u `adfv2-custom-activity-pool`.
+1. Klik op de taak met de afsluitcode voor de fout.
+1. Bekijk `stdout.txt` en `stderr.txt` om uw probleem te onderzoeken en vast te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een voor beeld onderzocht van het gebruik van python-scripts als onderdeel van een pijp lijn via Azure Data Factory met behulp van Azure Batch.
+In deze zelfstudie bekeek u een voorbeeld dat u meer informatie bood over het uitvoeren van Python-scripts als onderdeel van een pijplijn via Azure Data Factory met behulp van Azure Batch.
 
-Voor meer informatie over Azure Data Factory raadpleegt u:
+Zie voor meer informatie over Azure Data Factory:
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory](../data-factory/introduction.md)
-> [Aangepaste activiteiten](../data-factory/transform-data-using-dotnet-custom-activity.md) Azure Data Factory[pijp lijnen en activiteiten](../data-factory/concepts-pipelines-activities.md)
-> 
+> [-pijplijnen en activiteiten](../data-factory/concepts-pipelines-activities.md)
+> [Aangepaste activiteiten](../data-factory/transform-data-using-dotnet-custom-activity.md)

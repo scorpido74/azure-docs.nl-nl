@@ -1,25 +1,25 @@
 ---
 title: Een WAF configureren
-description: Meer informatie over het configureren van een Web Application Firewall (WAF) voor uw App Service Environment, hetzij met Azure-toepassing gateway of een WAF van derden.
+description: Meer informatie over het configureren van een Web Application Firewall (WAF) voor uw App Service Environment, met Azure Application Gateway of een WAF van derden.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 33fd0b6a3a07fa4fbc5448a97ca93c75a3e239d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804466"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684215"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Een Web Application Firewall (WAF) voor App Service Environment configureren
 ## <a name="overview"></a>Overzicht
 
 Web Application Firewalls (WAF) helpen met het beveiligen van uw webtoepassingen door inkomend webverkeer te inspecteren om SQL-injecties, Cross-Site Scripting, malware-uploads en DDoS-toepassingen en andere aanvallen te blokkeren. Ze inspecteren ook de antwoorden van de back-end-webservers om gegevensverlies te voorkomen (DLP). In combinatie met de isolatie en aanvullende schalen geleverd door App Service Environments, biedt dit een ideale omgeving om bedrijfskritieke webtoepassingen te hosten die bestand moeten zijn tegen schadelijke aanvragen en grote hoeveelheden verkeer. Azure biedt mogelijkheden met WAF met de [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction).  Voor informatie over het integreren van uw App Service Environment met een toepassingsgateway, kunt u het document [Uw ILD ASE integreren met een Application Gateway](https://docs.microsoft.com/azure/app-service/environment/integrate-with-application-gateway) lezen.
 
-Naast de Azure Application Gateway zijn er meerdere opties, zoals de [Barracuda WAF voor Azure](https://www.barracuda.com/programs/azure), beschikbaar in de [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/). De rest van dit document richt zich op het integreren van uw App Service Environment met een Barracuda WAF-apparaat.
+Naast de Azure Application Gateway zijn er meerdere opties, zoals de [Barracuda WAF voor Azure](https://www.barracuda.com/programs/azure), beschikbaar in de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice). De rest van dit document richt zich op het integreren van uw App Service Environment met een Barracuda WAF-apparaat.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 
@@ -71,7 +71,7 @@ Klik op het tabblad **Services** om uw WAF te configureren voor services die dez
 ![Beheerservices toevoegen][ManagementAddServices]
 
 > [!NOTE]
-> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service Environment, moet u verkeer door sturen voor TCP-poorten behalve 80 en 443, bijvoorbeeld als u een TLS-installatie hebt voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
+> Afhankelijk van hoe uw toepassingen zijn geconfigureerd en welke functies worden gebruikt in uw App Service Environment, moet u verkeer voor andere TCP-poorten dan 80 en 443 doorsturen, bijvoorbeeld als u IP TLS hebt ingesteld voor een App Service-app. Zie voor een lijst met netwerkpoorten die worden gebruikt in App Service Environments, [Documentatie voor inkomend verkeer beheren](app-service-app-service-environment-control-inbound-traffic.md), in de sectie Netwerkpoorten.
 > 
 > 
 

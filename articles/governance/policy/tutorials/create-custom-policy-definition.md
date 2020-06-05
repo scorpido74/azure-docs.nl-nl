@@ -1,16 +1,16 @@
 ---
-title: 'Zelf studie: een aangepaste beleids definitie maken'
-description: In deze zelf studie maakt u een aangepaste beleids definitie voor Azure Policy om aangepaste bedrijfs regels af te dwingen voor uw Azure-resources.
-ms.date: 11/25/2019
+title: 'Zelfstudie: Een aangepaste beleidsdefinitie maken'
+description: In deze zelfstudie maakt u een aangepaste beleidsdefinitie voor Azure Policy om aangepaste bedrijfsregels af te dwingen voor uw Azure-resources.
+ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7a1eb8abcfbf7513b4620f66c0a7fdbd288f8705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4d91ae589adbadb7d03e318dc20d6b2b78a84a18
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190704"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683252"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
+# <a name="tutorial-create-a-custom-policy-definition"></a>Zelfstudie: Een aangepaste beleidsdefinitie maken
 
 Met een aangepaste beleidsdefinitie kunnen klanten hun eigen regels voor het gebruik van Azure definiëren. Deze regels worden vaak gebruikt voor het afdwingen van:
 
@@ -48,7 +48,7 @@ Hoewel we de verwachte status van de resource hebben gedefinieerd, hebben we nog
 
 ## <a name="determine-resource-properties"></a>Resource-eigenschappen bepalen
 
-Op basis van de zakelijke vereiste is de Azure-resource die u wilt controleren met Azure Policy een opslag account. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy evalueert op basis van de JSON-weer gave van de resource. Daarom moeten we de eigenschappen begrijpen die beschikbaar zijn voor die bron.
+Volgens de vereisten van het bedrijf is de Azure-resource die met Azure Policy moet worden gecontroleerd een opslagaccount. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy voert evaluaties uit op basis van de JSON-weergave van de resource, dus moeten we de beschikbare eigenschappen van die resource begrijpen.
 
 Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
@@ -60,9 +60,9 @@ Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In 
   - Sjabloonreferentiedocumenten
 - Azure Resource Explorer
 
-### <a name="view-resources-in-vs-code-extension"></a>Resources in VS code-uitbrei ding weer geven
+### <a name="view-resources-in-vs-code-extension"></a>Resources in VS Code-extensie weergeven
 
-De [VS code-extensie](../how-to/extension-for-vscode.md#search-for-and-view-resources) kan worden gebruikt om te bladeren door resources in uw omgeving en de eigenschappen van Resource Manager te bekijken voor elke resource.
+De [VS Code-extensie](../how-to/extension-for-vscode.md#search-for-and-view-resources) kan worden gebruikt om te bladeren door resources in uw omgeving en de Resource Manager-eigenschappen te bekijken voor elke resource.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
@@ -71,9 +71,9 @@ Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon]
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
 De eenvoudigste manier om eigenschappen te vinden is een bestaande resource van hetzelfde type te bekijken. Resources die al zijn geconfigureerd met de instelling die u wilt afdwingen, bevatten ook de waarde waarmee moet worden vergeleken.
-Bekijk de pagina **sjabloon exporteren** (onder **instellingen**) in de Azure portal voor die specifieke resource.
+Bekijk de pagina **Sjabloon exporteren** (onder **Instellingen**) in de Azure-portal voor die specifieke resource.
 
-:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Sjabloon pagina voor een bestaande resource exporteren" border="false":::
+:::image type="content" source="../media/create-custom-policy-definition/export-template.png" alt-text="Pagina Sjabloon exporteren voor bestaande resource" border="false":::
 
 Wanneer u dit doet voor een opslagaccount, ziet u een sjabloon die lijkt op het volgende voorbeeld:
 
@@ -168,9 +168,9 @@ Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In dez
 - Azure PowerShell
 - Azure Resource Graph
 
-### <a name="get-aliases-in-vs-code-extension"></a>Aliassen ophalen in VS code-extensie
+### <a name="get-aliases-in-vs-code-extension"></a>Aliassen ophalen in VS Code-extensie
 
-Met de extensie Azure Policy voor de VS code-extensie kunt u eenvoudig bladeren door uw resources en [aliassen detecteren](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
+Met de Azure Policy-extensie voor VS Code-extensie kunt u gemakkelijk door uw resources bladeren en [aliassen ontdekken](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -200,7 +200,7 @@ Net als in Azure CLI zien we in de resultaten een door de opslagaccounts onderst
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure resource Graph](../../resource-graph/overview.md) is een service die een andere methode biedt om de eigenschappen van Azure-resources te vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
+[Azure Resource Graph](../../resource-graph/overview.md) is een service die een andere methode biedt om de eigenschappen van Azure-resources te vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
 
 ```kusto
 Resources
@@ -216,7 +216,7 @@ az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' |
 Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van een Azure-resource grafiek kunnen echter ook [alias](../concepts/definition-structure.md#aliases) details bevatten door de _aliassen_ -matrix te _projecteren_ :
+De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van Azure Resource Graph kunnen ook [alias](../concepts/definition-structure.md#aliases)details bevatten door de _aliassen_matrix te _projecteren_:
 
 ```kusto
 Resources
@@ -315,7 +315,7 @@ Hier volgt een voorbeeld van uitvoer van een opslagaccount voor aliassen:
 }
 ```
 
-Azure resource Graph kan worden gebruikt via [Cloud shell](https://shell.azure.com), waardoor het een snelle en eenvoudige manier is om de eigenschappen van uw resources te verkennen.
+Azure Resource Graph kan worden gebruikt via [Cloud Shell](https://shell.azure.com), waardoor het een snelle en eenvoudige manier is om de eigenschappen van uw resources te verkennen.
 
 ## <a name="determine-the-effect-to-use"></a>Bepalen welk effect moet worden gebruikt
 
@@ -386,7 +386,7 @@ Het opstellen van de [beleidsregel](../concepts/definition-structure.md#policy-r
 - Dat het **type** van het opslagaccount **Microsoft.Storage/storageAccounts** is
 - Dat de eigenschap **supportsHttpsTrafficOnly** van het opslagaccount niet **true** is
 
-Omdat we beide instructies nodig hebben om waar te zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **overzet** . We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
+Omdat we willen dat beide instructies waar zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**. We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
 
 ```json
 "if": {

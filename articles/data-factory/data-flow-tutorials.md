@@ -1,164 +1,170 @@
 ---
 title: Videozelfstudies om gegevens toe te wijzen
-description: Een lijst met video-zelf studies waarin de toewijzing van gegevens stroom wordt uitgelegd
+description: Een lijst met videozelfstudies waarin concepten van toewijzingsgegevensstromen worden uitgelegd
 author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 04/17/2020
-ms.openlocfilehash: 3abec9b0c37e0475e369ce3cd2f91e40a1040b75
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.date: 05/25/2020
+ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628960"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83848869"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videozelfstudies om gegevens toe te wijzen
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Hieronder vindt u een lijst met de zelf studie Video's met toewijzings gegevens stromen die zijn gemaakt door het Azure Data Factory team. 
+Hieronder vindt u een lijst met videozelfstudies over toewijzingsgegevensstromen die zijn gemaakt door het Azure Data Factory-team. 
 
-Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de huidige Azure Data Factory gebruikers ervaring een of andere functionaliteit toegevoegd.
+Aangezien het product steeds wordt bijgewerkt, hebben sommige functies in de huidige Azure Data Factory gebruikerservaring toegevoegde of andere functionaliteit.
 
 ## <a name="getting-started"></a>Aan de slag
 
-[Aan de slag met het toewijzen van gegevens stromen in Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
+[Aan de slag met toewijzingsgegevensstromen in Azure Data Factory](http://youtu.be/MFw7t_8tuV4)
 
-## <a name="debugging-and-developing-mapping-data-flows"></a>Fout opsporing en gegevens stromen voor toewijzing ontwikkelen
+## <a name="debugging-and-developing-mapping-data-flows"></a>Foutopsporing en ontwikkelen van toewijzingsgegevensstromen
 
-[Fout opsporing en testen van de toewijzing van gegevens stromen](https://www.youtube.com/watch?v=3ANxyvDGfjA).
+[Foutopsporing en testen van toewijzingsgegevensstromen](https://www.youtube.com/watch?v=3ANxyvDGfjA)
 
 [Gegevens verkennen](https://www.youtube.com/watch?v=En1ztyh5GaA)
 
-[Snelle acties voor voor beeld van gegevens](https://www.youtube.com/watch?v=CP0TnNmaLA0)
+[Snelle acties voor voorbeeldweergave van gegevens](https://www.youtube.com/watch?v=CP0TnNmaLA0)
 
-[Stroom prestaties van toewijzings gegevens controleren en beheren](https://www.youtube.com/watch?v=fktIWdJiqTk)
+[Prestaties van toewijzingsgegevensstromen controleren en beheren](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
-[Bench Mark-tijdsen](http://youtu.be/6CSbWm4lRhw?hd=1)
+[Benchmark-timings](http://youtu.be/6CSbWm4lRhw?hd=1)
 
-## <a name="transformation-overviews"></a>Trans formatie-overzichten
+## <a name="transformation-overviews"></a>Transformatieoverzichten
 
-[Cumulatieve trans formatie](http://youtu.be/jdL75xIr98I)
+[Aggregatietransformatie](http://youtu.be/jdL75xIr98I)
 
-[Rij transformatie wijzigen](https://www.youtube.com/watch?v=4ktoohwptmQ)
+[Rijtransformatie aanpassen](https://www.youtube.com/watch?v=4ktoohwptmQ)
 
-[Afgeleide kolom transformatie](https://www.youtube.com/watch?v=FFCbU4ujCiY)
+[Afgeleide-kolomtransformatie](https://www.youtube.com/watch?v=FFCbU4ujCiY)
 
-[Trans formatie koppelen](https://www.youtube.com/watch?v=zukwayEXRtg)
+[Join-transformatie](https://www.youtube.com/watch?v=zukwayEXRtg)
 
-[Self-deelname patroon](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
+[Self-joinpatroon](https://www.youtube.com/watch?v=Dx1kANfnvmk&feature=youtu.be&hd=1)
 
-[Zoek transformatie](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
+[Opzoektransformatie](https://www.youtube.com/watch?v=9U-0VPU2ZPU)
 
-[Draai transformatie](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
+[Updates en tips voor opzoektransformatie](https://youtu.be/MBskWoeuTLw)
 
-[Draai transformatie: toegewezen gedrijfte kolommen](https://youtu.be/5MygzCX0wnM)
+[Draaitabeltransformatie](https://www.youtube.com/watch?v=Tua14ZQA3F8&t=34s)
 
-[Trans formatie selecteren](http://youtu.be/F9VjQ_YyRyU?hd=1)
+[Draaitabeltransformatie: gedrifte kolommen toewijzen](https://youtu.be/5MygzCX0wnM)
 
-[Trans formatie selecteren: toewijzing op basis van een regel](https://youtu.be/5lf1lh1qMwU)
+[Selectietransformatie](http://youtu.be/F9VjQ_YyRyU?hd=1)
 
-[Surrogaat sleutel transformatie](https://www.youtube.com/watch?v=ISpegL9CbTM)
+[Selectietransformatie: toewijzing op basis van regels](https://youtu.be/5lf1lh1qMwU)
 
-[Trans formatie samen voegen](http://youtu.be/_Et6mg1tEr8?hd=1)
+[Selectietransformatie: grote gegevenssets](https://www.youtube.com/watch?v=R5ea2_R0ouc)
 
-[Draai tabel transformatie](http://youtu.be/KFYkxcpB8b0?hd=1)
+[Surrogaatsleuteltransformatie](https://www.youtube.com/watch?v=ISpegL9CbTM)
 
-[Venster transformatie](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
+[Union-transformatie](http://youtu.be/_Et6mg1tEr8?hd=1)
 
-[Filter transformatie](https://youtu.be/OhbKDOXSfeE)
+[Draaitabel opheffen-transformatie](http://youtu.be/KFYkxcpB8b0?hd=1)
 
-[Voorwaardelijke Splits transformatie](http://youtu.be/W1lQHojhKZw?hd=1)
+[Venstertransformatie](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
 
-[Bestaat trans formatie](http://youtu.be/GS8JVgNBMfs?hd=1)
+[Filtertransformatie](https://youtu.be/OhbKDOXSfeE)
 
-[Dynamische samen voegingen en dynamische zoek acties](https://youtu.be/CMOPPie9bXM)
+[Conditional Split-transformatie](http://youtu.be/W1lQHojhKZw?hd=1)
 
-[Trans formatie afvlakken](https://youtu.be/VY2tFQJoAXE)
+[Exists-transformatie](http://youtu.be/GS8JVgNBMfs?hd=1)
 
-## <a name="source-and-sink"></a>Bron en Sink
+[Dynamische joins en dynamische opzoekacties](https://youtu.be/CMOPPie9bXM)
 
-[JSONs lezen en schrijven](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+[Platmaken-transformatie](https://youtu.be/VY2tFQJoAXE)
 
-[Parquet en tekst bestanden met scheidings tekens](https://youtu.be/V_2a60j2Kjo)
+## <a name="source-and-sink"></a>Bron en sink
+
+[JSON's lezen en schrijven](https://www.youtube.com/watch?v=yY5aB7Kdhjg)
+
+[Parquet- en tekstbestanden met scheidingstekens](https://youtu.be/V_2a60j2Kjo)
 
 [CosmosDB-connector](http://youtu.be/plp1etT2ftY?hd=1)
 
-[Gegevens typen afleiden in tekst bestanden met scheidings tekens](https://www.youtube.com/watch?v=nJjRzlFktlA)
+[Gegevenstypen afleiden in tekstbestanden met scheidingstekens](https://www.youtube.com/watch?v=nJjRzlFktlA)
 
 [Gepartitioneerde bestanden lezen en schrijven](https://www.youtube.com/watch?v=7Q-db4Qgc4M)
 
 [Meerdere SQL-tabellen transformeren en maken](https://www.youtube.com/watch?v=Sj15Yjwai1A)
 
-[Uw bestanden in de data Lake partitioneren](https://youtu.be/VNWv-MvLQ_0)
+[Bestanden partitioneren in de data lake](https://youtu.be/VNWv-MvLQ_0)
 
-[Laad patroon van Data Warehouse](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+[Laadpatroon van datawarehouse](https://www.youtube.com/watch?v=7mLqwtmeQFg)
 
-[Opties voor data Lake file output](https://www.youtube.com/watch?v=NAPSbjvSQA8)
+[Uitvoeropties voor data lake-bestand](https://www.youtube.com/watch?v=NAPSbjvSQA8)
 
-## <a name="optimizing-mapping-data-flows"></a>Toewijzing van gegevens stromen optimaliseren
+## <a name="optimizing-mapping-data-flows"></a>Toewijzingsgegevensstromen optimaliseren
 
 [Gegevensherkomst](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
 [Optimalisatietips](https://www.youtube.com/watch?v=a2KtwUJngHo)
 
-[Bestanden met para meters herhalen](http://youtu.be/uEgz0ptYRDM?hd=1)
+[Bestanden met parameters herhalen](http://youtu.be/uEgz0ptYRDM?hd=1)
 
-[Start tijden verlagen](https://youtu.be/FFCbU4ujCiY?t=528)
+[Starttijden verlagen](https://youtu.be/FFCbU4ujCiY?t=528)
 
-[Prestaties van SQL-data base](https://youtu.be/iyZT5CY3V_4)
+[SQL DB-prestaties](https://youtu.be/iyZT5CY3V_4)
 
 [Logboekregistratie en bewaking](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
-[De grootte van het gegevens stroom cluster dynamisch optimaliseren tijdens runtime](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[Clustergrootte van gegevensstroom dynamisch optimaliseren tijdens runtime](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-[Start tijden voor de gegevens stroom optimaliseren](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+[Starttijden voor gegevensstroom optimaliseren](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
-## <a name="mapping-data-flow-scenarios"></a>Gegevens stroom scenario's toewijzen
+## <a name="mapping-data-flow-scenarios"></a>Scenario's van toewijzingsgegevensstromen
 
-[Fuzzy lookups](http://youtu.be/7gdwExjHBbw)
+[Fuzzy opzoekopdrachten](http://youtu.be/7gdwExjHBbw)
 
-[Patroon faserings gegevens](https://youtu.be/mZLKdyoL3Mo)
+[Patroon faseringsgegevens](https://youtu.be/mZLKdyoL3Mo)
 
-[Patroon voor schone adressen](https://youtu.be/axEYbuU3lmw)
+[Patroon schone adressen](https://youtu.be/axEYbuU3lmw)
 
 [Ontdubbeling](https://www.youtube.com/watch?v=OLenvYwg__I)
 
-[Bestanden samen voegen](http://youtu.be/WbDTBAyYte8)
+[Bestanden samenvoegen](http://youtu.be/WbDTBAyYte8)
 
 [Langzaam veranderende dimensies type 1: overschrijven](http://youtu.be/Rz2zx5GRbrA)
 
 [Langzaam veranderende dimensies type 2: geschiedenis](http://youtu.be/123CptslKvU)
 
-[Feiten tabel laden](http://youtu.be/ABG3X9pgFPQ)
+[Feitentabel laden](http://youtu.be/ABG3X9pgFPQ)
 
-[SQL Server on-premises transformeren met een patroon voor het laden van de Delta gegevens](https://youtu.be/IN-4v0e7UIs)
+[SQL Server on-premises transformeren met een patroon voor het laden van deltagegevens](https://youtu.be/IN-4v0e7UIs)
 
 [Parameterisering](https://www.youtube.com/watch?v=vpuuQcFojt8)
 
-[Aantal & rijen van afzonderlijke rijen](https://youtu.be/ryYo8UFUgTI)
+[Afzonderlijke rijen en aantal rijen](https://youtu.be/ryYo8UFUgTI)
 
-[Afbrekings fouten verwerken](http://youtu.be/sPpcSiKQz34)
+[Afbrekingsfouten verwerken](http://youtu.be/sPpcSiKQz34)
 
-[Intelligente gegevens routering](https://youtu.be/PIGw-Z-0upw)
+[Intelligente gegevens routeren](https://youtu.be/PIGw-Z-0upw)
 
-[Gegevens maskering voor gevoelige gegevens](https://www.youtube.com/watch?v=OFd4LeiTmfs)
+[Gegevensmaskering voor gevoelige gegevens](https://www.youtube.com/watch?v=OFd4LeiTmfs)
 
 [Logische modellen versus fysieke modellen](http://youtu.be/K5tgzLjEE9Q)
 
-[Wijzigingen in de bron gegevens detecteren](http://youtu.be/CaxIlI7oXfI?hd=1)
+[Wijzigingen in brongegevens detecteren](http://youtu.be/CaxIlI7oXfI?hd=1)
 
-## <a name="data-flow-expressions"></a>Gegevens stroom expressies
+[Langzaam veranderende dimensie algemeen type 2](http://youtu.be/tc283k8CWh8)
 
-[Datum-en tijd expressies](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+## <a name="data-flow-expressions"></a>Gegevensstroomexpressies
 
-[Matrixen en case-instructie splitsen](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
+[Datum-/tijdexpressies](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
 
-[Plezier met interpolatie van teken reeksen en para meters](https://youtu.be/hb3-cn2CMgM)
+[Matrixen splitsen en Case-instructie](https://www.youtube.com/watch?v=DHNH8ZO7YjI)
 
-[Informatie stroom script Inleiding: kopiëren, plakken, fragmenten](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
+[Plezier met interpolatie van tekenreeksen en parameters](https://youtu.be/hb3-cn2CMgM)
 
-[Gegevens kwaliteits expressies](https://www.youtube.com/watch?v=O8gmv5-lXhs)
+[Inleiding van scripts voor gegevensstromen: kopiëren, plakken, fragmenten](https://www.youtube.com/watch?v=3_1I4XdoBKQ)
 
-[Statistische functie verzamelen](https://www.youtube.com/watch?v=zneE18EHJSE)
+[Gegevenskwaliteitsexpressies](https://www.youtube.com/watch?v=O8gmv5-lXhs)
+
+[Samenvoegingsfunctie verzamelen](https://www.youtube.com/watch?v=zneE18EHJSE)

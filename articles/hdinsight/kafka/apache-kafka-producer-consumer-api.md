@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: producent-& consumenten-Api's Apache Kafka producer-Azure HDInsight"
+title: "Zelfstudie: Producer- en Consumer-API's van Apache Kafka - Azure HDInsight"
 description: Leer hoe u de Producer- en Consumer-API's van Apache Kafka gebruikt met Kafka in HDInsight. In deze zelfstudie leert u hoe u deze API's vanuit een Java-toepassing gebruikt met Kafka in HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 10/08/2019
-ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: 260a3fbb8486a1e9eeaa87e920143615e5fae867
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239537"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681816"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Zelfstudie: Werken met de Producer- en Consumer-API's van Apache Kafka
 
@@ -33,21 +33,21 @@ Meer informatie over de [Producer-API](https://kafka.apache.org/documentation/#p
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Apache Kafka in HDInsight-cluster. Zie [beginnen met Apache Kafka op HDInsight](apache-kafka-get-started.md)voor meer informatie over het maken van het cluster.
-* [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks) of een equivalent, zoals openjdk.
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
-* Een SSH-client, zoals putty. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Apache Kafka-cluster in HDInsight. Zie [Aan de slag met Apache Kafka in HDInsight](apache-kafka-get-started.md) voor informatie over het maken van een cluster.
+* [JDK-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks) of een equivalent, zoals OpenJDK.
+* [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
+* Een SSH-client, zoals Putty. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>De code begrijpen
 
-De voorbeeld toepassing bevindt [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)zich in de `Producer-Consumer` submap. Als u **Enterprise Security Package (ESP)** ingeschakelde Kafka-cluster gebruikt, moet u de toepassings versie gebruiken die zich `DomainJoined-Producer-Consumer` in de submap bevindt.
+De voorbeeldtoepassing bevindt zich op [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started), in de submap `Producer-Consumer`. Als u een Kafka-cluster met **Enterprise Security Package (ESP)** gebruikt, moet u de toepassingsversie gebruiken die zich in de `DomainJoined-Producer-Consumer`-submap bevindt.
 
 De toepassing bestaat hoofdzakelijk uit vier bestanden:
-* `pom.xml`: dit bestand definieert de projectafhankelijkheden, de Java-versie en de pakketmethoden.
-* `Producer.java`: dit bestand verstuurt willekeurige zinnen naar Kafka met behulp van de Producer-API.
+* `pom.xml`: met dit bestand worden de projectafhankelijkheden, de Java-versie en de pakketmethoden gedefinieerd.
+* `Producer.java`: met dit bestand worden willekeurige zinnen naar Kafka verzonden met behulp van de Producer-API.
 * `Consumer.java`: dit bestand gebruikt de Consumer-API om gegevens te lezen uit Kafka en deze te verzenden naar STDOUT.
-* `AdminClientWrapper.java`: In dit bestand wordt de-beheer-API gebruikt om Kafka-onderwerpen te maken, te beschrijven en te verwijderen.
-* `Run.java`: de opdrachtregelinterface ie wordt gebruikt voor het uitvoeren van de Producer- en Consumer-code.
+* `AdminClientWrapper.java`: dit bestand gebruikt de beheer-API voor het maken, beschrijven en verwijderen van Kafka-onderwerpen.
+* `Run.java`: de opdrachtregelinterface die wordt gebruikt voor het uitvoeren van de Producer- en Consumer-code.
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -66,14 +66,14 @@ Belangrijke aandachtspunten voor het bestand `pom.xml`:
 
     De vermelding `${kafka.version}` wordt gedeclareerd in de sectie `<properties>..</properties>` van `pom.xml`, en wordt geconfigureerd voor de Kafka-versie van het HDInsight-cluster.
 
-* Plugins: de Maven-plugins bieden diverse mogelijkheden. In dit project worden de volgende plugins of invoegtoepassingen gebruikt:
+* Invoegtoepassingen: de Maven-invoegtoepassingen bieden diverse mogelijkheden. In dit project worden de volgende plugins of invoegtoepassingen gebruikt:
 
     * `maven-compiler-plugin`: wordt gebruikt om de Java-versie die wordt gebruikt door het project in te stellen op 8. Dit is de versie van Java die door HDInsight 3.6 wordt gebruikt.
     * `maven-shade-plugin`: wordt gebruikt voor het genereren van een uber jar die deze toepassing bevat, evenals eventuele afhankelijkheden. Dit bestand wordt ook gebruikt om het toegangspunt van de toepassing in te stellen, zodat u het Jar-bestand rechtstreeks kunt uitvoeren, dus zonder de hoofdklasse op te geven.
 
 ### <a name="producerjava"></a>Producer.java
 
-De producer communiceert met de Kafka-brokerhosts (werkknooppunten) en verzendt gegevens naar een Kafka-onderwerp. Het volgende code fragment is afkomstig uit het bestand [producer. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) uit de [github-opslag plaats](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) en laat zien hoe u de eigenschappen van de producer kunt instellen:
+De producer communiceert met de Kafka-brokerhosts (werkknooppunten) en verzendt gegevens naar een Kafka-onderwerp. Het volgende codefragment is afkomstig van het bestand [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) in de [GitHub-opslagplaats](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) en laat zien hoe de Producer-eigenschappen moeten worden ingesteld. Voor clusters waarbij Enterprise Security is ingeschakeld, moet er een extra eigenschap worden toegevoegd: "properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");"
 
 ```java
 Properties properties = new Properties();
@@ -87,7 +87,7 @@ KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
 ### <a name="consumerjava"></a>Consumer.java
 
-De Consumer-API communiceert met de Kafka-brokerhosts (werkknooppunten) en leest records in een lus. Met het volgende codefragment van het bestand [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) worden de Consumer-eigenschappen ingesteld:
+De Consumer-API communiceert met de Kafka-brokerhosts (werkknooppunten) en leest records in een lus. Met het volgende codefragment van het bestand [Consumer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Consumer.java) worden de Consumer-eigenschappen ingesteld. Voor clusters waarbij Enterprise Security is ingeschakeld, moet er een extra eigenschap worden toegevoegd: "properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");"
 
 ```java
 KafkaConsumer<String, String> consumer;
@@ -111,37 +111,47 @@ In deze code is de Consumer-API geconfigureerd voor het lezen vanaf het begin va
 
 ### <a name="runjava"></a>Run.java
 
-Het [Run. java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) -bestand biedt een opdracht regel interface die de producent-of Consumer code uitvoert. U moet de gegevens van de Kafka-brokerhost opgeven als een parameter. U kunt eventueel een groeps-ID-waarde toevoegen die door het Consumer proces wordt gebruikt. Als u meerdere consumenten instanties maakt met behulp van dezelfde groeps-ID, wordt er taak verdeling in het onderwerp.
+Het bestand [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) biedt een opdrachtregelinterface voor het uitvoeren van code van de Producer- of Consumer-API. U moet de gegevens van de Kafka-brokerhost opgeven als een parameter. U kunt eventueel een groeps-id opgeven, die wordt gebruikt door het Consumer-proces. Als u meerdere Consumer-exemplaren met dezelfde groeps-id maakt, wordt het lezen verdeeld over de exemplaren.
 
 ## <a name="build-and-deploy-the-example"></a>Het voorbeeld compileren en implementeren
 
-Als u deze stap wilt overs Laan, kunnen vooraf ontwikkelde potten worden gedownload uit `Prebuilt-Jars` de submap. Down load het Kafka-producer-Consumer. jar. Als uw cluster **Enterprise Security Package (ESP)** is ingeschakeld, gebruikt u Kafka-producer-Consumer-ESP. jar. Voer stap 3 uit om het jar naar uw HDInsight-cluster te kopiëren.
+### <a name="use-pre-built-jar-files"></a>Vooraf ontwikkelde JAR-bestanden gebruiken
 
-1. Down load de voor beelden en [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)pak deze uit.
+Download de JAR-bestanden uit het [Azure-voorbeeld voor aan de slag met Kafka](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars). Als voor uw cluster **Enterprise Security Package (ESP)** is ingeschakeld, gebruikt u kafka-producer-consumer-esp.jar. Gebruik de onderstaande opdracht om de JAR-bestanden naar uw cluster te kopiëren.
 
-2. Stel de huidige map in op de locatie van `hdinsight-kafka-java-get-started\Producer-Consumer` de map. Als u **Enterprise Security Package (ESP)** ingeschakelde Kafka-cluster gebruikt, moet u de locatie instellen `DomainJoined-Producer-Consumer`op subdirectory. Gebruik de volgende opdracht om de toepassing te bouwen:
+```cmd
+scp kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+```
+
+### <a name="build-the-jar-files-from-code"></a>De JAR-bestanden vanuit code maken
+
+Als u deze stap wilt overslaan, kunt u ook vooraf ontwikkelde JAR-bestanden downloaden uit de `Prebuilt-Jars`-submap. Download het bestand kafka-producer-consumer.jar. Als voor uw cluster **Enterprise Security Package (ESP)** is ingeschakeld, gebruikt u kafka-producer-consumer-esp.jar. Voer stap 3 uit om het JAR-bestand naar uw HDInsight-cluster te kopiëren.
+
+1. Download de voorbeelden van [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) en pak ze uit.
+
+2. Stel de huidige map in op de locatie van de `hdinsight-kafka-java-get-started\Producer-Consumer`-map. Als u een Kafka-cluster met **Enterprise Security Package (ESP)** gebruikt, moet u de locatie instellen op de `DomainJoined-Producer-Consumer`-submap. Gebruik de volgende opdracht om de toepassing te maken:
 
     ```cmd
     mvn clean package
     ```
 
-    Met deze opdracht maakt u een directory met de naam `target`, die een bestand met de naam `kafka-producer-consumer-1.0-SNAPSHOT.jar` bevat.
+    Met deze opdracht maakt u een directory met de naam `target`, die een bestand met de naam `kafka-producer-consumer-1.0-SNAPSHOT.jar` bevat. Voor ESP-clusters is het bestand `kafka-producer-consumer-esp-1.0-SNAPSHOT.jar`
 
-3. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Voer de volgende opdracht in om het `kafka-producer-consumer-1.0-SNAPSHOT.jar` bestand naar uw HDInsight-cluster te kopiëren. Voer het wachtwoord van de SSH-gebruiker in wanneer hierom wordt gevraagd.
+3. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Voer de volgende opdracht in om het bestand `kafka-producer-consumer-1.0-SNAPSHOT.jar` naar uw HDInsight-cluster te kopiëren. Voer het wachtwoord van de SSH-gebruiker in wanneer hierom wordt gevraagd.
 
     ```cmd
-    scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
-## <a name="run-the-example"></a><a id="run"></a>Het voor beeld uitvoeren
+## <a name="run-the-example"></a><a id="run"></a>Het voorbeeld uitvoeren
 
-1. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Open een SSH-verbinding met het cluster door de volgende opdracht in te voeren. Voer het wachtwoord voor het SSH-gebruikersaccount in wanneer hierom wordt gevraagd.
+1. Vervang `sshuser` door de SSH-gebruiker voor uw cluster en `CLUSTERNAME` door de naam van het cluster. Gebruik de volgende opdracht om een SSH-verbinding naar het cluster te openen. Voer het wachtwoord voor het SSH-gebruikersaccount in wanneer hierom wordt gevraagd.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Als u de Kafka Broker-hosts wilt ophalen, vervangt `<clustername>` u `<password>` de waarden voor en voert u de volgende opdracht uit. Gebruik dezelfde behuizing voor `<clustername>` zoals weer gegeven in de Azure Portal. Vervang `<password>` door het wacht woord voor cluster aanmelding en voer de volgende handelingen uit:
+1. Als u de Kafka-brokerhosts wilt ophalen, vervangt u de waarden door `<clustername>` en `<password>` in de volgende opdracht en voert u deze uit. Gebruik dezelfde methode voor `<clustername>`, zoals wordt weer gegeven in de Azure-portal. Vervang `<password>` door het aanmeldwachtwoord voor het cluster en voer het volgende uit:
 
     ```bash
     sudo apt -y install jq
@@ -153,7 +163,7 @@ Als u deze stap wilt overs Laan, kunnen vooraf ontwikkelde potten worden gedownl
     > [!Note]  
     > Voor deze opdracht is toegang tot Ambari vereist. Als uw cluster zich achter een NSG bevindt, voert u deze opdracht uit vanaf een computer die toegang heeft tot Ambari.
 
-1. Maak een Kafka- `myTest`onderwerp door de volgende opdracht in te voeren:
+1. Voer de volgende opdracht in om het Kafka-onderwerp `myTest` te maken:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
@@ -169,6 +179,7 @@ Als u deze stap wilt overs Laan, kunnen vooraf ontwikkelde potten worden gedownl
 
     ```bash
     java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS
+    scp ./target/kafka-producer-consumer*.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
     ```
 
     De gelezen records worden weergegeven, samen met een telling van de records.
@@ -195,14 +206,20 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Deze opdracht gebruikt `tmux` om de terminal op te splitsen in twee kolommen. In elke kolom wordt een Consumer gestart, met dezelfde waarde voor de groeps-id. Als de Consumers klaar zijn met lezen, ziet u dat ieder Consumer slechts een deel van de records heeft gelezen. Gebruik __CTRL + C__ twee keer om `tmux`af te sluiten.
+Deze opdracht gebruikt `tmux` om de terminal op te splitsen in twee kolommen. In elke kolom wordt een Consumer gestart, met dezelfde waarde voor de groeps-id. Als de Consumers klaar zijn met lezen, ziet u dat ieder Consumer slechts een deel van de records heeft gelezen. Druk tweemaal op __Ctrl + C__ om `tmux` af te sluiten.
 
 Gebruik door clients binnen dezelfde groep wordt verwerkt door de partities voor het onderwerp. Het eerder gemaakte onderwerp `test` uit dit codevoorbeeld heeft acht partities. Als u acht Consumers start, leest elke Consumer records uit één partitie van het onderwerp.
 
 > [!IMPORTANT]  
 > Een consumentengroep kan niet meer consumentexemplaren dan partities bevatten. In dit voorbeeld kan één consumentengroep maximaal acht consumenten bevatten, omdat het onderwerp dit aantal partities heeft. U kunt ook meerdere consumentengroepen hebben, waarvan elke groep niet meer dan acht consumenten bevat.
 
-Records die zijn opgeslagen in Kafka, worden opgeslagen in de volg orde waarin ze worden ontvangen in een partitie. Als u records *binnen een partitie* op volgorde wilt leveren, maakt u een consumentengroep waarvan het aantal consumentexemplaren gelijk is aan het aantal partities. Als u records *binnen het onderwerp* op volgorde wilt leveren, maakt u een consumentengroep met slechts één consumentexemplaar.
+Records worden in Kafka opgeslagen in de volgorde waarin deze worden ontvangen binnen een partitie. Als u records *binnen een partitie* op volgorde wilt leveren, maakt u een consumentengroep waarvan het aantal consumentexemplaren gelijk is aan het aantal partities. Als u records *binnen het onderwerp* op volgorde wilt leveren, maakt u een consumentengroep met slechts één consumentexemplaar.
+
+## <a name="common-issues-faced"></a>Veelvoorkomende problemen
+
+1. **Het maken van een onderwerp mislukt** Als voor uw cluster Enterprise Security Pack is ingeschakeld, gebruikt u de [vooraf ontwikkelde JAR-bestanden voor Producer en Consumer](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Prebuilt-Jars/kafka-producer-consumer-esp.jar). Het JAR-bestand met ESP kan worden gemaakt op basis van de code in de [`DomainJoined-Producer-Consumer`-submap](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/DomainJoined-Producer-Consumer). Houd er rekening mee dat de eigenschappen van Producer en Consumer een extra eigenschap `CommonClientConfigs.SECURITY_PROTOCOL_CONFIG` voor clusters met ESP hebben.
+
+2. **Er is een probleem met clusters met ESP** Als er een fout optreedt in de Produce- en Consume-bewerkingen en u een cluster met ESP gebruikt, controleert u of de gebruiker `kafka` aanwezig is in alle Ranger-beleidsregels. Als deze niet aanwezig is, voegt u deze toe aan alle Ranger-beleidsregels.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
