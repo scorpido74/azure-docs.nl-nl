@@ -5,18 +5,18 @@ description: Meer informatie over het beste versie nummer van uw gegevens sets e
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f05f778278f6ee33ff53ab47d416446444063d8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476866"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434429"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ Door een gegevensset te registreren, kunt u deze versie, hergebruiken en delen i
 
 ### <a name="register-a-dataset-version"></a>Een gegevensset-versie registreren
 
-Met de volgende code wordt een nieuwe versie van `titanic_ds` de gegevensset geregistreerd door `create_new_version` de para `True`meter in te stellen op. Als er geen bestaande `titanic_ds` gegevensset is geregistreerd bij de werk ruimte, maakt de code een nieuwe gegevensset met de `titanic_ds` naam en wordt de versie ingesteld op 1.
+Met de volgende code wordt een nieuwe versie van de `titanic_ds` gegevensset geregistreerd door de `create_new_version` para meter in te stellen op `True` . Als er geen bestaande `titanic_ds` gegevensset is geregistreerd bij de werk ruimte, maakt de code een nieuwe gegevensset met de naam `titanic_ds` en wordt de versie ingesteld op 1.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -65,7 +65,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 De methode [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) voor de `Dataset` klasse retourneert standaard de meest recente versie van de gegevensset die is geregistreerd bij de werk ruimte. 
 
-Met de volgende code wordt versie 1 van `titanic_ds` de gegevensset opgehaald.
+Met de volgende code wordt versie 1 van de `titanic_ds` gegevensset opgehaald.
 
 ```Python
 from azureml.core import Dataset
@@ -156,7 +156,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Gegevens sets bijhouden in experimenten
 
-Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via `Run` het object experiment.
+Voor elk Machine Learning experiment kunt u eenvoudig de gegevens sets traceren die worden gebruikt als invoer via het `Run` object experiment.
 
 De volgende code gebruikt de [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) methode om bij te houden welke invoer gegevens sets zijn gebruikt bij de uitvoering van het experiment:
 
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-U kunt de `input_datasets` van experimenten ook vinden met behulp https://ml.azure.com/van. 
+U kunt de van experimenten ook vinden met `input_datasets` behulp van https://ml.azure.com/ . 
 
-De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van `keras-mnist`uw experiment.
+De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment `keras-mnist` .
 
 ![Invoer gegevens sets](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python https://ml.azure.com/of gaat u naar.
+Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of gaat u naar https://ml.azure.com/ .
 
 De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
 

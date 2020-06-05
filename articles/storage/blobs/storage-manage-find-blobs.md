@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996037"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433576"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Gegevens in Azure Blob Storage beheren en zoeken met Blob-index (preview)
 
@@ -130,7 +130,7 @@ In de onderstaande tabel ziet u alle geldige Opera tors voor voorwaardelijke bew
 |     <      |  Kleiner dan    | ' Leeftijd ' < ' 32 ' |
 |     <=     |  Kleiner dan of gelijk aan  | ' Bedrijf ' <= ' Contoso ' |
 |    EN     |  Logische en  | ' Positie ' >= ' 010 ' en ' Rank ' < ' 100 ' |
-|     OF     |  Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
+|     OR     |  Logische of   | "Status" = ' done ' of ' Priority ' >= ' 05 ' |
 
 > [!NOTE]
 > Er zijn twee extra Opera Tors, niet gelijk aan en logische of, die zijn toegestaan in de header Conditional x-MS-if-Tags voor een BLOB-bewerking, maar die niet aanwezig zijn in de FindBlobsByTags-bewerking.
@@ -208,7 +208,7 @@ Aanroepers die gebruikmaken van een [Aad-identiteit](../common/storage-auth-aad.
 
 |   BLOB-bewerkingen   |  RBAC-actie   |
 |---------------------|----------------|
-| Blobs zoeken op labels  | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/filter |
+| Blobs zoeken op labels  | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/filter/actie |
 | BLOB-Tags instellen         | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/Tags/schrijven | 
 | BLOB-labels ophalen         | Micro soft. Storage/Storage accounts/blobServices/containers/blobs/tags/lezen |
 

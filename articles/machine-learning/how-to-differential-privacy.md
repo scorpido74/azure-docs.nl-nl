@@ -5,17 +5,17 @@ description: Meer informatie over het Toep assen van aanbevolen procedures voor 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 47497f23da94e529826b8dddb05b869727fb528e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664947"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433206"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Differentiële privacy gebruiken in Azure Machine Learning
 
@@ -27,7 +27,7 @@ Differentiële privacy is de Gold-Standard-definitie van privacy. Systemen die v
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>WhiteNoise-pakketten installeren
@@ -148,8 +148,8 @@ U kunt de bibliotheek gebruiken voor het opstellen van complexere analyse grafie
 | Count         | Gaussiaans   | Omgezet       |
 | Histogram     | Geometrisch  | MSS   |
 | Gemiddelde          | Laplace    | Digitaliseren   |
-| Quantiles     |            | Filter     |
-| Sum           |            | Toerekening |
+| Quantiles     |            | Filteren     |
+| Som           |            | Toerekening |
 | Variantie/covariantie |      | Transformeren  |
 
 Raadpleeg de [Basic-notebook voor gegevens analyse](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) voor meer informatie.
