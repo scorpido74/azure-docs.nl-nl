@@ -1,19 +1,19 @@
 ---
 title: Beveiligings filters voor het afkappen van resultaten met behulp van Active Directory
 titleSuffix: Azure Cognitive Search
-description: Toegangs beheer op Azure Cognitive Search inhoud met behulp van beveiligings filters en de identiteit van Azure Active Directory (AAD).
+description: Beveiligings bevoegdheden op document niveau voor Azure Cognitive Search Zoek resultaten, met behulp van beveiligings filters en de identiteit van Azure Active Directory (AAD).
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: bbf1aa2fe8410f6d624fb9d50b1edb6ac2c64093
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794306"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429512"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Beveiligings filters voor het verkleinen van Azure Cognitive Search-resultaten met behulp van Active Directory-identiteiten
 
@@ -42,11 +42,11 @@ Uw toepassing moet ook zijn geregistreerd bij AAD, zoals beschreven in de volgen
 
 Deze stap integreert uw toepassing met AAD voor het accepteren van aanmeldingen van gebruikers-en groeps accounts. Als u geen AAD-beheerder bent in uw organisatie, moet u mogelijk [een nieuwe Tenant maken](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) om de volgende stappen uit te voeren.
 
-1. Ga naar de**app** > voor het registreren van de [**toepassings registratie Portal**](https://apps.dev.microsoft.com) >  **een app toevoegen**.
+1. Ga naar de app voor het registreren van de [**toepassings registratie Portal**](https://apps.dev.microsoft.com)  >   **Converged app**  >  **een app toevoegen**.
 2. Voer een naam in voor uw toepassing en klik vervolgens op **maken**. 
 3. Selecteer de zojuist geregistreerde toepassing op de pagina mijn toepassingen.
-4. Kies op de pagina Toepassings registratie > **platforms** > **platform toevoegen**de optie **Web-API**.
-5. Ga nog steeds op de pagina Toepassings registratie naar > **Microsoft Graph machtigingen** > **toevoegen**.
+4. Kies op de pagina Toepassings registratie > **platforms**  >  **platform toevoegen**de optie **Web-API**.
+5. Ga nog steeds op de pagina Toepassings registratie naar > **Microsoft Graph machtigingen**  >  **toevoegen**.
 6. Voeg in machtigingen selecteren de volgende gedelegeerde machtigingen toe en klik vervolgens op **OK**:
 
    + **Map. ReadWrite. all**

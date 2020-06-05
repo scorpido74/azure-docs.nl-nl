@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: jgao
-ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fb910260c562a41871fe0cd13d5e5e9652b2017d
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344710"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417103"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -248,8 +248,9 @@ Uitvoer van het implementatie script moet worden opgeslagen op de AZ_SCRIPTS_OUT
 
 ### <a name="handle-non-terminating-errors"></a>Niet-afsluit fouten verwerken
 
-U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) variabele in uw implementatie script. De script service kan de waarde niet instellen of wijzigen.  Ondanks de waarde die u hebt ingesteld voor $ErrorActionPreference, stelt het implementatie script de inrichtings status van de resource in op *mislukt* als er een fout optreedt in het script.
+U kunt bepalen hoe Power shell reageert op niet-afsluit fouten met behulp van de **$ErrorActionPreference** variabele in uw implementatie script. Als de variabele niet in uw implementatie script is ingesteld, gebruikt de script service de standaard waarde **door gaan**.
+
+De script service stelt de inrichtings status van de resource in op **mislukt** wanneer het script een fout tegen komt ondanks de instelling van $ErrorActionPreference.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Beveiligde teken reeksen door geven aan implementatie script
 
@@ -354,7 +355,7 @@ De levens cyclus van deze resources wordt bepaald door de volgende eigenschappen
 
 - **cleanupPreference**: de voor keur opschonen wanneer het script wordt uitgevoerd in een Terminal status. De ondersteunde waarden zijn:
 
-  - **Altijd**: de automatisch gemaakte resources verwijderen wanneer de uitvoering van het script in een Terminal status krijgt. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share die is gemaakt in het opslag account door de script service verwijderd. Omdat de deploymentScripts-resource mogelijk nog steeds aanwezig is nadat de resources zijn opgeruimd, blijven de script Services de resultaten van het script uitvoeren, bijvoorbeeld stdout, outputs, retour waarde enzovoort voordat de resources worden verwijderd.
+  - **Altijd**: de automatisch gemaakte resources verwijderen wanneer de uitvoering van het script in een Terminal status krijgt. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share die is gemaakt in het opslag account door de script service verwijderd. Omdat de deploymentScripts-resource mogelijk nog steeds aanwezig is nadat de resources zijn opgeruimd, blijft de script service de resultaten van het script uitvoeren, bijvoorbeeld stdout, outputs, retour waarde enzovoort voordat de resources worden verwijderd.
   - **OnSuccess**: Verwijder de automatisch gemaakte resources alleen wanneer de uitvoering van het script is geslaagd. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share alleen door de script service verwijderd wanneer de uitvoering van het script is geslaagd. U hebt nog steeds toegang tot de resources om de informatie over de fout opsporing te vinden.
   - **OnExpiration**: de automatische resources worden alleen verwijderd wanneer de instelling voor **retentionInterval** is verlopen. Als er een bestaand opslag account wordt gebruikt, wordt de bestands share door de script service verwijderd, maar blijft het opslag account behouden.
 

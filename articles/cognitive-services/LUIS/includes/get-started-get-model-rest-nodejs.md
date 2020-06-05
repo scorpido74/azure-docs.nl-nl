@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 19f72dbb62fc2084bf0c9609fb3782e083c911af
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a1a72d9be339ed1ee0a1c525ee426047b1768f2f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655473"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416367"
 ---
+[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-model-with-rest/model.js)
+
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure Language Understanding: resource 32-teken sleutel en bewerkings eind punt-URL ontwerpen. Maken met de [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Importeer de [pizza](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json) -app uit de `Azure-Samples/cognitive-services-sample-data-files` github-opslag plaats.
-* De LUIS-toepassings-ID voor de geïmporteerde pizza-app. De toepassings-id wordt weergegeven op het toepassingsdashboard.
-* De versie-id in de toepassing die de utterances ontvangt.
 * [Node.js](https://nodejs.org/)-programmeertaal
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -43,163 +41,20 @@ ms.locfileid: "83655473"
 1. Installeer de module voor de aanvraag-ATP door de volgende opdracht in te voeren:
 
     ```console
+    npm install --save request
     npm install --save request-promise
+    npm install --save querystring
     ```
 
 ## <a name="change-model-programmatically"></a>Model via een programma wijzigen
 
 1. Maak een nieuw bestand met de naam `model.js`. Voeg de volgende code toe:
 
-    ```javascript
-    var request = require('request-promise');
-
-    //////////
-    // Values to modify.
-
-    // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
-    const LUIS_appId = "YOUR-APP-ID";
-
-    // YOUR-AUTHORING-KEY: Your LUIS authoring key, 32 character value.
-    const LUIS_authoringKey = "YOUR-AUTHORING-KEY";
-
-    // YOUR-AUTHORING-ENDPOINT: Replace this with your authoring key endpoint.
-    // For example, "https://your-resource-name.api.cognitive.microsoft.com/"
-    const LUIS_endpoint = "YOUR-AUTHORING-ENDPOINT";
-
-    // NOTE: Replace this your version number. The Pizza app uses a version number of "0.1".
-    const LUIS_versionId = "0.1";
-    //////////
-
-    const addUtterancesURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/examples`;
-    const addTrainURI = `${LUIS_endpoint}luis/authoring/v3.0-preview/apps/${LUIS_appId}/versions/${LUIS_versionId}/train`;
-
-    const utterances = [
-        {
-            'text': 'order a pizza',
-            'intentName': 'ModifyOrder',
-            'entityLabels': [
-                {
-                    'entityName': 'Order',
-                    'startCharIndex': 6,
-                    'endCharIndex': 12
-                }
-            ]
-        },
-        {
-            'text': 'order a large pepperoni pizza',
-            'intentName': 'ModifyOrder',
-            'entityLabels': [
-                {
-                    'entityName': 'Order',
-                    'startCharIndex': 6,
-                    'endCharIndex': 28
-                },
-                {
-                    'entityName': 'FullPizzaWithModifiers',
-                    'startCharIndex': 6,
-                    'endCharIndex': 28
-                },
-                {
-                    'entityName': 'PizzaType',
-                    'startCharIndex': 14,
-                    'endCharIndex': 28
-                },
-                {
-                    'entityName': 'Size',
-                    'startCharIndex': 8,
-                    'endCharIndex': 12
-                }
-            ]
-        },
-        {
-            'text': 'I want two large pepperoni pizzas on thin crust',
-            'intentName': 'ModifyOrder',
-            'entityLabels': [
-                {
-                    'entityName': 'Order',
-                    'startCharIndex': 7,
-                    'endCharIndex': 46
-                },
-                {
-                    'entityName': 'FullPizzaWithModifiers',
-                    'startCharIndex': 7,
-                    'endCharIndex': 46
-                },
-                {
-                    'entityName': 'PizzaType',
-                    'startCharIndex': 17,
-                    'endCharIndex': 32
-                },
-                {
-                    'entityName': 'Size',
-                    'startCharIndex': 11,
-                    'endCharIndex': 15
-                },
-                {
-                    'entityName': 'Quantity',
-                    'startCharIndex': 7,
-                    'endCharIndex': 9
-                },
-                {
-                    'entityName': 'Crust',
-                    'startCharIndex': 37,
-                    'endCharIndex': 46
-                }
-            ]
-        }
-    ];
-
-    // Main function.
-    const main = async() =>{
-
-        await addUtterances(utterances);
-        await train("POST");
-        await train("GET");
-
-    }
-
-    // Adds the utterances to the model.
-    const addUtterances = async (utterances) => {
-
-        const options = {
-            uri: addUtterancesURI,
-            method: 'POST',
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: utterances
-        };
-
-        const response = await request(options)
-        console.log("addUtterance:\n" + JSON.stringify(response, null, 2));
-    }
-
-    // With verb === "POST", sends a training request.
-    // With verb === "GET", obtains the training status.
-    const train = async (verb) => {
-
-        const options = {
-            uri: addTrainURI,
-            method: verb,
-            headers: {
-                'Ocp-Apim-Subscription-Key': LUIS_authoringKey
-            },
-            json: true,
-            body: null // The body can be empty for a training request
-        };
-
-        const response = await request(options)
-        console.log("train " + verb + ":\n" + JSON.stringify(response, null, 2));
-    }
-
-    // MAIN
-    main().then(() => console.log("done")).catch((err)=> console.log(err));
-    ```
+    [!code-javascript[Code snippet](~/cognitive-services-quickstart-code/javascript/LUIS/node-model-with-rest/model.js)]
 
 1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
 
-    |Informatie|Doel|
+    |Informatie|Functie|
     |--|--|
     |`YOUR-APP-ID`| De ID van uw LUIS-app. |
     |`YOUR-AUTHORING-KEY`|De bewerkings sleutel voor uw 32-teken.|
@@ -211,6 +66,92 @@ ms.locfileid: "83655473"
 
     ```console
     node model.js
+    ```
+
+1. Het ontwerp antwoord controleren:
+
+    ```json
+    addUtterance:
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    train POST:
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    train GET:
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      }
+    ]
+    done
     ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 0b43bb92a58af58ae5924610f0667e9796a426e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: febd5d1e49a87f0846aba2aaa976e170ee31fab8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193741"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432339"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinding maken tussen hybride computers en Azure via de Azure Portal
 
@@ -24,7 +24,7 @@ Voor deze methode moet u beheerders rechten op de computer hebben om de agent te
 
 Voordat u aan de slag gaat, moet u de [vereisten](agent-overview.md#prerequisites) controleren en controleren of uw abonnement en resources voldoen aan de vereisten.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>Het installatie script genereren op basis van de Azure Portal
 
@@ -42,7 +42,7 @@ Het script om het downloaden en installeren te automatiseren en de verbinding me
     >Azure-Arc voor servers (preview) ondersteunt alleen de volgende regio's:
     >- WestUS2
     >- West-Europa
-    >- WestAsia
+    >- SoutheastAsia
     >
     >Bekijk extra [overwegingen bij het selecteren van een](overview.md#supported-regions) regio in het overzichts artikel.
 

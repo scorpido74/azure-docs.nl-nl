@@ -4,12 +4,12 @@ description: Meer informatie over het definiëren van een aangepaste uitgangs ro
 services: container-service
 ms.topic: article
 ms.date: 06/05/2020
-ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 03b18a9cb8fa28d54952a77bf8721c63dd56a9ad
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310866"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416780"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Cluster uitgang aanpassen met een door de gebruiker gedefinieerde route
 
@@ -227,11 +227,11 @@ Raadpleeg de documentatie over de [route tabel van het virtuele netwerk](../virt
 ## <a name="adding-network-firewall-rules"></a>Firewall regels voor netwerken toevoegen
 
 > [!WARNING]
-> Hieronder ziet u een voor beeld van het toevoegen van een firewall regel. Alle uitstaande eind punten die in de [vereiste eind punten](egress.md) zijn gedefinieerd, moeten worden ingeschakeld door de firewall regels van de toepassing voor het werken met AKS-clusters. Als deze eind punten niet zijn ingeschakeld, kan uw cluster niet worden gebruikt.
+> Hieronder ziet u een voor beeld van het toevoegen van een firewall regel. Alle uitstaande eind punten die in de [vereiste eind punten](limit-egress-traffic.md) zijn gedefinieerd, moeten worden ingeschakeld door de firewall regels van de toepassing voor het werken met AKS-clusters. Als deze eind punten niet zijn ingeschakeld, kan uw cluster niet worden gebruikt.
 
 Hieronder volgt een voor beeld van een netwerk-en toepassings regel. We voegen een netwerk regel toe waarmee u elk protocol, bron adres, doel adres en doel poorten kunt toestaan. We voegen ook een toepassings regel toe voor **een aantal** van de eind punten die zijn vereist voor AKS.
 
-In een productie scenario dient u alleen toegang tot de vereiste eind punten voor uw toepassing in te scha kelen en die zijn gedefinieerd in [AKS vereist](egress.md)uitgaand verkeer.
+In een productie scenario dient u alleen toegang tot de vereiste eind punten voor uw toepassing in te scha kelen en die zijn gedefinieerd in [AKS vereist](limit-egress-traffic.md)uitgaand verkeer.
 
 ```
 # Add Network FW Rules

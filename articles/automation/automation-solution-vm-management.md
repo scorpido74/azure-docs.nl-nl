@@ -3,20 +3,23 @@ title: Overzicht van Azure Automation VM's buiten bedrijfsuren starten/stoppen
 description: In dit artikel wordt de functie VM's buiten bedrijfsuren starten/stoppen beschreven, waarmee Vm's op basis van een planning worden gestart of gestopt. deze worden vanuit Azure Monitor logboeken proactief bewaakt.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205123"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424071"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Overzicht van VM's buiten bedrijfsuren starten/stoppen
 
-Met de functie VM's buiten bedrijfsuren starten/stoppen start of stopt u de ingeschakelde Azure-Vm's. Hiermee worden computers op door de gebruiker gedefinieerde planningen gestart of gestopt, vindt u inzichten via Azure Monitor-logboeken en verzendt u optionele e-mail berichten met behulp van [actie groepen](../azure-monitor/platform/action-groups.md). De functie kan worden ingeschakeld op zowel Azure Resource Manager als klassieke Vm's voor de meeste scenario's. 
+Met de functie VM's buiten bedrijfsuren starten/stoppen worden de ingeschakelde Azure-Vm's gestart of gestopt. Hiermee worden computers op door de gebruiker gedefinieerde planningen gestart of gestopt, vindt u inzichten via Azure Monitor-logboeken en verzendt u optionele e-mail berichten met behulp van [actie groepen](../azure-monitor/platform/action-groups.md). De functie kan worden ingeschakeld op zowel Azure Resource Manager als klassieke Vm's voor de meeste scenario's. 
 
-Deze functie maakt gebruik van de cmdlet [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) voor het stoppen van vm's.
+Deze functie maakt gebruik van de cmdlet [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) om vm's te starten. Er wordt gebruikgemaakt van [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) voor het stoppen van vm's.
+
+> [!NOTE]
+> Hoewel de runbooks zijn bijgewerkt voor het gebruik van de nieuwe Azure AZ module-cmdlets, gebruiken ze de AzureRM-voor voegsel alias.
 
 > [!NOTE]
 > VM's buiten bedrijfsuren starten/stoppen is bijgewerkt ter ondersteuning van de nieuwste versies van de Azure-modules die beschikbaar zijn. De bijgewerkte versie van deze functie, beschikbaar in Marketplace, biedt geen ondersteuning voor AzureRM-modules omdat we hebben gemigreerd van AzureRM naar AZ-modules.
@@ -73,7 +76,7 @@ Als u Vm's wilt inschakelen voor de functie VM's buiten bedrijfsuren starten/sto
 
 U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen met behulp van een nieuw Automation-account en Log Analytics werk ruimte. In dit geval hebt u de machtigingen die zijn gedefinieerd in de voor gaande sectie en de machtigingen die in deze sectie zijn gedefinieerd. U hebt ook de volgende rollen nodig:
 
-- Cobeheerder van het abonnement. Deze rol is vereist voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke uitvoeren als-accounts](automation-create-standalone-account.md#create-a-classic-run-as-account) worden niet meer standaard gemaakt.
+- Co-beheerder van het abonnement. Deze rol is vereist voor het maken van het klassieke uitvoeren als-account als u klassieke Vm's wilt beheren. [Klassieke uitvoeren als-accounts](automation-create-standalone-account.md#create-a-classic-run-as-account) worden niet meer standaard gemaakt.
 - Lidmaatschap van de functie voor ontwikkel aars van [Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md) -toepassingen. Zie [machtigingen voor het configureren van run as-accounts](manage-runas-account.md#permissions)voor meer informatie over het configureren van uitvoeren als-accounts.
 - Inzender voor het abonnement of de volgende machtigingen.
 
@@ -90,7 +93,7 @@ U kunt Vm's voor de VM's buiten bedrijfsuren starten/stoppen-functie inschakelen
 
 ## <a name="components"></a>Onderdelen
 
-De functie VM's buiten bedrijfsuren starten/stoppen omvat vooraf geconfigureerde runbooks, planningen en integratie met Azure Monitor-Logboeken. U kunt deze elementen gebruiken om het opstarten en afsluiten van uw virtuele machines aan te passen aan de behoeften van uw bedrijf.
+De functie VM's buiten bedrijfsuren starten/stoppen omvat vooraf geconfigureerde runbooks, schema's en integratie met Azure Monitor-Logboeken. U kunt deze elementen gebruiken om het opstarten en afsluiten van uw virtuele machines aan te passen aan de behoeften van uw bedrijf.
 
 ### <a name="runbooks"></a>Runbooks
 
@@ -132,7 +135,7 @@ De volgende tabel bevat de variabelen die zijn gemaakt in uw Automation-account.
 |External_AutoStop_TimeAggregationOperator | De tijd aggregatie operator die wordt toegepast op de geselecteerde venster grootte om de voor waarde te evalueren. Acceptabele waarden zijn,,, `Average` `Minimum` `Maximum` `Total` en `Last` .|
 |External_AutoStop_TimeWindow | De grootte van het venster waarin Azure geselecteerde metrische gegevens analyseert voor het activeren van een waarschuwing. Deze para meter accepteert invoer in time span-indeling. Mogelijke waarden zijn 5 minuten tot zes uur.|
 |External_EnableClassicVMs| Waarde die aangeeft of klassieke Vm's zijn gericht op de functie. De standaard waarde is True. Stel deze variabele in op False voor Azure Cloud Solution Provider-abonnementen (CSP). Klassieke Vm's vereisen een [klassiek uitvoeren als-account](automation-create-standalone-account.md#create-a-classic-run-as-account).|
-|External_ExcludeVMNames | Een door komma's gescheiden lijst met VM-namen die moeten worden uitgesloten, beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan de lijst toevoegt, kunnen de Vm's die zijn ingesteld om te worden uitgesloten, per ongeluk worden gestart of gestopt.|
+|External_ExcludeVMNames | Een door komma's gescheiden lijst met VM-namen die moeten worden uitgesloten, beperkt tot 140 Vm's. Als u meer dan 140 Vm's aan de lijst toevoegt, kunnen de virtuele machines die zijn opgegeven voor uitsluiting per ongeluk worden gestart of gestopt.|
 |External_Start_ResourceGroupNames | Een door komma's gescheiden lijst van een of meer resource groepen die zijn gericht op Start acties.|
 |External_Stop_ResourceGroupNames | Een door komma's gescheiden lijst van een of meer resource groepen die zijn gericht op Stop acties.|
 |External_WaitTimeForVMRetrySeconds |De wacht tijd in seconden voor de acties die moeten worden uitgevoerd op de Vm's voor het **SequencedStartStop_Parent** runbook. Met deze variabele kan het runbook wachten op onderliggende bewerkingen gedurende een opgegeven aantal seconden voordat u doorgaat met de volgende actie. De maximale wacht tijd is 10800 of drie uur. De standaard waarde is 2100 seconden.|

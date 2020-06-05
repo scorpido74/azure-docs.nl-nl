@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655202"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434009"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub actions-werk stromen voor de preview-versie van Azure static Web Apps
 
@@ -105,7 +105,7 @@ Er zijn twee beschik bare taken in het werk stroom bestand statisch Web Apps.
 | Naam  | Beschrijving |
 |---------|---------|
 |`build_and_deploy_job` | Wordt uitgevoerd wanneer u een push uitvoert of een pull-aanvraag opent voor de vertakking die in de eigenschap wordt vermeld `on` . |
-|`close_pull_request_job` | Wordt alleen uitgevoerd wanneer u een pull-aanvraag sluit. |
+|`close_pull_request_job` | Wordt alleen uitgevoerd wanneer u een pull-aanvraag sluit die de faserings omgeving verwijdert die is gemaakt van pull-aanvragen. |
 
 ## <a name="steps"></a>Stappen
 
@@ -166,4 +166,4 @@ U kunt de werk stroom aanpassen om te zoeken naar de [routes. json](routes.md) i
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Pull-aanvragen in de pre-productie omgevingen controleren](review-publish-pull-requests.md)
+> [Pull-aanvragen in de pre-productieomgevingen controleren](review-publish-pull-requests.md)

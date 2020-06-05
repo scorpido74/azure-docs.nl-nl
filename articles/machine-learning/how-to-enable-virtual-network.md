@@ -5,18 +5,18 @@ description: Gebruik een geïsoleerde Azure-Virtual Network met Azure Machine Le
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 17c6e10b213cb1f3d2b20433a5511c27960cdb06
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 50897b09f35a90c13809805a81fddb1e82d72994
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816298"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434322"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Uw machine learning levenscyclus beveiligen met particuliere virtuele netwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -463,7 +463,7 @@ Zie [Azure machine learning-werk ruimte gebruiken achter Azure firewall](how-to-
 
 1. Gebruik een van de volgende methoden om de naam van de Azure Container Registry voor uw werk ruimte te vinden:
 
-    __Azure Portal__
+    __Azure-portal__
 
     Vanuit het gedeelte Overzicht van uw werk ruimte koppelt de __register__ waarde aan de Azure container Registry.
 

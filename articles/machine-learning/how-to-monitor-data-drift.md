@@ -5,17 +5,17 @@ description: Gegevens drift (preview) detecteren in azure Kubernetes-Service ge�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: d1da7309b296b57db0c28d5b52fe91efa86709c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f56ab853983ebf9b3e27f38ae1737c0c2bce4ed
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75537004"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430292"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Met behulp van Azure Machine Learning wordt gegevens drift bewaakt door data set
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+- Een Azure-abonnement. Als u er nog geen hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 - De Azure Machine Learning SDK voor python is geïnstalleerd. Volg de instructies in [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) om het volgende te doen:
 
@@ -75,12 +75,12 @@ Met behulp van Azure Machine Learning wordt gegevens drift bewaakt door data set
     print(model_name, image_name, service_name, model)
     ```
 
-- [Schakel de verzameling model gegevens](how-to-enable-data-collection.md) in om gegevens te verzamelen van de AKS-implementatie van het model en te bevestigen dat `modeldata` de gegevens worden verzameld in de BLOB-container.
+- [Schakel de verzameling model gegevens](how-to-enable-data-collection.md) in om gegevens te verzamelen van de AKS-implementatie van het model en te bevestigen dat de gegevens worden verzameld in de `modeldata` BLOB-container.
 
 ## <a name="configure-data-drift"></a>Gegevens drift configureren
 Als u gegevens drift wilt configureren voor uw experiment, moet u afhankelijkheden importeren zoals wordt weer gegeven in het volgende python-voor beeld. 
 
-In dit voor beeld ziet u [`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) hoe u het object configureert:
+In dit voor beeld ziet u hoe u het [`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) object configureert:
 
 ```python
 # Import Azure ML packages
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Een DataDriftDetector-uitvoering verzenden
 
-Wanneer het `DataDriftDetector` object is geconfigureerd, kunt u een [Data-drift uitvoeren](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) op een bepaalde datum voor het model. Als onderdeel van de uitvoering moet u DataDriftDetector-waarschuwingen inschakelen door `drift_threshold` de para meter in te stellen. Als de [datadrift_coefficient](#visualize-drift-metrics) hoger is dan de `drift_threshold`opgegeven, wordt er een e-mail bericht verzonden.
+Wanneer het `DataDriftDetector` object is geconfigureerd, kunt u een [Data-drift uitvoeren](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) op een bepaalde datum voor het model. Als onderdeel van de uitvoering moet u DataDriftDetector-waarschuwingen inschakelen door de para meter in te stellen `drift_threshold` . Als de [datadrift_coefficient](#visualize-drift-metrics) hoger is dan de opgegeven `drift_threshold` , wordt er een e-mail bericht verzonden.
 
 ```python
 # adhoc run today
@@ -123,7 +123,7 @@ RunDetails(dd_run).show()
 Nadat u de DataDriftDetector hebt verzonden, kunt u de metrische gegevens over de drift zien die zijn opgeslagen in elke uitvoerings herhaling voor een gegevens-drift:
 
 
-|Gegevens|Beschrijving|
+|Metrisch|Beschrijving|
 --|--|
 wasserstein_distance|Statistische afstand gedefinieerd voor eendimensionale sprei ding.|
 energy_distance|Statistische afstand gedefinieerd voor eendimensionale sprei ding.|
@@ -133,7 +133,7 @@ datadrift_contribution|Belang rijk onderdeel van functies die bijdragen aan drif
 Er zijn meerdere manieren om gegevens over de drift weer te geven:
 
 * Gebruik de `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
-* Gebruik de [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) functie voor elk `datadrift` run-object.
+* Gebruik de [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) functie voor elk `datadrift` Run-object.
 * Bekijk de metrische gegevens in het gedeelte **modellen** van uw werk ruimte in [Azure machine learning Studio](https://ml.azure.com).
 
 In het volgende python-voor beeld ziet u hoe u relevante gegevens waarden kunt tekenen. U kunt de geretourneerde metrische gegevens gebruiken om aangepaste visualisaties te maken:
@@ -152,7 +152,7 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Scans van gegevens drift plannen 
 
-Wanneer u de functie voor gegevens drift detectie inschakelt, wordt een DataDriftDetector uitgevoerd op de opgegeven geplande frequentie. Als de datadrift_coefficient de opgegeven `drift_threshold`grootte bereikt, wordt een e-mail verzonden bij elke geplande uitvoering. 
+Wanneer u de functie voor gegevens drift detectie inschakelt, wordt een DataDriftDetector uitgevoerd op de opgegeven geplande frequentie. Als de datadrift_coefficient de opgegeven grootte bereikt `drift_threshold` , wordt een e-mail verzonden bij elke geplande uitvoering. 
 
 ```python
 datadrift.enable_schedule()

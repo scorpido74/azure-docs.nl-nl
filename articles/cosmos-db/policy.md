@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747381"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431979"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Azure Policy gebruiken voor het implementeren van governance en controles voor Azure Cosmos DB resources
 
@@ -79,21 +79,24 @@ Met deze opdrachten wordt de lijst met eigenschaps alias namen voor de eigenscha
 
 U kunt elk van deze eigenschaps alias namen gebruiken in de [regels voor aangepaste beleids definities](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule).
 
-Hier volgt een voor beeld van een beleids definitie waarmee wordt gecontroleerd of de ingerichte door Voer van een Azure Cosmos DB SQL database groter is dan de Maxi maal toegestane limiet van 400 RU/s. Een aangepaste beleids definitie bevat twee regels: een om te controleren op het specifieke type eigenschaps alias en de tweede voor de specifieke eigenschap van het type. Beide regels gebruiken de alias namen.
+Hier volgt een voor beeld van een beleids definitie waarmee wordt gecontroleerd of een Azure Cosmos DB account is geconfigureerd voor meerdere schrijf locaties. De definitie van het aangepaste beleid bevat twee regels: een om te controleren op het specifieke type eigenschaps alias en de tweede voor de specifieke eigenschap van het type, in dit geval het veld waarin de instelling voor meerdere schrijf locaties wordt opgeslagen. Beide regels gebruiken de alias namen.
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ Nadat de beleids toewijzingen zijn gemaakt, worden de resources in het bereik va
 
 U kunt de compatibiliteits resultaten en Details voor herstel in de [Azure Portal](../governance/policy/how-to/get-compliance-data.md#portal) of via de [Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) of de [Azure monitor-logboeken](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs)bekijken.
 
-In de volgende scherm afbeelding ziet u twee voor beelden van beleids toewijzingen. Een toewijzing is gebaseerd op een ingebouwde beleids definitie, waarmee wordt gecontroleerd of de Azure Cosmos DB resources alleen worden geïmplementeerd voor de toegestane Azure-regio's. De andere toewijzing is gebaseerd op een aangepaste beleids definitie. Met deze toewijzing wordt gecontroleerd of de ingerichte door Voer voor Azure Cosmos DB resources een opgegeven maximum limiet niet overschrijdt.
+In de volgende scherm afbeelding ziet u twee voor beelden van beleids toewijzingen.
 
-Nadat de beleids toewijzingen zijn geïmplementeerd, worden in het nalevings dashboard evaluatie resultaten weer gegeven. Houd er rekening mee dat dit Maxi maal 30 minuten kan duren nadat een beleids toewijzing is geïmplementeerd.
+Een toewijzing is gebaseerd op een ingebouwde beleids definitie, waarmee wordt gecontroleerd of de Azure Cosmos DB resources alleen worden geïmplementeerd voor de toegestane Azure-regio's. Bron compatibiliteit toont het resultaat van de beleids evaluatie (compatibel of niet-compatibel) voor bronnen in de scope.
 
-De scherm afbeelding toont de volgende resultaten van de compliantie-evaluatie:
+De andere toewijzing is gebaseerd op een aangepaste beleids definitie. Met deze toewijzing wordt gecontroleerd of Cosmos DB accounts zijn geconfigureerd voor meerdere schrijf locaties.
 
-- Nul van een Azure Cosmos DB accounts in het opgegeven bereik voldoen aan de beleids toewijzing om te controleren of de resources zijn geïmplementeerd in toegestane regio's.
-- Een van de twee Azure Cosmos DB Data Base-of verzamelings resources in het opgegeven bereik voldoet aan de beleids toewijzing om te controleren of de ingerichte door Voer de opgegeven maximum limiet overschrijdt.
+Nadat de beleids toewijzingen zijn geïmplementeerd, worden in het nalevings dashboard evaluatie resultaten weer gegeven. Houd er rekening mee dat dit Maxi maal 30 minuten kan duren nadat een beleids toewijzing is geïmplementeerd. Daarnaast [kunnen scans van beleids evaluaties](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) direct na het maken van beleids toewijzingen op aanvraag worden gestart.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Zoeken naar Azure Cosmos DB ingebouwde beleids definities":::
+De scherm afbeelding toont de volgende resultaten van de compliantie-evaluatie voor in-Scope Azure Cosmos DB accounts:
 
-Als u de niet-compatibele resources wilt herstellen, raadpleegt u het artikel [opgelost met Azure Policy](../governance/policy/how-to/remediate-resources.md) .
+- Nul van twee accounts voldoet aan een beleid dat Virtual Network (VNet)-filtering moet worden geconfigureerd.
+- Nul van twee accounts voldoet aan een beleid waarvoor het account moet worden geconfigureerd voor meerdere schrijf locaties
+- Nul van twee accounts voldoet aan een beleid dat is geïmplementeerd op de toegestane Azure-regio's.
+
+:::image type="content" source="./media/policy/compliance.png" alt-text="Nalevings resultaten voor Azure Policy toewijzingen in de lijst":::
+
+Zie [resources herstellen met Azure Policy](../governance/policy/how-to/remediate-resources.md)om de niet-compatibele resources te herstellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Voor beelden van aangepaste beleids definities voor Azure Cosmos DB bekijken](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+- [Bekijk voor beelden van aangepaste beleids definities voor Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), met inbegrip van de meerdere schrijf locatie en het beleid voor VNet-filtering hierboven weer gegeven.
 - [Een beleids toewijzing maken in de Azure Portal](../governance/policy/assign-policy-portal.md)
 - [Bekijk Azure Policy ingebouwde beleids definities voor Azure Cosmos DB](./policy-samples.md)

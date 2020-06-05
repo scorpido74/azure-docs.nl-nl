@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018817"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424385"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -171,6 +171,56 @@ Een andere reden voor onstabiele hologrammen (Wobbling, krom trekken, jitteren o
 U kunt ook een andere waarde zoeken in `ARRServiceStats.LatencyPoseToReceiveAvg` . Deze moet consistent zijn onder 100 MS. Als u hogere waarden ziet, betekent dit dat u verbonden bent met een Data Center dat te ver weg is.
 
 Zie de [richt lijnen voor netwerk connectiviteit](../reference/network-requirements.md#guidelines-for-network-connectivity)voor een lijst met mogelijke oplossingen.
+
+## <a name="z-fighting"></a>Z-vechten
+
+Terwijl ARR een [z-bestrij ding van de beperkende functionaliteit](../overview/features/z-fighting-mitigation.md)biedt, kan z-vechten nog steeds in de scène worden weer gegeven. Deze hand leiding is gericht op het oplossen van deze resterende problemen.
+
+### <a name="recommended-steps"></a>Aanbevolen stappen
+
+Gebruik de volgende werk stroom om de z-vechten te beperken:
+
+1. Test de scène met de standaard instellingen van ARR (z-bestrij ding van problemen op)
+
+1. De z-bestrij ding van de beperking via de [API](../overview/features/z-fighting-mitigation.md) uitschakelen 
+
+1. Wijzig de camera bijna en Far in een dichterd bereik
+
+1. Problemen met de scène oplossen via de volgende sectie
+
+### <a name="investigating-remaining-z-fighting"></a>De resterende z-bestrijding wordt onderzocht
+
+Als de bovenstaande stappen zijn uitgeput en de resterende z-vechten onaanvaardbaar is, moet de onderliggende oorzaak van de z-vechten worden onderzocht. Zoals vermeld op de [functie pagina z-bestrij](../overview/features/z-fighting-mitigation.md)ding van Risico's, zijn er twee belang rijke redenen voor z-vechten: diepte nauwkeurigheid aan het einde van het diepte bereik en de Opper vlakken die elkaar Intersect tijdens het coplanar. Het verlies van nauw keurigheid is een mathematisch risico en kan alleen worden verholpen door stap 3 hierboven te volgen. Coplanar-Opper vlakken geven een probleem met de bron activa aan en zijn beter in de bron gegevens opgelost.
+
+ARR heeft een functie waarmee kan worden bepaald of Opper vlakken z-bestrij ding van een [dambord patroon](../overview/features/z-fighting-mitigation.md)zijn. U kunt ook visueel bepalen wat het voor de z-vechten veroorzaakt. In de volgende eerste animatie ziet u een voor beeld van een diepte nauwkeurigheids verlies op de afstand en de tweede een voor beeld van bijna coplanar-Opper vlakken:
+
+![diepte-precisie-z-vechten](./media/depth-precision-z-fighting.gif)  ![coplanar-z-vechten](./media/coplanar-z-fighting.gif)
+
+Vergelijk deze voor beelden met uw z-vechten om de oorzaak te bepalen of voer deze stapsgewijze werk stroom eventueel uit:
+
+1. Plaats de camera boven de z-vecht oppervlakken om direct op het Opper vlak te kijken.
+1. Verplaats de camera langzaam naar achteren, weg van de Opper vlakken.
+1. Als de z-vechten al zo lang zichtbaar is, zijn de Opper vlakken perfect coplanar. 
+1. Als de z-vechten de meeste tijd zichtbaar is, zijn de Opper vlakken bijna coplanar.
+1. Als de z-vechten alleen van ver zichtbaar is, is de oorzaak geen nauw keurige diepte.
+
+Coplanar-Opper vlakken kunnen een aantal verschillende oorzaken hebben:
+
+* Er is een object gedupliceerd door de export toepassing vanwege een fout of verschillende werk stroom benaderingen.
+
+    Controleer deze problemen met de betreffende toepassings-en toepassings ondersteuning.
+
+* De Opper vlakken worden gedupliceerd en gespiegeld zodat ze dubbelzijdig worden weer gegeven in renderers die gebruikmaken van front-face of Back-face.
+
+    Importeren via de [model conversie](../how-tos/conversion/model-conversion.md) bepaalt de principal-sidedness van het model. Dubbele sidedness wordt aangenomen als de standaard waarde. Het Opper vlak wordt weer gegeven als een dunne wand met een fysiek juiste verlichting van beide zijden. Eén sidedness kan worden geïmpliceerd door vlaggen in het bron activum of expliciet worden geforceerd tijdens de [model conversie](../how-tos/conversion/model-conversion.md). Daarnaast kan de [Single-Side modus](../overview/features/single-sided-rendering.md) worden ingesteld op ' normaal '.
+
+* Objecten die elkaar kruisen in de bron assets.
+
+     Objecten die zijn getransformeerd op een manier waarop sommige van hun Opper vlakken elkaar overlappen, maken ook een z-vechten. Als u delen van de scène structuur in de geïmporteerde scène in ARR transformeert, kan dit probleem ook worden gemaakt.
+
+* Opper vlakken zijn purposefully ontworpen om te raken, zoals Decals of tekst op wanden.
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

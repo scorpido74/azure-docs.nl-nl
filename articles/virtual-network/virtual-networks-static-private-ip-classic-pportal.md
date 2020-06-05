@@ -8,6 +8,7 @@ manager: dcscontentpm
 tags: azure-service-management
 ms.assetid: b8ef8367-58b2-42df-9f26-3269980950b8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc080ed41f32ae2af018e9316e67ab38c2d0650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ff4dcdf5806196a0b86445880ddbf13da3dbbc3
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81449898"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417817"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Privé IP-adressen configureren voor een virtuele machine (klassiek) met behulp van de Azure Portal
 
@@ -40,13 +41,13 @@ De voorbeeld stappen die volgen, verwachten een eenvoudige omgeving die al is ge
 Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een VNet met de naam *TestVNet* met een statisch privé-IP van *192.168.1.101*wilt maken, voert u de volgende stappen uit:
 
 1. Navigeer in een browser naar https://portal.azure.com en meld u, indien nodig, aan met uw Azure-account.
-2. Selecteer **Nieuw** > **Compute** > **Windows Server 2012 R2 Data Center**, Let op dat de lijst **een implementatie model selecteren** reeds **klassiek**bevat en selecteer vervolgens **maken**.
+2. Selecteer **Nieuw**  >  **Compute**  >  **Windows Server 2012 R2 Data Center**, Let op dat de lijst **een implementatie model selecteren** reeds **klassiek**bevat en selecteer vervolgens **maken**.
    
     ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure01.png)
 3. Voer onder **VM maken**de naam in van de virtuele machine die moet worden gemaakt (*DNS01* in het scenario), het lokale beheerders account en het wacht woord.
    
     ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure02.png)
-4. Selecteer **optioneel configuratie** > **netwerk** > **Virtual Network**en selecteer vervolgens **TestVNet**. Als **TestVNet** niet beschikbaar is, moet u ervoor zorgen dat u de centrale locatie van de *VS* gebruikt en de test omgeving hebt gemaakt die aan het begin van dit artikel is beschreven.
+4. Selecteer **optioneel configuratie**  >  **netwerk**  >  **Virtual Network**en selecteer vervolgens **TestVNet**. Als **TestVNet** niet beschikbaar is, moet u ervoor zorgen dat u de centrale locatie van de *VS* gebruikt en de test omgeving hebt gemaakt die aan het begin van dit artikel is beschreven.
    
     ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure03.png)
 5. Zorg **Network**ervoor dat het momenteel geselecteerde subnet een front- *End*is en selecteer vervolgens **IP-adressen**onder **IP-adres toewijzing** , selecteer **statisch**en voer *192.168.1.101* in voor het **IP-adres** zoals hieronder wordt weer gegeven.
@@ -60,7 +61,7 @@ Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Informatie over statisch privé-IP-adres ophalen voor een virtuele machine
 Voer de volgende stappen uit om de gegevens van het statische privé-IP-adres te bekijken voor de virtuele machine die is gemaakt met de bovenstaande stappen.
 
-1. Selecteer in de Azure Portal **Bladeren alle** > **virtuele machines (klassiek)** > **DNS01** > **alle instellingen** > **IP-adressen** en noteer de IP-adres toewijzing en het IP-adres zoals hieronder wordt weer gegeven.
+1. Selecteer in de Azure Portal **Bladeren alle**  >  **virtuele machines (klassiek)**  >  **DNS01**  >  **alle instellingen**  >  **IP-adressen** en noteer de IP-adres toewijzing en het IP-adres zoals hieronder wordt weer gegeven.
    
     ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-classic-pportal/figure06.png)
 

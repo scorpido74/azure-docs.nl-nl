@@ -1,19 +1,19 @@
 ---
 title: Verificatie en autorisatie
 description: Meer informatie over de verschillende manieren waarop een app of service kan worden geverifieerd voor Azure spatiale ankers en de niveaus van beheer die u nodig hebt om toegang te krijgen tot ruimtelijke ankers van Azure.
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653369"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434381"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -39,7 +39,6 @@ Azure AD-verificatie tokens kunnen op twee manieren worden verkregen:
 Het gebruik van account sleutels voor toegang tot uw Azure spatiale-ankers account is de eenvoudigste manier om aan de slag te gaan. U vindt uw account sleutels op het Azure Portal. Navigeer naar uw account en selecteer het tabblad sleutels.
 
 ![Een overzicht van verificatie voor Azure spatiale ankers](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 Er worden twee sleutels beschikbaar gemaakt, die beide gelijktijdig geldig zijn voor toegang tot het ruimtelijke-ankers account. Het is raadzaam om de sleutel die u gebruikt voor toegang tot het account, regel matig bij te werken. Als er twee afzonderlijke geldige sleutels zijn, kunnen deze updates zonder downtime worden ingeschakeld. u hoeft alleen de primaire sleutel en de secundaire sleutel bij te werken.
 

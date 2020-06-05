@@ -5,17 +5,17 @@ description: Meer informatie over wat er mogelijk is zonder de toepassing Workbe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
-ms.openlocfilehash: 9b49eb6237346a76903202a118331383c5a8f623
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53f8fb79e965c09ad59ada085b9cfd27014bd140
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944258"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433070"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Wat is er gebeurd met Azure Machine Learning Workbench?
 
@@ -67,7 +67,7 @@ Gebruik de nieuwe CLI en SDK om uw modellen te trainen en de uitvoeringsgeschied
 
 U verliest geen code of werk. Projecten zijn in de oudere versie cloudentiteiten met een lokale map. In de nieuwste versie koppelt u lokale mappen aan de Azure Machine Learning-werk ruimte met behulp van een lokaal configuratie bestand. Bekijk een [diagram van de meest recente architectuur](concept-azure-machine-learning-architecture.md).
 
-Veel van de projectinhoud staat al op uw lokale computer. U hoeft alleen een configuratiebestand in die map te maken en ernaar te verwijzen in uw code om het aan uw werkruimte te koppelen. Als u wilt door gaan met het gebruik van de lokale map met uw bestanden en scripts, geeft u de naam van de map op in de opdracht `az ml project attach` ' [experiment. Submit '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) van python of met de CLI-opdracht.  Bijvoorbeeld:
+Veel van de projectinhoud staat al op uw lokale computer. U hoeft alleen een configuratiebestand in die map te maken en ernaar te verwijzen in uw code om het aan uw werkruimte te koppelen. Als u wilt door gaan met het gebruik van de lokale map met uw bestanden en scripts, geeft u de naam van de map op in de opdracht ' [experiment. Submit '](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) van python of met de `az ml project attach` cli-opdracht.  Bijvoorbeeld:
 ```python
 run = exp.submit(source_directory=script_folder,
                  script='train.py', run_config=run_config_system_managed)
@@ -97,7 +97,7 @@ Meer informatie over de [nieuwste architectuur voor Azure machine learning](conc
 
 Lees [Wat is Azure machine learning?](overview-what-is-azure-ml.md)voor een overzicht van de service.
 
-Maak uw eerste experiment met uw voorkeurs methode:
+Maak uw eerste experiment met de methode van uw voorkeur:
   + [Python-notebooks gebruiken](tutorial-1st-experiment-sdk-setup.md)
   + [R-prijs verlaging gebruiken](tutorial-1st-r-experiment.md) 
   + [Automatische machine learning gebruiken](tutorial-designer-automobile-price-train-score.md) 

@@ -8,24 +8,24 @@ ms.author: trbye
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: f997aef59e91bed325b84af855a84f43cd639d83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 321d5c3944f3c4340da593f977919ebc6a47752e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122842"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431293"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identiteit gebruiken met uw machine learning-webservice in de Azure Kubernetes-service
 
-In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aan uw geïmplementeerde machine learning model in de Azure Kubernetes-service. Met het [pod Identity](https://github.com/Azure/aad-pod-identity) project van Aad kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Aad met behulp van een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) en Kubernetes primitieven. Zo kunt u uw webservices veilig toegang geven tot uw Azure-resources zonder dat u referenties hoeft in te sluiten `score.py` of tokens rechtstreeks in uw script hoeft te beheren. In dit artikel worden de stappen beschreven voor het maken en installeren van een Azure-identiteit in uw Azure Kubernetes service-cluster en het toewijzen van de identiteit aan uw geïmplementeerde webservice.
+In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aan uw geïmplementeerde machine learning model in de Azure Kubernetes-service. Met het [pod Identity](https://github.com/Azure/aad-pod-identity) project van Aad kunnen toepassingen veilig toegang krijgen tot Cloud bronnen met Aad met behulp van een [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) en Kubernetes primitieven. Zo kunt u uw webservices veilig toegang geven tot uw Azure-resources zonder dat u referenties hoeft in te sluiten of tokens rechtstreeks in uw script hoeft te beheren `score.py` . In dit artikel worden de stappen beschreven voor het maken en installeren van een Azure-identiteit in uw Azure Kubernetes service-cluster en het toewijzen van de identiteit aan uw geïmplementeerde webservice.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
-- Toegang tot uw AKS-cluster met `kubectl` behulp van de opdracht. Zie [verbinding maken met het cluster](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster) voor meer informatie.
+- Toegang tot uw AKS-cluster met behulp van de `kubectl` opdracht. Zie [verbinding maken met het cluster](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster) voor meer informatie.
 
 - Een Azure Machine Learning-webservice die is geïmplementeerd in uw AKS-cluster.
 
@@ -37,7 +37,7 @@ In deze procedure leert u hoe u een Azure Active Directorys-id (AAD) toewijst aa
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    Met deze opdracht wordt een waarde `true` geretourneerd als RBAC is ingeschakeld. Deze waarde bepaalt de opdracht die in de volgende stap moet worden gebruikt.
+    Met deze opdracht wordt een waarde geretourneerd `true` als RBAC is ingeschakeld. Deze waarde bepaalt de opdracht die in de volgende stap moet worden gebruikt.
 
 1. Gebruik een van de volgende opdrachten om de [Aad pod-identiteit](https://github.com/Azure/aad-pod-identity#getting-started) in uw AKS-cluster te installeren:
 
@@ -94,7 +94,7 @@ spec:
   Selector: <label value to match>
 ```
 
-Bewerk de implementatie om het label van de Azure Identity Selector toe te voegen. Ga naar de volgende sectie onder `/spec/template/metadata/labels`. U ziet waarden zoals `isazuremlapp: “true”`. Voeg het label Aad-pod-Identity toe, zoals hieronder wordt weer gegeven.
+Bewerk de implementatie om het label van de Azure Identity Selector toe te voegen. Ga naar de volgende sectie onder `/spec/template/metadata/labels` . U ziet waarden zoals `isazuremlapp: “true”` . Voeg het label Aad-pod-Identity toe, zoals hieronder wordt weer gegeven.
 
 ```azurecli-interactive
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>

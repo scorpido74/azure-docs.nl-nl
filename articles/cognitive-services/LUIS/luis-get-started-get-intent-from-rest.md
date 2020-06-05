@@ -4,18 +4,16 @@ description: Gebruik in deze REST API Snelstartgids een beschik bare open bare L
 ms.topic: quickstart
 ms.date: 05/18/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 90d98e56e53e28991fb5aada9eab5a7e9c2e69c3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 919308bbb557247516e85017909df9caed8eafdf
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654341"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418017"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Quick Start: profiteren van de bedoeling van REST-Api's
 
 In deze Snelstartgids gebruikt u een LUIS-app om de bedoeling van een gebruiker te bepalen op basis van de tekst van de conversatie. Verzend de voor waarde van de gebruiker als tekst naar het HTTP prediction-eind punt van de pizza-app. Op het eind punt past LUIS het model van de pizza-app toe om de tekst in de natuurlijke taal te analyseren, waardoor de algemene intentie kan worden bepaald en gegevens worden geëxtraheerd die relevant zijn voor het onderwerps domein van de app.
-
-Deze snelstart gebruikt het REST-API-eindpunt. Zie voor meer informatie de [documentatie bij de eindpunt-API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
 
 Voor dit artikel hebt u een gratis [LUIS](https://www.luis.ai)-account nodig.
 

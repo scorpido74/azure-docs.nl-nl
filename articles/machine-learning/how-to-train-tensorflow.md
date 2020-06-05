@@ -5,17 +5,17 @@ description: Meer informatie over het uitvoeren van tensor flow-trainings script
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 679e44a8949f283c0e01c47ca3e602ae6fc0eacf
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78228302"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433795"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bouw een tensor flow-Learning model op schaal met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ Voer deze code uit in een van de volgende omgevingen:
 
     - [Installeer de Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
     - [Maak een configuratie bestand voor de werk ruimte](how-to-configure-environment.md#workspace).
-    - [Down load de voorbeeld script bestanden](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` en`utils.py`
+    - [De voorbeeld script bestanden downloaden](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` maar`utils.py`
      
     U kunt ook een voltooide [Jupyter notebook versie](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb) van deze hand leiding vinden op de pagina met voor beelden van github. Het notitie blok bevat uitgebreide secties die betrekking hebben op intelligent afstemming tuning, model implementatie en notebook widgets.
 
@@ -69,7 +69,7 @@ from azureml.train.dnn import TensorFlow
 
 De [Azure machine learning werk ruimte](concept-workspace.md) is de resource op het hoogste niveau voor de service. Het biedt u een centrale locatie voor het werken met alle artefacten die u maakt. In de python-SDK hebt u toegang tot de werkruimte artefacten door een [`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) object te maken.
 
-Maak een werkruimte object op basis `config.json` van het bestand dat in de [sectie vereisten](#prerequisites)is gemaakt.
+Maak een werkruimte object op basis van het `config.json` bestand dat in de [sectie vereisten](#prerequisites)is gemaakt.
 
 ```Python
 ws = Workspace.from_config()
@@ -88,7 +88,7 @@ exp = Experiment(workspace=ws, name='tf-mnist')
 
 ### <a name="create-a-file-dataset"></a>Een bestands gegevensset maken
 
-Een `FileDataset` -object verwijst naar een of meer bestanden in uw werk ruimte of open bare url's. De bestanden hebben een wille keurige indeling en de-klasse biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw computer. Door een `FileDataset`te maken, maakt u een verwijzing naar de locatie van de gegevens bron. Als u trans formaties hebt toegepast op de gegevensset, worden deze ook opgeslagen in de gegevens verzameling. De gegevens blijven op de bestaande locatie, waardoor er geen extra opslag kosten in rekening worden gebracht. Raadpleeg `Dataset` de [hand leiding van het pakket](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) voor meer informatie.
+Een- `FileDataset` object verwijst naar een of meer bestanden in uw werk ruimte of open bare url's. De bestanden hebben een wille keurige indeling en de-klasse biedt u de mogelijkheid om de bestanden te downloaden of te koppelen aan uw computer. Door een te maken `FileDataset` , maakt u een verwijzing naar de locatie van de gegevens bron. Als u trans formaties hebt toegepast op de gegevensset, worden deze ook opgeslagen in de gegevens verzameling. De gegevens blijven op de bestaande locatie, waardoor er geen extra opslag kosten in rekening worden gebracht. Raadpleeg de [hand leiding van het](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) `Dataset` pakket voor meer informatie.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -102,7 +102,7 @@ web_paths = [
 dataset = Dataset.File.from_files(path=web_paths)
 ```
 
-Gebruik de `register()` -methode om de gegevensset te registreren in uw werk ruimte, zodat deze kan worden gedeeld met anderen, opnieuw worden gebruikt in verschillende experimenten en waarnaar wordt verwezen met de naam in uw trainings script.
+Gebruik de- `register()` methode om de gegevensset te registreren in uw werk ruimte, zodat deze kan worden gedeeld met anderen, opnieuw worden gebruikt in verschillende experimenten en waarnaar wordt verwezen met de naam in uw trainings script.
 
 ```python
 dataset = dataset.register(workspace=ws,
@@ -142,7 +142,7 @@ De [tensor flow Estimator](https://docs.microsoft.com/python/api/azureml-train-c
 
 De tensor flow Estimator wordt geïmplementeerd via de algemene [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) klasse, die kan worden gebruikt ter ondersteuning van een Framework. Voor meer informatie over trainings modellen die gebruikmaken van de algemene Estimator, raadpleegt [u modellen met Azure machine learning met behulp van Estimator](how-to-train-ml-models.md)
 
-Als uw trainings script extra PIP-of Conda-pakketten nodig heeft om uit te voeren, kunt u de pakketten op de resulterende docker-installatie kopie installeren `pip_packages` door `conda_packages` hun namen door te geven via de argumenten en.
+Als uw trainings script extra PIP-of Conda-pakketten nodig heeft om uit te voeren, kunt u de pakketten op de resulterende docker-installatie kopie installeren door hun namen door te geven via de `pip_packages` `conda_packages` argumenten en.
 
 ```python
 script_params = {
@@ -187,7 +187,7 @@ Wanneer de uitvoering wordt uitgevoerd, worden de volgende fasen door lopen:
 
 ## <a name="register-or-download-a-model"></a>Een model registreren of downloaden
 
-Zodra u het model hebt getraind, kunt u het registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen. Door de para `model_framework`meters `model_framework_version`op te `resource_configuration`geven, en wordt de implementatie van geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het `ResourceConfiguration` object definieert de reken resource voor de webservice.
+Zodra u het model hebt getraind, kunt u het registreren in uw werk ruimte. Met model registratie kunt u uw modellen in uw werk ruimte opslaan en versieren om het [model beheer en de implementatie](concept-model-management-and-deployment.md)te vereenvoudigen. Door de para meters op te geven, en wordt de `model_framework` `model_framework_version` implementatie van `resource_configuration` geen code model beschikbaar. Zo kunt u uw model rechtstreeks implementeren als een webservice van het geregistreerde model en het `ResourceConfiguration` object definieert de reken resource voor de webservice.
 
 ```Python
 from azureml.core import Model
@@ -200,7 +200,7 @@ model = run.register_model(model_name='tf-dnn-mnist',
                            resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
-U kunt ook een lokale kopie van het model downloaden met behulp van het object run. In het trainings script `mnist-tf.py`wordt het model door een tensor flow-beveiligings object naar een lokale map (lokaal naar het Compute-doel) bewaard. U kunt het object run gebruiken om een kopie te downloaden.
+U kunt ook een lokale kopie van het model downloaden met behulp van het object run. In het trainings script `mnist-tf.py` wordt het model door een tensor flow-beveiligings object naar een lokale map (lokaal naar het Compute-doel) bewaard. U kunt het object run gebruiken om een kopie te downloaden.
 
 ```Python
 # Create a model folder in the current directory
@@ -226,7 +226,7 @@ Azure Machine Learning ondersteunt twee methoden van gedistribueerde training in
 
 [Horovod](https://github.com/uber/horovod) is een open-source framework voor gedistribueerde training ontwikkeld door uber. Het biedt een eenvoudig pad naar gedistribueerde GPU tensor flow-taken.
 
-Als u Horovod wilt gebruiken, [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) geeft u een `distributed_training` object op voor de para meter in de tensor flow-constructor. Deze para meter zorgt ervoor dat de Horovod-bibliotheek wordt geïnstalleerd zodat u deze kunt gebruiken in uw trainings script.
+Als u Horovod wilt gebruiken, geeft u een [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) object op voor de `distributed_training` para meter in de tensor flow-constructor. Deze para meter zorgt ervoor dat de Horovod-bibliotheek wordt geïnstalleerd zodat u deze kunt gebruiken in uw trainings script.
 
 ```Python
 from azureml.core.runconfig import MpiConfiguration
@@ -249,7 +249,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 U kunt ook [systeem eigen gedistribueerde tensor flow](https://www.tensorflow.org/deploy/distributed)uitvoeren. Dit maakt gebruik van het parameter server model. In deze methode traint u in een cluster met parameter servers en werk rollen. De werk nemers berekenen de verlopen tijdens de training, terwijl de parameter servers de kleur overgangen samen voegen.
 
-Als u de methode van de parameter server wilt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) gebruiken, geeft `distributed_training` u een object op voor de para meter in de tensor flow-constructor.
+Als u de methode van de parameter server wilt gebruiken, geeft u een [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) object op voor de `distributed_training` para meter in de tensor flow-constructor.
 
 ```Python
 from azureml.train.dnn import TensorFlow
@@ -274,7 +274,7 @@ run = exp.submit(tf_est)
 
 #### <a name="define-cluster-specifications-in-tf_config"></a>Cluster specificaties definiëren in de TF_CONFIG
 
-U hebt ook de netwerk adressen en poorten van het cluster nodig voor [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)de, zodat Azure machine learning de `TF_CONFIG` omgevings variabele voor u instelt.
+U hebt ook de netwerk adressen en poorten van het cluster nodig voor de [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec) , zodat Azure machine learning de `TF_CONFIG` omgevings variabele voor u instelt.
 
 De `TF_CONFIG` omgevings variabele is een JSON-teken reeks. Hier volgt een voor beeld van de variabele voor een parameter Server:
 
@@ -289,9 +289,9 @@ TF_CONFIG='{
 }'
 ```
 
-Voor de API op hoog [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) niveau van tensor flow parseert tensor flow `TF_CONFIG` de variabele en bouwt de cluster specificatie voor u.
+Voor de API op hoog niveau van tensor flow [`tf.estimator`](https://www.tensorflow.org/api_docs/python/tf/estimator) parseert tensor flow de `TF_CONFIG` variabele en bouwt de cluster specificatie voor u.
 
-Voor de kern-Api's van tensor flow voor training moet u de `TF_CONFIG` variabele parseren en de `tf.train.ClusterSpec` in uw trainings code bouwen.
+Voor de kern-Api's van tensor flow voor training moet u de variabele parseren `TF_CONFIG` en de `tf.train.ClusterSpec` in uw trainings code bouwen.
 
 ```Python
 import os, json
@@ -311,7 +311,7 @@ Het model dat u zojuist hebt geregistreerd, kan op dezelfde manier worden geïmp
 
 ## <a name="preview-no-code-model-deployment"></a>Evaluatie Implementatie van geen code model
 
-In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor tensor flow. Als u het model `model_framework`registreert zoals hierboven `model_framework_version` `resource_configuration` wordt weer gegeven, kunt u gewoon de `deploy()` statische functie gebruiken om uw model te implementeren.
+In plaats van de traditionele implementatie route kunt u ook de functie voor het implementeren van geen code (preview) gebruiken voor tensor flow. Als u het model registreert zoals hierboven wordt weer gegeven, `model_framework` `model_framework_version` `resource_configuration` kunt u gewoon de `deploy()` statische functie gebruiken om uw model te implementeren.
 
 ```python
 service = Model.deploy(ws, "tensorflow-web-service", [model])

@@ -5,17 +5,17 @@ description: Meer informatie over het transformeren van gegevens in Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 05/04/2020
 ms.custom: designer
-ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 69e4583d03fbe013fd6629952e34dae039f3836d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644289"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433208"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Gegevens transformeren in Azure Machine Learning Designer (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -40,7 +40,7 @@ In deze sectie vindt u informatie over het importeren van de voor beeld-gegevens
 
 Gebruik de volgende stappen om de voor beeld-gegevensset te importeren.
 
-1. Meld u aan bij <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>en selecteer de werk ruimte waarmee u wilt werken.
+1. Meld u aan op <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> en selecteer de werkruimte waarmee u wilt werken.
 
 1. Ga naar de ontwerp functie. Selecteer **eenvoudig te gebruiken-modules voor prebuild** om een nieuwe pijp lijn te maken.
 
@@ -154,7 +154,7 @@ Nadat de pijp lijn is voltooid, kunt u uw resultaten weer geven door te navigere
 
 1. Selecteer de module **Split data** .
 
-1. Selecteer **uitvoer en logboeken**in het detail venster van de module rechts van het canvas. 
+1. In de deelvenster Details van de module, rechts van het canvas, selecteert u **Uitvoer en logboeken**. 
 
 1. Selecteer het pictogram visualiseren pictogram visualiseren ![ ](media/how-to-designer-transform-data/visualize-icon.png) naast **resultaten dataset1**. 
 

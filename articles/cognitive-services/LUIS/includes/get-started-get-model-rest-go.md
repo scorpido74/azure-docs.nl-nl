@@ -6,21 +6,19 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 8d180eeffdbc41db6fa0e636daf7702faad47fcc
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 29cd4e2b395d28733f384ad3b073a4c11f7cf194
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368410"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416363"
 ---
+[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-model/model.go)
+
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure Language Understanding: resource 32-teken sleutel en bewerkings eind punt-URL ontwerpen. Maken met de [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) of [Azure cli](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
-* Importeer de [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) -app uit de cognitieve-Services-Language-Standing github-opslag plaats.
-* De LUIS toepassings-ID voor de geïmporteerde TravelAgent-app. De toepassings-id wordt weergegeven op het toepassingsdashboard.
-* De versie-id in de toepassing die de utterances ontvangt. De standaard-id is '0.1'.
 * [Go](https://golang.org/) -programmeer taal
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -28,121 +26,23 @@ ms.locfileid: "77368410"
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
+## <a name="create-pizza-app"></a>Pizza-app maken
+
+[!INCLUDE [Create pizza app](get-started-get-model-create-pizza-app.md)]
+
 ## <a name="change-model-programmatically"></a>Model via een programma wijzigen
 
 1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
 
-    ```go
-    // dependencies
-    package main
-    import (
-        "fmt"
-        "net/http"
-        "io/ioutil"
-        "log"
-        "strings"
-    )
+    [!code-go[Code snippet](~/cognitive-services-quickstart-code/go/LUIS/go-rest-model/model.go)]
 
-    // main function
-    func main() {
+1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
 
-        // NOTE: change to your app ID
-        var appID = "YOUR-APP-ID"
-
-        // NOTE: change to your authoring key
-        var authoringKey = "YOUR-KEY"
-
-        // NOTE: change to your authoring key's endpoint, for example, your-resource-name.api.cognitive.microsoft.com
-        var endpoint = "YOUR-ENDPOINT"
-
-        var version = "0.1"
-
-        var exampleUtterances = `
-        [
-            {
-              'text': 'go to Seattle today',
-              'intentName': 'BookFlight',
-              'entityLabels': [
-                {
-                  'entityName': 'Location::LocationTo',
-                  'startCharIndex': 6,
-                  'endCharIndex': 12
-                }
-              ]
-            },
-            {
-                'text': 'a barking dog is annoying',
-                'intentName': 'None',
-                'entityLabels': []
-            }
-          ]
-        `
-
-        fmt.Println("add example utterances requested")
-        addUtterance(authoringKey, appID, version, exampleUtterances, endpoint)
-
-        fmt.Println("training selected")
-        requestTraining(authoringKey, appID, version, endpoint)
-
-        fmt.Println("training status selected")
-        getTrainingStatus(authoringKey, appID, version, endpoint)
-    }
-
-    // get utterances from file and add to model
-    func addUtterance(authoringKey string, appID string,  version string, labeledExampleUtterances string, endpoint string){
-
-        var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/examples", endpoint, appID, version)
-
-        httpRequest("POST", authoringUrl, authoringKey, labeledExampleUtterances)
-    }
-    func requestTraining(authoringKey string, appID string,  version string, endpoint string){
-
-        trainApp("POST", authoringKey, appID, version, endpoint)
-    }
-    func trainApp(httpVerb string, authoringKey string, appID string,  version string, endpoint string){
-
-        var authoringUrl = fmt.Sprintf("https://%s/luis/authoring/v3.0-preview/apps/%s/versions/%s/train", endpoint, appID, version)
-
-        httpRequest(httpVerb,authoringUrl, authoringKey, "")
-    }
-    func getTrainingStatus(authoringKey string, appID string, version string, endpoint string){
-
-        trainApp("GET", authoringKey, appID, version, endpoint)
-    }
-    // generic HTTP request
-    // includes setting header with authoring key
-    func httpRequest(httpVerb string, url string, authoringKey string, body string){
-
-        client := &http.Client{}
-
-        request, err := http.NewRequest(httpVerb, url, strings.NewReader(body))
-        request.Header.Add("Ocp-Apim-Subscription-Key", authoringKey)
-
-        fmt.Println("body")
-        fmt.Println(body)
-
-        response, err := client.Do(request)
-        if err != nil {
-            log.Fatal(err)
-        } else {
-            defer response.Body.Close()
-            contents, err := ioutil.ReadAll(response.Body)
-            if err != nil {
-                log.Fatal(err)
-            }
-            fmt.Println("   ", response.StatusCode)
-            fmt.Println(string(contents))
-        }
-    }
-    ```
-
-1. Vervang de waarden die beginnen `YOUR-` met met uw eigen waarden.
-
-    |Informatie|Doel|
+    |Informatie|Functie|
     |--|--|
-    |`YOUR-KEY`|De bewerkings sleutel voor uw 32-teken.|
-    |`YOUR-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `replace-with-your-resource-name.api.cognitive.microsoft.com`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
     |`YOUR-APP-ID`| De ID van uw LUIS-app. |
+    |`YOUR-AUTHORING-KEY`|De bewerkings sleutel voor uw 32-teken.|
+    |`YOUR-AUTHORING-ENDPOINT`| Het eind punt van de ontwerp-URL. Bijvoorbeeld `https://replace-with-your-resource-name.api.cognitive.microsoft.com/`. U stelt de naam van de resource in wanneer u de resource hebt gemaakt.|
 
     Toegewezen sleutels en resources zijn zichtbaar in de LUIS-Portal in de sectie beheren op de pagina **Azure-resources** . De App-ID is beschikbaar in hetzelfde gedeelte beheren op de pagina **Toepassings instellingen** .
 
@@ -156,6 +56,195 @@ ms.locfileid: "77368410"
 
     ```console
     go run model.go
+    ```
+
+1. Het ontwerp antwoord controleren:
+
+    ```console
+    add example utterances requested
+    body
+    [{'text': 'order a pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 12}]}, {'text': 'order a large pepperoni pizza', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 6, 'endCharIndex': 28}, {'entityName': 'PizzaType', 'startCharIndex': 14, 'endCharIndex': 28}, {'entityName': 'Size', 'startCharIndex': 8, 'endCharIndex': 12}]}, {'text': 'I want two large pepperoni pizzas on thin crust', 'intentName': 'ModifyOrder', 'entityLabels': [{'entityName': 'Order', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'FullPizzaWithModifiers', 'startCharIndex': 7, 'endCharIndex': 46}, {'entityName': 'PizzaType', 'startCharIndex': 17, 'endCharIndex': 32}, {'entityName': 'Size', 'startCharIndex': 11, 'endCharIndex': 15}, {'entityName': 'Quantity', 'startCharIndex': 7, 'endCharIndex': 9}, {'entityName': 'Crust', 'startCharIndex': 37, 'endCharIndex': 46}]}]
+        201
+    [{"value":{"ExampleId":1137150691,"UtteranceText":"order a pizza"},"hasError":false},{"value":{"ExampleId":1137150692,"UtteranceText":"order a large pepperoni pizza"},"hasError":false},{"value":{"ExampleId":1137150693,"UtteranceText":"i want two large pepperoni pizzas on thin crust"},"hasError":false}]
+    training selected
+    body
+
+        202
+    {"statusId":9,"status":"Queued"}
+    training status selected
+    body
+
+        200
+    [{"modelId":"edb46abf-0000-41ab-beb2-a41a0fe1630f","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"a5030be2-616c-4648-bf2f-380fa9417d37","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"e4b6704b-1636-474c-9459-fe9ccbeba51c","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"031d3777-2a00-4a7a-9323-9a3280a30000","details":{"statusId":9,"status":"Queued","exampleCount":0}},{"modelId":"9250e7a1-06eb-4413-9432-ae132ed32583","details":{"statusId":9,"status":"Queued","exampleCount":0}}]
+    ```
+
+    Dit is de uitvoer die is opgemaakt voor de Lees baarheid:
+
+    ```json
+    add example utterances requested
+    body
+    [
+      {
+        'text': 'order a pizza',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 6,
+            'endCharIndex': 12
+          }
+        ]
+      },
+      {
+        'text': 'order a large pepperoni pizza',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 6,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'FullPizzaWithModifiers',
+            'startCharIndex': 6,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'PizzaType',
+            'startCharIndex': 14,
+            'endCharIndex': 28
+          },
+          {
+            'entityName': 'Size',
+            'startCharIndex': 8,
+            'endCharIndex': 12
+          }
+        ]
+      },
+      {
+        'text': 'I want two large pepperoni pizzas on thin crust',
+        'intentName': 'ModifyOrder',
+        'entityLabels': [
+          {
+            'entityName': 'Order',
+            'startCharIndex': 7,
+            'endCharIndex': 46
+          },
+          {
+            'entityName': 'FullPizzaWithModifiers',
+            'startCharIndex': 7,
+            'endCharIndex': 46
+          },
+          {
+            'entityName': 'PizzaType',
+            'startCharIndex': 17,
+            'endCharIndex': 32
+          },
+          {
+            'entityName': 'Size',
+            'startCharIndex': 11,
+            'endCharIndex': 15
+          },
+          {
+            'entityName': 'Quantity',
+            'startCharIndex': 7,
+            'endCharIndex': 9
+          },
+          {
+            'entityName': 'Crust',
+            'startCharIndex': 37,
+            'endCharIndex': 46
+          }
+        ]
+      }
+    ]
+
+        201
+    [
+      {
+        "value": {
+          "ExampleId": 1137150691,
+          "UtteranceText": "order a pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150692,
+          "UtteranceText": "order a large pepperoni pizza"
+        },
+        "hasError": false
+      },
+      {
+        "value": {
+          "ExampleId": 1137150693,
+          "UtteranceText": "i want two large pepperoni pizzas on thin crust"
+        },
+        "hasError": false
+      }
+    ]
+    training selected
+    body
+
+        202
+    {
+      "statusId": 9,
+      "status": "Queued"
+    }
+    training status selected
+    body
+
+        200
+    [
+      {
+        "modelId": "edb46abf-0000-41ab-beb2-a41a0fe1630f",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "a5030be2-616c-4648-bf2f-380fa9417d37",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "3f2b1f31-a3c3-4fbd-8182-e9d9dbc120b9",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "e4b6704b-1636-474c-9459-fe9ccbeba51c",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "031d3777-2a00-4a7a-9323-9a3280a30000",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      },
+      {
+        "modelId": "9250e7a1-06eb-4413-9432-ae132ed32583",
+        "details": {
+          "statusId": 9,
+          "status": "Queued",
+          "exampleCount": 0
+        }
+      }
+    ]
     ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen

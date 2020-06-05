@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Meer informatie over de bekende beperkingen bij het uitvoeren van Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208003"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433005"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -57,6 +57,19 @@ Windows Server-knoop punten in AKS moeten worden *bijgewerkt* om de meest recent
 > [!NOTE]
 > De bijgewerkte installatie kopie van Windows Server wordt alleen gebruikt als er een upgrade van een cluster is uitgevoerd voordat de knooppunt groep werd geüpgraded
 >
+
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Waarom wordt er een fout bericht weer gegeven wanneer ik een nieuwe groep van Windows agent probeer te maken?
+
+Als u uw cluster hebt gemaakt vóór 2020 februari en nog nooit cluster upgrade bewerkingen hebt uitgevoerd, maakt het cluster toch gebruik van een oude Windows-installatie kopie. Mogelijk is er een fout melding weer gegeven die er ongeveer als volgt uitziet:
+
+De volgende lijst met installatie kopieën waarnaar wordt verwezen vanuit de implementatie sjabloon, is niet gevonden: Publisher: MicrosoftWindowsServer, offer: WindowsServer, SKU: 2019-Data Center-core-smalldisk-2004, version: Latest. Raadpleeg https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage voor instructies voor het zoeken naar beschik bare installatie kopieën.
+
+U kunt dit als volgt oplossen:
+
+1. Voer een upgrade uit voor het [cluster besturings vlak][upgrade-cluster-cp]. Hiermee worden de afbeeldings aanbieding en de uitgever bijgewerkt.
+1. Nieuwe Windows-agent groepen maken.
+1. Verplaats Windows-Peul van bestaande Windows-agent groepen naar nieuwe Windows-agent groepen.
+1. Oude groepen van Windows-agents verwijderen.
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hoe kan ik de service-principal voor mijn Windows-knooppunt groep draaien?
 
@@ -112,6 +125,8 @@ Om aan de slag te gaan met Windows Server-containers in AKS, [maakt u een knoopp
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909

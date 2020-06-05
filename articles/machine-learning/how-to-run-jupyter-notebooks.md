@@ -8,14 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
-ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220195"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433331"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jupyter-notebooks uitvoeren in uw werk ruimte (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Bekijk hoe u het volgende kunt doen:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
 * Een Machine Learning-werk ruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Notitie blokken maken

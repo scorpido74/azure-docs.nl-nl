@@ -3,24 +3,25 @@ title: Privé-IP-adressen voor Vm's configureren-Azure CLI
 description: Meer informatie over het configureren van privé-IP-adressen voor virtuele machines met behulp van de Azure-opdracht regel interface (CLI).
 services: virtual-network
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: asudbring
+manager: KumudD
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: kumud
-ms.openlocfilehash: f4643aae0b28861f4ddb99d8dace749e62f930b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: allensu
+ms.openlocfilehash: ae36701a9e00be2d51b4909755e17db75f983a53
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78199475"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417783"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Privé IP-adressen configureren voor een virtuele machine met behulp van de Azure CLI
 
@@ -38,38 +39,7 @@ Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een
 
 1. Als u dit nog niet hebt gedaan, installeert en configureert u de nieuwste [Azure cli](/cli/azure/install-azure-cli) en meldt u zich aan bij een Azure-account met behulp van [AZ login](/cli/azure/reference-index).
 
-2. Maak een openbaar IP-adres voor de virtuele machine met de opdracht [AZ Network Public-IP Create](/cli/azure/network/public-ip) . De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
-
-    > [!NOTE]
-    > U kunt in deze en de volgende stappen verschillende waarden voor uw argumenten gebruiken, afhankelijk van uw omgeving.
-
-    ```azurecli
-    az network public-ip create \
-    --name TestPIP \
-    --resource-group TestRG \
-    --location centralus \
-    --allocation-method Static
-    ```
-
-    Verwachte uitvoer:
-
-   ```json
-   {
-        "publicIp": {
-            "idleTimeoutInMinutes": 4,
-            "ipAddress": "52.176.43.167",
-            "provisioningState": "Succeeded",
-            "publicIPAllocationMethod": "Static",
-            "resourceGuid": "79e8baa3-33ce-466a-846c-37af3c721ce1"
-        }
-    }
-    ```
-
-   * `--resource-group`: De naam van de resource groep waarin het open bare IP-adres moet worden gemaakt.
-   * `--name`: De naam van het open bare IP-adres.
-   * `--location`: Azure-regio waarin het open bare IP-adres moet worden gemaakt.
-
-3. Voer de opdracht [AZ Network NIC Create](/cli/azure/network/nic) uit om een NIC met een statisch privé-IP-adres te maken. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters. 
+2. Voer de opdracht [AZ Network NIC Create](/cli/azure/network/nic) uit om een NIC met een statisch privé-IP-adres te maken. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters. 
    
     ```azurecli
     az network nic create \
@@ -121,7 +91,7 @@ Als u een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een
     * `--vnet-name`: De naam van het VNet waarin de NIC moet worden gemaakt.
     * `--subnet`: De naam van het subnet waarin de NIC moet worden gemaakt.
 
-4. Voer de opdracht [Azure VM Create](/cli/azure/vm/nic) uit om de virtuele machine te maken met behulp van de open bare IP en NIC die eerder zijn gemaakt. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
+3. Voer de opdracht [Azure VM Create](/cli/azure/vm/nic) uit om de virtuele machine te maken met behulp van de open bare IP en NIC die eerder zijn gemaakt. De lijst die na de uitvoer wordt weergegeven, beschrijft de gebruikte parameters.
    
     ```azurecli
     az vm create \

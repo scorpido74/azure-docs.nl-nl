@@ -4,14 +4,14 @@ description: In dit document worden de stappen beschreven die nodig zijn voor he
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 904b976b5e5c811912df9421dc64be1617b30b44
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366234"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431714"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
 
@@ -52,7 +52,7 @@ In de volgende secties wordt beschreven hoe u een service-eind punt voor een vir
 > Als u service-eind punten voor virtuele netwerken wilt inschakelen, hebt u de volgende abonnements machtigingen nodig:
 >   * Abonnement met virtueel netwerk: Inzender voor netwerken
 >   * Abonnement met Azure Cosmos DB account: Inzender van DocumentDB-account
->   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement `Microsoft.DocumentDB` dat een virtueel netwerk heeft, ook een resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) .
+>   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement dat een virtueel netwerk heeft, ook een `Microsoft.DocumentDB` resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Hier vindt u de instructies voor het registreren van een abonnement bij een resource provider.
 
@@ -202,7 +202,7 @@ az cosmosdb create \
 
 ### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Verbinding maken en configureren van een Cosmos-account op een back-end-subnet onafhankelijk
 
-Dit voor beeld is bedoeld om te laten zien hoe u een Azure Cosmos-account verbindt met een bestaand nieuw virtueel netwerk waar het subnet nog niet is geconfigureerd voor service-eind punten. Dit wordt gedaan met behulp `--ignore-missing-vnet-service-endpoint` van de para meter. Hierdoor kan de configuratie voor het Cosmos-account zonder fouten worden voltooid voordat de configuratie naar het subnet van het virtuele netwerk is voltooid. Zodra de configuratie van het subnet is voltooid, is het Cosmos-account toegankelijk via het geconfigureerde subnet.
+Dit voor beeld is bedoeld om te laten zien hoe u een Azure Cosmos-account verbindt met een bestaand nieuw virtueel netwerk waar het subnet nog niet is geconfigureerd voor service-eind punten. Dit wordt gedaan met behulp van de `--ignore-missing-vnet-service-endpoint` para meter. Hierdoor kan de configuratie voor het Cosmos-account zonder fouten worden voltooid voordat de configuratie naar het subnet van het virtuele netwerk is voltooid. Zodra de configuratie van het subnet is voltooid, is het Cosmos-account toegankelijk via het geconfigureerde subnet.
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>Poort bereik bij gebruik van directe modus
+
+Wanneer u service-eind punten gebruikt met een Azure Cosmos-account via een directe modus verbinding, moet u ervoor zorgen dat het TCP-poort bereik van 10000 tot 20000 is geopend.
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migreren van een IP-firewall regel naar een virtuele netwerk-ACL
 

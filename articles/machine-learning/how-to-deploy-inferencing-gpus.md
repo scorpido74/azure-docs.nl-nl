@@ -5,17 +5,17 @@ description: In dit artikel leert u hoe u Azure Machine Learning kunt gebruiken 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6442a5c4af5b9804456f0b4b9e78c8999249f25
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78398329"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433396"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Dit bestand heeft de `score.py`naam. Voor meer informatie over invoer scripts, Zie [hoe en waar u wilt implementeren](how-to-deploy-and-where.md).
+Dit bestand heeft de naam `score.py` . Voor meer informatie over invoer scripts, Zie [hoe en waar u wilt implementeren](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>De Conda-omgeving definiëren
 
-Het Conda-omgevings bestand bevat de afhankelijkheden voor de service. Het bevat afhankelijkheden die worden vereist door het model en het script. Houd er rekening mee dat u de standaard waarden van azureml-defaults met versie >= 1.0.45 als een PIP-afhankelijkheid moet aangeven, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten. De volgende YAML definieert de omgeving voor een tensor flow-model. Hiermee wordt `tensorflow-gpu`opgegeven, waarmee gebruik wordt gemaakt van de GPU die in deze implementatie wordt gebruikt:
+Het Conda-omgevings bestand bevat de afhankelijkheden voor de service. Het bevat afhankelijkheden die worden vereist door het model en het script. Houd er rekening mee dat u de standaard waarden van azureml-defaults met versie >= 1.0.45 als een PIP-afhankelijkheid moet aangeven, omdat deze de functionaliteit bevat die nodig is om het model als een webservice te hosten. De volgende YAML definieert de omgeving voor een tensor flow-model. Hiermee wordt opgegeven `tensorflow-gpu` , waarmee gebruik wordt gemaakt van de GPU die in deze implementatie wordt gebruikt:
 
 ```yaml
 name: project_environment
@@ -157,7 +157,7 @@ channels:
 - conda-forge
 ```
 
-In dit voor beeld wordt het bestand opgeslagen als `myenv.yml`.
+In dit voor beeld wordt het bestand opgeslagen als `myenv.yml` .
 
 ## <a name="define-the-deployment-configuration"></a>De implementatie configuratie definiëren
 
@@ -214,7 +214,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Als het `InferenceConfig` object heeft `enable_gpu=True`, moet de `deployment_target` para meter verwijzen naar een cluster dat een GPU biedt. Anders mislukt de implementatie.
+> Als het `InferenceConfig` object heeft `enable_gpu=True` , moet de `deployment_target` para meter verwijzen naar een cluster dat een GPU biedt. Anders mislukt de implementatie.
 
 Zie de referentie documentatie voor [model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py)voor meer informatie.
 

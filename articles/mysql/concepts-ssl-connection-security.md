@@ -1,19 +1,19 @@
 ---
-title: SSL-connectiviteit-Azure Database for MySQL
+title: SSL/TLS-connectiviteit-Azure Database for MySQL
 description: Informatie voor het configureren van Azure Database for MySQL en de bijbehorende toepassingen voor een juiste gebruik van SSL-verbindingen
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.openlocfilehash: 6a12ef851823ab5eff2b11905d05be1950c82ef0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 2421f8a9396b47d04db35a7cad843f6baa6f6177
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474268"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416100"
 ---
-# <a name="ssl-connectivity-in-azure-database-for-mysql"></a>SSL-connectiviteit in Azure Database for MySQL
+# <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>SSL/TLS-connectiviteit in Azure Database for MySQL
 
 Azure Database for MySQL ondersteunt het verbinden van uw database server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
@@ -27,6 +27,33 @@ Verbindings reeksen voor verschillende programmeer talen worden weer gegeven in 
 
 Zie [SSL configureren](howto-configure-ssl.md)voor meer informatie over het in-of uitschakelen van SSL-verbinding tijdens het ontwikkelen van een toepassing.
 
+## <a name="tls-enforcement-in-azure-database-for-mysql"></a>TLS-afdwinging in Azure Database for MySQL
+
+Azure Database for MySQL ondersteunt versleuteling voor clients die verbinding maken met uw database server met behulp van Transport Layer Security (TLS). TLS is een industrie standaard protocol dat beveiligde netwerk verbindingen tussen uw database server-en client toepassingen waarborgt, zodat u kunt voldoen aan de nalevings vereisten.
+
+### <a name="tls-settings"></a>TLS-instellingen
+
+Azure Database for MySQL biedt de mogelijkheid om de TLS-versie voor de client verbindingen af te dwingen. Als u de TLS-versie wilt afdwingen, gebruikt u de instelling **minimale TLS-versie** optie. De volgende waarden zijn toegestaan voor deze optie-instelling:
+
+|  Minimale TLS-instelling             | TLS-versie van client wordt ondersteund                |
+|:---------------------------------|-------------------------------------:|
+| TLSEnforcementDisabled (standaard) | Geen TLS vereist                      |
+| TLS1_0                           | TLS 1,0, TLS 1,1, TLS 1,2 en hoger           |
+| TLS1_1                           | TLS 1,1, TLS 1,2 en hoger                   |
+| TLS1_2                           | TLS-versie 1,2 en hoger                     |
+
+
+Als u bijvoorbeeld de waarde van de minimum versie van TLS-instelling instelt op TLS 1,0, betekent dit dat uw server verbindingen toestaat van clients die gebruikmaken van TLS 1,0, 1,1 en 1.2 +. U kunt dit ook instellen op 1,2 zodat u alleen verbindingen van clients met TLS 1.2 + kunt toestaan en alle verbindingen met TLS 1,0 en TLS 1,1 worden geweigerd.
+
+> [!Note] 
+> Azure Database for MySQL wordt standaard ingesteld op TLS uitgeschakeld voor alle nieuwe servers.
+>
+> Momenteel worden de TLS-versies ondersteund door Azure Database for MySQL TLS 1,0, 1,1 en 1,2. Wanneer het beleid is afgedwongen voor een specifieke minimale TLS-versie, kunt u deze niet wijzigen in uitgeschakeld.
+
+Zie [TLS-instelling configureren](howto-tls-configurations.md)voor meer informatie over het instellen van de TLS-instelling voor uw Azure database for MySQL.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-[Verbindings bibliotheken voor Azure Database for MySQL](concepts-connection-libraries.md)
+- [Verbindings bibliotheken voor Azure Database for MySQL](concepts-connection-libraries.md)
+- Meer informatie over het [configureren van SSL](howto-configure-ssl.md)
+- Meer informatie over het [configureren van TLS](howto-tls-configurations.md)
