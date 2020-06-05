@@ -1,5 +1,5 @@
 ---
-title: Problemen met Azure Virtual Network NAT-verbinding oplossen
+title: Problemen met Azure Virtual Network NAT-verbindingen oplossen
 titleSuffix: Azure Virtual Network
 description: Problemen met Virtual Network NAT oplossen.
 services: virtual-network
@@ -12,181 +12,194 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/28/2020
+ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 7723e74b9617d5e8d56dd3c3e46145c4945ca21f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508425"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698090"
 ---
-# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problemen met Azure Virtual Network NAT-verbinding oplossen
+# <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problemen met Azure Virtual Network NAT-verbindingen oplossen
 
-Dit artikel helpt beheerders bij het vaststellen en oplossen van verbindings problemen bij het gebruik van Virtual Network NAT.
+Dit artikel biedt ondersteuning voor beheerders bij het vaststellen en oplossen van verbindingsproblemen bij het gebruik van Virtual Network NAT.
 
-## <a name="problems"></a>Treden
+## <a name="problems"></a>Problemen
 
 * [SNAT-uitputting](#snat-exhaustion)
-* [ICMP-ping is mislukt](#icmp-ping-is-failing)
-* [Connectiviteits fouten](#connectivity-failures)
-* [IPv6-samen werking](#ipv6-coexistence)
+* [ICMP-ping mislukt](#icmp-ping-is-failing)
+* [Verbindingsfouten](#connectivity-failures)
+* [Gelijktijdig gebruik van IPv6 en IPv4](#ipv6-coexistence)
+* [De verbinding is niet afkomstig van een IP-adres of IP-adressen van een NAT-gateway](#connection-doesnt-originate-from-nat-gateway-ips)
 
-Volg de stappen in de volgende sectie om deze problemen op te lossen.
+Voer de stappen in de volgende sectie uit om deze problemen op te lossen.
 
 ## <a name="resolution"></a>Oplossing
 
 ### <a name="snat-exhaustion"></a>SNAT-uitputting
 
-Eén [NAT-gateway resource](nat-gateway-resource.md) ondersteunt van 64.000 tot 1.000.000 gelijktijdige stromen.  Elk IP-adres levert een 64.000 SNAT-poort aan de beschik bare inventaris. U kunt Maxi maal 16 IP-adressen per NAT-gateway Resource gebruiken.  Het SNAT-mechanisme wordt [hier](nat-gateway-resource.md#source-network-address-translation) uitgebreid beschreven.
+Eén [NAT-gatewayresource](nat-gateway-resource.md) ondersteunt tussen 64.000 en 1.000.000 gelijktijdige stromen.  Elk IP-adres levert 64.000 SNAT-poorten aan de beschikbare voorraad. U kunt maximaal 16 IP-adressen per NAT-gatewayresource gebruiken.  De SNAT-methode wordt [hier](nat-gateway-resource.md#source-network-address-translation) nader beschreven.
 
-De belangrijkste oorzaak van de SNAT-uitputting is vaak een anti patroon voor de manier waarop uitgaande connectiviteit tot stand is gebracht, beheerde of configureer bare timers zijn gewijzigd ten opzichte van hun standaard waarden.  Lees deze sectie aandachtig.
+De belangrijkste oorzaak van SNAT-uitputting is vaak een antipatroon voor de manier waarop uitgaande verbindingen tot stand worden gebracht, worden beheerd of de standaardwaarden van configureerbare timers worden gewijzigd.  Lees deze sectie aandachtig.
 
 #### <a name="steps"></a>Stappen
 
-1. Controleer of u de standaard time-out voor inactiviteit hebt gewijzigd in een waarde die hoger is dan 4 minuten.
-2. Onderzoek hoe uw toepassing uitgaande connectiviteit maakt (bijvoorbeeld code controle of pakket opname). 
-3. Bepaal of deze activiteit verwacht gedrag is of of de toepassing niet goed werkt.  Gebruik [metrische gegevens](nat-metrics.md) in azure monitor om uw bevindingen te staven. Gebruik de categorie ' mislukt ' voor de metrische gegevens voor de SNAT-verbinding.
-4. Evalueren of de juiste patronen worden gevolgd.
-5. Evalueren of de SNAT-poort uitputting moet worden verminderd met extra IP-adressen die zijn toegewezen aan de NAT gateway-resource.
+1. Controleer of u de standaardinstelling voor de time-out voor inactiviteit hebt gewijzigd in een waarde die hoger is dan 4 minuten.
+2. Ga na hoe uw app uitgaande verbindingen maakt (bijvoorbeeld door het bekijken van de code of door pakketregistratie). 
+3. Bepaal of deze activiteit verwacht gedrag vertoont of dat de app niet goed werkt.  Gebruik [metrische gegevens](nat-metrics.md) in Azure Monitor om uw bevindingen te onderbouwen. Gebruik de categorie Mislukt voor de metrische gegevens voor SNAT-verbindingen.
+4. Evalueer of de juiste patronen worden gevolgd.
+5. Evalueer of uitputting van de SNAT-poort moet worden opgelost met extra IP-adressen die aan de NAT-gatewayresource worden toegewezen.
 
 #### <a name="design-patterns"></a>Ontwerppatronen
 
-Maak waar mogelijk altijd gebruik van verbindings hergebruik en verbindings Pools.  Deze patronen voor komen problemen met bron uitputting en leiden tot voorspelbaar gedrag. Primitieven voor deze patronen vindt u in veel ontwikkel bibliotheken en frameworks.
+Gebruik waar mogelijk verbindingen opnieuw en maak gebruik van verbindingspools.  Deze patronen voorkomen dat resources worden uitgeput en leiden tot voorspelbaar gedrag. Primitieven voor deze patronen vindt u in veel ontwikkelbibliotheken en frameworks.
 
-_**Oplossing:**_ Gebruik geschikte patronen en aanbevolen procedures
+_**Oplossing:**_ Gebruik geschikte patronen en volg aanbevolen procedures
 
-- NAT gateway-resources hebben een standaard-time-out voor TCP-inactiviteit van 4 minuten.  Als deze instelling wordt gewijzigd in een hogere waarde, houdt NAT over naar stromen en kan dit leiden tot [overbodige druk op de SNAT-poort inventaris](nat-gateway-resource.md#timers).
-- Atomische aanvragen (één aanvraag per verbinding) zijn een slecht ontwerp keuze. Dergelijke Anti-patroon limieten schalen, verminderen de prestaties en verminderen de betrouw baarheid. Gebruik in plaats daarvan HTTP/S-verbindingen om het aantal verbindingen en de bijbehorende SNAT-poorten te verminderen. De schaal van de toepassing neemt toe en verbetert de prestaties als gevolg van lagere Handshakes, overhead en cryptografische bewerkings kosten bij gebruik van TLS.
-- DNS kan veel afzonderlijke stromen op het volume introduceren wanneer de client het resultaat van de DNS-resolver niet in de cache opslaat. Gebruik caching.
-- UDP-stromen (bijvoorbeeld DNS-zoek acties) wijzen SNAT-poorten toe voor de duur van de time-out voor inactiviteit. Hoe langer de time-out voor inactiviteit, hoe hoger de druk op de SNAT-poorten. Gebruik korte time-out voor inactiviteit (bijvoorbeeld 4 minuten).
-- Gebruik verbindings Pools om uw verbindings volume te vorm geven.
-- Verstrek nooit een TCP-stroom en vertrouw op TCP-timers om de stroom op te schonen. Als u TCP de verbinding niet expliciet laat sluiten, blijft de status toegewezen bij tussenliggende systemen en eind punten en worden er geen SNAT-poorten beschikbaar voor andere verbindingen. Hierdoor kunnen toepassings fouten en SNAT-uitputting worden geactiveerd. 
-- Wijzig TCP close-gerelateerde timer waarden op besturingssysteem niveau niet zonder kennis van impact. Terwijl de TCP-stack wordt hersteld, kunnen de prestaties van uw toepassing negatief worden beïnvloed wanneer de eind punten van een verbinding niet overeenkomen met de verwachtingen. De wensen voor het wijzigen van timers zijn doorgaans een teken van een onderliggend ontwerp probleem. Bekijk de volgende aanbevelingen.
+- NAT-gatewayresources hebben een standaardtime-out voor TCP-inactiviteit van 4 minuten.  Als deze instelling wordt gewijzigd in een hogere waarde, houdt NAT stromen langer vast en kan dit leiden tot [overbodige druk op de beschikbare SNAT-poorten](nat-gateway-resource.md#timers).
+- Atomische aanvragen (één aanvraag per verbinding) zijn een slechte ontwerpkeuze. Een dergelijk antipatroon beperkt de schaal, verlaagt de prestaties en vermindert de betrouwbaarheid. Hergebruik in plaats daarvan HTTP/S-verbindingen om het aantal verbindingen en de bijbehorende SNAT-poorten te verminderen. De schaal van de app wordt vergroot en de prestaties worden verbeterd als gevolg van minder handshakes, overhead en lagere kosten voor cryptografische bewerkingen wanneer gebruik wordt gemaakt van TLS.
+- DNS kan veel afzonderlijke grote stromen verwerken wanneer de client het resultaat van de DNS-omzetters niet in de cache opslaat. Gebruik cacheopslag.
+- UDP-stromen (bijvoorbeeld DNS-zoekacties) wijzen SNAT-poorten toe voor de duur van de time-out voor inactiviteit. Hoe langer de time-out voor inactiviteit, hoe hoger de druk op de SNAT-poorten. Gebruik een korte duur voor de time-out voor inactiviteit (bijvoorbeeld 4 minuten).
+- Gebruik verbindingspools om vorm te geven aan het volume van uw verbindingen.
+- Verlaat nooit zo maar een TCP-stroom en maak gebruik van TCP-timers om de stroom op te schonen. Als u de verbinding niet expliciet door TCP laat sluiten, blijft de status op Toegewezen staan bij tussenliggende systemen en eindpunten en zijn er geen SNAT-poorten beschikbaar voor andere verbindingen. Dit patroon kan fouten in de app en SNAT-uitputting veroorzaken. 
+- Wijzig timerwaarden voor het sluiten door TCP op besturingssysteemniveau alleen als u uitgebreide kennis hebt van de gevolgen hiervan. De TCP-stack wordt hersteld, maar de prestaties van uw app kunnen negatief worden beïnvloed wanneer de eindpunten van een verbinding niet-overeenkomende verwachtingen hebben. De wens om timers te wijzigen, is doorgaans een gevolg van een onderliggend ontwerpprobleem. Bestudeer de volgende aanbevelingen.
 
-Vaak is het mogelijk dat SNAT-uitputting ook kan worden versterkt met andere anti-patronen in de onderliggende toepassing. Bekijk deze aanvullende patronen en aanbevolen procedures voor het verbeteren van de schaal en betrouw baarheid van uw service.
+De SNAT-uitputting kan ook worden versterkt door andere antipatronen in de onderliggende app. Bekijk deze aanvullende patronen en aanbevolen procedures om de schaal en betrouwbaarheid van uw service te verbeteren.
 
-- Ontdek de gevolgen van het verminderen van de [time-out voor inactiviteit van TCP](nat-gateway-resource.md#timers) naar lagere waarden, inclusief de standaard time-out voor inactiviteit van 4 minuten om eerdere SNAT-poort inventaris vrij
-- Denk aan [asynchrone polling-patronen](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) voor langlopende bewerkingen om verbindings bronnen vrij te maken voor andere bewerkingen.
-- Lange levens stromen (bijvoorbeeld hergebruikte TCP-verbindingen) moeten TCP-keepalives of keepalives van de toepassingslaag gebruiken om time-out van tussenliggende systemen te voor komen. Het verg Roten van de time-out voor inactiviteit is een laatste redmiddel en kan de hoofd oorzaak mogelijk niet oplossen. Een lange time-out kan problemen met lage frequentie veroorzaken wanneer de time-out is verlopen en vertragings-en overbodige storingen veroorzaken.
-- Geslaagde [patronen voor opnieuw proberen](https://docs.microsoft.com/azure/architecture/patterns/retry) moeten worden gebruikt om agressieve pogingen/bursts te voor komen tijdens tijdelijke storingen of herstel na storingen.
-Het maken van een nieuwe TCP-verbinding voor elke HTTP-bewerking (ook wel ' atomische verbindingen ' genoemd) is een anti-patroon.  Met atomische verbindingen wordt voor komen dat uw toepassing goed kan worden geschaald en verspilt resources.  Meerdere bewerkingen in een pijp lijn altijd in dezelfde verbinding.  Uw toepassing zal profiteren van de transactie snelheid en resource kosten.  Als uw toepassing gebruikmaakt van trans port Layer encryption (bijvoorbeeld TLS), zijn er aanzienlijke kosten verbonden aan de verwerking van nieuwe verbindingen.  Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) voor aanvullende best practice patronen.
+- Ontdek de gevolgen van het verminderen van [TCP-time-out voor inactiviteit](nat-gateway-resource.md#timers) naar lagere waarden, waaronder de standaardtime-out voor inactiviteit van 4 minuten om eerder beschikbare SNAT-poorten vrij te maken.
+- U kunt [asynchrone pollingpatronen](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) voor langdurige bewerkingen overwegen om verbindingsresources voor andere bewerkingen vrij te maken.
+- Stromen met een lange levensduur (bijvoorbeeld hergebruikte TCP-verbindingen) moeten gebruikmaken van TCP-keepalives of toepassingslaag-keepalives om een time-out voor tussenliggende systemen te voorkomen. De duur van de time-out voor inactiviteit verlengen, is een laatste redmiddel en lost de hoofdoorzaak mogelijk niet op. Een lange time-outduur kan fouten veroorzaken wanneer de time-out is verlopen en vertraging en overbodige storingen veroorzaken.
+- Er moeten goede [patronen voor nieuwe pogingen](https://docs.microsoft.com/azure/architecture/patterns/retry) worden gebruikt om agressieve nieuwe pogingen/bursts te voorkomen tijdens een tijdelijke storing of herstel na storingen.
+Het maken van een nieuwe TCP-verbinding voor elke HTTP-bewerking (ook wel atomische verbindingen genoemd) is een antipatroon.  Atomische verbindingen voorkomen dat uw toepassing goed wordt geschaald en zorgen voor verspilling van resources.  Voeg altijd meerdere bewerkingen samen in een pijplijn in dezelfde verbinding.  Uw app zal er voordeel bij hebben qua transactiesnelheid en resourcekosten.  Als uw app gebruikmaakt van transportlaagversleuteling (bijvoorbeeld TLS), zijn er aanzienlijke kosten verbonden aan de verwerking van nieuwe verbindingen.  Bekijk [Azure-cloudontwerppatronen](https://docs.microsoft.com/azure/architecture/patterns/) voor aanvullende aanbevolen patronen.
 
-#### <a name="additional-possible-mitigations"></a>Aanvullende mogelijke oplossingen
+#### <a name="additional-possible-mitigations"></a>Andere mogelijke oplossingen
 
-_**Oplossing:**_ Schaal de uitgaande verbinding als volgt:
+_**Oplossing:**_ U kunt uitgaande verbindingen als volgt schalen:
 
-| Scenario | Voorgelegd |Oplossing |
+| Scenario | Bewijs |Oplossing |
 |---|---|---|
-| U ondervindt conflicten voor SNAT-poorten en SNAT-poort uitputting tijdens peri Oden met een hoog gebruik. | De categorie ' mislukt ' voor de [Azure monitor van de SNAT-verbindingen bevat](nat-metrics.md) tijdelijke of permanente storingen in de loop van de tijd en het hoge verbindings volume.  | Bepaal of u meer open bare IP-adres bronnen of open bare IP-prefix bronnen kunt toevoegen. Met deze toevoeging kunnen Maxi maal 16 IP-adressen in totaal naar uw NAT-gateway worden toegevoegd. Deze toevoeging biedt meer inventarisatie voor de beschik bare SNAT-poorten (64.000 per IP-adres) en stelt u in staat om uw scenario verder te schalen.|
-| U hebt al 16 IP-adressen opgegeven en er is nog steeds een SNAT-poort uitgeput. | Poging om extra IP-adres toe te voegen is mislukt. Het totale aantal IP-adressen van open bare IP-adres bronnen of open bare IP-voor voegsel resources overschrijdt het totaal van 16. | Distribueer uw toepassings omgeving over meerdere subnetten en geef een NAT-gateway bron op voor elk subnet.  Evalueer uw ontwerp patroon (en) opnieuw om te optimaliseren op basis van voor gaande [richt lijnen](#design-patterns). |
+| Er treden conflicten op voor SNAT-poorten en er is sprake van uitputting van SNAT-poorten tijdens perioden van veel gebruik. | In de categorie Mislukt voor de [metrische gegevens](nat-metrics.md) voor SNAT-verbindingen in Azure Monitor worden na verloop van tijd tijdelijke of permanente fouten en een grote hoeveelheid verbindingen vermeld.  | Bepaal of u extra openbare IP-adressen of openbare IP-voorvoegsels kunt toevoegen. In totaal kunnen maximaal 16 IP-adressen aan uw NAT-gateway worden toegevoegd. Met deze toevoeging beschikt u over meer beschikbare SNAT-poorten (64.000 per IP-adres) en kunt u uw scenario verder opschalen.|
+| U hebt al zestien IP-adressen opgegeven en er is nog steeds sprake van uitputting van SNAT-poorten. | Er kunnen geen aanvullende IP-adressen worden toegevoegd. Het totale aantal IP-adressen van resources voor openbare IP-adressen of resources voor openbare IP-voorvoegsels overschrijdt het totaal van zestien. | Verdeel uw toepassingsomgeving over meerdere subnetten en geef een NAT-gatewayresource op voor elk subnet.  Evalueer uw ontwerppatronen opnieuw om deze te optimaliseren op basis van de voorafgaande [richtlijnen](#design-patterns). |
 
 >[!NOTE]
->Het is belang rijk om te begrijpen waarom de uitputting van de SNAT optreedt. Zorg ervoor dat u de juiste patronen gebruikt voor schaal bare en betrouw bare scenario's.  Het toevoegen van meer SNAT-poorten aan een scenario zonder dat de oorzaak van de vraag een laatste redmiddel moet zijn. Als u geen inzicht krijgt in waarom uw scenario druk op de SNAT-poort inventariseert, kunt u meer SNAT-poorten toevoegen aan de inventaris door meer IP-adressen toe te voegen, waardoor er slechts één uitputtings fout optreedt wanneer uw toepassing wordt geschaald.  U kunt andere inefficiënties en anti-patronen maskeren.
+>Het is belangrijk om te weten waarom SNAT-uitputting optreedt. Zorg ervoor dat u de juiste patronen voor schaalbare en betrouwbare scenario's gebruikt.  Het toevoegen van meer SNAT-poorten aan een scenario zonder dat de oorzaak van de vraag bekend is, is een laatste redmiddel. Als u niet weet waarom uw scenario een grote belasting vormt voor de beschikbare SNAT-poorten, zal het toevoegen van meer beschikbare SNAT-poorten door het toevoegen van meer IP-adressen dezelfde storing door uitputting alleen vertragen wanneer uw app wordt opgeschaald.  Het kan andere inefficiënties en antipatronen maskeren.
 
-### <a name="icmp-ping-is-failing"></a>ICMP-ping is mislukt
+### <a name="icmp-ping-is-failing"></a>ICMP-ping mislukt
 
-[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP-en TCP-protocollen. ICMP wordt niet ondersteund en wordt naar verwachting mislukt.  
+[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP- en TCP-protocollen. ICMP wordt niet ondersteund en werkt niet.  
 
-_**Oplossing:**_ Gebruik in plaats daarvan TCP-verbindings tests (bijvoorbeeld ' TCP ping ') en UDP-specifieke Application Layer-tests om end-to-end-verbindingen te valideren.
+_**Oplossing:**_ Gebruik in plaats daarvan TCP-verbindingstests (bijvoorbeeld 'TCP-ping') en UDP-toepassingslaagtests om end-to-end-verbindingen te valideren.
 
-De volgende tabel kan worden gebruikt als uitgangs punt voor de hulpprogram ma's die u wilt gebruiken om tests te starten.
+De volgende tabel kan als uitgangspunt dienen, als u een hulpprogramma wilt kiezen voor het starten van tests.
 
-| Besturingssysteem | Algemene TCP-verbindings test | Test van de TCP-toepassingslaag | UDP |
+| Besturingssysteem | Algemene TCP-verbindingstest | TCP-toepassingslaagtest | UDP |
 |---|---|---|---|
-| Linux | NC (algemene verbindings test) | krul (test voor TCP-toepassingslaag) | toepassingsspecifieke |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | Power shell [invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | toepassingsspecifieke |
+| Linux | nc (algemene TCP-verbindingstest) | curl (TCP-toepassingslaagtest) | appspecifiek |
+| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | appspecifiek |
 
-### <a name="connectivity-failures"></a>Connectiviteits fouten
+### <a name="connectivity-failures"></a>Verbindingsfouten
 
-Verbindings problemen met [Virtual Network NAT](nat-overview.md) kunnen worden veroorzaakt door verschillende problemen:
+Verbindingsproblemen met [Virtual Network NAT](nat-overview.md) kunnen verschillende oorzaken hebben:
 
-* permanente fouten vanwege configuratie fouten.
+* permanente fouten als gevolg van configuratiefouten.
 * tijdelijke of permanente [SNAT-uitputting](#snat-exhaustion) van de NAT-gateway,
-* tijdelijke fouten in de Azure-infra structuur, 
-* tijdelijke fouten in het pad tussen Azure en de open bare Internet bestemming 
-* tijdelijke of blijvende storingen op de open bare Internet bestemming.
+* tijdelijke fouten in de Azure-infrastructuur, 
+* tijdelijke fouten in het pad tussen Azure en de openbare internetbestemming, 
+* tijdelijke of permanente fouten op de openbare internetbestemming.
 
-Gebruik hulpprogram ma's zoals het volgende voor het valideren van de verbinding. [ICMP ping wordt niet ondersteund](#icmp-ping-is-failing).
+Gebruik de volgende hulpprogramma's voor het valideren van de verbinding. [ICMP-ping wordt niet ondersteund](#icmp-ping-is-failing).
 
-| Besturingssysteem | Algemene TCP-verbindings test | Test van de TCP-toepassingslaag | UDP |
+| Besturingssysteem | Algemene TCP-verbindingstest | TCP-toepassingslaagtest | UDP |
 |---|---|---|---|
-| Linux | NC (algemene verbindings test) | krul (test voor TCP-toepassingslaag) | toepassingsspecifieke |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | Power shell [invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | toepassingsspecifieke |
+| Linux | nc (algemene TCP-verbindingstest) | curl (TCP-toepassingslaagtest) | appspecifiek |
+| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | appspecifiek |
 
 #### <a name="configuration"></a>Configuratie
 
-Controleer het volgende:
-1. Heeft de NAT-gateway bron ten minste één open bare IP-bron of een open bare IP-prefix resource? Er moet ten minste één IP-adres zijn gekoppeld aan de NAT-gateway om uitgaande connectiviteit mogelijk te maken.
-2. Is het subnet van het virtuele netwerk geconfigureerd voor het gebruik van de NAT-gateway?
-3. Gebruikt u UDR (door de gebruiker gedefinieerde route) en wordt de bestemming overschreven?  NAT-gateway bronnen worden de standaard route (0/0) op geconfigureerde subnetten.
+Controleer uw configuratie:
+1. Heeft de NAT gateway-resource ten minste één resource met openbaar IP of openbaar IP-voorvoegsel? Er moet ten minste één IP-adres zijn gekoppeld aan de NAT-gateway om uitgaande connectiviteit mogelijk te maken.
+2. Is het subnet van het virtuele netwerk zo geconfigureerd dat de NAT-gateway wordt gebruikt?
+3. Gebruikt u UDR (door de gebruiker gedefinieerde route) en overschrijft u de bestemming?  NAT-gatewayresources worden de standaardroute (0/0) in geconfigureerde subnetten.
 
 #### <a name="snat-exhaustion"></a>SNAT-uitputting
 
-Raadpleeg de sectie over de [SNAT-uitputting](#snat-exhaustion) in dit artikel.
+Raadpleeg de sectie over [SNAT-uitputting](#snat-exhaustion) in dit artikel.
 
 #### <a name="azure-infrastructure"></a>Azure-infrastructuur
 
-Azure bewaakt de infra structuur en werkt deze met geweldige zorg. Tijdelijke fouten kunnen optreden, er is geen garantie dat de verzen ding zonder verlies is.  Gebruik ontwerp patronen waarmee SYN-herverzendingen voor TCP-toepassingen worden toegestaan. Gebruik verbindingstime-outs groot genoeg om het opnieuw verzenden van TCP SYN toe te staan om tijdelijke gevolgen te beperken die worden veroorzaakt door een verloren SYN-pakket.
+Azure controleert en gebruikt de infrastructuur met grote zorg. Tijdelijke fouten kunnen plaatsvinden en er is geen garantie dat er bij de verzending helemaal geen gegevens verloren gaan.  Gebruik ontwerppatronen waarbij SYN-herverzendingen voor TCP-apps worden toegestaan. Gebruik verbindingstime-outs die lang genoeg zijn zodat TCP SYN-herverzendingen tijdelijke gevolgen kunnen beperken die worden veroorzaakt door een verloren SYN-pakket.
 
-_**Oplossen**_
+_**Oplossing:**_
 
 * Controleer op [SNAT-uitputting](#snat-exhaustion).
-* De configuratie parameter in een TCP-stack waarmee het gedrag van SYN-verzen ding wordt beheerd, wordt RTO ([time-out voor herverzending](https://tools.ietf.org/html/rfc793)) genoemd. De RTO-waarde is aanpasbaar maar meestal 1 seconde of hoger, standaard met exponentiële back-out.  Als de verbindingstime-out van uw toepassing te kort is (bijvoorbeeld 1 seconde), ziet u mogelijk sporadische verbindingstime-outs.  Verhoog de time-out voor de verbinding van de toepassing.
-* Als u meer wilt weten, onverwachte time-outs met standaard gedrag van toepassingen, opent u een ondersteunings aanvraag voor verdere probleem oplossing.
+* De configuratieparameter in een TCP-stack waarmee het gedrag van SYN-herverzendingen wordt beheerd, wordt RTO ([Retransmission Time-Out of time-out voor het opnieuw verzenden van gegevens](https://tools.ietf.org/html/rfc793)) genoemd. De RTO-waarde is aanpasbaar maar doorgaans standaard 1 seconde of langer met exponentieel uitstel.  Als de verbindingstime-out van uw app te kort is (bijvoorbeeld 1 seconde), treden er mogelijk sporadische verbindingstime-outs op.  Verhoog de waarde voor de verbindingstime-out van de app.
+* Als er langere, onverwachte time-outs optreden bij standaardgedrag van apps, opent u een ondersteuningsaanvraag voor verdere probleemoplossing.
 
-Het wordt niet aanbevolen om de time-out van de TCP-verbinding kunst matig te verlagen of de para meter RTO af te stemmen.
+Het wordt niet aanbevolen om de waarde voor de time-out van de TCP-verbinding kunstmatig te verlagen of de RTO-parameter af te stemmen.
 
-#### <a name="public-internet-transit"></a>Openbaar Internet doorvoer
+#### <a name="public-internet-transit"></a>Verzending van gegevens via openbaar internet
 
-De kans op tijdelijke fouten neemt toe met een langer pad naar het doel en meer tussenliggende systemen. Er wordt verwacht dat tijdelijke fouten de frequentie van Azure- [infra structuur](#azure-infrastructure)kunnen verhogen. 
+De kans op tijdelijke fouten neemt toe bij een langer pad naar de bestemming en meer tussenliggende systemen. Naar verwachting kunnen tijdelijke fouten in toenemende mate optreden via de [Azure-infrastructuur](#azure-infrastructure). 
 
-Volg dezelfde richt lijnen als voor gaande [Azure-infrastructuur](#azure-infrastructure) sectie.
+Volg de richtlijnen die in de voorafgaande sectie over de [Azure-infrastructuur](#azure-infrastructure) worden beschreven.
 
-#### <a name="internet-endpoint"></a>Internet-eind punt
+#### <a name="internet-endpoint"></a>Interneteindpunt
 
-De vorige secties zijn van toepassing, samen met het Internet-eind punt waarmee communicatie tot stand is gebracht. Andere factoren die invloed kunnen hebben op succes van de verbinding zijn:
+De vorige secties zijn van toepassing, evenals het interneteindpunt waarmee communicatie tot stand wordt gebracht. Andere factoren die van invloed kunnen zijn op de totstandkoming van de verbinding zijn:
 
-* verkeers beheer aan de kant van de bestemming, inclusief
-- Beperking van API-frequentie die is opgelegd door de doel zijde
-- Volumetrische DDoS-oplossingen of trans port Layer Traffic Shaping
-* firewall of andere onderdelen op het doel 
+* verkeersbeheer aan bestemmingszijde, waaronder
+- Beperking van de API-snelheid die is opgelegd door de bestemmingszijde
+- Het tegengaan van grootschalige DDoS-aanvallen of transportlaagverkeersvorming
+* firewall of andere onderdelen op de bestemming 
 
-Doorgaans worden pakket opnames bij de bron en de bestemming (indien beschikbaar) vereist om te bepalen wat er gebeurt.
+Doorgaans zijn pakketregistraties bij de bron en de bestemming (indien beschikbaar) vereist om te bepalen wat er gaande is.
 
-_**Oplossen**_
+_**Oplossing:**_
 
 * Controleer op [SNAT-uitputting](#snat-exhaustion). 
-* Valideer de verbinding met een eind punt in dezelfde regio of elders ter vergelijking.  
-* Als u een hoog volume-of transactie verwerkings tempo maakt, moet u verkennen als het aantal fouten vermindert door te verminderen.
-* Als het wijzigen van de frequentie invloed heeft op de frequentie van fouten, controleert u of de API-frequentie limieten of andere beperkingen voor de doel zijde mogelijk zijn bereikt.
-* Als uw onderzoek onduidelijk is, opent u een ondersteunings aanvraag voor verdere probleem oplossing.
+* Valideer ter vergelijking de verbinding met een eindpunt in dezelfde regio of elders.  
+* Als u tests maakt met grote volumes of hoge transactiesnelheid, bekijk dan of het aantal fouten afneemt als u de snelheid vermindert.
+* Als het wijzigen van de snelheid invloed heeft op het aantal fouten, controleert u of limieten voor de API-snelheid of andere beperkingen aan de bestemmingszijde mogelijk zijn bereikt.
+* Als u geen eenduidig antwoord vindt voor het probleem, opent u een ondersteuningsaanvraag voor verdere probleemoplossing.
 
-#### <a name="tcp-resets-received"></a>TCP-opnieuw instellen ontvangen
+#### <a name="tcp-resets-received"></a>Activering van het opnieuw instellen van TCP
 
-De NAT-gateway genereert TCP-resets op de bron-VM voor verkeer dat niet wordt herkend als in uitvoering.
+De NAT-gateway activeert het opnieuw instellen van TCP op de bron-VM voor verkeer dat niet wordt herkend als verkeer dat wordt uitgevoerd.
 
-Een mogelijke reden is dat er een time-out is opgetreden voor de TCP-verbinding.  U kunt de time-out voor inactiviteit aanpassen van 4 minuten tot 120 minuten.
+Een mogelijke reden is dat er een time-out voor inactiviteit is opgetreden voor de TCP-verbinding.  U kunt de time-out voor inactiviteit instellen op 4 minuten tot 120 minuten.
 
-TCP-resets worden niet gegenereerd aan de open bare kant van NAT-gateway bronnen. TCP-resets aan de doel zijde worden gegenereerd door de bron-VM, niet via de gateway bron van de NAT.
+Het opnieuw instellen van TCP wordt niet geactiveerd aan de openbare zijde van NAT-gatewayresources. Het opnieuw instellen van TCP aan de bestemmingszijde wordt geactiveerd door de bron-VM, niet de NAT-gatewayresource.
 
-_**Oplossen**_
+_**Oplossing:**_
 
-* Bekijk aanbevelingen voor [ontwerp patronen](#design-patterns) .  
-* Open een ondersteunings aanvraag voor het oplossen van problemen, indien nodig.
+* Bekijk aanbevelingen voor [ontwerppatronen](#design-patterns).  
+* Open zo nodig een ondersteuningsaanvraag voor verdere probleemoplossing.
 
-### <a name="ipv6-coexistence"></a>IPv6-samen werking
+### <a name="ipv6-coexistence"></a>Gelijktijdig gebruik van IPv6 en IPv4
 
-[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP-en TCP-protocollen en implementatie op een [subnet met een IPv6-voor voegsel wordt niet ondersteund](nat-overview.md#limitations).
+[Virtual Network NAT](nat-overview.md) ondersteunt IPv4 UDP- en TCP-protocollen en implementatie in een [subnet met een IPv6-voorvoegsel wordt niet ondersteund](nat-overview.md#limitations).
 
-_**Oplossing:**_ Implementeer NAT gateway op een subnet zonder IPv6-voor voegsel.
+_**Oplossing:**_ Implementeer een NAT-gateway in een subnet zonder IPv6-voorvoegsel.
 
-U kunt interesses aanduiden in aanvullende mogelijkheden via [Virtual Network NAT UserVoice](https://aka.ms/natuservoice).
+U kunt uw interesse voor aanvullende mogelijkheden aangeven via [UserVoice voor Virtual Network NAT](https://aka.ms/natuservoice).
+
+### <a name="connection-doesnt-originate-from-nat-gateway-ips"></a>De verbinding is niet afkomstig van een IP-adres of IP-adressen van een NAT-gateway
+
+U configureert een NAT-gateway, IP-adressen die moeten worden gebruikt en het subnet dat een NAT-gatewayresource moet gebruiken. Verbindingen van VM-instanties die al bestonden voordat de NAT-gateway werd geïmplementeerd, gebruiken echter geen IP-adres(sen).  Ze maken gebruik van IP-adressen die niet worden gebruikt met de NAT-gatewayresource.
+
+_**Oplossing:**_
+
+[Virtual Network NAT](nat-overview.md) vervangt de uitgaande verbinding voor het subnet waarvoor het is geconfigureerd. Wanneer u overstapt van standaard-SNAT of SNAT voor uitgaande verbindingen voor de load balancer naar het gebruik van NAT-gateways, zullen de nieuwe verbindingen direct gebruikmaken van de IP-adressen die zijn gekoppeld aan de NAT-gatewayresource.  Als een virtuele machine echter nog steeds een actieve verbinding heeft tijdens de overstap naar de NAT-gatewayresource, blijft de verbinding het oude IP-adres met SNAT gebruiken dat was toegewezen toen de verbinding tot stand werd gebracht.  Zorg ervoor dat u echt een nieuwe verbinding tot stand brengt en niet een verbinding opnieuw gebruikt die al bestond omdat het besturingssysteem of de browser de verbindingen in een verbindingspool in de cache had opgeslagen.  Als u bijvoorbeeld _curl_ in PowerShell gebruikt, moet u de parameter _-DisableKeepalive_ opgeven om een nieuwe verbinding af te dwingen.  Als u een browser gebruikt, kunnen verbindingen ook in een pool worden opgenomen.
+
+Het is niet nodig om een virtuele machine opnieuw op te starten wanneer u een subnet voor een NAT-gatewayresource configureert.  Als een virtuele machine opnieuw wordt opgestart, wordt de verbindingsstatus echter gewist.  Wanneer de verbindingsstatus is gewist, gaan alle verbindingen de IP-adressen van de NAT-gatewayresource gebruiken.  Dit is echter een neveneffect van het opnieuw opstarten van de virtuele machine en niet een indicator dat de virtuele machine opnieuw moet worden opgestart.
+
+Als u nog steeds problemen ondervindt, opent u een ondersteuningsaanvraag zodat het probleem nader kan worden onderzocht.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Meer informatie over [Virtual Network NAT](nat-overview.md)
-* Meer informatie over de [NAT gateway-resource](nat-gateway-resource.md)
-* Meer informatie over [metrische gegevens en waarschuwingen voor NAT-gateway bronnen](nat-metrics.md).
-* [Vertel ons wat u nu kunt bouwen voor Virtual Network nat in UserVoice](https://aka.ms/natuservoice).
+* Meer informatie over [NAT-gatewayresource](nat-gateway-resource.md)
+* Meer informatie over [metrische gegevens en waarschuwingen voor NAT-gatewayresources](nat-metrics.md).
+* [Vertel ons in UserVoice wat we verder kunnen ontwikkelen voor Virtual Network NAT](https://aka.ms/natuservoice).
 
