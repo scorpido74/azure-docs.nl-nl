@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: ML-modellen implementeren met Designer'
+title: 'Zelfstudie: ML-modellen implementeren met de ontwerpfunctie'
 titleSuffix: Azure Machine Learning
-description: In deze zelf studie wordt uitgelegd hoe u een predictive analytics oplossing bouwt in Azure Machine Learning Designer (preview). Train, Score en implementeer een machine learning model met behulp van slepen en neerzetten.
+description: In deze zelfstudie wordt uitgelegd hoe u een predictive analytics-oplossing bouwt in de Azure Machine Learning-ontwerpfunctie (preview). Ontdek hoe u een machine learning-model traint, een score geeft en implementeert met behulp van slepen-en-neerzettenmodules.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,112 +9,113 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.custom: designer
+ms.openlocfilehash: 41b6fb38798e9aa7264000676d81101db1c83236
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983377"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656533"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelf studie: een machine learning model implementeren met de ontwerp functie (preview-versie)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelfstudie: Een machine Learning-model implementeren met de ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-U kunt het voorspellende model dat is ontwikkeld in [deel één van de zelf studie](tutorial-designer-automobile-price-train-score.md) implementeren om anderen de kans te geven deze te gebruiken. In deel één hebt u het model getraind. Nu is het tijd om nieuwe voor spellingen te genereren op basis van gebruikers invoer. In dit deel van de zelfstudie komen deze onderwerpen aan bod:
+U kunt het voorspellende model dat is ontwikkeld in [deel 1 van de zelfstudie](tutorial-designer-automobile-price-train-score.md) implementeren zodat anderen het ook kunnen gebruiken. In deel een hebt u het model getraind. Nu gaat u nieuwe voorspellingen genereren op basis van gebruikersinvoer. In dit deel van de zelfstudie komen deze onderwerpen aan bod:
 
 > [!div class="checklist"]
-> * Maak een real-time pipeline-pijp lijn.
-> * Maak een Afleidings cluster.
-> * Implementeer het real-time eind punt.
-> * Het real-time eind punt testen.
+> * Een realtime deductiepijplijn maken.
+> * Een deductiecluster maken.
+> * Het realtime-eindpunt implementeren.
+> * Het realtime-eindpunt testen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi [deel één van de zelf studie](tutorial-designer-automobile-price-train-score.md) voor meer informatie over het trainen en beoordelen van een machine learning model in de ontwerp functie.
+Voltooi [deel 1 van de zelfstudie](tutorial-designer-automobile-price-train-score.md) om te leren hoe u een machine learning-model kunt trainen en een score kunt geven in de ontwerpfunctie.
 
-## <a name="create-a-real-time-inference-pipeline"></a>Een real-time pijp lijn maken
+## <a name="create-a-real-time-inference-pipeline"></a>Een realtime deductiepijplijn maken
 
-Als u uw pijp lijn wilt implementeren, moet u eerst de trainings pijplijn omzetten in een realtime pipeline-pijp lijn. Dit proces verwijdert trainings modules en voegt de invoer en uitvoer van webservices toe om aanvragen af te handelen.
+Voor het implementeren van uw pijplijn moet u de trainingspijplijn eerst converteren naar een realtime deductiepijplijn. Tijdens dit proces worden trainingsmodules verwijderd en de invoer en uitvoer van webservices toegevoegd voor het afhandelen van aanvragen.
 
-### <a name="create-a-real-time-inference-pipeline"></a>Een real-time pijp lijn maken
+### <a name="create-a-real-time-inference-pipeline"></a>Een realtime deductiepijplijn maken
 
-1. Selecteer boven het pijplijn canvas de optie pijp lijn voor inschakeling **pijplijn** > maken in**realtime**.
+1. Selecteer boven het pijplijncanvas **Deductiepijplijn maken** > **Realtime deductiepijplijn**.
 
-    ![Scherm afbeelding waarin wordt weer gegeven waar u de knop pijp lijn maken kunt vinden](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
+    ![Schermopname waarin wordt weergegeven waar de knop pijplijn maken zich bevindt](./media/tutorial-designer-automobile-price-deploy/tutorial2-create-inference-pipeline.png)
 
-    Uw pijp lijn moet er nu als volgt uitzien: 
+    Uw pijplijn ziet er nu als volgt uit: 
 
-   ![Scherm opname van de verwachte configuratie van de pijp lijn nadat deze is voor bereid voor implementatie](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Schermopname van de verwachte configuratie van de pijplijn nadat deze is voorbereid voor implementatie](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Wanneer u de **pijp lijn**voor het maken van een devan-interferentie selecteert, gebeurt het volgende:
+    Wanneer u **Deductiepijplijn maken** selecteert, gebeuren er verschillende dingen:
     
-    * Het getrainde model wordt opgeslagen als een module **gegevensset** in het palet van de module. U kunt het vinden onder **mijn gegevens sets**.
-    * Trainings modules zoals **Train model** en **gesplitste gegevens** worden verwijderd.
-    * Het opgeslagen getrainde model wordt weer toegevoegd aan de pijp lijn.
-    * De **Web Service-invoer** en de **webservice-uitvoer** modules worden toegevoegd. Deze modules laten zien waar gebruikers gegevens de pijp lijn invoeren en waar gegevens worden geretourneerd.
+    * Het getrainde model wordt opgeslagen als een **Gegevensset**module in het palet van de module. U vindt deze onder **Mijn gegevenssets**.
+    * Trainingsmodules zoals **Model trainen** en **Gegevens splitsen** worden verwijderd.
+    * Het opgeslagen getrainde model wordt weer toegevoegd aan de pijplijn.
+    * De modules **Webservice-invoer** en **Webservice-uitvoer** worden toegevoegd. Deze modules laten zien waar gebruikersgegevens de pijplijn binnenkomen en waar gegevens worden geretourneerd.
 
     > [!NOTE]
-    > Standaard zal de invoer van de **webservice** hetzelfde gegevens schema verwachten als de trainings gegevens die worden gebruikt voor het maken van de voorspellende pijp lijn. In dit scenario wordt de prijs in het schema opgenomen. De prijs wordt echter niet gebruikt als een factor tijdens de voor spelling.
+    > Standaard verwacht de **Webservice-invoer** hetzelfde gegevensschema als de trainingsgegevens die zijn gebruikt voor het maken van de voorspellende pijplijn. In dit scenario is de prijs in het schema opgenomen. De prijs wordt echter niet gebruikt als een factor tijdens de voorspelling.
     >
 
-1. Selecteer **verzenden**en gebruik hetzelfde reken doel en experiment dat u in deel één hebt gebruikt.
+1. Selecteer **Verzenden**en gebruik hetzelfde rekendoel en experiment dat u in deel 1 hebt gebruikt.
 
-    Als de eerste keer wordt uitgevoerd, kan het tot 20 minuten duren voordat de pijp lijn is voltooid. De standaard instellingen voor de berekening hebben een minimale knooppunt grootte van 0, wat betekent dat de ontwerp functie resources moet toewijzen na inactiviteit. Herhaalde pijplijn uitvoeringen nemen minder tijd in beslag, omdat de reken resources al zijn toegewezen. Daarnaast gebruikt de ontwerp functie in cache geplaatste resultaten voor elke module om de efficiëntie te verbeteren.
+    Als dit de eerste keer is dat u de pijplijn uitvoert, kan het maximaal 20 minuten duren voor uw pijplijn helemaal is uitgevoerd. De standaard rekeninstellingen hebben een minimale knooppuntgrootte van 0, wat betekent dat de ontwerpfunctie na inactiviteit resources moet toewijzen. Herhaalde pijplijnuitvoeringen kosten minder tijd, omdat de rekenresources al zijn toegewezen. Bovendien gebruikt de ontwerpfunctie in de cache opgeslagen resultaten voor elke module om de efficiëntie verder te verbeteren.
 
 1. Selecteer **Implementeren**.
 
-## <a name="create-an-inferencing-cluster"></a>Een Afleidings cluster maken
+## <a name="create-an-inferencing-cluster"></a>Een deductiecluster maken
 
-In het dialoog venster dat wordt weer gegeven, kunt u een wille keurige bestaande Azure Kubernetes service-cluster (AKS) selecteren om uw model te implementeren. Als u geen AKS-cluster hebt, gebruikt u de volgende stappen om er een te maken.
+In het dialoogvenster dat wordt weergegeven kunt u willekeurige Azure Kubernetes Service (AKS)-clusters selecteren om uw model naar te implementeren. Als u geen AKS-cluster hebt, gebruikt u de volgende stappen om er een te maken.
 
-1. Selecteer **berekenen** in het dialoog venster dat wordt weer gegeven om naar de **Compute** -pagina te gaan.
+1. Selecteer **Compute** in het dialoogvenster dat wordt weergegeven om naar de pagina **Compute** te gaan.
 
-1. Selecteer op het navigatie lint de optie **clusters** > met inschakeling en**Nieuw**.
+1. Selecteer **Deductieclusters** >  **+ Nieuw** op het navigatielint.
 
-    ![Scherm afbeelding die laat zien hoe het nieuwe deel venster voor het afwijzen van een cluster wordt weer gegeven](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
+    ![Schermopname waarin wordt weergegeven waar het deelvenster nieuwe deductiecluster zich bevindt](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. Configureer een nieuwe Kubernetes-service in het deel venster cluster uitstellen.
+1. Configureer een nieuwe Kubernetes Service in het deelvenster Deductiecluster.
 
-1. Voer *AKS-Compute* in voor de naam van de **berekening**.
+1. Geef *aks-compute* op als **Compute-naam**.
     
-1. Selecteer een regio in de buurt die beschikbaar is voor de **regio**.
+1. Selecteer een regio in de buurt die beschikbaar is voor de **Regio**.
 
 1. Selecteer **Maken**.
 
     > [!NOTE]
-    > Het duurt ongeveer 15 minuten om een nieuwe AKS-service te maken. U kunt de inrichtings status controleren op de pagina Afleidings **clusters** .
+    > Het duurt ongeveer 15 minuten om een AKS-service te maken. U kunt de inrichtingsstatus bekijken op de pagina **Deductieclusters**.
     >
 
-## <a name="deploy-the-real-time-endpoint"></a>Het real-time-eind punt implementeren
+## <a name="deploy-the-real-time-endpoint"></a>Het realtime-eindpunt implementeren
 
-Wanneer de inrichting van uw AKS-service is voltooid, gaat u terug naar de real-time pipeline-pijp lijn om de implementatie te volt ooien.
+Wanneer de inrichting van uw AKS-service is voltooid, gaat u terug naar de realtime deductiepijplijn om de implementatie te voltooien.
 
-1. Selecteer boven het canvas **implementeren** .
+1. Selecteer **Implementeren** boven het canvas.
 
-1. Selecteer **Nieuw real-time eind punt implementeren**. 
+1. Selecteer **Nieuw realtime-eindpunt implementeren**. 
 
-1. Selecteer het AKS-cluster dat u hebt gemaakt.
+1. Selecteer de AKS-cluster die u hebt gemaakt.
 
 1. Selecteer **Implementeren**.
 
-    ![Scherm afbeelding die laat zien hoe u een nieuw real-time eind punt instelt](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
+    ![Schermopname waarin het instellen van een nieuw realtime-eindpunt wordt weergegeven](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Nadat de implementatie is voltooid, wordt een melding boven het canvas weer gegeven. Het kan een paar minuten duren.
+    Nadat de implementatie is voltooid, wordt een melding boven het canvas weergegeven. Dit kan enkele minuten duren.
 
-## <a name="test-the-real-time-endpoint"></a>Het real-time eind punt testen
+## <a name="test-the-real-time-endpoint"></a>Het realtime-eindpunt testen
 
-Nadat de implementatie is voltooid, kunt u uw real-time eind punt testen door naar de pagina met **eind punten** te gaan.
+Nadat de implementatie is voltooid, kunt u uw realtime-eindpunt testen door naar de pagina **Eindpunten** te gaan.
 
-1. Selecteer op de pagina **eind punten** het eind punt dat u hebt geïmplementeerd.
+1. Selecteer op de pagina **Eindpunten** het eindpunt dat u hebt geïmplementeerd.
 
-    ![Scherm afbeelding van het tabblad realtime eind punten waarop het onlangs gemaakte eind punt is gemarkeerd](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
+    ![Schermopname met het tabblad realtime-eindpunten met het nieuw gemaakte eindpunt gemarkeerd](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
 1. Selecteer **Testen**.
 
-1. U kunt de test gegevens hand matig invoeren of de automatisch gevulde voorbeeld gegevens gebruiken en **testen**selecteren.
+1. U kunt de testgegevens handmatig invoeren of de automatisch ingevulde voorbeeldgegevens gebruiken en **Testen** selecteren.
 
-    In de portal wordt een test aanvraag naar het eind punt verzonden en worden de resultaten weer gegeven. Hoewel een prijs waarde wordt gegenereerd voor de invoer gegevens, wordt deze niet gebruikt om de Voorspellings waarde te genereren.
+    In de portal wordt een testaanvraag naar het eindpunt verzonden en worden de resultaten weergegeven. Er wordt een prijswaarde gegenereerd voor de invoergegevens, maar deze wordt niet gebruikt om de voorspellingswaarde te genereren.
 
-    ![Scherm afbeelding die laat zien hoe u het realtime-eind punt kunt testen met het gescoorde label voor de gemarkeerde prijs](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
+    ![Schermopname met het testen van het realtime-eindpunt en het scorelabel voor prijs gemarkeerd](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -122,7 +123,7 @@ Nadat de implementatie is voltooid, kunt u uw real-time eind punt testen door na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de belangrijkste stappen geleerd voor het maken, implementeren en gebruiken van een machine learning model in de ontwerp functie. Voor meer informatie over hoe u de Designer kunt gebruiken om andere soorten problemen op te lossen, raadpleegt u onze andere voorbeeld pijplijnen.
+In deze zelfstudie hebt u de belangrijkste stappen geleerd voor het maken, implementeren en gebruiken van een machine learning-model in de ontwerpfunctie. Zie de andere voorbeeldpijplijnen voor meer informatie over hoe u de ontwerpfunctie kunt gebruiken om andere soorten problemen op te lossen.
 
 > [!div class="nextstepaction"]
-> [Voor beelden van Designer](samples-designer.md)
+> [Voorbeelden ontwerpfunctie](samples-designer.md)

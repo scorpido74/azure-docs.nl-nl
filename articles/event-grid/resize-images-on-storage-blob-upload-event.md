@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Event Grid gebruiken om het formaat van geüploade afbeeldingen te automatiseren'
-description: 'Zelf studie: het Azure Event Grid kan in Azure Storage worden geactiveerd voor BLOB-uploads. Dit is handig om afbeeldingsbestanden naar Azure Storage die worden geüpload naar Azure Storage te verzenden naar andere services, zoals Azure Functions, voor het aanpassen van het formaat en andere verbeteringen.'
+title: 'Zelfstudie: Formaat van geüploade afbeeldingen automatisch wijzigen met Azure Event Grid'
+description: 'Zelfstudie: U kunt instellen dat Azure Event Grid wordt geactiveerd als er blobs worden geüpload in Azure Storage. Dit is handig om afbeeldingsbestanden naar Azure Storage die worden geüpload naar Azure Storage te verzenden naar andere services, zoals Azure Functions, voor het aanpassen van het formaat en andere verbeteringen.'
 services: event-grid, functions
 author: spelluru
 manager: jpconnoc
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 1d1da88d1e7eaf06ebf71da999ef8fb25c7cf066
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81482201"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652696"
 ---
-# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelf studie: het formaat van geüploade afbeeldingen automatisch wijzigen met behulp van Event Grid
+# <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelfstudie: Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid
 
 [Azure Event Grid](overview.md) is een gebeurtenisservice voor de cloud. Met Event Grid kunt u abonnementen nemen op gebeurtenissen die worden gegenereerd door Azure-services of resources van derden.  
 
@@ -27,7 +27,7 @@ Deze zelfstudie is deel twee in een reeks zelfstudies over Azure Storage en is e
 
 Met behulp van de Azure CLI en Azure Portal kunt u de functionaliteit voor formaatwijziging toevoegen aan een bestaande app voor het uploaden van afbeeldingen.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ![Gepubliceerde web-app in de browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
@@ -48,15 +48,15 @@ In deze zelfstudie leert u het volgende:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Vereisten om deze zelfstudie te voltooien:
+Vereisten voor het voltooien van deze zelfstudie:
 
-U moet de vorige zelfstudie over Blob-opslag hebben voltooid: [Afbeeldingsgegevens uploaden in de cloud met Azure Storage][previous-tutorial].
+U moet de vorige zelfstudie over blobopslag hebben voltooid: [Afbeeldingsgegevens uploaden in de cloud met Azure Storage][previous-tutorial].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie gebruikmaken van Azure CLI versie 2.0.14 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie gebruikmaken van Azure CLI versie 2.0.14 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 Als u Cloud Shell niet gebruikt, moet u eerst zich aanmelden met `az login`.
 
@@ -105,13 +105,13 @@ Geef de naam van uw eigen unieke functie-app op in de volgende opdracht. De naam
       --functions-version 2
     ```
 
-Configureer nu de functie-app om verbinding te maken met het Blob Storage-account dat u in de [vorige zelf studie][previous-tutorial]hebt gemaakt.
+Nu moet u de functie-app configureren om verbinding te maken met het Blob-opslagaccount dat u in de [vorige zelfstudie][previous-tutorial] hebt gemaakt.
 
 ## <a name="configure-the-function-app"></a>De functie-app configureren
 
 De functie vereist referenties voor het Blob-opslagaccount, die worden toegevoegd aan de toepassingsinstellingen van de functie-app met behulp van de opdracht [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings).
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
 blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
@@ -149,7 +149,7 @@ U kunt nu een codeproject van Functions implementeren naar deze functie-app.
 
 ## <a name="deploy-the-function-code"></a>De functiecode implementeren 
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 De C#-voorbeeldfunctie van resize is beschikbaar op [GitHub](https://github.com/Azure-Samples/function-image-upload-resize). Implementeer dit codeproject naar de functie-app met behulp van de opdracht [az functionapp deployment source config](/cli/azure/functionapp/deployment/source).
 
@@ -176,7 +176,7 @@ De gegevens die aan de functie worden doorgegeven in de Event Grid-melding bevat
 
 Dit project gebruikt `EventGridTrigger` als het type trigger. Het wordt aangeraden om de trigger van Event Grid te gebruiken in plaats van algemene HTTP-triggers. Functie-triggers van Event Grid worden namelijk automatisch gevalideerd. Bij gebruik van algemene HTTP-triggers moet u een [validatie-antwoord](security-authentication.md) implementeren.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 Als u meer wilt leren over deze functie, bekijk dan de [bestanden function.json en run.csx](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
 
@@ -192,15 +192,15 @@ Het codeproject van Functions wordt rechtstreeks vanuit de openbare opslagplaats
 
 Een gebeurtenisabonnement geeft aan welke door de provider gegenereerde gebeurtenissen u naar een bepaald eindpunt wilt versturen. In dit geval wordt het eindpunt bepaald door de functie. Gebruik de volgende stappen om in Azure Portal een gebeurtenisabonnement te maken die meldingen aan uw functie verzendt:
 
-1. Selecteer in de [Azure-portal](https://portal.azure.com) de optie **Alle services** in het menu aan de linkerkant en selecteer vervolgens **Functie-apps**.
+1. Zoek in de [Azure Portal](https://portal.azure.com) bovenaan de pagina naar `Function App`, selecteer het kies de functie-app die u zojuist hebt gemaakt. Selecteer **Functies** en kies de functie **Miniatuur**.
 
-    ![Navigeer naar functie-apps in de Azure Portal](./media/resize-images-on-storage-blob-upload-event/portal-find-functions.png)
+    :::image type="content" source="media/resize-images-on-storage-blob-upload-event/choose-thumbnail-function.png" alt-text="De functie Miniatuur in de portal kiezen":::
 
-2. Vouw de functie-app uit, kies de functie **Miniatuur** en selecteer vervolgens **Event Grid-abonnement toevoegen**.
+1.  Selecteer **Integratie**, kies vervolgens de **Event Grid-trigger** en vervolgens **Event Grid-abonnement maken**.
 
-    ![Navigeren om Event Grid-abonnement toe te voegen aan de Azure Portal](./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png)
+    :::image type="content" source="./media/resize-images-on-storage-blob-upload-event/add-event-subscription.png" alt-text="Navigeren naar Event Grid-abonnement toevoegen in de Azure Portal" :::
 
-3. Gebruik de instellingen voor het gebeurtenisabonnement zoals die zijn opgegeven in de tabel onder de afbeelding.
+1. Gebruik de instellingen voor het gebeurtenisabonnement zoals die zijn opgegeven in de tabel onder de afbeelding.
     
     ![Een gebeurtenisabonnement maken voor de functie in Azure Portal](./media/resize-images-on-storage-blob-upload-event/event-subscription-create.png)
 
@@ -212,16 +212,16 @@ Een gebeurtenisabonnement geeft aan welke door de provider gegenereerde gebeurte
     | **Resourcegroep** | myResourceGroup | Selecteer **Bestaande gebruiken** en kies de resourcegroep die u in deze zelfstudie hebt gebruikt. |
     | **Resource** | Uw Blob-opslagaccount | Kies het Blob-opslagaccount dat u hebt gemaakt. |
     | **Gebeurtenistypen** | BlobCreated | Schakel alle typen uit behalve **BlobCreated**. Alleen gebeurtenistypen van `Microsoft.Storage.BlobCreated` worden doorgegeven aan de functie. |
-    | **Type eind punt** | automatisch gegenereerd | Vooraf gedefinieerd als **Azure-functie**. |
-    | **Endpoints** | automatisch gegenereerd | De naam van de functie. In dit geval is de **miniatuur**. |
+    | **Eindpunttype** | automatisch gegenereerd | Vooraf gedefinieerd als **Azure-functie**. |
+    | **Eindpunt** | automatisch gegenereerd | Naam van de functie. In dit geval is deze **Miniatuur**. |
 
-4. Ga naar het tabblad **filters** en voer de volgende acties uit:
+1. Open het tabblad **Filters** en voer de volgende acties uit:
     1. Selecteer de optie **Filteren van onderwerpen inschakelen**.
-    2. Voor **Onderwerp begint met** voert u de volgende waarde in: **/blobServices/default/containers/images/blobs/**.
+    2. Voor **Onderwerp begint met** voert u de volgende waarde in: **/blobServices/default/containers/images/blobs/** .
 
         ![Een filter opgeven voor het gebeurtenisabonnement](./media/resize-images-on-storage-blob-upload-event/event-subscription-filter.png)
 
-5. Selecteer **Maken** om het gebeurtenisabonnement toe te voegen. Hiermee maakt u een gebeurtenis abonnement waarmee de `Thumbnail` functie wordt geactiveerd wanneer een BLOB wordt toegevoegd `images` aan de container. De functie past de afbeelding in grootte aan en voegt deze toe aan de container `thumbnails`.
+1. Selecteer **Maken** om het gebeurtenisabonnement toe te voegen. Er wordt een gebeurtenisabonnement gemaakt die de functie `Thumbnail` activeert op het moment dat er een blob wordt toegevoegd aan de container `images`. De functie past de afbeelding in grootte aan en voegt deze toe aan de container `thumbnails`.
 
 De services in de back-end zijn nu geconfigureerd. Dit betekent dat u de functionaliteit voor het aanpassen van het formaat van afbeeldingen kunt gaan testen in de voorbeeld-web-app.
 
@@ -229,17 +229,17 @@ De services in de back-end zijn nu geconfigureerd. Dit betekent dat u de functio
 
 U kunt de formaatwijziging door de web-app testen door naar de URL van de gepubliceerde app te gaan. De standaard-URL van de web-app is `https://<web_app>.azurewebsites.net`.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 Klik ergens in het gebied **Foto's uploaden** om een bestand te selecteren en te uploaden. U kunt ook een foto naar dit gebied slepen.
 
-Na het wegvallen van de geüploade afbeelding wordt een kopie van de geüploade afbeelding weer gegeven in de carrousel **gegenereerde miniaturen** . Het formaat van deze afbeelding werd gewijzigd door de functie, waarna de afbeelding werd toegevoegd aan de container *thumbnails* en gedownload door de webclient.
+Zodra de geüploade afbeelding is verdwenen, ziet u een kopie van de geüploade afbeelding in de carrousel **Gegenereerde miniaturen**. Het formaat van deze afbeelding werd gewijzigd door de functie, waarna de afbeelding werd toegevoegd aan de container *thumbnails* en gedownload door de webclient.
 
 ![Gepubliceerde web-app in de browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
-Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Er wordt een kopie van de geüploade afbeelding weer gegeven in het gebied **gegenereerde miniaturen** . (Als de afbeelding niet eerst wordt weer gegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding is gewijzigd door de functie, is toegevoegd aan de container *miniaturen* en gedownload door de webclient.
+Klik op **Bestand kiezen**, selecteer een bestand en klik op **Afbeelding uploaden**. Als het uploaden is voltooid, wordt in de browser een pagina weergegeven dat het uploaden is geslaagd. Klik op de koppeling om terug te keren naar de startpagina. Een kopie van de geüploade afbeelding wordt weergegeven in het gebied **Gegenereerde miniaturen**. (Als de afbeelding niet meteen wordt weergegeven, laadt u de pagina opnieuw.) Het formaat van deze afbeelding werd gewijzigd door de functie, waarna de afbeelding werd toegevoegd aan de container *thumbnails* en gedownload door de webclient.
 
 ![Gepubliceerde web-app in de browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 

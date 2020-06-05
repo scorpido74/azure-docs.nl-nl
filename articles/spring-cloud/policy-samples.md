@@ -1,24 +1,24 @@
 ---
-title: Ingebouwde beleids definities voor Azure lente-Cloud
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure lente-Cloud. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
-ms.date: 04/30/2020
+title: Ingebouwde beleidsdefinities voor Azure Spring Cloud
+description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Spring Cloud. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
+ms.date: 05/13/2020
 ms.topic: sample
 author: bmitchell287
 ms.author: brendm
 ms.service: spring-cloud
 ms.custom: subject-policy-samples
-ms.openlocfilehash: e15c598bcfdc63da7980f5a2f636706b56b5e4bb
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: MT
+ms.openlocfilehash: 8c68f6f802b12e93e0968c3193527e0a1815efff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82907010"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657184"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-spring-cloud"></a>Azure Policy ingebouwde beleids definities voor Azure lente-Cloud
+# <a name="azure-policy-built-in-policy-definitions-for-azure-spring-cloud"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Spring Cloud
 
-Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure lente-Cloud. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
+Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Spring Cloud. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-spring-cloud"></a>Azure Spring Cloud
 

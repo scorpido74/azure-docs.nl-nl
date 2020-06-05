@@ -1,25 +1,25 @@
 ---
-title: Ingebouwde beleids definities voor aangepaste Azure-resource providers
-description: Een lijst met Azure Policy ingebouwde beleids definities voor aangepaste Azure-resource providers. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/05/2020
+title: Ingebouwde beleidsdefinities voor aanbieders van aangepaste Azure-resources
+description: Toont ingebouwde Azure Policy-beleidsdefinities voor aanbieders van aangepaste Azure-resources. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
+ms.date: 05/13/2020
 ms.topic: sample
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 71e4f16ab90a8188419ee5a8ff297b768c9c7d97
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: ecac6cb1217c10bf894ed4bbc9dc747f76e8cb79
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836973"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652430"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-custom-resource-providers"></a>Azure Policy ingebouwde beleids definities voor aangepaste Azure-resource providers
+# <a name="azure-policy-built-in-policy-definitions-for-azure-custom-resource-providers"></a>Ingebouwde Azure Policy-beleidsdefinities voor aanbieders van aangepaste Azure-resources
 
-Deze pagina bevat een index van [Azure Policy](../../governance/policy/overview.md) ingebouwde beleids definities voor aangepaste Azure-resource providers. Zie [Azure Policy ingebouwde definities](../../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
+Deze pagina is een index van ingebouwde [Azure Policy](../../governance/policy/overview.md)-beleidsdefinities voor aanbieders van aangepaste Azure-resources. Zie [Ingebouwde Azure Policy-definities](../../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefinitie in Azure Portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
-## <a name="azure-custom-resource-providers"></a>Aangepaste Azure-resource providers
+## <a name="azure-custom-resource-providers"></a>Aanbieders van aangepaste Azure-resources
 
 [!INCLUDE [azure-policy-samples-category-customrp](../../../includes/policy/samples/bycat/policies-custom-provider.md)]
 

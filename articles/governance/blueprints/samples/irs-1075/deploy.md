@@ -1,123 +1,123 @@
 ---
-title: Voor beeld van IRS 1075-blauw druk implementeren
-description: Implementeer stappen voor het voor beeld van de IRS 1075 (Rev. 11-2016), inclusief blauw druk artefact parameter Details.
-ms.date: 11/20/2019
+title: Blauwdrukvoorbeeld IRS 1075 implementeren
+description: Implementeer stappen voor het blauwdrukvoorbeeld IRS 1075 (Rev.11-2016), inclusief de parametergegevens voor blauwdrukartefacten.
+ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 15fcac5bfd11d889522d078853bd6f916eb54616
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 7faf1042f695ac43b2fa22d2685149426cb1ed80
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74546803"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653096"
 ---
-# <a name="deploy-the-irs-1075-blueprint-sample"></a>Het voor beeld van IRS 1075-blauw druk implementeren
+# <a name="deploy-the-irs-1075-blueprint-sample"></a>Het blauwdrukvoorbeeld IRS 1075 implementeren
 
-De volgende stappen moeten worden uitgevoerd om de blauw druk van het Azure-IRS 1075 (Rev. 11-2016) te implementeren:
+Als u het blauwdrukvoorbeeld IRS 1075 (Rev.11-2016) van Azure Blueprints wilt implementeren, moet u de volgende stappen uitvoeren:
 
 > [!div class="checklist"]
-> - Een nieuwe blauw druk maken op basis van het voor beeld
-> - Uw kopie van het voor beeld markeren als **gepubliceerd**
-> - Uw kopie van de blauw druk toewijzen aan een bestaand abonnement
+> - Een nieuwe blauwdruk maken op basis van het voorbeeld
+> - Uw kopie van het voorbeeld markeren als **Gepubliceerd**
+> - Uw kopie van de blauwdruk toewijzen aan een bestaand abonnement
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
-## <a name="create-blueprint-from-sample"></a>Blauw druk maken op basis van voor beeld
+## <a name="create-blueprint-from-sample"></a>Een blauwdruk maken op basis van een voorbeeld
 
-Implementeer eerst het voor beeld van de blauw druk door een nieuwe blauw druk in uw omgeving te maken met behulp van het voor beeld als een starter.
-
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
-
-1. Op de pagina **aan** de slag aan de linkerkant selecteert u de knop **maken** onder _een blauw druk maken_.
-
-1. Zoek het voor beeld van **IRS 1075 (Rev. 11-2016)** onder _andere voor beelden_ en selecteer **dit voor beeld gebruiken**.
-
-1. Voer de _basis beginselen_ van het voor beeld van de blauw druk in:
-
-   - **Blauw druk-naam**: Geef een naam op voor uw exemplaar van het voor beeld van IRS 1075 (Rev. 11-2016).
-   - **Locatie van definitie**: gebruik het weglatings teken en selecteer de beheer groep om uw kopie van het voor beeld op te slaan.
-
-1. Selecteer het tabblad _artefacten_ boven aan de pagina of **volgende: artefacten** aan de onderkant van de pagina.
-
-1. Bekijk de lijst met artefacten die deel uitmaken van het voor beeld van de blauw druk. Veel van de artefacten hebben para meters die later worden gedefinieerd. Selecteer **concept opslaan** wanneer u klaar bent met het bekijken van het voor beeld van de blauw druk.
-
-## <a name="publish-the-sample-copy"></a>De voorbeeld kopie publiceren
-
-Uw kopie van het voor beeld van de blauw druk is nu in uw omgeving gemaakt. Deze wordt gemaakt in de **concept** modus en moet worden **gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het voor beeld van de blauw druk kan worden aangepast aan uw omgeving en behoeften, maar deze wijziging kan worden verplaatst van uitlijning met het NIST-besturings element 800-53.
+Implementeer eerst het blauwdrukvoorbeeld door een nieuwe blauwdruk in uw omgeving te maken op basis van het voorbeeld.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Op de pagina **Aan de slag** aan de linkerkant selecteert u de knop **Maken** onder _Een blauwdruk maken_.
 
-1. Selecteer **blauw druk** aan de bovenkant van de pagina publiceren. Geef op de pagina Nieuw aan de rechter kant een **versie** op voor uw kopie van het voor beeld van de blauw druk. Deze eigenschap is handig als u later een wijziging aanbrengt. Geef **wijzigings notities** op, zoals ' de eerste versie die is gepubliceerd vanuit het 800-53 NIST-voor beeld. ' Selecteer vervolgens **publiceren** onder aan de pagina.
+1. Zoek het blauwdrukvoorbeeld **IRS 1075 (Rev.11-2016)** onder _Andere voorbeelden_ en selecteer **Dit voorbeeld gebruiken**.
 
-## <a name="assign-the-sample-copy"></a>De voorbeeld kopie toewijzen
+1. Voer de _basisinstellingen_ van het blauwdrukvoorbeeld in:
 
-Zodra de kopie van het voor beeld van de blauw druk is **gepubliceerd**, kan deze worden toegewezen aan een abonnement in de beheer groep waarop het is opgeslagen. In deze stap worden para meters opgegeven om elke implementatie van de kopie van het voor beeld van de blauw druk te maken.
+   - **Naam van blauwdruk**: Geef een naam op voor uw kopie van het blauwdrukvoorbeeld IRS 1075 (Rev.11-2016).
+   - **Definitielocatie**: Gebruik het beletselteken en selecteer de beheergroep waarin u uw kopie van het voorbeeld wilt opslaan.
+
+1. Selecteer het tabblad _Artefacten_ bovenaan de pagina of kies **Volgende: Artefacten** onderaan de pagina.
+
+1. Controleer de lijst met artefacten die samen het blauwdrukvoorbeeld vormen. Veel van de artefacten bevatten parameters die we later zullen definiëren. Selecteer **Concept opslaan** wanneer u klaar bent met het controleren van het blauwdrukvoorbeeld.
+
+## <a name="publish-the-sample-copy"></a>De voorbeeldkopie publiceren
+
+Uw kopie van het blauwdrukvoorbeeld is nu gemaakt in uw omgeving. De kopie is gemaakt in de **Concept**-modus en moet worden **Gepubliceerd** voordat deze kan worden toegewezen en geïmplementeerd. De kopie van het blauwdrukvoorbeeld kan worden aangepast aan uw omgeving en behoeften, maar door die aanpassing is het mogelijk dat de kopie niet meer is afgestemd op de besturingselementen van NIST SP 800-53 R4.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer de pagina met **definities van blauw** drukken aan de linkerkant. Gebruik de filters om uw kopie van het voor beeld van de blauw druk te vinden en selecteer deze.
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
 
-1. Selecteer de optie **blauw** drukken boven aan de pagina met de definitie van de blauw druk.
+1. Selecteer **Blauwdruk publiceren** bovenaan de pagina. Op de nieuwe pagina aan de rechterkant geeft u een **Versie** voor uw kopie van het blauwdrukvoorbeeld op. Deze eigenschap is handig als u later een aanpassing wilt maken. Geef **Notities over wijzigingen** op, zoals 'Eerste gepubliceerde versie op basis van het blauwdrukvoorbeeld NIST SP 800-53 R4'. Selecteer vervolgens **Publiceren** onderaan de pagina.
 
-1. Geef de parameter waarden voor de toewijzing van de blauw druk op:
+## <a name="assign-the-sample-copy"></a>De voorbeeldkopie toewijzen
+
+Zodra de kopie van het blauwdrukvoorbeeld is **Gepubliceerd**, kan het worden toegewezen aan een abonnement binnen de beheergroep waarin de kopie is opgeslagen. Dit is de stap waarin parameters worden opgegeven om elke implementatie van de kopie van het blauwdrukvoorbeeld uniek te maken.
+
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
+
+1. Selecteer de pagina **Blauwdrukdefinities** aan de linkerkant. Gebruik de filters om uw kopie van het blauwdrukvoorbeeld te zoeken en selecteer vervolgens uw kopie.
+
+1. Selecteer **Blauwdruk toewijzen** bovenaan de pagina Blauwdrukdefinitie.
+
+1. Geef de parameterwaarden op voor de blauwdruktoewijzing:
 
    - Basisbeginselen
 
-     - **Abonnementen**: Selecteer een of meer abonnementen in de beheer groep waarop u uw kopie van het voor beeld van de blauw druk hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt er een toewijzing gemaakt met behulp van de opgegeven para meters.
-     - **Toewijzings naam**: de naam wordt vooraf ingevuld op basis van de naam van de blauw druk.
-       Wijzig indien nodig of sluit af.
-     - **Locatie**: Selecteer een regio voor de beheerde identiteit die u wilt maken in. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
-     - **Definitie van blauw druk-versie**: Kies een **gepubliceerde** versie van uw kopie van het voor beeld van de blauw druk.
+     - **Abonnementen**: Selecteer een of meer van de abonnementen in de beheergroep waarin u uw kopie van het blauwdrukvoorbeeld hebt opgeslagen. Als u meer dan één abonnement selecteert, wordt een toewijzing gemaakt voor elk abonnement waarvoor de ingevoerde parameters worden gebruikt.
+     - **Naam van toewijzing**: De naam wordt vooraf voor u ingevuld op basis van de naam van de blauwdruk.
+       Wijzig de naam als dat nodig is of gebruik de opgegeven naam.
+     - **Locatie**: Selecteer een regio waarin u de beheerde identiteit wilt maken. Azure Blueprint gebruikt deze beheerde identiteit om alle artefacten in de toegewezen blauwdruk te implementeren. Zie [Beheerde identiteiten voor Azure-resources](../../../../active-directory/managed-identities-azure-resources/overview.md) voor meer informatie.
+     - **Blauwdrukdefinitieversie**: Kies een **gepubliceerde** versie van uw kopie van het blauwdrukvoorbeeld.
 
-   - Toewijzing vergren delen
+   - Toewijzing vergrendelen
 
-     Selecteer de instelling voor het vergren delen van blauw drukken voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
+     Selecteer de instelling voor het vergrendelen van de blauwdruk voor uw omgeving. Zie voor meer informatie [Vergrendeling van blauwdrukresources](../../concepts/resource-locking.md).
 
    - Beheerde identiteit
 
-     Zorg ervoor dat de standaard optie voor beheerde identiteit door het _systeem wordt toegewezen_ .
+     Laat de optie voor de standaard door het _systeem toegewezen_ beheerde identiteit staan.
 
-   - Artefact parameters
+   - Artefactparameters
 
-     De in deze sectie gedefinieerde para meters zijn van toepassing op het artefact waaronder het is gedefinieerd. Deze para meters zijn [dynamische para meters](../../concepts/parameters.md#dynamic-parameters) , omdat ze zijn gedefinieerd tijdens de toewijzing van de blauw druk. Zie [artefact parameters Table](#artifact-parameters-table)voor een volledige lijst of artefact parameters en de bijbehorende beschrijvingen.
+     De parameters die in deze sectie worden gedefinieerd, zijn van toepassing op het artefact waaronder de parameter is gedefinieerd. Deze parameters zijn [dynamische parameters](../../concepts/parameters.md#dynamic-parameters), aangezien ze zijn gedefinieerd tijdens de toewijzing van de blauwdruk. Zie de [tabel met artefactparameters](#artifact-parameters-table) voor een volledige lijst met artefactparameters en hun beschrijvingen.
 
-1. Zodra alle para meters zijn ingevoerd, selecteert u aan de onderkant van de pagina **toewijzen** . De blauw druk toewijzing wordt gemaakt en de implementatie van artefacten begint. De implementatie duurt ongeveer een uur. Als u de status van de implementatie wilt controleren, opent u de blauw druk-toewijzing.
+1. Zodra alle parameters zijn ingevoerd, selecteert u **Toewijzen** onderaan de pagina. De blauwdruktoewijzing wordt gemaakt en de implementatie van het artefact begint. De implementatie duurt circa één uur. Open de blauwdruktoewijzing om de status van de implementatie te controleren.
 
 > [!WARNING]
-> De Azure-blauw drukken-service en de ingebouwde blauw druk-voor beelden zijn **gratis**. Azure-resources zijn [prijs per product](https://azure.microsoft.com/pricing/). Gebruik de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om een schatting te maken van de kosten van het uitvoeren van resources die worden geïmplementeerd door deze blauw druk-voor beeld.
+> De Azure Blueprints-service en de ingebouwde blauwdrukvoorbeelden zijn **gratis**. Azure-resources zijn [geprijsd per product](https://azure.microsoft.com/pricing/). Gebruik de [prijscalculator](https://azure.microsoft.com/pricing/calculator/) om de kosten te schatten voor het uitvoeren van resources die door dit blauwdrukvoorbeeld zijn geïmplementeerd.
 
-## <a name="artifact-parameters-table"></a>Tabel artefact parameters
+## <a name="artifact-parameters-table"></a>Tabel met artefactparameters
 
-De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
+In de volgende tabel ziet u een lijst met de blauwdrukartefactparameters:
 
-|Artefact naam|Type artefact|Parameternaam|Beschrijving|
+|Naam van het artefact|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|Audit IRS 1075 (Rev. 11-2016) Controls en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten|Beleidstoewijzing|Werk ruimte-ID Log Analytics waarvoor Vm's moeten worden geconfigureerd|Dit is de ID (GUID) van de Log Analytics-werk ruimte waarvoor de Vm's moeten worden geconfigureerd.|
-|Audit IRS 1075 (Rev. 11-2016) Controls en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten|Beleidstoewijzing|Lijst met resource typen waarvoor Diagnostische logboeken moeten zijn ingeschakeld|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|Audit IRS 1075 (Rev. 11-2016) Controls en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden uitgesloten van de lokale groep Administrators. Bijvoorbeeld: beheerder; myUser1; myUser2|
-|Audit IRS 1075 (Rev. 11-2016) Controls en implementeer specifieke VM-extensies ter ondersteuning van controle vereisten|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de Windows VM-Beheerders groep|Een door punt komma's gescheiden lijst met leden die moeten worden opgenomen in de lokale groep Administrators. Bijvoorbeeld: beheerder; myUser1; myUser2|
-|Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|Log Analytics agent voor Linux-VM Scale Sets implementeren (VMSS)|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Linux Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|Log Analytics-agent voor Linux-Vm's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën met ondersteund Linux-besturings systeem om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Log Analytics werk ruimte voor Windows VM Scale Sets (VMSS)|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|Log Analytics agent voor Windows-VM Scale Sets (VMSS) implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Log Analytics-werk ruimte voor Windows-Vm's|Als deze werk ruimte zich buiten het bereik van de toewijzing bevindt, moet u de machtigingen voor Log Analytics Inzender (of vergelijkbaar) hand matig toekennen aan de principal-ID van de beleids toewijzing.|
-|Log Analytics-agent voor Windows-Vm's implementeren|Beleidstoewijzing|Optioneel: lijst met VM-installatie kopieën die een ondersteund Windows-besturings systeem hebben om toe te voegen aan het bereik|Een lege matrix kan worden gebruikt om geen optionele para meters aan te duiden:\[\]|
-|Geavanceerde beveiliging tegen bedreigingen implementeren voor opslag accounts|Beleidstoewijzing|Effect|Informatie over beleids effecten vindt u in [inzicht Azure Policy effecten](../../../policy/concepts/effects.md)|
-|Controle op SQL-servers implementeren|Beleidstoewijzing|De waarde in dagen van de Bewaar periode (0 geeft een onbeperkte retentie aan)|Bewaar dagen (optioneel, 180 dagen als niet opgegeven)|
-|Controle op SQL-servers implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account voor SQL Server-controle|Met controle worden database gebeurtenissen geschreven naar een audit logboek in uw Azure Storage-account (er wordt een opslag account gemaakt in elke regio waarin een SQL Server wordt gemaakt dat wordt gedeeld door alle servers in die regio). Belang rijk: voor een juiste werking van de controle bewerking worden de resource groep of de opslag accounts niet verwijderd of de naam ervan gewijzigd.|
-|Diagnostische instellingen voor netwerk beveiligings groepen implementeren|Beleidstoewijzing|Voor voegsel van het opslag account voor diagnostische gegevens van netwerk beveiligings groepen|Dit voor voegsel wordt gecombineerd met de locatie van de netwerk beveiligings groep om de naam van het gemaakte opslag account op te maken.|
-|Diagnostische instellingen voor netwerk beveiligings groepen implementeren|Beleidstoewijzing|Naam van de resource groep voor het opslag account voor diagnostische gegevens van de netwerk beveiligings groep (moet bestaan)|De resource groep waarin het opslag account wordt gemaakt. Deze resource groep moet al bestaan.|
+|IRS 1075 (Rev.11-2016)-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten auditeren|Beleidstoewijzing|Id van de Log Analytics-werkruimte waarvoor VM's moeten worden geconfigureerd|Dit is de id (GUID) van de Log Analytics-werkruimte waarvoor de VM's moeten worden geconfigureerd.|
+|IRS 1075 (Rev.11-2016)-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten auditeren|Beleidstoewijzing|Lijst met resourcetypen waarvoor diagnostische logboeken moeten zijn ingeschakeld|Lijst met resourcetypen die moeten worden gecontroleerd als de instelling voor diagnostische logboeken niet is ingeschakeld. Acceptabele waarden vindt u in de [schema's van diagnostische logboeken van Azure Monitor](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|IRS 1075 (Rev.11-2016)-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten auditeren|Beleidstoewijzing|Lijst met gebruikers die moeten worden uitgesloten van de groep Beheerders voor Windows-VM's|Een lijst met leden die niet moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
+|IRS 1075 (Rev.11-2016)-controles en implementatie van specifieke VM-extensies implementeren ter ondersteuning van de controlevereisten auditeren|Beleidstoewijzing|Lijst met gebruikers die moeten worden opgenomen in de groep Beheerders voor virtuele Windows-machines|Een lijst met leden die moeten worden opgenomen in de lokale groep beheerders, gescheiden door puntkomma's. Bijvoorbeeld: Beheerder; myUser1; myUser2|
+|Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Linux-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|Log Analytics-agent voor Linux-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|Log Analytics-agent voor virtuele Linux-machines implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor virtuele Linux-machines|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|Log Analytics-agent voor virtuele Linux-machines implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Linux-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor Windows-VM-schaalsets (VMSS)|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|Log Analytics-agent voor Windows-VM-schaalsets (VMSS) implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|Log Analytics-agent voor virtuele Windows-machines implementeren|Beleidstoewijzing|Log Analytics-werkruimte voor virtuele Windows-machines|Als deze werkruimte buiten het bereik van de toewijzing valt, moet u aan de principal-id van de beleidstoewijzing handmatig de rechten voor Inzender voor Log Analytics (of vergelijkbaar) toekennen.|
+|Log Analytics-agent voor virtuele Windows-machines implementeren|Beleidstoewijzing|Optioneel: Lijst met VM-installatiekopieën met ondersteuning van het Windows-besturingssysteem die aan het bereik kunnen worden toegevoegd|Een lege matrix kan worden gebruikt om aan te geven dat er geen optionele parameters zijn: \[\]|
+|Advanced Threat Protection implementeren op opslagaccounts|Beleidstoewijzing|Effect|Informatie over de effecten van het beleid vindt u bij [Inzicht in de effecten van Azure-beleid](../../../policy/concepts/effects.md)|
+|Controle op SQL-servers implementeren|Beleidstoewijzing|De waarde in dagen van de bewaarperiode (0 betekent een onbeperkte bewaarperiode)|Bewaarperiode in dagen (optioneel, 180 dagen als u niets opgeeft)|
+|Controle op SQL-servers implementeren|Beleidstoewijzing|De resourcegroepsnaam voor het opslagaccount voor SQL Server-controles|De controle schrijft databasegebeurtenissen naar een auditlogboek in uw Azure Storage-account (er wordt een opslagaccount gemaakt in elke regio waarin een SQL-server wordt gemaakt die wordt gedeeld door alle servers in die regio). Belangrijk: voor de juiste werking van de controle mag u geen resourcegroepen of opslagaccounts verwijderen of hernoemen.|
+|Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren|Beleidstoewijzing|Het voorvoegsel van het opslagaccount voor netwerkbeveiligingsgroepdiagnoses|Dit voorvoegsel vormt in combinatie met de locatie van de netwerkbeveiligingsgroep de naam van het gemaakte opslagaccount.|
+|Diagnostische instellingen voor netwerkbeveiligingsgroepen implementeren|Beleidstoewijzing|De resourcegroepnaam voor het opslagaccount voor netwerkbeveiligingsgroepdiagnoses (moet bestaan)|De resourcegroep waarin het opslagaccount wordt gemaakt. Deze resourcegroep moet al bestaan.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de stappen voor het implementeren van het voor beeld van IRS 1075 (Rev. 11-2016) hebt bekeken, gaat u naar de volgende artikelen voor meer informatie over de blauw druk en de beheer toewijzing:
+Nu u de stappen voor het implementeren van het blauwdrukvoorbeeld IRS 1075 (Rev.11-2016) hebt bekeken, raadpleegt u de volgende artikelen voor informatie over de blauwdruk en de toewijzing van besturingselementen:
 
 > [!div class="nextstepaction"]
-> [1075 blauw druk-overzicht](./index.md)
-> van[IRS 1075 blauw druk-besturings element toewijzing](./control-mapping.md)
+> [Blauwdruk IRS 1075 - overzicht](./index.md)
+> [Blauwdruk IRS 1075 - Indeling van besturingselementen](./control-mapping.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

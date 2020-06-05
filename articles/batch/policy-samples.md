@@ -1,21 +1,21 @@
 ---
-title: Ingebouwde beleids definities voor Azure Batch
-description: Een lijst met Azure Policy ingebouwde beleids definities voor Azure Batch. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/05/2020
+title: Ingebouwde beleidsdefinities voor Azure Batch
+description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure Batch. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
+ms.date: 05/13/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: bd014d7dc79ce310ef95a188d6e7d064b55672be
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: 8ba3c2705be1c165391c2cbc9f11b15e9396ec40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837261"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83637362"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-batch"></a>Azure Policy ingebouwde beleids definities voor Azure Batch
+# <a name="azure-policy-built-in-policy-definitions-for-azure-batch"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Batch
 
-Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor Azure batch. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
+Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure Batch. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-batch"></a>Azure Batch
 

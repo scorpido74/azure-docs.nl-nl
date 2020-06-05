@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie met share point op locatie Azure Active Directory | Microsoft Docs'
+title: 'Zelfstudie: Azure Active Directory-integratie met SharePoint on-premises | Microsoft Docs'
 description: Informatie over de configuratie van eenmalige aanmelding tussen Azure Active Directory en SharePoint on-premises.
 services: active-directory
 documentationCenter: na
@@ -14,128 +14,128 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: miguego
-ms.openlocfilehash: 7e47891a74feb60b0f3e4594bd1621e8b62d64d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: c623ed8cfcdb61081c74a0f7326106c42781cefa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81867101"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648484"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met share point on-premises
+# <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Zelfstudie: Integratie van eenmalige aanmelding in Azure Active Directory met SharePoint on-premises
 
-In deze zelf studie leert u hoe u share point on-premises integreert met Azure Active Directory (Azure AD). Wanneer u share point on-premises integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u SharePoint on-premises integreert met Azure Active Directory (Azure AD). Wanneer u SharePoint on-premises integreert met Azure AD, kunt u:
 
-* Controle in azure AD die on-premises toegang heeft tot share point.
-* Stel uw gebruikers in staat om automatisch te worden aangemeld bij share point on-premises met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Bepaal in Azure AD wie toegang heeft tot SharePoint on-premises.
+* Schakel in dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij SharePoint on-premises.
+* Beheer uw accounts in Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat is toegang tot toepassingen en eenmalige aanmelding van Azure Active Directory?) voor meer informatie over de integratie van SaaS-apps (Software as a Service) met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure Active Directory integratie met share point on-premises wilt configureren, hebt u de volgende items nodig:
+Voor de configuratie van Azure AD-integratie met SharePoint on-premises, hebt u deze items nodig:
 
-* Een Azure Active Directory-abonnement. Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Een share point 2013-Farm of nieuwer.
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
+* Een SharePoint 2013-farm of nieuwer.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure Active Directory eenmalige aanmelding in een test omgeving. Gebruikers van Azure Active Directory hebben on-premises toegang tot uw share point.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding (SSO) van Azure AD configureren en testen. Gebruikers van Azure AD hebben toegang tot uw SharePoint on-premises.
 
-## <a name="create-the-enterprise-applications-in-azure-portal"></a>De Enter prise-toepassingen maken in Azure Portal
+## <a name="create-enterprise-applications-in-the-azure-portal"></a>Bedrijfstoepassingen maken in Azure Portal
 
 Voor het configureren van de integratie van SharePoint on-premises in Azure AD, moet u SharePoint on-premises uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-Voer de volgende stappen uit om SharePoint on-premises uit de galerie toe te voegen:
+Om SharePoint on-premises toe te voegen vanuit de galerie:
 
-1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Selecteer in het meest linkse deelvenster in [Azure Portal](https://portal.azure.com) de optie **Azure Active Directory**.
 
- > [!NOTE]
- > Als het element niet beschikbaar moet zijn, kan het ook worden geopend via de koppeling vaste **alle services** bovenin het navigatie paneel aan de linkerkant. In het volgende overzicht bevindt de **Azure Active Directory** koppeling zich in het gedeelte **identiteit** of kan er worden gezocht met behulp van het tekstvak filter.
+   > [!NOTE]
+   > Als het element niet beschikbaar is, kunt u het ook openen via de koppeling **Alle services** bovenaan in het meest linkse deelvenster. In het volgende overzicht vindt u de **Azure Active Directory**-koppeling in de sectie **Identiteit**. U kunt ook zoeken met behulp van het filtervak.
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u **Nieuwe toepassing** bovenaan het dialoogvenster.
 
-4. Typ **share point on-premises**in het zoekvak, selecteer **share point on-premises** uit het paneel resultaten.
+1. Voer in het zoekvak **SharePoint on-premises** in. Selecteer **SharePoint on-premises** in het resultatenvenster.
 
     <kbd>![SharePoint on-premises in de lijst met resultaten](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
-1. Geef een naam op voor uw share point-premises en klik op de knop **toevoegen** om de toepassing toe te voegen.
+1. Geef een naam op voor uw exemplaar van SharePoint on-premises en klik op **Toevoegen** om de toepassing toe te voegen.
 
-1. Klik in de nieuwe bedrijfs toepassing op Eigenschappen en controleer de waarde voor **gebruikers toewijzing vereist**
+1. Selecteer in de nieuwe bedrijfstoepassing **Eigenschappen** en controleer de waarde voor **Gebruikerstoewijzing vereist?** .
 
-   <kbd>![SharePoint on-premises in de lijst met resultaten](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
+   <kbd>![Gebruikerstoewijzing vereist?-wisselknop](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
-in ons scenario is deze waarde ingesteld op **Nee**.
+   In dit scenario is de waarde ingesteld op **Nee**.
 
 ## <a name="configure-and-test-azure-ad"></a>Azure AD configureren en testen
 
-In deze sectie configureert u eenmalige aanmelding voor Azure AD met share point on-premises.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in SharePoint on-premises tot stand is gebracht.
+In deze sectie configureert u eenmalige aanmelding in Azure AD met SharePoint on-premises. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SharePoint on-premises.
 
-Om Azure Active Directory eenmalige aanmelding te configureren en te testen met share point on-premises, moet u de volgende bouw stenen volt ooien:
+Als u eenmalige aanmelding van Azure AD wilt configureren en testen met SharePoint on-premises, gaat u als volgt te werk:
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**: als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-1. **[Share point on-premises configureren](#configure-sharepoint-on-premises)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-1. **[Maak een Azure AD-test gebruiker in het Azure Portal](#create-an-azure-ad-test-user-in-the-azure-portal)** -Maak een nieuwe gebruiker in azure AD voor eenmalige aanmelding.
-1. **[Maak een Azure AD-beveiligings groep in de Azure Portal](#create-an-azure-ad-security-group-in-the-azure-portal)** -nieuwe beveiligings groep maken in azure AD voor eenmalige aanmelding.
-1. **[Machtigingen verlenen voor Azure Active Directory-account in share point on-premises](#grant-permissions-to-azure-active-directory-account-in-sharepoint-on-premises)** -machtigingen verlenen aan de gebruiker van Azure AD.
-1. **[Machtigingen verlenen aan de Azure AD-groep in share point on-premises](#grant-permissions-to-azure-ad-group-in-sharepoint-on-premises)** -machtigingen verlenen aan de Azure AD-groep.
-1. **[Toegang verlenen tot een gast account voor on-premises share point in de Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal)** -machtigingen verlenen aan gast account in azure AD voor share point on-premises.
-1. **[De vertrouwde id-provider voor meerdere webtoepassingen configureren](#configuring-the-trusted-identity-provider-for-multiple-web-applications)** : gebruik dezelfde provider voor vertrouwde id's voor meerdere webtoepassingen
+- [Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-single-sign-on) zodat uw gebruikers deze functie kunnen gebruiken.
+- [Configureer SharePoint on-premises](#configure-sharepoint-on-premises) om de instellingen voor eenmalige aanmelding aan de kant van de toepassing te configureren.
+- [Maak een Azure AD-testgebruiker in het Azure Portal](#create-an-azure-ad-test-user-in-the-azure-portal) om een nieuwe gebruiker te maken in Azure AD voor eenmalige aanmelding.
+- [Maak een Azure AD-beveiligingsgroep in het Azure Portal](#create-an-azure-ad-security-group-in-the-azure-portal) om een nieuwe beveiligingsgroep te maken in Azure AD voor eenmalige aanmelding.
+- [Geef toestemming aan een Azure AD-account in SharePoint on-premises](#grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises) om toestemmingen te geven aan een Azure AD-gebruiker.
+- [Geef toestemming aan een Azure AD-groep in SharePoint on-premises](#grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises) om toestemmingen te geven aan een Azure AD-groep.
+- [Verleen toegang tot SharePoint on-premises aan een gastaccount in de Azure Portal](#grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal) om toestemmingen te geven aan een gastaccount in Azure AD voor SharePoint on-premises.
+- [Stel de vertrouwde id-provider in voor verschillende webtoepassingen](#configure-the-trusted-identity-provider-for-multiple-web-applications) om dezelfde vertrouwde id-provider te gebruiken voor verschillende webtoepassingen.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
+In deze sectie gaat u eenmalige aanmelding van Azure AD in de Azure Portal inschakelen.
 
-Voor de configuratie van eenmalige Azure AD-aanmelding met SharePoint on-premises, moet u de volgende stappen uitvoeren:
+Om eenmalige aanmelding van Azure AD te configureren met SharePoint on-premises:
 
-1. Open de Azure AD-Directory in de [Azure Portal](https://portal.azure.com/), klik op **bedrijfs toepassingen**, klik op de **eerder gemaakte naam van de bedrijfs toepassing** en klik op **eenmalige aanmelding**.
+1. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de [Azure Portal](https://portal.azure.com/). Selecteer de naam van de bedrijfstoepassing die u eerder heeft aangemaakt en vervolgens **Eenmalige aanmelding**.
 
-2. Klik in het dialoog venster **eenmalige aanmelding selecteren** op de **SAML** -modus om eenmalige aanmelding in te scha kelen.
+1. Selecteer de **SAML**-modus in het dialoogvenster **Selecteer een methode voor eenmalige aanmelding** om eenmalige aanmelding in te schakelen.
  
-3. Klik op het pictogram **bewerken** in het dialoog venster een **basis configuratie** openen voor het configureren van een **eenmalige aanmelding met de SAML-** pagina.
+1. Selecteer op de pagina **Eenmalige aanmelding met SAML instellen** het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
 
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
+1. Voer deze stappen uit in het gedeelte **Standaard SAML-configuratie**:
 
     ![Informatie over eenmalige aanmelding bij het SharePoint on-premises-domein en -URL's](./media/sharepoint-on-premises-tutorial/sp-identifier-reply.png)
 
-    1. In het tekstvak **Id** typt u een URL met het volgende patroon: `urn:<sharepointFarmName>:<federationName>`
+    1. Voer in het vak **Id** een URL in met behulp van dit patroon: `urn:<sharepointFarmName>:<federationName>`.
 
-    1. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://<YourSharePointSiteURL>/_trust/`
+    1. Voer in het vak **Antwoord-URL** een URL in met behulp van dit patroon: `https://<YourSharePointSiteURL>/_trust/`.
 
-    1. Typ in het tekstvak **URL voor aanmelding** een URL met het volgende patroon:`https://<YourSharePointSiteURL>/`
-    1. Klik op opslaan.
+    1. Voer in het vak **Aanmeldings-URL** een URL in met dit patroon: `https://<YourSharePointSiteURL>/`.
+    1. Selecteer **Opslaan**.
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id, de antwoord-URL en de aanmeldings-URL.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL, id en antwoord-URL.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
+1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
-6. Kopieer in de sectie **SharePoint on-premises instellen** de juiste URL('s) overeenkomstig wat u nodig hebt.
+1. Kopieer in de sectie **SharePoint on-premises instellen** de juiste URL('s) op basis van wat u nodig hebt:
     
-    1. **Aanmeldings-URL**
+    - **Aanmeldings-URL**
     
-        De aanmeldings-URL kopiëren Vervang **/saml2** aan het einde met **/wsfed**. Dit zou **https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed** er als volgt uitzien (deze URL is niet nauw keurig)
+        Kopieer de aanmeldings-URL en vervang **/saml2** op het einde door **/wsfed-** , zodat het eruitziet als https://login.microsoftonline.com/2c4f1a9f-be5f-10ee-327d-a95dac567e4f/wsfed. (Deze URL is niet correct.)
 
-    1. **Azure AD-id**
-    1. **Afmeldings-URL**
+    - **Azure AD-id**
+    - **Afmeldings-URL**
+
     > [!NOTE]
-    > Deze URL kan niet worden gebruikt als bevindt zich in share point: u moet **/saml2** vervangen door **/wsfed**. De SharePoint on-premises-toepassing maakt gebruik van een SAML 1.1-token, zodat Azure AD een WS Fed-aanvraag verwacht van de SharePoint-server en na verificatie het SAML 1.1-token uitgeeft.
+    > Deze URL kan niet gebruikt worden in SharePoint. U moet **/saml2** vervangen door **/wsfed**. De SharePoint on-premises-toepassing maakt gebruik van een SAML 1.1-token, zodat Azure AD een WS Fed-aanvraag verwacht van de SharePoint-server. Na verificatie wordt het SAML 1.1-token uitgegeven.
 
-### <a name="configure-sharepoint-on-premises"></a>Share point on-premises configureren
+### <a name="configure-sharepoint-on-premises"></a>SharePoint on-premises configureren
 
-1. **Een nieuwe vertrouwde id-provider maken in share Point server 2016**
+1. Een nieuwe vertrouwde id-provider maken in SharePoint Server 2016.
 
-    Meld u aan bij share Point server en open de share point-beheer shell. Vul de waarden in:
-    1. **$realm** (id-waarde van de sectie share point on-premises domein en url's in de Azure Portal).
-    1. **$wsfedurl** (URL voor eenmalige aanmelding-service).
-   1. **$filepath** (bestandspad waarnaar u het certificaat bestand hebt gedownload) van Azure Portal.
+    Meld u aan bij de server voor SharePoint en open de SharePoint Management Shell. Vul de waarden in:
+    - **$realm** is de id-waarde van de sectie SharePoint on-premises-domein en -URL's in de Azure Portal.
+    - **$wsfedurl** is de URL van de SSO-service.
+    - **$filepath** is het bestandpad waar u het certificaatbestand naar heeft gedownload vanuit de Azure Portal.
 
-    Voer de volgende opdrachten uit om een nieuwe vertrouwde id-provider te configureren.
+    Voer de volgende opdrachten uit om een nieuwe vertrouwde id-provider in te stellen.
 
     > [!TIP]
     > Zie [SharePoint PowerShell](https://docs.microsoft.com/powershell/sharepoint/overview?view=sharepoint-ps) als u geen ervaring hebt met PowerShell of meer wilt weten over hoe PowerShell werkt.
@@ -151,151 +151,148 @@ Voor de configuratie van eenmalige Azure AD-aanmelding met SharePoint on-premise
     $map2 = New-SPClaimTypeMapping -IncomingClaimType "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" -IncomingClaimTypeDisplayName "Role" -SameAsIncoming
     $ap = New-SPTrustedIdentityTokenIssuer -Name "AzureAD" -Description "Azure AD SharePoint server 201x" -realm $realm -ImportTrustCertificate $cert -ClaimsMappings $map1,$map2 -SignInUrl $wsfedurl -IdentifierClaim $map1.InputClaimType
     ```
-1. **De vertrouwde id-provider voor uw toepassing inschakelen**
+1. Schakel de vertrouwde id-provider voor uw toepassing in.
 
-    a. Navigeer in Centraal beheer naar **Webtoepassing beheren** en selecteer de webtoepassing die u wilt beveiligen met Azure AD.
+    1. Navigeer in **Centraal beheer** naar **Webtoepassing beheren** en selecteer de webtoepassing die u wilt beveiligen met Azure AD.
 
-    b. Klik in het lint op **Verificatieproviders** en kies de zone die u wilt gebruiken.
+    1. Selecteer op het lint **Verificatieproviders** en kies de zone die u wilt gebruiken.
 
-    c. Selecteer **Vertrouwde id-provider** en selecteer de id-provider die u zojuist hebt geregistreerd met de naam *AzureAD*.
+    1. Selecteer **Vertrouwde id-provider** en selecteer de id-provider die u zojuist hebt geregistreerd met de naam *AzureAD*.
 
-    d. Klik op **OK**.
+    1. Selecteer **OK**.
 
     ![Uw verificatieprovider configureren](./media/sharepoint-on-premises-tutorial/config-auth-provider.png)
 
-### <a name="create-an-azure-ad-test-user-in-the-azure-portal"></a>Een Azure AD-test gebruiker maken in de Azure Portal
+### <a name="create-an-azure-ad-test-user-in-the-azure-portal"></a>Een Azure AD-testgebruiker maken in Azure Portal
 
-Het doel van deze sectie is het maken van een test gebruiker in het Azure Portal.
+Het doel van deze sectie is om in de Azure-portal een testgebruiker te maken.
 
-1. Selecteer in de Azure Portal in het linkerdeel venster **Azure Active Directory** **in pan-** **gebruikers**selecteren.
+1. Selecteer in het meest linkse deelvenster in Azure Portal de optie **Azure Active Directory**. Selecteer **Beheren** in het deelvenster **Gebruikers**.
 
-2. Selecteer vervolgens **alle gebruikers** , gevolgd door **nieuwe gebruiker** boven aan het scherm.
+1. Selecteer **Alle gebruikers** > **Nieuwe gebruiker** boven aan het scherm.
 
-3. Selecteer de optie **gebruiker maken** en in de gebruikers eigenschappen de volgende stappen uit.  
-   U kunt mogelijk gebruikers in uw Azure AD maken met behulp van uw Tenant achtervoegsel of een geverifieerd domein. 
+1. Selecteer **Gebruiker maken** en volg deze stappen bij de gebruikerseigenschappen. U kunt mogelijk gebruikers aanmaken in uw Azure AD met behulp van uw tenant-achtervoegsel of een geverifieerd domein. 
 
-    a. Voer in het veld **naam** de gebruikers naam in, wij hebben gebruik van **test User**.
+    1. Voer in het vak **Naam** de gebruikersnaam in. We hebben **TestUser** gebruikt.
   
-    b. In het veld **Gebruikersnaam** typt u `TestUser@yourcompanydomain.extension`.  
-    Bijvoorbeeld: TestUser@contoso.com
+    1. Voer in het vak **Gebruikersnaam** `TestUser@yourcompanydomain.extension` in. In dit voorbeeld ziet u `TestUser@contoso.com`.
 
-    ![Het dialoogvenster Gebruiker](./media/sharepoint-on-premises-tutorial/user-properties.png)
+       ![Het dialoogvenster Gebruiker](./media/sharepoint-on-premises-tutorial/user-properties.png)
 
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
+    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die verschijnt in het vak **Wachtwoord**.
 
-    d. Klik op **maken**.
+    1. Selecteer **Maken**.
 
-    e. U kunt de site nu delen met TestUser@contoso.com en toestaan dat deze gebruiker er toegang toe heeft.
+    1. U kunt de site nu delen met TestUser@contoso.com en deze gebruiker toegang geven.
 
-### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Een Azure AD-beveiligings groep maken in de Azure Portal
+### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Een Azure AD-beveiligingsgroep maken in Azure Portal
 
-1. Klik op **Azure Active Directory > groepen**.
+1. Selecteer **Azure Active Directory** > **Groepen**.
 
-2. Klik op **nieuwe groep**:
+1. Selecteer **Nieuwe groep**.
 
-3. **Groeps type**, **groeps naam**, **groeps beschrijving**, **type lidmaatschap**. Klik op de pijl om leden te selecteren, zoek vervolgens naar of klik op het lid dat u aan de groep wilt toevoegen. Klik op **selecteren** om de geselecteerde leden toe te voegen en klik vervolgens op **maken**.
+1. Vul de vakken **Groepstype**, **Groepsnaam**, **Groepsbeschrijving** en **Lidmaatschapstype** in. Gebruik de pijlen om leden te selecteren en zoek of selecteer de leden die u wilt toevoegen aan de groep. Kies **Selecteren** om de geselecteerde leden toe te voegen en selecteer vervolgens **Maken**.
 
-![Een Azure AD-beveiligings groep maken](./media/sharepoint-on-premises-tutorial/new-group.png)
+![Een Azure AD-beveiligingsgroep maken](./media/sharepoint-on-premises-tutorial/new-group.png)
 
-### <a name="grant-permissions-to-azure-active-directory-account-in-sharepoint-on-premises"></a>Machtigingen verlenen voor het Azure Active Directory-account in share point on-premises
+### <a name="grant-permissions-to-an-azure-ad-account-in-sharepoint-on-premises"></a>Geef toestemming aan een Azure AD-account in SharePoint on-premises
 
-Als u toegang wilt verlenen aan de Azure Active Directory gebruiker in de on-premises share point, moet u de site verzameling delen of de Azure Active Directory gebruiker toevoegen aan een van de groep van de site verzameling. Gebruikers kunnen zich nu aanmelden bij share point 201x met behulp van identiteiten vanuit Azure AD, maar er zijn nog steeds mogelijkheden voor verbetering van de gebruikers ervaring. Wanneer u bijvoorbeeld zoekt naar een gebruiker, worden meerdere zoekresultaten weergegeven in de personenkiezer. Er is een Zoek resultaat voor elk van de claim typen die zijn gemaakt in de claim toewijzing. Als u een gebruiker wilt kiezen met de personenkiezer, moet u de gebruikersnaam exact typen en het resultaat van de **naam**claim kiezen.
+Als u een Azure AD-gebruiker toegang wilt verlenen in SharePoint on-premises, deelt u de siteverzameling of voegt u de Azure AD-gebruiker toe aan een van de groepen van de siteverzameling. Gebruikers kunnen zich nu aanmelden bij SharePoint 201X met identiteiten van Azure AD, maar er zijn nog steeds mogelijkheden om de gebruikerservaring te verbeteren. Wanneer u bijvoorbeeld zoekt naar een gebruiker, worden meerdere zoekresultaten weergegeven in de personenkiezer. Er is een zoekresultaat voor elk van de claimtypen die worden gemaakt in de claimtoewijzing. Als u een gebruiker wilt kiezen met de personenkiezer, moet u de gebruikersnaam exact invoeren en het resultaat van de **naam**claim kiezen.
 
 ![Zoekresultaten van claims](./media/sharepoint-on-premises-tutorial/claims-search-results.png)
 
-Er is geen validatie voor de waarden die u zoekt, wat kan leiden tot spel fouten of gebruikers hebben per ongeluk het verkeerde claim type gekozen. Hierdoor hebben gebruikers mogelijk geen toegang tot resources.
+Er wordt geen validatie uitgevoerd op de waarden die u zoekt, wat tot spelfouten kan leiden of ervoor kan zorgen dat gebruikers per ongeluk het verkeerde claimtype kiezen. In deze situatie hebben gebruikers mogelijk geen toegang tot resources.
 
-**Voor het oplossen van de personen kiezer** met dit scenario is er een open-source oplossing met de naam [AzureCP](https://yvand.github.io/AzureCP/) die een aangepaste claim provider biedt voor share point 2013, 2016 en 2019. De Microsoft Graph-API wordt gebruikt om te achterhalen wat gebruikers invoeren en validatie uitvoeren. U vindt hierover meer informatie op [AzureCP](https://yvand.github.io/AzureCP/).
+De open-sourceoplossing [AzureCP](https://yvand.github.io/AzureCP/) biedt een aangepaste claimprovider voor SharePoint 2013, 2016 en 2019 om dit scenario bij het selecteren van personen op te lossen. Deze maakt gebruik van de Microsoft Graph API om te corrigeren wat gebruikers invoeren en validatie uit te voeren. Ga voor meer informatie naar [AzureCP](https://yvand.github.io/AzureCP/).
 
   > [!NOTE]
-  > Zonder AzureCP kunt u groepen toevoegen door de ID van de Azure AD-groep toe te voegen, maar dit is niet de gebruiks vriendelijke en betrouw bare. U ziet het volgende:  
-  >   
-  >![Azure AD-groep toevoegen aan share point-groep](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
+  > Zonder AzureCP kunt u groepen toevoegen met behulp van de groeps-id van Azure AD, maar deze methode is niet gebruikersvriendelijk en betrouwbaar. Zo gaat dat:
+  > 
+  >![Voeg een Azure AD-groep toe aan een SharePoint-groep](./media/sharepoint-on-premises-tutorial/adding-group-by-id.png)
   
-### <a name="grant-permissions-to-azure-ad-group-in-sharepoint-on-premises"></a>Machtigingen verlenen aan een Azure AD-groep in share point on-premises
+### <a name="grant-permissions-to-an-azure-ad-group-in-sharepoint-on-premises"></a>Geef toestemming aan een Azure AD-groep in SharePoint on-premises
 
-Als u Azure Active Directory beveiligings groepen on-premises wilt toewijzen aan share point, moet u een aangepaste claim provider voor share Point server gebruiken. In ons voor beeld hebben we AzureCP gebruikt.
+Om Azure AD-beveiligingsgroepen toe te wijzen aan SharePoint on-premises moet u een aangepaste claimprovider gebruiken voor SharePoint Server. In dit voorbeeld wordt AzureCP gebruikt.
 
  > [!NOTE]
- > Houd er rekening mee dat AzureCP geen micro soft-product is of niet wordt ondersteund door de technische ondersteuning van micro soft. Down load, installeer en configureer AzureCP op de on-premises share https://yvand.github.io/AzureCP/Point-Farm per. 
+ > AzureCP is geen Microsoft-product en wordt niet ondersteund door Microsoft Ondersteuning. Ga naar de website van [AzureCP](https://yvand.github.io/AzureCP/) om AzureCP te downloaden, installeren en configureren op de on-premises SharePoint-farm. 
 
-1. Configureer de AzureCP op de share point on-premises-Farm of een alternatieve oplossing voor aangepaste claim providers. de stappen voor de configuratie van AzureCP zijn beschikbaar ophttps://yvand.github.io/AzureCP/Register-App-In-AAD.html
+1. Configureer AzureCP op de on-premises SharePoint-farm of een alternatieve oplossing van een aangepaste claimprovider. Ga naar de website van [AzureCP](https://yvand.github.io/AzureCP/Register-App-In-AAD.html) om AzureCP te configureren.
 
-1. Open de Azure AD-Directory in de Azure Portal. Klik op **bedrijfs toepassingen**, klik op de **eerder gemaakte bedrijfs toepassings naam** en klik op **eenmalige aanmelding**.
+1. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de naam van de bedrijfstoepassing die u eerder heeft aangemaakt en vervolgens **Eenmalige aanmelding**.
 
-1. Bewerk op de pagina **eenmalige aanmelding met Sam**de **gebruikers kenmerken & sectie claims** .
+1. Bewerk de sectie **Gebruikerskenmerken en claims** op de pagina **Eenmalige aanmelding met SAML instellen**.
 
-1. Klik op **een groepclaim toevoegen**.
+1. Selecteer **Een groepsclaim toevoegen**.
 
-1. Selecteer welke groepen die aan de gebruiker zijn gekoppeld, moeten worden geretourneerd in de claim. in ons geval selecteert u **alle groepen** en in de sectie Bron kenmerk selecteert u **groeps-id** en klikt u op **Opslaan**.
+1. Selecteer welke groepen die zijn gekoppeld aan de gebruiker in de claim moeten worden geretourneerd. Selecteer in dit geval **Alle groepen**. Selecteer **Groeps-id** en vervolgens **Opslaan** in de sectie **Bronkenmerk**.
 
-Als u toegang wilt verlenen tot de Azure Active Directory beveiligings groep in de on-premises share point, moet u de site verzameling delen of de Azure Active Directory-beveiligings groep toevoegen aan een van de groepen van de site verzameling.
+Als u de Azure AD-beveiligingsgroep toegang wilt verlenen in SharePoint on-premises, deelt u de siteverzameling of voegt u de Azure AD-beveiligingsgroep toe aan een van de groepen van de siteverzameling.
 
-1. Blader naar de share point-site verzameling onder site-instellingen voor de site verzameling en klik op personen en groepen. Selecteer de share point-groep en klik vervolgens op nieuw, gebruikers aan deze groep toevoegen en begin met het typen van de naam van de groep die door de persoons kiezer wordt weer gegeven de Azure Active Directory beveiligings groep.
+1. Ga naar **SharePoint-siteverzameling**. Selecteer **Personen en groepen** onder **Site-instellingen** voor de siteverzameling. 
 
-    ![Azure AD-groep toevoegen aan share point-groep](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
+1. Selecteer de SharePoint-groep en vervolgens **Nieuw** > **Gebruikers toevoegen aan deze groep**. Wanneer u de naam van uw groep typt geeft de personenkiezer de Azure AD-beveiligingsgroep weer.
 
-### <a name="grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal"></a>Toegang verlenen tot een gast account voor on-premises share point in de Azure Portal
+    ![Voeg een Azure AD-groep toe aan een SharePoint-groep](./media/sharepoint-on-premises-tutorial/permission-azure-ad-group.png)
 
-het is nu mogelijk om toegang tot uw share point-site op een consistente manier te verlenen aan een gast account. De UPN wordt gewijzigd. Gebruiker met jdoe@outlook.com wordt weer gegeven als `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com`. Het is mogelijk om een naadloze ervaring te krijgen tijdens het delen van uw site met externe gebruikers. het is daarom nood zakelijk om enkele wijzigingen toe te voegen aan de sectie kenmerken van uw **gebruikers & claims** in de Azure Portal.
+### <a name="grant-access-to-a-guest-account-to-sharepoint-on-premises-in-the-azure-portal"></a>Verleen een gastaccount toegang tot SharePoint on-premises in de Azure Portal.
 
-1. Open de Azure AD-Directory in de Azure Portal. Klik op **bedrijfs toepassingen**, klik op de **eerder gemaakte bedrijfs toepassings naam** en klik op **eenmalige aanmelding**.
+U kunt een gastaccount op een consistente wijze toegang verlenen tot uw SharePoint-site omdat de UPN nu gewijzigd wordt. De gebruiker `jdoe@outlook.com` wordt nu bijvoorbeeld weergegeven als `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com`. Om uw site te delen met externe gebruikers moet u enkele wijzigingen aanbrengen in uw sectie **Gebruikerskenmerken en claims** in de Azure Portal.
 
-1. Bewerk op de pagina **eenmalige aanmelding met Sam**de **gebruikers kenmerken & sectie claims** .
+1. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de naam van de bedrijfstoepassing die u eerder heeft aangemaakt en vervolgens **Eenmalige aanmelding**.
 
-1. Klik in de **vereiste claim** zone op **unieke gebruikers-ID (naam-id)**.
+1. Bewerk de sectie **Gebruikerskenmerken en claims** op de pagina **Eenmalige aanmelding met SAML instellen**.
 
-1. Wijzig de eigenschap **bron kenmerk** in de waarde **User. localuserprincipalname** en **Sla**het bestand op.
+1. Selecteer **unieke gebruikers-id (Naam-ID)** bij **Vereiste claim**.
 
-    ![Gebruikers kenmerken & eerste claims](./media/sharepoint-on-premises-tutorial/manage-claim.png)
+1. Verander de eigenschap **Bronkenmerk** naar de waarde **user.localuserprincipalname**en selecteer **Opslaan**.
 
-1. Het lint gebruiken ga terug naar op **SAML gebaseerde aanmelding** nu de **gebruikers kenmerken & claim** sectie er als volgt uitzien: 
+    ![Gebruikerskenmerken en claims initieel](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
-    ![Gebruikers kenmerken & definitief claims](./media/sharepoint-on-premises-tutorial/user-attributes-claims-final.png)  
+1. Ga via het lint terug naar **Op SAML gebaseerde aanmelding**. Nu ziet de sectie **Gebruikerskenmerken en claims** er zo uit: 
+
+    ![Gebruikerskenmerken en claims definitief](./media/sharepoint-on-premises-tutorial/user-attributes-claims-final.png)
 
     > [!NOTE]
-    > Voor de achternaam en de voor waarde zijn niet vereist in deze installatie.
+    > Een achternaam en roepnaam zijn niet vereist voor deze installatie.
 
-1. Selecteer in de Azure Portal in het linkerdeel venster **Azure Active Directory**de optie **gebruikers**.
+1. Selecteer in het meest linkse deelvenster in Azure Portal de optie **Azure Active Directory** en vervolgens **Gebruikers**.
 
-1. Klik op **nieuwe gast gebruiker**
+1. Selecteer **Nieuwe gastgebruiker**.
 
-1. Selecteer de optie **gebruiker uitnodigen** en vul de eigenschappen van de gebruiker in en klik op **uitnodigen**.
+1. Selecteer de optie **Gebruiker uitnodigen**. Vul de gebruikerseigenschappen in en selecteer **Uitnodigen**.
 
-1. U kunt de site nu delen met MyGuestAccount@outlook.com en toestaan dat deze gebruiker er toegang toe heeft.
+1. U kunt de site nu delen met MyGuestAccount@outlook.com en deze gebruiker toegang geven.
 
-    ![Site delen met een gast account](./media/sharepoint-on-premises-tutorial/sharing-guest-account.png)
+    ![Een site delen met een gastaccount](./media/sharepoint-on-premises-tutorial/sharing-guest-account.png)
 
-### <a name="configuring-the-trusted-identity-provider-for-multiple-web-applications"></a>De vertrouwde id-provider voor meerdere webtoepassingen configureren
+### <a name="configure-the-trusted-identity-provider-for-multiple-web-applications"></a>De vertrouwde id-provider voor meerdere webtoepassingen configureren
 
-De configuratie werkt voor één webtoepassing. Als u dezelfde vertrouwde id-provider wilt gebruiken voor meerdere webtoepassingen, moet u aanvullende configuratiestappen uitvoeren. Stel, u hebt een webtoepassing uitgebreid voor gebruik van de URL `https://sales.contoso.com` en u wilt de gebruikers ook verifiëren voor `https://marketing.contoso.com`. Hiervoor moet de id-provider worden bijgewerkt om te voldoen aan de WReply-parameter en moet de toepassingsregistratie in Azure AD worden bijgewerkt om een antwoord-URL toe te voegen.
+De configuratie werkt voor één webtoepassing. Als u dezelfde vertrouwde id-provider wilt gebruiken voor meerdere webtoepassingen, moet u aanvullende configuratiestappen uitvoeren. Stel, u hebt een webtoepassing uitgebreid om de URL te gebruiken `https://sales.contoso.com` en wilt nu de gebruikers ook verifiëren voor `https://marketing.contoso.com`. Hiervoor moet u de id-provider bijwerken om te voldoen aan de WReply-parameter en moet u de toepassingsregistratie in Azure AD bijwerken om een antwoord-URL toe te voegen.
 
-1. Open de Azure AD-Directory in de Azure Portal. Klik op **bedrijfs toepassingen**, klik op de **eerder gemaakte bedrijfs toepassings naam** en klik op **eenmalige aanmelding**.
+1. Selecteer **Azure Active Directory** > **Bedrijfstoepassingen** in de Azure Portal. Selecteer de naam van de bedrijfstoepassing die u eerder heeft aangemaakt en vervolgens **Eenmalige aanmelding**.
 
-2. Bewerk op de pagina **eenmalige aanmelding met Sam**de **elementaire SAML-configuratie**.
+1. Bewerk **Standaard SAML-configuratie** op de pagina **Eenmalige aanmelding met SAML instellen**.
 
-    ![Eenvoudige SAML-configuratie bewerken](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
+    ![Standaard SAML-configuratie](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 
-3. Voeg in **antwoord-URL (assertion Consumer Service-URL)** de URL voor de extra webtoepassingen toe en klik op **Opslaan**.
+1. Voeg de URL voor de aanvullende webtoepassingen toe en selecteer **Opslaan** voor **Antwoord-URL (URL voor Assertion Consumer Service)** .
 
-    ![Eenvoudige SAML-configuratie bewerken](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
+    ![De standaard SAML-configuratie bewerken](./media/sharepoint-on-premises-tutorial/reply-url-for-web-application.png)
 
-4. Open de **share point 201X-beheer shell** op de share Point-server en voer de volgende opdrachten uit met behulp van de naam van de uitgever van het vertrouwde identiteits token dat u eerder hebt gebruikt.
+1. Open de SharePoint 201x-beheershell op de SharePoint-server en voer de volgende opdrachten uit. Gebruik de naam van de uitgever van het vertrouwde identiteitstoken dat u eerder hebt gebruikt.
     ```
     $t = Get-SPTrustedIdentityTokenIssuer "AzureAD"
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
-5. Ga in Centraal beheer naar de webtoepassing en schakel de bestaande vertrouwde id-provider in.
+1. Ga in **Centraal beheer** naar de webtoepassing en schakel de bestaande vertrouwde id-provider in.
 
-U hebt mogelijk een ander scenario waarbij u toegang wilt verlenen tot uw on-premises share point voor uw interne gebruikers, voor dit scenario moet u Microsoft Azure Active Directory Connect implementeren waarmee u uw lokale gebruikers kunt synchroniseren met Azure Active Directory. deze installatie maakt deel uit van een ander artikel. 
+Mogelijk zijn er andere scenario's waarbij u toegang wilt verlenen tot uw exemplaar van SharePoint on-premises aan uw interne gebruikers. Voor dit scenario moet u Microsoft Azure Active Directory Connect implementeren zodat het mogelijk wordt om uw on-premises gebruikers te synchroniseren met Azure AD. Deze installatie wordt in een ander artikel besproken.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-
-- [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
-
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
-- [Wat is een hybride identiteit met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)
+- [Wat is hybride identiteit met Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity)

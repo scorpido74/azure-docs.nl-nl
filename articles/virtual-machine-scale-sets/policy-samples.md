@@ -1,24 +1,24 @@
 ---
-title: Ingebouwde beleids definities voor schaal sets van virtuele Azure-machines
-description: Een lijst met Azure Policy ingebouwde beleids definities voor schaal sets voor virtuele Azure-machines. Deze ingebouwde beleids definities bieden gang bare benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/05/2020
+title: Ingebouwde beleidsdefinities voor Azure-virtuele-machineschaalsets
+description: Toont ingebouwde Azure Policy-beleidsdefinities voor Azure-virtuele-machineschaalsets. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
+ms.date: 05/13/2020
 ms.topic: sample
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 9809be2fd86aec287a1986250955eac5e8220cc4
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: 0c408fc37e59b20770266a018c55e2465744943f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842957"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655151"
 ---
-# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machine-scale-sets"></a>Azure Policy ingebouwde beleids definities voor schaal sets van virtuele Azure-machines
+# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-machine-scale-sets"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure-virtuele-machineschaalsets
 
-Deze pagina bevat een index van [Azure Policy](../governance/policy/overview.md) ingebouwde beleids definities voor schaal sets van virtuele Azure-machines. Zie [Azure Policy ingebouwde definities](../governance/policy/samples/built-in-policies.md)voor aanvullende Azure Policy-invoeg toepassingen voor andere services.
+Deze pagina is een index van ingebouwde [Azure Policy](../governance/policy/overview.md)-beleidsdefinities voor Azure-virtuele-machineschaalsets. Zie [Ingebouwde Azure Policy-definities](../governance/policy/samples/built-in-policies.md) voor aanvullende ingebouwde modules voor Azure Policy voor andere services.
 
-De naam van elke ingebouwde beleids definitie is gekoppeld aan de beleids definitie in de Azure Portal. Gebruik de koppeling in de kolom **github** om de bron weer te geven op het [Azure Policy github opslag plaats](https://github.com/Azure/azure-policy).
+De naam van elke ingebouwde beleidsdefinitie linkt naar de beleidsdefinitie in de Azure-portal. Gebruik de koppeling in de **GitHub**-kolom om de bron te bekijken op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy).
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 

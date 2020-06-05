@@ -4,44 +4,48 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b2b3ca886359a0b4c906b89ed76f57486fc2c368
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67135046"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639004"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Een Spatial Anchors-resource maken
 
 Ga naar de <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-Selecteer in het navigatie deel venster links in de Azure Portal **een resource maken**.
+Selecteer **Een resource maken** in het navigatiedeelvenster aan de linkerkant van de Azure-portal.
 
-Gebruik het zoekvak om te zoeken naar **ruimtelijke ankers**.
+Gebruik het zoekvak om te zoeken naar **Spatial Anchors**.
 
    ![Zoeken naar Spatial Anchors](./media/spatial-anchors-get-started-create-resource/portal-search.png)
 
-Selecteer **ruimtelijk ankers**. Selecteer in het dialoog venster **maken**.
+Selecteer **Spatial Anchors**. Selecteer **Maken** in het dialoogvenster.
 
-In het dialoog venster **ruimtelijk ankers-account** :
+In het dialoogvenster **Spatial Anchors-account**:
 
-- Voer een unieke resource naam in, met behulp van reguliere alfanumerieke tekens.
+- Voer een unieke resourcenaam in, met reguliere alfanumerieke tekens.
 - Selecteer het abonnement waaraan u de resource wilt koppelen.
-- Maak een resource groep door **Nieuw maken**te selecteren. Noem deze **myResourceGroup** en selecteer **OK**.
+- Maak een resourcegroep door **Nieuwe maken** te selecteren. Noem het **myResourceGroup** en selecteer **OK**.
       [!INCLUDE [resource group intro text](resource-group.md)]
-- Selecteer een locatie (regio) waarin u de resource wilt plaatsen.
+- Selecteer de locatie (regio) waarin u de resource wilt plaatsen.
 - Selecteer **Nieuw** om te beginnen met het maken van de resource.
 
    ![Een resource maken](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Nadat de resource is gemaakt, wordt in azure portal weer gegeven dat uw implementatie is voltooid. Klik op **Ga naar resource**.
+Nadat de resource is gemaakt, toont de Azure-portal dat uw implementatie is voltooid. Klik op **Ga naar resource**.
 
 ![Implementatie voltooid](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-Vervolgens kunt u de eigenschappen van de resource weer geven. Kopieer de waarde van de **account-id** van de resource naar een tekst editor, want u hebt deze later nodig.
+Vervolgens kunt u de resource-eigenschappen bekijken. Kopieer de waarde bij **Account-ID** van de resource naar een teksteditor. U hebt deze later nodig.
 
    ![Resource-eigenschappen](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 
-Onder **instellingen**selecteert u **sleutel**. Kopieer de waarde van de **primaire sleutel** naar een tekst editor. Deze waarde is de `Account Key`. U hebt deze later nodig.
+Kopieer ook de waarde bij **Accountdomein** van de resource naar een teksteditor. U hebt deze later nodig.
+
+   ![Accountdomein](./media/spatial-anchors-get-started-create-resource/view-resource-domain.png)
+
+Selecteer onder **Instellingen** de optie **Sleutel**. Kopieer de waarde bij **Primaire sleutel** naar een teksteditor. Deze waarde is de `Account Key`. U hebt deze later nodig.
 
    ![Accountsleutel](./media/spatial-anchors-get-started-create-resource/view-account-key.png)

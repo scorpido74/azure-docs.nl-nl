@@ -52,7 +52,7 @@ Elk fysiek AssetFile kan in de waarde nul bevatten of meer Video's worden getrac
 | **Id**<br /> Vereist |Op nul gebaseerde index van deze video track. **Opmerking:**  Deze **id** is niet noodzakelijkerwijs de TrackID die in een MP4-bestand wordt gebruikt. <br /><br />Voorbeeld: `"Id": 1`|
 | **FourCC**<br />Vereist | Een code van de video-codec die wordt gerapporteerd door ffmpeg.  <br /><br />Voorbeeld: `"FourCC": "avc1"`|
 | **Profiel** |H264-Profiel (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Profile": "High"` |
-| **Afvlakking** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
+| **Niveau** |Niveau H264 (alleen van toepassing op H264-codec).  <br /><br />Voorbeeld: `"Level": "3.2"`|
 | **Width**<br />Vereist |Breedte van gecodeerde video in pixels.  <br /><br />Voorbeeld: `"Width": "1280"`|
 | **Height**<br />Vereist |Versleutelde video hoogte in pixels.  <br /><br />Voorbeeld: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Vereist|Teller voor hoogte-breedte verhouding video weergave.  <br /><br />Voorbeeld: `"DisplayAspectRatioNumerator": 16.0`|

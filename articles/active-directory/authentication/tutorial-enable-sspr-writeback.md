@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory wacht woord terugschrijven inschakelen
-description: In deze zelf studie leert u hoe u terugschrijven van Azure AD selfservice voor wacht woord opnieuw instellen kunt inschakelen met Azure AD Connect om wijzigingen terug te synchroniseren naar een on-premises Active Directory Domain Services omgeving.
+title: Wachtwoord terugschrijven in Azure Active Directory inschakelen
+description: In deze zelfstudie leert u hoe het terugschrijven van self-service voor wachtwoordherstel in Azure AD kunt inschakelen met Azure AD Connect, voor het synchroniseren van wijzingen met een on-premises Active Directory Domain Services-omgeving.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -10,143 +10,147 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd4815187e829cff56893988874e4dcac3b8985e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: d0ea181b0e6ac18a559614c5bce0707775acdcec
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143763"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640192"
 ---
-# <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Zelf studie: terugschrijven naar een on-premises omgeving inschakelen Azure Active Directory self-service voor wacht woord opnieuw instellen
+# <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Zelfstudie: Terugschrijven van self-service voor wachtwoordherstel in Azure Active Directory inschakelen voor on-premises omgeving
 
-Met Azure Active Directory (Azure AD) self-service voor wachtwoord herstel (SSPR) kunnen gebruikers hun wacht woord bijwerken of hun account ontgrendelen met een webbrowser. In een hybride omgeving waar Azure AD is verbonden met een on-premises Active Directory Domain Services-omgeving (AD DS), kan dit scenario ertoe leiden dat wacht woorden verschillen tussen de twee directory's.
+Met self-service voor wachtwoordherstel (SSPR) in Azure Active Directory (Azure AD) kunnen gebruikers hun wachtwoord bijwerken of hun account ontgrendelen in een webbrowser. In een hybride omgeving waarin Azure AD is gekoppeld aan een on-premises Active Directory Domain Services-omgeving (AD DS), kan dit scenario ertoe leiden dat wachtwoorden verschillend zijn in de twee directory’s.
 
-Wacht woord terugschrijven kan worden gebruikt om wachtwoord wijzigingen in azure AD terug te synchroniseren naar uw on-premises AD DS omgeving. Azure AD Connect biedt een beveiligd mechanisme om deze wachtwoord wijzigingen terug te sturen naar een bestaande on-premises adres lijst vanuit Azure AD.
+Wachtwoord terugschrijven wordt gebruikt om wachtwoordwijzigingen in Azure AD terug te synchroniseren met uw on-premises AD DS-omgeving. Azure AD Connect biedt een beveiligd mechanisme voor het terugzenden van deze wachtwoordwijzigingen naar een bestaande on-premises directory van Azure AD.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * De vereiste machtigingen voor het terugschrijven van wacht woorden configureren
-> * Schakel de optie voor het terugschrijven van wacht woorden in Azure AD Connect
-> * Wacht woord terugschrijven inschakelen in azure AD SSPR
+> * De benodigde machtigingen voor het terugschrijven van wachtwoorden configureren
+> * De optie Wachtwoord terugschrijven inschakelen in Azure AD Connect
+> * Wachtwoord terugschrijven inschakelen in Azure AD SSPR
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende resources en bevoegdheden nodig om deze zelf studie te volt ooien:
+Voor het voltooien van deze zelfstudie hebt u de volgende resources en machtigingen nodig:
 
 * Een werkende Azure AD-tenant waarop minimaal een proeflicentie is ingeschakeld.
-    * Maak indien nodig [een gratis versie](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-    * Zie [licentie vereisten voor Azure AD SSPR](concept-sspr-licensing.md)voor meer informatie.
-* Een account met *globale beheerders* bevoegdheden.
-* Azure AD is geconfigureerd voor Self-service voor het opnieuw instellen van wacht woorden.
-    * Voer, indien nodig, [de vorige zelf studie uit om Azure AD SSPR in te scha kelen](tutorial-enable-sspr.md).
-* Een bestaande on-premises AD DS omgeving die is geconfigureerd met de huidige versie van Azure AD Connect.
-    * Configureer zo nodig Azure AD Connect met behulp van de [snelle](../hybrid/how-to-connect-install-express.md) of [aangepaste](../hybrid/how-to-connect-install-custom.md) instellingen.
-    * Als u wacht woord terugschrijven wilt gebruiken, moeten uw domein controllers Windows Server 2008 R2 of later zijn.
+    * [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) indien nodig.
+    * Zie [Licentievereisten voor Azure AD SSPR](concept-sspr-licensing.md) voor meer informatie.
+* Een account met de bevoegdheden van een *globale beheerder*.
+* Azure Active Directory geconfigureerd voor de self-service voor wachtwoordherstel.
+    * Voltooi indien nodig [de vorige zelfstudie om Azure Active Directory SSPR in te schakelen](tutorial-enable-sspr.md).
+* Een bestaande on-premises AD DS-omgeving die is geconfigureerd met een actuele versie van Azure AD Connect.
+    * Configureer indien nodig Azure AD Connect met de instellingen [Express](../hybrid/how-to-connect-install-express.md) of [Aangepast](../hybrid/how-to-connect-install-custom.md).
+    * Om wachtwoord terugschrijven te kunnen gebruiken, moeten uw domeincontrollers Windows Server 2008 R2 of hoger zijn.
 
-## <a name="configure-account-permissions-for-azure-ad-connect"></a>Account machtigingen voor Azure AD Connect configureren
+## <a name="configure-account-permissions-for-azure-ad-connect"></a>Accountmachtigingen configureren voor Azure AD Connect
 
-Met Azure AD Connect kunt u gebruikers, groepen en referenties synchroniseren tussen een on-premises AD DS omgeving en Azure AD. Doorgaans installeert u Azure AD Connect op een computer met Windows Server 2012 of hoger die is gekoppeld aan het on-premises AD DS domein.
+Met Azure AD Connect kunt u gebruikers, groepen en referenties synchroniseren tussen een on-premises AD DS-omgeving en Azure Active Directory. Meestal wordt Azure AD Connect geïnstalleerd op een computer met Windows 2012 of hoger, die deel uitmaakt van het on-premises AD DS-domein.
 
-Als u wilt werken met SSPR write-back, moeten de juiste machtigingen en opties zijn ingesteld voor het account dat is opgegeven in Azure AD Connect. Als u niet zeker weet welk account momenteel in gebruik is, opent u Azure AD Connect en selecteert u de optie **huidige configuratie weer geven** . Het account waaraan u machtigingen moet toevoegen, wordt vermeld onder **gesynchroniseerde mappen**. De volgende machtigingen en opties moeten worden ingesteld op het account:
+Om terugschrijven met SSPR goed te laten werken, moeten voor het account dat is opgegeven in Azure AD Connect de juiste machtigingen en opties zijn ingesteld. Als u niet zeker weet welke account momenteel in gebruik is, opent u Azure AD Connect en selecteert u de optie **Huidige configuratie weergeven**. Het account waaraan u machtigingen moet geven wordt vermeld onder **Gesynchroniseerde mappen**. Voor het account moeten de volgende machtigingen en opties zijn ingesteld:
 
 * **Wachtwoord opnieuw instellen**
-* **Schrijf machtigingen** op`lockoutTime`
-* **Schrijf machtigingen** op`pwdLastSet`
-* **Uitgebreide rechten** voor het ' wacht woord voor het verstrijken ' op een van de volgende:
-   * Het hoofd object van *elk domein* in het forest
-   * De organisatie-eenheden (Ou's) van de gebruiker die u in het bereik van SSPR wilt hebben
+* **Schrijfmachtigingen** voor `lockoutTime`
+* **Schrijfmachtigingen** voor `pwdLastSet`
+* **Uitgebreide rechten** voor het herstellen van verlopen wachtwoorden op een van de volgende:
+   * Het hoofdobject van *elk domein* in dat forest
+   * De organisatie-eenheden (OU’s) van de gebruiker die binnen het bereik van SSPR moeten liggen
 
-Als u deze machtigingen niet toewijst, lijkt write-back correct te zijn geconfigureerd, maar kunnen gebruikers fouten tegen komen wanneer ze hun on-premises wacht woorden vanuit de Cloud beheren. Machtigingen moeten worden toegepast op **Dit object en alle onderliggende objecten** om het wacht woord te verstrijken om te worden weer gegeven.  
+Als u deze machtigingen niet toewijst, lijkt terugschrijven correct geconfigureerd, maar krijgen de gebruikers te maken met fouten bij het beheren van hun on-premises wachtwoorden in de cloud. Machtigingen moeten zijn toegepast op **dit object en alle onderliggende objecten** voordat de optie om verlopen wachtwoorden te herstellen verschijnt.  
 
-Voer de volgende stappen uit om de juiste machtigingen voor het terugschrijven van wacht woorden in te stellen:
+> [!TIP]
+>
+> Als wachtwoorden voor sommige gebruikersaccounts niet worden teruggeschreven naar on-premises map, moet u ervoor zorgen dat overname niet is uitgeschakeld voor het account in de on-premises AD DS-omgeving. Schrijfrechten voor wachtwoorden moeten worden toegepast op onderliggende objecten om deze functie correct te laten werken.
 
-1. Open in uw on-premises AD DS omgeving **Active Directory gebruikers en computers** met een account met de juiste machtigingen voor *domein beheerders* .
-1. Controleer of in het menu **beeld** de optie **geavanceerde functies** is ingeschakeld.
-1. Klik in het linkerdeel venster met de rechter muisknop op het object dat staat voor de hoofdmap van het domein en selecteer **Eigenschappen** > **beveiliging** > **Geavanceerd**.
-1. Selecteer **toevoegen**op het tabblad **machtigingen** .
-1. Selecteer voor **Principal**het account waarmee machtigingen moeten worden toegepast (het account dat wordt gebruikt door Azure AD Connect).
-1. Selecteer in de vervolg keuzelijst **van toepassing op** de optie **onderliggende gebruikers objecten**.
-1. Schakel onder *machtigingen*het selectie vakje in voor de volgende optie:
+Voer de volgende stappen uit om de juiste machtigingen voor het terugschrijven van wachtwoorden in te stellen:
+
+1. Open in uw on-premises AD DS-omgeving **Active Directory: gebruikers en computers** met een account met de juiste *machtigingen voor domeinbeheer*.
+1. Zorg ervoor dat in het menu **Weergave** de optie **Geavanceerde functies** is ingeschakeld.
+1. Selecteer in het linkerdeelvenster met de rechtermuisknop het object dat staat voor de hoofdmap van het domein en selecteer **Eigenschappen** > **Beveiliging** > **Geavanceerd**.
+1. Selecteer op het tabblad **Machtigingen** de optie **Toevoegen**.
+1. Selecteer voor **Principal** het account waarop de machtigingen moeten worden toegepast (het account dat wordt gebruikt door Azure AD Connect).
+1. Selecteer in de vervolgkeuzelijst **Van toepassing op** de optie **Onderliggende gebruikersobjecten**.
+1. Selecteer onder *Machtigingen* het selectievakje voor de volgende optie:
     * **Wachtwoord opnieuw instellen**
-1. Schakel onder *Eigenschappen*de selectie vakjes in voor de volgende opties. U moet door de lijst schuiven om deze opties te vinden, die mogelijk standaard al zijn ingesteld:
-    * **LockoutTime schrijven**
-    * **PwdLastSet schrijven**
+1. Selecteer onder *Eigenschappen* de selectievakjes voor de volgende opties. U moet door de lijst bladeren om deze opties te vinden, die mogelijk al standaard zijn ingeschakeld:
+    * **Write lockoutTime**
+    * **Write pwdLastSet**
 
     [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
-1. Wanneer u klaar bent, selecteert u **Toep assen/OK** om de wijzigingen toe te passen en geopende dialoog vensters te sluiten.
+1. Wanneer u klaar bent, selecteert u **Toepassen/OK** om de wijzigingen toe te passen en eventuele geopende dialoogvensters te sluiten.
 
-Wanneer u machtigingen bijwerkt, kan het tot een uur of langer duren voordat deze machtigingen worden gerepliceerd naar alle objecten in uw Directory.
+Wanneer u machtigingen bijwerkt, kan het tot een uur of langer duren voordat deze machtigingen worden gerepliceerd naar alle objecten in uw directory.
 
-Wachtwoord beleid in de on-premises AD DS omgeving kan verhinderen dat het wacht woord opnieuw wordt ingesteld op de juiste manier. Het terugschrijven van wacht woorden werkt alleen efficiënt als het groeps beleid voor *minimale wachtwoord duur* is ingesteld op 0. Deze instelling vindt u onder **computer configuratie > beleid > Windows-instellingen > beveiligings instellingen > account beleid** binnen `gpedit.msc`.
+Het wachtwoordbeleid in de on-premises AD DS-omgeving kan verhinderen dat het opnieuw instellen van het wachtwoord opnieuw op de juiste manier wordt verwerkt. Voor een efficiënte werking van het terugschrijven van wachtwoorden moet het groepsbeleid voor *Minimale wachtwoordduur* zijn ingesteld op 0. Deze instelling vindt u onder **Computerconfiguratie > Beleid > Windows-instellingen > Beveiligingsinstellingen > Accountbeleid** in `gpedit.msc`.
 
-Als u het groeps beleid bijwerkt, wacht u totdat het bijgewerkte beleid is gerepliceerd `gpupdate /force` of gebruikt u de opdracht.
+Wanneer u het groepsbeleid bijwerkt, wacht u totdat het bijgewerkte beleid is gerepliceerd of gebruikt u de opdracht `gpupdate /force`.
 
 > [!Note]
-> Wacht woord terugschrijven moet zijn ingesteld op 0 om ervoor te zorgen dat wacht woorden onmiddellijk worden gewijzigd. Als gebruikers echter voldoen aan het on-premises beleid en de *minimale wachtwoord duur* is ingesteld op een waarde die groter is dan nul, wordt het terugschrijven van wacht woorden nog steeds uitgevoerd nadat het on-premises beleid is geëvalueerd. 
+> Wachtwoord terugschrijven moet zijn ingesteld op 0 om ervoor te zorgen dat wachtwoorden onmiddellijk worden gewijzigd. Als gebruikers echter voldoen aan het on-premises beleid en de *Minimale wachtwoordduur* is ingesteld op een waarde die groter is dan nul, wordt het terugschrijven van wachtwoorden nog steeds uitgevoerd nadat het on-premises beleid is geëvalueerd. 
 
-## <a name="enable-password-writeback-in-azure-ad-connect"></a>Wacht woord terugschrijven inschakelen in Azure AD Connect
+## <a name="enable-password-writeback-in-azure-ad-connect"></a>Wachtwoord terugschrijven inschakelen in Azure AD Connect
 
-Een van de configuratie opties in Azure AD Connect is voor het terugschrijven van wacht woorden. Wanneer deze optie is ingeschakeld, worden door wachtwoord wijzigings gebeurtenissen Azure AD Connect de bijgewerkte referenties opnieuw gesynchroniseerd naar de on-premises AD DS omgeving.
+Een van de configuratieopties in Azure AD Connect is voor het terugschrijven van wachtwoorden. Wanneer deze optie is ingeschakeld, worden na wijzigingen van wachtwoorden in Azure AD Connect de bijgewerkte referenties opnieuw gesynchroniseerd naar de on-premises AD DS-omgeving.
 
-Als u de functie voor het terugschrijven van wacht woord opnieuw instellen wilt inschakelen, schakelt u eerst de terugschrijf optie in Azure AD Connect. Voer vanaf uw Azure AD Connect-server de volgende stappen uit:
+Als u terugschrijven van self-service voor wachtwoordherstel wilt inschakelen, schakelt u eerst de optie voor terugschrijven in Azure AD Connect in. Voer vanaf de Azure AD Connect-server de volgende stappen uit:
 
-1. Meld u aan bij uw Azure AD Connect-server en start de wizard **Azure AD Connect** -configuratie.
+1. Meld u aan bij de Azure AD Connect-server en start u de configuratiewizard **Azure AD Connect**.
 1. Selecteer **Configureren** op de **welkomstpagina**.
 1. Op de pagina **Extra taken** selecteert u **Synchronisatieopties aanpassen** en vervolgens **Volgende**.
-1. Voer op de pagina **verbinding maken met Azure AD** een globale beheerders referenties in voor uw Azure-Tenant en selecteer **volgende**.
+1. Op de pagina **Verbinding maken met Azure AD** voert u de referenties van een globale beheerder voor uw Azure-tenant in en selecteert u **Volgende**.
 1. Op de pagina's **Verbinding maken met directory´s** en **domein/OE filteren** selecteert u **Volgende**.
 1. Op de pagina **Optionele functies** schakelt u het selectievakje in naast **Wachtwoord terugschrijven** en selecteert u **Volgende**.
 
-    ![Azure AD Connect voor het terugschrijven van wacht woorden configureren](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
+    ![Azure AD Connect configureren voor wachtwoord terugschrijven](media/tutorial-enable-sspr-writeback/enable-password-writeback.png)
 
 1. Op de pagina **Gereed om te configureren** selecteert u **Configureren** wacht u tot het proces is voltooid.
 1. Als u ziet dat de configuratie is voltooid, selecteert u **Afsluiten**.
 
-## <a name="enable-password-writeback-for-sspr"></a>Wacht woord terugschrijven inschakelen voor SSPR
+## <a name="enable-password-writeback-for-sspr"></a>Wachtwoord terugschrijven voor SSPR inschakelen
 
-Als u wacht woord terugschrijven hebt ingeschakeld in Azure AD Connect, configureert u nu Azure AD SSPR voor write-back. Wanneer u SSPR inschakelt voor het terugschrijven van wacht woorden, moeten gebruikers die hun wacht woord wijzigen of opnieuw instellen, het wacht woord opnieuw synchroniseren naar de on-premises AD DS omgeving.
+Wanneer terugschrijven van wachtwoorden is ingeschakeld in Azure AD Connect, moet u Azure AD SSPR configureren voor terugschrijven. Wanneer u SSPR inschakelt voor wachtwoord terugschrijven, worden bijgewerkte wachtwoorden van gebruikers die hun wachtwoord hebben gewijzigd of opnieuw ingesteld ook gesynchroniseerd met de on-premises AD DS-omgeving.
 
-Als u het terugschrijven van wacht woorden in SSPR wilt inschakelen, voert u de volgende stappen uit:
+Voer de volgende stappen uit om wachtwoord terugschrijven in SSPR in te schakelen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
-1. Zoek en selecteer **Azure Active Directory**, selecteer **wacht woord opnieuw instellen**en kies vervolgens **on-premises integratie**.
-1. Stel de optie voor het **terugschrijven van wacht woorden naar uw on-premises adres lijst** in op *Ja*.
-1. Stel de optie voor **toestaan dat gebruikers accounts ontgrendelen zonder hun wacht woord opnieuw** in te stellen op *Ja*.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een globale-beheerdersaccount.
+1. Zoek naar en selecteer **Azure Active Directory**, klik op **Wachtwoord opnieuw instellen** en kies vervolgens **On-premises integratie**.
+1. Stel de optie **Wachtwoorden terugschrijven naar uw on-premises directory?** in op *Ja*.
+1. Stel de optie **Gebruikers toestaan accounts te ontgrendelen zonder hun wachtwoord opnieuw in te stellen?** in op *Ja*.
 
-    ![Selfservice voor wachtwoord herstel van Azure AD inschakelen voor het terugschrijven van wacht woorden](media/tutorial-enable-sspr-writeback/enable-sspr-writeback.png)
+    ![Self-service voor wachtwoordherstel voor Azure Active Directory inschakelen voor wachtwoord terugschrijven](media/tutorial-enable-sspr-writeback/enable-sspr-writeback.png)
 
-1. Wanneer u klaar bent, selecteert u **Opslaan**.
+1. Selecteer **Opslaan** wanneer u klaar bent.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de SSPR write-functionaliteit die u hebt geconfigureerd als onderdeel van deze zelf studie niet meer wilt gebruiken, voert u de volgende stappen uit:
+Als u niet langer gebruik wilt maken van de SSPR-terugschrijffunctionaliteit die u als onderdeel van deze zelfstudie hebt geconfigureerd, voert u de volgende stappen uit:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek en selecteer **Azure Active Directory**, selecteer **wacht woord opnieuw instellen**en kies vervolgens **on-premises integratie**.
-1. Stel de optie voor het **terugschrijven van wacht woorden naar uw on-premises adres lijst** in op *Nee*.
-1. Stel de optie voor **toestaan dat gebruikers accounts ontgrendelen zonder hun wacht woord opnieuw** in te stellen op *Nee*.
+1. Zoek naar en selecteer **Azure Active Directory**, klik op **Wachtwoord opnieuw instellen** en kies vervolgens **On-premises integratie**.
+1. Stel **Wachtwoorden terugschrijven naar uw on-premises directory?** in op *Nee*.
+1. Stel de optie **Gebruikers toestaan accounts te ontgrendelen zonder hun wachtwoord opnieuw in te stellen?** in op *Nee*.
 
-Als u geen wachtwoord functionaliteit meer wilt gebruiken, voert u de volgende stappen uit vanaf uw Azure AD Connect-server:
+Als u helemaal geen wachtwoordfunctionaliteit meer wilt gebruiken, voert u de volgende stappen uit vanaf uw Azure AD Connect-server:
 
-1. Meld u aan bij uw Azure AD Connect-server en start de wizard **Azure AD Connect** -configuratie.
+1. Meld u aan bij de Azure AD Connect-server en start u de configuratiewizard **Azure AD Connect**.
 1. Selecteer **Configureren** op de **welkomstpagina**.
 1. Op de pagina **Extra taken** selecteert u **Synchronisatieopties aanpassen** en vervolgens **Volgende**.
-1. Voer op de pagina **verbinding maken met Azure AD** een globale beheerders referenties in voor uw Azure-Tenant en selecteer **volgende**.
+1. Op de pagina **Verbinding maken met Azure AD** voert u de referenties van een globale beheerder voor uw Azure-tenant in en selecteert u **Volgende**.
 1. Op de pagina's **Verbinding maken met directory´s** en **domein/OE filteren** selecteert u **Volgende**.
-1. Schakel op de pagina **optionele functies** het selectie vakje naast **wacht woord terugschrijven** uit en selecteer **volgende**.
+1. Op de pagina **Optionele functies** schakelt u het selectievakje uit naast **Wachtwoord terugschrijven** en selecteert u **Volgende**.
 1. Op de pagina **Gereed om te configureren** selecteert u **Configureren** wacht u tot het proces is voltooid.
 1. Als u ziet dat de configuratie is voltooid, selecteert u **Afsluiten**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u Azure AD SSPR Write naar een on-premises AD DS omgeving ingeschakeld. U hebt geleerd hoe u:
+In deze zelfstudie hebt u terugschrijven van Azure AD SSPR naar een on-premises AD DS-omgeving ingeschakeld. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * De vereiste machtigingen voor het terugschrijven van wacht woorden configureren
-> * Schakel de optie voor het terugschrijven van wacht woorden in Azure AD Connect
-> * Wacht woord terugschrijven inschakelen in azure AD SSPR
+> * De benodigde machtigingen voor het terugschrijven van wachtwoorden configureren
+> * De optie Wachtwoord terugschrijven inschakelen in Azure AD Connect
+> * Wachtwoord terugschrijven inschakelen in Azure AD SSPR
 
 > [!div class="nextstepaction"]
 > [Risico's beoordelen bij het aanmelden](tutorial-risk-based-sspr-mfa.md)

@@ -89,7 +89,7 @@ U kunt een quota verhoging aanvragen voor uw batch-account of uw abonnement met 
    
     1. **Quotum type**  >  **Batch**
       
-       Selecteer **Volgende**.
+       Selecteer **Next**.
     
 1. In **Details**:
       
@@ -109,7 +109,7 @@ U kunt een quota verhoging aanvragen voor uw batch-account of uw abonnement met 
 
     1. Selecteer een **Ernst** op basis van uw [bedrijfs impact](https://aka.ms/supportseverity).
 
-       Selecteer **Volgende**.
+       Selecteer **Next**.
 
 1. Bij **contact gegevens**:
    

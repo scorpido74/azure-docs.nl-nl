@@ -16,7 +16,7 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "67175945"
 ---
 > [!div class="op_single_selector"]
-> * [Azure Portal](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
+> * [Azure-portal](../articles/virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](../articles/virtual-network/virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure-CLI](../articles/virtual-network/virtual-networks-static-private-ip-arm-cli.md)
 > * [Azure Portal (klassiek)](../articles/virtual-network/virtual-networks-static-private-ip-classic-pportal.md)

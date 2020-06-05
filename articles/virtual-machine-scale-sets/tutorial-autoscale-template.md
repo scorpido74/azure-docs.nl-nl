@@ -1,21 +1,22 @@
 ---
-title: Zelf studie-een schaalset automatisch schalen met Azure-sjablonen
+title: 'Zelfstudie: een schaalset automatisch schalen met Azure-sjablonen'
 description: Leer hoe u met sjablonen van Azure Resource Manager automatisch een schaalset met virtuele machines schaalt wanneer de vraag naar CPU toeneemt en afneemt.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 02fe74a2dad7da655969c5c9523c696657425e49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 03/27/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 95baaaff0936d288b5a56efb8f6ce1ba87637d8a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011307"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700924"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met een Azure-sjabloon
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Zelfstudie: Een virtuele-machineschaalset automatisch schalen met een Azure-sjabloon
 Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt uitvoeren. Wanneer de vraag van de toepassing verandert, kunt u het aantal VM-exemplaren automatisch vergroten of verkleinen. De mogelijkheid van automatisch schalen stelt u in staat om altijd te voldoen aan de vraag van klanten houden of om gedurende de levenscyclus van uw app te reageren op wijzigingen in de prestaties van de toepassing. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
@@ -24,11 +25,11 @@ Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt 
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.29 of hoger gebruiken. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 
 ## <a name="define-an-autoscale-profile"></a>Een profiel voor automatisch schalen definiëren
@@ -72,8 +73,8 @@ De volgende parameters worden gebruikt voor deze regel:
 | *operator*        | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Greater Than    |
 | *threshold*       | De waarde die ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                      | 70%             |
 | *direction*       | Hiermee definieert u of de schaalset moet worden in- of uitgeschaald als de regel van toepassing is.                                              | Increase        |
-| *voert*            | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count    |
-| *Value*           | Het aantal VM-exemplaren dat moet worden in- of uitgeschaald wanneer de regel van toepassing is.                                             | 3               |
+| *type*            | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count    |
+| *value*           | Het aantal VM-exemplaren dat moet worden in- of uitgeschaald wanneer de regel van toepassing is.                                             | 3               |
 | *cooldown*        | De tijd die moet worden gewacht voordat de regel opnieuw wordt toegepast, zodat de acties voor automatisch schalen voldoende tijd hebben om effectief te zijn. | 5 minuten       |
 
 De volgende regel kan worden toegevoegd aan de profielsectie van de resourceprovider *Microsoft.insights/autoscalesettings* uit het vorige gedeelte:
@@ -136,7 +137,7 @@ In het volgende voorbeeld wordt een regel gedefinieerd waarmee het aantal VM-exe
 ## <a name="create-an-autoscaling-scale-set"></a>Een schaalset voor automatisch schalen maken
 We gebruiken een voorbeeldsjabloon om een schaalset te maken en regels voor automatisch schalen toe te passen. U kunt [de volledige sjabloon bekijken](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) of [de sectie *Microsoft.insights/autoscalesettings* met de resourceprovider](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220) van de sjabloon.
 
-Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
+Maak eerst een resourcegroep met [az group create](/cli/azure/group). In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -186,7 +187,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Wanneer **stress** uitvoer laat zien die vergelijkbaar is met *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op *Enter* om terug te gaan naar de prompt.
+Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op de *Enter*-toets om terug te keren naar de prompt.
 
 Om te controleren of **stress** CPU-belasting genereert, onderzoekt u de actieve systeembelasting met het hulpprogramma **top**:
 
@@ -214,7 +215,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Als **stress** ook hier uitvoer laat zien die vergelijkbaar is met *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op *Enter* om terug te gaan naar de prompt.
+Wanneer **stress** uitvoer toont die lijkt op *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, drukt u op de *Enter*-toets om terug te keren naar de prompt.
 
 Verbreek de verbinding met het tweede VM-exemplaar. **stress** wordt nog gewoon uitgevoerd op het VM-exemplaar.
 
@@ -271,8 +272,3 @@ In deze zelfstudie hebt u geleerd hoe u een schaalset automatisch kunt in- of ui
 > * Regels voor automatisch schalen maken en gebruiken
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
-
-Als u meer voorbeelden wilt zien van schaalsets met virtuele machines, raadpleegt u de volgende voorbeeldscripts van Azure CLI:
-
-> [!div class="nextstepaction"]
-> [Voorbeelden met schaalsetsscripts voor Azure CLI](cli-samples.md)
