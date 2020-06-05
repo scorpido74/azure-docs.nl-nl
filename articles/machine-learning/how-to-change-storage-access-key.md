@@ -5,17 +5,17 @@ description: Meer informatie over het wijzigen van de toegangs sleutels voor het
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80296920"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434641"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -95,7 +95,7 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
 
         [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
-    1. Als u de werk ruimte voor het gebruik van de nieuwe sleutel wilt bijwerken, gebruikt u de volgende opdracht. Vervang `myworkspace` door de naam van uw Azure machine learning werkruimte en `myresourcegroup` Vervang door de naam van de Azure-resource groep die de werk ruimte bevat.
+    1. Als u de werk ruimte voor het gebruik van de nieuwe sleutel wilt bijwerken, gebruikt u de volgende opdracht. Vervang door de `myworkspace` naam van uw Azure machine learning werkruimte en vervang door `myresourcegroup` de naam van de Azure-resource groep die de werk ruimte bevat.
 
         ```azurecli-interactive
         az ml workspace sync-keys -w myworkspace -g myresourcegroup
@@ -129,4 +129,4 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de verwijzing naar een klasse voor meer informatie over [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) het registreren van gegevens opslag.
+Zie de verwijzing naar een klasse voor meer informatie over het registreren van gegevens opslag [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) .

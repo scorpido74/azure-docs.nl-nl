@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106216"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418208"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -35,13 +35,12 @@ Naast deze rollen zijn er twee specifieke Security Center-rollen:
 > [!NOTE]
 > De beveiligings rollen, beveiligings lezer en beveiligings beheerder hebben alleen toegang tot Security Center. De beveiligings rollen hebben geen toegang tot andere service gebieden van Azure, zoals Storage, Web & Mobile of Internet of Things.
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>Rollen en toegestane acties
 
 De volgende tabel bevat rollen en toegestane acties in Security Center.
 
-| Rol | Beveiligings beleid bewerken | Aanbevelingen voor beveiliging Toep assen op een resource</br> (inclusief ' Quick Fix! ') | Waarschuwingen en aanbevelingen negeren | Waarschuwingen en aanbevelingen weer geven |
+| Rol | Beveiligings beleid bewerken | Aanbevelingen voor beveiliging Toep assen op een resource</br> (inclusief ' Quick Fix! ') | Waarschuwingen negeren | Waarschuwingen en aanbevelingen weer geven |
 |:--- |:---:|:---:|:---:|:---:|
 | Abonnements eigenaar | ✔ | ✔ | ✔ | ✔ |
 | Mede werker van abonnement | -- | ✔ | ✔ | ✔ |

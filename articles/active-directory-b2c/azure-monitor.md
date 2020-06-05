@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4069774249795073b4390de839ae9f563c8b1cb
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392878"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424007"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C met Azure Monitor bewaken
 
@@ -25,8 +25,8 @@ Gebruik Azure Monitor om Azure Active Directory B2C (Azure AD B2C) aanmeld-en [a
 U kunt logboek gebeurtenissen door sturen naar:
 
 * Een Azure- [opslag account](../storage/blobs/storage-blobs-introduction.md).
-* Een Azure- [Event hub](../event-hubs/event-hubs-about.md) (en kan worden geïntegreerd met uw logische Splunk-en Sumo-instanties).
 * Een [log Analytics-werk ruimte](../azure-monitor/platform/resource-logs-collect-workspace.md) (voor het analyseren van gegevens, het maken van Dash boards en waarschuwingen voor specifieke gebeurtenissen).
+* Een Azure- [Event hub](../event-hubs/event-hubs-about.md) (en kan worden geïntegreerd met uw logische Splunk-en Sumo-instanties).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -72,7 +72,7 @@ Om het beheer te vereenvoudigen, raden we u aan Azure AD-gebruikers *groepen* te
 
 ### <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon maken
 
-Voor een onboarding van uw Azure AD-Tenant (de **klant**), maakt u een [Azure Resource Manager sjabloon](../lighthouse/how-to/onboard-customer.md) voor uw aanbieding met de volgende gegevens. De `mspOfferName` waarden `mspOfferDescription` en worden weer gegeven wanneer u details van de aanbieding bekijkt op de [pagina service providers](../lighthouse/how-to/view-manage-service-providers.md) van de Azure Portal.
+Voor een onboarding van uw Azure AD-Tenant (de **klant**), maakt u een [Azure Resource Manager sjabloon](../lighthouse/how-to/onboard-customer.md) voor uw aanbieding met de volgende gegevens. De `mspOfferName` `mspOfferDescription` waarden en worden weer gegeven wanneer u details van de aanbieding bekijkt op de [pagina service providers](../lighthouse/how-to/view-manage-service-providers.md) van de Azure Portal.
 
 | Veld   | Definitie |
 |---------|------------|
@@ -87,7 +87,7 @@ De Azure Resource Manager sjabloon en de parameter bestanden downloaden:
 - [rgDelegatedResourceManagement. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
 - [rgDelegatedResourceManagement. para meters. json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Werk vervolgens het parameter bestand bij met de waarden die u eerder hebt vastgelegd. Het volgende JSON-code fragment toont een voor beeld van een bestand met Azure Resource Manager sjabloon parameters. Voor `authorizations.value.roleDefinitionId`gebruikt u de [ingebouwde rol](../role-based-access-control/built-in-roles.md) waarde voor de *rol Inzender* `b24988ac-6180-42a0-ab88-20f7382dd24c`.
+Werk vervolgens het parameter bestand bij met de waarden die u eerder hebt vastgelegd. Het volgende JSON-code fragment toont een voor beeld van een bestand met Azure Resource Manager sjabloon parameters. Voor `authorizations.value.roleDefinitionId` gebruikt u de [ingebouwde rol](../role-based-access-control/built-in-roles.md) waarde voor de *rol Inzender* `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
 ```JSON
 {
@@ -141,7 +141,7 @@ Ga vervolgens naar het abonnement dat u wilt projecteren in de Azure AD B2C Tena
 Select-AzSubscription <subscription ID>
 ```
 
-Implementeer ten slotte de Azure Resource Manager sjabloon en de parameter bestanden die u eerder hebt gedownload en bijgewerkt. Vervang de `Location`waarden `TemplateFile`, en `TemplateParameterFile` dienovereenkomstig.
+Implementeer ten slotte de Azure Resource Manager sjabloon en de parameter bestanden die u eerder hebt gedownload en bijgewerkt. Vervang de `Location` `TemplateFile` waarden, en `TemplateParameterFile` dienovereenkomstig.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -193,7 +193,7 @@ Parameters              :
 
 Nadat u de sjabloon hebt geïmplementeerd, kan het enkele minuten duren voordat de resource projectie is voltooid. Mogelijk moet u enkele minuten wachten (meestal niet meer dan vijf) voordat u naar de volgende sectie gaat om het abonnement te selecteren.
 
-## <a name="select-your-subscription"></a>Selecteer uw abonnement
+## <a name="select-your-subscription"></a>Uw abonnement selecteren
 
 Nadat u de sjabloon hebt geïmplementeerd en een paar minuten hebt gewacht totdat de resource projectie is voltooid, koppelt u uw abonnement aan uw Azure AD B2C Directory met de volgende stappen.
 
@@ -223,7 +223,7 @@ U kunt nu [Diagnostische instellingen maken](../active-directory/reports-monitor
 
 Controle-instellingen voor Azure AD B2C activiteiten logboeken configureren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. **Azure Active Directory** selecteren
 1. Selecteer **Diagnostische instellingen** onder **Controle**.

@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308877"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424343"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effecten begrijpen
 
@@ -115,7 +115,7 @@ Voor beeld: het controle-effect gebruiken.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-Met AuditIfNotExists kunt **u** controleren op resources die overeenkomen met de **if** -voor waarde, maar waarvoor geen onderdelen zijn opgegeven in de **Details** van de voor waarde.
+AuditIfNotExists maakt het mogelijk om de resources te controleren die zijn _gerelateerd_ aan de resource die overeenkomt met de **if** -voor waarde, maar waarvoor **u** de eigenschappen niet hebt opgegeven in de **Details** van de voor waarde.
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists-evaluatie
 

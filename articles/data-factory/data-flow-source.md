@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606308"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433299"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
@@ -25,7 +25,23 @@ Elke gegevens stroom vereist ten minste één bron transformatie, maar u kunt zo
 
 Elke bron transformatie is gekoppeld aan precies één Data Factory-gegevensset. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van een bestand gebruikt, kunt u Joker tekens en bestands lijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>Ondersteunde bron connectors in gegevens stroom toewijzen
+## <a name="inline-datasets"></a>Inline gegevens sets
+
+De eerste beslissing die u maakt bij het maken van een bron transformatie is of uw bron gegevens zijn gedefinieerd binnen een object dataset of binnen de bron transformatie. De meeste indelingen zijn alleen beschikbaar in een van beide. Raadpleeg het juiste connector document voor meer informatie over het gebruik van een specifieke connector.
+
+Wanneer een indeling wordt ondersteund voor zowel inline als een object DataSet, zijn er voor delen van beide. DataSet-objecten zijn herbruikbare entiteiten die kunnen worden gebruikt in andere gegevens stromen en activiteiten zoals kopiëren. Dit is met name handig wanneer u een geharder schema gebruikt. Gegevens sets zijn niet gebaseerd op Spark en af en toe moet u mogelijk bepaalde instellingen of schema projectie in de bron transformatie overschrijven.
+
+Inline gegevens sets worden aanbevolen bij het gebruik van flexibele schema's, eenmalige bron instanties of bronnen met para meters. Als uw bron zeer veel para meters bevat, kunt u met inline gegevens sets geen dummy-object maken. Inline gegevens sets zijn gebaseerd op Spark en hun eigenschappen zijn standaard voor de gegevens stroom.
+
+Als u een inline gegevensset wilt gebruiken, selecteert u de gewenste indeling in de **bron type** kiezer. In plaats van een bron gegevensset te selecteren, selecteert u de gekoppelde service waarmee u verbinding wilt maken.
+
+![Inline gegevensset](media/data-flow/inline-selector.png "Inline gegevensset")
+
+### <a name="supported-inline-dataset-formats"></a>Ondersteunde indelingen voor inline-gegevensset
+
+Momenteel is de enige beschik bare indeling voor de inline-gegevensset het [common data model](format-common-data-model.md#source-properties) dat is gelezen van [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md).
+
+## <a name="supported-source-datasets-in-mapping-data-flow"></a>Ondersteunde bron gegevens sets in de toewijzing van gegevens stroom
 
 Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
     
@@ -38,7 +54,7 @@ Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (
 
 De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **bron opties** . informatie over deze instellingen vindt u in de documentatie van de connector. 
 
-Azure Data Factory heeft toegang tot meer dan [90 systeem eigen connectors](connector-overview.md). Als u gegevens uit deze andere bronnen in uw gegevens stroom wilt toevoegen, gebruikt u de Kopieer activiteit om die gegevens te laden in een van de ondersteunde staging-gebieden.
+Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens uit deze andere bronnen in uw gegevens stroom wilt toevoegen, gebruikt u de Kopieer activiteit om die gegevens te laden in een van de ondersteunde staging-gebieden.
 
 ## <a name="source-settings"></a>Broninstellingen
 

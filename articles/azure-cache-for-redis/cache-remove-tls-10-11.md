@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848818"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84423918"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -31,16 +31,18 @@ Dit artikel bevat algemene richt lijnen over het detecteren van afhankelijkheden
 
 De datums waarop deze wijzigingen van kracht worden, zijn:
 
-| Cloud                | Begin datum fase 1 | Begin datum fase 2      |
-|----------------------|--------------------|-------------------------|
-| Azure (globaal)       |  13 januari 2020  | 11 mei 2020            |
-| Azure Government     |  13 maart 2020    | 11 mei 2020            |
-| Azure Duitsland        |  13 maart 2020    | 11 mei 2020            |
-| Azure China 21Vianet |  13 maart 2020    | 11 mei 2020            |
+| Cloud                | Begin datum fase 1 | Begin datum fase 2         |
+|----------------------|--------------------|----------------------------|
+| Azure (globaal)       |  13 januari 2020  | Uitgesteld vanwege COVID 19  |
+| Azure Government     |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
+| Azure Duitsland        |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
+| Azure China 21Vianet |  13 maart 2020    | Uitgesteld vanwege COVID 19  |
+
+Opmerking: nieuwe datum voor fase 2 nog niet vastgesteld
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Controleren of uw toepassing al compatibel is
 
-De eenvoudigste manier om erachter te komen of uw toepassing werkt met TLS 1,2 is door de **minimale TLS-versie** waarde in te stellen op TLS 1,2 op een test-of faserings cache die wordt gebruikt. De instelling **minimale TLS-versie** bevindt zich in de [Geavanceerde instellingen](cache-configure.md#advanced-settings) van uw cache-exemplaar in het Azure Portal. Als de toepassing blijft functioneren zoals verwacht na deze wijziging, is deze waarschijnlijk compatibel. Mogelijk moet u bepaalde redis-client bibliotheken die door uw toepassing worden gebruikt, specifiek configureren om TLS 1,2 in te scha kelen, zodat ze verbinding kunnen maken met Azure cache voor redis via dat beveiligings protocol.
+De eenvoudigste manier om erachter te komen of uw toepassing werkt met TLS 1,2 is door de waarde van de **minimale TLS-versie** in te stellen op TLS 1,2 op een test-of faserings cache en vervolgens tests uit te voeren. De instelling **minimale TLS-versie** bevindt zich in de [Geavanceerde instellingen](cache-configure.md#advanced-settings) van uw cache-exemplaar in het Azure Portal.  Als de toepassing blijft functioneren zoals verwacht na deze wijziging, is deze waarschijnlijk compatibel. Mogelijk moet u de redis-client bibliotheek die door uw toepassing wordt gebruikt, configureren om TLS 1,2 in te scha kelen om verbinding te maken met Azure cache voor redis.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Uw toepassing configureren voor het gebruik van TLS 1,2
 
@@ -57,9 +59,9 @@ Redis .NET-clients gebruiken standaard de oudste TLS-versie op .NET Framework 4.
 
 Redis .NET core-clients standaard ingesteld op de standaard TLS-versie van het besturings systeem, wat duidelijk afhankelijk is van het besturings systeem zelf. 
 
-Afhankelijk van het moment waarop het besturings systeem is uitgebracht en als andere patches de standaard versie van TLS hebben gewijzigd, kan de TLS-versie van het besturings systeem heel gevarieerd zijn. Hoewel er hier geen volledige informatie over is, kunt u [hier](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)meer informatie vinden. 
+Afhankelijk van de versie van het besturings systeem en eventuele patches die zijn toegepast, kan de meest efficiënte standaard-TLS-versie verschillen. Hoewel er één bron van informatie hierover is, is [hier](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) een artikel voor Windows. 
 
-Als u echter een oud besturings systeem gebruikt of als u zeker weet dat u de voor Keurs-TLS-versie hand matig wilt configureren via de client.
+Als u echter een oud besturings systeem gebruikt of gewoon wilt, kunt u het beste de voor Keurs-TLS-versie hand matig configureren via de client.
 
 
 ### <a name="java"></a>Java

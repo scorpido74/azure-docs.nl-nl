@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 description: Het Hyperledger Fabric consortium-netwerk implementeren en configureren op de Azure Kubernetes-service
-ms.date: 01/08/2020
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.reviewer: ravastra
+ms.openlocfilehash: 98d89905c89156d05fd61389693ad8d5765ba9e1
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980219"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434330"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -190,7 +190,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > Op basis van het aantal peer-organisaties in uw consortium moet u mogelijk de peer-opdrachten herhalen en de omgevings variabele dienovereenkomstig instellen.
 
-**De onderstaande omgevings variabelen instellen voor het instellen van een Azure Storage-account**
+**De onderstaande omgevings variabelen instellen voor het instellen van Azure Storage account**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -200,7 +200,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Volg de onderstaande stappen voor het maken van een Azure-opslag account. Als u al een Azure Storage-account hebt gemaakt, kunt u deze stappen overs Laan
+Volg de onderstaande stappen voor het maken van Azure Storage-account. Als u Azure Storage account al hebt gemaakt, kunt u deze stappen overs Laan
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -208,7 +208,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Volg de onderstaande stappen voor het maken van een bestands share in een Azure-opslag account. Als u een bestands share al hebt gemaakt, kunt u deze stappen overs Laan
+Volg de onderstaande stappen voor het maken van een bestands share in Azure Storage-account. Als u een bestands share al hebt gemaakt, kunt u deze stappen overs Laan
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -284,12 +284,12 @@ Meld u bij de client van peer-organisatie onder de opdracht voor het instellen v
 > Voordat u met een consortium bewerking begint, moet u ervoor zorgen dat de eerste installatie van de client toepassing wordt uitgevoerd.  
 
 Voer de onderstaande opdrachten in de aangegeven volg orde uit om een peer-organisatie toe te voegen aan een kanaal en consortium
-1.  Upload op basis van peer-client een MSP van de peer-organisatie in azure Storage
+1.  Upload de MSP van peer-organisaties van de peer-organisatie-client op Azure Storage
 
       ```bash
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  Van de organisatie-client kunt u het MSP-bestand van de peer-organisatie downloaden van Azure Storage en vervolgens de opdracht geven om peer-organisatie toe te voegen in Channel/consortium.
+2.  Down load het Azure Storage MSP-bestand van peer-organisaties van de organisatie-client van de orderer en geef vervolgens opdracht om peer-organisatie toe te voegen in Channel/consortium.
 
       ```bash
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -297,13 +297,13 @@ Voer de onderstaande opdrachten in de aangegeven volg orde uit om een peer-organ
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  Van de organisatorische client, het uploaden van een orderer-verbindings profiel in azure Storage zodat peer-organisaties met behulp van dit verbindings profiel verbinding kunnen maken met de bewerkings knooppunten
+3.  Met behulp van dit verbindings profiel kunt u vanuit de organisatie-client een orderer-verbindings profiel uploaden op Azure Storage zodat peer-organisatie verbinding kan maken met de bewerkings knooppunten
 
       ```bash
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  Down load orderer-verbindings Profiel van de client van de peer-organisatie vanuit Azure Storage en geef vervolgens opdracht om peer-knoop punten toe te voegen aan het kanaal
+4.  Down load orderer-verbindings Profiel van de client van de peer-organisatie van Azure Storage en geef vervolgens opdracht om peer-knoop punten toe te voegen aan het kanaal
 
       ```bash
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -358,8 +358,8 @@ Er wordt chaincode geïnstalleerd op alle peer knooppunten van de peer-organisat
 
 Volg de stappen:  
 
-1.  Set `ORGNAME` en `USER_IDENTITY` de opdracht peerOrg1 en issue `./azhlf chaincode install` .  
-2.  Set `ORGNAME` en `USER_IDENTITY` de opdracht peerOrg2 en issue `./azhlf chaincode install` .  
+1.  Set `ORGNAME` en de `USER_IDENTITY` opdracht peerOrg1 en issue `./azhlf chaincode install` .  
+2.  Set `ORGNAME` en de `USER_IDENTITY` opdracht peerOrg2 en issue `./azhlf chaincode install` .  
 
 ### <a name="instantiate-chaincode"></a>Chaincode instantiëren  
 
@@ -368,7 +368,7 @@ Voer vanuit peer-client toepassing de volgende opdracht uit om chaincode op het 
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-Geef de naam van de functie en de spaties gescheiden lijst met `<instantiateFunc>` argumenten `<instantiateFuncArgs>` in respectievelijk door. Bijvoorbeeld in chaincode_example02. go chaincode, voor het instantiëren van de chaincode `<instantiateFunc>` die `init`is `<instantiateFuncArgs>` ingesteld op "a" "2000" "b" "1000".
+Geef de naam van de functie en de spaties gescheiden lijst met argumenten in `<instantiateFunc>` `<instantiateFuncArgs>` respectievelijk door. Bijvoorbeeld in chaincode_example02. go chaincode, voor het instantiëren van de chaincode `<instantiateFunc>` die is ingesteld op `init` `<instantiateFuncArgs>` "a" "2000" "b" "1000".
 
 > [!NOTE]
 > Voer de opdracht uit voor één van de peer-organisaties in het kanaal. Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. Daarom wordt de chaincode geïnstantieerd op alle peer knooppunten op alle peer-organisaties in het kanaal.  
@@ -382,7 +382,7 @@ Voer de volgende opdracht uit op de peer-client voor het aanroepen van de functi
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-Geef de naam van de functie invoke en de door de `<invokeFunction>` ruimte `<invokeFuncArgs>` gescheiden lijst met argumenten in respectievelijk door. Ga verder met het chaincode_example02. go chaincode-voor beeld om invoke- `<invokeFunction>` bewerking `invoke` uit `<invokeFuncArgs>` te voeren op ' a ' "b" "10".  
+Geef de naam van de functie invoke en de door de ruimte gescheiden lijst met argumenten in  `<invokeFunction>`    `<invokeFuncArgs>`   respectievelijk door. Ga verder met het chaincode_example02. go chaincode-voor beeld om invoke-bewerking uit te voeren  `<invokeFunction>`   op  `invoke`    `<invokeFuncArgs>`   ' a ' "b" "10".  
 
 >[!NOTE]
 > Voer de opdracht uit voor één van de peer-organisaties in het kanaal. Zodra de trans actie is verzonden naar de orderer, wordt deze trans actie door de orderer gedistribueerd naar alle peer-organisaties in het kanaal. De wereld staat wordt daarom bijgewerkt op alle peer knooppunten van alle peer-organisaties in het kanaal.  
@@ -395,7 +395,7 @@ Voer de onderstaande opdracht uit om een query uit te voeren op chaincode:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Geef de naam van de query functie en de spaties gescheiden `<queryFunction>` lijst `<queryFuncArgs>` met argumenten in respectievelijk. Als u chaincode_example02. go chaincode als referentie wilt uitvoeren, moet u de waarde ' a ' in de wereld status `<queryFunction>` instellen `query` op `<queryArgs>` a.  
+Geef de naam van de query functie en de spaties gescheiden lijst met argumenten in  `<queryFunction>`    `<queryFuncArgs>`   respectievelijk. Als u chaincode_example02. go chaincode als referentie wilt uitvoeren, moet u de waarde ' a ' in de wereld status instellen  `<queryFunction>`   op  `query`  `<queryArgs>` a.  
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
@@ -418,3 +418,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>Ondersteuning en feedback
+
+Voor nieuws voer Azure Blockchain gaat u naar de [Azure Blockchain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van aanbiedingen van blockchainservices en informatie van het technische team van Azure Blockchain.
+
+Als u productfeedback wilt geven of nieuwe functies wilt aanvragen, kunt u een idee krijgen van het [Azure-feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Ondersteuning voor community
+
+In contact komen met Microsoft-technici en experts uit de Azure Blockchain-community.
+
+- [Micro soft Q&een vraag pagina voor de Azure Block Chain-Service](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
+- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

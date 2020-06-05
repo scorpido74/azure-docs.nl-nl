@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b03bf543226da12e5cfca5228b879a533942d384
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503034"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424360"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services met behulp van een script
 
 Met geneste virtualisatie kunt u een multi-VM-omgeving maken in de virtuele machine van een lab. Als u de sjabloon publiceert, wordt elke gebruiker in het lab voorzien van een virtuele machine die is ingesteld met meerdere virtuele machines in de test omgeving.  Zie voor meer informatie over geneste virtualisatie en Azure Lab Services [geneste virtualisatie inschakelen op een virtuele machine van een sjabloon in Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
 
-De stappen in dit artikel zijn gericht op het instellen van geneste virtualisatie voor Windows Server 2016 of Windows Server 2019. U gebruikt een script voor het instellen van de sjabloon computer met Hyper-V.  De volgende stappen begeleiden u bij het gebruik van de [Lab-Services Hyper-V-scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
+De stappen in dit artikel zijn gericht op het instellen van geneste virtualisatie voor Windows Server 2016, Windows Server 2019 of Windows 10. U gebruikt een script voor het instellen van de sjabloon computer met Hyper-V.  De volgende stappen begeleiden u bij het gebruik van de [Lab-Services Hyper-V-scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
 
 >[!IMPORTANT]
 >Selecteer **groot (geneste virtualisatie)** of **Gemiddeld (geneste virtualisatie)** voor de grootte van de virtuele machine bij het maken van het lab.  Geneste virtualisatie werkt anders niet.  
@@ -35,20 +35,20 @@ De stappen in dit artikel zijn gericht op het instellen van geneste virtualisati
     1. Open Internet Explorer.
     1. Selecteer het tandwiel pictogram en kies **Internet opties**.  
     1. Wanneer het dialoog venster **Internet opties** wordt weer gegeven, selecteert u **beveiliging**, selecteer **vertrouwde sites**en klikt u op de knop **sites** .
-    1. Wanneer het dialoog venster **vertrouwde sites** wordt weer `https://github.com` gegeven, voegt u toe aan de lijst met vertrouwde websites en selecteert u **sluiten**.
+    1. Wanneer het dialoog venster **vertrouwde sites** wordt weer gegeven, voegt `https://github.com` u toe aan de lijst met vertrouwde websites en selecteert u **sluiten**.
 
         ![Vertrouwde sites](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Down load de Git-opslagplaats bestanden zoals beschreven in de volgende stappen.
-    1. Ga naar [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
+    1. Ga naar [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Klik op de knop **klonen of downloaden** .
     1. Klik op **down load zip**.
     1. Het ZIP-bestand uitpakken
 
     >[!TIP]
-    >U kunt ook de Git-opslag plaats [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git)klonen op.
+    >U kunt ook de Git-opslag plaats klonen op [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git) .
 
 1. Start **Power shell** in de **beheerders** modus.
-1. Navigeer in het Power shell-venster naar de map met het gedownloade script. Als u vanuit de bovenste map van de opslagplaats bestanden navigeert, bevindt het script zich `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`op.
+1. Navigeer in het Power shell-venster naar de map met het gedownloade script. Als u vanuit de bovenste map van de opslagplaats bestanden navigeert, bevindt het script zich op `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` .
 1. Mogelijk moet u het uitvoerings beleid wijzigen om het script uit te voeren. Voer de volgende opdracht uit:
 
     ```powershell

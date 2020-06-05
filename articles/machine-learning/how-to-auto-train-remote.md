@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e88db734ecabb38363087d98b97f9eb4ec181ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612313"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434663"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellen trainen met geautomatiseerde machine learning in de cloud
 
@@ -34,7 +34,7 @@ Er zijn meer functies beschikbaar wanneer u een extern Compute-doel gebruikt.  Z
 
 In de zelf studie "[een classificatie model trainen met geautomatiseerde machine learning](tutorial-auto-train-models.md)" leert u hoe u een lokale computer kunt gebruiken om een model met automatische ml te trainen. De werk stroom wanneer training lokaal ook van toepassing is op externe doelen. Als u op afstand wilt trainen, maakt u eerst een extern Compute-doel zoals AmlCompute. Vervolgens configureert u de externe resource en verzendt u de code daar.
 
-In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws`, in de zelf studie, wordt in de hele code gebruikt.
+In dit artikel worden de extra stappen beschreven die nodig zijn voor het uitvoeren van een geautomatiseerd experiment op een extern AmlCompute-doel. Het werkruimte object, `ws` , in de zelf studie, wordt in de hele code gebruikt.
 
 ```python
 ws = Workspace.from_config()
@@ -42,7 +42,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Bron maken
 
-Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) doel in uw werk ruimte`ws`() als deze nog niet bestaat.
+Maak het [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) doel in uw werk ruimte ( `ws` ) als deze nog niet bestaat.
 
 **Geschatte tijd**: het maken van het AmlCompute-doel duurt ongeveer 5 minuten.
 
@@ -85,13 +85,13 @@ U kunt nu het `compute_target` object gebruiken als het externe Compute-doel.
 
 De beperkingen voor de cluster naam zijn onder andere:
 + Moet korter zijn dan 64 tekens.
-+ Kan geen van de volgende tekens bevatten: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |; : \' \\",  < > /?. `
++ Kan geen van de volgende tekens bevatten: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |;: \' \\ ",  < > /?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Toegang tot gegevens met de functie TabularDataset
 
-Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en het label, dat wordt door gegeven aan automatische milliliters [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)in de. De `TabularDataset` methode `from_delimited_files`stelt de `infer_column_types` standaard waarde in op waar, waardoor het kolommen type automatisch wordt afleiden. 
+Gedefinieerd training_data als [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en het label, dat wordt door gegeven aan automatische milliliters in de [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . De `TabularDataset` methode `from_delimited_files` stelt de standaard waarde `infer_column_types` in op waar, waardoor het kolommen type automatisch wordt afleiden. 
 
-Als u de kolom typen hand matig wilt instellen, kunt u het `set_column_types` argument instellen om het type van elke kolom hand matig in te stellen. In het volgende code voorbeeld zijn de gegevens afkomstig uit het sklearn-pakket.
+Als u de kolom typen hand matig wilt instellen, kunt u het argument instellen `set_column_types` om het type van elke kolom hand matig in te stellen. In het volgende code voorbeeld zijn de gegevens afkomstig uit het sklearn-pakket.
 
 ```python
 from sklearn import datasets
@@ -125,7 +125,7 @@ training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/di
 ```
 
 ## <a name="configure-experiment"></a>Experiment configureren
-Geef de instellingen voor `AutoMLConfig`op.  (Zie een [volledige lijst met para meters](how-to-configure-auto-train.md#configure-experiment) en de bijbehorende mogelijke waarden.)
+Geef de instellingen voor op `AutoMLConfig` .  (Zie een [volledige lijst met para meters](how-to-configure-auto-train.md#configure-experiment) en de bijbehorende mogelijke waarden.)
 
 ```python
 from azureml.train.automl import AutoMLConfig

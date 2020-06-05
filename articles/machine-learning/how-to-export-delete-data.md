@@ -5,18 +5,18 @@ description: Meer informatie over hoe u uw werk ruimte exporteert of verwijdert 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50234eb356314039b8023f0442207ae0b762676e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d10228eb76f95a7d5225b6b414ca622c92bf1c5
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191631"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434274"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Uw Machine Learning service werkruimte gegevens exporteren of verwijderen
 
@@ -36,7 +36,7 @@ In Azure Machine Learning bestaan persoonlijke gegevens uit gebruikers gegevens 
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>Werkruimte gegevens verwijderen met de REST API
 
-Als u gegevens wilt verwijderen, kunnen de volgende API-aanroepen worden gemaakt met de HTTP-Verwijder bewerking. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, `<arm-token>` waarbij het Aad-toegangs token voor `https://management.core.windows.net/` het eind punt is.  
+Als u gegevens wilt verwijderen, kunnen de volgende API-aanroepen worden gemaakt met de HTTP-Verwijder bewerking. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, waarbij `<arm-token>` het Aad-toegangs token voor het `https://management.core.windows.net/` eind punt is.  
 
 Zie voor meer informatie over het ophalen van dit token en het aanroepen van Azure-eind punten [rest gebruiken voor het beheren van ml resources](how-to-manage-rest.md) en [Azure rest API documentatie](https://docs.microsoft.com/rest/api/azure/).  
 
@@ -92,7 +92,7 @@ Afzonderlijke services kunnen worden verwijderd met:
 
 ## <a name="export-service-data-with-the-rest-api"></a>Service gegevens exporteren met de REST API
 
-Als u gegevens wilt exporteren, kunnen de volgende API-aanroepen worden gemaakt met de term HTTP GET. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, `<arm-token>` waarbij het Aad-toegangs token voor het eind punt is`https://management.core.windows.net/`  
+Als u gegevens wilt exporteren, kunnen de volgende API-aanroepen worden gemaakt met de term HTTP GET. Deze worden geautoriseerd door een `Authorization: Bearer <arm-token>` header in de aanvraag te hebben, waarbij `<arm-token>` het Aad-toegangs token voor het eind punt is`https://management.core.windows.net/`  
 
 Zie voor meer informatie over het ophalen van dit token en het aanroepen van Azure-eind punten [rest gebruiken voor het beheren van ml resources](how-to-manage-rest.md) en [Azure rest API-documentatie](https://docs.microsoft.com/rest/api/azure/).   
 

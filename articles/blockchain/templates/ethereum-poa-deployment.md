@@ -1,15 +1,15 @@
 ---
 title: Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 description: Gebruik de Ethereum proof-of-Authority consortium-oplossing voor het implementeren en configureren van een consortium Ethereum Network voor meerdere leden op Azure
-ms.date: 12/18/2019
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ravastra
+ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387504"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434362"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority consortium-oplossings sjabloon implementeren in azure
 
@@ -25,7 +25,7 @@ Optie | Service model | Algemene use-case
 -------|---------------|-----------------
 Oplossingssjablonen | IaaS | Oplossings sjablonen zijn Azure Resource Manager sjablonen die u kunt gebruiken om een volledig geconfigureerde Block chain-netwerk topologie in te richten. De sjablonen implementeren en configureren Microsoft Azure compute-, netwerk-en opslag Services voor een bepaald Block chain-netwerk type.
 [Azure Blockchain-service](../service/overview.md) | PaaS | De preview-versie van Azure Block Chain Service vereenvoudigt de vorming, het beheer en de governance van consortium Block Chain Networks. Gebruik Azure Block Chain Service voor oplossingen waarvoor PaaS, consortium beheer of de privacy van contracten en trans acties vereist is.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Block Chain Workbench preview is een verzameling Azure-Services en-functies die zijn ontworpen om u te helpen bij het maken en implementeren van Block Chain-toepassingen voor het delen van bedrijfs processen en-gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS en PaaS | Azure Blockchain Workbench (preview-versie) is een verzameling Azure-services en -functies die zijn ontworpen om u te helpen bij het maken en implementeren van blockchain-toepassingen voor het delen van bedrijfsprocessen en gegevens met andere organisaties. Gebruik Azure Block Chain Workbench voor het prototypen van een Block Chain-oplossing of een Block Chain-toepassings bewijs van een concept.
 
 ## <a name="solution-architecture"></a>Architectuur voor de oplossing
 
@@ -76,7 +76,7 @@ In de volgende secties ziet u hoe u de footprint van het eerste lid in het netwe
 
 Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** in de linkerbovenhoek.
 
-Selecteer **Block Chain** > **Ethereum proof-of-Authority Consortium (preview)**.
+Selecteer **Block Chain**  >  **Ethereum proof-of-Authority Consortium (preview)**.
 
 ### <a name="basics"></a>Basisbeginselen
 
@@ -163,8 +163,8 @@ Parameter | Beschrijving | Voorbeeldwaarde
 Bewaking | Optie om bewaking in te scha kelen | Inschakelen
 Verbinding maken met bestaande Azure Monitor-logboeken | Optie voor het maken van een nieuw exemplaar van Azure Monitor Logboeken of voor het toevoegen van een bestaand exemplaar | Nieuwe maken
 Locatie | De regio waar het nieuwe exemplaar is geïmplementeerd | VS - oost
-Bestaande log Analytics-werk ruimte-ID (verbinding maken met bestaande Azure Monitor logs = deel nemen aan bestaande bestanden)|Werk ruimte-ID van het bestaande exemplaar van Azure Monitor logboeken||N.v.t.
-Bestaande primaire sleutel voor logboek analyse (verbinding maken met bestaande Azure Monitor logs = lid worden van bestaande)|De primaire sleutel die wordt gebruikt om verbinding te maken met het bestaande exemplaar van Azure Monitor logboeken||N.v.t.
+Bestaande log Analytics-werk ruimte-ID (verbinding maken met bestaande Azure Monitor logs = deel nemen aan bestaande bestanden)|Werk ruimte-ID van het bestaande exemplaar van Azure Monitor logboeken||NA
+Bestaande primaire sleutel voor logboek analyse (verbinding maken met bestaande Azure Monitor logs = lid worden van bestaande)|De primaire sleutel die wordt gebruikt om verbinding te maken met het bestaande exemplaar van Azure Monitor logboeken||NA
 
 Selecteer **OK**.
 
@@ -335,7 +335,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 Als u extra transactie knooppunten wilt ophalen, verhoogt u het poort nummer met één.
 
-Als u in meer dan één regio hebt geïmplementeerd, wijzigt u de opdracht in de DNS-naam of het IP-adres van de load balancer in die regio. Als u de DNS-naam of het IP-adres van de andere regio's wilt vinden, zoekt u de bron met de naam Conventie ** \* \* \* \* \*-lbpip-REG\# ** en bekijkt u de eigenschappen van de DNS-naam en IP-adres.
+Als u in meer dan één regio hebt geïmplementeerd, wijzigt u de opdracht in de DNS-naam of het IP-adres van de load balancer in die regio. Als u de DNS-naam of het IP-adres van de andere regio's wilt vinden, zoekt u de bron met de naam Conventie ** \* \* \* \* \* -lbpip-REG \# ** en bekijkt u de eigenschappen van de DNS-naam en IP-adres.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Taak verdeling van Azure Traffic Manager
 
@@ -558,7 +558,7 @@ In het volgende voor beeld maakt u een eenvoudig slim contract. U gebruikt Truff
 #### <a name="prerequisites"></a>Vereisten
 
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)installeren. Python is vereist voor Truffle en web3. Selecteer de optie installeren om python op te laten voegen in uw pad.
-* Installeer Truffle v 5.0.5 `npm install -g truffle@v5.0.5`. Truffle vereist verschillende hulpprogram ma's die moeten worden geïnstalleerd, waaronder [node. js](https://nodejs.org), [Git](https://git-scm.com/). Zie [Truffle-documentatie](https://github.com/trufflesuite/truffle)voor meer informatie.
+* Installeer Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vereist verschillende hulpprogram ma's die moeten worden geïnstalleerd, waaronder [node. js](https://nodejs.org), [Git](https://git-scm.com/). Zie [Truffle-documentatie](https://github.com/trufflesuite/truffle)voor meer informatie.
 
 ### <a name="create-truffle-project"></a>Truffle-project maken
 
@@ -566,8 +566,8 @@ Voordat u een slim contract kunt compileren en implementeren, moet u een Truffle
 
 1. Open een opdracht prompt of shell.
 1. Maak een map met de naam `HelloWorld`.
-1. Wijzig de map naar de `HelloWorld` nieuwe map.
-1. Initialiseer een nieuw Truffle-project met behulp `truffle init`van de opdracht.
+1. Wijzig de map naar de nieuwe `HelloWorld` map.
+1. Initialiseer een nieuw Truffle-project met behulp van de opdracht `truffle init` .
 
     ![Een nieuw Truffle-project maken](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -623,11 +623,11 @@ Truffle-projecten bevatten een configuratie bestand voor de netwerk verbindings 
     };
     ```
 
-1. Omdat we de Truffle HD Wallet-provider gebruiken, installeert u de module in uw project met behulp van de opdracht `npm install truffle-hdwallet-provider --save`.
+1. Omdat we de Truffle HD Wallet-provider gebruiken, installeert u de module in uw project met behulp van de opdracht `npm install truffle-hdwallet-provider --save` .
 
 Truffle maakt gebruik van migratie scripts om slimme contracten te implementeren in een Block chain-netwerk. U hebt een migratie script nodig om uw nieuwe slimme contract te implementeren.
 
-1. Voeg een nieuwe migratie toe om het nieuwe contract te implementeren. Maak een `2_deploy_contracts.js` bestand in de submap **migraties** van het Truffle-project.
+1. Voeg een nieuwe migratie toe om het nieuwe contract te implementeren. Maak `2_deploy_contracts.js` een bestand in de submap **migraties** van het Truffle-project.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,7 +647,7 @@ Truffle maakt gebruik van migratie scripts om slimme contracten te implementeren
 
 Nu uw slimme contract is geïmplementeerd, kunt u een trans actie verzenden om een functie aan te roepen.
 
-1. Maak in de projectmap Truffle een nieuw bestand met de naam `sendtransaction.js`.
+1. Maak in de projectmap Truffle een nieuw bestand met de naam `sendtransaction.js` .
 1. Voeg de volgende inhoud toe aan **sendtransaction. js**.
 
     ``` javascript
@@ -718,6 +718,20 @@ De trans actie-door Voer is zeer afhankelijk van de typen trans acties en de net
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Hoe kan ik abonneren op slimme contract gebeurtenissen?
 
 Ethereum-test-of-Authority ondersteunt nu web-sockets.  Controleer de implementatie-uitvoer om de URL en poort van de Web-socket te vinden.
+
+## <a name="support-and-feedback"></a>Ondersteuning en feedback
+
+Voor nieuws voer Azure Blockchain gaat u naar de [Azure Blockchain-blog](https://azure.microsoft.com/blog/topics/blockchain/) om op de hoogte te blijven van aanbiedingen van blockchainservices en informatie van het technische team van Azure Blockchain.
+
+Als u productfeedback wilt geven of nieuwe functies wilt aanvragen, kunt u een idee krijgen van het [Azure-feedback forum voor Block Chain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Ondersteuning voor community
+
+In contact komen met Microsoft-technici en experts uit de Azure Blockchain-community.
+
+* [Micro soft Q&een vraag pagina voor de Azure Block Chain-Service](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technische ondersteuning voor Block Chain-sjablonen is beperkt tot implementatie problemen.
+* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Volgende stappen
 

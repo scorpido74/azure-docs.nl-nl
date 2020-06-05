@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van Azure Machine Learning voor he
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: 104e0892e2ad6bc6a0b3212722781f9498eee219
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 4725b28ba769ac12f9e25e5c9be77f8bb3eaff46
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744997"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433883"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ pip install azureml-contrib-functions
 Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure Functions, gebruikt u [azureml. contrib. functions. package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) of de specifieke pakket functie voor de trigger die u wilt gebruiken. Het volgende code fragment laat zien hoe u een nieuw pakket maakt met een BLOB-trigger uit het model en de configuratie voor afleiden:
 
 > [!NOTE]
-> In het code fragment wordt ervan `model` uitgegaan dat het een geregistreerd model `inference_config` bevat en dat de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
+> In het code fragment wordt ervan uitgegaan dat het `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.contrib.functions import package
@@ -108,7 +108,7 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>`.
+Wanneer `show_output=True` wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
 > De functie voor verpakking voor functions ondersteunt momenteel HTTP-triggers, Blob-triggers en service bus-triggers. Zie [Azure functions-bindingen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)voor meer informatie over triggers.
@@ -118,7 +118,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<myacr>` door de waarde die u eerder `package.location`hebt geretourneerd van: 
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang door `<myacr>` de waarde die u eerder hebt geretourneerd van `package.location` : 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -151,12 +151,12 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In dit voor beeld wordt een _Linux Basic_ -prijs`--sku B1`categorie () gebruikt.
+    In dit voor beeld wordt een _Linux Basic_ -prijs categorie ( `--sku B1` ) gebruikt.
 
     > [!IMPORTANT]
-    > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u `--is-linux` moet de para meter gebruiken.
+    > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u moet de `--is-linux` para meter gebruiken.
 
-1. Maak het opslag account dat moet worden gebruikt voor de opslag van de Web-taak en ontvang het connection string. Vervang `<webjobStorage>` door de naam die u wilt gebruiken.
+1. Maak het opslag account dat moet worden gebruikt voor de opslag van de Web-taak en ontvang het connection string. Vervang door `<webjobStorage>` de naam die u wilt gebruiken.
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,7 +165,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden die eerder `package.location` zijn geretourneerd. Vervang `<webjobStorage>` door de naam van het opslag account uit de vorige stap:
+1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang door `<app-name>` de naam die u wilt gebruiken. Vervang `<acrinstance>` en door `<imagename>` de waarden die eerder zijn geretourneerd `package.location` . Vervang door `<webjobStorage>` de naam van het opslag account uit de vorige stap:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
@@ -174,7 +174,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     > [!IMPORTANT]
     > Op dit moment is de functie-app gemaakt. Omdat u echter geen connection string hebt ingevoerd voor de BLOB-trigger of referenties voor de Azure Container Registry die de installatie kopie bevatten, is de functie-app niet actief. In de volgende stappen geeft u de connection string en de verificatie gegevens voor het container register. 
 
-1. Maak het opslag account dat moet worden gebruikt voor de Blob-opslag en ontvang het connection string. Vervang `<triggerStorage>` door de naam die u wilt gebruiken.
+1. Maak het opslag account dat moet worden gebruikt voor de Blob-opslag en ontvang het connection string. Vervang door `<triggerStorage>` de naam die u wilt gebruiken.
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -184,7 +184,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     ```
     Neem deze connection string op om te voorzien in de functie-app. We zullen het later gebruiken wanneer we vragen om`<triggerConnectionString>`
 
-1. Maak de containers voor de invoer en uitvoer in het opslag account. Vervang `<triggerConnectionString>` door de Connection String die u eerder hebt geretourneerd:
+1. Maak de containers voor de invoer en uitvoer in het opslag account. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,19 +193,19 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Gebruik de volgende opdracht om de trigger connection string te koppelen aan de functie-app. Vervang `<app-name>` door de naam van de functie-app. Vervang `<triggerConnectionString>` door de Connection String die u eerder hebt geretourneerd:
+1. Gebruik de volgende opdracht om de trigger connection string te koppelen aan de functie-app. Vervang door `<app-name>` de naam van de functie-app. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd:
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. U moet het label dat is gekoppeld aan de gemaakte container, ophalen met de volgende opdracht. Vervang `<username>` door de gebruikers naam die eerder is geretourneerd in het container register:
+1. U moet het label dat is gekoppeld aan de gemaakte container, ophalen met de volgende opdracht. Vervang door `<username>` de gebruikers naam die eerder is geretourneerd in het container register:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Sla de geretourneerde waarde op. deze wordt gebruikt als `imagetag` de volgende stap.
+    Sla de geretourneerde waarde op. deze wordt gebruikt als de `imagetag` volgende stap.
 
-1. Als u de functie-app met de referenties die nodig zijn voor toegang tot het container register, wilt opgeven, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam van de functie-app. Vervang `<acrinstance>` en `<imagetag>` door de waarden van de aanroep AZ cli in de vorige stap. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
+1. Als u de functie-app met de referenties die nodig zijn voor toegang tot het container register, wilt opgeven, gebruikt u de volgende opdracht. Vervang door `<app-name>` de naam van de functie-app. Vervang `<acrinstance>` en `<imagetag>` door de waarden van de AANROEP AZ cli in de vorige stap. Vervang `<username>` en door `<password>` de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -260,7 +260,7 @@ Nadat de installatie kopie is geladen en de app beschikbaar is, gebruikt u de vo
     > [!IMPORTANT]
     > De indeling van de gegevens is afhankelijk van wat uw score.py en model verwacht.
 
-2. Gebruik de volgende opdracht om dit bestand te uploaden naar de invoer container in de BLOB voor trigger opslag die u eerder hebt gemaakt. Vervang `<file>` door de naam van het bestand dat de gegevens bevat. Vervang `<triggerConnectionString>` door de Connection String die u eerder hebt geretourneerd. In dit voor beeld `input` is de naam van de invoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde:
+2. Gebruik de volgende opdracht om dit bestand te uploaden naar de invoer container in de BLOB voor trigger opslag die u eerder hebt gemaakt. Vervang door `<file>` de naam van het bestand dat de gegevens bevat. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd. In dit voor beeld `input` is de naam van de invoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde:
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -275,15 +275,15 @@ Nadat de installatie kopie is geladen en de app beschikbaar is, gebruikt u de vo
     }
     ```
 
-3. Als u de uitvoer wilt weer geven die door de functie is geproduceerd, gebruikt u de volgende opdracht om de gegenereerde uitvoer bestanden te vermelden. Vervang `<triggerConnectionString>` door de Connection String die u eerder hebt geretourneerd. In dit voor beeld `output` is de naam van de uitvoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde::
+3. Als u de uitvoer wilt weer geven die door de functie is geproduceerd, gebruikt u de volgende opdracht om de gegenereerde uitvoer bestanden te vermelden. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd. In dit voor beeld `output` is de naam van de uitvoer container die u eerder hebt gemaakt. Als u een andere naam hebt gebruikt, vervangt u deze waarde::
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    De uitvoer van deze opdracht is vergelijkbaar met `sample_input_out.json`.
+    De uitvoer van deze opdracht is vergelijkbaar met `sample_input_out.json` .
 
-4. Gebruik de volgende opdracht om het bestand te downloaden en de inhoud te controleren. Vervang `<file>` door de naam van het bestand dat wordt geretourneerd door de vorige opdracht. Vervang `<triggerConnectionString>` door de Connection String die u eerder hebt geretourneerd: 
+4. Gebruik de volgende opdracht om het bestand te downloaden en de inhoud te controleren. Vervang door de `<file>` naam van het bestand dat wordt geretourneerd door de vorige opdracht. Vervang door `<triggerConnectionString>` de Connection String die u eerder hebt geretourneerd: 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647633"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434041"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -35,6 +35,14 @@ Dit artikel bevat informatie over het volgende om up-to-date te blijven met de m
 > U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="june-2020"></a>Juni 2020
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Preview-versie van live video-analyses op IoT Edge
+
+De preview-versie van live video Analytics op IoT Edge openbaar geworden. Zie [release opmerkingen](../live-video-analytics-edge/release-notes.md)voor meer informatie.
+
+Live video Analytics op IoT Edge is een uitbrei ding van de media service familie. Zo kunt u live video analyseren met AI-modellen van uw keuze op uw eigen edge-apparaten en deze video optioneel vastleggen en opnemen. U kunt nu apps bouwen met realtime video analyses aan de rand zonder dat u zich zorgen hoeft te maken over de complexiteit van het bouwen en gebruiken van een live video pijplijn.
 
 ## <a name="may-2020"></a>Mei 2020
 
@@ -61,7 +69,7 @@ Media Services GA'ed in de volgende Azure Government regio's: *USGov Arizona* en
 
 CDN-ondersteuning is toegevoegd voor de *oorsprong: prefetch-* headers voor Live en video on-demand streaming; beschikbaar voor klanten die een direct-contract met Akamai CDN hebben. Origin-assisteren CDN-prefetch-functie omvat de volgende HTTP-header-uitwisselingen tussen Akamai CDN en Azure Media Services Origin:
 
-|HTTP-header|Waarden|Afzender|Ontvanger|Doel|
+|HTTP-header|Waarden|Afzender|Ontvanger|Functie|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-oorsprong-assistentie-prefetch-ingeschakeld | 1 (standaard) of 0 |CDN|Oorsprong|Om aan te geven dat CDN prefetch is ingeschakeld|
 |CDN-oorsprong-assisteren-prefetch-pad| Voorbeeld: <br/>Fragmenten (video = 1400000000, Format = mpd-time-CMAF)|Oorsprong|CDN|Het prefetch-pad naar CDN opgeven|
@@ -123,7 +131,7 @@ Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Pre
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
-## <a name="august-2019"></a>augustus 2019
+## <a name="august-2019"></a>Augustus 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1f34066b9f8fa16a2889c1872ebfd3f8cf33ee69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299516"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418106"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events voor Linux-Vm's
 
@@ -53,7 +53,12 @@ Geplande gebeurtenissen worden verzonden naar:
 - Zelfstandige Virtual Machines.
 - Alle virtuele machines in een Cloud service.
 - Alle virtuele machines in een beschikbaarheidsset.
+- Alle virtuele machines in een beschikbaarheids zone. 
 - Alle virtuele machines in een plaatsings groep met schaal sets. 
+
+> [!NOTE]
+> De geplande gebeurtenissen zijn specifiek voor Vm's in een beschikbaarheids zone en gaan naar één virtuele machine in een zone.
+> Als u bijvoorbeeld 100 Vm's in een beschikbaarheidsset hebt en er een update voor een van deze is, gaat de geplande gebeurtenis naar alle 100, terwijl 100 er maar één virtuele machine in een zone is, dan gaat de gebeurtenis alleen naar de VM die van invloed is.
 
 Controleer daarom het `Resources` veld in de gebeurtenis om te bepalen welke vm's worden beïnvloed.
 
@@ -67,7 +72,7 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht. de huidige versie is `2019-01-01` .
 
-| Versie | Release type | Regio's | Opmerkingen bij de release | 
+| Versie | Release type | Regio's | Releaseopmerkingen | 
 | - | - | - | - | 
 | 2019-08-01 | Algemene Beschik baarheid | Alles | <li> Ondersteuning toegevoegd voor Event source |
 | 2019-04-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |

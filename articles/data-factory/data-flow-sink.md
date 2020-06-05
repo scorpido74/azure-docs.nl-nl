@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605966"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433318"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
@@ -23,6 +23,22 @@ ms.locfileid: "81605966"
 Nadat u uw gegevens hebt getransformeerd, kunt u de gegevens in een doel-gegevensset opvangen. Elke gegevens stroom vereist ten minste één sink-trans formatie, maar u kunt indien nodig naar zoveel sinks schrijven om uw transformatie stroom te volt ooien. Als u naar extra sinks wilt schrijven, maakt u nieuwe streams via nieuwe vertakkingen en voorwaardelijke splitsingen.
 
 Elke Sink-trans formatie is aan precies één Data Factory-gegevensset gekoppeld. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven.
+
+## <a name="inline-datasets"></a>Inline gegevens sets
+
+Wanneer u een Sink-trans formatie maakt, kiest u of uw Sink-informatie is gedefinieerd binnen een DataSet-object of binnen de Sink-trans formatie. De meeste indelingen zijn alleen beschikbaar in een van beide. Raadpleeg het juiste connector document voor meer informatie over het gebruik van een specifieke connector.
+
+Wanneer een indeling wordt ondersteund voor zowel inline als een object DataSet, zijn er voor delen van beide. DataSet-objecten zijn herbruikbare entiteiten die kunnen worden gebruikt in andere gegevens stromen en activiteiten zoals kopiëren. Dit is met name handig wanneer u een geharder schema gebruikt. Gegevens sets zijn niet gebaseerd op Spark en af en toe moet u mogelijk bepaalde instellingen of schema projectie in de Sink-trans formatie overschrijven.
+
+Inline gegevens sets worden aanbevolen bij het gebruik van flexibele schema's, eenmalige Sink-instanties of sinks met para meters. Als uw Sink met hoge para meters is gefilterd, kunt u in de regel gegevens sets geen dummy-object maken. Inline gegevens sets zijn gebaseerd op Spark en hun eigenschappen zijn standaard voor de gegevens stroom.
+
+Als u een inline gegevensset wilt gebruiken, selecteert u de gewenste indeling in de selector voor het **type Sink** . In plaats van een Sink-gegevensset te selecteren, selecteert u de gekoppelde service waarmee u verbinding wilt maken.
+
+![Inline gegevensset](media/data-flow/inline-selector.png "Inline gegevensset")
+
+### <a name="supported-inline-dataset-formats"></a>Ondersteunde indelingen voor inline-gegevensset
+
+Momenteel is de enige beschik bare indeling voor de inline-gegevensset het [common data model](format-common-data-model.md#sink-properties) dat is gelezen van [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md).
 
 ## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Ondersteunde Sink-connectors in gegevens stroom toewijzen
 
@@ -37,7 +53,7 @@ Momenteel kunnen de volgende gegevens sets worden gebruikt in een Sink-trans for
 
 De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **instellingen** . informatie over deze instellingen vindt u in de documentatie van de connector. 
 
-Azure Data Factory heeft toegang tot meer dan [90 systeem eigen connectors](connector-overview.md). Als u gegevens wilt schrijven naar deze andere bronnen uit uw gegevens stroom, gebruikt u de Kopieer activiteit om die gegevens te laden uit een van de ondersteunde tijdelijke gebieden na voltooiing van de gegevens stroom.
+Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens naar deze andere Connect oren uit uw gegevens stroom wilt schrijven, gebruikt u de Kopieer activiteit om die gegevens uit een van de ondersteunde tijdelijke gebieden te laden nadat de gegevens stroom is voltooid.
 
 ## <a name="sink-settings"></a>Sink-instellingen
 

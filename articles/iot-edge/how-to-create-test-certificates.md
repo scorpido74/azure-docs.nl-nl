@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309132"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430658"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Demo certificaten maken om IoT Edge apparaatfuncties te testen
 
@@ -272,7 +272,7 @@ Het is echter verstandig om dezelfde naam te gebruiken.
 ## <a name="create-downstream-device-certificates"></a>Stroomafwaartse certificaten van het apparaat maken
 
 Als u een downstream IoT-apparaat instelt voor een gateway scenario en u X. 509-verificatie wilt gebruiken, kunt u demo certificaten voor het downstream-apparaat genereren.
-Als u symmetrische sleutel verificatie wilt gebruiken, hebt u geen certificaten nodig voor het downstream-apparaat.
+Als u symmetrische sleutel verificatie wilt gebruiken, hoeft u geen extra certificaten voor het downstream-apparaat te maken.
 Er zijn twee manieren om een IoT-apparaat te verifiëren met behulp van X. 509-certificaten: met een zelfondertekend certificaat of door CERTIFICERINGs instanties ondertekende certificaten te gebruiken.
 Voor X. 509 zelfondertekende verificatie, ook wel vingerafdruk verificatie genoemd, moet u nieuwe certificaten maken om op uw IoT-apparaat te plaatsen.
 Deze certificaten bevatten een vinger afdruk die u met IoT Hub voor verificatie kunt delen.

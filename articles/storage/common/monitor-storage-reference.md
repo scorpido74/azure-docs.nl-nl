@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 481406b02d7d864dd16ac42918ae1aa2dea0b145
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 31c285b8130e7df549ae9f3bb7f1e30cd8a0546c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195227"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432668"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Naslag informatie over Azure Storage bewakings gegevens
 
@@ -32,11 +32,15 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="account-level"></a>Account niveau
 
+In deze tabel worden [metrische gegevens op account niveau](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccounts)weer gegeven.
+
 | Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 #### <a name="blob-storage"></a>Blob Storage
+
+In deze tabel worden [metrische gegevens voor Blob-opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsblobservices)weer gegeven.
 
 | Metrisch | Beschrijving |
 | ------------------- | ----------------- |
@@ -47,6 +51,8 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="table-storage"></a>Table Storage
 
+In deze tabel worden [metrische gegevens van tabel opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountstableservices)weer gegeven.
+
 | Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | TableCapacity | De hoeveelheid tabel opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -55,6 +61,8 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 #### <a name="queue-storage"></a>Queue Storage
 
+In deze tabel worden [metrische opslag gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsfileservices)voor de wachtrij weer gegeven.
+
 | Metrisch | Beschrijving |
 | ------------------- | ----------------- |
 | QueueCapacity | De hoeveelheid wachtrij opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
@@ -62,6 +70,8 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 | QueueMessageCount | Het aantal niet-verlopen wachtrij berichten in het opslag account. <br/><br/>Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 #### <a name="file-storage"></a>File Storage
+
+In deze tabel worden [metrische gegevens over bestands opslag](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftstoragestorageaccountsqueueservices)weer gegeven.
 
 | Metrisch | Beschrijving |
 | ------------------- | ----------------- |

@@ -8,15 +8,15 @@ ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3da1cea0b5e17f43d42ced4d1c4ca55d0d3050ad
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982358"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433472"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Fouten opsporen en problemen met machine learning pijp lijnen oplossen in Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ logger.info("I will be sent to Application Insights with Custom Dimensions", cus
 
 De opentellings AzureLogHandler wordt gebruikt voor het routeren van python-logboeken naar Application Insights. Als gevolg hiervan moeten de nuances van python-logboeken worden overwogen. Wanneer een logboek wordt gemaakt, heeft het een standaard logboek niveau en worden logboeken weer gegeven die groter zijn dan of gelijk zijn aan dat niveau. Een goede referentie voor het gebruik van python-logboek registratie functies is de [logboek registratie Cookbook](https://docs.python.org/3/howto/logging-cookbook.html).
 
-De `APPLICATIONINSIGHTS_CONNECTION_STRING` omgevings variabele is vereist voor de bibliotheek opentellingen. We raden u aan deze omgevings variabele in te stellen in plaats van deze in te geven als een pijplijn parameter om te voor komen dat verbindings reeksen met ongecodeerde tekst worden door gegeven
+De `APPLICATIONINSIGHTS_CONNECTION_STRING` omgevings variabele is vereist voor de bibliotheek Opentellingen. We raden u aan deze omgevings variabele in te stellen in plaats van deze in te geven als een pijplijn parameter om te voor komen dat verbindings reeksen met ongecodeerde tekst worden door gegeven
 
 ## <a name="querying-logs-in-application-insights"></a>Query's uitvoeren op Logboeken in Application Insights
 
@@ -156,7 +156,7 @@ In het resultaat van Application Insights worden het logboek bericht en het nive
 
 In enkele van de onderstaande query's wordt gebruikgemaakt van ' customDimensions. level '. Deze ernst niveaus komen overeen met het niveau waarmee het python-logboek oorspronkelijk is verzonden. Zie [Azure monitor-logboek query's](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)voor meer informatie over query's.
 
-| Gebruiksvoorbeeld                                                               | Query’s uitvoeren                                                                                              |
+| Toepassing                                                               | Query’s uitvoeren                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
 | De resultaten vastleggen voor een specifieke aangepaste dimensie, bijvoorbeeld ' parent_run_id ' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
 | De resultaten van de logboeken voor alle trainingen worden in de afgelopen 7 dagen uitgevoerd                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |

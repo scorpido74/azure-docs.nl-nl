@@ -5,17 +5,17 @@ services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 7ab6aa5f830e335a30502207d3a49a528d03f7fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654329"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418011"
 ---
 1. Selecteer [pizza-app-for-Luis-V6. json](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) om de GitHub-pagina voor het bestand weer te geven `pizza-app-for-luis.json` .
 1. Klik met de rechter muisknop of op de **onbewerkte** knop en selecteer **Koppeling opslaan als** om de `pizza-app-for-luis.json` op uw computer op te slaan.
@@ -29,7 +29,7 @@ ms.locfileid: "83654329"
 
 De app wordt geïmporteerd.
 
-Als er een dialoog venster wordt weer gegeven **waarin wordt uitgelegd hoe u een efficiënte Luis-app maakt**, sluit u het dialoog venster.
+Als u het dialoog venster ziet **hoe u een efficiënte Luis-app maakt**, sluit u het dialoog venster.
 
 ## <a name="train-and-publish-the-pizza-app"></a>De pizza-app trainen en publiceren
 
@@ -43,7 +43,7 @@ Uw pizza-app is nu klaar voor gebruik.
 
 ## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>Registreer de App-ID, de Voorspellings sleutel en het Voorspellings eindpunt van uw pizza-app.
 
-Als u uw nieuwe pizza-app wilt gebruiken, hebt u de App-ID, de Voorspellings sleutel en het eind punt van uw pizza-app nodig.
+Als u uw nieuwe pizza-app wilt gebruiken, hebt u de App-ID, de Voorspellings sleutel en het Voorspellings eindpunt van uw pizza-app nodig.
 
 U vindt deze waarden als volgt:
 

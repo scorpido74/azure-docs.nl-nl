@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337575a85b899b918162ad59c0bbbbaf742a83fe
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588124"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417460"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto Networks verbinden met Azure Sentinel
 
@@ -34,7 +34,7 @@ In dit artikel wordt uitgelegd hoe u uw Palo Alto Networks-apparaat verbindt met
 Configureer Palo Alto-netwerken om syslog-berichten in de CEF-indeling door te sturen naar uw Azure-werk ruimte via de syslog-agent:
 1.  Ga naar [CEF-configuratie handleidingen (common Event Format)](https://docs.paloaltonetworks.com/resources/cef) en down load de PDF voor uw type apparaat. Volg alle instructies in de hand leiding om uw Palo Alto Networks-apparaat in te stellen voor het verzamelen van CEF-gebeurtenissen. 
 
-1.  Ga naar [syslog-bewaking configureren](https://aka.ms/asi-syslog-paloalto-forwarding) en volg stap 2 en 3 om CEF Event forwarding te configureren van uw Palo Alto Networks-apparaat naar Azure Sentinel.
+1.  Ga naar [syslog-bewaking configureren](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) en volg stap 2 en 3 om CEF Event forwarding te configureren van uw Palo Alto Networks-apparaat naar Azure Sentinel.
 
     1. Zorg ervoor dat u de **syslog-server indeling** instelt op **BSD**.
 

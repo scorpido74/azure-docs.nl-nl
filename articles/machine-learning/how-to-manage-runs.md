@@ -5,18 +5,18 @@ description: Meer informatie over hoe u begint, de status van het label instelt 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: d6dc2eeb572eeed17281677945c93067bbadee94
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ff3811c69aaa3643e2fce40a3ce26115870a6010
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628568"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430365"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ In dit artikel vindt u voor beelden van de volgende taken:
 
 U hebt de volgende items nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
@@ -63,7 +63,7 @@ ws = Workspace.from_config()
 exp = Experiment(workspace=ws, name="explore-runs")
 ```
 
-Start een run en het bijbehorende logboek registratie proces [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) met de-methode.
+Start een run en het bijbehorende logboek registratie proces met de- [`start_logging()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) methode.
 
 ```python
 notebook_run = exp.start_logging()
@@ -82,17 +82,17 @@ Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
     
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-1. Een werkruimte configuratie koppelen aan de map die uw trainings script bevat. Vervang `myworkspace` door uw Azure machine learning-werk ruimte. Vervang `myresourcegroup` door de Azure-resource groep die uw werk ruimte bevat:
+1. Een werkruimte configuratie koppelen aan de map die uw trainings script bevat. Vervang door `myworkspace` uw Azure machine learning-werk ruimte. Vervang door `myresourcegroup` de Azure-resource groep die uw werk ruimte bevat:
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Met deze opdracht maakt `.azureml` u een submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json` bestand dat wordt gebruikt om te communiceren met uw Azure machine learning-werk ruimte.
+    Met deze opdracht maakt u een `.azureml` submap die voor beelden van runconfig-en Conda-omgevings bestanden bevat. Het bevat ook een `config.json` bestand dat wordt gebruikt om te communiceren met uw Azure machine learning-werk ruimte.
 
     Zie voor meer informatie [AZ ml map attach](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
-2. Gebruik de volgende opdracht om de uitvoering te starten. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand \*(de tekst voor. runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
+2. Gebruik de volgende opdracht om de uitvoering te starten. Wanneer u deze opdracht gebruikt, geeft u de naam op van het runconfig-bestand (de tekst voor \* . runconfig als u uw bestands systeem bekijkt) op basis van de para meter-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
@@ -103,7 +103,7 @@ Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
     >
     > Als u een python-script hebt waarmee een configuratie object voor een uitvoering programmatisch wordt gemaakt, kunt u [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) gebruiken om het op te slaan als een RunConfig-bestand.
     >
-    > Zie [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/)voor meer voor beelden van runconfig-bestanden.
+    > Zie voor meer voor beelden van runconfig-bestanden [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
 
     Zie [AZ ml run-script uitvoeren](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)voor meer informatie.
 
@@ -121,13 +121,13 @@ Gebruik de volgende stappen om een pijplijn uitvoering te starten in de ontwerp 
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-De status ophalen van een run met de [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) -methode.
+De status ophalen van een run met de- [`get_status()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) methode.
 
 ```python
 print(notebook_run.get_status())
 ```
 
-Als u de uitvoerings-ID, uitvoerings tijd en aanvullende details over de uitvoering wilt ophalen, [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) gebruikt u de-methode.
+Als u de uitvoerings-ID, uitvoerings tijd en aanvullende details over de uitvoering wilt ophalen, gebruikt u de- [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#get-details--) methode.
 
 ```python
 print(notebook_run.get_details())
@@ -140,7 +140,7 @@ notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Als u het ontwerp patroon `with...as` van python gebruikt, wordt de uitvoering automatisch als voltooid gemarkeerd wanneer de uitvoering buiten het bereik valt. U hoeft de uitvoering niet hand matig te markeren als voltooid.
+Als u het ontwerp patroon van python gebruikt `with...as` , wordt de uitvoering automatisch als voltooid gemarkeerd wanneer de uitvoering buiten het bereik valt. U hoeft de uitvoering niet hand matig te markeren als voltooid.
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -152,7 +152,7 @@ print(notebook_run.get_status())
 
 ### <a name="using-the-cli"></a>De CLI gebruiken
 
-1. Gebruik de volgende opdracht om een lijst met uitvoeringen voor uw experiment weer te geven. Vervang `experiment` door de naam van uw experiment:
+1. Gebruik de volgende opdracht om een lijst met uitvoeringen voor uw experiment weer te geven. Vervang door `experiment` de naam van uw experiment:
 
     ```azurecli-interactive
     az ml run list --experiment-name experiment
@@ -162,7 +162,7 @@ print(notebook_run.get_status())
 
     Zie voor meer informatie [AZ ml experimenten List](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/experiment?view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
 
-2. Als u informatie wilt weer geven over een specifieke uitvoering, gebruikt u de volgende opdracht. Vervang `runid` door de id van de run:
+2. Als u informatie wilt weer geven over een specifieke uitvoering, gebruikt u de volgende opdracht. Vervang door `runid` de id van de run:
 
     ```azurecli-interactive
     az ml run show -r runid
@@ -194,7 +194,7 @@ Als u een fout melding krijgt of als de uitvoering te lang duurt om te volt ooie
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Als u een uitvoering met de SDK wilt annuleren, [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) gebruikt u de volgende methode:
+Als u een uitvoering met de SDK wilt annuleren, gebruikt u de [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) volgende methode:
 
 ```python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -241,7 +241,7 @@ Onderliggende uitvoeringen maken om gerelateerde uitvoeringen samen te voegen, z
 > [!NOTE]
 > Onderliggende uitvoeringen kunnen alleen worden gemaakt met de SDK.
 
-In dit code voorbeeld wordt `hello_with_children.py` het script gebruikt voor het maken van een batch van vijf onderliggende uitgevoerd vanuit een ingediende [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) uitvoering met behulp van de methode:
+In dit code voorbeeld wordt het `hello_with_children.py` script gebruikt voor het maken van een batch van vijf onderliggende uitgevoerd vanuit een ingediende uitvoering met behulp van de [`child_run()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#child-run-name-none--run-id-none--outputs-none-) methode:
 
 ```python
 !more hello_with_children.py
@@ -260,16 +260,16 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Als ze buiten het bereik worden verplaatst, worden onderliggende uitvoeringen automatisch gemarkeerd als voltooid.
 
-Als u veel onderliggende items efficiënt wilt maken, [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) gebruikt u de-methode. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
+Als u veel onderliggende items efficiënt wilt maken, gebruikt u de- [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) methode. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
 
 ### <a name="submit-child-runs"></a>Onderliggende uitvoeringen verzenden
 
 Onderliggende uitvoeringen kunnen ook worden verzonden vanuit een bovenliggende run. Hierdoor kunt u hiërarchieën van bovenliggende en onderliggende uitvoeringen maken. 
 
-Mogelijk wilt u dat uw kind een andere uitvoerings configuratie gebruikt dan de bovenliggende run. U kunt bijvoorbeeld een minder krachtige, op CPU gebaseerde configuratie voor het bovenliggende knoop punt gebruiken, terwijl u op GPU gebaseerde configuraties voor uw kinderen gebruikt. Een andere gang bare wens is om elke onderliggende andere argumenten en gegevens door te geven. Als u een onderliggende uitvoering wilt aanpassen, `RunConfiguration` geeft u een object door `ScriptRunConfig` aan de constructor van het onderliggende item. Dit code voorbeeld, dat deel uitmaakt van het script `ScriptRunConfig` van het bovenliggende object:
+Mogelijk wilt u dat uw kind een andere uitvoerings configuratie gebruikt dan de bovenliggende run. U kunt bijvoorbeeld een minder krachtige, op CPU gebaseerde configuratie voor het bovenliggende knoop punt gebruiken, terwijl u op GPU gebaseerde configuraties voor uw kinderen gebruikt. Een andere gang bare wens is om elke onderliggende andere argumenten en gegevens door te geven. Als u een onderliggende uitvoering wilt aanpassen, geeft `RunConfiguration` u een object door aan de constructor van het onderliggende item `ScriptRunConfig` . Dit code voorbeeld, dat deel uitmaakt van het script van het bovenliggende `ScriptRunConfig` object:
 
-- Hiermee wordt `RunConfiguration` een benoemde Compute-resource opgehaald`"gpu-compute"`
-- Herhaalt de verschillende argument waarden die moeten worden door gegeven aan de `ScriptRunConfig` onderliggende objecten
+- Hiermee wordt een `RunConfiguration` benoemde Compute-resource opgehaald`"gpu-compute"`
+- Herhaalt de verschillende argument waarden die moeten worden door gegeven aan de onderliggende `ScriptRunConfig` objecten
 - Hiermee wordt een nieuwe onderliggende run gemaakt en verzonden met behulp van de aangepaste Compute-resource en het argument
 - Blokken totdat alle onderliggende bewerkingen zijn voltooid
 
@@ -298,7 +298,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Gebruik de [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) -methode om veel onderliggende uitvoeringen met identieke configuraties, argumenten en invoer op efficiënte wijze te maken. Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
+Gebruik de-methode om veel onderliggende uitvoeringen met identieke configuraties, argumenten en invoer op efficiënte wijze te maken [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) . Omdat bij het maken van een netwerk aanroep een batch-uitvoer wordt gemaakt, is het maken van een reeks uitvoeringen efficiënter dan één voor één.
 
 Binnen een onderliggende run kunt u de bovenliggende run-ID bekijken:
 
@@ -310,7 +310,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Query's uitvoeren op onderliggende items
 
-Gebruik de [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) -methode om een query uit te voeren op de onderliggende uitvoeringen van een specifiek bovenliggend element. Met ``recursive = True`` het argument kunt u een geneste structuur van onderliggende items en grandchildren opvragen.
+Gebruik de-methode om een query uit te voeren op de onderliggende uitvoeringen van een specifiek bovenliggend element [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . ``recursive = True``Met het argument kunt u een geneste structuur van onderliggende items en grandchildren opvragen.
 
 ```python
 print(parent_run.get_children())
@@ -324,14 +324,14 @@ In Azure Machine Learning kunt u eigenschappen en tags gebruiken om uw uitvoerin
 
 #### <a name="using-the-sdk"></a>De SDK gebruiken
 
-Als u Doorzoek bare meta gegevens aan uw uitvoeringen wilt [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) toevoegen, gebruikt u de-methode. Met de volgende code wordt de `"author"` eigenschap bijvoorbeeld toegevoegd aan de uitvoeren:
+Als u Doorzoek bare meta gegevens aan uw uitvoeringen wilt toevoegen, gebruikt u de- [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) methode. Met de volgende code wordt de eigenschap bijvoorbeeld toegevoegd `"author"` aan de uitvoeren:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Eigenschappen zijn onveranderbaar, zodat ze een permanente record voor controle doeleinden maken. In het volgende code voorbeeld wordt een fout veroorzaakt, omdat we in `"azureml-user"` de voor `"author"` gaande code al zijn toegevoegd als eigenschaps waarde:
+Eigenschappen zijn onveranderbaar, zodat ze een permanente record voor controle doeleinden maken. In het volgende code voorbeeld wordt een fout veroorzaakt, omdat we `"azureml-user"` `"author"` in de voor gaande code al zijn toegevoegd als eigenschaps waarde:
 
 ```Python
 try:
@@ -340,7 +340,7 @@ except Exception as e:
     print(e)
 ```
 
-In tegens telling tot eigenschappen zijn Tags onveranderbaar. Gebruik de [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) -methode om Doorzoek bare en nuttige informatie voor gebruikers van uw experiment toe te voegen.
+In tegens telling tot eigenschappen zijn Tags onveranderbaar. Gebruik de-methode om Doorzoek bare en nuttige informatie voor gebruikers van uw experiment toe te voegen [`tag()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#tag-key--value-none-) .
 
 ```Python
 local_script_run.tag("quality", "great run")
@@ -350,7 +350,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-U kunt ook eenvoudige teken reeks Tags toevoegen. Wanneer deze tags worden weer gegeven in de code woordenlijst als sleutels, hebben ze een `None`waarde van.
+U kunt ook eenvoudige teken reeks Tags toevoegen. Wanneer deze tags worden weer gegeven in de code woordenlijst als sleutels, hebben ze een waarde van `None` .
 
 ```Python
 local_script_run.tag("worth another look")
@@ -383,7 +383,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>De CLI gebruiken
 
-De Azure CLI ondersteunt [JMESPath](http://jmespath.org) -query's, die kunnen worden gebruikt voor het filteren van uitvoeringen op basis van eigenschappen en labels. Als u een JMESPath-query wilt gebruiken met de Azure CLI, geeft `--query` u deze op met de para meter. In de volgende voor beelden ziet u eenvoudige query's met behulp van eigenschappen en Tags:
+De Azure CLI ondersteunt [JMESPath](http://jmespath.org) -query's, die kunnen worden gebruikt voor het filteren van uitvoeringen op basis van eigenschappen en labels. Als u een JMESPath-query wilt gebruiken met de Azure CLI, geeft u deze op met de `--query` para meter. In de volgende voor beelden ziet u eenvoudige query's met behulp van eigenschappen en Tags:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

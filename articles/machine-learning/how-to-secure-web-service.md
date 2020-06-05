@@ -5,18 +5,18 @@ description: Meer informatie over het inschakelen van HTTPS om een webservice te
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287336"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432853"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS gebruiken om een webservice te beveiligen via Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Er zijn kleine verschillen bij het beveiligen van s in verschillende [implementa
 
 ## <a name="get-a-domain-name"></a>Een domein naam ophalen
 
-Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www\.contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw webservice.
+Als u nog geen domein naam hebt, kunt u er een aanschaffen bij een *domein naam registratie*. Het proces en de prijs verschillen per registratie. De registratie service voorziet in hulpprogram ma's voor het beheren van de domein naam. U kunt deze hulpprogram ma's gebruiken om een Fully Qualified Domain Name (FQDN) (zoals www \. contoso.com) toe te wijzen aan het IP-adres dat als host fungeert voor uw webservice.
 
 ## <a name="get-a-tlsssl-certificate"></a>Een TLS/SSL-certificaat ophalen
 
@@ -63,7 +63,7 @@ Er zijn veel manieren om een TLS/SSL-certificaat (digitaal certificaat) te verkr
 * Een **certificaat**. Het certificaat moet de volledige certificaat keten bevatten en moet ' PEM-encoded ' zijn.
 * Een **sleutel**. De sleutel moet ook worden PEM-gecodeerd.
 
-Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de webservice (bijvoorbeeld www\.-contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de webservice te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
+Wanneer u een certificaat aanvraagt, moet u de FQDN-namen opgeven van het adres dat u wilt gebruiken voor de webservice (bijvoorbeeld www \. -contoso.com). Het adres dat is gestempeld in het certificaat en het adres dat de clients gebruiken, worden vergeleken om de identiteit van de webservice te controleren. Als deze adressen niet overeenkomen, wordt er een fout bericht weer gegeven.
 
 > [!TIP]
 > Als de certificerings instantie het certificaat en de sleutel niet kan leveren als met PEM gecodeerde bestanden, kunt u een hulp programma zoals [openssl](https://www.openssl.org/) gebruiken om de indeling te wijzigen.
@@ -87,7 +87,7 @@ Wanneer u implementeert in AKS, kunt u een nieuw AKS-cluster maken of een bestaa
 
 De **enable_ssl** -methode kan gebruikmaken van een certificaat dat door micro soft wordt verschaft of een certificaat dat u aanschaft.
 
-  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Bijvoorbeeld: met de waarde contoso wordt de domein naam ' contoso,\<zes wille keurige tekens>. \<azureregio>. cloudapp.Azure.com ', waarbij \<azureregio> de regio is die de service bevat. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
+  * Wanneer u een certificaat van micro soft gebruikt, moet u de para meter *leaf_domain_label* gebruiken. Met deze para meter wordt de DNS-naam voor de service gegenereerd. Bijvoorbeeld: de waarde ' Contoso ' maakt de domein naam ' contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ', waarbij \<azureregion> is de regio waarin de service is opgenomen. U kunt desgewenst de para meter *overwrite_existing_domain* gebruiken om de bestaande *leaf_domain_label*te overschrijven.
 
     Als u de service wilt implementeren (of opnieuw wilt implementeren) met TLS ingeschakeld, stelt u de para meter *ssl_enabled* in op ' True ', waar dit van toepassing is. Stel de para meter *ssl_certificate* in op de waarde van het *certificaat* bestand. Stel de *ssl_key* in op de waarde van het *sleutel* bestand.
 
@@ -172,6 +172,10 @@ TLS/SSL-certificaten verlopen en moeten worden vernieuwd. Dit gebeurt meestal el
 
 Als het certificaat oorspronkelijk is gegenereerd door micro soft (als de *leaf_domain_label* wordt gebruikt om de service te maken), gebruikt u een van de volgende voor beelden om het certificaat bij te werken:
 
+> [!IMPORTANT]
+> * Als het bestaande certificaat nog geldig is, gebruikt u `renew=True` (SDK) of `--ssl-renew` (CLI) om de configuratie te forceren om deze te vernieuwen. Als het bestaande certificaat bijvoorbeeld 10 dagen nog geldig is en u niet gebruikt `renew=True` , kan het certificaat mogelijk niet worden verlengd.
+> * Wanneer de service oorspronkelijk is geïmplementeerd, `leaf_domain_label` wordt het gebruikt om een DNS-naam te maken met behulp van het patroon `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` . Als u de bestaande naam (inclusief de oorspronkelijk gegenereerde zes cijfers) wilt behouden, gebruikt u de oorspronkelijke `leaf_domain_label` waarde. Neem niet de 6 cijfers op die zijn gegenereerd.
+
 **De SDK gebruiken**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **De CLI gebruiken**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 Zie voor meer informatie de volgende naslag documenten:
@@ -241,7 +245,7 @@ Zie voor meer informatie de volgende naslag documenten:
 
 ## <a name="disable-tls"></a>TLS uitschakelen
 
-Als u TLS wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes `SslConfiguration` service `status="Disabled"`, maakt u een met en voert u een update uit:
+Als u TLS wilt uitschakelen voor een model dat is geïmplementeerd in azure Kubernetes service, maakt u een `SslConfiguration` met `status="Disabled"` en voert u een update uit:
 
 ```python
 from azureml.core.compute import AksCompute

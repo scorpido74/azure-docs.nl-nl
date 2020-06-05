@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334948"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424720"
 ---
 | Resource | Limiet |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334948"
 | Sleutel lengte van tag |512 |
 | Lengte van label waarde |256 |
 
-<sup>1</sup> Als u de limiet van 800 implementaties per resource groep bereikt, verwijdert u implementaties uit de geschiedenis die niet meer nodig zijn. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de geïmplementeerde resources. Zie voor meer informatie [oplossen fout bij aantal implementaties is groter dan 800](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md).
+<sup>1</sup> Vanaf juni 2020 worden implementaties automatisch verwijderd uit de geschiedenis, net als bij de limiet. Het verwijderen van een item uit de implementatie geschiedenis heeft geen invloed op de geïmplementeerde resources. Zie [automatische verwijderingen uit de implementatie geschiedenis](../articles/azure-resource-manager/templates/deployment-history-deletions.md)voor meer informatie.
 
 #### <a name="template-limits"></a>Sjabloon limieten
 

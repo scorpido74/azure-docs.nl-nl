@@ -5,18 +5,18 @@ description: Meer informatie over hoe en waar u uw Azure Machine Learning-modell
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/28/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3b1dd474b3b5518029e7cf404cc88b97bfa23e36
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208564"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433488"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen implementeren met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning
 
 + **De CLI gebruiken**
 
-   Gebruik de para meter `-w` of `--workspace-name` voor het opgeven van de werk ruimte voor de opdracht wanneer u de CLI gebruikt.
+   Gebruik de `-w` `--workspace-name` para meter of voor het opgeven van de werk ruimte voor de opdracht wanneer u de CLI gebruikt.
 
 + **Visual Studio Code gebruiken**
 
@@ -92,7 +92,7 @@ De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bi
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u het pad in naar een map die de bestanden bevat. Zie de documentatie [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) voor meer informatie.
+    De `model_path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat. Zie de documentatie [Run. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) voor meer informatie.
 
   + Een model van een `azureml.train.automl.run.AutoMLRun` object registreren:
 
@@ -104,7 +104,7 @@ De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bi
         print(run.model_id)
     ```
 
-    In dit voor beeld worden `metric` de `iteration` para meters en niet opgegeven, zodat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
+    In dit voor beeld `metric` worden de `iteration` para meters en niet opgegeven, zodat de iteratie met de beste primaire metriek wordt geregistreerd. De `model_id` waarde die wordt geretourneerd door de uitvoering, wordt gebruikt in plaats van een model naam.
 
     Zie de documentatie van [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) voor meer informatie.
 
@@ -116,7 +116,7 @@ De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bi
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-  De `--asset-path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie `--asset-path` , stelt u het pad in naar een map die de bestanden bevat.
+  De `--asset-path` para meter verwijst naar de locatie van de cloud van het model. In dit voor beeld wordt het pad van één bestand gebruikt. Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `--asset-path` u het pad in naar een map die de bestanden bevat.
 
 + **Visual Studio Code gebruiken**
 
@@ -146,7 +146,7 @@ U kunt een model registreren door het lokale pad van het model op te geven. U ku
                             description = "MNIST image classification CNN from ONNX Model Zoo",)
     ```
 
-  Als u meerdere bestanden wilt toevoegen aan de model registratie `model_path` , stelt u het pad in naar een map die de bestanden bevat.
+  Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `model_path` u het pad in naar een map die de bestanden bevat.
 
 + **De CLI gebruiken**
 
@@ -154,7 +154,7 @@ U kunt een model registreren door het lokale pad van het model op te geven. U ku
   az ml model register -n onnx_mnist -p mnist/model.onnx
   ```
 
-  Als u meerdere bestanden wilt toevoegen aan de model registratie `-p` , stelt u het pad in naar een map die de bestanden bevat.
+  Als u meerdere bestanden wilt toevoegen aan de model registratie, stelt `-p` u het pad in naar een map die de bestanden bevat.
 
 **Geschatte tijd**: ongeveer 10 seconden.
 
@@ -203,7 +203,7 @@ dependencies:
 >
 > Zie [Wat is Conda en PIP](https://www.anaconda.com/understanding-conda-and-pip/)? voor meer informatie.
 >
-> Als u wilt controleren of uw afhankelijkheid beschikbaar is via Conda `conda search <package-name>` , gebruikt u de opdracht of gebruikt u [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) de [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)pakket indexen op en.
+> Als u wilt controleren of uw afhankelijkheid beschikbaar is via Conda, gebruikt u de `conda search <package-name>` opdracht of gebruikt u de pakket indexen op [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) en [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) .
 
 U kunt het afhankelijkheden bestand gebruiken om een omgevings object te maken en dit op te slaan in uw werk ruimte voor toekomstig gebruik:
 
@@ -239,7 +239,7 @@ In de volgende tabel wordt de waarde van AZUREML_MODEL_DIR beschreven, afhankeli
 | Implementatie | Waarde van omgevings variabele |
 | ----- | ----- |
 | Eén model | Het pad naar de map die het model bevat. |
-| Meerdere modellen | Het pad naar de map met alle modellen. Modellen bevinden zich op naam en versie in deze map`$MODEL_NAME/$VERSION`() |
+| Meerdere modellen | Het pad naar de map met alle modellen. Modellen bevinden zich op naam en versie in deze map ( `$MODEL_NAME/$VERSION` ) |
 
 Tijdens model registratie en-implementatie worden modellen in het AZUREML_MODEL_DIR pad geplaatst en hun oorspronkelijke bestands namen blijven behouden.
 
@@ -277,7 +277,7 @@ Deze typen worden momenteel ondersteund:
 * `pyspark`
 * Standard python-object
 
-Als u schema's wilt genereren, neemt u het open `inference-schema` -source pakket op in het bestand met afhankelijkheden. Zie [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema)voor meer informatie over dit pakket. Definieer de voorbeeld indelingen voor invoer en uitvoer in `input_sample` de `output_sample` variabelen en, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de `run()` functie. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
+Als u schema's wilt genereren, neemt u het open-source `inference-schema` pakket op in het bestand met afhankelijkheden. Zie voor meer informatie over dit pakket [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) . Definieer de voorbeeld indelingen voor invoer en uitvoer in `input_sample` de `output_sample` variabelen en, die de aanvraag-en antwoord indelingen voor de webservice vertegenwoordigen. Gebruik deze voor beelden in de functie voor invoer en uitvoer op de `run()` functie. Het volgende voor beeld van scikit maakt gebruik van schema generatie.
 
 ##### <a name="example-entry-script"></a>Voorbeeld script
 
@@ -322,7 +322,7 @@ def run(data):
         return error
 ```
 
-In het volgende voor beeld ziet u hoe u de invoer gegevens definieert `<key: value>` als een woorden lijst met behulp van een data frame. Deze methode wordt ondersteund voor het gebruik van de geïmplementeerde webservice van Power BI. (Meer[informatie over het gebruik van de webservice van Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
+In het volgende voor beeld ziet u hoe u de invoer gegevens definieert als een `<key: value>` woorden lijst met behulp van een data frame. Deze methode wordt ondersteund voor het gebruik van de geïmplementeerde webservice van Power BI. (Meer[informatie over het gebruik van de webservice van Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-integration).)
 
 ```python
 import json
@@ -496,7 +496,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 ```
 
 > [!TIP]
-> Als u de informatie wilt behouden die door profile ring wordt geretourneerd, gebruikt u Tags of eigenschappen voor het model. Als u labels of eigenschappen gebruikt, worden de gegevens opgeslagen met het model in het model register. In de volgende voor beelden ziet u hoe u een `requestedCpu` nieuwe `requestedMemoryInGb` tag met de-en-informatie toevoegt:
+> Als u de informatie wilt behouden die door profile ring wordt geretourneerd, gebruikt u Tags of eigenschappen voor het model. Als u labels of eigenschappen gebruikt, worden de gegevens opgeslagen met het model in het model register. In de volgende voor beelden ziet u hoe u een nieuwe tag met de- `requestedCpu` en- `requestedMemoryInGb` informatie toevoegt:
 >
 > ```python
 > model.add_tags({'requestedCpu': details['requestedCpu'],
@@ -531,7 +531,7 @@ De volgende tabel bevat een voor beeld van het maken van een implementatie confi
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen worden `azureml.core.webservice`geïmporteerd uit:
+De klassen voor lokale, Azure Container Instances-en AKS-webservices kunnen worden geïmporteerd uit `azureml.core.webservice` :
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -560,7 +560,7 @@ Zie de documentatie voor [LocalWebservice](https://docs.microsoft.com/python/api
 
 #### <a name="using-the-cli"></a>De CLI gebruiken
 
-Als u een model wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang `mymodel:1` door de naam en versie van het geregistreerde model:
+Als u een model wilt implementeren met behulp van de CLI, gebruikt u de volgende opdracht. Vervang door `mymodel:1` de naam en versie van het geregistreerde model:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
@@ -582,7 +582,7 @@ In de volgende tabel worden de verschillende service statussen beschreven:
 | Niet in orde | De service is geïmplementeerd, maar is momenteel niet bereikbaar.  | Nee |
 | Unschedulable | De service kan op dit moment niet worden geïmplementeerd vanwege een gebrek aan resources. | Nee |
 | Mislukt | De implementatie van de service is mislukt vanwege een fout of een crash. | Ja |
-| Goed | De service is in orde en het eind punt is beschikbaar. | Ja |
+| In orde | De service is in orde en het eind punt is beschikbaar. | Ja |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Compute instance web service (dev/test)
 
@@ -608,7 +608,7 @@ Als u verificatie op basis van tokens voor uw service hebt ingeschakeld, moet u 
 Het belangrijkste verschil is dat **sleutels statisch zijn en hand matig opnieuw kunnen worden gegenereerd**en **dat tokens na verloop van tijd moeten worden vernieuwd**. Verificatie op basis van sleutels wordt ondersteund voor Azure container instance en Azure Kubernetes Service geïmplementeerde webservices en verificatie op basis van tokens is **alleen** beschikbaar voor Azure Kubernetes-service-implementaties. Zie verificatie [voor meer](how-to-setup-authentication.md#web-service-authentication) informatie en specifieke code voorbeelden.
 
 > [!TIP]
-> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri`) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
+> U kunt het schema-JSON-document ophalen nadat u de service hebt geïmplementeerd. Gebruik de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) van de geïmplementeerde webservice (bijvoorbeeld `service.swagger_uri` ) om de URI naar het Swagger-bestand van de lokale webservice op te halen.
 
 ### <a name="request-response-consumption"></a>Aanvraag-antwoord verbruik
 
@@ -642,7 +642,7 @@ Zie [client toepassingen maken om webservices te gebruiken](how-to-consume-web-s
 
 ### <a name="web-service-schema-openapi-specification"></a>Web Service-schema (OpenAPI-specificatie)
 
-Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Bijvoorbeeld `print(service.swagger_uri)`.) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
+Als u automatische schema generatie hebt gebruikt met uw implementatie, kunt u het adres van de OpenAPI-specificatie voor de service ophalen met behulp van de [eigenschap swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Bijvoorbeeld `print(service.swagger_uri)` .) Gebruik een GET-aanvraag of open de URI in een browser om de specificatie op te halen.
 
 Het volgende JSON-document is een voor beeld van een schema (OpenAPI-specificatie) dat is gegenereerd voor een implementatie:
 
@@ -961,24 +961,24 @@ package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
 ```
 
-Nadat u een pakket hebt gemaakt, kunt u `package.pull()` gebruiken om de installatie kopie naar uw lokale docker-omgeving te halen. Met de uitvoer van deze opdracht wordt de naam van de afbeelding weer gegeven. Bijvoorbeeld: 
+Nadat u een pakket hebt gemaakt, kunt u gebruiken `package.pull()` om de installatie kopie naar uw lokale docker-omgeving te halen. Met de uitvoer van deze opdracht wordt de naam van de afbeelding weer gegeven. Bijvoorbeeld: 
 
 `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. 
 
-Nadat u het model hebt gedownload, gebruikt `docker images` u de opdracht om de lokale installatie kopieën weer te geven:
+Nadat u het model hebt gedownload, gebruikt u de `docker images` opdracht om de lokale installatie kopieën weer te geven:
 
 ```text
 REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
 myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43 GB
 ```
 
-Als u een lokale container wilt starten op basis van deze installatie kopie, gebruikt u de volgende opdracht om een benoemde container te starten vanuit de shell of de opdracht regel. Vervang de `<imageid>` waarde door de AFBEELDINGS-id die `docker images` wordt geretourneerd door de opdracht.
+Als u een lokale container wilt starten op basis van deze installatie kopie, gebruikt u de volgende opdracht om een benoemde container te starten vanuit de shell of de opdracht regel. Vervang de `<imageid>` waarde door de afbeeldings-id die wordt geretourneerd door de `docker images` opdracht.
 
 ```bash
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score`.
+Met deze opdracht start u de nieuwste versie van de installatie kopie met de naam `myimage` . De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam wordt ook toegewezen `mycontainer` aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score` .
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>Een Dockerfile en afhankelijkheden genereren
 
@@ -996,23 +996,23 @@ print("Username:", acr.username)
 print("Password:", acr.password)
 ```
 
-Met deze code worden de bestanden gedownload die nodig zijn om de `imagefiles` installatie kopie te bouwen in de Directory. De Dockerfile die in de opgeslagen bestanden zijn opgenomen, verwijst naar een basis installatie kopie die is opgeslagen in een Azure container Registry. Wanneer u de installatie kopie op uw lokale docker-installatie bouwt, moet u het adres, de gebruikers naam en het wacht woord gebruiken om u te verifiëren bij het REGI ster. Gebruik de volgende stappen om de installatie kopie met behulp van een lokale docker-installatie te maken:
+Met deze code worden de bestanden gedownload die nodig zijn om de installatie kopie te bouwen in de `imagefiles` Directory. De Dockerfile die in de opgeslagen bestanden zijn opgenomen, verwijst naar een basis installatie kopie die is opgeslagen in een Azure container Registry. Wanneer u de installatie kopie op uw lokale docker-installatie bouwt, moet u het adres, de gebruikers naam en het wacht woord gebruiken om u te verifiëren bij het REGI ster. Gebruik de volgende stappen om de installatie kopie met behulp van een lokale docker-installatie te maken:
 
-1. Gebruik vanuit een shell of opdracht regel sessie de volgende opdracht om docker te verifiëren met het Azure container Registry. Vervang `<address>`, `<username>`, en `<password>` door de waarden die zijn opgehaald `package.get_container_registry()`door.
+1. Gebruik vanuit een shell of opdracht regel sessie de volgende opdracht om docker te verifiëren met het Azure container Registry. Vervang `<address>` , `<username>` , en `<password>` door de waarden die zijn opgehaald `package.get_container_registry()` door.
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. Gebruik de volgende opdracht om de installatie kopie te maken. Vervang `<imagefiles>` door het pad van de map waarin `package.save()` de bestanden zijn opgeslagen.
+2. Gebruik de volgende opdracht om de installatie kopie te maken. Vervang door `<imagefiles>` het pad van de map waarin `package.save()` de bestanden zijn opgeslagen.
 
     ```bash
     docker build --tag myimage <imagefiles>
     ```
 
-    Met deze opdracht wordt de naam van `myimage`de installatie kopie ingesteld op.
+    Met deze opdracht wordt de naam van de installatie kopie ingesteld op `myimage` .
 
-Gebruik de `docker images` opdracht om te controleren of de installatie kopie is gemaakt. U ziet de `myimage` afbeelding in de lijst:
+Gebruik de opdracht om te controleren of de installatie kopie is gemaakt `docker images` . U ziet de `myimage` afbeelding in de lijst:
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
@@ -1026,7 +1026,7 @@ Als u een nieuwe container wilt starten op basis van deze installatie kopie, geb
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-Met deze opdracht start u de nieuwste versie van de `myimage`installatie kopie met de naam. De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam `mycontainer` wordt ook toegewezen aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score`.
+Met deze opdracht start u de nieuwste versie van de installatie kopie met de naam `myimage` . De lokale poort 6789 wordt toegewezen aan de poort in de container waarop de webservice luistert (5001). De naam wordt ook toegewezen `mycontainer` aan de container, waardoor de container eenvoudiger kan worden gestopt. Nadat de container is gestart, kunt u aanvragen verzenden naar `http://localhost:6789/score` .
 
 ### <a name="example-client-to-test-the-local-container"></a>Voor beeld-client om de lokale container te testen
 
@@ -1069,8 +1069,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een geïmplementeerde webservice wilt verwijderen `service.delete()`, gebruikt u.
-Als u een geregistreerd model wilt verwijderen `model.delete()`, gebruikt u.
+Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()` .
+Als u een geregistreerd model wilt verwijderen, gebruikt u `model.delete()` .
 
 Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) en [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)voor meer informatie.
 
@@ -1081,9 +1081,9 @@ Zie de documentatie voor [webservice. Delete ()](https://docs.microsoft.com/pyth
 
 ### <a name="binary-data"></a>Binaire gegevens
 
-Als uw model binaire gegevens accepteert, zoals een afbeelding, moet u het `score.py` bestand wijzigen dat wordt gebruikt voor uw implementatie om onbewerkte HTTP-aanvragen te accepteren. Als u onbewerkte gegevens wilt `AMLRequest` accepteren, gebruikt u de klasse in uw `@rawhttp` invoer script en `run()` voegt u de decorator toe aan de functie.
+Als uw model binaire gegevens accepteert, zoals een afbeelding, moet u het bestand wijzigen dat `score.py` wordt gebruikt voor uw implementatie om onbewerkte HTTP-aanvragen te accepteren. Als u onbewerkte gegevens wilt accepteren, gebruikt u de `AMLRequest` klasse in uw invoer script en voegt `@rawhttp` u de decorator toe aan de `run()` functie.
 
-Hier volgt een voor beeld van `score.py` een waarmee binaire gegevens worden geaccepteerd:
+Hier volgt een voor beeld van een `score.py` waarmee binaire gegevens worden geaccepteerd:
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1114,7 +1114,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> De `AMLRequest` klasse bevindt `azureml.contrib` zich in de naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
+> De `AMLRequest` klasse bevindt zich in de `azureml.contrib` naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
 >
 > Als u dit in uw lokale ontwikkel omgeving moet testen, kunt u de onderdelen installeren met behulp van de volgende opdracht:
 >
@@ -1122,7 +1122,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-Met `AMLRequest` de klasse hebt u alleen toegang tot de onbewerkte geposte gegevens in de score.py, maar er is geen onderdeel aan de client zijde. Vanaf een-client post u gegevens als normaal. Met de volgende python-code wordt bijvoorbeeld een afbeeldings bestand gelezen en worden de gegevens Gepost:
+`AMLRequest`Met de klasse hebt u alleen toegang tot de onbewerkte geposte gegevens in de score.py, maar er is geen onderdeel aan de client zijde. Vanaf een-client post u gegevens als normaal. Met de volgende python-code wordt bijvoorbeeld een afbeeldings bestand gelezen en worden de gegevens Gepost:
 
 ```python
 import requests
@@ -1138,9 +1138,9 @@ res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'app
 
 Cross-Origin-resource delen is een manier om te voor komen dat resources op een webpagina worden aangevraagd vanuit een ander domein. CORS werkt via HTTP-headers die worden verzonden met de aanvraag van de client en worden geretourneerd met de service reactie. Zie [Cross-Origin-resource delen](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) in Wikipedia voor meer informatie over CORS en geldige headers.
 
-Als u uw model implementatie wilt configureren voor de ondersteuning van `AMLResponse` CORS, gebruikt u de-klasse in uw invoer script. Met deze klasse kunt u de headers op het antwoord object instellen.
+Als u uw model implementatie wilt configureren voor de ondersteuning van CORS, gebruikt u de- `AMLResponse` klasse in uw invoer script. Met deze klasse kunt u de headers op het antwoord object instellen.
 
-In het volgende voor beeld `Access-Control-Allow-Origin` wordt de koptekst ingesteld voor het antwoord van het entry-script:
+In het volgende voor beeld wordt de `Access-Control-Allow-Origin` koptekst ingesteld voor het antwoord van het entry-script:
 
 ```python
 from azureml.contrib.services.aml_request import AMLRequest, rawhttp
@@ -1172,7 +1172,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> De `AMLResponse` klasse bevindt `azureml.contrib` zich in de naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
+> De `AMLResponse` klasse bevindt zich in de `azureml.contrib` naam ruimte. Entiteiten in deze naam ruimte worden regel matig gewijzigd, terwijl we werken om de service te verbeteren. Alles in deze naam ruimte moet worden beschouwd als een preview-versie die niet volledig wordt ondersteund door micro soft.
 >
 > Als u dit in uw lokale ontwikkel omgeving moet testen, kunt u de onderdelen installeren met behulp van de volgende opdracht:
 >

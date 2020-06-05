@@ -5,18 +5,18 @@ description: Meer informatie over het implementeren van een webservice met een m
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ac246c5135f9c00368ccce2ca79627322f504976
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983581"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433899"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Wat zijn veld-Programmeer bare poort matrices (FPGA) en implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -87,7 +87,7 @@ U kunt een model als een webservice implementeren op Fpga's met [Azure Machine L
 
 ### <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement.  Als u nog geen account hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+- Een Azure-abonnement.  Als u nog geen account hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 - FPGA quota. Gebruik de Azure CLI om te controleren of u een quotum hebt:
 
@@ -96,7 +96,7 @@ U kunt een model als een webservice implementeren op Fpga's met [Azure Machine L
     ```
 
     > [!TIP]
-    > De andere mogelijke locaties zijn ``southeastasia``, ``westeurope``, en ``westus2``.
+    > De andere mogelijke locaties zijn ``southeastasia`` , ``westeurope`` , en ``westus2`` .
 
     De opdracht retourneert tekst die er ongeveer als volgt uitziet:
 
@@ -108,7 +108,7 @@ U kunt een model als een webservice implementeren op Fpga's met [Azure Machine L
 
     Zorg ervoor dat er ten minste 6 Vcpu's zijn onder __CurrentValue__.
 
-    Als u geen quota hebt, verzendt u een aanvraag op [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
+    Als u geen quota hebt, verzendt u een aanvraag op [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) .
 
 - Er is een Azure Machine Learning-werk ruimte en de Azure Machine Learning SDK voor python geïnstalleerd. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
  
@@ -344,7 +344,7 @@ aks_service.wait_for_deployment(show_output=True)
 #### <a name="test-the-cloud-service"></a>De Cloud service testen
 De docker-installatie kopie ondersteunt gRPC en de tensor flow voor ' voors pellen '.  Gebruik de voor beeld-client om een docker-installatie kopie aan te roepen om voor spellingen van het model te verkrijgen.  Voor beeld-client code is beschikbaar:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [G #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
 Als u tensor flow wilt gebruiken, kunt u [een voorbeeld-client downloaden](https://www.tensorflow.org/serving/setup).
 

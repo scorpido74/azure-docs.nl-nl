@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/03/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e9ee573ca908c41fe7c7887d0f306971369f83f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185639"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417494"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -64,7 +64,7 @@ Alle Azure NetApp Files volumes worden versleuteld met behulp van de FIPS 140-2-
 
 Sleutel beheer voor Azure NetApp Files wordt verwerkt door de service. Voor elk volume wordt een unieke XTS-AES-256-gegevens versleutelings sleutel gegenereerd. Een versleutelings sleutel hiërarchie wordt gebruikt om alle volume sleutels te versleutelen en te beveiligen. Deze versleutelings sleutels worden nooit weer gegeven of gerapporteerd in een niet-versleutelde indeling. Versleutelings sleutels worden direct verwijderd wanneer een volume wordt verwijderd.
 
-Ondersteuning voor door gebruikers beheerde sleutels (neem uw eigen sleutels mee) met behulp van de speciale HSM van Azure is beschikbaar op basis van een gecontroleerde toepassing in de regio's VS-Oost, VS-West2 en VS Zuid-Centraal.  U kunt toegang vragen op **anffeedback@microsoft.com**. Als capaciteit beschikbaar is, worden aanvragen goedgekeurd.
+Ondersteuning voor door gebruikers beheerde sleutels (neem uw eigen sleutels mee) met behulp van de speciale HSM van Azure is beschikbaar op basis van een gecontroleerde toepassing in de regio's VS-Oost, VS-West2 en VS Zuid-Centraal.  U kunt toegang vragen op **anffeedback@microsoft.com** . Als capaciteit beschikbaar is, worden aanvragen goedgekeurd.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Kan ik de NFS-export beleids regels configureren om de toegang tot het Azure NetApp Files service-koppelings doel te beheren?
 
@@ -107,7 +107,7 @@ Azure NetApp Files biedt meet waarden voor de volume prestaties. U kunt Azure Mo
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Ik wil een volume automatisch koppelen wanneer een virtuele machine van Azure wordt gestart of opnieuw wordt opgestart.  Hoe kan ik mijn host configureren voor permanente NFS-volumes?
 
-Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM `/etc/fstab` , voegt u een vermelding toe aan het bestand op de host. 
+Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM, voegt u een vermelding toe aan het `/etc/fstab` bestand op de host. 
 
 Zie [een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) voor meer informatie.  
 
@@ -125,6 +125,10 @@ De hoofdmap Squashing wordt momenteel niet ondersteund.
 
 ## <a name="smb-faqs"></a>Veelgestelde vragen over SMB
 
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Welke SMB-versies worden ondersteund door Azure NetApp Files?
+
+Azure NetApp Files ondersteunt SMB 2,1 en SMB 3,1 (inclusief ondersteuning voor SMB 3,0).    
+
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Is een Active Directory verbinding vereist voor SMB-toegang? 
 
 Ja, u moet een Active Directory verbinding maken voordat u een SMB-volume implementeert. De opgegeven domein controllers moeten toegankelijk zijn voor het gedelegeerde subnet van Azure NetApp Files voor een geslaagde verbinding.  Zie [een SMB-volume maken](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) voor meer informatie. 
@@ -139,7 +143,7 @@ Een AD-verbinding wordt geconfigureerd per NetApp-account; de AD-verbinding word
 
 Zowel [Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) en [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) worden ondersteund. U kunt bestaande Active Directory domein controllers gebruiken met Azure NetApp Files. Domein controllers kunnen zich in azure bevinden als virtuele machines, of on-premises via ExpressRoute of S2S VPN. Azure NetApp Files biedt op dit moment geen ondersteuning voor AD-deelname voor [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is `OU=AADDC Computers` het pad voor de organisatie-eenheid wanneer u Active Directory configureert voor uw NetApp-account.
+Als u Azure NetApp Files gebruikt met Azure Active Directory Domain Services, is het pad voor de organisatie-eenheid `OU=AADDC Computers` Wanneer u Active Directory configureert voor uw NetApp-account.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Welke versies van Windows Server Active Directory worden ondersteund?
 

@@ -5,17 +5,17 @@ description: Meer informatie over invoer & uitvoer van gegevens in Azure Machine
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 67af2fec75c2a4ead10e59c651dac1542c095659
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858464"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430101"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -25,24 +25,24 @@ Dit artikel bevat code voor het importeren, transformeren en verplaatsen van geg
 
 In dit artikel wordt uitgelegd hoe u:
 
-- Objecten `Dataset` gebruiken voor bestaande gegevens
+- `Dataset`Objecten gebruiken voor bestaande gegevens
 - Toegang tot gegevens in uw stappen
-- Gegevens `Dataset` splitsen in subsets, zoals training en validatie subsets
-- Objecten `PipelineData` maken voor het overdragen van gegevens naar de volgende pijplijn stap
-- Objecten `PipelineData` gebruiken als invoer voor pijplijn stappen
+- `Dataset`Gegevens splitsen in subsets, zoals training en validatie subsets
+- `PipelineData`Objecten maken voor het overdragen van gegevens naar de volgende pijplijn stap
+- `PipelineData`Objecten gebruiken als invoer voor pijplijn stappen
 - Nieuwe `Dataset` objecten maken die `PipelineData` u wilt behouden
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig:
 
-- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 - De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
 
 - Een Azure Machine Learning-werkruimte.
   
-  [Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md) of gebruik een bestaand item via de PYTHON-SDK. Importeer de `Workspace` - `Datastore` en-klasse en laad uw abonnements gegevens uit het `config.json` bestand met behulp van de functie `from_config()`. Deze functie zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een para meter Path opgeven om naar het bestand te `from_config(path="your/file/path")`verwijzen met.
+  [Maak een Azure machine learning-werk ruimte](how-to-manage-workspace.md) of gebruik een bestaand item via de PYTHON-SDK. Importeer de `Workspace` `Datastore` -en-klasse en laad uw abonnements gegevens uit het bestand `config.json` met behulp van de functie `from_config()` . Deze functie zoekt standaard naar het JSON-bestand in de huidige map, maar u kunt ook een para meter Path opgeven om naar het bestand te verwijzen met `from_config(path="your/file/path")` .
 
    ```python
    import azureml.core
@@ -55,11 +55,11 @@ U hebt het volgende nodig:
 
 - Optioneel: een bestaande machine learning pijp lijn, zoals de pijplijn die wordt beschreven in [machine learning pijp lijnen maken en uitvoeren met Azure machine learning SDK](how-to-create-your-first-pipeline.md).
 
-## <a name="use-dataset-objects-for-pre-existing-data"></a>Objecten `Dataset` gebruiken voor bestaande gegevens 
+## <a name="use-dataset-objects-for-pre-existing-data"></a>`Dataset`Objecten gebruiken voor bestaande gegevens 
 
 De voorkeurs manier om gegevens op te nemen in een pijp lijn is het gebruik van een object [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) . `Dataset`objecten vertegenwoordigen permanente gegevens die beschikbaar zijn in een werk ruimte.
 
-Er zijn veel manieren om objecten te maken `Dataset` en te registreren. Tabellaire gegevens sets zijn voor een scheidings teken dat beschikbaar is in een of meer bestanden. Bestand gegevens sets zijn voor binaire gegevens (zoals installatie kopieën) of voor gegevens die u gaat parseren. De eenvoudigste manier om objecten te `Dataset` maken, is het gebruik van bestaande blobs in werkruimte opslag of open bare url's:
+Er zijn veel manieren om objecten te maken en te registreren `Dataset` . Tabellaire gegevens sets zijn voor een scheidings teken dat beschikbaar is in een of meer bestanden. Bestand gegevens sets zijn voor binaire gegevens (zoals installatie kopieën) of voor gegevens die u gaat parseren. De eenvoudigste manier om objecten te maken `Dataset` , is het gebruik van bestaande blobs in werkruimte opslag of open bare url's:
 
 ```python
 datastore = Datastore.get(workspace, 'training_data')
@@ -75,17 +75,17 @@ Zie [Azure machine learning gegevens sets maken](how-to-create-register-datasets
 
 ### <a name="pass-datasets-to-your-script"></a>Gegevens sets door geven aan het script
 
-Als u het pad van de gegevensset wilt door geven aan uw `Dataset` script, `as_named_input()` gebruikt u de methode van het object. U kunt het resulterende `DatasetConsumptionConfig` object door geven aan uw script als een argument of, met behulp `inputs` van het argument voor uw pijplijn script, u de gegevensset kunt ophalen `Run.get_context().input_datasets[]`met.
+Als u het pad van de gegevensset wilt door geven aan uw script, gebruikt u de `Dataset` methode van het object `as_named_input()` . U kunt het resulterende object door geven `DatasetConsumptionConfig` aan uw script als een argument of, met behulp van het `inputs` argument voor uw pijplijn script, u de gegevensset kunt ophalen met `Run.get_context().input_datasets[]` .
 
-Zodra u een benoemde invoer hebt gemaakt, kunt u de toegangs modus kiezen: `as_mount()` of `as_download()`. Als uw script alle bestanden in uw gegevensset verwerkt en de schijf op de reken resource groot genoeg is voor de gegevensset, is de Download toegangs modus de beste keuze. De Download toegangs modus voor komt dat de overhead van het streamen van gegevens tijdens runtime wordt voor komen. Als uw script toegang krijgt tot een subset van de gegevensset of als deze te groot is voor uw compute, moet u de toegangs modus voor koppelen gebruiken. Lees [koppelen versus downloaden](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) voor meer informatie.
+Zodra u een benoemde invoer hebt gemaakt, kunt u de toegangs modus kiezen: `as_mount()` of `as_download()` . Als uw script alle bestanden in uw gegevensset verwerkt en de schijf op de reken resource groot genoeg is voor de gegevensset, is de Download toegangs modus de beste keuze. De Download toegangs modus voor komt dat de overhead van het streamen van gegevens tijdens runtime wordt voor komen. Als uw script toegang krijgt tot een subset van de gegevensset of als deze te groot is voor uw compute, moet u de toegangs modus voor koppelen gebruiken. Lees [koppelen versus downloaden](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download) voor meer informatie.
 
 Een gegevensset door geven aan de pijplijn stap:
 
-1. Gebruik `TabularDataset.as_named_inputs()` of `FileDataset.as_named_input()` (geen ' aan het einde) om een `DatasetConsumptionConfig` object te maken
-1. De `as_mount()` toegangs `as_download()` modus gebruiken of instellen
-1. Geef de gegevens sets door aan de pijplijn stappen met behulp `arguments` van `inputs` het of het argument
+1. Gebruik `TabularDataset.as_named_inputs()` of `FileDataset.as_named_input()` (geen ' aan het einde) om een object te maken `DatasetConsumptionConfig`
+1. `as_mount()` `as_download()` De toegangs modus gebruiken of instellen
+1. Geef de gegevens sets door aan de pijplijn stappen met behulp van het `arguments` of het `inputs` argument
 
-Het volgende code fragment toont het algemene patroon van het combi neren van `PythonScriptStep` deze stappen in de constructor: 
+Het volgende code fragment toont het algemene patroon van het combi neren van deze stappen in de `PythonScriptStep` constructor: 
 
 ```python
 
@@ -97,7 +97,7 @@ train_step = PythonScriptStep(
 )
 ```
 
-U kunt ook methoden als `random_split()` gebruiken `take_sample()` om meerdere invoer te maken of de hoeveelheid gegevens te verminderen die worden door gegeven aan de pijplijn stap:
+U kunt ook methoden als gebruiken `random_split()` `take_sample()` om meerdere invoer te maken of de hoeveelheid gegevens te verminderen die worden door gegeven aan de pijplijn stap:
 
 ```python
 seed = 42 # PRNG seed
@@ -114,7 +114,7 @@ train_step = PythonScriptStep(
 
 ### <a name="access-datasets-within-your-script"></a>Toegang tot gegevens sets in uw script
 
-Benoemde invoer van het script voor de pijplijn stap is beschikbaar als een woorden lijst `Run` binnen het object. Haal het actieve `Run` object op `Run.get_context()` met behulp van en haal vervolgens de woorden `input_datasets`lijst met de naam invoer op met behulp van. `DatasetConsumptionConfig` Als u het object hebt door gegeven `arguments` met behulp van `inputs` het argument in plaats van het `ArgParser` argument, opent u de gegevens met behulp van code. Beide technieken worden in het volgende code fragment getoond.
+Benoemde invoer van het script voor de pijplijn stap is beschikbaar als een woorden lijst binnen het `Run` object. Haal het actieve `Run` object op met behulp `Run.get_context()` van en haal vervolgens de woorden lijst met de naam invoer op met behulp van `input_datasets` . Als u het object hebt door gegeven `DatasetConsumptionConfig` met behulp `arguments` van het argument in plaats van het `inputs` argument, opent u de gegevens met behulp van `ArgParser` code. Beide technieken worden in het volgende code fragment getoond.
 
 ```python
 # In pipeline definition script:
@@ -138,7 +138,7 @@ testing_data_folder = Run.get_context().input_datasets['test']
 
 De door gegeven waarde is het pad naar de bestand (en) van de gegevensset.
 
-Het is ook mogelijk om rechtstreeks toegang te `Dataset` krijgen tot een geregistreerd. Omdat geregistreerde gegevens sets permanent zijn en worden gedeeld in een werk ruimte, kunt u ze direct ophalen:
+Het is ook mogelijk om rechtstreeks toegang te krijgen tot een geregistreerd `Dataset` . Omdat geregistreerde gegevens sets permanent zijn en worden gedeeld in een werk ruimte, kunt u ze direct ophalen:
 
 ```python
 run = Run.get_context()
@@ -148,7 +148,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Gebruiken `PipelineData` voor tussenliggende gegevens
 
-Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van `PipelineData` een object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door met behulp van_ de `arguments` `outputs` argumenten en:
+Hoewel `Dataset` objecten persistente gegevens vertegenwoordigen, worden [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -objecten gebruikt voor tijdelijke gegevens die worden uitgevoerd vanuit pijplijn stappen. Omdat de levens duur van een `PipelineData` object langer is dan één pijplijn stap, definieert u deze in het definitie script van de pijp lijn. Wanneer u een `PipelineData` -object maakt, moet u een naam en een gegevens opslag opgeven waarop de gegevens worden opgeslagen. Geef uw `PipelineData` object (en) aan uw `PythonScriptStep` objecten _door_ met behulp van de `arguments` `outputs` argumenten en:
 
 ```python
 default_datastore = workspace.get_default_datastore()
@@ -164,7 +164,7 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-U kunt ervoor kiezen om uw `PipelineData` object te maken met behulp van een toegangs modus waarmee u een onmiddellijke upload kunt doen. In dat geval moet u, wanneer u `PipelineData`uw maakt, `upload_mode` het `"upload"` `output_path_on_compute` argument instellen en gebruiken om het pad op te geven waarnaar u de gegevens wilt schrijven:
+U kunt ervoor kiezen om uw `PipelineData` object te maken met behulp van een toegangs modus waarmee u een onmiddellijke upload kunt doen. In dat geval moet u, wanneer u uw maakt `PipelineData` , `upload_mode` het `"upload"` argument instellen en gebruiken `output_path_on_compute` om het pad op te geven waarnaar u de gegevens wilt schrijven:
 
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
@@ -172,7 +172,7 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Gebruiken `PipelineData` als uitvoer van een trainings stap
 
-Binnen de pijp lijn `PythonScriptStep`kunt u de beschik bare uitvoer paden ophalen met behulp van de argumenten van het programma. Als deze stap het eerst is en de uitvoer gegevens initialiseert, moet u de Directory maken op het opgegeven pad. Vervolgens kunt u de bestanden die u wilt opnemen in de `PipelineData`opslaan.
+Binnen de pijp lijn `PythonScriptStep` kunt u de beschik bare uitvoer paden ophalen met behulp van de argumenten van het programma. Als deze stap het eerst is en de uitvoer gegevens initialiseert, moet u de Directory maken op het opgegeven pad. Vervolgens kunt u de bestanden die u wilt opnemen in de opslaan `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -185,7 +185,7 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-`PipelineData` Als u uw hebt gemaakt met `is_directory` het argument ingesteld `True`op, zou het voldoende zijn om alleen de `os.makedirs()` oproep uit te voeren. vervolgens zou u de gewenste bestanden naar het pad kunnen schrijven. Zie de [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -referentie documentatie voor meer informatie.
+Als u uw hebt gemaakt `PipelineData` met het `is_directory` argument ingesteld op `True` , zou het voldoende zijn om alleen de oproep uit te voeren `os.makedirs()` . vervolgens zou u de gewenste bestanden naar het pad kunnen schrijven. Zie de [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) -referentie documentatie voor meer informatie.
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Lezen `PipelineData` als invoer van niet-eerste stappen
 
@@ -226,9 +226,9 @@ with open(args.pd) as f:
     print(f.read())
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>Objecten `PipelineData` naar `Dataset`s converteren
+## <a name="convert-pipelinedata-objects-to-datasets"></a>`PipelineData`Objecten naar `Dataset` s converteren
 
-Als u langer dan de duur van `PipelineData` een uitvoering beschikbaar wilt maken, gebruikt u de functie ervan `as_dataset()` om deze te converteren naar een. `Dataset` U kunt vervolgens de `Dataset`registreren, waardoor het een eersteklas burger is in uw werk ruimte. Omdat uw `PipelineData` object elke keer dat de pijp lijn wordt uitgevoerd een ander pad heeft, is het raadzaam dat u instelt `create_new_version` op `True` wanneer u een `Dataset` gemaakt van een `PipelineData` object registreert.
+Als u `PipelineData` langer dan de duur van een uitvoering beschikbaar wilt maken, gebruikt u de `as_dataset()` functie ervan om deze te converteren naar een `Dataset` . U kunt vervolgens de registreren `Dataset` , waardoor het een eersteklas burger is in uw werk ruimte. Omdat uw `PipelineData` object elke keer dat de pijp lijn wordt uitgevoerd een ander pad heeft, is het raadzaam dat u instelt `create_new_version` op `True` Wanneer u een `Dataset` gemaakt van een `PipelineData` object registreert.
 
 ```python
 step1_output_ds = step1_output_data.as_dataset()

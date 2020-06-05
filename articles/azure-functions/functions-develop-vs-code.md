@@ -3,12 +3,12 @@ title: Azure Functions ontwikkelen met Visual Studio code
 description: Meer informatie over het ontwikkelen en testen van Azure Functions met behulp van de Azure Functions-extensie voor Visual Studio code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 2d33b7dddf29d37d174bdb7734e9048bc1658840
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39e62f78f9f0cf1550a01201f753782566aa7c80
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277165"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424156"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions ontwikkelen met Visual Studio code
 
@@ -24,7 +24,7 @@ De uitbrei ding kan worden gebruikt in combi natie met de volgende talen, die wo
 
 * [Gecompileerde C#](functions-dotnet-class-library.md)
 * [C#-script](functions-reference-csharp.md)<sup>*</sup>
-* [Javascript](functions-reference-node.md)
+* [JavaScript](functions-reference-node.md)
 * [Java](functions-reference-java.md)
 * [PowerShell](functions-reference-powershell.md)
 * [Python](functions-reference-python.md)
@@ -96,11 +96,15 @@ Afhankelijk van uw taal worden deze andere bestanden gemaakt:
 
 * [HttpExample.cs Class-bibliotheek bestand](functions-dotnet-class-library.md#functions-class-library-project) dat de functie implementeert.
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+Op dit moment kunt u invoer-en uitvoer bindingen toevoegen aan uw functie door [een para meter toe te voegen aan een C#-klassen bibliotheek functie](#add-input-and-output-bindings).
+
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Een package. JSON-bestand in de hoofdmap.
 
 * Een HttpExample-map die het [JSON-definitie bestand](functions-reference-node.md#folder-structure) van de functie en het [bestand index. js](functions-reference-node.md#exporting-a-function)bevat, een node. js-bestand dat de functie code bevat.
+
+Op dit moment kunt u invoer-en uitvoer bindingen toevoegen aan uw functie door [het bestand function. json te wijzigen](#add-input-and-output-bindings).
 
 <!-- # [PowerShell](#tab/powershell)
 
@@ -113,8 +117,6 @@ Afhankelijk van uw taal worden deze andere bestanden gemaakt:
 * An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
      -->
 ---
-
-U kunt nu invoer-en uitvoer bindingen toevoegen aan uw functie door [het bestand function. json te wijzigen](#add-a-function-to-your-project) of door [een para meter toe te voegen aan een C#-klassen bibliotheek functie](#add-a-function-to-your-project).
 
 U kunt ook [een nieuwe functie toevoegen aan uw project](#add-a-function-to-your-project).
 
@@ -130,7 +132,7 @@ Voer de [DotNet-opdracht add package](/dotnet/core/tools/dotnet-add-package) uit
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -146,7 +148,7 @@ De resultaten van deze actie zijn afhankelijk van de taal van uw project:
 
 Er wordt een nieuw bestand van de C#-klassebibliotheek (. cs) toegevoegd aan uw project.
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie. JSON-bestand en het nieuwe Java script-code bestand.
 
@@ -156,11 +158,11 @@ Er wordt een nieuwe map gemaakt in het project. De map bevat een nieuwe functie.
 
 U kunt de functie uitbreiden door invoer-en uitvoer bindingen toe te voegen. Het proces voor het toevoegen van bindingen is afhankelijk van de taal van uw project. Zie [Azure functions triggers en bindingen](functions-triggers-bindings.md)voor meer informatie over bindingen.
 
-In de volgende voor beelden wordt verbinding gemaakt met `outqueue`een opslag wachtrij met de naam, waarbij de Connection String voor het `MyStorageConnection` opslag account is ingesteld in de toepassings instelling in lokale. settings. json.
+In de volgende voor beelden wordt verbinding gemaakt met een opslag wachtrij met `outqueue` de naam, waarbij de Connection String voor het opslag account is ingesteld in de `MyStorageConnection` toepassings instelling in lokale. settings. json.
 
 # <a name="c"></a>[G\#](#tab/csharp)
 
-Werk de functie methode bij om de volgende para meter toe `Run` te voegen aan de methode definitie:
+Werk de functie methode bij om de volgende para meter toe te voegen aan de `Run` methode definitie:
 
 ```cs
 [Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
@@ -172,11 +174,11 @@ Voor deze code moet u de volgende `using` instructie toevoegen:
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
 
-De `msg` para meter is `ICollector<T>` een type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
+De `msg` para meter is een `ICollector<T>` type dat een verzameling berichten vertegenwoordigt die naar een uitvoer binding worden geschreven wanneer de functie is voltooid. U voegt een of meer berichten aan de verzameling toe. Deze berichten worden verzonden naar de wachtrij wanneer de functie is voltooid.
 
 Zie de documentatie voor de binding van de [wachtrij opslag](functions-bindings-storage-queue-output.md) voor meer informatie.
 
-# <a name="javascript"></a>[Javascript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Met Visual Studio code kunt u bindingen toevoegen aan uw function. JSON-bestand door een handige set prompts te volgen. Als u een binding wilt maken, klikt u met de rechter muisknop (CTRL + klik op macOS) op het bestand **Function. json** in de map function en selecteert u **binding toevoegen**:
 
@@ -206,7 +208,7 @@ In dit voor beeld wordt de volgende binding toegevoegd aan de `bindings` matrix 
 
 U kunt ook dezelfde bindings definitie rechtstreeks aan uw function. json toevoegen.
 
-In de functie code wordt de `msg` binding geopend vanuit de `context`, zoals in dit voor beeld:
+In de functie code wordt de `msg` binding geopend vanuit de `context` , zoals in dit voor beeld:
 
 ```javascript
 context.bindings.msg = "Name passed to the function: " req.query.name;
@@ -254,7 +256,7 @@ Met de volgende stappen publiceert u uw project naar een nieuwe functie-app die 
     | Selecteer een besturings systeem | Windows | De functie-app wordt uitgevoerd in Windows. |
     | Een hosting abonnement selecteren | Verbruiksabonnement | Er wordt een host gebruikt voor het gebruik van een serverloos [verbruiks abonnement](functions-scale.md#consumption-plan) . |
     | Selecteer een runtime voor uw nieuwe app | Uw project taal | De runtime moet overeenkomen met het project dat u wilt publiceren. |
-    | Een resource groep selecteren voor nieuwe resources | Nieuwe resource groep maken | Typ bij de volgende prompt een naam voor de resource groep, `myResourceGroup`zoals, en selecteer vervolgens ENTER. U kunt ook een bestaande resource groep selecteren. |
+    | Een resource groep selecteren voor nieuwe resources | Nieuwe resource groep maken | Typ bij de volgende prompt een naam voor de resource groep, zoals `myResourceGroup` , en selecteer vervolgens ENTER. U kunt ook een bestaande resource groep selecteren. |
     | Een opslag account selecteren | Nieuw opslagaccount maken | Typ bij de volgende prompt een wereld wijd unieke naam voor het nieuwe opslag account dat wordt gebruikt door de functie-app en selecteer vervolgens ENTER. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account selecteren. |
     | Selecteer een locatie voor nieuwe resources | regio | Selecteer een locatie in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die door uw functies worden geopend. |
 
@@ -283,7 +285,7 @@ Als u een door HTTP geactiveerde functie wilt aanroepen, hebt u de URL van de fu
 
 1. Volg de aanwijzingen om uw functie-app in azure te selecteren en selecteer vervolgens de specifieke HTTP-trigger die u wilt aanroepen.
 
-De functie-URL wordt gekopieerd naar het klem bord, samen met de vereiste sleutels die `code` worden door gegeven door de query parameter. Gebruik een HTTP-hulp programma voor het verzenden van POST-aanvragen of een browser voor GET-aanvragen voor de externe functie.  
+De functie-URL wordt gekopieerd naar het klem bord, samen met de vereiste sleutels die worden door gegeven door de `code` query parameter. Gebruik een HTTP-hulp programma voor het verzenden van POST-aanvragen of een browser voor GET-aanvragen voor de externe functie.  
 
 ## <a name="run-functions-locally"></a>Functies lokaal uitvoeren
 
@@ -301,7 +303,7 @@ Als u uw functions-project lokaal wilt uitvoeren, moet u aan deze aanvullende ve
     | -------- | --------- |
     | **C#** | [C#-extensie](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI-hulpprogramma's](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Fout opsporing voor Java-extensie](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 of hoger](https://maven.apache.org/) |
-    | **Javascript** | [Node. js](https://nodejs.org/)<sup>*</sup> |  
+    | **JavaScript** | [Node. js](https://nodejs.org/)<sup>*</sup> |  
     | **Python** | [Python-extensie](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) aanbevolen|
 
     <sup>*</sup>Actieve LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
@@ -314,7 +316,7 @@ In deze sectie wordt gebruikgemaakt [van de Azure Storage extensie voor Visual S
 
 Het opslag account connection string instellen:
 
-1. Open in Visual Studio **Cloud Explorer**, vouw **opslag account** > **uw opslag account**uit, selecteer **Eigenschappen** en kopieer de waarde van de **primaire verbindings reeks** .
+1. Open in Visual Studio **Cloud Explorer**, vouw **opslag account**  >  **uw opslag account**uit, selecteer **Eigenschappen** en kopieer de waarde van de **primaire verbindings reeks** .
 
 2. Open in uw project het bestand local. settings. json en stel de waarde van de sleutel **AzureWebJobsStorage** in op de Connection String die u hebt gekopieerd.
 
@@ -324,7 +326,7 @@ Zie [Local Settings file](#local-settings-file)(Engelstalig) voor meer informati
 
 ### <a name="debugging-functions-locally"></a>Functies voor lokaal fouten opsporen  
 
-Als u fouten wilt opsporen in uw functies, selecteert u F5. Als u de [kern hulpprogramma's][Azure functions core tools]nog niet hebt gedownload, wordt u gevraagd dit te doen. Wanneer de kern Hulpprogramma's zijn geïnstalleerd en worden uitgevoerd, wordt de uitvoer weer gegeven in de Terminal. Dit is hetzelfde als het uitvoeren van `func host start` de opdracht kern hulpprogramma's van de Terminal, maar met aanvullende build-taken en een bijgevoegde debugger.  
+Als u fouten wilt opsporen in uw functies, selecteert u F5. Als u de [kern hulpprogramma's][Azure functions core tools]nog niet hebt gedownload, wordt u gevraagd dit te doen. Wanneer de kern Hulpprogramma's zijn geïnstalleerd en worden uitgevoerd, wordt de uitvoer weer gegeven in de Terminal. Dit is hetzelfde als het uitvoeren `func host start` van de opdracht kern hulpprogramma's van de Terminal, maar met aanvullende build-taken en een bijgevoegde debugger.  
 
 Wanneer het project wordt uitgevoerd, kunt u uw functies activeren zoals u dat zou doen wanneer het project wordt geïmplementeerd in Azure. Wanneer het project wordt uitgevoerd in de foutopsporingsmodus, worden onderbrekings punten in Visual Studio code bereikt, zoals verwacht.
 
@@ -343,7 +345,7 @@ De waarden van de functie-toepassings instellingen kunnen ook in uw code worden 
 * [Vooraf gecompileerde C#](functions-dotnet-class-library.md#environment-variables)
 * [C#-script (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
-* [Javascript](functions-reference-node.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
 ## <a name="application-settings-in-azure"></a>Toepassings instellingen in azure
 
@@ -372,7 +374,7 @@ Als u toepassings instellingen hebt gemaakt in azure, kunt u deze downloaden naa
 
 Net als bij het uploaden is het lokale bestand versleuteld, wordt het gedecodeerd, bijgewerkt en opnieuw versleuteld. Als er instellingen zijn met conflicterende waarden op de twee locaties, wordt u gevraagd om te kiezen hoe u wilt door gaan.
 
-## <a name="monitoring-functions"></a>Bewakings functies
+## <a name="monitoring-functions"></a>Functies bewaken
 
 Wanneer u [functies lokaal uitvoert](#run-functions-locally), worden logboek gegevens naar de Terminal console gestreamd. U kunt ook logboek gegevens ophalen wanneer uw functions-project wordt uitgevoerd in een functie-app in Azure. U kunt verbinding maken met streaming-Logboeken in azure om bijna realtime logboek gegevens te bekijken, of u kunt Application Insights inschakelen voor een uitgebreidere uitleg over hoe de functie-app zich gedraagt.
 
@@ -397,17 +399,17 @@ We raden u aan de uitvoering van uw functies te bewaken door uw functie-app te i
 
 Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
-## <a name="c-script-projects"></a>C\# -script projecten
+## <a name="c-script-projects"></a>C- \# script projecten
 
 Standaard worden alle C#-projecten gemaakt als door [C# gecompileerde klassen bibliotheek projecten](functions-dotnet-class-library.md). Als u liever met C#-script projecten wilt werken, moet u C#-script als de standaard taal selecteren in de Azure Functions extensie-instellingen:
 
-1. Selecteer**instellingen**voor **Bestands** > **Voorkeuren** > .
+1. Selecteer **File**  >  **instellingen voor bestands voorkeuren**  >  **Settings**.
 
-1. Ga naar**extensies** > voor **gebruikers instellingen** > **Azure functions**.
+1. Ga naar extensies voor **gebruikers instellingen**  >  **Extensions**  >  **Azure functions**.
 
 1. **C #-script** uit **Azure function selecteren: project taal**.
 
-Nadat u deze stappen hebt voltooid, bevatten de aanroepen van de onderliggende kern `--csx` hulpprogramma's de optie, waarmee C#-script bestanden (. CSX) worden gegenereerd en gepubliceerd. Wanneer deze standaard taal is opgegeven, worden alle projecten die u standaard voor C#-script projecten maakt. U wordt niet gevraagd om een project taal te kiezen wanneer een standaard waarde is ingesteld. Als u projecten in andere talen wilt maken, moet u deze instelling wijzigen of verwijderen uit het bestand gebruikers instellingen. json. Nadat u deze instelling hebt verwijderd, wordt u opnieuw gevraagd om uw taal te kiezen wanneer u een project maakt.
+Nadat u deze stappen hebt voltooid, bevatten de aanroepen van de onderliggende kern Hulpprogramma's de `--csx` optie, waarmee C#-script bestanden (. CSX) worden gegenereerd en gepubliceerd. Wanneer deze standaard taal is opgegeven, worden alle projecten die u standaard voor C#-script projecten maakt. U wordt niet gevraagd om een project taal te kiezen wanneer een standaard waarde is ingesteld. Als u projecten in andere talen wilt maken, moet u deze instelling wijzigen of verwijderen uit het bestand gebruikers instellingen. json. Nadat u deze instelling hebt verwijderd, wordt u opnieuw gevraagd om uw taal te kiezen wanneer u een project maakt.
 
 ## <a name="command-palette-reference"></a>Naslag informatie voor het opdracht palet
 
@@ -428,14 +430,14 @@ De uitbrei ding Azure Functions biedt een handige grafische interface in het geb
 | **Verbinding met opslag plaats verbreken**  | Hiermee verwijdert u de [continue implementatie](functions-continuous-deployment.md) verbinding tussen een functie-app in Azure en een bron beheer bibliotheek. |
 | **Externe instellingen downloaden** | Hiermee worden de instellingen van de gekozen functie-app in azure gedownload naar het bestand local. settings. json. Als het lokale bestand is versleuteld, wordt het gedecodeerd, bijgewerkt en opnieuw versleuteld. Als er instellingen zijn met conflicterende waarden op de twee locaties, wordt u gevraagd om te kiezen hoe u wilt door gaan. Zorg ervoor dat u de wijzigingen in het bestand local. settings. json opslaat voordat u deze opdracht uitvoert. |
 | **Instellingen bewerken** | Hiermee wijzigt u de waarde van een bestaande functie-app-instelling in Azure. Deze opdracht heeft geen invloed op de instellingen in het bestand local. settings. json.  |
-| **Versleutelings instellingen** | Versleutelt afzonderlijke items in `Values` de matrix in de [lokale instellingen](#local-settings-file). In dit bestand `IsEncrypted` is ook ingesteld op `true`, waarmee wordt aangegeven dat de lokale runtime instellingen ontsleutelt voordat ze worden gebruikt. Lokale instellingen versleutelen om het risico van het lekken van waardevolle informatie te verminderen. In Azure worden toepassings instellingen altijd versleuteld opgeslagen. |
+| **Versleutelings instellingen** | Versleutelt afzonderlijke items in de `Values` matrix in de [lokale instellingen](#local-settings-file). In dit bestand `IsEncrypted` is ook ingesteld op `true` , waarmee wordt aangegeven dat de lokale runtime instellingen ontsleutelt voordat ze worden gebruikt. Lokale instellingen versleutelen om het risico van het lekken van waardevolle informatie te verminderen. In Azure worden toepassings instellingen altijd versleuteld opgeslagen. |
 | **De functie nu uitvoeren** | Start hand matig een door een [Timer geactiveerde functie](functions-bindings-timer.md) in Azure. Deze opdracht wordt gebruikt voor het testen. Zie [hand matig een niet met http geactiveerde functie uitvoeren](functions-manually-run-non-http.md)voor meer informatie over het activeren van niet-HTTP-functies in Azure. |
 | **Project initialiseren voor gebruik met VS-code** | Voegt de vereiste Visual Studio code-project bestanden toe aan een bestaand functions-project. Gebruik deze opdracht om te werken met een project dat u hebt gemaakt met behulp van kern Hulpprogramma's. |
 | **Azure Functions Core Tools installeren of bijwerken** | Installeert of update [Azure functions core tools], die wordt gebruikt om functies lokaal uit te voeren. |
 | **Opnieuw implementeren**  | Hiermee kunt u Project bestanden opnieuw implementeren vanuit een verbonden Git-opslag plaats naar een specifieke implementatie in Azure. Als u lokale updates opnieuw wilt publiceren vanuit Visual Studio code, [publiceert u het project opnieuw](#republish-project-files). |
 | **Instellingen voor naam wijzigen** | Hiermee wijzigt u de sleutel naam van een bestaande functie-app-instelling in Azure. Deze opdracht heeft geen invloed op de instellingen in het bestand local. settings. json. Nadat u de naam van instellingen in azure hebt gewijzigd, moet u [deze wijzigingen downloaden naar het lokale project](#download-settings-from-azure). |
-| **Opnieuw** | Hiermee wordt de functie-app in azure opnieuw gestart. Als u updates implementeert, wordt ook de functie-app opnieuw gestart. |
-| **AzureWebJobsStorage instellen**| Hiermee stelt u de waarde `AzureWebJobsStorage` van de toepassings instelling in. Deze instelling is vereist door Azure Functions. Het wordt ingesteld wanneer een functie-app wordt gemaakt in Azure. |
+| **Opnieuw starten** | Hiermee wordt de functie-app in azure opnieuw gestart. Als u updates implementeert, wordt ook de functie-app opnieuw gestart. |
+| **AzureWebJobsStorage instellen**| Hiermee stelt u de waarde van de `AzureWebJobsStorage` toepassings instelling in. Deze instelling is vereist door Azure Functions. Het wordt ingesteld wanneer een functie-app wordt gemaakt in Azure. |
 | **Begin** | Hiermee wordt een gestopt functie-app in azure gestart. |
 | **Streaming-Logboeken starten** | Hiermee start u de streaming-logboeken voor de functie-app in Azure. Gebruik Streaming-logboeken tijdens het extern oplossen van problemen in azure als u logboek gegevens in vrijwel realtime wilt weer geven. Zie [streaming-logboeken](#streaming-logs)voor meer informatie. |
 | **Stoppen** | Hiermee stopt u een functie-app die wordt uitgevoerd in Azure. |

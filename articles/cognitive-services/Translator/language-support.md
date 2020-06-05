@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996071"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434283"
 ---
 # <a name="language-and-region-support-for-translator"></a>Taal-en regio ondersteuning voor Translator
 
@@ -74,10 +74,11 @@ Het conversie programma ondersteunt de volgende talen voor tekst vertaling. Neur
 |Iers | `ga`| Neural
 |Italiaans|    `it`    |    Neural|
 |Japans|    `ja`    |    Neural|
-|Kannada|`kn`| Neural
+|Kannada|`kn`| Neural|
+|Kazachs |`kk`| Neural|
 |Swahili|    `sw`    |    Statische|
-|Klingon|    `tlh`    |    Statische|
-|Klingon (plqaD)|    `tlh-Qaak`    |    Statische|
+|Klingon|    `tlh-Latn`    |    Statische|
+|Klingon (plqaD)|    `tlh-Piqd`    |    Statische|
 |Koreaans    |`ko`    |    Neural|
 |Lets|    `lv`    |    Neural|
 |Litouws|    `lt`    |    Neural|
@@ -130,20 +131,20 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Traditioneel Chinees`Hant`|
 | Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Latijnse`Latn` |
 | Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Vereenvoudigd Chinees`Hans` |
-| Gujarati | `gu`  | Gujarati`Gujr` | --> | Latijnse`Latn` |
+| Gujarati | `gu`  | Gujarati`Gujr` | <--> | Latijnse`Latn` |
 | Hebreeuws | `he` | Hebreeuws`Hebr` | <--> | Latijnse`Latn` |
 | Hindi | `hi` | Devanagari`Deva` | <--> | Latijnse`Latn` |
 | Japans | `ja` | Japans`Jpan` | <--> | Latijnse`Latn` |
-| Kannada | `kn` | Kannada`Knda` | --> | Latijnse`Latn` |
-| Malajalam | `ml` | Malajalam`Mlym` | --> | Latijnse`Latn` |
-| Marathi | `mr` | Devanagari`Deva` | --> | Latijnse`Latn` |
+| Kannada | `kn` | Kannada`Knda` | <--> | Latijnse`Latn` |
+| Malajalam | `ml` | Malajalam`Mlym` | <--> | Latijnse`Latn` |
+| Marathi | `mr` | Devanagari`Deva` | <--> | Latijnse`Latn` |
 | Odia | `or` | Odia`Orya` | <--> | Latijnse`Latn` |
 | Punjabi | `pa` | Gurmukhi`Guru`  | <--> | Latijnse`Latn`  |
 | Servisch (Cyrillisch) | `sr-Cyrl` | Cyrillisch`Cyrl`  | --> | Latijnse`Latn` |
 | Servisch (Latijns) | `sr-Latn` | Latijnse`Latn` | --> | Cyrillisch`Cyrl`|
-| Tamil | `ta` | Tamil`Taml` | --> | Latijnse`Latn` |
-| Telugu | `te` | Telugu`Telu` | --> | Latijnse`Latn` |
-| Thai | `th` | Thais`Thai` | --> | Latijnse`Latn` |
+| Tamil | `ta` | Tamil`Taml` | <--> | Latijnse`Latn` |
+| Telugu | `te` | Telugu`Telu` | <--> | Latijnse`Latn` |
+| Thai | `th` | Thais`Thai` | <--> | Latijnse`Latn` |
 
 ## <a name="dictionary"></a>Woordenlijst
 
@@ -177,7 +178,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 | Italiaans      | `it`          |
 | Japans      | `ja`          |
 | Swahili      | `sw`          |
-| Klingon      | `tlh`          |
+| Klingon      | `tlh-Latn`          |
 | Koreaans      | `ko`          |
 | Lets      | `lv`          |
 | Litouws      | `lt`          |

@@ -5,18 +5,18 @@ description: Meer informatie over het aanroepen van een webservice-eind punt dat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb957169f542fdf6dc01e1024e3daab57eabd894
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383398"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433564"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,8 +41,8 @@ De algemene werk stroom voor het maken van een client die gebruikmaakt van een m
 
 De klasse [azureml. core. webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) bevat de informatie die u nodig hebt voor het maken van een-client. De volgende `Webservice` eigenschappen zijn handig voor het maken van een client toepassing:
 
-* `auth_enabled`-Als de sleutel verificatie is ingeschakeld `True`,; anders, `False`.
-* `token_auth_enabled`-Als token verificatie is ingeschakeld, `True`; anders, `False`.
+* `auth_enabled`-Als de sleutel verificatie is ingeschakeld, `True` anders, `False` .
+* `token_auth_enabled`-Als token verificatie is ingeschakeld, `True` anders, `False` .
 * `scoring_uri`-Het REST API adres.
 * `swagger_uri`-Het adres van de OpenAPI-specificatie. Deze URI is beschikbaar als u automatische schema generatie hebt ingeschakeld. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
@@ -65,7 +65,7 @@ Er zijn drie manieren om deze informatie op te halen voor geïmplementeerde webs
     print(services[0].swagger_uri)
     ```
 
-* Als u de naam van de geïmplementeerde service weet, kunt u een nieuwe instantie van `Webservice`maken en de werk ruimte en de service naam als para meters opgeven. Het nieuwe object bevat informatie over de geïmplementeerde service.
+* Als u de naam van de geïmplementeerde service weet, kunt u een nieuwe instantie van maken `Webservice` en de werk ruimte en de service naam als para meters opgeven. Het nieuwe object bevat informatie over de geïmplementeerde service.
 
     ```python
     service = Webservice(workspace=ws, name='myservice')
@@ -91,7 +91,7 @@ Azure Machine Learning biedt twee manieren om de toegang tot uw webservices te b
 |Sleutel|Standaard uitgeschakeld| Standaard ingeschakeld|
 |Token| Niet beschikbaar| Standaard uitgeschakeld |
 
-Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd `Bearer <key-or-token>`als, `<key-or-token>` waarbij de sleutel of Token waarde is.
+Wanneer u een aanvraag verzendt naar een service die is beveiligd met een sleutel of token, gebruikt u de __autorisatie__ -header om de sleutel of het token door te geven. De sleutel of het token moet zijn geformatteerd als `Bearer <key-or-token>` , waarbij `<key-or-token>` de sleutel of Token waarde is.
 
 #### <a name="authentication-with-keys"></a>Verificatie met sleutels
 
@@ -100,7 +100,7 @@ Wanneer u verificatie voor een implementatie inschakelt, maakt u automatisch ver
 * Verificatie is standaard ingeschakeld wanneer u naar de Azure Kubernetes-service implementeert.
 * Verificatie is standaard uitgeschakeld wanneer u implementeert naar Azure Container Instances.
 
-Als u de verificatie wilt beheren `auth_enabled` , gebruikt u de para meter bij het maken of bijwerken van een implementatie.
+Als u de verificatie wilt beheren, gebruikt `auth_enabled` u de para meter bij het maken of bijwerken van een implementatie.
 
 Als verificatie is ingeschakeld, kunt u de `get_keys` methode gebruiken om een primaire en secundaire verificatie sleutel op te halen:
 
@@ -110,7 +110,7 @@ print(primary)
 ```
 
 > [!IMPORTANT]
-> Als u een sleutel opnieuw moet genereren, gebruikt [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)u.
+> Als u een sleutel opnieuw moet genereren, gebruikt u [`service.regen_key`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) .
 
 #### <a name="authentication-with-tokens"></a>Verificatie met tokens
 
@@ -119,9 +119,9 @@ Wanneer u token verificatie inschakelt voor een webservice, moet een gebruiker e
 * Token verificatie is standaard uitgeschakeld wanneer u implementeert in azure Kubernetes service.
 * Token authenticatie wordt niet ondersteund wanneer u implementeert naar Azure Container Instances.
 
-Als u de verificatie van tokens `token_auth_enabled` wilt beheren, gebruikt u de para meter bij het maken of bijwerken van een implementatie.
+Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de para meter bij het maken of bijwerken van een implementatie.
 
-Als token verificatie is ingeschakeld, kunt u de methode `get_token` gebruiken om een Bearer-token op te halen en de verval tijd van tokens:
+Als token verificatie is ingeschakeld, kunt u de `get_token` methode gebruiken om een Bearer-token op te halen en de verval tijd van tokens:
 
 ```python
 token, refresh_by = service.get_token()
@@ -129,7 +129,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de tijd van `refresh_by` de token. 
+> U moet een nieuw token aanvragen na de tijd van de token `refresh_by` . 
 
 ## <a name="request-data"></a>Gegevens opvragen
 

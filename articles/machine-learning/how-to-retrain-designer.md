@@ -5,17 +5,17 @@ description: Meer informatie over het opnieuw trainen van modellen met gepublice
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
 ms.custom: designer
-ms.openlocfilehash: 7a132734c3ccb6d5d143053b83723950d154d74c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c466684bf5c07b5e88e8052c29aa9fb0b8583a89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653687"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430069"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellen opnieuw trainen met de Azure Machine Learning-ontwerpfunctie (preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,7 +32,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure Machine Learning-werk ruimte met de Enter prise-SKU.
+* Een Azure Machine Learning-werkruimte met de Enterprise-SKU.
 * Voltooi deel 1 van deze instructie-to-reeks, zet [gegevens om in de ontwerp functie](how-to-designer-transform-data.md).
 
 In dit artikel wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van pijp lijnen in de ontwerp functie. Voor een begeleide Inleiding voltooit u de [zelf studie](tutorial-designer-automobile-price-train-score.md). 

@@ -5,16 +5,16 @@ description: Plan Azure Machine Learning pijp lijnen met behulp van de Azure Mac
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec2f6d51387bd6054ffc39835c46071108cb0de3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024554"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434230"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>machine learning-pijp lijnen plannen met Azure Machine Learning SDK voor python
 
@@ -54,9 +54,9 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 
 ## <a name="create-a-schedule"></a>Een planning maken
 
-Als u een pijp lijn op een terugkerende basis wilt uitvoeren, maakt u een planning. A `Schedule` koppelt een pijp lijn, een experiment en een trigger. De trigger kan een`ScheduleRecurrence` waarde zijn die de wacht tijd tussen uitvoeringen of een Data Store-pad beschrijft dat een directory opgeeft die moet worden gecontroleerd op wijzigingen. In beide gevallen hebt u de pijp lijn-id en de naam van het experiment nodig om de planning te maken.
+Als u een pijp lijn op een terugkerende basis wilt uitvoeren, maakt u een planning. A `Schedule` koppelt een pijp lijn, een experiment en een trigger. De trigger kan een waarde zijn `ScheduleRecurrence` die de wacht tijd tussen uitvoeringen of een Data Store-pad beschrijft dat een directory opgeeft die moet worden gecontroleerd op wijzigingen. In beide gevallen hebt u de pijp lijn-id en de naam van het experiment nodig om de planning te maken.
 
-Importeer boven aan uw python-bestand de `Schedule` klassen en: `ScheduleRecurrence`
+Importeer boven aan uw python-bestand de `Schedule` `ScheduleRecurrence` klassen en:
 
 ```python
 
@@ -65,9 +65,9 @@ from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
 
 ### <a name="create-a-time-based-schedule"></a>Een op tijd gebaseerde planning maken
 
-De `ScheduleRecurrence` constructor bevat een vereist `frequency` argument dat een van de volgende teken reeksen moet zijn: minutes, hours, Day, week of month (maand). Er is ook een argument `interval` integer vereist voor het opgeven van `frequency` het aantal eenheden dat moet worden verstrijkt tussen planning wordt gestart. Optionele argumenten bieden u meer specifieke informatie over de begin tijd, zoals beschreven in de [documenten van de SCHEDULERECURRENCE SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
+De `ScheduleRecurrence` constructor bevat een vereist `frequency` argument dat een van de volgende teken reeksen moet zijn: minutes, hours, Day, week of month (maand). Er is ook een argument integer vereist voor `interval` het opgeven van het aantal `frequency` eenheden dat moet worden verstrijkt tussen planning wordt gestart. Optionele argumenten bieden u meer specifieke informatie over de begin tijd, zoals beschreven in de [documenten van de SCHEDULERECURRENCE SDK](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedulerecurrence?view=azure-ml-py).
 
-Maken van `Schedule` een die elke 15 minuten een uitvoer begint:
+Maken van een `Schedule` die elke 15 minuten een uitvoer begint:
 
 ```python
 recurrence = ScheduleRecurrence(frequency="Minute", interval=15)
@@ -82,11 +82,11 @@ recurring_schedule = Schedule.create(ws, name="MyRecurringSchedule",
 
 Pijp lijnen die worden geactiveerd door bestands wijzigingen zijn mogelijk efficiënter dan op tijd gebaseerde schema's. Het is bijvoorbeeld mogelijk dat u een voor verwerkings stap wilt uitvoeren wanneer een bestand wordt gewijzigd of wanneer een nieuw bestand wordt toegevoegd aan een Data Directory. U kunt wijzigingen in een gegevens opslag of wijzigingen bewaken in een specifieke map in het gegevens archief. Als u een specifieke directory bewaken, wordt een uitvoering _niet_ geactiveerd door wijzigingen in submappen van die map.
 
-Als u een bestand wilt maken `Schedule`, moet u de `datastore` para meter instellen in de aanroep naar [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Als u een map wilt bewaken `path_on_datastore` , stelt u het argument in.
+Als u een bestand wilt maken `Schedule` , moet u de `datastore` para meter instellen in de aanroep naar [Schedule. Create](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.schedule.schedule?view=azure-ml-py#create-workspace--name--pipeline-id--experiment-name--recurrence-none--description-none--pipeline-parameters-none--wait-for-provisioning-false--wait-timeout-3600--datastore-none--polling-interval-5--data-path-parameter-name-none--continue-on-step-failure-none--path-on-datastore-none---workflow-provider-none---service-endpoint-none-). Als u een map wilt bewaken, stelt u het `path_on_datastore` argument in.
 
-Met `polling_interval` het argument kunt u in minuten opgeven, de frequentie waarmee het gegevens archief wordt gecontroleerd op wijzigingen.
+Met het `polling_interval` argument kunt u in minuten opgeven, de frequentie waarmee het gegevens archief wordt gecontroleerd op wijzigingen.
 
-Als de pijp lijn is gemaakt met een [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) - [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), kunt u deze variabele instellen op de naam van het gewijzigde bestand door het `data_path_parameter_name` argument in te stellen.
+Als de pijp lijn is gemaakt met een [DataPath](https://docs.microsoft.com/python/api/azureml-core/azureml.data.datapath.datapath?view=azure-ml-py) - [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py), kunt u deze variabele instellen op de naam van het gewijzigde bestand door het argument in te stellen `data_path_parameter_name` .
 
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
@@ -97,7 +97,7 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Optionele argumenten bij het maken van een planning
 
-Naast de argumenten die eerder zijn beschreven, kunt u het `status` argument instellen op `"Disabled"` om een inactieve planning te maken. Ten slotte kunt `continue_on_step_failure` u met de een Booleaanse waarde door geven die het standaard gedrag van de pijp lijn overschrijft.
+Naast de argumenten die eerder zijn beschreven, kunt u het `status` argument instellen op `"Disabled"` om een inactieve planning te maken. Ten slotte `continue_on_step_failure` kunt u met de een Booleaanse waarde door geven die het standaard gedrag van de pijp lijn overschrijft.
 
 ### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Azure Logic Apps gebruiken voor complexere werk stromen
 
@@ -113,7 +113,7 @@ Op deze pagina kunt u samenvattings informatie weer geven over alle pijp lijnen 
 
 ## <a name="deactivate-the-pipeline"></a>De pijp lijn deactiveren
 
-Als u een `Pipeline` hebt gepubliceerd, maar niet is gepland, kunt u deze uitschakelen met:
+Als u een hebt `Pipeline` gepubliceerd, maar niet is gepland, kunt u deze uitschakelen met:
 
 ```python
 pipeline = PublishedPipeline.get(ws, id=pipeline_id)
@@ -128,7 +128,7 @@ for s in ss:
     print(s)
 ```
 
-Wanneer u de u `schedule_id` wilt uitschakelen, voert u de volgende handelingen uit:
+Wanneer u de `schedule_id` u wilt uitschakelen, voert u de volgende handelingen uit:
 
 ```python
 def stop_by_schedule_id(ws, schedule_id):
@@ -139,11 +139,11 @@ def stop_by_schedule_id(ws, schedule_id):
 stop_by_schedule_id(ws, schedule_id)
 ```
 
-Als u het opnieuw `Schedule.list(ws)` uitvoert, moet u een lege lijst ophalen.
+Als u `Schedule.list(ws)` het opnieuw uitvoert, moet u een lege lijst ophalen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u de Azure Machine Learning SDK voor python gebruikt om een pijp lijn op twee verschillende manieren te plannen. Een planning wordt herhaald op basis van de verstreken klok tijd. Het andere schema wordt uitgevoerd als een bestand wordt gewijzigd op een `Datastore` opgegeven of in een map in dat archief. U hebt gezien hoe u de portal kunt gebruiken om de pijp lijn en de afzonderlijke uitvoeringen te onderzoeken. Ten slotte hebt u geleerd hoe u een schema kunt uitschakelen zodat de pijp lijn stopt met uitvoeren.
+In dit artikel hebt u de Azure Machine Learning SDK voor python gebruikt om een pijp lijn op twee verschillende manieren te plannen. Een planning wordt herhaald op basis van de verstreken klok tijd. Het andere schema wordt uitgevoerd als een bestand wordt gewijzigd op een opgegeven `Datastore` of in een map in dat archief. U hebt gezien hoe u de portal kunt gebruiken om de pijp lijn en de afzonderlijke uitvoeringen te onderzoeken. Ten slotte hebt u geleerd hoe u een schema kunt uitschakelen zodat de pijp lijn stopt met uitvoeren.
 
 Zie voor meer informatie:
 

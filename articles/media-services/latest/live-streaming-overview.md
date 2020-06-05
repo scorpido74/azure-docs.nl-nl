@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801617"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418140"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -30,12 +30,14 @@ Met Azure Media Services kunt u live gebeurtenissen aan uw klanten leveren via d
 - Een live video encoder dat signalen van een camera (of een ander apparaat, zoals een laptop) converteert naar een bijdrage toevoer die naar Media Services wordt verzonden. De bijdrage feed kan signalen bevatten die gerelateerd zijn aan advertenties, zoals SCTE-35 markeringen.<br/>Zie voor een lijst met de aanbevolen code ring voor live [streaming.](recommended-on-premises-live-encoders.md) Bekijk ook deze blog: [productie van live streams met IB](https://link.medium.com/ttuwHpaJeT).
 - Onderdelen in Media Services waarmee u de live-gebeurtenis kunt opnemen, bekijken, versleutelen, coderen en verzenden naar uw klanten, of naar een CDN voor verdere distributie.
 
+Voor klanten die inhoud willen leveren aan grote Internet doelgroepen, raden we u aan CDN op het streaming- [eind punt](streaming-endpoint-concept.md)in te scha kelen.
+
 In dit artikel vindt u een overzicht en richt lijnen voor live streamen met Media Services en koppelingen naar andere relevante artikelen.
  
 > [!NOTE]
 > U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 [Live-gebeurtenissen](live-events-outputs-concept.md)te beheren, v3- [assets](assets-concept.md)weer te geven, informatie over het openen van api's op te halen. Gebruik voor alle andere beheer taken (bijvoorbeeld trans formaties en taken) de [rest API](https://docs.microsoft.com/rest/api/media/), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
-## <a name="dynamic-packaging"></a>Dynamische verpakking
+## <a name="dynamic-packaging-and-delivery"></a>Dynamische verpakking en levering
 
 Met Media Services kunt u gebruikmaken van [dynamische pakketten](dynamic-packaging-overview.md), waarmee u uw live streams kunt bekijken en uitzenden in [MPEG Dash-, HLS-en Smooth streaming-indelingen](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) van de contributie feed die naar de service wordt verzonden. Uw viewers kunnen de Live Stream afspelen met een HLS, DASH of Smooth Streaming compatibele spelers. U kunt [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) in uw web-of mobiele toepassingen gebruiken om uw stream in een van deze protocollen te leveren.
 
@@ -46,13 +48,13 @@ Dynamische versleuteling biedt u de mogelijkheid om uw Live of on-demand inhoud 
 > [!NOTE]
 > Widevine is een service van Google Inc. en is onderworpen aan de service voorwaarden en het privacybeleid van Google, Inc.
 
-## <a name="dynamic-manifest"></a>Dynamisch manifest
+## <a name="dynamic-filtering"></a>Dynamisch filteren
 
 Dynamische filtering wordt gebruikt voor het beheren van het aantal sporen, indelingen, bitrates en presentatie tijd Vensters die worden verzonden naar de spelers. Zie [filters en dynamische manifesten](filters-dynamic-manifest-overview.md)voor meer informatie.
 
 ## <a name="live-event-types"></a>Live gebeurtenis typen
 
-[Livegebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van de live videofeeds. Een live-gebeurtenis kan worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
+[Live-gebeurtenissen](https://docs.microsoft.com/rest/api/media/liveevents) zijn verantwoordelijk voor het opnemen en verwerken van live video feeds. Een live-gebeurtenis kan worden ingesteld op een *Pass-Through* -(een on-premises Live coderings programma verzendt een multi-bitrate stroom) of *Live encoding* (een on-premises Live Encoder verzendt een stream met één bitsnelheid). Zie [Live Events en live outputs](live-events-outputs-concept.md)voor meer informatie over live streamen in Media Services v3.
 
 ### <a name="pass-through"></a>Pass-through
 
@@ -77,14 +79,14 @@ Live transcriptie is een functie die u kunt gebruiken met Live-gebeurtenissen di
 
 Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Services v3, moet u eerst de volgende concepten bekijken en begrijpen: 
 
-- [Streaming-eindpunten](streaming-endpoint-concept.md)
-- [Live gebeurtenissen en live uitvoer](live-events-outputs-concept.md)
-- [Streaming-locators](streaming-locators-concept.md)
+- [Streaming-eind punten](streaming-endpoint-concept.md)
+- [Live-evenementen en live uitvoer](live-events-outputs-concept.md)
+- [Streaming-Locators](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Algemene stappen
 
 1. Controleer in uw Media Services-account of het **streaming-eind punt** (origin) wordt uitgevoerd. 
-2. Een [live gebeurtenis](live-events-outputs-concept.md)maken. <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet expliciet Stop aanroepen in de resource van de livegebeurtenis om verdere facturering stop te zetten. Zie [Live Event states and billing](live-event-states-billing.md) (Statussen en facturering voor livegebeurtenissen) voor meer informatie.
+2. Een [live gebeurtenis](live-events-outputs-concept.md)maken. <br/>Wanneer u de gebeurtenis maakt, kunt u opgeven dat deze automatisch moet worden gestart. U kunt ook de gebeurtenis starten wanneer u klaar bent om te streamen.<br/> Wanneer auto start is ingesteld op True, wordt de live-gebeurtenis direct na het maken gestart. De facturering begint zodra de live-gebeurtenis wordt gestart. U moet stoppen op de resource van de live-gebeurtenis expliciet aanroepen om verdere facturering te stoppen. Zie [Live Event States and billing](live-event-states-billing.md)(Engelstalig) voor meer informatie.
 3. Haal de opname-URL ('s) op en configureer uw on-premises Encoder voor het gebruik van de URL om de contributie feed te verzenden.<br/>Bekijk [Aanbevolen Live coderings](recommended-on-premises-live-encoders.md)Programma's.
 4. Haal de Preview-URL op en gebruik deze om te controleren of de invoer van het coderings programma daad werkelijk wordt ontvangen.
 5. Maak een nieuw **Asset** -object. 
@@ -103,8 +105,8 @@ Als u inzicht wilt krijgen in de werk stroom voor live streamen in Media Service
 12. Als u klaar bent met het streamen van gebeurtenissen en de resources wilt opruimen die eerder zijn ingericht, volgt u de volgende procedure.
 
     * Stop het pushen van de stream vanuit het coderingsprogramma.
-    * Stop de livegebeurtenis. Zodra de livegebeurtenis is gestopt, worden hiervoor geen kosten meer in rekening gebracht. Als u het kanaal opnieuw wilt starten, wordt dezelfde URL voor opnemen gebruikt, zodat u het coderingsprogramma niet opnieuw hoeft te configureren.
-    * U kunt uw streaming-eindpunt stoppen, tenzij u het archief van uw live gebeurtenis wilt blijven leveren als stream op aanvraag. Voor een livegebeurtenis die is gestopt, worden er geen kosten meer in rekening gebracht.
+    * Stop de live-gebeurtenis. Zodra de live-gebeurtenis is gestopt, worden er geen kosten in rekening gebracht. Als u het kanaal opnieuw wilt starten, wordt dezelfde URL voor opnemen gebruikt, zodat u het coderingsprogramma niet opnieuw hoeft te configureren.
+    * U kunt het streaming-eind punt stoppen, tenzij u wilt door gaan met het archiveren van uw live-gebeurtenis als een stroom op aanvraag. Als de live-gebeurtenis is gestopt, worden er geen kosten in rekening gebracht.
 
 De Asset waarnaar de live uitvoer wordt gearchiveerd, wordt automatisch een Asset op aanvraag wanneer de live uitvoer wordt verwijderd. U moet alle Live outputs verwijderen voordat een live gebeurtenis kan worden gestopt. U kunt een optionele vlag [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) gebruiken om live-uitvoer automatisch te verwijderen bij het stoppen. 
 

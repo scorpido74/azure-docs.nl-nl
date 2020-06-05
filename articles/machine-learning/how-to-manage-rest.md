@@ -7,14 +7,14 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f096f432111e4e8b52ffcaff355fbf8d9e603819
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77580625"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430427"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-resources maken, uitvoeren en verwijderen met REST
 
@@ -37,7 +37,7 @@ In dit artikel leert u het volgende:
 - Een **Azure-abonnement** waarvoor u beheerders rechten hebt. Als u geen abonnement hebt, probeer [dan het gratis of betaalde persoonlijke abonnement](https://aka.ms/AMLFree)
 - Een [Azure machine learning-werkruimte](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
 - Beheer REST-aanvragen gebruiken Service-Principal-verificatie. Volg de stappen in [verificatie instellen voor Azure machine learning resources en werk stromen](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) om een service-principal te maken in uw werk ruimte
-- Het **krul** -hulp programma. Het **krul** programma is beschikbaar in het [Windows-subsysteem voor Linux](https://aka.ms/wslinstall/) of een Unix-distributie. In Power shell is **krul** een alias voor **invoke-WebRequest** en `curl -d "key=val" -X POST uri` wordt `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`. 
+- Het **krul** -hulp programma. Het **krul** programma is beschikbaar in het [Windows-subsysteem voor Linux](https://aka.ms/wslinstall/) of een Unix-distributie. In Power shell is **krul** een alias voor **invoke-WebRequest** en `curl -d "key=val" -X POST uri` wordt `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Een Service-Principal-verificatie Token ophalen
 
@@ -53,7 +53,7 @@ Een Token ophalen:
 
 1. Een terminalvenster openen
 1. Voer de volgende code in op de opdracht regel
-1. Vervang uw eigen waarden voor `{your-tenant-id}`, `{your-client-id}`en `{your-client-secret}`. In dit artikel zijn teken reeksen omgeven door accolades variabelen die u moet vervangen door uw eigen juiste waarden.
+1. Vervang uw eigen waarden voor `{your-tenant-id}` , `{your-client-id}` en `{your-client-secret}` . In dit artikel zijn teken reeksen omgeven door accolades variabelen die u moet vervangen door uw eigen juiste waarden.
 1. De opdracht uitvoeren
 
 ```bash
@@ -91,7 +91,7 @@ Voer de volgende handelingen uit om de lijst met resource groepen die zijn gekop
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-In Azure worden veel REST-Api's gepubliceerd. Elke service provider werkt de API op hun eigen uitgebracht bij, maar zonder de bestaande Program ma's te verbreken. De service provider gebruikt het `api-version` argument om compatibiliteit te garanderen. Het `api-version` argument is afhankelijk van service-to-service. Voor de Machine Learning-service is `2019-11-01`de huidige API-versie bijvoorbeeld. Voor opslag accounts is `2019-06-01`dit. Voor sleutel kluizen is dit `2019-09-01`. Alle REST-aanroepen moeten `api-version` het argument instellen op de verwachte waarde. U kunt vertrouwen op de syntaxis en de semantiek van de opgegeven versie, zelfs als de API blijft ontwikkelen. Als u zonder het `api-version` argument een aanvraag naar een provider verzendt, bevat het antwoord een lijst met ondersteunde waarden die door de mens kan worden gelezen. 
+In Azure worden veel REST-Api's gepubliceerd. Elke service provider werkt de API op hun eigen uitgebracht bij, maar zonder de bestaande Program ma's te verbreken. De service provider gebruikt het `api-version` argument om compatibiliteit te garanderen. Het `api-version` argument is afhankelijk van service-to-service. Voor de Machine Learning-service is de huidige API-versie bijvoorbeeld `2019-11-01` . Voor opslag accounts is dit `2019-06-01` . Voor sleutel kluizen is dit `2019-09-01` . Alle REST-aanroepen moeten het `api-version` argument instellen op de verwachte waarde. U kunt vertrouwen op de syntaxis en de semantiek van de opgegeven versie, zelfs als de API blijft ontwikkelen. Als u zonder het argument een aanvraag naar een provider verzendt `api-version` , bevat het antwoord een lijst met ondersteunde waarden die door de mens kan worden gelezen. 
 
 De bovenstaande aanroep resulteert in een gecomprimeerde JSON-reactie van het formulier: 
 
@@ -123,7 +123,7 @@ De bovenstaande aanroep resulteert in een gecomprimeerde JSON-reactie van het fo
 
 ## <a name="drill-down-into-workspaces-and-their-resources"></a>Inzoomen op werk ruimten en hun resources
 
-Als u de set met werk ruimten in een resource groep wilt ophalen, voert u het volgende `{your-subscription-id}`uit `{your-resource-group}`, vervangt `{your-access-token}`u, en: 
+Als u de set met werk ruimten in een resource groep wilt ophalen, voert u het volgende uit, vervangt u, `{your-subscription-id}` `{your-resource-group}` en `{your-access-token}` : 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
@@ -183,7 +183,7 @@ Als u wilt werken met resources binnen een werk ruimte, schakelt u van de algeme
 }
 ```
 
-De waarde van het `api` antwoord is de URL van de server die u gaat gebruiken voor aanvullende aanvragen. Als u experimenten wilt weer geven, verzendt u bijvoorbeeld de volgende opdracht. Vervang `regional-api-server` door de waarde van het `api` antwoord (bijvoorbeeld `centralus.api.azureml.ms`). Vervang `your-subscription-id`, `your-resource-group`, `your-workspace-name`, en `your-access-token` zo gebruikelijk:
+De waarde van het `api` antwoord is de URL van de server die u gaat gebruiken voor aanvullende aanvragen. Als u experimenten wilt weer geven, verzendt u bijvoorbeeld de volgende opdracht. Vervang door `regional-api-server` de waarde van het `api` antwoord (bijvoorbeeld `centralus.api.azureml.ms` ). Vervang `your-subscription-id` ,, `your-resource-group` `your-workspace-name` , en `your-access-token` zo gebruikelijk:
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,15 +199,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-U ziet dat bij het weer geven van experimenten `history/v1.0` het pad begint met while om modellen weer te `modelmanagement/v1.0`geven, het pad begint met. De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
+U ziet dat bij het weer geven van experimenten het pad begint met `history/v1.0` while om modellen weer te geven, het pad begint met `modelmanagement/v1.0` . De REST API is onderverdeeld in verschillende operationele groepen, elk met een uniek pad. De API-referentie documenten op de koppelingen hieronder staan de bewerkingen, para meters en antwoord codes voor de verschillende bewerkingen.
 
-|Onderwerp|Pad|Naslaginformatie|
+|Gebied|Pad|Naslaginformatie|
 |-|-|-|
-|Artefacten|artefact/v 2.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Gegevens archieven|Data Store/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hyperparameters afstemmen|Hyperdrive/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellen|Modelmanagement/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[Naslaginformatie over REST-API](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artifacts|artefact/v 2.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Gegevensopslag|Data Store/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Hyperparameters afstemmen|Hyperdrive/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modellen|Modelmanagement/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Uitvoer.gesch|uitvoering/v 1.0/en geschiedenis/v 1.0/|[REST API referentie](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 U kunt de REST API verkennen met behulp van het algemene patroon van:
 
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Als u een benoemde Compute-resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In de volgende `your-subscription-id`, naast de nu bekende vervangingen, `your-resource-group`, `your-workspace-name`, en `your-access-token`, substitueer `your-compute-name`en waarden voor `location`, `vmSize`, `vmPriority`, `scaleSettings` `adminUserName`, en. `adminUserPassword` Zoals beschreven in de referentie bij [machine learning Compute-SDK-verwijzing maken of bijwerken](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), maakt de volgende opdracht een toegewezen Standard_D1 met één knoop punt (een basis-CPU-reken resource) die na 30 minuten omlaag wordt geschaald:
+Als u een benoemde Compute-resource wilt maken of overschrijven, gebruikt u een PUT-aanvraag. In de volgende, naast de nu bekende vervangingen `your-subscription-id` , `your-resource-group` ,, `your-workspace-name` en `your-access-token` , substitueer en `your-compute-name` waarden voor `location` , `vmSize` , `vmPriority` , `scaleSettings` `adminUserName` `adminUserPassword` , en. Zoals beschreven in de referentie bij [machine learning Compute-SDK-verwijzing maken of bijwerken](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), maakt de volgende opdracht een toegewezen Standard_D1 met één knoop punt (een basis-CPU-reken resource) die na 30 minuten omlaag wordt geschaald:
 
 ```bash
 curl -X PUT \
@@ -264,7 +264,7 @@ curl -X PUT \
 ```
 
 > [!Note]
-> In Windows-terminals moet u mogelijk de dubbele aanhalings tekens verescapeen bij het verzenden van JSON-gegevens. Dat wil zeggen, de tekst `"location"` wordt `\"location\"`bijvoorbeeld. 
+> In Windows-terminals moet u mogelijk de dubbele aanhalings tekens verescapeen bij het verzenden van JSON-gegevens. Dat wil zeggen, de tekst `"location"` wordt bijvoorbeeld `\"location\"` . 
 
 Een geslaagde aanvraag ontvangt een `201 Created` reactie, maar houd er rekening mee dat dit antwoord simpelweg betekent dat het inrichtings proces is gestart. U moet pollen (of de portal gebruiken) om de geslaagde voltooiing te bevestigen.
 
@@ -320,7 +320,7 @@ Sla dit volgende fragment op als **definitie. json**. Bevestig dat de waarde ' s
 }
 ```
 
-Post deze bestanden op de server met `multipart/form-data` behulp van inhoud:
+Post deze bestanden op de server met behulp van `multipart/form-data` inhoud:
 
 ```bash
 curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/experiments/{your-experiment-name}/startrun?api-version=2019-11-01 \
@@ -331,7 +331,7 @@ curl https://{regional-api-server}/execution/v1.0/subscriptions/{your-subscripti
   -F runDefinitionFile=@runDefinition.json
 ```
 
-Met een succes volle POST-aanvraag `200 OK` wordt een status gegenereerd met een antwoord tekst die de id van de gemaakte uitvoering bevat:
+Met een succes volle POST-aanvraag wordt een `200 OK` status gegenereerd met een antwoord tekst die de id van de gemaakte uitvoering bevat:
 
 ```json
 {
@@ -359,7 +359,7 @@ curl
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>REST gebruiken om een geïmplementeerd model te scoren
 
-Hoewel het mogelijk is om een model te implementeren, zodat het wordt geverifieerd met een Service-Principal, gebruiken de meeste client gerichte implementaties op basis van sleutel verificatie. U vindt de juiste sleutel op de pagina van de implementatie op het tabblad **eind punten** van Studio. Op dezelfde locatie wordt de Score-URI van uw eind punt weer gegeven. De invoer van uw model moet worden gemodelleerd als een JSON `data`-matrix met de naam:
+Hoewel het mogelijk is om een model te implementeren, zodat het wordt geverifieerd met een Service-Principal, gebruiken de meeste client gerichte implementaties op basis van sleutel verificatie. U vindt de juiste sleutel op de pagina van de implementatie op het tabblad **eind punten** van Studio. Op dezelfde locatie wordt de Score-URI van uw eind punt weer gegeven. De invoer van uw model moet worden gemodelleerd als een JSON-matrix met de naam `data` :
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -372,7 +372,7 @@ curl 'https://{scoring-uri}' \
 
 Elke Azure ML-werk ruimte heeft een afhankelijkheid van vier andere Azure-resources: een container register met ingeschakelde beheerders, een sleutel kluis, een Application Insights bron en een opslag account. U kunt pas een werk ruimte maken als deze resources bestaan. Raadpleeg de REST API verwijzing voor de details van het maken van deze resources.
 
-Als u een werk ruimte wilt maken, plaatst u een gesprek dat `management.azure.com`lijkt op het volgende. Hoewel voor deze aanroep een groot aantal variabelen moet worden ingesteld, is deze structuur identiek aan andere aanroepen die in dit artikel worden besproken. 
+Als u een werk ruimte wilt maken, plaatst u een gesprek dat lijkt op het volgende `management.azure.com` . Hoewel voor deze aanroep een groot aantal variabelen moet worden ingesteld, is deze structuur identiek aan andere aanroepen die in dit artikel worden besproken. 
 
 ```bash
 curl -X PUT \

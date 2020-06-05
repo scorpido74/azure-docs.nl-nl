@@ -5,17 +5,17 @@ description: Meer informatie over hoe u uw model voorspellingen maakt met behulp
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dd9620b690b031567a85cfd1dfc2dcbc76fb6835
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982884"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430490"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>De interpretatie van modellen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,7 +84,7 @@ Meer informatie over ondersteunde technieken voor interpretatie, ondersteunde ma
 
 
 
-Naast de methoden voor het interpreteren die hierboven worden beschreven, ondersteunen we nog een op `TabularExplainer`Shap gebaseerde uitleg, ook wel genoemd. Afhankelijk van het model gebruikt een `TabularExplainer` van de ondersteunde Shap-uitleg:
+Naast de methoden voor het interpreteren die hierboven worden beschreven, ondersteunen we nog een op SHAP gebaseerde uitleg, ook wel genoemd `TabularExplainer` . Afhankelijk van het model `TabularExplainer` gebruikt een van de ondersteunde Shap-uitleg:
 
 * TreeExplainer voor alle modellen op basis van een structuur
 * DeepExplainer voor DNN-modellen
@@ -109,7 +109,7 @@ Het `azureml.interpret` pakket van de SDK ondersteunt modellen die zijn getraind
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-De uitleg functies accepteren zowel modellen als pijp lijnen als invoer. Als er een model wordt gegeven, moet het model de Voorspellings functie `predict` implementeren `predict_proba` of voldoet aan de Scikit-Conventie. Als uw model dit niet ondersteunt, kunt u uw model inpakken in een functie die hetzelfde resultaat genereert als `predict` of `predict_proba` in Scikit en die wrapper-functie gebruiken met de geselecteerde uitleger. Als er een pijp lijn wordt gegeven, wordt ervan uitgegaan dat het actieve pijplijn script een voor spelling retourneert. Het gebruik van deze terugloop `azureml.interpret` techniek kan modellen ondersteunen die zijn getraind via PyTorch, tensor flow en Kerase diep leer frameworks en klassieke machine learning modellen.
+De uitleg functies accepteren zowel modellen als pijp lijnen als invoer. Als er een model wordt gegeven, moet het model de Voorspellings functie implementeren `predict` of `predict_proba` voldoet aan de Scikit-Conventie. Als uw model dit niet ondersteunt, kunt u uw model inpakken in een functie die hetzelfde resultaat genereert als `predict` of `predict_proba` in Scikit en die wrapper-functie gebruiken met de geselecteerde uitleger. Als er een pijp lijn wordt gegeven, wordt ervan uitgegaan dat het actieve pijplijn script een voor spelling retourneert. Het gebruik van deze terugloop techniek `azureml.interpret` kan modellen ondersteunen die zijn getraind via PyTorch, tensor flow en Kerase diep leer frameworks en klassieke machine learning modellen.
 
 ## <a name="local-and-remote-compute-target"></a>Lokaal en extern Compute-doel
 

@@ -3,14 +3,14 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/04/2020
 ms.author: tomfitz
-ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218298"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424241"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
@@ -19,19 +19,23 @@ Voordat u een Azure Resource Manager-sjabloon (ARM) implementeert, kunt u een vo
 > [!NOTE]
 > De What-if-bewerking is momenteel beschikbaar als preview-versie. In het geval van een preview-versie kunnen de resultaten soms aangeven dat een resource wordt gewijzigd wanneer er niets wordt gewijzigd. We werken eraan om deze problemen te reduceren, maar we hebben uw hulp nodig. Meld deze problemen op [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken.
+U kunt de What-if-bewerking met Azure PowerShell, Azure CLI of REST API-bewerkingen gebruiken. Wat-als wordt ondersteund voor implementaties van resource groep en abonnements niveau.
 
-## <a name="install-powershell-module"></a>Power shell-module installeren
+## <a name="install-azure-powershell-module"></a>Azure PowerShell module installeren
 
-Als u wilt gebruiken wat-als in Power shell, moet u een preview-versie van de module AZ. resources van de Power shell Gallery installeren. Voordat u de module installeert, moet u ervoor zorgen dat u Power shell core (6. x of 7. x) hebt. Als u Power shell 5. x of eerder hebt, moet u [uw versie van Power shell bijwerken](/powershell/scripting/install/installing-powershell). U kunt de preview-module niet installeren op Power shell 5. x of lager.
+Als u wilt gebruiken wat-als in Power shell, moet u versie **4,2 of hoger van de module AZ**hebben.
 
-### <a name="install-preview-version"></a>Preview-versie installeren
+Voordat u de vereiste module installeert, moet u ervoor zorgen dat u Power shell core (6. x of 7. x) hebt. Als u Power shell 5. x of eerder hebt, moet u [uw versie van Power shell bijwerken](/powershell/scripting/install/installing-powershell). U kunt de vereiste module niet installeren op Power shell 5. x of lager.
 
-Als u de preview-module wilt installeren, gebruikt u:
+### <a name="install-latest-version"></a>Nieuwste versie installeren
+
+Als u de module wilt installeren, gebruikt u:
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+Zie [Install Azure PowerShell](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van modules.
 
 ### <a name="uninstall-alpha-version"></a>Alfa versie verwijderen
 
@@ -101,7 +105,7 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, voegt `-Whatif` u de para meter switch toe aan de implementatie opdracht.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) of [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Voeg de `-Whatif` para meter switch toe aan de implementatie opdracht.
 
 * `New-AzResourceGroupDeployment -Whatif`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Whatif`en `New-AzDeployment -Whatif` voor implementaties op abonnements niveau
@@ -111,19 +115,19 @@ U kunt de `-Confirm` para meter switch gebruiken om de wijzigingen te bekijken e
 * `New-AzResourceGroupDeployment -Confirm`voor implementaties van resource groepen
 * `New-AzSubscriptionDeployment -Confirm`en `New-AzDeployment -Confirm` voor implementaties op abonnements niveau
 
-De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Als u een object wilt ophalen dat u programmatisch kunt controleren op wijzigingen, gebruikt u:
+De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig kunt controleren. Gebruik [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) of [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult)om een object op te halen dat u programmatisch kunt controleren op wijzigingen.
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`voor implementaties van resource groepen
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`of `$results = Get-AzDeploymentWhatIfResult` voor implementaties op abonnements niveau
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u `what-if` met de implementatie opdracht.
+Als u de wijzigingen wilt bekijken voordat u een sjabloon implementeert, gebruikt u [AZ Deployment Group What-if](/cli/azure/deployment/group#az-deployment-group-what-if) of [AZ Deployment sub What-if](/cli/azure/deployment/sub#az-deployment-sub-what-if).
 
 * `az deployment group what-if`voor implementaties van resource groepen
 * `az deployment sub what-if`voor implementaties op abonnements niveau
 
-U kunt de `--confirm-with-what-if` Switch (of het bijbehorende korte formulier `-c` ) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie.
+U kunt de `--confirm-with-what-if` Switch (of het bijbehorende korte formulier `-c` ) gebruiken om de wijzigingen te bekijken en u wordt gevraagd om door te gaan met de implementatie. Voeg deze switch toe aan [AZ-implementatie groep Create](/cli/azure/deployment/group#az-deployment-group-create) of [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
 
 * `az deployment group create --confirm-with-what-if`of `-c` voor implementaties van resource groepen
 * `az deployment sub create --confirm-with-what-if`of `-c` voor implementaties op abonnements niveau

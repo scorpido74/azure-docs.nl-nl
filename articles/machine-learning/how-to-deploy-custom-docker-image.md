@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van een aangepaste docker-basis in
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
-ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8edef2606a8689f4e9853d2b3aff7fac80bdc7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618008"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433956"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ In de informatie in deze sectie wordt ervan uitgegaan dat u een Azure Container 
 
     Zie voor meer informatie over het gebruik van service-principals met Azure Container Registry [Azure container Registry verificatie met Service-principals](/azure/container-registry/container-registry-auth-service-principal).
 
-* Azure Container Registry en installatie kopie-informatie: Geef de naam van de installatie kopie op die moet worden gebruikt door iedereen. Bijvoorbeeld, er wordt verwezen naar `myimage`een installatie kopie met de naam `myregistry`, opgeslagen in een REGI `myregistry.azurecr.io/myimage` ster met de naam, wanneer de installatie kopie wordt gebruikt voor model implementatie
+* Azure Container Registry en installatie kopie-informatie: Geef de naam van de installatie kopie op die moet worden gebruikt door iedereen. Bijvoorbeeld, er `myimage` wordt verwezen naar een installatie kopie met de naam, opgeslagen in een REGI ster `myregistry` `myregistry.azurecr.io/myimage` met de naam, wanneer de installatie kopie wordt gebruikt voor model implementatie
 
 * Vereisten voor installatie kopie: Azure Machine Learning ondersteunt alleen docker-installatie kopieën die de volgende software bieden:
 
@@ -98,7 +98,7 @@ Als u al uw modellen hebt getraind of geïmplementeerd met behulp van Azure Mach
 
     [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-2. Gebruik de volgende opdracht om het container register voor de werk ruimte weer te geven. Vervang `<myworkspace>` door de naam van uw Azure machine learning-werk ruimte. Vervang `<resourcegroup>` door de Azure-resource groep die uw werk ruimte bevat:
+2. Gebruik de volgende opdracht om het container register voor de werk ruimte weer te geven. Vervang door `<myworkspace>` de naam van uw Azure machine learning-werk ruimte. Vervang door `<resourcegroup>` de Azure-resource groep die uw werk ruimte bevat:
 
     ```azurecli-interactive
     az ml workspace show -w <myworkspace> -g <resourcegroup> --query containerRegistry
@@ -118,7 +118,7 @@ Als u al uw modellen hebt getraind of geïmplementeerd met behulp van Azure Mach
 
 Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-installatie kopie maakt in uw Azure Container Registry.
 
-1. Maak een nieuw tekst bestand met `Dockerfile`de naam en gebruik de volgende tekst als de inhoud:
+1. Maak een nieuw tekst bestand `Dockerfile` met de naam en gebruik de volgende tekst als de inhoud:
 
     ```text
     FROM ubuntu:16.04
@@ -151,14 +151,14 @@ Met de stappen in deze sectie wordt uitgelegd hoe u een aangepaste docker-instal
     az acr login --name <registry_name>
     ```
 
-3. Als u de Dockerfile wilt uploaden en deze wilt bouwen, gebruikt u de volgende opdracht. Vervang `<registry_name>` door de naam van het container register waarin u de installatie kopie wilt opslaan:
+3. Als u de Dockerfile wilt uploaden en deze wilt bouwen, gebruikt u de volgende opdracht. Vervang door `<registry_name>` de naam van het container register waarin u de installatie kopie wilt opslaan:
 
     ```azurecli-interactive
     az acr build --image myimage:v1 --registry <registry_name> --file Dockerfile .
     ```
 
     > [!TIP]
-    > In dit voor beeld wordt een tag `:v1` van toegepast op de afbeelding. Als er geen tag wordt gegeven, wordt een `:latest` tag van toegepast.
+    > In dit voor beeld wordt een tag van `:v1` toegepast op de afbeelding. Als er geen tag wordt gegeven, wordt een tag van `:latest` toegepast.
 
     Tijdens het bouw proces worden gegevens gestreamd naar de opdracht regel. Als de build is geslaagd, wordt er een bericht weer gegeven dat vergelijkbaar is met de volgende tekst:
 
@@ -174,10 +174,10 @@ Zie [uw eerste installatie kopie naar een privé-docker-container register pushe
 
 Als u een aangepaste installatie kopie wilt gebruiken, hebt u de volgende informatie nodig:
 
-* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
+* De __naam van de installatie kopie__. `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`Is bijvoorbeeld het pad naar een basis-docker-installatie kopie van micro soft.
 
     > [!IMPORTANT]
-    > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1`. Als u geen specifieke tag hebt gebruikt bij het maken van de installatie kopie, is `:latest` een tag van toegepast.
+    > Voor aangepaste installatie kopieën die u hebt gemaakt, moet u ervoor zorgen dat alle labels worden opgenomen die met de afbeelding zijn gebruikt. Als uw installatie kopie bijvoorbeeld is gemaakt met een specifieke tag, zoals `:v1` . Als u geen specifieke tag hebt gebruikt bij het maken van de installatie kopie, is een tag van `:latest` toegepast.
 
 * Als de installatie kopie zich in een __privé opslagplaats__bevindt, hebt u de volgende informatie nodig:
 
@@ -196,8 +196,8 @@ Micro soft biedt verschillende docker-installatie kopieën op een openbaar toega
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Bevat ONNX-runtime voor CPU-de |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Bevat de ONNX runtime en CUDA voor GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Bevat ONNX runtime en TensorRT voor GPU |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Bevat de ONNX runtime en open-wijn<sup> </sup> voor het ontwerp van de Intel Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Bevat ONNX runtime en-wijn<sup> </sup> voor Intel Movidius<sup>TM</sup> USB-sticks |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Bevat de ONNX runtime en open-wijn voor het ontwerp van de Intel <sup></sup> Vision Accelerator op basis van Movidius<sup>TM</sup> tallozex VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Bevat ONNX runtime en-wijn voor Intel <sup></sup> Movidius<sup>TM</sup> USB-sticks |
 
 Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) in de GitHub opslag plaats voor meer informatie over de basis installatie kopieën van ONNX-runtime.
 
@@ -207,7 +207,7 @@ Zie de [sectie ONNX runtime dockerfile](https://github.com/microsoft/onnxruntime
 Zie [Azure machine learning containers](https://github.com/Azure/AzureML-Containers)voor meer informatie.
 
 > [!TIP]
->__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt `run.properties["AzureML.DerivedImageName"]`detecteren, gebruikt u. In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
+>__Als uw model is getraind op Azure machine learning Compute__met __versie 1.0.22 of hoger__ van de Azure machine learning SDK, wordt er tijdens de training een installatie kopie gemaakt. Als u de naam van deze installatie kopie wilt detecteren, gebruikt u `run.properties["AzureML.DerivedImageName"]` . In het volgende voor beeld ziet u hoe u deze installatie kopie gebruikt:
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
@@ -230,7 +230,7 @@ myenv.docker.enabled = True
 myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte `docker.base_image_registry` bevindt, moet u gebruiken om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
+Als u een installatie kopie wilt gebruiken uit een __persoonlijk container register__ dat zich niet in uw werk ruimte bevindt, moet u gebruiken `docker.base_image_registry` om het adres van de opslag plaats en een gebruikers naam en wacht woord op te geven:
 
 ```python
 # Set the container registry information

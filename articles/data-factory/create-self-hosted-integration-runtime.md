@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857689"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418259"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -97,7 +97,7 @@ U kunt zelf-hostende IR-instellingen automatiseren op een virtuele Azure-machine
 
 U kunt een opdracht regel gebruiken om een bestaande zelf-hostende IR in te stellen of te beheren. Dit gebruik kan vooral helpen bij het automatiseren van de installatie en registratie van zelf-hostende IR-knoop punten.
 
-Dmgcmd. exe is opgenomen in het zelf-hostende installatie programma. Het bevindt zich meestal in de map C:\Program Files\Microsoft Integration Runtime\3.0\Shared\. Deze toepassing ondersteunt verschillende para meters en kan worden aangeroepen via een opdracht regel met behulp van batch scripts voor automatisering.
+Dmgcmd. exe is opgenomen in het zelf-hostende installatie programma. Het bevindt zich meestal in de map C:\Program Files\Microsoft Integration Runtime\4.0\Shared\. Deze toepassing ondersteunt verschillende para meters en kan worden aangeroepen via een opdracht regel met behulp van batch scripts voor automatisering.
 
 Gebruik de toepassing als volgt:
 
@@ -117,7 +117,7 @@ Hier volgen de details van de para meters en eigenschappen van de toepassing:
 | **Sleutel** "`<AuthenticationKey>`"                                 | De vorige verificatie sleutel overschrijven of bijwerken. Wees voorzichtig met deze actie. Het vorige zelf-hostende IR-knoop punt kan offline gaan als de sleutel een nieuwe Integration runtime is. | Nee       |
 | **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Genereer een back-upbestand voor het huidige knoop punt. Het back-upbestand bevat de referenties van de knooppunt sleutel en de gegevens opslag. | Nee       |
 | **ImportBackupFile** "`<filePath>`" "`<password>`"              | Herstel het knoop punt uit een back-upbestand.                          | Nee       |
-| **Opnieuw opstarten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
+| **Opnieuw starten**                                                     | Start de zelf-hostende Integration runtime host-service opnieuw.   | Nee       |
 | **Begin**                                                       | Start de zelf-hostende integratie runtime host service.     | Nee       |
 | **Stoppen**                                                        | Stop de zelf-hostende integratie runtime host service.        | Nee       |
 | **StartUpgradeService**                                         | Start de zelf-hostende Integration runtime upgrade-service.       | Nee       |
@@ -151,7 +151,7 @@ Hier volgt een beknopt overzicht van de stappen voor de gegevens stroom voor het
 - Gebruik een zelf-hostende Integration runtime voor de ondersteuning van gegevens integratie binnen een virtueel Azure-netwerk.
 - Behandel uw gegevens bron als een on-premises gegevens bron die zich achter een firewall bevindt, zelfs wanneer u Azure ExpressRoute gebruikt. Gebruik de zelf-hostende Integration runtime om de service te verbinden met de gegevens bron.
 - Gebruik de zelf-hostende Integration runtime, zelfs als het gegevens archief zich in de Cloud bevindt op een virtuele machine met Azure Infrastructure as a Service (IaaS).
-- Taken kunnen mislukken in een zelf-hostende Integration runtime die u hebt geïnstalleerd op een Windows-Server waarvoor FIPS-compatibele versleuteling is ingeschakeld. U kunt dit probleem omzeilen door FIPS-compatibele versleuteling op de server uit te scha kelen. Als u FIPS-compatibele versleuteling wilt uitschakelen, wijzigt u de waarde van de volgende registersubsleutel van 1 (ingeschakeld) in 0 ( `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`uitgeschakeld):.
+- Taken kunnen mislukken in een zelf-hostende Integration runtime die u hebt geïnstalleerd op een Windows-Server waarvoor FIPS-compatibele versleuteling is ingeschakeld. U kunt dit probleem omzeilen door FIPS-compatibele versleuteling op de server uit te scha kelen. Als u FIPS-compatibele versleuteling wilt uitschakelen, wijzigt u de waarde van de volgende registersubsleutel van 1 (ingeschakeld) in 0 (uitgeschakeld): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -173,7 +173,7 @@ Hier volgt een beknopt overzicht van de stappen voor de gegevens stroom voor het
 - Kopieer-activiteit wordt uitgevoerd met een specifieke frequentie. Het gebruik van de processor en het RAM-geheugen op de computer volgt hetzelfde patroon met piek-en inactieve tijden. Resource gebruik is ook afhankelijk van de hoeveelheid gegevens die wordt verplaatst. Wanneer er meerdere Kopieer taken worden uitgevoerd, ziet u het resource gebruik tijdens piek tijden.
 - Taken kunnen mislukken tijdens het uitpakken van gegevens in Parquet-, ORC-of Avro-indelingen. Zie [Parquet-indeling in azure Data Factory](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)voor meer informatie over Parquet. Het maken van bestanden wordt uitgevoerd op de zelf-hostende integratie computer. Voor een juiste werking van het maken van bestanden zijn de volgende vereisten vereist:
     - Te [distribueren pakket Visual C++ 2010](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Pakket (x64)
-    - Java runtime (JRE) versie 8 van een JRE-provider, zoals het [aannemen van openjdk](https://adoptopenjdk.net/). Zorg ervoor dat `JAVA_HOME` de omgevings variabele is ingesteld.
+    - Java runtime (JRE) versie 8 van een JRE-provider, zoals het [aannemen van openjdk](https://adoptopenjdk.net/). Zorg ervoor dat de `JAVA_HOME` omgevings variabele is ingesteld.
 
 ## <a name="installation-best-practices"></a>Best practices voor installatie
 
@@ -220,7 +220,7 @@ U kunt meerdere knoop punten koppelen door de zelf-hostende Integration runtime-
 > U hoeft geen nieuwe zelf-hostende Integration runtime te maken om elk knoop punt te koppelen. U kunt de zelf-hostende Integration runtime op een andere computer installeren en registreren met behulp van dezelfde verificatie sleutel.
 
 > [!NOTE]
-> Voordat u een ander knoop punt toevoegt voor hoge Beschik baarheid en schaal baarheid, moet u ervoor zorgen dat de optie **externe toegang tot intranet** is ingeschakeld op het eerste knoop punt. Als u dit wilt doen, selecteert u **Microsoft Integration Runtime Configuration Manager** > **instellingen** > **externe toegang tot intranet**.
+> Voordat u een ander knoop punt toevoegt voor hoge Beschik baarheid en schaal baarheid, moet u ervoor zorgen dat de optie **externe toegang tot intranet** is ingeschakeld op het eerste knoop punt. Als u dit wilt doen, selecteert u **Microsoft Integration Runtime Configuration Manager**  >  **instellingen**  >  **externe toegang tot intranet**.
 
 ### <a name="scale-considerations"></a>Schaal overwegingen
 
@@ -375,9 +375,9 @@ U kunt het hulp programma Configuration Manager gebruiken om de HTTP-proxy weer 
 
 Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebruikt de zelf-hostende Integration runtime de proxy-instellingen in diahost. exe. config en diawp. exe. config. Als deze bestanden geen proxy opgeven, maakt de zelf-hostende Integration runtime rechtstreeks verbinding met de Cloud service zonder een proxy te passeren. De volgende procedure bevat instructies voor het bijwerken van het bestand diahost. exe. config:
 
-1. Maak in Verkenner een veilige kopie van C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config als back-up van het oorspronkelijke bestand.
+1. Maak in Verkenner een veilige kopie van C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config als back-up van het oorspronkelijke bestand.
 1. Open Klad blok als Administrator.
-1. Open in Klad blok het tekst bestand C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config.
+1. Open in Klad blok het tekst bestand C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config.
 1. Zoek de standaard **System.net** -tag, zoals wordt weer gegeven in de volgende code:
 
     ```xml
@@ -395,7 +395,7 @@ Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebrui
     </system.net>
     ```
 
-    Met de proxy code kunnen aanvullende eigenschappen de vereiste instellingen opgeven `scriptLocation`, zoals. Zie [ \<proxy\> -element (netwerk instellingen)](https://msdn.microsoft.com/library/sa91de1e.aspx) voor de syntaxis.
+    Met de proxy code kunnen aanvullende eigenschappen de vereiste instellingen opgeven, zoals `scriptLocation` . Zie [ \<proxy\> element (netwerk instellingen)](https://msdn.microsoft.com/library/sa91de1e.aspx) voor de syntaxis.
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -416,7 +416,7 @@ U moet er ook voor zorgen dat Microsoft Azure zich in de acceptatie lijst van uw
 Als er fout berichten worden weer geven, zoals de volgende, is de waarschijnlijke oorzaak een onjuiste configuratie van de firewall of proxy server. Met deze configuratie kan de zelf-hostende Integration runtime geen verbinding maken met Data Factory om zichzelf te verifiëren. Raadpleeg de vorige sectie om ervoor te zorgen dat uw firewall en proxy server correct zijn geconfigureerd.
 
 * Wanneer u de zelf-hostende Integration runtime probeert te registreren, wordt het volgende fout bericht weer gegeven: ' kan dit knoop punt niet registreren Integration Runtime. Controleer of de verificatie sleutel geldig is en of de service Integration service host op deze computer wordt uitgevoerd.
-* Wanneer u Integration Runtime Configuration Manager opent, ziet u de status **losgekoppeld** of verbinding **maken**. Wanneer u Windows-gebeurtenis logboeken bekijkt onder **Logboeken** > **Logboeken** > van toepassingen en services**Microsoft Integration runtime**, worden fout berichten als deze weer gegeven:
+* Wanneer u Integration Runtime Configuration Manager opent, ziet u de status **losgekoppeld** of verbinding **maken**. Wanneer u Windows-gebeurtenis logboeken bekijkt onder **Logboeken**  >  **Logboeken van toepassingen en services**  >  **Microsoft Integration runtime**, worden fout berichten als deze weer gegeven:
 
     ```
     Unable to connect to the remote server

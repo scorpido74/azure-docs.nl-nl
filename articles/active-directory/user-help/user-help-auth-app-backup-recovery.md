@@ -8,15 +8,15 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f78ef7ddf48612728c0409b0f904c0964e2272b5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741597"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84415980"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Back-up en herstel van account referenties met behulp van de app Microsoft Authenticator
 
@@ -73,54 +73,36 @@ U kunt uw account referenties herstellen vanuit uw Cloud account, maar u moet er
 
 Nadat u uw herstel hebt voltooid, ziet u mogelijk dat uw persoonlijke Microsoft-account verificatie codes in de Microsoft Authenticator-app verschillen tussen uw oude en nieuwe telefoons. De codes verschillen, omdat elk apparaat een eigen unieke referentie heeft, maar beide geldig zijn en werken tijdens het aanmelden met behulp van de bijbehorende telefoon.
 
-## <a name="recover-additional-accounts-requiring-more-verification"></a>Extra accounts herstellen waarvoor meer verificatie is vereist
+## <a name="recover-accounts-requiring-more-verification"></a>Accounts herstellen waarvoor meer verificatie is vereist
 
 Als u push meldingen met uw persoonlijke werk-of school account gebruikt, ontvangt u een waarschuwing op het scherm met de melding dat u aanvullende verificatie moet opgeven voordat u uw gegevens kunt herstellen. Omdat push meldingen vereisen dat een referentie wordt gebruikt die is gekoppeld aan uw specifieke apparaat en nooit via het netwerk wordt verzonden, moet u uw identiteit bewijzen voordat de referentie op uw apparaat wordt gemaakt.
 
 Voor persoonlijke micro soft-accounts kunt u uw identiteit bewijzen door uw wacht woord in te voeren en een alternatief e-mail adres of telefoon nummer. Voor werk-of school accounts moet u een QR-code scannen die u hebt ontvangen van uw account provider.
 
-### <a name="to-provide-additional-verification-for-personal-accounts"></a>Aanvullende verificatie voor persoonlijke accounts opgeven
+### <a name="to-provide-more-verification-for-personal-accounts"></a>Meer verificatie voor persoonlijke accounts
 
-1. Selecteer in het scherm **accounts** van de Microsoft Authenticator-app het account dat u wilt herstellen. Selecteer op een Android-apparaat de pijl naast het account dat u wilt herstellen.
+1. Tik in het scherm **accounts** van de Microsoft Authenticator-app op het account dat u wilt herstellen om de weer gave volledig scherm van het account te openen.
 
-    ![Microsoft Authenticator app, waarbij de beschik bare accounts worden weer gegeven met de bijbehorende vervolg keuzelijst pijlen](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator-app, waarin de beschik bare account tegels worden weer gegeven" border="true":::
 
-    Tik op een iOS-apparaat op het account dat u wilt herstellen om de weer gave volledig scherm van het account te openen.
+1. Tik op de tegel voor het account dat u wilt herstellen en tik vervolgens op de optie om u aan te melden om te herstellen. Voer uw wacht woord in en bevestig uw e-mail adres of telefoon nummer als aanvullende verificatie.
 
-    ![Microsoft Authenticator app, waarbij de beschik bare accounts worden weer gegeven met de bijbehorende vervolg keuzelijst pijlen](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Verificator presenteert een eenmalig wacht woord als een verificatie code" border="true":::
 
-2. Meld u aan om het account te herstellen. Op een Android-apparaat selecteert **u aanmelden om te herstellen**.
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>Meer verificatie voor werk-of school accounts
 
-    ![Microsoft Authenticator app om uw aanmeldings gegevens in Android in te voeren](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+1. Tik in het scherm **accounts** van de Microsoft Authenticator-app op het account dat u wilt herstellen om de weer gave volledig scherm van het account te openen.
 
-    Tik op een iOS-apparaat op de tegel van het account dat u wilt herstellen en tik vervolgens op de optie om u aan te melden en te herstellen. Typ vervolgens uw wacht woord en bevestig uw e-mail adres of telefoon nummer als aanvullende verificatie. unt.
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator-app, waarin de beschik bare account tegels worden weer gegeven" border="true":::
 
-    ![Microsoft Authenticator app om uw aanmeldings gegevens in iOS in te voeren](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
+1. Tik in de weer gave volledig scherm op de optie om een QR-code te scannen om deze volledig te herstellen.
 
-### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>Aanvullende verificatie voor werk-of school accounts opgeven
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Verificator presenteert een eenmalig wacht woord als een verificatie code" border="true":::
 
-1. Meld u aan om het account te herstellen. Op een Android-apparaat selecteert **u aanmelden om te herstellen**.
-
-    ![Een werk-of school account op Android herstellen met Microsoft Authenticator-app](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
-
-    Tik op een iOS-apparaat op het account dat u wilt herstellen om de weer gave volledig scherm van het account te openen.
-
-    ![Een werk-of school account op iOS herstellen met Microsoft Authenticator-app](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
-
-2. U kunt een QR-code gebruiken om een account te herstellen. Selecteer **QR-code scannen om te herstellen**en scan de QR-code.
-
-    Op Android:
-
-    ![Microsoft Authenticator app op Android, zodat u uw QR-code kunt scannen](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
-
-    Op iOS:
-
-    ![Microsoft Authenticator app op iOS, zodat u uw QR-code kunt scannen](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
-
-    >[!NOTE]
-    >Voor meer informatie over QR-codes en hoe u er een kunt krijgen, raadpleegt u aan [de slag met de Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) of [beveiligings gegevens instellen voor het gebruik van een verificator-app](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), op basis van het feit of uw beheerder beveiligings gegevens heeft ingeschakeld.
-    >
-    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
+>[!NOTE]
+>Voor meer informatie over QR-codes en hoe u er een kunt krijgen, raadpleegt u aan [de slag met de Microsoft Authenticator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) of [beveiligings gegevens instellen voor het gebruik van een verificator-app](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), op basis van het feit of uw beheerder beveiligings gegevens heeft ingeschakeld.
+>
+>Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of de wilt toestaan foto's te maken en video op te nemen (Android). U moet **Toestaan** selecteren, zodat de Authenticator-app toegang heeft tot uw camera om in de volgende stap een foto te maken van de QR-code. Als u de app geen cameratoegang geeft, kunt u de Authenticator-app wel installeren, maar moet u de codegegevens handmatig toevoegen. Zie [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md) voor informatie over het handmatig toevoegen van de code.
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Problemen met back-up en herstel oplossen
 
@@ -136,7 +118,7 @@ Er zijn een aantal redenen waarom uw back-up mogelijk niet beschikbaar is
 
 - **Bestaande Microsoft Authenticator accounts**: als u al accounts hebt ingesteld in de Microsoft Authenticator app, kan de app uw back-upaccount niet herstellen. Door herstel te voor komen, zorgt u ervoor dat uw account gegevens niet worden overschreven met verouderde informatie. In dit geval moet u de bestaande account gegevens verwijderen uit de bestaande accounts die in de verificator-app zijn ingesteld voordat u uw back-up kunt herstellen.
 
-- De **back-up is verouderd**: als uw back-upgegevens verouderd zijn, wordt u mogelijk gevraagd om de gegevens te vernieuwen door u opnieuw aan te melden bij uw micro soft Recovery-account. Uw herstel account is de persoonlijke Microsoft-account die u in eerste instantie hebt gebruikt om uw back-up op te slaan. Als een aanmelding vereist is, ziet u een rode stip in uw menu of actie balk, of ziet u een uitroep teken waarin u wordt gevraagd om u aan te melden om het terugzetten van een back-up te volt ooien. Nadat u het pictogram hebt geselecteerd, wordt u gevraagd om u opnieuw aan te melden om uw gegevens bij te werken.
+- De **back-up is verouderd**: als uw back-upgegevens verouderd zijn, wordt u mogelijk gevraagd om de gegevens te vernieuwen door u opnieuw aan te melden bij uw micro soft Recovery-account. Uw herstel account is de persoonlijke Microsoft-account die u in eerste instantie hebt gebruikt om uw back-up op te slaan. Als een aanmelding vereist is, ziet u een rode stip in het menu of de actie balk, of ziet u een uitroep teken pictogram waarin u wordt gevraagd om u aan te melden om het terugzetten vanuit een back-up te volt ooien. Nadat u het juiste pictogram hebt geselecteerd, wordt u gevraagd om u opnieuw aan te melden om uw gegevens bij te werken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

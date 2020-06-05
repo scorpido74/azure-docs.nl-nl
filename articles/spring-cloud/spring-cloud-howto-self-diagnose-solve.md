@@ -6,20 +6,20 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: c4eada891f68a21732ab9a19548cbdfe1a3833a8
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: f1d5161b0efe0b8d9b9c0b84ac149050c3823ab6
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84325850"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429472"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Zelf diagnose en probleem oplossing in azure lente Cloud
-In deze zelf studie leert u hoe u zelf problemen kunt opsporen en oplossen voor Azure lente-Cloud. Het biedt een eenvoudige manier om metrische gegevens en logboeken te verzamelen.
+App Service Diagnostics is een interactieve ervaring bij het oplossen van problemen met uw app. Er is geen configuratie vereist. Wanneer u problemen ondervindt, wordt door App Service diagnostische gegevens aangegeven wat er mis is en wordt u begeleid bij het oplossen van problemen en het probleem op te lossen.
 
 ## <a name="prerequisites"></a>Vereisten
 Voor deze zelfstudie hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+* Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 * Een geïmplementeerd Azure lente-Cloud service-exemplaar. Volg onze [Snelstartgids voor het implementeren van een app via de Azure cli](spring-cloud-quickstart-launch-app-cli.md) om aan de slag te gaan.
 * Ten minste één toepassing is al in uw service-exemplaar gemaakt.
 

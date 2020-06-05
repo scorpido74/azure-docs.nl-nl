@@ -5,18 +5,18 @@ description: Meer informatie over het verzamelen van Azure Machine Learning invo
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8c488b2ad6fcb5228de0e89bd036e299632c5dd4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337407"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432992"
 ---
 # <a name="collect-data-for-models-in-production"></a>Gegevens verzamelen voor modellen in productie
 
@@ -57,7 +57,7 @@ Het pad naar de uitvoer gegevens in de BLOB volgt de volgende syntaxis:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://aka.ms/AMLFree) aan voordat u begint.
+- Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://aka.ms/AMLFree) voordat u begint.
 
 - Er moet een AzureMachine Learning-werk ruimte, een lokale map met uw scripts en de Azure Machine Learning SDK voor python zijn geïnstalleerd. Zie [How to configure a Development Environment (een ontwikkel omgeving configureren](how-to-configure-environment.md)) voor meer informatie over het installeren van deze.
 

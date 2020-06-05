@@ -5,16 +5,16 @@ description: U kunt met behulp van Azure Machine Learning uw code op een externe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77169755"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433131"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interactief fouten opsporen in een Azure Machine Learning Compute-exemplaar met externe versus code
 
@@ -34,7 +34,7 @@ Op Windows-platforms moet u [een met OpenSSH compatibele SSH-client installeren]
 
 ## <a name="get-ip-and-ssh-port"></a>IP-en SSH-poort ophalen 
 
-1. Ga naar de Azure Machine Learning Studio op https://ml.azure.com/.
+1. Ga naar de Azure Machine Learning Studio op https://ml.azure.com/ .
 
 2. Selecteer uw [werk ruimte](concept-workspace.md).
 1. Klik op het tabblad **Compute instances** .
@@ -94,7 +94,7 @@ Hier vindt u enkele details over de velden:
 |Gebruiker|Dit moet worden `azureuser` |
 |IdentityFile|Moet verwijzen naar het bestand waarin u de persoonlijke sleutel hebt opgeslagen |
 
-Nu moet u uw reken exemplaar SSHen met behulp van de steno die u hierboven hebt gebruikt `ssh azmlci1`. 
+Nu moet u uw reken exemplaar SSHen met behulp van de steno die u hierboven hebt gebruikt `ssh azmlci1` . 
 
 ## <a name="connect-vs-code-to-the-instance"></a>VERSUS code verbinden met het exemplaar 
 

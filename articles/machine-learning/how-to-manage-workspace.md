@@ -5,17 +5,17 @@ description: Meer informatie over het maken, weer geven en verwijderen van Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c729f59fbb92584ff613147577ab097e63307ace
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269722"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430442"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure Machine Learning-werk ruimten in de Azure Portal maken en beheren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ In dit artikel maakt, bekijkt en verwijdert u [**Azure machine learning-werk rui
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+Als u een werk ruimte wilt maken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met behulp van de referenties voor uw Azure-abonnement. 
 
@@ -80,7 +80,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 1. Selecteer in de rechter bovenhoek van de pagina **meer informatie** .
 
-   [![Een werk ruimte](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
+   [![Een werk ruimte ](./media/how-to-manage-workspace/upgrade.png) bijwerken](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
 1. Selecteer **upgrade** in het venster dat wordt weer gegeven.
 
@@ -90,7 +90,7 @@ U kunt uw werk ruimte upgraden van de Basic Edition naar Enter prise Edition om 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Een werk ruimte zoeken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
 
 1. Typ **machine learning**in het bovenste zoek veld.  
 

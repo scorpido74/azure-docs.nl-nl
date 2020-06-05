@@ -5,18 +5,18 @@ description: Meer informatie over het Toep assen van DevOps-procedures voor de i
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ffd45eadfd2d1b0e455ea3de91bf91c11c2517
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247177"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434618"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps voor een pijp lijn voor gegevens opname
 
@@ -44,7 +44,7 @@ De team leden werken op iets verschillende manieren om samen te werken aan de br
 
 ### <a name="python-notebook-source-code"></a>Bron code van python-notebook
 
-De gegevens technici werken met de bron code van python-notebook lokaal in een IDE (bijvoorbeeld [Visual Studio code](https://code.visualstudio.com)) of rechtstreeks in de Databricks-werk ruimte. De laatste biedt de mogelijkheid om fouten op te sporen in de code in de ontwikkel omgeving. In elk geval wordt de code samengevoegd met de opslag plaats na een vertakkings beleid. Het is raadzaam om de code op te slaan `.py` in bestanden in plaats `.ipynb` van in de Jupyter-notebook-indeling. Het verbetert de Lees baarheid van de code en maakt automatische controle van de code kwaliteit mogelijk in het CI-proces.
+De gegevens technici werken met de bron code van python-notebook lokaal in een IDE (bijvoorbeeld [Visual Studio code](https://code.visualstudio.com)) of rechtstreeks in de Databricks-werk ruimte. De laatste biedt de mogelijkheid om fouten op te sporen in de code in de ontwikkel omgeving. In elk geval wordt de code samengevoegd met de opslag plaats na een vertakkings beleid. Het is raadzaam om de code op te slaan in `.py` bestanden in plaats van in de Jupyter-notebook- `.ipynb` indeling. Het verbetert de Lees baarheid van de code en maakt automatische controle van de code kwaliteit mogelijk in het CI-proces.
 
 ### <a name="azure-data-factory-source-code"></a>Azure Data Factory bron code
 

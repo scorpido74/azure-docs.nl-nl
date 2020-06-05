@@ -1,21 +1,21 @@
 ---
 title: Azure Block Chain Service-grootboek versies, patches, & upgrade
 description: Overzicht van de ondersteunde versies van de groot boeken in azure Block Chain Service, inclusief beleids regels voor systeem patches en door systeem beheer en door gebruikers beheerde upgrades.
-ms.date: 11/20/2019
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 8d4a77699dd80743acfadd4d72d6d75bc1939b3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da7907c2c324932ba43863c1074cdff7d54d3827
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325191"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430745"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Ondersteunde Azure Block Chain Service-grootboek versies
 
 De Azure Block Chain-service maakt gebruik van het op Ethereum gebaseerde [quorum](https://www.goquorum.com/developers) grootboek dat is ontworpen voor de verwerking van persoonlijke trans acties binnen een groep bekende deel nemers, geïdentificeerd als een consortium in azure Block Chain service.
 
-Op dit moment ondersteunt de Azure Block Chain-service [quorum versie 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) en [Tessera-transactie beheer](https://github.com/jpmorganchase/tessera).
+Op dit moment ondersteunt de Azure Block Chain-service [quorum versie 2.5.0](https://github.com/jpmorganchase/quorum/releases/tag/v2.5.0) en [Tessera-transactie beheerder](https://github.com/jpmorganchase/tessera).
 
 ## <a name="managing-updates-and-upgrades"></a>Updates en upgrades beheren
 

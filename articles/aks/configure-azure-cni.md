@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van Azure CNI (Advanced)-netw
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120926"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416848"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure CNI-netwerken configureren in azure Kubernetes service (AKS)
 
@@ -151,7 +151,7 @@ De volgende vragen en antwoorden zijn van toepassing op de **Azure cni** -netwer
 
 * *Kan ik Vm's in mijn cluster subnet implementeren?*
 
-  Nee. Het implementeren van Vm's in het subnet dat door uw Kubernetes-cluster wordt gebruikt, wordt niet ondersteund. Vm's kunnen worden geïmplementeerd in hetzelfde virtuele netwerk, maar in een ander subnet.
+  Ja.
 
 * *Kan ik een per-pod-netwerk beleid configureren?*
 

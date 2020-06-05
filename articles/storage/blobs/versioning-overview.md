@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123833"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433586"
 ---
 # <a name="blob-versioning-preview"></a>Versie beheer van BLOB (preview)
 
@@ -178,8 +178,8 @@ In de volgende tabel ziet u welke RBAC-acties ondersteuning bieden bij het verwi
 
 | Beschrijving | Blob service bewerking | RBAC-gegevens actie vereist | Ondersteuning voor geïntegreerde RBAC-rollen |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| De huidige versie van de BLOB verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen/actionDeleting** | Inzender voor Storage BLOB-gegevens |
-| Een versie verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/** | Eigenaar van gegevens van opslag-BLOB |
+| De huidige versie van de BLOB verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/verwijderen** | Inzender voor Storage BLOB-gegevens |
+| Een versie verwijderen | Blob verwijderen | **Micro soft. Storage/Storage accounts/blobServices/containers/blobs/deleteBlobVersion/Action** | Eigenaar van gegevens van opslag-BLOB |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Para meters voor Shared Access Signature (SAS)
 

@@ -10,14 +10,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872061"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433274"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Locatie voor het opslaan en schrijven van bestanden voor Azure Machine Learning experimenten
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Daarom kunt u het beste het volgende doen:
 
 * **Uw bestanden worden opgeslagen in een Azure Machine Learning [gegevens opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py).** Dit voor komt problemen met de latentie van experimenten en heeft de voor delen van het openen van gegevens van een extern Compute-doel, wat betekent dat verificatie en bevestiging wordt beheerd door Azure Machine Learning. Meer informatie over het opgeven van een gegevens opslag als bron directory en het uploaden van bestanden naar uw gegevens opslag in het artikel [toegangs gegevens van uw gegevens opslag](how-to-access-data.md) .
 
-* **Als u alleen een aantal gegevens bestanden en afhankelijkheids scripts nodig hebt en u geen gegevens opslag kunt gebruiken, plaatst u** de bestanden in dezelfde map als uw trainings script. Geef deze map op als `source_directory` uw eigen trainings script of in de code die uw trainings script aanroept.
+* **Als u alleen een aantal gegevens bestanden en afhankelijkheids scripts nodig hebt en u geen gegevens opslag kunt gebruiken, plaatst u** de bestanden in dezelfde map als uw trainings script. Geef deze map op als uw eigen `source_directory` trainings script of in de code die uw trainings script aanroept.
 
 <a name="limits"></a>
 
@@ -51,7 +51,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 
 U kunt deze fout oplossen door uw experiment-bestanden op te slaan in een gegevens opslag. Als u geen gegevens opslag kunt gebruiken, biedt de onderstaande tabel mogelijke alternatieve oplossingen.
 
-Beschrijving&nbsp;van experiment|Oplossing voor opslag limiet
+Beschrijving van experiment &nbsp;|Oplossing voor opslag limiet
 ---|---
 Minder dan 2000 bestanden & kan geen gegevens opslag gebruiken| Maximale grootte van moment opname overschrijven met <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Dit kan enkele minuten duren, afhankelijk van het aantal en de grootte van de bestanden.
 U moet een specifieke script Directory gebruiken| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
@@ -64,14 +64,14 @@ Vanwege de isolatie van trainings experimenten, zijn de wijzigingen aan bestande
 
 Wanneer u wijzigingen schrijft, raden we u aan om bestanden naar een Azure Machine Learning gegevens opslag te schrijven. Bekijk [de toegang tot gegevens uit uw gegevens opslag](how-to-access-data.md).
 
-Als u geen gegevens opslag nodig hebt, schrijft u de `./outputs` bestanden naar de `./logs` map en/of.
+Als u geen gegevens opslag nodig hebt, schrijft u de bestanden naar de `./outputs` map en/of `./logs` .
 
 >[!Important]
-> Twee mappen, *uitvoer* en *Logboeken*, een speciale behandeling ontvangen door Azure machine learning. Tijdens de training, wanneer u bestanden naar`./outputs` en`./logs` mappen schrijft, worden de bestanden automatisch naar de uitvoerings geschiedenis geüpload, zodat u er toegang tot hebt wanneer de uitvoering is voltooid.
+> Twee mappen, *uitvoer* en *Logboeken*, een speciale behandeling ontvangen door Azure machine learning. Tijdens de training, wanneer u bestanden naar `./outputs` en `./logs` mappen schrijft, worden de bestanden automatisch naar de uitvoerings geschiedenis geüpload, zodat u er toegang tot hebt wanneer de uitvoering is voltooid.
 
 * Schrijf **voor uitvoer, zoals status berichten of Score resultaten,** bestanden naar de `./outputs` map, zodat deze persistent zijn als artefacten in de uitvoerings geschiedenis. Mindful zijn van het aantal en de grootte van bestanden die naar deze map worden geschreven, omdat er een latentie kan optreden wanneer de inhoud wordt geüpload om de geschiedenis uit te voeren. Als latentie een probleem is, wordt het schrijven van bestanden naar een gegevens opslag aanbevolen.
 
-* **Als u geschreven bestanden wilt opslaan als Logboeken in uitvoerings geschiedenis,** moet u bestanden naar `./logs` de map schrijven. De logboeken worden in realtime geüpload, dus deze methode is geschikt voor het streamen van live-updates vanaf een externe uitvoering.
+* **Als u geschreven bestanden wilt opslaan als Logboeken in uitvoerings geschiedenis,** moet u bestanden naar de `./logs` map schrijven. De logboeken worden in realtime geüpload, dus deze methode is geschikt voor het streamen van live-updates vanaf een externe uitvoering.
 
 ## <a name="next-steps"></a>Volgende stappen
 

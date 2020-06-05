@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/03/2020
+ms.openlocfilehash: a621ba9ebab1ffca0f9e1b8fb315714e3cf2af2f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648168"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416168"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Verbinding maken met virtuele Azure-netwerken van Azure Logic Apps met behulp van een ISE (Integration service Environment)
 
@@ -54,20 +54,22 @@ U kunt ook een ISE maken met behulp van de voor [beeld-Azure Resource Manager Qu
 
   * Zorg ervoor dat het virtuele netwerk [toegang biedt tot uw ISE](#enable-access) zodat uw ISE goed kan werken en toegankelijk moet blijven.
 
-  * Met [ExpressRoute](../expressroute/expressroute-introduction.md) kunt u uw on-premises netwerken uitbreiden naar micro soft Cloud en verbinding maken met micro soft-Cloud Services via een persoonlijke verbinding die wordt vereenvoudigd door de connectiviteits provider. ExpressRoute is met name een virtueel particulier netwerk dat verkeer via een particulier netwerk routeert in plaats van het open bare Internet. Logic apps kunnen verbinding maken met on-premises bronnen die zich in hetzelfde virtuele netwerk bevinden wanneer u verbinding maakt via ExpressRoute of een virtueel particulier netwerk. 
+  * Met [ExpressRoute](../expressroute/expressroute-introduction.md) kunt u uw on-premises netwerken uitbreiden naar micro soft Cloud en verbinding maken met micro soft-Cloud Services via een persoonlijke verbinding die wordt vereenvoudigd door de connectiviteits provider. ExpressRoute is met name een virtueel particulier netwerk dat verkeer via een particulier netwerk routeert, in plaats van via het open bare Internet. Uw Logic apps kunnen verbinding maken met on-premises resources die zich in hetzelfde virtuele netwerk bevinden wanneer ze verbinding maken via ExpressRoute of een virtueel particulier netwerk.
+     
+    Als u ExpressRoute gebruikt, zorg er dan voor dat u geen gebruik maakt van [geforceerde tunneling](../firewall/forced-tunneling.md). Als u geforceerde tunneling gebruikt, moet u [een route tabel maken](../virtual-network/manage-route-table.md) waarin de volgende route wordt opgegeven:
   
-    Als u ExpressRoute gebruikt, moet u [een route tabel](../virtual-network/manage-route-table.md) met de volgende route maken en die tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE:
-
     **Naam**: <*route naam*><br>
     **Adres voorvoegsel**: 0.0.0.0/0<br>
     **Volgende hop**: Internet
+    
+    Vervolgens moet u deze route tabel koppelen aan elk subnet dat wordt gebruikt door uw ISE. De route tabel is vereist zodat Logic Apps onderdelen kunnen communiceren met andere afhankelijke Azure-Services, zoals Azure Storage en Azure SQL DB. Voor meer informatie over deze route raadpleegt u het [adres voorvoegsel 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route).
+   
+  * Als u een [virtueel netwerk apparaat (NVA)](../virtual-network/virtual-networks-udr-overview.md#user-defined)gebruikt, moet u ervoor zorgen dat u geen TLS/SSL-beëindiging inschakelt of het uitgaande TLS/SSL-verkeer wijzigt. Zorg er ook voor dat u geen inspectie inschakelt voor verkeer dat afkomstig is van het subnet van uw ISE. Zie [virtueel netwerk verkeer routeren](../virtual-network/virtual-networks-udr-overview.md)voor meer informatie.
 
-    Deze route tabel is vereist voor Logic Apps onderdelen om te communiceren met andere afhankelijke Azure-Services, zoals Azure Storage en Azure SQL DB.
+  * Als u aangepaste DNS-servers wilt gebruiken voor uw virtuele Azure-netwerk, [stelt u die servers in door de volgende stappen uit te voeren](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voordat u uw ISE implementeert in uw virtuele netwerk. Zie [een virtueel netwerk maken, wijzigen of verwijderen](../virtual-network/manage-virtual-network.md#change-dns-servers)voor meer informatie over het beheren van DNS-server instellingen.
 
-* Als u aangepaste DNS-servers wilt gebruiken voor uw virtuele Azure-netwerk, [stelt u die servers in door de volgende stappen uit te voeren](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) voordat u uw ISE implementeert in uw virtuele netwerk. Zie [een virtueel netwerk maken, wijzigen of verwijderen](../virtual-network/manage-virtual-network.md#change-dns-servers)voor meer informatie over het beheren van DNS-server instellingen.
-
-  > [!NOTE]
-  > Als u de instellingen van de DNS-server of DNS-server wijzigt, moet u uw ISE opnieuw opstarten zodat de ISE deze wijzigingen kan ophalen. Zie [uw ISE opnieuw starten](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)voor meer informatie.
+    > [!NOTE]
+    > Als u de instellingen van de DNS-server of DNS-server wijzigt, moet u de ISE opnieuw opstarten zodat de ISE deze wijzigingen kan ophalen. Zie [uw ISE opnieuw starten](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE)voor meer informatie.
 
 <a name="enable-access"></a>
 
@@ -99,7 +101,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="inbound-security-rules"></a>Inkomende beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+| Functie | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Beide: <p>Communicatie met uw logische app <p><p>Geschiedenis van de logische app wordt uitgevoerd| Interne ISE: <br>**VirtualNetwork** <p><p>Externe ISE: **Internet** of Zie **opmerkingen** | * | **VirtualNetwork** | 443 | In plaats van het label **Internet** te gebruiken, kunt u het IP-adres van de bron voor deze items opgeven: <p><p>-De computer of service die aanvraag triggers of webhooks aanroept in uw logische app <p>-De computer of service van waaruit u de geschiedenis van de uitvoering van de logische app wilt openen <p><p>**Belang rijk**: door deze poort te sluiten of te blok keren, voor komt u dat er Logic apps worden aangeroepen die aanvraag triggers of webhooks hebben. U kunt er ook voor zorgen dat u geen toegang hebt tot invoer en uitvoer voor elke stap in de geschiedenis van uitvoeringen. U hebt echter geen toegang tot de geschiedenis van de logische app-uitvoeringen.|
@@ -114,7 +116,7 @@ In deze tabel worden de poorten beschreven die uw ISE nodig heeft om toegankelij
 
 #### <a name="outbound-security-rules"></a>Uitgaande beveiligingsregels
 
-| Doel | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
+| Functie | Bron servicetag of IP-adressen | Bronpoorten | Servicetag of IP-adressen van doel service | Doelpoorten | Opmerkingen |
 |---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
 | Intersubnet-communicatie binnen het virtuele netwerk | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Adres ruimte voor het virtuele netwerk met ISE-subnetten | * | Vereist voor verkeer voor stroom *tussen* de subnetten in het virtuele netwerk. <p><p>**Belang rijk**: Zorg ervoor dat u alle poorten in elk subnet opent voor verkeer tussen de *onderdelen* in elk subnet. |
 | Communicatie vanuit uw logische app | **VirtualNetwork** | * | Varieert op basis van bestemming | 80, 443 | Bestemming is afhankelijk van de eind punten voor de externe service waarmee de logische app moet communiceren. |

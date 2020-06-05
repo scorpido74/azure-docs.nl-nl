@@ -5,17 +5,17 @@ description: Persoonlijke Azure-koppeling gebruiken om veilig toegang te krijgen
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 9a5a739ec9a17d37d8bcfd65face91c8223c452c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891371"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432242"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
@@ -71,7 +71,7 @@ Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-m
 
 ### <a name="deploy-the-template-using-azure-powershell"></a>De sjabloon implementeren met behulp van Azure PowerShell
 
-In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -84,7 +84,7 @@ Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell]
 
 ### <a name="deploy-the-template-using-the-azure-cli"></a>De sjabloon implementeren met behulp van de Azure CLI
 
-In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen `azuredeploy.json` in een bestand met de naam in de huidige map:
+In dit voor beeld wordt ervan uitgegaan dat u een van de sjablonen van het einde van dit document hebt opgeslagen in een bestand met `azuredeploy.json` de naam in de huidige map:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 332b0193059c2c60cce0bc653d48bace45eca38d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249141"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432718"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -23,25 +23,27 @@ In dit artikel vindt u een overzicht van de ondersteunde onderdelen en instellin
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-**Scenario** | **Nadere**
+**Scenario** | **Details**
 --- | ---
 Hyper-V met Virtual Machine Manager <br> <br>| U kunt herstel na nood geval uitvoeren op Azure voor virtuele machines die worden uitgevoerd op Hyper-V-hosts die worden beheerd in de System Center Virtual Machine Manager infrastructuur resources.<br/><br/> U kunt dit scenario implementeren in de Azure Portal of met behulp van Power shell.<br/><br/> Wanneer Hyper-V-hosts door Virtual Machine Manager worden beheerd, kunt u herstel na nood gevallen ook uitvoeren op een secundaire on-premises site. Lees [deze zelf studie](hyper-v-vmm-disaster-recovery.md)voor meer informatie over dit scenario.
 Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren op Azure voor virtuele machines die worden uitgevoerd op Hyper-V-hosts die niet worden beheerd door Virtual Machine Manager.<br/><br/> U kunt dit scenario implementeren in de Azure Portal of met behulp van Power shell.
 
 ## <a name="on-premises-servers"></a>On-premises servers
 
-**Server** | **Vereisten** | **Nadere**
+**Server** | **Vereisten** | **Details**
 --- | --- | ---
-Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (inclusief Server Core-installatie), Windows Server 2012 R2 met de nieuwste updates | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. <br/><br/> Opmerking: failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
+Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de meest recente updates (inclusief Server Core-installatie van deze besturings systemen) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. <br/><br/> Opmerking: failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
 Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/> Opmerking: failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
 
+> [!NOTE]
+> Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
 
 ## <a name="replicated-vms"></a>Gerepliceerde Vm's
 
 
 De volgende tabel bevat een overzicht van de VM-ondersteuning. Site Recovery ondersteunt alle workloads die worden uitgevoerd op een ondersteund besturings systeem.
 
- **Component** | **Nadere**
+ **Onderdeel** | **Details**
 --- | ---
 VM-configuratie | Vm's die naar Azure repliceren, moeten voldoen aan de [vereisten van Azure](#azure-vm-requirements).
 Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor Azure](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases)..<br/><br/> Windows Server 2016 nano server wordt niet ondersteund.
@@ -49,14 +51,14 @@ Gastbesturingssysteem | Elk gast besturingssysteem dat wordt [ondersteund voor A
 
 ## <a name="vmdisk-management"></a>VM/schijf beheer
 
-**Actie** | **Nadere**
+**Actie** | **Details**
 --- | ---
 Grootte van schijf op gerepliceerde Hyper-V-VM wijzigen | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
 Een schijf toevoegen aan een gerepliceerde Hyper-V-VM | Niet ondersteund. Schakel replicatie uit, breng de wijziging aan en schakel de replicatie voor de virtuele machine opnieuw in.
 
 ## <a name="hyper-v-network-configuration"></a>Configuratie van Hyper-V-netwerk
 
-**Component** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Onderdeel** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 Hostnetwerkadapter: NIC-koppeling | Ja | Ja
 Hostnetwerkadapter: VLAN | Ja | Ja
@@ -64,7 +66,7 @@ Hostcluster: IPv4 | Ja | Ja
 Hostnetwerkadapter: IPv6 | Nee | Nee
 VM-netwerk van de gast: NIC-koppeling | Nee | Nee
 VM-netwerk van gast: IPv4 | Ja | Ja
-VM-netwerk van de gast: IPv6 | No | Yes
+VM-netwerk van de gast: IPv6 | Nee | Ja
 VM-netwerk van de gast: statisch IP-adres (Windows) | Ja | Ja
 VM-netwerk van de gast: statisch IP-adres (Linux) | Nee | Nee
 VM-netwerk van de gast: meerdere NIC'S | Ja | Ja
@@ -74,7 +76,7 @@ HTTPS-proxy | Nee | Nee
 
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM-netwerk configuratie (na failover)
 
-**Component** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Onderdeel** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 Azure ExpressRoute | Ja | Ja
 ILB | Ja | Ja
@@ -122,7 +124,7 @@ Meerdere paden (MPIO) | Ja | Ja
 
 ## <a name="azure-storage"></a>Azure Storage
 
-**Component** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
+**Onderdeel** | **Hyper-V met Virtual Machine Manager** | **Hyper-V zonder Virtual Machine Manager**
 --- | --- | ---
 Lokaal redundante opslag | Ja | Ja
 Geografisch redundante opslag | Ja | Ja
@@ -135,7 +137,7 @@ Versleuteling in rust (CMK) <br></br> (Alleen voor failover naar beheerde schijv
 Premium Storage | Ja | Ja
 Import/export-service | Nee | Nee
 Azure Storage accounts waarvoor Firewall is ingeschakeld | Ja. Voor doel opslag en cache. | Ja. Voor doel opslag en cache.
-Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | No
+Opslag account wijzigen | Nee. Het doel Azure Storage account kan niet worden gewijzigd nadat de replicatie is ingeschakeld. Als u herstel na nood gevallen wilt wijzigen, uitschakelen en opnieuw inschakelen. | Nee
 
 
 ## <a name="azure-compute-features"></a>Azure Compute-functies
@@ -150,7 +152,7 @@ Managed Disks | Ja, voor failover.<br/><br/> Failback van beheerde schijven word
 
 On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten van de Azure-VM die in deze tabel worden samenvatten.
 
-**Component** | **Vereisten** | **Nadere**
+**Onderdeel** | **Vereisten** | **Details**
 --- | --- | ---
 Gastbesturingssysteem | Site Recovery ondersteunt alle besturings systemen die worden [ondersteund door Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | De controle van vereisten mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 32-bits (Windows Server 2008)/64-bit | De controle van vereisten mislukt als dit niet wordt ondersteund.
@@ -181,7 +183,7 @@ Opslag, netwerk, Azure-Vm's verplaatsen tussen resource groepen<br/><br/> Binnen
 
 Om ervoor te zorgen dat uw implementatie compatibel is met de instellingen in dit artikel, moet u ervoor zorgen dat u de nieuwste versie van de provider en de agent uitvoert.
 
-**Naam** | **Beschrijving** | **Nadere**
+**Naam** | **Beschrijving** | **Details**
 --- | --- | --- 
 Azure Site Recovery provider | Coördineert de communicatie tussen on-premises servers en Azure <br/><br/> Hyper-V met Virtual Machine Manager: geïnstalleerd op Virtual Machine Manager-servers<br/><br/> Hyper-V zonder Virtual Machine Manager: geïnstalleerd op Hyper-V-hosts| Nieuwste versie: 5.1.2700.1 (beschikbaar via de Azure Portal)<br/><br/> [Nieuwste functies en oplossingen](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services-agent | Coördinaten van replicatie tussen Hyper-V-Vm's en Azure<br/><br/> Geïnstalleerd op on-premises Hyper-V-servers (met of zonder Virtual Machine Manager) | Nieuwste agent die beschikbaar is via de portal

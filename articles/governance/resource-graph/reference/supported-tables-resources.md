@@ -1,14 +1,14 @@
 ---
 title: Ondersteunde resource typen Resource Manager
 description: Geef een lijst op met de Resource Manager-resource typen die worden ondersteund door de Azure-resource grafiek en de wijzigings geschiedenis.
-ms.date: 05/21/2020
+ms.date: 06/04/2020
 ms.topic: reference
-ms.openlocfilehash: 7ccf8cc58ce19746958f89ff9d9207906aad16bd
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: a4679c9e1ecaef34445a7283e0d58ab78cb61ab0
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770581"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424292"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Naslag informatie over de tabel en het resource type van Azure resource Graph
 
@@ -484,13 +484,6 @@ De resource grafiek van Azure biedt ondersteuning voor de volgende **resource ty
 - micro soft. Security/regulatorycompliancestandards
 - micro soft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
 - micro soft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
-- micro soft. Security/securitystatuses
-- micro soft. Security/securitystatuses/containerhosts
-- micro soft. Security/securitystatuses/onpremisemachines
-- micro soft. Security/securitystatuses/servers
-- micro soft. Security/securitystatuses/subnetten
-- micro soft. Security/securitystatuses/informatie
-- micro soft. Security/securitystatusessummaries
 
 ## <a name="next-steps"></a>Volgende stappen
 

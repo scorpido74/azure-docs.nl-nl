@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731574"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417001"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -306,7 +306,7 @@ Verkeersweergave prijzen zijn gebaseerd op het aantal gegevens punten dat wordt 
 
 Het gebruik van eind punten van meerdere abonnementen is niet mogelijk met Azure Web Apps. Voor Azure Web Apps is vereist dat alle aangepaste domein namen die worden gebruikt met Web Apps alleen worden gebruikt binnen één abonnement. Het is niet mogelijk om Web Apps te gebruiken uit meerdere abonnementen met dezelfde domein naam.
 
-Voor andere eindpunt typen is het mogelijk om Traffic Manager te gebruiken met eind punten van meer dan één abonnement. In Resource Manager kunnen eind punten van elk abonnement worden toegevoegd aan Traffic Manager, mits de persoon die het Traffic Manager profiel heeft geconfigureerd Lees toegang heeft tot het eind punt. Deze machtigingen kunnen worden verleend met [Azure Resource Manager op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/role-assignments-portal.md).
+Voor andere eindpunt typen is het mogelijk om Traffic Manager te gebruiken met eind punten van meer dan één abonnement. In Resource Manager kunnen eind punten van elk abonnement worden toegevoegd aan Traffic Manager, mits de persoon die het Traffic Manager profiel heeft geconfigureerd Lees toegang heeft tot het eind punt. Deze machtigingen kunnen worden verleend met [Azure Resource Manager op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/role-assignments-portal.md). Eind punten van andere abonnementen kunnen worden toegevoegd met behulp van [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) of de [Azure cli](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kan ik Traffic Manager gebruiken met staging-sleuven van Cloud service?
 

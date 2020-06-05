@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670641"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424462"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0 (preview)-oplossing in Azure Monitor
 
@@ -19,12 +19,15 @@ ms.locfileid: "77670641"
 
 Wiregegevens zijn geconsolideerde netwerk-en prestatie gegevens die zijn verzameld van met Windows verbonden en Linux verbonden computers met de Log Analytics-agent, met inbegrip van de gegevens die worden bewaakt door Operations Manager in uw omgeving. Netwerkgegevens worden gecombineerd met uw andere logboekgegevens om te helpen bij het correleren van gegevens.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 Naast de Log Analytics-agent maakt de Wire data-oplossing gebruik van micro soft-afhankelijkheids agenten die u installeert op computers in uw IT-infra structuur. Agents voor afhankelijkheden controleren netwerkgegevens die worden verzonden naar en van uw computers voor netwerkniveaus 2-3 in het [OSI-model](https://en.wikipedia.org/wiki/OSI_model), met inbegrip van de verschillende gebruikte protocollen en poorten. Gegevens worden vervolgens verzonden naar Azure Monitor met behulp van agents.  
 
 >[!NOTE]
->Als u al Servicetoewijzing hebt geïmplementeerd, of als u overweegt Servicetoewijzing of [Azure monitor voor VM's](../../azure-monitor/insights/vminsights-overview.md), is er een nieuwe data set met metrische gegevens voor de verbinding die wordt verzameld en opgeslagen in azure monitor die vergelijk bare informatie levert aan bedradings gegevens.
+>De oplossing voor Wiregegevens is vervangen door de [servicetoewijzing oplossing](service-map.md).  Beide gebruiken de Log Analytics agent en de afhankelijkheids agent voor het verzamelen van netwerk verbindings gegevens in Azure Monitor. 
+> 
+>Bestaande klanten die gebruikmaken van de Wire data-oplossing, kunnen deze blijven gebruiken. Er worden richt lijnen gepubliceerd voor een migratie tijdlijn voor het verplaatsen naar Servicetoewijzing.
+>
+>Nieuwe klanten moeten de [servicetoewijzing-oplossing](service-map.md) of [Azure monitor voor VM's](vminsights-overview.md)installeren.  De Servicetoewijzing gegevensset is vergelijkbaar met Wired data.  Azure Monitor voor VM's bevat de Servicetoewijzing gegevensset met aanvullende prestatie gegevens en-functies voor analyse. 
+
 
 Azure Monitor registreert standaard gegevens voor CPU-, geheugen-, schijf-en netwerk prestatie gegevens van tellers die zijn ingebouwd in Windows en Linux, evenals andere prestatie meter items die u kunt opgeven. Het verzamelen van netwerk- en andere gegevens wordt voor elke agent in realtime uitgevoerd, met inbegrip van subnetten en protocollen op toepassingsniveau die door de computer worden gebruikt.  Wire Data kijkt naar netwerkgegevens op toepassingsniveau, niet naar die op de TCP-transportlaag. De oplossing kijkt niet naar afzonderlijke ACK's en SYN's. Zodra de handshake is voltooid, wordt dit als een live-verbinding beschouwd en wordt deze gemarkeerd als verbonden. Die verbinding blijft actief zolang beide zijden het erover eens zijn dat de socket geopend is en gegevens heen en weer kunnen worden gestuurd. Zodra de verbinding is gesloten, wordt deze als losgekoppeld gemarkeerd.  Daarom wordt alleen de bandbreedte van voltooide pakketten meegeteld en wordt niet gemeld of pakketten opnieuw of niet zijn verzonden.
 
@@ -51,7 +54,7 @@ Maar aangezien u metagegevens bekijkt, is dat niet per se nuttig voor een diepga
 
 Wire Data haalt zijn gegevens uit de Microsoft-agent voor afhankelijkheden. De Dependency Agent is afhankelijk van de Log Analytics-agent voor de verbindingen met Azure Monitor. Dit betekent dat de Log Analytics agent moet zijn geïnstalleerd en geconfigureerd op een server met de afhankelijkheids agent. De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door Wire Data.
 
-| **Verbonden bron** | **Geboden** | **Beschrijving** |
+| **Verbonden bron** | **Ondersteund** | **Beschrijving** |
 | --- | --- | --- |
 | Windows-agents | Ja | Wire Data analyseert en verzamelt gegevens van Windows-agentcomputers. <br><br> Naast de Log Analytics- [agent voor Windows](../platform/agent-windows.md)vereist Windows-agents de micro soft-afhankelijkheids agent. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
 | Linux-agents | Ja | Wire Data analyseert en verzamelt gegevens van Linux-agentcomputers.<br><br> Naast de Log Analytics- [agent voor Linux is voor](../learn/quick-collect-linux-computer.md)Linux-agents de micro soft-afhankelijkheids agent vereist. Zie de [ondersteunde besturingssystemen](vminsights-enable-overview.md#supported-operating-systems) voor een volledige lijst met versies van besturingssystemen. |
@@ -110,7 +113,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 7.4 | 3.10.0-693 |
 | 7,5 | 3.10.0-862 |
@@ -118,20 +121,20 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 6,9 | 2.6.32-696 |
 | 6,10 | 2.6.32-754 |
 
 ##### <a name="centosplus"></a>CentOSPlus
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | 6,9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
 | 6,10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ##### <a name="ubuntu-server"></a>Ubuntu Server
 
-| Versie van het besturingssysteem | Kernelversie |
+| Besturingssysteemversie | Kernelversie |
 |:--|:--|
 | Ubuntu 18.04 | kernel 4,15.\*<br>4,18 * |
 | Ubuntu 16.04.3 | kernel 4,15. * |
@@ -140,20 +143,20 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enter prise server
 
-| Versie van het besturingssysteem | Kernelversie
+| Besturingssysteemversie | Kernelversie
 |:--|:--|
 | 11 SP4 | 3,0. * |
 
 ##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enter prise server
 
-| Versie van het besturingssysteem | Kernelversie
+| Besturingssysteemversie | Kernelversie
 |:--|:--|
 | 12 SP2 | 4,4. * |
 | 12 SP3 | 4,4. * |
 
 ### <a name="dependency-agent-downloads"></a>Down loads van afhankelijkheids agent
 
-| File | OS | Versie | SHA-256 |
+| Bestand | Besturingssysteem | Versie | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -392,7 +395,7 @@ Een record met het type _WireData_ is gemaakt voor elk type invoergegevens. Wire
 | IPVersion | IP-versie |
 | Richting | Binnenkomend of uitgaand |
 | MaliciousIP | IP-adres van een bekende schadelijke bron |
-| Severity | Ernst van mogelijke malware |
+| Ernst | Ernst van mogelijke malware |
 | RemoteIPCountry | Land/regio van het externe IP-adres |
 | ManagementGroupName | Naam van de Operations Manager-beheergroep |
 | SourceSystem | Bron waar gegevens zijn verzameld |

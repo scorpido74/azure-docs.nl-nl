@@ -6,15 +6,17 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: 5b3cf31fd5388c1d558726ab7c01b9946e826c23
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: de3c7b46c048ff5575f3e9890b3c736ed7c71a61
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654314"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418016"
 ---
+[Referentie documentatie](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  Voor [beeld](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-predict-with-rest/Predict.java)
+
 ## <a name="prerequisites"></a>Vereisten
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
@@ -38,148 +40,25 @@ Gebruik Java om het [Voorspellings eindpunt](https://aka.ms/luis-apim-v3-predict
 
 1. Kopieer de volgende code om een klasse te maken in een bestand met de naam `Predict.java`:
 
-    ```java
-    import java.io.*;
-    import java.net.URI;
-    import org.apache.http.HttpEntity;
-    import org.apache.http.HttpResponse;
-    import org.apache.http.client.HttpClient;
-    import org.apache.http.client.methods.HttpGet;
-    import org.apache.http.client.utils.URIBuilder;
-    import org.apache.http.impl.client.HttpClients;
-    import org.apache.http.util.EntityUtils;
+    [!code-java[Code snippet](~/cognitive-services-quickstart-code/java/LUIS/java-predict-with-rest/Predict.java)]
 
-    // To compile, execute this command at the console:
-    //      Windows: javac -cp ";lib/*" Predict.java
-    //      macOs: javac -cp ":lib/*" Predict.java
-    //      Linux: javac -cp ":lib/*" Predict.java
+1. Vervang de waarden die beginnen met `YOUR-` met uw eigen waarden.
 
-    // To run, execute this command at the console:
-    //      Windows: java -cp ";lib/*" Predict
-    //      macOs: java -cp ":lib/*" Predict
-    //      Linux: java -cp ":lib/*" Predict
-
-    public class Predict {
-
-        public static void main(String[] args)
-        {
-            HttpClient httpclient = HttpClients.createDefault();
-
-            try
-            {
-                //////////
-                // Values to modify.
-
-                // YOUR-APP-ID: The App ID GUID found on the www.luis.ai Application Settings page.
-                String AppId = "93066630-3523-4df6-b05f-2b6cd9d46ea1";
-
-                // YOUR-PREDICTION-KEY: Your LUIS authoring key, 32 character value.
-                String Key = "9c0c8b2196ae4f95818b006b4de05cc7";
-
-                // YOUR-PREDICTION-ENDPOINT: Replace this with your authoring key endpoint.
-                // For example, "https://westus.api.cognitive.microsoft.com/"
-                String Endpoint = "https://westus.api.cognitive.microsoft.com/";
-
-                // The utterance you want to use.
-                String Utterance = "I want two large pepperoni pizzas on thin crust please";
-                //////////
-
-                // Begin building the endpoint URL.
-                URIBuilder endpointURLbuilder = new URIBuilder(Endpoint + "luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
-
-                // Create the query string params.
-                endpointURLbuilder.setParameter("query", Utterance);
-                endpointURLbuilder.setParameter("subscription-key", Key);
-                endpointURLbuilder.setParameter("show-all-intents", "true");
-                endpointURLbuilder.setParameter("verbose", "true");
-
-                // Create the prediction endpoint URL.
-                URI endpointURL = endpointURLbuilder.build();
-
-                // Create the HTTP object from the URL.
-                HttpGet request = new HttpGet(endpointURL);
-
-                // Access the LUIS endpoint to analyze the text utterance.
-                HttpResponse response = httpclient.execute(request);
-
-                // Get the response.
-                HttpEntity entity = response.getEntity();
-
-                // Print the response on the console.
-                if (entity != null)
-                {
-                    System.out.println(EntityUtils.toString(entity));
-                }
-            }
-
-            // Display errors if they occur.
-            catch (Exception e)
-            {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-    ```
-
-1. Vervang de `YOUR-KEY` waarden en door `YOUR-ENDPOINT` uw eigen Voorspellings **runtime** sleutel en eind punt.
-
-    |Informatie|Doel|
+    |Informatie|Functie|
     |--|--|
     |`YOUR-APP-ID`|Uw app-ID. Bevindt zich op de pagina LUIS-Portal, toepassings instellingen voor uw app.
     |`YOUR-PREDICTION-KEY`|Uw 32-teken Voorspellings sleutel. Bevindt zich op de Azure-resources-pagina van de LUIS-portal voor uw app.
     |`YOUR-PREDICTION-ENDPOINT`| Het eind punt voor de voor Spellings-URL. Bevindt zich op de Azure-resources-pagina van de LUIS-portal voor uw app.<br>Bijvoorbeeld `https://westus.api.cognitive.microsoft.com/`.|
 
-1. Compileer het Java-programma vanaf de opdracht regel:
+1. Compileer het Java-programma vanaf de opdracht regel.
 
-    ::: zone pivot="client-operating-system-linux"
-
-    ```console
-    javac -cp ":lib/*" Predict.java
-    ```
-
-    ::: zone-end
-
-    ::: zone pivot="client-operating-system-macos"
-
-    ```console
-    javac -cp ":lib/*" Predict.java
-    ```
-
-    ::: zone-end
-
-    ::: zone pivot="client-operating-system-windows"
-
-    ```console
-    javac -cp ";lib/*" Predict.java
-    ```
-
-    ::: zone-end
+    * Als u Windows gebruikt, gebruikt u deze opdracht:`javac -cp ";lib/*" Predict.java`
+    * Als u macOS of Linux gebruikt, gebruikt u deze opdracht:`javac -cp ":lib/*" Predict.java`
 
 1. Voer het Java-programma uit vanaf de opdracht regel:
 
-    ::: zone pivot="client-operating-system-linux"
-
-    ```console
-    java -cp ":lib/*" Predict
-    ```
-
-    ::: zone-end
-
-    ::: zone pivot="client-operating-system-macos"
-
-    ```console
-    java -cp ":lib/*" Predict
-    ```
-
-    ::: zone-end
-
-    ::: zone pivot="client-operating-system-windows"
-
-    ```console
-    java -cp ";lib/*" Predict
-    ```
-
-    ::: zone-end
+    * Als u Windows gebruikt, gebruikt u deze opdracht:`java -cp ";lib/*" Predict`
+    * Als u macOS of Linux gebruikt, gebruikt u deze opdracht:`java -cp ":lib/*" Predict`
 
 1. Bekijk het Voorspellings antwoord dat wordt geretourneerd als JSON:
 

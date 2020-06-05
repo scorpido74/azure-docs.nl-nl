@@ -1,19 +1,19 @@
 ---
-title: Include-bestand
-description: Include-bestand
+title: bestand opnemen
+description: bestand opnemen
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78262069"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436195"
 ---
 Azure Managed disks biedt momenteel vier schijf typen, elk type is gericht op specifieke klant scenario's.
 
@@ -26,7 +26,7 @@ De volgende tabel bevat een vergelijking van ultra disks, Premium-schijven (Soli
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
 |Scenario   |I/o-intensieve workloads, zoals [SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, bedrijfstoepassingen die weinig wordt gebruikt en dev/test   |Back-up, niet-kritiek, incidentele toegang   |
 |Maximale schijfgrootte   |65.536 gibibyte (GiB)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
-|Maximale doorvoer   |2000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximale doorvoer   |2.000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Max. IOPS   |160.000    |20.000   |6.000   |2.000   |
 
 ## <a name="ultra-disk"></a>Ultraschijven

@@ -18,6 +18,6 @@ Geef via het forum [User Voice](https://go.microsoft.com/fwlink/?linkid=698785&c
 * [Coderen en verwerken](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)
 * [Live streamen](https://feedback.azure.com/forums/169396-media-services/category/144414-live-streaming/)
 * [Media Analytics](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
-* [Azure Portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
+* [Azure-portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API en platform](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 * [Video-on-Demand-streaming](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)

@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780739"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431928"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>De implementatie van uw IoT Edge oplossing in productie voorbereiden
 
@@ -129,7 +129,7 @@ De standaard waarde van de para meter timeToLiveSecs is 7200 seconden, die twee 
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Geen debug-versies van module-installatie kopieën gebruiken
 
-Wanneer u overstapt van test scenario's naar productie scenario's, moet u de configuraties voor fout opsporing verwijderen uit implementatie manifesten. Controleer of geen enkele module installatie kopieën in de implementatie manifesten het ** \.achtervoegsel debug** hebben. Als u opties voor het maken hebt toegevoegd om poorten in de modules voor fout opsporing weer te geven, moet u deze opties voor maken ook verwijderen.
+Wanneer u overstapt van test scenario's naar productie scenario's, moet u de configuraties voor fout opsporing verwijderen uit implementatie manifesten. Controleer of geen enkele module installatie kopieën in de implementatie manifesten het achtervoegsel ** \. debug** hebben. Als u opties voor het maken hebt toegevoegd om poorten in de modules voor fout opsporing weer te geven, moet u deze opties voor maken ook verwijderen.
 
 ## <a name="container-management"></a>Container beheer
 
@@ -181,7 +181,7 @@ Haal de installatie kopieën op met de docker-pull-opdracht die u in uw privé r
 | [Azure IoT Edge-agent](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
 
-Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het bestand Deployment. Temp late. json voor de edgeAgent-en edgeHub-systeem modules bijwerkt. Vervang `mcr.microsoft.com` door de naam en server van uw REGI ster voor beide modules.
+Zorg er vervolgens voor dat u de afbeeldings verwijzingen in het bestand Deployment. Temp late. json voor de edgeAgent-en edgeHub-systeem modules bijwerkt. Vervang door `mcr.microsoft.com` de naam en server van uw REGI ster voor beide modules.
 
 * edgeAgent:
 
@@ -210,15 +210,15 @@ Als uw netwerk installatie vereist dat u verbindingen die zijn gemaakt vanaf IoT
 * **IOT Edge hub** opent één permanente AMQP-verbinding of meerdere MQTT-verbindingen met IOT hub, mogelijk via websockets.
 * **IOT Edge-daemon** maakt periodieke https-aanroepen naar IOT hub.
 
-In alle drie de gevallen komt de DNS-naam overeen met \*het patroon. Azure-devices.net.
+In alle drie de gevallen komt de DNS-naam overeen met het patroon \* . Azure-devices.net.
 
 Daarnaast maakt de **container-engine** aanroepen van container registers via https. De DNS-naam is mcr.microsoft.com om de installatie kopieën van de IoT Edge-runtime op te halen. De container-Engine maakt verbinding met andere registers zoals geconfigureerd in de implementatie.
 
 Deze controle lijst is een start punt voor firewall regels:
 
-   | URL (\* = Joker teken) | Uitgaande TCP-poorten | Gebruik |
+   | URL ( \* = Joker teken) | Uitgaande TCP-poorten | Gebruik |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Micro soft container Registry |
+   | mcr.microsoft.com  | 443 | Micro soft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS-toegang (optioneel) |
    | \*. azurecr.io | 443 | Persoonlijke en container registers van derden |
    | \*.blob.core.windows.net | 443 | Azure Container Registry afbeeldings verschillen van Blob-opslag downloaden |
@@ -226,6 +226,10 @@ Deze controle lijst is een start punt voor firewall regels:
    | \*. docker.io  | 443 | Toegang voor docker hub (optioneel) |
 
 Sommige van deze firewall regels worden overgenomen van Azure Container Registry. Zie [regels configureren voor toegang tot een Azure container Registry achter een firewall](../container-registry/container-registry-firewall-access-rules.md)voor meer informatie.
+
+> [!NOTE]
+> Om een consistente FQDN-waarde tussen de REST-en data-eind punten te bieden, vanaf **15 juni 2020** wordt het gegevens eindpunt van micro soft container Registry gewijzigd van `*.cdn.mscr.io` in`*.data.mcr.microsoft.com`  
+> Zie [configuratie van firewall regels voor micro soft container Registry-client](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) voor meer informatie
 
 Als u uw firewall niet wilt configureren om toegang tot open bare container registers toe te staan, kunt u installatie kopieën opslaan in uw persoonlijke container register, zoals beschreven in [runtime-containers voor opslag in uw persoonlijke REGI ster](#store-runtime-containers-in-your-private-registry).
 
@@ -241,7 +245,7 @@ Als uw apparaten worden geïmplementeerd in een netwerk dat gebruikmaakt van een
 
 ### <a name="set-up-logs-and-diagnostics"></a>Logboeken en diagnostische gegevens instellen
 
-In Linux gebruikt de IoT Edge-daemon journalen als het standaard stuur programma voor logboek registratie. U kunt het opdracht regel programma `journalctl` gebruiken om de daemon-logboeken te doorzoeken. In Windows gebruikt de IoT Edge-daemon Power shell-diagnose. Gebruiken `Get-IoTEdgeLog` om logboeken vanuit de daemon te doorzoeken. IoT Edge-modules gebruiken het JSON-stuur programma voor logboek registratie. Dit is de standaard instelling.  
+In Linux gebruikt de IoT Edge-daemon journalen als het standaard stuur programma voor logboek registratie. U kunt het opdracht regel programma gebruiken `journalctl` om de daemon-logboeken te doorzoeken. In Windows gebruikt de IoT Edge-daemon Power shell-diagnose. Gebruiken `Get-IoTEdgeLog` om logboeken vanuit de daemon te doorzoeken. IoT Edge-modules gebruiken het JSON-stuur programma voor logboek registratie. Dit is de standaard instelling.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -255,7 +259,7 @@ De Moby-container engine stelt standaard de limieten voor de container logboek g
 
 #### <a name="option-set-global-limits-that-apply-to-all-container-modules"></a>Optie: globale limieten instellen die van toepassing zijn op alle container modules
 
-U kunt de grootte van alle container logboeken beperken in de logboek opties van de container-engine. In het volgende voor beeld wordt het logboek `json-file` stuur programma ingesteld op (aanbevolen) met limieten voor grootte en aantal bestanden:
+U kunt de grootte van alle container logboeken beperken in de logboek opties van de container-engine. In het volgende voor beeld wordt het logboek stuur programma ingesteld op `json-file` (aanbevolen) met limieten voor grootte en aantal bestanden:
 
 ```JSON
 {
@@ -267,7 +271,7 @@ U kunt de grootte van alle container logboeken beperken in de logboek opties van
 }
 ```
 
-Voeg deze gegevens toe aan een bestand met de naam `daemon.json` en plaats het op de juiste locatie voor het platform van uw apparaat.
+Voeg deze gegevens toe aan een bestand met `daemon.json` de naam en plaats het op de juiste locatie voor het platform van uw apparaat.
 
 | Platform | Locatie |
 | -------- | -------- |
@@ -296,7 +300,7 @@ U kunt dit doen in de **createOptions** van elke module. Bijvoorbeeld:
 
 #### <a name="additional-options-on-linux-systems"></a>Aanvullende opties op Linux-systemen
 
-* Configureer de container-engine voor het verzenden `systemd` van Logboeken `journald` naar het [logboek](https://docs.docker.com/config/containers/logging/journald/) door in te stellen als het standaard stuur programma voor logboek registratie.
+* Configureer de container-engine voor het verzenden van logboeken naar `systemd` het [logboek](https://docs.docker.com/config/containers/logging/journald/) door in te stellen `journald` als het standaard stuur programma voor logboek registratie.
 
 * Verwijder regel matig oude logboeken van uw apparaat door een logrotate-hulp programma te installeren. Gebruik de volgende bestands specificatie:
 

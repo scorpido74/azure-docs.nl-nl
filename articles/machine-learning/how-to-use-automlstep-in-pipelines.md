@@ -5,17 +5,17 @@ description: Met de AutoMLStep kunt u geautomatiseerde machine learning gebruike
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 04/28/2020
-ms.openlocfilehash: 9bf17512d0b14c7106101d98598e2914020afc7a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 94e45e2c5aae1633ce206fe56fe94cb9d03f9f67
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857947"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431426"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Automatische ML gebruiken in een Azure Machine Learning pijp lijn in python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Met de functie voor automatische ML van Azure Machine Learning kunt u hoogwaardi
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Een Azure Machine Learning-werkruimte. Zie [een Azure machine learning-werk ruimte maken](how-to-manage-workspace.md).  
 
@@ -32,15 +32,15 @@ Met de functie voor automatische ML van Azure Machine Learning kunt u hoogwaardi
 
 ## <a name="review-automated-mls-central-classes"></a>Bekijk de centrale klassen van automatische ML
 
-Automatische ML in een pijp lijn wordt vertegenwoordigd door een `AutoMLStep` object. De `AutoMLStep` klasse is een subklasse van `PipelineStep`. Een grafiek van `PipelineStep` objecten definieert een `Pipeline`.
+Automatische ML in een pijp lijn wordt vertegenwoordigd door een `AutoMLStep` object. De `AutoMLStep` klasse is een subklasse van `PipelineStep` . Een grafiek van `PipelineStep` objecten definieert een `Pipeline` .
 
-Er zijn verschillende subklassen van `PipelineStep`. Naast de `AutoMLStep`wordt in dit artikel een `PythonScriptStep` voor bereiding van gegevens weer gegeven en een andere voor het registreren van het model.
+Er zijn verschillende subklassen van `PipelineStep` . Naast de wordt in `AutoMLStep` dit artikel een `PythonScriptStep` voor bereiding van gegevens weer gegeven en een andere voor het registreren van het model.
 
-De voorkeurs manier _om gegevens naar_ een ml-pijp lijn te verplaatsen, `Dataset` is met objecten. Als u gegevens _tussen_ stappen wilt verplaatsen, is de voorkeurs `PipelineData` manier met objecten. Voor gebruik met `AutoMLStep`moet het `PipelineData` object worden omgezet in een `PipelineOutputTabularDataset` -object. Zie [invoer-en uitvoer gegevens van ml-pijp lijnen](how-to-move-data-in-out-of-pipelines.md)voor meer informatie.
+De voorkeurs manier _om gegevens naar_ een ml-pijp lijn te verplaatsen, is met `Dataset` objecten. Als u gegevens _tussen_ stappen wilt verplaatsen, is de voorkeurs manier met `PipelineData` objecten. Voor gebruik met `AutoMLStep` `PipelineData` moet het object worden omgezet in een- `PipelineOutputTabularDataset` object. Zie [invoer-en uitvoer gegevens van ml-pijp lijnen](how-to-move-data-in-out-of-pipelines.md)voor meer informatie.
 
-De `AutoMLStep` is geconfigureerd via een `AutoMLConfig` -object. `AutoMLConfig`is een flexibele klasse, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
+De `AutoMLStep` is geconfigureerd via een- `AutoMLConfig` object. `AutoMLConfig`is een flexibele klasse, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#configure-your-experiment-settings). 
 
-Een `Pipeline` uitvoering in een `Experiment`. De pijp lijn `Run` heeft voor elke stap een onderliggend `StepRun`element. De uitvoer van de automatische ML `StepRun` zijn de metrische gegevens over de training en het hoogste model.
+Een `Pipeline` uitvoering in een `Experiment` . De pijp lijn `Run` heeft voor elke stap een onderliggend element `StepRun` . De uitvoer van de automatische ML `StepRun` zijn de metrische gegevens over de training en het hoogste model.
 
 Om zaken concreet te maken, wordt in dit artikel een eenvoudige pijp lijn voor een classificatie taak gemaakt. De taak wordt voor speld op Titanic, maar de gegevens of taak worden niet besproken, behalve bij het door geven.
 
@@ -68,7 +68,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-De code meldt zich eerst aan bij de Azure Machine Learning werkruimte die is gedefinieerd in **config. json** (Zie [zelf studie: aan de slag met het maken van uw eerste ml-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)). Als er nog geen gegevensset met de `'titanic_ds'` naam geregistreerd is, wordt er een gemaakt. Met de code worden CSV-gegevens van het web gedownload, worden deze `TabularDataset` gebruikt voor het instantiëren van een en wordt de gegevensset vervolgens geregistreerd bij de werk ruimte. Ten slotte wijst de `Dataset.get_by_name()` functie de `Dataset` aan toe `titanic_ds`. 
+De code meldt zich eerst aan bij de Azure Machine Learning werkruimte die is gedefinieerd in **config. json** (Zie [zelf studie: aan de slag met het maken van uw eerste ml-experiment met de python-SDK](tutorial-1st-experiment-sdk-setup.md)). Als er nog geen gegevensset met de naam `'titanic_ds'` geregistreerd is, wordt er een gemaakt. Met de code worden CSV-gegevens van het web gedownload, worden deze gebruikt voor het instantiëren van een `TabularDataset` en wordt de gegevensset vervolgens geregistreerd bij de werk ruimte. Ten slotte wijst de functie `Dataset.get_by_name()` de `Dataset` aan toe `titanic_ds` . 
 
 ### <a name="configure-your-storage-and-compute-target"></a>Uw opslag en het reken doel configureren
 
@@ -97,15 +97,15 @@ if not compute_name in ws.compute_targets :
 compute_target = ws.compute_targets[compute_name]
 ```
 
-De tussenliggende gegevens tussen de gegevens voorbereiding en de automatische ML stap kunnen worden opgeslagen in de standaard gegevens opslag van de werk ruimte, zodat we niet meer op het `get_default_datastore()` `Workspace` object hoeven te bellen. 
+De tussenliggende gegevens tussen de gegevens voorbereiding en de automatische ML stap kunnen worden opgeslagen in de standaard gegevens opslag van de werk ruimte, zodat we niet meer `get_default_datastore()` op het object hoeven te bellen `Workspace` . 
 
 Daarna controleert de code of het AML-reken doel `'cpu-cluster'` al bestaat. Als dat niet het geval is, geeft u op dat er een klein, op CPU gebaseerd reken doel moet worden uitgevoerd. Als u van plan bent om de uitgebreide leer functies van de ML te gebruiken (bijvoorbeeld tekst parametrisatie met DNN-ondersteuning), kiest u een compute met krachtige GPU-ondersteuning, zoals wordt beschreven in [grootten voor GPU geoptimaliseerde virtuele machines](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu). 
 
-De code blokken totdat het doel is ingericht en vervolgens een aantal details van het zojuist gemaakte Compute-doel afdrukt. Ten slotte wordt het benoemde Compute-doel opgehaald uit de werk ruimte en `compute_target`toegewezen aan. 
+De code blokken totdat het doel is ingericht en vervolgens een aantal details van het zojuist gemaakte Compute-doel afdrukt. Ten slotte wordt het benoemde Compute-doel opgehaald uit de werk ruimte en toegewezen aan `compute_target` . 
 
 ### <a name="configure-the-training-run"></a>De trainings uitvoering configureren
 
-De volgende stap zorgt ervoor dat de uitvoering van de externe training alle afhankelijkheden heeft die vereist zijn voor de trainings stappen. Afhankelijkheden en de runtime context worden ingesteld door een `RunConfiguration` -object te maken en te configureren. 
+De volgende stap zorgt ervoor dat de uitvoering van de externe training alle afhankelijkheden heeft die vereist zijn voor de trainings stappen. Afhankelijkheden en de runtime context worden ingesteld door een-object te maken en te configureren `RunConfiguration` . 
 
 ```python
 from azureml.core.runconfig import RunConfiguration
@@ -203,15 +203,15 @@ Het bovenstaande code fragment is een volledige, maar minimale, voor beeld van h
 
 De verschillende `prepare_` functies in het bovenstaande code fragment wijzigen de relevante kolom in de invoer gegevensset. Deze functies werken aan de gegevens zodra deze zijn gewijzigd in een `DataFrame` object Panda. In elk geval worden ontbrekende gegevens gevuld met representatieve wille keurige gegevens of categorische gegevens die duiden op ' Unknown '. Op tekst gebaseerde categorische-gegevens worden toegewezen aan gehele getallen. Kolommen die niet meer nodig zijn, worden overschreven of verwijderd. 
 
-Nadat de code de functies voor gegevens voorbereiding heeft gedefinieerd, parseert de code het argument invoer. Dit is het pad waarnaar we onze gegevens willen schrijven. (Deze waarden worden bepaald door `PipelineData` objecten die worden besproken in de volgende stap.) Met de code wordt de `'titanic_cs'` `Dataset`registratie opgehaald, geconverteerd naar een Panda `DataFrame`en worden de verschillende functies voor gegevens voorbereiding aangeroepen. 
+Nadat de code de functies voor gegevens voorbereiding heeft gedefinieerd, parseert de code het argument invoer. Dit is het pad waarnaar we onze gegevens willen schrijven. (Deze waarden worden bepaald door `PipelineData` objecten die worden besproken in de volgende stap.) Met de code wordt de registratie opgehaald `'titanic_cs'` `Dataset` , geconverteerd naar een Panda `DataFrame` en worden de verschillende functies voor gegevens voorbereiding aangeroepen. 
 
-Omdat de `output_path` is volledig gekwalificeerd, wordt de `os.makedirs()` functie gebruikt om de mapstructuur voor te bereiden. Op dit moment kunt u gebruiken `DataFrame.to_csv()` om de uitvoer gegevens te schrijven, maar Parquet-bestanden zijn efficiënter. Deze efficiency is waarschijnlijk niet irrelevant met een dergelijke kleine gegevensset, maar het gebruik **PyArrow** van de PyArrow `from_pandas()` en `write_table()` -functies van het pakket zijn slechts een paar toetsaanslagen dan `to_csv()`.
+Omdat de `output_path` is volledig gekwalificeerd, wordt de functie `os.makedirs()` gebruikt om de mapstructuur voor te bereiden. Op dit moment kunt u gebruiken `DataFrame.to_csv()` om de uitvoer gegevens te schrijven, maar Parquet-bestanden zijn efficiënter. Deze efficiency is waarschijnlijk niet irrelevant met een dergelijke kleine gegevensset, maar het gebruik van de **PyArrow** en-functies van het pakket `from_pandas()` `write_table()` zijn slechts een paar toetsaanslagen dan `to_csv()` .
 
 Parquet-bestanden worden standaard ondersteund door de automatische ML-stap die hieronder wordt beschreven, dus er is geen speciale verwerking vereist om deze te gebruiken. 
 
-### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>De pijp lijn stap voor gegevens voorbereiding schrijven`PythonScriptStep`()
+### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>De pijp lijn stap voor gegevens voorbereiding schrijven ( `PythonScriptStep` )
 
-De hierboven beschreven code voor gegevens voorbereiding moet worden gekoppeld aan `PythonScripStep` een object dat met een pijp lijn moet worden gebruikt. Het pad waarnaar de uitvoer van de Parquet-gegevens voorbereiding wordt geschreven, wordt gegenereerd `PipelineData` door een object. De bronnen die eerder `ComputeTarget` `RunConfig` `'titanic_ds' Dataset` zijn voor bereid, zoals de, en worden gebruikt om de specificatie te volt ooien.
+De hierboven beschreven code voor gegevens voorbereiding moet worden gekoppeld aan een `PythonScripStep` object dat met een pijp lijn moet worden gebruikt. Het pad waarnaar de uitvoer van de Parquet-gegevens voorbereiding wordt geschreven, wordt gegenereerd door een `PipelineData` object. De bronnen die eerder zijn voor bereid, zoals de `ComputeTarget` , `RunConfig` en `'titanic_ds' Dataset` worden gebruikt om de specificatie te volt ooien.
 
 ```python
 from azureml.pipeline.core import PipelineData
@@ -232,15 +232,15 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-Het `prepped_data_path` object is van het `PipelineOutputFileDataset`type. U ziet dat deze zowel in de `arguments` als `outputs` -argumenten is opgegeven. Als u de vorige stap bekijkt, ziet u dat in de code voor gegevens voorbereiding de waarde van het argument `'--output_path'` het bestandspad is waarnaar het Parquet-bestand is geschreven. 
+Het `prepped_data_path` object is van het type `PipelineOutputFileDataset` . U ziet dat deze zowel in de als-argumenten is opgegeven `arguments` `outputs` . Als u de vorige stap bekijkt, ziet u dat in de code voor gegevens voorbereiding de waarde van het argument `'--output_path'` het bestandspad is waarnaar het Parquet-bestand is geschreven. 
 
 ## <a name="train-with-automlstep"></a>Trainen met AutoMLStep
 
-Het configureren van een automatische ML-pijplijn stap wordt uitgevoerd `AutoMLConfig` met de-klasse. Deze flexibele klasse wordt beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Gegevens invoer en-uitvoer zijn de enige aspecten van de configuratie die speciale aandacht vereisen in een ML-pijp lijn. De invoer en uitvoer `AutoMLConfig` voor in pijp lijnen worden hieronder uitvoerig besproken. Behalve gegevens is een voor deel van ML-pijp lijnen de mogelijkheid om verschillende reken doelen te gebruiken voor verschillende stappen. U kunt ervoor kiezen om een krachtiger `ComputeTarget` te gebruiken voor het geautomatiseerde ml proces. Dit is net zo eenvoudig als het toewijzen van een `RunConfiguration` krachtiger `AutoMLConfig` aan de `run_configuration` para meter van het object.
+Het configureren van een automatische ML-pijplijn stap wordt uitgevoerd met de- `AutoMLConfig` klasse. Deze flexibele klasse wordt beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Gegevens invoer en-uitvoer zijn de enige aspecten van de configuratie die speciale aandacht vereisen in een ML-pijp lijn. De invoer en uitvoer voor `AutoMLConfig` in pijp lijnen worden hieronder uitvoerig besproken. Behalve gegevens is een voor deel van ML-pijp lijnen de mogelijkheid om verschillende reken doelen te gebruiken voor verschillende stappen. U kunt ervoor kiezen om een krachtiger te gebruiken `ComputeTarget` voor het geautomatiseerde ml proces. Dit is net zo eenvoudig als het toewijzen van een krachtiger `RunConfiguration` aan de `AutoMLConfig` para meter van het object `run_configuration` .
 
 ### <a name="send-data-to-automlstep"></a>Gegevens verzenden naar`AutoMLStep`
 
-In een ML-pijp lijn moeten de invoer gegevens een `Dataset` object zijn. De hoogst presterende manier is om de invoer gegevens op te geven in `PipelineOutputTabularDataset` de vorm van objecten. U maakt een object van dat type met de `parse_parquet_files()` of `parse_delimited_files()` op een `PipelineOutputFileDataset`, zoals het `prepped_data_path` object.
+In een ML-pijp lijn moeten de invoer gegevens een `Dataset` object zijn. De hoogst presterende manier is om de invoer gegevens op te geven in de vorm van `PipelineOutputTabularDataset` objecten. U maakt een object van dat type met de `parse_parquet_files()` of `parse_delimited_files()` op een `PipelineOutputFileDataset` , zoals het `prepped_data_path` object.
 
 ```python
 # type(prepped_data_path) == PipelineOutputFileDataset
@@ -248,9 +248,9 @@ In een ML-pijp lijn moeten de invoer gegevens een `Dataset` object zijn. De hoog
 prepped_data = prepped_data_path.parse_parquet_files(file_extension=None)
 ```
 
-Met het bovenstaande code fragment maakt u een `PipelineOutputTabularDataset` hoge uitvoering `PipelineOutputFileDataset` van de uitvoer van de stap voor het voorbereiden van gegevens.
+Met het bovenstaande code fragment maakt u een hoge uitvoering van `PipelineOutputTabularDataset` de `PipelineOutputFileDataset` uitvoer van de stap voor het voorbereiden van gegevens.
 
-Een andere optie is het `Dataset` gebruik van objecten die zijn geregistreerd in de werk ruimte:
+Een andere optie is `Dataset` het gebruik van objecten die zijn geregistreerd in de werk ruimte:
 
 ```python
 prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
@@ -267,7 +267,7 @@ Vergelijking van de twee technieken:
 | Registratie`Dataset` | Lagere prestaties |
 | | Kunnen op verschillende manieren worden gegenereerd | 
 | | Gegevens blijven behouden en worden weer gegeven in de werk ruimte |
-| | [Notitie blok met `Dataset` geregistreerde techniek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
+| | [Notitie blok met geregistreerde `Dataset` techniek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/continuous-retraining/auto-ml-continuous-retraining.ipynb)
 
 ### <a name="specify-automated-ml-outputs"></a>Automatische ML-uitvoer opgeven
 
@@ -286,11 +286,11 @@ model_data = PipelineData(name='best_model_data',
                            training_output=TrainingOutput(type='Model'))
 ```
 
-Met het bovenstaande fragment maakt u `PipelineData` de twee objecten voor de metrische gegevens en de model uitvoer. Deze worden aangeduid met de naam, toegewezen aan de standaard gegevens opslag die eerder is opgehaald, `type` en `TrainingOutput` gekoppeld aan `AutoMLStep`het specifieke van de. Omdat we deze `pipeline_output_name` `PipelineData` objecten toewijzen, zijn hun waarden niet alleen beschikbaar vanuit de afzonderlijke pijplijn stap, maar van de pijp lijn als geheel, zoals hieronder wordt beschreven in de sectie "pijp lijn resultaten onderzoeken". 
+Met het bovenstaande fragment maakt u de twee `PipelineData` objecten voor de metrische gegevens en de model uitvoer. Deze worden aangeduid met de naam, toegewezen aan de standaard gegevens opslag die eerder is opgehaald, en gekoppeld aan het specifieke `type` van `TrainingOutput` de `AutoMLStep` . Omdat we `pipeline_output_name` deze objecten toewijzen `PipelineData` , zijn hun waarden niet alleen beschikbaar vanuit de afzonderlijke pijplijn stap, maar van de pijp lijn als geheel, zoals hieronder wordt beschreven in de sectie "pijp lijn resultaten onderzoeken". 
 
 ### <a name="configure-and-create-the-automated-ml-pipeline-step"></a>De geautomatiseerde pijp lijn-stap voor ML configureren en maken
 
-Zodra de invoer en uitvoer zijn gedefinieerd, is het tijd om de `AutoMLConfig` en `AutoMLStep`toe te voegen. De details van de configuratie zijn afhankelijk van uw taak, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Voor de taak Titanic overlevings classificatie ziet u in het volgende code fragment een eenvoudige configuratie.
+Zodra de invoer en uitvoer zijn gedefinieerd, is het tijd om de en toe te voegen `AutoMLConfig` `AutoMLStep` . De details van de configuratie zijn afhankelijk van uw taak, zoals beschreven in [automatische ml experimenten configureren in python](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train). Voor de taak Titanic overlevings classificatie ziet u in het volgende code fragment een eenvoudige configuratie.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -320,33 +320,33 @@ train_step = AutoMLStep(name='AutoML_Classification',
     outputs=[metrics_data,model_data],
     allow_reuse=True)
 ```
-Het fragment bevat een Idiom die meestal wordt `AutoMLConfig`gebruikt met. Argumenten die meer Hydraulica (afstemming-ish) zijn, worden in een afzonderlijke woorden lijst opgegeven, terwijl de waarden die kleiner zijn dan de `AutoMLConfig` waarde die u wilt wijzigen, rechtstreeks in de constructor worden opgegeven. In dit geval `automl_settings` geeft u een korte uitvoering op: de uitvoering wordt gestopt na slechts twee iteraties of 15 minuten, afhankelijk van wat het eerste komt.
+Het fragment bevat een Idiom die meestal wordt gebruikt met `AutoMLConfig` . Argumenten die meer Hydraulica (afstemming-ish) zijn, worden in een afzonderlijke woorden lijst opgegeven, terwijl de waarden die kleiner zijn dan de waarde die u wilt wijzigen, rechtstreeks in de constructor worden opgegeven `AutoMLConfig` . In dit geval geeft u `automl_settings` een korte uitvoering op: de uitvoering wordt gestopt na slechts twee iteraties of 15 minuten, afhankelijk van wat het eerste komt.
 
-De `automl_settings` woorden lijst wordt door gegeven `AutoMLConfig` aan de constructor als kwargs. De andere para meters zijn niet complex:
+De `automl_settings` woorden lijst wordt door gegeven aan de `AutoMLConfig` constructor als kwargs. De andere para meters zijn niet complex:
 
 - `task`is ingesteld op `classification` voor dit voor beeld. Andere geldige waarden zijn `regression` en`forecasting`
 - `path`en `debug_log` Beschrijf het pad naar het project en een lokaal bestand waarnaar fout opsporingsgegevens worden geschreven 
 - `compute_target`is de eerder gedefinieerde `compute_target` die in dit voor beeld een goedkope, op CPU gebaseerde machine is. Als u de uitgebreide leer faciliteiten van AutoML gebruikt, wilt u het Compute-doel wijzigen in op GPU gebaseerd
-- `featurization`is ingesteld op `auto`. Meer informatie vindt u in de sectie [gegevens parametrisatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) van het document voor automatische configuratie van ml 
+- `featurization`is ingesteld op `auto` . Meer informatie vindt u in de sectie [gegevens parametrisatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#data-featurization) van het document voor automatische configuratie van ml 
 - `training_data`wordt ingesteld op de `PipelineOutputTabularDataset` objecten die zijn gemaakt op basis van de uitvoer van de stap voor het voorbereiden van gegevens. 
 - `label_column_name`Hiermee wordt aangegeven in welke kolom u wilt voors pellen 
 
-`AutoMLStep` Het gaat hierbij om `AutoMLConfig` de en heeft, als uitvoer, de `PipelineData` objecten die zijn gemaakt om de metrieken en model gegevens op te slaan. 
+Het `AutoMLStep` gaat hierbij `AutoMLConfig` om de en heeft, als uitvoer, de `PipelineData` objecten die zijn gemaakt om de metrieken en model gegevens op te slaan. 
 
 >[!Important]
-> U moet zo `passthru_automl_config` instellen `False` dat objecten `AutoMLStep` worden gebruikt `PipelineOutputTabularDataset` voor invoer.
+> U moet `passthru_automl_config` zo instellen dat `False` `AutoMLStep` objecten worden gebruikt `PipelineOutputTabularDataset` voor invoer.
 
-In dit voor beeld voert het geautomatiseerde ML proces Kruis validaties uit op de `training_data`. U kunt het aantal Kruis validaties beheren met het `n_cross_validations` argument. Als u uw trainings gegevens al hebt gesplitst als onderdeel van de stappen voor het voorbereiden van gegevens, `validation_data` kunt u deze `Dataset`zelf instellen.
+In dit voor beeld voert het geautomatiseerde ML proces Kruis validaties uit op de `training_data` . U kunt het aantal Kruis validaties beheren met het `n_cross_validations` argument. Als u uw trainings gegevens al hebt gesplitst als onderdeel van de stappen voor het voorbereiden van gegevens, kunt u `validation_data` deze zelf instellen `Dataset` .
 
-U kunt af en toe gebruikmaken van `X` het gebruik voor gegevens `y` functies en voor gegevenslabels. Deze techniek is afgeschaft en moet worden `training_data` gebruikt voor invoer. 
+U kunt af en toe gebruikmaken van het gebruik `X` voor gegevens functies en `y` voor gegevenslabels. Deze techniek is afgeschaft en moet worden gebruikt `training_data` voor invoer. 
 
 ## <a name="register-the-model-generated-by-automated-ml"></a>Het model registreren dat is gegenereerd door automatische MILLILITERs 
 
-In de laatste stap van een Basic ML-pijp lijn wordt het gemaakte model geregistreerd. Door het model toe te voegen aan het model register van de werk ruimte, is het beschikbaar in de portal en kan dit versie nummer hebben. Als u het model wilt registreren, `PythonScriptStep` schrijft u een `model_data` andere die de `AutoMLStep`uitvoer van de uitvoert.
+In de laatste stap van een Basic ML-pijp lijn wordt het gemaakte model geregistreerd. Door het model toe te voegen aan het model register van de werk ruimte, is het beschikbaar in de portal en kan dit versie nummer hebben. Als u het model wilt registreren, schrijft u een andere `PythonScriptStep` die de `model_data` uitvoer van de uitvoert `AutoMLStep` .
 
 ### <a name="write-the-code-to-register-the-model"></a>De code schrijven om het model te registreren
 
-Een model is geregistreerd in een `Workspace`. U bent waarschijnlijk vertrouwd met het `Workspace.from_config()` gebruik van om u aan te melden bij uw werk ruimte op uw lokale computer, maar er is een andere manier om de werk ruimte te verkrijgen vanuit een lopende ml-pijp lijn. Hiermee `Run.get_context()` haalt u de `Run`actieve op. Dit `run` object biedt toegang tot veel belang rijke objecten, met `Workspace` inbegrip van de hier gebruikte.
+Een model is geregistreerd in een `Workspace` . U bent waarschijnlijk vertrouwd met het gebruik van om u aan `Workspace.from_config()` te melden bij uw werk ruimte op uw lokale computer, maar er is een andere manier om de werk ruimte te verkrijgen vanuit een lopende ml-pijp lijn. Hiermee `Run.get_context()` haalt u de actieve op `Run` . Dit `run` object biedt toegang tot veel belang rijke objecten, met inbegrip van de `Workspace` hier gebruikte.
 
 ```python
 %%writefile register_model.py
@@ -375,7 +375,7 @@ print("Registered version {0} of model {1}".format(model.version, model.name))
 
 ### <a name="write-the-pythonscriptstep-code"></a>De PythonScriptStep-code schrijven
 
-Het model registratie `PythonScriptStep` maakt gebruik van `PipelineParameter` een voor een van de argumenten. Pijplijn parameters zijn argumenten voor pijp lijnen die eenvoudig kunnen worden ingesteld tijdens het uitvoeren van de aanvraag. Zodra deze zijn gedeclareerd, worden ze door gegeven als normale argumenten. 
+Het model registratie `PythonScriptStep` maakt gebruik `PipelineParameter` van een voor een van de argumenten. Pijplijn parameters zijn argumenten voor pijp lijnen die eenvoudig kunnen worden ingesteld tijdens het uitvoeren van de aanvraag. Zodra deze zijn gedeclareerd, worden ze door gegeven als normale argumenten. 
 
 ```python
 
@@ -395,7 +395,7 @@ register_step = PythonScriptStep(script_name="register_model.py",
 
 ## <a name="create-and-run-your-automated-ml-pipeline"></a>Uw Automated ML-pijp lijn maken en uitvoeren
 
-Het maken en uitvoeren van een pijp lijn met `AutoMLStep` een is niet anders dan een normale pijp lijn. 
+Het maken en uitvoeren van een pijp lijn met een `AutoMLStep` is niet anders dan een normale pijp lijn. 
 
 ```python
 from azureml.pipeline.core import Pipeline
@@ -409,11 +409,11 @@ run = experiment.submit(pipeline, show_output=True)
 run.wait_for_completion()
 ```
 
-De bovenstaande code combineert de voor bereiding van gegevens, automatische MILLILITERs en het registreren van `Pipeline` stappen in een object. Vervolgens wordt een `Experiment` -object gemaakt. De `Experiment` constructor haalt het genoemde experiment op als dit bestaat, of maak het als dat nodig is. Het verzendt `Pipeline` een `Experiment` `Run` -object waarmee de pijp lijn asynchroon kan worden uitgevoerd. De `wait_for_completion()` functie blokkeert tot de uitvoering is voltooid.
+De bovenstaande code combineert de voor bereiding van gegevens, automatische MILLILITERs en het registreren van stappen in een `Pipeline` object. Vervolgens wordt een- `Experiment` object gemaakt. De `Experiment` constructor haalt het genoemde experiment op als dit bestaat, of maak het als dat nodig is. Het verzendt `Pipeline` `Experiment` een- `Run` object waarmee de pijp lijn asynchroon kan worden uitgevoerd. De `wait_for_completion()` functie blokkeert tot de uitvoering is voltooid.
 
 ### <a name="examine-pipeline-results"></a>Pijplijn resultaten onderzoeken 
 
-Zodra de `run` bewerking is voltooid, kunt u `PipelineData` objecten ophalen waaraan een `pipeline_output_name`is toegewezen. U kunt de resultaten downloaden en laden voor verdere verwerking.  
+Zodra de bewerking is `run` voltooid, kunt u `PipelineData` objecten ophalen waaraan een is toegewezen `pipeline_output_name` . U kunt de resultaten downloaden en laden voor verdere verwerking.  
 
 ```python
 metrics_output_port = run.get_pipeline_output('metrics_output')
@@ -423,7 +423,7 @@ metrics_output_port.download('.', show_progress=True)
 model_output_port.download('.', show_progress=True)
 ```
 
-Gedownloade bestanden worden naar de submap `azureml/{run.id}/`geschreven. Het metrieke bestand is JSON-indeling en kan worden geconverteerd naar een Panda data frame voor onderzoek.
+Gedownloade bestanden worden naar de submap geschreven `azureml/{run.id}/` . Het metrieke bestand is JSON-indeling en kan worden geconverteerd naar een Panda data frame voor onderzoek.
 
 Voor lokale verwerking moet u mogelijk relevante pakketten installeren, zoals Panda, selectie, de AzureML-SDK, enzovoort. In dit voor beeld is het waarschijnlijk dat het beste model dat door automatische ML wordt gevonden, afhankelijk is van XGBoost.
 
@@ -447,7 +447,7 @@ df
 
 Het bovenstaande code fragment toont het metrische bestand dat wordt geladen vanaf de locatie in het Azure-gegevens archief. U kunt de app ook laden vanuit het gedownloade bestand, zoals wordt weer gegeven in de opmerking. Zodra u de app hebt gedeserialiseerd en geconverteerd naar een Panda data frame, kunt u gedetailleerde metrische gegevens bekijken voor elk van de iteraties van de stap Automated ML.
 
-Het model bestand kan worden gedeserialiseerd in een-object `Model` dat u kunt gebruiken voor de afleiding, verdere metrische analyse, enzovoort. 
+Het model bestand kan worden gedeserialiseerd in een `Model` -object dat u kunt gebruiken voor de afleiding, verdere metrische analyse, enzovoort. 
 
 ```python
 import pickle
@@ -465,9 +465,9 @@ Zie [een bestaand model gebruiken met Azure machine learning](how-to-deploy-exis
 
 ### <a name="download-the-results-of-an-automated-ml-run"></a>De resultaten van een automatische ML-uitvoering downloaden
 
-Als u samen met het artikel hebt gevolgd, hebt u een geïnstantieerd `run` object. U kunt echter ook voltooide `Run` objecten ophalen uit de `Workspace` in de richting van `Experiment` een object.
+Als u samen met het artikel hebt gevolgd, hebt u een geïnstantieerd `run` object. U kunt echter ook voltooide `Run` objecten ophalen uit de `Workspace` in de richting van een `Experiment` object.
 
-De werk ruimte bevat een volledig overzicht van al uw experimenten en wordt uitgevoerd. U kunt de portal gebruiken om de uitvoer van experimenten te zoeken en te downloaden of code te gebruiken. Als u toegang wilt krijgen tot de records uit een historische uitvoering, gebruikt u Azure Machine Learning om de ID te vinden van de uitvoering waarin u geïnteresseerd bent. Met deze ID kunt u de specifieke `run` `Workspace` optie kiezen. `Experiment`
+De werk ruimte bevat een volledig overzicht van al uw experimenten en wordt uitgevoerd. U kunt de portal gebruiken om de uitvoer van experimenten te zoeken en te downloaden of code te gebruiken. Als u toegang wilt krijgen tot de records uit een historische uitvoering, gebruikt u Azure Machine Learning om de ID te vinden van de uitvoering waarin u geïnteresseerd bent. Met deze ID kunt u de specifieke optie kiezen `run` `Workspace` `Experiment` .
 
 ```python
 # Retrieved from Azure Machine Learning web UI
@@ -476,7 +476,7 @@ experiment = ws.experiments['titanic_automl']
 run = next(run for run in ex.get_runs() if run.id == run_id)
 ```
 
-U moet de teken reeksen in de bovenstaande code wijzigen in de details van uw historische uitvoering. In het bovenstaande code fragment wordt ervan uitgegaan `ws` dat u hebt `Workspace` toegewezen aan de `from_config()`relevante met het normale. Het experiment of interest wordt direct opgehaald en vervolgens vindt de code de `Run` interesse door te voldoen aan de `run.id` waarde.
+U moet de teken reeksen in de bovenstaande code wijzigen in de details van uw historische uitvoering. In het bovenstaande code fragment wordt ervan uitgegaan dat u hebt toegewezen `ws` aan de relevante `Workspace` met het normale `from_config()` . Het experiment of interest wordt direct opgehaald en vervolgens vindt de code de `Run` interesse door te voldoen aan de `run.id` waarde.
 
 Zodra u een `Run` object hebt, kunt u de metrische gegevens en het model downloaden. 
 
@@ -490,7 +490,7 @@ metrics.get_port_data_reference().download('.')
 model.get_port_data_reference().download('.')
 ```
 
-Elk `Run` object bevat `StepRun` objecten die informatie bevatten over de stap van de uitvoering van de afzonderlijke pijp lijn. `run` Er wordt gezocht naar het `StepRun` object voor `AutoMLStep`. De metrische gegevens en het model worden opgehaald met hun standaard namen, die ook beschikbaar zijn als u geen objecten `PipelineData` door geeft aan `outputs` de para meter `AutoMLStep`van. 
+Elk `Run` object bevat `StepRun` objecten die informatie bevatten over de stap van de uitvoering van de afzonderlijke pijp lijn. `run`Er wordt gezocht naar het `StepRun` object voor `AutoMLStep` . De metrische gegevens en het model worden opgehaald met hun standaard namen, die ook beschikbaar zijn als u geen objecten door geeft `PipelineData` aan de `outputs` para meter van `AutoMLStep` . 
 
 Ten slotte worden de werkelijke metrische gegevens en het model gedownload naar uw lokale computer, zoals beschreven in de sectie ' Bekijk de resultaten van de pijp lijn '.
 

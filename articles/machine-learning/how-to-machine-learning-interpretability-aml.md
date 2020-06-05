@@ -5,17 +5,17 @@ description: Meer informatie over het verkrijgen van uitleg over hoe het machine
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e0d8cb42e0dc1e161de56ca2b56eee0ce62ec25f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983632"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430718"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Gebruik het vertolkings pakket om ML-modellen & voor spellingen in python uit te leggen
 
@@ -71,8 +71,8 @@ In het volgende voor beeld ziet u hoe u het vertolkings pakket gebruikt op uw pe
    * Als u een uitleg object wilt initialiseren, geeft u uw model en enkele trainings gegevens door aan de constructor van de uitleger.
    * Als u uw uitleg en visualisaties meer informatiever wilt maken, kunt u ervoor kiezen om de namen van onderdelen en uitvoer klassen door te geven als u de classificatie uitvoert.
 
-   In de volgende code blokken ziet u hoe u een object van een `TabularExplainer`uitleg `MimicExplainer`maakt met `PFIExplainer` , en lokaal.
-   * `TabularExplainer`roept een van de drie Shap-uitleg onder (`TreeExplainer`, `DeepExplainer`, of `KernelExplainer`) aan.
+   In de volgende code blokken ziet u hoe u een object van een uitleg maakt met `TabularExplainer` , `MimicExplainer` en `PFIExplainer` lokaal.
+   * `TabularExplainer`roept een van de drie SHAP-uitleg onder ( `TreeExplainer` , `DeepExplainer` , of `KernelExplainer` ) aan.
    * `TabularExplainer`selecteert automatisch het meest geschikte voor uw use-case, maar u kunt elk van de drie onderliggende uitleg rechtstreeks aanroepen.
 
     ```python
@@ -159,11 +159,11 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ### <a name="raw-feature-transformations"></a>Trans formaties onbewerkte onderdelen
 
-U kunt ervoor kiezen om uitleg te krijgen over onbewerkte, niet-getransformeerde functies in plaats van functies die zijn ontworpen. Voor deze optie geeft u de pijp lijn voor de functie transformatie door aan de uitleger in `train_explain.py`. Anders biedt de uitleg uitleg over de functies die zijn ontworpen voor de functie.
+U kunt ervoor kiezen om uitleg te krijgen over onbewerkte, niet-getransformeerde functies in plaats van functies die zijn ontworpen. Voor deze optie geeft u de pijp lijn voor de functie transformatie door aan de uitleger in `train_explain.py` . Anders biedt de uitleg uitleg over de functies die zijn ontworpen voor de functie.
 
 De indeling van ondersteunde trans formaties is hetzelfde als beschreven in [sklearn-Panda](https://github.com/scikit-learn-contrib/sklearn-pandas). Over het algemeen worden trans formaties ondersteund zolang ze worden toegepast op één kolom, zodat deze duidelijk een-op-veel zijn.
 
-Krijg een uitleg voor onbewerkte functies door `sklearn.compose.ColumnTransformer` gebruik te maken van een of een lijst met de bijpassende Tuples. In het volgende voor `sklearn.compose.ColumnTransformer`beeld wordt gebruikt.
+Krijg een uitleg voor onbewerkte functies door gebruik te maken `sklearn.compose.ColumnTransformer` van een of een lijst met de bijpassende Tuples. In het volgende voor beeld wordt gebruikt `sklearn.compose.ColumnTransformer` .
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -233,7 +233,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="generate-feature-importance-values-via-remote-runs"></a>Urgentie waarden van functies genereren via externe uitvoeringen
 
-In het volgende voor beeld ziet u hoe u `ExplanationClient` de-klasse kunt gebruiken om de vertolking van modellen voor externe uitvoeringen in te scha kelen. Het is conceptueel vergelijkbaar met het lokale proces, met uitzonde ring van het volgende:
+In het volgende voor beeld ziet u hoe u de-klasse kunt gebruiken `ExplanationClient` om de vertolking van modellen voor externe uitvoeringen in te scha kelen. Het is conceptueel vergelijkbaar met het lokale proces, met uitzonde ring van het volgende:
 
 * Gebruik de `ExplanationClient` in de externe uitvoering om de interpreter-context te uploaden.
 * Down load de context later in een lokale omgeving.
@@ -379,7 +379,7 @@ Volg een van deze paden om toegang te krijgen tot het visualisatie dashboard in 
 
 U kunt de uitleger samen met het oorspronkelijke model implementeren en deze gebruiken om tijd te verhelpen om de afzonderlijke functie belang rijke waarden (lokale uitleg) te bieden voor nieuwe nieuwe data pointer. We bieden ook licht gewichten uitleg over scores om de prestaties van de interacties te verbeteren. Het proces voor het implementeren van een lichtere Score uitleg is vergelijkbaar met het implementeren van een model en bevat de volgende stappen:
 
-1. Maak een uitleg-object. U kunt bijvoorbeeld het volgende gebruiken `TabularExplainer`:
+1. Maak een uitleg-object. U kunt bijvoorbeeld het volgende gebruiken `TabularExplainer` :
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -564,7 +564,7 @@ U kunt de uitleger samen met het oorspronkelijke model implementeren en deze geb
 
 1. Opschonen.
 
-   Als u een geïmplementeerde webservice wilt verwijderen `service.delete()`, gebruikt u.
+   Als u een geïmplementeerde webservice wilt verwijderen, gebruikt u `service.delete()` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,16 +5,16 @@ description: Meer informatie over het verkrijgen van uitleg over hoe uw Automate
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691209"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430527"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretiteit: model uitleg bij automatische machine learning
 
@@ -22,7 +22,7 @@ ms.locfileid: "82691209"
 
 In dit artikel vindt u informatie over het verkrijgen van uitleg voor automatische machine learning (ML) in Azure Machine Learning. Automatische ML helpt u bij het begrijpen van het belang van de functie. 
 
-Alle SDK-versies nadat 1.0.85 `model_explainability=True` standaard is ingesteld. In SDK-versie 1.0.85 en eerdere versies moeten gebruikers in `model_explainability=True` het `AutoMLConfig` object worden ingesteld om te kunnen werken met model Interpretation. 
+Alle SDK-versies nadat 1.0.85 `model_explainability=True` standaard is ingesteld. In SDK-versie 1.0.85 en eerdere versies moeten gebruikers `model_explainability=True` in het object worden ingesteld `AutoMLConfig` om te kunnen werken met model Interpretation. 
 
 In dit artikel leert u het volgende:
 
@@ -32,16 +32,16 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Functies voor interpretaties. Voer `pip install azureml-interpret azureml-contrib-interpret` uit om de vereiste pakketten op te halen.
+- Functies voor interpretaties. Voer uit `pip install azureml-interpret azureml-contrib-interpret` om de vereiste pakketten op te halen.
 - Kennis van het bouwen van geautomatiseerde ML experimenten. Voor meer informatie over het gebruik van de Azure Machine Learning SDK, voltooit u de [zelf studie voor het regressie model](tutorial-auto-train-models.md) of raadpleegt u How to [Configure Automated ml experimenten](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Interpretiteit tijdens de training voor het beste model
 
-Haal de uitleg op uit `best_run`de, die uitleg bevat over functies die zijn ontworpen voor de functie.
+Haal de uitleg op uit de `best_run` , die uitleg bevat over functies die zijn ontworpen voor de functie.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Belang rijk onderdeel van de artefact opslag downloaden
 
-U kunt gebruiken `ExplanationClient` voor het downloaden van de toelichtingen van de functie die door `best_run`de engine zijn verstrekt vanuit het artefact archief van de. 
+U kunt gebruiken `ExplanationClient` voor het downloaden van de toelichtingen van de functie die door de engine zijn verstrekt vanuit het artefact archief van de `best_run` . 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -81,11 +81,11 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>De belichtings uitleg voor de functie prioriteit initialiseren
 
-Als u een uitleg voor AutoML-modellen wilt genereren `MimicWrapper` , gebruikt u de klasse. U kunt de MimicWrapper initialiseren met de volgende para meters:
+Als u een uitleg voor AutoML-modellen wilt genereren, gebruikt u de `MimicWrapper` klasse. U kunt de MimicWrapper initialiseren met de volgende para meters:
 
 - Het object van de uitleger installatie
 - Uw werk ruimte
-- Een surrogaat model voor het uitleggen `fitted_model` van het model Automated ml
+- Een surrogaat model voor het uitleggen van het `fitted_model` model Automated ml
 
 De MimicWrapper neemt ook het `automl_run` object over waar de toelichte verklaringen worden geüpload.
 
@@ -104,7 +104,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>MimicExplainer gebruiken voor het berekenen en visualiseren van de belang rijke functie
 
-U kunt de `explain()` methode in MimicWrapper aanroepen met de getransformeerde test voorbeelden om het belang van de functie voor de gegenereerde functies te verkrijgen. U kunt ook gebruiken `ExplanationDashboard` om de visualisatie van het dash board weer te geven van de belang rijke waarden van de functie van de gegenereerde functies van ontworpen door featurizers ml.
+U kunt de `explain()` methode in MimicWrapper aanroepen met de getransformeerde test voorbeelden om het belang van de functie voor de gegenereerde functies te verkrijgen. U kunt ook gebruiken `ExplanationDashboard` om de visualisatie van het dash board weer te geven van de belang rijke waarden van de functie van de gegenereerde functies van ontworpen door FEATURIZERS ml.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)

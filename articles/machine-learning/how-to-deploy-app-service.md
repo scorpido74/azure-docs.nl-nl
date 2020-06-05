@@ -5,17 +5,17 @@ description: Meer informatie over het gebruik van Azure Machine Learning voor he
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 787c8ec88b001a55a83bfba3124c62e12800aa58
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651933"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433943"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.
 Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
 
 > [!NOTE]
-> In het code fragment wordt ervan `model` uitgegaan dat het een geregistreerd model `inference_config` bevat en dat de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
+> In het code fragment wordt ervan uitgegaan dat het `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.core import Model
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Bijvoorbeeld `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
+Wanneer `show_output=True` wordt de uitvoer van het docker-bouw proces weer gegeven. Zodra het proces is voltooid, is de afbeelding gemaakt in de Azure Container Registry voor uw werk ruimte. Zodra de installatie kopie is gemaakt, wordt de locatie in uw Azure Container Registry weer gegeven. De geretourneerde locatie heeft de indeling `<acrinstance>.azurecr.io/package@sha256:<imagename>` . Bijvoorbeeld `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Sla de locatie gegevens op, zoals deze worden gebruikt bij het implementeren van de installatie kopie.
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde die u eerder `package.location`hebt geretourneerd van:
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang door `<acrinstance>` de waarde die u eerder hebt geretourneerd van `package.location` :
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -154,12 +154,12 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In dit voor beeld wordt een __basis__ prijs categorie`--sku B1`() gebruikt.
+    In dit voor beeld wordt een __basis__ prijs categorie ( `--sku B1` ) gebruikt.
 
     > [!IMPORTANT]
-    > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u `--is-linux` moet de para meter gebruiken.
+    > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u moet de `--is-linux` para meter gebruiken.
 
-1. Gebruik de volgende opdracht om de web-app te maken. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden die eerder `package.location` zijn geretourneerd:
+1. Gebruik de volgende opdracht om de web-app te maken. Vervang door `<app-name>` de naam die u wilt gebruiken. Vervang `<acrinstance>` en door `<imagename>` de waarden die eerder zijn geretourneerd `package.location` :
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
@@ -188,7 +188,7 @@ Wanneer `show_output=True`wordt de uitvoer van het docker-bouw proces weer gegev
     > [!IMPORTANT]
     > Op dit moment is de web-app gemaakt. Omdat u echter niet de referenties hebt ingevoerd voor de Azure Container Registry die de installatie kopie bevat, is de web-app niet actief. In de volgende stap geeft u de verificatie gegevens voor het container register op.
 
-1. Gebruik de volgende opdracht om de web-app te voorzien van de referenties die nodig zijn voor toegang tot het container register. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden die eerder `package.location` zijn geretourneerd. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
+1. Gebruik de volgende opdracht om de web-app te voorzien van de referenties die nodig zijn voor toegang tot het container register. Vervang door `<app-name>` de naam die u wilt gebruiken. Vervang `<acrinstance>` en door `<imagename>` de waarden die eerder zijn geretourneerd `package.location` . Vervang `<username>` en door `<password>` de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -234,7 +234,7 @@ Op dit moment begint de web-app met het laden van de installatie kopie.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Zodra de afbeelding is geladen en de site actief is, wordt in het logboek een bericht weer gegeven `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`waarin staat vermeld.
+> Zodra de afbeelding is geladen en de site actief is, wordt in het logboek een bericht weer gegeven waarin staat vermeld `Container <container name> for site <app-name> initialized successfully and is ready to serve requests` .
 
 Als de installatie kopie eenmaal is geïmplementeerd, kunt u de hostnaam vinden met behulp van de volgende opdracht:
 
@@ -242,11 +242,11 @@ Als de installatie kopie eenmaal is geïmplementeerd, kunt u de hostnaam vinden 
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Deze opdracht retourneert informatie die lijkt op de volgende hostnaam `<app-name>.azurewebsites.net`:. Gebruik deze waarde als onderdeel van de __basis-URL__ voor de service.
+Deze opdracht retourneert informatie die lijkt op de volgende hostnaam: `<app-name>.azurewebsites.net` . Gebruik deze waarde als onderdeel van de __basis-URL__ voor de service.
 
 ## <a name="use-the-web-app"></a>De web-app gebruiken
 
-De webservice die aanvragen doorgeeft aan het model, bevindt zich op `{baseurl}/score`. Bijvoorbeeld `https://<app-name>.azurewebsites.net/score`. De volgende python-code laat zien hoe u gegevens indient naar de URL en hoe de reactie wordt weer gegeven:
+De webservice die aanvragen doorgeeft aan het model, bevindt zich op `{baseurl}/score` . Bijvoorbeeld `https://<app-name>.azurewebsites.net/score`. De volgende python-code laat zien hoe u gegevens indient naar de URL en hoe de reactie wordt weer gegeven:
 
 ```python
 import requests

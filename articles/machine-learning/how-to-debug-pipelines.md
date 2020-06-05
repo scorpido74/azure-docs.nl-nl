@@ -5,16 +5,16 @@ description: Fouten opsporen in uw Azure Machine Learning-pijp lijnen in python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: bf6a8dd0bfc4ffb9f6b6fa0c9b1d864c4298755a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594615"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433437"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten in Machine Learning-pijplijnen opsporen en oplossen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -78,11 +78,11 @@ De volgende tabel bevat veelvoorkomende problemen bij het ontwikkelen van pijp l
 
 | Probleem | Mogelijke oplossing |
 |--|--|
-| Kan geen gegevens door geven `PipelineData` aan de map | Zorg ervoor dat u een map hebt gemaakt in het script dat overeenkomt met de locatie van de gegevens van de stap uitvoer. In de meeste gevallen definieert een invoer argument de uitvoermap en maakt u de map expliciet. Gebruiken `os.makedirs(args.output_dir, exist_ok=True)` om de uitvoermap te maken. Raadpleeg de [zelf studie](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) voor een score voorbeeld script waarin dit ontwerp patroon wordt weer gegeven. |
+| Kan geen gegevens door geven aan de `PipelineData` map | Zorg ervoor dat u een map hebt gemaakt in het script dat overeenkomt met de locatie van de gegevens van de stap uitvoer. In de meeste gevallen definieert een invoer argument de uitvoermap en maakt u de map expliciet. Gebruiken `os.makedirs(args.output_dir, exist_ok=True)` om de uitvoermap te maken. Raadpleeg de [zelf studie](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) voor een score voorbeeld script waarin dit ontwerp patroon wordt weer gegeven. |
 | Afhankelijkheids fouten | Als u scripts lokaal hebt ontwikkeld en getest, maar u afhankelijkheids problemen ondervindt bij het uitvoeren van een externe Compute in de pijp lijn, moet u ervoor zorgen dat afhankelijkheden en versies van de reken omgeving overeenkomen met uw test omgeving. (Zie [omgeving bouwen, in cache plaatsen en opnieuw gebruiken](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
 | Dubbel zinnige fouten met Compute-doelen | Het verwijderen en opnieuw maken van Compute-doelen kan bepaalde problemen met reken doelen oplossen. |
-| Pijp lijn waarbij de stappen niet opnieuw worden gebruikt | Het opnieuw gebruiken van de stap is standaard ingeschakeld, maar zorg ervoor dat u deze niet hebt uitgeschakeld in een pijplijn stap. Als opnieuw gebruiken is uitgeschakeld, `allow_reuse` wordt de para meter in de stap ingesteld `False`op. |
-| De pijp lijn wordt onnodig opnieuw uitgevoerd | Om ervoor te zorgen dat de stappen alleen opnieuw worden uitgevoerd wanneer de onderliggende gegevens of scripts worden gewijzigd, moet u de mappen voor elke stap loskoppelen. Als u dezelfde bron directory voor meerdere stappen gebruikt, kan het nodig zijn om niet-uitgevoerde opnieuw uit te voeren. Gebruik de `source_directory` para meter voor een pijplijn stap object om naar uw geïsoleerde map voor die stap te verwijzen en zorg ervoor dat u niet `source_directory` hetzelfde pad gebruikt voor meerdere stappen. |
+| Pijp lijn waarbij de stappen niet opnieuw worden gebruikt | Het opnieuw gebruiken van de stap is standaard ingeschakeld, maar zorg ervoor dat u deze niet hebt uitgeschakeld in een pijplijn stap. Als opnieuw gebruiken is uitgeschakeld, `allow_reuse` wordt de para meter in de stap ingesteld op `False` . |
+| De pijp lijn wordt onnodig opnieuw uitgevoerd | Om ervoor te zorgen dat de stappen alleen opnieuw worden uitgevoerd wanneer de onderliggende gegevens of scripts worden gewijzigd, moet u de mappen voor elke stap loskoppelen. Als u dezelfde bron directory voor meerdere stappen gebruikt, kan het nodig zijn om niet-uitgevoerde opnieuw uit te voeren. Gebruik de `source_directory` para meter voor een pijplijn stap object om naar uw geïsoleerde map voor die stap te verwijzen en zorg ervoor dat u niet hetzelfde `source_directory` pad gebruikt voor meerdere stappen. |
 
 ### <a name="logging-options-and-behavior"></a>Opties voor logboek registratie en gedrag
 
@@ -175,7 +175,7 @@ In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-cod
 
 Zie voor meer informatie over het gebruik van een Azure Virtual Network met Azure Machine Learning [Secure Azure ml experimenten en de functies voor het](how-to-enable-virtual-network.md)afmaken van een azure-Virtual Network.
 
-### <a name="how-it-works"></a>Hoe het werkt
+### <a name="how-it-works"></a>Hoe werkt het?
 
 Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzigd om de volgende acties uit te voeren:
     
@@ -185,7 +185,7 @@ Met uw ML pijplijn stappen voert u python-scripts uit. Deze scripts zijn gewijzi
 
 3. Vanuit uw ontwikkel omgeving bewaakt u de logboeken die zijn gemaakt door het trainings proces om het IP-adres te vinden waarop het script wordt uitgevoerd.
 
-4. U vertelt het IP-adres om het fout opsporingsprogramma te verbinden met behulp `launch.json` van een bestand.
+4. U vertelt het IP-adres om het fout opsporingsprogramma te verbinden met behulp van een `launch.json` bestand.
 
 5. U koppelt het fout opsporingsprogramma en interactieve stap door het script.
 
@@ -233,7 +233,7 @@ Als u fout opsporing wilt inschakelen, moet u de volgende wijzigingen aanbrengen
         print(f'Debugger attached = {ptvsd.is_attached()}')
     ```
 
-In het volgende python-voor beeld `train.py` ziet u een basis bestand dat fout opsporing mogelijk maakt:
+In het volgende python-voor beeld ziet u een basis `train.py` bestand dat fout opsporing mogelijk maakt:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -287,7 +287,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>ML-pijp lijn configureren
 
-Als u de Python-pakketten wilt opgeven die nodig zijn om PTVSD te starten en de uitvoerings context op `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`te halen, moet u een omgeving maken en instellen. Wijzig de SDK-versie zodat deze overeenkomt met die die u gebruikt. Het volgende code fragment laat zien hoe u een omgeving maakt:
+Als u de Python-pakketten wilt opgeven die nodig zijn om PTVSD te starten en de uitvoerings context op te halen, moet u een omgeving maken en instellen `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` . Wijzig de SDK-versie zodat deze overeenkomt met die die u gebruikt. Het volgende code fragment laat zien hoe u een omgeving maakt:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -312,7 +312,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-In de sectie [python-scripts configureren](#configure-python-scripts) zijn twee nieuwe argumenten toegevoegd aan de scripts die worden gebruikt door uw ml-pijplijn stappen. Het volgende code fragment laat zien hoe u deze argumenten kunt gebruiken om fout opsporing in te scha kelen voor het onderdeel en om een time-out in te stellen. Ook wordt gedemonstreerd hoe u de omgeving die u eerder hebt `runconfig=run_config`gemaakt, kunt gebruiken door het volgende in te stellen:
+In de sectie [python-scripts configureren](#configure-python-scripts) zijn twee nieuwe argumenten toegevoegd aan de scripts die worden gebruikt door uw ml-pijplijn stappen. Het volgende code fragment laat zien hoe u deze argumenten kunt gebruiken om fout opsporing in te scha kelen voor het onderdeel en om een time-out in te stellen. Ook wordt gedemonstreerd hoe u de omgeving die u eerder hebt gemaakt, kunt gebruiken door het volgende in te stellen `runconfig=run_config` :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -325,7 +325,7 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-Wanneer de pijp lijn wordt uitgevoerd, maakt elke stap een onderliggende uitvoering. Als fout opsporing is ingeschakeld, wordt in het gewijzigde script informatie die lijkt op de volgende `70_driver_log.txt` tekst in de voor de onderliggende uitvoering:
+Wanneer de pijp lijn wordt uitgevoerd, maakt elke stap een onderliggende uitvoering. Als fout opsporing is ingeschakeld, wordt in het gewijzigde script informatie die lijkt op de volgende tekst in de `70_driver_log.txt` voor de onderliggende uitvoering:
 
 ```text
 Timeout for debug connection: 300
@@ -351,7 +351,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
 
     1. Selecteer in VS code het menu __fout opsporing__ en selecteer vervolgens __Open configuraties__. Er wordt een bestand met de naam __Launch. json__ geopend.
 
-    1. Zoek in het bestand __Launch. json__ de regel die bevat `"configurations": [`en voeg de volgende tekst toe. Wijzig de `"host": "10.3.0.5"` vermelding in het IP-adres dat in uw logboeken wordt weer gegeven in de vorige sectie. Wijzig de `"localRoot": "${workspaceFolder}/code/step"` vermelding in een lokale map met een kopie van het script waarin fouten worden opgespoord:
+    1. Zoek in het bestand __Launch. json__ de regel die bevat `"configurations": [` en voeg de volgende tekst toe. Wijzig de `"host": "10.3.0.5"` vermelding in het IP-adres dat in uw logboeken wordt weer gegeven in de vorige sectie. Wijzig de `"localRoot": "${workspaceFolder}/code/step"` vermelding in een lokale map met een kopie van het script waarin fouten worden opgespoord:
 
         ```json
         {
@@ -374,7 +374,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
         > Als er al andere vermeldingen in de sectie configuraties staan, voegt u een komma (,) toe na de code die u hebt ingevoegd.
 
         > [!TIP]
-        > De best practice bestaat uit het behoud van de resources voor scripts in afzonderlijke directory's, wat de `localRoot` voor beeld- `/code/step1`waarde verwijst.
+        > De best practice bestaat uit het behoud van de resources voor scripts in afzonderlijke directory's, wat de `localRoot` voor beeld-waarde verwijst `/code/step1` .
         >
         > Als u fouten opspoort in meerdere scripts, maakt u in verschillende directory's een afzonderlijke configuratie sectie voor elk script.
 
@@ -389,7 +389,7 @@ Sla de `ip_address` waarde op. Deze wordt gebruikt in de volgende sectie.
     Op dit punt verbindt de VS code met PTVSD op het reken knooppunt en stopt dit met het onderbrekings punt dat u eerder hebt ingesteld. U kunt nu de code door lopen terwijl deze wordt uitgevoerd, variabelen weer geven, enzovoort.
 
     > [!NOTE]
-    > Als in het logboek een vermelding wordt weer `Debugger attached = False`gegeven, is de time-out verlopen en wordt het script voortgezet zonder het fout opsporingsprogramma. Dien de pijp lijn opnieuw in en sluit de debugger `Timeout for debug connection` na het bericht en voordat de time-out is verlopen.
+    > Als in het logboek een vermelding wordt weer gegeven `Debugger attached = False` , is de time-out verlopen en wordt het script voortgezet zonder het fout opsporingsprogramma. Dien de pijp lijn opnieuw in en sluit de debugger na het `Timeout for debug connection` bericht en voordat de time-out is verlopen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

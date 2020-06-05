@@ -5,18 +5,18 @@ description: Meer informatie over toegang tot een Azure Machine Learning-werk ru
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270093"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434679"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Toegang tot een Azure Machine Learning-werk ruimte beheren
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Als u eigenaar bent van een werk ruimte, kunt u rollen toevoegen en verwijderen 
 - [Azure Portal gebruikers interface](/azure/role-based-access-control/role-assignments-portal)
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure-CLI](/azure/role-based-access-control/role-assignments-cli)
-- [REST-API](/azure/role-based-access-control/role-assignments-rest)
+- [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Azure Resource Manager-sjablonen](/azure/role-based-access-control/role-assignments-template)
 
 Als u de [Azure machine learning cli](reference-azure-machine-learning-cli.md)hebt geïnstalleerd, kunt u ook een CLI-opdracht gebruiken om rollen toe te wijzen aan gebruikers.
@@ -102,7 +102,7 @@ Gebruik de volgende Azure CLI-opdracht om deze aangepaste functie te implementer
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U kunt deze rol nu toevoegen en toewijzen in de Azure Portal. U kunt deze rol ook toewijzen aan een gebruiker met behulp van `az ml workspace share` de CLI-opdracht:
+Na de implementatie wordt deze rol beschikbaar in de opgegeven werk ruimte. U kunt deze rol nu toevoegen en toewijzen in de Azure Portal. U kunt deze rol ook toewijzen aan een gebruiker met behulp van de `az ml workspace share` cli-opdracht:
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -118,7 +118,7 @@ Zie bewerkingen voor de [resource provider](/azure/role-based-access-control/res
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>V. Wat zijn de machtigingen die nodig zijn om verschillende acties uit te voeren in de Azure Machine Learning-service?
 
-De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en de machtigingen die nodig zijn om ze uit te voeren op het minste bereik. Als een voor beeld van een activiteit kan worden uitgevoerd met een werkruimte bereik (kolom 4), zal alle hogere bereiken met die machtiging ook automatisch werken. Alle paden in deze tabel zijn **relatieve paden** naar `Microsoft.MachineLearningServices/`.
+De volgende tabel bevat een overzicht van Azure Machine Learning activiteiten en de machtigingen die nodig zijn om ze uit te voeren op het minste bereik. Als een voor beeld van een activiteit kan worden uitgevoerd met een werkruimte bereik (kolom 4), zal alle hogere bereiken met die machtiging ook automatisch werken. Alle paden in deze tabel zijn **relatieve paden** naar `Microsoft.MachineLearningServices/` .
 
 | Activiteit | Bereik op abonnements niveau | Bereik van resource groeps niveau | Bereik op werkruimte niveau |
 |---|---|---|---|
@@ -139,7 +139,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>V. De roldefinitie voor een rol in mijn abonnement Hoe kan ik vinden?
 
-Voer de volgende opdracht uit in de Azure CLI. Houd er `<role-name>` rekening mee dat deze in dezelfde notatie moet worden geretourneerd als de bovenstaande opdracht.
+Voer de volgende opdracht uit in de Azure CLI. Houd er rekening mee dat deze `<role-name>` in dezelfde notatie moet worden geretourneerd als de bovenstaande opdracht.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -159,7 +159,7 @@ Houd er rekening mee dat u machtigingen hebt voor het hele bereik van de nieuwe 
 > Het kan 15 minuten tot een uur duren voordat de functie-updates zijn toegepast op alle roltoewijzingen in dat bereik.
 ### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>V. Kan ik een rol definiëren waarmee wordt voor komen dat de werkruimte editie wordt bijgewerkt? 
 
-Ja, u kunt een rol definiëren die voor komt dat de werkruimte editie wordt bijgewerkt. Omdat het bijwerken van de werk ruimte een PATCH oproep in het werkruimte object is, doet u dit door de volgende actie `"NotActions"` in de matrix in de JSON-definitie te plaatsen: 
+Ja, u kunt een rol definiëren die voor komt dat de werkruimte editie wordt bijgewerkt. Omdat het bijwerken van de werk ruimte een PATCH oproep in het werkruimte object is, doet u dit door de volgende actie in de `"NotActions"` matrix in de JSON-definitie te plaatsen: 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 

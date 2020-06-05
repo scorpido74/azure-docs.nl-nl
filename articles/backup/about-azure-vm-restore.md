@@ -10,7 +10,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 06/03/2020
 ms.locfileid: "84325822"
 ---
-# <a name="about-azure-vm-restore"></a>Over het terugzetten van Azure VM
+# <a name="about-azure-vm-restore"></a>Over Azure-VM herstellen
 
 In dit artikel wordt beschreven hoe de [Azure backup-service](https://docs.microsoft.com/azure/backup/backup-overview) virtuele machines (vm's) van Azure herstelt. Er zijn een aantal opties voor terugzetten. We bespreken de verschillende scenario's die ze ondersteunen.
 

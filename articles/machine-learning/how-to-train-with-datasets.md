@@ -5,18 +5,18 @@ description: Meer informatie over het gebruik van gegevens sets in training
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/20/2020
-ms.openlocfilehash: cd72ce9fed7f821807b8604f68068c64a38293e3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 2d573591c2ec70c0d9ec1598dca3af295d36b4c7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996661"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433771"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning gegevens sets bieden een naadloze integratie met Azure Ma
 
 Als u gegevens sets wilt maken en trainen, hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ Als u gegevens sets wilt maken en trainen, hebt u het volgende nodig:
 
 U hebt toegang tot een bestaande TabularDataset vanuit het trainings script van een experiment in uw werk ruimte en laadt die gegevensset in een Panda data frame voor verdere exploratie van uw lokale omgeving.
 
-De volgende code gebruikt de [`get_context()`]() methode in de [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) -klasse om toegang te krijgen tot de `titanic`bestaande invoer TabularDataset,, in het trainings script. Gebruikt vervolgens de [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) methode om die gegevensset te laden in een Panda data frame voor verdere gegevens exploratie en voor bereiding voor de training.
+De volgende code gebruikt de [`get_context()`]() methode in de- [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) klasse om toegang te krijgen tot de bestaande invoer TabularDataset, `titanic` , in het trainings script. Gebruikt vervolgens de [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) methode om die gegevensset te laden in een Panda data frame voor verdere gegevens exploratie en voor bereiding voor de training.
 
 > [!Note]
 > Als de oorspronkelijke gegevens bron NaN, lege teken reeksen of lege waarden bevat, worden deze waarden vervangen als een *Null* -waarde als u de to_pandas_dataframe () gebruikt. 
@@ -66,7 +66,7 @@ Als u de voor bereide gegevens wilt laden in een nieuwe gegevensset van een in g
 
 Als u gestructureerde gegevens nog niet hebt geregistreerd als een gegevensset, maakt u een TabularDataset en gebruikt u deze rechtstreeks in uw trainings script voor uw lokale of externe experiment.
 
-In dit voor beeld maakt u een niet-geregistreerde [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en gebruikt u deze als directe invoer voor `estimator` uw object voor training. Zie [gegevens sets registreren in uw werk ruimte](how-to-create-register-datasets.md#register-datasets)als u deze TabularDataset met andere experimenten in uw werk ruimte wilt gebruiken.
+In dit voor beeld maakt u een niet-geregistreerde [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en gebruikt u deze als directe invoer voor uw `estimator` object voor training. Zie [gegevens sets registreren in uw werk ruimte](how-to-create-register-datasets.md#register-datasets)als u deze TabularDataset met andere experimenten in uw werk ruimte wilt gebruiken.
 
 ### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
 
@@ -85,11 +85,11 @@ TabularDataset-objecten bieden de mogelijkheid om de gegevens in uw TabularDatas
 
 Een [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) -object wordt gebruikt om de uitvoering van het experiment in te dienen. Azure Machine Learning heeft vooraf geconfigureerde schattingen voor algemene machine learning frameworks, evenals een algemene Estimator.
 
-Deze code maakt een Gene riek Estimator- `est`object, dat aangeeft
+Deze code maakt een Gene riek Estimator-object, `est` dat aangeeft
 
 * Een script Directory voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
 * Het trainings script, *train_titanic. py*.
-* De invoer gegevensset voor training, `titanic_ds`. `as_named_input()`is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen `titanic` naam in uw trainings script. 
+* De invoer gegevensset voor training, `titanic_ds` . `as_named_input()`is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen naam `titanic` in uw trainings script. 
 * Het reken doel voor het experiment.
 * De omgevings definitie voor het experiment.
 
@@ -130,9 +130,9 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>De Estimator configureren
 
-U kunt de gegevensset het beste als argument door geven bij het koppelen. Naast het door geven van de `inputs` gegevensset via de para meter in de Estimator, kunt u de `script_params` gegevensset ook door geven via en het gegevenspad (koppel punt) ophalen in uw trainings script via argumenten. Op deze manier kunt u hetzelfde trainings script gebruiken voor lokale fout opsporing en externe trainingen op elk cloud platform.
+U kunt de gegevensset het beste als argument door geven bij het koppelen. Naast het door geven van de gegevensset via de `inputs` para meter in de Estimator, kunt u de gegevensset ook door geven via `script_params` en het gegevenspad (koppel punt) ophalen in uw trainings script via argumenten. Op deze manier kunt u hetzelfde trainings script gebruiken voor lokale fout opsporing en externe trainingen op elk cloud platform.
 
-Een [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) Estimator-object wordt gebruikt om de run for scikit-experimenten te verzenden. Nadat u de uitvoering hebt verzonden, worden de gegevens bestanden `mnist` waarnaar de gegevensset verwijst, aan het reken doel gekoppeld. Meer informatie over training met de [SKlearn Estimator](how-to-train-scikit-learn.md).
+Een [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) Estimator-object wordt gebruikt om de run for scikit-experimenten te verzenden. Nadat u de uitvoering hebt verzonden, worden de gegevens bestanden waarnaar de gegevensset verwijst, `mnist` aan het reken doel gekoppeld. Meer informatie over training met de [SKlearn Estimator](how-to-train-scikit-learn.md).
 
 ```Python
 from azureml.train.sklearn import SKLearn

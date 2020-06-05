@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185986"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433038"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Aanbevolen procedures voor het maken van evaluaties
 
@@ -23,7 +23,7 @@ Dit artikel bevat een overzicht van de aanbevolen procedures voor het maken van 
 
 Evaluaties die u maakt met Azure Migrate server-evaluatie zijn een tijdgebonden moment opname van gegevens. Er zijn twee soorten evaluaties in Azure Migrate.
 
-**Beoordelings type** | **Nadere** | **Gegevens**
+**Beoordelings type** | **Details** | **Gegevens**
 --- | --- | ---
 **Op basis van prestaties** | Beoordelingen die aanbevelingen doen op basis van verzamelde prestatie gegevens | Aanbeveling voor VM-grootte is gebaseerd op gegevens van CPU en geheugen gebruik.<br/><br/> De aanbeveling van het schijf type (standaard HDD/SSD of Premium-Managed disks) is gebaseerd op de IOPS en door Voer van de on-premises schijven.
 **As-is on-premises** | Evaluaties die geen gebruik maken van prestatie gegevens voor aanbevelingen. | Aanbeveling voor VM-grootte is gebaseerd op de on-premises VM-grootte<br/><br> Het aanbevolen schijf type is gebaseerd op wat u selecteert in de instelling opslag type voor de evaluatie.
@@ -83,7 +83,18 @@ Als u computers toevoegt aan of verwijdert uit een groep nadat u een evaluatie h
 
 ### <a name="outdated-assessments"></a>Verouderde evaluaties
 
-Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd, wordt de evaluatie gemarkeerd als **verouderd**. Voer de evaluatie opnieuw uit om de wijzigingen weer te geven.
+Als er on-premises wijzigingen zijn aangebracht aan virtuele machines die zich in een groep bevinden die is geëvalueerd, wordt de evaluatie gemarkeerd als **verouderd**. Een evaluatie kan worden gemarkeerd als verouderd vanwege een of meer wijzigingen in de volgende eigenschappen:
+
+- Aantal processor kernen
+- Toegewezen geheugen
+- Opstart type of-firmware
+- Naam van besturings systeem, versie en architectuur
+- Aantal schijven
+- Aantal netwerk adapters
+- Wijziging in de schijf grootte (GB toegewezen)
+- Bijwerken naar NIC-eigenschappen. Voor beeld: Mac-adres wijzigingen, IP-adres toevoegen etc.
+
+Voer de evaluatie opnieuw uit (opnieuw**berekenen**) om de wijzigingen weer te geven.
 
 ### <a name="low-confidence-rating"></a>Beoordeling met lage betrouw baarheid
 

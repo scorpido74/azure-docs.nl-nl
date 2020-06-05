@@ -7,14 +7,14 @@ author: Blackmist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617736"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429746"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Zelf studie: een model trainen en implementeren vanuit de CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ U leert hoe u de volgende acties uitvoert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Als u de CLI-opdrachten in dit document vanuit uw **lokale omgeving**wilt gebruiken, hebt u de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)nodig.
 
@@ -45,7 +45,7 @@ U leert hoe u de volgende acties uitvoert:
 
 ## <a name="download-the-example-project"></a>Down load het voorbeeld project
 
-Voor deze zelf studie downloadt u [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) het project. De bestanden in de `examples/cli-train-deploy` map worden gebruikt door de stappen in deze zelf studie.
+Voor deze zelf studie downloadt u het [https://github.com/microsoft/MLOps](https://github.com/microsoft/MLOps) project. De bestanden in de `examples/cli-train-deploy` map worden gebruikt door de stappen in deze zelf studie.
 
 Als u een lokale kopie van de bestanden wilt ophalen, kunt u [een zip-archief downloaden](https://github.com/microsoft/MLOps/archive/master.zip)of de volgende Git-opdracht gebruiken om de opslag plaats te klonen:
 
@@ -70,7 +70,7 @@ De opslag plaats bevat de volgende bestanden, die worden gebruikt voor het imple
 * `aciDeploymentConfig.yml`: Een __configuratie__ bestand voor de implementatie. Dit bestand definieert de hosting omgeving die nodig is voor het model.
 * `inferenceConfig.json`: Een Afleidings __configuratie__ bestand. Dit bestand definieert de software omgeving die door de service wordt gebruikt om gegevens met het model te scoren.
 * `score.py`: Een python-script waarmee inkomende gegevens worden geaccepteerd, wordt gescoord met het model en retourneert een antwoord.
-* `scoring-env.yml`: De Conda-afhankelijkheden die nodig zijn om `score.py` het model en script uit te voeren.
+* `scoring-env.yml`: De Conda-afhankelijkheden die nodig zijn om het model en script uit te voeren `score.py` .
 * `testdata.json`: Een gegevens bestand dat kan worden gebruikt voor het testen van de geïmplementeerde webservice.
 
 ## <a name="connect-to-your-azure-subscription"></a>Verbinding maken met uw Azure-abonnement
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Een resource groep is een basis container van resources op het Azure-platform. Wanneer u met de Azure Machine Learning werkt, bevat de resource groep uw Azure Machine Learning-werk ruimte. Het bevat ook andere Azure-Services die worden gebruikt door de werk ruimte. Als u bijvoorbeeld uw model traint met behulp van een Cloud Compute-resource, wordt die resource in de resource groep gemaakt.
 
-Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang `<resource-group-name>` door de naam die u voor deze resource groep wilt gebruiken. Vervang `<location>` door de Azure-regio die u wilt gebruiken voor deze resource groep:
+Gebruik de volgende opdracht om __een nieuwe resource groep te maken__. Vervang door `<resource-group-name>` de naam die u voor deze resource groep wilt gebruiken. Vervang door `<location>` de Azure-regio die u wilt gebruiken voor deze resource groep:
 
 > [!TIP]
 > U moet een regio selecteren waar de Azure Machine Learning beschikbaar is. Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)voor meer informatie.
@@ -132,7 +132,7 @@ Zie [AZ Group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
-Gebruik de volgende opdracht om een nieuwe werk ruimte te maken. Vervang `<workspace-name>` door de naam die u voor deze werk ruimte wilt gebruiken. Vervang `<resource-group-name>` door de naam van de resource groep:
+Gebruik de volgende opdracht om een nieuwe werk ruimte te maken. Vervang door `<workspace-name>` de naam die u voor deze werk ruimte wilt gebruiken. Vervang door `<resource-group-name>` de naam van de resource groep:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -163,7 +163,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 
 ## <a name="connect-local-project-to-workspace"></a>Lokaal project verbinden met de werk ruimte
 
-Gebruik bij een Terminal-of opdracht prompt de volgende opdrachten om mappen te wijzigen `cli-train-deploy` in de map en vervolgens verbinding te maken met uw werk ruimte:
+Gebruik bij een Terminal-of opdracht prompt de volgende opdrachten om mappen te wijzigen in de `cli-train-deploy` map en vervolgens verbinding te maken met uw werk ruimte:
 
 ```azurecli-interactive
 cd ~/MLOps/examples/cli-train-deploy
@@ -203,16 +203,16 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-Met deze opdracht maakt u een nieuw reken `cpu-cluster`doel met de naam, met een maximum van vier knoop punten. De geselecteerde VM-grootte biedt een virtuele machine met een GPU-resource. Zie [VM-typen en-groottes] voor meer informatie over de grootte van de virtuele machine.
+Met deze opdracht maakt u een nieuw reken doel `cpu-cluster` met de naam, met een maximum van vier knoop punten. De geselecteerde VM-grootte biedt een virtuele machine met een GPU-resource. Zie [VM-typen en-groottes] voor meer informatie over de grootte van de virtuele machine.
 
 > [!IMPORTANT]
-> De naam van het COMPUTE-`cpu-cluster` doel (in dit geval) is belang rijk. ernaar wordt verwezen door het `.azureml/mnist.runconfig` bestand dat in de volgende sectie wordt gebruikt.
+> De naam van het Compute-doel ( `cpu-cluster` in dit geval) is belang rijk; er wordt naar verwezen door het `.azureml/mnist.runconfig` bestand dat in de volgende sectie wordt gebruikt.
 
 ## <a name="define-the-dataset"></a>De gegevensset definiëren
 
-Voor het trainen van een model kunt u de trainings gegevens opgeven met behulp van een gegevensset. Als u een gegevensset wilt maken op basis van de CLI, moet u een definitie bestand voor de gegevensset opgeven. Het `dataset.json` bestand dat in de opslag plaats wordt gegeven, maakt een nieuwe gegevensset met behulp van de MNIST-gegevens. De gegevensset die wordt gemaakt, `mnist-dataset`heeft de naam.
+Voor het trainen van een model kunt u de trainings gegevens opgeven met behulp van een gegevensset. Als u een gegevensset wilt maken op basis van de CLI, moet u een definitie bestand voor de gegevensset opgeven. Het `dataset.json` bestand dat in de opslag plaats wordt gegeven, maakt een nieuwe gegevensset met behulp van de MNIST-gegevens. De gegevensset die wordt gemaakt, heeft de naam `mnist-dataset` .
 
-Als u de gegevensset wilt registreren `dataset.json` met behulp van het bestand, gebruikt u de volgende opdracht:
+Als u de gegevensset wilt registreren met behulp van het `dataset.json` bestand, gebruikt u de volgende opdracht:
 
 ```azurecli-interactive
 az ml dataset register -f dataset.json --skip-validation
@@ -292,29 +292,29 @@ Wijzig de waarde van het `id` item zodat deze overeenkomt met de waarde die is g
 
 Deze YAML resulteert in de volgende acties tijdens de training:
 
-* Koppelt de gegevensset (op basis van de ID van de gegevensset) in de trainings omgeving en slaat het pad op naar het koppel punt in `mnist` de omgevings variabele.
-* Hiermee wordt de locatie van de gegevens (koppel punt) in de trainings omgeving door gegeven aan het `--data-folder` script met behulp van het argument.
+* Koppelt de gegevensset (op basis van de ID van de gegevensset) in de trainings omgeving en slaat het pad op naar het koppel punt in de `mnist` omgevings variabele.
+* Hiermee wordt de locatie van de gegevens (koppel punt) in de trainings omgeving door gegeven aan het script met behulp van het `--data-folder` argument.
 
-Het runconfig-bestand bevat ook informatie over het configureren van de omgeving die wordt gebruikt voor de uitvoering van de training. Als u dit bestand inspecteert, ziet u dat het verwijst naar `cpu-compute` het berekenings doel dat u eerder hebt gemaakt. Het bevat ook een lijst met het aantal knoop punten dat moet`"nodeCount": "4"`worden gebruikt bij het trainen `"condaDependencies"` () en een sectie met een lijst met de Python-pakketten die nodig zijn om het trainings script uit te voeren.
+Het runconfig-bestand bevat ook informatie over het configureren van de omgeving die wordt gebruikt voor de uitvoering van de training. Als u dit bestand inspecteert, ziet u dat het verwijst naar het `cpu-compute` berekenings doel dat u eerder hebt gemaakt. Het bevat ook een lijst met het aantal knoop punten dat moet worden gebruikt bij het trainen ( `"nodeCount": "4"` ) en een sectie met een `"condaDependencies"` lijst met de Python-pakketten die nodig zijn om het trainings script uit te voeren.
 
 > [!TIP]
-> Hoewel het mogelijk is om hand matig een runconfig-bestand te maken, is de oplossing in dit voor `generate-runconfig.py` beeld gemaakt met behulp van het bestand dat is opgenomen in de opslag plaats. Met dit bestand wordt een verwijzing naar de geregistreerde gegevensset opgehaald, wordt een uitvoeren van de configuratie programmatisch gemaakt en vervolgens opgeslagen in een bestand.
+> Hoewel het mogelijk is om hand matig een runconfig-bestand te maken, is de oplossing in dit voor beeld gemaakt met behulp van het bestand dat is `generate-runconfig.py` opgenomen in de opslag plaats. Met dit bestand wordt een verwijzing naar de geregistreerde gegevensset opgehaald, wordt een uitvoeren van de configuratie programmatisch gemaakt en vervolgens opgeslagen in een bestand.
 
 Zie [Compute-doelen voor model training instellen en gebruiken](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli)voor meer informatie over het uitvoeren van configuratie bestanden. Zie [runconfigschema. json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)voor een volledige JSON-verwijzing.
 
 ## <a name="submit-the-training-run"></a>De trainings uitvoering verzenden
 
-Gebruik de volgende opdracht om een training `cpu-cluster` te starten die wordt uitgevoerd op het reken doel:
+Gebruik de volgende opdracht om een training te starten die wordt uitgevoerd op het `cpu-cluster` reken doel:
 
 ```azurecli-interactive
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
 ```
 
-Met deze opdracht geeft u een naam op voor`myexperiment`het experiment (). In het experiment wordt informatie over deze uitvoering opgeslagen in de werk ruimte.
+Met deze opdracht geeft u een naam op voor het experiment ( `myexperiment` ). In het experiment wordt informatie over deze uitvoering opgeslagen in de werk ruimte.
 
-Met `-c mnist` de para meter `.azureml/mnist.runconfig` wordt het bestand opgegeven.
+Met de `-c mnist` para meter wordt het `.azureml/mnist.runconfig` bestand opgegeven.
 
-Met `-t` de para meter wordt een verwijzing naar deze uitvoering opgeslagen in een JSON-bestand en wordt gebruikt in de volgende stappen om het model te registreren en te downloaden.
+Met de `-t` para meter wordt een verwijzing naar deze uitvoering opgeslagen in een JSON-bestand en wordt gebruikt in de volgende stappen om het model te registreren en te downloaden.
 
 Als proces voor het uitvoeren van training worden gegevens uit de trainings sessie naar de externe Compute-resource gestreamd. Een deel van de informatie is vergelijkbaar met de volgende tekst:
 
@@ -325,9 +325,9 @@ Accuracy is 0.9185
 
 Deze tekst wordt vastgelegd in het trainings script en toont de nauw keurigheid van het model. Andere modellen hebben verschillende prestatie gegevens.
 
-Als u het trainings script inspecteert, ziet u dat het ook de alpha-waarde gebruikt wanneer het getrainde model `outputs/sklearn_mnist_model.pkl`wordt opgeslagen in.
+Als u het trainings script inspecteert, ziet u dat het ook de alpha-waarde gebruikt wanneer het getrainde model wordt opgeslagen in `outputs/sklearn_mnist_model.pkl` .
 
-Het model is opgeslagen in de `./outputs` map op het reken doel waar het is getraind. In dit geval wordt het Azure Machine Learning Compute-exemplaar in de Azure-Cloud. Het trainings proces uploadt automatisch de inhoud van de `./outputs` map van het berekenings doel waar training plaatsvindt naar uw Azure machine learning-werk ruimte. Het wordt opgeslagen als onderdeel van het experiment (`myexperiment` in dit voor beeld).
+Het model is opgeslagen in de `./outputs` map op het reken doel waar het is getraind. In dit geval wordt het Azure Machine Learning Compute-exemplaar in de Azure-Cloud. Het trainings proces uploadt automatisch de inhoud van de `./outputs` map van het berekenings doel waar training plaatsvindt naar uw Azure machine learning-werk ruimte. Het wordt opgeslagen als onderdeel van het experiment ( `myexperiment` in dit voor beeld).
 
 ## <a name="register-the-model"></a>Het model registreren
 
@@ -337,7 +337,7 @@ Als u het model rechtstreeks vanuit de opgeslagen versie in uw experiment wilt r
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_mnist_model.pkl" -t registeredmodel.json
 ```
 
-Met deze opdracht wordt `outputs/sklearn_mnist_model.pkl` het bestand dat door de training wordt gemaakt, geregistreerd als een `mymodel`nieuwe model registratie met de naam. De `--assets-path` verwijst naar een pad in een experiment. In dit geval worden het experiment en de uitvoerings informatie geladen vanuit het `runoutput.json` bestand dat wordt gemaakt door de opdracht training. Het `-t registeredmodel.json` maakt een JSON-bestand dat verwijst naar het nieuwe geregistreerde model dat is gemaakt met deze opdracht, en wordt gebruikt door andere CLI-opdrachten die met geregistreerde modellen werken.
+Met deze opdracht wordt het `outputs/sklearn_mnist_model.pkl` bestand dat door de training wordt gemaakt, geregistreerd als een nieuwe model registratie met de naam `mymodel` . De `--assets-path` verwijst naar een pad in een experiment. In dit geval worden het experiment en de uitvoerings informatie geladen vanuit het `runoutput.json` bestand dat wordt gemaakt door de opdracht training. Het `-t registeredmodel.json` maakt een JSON-bestand dat verwijst naar het nieuwe geregistreerde model dat is gemaakt met deze opdracht, en wordt gebruikt door andere CLI-opdrachten die met geregistreerde modellen werken.
 
 De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 
@@ -357,7 +357,7 @@ De uitvoer van deze opdracht is vergelijkbaar met de volgende JSON:
 }
 ```
 
-### <a name="model-versioning"></a>Model versie beheer
+### <a name="model-versioning"></a>Versiebeheer model
 
 Noteer het versie nummer dat voor het model is geretourneerd. De versie wordt telkens verhoogd wanneer u een nieuw model met deze naam registreert. U kunt het model bijvoorbeeld downloaden en registreren vanuit een lokaal bestand met behulp van de volgende opdrachten:
 
@@ -366,7 +366,7 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 ```
 
-Met de eerste opdracht wordt het geregistreerde model gedownload naar de huidige map. De naam van het `sklearn_mnist_model.pkl`bestand is, waarnaar wordt verwezen wanneer u het model hebt geregistreerd. Met de tweede opdracht wordt het lokale model`-p "sklearn_mnist_model.pkl"`() geregistreerd met dezelfde naam als de vorige registratie`mymodel`(). Deze keer wordt de versie weer gegeven met de JSON-gegevens die worden geretourneerd.
+Met de eerste opdracht wordt het geregistreerde model gedownload naar de huidige map. De naam van het bestand is `sklearn_mnist_model.pkl` , waarnaar wordt verwezen wanneer u het model hebt geregistreerd. Met de tweede opdracht wordt het lokale model ( `-p "sklearn_mnist_model.pkl"` ) geregistreerd met dezelfde naam als de vorige registratie ( `mymodel` ). Deze keer wordt de versie weer gegeven met de JSON-gegevens die worden geretourneerd.
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
@@ -379,18 +379,18 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 > [!NOTE]
 > Er wordt mogelijk een waarschuwing weer gegeven over het controleren van LocalWebservice of het maken van een docker-client is mislukt. U kunt dit veilig negeren, omdat u geen lokale webservice implementeert.
 
-Met deze opdracht wordt een nieuwe service met `myservice`de naam met versie 1 van het model dat u eerder hebt geregistreerd, geïmplementeerd.
+Met deze opdracht wordt een nieuwe service `myservice` met de naam met versie 1 van het model dat u eerder hebt geregistreerd, geïmplementeerd.
 
-Het `inferenceConfig.yml` bestand bevat informatie over het gebruik van het model voor demijnen. Er wordt bijvoorbeeld verwezen naar het vermelding script (`score.py`) en de software-afhankelijkheden.
+Het `inferenceConfig.yml` bestand bevat informatie over het gebruik van het model voor demijnen. Er wordt bijvoorbeeld verwezen naar het vermelding script ( `score.py` ) en de software-afhankelijkheden.
 
 Voor meer informatie over de structuur van dit bestand raadpleegt u het schema voor het afzien van de [configuratie](reference-azure-machine-learning-cli.md#inference-configuration-schema). Zie [modellen implementeren met de Azure machine learning](how-to-deploy-and-where.md#prepare-to-deploy)voor meer informatie over invoer scripts.
 
-De `aciDeploymentConfig.yml` beschrijving van de implementatie omgeving die wordt gebruikt voor het hosten van de service. De implementatie configuratie is specifiek voor het reken type dat u gebruikt voor de implementatie. In dit geval wordt een exemplaar van Azure container gebruikt. Zie het [implementatie configuratie schema](reference-azure-machine-learning-cli.md#deployment-configuration-schema)voor meer informatie.
+De `aciDeploymentConfig.yml` Beschrijving van de implementatie omgeving die wordt gebruikt voor het hosten van de service. De implementatie configuratie is specifiek voor het reken type dat u gebruikt voor de implementatie. In dit geval wordt een exemplaar van Azure container gebruikt. Zie het [implementatie configuratie schema](reference-azure-machine-learning-cli.md#deployment-configuration-schema)voor meer informatie.
 
 Het duurt enkele minuten voordat het implementatie proces is voltooid.
 
 > [!TIP]
-> In dit voor beeld wordt Azure Container Instances gebruikt. Implementaties naar ACI maken automatisch de benodigde ACI-resource. Als u in plaats daarvan naar de Azure Kubernetes-service wilt implementeren, moet u een AKS-cluster van tevoren maken en dit opgeven als `az ml model deploy` onderdeel van de opdracht. Voor een voor beeld van de implementatie van naar AKS raadpleegt u [een model implementeren in een Azure Kubernetes service-cluster](how-to-deploy-azure-kubernetes-service.md).
+> In dit voor beeld wordt Azure Container Instances gebruikt. Implementaties naar ACI maken automatisch de benodigde ACI-resource. Als u in plaats daarvan naar de Azure Kubernetes-service wilt implementeren, moet u een AKS-cluster van tevoren maken en dit opgeven als onderdeel van de `az ml model deploy` opdracht. Voor een voor beeld van de implementatie van naar AKS raadpleegt u [een model implementeren in een Azure Kubernetes service-cluster](how-to-deploy-azure-kubernetes-service.md).
 
 Na enkele minuten wordt informatie die lijkt op de volgende JSON geretourneerd:
 
@@ -415,7 +415,7 @@ Het `scoringUri` resultaat van de implementatie is het rest-eind punt voor een m
 az ml service show -n myservice
 ```
 
-Met deze opdracht wordt hetzelfde JSON-document geretourneerd, `scoringUri`met inbegrip van de.
+Met deze opdracht wordt hetzelfde JSON-document geretourneerd, met inbegrip van de `scoringUri` .
 
 Het REST-eind punt kan worden gebruikt om gegevens naar de service te verzenden. Zie [een Azure machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md) voor meer informatie over het maken van een client toepassing die gegevens naar de service verzendt
 
@@ -434,7 +434,7 @@ az ml service run -n myservice -d @testdata.json
 > az ml service run -n myservice -d `@testdata.json
 > ```
 
-Het antwoord van de opdracht is vergelijkbaar met `[ 3 ]`.
+Het antwoord van de opdracht is vergelijkbaar met `[ 3 ]` .
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -465,7 +465,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de ID van het verwij
 
 Als u niet van plan bent om de resources te gebruiken die u hebt gemaakt, verwijdert u deze zodat u geen extra kosten in rekening brengt.
 
-Gebruik de volgende opdracht om de resource groep en alle Azure-resources die in dit document zijn gemaakt, te verwijderen. Vervang `<resource-group-name>` door de naam van de resource groep die u eerder hebt gemaakt:
+Gebruik de volgende opdracht om de resource groep en alle Azure-resources die in dit document zijn gemaakt, te verwijderen. Vervang door `<resource-group-name>` de naam van de resource groep die u eerder hebt gemaakt:
 
 ```azurecli-interactive
 az group delete -g <resource-group-name> -y

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 817c03780b91e39d43a5348f84105236ee811cc8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343615"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433640"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Vereisten voor de Azure HPC-cache
 
@@ -25,11 +25,11 @@ Bekijk deze Video's voor een snel overzicht van de onderdelen van het systeem en
 
 * [Hoe werkt het](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) ? in dit artikel wordt uitgelegd hoe Azure HPC cache communiceert met opslag en clients
 
-  [![Video miniatuur afbeelding: Azure HPC cache: Hoe werkt het? (Klik hier om de video pagina te bezoeken)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+  [![Video miniatuur afbeelding: Azure HPC cache: Hoe werkt het? (Klik hier om de video pagina te bezoeken)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
 * [Vereisten: hierin](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) worden de vereisten voor NAS-opslag, Azure Blob-opslag, netwerk toegang en client toegang beschreven
 
-  [![afbeelding van video miniatuur: Azure HPC-cache: vereisten (Klik om de video-pagina te bezoeken)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+  [![afbeelding van video miniatuur: Azure HPC-cache: vereisten (Klik om de video-pagina te bezoeken)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
 Lees de rest van dit artikel voor specifieke aanbevelingen.
 

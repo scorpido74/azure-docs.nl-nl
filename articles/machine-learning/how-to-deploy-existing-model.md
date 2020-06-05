@@ -5,17 +5,17 @@ description: Meer informatie over hoe u Azure Machine Learning kunt gebruiken me
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf80a509b1a8100aaa00bf6a2fdeedbbdf143af
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472372"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433908"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Een bestaand model gebruiken met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,9 +36,9 @@ Als u een machine learning model hebt dat is getraind buiten Azure Machine Learn
 * Een Azure Machine Learning-werkruimte. Zie [een werk ruimte maken](how-to-manage-workspace.md)voor meer informatie.
 
     > [!TIP]
-    > In de python-voor beelden in dit artikel `ws` wordt ervan uitgegaan dat de variabele is ingesteld op uw Azure machine learning-werk ruimte.
+    > In de python-voor beelden in dit artikel wordt ervan uitgegaan dat de `ws` variabele is ingesteld op uw Azure machine learning-werk ruimte.
     >
-    > De CLI-voor beelden gebruiken een `myworkspace` tijdelijke `myresourcegroup`aanduiding van en. Vervang deze door de naam van uw werk ruimte en de resource groep waarin deze zich bevindt.
+    > De CLI-voor beelden gebruiken een tijdelijke aanduiding van `myworkspace` en `myresourcegroup` . Vervang deze door de naam van uw werk ruimte en de resource groep waarin deze zich bevindt.
 
 * De [Azure machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -47,11 +47,11 @@ Als u een machine learning model hebt dat is getraind buiten Azure Machine Learn
 * Een getraind model. Het model moet persistent zijn gemaakt voor een of meer bestanden in uw ontwikkel omgeving.
 
     > [!NOTE]
-    > Voor het registreren van een model dat is getraind buiten Azure Machine Learning, gebruiken de voorbeeld code fragmenten in dit artikel de modellen die zijn gemaakt door het Twitter [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)sentiment Analysis-project van Paolo Ripamonti:.
+    > Voor het registreren van een model dat is getraind buiten Azure Machine Learning, gebruiken de voorbeeld code fragmenten in dit artikel de modellen die zijn gemaakt door het Twitter sentiment Analysis-project van Paolo Ripamonti: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
 
 ## <a name="register-the-models"></a>Model (len) registreren
 
-Als u een model registreert, kunt u meta gegevens over modellen in uw werk ruimte opslaan, versie en bijhouden. In de volgende python-en CLI-voor `models` beelden bevat de `model.h5`map `model.w2v`de `encoder.pkl`bestanden, `tokenizer.pkl` , en. In dit voor beeld worden de bestanden in de `models` map geüpload als een nieuwe model registratie met `sentiment`de naam:
+Als u een model registreert, kunt u meta gegevens over modellen in uw werk ruimte opslaan, versie en bijhouden. In de volgende python-en CLI-voor beelden `models` bevat de map de `model.h5` bestanden,, `model.w2v` `encoder.pkl` en `tokenizer.pkl` . In dit voor beeld worden de bestanden in de `models` map geüpload als een nieuwe model registratie met de naam `sentiment` :
 
 ```python
 from azureml.core.model import Model
@@ -70,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> U kunt ook de objecten `tags` add `properties` en Dictionary instellen op het geregistreerde model. Deze waarden kunnen later worden gebruikt om een specifiek model te identificeren. Bijvoorbeeld het gebruikte Framework, de trainings parameters, enzovoort.
+> U kunt ook `tags` `properties` de objecten add en Dictionary instellen op het geregistreerde model. Deze waarden kunnen later worden gebruikt om een specifiek model te identificeren. Bijvoorbeeld het gebruikte Framework, de trainings parameters, enzovoort.
 
 Zie voor meer informatie de verwijzing [AZ ml model REGI ster](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) .
 
@@ -81,7 +81,7 @@ Zie [machine learning modellen beheren, implementeren en bewaken](concept-model-
 
 De configuratie voor afwijzen bepaalt de omgeving die wordt gebruikt om het geïmplementeerde model uit te voeren. De configuratie voor het afmaken van een deservering verwijst naar de volgende entiteiten die worden gebruikt om het model uit te voeren wanneer het wordt geïmplementeerd:
 
-* Een invoerscript. Dit bestand (met `score.py`de naam) laadt het model wanneer de geïmplementeerde service wordt gestart. Het is ook verantwoordelijk voor het ontvangen van gegevens, het door geven aan het model en het retour neren van een antwoord.
+* Een invoerscript. Dit bestand (met de naam `score.py` ) laadt het model wanneer de geïmplementeerde service wordt gestart. Het is ook verantwoordelijk voor het ontvangen van gegevens, het door geven aan het model en het retour neren van een antwoord.
 * Een Azure Machine Learning [omgeving](how-to-use-environments.md). Een omgeving definieert de software afhankelijkheden die nodig zijn voor het uitvoeren van het model en het vermeldings script.
 
 In het volgende voor beeld ziet u hoe u de SDK gebruikt om een omgeving te maken en deze vervolgens te gebruiken met een Afleidings configuratie:
@@ -146,12 +146,12 @@ Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.
 
 ### <a name="entry-script"></a>Invoer script
 
-Het invoer script heeft slechts twee vereiste functies, `init()` en `run(data)`. Deze functies worden gebruikt voor het initialiseren van de service bij het opstarten en het uitvoeren van het model met behulp van aanvraag gegevens die door een client worden door gegeven. De rest van het script zorgt voor het laden en uitvoeren van de model (len).
+Het invoer script heeft slechts twee vereiste functies, `init()` en `run(data)` . Deze functies worden gebruikt voor het initialiseren van de service bij het opstarten en het uitvoeren van het model met behulp van aanvraag gegevens die door een client worden door gegeven. De rest van het script zorgt voor het laden en uitvoeren van de model (len).
 
 > [!IMPORTANT]
 > Er is geen algemeen invoer script dat voor alle modellen werkt. Het is altijd specifiek voor het model dat wordt gebruikt. Het moet inzicht krijgen in het laden van het model, de gegevens indeling die het model verwacht en hoe u gegevens met behulp van het model kunt scoren.
 
-De volgende python-code is een voorbeeld script (`score.py`):
+De volgende python-code is een voorbeeld script ( `score.py` ):
 
 ```python
 import os
@@ -258,7 +258,7 @@ Implementatie op een ander reken doel, zoals de Azure Kubernetes-service in de A
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
-In het volgende voor beeld wordt informatie over het geregistreerde `sentiment`model geladen en vervolgens geïmplementeerd als een service met de `sentiment`naam. Tijdens de implementatie worden de configuratie-en implementatie configuratie voor deinterferenties gebruikt om de service omgeving te maken en te configureren:
+In het volgende voor beeld wordt informatie over het geregistreerde model geladen `sentiment` en vervolgens geïmplementeerd als een service met de naam `sentiment` . Tijdens de implementatie worden de configuratie-en implementatie configuratie voor deinterferenties gebruikt om de service omgeving te maken en te configureren:
 
 ```python
 from azureml.core.model import Model
@@ -273,7 +273,7 @@ print("scoring URI: " + service.scoring_uri)
 
 Zie de naslag gids voor [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) voor meer informatie.
 
-Gebruik de volgende opdracht om het model te implementeren vanuit de CLI. Met deze opdracht wordt versie 1 van het geregistreerde model (`sentiment:1`) geïmplementeerd met behulp van de inschakel-en implementatie `inferenceConfig.json` configuratie `deploymentConfig.json` die is opgeslagen in de bestanden en:
+Gebruik de volgende opdracht om het model te implementeren vanuit de CLI. Met deze opdracht wordt versie 1 van het geregistreerde model ( `sentiment:1` ) geïmplementeerd met behulp van de inschakel-en implementatie configuratie die is opgeslagen in de `inferenceConfig.json` `deploymentConfig.json` bestanden en:
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

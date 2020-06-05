@@ -5,17 +5,17 @@ description: Toegang tot Azure Machine Learning-werk ruimten beheren met Azure-f
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 22136efc493b4838a8f538091d6272e3c167510e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981962"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434727"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
@@ -28,7 +28,7 @@ Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-w
 Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit artikel toestaat.
 
 > [!TIP]
-> Wanneer u de netwerk regel toevoegt, stelt u het __protocol__ in op wille keurige en de poorten `*`.
+> Wanneer u de netwerk regel toevoegt, stelt u het __protocol__ in op wille keurige en de poorten `*` .
 >
 > Zie [Azure firewall implementeren en configureren](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)voor meer informatie over het configureren van Azure firewall.
 
@@ -36,7 +36,7 @@ Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit
 
 De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodig zijn om uw werk ruimte goed te laten functioneren.
 
-| **Hostnaam** | **Doel** |
+| **Hostnaam** | **Functie** |
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Trainings clusters |
 | **ml.azure.com** | Azure Machine Learning Studio |
@@ -55,7 +55,7 @@ De hosts in deze sectie zijn eigendom van micro soft en bieden services die nodi
 
 De hosts in deze sectie worden gebruikt voor het installeren van Python-pakketten. Ze zijn vereist tijdens de ontwikkeling, training en implementatie. 
 
-| **Hostnaam** | **Doel** |
+| **Hostnaam** | **Functie** |
 | ---- | ---- |
 | **anaconda.com** | Gebruikt bij het installeren van Conda-pakketten |
 | **pypi.org** | Gebruikt bij het installeren van PIP-pakketten |
@@ -67,7 +67,7 @@ De hosts in deze sectie worden gebruikt voor het installeren van R-pakketten. Ze
 > [!IMPORTANT]
 > Intern maakt de R SDK voor Azure Machine Learning gebruik van Python-pakketten. Daarom moet u ook python-hosts via de Firewall toestaan.
 
-| **Hostnaam** | **Doel** |
+| **Hostnaam** | **Functie** |
 | ---- | ---- |
 | **cloud.r-project.org** | Wordt gebruikt bij het installeren van KRANs pakketten. |
 

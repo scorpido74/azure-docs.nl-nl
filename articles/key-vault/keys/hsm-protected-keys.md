@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: 011ef67e5dbbf5b391e8bdaad20a42688022a0a9
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 5433d9746cd64d0e942e056cfcd1940eba35c77d
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296762"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417919"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Met HSM beveiligde sleutels importeren in Key Vault
 
@@ -34,7 +34,7 @@ Het overdragen van met HSM beveiligde sleutels naar Key Vault wordt ondersteund 
 |Leveranciers naam|Leveranciers type|Ondersteunde HSM-modellen|Ondersteunde methode voor het overdragen van HSM-sleutels|
 |---|---|---|---|
 |[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|Fabricage<br/>HSM as a Service|<ul><li>nShield-serie van Hsm's</li><li>nShield als een service</ul>|**Methode 1:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (met sterke Attestation voor sleutel import en HSM-validatie)<br/>**Methode 2:** de [New BYOK-methode gebruiken](hsm-protected-keys-byok.md) |
-|Thales|Fabrikant|<ul><li>SafeNet Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
+|Thales|Fabrikant|<ul><li>Luna HSM 7-familie met firmware versie 7,3 of hoger</li></ul>| [De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
 |Fortanix|Fabricage<br/>HSM as a Service|<ul><li>Zelf-verdediging van de service voor sleutel beheer (SDKMS)</li><li>Equinix SmartKey</li></ul>|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
 |Marvell|Fabrikant|Alle LiquidSecurity-Hsm's met<ul><li>Firmware versie 2.0.4 of hoger</li><li>Firmware versie 3,2 of hoger</li></ul>|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|
 |Cryptomathic|ISV (Enter prise Key Management System)|Meerdere HSM-merken en-modellen, inclusief<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Zie [Cryptomathic-site voor meer informatie](https://www.cryptomathic.com/azurebyok)|[De nieuwe methode BYOK gebruiken](hsm-protected-keys-byok.md)|

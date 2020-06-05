@@ -8,15 +8,15 @@ ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58ea58ebf6fdc7d8521d204ac42fcbadeca39a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d018d87873d8b68f51363ddfd904d783dd5d1e0
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189297"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433748"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Hyper parameters voor uw model afstemmen met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Discrete Hyper parameters zijn opgegeven als een `choice` onder discrete waarden
 
 * een of meer door komma's gescheiden waarden
 * een `range` object
-* wille `list` keurig wille keurig object
+* wille keurig wille keurig `list` object
 
 
 ```Python
@@ -91,7 +91,7 @@ Een voor beeld van een definitie van een parameter ruimte:
     }
 ```
 
-Deze code definieert een zoek ruimte met twee para `learning_rate` meters `keep_probability`: en. `learning_rate`heeft een normale verdeling met gemiddelde waarde 10 en een standaard afwijking van 3. `keep_probability`heeft een uniforme distributie met een minimum waarde van 0,05 en een maximum waarde van 0,1.
+Deze code definieert een zoek ruimte met twee para meters: `learning_rate` en `keep_probability` . `learning_rate`heeft een normale verdeling met gemiddelde waarde 10 en een standaard afwijking van 3. `keep_probability`heeft een uniforme distributie met een minimum waarde van 0,05 en een maximum waarde van 0,1.
 
 ### <a name="sampling-the-hyperparameter-space"></a>De afstemming ruimte bemonsteren
 
@@ -119,7 +119,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>Raster sampling
 
-[Raster sampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) voert een eenvoudige raster zoekactie uit op alle bruikbare waarden in de gedefinieerde zoek ruimte. Het kan alleen worden gebruikt met Hyper parameters die is `choice`opgegeven met. De volgende ruimte bevat bijvoorbeeld in totaal zes voor beelden:
+[Raster sampling](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?view=azure-ml-py) voert een eenvoudige raster zoekactie uit op alle bruikbare waarden in de gedefinieerde zoek ruimte. Het kan alleen worden gebruikt met Hyper parameters die is opgegeven met `choice` . De volgende ruimte bevat bijvoorbeeld in totaal zes voor beelden:
 
 ```Python
 from azureml.train.hyperdrive import GridParameterSampling
@@ -136,7 +136,7 @@ param_sampling = GridParameterSampling( {
 
 Wanneer u Bayesiaanse-steek proeven gebruikt, heeft het aantal gelijktijdige uitvoeringen gevolgen voor de effectiviteit van het afstemmings proces. Normaal gesp roken kan een kleiner aantal gelijktijdige uitvoeringen leiden tot een betere steek proef van de convergentie, omdat de kleinere mate van parallellisme het aantal uitvoeringen verhoogt dat van eerder voltooide uitvoeringen voor komt.
 
-Bayesiaanse-steek proeven `choice`bieden `uniform`alleen ondersteuning `quniform` voor, en distributies in de zoek ruimte.
+Bayesiaanse-steek proeven bieden alleen ondersteuning voor `choice` , `uniform` en `quniform` distributies in de zoek ruimte.
 
 ```Python
 from azureml.train.hyperdrive import BayesianParameterSampling
@@ -148,7 +148,7 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> Bayesiaanse-steek proeven bieden geen ondersteuning voor het beleid voor vroegtijdige beëindiging (Zie [een beleid voor vroegtijdige beëindiging opgeven](#specify-early-termination-policy)). Bij gebruik van Bayesiaanse parameter sampling, `early_termination_policy = None`set of out de `early_termination_policy` para meter.
+> Bayesiaanse-steek proeven bieden geen ondersteuning voor het beleid voor vroegtijdige beëindiging (Zie [een beleid voor vroegtijdige beëindiging opgeven](#specify-early-termination-policy)). Bij gebruik van Bayesiaanse parameter sampling, set `early_termination_policy = None` of out de `early_termination_policy` para meter.
 
 <a name='specify-primary-metric-to-optimize'/>
 
@@ -190,7 +190,7 @@ Het afsluiten van de uitvoering van het programma wordt niet goed uitgevoerd met
 
 Wanneer u een beleid voor vroegtijdige beëindiging gebruikt, kunt u de volgende para meters configureren die bepalen wanneer een beleid wordt toegepast:
 
-* `evaluation_interval`: de frequentie waarmee het beleid wordt toegepast. Telkens wanneer het trainings script de primaire metriek registreert als één interval. Daarom wordt `evaluation_interval` het beleid door een van 1 toegepast telkens wanneer het trainings script de primaire metriek rapporteert. `evaluation_interval` Met 2 wordt het beleid elke keer toegepast wanneer het trainings script de primaire metriek rapporteert. Als u niets opgeeft `evaluation_interval` , wordt standaard ingesteld op 1.
+* `evaluation_interval`: de frequentie waarmee het beleid wordt toegepast. Telkens wanneer het trainings script de primaire metriek registreert als één interval. Daarom `evaluation_interval` wordt het beleid door een van 1 toegepast telkens wanneer het trainings script de primaire metriek rapporteert. `evaluation_interval`Met 2 wordt het beleid elke keer toegepast wanneer het trainings script de primaire metriek rapporteert. Als u niets opgeeft, `evaluation_interval` wordt standaard ingesteld op 1.
 * `delay_evaluation`: de eerste beleids evaluatie voor een opgegeven aantal intervallen wordt uitgesteld. Het is een optionele para meter waarmee alle configuraties kunnen worden uitgevoerd voor een eerste minimum aantal intervallen, waardoor het voor tijdig beëindigen van de trainings uitvoeringen wordt voor komen. Indien opgegeven, wordt het beleid toegepast op elk veelvoud van evaluation_interval dat groter is dan of gelijk is aan delay_evaluation.
 
 Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige beëindiging.
@@ -199,9 +199,9 @@ Azure Machine Learning ondersteunt de volgende beleids regels voor vroegtijdige 
 
 [Bandit](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?view=azure-ml-py#definition) is een afsluitings beleid op basis van een toegestane factor en een toegestane vertragings hoeveelheid en evaluatie-interval. Het beleid verbreekt alle uitvoeringen waarbij de primaire metriek zich niet binnen het opgegeven aantal toegestane vertragings factoren bevindt met betrekking tot de best presterende uitvoering van de training. Hierbij worden de volgende configuratie parameters gebruikt:
 
-* `slack_factor`of `slack_amount`: de toegestane vertraging met betrekking tot de best presterende trainings uitvoering. `slack_factor`Hiermee geeft u de toegestane vertraging als een ratio op. `slack_amount`Hiermee geeft u de toegestane vertraging als een absoluut bedrag op in plaats van een ratio.
+* `slack_factor`of `slack_amount` : de toegestane vertraging met betrekking tot de best presterende trainings uitvoering. `slack_factor`Hiermee geeft u de toegestane vertraging als een ratio op. `slack_amount`Hiermee geeft u de toegestane vertraging als een absoluut bedrag op in plaats van een ratio.
 
-    Stel dat er een Bandit-beleid wordt toegepast tijdens interval 10. Stel dat de best presterende uitvoering bij interval 10 een primaire metriek 0,8 heeft gerapporteerd met een doel om de primaire metriek te maximaliseren. Als het beleid is opgegeven met een `slack_factor` van 0,2, worden alle trainingen uitgevoerd, waarvan de beste metrische waarde bij interval 10 kleiner is dan 0,66 (0,8/`slack_factor`(1 +)). Als u in plaats daarvan het beleid hebt opgegeven `slack_amount` met een van 0,2, worden alle trainingen uitgevoerd, waarvan de aanbevolen metrische waarde bij interval 10 kleiner is `slack_amount`dan 0,6 (0,8).
+    Stel dat er een Bandit-beleid wordt toegepast tijdens interval 10. Stel dat de best presterende uitvoering bij interval 10 een primaire metriek 0,8 heeft gerapporteerd met een doel om de primaire metriek te maximaliseren. Als het beleid is opgegeven met een `slack_factor` van 0,2, worden alle trainingen uitgevoerd, waarvan de beste metrische waarde bij interval 10 kleiner is dan 0,66 (0,8/(1 + `slack_factor` )). Als u in plaats daarvan het beleid hebt opgegeven met een `slack_amount` van 0,2, worden alle trainingen uitgevoerd, waarvan de aanbevolen metrische waarde bij interval 10 kleiner is dan 0,6 (0,8 `slack_amount` ).
 * `evaluation_interval`: de frequentie voor het Toep assen van het beleid (optionele para meter).
 * `delay_evaluation`: de eerste beleids evaluatie wordt uitgesteld voor een opgegeven aantal intervallen (optionele para meter).
 
@@ -257,7 +257,7 @@ Als er geen beleid is opgegeven, kan de afstemming-afstemmings service alle trai
 
 ### <a name="picking-an-early-termination-policy"></a>Een beleid voor vroegtijdige beëindiging kiezen
 
-* Als u op zoek bent naar een conservatief beleid waarmee u rekening moet houden zonder het beëindigen van toezeggings taken, kunt u `evaluation_interval` een beleid `delay_evaluation` voor mediaan stoppen gebruiken met 1 en 5. Dit zijn voorzichtige instellingen, die ongeveer 25%-35% besparingen kunnen bieden zonder verlies van primaire metriek (op basis van de evaluatie gegevens).
+* Als u op zoek bent naar een conservatief beleid waarmee u rekening moet houden zonder het beëindigen van toezeggings taken, kunt u een beleid voor mediaan stoppen gebruiken met `evaluation_interval` 1 en `delay_evaluation` 5. Dit zijn voorzichtige instellingen, die ongeveer 25%-35% besparingen kunnen bieden zonder verlies van primaire metriek (op basis van de evaluatie gegevens).
 * Als u op zoek bent naar meer agressieve besparingen van vroegtijdige beëindiging, kunt u Bandit-beleid gebruiken met een striktere (kleinere) toegestane vertraging of selectie beleid voor Afkap ping met een grotere Afbrekings percentage.
 
 ## <a name="allocate-resources"></a>Resources toewijzen
@@ -288,7 +288,7 @@ Met deze code wordt het afstemming-afstemmings experiment geconfigureerd voor ge
 
 ## <a name="configure-experiment"></a>Experiment configureren
 
-[Configureer uw afstemming-afstemmings](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) experiment met behulp van de gedefinieerde afstemming Zoek ruimte, het beleid voor vroegtijdige beëindiging, de primaire metriek en de resource toewijzing van de bovenstaande secties. Geef daarnaast een `estimator` naam op die wordt aangeroepen met de steek proef van de Hyper parameters. De `estimator` beschrijving van het trainings script dat u uitvoert, de resources per taak (single of multi-GPU) en het reken doel dat moet worden gebruikt. Omdat gelijktijdigheid voor uw afstemming-afstemmings experiment wordt gegatedeerd op de beschik bare resources, moet `estimator` u ervoor zorgen dat het reken doel dat is opgegeven in de voldoende resources heeft voor de gewenste gelijktijdigheid. (Zie [modellen trainen](how-to-train-ml-models.md)voor meer informatie over schattingen.)
+[Configureer uw afstemming-afstemmings](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?view=azure-ml-py) experiment met behulp van de gedefinieerde afstemming Zoek ruimte, het beleid voor vroegtijdige beëindiging, de primaire metriek en de resource toewijzing van de bovenstaande secties. Geef daarnaast een `estimator` naam op die wordt aangeroepen met de steek proef van de Hyper parameters. De `estimator` Beschrijving van het trainings script dat u uitvoert, de resources per taak (single of multi-GPU) en het reken doel dat moet worden gebruikt. Omdat gelijktijdigheid voor uw afstemming-afstemmings experiment wordt gegatedeerd op de beschik bare resources, moet u ervoor zorgen dat het reken doel dat is opgegeven in de `estimator` voldoende resources heeft voor de gewenste gelijktijdigheid. (Zie [modellen trainen](how-to-train-ml-models.md)voor meer informatie over schattingen.)
 
 Uw afstemming-afstemmings experiment configureren:
 
@@ -313,7 +313,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name`is de naam die u toewijst aan uw afstemming- `workspace` afstemmings experiment en is de werk ruimte waarin u het experiment wilt maken (Zie [Hoe werkt Azure machine learning?](concept-azure-machine-learning-architecture.md)) voor meer informatie over experimenten.
+`experiment_name`is de naam die u toewijst aan uw afstemming-afstemmings experiment en `workspace` is de werk ruimte waarin u het experiment wilt maken (Zie [hoe werkt Azure machine learning?](concept-azure-machine-learning-architecture.md)) voor meer informatie over experimenten.
 
 ## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>Start uw afstemming tuning-experiment warme (optioneel)
 
@@ -339,7 +339,7 @@ resume_child_run_2 = Run(experiment, "resume_child_run_ID_2")
 child_runs_to_resume = [resume_child_run_1, resume_child_run_2]
 ```
 
-U kunt uw afstemming-afstemmings experiment configureren om te beginnen met een vorig experiment of door de uitvoering van afzonderlijke `resume_from` trainingen `resume_child_runs` te hervatten met behulp van de optionele para meters en in de configuratie:
+U kunt uw afstemming-afstemmings experiment configureren om te beginnen met een vorig experiment of door de uitvoering van afzonderlijke trainingen te hervatten met behulp van de optionele para meters `resume_from` en `resume_child_runs` in de configuratie:
 
 ```Python
 from azureml.train.hyperdrive import HyperDriveConfig

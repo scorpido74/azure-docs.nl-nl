@@ -1,21 +1,21 @@
 ---
-title: Modellen implementeren voor reken instanties
+title: HDeploy modellen voor het berekenen van instanties
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het implementeren van uw Azure Machine Learning modellen als een webservice met behulp van reken instanties.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07afeba8ab481da6a23862dee187c8c72df19f3b
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756589"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429580"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Een model implementeren om reken instanties te Azure Machine Learning
 
@@ -39,7 +39,7 @@ Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen in
 
 1. Selecteer uw Azure Machine Learning Reken instanties in [Azure machine learning Studio](https://ml.azure.com).
 
-1. Open de `samples-*` submap en open `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Als het notitie blok eenmaal is geopend, voert u het uit.
+1. Open de `samples-*` submap en open `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` . Als het notitie blok eenmaal is geopend, voert u het uit.
 
     ![Scherm afbeelding van de actieve lokale service op notebook](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
@@ -47,9 +47,9 @@ Een voor beeld van een notebook dat lokale implementaties bevat, is opgenomen in
 
     ![Scherm afbeelding van de actieve lokale service poort](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
-1. Als u de service van een reken instantie wilt testen, `https://localhost:<local_service.port>` gebruikt u de URL. Als u wilt testen vanaf een externe client, haalt u de open bare URL op van de service die wordt uitgevoerd op het reken exemplaar. De open bare URL kan worden bepaald met behulp van de volgende formule. 
-    * VM van notebook `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`:. 
-    * Reken instantie: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
+1. Als u de service van een reken instantie wilt testen, gebruikt u de `https://localhost:<local_service.port>` URL. Als u wilt testen vanaf een externe client, haalt u de open bare URL op van de service die wordt uitgevoerd op het reken exemplaar. De open bare URL kan worden bepaald met behulp van de volgende formule. 
+    * VM van notebook: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
+    * Reken instantie: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
     Bijvoorbeeld: 
     * VM van notebook:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
