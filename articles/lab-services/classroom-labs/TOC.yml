@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: Ondersteuningsinformatie opgeven (labaccounteigenaar)
           href: lab-account-owner-support-information.md
+        - name: Kostenbeheer voor labs
+          href: cost-management-guide.md
     - name: Leslokaallabs maken en configureren (onderwijzer)
       items:
         - name: Leslokaallabs maken en beheren

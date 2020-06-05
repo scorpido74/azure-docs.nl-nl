@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: Virtuele machine maken - Azure CLI
       href: quick-create-cli.md
+    - name: Virtuele machine maken - ARM-sjabloon
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: Zelfstudies
   items:
     - name: 1 - Een virtuele machine maken/beheren

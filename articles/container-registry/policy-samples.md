@@ -1,18 +1,18 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Container Registry
 description: Een overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Container Registry. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-samples
-ms.openlocfilehash: fe29916f0185dd9d044d20cf75619d94f8a3c7d8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fdc379c6ab7545e51ce4efbea0ecfd99cbb553bf
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658271"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235663"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-container-registry"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Container Registry
 

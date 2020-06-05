@@ -3,12 +3,12 @@ title: "Zelfstudie: Query's beheren in Azure-portal"
 description: In deze zelfstudie maakt u een Resource Graph-query en deelt u de nieuwe query met anderen in het Azure-portal.
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637753"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148018"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Zelfstudie: Een Azure Resource Graph-query maken en delen in het Azure-portal
 
@@ -44,7 +44,7 @@ Persoonlijke query's zijn alleen toegankelijk en zichtbaar voor het account dat 
 
    Selecteer **Query uitvoeren** om de zoekresultaten in het onderste deelvenster weer te geven.
 
-   Zie [Voorbeelden, aantal virtuele machines per type besturingssysteem](../samples/starter.md#count-virtual-machines-by-os-type) voor meer informatie over deze query.
+   Zie [Voorbeelden, aantal virtuele machines per type besturingssysteem](../samples/starter.md#count-os) voor meer informatie over deze query.
 
 
 1. Selecteer **Opslaan** of **Opslaan als**, voer **Aantal vm's per besturingssysteem** in als naam en laat het type staan op **Persoonlijke query**. Selecteer dan **Opslaan** aan de onderkant van het deelvenster **Query opslaan**. De titel van het tabblad verandert van **Query 1** naar **Aantal vm's per besturingssysteem**.
@@ -76,7 +76,7 @@ Om een nieuwe gedeelde query te maken, volgt u deze stappen:
     
    Selecteer **Query uitvoeren** om de zoekresultaten in het onderste deelvenster weer te geven.
 
-   Zie [Voorbeelden, aantal virtuele machines per type besturingssysteem](../samples/starter.md#count-virtual-machines-by-os-type) voor meer informatie over deze query.
+   Zie [Voorbeelden, aantal virtuele machines per type besturingssysteem](../samples/starter.md#count-os) voor meer informatie over deze query.
 
 1. Selecteer **Opslaan** of **Opslaan als**.
 

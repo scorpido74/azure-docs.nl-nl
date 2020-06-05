@@ -78,7 +78,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Concepten
   items:
-    - name: Authentication
+    - name: Verificatie
       href: concepts/authentication.md
     - name: Relaties tussen ankers
       href: concepts/anchor-relationships-way-finding.md
@@ -100,7 +100,9 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: SDK voor HoloLens C++/WinRT
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
-- name: Bronnen
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
+- name: Resources
   items:
     - name: Releaseopmerkingen
       href: 'https://github.com/Azure/azure-spatial-anchors-samples/releases'

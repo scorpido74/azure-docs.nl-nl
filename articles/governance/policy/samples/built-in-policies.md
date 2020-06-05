@@ -1,15 +1,15 @@
 ---
 title: Lijst met ingebouwde beleidsdefinities
 description: Lijst met ingebouwde beleidsdefinities voor Azure Policy. Categorieën zijn tags, naleving van regelgeving, Key Vault, Kubernetes, gastconfiguratie en meer.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c6a7f128dd2479645cc379f36532563c0ade5d14
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b95029a5422a427e071cb2d3e4481b846ff9a295
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651651"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233654"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Ingebouwde beleidsdefinities voor Azure Policy
 
@@ -65,6 +65,10 @@ De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefiniti
 
 [!INCLUDE [azure-policy-samples-policies-data-lake](../../../../includes/policy/samples/bycat/policies-data-lake.md)]
 
+## <a name="event-grid"></a>Event Grid
+
+[!INCLUDE [azure-policy-samples-policies-event-grid](../../../../includes/policy/samples/bycat/policies-event-grid.md)]
+
 ## <a name="event-hub"></a>Event Hub
 
 [!INCLUDE [azure-policy-samples-policies-event-hub](../../../../includes/policy/samples/bycat/policies-event-hub.md)]
@@ -89,10 +93,6 @@ De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefiniti
 
 [!INCLUDE [azure-policy-samples-policies-kubernetes](../../../../includes/policy/samples/bycat/policies-kubernetes.md)]
 
-## <a name="kubernetes-service"></a>Kubernetes-service
-
-[!INCLUDE [azure-policy-samples-policies-kubernetes-service](../../../../includes/policy/samples/bycat/policies-kubernetes-service.md)]
-
 ## <a name="lighthouse"></a>Lighthouse
 
 [!INCLUDE [azure-policy-samples-policies-lighthouse](../../../../includes/policy/samples/bycat/policies-lighthouse.md)]
@@ -100,6 +100,10 @@ De naam van elke ingebouwde beleidsdefinitie is gekoppeld aan de beleidsdefiniti
 ## <a name="logic-apps"></a>Logic Apps
 
 [!INCLUDE [azure-policy-samples-policies-logic-apps](../../../../includes/policy/samples/bycat/policies-logic-apps.md)]
+
+## <a name="machine-learning"></a>Machine Learning
+
+[!INCLUDE [azure-policy-samples-policies-machine-learning](../../../../includes/policy/samples/bycat/policies-machine-learning.md)]
 
 ## <a name="managed-application"></a>Beheerde toepassing
 

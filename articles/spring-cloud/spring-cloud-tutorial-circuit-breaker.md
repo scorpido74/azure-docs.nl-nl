@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701549"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248852"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Circuit Breaker Dashboard gebruiken met Azure Spring Cloud
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) wordt veel gebruikt voor de aggregatie van meerdere metrische gegevensstromen van [Hystrix](https://github.com/Netflix/Hystrix) zodat meerdere stromen kunnen worden gemonitord in een enkele weergave met het Hystrix-dashboard. In deze zelfstudie leert u hoe u deze kunt gebruiken in Azure Spring Cloud.
@@ -59,7 +59,7 @@ Nadat alle apps zijn uitgevoerd en detecteerbaar zijn, gaat u naar de `user-serv
 Verifieer met openbare eindpunten of privé-testeindpunten.
 
 ### <a name="using-public-endpoints"></a>Openbare eindpunten gebruiken
-Ga naar hystrix-turbine met het pad `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` in uw browser.  In de volgende afbeelding ziet u de Hystrix-dashboard die wordt uitgevoerd in deze app.
+Ga naar hystrix-turbine met het pad `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` in uw browser.  In de volgende afbeelding ziet u de Hystrix-dashboard die wordt uitgevoerd in deze app.
 
 ![Hystrix-dashboard](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

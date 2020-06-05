@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848750"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Zelfstudie: Azure Active Directory-integratie met PolicyStat
 
@@ -175,11 +175,11 @@ Voor het configureren van eenmalige aanmelding met Azure Active Directory bij Po
    
     a. In het tekstvak **Kenmerk gebruikersnaam** typt u **uid**.
 
-    b. Typ in het tekstvak **Kenmerk voornaam** de claimnaam van het voornaamkenmerk uit Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    b. Typ in het tekstvak **Kenmerk voornaam** de claimnaam van het voornaamkenmerk uit Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    c. Typ in het tekstvak **Kenmerk achternaam** de claimnaam van het achternaamkenmerk uit Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    c. Typ in het tekstvak **Kenmerk achternaam** de claimnaam van het achternaamkenmerk uit Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .
 
-    d. Typ in het tekstvak **Kenmerk e-mailadres** de claimnaam van het e-mailadreskenmerk uit Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    d. Typ in het tekstvak **Kenmerk e-mailadres** de claimnaam van het e-mailadreskenmerk uit Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
     e. Klik op **Wijzigingen opslaan**.
 

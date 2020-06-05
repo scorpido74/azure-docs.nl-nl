@@ -99,7 +99,7 @@
       items:
         - name: Overzicht
           href: live-streaming-overview.md
-        - name: Live gebeurtenissen en live uitvoer
+        - name: Livegebeurtenissen en live-uitvoer
           href: live-events-outputs-concept.md
           displayName: 'vanity, ingest'
         - name: 'Geteste, on-premises live coderingsprogramma''s'
@@ -183,7 +183,7 @@
           items:
             - name: Foutcodes voor streaming-eindpunten
               href: streaming-endpoint-error-codes.md
-            - name: Foutcodes voor Live-gebeurtenissen
+            - name: Foutcodes voor live-gebeurtenissen
               href: live-event-error-codes.md
             - name: Foutcodes in taak
               href: job-error-codes.md
@@ -217,7 +217,7 @@
           href: access-api-howto.md
         - name: Gereserveerde media-eenheden schalen
           href: media-reserved-units-cli-how-to.md
-        - name: Een Asset maken
+        - name: Een asset maken
           href: cli-create-asset.md
     - name: Handleidingen voor ontwikkelaars
       items:
@@ -293,7 +293,7 @@
           href: live-events-wirecast-quickstart.md
         - name: Uw on-premises encoder controleren
           href: become-on-premises-encoder-partner.md
-        - name: Foutcodes voor Live-gebeurtenissen
+        - name: Foutcodes voor live-gebeurtenissen
           href: live-event-error-codes.md
     - name: Event Grid gebruiken
       items:
@@ -349,7 +349,7 @@
           items:
             - name: Foutcodes voor streaming-eindpunten
               href: streaming-endpoint-error-codes.md
-            - name: Foutcodes voor Live-gebeurtenissen
+            - name: Foutcodes voor live-gebeurtenissen
               href: live-event-error-codes.md
             - name: Foutcodes in taak
               href: job-error-codes.md
@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.media/allversions
+    - name: Standaard coderingsschema's
+      items:
+        - name: Uitvoermetagegevens
+          href: output-metadata-schema.md
 - name: Resources
   items:
     - name: Azure Media Services-community

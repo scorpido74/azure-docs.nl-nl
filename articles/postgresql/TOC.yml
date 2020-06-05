@@ -235,6 +235,10 @@
               href: howto-migrate-using-export-and-import.md
             - name: Migratie met minimale downtime
               href: howto-migrate-online.md
+        - name: Toepassingen koppelen
+          items:
+            - name: TLS configureren
+              href: howto-tls-configurations.md
         - name: Parameters van de server configureren
           items:
             - name: Azure Portal

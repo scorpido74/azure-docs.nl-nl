@@ -10,12 +10,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 05/19/2020
-ms.openlocfilehash: 07450f0c1ea85f22d19e59aaa27898cbf34a7978
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656564"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118898"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Zelfstudie: Vraag voorspellen met automatische machine learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -229,7 +229,7 @@ Raadpleeg dit artikel voor stappen voor het maken van een door Power BI onderste
 
 + Meer informatie over [geautomatiseerde machine learning](concept-automated-ml.md).
 + Raadpleeg het artikel [Geautomatiseerde machine learning-resultaten begrijpen](how-to-understand-automated-ml.md#classification) voor meer informatie over metrische classificatiegegevens en grafieken.
-+ Meer informatie over [featurization](how-to-use-automated-ml-for-ml-models.md#featurization).
++ Meer informatie over [featurization](how-to-configure-auto-features.md#featurization).
 + Meer informatie over [gegevensprofilering](how-to-use-automated-ml-for-ml-models.md#profile).
 
 >[!NOTE]

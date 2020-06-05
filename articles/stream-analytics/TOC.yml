@@ -114,6 +114,8 @@
   items:
     - name: Beheren
       items:
+        - name: Taken automatisch schalen
+          href: stream-analytics-autoscale.md
         - name: Referenties bijwerken
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Beleid voor gebeurtenisvolgorde configureren
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Resources
   items:
     - name: Stream Analytics-previews

@@ -23,8 +23,6 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Concepten
   items:
-    - name: Overzicht
-      href: video-indexer-concepts.md
     - name: Instellingen van Video Indexer en Media Services met elkaar vergelijken
       href: compare-video-indexer-with-media-services-presets.md
     - name: Meerdere tenants beheren

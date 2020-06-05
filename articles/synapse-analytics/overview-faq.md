@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 007fe7cb90c651c346bc7fbea46d74aa41605d2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 999a181a812157a3e408d3e95b3e7fc00e29ecea
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744081"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118391"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorbeeld van werkruimte)
 
@@ -32,13 +32,6 @@ A: Azure Synapse is een geïntegreerd gegevensplatform voor BI, AI en doorlopend
 - U kunt eenvoudig en gebeurtenissen in uw werkruimte-activiteiten bewaken en snel optimaliseren, reageren en fouten opsporen die zich op elke laag voordoen.
 - Uw metagegevens voor alle engines beheren. Maak een Spark-tabel en deze is automatisch beschikbaar in uw Azure Synapse-databases.
 - Interactie met de gegevens via een uniforme gebruikerservaring. Synapse Studio brengt Big data-ontwikkelaars, gegevenstechnici, DBA's, gegevensanalisten en gegevenswetenschappers samen op hetzelfde platform.
-
-### <a name="q-how-do-i-get-started-with-azure-synapse-analytics"></a>V: Hoe ga ik aan de slag met Azure Synapse Analytics
-
-A: Als u Azure Synapse Analytics wilt gaan gebruiken, moet u [Azure Synapse-resourceprovider registreren](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types) door *Microsoft.Synapse* te selecteren in de lijst met resourceproviders. Maak vervolgens een [Synapse-werkruimte](https://portal.azure.com) (het is gratis!) en maak de gewenste resources onder die werkruimte. U kunt een van onze snelstartgids gebruiken, zoals [Een Synapse SQL-pool maken](quickstart-create-sql-pool-portal.md) of [Een werkruimte maken](quickstart-create-workspace.md), waarmee u een eenvoudige gebruiksvoorbeeld doorloopt. U kunt ook voorbeelden van notebooks en SQL-scripts vinden in onze [opslagplaats](https://github.com/Azure-Samples/Synapse). Als u verbinding moet maken met een openbare gegevensset, maakt u een nieuwe gekoppelde service met de volgende kenmerken:
-
-- azure_storage_account_name = "azureopendatastorage"
-- azure_storage_sas_token = "" (write **""** )
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>V: Wat zijn de belangrijkste onderdelen van Azure Synapse Analytics
 

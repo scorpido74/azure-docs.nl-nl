@@ -1,18 +1,18 @@
 ---
 title: Ingebouwde beleidsdefinities voor Azure Security Center
 description: Overzicht van de ingebouwde Azure Policy-beleidsdefinities voor Azure Security Center. Deze ingebouwde beleidsdefinities bieden algemene benaderingen voor het beheren van uw Azure-resources.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 30ad99228ce9c3a936c8c43e61489d7b0cc94114
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0014625fbc09c6fbf37ea206cb3ce9aadaa0087e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650155"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234725"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-security-center"></a>Ingebouwde Azure Policy-beleidsdefinities voor Azure Security Center
 

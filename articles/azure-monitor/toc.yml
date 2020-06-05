@@ -230,7 +230,7 @@
                     - name: Versiegeschiedenis
                       href: platform/diagnostics-extension-versions.md
                     - name: Indelingen van resourcelogboeken van JSON-regels
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Problemen oplossen
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platformlogboeken
       items:
+        - name: Ondersteunde typen resourcelogboeken en -categorieën
+          href: platform/resource-logs-categories.md
         - name: Schema's voor resourcelogboeken
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: Schema voor activiteitenlogboek
           href: platform/activity-log-schema.md
     - name: Diagnostische extensieschema's

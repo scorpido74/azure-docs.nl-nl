@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: Routebeschrijving van A naar B
               href: map-route.md
+        - name: Plattegrondmodule
+          items:
+            - name: Plattegrondmodule
+              href: how-to-use-indoor-module.md
+            - name: Dynamische opmaak voor plattegronden
+              href: indoor-map-dynamic-styling.md
+            - name: Visualisator van tekenfouten
+              href: drawing-error-visualizer.md
         - name: Ruimtelijke I/O-module
           items:
             - name: De ruimtelijke I/O-module gebruiken
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Verkeergegevens weergeven
           href: how-to-show-traffic-android.md
-    - name: Ontwikkelen met plattegronden van Creator
-      items:
-        - name: Plattegrondmodule
-          href: how-to-use-indoor-module.md
-        - name: Dynamische opmaak voor plattegronden
-          href: indoor-map-dynamic-styling.md
-        - name: Visualisator van tekenfouten
-          href: drawing-error-visualizer.md
     - name: Gegevensfeedback geven
       href: how-to-use-feedback-tool.md
 - name: Naslaginformatie
