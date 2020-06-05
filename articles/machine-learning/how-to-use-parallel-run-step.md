@@ -1,126 +1,77 @@
 ---
-title: Batch voorspellingen uitvoeren op big data
+title: Batch-voorspellingen uitvoeren voor big data
 titleSuffix: Azure Machine Learning
-description: Meer informatie over hoe u met behulp van ParallelRunStep in Azure Machine Learning op asynchrone wijze aan de slag kunt met grote hoeveel heden gegevens. ParallelRunStep zorgt voor parallelle verwerkings mogelijkheden en optimaliseert voor hoge door Voer, brand-en verg eten, voor gebruik van Big Data-cases.
+description: Meer informatie over hoe u asynchrone deducties kunt verkrijgen uit grote hoeveelheden gegevens met ParallelRunStep in Azure Machine Learning. ParallelRunStep biedt kant-en-klare parallelle verwerkingsopties en optimalisaties voor gebruiksgevallen waarbij in een hoog tempo deducties worden gemaakt uit grote hoeveelheden big data.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr, vaidyas
-ms.author: vaidyas
-author: vaidya-s
-ms.date: 01/15/2020
-ms.custom: Ignite2019
-ms.openlocfilehash: 3d283d1094336b928869aa281b4a640d7a62dd94
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.reviewer: trbye, jmartens, larryfr
+ms.author: tracych
+author: tracychms
+ms.date: 04/15/2020
+ms.custom: Build2020
+ms.openlocfilehash: 058cdaa77a38dcb45164e01a54e73218b469940b
+ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79477184"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83860950"
 ---
-# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
+# <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batchdeductie uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Meer informatie over hoe u grote hoeveel heden gegevens asynchroon en parallel kunt verwerken door gebruik te maken van Azure Machine Learning. De ParallelRunStep-functionaliteit die hier wordt beschreven, is in open bare preview. Het is een snelle en hoge door Voer manier om gegevens te genereren en te verwerken. Het biedt asynchrone mogelijkheden uit het kader.
+Meer informatie over hoe u asynchroon en parallel batchdeducties kunt uitvoeren op grote hoeveelheden gegevens met Azure Machine Learning. ParallelRunStep biedt kant-en-klare parallelle mogelijkheden.
 
-Met ParallelRunStep is het eenvoudig om offline-interferenties te schalen naar grote clusters van machines op terabytes aan productie gegevens, wat resulteert in verbeterde productiviteit en optimale kosten.
+Met ParallelRunStep kunt u eenvoudig offline deducties omhoog schalen naar grote clusters van machines en terabytes gestructureerde of ongestructureerde gegevens met verbeterde productiviteit en lagere kosten.
 
-In dit artikel leert u de volgende taken:
+In dit artikel komen de volgende taken aan bod:
 
-> * Maak een externe Compute-resource.
-> * Een aangepast Afleidings script schrijven.
-> * Een [machine learning-pijp lijn](concept-ml-pipelines.md) maken om een vooraf getraind afbeeldings classificatie model te registreren op basis van de [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) -gegevensset. 
-> * Gebruik het model voor het uitvoeren van batch deinterferentie voor voorbeeld afbeeldingen die beschikbaar zijn in uw Azure Blob Storage-account. 
+> * Resources voor machine learning instellen.
+> * Gegevensinvoer en -uitvoer voor batchdeductie configureren.
+> * Het vooraf getrainde afbeeldingsclassificatiemodel voorbereiden op basis van de [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/)-gegevensset. 
+> * Uw deductiescript schrijven.
+> * Een [pijplijn voor machine learning](concept-ml-pipelines.md) maken met ParallelRunStep en batchdeductie uitvoeren op MNIST-testafbeeldingen. 
+> * Een batchdeductie opnieuw verzenden met nieuwe gegevensinvoer en parameters. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer de [gratis of betaalde versie van de Azure machine learning](https://aka.ms/AMLFree).
+* Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Voor een begeleide Snelstartgids voltooit u de [installatie handleiding](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure machine learning werk ruimte of virtuele notebook-machine hebt. 
+* Voor een begeleide snelstart doorloopt u de [installatiezelfstudie](tutorial-1st-experiment-sdk-setup.md) als u nog geen Azure Machine Learning-werkruimte hebt. 
 
-* Voor het beheren van uw eigen omgeving en afhankelijkheden raadpleegt u de [hand leiding](how-to-configure-environment.md) voor het configureren van uw eigen omgeving. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` uit in uw omgeving om de vereiste afhankelijkheden te downloaden.
+* Bekijk de [instructiegids](how-to-configure-environment.md) voor de configuratie van uw eigen omgeving om uw eigen omgeving en afhankelijkheden te beheren.
 
-## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>Resources voor machine learning instellen
 
-Met de volgende acties worden de resources ingesteld die u nodig hebt om een batch-uitstel pijplijn uit te voeren:
+Met de volgende acties worden de machine learning resources ingesteld die u nodig hebt om pijplijn voor batchdeductie uit te voeren:
 
-- Maak een gegevens opslag die verwijst naar een BLOB-container met afbeeldingen die moeten worden geinterferentiet.
-- Stel gegevens verwijzingen in als invoer en uitvoer voor de pipeline-stap voor batch-defactorion.
-- Stel een berekenings cluster in voor het uitvoeren van de stap batch afschermen.
+- Verbinding maken met een werkruimte.
+- Bestaande rekenresource maken of koppelen.
 
-### <a name="create-a-datastore-with-sample-images"></a>Een gegevens opslag maken met voorbeeld installatie kopieën
+### <a name="configure-workspace"></a>Werkruimte configureren
 
-Haal de MNIST-evaluatieset op uit de open `sampledata` bare BLOB-container `pipelinedata`op een account met de naam. Maak een gegevens opslag met de `mnist_datastore`naam, die verwijst naar deze container. In de volgende aanroep van `register_azure_blob_container`moet de `overwrite` vlag worden ingesteld `True` op alle gegevens opslag die eerder is gemaakt met die naam. 
-
-U kunt deze stap wijzigen zodat deze naar de BLOB-container verwijst door uw eigen waarden `datastore_name`op `container_name`te geven `account_name`voor,, en.
+Maak een werkruimte-object van de bestaande werkruimte. `Workspace.from_config()` leest het bestand config.json en laadt de gegevens in een object met de naam ws.
 
 ```python
-from azureml.core import Datastore
 from azureml.core import Workspace
 
-# Load workspace authorization details from config.json
 ws = Workspace.from_config()
-
-mnist_blob = Datastore.register_azure_blob_container(ws, 
-                      datastore_name="mnist_datastore", 
-                      container_name="sampledata", 
-                      account_name="pipelinedata",
-                      overwrite=True)
 ```
 
-Geef vervolgens de standaard gegevens opslag voor de werk ruimte op als uitvoer gegevens opslag. U gebruikt deze voor het afnemen van uitvoer.
+> [!IMPORTANT]
+> Dit codefragment verwacht dat de werkruimteconfiguratie wordt opgeslagen in de huidige of de bovenliggende map. Zie [Azure Machine Learning-werkruimten maken en beheren](how-to-manage-workspace.md) voor meer informatie over het maken van een werkruimte. Zie [Een configuratiebestand voor een werkruimte maken](how-to-configure-environment.md#workspace) voor meer informatie over de configuratie als bestand opslaan.
 
-Wanneer u uw werk ruimte maakt, worden [Azure files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) -en [Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) standaard aan de werk ruimte gekoppeld. Azure Files is de standaard gegevens opslag voor een werk ruimte, maar u kunt ook Blob Storage gebruiken als gegevens opslag. Zie [Opties voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)voor meer informatie.
+### <a name="create-a-compute-target"></a>Een rekendoel maken
 
-```python
-def_data_store = ws.get_default_datastore()
-```
-
-### <a name="configure-data-inputs-and-outputs"></a>Invoer en uitvoer van gegevens configureren
-
-U moet nu gegevens invoer en uitvoer configureren, waaronder:
-
-- De map die de invoer installatie kopieën bevat.
-- De map waar het vooraf getrainde model wordt opgeslagen.
-- De map die de labels bevat.
-- De map voor uitvoer.
-
-[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py)is een klasse voor het verkennen, transformeren en beheren van gegevens in Azure Machine Learning. Deze klasse heeft twee typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In dit voor beeld gebruikt `FileDataset` u als invoer voor de pipeline-stap voor batch afnemen. 
-
-> [!NOTE] 
-> `FileDataset`ondersteuning in batch-interferentie is nu beperkt tot Azure Blob-opslag. 
-
-U kunt ook verwijzen naar andere gegevens sets in uw aangepaste in-interferentie script. U kunt dit bijvoorbeeld gebruiken voor toegang tot labels in uw script voor het labelen van afbeeldingen met `Dataset.register` behulp van en `Dataset.get_by_name`.
-
-Zie [gegevens sets maken en openen (preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)voor meer informatie over het Azure machine learning gegevens sets.
-
-[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)objecten worden gebruikt voor het overzetten van tussenliggende gegevens tussen pijplijn stappen. In dit voor beeld gebruikt u dit voor de afleiding van uitvoer.
-
-```python
-from azureml.core.dataset import Dataset
-
-mnist_ds_name = 'mnist_sample_data'
-
-path_on_datastore = mnist_blob.path('mnist/')
-input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
-registered_mnist_ds = input_mnist_ds.register(ws, mnist_ds_name, create_new_version=True)
-named_mnist_ds = registered_mnist_ds.as_named_input(mnist_ds_name)
-
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
-```
-
-### <a name="set-up-a-compute-target"></a>Een reken doel instellen
-
-In Azure Machine Learning, *Compute* (of *Compute target*) verwijst naar de computers of clusters die de reken stappen in uw machine learning pijp lijn uitvoeren. Voer de volgende code uit om een op een CPU gebaseerd [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) -doel te maken.
+In Azure Machine Learning verwijst *Berekening* (of *Rekendoel*) naar de computers of clusters die de rekenstappen in uw machine learning-pijplijn uitvoeren. Voer de volgende code uit om een op CPU gebaseerd [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py)-doel te maken.
 
 ```python
 from azureml.core.compute import AmlCompute, ComputeTarget
 from azureml.core.compute_target import ComputeTargetException
 
 # choose a name for your cluster
-compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpu-cluster")
+compute_name = os.environ.get("AML_COMPUTE_CLUSTER_NAME", "cpucluster")
 compute_min_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MIN_NODES", 0)
 compute_max_nodes = os.environ.get("AML_COMPUTE_CLUSTER_MAX_NODES", 4)
 
@@ -149,9 +100,78 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
+## <a name="configure-inputs-and-output"></a>Invoer en uitvoer configureren
+
+### <a name="create-a-datastore-with-sample-images"></a>Een gegevensarchief maken met voorbeeldinstallatiekopieën
+
+Zoek de MNIST-evaluatieset in de openbare blob-container `sampledata` op een account met de naam `pipelinedata`. Maak een gegevensarchief met de naam `mnist_datastore` dat verwijst naar deze container. Als u in de volgende aanroep van `register_azure_blob_container` de `overwrite`-vlag instelt op `True` overschrijft u elk gegevensarchief dat voorheen met die naam werd aangemaakt. 
+
+U kunt deze stap wijzigen om naar uw blob-container te verwijzen door uw eigen waarden op te geven voor `datastore_name`, `container_name` en `account_name`.
+
+```python
+from azureml.core import Datastore
+from azureml.core import Workspace
+
+# Load workspace authorization details from config.json
+ws = Workspace.from_config()
+
+mnist_blob = Datastore.register_azure_blob_container(ws, 
+                      datastore_name="mnist_datastore", 
+                      container_name="sampledata", 
+                      account_name="pipelinedata",
+                      overwrite=True)
+```
+
+Geef vervolgens het gegevensarchief voor uitvoer op als het standaard gegevensarchief voor de werkruimte. U gebruikt dit voor de uitvoer van de deductie.
+
+Wanneer u uw werkruimte maakt, worden [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) en [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) standaard aan de werkruimte gekoppeld. Azure Files is het standaard gegevensarchief voor een werkruimte, maar u kunt ook Blob Storage gebruiken als gegevensarchief. Zie [Azure-opties voor opslag](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks) voor meer informatie.
+
+```python
+def_data_store = ws.get_default_datastore()
+```
+
+### <a name="create-the-data-inputs"></a>De gegevensinvoerwaarden maken
+
+De invoerwaarden voor batchdeductie zijn de gegevens die u wilt partitioneren voor parallelle verwerking. Een pijplijn voor batchdeductie aanvaardt gegevensinvoer via [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py).
+
+`Dataset` is voor het doorzoeken, transformeren en beheren van gegevens in Azure Machine Learning. Er zijn twee typen: [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) en [`FileDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset?view=azure-ml-py). In dit voorbeeld gebruikt u `FileDataset` als de invoerwaarden. Met `FileDataset` kunt u de bestanden downloaden of koppelen aan uw berekening. Als u een gegevensset maakt, maakt u ook een verwijzing naar de locatie van de gegevensbron. Als u transformaties voor deelverzamelingen hebt toegepast op de gegevensset, dan worden deze ook opgeslagen in de gegevensset. De gegevens blijven bewaard op de bestaande locatie, dus maakt u geen extra opslagkosten.
+
+Zie [Gegevenssets maken en openen (preview)](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) voor meer informatie over Azure Machine Learning-gegevenssets.
+
+```python
+from azureml.core.dataset import Dataset
+
+mnist_ds_name = 'mnist_sample_data'
+
+path_on_datastore = mnist_blob.path('mnist/')
+input_mnist_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+```
+
+Als u dynamische gegevensinvoer wilt gebruiken bij het uitvoeren van de batchdeductie, dan kunt u de invoerwaarden `Dataset` definiëren als een [`PipelineParameter`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py). Elke keer dat u een pijplijnuitvoering van een batchdeductie indient, kunt u de gegevensset met invoerwaarden opgeven.
+
+```python
+from azureml.data.dataset_consumption_config import DatasetConsumptionConfig
+from azureml.pipeline.core import PipelineParameter
+
+pipeline_param = PipelineParameter(name="mnist_param", default_value=input_mnist_ds)
+input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pipeline_param).as_mount()
+```
+
+### <a name="create-the-output"></a>De uitvoer maken
+
+[`PipelineData`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-objecten worden gebruikt voor het overzetten van tussenliggende gegevens tussen stappen in de pijplijn. In dit voorbeeld gebruikt u dit voor de uitvoer van de deductie.
+
+```python
+from azureml.pipeline.core import Pipeline, PipelineData
+
+output_dir = PipelineData(name="inferences", 
+                          datastore=def_data_store, 
+                          output_path_on_compute="mnist/results")
+```
+
 ## <a name="prepare-the-model"></a>Het model voorbereiden
 
-[Down load het vooraf getrainde afbeeldings classificatie model](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)en pak het vervolgens `models` uit naar de Directory.
+[Download het vooraf getrainde model voor de classificatie van afbeeldingen](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)en pak het uit naar de map `models`.
 
 ```python
 import os
@@ -168,7 +188,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-Registreer vervolgens het model bij uw werk ruimte zodat het beschikbaar is voor uw externe Compute-resource.
+Registreer vervolgens het model bij uw werkruimte zodat het beschikbaar is voor uw rekenresource.
 
 ```python
 from azureml.core.model import Model
@@ -181,16 +201,16 @@ model = Model.register(model_path="models/",
                        workspace=ws)
 ```
 
-## <a name="write-your-inference-script"></a>Uw Afleidings script schrijven
+## <a name="write-your-inference-script"></a>Uw deductiescript schrijven
 
 >[!Warning]
->De volgende code is slechts een voor beeld van het gebruik van het voor [beeld-notebook](https://aka.ms/batch-inference-notebooks) . U moet uw eigen script maken voor uw scenario.
+>De volgende code is slechts een voorbeeld dat gebruik wordt door het [voorbeeldnotebook](https://aka.ms/batch-inference-notebooks). U moet uw eigen script maken voor uw scenario.
 
 Het script *moet* twee functies bevatten:
-- `init()`: Gebruik deze functie voor elke kost bare of gemeen schappelijke voor bereiding voor later gebruik. U kunt dit bijvoorbeeld gebruiken om het model in een globaal object te laden. Deze functie wordt slechts eenmaal aan het begin van het proces aangeroepen.
--  `run(mini_batch)`: De functie wordt uitgevoerd voor elk `mini_batch` exemplaar.
-    -  `mini_batch`: Bij parallelle uitvoering wordt de methode Run aangeroepen en wordt een lijst of Panda data frame als argument aan de methode door gegeven. Elke vermelding in min_batch is een bestandspad als invoer een FileDataset is, een Panda data frame als de invoer een TabularDataset is.
-    -  `response`: de methode Run () moet een Panda data frame of een matrix retour neren. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoer bestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoer acties geeft elk geretourneerd uitvoer element een geslaagde uitvoering van het input-element aan in de invoer-mini-batch. Zorg ervoor dat er voldoende gegevens zijn opgenomen in het resultaat van de uitvoering om de invoer toe te wijzen om het resultaat uit te voeren. Uitvoer wordt geschreven in het uitvoer bestand en niet gegarandeerd in de juiste volg orde. u moet een bepaalde sleutel in de uitvoer gebruiken om deze te koppelen aan invoer.
+- `init()`: Gebruik deze functie voor een kostbare of algemene voorbereiding voor latere deductie. Gebruik het bijvoorbeeld om het model in een algemeen object te laden. Deze functie wordt slecht één keer aangeroepen, aan het begin van het proces.
+-  `run(mini_batch)`: De functie wordt uitgevoerd voor elk exemplaar van `mini_batch`.
+    -  `mini_batch`: ParallelRunStep roept de uitvoermethode aan en geeft een lijst of Pandas DataFrame op als argument aan de methode. Elk element in mini_batch is - een bestandspad als een invoer een FileDataset is, of een Pandas DataFrame als de invoer een TabularDataset is.
+    -  `response`: run()-methode moet resulteren in een Pandas DataFrame of een matrix. Voor append_row output_action worden deze geretourneerde elementen toegevoegd aan het algemene uitvoerbestand. Voor summary_only wordt de inhoud van de elementen genegeerd. Voor alle uitvoeracties geeft elk geretourneerde uitvoerelement een geslaagde uitvoering van een invoerelement in de mini-batch aan. Zorg ervoor dat er voldoende gegevens worden opgenomen in het resultaat van de uitvoering om invoer toe te wijzen aan de uitvoerresultaten. Uitvoer wordt naar het uitvoerbestand geschreven en bevindt zich niet altijd in de juiste volgorde. Gebruik een sleutel in de uitvoer om deze toe te wijzen aan de invoer.
 
 ```python
 # Snippets from a sample script.
@@ -237,118 +257,120 @@ def run(mini_batch):
     return resultList
 ```
 
-### <a name="how-to-access-other-files-in-source-directory-in-entry_script"></a>Toegang krijgen tot andere bestanden in de bron directory in entry_script
-
-Als u een ander bestand of een andere map in dezelfde map hebt als uw invoer script, kunt u ernaar verwijzen door de huidige werkmap te zoeken.
+Als u een ander bestand of een andere map hebt in dezelfde map als uw deductiescript, dan kunt u ernaar verwijzen door de huidige werkmap te zoeken.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
 file_path = os.path.join(script_dir, "<file_name>")
 ```
 
-## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>De pijp lijn met ParallelRunStep bouwen en uitvoeren
+## <a name="build-and-run-the-pipeline-containing-parallelrunstep"></a>De pijplijn met ParallelRunStep bouwen en uitvoeren
 
-Nu hebt u alles wat u nodig hebt om de pijp lijn te bouwen.
+Nu heeft u alles wat u nodig heeft: de gegevensinvoerwaarden, het model, de uitvoer en uw deductiescript. Laten we de pijplijn voor batchdeductie met ParallelRunStep bouwen.
 
-### <a name="prepare-the-run-environment"></a>De uitvoerings omgeving voorbereiden
+### <a name="prepare-the-environment"></a>De omgeving voorbereiden
 
-Geef eerst de afhankelijkheden voor uw script op. U kunt dit object later gebruiken bij het maken van de pijplijn stap.
+Geef eerst de afhankelijkheden voor uw script op. Zo kunt u PIP-pakketten installeren en de omgeving configureren. Neem altijd **azureml-core**- en **azureml-dataprep[pandas, fus]** -pakketten op.
+
+Als u een aangepaste docker-installatiekopie (user_managed_dependencies = True) gebruikt, installeer dan ook conda.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
+                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
 batch_env.docker.enabled = True
 batch_env.docker.base_image = DEFAULT_GPU_IMAGE
-batch_env.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameters-for-your-batch-inference-pipeline-step"></a>Geef de para meters op voor de pipeline-stap voor de batch-deinterferentie
+### <a name="specify-the-parameters-using-parallelrunconfig"></a>De parameters opgeven met ParallelRunConfig
 
-`ParallelRunConfig`is de belangrijkste configuratie voor de zojuist ingevoerde batch-deinterferentie `ParallelRunStep` -instantie binnen de Azure machine learning-pijp lijn. U gebruikt deze om uw script uit te pakken en de vereiste para meters te configureren, inclusief alle volgende para meters:
-- `entry_script`: Een gebruikers script als een lokaal bestandspad dat parallel op meerdere knoop punten wordt uitgevoerd. Als `source_directory` aanwezig is, gebruikt u een relatief pad. Als dat niet het geval is, gebruikt u een wille keurig pad dat toegankelijk is op de computer.
-- `mini_batch_size`: De grootte van de mini-batch die aan een enkele `run()` aanroep is door gegeven. (optioneel; de standaard waarde is `10` bestanden voor FileDataset en `1MB` voor TabularDataset.)
-    - Voor `FileDataset`is het het aantal bestanden met een minimum waarde van `1`. U kunt meerdere bestanden combi neren in één mini-batch.
-    - Voor `TabularDataset`is dit de grootte van de gegevens. Voor beelden van `1024`waarden `1024KB`zijn `10MB`,, `1GB`en. De aanbevolen waarde is `1MB`. De mini batch van gaat `TabularDataset` nooit over de grenzen van bestanden. Als u bijvoorbeeld. CSV-bestanden met verschillende grootten hebt, is het kleinste bestand 100 KB en de grootste waarde is 10 MB. Als u instelt `mini_batch_size = 1MB`, worden bestanden met een grootte die kleiner is dan 1 MB beschouwd als één mini-batch. Bestanden met een grootte die groter is dan 1 MB, worden in meerdere mini-batches gesplitst.
-- `error_threshold`: Het aantal record fouten voor `TabularDataset` en bestands fouten voor `FileDataset` die moeten worden genegeerd tijdens de verwerking. Als het aantal fouten voor de volledige invoer boven deze waarde komt, wordt de taak afgebroken. De drempel waarde voor de fout is voor de volledige invoer en niet voor afzonderlijke mini batches die `run()` naar de methode worden verzonden. Het bereik is `[-1, int.max]`. Het `-1` deel geeft aan dat alle fouten tijdens de verwerking worden genegeerd.
-- `output_action`: Een van de volgende waarden geeft aan hoe de uitvoer wordt georganiseerd:
-    - `summary_only`: De uitvoer wordt opgeslagen met het gebruikers script. `ParallelRunStep`de uitvoer wordt alleen gebruikt voor de berekening van de drempel waarde voor de fout.
-    - `append_row`: Voor alle invoer bestanden wordt slechts één bestand gemaakt in de uitvoermap om alle uitvoer gescheiden door regel toe te voegen. De bestands naam is `parallel_run_step.txt`.
-- `source_directory`: Paden naar mappen die alle bestanden bevatten die moeten worden uitgevoerd op het Compute-doel (optioneel).
+`ParallelRunConfig` is de voornaamste configuratie voor `ParallelRunStep`-exemplaar in de Azure Machine Learning-pijplijn. U gebruikt het om uw script te verpakken en de nodige parameters te configureren, waaronder de volgende:
+- `entry_script`: Een gebruikersscript als een lokaal bestandspad dat parallel wordt uitgevoerd op meerdere knooppunten. Als `source_directory` aanwezig is, gebruikt dan een relatief pad. Zoniet, gebruik dan een pad dat toegankelijk is op de machine.
+- `mini_batch_size`: De grootte van de mini-batch die is doorgegeven aan een enkele `run()`-aanroep. (optioneel; de standaardwaarde is `10` bestanden voor FileDataset en `1MB` voor TabularDataset.)
+    - Voor `FileDataset` is dit het aantal bestanden met een minimumwaarde `1`. U kunt meerdere bestanden combineren in één mini-batch.
+    - Voor `TabularDataset` is dit de grootte van de gegevens. Voorbeeldwaarden zijn `1024`, `1024KB`, `10MB` en `1GB`. De aanbevolen waarde is `1MB`. De mini-batch van `TabularDataset` zal nooit bestandsgrenzen overschrijden. Als u bijvoorbeeld een .csv-bestand heeft met verschillende groottes, dan is het kleinste bestan 100 KB en het grootste 10 MB. Als u `mini_batch_size = 1MB` instelt, worden bestanden met een grootte van minder dan 1 MB beschouwd als één mini-batch. Bestanden met een grootte van meer dan 1 MB, worden in verschillende mini-batches opgedeeld.
+- `error_threshold`: Het aantal recordfouten voor `TabularDataset` en bestandsfouten voor `FileDataset` die tijdens de verwerking genegeerd mogen worden. Als het aantal fouten voor de volledige invoer boven deze waarde komt, wordt de taak afgebroken. De drempelwaarde voor fouten geldt voor de volledige invoer, niet voor afzonderlijke mini-batches die naar de `run()`-methode verzonden worden. Het bereik is `[-1, int.max]`. Het deel `-1` geeft aan dat alle fouten tijdens de verwerking genegeerd worden.
+- `output_action`: Een van de volgende waarden geeft aan wat er met de uitvoer gebeurt:
+    - `summary_only`: Het gebruikersscript slaat de uitvoer op. `ParallelRunStep` gebruikt de uitvoer enkel voor de berekening van de drempelwaarde voor fouten.
+    - `append_row`: Er wordt slechts één bestand gemaakt in de uitvoermap voor alle invoerwaarden, waarbij elke uitvoerwaarde een aparte regel krijgt.
+- `append_row_file_name`: Om de naam van het uitvoerbestand voor append_row output_action aan te passen (optioneel; de standaardwaarde is `parallel_run_step.txt`).
+- `source_directory`: Paden naar mappen met alle bestanden die moeten worden uitgevoerd op het rekendoel (optioneel).
 - `compute_target`: Alleen `AmlCompute` wordt ondersteund.
-- `node_count`: Het aantal reken knooppunten dat moet worden gebruikt voor het uitvoeren van het gebruikers script.
-- `process_count_per_node`: Het aantal processen per knoop punt.
-- `environment`: De definitie van de python-omgeving. U kunt deze configureren voor het gebruik van een bestaande python-omgeving of voor het instellen van een tijdelijke omgeving voor het experiment. De definitie is ook verantwoordelijk voor het instellen van de vereiste toepassings afhankelijkheden (optioneel).
-- `logging_level`: Uitgebreide logboek registratie. De waarden in een verhoogde uitgebreider `WARNING`zijn `INFO`:, `DEBUG`en. (optioneel; de standaard waarde is `INFO`)
-- `run_invocation_timeout`: De `run()` time-out voor het aanroepen van de methode in seconden. (optioneel; standaard waarde is `60`)
+- `node_count`: Het aantal rekenknooppunten dat moet worden gebruikt voor de uitvoering van het gebruikersscript.
+- `process_count_per_node`: Het aantal processen per knooppunt. Het is aanbevolen om het aantal GPU of CPU voor één knooppunt in te stellen (optioneel; standaardwaarde is `1`).
+- `environment`: De definitie van de Python-omgeving. U kunt deze configureren om een bestaande Python-omgeving te gebruiken of om een tijdelijke omgeving in te stellen. De definitie zorgt er ook voor dat de vereiste toepassingsafhankelijkheden worden ingesteld (optioneel).
+- `logging_level`: Uitgebreidheid van het logboek. De waarden om uitgebreidheid te verhogen zijn: `WARNING`, `INFO` en `DEBUG`. (optioneel; de standaardwaarde is `INFO`)
+- `run_invocation_timeout`: De aanroeptime-out voor de `run()`-methode in seconden. (optioneel; standaardwaarde is `60`)
+- `run_max_try`: Maximum aantal pogingen van `run()` voor een mini-batch. Een `run()` is mislukt als er een uitzondering wordt gegenereerd of er niets wordt geretourneerd wanneer `run_invocation_timeout` is bereikt (optioneel; de standaardwaarde is `3`). 
+
+U kunt `mini_batch_size`, `node_count`, `process_count_per_node`, `logging_level`, `run_invocation_timeout` en `run_max_try` als `PipelineParameter` opgeven, zodat u de parameterwaarden kunt aanpassen wanneer u een pijplijnuitvoering opnieuw verzendt. In dit voorbeeld gebruikt u PipelineParameter voor `mini_batch_size` en `Process_count_per_node`. Wanneer u later een uitvoering opnieuw verzendt, verandert u deze waarden. 
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunConfig
+from azureml.pipeline.core import PipelineParameter
+from azureml.pipeline.steps import ParallelRunConfig
 
 parallel_run_config = ParallelRunConfig(
     source_directory=scripts_folder,
     entry_script="digit_identification.py",
-    mini_batch_size="5",
+    mini_batch_size=PipelineParameter(name="batch_size_param", default_value="5"),
     error_threshold=10,
     output_action="append_row",
+    append_row_file_name="mnist_outputs.txt",
     environment=batch_env,
     compute_target=compute_target,
-    node_count=4)
+    process_count_per_node=PipelineParameter(name="process_count_param", default_value=2),
+    node_count=2)
 ```
 
-### <a name="create-the-pipeline-step"></a>De pijplijn stap maken
+### <a name="create-the-parallelrunstep"></a>De ParallelRunStep maken
 
-Maak de pijplijn stap met behulp van het script, de omgevings configuratie en de para meters. Geef het reken doel op dat u al aan uw werk ruimte hebt gekoppeld als het doel van de uitvoering van het script. Gebruik `ParallelRunStep` voor het maken van de pipeline-stap voor batch-deinterferentie, die alle volgende para meters gebruikt:
-- `name`: De naam van de stap, met de volgende naam beperkingen: unieke, 3-32 tekens en regex ^\[a-z\]([-a-z0-9] * [a-z0-9])? $.
-- `models`: Er zijn al nul of meer model namen geregistreerd in het REGI ster van het Azure Machine Learning model.
-- `parallel_run_config`: Een `ParallelRunConfig` object, zoals eerder is gedefinieerd.
-- `inputs`: Een of meer Azure Machine Learning gegevens sets met één type.
-- `output`: Een `PipelineData` object dat overeenkomt met de uitvoermap.
-- `arguments`: Een lijst met argumenten die zijn door gegeven aan het gebruikers script (optioneel).
-- `allow_reuse`: Of de stap eerdere resultaten moet hergebruiken wanneer deze met dezelfde instellingen/invoer worden uitgevoerd. Als deze para meter `False`is, wordt er altijd een nieuwe uitvoering gegenereerd voor deze stap tijdens de uitvoering van de pijp lijn. (optioneel; de standaard waarde is `True`.)
+Maak de ParallelRunStep met het script, de omgevingsconfiguratie en de parameters. Geef het rekendoel op dat u al aan uw werkruimte hebt gekoppeld als het doel van de uitvoering voor uw deductiescript. Gebruik `ParallelRunStep` om de stap voor de batchdeductiepijplijn te maken, met de volgende parameters:
+- `name`: De naam van de stap, met de volgende beperkingen voor de naamgeving: uniek, 3-32 tekens en regex ^\[a-z\]([-a-z0-9]*[a-z0-9])?$.
+- `parallel_run_config`: Een `ParallelRunConfig`-object, zoals eerder gedefinieerd.
+- `inputs`: Een of meer Azure Machine Learning-gegevenssets van één type die moeten worden gepartitioneerd voor parallelle verwerking.
+- `side_inputs`: Een of meer referentiegegevens of gegevenssets die worden gebruikt als aanvullende invoerwaarden en niet gepartitioneerd moeten worden.
+- `output`: Een `PipelineData`-object dat overeenkomt met de uitvoermap.
+- `arguments`: Een lijst van argumenten die worden doorgegeven aan het gebruikersscript. Gebruik unknown_args om deze op te halen in uw invoerscript (optioneel).
+- `allow_reuse`: Of de stap vorige resultaten moet hergebruiken wanneer dezelfde instellingen/invoerwaarden worden uitgevoerd. Als deze parameter `False` is, dan wordt er altijd een nieuwe uitvoering gegenereerd voor deze stap tijdens pijplijnuitvoering. (optioneel; de standaardwaarde is `True`.)
 
 ```python
-from azureml.contrib.pipeline.steps import ParallelRunStep
+from azureml.pipeline.steps import ParallelRunStep
 
 parallelrun_step = ParallelRunStep(
-    name="batch-mnist",
-    models=[model],
+    name="predict-digits-mnist",
     parallel_run_config=parallel_run_config,
-    inputs=[named_mnist_ds],
+    inputs=[input_mnist_ds_consumption],
     output=output_dir,
-    arguments=[],
     allow_reuse=True
 )
 ```
+### <a name="create-and-run-the-pipeline"></a>de pijplijn maken en uitvoeren
 
->[!Note]
-> De bovenstaande stap is afhankelijk van `azureml-contrib-pipeline-steps`, zoals beschreven in [vereisten](#prerequisites). 
+Voer nu de pijplijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-object met behulp van uw werkruimtereferentie en de pijplijn die u hebt gemaakt. De `steps`-parameter is een matrix van stappen. In dit geval is er slechts één stap voor batchdeductie. Als u pijplijnen met meerdere stappen wilt bouwen, plaatst u de stappen in volgorde in deze matrix.
 
-### <a name="submit-the-pipeline"></a>De pijp lijn verzenden
-
-Voer nu de pijp lijn uit. Maak eerst een [`Pipeline`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) -object met behulp van uw werkruimte referentie en de door u gemaakte pijplijn stap. De `steps` para meter is een matrix met stappen. In dit geval is er slechts één stap voor batch scoreing. Als u pijp lijnen met meerdere stappen wilt maken, plaatst u de stappen in volg orde in deze matrix.
-
-Gebruik vervolgens de `Experiment.submit()` functie om de pijp lijn voor uitvoering in te dienen.
+Gebruik vervolgens de functie `Experiment.submit()` om de pijplijn te verzenden voor uitvoering.
 
 ```python
 from azureml.pipeline.core import Pipeline
 from azureml.core.experiment import Experiment
 
 pipeline = Pipeline(workspace=ws, steps=[parallelrun_step])
-pipeline_run = Experiment(ws, 'digit_identification').submit(pipeline)
+experiment = Experiment(ws, 'digit_identification')
+pipeline_run = experiment.submit(pipeline)
 ```
 
-## <a name="monitor-the-parallel-run-job"></a>De parallelle uitvoerings taak controleren
+## <a name="monitor-the-batch-inference-job"></a>De batchdeductietaak controleren
 
-Het volt ooien van een batch-Afleidings taak kan lang duren. In dit voor beeld wordt de voortgang gecontroleerd met behulp van een Jupyter-widget. U kunt de voortgang van de taak ook beheren met behulp van:
+Het kan lang duren voor een batchdeductietaak voltooid is. Dit voorbeeld controleert de voortgang met een Jypiter-widget. U kunt de voortgang van de taak ook controleren met behulp van:
 
 * Azure Machine Learning Studio. 
-* Console-uitvoer van [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py) het object.
+* Console-uitvoer van het [`PipelineRun`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.run.pipelinerun?view=azure-ml-py)-object.
 
 ```python
 from azureml.widgets import RunDetails
@@ -357,13 +379,31 @@ RunDetails(pipeline_run).show()
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
+## <a name="resubmit-a-run-with-new-data-inputs-and-parameters"></a>Een uitvoering opnieuw verzenden met nieuwe gegevensinvoer en parameters
+
+Aangezien u de invoerwaarden en verschillende configuraties als `PipelineParameter` heeft gemaakt, kunt u de uitvoering van een batchdeductie opnieuw verzenden met een andere gegevensset en de parameters wijzigen zonder dat u daarvoor een geheel nieuwe pijplijn moet maken. U gebruikt hetzelfde gegevensarchief, maar slechts één afbeelding als gegevensinvoer.
+
+```python
+path_on_datastore = mnist_data.path('mnist/0.png')
+single_image_ds = Dataset.File.from_files(path=path_on_datastore, validate=False)
+single_image_ds._ensure_saved(ws)
+
+pipeline_run_2 = experiment.submit(pipeline, 
+                                   pipeline_parameters={"mnist_param": single_image_ds, 
+                                                        "batch_size_param": "1",
+                                                        "process_count_param": 1}
+)
+
+pipeline_run_2.wait_for_completion(show_output=True)
+```
+
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt zien hoe dit proces werkt, kunt u de batch-Afleidings [notitieblok](https://aka.ms/batch-inference-notebooks)gebruiken. 
+Ga naar de [notebook voor batchdeductie](https://aka.ms/batch-inference-notebooks) om te zien hoe het volledige proces werkt. 
 
-Voor fout opsporing en probleemoplossings richtlijnen voor ParallelRunStep raadpleegt u de [hand leiding](how-to-debug-parallel-run-step.md)voor het oplossen van problemen.
+Bekijk de [instructiegids](how-to-debug-parallel-run-step.md) voor hulp bij foutopsporing en probleemoplossing voor ParallelRunStep.
 
-Raadpleeg de [hand leiding](how-to-debug-pipelines.md)voor fout opsporing en probleemoplossings richtlijnen voor pijp lijnen.
+Bekijk de [instructiegids](how-to-debug-pipelines.md) voor hulp bij foutopsporing en probleemoplossing voor pijplijnen.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
