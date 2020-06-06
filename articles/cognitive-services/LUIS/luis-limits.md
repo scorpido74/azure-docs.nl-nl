@@ -2,13 +2,13 @@
 title: Limieten-LUIS
 description: Dit artikel bevat de bekende limieten van Azure Cognitive Services Language Understanding (LUIS). LUIS heeft verschillende limiet gebieden. De limiet voor het aantal besturings elementen voor modellen is intenties, entiteiten en functies in LUIS. Quotum limieten op basis van het sleutel type. Met toetscombinaties bepaalt u de LUIS-website.
 ms.topic: reference
-ms.date: 05/06/2020
-ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/04/2020
+ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684616"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449495"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Limieten voor uw LUIS-model en-sleutels
 LUIS heeft verschillende limiet gebieden. De eerste is de [model limiet](#model-limits), waarmee de intenties, entiteiten en onderdelen in Luis worden beheerd. Het tweede gebied is [quotum limieten](#key-limits) op basis van het sleutel type. Een derde gebied met limieten is de [toetscombinatie voor het beheren van de Luis](#keyboard-controls) -website. Een vierde gebied is de [wereld wijde toewijzing](luis-reference-regions.md) tussen de Luis-ontwerp website en de Luis- [eindpunt](luis-glossary.md#endpoint) api's.
@@ -37,8 +37,8 @@ Als uw app de limieten voor het LUIS-model overschrijdt, kunt u overwegen een [L
 | [Vooraf gemaakte entiteiten](./luis-prebuilt-entities.md) | geen limiet|
 | [Entiteiten in de vorm van reguliere expressies](./luis-concept-entity-types.md)|20 entiteiten<br>Maxi maal 500 tekens. entiteits patroon per reguliere expressie|
 | [Rollen](luis-concept-roles.md)|300 rollen per toepassing. 10 rollen per entiteit|
-| [Utterance][utterances] | 500 tekens|
-| [Utterances][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie|
+| [Utterance][utterances] | 500 tekens<br><br>Als u tekst langer hebt dan deze limiet, moet u de utterance vóór de invoer in LUIS segmenteren en de antwoorden dienovereenkomstig samen voegen. Er zijn duidelijke onderbrekingen waarmee u kunt werken, zoals Lees tekens en lange pauzes in spraak.|
+| [Utterance-voor beelden][utterances] | 15.000 per toepassing: er is geen limiet voor het aantal uitingen per intentie<br><br>Als u de toepassing wilt trainen met meer voor beelden, gebruikt u een methode voor het [verzendings](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) model. U traint afzonderlijke LUIS-apps (ook wel onderliggende apps genoemd in de bovenliggende verzend-app) met een of meer intenties en traint vervolgens een Dispatch-app die steek proeven van elke onderliggende LUIS-app uitingen om de Voorspellings aanvraag naar de juiste onderliggende app te sturen. |
 | [Lager](luis-concept-version.md)| 100 versies per toepassing |
 | [Versie naam][luis-how-to-manage-versions] | 128 tekens |
 

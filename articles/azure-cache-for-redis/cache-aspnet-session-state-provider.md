@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1599fe76f3542717bebe63228d8c46f7e5de97c3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010899"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457164"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-sessiestatusprovider voor Azure Cache voor Redis
 
-Azure cache voor redis biedt een sessie status provider die u kunt gebruiken om de sessie status in het geheugen op te slaan met Azure cache voor redis in plaats van een SQL Server-Data Base. Als u de provider voor cache sessie status wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren voor cache met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket.
+Azure cache voor redis biedt een sessie status provider die u kunt gebruiken om de sessie status in het geheugen op te slaan met Azure cache voor redis in plaats van een SQL Server-Data Base. Als u de provider voor cache sessie status wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren voor cache met behulp van het Azure-cache geheugen voor de redis-sessie status NuGet-pakket. Lees voor ASP.NET Core toepassingen de modus voor [sessie-en status beheer in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/app-state).
 
 Het is vaak niet praktisch in een echte Cloud-app om te voor komen dat u een vorm van status voor een gebruikers sessie opslaat, maar sommige benaderingen beïnvloeden de prestaties en schaal baarheid meer dan andere. Als u de status wilt opslaan, is de beste oplossing om de hoeveelheid status laag te bewaren en op te slaan in cookies. Als dat niet haalbaar is, is de volgende beste oplossing om de ASP.NET-sessie status te gebruiken met een provider voor gedistribueerde, in-memory cache. De slechtste oplossing van een oogpunt van prestaties en schaal baarheid is het gebruik van een Data Base-back-up van de sessie status. Dit onderwerp bevat richt lijnen voor het gebruik van de ASP.NET-sessie status provider voor Azure cache voor redis. Zie [ASP.net session status Options](#aspnet-session-state-options)(Engelstalig) voor meer informatie over andere sessie status opties.
 
@@ -89,7 +89,7 @@ Configureer de kenmerken met de waarden van uw cache-Blade in de Microsoft Azure
 * **throwOnError** – True als u wilt dat een uitzonde ring wordt gegenereerd als er een fout optreedt, of ONWAAR als u wilt dat de bewerking op de achtergrond mislukt. U kunt controleren op fouten door de statische eigenschap micro soft. Web. redis. RedisSessionStateProvider. LastException te controleren. De standaard waarde is True.
 * **retryTimeoutInMilliseconds** : bewerkingen waarvoor een failover wordt uitgevoerd, worden tijdens dit interval opnieuw uitgevoerd, opgegeven in milliseconden. De eerste nieuwe poging vindt plaats na 20 milliseconden en probeert vervolgens elke seconde opnieuw een poging tot het retryTimeoutInMilliseconds-interval verloopt. Onmiddellijk na dit interval wordt de bewerking een eind tijd opnieuw uitgevoerd. Als de bewerking nog steeds mislukt, wordt de uitzonde ring weer geretourneerd naar de aanroeper, afhankelijk van de instelling throwOnError. De standaard waarde is 0, wat betekent dat er geen nieuwe pogingen zijn.
 * **databaseId** : Hiermee geeft u de Data Base op die moet worden gebruikt voor de uitvoer gegevens van de cache. Als u niets opgeeft, wordt de standaard waarde 0 gebruikt.
-* **ApplicationName** : sleutels worden opgeslagen in redis als `{<Application Name>_<Session ID>}_Data`. Met dit naamgevings schema kunnen meerdere toepassingen hetzelfde redis-exemplaar delen. Deze para meter is optioneel en als u deze niet opgeeft, wordt de standaard waarde gebruikt.
+* **ApplicationName** : sleutels worden opgeslagen in redis als `{<Application Name>_<Session ID>}_Data` . Met dit naamgevings schema kunnen meerdere toepassingen hetzelfde redis-exemplaar delen. Deze para meter is optioneel en als u deze niet opgeeft, wordt de standaard waarde gebruikt.
 * **connectionTimeoutInMilliseconds** : met deze instelling kunt u de instelling voor connectTimeout in de stack Exchange. redis-client onderdrukken. Als deze niet is opgegeven, wordt de standaard instelling voor connectTimeout van 5000 gebruikt. Zie het [configuratie model stack Exchange. redis](https://go.microsoft.com/fwlink/?LinkId=398705)voor meer informatie.
 * **operationTimeoutInMilliseconds** : met deze instelling kunt u de instelling voor syncTimeout in de stack Exchange. redis-client onderdrukken. Als deze niet is opgegeven, wordt de standaard instelling voor syncTimeout van 1000 gebruikt. Zie het [configuratie model stack Exchange. redis](https://go.microsoft.com/fwlink/?LinkId=398705)voor meer informatie.
 * **redisSerializerType** : met deze instelling kunt u aangepaste serialisatie van sessie-inhoud opgeven die wordt verzonden naar redis. Het opgegeven type moet een `Microsoft.Web.Redis.ISerializer` open bare constructor zonder para meters implementeren en moet declareren. Wordt standaard `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` gebruikt.

@@ -5,17 +5,17 @@ description: Meer informatie over het maken van een gebruiker met Azure Active D
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa864b5b2ded092ae7834ecd8c7d271d13117716
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "75371986"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464400"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Een SAS voor gebruikers overdracht maken voor een container of BLOB met de Azure CLI
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD)-referent
 
 Als u de Azure CLI wilt gebruiken om een SAS met Azure AD-referenties te beveiligen, moet u eerst controleren of u de meest recente versie van Azure CLI hebt geïnstalleerd. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie over het installeren van de Azure cli.
 
-Als u een gebruikers delegering SA'S wilt maken met behulp van de Azure CLI, moet u versie 2.0.78 of hoger hebben geïnstalleerd. Gebruik de `az --version` opdracht om de geïnstalleerde versie te controleren.
+Als u een gebruikers delegering SA'S wilt maken met behulp van de Azure CLI, moet u versie 2.0.78 of hoger hebben geïnstalleerd. Gebruik de opdracht om de geïnstalleerde versie te controleren `az --version` .
 
 ## <a name="sign-in-with-azure-ad-credentials"></a>Aanmelden met Azure AD-referenties
 
@@ -60,7 +60,7 @@ Wanneer u een SAS voor gebruikers overdracht maakt met de Azure CLI, wordt de sl
 
 Omdat het maximale interval waarover de gebruikers overdracht-sleutel geldig is, zeven dagen na de begin datum is, moet u een verloop tijd opgeven voor de SA'S die binnen zeven dagen na de begin tijd vallen. De SAS is ongeldig nadat de gebruikers delegerings sleutel is verlopen, waardoor een SAS met een verloop tijd van meer dan zeven dagen nog geldig is gedurende 7 dagen.
 
-Wanneer u een SAS voor gebruikers overdracht maakt `--auth-mode login` , `--as-user parameters` zijn de en vereist. Geef de *aanmeldings naam* op voor de `--auth-mode` para meter zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de `--as-user` para meter op om aan te geven dat de geretourneerde SA'S een SAS voor gebruikers overdracht moeten zijn.
+Wanneer u een SAS voor gebruikers overdracht maakt `--auth-mode login` , `--as-user parameters` zijn de en vereist. Geef de *aanmeldings naam* op voor de `--auth-mode` para meter zodat aanvragen voor Azure Storage worden geautoriseerd met uw Azure AD-referenties. Geef de `--as-user` para meter op om aan te geven dat de geretourneerde sa's een SAS voor gebruikers overdracht moeten zijn.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Een SAS voor gebruikers overdracht maken voor een container
 
@@ -92,7 +92,7 @@ Als u een gebruikers delegering SA'S wilt maken voor een blob met de Azure CLI, 
 
 Ondersteunde machtigingen voor een gebruikers delegering SA'S voor een BLOB zijn: toevoegen, maken, verwijderen, lezen en schrijven. Machtigingen kunnen afzonderlijk of gecombineerd worden opgegeven. Zie [een gebruiker delegering Sa's maken](/rest/api/storageservices/create-user-delegation-sas)voor meer informatie over deze machtigingen.
 
-De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld `--full-uri` wordt de para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
+De volgende syntaxis retourneert een gebruikers delegering SA'S voor een blob. In het voor beeld wordt de `--full-uri` para meter opgegeven, die de BLOB-URI retourneert waaraan het SAS-token is toegevoegd. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden:
 
 ```azurecli-interactive
 az storage blob generate-sas \

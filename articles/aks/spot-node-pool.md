@@ -2,17 +2,15 @@
 title: 'Voor beeld: een steun knooppunt groep toevoegen aan een Azure Kubernetes service-cluster (AKS)'
 description: Meer informatie over het toevoegen van een steun knooppunt groep aan een Azure Kubernetes service-cluster (AKS).
 services: container-service
-author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: zarhoads
-ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1dc54810371c4258616ca95b9f0f0abeee4c415
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77622045"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462954"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Voor beeld: een steun knooppunt groep toevoegen aan een Azure Kubernetes service-cluster (AKS)
 

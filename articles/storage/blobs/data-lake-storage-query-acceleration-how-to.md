@@ -4,16 +4,16 @@ description: Gebruik query Acceleration (preview) om een subset van gegevens op 
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930077"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465861"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Gegevens filteren met behulp van Azure Data Lake Storage-query versnelling (preview-versie)
 
@@ -53,11 +53,11 @@ Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Sto
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Down load de pakketten voor query versnelling. U kunt een gecomprimeerd zip-bestand dat deze pakketten bevat, ophalen met behulp van [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net)deze koppeling:. 
+1. Down load de pakketten voor query versnelling. U kunt een gecomprimeerd zip-bestand dat deze pakketten bevat, ophalen met behulp van deze koppeling: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net) . 
 
 2. Pak de inhoud van dit bestand uit in de projectmap.
 
-3. Open het project bestand (*. csproj*) in een tekst editor en voeg deze pakket verwijzingen in het \<project\> -element toe.
+3. Open het project bestand (*. csproj*) in een tekst editor en voeg deze pakket verwijzingen in het- \<Project\> element toe.
 
    ```xml
    <ItemGroup>
@@ -67,7 +67,7 @@ Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Sto
    </ItemGroup>
    ```
 
-4. Herstel de preview-SDK-pakketten. Met deze voorbeeld opdracht worden de preview-SDK-pakketten hersteld met `dotnet restore` behulp van de opdracht. 
+4. Herstel de preview-SDK-pakketten. Met deze voorbeeld opdracht worden de preview-SDK-pakketten hersteld met behulp van de `dotnet restore` opdracht. 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
@@ -86,7 +86,7 @@ Query Acceleration (preview) is een nieuwe mogelijkheid voor Azure Data Lake Sto
    > [!NOTE]
    > In de voor beelden in dit artikel wordt ervan uitgegaan dat de naam van de map **lib**is.
 
-2. Down load de pakketten voor query versnelling. U kunt een gecomprimeerd zip-bestand dat deze pakketten bevat, ophalen met behulp van [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java)deze koppeling:. 
+2. Down load de pakketten voor query versnelling. U kunt een gecomprimeerd zip-bestand dat deze pakketten bevat, ophalen met behulp van deze koppeling: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java) . 
 
 3. Pak de bestanden in dit zip-bestand uit naar de map die u hebt gemaakt. In ons voor beeld heet deze map **lib**. 
 
@@ -162,7 +162,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-Voor het compileren van voor beelden die in dit artikel worden weer gegeven, `using` moet u ook deze instructies toevoegen.
+Voor het compileren van voor beelden die in dit artikel worden weer gegeven, moet u ook deze `using` instructies toevoegen.
 
 ```csharp
 using System.Threading.Tasks;
@@ -190,11 +190,11 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Gegevens ophalen met behulp van een filter
 
-U kunt SQL gebruiken om de rij filter predikaten en kolom projectie op te geven in een aanvraag voor query versnelling. Met de volgende code wordt een query uitgevoerd op een CSV-bestand in de opslag en worden alle rijen met gegevens `Hemingway, Ernest`geretourneerd, waarbij de derde kolom overeenkomt met de waarde. 
+U kunt SQL gebruiken om de rij filter predikaten en kolom projectie op te geven in een aanvraag voor query versnelling. Met de volgende code wordt een query uitgevoerd op een CSV-bestand in de opslag en worden alle rijen met gegevens geretourneerd, waarbij de derde kolom overeenkomt met de waarde `Hemingway, Ernest` . 
 
-- In de SQL-query wordt het `BlobStorage` sleutel woord gebruikt voor het aanduiden van het bestand dat wordt opgevraagd.
+- In de SQL-query wordt het sleutel woord `BlobStorage` gebruikt voor het aanduiden van het bestand dat wordt opgevraagd.
 
-- Kolom verwijzingen worden opgegeven `_N` waar de eerste kolom zich bevindt. `_1` Als het bron bestand een veldnamenrij bevat, kunt u naar kolommen verwijzen met de naam die is opgegeven in de rij met koppen. 
+- Kolom verwijzingen worden opgegeven `_N` waar de eerste kolom zich bevindt `_1` . Als het bron bestand een veldnamenrij bevat, kunt u naar kolommen verwijzen met de naam die is opgegeven in de rij met koppen. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-De- `BlobQuickQueryClient.openInputStream()` methode verzendt de query naar de API voor query versnelling, waarna de resultaten worden teruggestuurd naar de toepassing `InputStream` als een object dat kan worden gelezen zoals elk ander InputStream-object.
+De `BlobQuickQueryClient.openInputStream()` -methode verzendt de query naar de API voor query versnelling, waarna de resultaten worden teruggestuurd naar de toepassing als een `InputStream` object dat kan worden gelezen zoals elk ander InputStream-object.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -316,7 +316,7 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 U kunt de resultaten in een subset van kolommen bereiken. Op die manier haalt u alleen de kolommen op die nodig zijn om een bepaalde berekening uit te voeren. Dit verbetert de prestaties van de toepassing en vermindert de kosten omdat er minder gegevens via het netwerk worden overgedragen. 
 
-Met deze code wordt alleen `PublicationYear` de kolom voor alle boeken in de gegevensset opgehaald. De gegevens uit de rij met koppen in het bron bestand worden ook gebruikt om te verwijzen naar kolommen in de query.
+Met deze code wordt alleen de `PublicationYear` kolom voor alle boeken in de gegevensset opgehaald. De gegevens uit de rij met koppen in het bron bestand worden ook gebruikt om te verwijzen naar kolommen in de query.
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)

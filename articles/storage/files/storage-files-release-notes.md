@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: e57a0266c762a3735fe1a71428e597dc6c3a5ce0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8e6105a83aec9c2141c6b1083602c54d1fa545b0
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013041"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464824"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Releaseopmerkingen voor de Azure File Sync-agent
 Met Azure File Sync kunt u bestandsshares van uw organisatie in Azure Files centraliseren zonder in te leveren op de flexibiliteit, prestaties en compatibiliteit van een on-premises bestandsserver. Uw installaties van Windows Server worden getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is in Windows Server gebruiken voor lokale toegang tot uw gegevens (inclusief SMB, NFS en FTPS) en u kunt zoveel caches hebben als u waar ook ter wereld nodig hebt.
@@ -25,6 +25,7 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
 | Mijlpalen | Versienummer agent | Releasedatum | Status |
 |----|----------------------|--------------|------------------|
+| V 10.1 release- [KB4522411](https://support.microsoft.com/en-us/help/4522411)| 10.1.0.0 | 5 juni 2020 | Ondersteund-Flighting |
 | Update pakket van mei 2020- [KB4522412](https://support.microsoft.com/help/4522412)| 10.0.2.0 | 19 mei 2020 | Ondersteund |
 | V10 toevoegen release- [KB4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 9 april 2020 | Ondersteund |
 | Update pakket van december 2019- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 12 december 2019 | Ondersteund |
@@ -41,6 +42,16 @@ De volgende versies worden ondersteund voor de Azure File Sync-agent:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updatebeleid Azure File Sync-agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-10100"></a>10.1.0.0 van agent versie
+De volgende release opmerkingen zijn voor versie 10.1.0.0 van de Azure File Sync agent die is uitgebracht op 5 juni 2020. Deze opmerkingen zijn opgenomen in aanvulling op de release opmerkingen van versie 10.0.0.0 en 10.0.2.0.
+
+### <a name="improvements-and-issues-that-are-fixed"></a>Verbeteringen en problemen die zijn opgelost
+
+- Ondersteuning voor Azure private Endpoint
+    - Het synchroniseren van verkeer naar de opslag synchronisatie service kan nu worden verzonden naar een persoonlijk eind punt. Hierdoor kan tunneling via een ExpressRoute of VPN-verbinding worden ingeschakeld. Zie [configuring Azure file sync Network endpoints](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints)(Engelstalig) voor meer informatie.
+- Bestanden gesynchroniseerde metrische gegevens worden nu weer gegeven wanneer een grote synchronisatie wordt uitgevoerd, in plaats van aan het einde.
+- Diverse verbeteringen van de betrouw baarheid van agent installatie, Cloud lagen, synchronisatie en telemetrie
 
 ## <a name="agent-version-10020"></a>10.0.2.0 van agent versie
 De volgende release opmerkingen zijn voor versie 10.0.2.0 van de Azure File Sync agent die is uitgebracht op 19 mei 2020. Deze opmerkingen zijn opgenomen in aanvulling op de release opmerkingen van versie 10.0.0.0.

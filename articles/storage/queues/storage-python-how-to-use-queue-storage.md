@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cbaf19c5c4d52a5de1ef1d63ad5465859555810
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060923"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465300"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Azure-wachtrij opslag gebruiken v 2.1 van python
 
@@ -45,7 +45,7 @@ pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]
-> Als u een upgrade uitvoert van de Azure Storage SDK voor python versie 0,36 of eerder, verwijdert u de oudere `pip uninstall azure-storage` SDK met voordat u het meest recente pakket installeert.
+> Als u een upgrade uitvoert van de Azure Storage SDK voor python versie 0,36 of eerder, verwijdert u de oudere SDK met `pip uninstall azure-storage` voordat u het meest recente pakket installeert.
 
 Zie [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python/)voor een alternatieve installatie methode.
 
@@ -53,17 +53,17 @@ Zie [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-pytho
 
 Zie [Azure Storage: aan de slag met Azure queues in python](https://github.com/Azure-Samples/storage-queue-python-getting-started)voor informatie over het weer geven en uitvoeren van een voorbeeld toepassing die laat zien hoe u python kunt gebruiken met Azure-wacht rijen. 
 
-Als u de voorbeeld toepassing wilt uitvoeren, moet u ervoor zorgen dat `azure-storage-queue` u `azure-storage-common` zowel de als-pakketten hebt geïnstalleerd.
+Als u de voorbeeld toepassing wilt uitvoeren, moet u ervoor zorgen dat u zowel de als-pakketten hebt geïnstalleerd `azure-storage-queue` `azure-storage-common` .
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 
-Met het [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) -object kunt u met wacht rijen werken. Met de volgende code wordt `QueueService` een-object gemaakt. Voeg het volgende toe aan de bovenkant van een python-bestand waarin u programmatisch toegang wilt krijgen Azure Storage:
+Met het [QueueService](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice) -object kunt u met wacht rijen werken. Met de volgende code wordt een- `QueueService` object gemaakt. Voeg het volgende toe aan de bovenkant van een python-bestand waarin u programmatisch toegang wilt krijgen Azure Storage:
 
 ```python
 from azure.storage.queue import QueueService
 ```
 
-Met de volgende code wordt `QueueService` een object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang *MyAccount* en *MyKey* door de naam en sleutel van uw account.
+Met de volgende code wordt een `QueueService` object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang *MyAccount* en *MyKey* door de naam en sleutel van uw account.
 
 ```python
 queue_service = QueueService(account_name='myaccount', account_key='mykey')
@@ -89,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Bekijken van het volgende bericht
 
-U kunt het bericht aan de voor kant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door de [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) -methode aan te roepen. In wordt `peek_messages` standaard weer gegeven als één bericht.
+U kunt het bericht aan de voor kant van een wachtrij bekijken zonder het uit de wachtrij te verwijderen door de [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) -methode aan te roepen. In wordt standaard weer `peek_messages` gegeven als één bericht.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -99,7 +99,7 @@ for message in messages:
 
 ## <a name="dequeue-messages"></a>Berichten uit de wachtrij verwijderen
 
-Uw code verwijdert een bericht uit een wachtrij in twee stappen. Wanneer u [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)aanroept, wordt standaard het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt `get_messages` geretourneerd van is niet zichtbaar voor andere code die berichten uit deze wachtrij leest. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)aanroepen. Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. Uw code aanroepen `delete_message` direct nadat het bericht is verwerkt.
+Uw code verwijdert een bericht uit een wachtrij in twee stappen. Wanneer u [get_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-)aanroept, wordt standaard het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt geretourneerd van is niet `get_messages` zichtbaar voor andere code die berichten uit deze wachtrij leest. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. Als u het verwijderen van het bericht uit de wachtrij wilt volt ooien, moet u ook [delete_message](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#delete-message-queue-name--message-id--pop-receipt--timeout-none-)aanroepen. Dit proces met twee stappen voor het verwijderen van een bericht zorgt ervoor dat wanneer uw code een bericht niet kan verwerken als gevolg van een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw proberen. Uw code aanroepen `delete_message` direct nadat het bericht is verwerkt.
 
 ```python
 messages = queue_service.get_messages('taskqueue')
@@ -108,7 +108,7 @@ for message in messages:
     queue_service.delete_message('taskqueue', message.id, message.pop_receipt)
 ```
 
-Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende code voorbeeld wordt `get_messages` de methode gebruikt om 16 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp van een for-lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
+Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht. In het volgende code voorbeeld wordt de `get_messages` methode gebruikt om 16 berichten in één aanroep op te halen. Vervolgens wordt elk bericht verwerkt met behulp van een for-lus. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht.
 
 ```python
 messages = queue_service.get_messages(
@@ -131,7 +131,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>Lengte van de wachtrij ophalen
 
-U kunt een schatting ophalen van het aantal berichten in de wachtrij. De methode [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) vraagt de Queue-service om meta gegevens over de wachtrij te retour `approximate_message_count`neren en de. Het resultaat is alleen van benadering omdat berichten kunnen worden toegevoegd of verwijderd nadat de wachtrij service op uw aanvraag reageert.
+U kunt een schatting ophalen van het aantal berichten in de wachtrij. De methode [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) vraagt de Queue-service om meta gegevens over de wachtrij te retour neren en de `approximate_message_count` . Het resultaat is alleen van benadering omdat berichten kunnen worden toegevoegd of verwijderd nadat de wachtrij service op uw aanvraag reageert.
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')

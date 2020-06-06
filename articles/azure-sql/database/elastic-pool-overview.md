@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 04/09/2020
-ms.openlocfilehash: aa2ccf9c382ff560c081c7cdd13c4ab2199c2551
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f79eb910728286ef5dc3a28974353db012bc5a16
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044974"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449648"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere data bases in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,10 +31,7 @@ SaaS-ontwikkelaars ontwikkelen toepassingen boven op grootschalige gegevenslagen
 - Onder-inrichting voor het besparen van kosten, tegen kosten van prestaties en klant tevredenheid tijdens pieken.
 
 Elastische Pools kunnen dit probleem oplossen door ervoor te zorgen dat data bases de benodigde prestatie bronnen krijgen wanneer ze deze nodig hebben. Ze bieden een eenvoudig mechanisme voor het toewijzen van resources binnen een voorspelbaar budget. Zie [Ontwerppatronen voor SaaS-toepassingen met meerdere tenants met behulp van Azure SQL Database](saas-tenancy-app-design-patterns.md) voor meer informatie over ontwerppatronen voor SaaS-toepassingen met elastische pools.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
-
 > [!IMPORTANT]
 > Er worden geen kosten per Data Base voor elastische Pools. Er worden kosten in rekening gebracht voor elk uur dat een pool bestaat op het hoogste eDTU-of vCores, ongeacht het gebruik of het feit dat de groep korter dan een uur actief was.
 
@@ -160,7 +157,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 Er zijn twee manieren waarop u een elastische pool kunt maken in de Azure Portal.
 
 1. Ga naar de [Azure Portal](https://portal.azure.com) om een elastische pool te maken. Zoek en selecteer **Azure SQL**.
-2. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
+2. Selecteer **+Toevoegen** om de pagina **SQL-implementatieoptie selecteren** te openen. U kunt aanvullende informatie over elastische Pools weer geven door **Details weer geven** te selecteren op de tegel **data bases** .
 3. Selecteer in de tegel **data bases** de optie **elastische groep** in de vervolg keuzelijst **resource type** en selecteer vervolgens **maken**:
 
    ![Een pool voor Elastic Database maken](./media/elastic-pool-overview/create-elastic-pool.png)

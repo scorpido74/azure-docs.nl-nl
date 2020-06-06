@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135884"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463447"
 ---
 # <a name="copy-a-blob-with-net"></a>Een BLOB kopiëren met .NET
 
@@ -109,7 +109,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>Een Kopieer bewerking voor een BLOB afbreken
 
-Het afbreken van een Kopieer bewerking resulteert in een doel-blob met een lengte van nul voor blok-blobs, toevoeg-blobs en pagina-blobs. De meta gegevens voor de doel-BLOB hebben echter de nieuwe waarden gekopieerd van de bron-BLOB of worden expliciet ingesteld in de aanroep [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) of [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) . Als u wilt dat de oorspronkelijke meta gegevens vóór de kopie worden bewaard, maakt u een moment opname `StartCopy` van `StartCopyAsync`de doel-BLOB voordat u of aanroept.
+Het afbreken van een Kopieer bewerking resulteert in een doel-blob met een lengte van nul voor blok-blobs, toevoeg-blobs en pagina-blobs. De meta gegevens voor de doel-BLOB hebben echter de nieuwe waarden gekopieerd van de bron-BLOB of worden expliciet ingesteld in de aanroep [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) of [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) . Als u wilt dat de oorspronkelijke meta gegevens vóór de kopie worden bewaard, maakt u een moment opname van de doel-BLOB voordat u of aanroept `StartCopy` `StartCopyAsync` .
 
 Wanneer u een actieve bewerking voor het kopiëren van blobs afbreekt, wordt de [CopyState. status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) van de doel-BLOB ingesteld op [CopyStatus. abort](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet).
 

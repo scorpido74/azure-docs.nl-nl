@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef98f243abd02f0156190638cda8ab7c33f935d
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: dd804937fbd98121f3242c6906b890183d1284bb
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770904"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464365"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication-instellingen configureren
 
@@ -97,7 +97,7 @@ Configureer de functie _fraude waarschuwing_ zodat uw gebruikers frauduleuze pog
 
 ### <a name="view-fraud-reports"></a>Fraude rapporten weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Azure Active Directory**  >  verificatie gegevens voor**aanmeldingen**  >  **Authentication Details**. Het fraude rapport maakt nu deel uit van het standaard rapport van Azure AD-aanmeldingen en wordt weer gegeven in de **"resultaat Details"** als MFA is geweigerd, er is een fraude code ingevoerd.
  
 ## <a name="notifications"></a>Meldingen
@@ -192,7 +192,7 @@ Met de functie _eenmalig overs Laan_ kan een gebruiker één keer verifiëren zo
 
 ### <a name="view-the-one-time-bypass-report"></a>Het eenmalige bypass-rapport weer geven
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Ga naar **Azure Active Directory**het  >  **Security**  >  **MFA**  >  **eenmalig overs Laan**van Security MFA.
 
 ## <a name="caching-rules"></a>Regels voor opslaan in cache
@@ -217,7 +217,8 @@ Instellingen voor app-wacht woorden, vertrouwde IP-adressen, verificatie opties 
 
 ![Service-instellingen van Azure Multi-Factor Authentication](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
-De vertrouwde IP-adresbereiken kunnen privé of openbaar zijn.
+> [!NOTE]
+> De vertrouwde Ip's kunnen alleen particuliere IP-bereiken bevatten wanneer u MFA server gebruikt. Voor Azure Multi-Factor Authentication op de cloud kunt u alleen open bare IP-adresbereiken gebruiken.
 
 ## <a name="app-passwords"></a>App-wachtwoorden
 
@@ -277,7 +278,7 @@ Azure AD ondersteunt Federatie of eenmalige aanmelding (SSO) met on-premises Win
 
 Standaard kunnen gebruikers geen app-wacht woorden maken. De functie voor het maken van app-wacht woorden moet zijn ingeschakeld. Gebruik de volgende procedure om gebruikers de mogelijkheid te geven om app-wacht woorden te maken:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**.
 3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
@@ -293,8 +294,8 @@ Gebruikers kunnen ook app-wacht woorden maken na de registratie. Zie [Wat zijn a
 
 De functie voor _vertrouwde IP-adressen_ van Azure multi-factor Authentication wordt gebruikt door beheerders van een beheerde of federatieve Tenant. De functie omzeilt de verificatie in twee stappen voor gebruikers die zich aanmelden vanaf het bedrijfs intranet. De functie is beschikbaar in de volledige versie van Azure Multi-Factor Authentication en niet de gratis versie voor beheerders. Zie [Azure multi-factor Authentication](multi-factor-authentication.md)voor meer informatie over het verkrijgen van de volledige versie van Azure multi-factor Authentication.
 
-> [!NOTE]
-> Vertrouwde Ip's van MFA en benoemde locaties met voorwaardelijke toegang werken alleen met IPV4-adressen.
+> [!TIP]
+> IPv6-bereiken worden alleen ondersteund in de interface van de [benoemde locatie (preview)](../conditional-access/location-condition.md#preview-features) .
 
 Als uw organisatie de NPS-extensie implementeert voor het leveren van MFA aan on-premises toepassingen, ziet u dat het bron-IP-adres altijd de NPS-server is die de verificatie poging doorloopt.
 
@@ -317,17 +318,17 @@ Ongeacht of de functie voor vertrouwde IP-adressen is ingeschakeld, is verificat
 
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Benoemde locaties inschakelen met behulp van voorwaardelijke toegang
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**met de  >  **Security**  >  **Conditional Access**  >  **naam locaties**van de voorwaardelijke toegang.
 3. Selecteer een **nieuwe locatie**.
 4. Voer een naam in voor de locatie.
 5. Selecteer **markeren als vertrouwde locatie**.
-6. Voer het IP-bereik in CIDR-notatie in, zoals **192.168.1.1/24**.
+6. Voer het IP-bereik in CIDR-notatie in, zoals **40.77.182.32/27**.
 7. Selecteer **Maken**.
 
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>De functie voor vertrouwde IP-adressen inschakelen met behulp van voorwaardelijke toegang
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**met de  >  **Security**  >   **Conditional Access**  >  **naam locaties**van de voorwaardelijke toegang.
 3. Selecteer **vertrouwde IP-adressen voor MFA configureren**.
 4. Kies op de pagina **Service-instellingen** onder **vertrouwde IP-adressen**een van de volgende twee opties:
@@ -345,7 +346,7 @@ Ongeacht of de functie voor vertrouwde IP-adressen is ingeschakeld, is verificat
 
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>De functie voor vertrouwde IP-adressen inschakelen met behulp van service-instellingen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**.
 3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
@@ -377,7 +378,7 @@ Wanneer uw gebruikers hun accounts voor Azure Multi-Factor Authentication inschr
 
 ### <a name="enable-and-disable-verification-methods"></a>Verificatie methoden in-en uitschakelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**.
 3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.
@@ -413,7 +414,7 @@ De functie beperkt het aantal authenticaties op Web-apps, die Norma liter elke k
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication onthouden inschakelen
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**.
 3. Selecteer **multi-factor Authentication**.
 4. Onder Multi-Factor Authentication selecteert u **Service-instellingen**.

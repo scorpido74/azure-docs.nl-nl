@@ -2,16 +2,14 @@
 title: Azure NetApp Files integreren met de Azure Kubernetes-service
 description: Meer informatie over het integreren van Azure NetApp Files met de Azure Kubernetes-service
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273757"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465640"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integreren met de Azure Kubernetes-service
 
@@ -49,7 +47,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Dit kan enige tijd duren voordat de bewerking is voltooid.
 
-Wanneer u een Azure NetApp-account maakt voor gebruik met AKS, moet u het account maken in de resource groep van het **knoop punt** . Haal eerst de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en `--query nodeResourceGroup` Voeg de query parameter toe. In het volgende voor beeld wordt de resource groep node opgehaald voor het AKS-cluster met de naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
+Wanneer u een Azure NetApp-account maakt voor gebruik met AKS, moet u het account maken in de resource groep van het **knoop punt** . Haal eerst de naam van de resource groep op met de opdracht [AZ AKS show][az-aks-show] en voeg de `--query nodeResourceGroup` query parameter toe. In het volgende voor beeld wordt de resource groep node opgehaald voor het AKS-cluster met de naam *myAKSCluster* in de naam van de resource groep *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -148,7 +146,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Maak een `pv-nfs.yaml` definitie van een PersistentVolume. Vervang `path` door de *CreationToken* en `server` met *ipAddress* van de vorige opdracht. Bijvoorbeeld:
+Maak een `pv-nfs.yaml` definitie van een PersistentVolume. Vervang door `path` de *creationToken* en `server` met *ipAddress* van de vorige opdracht. Bijvoorbeeld:
 
 ```yaml
 ---
@@ -246,7 +244,7 @@ Controleer of de Pod wordt *uitgevoerd* met behulp van de kubectl-opdracht [besc
 kubectl describe pod nginx-nfs
 ```
 
-Controleer of het volume is gekoppeld in de Pod met behulp van [kubectl exec][kubectl-exec] om verbinding te maken `df -h` met de pod vervolgens te controleren of het volume is gekoppeld.
+Controleer of het volume is gekoppeld in de Pod met behulp van [kubectl exec][kubectl-exec] om verbinding te maken met de pod vervolgens `df -h` te controleren of het volume is gekoppeld.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

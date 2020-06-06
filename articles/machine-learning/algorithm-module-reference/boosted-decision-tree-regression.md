@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: cb7f11f184ba8e19eb8786817da58edf8ddee44e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137090"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448628"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Regressie module voor versterkte beslissings structuur
 
@@ -99,7 +99,7 @@ De methode voor het verhogen van de kleur overgang kan ook worden gebruikt voor 
 
 Nadat de training is voltooid:
 
-+ Als u het model voor scores wilt gebruiken, verbindt u het met het [score model](./score-model.md)om waarden te voors pellen voor nieuwe invoer voorbeelden.
++ Als u het model voor scores wilt gebruiken, verbindt u [Train model](train-model.md) to [score model](./score-model.md)om waarden te voors pellen voor nieuwe invoer voorbeelden.
 
 + Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van het **getrainde model** en klikt u op pictogram **gegevensset registreren** . De kopie van het getrainde model wordt als een module in de module structuur opgeslagen en wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn.
 

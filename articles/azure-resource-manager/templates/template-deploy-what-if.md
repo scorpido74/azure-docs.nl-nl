@@ -3,14 +3,14 @@ title: Sjabloonimlementatie wat-als (preview)
 description: Bepaal welke wijzigingen er in uw resources optreden voordat u een Azure Resource Manager sjabloon implementeert.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424241"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457283"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Wat als'-bewerking van ARM-sjabloon implementatie (preview-versie)
 
@@ -136,6 +136,8 @@ De voor gaande opdrachten retour neren een tekst samenvatting die u hand matig k
 
 * `az deployment group what-if --no-pretty-print`voor implementaties van resource groepen
 * `az deployment sub what-if --no-pretty-print`voor implementaties op abonnements niveau
+
+Als u de resultaten zonder kleuren wilt retour neren, opent u het configuratie bestand van [Azure cli](/cli/azure/azure-cli-configuration) . Stel **no_color** in op **Ja**.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 

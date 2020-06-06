@@ -6,12 +6,12 @@ ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/10/2020
-ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca4e79977132586c619f323015f9d915e04707f1
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656624"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449512"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Veelgestelde vragen over het automatisch schalen van ingerichte door Voer in Azure Cosmos DB
 
@@ -86,6 +86,10 @@ Ja, automatisch schalen wordt ondersteund voor gedeelde doorvoer databases. Als 
 
 ### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>Wat is het aantal toegestane containers per gedeelde doorvoer database wanneer automatisch schalen is ingeschakeld?
 Azure Cosmos DB dwingt een maximum van 25 containers af in een gedeelde doorvoer database, die van toepassing is op data bases met automatisch schalen of standaard (hand matig) door voer. 
+
+### <a name="what-is-the-impact-of-autoscale-on-database-consistency-level"></a>Wat is de invloed van automatisch schalen op consistentie niveau van de data base?
+Er is geen gevolgen voor het automatisch schalen op consistentie niveau van de data base.
+Zie het artikel [consistentie niveaus](consistency-levels.md) voor meer informatie over de beschik bare consistentie niveaus.
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Wat is de opslag limiet die is gekoppeld aan elke maximum RU/s optie?  
 De opslag limiet in GB voor elke maximum versie van RU/s is: Max RU/s van data base of container/100. Als het maximum aantal RU/s 20.000 RU/s is, kan de resource bijvoorbeeld 200 GB aan opslag ondersteunen. Zie het artikel [limieten voor automatisch schalen](provision-throughput-autoscale.md#autoscale-limits) voor de beschik bare Max ru/s en opslag opties. 

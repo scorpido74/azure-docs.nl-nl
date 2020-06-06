@@ -4,16 +4,16 @@ description: Een Azure Blob-opslag container koppelen met ZEKERheid op Linux
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061429"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465470"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-opslag koppelen als een bestands systeem met blobfuse
 
@@ -112,7 +112,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Als u het configuratie bestand in Windows hebt gemaakt, zorg er dan voor `dos2unix` dat u het bestand kunt opschonen en converteren naar de UNIX-indeling. 
+> Als u het configuratie bestand in Windows hebt gemaakt, zorg er dan voor dat u `dos2unix` het bestand kunt opschonen en converteren naar de UNIX-indeling. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Een lege directory maken om te koppelen
@@ -132,7 +132,7 @@ Als u blobfuse wilt koppelen, voert u de volgende opdracht uit met uw gebruiker.
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-U hebt nu toegang tot uw blok-blobs via de reguliere Api's van het bestands systeem. De gebruiker die de Directory koppelt, is standaard de enige persoon die toegang heeft tot de map, waardoor de toegang wordt beveiligd. Als u toegang tot alle gebruikers wilt toestaan, kunt u koppelen via ```-o allow_other```de optie. 
+U hebt nu toegang tot uw blok-blobs via de reguliere Api's van het bestands systeem. De gebruiker die de Directory koppelt, is standaard de enige persoon die toegang heeft tot de map, waardoor de toegang wordt beveiligd. Als u toegang tot alle gebruikers wilt toestaan, kunt u koppelen via de optie ```-o allow_other``` . 
 
 ```bash
 cd ~/mycontainer

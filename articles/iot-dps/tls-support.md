@@ -7,16 +7,19 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: fefae4ad1f4e10598fcc67d65155c3b13efc9ff4
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417970"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449614"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>TLS-ondersteuning in azure IoT Hub Device Provisioning Service (DPS)
 
-DPS gebruikt Transport Layer Security (TLS) voor het beveiligen van verbindingen van IoT-apparaten. TLS-protocol versies die door DPS worden ondersteund, zijn onder andere TLS 1,2.
+DPS gebruikt [Transport Layer Security (TLS)](http://wikipedia.org/wiki/Transport_Layer_Security) voor het beveiligen van verbindingen van IOT-apparaten. 
+
+De huidige TLS-protocol versies die worden ondersteund door DPS zijn: 
+* TLS 1.2
 
 TLS 1,0 en 1,1 worden beschouwd als verouderd en zijn gepland voor afschaffing. Zie [TLS 1,0 en 1,1 voor IOT hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md)afzien voor meer informatie. 
 
@@ -24,7 +27,7 @@ TLS 1,0 en 1,1 worden beschouwd als verouderd en zijn gepland voor afschaffing. 
 
 Voor extra beveiliging wordt u aangeraden uw DPS-exemplaren zo te configureren dat *alleen* client verbindingen van het apparaat met TLS-versie 1,2 worden toegestaan en het gebruik van [Aanbevolen code](#recommended-ciphers)ringen wordt afgedwongen.
 
-U doet dit door een nieuwe DPS-resource in te richten in een van de [ondersteunde regio's](#supported-regions) en de `minTlsVersion` eigenschap in te stellen op de `1.2` resource specificatie DPS van uw Azure Resource Manager-sjabloon. Met de volgende voorbeeld sjabloon JSON geeft u de `minTlsVersion` eigenschap op voor een nieuw DPS-exemplaar.
+U doet dit door een nieuwe DPS-resource in te richten, waarbij `minTlsVersion` u de eigenschap instelt op `1.2` in de DPS-resource specificatie van uw Azure Resource Manager-sjabloon. Met de volgende voorbeeld sjabloon JSON geeft u de `minTlsVersion` eigenschap op voor een nieuw DPS-exemplaar.
 
 ```json
 {
@@ -35,7 +38,7 @@ U doet dit door een nieuwe DPS-resource in te richten in een van de [ondersteund
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,12 +64,6 @@ De DPS-resource die is gemaakt met deze configuratie, weigert apparaten die verb
 > [!NOTE]
 > De `minTlsVersion` eigenschap is alleen-lezen en kan niet worden gewijzigd nadat uw DPS-resource is gemaakt. Daarom is het essentieel dat u op de juiste wijze test en controleert of *al* uw IOT-apparaten compatibel zijn met TLS 1,2 en de [Aanbevolen coderingen](#recommended-ciphers) vooraf.
 
-## <a name="supported-regions"></a>Ondersteunde regio’s
-
-IoT DPS-instanties waarvoor het gebruik van TLS 1,2 is vereist, kunnen in de volgende regio's worden gemaakt:
-
-* VS (overheid) - Arizona
-* VS (overheid) - Virginia
 
 > [!NOTE]
 > Bij failovers blijft het `minTlsVersion` eigendom van uw DPS geldig in de geo-paard Region na failover.

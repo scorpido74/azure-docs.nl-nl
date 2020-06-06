@@ -3,12 +3,12 @@ title: Concepten-netwerk-interconnectiviteit
 description: Meer informatie over belang rijke aspecten en gebruiks voorbeelden van netwerken en interconnectiviteit in azure VMware-oplossing (AVS)
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 82e5497c30bf02313e5ff8ad24167af569a153c2
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740913"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457079"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-oplossing (AVS) Preview-netwerken en interconnectiviteit-concepten
 
@@ -58,13 +58,13 @@ Er is een on-premises naar Azure Virtual Network ExpressRoute-circuit vereist om
 Als de twee ExpressRoute-circuits zijn gekoppeld aan Global Reach, routert het netwerk verkeer tussen uw on-premises omgevingen en uw privécloud. De on-premises naar de privécloud interconnectiviteit wordt weer gegeven in het voor gaande diagram. De interconnectiviteit die in het diagram wordt weer gegeven, maakt gebruik van de volgende gebruiks voorbeelden:
 
 - Warme/koude cross-vCenter vMotion
-- On-premises toegang tot beheer van privé-Clouds
+- On-premises to AVS Private Cloud Management Access
 
 Als u de volledige connectiviteit wilt inschakelen, kunt u in de Azure Portal een autorisatie sleutel en een privé-peering-ID voor Global Reach aanvragen. U gebruikt de sleutel en ID om Global Reach te maken tussen een ExpressRoute-circuit in uw abonnement en het ExpressRoute-circuit voor uw nieuwe privécloud. De [zelf studie voor het maken van een privécloud](tutorial-create-private-cloud.md) bevat de procedures voor het aanvragen en gebruiken van de sleutel en id.
 
-Voor de routerings vereisten van de oplossing moet u particuliere-cloud netwerk adres ruimten plannen, zodat u geen overlapt met andere virtuele netwerken en on-premises netwerken. Voor persoonlijke Clouds van AVS is mini `/22` maal een CIDR-netwerk adres blok vereist voor subnetten, zoals hieronder wordt weer gegeven. Dit netwerk vormt een aanvulling op uw on-premises netwerken. Als u verbinding wilt maken met on-premises omgevingen en virtuele netwerken, moet dit een niet-overlappend netwerk adres blok zijn.
+Voor de routerings vereisten van de oplossing moet u particuliere-cloud netwerk adres ruimten plannen, zodat u geen overlapt met andere virtuele netwerken en on-premises netwerken. Voor persoonlijke Clouds van AVS is mini maal een `/22` CIDR-netwerk adres blok vereist voor subnetten, zoals hieronder wordt weer gegeven. Dit netwerk vormt een aanvulling op uw on-premises netwerken. Als u verbinding wilt maken met on-premises omgevingen en virtuele netwerken, moet dit een niet-overlappend netwerk adres blok zijn.
 
-Voor `/22` beeld van een CIDR-netwerk adres blok:`10.10.0.0/22`
+Voor beeld van een `/22` CIDR-netwerk adres blok:`10.10.0.0/22`
 
 De subnetten:
 

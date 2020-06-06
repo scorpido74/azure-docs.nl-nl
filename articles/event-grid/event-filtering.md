@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888787"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456843"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Gebeurtenis filters begrijpen voor Event Grid-abonnementen
 
@@ -24,7 +24,7 @@ In dit artikel worden de verschillende manieren beschreven waarop u kunt filtere
 
 ## <a name="event-type-filtering"></a>Filter gebeurtenis type
 
-Standaard worden alle [gebeurtenis typen](event-schema.md) voor de gebeurtenis bron naar het eind punt verzonden. U kunt ervoor kiezen om alleen bepaalde gebeurtenis typen naar uw eind punt te verzenden. U kunt bijvoorbeeld een melding ontvangen over updates voor uw resources, maar niet op de hoogte worden gesteld van andere bewerkingen, zoals verwijderingen. In dat geval filtert u op `Microsoft.Resources.ResourceWriteSuccess` het gebeurtenis type. Geef een matrix met de gebeurtenis typen op, of `All` Geef op om alle gebeurtenis typen voor de gebeurtenis bron op te halen.
+Standaard worden alle [gebeurtenis typen](event-schema.md) voor de gebeurtenis bron naar het eind punt verzonden. U kunt ervoor kiezen om alleen bepaalde gebeurtenis typen naar uw eind punt te verzenden. U kunt bijvoorbeeld een melding ontvangen over updates voor uw resources, maar niet op de hoogte worden gesteld van andere bewerkingen, zoals verwijderingen. In dat geval filtert u op het `Microsoft.Resources.ResourceWriteSuccess` gebeurtenis type. Geef een matrix met de gebeurtenis typen op, of geef `All` op om alle gebeurtenis typen voor de gebeurtenis bron op te halen.
 
 De JSON-syntaxis voor filteren op gebeurtenis type is:
 
@@ -41,7 +41,7 @@ De JSON-syntaxis voor filteren op gebeurtenis type is:
 
 Geef voor eenvoudig filteren op onderwerp een begin-of eind waarde voor het onderwerp op. U kunt bijvoorbeeld opgeven dat het onderwerp eindigt met `.txt` om alleen gebeurtenissen op te halen met betrekking tot het uploaden van een tekst bestand naar een opslag account. U kunt ook filteren of het onderwerp begint met `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet andere containers in het opslag account.
 
-Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken de eigenschap Subject om gebeurtenissen te filteren en te routeren. Overweeg het pad toe te voegen voor waar de gebeurtenis zich voordeed, zodat abonnees kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u een drie segment pad opgeeft, `/A/B/C` zoals in het onderwerp, kunnen abonnees filteren op het eerste `/A` segment om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E`. Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
+Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken de eigenschap Subject om gebeurtenissen te filteren en te routeren. Overweeg het pad toe te voegen voor waar de gebeurtenis zich voordeed, zodat abonnees kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u een drie segment pad opgeeft `/A/B/C` , zoals in het onderwerp, kunnen abonnees filteren op het eerste segment `/A` om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E` . Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
 
 De JSON-syntaxis voor filteren op onderwerp is:
 
@@ -155,10 +155,10 @@ De waarden kunnen zijn:
 
 Geavanceerde filtering heeft de volgende beperkingen:
 
-* Vijf geavanceerde filters per Event grid-abonnement
+* 5 geavanceerde filters en 25 filter waarden voor alle filters per Event grid-abonnement
 * 512 tekens per teken reeks waarde
 * Vijf waarden voor **in** en **niet in** Opera tors
-* Sleutels met ** `.` een teken (punt)** . Bijvoorbeeld: `http://schemas.microsoft.com/claims/authnclassreference` of `john.doe@contoso.com`. Er is momenteel geen ondersteuning voor Escape tekens in sleutels. 
+* Sleutels met een teken ** `.` (punt)** . Bijvoorbeeld: `http://schemas.microsoft.com/claims/authnclassreference` of `john.doe@contoso.com` . Er is momenteel geen ondersteuning voor Escape tekens in sleutels. 
 
 Dezelfde sleutel kan in meer dan één filter worden gebruikt.
 

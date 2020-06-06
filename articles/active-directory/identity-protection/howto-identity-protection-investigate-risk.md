@@ -4,19 +4,19 @@ description: Meer informatie over het onderzoeken van Risk ante gebruikers, dete
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 12/13/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680156"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463940"
 ---
 # <a name="how-to-investigate-risk"></a>Procedure: risico onderzoeken
 
@@ -38,7 +38,7 @@ Als u afzonderlijke items selecteert, wordt een detail venster uitgebreid met de
 
 ![Voor beeld van een identiteits beveiligings rapport met Risk ante aanmeldingen en Details](./media/howto-identity-protection-investigate-risk/identity-protection-risky-sign-ins-report.png)
 
-## <a name="risky-users"></a>Risk ante gebruikers
+## <a name="risky-users"></a>Riskante gebruikers
 
 Met de informatie die door het rapport Risk ante gebruikers wordt verstrekt, kunnen beheerders het volgende vinden:
 
@@ -93,6 +93,6 @@ Beheerders kunnen vervolgens teruggaan naar het rapport met het risico of het aa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Beleids regels beschikbaar om Risico's te beperken](concept-identity-protection-policies.md)
+- [Policies available to mitigate risks](concept-identity-protection-policies.md) (Beschikbare beleidsregels om risico's te beperken)
 
 - [Aanmeldings-en gebruikers risico beleid inschakelen](howto-identity-protection-configure-risk-policies.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 269ad20d99f21c05d527d60af61692eb49048f08
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699649"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448070"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Stel een lab in dat is gericht op diep gaande lessen in de verwerking van natuurlijke taal met behulp van Azure Lab Services
 In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een diep gaande cursus in natuurlijke taal verwerking (NLP) met behulp van Azure Lab Services. De verwerking van natuurlijke taal (NLP) is een vorm van kunst matige intelligentie (AI) waarmee computers kunnen beschikken over mogelijkheden voor vertaling, spraak herkenning en andere talen.  
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u een test omgeving kunt instellen voor een 
 Studenten die een NLP-klasse gebruiken, halen een virtuele Linux-machine (VM) op voor meer informatie over het Toep assen van Neural-netwerk algoritmen voor het ontwikkelen van diepe leer modellen die worden gebruikt voor het analyseren van geschreven menselijke talen. 
 
 ## <a name="lab-configuration"></a>Lab-configuratie
-Als u dit Lab wilt instellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint. Zodra u een Azure-abonnement hebt, kunt u een nieuw Lab-account maken in Azure Lab Services of een bestaand Lab-account gebruiken. Raadpleeg de volgende zelf studie voor het maken van een nieuw Lab-account: [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md).
+Als u dit Lab wilt instellen, hebt u een Azure-abonnement nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt, kunt u een nieuw Lab-account maken in Azure Lab Services of een bestaand Lab-account gebruiken. Raadpleeg de volgende zelf studie voor het maken van een nieuw Lab-account: [zelf studie voor het instellen van een Lab-account](tutorial-setup-lab-account.md).
  
 Nadat u het lab-account hebt gemaakt, schakelt u de volgende instellingen in het lab-account in: 
 
@@ -38,7 +38,7 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) om een nieuw lab te mak
 
 | Lab-instellingen | Waarde/instructies | 
 | ------------ | ------------------ |
-| Grootte van virtuele machine (VM) | Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
+| Grootte van virtuele machine (VM) | **Kleine GPU (Compute)**. Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
 | VM-installatie kopie | [Data Science virtual machine voor Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Deze afbeelding biedt diep gaande frameworks en hulp middelen voor machine learning en gegevens wetenschap. Als u de volledige lijst met geïnstalleerde hulpprogram ma's op deze installatie kopie wilt weer geven, raadpleegt u het volgende artikel: [Wat is opgenomen in de DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
 | Verbinding met extern bureau blad inschakelen | <p>De data Science-afbeelding is al geconfigureerd voor het gebruik van X2Go zodat docenten en studenten verbinding kunnen maken via een extern bureau blad.  Voor X2Go is het *niet* nodig om de instelling **verbinding met extern bureau blad inschakelen in te scha kelen** .  U hoeft deze instelling alleen in te scha kelen als u ervoor kiest om RDP te gebruiken.
 

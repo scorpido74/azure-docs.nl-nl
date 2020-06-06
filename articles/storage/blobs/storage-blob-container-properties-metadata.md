@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6923ab3a2344c8496f314e2f7a23b536a534bca
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135918"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457028"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Container eigenschappen en meta gegevens beheren met .NET
 
@@ -70,7 +70,7 @@ U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-De naam van uw meta gegevens moet voldoen aan de naamgevings conventies voor C#-id's. Namen van meta gegevens behouden het hoofdletter gebruik dat is gemaakt, maar zijn niet hoofdletter gevoelig bij het instellen of lezen. Als twee of meer meta gegevens headers met dezelfde naam worden verzonden voor een resource, retourneert Blob Storage de HTTP-fout code 400 (ongeldige aanvraag).
+De naam van uw meta gegevens moet voldoen aan de naamgevings conventies voor C#-id's. Namen van meta gegevens behouden het hoofdletter gebruik dat is gemaakt, maar zijn niet hoofdletter gevoelig bij het instellen of lezen. Als twee of meer meta gegevens headers met dezelfde naam worden verzonden voor een resource, wordt de komma door komma's gescheiden en worden de twee waarden en retour code van het HTTP-antwoord 200 (OK) aaneengeschakeld.
 
 In het volgende code voorbeeld worden meta gegevens voor een container ingesteld. Er wordt één waarde ingesteld met behulp van de methode **add** van de verzameling. De andere waarde wordt ingesteld met behulp van de syntaxis van de impliciete sleutel/waarde. Beide zijn geldig.
 

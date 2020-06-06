@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 04566bae2a9010dde5f9d6d4a0a63c237505597b
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2f871312b7e36288d1b78e05aa4058dab6c1942f
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429638"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449563"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics taken automatisch schalen met behulp van Azure Automation
 
@@ -67,7 +67,7 @@ Met Azure Automation kunt u een planning configureren om uw runbooks te activere
 ## <a name="autoscale-based-on-load"></a>Automatisch schalen op basis van laden
 Er zijn mogelijk situaties waarin u de belasting van invoer niet kunt voors pellen. In dergelijke gevallen is het beter om omhoog/omlaag te schalen in stappen binnen een mini maal en Maxi maal gebonden. U kunt waarschuwings regels in uw Stream Analytics-taken configureren om runbooks te activeren wanneer de metrische gegevens van de taak boven of onder een drempel waarde worden geplaatst.
 1. Maak in uw Azure Automation-account twee meer geheeltallige variabelen met de naam **minSU** en **maxSU**. Hiermee stelt u de grenzen in waarbinnen uw taak in stappen wordt geschaald.
-2. Maak twee nieuwe runbooks. U kunt het [Power shell-script StepScaleUp](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/Autoscaleup.ps1) gebruiken waarmee de SUs van uw taak wordt verhoogd in stappen tot **maxSU** waarde. U kunt ook het [Power shell-script StepScaleDown](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/autoscaledown.ps1) gebruiken dat de SUs van uw taak in stappen verlaagt totdat de waarde van **minSU** is bereikt. U kunt ook de runbooks uit de vorige sectie gebruiken als u specifieke SU-waarden wilt schalen.
+2. Maak twee nieuwe runbooks. U kunt het [Power shell-script StepScaleUp](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleUp.ps1) gebruiken waarmee de SUs van uw taak wordt verhoogd in stappen tot **maxSU** waarde. U kunt ook het [Power shell-script StepScaleDown](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleDown.ps1) gebruiken dat de SUs van uw taak in stappen verlaagt totdat de waarde van **minSU** is bereikt. U kunt ook de runbooks uit de vorige sectie gebruiken als u specifieke SU-waarden wilt schalen.
 3. Selecteer in uw Stream Analytics-taak **waarschuwings regels** onder **bewaking**. 
 4. Twee actie groepen maken. Een moet worden gebruikt voor het omhoog schalen van de bewerking en een andere voor de bewerking die omlaag kan worden geschaald. Selecteer **acties beheren** en klik vervolgens op **actie groep toevoegen**. 
 5. Vul de vereiste velden in. Kies **Automation-Runbook** wanneer u het **actie type**selecteert. Selecteer het runbook dat u wilt activeren wanneer de waarschuwing wordt geactiveerd. Maak vervolgens de actie groep.

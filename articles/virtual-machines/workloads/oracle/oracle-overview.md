@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b738d0a04ded3e592f69075d1b113a22905efa11
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299839"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462716"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Overzicht van Oracle-toepassingen en-oplossingen op Azure
 
@@ -43,7 +43,7 @@ Kies uit een verscheidenheid aan WebLogic Server Azure-toepassingen om uw Cloud 
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Toepassingen op Oracle Linux en WebLogic-Server
 
-Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings systemen. De volgende installatie kopieën voor virtuele machines zijn beschikbaar in azure Marketplace:
+Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle Linux-installatie kopieën. De volgende installatie kopieën voor virtuele machines zijn beschikbaar in azure Marketplace:
 
 * Oracle WebLogic Server 12.1.2
 
@@ -53,7 +53,7 @@ Voer bedrijfs toepassingen uit in azure op ondersteunde Oracle-besturings system
 
 * Configureer [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [Active Data Guard met FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [sharding](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) of [Golden Gate](https://www.oracle.com/middleware/technologies/goldengate.html) op Azure Infrastructure in combi natie met [Beschikbaarheidszones](../../../availability-zones/az-overview.md) voor hoge Beschik baarheid in de regio. U kunt deze configuraties ook instellen in meerdere Azure-regio's voor extra Beschik baarheid en herstel na nood gevallen.
 
-* Gebruik [Azure site Recovery](../../../site-recovery/site-recovery-overview.md) om herstel na nood gevallen voor uw Oracle Linux Vm's in Azure en uw on-premises of fysieke servers te organiseren en te beheren. 
+* Gebruik [Azure site Recovery](../../../site-recovery/site-recovery-overview.md) om herstel na nood gevallen voor uw Oracle Linux Vm's in Azure en uw fysieke servers te organiseren en te beheren. 
 
 * Gebruik [Azure VMware-oplossing](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) of [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)om Oracle Real Application Clusters (RAC) in Azure in te scha kelen.
 
@@ -74,7 +74,7 @@ Voer Oracle-toepassingen uit in de Azure-infra structuur, die zijn verbonden met
 
 Gebruik terraform-sjablonen om een Azure-infra structuur in te stellen en Oracle-toepassingen te installeren. 
 
-Vanaf mei 2020 zijn de volgende Oracle-toepassingen gecertificeerd om uit te voeren in azure bij gebruik van de Azure/Oracle-oplossing voor verbinding met Cloud:
+Oracle heeft deze toepassingen gecertificeerd om uit te voeren in azure bij het maken van verbinding met een Oracle-data base via de Azure/Oracle-oplossing voor verbinding met Cloud:
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -86,7 +86,7 @@ Implementeer ook aangepaste toepassingen in azure die verbinding maken met OCI e
 
 ### <a name="set-up-oracle-databases-in-oci"></a>Oracle-data bases in OCI instellen
 
-Gebruik Oracle Database Cloud Services (autonome data base, RAC, Exadata, DBaaS, één knoop punt) in combi natie met Oracle-toepassingen die worden uitgevoerd in Azure. Meer informatie over [Opties voor OCI-data base](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
+Gebruik Oracle Database Cloud Services (autonome data base, RAC, Exadata, DBaaS, één knoop punt) in combi natie met Oracle-software die wordt uitgevoerd in Azure. Meer informatie over [Opties voor OCI-data base](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
 ## <a name="licensing"></a>Licentieverlening

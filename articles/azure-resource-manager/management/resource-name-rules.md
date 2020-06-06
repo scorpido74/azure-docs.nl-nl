@@ -3,16 +3,18 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 1ed8db4c7f780af8ac06074c514a602cc1654554
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170576"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456873"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
 Dit artikel bevat een overzicht van de naamgevings regels en beperkingen voor Azure-resources. Zie [Aanbevolen naamgevings-en label conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)voor aanbevelingen over het benoemen van resources.
+
+In dit artikel vindt u bronnen op de naam ruimte van de resource provider. Zie [resource providers voor Azure-Services](azure-services-resource-providers.md)voor een lijst met resource providers die overeenkomen met Azure-Services.
 
 Resource namen zijn hoofdletter gevoelig, tenzij specifiek vermeld in de kolom geldige tekens.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 7fe29bfa7d6140f3abce8feb9e372a5c066b9692
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343877"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457266"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -171,7 +171,7 @@ Als u een grootschalige-data base in Azure SQL Database moet herstellen naar een
 De laag Azure SQL Database grootschalige is beschikbaar in alle regio's, maar is standaard beschikbaar in de volgende regio's die hieronder worden weer gegeven.
 Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer gegeven als ondersteund, kunt u een aanvraag voor onboarding verzenden via Azure Portal. Zie [aanvraag quotum verhogingen voor Azure SQL database](quota-increase-request.md) voor instructies voor instructies. Gebruik de volgende richt lijnen bij het verzenden van uw aanvraag:
 
-- Gebruik het quotum type [andere quotum aanvraag](quota-increase-request.md#other) SQL database.
+- Gebruik het quotum type [toegang voor regio's](quota-increase-request.md#region) SQL database.
 - Voeg in de tekst informatie de reken-SKU/totale kernen toe, waaronder Lees bare replica's.
 - Geef ook de geschatte TB op.
 

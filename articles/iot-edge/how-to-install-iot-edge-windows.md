@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856750"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465555"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>De Azure IoT Edge-runtime op Windows installeren
 
@@ -42,7 +42,7 @@ Gebruik deze sectie om te controleren of uw Windows-apparaat IoT Edge kan onders
 Voor IoT Edge voor Windows is Windows versie 1809/build 17763 vereist. Dit is de meest recente [build van Windows lange termijn ondersteuning](https://docs.microsoft.com/windows/release-information/). Zie wat wordt ondersteund op basis van de voor bereiding op productie scenario's of ontwikkelings-en test scenario's voor Windows SKU-ondersteuning:
 
 * **Productie**: Zie [Azure IOT Edge ondersteunde systemen](support.md#operating-systems)voor de meest recente informatie over welke besturings systemen momenteel worden ondersteund voor productie scenario's.
-* **Ontwikkelen en testen**: voor ontwikkelings-en test scenario's kan Azure IOT Edge met Windows-containers worden geïnstalleerd op elke versie van Windows 10 of windows server 2019 die ondersteuning biedt voor de functie containers.
+* **Ontwikkelen en testen**: voor ontwikkelings-en test scenario's kan Azure IOT Edge met Windows-containers worden geïnstalleerd op elke SKU (Pro, Enter prise, server etc.) van windows build 17763 die ondersteuning biedt voor de functie containers.
 
 IoT core-apparaten moeten de optionele functie van IoT core Windows-containers voor de ondersteuning van de IoT Edge runtime bevatten. Gebruik de volgende opdracht in een [externe Power shell-sessie](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) om te controleren of Windows-containers op uw apparaat worden ondersteund:
 
@@ -78,7 +78,7 @@ In dit voor beeld ziet u een hand matige installatie met Windows-containers:
 
 1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het **apparaat Connection String**op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
 
-   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure-portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure-CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -164,7 +164,7 @@ U kunt ook de para meter Offline installatiepad gebruiken om IoT Edge bij te wer
 
 4. U kunt eventueel ook een installatie programma downloaden voor het herdistribueerbare pakket van Visual C++. Het Power shell-script gebruikt bijvoorbeeld deze versie: [vc_redist. x64. exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Sla het installatie programma in dezelfde map op uw IoT-apparaat op als de IoT Edge bestanden.
 
-5. Als u wilt installeren met offline onderdelen, [punt bron](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) de lokale kopie van het Power shell-script. Vervolgens gebruikt u de `-OfflineInstallationPath` para meter als onderdeel van `Deploy-IoTEdge` de opdracht en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
+5. Als u wilt installeren met offline onderdelen, [punt bron](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) de lokale kopie van het Power shell-script. Vervolgens gebruikt u de `-OfflineInstallationPath` para meter als onderdeel van de `Deploy-IoTEdge` opdracht en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -175,7 +175,7 @@ U kunt ook de para meter Offline installatiepad gebruiken om IoT Edge bij te wer
 
 6. Voer de `Initialize-IoTEdge` opdracht uit om uw apparaat in te richten met een identiteit in IOT hub. Geef een apparaat connection string op voor hand matige inrichting of kies een van de methoden die worden beschreven in de vorige sectie voor [automatische inrichting](#option-2-install-and-automatically-provision) .
 
-   Als het apparaat opnieuw is opgestart `Deploy-IoTEdge`nadat het is uitgevoerd, moet u het Power `Initialize-IoTEdge`shell-script opnieuw starten voordat u het uitvoert.
+   Als het apparaat opnieuw is opgestart nadat `Deploy-IoTEdge` het is uitgevoerd, moet u het Power shell-script opnieuw starten voordat u het uitvoert `Initialize-IoTEdge` .
 
 Meer informatie over de offline-installatie optie kunt u overs Laan om meer te weten te komen over [alle installatie parameters](#all-installation-parameters).
 
@@ -246,11 +246,11 @@ Uninstall-IoTEdge
 
 De opdracht uninstall-IoTEdge werkt niet in Windows IoT core. Als u IoT Edge van Windows IoT core-apparaten wilt verwijderen, moet u uw Windows IoT Core-installatie kopie opnieuw implementeren.
 
-Voor meer informatie over verwijderings opties gebruikt u de opdracht `Get-Help Uninstall-IoTEdge -full`.
+Voor meer informatie over verwijderings opties gebruikt u de opdracht `Get-Help Uninstall-IoTEdge -full` .
 
 ## <a name="verify-installation-script"></a>Installatie script controleren
 
-De installatie opdrachten die in dit artikel worden gegeven, gebruiken de cmdlet invoke-webaanvraag om het installatie `aka.ms/iotedge-win`script aan te vragen bij. Deze koppeling wijst naar het`IoTEdgeSecurityDaemon.ps1` script vanuit de meest recente [IOT Edge versie](https://github.com/Azure/azure-iotedge/releases). U kunt dit script of een versie van het script van een specifieke versie ook downloaden om de installatie opdrachten op uw IoT Edge-apparaat uit te voeren.
+De installatie opdrachten die in dit artikel worden gegeven, gebruiken de cmdlet invoke-webaanvraag om het installatie script aan te vragen bij `aka.ms/iotedge-win` . Deze koppeling wijst naar het `IoTEdgeSecurityDaemon.ps1` script vanuit de meest recente [IOT Edge versie](https://github.com/Azure/azure-iotedge/releases). U kunt dit script of een versie van het script van een specifieke versie ook downloaden om de installatie opdrachten op uw IoT Edge-apparaat uit te voeren.
 
 Het gegeven script is ondertekend om de beveiliging te verbeteren. U kunt de hand tekening controleren door het script te downloaden naar uw apparaat en vervolgens de volgende Power shell-opdracht uit te voeren:
 
@@ -266,7 +266,7 @@ In de vorige secties werden veelvoorkomende installatie scenario's geïntroducee
 
 ### <a name="deploy-iotedge"></a>Implementeren-IoTEdge
 
-Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehorende afhankelijkheden gedownload en geïmplementeerd. De implementatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht `Get-Help Deploy-IoTEdge -full`voor de volledige lijst.  
+Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehorende afhankelijkheden gedownload en geïmplementeerd. De implementatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Deploy-IoTEdge -full` .  
 
 | Parameter | Geaccepteerde waarden | Opmerkingen |
 | --------- | --------------- | -------- |
@@ -278,7 +278,7 @@ Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehor
 
 ### <a name="initialize-iotedge"></a>Initialisatie-IoTEdge
 
-De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connection string en operationele gegevens. Veel van de gegevens die door deze opdracht worden gegenereerd, worden vervolgens opgeslagen in het iotedge\config.yaml-bestand. De initialisatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht `Get-Help Initialize-IoTEdge -full`voor de volledige lijst.
+De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connection string en operationele gegevens. Veel van de gegevens die door deze opdracht worden gegenereerd, worden vervolgens opgeslagen in het iotedge\config.yaml-bestand. De initialisatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht voor de volledige lijst `Get-Help Initialize-IoTEdge -full` .
 
 | Parameter | Geaccepteerde waarden | Opmerkingen |
 | --------- | --------------- | -------- |

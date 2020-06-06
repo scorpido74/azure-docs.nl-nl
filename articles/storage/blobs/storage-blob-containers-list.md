@@ -4,16 +4,16 @@ description: Meer informatie over het weer geven van BLOB-containers in uw Azure
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135901"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463555"
 ---
 # <a name="list-blob-containers-with-net"></a>BLOB-containers weer geven met .NET
 
@@ -30,15 +30,15 @@ De Overloads voor deze methoden bieden extra opties voor het beheren van de mani
 
 ### <a name="manage-how-many-results-are-returned"></a>Bepalen hoeveel resultaten er worden geretourneerd
 
-Standaard retourneert een lijst bewerking Maxi maal 5000 resultaten per keer. Als u een kleinere set resultaten wilt retour neren, geeft u een andere waarde `maxresults` dan nul op voor de para meter bij het aanroepen van een van de **ListContainerSegmented** -methoden.
+Standaard retourneert een lijst bewerking Maxi maal 5000 resultaten per keer. Als u een kleinere set resultaten wilt retour neren, geeft u een andere waarde dan nul op voor de `maxresults` para meter bij het aanroepen van een van de **ListContainerSegmented** -methoden.
 
-Als uw opslag account meer dan 5000 containers bevat of als u een waarde `maxresults` hebt opgegeven zodat de lijst bewerking een subset van containers in het opslag account retourneert, retourneert Azure Storage een *vervolg token* met de lijst met containers. Een vervolg token is een ondoorzichtige waarde die u kunt gebruiken om de volgende set resultaten op te halen uit Azure Storage.
+Als uw opslag account meer dan 5000 containers bevat of als u een waarde hebt opgegeven zodat `maxresults` de lijst bewerking een subset van containers in het opslag account retourneert, retourneert Azure Storage een *vervolg token* met de lijst met containers. Een vervolg token is een ondoorzichtige waarde die u kunt gebruiken om de volgende set resultaten op te halen uit Azure Storage.
 
 Controleer in uw code de waarde van het vervolg token om te bepalen of deze null is. Wanneer het vervolg token null is, is de set met resultaten voltooid. Als het vervolg token niet null is, roept u **ListContainersSegmented** of **ListContainersSegmentedAsync** opnieuw aan, waarbij u in het vervolg token de volgende set resultaten ophaalt, totdat het vervolg token null is.
 
 ### <a name="filter-results-with-a-prefix"></a>Resultaten filteren met een voor voegsel
 
-Als u de lijst met containers wilt filteren, geeft u een `prefix` teken reeks op voor de para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de containers waarvan de namen met het voor voegsel beginnen.
+Als u de lijst met containers wilt filteren, geeft u een teken reeks op voor de `prefix` para meter. De voorvoegsel teken reeks kan een of meer tekens bevatten. Azure Storage retourneert vervolgens alleen de containers waarvan de namen met het voor voegsel beginnen.
 
 ### <a name="return-metadata"></a>Meta gegevens retour neren
 
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zie ook
 
-[Containers weer geven](/rest/api/storageservices/list-containers2)
-voor het[inventariseren van BLOB-resources](/rest/api/storageservices/enumerating-blob-resources)
+[Containers](/rest/api/storageservices/list-containers2) 
+ weer geven [BLOB-resources opsommen](/rest/api/storageservices/enumerating-blob-resources)

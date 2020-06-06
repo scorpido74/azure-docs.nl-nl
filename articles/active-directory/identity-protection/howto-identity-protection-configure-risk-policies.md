@@ -4,26 +4,26 @@ description: Risico beleid inschakelen en configureren in Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 01/06/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75707002"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464161"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procedure: risico beleid configureren en inschakelen
 
 Zoals we hebben geleerd in het vorige artikel, hebben [beleids regels voor identiteits beveiliging](concept-identity-protection-policies.md) twee risico beleidsregels die we in onze Directory kunnen inschakelen. 
 
 - Beleid voor aanmeldings Risico's
-- Beleid voor gebruikers Risico's
+- Beleid voor gebruikersrisico's
 
 ![Pagina beveiligings overzicht voor het inschakelen van beleid voor gebruikers-en aanmeldings Risico's](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
@@ -54,32 +54,32 @@ Geconfigureerde vertrouwde [netwerk locaties](../conditional-access/location-con
 Voer de volgende stappen uit om het risico beleid voor gebruikers Risico's en-aanmelding in te scha kelen.
 
 1. Navigeer naar het [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **beveiligings** > **identiteits beveiliging** > **Overview**.
+1. Blader naar **Azure Active Directory**  >  **beveiligings**  >  **identiteits beveiliging**  >  **Overview**.
 1. Selecteer **gebruikers risico beleid configureren**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden** - **gebruikers risico** de aanbeveling van micro soft is om deze optie in te stellen op **hoog**.
+      1. **Voor waarden**  -  **Gebruikers risico** De aanbeveling van micro soft is om deze optie in te stellen op **hoog**.
    1. Onder **besturings elementen**
       1. **Toegang** : aanbeveling van micro soft is **toegang toe te staan** en **wachtwoord wijziging te vereisen**.
-   1. **Beleid afdwingen** - **op**
+   1. **Beleid**  -  afdwingen **Op**
    1. **Opslaan** : met deze actie keert u terug naar de pagina **overzicht** .
 1. Selecteer **beleid voor aanmeldings risico configureren**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden voor** - **aanmeldings risico** micro soft is de aanbeveling om deze optie in te stellen op **gemiddeld en hoger**.
+      1. **Voor waarden**  -  **Aanmeldings risico** De aanbeveling van micro soft is om deze optie in te stellen op **gemiddeld en hoger**.
    1. Onder **besturings elementen**
       1. **Toegang** -aanbeveling van micro soft is om **toegang toe te staan** en **multi-factor Authentication te vereisen**.
-   1. **Beleid afdwingen** - **op**
+   1. **Beleid**  -  afdwingen **Op**
    1. **Opslaan**
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Registratie beleid voor Azure Multi-Factor Authentication inschakelen](howto-identity-protection-configure-mfa-policy.md)
 
-- [Wat is risico](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md) (Wat is een risico?)
 
 - [Risicodetectie onderzoeken](howto-identity-protection-investigate-risk.md)
 
-- [Risico detecties simuleren](howto-identity-protection-simulate-risk.md)
+- [Risicodetectie simuleren](howto-identity-protection-simulate-risk.md)

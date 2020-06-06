@@ -1,5 +1,5 @@
 ---
-title: Systeem onderwerpen maken, weer geven en beheren in Azure Event Grid
+title: Systeem onderwerpen maken, weer geven en beheren in Azure Event Grid (Portal)
 description: In dit artikel wordt beschreven hoe u een bestaand systeem onderwerp weergeeft, Azure Event Grid systeem onderwerpen maakt met behulp van de Azure Portal.
 services: event-grid
 author: spelluru
@@ -7,29 +7,21 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: ac22afb351973397960e66c2a8fe86031e0b213a
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 23b87812492485fc2336b8d2d35bf0426ede4772
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84316654"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457232"
 ---
-# <a name="create-view-and-manage-system-topics-in-azure-event-grid"></a>Systeem onderwerpen maken, weer geven en beheren in Azure Event Grid
-In dit artikel leest u hoe u de volgende taken kunt uitvoeren:
-
-- Een systeem onderwerp maken
-- Alle bestaande systeem onderwerpen weer geven 
-- Een systeem onderwerp verwijderen
-- Een gebeurtenis abonnement maken voor een systeem onderwerp
-
+# <a name="create-view-and-manage-event-grid-system-topics-in-the-azure-portal"></a>Event Grid systeem onderwerpen maken, weer geven en beheren in de Azure Portal
+In dit artikel leest u hoe u systeem onderwerpen maakt en beheert met behulp van de Azure Portal. Zie [systeem onderwerpen](system-topics.md)voor een overzicht van systeem onderwerpen.
 
 ## <a name="create-a-system-topic"></a>Een systeem onderwerp maken
-U kunt op twee manieren een systeem onderwerp maken voor een Azure-resource:
+U kunt op twee manieren een systeem onderwerp maken voor een Azure-resource (opslag account, Event Hubs naam ruimte, enzovoort):
 
-- Gebruik de pagina Resource, bijvoorbeeld pagina met het opslag account of de pagina Event Hubs naam ruimte. 
-- Op de pagina met **Event grid systeem onderwerpen** . 
-
-Bekijk [deze Snelstartgids](blob-event-quickstart-portal.md) voor een voor beeld van het maken van een systeem onderwerp met behulp van een resource pagina (tabblad**gebeurtenissen** van een resource pagina in de Azure Portal). De volgende stappen zijn voor het maken van een systeem onderwerp met behulp van de pagina **Event grid systeem onderwerpen** . 
+- De pagina **gebeurtenissen** van een resource gebruiken, bijvoorbeeld opslag Account of event hubs naam ruimte. Wanneer u de pagina **gebeurtenissen** in de Azure Portal gebruikt voor het maken van een gebeurtenis abonnement voor een gebeurtenis die door een Azure-bron is gegenereerd (bijvoorbeeld: Azure Storage-account), maakt de portal een systeem onderwerp voor de Azure-resource en maakt vervolgens een abonnement voor het onderwerp System. U geeft de naam van het onderwerp van het systeem op als u voor de eerste keer een gebeurtenis abonnement op de Azure-resource maakt. Vanaf de tweede keer wordt de naam van het systeem onderwerp weer gegeven in de modus alleen-lezen. Zie [Quick Start: door sturen van Blob Storage-gebeurtenissen naar een webeindpunt met de Azure Portal](blob-event-quickstart-portal.md#subscribe-to-the-blob-storage) voor gedetailleerde stappen.
+- Op de pagina met **Event grid systeem onderwerpen** . De volgende stappen zijn voor het maken van een systeem onderwerp met behulp van de pagina **Event grid systeem onderwerpen** . 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Typ **Event grid systeem onderwerpen**in het zoekvak bovenaan en druk op **Enter**. 
@@ -57,11 +49,9 @@ Bekijk [deze Snelstartgids](blob-event-quickstart-portal.md) voor een voor beeld
 
         ![Pagina systeem onderwerp](./media/create-view-manage-system-topics/system-topic-page.png)
 
+
 ## <a name="view-all-system-topics"></a>Alle systeem onderwerpen weer geven
 Volg deze stappen om alle bestaande Event Grid systeem onderwerpen weer te geven. 
-
-> [!NOTE]
-> Wanneer u eerder een abonnement hebt gemaakt voor een gebeurtenis die door Azure-bronnen wordt gegenereerd, maakt de Event Grid-Service automatisch een systeem onderwerp met een wille keurig gegenereerde naam. U kunt nu een naam opgeven voor het onderwerp System tijdens het maken van het onderwerp. U kunt deze systeem onderwerp Resource gebruiken om metrische gegevens en Diagnostische logboeken te detecteren.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Typ **Event grid systeem onderwerpen**in het zoekvak bovenaan en druk op **Enter**. 
@@ -100,7 +90,6 @@ Volg deze stappen om alle bestaande Event Grid systeem onderwerpen weer te geven
 3. Controleer of het **onderwerp type**, **bron resource**en **onderwerpnaam** automatisch worden ingevuld. Voer een naam in, selecteer een **eindpunt type**en geef het **eind punt**op. Selecteer vervolgens **maken** om het gebeurtenis abonnement te maken. 
 
     ![Systeem onderwerp: gebeurtenis abonnement maken](./media/create-view-manage-system-topics/create-event-subscription.png)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de sectie [systeem onderwerpen in azure Event grid](system-topics.md) voor meer informatie over systeem onderwerpen en onderwerp typen die door Azure Event grid worden ondersteund. 

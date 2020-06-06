@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 6a123fac9f199fc0b19a3e6af33ad705ce51945c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816778"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464450"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
@@ -232,4 +232,4 @@ Als het geregistreerde opslag account van uw werk ruimte zich in een andere regi
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over het instellen van een persoonlijke koppeling [persoonlijke Azure-koppeling gebruiken om netwerken veilig te verbinden met Azure Monitor} (privé-link-security.md)
+- Zie voor meer informatie over het instellen van een persoonlijke koppeling [Azure-persoonlijke koppeling gebruiken om een beveiligde verbinding te maken tussen netwerken en Azure monitor](private-link-security.md)

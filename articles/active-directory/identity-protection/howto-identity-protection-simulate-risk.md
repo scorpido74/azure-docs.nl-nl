@@ -4,19 +4,19 @@ description: Meer informatie over het simuleren van risico detecties in identite
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72886933"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463753"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Risico detecties in identiteits beveiliging simuleren
 
@@ -44,12 +44,12 @@ Als u de volgende procedure wilt uitvoeren, moet u gebruikmaken van:
 
 **Als u een aanmelding vanaf een anoniem IP-adres wilt simuleren, voert u de volgende stappen**uit:
 
-1. Navigeer met behulp van de Tor [https://myapps.microsoft.com](https://myapps.microsoft.com)- [browser](https://www.torproject.org/projects/torbrowser.html.en)naar.   
+1. Navigeer met behulp van de [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en)naar [https://myapps.microsoft.com](https://myapps.microsoft.com) .   
 2. Voer de referenties in van het account dat u wilt weer geven in het rapport **aanmeldingen van anonieme IP-adressen** .
 
 De aanmelding wordt binnen 10-15 minuten weer gegeven op het dash board voor identiteits beveiliging. 
 
-## <a name="unfamiliar-sign-in-properties"></a>Onbekende aanmeldings eigenschappen
+## <a name="unfamiliar-sign-in-properties"></a>Onbekende aanmeldingseigenschappen
 
 Als u onbekende locaties wilt simuleren, moet u zich aanmelden vanaf een locatie en apparaat uw test account is nog niet aangemeld.
 
@@ -66,21 +66,21 @@ Als u de volgende procedure wilt uitvoeren, moet u een gebruikers account gebrui
 **Als u een aanmelding vanaf een onbekende locatie wilt simuleren, voert u de volgende stappen**uit:
 
 1. Wanneer u zich aanmeldt met uw test account, mislukt de MFA-uitdaging (multi-factor Authentication) door niet de MFA-Challenge door te geven.
-2. Ga met uw nieuwe VPN naar en [https://myapps.microsoft.com](https://myapps.microsoft.com) Voer de referenties van uw test account in.
+2. Ga met uw nieuwe VPN naar [https://myapps.microsoft.com](https://myapps.microsoft.com) en voer de referenties van uw test account in.
 
 De aanmelding wordt binnen 10-15 minuten weer gegeven op het dash board voor identiteits beveiliging.
 
-## <a name="atypical-travel"></a>Ongewoone reis
+## <a name="atypical-travel"></a>Ongewoon traject
 
 Het simuleren van de ongewoone reis voorwaarde is moeilijk omdat de algoritme gebruikmaakt van machine learning om onbedoelde positieve, ongewoone verzen ding van bekende apparaten of aanmeldingen vanuit Vpn's die door andere gebruikers in de Directory worden gebruikt, te vervalsen. Daarnaast is voor de algoritme een aanmeldings geschiedenis van 14 dagen en 10 aanmeldingen van de gebruiker vereist voordat het genereren van de risico detectie begint. Vanwege de complexe machine learning modellen en de bovenstaande regels is er een kans dat de volgende stappen niet leiden tot een risico detectie. Mogelijk wilt u deze stappen voor meerdere Azure AD-accounts repliceren om deze detectie te simuleren.
 
 **Als u een ongewone reis risico detectie wilt simuleren, voert u de volgende stappen uit**:
 
-1. Ga in uw standaard browser naar [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1. Ga in uw standaard browser naar [https://myapps.microsoft.com](https://myapps.microsoft.com) .  
 2. Voer de referenties in van het account waarvoor u een ongewone reis risico detectie voor wilt genereren.
 3. Wijzig uw gebruikers agent. U kunt de gebruikers agent in micro soft Edge wijzigen van Ontwikkelhulpprogramma's (F12).
 4. Wijzig uw IP-adres. U kunt uw IP-adres wijzigen met behulp van een VPN-, een Tor-invoeg toepassing of een nieuwe virtuele machine in azure maken in een ander Data Center.
-5. Meld u aan [https://myapps.microsoft.com](https://myapps.microsoft.com) met dezelfde referenties als voor en binnen een paar minuten na de vorige aanmelding.
+5. Meld u aan met [https://myapps.microsoft.com](https://myapps.microsoft.com) dezelfde referenties als voor en binnen een paar minuten na de vorige aanmelding.
 
 De aanmelding wordt binnen 2-4 uur weer gegeven in het dash board voor identiteits beveiliging.
 
@@ -88,20 +88,20 @@ De aanmelding wordt binnen 2-4 uur weer gegeven in het dash board voor identitei
 
 In deze sectie vindt u stappen voor het testen van de gebruiker en het aanmeldings risico beleid dat is gemaakt in het artikel, [How to: configure and Enable Risk policies](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="user-risk-policy"></a>Beleid voor gebruikers Risico's
+### <a name="user-risk-policy"></a>Beleid voor gebruikersrisico's
 
 Als u een beveiligings beleid voor gebruikers Risico's wilt testen, voert u de volgende stappen uit:
 
 1. Navigeer naar het [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **Security** > -**overzicht**.
+1. Blader naar **Azure Active Directory**  >  **Security**-  >  **overzicht**.
 1. Selecteer **gebruikers risico beleid configureren**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden** - **gebruikers risico** de aanbeveling van micro soft is om deze optie in te stellen op **hoog**.
+      1. **Voor waarden**  -  **Gebruikers risico** De aanbeveling van micro soft is om deze optie in te stellen op **hoog**.
    1. Onder **besturings elementen**
       1. **Toegang** : aanbeveling van micro soft is **toegang toe te staan** en **wachtwoord wijziging te vereisen**.
-   1. **Beleid afdwingen** - **Off**
+   1. **Beleid**  -  afdwingen **Uit**
    1. **Opslaan** : met deze actie keert u terug naar de pagina **overzicht** .
 1. Het gebruikers risico van een test account verhogen door bijvoorbeeld een van de risico detecties een paar keer te simuleren.
 1. Wacht een paar minuten en controleer of het risico is verhoogd voor uw gebruiker. Als dat niet het geval is, Simuleer dan meer risico detecties voor de gebruiker.
@@ -113,15 +113,15 @@ Als u een beveiligings beleid voor gebruikers Risico's wilt testen, voert u de v
 Voer de volgende stappen uit om een beleid voor aanmeldings Risico's te testen:
 
 1. Navigeer naar het [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **Security** > -**overzicht**.
+1. Blader naar **Azure Active Directory**  >  **Security**-  >  **overzicht**.
 1. Selecteer **beleid voor aanmeldings risico configureren**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden voor** - **aanmeldings risico** micro soft is de aanbeveling om deze optie in te stellen op **gemiddeld en hoger**.
+      1. **Voor waarden**  -  **Aanmeldings risico** De aanbeveling van micro soft is om deze optie in te stellen op **gemiddeld en hoger**.
    1. Onder **besturings elementen**
       1. **Toegang** -aanbeveling van micro soft is om **toegang toe te staan** en **multi-factor Authentication te vereisen**.
-   1. **Beleid afdwingen** - **op**
+   1. **Beleid**  -  afdwingen **Op**
    1. **Opslaan** : met deze actie keert u terug naar de pagina **overzicht** .
 1. U kunt nu de op Risico's gebaseerde voorwaardelijke toegang testen door u aan te melden met behulp van een Risk ante sessie (bijvoorbeeld met behulp van de Tor-browser). 
 

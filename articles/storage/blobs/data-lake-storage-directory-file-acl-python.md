@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 04/10/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c263d751f6452e18765efb928ae6425ac50099
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262346"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466031"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
 In dit artikel wordt beschreven hoe u python gebruikt om directory's, bestanden en machtigingen te maken en te beheren in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
-[Pakket (python-pakket index) voor](https://pypi.org/project/azure-storage-file-datalake/) | [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | van[API-verwijzing](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [gen1 naar Gen2-toewijzing](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | [geven feedback](https://github.com/Azure/azure-sdk-for-python/issues)
+[Pakket (python-pakket index)](https://pypi.org/project/azure-storage-file-datalake/)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  [API-verwijzing](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  |  Toewijzing van gen1 [naar Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Feedback geven](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -97,7 +97,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door de methode **FileSystemDataLakeServiceClient. create_file_system** aan te roepen.
 
-In dit voor beeld wordt een bestands `my-file-system`systeem gemaakt met de naam.
+In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
 
 ```python
 def create_file_system():
@@ -115,7 +115,7 @@ def create_file_system():
 
 Maak een verwijzing naar een directory door de methode **FileSystemClient. create_directory** aan te roepen.
 
-In dit voor beeld wordt een `my-directory` map toegevoegd met de naam van een bestands systeem. 
+In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem. 
 
 ```python
 def create_directory():
@@ -130,7 +130,7 @@ def create_directory():
 
 Wijzig de naam of verplaats een map door de methode **DataLakeDirectoryClient. rename_directory** aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
 
-In dit voor beeld wordt de naam van een submap gewijzigd in `my-subdirectory-renamed`de naam.
+In dit voor beeld wordt de naam van een submap gewijzigd in de naam `my-subdirectory-renamed` .
 
 ```python
 def rename_directory():
@@ -150,7 +150,7 @@ def rename_directory():
 
 Verwijder een directory door de methode **DataLakeDirectoryClient. delete_directory** aan te roepen.
 
-In dit voor beeld wordt een `my-directory`map met de naam verwijderd.  
+In dit voor beeld wordt een map met de naam verwijderd `my-directory` .  
 
 ```python
 def delete_directory():
@@ -170,7 +170,7 @@ Haal de toegangs beheer lijst (ACL) van een directory op door de methode **DataL
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-In dit voor beeld wordt de ACL van een directory met `my-directory`de naam opgehaald en ingesteld. De teken `rwxr-xrw-` reeks geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
 
 ```python
 def manage_directory_permissions():
@@ -199,7 +199,7 @@ def manage_directory_permissions():
 
 Maak eerst een bestands verwijzing in de doel directory door een instantie van de klasse **DataLakeFileClient** te maken. Upload een bestand door de methode **DataLakeFileClient. append_data** aan te roepen. Zorg ervoor dat u de upload voltooit door de methode **DataLakeFileClient. flush_data** aan te roepen.
 
-In dit voor beeld wordt een tekst bestand geüpload naar een map `my-directory`met de naam.   
+In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory` .   
 
 ```python
 def upload_file_to_directory():
@@ -256,7 +256,7 @@ Haal de toegangs beheer lijst (ACL) van een bestand op door de methode **DataLak
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-In dit voor beeld wordt de ACL van een bestand met `my-file.txt`de naam opgehaald en ingesteld. De teken `rwxr-xrw-` reeks geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
+In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `my-file.txt` . De teken reeks `rwxr-xrw-` geeft de machtigingen lezen, schrijven en uitvoeren van de gebruiker, geeft de groep die eigenaar is alleen lees-en uitvoer machtigingen en geeft alle andere Lees-en schrijf rechten.
 
 ```python
 def manage_file_permissions():
@@ -313,7 +313,7 @@ def download_file_from_directory():
 
 Mapinhoud weer geven door de methode **FileSystemClient. get_paths** aan te roepen en vervolgens de resultaten te inventariseren.
 
-In dit voor beeld wordt het pad afgedrukt van elke submap en elk bestand dat zich in een map `my-directory`met de naam bevindt.
+In dit voor beeld wordt het pad afgedrukt van elke submap en elk bestand dat zich in een map met de naam bevindt `my-directory` .
 
 ```python
 def list_directory_contents():

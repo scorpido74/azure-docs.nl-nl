@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061543"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466065"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Java script gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
 In dit artikel leest u hoe u Java script gebruikt voor het maken en beheren van mappen, bestanden en machtigingen in opslag accounts met een hiërarchische naam ruimte (HNS) ingeschakeld. 
 
-[Package (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake) | Voor[Samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)beelden | van pakketten (node Package Manager)[geven feedback](https://github.com/Azure/azure-sdk-for-java/issues)
+[Pakket (node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  Voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Feedback geven](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -94,7 +94,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken door een **FileSystemClient** -exemplaar op te halen en vervolgens de methode **FileSystemClient. Create** aan te roepen.
 
-In dit voor beeld wordt een bestands `my-file-system`systeem gemaakt met de naam. 
+In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` . 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -112,7 +112,7 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 Maak een directory verwijzing door een **DirectoryClient** -exemplaar op te halen en vervolgens de methode **DirectoryClient. Create** aan te roepen.
 
-In dit voor beeld wordt een `my-directory` map toegevoegd met de naam van een bestands systeem. 
+In dit voor beeld wordt een map toegevoegd met de naam van `my-directory` een bestands systeem. 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -128,7 +128,7 @@ async function CreateDirectory(fileSystemClient) {
 
 Wijzig de naam of verplaats een map door de methode **DirectoryClient. rename** aan te roepen. Geef een para meter door aan het pad van de gewenste map. 
 
-In dit voor beeld wordt de naam van een submap gewijzigd in `my-directory-renamed`de naam.
+In dit voor beeld wordt de naam van een submap gewijzigd in de naam `my-directory-renamed` .
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-In dit voor beeld wordt een `my-directory-renamed` map verplaatst met de naam naar een submap van `my-directory-2`een map met de naam. 
+In dit voor beeld wordt een map verplaatst met de naam `my-directory-renamed` naar een submap van een map met de naam `my-directory-2` . 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -154,7 +154,7 @@ async function MoveDirectory(fileSystemClient) {
 
 Verwijder een directory door de methode **DirectoryClient. Delete** aan te roepen.
 
-In dit voor beeld wordt een `my-directory`map met de naam verwijderd.   
+In dit voor beeld wordt een map met de naam verwijderd `my-directory` .   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -167,7 +167,7 @@ async function DeleteDirectory(fileSystemClient) {
 
 ## <a name="manage-a-directory-acl"></a>Een directory-ACL beheren
 
-In dit voor beeld wordt de ACL van een directory met de `my-directory`naam opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
+In dit voor beeld wordt de ACL van een directory met de naam opgehaald en ingesteld `my-directory` . In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -221,9 +221,9 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Een bestand uploaden naar een map
 
-Lees eerst een bestand. In dit voor beeld wordt de node `fs` . js-module gebruikt. Maak vervolgens een bestands verwijzing in de doel directory door een **FileClient** -exemplaar te maken en vervolgens de methode **FileClient. Create** aan te roepen. Upload een bestand door de methode **FileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **FileClient. Flush** aan te roepen.
+Lees eerst een bestand. In dit voor beeld wordt de node. js- `fs` module gebruikt. Maak vervolgens een bestands verwijzing in de doel directory door een **FileClient** -exemplaar te maken en vervolgens de methode **FileClient. Create** aan te roepen. Upload een bestand door de methode **FileClient. Append aan** te roepen. Zorg ervoor dat u de upload voltooit door de methode **FileClient. Flush** aan te roepen.
 
-In dit voor beeld wordt een tekst bestand geüpload naar een map `my-directory`met de naam.
+In dit voor beeld wordt een tekst bestand geüpload naar een map met de naam `my-directory` .
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -249,7 +249,7 @@ async function UploadFile(fileSystemClient) {
 
 ## <a name="manage-a-file-acl"></a>Een bestands-ACL beheren
 
-In dit voor beeld wordt de ACL van een bestand met de `upload-file.txt`naam opgehaald en ingesteld. In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
+In dit voor beeld wordt de ACL van een bestand met de naam opgehaald en ingesteld `upload-file.txt` . In dit voor beeld worden de machtigingen lezen, schrijven en uitvoeren voor de gebruiker die eigenaar is, de groep die eigenaar is, de machtigingen lezen en uitvoeren, en krijgt alle andere Lees toegang.
 
 > [!NOTE]
 > Als uw toepassing toegang autoriseert met behulp van Azure Active Directory (Azure AD), moet u ervoor zorgen dat de beveiligings-principal die door uw toepassing wordt gebruikt om toegang te verlenen, is toegewezen aan de [rol Storage BLOB data owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Zie voor meer informatie over hoe ACL-machtigingen worden toegepast en de gevolgen van het wijzigen van [toegangs beheer in azure data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -303,7 +303,7 @@ await fileClient.setAccessControl(acl);
 
 ## <a name="download-from-a-directory"></a>Downloaden uit een directory
 
-Maak eerst een **FileSystemClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **FileSystemClient. Read** om het bestand te lezen. Schrijf vervolgens het bestand. In dit voor beeld wordt de node `fs` . js-module gebruikt. 
+Maak eerst een **FileSystemClient** -exemplaar dat het bestand vertegenwoordigt dat u wilt downloaden. Gebruik de methode **FileSystemClient. Read** om het bestand te lezen. Schrijf vervolgens het bestand. In dit voor beeld wordt de node. js- `fs` module gebruikt. 
 
 > [!NOTE]
 > Deze methode voor het downloaden van een bestand werkt alleen voor node. js-toepassingen. Als u van plan bent om uw code uit te voeren in een browser, raadpleegt u het bestand [Azure Storage bestand data Lake client bibliotheek voor Java script](https://www.npmjs.com/package/@azure/storage-file-datalake) voor een voor beeld van hoe u dit in een browser kunt doen. 
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>Mapinhoud weergeven
 
-In dit voor beeld worden de namen afgedrukt van elke map en elk bestand dat zich in een `my-directory`map met de naam bevindt.
+In dit voor beeld worden de namen afgedrukt van elke map en elk bestand dat zich in een map met de naam bevindt `my-directory` .
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {

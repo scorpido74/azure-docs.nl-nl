@@ -8,16 +8,18 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125550"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466167"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search
 
 In dit artikel gebruikt u de Azure Portal voor het maken van een nieuw exemplaar van Azure Cognitive Search service dat niet via internet toegankelijk is. Vervolgens configureert u een virtuele Azure-machine in hetzelfde virtuele netwerk en gebruikt u deze om toegang te krijgen tot de zoek service via een persoonlijk eind punt.
+
+Privé-eind punten worden als een afzonderlijke service verzorgd door een [persoonlijke Azure-koppeling](../private-link/private-link-overview.md). Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/private-link/)voor meer informatie over de kosten.
 
 > [!Important]
 > Ondersteuning voor privé-eind punten voor Azure Cognitive Search kan worden geconfigureerd met behulp van de Azure Portal of het [beheer rest API versie 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
@@ -42,7 +44,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Abonnement | Selecteer uw abonnement|
+    | Abonnement | Uw abonnement selecteren|
     | Resourcegroep | Selecteer **nieuwe maken**, Voer *myResourceGroup*in en selecteer **OK** . |
     | Naam | *MyVirtualNetwork* invoeren |
     | Regio | Selecteer de gewenste regio |
@@ -60,7 +62,7 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **PROJECTGEGEVENS** | |
+    | **PROJECT DETAILS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **EXEMPLAARDETAILS** |  |
@@ -96,7 +98,7 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
 1. Selecteer **OK**. 
 
-1. Selecteer **controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
 
 1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
 
@@ -114,7 +116,7 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **PROJECTGEGEVENS** | |
+    | **PROJECT DETAILS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
     | **EXEMPLAARDETAILS** |  |
@@ -150,7 +152,7 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     ||
 
-1. Selecteer **controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
 
 1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
 

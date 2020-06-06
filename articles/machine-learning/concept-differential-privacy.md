@@ -9,12 +9,12 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597644"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447825"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Behoud de privacy van gegevens met behulp van differentiële privacy en het WhiteNoise-pakket
 
@@ -79,4 +79,6 @@ De systeem bibliotheek bevat de volgende hulpprogram ma's en services voor het w
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het gebruik van de onderdelen van WhiteNoise raadpleegt u de GitHub-opslag plaatsen voor [WhiteNoise core package](https://github.com/opendifferentialprivacy/whitenoise-core), [WhiteNoise systeem package](https://github.com/opendifferentialprivacy/whitenoise-system) en [WhiteNoise samples](https://github.com/opendifferentialprivacy/whitenoise-samples).
+[Behoud de privacy van gegevens](how-to-differential-privacy.md) in azure machine learning.
+
+Voor meer informatie over de onderdelen van WhiteNoise raadpleegt u de GitHub-opslag plaatsen voor [WhiteNoise core package](https://github.com/opendifferentialprivacy/whitenoise-core), [WhiteNoise systeem package](https://github.com/opendifferentialprivacy/whitenoise-system) en [WhiteNoise samples](https://github.com/opendifferentialprivacy/whitenoise-samples).

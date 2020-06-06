@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: af56adef37c65da87a6de6b6a477ee3996a4e272
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 2341fa45446078f669314561db13e640e78776b8
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259589"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463197"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-configuratie voor het persoonlijke eind punt van Azure
 
@@ -55,18 +55,24 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 | Azure Database for MySQL (micro soft. DBforMySQL/servers)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (micro soft. DBforMariaDB/servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
 | Azure Key Vault (micro soft. de sleutel kluis/kluizen)/kluis | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
-| Azure Kubernetes service-Kubernetes-API (micro soft. container service/managedClusters)/managedCluster | privatelink. {Region}. azmk8s. io | {Region}. azmk8s. io |
+| Azure Kubernetes service-Kubernetes-API (micro soft. container service/managedClusters)/beheer | privatelink. {Region}. azmk8s. io | {Region}. azmk8s. io |
 | Azure Search (micro soft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (micro soft. ContainerRegistry/registers)/REGI ster | privatelink.azurecr.io | azurecr.io |
 | Azure-app configuratie (micro soft. AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
 | Azure Backup (micro soft. Recovery Services/kluizen)/kluis | privatelink. {Region}. backup. windowsazure. com | {Region}. backup. windowsazure. com |
 | Azure Event Hubs (micro soft. EventHub/naam ruimte)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (micro soft. ServiceBus/namespaces)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure IoT Hub (micro soft. devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
 | Azure Relay (micro soft. relay/naam ruimten)/naam ruimte | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (micro soft. EventGrid/topics)/topic | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (micro soft. EventGrid/domeinen)/domein | privatelink.eventgrid.azure.net | eventgrid.azure.net |
-| Azure-Web Apps (micro soft. web/sites)/site | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure-Web Apps (micro soft. web/sites)/sites | privatelink.azurewebsites.net | azurewebsites.net |
 | Azure Machine Learning (micro soft. MachineLearningServices/werk ruimten)/werk ruimte | privatelink.api.azureml.ms | api.azureml.ms |
+| IoT Hub (micro soft. devices/IotHubs)/IotHub | privatelink.azure-devices.net | azure-devices.net |
+| Signa lering (micro soft. SignalRService/Signalr)/signaal sterkte | privatelink.service.signalr.net | service.signalr.net |
+| Azure Monitor (micro soft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com | monitor.azure.com |
+| Cognitive Services (micro soft. CognitiveServices/accounts)/account | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
+
  
 ## <a name="dns-configuration-scenarios"></a>DNS-configuratie scenario's
 

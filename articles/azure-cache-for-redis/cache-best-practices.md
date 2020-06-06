@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478605"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457300"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure Cache voor Redis 
 Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw Azure-cache voor redis-instantie maximaliseren.
@@ -38,6 +38,8 @@ Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele
  * **Vermijd dure bewerkingen** : sommige redis-bewerkingen, zoals de opdracht [sleutels](https://redis.io/commands/keys) , zijn *erg* duur en moeten worden vermeden.  Zie enkele overwegingen rond [langlopende opdrachten](cache-troubleshoot-server.md#long-running-commands) voor meer informatie
 
  * **TLS-versleuteling gebruiken** : voor Azure cache voor redis is standaard TLS-versleutelde communicatie vereist.  TLS-versies 1,0, 1,1 en 1,2 worden momenteel ondersteund.  TLS 1,0 en 1,1 bevinden zich echter op een pad naar de hele industrie, dus gebruik TLS 1,2 als dat mogelijk is.  Als uw client bibliotheek of-hulp programma geen TLS ondersteunt, kunnen niet-versleutelde verbindingen worden uitgevoerd [via de Azure Portal](cache-configure.md#access-ports) -of [beheer-api's](https://docs.microsoft.com/rest/api/redis/redis/update).  In dergelijke gevallen is het raadzaam om uw cache-en client toepassing in te zetten in een virtueel netwerk.  Zie deze [tabel](cache-how-to-premium-vnet.md#outbound-port-requirements)voor meer informatie over welke poorten worden gebruikt in het scenario van de virtuele netwerk cache.
+ 
+ * **Time-out voor inactiviteit** : Azure-redis heeft momenteel een time-out van 10 minuten inactiviteit voor verbindingen. dit moet dus worden ingesteld op minder dan 10 minuten.
  
 ## <a name="memory-management"></a>Geheugen beheer
 Er zijn verschillende dingen die betrekking hebben op het gebruik van het geheugen in uw redis-server exemplaar dat u mogelijk wilt overwegen.  Hier volgen enkele:
@@ -67,7 +69,7 @@ Helaas is er geen eenvoudig antwoord.  Elke toepassing moet bepalen welke bewerk
 Als u wilt testen hoe uw code werkt onder fout voorwaarden, kunt u overwegen de [herstart-functie](cache-administration.md#reboot)te gebruiken. Door opnieuw op te starten, kunt u zien hoe de verbindings problemen invloed heeft op uw toepassing.
 
 ## <a name="performance-testing"></a>Prestaties testen
- * **Begin met `redis-benchmark.exe` ** om een mogelijke door Voer/latentie te leren voordat u uw eigen prestatie tests schrijft.  Redis-Bench Mark-documentatie vindt u [hier](https://redis.io/topics/benchmarks).  Houd er rekening mee dat redis-Bench Mark geen ondersteuning biedt voor TLS, zodat u [de niet-TLS-poort via de portal moet inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Een Windows-compatibele versie van redis-benchmark. exe vindt u hier](https://github.com/MSOpenTech/redis/releases)
+ * **Beginnen `redis-benchmark.exe` ** met voor een mogelijke door Voer/latentie voordat u uw eigen prestatie tests schrijft.  Redis-Bench Mark-documentatie vindt u [hier](https://redis.io/topics/benchmarks).  Houd er rekening mee dat redis-Bench Mark geen ondersteuning biedt voor TLS, zodat u [de niet-TLS-poort via de portal moet inschakelen](cache-configure.md#access-ports) voordat u de test uitvoert.  [Een Windows-compatibele versie van redis-benchmark. exe vindt u hier](https://github.com/MSOpenTech/redis/releases)
  * De client-VM die wordt gebruikt voor het testen moet zich **in dezelfde regio** bevinden als uw redis-cache-exemplaar.
  * **We raden u** aan om een DV2-VM-reeks te gebruiken voor uw client, omdat deze betere hardware heeft en de beste resultaten oplevert.
  * Zorg ervoor dat de client-VM die u gebruikt,*ten minste evenveel reken kracht en band breedte* heeft als de cache die wordt getest. 

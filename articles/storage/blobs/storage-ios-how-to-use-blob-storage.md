@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831871"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465487"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Blob Storage gebruiken vanuit iOS
 
@@ -82,7 +82,7 @@ U kunt het Framework-bestand vervolgens importeren in uw toepassing door het vol
 #import <AZSClient/AZSClient.h>
 ```
 
-Als u Swift gebruikt, moet u een bridging-header maken en \< AZSClient/AZSClient. h>:
+Als u Swift gebruikt, moet u een bridging-header maken en daar een importeren \<AZSClient/AZSClient.h> :
 
 1. Maak een header `Bridging-Header.h` -bestand en voeg de bovenstaande instructie import toe.
 2. Ga naar het tabblad *Build Settings* en zoek naar *doel-C bridging-header*.

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5c2962fcc470525510be8ee0c89baba658d9f9d9
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118427"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449631"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Een Lab instellen voor het big data van analyses met behulp van docker-implementatie van HortonWorks-gegevens platform
+# <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Een Lab instellen voor big data Analytics met docker-implementatie van HortonWorks-gegevens platform
 
 In dit artikel wordt beschreven hoe u een Lab instelt om een big data Analytics-klasse te leren.  Met dit type klasse leren cursisten hoe u grote hoeveel heden gegevens kunt verwerken en machine-en statistische leer algoritmen kunt Toep assen om gegevens inzichten te verkrijgen.  Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals [het open-source software pakket van Apache Hadoop](https://hadoop.apache.org/) waarmee u Big data kunt opslaan, beheren en verwerken.
 

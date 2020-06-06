@@ -4,19 +4,19 @@ description: Meer informatie over het configureren van het registratie beleid vo
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382145"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464331"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Procedure: het Azure Multi-Factor Authentication-registratie beleid configureren
 
@@ -36,13 +36,13 @@ Zie [Wat is azure multi-factor Authentication?](../authentication/howto-mfa-gets
 ## <a name="policy-configuration"></a>Beleidsconfiguratie
 
 1. Navigeer naar het [Azure Portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory** > **beleid voor MFA-registratie**van**beveiligings** > **identiteits beveiliging** > .
+1. Blader naar **Azure Active Directory**  >  beleid voor MFA-registratie van**beveiligings**  >  **identiteits beveiliging**  >  **MFA registration policy**.
    1. Onder **toewijzingen**
       1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
          1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
    1. Onder **besturings elementen**
       1. Zorg ervoor dat het selectie vakje **Azure MFA-registratie vereist** is ingeschakeld en kies **selecteren**.
-   1. **Beleid afdwingen** - **op**
+   1. **Beleid**  -  afdwingen **Op**
    1. **Opslaan**
 
 ## <a name="user-experience"></a>Gebruikerservaring

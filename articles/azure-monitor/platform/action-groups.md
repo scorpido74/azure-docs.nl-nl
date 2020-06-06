@@ -3,15 +3,15 @@ title: Actie groepen maken en beheren in de Azure Portal
 description: Meer informatie over het maken en beheren van actie groepen in de Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170457"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465249"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Actie groepen maken en beheren in de Azure Portal
 Een actie groep is een verzameling voor keuren voor meldingen die zijn gedefinieerd door de eigenaar van een Azure-abonnement. Azure Monitor-en Service Health-waarschuwingen gebruiken actie groepen om gebruikers te laten weten dat een waarschuwing is geactiveerd. Verschillende waarschuwingen kunnen dezelfde actie groep of verschillende actie groepen gebruiken, afhankelijk van de vereisten van de gebruiker. U kunt Maxi maal 2.000 actie groepen in een abonnement configureren.
@@ -80,7 +80,7 @@ Mogelijk hebt u een beperkt aantal Runbook-acties in een actie groep.
 ### <a name="azure-app-push-notifications"></a>Push meldingen van Azure-app
 Mogelijk hebt u een beperkt aantal Azure-app-acties in een actie groep.
 
-### <a name="email"></a>E-mail
+### <a name="email"></a>Email
 E-mails worden verzonden vanaf de volgende e-mail adressen. Controleren of uw e-mail filtering op de juiste wijze is geconfigureerd
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -217,7 +217,12 @@ Mogelijk hebt u een beperkt aantal spraak acties in een actie groep.
 Prijzen voor ondersteunde landen/regio's worden vermeld op de [pagina met Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
-Webhooks worden opnieuw geprobeerd met de volgende regels. De webhook-aanroep wordt Maxi maal twee keer opnieuw geprobeerd wanneer de volgende HTTP-status codes worden geretourneerd: 408, 429, 503, 504 of het HTTP-eind punt reageert niet. De eerste poging vindt plaats na 10 seconden. De tweede nieuwe poging gebeurt na 100 seconden. Na twee storingen wordt het eind punt gedurende 30 minuten niet door een actie groep aangeroepen. 
+Webhooks worden verwerkt aan de hand van de volgende regels
+- Voor een webhook-aanroep is Maxi maal drie keer geprobeerd.
+- Er wordt opnieuw geprobeerd de aanroep uit te voeren als er geen antwoord wordt ontvangen binnen de time-outperiode of als een van de volgende HTTP-status codes wordt geretourneerd: 408, 429, 503 of 504.
+- Bij de eerste aanroep wordt 10 seconden gewacht op een antwoord.
+- De tweede en derde keer wachten 30 seconden op een reactie.
+- Nadat de drie pogingen tot het aanroepen van de webhook zijn mislukt, wordt het eind punt gedurende 15 minuten door de actie groep aangeroepen.
 
 IP-adresbereiken van bron
  - 13.72.19.232

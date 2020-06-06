@@ -3,17 +3,17 @@ title: Een statische website hosten in Azure Storage
 description: Azure Storage statische website-hosting, die een rendabele en schaal bare oplossing biedt voor het hosten van moderne webtoepassingen.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f3dc7a051021c75c7e1ed6904096c43a27c3e05e
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648508"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465895"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Een statische website hosten in Azure Storage
 
@@ -44,7 +44,7 @@ U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de con
 > * [Azure-CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell-module](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure-pijplijnen](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code-extensie](/azure/javascript/tutorial-vscode-static-website-node-01)
 

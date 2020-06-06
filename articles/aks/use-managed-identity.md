@@ -2,30 +2,28 @@
 title: Beheerde identiteiten gebruiken in azure Kubernetes service
 description: Meer informatie over het gebruik van beheerde identiteiten in azure Kubernetes service (AKS)
 services: container-service
-author: saudas
-manager: saudas
 ms.topic: article
-ms.date: 04/02/2020
-ms.author: saudas
-ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: ae66c6a6fbfef2a6052a037e010ecdeb4256bfd8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112963"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456433"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Beheerde identiteiten gebruiken in azure Kubernetes service
 
 Op dit moment vereist een Azure Kubernetes service (AKS)-cluster (met name de Kubernetes-Cloud provider) een identiteit voor het maken van extra resources, zoals load balancers en beheerde schijven in azure, deze identiteit kan een *beheerde identiteit* of een *Service-Principal*zijn. Als u een [Service-Principal](kubernetes-service-principal.md)gebruikt, moet u één of AKS in uw naam maken. Als u een beheerde identiteit gebruikt, wordt deze automatisch voor u gemaakt door AKS. Clusters die service-principals gebruiken, bereiken uiteindelijk een status waarin de Service-Principal moet worden vernieuwd om het cluster te laten functioneren. Het beheren van service-principals voegt complexiteit toe. Daarom is het eenvoudiger om beheerde identiteiten te gebruiken. Dezelfde machtigings vereisten gelden voor service-principals en beheerde identiteiten.
 
-*Beheerde identiteiten* zijn in feite een wrapper rond service-principals en maken hun beheer eenvoudiger. Meer informatie over [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)vindt u hier.
+*Beheerde identiteiten* zijn in feite een wrapper rond service-principals en maken hun beheer eenvoudiger. De verdraaiing van referenties voor MSI gebeurt automatisch elke 46 dagen volgens Azure Active Directory standaard. Meer informatie over [beheerde identiteiten voor Azure-resources](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)vindt u hier.
 
 AKS maakt twee beheerde identiteiten:
 
-- Door het **systeem toegewezen beheerde identiteit**: de identiteit die de Kubernetes-Cloud provider gebruikt om Azure-resources namens de gebruiker te maken. De levens cyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
-- Door de **gebruiker toegewezen beheerde identiteit**: de identiteit die wordt gebruikt voor autorisatie in het cluster. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren voor het gebruik van Azure-container registers (ACRs), of om de kubelet te autoriseren om meta gegevens op te halen uit Azure.
+- Door het **systeem toegewezen beheerde identiteit**: de identiteit die de Cloud provider van Kubernetes gebruikt om Azure-resources te maken namens de gebruiker, zoals een [Load Balancer](load-balancer-standard.md) of een [openbaar IP-adres](static-ip.md). De levens cyclus van de door het systeem toegewezen identiteit is gekoppeld aan die van het cluster en mag alleen worden gebruikt door de Cloud provider. De identiteit wordt verwijderd wanneer het cluster wordt verwijderd.
 
-Invoeg toepassingen verifiëren ook met behulp van een beheerde identiteit. Voor elke invoeg toepassing wordt een beheerde identiteit gemaakt door AKS en de laatste tijd voor de levens duur van de invoeg toepassing. 
+- Door de **gebruiker toegewezen beheerde identiteit**: de identiteit die wordt gebruikt voor autorisatie in het cluster en alles wat u wilt beheren. De door de gebruiker toegewezen identiteit wordt bijvoorbeeld gebruikt om AKS te autoriseren voor het gebruik van Azure-container registers (ACRs), of om de kubelet te autoriseren om meta gegevens op te halen uit Azure.
+
+Invoeg toepassingen verifiëren ook met behulp van een beheerde identiteit. Voor elke invoeg toepassing wordt een beheerde identiteit gemaakt door AKS en de laatste tijd voor de levens duur van de invoeg toepassing.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

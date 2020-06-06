@@ -1,21 +1,21 @@
 ---
-title: bestand opnemen
-description: bestand opnemen
+title: Include-bestand
+description: Include-bestand
 services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 06/03/2020
+ms.date: 06/04/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: cffc9af2ef93ec44e2af9363c0040d1f22d945f7
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416364"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84466938"
 ---
 Maak de pizza-app.
 
@@ -57,7 +57,7 @@ Als u geen bewerkings resource hebt:
 
 Uw pizza-app is nu klaar voor gebruik.
 
-## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>Registreer de App-ID, de Voorspellings sleutel en het Voorspellings eindpunt van uw pizza-app.
+## <a name="record-the-access-values-for-your-pizza-app"></a>De toegangs waarden voor uw pizza-app vastleggen
 
 Als u uw nieuwe pizza-app wilt gebruiken, hebt u de App-ID, de ontwerp sleutel en het ontwerp-eind punt van uw pizza-app nodig.
 

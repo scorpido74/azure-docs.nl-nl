@@ -4,16 +4,16 @@ description: Laat zien hoe u een Azure BlockBlobStorage-account met Premium-pres
 author: tamram
 services: storage
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007306"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463549"
 ---
 # <a name="create-a-blockblobstorage-account"></a>Een BlockBlobStorage-account maken
 
@@ -110,7 +110,7 @@ Voer de volgende stappen uit om een BlockBlobStorage-account te maken in de Azur
 
    |Veld     |Waarde  |
    |---------|---------|
-   |**Nemen**    |  Selecteer **Premium**.   |
+   |**Prestaties**    |  Selecteer **Premium**.   |
    |**Soort account**    | Selecteer **BlockBlobStorage**.      |
    |**Replicatie**    |  Behoud de standaard instelling van **lokaal redundante opslag (LRS)**.      |
 

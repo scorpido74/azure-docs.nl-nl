@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4a10cd279961944bf46f4e6b433226eddafd1c53
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191475"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449063"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Werk stromen automatiseren voor SQL Server of Azure SQL Database met behulp van Azure Logic Apps
 
@@ -32,77 +32,25 @@ Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](
 
 * De naam van uw SQL-Server, de database naam, uw gebruikers naam en uw wacht woord. U hebt deze referenties nodig zodat u uw logica kunt machtigen om toegang te krijgen tot uw SQL Server.
 
-  * Voor SQL Server kunt u deze informatie vinden in het connection string:
+  * Voor on-premises SQL Server kunt u deze details vinden in de connection string:
 
     `Server={your-server-address};Database={your-database-name};User Id={your-user-name};Password={your-password};`
 
-  * Voor Azure SQL Database kunt u deze details vinden in de connection string of in de Azure Portal onder de SQL Database eigenschappen:
+  * Voor Azure SQL Database kunt u deze informatie vinden in de connection string.
+  
+    Als u deze teken reeks bijvoorbeeld wilt zoeken in de Azure Portal, opent u de data base. Selecteer in het menu Data Base ofwel **verbindings reeksen** of **Eigenschappen**:
 
     `Server=tcp:{your-server-name}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
 
-* De [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) die is geïnstalleerd op een lokale computer en een [Azure data gateway-resource die is gemaakt in het Azure Portal](../logic-apps/logic-apps-gateway-connection.md) voor deze scenario's:
+<a name="multi-tenant-or-ise"></a>
 
-  * Uw Logic apps worden niet uitgevoerd in een [integratie service omgeving (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+* Op basis van het feit of uw Logic apps worden uitgevoerd in Global, multi tenant Azure of een [Integration service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), zijn hier andere vereisten voor het maken van verbinding met on-premises SQL Server:
 
-  * Uw Logic apps *worden* uitgevoerd in een Integration service-omgeving, maar u moet Windows-verificatie gebruiken voor uw SQL Server-verbinding. Voor dit scenario gebruikt u de niet-ISE-versie van de SQL Server connector samen met de gegevens gateway, omdat de ISE-versie geen ondersteuning biedt voor Windows-verificatie.
+  * Voor Logic apps in Global, multi tenant Azure dat verbinding maakt met on-premises SQL Server, moet u de [on-premises gegevens gateway](../logic-apps/logic-apps-gateway-install.md) installeren op een lokale computer en een [gegevens gateway resource die al in Azure is gemaakt](../logic-apps/logic-apps-gateway-connection.md).
+
+  * Voor Logic apps in een ISE die verbinding maken met on-premises SQL Server en Windows-authenticatie gebruiken, ondersteunt de ISE-connector van het SQL Server geen ondersteuning voor Windows-verificatie. Daarom moet u nog steeds de gegevens gateway en de niet-ISE SQL Server-connector gebruiken. Voor andere verificatie typen hoeft u de gegevens gateway niet te gebruiken en kunt u de ISE-connector gebruiken.
 
 * De logische app waar u toegang tot uw SQL database nodig hebt. Als u uw logische app wilt starten met een SQL-trigger, hebt u een [lege logische app](../logic-apps/quickstart-create-first-logic-app-workflow.md)nodig.
-
-<a name="add-sql-trigger"></a>
-
-## <a name="add-a-sql-trigger"></a>Een SQL-trigger toevoegen
-
-In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), die wordt geactiveerd wanneer een bepaalde gebeurtenis plaatsvindt of wanneer aan een bepaalde voor waarde wordt voldaan. Telkens wanneer de trigger wordt geactiveerd, maakt de Logic Apps-Engine een exemplaar van een logische app en begint de werk stroom van de logische app uit te voeren.
-
-1. Maak in de Azure Portal of Visual Studio een lege logische app, waarmee Logic Apps Designer wordt geopend. In dit voor beeld wordt de Azure Portal gebruikt.
-
-1. Voer op de ontwerp functie in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst triggers de gewenste SQL-trigger.
-
-   In dit voor beeld wordt de trigger **Wanneer een item is gemaakt** gebruikt.
-
-   ![De trigger ' wanneer een item wordt gemaakt ' selecteren](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
-
-1. Als u wordt gevraagd om een verbinding te maken, [maakt u nu uw SQL-verbinding](#create-connection). Als uw verbinding bestaat, selecteert u een **tabel naam**.
-
-   ![Selecteer de tabel die u wilt](./media/connectors-create-api-sqlazure/azure-sql-database-table.png)
-
-1. Stel de eigenschappen **interval** en **frequentie** in, waarmee wordt aangegeven hoe vaak uw logische app de tabel controleert.
-
-   Deze trigger retourneert slechts één rij uit de geselecteerde tabel, niets anders. Als u andere taken wilt uitvoeren, moet u andere acties toevoegen waarmee de gewenste taken worden uitgevoerd. Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
-
-1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
-
-   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
-
-<a name="add-sql-action"></a>
-
-## <a name="add-a-sql-action"></a>Een SQL-actie toevoegen
-
-In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-app-concepts) een stap in uw werk stroom die volgt op een trigger of een andere actie. In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../connectors/connectors-native-recurrence.md)en wordt een actie aangeroepen waarmee een rij uit een SQL database wordt opgehaald.
-
-1. Open in de Azure Portal of Visual Studio uw logische app in Logic Apps Designer. In dit voor beeld wordt de Azure Portal gebruikt.
-
-1. Selecteer **nieuwe stap**onder de trigger of actie waar u de SQL-actie wilt toevoegen.
-
-   ![Nieuwe stap toevoegen aan uw logische app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
-
-   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
-
-1. Onder **Kies een actie**, voert u in het zoekvak ' SQL Server ' in als uw filter. Selecteer in de lijst acties de gewenste SQL-actie.
-
-   In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
-
-   ![Zoek en selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/find-select-sql-get-row-action.png)
-
-   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Als u de gegevens in deze rij wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
-
-1. Als u wordt gevraagd om een verbinding te maken, [maakt u nu uw SQL-verbinding](#create-connection). Als uw verbinding bestaat, selecteert u een **tabel naam**en voert u de **rij-id** voor de gewenste record in.
-
-   ![De tabel naam en de rij-ID invoeren](./media/connectors-create-api-sqlazure/specify-table-row-id-property-value.png)
-
-1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
-
-   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
 <a name="create-connection"></a>
 
@@ -110,7 +58,154 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-[!INCLUDE [Create a connection to SQL Server or Azure SQL Database](../../includes/connectors-create-api-sqlazure.md)]
+Ga nu verder met de volgende stappen:
+
+* [Verbinding maken met een Cloud Azure SQL Database of een beheerd exemplaar](#connect-azure-sql-db)
+* [Verbinding maken met on-premises SQL Server](#connect-sql-server)
+
+<a name="connect-azure-sql-db"></a>
+
+### <a name="connect-to-cloud-based-azure-sql-database-or-managed-instance"></a>Verbinding maken met een Cloud Azure SQL Database of een beheerd exemplaar
+
+De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sql-action)toevoegt en u nog geen verbinding hebt gemaakt met uw data base, wordt u gevraagd om de volgende stappen uit te voeren:
+
+1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw Azure SQL database of het beheerde exemplaar:
+
+   | Verificatie | Beschrijving |
+   |----------------|-------------|
+   | [**Geïntegreerd met Azure AD**](../azure-sql/database/authentication-aad-overview.md) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige identiteit in Azure Active Directory (Azure AD) die toegang heeft tot uw Azure-SQL database. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL-geïntegreerde Azure AD-verificatie](../azure-sql/database/authentication-aad-overview.md) |
+   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw Azure-SQL database. <p>Zie deze onderwerpen voor meer informatie: <p>- [Overzicht van Azure SQL-beveiliging-verificatie](../azure-sql/database/security-overview.md#authentication) <br>- [Database toegang verlenen aan Azure SQL-verificatie en autorisatie](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   |||
+
+   Dit voor beeld gaat verder met **Azure AD Integrated**:
+
+   ![Selecteer het verificatie type dat u wilt gebruiken](./media/connectors-create-api-sqlazure/select-azure-ad-authentication.png)
+
+1. Nadat u **Azure AD Integrated**hebt geselecteerd, selecteert u **Aanmelden**. Selecteer uw gebruikers referenties voor verificatie op basis van het feit of u Azure SQL Database of Azure SQL Managed instance gebruikt.
+
+1. Selecteer deze waarden voor uw Azure SQL database:
+
+   | Eigenschap | Vereist | Beschrijving |
+   |----------|----------|-------------|
+   | **Servernaam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
+   | **Databasenaam** | Ja | De naam voor uw SQL database, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Tabelnaam** | Ja | De tabel die u wilt gebruiken, bijvoorbeeld`SalesLT.Customer` |
+   ||||
+
+   > [!TIP]
+   > U kunt deze informatie vinden in de connection string van uw data base. Zoek en open bijvoorbeeld uw data base in de Azure Portal. Selecteer in het menu Data Base de optie **verbindings reeksen** of **Eigenschappen** waar u deze teken reeks kunt vinden:
+   >
+   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+
+   In dit voor beeld ziet u hoe deze waarden eruit kunnen zien:
+
+   ![Verbinding maken met Azure SQL database](./media/connectors-create-api-sqlazure/azure-sql-database-create-connection.png)
+
+1. Ga nu verder met de stappen die u nog niet hebt voltooid in [een SQL-trigger toevoegen](#add-sql-trigger) of [een SQL-actie toevoegen](#add-sql-action).
+
+<a name="connect-sql-server"></a>
+
+### <a name="connect-to-on-premises-sql-server"></a>Verbinding maken met on-premises SQL Server
+
+De eerste keer dat u een SQL- [trigger](#add-sql-trigger) of [SQL-actie](#add-sql-action)toevoegt en u nog geen verbinding hebt gemaakt met uw data base, wordt u gevraagd om de volgende stappen uit te voeren:
+
+1. Voor verbindingen met uw on-premises SQL Server die de on-premises gegevens gateway nodig hebben, moet u ervoor zorgen dat u [deze vereisten hebt voltooid](#multi-tenant-or-ise).
+
+   Anders wordt uw gegevens gateway bron niet weer gegeven in de lijst met **verbindings gateways** wanneer u de verbinding maakt.
+
+1. Selecteer bij **verificatie type**de verificatie die vereist is en is ingeschakeld op uw SQL Server:
+
+   | Verificatie | Beschrijving |
+   |----------------|-------------|
+   | [**Windows-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -Ondersteunt alleen de niet-ISE SQL Server-connector, waarvoor een gegevens gateway resource is vereist die eerder in azure voor uw verbinding is gemaakt, ongeacht of u gebruikmaakt van multi tenant Azure of een ISE. <p><p>-Vereist een geldige Windows-gebruikers naam en-wacht woord om uw identiteit te bevestigen via uw Windows-account. <p>Zie [Windows-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) voor meer informatie. |
+   | [**SQL Server-verificatie**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -Ondersteunt zowel de niet-ISE als de ISE SQL Server-connector. <p><p>-Vereist een geldige gebruikers naam en een sterk wacht woord die zijn gemaakt en opgeslagen in uw SQL Server. <p>Zie [SQL Server-verificatie](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)voor meer informatie. |
+   |||
+
+   Dit voor beeld gaat door met **Windows-verificatie**:
+
+   ![Selecteer het verificatie type dat u wilt gebruiken](./media/connectors-create-api-sqlazure/select-windows-authentication.png)
+
+1. Selecteer of geef de volgende waarden op voor uw SQL database:
+
+   | Eigenschap | Vereist | Beschrijving |
+   |----------|----------|-------------|
+   | **SQL Server-naam** | Ja | Het adres voor uw SQL Server, bijvoorbeeld`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL database naam** | Ja | De naam voor uw SQL Server-Data Base, bijvoorbeeld`Fabrikam-Azure-SQL-DB` |
+   | **Gebruikers** | Ja | Uw gebruikers naam voor de SQL-Server en-data base |
+   | **Wachtwoord** | Ja | Uw wacht woord voor de SQL-Server en-data base |
+   | **Abonnement** |  Ja, voor Windows-verificatie | Het Azure-abonnement voor de gegevens gateway resource die u eerder hebt gemaakt in azure |
+   | **Verbindings gateway** | Ja, voor Windows-verificatie | De naam voor de gegevens gateway resource die u eerder hebt gemaakt in azure <p><p>**Tip**: als uw gateway niet in de lijst wordt weer gegeven, controleert u of u [uw gateway](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)correct hebt ingesteld. |
+   |||
+
+   > [!TIP]
+   > U kunt deze informatie vinden in de connection string van uw Data Base:
+   > 
+   > * `Server={your-server-address}`
+   > * `Database={your-database-name}`
+   > * `User ID={your-user-name}`
+   > * `Password={your-password}`
+
+   In dit voor beeld ziet u hoe deze waarden eruit kunnen zien:
+
+   ![SQL Server verbinding maken is voltooid](./media/connectors-create-api-sqlazure/sql-server-create-connection-complete.png)
+
+1. Wanneer u klaar bent, selecteert u **maken**.
+
+1. Ga nu verder met de stappen die u nog niet hebt voltooid in [een SQL-trigger toevoegen](#add-sql-trigger) of [een SQL-actie toevoegen](#add-sql-action).
+
+<a name="add-sql-trigger"></a>
+
+## <a name="add-a-sql-trigger"></a>Een SQL-trigger toevoegen
+
+1. Maak in de [Azure Portal](https://portal.azure.com) of in Visual Studio een lege logische app, waarmee de ontwerp functie voor logische apps wordt geopend. In dit voor beeld wordt de Azure Portal voortgezet.
+
+1. Voer op de ontwerp functie in het zoekvak in `sql server` . Selecteer in de lijst triggers de gewenste SQL-trigger. In dit voor beeld wordt de trigger **Wanneer een item is gemaakt** gebruikt.
+
+   ![De trigger ' wanneer een item wordt gemaakt ' selecteren](./media/connectors-create-api-sqlazure/select-sql-server-trigger.png)
+
+1. Als u voor de eerste keer verbinding maakt met uw SQL database, wordt u gevraagd om [uw SQL database verbinding nu te maken](#create-connection). Nadat u deze verbinding hebt gemaakt, kunt u door gaan met de volgende stap.
+
+1. Geef in de trigger het interval en de frequentie op voor hoe vaak de trigger de tabel controleert.
+
+1. Als u andere beschik bare eigenschappen voor deze trigger wilt toevoegen, opent u de lijst **nieuwe para meter toevoegen** .
+
+   Deze trigger retourneert slechts één rij uit de geselecteerde tabel en niets anders. Als u andere taken wilt uitvoeren, kunt u door gaan door een [SQL-connector actie](#add-sql-action) toe te voegen of door een [andere actie](../connectors/apis-list.md) uit te voeren waarmee de volgende taak wordt uitgevoerd in de werk stroom van de logische app.
+   
+   Als u de gegevens in deze rij bijvoorbeeld wilt weer geven, kunt u andere acties toevoegen waarmee een bestand wordt gemaakt dat de velden uit de geretourneerde rij bevat, en vervolgens e-mail waarschuwingen verzenden. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+
+1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
+
+   Hoewel met deze stap automatisch uw logische app in azure wordt ingeschakeld en gepubliceerd, is de enige actie die momenteel door uw logische app wordt uitgevoerd, het controleren van uw Data Base op basis van het opgegeven interval en de frequentie.
+
+<a name="add-sql-action"></a>
+
+## <a name="add-a-sql-action"></a>Een SQL-actie toevoegen
+
+In dit voor beeld wordt de logische app gestart met de [terugkeer patroon](../connectors/connectors-native-recurrence.md)en wordt een actie aangeroepen waarmee een rij uit een SQL database wordt opgehaald.
+
+1. Open in de [Azure Portal](https://portal.azure.com) of in Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal voortgezet.
+
+1. Selecteer **nieuwe stap**onder de trigger of actie waar u de SQL-actie wilt toevoegen.
+
+   ![Een actie toevoegen aan uw logische app](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
+
+   Als u een actie wilt toevoegen tussen de bestaande stappen, plaatst u de muis aanwijzer op de verbindings pijl. Selecteer het plus teken ( **+** ) dat wordt weer gegeven en selecteer vervolgens **een actie toevoegen**.
+
+1. Onder **Kies een actie**, typt u in het zoekvak `sql server` . Selecteer in de lijst acties de gewenste SQL-actie. In dit voor beeld wordt de actie **rij ophalen** gebruikt, waarmee één record wordt opgehaald.
+
+   ![Selecteer de actie SQL-rij ophalen](./media/connectors-create-api-sqlazure/select-sql-get-row-action.png)
+
+1. Als u voor de eerste keer verbinding maakt met uw SQL database, wordt u gevraagd om [uw SQL database verbinding nu te maken](#create-connection). Nadat u deze verbinding hebt gemaakt, kunt u door gaan met de volgende stap.
+
+1. Selecteer de **tabel naam** `SalesLT.Customer` in dit voor beeld. Voer de **rij-id** in voor de record die u wilt.
+
+   ![Tabel naam selecteren en rij-ID opgeven](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
+
+   Met deze actie wordt slechts één rij uit de geselecteerde tabel geretourneerd, niets anders. Om de gegevens in deze rij weer te geven, kunt u dus ook andere acties toevoegen die een bestand maken dat de velden uit de geretourneerde rij bevat, en dat bestand opslaan in een opslag account in de Cloud. Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor meer informatie over andere beschik bare acties voor deze connector.
+
+1. Wanneer u klaar bent, selecteert u op de werk balk ontwerpen de optie **Opslaan**.
+
+   Met deze stap wordt uw logische app Live in azure automatisch ingeschakeld en gepubliceerd.
 
 ## <a name="handle-bulk-data"></a>Bulk gegevens verwerken
 
@@ -132,21 +227,30 @@ Soms moet u met de resultaten sets zo groot zijn dat de connector niet alle resu
 
 ### <a name="handle-dynamic-bulk-data"></a>Dynamische bulk gegevens verwerken
 
-Soms is de geretourneerde uitvoer dynamisch, wanneer u een opgeslagen procedure aanroept in de SQL Server-connector. In dit scenario voert u de volgende stappen uit:
+Wanneer u een opgeslagen procedure aanroept met behulp van de SQL Server-connector, is de geretourneerde uitvoer soms dynamisch. In dit scenario voert u de volgende stappen uit:
 
-1. Open **Logic apps Designer**.
-1. Voer een test uitvoering van uw logische app uit om de uitvoer indeling te bekijken. Kopieer de uitvoer van uw voor beeld.
+1. Open in de [Azure Portal](https://portal.azure.com)uw logische app in de ontwerp functie voor logische apps.
+
+1. De uitvoer indeling weer geven door een test uitvoering uit te voeren. Kopieer uw voorbeeld uitvoer en sla deze op.
+
 1. Selecteer in de ontwerp functie, onder de actie waar u de opgeslagen procedure aanroept, de optie **nieuwe stap**.
-1. Zoek onder **Kies een actie**naar en selecteer de actie [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) .
+
+1. Zoek onder **Kies een actie**de actie [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) en selecteer deze.
+
 1. Selecteer in de actie **JSON parseren** **voorbeeld lading gebruiken om schema te genereren**.
-1. Plak in het venster **een voor beeld van een JSON-nettolading invoeren of plakken** de uitvoer van het voor beeld en selecteer vervolgens **gereed**.
-1. Als er een fout bericht wordt weer gegeven dat Logic Apps geen schema kan genereren, controleert u of de syntaxis van de voorbeeld uitvoer correct is ingedeeld. Als u het schema nog steeds niet kunt genereren, voert u het hand matig in het vak **schema** in.
+
+1. Plak in het vak **een voor beeld van een JSON-nettolading invoeren of plakken** uw voorbeeld uitvoer en selecteer **gereed**.
+
+   > [!NOTE]
+   > Als er een fout bericht wordt weer gegeven dat Logic Apps geen schema kan genereren, controleert u of de syntaxis van de voorbeeld uitvoer correct is ingedeeld. Als u het schema nog niet kunt genereren, voert u in het vak **schema** het schema hand matig in.
+
 1. Selecteer **Opslaan**op de werk balk van de ontwerp functie.
-1. Gebruik de gegevens tokens die worden weer gegeven in de lijst met dynamische inhoud onder de [actie **JSON parseren** ](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)om toegang te krijgen tot de eigenschappen van de JSON-inhoud.
+
+1. Als u wilt verwijzen naar de eigenschappen van de JSON-inhoud, klikt u in de bewerkings vakken waar u naar deze eigenschappen wilt verwijzen, zodat de lijst met dynamische inhoud wordt weer gegeven. Selecteer in de lijst onder de kop [**JSON parseren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) de gegevens tokens voor de gewenste eigenschappen van de JSON-inhoud.
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)voor technische informatie over de triggers, acties en limieten van deze connector.
+Zie de [referentie pagina van de connector](https://docs.microsoft.com/connectors/sql/)die wordt gegenereerd op basis van de Swagger-beschrijving voor technische informatie over de triggers, acties en limieten van deze connector.
 
 ## <a name="next-steps"></a>Volgende stappen
 

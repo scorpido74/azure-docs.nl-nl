@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010202"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456739"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-uitvoer cache provider voor Azure cache voor redis
 
-De redis-uitvoer cache provider is een out-of-process-opslag mechanisme voor uitvoer cache gegevens. Deze gegevens zijn specifiek voor volledige HTTP-antwoorden (caching voor pagina-uitvoer). De provider wordt toegevoegd aan het nieuwe uitbreidings punt van de uitvoer cache provider die is geïntroduceerd in ASP.NET 4.
+De redis-uitvoer cache provider is een out-of-process-opslag mechanisme voor uitvoer cache gegevens. Deze gegevens zijn specifiek voor volledige HTTP-antwoorden (caching voor pagina-uitvoer). De provider wordt toegevoegd aan het nieuwe uitbreidings punt van de uitvoer cache provider die is geïntroduceerd in ASP.NET 4. Lees voor ASP.NET Core toepassingen [caching in ASP.net core](https://docs.microsoft.com/aspnet/core/performance/caching/response). 
 
 Als u de redis-uitvoer cache provider wilt gebruiken, moet u eerst uw cache configureren en vervolgens uw ASP.NET-toepassing configureren met het redis output cache provider NuGet-pakket. Dit onderwerp bevat richt lijnen voor het configureren van uw toepassing voor het gebruik van de redis-uitvoer cache provider. Zie [een cache maken](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)voor meer informatie over het maken en configureren van een Azure-cache voor redis-instantie.
 
@@ -84,7 +84,7 @@ De volgende voor beelden laten zien hoe *Connections Tring* wordt gebruikt.
 </connectionStrings>
 ```
 
-In `web.config`gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
+In `web.config` gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -104,7 +104,7 @@ In `web.config`gebruikt u de sleutel als parameter waarde in plaats van de werke
 </appSettings>
 ```
 
-In `web.config`gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
+In `web.config` gebruikt u de sleutel als parameter waarde in plaats van de werkelijke waarde.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -193,7 +193,7 @@ Voeg een OutputCache-instructie toe aan elke pagina waarvoor u de uitvoer wilt o
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-In het vorige voor beeld blijven de pagina gegevens in de cache gedurende 60 seconden in de cache en wordt er een andere versie van de pagina in de cache opgeslagen voor elke parameter combinatie. Zie [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837)voor meer informatie over de OutputCache-instructie.
+In het vorige voor beeld blijven de pagina gegevens in de cache gedurende 60 seconden in de cache en wordt er een andere versie van de pagina in de cache opgeslagen voor elke parameter combinatie. Zie voor meer informatie over de OutputCache-instructie [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) .
 
 Zodra deze stappen zijn uitgevoerd, wordt uw toepassing geconfigureerd om de redis-uitvoer cache provider te gebruiken.
 

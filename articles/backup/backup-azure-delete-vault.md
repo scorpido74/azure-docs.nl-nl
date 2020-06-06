@@ -2,13 +2,13 @@
 title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183752"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447744"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -16,33 +16,41 @@ In dit artikel wordt beschreven hoe u een [Azure Backup](backup-overview.md) Rec
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-U kunt een Recovery Services kluis met afhankelijkheden, zoals beveiligde servers of back-upbeheer servers, niet verwijderen.
+U kunt een Recovery Services kluis met een van de volgende afhankelijkheden niet verwijderen:
 
-- Kluizen die back-upgegevens bevatten, kunnen niet worden verwijderd (zelfs niet als u de beveiliging hebt gestopt, maar de back-upgegevens zijn behouden).
+- U kunt geen kluis verwijderen die beveiligde gegevens bronnen bevat (bijvoorbeeld IaaS Vm's, SQL-data bases, Azure-bestands shares, enz.)  
+- U kunt geen kluis verwijderen die back-upgegevens bevat. Zodra de back-upgegevens zijn verwijderd, wordt deze naar de voorlopig verwijderde status.
+- U kunt geen kluis verwijderen die back-upgegevens bevat in de modus voorlopig verwijderd.
+- U kunt geen kluis verwijderen die geregistreerde opslag accounts heeft.
 
-- Als u een kluis verwijdert die afhankelijkheden bevat, wordt het volgende bericht weer gegeven:
+Als u probeert de kluis te verwijderen zonder de afhankelijkheden te verwijderen, ontvangt u een van de volgende fout berichten:
 
-  ![Verwijder de kluis fout.](./media/backup-azure-delete-vault/error.png)
+- De kluis kan niet worden verwijderd, omdat er nog resources in de kluis aanwezig zijn. Controleer of er geen back-upitems, beveiligde servers of back-upbeheerser vers zijn gekoppeld aan deze kluis. Hef de registratie van de volgende containers die zijn gekoppeld aan deze kluis op voordat u doorgaat met verwijderen.
 
-- Als u een on-premises beveiligde item verwijdert uit een portal dat afhankelijkheden bevat, wordt er een waarschuwings bericht weer gegeven:
+- De kluis van Recovery Services kan niet worden verwijderd, omdat er zich in de kluis back-upitems bevinden met de status Voorlopig verwijderd. De voorlopig verwijderde items worden definitief verwijderd na 14 dagen na de Verwijder bewerking. Probeer het verwijderen van de kluis nadat de back-upitems definitief zijn verwijderd en er geen item met de status zacht verwijderd is gebleven in de kluis. Zie [voorlopig verwijderen voor Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)voor meer informatie.
 
-  ![Verwijder de fout met de beveiligde server.](./media/backup-azure-delete-vault/error-message.jpg)
+## <a name="proper-way-to-delete-a-vault"></a>Juiste manier om een kluis te verwijderen
 
-- Als back-upitems de status zacht verwijderd krijgen onder een waarschuwing wordt weer gegeven, moet u wachten totdat ze permanent worden verwijderd. Zie dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud)voor meer informatie.
+>[!WARNING]
+>De volgende bewerking is destructief en kan niet ongedaan worden gemaakt. Alle back-upgegevens en back-upitems die aan de beveiligde server zijn gekoppeld, worden definitief verwijderd. Ga zorgvuldig te werk.
 
-   ![Verwijder de kluis fout.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+Als u een kluis goed wilt verwijderen, moet u de stappen in deze volg orde volgen:
 
-- Kluizen met geregistreerde opslag accounts kunnen niet worden verwijderd. Zie [registratie van een opslag account ongedaan maken](manage-afs-backup.md#unregister-a-storage-account)voor meer informatie over het ongedaan maken van de registratie van het account.
-  
-Als u de kluis wilt verwijderen, kiest u het scenario dat overeenkomt met uw Setup en voert u de aanbevolen stappen uit:
+- **Stap 1**: Schakel de functie voor voorlopig verwijderen uit. [Hier vindt](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) u een overzicht van de stappen voor het uitschakelen van de tijdelijke verwijdering.
 
-Scenario | Stappen voor het verwijderen van afhankelijkheden om de kluis te verwijderen |
--- | --
-Ik heb on-premises bestanden en mappen die zijn beveiligd met behulp van de Azure Backup-Agent, back-ups maken naar Azure | Voer de stappen in [Back-upitems verwijderen uit in de Mars-beheer console](#delete-backup-items-from-the-mars-management-console)
-Ik heb on-premises machines die zijn beveiligd met MABS (Microsoft Azure Backup Server) of DPM (System Center Data Protection Manager) naar Azure | Voer de stappen in [Back-upitems verwijderen uit vanuit de MABS-beheer console](#delete-backup-items-from-the-mabs-management-console)
-Ik heb beveiligde items in de Cloud (bijvoorbeeld een virtuele machine van laaS of een Azure Files-share)  | Voer de stappen in [beveiligde items verwijderen in de Cloud](#delete-protected-items-in-the-cloud) uit
-Ik heb beveiligde items in zowel on-premises als in de Cloud | Voer de stappen in de volgende volg orde uit in de volgende secties: <br> 1. [beveiligde items in de Cloud verwijderen](#delete-protected-items-in-the-cloud)<br> 2. [Back-upitems verwijderen uit de Mars-beheer console](#delete-backup-items-from-the-mars-management-console) <br> 3. [Back-upitems verwijderen uit de MABS-beheer console](#delete-backup-items-from-the-mabs-management-console)
-Ik heb geen beveiligde items on-premises of in de Cloud. Ik krijg echter nog steeds de fout melding voor het verwijderen van de kluis | Voer de stappen in [de Recovery Services kluis verwijderen uit met behulp van Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) <br><br> Zorg ervoor dat er geen opslag accounts zijn geregistreerd bij de kluis. Zie [registratie van een opslag account ongedaan maken](manage-afs-backup.md#unregister-a-storage-account)voor meer informatie over het ongedaan maken van de registratie van het account.
+- **Stap 2**: Controleer na het uitschakelen van de functie voor voorlopig verwijderen of er eerder items zijn overgebleven in thee. Als er items met de status zacht verwijderd zijn, moet u deze *verwijderen* en opnieuw *verwijderen* . [Volg deze stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) om items te zoeken die u voorlopig verwijdert en deze permanent te verwijderen.
+
+- **Stap 3**: u moet de volgende drie locaties controleren om te controleren of er beveiligde items zijn:
+
+  - In de **Cloud beveiligde items**: Ga naar het menu van het kluis dashboard > **Back-upitems**. Alle items die hier worden vermeld, moeten worden verwijderd met **back-up stoppen** of **back-upgegevens verwijderen** samen met de back-upgegevens.  [Volg deze stappen](#delete-protected-items-in-the-cloud) om deze items te verwijderen.
+  - **Mars-beveiligde servers**: Ga naar het menu van het kluis dashboard > beveiligde servers met **back-upinfrastructuur**  >  **Protected Servers**. Als u MARS-beveiligde servers hebt, moeten alle items die hier worden vermeld, samen met de bijbehorende back-upgegevens worden verwijderd. [Volg deze stappen om de](#delete-protected-items-on-premises) Mars-beveiligde servers te verwijderen.
+  - **MABS-of DPM-beheerser vers**: Ga naar het menu van het kluis dashboard > **Backup-infrastructuur**  >  **beheer servers**. Als u DPM of Azure Backup Server (MABS) hebt, moeten alle items die hier worden vermeld, worden verwijderd of geregistreerd samen met hun back-upgegevens. [Volg deze stappen](#delete-protected-items-on-premises) voor het verwijderen van de beheerser vers.
+
+- **Stap 4**: u moet ervoor zorgen dat alle geregistreerde opslag accounts worden verwijderd. Ga naar het menu van het kluis dashboard > opslag accounts voor **back-upinfrastructuur**  >  **Storage Accounts**. Als u hier opslag accounts hebt die hier worden vermeld, moet u de registratie ervan ongedaan maken. Zie [registratie van een opslag account ongedaan maken](manage-afs-backup.md#unregister-a-storage-account)voor meer informatie over het ongedaan maken van de registratie van het account.
+
+Nadat u deze stappen hebt voltooid, kunt u door gaan met [het verwijderen van de kluis](#delete-the-recovery-services-vault).
+
+Als u geen beveiligde items on-premises of in de Cloud hebt, maar nog steeds de kluis verwijdert, voert u de stappen in [de Recovery Services kluis verwijderen uit met behulp van Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager)
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Beveiligde items in de Cloud verwijderen
 
@@ -64,7 +72,7 @@ Voer de volgende stappen uit om de beveiliging te stoppen en de back-upgegevens 
 
          ![Het deel venster back-upgegevens verwijderen.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-3. Controleer het **meldings** pictogram ![: het pictogram melding.](./media/backup-azure-delete-vault/messages.png) Nadat het proces is voltooid, wordt het volgende bericht weer gegeven: *back-up stoppen en back-upgegevens verwijderen voor*back-upitem *.* *De bewerking is voltooid*.
+3. Controleer het **meldings** pictogram: ![ het pictogram melding.](./media/backup-azure-delete-vault/messages.png) Nadat het proces is voltooid, wordt het volgende bericht weer gegeven: *back-up stoppen en back-upgegevens verwijderen voor*back-upitem *.* *De bewerking is voltooid*.
 4. Selecteer **vernieuwen** in het menu **back-** upitems om er zeker van te zijn dat de back-up is verwijderd.
 
       ![De pagina Back-upitems verwijderen.](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -97,8 +105,11 @@ Lees eerst de sectie **[voordat u begint](#before-you-start)** om inzicht te kri
 
 4. Schakel het selectie vakje toestemming in en selecteer vervolgens **verwijderen**.
 
-5. Controleer het **meldings** pictogram ![back-](./media/backup-azure-delete-vault/messages.png)upgegevens verwijderen. Nadat de bewerking is voltooid, wordt het volgende bericht weer gegeven: *back-up stoppen en back-upgegevens verwijderen voor ' back-upitem '.* *De bewerking is voltooid*.
+5. Controleer het **meldings** pictogram ![ back-upgegevens verwijderen ](./media/backup-azure-delete-vault/messages.png) . Nadat de bewerking is voltooid, wordt het volgende bericht weer gegeven: *back-up stoppen en back-upgegevens verwijderen voor ' back-upitem '.* *De bewerking is voltooid*.
 6. Selecteer **vernieuwen** in het menu **back-** upitems om er zeker van te zijn dat de back-up wordt verwijderd.
+
+>[!NOTE]
+>Als u een on-premises beveiligde item verwijdert uit een portal met afhankelijkheden, ontvangt u een waarschuwing met de melding ' het verwijderen van de server is een destructieve bewerking en kan niet ongedaan worden gemaakt. Alle back-upgegevens (herstel punten die nodig zijn om de gegevens te herstellen) en back-upitems die zijn gekoppeld aan de beveiligde server worden definitief verwijderd. "
 
 Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwijderen:
 
@@ -116,7 +127,7 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 
     ![Een geplande back-up stoppen.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. U wordt gevraagd een beveiligings pincode (persoonlijk identificatie nummer) in te voeren, die u hand matig moet genereren. Als u dit wilt doen, meldt u zich eerst aan bij de Azure Portal.
-5. Ga naar **Recovery Services** > **Settings** > **Eigenschappen**van de kluis instellingen.
+5. Ga naar **Recovery Services**eigenschappen van de kluis  >  **instellingen**  >  **Properties**.
 6. Onder **BEVEILIGINGS pincode**selecteert u **genereren**. Deze pincode kopiëren. De pincode is slechts vijf minuten geldig.
 7. Plak de pincode in de beheer console en selecteer **OK**.
 
@@ -194,7 +205,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
 
   Meer [informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) over het uitschakelen van de beveiliging voor een met Azure backup beveiligd item.
 
-- Stop de beveiliging en verwijder gegevens voor alle met back-ups beveiligde items in de Cloud (ex. laaS VM, Azure-bestands share enz.):
+- Stop de beveiliging en verwijder gegevens voor alle met back-ups beveiligde items in de Cloud (bijvoorbeeld: IaaS VM, Azure-bestands share, enzovoort):
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection
@@ -208,7 +219,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
        [<CommonParameters>]
     ```
 
-    [Meer informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) over het uitschakelen van de beveiliging van een item dat is beveiligd met back-up.
+    [Meer informatie](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)   over het uitschakelen van de beveiliging van een item dat is beveiligd met back-up.
 
 - Gebruik de volgende Power shell-opdracht voor het verwijderen van de back-upgegevens van elke MARS Power shell-module voor on-premises bestanden en mappen die zijn beveiligd met een Azure Backup-Agent (MARS) die wordt gebruikt voor het maken van een back-up naar Azure:
 
@@ -218,9 +229,9 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
 
     Post waar de volgende prompt wordt weer gegeven:
 
-    *Microsoft Azure Backup weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/> [Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
+    *Microsoft Azure Backup weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/>[Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
 
-- Voor on-premises machines die zijn beveiligd met MABS (Microsoft Azure Backup Server) of DPM naar Azure (System Center Data Protection Manager), gebruikt u de volgende opdracht om de back-upgegevens in azure te verwijderen.
+- Gebruik de volgende opdracht voor het verwijderen van de back-upgegevens in azure voor on-premises machines die zijn beveiligd met MABS (Microsoft Azure Backup Server) of DPM (System Center Data Protection Manager) naar Azure.
 
     ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
@@ -228,7 +239,7 @@ De beveiliging stoppen en de back-upgegevens verwijderen:
 
     Post waar de volgende prompt wordt weer gegeven:
 
-   *Microsoft Azure backup* Weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die tijd worden de back-upgegevens permanent verwijderd. <br/>
+   *Microsoft Azure backup* Weet u zeker dat u dit back-upbeleid wilt verwijderen? Verwijderde back-upgegevens worden 14 dagen bewaard. Na die periode worden de back-upgegevens permanent verwijderd. <br/>
    [Y] Ja [A] Ja op alle [N] Nee [L] geen naar alle [S] Suspend [?] Help (standaard is ' Y '):*
 
 Nadat u de back-upgegevens hebt verwijderd, moet u de registratie van alle on-premises containers en beheerser vers ongedaan maken.
@@ -352,5 +363,5 @@ Zie [ARMCLIENT README](https://github.com/projectkudu/ARMClient/blob/master/READ
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over Recovery Services kluizen](backup-azure-recovery-services-vault-overview.md)<br/>
-[Meer informatie over het controleren en beheren van Recovery Services kluizen](backup-azure-manage-windows-server.md)
+[Meer informatie over Recovery Services kluizen](backup-azure-recovery-services-vault-overview.md) 
+ [Meer informatie over het controleren en beheren van Recovery Services kluizen](backup-azure-manage-windows-server.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608248"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449733"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Veelgestelde vragen over de Cassandra-API in Azure Cosmos DB
 
@@ -32,7 +32,7 @@ In dit artikel worden de functionaliteits verschillen tussen Apache Cassandra en
 
 ### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Welke Protocol versie ondersteunt de Cassandra-API?
 
-De Cassandra-API voor Azure Cosmos DB ondersteunt CQL versie 3. x. De compatibiliteit van het CQL is gebaseerd op de open bare [Apache Cassandra github-opslag plaats](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Als u feedback hebt over de ondersteuning van andere protocollen, laat u ons weten via [feedback van gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db) of het verzenden van e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+De Cassandra-API voor Azure Cosmos DB ondersteunt CQL versie 3. x. De compatibiliteit van het CQL is gebaseerd op de open bare [Apache Cassandra github-opslag plaats](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Als u feedback hebt over de ondersteuning van andere protocollen, laat u ons weten via [feedback van gebruikers spraak](https://feedback.azure.com/forums/263030-azure-cosmos-db) of het verzenden van e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Waarom wordt de door Voer voor een vereiste voor een tabel gekozen?
 
@@ -85,7 +85,7 @@ Ja, de partitie sleutel wordt gebruikt om de entiteit op de juiste locatie te pl
 
 Azure Cosmos DB is een systeem op basis van de Service Level Agreement (SLA). Het biedt onbeperkte schaal mogelijkheden, met garanties voor latentie, door Voer, Beschik baarheid en consistentie. Deze onbeperkte opslag is gebaseerd op horizontale schaal bare gegevens, met behulp van partitionering als het belangrijkste concept. Het schema voor partitionering wordt duidelijk uitgelegd in de [partitie en schaal in azure Cosmos DB](partition-data.md) -artikel.
 
-U moet rekening houden met de limiet van 10 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen, u hebt veel gegevens voor één partitie sleutel (meer dan 10&nbsp;GB). U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
+U moet rekening houden met de limiet van 10 GB voor het aantal entiteiten of items per logische partitie. Om ervoor te zorgen dat uw toepassing goed wordt geschaald, wordt u aangeraden *geen* Hot-partitie te maken door alle gegevens in de ene partitie op te slaan en er query's op uit te voeren. Deze fout kan alleen worden opgehaald als uw gegevens worden schuingetrokken: dat wil zeggen, u hebt veel gegevens voor één partitie sleutel (meer dan 10 &nbsp; GB). U kunt de distributie van gegevens vinden met behulp van de opslag Portal. De manier om deze fout op te lossen is het opnieuw maken van de tabel en het kiezen van een gedetailleerde, primaire (partitie sleutel), zodat de gegevens beter kunnen worden gedistribueerd.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Kan ik de Cassandra-API gebruiken als sleutel waarde Store met miljoenen of miljarden partitie sleutels?
 
@@ -101,11 +101,11 @@ Azure Cosmos DB is bron gerichte systeem voor activiteiten op het vlak van gegev
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Wat is het maximum aantal tabellen dat ik kan maken?
 
-Er is geen fysieke limiet voor het aantal tabellen. Als u een groot aantal tabellen hebt (waarbij de totale stabiele grootte meer dan 10 TB aan gegevens gaat) die moeten worden gemaakt, niet de gebruikelijke tien tallen of honderden, moet [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)u een e-mail verzenden naar.
+Er is geen fysieke limiet voor het aantal tabellen. Als u een groot aantal tabellen hebt (waarbij de totale stabiele grootte meer dan 10 TB aan gegevens gaat) die moeten worden gemaakt, niet de gebruikelijke tien tallen of honderden, moet u een e-mail verzenden naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Wat is het maximum aantal benodigde code ruimte dat ik kan maken?
 
-Er is geen fysieke limiet voor het aantal Keys, omdat het meta gegevens containers zijn. Als u een groot aantal spaties hebt, verzendt u een e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Er is geen fysieke limiet voor het aantal Keys, omdat het meta gegevens containers zijn. Als u een groot aantal spaties hebt, verzendt u een e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Kan ik veel gegevens maken nadat ik vanuit een normale tabel heb gestart?
 
@@ -133,7 +133,7 @@ Ja, TTL wordt ondersteund.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Hoe kan ik de infra structuur naast de door Voer controleren?
 
-Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt het volgende doen:
+Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhogen en geen zorgen hoeft te maken over het beheer en de bewaking van de infra structuur. U hoeft bijvoorbeeld niet eerder de knooppunt status, replica status, GC en OS-para meters te bewaken met verschillende hulpprogram ma's. U hoeft alleen maar een door voer te nemen die beschikbaar is in de metrische gegevens van de portal om te controleren of u een beperking krijgt en vervolgens de door voer te verg Roten of verkleinen. U kunt:
 
 - [Sla's](monitor-accounts.md) controleren
 - [Metrische gegevens](use-metrics.md) gebruiken
@@ -141,7 +141,7 @@ Azure Cosmos DB is een platform service waarmee u de productiviteit kunt verhoge
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Welke client-Sdk's kunnen samen werken met de Cassandra-API?
 
-De client Stuur Programma's van Apache Cassandra SDK die gebruikmaken van CQLv3, zijn gebruikt voor client Programma's. Als u andere Stuur Programma's hebt die u gebruikt of als u problemen ondervindt, stuurt [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)u een e-mail naar.
+De client Stuur Programma's van Apache Cassandra SDK die gebruikmaken van CQLv3, zijn gebruikt voor client Programma's. Als u andere Stuur Programma's hebt die u gebruikt of als u problemen ondervindt, stuurt u een e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="are-composite-partition-keys-supported"></a>Worden samengestelde partitie sleutels ondersteund?
 
@@ -153,13 +153,13 @@ Nee, sstableloader wordt niet ondersteund.
 
 ### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Kan ik een on-premises Apache Cassandra-cluster koppelen met de Cassandra-API?
 
-Momenteel heeft Azure Cosmos DB een geoptimaliseerde ervaring voor een cloud omgeving zonder de overhead van bewerkingen. Als u wilt koppelen, moet u een e-mail [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) verzenden naar met een beschrijving van uw scenario. We werken aan een aanbieding om het on-premises of Cloud Cassandra-cluster te koppelen aan de Cassandra-API voor Azure Cosmos DB.
+Momenteel heeft Azure Cosmos DB een geoptimaliseerde ervaring voor een cloud omgeving zonder de overhead van bewerkingen. Als u wilt koppelen, moet u een e-mail verzenden naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) met een beschrijving van uw scenario. We werken aan een aanbieding om het on-premises of Cloud Cassandra-cluster te koppelen aan de Cassandra-API voor Azure Cosmos DB.
 
 ### <a name="does-the-cassandra-api-provide-full-backups"></a>Biedt de Cassandra-API volledige back-ups?
 
 Azure Cosmos DB biedt twee gratis volledige back-ups die zijn gemaakt met een interval van vier uur voor alle Api's. U hoeft dus geen back-upschema in te stellen. 
 
-Als u de retentie en frequentie wilt wijzigen, verzendt u een [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) e-mail naar of verhoogt u een ondersteunings aanvraag. Informatie over de back-upfunctie vindt u in het artikel [Automatische online back-up en herstellen met Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) .
+Als u de retentie en frequentie wilt wijzigen, verzendt u een e-mail naar [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) of verhoogt u een ondersteunings aanvraag. Informatie over de back-upfunctie vindt u in het artikel [Automatische online back-up en herstellen met Azure Cosmos DB](online-backup-and-restore.md) .
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Hoe verwerkt het Cassandra-API-account failover als een regio uitvalt?
 

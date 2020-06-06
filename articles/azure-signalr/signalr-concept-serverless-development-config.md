@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523167"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457130"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Ontwikkeling en configuratie van Azure Functions met Azure SignalR Service
 
@@ -32,17 +32,25 @@ Ga in het Azure Portal naar de pagina *instellingen* van de bron van de signaal 
 Een serverloze toepassing in realtime die is gebouwd met Azure Functions en Azure SignalR Service heeft over het algemeen twee Azure Functions nodig:
 
 * Een functie 'negotiate' die de client aanroept voor een geldig SignalR Service-toegangstoken en service-eindpunt-URL
-* Een of meer functies die berichten sturen of een groepslidmaatschap beheren
+* Een of meer functies die berichten van de seingevings service afhandelen en berichten verzenden of groepslid maatschap beheren
 
 ### <a name="negotiate-function"></a>functie onderhandelen
 
 Een client toepassing vereist een geldig toegangs token om verbinding te maken met de Azure signalerings service. Een toegangs token kan anoniem zijn of worden geverifieerd op basis van een gebruikers-ID. Voor serverloze seingevings signalen is een HTTP-eind punt met de naam ' onderhandelen ' vereist voor het verkrijgen van een token en andere verbindings informatie, zoals de URL van het seingevings service-eind punt.
 
-Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt `/negotiate`op.
+Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt op `/negotiate` .
+
+Met [model op basis van klasse](#class-based-model) in C# hebt u geen *SignalRConnectionInfo* -invoer binding nodig en kunt u veel eenvoudiger aangepaste claims toevoegen. Bekijk de [onderhandelings ervaring in model op basis van klassen](#negotiate-experience-in-class-based-model)
 
 Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Zie [app service-verificatie gebruiken](#using-app-service-authentication)voor meer informatie over het maken van een geverifieerd token.
+
+### <a name="handle-messages-sent-from-signalr-service"></a>Berichten verwerken die zijn verzonden vanuit de seingevings service
+
+Gebruik de binding van de *signaal trigger* om berichten te verwerken die zijn verzonden vanuit de signalerings service. U kunt worden geactiveerd wanneer clients berichten verzenden of clients een verbinding maken of de verbinding verbreken.
+
+Zie voor meer informatie de referentie voor de [ *signaal/trigger* binding](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Berichten verzenden en groepslid maatschap beheren
 
@@ -56,6 +64,111 @@ Zie voor meer informatie de referentie voor de [ *signaal* uitvoer binding](../a
 
 Signa lering heeft een concept van ' hubs '. Elke client verbinding en elk bericht dat wordt verzonden vanuit Azure Functions, zijn gericht op een specifieke hub. U kunt hubs gebruiken als een manier om uw verbindingen en berichten te scheiden in logische naam ruimten.
 
+## <a name="class-based-model"></a>Model op basis van klasse
+
+Het model op basis van klassen is specifiek voor C#. Met model op basis van klasse kan een consistente programmeer ervaring aan de server zijde worden gesignaleerd. Het bevat de volgende functies.
+
+* Minder configuratie werkt: de klassenaam wordt gebruikt als `HubName` , de naam van de methode wordt gebruikt als `Event` en de `Category` wordt automatisch bepaald volgens de naam van de methode.
+* Automatische parameter binding: noch het `ParameterNames` kenmerk `[SignalRParameter]` is niet nodig. Para meters zijn automatisch gebonden aan argumenten van de Azure function-methode in de juiste volg orde.
+* Handige uitvoer en onderhandelings ervaring.
+
+De volgende codes illustreren deze functies:
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+Alle functies die gebruikmaken van een op klassen gebaseerd model moeten de methode van klasse zijn die overneemt van **ServerlessHub**. De naam van de klasse `SignalRTestHub` in het voor beeld is de naam van de hub.
+
+### <a name="define-hub-method"></a>Hub-methode definiëren
+
+Alle hub-methoden **moeten** een `[SignalRTrigger]` kenmerk hebben en **moeten** constructor zonder para meters gebruiken. Vervolgens wordt de **methode naam** beschouwd als parameter **gebeurtenis**.
+
+Standaard, `category=messages` behalve de naam van de methode is een van de volgende namen:
+
+* **OnConnected**: behandeld als`category=connections, event=connected`
+* **OnDisconnected**: behandeld als`category=connections, event=disconnected`
+
+### <a name="parameter-binding-experience"></a>Verbindings ervaring met para meters
+
+In model op basis van klasse `[SignalRParameter]` is niet nodig omdat alle argumenten standaard zijn gemarkeerd, `[SignalRParameter]` behalve als dit een van de volgende situaties is:
+
+* Het argument wordt gedecoreerd door een bindings kenmerk.
+* Het type van het argument is `ILogger` of`CancellationToken`
+* Het argument wordt gedecoreerd op kenmerk`[SignalRIgnore]`
+
+### <a name="negotiate-experience-in-class-based-model"></a>Onderhandelen over ervaring in model op basis van klasse
+
+In plaats van het gebruik van een signaal invoer binding `[SignalR]` , kan onderhandelingen in model op basis van klassen flexibeler zijn. Basis klasse `ServerlessHub` heeft een methode
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+Deze functies worden door de gebruiker aangepast `userId` of `claims` tijdens de uitvoering van de functie.
+
+## <a name="use-signalrfilterattribute"></a>`SignalRFilterAttribute` gebruiken
+
+Gebruiker kan de abstracte klasse overnemen en implementeren `SignalRFilterAttribute` . Als uitzonde ringen worden gegenereerd in `FilterAsync` , `403 Forbidden` worden teruggestuurd naar clients.
+
+In het volgende voor beeld ziet u hoe u een klant filter implementeert dat alleen de `admin` aanroepen kan uitvoeren `broadcast` .
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+Gebruik het kenmerk om de functie te autoriseren.
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
+
 ## <a name="client-development"></a>Client ontwikkeling
 
 Seingevings client toepassingen kunnen gebruikmaken van de seingevings client-SDK in een van de verschillende talen om eenvoudig verbinding te maken met en berichten te ontvangen van de Azure signalerings service.
@@ -67,7 +180,7 @@ Een client kan alleen verbinding maken met de signalerings service als een gesla
 1. Een aanvraag indienen bij het *onderhandelings* -http-eind punt dat hierboven wordt beschreven om geldige verbindings gegevens op te halen
 1. Verbinding maken met de signaal service via de URL van het service-eind punt en het toegangs token dat is verkregen van het *Negotiate* -eind punt
 
-De client-Sdk's van de seingevings bevatten al de logica die nodig is om de onderhandelings-Handshake uit te voeren. Geef de URL van het onderhandelings eindpunt `negotiate` , min het segment, door `HubConnectionBuilder`aan de SDK. Hier volgt een voor beeld in Java script:
+De client-Sdk's van de seingevings bevatten al de logica die nodig is om de onderhandelings-Handshake uit te voeren. Geef de URL van het onderhandelings eindpunt, min het `negotiate` segment, door aan de SDK `HubConnectionBuilder` . Hier volgt een voor beeld in Java script:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -83,7 +196,7 @@ Per Conventie voegt de SDK automatisch `/negotiate` toe aan de URL en gebruikt d
 Raadpleeg de documentatie voor uw taal voor meer informatie over het gebruik van de seingevings client-SDK:
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [Javascript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
+* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
 * [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
 ### <a name="sending-messages-from-a-client-to-the-service"></a>Berichten verzenden van een client naar de service
@@ -102,10 +215,10 @@ De Java script-type script-client maakt HTTP-aanvragen aan de onderhandelings fu
 
 #### <a name="localhost"></a>Lokalehost
 
-Wanneer u de functie-app op uw lokale computer uitvoert, kunt u `Host` een sectie toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in `Host` de sectie twee eigenschappen toe:
+Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een `Host` sectie toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in de `Host` sectie twee eigenschappen toe:
 
 * `CORS`-Voer de basis-URL in die de oorsprong is van de client toepassing
-* `CORSCredentials`-Stel deze instelling `true` in op ' withCredentials-aanvragen toestaan
+* `CORSCredentials`-Stel deze instelling in op `true` ' withCredentials-aanvragen toestaan
 
 Voorbeeld:
 
@@ -167,9 +280,9 @@ Azure Functions heeft ingebouwde verificatie, die populaire providers ondersteun
 
 Open het venster *verificatie/autorisatie-* instellingen in het Azure Portal op het tabblad *platform functies* van uw functie-app. Volg de documentatie voor [app service verificatie](../app-service/overview-authentication-authorization.md) voor het configureren van verificatie met behulp van een id-provider van uw keuze.
 
-Na de configuratie worden geverifieerde HTTP- `x-ms-client-principal-name` aanvragen `x-ms-client-principal-id` inclusief en kopteksten die respectievelijk de gebruikers naam en gebruikers-id van de geverifieerde identiteit bevatten.
+Na de configuratie worden geverifieerde HTTP-aanvragen inclusief `x-ms-client-principal-name` en `x-ms-client-principal-id` kopteksten die respectievelijk de gebruikers naam en gebruikers-id van de geverifieerde identiteit bevatten.
 
-U kunt deze headers gebruiken in uw *SignalRConnectionInfo* bindings configuratie om geverifieerde verbindingen te maken. Hier volgt een voor beeld van een C#-onderhandelings functie die gebruikmaakt van de `x-ms-client-principal-id` -header.
+U kunt deze headers gebruiken in uw *SignalRConnectionInfo* bindings configuratie om geverifieerde verbindingen te maken. Hier volgt een voor beeld van een C#-onderhandelings functie die gebruikmaakt van de- `x-ms-client-principal-id` header.
 
 ```csharp
 [FunctionName("negotiate")]

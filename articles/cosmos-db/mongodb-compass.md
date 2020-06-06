@@ -4,15 +4,15 @@ description: Leer hoe u MongoDB-kompas kunt gebruiken om gegevens op te slaan en
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 06/05/2020
 author: LuisBosquez
 ms.author: lbosq
-ms.openlocfilehash: c683ec0c4b3a536b0627a7c1c8abf28ee4f83663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74822211ae834bc4705552bd3291299cf14b54d0
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80757027"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465725"
 ---
 # <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-kompas gebruiken om verbinding te maken met de API van Azure Cosmos DB voor MongoDB
 
@@ -28,7 +28,7 @@ Als u verbinding wilt maken met uw Cosmos DB-account met behulp van MongoDB-komp
 * Informatie over uw Cosmos DB [Connection String](connect-mongodb-account.md)
 
 > [!NOTE]
-> Momenteel wordt de API van Azure Cosmos DB voor MongoDB-Server versie 3,2 ondersteund met MongoDB-kompas.
+> Momenteel wordt de API van Azure Cosmos DB voor MongoDB-Server versie 3,2 ondersteund met de nieuwste versie van MongoDB kompas. MongoDB kompas wordt nog niet ondersteund met de 3,6-server versie. 
 
 ## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Verbinding maken met de API van Cosmos DB voor MongoDB
 

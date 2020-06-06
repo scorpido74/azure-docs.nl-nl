@@ -7,17 +7,19 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 37c646e2f08745b2a12df41b6310fb5d3834998b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 415dc4f5609b912163be42605277a33ebcfda589
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142551"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466184"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- en firewallinstellingen van Azure File Sync
 Azure File Sync maakt verbinding met uw on-premises servers met Azure Files, waarbij functies voor multi-site synchronisatie en Cloud lagen worden ingeschakeld. Als zodanig moet een on-premises server zijn verbonden met internet. Een IT-beheerder moet het beste pad bepalen dat de server kan bereiken in azure Cloud Services.
 
 In dit artikel vindt u inzicht in specifieke vereisten en opties die beschikbaar zijn voor een geslaagde en veilige verbinding van uw server met Azure File Sync.
+
+U wordt aangeraden [Azure file sync netwerk overwegingen](storage-sync-files-networking-overview.md) te lezen voordat u deze hand leiding leest.
 
 ## <a name="overview"></a>Overzicht
 Azure File Sync fungeert als een Orchestration-service tussen uw Windows-Server, uw Azure-bestands share en verschillende andere Azure-Services om gegevens te synchroniseren zoals beschreven in de synchronisatie groep. Azure File Sync om goed te laten werken, moet u uw servers configureren om te communiceren met de volgende Azure-Services:
@@ -156,7 +158,7 @@ Als u Azure File Sync on-premises gebruikt, kunt u de service tag API gebruiken 
 
 - De huidige lijst met IP-adresbereiken voor alle Azure-Services die service Tags ondersteunen, worden wekelijks gepubliceerd in het micro soft Download centrum in de vorm van een JSON-document. Elke Azure-Cloud heeft een eigen JSON-document met de IP-adresbereiken die relevant zijn voor die Cloud:
     - [Open bare Azure](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure Amerikaanse overheid](https://www.microsoft.com/download/details.aspx?id=57063)
     - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
     - [Azure Duitsland](https://www.microsoft.com/download/details.aspx?id=57064)
 - Met de service tag discovery-API (preview) kunt u programmatisch de huidige lijst met Service Tags ophalen. In de preview-versie kan de service Tags detectie-API gegevens retour neren die minder actueel zijn dan de informatie die wordt geretourneerd door de JSON-documenten die zijn gepubliceerd in het micro soft Download centrum. U kunt het API-Opper vlak gebruiken op basis van uw automatiserings voorkeur:

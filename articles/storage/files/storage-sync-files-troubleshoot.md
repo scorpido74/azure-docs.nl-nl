@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 39106f863352061cdaa583bde96f50d3f91a07e9
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9c273feb8cf8f2e94a62dcf01b205df604e775e6
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836512"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449461"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -552,13 +552,13 @@ Als de Azure-bestands share is verwijderd, moet u een nieuwe bestands share make
 
 Deze fout treedt op wanneer het Azure-abonnement is onderbroken. Synchronisatie wordt opnieuw ingeschakeld wanneer het Azure-abonnement wordt hersteld. Zie [Waarom is mijn Azure-abonnement uitgeschakeld en hoe kan ik het opnieuw activeren?](../../cost-management-billing/manage/subscription-disabled.md) voor meer informatie.
 
-<a id="-2134364052"></a>**Er is een firewall of virtuele netwerken geconfigureerd voor het opslag account.**  
+<a id="-2134375618"></a>**Er is een firewall of virtuele netwerken geconfigureerd voor het opslag account.**  
 
 | | |
 |-|-|
-| **HRESULT** | 0x80c8306c |
-| **HRESULT (decimaal)** | -2134364052 |
-| **Fouttekenreeks** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
+| **HRESULT** | 0x80c8033e |
+| **HRESULT (decimaal)** | -2134375618 |
+| **Fouttekenreeks** | ECS_E_SERVER_BLOCKED_BY_NETWORK_ACL |
 | **Herstel vereist** | Ja |
 
 Deze fout treedt op wanneer de Azure-bestandsshare niet toegankelijk is vanwege een firewall bij een opslagaccount, of omdat het opslagaccount deel uitmaakt van een virtueel netwerk. Controleer of de instellingen voor de firewall en het virtuele netwerk van het opslag account correct zijn geconfigureerd. Zie [instellingen voor Firewall en virtueel netwerk configureren](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)voor meer informatie. 
@@ -995,7 +995,7 @@ if ($fileShare -eq $null) {
 
     Als de service **micro soft. StorageSync** of **Hybrid file sync** niet in de lijst wordt weer gegeven, voert u de volgende stappen uit:
 
-    - Klik op **Toevoegen**.
+    - Klik op **Add**.
     - Selecteer in het veld **rol** de optie **lezer en gegevens toegang**.
     - Typ **micro soft. StorageSync**in het veld **selecteren** , selecteer de rol en klik op **Opslaan**.
 

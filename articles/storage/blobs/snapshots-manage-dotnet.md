@@ -5,16 +5,16 @@ description: Meer informatie over het maken van een alleen-lezen momentopname va
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 438692d5c142c3f617ee9d0c3f55b9b3740f9b7a
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884694"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463532"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Een BLOB-moment opname maken en beheren in .NET
 
@@ -135,7 +135,7 @@ Als u een BLOB en de bijbehorende moment opnamen wilt verwijderen met versie 12.
 - [DeleteIfExists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-In het volgende code voorbeeld ziet u hoe u een BLOB en de bijbehorende moment opnamen in .NET `blobClient` verwijdert, waarbij een object van het type [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)is):
+In het volgende code voorbeeld ziet u hoe u een BLOB en de bijbehorende moment opnamen in .NET verwijdert, waarbij `blobClient` een object van het type [BlobClient](/dotnet/api/azure.storage.blobs.blobclient)is):
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
@@ -150,7 +150,7 @@ Als u een BLOB en de bijbehorende moment opnamen wilt verwijderen met versie 11.
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
-In het volgende code voorbeeld ziet u hoe u een BLOB en de bijbehorende moment opnamen in .NET `blockBlob` verwijdert, waarbij een object van het type [CloudBlockBlob] [dotnet_CloudBlockBlob] is:
+In het volgende code voorbeeld ziet u hoe u een BLOB en de bijbehorende moment opnamen in .NET verwijdert, waarbij `blockBlob` een object van het type [CloudBlockBlob] [dotnet_CloudBlockBlob] is:
 
 ```csharp
 await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, null, null);

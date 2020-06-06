@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 02/04/2020
-ms.openlocfilehash: 53160fa5a2d24f747b0653673a6f817ae14a7975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: bded7c33493c63a565ebab2dda2dccd320c6aecb
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118854"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456631"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Toename van quotum aanvragen voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,19 +49,20 @@ Gebruik de volgende stappen om een nieuwe ondersteunings aanvraag te maken op ba
 
    ![Een quotum type selecteren](./media/quota-increase-request/select-quota-type.png)
 
-1. Selecteer in het **detail** venster **Details opgeven** om aanvullende informatie in te voeren.
+1. Selecteer in het **detail** venster **Details invoeren** om aanvullende informatie in te voeren.
 
-   ![De koppeling Details opgeven](./media/quota-increase-request/provide-details-link.png)
+   ![Koppeling voor details invoeren](./media/quota-increase-request/provide-details-link.png)
 
-Als u op **Details geven** klikt, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties vindt u een beschrijving van de verschillende opties voor **SQL database** en SQL database het quotum type **Managed instance** .
+Als u op **Enter Details** klikt, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties vindt u een beschrijving van de verschillende opties voor **SQL database** en SQL database het quotum type **Managed instance** .
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database quotum typen
 
-In de volgende secties worden drie quota verhogings opties beschreven voor de **SQL database** quotum typen:
+In de volgende secties worden de quota verhogings opties voor de quotum typen **SQL database** beschreven:
 
 - Data base Trans Action units (Dtu's) per server
 - Servers per abonnement
-- Abonnements toegang tot een regio inschakelen
+- Toegang tot regio's uit de M-serie
+- Regiotoegang
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Data base Trans Action units (Dtu's) per server
 
@@ -91,15 +92,32 @@ Gebruik de volgende stappen om een verhoging van het aantal servers per abonneme
 
 Zie [SQL database resource limieten en resource governance](resource-limits-logical-server.md)voor meer informatie.
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Abonnements toegang tot een regio inschakelen
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Abonnements toegang tot een regio inschakelen
 
 Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Er wordt mogelijk een fout bericht weer geven, zoals het volgende:
 
-`This location is not available for subscription`
+`Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-Als uw abonnement toegang moet hebben tot een bepaalde regio, gebruikt u de optie **andere quotum aanvraag** om toegang aan te vragen. Geef in uw aanvraag de aanbieding-en SKU-Details op die u wilt inschakelen voor de regio. Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/)voor meer informatie over de aanbiedings-en SKU-opties.
+Als uw abonnement toegang moet hebben in een bepaalde regio, selecteert u de optie voor **regio toegang** . Geef in uw aanvraag de aanbieding-en SKU-Details op die u wilt inschakelen voor de regio. Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/)voor meer informatie over de aanbiedings-en SKU-opties.
 
-![Andere quotum Details](./media/quota-increase-request/quota-details-whitelisting.png)
+1. Selecteer het type toegangs quotum van de **regio** .
+
+1. Selecteer in de lijst **Selecteer een locatie** de Azure-regio die u wilt gebruiken. Het quotum is per abonnement in elke regio.
+
+1. Voer het **aankoop model**in en **verwachte verbruiks** gegevens.
+
+   ![Toegang tot de aanvraag regio](./media/quota-increase-request/quota-details-whitelisting.png)
+
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>M-Series toegang tot een regio inschakelen
+
+Als u hardware van de M-serie wilt inschakelen voor een abonnement en regio, moet een ondersteunings aanvraag worden geopend.
+
+1. Selecteer het toegangs quotum type van de **M-serie** .
+
+1. Selecteer in de lijst **Selecteer een locatie** de Azure-regio die u wilt gebruiken. Het quotum is per abonnement in elke regio.
+
+
+   ![Toegang tot de aanvraag regio](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>Quota type voor SQL-beheerd exemplaar
 

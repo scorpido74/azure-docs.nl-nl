@@ -1,18 +1,18 @@
 ---
 title: Maak een real-time dash board met behulp van Azure Cosmos DB, Azure Analysis Services en Power BI
 description: Meer informatie over het maken van een live weers-dash board in Power BI met behulp van Azure Cosmos DB en Azure Analysis Services.
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: bharathb
 ms.reviewer: sngun
-ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70376591"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465793"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Maak een realtime-dash board met behulp van Azure Cosmos DB en Power BI
 
@@ -96,9 +96,9 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services verbinden met een Azure Cosmos-account
 
-1. **Een nieuw Azure Analysis Services-cluster** - maken[Maak een exemplaar van Azure Analysis Services](../analysis-services/analysis-services-create-server.md) in dezelfde regio als het Azure Cosmos-account en het Databricks-cluster.
+1. **Een nieuw Azure Analysis Services-cluster maken**  -  [Maak een exemplaar van Azure Analysis Services](../analysis-services/analysis-services-create-server.md) in dezelfde regio als het Azure Cosmos-account en het Databricks-cluster.
 
-1. **Maak een nieuw Analysis Services tabellaire project in Visual Studio** -  [Installeer de SQL Server Data tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) en maak een Analysis Services tabellaire project in Visual Studio.
+1. **Een nieuw Analysis Services Tabellaire project maken in Visual Studio**  -   [Installeer de SQL Server Data tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) en maak een Analysis Services tabellaire project in Visual Studio.
 
    ![Azure Analysis Services project maken](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
 
@@ -106,7 +106,7 @@ Stel een opname pijplijn in om [weer gegevens](https://catalog.data.gov/dataset/
 
    ![Ontwerper van Azure Analysis Services tabellair model](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
 
-1. **Voeg de Azure Cosmos DB gegevens bron toe** : Navigeer naar **model**> **gegevens bronnen** > **nieuwe gegevens bron** en voeg de Azure Cosmos DB gegevens bron toe zoals weer gegeven in de volgende scherm afbeelding:
+1. **Voeg de Azure Cosmos DB gegevens bron toe** : Navigeer naar **model** >  **gegevens bronnen**  >  **nieuwe gegevens bron** en voeg de Azure Cosmos DB gegevens bron toe zoals weer gegeven in de volgende scherm afbeelding:
 
    ![Cosmos DB gegevens bron toevoegen](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
 

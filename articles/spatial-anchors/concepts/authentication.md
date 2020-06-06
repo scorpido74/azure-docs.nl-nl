@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434381"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456501"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Verificatie en autorisatie voor Azure spatiale ankers
 
@@ -174,13 +174,14 @@ Het Azure AD-toegangs token wordt opgehaald met behulp van de [MSAL-bibliotheek]
         1.  Ga in Azure Portal naar **Azure Active Directory**en selecteer app- **registraties**
         2.  **Nieuwe toepassings registratie** selecteren
         3.  Voer de naam van uw toepassing in, selecteer **Web-app/API** als het toepassings type en voer de verificatie-URL voor uw service in. Klik vervolgens op **maken**.
-        4.  Klik in deze toepassing op **instellingen**en selecteer vervolgens het tabblad **sleutels** . Voer de naam van de sleutel in, selecteer een duur en druk op **Opslaan**. Zorg ervoor dat u de sleutel waarde opslaat die op dat moment wordt weer gegeven, omdat u deze moet gebruiken in de code van de webservice.
+        4.  Klik in deze toepassing op **instellingen**en selecteer vervolgens het tabblad **certificaten en geheimen** . Maak een nieuw client geheim, selecteer een duur en druk op **toevoegen**. Zorg ervoor dat u de geheime waarde opslaat, omdat u deze moet toevoegen aan de code van de webservice.
     2.  Verleen uw toepassing en/of gebruikers toegang tot uw resource:
         1.  Ga naar de resource met ruimtelijke ankers in Azure Portal
         2.  Overschakelen naar het tabblad **toegangs beheer (IAM)**
         3.  **Toewijzing van roltoewijzing toevoegen**
         1.  [Een rol selecteren](#role-based-access-control)
         2.  Voer in het veld **selecteren** de naam in van de toepassing (en) die u hebt gemaakt en waaraan u toegang wilt toewijzen. Als u wilt dat de gebruikers van uw app verschillende rollen hebben voor het ruimtelijke-ankers account, moet u meerdere toepassingen in azure AD registreren en aan elke afzonderlijke rol toewijzen. Implementeer vervolgens uw autorisatie logica om de juiste rol voor uw gebruikers te gebruiken.
+        3.  Opmerking: in de selectie **functie toewijzing toevoegen** wilt u de **toewijzen van toegang** instellen op ' Azure AD-gebruiker,-groep of Service-Principal '.
     3.  Druk op **Opslaan**.
 2.  In uw code (Opmerking: u kunt het service voorbeeld gebruiken dat is opgenomen in GitHub):
     1.  Zorg ervoor dat u de toepassings-ID, het toepassings geheim en de omleidings-URI van uw eigen Azure AD-toepassing gebruikt als de client-ID, het geheim en de RedirectUri-para meters in MSAL
