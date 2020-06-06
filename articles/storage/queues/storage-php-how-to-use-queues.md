@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 01/11/2018
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: 692c943e48c08771b5f1c60b66412270081cf0e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 3cdaeffe15dc637d2b988ce7a51030398ee53d9d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72302964"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465368"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>Queue Storage gebruiken met PHP
 
@@ -69,7 +69,7 @@ require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Queue\QueueRestProxy;
 ```
 
-In de volgende voor beelden wordt `require_once` de instructie altijd weer gegeven, maar alleen de klassen die nodig zijn om het voor beeld uit te voeren, worden verwezen.
+In de volgende voor beelden `require_once` wordt de instructie altijd weer gegeven, maar alleen de klassen die nodig zijn om het voor beeld uit te voeren, worden verwezen.
 
 ## <a name="set-up-an-azure-storage-connection"></a>Een Azure Storage-verbinding instellen
 

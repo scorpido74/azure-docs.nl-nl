@@ -2,13 +2,13 @@
 title: Sjabloon structuur en syntaxis
 description: Hierin worden de structuur en eigenschappen van Azure Resource Manager sjablonen beschreven met declaratieve JSON-syntaxis.
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: fa6f0e053c57d5b433bf63dc858615501d07759d
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.date: 06/05/2020
+ms.openlocfilehash: 1014cb34cd82ed36fec0ab9f9ea3fd71b528178b
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331437"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465810"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Inzicht in de structuur en syntaxis van ARM-sjablonen
 
@@ -36,7 +36,7 @@ In de eenvoudigste structuur heeft een sjabloon de volgende elementen:
 | Elementnaam | Vereist | Beschrijving |
 |:--- |:--- |:--- |
 | $schema |Ja |Locatie van het JSON-schema bestand waarin de versie van de sjabloon taal wordt beschreven. Het versie nummer dat u gebruikt, is afhankelijk van het bereik van de implementatie en uw JSON-editor.<br><br>Als u [VS code gebruikt met de uitbrei ding Azure Resource Manager tools](use-vs-code-to-create-template.md), gebruikt u de meest recente versie voor implementaties van resource groepen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere editors (waaronder Visual Studio) kunnen dit schema mogelijk niet verwerken. Voor die editors gebruikt u:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Gebruik voor implementaties van abonnementen:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Voor implementaties van beheer groepen gebruikt u:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Gebruik voor Tenant implementaties:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
-| contentVersion |Ja |De versie van de sjabloon (bijvoorbeeld 1.0.0.0). U kunt een wille keurige waarde voor dit element opgeven. Gebruik deze waarde als u belang rijke wijzigingen in uw sjabloon wilt documenteren. Wanneer u resources implementeert met behulp van de sjabloon, kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt. |
+| contentVersion |Ja |De versie van de sjabloon (bijvoorbeeld 1.0.0.0). U kunt een willekeurige waarde voor dit element opgeven. Gebruik deze waarde als u belangrijke wijzigingen in uw sjabloon wilt documenteren. Wanneer u resources implementeert met de sjabloon, kan deze waarde worden gebruikt om ervoor te zorgen dat de juiste sjabloon wordt gebruikt. |
 | apiProfile |Nee | Een API-versie die fungeert als een verzameling van API-versies voor resource typen. Gebruik deze waarde om te voor komen dat u API-versies opgeeft voor elke resource in de sjabloon. Wanneer u een API-profiel versie opgeeft en geen API-versie voor het resource type opgeeft, gebruikt Resource Manager de API-versie voor het bron type dat in het profiel is gedefinieerd.<br><br>De API-profiel eigenschap is vooral handig bij het implementeren van een sjabloon in verschillende omgevingen, zoals Azure Stack en wereld wijd Azure. Gebruik de versie van het API-profiel om ervoor te zorgen dat uw sjabloon automatisch versies gebruikt die in beide omgevingen worden ondersteund. Zie [API-profiel](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)voor een lijst met de huidige API-profiel versies en de bronnen-API-versies die in het profiel zijn gedefinieerd.<br><br>Zie [versies bijhouden met API-profielen](templates-cloud-consistency.md#track-versions-using-api-profiles)voor meer informatie. |
 | [instellen](#parameters) |Nee |Waarden die worden gegeven bij het uitvoeren van de implementatie om de resource-implementatie aan te passen. |
 | [variabelen](#variables) |Nee |Waarden die worden gebruikt als JSON-fragmenten in de sjabloon voor het vereenvoudigen van sjabloon taal expressies. |
@@ -91,7 +91,7 @@ Wanneer u Boole-waarden en integerwaarden in uw sjabloon opgeeft, plaatst u de w
 
 Objecten beginnen met een accolade links en eindigen met een haakje sluiten. Matrices beginnen met een haakje openen en eindigen met een haakje sluiten.
 
-Beveiligde teken reeksen en beveiligde objecten kunnen niet worden gelezen na het implementeren van de resource.
+Wanneer u een para meter instelt op een beveiligde teken reeks of een beveiligd object, wordt de waarde van de para meter niet opgeslagen in de implementatie geschiedenis en niet geregistreerd. Als u deze beveiligde waarde echter instelt op een eigenschap waarvoor geen beveiligde waarde wordt verwacht, is de waarde niet beveiligd. Als u bijvoorbeeld een beveiligde teken reeks instelt op een tag, wordt die waarde opgeslagen als tekst zonder opmaak. Gebruik beveiligde teken reeksen voor wacht woorden en geheimen.
 
 Zie [notaties van het type para meter](parameter-files.md#parameter-type-formats)voor voor beelden van het opmaken van gegevens typen.
 

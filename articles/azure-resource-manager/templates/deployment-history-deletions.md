@@ -1,14 +1,14 @@
 ---
-title: Implementatie geschiedenis verwijderen
+title: Verwijderingen in de implementatiegeschiedenis
 description: Hierin wordt beschreven hoe Azure Resource Manager automatisch implementaties uit de implementatie geschiedenis verwijdert. Implementaties worden verwijderd wanneer de geschiedenis bijna de limiet van 800 overschrijdt.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 3e48b2da00986da00f7597cf887aa74f84587710
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/05/2020
+ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122449"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462733"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische verwijderingen van de implementatie geschiedenis
 
@@ -28,6 +28,9 @@ Implementaties worden alleen uit de implementatie geschiedenis verwijderd wannee
 Naast implementaties triggert u ook verwijderingen wanneer u de [bewerking wat als'](template-deploy-what-if.md) uitvoert of een implementatie valideert.
 
 Wanneer u een implementatie met dezelfde naam als één in de geschiedenis geeft, stelt u de locatie in de geschiedenis opnieuw in. De implementatie wordt verplaatst naar de meest recente plaats in de geschiedenis. U kunt ook de locatie van een implementatie opnieuw instellen wanneer u na een fout [terugkeert naar die implementatie](rollback-on-error.md) .
+
+> [!NOTE]
+> Als uw resource groep al de limiet van 800 is, mislukt de volgende implementatie met een fout. Het automatische verwijderings proces wordt onmiddellijk gestart. U kunt de implementatie opnieuw proberen na een korte wacht tijd.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Automatische verwijderingen afmelden
 

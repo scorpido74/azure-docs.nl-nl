@@ -3,13 +3,13 @@ title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Instances-service
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115224"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447778"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -33,19 +33,22 @@ Bekijk meer [gedetailleerde richt lijnen](container-instances-troubleshooting.md
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Welke Windows Base OS-installatie kopieën worden ondersteund?
 
+> [!NOTE]
+> Als gevolg van problemen met achterwaartse compatibiliteit na de Windows-updates in 2020, bevatten de volgende installatie kopieën het minimum versie nummer dat u kunt gebruiken in uw basis installatie kopie. Huidige implementaties met oudere versies van installatie kopieën worden niet beïnvloed, maar nieuwe implementaties moeten voldoen aan de volgende basis installatie kopieën. 
+
 #### <a name="windows-server-2016-base-images"></a>Basis installatie kopieën van Windows Server 2016
 
-* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
+* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` of nieuwer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` of hoger
 
 > [!NOTE]
 > Windows-installatie kopieën op basis van een semi-Annual-kanaal release 1709 of 1803 worden niet ondersteund.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 en client basis installatie kopieën (preview-versie)
 
-* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.914` of eerder
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809` `10.0.17763.914` of eerder
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.914` of eerder
+* [Nano server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` of nieuwer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` of nieuwer
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.1040` of hoger
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welke .NET-of .NET Core-installatie kopie laag moet ik gebruiken in mijn container? 
 

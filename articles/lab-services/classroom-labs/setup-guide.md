@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 751d55493b1bdb06dfe61d9f951846e13e1e5d72
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650530"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457181"
 ---
 # <a name="classroom-lab-setup-guide"></a>Setup-hand leiding voor klas Lab
 
@@ -131,13 +131,13 @@ Nadat u de vereisten voor het lab van uw klasse hebt begrepen, bent u klaar om d
         > 
         > Wanneer u een Lab maakt, wordt de VM van de sjabloon gemaakt, maar niet gestart. U kunt het starten, er verbinding mee maken en eventuele vereiste software voor het lab installeren en vervolgens publiceren. Wanneer u de sjabloon-VM publiceert, wordt deze automatisch afgesloten als u dat nog niet hebt gedaan. 
         > 
-        > Bij het uitvoeren van sjabloon-Vm's worden **kosten** in rekening gebracht. Zorg er dus voor dat de sjabloon-VM wordt afgesloten wanneer u deze niet hoeft uit te voeren. 
+        > Voor sjabloon-VM’s worden **kosten** in rekening gebracht wanneer ze worden uitgevoerd, dus zorg ervoor dat de sjabloon-VM wordt gesloten wanneer deze niet hoeft worden uitgevoerd. 
 
 
 1. **Gebruik het dash board.** Zie [het dash board van het lab gebruiken](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)voor instructies.
 
     > [!NOTE]
-    > De geschatte kosten die in het dash board worden weer gegeven, zijn de maximale kosten die u kunt verwachten voor het gebruik van studenten van het lab. Er worden bijvoorbeeld *geen* kosten in rekening gebracht voor ongebruikte quotum uren door uw studenten. De geschatte kosten zijn *niet* inclusief de kosten voor het gebruik van de sjabloon-VM of de galerie met gedeelde afbeeldingen.
+    > De geschatte kosten die in het dash board worden weer gegeven, zijn de maximale kosten die u kunt verwachten voor het gebruik van studenten van het lab. Er worden bijvoorbeeld *geen* kosten in rekening gebracht voor ongebruikte quotum uren door uw studenten. De geschatte kosten zijn *niet* van toepassing op de kosten voor het gebruik van de sjabloon-VM, de galerie met gedeelde afbeeldingen of wanneer de test Maker een gebruikers computer start.
 
 ## <a name="next-steps"></a>Volgende stappen
 

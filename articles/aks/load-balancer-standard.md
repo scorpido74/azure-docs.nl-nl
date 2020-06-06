@@ -3,16 +3,14 @@ title: Een standaard SKU-load balancer gebruiken
 titleSuffix: Azure Kubernetes Service
 description: Meer informatie over het gebruik van een load balancer met een standaard-SKU om uw services beschikbaar te maken met Azure Kubernetes service (AKS).
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
-ms.author: zarhoads
-ms.openlocfilehash: d550425cc5ab1bdf539464ad120f1ac4f14d4c6e
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9f75153868633079f24992955c7585f5954befc4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267168"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465776"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 

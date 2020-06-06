@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997412"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457002"
 ---
 # <a name="samples-and-faqs"></a>Voor beelden en veelgestelde vragen
 
@@ -37,13 +37,13 @@ De documentatie die wordt geleverd bij de voor beeld-app, leidt door het code tr
 
 ### <a name="how-do-i-contact-microsoft-for-resources-like-limited-access-feature-tokens-and-keyword-model-files"></a>Hoe kan ik contact opnemen met micro soft voor resources zoals de functie tokens voor beperkte toegang en trefwoord bestanden?
 
-Neem winvoiceassistants@microsoft.com contact op om deze resources aan te vragen.
+Neem contact winvoiceassistants@microsoft.com op om deze resources aan te vragen.
 
 ### <a name="my-app-is-showing-in-a-small-window-when-i-activate-it-by-voice-how-can-i-transition-from-the-compact-view-to-a-full-application-window"></a>Mijn app wordt weer gegeven in een klein venster wanneer ik het via spraak Activeer. Hoe kan ik overstappen van de compacte weer gave naar een volledig toepassings venster?
 
 Wanneer uw toepassing voor het eerst wordt geactiveerd door een spraak, wordt deze in een compacte weer gave gestart. Lees de [ontwerp richtlijnen voor de preview-versie van spraak activering](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) voor meer informatie over de verschillende weer gaven en overgangen ertussen voor spraak assistenten in Windows.
 
-Als u de overgang van de compacte weer gave naar de volledige app-weer gave `TryEnterViewModeAsync`wilt maken, gebruikt u de APPVIEW-API:
+Als u de overgang van de compacte weer gave naar de volledige app-weer gave wilt maken, gebruikt u de appView-API `TryEnterViewModeAsync` :
 
 `var appView = ApplicationView.GetForCurrentView();
  await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);`

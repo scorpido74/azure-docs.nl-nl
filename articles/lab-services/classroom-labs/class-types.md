@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4842c673dc5d56cd57a2131f1c522b0bc682559
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115027"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448016"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Overzicht van klassen typen-Azure Lab Services
 
@@ -62,9 +62,19 @@ U kunt een Lab instellen in Azure Lab Services om een inleidende klasse voor de 
 Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt u [een Lab instellen om de ontwikkeling van mobiele toepassingen te leren maken met Android Studio](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Big data-analyse
-U kunt een Lab instellen om een big data Analytics-klasse te leren. Met dit type klasse leren cursisten hoe ze grote hoeveel heden gegevens verwerken en de algoritmen voor machine-en statistische lessen Toep assen om gegevens inzichten af te leiden. Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals het open-source software pakket van Apache Hadoop waarmee u big data kunt opslaan, beheren en verwerken. 
+U kunt een GPU-Lab instellen om een big data Analytics-klasse te leren. Met dit type klasse leren cursisten hoe ze grote hoeveel heden gegevens verwerken en de algoritmen voor machine-en statistische lessen Toep assen om gegevens inzichten af te leiden. Een belang rijke doel stelling voor studenten is het leren gebruiken van hulpprogram ma's voor gegevens analyse, zoals het open-source software pakket van Apache Hadoop waarmee u big data kunt opslaan, beheren en verwerken. 
 
-Zie [een Lab instellen voor het Big data van analyses met docker-implementatie van HortonWorks-gegevens platform](class-type-big-data-analytics.md)voor gedetailleerde informatie over het instellen van dit type Lab.
+Zie [een Lab instellen voor Big Data Analytics met docker-implementatie van HortonWorks-gegevens platform](class-type-big-data-analytics.md)voor meer informatie over het instellen van dit type Lab.
+
+## <a name="matlab"></a>MATLAB
+[MATLAB](https://www.mathworks.com/products/matlab.html), die staat voor matrix laboratorium, bevindt zich in het programmeer platform van [MathWorks](https://www.mathworks.com/).  Het combineert reken kracht en visualisatie die het populaire hulp programma maakt in de velden van wiskunde, techniek, natuur kunde en schei kunde.
+
+Voor gedetailleerde informatie over het instellen van dit type Lab raadpleegt [u een Lab instellen om MATLAB te leren](class-type-matlab.md).
+
+## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks computer-aided design (CAD)
+U kunt een GPU-Lab instellen dat technisch studenten toegang biedt tot [SolidWorks](https://www.solidworks.com/).  SolidWorks biedt een 3D-CAD-omgeving voor het model leren van solide objecten.  Met SolidWorks kunnen technici hun ontwerpen eenvoudig maken, visualiseren, simuleren en documenteren.
+
+Zie [een Lab instellen voor technische klassen met SolidWorks](class-type-solidworks.md) voor gedetailleerde informatie over het instellen van dit type Lab.
 
 ## <a name="next-steps"></a>Volgende stappen
 

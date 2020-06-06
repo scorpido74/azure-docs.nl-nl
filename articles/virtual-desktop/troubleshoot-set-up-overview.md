@@ -1,29 +1,29 @@
 ---
 title: Overzicht van het oplossen van problemen met Windows virtueel bureau blad-Azure
-description: Een overzicht van het oplossen van problemen bij het instellen van een Windows Virtual Desktop-Tenant omgeving.
+description: Een overzicht van het oplossen van problemen bij het instellen van een virtuele Windows-desktop omgeving.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: f177c0961c1ab408916d046b36a0a1b54e816751
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203851"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84455804"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Probleemoplossingsoverzicht, feedback en ondersteuning
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
 > Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-Dit artikel bevat een overzicht van de problemen die zich kunnen voordoen bij het instellen van een Windows Virtual Desktop-Tenant omgeving en biedt manieren om de problemen op te lossen.
+Dit artikel bevat een overzicht van de problemen die zich kunnen voordoen bij het instellen van een virtuele Windows-desktop omgeving en biedt manieren om de problemen op te lossen.
 
 ## <a name="report-issues-during-public-preview"></a>Problemen melden tijdens de open bare preview
 
@@ -35,14 +35,13 @@ Wanneer u een bericht voor hulp vraagt of een nieuwe functie voor stelt, zorg er
 
 Voordat u iets anders doet, controleert u de [Azure-status pagina](https://status.azure.com/status) en [Azure service Health](https://azure.microsoft.com/features/service-health/) om te controleren of uw Azure-service correct wordt uitgevoerd.
 
-Gebruik de volgende tabel voor het identificeren en oplossen van problemen die zich kunnen voordoen bij het instellen van een Tenant omgeving met Extern bureaublad-client. Zodra de Tenant is ingesteld, kunt u onze nieuwe service voor [Diagnostische gegevens](diagnostics-role-service.md) gebruiken om problemen voor veelvoorkomende scenario's te identificeren.
+Gebruik de volgende tabel voor het identificeren en oplossen van problemen die zich kunnen voordoen bij het instellen van een omgeving met Extern bureaublad-client. Als de omgeving is ingesteld, kunt u onze nieuwe [diagnose service](diagnostics-role-service.md) gebruiken om problemen voor algemene scenario's te identificeren.
 
 | **Probleem**                                                            | **Voorgestelde oplossing**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
-| Toegang tot Marketplace-sjablonen in Azure Portal       | Azure Marketplace-sjablonen voor virtueel bureau blad zijn gratis beschikbaar.|
 | Instellingen voor de Azure Virtual Network (VNET) en Express-route van de Session Host-pool               | [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/)en selecteer vervolgens de betreffende service (onder de categorie netwerken). |
-| De hostgroep van de virtuele machine (VM) maken wanneer Azure Resource Manager sjablonen die worden meegeleverd met Windows virtueel bureau blad niet worden gebruikt | [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/)en selecteer vervolgens de **virtuele machine met Windows** voor de service. <br> <br> Zie voor problemen met de Azure Resource Manager sjablonen die worden meegeleverd met Windows virtueel bureau blad maken de sectie Tenant met Windows-virtueel bureau blad voor het maken van een [omgeving en hostgroep](troubleshoot-set-up-issues.md). |
-| Windows Virtual Desktop Session Host-omgeving beheren vanuit de Azure Portal    | [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md) of [een Azure-ondersteunings aanvraag openen](https://azure.microsoft.com/support/create-ticket/), **Windows virtueel bureau blad** voor de service, **configuratie en beheer** selecteren voor het probleem type en selecteer vervolgens **problemen met het configureren van tenants met Power shell** voor het subtype probleem. Extern bureaublad-services |
+| De hostgroep van de virtuele machine (VM) maken wanneer Azure Resource Manager sjablonen die worden meegeleverd met Windows virtueel bureau blad niet worden gebruikt | [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/)en selecteer vervolgens de **virtuele machine met Windows** voor de service. <br> <br> Voor problemen met de Azure Resource Manager sjablonen die worden meegeleverd met Windows virtueel bureau blad, raadpleegt u Azure Resource Manager sjabloon fouten sectie van het maken van een [hostgroep](troubleshoot-set-up-issues.md). |
+| Windows Virtual Desktop Session Host-omgeving beheren vanuit de Azure Portal    | [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md) of [een Azure-ondersteunings aanvraag openen](https://azure.microsoft.com/support/create-ticket/), **Windows virtueel bureau blad** voor de service selecteren, **configuratie en beheer** selecteren voor het probleem type en selecteer vervolgens **problemen met het configureren van een omgeving met Power shell** voor het subtype probleem. Extern bureaublad-services |
 | Virtuele Windows-bureaublad configuratie beheren die zijn gekoppeld aan host Pools en toepassings groepen (app-groepen)      | Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md), of [Open een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/), selecteer **Windows virtueel bureau blad** voor de service en selecteer vervolgens het juiste probleem type.|
 | FSLogix-profiel containers implementeren en beheren | Raadpleeg de [gids voor probleem oplossing voor FSLogix-producten](/fslogix/fslogix-trouble-shooting-ht/) en als het probleem niet wordt opgelost, [opent u een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/), selecteert u **virtueel bureau blad voor Windows** voor de service, selecteert u **FSLogix** voor het probleem type en selecteert u vervolgens het juiste probleem subtype. |
 | Storing van extern bureau blad-clients bij starten                                                 | Zie [problemen met de Extern bureaublad-client oplossen](troubleshoot-client.md) en als het probleem niet wordt opgelost, [opent u een ondersteunings aanvraag voor Azure](https://azure.microsoft.com/support/create-ticket/), selecteert u **Windows Virtual Desktop** voor de service en selecteert u vervolgens **extern bureaublad clients** voor het probleem type.  <br> <br> Als het een netwerk probleem is, moeten uw gebruikers contact opnemen met de netwerk beheerder. |
@@ -57,7 +56,7 @@ Gebruik de volgende tabel voor het identificeren en oplossen van problemen die z
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [omgeving en hostgroep maken](troubleshoot-set-up-issues.md)om problemen op te lossen tijdens het maken van een hostgroep in een virtuele Windows-desktop omgeving.
+- Zie het maken van een [hostgroep](troubleshoot-set-up-issues.md)voor het oplossen van problemen bij het maken van een hostgroep in een virtueel-bureaublad omgeving van Windows.
 - Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
 - Zie [Windows Virtual Desktop Service Connections](troubleshoot-service-connection.md)(Engelstalig) voor het oplossen van problemen met Windows Virtual Desktop-Client verbindingen.
 - Zie [problemen met de Extern bureaublad-client oplossen](troubleshoot-client.md) om problemen met extern bureaublad-clients op te lossen

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112559"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462835"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>RBAC-rollen instellen voor beheerders toegang tot Azure Cognitive Search
 
@@ -34,6 +34,21 @@ Voor Azure Cognitive Search zijn rollen gekoppeld aan machtigings niveaus die on
 | Lezer |Bekijk de belangrijkste en metrische gegevens van de service. Leden van deze rol kunnen de index, indexer, gegevens bron of sleutel informatie niet weer geven.  |
 
 Rollen verlenen geen toegangs rechten voor het service-eind punt. Zoek service bewerkingen, zoals index beheer, index populatie en query's op zoek gegevens, worden beheerd via API-Keys, niet op rollen. Zie [Manage API-Keys (](search-security-api-keys.md)Engelstalig) voor meer informatie.
+
+## <a name="permissions-table"></a>Machtigings tabel
+
+De volgende tabel bevat een overzicht van de bewerkingen die zijn toegestaan in azure Cognitive Search en met welke sleutel de toegang tot een bepaalde bewerking wordt ontgrendeld.
+
+| Bewerking | Machtigingen |
+|-----------|-------------------------|
+| Een service maken | Eigenaar van het Azure-abonnement |
+| Een service schalen | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource  |
+| Een service verwijderen | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
+| Objecten op de service maken, wijzigen, verwijderen: <br>Indexen en onderdeel onderdelen (met inbegrip van analyse definities, Score profielen, CORS-opties), Indexeer functies, gegevens bronnen, synoniemen, suggesties | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
+| Een query uitvoeren op een index | Beheerder of query sleutel (RBAC niet van toepassing) |
+| Systeem gegevens opvragen, zoals het retour neren van statistieken, aantallen en lijsten met objecten | Beheerder sleutel, RBAC op de bron (eigenaar, bijdrager, lezer) |
+| Beheer sleutels beheren | Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource |
+| Query sleutels beheren |  Beheerder sleutel, RBAC-eigenaar of Inzender voor de resource  |
 
 ## <a name="see-also"></a>Zie ook
 

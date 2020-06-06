@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042034"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449291"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Schema beheren in een SaaS-toepassing met behulp van het data base-per-Tenant patroon met Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ Met de data base per Tenant patroon worden Tenant gegevens effectief geïsoleerd
 ![scherm](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>Beperkte preview voor Elastische taken
+## <a name="elastic-jobs-public-preview"></a>Open bare preview van elastische taken
 
-Er is een nieuwe versie van elastische taken die nu een geïntegreerde functie van Azure SQL Database zijn. Van deze nieuwe versie van Elastische taken is momenteel een beperkte preview beschikbaar. Deze beperkte preview ondersteunt momenteel het gebruik van Power shell om een taak agent te maken en T-SQL om taken te maken en te beheren.
-
-> [!NOTE]
-> In deze zelfstudie wordt gebruikgemaakt van de functies van de SQL Database-service die deel uitmaken van een beperkte preview (elastische databasetaken). Als u deze zelf studie wilt uitvoeren, geeft u uw abonnements-ID op SaaSFeedback@microsoft.com met de preview-versie van het onderwerp = elastische taken. Wanneer u de bevestiging hebt ontvangen dat uw abonnement is ingeschakeld, [downloadt en installeert u de taak-cmdlets van de voorlopige versie](https://github.com/jaredmoo/azure-powershell/releases). Dit voor beeld is beperkt, dus neem contact op met de SaaSFeedback@microsoft.com bijbehorende vragen of ondersteuning.
+Er is een nieuwe versie van elastische taken die nu een geïntegreerde functie van Azure SQL Database zijn. Deze nieuwe versie van elastische taken is momenteel beschikbaar als open bare preview. Deze open bare preview ondersteunt momenteel het gebruik van Power shell om een taak agent te maken en T-SQL om taken te maken en te beheren.
+Zie het artikel over [Elastic database taken](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) voor meer informatie.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De Wingtip tickets SaaS-data base ophalen per Tenant toepassings scripts
 

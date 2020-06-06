@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.topic: how-to
+ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692453"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465878"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-eigenschappen en meta gegevens beheren met .NET
 
@@ -30,14 +30,14 @@ Naast de gegevens die ze bevatten, ondersteunen blobs systeem eigenschappen en m
 >
 > Zie voor meer informatie over deze functie [gegevens beheren en zoeken op Azure Blob Storage met Blob-index (preview)](storage-manage-find-blobs.md).
 
-Het ophalen van meta gegevens en eigenschaps waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de `FetchAttributes` or `FetchAttributesAsync` -methode aan te roepen. De uitzonde ring op deze regel is `Exists` dat `ExistsAsync` de en-methoden `FetchAttributes` de juiste methode onder de voor vallen aanroepen. Wanneer u een van deze methoden aanroept, hoeft u ook niet te `FetchAttributes`bellen.
+Het ophalen van meta gegevens en eigenschaps waarden voor een Blob Storage-Resource is een proces dat uit twee stappen bestaat. Voordat u deze waarden kunt lezen, moet u deze expliciet ophalen door de or-methode aan te roepen `FetchAttributes` `FetchAttributesAsync` . De uitzonde ring op deze regel is dat de `Exists` en- `ExistsAsync` methoden de juiste methode onder de voor vallen aanroepen `FetchAttributes` . Wanneer u een van deze methoden aanroept, hoeft u ook niet te bellen `FetchAttributes` .
 
 > [!IMPORTANT]
-> Als u merkt dat de eigenschaps-of meta gegevens waarden voor een opslag bron niet zijn ingevuld, controleert u of de `FetchAttributes` code `FetchAttributesAsync` de or-methode aanroept.
+> Als u merkt dat de eigenschaps-of meta gegevens waarden voor een opslag bron niet zijn ingevuld, controleert u of de code de or-methode aanroept `FetchAttributes` `FetchAttributesAsync` .
 
 ## <a name="set-and-retrieve-properties"></a>Eigenschappen instellen en ophalen
 
-In het volgende code voorbeeld worden `ContentType` de `ContentLanguage` -en systeem eigenschappen van een BLOB ingesteld.
+In het volgende code voorbeeld worden de- `ContentType` en `ContentLanguage` systeem eigenschappen van een BLOB ingesteld.
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -65,7 +65,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-Als u BLOB-eigenschappen wilt ophalen `FetchAttributes` , `FetchAttributesAsync` roept u de or-methode aan `Properties` op uw blob om de eigenschap in te vullen. In het volgende code voorbeeld worden de systeem eigenschappen van een BLOB opgehaald en worden enkele waarden weer gegeven:
+Als u BLOB-eigenschappen wilt ophalen, roept `FetchAttributes` u de or- `FetchAttributesAsync` methode aan op uw blob om de eigenschap in te vullen `Properties` . In het volgende code voorbeeld worden de systeem eigenschappen van een BLOB opgehaald en worden enkele waarden weer gegeven:
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -94,7 +94,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>Meta gegevens instellen en ophalen
 
-U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of container resource. Als u meta gegevens wilt instellen, voegt u naam/ `Metadata` waarde-paren toe aan de verzameling op de resource. Roep vervolgens een van de volgende methoden aan om de waarden te schrijven:
+U kunt meta gegevens opgeven als een of meer naam/waarde-paren voor een BLOB of container resource. Als u meta gegevens wilt instellen, voegt u naam/waarde-paren toe aan de `Metadata` verzameling op de resource. Roep vervolgens een van de volgende methoden aan om de waarden te schrijven:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
@@ -103,7 +103,7 @@ Naam/waarde-paren van meta gegevens zijn geldige HTTP-headers en moeten voldoen 
 
 De naam van uw meta gegevens moet voldoen aan de naamgevings conventies voor C#-id's. Namen van meta gegevens behouden de case die wordt gebruikt wanneer ze zijn gemaakt, maar zijn niet hoofdletter gevoelig bij het instellen of lezen. Als twee of meer meta gegevens headers met dezelfde naam worden verzonden voor een resource, retourneert Azure Blob Storage de HTTP-fout code 400 (ongeldige aanvraag).
 
-In het volgende code voorbeeld worden meta gegevens ingesteld voor een blob. Er wordt één waarde ingesteld met behulp `Add` van de methode van de verzameling. De andere waarde wordt ingesteld met behulp van de syntaxis van de impliciete sleutel/waarde.
+In het volgende code voorbeeld worden meta gegevens ingesteld voor een blob. Er wordt één waarde ingesteld met behulp van de methode van de verzameling `Add` . De andere waarde wordt ingesteld met behulp van de syntaxis van de impliciete sleutel/waarde.
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -130,7 +130,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 }
 ```
 
-Als u meta gegevens wilt ophalen `FetchAttributes` , `FetchAttributesAsync` roept u de or-methode aan op uw `Metadata` BLOB of container om de verzameling te vullen. Lees vervolgens de waarden, zoals wordt weer gegeven in het onderstaande voor beeld.
+Als u meta gegevens wilt ophalen, roept u de `FetchAttributes` or- `FetchAttributesAsync` methode aan op uw BLOB of container om de verzameling te vullen `Metadata` . Lees vervolgens de waarden, zoals wordt weer gegeven in het onderstaande voor beeld.
 
 ```csharp
 public static async Task ReadBlobMetadataAsync(CloudBlob blob)

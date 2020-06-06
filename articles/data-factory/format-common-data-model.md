@@ -1,18 +1,18 @@
 ---
-title: Common data model-indeling
+title: Common Data Model-indeling
 description: Gegevens transformeren met behulp van het meta gegevens systeem van common data model
 author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 2faa14ef7724bb9cccfe425569539f5ef0621a28
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 0dce717461754ac1259bc666adf4eb9f7ef9d6c2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435392"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465266"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,6 +20,9 @@ ms.locfileid: "84435392"
 Het gegevens systeem van het common data model (CDM) maakt het mogelijk om gegevens en de betekenis ervan eenvoudig te delen tussen toepassingen en bedrijfs processen. Zie het overzicht van [common data model](https://docs.microsoft.com/common-data-model/) voor meer informatie.
 
 In Azure Data Factory kunnen gebruikers transformeren naar en van CDM-entiteiten die zijn opgeslagen in [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) met toewijzing van gegevens stromen.
+
+> [!NOTE]
+> De standaard-connector voor gegevens modellen (CDM) voor ADF-gegevens stromen is momenteel beschikbaar als open bare preview.
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
@@ -31,12 +34,12 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | De is altijd`cdm` | ja | `cdm` | formaat |
+| Indeling | Indeling moet`cdm` | ja | `cdm` | formaat |
 | Meta gegevens indeling | Waar de entiteits verwijzing naar de gegevens zich bevindt. Als u CDM versie 1,0 gebruikt, kiest u Manifest. Als u vóór 1,0 een CDM-versie gebruikt, kiest u model. json. | Ja | `'manifest'` of `'model'` | manifestType |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |
-| Manifest bestand: manifest naam | Naam van het manifest bestand  | Ja, als u een manifest gebruikt | Tekenreeks | manifestnaam |
+| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default '  | Nee | Tekenreeks | manifestnaam |
 | Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore | 
 | Gekoppelde schema service | De gekoppelde service waar de verzameling zich bevindt | Ja, als u een manifest gebruikt | `'adlsgen2'` of `'github'` | corpusStore | 
 | Container voor entiteits verwijzing | Container verzameling is in | Ja, als u Manifest en verzameling in ADLS Gen2 gebruikt | Tekenreeks | adlsgen2_fileSystem |
@@ -46,7 +49,36 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
+#### <a name="cdm-source-example"></a>Voor beeld van CDM-bron
+
+De onderstaande afbeelding is een voor beeld van een configuratie van een CDM-bron in het toewijzen van gegevens stromen.
+
 ![CDM-bron](media/format-common-data-model/data-flow-source.png)
+
+Het gekoppelde gegevensstroom script is:
+
+```
+source(output(
+        ServingSizeId as integer,
+        ServingSize as integer,
+        ServingSizeUomId as string,
+        ServingSizeNote as string,
+        LastModifiedDate as timestamp
+    ),
+    allowSchemaDrift: true,
+    validateSchema: false,
+    entity: 'ServingSize.cdm.json/ServingSize',
+    format: 'cdm',
+    manifestType: 'manifest',
+    manifestName: 'ServingSizeManifest',
+    entityPath: 'ServingSize',
+    corpusPath: 'ProductAhold_Updated',
+    corpusStore: 'adlsgen2',
+    adlsgen2_fileSystem: 'models',
+    folderPath: 'ServingSizeData',
+    fileSystem: 'data') ~> CDMSource
+```
+
 
 ### <a name="sink-properties"></a>Eigenschappen van Sink
 
@@ -54,11 +86,11 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Indeling | De is altijd`cdm` | ja | `cdm` | formaat |
+| Indeling | Indeling moet`cdm` | ja | `cdm` | formaat |
 | Hoofd locatie: container | Container naam van de map CDM | ja | Tekenreeks | System |
 | Hoofd locatie: mappad | Locatie van de hoofdmap van de map CDM | ja | Tekenreeks | folderPath |
 | Manifest bestand: pad naar entiteit | Mappad van de entiteit binnen de hoofdmap | nee | Tekenreeks | entityPath |
-| Manifest bestand: manifest naam | Naam van het manifest bestand  | ja | Tekenreeks | manifestnaam |
+| Manifest bestand: manifest naam | De naam van het manifest bestand. Standaard waarde is ' default ' | Nee | Tekenreeks | manifestnaam |
 | Gekoppelde schema service | De gekoppelde service waar de verzameling zich bevindt | ja | `'adlsgen2'` of `'github'` | corpusStore | 
 | Container voor entiteits verwijzing | Container verzameling is in | Ja, als verzameling in ADLS Gen2 | Tekenreeks | adlsgen2_fileSystem |
 | Opslag plaats voor entiteit verwijzing | Naam van de GitHub-opslagplaats | Ja, als verzameling in GitHub | Tekenreeks | github_repository |
@@ -71,7 +103,33 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Kolom scheidings teken | Als u naar DelimitedText schrijft, kolommen beperken | Ja, als u naar DelimitedText schrijft | Tekenreeks | columnDelimiter |
 | Eerste rij als koptekst | Als u DelimitedText gebruikt, of de kolom namen worden toegevoegd als koptekst | nee | `true` of `false` | columnNamesAsHeader |
 
+#### <a name="cdm-sink-example"></a>Voor beeld van CDM-Sink
+
+De onderstaande afbeelding is een voor beeld van een configuratie van een CDM-Sink bij het toewijzen van gegevens stromen.
+
 ![CDM-bron](media/format-common-data-model/data-flow-sink.png)
+
+Het gekoppelde gegevensstroom script is:
+
+```
+CDMSource sink(allowSchemaDrift: true,
+    validateSchema: false,
+    entity: 'ServingSize.cdm.json/ServingSize',
+    format: 'cdm',
+    entityPath: 'ServingSize',
+    manifestName: 'ServingSizeManifest',
+    corpusPath: 'ProductAhold_Updated',
+    partitionPath: 'adf',
+    folderPath: 'ServingSizeData',
+    fileSystem: 'cdm',
+    subformat: 'parquet',
+    corpusStore: 'adlsgen2',
+    adlsgen2_fileSystem: 'models',
+    truncate: true,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> CDMSink
+
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

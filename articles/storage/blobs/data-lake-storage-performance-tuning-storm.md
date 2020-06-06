@@ -4,16 +4,16 @@ description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen2 St
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327907"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465912"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: Storm, HDInsight & Azure Data Lake Storage Gen2
 
@@ -72,7 +72,7 @@ Dit basis scenario is een goed uitgangs punt. Test met uw eigen gegevens om de v
 
 U kunt de volgende instellingen wijzigen om de Spout af te stemmen.
 
-- **Tuple-time-out: topologie. Message. timeout. sec**. Met deze instelling bepaalt u de hoeveelheid tijd die een bericht duurt en ontvangt u bevestiging voordat dit wordt beschouwd als mislukt.
+- **Tuple-time-out: topologie. Message. timeout. sec**. Met deze instelling wordt bepaald hoe lang het duurt voordat een bericht is voltooid en dat er een bevestiging wordt ontvangen voordat dit wordt beschouwd als mislukt.
 
 - **Maxi maal geheugen per werk proces: worker. childopts**. Met deze instelling kunt u aanvullende opdracht regel parameters voor de Java-werk rollen opgeven. De meest gebruikte instelling hier is XmX, waarmee het maximale geheugen wordt bepaald dat is toegewezen aan de heap van een JVM.
 
@@ -89,7 +89,7 @@ Terwijl uw topologie wordt uitgevoerd, kunt u deze bewaken in de Storm-gebruiker
 
 * **Totale latentie voor het uitvoeren van processen.** Dit is de gemiddelde tijd die een tuple nodig heeft om te worden verzonden door de Spout, verwerkt door de flits en bevestigd.
 
-* **Totale aantal latentie processen van bout.** Dit is de gemiddelde tijd die de tuple op de flits heeft besteed tot deze een bevestiging ontvangt.
+* **Totale aantal latentie processen van bout.** Dit is de gemiddelde tijd die de tuple bij de flits heeft besteed tot deze een bevestiging ontvangt.
 
 * **Totale latentie van flits uitvoering.** Dit is de gemiddelde tijd die is besteed door de schicht in de methode Execute.
 
@@ -110,8 +110,8 @@ Als u de limieten bereikt van de band breedte van Data Lake Storage Gen2, worden
 
 Als u wilt controleren of u een beperking krijgt, schakelt u de logboek registratie voor fout opsporing in aan de client zijde:
 
-1. In **Ambari** > **Storm** > **Config**config > **Advanced Storm-worker-log4j**, Wijzig ** &lt;root level = "info&gt; "** naar ** &lt;root level = "Debug&gt;"**. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
-2. Bewaak de Storm-topologie logboeken op worker&lt;-knoop&gt;/&lt;punten&gt;(onder/var/log/Storm/worker-Artifacts/-topologie poort/Worker.log) voor data Lake Storage Gen2 beperkings uitzonderingen.
+1. In **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-worker-log4j**, Wijzig ** &lt; root level = "info &gt; "** naar ** &lt; root level = "Debug &gt; "**. Start alle knoop punten/service opnieuw op om de configuratie van kracht te laten worden.
+2. Bewaak de Storm-topologie logboeken op worker-knoop punten (onder/var/log/Storm/worker-Artifacts/ &lt; &gt; / &lt; -topologie poort &gt; /Worker.log) voor data Lake Storage Gen2 beperkings uitzonderingen.
 
 ## <a name="next-steps"></a>Volgende stappen
 In [deze blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)kunt u naar aanvullende prestaties afstemmen voor Storm.

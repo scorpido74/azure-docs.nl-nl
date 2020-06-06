@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure
 description: Een afhankelijkheids analyse zonder agent instellen in de evaluatie van Azure Migrate server.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455703"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449189"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Visualisatie van de afhankelijkheid van agents instellen 
 
@@ -19,7 +19,7 @@ In dit artikel wordt beschreven hoe u analyse van agentloze afhankelijkheden ins
 > Visualisatie van de afhankelijkheid van agents is momenteel alleen beschikbaar als preview-versie voor VMware-Vm's, gedetecteerd met het Azure Migrate: Server assessment tool.
 > Functies zijn mogelijk beperkt of onvolledig.
 > Deze preview wordt gedekt door de klant ondersteuning en kan worden gebruikt voor werk belastingen voor de productie.
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 
 
@@ -50,7 +50,7 @@ Voeg het gebruikers account toe aan het apparaat.
 1. Open de app voor het beheren van apparaten. 
 2. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
 3. Klik in **toepassing en afhankelijkheden van Vm's detecteren**op **referenties toevoegen**
-3. Kies het **besturings systeem**, geef een beschrijvende naam op voor het account en het**wacht woord** voor de **gebruikers naam**/
+3. Kies het **besturings systeem**, geef een beschrijvende naam op voor het account en het **User name** / **wacht woord** voor de gebruikers naam
 6. Klik op **Opslaan**.
 7. Klik op **opslaan en detectie starten**.
 
@@ -63,9 +63,9 @@ Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen.
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
 3. Klik op **servers toevoegen**.
-3. Kies op de pagina **servers toevoegen** het apparaat dat de relevante computers detecteert.
-4. Selecteer de machines in de lijst met computers.
-5. Klik op **servers toevoegen**.
+4. Kies op de pagina **servers toevoegen** het apparaat dat de relevante computers detecteert.
+5. Selecteer de machines in de lijst met computers.
+6. Klik op **servers toevoegen**.
 
     ![Detectie van afhankelijkheid starten](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -91,6 +91,20 @@ U kunt afhankelijkheden ongeveer zes uur na het starten van de detectie van afha
 
 > [!NOTE]
 > Proces informatie voor een afhankelijkheid is niet altijd beschikbaar. Als deze niet beschikbaar is, wordt de afhankelijkheid weer gegeven met het proces dat is gemarkeerd als ' onbekend proces '.
+
+## <a name="export-dependency-data"></a>Afhankelijkheids gegevens exporteren
+
+1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
+2. Klik op het pictogram **afhankelijkheids analyse** .
+3. Klik op **toepassings afhankelijkheden exporteren**.
+4. Kies op de pagina **toepassings afhankelijkheden exporteren** het apparaat dat de relevante computers detecteert.
+5. Selecteer de begin tijd en eind tijd. Houd er rekening mee dat u de gegevens alleen voor de afgelopen 30 dagen kunt downloaden.
+6. Klik op **afhankelijkheid exporteren**.
+
+De afhankelijkheids gegevens worden geëxporteerd en gedownload in CSV-indeling. Het gedownloade bestand bevat de afhankelijkheids gegevens op alle machines die zijn ingeschakeld voor afhankelijkheids analyse. 
+
+    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
 
 ## <a name="stop-dependency-discovery"></a>Detectie van afhankelijkheid stoppen
 

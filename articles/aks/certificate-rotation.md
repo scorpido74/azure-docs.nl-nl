@@ -2,16 +2,14 @@
 title: Certificaten in azure Kubernetes service (AKS) draaien
 description: Meer informatie over het draaien van uw certificaten in een Azure Kubernetes service (AKS)-cluster.
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549072"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465606"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Certificaten in azure Kubernetes service (AKS) draaien
 
@@ -21,7 +19,7 @@ In dit artikel wordt beschreven hoe u de certificaten in uw AKS-cluster roteert.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor dit artikel moet u de Azure CLI-versie 2.0.77 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+Voor dit artikel moet u de Azure CLI-versie 2.0.77 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="aks-certificates-certificate-authorities-and-service-accounts"></a>AKS certificaten, certificerings instanties en service accounts
 
@@ -37,7 +35,7 @@ AKS genereert en gebruikt de volgende certificaten, certificerings instanties en
 * De `kubectl` client heeft een certificaat voor communicatie met het AKS-cluster.
 
 > [!NOTE]
-> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat is gemaakt na 2019 maart of een cluster met de geroteerde certificaten heeft cluster-CA-certificaten die na 30 jaar verlopen. Alle andere certificaten verlopen na twee jaar. Als u wilt controleren wanneer het cluster is gemaakt `kubectl get nodes` , gebruikt u om de *leeftijd* van de knooppunt groepen weer te geven.
+> AKS-clusters die vóór maart 2019 zijn gemaakt, hebben certificaten die na twee jaar verlopen. Elk cluster dat is gemaakt na 2019 maart of een cluster met de geroteerde certificaten heeft cluster-CA-certificaten die na 30 jaar verlopen. Alle andere certificaten verlopen na twee jaar. Als u wilt controleren wanneer het cluster is gemaakt, gebruikt `kubectl get nodes` u om de *leeftijd* van de knooppunt groepen weer te geven.
 > 
 > Daarnaast kunt u de verval datum van het certificaat van uw cluster controleren. Met de volgende opdracht worden bijvoorbeeld de certificaat gegevens voor het *myAKSCluster* -cluster weer gegeven.
 > ```console
@@ -48,7 +46,7 @@ AKS genereert en gebruikt de volgende certificaten, certificerings instanties en
 ## <a name="rotate-your-cluster-certificates"></a>Uw cluster certificaten draaien
 
 > [!WARNING]
-> Het draaien van uw `az aks rotate-certs` certificaten met kan tot 30 minuten uitval tijd voor uw AKS-cluster leiden.
+> Het draaien van uw certificaten met `az aks rotate-certs` kan tot 30 minuten uitval tijd voor uw AKS-cluster leiden.
 
 Gebruik [AZ AKS Get-referenties][az-aks-get-credentials] om u aan te melden bij uw AKS-cluster. Met deze opdracht wordt ook het `kubectl` client certificaat op uw lokale computer gedownload en geconfigureerd.
 
@@ -56,23 +54,23 @@ Gebruik [AZ AKS Get-referenties][az-aks-get-credentials] om u aan te melden bij 
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
-Gebruiken `az aks rotate-certs` om alle certificaten, Ca's en sa's in uw cluster te draaien.
+Gebruiken `az aks rotate-certs` om alle certificaten, ca's en sa's in uw cluster te draaien.
 
 ```azurecli
 az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> Het kan tot 30 minuten `az aks rotate-certs` duren voordat de bewerking is voltooid. Als de opdracht mislukt voordat deze wordt voltooid `az aks show` , gebruikt u om te controleren of de status van het cluster is *gedraaid*. Als het cluster zich in een mislukte status bevindt, voert `az aks rotate-certs` u de bewerking opnieuw uit om uw certificaten opnieuw te draaien.
+> Het kan tot 30 minuten duren voordat de bewerking `az aks rotate-certs` is voltooid. Als de opdracht mislukt voordat deze wordt voltooid, gebruikt `az aks show` u om te controleren of de status van het cluster is *gedraaid*. Als het cluster zich in een mislukte status bevindt, voert `az aks rotate-certs` u de bewerking opnieuw uit om uw certificaten opnieuw te draaien.
 
-Controleer of de oude certificaten niet meer geldig zijn door een `kubectl` opdracht uit te voeren. Omdat u de gebruikte certificaten niet hebt bijgewerkt `kubectl`, wordt er een fout weer geven.  Bijvoorbeeld:
+Controleer of de oude certificaten niet meer geldig zijn door een opdracht uit te voeren `kubectl` . Omdat u de gebruikte certificaten niet hebt bijgewerkt `kubectl` , wordt er een fout weer geven.  Bijvoorbeeld:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Update het certificaat dat wordt `kubectl` gebruikt door `az aks get-credentials`uit te voeren.
+Update het certificaat dat wordt gebruikt door `kubectl` uit te voeren `az aks get-credentials` .
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing

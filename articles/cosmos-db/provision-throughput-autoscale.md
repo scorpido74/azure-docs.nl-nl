@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655824"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465657"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Azure Cosmos-containers en-data bases maken met de door Voer van automatisch schalen
 
@@ -21,7 +21,7 @@ Het automatisch schalen van de ingerichte door Voer is goed geschikt voor bedrij
 
 Azure Cosmos DB automatisch schalen, worden **de door Voer (ru/s)** van uw data base of container op basis van het gebruik direct geschaald, zonder dat dit van invloed is op de beschik baarheid, latentie, door Voer of de prestaties van de werk belasting. 
 
-## <a name="benefits-of-autoscale"></a>Voor delen van automatisch schalen
+## <a name="benefits-of-autoscale"></a>Voordelen van automatisch schalen
 
 Azure Cosmos-data bases en containers die zijn geconfigureerd met automatisch schalen ingerichte door Voer, hebben de volgende voor delen:
 
@@ -29,7 +29,7 @@ Azure Cosmos-data bases en containers die zijn geconfigureerd met automatisch sc
 
 * **Schaalbaar:** Data bases en containers schalen automatisch de ingerichte door Voer als dat nodig is. Er zijn geen onderbrekingen voor client verbindingen, toepassingen of gevolgen voor Azure Cosmos DB Sla's.
 
-* **Rendabel:** Automatisch schalen helpt u bij het optimaliseren van het gebruik van RU/s en het gebruik van kosten door te schalen wanneer het niet wordt gebruikt. U betaalt alleen voor de resources die uw werk belasting per uur nodig heeft.
+* **Rendabel:** Automatisch schalen helpt u bij het optimaliseren van het gebruik van RU/s en het gebruik van kosten door te schalen wanneer het niet wordt gebruikt. U betaalt alleen voor de resources die uw werk belasting per uur nodig heeft. Als u alle uren in een maand hebt ingesteld, kunt u de maximale grootte van RU/s (tmax) instellen en het volledige tmax voor 66% van de uren of minder gebruiken. Zie voor meer informatie het artikel [Provisioning kiezen tussen standaard (hand matig) en ingericht door Voer voor automatisch schalen](how-to-choose-offer.md) .
 
 * **Maxi maal beschikbaar:** Data bases en containers die gebruikmaken van automatisch schalen, gebruiken dezelfde wereld wijd gedistribueerde, fout tolerante, Maxi maal beschik bare Azure Cosmos DB back-end om gegevens duurzaamheid en hoge Beschik baarheid te garanderen
 

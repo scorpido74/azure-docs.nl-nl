@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871450"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457249"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Een Windows-VM maken met versneld netwerken met behulp van Azure PowerShell
 
@@ -98,7 +98,7 @@ In de gegevens van de netwerk interface, naast het label **versneld netwerk** , 
 
 ## <a name="vm-creation-using-powershell"></a>VM maken met Power shell
 
-Installeer [Azure PowerShell](/powershell/azure/install-az-ps) versie 1.0.0 of hoger voordat u doorgaat. Voer uit `Get-Module -ListAvailable Az`om de momenteel geïnstalleerde versie te vinden. Als u wilt installeren of upgraden, installeert u de nieuwste versie van de AZ-module vanaf de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az). Meld u in een Power shell-sessie aan bij een Azure [-account met Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
+Installeer [Azure PowerShell](/powershell/azure/install-az-ps) versie 1.0.0 of hoger voordat u doorgaat. Voer uit om de momenteel geïnstalleerde versie te vinden `Get-Module -ListAvailable Az` . Als u wilt installeren of upgraden, installeert u de nieuwste versie van de AZ-module vanaf de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az). Meld u in een Power shell-sessie aan bij een Azure [-account met Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNic*en *myVM*.
 
@@ -192,7 +192,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waar
 
 ### <a name="create-a-vm-and-attach-the-network-interface"></a>Een virtuele machine maken en de netwerk interface koppelen
 
-1. Stel uw VM-referenties in `$cred` op de variabele met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), waarin u wordt gevraagd om u aan te melden:
+1. Stel uw VM-referenties in op de `$cred` variabele met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), waarin u wordt gevraagd om u aan te melden:
 
     ```azurepowershell
     $cred = Get-Credential
@@ -244,7 +244,7 @@ Nadat u de virtuele machine in azure hebt gemaakt, maakt u verbinding met de vir
 
 3. Als de **status** van de virtuele machine wordt **gemaakt**in de VM-overzichts pagina, wacht u totdat de virtuele machine is gemaakt door Azure. De **status** wordt gewijzigd in **actief** nadat het maken van de VM is voltooid.
 
-4. Selecteer op de werk balk van de VM-overzicht de optie**RDP** > -**bestand**voor het **verbinding maken** > .
+4. Selecteer op de werk balk van de VM-overzicht de optie RDP-bestand voor het **verbinding maken**  >  **RDP**  >  **Download RDP File**.
 
 5. Open het RDP-bestand en meld u vervolgens aan bij de virtuele machine met de referenties die u hebt opgegeven in de sectie [een virtuele machine maken en de netwerk interface koppelen](#create-a-vm-and-attach-the-network-interface) . Als u nooit hebt verbonden met een Windows-VM in azure, raadpleegt u [verbinding maken met de virtuele machine](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 
@@ -327,7 +327,7 @@ Een schaalset voor virtuele machines is iets anders, maar volgt dezelfde werk st
 3. Stel de toegepaste updates in op automatisch, zodat de wijzigingen onmiddellijk worden opgehaald:
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

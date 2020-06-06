@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745603"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457096"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -71,7 +71,7 @@ De client-app die u in deze zelf studie maakt, maakt gebruik van een aantal Azur
    * Voer een naam in voor de **resource groep**. We raden **SpeechEchoBotTutorial-ResourceGroup**aan.
    * Selecteer in de vervolg keuzelijst **regio** **VS West**.
 1. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-1. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+1. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 1. Net als bij de resources die u later in deze zelf studie maakt, is het een goed idee om deze resource groep vast te maken aan uw dash board voor eenvoudige toegang. Als u deze resource groep wilt vastmaken, klikt u op het speld pictogram in de rechter bovenhoek van het dash board.
 
 ### <a name="choosing-an-azure-region"></a>Een Azure-regio kiezen
@@ -104,7 +104,7 @@ Volg deze instructies om een spraak bron te maken:
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) een spraak bron heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
@@ -121,11 +121,11 @@ De volgende stap is het maken van een App Service-abonnement. Een App Service-pl
    * Selecteer voor **regio** **VS-West**.
    * Zorg ervoor dat **standaard S1** is geselecteerd voor de **prijs categorie**. Dit moet de standaard waarde zijn. Als dat niet het geval is, moet u ervoor zorgen dat u het **besturings systeem** instelt op **Windows** zoals hierboven wordt beschreven.
 5. Klik op **Controleren en maken**. U ziet een banner waarvoor Lees **validatie is geslaagd**.
-6. Klik op **Maken**. Het kan enkele minuten duren om de resource groep te maken.
+6. Klik op **Create**. Het kan enkele minuten duren om de resource groep te maken.
 
 Controleer op dit punt of de resource groep (**SpeechEchoBotTutorial-ResourceGroup**) twee resources heeft:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
@@ -196,7 +196,8 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**
    * Voor **hosting plan**selecteert u **SpeechEchoBotTutorial-AppServicePlan**
    * Voor **Application Insights**, achterlaten **als niets**
-1. Klik op **maken**
+1. Klik op **Maken**.
+1. Klik op de rechter kant van het zojuist gemaakte profiel op **publiceren**
 1. Er wordt een bericht weer gegeven in Visual Studio dat er als volgt uitziet:
 
    ```
@@ -207,7 +208,7 @@ De volgende stap is het implementeren van de echo-bot in Azure. Er zijn enkele m
 1. De standaard browser moet een pagina openen en weer geven met de volgende tekst: ' uw bot is klaar! '.
 1. Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal en bevestig dat er drie resources zijn:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
@@ -236,7 +237,7 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Een Azure bot-kanaal registratie maken<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. U wordt gevraagd om de volgende informatie op te geven:
-   * Voer voor **bot**-ingang **SpeechEchoBotTutorial-BotRegistration**in.
+   * Voor **bot-ingang**voert u **SpeechEchoBotTutorial-BotRegistration-# # #** # in en vervangt u door een wille keurig **####** aantal van uw keuze. Houd er rekening mee dat de bot-ingang globaal uniek moet zijn. Als u een bot-ingang opgeeft, maar het fout bericht ophalen _de aangevraagde bot-id niet beschikbaar is_, kiest u een ander getal. In de onderstaande voor beelden hebben we 8726 gebruikt.
    * Selecteer voor **abonnement**een **gratis proef versie**.
    * Voor **resource groep**selecteert u **SpeechEchoBotTutorial-ResourceGroup**.
    * Selecteer voor **locatie**de optie **VS-West**.
@@ -248,25 +249,47 @@ Nu u een Azure App Service hebt gemaakt om uw bot te hosten, is de volgende stap
 
 Controleer op dit punt de resource groep **SpeechEchoBotTutorial-ResourceGroup** in de Azure Portal. Er moeten nu vier resources worden weer gegeven:
 
-| Name | Type  | Locatie |
+| Naam | Type  | Locatie |
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | VS - west |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-plan | VS - west |
-| SpeechEchoBotTutorial-BotRegistration | Registratie van bot-kanalen | internationaal |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Registratie van bot-kanalen | internationaal |
 | SpeechEchoBotTutorial-speech | Cognitive Services | VS - west |
 
 > [!IMPORTANT]
 > In de bron van de bot-kanalen wordt de wereld wijde regio weer gegeven, zelfs als u vs West hebt geselecteerd. Dit is normaal.
 
+## <a name="optional-test-in-web-chat"></a>Optioneel: testen in Web Chat
+
+De registratie pagina van Azure bot-kanalen bevat een **test in de optie Web Chat** onder **bot Management**. Het werkt niet standaard met uw bot, omdat Webchat moet verifiëren tegen uw bot. Als u uw geïmplementeerde bot wilt testen met tekst invoer, volgt u de onderstaande stappen. Houd er rekening mee dat deze stappen optioneel zijn en niet zijn vereist om door te gaan met de volgende stappen van de zelf studie. 
+
+1. Zoek en open uw **EchoBotTutorial-BotRegistration-# #** # #-resource in de [Azure Portal](https://portal.azure.com)
+1. Selecteer in de **bot Management** -navigatie de optie **instellingen**. Kopieer de waarde onder **micro soft app id**
+1. Open de Visual Studio EchoBot-oplossing. Zoek in het Solution Explorer naar het bestand **appSettings. json** en dubbel klik erop.
+1. Vervang de lege teken reeks naast **MicrosoftAppId** in het JSON-bestand met de GEKOPIEERDE id-waarde
+1. Terug naar de Azure Portal, in **bot Management** -navigatie, selecteert **u instellingen**en klikt u op **(beheren)** naast **micro soft app-id**
+1. Klik op **Nieuw client geheim**. Voeg een beschrijving toe (bijvoorbeeld Web Chat) en klik op **toevoegen**. Het nieuwe geheim kopiëren
+1. Vervang de lege teken reeks naast **MicrosoftAppPassword** in het JSON-bestand door de gekopieerde geheime waarde
+1. Sla het JSON-bestand op. Het ziet er ongeveer als volgt uit:
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. Publiceer de app opnieuw (Klik met de rechter muisknop op **EchoBot** -project in Visual Studio Solution Explorer, selecteer **publiceren...** en klik op de knop **publiceren** )
+10. U bent nu klaar om de bot in web chat te testen.
+
 ## <a name="register-the-direct-line-speech-channel"></a>Het directe-lijn spraak kanaal registreren
 
 Nu is het tijd om uw bot te registreren met het directe-lijn spraak kanaal. Dit kanaal is wat wordt gebruikt om een verbinding tot stand te brengen tussen uw ECHO bot en een client-app die is gecompileerd met de spraak-SDK.
 
-1. Zoek en open uw **SpeechEchoBotTutorial-BotRegistration-** resource in de [Azure Portal](https://portal.azure.com).
-1. Selecteer in de **Azure Services** -navigatie **kanalen**.
+1. Zoek en open uw **SpeechEchoBotTutorial-BotRegistration-# #** # #-resource in de [Azure Portal](https://portal.azure.com).
+1. Selecteer in de **bot Management** -navigatie de optie **kanalen**.
    * Zoek naar **meer kanalen**, zoek en klik op **direct line speech**.
    * Bekijk de tekst op de pagina met de titel **directe lijn spraak configureren**en vouw vervolgens de vervolg keuzelijst ' cognitieve service-account ' uit.
    * Selecteer de spraak resource die u eerder hebt gemaakt (bijvoorbeeld **SpeechEchoBotTutorial-speech**) in het menu om uw bot te koppelen aan de sleutel van uw spraak abonnement.
+   * De rest van de optionele velden negeren
    * Klik op **Opslaan**.
 
 1. Klik in de navigatie van het **bot-beheer** op **instellingen**.
@@ -289,7 +312,7 @@ Voordat we aan de slag gaan, moet u ervoor zorgen dat uw microfoon en luid sprek
    * down load een ZIP-pakket met het uitvoer bare bestand dat moet worden uitgevoerd, of
    * bouw het uitvoer bare bestand zelf door de opslag plaats te klonen en het project te bouwen.
 
-1. Start de client toepassing en configureer deze.
+1. Start de client toepassing en configureer deze om verbinding te maken met uw bot, op basis van de instructies in de GitHub-opslag plaats
 1. Klik op **opnieuw verbinding maken** en zorg ervoor dat het bericht wordt weer gegeven **op de microfoon knop of typ om te praten met uw bot**.
 1. Laten we dit testen. Klik op de knop microfoon en spreek enkele woorden in het Engels in. De herkende tekst wordt weer gegeven tijdens het spreken. Wanneer u klaar bent met spreken, reageert de bot op een eigen stem, met de tekst ' echo ' gevolgd door de herkende woorden.
 1. U kunt ook tekst gebruiken om te communiceren met de bot. U hoeft alleen de tekst in de onderste balk te typen. 
@@ -331,7 +354,7 @@ Hier volgt een voor beeld van een JSON van een activiteit die de client heeft on
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",

@@ -5,23 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612007"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456960"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Gebruik dit artikel om fouten en problemen op te lossen bij het gebruik van Power shell met Windows virtueel bureau blad. Zie [Windows Virtual Desktop Power shell](/powershell/module/windowsvirtualdesktop/)(Engelstalig) voor meer informatie over Extern bureaublad-services Power shell.
 
@@ -36,7 +36,7 @@ In deze sectie vindt u Power shell-opdrachten die doorgaans worden gebruikt tijd
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Fout: New-AzRoleAssignment: de verstrekte informatie is niet toegewezen aan een AD-object-ID
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **Oorzaak:** De gebruiker die is opgegeven door de para meter *-SignInName,* is niet gevonden in de Azure Active Directory gekoppeld aan de virtueel-bureaublad omgeving van Windows. 
@@ -73,7 +73,7 @@ Fix: in het fout bericht wordt een lijst met ondersteunde regio's gepubliceerd. 
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**Oorzaak:** Er is een niet-overeenkomende locatie. Alle hostgroepen, toepassings groepen en werk ruimten hebben een locatie om de meta gegevens van de service op te slaan. Objecten die u maakt en die aan elkaar zijn gekoppeld, moeten zich op dezelfde locatie bevinden. Als een hostgroep zich bijvoorbeeld in `eastus`bevindt, moet u ook de toepassings groepen maken in. `eastus` Als u een werk ruimte maakt voor het registreren van deze toepassings groepen, moet die werk ruimte `eastus` ook in zijn.
+**Oorzaak:** Er is een niet-overeenkomende locatie. Alle hostgroepen, toepassings groepen en werk ruimten hebben een locatie om de meta gegevens van de service op te slaan. Objecten die u maakt en die aan elkaar zijn gekoppeld, moeten zich op dezelfde locatie bevinden. Als een hostgroep zich bijvoorbeeld in bevindt `eastus` , moet u ook de toepassings groepen maken in `eastus` . Als u een werk ruimte maakt voor het registreren van deze toepassings groepen, moet die werk ruimte `eastus` ook in zijn.
 
 **Oplossen:** Haal de locatie op waarin de hostgroep is gemaakt en wijs vervolgens de toepassings groep toe die u maakt op dezelfde locatie.
 

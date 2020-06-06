@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869716"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464654"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -254,9 +254,7 @@ Op basis van het beleid of de unieke regelgeving van uw organisatie is het mogel
 - Configureer Azure File Sync om uw proxy in uw omgeving te ondersteunen.
 - Netwerk activiteit beperken van Azure File Sync.
 
-Zie voor meer informatie over het configureren van de netwerk functionaliteit van Azure File Sync:
-- [Azure File Sync-proxy en -firewallinstellingen](storage-sync-files-firewall-and-proxy.md)
-- [Zorgen dat Azure File Sync een goede buur is in uw Data Center](storage-sync-files-server-registration.md)
+Zie [Azure file sync Networking-overwegingen](storage-sync-files-networking-overview.md)voor meer informatie over Azure file sync en netwerken.
 
 ## <a name="encryption"></a>Versleuteling
 Wanneer u Azure File Sync gebruikt, moet u rekening houden met drie verschillende versleutelings lagen: versleuteling van de at-rest-opslag van Windows Server, versleuteling van de overdracht tussen de Azure File Sync agent en Azure en versleuteling van de rest van uw gegevens in de Azure-bestands share. 
@@ -272,7 +270,7 @@ De andere belangrijkste methode voor het versleutelen van gegevens is het versle
 
 Azure File Sync werkt niet met NTFS Encrypted File System (NTFS EFS) of versleutelings oplossingen van derden die boven het bestands systeem zitten, maar onder de gegevens stroom van het bestand. 
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
 
 > [!NOTE]
 > Met Azure File Sync Service wordt de ondersteuning voor TLS 1.0 en 1,1 op 1 augustus 2020 verwijderd. Alle ondersteunde Azure File Sync agent versies gebruiken standaard al TLS 1.2. Het gebruik van een eerdere versie van TLS kan optreden als TLS 1.2 is uitgeschakeld op uw server of als er een proxy wordt gebruikt. Als u een proxy gebruikt, raden we u aan om de proxy configuratie te controleren. Azure File Sync Service regio's die zijn toegevoegd na 5/1/2020, ondersteunen alleen TLS 1.2 en ondersteuning voor TLS 1.0 en 1,1 worden verwijderd uit bestaande regio's op 1 augustus 2020.  Zie voor meer informatie de [hand leiding](storage-sync-files-troubleshoot.md#tls-12-required-for-azure-file-sync)voor het oplossen van problemen.

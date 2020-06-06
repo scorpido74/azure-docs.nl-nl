@@ -3,12 +3,12 @@ title: Afhankelijkheids analyse in Azure Migrate server-evaluatie
 description: Hierin wordt beschreven hoe u afhankelijkheids analyse gebruikt voor evaluatie met behulp van Azure Migrate server-evaluatie.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b269322f5426a68b072452bc2f79531685be3742
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024758"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447574"
 ---
 # <a name="dependency-analysis"></a>Afhankelijkheids analyse
 
@@ -30,7 +30,7 @@ Er zijn twee opties voor het implementeren van afhankelijkheids analyse
 - Zonder **agents**: u hoeft geen agents te installeren op computers die u wilt kruisen om te controleren. Deze optie is momenteel in Preview en is alleen beschikbaar voor virtuele VMware-machines.
 
 > [!NOTE]
-> Afhankelijkheids analyse op basis van een agent is niet beschikbaar in Azure Government. U kunt afhankelijkheids analyse zonder agent gebruiken.
+> Afhankelijkheids analyse op basis van een agent is niet beschikbaar in Azure Government. U kunt afhankelijkheidsanalyse zonder agent gebruiken.
 
 ## <a name="agentless-analysis"></a>Analyse zonder agent
 
@@ -70,7 +70,7 @@ Log Analytics | Niet vereist. | Azure Migrate gebruikt de [servicetoewijzing](ht
 Hoe werkt het? | Hiermee worden TCP-verbindings gegevens vastgelegd op computers die zijn ingeschakeld voor de visualisatie van afhankelijkheden. Na detectie verzamelt het gegevens met intervallen van vijf minuten. | Servicetoewijzing agents die op een computer zijn geïnstalleerd, verzamelen gegevens over TCP-processen en inkomende/uitgaande verbindingen voor elk proces.
 Gegevens | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort. | Naam van de bron computer server, proces, toepassings naam.<br/><br/> Naam van de doel computer server, proces, toepassings naam en poort.<br/><br/> Het aantal gegevens over verbindingen, latentie en gegevens overdracht wordt verzameld en beschikbaar gesteld voor Log Analytics query's. 
 Visualisatie | Afhankelijkheids toewijzing van één server kan worden weer gegeven gedurende een periode van één uur tot 30 dagen. | Afhankelijkheids toewijzing van één server.<br/><br/> De kaart kan alleen over een uur worden weer gegeven.<br/><br/> Afhankelijkheids toewijzing van een groep servers.<br/><br/> Servers in een groep toevoegen aan en verwijderen uit de kaart weergave.
-Gegevensexport | Kan momenteel niet worden gedownload in de indeling tabellair. | Gegevens kunnen worden opgevraagd met Log Analytics.
+Gegevensexport | Gegevens van de afgelopen 30 dagen kunnen worden gedownload in een CSV-indeling. | Gegevens kunnen worden opgevraagd met Log Analytics.
 
 
 

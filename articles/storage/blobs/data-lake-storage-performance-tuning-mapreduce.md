@@ -4,16 +4,16 @@ description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen2 Ma
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5de8da90ac3356480fd809af68ab2c8b30540aa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327928"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465946"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Prestaties afstemmen: MapReduce, HDInsight & Azure Data Lake Storage Gen2
 
@@ -40,7 +40,7 @@ Wanneer u MapReduce-taken uitvoert, zijn dit de para meters die u kunt configure
 
 **MapReduce. job. Mapss/MapReduce. job. reduceert** Hiermee bepaalt u het maximum aantal mappers of verminderers dat moet worden gemaakt.  Het aantal splitsingen bepaalt het aantal mappers dat voor de MapReduce-taak wordt gemaakt.  Daarom kunt u minder mappers ontvangen dan u hebt gevraagd als er minder splitsingen zijn dan het aangevraagde aantal mappers.       
 
-## <a name="guidance"></a>Richtlijnen
+## <a name="guidance"></a>Hulp
 
 > [!NOTE]
 > In de instructies in dit document wordt ervan uitgegaan dat uw toepassing de enige toepassing is die in uw cluster wordt uitgevoerd.

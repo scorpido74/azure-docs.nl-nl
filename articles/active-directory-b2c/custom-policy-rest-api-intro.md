@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636984"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447914"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API claim uitwisselingen integreren in uw aangepaste beleid voor Azure AD B2C
 
@@ -32,6 +32,9 @@ Met Azure AD B2C kunt u uw eigen bedrijfs logica toevoegen aan een gebruikers re
 - **Aangepaste bedrijfs logica uitvoeren**. U kunt push meldingen verzenden, zakelijke data bases bijwerken, een gebruikers migratie proces uitvoeren, machtigingen beheren, data bases controleren en andere werk stromen uitvoeren.
 
 ![Diagram van een REST service claim uitwisseling](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> Als er een langzame of geen reactie van de REST-service naar Azure AD B2C is, is de time-out 30 seconden en is het aantal nieuwe pogingen twee keer (wat betekent dat er drie pogingen in totaal zijn). De instellingen voor de time-out en het aantal pogingen kunnen momenteel niet worden geconfigureerd.
 
 ## <a name="calling-a-restful-service"></a>Een REST-service aanroepen
 

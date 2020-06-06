@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6dc94cca66370daa307a21daa6c96a778baed08c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 90a7f37fb82cfea2f3ee44c31f6d3ef0a61c64c0
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017627"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465402"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -50,7 +50,7 @@ Maak in Visual Studio een nieuwe Windows-consoletoepassing. De volgende stappen 
 1. Selecteer **bestand**  >  **Nieuw**  >  **project**
 2. **Platform**  >  **Vensters** selecteren
 3. Selecteer **Consoletoepassing (.NET Framework)**
-4. Selecteer **volgende**
+4. Selecteer **Volgende**
 5. Voer in het veld **project naam** een naam in voor uw toepassing
 6. Selecteer **Maken**
 
@@ -60,7 +60,7 @@ U kunt de Azure Storage-client bibliotheken gebruiken in elk type .NET-toepassin
 
 ### <a name="use-nuget-to-install-the-required-packages"></a>NuGet gebruiken om de vereiste pakketten te installeren
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 U moet verwijzen naar de volgende vier pakketten in uw project om deze zelf studie te volt ooien:
 
@@ -157,7 +157,7 @@ Als u de Azurite-opslag emulator wilt richten, kunt u een snelkoppeling gebruike
 
 Voeg de volgende `Program.cs`-instructies aan het begin van het bestand `using` toe:
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UsingStatements":::
 
@@ -174,7 +174,7 @@ using Microsoft.Azure.Storage.Queue; // Namespace for Queue storage types
 
 ### <a name="create-the-queue-service-client"></a>De Queue-serviceclient maken
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 Met de [QueueClient](/dotnet/api/azure.storage.queues.queueclient) -klasse kunt u wacht rijen ophalen die zijn opgeslagen in wachtrij opslag. Hier volgt één manier om de serviceclient te maken:
 
@@ -201,7 +201,7 @@ U bent nu klaar om code te schrijven die gegevens leest uit en schrijft naar Que
 
 In dit voor beeld ziet u hoe u een wachtrij maakt:
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_CreateQueue":::
 
@@ -226,7 +226,7 @@ queue.CreateIfNotExists();
 
 ## <a name="insert-a-message-into-a-queue"></a>Een bericht in een wachtrij invoegen
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 Als u een bericht wilt invoegen in een bestaande wachtrij, roept u de [SendMessage](/dotnet/api/azure.storage.queues.queueclient.sendmessage) -methode aan. Een bericht kan een `string` (in UTF-8-indeling) of een `byte` matrix zijn. Met de volgende code wordt een wachtrij gemaakt (als deze niet bestaat) en wordt er een bericht ingevoegd:
 
@@ -259,7 +259,7 @@ queue.AddMessage(message);
 
 ## <a name="peek-at-the-next-message"></a>Bekijken van het volgende bericht
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 U kunt de berichten in de wachtrij bekijken zonder ze uit de wachtrij te verwijderen door de [PeekMessages](/dotnet/api/azure.storage.queues.queueclient.peekmessages) -methode aan te roepen. Als u geen waarde doorgeeft voor de para meter *maxMessages* , is de standaard instelling om één bericht te bekijken.
 
@@ -293,7 +293,7 @@ Console.WriteLine(peekedMessage.AsString);
 
 U kunt de inhoud van een bericht in de wachtrij wijzigen. Als het bericht een werktaak vertegenwoordigt, kunt u deze functie gebruiken om de status van de werktaak bij te werken. Met de volgende code wordt het bericht in de wachtrij bijgewerkt met nieuwe inhoud en wordt de time-out voor de zichtbaarheid met 60 seconden verlengd. Hiermee wordt de status van de werkitems die aan het bericht zijn gekoppeld, opgeslagen en krijgt de client een extra minuut om aan het bericht te blijven werken. U kunt deze techniek gebruiken om uit meerdere stappen bestaande werkstromen in berichten in de wachtrij te volgen zonder dat u helemaal opnieuw hoeft te beginnen als een verwerkingsstap vanwege een hardware- of softwarefout is mislukt. Doorgaans houdt u ook het aantal nieuwe pogingen bij en als het bericht meer dan *n* keer opnieuw is geprobeerd, verwijdert u het. Dit biedt bescherming tegen berichten die een toepassingsfout activeren telkens wanneer ze worden verwerkt.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_UpdateMessage":::
 
@@ -322,7 +322,7 @@ queue.UpdateMessage(message,
 
 ## <a name="de-queue-the-next-message"></a>Het volgende bericht uit de wachtrij verwijderen
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 Een bericht uit een wachtrij in twee stappen uit de wachtrij verwijderen. Wanneer u [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages)aanroept, wordt het volgende bericht in een wachtrij weer gegeven. Een bericht dat wordt geretourneerd van is niet `ReceiveMessages` zichtbaar voor andere code die berichten uit deze wachtrij leest. Standaard blijft het bericht onzichtbaar gedurende 30 seconden. Om het bericht definitief uit de wachtrij te verwijderen, moet u ook [DeleteMessage](/dotnet/api/azure.storage.queues.queueclient.deletemessage) aanroepen. Dit proces in twee stappen voor het verwijderen van een bericht zorgt ervoor dat als de code er niet in slaagt een bericht te verwerken vanwege hardware- of softwareproblemen, een ander exemplaar van uw code hetzelfde bericht kan ophalen en het opnieuw kan proberen. Uw code aanroepen `DeleteMessage` direct nadat het bericht is verwerkt.
 
@@ -356,7 +356,7 @@ queue.DeleteMessage(retrievedMessage);
 
 Dit voorbeeld laat zien hoe u het Async-Await-patroon gebruikt met algemene Queue Storage-API's. In het voorbeeld wordt de asynchrone versie aangeroepen van elk van de opgegeven methoden. Dit ziet u aan het achtervoegsel *Async* van elke methode. Wanneer er een asynchrone methode wordt gebruikt, schort het Async-Await-patroon lokale uitvoering uit totdat de aanroep is voltooid. Dit gedrag stelt de huidige thread in staat andere bewerkingen uit te voeren, zodat knelpunten in de prestaties worden voorkomen en de algehele respons van uw toepassing verbetert. Zie [Async en Await (C# en Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) voor meer informatie over het gebruik van het Async-Await-patroon in .NET.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/QueueBasics.cs" id="snippet_AsyncQueue":::
 
@@ -395,7 +395,7 @@ Console.WriteLine("Deleted message");
 
 Er zijn twee manieren waarop u het ophalen van berichten uit een wachtrij kunt aanpassen. Ten eerste kunt u berichten batchgewijs (maximaal 32) ophalen. Ten tweede kunt u een langere of kortere time-out voor onzichtbaarheid instellen, zodat uw code meer of minder tijd krijgt voor het volledig verwerken van elk bericht.
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 In het volgende code voorbeeld wordt de methode [ReceiveMessages](/dotnet/api/azure.storage.queues.queueclient.receivemessages) gebruikt om 20 berichten in één aanroep op te halen. Vervolgens wordt elk bericht met een `foreach` lus verwerkt. De time-out voor onzichtbaarheid wordt ingesteld op vijf minuten voor elk bericht. Houd er rekening mee dat de 5 minuten voor alle berichten tegelijk worden gestart, dus na 5 minuten sinds de aanroep van `ReceiveMessages` , worden alle berichten die niet zijn verwijderd, weer zichtbaar.
 
@@ -427,7 +427,7 @@ foreach (CloudQueueMessage message in queue.GetMessages(20, TimeSpan.FromMinutes
 
 ## <a name="get-the-queue-length"></a>Lengte van de wachtrij ophalen
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 U kunt een schatting ophalen van het aantal berichten in de wachtrij. De methode [GetProperties](/dotnet/api/azure.storage.queues.queueclient.getproperties) vraagt de Queue-service om de wachtrij-eigenschappen op te halen, met inbegrip van het aantal berichten. De eigenschap [ApproximateMessagesCount](/dotnet/api/azure.storage.queues.models.queueproperties.approximatemessagescount) bevat het geschatte aantal berichten in de wachtrij. Dit getal is niet lager dan het werkelijke aantal berichten in de wachtrij, maar dit kan hoger zijn.
 
@@ -462,7 +462,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
 ## <a name="delete-a-queue"></a>Een wachtrij verwijderen
 
-# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
 Als u een wachtrij en alle berichten hierin wilt verwijderen, roept u de methode [Delete](/dotnet/api/azure.storage.queues.queueclient.delete) aan in het wachtrijobject.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4253e496aca4cbf71fab7ef0ee388b1356df5c16
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311205"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456790"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligings agent op uw IoT-apparaat selecteren en implementeren
 
@@ -44,7 +44,7 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 
 |     | Op C gebaseerde beveiligings agent | Beveiligings agent op basis van C# |
 | --- | ----------- | --------- |
-| Open-source | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) |
+| Open-source | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-c) | Beschikbaar onder een [MIT-licentie](https://en.wikipedia.org/wiki/MIT_License) in [github](https://aka.ms/iot-security-github-cs) |
 | Ontwikkelingstaal    | C | C# |
 | Ondersteunde Windows-platforms? | Nee | Ja |
 | Windows-vereisten | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |

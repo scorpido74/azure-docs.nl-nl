@@ -2,13 +2,13 @@
 title: Resource providers door Azure-Services
 description: Een lijst met alle naam ruimten van de resource provider voor Azure Resource Manager en toont de Azure-service voor die naam ruimte.
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/05/2020
+ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424429"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462852"
 ---
 # <a name="resource-providers-for-azure-services"></a>Resource providers voor Azure-Services
 
@@ -25,7 +25,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft.ApiManagement | [API Management](../../api-management/index.yml) |
-| Micro soft. AppConfiguration | baan |
+| Micro soft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
 | Micro soft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Micro soft. Attestation | Azure Attestation-service |
 | Micro soft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
@@ -62,7 +62,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Micro soft. CostManagement<sup>1</sup> | [Cost Management](/azure/cost-management/) |
 | Micro soft. CostManagementExports | [Cost Management](/azure/cost-management/) |
-| Micro soft. CustomerLockbox | Klanten-lockbox voor Microsoft Azure |
+| Micro soft. CustomerLockbox | [Klanten-lockbox voor Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Micro soft. CustomProviders | [Aangepaste Azure-providers](../custom-providers/overview.md) |
 | Micro soft. DataBox | [Azure Data Box](/azure/databox-family/) |
 | Micro soft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
@@ -102,7 +102,7 @@ In dit artikel wordt uitgelegd hoe naam ruimten van de resource provider worden 
 | Micro soft. IoTCentral | [Azure IoT Central](/azure/iot-central/) |
 | Micro soft. IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.KeyVault | [Key Vault](../../key-vault/index.yml) |
-| Micro soft. Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
+| Microsoft.Kubernetes | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Micro soft. KubernetesConfiguration | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft.Kusto | [Azure Data Explorer](/azure/data-explorer/) |
 | Micro soft. LabServices | [Azure Lab-Services](../../lab-services/index.yml) |

@@ -4,19 +4,19 @@ description: Meer informatie over hoe meldingen uw onderzoeksactiviteiten onders
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 05/05/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853112"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464246"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection meldingen
 
@@ -43,7 +43,7 @@ Als beheerder kunt u het volgende instellen:
 - **De ontvangers van dit e-mail bericht** bevatten standaard alle globale beheerders. Globale beheerders kunnen ook andere globale beheerders, beveiligings beheerders en beveiligings lezers toevoegen als ontvangers.
    - U kunt desgewenst **extra e-mail berichten toevoegen om waarschuwings meldingen te ontvangen** . deze functie is een preview-versie en gebruikers die zijn gedefinieerd, moeten de juiste machtigingen hebben om de gekoppelde rapporten in de Azure portal weer te geven.
 
-Configureer het e-mail adres voor gebruikers met een risico op de **Azure Portal** onder **Azure Active Directory** > gebruikers met**beveiligings** > **identiteits beveiliging** > van**Risico's gedetecteerde waarschuwingen**.
+Configureer het e-mail adres voor gebruikers met een risico op de **Azure Portal** onder **Azure Active Directory**  >  **Security**  >  gebruikers met beveiligings**identiteits beveiliging**van  >  **Risico's gedetecteerde waarschuwingen**.
 
 ## <a name="weekly-digest-email"></a>E-mail met wekelijkse samen vatting
 
@@ -62,7 +62,7 @@ Ontvangers bevatten standaard alle globale beheerders. Globale beheerders kunnen
 
 Als beheerder kunt u een wekelijks overzicht van e-mail verzenden naar of uit en de gebruikers selecteren die zijn toegewezen om het e-mail bericht te ontvangen.
 
-Configureer de week overzichts-e-mail in de **Azure Portal** onder **Azure Active Directory** > **wekelijkse samen vatting**van**beveiligings** > **identiteits beveiliging** > .
+Configureer de week overzichts-e-mail in de **Azure Portal** onder **Azure Active Directory**  >  wekelijkse samen vatting van**beveiligings**  >  **identiteits beveiliging**  >  **Weekly digest**.
 
 ## <a name="see-also"></a>Zie ook
 

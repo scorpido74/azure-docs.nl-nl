@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060937"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465419"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van node. js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -51,7 +51,7 @@ Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor node. js no
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. U kunt de **ls** -opdracht hand matig uitvoeren om te controleren of er een map met **knooppunt\_modules** is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
+3. U kunt de **ls** -opdracht hand matig uitvoeren om te controleren of er een map met **knooppunt \_ modules** is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
 
 ### <a name="import-the-package"></a>Het pakket importeren
 Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan het bovenste **server. js** -bestand van de toepassing waarin u opslag wilt gebruiken:
@@ -61,7 +61,7 @@ var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Een Azure Storage verbinding instellen
-In de Azure-module worden de omgevings\_variabelen\_Azure Storage-\_account\_en\_de toegangs sleutel voor\_Azure\_Storage\_of de verbindings reeks voor Azure Storage gelezen voor informatie die is vereist om verbinding te maken met uw Azure Storage-account. Als deze omgevings variabelen niet zijn ingesteld, moet u de account gegevens opgeven bij het aanroepen van **createQueueService**.
+In de Azure-module worden de omgevings variabelen AZURE \_ Storage \_ -account en de \_ \_ toegangs \_ sleutel voor Azure Storage of de \_ verbindings reeks voor Azure Storage gelezen \_ \_ voor informatie die is vereist om verbinding te maken met uw Azure Storage-account. Als deze omgevings variabelen niet zijn ingesteld, moet u de account gegevens opgeven bij het aanroepen van **createQueueService**.
 
 ## <a name="how-to-create-a-queue"></a>Procedure: een wachtrij maken
 Met de volgende code wordt een **QueueService** -object gemaakt, waarmee u met wacht rijen kunt werken.
@@ -227,7 +227,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Als alle wacht rijen niet kunnen worden `result.continuationToken` geretourneerd, kan worden gebruikt als de eerste para meter van **listQueuesSegmented** of de tweede para meter van **listQueuesSegmentedWithPrefix** om meer resultaten op te halen.
+Als alle wacht rijen niet kunnen worden geretourneerd, `result.continuationToken` kan worden gebruikt als de eerste para meter van **listQueuesSegmented** of de tweede para meter van **listQueuesSegmentedWithPrefix** om meer resultaten op te halen.
 
 ## <a name="how-to-delete-a-queue"></a>Procedure: een wachtrij verwijderen
 Als u een wachtrij en alle berichten erin wilt verwijderen, roept u de methode **Delete Queue** aan in het wachtrij object.
