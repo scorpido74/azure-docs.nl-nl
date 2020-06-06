@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99b6d86a65ec05a1299abfffae779113e573310c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199854"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834965"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Een creditcard toevoegen, bijwerken of verwijderen voor Azure
 
@@ -29,17 +29,17 @@ Als u een Microsoft-klantovereenkomst hebt, zijn uw betalingswijzen gekoppeld aa
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Creditcard beheren voor een Azure-abonnement
 
-De volgende secties zijn bedoeld voor klanten die een factureringsrekening voor Microsoft Online Services hebben. [Uw type factureringsrekening controleren](#check-the-type-of-your-account). Als uw type factureringsrekening het Microsoft Online Services-programma is, worden betalingswijzen gekoppeld aan afzonderlijke Azure-abonnementen.
+De volgende secties zijn bedoeld voor klanten die een factureringsrekening voor Microsoft Online Services hebben. [Uw type factureringsrekening controleren](#check-the-type-of-your-account). Als uw type factureringsrekening het Microsoft Online Services-programma is, worden betalingswijzen gekoppeld aan afzonderlijke Azure-abonnementen. Als u een foutmelding krijgt nadat u de creditcard hebt toegevoegd, raadpleegt u [Creditcard is geweigerd tijdens de registratie](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
-### <a name="change-credit-card-for-a-subscription"></a>Creditcardgegevens wijzigen voor een abonnement
+### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Creditcard voor een abonnement wijzigen door een nieuwe creditcard toe te voegen
 
 U kunt het standaardtegoed van uw Azure-abonnement wijzigen in een nieuwe creditcard of eerder opgeslagen creditcard in de Azure-portal. U moet de accountbeheerder zijn om de creditcard te kunnen wijzigen. Als u meer abonnementen heeft met dezelfde actieve betalingswijze, wordt de actieve betalingswijze van al deze abonnementen bijgewerkt wanneer de betalingswijze van één van de abonnementen wordt gewijzigd.
 
 
 U kunt de standaardcreditcard van uw abonnement als volgt vervangen door een andere:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Cost Management en facturering**.
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar **Kostenbeheer en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -55,14 +55,14 @@ U kunt de standaardcreditcard van uw abonnement als volgt vervangen door een and
 
 1. Schakel het selectievakje naast **Instellen als mijn actieve betalingswijze** boven het formulier in zodat deze creditcard de actieve betalingswijze wordt. Deze kaart wordt de actieve betalingswijze voor alle abonnementen waarvoor dezelfde kaart wordt gebruikt als voor het geselecteerde abonnement.
 
-1. Selecteer **Volgende**.
+1. Selecteer **Next**.
 
-Als u een foutmelding krijgt nadat u de creditcard hebt toegevoegd, raadpleegt u [Creditcard is geweigerd tijdens de registratie](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
+### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Creditcard voor een abonnement wijzigen in een eerder opgeslagen creditcard
 
 U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard die al in uw account is opgeslagen door de volgende stappen uit te voeren:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Cost Management en facturering**.
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar **Kostenbeheer en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -79,8 +79,8 @@ U kunt ook de standaardcreditcard van uw abonnement wijzigen in een creditcard d
 
 Als uw creditcard wordt vernieuwd en het nummer blijft hetzelfde, werkt u de bestaande creditcardgegevens bij , zoals de verloopdatum. Als uw creditcardnummer is gewijzigd, omdat de creditcard is verloren, gestolen of verlopen, volgt u de stappen in de sectie [Een creditcard toevoegen als betalingswijze](#addcard). U hoeft de CVV niet bij te werken.
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
-1. Zoek naar **Cost Management en facturering**.
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
+1. Zoek naar **Kostenbeheer en facturering**.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
 
@@ -97,7 +97,7 @@ Als uw creditcard wordt vernieuwd en het nummer blijft hetzelfde, werkt u de bes
 
 ### <a name="delete-a-credit-card-from-the-account"></a>Een creditcard verwijderen uit het account
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
 1. Selecteer **Kostenbeheer en facturering** aan de linkerkant van de pagina.
 
     ![Schermopname van de zoekopdracht](./media/change-credit-card/search.png)
@@ -116,6 +116,7 @@ Als uw creditcard de actieve betalingswijze is voor een van uw Microsoft-abonnem
 De volgende secties zijn bedoeld voor klanten die een Microsoft-klantovereenkomst hebben en zich hebben geregistreerd voor Azure online met een creditcard. [Controleren of u toegang hebt tot een Microsoft-klantovereenkomst](#check-the-type-of-your-account).
 
 ### <a name="change-default-credit-card"></a>Standaardcreditcard wijzigen
+
 Als u een Microsoft-klantovereenkomst hebt, is uw creditcard gekoppeld aan een factureringsprofiel. Als u de betalingswijze voor een factureringsprofiel wilt wijzigen, moet u de persoon zijn die zich heeft geregistreerd bij Azure en de factureringsrekening heeft gemaakt.
 
 Zie [Azure-abonnementen betalen per factuur](pay-by-invoice.md) als u de standaard betalingswijze van uw factureringsprofiel wilt wijzigen in betalen per cheque of overschrijving.
@@ -159,9 +160,11 @@ Voer de volgende stappen uit om een creditcard te bewerken of verwijderen:
 1. Als u de creditcard wilt verwijderen, selecteert u **Verwijderen** in het contextmenu.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
+
 We bieden geen ondersteuning voor virtuele of prepaidkaarten. Als u fouten krijgt bij het toevoegen of bijwerken van een geldige creditcard, probeer dan uw browser te openen in de privémodus.
 
 ## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
 In de volgende secties worden veelgestelde vragen beantwoord over het wijzigen van uw creditcardgegevens.
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Mijn abonnement is uitgeschakeld. Waarom kan ik mijn creditcard nu niet verwijderen?
@@ -189,11 +192,13 @@ Als u [betaalt via een factuur](pay-by-invoice.md), maakt u het verschuldigde be
 Als u een btw-nummer wilt toevoegen of bijwerken, werkt u uw profiel bij in het [Azure-accountcentrum](https://account.azure.com/Profile) en selecteert u vervolgens **Btw-registratie**. Dit btw-nummer wordt gebruikt voor de berekening van btw-vrijstelling en wordt vermeld op uw factuur.
 
 ## <a name="check-the-type-of-your-account"></a>Controleer uw accounttype
+
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Krijg meer informatie over [Azure-reserveringen](../reservations/save-compute-costs-reservations.md) om te zien of ze geld kunnen besparen.

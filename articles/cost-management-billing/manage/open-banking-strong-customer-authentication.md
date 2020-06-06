@@ -8,16 +8,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 847e9b692ddbd7880c37d1068d61447dcccb9c80
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200585"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747149"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) en Sterke Klantverificatie (SCA) voor Azure-klanten
 
-Vanaf 14 september 2019 zijn banken in de 31 landen van de [Europese Economische Ruimte](https://en.wikipedia.org/wiki/European_Economic_Area) verplicht om de identiteit van de persoon die een onlineaankoop doet, te verifiëren voordat de betaling wordt verwerkt. Deze controle vereist meervoudige verificatie om ervoor te zorgen dat uw online-aankopen veilig en beschermd zijn. Voor sommige landen wordt de datum voor deze verificatieverplichting uitgesteld. Voor meer informatie raadpleegt u de [Veelgestelde vragen van Microsoft over PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
+Vanaf 14 september 2019 zijn banken in de 31 landen/regio's van de [Europese Economische Ruimte](https://en.wikipedia.org/wiki/European_Economic_Area) verplicht om de identiteit van de persoon die een onlineaankoop doet, te verifiëren voordat de betaling wordt verwerkt. Deze controle vereist meervoudige verificatie om ervoor te zorgen dat uw online-aankopen veilig en beschermd zijn. Voor sommige landen/regio's wordt de datum voor deze verificatieverplichting uitgesteld. Voor meer informatie raadpleegt u de [Veelgestelde vragen van Microsoft over PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Wat PSD2 betekent voor Azure-klanten
 
@@ -43,8 +43,8 @@ Voor meer informatie raadpleegt u [Creditcard toevoegen, bijwerken of verwijdere
 
 Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Azure-portal in **Achterstallig**. U kunt de status van uw account controleren door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
-2. Zoek naar **Kostenbeheer en facturering**.
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
+2. Zoek op **Kostenbeheer en facturering**.
 3. Ga op de pagina **Overzicht** van **Kostenbeheer + facturering** naar het raster **Mijn abonnementen** en bekijk de statuskolom.
 4. Als uw abonnement de status **Achterstallig** heeft, klikt u op **Saldo vereffenen**. U wordt gevraagd om tijdens het proces meervoudige verificatie te doorlopen.
 
@@ -52,7 +52,7 @@ Als uw bank de kosten weigert, verandert de status van uw Azure-account in de Az
 
 Marketplace- en reserveringsaankopen worden niet samen met de Azure-services gefactureerd. Als uw bank de Marketplace- of reserveringskosten weigert, krijgt uw factuur de status achterstallig en wordt in de Azure-portal de optie **Nu betalen** weergegeven. U kunt achterstallige Marketplace- en reserveringsfacturen betalen door deze stappen te volgen:
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com/).
 2. Zoek naar **Kostenbeheer en facturering**.
 3. Onder Facturering selecteert u **Facturen**.
 5. Selecteer in de vervolgkeuzelijst van het filter voor abonnementen het abonnement dat is gekoppeld aan uw Marketplace- of reserveringsaankoop.

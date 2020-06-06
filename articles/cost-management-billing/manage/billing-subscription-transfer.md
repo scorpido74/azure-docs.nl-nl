@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238156"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745838"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -144,8 +144,8 @@ Als u niet zeker weet wie de accountbeheerder is voor een abonnement, gebruikt u
 
 Alle resources zoals VM's, schijven en websites worden overgedragen naar het nieuwe account. Als u echter een abonnement overdraagt naar een account in een andere Azure AD-tenant, worden de [beheerdersrollen](add-change-subscription-administrator.md) en het [ RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../../role-based-access-control/role-assignments-portal.md) voor het abonnement [niet overgedragen](#transfer-a-subscription-to-another-azure-ad-tenant-account). Bovendien worden [app-registraties](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) en andere tenantspecifieke services niet overgedragen met het abonnement.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Kan ik het eigendom overdragen naar een account in een ander land?
-U kunt geen overdrachten naar andere landen uitvoeren in de Azure-portal. Als u uw abonnement wilt overdragen naar een ander land, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Kan ik het eigendom overdragen naar een account in een ander land of andere regio?
+U kunt geen overdrachten naar andere landen/regio's uitvoeren in de Azure Portal. Als u uw abonnement wilt overdragen naar landen/regio's, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Ik ben een beheerder van twee accounts. Kan ik een abonnement overdragen van het ene account naar de andere?
 Ja, u kunt een abonnement overdragen tussen uw accounts. Uw accounts worden conceptueel gezien als accounts van twee verschillende gebruikers, zodat u de bovenstaande stappen kunt gebruiken om abonnementen tussen uw accounts over te dragen.

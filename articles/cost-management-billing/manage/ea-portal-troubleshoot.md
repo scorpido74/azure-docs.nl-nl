@@ -3,16 +3,16 @@ title: Problemen met toegang tot Azure EA Portal oplossen
 description: In dit artikel worden enkele veelvoorkomende problemen beschreven die zich kunnen voordoen met een Azure Enterprise Agreement (EA) in Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691185"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654740"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Problemen met toegang tot Azure EA Portal oplossen
 
@@ -64,15 +64,15 @@ Als u een foutmelding ziet over een _ongeldige gebruiker_, kan dat zijn omdat he
   - Als u de primaire alias wilt controleren, gaat u naar [https://account.live.com](https://account.live.com). Klik vervolgens op **Uw gegevens** en klik vervolgens op **Beheren hoe u zich aanmeldt bij Microsoft**. Volg de aanwijzingen voor het verifiëren van een alternatief e-mailadres en het verkrijgen van een code voor toegang tot gevoelige informatie. Voer de beveiligingscode in. Selecteer **Later instellen** als u de tweeledige verificatiemethode niet wilt instellen.
   - U ziet de pagina **Aanmelden bij Microsoft beheren** waar u uw accountaliassen kunt bekijken. Controleer of u de primaire alias gebruikt voor het aanmelden bij Azure EA Portal. Als dat niet het geval is, kunt u van uw huidige alias de primaire alias maken. U kunt in plaats daarvan ook de primaire alias voor Azure EA Portal gebruiken.
 
-## <a name="no-activation-email-received"></a>Er is geen activeringse-mail ontvangen
+## <a name="azure-ea-activation-faq"></a>Veelgestelde vragen over activering van Azure EA
+
+In deze sectie van het artikel vindt u een overzicht van oplossingen voor veelvoorkomende problemen rond de activering van Azure EA.
+
+### <a name="i-didnt-receive-an-activation-email"></a>Ik heb geen activerings-e-mail ontvangen
 
 Er wordt een activeringse-mail van Azure EA Portal verzonden vanaf *waep@microsoft.com* . Als u geen activeringse-mail hebt ontvangen, controleert u de map met ongewenste e-mail of de prullenbak. Deze wordt verzonden met de omschrijving: _Invitation to View/Manage the Microsoft Azure service_subject_. De e-mail wordt verzonden naar alle nieuw toegevoegde EA-beheerders.
 
 Als u zeker weet dat u bent ingesteld als EA-beheerder, hoeft u niet te wachten op het ontvangen van de activeringse-mail om u aan te melden bij Azure EA Portal. U kunt ook naar https://ea.azure.com gaan en u aanmelden met uw e-mailadres (werk-, school- of Microsoft-account) en uw wachtwoord.
-
-## <a name="azure-ea-activation-faq"></a>Veelgestelde vragen over activering van Azure EA
-
-In deze sectie van het artikel vindt u een overzicht van oplossingen voor veelvoorkomende problemen rond de activering van Azure EA.
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>Ik wil een nieuwe EA-beheerder toevoegen aan mijn inschrijving
 

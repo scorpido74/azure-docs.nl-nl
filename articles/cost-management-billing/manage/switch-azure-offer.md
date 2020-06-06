@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199514"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715882"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Uw Azure-abonnement wijzigen in een andere aanbieding
 
@@ -45,16 +45,16 @@ U kunt overschakelen van een individueel abonnement met betalen-per-gebruiktarie
 
 1. Meld u aan bij het [Azure-accountcentrum](https://account.windowsazure.com/Subscriptions).
 1. Selecteer uw individuele abonnement met betalen-per-gebruiktarieven.
-1. Klik op **Overstappen naar een andere aanbieding**. De optie is alleen beschikbaar als u een individueel abonnement hebt met betalen-per-gebruiktarieven en u uw eerste factureringsperiode hebt voltooid.
+1. Klik op **Overstappen naar een andere aanbieding**. De optie is alleen beschikbaar als u een individueel abonnement hebt met tarieven voor betalen-per-gebruik en u uw eerste factureringsperiode hebt voltooid.
 
    ![U ziet de knop Overschakelen aan de rechterkant van de pagina](./media/switch-azure-offer/switchbutton.png)
 1. **Selecteer de gewenste aanbieding** in de lijst met aanbiedingen waarnaar u kunt overschakelen. Deze lijst verschilt afhankelijk van de lidmaatschappen die aan uw account zijn gekoppeld. Als er niets beschikbaar is, raadpleegt u de [lijst met beschikbare aanbiedingen waarnaar u kunt overschakelen](#whats-supported) en controleert u of u de juiste lidmaatschappen hebt.
 
    ![Selecteer een aanbieding waarnaar u wilt overschakelen](./media/switch-azure-offer/selectoffer.png)
-1. Afhankelijk van de aanbieding waarnaar u overschakelt, ziet u mogelijk een opmerking over de gevolgen van het overschakelen. Neem deze lijst zorgvuldig door en volg de instructies voordat u verdergaat.
+1. Afhankelijk van de aanbieding waarnaar u overschakelt, ziet u mogelijk een opmerking over de gevolgen van het overschakelen. Neem de lijst zorgvuldig door en volg de instructies voordat u doorgaat.
 
    ![Bekijk de opmerkingen](./media/switch-azure-offer/thingstonote.png)
-1. U kunt de naam van uw abonnement wijzigen. Deze is standaard ingesteld op de naam van de nieuwe aanbieding. Klik op **Overschakelen** om het proces te voltooien.
+1. U kunt de naam van uw abonnement wijzigen. Standaard is deze niet ingesteld op de naam van de nieuwe aanbieding. Klik op **Overschakelen** om het proces te voltooien.
 
    ![Klik op de groene knop](./media/switch-azure-offer/confirmpage.png)
 1. Gelukt! Uw abonnement is nu overgeschakeld naar de nieuwe aanbieding.
@@ -94,13 +94,13 @@ Er is geen servicedowntime voor gebruikers die zijn gekoppeld aan het abonnement
 
 Als u overschakelt naar een andere aanbieding, worden alle eventuele [limiet- of quotumverhogingen boven de standaardlimiet](../../azure-portal/supportability/resource-manager-core-quotas-request.md) opnieuw ingesteld. Er is geen servicedowntime, zelfs niet als u meer resources hebt dan de standaardlimiet. Als u bijvoorbeeld 200 kernen gebruikt in uw abonnement, wordt uw kernquotum weer opnieuw ingesteld op de standaard van 20 kernen. De VM's die gebruikmaken van de 200 kernen, worden niet beïnvloed en blijven actief. Als u echter niet nog een aanvraag indient voor quotumverhoging, kunt u niet meer kernen inrichten.
 
-#### <a name="billing"></a>Facturering
+#### <a name="billing"></a>Billing
 
-Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaande kosten. Uw abonnement wordt vervolgens gefactureerd volgens de prijsvoorwaarden van de nieuwe aanbieding. De factureringsdatum van uw abonnement wordt gewijzigd in de datum waarop u de aanbieding hebt gewijzigd. Gebruiks- en factureringsgegevens van vóór de wijziging, worden niet bewaard, daarom raden we u aan een kopie te maken voordat u overschakelt.
+Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaande kosten. Uw abonnement wordt vervolgens gefactureerd volgens de prijsvoorwaarden van de nieuwe aanbieding. De factureringsdatum van uw abonnement wordt gewijzigd in de datum waarop u de aanbieding hebt gewijzigd. Gebruiks- en factureringsgegevens van vóór de wijziging, blijven niet behouden, daarom raden we u aan een kopie te maken voordat u overschakelt.
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kan ik migreren van een abonnement met Betalen per gebruik-tarieven naar CSP (Cloud Solution Provider) of EA (Enterprise Agreement)?
 
-* Zie [Migratie van een Azure-abonnement met Betalen per gebruik naar CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* Zie [Overdracht van Azure-abonnementen tussen abonnees en CSP's](transfer-subscriptions-subscribers-csp.md) om te migreren naar CSP.
 * Als u wilt migreren naar EA, vraagt u de inschrijvingsbeheerder om uw account toe te voegen aan EA. Volg de instructies in de uitnodigings-e-mail om uw abonnementen te laten verplaatsen onder EA-inschrijving. Zie [Een bestaand account koppelen](https://ea.azure.com/helpdocs/associateExistingAccount) in de EA-portal voor meer informatie.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kan ik gegevens en services migreren naar een nieuw abonnement?
@@ -108,7 +108,7 @@ Op de dag dat u overschakelt, wordt een factuur gegenereerd voor alle openstaand
 * U kunt de resources rechtstreeks naar het nieuwe abonnement migreren. Zie [resources verplaatsen naar een nieuwe resourcegroep of naar een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 * Zie [Eigendom van een Azure-abonnement overdragen](billing-subscription-transfer.md) voor meer informatie over het overdragen van het eigendom van een Azure-abonnement
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

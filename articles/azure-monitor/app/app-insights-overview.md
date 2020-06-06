@@ -4,26 +4,26 @@ description: Dit is een service waarmee u de prestaties van toepassingen kunt be
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0ffa9e38d0ffbca41e4f4a8f3d27015ebe4b8bae
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891742"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83828726"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
-Application Insights, een functie van [Azure monitor](../overview.md), is een flexibele apm-service (Application Performance Management) voor ontwikkel aars en DevOps-professionals. Gebruik het om uw Live-toepassingen te bewaken. Deze detecteert automatisch prestatie afwijkingen en bevat krachtige analyse hulpprogramma's waarmee u problemen kunt vaststellen en inzicht krijgt in wat gebruikers daad werkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op een groot aantal verschillende platformen, zoals .NET, node. js, Java en python die worden gehost op locatie, hybride of een open bare Cloud. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
+Application Insights, een functie van [Azure Monitor](../overview.md), is een uitbreidbare APM-service (Application Performance Management) voor ontwikkelaars en DevOps-professionals. Hiermee kunt u uw livetoepassingen controleren. De service detecteert automatisch afwijkingen in prestaties en bevat krachtige analysehulpmiddelen om u te helpen bij het vaststellen van problemen en te begrijpen wat gebruikers daadwerkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js, Java en Python, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
 
 ## <a name="how-does-application-insights-work"></a>Hoe werkt Application Insights?
-U installeert een klein instrumentatie pakket (SDK) in uw toepassing of schakelt Application Insights codelessly in wanneer dit wordt [ondersteund](../../azure-monitor/app/platforms.md). Met de instrumentatie wordt uw app bewaakt en worden de telemetriegegevens doorgestuurd naar een Azure-toepassing Insights-resource met een unieke GUID waarnaar we als instrumentatie sleutel verwijzen.
+U installeert een klein instrumentatiepakket (SDK) in uw toepassing of u schakelt Application Insights zonder code in wanneer dit wordt [ondersteund](../../azure-monitor/app/platforms.md). Met de instrumentatie wordt uw app bewaakt en worden de telemetriegegevens doorgestuurd naar een Azure Application Insights-resource met een unieke GUID, waarnaar wordt verwezen als een instrumentatiesleutel.
 
-U kunt niet alleen de webservicetoepassing instrumenteren, maar ook de onderdelen die op de achtergrond worden uitgevoerd en de JavaScript-code van de webpagina's zelf. De toepassing en de bijbehorende onderdelen kunnen overal worden uitgevoerd. Deze hoeven niet te worden gehost in Azure.
+U kunt niet alleen de webservicetoepassing instrumenteren, maar ook de onderdelen die op de achtergrond worden uitgevoerd en de JavaScript-code van de webpagina's zelf. De toepassing en de bijbehorende onderdelen kunnen overal worden uitgevoerd en hoeven niet te worden gehost in Azure.
 
 ![Met het Application Insights-instrumentatiepakket in uw app wordt telemetrie naar uw Application Insights-resource verzonden.](./media/app-insights-overview/diagram.png)
 
 Bovendien kunt u telemetrie ophalen uit de hostomgevingen, zoals gegevens van prestatiemeteritems, diagnostische gegevens van Azure of gegevens uit Docker-logboeken. U kunt ook webtests instellen die periodiek synthetische aanvragen naar uw webservice verzenden.
 
-Al deze telemetrie-stromen zijn geïntegreerd in Azure Monitor. In de Azure Portal kunt u krachtige analyse-en zoek hulpprogramma's Toep assen op de onbewerkte gegevens.
+Al deze telemetriestromen worden geïntegreerd in Azure Monitor. In Azure Portal kunt u krachtige analyse- en zoekhulpmiddelen toepassen op de onbewerkte gegevens.
 
 ### <a name="whats-the-overhead"></a>Wat is de impact?
 De impact op de prestaties van uw app is erg klein. De aanroepen voor het bijhouden van het appgebruik blokkeren uw app niet en worden batchgewijs in een afzonderlijke thread verzonden.
@@ -49,19 +49,19 @@ Er zijn tal van manieren om uw gegevens te verkennen. Lees de volgende artikelen
 
 |  |  |
 | --- | --- |
-| [**Slimme detectie en handmatige waarschuwingen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Stel automatische waarschuwingen in die worden aangepast aan de normale patronen van de telemetrie van uw app en activeren wanneer er iets buiten het gebruikelijke patroon is. U kunt ook [waarschuwingen instellen](../../azure-monitor/app/alerts.md) voor bepaalde niveaus van aangepaste of standaard metrische gegevens. |![Voorbeeld van een waarschuwing](./media/app-insights-overview/alerts-tn.png) |
-| [**Toepassings overzicht**](../../azure-monitor/app/app-map.md)<br/>Verken de onderdelen van uw app, met belang rijke metrische gegevens en waarschuwingen. |![Overzicht van de toepassing](./media/app-insights-overview/appmap-tn.png)  |
+| [**Slimme detectie en handmatige waarschuwingen**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Stel automatische waarschuwingen in die worden afgestemd op de normale telemetriepatronen van uw app en worden geactiveerd wanneer er zich iets voordoet dat buiten het normale patroon valt. U kunt ook [waarschuwingen instellen](../../azure-monitor/platform/alerts-log.md) voor bepaalde niveaus van aangepaste functies of standaardfuncties voor het verzamelen van metrische gegevens. |![Voorbeeld van een waarschuwing](./media/app-insights-overview/alerts-tn.png) |
+| [**Overzicht van de toepassing**](../../azure-monitor/app/app-map.md)<br/>Verken de onderdelen van uw app met belangrijke metrische gegevens en waarschuwingen. |![Overzicht van de toepassing](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profiler**](../../azure-monitor/app/profiler.md)<br/>Inspecteer de uitvoeringsprofielen van voorbeeldaanvragen. |![Profiler](./media/app-insights-overview/profiler.png) |
 | [**Gebruiksanalyse**](../../azure-monitor/app/usage-overview.md)<br/>Analyseer de segmentatie en retentie van gebruikers.|![Retentie-informatie](./media/app-insights-overview/retention.png) |
 | [**Diagnostische zoekactie naar gegevens van bepaalde items**](../../azure-monitor/app/diagnostic-search.md)<br/>U kunt zoeken naar gebeurtenissen, zoals aanvragen, uitzonderingen, afhankelijkheidsaanroepen, logboektraceringen en paginaweergaven en deze gegevens ook filteren.  |![Zoeken in telemetrie](./media/app-insights-overview/search-tn.png) |
 | [**Metrics Explorer voor cumulatieve gegevens**](../../azure-monitor/platform/metrics-charts.md)<br/>Verken, filter en segmenteer cumulatieve gegevens, zoals aantallen aanvragen, fouten en uitzonderingen, reactietijden en paginalaadtijden. |![Metrische gegevens](./media/app-insights-overview/metrics-tn.png) |
 | [**Dashboards**](../../azure-monitor/app/overview-dashboard.md)<br/>Combineer gegevens van meerdere resources tot een mash-up en deel deze met anderen. Ideaal voor toepassingen met meerdere onderdelen en om continu weer te geven in de teamkamer. |![Voorbeelden van dashboards](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live Metrics Stream**](../../azure-monitor/app/live-stream.md)<br/>Wanneer u een nieuwe build implementeert, kunt u kijken naar deze 'near-realtime' prestatie-indicatoren om te controleren of dat alles naar verwachting werkt. |![Voorbeeld van metrische livegegevens](./media/app-insights-overview/live-metrics-tn.png) |
-| [**Analyse**](../../azure-monitor/app/analytics.md)<br/>Beantwoord moeilijke vragen over de prestaties en het gebruik van uw app met behulp van deze krachtige querytaal. |![Voorbeeld van Analytics](./media/app-insights-overview/analytics-tn.png) |
+| [**Analytics**](../../azure-monitor/app/analytics.md)<br/>Beantwoord moeilijke vragen over de prestaties en het gebruik van uw app met behulp van deze krachtige querytaal. |![Voorbeeld van Analytics](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>Bekijk prestatiegegevens in de code. Ga naar de code vanuit stack-traces.|![Visual Studio](./media/app-insights-overview/visual-studio-tn.png) |
-| [**Fout opsporing voor moment opnamen**](../../azure-monitor/app/snapshot-debugger.md)<br/>Spoor fouten op in momentopnamen van live activiteiten, inclusief parameterwaarden.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
+| [**Snapshot Debugger**](../../azure-monitor/app/snapshot-debugger.md)<br/>Spoor fouten op in momentopnamen van live activiteiten, inclusief parameterwaarden.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integreer metrische gegevens over het gebruik van de toepassing met andere business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
-| [**REST-API**](https://dev.applicationinsights.io/)<br/>Schrijf code voor het uitvoeren van query's op uw functies voor het verzamelen van metrische gegevens en op onbewerkte gegevens.| ![REST-API](./media/app-insights-overview/rest-tn.png) |
+| [**REST API**](https://dev.applicationinsights.io/)<br/>Schrijf code voor het uitvoeren van query's op uw functies voor het verzamelen van metrische gegevens en op onbewerkte gegevens.| ![REST-API](./media/app-insights-overview/rest-tn.png) |
 | [**Continue export**](../../azure-monitor/app/export-telemetry.md)<br/>Exporteer onbewerkte gegevens bulksgewijs naar de opslag zodra de gegevens binnenkomen. |![Exporteren](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Hoe kan ik Application Insights gebruiken?
@@ -69,7 +69,7 @@ Er zijn tal van manieren om uw gegevens te verkennen. Lees de volgende artikelen
 ### <a name="monitor"></a>Controleren
 Installeer Application Insights in uw app, stel de [beschikbaarheidswebtests](../../azure-monitor/app/monitor-web-app-availability.md) in en ga als volgt te werk:
 
-* Bekijk het standaard [toepassings dashboard](../../azure-monitor/app/overview-dashboard.md) voor uw team ruimte om de belasting, reactie snelheid en de prestaties van uw afhankelijkheden, pagina laden en Ajax-aanroepen in de gaten te blijven.
+* Bekijk het standaard [toepassingsdashboard](../../azure-monitor/app/overview-dashboard.md) voor uw teamkamer om de laadtijd, reactiesnelheid en prestaties van uw afhankelijkheden, paginalaadacties en AJAX-aanroepen in de gaten te houden.
 * Ga na welke aanvragen het langzaamst worden verwerkt en de meeste fouten vertonen.
 * Bekijk [Live Stream](../../azure-monitor/app/live-stream.md) wanneer u een nieuwe release implementeert, zodat u onmiddellijk op de hoogte bent van een eventuele afname van de prestaties.
 
@@ -93,13 +93,13 @@ Application Insights is een van de vele services die worden gehost binnen Micros
 Er zijn verschillende manieren om van start te gaan. Begin op de manier die voor u het beste werkt. U kunt later ook andere manieren gebruiken.
 
 * **Tijdens runtime: instrumenteer uw web-app op de server.** Ideaal voor toepassingen die al zijn geïmplementeerd. Hiermee voorkomt u dat u updates moet uitvoeren op de code.
-  * [**ASP.NET-of ASP.NET Core-toepassingen die worden gehost op Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
-  * [**ASP.NET-toepassingen die worden gehost in IIS op Azure VM of virtuele-machine schaalset van Azure**](../../azure-monitor/app/azure-vm-vmss-apps.md)
-  * [**ASP.NET-toepassingen die worden gehost in IIS on-premises VM**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* **Tijdens het ontwikkelen: voeg Application Insights toe aan uw code.** Hiermee kunt u telemetrie-verzameling aanpassen en extra telemetrie verzenden.
+  * [**ASP.NET- of ASP.NET Core-toepassingen die worden gehost op Azure Web Apps**](../../azure-monitor/app/azure-web-apps.md)
+  * [**ASP.NET-toepassingen die worden gehost in IIS op een Azure VM of een virtuele-machineschaalset van Azure**](../../azure-monitor/app/azure-vm-vmss-apps.md)
+  * [**ASP.NET-toepassingen die worden gehost in IIS op on-premises VM**](../../azure-monitor/app/monitor-performance-live-website-now.md)
+* **Tijdens het ontwikkelen: voeg Application Insights toe aan uw code.** Hiermee kunt u het verzamelen van telemetrie aanpassen en extra telemetrie verzenden.
   * [ASP.NET-toepassingen](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core toepassingen](../../azure-monitor/app/asp-net-core.md)
-  * [.NET-console toepassingen](../../azure-monitor/app/console.md)
+  * [ASP.NET Core-toepassingen](../../azure-monitor/app/asp-net-core.md)
+  * [.NET Console-toepassingen](../../azure-monitor/app/console.md)
   * [Java](../../azure-monitor/app/java-get-started.md)
   * [Node.js](../../azure-monitor/app/nodejs.md)
   * [Python](../../azure-monitor/app/opencensus-python.md)
@@ -111,7 +111,7 @@ Er zijn verschillende manieren om van start te gaan. Begin op de manier die voor
 ## <a name="next-steps"></a>Volgende stappen
 Gebruik tijdens runtime:
 
-* [Door IIS gehoste apps voor Azure VM en Azure virtual machine Scale set](../../azure-monitor/app/azure-vm-vmss-apps.md)
+* [Met IIS gehoste apps in Azure-VM en virtuele-machineschaalset van Azure](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS-server](../../azure-monitor/app/monitor-performance-live-website-now.md)
 * [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
 
@@ -127,7 +127,7 @@ Gebruik tijdens het ontwikkelen:
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 * Vragen en problemen:
   * [Problemen oplossen][qna]
-  * [MSDN-forum](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
+  * [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Uw suggesties:
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)

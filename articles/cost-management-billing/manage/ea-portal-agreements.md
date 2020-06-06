@@ -3,34 +3,26 @@ title: Azure EA-overeenkomsten en -aanpassingen
 description: In dit wordt uitleg gegeven over hoe de Azure EA-overeenkomsten en -aanpassingen van invloed zijn op uw gebruik van Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 570a7b3bef702d0e42e23bc4b7af41cc431b9cc8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690997"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648179"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
 
 In het artikel wordt beschreven hoe Azure EA-overeenkomsten en -aanpassingen van invloed kunnen zijn op uw toegang, gebruik en betalingen voor de Azure-services.
 
-## <a name="amendment-status"></a>Wijzigingsstatus
-
-Wijzigingen voor Azure-klanten moeten via de partner of het Microsoft-accountteam worden doorgegeven en worden verwerkt via het regionale Operations Center. Als u denkt dat een aanpassing niet is verwerkt, neemt u contact op met uw partner, softwareadviseur of Microsoft-accountteam.
-
 ## <a name="enrollment-provisioning-status"></a>De inrichtingsstatus voor inschrijving
 
 De begindatum van een nieuwe financiële toezegging wordt gedefinieerd op basis van de datum waarop het regionale Operations Center de toezegging verwerkt. Omdat orders voor financiële toezegging via Azure EA Portal worden verwerkt in de tijdzone UTC, kan er enige vertraging optreden als uw inkooporder voor financiële toezegging in een andere regio is verwerkt. De begindatum van de dekking op de aankooporder bij https://www.explore.ms staat gelijk aan de begindatum van de financiële toezegging. De begindatum van de dekking is dezelfde datum als de datum waarop de financiële toezegging wordt weergegeven in Azure EA Portal.
 
-## <a name="support-offer-not-provisioned"></a>Ondersteuningsaanbod niet ingericht
-
-U kunt Standard- of Pro-Direct-ondersteuning bestellen door ondersteuningsspecifieke SKU's te kopen. De bestelling is vergelijkbaar met wanneer er een EA Azure Monetary SKU wordt besteld. Voorbeeld: 6QK-00001. SKU-nummers voor ondersteuning zijn: W6T-00002 (Pro-Direct) en W6T-00003 (Standard). Controleer de huidige ondersteuningsaanbiedingen voordat u ondersteunings-SKU's koopt.
-
-Voor de inschrijving moet er ten minste één actief account zijn om de ondersteuningsaanbieding te kunnen inrichten.
+## <a name="support-for-enterprise-customers"></a>Ondersteuning voor Enterprise-klanten
 
  De Azure-[ondersteuningsplanaanbieding voor Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/) is voor sommige klanten beschikbaar.
 
@@ -158,24 +150,6 @@ U kunt op elk gewenst moment een verhoging van het quotum aanvragen door een [on
 - De abonnements-id van de Azure-ontwikkelaarsportal die is gekoppeld aan uw service.
   - [Neem contact op met de ondersteuning](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) voor meer informatie over het verkrijgen van uw abonnements-id.
 
-## <a name="azure-compute-pre-purchase-plan-cpp"></a>Vooraf gekocht abonnement voor Azure Compute
-
-Het vooraf gekochte abonnement voor Azure Compute (CPP of Compute Pre-Purchase Plan en voorheen bekend als de Azure Compute-promo) is een aanbieding waarbij aan klanten met een stabiele status en voorspelbare workloads de mogelijkheid wordt geboden om computingresources aan te schaffen tegen een aanzienlijke korting door Azure Compute voor 12 maanden vooraf te kopen. Het is beschikbaar voor EA en wordt weergegeven in EA Portal.
-
-Als u een CPP-SKU hebt besteld, is deze bestemd voor een specifiek type VM in een specifiek datacentrum. In de huidige vorm wordt voor deze functie geen lijst weergegeven met alle CPP-aankopen die een klant heeft gedaan en er is dus geen lijst met tegoed dat de klant ontvangt. Wanneer u echter de aangeschafte VM-typen configureert in het datacentrum waar ze zijn gekocht, wordt de maandelijkse toewijzing weergegeven in het rapport Gebruiksoverzicht in EA Portal.
-
-De vooraf aangeschafte hoeveelheid wordt weergegeven als een tegoed in de kolom Inbegrepen eenheden. Voor het gebruik hiervan worden geen kosten in rekening gebracht totdat de Inbegrepen eenheden zijn verbruikt. Wanneer deze zijn verbruikt, worden de kosten voor aanvullend gebruik berekend volgens de overeengekomen tarieven in het normale prijzenoverzicht voor EA-klanten.
-
-Het tegoed wordt gekocht op basis van het aantal VM's van een bepaalde klasse per maand. Als u bijvoorbeeld 70 A2-VM's per jaar in US - oost 2 hebt aangeschaft, wordt dat in EA Portal anders weergegeven dan dat u deze hebt aangeschaft.
-
-Maandelijkse VM's zijn naar berekening 744 uur per maand actief. Als dat wordt omgezet in uren is dat 70 keer 744 oftewel 52.080 gekochte uren van A2-VM's per maand. Omdat in het gebruiksoverzicht van EA Portal de A2-VM's worden vermeld in eenheden van 100 uur, wordt er een tegoed van 520,8 (52.080/100) Inbegrepen eenheden per maand weergegeven en worden de tot dan toe verbruikte eenheden in de maand vermeld. Voor de gebruikskosten moet nul zijn weergegeven totdat de maandelijkse verbruikte eenheden de maandelijkse inbegrepen eenheden overschrijden.
-
-Voor de verschillende soorten VM's worden verschillende eenheden gebruikt. Zo wordt voor de D3- en D4-VM's een eenheid van 10 uur gebruikt in het rapport Gebruiksoverzicht, zodat een aankoop van 70 van die VM's wordt vermeld als 5208 inbegrepen eenheden per maand (52.080/10).
-
-Over het algemeen biedt de onderstaande formule uitkomst over het aantal aangeschafte VM's op basis van de betreffende eenheden:
-
-<center><b> (Inbegrepen hoeveelheid * Meeteenheden) / 744 </b></center>
-
 ## <a name="plan-skus"></a>Abonnements-SKU's
 
 Abonnements-SKU's bieden de mogelijkheid om een pakket geïntegreerde services te kopen tegen een gereduceerd tarief. De abonnements-SKU's vullen elkaar aan via andere geïntegreerde producten en maken grotere kostenbesparingen mogelijk.
@@ -191,35 +165,6 @@ Ondernemingsbeheerders kunnen accounteigenaren toewijzen om eerder gekochte abon
 1. Klik op het tabblad **Prijzenoverzicht**.
 1. Klik op het downloadpictogram in de rechterbovenhoek.
 1. Zoek de betreffende SKU-onderdeelnummers voor het abonnement met het filter in de kolom Inbegrepen hoeveelheid, en selecteer waarden die groter zijn dan 0.
-
-### <a name="provision-the-plan-skus"></a>De abonnements-SKU's inrichten
-
-Ondernemingsbeheerders kunnen nieuwe accounteigenaren toevoegen, een bestaande accounteigenaar koppelen of bestaande accounteigenaren verzoeken om zich aan te melden bij Azure EA Portal om eerder gekochte abonnements-SKU's in te richten in Azure EA Portal door de onderstaande stappen uit te voeren.  
-
-**Een nieuwe accounteigenaar toevoegen (uitgevoerd door de EA-beheerder):**
-
-1. Selecteer in Azure EA Portal in het linkernavigatievenster de optie **Beheren**.
-1. Klik op het tabblad **Account**.
-1. Klik op de pagina Account op **+Account toevoegen**.
-1. Selecteer een afdeling of laat de waarde van niet-toegewezen gehandhaafd.
-1. Selecteer het beoogde verificatietype.
-1. Geef een beschrijvende naam op waarmee dit account moet worden aangegeven in de rapportage.
-1. Voer het e-mailadres van de accounteigenaar in dat u aan het nieuwe account wilt koppelen.
-1. Bevestig het e-mailadres dat u aan het nieuwe account wilt koppelen.
-1. Klik op **Add**.
-1. U kunt op **Ander account toevoegen** klikken om nog een account toe te voegen of u kunt in de rechterbenedenhoek van de linkerwerkbalk op de knop **Toevoegen** klikken.
-1. De accounteigenaar kan zich nu aanmelden om de betreffende abonnementen toe te voegen voor het inrichten van de abonnements-SKU's
-
-**Een bestaande accounteigenaar koppelen:**
-
-1. Klik in Enterprise Portal op **Beheren**.
-1. Klik op het tabblad **Account**.
-1. Klik op **+Een account toevoegen**. Voer het Microsoft-account of het werk- of schoolaccount in dat aan het bestaande account is gekoppeld.
-1. Bevestig het Microsoft-account of het werk- of schoolaccount dat aan het bestaande account is gekoppeld.
-1. Geef een naam op die u wilt gebruiken om dit account te identificeren in de rapportfunctie.
-1. Klik op **Add**.
-1. U kunt nog een account toevoegen door nogmaals de optie **+ Een account toevoegen** te selecteren, of u kunt terugkeren naar de startpagina door de knop **Beheerder** te selecteren.  
-1. Als u klikt om de pagina Account te openen, wordt het zojuist toegevoegde account weergegeven met de status In behandeling. Het krijgt de status Actief nadat de accounteigenaar zich de eerste keer heeft aangemeld bij EA Portal.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Bestaande/nieuwe accounteigenaars die nieuwe abonnementen maken
 

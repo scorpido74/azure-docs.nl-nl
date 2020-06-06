@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409385"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745529"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Problemen met een geweigerde kaart bij Azure-aanmelding oplossen
 
@@ -20,9 +20,9 @@ Er treedt mogelijk een probleem of fout op waarin een creditcard wordt afgewezen
 
 Als u het probleem wilt oplossen, selecteert u hieronder het onderwerp dat het meest op uw probleem lijkt.
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>De creditcardprovider wordt niet geaccepteerd voor uw land
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>De creditcardprovider wordt niet geaccepteerd voor uw land/regio
 
-Wanneer u een kaart kiest, worden in Azure de kaartopties weergegeven die geldig zijn in het land dat u selecteert. Neem contact op uw bank of de uitgever van de kaart om te controleren of uw creditcard geschikt is voor internationale transacties. Raadpleeg de [Veelgestelde vragen over aankopen van Azure](https://azure.microsoft.com/pricing/faq/) voor meer informatie over ondersteunde landen en valuta's.
+Wanneer u een kaart kiest, worden in Azure de kaartopties weergegeven die geldig zijn in het land of de regio die u selecteert. Neem contact op uw bank of de uitgever van de kaart om te controleren of uw creditcard geschikt is voor internationale transacties. Raadpleeg de [Veelgestelde vragen over aankopen van Azure](https://azure.microsoft.com/pricing/faq/) voor meer informatie over ondersteunde landen/regio's en valuta's.
 
 >[!Note]
 >American Express-creditcards worden momenteel niet ondersteund als betaalmiddel in India. Er is niet bekend wanneer deze creditcard wel een geaccepteerd betaalmiddel wordt.
@@ -47,7 +47,7 @@ Raadpleeg het volgende Knowledge Base-artikel voor meer informatie over het oplo
 
 ## <a name="you-represent-a-business-that-doesnt-want-to-pay-by-card"></a>U vertegenwoordigt een bedrijf dat niet per kaart wil betalen
 
-Als u een bedrijf vertegenwoordigt, kunt u gebruikmaken van betalingswijzen voor facturen (zoals cheques, cheques voor betaling binnen één dag of overschrijvingen) om te betalen voor uw Azure-abonnement. Nadat u het account hebt ingesteld op betalen per factuur kunt u niet overstappen op een andere betaaloptie, tenzij u een Microsoft-klantovereenkomst hebt en u zich hebt geregistreerd voor Azure via de Azure-website.
+Als u een bedrijf vertegenwoordigt, kunt u gebruikmaken van betalingswijzen voor facturen (zoals cheques, cheques voor betaling binnen één dag of overschrijvingen) om te betalen voor uw Azure-abonnement. Nadat u het account hebt ingesteld op betalen per factuur kunt u niet overstappen op een andere betalingsoptie, tenzij u een Microsoft-klantovereenkomst hebt en u zich hebt geregistreerd voor Azure via de Azure-website.
 
 Zie [Een aanvraag indienen om het Azure-abonnement per factuur te betalen](pay-by-invoice.md) voor meer informatie over betalen per factuur.
 

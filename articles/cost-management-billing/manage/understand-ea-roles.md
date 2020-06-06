@@ -5,16 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: banders
-ms.openlocfilehash: b8c523acabd02dc30e9b13f7f83a4a44554cbd4d
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 79d0a648645743751eed3b50edb628a20023546e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690927"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660353"
 ---
-# <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure
+# <a name="managing-azure-enterprise-roles"></a>Azure Enterprise-rollen beheren
 
 Voor het beheren van het gebruik en de uitgaven van uw organisatie kunnen Azure-klanten met een Enterprise Agreement (EA) vijf beheerdersrollen toewijzen:
 
@@ -62,6 +62,19 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 - <sup>4</sup> Contactpersonen voor meldingen ontvangen e-mailberichten over de Azure Enterprise Agreement.
 - <sup>5</sup> Taak is beperkt tot accounts in uw afdeling.
 
+## <a name="add-a-new-enterprise-administrator"></a>Een nieuwe ondernemingsbeheerder toevoegen
+
+Ondernemingsbeheerders beschikken over de meeste bevoegdheden voor het beheren van een Azure EA-inschrijving. De eerste Azure EA-beheerder is gemaakt toen de EA-overeenkomst is gesloten. U kunt echter op elk moment nieuwe beheerders toevoegen of verwijderen. Nieuwe beheerders kunnen alleen worden toegevoegd door bestaande beheerders. Zie [Een andere ondernemingsbeheerder maken](ea-portal-get-started.md#create-another-enterprise-administrator) voor meer informatie over het toevoegen van ondernemingsbeheerders. Zie [Rollen en taken voor factureringsprofiel ](understand-mca-roles.md#billing-profile-roles-and-tasks) voor meer informatie over de rollen en taken voor het factureringsprofiel.
+
+## <a name="update-account-owner-state-from-pending-to-active"></a>De status van een accounteigenaar bijwerken van in behandeling naar actief
+
+Wanneer nieuwe accounteigenaren (AO) voor de eerste keer worden toegevoegd aan een Azure EA-inschrijving, krijgen ze de status _In behandeling_. Zodra een nieuwe accounteigenaar de welkomstmail voor de activering ontvangt, kan deze zich aanmelden om het account te activeren. Zodra het account wordt geactiveerd, wordt de accountstatus bijgewerkt van _In behandeling_ naar _Actief_. De accounteigenaar moet het waarschuwingsbericht lezen en **Doorgaan** selecteren. Nieuwe gebruikers worden mogelijk gevraagd hun voor- en achternaam op te geven om een Commerce-account te maken. Als dat het geval is, moeten ze de vereiste informatie toevoegen om door te gaan, waarna het account wordt geactiveerd.
+
+## <a name="add-a-department-admin"></a>Een afdelingsbeheerder toevoegen
+
+Nadat een Azure EA-beheerder een afdeling heeft gemaakt, kan de Azure Enterprise-beheerder afdelingsbeheerders toevoegen en deze koppelen aan een afdeling. Een afdelingsbeheerder kan nieuwe accounts maken. Nieuwe accounts zijn nodig om nieuwe Azure EA-abonnementen te maken.
+
+Raadpleeg [Een Azure EA-afdelingsbeheerder](ea-portal-get-started.md#add-a-department-administrator) maken voor meer informatie over het toevoegen van een afdelingsbeheerder.
 
 ## <a name="usage-and-costs-access-by-role"></a>Toegang tot gebruik en kosten per rol
 
@@ -77,8 +90,7 @@ In de volgende secties worden de beperkingen en mogelijkheden van elke rol besch
 - <sup>6</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **DA-weergavekosten** inschakelt in de Enterprise Portal. De afdelingsbeheerder kan vervolgens gedetailleerde kosten voor de afdeling bekijken.
 - <sup>7</sup> Hiervoor is vereist dat de ondernemingsbeheerder het beleid **AO-weergavekosten** inschakelt in de Enterprise Portal. De accounteigenaar kan vervolgens gedetailleerde kosten voor het account zien.
 
-
-## <a name="pricing-in-azure-portal"></a>Prijzen in Azure Portal
+## <a name="see-pricing-for-different-user-roles"></a>Prijzen voor verschillende gebruikersrollen bekijken
 
 Mogelijk ziet u verschillende prijzen in Azure Portal, afhankelijk van uw beheerdersrol en de manier waarop de beleidsregels voor weergavekosten zijn ingesteld door de zakelijke beheerder. De twee beleidsregels in de zakelijke portal die invloed hebben op de prijzen die u in Azure Portal ziet, zijn:
 
@@ -98,6 +110,8 @@ In de volgende tabel ziet u de relatie tussen de Enterprise Agreement-beheerders
 |Geen|Niet van toepassing |Eigenaar|Retailprijzen|
 
 U stelt de zakelijke beheerdersrol en beleidsregels voor weergavekosten in via de zakelijke portal. De RBAC-rol kan worden bijgewerkt in Azure Portal. Zie [Toegang beheren met op rollen gebaseerd toegangsbeheer en Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie.
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

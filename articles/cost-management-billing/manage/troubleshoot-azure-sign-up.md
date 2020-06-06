@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133170"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745533"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Problemen oplossen wanneer u een nieuw account registreert in de Azure-portal of in het Azure-accountcentrum
 
@@ -63,7 +63,7 @@ Voer de volgende stappen uit om de cookie-instellingen van uw browser bij te wer
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Het creditcardformulier biedt geen ondersteuning voor mijn factuuradres
 
-Uw factuuradres moet zich bevinden in het land dat u selecteert in de sectie **Over u**. Zorg ervoor dat u het juiste land selecteert.
+Uw factuuradres moet zich bevinden in het land of de regio die u selecteert in de sectie **Over u**. Zorg ervoor dat u het juiste land of de juiste regio selecteert.
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Geen tekstberichten of oproepen bij de verificatie van de accountaanmelding
 
@@ -72,7 +72,7 @@ Hoewel het proces meestal snel gaat, kan het tot vier minuten duren voordat er e
 Hier volgen enkele aanvullende tips:
 
 - Een VoiP-telefoonnummer (Voice-over-IP) kan niet worden gebruikt voor het telefoonverificatieproces.
-- Controleer het telefoonnummer dat u invoert, inclusief het landnummer dat u in de vervolgkeuzelijst selecteert.
+- Controleer het telefoonnummer dat u invoert, inclusief het land- of regionummer dat u in de vervolgkeuzelijst selecteert.
 - Als u geen tekstberichten (sms) op uw telefoon ontvangt, probeert u de optie **Mij bellen**.
 - Zorg ervoor dat uw telefoon oproepen of sms-berichten kan ontvangen van een telefoonnummer uit de Verenigde Staten.
 
