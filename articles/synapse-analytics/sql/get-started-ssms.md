@@ -1,6 +1,6 @@
 ---
-title: 'SSMS: Connect and query Synapse SQL'
-description: Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en query's uit te Synapse SQL in azure Synapse Analytics.
+title: "SSMS: Verbinding maken met en query's uitvoeren op Synapse SQL"
+description: Gebruik SQL Server Management Studio (SSMS) om verbinding te maken met en query's uit te voeren op Synapse SQL in Azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,72 +9,75 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 704da86fd1d816dbf5d6cd9cf67dfee53fce2622
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 72006879c7181a8cefe56248215099eeb784d816
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423738"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658231"
 ---
-# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Verbinding maken met Synapse SQL met SQL Server Management Studio (SSMS)
+# <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Verbinding maken met Synapse SQL met behulp van SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md)
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
-U kunt [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) gebruiken om verbinding te maken met en een query uit te Synapse SQL in azure Synapse Analytics via SQL on-demand (preview) of SQL pool-resources. 
+U kunt [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) gebruiken om verbinding te maken met Synapse SQL en query's uit te voeren op Azure Synapse Analytics via SQL on-demand (preview) of SQL-poolresources. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogram ma's voor SQL on-demand (preview)
+### <a name="supported-tools-for-sql-on-demand-preview"></a>Ondersteunde hulpprogramma's voor SQL on-demand (preview)
 
-SSMS wordt gedeeltelijk ondersteund vanaf versie 18,5 met beperkte functies, zoals verbinding maken en query's uitvoeren. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wordt volledig ondersteund.
+[Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wordt volledig ondersteund vanaf versie 1.18.0. SSMS wordt gedeeltelijk ondersteund vanaf versie 18.5, maar u kunt het hulpprogramma gebruiken om alleen verbinding te maken en query's uit te voeren.
 
+> [!NOTE]
+> Als voor een AAD-aanmelding een verbinding is geopend die langer dan één uur duurt tijdens het uitvoeren van de query, mislukken alle query's die afhankelijk zijn van AAD. Dit omvat het uitvoeren van query's in opslag met AAD Pass-through en instructies die communiceren met AAD (zoals CREATE EXTERNAL PROVIDER). Dit is van invloed op elk hulpprogramma dat verbindingen openhoudt, zoals de query-editor in SSMS en ADS. Hulpprogramma's waarmee nieuwe verbindingen worden geopend om een query uit te voeren, zoals Synapse Studio, worden niet beïnvloed.
+> U kunt SSMS opnieuw starten of een verbinding maken en weer verbreken in ADS om dit probleem te verhelpen. .
 ## <a name="prerequisites"></a>Vereisten
 
-Controleer voordat u begint of u aan de volgende vereisten voldoet:  
+Zorg ervoor dat u voordat u begint over het volgende beschikt:  
 
 * [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms). 
-* Voor SQL-groep hebt u een bestaand Data Warehouse nodig. Zie [een SQL-groep maken](../quickstart-create-sql-pool.md)om er een te maken. Voor SQL op aanvraag is er tijdens de aanmaak tijd al een in uw werk ruimte ingericht. 
-* De volledig gekwalificeerde SQL Server naam. Zie [verbinding maken met Synapse SQL](connect-overview.md)voor meer informatie.
+* Voor de SQL-pool hebt u een bestaand datawarehouse nodig. Zie [Een SQL-pool maken](../quickstart-create-sql-pool-portal.md) voor informatie over het maken van een datawarehouse. Voor SQL on-demand is er tijdens het maken al een in uw werkruimte ingericht. 
+* De volledig gekwalificeerde SQL-servernaam. Zie [Verbinding maken met Synapse SQL](connect-overview.md) om deze te vinden.
 
 ## <a name="connect"></a>Verbinding maken
 
 ### <a name="sql-pool"></a>SQL-pool
 
-Voer de volgende stappen uit om verbinding te maken met Synapse SQL met SQL-groep: 
+Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van de SQL-pool: 
 
 1. Open SQL Server Management Studio (SSMS). 
-1. Vul in het dialoog venster **verbinding maken met server** de velden in en selecteer vervolgens **verbinding maken**: 
+1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
   
     ![Verbinding maken met server](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Server naam**: Voer de eerder geïdentificeerde **Server naam** in.
-   * **Verificatie**: Kies een verificatie type, zoals **SQL Server verificatie** of **Active Directory geïntegreerde verificatie**.
-   * **Gebruikers naam** en **wacht woord**: Voer uw gebruikers naam en wacht woord in als SQL Server verificatie hierboven is geselecteerd.
+   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
+   * **Verificatie**:  Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**.
+   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
 
-1. Breid uw Azure-SQL Server uit in **objectverkenner**. U kunt de data bases weer geven die zijn gekoppeld aan de server, zoals de voor beeld-AdventureWorksDW-data base. U kunt de data base uitbreiden om de tabellen te bekijken:
+1. Vouw uw Azure SQL Server uit in **Objectverkenner**. U kunt de databases weergeven die zijn gekoppeld aan de server, zoals de voorbeelddatabase AdventureWorksDW. U kunt de database uitvouwen om de tabellen te bekijken:
    
     ![AdventureWorksDW verkennen](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="sql-on-demand-preview"></a>SQL op aanvraag (preview-versie)
+### <a name="sql-on-demand-preview"></a>SQL on-demand (preview)
 
-Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van SQL op aanvraag: 
+Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp van SQL on-demand: 
 
 1. Open SQL Server Management Studio (SSMS).
-1. Vul in het dialoog venster **verbinding maken met server** de velden in en selecteer vervolgens **verbinding maken**: 
+1. Vul in het dialoogvenster **Verbinding maken met server** de velden in en selecteer vervolgens **Verbinding maken**: 
    
     ![Verbinding maken met server](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Server naam**: Voer de eerder geïdentificeerde **Server naam** in.
-   * **Verificatie**: Kies een verificatie type, zoals **SQL Server verificatie** of **Active Directory geïntegreerde verificatie**:
-   * **Gebruikers naam** en **wacht woord**: Voer uw gebruikers naam en wacht woord in als SQL Server verificatie hierboven is geselecteerd.
+   * **Servernaam**: Voer de eerder vastgestelde **servernaam** in.
+   * **Verificatie**: Kies een verificatietype, zoals **SQL Server-verificatie** of **Geïntegreerde Active Directory-verificatie**:
+   * **Gebruikersnaam** en **Wachtwoord**: Voer uw gebruikersnaam en wachtwoord in als u hierboven SQL Server-verificatie hebt geselecteerd.
    * Klik op **Verbinden**.
 
-4. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw *demo* uit om de inhoud van uw voorbeeld database te bekijken.
+4. U kunt de Azure SQL-server uitvouwen als u deze wilt verkennen. U kunt de databases weergeven die aan de server zijn gekoppeld. Vouw *demo* uit om de inhoud in de voorbeelddatabase te bekijken.
    
     ![AdventureWorksDW verkennen](./media/get-started-ssms/explore-tables.png)
 
@@ -83,18 +86,18 @@ Voer de volgende stappen uit om verbinding te maken met Synapse SQL met behulp v
 
 ### <a name="sql-pool"></a>SQL-pool
 
-Nu u een database verbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
+Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
     ![Nieuwe query](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/new-query.png)
-3. Kopieer deze T-SQL-query naar het query venster:
+3. Kopieer deze T-SQL-query naar het queryvenster:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Voer de query uit. Als u dit wilt doen `Execute` , klikt of gebruikt u de `F5`volgende snelkoppeling:.
+4. Voer de query uit. Klik hiertoe op `Execute` of gebruik de volgende snelkoppeling: `F5`.
    
     ![Query uitvoeren](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/execute-query.png)
 5. Bekijk de resultaten van de query. In dit voorbeeld heeft de tabel FactInternetSales 60398 rijen.
@@ -103,26 +106,26 @@ Nu u een database verbinding tot stand hebt gebracht, kunt u een query uitvoeren
 
 ### <a name="sql-on-demand"></a>SQL on-demand
 
-Nu u een database verbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
+Nu u een databaseverbinding tot stand hebt gebracht, kunt u een query uitvoeren op de gegevens.
 
 1. Klik met de rechtermuisknop op de database in SQL Server-objectverkenner.
 2. Selecteer **New Query** (Nieuwe query). Een nieuwe queryvenster wordt geopend.
    
     ![Nieuwe query](./media/get-started-ssms/new-query.png)
-3. Kopieer de volgende T-SQL-query naar het query venster:
+3. Kopieer de volgende T-SQL-query in het queryvenster:
    
     ```sql
     SELECT COUNT(*) FROM demo.dbo.usPopulationView
     ```
-4. Voer de query uit. Als u dit wilt doen `Execute` , klikt of gebruikt u de `F5`volgende snelkoppeling:.
+4. Voer de query uit. Klik hiertoe op `Execute` of gebruik de volgende snelkoppeling: `F5`.
    
     ![Query uitvoeren](./media/get-started-ssms/execute-query.png)
-5. Bekijk de resultaten van de query. In dit voor beeld heeft de usPopulationView-weer gave 3664512 rijen.
+5. Bekijk de resultaten van de query. In dit voorbeeld heeft de weergave usPopulationView 3664512 rijen.
    
     ![Queryresultaten](./media/get-started-ssms/results.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u verbinding maakt en query's uitvoert, kunt u proberen [de gegevens te visualiseren met Power bi](get-started-power-bi-professional.md).
+Nu u weet hoe u verbinding maakt en een query uitvoert, kunt u proberen [de gegevens te visualiseren met Power BI](get-started-power-bi-professional.md).
 
-Zie [verifiëren voor Synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)om uw omgeving te configureren voor Azure Active Directory authenticatie.
+Zie [Verifiëren bij Synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) om uw omgeving te configureren voor Azure Active Directory-verificatie.
 

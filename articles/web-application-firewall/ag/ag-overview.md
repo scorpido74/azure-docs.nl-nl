@@ -1,170 +1,170 @@
 ---
-title: Inleiding tot de firewall van Azure Web Application
+title: Inleiding van Azure Web Application Firewall
 titleSuffix: Azure Web Application Firewall
-description: Dit artikel bevat een overzicht van Web Application Firewall (WAF) op Application Gateway
+description: Dit artikel geeft een overzicht van Web Application Firewall (WAF) voor Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 45e7e59f72fcda983053314c0b11ff56de8a72e8
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314361"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747772"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application firewall op Azure-toepassing gateway
+# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall voor Azure Application Gateway
 
-Azure Web Application firewall (WAF) op Azure-toepassing gateway biedt gecentraliseerde beveiliging van uw webtoepassingen van veelvoorkomende aanvallen en beveiligings problemen. Webtoepassingen worden steeds gericht op kwaad aardige aanvallen die veelvoorkomende beveiligings problemen misbruiken. SQL-injectie en cross-site scripting zijn onder de meest voorkomende aanvallen.
+Azure Web Application Firewall (WAF) voor Azure Application Gateway biedt gecentraliseerde beveiliging van uw webtoepassingen tegen veelvoorkomende aanvallen en beveiligingsproblemen. Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van algemeen bekende beveiligingsproblemen. SQL-injectie en cross-site scripting zijn twee van de meest voorkomende aanvallen.
 
-WAF op Application Gateway is gebaseerd op de [Basisrule set (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 of 2.2.9 van het open Web Application Security-project (OWASP). De WAF wordt automatisch bijgewerkt zodat deze bescherming biedt tegen nieuwe beveiligings lekken, zonder dat er aanvullende configuratie nodig is. 
+WAF voor Application Gateway is gebaseerd op [Core Rule Set (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1, 3.0 of 2.2.9 van het Open Web Application Security Project (OWASP). WAF wordt automatisch bijgewerkt om bescherming te bieden tegen nieuwe beveiligingsproblemen, zonder dat er aanvullende configuratie nodig is. 
 
-Alle WAF-functies die hieronder worden weer gegeven, bevinden zich in een WAF-beleid. U kunt meerdere beleids regels maken en deze kunnen worden gekoppeld aan een Application Gateway, aan individuele listeners of aan op pad gebaseerde routerings regels op een Application Gateway. Op deze manier kunt u, indien nodig, afzonderlijke beleids regels instellen voor elke site achter uw Application Gateway. Zie [een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleid.
+Alle WAF-functies die hieronder worden vermeld, bevinden zich in een WAF-beleid. U kunt meerdere beleidsregels opstellen en deze kunnen worden gekoppeld aan een toepassingsgateway, aan individuele listeners of aan routeringsregels op een toepassingsgateway die op een pad zijn gebaseerd. Op deze manier kunt u indien nodig afzonderlijke beleidsregels hanteren voor elke site achter uw toepassingsgateway. Zie [Een WAF-beleid maken](create-waf-policy-ag.md)voor meer informatie over WAF-beleidsregels.
 
    > [!NOTE]
-   > WAF-beleid per site en per URI zijn beschikbaar als open bare preview. Dit betekent dat deze functie is onderhevig aan de aanvullende gebruiks voorwaarden van micro soft. Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > WAF-beleidsregels per site en per URI zijn beschikbaar als openbare preview. Dit betekent dat deze functie onderhevig is aan de aanvullende gebruiksvoorwaarden van Microsoft. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-![WAF diagram van Application Gateway](../media/ag-overview/waf1.png)
+![WAF-diagram van Application Gateway](../media/ag-overview/waf1.png)
 
-Application Gateway fungeert als een ADC (Application Delivery controller). Het biedt Transport Layer Security (TLS), voorheen bekend als Secure Sockets Layer (SSL), beëindiging, sessie affiniteit op basis van cookies, Round Robin-taak verdeling, route ring op basis van inhoud, de mogelijkheid om meerdere websites en beveiligings uitbreidingen te hosten.
+Application Gateway fungeert als een ADC-controller (Application Delivery controller). Application Gateway biedt TLS (Transport Layer Security), eerder bekend als SSL (Secure Sockets Layer), beëindiging, sessieaffiniteit op basis van cookies, round robin-taakverdeling, routering op basis van inhoud, de mogelijkheid om meerdere websites te hosten en beveiligingsverbeteringen.
 
-Application Gateway beveiligings verbeteringen zijn onder andere TLS-beleids beheer en end-to-end TLS-ondersteuning. De beveiliging van toepassingen wordt versterkt door integratie van WAF in Application Gateway. Met deze combi natie worden uw webtoepassingen beschermd tegen veelvoorkomende beveiligings problemen. En het biedt een eenvoudig te configureren centrale locatie voor het beheren van.
+Beveiligingsverbeteringen die door Application Gateway worden geboden, zijn onder andere TLS-beleidsbeheer en ondersteuning voor end-to-end TLS. De beveiliging van toepassingen wordt versterkt door integratie van WAF in Application Gateway. Met deze combinatie worden uw webtoepassingen beschermd tegen veelvoorkomende beveiligingsproblemen. En het biedt een eenvoudig te configureren centrale beheerlocatie.
 
 ## <a name="benefits"></a>Voordelen
 
-In deze sectie worden de belangrijkste voor delen beschreven die WAF in Application Gateway biedt.
+In deze sectie worden de belangrijkste voordelen beschreven die WAF in Application Gateway biedt.
 
 ### <a name="protection"></a>Beveiliging
 
-* Bescherm uw webtoepassingen tegen beveiligings lekken en aanvallen zonder wijzigingen aan back-end-code.
+* Beveilig uw webtoepassing tegen kwetsbaarheden en aanvallen op het web zonder dat u de code voor de back-end hoeft aan te passen.
 
-* Meerdere webtoepassingen tegelijk beveiligen. Een instantie van Application Gateway kan Maxi maal 40 websites hosten die worden beveiligd door een Web Application Firewall.
+* Beveilig meerdere webtoepassingen tegelijk. Een instantie van Application Gateway kan maximaal 40 websites hosten die worden beveiligd door een Web Application Firewall.
 
-* Aangepaste WAF-beleids regels maken voor verschillende sites achter dezelfde WAF 
+* Stel aangepaste WAF-beleidsregels op voor verschillende sites achter dezelfde WAF. 
 
-* Uw webtoepassingen beveiligen tegen kwaad aardige bots met de IP-reputatie-ruleset (preview)
+* Beveilig uw webtoepassingen tegen kwaadaardige bots met behulp van de regelset van IP Reputation (preview).
 
 ### <a name="monitoring"></a>Bewaking
 
-* Bewaak aanvallen op uw webtoepassingen met behulp van een real-time WAF-logboek. Het logboek is geïntegreerd met [Azure monitor](../../azure-monitor/overview.md) om WAF-waarschuwingen bij te houden en trends eenvoudig te bewaken.
+* Controleer op aanvallen tegen webtoepassingen door een real-time logboek van WAF te gebruiken. Het logboek is geïntegreerd met [Azure Monitor](../../azure-monitor/overview.md) om waarschuwingen van WAF bij te houden en gemakkelijk trends te ontdekken.
 
-* De Application Gateway WAF is geïntegreerd met Azure Security Center. Security Center biedt een centraal overzicht van de beveiligings status van al uw Azure-resources.
+* WAF van Application Gateway is geïntegreerd met Azure Security Center. Security Center biedt een centraal overzicht van de beveiligingsstatus van al uw Azure-resources.
 
 ### <a name="customization"></a>Aanpassing
 
-* WAF regels en regel groepen aanpassen aan de vereisten van uw toepassing en valse positieven elimineren.
+* Pas regels en regelgroepen van WAF aan om deze te laten voldoen aan de toepassingsvereisten en om fout-positieven te elimineren.
 
-* Een WAF-beleid koppelen voor elke site achter uw WAF om site-specifieke configuratie te bieden
+* Koppel een WAF-beleid voor elke site achter uw WAF om sitespecifieke configuratie te bieden.
 
-* Aangepaste regels maken die voldoen aan de behoeften van uw toepassing
+* Stel aangepaste regels op om te voldoen aan de behoeften van uw toepassing.
 
 ## <a name="features"></a>Functies
 
-- SQL-injectie beveiliging.
-- Beveiliging voor cross-site scripting.
-- Bescherming tegen andere veelvoorkomende webaanvalen, zoals het injecteren van opdrachten, HTTP-aanvragen smuggling, het splitsen van HTTP-antwoorden en het insluiting van externe bestanden.
+- Beveiliging tegen SQL-injectie.
+- Beveiliging tegen cross-site scripting
+- Beveiliging tegen andere veelvoorkomende aanvallen via het web, zoals opdrachtinjectie, het smokkelen van HTTP-aanvragen, het uitsplitsen van HTTP-antwoorden en het insluiten van externe bestanden.
 - Beveiliging tegen schendingen van het HTTP-protocol.
-- Bescherming tegen afwijkingen van het HTTP-protocol, zoals de ontbrekende host user-agent en Accept-headers.
-- Bescherming tegen crawlers en scanners.
+- Beveiliging tegen afwijkingen van het HTTP-protocol, zoals het ontbreken van een gebruikersagent voor de host en Accept-headers.
+- Beveiliging tegen crawlers en scanners.
 - Detectie van veelvoorkomende onjuiste configuraties van toepassingen (bijvoorbeeld Apache en IIS).
-- Configureer bare limieten voor aanvraag grootte met boven-en ondergrenzen.
-- Met uitsluitings lijsten kunt u bepaalde kenmerken van aanvragen weglaten uit een WAF-evaluatie. Een voor beeld hiervan is Active Directory ingevoegde tokens die worden gebruikt voor verificatie-of wachtwoord velden.
-- Aangepaste regels maken voor de specifieke behoeften van uw toepassingen.
-- Geo-filtert verkeer om te voor komen of blok keren dat bepaalde landen toegang krijgen tot uw toepassingen. (preview)
-- Bescherm uw toepassingen tegen bots met de Rules-regelset voor beperking van bot. (preview)
+- Configureerbare limieten voor grootte van aanvraag met boven- en ondergrenzen.
+- Met uitsluitingslijsten kunt u bepaalde kenmerken van aanvragen weglaten uit een WAF-evaluatie. Een bekend voorbeeld is door Active Directory ingevoegde tokens die worden gebruikt voor verificatie- of wachtwoordvelden.
+- Stel aangepaste regels op om te voldoen aan de specifieke behoeften van uw toepassingen.
+- Pas geografische filters toe op verkeer om bepaalde landen/regio's al dan niet toegang te geven tot uw toepassingen. (preview)
+- Beveilig uw toepassingen tegen bots met de regelset voor beperking voor bots. (preview)
 
 ## <a name="waf-policy"></a>WAF-beleid
 
-Als u een Web Application firewall wilt inschakelen op een Application Gateway, moet u een WAF-beleid maken. Dit beleid is waar alle beheerde regels, aangepaste regels, uitsluitingen en andere aanpassingen, zoals de upload limiet voor bestanden, bestaan. 
+Als u een Web Application Firewall wilt inschakelen op een toepassingsgateway, moet u een WAF-beleid maken. Dit beleid is de plek waar alle beheerde regels, aangepaste regels, uitsluitingen en andere aanpassingen zijn verzameld, zoals de uploadlimiet voor bestanden. 
 
 ### <a name="core-rule-sets"></a>Core Rule Sets
 
-Application Gateway ondersteunt drie regel sets: CRS 3,1, CRS 3,0 en CRS 2.2.9. Met deze regels worden uw webtoepassingen beschermd tegen schadelijke activiteiten.
+Application Gateway ondersteunt drie regelsets: CRS 3.1, CRS 3.0 en CRS 2.2.9. Met deze regels worden uw webtoepassingen beveiligd tegen schadelijke activiteiten.
 
-Zie voor meer informatie, [CRS-regel groepen en-regels voor Web Application firewall](application-gateway-crs-rulegroups-rules.md).
+Zie voor meer informatie [Web Application Firewall CRS rule groups and rules](application-gateway-crs-rulegroups-rules.md) (CRS-regelgroepen en -regels voor Web Application Firewall).
 
 ### <a name="custom-rules"></a>Aangepaste regels
 
-Application Gateway biedt ook ondersteuning voor aangepaste regels. Met aangepaste regels kunt u uw eigen regels maken, die worden geëvalueerd voor elke aanvraag die via WAF wordt door gegeven. Deze regels bevatten een hogere prioriteit dan de rest van de regels in de beheerde regel sets. Als aan een set voor waarden wordt voldaan, wordt er een actie uitgevoerd om toe te staan of te blok keren. 
+Application Gateway biedt ook ondersteuning voor aangepaste regels. Met aangepaste regels kunt u uw eigen regels maken, die worden geëvalueerd voor elke aanvraag die via WAF wordt doorgegeven. Deze regels hebben een hogere prioriteit dan de rest van de regels in de beheerde regelsets. Als aan een set voorwaarden wordt voldaan, wordt er een actie uitgevoerd om een bewerking toe te staan of te blokkeren. 
 
-De operator geomatch is nu beschikbaar in open bare Preview voor aangepaste regels. Zie de [aangepaste regels voor geomatching](custom-waf-rules-overview.md#geomatch-custom-rules-preview) voor meer informatie.
-
-> [!NOTE]
-> De operator geomatch voor aangepaste regels bevindt zich momenteel in de open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Zie [aangepaste regels voor Application Gateway](custom-waf-rules-overview.md) voor meer informatie over aangepaste regels.
-
-### <a name="bot-mitigation-preview"></a>Beperking van bot (preview-versie)
-
-Een set Managed bot Protection kan worden ingeschakeld voor uw WAF om aanvragen van bekende schadelijke IP-adressen, naast de beheerde ruleSet, te blok keren of te registreren. De IP-adressen worden vanuit de micro soft Threat Intelligence-feed gebrond. Intelligent Security Graph voorziet in micro soft Threat Intelligence en wordt gebruikt door meerdere services, waaronder Azure Security Center.
+De operator geomatch is nu beschikbaar in openbare preview voor aangepaste regels. Zie [Geomatch custom rule](custom-waf-rules-overview.md#geomatch-custom-rules-preview) (Aangepaste regels voor geografische overeenkomst) voor meer informatie.
 
 > [!NOTE]
-> De set bot Protection-regelset bevindt zich momenteel in een open bare preview en wordt weer gegeven met een preview-service level agreement. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De operator geomatch voor aangepaste regels is momenteel in openbare preview en wordt aangeboden met een preview-SLA. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Als bot-beveiliging is ingeschakeld, worden inkomende aanvragen die overeenkomen met de client Ip's van de schadelijke bot, geregistreerd in het firewall logboek. Zie hieronder voor meer informatie. U kunt toegang krijgen tot WAF-logboeken vanuit het opslag account, Event Hub of log Analytics. 
+Zie [Custom Rules for Application Gateway](custom-waf-rules-overview.md) (Aangepaste regels voor Application Gateway) voor meer informatie over aangepaste regels.
 
-### <a name="waf-modes"></a>WAF modi
+### <a name="bot-mitigation-preview"></a>Beperkingen opleggen aan bots (preview-versie)
 
-De Application Gateway WAF kan worden geconfigureerd om te worden uitgevoerd in de volgende twee modi:
-
-* **Detectie modus**: Hiermee worden alle bedreigings waarschuwingen gecontroleerd en geregistreerd. U schakelt logboek registratie diagnose in voor Application Gateway in de sectie **Diagnostische gegevens** . U moet er ook voor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. Web Application firewall blokkeert geen binnenkomende aanvragen wanneer deze in de detectie modus wordt uitgevoerd.
-* **Preventie modus**: blokkeert indringingen en aanvallen die de regels detecteren. De aanvaller ontvangt een uitzonde ring "403 niet-geautoriseerde toegang" en de verbinding is gesloten. Met preventie modus worden dergelijke aanvallen in de WAF-logboeken vastgelegd.
+Naast de beheerde regelset, kan er een beheerde set met regels voor bescherming tegen bots worden ingeschakeld voor uw WAF om aanvragen van bekende schadelijke IP-adressen te blok keren of te registreren. De IP-adressen zijn afkomstig uit de feed Bedreigingsinformatie van Microsoft. Intelligent Security Graph voorziet de feed van gegevens en wordt gebruikt door verschillende services, waaronder Azure Security Center.
 
 > [!NOTE]
-> Het is raadzaam dat u een nieuw geïmplementeerde WAF uitvoert in de detectie modus voor een korte periode in een productie omgeving. Dit biedt de mogelijkheid om [firewall logboeken](../../application-gateway/application-gateway-diagnostics.md#firewall-log) te verkrijgen en eventuele uitzonde ringen of [aangepaste regels](./custom-waf-rules-overview.md) bij te werken vóór de overgang naar de modus voor preventie. Hierdoor kan het aantal onverwacht geblokkeerd verkeer worden verminderd.
+> De set met regels voor beveiliging tegen bots is momenteel in openbare preview en wordt aangeboden met een preview-SLA. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-### <a name="anomaly-scoring-mode"></a>Afwijkende Score modus
+Als bot-beveiliging is ingeschakeld, worden inkomende aanvragen die overeenkomen met client-IP's van schadelijke bots vastgelegd in het firewalllogboek. Zie hieronder voor meer informatie. U kunt toegang krijgen tot WAF-logboeken vanuit het opslagaccount, Event Hub of Log Analytics. 
 
-OWASP heeft twee modi om te bepalen of verkeer moet worden geblokkeerd: traditionele modus en afwijkings modus.
+### <a name="waf-modes"></a>WAF-modi
 
-In de traditionele modus wordt verkeer dat overeenkomt met elke regel, onafhankelijk van andere regel overeenkomsten beschouwd. Deze modus is eenvoudig te begrijpen. Maar het ontbreken van informatie over het aantal regels dat overeenkomt met een specifieke aanvraag is een beperking. Daarom is de afwijkende Score modus geïntroduceerd. Dit is de standaard waarde voor OWASP 3. *x*.
+In Application Gateway WAF kunnen de volgende twee modi worden geconfigureerd:
 
-In de afwijkende Score modus wordt verkeer dat overeenkomt met een regel niet onmiddellijk geblokkeerd wanneer de firewall in de modus preventie wordt uitgevoerd. Regels hebben een bepaalde ernst: *kritiek*, *fout*, *waarschuwing*of *kennisgeving*. Deze ernst is van invloed op een numerieke waarde voor de aanvraag, die de afwijkings score wordt genoemd. Een voor beeld van een *waarschuwings* regel die overeenkomt met 3 bij de score. Een *kritieke* regel overeenkomst draagt bij tot 5.
+* **Detectiemodus**: Hiermee worden alle waarschuwingen voor bedreigingen gecontroleerd en vastgelegd. U kunt het vastleggen van diagnostische gegevens inschakelen voor Application Gateway via de sectie **Diagnostische gegevens**. U moet er ook voor zorgen dat het WAF-logboek is geselecteerd en ingeschakeld. In de detectiemodus worden binnenkomende verzoeken niet geblokkeerd door Web Application Firewall.
+* **Preventiemodus**: Blokkeert indringers en aanvallen die door de regels zijn gedetecteerd. De aanvaller krijgt een uitzondering '403 onbevoegde toegang' en de verbinding wordt verbroken. In de preventiemodus worden dergelijke aanvallen vastgelegd in de WAF-logboeken.
+
+> [!NOTE]
+> Het is raadzaam om een nieuw geïmplementeerde WAF gedurende korte tijd in de detectiemodus uit te voeren in een productieomgeving. U hebt dan de mogelijkheid om [firewall-logboeken](../../application-gateway/application-gateway-diagnostics.md#firewall-log) te verzamelen, aan de hand waarvan u eventuele uitzonderingen of [aangepaste regels](./custom-waf-rules-overview.md) kunt aanpassen voordat u verdergaat in de preventiemodus. Hierdoor kan het volume onverwacht geblokkeerd verkeer worden verminderd.
+
+### <a name="anomaly-scoring-mode"></a>Modus Anomaliescore
+
+OWASP heeft twee modi om te bepalen of verkeer moet worden geblokkeerd: traditionele modus en Anomaliescore.
+
+In de traditionele modus wordt verkeer dat voldoet aan een regel, als onafhankelijk beschouwd van andere regels waaraan wordt voldaan. Deze modus is eenvoudig te begrijpen. Maar het ontbreken van informatie over het aantal regels dat voldoet aan een specifieke aanvraag is een beperking. Daarom is de modus Anomaliescore geïntroduceerd. Dit is de standaard waarde voor OWASP 3.*x*.
+
+In de modus Anomaliescore wordt verkeer dat voldoet aan een regel niet onmiddellijk geblokkeerd wanneer de firewall in de preventiemodus staat. Regels hebben een bepaalde ernst: *Kritiek*, *Fout*, *Waarschuwing* of *Kennisgeving*. Deze ernst is van invloed op een numerieke waarde voor de aanvraag, die de anomalie- of afwijkingsscore wordt genoemd. Een regel met de ernst *Waarschuwing* draagt bijvoorbeeld 3 bij aan de score. Eén overeenkomst met een *kritieke* regel betekent dat de score wordt verhoogd met 5.
 
 |Severity  |Waarde  |
 |---------|---------|
 |Kritiek     |5|
 |Fout        |4|
 |Waarschuwing      |3|
-|Zie       |2|
+|Kennisgeving       |2|
 
-Er is een drempel van 5 voor de afwijkings Score om verkeer te blok keren. Daarom is een enkele *essentiële* regel overeenkomst voldoende voor de Application Gateway WAF om een aanvraag te blok keren, zelfs in de modus preventie. Maar een overeenkomst met een *waarschuwing* neemt alleen de afwijkings Score met 3 toe, wat niet voldoende is om het verkeer te blok keren.
+Als de anomaliescore een drempel van 5 heeft bereikt, wordt het verkeer geblokkeerd. Dus één overeenkomst met een regel van de ernst *Kritiek* is voldoende voor de Application Gateway WAF om een aanvraag te blokkeren, zelfs in de preventiemodus. Maar bij één overeenkomst met een regel met het ernstniveau *Waarschuwing*, wordt de score alleen met 3 verhoogd, wat niet voldoende is om het verkeer te blokkeren.
 
 > [!NOTE]
-> Het bericht dat wordt geregistreerd wanneer een WAF-regel overeenkomt met verkeer bevat de actie waarde ' geblokkeerd '. Het verkeer wordt echter alleen in werkelijkheid geblokkeerd voor een afwijkings Score van 5 of hoger.  
+> Het bericht dat wordt vastgelegd wanneer verkeer voldoet aan een WAF-regel bevat de actiewaarde 'Geblokkeerd'. Het verkeer wordt echter alleen daadwerkelijk geblokkeerd bij een anomaliescore van 5 of hoger.  
 
-### <a name="waf-monitoring"></a>WAF-controle
+### <a name="waf-monitoring"></a>Bewaking van WAF
 
-Het bewaken van de status van uw toepassingsgateway is belangrijk. Het controleren van de status van uw WAF en de toepassingen die deze beveiligt, wordt ondersteund door integratie met Azure Security Center, Azure Monitor en Azure Monitor Logboeken.
+Het bewaken van de status van uw toepassingsgateway is belangrijk. Het bewaken van de status van Web Application Firewall en van de toepassingen die ermee worden beveiligd, is mogelijk door integratie met de logboeken van Azure Security Center, Azure Monitor en Log Analytics.
 
-![Diagram van Application Gateway WAF diagnostische gegevens](../media/ag-overview/diagnostics.png)
+![Diagram van diagnostische gegevens van Application Gateway WAF](../media/ag-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Application Gateway-logboeken zijn geïntegreerd met [Azure monitor](../../azure-monitor/overview.md). Zo kunt u Diagnostische gegevens bijhouden, met inbegrip van WAF-waarschuwingen en-Logboeken. U kunt deze mogelijkheid gebruiken op het tabblad **Diagnostische gegevens** in de Application Gateway resource in de portal of rechtstreeks via Azure monitor. Zie [Application Gateway Diagnostics](../../application-gateway/application-gateway-diagnostics.md)(Engelstalig) voor meer informatie over het inschakelen van Logboeken.
+Logboeken van Application Gateway zijn geïntegreerd met [Azure Monitor](../../azure-monitor/overview.md). Dit maak het mogelijk om diagnostische gegevens bij te houden, met inbegrip van WAF-meldingen en logboeken. Ga hiervoor naar het tabblad **Diagnostische gegevens** van de resource Application Gateway in de portal, of rechtstreeks vanuit de service Azure Monitor. Zie [Diagnostische gegevens van Application Gateway](../../application-gateway/application-gateway-diagnostics.md) voor meer informatie over het inschakelen van logboeken.
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) helpt u bij het voor komen, detecteren en reageren op bedreigingen. Het biedt meer inzicht in en controle over de beveiliging van uw Azure-resources. Application Gateway is [geïntegreerd met Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center scant uw omgeving om niet-beveiligde webtoepassingen te detecteren. Het kan Application Gateway WAF aanbevelen om deze kwets bare bronnen te beveiligen. U maakt de firewalls rechtstreeks van Security Center. Deze WAF-instanties zijn geïntegreerd met Security Center. Ze sturen waarschuwingen en status informatie naar Security Center voor rapportage.
+[Security Center](../../security-center/security-center-intro.md) helpt bij het voorkomen, detecteren en afhandelen van bedreigingen. De service biedt meer inzicht in en controle over de veiligheid van uw Azure-resources. Application Gateway is [geïntegreerd met Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center scant uw omgeving op niet-beveiligde webtoepassingen. Indien nodig worden er aanbevelingen naar Application Gateway WAF gestuurd om deze kwetsbare resources te beschermen. U maakt de firewalls rechtstreeks vanuit Security Center. Deze instanties van WAF zijn geïntegreerd met Security Center. Ze sturen waarschuwingen en statusinformatie naar Security Center voor rapportagedoeleinden.
 
 ![Venster Overzicht van Security Center](../media/ag-overview/figure1.png)
 
 #### <a name="azure-sentinel"></a>Azure Sentinel
 
-Microsoft Azure Sentinel is een schaal bare, Cloud-native, SIEM-oplossing (Security Information Event Management) en via (Security Orchestration Automated Response). Azure Sentinel levert intelligente beveiligings analyses en bedreigings informatie over de hele onderneming, waardoor er één oplossing is voor waarschuwings detectie, zicht baarheid van bedreigingen, proactieve jacht en reactie op bedreigingen.
+Microsoft Azure Sentinel is een schaalbaar, cloudoplossing voor Security Information Event Management (SIEM) en Security Orchestration Automated Response (SOAR). Azure Sentinel levert intelligente beveiligingsanalyses en bedreigingsinformatie voor de hele onderneming en is daardoor één oplossing voor waarschuwingsdetectie, zichtbaarheid van bedreigingen, proactieve opsporing en reactie op bedreigingen.
 
-Met de ingebouwde werkmap van de Azure WAF firewall-gebeurtenis kunt u een overzicht krijgen van de beveiligings gebeurtenissen op uw WAF. Dit omvat gebeurtenissen, overeenkomende en geblokkeerde regels, en alles wat u kunt vastleggen in de logboeken van de firewall. Zie hieronder voor meer informatie over logboek registratie. 
+Met de ingebouwde werkmap voor firewallgebeurtenissen van Azure WAF kunt u een overzicht krijgen van de beveiligingsgebeurtenissen op uw WAF. Dit omvat gebeurtenissen, overeenkomende en geblokkeerde regels, en verder alles wat kan worden vastgelegd in de logboeken van de firewall. Hieronder vindt u meer informatie over logboekregistratie. 
 
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>Logboekregistratie
 
-Application Gateway WAF biedt gedetailleerde rapportage over elke bedreiging die wordt gedetecteerd. Logboek registratie is geïntegreerd met Azure Diagnostics-Logboeken. Waarschuwingen worden vastgelegd in de JSON-indeling. Deze logboeken kunnen worden geïntegreerd met [Azure monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md).
+Application Gateway WAF biedt gedetailleerde rapporten voor elke bedreiging die wordt gedetecteerd. Logboekregistratie is geïntegreerd met Azure Diagnostics-logboeken. Waarschuwingen worden vastgelegd in de JSON-indeling. Deze logboeken kunnen worden geïntegreerd met [Azure Monitor-logboeken](../../azure-monitor/insights/azure-networking-analytics.md).
 
-![Application Gateway Diagnostische logboeken Vensters](../media/ag-overview/waf2.png)
+![Vensters met diagnostische logboeken van Application Gateway](../media/ag-overview/waf2.png)
 
 ```json
 {
@@ -204,12 +204,12 @@ Application Gateway WAF biedt gedetailleerde rapportage over elke bedreiging die
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Prijzen voor de Application Gateway WAF-voorraadeenheid
 
-De prijs modellen verschillen voor de WAF_v1 en WAF_v2 Sku's. Ga naar de pagina met [prijzen voor Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) voor meer informatie. 
+De prijsmodellen verschillen voor de SKU's WAF_v1 en WAF_v2. Ga naar de pagina [Prijzen voor Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) voor meer informatie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Aan de slag met het [maken van een WAF-beleid](create-waf-policy-ag.md)
-- Meer informatie over door [WAF beheerde regels](application-gateway-crs-rulegroups-rules.md)
+- Aan de slag door het [opstellen van een WAF-beleid](create-waf-policy-ag.md)
+- Meer informatie over [beheerde WAF-regels](application-gateway-crs-rulegroups-rules.md)
 - Meer informatie over [aangepaste regels](custom-waf-rules-overview.md)
-- Meer informatie over [Web Application firewall op de voor deur van Azure](../afds/afds-overview.md)
+- Meer informatie over [Web Application Firewall in Azure Front Door](../afds/afds-overview.md)
 

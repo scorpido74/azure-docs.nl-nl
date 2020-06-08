@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Azure Files en Azure AD DS gebruiken
           href: create-profile-container-adds.md
-    - name: Bestandsshares voor profielcontainers maken
-      href: create-file-share.md
+        - name: Azure Files en AD DS gebruiken
+          href: create-file-share.md
     - name: Poolinstellingen van de host configureren
       items:
         - name: RDP-eigenschappen
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: Problemen identificeren en diagnosticeren
       href: diagnostics-role-service.md
-    - name: Tenants en hostpools maken
+    - name: Hostgroepen maken
       href: troubleshoot-set-up-issues.md
     - name: Configuratie van sessiehost-VM's
       href: troubleshoot-vm-configuration.md

@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: aan de slag met Azure Sentinel'
-description: 'Azure Sentinel Snelstartgids: aan de slag met Azure Sentinel'
+title: 'Quickstart: Aan de slag met Azure Sentinel'
+description: 'Quickstart voor Azure Sentinel: Aan de slag met Azure Sentinel'
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -10,86 +10,86 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4bd01b737c4a80ff286458c122f3b0ab9573a40b
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067684"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83798678"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Snelstartgids: aan de slag met Azure Sentinel
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
 
 
 
 
-In deze Quick Start leert u hoe u snel kunt zien wat er in uw omgeving gebeurt met Azure Sentinel. Nadat u uw gegevens bronnen aan Azure Sentinel hebt gekoppeld, krijgt u een snelle visualisatie en analyse van de gegevens, zodat u kunt zien wat er gebeurt in al uw verbonden gegevens bronnen. Met Azure Sentinel beschikt u over de volledige kracht van hulpprogram ma's die al beschikbaar zijn in azure, evenals tabellen en grafieken die zijn ingebouwd om u te voorzien van analyses voor uw logboeken en query's. U kunt de ingebouwde werkmappen gebruiken of een nieuwe werkmap maken, helemaal zelf of op basis van een bestaande werkmap. 
+In deze quickstart leert u hoe u Azure Sentinel kunt gebruiken om snel te zien wat er in uw omgeving gebeurt. Nadat u uw gegevensbronnen hebt verbonden met Azure Sentinel, krijgt u direct toegang tot een visualisatie en analyse van de gegevens, zodat u kunt weten wat er gebeurt in al uw verbonden gegevensbronnen. Met Azure Sentinel beschikt u over werkmappen die de volledige kracht van Azure-hulpprogramma's combineren met ingebouwde tabellen en grafieken om u te voorzien van analyses voor uw logboeken en query's. U kunt de ingebouwde werkmappen gebruiken of eenvoudig een nieuwe werkmap maken, helemaal zelf of op basis van een bestaande werkmappen. 
 
-## <a name="get-visualization"></a>Visualisatie ophalen
+## <a name="get-visualization"></a>Visualisatie van gegevens
 
-Bekijk eerst het overzichts dashboard om een idee te krijgen van de beveiligings postuur van uw organisatie voor het visualiseren en ophalen van analyses van wat er gebeurt in uw omgeving. U kunt op elk element van deze tegels klikken om in te zoomen op de onbewerkte gegevens van waaruit ze zijn gemaakt. Om het geluid te verminderen en het aantal waarschuwingen dat u moet beoordelen en te minimaliseren, gebruikt Azure Sentinel een fusie techniek om waarschuwingen in incidenten te correleren. **incidenten** zijn groepen gerelateerde waarschuwingen die samen een actie kunnen ondernemen die u kunt onderzoeken en oplossen.
+Om te visualiseren en analyseren wat er gebeurt in uw omgeving, is het goed om eerst het overzichtsdashboard te bestuderen. U kunt zich zo een duidelijk beeld vormen van de beveiligingspostuur van uw organisatie. U kunt op elk element van deze tegels klikken om in te zoomen op de onbewerkte gegevens die eraan ten grondslag liggen. Om de ruis te verminderen en het aantal waarschuwingen te beperken dat u moet beoordelen en onderzoeken, gebruikt Azure Sentinel een samenvoegingstechniek om waarschuwingen te correleren in incidenten. **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een incident vormen dat kan worden onderzocht en opgelost en waarvoor een actie kan worden uitgevoerd.
 
-- Selecteer in de Azure Portal Azure Sentinel en selecteer vervolgens de werk ruimte die u wilt bewaken.
+- Selecteer in de Azure-portal de service Azure Sentinel en selecteer vervolgens de werkruimte die u wilt controleren.
 
-  ![Overzicht van Azure Sentinel](./media/qs-get-visibility/overview.png)
+  ![Overzichtsdashboard van Azure Sentinel](./media/qs-get-visibility/overview.png)
 
-- De werk balk aan de bovenkant geeft aan hoeveel gebeurtenissen u tijdens de geselecteerde periode hebt geselecteerd en vergelijkt deze met de voor gaande 24 uur. Op de werk balk wordt u van deze gebeurtenissen verteld, de waarschuwingen die zijn geactiveerd (het kleine getal vertegenwoordigt een wijziging in de afgelopen 24 uur), en vervolgens wordt u op de hoogte gebracht van die gebeurtenissen, hoeveel openstaan, in uitvoering en gesloten. Controleer of het aantal gebeurtenissen geen aanzienlijke toename of drop heeft. Als er een drop is, kan het zijn dat een verbinding is gestopt met het melden van Azure Sentinel. Als er een verhoging is, is er mogelijk een verdacht probleem opgetreden. Controleer of er nieuwe waarschuwingen zijn.
+- De werkbalk aan de bovenzijde van het dashboard geeft aan hoeveel gebeurtenissen er zijn opgetreden tijdens de geselecteerde periode en vergelijkt deze met de voorgaande 24 uur. De werkbalk bevat verder informatie over de waarschuwingen die zijn geactiveerd op basis van deze gebeurtenissen (het kleine getal vertegenwoordigt een wijziging in de afgelopen 24 uur). Vervolgens wordt er voor het totale aantal gebeurtenissen aangegeven hoeveel er openstaan, in behandeling zijn en zijn gesloten. Kijk of het aantal gebeurtenissen niet aanzienlijk is gestegen of gedaald. Als er sprake is van een daling, kan het zijn dat een verbinding geen meldingen meer verstuurt naar Azure Sentinel. In het geval van een stijging, is er mogelijk iets dat onderzocht moet worden. Controleer of er nieuwe waarschuwingen zijn.
 
-   ![Azure Sentinel trechter](./media/qs-get-visibility/funnel.png)
+   ![Werkbalk van Azure Sentinel](./media/qs-get-visibility/funnel.png)
 
-De hoofd tekst van de overzichts pagina geeft inzicht in de beveiligings status van uw werk ruimte:
+De hoofdtekst van de overzichtspagina geeft in een oogopslag inzicht in de beveiligingsstatus van uw werkruimte:
 
-- **Gebeurtenissen en waarschuwingen**in de loop van de tijd: hier wordt het aantal gebeurtenissen weer gegeven en hoeveel waarschuwingen zijn gemaakt op basis van deze gebeurtenissen. Als er sprake is van een ongebruikelijke piek, ziet u er waarschuwingen voor. als er iets ongebruikelijk is waarbij er sprake is van een Prikker, maar u geen waarschuwingen ziet, kan dit de oorzaak van het probleem zijn.
+- **Gebeurtenissen en waarschuwingen in de loop van de tijd**: Hier wordt het aantal gebeurtenissen weergegeven en hoeveel waarschuwingen er zijn gemaakt op basis van deze gebeurtenissen. Als er sprake is van een ongebruikelijke piek, ziet u daar waarschuwingen voor. Als er iets ongebruikelijk is met als gevolg een piek en u geen waarschuwingen ziet, kan dit reden voor ongerustheid zijn.
 
-- **Mogelijke schadelijke gebeurtenissen**: wanneer er verkeer wordt gedetecteerd van bronnen waarvan bekend is dat ze schadelijk zijn, wordt u door Azure Sentinel gewaarschuwd op de kaart. Als oranje wordt weer geven, is het inkomend verkeer: iemand probeert toegang te krijgen tot uw organisatie vanaf een bekend schadelijk IP-adres. Als de activiteit uitgaand (rood) wordt weer gegeven, betekent dit dat de gegevens van uw netwerk worden gestreamd uit uw organisatie naar een bekend schadelijk IP-adres.
+- **Gebeurtenissen die schadelijk kunnen zijn**: Wanneer er verkeer wordt gedetecteerd van bronnen waarvan bekend is dat ze schadelijk zijn, waarschuwt Azure Sentinel u hiervoor op de kaart. Als u oranje cirkels ziet, gaat het om inkomend verkeer: iemand probeert toegang te krijgen tot uw organisatie vanaf een bekend schadelijk IP-adres. Als de activiteit uitgaand is (rood), betekent dit dat er gegevens van uw netwerk worden gestreamd vanuit uw organisatie naar een bekend schadelijk IP-adres.
 
-   ![Azure-Sentinel-toewijzing](./media/qs-get-visibility/map.png)
+   ![Kaart van Azure Sentinel](./media/qs-get-visibility/map.png)
 
 
-- **Recente incidenten**: als u uw recente incidenten wilt weer geven, zijn de ernst en het aantal waarschuwingen dat is gekoppeld aan het incident. Als u de onverwachte piek in een specifiek type waarschuwing ziet, kan dit betekenen dat er momenteel een actieve aanval actief is. Als u bijvoorbeeld een plotselinge piek van 20 Pass-the-hash-gebeurtenissen van Azure ATP hebt, is het mogelijk dat iemand een aanval uitvoert.
+- **Recente incidenten**: Om uw recente incidenten te bekijken, evenals hun ernst en het aantal waarschuwingen dat is gekoppeld aan het incident. Als u een onverwachte piek ziet voor een bepaald type waarschuwing, kan dit betekenen dat er een aanval wordt uitgevoerd. Als u bijvoorbeeld een plotselinge piek ziet van 20 Pass-the-hash-gebeurtenissen vanuit Azure ATP, is het mogelijk dat iemand op dit moment een aanval uitvoert.
 
-- **Gegevens bron afwijkingen**: de gegevens analisten van micro soft hebben modellen gemaakt die de gegevens van uw gegevens bronnen voortdurend doorzoeken op afwijkingen. Als er geen afwijkingen zijn, wordt er niets weer gegeven. Als er afwijkingen worden gedetecteerd, moet u zich diep vinden om te zien wat er is gebeurd. Klik bijvoorbeeld op de Prikker in azure activity. U kunt klikken op de **grafiek** om te zien wanneer de Prikker zich voordeed en vervolgens filteren op activiteiten die tijdens die periode zijn opgetreden om te zien wat de oorzaak van de Prikker heeft.
+- **Gegevensbronanomalieën**: De gegevensanalisten van Microsoft hebben modellen gemaakt die de gegevens uit uw gegevensbronnen voortdurend doorzoeken op afwijkingen. Als er geen afwijkingen zijn, wordt er niets weergegeven. Als er afwijkingen worden gedetecteerd, moet u deze in detail bekijken om te zien wat er is gebeurd. Klik bijvoorbeeld op de piek in Azure-activiteiten. Klik op **Grafiek** om te zien wanneer de piek zich heeft voorgedaan en filter vervolgens op activiteiten die zijn opgetreden in die periode om te zien wat de oorzaak van de piek is.
 
-   ![Azure-Sentinel-toewijzing](./media/qs-get-visibility/anomolies.png)
+   ![Kaart van Azure Sentinel](./media/qs-get-visibility/anomolies.png)
 
 ## <a name="use-built-in-workbooks"></a>Ingebouwde werkmappen gebruiken<a name="dashboards"></a>
 
-Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens bronnen om u te laten overgaan op de gebeurtenissen die in deze services worden gegenereerd. De ingebouwde werkmappen omvatten Azure AD, gebeurtenissen voor Azure-activiteiten en on-premises, die gegevens kunnen bevatten van Windows-gebeurtenissen van servers, van de eerste partij, van derden, waaronder firewall verkeers logboeken, Office 365 en onveilige protocollen op basis van Windows-gebeurtenissen. De werkmappen zijn gebaseerd op Azure Monitor werkmappen om u te voorzien van verbeterde aanpassings mogelijkheden en flexibiliteit bij het ontwerpen van uw eigen werkmap. Zie [werkmappen](../azure-monitor/app/usage-workbooks.md)voor meer informatie.
+Ingebouwde werkmappen bieden geïntegreerde gegevens uit uw verbonden gegevensbronnen om u de kans te geven in te zoomen op de gebeurtenissen die in deze services zijn gegenereerd. De ingebouwde werkmappen hebben betrekking op Azure AD, gebeurtenissen voor Azure-activiteiten en on-premises, wat gegevens kunnen zijn van Windows-gebeurtenissen van servers, uit Microsoft-bronnen, uit bronnen van derden, waaronder logboeken van firewallverkeer, Office 365 en onveilige protocollen op basis van Windows-gebeurtenissen. De werkmappen zijn gebaseerd op Azure Monitor-werkmappen, zodat u bij het ontwerpen van uw eigen werkmap de beschikking hebt over verbeterde mogelijkheden voor aanpassing en flexibiliteit. Zie [Werkmappen](../azure-monitor/platform/workbooks-overview.md) voor meer informatie.
 
-1. Onder **instellingen**selecteert u **werkmappen**. Onder **geïnstalleerd**ziet u alle geïnstalleerde werkmappen. Onder **alle**kunt u de volledige galerie met ingebouwde werkmappen zien die beschikbaar zijn voor installatie. 
-2. Zoek naar een specifieke werkmap om de hele lijst en een beschrijving van de Voorst Ellen te bekijken. 
-3. Als u Azure AD gebruikt om aan de slag te gaan met Azure Sentinel, raden we u aan ten minste de volgende werkmappen te installeren:
-   - **Azure AD**: gebruik een van de volgende of beide:
-       - Met **Azure AD-aanmeldingen** worden aanmeldingen in de loop van de tijd geanalyseerd om te zien of er afwijkingen zijn. Deze werkmappen bevat mislukte aanmeldingen door toepassingen, apparaten en locaties, zodat u in één oogopslag kunt zien of er iets ongebruikelijk is. Let op meerdere mislukte aanmeldingen. 
-       - Met **Azure AD-controle logboeken** worden beheer activiteiten geanalyseerd, zoals wijzigingen in gebruikers (toevoegen, verwijderen, enz.), het maken van groepen en het wijzigen van wijzigingen.  
+1. Selecteer onder **Instellingen** de optie **Werkmappen**. Onder **Geïnstalleerd** worden alle geïnstalleerde werkmappen weergegeven. Onder **Alle** ziet u de complete galerie met ingebouwde werkmappen die beschikbaar zijn voor installatie. 
+2. Zoek naar een specifieke werkmap om de hele lijst te zien met beschrijvingen van de mappen. 
+3. Als we ervan uitgaan dat u Azure AD gebruikt, raden we u aan om ten minste de volgende werkmappen te installeren om aan de slag te gaan met Azure Sentinel:
+   - **Azure AD**: Gebruik een van de volgende werkmappen, of beide:
+       - **Azure AD-aanmeldingen**: hierin worden aanmeldingen in de loop van de tijd geanalyseerd om te zien of er afwijkingen zijn. Deze werkmap vermeldt mislukte aanmeldingen op toepassing, apparaat en locatie, zodat u in een oogopslag kunt zien of er iets vreemds aan de hand is. Let met name op meerdere mislukte aanmeldingen. 
+       - **Azure AD-auditlogboeken**: hierin worden beheeractiviteiten geanalyseerd, zoals wijzigingen van gebruikers (toevoegen, verwijderen, enz.), het maken van groepen en aanpassingen.  
 
-   - Voeg een werkmap toe voor uw firewall. Voeg bijvoorbeeld de Palo Alto-werkmap toe. De werkmap analyseert het verkeer van uw firewall, met een correlatie tussen uw firewall gegevens en bedreigings gebeurtenissen, en verlaagt verdachte gebeurtenissen tussen entiteiten. Werkmappen bieden informatie over trends in uw verkeer en u kunt inzoomen op en filteren op resultaten. 
+   - Voeg een werkmap toe voor uw firewall, zoals de werkmap Palo Alto. De werkmap analyseert het verkeer op uw firewall en biedt correlaties tussen uw firewallgegevens en bedreigingsgebeurtenissen, en accentueert verdachte gebeurtenissen binnen entiteiten. Werkmappen bieden informatie over trends in uw verkeer en u kunt inzoomen op resultaten en deze filteren. 
 
-      ![PAL Alto-dash board](./media/qs-get-visibility/palo-alto-week-query.png)
+      ![Palo Alto-dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-U kunt de werkmappen aanpassen door de knop ![](./media/qs-get-visibility/edit-query-button.png)hoofd query te bewerken. U kunt klikken op de ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken of de specifieke tegels uit de werkmap moet verwijderen.
+U kunt de werkmappen aanpassen door de hoofdquery te bewerken met ![knop](./media/qs-get-visibility/edit-query-button.png). Klik op de knop ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [Log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md). Selecteer het beletselteken (...) en vervolgens **Tegelgegevens aanpassen** om het hoofdtijdfilter te bewerken of de specifieke tegels uit de werkmap te verwijderen.
 
-Zie [zelf studie: visuele gegevens in log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md) voor meer informatie over het werken met query's
+Ga voor meer informatie over het werken met query's naar [Tutorial: Visual data in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md) (Zelfstudie: Gegevens visualiseren in Log Analytics).
 
 ### <a name="add-a-new-tile"></a>Een nieuwe tegel toevoegen
 
-Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande werkmap, een van de elementen die u maakt of een ingebouwde Azure-Sentinel-werkmap. 
-1. Maak in Log Analytics een tegel met behulp van de instructies in de [zelf studie: visuele gegevens in log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
-2. Nadat de tegel is gemaakt, selecteert u onder **pincode**de werkmap waarin u de tegel wilt weer geven.
+Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande werkmap. Dit kan een werkmap zijn die u zelf maakt of een ingebouwde werkmap van Azure Sentinel. 
+1. Maak in Log Analytics een tegel met behulp van de instructies in [Tutorial: Visual data in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md) (Zelfstudie: Gegevens visualiseren in Log Analytics). 
+2. Nadat de tegel is gemaakt, selecteert u onder **Vastmaken**de werkmap waarin u de tegel wilt weergeven.
 
 ## <a name="create-new-workbooks"></a>Nieuwe werkmappen maken
 U kunt een volledig nieuwe werkmap maken of een ingebouwde werkmap gebruiken als basis voor de nieuwe werkmap.
 
-1. Als u een volledig nieuwe werkmap wilt maken, selecteert u **werkmappen** en vervolgens **+ nieuwe werkmap**.
-2. Selecteer het abonnement waarin de werkmap is gemaakt en geef deze een beschrijvende naam. Elke werkmap is een Azure-resource, zoals andere, en u kunt IT-rollen (RBAC) toewijzen om te bepalen wie toegang heeft. 
-3. Als u wilt dat deze wordt weer gegeven in uw werkmappen om visualisaties vast te maken, moet u deze delen. Klik op **delen** en vervolgens op **gebruikers beheren**. 
+1. Als u een volledig nieuwe werkmap wilt maken, selecteert u **Werkmappen** en vervolgens **+ Nieuwe werkmap**.
+2. Selecteer het abonnement waarin u de werkmap wilt maken en geef de map een beschrijvende naam. Elke werkmap is net als alle andere elementen een Azure-resource, en u kunt er rollen (RBAC) aan toewijzen om te bepalen wie toegang heeft. 
+3. Als u wilt dat de werkmap kan worden gekozen om er visualisaties aan vast te maken, moet u de map delen. Klik hiervoor op **Delen** en vervolgens op **Gebruikers beheren**. 
  
-1. Gebruik de **optie toegang** en **roltoewijzingen** controleren, net zoals u zou doen voor andere Azure-resources. Zie voor meer informatie [Azure-werkmappen delen met behulp van RBAC](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Gebruik de opties **Toegang controleren** en **Roltoewijzingen** zoals u dat zou doen voor andere Azure-resources. Zie [Azure-werkmappen delen met behulp van RBAC](../azure-portal/azure-portal-dashboard-share-access.md) voor meer informatie.
 
 
 ## <a name="new-workbook-examples"></a>Voorbeelden van nieuwe werkmappen
 
-Met de volgende voorbeeld query kunt u trends van verkeer tussen weken vergelijken. U kunt eenvoudig overschakelen naar de leverancier en gegevens bron van het apparaat waarop u de query uitvoert. In dit voor beeld maakt gebruik van SecurityEvent van Windows. u kunt deze switch zo wijzigen dat deze wordt uitgevoerd op AzureActivity of CommonSecurityLog op elke andere firewall.
+Met de volgende voorbeeldquery kunt u trends vergelijken van verkeer voor verschillende weken. U kunt eenvoudig aanpassen voor welke apparaatleverancier en gegevensbron u de query wilt uitvoeren. In dit voorbeeld wordt SecurityEvent van Windows gebruikt. U kunt de query aanpassen voor uitvoering op AzureActivity of CommonSecurityLog op elke andere firewall.
 
      |where DeviceVendor == "Palo Alto Networks":
       // week over week query
@@ -99,7 +99,7 @@ Met de volgende voorbeeld query kunt u trends van verkeer tussen weken vergelijk
       | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 
 
-Mogelijk wilt u een query maken die gegevens uit meerdere bronnen bevat. U kunt een query maken om Azure Active Directory audit logboeken te bekijken voor nieuwe gebruikers die zojuist zijn gemaakt. vervolgens controleert u de logboeken van uw Azure om na te gaan of de gebruiker is begonnen met het wijzigen van de roltoewijzing binnen 24 uur na het maken van de toewijzing. Deze verdachte activiteit zou op dit dash board worden weer gegeven:
+Mogelijk wilt u een query maken die gegevens uit meerdere bronnen combineert. U kunt een query maken om te controleren of Azure Active Directory-auditlogboeken informatie bevatten over nieuwe gebruikers die zojuist zijn gemaakt. Daarna kunt u de logboeken van Azure controleren om na te gaan of deze gebruikers binnen 24 uur nadat ze zijn toegevoegd, hun roltoewijzing hebben gewijzigd. Deze verdachte activiteit zou in dit dashboard worden weergegeven:
 
     AuditLogs
     | where OperationName == "Add user"
@@ -109,22 +109,22 @@ Mogelijk wilt u een query maken die gegevens uit meerdere bronnen bevat. U kunt 
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-U kunt verschillende werkmappen maken op basis van de rol van de persoon die de gegevens bekijkt en wat ze zoeken. U kunt bijvoorbeeld een werkmap maken voor uw netwerk beheerder die de firewall gegevens bevat. U kunt ook werkmappen maken op basis van hoe vaak u deze wilt bekijken, of u nu dagelijks wilt controleren, en andere items die u eenmaal per uur wilt controleren. u kunt bijvoorbeeld elk uur uw Azure AD-aanmeldingen bekijken om te zoeken naar afwijkingen. 
+U kunt verschillende werkmappen maken op basis van de rol van de persoon die de gegevens bekijkt en waarnaar ze op zoek zijn. U kunt bijvoorbeeld een werkmap maken voor uw netwerkbeheerder die de firewallgegevens bevat. U kunt ook werkmappen maken op basis van hoe vaak u deze wilt bekijken, of u nu bepaalde zaken dagelijks wilt controleren en andere items eenmaal per uur. Het laatste is bijvoorbeeld zinvol om adequaat te kunnen reageren bij verdachte Azure AD-aanmeldingen. 
 
 ## <a name="create-new-detections"></a>Nieuwe detecties maken
 
-Genereer detecties op de [gegevens bronnen die u hebt verbonden met Azure Sentinel](connect-data-sources.md) om bedreigingen in uw organisatie te onderzoeken.
+Genereer detecties voor de [gegevensbronnen die u hebt verbonden met Azure Sentinel](connect-data-sources.md) om bedreigingen in uw organisatie te onderzoeken.
 
-Wanneer u een nieuwe detectie maakt, moet u gebruikmaken van de ingebouwde detecties die zijn gemaakt door micro soft-beveiligings onderzoekers die zijn afgestemd op de gegevens bronnen die u hebt verbonden.
+Wanneer u een nieuwe detectie maakt, kunt u gebruikmaken van de ingebouwde detecties die zijn gemaakt door beveiligingsonderzoekers van Microsoft en die zijn afgestemd op de gegevensbronnen waarmee u bent verbonden.
 
-Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en vervolgens op **regel sjablonen**. Dit tabblad bevat alle ingebouwde Azure Sentinel-regels.
+Als u alle vooraf gedefinieerde detecties wilt weergeven, gaat u naar **Analyse** en vervolgens naar **Regelsjablonen**. Dit tabblad bevat alle ingebouwde regels van Azure Sentinel.
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Zie [zelf studie: ingebouwde analyses ophalen](tutorial-detect-threats-built-in.md)voor meer informatie over het verkrijgen van out-of-the-box-detecties.
+Meer informatie over vooraf gedefinieerde detecties vindt u in [Tutorial: Detect threats out-of-the-box](tutorial-detect-threats-built-in.md) (Zelfstudie: Kant-en-klare detectie van bedreigingen).
  
 ## <a name="next-steps"></a>Volgende stappen
-In deze Snelstartgids hebt u geleerd hoe u aan de slag kunt met Azure Sentinel. Ga door naar de zelf studie voor [het detecteren van bedreigingen](tutorial-detect-threats-built-in.md).
+In deze quickstart hebt u geleerd hoe u aan de slag gaat met Azure Sentinel. Ga verder met de zelfstudie voor het [detecteren van bedreigingen](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
-> [Aangepaste regels voor detectie van bedreigingen maken](tutorial-detect-threats-custom.md) om uw reacties op bedreigingen te automatiseren.
+> [Definieer aangepaste regels voor de detectie van bedreigingen](tutorial-detect-threats-custom.md) om uw reacties op bedreigingen te automatiseren.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2d5d508afe81975cbeda448b497a098e8a3bbcf3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7d9157993e8cdbb6f7976ee2d4ce67b9039e7b52
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589275"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835832"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Toegang tot opslagaccounts beheren voor SQL on-demand (preview)
 
@@ -26,11 +26,7 @@ In dit artikel worden de typen referenties beschreven die u kunt gebruiken en ho
 
 ## <a name="supported-storage-authorization-types"></a>Ondersteunde autorisatietypen voor opslag
 
-Een gebruiker die zich heeft aangemeld bij een SQL on demand-resource moet gemachtigd zijn om query's uit te voeren op de bestanden in Azure Storage als de bestanden niet openbaar beschikbaar zijn. Er worden drie autorisatietypen ondersteund:
-
-- [Shared Access Signature](?tabs=shared-access-signature)
-- [Gebruikersidentiteit](?tabs=user-identity)
-- [Beheerde identiteit](?tabs=managed-identity)
+Een gebruiker die zich heeft aangemeld bij een SQL on demand-resource moet gemachtigd zijn om query's uit te voeren op de bestanden in Azure Storage als de bestanden niet openbaar beschikbaar zijn. U kunt drie autorisatietypen gebruiken voor toegang tot niet-openbare opslag: [Gebruikersidentiteit](?tabs=user-identity), [Shared Access Signature](?tabs=shared-access-signature) en [Beheerde identiteit](?tabs=managed-identity).
 
 > [!NOTE]
 > [Azure AD Pass-Through](#force-azure-ad-pass-through) is het standaardgedrag bij het maken van een werkruimte. Als u die techniek gebruikt, hoeft u geen referenties te maken voor elk opslagaccount dat wordt geopend met behulp van Azure AD-aanmeldingen. U kunt [dit gedrag uitschakelen](#disable-forcing-azure-ad-pass-through).
@@ -99,7 +95,7 @@ Voordat de gegevens worden vrijgegeven, moet de Azure Storage-beheerder machtigi
 
 ### <a name="anonymous-access"></a>[Anonieme toegang](#tab/public-access)
 
-U kunt toegang krijgen tot openbaar beschikbare bestanden die in Azure-opslagaccounts zijn geplaatst die [anonieme toegang toestaan](/azure/storage/blobs/storage-manage-access-to-resources.md).
+U kunt toegang krijgen tot openbaar beschikbare bestanden die in Azure-opslagaccounts zijn geplaatst die [anonieme toegang toestaan](/azure/storage/blobs/storage-manage-access-to-resources).
 
 ---
 

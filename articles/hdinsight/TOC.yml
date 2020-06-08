@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planning clustercapaciteit
           href: ./hdinsight-capacity-planning.md
-        - name: Verhoging van CPU-kernquotum aanvragen
-          href: ./quota-increase-request.md
         - name: Best practices voor clusterbeheer
           href: ./cluster-management-best-practices.md
         - name: Beschikbaarheid en betrouwbaarheid
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: Problemen oplossen
           items:
+            - name: Verhoging van CPU-kernquotum aanvragen
+              href: ./quota-increase-request.md
             - name: Problemen met scriptacties oplossen
               href: ./troubleshoot-script-action.md
             - name: Fouten bij het maken van resources

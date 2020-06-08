@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ac1fb1a69433be240e4250ea37835037f0b2ffa
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214255"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873940"
 ---
 ::: zone target="docs"
 
@@ -56,7 +56,7 @@ Voor Windows-clients moet de volgende software ook zijn geïnstalleerd.
 | --- | --- |
 | Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |5.0|
+| Windows Management Framework |5.1|
 | BitLocker| - |
 
 ## <a name="other-required-software-for-linux-clients"></a>Andere vereiste software voor Linux-clients
@@ -79,10 +79,6 @@ Hier volgt een lijst met de ondersteunde opslagtypen voor de Data Box Disk.
 | Klassiek | Standard |
 | Algemeen gebruik  |Standard; zowel V1 als V2 wordt ondersteund. Zowel dynamische als statische servicelagen worden ondersteund. |
 | Blob-opslagaccount | |
-
->[!NOTE]
-> Gen 2-accounts van Azure Data Lake Storage worden niet ondersteund.
-
 
 ## <a name="supported-storage-types-for-upload"></a>Ondersteunde opslagtypen voor uploaden
 

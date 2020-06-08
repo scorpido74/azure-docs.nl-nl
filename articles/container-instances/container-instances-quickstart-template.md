@@ -1,27 +1,25 @@
 ---
-title: 'Quick Start: Geo-gerepliceerd REGI ster maken-Resource Manager-sjabloon'
-description: In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om snel een container web-app te implementeren die in een geïsoleerd Azure-container exemplaar wordt uitgevoerd.
+title: 'Snelstart: geo-gerepliceerd register maken - Resource Manager-sjabloon'
+description: In deze snelstart gebruikt u een Azure Resource Manager-sjabloon om snel een container-web-app te implementeren die op een geïsoleerde Azure-containerinstantie wordt uitgevoerd.
 services: azure-resource-manager
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: f9f789d2f2c6c21e38f241b445c72b330c689a8d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 17f71d1c383c72fab748a9bdb789158095616f2d
+ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930417"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83779873"
 ---
-# <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Snelstartgids: een container exemplaar in azure implementeren met behulp van een resource manager-sjabloon
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Quickstart: Een containerinstantie in Azure implementeren met behulp van een Resource Manager-sjabloon
 
-Gebruik Azure Container Instances om serverloze docker-containers in azure uit te voeren met eenvoud en snelheid. Implementeer een toepassing op een container exemplaar op aanvraag wanneer u geen volledig container Orchestration-platform zoals Azure Kubernetes service nodig hebt.
-
-In deze Snelstartgids gebruikt u een Azure Resource Manager sjabloon om een geïsoleerde docker-container te implementeren en de webtoepassing beschikbaar te maken met een openbaar IP-adres. 
+Gebruik Azure Container Instances om snel en eenvoudig serverloze Docker-containers uit te voeren in Azure. Een toepassing implementeren in een containerinstantie op aanvraag, wanneer u geen volledig indelingsplatform voor containers nodig hebt zoals Azure Kubernetes Service. In deze snelstart gebruikt u een Azure Resource Manager-sjabloon om een geïsoleerde Docker-container te implementeren en de webtoepassing ervan beschikbaar te maken met een openbaar IP-adres.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -31,53 +29,53 @@ Geen.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip)start-sjablonen.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-aci-linuxcontainer-public-ip/).
 
-[!code-json[<Azure Resource Manager template create geo-replicated registry>](~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-aci-linuxcontainer-public-ip/azuredeploy.json" range="1-107" highlight="61-100":::
 
 De volgende resource is gedefinieerd in de sjabloon:
 
-* **[Micro soft. ContainerInstance/containerGroups](/azure/templates/microsoft.containerinstance/containergroups)**: een Azure-container groep maken. Met deze sjabloon wordt een groep gedefinieerd die bestaat uit één container exemplaar.
+* **[Microsoft.ContainerInstance/containerGroups](/azure/templates/microsoft.containerinstance/containergroups)** : een Azure-containergroep maken. Met deze sjabloon wordt een groep gedefinieerd die uit één containerinstantie bestaat.
 
-Meer Azure Container Instances sjabloon voorbeelden vindt u in de Quick Start- [sjabloon galerie](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
+Meer voorbeelden van Azure Container Instances vindt u in de [galerie met snelstartsjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Containerinstance&pageNumber=1&sort=Popular).
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
- 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een REGI ster en een replica op een andere locatie.
+ 1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. De sjabloon maakt een register en een replica op een andere locatie.
 
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aci-linuxcontainer-public-ip%2Fazuredeploy.json)
 
  2. Typ of selecteer de volgende waarden.
 
-    * **Abonnement**: Selecteer een Azure-abonnement.
-    * **Resource groep**: Selecteer **nieuwe maken**, voer een unieke naam in voor de resource groep en selecteer **OK**.
-    * **Locatie**: selecteer een locatie voor de resourcegroep. Voor beeld: **VS-centraal**.
-    * **Naam**: accepteer de gegenereerde naam voor het exemplaar of voer een naam in.
-    * **Afbeelding**: accepteer de standaard naam van de installatie kopie. In deze voorbeeld installatie kopie van Linux wordt een kleine web-app beschreven die is geschreven in node. js, die een statische HTML-pagina vormt. 
+    * **Abonnement**: selecteer een Azure-abonnement.
+    * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en selecteer **OK**.
+    * **Locatie**: selecteer een locatie voor de resourcegroep. Voorbeeld: **VS - centraal**.
+    * **Naam**: accepteer de gegenereerde naam voor de instantie of voer een naam in.
+    * **Installatiekopie**: accepteer de standaardnaam van de installatiekopie. Dit voorbeeld van een Linux-installatiekopie bevat een kleine web-app die is geschreven in Node.js en die een statische HTML-pagina dient. 
 
-    Accepteer de standaard waarden voor de overige eigenschappen.
+    Accepteer de standaardwaarden voor de overige eigenschappen.
 
-    Bekijk de voor waarden. Als u akkoord gaat, selecteert u **Ik ga akkoord met de bovenstaande voor waarden**.
+    Bekijk de voorwaarden. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** als u akkoord gaat.
 
-    ![Sjabloon eigenschappen](media/container-instances-quickstart-template/template-properties.png)
+    ![Sjablooneigenschappen](media/container-instances-quickstart-template/template-properties.png)
 
- 3. Nadat het exemplaar is gemaakt, krijgt u een melding:
+ 3. Nadat de instantie is gemaakt, krijgt u een melding:
 
-    ![Portal melding](media/container-instances-quickstart-template/deployment-notification.png)
+    ![Melding in de portal](media/container-instances-quickstart-template/deployment-notification.png)
 
- De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de Azure Portal, kunt u de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-cli.md).
+ Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast de Azure-portal kunt u de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-cli.md) voor meer informatie over andere implementatiemethoden.
 
-## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-Gebruik de Azure Portal of een hulp programma zoals de [Azure cli](container-instances-quickstart.md) om de eigenschappen van het container exemplaar te controleren.
+Gebruik de Azure-portal of een hulpprogramma zoals de [Azure CLI](container-instances-quickstart.md) om de eigenschappen van de containerinstantie te controleren.
 
-1. Zoek in de portal naar Container Instances en selecteer het container exemplaar dat u hebt gemaakt.
+1. Zoek in de portal naar Container Instances en selecteer de containerinstantie die u hebt gemaakt.
 
-1. Noteer op de pagina **overzicht** de **status** van het exemplaar en het bijbehorende **IP-adres**.
+1. Op de pagina **Overzicht** ziet u de **Status** van de instantie en het **IP-adres**.
 
-    ![Exemplaar overzicht](media/container-instances-quickstart-template/aci-overview.png)
+    ![Overzicht van instantie](media/container-instances-quickstart-template/aci-overview.png)
 
-2. Nadat de status is *uitgevoerd*, gaat u naar het IP-adres in uw browser. 
+2. Wanneer de Status eenmaal *Uitvoeren* is, gaat u naar het IP-adres in uw browser. 
 
     ![App die is geïmplementeerd met Azure Container Instances, weergegeven in de browser](media/container-instances-quickstart-template/view-application-running-in-an-azure-container-instance.png)
 
@@ -85,22 +83,22 @@ Gebruik de Azure Portal of een hulp programma zoals de [Azure cli](container-ins
 
 Het weergeven van de logboeken voor een exemplaar van de container is handig bij het oplossen van problemen met de container of de toepassing die wordt uitgevoerd.
 
-Als u de logboeken van de container wilt weer geven, selecteert u onder **instellingen**de optie **containers** > **Logboeken**. De HTTP GET-aanvraag wordt als het goed is gegenereerd wanneer u de toepassing in uw browser hebt bekeken.
+Selecteer om de containerlogboeken weer te geven onder **Instellingen** de optie **Containers** > **Logboeken**. De HTTP GET-aanvraag wordt als het goed is gegenereerd wanneer u de toepassing in uw browser hebt bekeken.
 
 ![Container-logboeken in Azure Portal](media/container-instances-quickstart-template/aci-logs.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met de container, selecteert u op de pagina **overzicht** voor het container exemplaar **verwijderen**. Bevestig de verwijdering als u daarom wordt gevraagd.
+Wanneer u klaar bent met de container, selecteert u op de pagina **Overzicht** voor de containerinstantie de optie **Verwijderen**. Bevestig de verwijdering als u daarom wordt gevraagd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Azure-container exemplaar gemaakt op basis van een open bare micro soft-installatie kopie. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
+In deze snelstart hebt u een Azure-containerinstantie gemaakt van een openbare Microsoft-installatiekopie. Als u zelf een containerinstallatiekopie wilt bouwen en deze wilt implementeren met behulp van een privé Azure Container-register, gaat u verder met de zelfstudie voor Azure Container Instances.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: een container installatie kopie maken voor implementatie naar Azure Container Instances](./container-instances-tutorial-prepare-app.md)
+> [Zelfstudie: een containerinstallatiekopie voor implementatie in Azure Container Instances maken](./container-instances-tutorial-prepare-app.md)
 
-Voor een stapsgewijze zelf studie die u door het proces van het maken van een sjabloon leidt, raadpleegt u:
+Zie voor een stapsgewijze zelfstudie die u door het proces van het maken van een sjabloon leidt:
 
 > [!div class="nextstepaction"]
-> [Zelf studie: uw eerste Azure Resource Manager sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Zelfstudie: uw eerste Azure Resource Manager-sjabloon maken en implementeren](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

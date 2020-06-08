@@ -195,6 +195,19 @@
         - name: Streaming
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Problemen oplossen
+      items:
+        - name: Veelgestelde vragen
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Foutcodes
+          items:
+            - name: Foutcodes voor streaming-eindpunten
+              href: streaming-endpoint-error-codes.md
+            - name: Foutcodes voor live-gebeurtenissen
+              href: live-event-error-codes.md
+            - name: Foutcodes in taak
+              href: job-error-codes.md
     - name: Migratie van v2 naar v3
       items:
         - name: v2 vs v3
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: Beschrijvende audio signaleren
           href: signal-descriptive-audio-howto.md
-    - name: Problemen oplossen
-      items:
-        - name: Veelgestelde vragen
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Foutcodes
-          items:
-            - name: Foutcodes voor streaming-eindpunten
-              href: streaming-endpoint-error-codes.md
-            - name: Foutcodes voor live-gebeurtenissen
-              href: live-event-error-codes.md
-            - name: Foutcodes in taak
-              href: job-error-codes.md
 - name: Naslaginformatie
   items:
     - name: OpenAPI-specificatie (Swagger)

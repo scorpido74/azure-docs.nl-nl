@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: verificatieproviders configureren
           href: concept-mfa-authprovider.md
+        - name: App-wachtwoorden gebruiken
+          href: howto-mfa-app-passwords.md
         - name: Directory Federation
           items:
             - name: Windows Server 2016 AD FS Adapter
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Webservice voor mobiele apps
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Instellingen configureren
+          href: howto-mfa-server-settings.md
         - name: Hoge beschikbaarheid configureren
           href: howto-mfaserver-deploy-ha.md
         - name: MFA-server upgraden

@@ -1,61 +1,61 @@
 ---
-title: Een Service Fabric-cluster maken met behulp van Azure Resource Manager sjabloon
-description: In deze Quick Start maakt u een Azure Service Fabric test cluster met behulp van Azure Resource Manager sjabloon.
+title: Een Service Fabric-cluster maken met behulp van Azure Resource Manager-sjabloon
+description: In deze quickstart maakt u een Azure Service Fabric-testcluster met behulp van Azure Resource Manager-sjabloon.
 author: erikadoyle
 ms.service: service-fabric
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 60771d5a188df5dfeca3530a551a116c870e63f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2db3dffbbf0f6d98fe6da7a0cec5400f7f2c03da
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82149331"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83722453"
 ---
-# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Snelstartgids: een Service Fabric-cluster maken met Resource Manager-sjabloon
+# <a name="quickstart-create-a-service-fabric-cluster-using-resource-manager-template"></a>Quickstart: Een Service Fabric-cluster maken met behulp van Resource Manager-sjabloon
 
-Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Een Service Fabric *cluster* is een met het netwerk verbonden reeks virtuele machines waarop uw micro services worden geïmplementeerd en beheerd.
+Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u gemakkelijk schaalbare en betrouwbare microservices en containers verpakt, implementeert en beheert. Een *Service Fabric-cluster* is een met het netwerk verbonden reeks virtuele machines waarop uw microservices worden geïmplementeerd en beheerd.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-In dit artikel wordt beschreven hoe u een Service Fabric test cluster in azure implementeert met behulp van Resource Manager. Dit Windows-cluster met vijf knoop punten wordt beveiligd met een zelfondertekend certificaat en is daarom alleen bedoeld voor instructie doeleinden (in plaats van productie werk belastingen).
+In dit artikel wordt beschreven hoe u een Service Fabric-testcluster in Azure implementeert met behulp van Resource Manager. Dit Windows-cluster met vijf knooppunten wordt beveiligd met een zelfondertekend certificaat en is daarom alleen bedoeld voor instructies (in plaats van productieworkloads).
 
-We gebruiken Azure PowerShell om de sjabloon te implementeren. Naast Azure PowerShell, kunt u ook de Azure Portal, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-portal.md).
+We gebruiken Azure PowerShell om het sjabloon te implementeren. Naast Azure PowerShell kunt u ook de Azure-portal, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-portal.md) voor meer informatie over andere implementatiemethoden.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Service Fabric SDK-en Power shell-modules installeren
+### <a name="install-service-fabric-sdk-and-powershell-modules"></a>Installeer Service Fabric SDK en PowerShell-modules
 
-Als u deze Snelstartgids wilt volt ooien, moet u het volgende doen:
+U hebt het volgende nodig om deze quickstart te voltooien:
 
-* Installeer de [service Fabric SDK en Power shell-module](service-fabric-get-started.md).
+* Installeer de [Service Fabric SDK en PowerShell-module](service-fabric-get-started.md).
 
 * Installeer [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-### <a name="download-the-sample-template-and-certificate-helper-script"></a>De voorbeeld sjabloon en het Help-script voor het certificaat downloaden
+### <a name="download-the-sample-template-and-certificate-helper-script"></a>De voorbeeldsjabloon en het helperscript voor het certificaat downloaden
 
-Kloon of down load de [Azure Resource Manager Quick](https://github.com/Azure/azure-quickstart-templates) start-sjablonen opslag plaats. U kunt ook lokaal de volgende bestanden kopiëren die in de map *service-Fabric-Secure-cluster-5-node-1-NodeType* worden gebruikt:
+Kloon of download de opslagplaats voor [Azure Resource Manager-quickstartsjablonen](https://github.com/Azure/azure-quickstart-templates). U kunt ook lokaal de volgende bestanden kopiëren die we gebruiken vanuit de map *service-Fabric-Secure-cluster-5-node-1-nodeType*:
 
-* [New-ServiceFabricClusterCertificate. ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
-* [azuredeploy. json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
+* [New-ServiceFabricClusterCertificate.ps1](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/New-ServiceFabricClusterCertificate.ps1)
+* [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json)
 * [azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.parameters.json)
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij Azure en wijs het abonnement aan dat moet worden gebruikt voor het maken van uw Service Fabric-cluster.
+Meld u aan bij Azure en geef het abonnement op dat moet worden gebruikt voor het maken van uw Service Fabric-cluster.
 
 ```powershell
 # Sign in to your Azure account
 Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
 
-### <a name="create-a-self-signed-certificate-stored-in-key-vault"></a>Een zelfondertekend certificaat maken dat is opgeslagen in Key Vault
+### <a name="create-a-self-signed-certificate-stored-in-key-vault"></a>Maak een zelfondertekend certificaat opgeslagen in Key Vault
 
-Service Fabric gebruikt X. 509-certificaten voor [het beveiligen van een cluster en het](./service-fabric-cluster-security.md) bieden van beveiligings functies voor toepassingen en [Key Vault](../key-vault/general/overview.md) voor het beheren van deze certificaten. Voor het maken van een cluster is een cluster certificaat vereist om de communicatie tussen knoop punten in te scha kelen. Voor het maken van deze Snelstartgids test cluster maken we een zelfondertekend certificaat voor cluster authenticatie. Voor productie werkbelastingen zijn certificaten vereist die zijn gemaakt met een correct geconfigureerde Windows Server Certificate Service of een van een goedgekeurde certificerings instantie (CA).
+Service Fabric gebruikt X.509-certificaten om [een cluster te beveiligen ](./service-fabric-cluster-security.md) en beveiligingsfuncties van toepassingen te bieden en [Key Vault](../key-vault/general/overview.md) om die certificaten te beheren. Voor het maken van een cluster is een clustercertificaat vereist om de communicatie tussen knooppunten mogelijk te maken. Voor het maken van deze testcluster voor de quickstart maken we een zelfondertekend certificaat voor clusterverificatie. Voor productieworkloads zijn certificaten vereist die zijn gemaakt met een correct geconfigureerde service voor een Windows-servercertificaat of een van een goedgekeurde certificeringsinstantie (CA).
 
 ```powershell
 # Designate unique (within cloudapp.azure.com) names for your resources
@@ -72,14 +72,14 @@ New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $resourceGroupName -L
 .\New-ServiceFabricClusterCertificate.ps1
 ```
 
-Het script vraagt u om het volgende te doen (zorg ervoor dat u de *CertDNSName* en de sleutel *kluis* wijzigt in de onderstaande voorbeeld waarden):
+In het script wordt u gevraagd om het volgende te doen (zorg dat u *CertDNSName* en *KeyVaultName* in de onderstaande voorbeeldwaarden wijzigt):
 
-* **Wacht woord:** Wacht woord. 1
-* **CertDNSName:** *sfquickstart*. southcentralus.cloudapp.Azure.com
-* Sleutel **kluisnaam:** *SFQuickstartKV*
+* **Wachtwoord:** Password!1
+* **CertDNSName:** *sfquickstart*.southcentralus.cloudapp.azure.com
+* **KeyVaultName:** *SFQuickstartKV*
 * **KeyVaultSecretName:** clustercert
 
-Wanneer het script is voltooid, worden de parameter waarden verstrekt die nodig zijn voor het implementeren van de sjabloon. Zorg ervoor dat u deze in de volgende variabelen opslaat, omdat deze nodig zijn om de cluster sjabloon te implementeren:
+Wanneer het script is voltooid, worden de parameterwaarden verstrekt die nodig zijn voor het implementeren van de sjabloon. Zorg ervoor dat u deze in de volgende variabelen opslaat, omdat deze nodig zijn om de clustersjabloon te implementeren:
 
 ```powershell
 $sourceVaultId = "<Source Vault Resource Id>"
@@ -91,27 +91,27 @@ $certThumbprint = "<Certificate Thumbprint>"
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype)start-sjablonen. De sjabloon voor dit artikel is te lang om hier weer te geven. Zie https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.jsonvoor het weer geven van de sjabloon.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/). De sjabloon voor dit artikel is te lang om hier weer te geven. Als u de sjabloon wilt weergeven, raadpleegt u het bestand [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/service-fabric-secure-cluster-5-node-1-nodetype/azuredeploy.json).
 
 Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
 
-* [Micro soft. Storage/Storage accounts](/azure/templates/microsoft.storage/storageaccounts)
-* [Micro soft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Micro soft. Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
+* [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts)
+* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+* [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)
 * [Microsoft.Compute/virtualMachineScaleSets](/azure/templates/microsoft.compute/virtualmachinescalesets)
-* [Micro soft. ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
+* [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters)
 
-Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?sort=Popular&term=service+fabric)start-sjablonen voor meer informatie over de sjablonen die betrekking hebben op Azure service Fabric.
+Zie [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/?sort=Popular&term=service+fabric) als u meer sjablonen wilt vinden die gerelateerd zijn aan Azure Service Fabric.
 
-### <a name="customize-the-parameters-file"></a>Het parameter bestand aanpassen
+### <a name="customize-the-parameters-file"></a>Pas het parameterbestand aan
 
-Open *azuredeploy. para meters. json* en bewerk de parameter waarden zodat:
+Open *azuredeploy.parameters.json* en bewerk de parameterwaarden zodat:
 
-* **clustername** komt overeen met de waarde die u hebt opgegeven voor *CertDNSName* bij het maken van het cluster certificaat
-* **adminUserName** is een andere waarde dan het standaard *-unieke gen-* token
-* **adminPassword** is een andere waarde dan het standaard token voor *gen-Password*
-* **certificateThumbprint**, **sourceVaultResourceId**en **certificateUrlValue** zijn alle lege teken reeksen (`""`)
+* **clustername** overeenkomt met de waarde die u hebt opgegeven voor *CertDNSName* bij het maken van uw clustercertificaat
+* **adminUserName** is een andere waarde dan de standaard *GEN-UNIQUE*-token
+* **adminPassword** is een andere waarde dan de standaard *GEN-PASSWORD*-token
+* **certificateThumbprint**, **sourceVaultResourceId** en **certificateUrlValue** zijn alle lege teken reeksen (`""`)
 
 Bijvoorbeeld:
 
@@ -144,7 +144,7 @@ Bijvoorbeeld:
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Sla de paden van uw Resource Manager-sjabloon en parameter bestanden op in variabelen en implementeer vervolgens de sjabloon.
+Sla de paden van uw Resource Manager-sjabloon en parameterbestanden op in variabelen en implementeer vervolgens de sjabloon.
 
 ```powershell
 $templateFilePath = "<full path to azuredeploy.json>"
@@ -160,19 +160,19 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-Zodra de implementatie is voltooid, zoekt u `managementEndpoint` de waarde in de uitvoer en opent u het adres in een webbrowser om uw cluster in [service Fabric Explorer](./service-fabric-visualizing-your-cluster.md)weer te geven.
+Zodra de implementatie is voltooid, gaat u naar de `managementEndpoint` waarde in de uitvoer en opent u het adres in een webbrowser om uw cluster in [Service Fabric Explorer](./service-fabric-visualizing-your-cluster.md) te bekijken.
 
-![Service Fabric Explorer het nieuwe cluster weer geven](./media/quickstart-cluster-template/service-fabric-explorer.png)
+![Service Fabric Explorer geeft het nieuwe cluster weer](./media/quickstart-cluster-template/service-fabric-explorer.png)
 
-U kunt ook het Service Fabric Explorer-eind punt vinden op de Blade resource van de service Explorer in Azure Portal.
+U kunt ook het Service Fabric Explorer-eindpunt vinden op de blade Service Explorer-resouce in de Azure-portal.
 
-![Service Fabric resource-Blade met Service Fabric Explorer eind punt](./media/quickstart-cluster-template/service-fabric-explorer-endpoint-azure-portal.png)
+![Blade Service Fabric-resource met Service Fabric Explorer-eindpunt](./media/quickstart-cluster-template/service-fabric-explorer-endpoint-azure-portal.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, waarmee de resources in de resource groep worden verwijderd.
+Als u de resourcegroep niet meer nodig hebt, verwijdert u deze. Hierdoor worden ook de resources in de resourcegroep verwijderd.
 
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -182,7 +182,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het maken van een aangepaste Azure Service Fabric-cluster sjabloon:
+Zie voor meer informatie over het maken van een aangepaste Azure Service Fabric-clustersjabloon:
 
 > [!div class="nextstepaction"]
-> [Een Service Fabric cluster resource manager-sjabloon maken](service-fabric-cluster-creation-create-template.md)
+> [Een Service Fabric-cluster maken met Resource Manager-sjabloon](service-fabric-cluster-creation-create-template.md)

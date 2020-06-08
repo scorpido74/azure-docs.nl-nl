@@ -1,65 +1,64 @@
 ---
-title: Inleiding tot de ingebouwde Jupyter-notebook ondersteuning in Azure Cosmos DB (preview-versie)
-description: Meer informatie over hoe u de ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB kunt gebruiken om query's interactief uit te voeren.
+title: Inleiding tot de ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB (preview)
+description: Ontdek hoe u de ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB kunt gebruiken om query's interactief uit te voeren.
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 09/22/2019
-author: markjbrown
-ms.author: mjbrown
-ms.openlocfilehash: 5b320485001d6cbc457d39ef193ed8c57f7161df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/19/2020
+author: deborahc
+ms.author: dech
+ms.openlocfilehash: 9152bdfa9575738c853521814938cd0d7ec25efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760280"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657372"
 ---
-# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde Jupyter-notebooks ondersteunen in Azure Cosmos DB (preview-versie)
+# <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Ingebouwde ondersteuning voor Jupyter-notebooks in Azure Cosmos DB (preview)
 
-Jupyter notebook is een open-source webtoepassing waarmee u documenten kunt maken en delen met Live code, vergelijkingen, visualisaties en tekst. Azure Cosmos DB ondersteunt ingebouwde Jupyter-notebooks voor alle Api's, zoals Cassandra, MongoDB, SQL, Gremlin en Table. Met de ingebouwde ondersteuning voor notebooks voor alle Azure Cosmos DB Api's en gegevens modellen kunt u interactief query's uitvoeren. De Jupyter-notebooks worden uitgevoerd binnen de Azure Cosmos-accounts en ze stellen ontwikkel aars in staat om gegevens te verkennen, gegevens te reinigen, gegevens trans formaties, numerieke simulaties, statistische model lering, gegevens visualisatie en machine learning.
+Jupyter notebook is een opensource-webtoepassing waarmee u documenten kunt maken en delen die bestaan uit live code, vergelijkingen, visualisaties en tekst. 
+
+Ingebouwde Jupyter-notebooks van Azure Cosmos DB worden direct in de Azure-portal en uw Azure Cosmos DB-accounts geïntegreerd, waardoor ze handig en gebruiksvriendelijk zijn. Ontwikkelaars, gegevenswetenschappers, ingenieurs en analisten kunnen de vertrouwde Jupyter-notebookervaring gebruiken voor gegevensverkenning, gegevensopschoning, gegevenstransformaties, numerieke simulaties, statische modellering, gegevensvisualisatie en machine learning.
 
 ![Visualisaties van Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
-De Jupyter-notebooks ondersteunen Magic-functies die de mogelijkheden van de kernel uitbreiden door extra opdrachten te ondersteunen. Cosmos Magic is een opdracht die de mogelijkheden van de python-kernel in Jupyter notebook uitbreidt, zodat u Azure Cosmos SQL API-query's kunt uitvoeren naast Apache Spark. U kunt python-en SQL-API-query's eenvoudig combi neren om gegevens op te vragen en te visualiseren door gebruik te maken van uitgebreide visualisatie bibliotheken die zijn geïntegreerd met render-opdrachten.
-Azure Portal Jupyter Notebook-ervaring in systeem eigen integreert in azure Cosmos-accounts, zoals wordt weer gegeven in de volgende afbeelding:
+Azure Cosmos DB ondersteunt zowel C# -als Python-notebooks voor alle API's, waaronder Core (SQL), Cassandra, Gremlin, Table en API voor MongoDB. De notebook bevat ingebouwde opdrachten en functies waarmee u eenvoudig Azure Cosmos DB-resources maakt, gegevens kunt uploaden en uw gegevens in Azure Cosmos DB kunt opvragen en visualiseren. 
 
 ![Ondersteuning voor Jupyter-notebooks in Azure Cosmos DB](./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png)
 
-## <a name="benefits-of-jupyter-notebooks"></a>Voor delen van Jupyter-notebooks
+## <a name="benefits-of-jupyter-notebooks"></a>Voordelen van Jupyter-notebooks
 
-Jupyter-notebooks werden oorspronkelijk ontwikkeld voor data Science-toepassingen die zijn geschreven in Python, R. Ze kunnen echter op verschillende manieren worden gebruikt voor verschillende soorten projecten, zoals:
+Jupyter-notebooks werden oorspronkelijk ontwikkeld voor toepassingen voor gegevenswetenschap die zijn geschreven in Python en R. Ze kunnen echter op verschillende manieren worden gebruikt voor verschillende soorten projecten, waaronder:
 
-* ***Gegevens visualisaties:** Met Jupyter-notebooks kunt u gegevens visualiseren in de vorm van een gedeeld notitie blok dat een aantal gegevens sets als een afbeelding weergeeft. Met Jupyter notebook kunt u visualisaties ontwerpen, ze delen en interactieve wijzigingen in de gedeelde code en gegevensset toestaan.
+**Gegevensvisualisatie:** Met Jupyter-notebooks kunt u gegevens visualiseren in de vorm van een gedeeld notebook dat een gegevensset weergeeft als een afbeelding. U kunt visualisaties maken, interactieve wijzigingen aanbrengen in de gedeelde code en gegevensset en de resultaten delen.
 
-* **Code delen:** Services zoals GitHub bieden manieren om code te delen, maar ze zijn grotendeels niet-interactief. Met een Jupyter-notebook kunt u code weer geven, deze uitvoeren en de resultaten rechtstreeks in het Azure Portal weer geven.
+**Code delen:** Services zoals GitHub bieden manieren om code te delen, maar ze zijn grotendeels niet-interactief. Met een Jupyter-notebook kunt u code weergeven, deze uitvoeren en de resultaten rechtstreeks in de Azure-portal weergeven.
 
-* **Live interacties met code:** Jupyter-notebook code is dynamisch; het kan worden bewerkt en stapsgewijs in realtime worden uitgevoerd. Notebooks kunnen ook gebruikers besturings elementen (bijvoorbeeld schuif regelaars of tekst invoer velden) insluiten die kunnen worden gebruikt als invoer bronnen voor code, demo's of concepten (POCs).
+**Live interacties met code:** Code in een Jupyter-notebook is dynamisch; u kunt deze bewerken en de updates incrementeel uitvoeren in real-time. U kunt ook gebruikersbesturingselementen insluiten (bijvoorbeeld schuifregelaars of tekstinvoervelden) die worden gebruikt als invoerbronnen voor code, demo's of concepten (POC's).
 
-* **Documentatie voor code voorbeelden en resultaten van het verkennen van gegevens:** Als u een stukje code hebt en u regel-voor-line wilt uitleggen hoe het werkt in Azure Cosmos DB, kunt u de informatie in realtime-uitvoer insluiten in een Jupyter Notebook. De code blijft volledig functioneel. U kunt gelijktijdig interactief samen met de documentatie toevoegen.
+**Documentatie van codevoorbeelden en resultaten van gegevensverkenning:** Als u een stukje code hebt en per regel wilt uitleggen hoe het werkt, kunt u dit insluiten in een Jupyter-notebook. U kunt interactiviteit tegelijkertijd met de documentatie toevoegen.
 
-* **Cosmos Magic-opdrachten:** In Jupyter-notebooks kunt u aangepaste Magic-opdrachten voor Azure Cosmos DB gebruiken om interactief computer gemak te maken. Bijvoorbeeld:%% SQL Magic waarmee een Cosmos-container kan worden doorzocht met behulp van SQL API rechtstreeks in een notitie blok.
+**Ingebouwde opdrachten voor Azure Cosmos DB:** Met de ingebouwde magic-opdrachten van Azure Cosmos DB kunt u eenvoudig communiceren met uw account. U kunt opdrachten als %%upload en %%sql gebruiken om gegevens te uploaden naar een container en er een query op uit te voeren met behulp van [SQL API-syntaxis](sql-query-getting-started.md). U hoeft geen aanvullende aangepaste code te schrijven.
 
-* **Alle in één locatie omgeving:** Jupyter-notebooks combi neren code, RTF-tekst, afbeeldingen, Video's, animaties, wiskundige vergelijkingen, grafieken, kaarten, interactieve cijfers, widgets en grafische gebruikers interfaces tot één document.
+**Alles in één locatie-omgeving:** Jupyter-notebooks combineren code, RTF-tekst, afbeeldingen, video's, animaties, wiskundige vergelijkingen, grafieken, kaarten, interactieve cijfers, widgets en grafische gebruikersinterfaces tot één document.
 
 ## <a name="components-of-a-jupyter-notebook"></a>Onderdelen van een Jupyter-notebook
 
-Jupyter-notebooks kunnen diverse soorten onderdelen bevatten, die zijn ingedeeld in discrete blokken:
+Jupyter-notebooks kunnen diverse typen onderdelen bevatten, die zijn georganiseerd in afzonderlijke blokken of cellen:
 
-* **Tekst en HTML:** Tekst zonder opmaak of tekst die in de syntaxis van de prijs opmaakt om HTML te genereren, kan op elk gewenst moment in het document worden ingevoegd. CSS-opmaak kan ook inline worden opgenomen of worden toegevoegd aan de sjabloon die wordt gebruikt voor het genereren van het notitie blok.
+**Tekst en HTML:** Tekst zonder opmaak of tekst die in de markdown-syntaxis is geannoteerd om HTML te genereren, kan op elk gewenst moment in het document worden ingevoegd. CSS-opmaak kan ook inline worden opgenomen of worden toegevoegd aan de sjabloon die wordt gebruikt voor het genereren van de notebook.
 
-* **Code en uitvoer:** Jupyter-notebooks ondersteunen python-code. De resultaten van de uitgevoerde code worden direct na de code blokken weer gegeven en de code blokken kunnen in elke gewenste volg orde meerdere keren worden uitgevoerd.
+**Code en uitvoer:** Jupyter-notebooks ondersteunen Python- en C#-code. De resultaten van de uitgevoerde code worden direct na de codeblokken weergegeven en de codeblokken kunnen meerdere keren in elke gewenste volgorde worden uitgevoerd.
 
-* **Visualisaties:** Afbeeldingen en grafieken kunnen worden gegenereerd op basis van de code, met behulp van modules als matplotlib, plots of bokeh. Net als bij de uitvoer worden deze visualisaties weer gegeven naast de code die ze genereert.
+**Visualisaties:** U kunt afbeeldingen en grafieken genereren op basis van de code met behulp van modules als Matplotlib, Plotly, Bokeh en anderen. Net als bij de uitvoer worden deze visualisaties weergegeven naast de code die ze genereert. Net als bij de uitvoer worden deze visualisaties weergegeven naast de code die ze genereert.
 
-* **Multi media:** Omdat Jupyter notebook is gebaseerd op de webtechnologie, kunnen alle typen multi media worden weer gegeven die op een webpagina worden ondersteund. U kunt deze toevoegen aan een notitie blok als HTML-elementen of u kunt deze via een programma genereren met `IPython.display` behulp van de module.
+**Multimedia:** Omdat Jupyter-notebooks zijn gebouwd op webtechnologie, kunnen ze alle typen multimedia weergeven die door een webpagina worden ondersteund. U kunt deze toevoegen aan een notebook als HTML-elementen of u kunt ze programmatisch genereren met behulp van de module `IPython.display`.
 
-* **Gegevens:** Gegevens uit Azure Cosmos-containers en resultaten van de query's kunnen programmatisch in een Jupyter-notebook worden geïmporteerd. Bijvoorbeeld door code in het notitie blok op te nemen om de gegevens op te vragen met behulp van een van de Cosmos DB Api's of de systeem eigen ingebouwde Apache Spark.
+**Gegevens:** U kunt de gegevens uit Azure Cosmos-containers of de resultaten van query's programmatisch importeren in een Jupyter-notebook. Gebruik ingebouwde magic-opdrachten om gegevens te uploaden in Azure Cosmos DB of er query's op uit te voeren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende artikelen om aan de slag te gaan met ingebouwde Jupyter-notebooks in Azure Cosmos DB:
 
-* [Notitie blokken in een Azure Cosmos-account inschakelen](enable-notebooks.md)
-* [Functies en opdrachten van notitie blok gebruiken](use-notebook-features-and-commands.md)
-
-
-
+* [Notebooks in een Azure Cosmos-account inschakelen](enable-notebooks.md)
+* [Python-notebookfuncties en-opdrachten gebruiken](use-python-notebook-features-and-commands.md)
+* [C#-notebookfuncties en -opdrachten gebruiken](use-csharp-notebook-features-and-commands.md)

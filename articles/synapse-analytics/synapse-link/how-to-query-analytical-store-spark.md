@@ -1,5 +1,5 @@
 ---
-title: De analytische opslag van Azure Cosmos DB doorzoeken met Apache Spark voor Azure Synapse Analytics
+title: Query uitvoeren op de analytische opslag van Azure Cosmos DB (preview) met Apache Spark voor Azure Synapse Analytics
 description: Een query uitvoeren op analytische opslag in Azure Cosmos DB met Apache Spark voor Azure Synapse Analytics
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 05/06/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 02d4b6a636bff5ef11686abba6efb52f45f04779
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5c19a3f808b85ba9e34d3304251fe8acb21204ce
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599250"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700204"
 ---
-# <a name="query-azure-cosmos-db-analytical-store-with-apache-spark-for-azure-synapse-analytics"></a>De analytische opslag van Azure Cosmos DB doorzoeken met Apache Spark voor Azure Synapse Analytics
+# <a name="query-azure-cosmos-db-analytical-store-preview-with-apache-spark-for-azure-synapse-analytics"></a>Query uitvoeren op de analytische opslag van Azure Cosmos DB (preview) met Apache Spark voor Azure Synapse Analytics
 
 Dit artikel bevat enkele voorbeelden van de manier waarop u via Synapse-bewegingen kunt werken met de analytische opslag. Bewegingen worden weergegeven wanneer u met de rechtermuisknop op een container klikt. Met bewegingen kunt u snel code genereren en deze aanpassen aan uw behoeften. Bewegingen zijn ook ideaal om met één klik gegevens te ontdekken.
 

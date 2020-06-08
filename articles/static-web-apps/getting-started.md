@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 14fd237b6437c15ede2da7c0694004f6c22736cc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599129"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83714233"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Quickstart: Uw eerste statische web-app bouwen
 
@@ -66,9 +66,9 @@ Klik op de knop **Opslagplaats maken van sjabloon**.
 
 Nu de opslagplaats is gemaakt, kunt u een statische web-app maken in de Azure-portal.
 
-- Ga naar de [Azure-portal](https://portal.azure.com)
+- Ga naar [Azure Portal](https://portal.azure.com)
 - Klik op **Een resource maken**
-- Ga naar **Static Web Apps**
+- Zoek **Static Web Apps**
 - Klik op **Static Web Apps (preview)**
 - Klik op **Maken**.
 
@@ -81,7 +81,7 @@ Configureer uw nieuwe app en koppel deze aan een GitHub-opslagplaats.
 - Selecteer uw _Azure-abonnement_
 - Een nieuwe _Resourcegroep_ selecteren of maken
 - Geef de app de naam **mijn-eerste-statische-web-app**.
-  - Geldige tekens zijn `a-z` (hoofdlettergevoelig), `0-9` en `_`.
+  - Geldige tekens zijn `a-z` (hoofdlettergevoelig), `0-9` en `-`.
 - Selecteer de _Regio_ het dichtst bij u in de buurt
 - Selecteer de **gratis** _SKU_
 - Klik op de knop **Aanmelden bij GitHub** en verifieer u bij GitHub
@@ -130,6 +130,8 @@ Voeg vervolgens configuratiegegevens toe die specifiek zijn voor het front-end-f
 Klik op de knop **Beoordelen en maken**.
 
 :::image type="content" source="media/getting-started/review-create.png" alt-text="Knop Beoordelen en maken":::
+
+Als u deze waarden wilt wijzigen nadat u de app hebt gemaakt, kunt u het [werkstroombestand](github-actions-workflow.md) bewerken.
 
 ### <a name="review--create"></a>Beoordelen en maken
 

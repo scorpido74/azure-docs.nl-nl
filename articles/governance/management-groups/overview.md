@@ -1,14 +1,14 @@
 ---
-title: Uw resources organiseren met beheer groepen-Azure governance
+title: Uw resources organiseren met beheergroepen - Azure Governance
 description: Informatie over de managementgroepen, hoe hun machtigingen werken en hoe u ze gebruikt.
 ms.date: 04/15/2020
 ms.topic: overview
-ms.openlocfilehash: cc60e4555f0fb2b920b8061fb044ce5dde990d38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 43c8bb2bdb71b0b75d2fcc31451952214978093c
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381543"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83773148"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uw resources organiseren met Azure-beheergroepen
 
@@ -23,7 +23,7 @@ U kunt een flexibele structuur van managementgroepen en abonnementen bouwen om u
 
 :::image type="content" source="./media/tree.png" alt-text="Voorbeeld van een hiërarchiestructuur voor beheergroepen" border="false":::
 
-U kunt een hiërarchie maken waarmee een beleid wordt toegepast, bijvoorbeeld om VM-locaties tot de regio US - west te beperken in de groep 'Productie'. Dit beleid is van toepassing op alle Enterprise Agreement (EA)-abonnementen die afgeleide zijn van die beheer groep en worden toegepast op alle Vm's onder die abonnementen. Dit beveiligingsbeleid kan niet worden gewijzigd door de eigenaar van de resource of het abonnement, wat zorgt voor betere governance.
+U kunt een hiërarchie maken waarmee een beleid wordt toegepast, bijvoorbeeld om VM-locaties tot de regio US - west te beperken in de groep 'Productie'. Dit beleid is van toepassing op alle Enterprise Agreement-abonnementen die afgeleid zijn van die beheergroep en worden toegepast op alle VM's onder die abonnementen. Dit beveiligingsbeleid kan niet worden gewijzigd door de eigenaar van de resource of het abonnement, wat zorgt voor betere governance.
 
 Een ander scenario waarbij u beheergroepen kunt gebruiken, is om gebruikers toegang te geven tot meerdere abonnementen. Als u meerdere abonnementen naar de desbetreffende beheergroep verplaatst, kunt u in de beheergroep één toewijzing voor [op rollen gebaseerd toegangsbeheer](../../role-based-access-control/overview.md) (RBAC) maken, die de toegang doorgeeft aan alle abonnementen. Eén toewijzing in de beheergroep kan gebruikers toegang geven tot alles wat ze nodig hebben. Er hoeven dan geen scripts te worden geschreven voor RBAC-toewijzingen in meerdere abonnementen.
 
@@ -43,20 +43,20 @@ Elke map krijgt één beheergroep op het hoogste niveau, de 'hoofdbeheergroep'. 
 ### <a name="important-facts-about-the-root-management-group"></a>Belangrijke feiten over de hoofdbeheergroep
 
 - Standaard is de weergavenaam van de hoofdbeheergroep **Tenanthoofdgroep**. De id is de Azure Active Directory-id.
-- Als u de weergavenaam wilt wijzigen, moet uw account de rol Eigenaar of Inzender in de hoofdbeheergroep hebben toegewezen gekregen. Zie [de naam van een beheer groep wijzigen](manage.md#change-the-name-of-a-management-group) om de naam van een beheer groep bij te werken.
+- Als u de weergavenaam wilt wijzigen, moet uw account de rol Eigenaar of Inzender in de hoofdbeheergroep hebben toegewezen gekregen. Zie [Change the name of a management group](manage.md#change-the-name-of-a-management-group) (De naam van een beheergroep wijzigen) om de naam van een beheergroep bij te werken.
 - In tegenstelling tot andere beheergroepen kan de hoofdbeheergroep niet worden verplaatst of verwijderd.  
 - Alle abonnementen en beheergroepen kunnen worden samengevouwen in deze ene hoofdbeheergroep binnen de map.
   - Alle resources in de map kunnen worden samengevouwen in de hoofdbeheergroep voor algemeen beheer.
   - Wanneer er een nieuw abonnement wordt gemaakt, wordt dit standaard automatisch in de hoofdbeheergroep geplaatst.
 - Alle Azure-klanten kunnen de hoofdbeheergroep zien, maar niet alle klanten hebben de mogelijkheid om die hoofdbeheergroep te beheren.
   - Iedereen die toegang heeft tot een abonnement, kan de context zien van waar dat abonnement zich in de hiërarchie bevindt.  
-  - Niemand krijgt standaard toegang tot de hoofdbeheergroep. Globale beheerders van Azure AD zijn de enige gebruikers die zichzelf toegang kunnen verschaffen. Zodra ze toegang hebben tot de hoofd beheer groep, kunnen de globale beheerders een RBAC-rol toewijzen aan andere gebruikers om te beheren  
-    ,.
-- In SDK, de hoofd beheer groep of Tenant root, fungeert als een beheer groep.
+  - Niemand krijgt standaard toegang tot de hoofdbeheergroep. Globale beheerders van Azure AD zijn de enige gebruikers die zichzelf toegang kunnen verschaffen. Wanneer ze toegang hebben tot de hoofdbeheergroep, kunnen de globale beheerders elke RBAC-rol toewijzen aan andere gebruikers, zodat deze het beheer daarover hebben  
+    .
+- In SDK fungeert de hoofdbeheergroep, of tenanthoofdmap, als een beheergroep.
 
 > [!IMPORTANT]
-> Toewijzingen voor gebruikerstoegang of beleidstoewijzingen in de hoofdbeheergroep **zijn van toepassing op alle resources in de map**. Daarom moeten alle klanten goed nadenken over de noodzaak om items op dit niveau toe te wijzen. Gebruikers toegang en beleids toewijzingen moeten alleen ' moet hebben '  
-> ligt.
+> Toewijzingen voor gebruikerstoegang of beleidstoewijzingen in de hoofdbeheergroep **zijn van toepassing op alle resources in de map**. Daarom moeten alle klanten goed nadenken over de noodzaak om items op dit niveau toe te wijzen. Op dit niveau mogen alleen toewijzingen voor gebruikerstoegang of beleid de aanduiding 'Must have' (Strikt noodzakelijk) hebben  
+> .
 
 ## <a name="initial-setup-of-management-groups"></a>Eerste installatie van beheergroepen
 
@@ -83,32 +83,32 @@ Als u vragen hebt over dit backfill-proces, neemt u contact op met: `managementg
 ## <a name="management-group-access"></a>Toegang tot beheergroepen
 
 Azure-beheergroepen ondersteunen [op rollen gebaseerd toegangsbeheer (RBAC) van Azure](../../role-based-access-control/overview.md) voor alle soorten toegang tot resources en roldefinities.
-Deze machtigingen worden overgenomen door onderliggende resources die in de hiërarchie zijn opgenomen. Een RBAC-rol kan worden toegewezen aan een beheer groep die de hiërarchie naar de resources overneemt. Zo kan de RBAC-rol van VM-inzender aan een beheergroep worden toegewezen. Deze rol heeft geen actie in de beheergroep, maar wordt overgenomen door alle VM's in die beheergroep.
+Deze machtigingen worden overgenomen door onderliggende resources die in de hiërarchie zijn opgenomen. Iedere RBAC-rol kan worden toegewezen aan een beheergroep die door alle onderliggende items in de hiërarchie tot de resources worden overgenomen. Zo kan de RBAC-rol van VM-inzender aan een beheergroep worden toegewezen. Deze rol heeft geen actie in de beheergroep, maar wordt overgenomen door alle VM's in die beheergroep.
 
 In de volgende tabel staat een lijst met rollen en de acties die worden ondersteund in beheergroepen.
 
-| Naam RBAC-rol             | Maken | Naam wijzigen | Ga\*\* | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
+| Naam RBAC-rol             | Maken | Naam wijzigen | Verplaatsen\*\* | Verwijderen | Toegang toewijzen | Beleid toewijzen | Lezen  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Eigenaar                       | X      | X      | X        | X      | X             | X             | X     |
 |Inzender                 | X      | X      | X        | X      |               |               | X     |
-|MG bijdrager\*            | X      | X      | X        | X      |               |               | X     |
+|Beheergroep-inzender\*            | X      | X      | X        | X      |               |               | X     |
 |Lezer                      |        |        |          |        |               |               | X     |
-|MG Reader\*                 |        |        |          |        |               |               | X     |
+|Beheergroep-lezer\*                 |        |        |          |        |               |               | X     |
 |Inzender voor resourcebeleid |        |        |          |        |               | X             |       |
 |Beheerder van gebruikerstoegang   |        |        |          |        | X             | X             |       |
 
-\*: MG Inzender en MG Reader staan gebruikers alleen toe om deze acties uit te voeren op het bereik van de beheer groep.  
-\*\*: Roltoewijzingen voor de hoofd beheer groep zijn niet vereist voor het verplaatsen van een abonnement of beheer groep naar en van het item. Zie [Uw resources beheren met beheergroepen](manage.md) voor meer informatie over het verplaatsen van items binnen de hiërarchie.
+\*: Met de rollen Beheergroep-inzender en Beheergroep-lezer kunnen gebruikers deze acties alleen uitvoeren op beheergroepniveau.  
+\*\*: Bij roltoewijzingen hoeft er geen abonnement of beheergroep van of naar de hoofdbeheergroep te worden verplaatst. Zie [Uw resources beheren met beheergroepen](manage.md) voor meer informatie over het verplaatsen van items binnen de hiërarchie.
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>Aangepaste definitie en toewijzing van de RBAC-rol
+## <a name="custom-rbac-role-definition-and-assignment"></a>Aangepaste definities en toewijzingen van RBAC-rollen
 
-Aangepaste RBAC-functie ondersteuning voor beheer groepen is momenteel in Preview met enkele [beperkingen](#limitations). U kunt het bereik van de beheergroep definiëren in het toewijsbare bereik van de roldefinitie. Die aangepaste RBAC-rol is dan beschikbaar voor toewijzing in die beheergroep en alle beheergroepen, abonnementen, resourcegroepen en resources daaronder. Deze aangepaste rol neemt machtigingen over in de hiërarchie op dezelfde manier als een ingebouwde rol.  
+Ondersteuning van aangepaste RBAC-rollen voor beheergroepen is momenteel in de preview-versie beschikbaar met enkele [beperkingen](#limitations). U kunt het bereik van de beheergroep definiëren in het toewijsbare bereik van de roldefinitie. Die aangepaste RBAC-rol is dan beschikbaar voor toewijzing in die beheergroep en alle beheergroepen, abonnementen, resourcegroepen en resources daaronder. Deze aangepaste rol neemt machtigingen over in de hiërarchie op dezelfde manier als een ingebouwde rol.  
 
-### <a name="example-definition"></a>Voorbeeld definitie
+### <a name="example-definition"></a>Voorbeelddefinitie
 
-Het [definiëren en maken van een aangepaste rol](../../role-based-access-control/custom-roles.md) verandert niet met het opnemen van beheer groepen. Gebruik het volledige pad om de **/providers/Microsoft.Management/managementgroups/{groupid}** van de beheer groep te definiëren.
+[Het definiëren en maken van een aangepaste rol](../../role-based-access-control/custom-roles.md) verandert niet met het opnemen van beheergroepen. Gebruik het volledige pad om de beheergroep te definiëren: **/providers/Microsoft.Management/managementgroups/{groupId}** .
 
-Gebruik de ID van de beheer groep en niet de weergave naam van de beheer groep. Deze algemene fout treedt op omdat beide aangepaste gedefinieerde velden zijn bij het maken van een beheer groep.
+Gebruik de id van de beheergroep en niet de weergavenaam van de beheergroep. Deze fout wordt vaak gemaakt omdat beide aangepaste velden zijn bij het maken van een beheergroep.
 
 ```json
 ...
@@ -141,48 +141,49 @@ Gebruik de ID van de beheer groep en niet de weergave naam van de beheer groep. 
 ...
 ```
 
-### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Problemen met het verbreken van de roldefinitie en het pad van de toewijzings hiërarchie
+### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Problemen met het verbreken van de roldefinitie en het toewijzingshiërarchiepad
 
-Roldefinities kunnen overal binnen de hiërarchie van de beheer groep worden toegewezen. Een roldefinitie kan worden gedefinieerd voor een bovenliggende beheer groep terwijl de daad werkelijke roltoewijzing bestaat op het onderliggende abonnement. Omdat er een relatie tussen de twee items bestaat, wordt er een fout bericht weer gegeven wanneer u probeert de toewijzing te scheiden van de definitie.
+Roldefinities kunnen overal binnen de hiërarchie van de beheergroep worden toegewezen. Een roldefinitie kan worden gedefinieerd in een bovenliggende beheergroep terwijl de daadwerkelijke roltoewijzing bestaat op het onderliggende abonnement. Omdat er een relatie bestaat tussen de twee items, ontvangt u een foutmelding wanneer u probeert de toewijzing van de definitie te scheiden.
 
-Laten we bijvoorbeeld eens kijken naar een kleine sectie van een hiërarchie voor een visueel element.
+Laten we bijvoorbeeld eens kijken naar een kleine sectie van een hiërarchie voor een besturingselement.
 
-:::image type="content" source="./media/subtree.png" alt-text="onderliggende boom structuur" border="false":::
+:::image type="content" source="./media/subtree.png" alt-text="substructuur" border="false":::
 
-Stel dat er een aangepaste rol is gedefinieerd in de marketing beheer groep. Deze aangepaste rol wordt vervolgens toegewezen aan de twee gratis proef abonnementen.  
+Stel dat er een aangepaste rol is gedefinieerd in de Marketing-beheergroep. Deze aangepaste rol wordt vervolgens toegewezen aan de twee gratis proefabonnementen.  
 
-Als we een van deze abonnementen proberen te verplaatsen naar een onderliggend niveau van de productie beheer groep, verbreekt deze verplaatsing het pad van de toewijzing van de abonnements functie naar de functie definitie van de marketing beheer groep. In dit scenario wordt een fout bericht weer gegeven waarin wordt aangegeven dat de verplaatsing niet is toegestaan omdat deze relatie wordt verbroken.  
+Als we een van deze subabonnementen proberen te verplaatsen naar een onderliggend niveau van de Production-beheergroep, wordt het pad van de abonnementsroltoewijzing naar de roldefinitie van de Marketing-beheergroep verbroken. In dit scenario wordt een foutbericht weergegeven waarin staat dat de verplaatsing niet is toegestaan omdat de relatie dan wordt verbroken.  
 
 Er zijn verschillende opties om dit scenario op te lossen:
-- Verwijder de roltoewijzing uit het abonnement voordat u het abonnement verplaatst naar een nieuwe bovenliggende MG.
-- Voeg het abonnement toe aan het toewijs bare bereik van de functie definitie.
-- Wijzig het toewijs bare bereik in de roldefinitie. In het bovenstaande voor beeld kunt u de toewijs bare bereiken bijwerken vanuit marketing naar de hoofd beheer groep, zodat de definitie kan worden bereikt door beide vertakkingen van de hiërarchie.  
+- Verwijder de roltoewijzing uit het abonnement voordat u het abonnement naar een nieuwe bovenliggende beheergroep verplaatst.
+- Voeg het abonnement toe aan het toewijsbare bereik van de roldefinitie.
+- Wijzig het toewijsbare bereik in de roldefinitie. In het bovenstaande voorbeeld kunt u de toewijsbare bereiken bijwerken vanuit Marketing naar de hoofdbeheergroep, zodat de definitie kan worden bereikt door beide vertakkingen van de hiërarchie.  
 - Maak een extra aangepaste rol die wordt gedefinieerd in de andere vertakking. Deze nieuwe rol vereist ook dat de roltoewijzing voor het abonnement wordt gewijzigd.  
 
 ### <a name="limitations"></a>Beperkingen  
 
-Er zijn beperkingen die bestaan wanneer u aangepaste rollen gebruikt voor beheer groepen. 
+Er bestaan beperkingen wanneer u aangepaste rollen gebruikt voor beheergroepen. 
 
- - U kunt slechts één beheer groep definiëren in het toewijs bare bereik van een nieuwe rol. Deze beperking is van kracht om het aantal situaties te verminderen waarin functie definities en roltoewijzingen worden losgekoppeld. Dit gebeurt wanneer een abonnement of beheer groep met een roltoewijzing wordt verplaatst naar een andere bovenliggende site die niet over de roldefinitie beschikt.  
- - RBAC-gegevens vlak acties mogen niet worden gedefinieerd in aangepaste rollen van de beheer groep. Deze beperking is van kracht omdat er een latentie probleem is met RBAC-acties bij het bijwerken van de gegevens vlak resource providers. Er wordt met dit latentie probleem gewerkt en deze acties worden uitgeschakeld uit de roldefinitie om Risico's te verminderen.
- - De Azure Resource Manager valideert niet het bestaan van de beheer groep in het toewijs bare bereik van de roldefinitie. Als er een type-of onjuiste beheer groep-ID wordt weer gegeven, wordt de roldefinitie nog steeds gemaakt.  
+ - U kunt slechts één beheergroep definiëren in het toewijsbare bereik van een nieuwe rol. Deze beperking bestaat om het aantal situaties te verminderen waarin de koppeling tussen roldefinities en roltoewijzingen wordt verbroken. Deze situatie treedt op wanneer een abonnement of beheergroep met een roltoewijzing wordt verplaatst naar een andere bovenliggende site die niet over de roldefinitie beschikt.  
+ - RBAC-gegevensvlakacties kunnen niet worden gedefinieerd in de aangepaste rollen van een beheergroep. Deze beperking bestaat omdat er een latentieprobleem is met RBAC-acties bij het bijwerken van de gegevensvlak-resourceproviders.
+   Er wordt aan dit latentieprobleem gewerkt en deze acties worden uitgeschakeld in de roldefinitie om risico's te beperken.
+ - De Azure Resource Manager valideert niet het bestaan van de beheergroep in het toewijsbare bereik van de roldefinitie. Als er een typfout of een onjuiste beheergroep-id staat, wordt de roldefinitie toch gemaakt.  
 
-## <a name="moving-management-groups-and-subscriptions"></a>Beheer groepen en abonnementen verplaatsen 
+## <a name="moving-management-groups-and-subscriptions"></a>Beheergroepen en abonnementen verplaatsen 
 
-Als een beheer groep of een abonnement een onderliggend item van een andere beheer groep is, moeten drie regels worden geëvalueerd als waar.
+Als u een beheergroep of een abonnement wilt verplaatsen om het/deze een onderliggend item van een andere beheergroep te maken, moeten drie regels worden geëvalueerd als waar.
 
-Als u de verplaatsings actie uitvoert, hebt u het volgende nodig: 
+Als u de verplaatsing wilt uitvoeren, hebt u het volgende nodig: 
 
-- Schrijf machtigingen voor schrijven en rollen toewijzen aan de beheer groep voor het onderliggende abonnement of de beheer groep.
-  - Voor beeld **eigenaar** van ingebouwde rol
-- Schrijf toegang van de beheer groep op de bovenliggende doel beheer groep.
-  - Voor beeld van ingebouwde rol: **eigenaar**, **Inzender**, **Inzender voor beheer groepen**
-- Schrijf toegang van de beheer groep voor de bestaande bovenliggende beheer groep.
-  - Voor beeld van ingebouwde rol: **eigenaar**, **Inzender**, **Inzender voor beheer groepen**
+- Schrijfmachtigingen voor beheergroepen en roltoewijzingen voor het onderliggende abonnement of de beheergroep.
+  - Voorbeeld van een ingebouwde rol **Eigenaar**
+- Schrijftoegang voor de beheergroep op de beoogde bovenliggende beheergroep.
+  - Voorbeeld van een ingebouwde rol: **Eigenaar**, **Inzender**, **Inzender beheergroep**
+- Schrijftoegang voor de beheergroep op de bestaande bovenliggende beheergroep.
+  - Voorbeeld van een ingebouwde rol: **Eigenaar**, **Inzender**, **Inzender beheergroep**
 
-**Uitzonde ring**: als het doel of de bestaande bovenliggende beheer groep de hoofd beheer groep is, zijn de machtigingen vereisten niet van toepassing. Omdat de hoofd beheer groep de standaard overgangs plaats voor alle nieuwe beheer groepen en abonnementen is, hebt u geen machtigingen nodig om een item te verplaatsen.
+**Uitzondering**: Als de beoogde of bestaande bovenliggende beheergroep de hoofdbeheergroep is, zijn de machtigingsvereisten niet van toepassing. Omdat de hoofdbeheergroep de standaardplek voor alle nieuwe beheergroepen en abonnementen is, hebt u geen machtigingen nodig om een item te verplaatsen.
 
-Als de rol van eigenaar van het abonnement wordt overgenomen van de huidige beheer groep, zijn de verplaatsings doelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheer groep waar u de rol eigenaar hebt. U kunt het niet verplaatsen naar een beheer groep waar u mede werker bent, omdat u de eigenaar van het abonnement kwijtraakt. Als u direct wordt toegewezen aan de rol van eigenaar van het abonnement (niet overgenomen van de beheer groep), kunt u deze verplaatsen naar een beheer groep waar u een bijdrager bent.
+Als de rol Eigenaar van het abonnement wordt overgenomen van de huidige beheergroep, zijn de verplaatsingsdoelen beperkt. U kunt het abonnement alleen verplaatsen naar een andere beheergroep waarvan u de rol Eigenaar hebt. U kunt het niet verplaatsen naar een beheergroep waarvan u een Inzender bent, omdat u dan het eigendom van het abonnement kwijtraakt. Als u direct bent toegewezen aan de rol Eigenaar van het abonnement (niet overgenomen van de beheergroep), kunt u het verplaatsen naar een beheergroep waarvan u een Inzender bent.
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Beheergroepen controleren met behulp van activiteitenlogboeken
 
@@ -190,7 +191,7 @@ Beheergroepen worden ondersteund door het [Azure-activiteitenlogboek](../../azur
 
 :::image type="content" source="./media/al-mg.png" alt-text="Activiteitenlogboeken met beheergroepen" border="false":::
 
-Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}**.
+Bij het uitvoeren van query's op beheergroepen buiten de Azure-portal, ziet het doelbereik voor beheergroepen er als volgt uit: **/ providers/Microsoft.Management/managementGroups/{yourMgID}** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

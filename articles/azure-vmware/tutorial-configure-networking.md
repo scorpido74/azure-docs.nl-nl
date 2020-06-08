@@ -1,119 +1,119 @@
 ---
-title: 'Zelf studie: netwerken configureren voor uw VMWare privécloud in azure'
-description: Meer informatie over het maken en configureren van het netwerk dat nodig is voor het implementeren van uw privécloud in azure
+title: 'Zelfstudie: netwerken configureren voor uw VMware-privécloud in Azure'
+description: Meer informatie over het maken en configureren van de netwerken die nodig zijn voor het implementeren van uw privécloud in Azure
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837614"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873850"
 ---
-# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Zelf studie: netwerken configureren voor uw VMWare Private Cloud in azure
+# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Zelfstudie: Netwerken configureren voor uw VMware-privécloud in Azure
 
-Een Azure VMware-oplossing (AVS) privécloud vereist een virtueel netwerk. Omdat AVS geen ondersteuning biedt voor uw on-premises vCenter tijdens de preview, zijn er aanvullende stappen nodig voor de integratie met uw on-premises omgeving. Het instellen van een ExpressRoute-circuit en een Virtual Network gateway zijn ook vereist en worden in deze zelf studie opgelost.
+Een AVS-privécloud (Azure VMware Solution) vereist een virtueel netwerk. Omdat AVS geen ondersteuning biedt voor uw on-premises vCenter tijdens de preview, zijn er aanvullende stappen nodig voor de integratie met uw on-premises omgeving. Het instellen van een ExpressRoute-circuit en een gateway voor een virtueel netwerk zijn ook vereist en worden in deze zelfstudie toegelicht.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een virtueel netwerk maken
-> * Een Virtual Network-gateway maken
-> * Uw ExpressRoute-circuit verbinden met de gateway
-> * De Url's voor vCenter en NSX Manager zoeken
+> * Een gateway voor een virtueel netwerk maken
+> * Uw ExpressRoute-circuit met de gateway verbinden
+> * De URL's voor vCenter en NSX Manager zoeken
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Ga naar de resource groep die u hebt gemaakt in de [vorige zelf studie](tutorial-create-private-cloud.md)en selecteer **+ toevoegen** om een nieuwe resource te definiëren.
+Ga naar de resourcegroep die u hebt gemaakt in de [vorige zelfstudie](tutorial-create-private-cloud.md)en selecteer **+ Toevoegen** om een nieuwe resource te definiëren.
 
-Typ **Virtual Network**in het tekstvak **Marketplace zoeken** . Zoek de Virtual Network resource en selecteer deze.
+In het tekstvak **Marketplace doorzoeken** typt u **virtueel netwerk**. Zoek de resource voor het virtuele netwerk en selecteer deze.
 
-Selecteer op de pagina Virtual Network **maken** om uw virtuele netwerk in te stellen voor uw privécloud.
+Selecteer op de pagina Virtueel netwerk **Maken** om een virtueel netwerk voor uw privécloud in te stellen.
 
-Voer op de pagina **Virtual Network maken** de relevante gegevens voor het virtuele netwerk in, een beschrijving van de eigenschappen wordt weer gegeven in de volgende tabel:
+Voer op de pagina **Virtueel netwerk maken** de relevante gegevens voor het virtuele netwerk in. Een beschrijving van de eigenschappen wordt weergegeven in de volgende tabel:
 
 > [!IMPORTANT]
-> U moet een adres ruimte gebruiken die **niet** overlapt met de adres ruimte die u hebt gebruikt bij het maken van de privécloud in de voor gaande zelf studie.
+> U moet een adresruimte gebruiken die **niet** overlapt met de adresruimte die u hebt gebruikt bij het maken van de privécloud in de voorgaande zelfstudie.
 
-Op het tabblad **basis beginselen** voert u een naam in voor het virtuele netwerk en selecteert u de gewenste regio en selecteert u **volgende: IP-adressen**
+Voer op het tabblad **Basisinformatie** een naam in voor het virtuele netwerk, selecteer de gewenste regio en selecteer **Volgende: IP-adressen**
 
-Voer op het tabblad **IP-adressen** onder **IPv4-adres ruimte**de adres ruimte in die u hebt gemaakt in de vorige zelf studie.
+Voer op het tabblad **IP-adressen**, onder **IPv4-adresruimte**, de adresruimte in die u in de vorige zelfstudie hebt gemaakt.
 
-Selecteer **+ subnet toevoegen**en geef op de pagina **subnet toevoegen** het subnet een naam en het juiste adres bereik. Als u klaar bent, selecteert u **Toevoegen**.
+Selecteer **+ Subnet toevoegen** en geef op de pagina **Subnet toevoegen** het subnet een naam en het juiste adresbereik. Als u klaar bent, selecteert u **Toevoegen**.
 
-Selecteer **controleren + maken**
+Selecteer **Beoordelen en maken**
 
-:::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="een virtueel netwerk maken" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Een virtueel netwerk maken" border="true":::
 
-Controleer de gegevens en selecteer **maken**. Zodra de implementatie is voltooid, ziet u het virtuele netwerk in de resource groep.
+Controleer de gegevens en selecteer **Maken**. Zodra de implementatie is voltooid, ziet u het virtuele netwerk in de resourcegroep.
 
-## <a name="create-a-virtual-network-gateway"></a>Een Virtual Network-gateway maken
+## <a name="create-a-virtual-network-gateway"></a>Een gateway voor een virtueel netwerk maken
 
-U hebt een virtueel netwerk gemaakt in de vorige sectie. u maakt nu een Virtual Network gateway.
+U hebt in de vorige sectie een virtueel netwerk gemaakt. U gaat nu een gateway voor een virtueel netwerk maken.
 
-Selecteer in de resource groep **+ toevoegen** om een nieuwe resource toe te voegen.
+Selecteer in de resourcegroep **+ Toevoegen** om een nieuwe resource toe te voegen.
 
-Typ in het tekstvak **Marketplace** -tekst, **virtuele netwerk gateway**. Zoek de Virtual Network resource en selecteer deze.
+Typ in het tekstvak **Marketplace doorzoeken** **gateway voor virtueel netwerk**. Zoek de resource voor het virtuele netwerk en selecteer deze.
 
-Selecteer op de pagina **Virtual Network gateway** de optie **maken**.
+Selecteer op de pagina **Gateway voor virtueel netwerk** de optie **Maken**.
 
-Op het tabblad basis principes van de pagina **virtuele netwerk gateway maken** geeft u waarden op voor de velden. beschrijvingen van de velden worden weer gegeven in de volgende tabel:
+Geef op het tabblad Basisinformatie van de pagina **Gateway voor virtueel netwerk maken** waarden op voor de velden. Beschrijvingen van de velden worden weergegeven in de volgende tabel:
 
 | Veld | Waarde |
 | --- | --- |
-| **Abonnement** | Deze waarde is al ingevuld met het abonnement waartoe de resource groep behoort. |
-| **Resourcegroep** | Deze waarde is al ingevuld voor de huidige resource groep. Dit moet de resource groep zijn die u in een vorige test hebt gemaakt. |
-| **Naam** | Voer een unieke naam in voor de gateway van het virtuele netwerk. |
-| **Regio** | Selecteer de geografische locatie van de gateway van het virtuele netwerk. |
-| **Gateway type** | Selecteer **ExpressRoute**. |
+| **Abonnement** | Deze waarde is al ingevuld met het abonnement waartoe de resourcegroep behoort. |
+| **Resourcegroep** | Deze waarde is al ingevuld voor de huidige resourcegroep. Dit hoort de resourcegroep te zijn die u in een vorige test hebt gemaakt. |
+| **Naam** | Voer een unieke naam in voor de gateway voor het virtuele netwerk. |
+| **Regio** | Selecteer de geografische locatie van de gateway voor het virtuele netwerk. |
+| **Gatewaytype** | Selecteer **ExpressRoute**. |
 | **VPN-type** | Selecteer **Op route gebaseerd**. |
-| **SKU** | De standaard waarde behouden: **standaard**. |
+| **SKU** | Laat de standaardwaarde staan: **standaard**. |
 | **Virtueel netwerk** | Selecteer het virtuele netwerk dat u eerder hebt gemaakt. Als u het virtuele netwerk niet ziet, zorg er dan voor dat de regio van de gateway overeenkomt met de regio van het virtuele netwerk. |
-| **Adres bereik gateway-subnet** | Deze waarde wordt ingevuld wanneer u het virtuele netwerk selecteert. Wijzig de standaard waarde niet. |
+| **Adresbereik gatewaysubnet** | Deze waarde wordt ingevuld wanneer u het virtuele netwerk selecteert. Wijzig de standaardwaarde niet. |
 | **Openbaar IP-adres** | Selecteer **Nieuw maken**. |
 
 :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="een gateway maken" border="true":::
 
-Selecteer **controleren + maken**, op de volgende pagina Controleer of de details juist zijn en selecteer **maken** om de implementatie van uw virtuele netwerk gateway te starten. Zodra de implementatie is voltooid, gaat u naar de volgende sectie in deze zelf studie om uw ExpressRoute-verbinding te verbinden met het virtuele netwerk met uw privécloud.
+Selecteer **Beoordelen en maken**, controleer op de volgende pagina of de gegevens juist zijn en selecteer **Maken** om de implementatie van de gateway voor uw virtuele netwerk te starten. Zodra de implementatie is voltooid, gaat u naar de volgende sectie in deze zelfstudie om uw ExpressRoute-verbinding te verbinden met het virtuele netwerk met uw privécloud.
 
-## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>ExpressRoute verbinden met de Virtual Network-gateway
+## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>ExpressRoute verbinden met de gateway voor het virtuele netwerk
 
-In deze sectie wordt uitgelegd hoe u een verbinding kunt toevoegen tussen de privécloud van uw AVS en de virtuele netwerk gateway die u hebt gemaakt.
+In deze sectie wordt uitgelegd hoe u een verbinding kunt toevoegen tussen uw AVS-privécloud en de gateway voor uw virtuele netwerk die u hebt gemaakt.
 
-Ga naar de privécloud die u hebt gemaakt in de vorige zelf studie en selecteer **connectiviteit** onder **beheren**. Selecteer het tabblad **ExpressRoute** .
+Ga naar de privécloud die u hebt gemaakt in de vorige zelfstudie en selecteer **Connectiviteit** onder **Beheren**, selecteer het tabblad **ExpressRoute**.
 
-Kopieer de autorisatie sleutel. Als er geen autorisatie sleutel is, moet u er een maken om **een autorisatie sleutel** te selecteren en op te vragen.
+Kopieer de autorisatiesleutel. Als er geen autorisatiesleutel is, moet u er een maken. Daarvoor selecteert u **+ Een autorisatiesleutel aanvragen**.
 
-:::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="een autorisatie sleutel aanvragen" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="een autorisatiesleutel aanvragen" border="true":::
 
-Ga naar de Virtual Network-gateway die u hebt gemaakt in de vorige stap en selecteer onder **instellingen**de optie **verbindingen**. Selecteer op de pagina **verbindingen** **+ toevoegen**.
+Ga naar de gateway voor het virtuele netwerk die u in de vorige stap hebt gemaakt en selecteer onder **Instellingen** de optie **Verbindingen**. Selecteer op de pagina **Verbindingen** de optie **+ Toevoegen**.
 
-Geef op de pagina **verbinding toevoegen** waarden op voor de velden. Beschrijvingen van de velden worden weer gegeven in de volgende tabel:
+Geef op de pagina **Verbinding toevoegen** waarden op voor de velden. Beschrijvingen van de velden worden weergegeven in de volgende tabel:
 
 | Veld | Waarde |
 | --- | --- |
 | **Naam**  | Geef een naam voor de verbinding op.  |
-| **Verbindings type**  | Selecteer **ExpressRoute**.  |
-| **Autorisatie inwisselen**  | Zorg ervoor dat dit selectie vakje is ingeschakeld.  |
-| **Gateway van virtueel netwerk** | De virtuele netwerk gateway die u eerder hebt gemaakt  |
-| **Autorisatie sleutel**  | Kopieer en plak de autorisatie sleutel op het tabblad ExpressRoute voor de resource groep. |
-| **URI van peer circuit**  | Kopieer en plak de ExpressRoute-ID op het tabblad ExpressRoute voor uw resource groep.  |
+| **Verbindingstype**  | Selecteer **ExpressRoute**.  |
+| **Autorisatie inwisselen**  | Zorg ervoor dat dit selectievakje is ingeschakeld.  |
+| **Gateway voor een virtueel netwerk** | De gateway voor het virtuele netwerk die u eerder hebt gemaakt  |
+| **Autorisatiesleutel**  | Kopieer en plak de autorisatiesleutel vanuit het tabblad ExpressRoute voor de resourcegroep. |
+| **URI van peercircuit**  | Kopieer en plak de ExpressRoute-id vanuit het tabblad ExpressRoute voor uw resourcegroep.  |
 
 Selecteer **OK**. Hiermee maakt u de verbinding tussen het ExpressRoute-circuit en het virtuele netwerk.
 
 :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="een verbinding toevoegen" border="true":::
 
-## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>De Url's voor vCenter en NSX Manager zoeken
+## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>De URL's voor vCenter en NSX Manager zoeken
 
-Als u zich wilt aanmelden bij vVenter en NSX Manager, hebt u de url's nodig voor de vCenter-webclient en de NSX-T-beheer site. De url's vinden:
+Als u zich wilt aanmelden bij vCenter en NSX Manager, hebt u de URL's nodig voor de vCenter-webclient en de NSX-T-beheersite. De URL's vinden:
 
-Ga naar de privécloud van uw AVS, onder **beheren**, selecteer **identiteit**, hier vindt u de informatie die nodig is.
+Ga naar uw AVS-privécloud, selecteer onder **Beheren** de optie **identiteit**. Hier vindt u de vereiste informatie.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="de vCenter-url's zoeken" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="de vCenter-URL's zoeken" border="true":::
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -121,11 +121,11 @@ In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een virtueel netwerk maken
-> * Een Virtual Network-gateway maken
-> * Uw ExpressRoute-circuit verbinden met de gateway
-> * De Url's voor vCenter en NSX Manager zoeken
+> * Een gateway voor een virtueel netwerk maken
+> * Uw ExpressRoute-circuit met de gateway verbinden
+> * De URL's voor vCenter en NSX Manager zoeken
 
-Ga verder met de volgende zelf studie om te leren hoe u een Jump Box maakt die wordt gebruikt om verbinding te maken met uw omgeving, zodat u uw privécloud lokaal kunt beheren.
+Ga verder met de volgende zelfstudie om te leren hoe u een jump-box maakt die wordt gebruikt om verbinding te maken met uw omgeving, zodat u uw privécloud lokaal kunt beheren.
 
 > [!div class="nextstepaction"]
-> [Toegang tot de Privécloud](tutorial-access-private-cloud.md)
+> [Toegang tot een privécloud](tutorial-access-private-cloud.md)

@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Nieuw in Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
+    - name: Archief voor nieuwe functies in Azure AD
+      href: whats-new-archive.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 'Implementatie 30, 90 en hoger'
           href: active-directory-deployment-checklist-p2.md
+        - name: Azure Active Directory-implementatieplannen
+          href: active-directory-deployment-plans.md
     - name: Gegevensopslag
       items:
         - name: Opslag van identiteitsgegevens voor Europa
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: Groepseigenaren toevoegen of verwijderen
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: Toegang tot resources beheren met groepen
+          href: active-directory-manage-groups.md
     - name: Gebruikers
       items:
         - name: Een nieuwe gebruiker toevoegen of verwijderen
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: Een verwijderde gebruiker herstellen
           href: active-directory-users-restore.md
-- name: Resources
+- name: Problemen oplossen
   expanded: true
   items:
     - name: Ondersteuning vragen voor Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md
     - name: Veelgestelde vragen over Azure Active Directory
       href: active-directory-faq.md
-    - name: Azure Active Directory-implementatieplannen
-      href: active-directory-deployment-plans.md
-    - name: Archief voor nieuwe functies in Azure AD
-      href: whats-new-archive.md

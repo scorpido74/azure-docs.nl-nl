@@ -1,72 +1,72 @@
 ---
-title: Azure Files netwerk eindpunten configureren | Microsoft Docs
-description: Een overzicht van de netwerk opties voor Azure Files.
+title: Netwerkeindpunten configureren voor Azure Files | Microsoft Docs
+description: Een overzicht van de netwerkopties voor Azure Files.
 author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
-ms.translationtype: MT
+ms.openlocfilehash: 4695164e7bcbc63b852f2f4364cdccbc8ea7d8c4
+ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594199"
+ms.lasthandoff: 05/26/2020
+ms.locfileid: "83849311"
 ---
-# <a name="configuring-azure-files-network-endpoints"></a>Azure Files netwerk eindpunten configureren
-Azure Files biedt twee hoofd typen eind punten voor toegang tot Azure-bestands shares: 
-- Open bare eind punten, die een openbaar IP-adres hebben en toegankelijk zijn vanaf elke locatie in de wereld.
-- Privé-eind punten, die zich binnen een virtueel netwerk bevinden en een persoonlijk IP-adres hebben in de adres ruimte van het virtuele netwerk.
+# <a name="configuring-azure-files-network-endpoints"></a>Azure Files-netwerkeindpunten configureren
+Azure Files biedt twee hoofdtypen eindpunten voor toegang tot Azure-bestandsshares: 
+- Openbare eindpunten, die een openbaar IP-adres hebben en overal ter wereld toegankelijk zijn.
+- Privé-eindpunten, die zich binnen een virtueel netwerk bevinden en een privé-IP-adres hebben in de adresruimte van het virtuele netwerk.
 
-Open bare en persoonlijke eind punten bestaan in het Azure-opslag account. Een opslag account is een beheer constructie die een gedeelde opslag groep vertegenwoordigt, waarbij u meerdere bestands shares en andere opslag resources, zoals BLOB-containers of wacht rijen, kunt implementeren.
+Openbare en privé-eindpunten bestaan in het Azure-opslagaccount. Een opslagaccount is een beheerconstructie die een gedeelde opslaggroep vertegenwoordigt waarin u meerdere bestandsshares kunt implementeren, evenals andere opslagresources, zoals blob-containers of wachtrijen.
 
-Dit artikel richt zich op het configureren van de eind punten van een opslag account voor het rechtstreeks openen van de Azure-bestands share. De meeste details die in dit document worden gegeven, zijn ook van toepassing op de manier waarop Azure File Sync samenwerkt met open bare en privé-eind punten voor het opslag account, maar Zie [Azure file sync proxy-en Firewall instellingen configureren](storage-sync-files-firewall-and-proxy.md)voor meer informatie over netwerk overwegingen voor een Azure file sync-implementatie.
+Dit artikel richt zich op het configureren van de eindpunten van een opslagaccount voor het rechtstreeks openen van de Azure-bestandsshare. De meeste informatie in dit document is ook van toepassing op de manier waarop Azure File Sync samenwerkt met openbare en privé-eindpunten voor het opslagaccount. Als u echter meer wilt weten over aandachtspunten voor netwerken bij een Azure File Sync-implementatie, raadpleegt u [Azure File Sync proxy and firewall settings](storage-sync-files-firewall-and-proxy.md) (Azure File Sync-proxy- en firewallinstellingen).
 
-U wordt aangeraden [Azure files netwerk overwegingen](storage-files-networking-overview.md) te lezen voordat u deze hand leiding leest.
+Het is raadzaam om [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken) te lezen voordat u dit artikel verder leest.
 
 ## <a name="prerequisites"></a>Vereisten
 - In dit artikel wordt ervan uitgegaan dat u al een Azure-abonnement hebt gemaakt. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
-- In dit artikel wordt ervan uitgegaan dat u al een Azure-bestands share hebt gemaakt in een opslag account waarmee u vanuit on-premises verbinding wilt maken. Zie [een Azure-bestands share maken](storage-how-to-create-file-share.md)voor meer informatie over het maken van een Azure-bestands share.
-- Als u Azure PowerShell wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
-- Als u de Azure CLI wilt gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- In dit artikel wordt ervan uitgegaan dat u al een Azure-bestandsshare hebt gemaakt in een opslagaccount waarmee u on-premises verbinding wilt maken. Zie [Een Azure-bestandsshare maken](storage-how-to-create-file-share.md) als u wilt lezen hoe u een Azure-bestandsshare maakt.
+- Als u van plan bent om Azure PowerShell te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Als u van plan bent om de Artikel CLI te gebruiken, [installeert u de nieuwste versie](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
-Als u een persoonlijk eind punt voor uw opslag account maakt, worden de volgende Azure-resources geïmplementeerd:
+Als u een privé-eindpunt maakt voor uw opslagaccount, worden de volgende Azure-resources geïmplementeerd:
 
-- **Een persoonlijk eind punt**: een Azure-resource die het persoonlijke eind punt van het opslag account vertegenwoordigt. U kunt dit beschouwen als een resource die een opslag account en een netwerk interface verbindt.
-- **Een netwerk interface (NIC)**: de netwerk interface die een privé-IP-adres in het opgegeven virtuele netwerk/subnet beheert. Dit is precies dezelfde resource die tijdens het implementeren van een virtuele machine wordt geïmplementeerd, maar niet wordt toegewezen aan een VM, is het eigendom van het persoonlijke eind punt.
-- **Een persoonlijke DNS-zone**: als u nog nooit een persoonlijk eind punt voor dit virtuele netwerk hebt geïmplementeerd, wordt er een nieuwe privé-DNS-zone voor uw virtuele netwerk geïmplementeerd. Er wordt ook een DNS A-record gemaakt voor het opslag account in deze DNS-zone. Als u al een persoonlijk eind punt in dit virtuele netwerk hebt geïmplementeerd, wordt er een nieuwe A-record voor het opslag account toegevoegd aan de bestaande DNS-zone. Het implementeren van een DNS-zone is optioneel, maar wordt wel nadrukkelijk aanbevolen en vereist als u uw Azure-bestands shares koppelt aan een AD-Service-Principal of de FileREST-API gebruikt.
+- **Een privé-eindpunt**: Een Azure-resource die het privé-eindpunt van het opslagaccount voorstelt. U kunt dit zien als een resource die een verbinding opzet tussen een opslagaccount en een netwerkinterface.
+- **Een netwerkinterface (NIC)** : De netwerkinterface die een privé-IP-adres onderhoudt binnen het opgeven virtuele netwerk/subnet. Dit is exact dezelfde resource die wordt geïmplementeerd als u een virtuele machine implementeert, alleen wordt de resource nu niet toegewezen aan een VM, maar is deze het eigendom van het privé-eindpunt.
+- **Een privé-DNS-zone**: Als u niet eerder een privé-eindpunt hebt geïmplementeerd voor dit virtuele netwerk, wordt er een nieuwe privé-DNS-zone geïmplementeerd voor uw virtuele netwerk. Er wordt ook een DNS A-record gemaakt voor het opslagaccount in deze DNS-zone. Als u al een privé-eindpunt hebt geïmplementeerd in dit virtuele netwerk, wordt er een nieuwe A-record voor het opslagaccount toegevoegd aan de bestaande DNS-zone. Het implementeren van een DNS-zone is optioneel, maar wordt wel sterk aanbevolen. Het is vereist als u Azure-bestandsshares koppelt met behulp van een AD-serviceprincipal of de FileREST-API.
 
 > [!Note]  
-> In dit artikel wordt het DNS-achtervoegsel van het opslag account gebruikt voor `core.windows.net`de open bare Azure-regio's. Dit commentaar is ook van toepassing op Azure soevereine Clouds, zoals de Azure-Cloud voor de Amerikaanse overheid en de cloud van Azure China. Vervang gewoon de juiste achtervoegsels voor uw omgeving. 
+> In dit artikel wordt het DNS-achtervoegsel voor opslagaccounts gebruikt voor de openbare regio's van Azure, te weten `core.windows.net`. Deze opmerking geldt ook voor onafhankelijke Azure-clouds zoals de Azure-cloud voor de Amerikaanse overheid en de Azure China-cloud. In dat geval vervangt u het achtervoegsel door dat van de onafhankelijke cloud. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Navigeer naar het opslag account waarvoor u een persoonlijk eind punt wilt maken. Selecteer in de inhouds opgave voor het opslag account **particuliere eindpunt verbindingen**en vervolgens **+ privé-eind punt** om een nieuw persoonlijk eind punt te maken. 
+Ga naar het opslagaccount waarvoor u een privé-eindpunt wilt maken. Selecteer **Privé-eindpuntverbindingen** in de inhoudsopgave van het opslagaccount en selecteer vervolgens **+ Privé-eindpunt** om een nieuw privé-eindpunt te maken. 
 
-![Een scherm opname van het item privé-eindpunt verbindingen in de inhouds opgave van het opslag account](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
+![Een schermopname van de optie Privé-eindpuntverbindingen in de inhoudsopgave van het opslagaccount](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
 
-De resulterende wizard heeft meerdere pagina's om te volt ooien.
+Er wordt een wizard gestart waarin u meerdere pagina's moet invullen.
 
-Selecteer op de Blade **basis beginselen** de gewenste resource groep, naam en regio voor uw persoonlijke eind punt. Deze kunnen wille keurig zijn, maar moeten niet overeenkomen met het opslag account, hoewel u het persoonlijke eind punt moet maken in dezelfde regio als het virtuele netwerk waarin u het persoonlijke eind punt wilt maken.
+Selecteer op de blade **Algemeen** de gewenste resourcegroep, geef een naam op en selecteer de regio voor het privé-eindpunt. U kunt hier kiezen wat u wilt. De waarden hoeven niet overeen te komen met die van het opslagaccount. Het is wel zo dat u het privé-eindpunt moet maken in dezelfde regio als het virtuele netwerk waarin u het privé-eindpunt wilt maken.
 
-![Een scherm afbeelding van de sectie basis beginselen van de sectie persoonlijk eind punt maken](media/storage-files-networking-endpoints/create-private-endpoint-1.png)
+![Een schermopname van de blade Algemeen in de sectie Een privé-eindpunt maken](media/storage-files-networking-endpoints/create-private-endpoint-1.png)
 
-Selecteer op de Blade **resource** het keuze rondje om **verbinding te maken met een Azure-resource in mijn Directory**. Onder **resource type**selecteert u **micro soft. Storage/Storage accounts** voor het bron type. Het veld **resource** is het opslag account met de Azure-bestands share waarmee u verbinding wilt maken. Doel-subresource is een **bestand**, omdat dit voor Azure files is.
+Schakel op de blade **Resource** het keuzerondje **Verbinding maken met een Azure-resource in mijn directory** in. Selecteer onder **Resourcetype** **Microsoft.Storage/storageAccounts** als het type resource. Geef in het veld **Resource** het opslagaccount op met de Azure-bestandsshare waarmee u verbinding wilt maken. Selecteer voor Subresource van doel de waarde **bestand**, aangezien dit voor Azure Files is.
 
-Op de Blade **configuratie** kunt u het specifieke virtuele netwerk en subnet selecteren waaraan u uw persoonlijke eind punt wilt toevoegen. Selecteer het virtuele netwerk dat u hierboven hebt gemaakt. U moet een uniek subnet selecteren in het subnet waaraan u het service-eind punt hebt toegevoegd. De Blade configuratie bevat ook de informatie voor het maken of bijwerken van de privé-DNS-zone. U kunt het beste de `privatelink.file.core.windows.net` standaard zone gebruiken.
+Op de blade **Configuratie** kunt u het specifieke virtuele netwerk en het subnet selecteren waaraan u het privé-eindpunt wilt toevoegen. Selecteer het virtuele netwerk dat u hierboven hebt gemaakt. U moet een ander subnet selecteren dan het subnet waaraan u hierboven het service-eindpunt hebt toegevoegd. De blade Configuratie bevat ook de gegevens voor het maken/bijwerken van de privé-DNS-zone. We adviseren om de standaardzone `privatelink.file.core.windows.net` te gebruiken.
 
-![Een scherm opname van de configuratie sectie](media/storage-files-networking-endpoints/create-private-endpoint-2.png)
+![Een schermopname van de sectie Configuratie](media/storage-files-networking-endpoints/create-private-endpoint-2.png)
 
-Klik op **beoordeling + maken** om het persoonlijke eind punt te maken. 
+Klik op **Beoordelen en maken** om het privé-eindpunt te maken. 
 
-Als u een virtuele machine in uw virtuele netwerk hebt, of als u DNS-door sturing hebt geconfigureerd zoals [hier](storage-files-networking-dns.md)wordt beschreven, kunt u testen of uw persoonlijke eind punt correct is ingesteld door de volgende opdrachten uit te voeren vanuit Power shell, de opdracht regel of de Terminal (werkt voor Windows, Linux of macOS). U moet de `<storage-account-name>` juiste naam voor het opslag account vervangen:
+Als er een virtuele machine aanwezig is in het virtuele netwerk, of als u het doorsturen in DNS hebt geconfigureerd zoals [hier](storage-files-networking-dns.md) wordt beschreven, kunt u testen of uw privé-eindpunt goed is ingesteld door de volgende opdrachten uit te voeren vanuit PowerShell, vanaf de opdrachtregel of vanuit de terminal (werkt voor Windows, Linux en macOS). U moet `<storage-account-name>` door de juiste naam van het opslagaccount:
 
 ```
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
-Als alles goed werkte, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres van het privé-eind punt in uw virtuele netwerk is (uitvoer weer gegeven voor Windows):
+Als alles in orde is, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres is van het privé-eindpunt in uw virtuele netwerk (de weergegeven uitvoer is voor Windows):
 
 ```Output
 Server:  UnKnown
@@ -79,7 +79,7 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Als u een persoonlijk eind punt voor uw opslag account wilt maken, moet u eerst een verwijzing naar uw opslag account en het subnet van het virtuele netwerk ophalen waaraan u het persoonlijke eind punt wilt toevoegen. Replace `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>`en `<vnet-subnet-name>` lager:
+Als u een privé-eindpunt wilt maken voor uw opslagaccount, moet u eerst een verwijzing naar uw opslagaccount opvragen, evenals naar het subnet in het virtuele netwerk waaraan u het privé-eindpunt wilt toevoegen. Vervang `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` en `<vnet-subnet-name>` hieronder:
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group-name>"
@@ -124,7 +124,7 @@ if ($null -eq $subnet) {
 }
 ```
 
-Als u een persoonlijk eind punt wilt maken, moet u een verbinding maken met het opslag account. De verbinding met de service voor persoonlijke koppelingen is een invoer voor het maken van het persoonlijke eind punt. 
+Als u een privé-eindpunt wilt maken, moet u een Private Link-serviceverbinding maken met het opslagaccount. Deze verbinding geeft u op als invoer bij het maken van het privé-eindpunt. 
 
 ```PowerShell
 # Disable private endpoint network policies
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
         -ErrorAction Stop
 ```
 
-Het maken van een privé-DNS-zone van Azure maakt de oorspronkelijke naam van het `storageaccount.file.core.windows.net` opslag account mogelijk, zoals het oplossen van het privé-IP-adres in het virtuele netwerk. Hoewel optioneel vanuit het perspectief van het maken van een persoonlijk eind punt, is het expliciet vereist voor het koppelen van de Azure-bestands share met behulp van een AD-gebruikers principal of om toegang te krijgen via de REST API.  
+Door het maken van een privé-DNS-zone in Azure kan de oorspronkelijke naam van het opslagaccount, zoals `storageaccount.file.core.windows.net`, worden omgezet in het privé-IP-adres in het virtuele netwerk. Hoewel optioneel vanuit het perspectief van het maken van een privé-eindpunt, is dit expliciet vereist voor het koppelen van de Azure-bestandsshare met behulp van een AD-principal van een gebruiker of de REST-API.  
 
 ```PowerShell
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -188,7 +188,7 @@ if ($null -eq $dnsZone) {
 }
 ```
 
-Nu u een verwijzing naar de privé-DNS-zone hebt, moet u een A-record maken voor uw opslag account.
+U beschikt nu over een verwijzing naar de privé-DNS-zone en kunt daarom een A-record gaan maken voor uw opslagaccount.
 
 ```PowerShell
 $privateEndpointIP = $privateEndpoint | `
@@ -215,7 +215,7 @@ New-AzPrivateDnsRecordSet `
     Out-Null
 ```
 
-Als u een virtuele machine in uw virtuele netwerk hebt, of als u DNS-door sturing hebt geconfigureerd zoals [hier](storage-files-networking-dns.md)wordt beschreven, kunt u testen of uw persoonlijke eind punt correct is ingesteld met de volgende opdrachten:
+Als er een virtuele machine aanwezig is in het virtuele netwerk, of als u het doorsturen in DNS hebt geconfigureerd zoals [hier](storage-files-networking-dns.md) wordt beschreven, kunt u testen of uw privé-eindpunt goed is ingesteld door de volgende opdrachten uit te voeren:
 
 ```PowerShell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
@@ -224,7 +224,7 @@ $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.fil
 Resolve-DnsName -Name $storageAccountHostName
 ```
 
-Als alles goed werkte, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres van het privé-eind punt in uw virtuele netwerk is:
+Als alles in orde is, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres is van het privé-eindpunt in uw virtuele netwerk:
 
 ```Output
 Name                             Type   TTL   Section    NameHost
@@ -240,7 +240,7 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
-Als u een persoonlijk eind punt voor uw opslag account wilt maken, moet u eerst een verwijzing naar uw opslag account en het subnet van het virtuele netwerk ophalen waaraan u het persoonlijke eind punt wilt toevoegen. Replace `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>`en `<vnet-subnet-name>` lager:
+Als u een privé-eindpunt wilt maken voor uw opslagaccount, moet u eerst een verwijzing naar uw opslagaccount opvragen, evenals naar het subnet in het virtuele netwerk waaraan u het privé-eindpunt wilt toevoegen. Vervang `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` en `<vnet-subnet-name>` hieronder:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"
@@ -272,7 +272,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Als u een persoonlijk eind punt wilt maken, moet u eerst controleren of het beleid voor het particuliere eindpunt netwerk van het subnet is ingesteld op uitgeschakeld. Vervolgens kunt u met de `az network private-endpoint create` opdracht een persoonlijk eind punt maken
+Als u een privé-eindpunt wilt maken, moet u er eerst voor zorgen dat het netwerkbeleid voor het privé-eindpunt van het subnet is uitgeschakeld. Vervolgens kunt u een privé-eindpunt maken met de opdracht `az network private-endpoint create`.
 
 ```bash
 # Disable private endpoint network policies
@@ -300,7 +300,7 @@ privateEndpoint=$(az network private-endpoint create \
     tr -d '"')
 ```
 
-Het maken van een privé-DNS-zone van Azure maakt de oorspronkelijke naam van het `storageaccount.file.core.windows.net` opslag account mogelijk, zoals het oplossen van het privé-IP-adres in het virtuele netwerk. Hoewel optioneel vanuit het perspectief van het maken van een persoonlijk eind punt, is het expliciet vereist voor het koppelen van de Azure-bestands share met behulp van een AD-gebruikers principal of om toegang te krijgen via de REST API.  
+Door het maken van een privé-DNS-zone in Azure kan de oorspronkelijke naam van het opslagaccount, zoals `storageaccount.file.core.windows.net`, worden omgezet in het privé-IP-adres in het virtuele netwerk. Hoewel optioneel vanuit het perspectief van het maken van een privé-eindpunt, is dit expliciet vereist voor het koppelen van de Azure-bestandsshare met behulp van een AD-principal van een gebruiker of de REST-API.  
 
 ```bash
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -360,7 +360,7 @@ then
 fi
 ```
 
-Nu u een verwijzing naar de privé-DNS-zone hebt, moet u een A-record maken voor uw opslag account.
+U beschikt nu over een verwijzing naar de privé-DNS-zone en kunt daarom een A-record gaan maken voor uw opslagaccount.
 
 ```bash
 privateEndpointNIC=$(az network private-endpoint show \
@@ -387,7 +387,7 @@ az network private-dns record-set a add-record \
         --output none
 ```
 
-Als u een virtuele machine in uw virtuele netwerk hebt, of als u DNS-door sturing hebt geconfigureerd zoals [hier](storage-files-networking-dns.md)wordt beschreven, kunt u testen of uw persoonlijke eind punt correct is ingesteld met de volgende opdrachten:
+Als er een virtuele machine aanwezig is in het virtuele netwerk, of als u het doorsturen in DNS hebt geconfigureerd zoals [hier](storage-files-networking-dns.md) wordt beschreven, kunt u testen of uw privé-eindpunt goed is ingesteld door de volgende opdrachten uit te voeren:
 
 ```bash
 httpEndpoint=$(az storage account show \
@@ -400,7 +400,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Als alles goed werkte, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres van het privé-eind punt in uw virtuele netwerk is:
+Als alles in orde is, ziet u de volgende uitvoer, waarbij `192.168.0.5` het privé-IP-adres is van het privé-eindpunt in uw virtuele netwerk. U moet nog steeds storageaccount.file.core.windows.net gebruiken om verbinding te maken met uw bestandsshare en niet het privatelink-pad.
 
 ```Output
 Server:         127.0.0.53
@@ -414,24 +414,24 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>De toegang tot het open bare eind punt beperken
-U kunt de toegang tot het open bare eind punt beperken met de firewall instellingen van het opslag account. Over het algemeen beperkt de meeste firewall-beleids regels voor een opslag account netwerk toegang tot een of meer virtuele netwerken. Er zijn twee manieren om de toegang tot een opslag account te beperken tot een virtueel netwerk:
+## <a name="restrict-access-to-the-public-endpoint"></a>Toegang tot het openbare eindpunt beperken
+U kunt de toegang tot het openbare eindpunt beperken via de firewallinstellingen voor het opslagaccount. Over het algemeen beperken de meeste beleidsregels van firewalls voor een opslagaccount de netwerktoegang tot een of meer virtuele netwerken. Er zijn twee benaderingen voor het beperken van de toegang van een opslagaccount tot een virtueel netwerk:
 
-- [Maak een of meer persoonlijke eind punten voor het opslag account](#create-a-private-endpoint) en beperk de toegang tot het open bare eind punt. Dit zorgt ervoor dat alleen verkeer dat afkomstig is van binnen de gewenste virtuele netwerken toegang heeft tot de Azure-bestands shares in het opslag account.
-- Beperk het open bare eind punt tot een of meer virtuele netwerken. Dit werkt met behulp van een mogelijkheid van het virtuele netwerk met de naam *service-eind punten*. Wanneer u het verkeer beperkt tot een opslag account via een service-eind punt, hebt u nog steeds toegang tot het opslag account via het open bare IP-adres.
+- [Een of meer privé-eindpunten maken voor het opslagaccount](#create-a-private-endpoint) en alle toegang tot het openbare eindpunt beperken. Hierdoor heeft alleen verkeer dat afkomstig is uit de gewenste virtuele netwerken toegang tot de Azure-bestandsshares binnen het opslagaccount.
+- Het openbare eindpunt beperken tot een of meer virtuele netwerken. Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Wanneer u het verkeer naar een opslagaccount beperkt via een service-eindpunt, krijgt u nog steeds toegang tot het opslagaccount via het openbare IP-adres.
 
-### <a name="restrict-all-access-to-the-public-endpoint"></a>Toegang tot het open bare eind punt beperken
-Als alle toegang tot het open bare eind punt is beperkt, is het opslag account nog steeds toegankelijk via het persoonlijke eind punt. Anders worden geldige aanvragen voor het open bare eind punt van het opslag account geweigerd. 
+### <a name="restrict-all-access-to-the-public-endpoint"></a>Alle toegang tot het openbare eindpunt beperken
+Wanneer alle toegang tot het openbare eindpunt wordt beperkt, is het opslagaccount nog toegankelijk via de privé-eindpunten van het account. Anderszins geldige aanvragen naar het openbare eindpunt van het opslagaccount worden geweigerd. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Navigeer naar het opslag account waarvoor u alle toegang tot het open bare eind punt wilt beperken. Selecteer **firewalls en virtuele netwerken**in de inhouds opgave van het opslag account.
+Ga naar het opslagaccount waarvoor u alle toegang tot het openbare eindpunt wilt beperken. Selecteer in de inhoudsopgave voor het opslagaccount **Firewalls en virtuele netwerken**.
 
-Selecteer boven aan de pagina het keuze rondje **geselecteerde netwerken** . Hiermee wordt het verbergen van een aantal instellingen voor het beheren van de beperking van het open bare eind punt ongedaan gemaakt. Schakel **vertrouwde micro soft-Services toegang geven tot dit service account** in om vertrouwde micro soft-Services, zoals Azure file sync, toe te staan om toegang te krijgen tot het opslag account.
+Selecteer bovenaan de pagina het keuzerondje **Geselecteerde netwerken**. Hierdoor komen er een aantal instellingen beschikbaar voor het beperken van de toegang tot het openbare eindpunt. Selecteer **Vertrouwde Microsoft-services toegang geven tot dit serviceaccount** om vertrouwde Microsoft-services, zoals Azure File Sync, toegang te geven tot het opslagaccount.
 
-![Scherm afbeelding van de Blade firewalls en virtuele netwerken met de juiste beperkende beperkingen](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
+![Schermopname van de blade Firewalls en virtuele netwerken met de gewenste beperkingen](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Met de volgende Power shell-opdracht wordt al het verkeer naar het open bare eind punt van het opslag account geweigerd. Houd er rekening mee dat met `-Bypass` deze opdracht de `AzureServices`para meter is ingesteld op. Hiermee kunnen vertrouwde services van de eerste partij, zoals Azure File Sync, toegang krijgen tot het opslag account via het open bare eind punt.
+Met de volgende PowerShell-opdracht wordt al het verkeer geweigerd naar het openbare eindpunt van het opslagaccount. In deze opdracht is de parameter `-Bypass` ingesteld op `AzureServices`. Hierdoor kunnen vertrouwde Microsoft-services, zoals Azure File Sync, via het openbare eindpunt toegang krijgen tot het opslagaccount.
 
 ```PowerShell
 # This assumes $storageAccount is still defined from the beginning of this of this guide.
@@ -444,7 +444,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
-Met de volgende CLI-opdracht wordt al het verkeer naar het open bare eind punt van het opslag account geweigerd. Houd er rekening mee dat met `-bypass` deze opdracht de `AzureServices`para meter is ingesteld op. Hiermee kunnen vertrouwde services van de eerste partij, zoals Azure File Sync, toegang krijgen tot het opslag account via het open bare eind punt.
+Met de volgende CLI-opdracht wordt al het verkeer geweigerd naar het openbare eindpunt van het opslagaccount. In deze opdracht is de parameter `-bypass` ingesteld op `AzureServices`. Hierdoor kunnen vertrouwde Microsoft-services, zoals Azure File Sync, via het openbare eindpunt toegang krijgen tot het opslagaccount.
 
 ```bash
 # This assumes $storageAccountResourceGroupName and $storageAccountName 
@@ -458,20 +458,20 @@ az storage account update \
 ```
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Beperk de toegang tot het open bare eind punt tot specifieke virtuele netwerken
-Wanneer u het opslag account beperkt tot specifieke virtuele netwerken, kunt u vanuit de opgegeven virtuele netwerken aanvragen naar het open bare eind punt toestaan. Dit werkt met behulp van een mogelijkheid van het virtuele netwerk met de naam *service-eind punten*. Dit kan worden gebruikt met of zonder persoonlijke eind punten.
+### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Toegang tot het openbare eindpunt beperken tot specifieke virtuele netwerken
+Wanneer u de toegang tot het opslagaccount beperkt tot bepaalde virtuele netwerken, staat u aanvragen naar het openbare eindpunt toe vanuit de opgegeven virtuele netwerken. Hiervoor wordt een voorziening van het virtuele netwerk gebruikt met de naam *service-eindpunten*. Deze voorziening kan worden gebruikt met of zonder privé-eindpunten.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Navigeer naar het opslag account waarvoor u het open bare eind punt wilt beperken tot specifieke virtuele netwerken. Selecteer **firewalls en virtuele netwerken**in de inhouds opgave van het opslag account. 
+Ga naar het opslagaccount waarvoor u het openbare eindpunt wilt beperken tot bepaalde virtuele netwerken. Selecteer in de inhoudsopgave voor het opslagaccount **Firewalls en virtuele netwerken**. 
 
-Selecteer boven aan de pagina het keuze rondje **geselecteerde netwerken** . Hiermee wordt het verbergen van een aantal instellingen voor het beheren van de beperking van het open bare eind punt ongedaan gemaakt. Klik op **+ bestaand virtueel netwerk toevoegen** om het specifieke virtuele netwerk te selecteren dat moet worden toegestaan om toegang te krijgen tot het opslag account via het open bare eind punt. Hiervoor moet u een virtueel netwerk en een subnet voor dat virtuele netwerk selecteren. 
+Selecteer bovenaan de pagina het keuzerondje **Geselecteerde netwerken**. Hierdoor komen er een aantal instellingen beschikbaar voor het beperken van de toegang tot het openbare eindpunt. Klik op **+ Bestaand virtueel netwerk toevoegen** om het specifieke virtuele netwerk te selecteren dat toegang mag hebben tot het opslagaccount via het openbare eindpunt. Hiervoor moet u een virtueel netwerk en een subnet selecteren voor dat virtuele netwerk. 
 
-Schakel **vertrouwde micro soft-Services toegang geven tot dit service account** in om vertrouwde micro soft-Services, zoals Azure file sync, toe te staan om toegang te krijgen tot het opslag account.
+Selecteer **Vertrouwde Microsoft-services toegang geven tot dit serviceaccount** om vertrouwde Microsoft-services, zoals Azure File Sync, toegang te geven tot het opslagaccount.
 
-![Scherm afbeelding van de Blade firewalls en virtuele netwerken met een specifiek virtueel netwerk dat toegang heeft tot het opslag account via het open bare eind punt](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
+![Schermopname van de blade Firewalls en virtuele netwerken waarop een bepaald virtueel netwerk toegang heeft gekregen tot het opslagaccount via het openbare eindpunt](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Als u de toegang tot het open bare eind punt van het opslag account wilt beperken tot specifieke virtuele netwerken die gebruikmaken van service-eind punten, moet u eerst informatie verzamelen over het opslag account en het virtuele netwerk. Vul `<storage-account-resource-group>` `<storage-account-name>`, `<vnet-resource-group-name>` `<subnet-name>` ,, en in om deze informatie te verzamelen. `<vnet-name>`
+Om de toegang tot het openbare eindpunt van het opslagaccount met behulp van service-eindpunten te beperken tot specifieke virtuele netwerken, moeten we eerst gegevens verzamelen van het opslagaccount en het virtuele netwerk. Geef waarden op voor `<storage-account-resource-group>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` en `<subnet-name>` om deze gegevens te verzamelen.
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group>"
@@ -501,7 +501,7 @@ if ($null -eq $subnet) {
 }
 ```
 
-Als u wilt dat verkeer van het virtuele netwerk wordt toegestaan door de Azure-netwerk infrastructuur om naar het open bare eind punt van het opslag account te gaan, moet het `Microsoft.Storage` service-eind punt in het subnet van het virtuele netwerk worden weer gegeven. Met de volgende Power shell-opdrachten wordt `Microsoft.Storage` het eind punt van de service toegevoegd aan het subnet als dit nog niet is gebeurd.
+Om verkeer vanuit het virtuele netwerk via de netwerkinfrastructuur van Azure door te laten naar het openbare eindpunt van het opslagaccount, moet het service-eindpunt `Microsoft.Storage` beschikbaar zijn in het subnet van het virtuele netwerk. Met de volgende PowerShell-opdrachten wordt het service-eindpunt `Microsoft.Storage` toegevoegd aan het subnet als het daar nog niet aanwezig is.
 
 ```PowerShell
 $serviceEndpoints = $subnet | `
@@ -528,7 +528,7 @@ if ($serviceEndpoints -notcontains "Microsoft.Storage") {
 }
 ```
 
-De laatste stap bij het beperken van het verkeer naar het opslag account is het maken van een netwerk regel en het toevoegen van de netwerk regel van het opslag account.
+De laatste stap om verkeer naar het opslagaccount te beperken, is het opstellen van een netwerkregel en die toe te voegen aan de set met netwerkregels voor het opslagaccount.
 
 ```PowerShell
 $networkRule = $storageAccount | Add-AzStorageAccountNetworkRule `
@@ -545,7 +545,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
-Als u de toegang tot het open bare eind punt van het opslag account wilt beperken tot specifieke virtuele netwerken die gebruikmaken van service-eind punten, moet u eerst informatie verzamelen over het opslag account en het virtuele netwerk. Vul `<storage-account-resource-group>` `<storage-account-name>`, `<vnet-resource-group-name>` `<subnet-name>` ,, en in om deze informatie te verzamelen. `<vnet-name>`
+Om de toegang tot het openbare eindpunt van het opslagaccount met behulp van service-eindpunten te beperken tot specifieke virtuele netwerken, moeten we eerst gegevens verzamelen van het opslagaccount en het virtuele netwerk. Geef waarden op voor `<storage-account-resource-group>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>` en `<subnet-name>` om deze gegevens te verzamelen.
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group>"
@@ -574,7 +574,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Als u wilt dat verkeer van het virtuele netwerk wordt toegestaan door de Azure-netwerk infrastructuur om naar het open bare eind punt van het opslag account te gaan, moet het `Microsoft.Storage` service-eind punt in het subnet van het virtuele netwerk worden weer gegeven. Met de volgende CLI-opdrachten wordt het `Microsoft.Storage` eind punt van de service toegevoegd aan het subnet als dit nog niet is gebeurd.
+Om verkeer vanuit het virtuele netwerk via de netwerkinfrastructuur van Azure door te laten naar het openbare eindpunt van het opslagaccount, moet het service-eindpunt `Microsoft.Storage` beschikbaar zijn in het subnet van het virtuele netwerk. Met de volgende CLI-opdrachten wordt het service-eindpunt `Microsoft.Storage` toegevoegd aan het subnet als het daar nog niet aanwezig is.
 
 ```bash
 serviceEndpoints=$(az network vnet subnet show \
@@ -612,7 +612,7 @@ then
 fi
 ```
 
-De laatste stap bij het beperken van het verkeer naar het opslag account is het maken van een netwerk regel en het toevoegen van de netwerk regel van het opslag account.
+De laatste stap om verkeer naar het opslagaccount te beperken, is het opstellen van een netwerkregel en die toe te voegen aan de set met netwerkregels voor het opslagaccount.
 
 ```bash
 az storage account network-rule add \
@@ -632,6 +632,6 @@ az storage account update \
 ---
 
 ## <a name="see-also"></a>Zie ook
-- [Azure Files-netwerk overwegingen](storage-files-networking-overview.md)
-- [DNS doorsturen configureren voor Azure Files](storage-files-networking-dns.md)
-- [S2S VPN configureren voor Azure Files](storage-files-configure-s2s-vpn.md)
+- [Azure Files networking considerations](storage-files-networking-overview.md) (Aandachtspunten voor Azure Files-netwerken)
+- [Configuring DNS forwarding for Azure Files](storage-files-networking-dns.md) (DNS doorsturen configureren voor Azure Files)
+- [Configuring S2S VPN for Azure Files](storage-files-configure-s2s-vpn.md) (S2S-VPN configureren voor Azure Files)

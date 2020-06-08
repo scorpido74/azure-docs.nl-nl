@@ -3,16 +3,16 @@ title: Azure EA-overeenkomsten en -aanpassingen
 description: In dit wordt uitleg gegeven over hoe de Azure EA-overeenkomsten en -aanpassingen van invloed zijn op uw gebruik van Azure EA Portal.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648179"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298139"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA-overeenkomsten en -aanpassingen
 
@@ -43,7 +43,7 @@ Een inschrijving heeft één van de volgende statuswaarden. Elke waarde bepaalt 
 
 **Verlopen**: de EA-inschrijving verloopt wanneer de einddatum van de Enterprise Agreement is bereikt. De EA-klant wordt uitgeschreven voor de verlengde termijn en alle services worden uitgeschakeld.
 
-Vanaf 1 augustus 2019 worden de nieuwe uitschrijvingsformulieren niet geaccepteerd voor commerciële klanten van Azure. In plaats daarvan worden alle inschrijvingen voor onbepaalde tijd verlengd. Als u de Azure-services niet meer wilt gebruiken, zegt u uw abonnement op via [Azure EA Portal](https://portal.azure.com). Uw partner kan ook via https://www.explore.ms een beëindigingsaanvraag indienen. Er zijn geen wijzigingen voor klanten met een overeenkomst van het overheidstype.
+Vanaf 1 augustus 2019 worden de nieuwe uitschrijvingsformulieren niet geaccepteerd voor commerciële klanten van Azure. In plaats daarvan worden alle inschrijvingen voor onbepaalde tijd verlengd. Als u de Azure-services niet meer wilt gebruiken, zegt u uw abonnement via [Azure Portal](https://portal.azure.com) op. Uw partner kan ook via https://www.explore.ms een beëindigingsaanvraag indienen. Er zijn geen wijzigingen voor klanten met een overeenkomst van het overheidstype.
 
 **Overgedragen**: de status Overgedragen wordt toegepast op inschrijvingen waarvan de bijbehorende accounts en services zijn overgedragen naar een nieuwe inschrijving. Inschrijvingen worden niet automatisch overgedragen als er tijdens het verlengen een nieuw inschrijvingsnummer wordt gegenereerd. Het voorafgaande inschrijvingsnummer moet worden opgenomen in de verlengingsaanvraag van de klant voor een automatische overdracht.
 

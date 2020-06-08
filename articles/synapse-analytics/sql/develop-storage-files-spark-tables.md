@@ -1,6 +1,6 @@
 ---
-title: Query's uitvoeren Spark-tabellen met behulp van SQL op aanvraag (preview)
-description: Overzicht van het opvragen van Spark-tabellen met behulp van SQL op aanvraag (preview)
+title: Apache Spark synchroniseren voor externe Azure Synapse-tabeldefinities in SQL on-demand (preview)
+description: Overzicht van hoe u query’s kunt uitvoeren op Spark-tabellen met behulp van SQL on-demand (preview)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,30 +9,34 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 41e31a322a3d771557474fdf5c318960822bcfe1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 47737489256d349ebc02c107cf8bbb2e8ec1cb7a
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424046"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701961"
 ---
-# <a name="query-spark-tables-with-azure-synapse-analytics-using-sql-on-demand-preview"></a>Query Spark-tabellen met Azure Synapse Analytics met behulp van SQL on-demand (preview)
+# <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Apache Spark synchroniseren voor externe Azure Synapse-tabeldefinities in SQL on-demand (preview)
 
-De SQL op aanvraag (preview) kan automatisch meta gegevens synchroniseren vanuit Spark-groepen in de Synapse-werk ruimte (preview). Er wordt een SQL-Data Base op aanvraag gemaakt voor elke data base in Spark-Pools (preview-versie). Voor elke Spark-tabel op basis van Parquet of CSV wordt een externe tabel gemaakt in de SQL-Data Base op aanvraag. Zo kunt u uw Spark-Pools afsluiten en toch query's uitvoeren op Spark-tabellen vanuit SQL op aanvraag.
+Met SQL on-demand (preview) kunnen automatisch metagegevens worden gesynchroniseerd van Apache Spark voor Azure Synapse-pools. Er wordt een SQL on-demand-database gemaakt voor elke database in Spark-pools (preview). 
 
-Wanneer een tabel is gepartitioneerd in Spark, worden de bestanden in de opslag geordend op mappen. SQL on demand maakt gebruik van meta gegevens van de partitie en alleen relevante mappen en bestanden voor uw query.
+Voor elke externe Spark-tabel die is gebaseerd op Parquet en zich in Azure Storage bevindt, wordt een externe tabel gemaakt in de SQL on-demand-database. Op deze manier kunt u uw Spark-pools afsluiten en nog steeds query’s uitvoeren op externe Spark-tabellen vanuit SQL on-demand.
 
-Synchronisatie van meta gegevens wordt automatisch geconfigureerd voor elke Spark-groep die is ingericht in de Azure Synapse-werk ruimte. U kunt direct beginnen met het uitvoeren van query's op Spark-tabellen.
+Wanneer een tabel is gepartitioneerd in Spark, worden de bestanden in de opslag geordend in mappen. SQL on-demand maakt gebruik van partitiemetagegevens en is alleen gericht op relevante mappen en bestanden voor uw query.
 
-Elke Spark-tabel wordt weer gegeven met een externe tabel in een dbo-schema die overeenkomt met een SQL on-demand-data base. Voor Spark-tabel query's voert u een query uit die gericht is op een extern [spark_table]. Voordat u het onderstaande voor beeld uitvoert, moet u ervoor zorgen dat u de juiste [toegang hebt tot het opslag account](develop-storage-files-storage-access-control.md) waarin de bestanden zich bevinden.
+Synchronisatie van metagegevens wordt automatisch geconfigureerd voor elke Spark-pool die is ingericht in de Azure Synapse-werkruimte. U kunt direct beginnen met het uitvoeren van query’s op externe Spark-tabellen.
+
+Elke externe tabel van Spark Parquet die zich in Azure Storage bevindt, wordt vertegenwoordigd door een externe tabel in een dbo-schema dat overeenkomt met een SQL on-demand-database. 
+
+Voer voor externe Spark-tabelquery’s een query uit die is gericht op een externe [spark_table]. Voordat u het onderstaande voorbeeld uitvoert, moet u controleren of u de juiste [toegang tot het opslagaccount](develop-storage-files-storage-access-control.md) hebt waar de bestanden zich bevinden.
 
 ```sql
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-gegevens typen aan toewijzing van SQL-gegevens typen
+## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-gegevenstypen toewijzen aan SQL-gegevenstypen
 
-| Spark-gegevens type | SQL-gegevens type               |
+| Spark-gegevenstype | SQL-gegevenstype               |
 | --------------- | --------------------------- |
 | ByteType        | smallint                    |
 | ShortType       | smallint                    |
@@ -43,19 +47,19 @@ SELECT * FROM [db].dbo.[spark_table]
 | DecimalType     | decimal                     |
 | TimestampType   | datetime2                   |
 | DateType        | date                        |
-| StringType      | varchar (max) *               |
+| StringType      | varchar(max)*               |
 | BinaryType      | varbinary                   |
 | BooleanType     | bit                         |
-| Array       | varchar (max) * (in JSON) * * |
-| MapType         | varchar (max) * (in JSON) * * |
-| StructType      | varchar (max) * (in JSON) * * |
+| ArrayType       | varchar(max)* (into JSON)** |
+| MapType         | varchar(max)* (into JSON)** |
+| StructType      | varchar(max)* (into JSON)** |
 
-\*De gebruikte sortering is Latin1_General_100_BIN2_UTF8.
+\* De gebruikte sortering is Latin1_General_100_BIN2_UTF8.
 
-* * Array type, MapType en StructType worden weer gegeven als JSONs.
+** ArrayType, MapType en StructType worden weergegeven als JSON’s.
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar de [opslag Access Control](develop-storage-files-storage-access-control.md) artikel voor meer informatie over toegangs beheer voor opslag.
+Ga naar het artikel [Storage-toegangsbeheer](develop-storage-files-storage-access-control.md) voor meer informatie over opslagtoegangsbeheer.

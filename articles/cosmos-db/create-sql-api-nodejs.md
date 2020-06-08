@@ -1,31 +1,31 @@
 ---
-title: 'Snelstartgids: node. js gebruiken om een query uit te zoeken vanuit Azure Cosmos DB SQL-API-account'
-description: Node. js gebruiken om een app te maken die verbinding maakt met Azure Cosmos DB SQL-API-account en query gegevens.
-author: deborahc
+title: Quickstart - Gebruik Node.js om een query uit te zoeken vanuit een Azure Cosmos DB SQL-API-account
+description: Node.js gebruiken om een app te maken die verbinding maakt met Azure Cosmos DB SQL-API-account en query-gegevens.
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 02/26/2020
-ms.author: dech
-ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 4f874bd77432ba9ee110a7304629a80f1ce5d0dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240318"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655353"
 ---
-# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Snelstartgids: node. js gebruiken om verbinding te maken en gegevens op te vragen uit Azure Cosmos DB SQL-API-account
+# <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Quickstart: Node.js gebruiken om verbinding te maken en gegevens op te vragen uit Azure Cosmos DB SQL-API-account
 
 > [!div class="op_single_selector"]
 > - [.NET V3](create-sql-api-dotnet.md)
 > - [.NET V4](create-sql-api-dotnet-V4.md)
-> - [Java](create-sql-api-java.md)
+> - [Java SDK v4](create-sql-api-java.md)
 > - [Node.js](create-sql-api-nodejs.md)
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In deze Quick Start maakt en beheert u een Azure Cosmos DB SQL-API-account van de Azure Portal en gebruikt u een node. js-app die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
+In deze quickstart maakt en beheert u een SQL API-account van Azure Cosmos DB via de Azure-portal en met een Node.js-app die is gekloond van GitHub. Met Azure Cosmos DB, een databaseservice met meerdere modellen, kunt u snel databases met documenten, tabellen, sleutelwaarden en grafieken maken en hier query's op uitvoeren. Deze databases hebben wereldwijde distributie en horizontale schaalmogelijkheden.
 
 ## <a name="walkthrough-video"></a>Walkthrough-video
 
@@ -35,42 +35,42 @@ Bekijk deze video voor een volledig overzicht van de inhoud in dit artikel.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB-emulator](https://aka.ms/cosmosdb-emulator) met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`gebruiken.
-- [Node. js 6.0.0 +](https://nodejs.org/).
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U kunt ook de [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Node.js 6.0.0+](https://nodejs.org/).
 - [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-cosmos-account"></a>Een Azure Cosmos-account maken
 
-Voor dit Quick Start kunt u de optie [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) gebruiken om een Azure Cosmos-account te maken.
+Voor deze quickstart kunt u de optie [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/) gebruiken om een Azure Cosmos-account te maken.
 
-1. Ga naar de pagina [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) .
+1. Ga naar de pagina [Azure Cosmos DB gratis uitproberen](https://azure.microsoft.com/try/cosmosdb/).
 
-1. Kies het **SQL** -API-account en selecteer **maken**. Meld u aan met uw Microsoft-account.
+1. Kies het **SQL**-API-account en selecteer **Maken**. Aanmelden met uw Microsoft-account.
 
-1. Nadat het aanmelden is gelukt, moet uw Azure Cosmos-account gereed zijn. Selecteer **openen in het Azure Portal** om het zojuist gemaakte account te openen.
+1. Nadat het aanmelden is gelukt, moet uw Azure Cosmos-account gereed zijn. Selecteer **Openen in het Azure-portal** om het zojuist gemaakte account te openen.
 
-Voor de optie ' Probeer Azure Cosmos DB gratis ' hebt u geen Azure-abonnement nodig en biedt u een Azure Cosmos-account voor een beperkte periode van 30 dagen. Als u het Azure Cosmos-account gedurende een langere periode wilt gebruiken, moet u in plaats daarvan [het account maken](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) binnen uw Azure-abonnement.
+Voor de optie "Probeer Azure Cosmos DB gratis" hebt u geen Azure-abonnement nodig en deze optie biedt u een Azure Cosmos-account voor een beperkte periode van 30 dagen. Als u de Azure Cosmos-account langer wilt gebruiken, moet u [de account maken](create-cosmosdb-resources-portal.md#create-an-azure-cosmos-db-account) in uw Azure-abonnement.
 
 ## <a name="add-a-container"></a>Een container toevoegen
 
-U kunt nu het hulp programma Data Explorer in de Azure Portal gebruiken om een Data Base en container te maken.
+U kunt nu het hulpprogramma Data Explorer in de Azure-portal gebruiken om een database en een container te maken.
 
-1. Selecteer **Data Explorer** > **nieuwe container**.
+1. Selecteer **Data Explorer** > **Nieuwe container**.
 
-   Het gebied **container toevoegen** wordt helemaal rechts weer gegeven. mogelijk moet u naar rechts scrollen om het weer te geven.
+   Uiterst rechts wordt het gedeelte **Container toevoegen** weergegeven. Mogelijk moet u naar rechts scrollen om het te kunnen zien.
 
-   ![Azure Portal Data Explorer, deelvenster Container toevoegen](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
+   ![Data Explorer in de Azure-portal, het deelvenster Container toevoegen](./media/create-sql-api-nodejs/azure-cosmosdb-data-explorer.png)
 
-2. Voer op de pagina **container toevoegen** de instellingen voor de nieuwe container in.
+2. Geef op de pagina **Container toevoegen** de instellingen voor de nieuwe container op.
 
    | Instelling           | Voorgestelde waarde | Beschrijving                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Database-id**   | Taken           | Voer _Taken_ in als de naam voor de nieuwe database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Schakel de optie **doorvoer database inrichten** in, zodat u de door Voer die is ingericht voor de data base, kunt delen in alle containers in de data base. Deze optie helpt ook bij het besparen van kosten. |
-   | **Doorvoer**    | 400             | De door Voer bij 400 aanvraag eenheden per seconde (RU/s) behouden. U kunt de doorvoer later opschalen als u de latentie wilt beperken.                                                                                                                                                                                                                                                    |
-   | **Container-ID**  | Items           | Voer _items_ in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.                                                                                                                                                                                                                                                               |
-   | **Partitiesleutel** | /category       | Het voor beeld dat in dit artikel wordt beschreven, maakt gebruik van _Category_ als de partitie sleutel.                                                                                                                                                                                                                                                                                                           |
+   | **Database-id**   | Taken           | Voer _Taken_ in als de naam voor de nieuwe database. Databasenamen moeten tussen de 1 en 255 tekens zijn en mogen geen `/, \\, #, ?` bevatten en mogen niet eindigen met een spatie. Controleer de optie **Doorvoer voor databases inrichten**, zodat u de doorvoer die is ingericht voor de database, kunt delen in alle containers in de database. Met deze optie bespaart u bovendien op de kosten. |
+   | **Doorvoer**    | 400             | Wijzig de doorvoer in 400 aanvraageenheden per seconde (RU/s). U kunt de doorvoer later opschalen als u de latentie wilt beperken.                                                                                                                                                                                                                                                    |
+   | **Container-id**  | Items           | Voer _Items_ in als de naam voor de nieuwe container. Voor id's van containers gelden dezelfde tekenvereisten als voor databasenamen.                                                                                                                                                                                                                                                               |
+   | **Partitiesleutel** | /category       | In het voorbeeld dat in dit artikel wordt beschreven, wordt _/category_ als de partitiesleutel gebruikt.                                                                                                                                                                                                                                                                                                           |
 
-   Naast de voor gaande instellingen kunt u eventueel **unieke sleutels** voor de container toevoegen. In dit voorbeeld laten we het veld leeg. Unieke sleutels bieden ontwikkelaars de mogelijkheid om een gegevensintegriteitslaag aan de database toe te voegen. Door een beleid voor unieke sleutels te maken tijdens het maken van een container, zorgt u ervoor dat een of meer waarden per partitie sleutel uniek zijn. Raadpleeg het artikel [Unique keys in Azure Cosmos DB](unique-keys.md) (Unieke sleutels in Azure Cosmos DB) voor meer informatie.
+   Naast de voornoemde instellingen kunt u indien gewenst **unieke sleutels** voor de container toevoegen. In dit voorbeeld laten we het veld leeg. Unieke sleutels bieden ontwikkelaars de mogelijkheid om een gegevensintegriteitslaag aan de database toe te voegen. Door een beleid met unieke sleutels te maken als u een container maakt, zorgt u ervoor dat een of meer waarden per partitiesleutel uniek zijn. Raadpleeg het artikel [Unique keys in Azure Cosmos DB](unique-keys.md) (Unieke sleutels in Azure Cosmos DB) voor meer informatie.
 
    Selecteer **OK**. In Data Explorer worden de nieuwe database en container weergegeven.
 
@@ -84,7 +84,7 @@ U kunt nu het hulp programma Data Explorer in de Azure Portal gebruiken om een D
 
 ## <a name="clone-the-sample-application"></a>De voorbeeldtoepassing klonen
 
-We gaan nu een node. js-app klonen vanaf GitHub, de connection string instellen en uitvoeren.
+We gaan nu een Node.js-app klonen vanuit GitHub, de verbindingsreeks instellen en de app uitvoeren.
 
 1. Voer de volgende opdracht uit om de voorbeeldopslagplaats te klonen. Deze opdracht maakt een kopie van de voorbeeld-app op uw computer.
 
@@ -94,17 +94,17 @@ We gaan nu een node. js-app klonen vanaf GitHub, de connection string instellen 
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de Azure Cosmos-database resources in de code worden gemaakt, kunt u de volgende fragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string).
+Deze stap is optioneel. Als u wilt weten hoe de databaseresources van Azure Cosmos in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-string).
 
-Als u bekend bent met de vorige versie van de SQL java script-SDK, kunt u de voor waarden van de _verzameling_ en het _document_bekijken. Omdat Azure Cosmos DB [meerdere API-modellen](introduction.md)ondersteunt, gebruikt [versie 2.0 + van de Java script SDK](https://www.npmjs.com/package/@azure/cosmos) de _container_algemene voor waarden. Dit kan een verzameling, grafiek of tabel zijn en een _item_ om de inhoud van de container te beschrijven.
+Als u bekend bent met de vorige versie van SQL JavaScript SDK, heeft u misschien de termen _verzameling_ en _document_ gezien terwijl u ermee werkte. Azure Cosmos DB ondersteunt [meerdere API-modellen](introduction.md). Daarom maakt [versie 2.0+ van de JavaScript SDK gebruik](https://www.npmjs.com/package/@azure/cosmos) van de generieke termen _verzameling_, wat een collectie, een grafiek of tabel kan zijn, en _item_, om de inhoud van de container te beschrijven.
 
-De Cosmos DB java script SDK heet "@azure/cosmos" en kan worden geïnstalleerd via NPM...
+De Cosmos DB JavaScript SDK wordt "@azure/cosmos" genoemd en kan worden geïnstalleerd via NPM...
 
 ```bash
 npm install @azure/cosmos
 ```
 
-De volgende code fragmenten zijn allemaal afkomstig uit het bestand _app. js_ .
+De volgende codefragmenten zijn allemaal afkomstig uit het bestand _app.js_.
 
 - De `CosmosClient` wordt geïmporteerd uit het `@azure/cosmos` NPM-pakket.
 
@@ -112,25 +112,25 @@ De volgende code fragmenten zijn allemaal afkomstig uit het bestand _app. js_ .
   const CosmosClient = require("@azure/cosmos").CosmosClient;
   ```
 
-- Er wordt `CosmosClient` een nieuw object geïnitialiseerd.
+- Er wordt een nieuw `CosmosClient`-object geïnitialiseerd.
 
   ```javascript
   const client = new CosmosClient({ endpoint, key });
   ```
 
-- Selecteer de data base ' Tasks '.
+- Selecteer de database "Taken".
 
   ```javascript
   const database = client.database(databaseId);
   ```
 
-- Selecteer de container/verzameling items.
+- Selecteer de container/verzameling "Items".
 
   ```javascript
   const container = database.container(containerId);
   ```
 
-- Selecteer alle items in de container items.
+- Selecteer alle items in de container "Items".
 
   ```javascript
   // query to return all items
@@ -143,7 +143,7 @@ De volgende code fragmenten zijn allemaal afkomstig uit het bestand _app. js_ .
     .fetchAll();
   ```
 
-- Maak een nieuw item
+- Een nieuw item maken
 
   ```javascript
   const { resource: createdItem } = await container.items.create(newItem);
@@ -167,35 +167,35 @@ De volgende code fragmenten zijn allemaal afkomstig uit het bestand _app. js_ .
   ```
 
 > [!NOTE]
-> In de methoden ' update ' en ' delete ' moet het item worden geselecteerd in de data base door aan te roepen `container.item()`. De twee door gegeven para meters zijn de id van het item en de partitie sleutel van het item. In dit geval is de sleutel partitioneren de waarde van het veld Category.
+> In de methoden "Bijwerken" en "Verwijderen" moet het item worden geselecteerd in de database door het aanroepen van `container.item()`. De twee doorgegeven parameters zijn de id van het item en de partitiesleutel van het item. In dit geval is de partitiesleutel de waarde van het veld "Categorie".
 
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
-Ga nu terug naar de Azure Portal om de connection string Details van uw Azure Cosmos-account op te halen. Kopieer de connection string in de app zodat deze verbinding kan maken met uw data base.
+Ga nu terug naar de Azure-portal om de details van de verbindingsreeks van uw Azure Cosmos-account op te halen. Kopieer de verbindingsreeks in de app zodat deze verbinding kan maken met uw database.
 
-1. Selecteer in uw Azure Cosmos DB-account in de [Azure Portal](https://portal.azure.com/)de optie **sleutels** in de linkernavigatiebalk en selecteer **sleutels voor lezen/schrijven**. Gebruik de Kopieer knoppen aan de rechter kant van het scherm om de URI en primaire sleutel in de volgende stap naar het bestand _app. js_ te kopiëren.
+1. Ga in de [Azure-portal](https://portal.azure.com/) naar uw Azure Cosmos DB-account en klik in de linkernavigatie op **Sleutels**. Selecteer vervolgens **Sleutels voor lezen/schrijven**. Gebruik de knoppen voor kopiëren aan de rechterkant van het scherm om de URI en Primaire sleutel in het _app.js_-bestand in de volgende stap te kopiëren.
 
    ![Een toegangssleutel bekijken en kopiëren in Azure Portal, blade Sleutels](./media/create-sql-api-dotnet/keys.png)
 
-2. Open in het bestand _config. js_ .
+2. In Open het bestand _config.js_.
 
-3. Kopieer uw URI-waarde vanuit de portal (met de Kopieer knop) en geef deze als waarde aan de eindpunt sleutel in _config. js_.
+3. Kopieer uw URI-waarde vanaf de portal (met de kopieerknop) en geef deze als waarde aan de eindpuntsleutel in _config.js_.
 
    `endpoint: "<Your Azure Cosmos account URI>"`
 
-4. Kopieer vervolgens de waarde van uw primaire sleutel uit de portal en geef deze als waarde `config.key` aan de in _config. js_. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
+4. Kopieer vervolgens de waarde voor PRIMAIRE SLEUTEL vanuit de portal en geef deze op als waarde voor `config.key` in _config.js_. U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB.
 
    `key: "<Your Azure Cosmos account key>"`
 
 ## <a name="run-the-app"></a>De app uitvoeren
 
-1. Voer `npm install` uit in een terminal om het@azure/cosmosNPM-pakket te installeren
+1. Voer `npm install` uit op een terminal om het "@azure/cosmos" NPM-pakket te installeren
 
 2. Voer `node app.js` uit op een terminal om uw knooppunttoepassing te starten.
 
-3. De twee items die u eerder in deze Quick Start hebt gemaakt, worden weer gegeven. Er wordt een nieuw item gemaakt. De vlag "isComplete" voor dat item is bijgewerkt naar "True" en vervolgens ten slotte het item wordt verwijderd.
+3. De twee items die u eerder in deze quickstart hebt gemaakt, worden weergegeven. Er wordt een nieuw item gemaakt. De vlag "isComplete" voor dat item is bijgewerkt naar "true" en vervolgens wordt het item verwijderd.
 
-U kunt door gaan met het experimenteren met deze voorbeeld toepassing of terugkeren naar Data Explorer, wijzigen en werken met uw gegevens.
+U kunt doorgaan met het experimenteren met deze voorbeeldtoepassing of terugkeren naar Data Explorer, om verder te werken met uw data of deze te wijzigen.
 
 ## <a name="review-slas-in-the-azure-portal"></a>SLA’s bekijken in Azure Portal
 
@@ -203,7 +203,7 @@ U kunt door gaan met het experimenteren met deze voorbeeld toepassing of terugke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, een container maakt met behulp van de Data Explorer en een node. js-app uitvoert. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren.
+In deze snelstart hebt u geleerd hoe u een Azure Cosmos DB-account maakt, een container maakt met Data Explorer en een Node.js-app uitvoert. Nu kunt u aanvullende gegevens in uw Azure Cosmos DB-account importeren.
 
 > [!div class="nextstepaction"]
-> [gegevens importeren in azure Cosmos db](import-data.md)
+> [gegevens importeren in azure cosmos db](import-data.md)

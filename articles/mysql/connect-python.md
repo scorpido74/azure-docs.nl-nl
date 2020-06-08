@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met behulp van python-Azure Database for MySQL
+title: Verbinding maken met Python - Azure Database for MySQL
 description: Deze snelstartgids bevat enkele voorbeelden van Python-code die u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit Azure Database voor MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,79 +9,82 @@ ms.custom:
 - seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/09/2020
-ms.openlocfilehash: c9ea155f3cc71dd961a3780e3b188a6d062606bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 5/26/2020
+ms.openlocfilehash: 827a34999cc3f4d90344915a9b57492a0f31bafe
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067904"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870029"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Snelstartgids: python gebruiken om verbinding te maken en gegevens op te vragen met Azure Database for MySQL
+# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen met Azure Database for MySQL
 
-In deze Quick Start maakt u verbinding met een Azure Database for MySQL met behulp van python. Vervolgens gebruikt u SQL-instructies om gegevens in de-data base te zoeken, in te voegen, bij te werken en te verwijderen vanaf een Mac-, Ubuntu Linux-en Windows-platform. 
+In deze quickstart maakt u verbinding met een Azure Database for MySQL met behulp van Python. U gebruikt vervolgens SQL-instructies om gegevens op te vragen, in te voegen, bij te werken en te verwijderen in de database vanaf Mac-, Ubuntu Linux- en Windows-platforms. 
 
-In dit onderwerp wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van python, maar nog geen ervaring hebt met het werken met Azure Database for MySQL.
+In dit onderwerp wordt ervan uitgegaan dat u bekend bent met het ontwikkelen met behulp van Python, maar geen ervaring hebt met het werken met Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Een Azure Database for MySQL-server. [Maak een Azure database for mysql server met behulp van Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [Maak een Azure database for mysql server met behulp van Azure cli](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een Azure Database for MySQL-server. [Een Azure Database for MySQL-server maken met behulp van de Azure-portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [Een Azure Database for MySQL-server maken met behulp van Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT] 
+> Controleer of het IP-adres waarmee u verbinding maakt aan de firewallregels van de server is toegevoegd met de [Azure-portal](./howto-manage-firewall-using-portal.md) of [Azure CLI](./howto-manage-firewall-using-cli.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Python en de MySQL-connector installeren
 
-Installeer Python en de MySQL-Connector voor python op uw computer met behulp van de volgende stappen: 
+Installeer Python en de MySQL-connector voor Python op uw computer met behulp van de volgende stappen: 
 
 > [!NOTE]
-> In deze Quick Start wordt gebruikgemaakt van een onbewerkte SQL-query benadering om verbinding te maken met MySQL. Als u een webframework gebruikt, gebruikt u de aanbevolen connector voor het Framework, bijvoorbeeld [mysqlclient](https://pypi.org/project/mysqlclient/) voor django.
+> In deze snelstart gebruikt u een onbewerkte SQL-query om verbinding te maken met MySQL. Als u een webframework gebruikt, moet u de aanbevolen connector voor deze frameworks gebruiken, zoals [mysqlclient](https://pypi.org/project/mysqlclient/) voor Django.
 
-1. Down load en Installeer [Python 3,7 of hoger](https://www.python.org/downloads/) voor uw besturings systeem. Zorg ervoor dat u python toevoegt aan `PATH`uw, omdat de mysql-connector dat vereist.
+1. Download en installeer [Python 3.7 of hoger](https://www.python.org/downloads/) voor uw besturingssysteem. Zorg ervoor dat u Python toevoegt aan uw `PATH`, omdat de MySQL-connector dat vereist.
    
-1. Open een opdracht prompt of `bash` shell en controleer uw python-versie door uit `python -V` te voeren met de schakel optie hoofd letter V.
+1. Open een opdrachtprompt of `bash` shell en controleer uw Python-versie door `python -V` uit te voeren met de schakeloptie voor hoofdletter V.
    
-1. Het `pip` installatie programma voor het pakket is opgenomen in de meest recente versies van python. Update `pip` naar de nieuwste versie door uit `pip install -U pip`te voeren. 
+1. Het installatieprogramma voor het `pip`-pakket is opgenomen in de meest recente versies van Python. Werk `pip` bij naar de nieuwste versie door `pip install -U pip` uit te voeren. 
    
-   Als `pip` niet is geïnstalleerd, kunt u het downloaden en installeren `get-pip.py`met. Zie [installatie](https://pip.pypa.io/en/stable/installing/)voor meer informatie. 
+   Als `pip` niet is geïnstalleerd, kunt u het downloaden en installeren met `get-pip.py`. Zie [Installatie](https://pip.pypa.io/en/stable/installing/) voor meer informatie. 
    
-1. Gebruik `pip` om de mysql-connector voor python en de bijbehorende afhankelijkheden te installeren:
+1. Gebruik `pip` om de MySQL-connector voor Python en de bijbehorende afhankelijkheden te installeren:
    
    ```bash
    pip install mysql-connector-python
    ```
    
-   U kunt ook de python-connector voor MySQL installeren vanuit [mysql.com](https://dev.mysql.com/downloads/connector/python/). Zie voor meer informatie over de MySQL-Connector voor python de [mysql-connector/python-ontwikkelaars handleiding](https://dev.mysql.com/doc/connector-python/en/). 
+   U kunt ook de Python-connector voor MySQL installeren vanuit [mysql.com](https://dev.mysql.com/downloads/connector/python/). Voor meer informatie over de MySQL-connector voor python raadpleegt u de [ontwikkelaarshandleiding voor MySQL/Python](https://dev.mysql.com/doc/connector-python/en/). 
 
 ## <a name="get-connection-information"></a>Verbindingsgegevens ophalen
 
-Haal de verbindings gegevens op die u nodig hebt om verbinding te maken met Azure Database for MySQL vanuit de Azure Portal. U hebt de server naam, database naam en aanmeldings referenties nodig.
+Haal de verbindingsgegevens op die nodig zijn om verbinding te maken met de Azure Database for MySQL van de Azure-portal. U hebt de servernaam, databasenaam en aanmeldingsreferenties nodig.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
    
-1. Zoek en selecteer de Azure Database for MySQL server die u hebt gemaakt in de zoek balk van de portal, zoals **mydemoserver**.
+1. Zoek en selecteer in de portalzoekbalk de Azure Database for MySQL server die u hebt gemaakt, zoals **mydemoserver**.
    
    ![Servernaam van Azure Database for MySQL](./media/connect-python/1_server-overview-name-login.png)
    
-1. Noteer de **Server naam** en de **aanmeldings naam van de server beheerder**op de pagina **overzicht** van de server. Als u uw wacht woord vergeet, kunt u het wacht woord ook opnieuw instellen op deze pagina.
+1. Ga naar de pagina **Overzicht** van de server en noteer de **Servernaam** en de **Aanmeldingsnaam van de serverbeheerder**. Als u uw wachtwoord vergeet, kunt u het wachtwoord op deze pagina opnieuw instellen.
    
    ![Servernaam van Azure Database for MySQL](./media/connect-python/azure-database-for-mysql-server-overview-name-login.png)
 
-## <a name="run-the-python-examples"></a>De python-voor beelden uitvoeren
+## <a name="run-the-python-examples"></a>De Python-voorbeelden uitvoeren
 
-Voor elk code voorbeeld in dit artikel:
+Voor elk codevoorbeeld in dit artikel:
 
-1. Maak een nieuw bestand in een tekst editor.
-1. Voeg het code voorbeeld toe aan het bestand. `<mydemoserver>`Vervang in de code de tijdelijke aanduidingen, `<myadmin>`, `<mydatabase>` `<mypassword>`en door de waarden voor uw MySQL-server en-data base.
-1. Sla het bestand op in een projectmap met de extensie *. py* , zoals *C:\pythonmysql\createtable.py* of */Home/username/pythonmysql/createtable.py*.
-1. Als u de code wilt uitvoeren, opent u een `bash` opdracht prompt of shell en wijzigt u de map in uw `cd pythonmysql`projectmap, bijvoorbeeld. Typ de `python` opdracht, gevolgd door de bestands naam, bijvoorbeeld `python createtable.py`en druk op ENTER. 
+1. Maak een nieuw bestand in een teksteditor.
+1. Voeg het codevoorbeeld toe aan het bestand. Vervang in de code de tijdelijke aanduidingen `<mydemoserver>`, `<myadmin>`, `<mypassword>`en `<mydatabase>` door de waarden voor uw MySQL-server en -database.
+1. Sla het bestand op in een projectmap met de extensie *.py*, zoals *C:\pythonmysql\createtable.py* of */home/username/pythonmysql/createtable.py*.
+1. Als u de code wilt uitvoeren, opent u een opdrachtprompt of `bash`-shell en wijzigt u vervolgens de map in uw projectmap, bijvoorbeeld `cd pythonmysql`. Typ de `python`-opdracht, gevolgd door de bestandsnaam (bijvoorbeeld `python createtable.py`) en druk op Enter. 
    
    > [!NOTE]
-   > Als *python. exe* niet wordt gevonden in Windows, moet u mogelijk het python-pad toevoegen aan de omgevings variabele PATH of het volledige pad naar *python. exe*opgeven, bijvoorbeeld `C:\python27\python.exe createtable.py`.
+   > Als *python.exe* niet wordt gevonden, moet u in Windows mogelijk het volledige Python-pad naar de PATH-omgevingsvariabale opgeven, of het volledige pad naar *python.exe* opgeven, zoals `C:\python27\python.exe createtable.py`.
 
 ## <a name="create-a-table-and-insert-data"></a>Een tabel maken en gegevens invoegen
 
-Gebruik de volgende code om verbinding te maken met de server en de data base, een tabel en gegevens te laden met behulp van een **Insert** SQL-instructie. 
+Gebruik de volgende code om verbinding te maken met de server en database, een tabel te maken en gegevens te laden met behulp van de SQL-instructie **INSERT**. 
 
-Met de code wordt de MySQL. connector-bibliotheek geïmporteerd en wordt de functie [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) gebruikt om verbinding te maken met Azure database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de configuratie verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-data base. 
+De code importeert de bibliotheek mysql.connector en gebruikt de functie [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) om verbinding te maken met Azure Database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de config-verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-database. 
 
 ```python
 import mysql.connector
@@ -136,9 +139,9 @@ else:
 
 Gebruik de volgende code om verbinding te maken en de gegevens te lezen met behulp van de SQL-instructie **SELECT**. 
 
-Met de code wordt de MySQL. connector-bibliotheek geïmporteerd en wordt de functie [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) gebruikt om verbinding te maken met Azure database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de configuratie verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-data base. 
+De code importeert de bibliotheek mysql.connector en gebruikt de functie [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) om verbinding te maken met Azure Database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de config-verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-database. 
 
-De code leest de gegevens rijen met de methode [fetchall ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) , behoudt de resultatenset in een verzameling rijen en gebruikt een `for` iterator om de rijen te herhalen.
+De code leest de gegevensrijen met behulp van de methode [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html), bewaart de resultatenset in een verzamelingrij en gebruikt een `for`-iterator om de rijen te doorlopen.
 
 ```python
 import mysql.connector
@@ -186,7 +189,7 @@ else:
 
 Gebruik de volgende code om verbinding te maken en de gegevens bij te werken met behulp van de SQL-instructie **UPDATE**. 
 
-Met de code wordt de MySQL. connector-bibliotheek geïmporteerd en wordt de functie [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) gebruikt om verbinding te maken met Azure database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de configuratie verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-data base. 
+De code importeert de bibliotheek mysql.connector en gebruikt de functie [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) om verbinding te maken met Azure Database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de config-verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-database. 
 
 ```python
 import mysql.connector
@@ -229,7 +232,7 @@ else:
 
 Gebruik de volgende code om verbinding te maken en de gegevens te verwijderen met behulp van de SQL-instructie **DELETE**. 
 
-Met de code wordt de MySQL. connector-bibliotheek geïmporteerd en wordt de functie [Connect ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) gebruikt om verbinding te maken met Azure database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de configuratie verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor. Execute ()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-data base. 
+De code importeert de bibliotheek mysql.connector en gebruikt de functie [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) om verbinding te maken met Azure Database for MySQL met behulp van de [argumenten](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in de config-verzameling. De code gebruikt een cursor voor de verbinding en de methode [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) voert de SQL-query uit op de MySQL-database. 
 
 ```python
 import mysql.connector

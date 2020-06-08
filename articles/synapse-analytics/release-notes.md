@@ -1,6 +1,6 @@
 ---
 title: Releaseopmerkingen
-description: Release opmerkingen voor Azure Synapse Analytics (werk ruimten)
+description: Releaseopmerkingen voor Azure Synapse Analytics (werkruimten)
 services: synapse-analytics
 author: julieMSFT
 ms.service: synapse-analytics
@@ -9,35 +9,35 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 059e77c063d00ef850a171507ca2e06422ade426
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 514694dc2e3f06db2fb80f6b3ba0106343be11d8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191767"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658499"
 ---
-# <a name="azure-synapse-analytics-preview-release-notes"></a>Release opmerkingen bij Azure Synapse Analytics (preview)
+# <a name="azure-synapse-analytics-preview-release-notes"></a>Azure Synapse Analytics-releaseopmerkingen (preview)
 
-In dit artikel worden de beperkingen en problemen met Azure Synapse Analytics (werk ruimten) beschreven. Zie [Wat is Azure Synapse Analytics (werk ruimten)](overview-what-is.md) voor meer informatie.
+In dit artikel worden beperkingen en problemen in Azure Synapse Analytics (werkruimten) beschreven. Raadpleeg [Wat is Azure Synapse Analytics (werkruimten)?](overview-what-is.md) voor gerelateerde informatie
 
 [!INCLUDE [preview](includes/note-preview.md)]
 
-## <a name="azure-synapse-workspaces"></a>Azure-Synapse (werk ruimten) 
+## <a name="azure-synapse-workspaces"></a>Azure Synapse (werkruimten) 
 
 ### <a name="azure-synapse-cli"></a>Azure Synapse CLI
 
-- Probleem en gevolgen voor de klant: werk ruimten die zijn gemaakt met SDK kunnen Synapse Studio niet starten
+- Probleem en gevolgen voor de klant: Synapse Studio kan niet worden gestart in werkruimten die zijn gemaakt met SDK
 
-- Tijdelijke oplossing: Voer de volgende stappen uit: 
-  1.    Werk ruimte maken door `az synapse workspace create`uit te voeren.
-  2.    Haal de beheerde identiteits- `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")`id op door uit te voeren.
-  3.    Voeg werk ruimte als rol toe aan het opslag ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}`account door uit te voeren.
-  4.    Firewall regel toevoegen door uit ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 `te voeren.
+- Tijdelijke oplossing: Voltooi de volgende stappen: 
+  1.    Maak een werkruimte door `az synapse workspace create` uit te voeren.
+  2.    Haal de id van de beheerde identiteit op door `$identity=$(az synapse workspace show --name {workspace name}  --resource-group {resource group name} --query "identity.principalId")` uit te voeren.
+  3.    Voeg de werkruimte als rol toe aan het opslagaccount door ` az role assignment create --role "Storage Blob Data Contributor" --assignee-object-id {identity } --scope {storage account resource id}` uit te voeren.
+  4.    Voeg een firewallregel toe door ` az synapse firewall-rule create --name allowAll --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255 ` uit te voeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Een werkruimte maken](quickstart-create-workspace.md)
 * [Synapse Studio gebruiken](quickstart-synapse-studio.md)
-* [Een SQL-groep maken](quickstart-create-sql-pool.md)
+* [Een SQL-pool maken](quickstart-create-sql-pool-portal.md)
 * [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
-* [Een Apache Spark groep maken](quickstart-create-apache-spark-pool.md)
+* [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool-portal.md)

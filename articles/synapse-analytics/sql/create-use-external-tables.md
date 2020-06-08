@@ -1,6 +1,6 @@
 ---
-title: Externe tabellen maken en gebruiken in SQL op aanvraag (preview)
-description: In deze sectie leert u hoe u externe tabellen kunt maken en gebruiken in SQL op aanvraag (preview). Externe tabellen zijn handig als u de toegang tot externe gegevens in SQL on-demand wilt beheren en als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
+title: Externe tabellen maken en gebruiken in SQL on-demand (preview)
+description: In deze sectie leert u hoe u externe tabellen kunt maken en gebruiken in SQL on-demand (preview). Externe tabellen zijn handig als u de toegang tot externe gegevens in SQL on-demand wilt beheren en als u hulpprogramma's, zoals Power BI, wilt gebruiken in combinatie met SQL on-demand.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,74 +9,113 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a708e5e713e62ab5b7ca70b61235a84830b051cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f4919bb6856703c5bb5f1c798a8bcf5b2a108cc7
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424550"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747671"
 ---
 # <a name="create-and-use-external-tables-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Externe tabellen maken en gebruiken in SQL on-demand (preview) met behulp van Azure Synapse Analytics
 
-In deze sectie leert u hoe u externe tabellen kunt maken en gebruiken in SQL op aanvraag (preview). Externe tabellen zijn handig als u de toegang tot externe gegevens in SQL on-demand wilt beheren en als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
+In deze sectie leert u hoe u [externe tabellen](develop-tables-external-tables.md) kunt maken en gebruiken in SQL on-demand (preview). Externe tabellen zijn handig als u de toegang tot externe gegevens in SQL on-demand wilt beheren en als u hulpprogramma's, zoals Power BI, wilt gebruiken in combinatie met SQL on-demand. Externe tabellen hebben toegang tot twee soorten opslag:
+- Openbare opslag waar gebruikers toegang hebben tot openbare opslagbestanden.
+- Beveiligde opslag waar gebruikers toegang hebben tot opslagbestanden met behulp van SAS-referenties, een Azure AD-identiteit of een beheerde identiteit van een Synapse-werkruimte.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap is om de onderstaande artikelen te controleren en ervoor te zorgen dat u voldoet aan de vereisten voor het maken en gebruiken van externe SQL on-demand-tabellen:
+De eerste stap bestaat uit het maken van een database waarin de tabellen worden gemaakt. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatiescript worden de volgende objecten gemaakt die in dit voorbeeld worden gebruikt:
+- REFERENTIES VAN DATABASECONFIGURATIE `sqlondemand` waarmee toegang tot een met SAS beveiligde `https://sqlondemandstorage.blob.core.windows.net` Azure-opslagaccount mogelijk wordt.
 
-- [Eerste keer instellen](query-data-storage.md#first-time-setup)
-- [Vereisten](query-data-storage.md#prerequisites)
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
+    WITH IDENTITY='SHARED ACCESS SIGNATURE',  
+    SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
+    ```
 
-## <a name="create-an-external-table"></a>Een externe tabel maken
+- EXTERNE GEGEVENSBRON `sqlondemanddemo` die verwijst naar een demo-opslagaccount dat wordt beveiligd met een SAS-sleutel en EXTERNE GEGEVENSBRON `YellowTaxi` die verwijst naar een openbaar beschikbaar Azure-opslagaccount op locatie `https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/`.
 
-U kunt externe tabellen op dezelfde manier maken als gewone SQL Server externe tabellen. Met de onderstaande query maakt u een externe tabel die het bestand *populatie. CSV* leest.
+    ```sql
+    CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+        LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+        CREDENTIAL = sqlondemand
+    );
+    GO
+    CREATE EXTERNAL DATA SOURCE YellowTaxi
+    WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+    ```
+
+- De bestandsindelingen `QuotedCSVWithHeaderFormat` en `ParquetFormat` die bestandstypen van het type CSV en Parquet beschrijven.
+
+    ```sql
+    CREATE EXTERNAL FILE FORMAT QuotedCsvWithHeaderFormat
+    WITH (  
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( FIELD_TERMINATOR = ',', STRING_DELIMITER = '"', FIRST_ROW = 2   )
+    );
+    GO
+    CREATE EXTERNAL FILE FORMAT ParquetFormat WITH (  FORMAT_TYPE = PARQUET );
+    ```
+
+De query's in dit artikel worden uitgevoerd op uw voorbeelddatabase en gebruiken deze objecten. 
+
+## <a name="create-an-external-table-on-protected-data"></a>Een externe tabel maken van beveiligde gegevens
+
+U kunt externe tabellen maken die toegang hebben tot gegevens in een Azure-opslagaccount waarmee gebruikers met een bepaalde Azure AD-identiteit of SAS-sleutel toegang kunnen krijgen. U kunt externe tabellen op dezelfde manier maken als gewone externe tabellen van SQL Server. 
+
+Met de volgende query maakt u een externe tabel die het bestand *population.csv* van het SynapseSQL Azure demo-opslagaccount leest waarnaar wordt verwezen met behulp van de gegevensbron `sqlondemanddemo` en die wordt beveiligd met databaseconfiguratiereferenties met de naam `sqlondemand`. 
+
+De referenties voor de gegevensbron en de databaseconfiguratie zijn gemaakt in het [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql).
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. 
 
 ```sql
 USE [mydbname];
 GO
-
-CREATE EXTERNAL DATA SOURCE [CsvDataSource] WITH (
-    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net/csv'
-);
-GO
-
-CREATE EXTERNAL FILE FORMAT CSVFileFormat
-WITH (  
-    FORMAT_TYPE = DELIMITEDTEXT,
-    FORMAT_OPTIONS (
-        FIELD_TERMINATOR = ',',
-        STRING_DELIMITER = '"',
-        FIRST_ROW = 2
-    )
-);
-GO
-
 CREATE EXTERNAL TABLE populationExternalTable
 (
     [country_code] VARCHAR (5) COLLATE Latin1_General_BIN2,
     [country_name] VARCHAR (100) COLLATE Latin1_General_BIN2,
     [year] smallint,
     [population] bigint
-);
+)
 WITH (
-    LOCATION = 'population/population.csv',
-    DATA_SOURCE = CsvDataSource,
-    FILE_FORMAT = CSVFileFormat
+    LOCATION = 'csv/population/population.csv',
+    DATA_SOURCE = sqlondemanddemo,
+    FILE_FORMAT = QuotedCSVWithHeaderFormat
 );
-GO
 ```
 
-## <a name="use-a-external-table"></a>Een externe tabel gebruiken
+## <a name="create-an-external-table-on-public-data"></a>Een externe tabel maken van openbare gegevens
 
-U kunt externe tabellen in uw query's op dezelfde manier gebruiken als u ze gebruikt in SQL Server query's.
+U kunt externe tabellen maken waarmee gegevens worden gelezen van de bestanden die in openbaar beschikbare Azure-opslag zijn geplaatst. Met dit [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) maakt u een openbare externe gegevensbron en Parquet-bestandsindelingsdefinitie die wordt gebruikt in de volgende query:
 
-De volgende query illustreert het gebruik van de externe tabel *populatie* die we hebben gemaakt in de sectie [een externe tabel maken](#create-an-external-table) . Het retourneert land namen met hun populatie in 2019 in aflopende volg orde.
+```sql
+CREATE EXTERNAL TABLE Taxi (
+     vendor_id VARCHAR(100) COLLATE Latin1_General_BIN2, 
+     pickup_datetime DATETIME2, 
+     dropoff_datetime DATETIME2,
+     passenger_count INT,
+     trip_distance FLOAT,
+     fare_amount FLOAT,
+     tip_amount FLOAT,
+     tolls_amount FLOAT,
+     total_amount FLOAT
+) WITH (
+         LOCATION = 'puYear=*/puMonth=*/*.parquet',
+         DATA_SOURCE = YellowTaxi,
+         FILE_FORMAT = ParquetFormat
+);
+```
+## <a name="use-an-external-table"></a>Een externe tabel gebruiken
+
+U kunt [externe tabellen](develop-tables-external-tables.md) in uw query's op dezelfde manier gebruiken als u deze in SQL Server-query's gebruikt.
+
+Met de volgende query wordt dit gedemonstreerd met behulp van de externe tabel *population* die we in de vorige sectie hebben gemaakt. Deze tabel retourneert de namen van landen/regio's met hun populatie in 2019 in aflopende volgorde.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
 
 ```sql
 USE [mydbname];
@@ -93,4 +132,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor informatie over het opslaan van resultaten van een query in de opslag raadpleegt u de [query resultaten opslaan in de opslag](../sql/create-external-table-as-select.md).
+Raadpleeg [Queryresultaten opslaan in de opslag](../sql/create-external-table-as-select.md) voor informatie over het opslaan van resultaten van een query in de opslag.

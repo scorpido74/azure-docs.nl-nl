@@ -1,6 +1,6 @@
 ---
 title: Wat is Azure Private Link?
-description: Overzicht van Azure-functies voor persoonlijke koppelingen, architectuur en implementatie. Meer informatie over hoe Azure private endpoints en de Azure Private Link-service werken en hoe u deze kunt gebruiken.
+description: Overzicht van Azure Private Link-functies, -architectuur en -implementatie. Meer informatie over hoe Azure privé-eindpunten en de Azure Private Link-service werken en hoe u deze kunt gebruiken.
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,96 +8,100 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1bef4e5f4129ddc8300d61d609392ce0b07b74b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 21289874792987e35fa1cc5731a63e3f55fedc35
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656257"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835764"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
-Met persoonlijke Azure-koppeling kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage en SQL Database) en Azure gehoste klanten-partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk.
+Met Azure Private Link hebt u via een [privé-eindpunt](private-endpoint-overview.md) in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.
 
-Verkeer tussen uw virtuele netwerk en de service wordt het micro soft-backbone-netwerk verplaatst. Het beschikbaar maken van uw service voor het open bare Internet is niet langer nodig. U kunt uw eigen [persoonlijke koppelings service](private-link-service-overview.md) in uw virtuele netwerk maken en deze aan uw klanten leveren. Het instellen en gebruiken van een persoonlijke koppeling van Azure is consistent voor Azure PaaS-, klanten-en Shared partner services.
+Verkeer tussen uw virtuele netwerk en de service wordt via het Microsoft-backbonenetwerk verplaatst. U hoeft uw service niet langer bloot te stellen aan het openbare internet. U kunt een eigen [Private Link-service](private-link-service-overview.md) maken in uw virtuele netwerk en deze aanbieden bij klanten. Het instellen en gebruiken van Azure Private Link is consistent voor Azure PaaS-services, services die eigendom zijn van klanten en gedeelde partnerservices.
 
 > [!IMPORTANT]
-> Privé-koppeling van Azure is nu algemeen beschikbaar. Zowel privé-eind punten als persoonlijke koppelings service (Service achter standaard load balancer) zijn algemeen beschikbaar. Met een andere Azure-PaaS wordt de persoonlijke Azure-koppeling op verschillende schema's uitgevoerd. Raadpleeg de sectie [Beschik baarheid](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) hieronder voor een nauw keurige status van Azure PaaS op een privé-koppeling. Zie [Private endpoint](private-endpoint-overview.md#limitations) en [Private Link service](private-link-service-overview.md#limitations)voor bekende beperkingen. 
+> Azure Private Link is nu algemeen beschikbaar. Zowel privé-eindpunten als de Private Link-service (service achter standaard load balancer) zijn algemeen beschikbaar. Met verschillende Azure PaaS wordt de Azure Private Link volgens verschillende planningen uitgevoerd. Controleer het onderstaande gedeelte [beschikbaarheid](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) voor de juiste status van Azure PaaS op Private Link. Zie [Privé-eindpunt](private-endpoint-overview.md#limitations) en [Private Link-service](private-link-service-overview.md#limitations) voor bekende beperkingen. 
 
-![Overzicht van privé-eind punten](media/private-link-overview/private-endpoint.png)
+![Overzicht Privé-eindpunt](media/private-link-overview/private-endpoint.png)
 
 ## <a name="key-benefits"></a>Belangrijkste voordelen
-Persoonlijke Azure-koppeling biedt de volgende voor delen:  
-- **Persoonlijke toegang tot services op het Azure-platform**: koppel uw virtuele netwerk aan services in azure zonder een openbaar IP-adres bij de bron of bestemming. Service providers kunnen hun services in hun eigen virtuele netwerk weer geven en consumenten hebben toegang tot deze services in hun lokale virtuele netwerk. Het persoonlijke koppelings platform zorgt voor de connectiviteit tussen de consumer en de services via het Azure-backbone netwerk. 
+Azure Private Link biedt de volgende voordelen:  
+- **Privétoegang tot services op het Azure-platform**: Verbind uw virtuele netwerk met services in Azure zonder een openbaar IP-adres bij de bron of bestemming. Serviceproviders kunnen hun services weergeven in hun eigen virtuele netwerk en consumenten hebben toegang tot deze services in hun lokale virtuele netwerk. Het Private Link-platform zorgt voor de connectiviteit tussen de consument en de services via het Azure-backbonenetwerk. 
  
-- **On-premises en peered netwerken**: Access Services die worden uitgevoerd in azure vanuit on-premises ExpressRoute persoonlijke peering, VPN-tunnels en gekoppelde virtuele netwerken met behulp van privé-eind punten. U hoeft geen open bare peering in te stellen of door te bladeren op internet om de service te bereiken. Persoonlijke koppeling biedt een veilige manier om workloads naar Azure te migreren.
+- **On-premises en peered netwerken**: Toegang tot services die worden uitgevoerd in Azure vanuit on-premises via ExpressRoute-privépeering, VPN-tunnels en gekoppelde virtuele netwerken met behulp van privé-eindpunten. U hoeft geen openbare peering in te stellen of door het internet te gaan om de service te bereiken. Private Link biedt een veilige manier om workloads naar Azure te migreren.
  
-- **Bescherming tegen gegevens lekkage**: een persoonlijk eind punt wordt toegewezen aan een instantie van een Paas-bron in plaats van de gehele service. Consumenten kunnen alleen verbinding maken met de specifieke resource. Toegang tot andere resources in de service is geblokkeerd. Dit mechanisme biedt beveiliging tegen lekkage van gegevens. 
+- **Bescherming tegen gegevenslekken**: Een privé-eindpunt wordt toegewezen aan een instantie van een PaaS-resource in plaats van de gehele service. Consumenten kunnen alleen verbinding maken met de specifieke resource. Toegang tot andere resources in de service is geblokkeerd. Dit mechanisme biedt beveiliging tegen risico's van gegevenslekken. 
  
-- **Wereld wijd bereik**: verbinding maken tussen privé en services die in andere regio's worden uitgevoerd. Het virtuele netwerk van de consument kan zich in regio A bevinden en kan verbinding maken met Services achter een particuliere koppeling in regio B.  
+- **Globaal bereik**: Maak privé verbinding met services die in andere regio's worden uitgevoerd. Het virtuele netwerk van de consument kan zich in regio A bevinden en kan verbinding maken met services achter een Private Link in regio B.  
  
-- **Breid uw eigen services**uit: Stel dezelfde ervaring en functionaliteit in om uw service privé te maken voor consumenten in Azure. Als u uw service achter een standaard Azure Load Balancer plaatst, kunt u deze inschakelen voor privé-koppeling. De gebruiker kan vervolgens rechtstreeks verbinding maken met uw service met behulp van een persoonlijk eind punt in hun eigen virtuele netwerk. U kunt de verbindings aanvragen beheren met een goedkeurings oproep stroom. Persoonlijke Azure-koppeling werkt voor consumenten en services die deel uitmaken van verschillende Azure Active Directory-tenants. 
+- **Breid uit naar uw eigen services**: Schakel dezelfde ervaring en functionaliteit in om uw service privé te maken voor consumenten in Azure. Als u uw service achter een standaard Azure Load Balancer plaatst, kunt u deze inschakelen voor Private Link. De gebruiker kan vervolgens rechtstreeks verbinding maken met uw service met behulp van een privé-eindpunt in zijn eigen virtuele netwerk. U kunt de verbindingsaanvragen beheren met een goedkeuringsaanroepstroom. Azure Private Link werkt voor consumenten en services die deel uitmaken van verschillende Azure Active Directory-tenants. 
 
 ## <a name="availability"></a>Beschikbaarheid 
- De volgende tabel geeft een lijst van de services voor persoonlijke koppelingen en de regio's waar ze beschikbaar zijn. 
+ De volgende tabel bevat de Private Link-services en de regio's waarin ze beschikbaar zijn. 
 
-|Scenario  |Ondersteunde services  |Beschik bare regio's | Status  |
-|:---------|:-------------------|:-----------------|:--------|
-|Persoonlijke koppeling voor services die eigendom zijn van de klant |Persoonlijke koppelings Services achter standaard Azure Load Balancer | Alle open bare regio's  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
-|Persoonlijke koppeling voor Azure PaaS Services   | Azure Storage        |  Alle open bare regio's      | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
-|  | Azure Data Lake Storage Gen2        |  Alle open bare regio's      | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
-|  |  Azure SQL Database         | Alle open bare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
-|  |Azure Synapse Analytics (SQL Data Warehouse)| Alle open bare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  Alle open bare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  |  Azure Database for PostgreSQL-één server         | Alle open bare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
-|  |  Azure Database for MySQL         | Alle open bare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
-|  |  Azure Database for MariaDB         | Alle open bare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
-|  |  Azure Key Vault         | Alle open bare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
-|  |Azure Kubernetes-service-Kubernetes-API | Alle open bare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | VS-OOST, VS-WEST 2, ZUID-CENTRAAL |   Preview    |
-|  |Azure Container Registry | Alle open bare regio's      |   Preview   |
-|  |Azure App Configuration | Alle open bare regio's      |   Preview   |
-|  |Azure Backup | VS-OOST, VS-WEST 2, ZUID-CENTRAAL     |   Preview   |
-|  |Azure Event Hub | Alle open bare regio's      |   Preview    |
-|  |Azure Service Bus | Alle open bare regio's      |   Preview   |
-|  |Azure Relay | Alle open bare regio's      |   Preview   |
-|  |Azure Event Grid| VS-OOST, VS-WEST 2, ZUID-CENTRAAL      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | VS-OOST, VS-WEST 2, ZUID-CENTRAAL      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|  |Azure Machine Learning | VS-OOST, VS-WEST 2, ZUID-CENTRAAL      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Ondersteunde services  |Beschikbare regio's | Status  |
+|:-------------------|:-----------------|:--------|
+|Private Link-services achter standaard Azure Load Balancer | Alle openbare regio's  | Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Storage        |  Alle openbare regio's       | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
+| Azure Data Lake Storage Gen2        |  Alle openbare regio's      | Algemene beschikbaarheid <br/> [Meer informatie](/azure/storage/common/storage-private-endpoints)  |
+|  Azure SQL Database         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
+|Azure Synapse Analytics (SQL Data Warehouse)| Alle openbare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
+|Azure Cosmos DB|  Alle openbare regio's |Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  Azure Database for PostgreSQL - één server         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for MySQL         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
+|  Azure Database for MariaDB         | Alle openbare regio's      |   Algemene beschikbaarheid <br/> [Meer informatie](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
+|  Azure Key Vault         | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
+|Azure Kubernetes Service - Kubernetes API | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/aks/private-clusters)   |
+|Azure Search | Alle openbare regio's |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/search/search-security-overview#endpoint-access)    |
+|Azure Container Registry | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/container-registry/container-registry-private-link)   |
+|Azure App Configuration | Alle openbare regio's      |   Preview   |
+|Azure Backup | Alle openbare regio's     |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/backup/private-endpoints)   |
+|Azure Event Hub | Alle openbare regio's      |    Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-hubs/private-link-service)  |
+|Azure Service Bus | Alle openbare regio's      |  Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
+|Azure Relay | Alle openbare regio's      |   Preview <br/> [Meer informatie](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
+|Azure Event Grid| Alle openbare regio's       |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security) |
+|Azure Web Apps | EAST US, WEST US 2, SOUTH CENTRAL US      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Machine Learning | EAST US, WEST US 2, SOUTH CENTRAL US      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+| IoT Hub | Alle openbare regio's    |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure SignalR | EAST US, WEST US 2, SOUTH CENTRAL US      |   Preview   <br/> [Meer informatie](https://aka.ms/asrs/privatelink)   |
+| Azure Monitor <br/>(Log Analytics en Application Insights) | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
 
-Controleer de [pagina Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)voor de meest recente meldingen.
+
+Voor recente updates kijkt u op de pagina [Azure Virtual Network Updates](https://azure.microsoft.com/updates/?product=virtual-network) (Updates voor Azure Virtual Network).
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking
 
-Persoonlijke Azure-koppeling is geïntegreerd met Azure Monitor. Met deze combi natie kunt u:
+Azure Private Link kan worden geïntegreerd met Azure Monitor. Met deze combinatie kunt u:
 
- - Archiveren van logboeken naar een opslag account.
- - Streaming van gebeurtenissen naar uw event hub.
- - Azure Monitor logboek registratie.
+ - Logboeken in een opslagaccount archiveren.
+ - Gebeurtenissen naar uw Event Hub streamen.
+ - Logboekregistratie van Azure Monitor vastleggen.
 
 U krijgt toegang tot de volgende informatie op Azure Monitor: 
-- **Persoonlijk eind punt**: 
-    - Gegevens verwerkt door het persoonlijke eind punt (IN/uit)
+- **Privé-eindpunt**: 
+    - Gegevens verwerkt door het privé-eindpunt (IN/UIT)
  
-- **Privé koppelings service**:
-    - Gegevens verwerkt door de privé koppelings service (IN/uit)
-    - Beschik baarheid NAT-poort  
+- **Private Link-service**:
+    - Gegevens verwerkt door de Private Link-service (IN/UIT)
+    - Beschikbaarheid NAT-poort  
  
 ## <a name="pricing"></a>Prijzen   
-Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
+Zie [prijzen van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
  
 ## <a name="faqs"></a>Veelgestelde vragen  
-Zie [Veelgestelde vragen over Azure private link](private-link-faq.md)voor veelgestelde vragen.
+Zie [Veelgestelde vragen over Azure Private Link](private-link-faq.md) voor veelgestelde vragen.
  
 ## <a name="limits"></a>Limieten  
-Zie [limieten voor persoonlijke Azure-koppelingen](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)voor limieten.
+Zie [limieten van Azure Private Link](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits) voor limieten.
 
 ## <a name="service-level-agreement"></a>Service Level Agreement
-Zie [Sla voor Azure private link](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/)voor sla.
+Zie [SLA voor Azure Private Link](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/) voor SLA.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: een persoonlijk eind punt maken met Azure Portal](create-private-endpoint-portal.md)
-- [Snelstartgids: een persoonlijke koppelings service maken met behulp van de Azure Portal](create-private-link-service-portal.md)
+- [Snelstart: Een privé-eindpunt maken met behulp van de Azure-portal](create-private-endpoint-portal.md)
+- [Snelstart: Een Private Link-service maken met behulp van de Azure-portal](create-private-link-service-portal.md)
 
 
  

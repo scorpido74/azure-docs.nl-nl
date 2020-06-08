@@ -1,17 +1,17 @@
 ---
-title: Snelstartgids-REGI ster maken-Power shell
-description: Meer informatie over het maken van een persoonlijk docker-REGI ster in Azure Container Registry met Power shell
+title: 'Quickstart: Register maken - PowerShell'
+description: Leer snel hoe u een privé-Docker-register in Azure Container Registry maakt met behulp van PowerShell
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 872b2a29444e5278db34ce44741e2ca90d885702
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 792146abeaad137a29bfea25a59a957c5f69c5ac
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456370"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682777"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure PowerShell
+# <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>Quickstart: Een privé-containerregister maken met Azure PowerShell
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het bouwen, opslaan en faciliteren van installatiekopieën van Docker-containers. In deze snelstart leert u hoe u een Azure Container Registry maakt met behulp van PowerShell. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
@@ -21,7 +21,7 @@ Azure Container Registry is een beheerde service voor Docker-containerregisters 
 
 Voor deze quickstart is de Azure PowerShell-module vereist. Voer `Get-Module -ListAvailable Az` uit om uw geïnstalleerde versie te bepalen. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps).
 
-Docker moet ook lokaal zijn geïnstalleerd. Docker biedt pakketten voor [Mac OS][docker-mac]-, [Windows][docker-windows]- en [Linux][docker-linux]-systemen.
+Docker moet ook lokaal zijn geïnstalleerd. Docker biedt pakketten voor [macOS][docker-mac]-, [Windows][docker-windows]- en [Linux][docker-linux]-systemen.
 
 Omdat Azure Cloud-Shell niet alle vereiste Docker-onderdelen bevat (de `dockerd`-daemon), kunt u de Cloud Shell niet voor deze snelstart gebruiken.
 
@@ -51,7 +51,7 @@ De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke teken
 $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Azure Container Registry-SKU's][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
+In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor Container Registry][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
 
 ## <a name="log-in-to-registry"></a>Aanmelden bij register
 

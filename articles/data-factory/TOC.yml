@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Integratie-runtime
       href: concepts-integration-runtime.md
+    - name: Beveiliging
+      items:
+        - name: Beveiligingsbasislijn
+          href: security-baseline.md
     - name: Gegevensstromen
       items:
         - name: Gegevens transformeren met toewijzingsgegevensstromen

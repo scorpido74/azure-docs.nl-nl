@@ -1,6 +1,6 @@
 ---
-title: Gegevens importeren en exporteren tussen Spark-Pools (preview) en SQL-groepen
-description: Dit artikel bevat informatie over het gebruik van de aangepaste connector voor het verplaatsen van gegevens tussen SQL-groepen en Spark-Pools (preview).
+title: Gegevens importeren en exporteren tussen Spark-pools (preview) en SQL-pools
+description: Dit artikel bevat informatie over het gebruik van de aangepaste connector voor het verplaatsen van gegevens tussen SQL-pools en Spark-pools (preview).
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,100 +9,102 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424291"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83739274"
 ---
 # <a name="introduction"></a>Inleiding
 
-De Spark SQL Analytics-connector is ontworpen om op efficiënte wijze gegevens over te dragen tussen Spark-pool (preview) en SQL-groepen in azure Synapse. De Spark SQL Analytics-connector werkt alleen in SQL-groepen, maar werkt niet met SQL op aanvraag.
+De Azure Synapse Apache Spark naar Synapse SQL-connector is ontworpen om efficiënt gegevens over te dragen tussen Spark-pools (preview) en SQL-pools in Azure Synapse. De Azure Synapse Apache Spark naar Synapse SQL-connector werkt alleen in SQL-pools, maar werkt niet met SQL on-demand.
 
-## <a name="design"></a>Ontwerpen
+## <a name="design"></a>Ontwerp
 
-Het overbrengen van gegevens tussen Spark-Pools en SQL-groepen kan worden uitgevoerd met JDBC. Maar op twee gedistribueerde systemen, zoals Spark en SQL-Pools, is JDBC meestal een knel punt met een seriële gegevens overdracht.
+Het overbrengen van gegevens tussen Spark-pools en SQL-pools kan worden uitgevoerd met JDBC. Maar op twee gedistribueerde systemen, zoals Spark en SQL-pools, is JDBC meestal een knelpunt wat betreft seriële gegevensoverdracht.
 
-De Spark-Pools naar de SQL Analytics-connector is een gegevens bron implementatie voor Apache Spark. Hierbij worden de Azure Data Lake Storage gen 2 en poly base in SQL-groepen gebruikt om efficiënt gegevens over te dragen tussen het Spark-cluster en het SQL Analytics-exemplaar.
+De Azure Synapse Apache Spark pool naar Synapse SQL-connector is een gegevensbronimplementatie voor Apache Spark. De Azure Data Lake Storage Gen2 en Polybase in SQL-pools worden gebruikt om efficiënt gegevens over te dragen tussen het Spark-cluster en het Synapse SQL-exemplaar.
 
-![Architectuur van connector](./media/synapse-spark-sqlpool-import-export/arch1.png)
+![Connectorarchitectuur](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
-## <a name="authentication-in-azure-synapse-analytics"></a>Verificatie in azure Synapse Analytics
+## <a name="authentication-in-azure-synapse-analytics"></a>Verificatie in Azure Synapse Analytics
 
-Verificatie tussen systemen wordt naadloos in azure Synapse Analytics gemaakt. Er is een token service die verbinding maakt met Azure Active Directory om beveiligings tokens te verkrijgen die kunnen worden gebruikt bij het openen van het opslag account of de Data Warehouse-server. Daarom is het niet nodig om referenties te maken of op te geven in de connector-API zolang AAD-auth is geconfigureerd op het opslag account en de Data Warehouse-server. Als dat niet het geval is, kan de SQL-verificatie worden opgegeven. Meer informatie vindt u in de sectie [gebruik](#usage) .
+Verificatie tussen systemen wordt in Azure Synapse Analytics naadloos gemaakt. Er is een tokenservice die verbinding maakt met Azure Active Directory om beveiligingstokens te verkrijgen die kunnen worden gebruikt bij het openen van het opslagaccount of de datawarehouse-server. 
+
+Daarom is het niet nodig om referenties te maken of op te geven in de connector-API zolang AAD-verificatie is geconfigureerd op het opslagaccount en de datawarehouse-server. Als dat niet het geval is, kan de SQL-verificatie worden opgegeven. Meer informatie vindt u in de sectie [Gebruik](#usage).
 
 ## <a name="constraints"></a>Beperkingen
 
-- Deze connector werkt alleen in scala.
+- Deze connector werkt alleen in Scala.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Hebben **db_exporter** rol in de data base/SQL-groep waarnaar u gegevens wilt overdragen.
+- Laat d erol **db_exporter** in de database/SQL-pool waarnaar u gegevens wilt overdragen.
 
-Als u gebruikers wilt maken, maakt u verbinding met de data base en volgt u deze voor beelden:
+Als u gebruikers wilt maken, maakt u verbinding met de database en volgt u deze voorbeelden:
 
-```Sql
+```sql
 CREATE USER Mary FROM LOGIN Mary;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-Een rol toewijzen:
+Om een rol toe te wijzen:
 
-```Sql
+```sql
 EXEC sp_addrolemember 'db_exporter', 'Mary';
 ```
 
 ## <a name="usage"></a>Gebruik
 
-De import instructies hoeven niet te worden vermeld, ze worden vooraf geïmporteerd voor de notitieblok ervaring.
+De instructies voor importeren zijn niet vereist, ze worden vooraf geïmporteerd voor de notebookervaring.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-groep in de logische server (DW-instantie) die is gekoppeld aan de werk ruimte
+### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool in de logische server (DW-exemplaar) die is gekoppeld aan de werkruimte
 
 > [!NOTE]
-> **Invoer niet vereist in laptop ervaring**
+> **Importeren niet vereist in notebookervaring**
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API lezen
 
-```Scala
+```scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 ```
 
-De bovenstaande API werkt zowel voor intern (beheerd) als voor externe tabellen in de SQL-groep.
+De bovenstaande API werkt zowel voor interne (beheerde) als voor externe tabellen in de SQL-pool.
 
 #### <a name="write-api"></a>API schrijven
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-waarbij TableType constanten kan zijn. intern of constanten. EXTERNAL
+waarbij Table Type Constants.INTERNAL of Constants.EXTERNAL kan zijn
 
-```Scala
+```scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
 
-De verificatie voor opslag en het SQL Server is voltooid
+De verificatie voor opslag en de SQL-server is voltooid
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-groep of Data Base op een logische server buiten de werk ruimte
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database op een logische server buiten de werkruimte
 
 > [!NOTE]
-> Invoer niet vereist in laptop ervaring
+> Importeren niet vereist in notebookervaring
 
-```Scala
+```scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
 #### <a name="read-api"></a>API lezen
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
@@ -110,7 +112,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>API schrijven
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
@@ -120,9 +122,9 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 
 #### <a name="read-api"></a>API lezen
 
-De connector biedt momenteel geen ondersteuning voor verificatie op basis van tokens naar een SQL-groep die zich buiten de werk ruimte bevindt. U moet SQL-verificatie gebruiken.
+De connector biedt momenteel geen ondersteuning voor verificatie op basis van tokens naar een SQL-pool die zich buiten de werkruimte bevindt. U moet SQL-verificatie gebruiken.
 
-```Scala
+```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -132,7 +134,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 
 #### <a name="write-api"></a>API schrijven
 
-```Scala
+```scala
 df.write.
 option(Constants.SERVER, "[samplews].[database.windows.net]").
 option(Constants.USER, [SQLServer Login UserName]).
@@ -143,27 +145,55 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ### <a name="using-the-pyspark-connector"></a>De PySpark-connector gebruiken
 
 > [!NOTE]
-> In dit voor beeld wordt alleen de ervaring van het notitie blok gegeven.
+> In dit voorbeeld is alleen gericht op de notebookervaring.
 
-Stel dat u een data frame ' pyspark_df ' hebt die u naar de DW wilt schrijven.
+Stel dat u een dataframe "pyspark_df" hebt die u naar de DW wilt schrijven.
 
-Een tijdelijke tabel maken met behulp van de data frame in PySpark
+Maak een tijdelijke tabel met behulp van de dataframe in PySpark:
 
-```Python
+```py
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Een scala-cel in de PySpark-notebook uitvoeren met behulp van magics
+Voer een Scala-cel in het PySpark-notebook uit met behulp van magics:
 
-```Scala
+```scala
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
-Lees in het Lees scenario de gegevens met behulp van scala en schrijf deze in een tijdelijke tabel, en gebruik Spark SQL in PySpark om de tijdelijke tabel in een data frame op te vragen.
+
+Lees in het leesscenario de gegevens met behulp van Scala en schrijf deze in een tijdelijke tabel, en gebruik Spark SQL in PySpark om de tijdelijke tabel in een dataframe aan te vragen.
+
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>Andere gebruikers toestaan de DW-connector in uw werkruimte te gebruiken
+
+U moet de eigenaar van de opslagblobgegevens zijn op het ADLS Gen2-opslagaccount dat is verbonden met de werkruimte om ontbrekende machtigingen voor anderen te wijzigen. Zorg ervoor dat de gebruiker toegang heeft tot de werkruimte en de machtigingen voor het uitvoeren van notebooks.
+
+### <a name="option-1"></a>Optie 1
+
+- Maak de gebruiker een Inzender/Eigenaar van opslagblobgegevens
+
+### <a name="option-2"></a>Optie 2
+
+- Geef de volgende ACL's op in de mappenstructuur:
+
+| Map | / | synapse | workspaces  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+|--|--|--|--|--|--|--|--|
+| Toegangsmachtigingen | --X | --X | --X | --X | --X | --X | -WX |
+| Standaardmachtigingen | ---| ---| ---| ---| ---| ---| ---|
+
+- U moet ACL kunnen toepassen op alle folders van "synapse" en omlaag vanuit het Azure-portal. Om ACL toe te passen op de hoofdmap "/" folder, volgt u de onderstaande instructies.
+
+- Verbinding maken met het opslagaccount dat is verbonden met de werkruimte vanuit Storage Explorer met AAD
+- Selecteer uw account en geef de ADLS Gen2 URL en het standaardbestandssysteem voor de werkruimte op
+- Zodra u het vermelde opslagaccount kunt zien, klikt u met de rechtermuisknop op de vermelding werkruimte en selecteert u "Toegang beheren"
+- Voeg de Gebruiker toe aan de /-map met de toegangsmachtiging "Uitvoeren". Selecteer "OK"
+
+> [!IMPORTANT]
+> Zorg ervoor dat u niet "Standaard" selecteert als u dit niet wilt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een SQL-groep maken]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Een nieuwe Apache Spark groep maken voor een Azure Synapse Analytics-werk ruimte](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [Een SQL-pool maken met behulp van de Azure-portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
+- [Een nieuwe Apache Spark-pool maken met behulp van de Azure-portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

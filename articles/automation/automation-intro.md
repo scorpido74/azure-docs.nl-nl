@@ -1,96 +1,100 @@
 ---
-title: Overzicht van Azure Automation
-description: Informatie over het gebruik van Azure Automation voor het automatiseren van de levenscyclus van infrastructuur en toepassingen.
+title: Een inleiding tot Azure Automation
+description: In dit artikel wordt uitgelegd wat Azure Automation is en hoe dit moet worden gebruikt om de levenscyclus van infrastructuur en toepassingen te automatiseren.
 services: automation
 ms.subservice: process-automation
-keywords: Azure Automation, DSC, Power shell, status configuratie, update beheer, wijzigingen bijhouden, DSC, inventaris, runbooks, Python, grafisch
+keywords: azure automation, DSC, powershell, statusconfiguratie, updatebeheer, bijhouden van wijzigingen, DSC, voorraad, runbooks, python, grafisch
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 8ee8fd4d9a81746be7b65aeb6410691a5e3aea96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010236"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83835271"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Een inleiding tot Azure Automation
 
-In dit artikel wordt een kort overzicht gegeven van Azure Automation en worden enkele veelgestelde vragen beantwoord. Gebruik de koppelingen in dit overzicht voor meer informatie over de verschillende mogelijkheden.
+Azure Automation biedt een cloud-gebaseerde automatiserings- en configuratieservice die consistent beheer in uw Azure- en niet-Azure-omgevingen ondersteunt. Het omvat procesautomatisering, configuratiebeheer, updatebeheer, gedeelde mogelijkheden en heterogene functies. Automatisering geeft u volledige controle tijdens de implementatie, bewerkingen en het buiten gebruik stellen van workloads en bronnen.
 
-## <a name="about-azure-automation"></a>Over Azure Automation
-
-Azure Automation levert een cloud-gebaseerde Automation-en configuratie service die consistent beheer in uw Azure-en niet-Azure-omgevingen ondersteunt. Het omvat proces automatisering, configuratie beheer, update beheer, gedeelde mogelijkheden en heterogene functies. Automation geeft u volledige controle over de implementatie, bewerkingen en het buiten gebruik stellen van werk belastingen en resources.
-
-![Automatiserings mogelijkheden](media/automation-overview/automation-overview.png)
+![Automatiseringsmogelijkheden](media/automation-overview/automation-overview.png)
 
 ## <a name="process-automation"></a>Procesautomatisering
 
-Proces automatisering in Azure Automation kunt u veelvuldige, tijdrovende en fout gevoelige taken voor Cloud beheer automatiseren. Met deze service kunt u zich richten op werk dat bedrijfs waarde toevoegt. Door het aantal fouten te reduceren en de efficiëntie te verbeteren, kunt u uw operationele kosten drukken. De proces automatiserings besturings omgeving wordt gedetailleerd beschreven in het uitvoeren van een [Runbook in azure Automation](automation-runbook-execution.md).
+Met procesautomatisering in Azure Automation kunt u regelmatig terugkerende, tijdrovende en foutgevoelige taken voor cloudbeheer automatiseren. Dankzij deze service kunt u zich concentreren op werk dat bedrijfswaarde toevoegt. Door het aantal fouten te reduceren en de efficiëntie te verbeteren, kunt u uw operationele kosten drukken. De werkomgeving van procesautomatisering wordt beschreven in [Runbook-uitvoering in Azure Automation](automation-runbook-execution.md).
 
-Proces automatisering ondersteunt de integratie van Azure-Services en andere open bare systemen die vereist zijn voor het implementeren, configureren en beheren van uw end-to-end-processen. Met deze service kunt u [runbooks](automation-runbook-types.md) grafisch ontwerpen, in Power shell of met python. Door een [Hybrid Runbook worker](automation-hybrid-runbook-worker.md)te gebruiken, kunt u beheer samen voegen door te organiseren in on-premises omgevingen. [Webhooks](automation-webhooks.md) bieden u de mogelijkheid om te voldoen aan aanvragen en te zorgen voor continue levering en bewerkingen door automatisering vanuit ITSM-, DevOps-en bewakings systemen te activeren. 
+Procesautomatisering ondersteunt de integratie van Azure-services en andere openbare systemen die vereist zijn voor het implementeren, configureren en beheren van uw end-to-end-processen. Met de service kunt u [runbooks in grafische vorm ontwerpen](automation-runbook-types.md) in PowerShell of met behulp van Python. Met behulp van een [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) kunt u het beheer combineren door on-premises omgevingen te organiseren. Met [webhooks](automation-webhooks.md) kunt u voldoen aan aanvragen en zorgen voor doorlopende levering en bewerkingen door automatisering vanuit ITSM, DevOps en controlesystemen te activeren. 
 
-## <a name="configuration-management"></a>Configuratiebeheer
+## <a name="configuration-management"></a>Configuration Management
 
-Azure Automation [status configuratie](automation-dsc-overview.md) is een op de cloud gebaseerde oplossing voor Power shell desired state Configuration (DSC) die services biedt voor bedrijfs omgevingen. Met deze functie kunt u uw DSC-resources in Azure Automation beheren en configuraties Toep assen op virtuele of fysieke machines van een DSC-pull-server in de Azure-Cloud. U kunt computer configuraties bewaken en automatisch bijwerken voor fysieke en virtuele machines, Windows of Linux, in de Cloud of on-premises. Met inventaris ondersteuning kunt u in-Guest-resources zoeken naar geïnstalleerde toepassingen en andere configuratie-items.
- 
-De Azure Automation State Configuration-service biedt uitgebreide rapportage-en zoek mogelijkheden. U kunt deze functies gebruiken om gedetailleerde informatie te vinden over wat is geconfigureerd in een besturings systeem. De service biedt ondersteuning voor het bijhouden van wijzigingen in Services, daemons, software, REGI ster en bestanden in uw omgeving om u te helpen bij het vaststellen van ongewenste wijzigingen en het activeren van waarschuwingen. Een belang rijke gerelateerde functie is het rapporteren van belang rijke gebeurtenissen, zoals gebeurtenissen die worden uitgegeven wanneer knoop punten afwijken van de toegewezen configuraties. 
+Configuratiebeheer in Azure Automation biedt toegang tot twee functies:
+
+* Wijzigingen bijhouden en Inventaris
+* Azure Automation State Configuration
+
+### <a name="change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris
+
+Wijzigingen bijhouden en Inventaris combineren functies voor het bijhouden van wijzigingen en inventaris, zodat u wijzigingen in de infrastructuur van virtuele machines en servers kunt bijhouden. De service biedt ondersteuning voor het bijhouden van wijzigingen in services, daemons, software, registers en bestanden in uw omgeving om u te helpen bij het vaststellen van ongewenste wijzigingen en het activeren van waarschuwingen. Met inventarisondersteuning kunt u in-guest resources opvragen voor zichtbaarheid van de geïnstalleerde toepassingen en andere configuratie-items. Zie [Wijzigingen bijhouden en Inventaris](change-tracking.md) voor meer informatie over deze functie.
+
+### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
+
+[Statusconfiguratie van Azure Automation](automation-dsc-overview.md) is een cloudfunctie voor PowerShell DSC (desired state configuration) waarmee services worden geboden voor bedrijfsomgevingen. Met behulp van deze functie kunt u uw DSC-resources beheren in Azure Automation en configuraties toepassen op virtuele of fysieke machines waarmee deze worden opgehaald van een DSC-pull-server in de Azure-cloud. 
 
 ## <a name="update-management"></a>Updatebeheer
 
-Azure Automation bevat de oplossing [Update beheer](automation-update-management.md) voor Windows-en Linux-systemen in hybride omgevingen. Met deze oplossing krijgt u inzicht in de update vereisten voor Azure en andere Clouds en on-premises. Met update beheer kunt u geplande implementaties maken die de installatie van updates binnen een gedefinieerd onderhouds venster organiseren. Als een update niet mag worden geïnstalleerd op een computer, kunt u de update beheer functies gebruiken om deze uit te sluiten van een implementatie.
+Azure Automation bevat de functie [Updatebeheer](automation-update-management.md) voor Windows- en Linux-systemen in hybride omgevingen. Updatebeheer geeft u inzicht in de updatevereisten voor Azure en andere clouds en on-premises. Met de functie kunt u geplande implementaties maken voor het organiseren van de installatie van updates binnen een gedefinieerd onderhoudsvenster. Als een update niet mag worden geïnstalleerd op een computer, kunt u de functie Updatebeheer gebruiken om deze uit te sluiten van een implementatie.
 
 ## <a name="shared-capabilities"></a>Gedeelde functionaliteit
 
-Azure Automation biedt een aantal gedeelde mogelijkheden, waaronder gedeelde resources, Toegangs beheer op basis van rollen, flexibele planning, integratie van broncode beheer, controle en tagging.
+Azure Automation biedt een aantal gedeelde mogelijkheden, waaronder gedeelde resources, op rollen gebaseerd toegangsbeheer, flexibele planning, integratie van broncodebeheer, controle en tagging.
 
 ### <a name="shared-resources"></a><a name="shared-resources"></a>Gedeelde resources
 
 Azure Automation bestaat uit een set gedeelde bronnen waarmee u uw omgevingen eenvoudiger op schaal kunt automatiseren en configureren.
 
-* **[Schema's](automation-schedules.md)** -Automation-bewerkingen activeren op vooraf gedefinieerde tijdstippen.
-* **[Modules](automation-integration-modules.md)** : beheer Azure en andere systemen. U kunt modules importeren in het Automation-account voor cmdlets van micro soft, van derden, Community en aangepaste en DSC-resources.
-* **[Galerie modules](automation-runbook-gallery.md)** : ondersteunt systeem eigen integratie met de PowerShell Gallery om runbooks weer te geven en te importeren in het Automation-account. De galerie biedt u de mogelijkheid om snel aan de slag te gaan met het integreren en ontwerpen van uw processen vanuit Power shell Gallery en micro soft Script Center.
-* **[Python 2-pakketten](python-packages.md)** : ondersteuning voor python 2-runbooks voor uw Automation-account.
-* **[Referenties](automation-credentials.md)** : Bewaar veilig gevoelige informatie die runbooks en configuraties in runtime kunnen gebruiken.
-* **[Verbindingen](automation-connections.md)** -Store name-value-paren van algemene informatie voor verbindingen met systemen. De module Auteur definieert verbindingen in runbooks en configuraties voor gebruik tijdens runtime.
-* **[Certificaten](automation-certificates.md)** : Definieer informatie die moet worden gebruikt bij de verificatie en het beveiligen van geïmplementeerde bronnen wanneer deze worden geopend door RUNBOOKS of DSC-configuraties tijdens runtime. 
-* **[Variabelen](automation-variables.md)** : Houd inhoud die kan worden gebruikt in runbooks en configuraties. U kunt variabelen waarden wijzigen zonder dat u de runbooks of configuraties die ernaar verwijzen, hoeft te wijzigen.
+* **[Planningen](automation-schedules.md)** : automatiseringsbewerkingen op vooraf gedefinieerde tijdstippen activeren.
+* **[Modules](automation-integration-modules.md)** : Azure en andere systemen beheren. U kunt model importeren in het Automation-account voor cmdlets en DSC-resources van Microsoft, van derden of uit de community, en voor aangepaste gedefinieerde cmdlets en DSC-resources.
+* **[Modulegalerie](automation-runbook-gallery.md)** : ondersteunt systeemeigen integratie met de PowerShell Gallery om runbooks weer te geven en deze te importeren in het Automation-account. Met de galerie kunt u snel aan de slag gaan met het integreren en ontwerpen van uw processen vanuit de PowerShell-galerie en Microsoft Script Center.
+* **[Python 2-pakketten](python-packages.md)** : ondersteuning voor Python 2-runbooks voor uw Automation-account.
+* **[Referenties](automation-credentials.md)** : hiermee kunt u vertrouwelijke informatie veilig opslaan die vervolgens kan worden gebruikt door runbooks en configuraties tijdens runtime.
+* **[Verbindingen](automation-connections.md)** : bewaar naamwaardeparen van algemene informatie voor verbindingen met systemen. De auteur van de module geeft de verbindingen op in runbooks en configuraties voor gebruik tijdens runtime.
+* **[Certificaten](automation-certificates.md)** : definieer informatie die moet worden gebruikt bij de verificatie en het beveiligen van geïmplementeerde resources wanneer deze worden geopend door runbooks of DSC-configuraties tijdens runtime. 
+* **[Variabelen](automation-variables.md)** : bevatten inhoud die kan worden gebruikt in runbooks en configuraties. U kunt variabelewaarden wijzigen zonder een van de runbooks en configuraties die ernaar verwijzen te moeten veranderen.
 
 ### <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
 
-Azure Automation ondersteunt op rollen gebaseerd toegangs beheer (RBAC) om toegang tot het Automation-account en de bijbehorende resources te reguleren. Zie op [rollen gebaseerd toegangs beheer voor Azure Automation voor](automation-role-based-access-control.md)meer informatie over het configureren van RBAC voor uw Automation-account, runbooks en taken.
+Azure Automation ondersteunt op rollen gebaseerd toegangsbeheer (RBAC) om toegang tot het Automation-account en de bijbehorende resources te reguleren. Zie [Op rollen gebaseerd toegangsbeheer voor Azure Automation](automation-role-based-access-control.md) voor meer informatie over het configureren van RBAC voor uw Automation-account, runbooks en taken.
 
 ### <a name="source-control-integration"></a>Integratie van bronbeheer
 
-Azure Automation is [integratie van broncode beheer](source-control-integration.md)mogelijk. Deze functie bevordert de configuratie als code waar runbooks of configuraties kunnen worden ingecheckt in een broncode beheersysteem.
+Azure Automation ondersteunt [Integratie van broncodebeheer](source-control-integration.md). Deze functie gebruikt configuratie als code waar runbooks of configuraties in een bronbeheersysteem kunnen worden ingecheckt.
 
 ## <a name="heterogeneous-support-windows-and-linux"></a>Heterogene ondersteuning (Windows en Linux)
 
-Automation is ontworpen om te werken in uw hybride cloud omgeving en op uw Windows-en Linux-systemen. Het biedt een consistente manier om geïmplementeerde workloads en de besturings systemen die ze uitvoeren te automatiseren en te configureren.
+Automation is ontworpen voor gebruik in uw hybride cloudomgeving, maar ook voor uw Windows- en Linux-systemen. Het systeem biedt een consistente manier voor het automatiseren en configureren van geïmplementeerde workloads en de besturingssysteem waarop ze worden uitgevoerd.
 
 ## <a name="common-scenarios-for-automation"></a>Algemene scenario's voor Automation
 
-Azure Automation ondersteunt het beheer gedurende de levens cyclus van uw infra structuur en toepassingen. Algemene scenario's omvatten de volgende:
+Azure Automation ondersteunt beheer gedurende de gehele levenscyclus van uw infrastructuur en toepassingen. Algemene scenario's omvatten de volgende:
 
-* **Schrijf runbooks** -Maak Power shell-, Power shell-werk stroom, grafische documenten, Python 2 en DSC-runbooks in algemene talen. 
-* **Bouw en implementeer resources** -Implementeer virtuele machines in een hybride omgeving met behulp van runbooks en Azure Resource Manager sjablonen. Integreer in ontwikkel hulpprogramma's, zoals Jenkins en Azure DevOps.
-* **Vm's configureren** : Evalueer en configureer Windows-en Linux-machines met configuraties voor de infra structuur en toepassing.
-* **Deel kennis** : breng kennis over aan het systeem over hoe uw organisatie workloads levert en onderhoudt. 
-* **Inventaris ophalen** : krijg een volledige inventarisatie van geïmplementeerde resources voor doel items, rapportage en naleving. 
-* **Wijzigingen zoeken** : wijzigingen identificeren die kunnen leiden tot een onjuiste configuratie en de operationele naleving verbeteren.
-* **Bewaking** : computer wijzigingen isoleren die problemen veroorzaken en deze herstellen of escaleren naar beheer systemen.
-* **Beveilig** -quarantaine computers als er beveiligings waarschuwingen worden gegenereerd. Stel in-guest vereisten in.
-* **Bepalen** -RBAC instellen voor teams. Herstel niet-gebruikte resources.
+* **Runbooks schrijven**: maak PowerShell-, PowerShell Workflow-, grafische, Python 2- en DSC-runbooks in veelvoorkomende talen. 
+* **Resources bouwen en implementeren**: implementeer virtuele machines in een hybride omgeving met behulp van runbooks en Azure Resource Manager-sjablonen. Integreer met ontwikkelingsprogramma's zoals Jenkins en Azure DevOps.
+* **VM's configureren**: evalueer en configureer Windows- en Linux-machines met de configuratie voor infrastructuur en toepassing.
+* **Kennis delen**: voorzie het systeem van informatie over de manier waarop de organisatie workloads levert en onderhoudt. 
+* **Voorraad ophalen**: genereer een volledige inventarisatie van geïmplementeerde resources voor doelitems, rapportage en naleving. 
+* **Wijzigingen vinden**: stel de wijzigingen vast die kunnen leiden tot een onjuiste configuratie en die kunnen zorgen voor een betere operationele naleving.
+* **Controle**: isoleer wijzigingen op machines die problemen veroorzaken en die oplossingen bieden voor of escaleren met beheersystemen.
+* **Beveiligen**: zet computers in quarantaine als er beveiligingswaarschuwingen worden gegenereerd. Stel in-guest vereisten in.
+* **Beheersen**: stel RBAC in voor teams. Herstel niet-gebruikte resources.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
-## <a name="pricing-for-automation"></a>Prijzen voor Automation
+## <a name="pricing-for-azure-automation"></a>Prijzen voor Azure Automation
 
-U kunt de prijzen controleren die zijn gekoppeld aan Azure Automation op de pagina met [prijzen](https://azure.microsoft.com/pricing/details/automation/) .
+U kunt de prijzen gekoppeld aan Azure Automation bekijken op de pagina [Prijzen](https://azure.microsoft.com/pricing/details/automation/).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
 > [Een Automation-account maken](automation-quickstart-create-account.md)
-

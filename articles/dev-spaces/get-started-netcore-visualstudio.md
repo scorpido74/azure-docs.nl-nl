@@ -1,20 +1,20 @@
 ---
-title: 'Maak een Kubernetes dev-ruimte: Visual Studio & .NET core'
+title: 'Een Kubernetes-ontwikkelaarsruimte maken: Visual Studio en .NET Core'
 services: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen en snel een .NET-kern toepassing te herhalen in azure Kubernetes service
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: f3be10929a9a0df23529348f2c62e35f2ebaa850
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruikt om fouten op te sporen en snel een .NET Core-toepassing te herhalen in Azure Kubernetes Service
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
+ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75770710"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83873611"
 ---
-# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio en .NET core met Azure dev Spaces
+# <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Een Kubernetes-ontwikkelaarsruimte maken: Visual Studio en .NET Core met Azure Dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -24,7 +24,7 @@ In deze handleiding leert u het volgende:
 - Uw code op een productieve manier ontwikkelen en testen in een teamomgeving.
 
 > [!Note]
-> Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
+> **Als u op enig moment niet verder kunt**, kunt u de [probleemoplossingssectie](troubleshooting.md) raadplegen.
 
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Een Kubernetes-cluster maken dat is ingeschakeld voor Azure Dev Spaces
@@ -32,16 +32,16 @@ In deze handleiding leert u het volgende:
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
 1. Kies **Een resource maken** > ga naar **Kubernetes** > selecteer **Kubernetes-service** > **Maken**.
 
-   Voer de volgende stappen uit onder elke kop van het formulier *Create Kubernetes cluster* en controleer of de geselecteerde [regio Azure dev-ruimten ondersteunt][supported-regions].
+   Voer de volgende stappen uit onder elke kop van het formulier *Kubernetes-cluster maken*, en controleer of uw geselecteerde [regio ondersteuning biedt voor Azure Dev Spaces][supported-regions].
 
-   - **Project Details**: Selecteer een Azure-abonnement en een nieuwe of bestaande Azure-resource groep.
+   - **PROJECTDETAILS**: selecteer een Azure-abonnement en een nieuwe of bestaande Azure-resourcegroep.
    - **CLUSTERDETAILS**: voer een naam, regio, versie en DNS-voorvoegsel voor het AKS-cluster in.
    - **SCHAAL**: selecteer een VM-grootte voor de AKS-agentknooppunten en het aantal knooppunten. Als u begint met Azure Dev Spaces, is één knooppunt voldoende voor het verkennen van alle functies. Het aantal knooppunten kan op elk gewenst moment na de implementatie van het cluster gemakkelijk worden aangepast. Let op: de VM-grootte kan niet meer worden gewijzigd als een AKS-cluster eenmaal is gemaakt. Zodra een AKS-cluster is geïmplementeerd, kunt u echter eenvoudig een nieuw AKS-cluster met grotere virtuele machines maken en Dev Spaces gebruiken om dat grotere cluster opnieuw te implementeren als u wilt opschalen.
 
    ![Configuratie-instellingen voor Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
 
 
-   Selecteer **Volgende: verificatie** wanneer u klaar bent.
+   Selecteer **Volgende: Verificatie** wanneer u klaar bent.
 
 1. Kies de gewenste instelling voor RBAC (op rollen gebaseerd toegangsbeheer). Azure Dev Spaces biedt ondersteuning voor clusters waarop RBAC is ingeschakeld of uitgeschakeld.
 
@@ -50,19 +50,19 @@ In deze handleiding leert u het volgende:
 1. Selecteer **Controleren + maken** en vervolgens **Maken** wanneer u klaar bent.
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio-hulpprogramma's downloaden
-Installeer de nieuwste versie van [Visual Studio](https://www.visualstudio.com/vs/). Voor Visual Studio 2019 in Windows moet u de werk belasting voor Azure Development installeren. Voor Visual Studio 2017 in Windows moet u de ASP.NET-en Web Development-werk belasting installeren, evenals [Visual Studio Tools voor Kubernetes](https://aka.ms/get-azds-visualstudio).
+Installeer de nieuwste versie van [Visual Studio 2019](https://www.visualstudio.com/vs/) in Windows met de Azure Development-workload.
 
 ## <a name="create-a-web-app-running-in-a-container"></a>Een web-app maken die wordt uitgevoerd in een container
 
-In deze sectie maakt u een ASP.NET Core web-app en haalt u deze op in een container in Kubernetes.
+In deze sectie maakt u een ASP.NET Core-web-app en voert u deze uit in een container in Kubernetes.
 
 ### <a name="create-an-aspnet-web-app"></a>Een ASP.NET-web-app maken
 
-Maak in Visual Studio een nieuw project. Op dit moment moet het project een **ASP.NET Core-webtoepassing** zijn. Geef het project de naam **webfrontend**.
+Maak een nieuw project in Visual Studio. Op dit moment moet het project een **ASP.NET Core-webtoepassing** zijn. Geef het project de naam **webfrontend**.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
-Selecteer de sjabloon **Web Application (Model-View-Controller)** en selecteer **.NET Core** en **ASP.NET Core 2.0** in de twee vervolgkeuzelijsten boven in het dialoogvenster. Klik op **OK** om het project te maken.
+Selecteer de sjabloon **Web Application (Model-View-Controller)** en selecteer **.NET Core** en **ASP.NET Core 2.0** in de twee vervolgkeuzelijsten boven in het dialoogvenster. Klik op **OK** om het project aan te maken.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
@@ -114,7 +114,7 @@ Zodra de ontwikkelomgeving is gemaakt, kunt u fouten oplossen voor de toepassing
 
 Visual Studio communiceert met de ontwikkelomgeving om de toepassing te compileren en te implementeren. Vervolgens wordt een browser geopend met de web-app. Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in de ontwikkelomgeving in Azure. De reden voor het localhost-adres is dat Azure Dev Spaces een tijdelijke SSH-tunnel maakt naar de container die wordt uitgevoerd in AKS.
 
-Klik boven aan de pagina op de koppeling **About** om het onderbrekingspunt te activeren. U hebt volledige toegang tot debug-gegevens, net alsof de code lokaal wordt uitgevoerd. Denk hierbij aan de aanroep-stack, lokale variabelen en informatie over uitzonderingen.
+Klik boven aan de pagina op de koppeling **About** om het onderbrekingspunt te activeren. U hebt volledige toegang tot foutopsporingsgegevens (net als wanneer de code lokaal wordt uitgevoerd), zoals als de aanroep-stack, lokale variabelen, informatie over uitzonderingen, enzovoort.
 
 ## <a name="iteratively-develop-code"></a>Code iteratief ontwikkelen
 
@@ -123,7 +123,7 @@ Azure Dev Spaces draait niet alleen om het ophalen van code die wordt uitgevoerd
 ### <a name="update-a-content-file"></a>Een inhoudsbestand bijwerken
 
 
-1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 die als volgt leest `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) : 
+1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 waar `<h2>Application uses</h2>`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) staat in iets als: 
   
     ```html
     <h2>Hello k8s in Azure!</h2>`

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: a0d1ba696b39b9331c4a85c9cf37d13d545ffad5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593695"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83870691"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Hugo-site publiceren in Azure Static Web Apps Preview
 
@@ -99,7 +99,7 @@ De volgende stappen laten zien hoe u een nieuwe statische site-app maakt en deze
 
 1. Ga naar [Azure Portal](https://portal.azure.com)
 1. Klik op **Een resource maken**
-1. Ga naar **Static Web Apps**
+1. Zoek **Static Web Apps**
 1. Klik op **Static Web Apps (preview)**
 1. Klik op **Maken**.
 
@@ -133,13 +133,11 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Klik op de knop **Volgende: Build >** om de configuratie van de build te bewerken
 
-1. Stel _App-locatie_ in op **/** .
+1. Stel _App-locatie_ in op **Openbaar**.
 
-1. Stel _Locatie van app-artefact_ in op **openbaar**.
+1. Laat _Locatie van app-artefact_ leeg.
 
    Een waarde voor _API-locatie_ is niet nodig omdat u momenteel geen API implementeert.
-
-   :::image type="content" source="./media/publish-hugo/build-details.png" alt-text="Build-instellingen":::
 
 ### <a name="review-and-create"></a>Controleren en maken
 
@@ -155,12 +153,12 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Open de Hugo-app in een teksteditor en open het bestand _.github/workflows/azure-pages-<NAAM_VAN-WERKSTROOM>.yml_.
 
-1. Vervang de regel `- uses: actions/checkout@v1` (regel 18) door het volgende, om de Hugo-toepassing te bouwen.
+1. Vervang de regel `- uses: actions/checkout@v2` (regel 18) door het volgende, om de Hugo-toepassing te bouwen.
 
    ```yml
    - uses: actions/checkout@v2
-        with:
-          submodules: true
+     with:
+       submodules: true
 
    - name: Setup Hugo
      uses: peaceiris/actions-hugo@v2.4.8

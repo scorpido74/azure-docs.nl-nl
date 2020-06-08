@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0f34b853728c91d9e3c6e32396c0f7eb427af101
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587869"
+ms.locfileid: "83656205"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Wat is Azure Synapse Analytics (preview van werkruimten)?
 
@@ -63,7 +63,7 @@ Azure Synapse verwijdert de traditionele technologische barrières tussen het ge
 
 Azure Synapse is ingebouwd met dezelfde gegevensintegratie-engine en ervaring als Azure Data Factory, zodat u uitgebreide gegevenspijplijnen kunt maken zonder een afzonderlijke indelingsengine te gebruiken.
 
-* Gegevens verplaatsen tussen Synapse en ruim 85 on-premises gegevensbronnen
+* Gegevens verplaatsen tussen Azure Synapse en meer dan 90 on-premises gegevensbronnen
 * Notebooks, pijplijnen, Spark-taken, SQL-scripts, opgeslagen procedures indelen
 * Code-Free ETL met gegevensstroomactiviteiten
 
@@ -87,6 +87,6 @@ Azure Synapse biedt ondernemingen één manier om analyse-resources te beheren, 
 
 * [Een werkruimte maken](quickstart-create-workspace.md)
 * [Synapse Studio gebruiken](quickstart-synapse-studio.md)
-* [Een SQL-pool maken](quickstart-create-sql-pool.md)
+* [Een SQL-pool maken](quickstart-create-sql-pool-portal.md)
 * [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
-* [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool.md)
+* [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool-portal.md)

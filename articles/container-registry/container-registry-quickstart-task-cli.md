@@ -1,30 +1,30 @@
 ---
-title: Quick Start-een installatie kopie van &-container maken
-description: Voer snel taken uit met Azure Container Registry om op aanvraag een docker-container installatie kopie te maken en uit te voeren in de Cloud.
+title: 'Snelstart: een containerinstallatiekopie bouwen en uitvoeren'
+description: Voer snel taken uit met Azure Container Registry om op aanvraag een Docker-containerinstallatiekopie te maken en uit te voeren in de cloud.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76986271"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680595"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snelstartgids: een container installatie kopie bouwen en uitvoeren met Azure Container Registry taken
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Quickstart: Een containerinstallatiekopie bouwen en uitvoeren met Azure Container Registry-taken
 
-In deze Quick Start gebruikt u Azure Container Registry opdrachten voor taken om snel een docker-container installatie kopie in azure te bouwen, te pushen en uit te voeren, waarin wordt weer gegeven hoe u de ontwikkelings cyclus voor ' Inner-loop ' kunt overzetten naar de Cloud. [ACR-taken][container-registry-tasks-overview] is een reeks functies in azure container Registry die u helpen bij het beheren en wijzigen van container installatie kopieën in de levens cyclus van de container. 
+In deze snelstart gebruikt u opdrachten voor Azure Container Registry-taken om snel een Docker-containerinstallatiekopie in de systeemeigen modus in Azure te bouwen, te pushen en uit te voeren en wordt beschreven hoe u uw interne ontwikkelingscyclus kunt offloaden naar de cloud. [ACR-taken][container-registry-tasks-overview] is een reeks functies in Azure Container Registry die u helpen bij het beheren en wijzigen van containerinstallatiekopieën gedurende de levenscyclus van de container. 
 
-Nadat u deze Snelstartgids hebt bekeken, kunt u meer geavanceerde functies van ACR-taken verkennen. Met ACR-taken kunnen installatie kopieën worden geautomatiseerd op basis van code doorvoer of basis installatie kopie-updates of meerdere containers parallel, onder andere scenario's, testen. 
+Na deze snelstart kunt u meer geavanceerde functies van ACR-taken verkennen. Met ACR-taken kunnen onder meer installatiekopieën worden geautomatiseerd op basis van codedoorvoeringen of updates van basisinstallatiekopieën of meerdere containers parallel worden getest. 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account][azure-account] aan voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u het lokaal wilt gebruiken, wordt versie 2.0.58 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli-install].
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om deze Quick Start uit te voeren. Als u deze lokaal wilt gebruiken, wordt versie 2.0.58 of hoger aanbevolen. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Als u nog geen container register hebt, maakt u eerst een resource groep met de opdracht [AZ Group Create][az-group-create] . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
+Als u nog geen containerregister hebt, maakt u eerst een nieuwe resourcegroep met de opdracht [az group create][az-group-create]. Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
 In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt op de locatie *VS - oost*.
 
@@ -34,23 +34,23 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-Maak een container register met de opdracht [AZ ACR Create][az-acr-create] . De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voor beeld wordt *myContainerRegistry008* gebruikt. Werk deze waarde bij naar een unieke waarde.
+Maak een containerregister met de opdracht [az acr create][az-acr-create]. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voorbeeld wordt *myContainerRegistry008* gebruikt. Werk deze waarde bij naar een unieke waarde.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-In dit voor beeld wordt een *basis* register gemaakt, een kosten geoptimaliseerde optie voor ontwikkel aars die over Azure container Registry leren. Zie [Azure Container Registry-SKU's][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
+In dit voorbeeld maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [Servicelagen voor Container Registry][container-registry-skus] voor meer informatie over de beschikbare servicelagen.
 
-## <a name="build-an-image-from-a-dockerfile"></a>Een installatie kopie bouwen op basis van een Dockerfile
+## <a name="build-an-image-from-a-dockerfile"></a>Een installatiekopie bouwen op basis van een Dockerfile
 
-Gebruik nu Azure Container Registry om een installatie kopie te maken. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met de volgende inhoud. Dit is een eenvoudig voor beeld van het bouwen van een Linux-container installatie kopie, maar u kunt uw eigen standaard Dockerfile maken en installatie kopieën bouwen voor andere platforms. De opdracht voorbeelden in dit artikel zijn ingedeeld voor de bash-shell.
+Gebruik nu Azure Container Registry om een installatiekopie te maken. Maak eerst een werkmap en maak vervolgens een Dockerfile met de naam *Dockerfile* met de volgende inhoud. Dit is een eenvoudig voorbeeld van het bouwen van een Linux-containerinstallatiekopie, maar u kunt uw eigen standaard Dockerfile maken en installatiekopieën bouwen voor andere platforms. De opdrachtvoorbeelden in dit artikel zijn geformatteerd voor de Bash-shell.
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Voer de opdracht [AZ ACR build][az-acr-build] uit om de installatie kopie te bouwen. Wanneer de installatie kopie is gemaakt, wordt deze naar het REGI ster gepusht. In het volgende voor beeld wordt `sample/hello-world:v1` de installatie kopie gepusht. `.` Aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
+Voer de opdracht [az acr build][az-acr-build] uit om de installatiekopie te bouwen. Wanneer de installatiekopie is gemaakt, wordt deze naar het register gepusht. In het volgende voorbeeld wordt de installatiekopie van `sample/hello-world:v1` gepusht. Met de `.` aan het einde van de opdracht wordt de locatie van de Dockerfile ingesteld, in dit geval de huidige map.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \
@@ -58,7 +58,7 @@ az acr build --image sample/hello-world:v1 \
   --file Dockerfile . 
 ```
 
-Uitvoer van een geslaagde build en push lijkt op het volgende:
+De uitvoer van geslaagd bouwen en pushen is vergelijkbaar met de volgende:
 
 ```console
 Packing source code into tar to upload...
@@ -110,18 +110,18 @@ v1: digest: sha256:92c7f9c92844bbbb5d0a101b22f7c2a7949e40f8ea90c8b3bc396879d95e8
 Run ID: ca8 was successful after 10s
 ```
 
-## <a name="run-the-image"></a>De installatie kopie uitvoeren
+## <a name="run-the-image"></a>De installatiekopie uitvoeren
 
-Voer nu snel de installatie kopie uit die u hebt gemaakt en gepusht naar het REGI ster. Hier gebruikt u [AZ ACR run][az-acr-run] om de container opdracht uit te voeren. In de ontwikkel werk stroom van de container kan dit een validatie stap zijn voordat u de installatie kopie implementeert, of u kunt de opdracht in een [yaml-bestand met meerdere stappen][container-registry-tasks-multi-step]toevoegen. 
+Voer nu snel de installatiekopie die u hebt gemaakt en naar het register hebt gepusht uit. Hier gebruikt u [az acr run][az-acr-run] om de containeropdracht uit te voeren. In de ontwikkelwerkstroom van de container kan dit een validatiestap zijn voordat u de installatiekopie implementeert. U kunt de opdracht ook opnemen in een [YAML-bestand van meerdere stappen][container-registry-tasks-multi-step]. 
 
-Het volgende voor beeld `$Registry` wordt gebruikt om het REGI ster op te geven waarin u de opdracht uitvoert:
+In het volgende voorbeeld wordt `$Registry` gebruikt om het register op te geven waarin u de opdracht uitvoert:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 \
   --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
 
-Met `cmd` de para meter in dit voor beeld wordt de container in de standaard `cmd` configuratie uitgevoerd `docker run` , maar worden aanvullende `docker` para meters of zelfs andere opdrachten ondersteund.
+Met de parameter `cmd` in dit voorbeeld wordt de container in de standaardconfiguratie uitgevoerd, maar `cmd` biedt ondersteuning voor extra `docker run`-parameters of zelfs andere `docker`-opdrachten.
 
 De uitvoer lijkt op het volgende:
 
@@ -178,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u functies van ACR-taken gebruikt om snel een docker-container installatie kopie in azure te bouwen, te pushen en uit te voeren, zonder een lokale docker-installatie. Ga verder met de zelf studies over Azure Container Registry taken voor meer informatie over het gebruik van ACR-taken voor het automatiseren van installatie kopieën en updates.
+In deze snelstart hebt u functies van ACR-taken gebruikt om snel een Docker-containerinstallatie kopie in Azure te bouwen, te pushen en uit te voeren, zonder een lokale Docker-installatie. Ga verder met de zelfstudies over Azure Container Registry-taken voor meer informatie over het gebruik van ACR-taken voor het automatiseren van installatiekopieën en updates.
 
 > [!div class="nextstepaction"]
-> [Zelf studies over Azure Container Registry taken][container-registry-tutorial-quick-task]
+> [Zelfstudies over Azure Container Registry-taken][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

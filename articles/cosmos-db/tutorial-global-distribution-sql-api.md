@@ -1,34 +1,34 @@
 ---
-title: 'Zelf studie: zelf studie over globale distributie Azure Cosmos DB voor de SQL-API'
-description: "Zelf studie: informatie over het instellen van Azure Cosmos DB globale distributie met behulp van de SQL-API met .net, Java, python en verschillende andere Sdk's"
+title: 'Zelfstudie: Zelfstudie voor het instellen van wereldwijde distributie met Azure Cosmos DB met behulp van de SQL-API'
+description: 'Zelfstudie: Leer hoe u wereldwijde distributie met Azure Cosmos DB kunt instellen met behulp van de SQL-API, met .NET, Java, Python en verschillende andere SDK’s'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 177973cf766a6215453f3062c0fb206961649272
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ee648efde22e6bbef045b9d89b8d016e2e489f20
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80295527"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872975"
 ---
-# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Zelf studie: Azure Cosmos DB globale distributie instellen met behulp van de SQL-API
+# <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Zelfstudie: Wereldwijde distributie van Azure Cosmos DB instellen met behulp van de SQL-API
 
-In dit artikel laten we zien hoe Azure Portal kan worden gebruikt voor het instellen van wereldwijde distributie van Azure DB Cosmos en hoe u daarmee verbinding kunt maken met behulp van de SQL-API.
+In dit artikel laten we zien hoe u de Azure-portal kunt gebruiken voor het instellen van wereldwijde distributie van Azure Cosmos DB en vervolgens verbinding kunt maken met behulp van de SQL-API.
 
 Dit artikel behandelt de volgende taken: 
 
 > [!div class="checklist"]
 > * Wereldwijde distributie configureren met behulp van Azure Portal
-> * Globale distributie met behulp van de [SQL-api's](sql-api-introduction.md) configureren
+> * Wereldwijde distributie configureren met behulp van de [SQL-API's](sql-api-introduction.md)
 
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
-## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a>Verbinding maken met een voorkeursregio met behulp van de SQL-API
+## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> Verbinding maken met een voorkeursregio met behulp van de SQL-API
 
 Om te profiteren van [wereldwijde distributie](distribute-data-globally.md), kunnen clienttoepassingen de geordende voorkeurslijst met regio's opgeven die moet worden gebruikt voor het uitvoeren van documentbewerkingen. Dat kan worden gedaan door het verbindingsbeleid in te stellen. Op basis van de Azure Cosmos DB-accountconfiguratie, de huidige regionale beschikbaarheid en de opgegeven voorkeurslijst wordt het optimale eindpunt door de SQL-SDK gekozen voor het uitvoeren van schrijf- en leesbewerkingen.
 
@@ -78,14 +78,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node. js/java script
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > De URL's voor de eindpunten moeten niet worden beschouwd als constanten met een lange levensduur. De service kan deze op elk gewenst moment bijwerken. De SDK verwerkt deze wijziging automatisch.
 >
 >
 
-Hieronder vindt u een code voorbeeld voor node. js/java script.
+Hieronder ziet u een codevoorbeeld voor Node.js/Javascript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -100,7 +100,7 @@ const client = new CosmosClient{ endpoint, key, connectionPolicy: { preferredLoc
 
 ## <a name="python-sdk"></a>Python-SDK
 
-De volgende code laat zien hoe u voorkeurs locaties kunt instellen met behulp van de python-SDK:
+De volgende code laat zien hoe u een voorkeurslocatie instelt met behulp van de Python SDK:
 
 ```python
 
@@ -110,21 +110,24 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v2-sdk"></a>Java v2 SDK
+## <a name="java-v4-sdk"></a>Java V4 SDK
 
-De volgende code laat zien hoe u voorkeurs locaties kunt instellen met behulp van de Java SDK:
+De volgende code laat zien hoe u een voorkeurslocatie instelt met behulp van de Java SDK:
 
-```java
-ConnectionPolicy policy = new ConnectionPolicy();
-policy.setUsingMultipleWriteLocations(true);
-policy.setPreferredLocations(Arrays.asList("East US", "West US", "Canada Central"));
-AsyncDocumentClient client =
-        new AsyncDocumentClient.Builder()
-                .withMasterKeyOrResourceToken(this.accountKey)
-                .withServiceEndpoint(this.accountEndpoint)
-                .withConnectionPolicy(policy)
-                .build();
-```
+### <a id="java4-preferred-locations"></a>
+#### <a name="async"></a>[Async](#tab/api-async)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
+
+#### <a name="sync"></a>[Sync](#tab/api-sync)
+
+   [Java SDK V4](sql-api-sdk-java-v4.md) (Maven [com.azure::azure-cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
+
+   [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=TutorialGlobalDistributionPreferredLocationSync)]
+
+--- 
 
 ## <a name="rest"></a>REST
 Zodra een databaseaccount in meerdere regio's beschikbaar komt, kunnen clients de beschikbaarheid ervan opvragen door een GET-aanvraag voor de volgende URI uit te voeren.
@@ -167,11 +170,11 @@ Voorbeeld van een antwoord
 
 
 * Alle PUT-, POST- en DELETE-aanvragen moeten verwijzen naar de opgegeven URI voor schrijven
-* Alle haalt en andere alleen-lezen aanvragen (bijvoorbeeld query's) naar een eind punt van de keuze van de client
+* Alle GET-aanvragen en andere alleen-lezen aanvragen (zoals query's) kunnen verwijzen naar elk eindpunt dat de client aangeeft
 
 Schrijfaanvragen naar alleen-lezen regio's mislukken met HTTP-foutcode 403 ('Verboden').
 
-Als de schrijf regio wordt gewijzigd na de eerste detectie fase van de client, mislukt de volgende keer dat er naar de vorige schrijf regio wordt geschreven met de HTTP-fout code 403 ("verboden"). De client moet dan de lijst met regio's opnieuw ophalen om de bijgewerkte schrijfregio te krijgen.
+Als de schrijfregio verandert na de initiële detectiefase van de client, mislukken daaropvolgende schrijfbewerkingen naar de vorige schrijfregio met HTTP-foutcode 403 ('Verboden'). De client moet dan de lijst met regio's opnieuw ophalen om de bijgewerkte schrijfregio te krijgen.
 
 En daarmee is deze zelfstudie voltooid. Informatie over het beheren van de consistentie van uw wereldwijd gerepliceerde account kunt u vinden in [Consistentieniveaus in Azure Cosmos DB](consistency-levels.md). En voor meer informatie over hoe wereldwijde databasereplicatie werkt in Azure Cosmos DB, gaat u naar [Gegevens wereldwijd distribueren met Azure Cosmos DB](distribute-data-globally.md).
 

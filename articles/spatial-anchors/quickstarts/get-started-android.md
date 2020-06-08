@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een Android-app maken'
+title: 'Quickstart: Een Android-app maken'
 description: In deze quickstart leert u een Android-app bouwen met behulp van Spatial Anchors.
 author: craigktreasure
 manager: vriveras
@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0501c8bb1d71c6cff6033fc937cda019c8890056
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3f794d1c70baee07b9ff3ed5d8299cf8ad3bf983
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376457"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652499"
 ---
-# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Snelstartgids: een Android-app maken met behulp van ruimtelijke Azure-ankers
+# <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Android-app maken met Azure Spatial Anchors
 
 In deze quickstart wordt besproken hoe u een Android-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in Java of C++/NDK. Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARCore Android-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
@@ -23,7 +23,7 @@ U leert het volgende:
 
 > [!div class="checklist"]
 > * Een Spatial Anchors-account maken
-> * De Spatial Anchors-account-id en -accountsleutel configureren
+> * Spatial Anchors-account-id en -accountsleutel configureren
 > * Implementeren en uitvoeren op een Android-apparaat
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -32,12 +32,12 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een Windows-of macOS-computer met <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
-  - Als u werkt met Windows, hebt u ook <a href="https://git-scm.com/download/win" target="_blank">Git nodig voor Windows</a> en <a href="https://git-lfs.github.com/">Git LF</a>.
-  - Als u op macOS werkt, kunt u git installeren via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens uit `brew install git` en `brew install git-lfs`uit.
-  - Als u het NDK-voor beeld wilt maken, moet u ook de Hulpprogram Ma's voor NDK en CMake 3,6 of hoger installeren in Android Studio.
-- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerde</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
-  - Er zijn mogelijk extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Zie [hier](https://developer.android.com/studio/run/device.html) voor meer informatie en instructies.
+- Een Windows- of macOS-machine met <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.4 +</a>.
+  - Als u werkt met Windows, hebt u ook <a href="https://git-scm.com/download/win" target="_blank">Git voor Windows</a> en <a href="https://git-lfs.github.com/">Git LFS</a> nodig.
+  - Als u werkt met macOS, kunt u Git downloaden via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git` en `brew install git-lfs` uit.
+  - Om het NDK-voorbeeld te bouwen, moet u ook de NDK en CMake 3.6 of hoger SDK-hulpprogramma’s in Android Studio installeren.
+- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerd</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
+  - Er zijn mogelijk extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Kijk [hier](https://developer.android.com/studio/run/device.html) voor meer informatie en instructies.
 - Uw app moet gericht zijn op ARCore **1.11.0**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -52,9 +52,9 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-Down `arcore_c_api.h` load [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) en plaats het in `Android\NDK\libraries\include`.
+Download [hier](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h) `arcore_c_api.h` en plaats het in `Android\NDK\libraries\include`.
 
-Initialiseer vanuit de zojuist gekloonde opslag plaats submodules door de volgende opdracht uit te voeren:
+Initialiseer submodules vanuit de zojuist gekloonde opslagplaats, door de volgende opdracht uit te voeren:
 
 ```console
 git submodule update --init --recursive
@@ -66,7 +66,7 @@ Open Android Studio.
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
-Selecteer **Een bestaand Android Studio-project openen** en selecteer het project dat zich bevindt in `Android/Java/`.
+Selecteer **Bestaand Android Studio-project openen** en selecteer het project dat zich bevindt in `Android/Java/`.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -76,7 +76,7 @@ Selecteer **Een bestaand Android Studio-project openen** en selecteer het projec
 
 ## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
-De volgende stap is het configureren van de app voor het gebruik van uw account-id en de account sleutel. U hebt deze in een tekst editor gekopieerd bij [het instellen van de bron voor ruimtelijke ankers](#create-a-spatial-anchors-resource).
+De volgende stap is om de app te configureren om uw account-id en accountsleutel te gebruiken. U hebt ze naar een teksteditor gekopieerd bij het [instellen van de Spatial Anchors-resource](#create-a-spatial-anchors-resource).
 
 # <a name="java"></a>[Java](#tab/openproject-java)
 
@@ -84,7 +84,9 @@ Open `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnc
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
+Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+
+Zoek `public AzureSpatialAnchorsManager(Session arCoreSession)` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `spatialAnchorsSession.getConfiguration().setAccountDomain("MyAccountDomain");`.
 
 # <a name="ndk"></a>[NDK](#tab/openproject-ndk)
 
@@ -92,7 +94,9 @@ Open `Android/NDK/app/src/main/cpp/AzureSpatialAnchorsApplication.cpp`.
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
+Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+
+Zoek `AzureSpatialAnchorsApplication::StartCloudSession()` en voeg de volgende regel toe waarbij u uw accountdomein van eerder gebruikt: `m_cloudSession->Configuration()->AccountDomain("MyAccountDomain");`.
 
 ---
 
@@ -117,4 +121,4 @@ Stop de app door **Stop** te selecteren in de werkbalk van Android Studio.
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelfstudie: Spatial Anchors met meerdere apparaten delen](../tutorials/tutorial-share-anchors-across-devices.md)

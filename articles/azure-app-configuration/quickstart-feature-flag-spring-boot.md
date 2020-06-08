@@ -1,63 +1,63 @@
 ---
-title: Quick start voor het toevoegen van functie vlaggen voor een Spring boot met Azure-app configuratie
-description: Functie vlaggen toevoegen aan veer boot-apps en deze beheren met Azure-app configuratie
+title: Snelstart voor het toevoegen van functievlaggen aan Spring Boot met Azure App Configuration
+description: Functievlaggen toevoegen aan Spring Boot-apps en deze beheren met Azure App Configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: cc040fe2c9e0686844c8609b9682d757595b9dbf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
-ms.translationtype: MT
+ms.openlocfilehash: a0d3c23f8f53b8ddfbd3fbd1cb1744a47664ce08
+ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981065"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83774024"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstartgids: functie vlaggen toevoegen aan een Spring boot-app
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Quickstart: Functievlaggen toevoegen aan een Spring Boot-app
 
-In deze Snelstartgids neemt u Azure-app configuratie op in een Spring boot-web-app om een end-to-end-implementatie van functie beheer te maken. U kunt de app Configuration-service gebruiken om al uw functie vlaggen centraal op te slaan en hun status te bepalen.
+In deze snelstart neemt u Azure App Configuration op in een Spring Boot-web-app om een end-to-end-implementatie van functiebeheer te maken. U kunt de App Configuration-service gebruiken om al uw functievlaggen centraal op te slaan en hun status te bepalen.
 
-De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met uitgebreide ondersteuning voor functie vlaggen. Deze bibliotheken hebben **geen** afhankelijkheid van Azure-bibliotheken. Ze kunnen naadloos worden geïntegreerd met de configuratie van apps via de configuratie provider voor veer boot.
+De Spring Boot-functiebeheerbibliotheken breiden het framework uit met uitgebreide ondersteuning voor functievlaggen. Deze bibliotheken zijn **niet** afhankelijk van Azure-bibliotheken. Ze kunnen naadloos worden geïntegreerd met App Configuration via de configuratieprovider voor Spring Boot.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-* Een ondersteunde [SDK voor Java Development Kit](https://docs.microsoft.com/java/azure/jdk) met versie 8.
-* [Apache Maven](https://maven.apache.org/download.cgi) -versie 3,0 of hoger.
+* Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+* Een ondersteunde [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) met versie 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) versie 3.0 of hoger.
 
-## <a name="create-an-app-configuration-instance"></a>Een app-configuratie-exemplaar maken
+## <a name="create-an-app-configuration-instance"></a>Een App Configuration-exemplaar maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **feature Manager** > **+ toevoegen** om een functie vlag met de `Beta`naam toe te voegen.
+6. Selecteer **Functiebeheer** >  **+ Toevoegen** om een functievlag met de naam `Beta` toe te voegen.
 
     > [!div class="mx-imgBorder"]
-    > ![Functie vlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)
+    > ![Functievlag met de naam Beta inschakelen](media/add-beta-feature-flag.png)
 
-    `label` Zorg ervoor dat u dit nu niet opgeeft.
+    Laat `label` voor dit moment niet-gedefinieerd.
 
 ## <a name="create-a-spring-boot-app"></a>Een Spring Boot-app maken
 
-Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw Spring boot-project te maken.
+Gebruik de [Spring Initializr](https://start.spring.io/) om een nieuw Spring Boot-project te maken.
 
 1. Blader naar <https://start.spring.io/>.
 
 1. Geef de volgende opties op:
 
    * Genereer een **Maven**-project met **Java**.
-   * Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
-   * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.  In dit artikel `com.example` worden `demo`en gebruikt.
-   * Voeg de **lente** webafhankelijkheid toe.
+   * Geef een **Spring Boot**-versie op van 2.0 of hoger.
+   * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.  In dit artikel worden `com.example` en `demo` gebruikt.
+   * Voeg de **Spring Web**-afhankelijkheid toe.
 
-1. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Als u hierom wordt gevraagd, moet u het project downloaden naar uw lokale computer.
+1. Nadat u de vorige opties hebt opgegeven, selecteert u **Project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar uw lokale computer.
 
-## <a name="add-feature-management"></a>Functie beheer toevoegen
+## <a name="add-feature-management"></a>Functiebeheer toevoegen
 
-1. Nadat u de bestanden op het lokale systeem hebt uitgepakt, kunt u de Spring boot-toepassing bewerken. Zoek *pom. XML* in de hoofdmap van uw app.
+1. Nadat u de bestanden op uw lokale systeem hebt uitgepakt, is uw Spring Boot-toepassing gereed om te bewerken. Zoek *pom.xml* in de hoofdmap van uw app op.
 
-1. Open het bestand *pom. XML* in een tekst editor en voeg het volgende toe aan de lijst `<dependencies>`met:
+1. Open het bestand *pom.xml* in een teksteditor en voeg het volgende toe aan de lijst met `<dependencies>`:
 
-    **Lente Cloud 1.1. x**
+    **Spring Cloud 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     </dependency>
     ```
 
-    **Lente Cloud 1.2. x**
+    **Spring Cloud 1.2.x**
 
     ```xml
     <dependency>
@@ -96,19 +96,19 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     ```
 
 > [!Note]
-> Er is een beheer bibliotheek zonder webonderdelen die geen afhankelijkheid van een web heeft. Raadpleeg de [documentatie](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) van github voor verschillen.
+> Er is een functiebeheerbibliotheek zonder webonderdelen die niet afhankelijk van Spring Web is. Raadpleeg de [documentatie](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) van GitHub voor verschillen.
 
-## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
+## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een App Configuration-archief
 
-1. Ga naar de `resources` map van uw app en open `bootstrap.properties`.  Als het bestand niet bestaat, maakt u het. Voeg de volgende regel toe aan het bestand.
+1. Ga naar de map `resources` van uw app en open `bootstrap.properties`.  Als het bestand niet bestaat, maakt u het. Voeg de volgende regel aan het bestand toe.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Selecteer in de app-configuratie portal voor uw configuratie archief `Access keys` de optie uit de zijbalk. Selecteer het tabblad alleen-lezen sleutels. Kopieer de waarde van de primaire connection string.
+1. Selecteer in de App Configuration-portal voor uw configuratiearchief `Access keys` in de zijbalk. Selecteer het tabblad Alleen-lezensleutels. Kopieer de waarde van de primaire verbindingsreeks.
 
-1. Voeg de primaire connection string als een omgevings variabele toe met behulp van de naam `APP_CONFIGURATION_CONNECTION_STRING`van de variabele.
+1. Voeg de primaire verbindingsreeks als een omgevingsvariabele toe met de variabelenaam `APP_CONFIGURATION_CONNECTION_STRING`.
 
 1. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
 
@@ -178,13 +178,13 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta").block());
+            model.addAttribute("Beta", featureManager.isEnabledAsync("featureManagement.Beta").block());
             return "welcome";
         }
     }
     ```
 
-1. Maak een nieuw HTML-bestand met de naam *Welcome. html* in de map Sjablonen van uw app.
+1. Maak een nieuw HTML-bestand met de naam *welcome.html* in de sjablonenmap van uw app.
 
     ```html
     <!DOCTYPE html>
@@ -241,7 +241,7 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
     ```
 
-1. Maak een nieuwe map met de naam `static` CSS onder en daarin een nieuw CSS-bestand met de naam *Main. CSS*.
+1. Maak een nieuwe map met de naam CSS onder `static` en in deze map een nieuw CSS-bestand met de naam *Main.CSS*.
 
     ```css
     html {
@@ -283,11 +283,11 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
     mvn spring-boot:run
     ```
 
-1. Open een browser venster en ga naar de URL: `http://localhost:8080/welcome`.
+1. Open een browservenster en ga naar de URL: `http://localhost:8080/welcome`.
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Selecteer in de portal voor app-configuratie **functie beheer**en wijzig de status van de **bèta** sleutel in **op**:
+1. Selecteer in de App Configuration-portal de optie **Functiebeheer** en wijzig de status van de **Beta**-sleutel in **Aan**:
 
     | Sleutel | Status |
     |---|---|
@@ -303,8 +303,8 @@ Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt om de functies in een Spring boot-web-app te beheren via de [beheer bibliotheken voor onderdelen](https://go.microsoft.com/fwlink/?linkid=2074664).
+In deze snelstart hebt u een nieuw App Configuration-archief gemaakt en gebruikt om de functies in een Spring Boot-web-app te beheren via de [Functiebeheerbibliotheken](https://go.microsoft.com/fwlink/?linkid=2074664).
 
-* Meer informatie over [functie beheer](./concept-feature-management.md).
-* [Functie vlaggen beheren](./manage-feature-flags.md).
-* [Gebruik functie vlaggen in een lente boot core-app](./use-feature-flags-spring-boot.md).
+* Meer informatie over [functiebeheer](./concept-feature-management.md).
+* [Functievlaggen beheren](./manage-feature-flags.md).
+* [Functievlaggen gebruiken in een Spring Boot Core-app](./use-feature-flags-spring-boot.md).

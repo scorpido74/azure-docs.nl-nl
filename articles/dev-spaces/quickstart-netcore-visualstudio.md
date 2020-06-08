@@ -1,82 +1,82 @@
 ---
-title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core'
+title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio en .NET Core'
 services: azure-dev-spaces
 ms.date: 11/13/2019
 ms.topic: quickstart
-description: In deze Quick Start leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen en snel een .NET-kern toepassing te herhalen in azure Kubernetes service
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+description: In deze quickstart ziet u hoe u Azure Dev Spaces en Visual Studio gebruikt om fouten op te sporen en snel een .NET Core-toepassing te herhalen in Azure Kubernetes Service
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166016"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872141"
 ---
-# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio & .NET core-Azure dev Spaces
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen op Kubernetes: Visual Studio en .NET Core - Azure Dev Spaces
 
 In deze handleiding leert u het volgende:
 
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
 - Iteratief code ontwikkelen in containers met Visual Studio.
-- Fout opsporing in code die wordt uitgevoerd in uw cluster met Visual Studio.
+- Fouten opsporen in code die in uw cluster wordt uitgevoerd met Visual Studio.
 
-Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
-- [Java-en Visual Studio code](quickstart-java.md)
-- [Node. js en Visual Studio code](quickstart-nodejs.md)
-- [.NET core en Visual Studio code](quickstart-netcore.md)
+Met Azure Dev Spaces kunt u ook fouten opsporen en herhalen met:
+- [Java en Visual Studio Code](quickstart-java.md)
+- [Node.js en Microsoft Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core en Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen account hebt, kunt u [een gratis account aanmaken](https://azure.microsoft.com/free).
-- Visual Studio 2019 op Windows met de werk belasting Azure Development geïnstalleerd. U kunt Visual Studio 2017 ook gebruiken in Windows met de werk belasting voor Web Development en [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools) geïnstalleerd. Als Visual Studio niet is geïnstalleerd, kunt u het [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)downloaden.
+- Visual Studio 2019 in Windows met de Azure Development-workload geïnstalleerd. Als Visual Studio nog niet is geïnstalleerd, downloadt u het [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Een upgrade maken van een Azure Kubernetes Service-cluster
 
-U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een cluster maken:
+U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Om een cluster te maken:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)
-1. Selecteer *+ een resource maken > Kubernetes-service*. 
-1. Voer het _abonnement_, de _resource groep_, de _Kubernetes-cluster naam_, de _regio_, de _Kubernetes-versie_en het voor voegsel van de _DNS-naam_in.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com)
+1. Kies *En een resource maken > Kubernetes-service*. 
+1. Voer het _Abonnement_, de _resourcegroep_, _Kubernetes-clusternaam_, _Regio_, _Kubernetes-versie_en _DNS-naamvoorvoegsel_ in.
 
-    ![AKS maken in de Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
+    ![AKS maken in de Azure-portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klik op *Controleren + maken*.
-1. Klik op *maken*.
+1. Klik op *Create*.
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure Dev Spaces instellen op uw AKS-cluster inschakelen
 
-Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig *dev Spaces* in *Ja* en klik op *Opslaan*.
+Navigeer naar uw AKS-cluster in de Azure-portal en klik op *Dev Spaces*. wijzig *Dev Spaces gebruiken* naar *Ja* en klik op *Opslaan*.
 
-![Ontwikkel ruimten in de Azure Portal inschakelen](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+![Dev Spaces in de Azure-portal inschakelen](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
-## <a name="create-a-new-aspnet-web-app"></a>Een nieuwe ASP.NET-Web-app maken
+## <a name="create-a-new-aspnet-web-app"></a>Een nieuwe ASP.NET-web-app maken
 
 1. Open Visual Studio.
 1. Een nieuw project maken.
-1. Kies *ASP.net core webtoepassing* en klik op *volgende*.
-1. Geef uw project *webfrontend* een naam en klik op *maken*.
-1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
-1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
-1. Klik op *maken*.
+1. Kies *ASP.NET Core-webtoepassing* en klik op *Volgende*.
+1. Geef uw project de naam *webfrontend* en klik op *Maken*.
+1. Als hier om wordt gevraagd, kies *Webtoepassing (Model-View-Controller)* voor het sjabloon.
+1. Selecteer *.NET Core* en *ASP.NET Core 2.1* bovenaan.
+1. Klik op *Create*.
 
-## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
+## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkelruimte
 
-Selecteer in uw project **Azure dev Spaces** in de vervolg keuzelijst start instellingen, zoals hieronder wordt weer gegeven.
+In uw project, selecteert u **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals hieronder wordt weergegeven.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-Selecteer uw *abonnement* en *Azure Kubernetes-cluster*in het dialoog venster Azure dev Spaces. Houd de *ruimte* ingesteld op *standaard* en schakel het selectie vakje *openbaar toegankelijk* in. Klik op *OK*.
+Selecteer in het dialoogvenster Azure Dev Spaces uw *Abonnement* en *Azure Kubernetes-cluster*. Laat *Ruimte* ingesteld op *Standaard* en schakel het selectievakje *Openbaar toegankelijk* in. Klik op *OK*.
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
-Met dit proces wordt uw service geïmplementeerd naar de *standaard* ontwikkelaars ruimte met een openbaar toegankelijke URL. Als u een cluster kiest dat niet is geconfigureerd om te werken met Azure Dev Spaces, ziet u een bericht waarin wordt gevraagd of u dit wilt configureren. Klik op *OK*.
+Met dit proces wordt uw service geïmplementeerd naar de *standaard* ontwikkelruimte met een openbaar toegankelijke URL. Als u een cluster kiest dat niet is geconfigureerd om te werken met Azure Dev Spaces, ziet u een bericht waarin wordt gevraagd of u dit wilt configureren. Klik op *OK*.
 
 ![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-De open bare URL voor de service die wordt uitgevoerd in de *standaard* -dev-ruimte wordt weer gegeven in het venster *uitvoer* :
+De openbare URL voor de service die wordt uitgevoerd in de *standaard* ontwikkelruimte wordt weergegeven in het venster *Uitvoer*:
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -94,37 +94,37 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-In het bovenstaande voor beeld is `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`de open bare URL. 
+In het bovenstaande voorbeeld is de openbare URL `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`. 
 
-Selecteer **fout** opsporing en vervolgens **op fout opsporing**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de open bare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de open bare URL van uw service in een browser en communiceert u met de service die wordt uitgevoerd in uw dev-ruimte.
+Selecteer **Fouten opsporen** en vervolgens **Fouten opsporen starten**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de openbare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de openbare URL van uw service in een browser en communiceert u met de service die wordt uitgevoerd in uw ontwikkelruimte.
 
-Dit proces heeft mogelijk open bare toegang tot uw service uitgeschakeld. Als u open bare toegang wilt inschakelen, kunt u de [ingangs waarde bijwerken in de *waarden. yaml*][ingress-update].
+Dit proces heeft mogelijk openbare toegang tot uw service uitgeschakeld. Als u openbare toegang wilt inschakelen, kunt u de [inkomende waarden bijwerken in de *values.yaml*][ingress-update].
 
 ## <a name="update-code"></a>Code bijwerken
 
-Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Regel 20 in wijzigen `Controllers/HomeController.cs` in:
+Als Visual Studio nog steeds is verbonden met uw ontwikkelruimte, klikt u op de knop stoppen. Wijzig regel 20 in `Controllers/HomeController.cs` naar:
     
 ```csharp
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Sla de wijzigingen op en selecteer **fout** opsporing en vervolgens **op fout opsporing starten**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de open bare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de open bare URL van uw service in een browser en klikt u op *about*. Houd er rekening mee dat het bijgewerkte bericht wordt weer gegeven.
+Sla de wijzigingen op en selecteer **Fouten opsporen** en vervolgens **Fouten opsporen starten**. Na een paar seconden wordt uw service gestart en opent Visual Studio een browser met de openbare URL van de service. Als een browser niet automatisch wordt geopend, navigeert u naar de openbare URL van uw service in een browser en klikt u op *Over*. Houd er rekening mee dat het bijgewerkte bericht wordt weergegeven.
 
-In plaats van een nieuwe container installatie kopie opnieuw te maken en te implementeren elke keer dat er code bewerkingen worden uitgevoerd, compileert Azure dev Spaces incrementeel code binnen de bestaande container om een snellere bewerking/debug-lus te bieden.
+In plaats van telkens als codewijzigingen zijn aangebracht een nieuwe containerinstallatiekopie opnieuw te bouwen en opnieuw te implementeren, hercompileert Azure Dev Spaces incrementeel code binnen de bestaande container voor een snellere bewerkings-/foutopsporingslus.
 
-## <a name="setting-and-using-breakpoints-for-debugging"></a>Onderbrekings punten instellen en gebruiken voor fout opsporing
+## <a name="setting-and-using-breakpoints-for-debugging"></a>Onderbrekingspunten instellen en gebruiken voor fouten opsporen
 
-Als Visual Studio nog steeds is verbonden met uw dev-ruimte, klikt u op de knop stoppen. Open `Controllers/HomeController.cs` en klik ergens op regel 20 om de cursor daar te plaatsen. Stel een onderbrekings punt in op *F9* of klik op *debug* en vervolgens op *onderbrekings punt*. Als u de service in de modus voor fout opsporing in uw ruimte voor ontwikkel aars wilt starten, drukt u op *F5* of klikt u op *fout* *opsporing starten*.
+Als Visual Studio nog steeds is verbonden met uw ontwikkelruimte, klikt u op de knop stoppen. Open `Controllers/HomeController.cs` en klik ergens op regel 20 om de cursor daar te plaatsen. Als u een onderbrekingspunt wilt instellen, klik op *F9* of *Fouten opsporen* en vervolgens *Onderbrekingspunt inschakelen*. Als u de service in de modus voor fouten opsporen in uw ontwikkelruimte, drukt u op *F5* of klikt u op *Fouten opsporen* en dan *Fouten opsporen starten*.
 
-Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven. Ga terug naar Visual Studio en houd er rekening mee dat regel 20 is gemarkeerd. Het onderbrekings punt dat u hebt ingesteld, heeft de service op regel 20 onderbroken. Als u de service wilt hervatten, druk op *F5* of klik op *debug* en vervolgens op *door gaan*. Ga terug naar uw browser en u ziet dat het bericht nu wordt weer gegeven.
+Open uw service in een browser en let op dat er geen bericht wordt weergegeven. Ga terug naar Visual Studio en houd er rekening mee dat regel 20 is gemarkeerd. Het onderbrekingspunt dat u hebt ingesteld, heeft de service op regel 20 onderbroken. Als u de service wilt hervatten, drukt u op *F5* of klikt u op *Fouten opsporen* vervolgens *Doorgaan*. Ga terug naar uw browser en u ziet dat het bericht nu wordt weergegeven.
 
-Tijdens het uitvoeren van uw service in Kubernetes met een fout opsporingsprogramma, hebt u volledige toegang tot fout opsporingsgegevens, zoals de aanroep stack, lokale variabelen en uitzonderings gegevens.
+Tijdens het uitvoeren van uw service in Kubernetes met een foutopsporingsprogramma, hebt u volledige toegang tot foutopsporingsgegevens, zoals de aanroepstack, lokale variabelen en uitzonderingsgegevens.
 
-Verwijder het onderbrekings punt door de cursor in regel 20 `Controllers/HomeController.cs` in te plaatsen en op *F9 te drukken*.
+Verwijder het onderbrekingspunt door de cursor op regel 20 in `Controllers/HomeController.cs` te plaatsen en op *F9* te klikken.
 
 ## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
 
-Navigeer naar uw resource groep in de Azure Portal en klik op *resource groep verwijderen*. U kunt ook de opdracht [AZ AKS delete](/cli/azure/aks#az-aks-delete) gebruiken:
+Navigeer naar uw resourcegroep in de Azure-portal en klik op *Resourcegroep verwijderen*. U kunt ook de opdracht [az aks delete](/cli/azure/aks#az-aks-delete) gebruiken:
 
 ```azurecli
 az group delete --name MyResourceGroup --yes --no-wait

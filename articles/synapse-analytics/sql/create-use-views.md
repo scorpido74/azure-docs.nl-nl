@@ -1,38 +1,35 @@
 ---
-title: Weer gaven maken en gebruiken in SQL op aanvraag (preview)
-description: In deze sectie leert u hoe u weer gaven maakt en gebruikt om query's op aanvraag (preview) in SQL te laten teruglopen. Met weer gaven kunt u deze query's opnieuw gebruiken. Er zijn ook weer gaven nodig als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
+title: Weergaven maken en gebruiken in SQL on-demand (preview)
+description: In deze sectie leert u hoe u weergaven kunt maken en gebruiken in SQL on-demand-query’s (preview). Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met SQL on-demand.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ca60b7c12ec7e7a5e04202e377c345055ce1090c
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424536"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83736004"
 ---
-# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Weer gaven maken en gebruiken in SQL op aanvraag (preview) met behulp van Azure Synapse Analytics
+# <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Weergaven maken en gebruiken in SQL on-demand (preview) met behulp van Azure Synapse Analytics
 
-In deze sectie leert u hoe u weer gaven maakt en gebruikt om query's op aanvraag (preview) in SQL te laten teruglopen. Met weer gaven kunt u deze query's opnieuw gebruiken. Er zijn ook weer gaven nodig als u hulpprogram ma's, zoals Power BI, wilt gebruiken in combi natie met SQL op aanvraag.
+In deze sectie leert u hoe u weergaven kunt maken en gebruiken in SQL on-demand-query’s (preview). Weergaven stellen u in staat deze query's opnieuw te gebruiken. Weergaven zijn ook nodig als u hulpprogramma’s, zoals Power BI, wilt gebruiken samen met SQL on-demand.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap is om de onderstaande artikelen te controleren en te controleren of u voldoet aan de vereisten voor het maken en gebruiken van SQL on-demand-weer gaven:
-
-- [Eerste keer instellen](query-data-storage.md#first-time-setup)
-- [Vereisten](query-data-storage.md#prerequisites)
+De eerste stap bestaat uit het maken van een database waar de weergave wordt gemaakt, en het initialiseren van de objecten die nodig zijn voor verificatie in Azure Storage door [setup script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren voor deze database. Alle query's in dit artikel worden uitgevoerd op uw voorbeelddatabase.
 
 ## <a name="create-a-view"></a>Een weergave maken
 
-U kunt weer gaven op dezelfde manier maken als normale SQL Server weergaven. De onderstaande query maakt weer gave die het bestand *populatie. CSV* leest.
+U kunt weergaven op dezelfde manier maken als normale SQL Server-weergaven. Met de volgende query wordt een weergave gemaakt die het *population.csv*-bestand leest.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
 
 ```sql
 USE [mydbname];
@@ -44,8 +41,9 @@ GO
 CREATE VIEW populationView AS
 SELECT * 
 FROM OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/population.csv',
-         FORMAT = 'CSV', 
+        BULK 'csv/population/population.csv',
+        DATA_SOURCE = 'SqlOnDemandDemo',
+        FORMAT = 'CSV', 
         FIELDTERMINATOR =',', 
         ROWTERMINATOR = '\n'
     )
@@ -57,14 +55,27 @@ WITH (
 ) AS [r];
 ```
 
-## <a name="use-a-view"></a>Een weer gave gebruiken
+De weergave in dit voorbeeld maakt gebruik van de functie `OPENROWSET`. Deze functie gebruikt het absolute pad naar de onderliggende bestanden. Als u `EXTERNAL DATA SOURCE` hebt met een basis-URL van uw opslag, kunt u `OPENROWSET` gebruiken met `DATA_SOURCE` en een relatief bestandspad:
 
-U kunt weer gaven in uw query's op dezelfde manier gebruiken als bij het gebruik van weer gaven in SQL Server query's.
+```
+CREATE VIEW TaxiView
+AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
+FROM
+    OPENROWSET(
+        BULK 'parquet/taxi/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT='PARQUET'
+    ) AS nyc
+```
 
-Met de volgende query wordt gedemonstreerd met behulp van de *population_csve* weer gave die u in [een weer gave maken](#create-a-view)hebt gemaakt. Het retourneert land namen met hun populatie in 2019 in aflopende volg orde.
+## <a name="use-a-view"></a>Een weergave gebruiken
+
+U kunt weergaven in uw query's op dezelfde manier gebruiken als u weergaven in SQL Server-query's gebruikt.
+
+Met de volgende query demonstreert het gebruik van de weergave *population_csv* die we hebben gemaakt bij [Een weergave maken](#create-a-view). Deze tabel retourneert de namen van landen/regio's met hun populatie in 2019 in aflopende volgorde.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, bijvoorbeeld [mydbname], zodat u de data base gebruikt die u hebt gemaakt. Als u nog geen data base hebt gemaakt, lees dan [eerst de installatie](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
 
 ```sql
 USE [mydbname];
@@ -81,4 +92,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg voor meer informatie over het uitvoeren van een query op verschillende bestands typen de artikelen [query ENKELVOUDIG CSV-bestand](query-single-csv-file.md), [query uitvoeren op Parquet-bestanden](query-parquet-files.md)en JSON- [bestanden opvragen](query-json-files.md) .
+Raadpleeg voor informatie over het uitvoeren van een query op verschillende bestandstypen de artikelen [Query's uitvoeren op één CSV-bestand](query-single-csv-file.md), [Query uitvoeren op Parquet-bestanden](query-parquet-files.md)en [Query's uitvoeren op JSON-bestanden](query-json-files.md).

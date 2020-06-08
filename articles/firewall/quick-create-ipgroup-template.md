@@ -1,90 +1,88 @@
 ---
-title: 'Snelstartgids: een Azure Firewall en IP-groepen maken-Resource Manager-sjabloon'
-description: Meer informatie over het gebruik van een resource manager-sjabloon om een Azure Firewall en IP-groepen te maken.
+title: 'Quickstart: Een Azure-firewall en IP-groepen maken - Resource Manager-sjabloon'
+description: Ontdek hoe u met een Resource Manager-sjabloon een Azure-firewall en IP-groepen maakt.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 53e5bf4f770ce986af2f3572bd6c1ef4cd9e3c2b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605236"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680556"
 ---
-# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Snelstartgids: een Azure Firewall en IP-groepen maken-Resource Manager-sjabloon
+# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Quickstart: Een Azure-firewall en IP-groepen maken - Resource Manager-sjabloon
 
-In deze Quick Start gebruikt u een resource manager-sjabloon om een Azure Firewall te implementeren met voor beeld-IP-groepen die worden gebruikt in een netwerk regel en toepassings regel.
-
-Een IP-groep is een resource op het hoogste niveau waarmee u IP-adressen, bereiken en subnetten kunt definiëren en groeperen in één object. Dit is handig voor het beheren van IP-adressen in Azure Firewall-regels. U kunt de IP-adressen hand matig invoeren of importeren uit een bestand.
+In deze quickstart gebruikt u een Resource Manager-sjabloon om een Azure-firewall te implementeren met IP-voorbeeldgroepen die worden gebruikt in een netwerkregel en toepassingsregel. Een IP-groep is een resource op het hoogste niveau waarmee u IP-adressen, bereiken en subnetten kunt definiëren en groeperen in één object. Dit is handig voor het beheren van IP-adressen in Azure Firewall-regels. U kunt de IP-adressen handmatig invoeren of ze importeren uit een bestand.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-an-azure-firewall-and-ip-groups"></a>Een Azure Firewall en IP-groepen maken
+## <a name="create-an-azure-firewall-and-ip-groups"></a>Een Azure-firewall en IP-groepen maken
 
-Met deze sjabloon maakt u een Azure Firewall en IP-groepen, samen met de benodigde resources ter ondersteuning van de Azure Firewall.
+Met deze sjabloon maakt u een Azure-firewall en IP-groepen, samen met de benodigde resources die ondersteuning bieden voor de Azure-firewall.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json) start-sjablonen
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox).
 
 :::code language="json" source="~/quickstart-templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox/azuredeploy.json" range="001-512" highlight="118-141":::
 
-Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
+Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
-- [**Micro soft. Network/ipGroups**](/azure/templates/microsoft.network/ipGroups)
-- [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Micro soft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/ipGroups**](/azure/templates/microsoft.network/ipGroups)
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft.Network/routeTables**](/azure/templates/microsoft.network/routeTables)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Micro soft. Storage/Storage accounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Micro soft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Micro soft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
-
+- [**Microsoft.Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Resource Manager-sjabloon implementeren in Azure:
+De Resource Manager-sjabloon implementeren in Azure:
 
-1. Selecteer **implementeren naar Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure Firewall, de netwerk infrastructuur en twee virtuele machines.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een Azure-firewall, de netwerkinfrastructuur en twee virtuele machines.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
-2. Typ of Selecteer in de portal op de pagina **een Azure firewall maken met IpGroups** de volgende waarden:
-   - Abonnement: selecteren uit bestaande abonnementen 
-   - Resource groep: Selecteer uit bestaande resource groepen of selecteer **nieuwe maken**en selecteer **OK**.
+2. Typ of selecteer in de portal, op de pagina **Een Azure-firewall met IP-groepen maken**, de volgende waarden:
+   - Abonnement: Selecteer uit bestaande abonnementen 
+   - Resourcegroep:  Selecteer uit bestaande resourcegroepen of selecteer **Nieuwe maken** en selecteer vervolgens **OK**.
    - Locatie: Selecteer een locatie
-   - Virtual Network naam: Typ een naam voor het nieuwe virtuele netwerk (VNet) 
-   - IP-groeps naam 1: type naam voor IP-groep 1 
-   - IP-groeps naam 2: type naam voor IP-groep 2 
-   - Beheerder gebruikers naam: Typ gebruikers naam voor het gebruikers account van de beheerder 
-   - Verificatie: Selecteer sshPublicKey of wacht woord 
-   - Beheerders wachtwoord: Typ een beheerders wachtwoord of-sleutel
+   - Naam van virtueel netwerk: Typ een naam voor het nieuwe VNet (virtuele netwerk) 
+   - Naam voor IP-groep 1: Typ een naam voor IP-groep 1 
+   - Naam voor IP-groep 2: Typ een naam voor IP-groep 2 
+   - Gebruikersnaam voor beheerder: voer de gebruikersnaam voor het beheerdersaccount in 
+   - Verificatie: Selecteer SshPublicKey of wachtwoord 
+   - Wachtwoord voor beheerder: Typ het wachtwoord of de sleutel voor de beheerder
 
-3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden** en selecteer vervolgens **kopen**. Het volt ooien van de implementatie kan 10 minuten of langer duren.
+3. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. De implementatie kan 10 minuten of langer duren.
 
-## <a name="review-deployed-resources"></a>Geïmplementeerde resources controleren
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
 
-Bekijk in de Azure Portal de geïmplementeerde resources, met name de firewall regels die gebruikmaken van IP-groepen.
+Bekijk in de Azure-portal de geïmplementeerde resources, met name de firewallregels die gebruikmaken van IP-groepen.
 
 :::image type="content" source="media/quick-create-ipgroup-template/ipgroups.png" alt-text="IP-groepen.":::
 
-:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Netwerk regels.":::
+:::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Netwerkregels.":::
 
-Zie voor meer informatie over de JSON-syntaxis en eigenschappen voor een firewall in een sjabloon, [micro soft. Network azureFirewalls Temp late Reference](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls).
+Raadpleeg [sjabloonverwijzing Microsoft.Network/azureFirewalls](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls) voor meer informatie over de syntaxis en eigenschappen van JSON voor een firewall in een sjabloon.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u met de firewall hebt gemaakt niet meer nodig hebt, verwijdert u de resource groep. Hiermee verwijdert u de firewall en alle gerelateerde resources.
+Wanneer u de resources die u met de firewall hebt gemaakt niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee verwijdert u de firewall en alle gerelateerde resources.
 
-Als u de resource groep wilt verwijderen, `Remove-AzResourceGroup` roept u de cmdlet aan:
+Als u de resourcegroep wilt verwijderen, roept u de cmdlet `Remove-AzResourceGroup` aan:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "<your resource group name>"
@@ -93,4 +91,4 @@ Remove-AzResourceGroup -Name "<your resource group name>"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal](tutorial-hybrid-portal.md)
+> [Zelfstudie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure-portal](tutorial-hybrid-portal.md)

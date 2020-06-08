@@ -1,77 +1,77 @@
 ---
 title: Unity-voorbeeld implementeren in Desktop
-description: Quick start die laat zien hoe u het unit-voor beeld kunt ophalen op een desktop computer
+description: Snelstart die laat zien hoe u het Unity-voorbeeld kunt ophalen op een desktopcomputer
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
+ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415723"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83758993"
 ---
-# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Snelstartgids: Unit-voor beeld implementeren op Desktop
+# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Quickstart: Unity-voorbeeld implementeren in Desktop
 
-In deze Quick Start wordt beschreven hoe u de voor beeld-app voor het Snelstartgids voor unit implementeert en uitvoert op een desktop-PC.
+In deze snelstart wordt beschreven hoe u de voorbeeld-app voor Unity implementeert en uitvoert op een desktopcomputer.
 
-In deze Quick Start leert u het volgende:
+In deze snelstart leert u het volgende:
 
 > [!div class="checklist"]
 >
->* De Quick start-voor beeld-app bouwen voor desktop
->* Het voor beeld implementeren op een PC
->* Het voor beeld uitvoeren op een PC
+>* De voorbeeld-app uit de snelstart bouwen voor een desktopcomputer
+>* Het voorbeeld implementeren op een pc
+>* Het voorbeeld uitvoeren op een pc
 
 ## <a name="prerequisites"></a>Vereisten
 
-In deze Quick start gaan we het voorbeeld project implementeren van [Quick Start: een model met Unit renderen](render-model.md).
+In deze snelstart wordt het voorbeeldproject geïmplementeerd vanuit [Snelstart: een model weergeven met Unity](render-model.md).
 
-Zorg ervoor dat uw referenties correct zijn opgeslagen met de scène en dat u verbinding kunt maken met een sessie vanuit de Unity-editor.
+Controleer of uw referenties correct zijn opgeslagen bij de scène en u verbinding kunt maken met een sessie vanuit de Unity-editor.
 
-## <a name="disable-virtual-reality-support"></a>Ondersteuning voor Virtual Reality uitschakelen
+## <a name="disable-virtual-reality-support"></a>Ondersteuning voor virtuele realiteit uitschakelen
 
-Alleen platte bureau blad-apps worden momenteel op het bureau blad ondersteund, dus de ondersteuning voor VR moet worden uitgeschakeld.
+Alleen platte bureaublad-apps worden momenteel op het bureaublad ondersteund, dus de ondersteuning voor VR moet worden uitgeschakeld.
 
-1. *> project instellingen bewerken...*
-1. Selecteer **speler** aan de linkerkant.
-1. Selecteer het tabblad **universeel Windows-platform instellingen** .
-1. Vouw de **XR-instellingen**uit.
-1. Schakel **Virtual Reality**uit die wordt ondersteund.
+1. Open *Bewerken > Projectinstellingen...*
+1. Selecteer **Speler** aan de linkerkant.
+1. Selecteer het tabblad **Instellingen Universeel Windows-platform**.
+1. Vouw de **XR-instellingen** uit.
+1. Schakel **Virtual Reality ondersteund** uit.
     ![instellingen voor speler](./media/unity-disable-xr.png)
-1. Klik boven *XR-instellingen*op publicatie- **instellingen**.
-1. Zorg ervoor dat het selectie vakje op het **bureau blad** van **ondersteunde apparaten**wordt ingeschakeld.
+1. Vouw boven *XR-instellingen* de optie **Publicatie-instellingen** uit.
+1. Zorg ervoor dat **Bureaublad** is ingeschakeld in **Ondersteunde apparaten**.
 
-## <a name="build-the-sample-project"></a>Het voorbeeld project bouwen
+## <a name="build-the-sample-project"></a>Het voorbeeldproject bouwen
 
-1. Open *File > build Settings*.
-1. Wijzig het *platform* in **universeel Windows-platform**.
-1. Stel *doel apparaat* in op **PC**.
-1. Stel de *architectuur* in op **x86**.
-1. Stel het *type Build* in op het **D3D-project**.
-  ![Instellingen bouwen](./media/unity-build-settings-pc.png)
-1. Selecteer **overschakelen naar platform**.
-1. Wanneer u op **Build** (of ' bouwen en uitvoeren ' drukt), wordt u gevraagd om een map te selecteren waarin de oplossing moet worden opgeslagen.
-1. Open de gegenereerde **Snelstartgids. SLN** met Visual Studio.
-1. Wijzig de configuratie in **release** en **x86**.
-1. Schakel de foutopsporingsmodus naar de **lokale computer**.
-  ![Oplossings configuratie](./media/unity-deploy-config-pc.png)
+1. Open *Bestand -> Build-instellingen*.
+1. Wijzig *Platform* in **Universeel Windows-platform** (**zelfstandige pc** wordt ook ondersteund, maar hier niet gebruikt).
+1. Stel *Doelapparaat* in op **Pc**.
+1. Stel *Architectuur* in op **x86**.
+1. Stel *Buildtype* in op **D3D-project**.
+  ![Build-instellingen](./media/unity-build-settings-pc.png)
+1. Selecteer **Overschakelen naar platform**.
+1. Wanneer u op **Build** drukt (of 'Bouwen en uitvoeren'), wordt u gevraagd om een map te selecteren waarin de oplossing moet worden opgeslagen.
+1. Open de gegenereerde **Quickstart.sln** met Visual Studio.
+1. Wijzig de configuratie in **Release** en **x86**.
+1. Schakel de foutopsporingsmodus in op **Lokale machine**.
+  ![Configuratie van de oplossing](./media/unity-deploy-config-pc.png)
 1. Bouw de oplossing (F7).
 
 > [!WARNING]
-> Zorg ervoor dat u **x86**selecteert. **x64** wordt momenteel niet ondersteund. Zie [beperkingen](../reference/limits.md#platform-limitations)voor het platform.
+> Zorg ervoor dat u **x86**selecteert. **x64** wordt momenteel niet ondersteund. Zie [platformbeperkingen](../reference/limits.md#platform-limitations).
 
-## <a name="launch-the-sample-project"></a>Het voorbeeld project starten
+## <a name="launch-the-sample-project"></a>Het voorbeeldproject openen
 
-Start het fout opsporingsprogramma in Visual Studio (F5). De app wordt automatisch geïmplementeerd op de PC.
+Start de foutopsporing in Visual Studio (F5). De app wordt automatisch geïmplementeerd op de pc.
 
-De voor beeld-app moet worden gestart en vervolgens een nieuwe sessie starten. Na een tijdje is de sessie gereed en wordt het extern gerenderde model vóór u weer gegeven.
-Als u het voor beeld een tweede keer wilt starten, kunt u dit ook vinden in het menu Start.
+De voorbeeld-app moet worden gestart en vervolgens een nieuwe sessie starten. Na een tijdje is de sessie gereed en wordt het extern gerenderde model weergegeven.
+Als u het voorbeeld een tweede keer wilt starten, kunt u dit ook vinden in het menu Start.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende Snelstartgids gaan we kijken naar het converteren van een aangepast model.
+In de volgende snelstart gaan we kijken naar het converteren van een aangepast model.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een model voor rendering converteren](convert-model.md)
+> [Snelstart: een model converteren voor rendering](convert-model.md)

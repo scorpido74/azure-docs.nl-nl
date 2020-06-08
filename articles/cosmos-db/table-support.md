@@ -1,19 +1,19 @@
 ---
 title: Ondersteuning voor Azure-tabelopslag in Azure Cosmos DB
-description: Meer informatie over hoe Azure Cosmos DB Table-API en Azure Storage tabellen samen werken door hetzelfde tabel gegevens model te delen als een bewerking
+description: Leer hoe de tabel-API van Azure Cosmos DB en Azure-opslagtabellen samenwerken door hetzelfde tabelgegevensmodel en dezelfde bewerkingen te delen
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 05/21/2020
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 65cc378ab5b6fd7d2ed724f56a68bdf989ced48c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: MT
+ms.openlocfilehash: 6f10763f6906f67a3378d54df0574060294ef87d
+ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611718"
+ms.lasthandoff: 05/22/2020
+ms.locfileid: "83800393"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Ontwikkelen met de tabel-API van Azure Cosmos DB en Azure-tabelopslag
 
@@ -25,13 +25,13 @@ De tabel-API van Azure Cosmos DB en Azure-tabelopslag hebben hetzelfde gegevensm
 
 Op dit moment beschikt de [tabel-API van Azure Cosmos DB](table-introduction.md) over vier SDK’s voor ontwikkelen: 
 
-* [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table): .NET SDK. Deze bibliotheek is gericht op .NET Standard en heeft dezelfde klassen en methodes als de openbare [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), maar biedt ook de mogelijkheid om verbinding te maken met Azure Cosmos DB-accounts met behulp van de Table-API. Gebruikers van .NET Framework bibliotheek [micro soft. Azure. CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table/) worden aanbevolen om een upgrade uit te zetten naar [micro soft. Azure. Cosmos. table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) omdat deze zich in de onderhouds modus bevindt en binnenkort wordt afgeschaft.
+* [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table): .NET SDK. Deze bibliotheek is gericht op .NET Standard en heeft dezelfde klassen en methodes als de openbare [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), maar biedt ook de mogelijkheid om verbinding te maken met Azure Cosmos DB-accounts met behulp van de Table-API. Gebruiker van de .NET Framework-bibliotheek [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table/) wordt aangeraden om een upgrade naar [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) uit te voeren, aangezien deze zich in de onderhoudsmodus bevindt en binnenkort buiten gebruik wordt gesteld.
 
-* [PYTHON SDK](table-sdk-python.md): de nieuwe Azure Cosmos DB python SDK is de enige SDK die Azure Table-opslag in python ondersteunt. Deze SDK is verbonden met zowel Azure-tabelopslag als met de tabel-API van Azure Cosmos DB.
+* [Python SDK](table-sdk-python.md): De nieuwe Python SDK voor Azure Cosmos DB is de enige SDK die ondersteuning biedt voor Azure-tabelopslag in Python. Deze SDK is verbonden met zowel Azure-tabelopslag als met de tabel-API van Azure Cosmos DB.
 
-* [Java SDK](table-sdk-java.md): deze Azure Storage SDK biedt de mogelijkheid om verbinding te maken met Azure Cosmos DB accounts met behulp van de Table-API.
+* [Java SDK](table-sdk-java.md): Met deze Azure Storage-SDK kan verbinding worden gemaakt met Azure Cosmos DB-accounts met behulp van de tabel-API.
 
-* [Node. js SDK](table-sdk-nodejs.md): deze Azure Storage SDK biedt de mogelijkheid om verbinding te maken met Azure Cosmos DB accounts met behulp van de Table-API.
+* [Node.js SDK](table-sdk-nodejs.md): Met deze Azure Storage-SDK kan verbinding worden gemaakt met Azure Cosmos DB-accounts met behulp van de tabel-API.
 
 
 Aanvullende informatie over het werken met de tabel-API is beschikbaar in het artikel [Veelgestelde vragen: Ontwikkelen met de tabel-API](table-api-faq.md).
@@ -40,10 +40,10 @@ Aanvullende informatie over het werken met de tabel-API is beschikbaar in het ar
 
 Azure-tabelopslag beschikt over deze SDK’s voor ontwikkelen:
 
-- [WindowsAzure.Storage .NET SDK](https://www.nuget.org/packages/WindowsAzure.Storage/). Met deze bibliotheek kunt u werken met de opslagtabelservice.
-- [Python-SDK](https://github.com/Azure/azure-cosmos-table-python). De Azure Cosmos DB Table SDK voor python ondersteunt de Table Storage-service (omdat de Table-API van Azure Table Storage en Cosmos DB dezelfde functies en functionaliteit delen, en in een poging om onze ontwikkel inspanningen voor de SDK te factorize, wordt aangeraden deze SDK te gebruiken).
+- De bibliotheken [Microsoft.Azure.Storage.Blob](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/), [Microsoft.Azure.Storage.File](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/), [Microsoft.Azure.Storage.Queue](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/), en [Microsoft.Azure.Storage.Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) stellen u in staat om te werken met de service Azure-tabelopslag. Als u de tabel-API in Azure Cosmos DB gebruikt, kunt u in plaats hiervan de bibliotheek [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table/) gebruiken.
+- [Python SDK](https://github.com/Azure/azure-cosmos-table-python). De Azure Cosmos DB Table SDK voor Python biedt ondersteuning voor de tabelopslagservice (omdat Azure-tabelopslag en de tabel-API van Cosmos DB dezelfde functies en functionaliteit delen, en in een poging om onze SDK-ontwikkelingsinspanningen te ontbinden, raden we aan deze SDK te gebruiken).
 - [Azure Storage SDK voor Java](https://github.com/azure/azure-storage-java). Deze Azure Storage-SDK biedt een clientbibliotheek in Java voor het gebruik van Azure-tabelopslag.
-- [Node. js-SDK](https://github.com/Azure/azure-storage-node). Deze SDK biedt een Node.js-pakket en een JavaScript-clientbibliotheek die compatibel is met de browser, voor het gebruik van de opslagtabelservice.
+- [Node.js SDK](https://github.com/Azure/azure-storage-node). Deze SDK biedt een Node.js-pakket en een JavaScript-clientbibliotheek die compatibel is met de browser, voor het gebruik van de opslagtabelservice.
 - [AzureRmStorageTable PowerShell-module](https://www.powershellgallery.com/packages/AzureRmStorageTable). Deze PowerShell-module bevat cmdlets voor het werken met opslagtabellen.
 - [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/). Met deze bibliotheek kunt u toepassingen bouwen in Azure Storage.
 - [Clientbibliotheek voor Azure-opslagtabellen voor Ruby](https://github.com/azure/azure-storage-ruby/tree/master/table). Dit project biedt een Ruby-pakket waarmee u eenvoudig toegang kunt krijgen tot Azure-opslagtabelservices.
