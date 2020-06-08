@@ -8,16 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 23644736370d4a875d1f9c0e65f3097fcffa07f6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 691584f46059032ecd02a10964b819598d1b3b09
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84338699"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484593"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- en Ddsv4-serie
 
-De Ddv4-en Ddsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Dv3/Dsv3-](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) grootten met [Gen2-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+De Ddv4-en Ddsv4-serie worden uitgevoerd op de Intel &reg; Xeon &reg; Platinum 8272CL-processors (Cascade Lake) in een configuratie met Hyper-Threading, met een betere toegevoegde waarde voor de meeste werk belastingen voor algemeen gebruik. De IT-service heeft een zeer hoge Turbo klok snelheid van 3,4 GHz, [Intel &reg; Turbo Boost-technologie 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel &reg; Hyper-Threading-technologie](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) en [intel &reg; Advanced vector-uitbrei dingen 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Ze ondersteunen ook [Intel &reg; diepe leer versterking](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Deze nieuwe VM-grootten hebben 50% grotere lokale opslag, evenals een betere lokale schijf-IOPS voor zowel lees-als schrijf bewerkingen in vergelijking met de [Dv3/Dsv3-](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) grootten met [Gen2-vm's](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
 Gebruiks voorbeelden van de D-serie zijn onder andere zakelijke toepassingen, relationele data bases, caching in het geheugen en analyse.
 
@@ -66,7 +66,7 @@ Livemigratie: ondersteund
 
 Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |

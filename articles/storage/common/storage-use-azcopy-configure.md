@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 30244a426b6f934ef66261c6dccbb46e72f28488
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341008"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485196"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy configureren, optimaliseren en problemen oplossen
 
@@ -63,23 +63,23 @@ Deze sectie helpt u bij het uitvoeren van deze optimalisatie taken:
 
 ### <a name="run-benchmark-tests"></a>Bench Mark-tests uitvoeren
 
-U kunt een benchmark test voor prestaties uitvoeren op specifieke BLOB-containers om algemene prestatie statistieken en knel punten voor identiteits prestaties te bekijken. 
+U kunt een benchmark test voor prestaties uitvoeren op specifieke BLOB-containers of bestands shares om algemene prestatie statistieken te bekijken en knel punten met betrekking tot identiteits prestaties. 
 
 Gebruik de volgende opdracht om een bench Mark-test voor prestaties uit te voeren.
 
 |    |     |
 |--------|-----------|
-| **Syntaxis** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Hierbij** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Syntaxis** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Hierbij** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > In dit voor beeld worden padvariabelen met enkele aanhalings tekens (' ') Inge sloten. Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
 Met deze opdracht wordt een prestatie Bench Mark uitgevoerd door test gegevens naar een opgegeven bestemming te uploaden. De test gegevens worden in het geheugen gegenereerd, geüpload naar het doel en vervolgens verwijderd uit de bestemming nadat de test is voltooid. U kunt opgeven hoeveel bestanden er moeten worden gegenereerd en welke grootte u wilt gebruiken met optionele opdracht parameters.
 
-Zie [azcopy Bank](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie.
+Zie [azcopy Bench Mark](storage-ref-azcopy-bench.md)voor gedetailleerde naslag documentatie.
 
-Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u `azcopy bench -h` en drukt u vervolgens op ENTER.
+Als u gedetailleerde Help-informatie voor deze opdracht wilt weer geven, typt u `azcopy benchmark -h` en drukt u vervolgens op ENTER.
 
 ### <a name="optimize-throughput"></a>Door Voer optimaliseren
 
@@ -193,7 +193,7 @@ Gebruik een van deze opdrachten.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Zo`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
@@ -205,7 +205,7 @@ Gebruik een van deze opdrachten.
 
 | Besturingssysteem | Opdracht  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | Zo`$env:AZCOPY_LOG_LOCATION="<value>"` <br> In een opdracht prompt gebruikt u::`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 

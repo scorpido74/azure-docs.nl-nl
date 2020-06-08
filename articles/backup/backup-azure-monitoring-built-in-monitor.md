@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over de bewakings-en meldings mog
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247050"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485089"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -77,7 +77,7 @@ De bovenstaande uitzonde ringen zijn ontworpen op basis van de uitleg dat het re
 Waarschuwingen zijn gebaseerd op ernst van waarschuwingen en kunnen worden gedefinieerd in drie typen:
 
 - **Kritiek**: in principe zou elke back-up-of herstel fout (gepland of door de gebruiker geactiveerd) leiden tot het genereren van een waarschuwing en worden weer gegeven als een kritieke waarschuwing en ook destructieve bewerkingen, zoals het verwijderen van back-ups.
-- **Waarschuwing**: als de back-upbewerking is geslaagd, maar met weinig waarschuwingen, worden ze weer gegeven als waarschuwings meldingen.
+- **Waarschuwing**: als de back-upbewerking is geslaagd, maar met weinig waarschuwingen, worden ze weer gegeven als waarschuwings meldingen. Waarschuwingen zijn momenteel alleen beschikbaar voor back-ups van Azure Backup Agent.
 - **Ter informatie**: er wordt momenteel geen informatieve waarschuwing gegenereerd door Azure backup service.
 
 ## <a name="notification-for-backup-alerts"></a>Melding voor back-upwaarschuwingen

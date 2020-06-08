@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945471"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484353"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Azure lente-Cloud verifiëren met Key Vault in GitHub-acties
 Sleutel kluis is een veilige plaats voor het opslaan van sleutels. Zakelijke gebruikers moeten referenties opslaan voor CI/CD-omgevingen binnen het bereik dat ze beheren. De sleutel voor het ophalen van referenties in de sleutel kluis moet beperkt zijn tot het bron bereik.  Het heeft alleen toegang tot het sleutel kluis bereik, niet voor het hele Azure-bereik. Het lijkt erop dat een sleutel die alleen een sterk vak kan openen, geen hoofd sleutel is die alle deuren in een gebouw kan openen. Het is een manier om een sleutel te verkrijgen met een andere sleutel. Dit is handig in een CICD-werk stroom. 
@@ -21,7 +21,7 @@ Voor het genereren van een sleutel voor toegang tot de sleutel kluis voert u de 
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-Met het bereik dat is `--scopes` opgegeven door de para meter wordt de sleutel toegang tot de bron beperkt.  Het kan alleen toegang krijgen tot het sterke vak.
+Met het bereik dat is opgegeven door de `--scopes` para meter wordt de sleutel toegang tot de bron beperkt.  Het kan alleen toegang krijgen tot het sterke vak.
 
 Met resultaten:
 ```
@@ -46,7 +46,7 @@ Ga naar het **Key Vault** dash board in azure Portal, klik op het **toegangs beh
 
  ![Toegangs beleid instellen](./media/github-actions/key-vault1.png)
 
-Kopieer de referentie naam, bijvoorbeeld `azure-cli-2020-01-19-04-39-02`. Open het menu **toegangs beleid** en klik op koppeling naar **toegangs beleid toevoegen** .  Selecteer `Secret Management` voor **sjabloon**en selecteer vervolgens **Principal**. Plak de referentie naam in **Principal**/invoervak**selecteren** :
+Kopieer de referentie naam, bijvoorbeeld `azure-cli-2020-01-19-04-39-02` . Open het menu **toegangs beleid** en klik op koppeling naar **toegangs beleid toevoegen** .  Selecteer `Secret Management` voor **sjabloon**en selecteer vervolgens **Principal**. Plak de referentie naam in **Principal**invoervak / **selecteren** :
 
  ![Selecteer](./media/github-actions/key-vault2.png)
 
@@ -73,7 +73,7 @@ Opnieuw, resultaten:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Kopieer de volledige JSON-teken reeks.  Bo terug naar **Key Vault** dash board. Open het menu **geheimen** en klik vervolgens op de knop **genereren/importeren** . Voer de geheime naam in `AZURE-CRENDENTIALS-FOR-SPRING`, bijvoorbeeld. Plak de JSON-referentie teken reeks in het invoervak **waarde** . U ziet het invoervak waarde is een tekst veld met één regel in plaats van een tekst gebied met meerdere regels.  U kunt de volledige JSON-teken reeks plakken.
+Kopieer de volledige JSON-teken reeks.  Bo terug naar **Key Vault** dash board. Open het menu **geheimen** en klik vervolgens op de knop **genereren/importeren** . Voer de geheime naam in, bijvoorbeeld `AZURE-CREDENTIALS-FOR-SPRING` . Plak de JSON-referentie teken reeks in het invoervak **waarde** . U ziet het invoervak waarde is een tekst veld met één regel in plaats van een tekst gebied met meerdere regels.  U kunt de volledige JSON-teken reeks plakken.
 
  ![Volledige bereik referentie](./media/github-actions/key-vault3.png)
 
@@ -92,7 +92,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

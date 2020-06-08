@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: d0f37d32b7d2306865d435bc68ea12c9bb95651c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ffb0cd65ed8c904098a1099540a5c3a55f605d36
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434710"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485087"
 ---
 # <a name="connect-to-azure-storage-services"></a>Verbinding maken met Azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ U kunt gegevens opslag maken op basis van [deze Azure Storage-oplossingen](#matr
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig:
-- Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 - Een Azure-opslag account met een [Azure Blob-container](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) of een [Azure-bestands share](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -102,6 +102,9 @@ U vindt de informatie die u nodig hebt om de `register_azure_*()` methode op de 
 
 * Als u van plan bent om een service principe voor verificatie te gebruiken, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken. 
     * De bijbehorende **overzichts** pagina bevat de vereiste informatie, zoals Tenant-id en client-id.
+
+> [!IMPORTANT]
+> Uit veiligheids overwegingen moet u mogelijk uw toegangs sleutels wijzigen voor een Azure Storage account (account sleutel of SAS-token). Wanneer u dit doet, moet u de nieuwe referenties synchroniseren met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over hoe u uw bijgewerkte referenties synchroniseert met [deze stappen](how-to-change-storage-access-key.md). 
 
 In de volgende voor beelden ziet u hoe u een Azure Blob-container, een Azure-bestands share en Azure Data Lake Storage generatie 2 kunt registreren als gegevens opslag. De para meters die in deze voor beelden worden opgegeven, zijn de **vereiste para meters** voor het maken en registreren van een gegevens opslag. 
 
@@ -182,9 +185,9 @@ Maak een nieuwe gegevens opslag in een paar stappen in Azure Machine Learning st
 > [!IMPORTANT]
 > Als uw opslag account zich in een virtueel netwerk bevindt, wordt alleen het maken van gegevens opslag [via de SDK](#python-sdk) ondersteund. 
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com/).
 1. Selecteer **gegevens opslag** in het linkerdeel venster onder **beheren**.
-1. Selecteer **+ nieuwe gegevens opslag**.
+1. Selecteer **+ Nieuw gegevensarchief**.
 1. Vul het formulier in voor een nieuwe gegevens opslag. Het formulier wordt intelligent bijgewerkt op basis van uw selecties voor het Azure-opslag type en verificatie type.
   
 U kunt de informatie vinden die u nodig hebt om het formulier op de [Azure Portal](https://portal.azure.com)in te vullen. Selecteer **opslag accounts** in het linkerdeel venster en kies het opslag account dat u wilt registreren. De **overzichts** pagina bevat informatie zoals de account naam, container en naam van de bestands share. 
@@ -192,6 +195,9 @@ U kunt de informatie vinden die u nodig hebt om het formulier op de [Azure Porta
 * Ga voor verificatie-items, zoals account sleutel of SAS-token, naar **toegangs sleutels** in het deel venster **instellingen** . 
 
 * Voor Service-Principal-items, zoals Tenant-ID en client-ID, gaat u naar uw **app-registraties** en selecteert u welke app u wilt gebruiken. De bijbehorende **overzichts** pagina bevat deze items. 
+
+> [!IMPORTANT]
+> Uit veiligheids overwegingen moet u mogelijk uw toegangs sleutels wijzigen voor een Azure Storage account (account sleutel of SAS-token). Wanneer u dit doet, moet u de nieuwe referenties synchroniseren met uw werk ruimte en de gegevens opslag die ermee zijn verbonden. Meer informatie over hoe u uw bijgewerkte referenties synchroniseert met [deze stappen](how-to-change-storage-access-key.md). 
 
 In het volgende voor beeld ziet u hoe het formulier eruitziet wanneer u een Azure Blob-gegevens opslag maakt: 
     

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 332b0193059c2c60cce0bc653d48bace45eca38d
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 62c7a3ecec3f941971cad552af2e36f63ab67c60
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432718"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485110"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -32,11 +32,14 @@ Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren 
 
 **Server** | **Vereisten** | **Details**
 --- | --- | ---
-Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de meest recente updates (inclusief Server Core-installatie van deze besturings systemen) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen. <br/><br/> Opmerking: failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
-Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.<br/><br/> Opmerking: failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
+Hyper-V (wordt uitgevoerd zonder Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 met de meest recente updates (inclusief Server Core-installatie van deze besturings systemen) | Als u Windows Server 2012 R2 al hebt geconfigureerd met/of SCVMM 2012 R2 met Azure Site Recovery en een upgrade van het besturings systeem wilt uitvoeren, volgt u de [documentatie bij](upgrade-2012R2-to-2016.md) de richt lijnen.
+Hyper-V (uitgevoerd met Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (inclusief Server Core-installatie van deze besturings systemen) | Als Virtual Machine Manager wordt gebruikt, moeten hosts met Windows Server 2019 worden beheerd in Virtual Machine Manager 2019. Op dezelfde manier moeten hosts met Windows Server 2016 worden beheerd in Virtual Machine Manager 2016.
 
 > [!NOTE]
-> Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
+>
+> - Zorg ervoor dat .NET Framework 4.6.2 of hoger aanwezig is op de on-premises server.
+> - Failback wordt niet ondersteund voor Windows Server 2019 server core-versie.
+> - Failback naar een alternatieve locatie wordt niet ondersteund voor Windows Server 2019-hosts.
 
 ## <a name="replicated-vms"></a>Gerepliceerde Vm's
 

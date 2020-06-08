@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2323-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 4699610223e824dfaa147b880e73b0e04852f386
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fa18f50a1e2c9a83cf5aa234e5d9e1b1574eeb4c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450855"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482704"
 ---
 # <a name="what-is-devops"></a>Wat is DevOps?
 Het woord ' DevOps ' is afkomstig uit een combi natie van ' Development ' en ' Operations '. DevOps benadrukt het belang van communicatie en samen werking tussen software ontwikkelaars en productie IT-professionals tijdens het automatiseren van de implementatie van software-en infrastructuur wijzigingen. DevOps richt zich op de invoering van flexibele en Lean methodologieën en het automatiseren van terugkerende taken. Het doel van DevOps is tijdig, succes volle toepassings releases.

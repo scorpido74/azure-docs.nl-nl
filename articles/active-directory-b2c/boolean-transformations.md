@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 007d613a1f170a0ee278a838c92ade2fce9c6dec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02d488108474084346d9e37d5cc6ecbe3a8a05c6
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529203"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484280"
 ---
 # <a name="boolean-claims-transformations"></a>Booleaanse claim transformaties
 
@@ -34,7 +34,7 @@ Voert een en-bewerking uit van twee Booleaanse inputClaims en stelt de output cl
 | Input claim | inputClaim2  | booleaans | Het tweede claim type dat moet worden geëvalueerd. |
 |Output claim | Output claim | booleaans | De ClaimTypes die wordt geproduceerd nadat deze claim transformatie is aangeroepen (True of false). |
 
-De volgende claims-trans formatie demonstreert hoe en hoe en met `isEmailNotExist`de ClaimTypes `isSocialAccount`: en. De uitvoer claim `presentEmailSelfAsserted` wordt ingesteld op `true` als de waarde van beide invoer claims `true`. In een indelings stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, alleen als een e-mail adres voor een sociaal account leeg is.
+De volgende claims-trans formatie demonstreert hoe en hoe en met de ClaimTypes: en `isEmailNotExist` `isSocialAccount` . De uitvoer claim `presentEmailSelfAsserted` wordt ingesteld op `true` als de waarde van beide invoer claims `true` . In een indelings stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, alleen als een e-mail adres voor een sociaal account leeg is.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -48,7 +48,7 @@ De volgende claims-trans formatie demonstreert hoe en hoe en met `isEmailNotExis
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-of-andclaims"></a>Voor beeld van AndClaims
 
 - Invoer claims:
     - **inputClaim1**: True
@@ -85,6 +85,7 @@ De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse cl
 
 
 Het `login-NonInteractive` validatie technische profiel roept de `AssertAccountEnabledIsTrue` trans formatie van claims aan.
+
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -107,7 +108,7 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 </TechnicalProfile>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-of-assertbooleanclaimisequaltovalue"></a>Voor beeld van AssertBooleanClaimIsEqualToValue
 
 - Invoer claims:
     - **input claim**: False
@@ -116,7 +117,7 @@ Het zelfondertekende technische profiel aanroept het technische profiel voor val
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 
-Controleert of de Booleaanse waarde van een claim gelijk is `true` aan `false`of en retourneert het resultaat van de compressie.
+Controleert of de Booleaanse waarde van een claim gelijk is aan `true` of `false` en retourneert het resultaat van de compressie.
 
 | Item | TransformationClaimType  | Gegevenstype  | Opmerkingen |
 | ---- | ------------------------ | ---------- | ----- |
@@ -124,8 +125,7 @@ Controleert of de Booleaanse waarde van een claim gelijk is `true` aan `false`of
 | Parameter |valueToCompareTo | booleaans | De waarde die moet worden vergeleken (waar of onwaar). |
 | Output claim | compareResult | booleaans | Het claim type dat is geproduceerd nadat deze ClaimsTransformation is aangeroepen. |
 
-
-De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse claim type met een `true` waarde kunt controleren. Als de waarde van het `IsAgeOver21Years` claim type is gelijk `true`aan, wordt de claim `true`transformatie geretourneerd `false`.
+De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse claim type met een `true` waarde kunt controleren. Als de waarde van het `IsAgeOver21Years` claim type is gelijk aan `true` , wordt de claim transformatie geretourneerd `true` `false` .
 
 ```XML
 <ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
@@ -141,7 +141,7 @@ De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse cl
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-of-comparebooleanclaimtovalue"></a>Voor beeld van CompareBooleanClaimToValue
 
 - Invoer claims:
     - **input claim**: False
@@ -149,8 +149,6 @@ De volgende claims transformatie laat zien hoe u de waarde van een Booleaanse cl
     - **valueToCompareTo**: True
 - Uitvoer claims:
     - **compareResult**: False
-
-
 
 ## <a name="notclaims"></a>NotClaims
 
@@ -174,7 +172,7 @@ Gebruik deze claim transformatie om logische ontkenning op een claim uit te voer
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-of-notclaims"></a>Voor beeld van NotClaims
 
 - Invoer claims:
     - **input claim**: False
@@ -191,7 +189,7 @@ Hiermee worden een of twee Booleaanse inputClaims berekend en wordt de output cl
 | Input claim | inputClaim2 | booleaans | Het tweede claim type dat moet worden geëvalueerd. |
 | Output claim | Output claim | booleaans | De ClaimTypes die wordt geproduceerd nadat deze ClaimsTransformation is aangeroepen (True of false). |
 
-De volgende claims transformatie laat zien hoe `Or` twee Booleaanse ClaimTypes. In de Orchestration-stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, als de waarde van een van de claims `true`is.
+De volgende claims transformatie laat zien hoe `Or` twee Booleaanse ClaimTypes. In de Orchestration-stap kunt u een voor waarde gebruiken voor het vooraf instellen van een zelfbevestigende pagina, als de waarde van een van de claims is `true` .
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="OrClaims">
@@ -205,7 +203,7 @@ De volgende claims transformatie laat zien hoe `Or` twee Booleaanse ClaimTypes. 
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Voorbeeld
+### <a name="example-of-orclaims"></a>Voor beeld van OrClaims
 
 - Invoer claims:
     - **inputClaim1**: True

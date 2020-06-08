@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371287"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482600"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Persoonlijke koppeling voor Azure Database for MySQL
 
@@ -47,13 +47,17 @@ Wanneer u verbinding maakt met het open bare eind punt vanaf de on-premises mach
 
 Met persoonlijke koppeling kunt u cross-premises toegang tot het privé-eind punt inschakelen met behulp van [Express route](https://azure.microsoft.com/services/expressroute/) (er), persoonlijke peering of [VPN-tunnel](https://docs.microsoft.com/azure/vpn-gateway/). Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
 
+> [!NOTE]
+> In sommige gevallen bevinden de Azure Database for MySQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
+> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. DBforMySQL** is geregistreerd. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Persoonlijke koppeling voor Azure Database for MySQL configureren
 
 ### <a name="creation-process"></a>Proces maken
 
 Privé-eind punten zijn vereist om een persoonlijke koppeling in te scha kelen. U kunt dit doen met behulp van de volgende hand leidingen.
 
-* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
+* [Azure-portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
 * [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Goedkeurings proces
@@ -129,3 +133,6 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure Database for MyS
 * Zie [toegang vanaf virtuele netwerken configureren](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet)voor meer informatie over het configureren van een service-eind punt voor een virtueel netwerk voor uw Azure database for MySQL.
 
 * Zie [Azure database for MySQL Connectivity Architecture](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture) (Engelstalig) voor een overzicht van Azure database for MySQL connectiviteit
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

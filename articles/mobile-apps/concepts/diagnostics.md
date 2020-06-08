@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 63fd61ee2d4fc84e58563ea7ea20e79a382cf104
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 9070b8a8735cab62d412caa30de9a080862f10ba
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450862"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482577"
 ---
 # <a name="monitor-failures-and-errors-in-real-time-for-your-mobile-application"></a>Fouten en fouten in realtime bewaken voor uw mobiele toepassing
 Als uw toepassing wordt gebruikt door duizenden gebruikers, heeft dit waarschijnlijk fouten. Uw gebruikers kunnen in onverwachte toepassings fouten worden uitgevoerd. Vanuit het perspectief van de gebruiker zijn alleen de gewenste werk-en betrouw bare toepassingen. Toepassingen die fouten opsporen, bieden geen goede gebruikers ervaring. Teleurgestelde gebruikers verwijderen de app, hebben een onjuiste beoordeling of een openbaar criticize en klagen over hun ervaring.

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 46d8fb33c59fc5f0b6d844831e5ee1c937654afb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: e7776317b80dbe6d927cf33792d1a180a546fa05
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193801"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484234"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Beschik baarheid van regio's & gegevens locatie
 
@@ -41,7 +41,7 @@ Azure AD B2C gebruikers gegevens worden opgeslagen in Verenigde Staten, Europa o
 
 Data locatie wordt bepaald door het land/de regio die u selecteert bij het [maken van een Azure AD B2C-Tenant](tutorial-create-tenant.md):
 
-![Scherm opname van een preview-Tenant](./media/data-residency/data-residency-b2c-tenant.png)
+![Scherm afbeelding van een Tenant formulier maken, land of regio kiezen.](./media/data-residency/data-residency-b2c-tenant.png)
 
 De gegevens bevinden zich in de **Verenigde Staten** voor de volgende landen/regio's:
 
@@ -69,4 +69,4 @@ Als dit het geval is, moet u uw Tenant alleen gebruiken voor ontwikkelings-en te
 
 Er zijn bekende problemen bij het verwijderen van een preview B2C-Tenant en het maken van een B2C-Tenant met dezelfde domein naam. *U moet een B2C-Tenant met een productie schaal maken met een andere domein naam*.
 
-![Scherm opname van een preview-Tenant](./media/data-residency/preview-b2c-tenant.png)
+![Scherm opname van een Tenant type, als preview-Tenant.](./media/data-residency/preview-b2c-tenant.png)

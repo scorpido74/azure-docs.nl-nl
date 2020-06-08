@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344846"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484648"
 ---
-# <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Een Azure Files bestands share maken met een domein controller
+# <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Een profiel container maken met Azure Files en AD DS
 
 In dit artikel leert u hoe u een Azure-bestands share maakt die wordt geverifieerd door een domein controller op een bestaande virtuele Windows-bureau blad-hostgroep. U kunt deze bestands share gebruiken om opslag profielen op te slaan.
 

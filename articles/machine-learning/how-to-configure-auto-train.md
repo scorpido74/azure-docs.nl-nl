@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5751a7c5eac9386ecd52e172b40aacbef5247dd1
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2db6134d49ccd73c32339fe51814d915ae88604a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434619"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484489"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Geautomatiseerde ML-experimenten configureren in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,8 @@ Er zijn enkele opties die u kunt definiëren om uw experiment te beëindigen.
 ### <a name="explore-model-metrics"></a>Model statistieken verkennen
 
 U kunt uw trainings resultaten weer geven in een widget of inline als u zich in een notebook bevindt. Zie [modellen volgen en evalueren](how-to-track-experiments.md#view-run-details) voor meer informatie.
+
+Zie [hoe en wanneer u een model wilt implementeren](how-to-deploy-and-where.md)voor meer informatie over het downloaden of registreren van een model voor implementatie naar een webservice.
 
 ## <a name="understand-automated-ml-models"></a>Meer informatie over geautomatiseerde modellen van ML
 

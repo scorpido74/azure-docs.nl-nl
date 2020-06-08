@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: c9ae5e268066e498b3a341a9c54391ee5d15d592
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 515583a19c576d25bd9573cbf80974d72c6df1ec
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450652"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482647"
 ---
 # <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Neem contact op met uw toepassings gebruikers door push meldingen te verzenden
 
@@ -36,24 +36,6 @@ Voor toepassings gebruikers, Push meldingen:
 - Herinner gebruikers om de toepassing te gebruiken.
 
 Gebruik de volgende services om Push meldingen in te scha kelen in uw mobiele apps.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-Met [app Center push](/appcenter/push/)kunt u gerichte berichten verzenden naar IOS-, Android-en Windows-gebruikers zonder dat u het proces voor het verzenden van meldingen naar apparaten hoeft te beheren door gebruik te maken van Push Notification Services (PNS). Deze service is gebouwd op basis van Azure Notification Hubs en elimineert complexer voor het hand matig pushen van meldingen door een krachtig dash board te bieden.
-
-**Belangrijke functies**
-- Verzend push meldingen naar mobiele apparaten op verschillende platforms.
-- Gebruik meldingen om gegevens te verzenden naar een toepassing, een bericht weer te geven voor de gebruiker of een actie te activeren door de toepassing.
-- Gebruik meldings doelen voor het volgende: 
-    - Berichten broadcasten naar alle geregistreerde apparaten.
-    - Meldingen verzenden naar doel groepen op basis van informatie over apparaten en aangepaste eigenschappen.
-    - Meldingen verzenden naar specifieke gebruikers.
-    - Meldingen verzenden naar specifieke apparaten.
-- Maak gebruik van de rijke telemetrie voor pushes, apparaten en fouten die beschikbaar zijn in de App Center Portal.
-- Profiteer van platform ondersteuning voor iOS, Android, macOS, Xamarin, reageert systeem eigen, eenheids-en Cordova.
-
-**Verwijzingen**
-- [Meld u aan met Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Aan de slag met App Center push](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure Notification Hubs
 [Notification hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) biedt een eenvoudig te gebruiken en uitgeschaalde Push Engine. U kunt deze gebruiken om meldingen te verzenden naar een wille keurig platform en vanaf elke back-end in de Cloud of on-premises.

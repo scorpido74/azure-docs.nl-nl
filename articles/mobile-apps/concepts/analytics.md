@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: ebe07ec76e5b852dbe7d030ad8859d59ce5cd074
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 6895944e4ca5cb115725814e9d27cb1f5fa04cfa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451058"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484838"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>Het gebruik van mobiele toepassingen analyseren en begrijpen
 Hoe goed begrijpt u hoe uw gebruikers uw toepassingen gebruiken? Hoeveel actieve gebruikers hebben uw toepassing en hoe wordt het gebruik in de loop van de tijd gewijzigd? Welke functies worden gebruikt, en welke onderdelen zijn het meest geschikt? Waar zijn deze gebruikers? Hoeveel gebruikers gebruiken de nieuwste versie van de toepassing? Al deze vragen zijn belang rijk om te begrijpen hoe u uw app kunt omzetten in een succesvol bedrijf. Als u deze vragen over gebruiks analyse wilt beantwoorden, moet u gebruiks gegevens van uw apps verzamelen.

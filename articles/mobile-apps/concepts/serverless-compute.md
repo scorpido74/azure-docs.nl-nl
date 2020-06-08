@@ -5,14 +5,14 @@ author: codemillmatt
 ms.service: mobile-services
 ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 06eb757955f403b91ae38602f4dc8ccc3fa52f26
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f27ef3868cb53c76ecd3ba5d3b24cd075f8a5531
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450974"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485301"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Mobiele back-end-onderdelen bouwen met Compute-Services
 Voor elke mobiele toepassing is een back-end nodig die verantwoordelijk is voor gegevens opslag, bedrijfs logica en beveiliging. Voor het beheren van de infra structuur voor het hosten en uitvoeren van back-end-code moet u meerdere servers verg Roten of verkleinen, inrichten en schalen. U moet ook updates van het besturings systeem en de betrokken hardware beheren en beveiligings patches Toep assen. Vervolgens moet u al deze onderdelen van de infra structuur bewaken voor prestaties, Beschik baarheid en fout tolerantie. 

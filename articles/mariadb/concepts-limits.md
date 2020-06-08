@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: c99851125552873e63f8199bf7b206c5fad231be
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653136"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484741"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Beperkingen in Azure Database for MariaDB
 In de volgende secties worden capaciteit, ondersteuning voor opslag-engine, ondersteuning van bevoegdheden, ondersteuning voor gegevens manipulatie en functionele limieten in de database service beschreven.
@@ -22,7 +22,7 @@ De minimum-en maximum waarden van verschillende populaire server parameters word
 
 ### <a name="max_connections"></a>max_connections
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
@@ -32,7 +32,7 @@ De minimum-en maximum waarden van verschillende populaire server parameters word
 |Algemeen gebruik|16|2500|10|5000|
 |Algemeen gebruik|32|5000|10|10.000|
 |Algemeen gebruik|64|10.000|10|20.000|
-|Geoptimaliseerd geheugen|2|600|10|800|
+|Geoptimaliseerd geheugen|2|625|10|1250|
 |Geoptimaliseerd geheugen|4|1250|10|2500|
 |Geoptimaliseerd geheugen|8|2500|10|5000|
 |Geoptimaliseerd geheugen|16|5000|10|10.000|
@@ -52,7 +52,7 @@ De query cache is standaard uitgeschakeld. Configureer de para meter om de query
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#query_cache_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -72,7 +72,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#sort_buffer_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -92,7 +92,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#join_buffer_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -112,7 +112,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#max_heap_table_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
@@ -132,7 +132,7 @@ Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-vari
 
 Raadpleeg de [MariaDB-documentatie](https://mariadb.com/kb/en/server-system-variables/#tmp_table_size) voor meer informatie over deze para meter.
 
-|**Prijs categorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
+|**Prijscategorie**|**vCore (s)**|**Standaard waarde**|**Minimum waarde**|**Maximum waarde**|
 |---|---|---|---|---|
 |Basic|1|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|
 |Basic|2|Kan niet worden geconfigureerd in de Basic-laag|N.v.t.|N.v.t.|

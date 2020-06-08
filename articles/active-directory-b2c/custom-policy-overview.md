@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 06/06/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a7cb964064e229ee29591ca14aa8ef33e393a7d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678163"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484170"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Aangepast beleid in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ Aangepaste beleids regels zijn configuratie bestanden waarmee het gedrag van uw 
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>Gebruikers stromen en aangepaste beleids regels vergelijken
 
-| | Gebruikersstromen | Aangepast beleid |
+| Context | Gebruikersstromen | Aangepast beleid |
 |-|-------------------|-----------------|
 | Doel gebruikers | Alle toepassings ontwikkelaars met of zonder identiteits expertise. | Identiteits-professionals, systeem integrators, consultants en interne identiteits teams. Ze zijn vertrouwd met OpenID Connect Connect flows en begrijpen identiteits providers en verificatie op basis van claims. |
 | Configuratie methode | Azure Portal met een gebruikers vriendelijke gebruikers interface (UI). | Rechtstreeks bewerken van XML-bestanden en vervolgens uploaden naar de Azure Portal. |

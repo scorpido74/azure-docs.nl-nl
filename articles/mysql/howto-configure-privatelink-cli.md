@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4161379c844506b3f50b162979ad6fa312e0bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368006"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485440"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met CLI
 
@@ -45,7 +45,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Beleid voor privé-eind punten van subnet uitschakelen 
-Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt [netwerk](../private-link/disable-private-endpoint-network-policy.md)uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -78,7 +78,9 @@ az mysql server create \
 --sku-name GP_Gen5_2
 ```
 
-Opmerking de MySQL-Server-ID is ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/servername.``` vergelijkbaar met de mysql-server-id in de volgende stap. 
+> [!NOTE]
+> In sommige gevallen bevinden de Azure Database for MySQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
+> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. DBforMySQL** is geregistreerd. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
 
 ## <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken 
 Maak een persoonlijk eind punt voor de MySQL-server in uw Virtual Network: 
@@ -88,7 +90,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MySQL Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMySQL/servers/$Servername" \    
     --group-ids mysqlServer \  
     --connection-name myConnection  
  ```
@@ -137,7 +139,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+        > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
@@ -169,11 +171,11 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     | ------- | ----- |
     | Verbindingsnaam| Selecteer de verbindings naam van uw keuze.|
     | Hostnaam | *Mydemoserver.privatelink.mysql.database.Azure.com* selecteren |
-    | Gebruikersnaam | Voer de gebruikers *username@servername* naam in, die wordt opgegeven tijdens het maken van de mysql-server. |
+    | Gebruikersnaam | Voer de gebruikers naam in, *username@servername* die wordt opgegeven tijdens het maken van de mysql-server. |
     | Wachtwoord | Voer een wacht woord in dat is opgegeven tijdens het maken van de MySQL-server. |
     ||
 
-5. Selecteer Verbinden.
+5. Selecteer Verbinding maken.
 
 6. Bladeren door data bases vanuit het menu links.
 
@@ -190,3 +192,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Wat is Azure persoonlijk eind punt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ?
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

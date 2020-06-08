@@ -8,20 +8,20 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220149"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485176"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>azcopy-Bench Mark
 
 Voert een prestatie-Bench Mark uit door test gegevens naar een opgegeven bestemming te uploaden. De test gegevens worden automatisch gegenereerd.
 
 De Bench Mark-opdracht voert hetzelfde upload proces uit als ' kopie ', met uitzonde ring van het volgende:
 
-  - Er is geen bron parameter.  Voor de opdracht is alleen een doel-URL vereist. In de huidige release moet deze doel-URL verwijzen naar een BLOB-container.
+  - Er is geen bron parameter.  Voor de opdracht is alleen een doel-URL vereist. 
   
   - De payload wordt beschreven door opdracht regel parameters, waarmee wordt bepaald hoeveel bestanden automatisch worden gegenereerd en hoe groot ze zijn. Het generatie proces vindt volledig in het geheugen plaats. De schijf wordt niet gebruikt.
   
@@ -31,14 +31,14 @@ De Bench Mark-opdracht voert hetzelfde upload proces uit als ' kopie ', met uitz
   
   - Standaard worden de overgebrachte gegevens verwijderd aan het einde van de test uitvoering.
 
-De Bench Mark-modus wordt automatisch afgestemd op het aantal parallelle TCP-verbindingen dat de maximale door Voer geeft. Het nummer wordt aan het einde weer gegeven. Als u automatisch afstemmen wilt voor komen, stelt u de AZCOPY_CONCURRENCY_VALUE omgevings variabele in op een specifiek aantal verbindingen.
+De Bench Mark-modus wordt automatisch afgestemd op het aantal parallelle TCP-verbindingen dat de maximale door Voer geeft. Het nummer wordt aan het einde weer gegeven. Stel de omgevings variabele AZCOPY_CONCURRENCY_VALUE in op een specifiek aantal verbindingen om autotuning te voor komen.
 
 Alle gebruikelijke verificatie typen worden ondersteund. De meest handige benadering voor benchmarking is meestal om een lege container met een SAS-token te maken en SAS-verificatie te gebruiken.
 
 ## <a name="examples"></a>Voorbeelden
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 Voer een bench Mark-test uit met de standaard parameters (geschikt voor benchmarking-netwerken tot 1 Gbps): '
@@ -49,7 +49,7 @@ Voer een bench Mark-test uit die 100 bestanden uploadt, elk 2 GiB in grootte: (g
 
 - azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS> " --bestands aantal 100--grootte-per bestand, 2G
 
-Hetzelfde als hierboven, maar gebruik 50.000-bestanden, elke 8 MiB in grootte en bereken de MD5-hashes (op dezelfde manier als met de vlag--put-MD5 wordt gebruikgemaakt van de Kopieer opdracht). Het doel van--put-MD5 wanneer u vergelijkt, is om te testen of de MD5-berekening van invloed is op de door Voer voor het geselecteerde aantal bestanden en de grootte:
+Voer een bench Mark-test uit, maar gebruik 50.000-bestanden, elke 8 MiB in grootte en bereken de MD5-hashes (op dezelfde manier als de `--put-md5` vlag dit doet in de Kopieer opdracht). Het doel van `--put-md5` wanneer de benchmarking is om te testen of de MD5-berekening van invloed is op de door Voer voor het geselecteerde aantal bestanden en de grootte:
 
 - azcopy Bank "https://[account]. blob. core. Windows. net/[container]? <SAS> " --bestands aantal 50000--grootte-per-bestand 8 min.--put-MD5
 

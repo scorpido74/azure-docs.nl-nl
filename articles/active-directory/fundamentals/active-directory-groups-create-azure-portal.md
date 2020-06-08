@@ -7,59 +7,63 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
-ms.topic: quickstart
-ms.date: 03/01/2019
+ms.topic: conceptual
+ms.date: 06/05/2020
 ms.author: ajburnle
 ms.reviewer: krbain
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c551a81788df8d68664abaa03f467a4521222d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 85e00c360fb8fa279ec836deaf4e9b3b7e2efdb4
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73473462"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484467"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Een basisgroep maken en leden toevoegen met Azure Active Directory
 U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../users-groups-roles/index.yml).
 
-## <a name="create-a-basic-group-and-add-members"></a>Een basisgroep maken en leden toevoegen
-U kunt op hetzelfde moment een basisgroep maken en leden toevoegen.
+## <a name="group-and-membership-types"></a>Groeps-en lidmaatschaps typen
+Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie bevat uitleg over elke groep en elk type lidmaatschap en waarom ze worden gebruikt, om u te helpen bepalen welke opties u moet gebruiken wanneer u een groep maakt.
 
-### <a name="to-create-a-basic-group-and-add-members"></a>Een basisgroep maken en leden toevoegen
+### <a name="group-types"></a>Groeps typen:
+- **Beveiliging**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Zie [toegang tot resources beheren met Azure Active Directory groupsManage toegang tot resources met Azure Active Directory groepen](active-directory-manage-groups.md)voor meer informatie over het beheren van toegang tot resources.
+- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+
+### <a name="membership-types"></a>Lidmaatschaps typen:
+- **Assign.** Hiermee kunt u specifieke gebruikers lid maken van deze groep en hen unieke machtigingen geven. Voor de doeleinden van dit artikel gebruiken we deze optie.
+- **Dynamische gebruiker.** Met kunt u dynamische lidmaatschaps regels gebruiken om leden automatisch toe te voegen en te verwijderen. Als de kenmerken van een lid wijzigen, controleert het systeem de dynamische groepsregels voor de map om te zien of het lid aan de regelvereisten voldoet (wordt toegevoegd) of niet langer voldoet aan de regelvereisten (wordt verwijderd).
+- **Dynamisch apparaat.** Hiermee kunt u dynamische groepsregels gebruiken voor automatisch toevoegen en verwijderen van apparaten. Als de kenmerken van een apparaat wijzigen, controleert het systeem de dynamische groepsregels voor de map om te zien of het apparaat aan de regelvereisten voldoet (wordt toegevoegd) of niet langer voldoet aan de regelvereisten (wordt verwijderd).
+
+    > [!IMPORTANT]
+    > U kunt een dynamische groep voor apparaten of gebruikers, maar niet voor beide maken. Het is evenmin mogelijk om een apparaatgroep te maken op basis van kenmerken van de apparaateigenaren. Regels voor apparaatlidmaatschap kunnen alleen verwijzen naar apparaatkenmerken. Zie [een dynamische groep maken en de status controleren](../users-groups-roles/groups-create-rule.md) voor meer informatie over het maken van een dynamische groep voor gebruikers en apparaten.
+
+## <a name="create-a-basic-group-and-add-members"></a>Een basisgroep maken en leden toevoegen
+U kunt op hetzelfde moment een basisgroep maken en leden toevoegen. Gebruik de volgende procedure om een basis groep te maken en leden toe te voegen:
+
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met het account van een globale administrator voor de map.
 
 1. Zoek naar **Azure Active Directory** en selecteer deze optie.
-
-    ![Azure AD-pagina, met groepen die worden weer gegeven](media/active-directory-groups-create-azure-portal/search-active-directory.png)
 
 1. Selecteer op de pagina **Active Directory** **groepen** en selecteer vervolgens **nieuwe groep**.
 
     ![Azure AD-pagina, met groepen die worden weer gegeven](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-1. Vul op de pagina **nieuwe groep** de vereiste gegevens in.
+1. Het deel venster **nieuwe groep** wordt weer gegeven en u moet de vereiste gegevens invullen.
 
     ![Pagina van de nieuwe groep ingevuld met de voorbeeld-info](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-   - **Groepstype (vereist).** Selecteer een vooraf gedefinieerd groepstype. Dit omvat:- **Security**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Zie voor meer informatie over het beheren van toegang tot resources [Toegang tot resources beheren met Azure Active Directory-groepen](active-directory-manage-groups.md).
-               - **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Deze optie geeft u ook de mogelijkheid om mensen buiten uw organisatie toegang te geven tot de groep. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+1. Selecteer een vooraf gedefinieerd **groeps type**. Zie voor meer informatie over groeps typen [groeps-en lidmaatschaps typen](#group-types).
 
-   - **Groepsnaam (vereist).** Voeg een naam voor de groep toe, iets wat u moet onthouden en dat klinkt logisch. Er wordt een controle uitgevoerd om te bepalen of de naam al wordt gebruikt voor een andere groep. Als de naam al in gebruik is, wordt u gevraagd de naam van uw groep te wijzigen om te voor komen dat er dubbele namen worden gebruikt.
+1. Maak een **groeps naam** en voeg deze toe. Kies een naam die u kunt onthouden en die zinvol is voor de groep. Er wordt een controle uitgevoerd om te bepalen of de naam al wordt gebruikt door een andere groep. Als de naam al in gebruik is, wordt u gevraagd de naam van uw groep te wijzigen om te voor komen dat er dubbele namen worden gebruikt.
 
-   - **E-mail adres van groep (vereist).** Voeg een e-mail adres voor de groep toe of behoud het e-mail adres dat automatisch wordt ingevuld.
+1. Voeg een **e-mail adres** voor de groep toe voor de groep of behoud het e-mail adres dat automatisch wordt ingevuld.
 
-   - **Groepsbeschrijving.** Voeg een optionele beschrijving toe aan uw groep.
+1. **Groepsbeschrijving.** Voeg een optionele beschrijving toe aan uw groep.
 
-   - **Lidmaatschapstype (vereist).** Selecteer een vooraf gedefinieerd lidmaatschapstype. Dit omvat:- **toegewezen.** Hiermee kunt u specifieke gebruikers lid maken van deze groep en hen unieke machtigingen geven. Voor de doeleinden van dit artikel gebruiken we deze optie.
-          - **Dynamische gebruiker.** Met kunt u dynamische lidmaatschaps regels gebruiken om leden automatisch toe te voegen en te verwijderen. Als de kenmerken van een lid wijzigen, controleert het systeem de dynamische groepsregels voor de map om te zien of het lid aan de regelvereisten voldoet (wordt toegevoegd) of niet langer voldoet aan de regelvereisten (wordt verwijderd).
-          - **Dynamisch apparaat.** Hiermee kunt u dynamische groepsregels gebruiken voor automatisch toevoegen en verwijderen van apparaten. Als de kenmerken van een apparaat wijzigen, controleert het systeem de dynamische groepsregels voor de map om te zien of het apparaat aan de regelvereisten voldoet (wordt toegevoegd) of niet langer voldoet aan de regelvereisten (wordt verwijderd).
+1. Selecteer een vooraf gedefinieerd **type lidmaatschap (vereist).** Zie voor meer informatie over lidmaatschaps typen [groeps-en lidmaatschaps typen](#membership-types).
 
-        >[!Important]
-        >U kunt een dynamische groep voor apparaten of gebruikers, maar niet voor beide maken. Het is evenmin mogelijk om een apparaatgroep te maken op basis van kenmerken van de apparaateigenaren. Regels voor apparaatlidmaatschap kunnen alleen verwijzen naar apparaatkenmerken. Zie [Een dynamische groep maken en de status controleren](../users-groups-roles/groups-create-rule.md) voor meer informatie over het maken van een dynamische groep voor gebruikers en apparaten.
-
-1. Selecteer **Maken**.
-
-    Uw groep is gemaakt en gereed om leden toe te voegen.
+1. Selecteer **Maken**. Uw groep is gemaakt en gereed om leden toe te voegen.
 
 1. Selecteer het gebied **Leden** van de pagina **Groep** en begin vervolgens te zoeken naar de leden om ze toe te voegen aan uw groep van de pagina **Leden selecteren**.
 
@@ -71,25 +75,12 @@ U kunt op hetzelfde moment een basisgroep maken en leden toevoegen.
 
     ![Pagina Groepsoverzicht met aantal leden gemarkeerd](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
-## <a name="turn-on-or-off-welcome-email"></a>Welkomst bericht in-of uitschakelen
+## <a name="turn-on-or-off-group-welcome-email"></a>Welkomst bericht van groep in-of uitschakelen
 
 Wanneer een nieuwe Office 365-groep wordt gemaakt, of het nu een dynamisch of statisch lidmaatschap is, wordt een welkomst melding verzonden naar alle gebruikers die zijn toegevoegd aan de groep. Wanneer een van de kenmerken van een gebruiker of apparaat wordt gewijzigd, worden alle regels voor de dynamische groep in de organisatie verwerkt voor mogelijke lidmaatschaps wijzigingen. Gebruikers die zijn toegevoegd, ontvangen ook de welkomst melding. U kunt dit gedrag uitschakelen in [Exchange Power shell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu dat u een groep en ten minste één gebruiker hebt toegevoegd, kunt u het volgende doen:
-
-- [Groepen en leden weergeven](active-directory-groups-view-azure-portal.md)
-
-- [Groepslidmaatschap beheren](active-directory-groups-membership-azure-portal.md)
-
-- [Dynamische regels voor gebruikers in een groep beheren](../users-groups-roles/groups-create-rule.md)
-
-- [Instellingen van uw groep bewerken](active-directory-groups-settings-azure-portal.md)
-
-- [Toegang tot resources met behulp van groepen beheren](active-directory-manage-groups.md)
 
 - [Toegang tot SaaS-apps met behulp van groepen beheren](../users-groups-roles/groups-saasapps.md)
-
 - [Groepen met behulp van PowerShell-opdrachten beheren](../users-groups-roles/groups-settings-v2-cmdlets.md)
 
-- [Een Azure-abonnement aan Azure Active Directory koppelen of toevoegen](active-directory-how-subscriptions-associated-directory.md)

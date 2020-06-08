@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925980"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484563"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -139,7 +139,7 @@ Voor Indexeer functies is de verwerkings capaciteit soepel gebaseerd op één in
 
 1. Controleer in de [Azure Portal](https://portal.azure.com)op de pagina **overzicht** van het zoek service dashboard de **prijs categorie** om te bevestigen dat deze parallelle indexering kan bevatten. De lagen basis en standaard bieden meerdere replica's.
 
-2. Verhoog in **instellingen** > **schaal** [replica's](search-capacity-planning.md) voor parallelle verwerking: een extra replica voor elke Indexeer functie-workload. Geef een voldoende waarde voor het bestaande query volume. Het voldoet niet aan query werkbelastingen voor indexering is geen goede balans.
+2. U kunt zoveel Indexeer functies tegelijk uitvoeren als het aantal Zoek eenheden in uw service. **Settings**  >  [Verg root](search-capacity-planning.md) de**schaal**van replica's of partities voor parallelle verwerking in instellingen schalen: een extra replica of partitie voor elke Indexeer functie-workload. Geef een voldoende waarde voor het bestaande query volume. Het voldoet niet aan query werkbelastingen voor indexering is geen goede balans.
 
 3. Distribueer gegevens in meerdere containers op een niveau dat door Azure Cognitive Search Indexeer functies kan worden bereikt. Dit kan meerdere tabellen zijn in Azure SQL Database, meerdere containers in Azure Blob Storage of meerdere verzamelingen. Definieer één gegevens bron object voor elke tabel of container.
 
@@ -149,7 +149,7 @@ Voor Indexeer functies is de verwerkings capaciteit soepel gebaseerd op één in
 
    + Wijs elke Indexeer functie aan dezelfde index toe. Voor cognitieve Zoek werkbelastingen wijst u elke Indexeer functie aan dezelfde vaardig heden toe.
 
-   + In elke indexers definitie kunt u hetzelfde run-time uitvoerings patroon plannen. `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }` Maakt bijvoorbeeld een planning voor 2018-05-15 op alle Indexeer functies, die worden uitgevoerd op een interval van acht uur.
+   + In elke indexers definitie kunt u hetzelfde run-time uitvoerings patroon plannen. `"schedule" : { "interval" : "PT8H", "startTime" : "2018-05-15T00:00:00Z" }`Maakt bijvoorbeeld een planning voor 2018-05-15 op alle Indexeer functies, die worden uitgevoerd op een interval van acht uur.
 
 Op de geplande tijd starten alle Indexeer functies, het laden van gegevens, het Toep assen van verrijkingen (als u een cognitieve Zoek pijplijn hebt geconfigureerd) en het schrijven naar de index. De index voor updates wordt niet vergrendeld door Azure Cognitive Search. Gelijktijdige schrijf bewerkingen worden beheerd met een nieuwe poging als een bepaalde schrijf bewerking niet kan worden uitgevoerd bij de eerste poging.
 

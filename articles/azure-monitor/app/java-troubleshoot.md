@@ -3,12 +3,12 @@ title: Problemen met Application Insights in een Java-webproject oplossen
 description: 'Probleemoplossings handleiding: Live java-apps bewaken met Application Insights.'
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657177"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484782"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Probleemoplossing voor en antwoorden op vragen over Application Insights voor Java
 Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen enkele tips.
@@ -16,7 +16,7 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 ## <a name="build-errors"></a>Build-fouten
 **Bij een eclips-of IntelliJ-idee wordt bij het toevoegen van de Application Insights SDK via maven of Gradle de validatie fouten build of checksum weer geven.**
 
-* Als het afhankelijkheids `<version>` element een patroon met Joker tekens (bijvoorbeeld Maven) `<version>[2.0,)</version>` of (Gradle) `version:'2.0.+'`) gebruikt, probeert u een specifieke versie op te geven in plaats `2.0.1`van op een manier. Zie de [release opmerkingen](https://github.com/Microsoft/ApplicationInsights-Java/releases) voor de meest recente versie.
+* Als het afhankelijkheids `<version>` element een patroon met Joker tekens (bijvoorbeeld Maven) `<version>[2.0,)</version>` of (Gradle) `version:'2.0.+'` ) gebruikt, probeert u een specifieke versie op te geven in plaats van op een manier `2.0.1` . Zie de [release opmerkingen](https://github.com/Microsoft/ApplicationInsights-Java/releases) voor de meest recente versie.
 
 ## <a name="no-data"></a>Geen gegevens
 **Ik heb Application Insights toegevoegd en mijn app uitgevoerd, maar ik heb nooit gegevens in de portal gezien.**
@@ -26,14 +26,13 @@ Vragen of problemen met [Azure-toepassing inzichten in Java][java]? Hier volgen 
 * Controleer of er zich geen `<DisableTelemetry>true</DisableTelemetry>` knoop punt in het XML-bestand bevindt.
 * In uw firewall moet u mogelijk TCP-poorten 80 en 443 voor uitgaand verkeer naar dc.services.visualstudio.com openen. Bekijk de [volledige lijst met Firewall uitzonderingen](../../azure-monitor/app/ip-addresses.md)
 * Ga in het Microsoft Azure start bord naar de kaart status van de service. Als er enkele waarschuwings vermeldingen zijn, wacht u totdat ze zijn teruggekeerd naar OK. Sluit vervolgens de Blade Application Insights toepassing en open deze opnieuw.
-* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een `<SDKLogger />` element toe te voegen onder het hoofd knooppunt in het bestand ApplicationInsights. XML (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
+* [Schakel logboek registratie](#debug-data-from-the-sdk) in door een element toe te voegen `<SDKLogger />` onder het hoofd knooppunt in het bestand ApplicationInsights. XML (in de map resources in uw project) en te controleren op vermeldingen die zijn voorafgegaan door AI: info/waarschuwing/fout voor verdachte Logboeken. 
 * Controleer of het juiste ApplicationInsights. XML-bestand is geladen door de Java-SDK door te kijken naar de uitvoer berichten van de console voor een configuratie bestand is gevonden.
 * Als het configuratie bestand niet wordt gevonden, controleert u de uitvoer berichten om te zien waar het configuratie bestand wordt doorzocht en zorgt u ervoor dat de ApplicationInsights. XML zich op een van deze zoek locaties bevindt. Als vuist regel kunt u het configuratie bestand in de buurt van de Application Insights SDK-potten plaatsen. Bijvoorbeeld: in Tomcat is dit de map WEB-INF/classes. Tijdens de ontwikkeling kunt u ApplicationInsights. XML in de map resources van uw webproject plaatsen.
 * Raadpleeg ook de [pagina met github-problemen](https://github.com/Microsoft/ApplicationInsights-Java/issues) voor bekende problemen met de SDK.
 * Zorg ervoor dat u dezelfde versie van Application Insights-kern-, Web-, agent-en logboek registratie-toevoegers gebruikt om problemen met versie conflicten te voor komen.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Ik heb de gegevens weer gegeven, maar deze zijn gestopt
-* Controleer de [blog status](https://blogs.msdn.com/b/applicationinsights-status/).
 * Hebt u uw maandelijkse quotum van gegevens punten bereikt? Open instellingen/quotum en prijzen voor meer informatie. Als dat het geval is, kunt u uw abonnement upgraden of extra capaciteit betalen. Zie het [prijs schema](https://azure.microsoft.com/pricing/details/application-insights/).
 * Hebt u onlangs uw SDK bijgewerkt? Zorg ervoor dat er alleen unieke SDK-potten aanwezig zijn in de projectmap. Er mogen niet twee verschillende versies van SDK aanwezig zijn.
 * Gaat u naar de juiste AI-resource? Zorg dat de iKey van uw toepassing overeenkomt met de resource waar u telemetrie verwacht. Ze moeten hetzelfde zijn.
@@ -109,7 +108,7 @@ U kunt de logboeken ook een instructie geven om uit te voeren naar een bestand:
 
 ### <a name="spring-boot-starter"></a>Spring boot starter
 
-Voeg het volgende toe aan het `application.properties` bestand om de SDK-logboek registratie in te scha kelen met veer boot-apps met behulp van de Application Insights Spring boot Starter:
+Voeg het volgende toe aan het bestand om de SDK-logboek registratie in te scha kelen met veer boot-apps met behulp van de Application Insights Spring boot starter `application.properties` :
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -173,10 +172,10 @@ In uw firewall moet u mogelijk TCP-poorten 80 en 443 openen voor uitgaand verkee
 Zie [gegevens retentie en privacy][data].
 
 ## <a name="debug-logging"></a>Logboek registratie van fouten
-Application Insights gebruikt `org.apache.http`. Dit wordt verplaatst binnen Application Insights core-potten onder de `com.microsoft.applicationinsights.core.dependencies.http`naam ruimte. Hierdoor kunnen Application Insights scenario's afhandelen waarbij verschillende versies van dezelfde `org.apache.http` versie bestaan in één code basis.
+Application Insights gebruikt `org.apache.http` . Dit wordt verplaatst binnen Application Insights core-potten onder de naam ruimte `com.microsoft.applicationinsights.core.dependencies.http` . Hierdoor kunnen Application Insights scenario's afhandelen waarbij verschillende versies van dezelfde versie `org.apache.http` bestaan in één code basis.
 
 >[!NOTE]
->Als u logboek registratie van fout opsporing inschakelt voor alle naam ruimten in de app, worden alle modules uitgevoerd, inclusief `org.apache.http` een andere naam. `com.microsoft.applicationinsights.core.dependencies.http` Application Insights kan geen filtering Toep assen op deze aanroepen omdat de logboek aanroep wordt gemaakt door de Apache-bibliotheek. Logboek registratie van fout opsporing produceert een aanzienlijke hoeveelheid logboek gegevens en wordt niet aanbevolen voor live productie-exemplaren.
+>Als u logboek registratie van fout opsporing inschakelt voor alle naam ruimten in de app, worden alle modules uitgevoerd, inclusief een andere `org.apache.http` naam `com.microsoft.applicationinsights.core.dependencies.http` . Application Insights kan geen filtering Toep assen op deze aanroepen omdat de logboek aanroep wordt gemaakt door de Apache-bibliotheek. Logboek registratie van fout opsporing produceert een aanzienlijke hoeveelheid logboek gegevens en wordt niet aanbevolen voor live productie-exemplaren.
 
 
 ## <a name="next-steps"></a>Volgende stappen

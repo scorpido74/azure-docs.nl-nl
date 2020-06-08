@@ -3,12 +3,12 @@ title: Resources implementeren voor Tenant
 description: Hierin wordt beschreven hoe u resources implementeert in het Tenant bereik in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46e8db865b022e4fa1294c96843553a0480e559f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653329"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485448"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Resources maken op Tenant niveau
 
@@ -72,7 +72,7 @@ Gebruik [AZ Deployment Tenant Create](/cli/azure/deployment/tenant?view=azure-cl
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Voor Azure PowerShell gebruikt u [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
@@ -81,7 +81,7 @@ Voor Azure PowerShell gebruikt u [New-AzTenantDeployment](/powershell/module/az.
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Gebruik voor REST API [implementaties-maken of bijwerken in het Tenant bereik](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -117,7 +117,7 @@ Voor Tenant implementaties gelden enkele belang rijke aandachtspunten bij het ge
 
 ## <a name="create-management-group"></a>Beheergroep maken
 
-Met de [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) maakt u een beheer groep.
+Met de [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) maakt u een beheer groep.
 
 ```json
 {
@@ -143,7 +143,7 @@ Met de [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/t
 
 ## <a name="assign-role"></a>Rol toewijzen
 
-De [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) wijst een rol toe aan het Tenant bereik.
+De [volgende sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) wijst een rol toe aan het Tenant bereik.
 
 ```json
 {

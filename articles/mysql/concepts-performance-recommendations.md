@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/12/2020
-ms.openlocfilehash: cba07b84a1ddc2b9362c818ae2d3747b98379f2e
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.date: 6/3/2020
+ms.openlocfilehash: 6f41863f45bdc90cb9fe589ba0a5011dea84a67c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402648"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485207"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mysql"></a>Aanbevelingen in Azure Database for MySQL voor prestaties
 
@@ -29,23 +29,25 @@ De functie [Prestatieaanbevelingen](concepts-performance-recommendations.md) ana
 
 Open **prestatie aanbevelingen** van het gedeelte **intelligente prestaties** van de menu balk op de pagina Azure portal voor uw MySQL-server.
 
-![Landingspagina van Prestatieaanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-page.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-page.png" alt-text="Landingspagina van Prestatieaanbevelingen":::
 
 Selecteer **analyseren** en kies een Data Base, waarmee de analyse wordt gestart. Afhankelijk van uw werk belasting kan het enkele minuten duren voordat de analyse is voltooid. Wanneer de analyse is voltooid, verschijnt er een melding in de portal. Analyse voert een grondige controle uit van uw data base. We raden u aan om analyses uit te voeren tijdens rustige Peri Oden.
 
 In het venster **aanbevelingen** wordt een lijst met aanbevelingen weer gegeven als deze zijn gevonden en de gerelateerde query-id die deze aanbeveling heeft gegenereerd. Met de query-ID kunt u de [mysql. query_store](concepts-query-store.md#mysqlquery_store) weer gave gebruiken om meer te weten te komen over de query.
 
-![Nieuwe pagina prestatie aanbevelingen](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+:::image type="content" source="./media/concepts-performance-recommendations/performance-recommendations-result.png" alt-text="Nieuwe pagina prestatie aanbevelingen":::
 
 Aanbevelingen worden niet automatisch toegepast. Als u de aanbeveling wilt Toep assen, kopieert u de query tekst en voert u deze uit vanaf de client van uw keuze. Vergeet niet om te testen en te controleren om de aanbeveling te evalueren.
 
 ## <a name="recommendation-types"></a>Aanbevelings typen
 
-Momenteel worden alleen aanbevelingen voor het *maken van indexen* ondersteund.
-
-### <a name="create-index-recommendations"></a>Aanbevelingen voor index maken
+### <a name="index-recommendations"></a>Aanbevelingen voor index
 
 Bij het *maken van index* aanbevelingen worden nieuwe indexen voorgesteld om de meest frequente uitvoeringen of tijdrovende query's in de werk belasting te versnellen. Voor dit aanbevelings type moet het [query archief](concepts-query-store.md) worden ingeschakeld. In query Store worden query gegevens verzameld en worden de gedetailleerde query runtime en de frequentie statistieken beschreven die de analyse gebruikt om de aanbeveling te doen.
+
+### <a name="query-recommendations"></a>Query aanbevelingen
+
+Query aanbevelingen suggereren optimalisaties en herschrijven voor query's in de werk belasting. De prestaties van tijdrovende query's kunnen worden verbeterd door de MySQL-query anti patronen te identificeren en de syntaxis op te lossen. Voor dit aanbevelings type moet het query archief worden ingeschakeld. In query Store worden query gegevens verzameld en worden de gedetailleerde query runtime en de frequentie statistieken beschreven die de analyse gebruikt om de aanbeveling te doen.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over het [bewaken en afstemmen](concepts-monitoring.md) van Azure database for MySQL.

@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889610"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482638"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -24,7 +24,7 @@ Application Gateway publiceert gegevens punten, met de naam metrieken, naar [Azu
 
 Application Gateway biedt verschillende ingebouwde metrische gegevens voor de timing met betrekking tot de aanvraag en het antwoord, die allemaal worden gemeten in milliseconden. 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Diagram van metrische gegevens over timing, voor de Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >

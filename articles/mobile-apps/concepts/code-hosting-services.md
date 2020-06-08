@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: fdac28d50b9e03445c128a87a850294ba69fcaf9
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: db939dfee5e87312c380d57cbd5bb95f116408a0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450897"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483251"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>In de Cloud gehoste bron code beheer Services
 Als u ontwikkel teams hebt met meerdere team leden die aan dezelfde code basis werken, moet u een geschikte plaats vinden om uw code te hosten. Door de gegevens op te slaan in de Cloud en een centrale opslag plaats te hebben, kan iedereen de code bestanden uploaden, bewerken en beheren. Ze kunnen ook communiceren met andere ontwikkel aars op projecten. De code kan gemakkelijk toegankelijk zijn, ongeacht waar u zich bevindt, op voor waarde dat u een Internet verbinding hebt.

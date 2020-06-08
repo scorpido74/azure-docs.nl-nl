@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 0837d709559c8970271e8a2c2e9f69222ddedbdf
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: c4426b7d1abd7e8f5cc1fe8e0896510ac007496f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450904"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483133"
 ---
 # <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services helpt zakelijke problemen op te lossen met behulp van AI
 [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) biedt krachtige services om uw apps te laten werken met intelligente algoritmen voor het weer geven, horen, spreken, begrijpen en interpreteren van uw gebruikers die uw bedrijf moeten transformeren met behulp van kunst matige intelligentie (AI). U kunt uw mobiele toepassingen slimme, aantrekkelijke en contextuele voor uw gebruikers maken. Ontwikkel aars kunnen de Api's, Sdk's en services gebruiken om AI toe te voegen aan hun aanbiedingen en te helpen bij het bouwen van intelligente toepassingen zonder directe AI-of Data Science-vaardig heden.

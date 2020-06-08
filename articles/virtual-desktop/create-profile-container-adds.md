@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607279"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484621"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Een FSLogix-profiel container maken met Azure Files
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Een profiel container maken met Azure Files en Azure AD DS
 
 In dit artikel wordt uitgelegd hoe u een FSLogix-profiel container maakt met Azure Files en Azure Active Directory Domain Services (AD DS).
 
@@ -103,10 +103,10 @@ De toegangs sleutel voor het opslag account ophalen:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Vervang `<desired-drive-letter>` door een stationsletter van uw keuze (bijvoorbeeld `y:`).
+    - Vervang door `<desired-drive-letter>` een stationsletter van uw keuze (bijvoorbeeld `y:` ).
     - Vervang alle exemplaren van `<storage-account-name>` door de naam van het opslag account dat u eerder hebt opgegeven.
-    - Vervang `<share-name>` door de naam van de share die u eerder hebt gemaakt.
-    - Vervang `<storage-account-key>` door de sleutel van het opslag account van Azure.
+    - Vervang door `<share-name>` de naam van de share die u eerder hebt gemaakt.
+    - Vervang door `<storage-account-key>` de sleutel van het opslag account van Azure.
 
     Bijvoorbeeld:  
   
@@ -120,8 +120,8 @@ De toegangs sleutel voor het opslag account ophalen:
      icacls <mounted-drive-letter>: /grant <user-email>:(f)
      ```
 
-    - Vervang `<mounted-drive-letter>` door de letter van het station dat u wilt gebruiken door de gebruiker.
-    - Vervang `<user-email>` door de UPN van de gebruiker die dit profiel gaat gebruiken voor toegang tot de host-vm's van de sessie.
+    - Vervang door `<mounted-drive-letter>` de letter van het station dat u wilt gebruiken door de gebruiker.
+    - Vervang door `<user-email>` de UPN van de gebruiker die dit profiel gaat gebruiken voor toegang tot de host-vm's van de sessie.
 
     Bijvoorbeeld:
      
@@ -137,20 +137,20 @@ Een FSLogix-profiel container configureren:
 
 1. Meld u aan bij de host-VM die u aan het begin van dit artikel hebt geconfigureerd. vervolgens [downloadt en installeert u de FSLogix-agent](/fslogix/install-ht/).
 
-2. Pak het FSLogix-agent bestand dat u hebt gedownload uit en ga naar **x64** > -**releases**en open vervolgens **FSLogixAppsSetup. exe**.
+2. Pak het FSLogix-agent bestand dat u hebt gedownload uit en ga naar **x64**  >  -**releases**en open vervolgens **FSLogixAppsSetup. exe**.
 
 3. Wanneer het installatie programma wordt gestart, selecteert **u ik ga akkoord met de licentie voorwaarden.** Geef, indien van toepassing, een nieuwe sleutel op.
 
 4. Selecteer **Installeren**.
 
-5. Open **station C**en ga naar **programma bestanden** > **FSLogix** > **apps** om te controleren of de FSLogix-agent correct is geïnstalleerd.
+5. Open **station C**en ga naar **programma bestanden**  >  **FSLogix**  >  **apps** om te controleren of de FSLogix-agent correct is geïnstalleerd.
 
      >[!NOTE]
      > Als er meerdere virtuele machines in de hostgroep zijn, moet u stap 1 tot en met 5 herhalen voor elke VM.
 
 6. Voer de **REGI ster-editor** (regedit) uit als Administrator.
 
-7. Navigeer naar **computer** > **HKEY_LOCAL_MACHINE** > **Software** > **FSLogix**, klik met de rechter muisknop op **FSLogix**, selecteer **Nieuw**en selecteer vervolgens **sleutel**.
+7. Navigeer naar **computer**  >  **HKEY_LOCAL_MACHINE**  >  **Software**  >  **FSLogix**, klik met de rechter muisknop op **FSLogix**, selecteer **Nieuw**en selecteer vervolgens **sleutel**.
 
 8. Maak een nieuwe sleutel met de naam **Profiles**.
 
@@ -197,7 +197,7 @@ Gebruikers toewijzen:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    Net als bij de eerdere cmdlets vervangt `<your-wvd-tenant>` `<wvd-pool>`u, en `<user-principal>` door de relevante waarden.
+    Net als bij de eerdere cmdlets vervangt u, `<your-wvd-tenant>` `<wvd-pool>` en door `<user-principal>` de relevante waarden.
 
     Bijvoorbeeld:
 
@@ -231,7 +231,7 @@ Uw profiel verifiëren:
 
 6. Selecteer het pictogram **bestanden** en vouw vervolgens uw share uit.
 
-    Als alles goed is ingesteld, ziet u een **map** met een naam die als volgt is opgemaakt: `<user SID>-<username>`.
+    Als alles goed is ingesteld, ziet u een **map** met een naam die als volgt is opgemaakt: `<user SID>-<username>` .
 
 ## <a name="next-steps"></a>Volgende stappen
 

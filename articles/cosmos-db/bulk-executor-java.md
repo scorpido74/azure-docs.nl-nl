@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985640"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485368"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
 In deze zelf studie vindt u instructies voor het gebruik van de uitvoerige Java-bibliotheek van de Azure Cosmos DB om Azure Cosmos DB documenten te importeren en bij te werken. Zie [overzichts artikel bulk](bulk-executor-overview.md) -uitvoerder bibliotheek voor meer informatie over de bibliotheek voor bulk doorvoer In deze zelf studie bouwt u een Java-toepassing die wille keurige documenten genereert en deze worden bulksgewijs geïmporteerd in een Azure Cosmos-container. Na het importeren worden enkele eigenschappen van een document bulksgewijs bijgewerkt. 
 
-Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteund door Azure Cosmos DB-API-accounts voor SQL-API'S en Gremlin. In dit artikel wordt beschreven hoe u een bulk-uitvoerder Java-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van een bulk-uitvoerder .NET-bibliotheek met Gremlin-API [bulk bewerkingen uitvoeren in azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md).
+Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteund door Azure Cosmos DB-API-accounts voor SQL-API'S en Gremlin. In dit artikel wordt beschreven hoe u een bulk-uitvoerder Java-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van een bulk-uitvoerder .NET-bibliotheek met Gremlin-API [bulk bewerkingen uitvoeren in azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). De beschrijving van de bulksgewijs-uitvoerder bibliotheek is beschikbaar voor toepassingen die gebruikmaken van de Java SDK 2. x-versie. De service is momenteel niet beschikbaar voor de versies van 3. x, 4. x of hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -118,8 +118,8 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
    |int getNumberOfDocumentsImported ()  |   Het totale aantal documenten dat is geïmporteerd uit de documenten die zijn geleverd aan de API-aanroep voor bulk import.      |
    |dubbele getTotalRequestUnitsConsumed ()   |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk import.       |
    |Duration getTotalTimeTaken ()   |    De totale tijd die nodig is voor de API-aanroep voor bulk import om de uitvoering te volt ooien.     |
-   |Uitzonde ring> getErrors () weer geven\< |  Hiermee wordt de lijst met fouten opgehaald als sommige documenten uit de batch die zijn opgegeven bij de API-aanroep voor bulk import, niet kunnen worden ingevoegd.       |
-   |Object\<weer geven> getBadInputDocuments ()  |    De lijst met documenten met onjuiste indeling die niet met succes zijn geïmporteerd in de API-aanroep voor bulk import. De gebruiker moet de geretourneerde documenten herstellen en het importeren opnieuw proberen. Documenten met een onjuiste indeling bevatten documenten waarvan de ID-waarde geen teken reeks is (null of een ander gegevens type wordt als ongeldig beschouwd).     |
+   |Lijst met \<Exception> getErrors () |  Hiermee wordt de lijst met fouten opgehaald als sommige documenten uit de batch die zijn opgegeven bij de API-aanroep voor bulk import, niet kunnen worden ingevoegd.       |
+   |Lijst met \<Object> getBadInputDocuments ()  |    De lijst met documenten met onjuiste indeling die niet met succes zijn geïmporteerd in de API-aanroep voor bulk import. De gebruiker moet de geretourneerde documenten herstellen en het importeren opnieuw proberen. Documenten met een onjuiste indeling bevatten documenten waarvan de ID-waarde geen teken reeks is (null of een ander gegevens type wordt als ongeldig beschouwd).     |
 
 5. Nadat u de toepassing voor bulk import gereed hebt, bouwt u het opdracht regel programma vanuit de bron met behulp van de opdracht ' MVN Cleanup package '. Met deze opdracht wordt een jar-bestand in de doelmap gegenereerd:  
 
@@ -182,7 +182,7 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
    |int getNumberOfDocumentsUpdated ()  |   Het totale aantal documenten dat is bijgewerkt van de documenten die zijn geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |dubbele getTotalRequestUnitsConsumed () |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk updates.       |
    |Duration getTotalTimeTaken ()  |   De totale tijd die nodig is voor de API-aanroep voor bulk updates om de uitvoering te volt ooien.      |
-   |Uitzonde ring> getErrors () weer geven\<   |       Hiermee wordt de lijst met fouten opgehaald als sommige documenten uit de batch die zijn opgegeven voor de API-aanroep voor bulksgewijs bijwerken, niet kunnen worden ingevoegd.      |
+   |Lijst met \<Exception> getErrors ()   |       Hiermee wordt de lijst met fouten opgehaald als sommige documenten uit de batch die zijn opgegeven voor de API-aanroep voor bulksgewijs bijwerken, niet kunnen worden ingevoegd.      |
 
 3. Nadat u de toepassing voor bulk update gereed hebt, bouwt u het opdracht regel programma vanuit de bron met behulp van de opdracht ' MVN Cleanup package '. Met deze opdracht wordt een jar-bestand in de doelmap gegenereerd:  
 

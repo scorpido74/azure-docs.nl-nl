@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b7b551fcace5289b9ffd9fb131b5ba1120b3fdd2
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220700"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483696"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Beheer van verificatiesessies met voorwaardelijke toegang configureren
 
@@ -54,6 +54,8 @@ De instelling voor de aanmeldings frequentie werkt met apps waarop OAUTH2 of OID
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Aanmeldings frequentie van gebruikers en multi-factor Authentication
 
 De aanmeldings frequentie is eerder alleen toegepast op de eerste factor Authentication op apparaten die zijn toegevoegd aan Azure AD, hybride Azure AD en geregistreerde Azure AD. Er is geen eenvoudige manier voor onze klanten om multi-factor Authentication (MFA) op deze apparaten opnieuw af te dwingen. Op basis van feedback van klanten is de aanmeldings frequentie ook van toepassing op MFA.
+
+[![Aanmeldings frequentie en MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Aanmeldings frequentie van gebruikers en apparaat-id's
 

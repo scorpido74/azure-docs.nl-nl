@@ -3,12 +3,12 @@ title: Azure-toepassing Insights automatiseren met Power shell | Microsoft Docs
 description: Het maken en beheren van resources, waarschuwingen en beschikbaarheids tests in Power shell automatiseren met behulp van een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697922"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485422"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -473,5 +473,4 @@ Andere automatiserings artikelen:
 * [Waarschuwingen instellen](powershell-alerts.md)
 * [Webtests maken](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Diagnostische Azure-gegevens verzenden naar Application Insights](powershell-azure-diagnostics.md)
-* [Implementeren in azure vanuit GitHub](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Release aantekeningen maken](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

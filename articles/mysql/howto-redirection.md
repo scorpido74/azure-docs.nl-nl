@@ -5,20 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660274"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483371"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Verbinding maken met Azure Database for MySQL met behulp van omleiding
 
 In dit onderwerp wordt uitgelegd hoe u met de omleidings modus verbinding maakt met een toepassing op uw Azure Database for MySQL-server. Omleiding is gericht op het verminderen van de netwerk latentie tussen client toepassingen en MySQL-servers door toepassingen toe te staan rechtstreeks verbinding te maken met back-end-server knooppunten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij [Azure Portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+## <a name="enable-redirection"></a>Omleiding inschakelen
+
+Configureer op uw Azure Database for MySQL-server de `redirect_enabled` para meter om `ON` verbindingen met de omleidings modus toe te staan. Gebruik de [Azure Portal](howto-server-parameters.md) of [Azure cli](howto-configure-server-parameters-using-cli.md)om deze server parameter bij te werken.
 
 ## <a name="php"></a>PHP
 

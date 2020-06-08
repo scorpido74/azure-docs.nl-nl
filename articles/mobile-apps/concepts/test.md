@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-0000-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 61f489cdd2c0493a88a2292eec8394a0dab31bd6
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 3349a7148ab4f5d381666c19cf19e8f44dccd728
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450925"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485259"
 ---
 # <a name="perform-automated-testing-on-thousands-of-mobile-devices-simultaneously"></a>Automatisch testen op duizenden mobiele apparaten tegelijk uitvoeren
 Testen kunnen lastig en steeds complex zijn vanwege een apparaat-fragmentatie, toepassings complexiteit, snelle release cycli, korte sessies en hoge gebruikers verwachtingen. Zorg ervoor dat u regel matig geteste toepassingen levert die een fantastische klant ervaring bieden. Testen is geen eenvoudige taak en het is geen goed idee om elke release hand matig te testen.

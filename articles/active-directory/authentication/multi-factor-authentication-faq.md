@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271400"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483790"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure Multi-Factor Authentication
 
@@ -163,7 +163,7 @@ Verwijder alle app-wacht woorden van de gebruiker om onbevoegde toegang te voor 
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Wat gebeurt er als een gebruiker zich niet kan aanmelden bij niet-browser-apps?
 
-Als uw organisatie nog steeds verouderde clients gebruikt en u [het gebruik van app-wacht woorden hebt toegestaan](howto-mfa-mfasettings.md#app-passwords), kunnen uw gebruikers zich niet aanmelden bij deze verouderde clients met hun gebruikers naam en wacht woord. In plaats daarvan moeten ze [app-wacht woorden instellen](../user-help/multi-factor-authentication-end-user-app-passwords.md). Uw gebruikers moeten hun aanmeldings gegevens wissen (verwijderen), de app opnieuw starten en u vervolgens aanmelden met de gebruikers naam en het *app-wacht woord* in plaats van het normale wacht woord.
+Als uw organisatie nog steeds verouderde clients gebruikt en u [het gebruik van app-wacht woorden hebt toegestaan](howto-mfa-app-passwords.md), kunnen uw gebruikers zich niet aanmelden bij deze verouderde clients met hun gebruikers naam en wacht woord. In plaats daarvan moeten ze [app-wacht woorden instellen](../user-help/multi-factor-authentication-end-user-app-passwords.md). Uw gebruikers moeten hun aanmeldings gegevens wissen (verwijderen), de app opnieuw starten en u vervolgens aanmelden met de gebruikers naam en het *app-wacht woord* in plaats van het normale wacht woord.
 
 Als uw organisatie geen verouderde clients heeft, mag u uw gebruikers niet toestaan om app-wacht woorden te maken.
 
@@ -257,4 +257,4 @@ Als uw vraag hier niet wordt beantwoord, zijn de volgende ondersteunings opties 
 * Zoek in de [Microsoft ondersteuning Knowledge Base](https://support.microsoft.com) naar oplossingen voor veelvoorkomende technische problemen.
 * Zoek en blader door technische vragen en antwoorden van de Community of vraag uw eigen vraag in het [Azure Active Directory Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html).
 * Neem contact op met micro soft Professional via [ondersteuning voor Azure multi-factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Wanneer u contact met ons opneemt, is het handig als u zoveel mogelijk informatie over uw probleem kunt opnemen. Informatie die u kunt opgeven, omvat de pagina waar u de fout hebt gezien, de specifieke fout code, de specifieke sessie-ID en de ID van de gebruiker die de fout heeft gezien.
-* Als u een verouderde Phone factor-klant bent en u vragen hebt of hulp nodig hebt bij het opnieuw instellen [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) van een wacht woord, gebruikt u het e-mail adres om een ondersteunings aanvraag te openen.
+* Als u een verouderde Phone factor-klant bent en u vragen hebt of hulp nodig hebt bij het opnieuw instellen van een wacht woord, gebruikt u het [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) e-mail adres om een ondersteunings aanvraag te openen.

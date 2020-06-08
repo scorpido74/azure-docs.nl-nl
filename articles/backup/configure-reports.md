@@ -3,12 +3,12 @@ title: Azure Backup-rapporten configureren
 description: Rapporten voor Azure Backup configureren en weer geven met behulp van Log Analytics en Azure-werkmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797530"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484982"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -22,7 +22,7 @@ Momenteel biedt Azure Backup een rapportage oplossing die gebruikmaakt van [Azur
 
 ## <a name="supported-scenarios"></a>Ondersteunde scenario's
 
-- Back-uprapporten worden ondersteund voor virtuele Azure-machines, SQL in azure Vm's, SAP HANA in azure Vm's, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) en System Center Data Protection Manager (DPM). De gegevens voor back-up van Azure-bestands shares zijn momenteel niet zichtbaar in back-uprapporten.
+- Back-uprapporten worden ondersteund voor virtuele Azure-machines, SQL in azure Vm's, SAP HANA in azure Vm's, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) en System Center Data Protection Manager (DPM). Voor Azure file share backup worden gegevens weer gegeven voor alle records die zijn gemaakt op of na 1 juni 2020.
 - Voor DPM-workloads worden back-uprapporten ondersteund voor de DPM-versie 5.1.363.0 en hoger en de agent versie 2.0.9127.0 en hoger.
 - Voor MABS-werk belastingen worden back-uprapporten ondersteund voor de MABS-versie 13.0.415.0 en hoger en de agent versie 2.0.9170.0 en hoger.
 - Back-uprapporten kunnen worden weer gegeven voor alle back-upitems, kluizen, abonnementen en regio's, zolang hun gegevens worden verzonden naar een Log Analytics werk ruimte waartoe de gebruiker toegang heeft. Als u rapporten voor een set kluizen wilt weer geven, hoeft u alleen lezers toegang te hebben tot de Log Analytics werk ruimte waarnaar de kluizen hun gegevens verzenden. U hebt geen toegang tot de afzonderlijke kluizen.

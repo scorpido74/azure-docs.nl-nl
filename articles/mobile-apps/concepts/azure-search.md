@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-8982-8345-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 33ef251f60a833721e17d36d8df01a6095434af5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 424284799e5a823601473853aece3a598c50513b
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450995"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483300"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>De Cloud service AI-Powered met Azure Cognitive Search
 [Azure Cognitive Search](https://azure.microsoft.com/services/search/) is een in-as-a-Service-Cloud oplossing die ontwikkel aars api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen om een index te maken en te laden. Aan de andere kant worden met de toepassings code query aanvragen aangevraagd en worden antwoorden verwerkt. De zoek ervaring wordt in uw client gedefinieerd door gebruik te maken van de functionaliteit van Azure Cognitive Search, met het uitvoeren van query's in een persistente index die u in uw service maakt, bezit en opslaat.

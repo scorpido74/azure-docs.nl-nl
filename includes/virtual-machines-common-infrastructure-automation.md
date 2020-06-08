@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844624"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485753"
 ---
 Om Azure virtual machines (Vm's) op een consistente manier te maken en te beheren, is een vorm van automatisering doorgaans gewenst. Er zijn veel hulpprogram ma's en oplossingen waarmee u de volledige levens cyclus van Azure-infrastructuur implementatie en-beheer kunt automatiseren. In dit artikel worden enkele van de hulpprogram ma's voor het automatiseren van de infra structuur geïntroduceerd die u in azure kunt gebruiken. Deze hulpprogram ma's passen doorgaans in op een van de volgende benaderingen:
 
@@ -52,7 +52,7 @@ Leer hoe u het volgende doet:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een Linux-VM als deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat Cloud-init wordt aangeroepen tijdens het eerste opstart proces, zijn er geen extra stappen of vereiste agents om uw configuratie toe te passen.  Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor `#cloud-config` meer informatie over het correct format teren van uw bestanden.  `#cloud-config`bestanden zijn tekst bestanden die worden gecodeerd in base64.
+[Cloud-init](https://cloudinit.readthedocs.io) is een veelgebruikte benadering voor het aanpassen van een Linux-VM als deze voor de eerste keer wordt opgestart. U kunt cloud-init gebruiken voor het installeren van pakketten en schrijven van bestanden, of om gebruikers en beveiliging te configureren. Omdat Cloud-init wordt aangeroepen tijdens het eerste opstart proces, zijn er geen extra stappen of vereiste agents om uw configuratie toe te passen.  `#cloud-config`Zie de [Cloud-init-documentatie site](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)voor meer informatie over het correct format teren van uw bestanden.  `#cloud-config`bestanden zijn tekst bestanden die worden gecodeerd in base64.
 
 Cloud-init werkt ook in distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het hulpprogramma voor systeemeigen pakketbeheer voor de distro die u selecteert.
 
@@ -100,7 +100,7 @@ Leer hoe u het volgende doet:
 
 Leer hoe u het volgende doet:
 
-- [Installeer en configureer terraform met Azure](/azure/developer/terraform/install-configure).
+- [Installeer en configureer terraform met Azure](/azure/developer/terraform/getting-started-cloud-shell).
 - [Een Azure-infra structuur maken met terraform](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure).
 
 

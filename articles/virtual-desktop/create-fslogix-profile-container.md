@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296354"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484634"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Een FSLogix-profiel container maken voor een hostgroep met Azure NetApp Files
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Een profiel container maken met Azure NetApp Files en AD DS
 
 We raden u aan om FSLogix-profiel containers als een gebruikers profiel oplossing te gebruiken voor de [virtueel-bureaublad service van Windows](overview.md). FSLogix-profiel containers slaan een volledig gebruikers profiel op in één container en zijn ontworpen om profielen te zwerven in niet-permanente, externe computer omgevingen zoals Windows virtueel bureau blad. Wanneer u zich aanmeldt, wordt de container dynamisch aan de computer omgeving gekoppeld met behulp van een lokaal ondersteunde virtuele harde schijf (VHD) en Hyper-V virtuele harde schijf (VHDX). Met deze geavanceerde filter technologieën kan het gebruikers profiel onmiddellijk beschikbaar zijn en in het systeem worden weer gegeven op dezelfde manier als een lokaal gebruikers profiel. Zie [FSLogix-profiel containers en Azure files](fslogix-containers-azure-files.md)voor meer informatie over FSLogix-profiel containers.
 
@@ -142,7 +142,7 @@ Nadat u het volume hebt gemaakt, configureert u de volume toegangs parameters.
 2.  Selecteer onder configuratie in de vervolg keuzelijst **Active Directory** de map waarin u oorspronkelijk verbinding hebt gemaakt in [lid worden van een Active Directory-verbinding](create-fslogix-profile-container.md#join-an-active-directory-connection). Houd er wel voor dat er een limiet van één Active Directory per abonnement is.
 3.  Voer in het tekstvak **share naam** de naam in van de share die wordt gebruikt door de sessiehost en de gebruikers.
 
-4.  Selecteer onder aan de pagina **bekijken + maken** . Hiermee opent u de pagina validatie. Nadat het volume is gevalideerd, selecteert u **maken**.
+4.  Selecteer **Controleren en maken** onderaan de pagina. Hiermee opent u de pagina validatie. Nadat het volume is gevalideerd, selecteert u **maken**.
 
 5.  Op dit moment zal het nieuwe volume worden geïmplementeerd. Zodra de implementatie is voltooid, kunt u de Azure NetApp Files share gebruiken.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495324"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485321"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>Failback van virtuele VMware-machines naar een on-premises site
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u back-ups van virtuele Azure-machines naar 
 
 ## <a name="run-a-failover-to-fail-back"></a>Een failover uitvoeren om een failback uit te voeren
 
-1. Zorg ervoor dat de virtuele machines van Azure opnieuw worden beveiligd en gerepliceerd naar de on-premises site. 
+1. Zorg ervoor dat de virtuele machines van Azure opnieuw worden beveiligd en gerepliceerd naar de on-premises site.
     - Een virtuele machine moet ten minste één herstel punt hebben om failback te kunnen uitvoeren.
     - Als u een herstel plan failback terugzet, moeten alle computers in het plan ten minste één herstel punt hebben.
 2. Selecteer de virtuele machine in de kluis > **gerepliceerde items**. Klik met de rechter muisknop op de virtuele machine > niet- **geplande failover**.

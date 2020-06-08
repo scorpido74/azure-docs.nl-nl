@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538461"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484307"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure lente Cloud CI/CD met GitHub-acties
 
@@ -99,7 +99,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -118,7 +118,7 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>Implementeren met Azure CLI-actie
-De opdracht `run` AZ maakt gebruik van de nieuwste versie van Azure cli. Als er belang rijke wijzigingen zijn, kunt u ook een specifieke versie van Azure CLI gebruiken met Azure/ `action`cli. 
+De `run` opdracht AZ maakt gebruik van de nieuwste versie van Azure cli. Als er belang rijke wijzigingen zijn, kunt u ook een specifieke versie van Azure CLI gebruiken met Azure/CLI `action` . 
 
 > [!Note] 
 > Deze opdracht wordt uitgevoerd in een nieuwe container, dus `env` werkt niet en de toegang tot cross Action-bestanden heeft mogelijk extra beperkingen.
@@ -142,7 +142,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -183,7 +183,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login
@@ -198,7 +198,7 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>De werk stroom uitvoeren
-GitHub- **acties** moeten automatisch worden ingeschakeld nadat u `.github/workflow/main.yml` naar github hebt gepusht. De actie wordt geactiveerd wanneer u een nieuwe door Voer pusht. Als u dit bestand in de browser maakt, moet uw actie al worden uitgevoerd.
+GitHub- **acties** moeten automatisch worden ingeschakeld nadat u naar github hebt gepusht `.github/workflow/main.yml` . De actie wordt geactiveerd wanneer u een nieuwe door Voer pusht. Als u dit bestand in de browser maakt, moet uw actie al worden uitgevoerd.
 
 Als u wilt controleren of de actie is ingeschakeld, klikt u op het tabblad **acties** op de pagina github-opslag plaats:
 

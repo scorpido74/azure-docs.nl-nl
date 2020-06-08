@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434641"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484520"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Toegangs sleutels voor het opslag account opnieuw genereren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,27 +105,35 @@ Gebruik de volgende stappen om Azure Machine Learning bij te werken voor het geb
 
         Met deze opdracht worden automatisch de nieuwe sleutels gesynchroniseerd voor het Azure-opslag account dat wordt gebruikt door de werk ruimte.
 
-1. Als u de Data Store (s) die gebruikmaken van het opslag account opnieuw wilt registreren, gebruikt u de waarden in de sectie [Wat moet worden bijgewerkt](#whattoupdate) en de sleutel uit stap 1 met de volgende code:
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. U kunt de gegevens die gebruikmaken van het opslag account opnieuw registreren via de SDK of [de Azure machine learning Studio](https://ml.azure.com).
+    1. **Als u gegevens opslag opnieuw wilt registreren via de python-SDK**, gebruikt u de waarden in de sectie [Wat moet worden bijgewerkt](#whattoupdate) en de sleutel uit stap 1 met de volgende code. 
+    
+        Sinds `overwrite=True` is opgegeven, overschrijft deze code de bestaande registratie en werkt deze bij om de nieuwe sleutel te gebruiken.
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    Sinds `overwrite=True` is opgegeven, overschrijft deze code de bestaande registratie en werkt deze bij om de nieuwe sleutel te gebruiken.
+    1. **Als u gegevens opslag opnieuw wilt registreren via Studio**, selecteert u **gegevens opslag** in het linkerdeel venster van de Studio. 
+        1. Selecteer de gegevens opslag die u wilt bijwerken.
+        1. Selecteer de knop **referenties bijwerken** in de linkerbovenhoek. 
+        1. Gebruik uw nieuwe toegangs sleutel uit stap 1 om het formulier in te vullen en klik op **Opslaan**.
+        
+            Als u de referenties voor uw **standaard gegevens opslag**bijwerkt, voert u deze stap uit en herhaalt u stap 2b om uw nieuwe sleutel opnieuw te synchroniseren met de standaard gegevens opslag van de werk ruimte. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

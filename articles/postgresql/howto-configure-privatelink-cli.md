@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a6baf8b4609382be4a5a31d12cac581da2c17de6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7bb3d95760910868fb113c90a246d5c1c7c27c91
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81011664"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484966"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Een persoonlijke koppeling voor Azure Database for PostgreSQL-één server maken en beheren met CLI
 
@@ -49,7 +49,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Beleid voor privé-eind punten van subnet uitschakelen 
-Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt netwerk uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure implementeert resources in een subnet binnen een virtueel netwerk, dus u moet het subnet maken of bijwerken om beleid voor privé-eindpunt [netwerk](../private-link/disable-private-endpoint-network-policy.md)uit te scha kelen. Een subnet-configuratie met de naam *mySubnet* bijwerken met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -82,8 +82,6 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-Houd er rekening mee dat ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/servername.``` de postgresql-server-id vergelijkbaar is met de postgresql-server-id in de volgende stap. 
-
 ## <a name="create-the-private-endpoint"></a>Het persoonlijke eind punt maken 
 Maak een persoonlijk eind punt voor de PostgreSQL-server in uw Virtual Network: 
 ```azurecli-interactive
@@ -92,7 +90,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<PostgreSQL Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforPostgreSQL/servers/$Servername" \  
     --group-ids postgresqlServer \  
     --connection-name myConnection  
  ```
@@ -124,6 +122,10 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 > [!NOTE] 
 > De FQDN in de DNS-instelling van de klant wordt niet omgezet naar het geconfigureerde particuliere IP-adres. U moet een DNS-zone voor de geconfigureerde FQDN instellen, zoals [hier](../dns/dns-operations-recordsets-portal.md)wordt weer gegeven.
 
+> [!NOTE]
+> In sommige gevallen bevinden de Azure Database for PostgreSQL en het VNet-subnet zich in verschillende abonnementen. In deze gevallen moet u ervoor zorgen dat u de volgende configuraties hebt:
+> - Zorg ervoor dat voor beide abonnementen de resource provider **micro soft. DBforPostgreSQL** is geregistreerd. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
 Maak als volgt verbinding met de VM- *myVm* van het Internet:
@@ -141,7 +143,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
-        > Mogelijk moet u **meer opties** > selecteren**een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
+        > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 1. Selecteer **OK**.
 
@@ -172,12 +174,12 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     | ------- | ----- |
     | Servertype| Selecteer **postgresql**.|
     | Servernaam| *Mydemopostgresserver.privatelink.postgres.database.Azure.com* selecteren |
-    | Gebruikersnaam | Voer de gebruikers username@servername naam in die wordt opgegeven tijdens het maken van de postgresql-server. |
+    | Gebruikersnaam | Voer de gebruikers naam in username@servername die wordt opgegeven tijdens het maken van de postgresql-server. |
     |Wachtwoord |Voer een wacht woord in dat u hebt opgegeven tijdens het maken van de PostgreSQL-server. |
     |SSL|Selecteer **vereist**.|
     ||
 
-5. Selecteer Verbinden.
+5. Selecteer Verbinding maken.
 
 6. Bladeren door data bases vanuit het menu links.
 
@@ -194,3 +196,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Wat is Azure persoonlijk eind punt](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) ?
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md
