@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: Bereiken begrijpen en gebruiken
           href: understand-work-scopes.md
+        - name: Kosten beheren met automatisering
+          href: manage-automation.md
         - name: Migreren van EA naar MCA-API's
           href: migrate-cost-management-api.md
     - name: Instructiegidsen

@@ -1,6 +1,6 @@
 ---
-title: SQL op aanvraag gebruiken (preview-versie)
-description: In deze Quick start ziet u en leert u hoe eenvoudig verschillende typen bestanden kunnen worden opgevraagd met behulp van SQL op aanvraag (preview).
+title: SQL on-demand gebruiken (preview-versie)
+description: In deze quickstart ziet u en leert u hoe u eenvoudig een query kunt uitvoeren op verschillende bestandstypen met SQL on-demand (preview-versie).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,100 +9,89 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: MT
+ms.openlocfilehash: 6d107dcbdc31a0049c7685e6dd8223bda694a526
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692177"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83836801"
 ---
-# <a name="quickstart-using-sql-on-demand"></a>Snelstartgids: SQL on-demand gebruiken
+# <a name="quickstart-use-sql-on-demand"></a>Quickstart: SQL on-demand gebruiken
 
-Synapse SQL on-demand (preview) is een serverloze query service waarmee u SQL-query's kunt uitvoeren op bestanden die in Azure Storage worden geplaatst. In deze Quick Start leert u hoe u verschillende typen bestanden kunt zoeken met behulp van SQL op aanvraag.
+Synapse SQL on-demand (preview-versie) is een serverloze queryservice waarmee u SQL-query's kunt uitvoeren op bestanden die in Azure Storage zijn geplaatst. In deze quickstart leert u hoe u een query kunt uitvoeren op verschillende typen bestanden met SQL on-demand. De ondersteunde indelingen worden weergegeven in [OPENROWSET](sql/develop-openrowset.md).
 
-De volgende bestands typen worden ondersteund: JSON, CSV, Apache Parquet
+In deze quickstart leert u hoe u query's uitvoert op: CSV-, Apache Parquet- en JSON-bestanden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Kies een SQL-client om query's uit te geven:
+Kies een SQL-client waarmee u query's wilt uitvoeren:
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) is een hulp programma dat u kunt gebruiken om te bladeren in bestanden in de opslag en SQL-query's te maken.
-- [Azure Data Studio](sql/get-started-azure-data-studio.md) is een client hulpprogramma waarmee u SQL-query's en-notitie blokken kunt uitvoeren op uw Data Base op aanvraag.
-- [SQL Server Management Studio](sql/get-started-ssms.md) is een client hulpprogramma waarmee u SQL-query's kunt uitvoeren op uw Data Base op aanvraag.
+- [Azure Synapse Studio](quickstart-synapse-studio.md) is een webhulpprogramma waarmee u kunt zoeken naar bestanden in opslag en SQL-query's kunt maken.
+- [Azure Data Studio](sql/get-started-azure-data-studio.md) is een clienthulpprogramma waarmee u SQL-query's en notebooks kunt uitvoeren op uw on-demand database.
+- [SQL Server Management Studio](sql/get-started-ssms.md) is een clienthulpprogramma waarmee u SQL-query's kunt uitvoeren op uw on-demand database.
 
-Para meters voor Quick Start:
+Parameters voor deze quickstart:
 
 | Parameter                                 | Beschrijving                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL on-demand service-eindpunt adres    | Gebruikt als server naam                                   |
-| SQL on-demand service-eindpunt regio     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in voor beelden |
-| Gebruikers naam en wacht woord voor endpoint Access | Gebruikt voor toegang tot het eind punt                               |
-| De data base die wordt gebruikt voor het maken van weer gaven         | Data base gebruikt als uitgangs punt in voor beelden       |
+| Adres van SQL on-demand service-eindpunt    | Gebruikt als servernaam                                   |
+| Regio van SQL on-demand service-eindpunt     | Wordt gebruikt om te bepalen welke opslag wordt gebruikt in voorbeelden |
+| Gebruikersnaam en wachtwoord voor eindpunttoegang | Gebruikt voor toegang tot het eindpunt                               |
+| De database die wordt gebruikt voor het maken van weergaven         | De database die wordt gebruikt als uitgangspunt in voorbeelden       |
 
-## <a name="first-time-setup"></a>Eerste keer instellen
+## <a name="first-time-setup"></a>De eerste installatie
 
-Voordat u de voor beelden gebruikt:
+Voordat u de voorbeelden gaat gebruiken, moet u het volgende doen:
 
-- Maak een Data Base voor uw weer gaven (voor het geval u weer gaven wilt gebruiken)
-- Referenties maken voor gebruik door SQL op aanvraag om toegang te krijgen tot bestanden in de opslag
+- Maak een database voor uw weergaven (wanneer u gebruik wilt maken van weergaven)
+- Referenties maken voor gebruik door SQL on-demand om toegang te krijgen tot bestanden in opslag
 
 ### <a name="create-database"></a>Database maken
 
-Maak uw eigen Data Base voor demonstratie doeleinden. U gebruikt deze data base om uw weer gaven en voor de voorbeeld query's in dit artikel te maken.
+Maak uw eigen database voor demonstratiedoeleinden. U gebruikt deze database om uw weergaven te maken en voor de voorbeeldquery's in dit artikel.
 
 > [!NOTE]
-> De data bases worden alleen gebruikt voor het weer geven van meta gegevens, niet voor werkelijke gegevens.
->Noteer de naam van de data base die u voor later in de Quick Start gebruikt.
+> De databases worden alleen gebruikt voor het weergeven van metagegevens, niet voor de werkelijke gegevens.
+>Noteer de naam van de database die u verderop in de quickstart gaat gebruiken.
 
-Gebruik de volgende query en wijzig `mydbname` de naam van uw keuze:
+Gebruik de volgende query om `mydbname` te wijzigen in een naam van uw keuze:
 
 ```sql
 CREATE DATABASE mydbname
 ```
 
-### <a name="create-credentials"></a>Referenties maken
+### <a name="create-data-source"></a>Gegevensbron maken
 
-Als u query's wilt uitvoeren met behulp van SQL op aanvraag, maakt u referenties voor SQL on-demand om te gebruiken voor toegang tot bestanden in de opslag.
-
-> [!NOTE]
-> Als u voor beelden in deze sectie wilt uitvoeren, moet u een SAS-token gebruiken.
->
-> Als u SAS-tokens wilt gebruiken, moet u de UserIdentity verwijderen die wordt beschreven in het volgende [artikel](sql/develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
->
-> SQL on-demand standaard maakt altijd gebruik van AAD Pass-through.
-
-Zie voor meer informatie over het beheren van opslag toegangs beheer de[toegang tot het beheer van opslag accounts voor SQL op aanvraag](sql/develop-storage-files-storage-access-control.md) .
-
-Voer het volgende code fragment uit om referenties te maken die worden gebruikt in de voor beelden in deze sectie:
+Als u query's wilt uitvoeren met behulp van SQL on-demand, maakt u een gegevensbron die door SQL on-demand kan worden gebruikt voor toegang tot bestanden in de opslag.
+Voer het volgende codefragment uit om de gegevensbron te maken die in de voorbeelden in deze sectie wordt gebruikt:
 
 ```sql
 -- create credentials for containers in our demo storage account
-IF EXISTS
-   (SELECT * FROM sys.credentials
-   WHERE name = 'https://sqlondemandstorage.blob.core.windows.net')
-   DROP CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
-GO
-
-CREATE CREDENTIAL [https://sqlondemandstorage.blob.core.windows.net]
+CREATE DATABASE SCOPED CREDENTIAL sqlondemand
 WITH IDENTITY='SHARED ACCESS SIGNATURE',  
 SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
 GO
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
 ```
 
-## <a name="querying-csv-files"></a>Query's uitvoeren op CSV-bestanden
+## <a name="query-csv-files"></a>Query uitvoeren op CSV-bestanden
 
-De volgende afbeelding is een voor beeld van het bestand waarin een query moet worden uitgevoerd:
+De volgende afbeelding is een voorbeeld van het bestand waarop een query moet worden uitgevoerd:
 
-![Eerste tien rijen van het CSV-bestand zonder kop, Windows-stijl nieuwe regel.](./sql/media/query-single-csv-file/population.png)
+![Eerste tien rijen van het CSV-bestand zonder koptekst, nieuwe regel in Windows-stijl.](./sql/media/query-single-csv-file/population.png)
 
-De volgende query laat zien hoe u een CSV-bestand leest dat geen koprij bevat, met Windows-stijl nieuwe regel en door komma's gescheiden kolommen:
+De volgende query laat zien hoe u een CSV-bestand leest dat geen headerrij bevat, met een nieuwe regel in Windows-stijl en door komma's gescheiden kolommen:
 
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population/*.csv'
-    , FORMAT = 'CSV'
+      BULK 'csv/population/*.csv',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT = 'CSV', PARSER_VERSION = '2.0'
   )
 WITH
   (
@@ -116,31 +105,32 @@ WHERE
 ```
 
 U kunt het schema opgeven bij het compileren van de query.
-Zie How to [query CSV file](sql/query-single-csv-file.md)(Engelstalig) voor meer voor beelden.
+Zie [Query uitvoeren op CSV-bestand](sql/query-single-csv-file.md)voor meer voorbeelden.
 
-## <a name="querying-parquet-files"></a>Query's uitvoeren op Parquet-bestanden
+## <a name="query-parquet-files"></a>Query uitvoeren op Parquet-bestanden
 
-In het volgende voor beeld ziet u de mogelijkheden voor het automatisch afnemen van schema's voor het uitvoeren van query's op Parquet-bestanden. Het retourneert het aantal rijen in september van 2017 zonder schema op te geven.
+In het volgende voorbeeld ziet u de mogelijkheden voor het automatisch afleiden van schema's voor het uitvoeren van query's op Parquet-bestanden. Hierbij wordt het aantal rijen in september 2017 geretourneerd zonder een schema op te geven.
 
 > [!NOTE]
-> U hoeft geen columns in-component `OPENROWSET WITH` op te geven bij het lezen van Parquet-bestanden. In dat geval maakt SQL op aanvraag gebruik van meta gegevens in het Parquet-bestand en worden kolommen op naam gebonden.
+> U hoeft geen kolommen op te geven in de component `OPENROWSET WITH` bij het lezen van Parquet-bestanden. In dat geval maakt SQL on-demand gebruik van metagegevens in het Parquet-bestand en worden kolommen op naam gekoppeld.
 
 ```sql
 SELECT COUNT_BIG(*)
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/year=2017/month=9/*.parquet'
-    , FORMAT='PARQUET'
+      BULK 'parquet/taxi/year=2017/month=9/*.parquet',
+      DATA_SOURCE = 'SqlOnDemandDemo',
+      FORMAT='PARQUET'
   ) AS nyc
 ```
 
-Meer informatie over het [uitvoeren van query's op Parquet-bestanden](sql/query-parquet-files.md).
+Zie [Query uitvoeren op Parquet-bestanden](sql/query-parquet-files.md) voor meer informatie.
 
-## <a name="querying-json-files"></a>JSON-bestanden opvragen
+## <a name="query-json-files"></a>Query uitvoeren op JSON-bestanden
 
-### <a name="json-sample-file"></a>JSON-voorbeeld bestand
+### <a name="json-sample-file"></a>JSON-voorbeeldbestand
 
-Bestanden worden opgeslagen in *JSON* -container, in mappen *boeken*en bevatten één boek vermelding met de volgende structuur:
+Bestanden worden opgeslagen in de *json*-container en de map *boeken* en bevatten één boekvermelding met de volgende structuur:
 
 ```json
 {  
@@ -158,9 +148,9 @@ Bestanden worden opgeslagen in *JSON* -container, in mappen *boeken*en bevatten 
 }
 ```
 
-### <a name="querying-json-files"></a>JSON-bestanden opvragen
+### <a name="query-json-files"></a>Query uitvoeren op JSON-bestanden
 
-De volgende query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de titel *Probabilistic en statistische methoden in Cryptology, een inleiding op geselecteerde artikelen*:
+De volgende query laat zien hoe u [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunt gebruiken om scalaire waarden (titel, uitgever) op te halen uit een boek met de titel *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected articles*:
 
 ```sql
 SELECT
@@ -169,7 +159,8 @@ SELECT
   , jsonContent
 FROM OPENROWSET
   (
-      BULK 'https://sqlondemandstorage.blob.core.windows.net/json/books/*.json'
+      BULK 'json/books/*.json',
+      DATA_SOURCE = 'SqlOnDemandDemo'
     , FORMAT='CSV'
     , FIELDTERMINATOR ='0x0b'
     , FIELDQUOTE = '0x0b'
@@ -182,19 +173,19 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> Het hele JSON-bestand wordt als één rij/kolom gelezen. So, FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn ingesteld op 0x0B, omdat we niet verwachten dat deze in het bestand worden gevonden.
+> Het gehele JSON-bestand wordt als één rij/kolom gelezen. FIELDTERMINATOR, FIELDQUOTE en ROWTERMINATOR zijn daarom ingesteld op 0x0B, omdat deze naar verwachting niet in het bestand worden gevonden.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu door gaan met de volgende artikelen:
+U kunt nu doorgaan met de volgende artikelen:
 
-- [Query uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)
-- [Query mappen en meerdere CSV-bestanden](sql/query-folders-multiple-csv-files.md)
+- [Query's uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)
+- [Query's uitvoeren op mappen en meerdere CSV-bestanden](sql/query-folders-multiple-csv-files.md)
 - [Query's uitvoeren op specifieke bestanden](sql/query-specific-files.md)
-- [Query uitvoeren op Parquet-bestanden](sql/query-parquet-files.md)
+- [Query's uitvoeren op Parquet-bestanden](sql/query-parquet-files.md)
 - [Query uitvoeren op met Parquet geneste typen](sql/query-parquet-nested-types.md)
-- [Query uitvoeren op JSON-bestanden](sql/query-json-files.md)
-- [Weer gaven maken en gebruiken](sql/create-use-views.md)
+- [Query's uitvoeren op JSON-bestanden](sql/query-json-files.md)
+- [Weergaven maken en gebruiken](sql/create-use-views.md)
 - [Externe tabellen maken en gebruiken](sql/create-use-external-tables.md)
-- [Query resultaten persistent maken naar Azure Storage](sql/create-external-table-as-select.md)
-- [Query uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)
+- [Queryresultaten behouden in Azure Storage](sql/create-external-table-as-select.md)
+- [Query's uitvoeren op één CSV-bestand](sql/query-single-csv-file.md)

@@ -9,31 +9,31 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: f3e53ac189e0d612b09c362e82ba5bc2fe5fec8d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424025"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696828"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS met Synapse SQL
 
-In SQL-groep of SQL-aanvraag (preview) kunt u een externe tabel maken als SELECT (CETAS) gebruiken om de volgende taken uit te voeren:  
+In SQL-pool of SQL on-demand (preview) kunt u CREATE EXTERNAL TABLE AS SELECT (CETAS) gebruiken om de volgende taken uit te voeren:  
 
 - Een externe tabel maken
-- De resultaten van een Transact-SQL-instructie SELECT parallel exporteren naar
+- De resultaten van de Transact-SQL-instructie SELECT gelijktijdig exporteren naar
 
   - Hadoop
   - Azure Storage Blob
   - Azure Data Lake Storage Gen2
 
-## <a name="cetas-in-sql-pool"></a>CETAS in SQL-groep
+## <a name="cetas-in-sql-pool"></a>CETAS in SQL-pool
 
-Schakel voor de SQL-groep het CETAS-gebruik en de syntaxis het selectie vakje [externe tabel maken als artikel selecteren in](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Raadpleeg voor meer informatie over CTAS met SQL-pool het artikel [Create Table als selecteren](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
+Bekijk het artikel [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor het gebruik en de syntaxis van CETAS in SQL-pool. Raadpleeg daarnaast het artikel [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie over CTAS met SQL-pool.
 
 ## <a name="cetas-in-sql-on-demand"></a>CETAS in SQL op aanvraag
 
-Wanneer u de SQL on-demand-resource gebruikt, wordt CETAS gebruikt om een externe tabel te maken en query resultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
+Wanneer u de SQL on-demand-resource gebruikt, wordt CETAS gebruikt om een externe tabel te maken en queryresultaten te exporteren naar Azure Storage Blob of Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxis
 
@@ -54,42 +54,47 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 ## <a name="arguments"></a>Argumenten
 
-*[[ *database_name* . [ *SCHEMA_NAME* ]. ] | *SCHEMA_NAME* . ] *table_name**
+*[ [ *database_name* . [ *schema_name* ] . ] | *schema_name* . ] *table_name**
 
-De naam van een tot drie delen van de tabel die u wilt maken. Voor een externe tabel slaat SQL on demand alleen de meta gegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL op aanvraag.
+De uit een tot drie delen bestaande naam van de tabel die u wilt maken. Voor een externe tabel slaat SQL on-demand alleen de metagegevens van de tabel op. Er worden geen werkelijke gegevens verplaatst of opgeslagen in SQL on-demand.
 
-LOCATION = *' path_to_folder '*
+LOCATION = *'path_to_folder'*
 
-Hiermee wordt aangegeven waar de resultaten van de SELECT-instructie in de externe gegevens bron moeten worden geschreven. De hoofdmap is de gegevenslocatie die in de externe gegevensbron is opgegeven. De locatie moet verwijzen naar een map en een navolgende/hebben. Voor beeld: aggregated_data/
+Hiermee wordt aangegeven waarheen de resultaten van de SELECT-instructie in de externe gegevensbron moeten worden geschreven. De hoofdmap is de gegevenslocatie die is opgegeven in de externe gegevensbron. LOCATION moet naar een map verwijzen en een navolgende / bevatten. Voorbeeld: aggregated_data/
 
 DATA_SOURCE = *external_data_source_name*
 
-Hiermee geeft u de naam van het externe gegevens bron object op dat de locatie bevat waar de externe gegevens worden opgeslagen. Als u een externe gegevens bron wilt maken, gebruikt u [externe gegevens bron maken (Transact-SQL)](develop-tables-external-tables.md#create-external-data-source).
+Hiermee geeft u de naam op van het object voor de externe gegevensbron die de locatie bevat waar de externe gegevens worden opgeslagen. Als u een externe gegevensbron wilt maken, gebruikt u [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](develop-tables-external-tables.md#create-external-data-source).
 
 FILE_FORMAT = *external_file_format_name*
 
-Hiermee geeft u de naam op van het externe bestands indelings object dat de indeling van het externe gegevens bestand bevat. Als u een externe bestands indeling wilt maken, gebruikt u [externe BESTANDS indeling maken (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). Alleen externe bestands indelingen met de indeling ' PARQUET ' worden momenteel ondersteund.
+Hiermee geeft u de naam op van het object voor de externe bestandsindeling dat de indeling van het externe gegevensbestand bevat. Als u een externe bestandsindeling wilt maken, gebruikt u [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). Alleen externe bestandsindelingen met FORMAT=PARQUET worden momenteel ondersteund.
 
-MET *<common_table_expression>*
+WITH *<common_table_expression>*
 
-Hiermee geeft u een tijdelijke benoemde resultatenset, ook wel een CTE (common table Expression) genoemd. Zie [met common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie.
+Hiermee geeft u een tijdelijke benoemde resultatenset op, ook wel een algemene tabelexpressie (Common Table Expression of CTE) genoemd. Zie [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor meer informatie.
 
-Selecteer <select_criteria>
+SELECT <select_criteria>
 
-De nieuwe tabel wordt gevuld met de resultaten van een SELECT-instructie. *select_criteria* is de hoofd tekst van de instructie SELECT die bepaalt welke gegevens naar de nieuwe tabel moeten worden gekopieerd. Zie [Select (Transact-SQL) (Engelstalig)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)voor meer informatie over SELECT-instructies.
+Hiermee wordt de nieuwe tabel gevuld met de resultaten van een SELECT-instructie. *select_criteria* is de hoofdtekst van de SELECT-instructie die bepaalt welke gegevens naar de nieuwe tabel moeten worden gekopieerd. Zie [SELECT (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) voor informatie over SELECT-instructies.
+
+> [!NOTE]
+> Het component ORDER BY in het gedeelte met SELECT van CETAS wordt niet ondersteund.
 
 ## <a name="permissions"></a>Machtigingen
 
-U moet machtigingen hebben om Mapinhoud weer te geven en te schrijven naar de map locatie om CETAS te kunnen gebruiken.
+CETAS werkt alleen als u over machtigingen beschikt om mapinhoud weer te geven en naar de map LOCATION te schrijven.
 
 ## <a name="examples"></a>Voorbeelden
 
-In deze voor beelden wordt CETAS gebruikt voor het opslaan van het totale aantal geaggregeerde populaties per jaar en status in een aggregated_data map die zich in de population_ds gegevens bron bevindt.
+In deze voorbeelden wordt CETAS gebruikt om de totale populatie die is samengevoegd op jaar en staat op te slaan in de map aggregated_data die zich in de gegevensbron population_ds bevindt.
 
-Dit voor beeld is afhankelijk van de referentie, de gegevens bron en de externe bestands indeling die eerder is gemaakt. Raadpleeg het document [externe tabellen](develop-tables-external-tables.md) . Als u query resultaten wilt opslaan in een andere map in dezelfde gegevens bron, wijzigt u het argument locatie. Als u resultaten wilt opslaan in een ander opslag account, moet u een andere gegevens bron maken en gebruiken voor DATA_SOURCE argument.
+Dit voorbeeld is afhankelijk van de referentie, de gegevensbron en de externe bestandsindeling die eerder zijn gemaakt. Raadpleeg het document over [externe tabellen](develop-tables-external-tables.md). Als u de queryresultaten in een andere map in dezelfde gegevensbron wilt opslaan, wijzigt u het argument LOCATION. 
+
+Als u de resultaten in een ander opslagaccount wilt opslaan, moet u voor het argument DATA_SOURCE een andere gegevensbron maken en gebruiken.
 
 > [!NOTE]
-> De volgende voor beelden gebruiken een openbaar Azure open data storage-account. Het is alleen-lezen. Als u deze query's wilt uitvoeren, moet u de gegevens bron opgeven waarvoor u schrijf machtigingen hebt.
+> In de volgende voorbeelden wordt gebruikgemaakt van een openbaar Azure Open Data-opslagaccount. Het is alleen-lezen. Als u deze query's wilt uitvoeren, moet u de gegevensbron opgeven waarvoor u over schrijfmachtigingen beschikt.
 
 ```sql
 -- use CETAS to export select statement with OPENROWSET result to  storage
@@ -111,7 +116,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-In het voor beeld hieronder wordt een externe tabel gebruikt als de bron voor CETAS. Dit is afhankelijk van de referentie, de gegevens bron, de externe bestands indeling en de externe tabel die eerder is gemaakt. Raadpleeg het document [externe tabellen](develop-tables-external-tables.md) .
+In het volgende voorbeeld wordt een externe tabel gebruikt als de bron voor CETAS. Het is afhankelijk van de referentie, de gegevensbron, de externe bestandsindeling en de externe tabel die eerder zijn gemaakt. Raadpleeg het document over [externe tabellen](develop-tables-external-tables.md).
 
 ```sql
 -- use CETAS with select from external table
@@ -131,9 +136,9 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-## <a name="supported-data-types"></a>Ondersteunde gegevens typen
+## <a name="supported-data-types"></a>Ondersteunde gegevenstypen
 
-CETAS kan worden gebruikt om resultaten sets op te slaan met de volgende SQL-gegevens typen:
+CETAS kan worden gebruikt om resultatensets met de volgende SQL-gegevenstypen op te slaan:
 
 - binair
 - varbinary
@@ -152,19 +157,20 @@ CETAS kan worden gebruikt om resultaten sets op te slaan met de volgende SQL-geg
 - tinyint
 - bit
 
-LOBs kan niet worden gebruikt met CETAS.
+> [!NOTE]
+> LOB's kunnen niet met CETAS worden gebruikt.
 
-De volgende gegevens typen kunnen niet worden gebruikt in het gedeelte SELECT of CETAS:
+De volgende gegevenstypen kunnen niet worden gebruikt in het gedeelte met SELECT van CETAS:
 
 - nchar
 - nvarchar
 - datum/tijd
 - smalldatetime
-- date time offset
-- financieel
+- datetimeoffset
+- money
 - smallmoney
 - uniqueidentifier
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt proberen een query uit te zoeken naar [Spark-tabellen](develop-storage-files-spark-tables.md).
+U kunt proberen om query's uit te voeren op [externe tabellen van Apache Spark voor Azure Synapse](develop-storage-files-spark-tables.md).

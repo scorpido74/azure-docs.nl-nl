@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: Bronmap voor JavaScript
                   href: app/source-map-support.md
+                - name: Problemen oplossen
+                  items:
+                    - name: SDK-laadfout
+                      href: app/javascript-sdk-load-failure.md
             - name: API-samenvatting voor Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: Aanvragen voor profileren bijhouden
               href: app/profiler-trackrequests.md
+            - name: BYOS configureren (Bring Your Own Storage)
+              href: app/profiler-bring-your-own-storage.md
             - name: Problemen met profiler oplossen
               href: app/profiler-troubleshooting.md
         - name: Snapshot Debugger
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: Snapshot Debugger upgraden
               href: app/snapshot-debugger-upgrade.md
+            - name: BYOS configureren (Bring Your Own Storage)
+              href: app/profiler-bring-your-own-storage.md
             - name: Problemen met Snapshot Debugger oplossen
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

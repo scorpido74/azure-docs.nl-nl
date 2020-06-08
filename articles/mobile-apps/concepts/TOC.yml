@@ -1,0 +1,55 @@
+- name: Mobiele apps met Azure-documentatie
+  href: index.md
+- name: Overzicht
+  expanded: true
+  items:
+    - name: Een mobiel ontwikkelingsframework kiezen
+      href: front-end-development-platform.md
+    - name: Fasen in cloudontwikkeing voor mobiele apps
+      href: stages-overview.md
+- name: Concepten
+  items:
+    - name: Verificatie
+      href: authentication.md
+    - name: Gegevens
+      items:
+        - name: Gegevensopslag
+          href: data-storage.md
+        - name: Azure Storage
+          href: azure-storage.md
+        - name: Azure Content Delivery Network
+          href: azure-cdn.md
+    - name: Compute
+      items:
+        - name: Serverloze compute
+          href: serverless-compute.md
+        - name: Realtime-apps
+          href: real-time.md
+    - name: Broncodebeheer
+      href: code-hosting-services.md
+    - name: DevOps
+      items:
+        - name: Wat is DevOps?
+          href: devops.md
+        - name: Continue bouw en integratie
+          href: continuous-integration.md
+        - name: Testen op echte apparaten
+          href: test.md
+        - name: Continue levering
+          href: continuous-delivery.md
+    - name: Telemetrie
+      items:
+        - name: Gebruik en gedrag van gebruikers analyseren
+          href: analytics.md
+        - name: Foutrapportage in realtime
+          href: diagnostics.md
+    - name: Pushmeldingen
+      href: push-notifications.md
+    - name: Machine learning
+      items:
+        - name: Azure Cognitive Services
+          href: cognitive-services.md
+        - name: Azure Maps
+          href: azure-maps.md
+        - name: Azure Cognitive Search
+          href: azure-search.md

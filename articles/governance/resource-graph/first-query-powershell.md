@@ -1,16 +1,16 @@
 ---
-title: 'Snelstartgids: uw eerste Power shell-query'
-description: In deze Quick Start voert u de stappen uit om de module Resource Graph in te scha kelen voor Azure PowerShell en om uw eerste query uit te voeren.
-ms.date: 11/21/2019
+title: 'Quickstart: Uw eerste PowerShell-query'
+description: In deze quickstart volgt u de stappen om de Resource Graph-module voor Azure PowerShell in te schakelen en uw eerste query uit te voeren.
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e98ca5974ba46d4d908cfe6dd8c04d3f6ba33a2a
+ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240658"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83872011"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure PowerShell
 
 De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het controleren of de module voor Azure PowerShell is geïnstalleerd. In deze snelstartgids doorloopt u het proces voor het toevoegen van de module aan uw Azure PowerShell-installatie.
 
@@ -18,13 +18,13 @@ Aan het einde van dit proces hebt u de module toegevoegd aan de Azure PowerShell
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>De Resource Graph-module toevoegen
 
-De module moet worden toegevoegd opdat Azure PowerShell query's kan uitvoeren voor Azure Resource Graph. Deze module kan worden gebruikt met lokaal geïnstalleerde Power shell, met [Azure Cloud shell](https://shell.azure.com), of met de [Power shell-docker-installatie kopie](https://hub.docker.com/_/microsoft-powershell).
+De module moet worden toegevoegd opdat Azure PowerShell query's kan uitvoeren voor Azure Resource Graph. Deze module kan worden gebruikt met lokaal geïnstalleerde PowerShell, met [Azure Cloud Shell](https://shell.azure.com) of met de [PowerShell Docker-installatiekopie](https://hub.docker.com/_/microsoft-powershell).
 
 ### <a name="base-requirements"></a>Basisvereisten
 
@@ -45,7 +45,7 @@ De Resource Graph-module voor PowerShell is **Az.ResourceGraph**.
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Controleer of de module is geïmporteerd en de meest recente versie is (0.7.5):
+1. Valideer als volgt of de nieuwste versie (0.7.5) van de module is geïmporteerd:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -76,7 +76,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
    ```
 
    > [!NOTE]
-   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Hiermee worden de queryresultaten eerst beperkt en daarna geordend.
+   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Met deze opdracht worden de queryresultaten eerst beperkt en vervolgens gerangschikt.
 
 1. Werk de query als volgt bij om eerst te `order by` op de eigenschap **naam** en daarna de resultaten van de top vijf te `limit`:
 
@@ -85,10 +85,10 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
    Search-AzGraph -Query 'Resources | project name, type | order by name asc | limit 5'
    ```
 
-Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.
+Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en gesorteerd op de eigenschap **Naam**, maar nog steeds beperkt tot de top vijf.
 
 > [!NOTE]
-> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, wordt de `Search-AzGraph` cmdlet standaard ingesteld op abonnementen in de standaard context. `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Als u de lijst met abonnements-id's wilt zien die deel uitmaken van de standaard context uitvoeren als u wilt zoeken in alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues voor `Search-AzGraph` de cmdlet instellen door uit te voeren`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, zal de cmdlet `Search-AzGraph` standaard worden ingesteld op abonnementen in de standaardcontext. Als u de lijst met abonnements-id's wilt weergeven die deel uitmaken van de standaardcontext, voert u de opdracht `(Get-AzContext).Account.ExtendedProperties.Subscriptions` uit. Als u in alle abonnementen wilt doorzoeken waartoe u toegang hebt, kunt u PSDefaultParameterValues voor de cmdlet `Search-AzGraph` instellen door de opdracht `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` uit te voeren.
    
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -107,7 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de module Resource grafiek toegevoegd aan uw Azure PowerShell-omgeving en wordt uw eerste query uitgevoerd. Ga verder naar de pagina met details van de query taal voor meer informatie over de taal van de resource grafiek.
+In deze quickstart hebt u de Resource Graph-module toegevoegd aan uw Azure PowerShell-omgeving en uw eerste query uitgevoerd. Ga door naar de pagina met details van de querytaal voor meer informatie over de taal van Resource Graph.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de query taal](./concepts/query-language.md)
+> [Meer informatie over de querytaal](./concepts/query-language.md)

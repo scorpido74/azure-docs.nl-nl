@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: Model trainen
       href: train-model.md
+    - name: Pytorch-model trainen
+      href: train-pytorch-model.md
     - name: Model Hyperparameters afstemmen
       href: tune-model-hyperparameters.md
 - name: Model scoren en evalueren
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: Model evalueren
       href: evaluate-model.md
+    - name: Afbeeldingsmodel voor score
+      href: score-image-model.md
     - name: Score Model
       href: score-model.md
 - name: Python-taal
@@ -142,6 +146,20 @@
       href: preprocess-text.md
     - name: Latente Dirichlet-toewijzing
       href: latent-dirichlet-allocation.md
+- name: Computer Vision
+  items:
+    - name: Afbeeldingstransformatie toepassen
+      href: apply-image-transformation.md
+    - name: Converteren naar afbeeldingsmap
+      href: convert-to-image-directory.md
+    - name: Afbeeldingstransformatie initiëren
+      href: init-image-transformation.md
+    - name: Map om afbeeldingen te splitsen
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: Aanbeveling
   items:
     - name: Aanbevelingsfunctie voor evaluatie

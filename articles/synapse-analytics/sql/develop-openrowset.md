@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591417"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702026"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -45,10 +45,12 @@ Dit is een snelle en eenvoudige manier om de inhoud van de bestanden te lezen zo
                     TYPE = 'PARQUET') AS file
     ```
 
+
     Met deze optie kunt u de locatie van het opslagaccount in de gegevensbron configureren en de verificatiemethode opgeven die moet worden gebruikt voor toegang tot de opslag. 
     
     > [!IMPORTANT]
     > `OPENROWSET` zonder `DATA_SOURCE` biedt een snelle en eenvoudige manier om toegang te krijgen tot de opslagbestanden, maar met beperkte verificatieopties. Zo kunnen Azure AD-principals alleen toegang krijgen tot bestanden met behulp van hun [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) en hebben ze geen toegang tot openbaar beschikbare bestanden. Als u krachtigere verificatieopties nodig hebt, gebruikt u `DATA_SOURCE` optie en definieert u de referenties die u wilt gebruiken voor toegang tot de opslag.
+
 
 ## <a name="security"></a>Beveiliging
 
@@ -57,10 +59,10 @@ Een databasegebruiker moet beschikken over de machtiging `ADMINISTER BULK OPERAT
 De opslagbeheerder moet een gebruiker ook in staat stellen om toegang te krijgen tot de bestanden door een geldig SAS-token te verstrekken of door de Azure AD-principal toegang te geven tot opslagbestanden. Meer informatie over toegangsbeheer voor opslag vindt u in [dit artikel](develop-storage-files-storage-access-control.md).
 
 `OPENROWSET` gebruikt de volgende regels om te bepalen hoe verificatie voor toegang tot opslag moet worden uitgevoerd:
-- Het verificatiemechanisme `OPENROWSET` met `DATA_SOURCE` is afhankelijk van het type aanroeper.
-  - AAD-aanmeldingen hebben alleen toegang tot bestanden via hun eigen [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) als Azure Storage de Azure AD-gebruiker toegang geeft tot de onderliggende bestanden (als de aanroeper bijvoorbeeld de machtiging Opslaglezer heeft voor opslag) en als u [verificatie via Azure AD Pass-Through inschakelt](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) in de Synapse SQL-service.
+- Het verificatiemechanisme `OPENROWSET` zonder `DATA_SOURCE` is afhankelijk van het type aanroeper.
+  - Azure AD-aanmeldingen hebben alleen toegang tot bestanden via hun eigen [Azure AD-identiteit](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) als Azure Storage de Azure AD-gebruiker toegang geeft tot de onderliggende bestanden (als de aanroeper bijvoorbeeld de machtiging Opslaglezer heeft voor opslag) en als u [verificatie via Azure AD Pass-Through inschakelt](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) in de Synapse SQL-service.
   - SQL-aanmeldingen kunnen ook `OPENROWSET` gebruiken zonder `DATA_SOURCE` om toegang te krijgen tot openbaar beschikbare bestanden, bestanden die zijn beveiligd met een SAS-token of beheerde identiteit van een Synapse-werkruimte. U moet [referenties binnen serverbereik maken](develop-storage-files-storage-access-control.md#examples) om toegang tot opslagbestanden toe te staan. 
-- In `OPENROWSET` met `DATA_SOURCE` wordt het verificatiemechanisme gedefinieerd in de referentie binnen databasebereik die is toegewezen aan de gegevensbron waarnaar wordt verwezen. Met deze methode kunt u toegang krijgen tot openbaar beschikbare opslag, of toegang krijgen tot opslag met behulp van een SAS-token, een beheerde identiteit van de werkruimte of [Azure AD-identiteit van de aanroeper](develop-storage-files-storage-access-control.md?tabs=user-identity#) (als dat een Azure AD-principal is). Als `DATA_SOURCE` verwijst naar Azure-opslag die niet openbaar is, moet u [referenties binnen het databasebereik maken](develop-storage-files-storage-access-control.md#examples) en hiernaar verwijzen in `DATA SOURCE` om toegang tot opslagbestanden te geven.
+- In `OPENROWSET` met `DATA_SOURCE` worden verificatiemechanismen gedefinieerd in de referentie binnen databasebereik die is toegewezen aan de gegevensbron waarnaar wordt verwezen. Met deze methode kunt u toegang krijgen tot openbaar beschikbare opslag, of toegang krijgen tot opslag met behulp van een SAS-token, een beheerde identiteit van de werkruimte of [Azure AD-identiteit van de aanroeper](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (als dat een Azure AD-principal is). Als `DATA_SOURCE` verwijst naar Azure-opslag die niet openbaar is, moet u [referenties binnen het databasebereik maken](develop-storage-files-storage-access-control.md#examples) en hiernaar verwijzen in `DATA SOURCE` om toegang tot opslagbestanden te geven.
 
 De aanroeper moet beschikken over de machtiging `REFERENCES` voor de referenties om deze te kunnen gebruiken voor verificatie bij de opslag.
 
@@ -193,7 +195,7 @@ De compressiemethode. De volgende compressiemethode wordt ondersteund:
 
 PARSER_VERSION = 'versie_van_parser'
 
-De parser-versie die moet worden gebruikt bij het lezen van bestanden. De momenteel ondersteunde parser-versies voor CSV zijn 1.0 en 2.0
+De parser-versie die moet worden gebruikt bij het lezen van bestanden. De momenteel ondersteunde parser-versies voor CSV zijn 1.0 en 2.0:
 
 - PARSER_VERSION = '1.0'
 - PARSER_VERSION = '2.0'

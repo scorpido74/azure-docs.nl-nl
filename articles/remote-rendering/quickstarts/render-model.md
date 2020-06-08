@@ -1,47 +1,47 @@
 ---
 title: Een model weergeven met Unity
-description: Quick Start waarmee de gebruiker wordt begeleid door de stappen voor het renderen van een model
+description: Quickstart waarin de stappen voor het genereren van een model worden beschreven
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: b0af45ba4a6b1ca7f9e751af082ff0db80776ec0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: be5bc8ec4e8f363d9b6079d22f3bba1af2d4d5fb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679784"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682567"
 ---
-# <a name="quickstart-render-a-model-with-unity"></a>Quick Start: een model met Unit renderen
+# <a name="quickstart-render-a-model-with-unity"></a>Quickstart: Een model weergeven met Unity
 
-In deze Snelstartgids wordt beschreven hoe u een voor beeld van een eenheid uitvoert waarmee een ingebouwd model op afstand wordt weer gegeven met de Azure remote rendering-service (ARR).
+In deze quickstart leest u hoe u een Unity-voorbeeld uitvoert, waarmee een ingebouwd model extern wordt gegenereerd met behulp van de ARR-service (Azure Remote Rendering).
 
-We gaan niet verder met de ARR API zelf of het instellen van een nieuw Unity-project. Deze onderwerpen worden behandeld in de [zelf studie: een geheel nieuw eenheids project instellen](../tutorials/unity/project-setup.md).
+We laten hier de ARR API zelf of het instellen van een nieuw Unity-project verder buiten beschouwing. Deze onderwerpen worden behandeld in [Zelfstudie: Een geheel nieuw Unity-project opstarten](../tutorials/unity/project-setup.md).
 
-In deze Quick Start leert u het volgende:
+In deze quickstart leert u het volgende:
 > [!div class="checklist"]
 >
->* Uw lokale ontwikkel omgeving instellen
->* De voor beeld-app voor ARR-Snelstartgids ophalen en bouwen voor Unity
->* Een model weer geven in de voor beeld-app ARR Quick Start
+>* De lokale ontwikkelomgeving instellen
+>* De ARR Quickstart-voorbeeld-app voor Unity ophalen en ontwikkelen
+>* Een model genereren in de ARR Quickstart-voorbeeld-app
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u toegang wilt krijgen tot de Azure remote rendering-service, moet u eerst [een account maken](../how-tos/create-an-account.md).
+Als u toegang wilt krijgen tot de Azure Remote Rendering-service, moet u eerst [een account maken](../how-tos/create-an-account.md).
 
 De volgende software moet zijn geïnstalleerd:
 
-* Windows SDK 10.0.18362.0 [(down load)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* De nieuwste versie van Visual Studio 2019 [(down load)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(down load)](https://git-scm.com/downloads)
-* Unity 2019.3.1 [(down load)](https://unity3d.com/get-unity/download)
-  * Deze modules installeren in Unity:
-    * Ondersteuning voor **UWP** -universeel Windows-platform-build
-    * **IL2CPP** -ondersteuning voor Windows-Build (IL2CPP)
+* Windows SDK 10.0.18362.0 [(download)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* De nieuwste versie van Visual Studio 2019 [(download)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Git ([download](https://git-scm.com/downloads))
+* Unity 2019.3.1 [(download)](https://unity3d.com/get-unity/download)
+  * Installeer de volgende modules in Unity:
+    * **UWP**: ondersteuning voor UWP-builds (Universeel Windows-platform)
+    * **IL2CPP**: ondersteuning voor Windows-builds (IL2CPP)
 
 ## <a name="clone-the-sample-app"></a>De voorbeeld-app klonen
 
-Open een opdracht prompt (Typ `cmd` in het menu Start van Windows) en ga naar een map waarin u het ARR-voorbeeld project wilt opslaan.
+Open een opdrachtprompt (typ `cmd` in het menu Start van Windows) en ga naar een map waarin u het ARR-voorbeeldproject wilt opslaan.
 
 Voer de volgende opdrachten uit:
 
@@ -51,66 +51,66 @@ cd ARR
 git clone https://github.com/Azure/azure-remote-rendering
 ```
 
-Met de laatste opdracht maakt u een submap in de map ARR met de verschillende voorbeeld projecten voor de externe rendering van Azure.
+Met de laatste opdracht maakt u een submap in de ARR-map die de verschillende voorbeeldprojecten voor Azure Remote Rendering bevat.
 
-De Quick start-voor beeld-app voor Unity is gevonden in de submap *Unit/Quick*start.
+De quickstart-voorbeeld-app voor Unity vindt u in de submap *Unity/Quickstart*.
 
-## <a name="rendering-a-model-with-the-unity-sample-project"></a>Een model samen stellen met het unit-voorbeeld project
+## <a name="rendering-a-model-with-the-unity-sample-project"></a>Een model genereren met het Unity-voorbeeldproject
 
-Open de eenheid voor Unity en voeg het voorbeeld project toe. Dit is de map *ARR\azure-Remote-rendering\Unity\Quickstart* .
-Open het project. Indien nodig, mag eenheid het project upgraden naar de geïnstalleerde versie.
+Open de Unity Hub en voeg het voorbeeldproject toe. Dit is de map *ARR\azure-remote-rendering\Unity\Quickstart*.
+Open het project. Sta Unity zo nodig toe om het project te upgraden naar de versie die u hebt geïnstalleerd.
 
-Het standaard model dat wordt weer gegeven, is een [ingebouwd voorbeeld model](../samples/sample-model.md). In de [volgende Snelstartgids](convert-model.md)wordt uitgelegd hoe u een aangepast model converteert met de ARR-conversie service.
+Het standaardmodel dat we genereren, is een [ingebouwd voorbeeldmodel](../samples/sample-model.md). We laten u in de [volgende quickstart](convert-model.md) zien hoe u een aangepast model converteert met de ARR-conversieservice.
 
-### <a name="enter-your-account-info"></a>Voer uw account gegevens in
+### <a name="enter-your-account-info"></a>Voer uw accountgegevens in
 
-1. Ga in de activa van Unity Asset naar de map *scènes* en open de **Quick** start-scène.
-1. Selecteer in de *hiërarchie*het **RemoteRendering** -spel object.
-1. Voer in de *Inspector*uw [account referenties](../how-tos/create-an-account.md)in.
+1. Ga in de browser voor Unity-activa naar de map *Scènes* en open de scène **Quickstart**.
+1. Selecteer in *Hiërarchie* het gameobject **RemoteRendering**.
+1. Voer in de *Inspector* uw [accountreferenties](../how-tos/create-an-account.md) in. Als u nog geen account hebt, [maakt u er een](../how-tos/create-an-account.md).
 
-![ARR-account gegevens](./media/arr-sample-account-info.png)
+![ARR-accountgegevens](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> In azure portal wordt het domein van uw account alleen als *mixedreality.Azure.com*weer gegeven. Dit is onvoldoende voor een geslaagde verbinding.
-> Stel **AccountDomain** in `<region>.mixedreality.azure.com`op, `<region>` waarbij [een van de beschik bare regio's bij u in de buurt](../reference/regions.md)is.
+> In Azure Portal wordt het domein van uw account alleen weergegeven als *mixedreality.azure.com*. Dit is onvoldoende om verbinding te maken.
+> Stel **AccountDomain** in op `<region>.mixedreality.azure.com`, waarbij `<region>` staat voor [een van de beschikbare regio's bij u in de buurt](../reference/regions.md).
 
-Later willen we dit project implementeren op een HoloLens en verbinding maken met de externe rendering-service vanaf dat apparaat. Omdat we geen eenvoudige manier hebben om de referenties op het apparaat in te voeren, slaat het Quick start-voor beeld **de referenties op in de eenheids scène**.
+Later willen we dit project implementeren op een HoloLens-apparaat en vanaf dat apparaat verbinding maken met de Azure Remote Rendering-service. Omdat er geen eenvoudige manier is om de referenties op het apparaat in te voeren, worden in het quickstart-voorbeeld **de referenties opgeslagen in de scène Unity**.
 
 > [!WARNING]
-> Zorg ervoor dat u het project niet controleert met uw opgeslagen referenties in een bepaalde opslag plaats waar de aanmeldings gegevens voor het geheim worden gelekt.
+> Check het project niet met uw opgeslagen referenties in een opslagplaats in waar geheime aanmeldingsgegevens kunnen weglekken.
 
-### <a name="create-a-session-and-view-the-default-model"></a>Een sessie maken en het standaard model weer geven
+### <a name="create-a-session-and-view-the-default-model"></a>Een sessie maken en het standaardmodel weergeven
 
-Druk op de knop **afspelen** om de sessie te starten. U ziet een overlay met de status tekst onder aan de View Port in het deel venster *Game* . De sessie zal een reeks status overgangen ondergaan. De externe virtuele machine wordt **gestart** , wat enkele minuten in beslag neemt. Wanneer de bewerking is voltooid, wordt de status **gereed** . Nu voert de sessie de **verbindings** status in, waarbij wordt geprobeerd de rendering-runtime op die VM te bereiken. Wanneer dit is gelukt, wordt de status van het voor beeld overgezet naar de **verbinding** . Op dit moment wordt het model voor rendering gestart. De down load kan een paar minuten duren vanwege de grootte van het model. Vervolgens wordt het extern gerenderde model weer gegeven.
+Druk op de knop **Afspelen** van Unity om de sessie te starten. Er wordt een overlay weergegeven met statustekst, onderaan de viewport in het deelvenster *Game*. De sessie zal verschillende statussen doorlopen. In de status **Wordt gestart** wordt de externe VM opgestart, hetgeen enkele minuten duurt. Wanneer dit is gelukt, gaat de status over naar **Gereed**. De sessie gaat vervolgens over in de status **Verbinding maken**, waarin wordt geprobeerd de renderingruntime op die VM te bereiken. Wanneer dit is gelukt, gaat het voorbeeld over naar de status **Verbonden**. Op dat moment wordt begonnen met het downloaden van het model voor rendering. Vanwege de grootte van het model kan het downloaden een paar minuten duren. Vervolgens wordt het extern gegenereerde model weergegeven.
 
-![Uitvoer van het voor beeld](media/arr-sample-output.png)
+![Uitvoer uit het voorbeeld](media/arr-sample-output.png)
 
-Gefeliciteerd! U bekijkt nu een extern samengesteld model.
+Gefeliciteerd! U bekijkt nu een model dat extern is gegenereerd.
 
 ## <a name="inspecting-the-scene"></a>De scène controleren
 
-Zodra de verbinding voor externe rendering actief is, wordt het deel venster Inspector bijgewerkt met aanvullende status informatie:
+Wanneer de verbinding voor externe rendering actief is, wordt het deelvenster Inspector bijgewerkt met aanvullende statusinformatie:
 
-![Eenheids voorbeeld afspelen](./media/arr-sample-configure-session-running.png)
+![Unity-voorbeeld wordt afgespeeld](./media/arr-sample-configure-session-running.png)
 
-U kunt de scène grafiek nu verkennen door het nieuwe knoop punt te selecteren en te klikken op **onderliggende items weer geven** in de Inspector.
+U kunt de scèneafbeelding nu verkennen door het nieuwe knooppunt te selecteren en op **Onderliggende items tonen** in de Inspector te klikken.
 
 ![Unity-hiërarchie](./media/unity-hierarchy.png)
 
-De scène bevat een [knip vlak](../overview/features/cut-planes.md) object. Probeer het in de eigenschappen in te scha kelen en te verplaatsen:
+Er bevindt zich een [snijvlak](../overview/features/cut-planes.md)object in de scène. Probeer het in de eigenschappen in te schakelen en te verplaatsen:
 
-![Het Knip vlak wijzigen](media/arr-sample-unity-cutplane.png)
+![Het snijvlak wijzigen](media/arr-sample-unity-cutplane.png)
 
-Als u trans formaties wilt synchroniseren, klikt u op **Nu synchroniseren** of schakelt u de optie **elke frame synchroniseren** in. Voor onderdeel eigenschappen is het voldoende dat u deze hoeft te wijzigen.
+Als u transformaties wilt synchroniseren, klikt u op **Nu synchroniseren** of schakelt u de optie **Elk frame synchroniseren** in. Voor onderdeeleigenschappen volstaat het dat u deze wijzigt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In de volgende Snelstartgids implementeren we het voor beeld naar een HoloLens om het extern gerenderde model in de oorspronkelijke grootte weer te geven.
+In de volgende quickstart implementeren we het voorbeeld op een HoloLens-apparaat om het extern gegenereerde model in de oorspronkelijke grootte weer te geven.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Unit-voor beeld implementeren in HoloLens](deploy-to-hololens.md)
+> [Snelstart: Unity-voorbeeld implementeren in HoloLens](deploy-to-hololens.md)
 
-Het voor beeld kan ook worden geïmplementeerd op een desktop-PC.
+Het voorbeeld kan ook worden geïmplementeerd op een desktopcomputer.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: Unit-voor beeld implementeren op Desktop](deploy-to-desktop.md)
+> [Snelstart: Unity-voorbeeld implementeren op een desktopcomputer](deploy-to-desktop.md)

@@ -50,6 +50,8 @@
               href: class-type-big-data-analytics.md
             - name: MATLAB
               href: class-type-matlab.md
+            - name: SolidWorks computer-aided design (CAD)
+              href: class-type-solidworks.md
 - name: Instructiegidsen
   items:
     - name: Beheerdershandleiding
@@ -112,6 +114,8 @@
               href: how-to-enable-nested-virtualization-template-vm-ui.md
             - name: Geneste virtualisatie inschakelen in een sjabloon-VM met behulp van een script
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
+        - name: Een lab instellen met GPU's
+          href: how-to-setup-lab-gpu.md
         - name: Een VM met Windows-sjabloon voorbereiden
           href: how-to-prepare-windows-template.md
         - name: Het gedrag van Windows afsluiten bepalen

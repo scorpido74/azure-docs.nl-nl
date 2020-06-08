@@ -324,24 +324,28 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Upgrade uitvoeren voor de REST-API
           href: search-api-migration.md
-    - name: Beveiligen
+    - name: Beveiliging
       items:
-        - name: Beveiligingsoverzicht
+        - name: Overzicht
           href: search-security-overview.md
-        - name: Een privé-eindpunt maken
-          href: service-create-private-endpoint.md
-        - name: Een IP-firewall configureren
-          href: service-configure-firewall.md
-        - name: Beheer van servicesleutels
-          href: search-security-api-keys.md
-        - name: Op rollen gebaseerde beheerderstoegang
-          href: search-security-rbac.md
-        - name: Beveiligingsfilters
-          href: search-security-trimming-for-azure-search.md
-        - name: Filteren op AAD-identiteiten
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Versleutelingssleutels beheren
-          href: search-security-manage-encryption-keys.md
+        - name: Gegevensversleuteling
+          items:
+            - name: Door klant beheerde sleutels
+              href: search-security-manage-encryption-keys.md
+        - name: Binnenkomende beveiliging
+          items:
+            - name: API-toegangssleutels
+              href: search-security-api-keys.md
+            - name: Een IP-firewall configureren
+              href: service-configure-firewall.md
+            - name: Een privé-eindpunt maken
+              href: service-create-private-endpoint.md
+        - name: Toegang op basis van identiteit
+          items:
+            - name: Beveiligingsfilters
+              href: search-security-trimming-for-azure-search.md
+            - name: Filteren op AAD-identiteiten
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Beheren
       items:
         - name: Portal
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: Service verplaatsen tussen regio's
           href: search-howto-move-across-regions.md
+        - name: Op rollen gebaseerde beheerderstoegang
+          href: search-security-rbac.md
     - name: Controleren
       items:
         - name: Basisprincipes
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Feedbackforum (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: Naleving en certificeringen
+      href: 'https://aka.ms/azurecompliance'
     - name: Demosites
       items:
         - name: Demo met financiële bestanden

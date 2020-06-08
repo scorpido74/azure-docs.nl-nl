@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met bizagi Studio voor digitale proces automatisering | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en bizagi Studio voor digitale proces automatisering.
+title: 'Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Bizagi voor Digital Proces Automation | Microsoft Docs'
+description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Bizagi voor Digital Proces Automation configureert.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,136 +15,145 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85f7dd96bc2767b98174bee2cadaa93a6bfa1459
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a374ef8c6605aef8dfb54379017781507339306e
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78207510"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83740566"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-studio-for-digital-process-automation"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met bizagi Studio voor digitale proces automatisering
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>Zelfstudie: Integratie van eenmalige aanmelding van Azure Active Directory met Bizagi voor Digital Proces Automation
 
-In deze zelf studie leert u hoe u bizagi Studio integreert voor het digitaal proces automatisering met Azure Active Directory (Azure AD). Wanneer u bizagi Studio integreert voor de automatisering van digitale processen met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Bizagi voor Digital Process Automation Services of Server kunt integreren met Azure Active Directory (Azure AD). Als u Bizagi voor Digital Process Automation integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot bizagi Studio voor het automatiseren van digitale processen.
-* Stel in dat uw gebruikers automatisch worden aangemeld bij bizagi Studio voor automatisering van digitale processen met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Beheren in Azure AD wie toegang heeft tot een Bizagi-project voor Digital Process Automation Services of Server.
+* Mogelijk maken dat uw gebruikers automatisch met hun Azure AD-account worden aangemeld bij een project van Bizagi voor Digital Automation Services of Server.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Bizagi Studio voor het abonnement voor eenmalige aanmelding (SSO) van Digital Process Automation.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een Bizagi-project waarin gebruik wordt gemaakt van Automation Services of Server. 
+* Beschikken over uw eigen certificaten voor handtekeningen voor SAML-assertie. Deze certificaten moeten worden gegenereerd in de indeling p12 of pfx.
+* Beschikken over een metagegevensbestand in XML-indeling dat is gegenereerd vanuit het Bizagi-project. 
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie configureert en test u eenmalige aanmelding van Azure AD in een Bizagi-project waarin gebruikt wordt gemaakt van Automation Services of Server.
 
-* Bizagi Studio voor Digital Process Automation ondersteunt door **SP** GEÏNITIEERDe SSO
-* Zodra u bizagi Studio voor digitale proces automatisering hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Bizagi voor Digital Process Automation biedt ondersteuning van door **SP** geïnitieerde eenmalige aanmelding
+* Zodra u Bizagi voor Digital Process Automation hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-bizagi-studio-for-digital-process-automation-from-the-gallery"></a>Bizagi Studio toevoegen voor het digitaal proces automatiseren vanuit de galerie
+## <a name="adding-bizagi-for-digital-process-automation-from-the-gallery"></a>Bizagi voor Digital Process Automation toevoegen vanuit de galerie
 
-Als u de integratie van bizagi Studio voor digitale proces automatisering wilt configureren in azure AD, moet u bizagi Studio voor Digital Process Automation toevoegen vanuit de galerie aan uw lijst met beheerde SaaS-apps.
+U kunt de integratie van Bizagi voor Digital Process Automation configureren in Azure AD door Bizagi voor Digital Process Automation vanuit de galerie toe te voegen aan uw lijst met beheerde SaaS-apps.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **bizagi Studio for Digital Process Automation** in het zoekvak.
-1. Selecteer **bizagi Studio for Digital Process Automation** van het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer in het linkernavigatiedeelvenster de service **Azure Active Directory**.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een nieuwe toepassing toe te voegen.
+1. In de sectie **Toevoegen uit de galerie** typt u **Bizagi voor Digital Process Automation** in het zoekvak.
+1. Selecteer **Bizagi voor Digital Process Automation** in het resultatenvenster en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bizagi-studio-for-digital-process-automation"></a>Eenmalige aanmelding voor Azure AD voor bizagi Studio configureren en testen voor digitale proces automatisering
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bizagi-for-digital-process-automation"></a>Eenmalige aanmelding van Azure AD voor Bizagi voor Digital Process Automation configureren en testen
 
-Azure AD SSO configureren en testen met bizagi Studio for Digital Process Automation met behulp van een test gebruiker met de naam **B. Simon**. Voor een goede werking van SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in bizagi Studio voor de automatisering van digitale processen.
+Configureer en test eenmalige aanmelding van Azure AD met Bizagi voor Digital Process Automation met behulp van een testgebruiker, **B. Simon**. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in het Bizagi-project.
 
-Als u Azure AD SSO wilt configureren en testen met bizagi Studio voor Digital Process Automation, voert u de volgende bouw stenen uit:
+Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met Bizagi voor Digital Process Automation te configureren en te testen:
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Bizagi Studio configureren voor de SSO van digitale proces automatisering](#configure-bizagi-studio-for-digital-process-automation-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een bizagi Studio for Digital Process Automation test gebruiker](#create-bizagi-studio-for-digital-process-automation-test-user)** -om een soort tegen te brengen van B. Simon in bizagi Studio voor digitale proces automatisering die is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test)** om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding voor Bizagi voor Digital Process Automation configureren](#configure-bizagi-for-digital-process-automation-sso)** om de instellingen voor eenmalige aanmelding aan de toepassingszijde te configureren.
+    1. **[Een testgebruiker voor Bizagi voor Digital Process Automation maken](#create-bizagi-for-digital-process-automation-test-user)** om een tegenhanger van B.Simon te hebben in Bizagi voor Digital Process Automation die is gekoppeld aan de Azure AD-vertegenwoordiging van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
-1. Zoek in de [Azure Portal](https://portal.azure.com/)op de pagina **bizagi Studio for Digital Process Automation** Application de sectie **Manage** en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+1. Zoek in [Azure Portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Bizagi voor Digital Process Automation** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Upload het bestand met Bizagi-metagegevens bij de optie **Metagegevensbestand uploaden**.
+1. Controleer de configuratie. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u op het bewerkings-/penpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
+1. In de sectie **Standaard-SAML-configuratie** voert u de waarden in voor de volgende velden:
 
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
+    a. In het tekstvak **Aanmeldings-URL** typt u de URL van uw Bizagi-project: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
 
-    b. Typ een URL in het vak **Id (Entiteits-id)**: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u de URL van uw Bizagi-project: `https://<COMPANYNAME>.bizagi.com/<PROJECTNAME>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en -id. Neem contact op met [bizagi Studio voor het ondersteunings team voor Digital Process Automation](mailto:jarvein.rivera@bizagi.com) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de daadwerkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteuningsteam van Bizagi voor Digital Process Automation](mailto:jarvein.rivera@bizagi.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
+    
+    Deze metagegevens-URL moet worden geregistreerd in de verificatieopties van uw Bizagi-project.
+    
+1. Klik op de pagina **Eenmalige aanmelding instellen met SAML** op het bewerkings-/penpictogram voor **Gebruikerskenmerken en claims** om de unieke gebruikers-id te bewerken.
+    
+    Stel de unieke gebruikers-id in op user.mail.
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+### <a name="create-an-azure-ad-test"></a>Een Azure AD-test maken 
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **maken**.
+   1. Voer username@companydomain.extension in het veld **Gebruikersnaam** in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u B. Simon in voor het gebruik van eenmalige aanmelding van Azure door toegang te verlenen aan bizagi Studio voor de automatisering van digitale processen.
+In deze sectie schakelt u het gebruik van eenmalige aanmelding van Azure voor B. Simon in door toegang te verlenen tot Bizagi voor Digital Process Automation.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **bizagi Studio for Digital Process Automation**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in de lijst met toepassingen de optie **Bizagi voor Digital Process Automation**.
+1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-## <a name="configure-bizagi-studio-for-digital-process-automation-sso"></a>Bizagi Studio configureren voor eenmalige aanmelding met Digital Process Automation
+## <a name="configure-bizagi-for-digital-process-automation-sso"></a>Eenmalige aanmelding voor Bizagi voor Digital Process Automation configureren
 
-Voor het configureren van eenmalige aanmelding op **bizagi Studio voor de automatiserings zijde van digitale processen** moet u de URL voor de **federatieve meta gegevens** van de app verzenden naar [bizagi Studio voor het ondersteunings team voor Digital Process Automation](mailto:jarvein.rivera@bizagi.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Voor het configureren van eenmalige aanmelding aan de zijde van **Bizagi voor Digital Process Automation** moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Bizagi voor Digital Process Automation](mailto:jarvein.rivera@bizagi.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
-### <a name="create-bizagi-studio-for-digital-process-automation-test-user"></a>Bizagi Studio maken voor test gebruiker voor digitale proces automatisering
+### <a name="create-bizagi-for-digital-process-automation-test-user"></a>Een testgebruiker voor Bizagi voor Digital Process Automation maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in bizagi Studio voor Digital Process Automation. Werk met [bizagi Studio voor het ondersteunings team voor digitale processen](mailto:jarvein.rivera@bizagi.com) om de gebruikers toe te voegen in het bizagi Studio for Digital Process Automation platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u een gebruiker met de naam Britta Simon maken in Bizagi voor Digital Proces Automation. Werk samen met het [ondersteuningsteam voor Bizagi voor Digital Process Automation](mailto:jarvein.rivera@bizagi.com) om de gebruikers toe te voegen aan het Bizagi voor Digital Process Automation-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen
+## <a name="test-sso"></a>Eenmalige aanmelding testen
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel bizagi Studio voor Digital Process Automation in het toegangs venster klikt, moet u automatisch worden aangemeld bij de bizagi Studio voor het digitaal proces automatisering waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel Bizagi voor Digital Process Automation in het Toegangsvenster klikt, wordt u automatisch aangemeld bij de portal van Bizagi voor Digital Process Automation waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Probeer bizagi Studio voor Digital Process Automation met Azure AD](https://aad.portal.azure.com/)
+- [Bizagi voor Digital Process Automation met Azure AD proberen](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
