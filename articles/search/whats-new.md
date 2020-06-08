@@ -1,79 +1,89 @@
 ---
-title: Meldingen voor nieuwe functies
+title: Aankondigingen van nieuwe functies
 titleSuffix: Azure Cognitive Search
-description: Aankondigingen van nieuwe en verbeterde functies, waaronder een service naam wijzigen van Azure Search naar Azure Cognitive Search.
+description: Aankondigingen van nieuwe en verbeterde functies, waaronder een wijziging van de servicenaam van Azure Search in Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/24/2020
-ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/19/2020
+ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80247194"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682458"
 ---
-# <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
+# <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
-Meer informatie over wat er nieuw is in de service. Bladwijzer deze pagina om up-to-date te blijven met de service.
-
-<a name="new-service-name"></a>
-
-## <a name="new-service-name"></a>Nieuwe servicenaam
-
-De naam van Azure Search wordt nu gewijzigd in **Azure Cognitive Search** om het uitgebreide (nog optioneel) gebruik van cognitieve vaardig heden en AI-verwerking in kern bewerkingen weer te geven. API-versies, NuGet-pakketten, naam ruimten en eind punten zijn ongewijzigd. Nieuwe en bestaande Zoek oplossingen worden niet beïnvloed door de wijziging van de service naam.
+Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
 ## <a name="feature-announcements"></a>Aankondigingen van functies
 
+### <a name="may-2020-microsoft-build"></a>Mei 2020 (Microsoft Build)
+
++ De functie [Foutopsporingssessies](cognitive-search-debug-session.md) is nu beschikbaar als preview-versie. [Registreer u om toegang aan te vragen](https://aka.ms/DebugSessions). Foutopsporingssessies biedt een portalinterface waarin u problemen kunt onderzoeken en oplossen met een vaardighedenset. Fixes die zijn gemaakt in de foutopsporingssessie, kunnen worden opgeslagen in de productievaardighedenset. Ga aan de slag met [deze zelfstudie](cognitive-search-tutorial-debug-sessions.md).
+
++ Beveiligingsverbeteringen bevatten de mogelijkheid om [een privé-eindpunt voor zoeken (preview) in te stellen](service-create-private-endpoint.md) dat niet toegankelijk is op het openbare internet. U kunt ook [IP-regels configureren voor de ondersteuning van inkomende firewalls (preview)](service-configure-firewall.md).
+
++ Gebruik een [door het systeem beheerde identiteit (preview)](search-howto-managed-identities-data-sources.md) om een verbinding met een Azure-gegevensbron in te stellen voor indexeren. Geldt voor [indexeerfuncties](search-indexer-overview.md) die inhoud opnemen uit Azure-gegevensbronnen, zoals Azure SQL Database, Azure Cosmos DB en Azure Storage.
+
++ Wijzig de basis voor het berekenen van zoekscores, van per shard in alle shards, met behulp van de [queryparameter scoringStatistics=Global](index-similarity-and-scoring.md#scoring-statistics).
+
 ### <a name="march-2020"></a>Maart 2020
 
-+ [Systeem eigen BLOB zacht verwijderen (preview)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) betekent dat de Azure Blob Storage indexer in azure Cognitive Search blobs herkent die zich in een voorlopig verwijderde staat bevinden en het bijbehorende Zoek document tijdens het indexeren verwijderen.
++ Met [Systeemeigen voorlopig verwijderde blobs (preview)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) herkent de Azure Blob Storage-indexeerfunctie in Azure Cognitive Search de blobs die de status Voorlopig verwijderd hebben, en wordt het bijbehorende zoekdocument verwijderd tijdens het indexeren.
 
-+ Er is nu een nieuw stabiel [beheer rest API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) beschikbaar. 
++ Nieuwe stabiele [REST API voor beheer (13-03-2020)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) is nu beschikbaar. 
 
 ### <a name="february-2020"></a>Februari 2020
 
-+ [PII-detectie (preview)](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die persoonlijke gegevens ophaalt uit een invoer tekst en die u de mogelijkheid biedt om de tekst op verschillende manieren te maskeren.
++ [PII-detectie (preview)](cognitive-search-skill-pii-detection.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering. Hiermee worden persoonsgegevens opgehaald uit een invoertekst en krijgt u de mogelijkheid om deze op verschillende manieren in deze tekst te maskeren.
 
-+ [Zoek opdracht voor aangepaste entiteiten (preview)](cognitive-search-skill-custom-entity-lookup.md ) zoekt naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Met deze lijst worden alle documenten met alle overeenkomende entiteiten labeld. De vaardigheid ondersteunt ook een mate van fuzzy matching die kan worden toegepast om overeenkomsten te vinden die vergelijkbaar zijn, maar niet helemaal precies. 
++ Met [Aangepaste entiteiten zoeken (preview)](cognitive-search-skill-custom-entity-lookup.md ) wordt gezocht naar tekst uit een aangepaste, door de gebruiker gedefinieerde lijst met woorden en zinsdelen. Aan de hand van deze lijst worden alle documenten met overeenkomende entiteiten gelabeld. De vaardigheid ondersteunt ook het zoeken naar fuzzy overeenkomsten, waarmee overeenkomsten worden gevonden die vergelijkbaar zijn, maar niet helemaal exact. 
 
 ### <a name="january-2020"></a>Januari 2020
 
-+ Door de [klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, hebt u toegang tot de functie met `api-version=2019-05-06`behulp van. Voor beheerde code is het juiste pakket nog steeds [.NET SDK-versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , ook al is de functie niet beschikbaar in de preview-fase. 
++ [Door de klant beheerde versleutelingssleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, kunt u de functie openen met `api-version=2019-05-06`. Voor beheerde code is het juiste pakket nog steeds [.NET SDK versie 8.0-preview](search-dotnet-sdk-migration-version-9.md), ook al is de preview-fase van de functie voorbij. 
 
-+ Persoonlijke toegang tot een zoek service is beschikbaar via twee mechanismen, zowel momenteel als preview-versie:
++ Privétoegang tot een zoekservice is beschikbaar via twee mechanismen, beide momenteel als preview-versie:
 
-  + U kunt de toegang tot specifieke IP-adressen beperken door de beheer `api-version=2019-10-01-Preview` rest API te gebruiken om de service te maken. De preview-API bevat nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in de [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Deze preview-functie is beschikbaar in geselecteerde regio's. Zie [How to use the Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)voor meer informatie.
+  + U kunt de toegang tot specifieke IP-adressen beperken met de REST API voor beheer `api-version=2019-10-01-Preview` om de service te maken. De preview-API bevat de nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Deze preview-functie is beschikbaar in bepaalde regio's. Zie [De REST API voor beheer gebruiken](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) voor meer informatie.
 
-  + Momenteel beschikbaar via een preview-versie van beperkte toegang kunt u een Azure Search service inrichten die Azure private endpoint ondersteunt voor verbindingen van clients in hetzelfde virtuele netwerk. Zie [een persoonlijk eind punt maken voor een beveiligde verbinding](service-create-private-endpoint.md)voor meer informatie.
+  + Dit is momenteel beschikbaar via een preview met beperkte toegang. U kunt een Azure Search-service inrichten die Azure Private Endpoint ondersteunt voor verbindingen van clients op hetzelfde virtuele netwerk. Zie [Een privé-eindpunt maken voor een veilige verbinding](service-create-private-endpoint.md) voor meer informatie.
 
 ### <a name="december-2019"></a>December 2019
 
-+ [App maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een DOWNLOADBAAR HTML-bestand wordt gegenereerd. Het bestand wordt geleverd met een Inge sloten script dat een operationele ' localhost '-stijl web-app weergeeft, gebonden aan een index in uw zoek service. Pagina's kunnen in de wizard worden geconfigureerd en bevatten een zoek balk, een resultaat gebied, een navigatie naar een terzijde en typeahead-query ondersteuning. U kunt de HTML offline wijzigen om de werk stroom of het uiterlijk te verlengen of aan te passen.
++ [App maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een downloadbaar HTML-bestand wordt gegenereerd. Het bestand wordt geleverd met een ingesloten script waarmee een operationele 'localhost' -achtige web-app wordt weergegeven die is gebonden aan een index in uw zoekservice. Pagina's kunnen worden geconfigureerd in de wizard en kunnen een zoekbalk, een resultaatgebied, navigatie in de zijbalk en ondersteuning voor typeahead-query's bevatten. U kunt de HTML offline wijzigen om de werkstroom of weergave uit te breiden of aan te passen.
 
-+ [Een persoonlijk eind punt maken voor beveiligde verbindingen (preview)](service-create-private-endpoint.md) in dit artikel wordt uitgelegd hoe u een persoonlijke koppeling kunt instellen voor beveiligde verbindingen met uw zoek service. Deze preview-functie is beschikbaar op aanvraag en maakt gebruik van [Azure private link](../private-link/private-link-overview.md) en [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) als onderdeel van de oplossing.
++ In [Een privé-eindpunt maken voor veilige verbindingen (preview)](service-create-private-endpoint.md) wordt uitgelegd hoe u Private Link instelt voor veilige verbindingen met uw zoekservice. Deze preview-functie is op aanvraag beschikbaar en gebruikt [Azure Private Link](../private-link/private-link-overview.md) en [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) als onderdeel van de oplossing.
 
-### <a name="november-2019---ignite-conference"></a>November 2019-Ignite-conferentie
+### <a name="november-2019---ignite-conference"></a>November 2019: Ignite Conference
 
-+ [Incrementele verrijking (preview)](cognitive-search-incremental-indexing-conceptual.md) voegt caching en statefullness toe aan een verrijkings pijplijn, zodat u kunt werken met specifieke stappen of fasen zonder dat inhoud verloren gaat die al is verwerkt. Voorheen moest elke wijziging in een verrijkings pijplijn een volledig opnieuw opgebouwd. Met incrementele verrijking blijft de uitvoer van een kost bare analyse, met name afbeeldings analyse, behouden.
++ Met [Incrementele verrijking (preview)](cognitive-search-incremental-indexing-conceptual.md) voegt u opslaan in cache en statefullness toe aan een verrijkingspijplijn, zodat u aan specifieke stappen of fasen kunt werken zonder inhoud te verliezen die al is verwerkt. Voorheen moest een verrijkingspijplijn volledig opnieuw worden gebouwd na een wijziging. Met stapsgewijze verrijking blijft de uitvoer van kostbare analyses, met name afbeeldingsanalyses, behouden.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
 
-+ [Document extractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren, waarmee u de inhoud van een bestand kunt extra heren uit een vakkennisset. Het kraken van documenten is eerder voorgekomen voordat de vaardig heden werden uitgevoerd. Als u deze vaardigheid hebt toegevoegd, kunt u deze bewerking ook uitvoeren binnen de vaardig heden-uitvoering.
++ [Documentextractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren. U kunt hiermee de inhoud van een bestand extraheren uit een vaardighedenset. Voorheen werd een document alleen gekraakt voordat een vaardighedenset werd uitgevoerd. Door de toevoeging van deze vaardigheid kun je deze bewerking ook uitvoeren binnen de uitvoering van de vaardighedenset.
 
-+ [Tekst omzetting](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens de indexering die tekst evalueert en, voor elke record, de tekst die wordt vertaald naar de opgegeven doel taal.
++ [Tekstomzetting](cognitive-search-skill-text-translation.md) is een cognitieve vaardigheid die wordt gebruikt tijdens indexering. Hiermee wordt tekst geëvalueerd en wordt voor elke record de tekst geretourneerd die is vertaald in de opgegeven doeltaal.
 
-+ [Power bi sjablonen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) kunnen uw visualisaties en analyse van verrijkte inhoud in een kennis archief op Power bi bureau blad. Deze sjabloon is ontworpen voor Azure-tabel prognoses die zijn gemaakt met behulp van de [wizard gegevens importeren](knowledge-store-create-portal.md).
++ Met [Power BI-sjablonen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) kunt u aan de slag met uw visualisaties en analyses van verrijkte inhoud in een kennisarchief in Power BI Desktop. Deze sjabloon is ontworpen voor Azure-tabelprojecties die zijn gemaakt met de [wizard Gegevens importeren](knowledge-store-create-portal.md).
 
-+ [Azure data Lake Storage Gen2 (preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin-API (preview)](search-howto-index-cosmosdb.md)en [Cosmos DB Cassandra-API (preview)](search-howto-index-cosmosdb.md) worden nu ondersteund in Indexeer functies. U kunt zich aanmelden met [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview). U ontvangt een bevestigings-e-mail zodra u deze hebt geaccepteerd in het preview-programma.
++ [Azure Data Lake Storage Gen2 (preview)](search-howto-index-azure-data-lake-storage.md), [Cosmos DB Gremlin API (preview)](search-howto-index-cosmosdb.md) en [Cosmos DB Cassandra API (preview)](search-howto-index-cosmosdb.md) worden nu ondersteund in indexeerfuncties. U kunt zich registreren via [dit formulier](https://aka.ms/azure-cognitive-search/indexer-preview). Je ontvangt een bevestigingsmail zodra je bent geaccepteerd in het previewprogramma.
 
 ### <a name="july-2019"></a>Juli 2019
 
 + Algemeen beschikbaar in [Azure Government Cloud](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search).
 
+<a name="new-service-name"></a>
+
+## <a name="new-service-name"></a>Nieuwe servicenaam
+
+Azure Search heet nu **Azure Cognitive Search** vanwege het uitgebreide (maar optionele) gebruik van cognitieve vaardigheden en AI-verwerking in kernbewerkingen. API-versies, NuGet-pakketten, naamruimten en eindpunten zijn ongewijzigd. De wijziging van de servicenaam is niet van invloed op nieuwe en bestaande zoekoplossingen.
+
 ## <a name="service-updates"></a>Service-updates
 
-[Service-update aankondigingen](https://azure.microsoft.com/updates/?product=search&status=all) voor Azure Cognitive Search zijn te vinden op de Azure-website.
+[Aankondigingen van service-updates](https://azure.microsoft.com/updates/?product=search&status=all) voor Azure Cognitive Search kunt u vinden op de Azure-website.
