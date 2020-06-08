@@ -3,12 +3,12 @@ title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 2060a7ed2de4956eb15bc85fb1a905705e21f813
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6d6617b7e13ebf7a58cdbbf9356eac1d035a1f73
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847664"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483488"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -138,7 +138,7 @@ In het volgende voor beeld ziet u een sjabloon waarmee u een app service-plan, e
 }
 ```
 
-Zie [een resource groep maken en deze vergren delen](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)voor een voor beeld van het instellen van een vergren deling voor een resource groep.
+Zie [een resource groep maken en deze vergren delen](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)voor een voor beeld van het instellen van een vergren deling voor een resource groep.
 
 ## <a name="powershell"></a>PowerShell
 U vergrendelt geïmplementeerde resources met Azure PowerShell met behulp van de opdracht [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) .
