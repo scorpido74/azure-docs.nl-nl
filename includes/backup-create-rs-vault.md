@@ -24,11 +24,11 @@ Voer de volgende stappen uit om een Recovery Services kluis te maken.
 
 1. Meld u aan bij uw abonnement in [Azure Portal](https://portal.azure.com/).
 
-1. Selecteer in het menu links **Alle services**.
+1. Selecteer in het menu links **alle services**.
 
     ![Alle services selecteren](./media/backup-create-rs-vault/click-all-services.png)
 
-1. In het dialoogvenster **Alle services** voert u *Recovery Services* in. De lijst met resources filtert op basis van uw invoer. Selecteer **Recovery Services kluizen**in de lijst met resources.
+1. In het dialoogvenster **Alle services** voert u *Recovery Services* in. De lijst met resources wordt gefilterd op basis van uw invoer. In de lijst met resources selecteert u **Recovery Service-kluizen**.
 
     ![Recovery Services-kluizen invoeren en kiezen](./media/backup-create-rs-vault/all-services.png)
 
@@ -38,13 +38,13 @@ Voer de volgende stappen uit om een Recovery Services kluis te maken.
 
     ![Een Recovery Services kluis toevoegen](./media/backup-create-rs-vault/add-button-create-vault.png)
 
-    Het dialoog venster **Recovery Services kluis** wordt geopend. Geef waarden op voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
+    Het dialoogvenster **Recovery Service-kluis** wordt geopend. Geef waarden op voor de **naam**, het **abonnement**, de **resource groep**en de **locatie**.
 
     ![De Recovery Services kluis configureren](./media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van ten minste 2, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen bestaan uit letters, cijfers en afbreek streepjes.
-   - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van slechts één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaard abonnement (aanbevolen). Er zijn alleen meerdere opties als uw werk-of school account is gekoppeld aan meer dan één Azure-abonnement.
-   - **Resource groep**: gebruik een bestaande resource groep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resource groep wilt maken, selecteert u **nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resource groepen.
+   - **Naam**: Voer een beschrijvende naam in om de kluis aan te duiden. De naam moet uniek zijn voor het Azure-abonnement. Geef een naam op van ten minste 2, maar niet meer dan 50 tekens. De naam moet beginnen met een letter en mag alleen uit letters, cijfers en afbreekstreepjes bestaan.
+   - **Abonnement**: Kies het abonnement dat u wilt gebruiken. Als u lid bent van maar één abonnement, ziet u die naam. Als u niet zeker weet welk abonnement u moet gebruiken, gebruikt u het standaardabonnement (voorgesteld). Er zijn alleen meerdere mogelijkheden als uw werk- of schoolaccount is gekoppeld aan meerdere Azure-abonnementen.
+   - **Resourcegroep**: Gebruik een bestaande resourcegroep of maak een nieuwe. Als u de lijst met beschik bare resource groepen in uw abonnement wilt weer geven, selecteert u **bestaande gebruiken**en selecteert u een resource in de vervolg keuzelijst. Als u een nieuwe resourcegroep wilt maken, selecteert u **Nieuwe maken** en voert u de naam in. Zie [Azure Resource Manager Overview](../articles/azure-resource-manager/management/overview.md)voor meer informatie over resource groepen.
    - **Locatie**: Selecteer de geografische regio voor de kluis. De kluis *moet* zich in dezelfde regio bevinden als de gegevens bron om een kluis te maken om gegevens bronnen te beveiligen.
 
       > [!IMPORTANT]
