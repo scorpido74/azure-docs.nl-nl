@@ -2,17 +2,17 @@
 title: Onderwerpen over Azure Event Grid partners
 description: Verzend gebeurtenissen van derden Event Grid SaaS-en PaaS-partners rechtstreeks naar Azure-Services met Azure Event Grid.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: femila
+ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170950"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560276"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Onderwerpen over partners in Azure Event Grid (preview-versie)
 Met behulp van partner onderwerpen kunt u rechtstreeks verbinding maken met gebeurtenis bronnen van derden op Azure Event Grid. Met deze integratie kunt u zich abonneren op gebeurtenissen van partners op dezelfde manier als u zich abonneert op gebeurtenissen van Azure-Services. 

@@ -1,19 +1,19 @@
 ---
 title: Onderwerpen en gebeurtenis abonnementen bewaken-Azure Event Grid IoT Edge | Microsoft Docs
 description: Onderwerpen en gebeurtenis abonnementen bewaken
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086674"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554362"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Onderwerpen en gebeurtenis abonnementen bewaken
 
@@ -21,7 +21,7 @@ Event Grid op Edge stelt een aantal metrische gegevens voor onderwerpen en gebeu
 
 ## <a name="enable-metrics"></a>Metrische gegevens inschakelen
 
-Configureer de module voor het verzenden van metrische gegevens door `metrics__reporterType` de omgevings `prometheus` variabele in te stellen op in de opties voor het maken van een container:
+Configureer de module voor het verzenden van metrische gegevens door de `metrics__reporterType` omgevings variabele in te stellen op `prometheus` in de opties voor het maken van een container:
 
  ```json
         {
@@ -48,7 +48,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="topic-metrics"></a>Metrische gegevens over het onderwerp
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------ | ----------- |
 | EventsReceived | Aantal gebeurtenissen dat is gepubliceerd naar het onderwerp
 | UnmatchedEvents | Het aantal gebeurtenissen dat is gepubliceerd naar het onderwerp dat niet overeenkomt met een gebeurtenis abonnement en wordt verwijderd
@@ -60,7 +60,7 @@ In zowel onderwerpen als gebeurtenis abonnementen worden metrische gegevens gege
 
 ### <a name="event-subscription-metrics"></a>Metrische gegevens van gebeurtenis abonnementen
 
-| Gegevens | Beschrijving |
+| Metrisch | Beschrijving |
 | ------ | ----------- |
 | DeliverySuccessCounts | Aantal gebeurtenissen dat is bezorgd bij het geconfigureerde eind punt
 | DeliveryFailureCounts | Aantal gebeurtenissen dat niet kan worden bezorgd bij het geconfigureerde eind punt

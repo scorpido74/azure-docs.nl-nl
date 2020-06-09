@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773956"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561808"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid uitvoer binding voor Azure Functions
 
@@ -27,7 +27,7 @@ Zie het [overzicht](./functions-bindings-event-grid.md)voor meer informatie over
 
 ## <a name="example"></a>Voorbeeld
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u een [C#-functie](functions-dotnet-class-library.md) die een bericht naar een event grid aangepast onderwerp schrijft, met behulp van de retour waarde van de methode als uitvoer:
 
@@ -100,7 +100,7 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u de Event Grid uitvoer bindings gegevens in het bestand *Function. json* .
 
@@ -218,7 +218,7 @@ De Event Grid uitvoer binding is niet beschikbaar voor Java.
 
 ## <a name="attributes-and-annotations"></a>Kenmerken en aantekeningen
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Gebruik voor [C# class-bibliotheken](functions-dotnet-class-library.md)het kenmerk [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
 
@@ -239,7 +239,7 @@ Zie voor een volledig [voor beeld.](#example)
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -259,9 +259,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | n.v.t. | Moet worden ingesteld op ' eventGrid '. |
-|**draaien** | n.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
-|**naam** | n.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
+|**type** | N.v.t. | Moet worden ingesteld op ' eventGrid '. |
+|**direction** | N.v.t. | Moet worden ingesteld op out. Deze para meter wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
+|**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code waarmee de gebeurtenis wordt aangeduid. |
 |**topicEndpointUri** |**TopicEndpointUri** | De naam van een app-instelling die de URI voor het aangepaste onderwerp bevat, zoals `MyTopicEndpointUri` . |
 |**topicKeySetting** |**TopicKeySetting** | De naam van een app-instelling die een toegangs sleutel voor het aangepaste onderwerp bevat. |
 
@@ -272,7 +272,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 ## <a name="usage"></a>Gebruik
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
@@ -280,7 +280,7 @@ Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEv
 
 Berichten verzenden met behulp van een methode parameter, zoals `out EventGridEvent paramName` . In C#-script `paramName` is de waarde die is opgegeven in de `name` eigenschap van *Function. json*. Als u meerdere berichten wilt schrijven, kunt u `ICollector<EventGridEvent>` of gebruiken `IAsyncCollector<EventGridEvent>` in plaats van `out EventGridEvent` .
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken van `context.bindings.<name>` `<name>` de waarde die is opgegeven in de `name` eigenschap van *Function. json*.
 

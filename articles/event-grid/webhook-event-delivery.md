@@ -2,18 +2,18 @@
 title: Overdracht van gebeurtenis van webhook
 description: In dit artikel worden webhook-gebeurtenis bezorgings-en eindpunt validatie beschreven bij gebruik van webhooks.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: 80efee18ff7cc927ea9029c11aadcf13ad75781a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.author: femila
+ms.openlocfilehash: cf298156fe7a347799afced8bb065cb3a02bc49a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747599"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558441"
 ---
 # <a name="webhook-event-delivery"></a>Overdracht van gebeurtenis van webhook
 Webhooks zijn een van de vele manieren om gebeurtenissen van Azure Event Grid te ontvangen. Wanneer een nieuwe gebeurtenis gereed is, boekt Event Grid-Service een HTTP-aanvraag naar het geconfigureerde eind punt met de gebeurtenis in de hoofd tekst van de aanvraag.

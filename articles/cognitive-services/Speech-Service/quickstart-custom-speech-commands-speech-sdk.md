@@ -3,19 +3,19 @@ title: 'Quick Start: verbinding maken met een app voor aangepaste opdrachten met
 titleSuffix: Azure Cognitive Services
 description: In dit artikel maakt u een Speech SDK-client toepassing met aangepaste opdrachten.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: donkim
-ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.author: nitinme
+ms.openlocfilehash: f2e8292ccace38e1a167c3ecdfb924589e4ebf0e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872487"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508927"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
@@ -41,7 +41,7 @@ U hebt ook het volgende nodig:
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
-In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw aangepaste opdrachten-app. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in `quickstart` de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de-map.
+In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing kunt maken om verbinding te maken met uw aangepaste opdrachten-app. Als u voor het eerst wilt beginnen, is de volledige, kant-en-assembly-bron code die wordt gebruikt in deze Quick Start, beschikbaar in de voor [beelden van Speech SDK](https://aka.ms/csspeech/samples) onder de- `quickstart` map.
 
 ## <a name="step-1-publish-custom-commands-application"></a>Stap 1: de toepassing voor het publiceren van aangepaste opdrachten
 
@@ -120,7 +120,7 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
 
 Voeg de code achter de bron toe zodat de toepassing werkt zoals verwacht. De bron code achter bevat:
 
-- Vereiste `using` instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- Vereiste `using` instructies voor de `Speech` en- `Speech.Dialog` naam ruimten
 - Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
 - Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
 - Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
@@ -129,7 +129,7 @@ Voeg de code achter de bron toe zodat de toepassing werkt zoals verwacht. De bro
 
 Voeg als volgt de code-behind bron toe:
 
-1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs` van de code-behind (gegroepeerd `MainPage.xaml`onder)
+1. Open in **Solution Explorer**het bron bestand van de code-behind `MainPage.xaml.cs` (gegroepeerd onder `MainPage.xaml` )
 
 1. Vervang de inhoud van het bestand door de volgende code: 
 
@@ -321,7 +321,7 @@ Voeg als volgt de code-behind bron toe:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. Vervang de teken `YourApplicationId`reeksen `YourSpeechSubscriptionKey`, en `YourServiceRegion` met uw eigen waarden voor uw app, het spraak abonnement en de [regio](regions.md)
+1. Vervang de teken reeksen `YourApplicationId` , `YourSpeechSubscriptionKey` en `YourServiceRegion` met uw eigen waarden voor uw app, het spraak abonnement en de [regio](regions.md)
 
 1. Voeg het volgende code fragment toe aan het einde van de methode hoofdtekst van`InitializeDialogServiceConnector`
 
@@ -381,7 +381,7 @@ Voeg als volgt de code-behind bron toe:
    };
    ```
 
-1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse
+1. Voeg het volgende code fragment toe aan de hoofd tekst van de `ListenButton_ButtonClicked` methode in de `MainPage` klasse
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -405,13 +405,13 @@ Voeg als volgt de code-behind bron toe:
    }
    ```
 
-1. Kies in de menu balk de optie **bestand** > **Alles opslaan** om uw wijzigingen op te slaan.
+1. Kies in de menu balk de optie **bestand**  >  **Alles opslaan** om uw wijzigingen op te slaan.
 
 ## <a name="build-and-run-the-application"></a>De toepassing bouwen en uitvoeren.
 
-1. **Kies** > build**Build Solution** in de menu balk om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
+1. **Kies Build**  >  **Build Solution** in de menu balk om de toepassing te bouwen. De code moet zonder fouten worden gecompileerd.
 
-1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
+1. Kies **fout**  >  **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
    ![Voor beeld van een UWP-toepassing voor virtuele assistenten in C#-Quick Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
@@ -424,8 +424,8 @@ Voeg als volgt de code-behind bron toe:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
+> [Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md) 
+>  [Procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
 
 ## <a name="sample-source-code"></a>Voorbeeld bron code
 Bekijk onze client sample codes op [github-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

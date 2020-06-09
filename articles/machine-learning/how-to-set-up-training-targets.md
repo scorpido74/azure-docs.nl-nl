@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 03/13/2020
-ms.custom: seodec18
-ms.openlocfilehash: def6092bf6ba6a911569536908160a860e3425fb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 53a80a25f4694734c931acffe686813456ea92f9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433168"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556693"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Reken doelen voor model training instellen en gebruiken 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -291,7 +291,7 @@ Als u de reken doelen voor uw werk ruimte wilt zien, gebruikt u de volgende stap
 
     [![Tabblad Compute weer geven](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
 
-### <a name="create-a-compute-target"></a><a id="portal-create"></a>Een reken doel maken
+### <a name="create-a-compute-target"></a><a id="portal-create"></a>Een rekendoel maken
 
 Volg de vorige stappen om de lijst met Compute-doelen weer te geven. Gebruik vervolgens de volgende stappen om een compute-doel te maken: 
 

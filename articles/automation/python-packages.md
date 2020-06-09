@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: c2871c4c988675dd9a1a5749d908805994b6b309
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: tracking-python
+ms.openlocfilehash: f3ba52c1396928d8c76fb85fda3f29c625e60919
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835152"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561855"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Python 2-pakketten beheren in Azure Automation
 
@@ -48,10 +49,10 @@ Zodra de pakketten zijn gedownload, kunt u deze importeren in uw Automation-acco
 
  Als u een runbook wilt ophalen, [importeert u python 2-pakketten van pypi in azure Automation account](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) uit de galerie in uw Automation-account. Zorg ervoor dat de uitvoerings instellingen zijn ingesteld op **Azure** en start het runbook met de para meters. Het runbook vereist een uitvoeren als-account voor het werken met het Automation-account. Zorg er voor elke para meter voor dat u deze met de switch start, zoals in de volgende lijst en afbeelding wordt weer gegeven:
 
-* -s \< subscriptionId\>
-* -g \< resourceGroup\>
-* -een \< Automation account\>
-* -m \< modulePackage\>
+* -s\<subscriptionId\>
+* -g\<resourceGroup\>
+* -a\<automationAccount\>
+* -m\<modulePackage\>
 
 ![Pakket lijst](media/python-packages/import-python-runbook.png)
 

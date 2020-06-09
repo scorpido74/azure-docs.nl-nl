@@ -1,19 +1,19 @@
 ---
 title: Gebeurtenis-handlers en doelen-Azure Event Grid IoT Edge | Microsoft Docs
 description: Gebeurtenis-handlers en bestemmingen in Event Grid aan de rand
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e144461b80dca2cf02c0cc06d7feee882293848
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849745"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557642"
 ---
 # <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Gebeurtenis-handlers en bestemmingen in Event Grid aan de rand
 
@@ -23,7 +23,7 @@ In dit artikel vindt u informatie over het configureren van elke.
 
 ## <a name="webhook"></a>WebHook
 
-Als u wilt publiceren naar een webhook-eind `endpointType` punt `WebHook` , stelt u de in en geeft u het volgende op:
+Als u wilt publiceren naar een webhook-eind punt, stelt `endpointType` u de in `WebHook` en geeft u het volgende op:
 
 * endpointUrl: de URL van het webhook-eind punt
 
@@ -42,7 +42,7 @@ Als u wilt publiceren naar een webhook-eind `endpointType` punt `WebHook` , stel
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-Als u wilt publiceren naar een Azure Event Grid Cloud-eind `endpointType` punt `eventGrid` , stelt u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Azure Event Grid Cloud-eind punt, stelt `endpointType` u de in `eventGrid` en geeft u het volgende op:
 
 * endpointUrl: de URL van het Event Grid onderwerp in de Cloud
 * sasKey: de SAS-sleutel van het Event Grid-onderwerp
@@ -65,7 +65,7 @@ Als u wilt publiceren naar een Azure Event Grid Cloud-eind `endpointType` punt `
 
 ## <a name="iot-edge-hub"></a>IoT Edge hub
 
-Als u wilt publiceren naar een Edge hub-module `endpointType` , `edgeHub` stelt u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Edge hub-module, stelt `endpointType` u de in `edgeHub` en geeft u het volgende op:
 
 * Uitvoermap: de uitvoer waarop de Event Grid-module gebeurtenissen stuurt die overeenkomen met dit abonnement op edgeHub. Gebeurtenissen die overeenkomen met het onderstaande abonnement worden bijvoorbeeld geschreven naar/messages/modules/eventgridmodule/outputs/sampleSub4.
 
@@ -84,7 +84,7 @@ Als u wilt publiceren naar een Edge hub-module `endpointType` , `edgeHub` stelt 
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Als u wilt publiceren naar een event hub, `endpointType` stelt `eventHub` u de aan en geeft u het volgende op:
+Als u wilt publiceren naar een event hub, stelt `endpointType` u de aan `eventHub` en geeft u het volgende op:
 
 * Connections Tring: verbindings reeks voor de specifieke Event hub die u als doel hebt gegenereerd via een gedeeld toegangs beleid.
 
@@ -106,7 +106,7 @@ Als u wilt publiceren naar een event hub, `endpointType` stelt `eventHub` u de a
 
 ## <a name="service-bus-queues"></a>Service Bus-wachtrijen
 
-Als u wilt publiceren naar een Service Bus wachtrij, `endpointType` stelt `serviceBusQueue` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Service Bus wachtrij, stelt `endpointType` u de in `serviceBusQueue` en geeft u het volgende op:
 
 * Connections Tring: een verbindings reeks voor de specifieke Service Bus wachtrij waarvan u de doel groep hebt gegenereerd via een gedeeld toegangs beleid.
 
@@ -128,7 +128,7 @@ Als u wilt publiceren naar een Service Bus wachtrij, `endpointType` stelt `servi
 
 ## <a name="service-bus-topics"></a>Service Bus-onderwerpen
 
-Als u wilt publiceren naar een Service Bus onderwerp, `endpointType` stelt `serviceBusTopic` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een Service Bus onderwerp, stelt `endpointType` u de in `serviceBusTopic` en geeft u het volgende op:
 
 * Connections Tring: een verbindings reeks voor het specifieke Service Bus onderwerp dat wordt gegenereerd via een gedeeld toegangs beleid.
 
@@ -150,7 +150,7 @@ Als u wilt publiceren naar een Service Bus onderwerp, `endpointType` stelt `serv
 
 ## <a name="storage-queues"></a>Opslagwachtrijen
 
-Als u wilt publiceren naar een opslag wachtrij, `endpointType` stelt `storageQueue` u de in en geeft u het volgende op:
+Als u wilt publiceren naar een opslag wachtrij, stelt `endpointType` u de in `storageQueue` en geeft u het volgende op:
 
 * wachtrijmap: de naam van de opslag wachtrij waarnaar u publiceert.
 * Connections Tring: de verbindings reeks voor het opslag account waarin de opslag wachtrij zich bevindt.

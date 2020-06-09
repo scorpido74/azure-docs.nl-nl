@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219300"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561023"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>De Text Analytics aanroepen REST API
 
-Aanroepen naar de **Text Analytics-API** zijn http post/Get-aanroepen, die u in elke taal kunt formuleren. In dit artikel gebruiken we REST en [postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) om de belangrijkste concepten te demonstreren.
+Aanroepen naar de **Text Analytics-API** zijn http post/Get-aanroepen, die u in elke taal kunt formuleren. In dit artikel gebruiken we REST en [postman](https://www.postman.com/downloads/) om de belangrijkste concepten te demonstreren.
 
-Elke aanvraag moet uw toegangs sleutel en een HTTP-eind punt bevatten. Met het eind punt geeft u de regio op die u hebt gekozen tijdens de registratie, de service-URL en een `sentiment`resource `keyphrases`die `languages`wordt gebruikt `entities`in de aanvraag:,, en. 
+Elke aanvraag moet uw toegangs sleutel en een HTTP-eind punt bevatten. Met het eind punt geeft u de regio op die u hebt gekozen tijdens de registratie, de service-URL en een resource die wordt gebruikt in de aanvraag: `sentiment` , `keyphrases` , en `languages` `entities` . 
 
 Intrekken dat Text Analytics stateless is, zodat er geen gegevensassets zijn om te beheren. Uw tekst wordt geüpload, geanalyseerd na ontvangst en de resultaten worden direct naar de aanroepende toepassing geretourneerd.
 
@@ -43,7 +43,7 @@ U kunt op dit moment dezelfde documenten verzenden voor alle Text Analytics bewe
 |---------|--------------|-----------|-------|
 |`id` |Het gegevens type is teken reeks, maar in oefen document-Id's zijn meestal gehele getallen. | Vereist | Het systeem gebruikt de Id's die u opgeeft om de uitvoer te structureren. Taal codes, sleutel zinnen en sentiment-scores worden gegenereerd voor elke ID in de aanvraag.|
 |`text` | Ongestructureerde onbewerkte tekst, Maxi maal 5.120 tekens. | Vereist | Voor taal detectie kan tekst in elke taal worden weer gegeven. Voor sentiment analyse, extractie van sleutel zinnen en Entiteits-ID moet de tekst in een [ondersteunde taal](../text-analytics-supported-languages.md)worden gesteld. |
-|`language` | [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -code van 2 tekens voor een [ondersteunde taal](../text-analytics-supported-languages.md) | Varieert | Vereist voor sentiment analyse, extractie van sleutel zinnen en entiteits koppeling; optioneel voor taal detectie. Er is geen fout als u deze uitsluit, maar de analyse verzwakt. De taal code moet overeenkomen met `text` de die u opgeeft. |
+|`language` | [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -code van 2 tekens voor een [ondersteunde taal](../text-analytics-supported-languages.md) | Varieert | Vereist voor sentiment analyse, extractie van sleutel zinnen en entiteits koppeling; optioneel voor taal detectie. Er is geen fout als u deze uitsluit, maar de analyse verzwakt. De taal code moet overeenkomen met de `text` die u opgeeft. |
 
 Zie [Text Analytics overzicht > gegevens limieten](../overview.md#data-limits)voor meer informatie over limieten. 
 
@@ -82,7 +82,7 @@ De service accepteert een aanvraag met een grootte van Maxi maal 1 MB. Als u Pos
 
   + [Taal detectie](text-analytics-how-to-language-detection.md)  
   + [Extractie van sleutel woorden](text-analytics-how-to-keyword-extraction.md)  
-  + [Sentimentanalyse](text-analytics-how-to-sentiment-analysis.md)  
+  + [Sentiment analyse](text-analytics-how-to-sentiment-analysis.md)  
   + [Entiteit herkenning](text-analytics-how-to-entity-linking.md)  
 
 

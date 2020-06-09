@@ -2,17 +2,17 @@
 title: Schema voor Azure Event Grid abonnement
 description: In dit artikel worden de eigenschappen beschreven voor het abonneren op een gebeurtenis met Azure Event Grid. Schema van Event Grid abonnement.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/23/2020
-ms.author: babanisa
-ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 933987f405b306607ae36c3f7b626108d641abf9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720755"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558985"
 ---
 # <a name="event-grid-subscription-schema"></a>Schema voor Event Grid abonnement
 
@@ -22,7 +22,7 @@ Als u een Event Grid-abonnement wilt maken, stuurt u een aanvraag naar de bewerk
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Als u bijvoorbeeld een gebeurtenis abonnement wilt maken voor een opslag account met `examplestorage` de naam in een resource `examplegroup`groep met de naam, gebruikt u de volgende indeling:
+Als u bijvoorbeeld een gebeurtenis abonnement wilt maken voor een opslag account met `examplestorage` de naam in een resource groep `examplegroup` met de naam, gebruikt u de volgende indeling:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01

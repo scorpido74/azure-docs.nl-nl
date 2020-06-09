@@ -1,19 +1,19 @@
 ---
 title: Release opmerkingen-Azure Event Grid IoT Edge | Microsoft Docs
 description: Opmerkingen over IoT Edge-release Azure Event Grid
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c3df1f990f7cbe4cb4d7dda581f355ca0d518a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76849706"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560417"
 ---
 # <a name="release-notes-azure-event-grid-on-iot-edge"></a>Release opmerkingen: Azure Event Grid op IoT Edge
 
@@ -47,4 +47,4 @@ Preview 2 van Azure Event Grid op IoT Edge toegevoegd:
 * Publiceren naar Service Bus-onderwerpen als doel
 * Publiceren naar opslag wachtrijen als doel
 
-Tags: `1.0.0-preview2`, `1.0`,`latest`
+Tags: `1.0.0-preview2` , `1.0` ,`latest`

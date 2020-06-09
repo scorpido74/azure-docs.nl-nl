@@ -10,12 +10,12 @@ author: kevinvngo
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e0788f978fd25356b230a7923def6cbbea3dc305
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 717db5ee9d14074b6bd2fdae78847e0ad0fa2255
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835458"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561384"
 ---
 # <a name="request-quota-increases-and-get-support-for-azure-synapse-analytics"></a>Vraag quota toe en ontvang ondersteuning voor Azure Synapse Analytics
 
@@ -53,59 +53,89 @@ Gebruik de volgende stappen om een nieuwe ondersteunings aanvraag te maken op ba
 
    ![Een quotum type selecteren](./media/sql-data-warehouse-get-started-create-support-ticket/select-quota-type.png)
 
-1. Selecteer in het **detail** venster **Details opgeven** om aanvullende informatie in te voeren.
+1. Selecteer in het **detail** venster **Details invoeren** om aanvullende informatie in te voeren.
 
    ![De koppeling Details opgeven](./media/sql-data-warehouse-get-started-create-support-ticket/provide-details-link.png)
 
 ## <a name="quota-request-types"></a>Typen quotum aanvragen
 
-Als u op **Details geven** klikt, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties worden de verschillende quota aanvragen beschreven die beschikbaar zijn voor Azure Synapse Analytics.
+Als u **Details invoeren** selecteert, wordt het venster **quotum Details** weer gegeven waarin u aanvullende informatie kunt toevoegen. In de volgende secties worden de verschillende quota aanvragen beschreven die beschikbaar zijn voor Azure Synapse Analytics.
 
-### <a name="data-warehouse-units-dwus-per-server"></a>Data Warehouse-eenheden (Dwu's) per server
+### <a name="synapse-sql-pool-data-warehouse-units-dwus-per-server"></a>Synapse SQL pool data warehouse units (Dwu's) per server
 
 Gebruik de volgende stappen om een verhoging van de Dwu's per server aan te vragen.
 
-1. Selecteer het quotum type **Data Warehouse (dtu's) per server** .
+1. Selecteer het **Synapse SQL-groep dwu's per server** -quotum type.
 
-1. Selecteer in de lijst **resource** de resource die u wilt instellen.
+1. Selecteer de **resource** waarop u de quota toename wilt Toep assen met behulp van de vervolg keuzelijst.
 
-1. Voer in het veld **aanvraag quotum** de nieuwe DWU-limiet in die u aanvraagt.
+1. Voer uw nieuwe quota in het gedeelte **aanvraag quotum** in.
+
+1. Selecteer **Opslaan en doorgaan**.
 
    ![Details van DWU-quotum](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-dwus.png)
 
+
 ### <a name="servers-per-subscription"></a>Servers per abonnement
 
-Gebruik de volgende stappen om een verhoging van het aantal servers per abonnement aan te vragen.
+Als u een verhoging van het aantal servers per abonnement wilt aanvragen, moet u de volgende stappen uitvoeren:
 
-1. Selecteer het quotum type voor **servers per abonnement** .
+1. Selecteer de **SQL-servers per abonnement** als het quota type.
 
 1. Selecteer in de lijst **locatie** de Azure-regio die u wilt gebruiken. Het quotum is per abonnement in elke regio.
 
-1. In het veld **nieuw quotum** voert u uw aanvraag in voor het maximum aantal servers in die regio.
+1. Voer in het veld **aanvraag quotum** uw aanvraag in voor het maximum aantal servers in die regio.
 
    ![Details van servers-quota](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-servers.png)
 
+
+
+1. Selecteer **Opslaan en doorgaan**.
+
+Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Mogelijk wordt de volgende fout weer geven:
+
+![Fout bij regio toegang](./media/sql-data-warehouse-get-started-create-support-ticket/region-access-error.png)
+
 ### <a name="enable-subscription-access-to-a-region"></a>Abonnements toegang tot een regio inschakelen
 
-Sommige aanbiedings typen zijn niet beschikbaar in elke regio. Er wordt mogelijk een fout bericht weer geven, zoals het volgende:
+Als u de regio toegang voor een abonnement wilt inschakelen, moet u de volgende stappen uitvoeren:  
 
-`This location is not available for subscription`
+1. Selecteer het **toegangs quotum type Synapse SQL-pool (Data Warehouse)** .
 
-Als uw abonnement toegang moet hebben tot een bepaalde regio, gebruikt u de optie **andere quotum aanvraag** om toegang aan te vragen. Geef in uw aanvraag de aanbieding-en SKU-Details op die u wilt inschakelen voor de regio. Zie [prijzen voor Azure Synapse Analytics](https://azure.microsoft.com/pricing/details/synapse-analytics/)voor meer informatie over de aanbiedings-en SKU-opties.
+1. Selecteer de regio door een **locatie** in de vervolg keuzelijst te kiezen.
+
+1. Geef uw DWU-prestatie vereiste op in de sectie **DWU is vereist** .
+
+1. Voer uw **Beschrijving van zakelijke vereisten in**. 
+
+1. Selecteer **Opslaan en doorgaan**.
+
+![Regiotoegang](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-region.png)
+
+
+### <a name="for-other-quota-requests"></a>Voor andere quotum aanvragen
+
+Selecteer **andere quotum aanvraag** in het vervolg keuzemenu quotum type voor andere typen quotum aanvragen:
 
 ![Andere quotum Details](./media/sql-data-warehouse-get-started-create-support-ticket/quota-details-whitelisting.png)
 
 ## <a name="submit-your-request"></a>De aanvraag verzenden
 
-De laatste stap is het invullen van de resterende Details van de ondersteunings aanvraag van SQL Database. Selecteer vervolgens**Volgende: Controleren en maken > >** en klik na het controleren van de aanvraagdetails op **Maken** om de aanvraag in te dienen.
+De laatste stap is het invullen van de resterende Details van de ondersteunings aanvraag van SQL Database. Selecteer **volgende: controleren +>>maken **.
+
+![Details van maken controleren](./media/sql-data-warehouse-get-started-create-support-ticket/review-create-details.png)
+
+Nadat u de details van de aanvraag hebt bekeken, selecteert u **maken** om de aanvraag in te dienen.
+
+![Ticket maken](./media/sql-data-warehouse-get-started-create-support-ticket/create-ticket.png)
 
 ## <a name="monitor-a-support-ticket"></a>Een ondersteuningsticket bewaken
 
-Nadat u het ondersteunings verzoek hebt ingediend, neemt het ondersteunings team van Azure contact met u op. Als u de aanvraagstatus en -details wilt controleren, klikt u op het dashboard op **Alle ondersteuningsaanvragen**.
+Nadat u het ondersteunings verzoek hebt ingediend, neemt het ondersteunings team van Azure contact met u op. Als u de aanvraag status en-details wilt controleren, selecteert u **alle ondersteunings aanvragen** op het dash board.
 
 ![Status controleren](./media/sql-data-warehouse-get-started-create-support-ticket/monitor-ticket.png)
 
 ## <a name="other-resources"></a>Meer informatie
 
-U kunt ook verbinding maken met de Azure Synapse Analytics-Community op [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) of via de [pagina micro soft Q&een vraag voor Azure SQL Data Warehouse](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
+U kunt ook verbinding maken met de Azure Synapse Analytics-Community op [stack overflow](https://stackoverflow.com/questions/tagged/azure-synapse+or+azure-sql-data-warehouse) of via de [pagina micro soft Q&een vraag voor Azure Synapse Analytics](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html).
 

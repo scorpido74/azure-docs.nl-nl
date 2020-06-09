@@ -2,17 +2,17 @@
 title: Gebeurtenis domeinen in Azure Event Grid
 description: In dit artikel wordt beschreven hoe u gebeurtenis domeinen gebruikt voor het beheren van de stroom van aangepaste gebeurtenissen naar uw verschillende zakelijke organisaties, klanten of toepassingen.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f6698f91d7659f9fc2c314a9291380301146f8ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11ecf5c2a7bea8a9ef2047bdabcbfd4d844c5a3a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898870"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559513"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Informatie over gebeurtenis domeinen voor het beheren van Event Grid onderwerpen
 
@@ -65,7 +65,7 @@ Wanneer u een gebeurtenis domein maakt, krijgt u een publicatie-eind punt te zie
 
 Als u gebeurtenissen naar een onderwerp in een gebeurtenis domein wilt publiceren, moet u de gebeurtenissen naar het eind punt van het domein pushen op [dezelfde manier als voor een aangepast onderwerp](./post-to-custom-topic.md). Het enige verschil is dat u het onderwerp moet opgeven waarnaar de gebeurtenis moet worden geleverd.
 
-Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeurtenis verzonden `"id": "1111"` met het `foo` onderwerp, terwijl de `"id": "2222"` gebeurtenis met zou worden verzonden `bar`naar het onderwerp:
+Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeurtenis verzonden met `"id": "1111"` het onderwerp, `foo` terwijl de gebeurtenis met `"id": "2222"` zou worden verzonden naar het onderwerp `bar` :
 
 ```json
 [{
@@ -105,7 +105,7 @@ Dit zijn de limieten en quota die betrekking hebben op gebeurtenis domeinen:
 - 50 domein bereik abonnementen 
 - 5.000 gebeurtenissen per seconde opname frequentie (in een domein)
 
-Als deze limieten niet aansluiten bij u, kunt u het product team bereiken door een ondersteunings ticket te openen [askgrid@microsoft.com](mailto:askgrid@microsoft.com)of door een e-mail te verzenden naar. 
+Als deze limieten niet aansluiten bij u, kunt u het product team bereiken door een ondersteunings ticket te openen of door een e-mail te verzenden naar [askgrid@microsoft.com](mailto:askgrid@microsoft.com) . 
 
 ## <a name="pricing"></a>Prijzen
 Gebeurtenis domeinen gebruiken dezelfde [prijzen voor bewerkingen](https://azure.microsoft.com/pricing/details/event-grid/) die alle andere functies in Event grid gebruiken.

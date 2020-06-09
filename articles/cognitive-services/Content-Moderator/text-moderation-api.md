@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 31bd6a2680d8c71df6b6030187ff44ca10d09440
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685064"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561031"
 ---
 # <a name="learn-text-moderation-concepts"></a>Concepten van tekst toezicht leren
 
 Gebruik de tekst toezicht modellen van Content Moderator om tekst inhoud te analyseren.
 
-U kunt de inhoud blok keren, goed keuren of controleren op basis van uw beleid en drempel waarden (Zie [Recensies, werk stromen en taken](./review-api.md) voor meer informatie over het instellen van Human beoordelingen). Gebruik de tekst toezicht modellen voor het uitbreiden van de menselijke toezicht op omgevingen waar partners, werk nemers en consumenten tekst inhoud genereren. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten. 
+U kunt de inhoud blok keren, goed keuren of controleren op basis van uw beleid en drempel waarden (Zie [Recensies, werk stromen en taken](./review-api.md) voor meer informatie over het instellen van Human beoordelingen). Gebruik de tekst toezicht modellen voor het uitbreiden van de menselijke toezicht op omgevingen waar partners, werk nemers en consumenten tekst inhoud genereren. Het gaat hierbij om chatruimten, discussieborden, chatbots, e-commerce-catalogi en documenten.
 
 Het antwoord van de service bevat de volgende informatie:
 
@@ -82,7 +82,7 @@ De functie persoonlijke gegevens detecteert de mogelijke aanwezigheid van deze g
 
 - E-mailadres
 - Post adres van de Verenigde Staten
-- IP-adres
+- Het IP-adres
 - Telefoon nummer VS
 
 In het volgende voor beeld ziet u een voor beeld van een antwoord:
