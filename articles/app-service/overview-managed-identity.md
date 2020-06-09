@@ -6,12 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.custom: tracking-python
+ms.openlocfilehash: 3be41014c315a5820add3407ca0e4cbdb5a5e23e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258450"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559699"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Beheerde identiteiten gebruiken voor App Service en Azure Functions
 
@@ -194,7 +195,7 @@ Eerst moet u een door de gebruiker toegewezen id-resource maken.
 
 5. Klik op het tabblad **toegewezen door gebruiker** op **toevoegen**.
 
-6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Toevoegen**.
+6. Zoek de identiteit die u eerder hebt gemaakt en selecteer deze. Klik op **Add**.
 
     ![Beheerde identiteit in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -382,7 +383,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');

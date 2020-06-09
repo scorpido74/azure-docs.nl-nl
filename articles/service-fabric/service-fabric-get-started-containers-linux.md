@@ -3,12 +3,13 @@ title: Een Azure Service Fabric-container toepassing maken in Linux
 description: Maak uw eerste Linux-containertoepassing in Azure Service Fabric. Bouw een Docker-installatiekopie met uw toepassing, push de installatiekopie naar een containerregister, en bouw en implementeer een Service Fabric-containertoepassing.
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457969"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560648"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Uw eerste Service Fabric-containertoepassing maken in Linux
 > [!div class="op_single_selector"]
@@ -113,7 +114,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Bij *naam* kunt de actieve container een naam geven (in plaats van de container-id).
 
-Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld ' http: \/ /localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
 ![Hallo wereld!][hello-world]
 
@@ -132,7 +133,7 @@ docker rm my-web-site
 ## <a name="push-the-image-to-the-container-registry"></a>De installatiekopie naar het containerregister pushen
 Nadat u hebt gecontroleerd of de toepassing wordt uitgevoerd in Docker, pusht u de installatiekopie naar het register in Azure Container Registry.
 
-Voer `docker login` uit om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
+Voer uit `docker login` om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
 In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
@@ -165,7 +166,7 @@ Omdat voor deze installatiekopie een workloadinvoerpunt is gedefinieerd, hoeft u
 
 Geef '1' exemplaar op.
 
-Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de poort toewijzing ```80:4000``` opgeven. Als u dit doet, worden alle binnenkomende aanvragen die afkomstig zijn van poort 4000 op de hostmachine omgeleid naar poort 80 van de container.
+Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u ```80:4000``` de poort toewijzing opgeven. Als u dit doet, worden alle binnenkomende aanvragen die afkomstig zijn van poort 4000 op de hostmachine omgeleid naar poort 80 van de container.
 
 ![Service Fabric Yeoman-generator voor containers][sf-yeoman]
 
@@ -174,7 +175,7 @@ Geef de poort toewijzing in de juiste indeling op. Voor dit artikel moet u de po
 Bekijk [container opslagplaats verificatie](configure-container-repository-credentials.md)voor meer informatie over het configureren van verschillende verificatie typen voor het downloaden van container installatie kopieën.
 
 ## <a name="configure-isolation-mode"></a>Isolatiemodus configureren
-Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in `ServicePackageContainerPolicy` het-element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
+Met de 6,3-runtime versie wordt VM-isolatie ondersteund voor Linux-containers, waardoor er twee isolatie modi voor containers zijn: proces-en Hyper-V-ondersteuning. Met de isolatie modus voor Hyper-V worden de kernels geïsoleerd tussen elke container en de container-host. De Hyper-V-isolatie wordt geïmplementeerd met behulp van [Clear-containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker). De isolatie modus wordt opgegeven voor Linux-clusters in het- `ServicePackageContainerPolicy` element in het manifest bestand van de toepassing. De isolatiemodi die kunnen worden opgegeven zijn `process`, `hyperv` en `default`. De standaard instelling is proces isolatie modus. Het volgende codefragment toont hoe de isolatiemodus wordt opgegeven in het manifestbestand van de toepassing.
 
 ```xml
 <ServiceManifestImport>
@@ -249,16 +250,16 @@ Maak verbinding met het lokale cluster van Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Gebruik het installatie script https://github.com/Azure-Samples/service-fabric-containers/ dat is opgenomen in de sjablonen om het toepassings pakket te kopiëren naar de installatie kopie opslag van het cluster, het toepassings type te registreren en een exemplaar van de toepassing te maken.
+Gebruik het installatie script dat is opgenomen in de sjablonen https://github.com/Azure-Samples/service-fabric-containers/ om het toepassings pakket te kopiëren naar de installatie kopie opslag van het cluster, het toepassings type te registreren en een exemplaar van de toepassing te maken.
 
 
 ```bash
 ./install.sh
 ```
 
-Open een browser en ga naar Service Fabric Explorer op http:\//localhost: 19080/Explorer (Vervang localhost door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
+Open een browser en ga naar Service Fabric Explorer op http: \/ /localhost: 19080/Explorer (Vervang localhost door het privé-IP-adres van de virtuele machine als u Vagrant op Mac OS X gebruikt). Vouw het knooppunt Toepassingen uit. U ziet dat er nu een vermelding is voor uw toepassingstype en nog een voor het eerste exemplaar van dat type.
 
-Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld '\/http:/localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat is geretourneerd op poort 4000, bijvoorbeeld ' http: \/ /localhost: 4000 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
 ![Hallo wereld!][hello-world]
 

@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 18e3f2ab7c581a1ff93a65e410e83739564b5be5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530220"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558301"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Toepassingen verbinden met Azure Database for MariaDB
 In dit onderwerp vindt u een overzicht van de connection string typen die door Azure Database for MariaDB worden ondersteund, samen met sjablonen en voor beelden. Er zijn mogelijk verschillende para meters en instellingen in uw connection string.
@@ -25,7 +26,7 @@ In dit onderwerp vindt u een overzicht van de connection string typen die door A
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-In dit `mydemoserver`voor beeld is de naam van de server, de naam `wpdb`van de data base, `WPAdmin`de gebruikers naam en het `mypassword!2`wacht woord. Als gevolg hiervan moet de connection string:
+In dit voor beeld is de naam van de server `mydemoserver` , de naam van de data base, de `wpdb` gebruikers naam `WPAdmin` en het wacht woord `mypassword!2` . Als gevolg hiervan moet de connection string:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>De connection string Details ophalen uit de Azure Portal
-Ga in het [Azure Portal](https://portal.azure.com)naar de Azure database for MariaDB-server en klik vervolgens op **verbindings reeksen** om de teken reeks lijst voor uw instantie op ![te halen: het deel venster verbindings reeksen in de Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+Ga in het [Azure Portal](https://portal.azure.com)naar de Azure database for MariaDB-server en klik vervolgens op **verbindings reeksen** om de teken reeks lijst voor uw instantie op te halen: ![ het deel venster verbindings reeksen in de Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 De teken reeks bevat details zoals het stuur programma, de server en andere para meters voor database verbindingen. Wijzig deze voor beelden om uw eigen para meters te gebruiken, zoals de database naam, het wacht woord, enzovoort. U kunt deze teken reeks vervolgens gebruiken om vanuit uw code en toepassingen verbinding te maken met de server.
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395258"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488627"
 ---
 # <a name="apply-transformation-module"></a>Transformatie module Toep assen
 
@@ -32,13 +32,13 @@ Met de ontwerp functie kunt u gegevens transformaties opslaan als gegevens **set
 
 1. Selecteer het tabblad **uitvoer en logboeken** .
 
-1. Selecteer het **pictogram opslaan** om de **resultaat transformatie**op te slaan.
+1. Zoek de trans formatie-uitvoer en selecteer de **gegevensset registreren** om deze op te slaan als module onder **gegevens sets** in het module palet.
 
 ## <a name="how-to-use-apply-transformation"></a>Trans formatie Toep assen gebruiken  
   
 1. Voeg de module **trans formatie Toep assen** toe aan uw pijp lijn. U kunt deze module vinden in het gedeelte beoordeling van de **model score &** van het palet van de module. 
   
-1. Zoek de opgeslagen trans formatie die u wilt gebruiken onder **gegevens** > sets van**mijn gegevens sets** in het module palet.
+1. Zoek de opgeslagen trans formatie die u wilt gebruiken onder **gegevens sets** in het module palet.
 
 1. Verbind de uitvoer van de opgeslagen trans formatie met de linker invoer poort van de module **Apply trans formatie** .
 

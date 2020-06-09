@@ -10,12 +10,13 @@ ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
 ms.date: 03/12/2020
-ms.openlocfilehash: 925b562189d713dd4cb1e72aa8b8fae28fcde0a5
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 2473d864e0ad0fca4a886a6135a9caac0742e3d7
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433226"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557075"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +36,7 @@ Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt k
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
+* Als u geen Azure-abonnement hebt, maak dan een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree)
 
 * Een Azure Machine Learning-werk ruimte, een lokale map die uw scripts bevat en de Azure Machine Learning SDK voor python is geïnstalleerd. Zie [een ontwikkel omgeving configureren](how-to-configure-environment.md) voor meer informatie over het verkrijgen van deze vereisten.
 

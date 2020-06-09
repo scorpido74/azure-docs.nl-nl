@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437525"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488032"
 ---
 # <a name="references"></a>Verwijzingen
 
@@ -74,7 +74,7 @@ Hier volgen de meest voorkomende aanvraag headers die u moet opgeven wanneer u e
 
 **Journaalkop** | **Beschrijving en voor beeld**
 --- | ---
-Content-Type  | De aanvraag indeling (content-type: Application/<format>). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
+Content-Type  | De aanvraag indeling (content-type: Application/ <format> ). Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Content-type: Application/JSON
 Autorisatie  | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer <Access-token>
 Accepteren | De antwoord indeling. Voor Azure FarmBeats Datahub-Api's is de indeling JSON. Accepteren: toepassing/JSON
 
@@ -82,7 +82,7 @@ Accepteren | De antwoord indeling. Voor Azure FarmBeats Datahub-Api's is de inde
 
 Als u een REST API aanvraag wilt indienen, combineert u de HTTP-methode (GET, POST, PUT of DELETE), de URL van de API-service, de URI naar een resource om een query uit te voeren, gegevens in te dienen bij, bij te werken of te verwijderen, en vervolgens een of meer HTTP-aanvraag headers toe te voegen.
 
-De URL van de API-service is uw Datahub-URL, bijvoorbeeld https://\<yourdatahub-website naam>. azurewebsites.net.
+De URL van de API-service is uw Datahub-URL, bijvoorbeeld https:// \<yourdatahub-website-name> . azurewebsites.net.
 
 U kunt desgewenst query parameters toevoegen aan GET-aanroepen om te filteren, de grootte van de gegevens in de antwoorden te beperken en te sorteren.
 
@@ -147,7 +147,7 @@ In dit voor beeld, wanneer een farm is gemaakt, is het verplichte veld ' naam ' 
 
 Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-registratie in Azure Active Directory. Voer de volgende stappen uit om een app-registratie te maken in Azure Active Directory:
 
-1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory** > **app-registraties** > **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
+1. Ga naar de [Azure Portal](https://portal.azure.com)en selecteer **Azure Active Directory**  >  **app-registraties**  >  **nieuwe registratie**. U kunt ook een bestaand account gebruiken.
 2. Ga als volgt te werk voor een nieuw account:
 
     - Voer een naam in.
@@ -162,9 +162,18 @@ Azure FarmBeats-Api's kunnen worden gebruikt door een gebruiker of een app-regis
     - Ga terug naar **overzicht**en selecteer de koppeling naast **toepassing beheren in de lokale map**.
     - Ga naar **Eigenschappen** om de **object-id**vast te leggen.
 
-4. Ga naar uw Datahub Swagger (https://<yourdatahub>. azurewebsites.net/Swagger/index.html) en voer de volgende handelingen uit:
+4. Ga naar uw Datahub Swagger (https:// <yourdatahub> . azurewebsites.net/Swagger/index.html) en voer de volgende handelingen uit:
     - Ga naar de **RoleAssignment-API**.
     - Voer een bericht uit om een **RoleAssignment** -object te maken voor de **object-id** die u zojuist hebt gemaakt.
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > Zie [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)voor meer informatie over het toevoegen van gebruikers en het registreren van Active Directory.

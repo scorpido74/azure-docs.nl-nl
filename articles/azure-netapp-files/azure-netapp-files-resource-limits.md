@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8b417559a17dc05a07467a28d37fec9b9a7c12cb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637406"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553477"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Resourcelimieten voor Azure NetApp Files
 
@@ -42,7 +42,7 @@ In de volgende tabel worden resource limieten voor Azure NetApp Files beschreven
 |  Minimum grootte van één volume    |    100 GiB    |    Nee    |
 |  Maximale grootte van één volume     |    100 TiB    |    Nee    |
 |  Maximale grootte van één bestand     |    16 TiB    |    Nee    |    
-|  Maximale grootte van één map      |    320 MB    |    Nee    |    
+|  Maximale grootte van Directory-meta gegevens in één map      |    320 MB    |    Nee    |    
 |  Maximum aantal bestanden ([maxfiles](#maxfiles)) per volume     |    100.000.000    |    Ja    |    
 
 Zie [Veelgestelde vragen over capaciteits beheer](azure-netapp-files-faqs.md#capacity-management-faqs)voor meer informatie.
@@ -81,7 +81,7 @@ Vanuit Azure Portal navigatie vlak:
 
         |  Resource  |    Bovenliggende resources      |    Aangevraagde nieuwe limieten     |    Reden voor toename van quotum       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Account |  *Subscription ID*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
+        |  Account |  *Abonnements-id*   |  *Aangevraagd nieuw Maxi maal **account** nummer*    |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Pool    |  *Abonnements-ID, account-URI*  |  *Nieuw maximum **groeps** nummer aangevraagd*   |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Volume  |  *Abonnements-ID, account-URI, groeps-URI*   |  *Nieuw maximum **volume** nummer aangevraagd*     |  *Welk scenario of use-case vraagt de aanvraag?*  |
         |  Maxfiles  |  *Abonnements-ID, account-URI, groeps-URI, volume-URI*   |  *Aangevraagd aantal voor nieuwe maximum **maxfiles***     |  *Welk scenario of use-case vraagt de aanvraag?*  |    

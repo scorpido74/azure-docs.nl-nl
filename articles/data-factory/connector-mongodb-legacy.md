@@ -2,7 +2,6 @@
 title: Gegevens kopiëren van MongoDB met verouderde
 description: Meer informatie over het kopiëren van gegevens uit Mongo DB naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
 manager: shwang
@@ -12,17 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418164"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558186"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory (verouderd)
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-on-premises-mongodb-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-on-premises-mongodb-connector.md)
 > * [Huidige versie](connector-mongodb.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -70,7 +69,7 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 | allowSelfSignedServerCert | Hiermee geeft u op of zelfondertekende certificaten van de server mogen worden toegestaan. De standaardwaarde is false.  | Nee |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -104,7 +103,7 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbCollection** | Ja |
 | collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -135,7 +134,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbSource** | Ja |
 | query |Gebruik de aangepaste SQL-92-query om gegevens te lezen. Bijvoorbeeld: Select * from MyTable. |Nee (als ' verzamelingsset ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -181,7 +180,7 @@ Bij het kopiëren van gegevens uit MongoDB worden de volgende toewijzingen gebru
 | MongoDB-gegevens type | Data Factory-gegevens type interim |
 |:--- |:--- |
 | Binair |Byte [] |
-| Booleaans |Booleaans |
+| Boolean |Booleaans |
 | Date |DateTime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
@@ -209,14 +208,14 @@ Virtuele tabellen verwijzen naar de gegevens in de tabel Real, waardoor het stuu
 
 ExampleTable hier is bijvoorbeeld een MongoDB-tabel met één kolom met een matrix met objecten in elke cel, facturen en één kolom met een matrix van scalaire typen – classificaties.
 
-| _id | Klant naam | Facturen | Service niveau | Waarderingen |
+| _id | Naam van klant | Facturen | Service niveau | Waarderingen |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", item: "pop-uptaak", prijs: "456", korting: "0,2"}, {invoice_id: "124", item: "oven", prijs: "1235", korting: "0,2"}] |Zilver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", item: "koel kast", prijs: "12543", korting: "0,0"}] |Goud |[1, 2] |
 
 Het stuur programma genereert meerdere virtuele tabellen om deze afzonderlijke tabel weer te geven. De eerste virtuele tabel is de basis tabel met de naam ' ExampleTable ', zoals weer gegeven in het voor beeld. De basis tabel bevat alle gegevens van de oorspronkelijke tabel, maar de gegevens uit de matrices zijn wegge laten en worden uitgevouwen in de virtuele tabellen.
 
-| _id | Klant naam | Service niveau |
+| _id | Naam van klant | Service niveau |
 | --- | --- | --- |
 | 1111 |ABC |Zilver |
 | 2222 |XYZ |Goud |

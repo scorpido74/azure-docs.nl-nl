@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245128"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558515"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect installeren met behulp van een bestaande ADSync-database
 Azure AD Connect vereist een SQL Server-Data Base om gegevens op te slaan. U kunt de standaard SQL Server 2012 Express LocalDB gebruiken dat is geïnstalleerd met Azure AD Connect of uw eigen volledige versie van SQL gebruiken. Toen u Azure AD Connect hebt geïnstalleerd, werd er altijd een nieuwe data base gemaakt met de naam ADSync. Met Azure AD Connect versie 1.1.613.0 (of later) hebt u de mogelijkheid om Azure AD Connect te installeren door het te wijzen naar een bestaande ADSync-data base.
@@ -76,19 +76,15 @@ Belang rijke opmerkingen voordat u doorgaat:
 1. Op het scherm **Verbinding maken met uw adreslijsten** wordt het bestaande AD-forest dat is geconfigureerd voor adreslijstsynchronisatie, weergegeven met een rood kruis ernaast. Voor het synchroniseren van wijzigingen vanuit een on-premises AD-forest is een AD DS-account vereist. Met de wizard Azure AD Connect kunnen de referenties van het AD DS-account dat is opgeslagen in de ADsync-database, niet worden opgehaald, omdat deze referenties zijn versleuteld en alleen kunnen worden ontsleuteld met de vorige Azure AD Connect-server. Klik op **Referenties wijzigen** om het AD DS-account voor het AD-forest op te geven.
    ![Adreslijsten](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. In het pop-updialoogvenster kunt u (i) de referenties van een ondernemingsadministrator opgeven en het AD DS-account voor u laten maken in Azure AD Connect of (ii) zelf het AD DS-account maken en de bijbehorende referenties opgeven in Azure AD Connect. Zodra u een optie hebt geselecteerd en de benodigde referenties hebt opgegeven, klikt u op **OK** om het pop-updialoogvenster te sluiten.
    ![Welkom](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **Volgende**.
    ![Welkom](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. Klik in het scherm **gereed voor configuratie** op **installeren**.
    ![Welkom](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. Zodra de installatie is voltooid, wordt de Azure AD Connect-server automatisch ingeschakeld voor de faseringsmodus. U wordt aangeraden om de serverconfiguratie en exports die in behandeling zijn, te controleren op onverwachte wijzigingen, voordat u de faseringsmodus uitschakelt. 
 
 ## <a name="post-installation-tasks"></a>Taken na de installatie

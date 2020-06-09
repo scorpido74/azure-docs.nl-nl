@@ -3,12 +3,13 @@ title: Een Azure Service Fabric-container toepassing maken
 description: Maak uw eerste Windows-containertoepassing in Azure Service Fabric. Bouw een docker-installatie kopie met een python-toepassing, push de installatie kopie naar een container register en bouw en implementeer de container vervolgens naar Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258471"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560666"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Uw eerste Service Fabric-containertoepassing maken in Windows
 
@@ -35,7 +36,7 @@ Er zijn geen wijzigingen in uw toepassing vereist om een bestaande toepassing in
 
   Voor dit artikel moet de versie (build) van Windows Server met containers die op uw cluster knooppunten worden uitgevoerd, overeenkomen met die op uw ontwikkel computer. Dit komt doordat u de docker-installatie kopie op uw ontwikkel machine bouwt en er compatibiliteits beperkingen zijn tussen versies van het container besturingssysteem en het hostbesturingssysteem waarop het is geïmplementeerd. Zie [Windows Server container OS en host OS Compatibility](#windows-server-container-os-and-host-os-compatibility)(Engelstalig) voor meer informatie. 
   
-Als u wilt bepalen welke versie van Windows Server u nodig hebt voor het cluster, voert `ver` u de opdracht uit vanaf een Windows-opdracht prompt op de ontwikkel computer:
+Als u wilt bepalen welke versie van Windows Server u nodig hebt voor het cluster, voert u de `ver` opdracht uit vanaf een Windows-opdracht prompt op de ontwikkel computer:
 
 * Als de versie *x. x. 14323. x*bevat, selecteert u *Windowsserver 2016-Data Center-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
   * Als de versie *x. x. 16299. x*bevat, selecteert u *WindowsServerSemiAnnual Data Center-core-1709-with-containers* voor het besturings systeem bij het [maken van een cluster](service-fabric-cluster-creation-via-portal.md).
@@ -142,12 +143,12 @@ Zodra de container is gestart, zoekt u het bijbehorende IP-adres zodat u vanuit 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Als deze opdracht niets retourneert, voert u de volgende opdracht uit en inspecteert u het element **NetworkSettings**->**Networks** voor het IP-adres:
+Als deze opdracht niets retourneert, voert u de volgende opdracht uit en inspecteert u het element **NetworkSettings** -> **Networks** voor het IP-adres:
 ```
 docker inspect my-web-site
 ```
 
-Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat wordt geretourneerd, bijvoorbeeld '\/http:/172.31.194.61 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
+Maak verbinding met de actieve container. Open een webbrowser die verwijst naar het IP-adres dat wordt geretourneerd, bijvoorbeeld ' http: \/ /172.31.194.61 '. Als het goed is, ziet u de koptekst Hallo wereld! weergegeven in de browser.
 
 Als u de container wilt stoppen, voert u dit uit:
 
@@ -166,7 +167,7 @@ docker rm my-web-site
 
 Nadat u hebt gecontroleerd of de container actief is op de ontwikkelcomputer, pusht u de installatiekopie naar het register in Azure Container Registry.
 
-Voer ``docker login`` uit om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
+Voer uit ``docker login`` om u aan te melden bij uw container register met uw [register referenties](../container-registry/container-registry-authentication.md).
 
 In het volgende voorbeeld worden de id en het wachtwoord van een [service-principal](../active-directory/develop/app-objects-and-service-principals.md) van Azure Active Directory doorgegeven. U hebt bijvoorbeeld een service-principal aan uw register toegewezen voor een automatiseringsscenario. U kunt zich ook aanmelden met uw gebruikers naam en wacht woord voor het REGI ster.
 
@@ -189,7 +190,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>De beperkte service maken in Visual Studio
 De Service Fabric SDK en hulpprogramma's bieden een servicesjabloon waarmee u een containertoepassing kunt maken.
 
-1. Start Visual Studio. Selecteer **bestand** > **Nieuw** > **project**.
+1. Start Visual Studio. Selecteer **bestand**  >  **Nieuw**  >  **project**.
 2. Selecteer **Service Fabric-toepassing**, geef deze de naam MyFirstContainer en klik op **OK**.
 3. Selecteer **Container** in de lijst met **servicesjablonen**.
 4. Voer bij **Naam van installatiekopie** het volgende in: myregistry.azurecr.io/samples/helloworldapp. Dit is de installatiekopie die u naar uw containeropslagplaats hebt gepusht.
@@ -368,7 +369,7 @@ We raden u aan de volgende procedures uit te voeren om ervoor te zorgen dat cont
  
 ## <a name="specify-os-build-specific-container-images"></a>Containerinstallatiekopieën opgeven die specifiek zijn voor de build van het besturingssysteem 
 
-Windows Server-containers zijn mogelijk niet compatibel in verschillende versies van het besturings systeem. Windows Server-containers die zijn gemaakt met Windows Server 2016, werken bijvoorbeeld niet in Windows Server versie 1709 in de isolatie modus voor processen. Als cluster knooppunten worden bijgewerkt naar de nieuwste versie, kunnen container Services die zijn gemaakt met de eerdere versies van het besturings systeem, mislukken. Om dit te omzeilen met versie 6,1 van de runtime en nieuwer, biedt Service Fabric ondersteuning voor het opgeven van meerdere installatie kopieën van besturings systemen per container en het coderen van deze met de build-versies van het besturings systeem in het toepassings manifest. U kunt de build-versie van het besturings systeem verkrijgen `winver` door uit te voeren vanaf een Windows-opdracht prompt. Werk eerst per besturingssysteemversie de toepassingsmanifesten bij en geef het gebruik van specifieke installatiekopieën op, en werk daarna het besturingssysteem op de knooppunten bij. Het volgende fragment toont hoe u meerdere containerinstallatiekopieën opgeeft in het toepassingsmanifest **ApplicationManifest.xml**:
+Windows Server-containers zijn mogelijk niet compatibel in verschillende versies van het besturings systeem. Windows Server-containers die zijn gemaakt met Windows Server 2016, werken bijvoorbeeld niet in Windows Server versie 1709 in de isolatie modus voor processen. Als cluster knooppunten worden bijgewerkt naar de nieuwste versie, kunnen container Services die zijn gemaakt met de eerdere versies van het besturings systeem, mislukken. Om dit te omzeilen met versie 6,1 van de runtime en nieuwer, biedt Service Fabric ondersteuning voor het opgeven van meerdere installatie kopieën van besturings systemen per container en het coderen van deze met de build-versies van het besturings systeem in het toepassings manifest. U kunt de build-versie van het besturings systeem verkrijgen door uit te voeren `winver` vanaf een Windows-opdracht prompt. Werk eerst per besturingssysteemversie de toepassingsmanifesten bij en geef het gebruik van specifieke installatiekopieën op, en werk daarna het besturingssysteem op de knooppunten bij. Het volgende fragment toont hoe u meerdere containerinstallatiekopieën opgeeft in het toepassingsmanifest **ApplicationManifest.xml**:
 
 
 ```xml

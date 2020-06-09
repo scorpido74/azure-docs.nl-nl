@@ -22,7 +22,7 @@ De Azure Queue-service bevat de volgende onderdelen:
 
 ![Azure Queue-service-onderdelen](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **URL-indeling:** Wacht rijen zijn adresseerbaar met behulp van de volgende`<storage account>`URL-indeling: http://. Queue.core.Windows.net/`<queue>`
+* **URL-indeling:** Wacht rijen zijn adresseerbaar met behulp van de volgende URL-indeling: http:// `<storage account>` . Queue.core.Windows.net/`<queue>`
   
     Met de volgende URL wordt een wachtrij in het diagram opgevraagd:  
   

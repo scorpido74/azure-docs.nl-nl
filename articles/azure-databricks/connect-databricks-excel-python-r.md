@@ -9,12 +9,13 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.custom: tracking-python
+ms.openlocfilehash: 77b9bcf0dad8fa11fad4828649cd75d7df7806d5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73601949"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561313"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Verbinding maken met Azure Databricks vanuit Excel, python of R
 
@@ -58,8 +59,8 @@ Een naam van een gegevens bron (DSN) bevat informatie over een specifieke gegeve
     |---------|---------|
     |**Naam van de gegevensbron**     | Geef een naam op voor de gegevens bron.        |
     |**Host (s)**     | Geef de waarde op die u hebt gekopieerd uit de Databricks-werk ruimte voor de hostnaam van de *Server*.        |
-    |**Importeer**     | Voer *443*in.        |
-    |**Verificatie** > **mechanisme**     | Selecteer de *gebruikers naam en het wacht woord*.        |
+    |**Poort**     | Voer *443*in.        |
+    |**Verificatie**  >  **Mechanisme**     | Selecteer de *gebruikers naam en het wacht woord*.        |
     |**Gebruikersnaam**     | Voer een *token*in.        |
     |**Wachtwoord**     | Voer de token waarde in die u hebt gekopieerd uit de Databricks-werk ruimte. |
     
@@ -102,11 +103,11 @@ Zodra u de gegevens in uw Excel-werkmap hebt, kunt u er analytische bewerkingen 
 In deze sectie gebruikt u een R-taal-IDE om te verwijzen naar gegevens die beschikbaar zijn in Azure Databricks. Voordat u begint, moet u het volgende hebben geïnstalleerd op de computer.
 
 * Een IDE voor R-taal. In dit artikel wordt RStudio gebruikt voor desktop. U kunt dit installeren via [R Studio downloaden](https://www.rstudio.com/products/rstudio/download/).
-* Als u RStudio voor het bureau blad gebruikt als uw IDE, installeert u ook micro [https://aka.ms/rclient/](https://aka.ms/rclient/)Soft R client van. 
+* Als u RStudio voor het bureau blad gebruikt als uw IDE, installeert u ook micro soft R client van [https://aka.ms/rclient/](https://aka.ms/rclient/) . 
 
 Open RStudio en voer de volgende stappen uit:
 
-- Verwijzen naar `RODBC` het pakket. Hierdoor kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
+- Verwijzen naar het `RODBC` pakket. Hierdoor kunt u verbinding maken met Azure Databricks met behulp van de DSN die u eerder hebt gemaakt.
 - Een verbinding tot stand brengen met behulp van de DSN.
 - Een SQL-query uitvoeren op de gegevens in Azure Databricks. In het volgende code fragment is *radio_sample_data* een tabel die al bestaat in azure Databricks.
 - Voer enkele bewerkingen uit op de query om de uitvoer te controleren. 
@@ -134,7 +135,7 @@ In deze sectie gebruikt u een python IDE (zoals inactief) om te verwijzen naar g
 
 * Installeer python vanaf deze [locatie](https://www.python.org/downloads/). Als u python vanaf deze koppeling installeert, wordt ook inactief geïnstalleerd.
 
-* Installeer het `pyodbc` pakket vanaf een opdracht prompt op de computer. Voer de volgende opdracht uit:
+* Installeer het pakket vanaf een opdracht prompt op de computer `pyodbc` . Voer de volgende opdracht uit:
 
       pip install pyodbc
 

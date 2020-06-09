@@ -10,12 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 22136efc493b4838a8f538091d6272e3c167510e
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: ab2bb3d94a740ca25be15b64895c52d5c038add3
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434727"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552452"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Werk ruimte achter Azure Firewall gebruiken voor Azure Machine Learning
 
@@ -23,7 +24,7 @@ In dit artikel leert u hoe u Azure Firewall kunt configureren voor gebruik met e
 
 Azure Firewall kan worden gebruikt om de toegang tot uw Azure Machine Learning-werk ruimte en het open bare Internet te beheren. Als niet correct is geconfigureerd, kan de firewall problemen veroorzaken met uw werk ruimte.
 
-## <a name="network-rules"></a>Netwerkregels
+## <a name="network-rules"></a>Netwerk regels
 
 Maak op uw firewall een netwerk regel die verkeer naar en van de adressen in dit artikel toestaat.
 

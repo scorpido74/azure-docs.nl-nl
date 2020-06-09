@@ -6,16 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: ea34ec3bd601b784afd5bf0286768bbf5f92d040
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982306"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553035"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies registreren en gebruiken in Azure Cosmos DB
 
-De SQL-API in Azure Cosmos DB biedt ondersteuning voor het registreren en aanroepen van opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies (UDF's) die zijn geschreven in JavaScript. U kunt de SQL API [.net](sql-api-sdk-dotnet.md)-, [.net core](sql-api-sdk-dotnet-core.md)-, [Java](sql-api-sdk-java.md)-, [Java script](sql-api-sdk-node.md)-, [node. js](sql-api-sdk-node.md)-of [python](sql-api-sdk-python.md) -sdk's gebruiken om de opgeslagen procedures te registreren en aan te roepen. Als u een of meer opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies hebt gedefinieerd, kunt u deze laden en weergeven in [Azure Portal](https://portal.azure.com/) met behulp van Data Explorer.
+De SQL-API in Azure Cosmos DB biedt ondersteuning voor het registreren en aanroepen van opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies (UDF's) die zijn geschreven in JavaScript. U kunt de SQL API [.net](sql-api-sdk-dotnet.md)-, [.net core](sql-api-sdk-dotnet-core.md)-, [Java](sql-api-sdk-java.md)-, [Java script](sql-api-sdk-node.md)-, [node. js](sql-api-sdk-node.md)-of [python](sql-api-sdk-python.md) -sdk's gebruiken om de opgeslagen procedures te registreren en aan te roepen. Zodra u een of meer opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies hebt gedefinieerd, kunt u deze in de [Azure Portal](https://portal.azure.com/) laden en weer geven met behulp van Data Explorer.
 
 ## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>Opgeslagen procedures uitvoeren
 

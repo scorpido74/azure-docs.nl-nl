@@ -3,16 +3,16 @@ title: Overzicht van Azure Automation Wijzigingen bijhouden en inventaris
 description: In dit artikel wordt de functie Wijzigingen bijhouden en inventaris beschreven, waarmee u de wijzigingen in de software en micro soft-Services in uw omgeving kunt identificeren.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342915"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555036"
 ---
-# <a name="change-tracking-and-inventory-overview"></a>Overzicht van Wijzigingen bijhouden en inventaris
+# <a name="change-tracking-and-inventory-overview"></a>Overzicht Wijzigingen bijhouden en Inventaris
 
 In dit artikel wordt beschreven hoe u Wijzigingen bijhouden en inventariseert in Azure Automation. Deze functie houdt wijzigingen in de virtuele machines en server infrastructuur bij, zodat u operationele en omgevings problemen kunt lokaliseren met software die wordt beheerd door Distribution Package Manager. Items die worden bijgehouden door Wijzigingen bijhouden en inventaris omvatten: 
 
@@ -33,22 +33,23 @@ Wijzigingen bijhouden en de inventarisatie verkrijgen de gegevens van Azure Moni
 
 Wijzigingen bijhouden en inventaris bieden momenteel geen ondersteuning voor de volgende items:
 
-* Recursie voor het bijhouden van Windows-REGI ster
-* Netwerk bestandssysteem
-* Verschillende installatie methoden
-* ***exe** -bestanden voor Windows
+- Recursie voor het bijhouden van Windows-REGI ster
+- Netwerk bestandssysteem
+- Verschillende installatie methoden
+- ***exe** -bestanden voor Windows
 
 Andere beperkingen:
 
-* De kolom en waarden voor de **maximale bestands grootte** worden niet gebruikt in de huidige implementatie.
-* Als u meer dan 2500 bestanden in een verzamelings cyclus van 30 minuten verzamelt, kunnen de prestaties van Wijzigingen bijhouden en de inventaris worden verslechterd.
-* Wanneer het netwerk verkeer hoog is, kan het tot zes uur duren voordat wijzigings records worden weer gegeven.
-* Als u een configuratie wijzigt terwijl een computer is uitgeschakeld, kan het zijn dat de computer wijzigingen post die horen bij de vorige configuratie.
+- De kolom en waarden voor de **maximale bestands grootte** worden niet gebruikt in de huidige implementatie.
+- Als u meer dan 2500 bestanden in een verzamelings cyclus van 30 minuten verzamelt, kunnen de prestaties van Wijzigingen bijhouden en de inventaris worden verslechterd.
+- Wanneer het netwerk verkeer hoog is, kan het tot zes uur duren voordat wijzigings records worden weer gegeven.
+- Als u een configuratie wijzigt terwijl een computer is uitgeschakeld, kan het zijn dat de computer wijzigingen post die horen bij de vorige configuratie.
 
 Wijzigingen bijhouden en inventaris ondervindt momenteel de volgende problemen:
 
-* Hotfix-updates worden niet verzameld op Windows Server 2016 core RS3-machines.
-* Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop de `SvcRunLevels` gegevens in het [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
+- Hotfix-updates worden niet verzameld op Windows Server 2016 core RS3-machines.
+
+- Linux-daemons kunnen een gewijzigde status weer geven, zelfs als er geen wijziging heeft plaatsgevonden. Dit probleem doet zich voor vanwege de manier waarop de `SvcRunLevels` gegevens in het [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -logboek van Azure monitor worden vastgelegd.
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -77,12 +78,12 @@ Er zijn vervolg keuzelijsten aan de bovenkant van het dash board beschikbaar om 
 
 U kunt op een wijziging of gebeurtenis klikken om de details ervan weer te geven. De beschik bare wijzigings typen zijn:
 
-* Gebeurtenissen
-* Daemons
-* Files
-* Register
-* Software
-* Micro soft-Services
+- Gebeurtenissen
+- Daemons
+- Bestanden
+- Register
+- Software
+- Micro soft-Services
 
 U kunt elke wijziging toevoegen, wijzigen of verwijderen. In het onderstaande voor beeld ziet u een wijziging in het opstart type van een service van hand matig in auto.
 
@@ -137,10 +138,13 @@ Met Wijzigingen bijhouden en inventaris kunt u wijzigingen in Windows-register s
 
 Wijzigingen bijhouden en inventarisatie ondersteunt recursie, waarmee u Joker tekens kunt opgeven om het bijhouden van meerdere mappen te vereenvoudigen. Recursie biedt ook omgevings variabelen waarmee u bestanden kunt volgen in omgevingen met meerdere of dynamische stations. De volgende lijst bevat algemene informatie die u moet kennen bij het configureren van recursie:
 
-* Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
-* U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File*** of **/etc/*. conf**.
-* Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar het pad mislukt tijdens de uitvoering.
-* Vermijd algemene padnamen bij het instellen van het pad, omdat dit type instelling ertoe kan leiden dat er te veel mappen worden gepasseerd.
+- Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
+
+- U kunt alleen joker tekens gebruiken in het laatste segment van een bestandspad, bijvoorbeeld **c:\folder \\ File*** of **/etc/*. conf**.
+
+- Als een omgevings variabele een ongeldig pad heeft, wordt de validatie uitgevoerd, maar het pad mislukt tijdens de uitvoering.
+
+- Vermijd algemene padnamen bij het instellen van het pad, omdat dit type instelling ertoe kan leiden dat er te veel mappen worden gepasseerd.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Gegevens verzameling Wijzigingen bijhouden en inventaris
 
@@ -167,7 +171,7 @@ De volgende tabel bevat de limieten voor bijgehouden items per computer voor Wij
 |Services|250|
 |Daemons|250|
 
-Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
+Het gemiddelde Log Analytics gegevens gebruik voor een machine met Wijzigingen bijhouden en inventaris is ongeveer 40 MB per maand, afhankelijk van uw omgeving. Met de functie voor gebruik en geschatte kosten van de Log Analytics-werk ruimte kunt u de gegevens weer geven die zijn opgenomen door Wijzigingen bijhouden en inventaris in een gebruiks diagram. Gebruik deze gegevens weergave om uw gegevens gebruik te evalueren en te bepalen hoe deze van invloed is op uw factuur. Bekijk [inzicht in uw gebruik en geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Micro soft-service gegevens
 
@@ -182,13 +186,13 @@ Om de prestaties te optimaliseren, houdt de Log Analytics agent alleen wijziging
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Ondersteuning voor waarschuwingen over de configuratie status
 
-Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt gewaarschuwd voor wijzigingen in de configuratie status van uw hybride omgeving. Er zijn veel nuttige acties beschikbaar om te activeren als reactie op waarschuwingen, zoals acties voor Azure functions, Automation-runbooks, webhooks en dergelijke. Een waarschuwing over wijzigingen in het **c:\Windows\System32\drivers\etc\hosts** -bestand voor een machine is een goede toepassing van waarschuwingen voor wijzigingen bijhouden-en inventaris gegevens. Er zijn veel meer scenario's voor waarschuwingen, zoals de query scenario's die in de volgende tabel zijn gedefinieerd. 
+Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt gewaarschuwd voor wijzigingen in de configuratie status van uw hybride omgeving. Er zijn veel nuttige acties beschikbaar om te activeren als reactie op waarschuwingen, zoals acties voor Azure functions, Automation-runbooks, webhooks en dergelijke. Een waarschuwing over wijzigingen in het **c:\Windows\System32\drivers\etc\hosts** -bestand voor een machine is een goede toepassing van waarschuwingen voor wijzigingen bijhouden-en inventaris gegevens. Er zijn veel meer scenario's voor waarschuwingen, zoals de query scenario's die in de volgende tabel zijn gedefinieerd.
 
 |Query’s uitvoeren  |Beschrijving  |
 |---------|---------|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "files" en FileSystemPath bevat "c: \\ Windows \\ System32 \\ drivers \\ "|Dit is handig voor het bijhouden van wijzigingen in essentiële bestanden van het systeem.|
 |ConfigurationChange <br>&#124; waarbij FieldsChanged ' FileContentChecksum ' en FileSystemPath = = "c: \\ Windows \\ System32 \\ drivers etc- \\ \\ hosts ' bevat.|Dit is handig voor het bijhouden van wijzigingen in sleutel configuratie bestanden.|
-|ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "micro soft-Services" en SvcName bevat "W3SVC" en SvcState = = "gestopt"|Dit is handig voor het bijhouden van wijzigingen in essentiële services van het systeem.|
+|ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "WindowsServices" en SvcName bevat "W3SVC" en SvcState = = "gestopt"|Dit is handig voor het bijhouden van wijzigingen in essentiële services van het systeem.|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "daemons" en SvcName bevat "SSH" en SvcState! = "running"|Dit is handig voor het bijhouden van wijzigingen in essentiële services van het systeem.|
 |ConfigurationChange <br>&#124; waarbij ConfigChangeType = = "software" en ChangeCategory = = "toegevoegd"|Dit is handig voor omgevingen waarvoor een vergrendelde software configuratie nodig is.|
 |ConfigurationData <br>&#124; waarbij de softwarenaam "bewakings agent" en CurrentVersion! = "8.0.11081.0" bevat|Nuttig als u wilt zien op welke computers een verouderde of niet-compatibele software versie is geïnstalleerd. Deze query rapporteert de laatst gerapporteerde configuratie status, maar brengt geen wijzigingen aan.|
@@ -197,7 +201,10 @@ Een belang rijke mogelijkheid van Wijzigingen bijhouden en inventarisatie wordt 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md)om de functie in te scha kelen vanuit een Automation-account.
-* Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen in de Azure Portal](automation-onboard-solutions-from-browse.md).
-* Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)om de functie in te scha kelen in een runbook.
-* Als u de functie wilt inschakelen vanaf een virtuele Azure-machine, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen op een virtuele Azure-machine](automation-enable-changes-from-vm.md).
+- Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een Automation-account](automation-enable-changes-from-auto-acct.md)om de functie in te scha kelen vanuit een Automation-account.
+
+- Als u de functie wilt inschakelen door te bladeren door de Azure Portal, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen in de Azure Portal](automation-onboard-solutions-from-browse.md).
+
+- Zie [Wijzigingen bijhouden en inventaris inschakelen vanuit een runbook](automation-enable-changes-from-runbook.md)om de functie in te scha kelen in een runbook.
+
+- Als u de functie wilt inschakelen vanaf een virtuele Azure-machine, raadpleegt u [Wijzigingen bijhouden en inventaris inschakelen op een virtuele Azure-machine](automation-enable-changes-from-vm.md).

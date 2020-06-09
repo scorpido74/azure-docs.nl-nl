@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758721"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509199"
 ---
 # <a name="entities"></a>Entiteiten
 
@@ -25,6 +25,33 @@ Het belangrijkste aspect van de entiteit zelf is de hiërarchie en de resulteren
 Een entiteit is een unieke eigenaar van het bovenliggende item, wat inhoudt dat wanneer het bovenliggende item wordt vernietigd met `Entity.Destroy()` , de onderliggende en alle verbonden [onderdelen](components.md)hiervan zijn. Het verwijderen van een model uit de scène wordt dus gerealiseerd door te bellen `Destroy` op het hoofd knooppunt van een model, dat wordt geretourneerd door `AzureSession.Actions.LoadModelAsync()` of door de SAS-variant `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Entiteiten worden gemaakt wanneer de server inhoud laadt of wanneer de gebruiker een object wil toevoegen aan de scène. Als een gebruiker bijvoorbeeld een knip vlak wil toevoegen om de binnenkant van een net te visualiseren, kan de gebruiker een entiteit maken waarbij het vlak moet bestaan en vervolgens de component knip vlak toevoegen.
+
+## <a name="create-an-entity"></a>Een entiteit maken
+
+Gebruik de volgende code om een nieuwe entiteit toe te voegen aan de scène, bijvoorbeeld om deze aan te geven als een hoofd object voor het laden van modellen of het koppelen van onderdelen eraan:
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>Query functies
 

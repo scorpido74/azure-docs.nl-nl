@@ -8,12 +8,12 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: c94f46566fe2e56d81c6f4ba87450878ccfb4263
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 4f484b92514a374b20eb0c3fa0a2e4e638fd7587
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484552"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488716"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- en Edsv4-serie
 
@@ -59,7 +59,7 @@ Livemigratie: ondersteund
 
 Updates voor geheugen behoud: ondersteund
 
-| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Max. aantal gegevensschijven | Maxi maal cache geheugen en tijdelijke opslag doorvoer: IOPS/MBps (cache grootte in GiB) | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_E2ds_v4  | 2 | 16 | 75 | 4 | 19000/120 (50) | 3200/48 | 2/1000 |
 | Standard_E4ds_v4  | 4 | 32 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |

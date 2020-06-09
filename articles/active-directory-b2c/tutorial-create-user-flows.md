@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63486d6ee627d3b321978fb9f0268d15a8a86f34
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264243"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488185"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Zelf studie: gebruikers stromen maken in Azure Active Directory B2C
 
@@ -63,12 +63,12 @@ Met de registratie-en aanmeldings gebruikers stroom worden zowel registratie-als
 
     ![Pagina kenmerken en claims selecteren met drie claims geselecteerd](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-1. Klik op **maken** om de gebruikers stroom toe te voegen. Een voor voegsel van *B2C_1* wordt automatisch toegevoegd aan de naam.
+1. Klik op **maken** om de gebruikers stroom toe te voegen. Er wordt automatisch een voor voegsel van *B2C_1* voor de naam geplaatst.
 
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet worden weer gegeven `https://jwt.ms` .
 1. Klik op **gebruikers stroom uitvoeren**en selecteer **nu aanmelden**.
 
     ![De pagina gebruikers stroom uitvoeren in de portal met de knop gebruikers stroom uitvoeren gemarkeerd](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
@@ -92,9 +92,9 @@ Als u gebruikers in staat wilt stellen hun profiel te bewerken in uw toepassing,
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet worden weer gegeven `https://jwt.ms` .
 1. Klik op **gebruikers stroom uitvoeren**en meld u aan met het account dat u eerder hebt gemaakt.
-1. U hebt nu de mogelijkheid om de weergave naam en de taak titel voor de gebruiker te wijzigen. Klik op **door gaan**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
+1. U hebt nu de mogelijkheid om de weergave naam en de taak titel voor de gebruiker te wijzigen. Klik op **Continue**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
 
 ## <a name="create-a-password-reset-user-flow"></a>Een gebruikersstroom voor het opnieuw instellen van het wachtwoord maken
 
@@ -111,7 +111,7 @@ Als u gebruikers van uw toepassing de mogelijkheid wilt bieden hun wacht woord o
 ### <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 1. Selecteer de gebruikers stroom die u hebt gemaakt om de pagina overzicht te openen en selecteer vervolgens **gebruikers stroom uitvoeren**.
-1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet `https://jwt.ms`worden weer gegeven.
+1. Selecteer voor **toepassing**de webtoepassing met de naam *webapp1* die u eerder hebt geregistreerd. De **antwoord-URL** moet worden weer gegeven `https://jwt.ms` .
 1. Klik op **gebruikers stroom uitvoeren**, Controleer het e-mail adres van het account dat u eerder hebt gemaakt en selecteer **door gaan**.
 1. U hebt nu de mogelijkheid om het wacht woord voor de gebruiker te wijzigen. Wijzig het wacht woord en selecteer **door gaan**. Het token wordt geretourneerd naar `https://jwt.ms` en moet worden weer gegeven.
 

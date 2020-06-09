@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec6e0f7405d29cb89fd8ba701b52678ca939596
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481480"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558700"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -76,7 +76,7 @@ Deze instelling geldt alleen voor apparaten met Windows 10 of lager niveau, zoal
 
 Wat is een hybride Azure AD-apparaat dat is gekoppeld aan een beheerd apparaat?  Voor apparaten die zijn gekoppeld aan een on-premises AD, wordt ervan uitgegaan dat de controle over deze apparaten wordt afgedwongen met behulp van beheer oplossingen als **Configuration Manager** of **groeps beleid (GP)** om ze te beheren. Omdat er geen methode voor Azure AD is om te bepalen of een van deze methoden is toegepast op een apparaat, is het vereisen van een hybride Azure AD-apparaat dat is gekoppeld aan een relatief zwak mechanisme om een beheerd apparaat te vereisen. Het is aan u als beheerder om te beoordelen of de methoden die worden toegepast op uw on-premises apparaten die lid zijn van een domein krachtig genoeg zijn om een beheerd apparaat te vormen als een dergelijk apparaat ook een hybride Azure AD-apparaat is.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat wordt gemarkeerd als compatibel
+## <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat moet worden gemarkeerd als compatibel
 
 De optie om ervoor te zorgen dat *een apparaat moet worden gemarkeerd als compatibel* , is het sterkste formulier voor het aanvragen van een beheerd apparaat.
 
@@ -97,6 +97,8 @@ Voor een apparaat dat is gemarkeerd als compatibel, kunt u aannemen dat:
 - Het apparaat en de bijbehorende apps voldoen aan de beveiligings vereisten van het bedrijf
 
 ### <a name="known-behavior"></a>Bekend gedrag
+
+Wanneer u de [code van de OAuth-stroom](../develop/v2-oauth2-device-code.md)van het apparaat gebruikt, wordt het beleid voor het toekennen van beheerde apparaten of de status van een apparaat niet ondersteund. Dit komt doordat het apparaat dat de verificatie uitvoert, de apparaats status niet kan verstrekken aan het apparaat dat een code levert en de apparaatstatus in het token is vergrendeld op het apparaat dat de verificatie uitvoert. Gebruik in plaats daarvan het besturings element multi-factor Authentication-toekenning vereisen.
 
 In Windows 7, iOS, Android, macOS en sommige webbrowsers van derden identificeert het apparaat met behulp van een client certificaat dat is ingericht op het moment dat het apparaat wordt geregistreerd bij Azure AD. Wanneer een gebruiker zich voor het eerst aanmeldt via de browser, wordt de gebruiker gevraagd het certificaat te selecteren. De eind gebruiker moet dit certificaat selecteren om de browser te kunnen blijven gebruiken.
 

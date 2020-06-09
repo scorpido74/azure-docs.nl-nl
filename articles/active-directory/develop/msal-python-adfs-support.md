@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76699543"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558637"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Ondersteuning voor Active Directory Federation Services in MSAL voor python
 
@@ -35,7 +35,7 @@ Er zijn meestal twee manieren om te verifiëren met AD FS:
 
 Het volgende is van toepassing, ongeacht of u rechtstreeks verbinding maakt met Active Directory Federation Services (AD FS) of via Active Directory.
 
-Wanneer u of `acquire_token_by_authorization_code` `acquire_token_by_device_flow`belt, is de gebruikers ervaring als volgt:
+Wanneer u `acquire_token_by_authorization_code` of belt `acquire_token_by_device_flow` , is de gebruikers ervaring als volgt:
 
 1. De gebruiker voert de account-ID in.
 2. In azure AD wordt het bericht ' u gaat naar de pagina van uw organisatie ' weer gegeven en de gebruiker wordt omgeleid naar de aanmeldings pagina van de ID-provider. De aanmeldings pagina wordt doorgaans aangepast met het logo van de organisatie.
@@ -49,7 +49,7 @@ De ondersteunde AD FS versies in dit federatieve scenario zijn:
 
 Het volgende is van toepassing, ongeacht of u rechtstreeks verbinding maakt met Active Directory Federation Services (AD FS) of via Active Directory.
 
-Wanneer u een token aanschaft `acquire_token_by_username_password`met behulp van, haalt MSAL python de ID-provider contact op op basis van de gebruikers naam. MSAL python haalt een [SAML 1,1-token](reference-saml-tokens.md) van de ID-provider, die vervolgens aan Azure AD wordt verstrekt, waarmee de JSON Web token (JWT) wordt geretourneerd.
+Wanneer u een token aanschaft met behulp `acquire_token_by_username_password` van, haalt MSAL python de ID-provider contact op op basis van de gebruikers naam. MSAL python haalt een [SAML 1,1-token](reference-saml-tokens.md) van de ID-provider, die vervolgens aan Azure AD wordt verstrekt, waarmee de JSON Web token (JWT) wordt geretourneerd.
 
 ## <a name="connecting-directly-to-ad-fs"></a>Rechtstreeks verbinding maken met AD FS
 

@@ -90,7 +90,7 @@ AnalyticalStorageTimeToLiveInSeconds = analyticalTtlInSec,
  await this. cosmosClient.GetDatabase("myDatabase").CreateContainerAsync(cpInput);
 ```
 
-### <a name="java-v4-sdk"></a>Java v4-SDK
+### <a name="java-v4-sdk"></a>Java V4 SDK
 
 Met de volgende code wordt een container met analytische opslag gemaakt met behulp van de Java v4-SDK. Stel de `AnalyticalStoreTimeToLiveInSeconds` eigenschap in op de vereiste waarde:
 
@@ -171,7 +171,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Java v4-SDK
+#### <a name="java-v4-sdk"></a>Java V4 SDK
 
 De volgende code laat zien hoe u de TTL voor de analytische opslag bijwerkt met behulp van de Java v4 SDK:
 

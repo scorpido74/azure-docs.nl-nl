@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 48287f023e14dbf978a993db98b2d9c3392ea2db
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b9f7deb16269aac94f5363a1588b2e1ed4ee9206
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323974"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488595"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -19,14 +19,14 @@ In dit artikel vindt u een overzicht van de ondersteunde onderdelen en instellin
 
 ## <a name="deployment-scenarios"></a>Implementatiescenario's
 
-**Scenario** | **Details**
+**Scenario** | **Nadere**
 --- | ---
 Herstel na nood geval voor virtuele VMware-machines | Replicatie van on-premises virtuele VMware-machines naar Azure. U kunt dit scenario implementeren in de Azure Portal of met behulp van [Power shell](vmware-azure-disaster-recovery-powershell.md).
 Herstel na nood geval van fysieke servers | Replicatie van on-premises fysieke Windows/Linux-servers naar Azure. U kunt dit scenario implementeren in de Azure Portal.
 
 ## <a name="on-premises-virtualization-servers"></a>On-premises virtualisatieservers
 
-**Server** | **Vereisten** | **Details**
+**Server** | **Vereisten** | **Nadere**
 --- | --- | ---
 vCenter Server | Versie 6,7, 6,5, 6,0 of 5,5 | U wordt aangeraden een vCenter-Server te gebruiken in uw implementatie voor herstel na nood gevallen.
 vSphere-hosts | Versie 6,7, 6,5, 6,0 of 5,5 | We raden aan dat vSphere-hosts en vCenter-servers zich in hetzelfde netwerk bevinden als de proces server. Standaard wordt de proces server uitgevoerd op de configuratie server. [Meer informatie](vmware-physical-azure-config-process-server-overview.md).
@@ -63,7 +63,7 @@ Site Recovery ondersteunt replicatie van elke werk belasting die wordt uitgevoer
 > [!Note]
 > De volgende tabel geeft een overzicht van de ondersteuning voor computers met BIOS-opstart. Raadpleeg de sectie [opslag](#storage) voor ondersteuning op UEFI-machines.
 
-**Onderdeel** | **Details**
+**Onderdeel** | **Nadere**
 --- | ---
 Computer instellingen | Machines die naar Azure repliceren, moeten voldoen aan de [vereisten van Azure](#azure-vm-requirements).
 Machine workload | Site Recovery ondersteunt replicatie van elke werk belasting die wordt uitgevoerd op een ondersteunde computer. [Meer informatie](https://aka.ms/asr_workload).
@@ -79,7 +79,7 @@ Linux | Alleen 64-bits systeem wordt ondersteund. 32-bits systeem wordt niet ond
 Linux Red Hat Enter prise | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1 <br/> Enkele oudere kernels op servers met Red Hat Enterprise Linux 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Als ingebouwde LIS-onderdelen ontbreken, moet u ervoor zorgen dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt om de computers op te starten in Azure.
 Linux: CentOS | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b><br/> 7,0 tot 7,8<br/> <br/> 8,0 tot 8,1<br/><br/> Enkele oudere kernels op servers met CentOS 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Als ingebouwde LIS-onderdelen ontbreken, moet u ervoor zorgen dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt om de computers op te starten in Azure.
 Ubuntu | Ubuntu 14,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)
-Debian | Debian 7/Debian 8 [(ondersteunde kernel-versies controleren)](#debian-kernel-versions)
+Debian | Debian 7/Debian 8 (inclusief ondersteuning voor alle 7. *x*, 8. *x* versies) [(ondersteunde kernel-versies controleren)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Het upgraden van gerepliceerde machines van SUSE Linux Enterprise Server 11 SP3 naar SP4 wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit en schakelt u na de upgrade opnieuw in.
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5)
 
@@ -119,7 +119,7 @@ Debian 8 | [9,29][9.29 UR] | 3.16.0-4-amd64 tot 3.16.0-10-amd64, 4.9.0 -0. bpo. 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 ondersteunde kernel-versies
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.34-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.29-Azure  |
@@ -128,7 +128,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Alle Stock-SUSE 12
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 ondersteunde kernel-versies
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 en 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Standaard worden alle [Stock-SuSE 15-en 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) ondersteund.</br></br> 4.12.14-5,5-Azure naar 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure naar 4.12.14-8.30-Azure |
 SUSE Linux Enterprise Server 15 en 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Standaard worden alle [Stock-SuSE 15-en 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) ondersteund. </br></br> 4.12.14-5,5-Azure naar 4.12.14-8.22-Azure
@@ -154,7 +154,7 @@ BTRFS | BTRFS wordt ondersteund door [Update pakket 34](https://support.microsof
 
 ## <a name="vmdisk-management"></a>VM/schijf beheer
 
-**Actie** | **Details**
+**Actie** | **Nadere**
 --- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Wordt op de bron-VM vóór de failover direct in de VM-eigenschappen ondersteund. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na een failover de schijf grootte op de Azure-VM wijzigt, maakt Site Recovery een nieuwe virtuele machine met de updates.
 Schijf toevoegen op een gerepliceerde VM | Niet ondersteund.<br/> Schakel de replicatie voor de virtuele machine uit, voeg de schijf toe en schakel de replicatie opnieuw in.
@@ -258,7 +258,7 @@ Managed Disks | Ja
 
 On-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten van de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
 
-**Onderdeel** | **Vereisten** | **Details**
+**Onderdeel** | **Vereisten** | **Nadere**
 --- | --- | ---
 Gastbesturingssysteem | Controleer de [ondersteunde besturings systemen](#replicated-machines) voor gerepliceerde machines. | De controle is mislukt als dit niet wordt ondersteund.
 Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
@@ -314,7 +314,7 @@ Verplaats opslag-, netwerk-, Azure-Vm's binnen en tussen abonnementen. | Nee
 
 ## <a name="obtain-latest-components"></a>Nieuwste onderdelen ophalen
 
-**Naam** | **Beschrijving** | **Details**
+**Naam** | **Beschrijving** | **Nadere**
 --- | --- | ---
 Configuratieserver | On-premises geïnstalleerd.<br/> Coördineert de communicatie tussen on-premises VMware-servers of fysieke machines en Azure. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de configuratie server.<br/> - [Meer informatie over](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-azure-deploy-configuration-server.md) het instellen van de configuratie server.
 Processerver | standaard geïnstalleerd op de configuratieserver.<br/> Hiermee ontvangt u replicatie gegevens, optimaliseert u deze met caching, compressie en versleuteling, en verzendt u deze naar Azure.<br/> Naarmate uw implementatie groeit, kunt u extra proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen. | - [Meer informatie over](vmware-physical-azure-config-process-server-overview.md) de proces server.<br/> - [Meer informatie over](vmware-azure-manage-process-server.md#upgrade-a-process-server) het upgraden naar de nieuwste versie.<br/> - [Meer informatie over](vmware-physical-large-deployment.md#set-up-a-process-server) het instellen van scale-out proces servers.

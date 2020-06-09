@@ -3,12 +3,13 @@ title: Azure Notebooks preview configureren en beheren
 description: Meer informatie over het beheren van meta gegevens van project, project bestanden, de omgeving van het project en de installatie stappen via zowel de Azure Notebooks gebruikers interface als rechtstreekse terminal toegang.
 ms.topic: how-to
 ms.date: 02/28/2020
-ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: df64c9d90252c31118b66943b6a182319e3f1cc2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280597"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554310"
 ---
 # <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Projecten beheren en configureren in Azure Notebooks preview
 
@@ -75,12 +76,12 @@ Elk item in de bestands lijst van het project bevat opdrachten via een context m
 
 | Opdracht | Sneltoets | Bewerking |
 | --- | --- | --- |
-| Voer | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
+| Uitvoeren | r (of klik) | Voert een notitieblok bestand uit. Andere bestands typen worden geopend voor weer gave.  |
 | Koppeling kopiëren | y | Kopieert een koppeling naar het bestand naar het klem bord. |
 | Uitvoeren in Jupyter Lab | v | Voert een notitie blok uit in Jjupyterlab. Dit is een meer ontwikkel gerichte interface dan Jupyter normaal gesp roken. |
 | Preview | p | Hiermee opent u een HTML-voor beeld van het bestand. voor notebooks is de preview een alleen-lezen rendering van het notitie blok. Zie de sectie [Preview](#preview) voor meer informatie. |
 | Bestand bewerken | i | Hiermee opent u het bestand om het te bewerken. |
-| Download | d | Hiermee downloadt u een zip-bestand dat het bestand of de inhoud van een map bevat. |
+| Downloaden | d | Hiermee downloadt u een zip-bestand dat het bestand of de inhoud van een map bevat. |
 | Naam wijzigen | a | Vraagt om een nieuwe naam voor het bestand of de map. |
 | Verwijderen | x | Vraagt om bevestiging en verwijdert het bestand definitief uit het project. Verwijderingen kunnen niet ongedaan worden gemaakt. |
 | Verplaatsen | m | Hiermee verplaatst u een bestand naar een andere map in hetzelfde project. |
@@ -95,8 +96,8 @@ De voorbeeld pagina ondersteunt meerdere werkbalk opdrachten met sneltoetsen:
 | --- | --- | --- |
 | Delen | s | Hier wordt de pop-up weer gegeven van waaruit u een koppeling kunt verkrijgen, delen met sociale media, HTML ophalen voor insluiten en een e-mail verzendt. |
 | Klonen | c  | Kopieer het notitie blok naar uw account. |
-| Voer | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
-| Download | d | Hiermee downloadt u een kopie van het notitie blok. |
+| Uitvoeren | r | Voert het notitie blok uit als u dit nog niet hebt toegestaan. |
+| Downloaden | d | Hiermee downloadt u een kopie van het notitie blok. |
 
 ## <a name="configure-the-project-environment"></a>De project omgeving configureren
 
@@ -133,7 +134,7 @@ De gegevens die u vervolgens projecteert, zijn afhankelijk van het type bewerkin
 - **Environment. yml**: Selecteer in de tweede vervolg keuzelijst een *omgeving. yml* -bestand voor python-projecten met een Conda-omgeving.
 
    > [!WARNING]
-   > Aangezien dit een preview-service is die in ontwikkeling is, is er momenteel een bekend `Environment.yml` probleem waarbij de instelling niet op de verwachte manier wordt toegepast op het project. Het project en de Jupyter-notebooks in kunnen het opgegeven omgevings bestand momenteel niet laden.
+   > Aangezien dit een preview-service is die in ontwikkeling is, is er momenteel een bekend probleem waarbij de `Environment.yml` instelling niet op de verwachte manier wordt toegepast op het project. Het project en de Jupyter-notebooks in kunnen het opgegeven omgevings bestand momenteel niet laden.
 
 Wanneer u klaar bent met het toevoegen van stappen, selecteert u **Opslaan**.
 
@@ -144,13 +145,13 @@ In het project dashboard wordt met de opdracht **Terminal** een Linux-terminal g
 > [!Note]
 > Als u opstart scripts in de omgeving van uw project hebt, kan het openen van de terminal een bericht weer geven met de melding dat de installatie nog wordt uitgevoerd.
 
-U kunt in de terminal een standaard Linux-opdracht geven. U kunt ook in `ls` de basismap gebruiken om de verschillende omgevingen te zien die zich op de virtuele machine bevinden, zoals *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*en *R*, samen met een *projectmap* die het project bevat:
+U kunt in de terminal een standaard Linux-opdracht geven. U kunt ook `ls` in de basismap gebruiken om de verschillende omgevingen te zien die zich op de virtuele machine bevinden, zoals *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *IfSharp*en *R*, samen met een *projectmap* die het project bevat:
 
 ![Project terminal in Azure Notebooks](media/project-terminal.png)
 
 Als u een specifieke omgeving wilt beïnvloeden, moet u eerst mappen in die omgevings map wijzigen.
 
-Voor de python-omgevingen kunt u de `pip` map `conda` *bin* van elke omgeving zoeken. U kunt ook ingebouwde aliassen gebruiken voor de omgevingen:
+Voor de python-omgevingen kunt u de `pip` `conda` map *bin* van elke omgeving zoeken. U kunt ook ingebouwde aliassen gebruiken voor de omgevingen:
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -166,7 +167,7 @@ python36 -m pip install <package>
 Wijzigingen op de server zijn alleen van toepassing op de huidige sessie, behalve voor bestanden en mappen die u in de *projectmap* zelf maakt. Het bewerken van een bestand in de projectmap wordt bijvoorbeeld persistent gemaakt tussen sessies, maar pakketten met `pip install` niet.
 
 > [!Note]
-> Als u of `python` `python3`gebruikt, roept u de door het systeem geïnstalleerde versies van python aan, die niet worden gebruikt voor notebooks. U hebt geen machtigingen voor bewerkingen als `pip install` een van beide. Zorg er dus voor dat u de versie-specifieke aliassen gebruikt.
+> Als u `python` of gebruikt `python3` , roept u de door het systeem geïnstalleerde versies van python aan, die niet worden gebruikt voor notebooks. U hebt geen machtigingen voor bewerkingen als `pip install` een van beide. Zorg er dus voor dat u de versie-specifieke aliassen gebruikt.
 
 ## <a name="access-notebook-logs"></a>Notitie blok-Logboeken openen
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485051"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508994"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Persoonlijke koppeling voor Azure Database for PostgreSQL-één server
 
@@ -115,7 +115,7 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 Als u alleen wilt vertrouwen op privé-eind punten voor toegang tot hun Azure Database for PostgreSQL één server, kunt u het instellen van alle open bare eind punten ([firewall regels](concepts-firewall-rules.md) en [VNet-service-eind punten](concepts-data-access-and-security-vnet.md)) uitschakelen door de configuratie voor het **weigeren van open bare netwerk toegang** op de database server in te stellen. 
 
-Als deze instelling is ingesteld op *Ja* , worden alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for PostgreSQL. Als deze instelling is ingesteld op *Nee* , kunnen clients geen verbinding maken met uw Azure database for PostgreSQL op basis van de instellingen van de firewall of het VNet-service-eind punt. Nadat de waarde van de particuliere netwerk toegang is ingesteld op klanten, kunnen ook bestaande firewall regels en de VNet-service-eindpunt regel worden toegevoegd en/of bijgewerkt
+Als deze instelling is ingesteld op *Ja* , worden alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for PostgreSQL. Als deze instelling is ingesteld op *Nee* , kunnen clients geen verbinding maken met uw Azure database for PostgreSQL op basis van de instellingen van de firewall of het VNet-service-eind punt. Nadat de waarde van de toegang tot het particuliere netwerk is ingesteld, kunnen klanten ook bestaande firewall regels en VNet-service-eindpunt regels toevoegen en/of bijwerken.
 
 > [!Note]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.

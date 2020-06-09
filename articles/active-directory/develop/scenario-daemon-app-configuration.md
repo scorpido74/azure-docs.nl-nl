@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868975"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558547"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-app die web-Api's aanroept-code configuratie
 
@@ -29,7 +29,7 @@ Deze micro soft-bibliotheken ondersteunen daemon-apps:
   MSAL-bibliotheek | Beschrijving
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | De .NET Framework-en .NET Core-platformen worden ondersteund voor het bouwen van daemon-toepassingen. (UWP, Xamarin. iOS en Xamarin. Android worden niet ondersteund omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen.)
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Ondersteuning voor daemon-toepassingen in python.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Ondersteuning voor daemon-toepassingen in python.
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Ondersteuning voor daemon-toepassingen in Java.
 
 ## <a name="configure-the-authority"></a>De instantie configureren
@@ -38,7 +38,7 @@ Voor daemon-toepassingen worden toepassings machtigingen gebruikt in plaats van 
 
 De in de toepassings configuratie opgegeven instantie moet dus worden getenantd (een Tenant-ID of een domein naam opgeven die is gekoppeld aan uw organisatie).
 
-Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u gebruiken `organizations`. Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een hele Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie. Er is momenteel een beperking in MSAL: `organizations` is alleen toegestaan wanneer de referenties van de client een toepassings geheim zijn (niet een certificaat).
+Als u een ISV bent en een multi tenant hulp programma wilt bieden, kunt u gebruiken `organizations` . Maar houd er rekening mee dat u ook moet uitleggen wat uw klanten zijn om toestemming van de beheerder te verlenen. Zie [toestemming vragen voor een hele Tenant](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)voor meer informatie. Er is momenteel een beperking in MSAL: `organizations` is alleen toegestaan wanneer de referenties van de client een toepassings geheim zijn (niet een certificaat).
 
 ## <a name="configure-and-instantiate-the-application"></a>De toepassing configureren en instantiëren
 
@@ -69,7 +69,7 @@ Het configuratie bestand definieert het volgende:
 }
 ```
 
-U geeft een `ClientSecret` of een `CertificateName`op. Deze instellingen zijn exclusief.
+U geeft een `ClientSecret` of een op `CertificateName` . Deze instellingen zijn exclusief.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -267,7 +267,7 @@ MSAL.NET heeft twee methoden om ondertekende bevestigingen te bieden aan de vert
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Wanneer u gebruikt `WithClientAssertion`, moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md).
+Wanneer u gebruikt `WithClientAssertion` , moet u een ondertekende JWT opgeven. Dit geavanceerde scenario wordt beschreven in [client verklaringen](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,7 +276,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Wanneer u gebruikt `WithClientClaims`, produceert MSAL.net een ondertekende bevestiging die de claims bevat die worden verwacht door Azure AD, plus aanvullende client claims die u wilt verzenden.
+Wanneer u gebruikt `WithClientClaims` , produceert MSAL.net een ondertekende bevestiging die de claims bevat die worden verwacht door Azure AD, plus aanvullende client claims die u wilt verzenden.
 Deze code laat zien hoe u dit doet:
 
 ```csharp
@@ -293,7 +293,7 @@ Zie voor meer informatie [client verklaringen](msal-net-client-assertions.md).
 
 # <a name="python"></a>[Python](#tab/python)
 
-In MSAL python kunt u client claims opgeven door gebruik te maken van de claims die worden ondertekend door `ConfidentialClientApplication`de persoonlijke sleutel van deze persoon.
+In MSAL python kunt u client claims opgeven door gebruik te maken van de claims die worden ondertekend door de `ConfidentialClientApplication` persoonlijke sleutel van deze persoon.
 
 ```Python
 config = json.load(open(sys.argv[1]))

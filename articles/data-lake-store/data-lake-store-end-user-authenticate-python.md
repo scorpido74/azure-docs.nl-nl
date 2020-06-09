@@ -6,20 +6,20 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.custom: has-adal-ref
-ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: b08024ae60346354b97fd377fdea350c52e44404
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691800"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557934"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Verificatie door eind gebruikers met Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
 > * [Java gebruiken](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK gebruiken](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Python gebruiken](data-lake-store-end-user-authenticate-python.md)
-> * [REST-API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
+> * [REST API gebruiken](data-lake-store-end-user-authenticate-rest-api.md)
 >
 >
 

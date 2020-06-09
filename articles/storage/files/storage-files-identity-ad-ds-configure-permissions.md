@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268490"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509250"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
@@ -31,12 +31,22 @@ Als u Acl's wilt configureren met machtigingen voor de super gebruiker, moet u d
 De volgende machtigingen zijn opgenomen in de hoofdmap van een bestands share:
 
 - BUILTIN\Administrators: (OI) (CI) (F)
-- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - BUILTIN\Users: (RX)
 - BUILTIN\Users: (OI) (CI) (i/o) (GR, GE)
 - NT AUTHORITY\Authenticated-gebruikers: (OI) (CI) (M)
+- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - NT AUTHORITY\SYSTEM: (F)
 - MAKER EIGENAAR: (OI) (CI) (I/O) (F)
+
+|Gebruikers|Definitie|
+|---|---|
+|BUILTIN\Administrators|Alle gebruikers die domein beheerders zijn van de on-premises AD DS omgeving.
+|BUILTIN\Users|Ingebouwde beveiligings groep in AD. Het bevat standaard NT AUTHORITY\Authenticated-gebruikers. Voor een traditionele Bestands server kunt u de definitie van het lidmaatschap per server configureren. Voor Azure Files is er geen hosting server, dus BUILTIN\Users bevat dezelfde set gebruikers als NT AUTHORITY\Authenticated-gebruikers.|
+|NT AUTHORITY\SYSTEM|Het service account van het besturings systeem van de bestands server. Dit service account is niet van toepassing in Azure Files context. De map is opgenomen in de hoofdmap om consistent te zijn met de Windows-Server ervaring voor hybride scenario's.|
+|NT AUTHORITY\Authenticated-gebruikers|Alle gebruikers in AD die een geldig Kerberos-token kunnen verkrijgen.|
+|MAKER EIGENAAR|Elk object van een map of bestand heeft een eigenaar voor dat object. Als er voor dat object Acl's zijn toegewezen aan de maker eigenaar, heeft de gebruiker die de eigenaar van dit object is, de machtigingen voor het object dat door de ACL is gedefinieerd.|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>Een bestands share koppelen vanaf de opdracht prompt
 

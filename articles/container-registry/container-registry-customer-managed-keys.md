@@ -1,15 +1,15 @@
 ---
 title: Versleuteling-at-rest met een door de klant beheerde sleutel
-description: Meer informatie over het versleutelen van uw Azure container Registry en het versleutelen van uw REGI ster met een door de klant beheerde sleutel die is opgeslagen in Azure Key Vault
+description: Meer informatie over het versleutelen van uw Azure container Registry en het versleutelen van uw Premium-REGI ster met een door de klant beheerde sleutel die is opgeslagen in Azure Key Vault
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683482"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509539"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>REGI ster versleutelen met een door de klant beheerde sleutel
 
@@ -29,7 +29,7 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen van Azure CLI in dit artikel wilt gebruiken, hebt u Azure CLI versie 2.2.0 of hoger nodig. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+Als u de stappen van Azure CLI in dit artikel wilt gebruiken, hebt u Azure CLI versie 2.2.0 of hoger nodig. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="enable-customer-managed-key---cli"></a>Door de klant beheerde sleutel inschakelen-CLI
 
@@ -217,7 +217,7 @@ Configureer een beleid voor de sleutel kluis zodat de identiteit er toegang toe 
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry maken
 
-1. Selecteer **een resource**  >  **containers**maken  >  **container Registry**.
+1. Selecteer **Een resource maken** > **Containers** > **Container Registry**.
 1. Op het tabblad **basis beginselen** selecteert of maakt u een resource groep en voert u een register naam in. Selecteer **Premium**in **SKU**.
 1. Selecteer op het tabblad **versleuteling** in door de **klant beheerde sleutel** **ingeschakeld**.
 1. Selecteer in **identiteit**de beheerde identiteit die u hebt gemaakt.

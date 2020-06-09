@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345288"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560553"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimaliseer de prestaties met behulp van in-Memory technologieën in Azure SQL Database en Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ Vanwege de efficiëntere query-en transactie verwerking, kunt u in-Memory techno
 
 Hieronder vindt u twee voor beelden van hoe in-Memory OLTP heeft geholpen om de prestaties aanzienlijk te verbeteren:
 
-- Door gebruik te maken van in-Memory OLTP [kunnen quorum bedrijfs oplossingen hun werk belasting verdubbelen terwijl dtu's met 70% wordt verbeterd](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Door gebruik te maken van in-Memory OLTP [kunnen quorum bedrijfs oplossingen hun werk belasting verdubbelen terwijl dtu's met 70% wordt verbeterd](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - In de volgende video ziet u een aanzienlijke verbetering in het gebruik van resources met een voor beeld van een werk belasting: [in-Memory OLTP-video](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Zie het blog bericht: [in-Memory OLTP](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (Engelstalig) voor meer informatie.
 
 > [!NOTE]  
@@ -174,7 +174,7 @@ Wanneer u geclusterde column Store-indexen gebruikt, wordt kolom compressie gebr
 
 Als u bijvoorbeeld een Data Base hebt met een maximale grootte van 1 terabyte (TB) en u de compressie 10 keer behaalt met behulp van Column Store-indexen, kunt u in totaal 10 TB aan gebruikers gegevens in de Data Base gebruiken.
 
-Wanneer u niet-geclusterde column Store-indexen gebruikt, wordt de basis tabel nog steeds opgeslagen in de traditionele rowstore-indeling. Daarom zijn de opslag besparingen niet zo groot als bij geclusterde column Store-indexen. Als u echter een aantal traditionele, niet-geclusterde indexen wilt vervangen door een enkele column store-index, kunt u nog steeds een totale besparing zien in de opslag ruimte voor de tabel.
+Wanneer u niet-geclusterde column Store-indexen gebruikt, wordt de basis tabel nog steeds opgeslagen in de traditionele rowstore-indeling. Daarom zijn de opslag besparingen niet zo belang rijk als bij geclusterde column Store-indexen. Als u echter een aantal traditionele, niet-geclusterde indexen wilt vervangen door een enkele column store-index, kunt u nog steeds een totale besparing zien in de opslag ruimte voor de tabel.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Service lagen van data bases met column Store-indexen wijzigen
 

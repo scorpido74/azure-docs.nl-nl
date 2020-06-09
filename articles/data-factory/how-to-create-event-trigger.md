@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: ebcdb37652e8bdf23e8403e7f152ce1f41607c61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263445"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508893"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Een trigger maken waarmee een pijp lijn wordt uitgevoerd als reactie op een gebeurtenis
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ In deze sectie wordt beschreven hoe u een gebeurtenis trigger maakt in de gebrui
 1. Selecteer uw opslag account in de vervolg keuzelijst van het Azure-abonnement of hand matig met de resource-ID van het opslag account. Kies op welke container de gebeurtenissen moeten worden uitgevoerd. Container selectie is optioneel, maar mindful het selecteren van alle containers kan leiden tot een groot aantal gebeurtenissen.
 
    > [!NOTE]
-   > De gebeurtenis trigger ondersteunt momenteel alleen Azure Data Lake Storage Gen2 en algemene opslag accounts voor versie 2. U moet ten minste de *eigenaars* toegang hebben op de opslag accoutn.  Als gevolg van een Azure Event Grid beperking, ondersteunt Azure Data Factory slechts een maximum van 500 gebeurtenis triggers per opslag account.
+   > De gebeurtenis trigger ondersteunt momenteel alleen Azure Data Lake Storage Gen2 en algemene opslag accounts voor versie 2. U moet ten minste *eigenaar* -toegang hebben voor het opslag account.  Als gevolg van een Azure Event Grid beperking, ondersteunt Azure Data Factory slechts een maximum van 500 gebeurtenis triggers per opslag account.
 
 1. Het **BLOB-pad begint met** en het **BLOB-pad eindigt** op Eigenschappen, zodat u de containers, mappen en BLOB-namen kunt opgeven waarvoor u gebeurtenissen wilt ontvangen. Voor uw gebeurtenis trigger moet ten minste één van deze eigenschappen worden gedefinieerd. U kunt verschillende patronen gebruiken voor beide **BLOB-paden begint met** en het **BLOB-pad eindigt met** eigenschappen, zoals wordt weer gegeven in de voor beelden verderop in dit artikel.
 
@@ -81,11 +81,11 @@ De volgende tabel bevat een overzicht van de schema-elementen die zijn gerelatee
 
 | **JSON-element** | **Beschrijving** | **Type** | **Toegestane waarden** | **Vereist** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **ligt** | De Azure Resource Manager Resource-ID van het opslag account. | Tekenreeks | Azure Resource Manager-ID | Yes |
+| **ligt** | De Azure Resource Manager Resource-ID van het opslag account. | Tekenreeks | Azure Resource Manager-ID | Ja |
 | **evenementen** | Het type gebeurtenissen dat ervoor zorgt dat deze trigger wordt gestart. | Matrix    | Micro soft. storage. BlobCreated, micro soft. storage. BlobDeleted | Ja, een wille keurige combi natie van deze waarden. |
 | **blobPathBeginsWith** | Het BLOB-pad moet beginnen met het patroon dat is ingesteld voor de trigger om te starten. `/records/blobs/december/`De trigger wordt bijvoorbeeld alleen geactiveerd voor blobs in de `december` map onder de `records` container. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of `blobPathEndsWith` . |
 | **blobPathEndsWith** | Het BLOB-pad moet eindigen met het patroon dat is ingesteld voor de trigger om te starten. `december/boxes.csv`De trigger wordt bijvoorbeeld alleen geactiveerd voor blobs `boxes` met de naam in een `december` map. | Tekenreeks   | | U moet een waarde opgeven voor ten minste een van deze eigenschappen: `blobPathBeginsWith` of `blobPathEndsWith` . |
-| **ignoreEmptyBlobs** | Hiermee wordt aangegeven of nul-byte-Blobs een pijplijn uitvoering activeren. Deze instelling is standaard ingesteld op waar. | Boolean | waar of onwaar | No |
+| **ignoreEmptyBlobs** | Hiermee wordt aangegeven of nul-byte-Blobs een pijplijn uitvoering activeren. Deze instelling is standaard ingesteld op waar. | Booleaans | waar of onwaar | Nee |
 
 ## <a name="examples-of-event-based-triggers"></a>Voor beelden van triggers op basis van gebeurtenissen
 

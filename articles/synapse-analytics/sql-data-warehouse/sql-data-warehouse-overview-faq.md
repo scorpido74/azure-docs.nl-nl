@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8b9a1caa750c7c27b2a6c845843b8bb6b779086d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791456"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561327"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Veelgestelde vragen over Azure Synapse Analytics (voorheen SQL DW)
 
@@ -56,6 +56,10 @@ A. Bekijk onze huidige [capaciteits limieten](sql-data-warehouse-service-capacit
 V. Waarom duurt mijn schaal/onderbreken/hervatten?
 
 A. Verschillende factoren kunnen invloed hebben op de tijd voor reken beheer bewerkingen. Een veelvoorkomend geval voor langlopende bewerkingen is transactioneel terugdraaien. Wanneer een schaal-of onderbrekings bewerking wordt gestart, worden alle binnenkomende sessies geblokkeerd en worden query's leeg gemaakt. Om ervoor te zorgen dat het systeem stabiel blijft, moeten trans acties worden teruggedraaid voordat een bewerking kan worden begonnen. Hoe groter het aantal en hoe groter de logboek grootte van trans acties, hoe langer de bewerking het systeem kan herstellen naar een stabiele status.
+
+V: Hoe kan ik de naam van een gepubliceerd artefact (gegevensset, notebook, SQL-script enzovoort) in Synapse te wijzigen?
+
+A: als u de naam van een gepubliceerd artefact bestand wilt wijzigen, moet u eerst het bestand klonen en de naam van het nieuwe bestand dat u wilt gebruiken. U moet alle verwijzingen van het artefact hand matig bijwerken naar het nieuwe bestand en de oude verwijderen.
 
 ## <a name="user-support"></a>Gebruikersondersteuning
 

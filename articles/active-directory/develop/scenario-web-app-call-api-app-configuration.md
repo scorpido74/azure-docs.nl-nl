@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: 82439f8380b0dca676b781e36fff738b5d5bee93
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758177"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558791"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Een web-app die web-Api's aanroept: code configuratie
 
@@ -34,7 +34,7 @@ De volgende bibliotheken in de micro soft Authentication Library (MSAL) onderste
 | MSAL-bibliotheek | Beschrijving |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Ondersteuning voor .NET Framework-en .NET core-platforms. Niet ondersteund zijn Universeel Windows-platform (UWP), Xamarin. iOS en Xamarin. Android, omdat deze platformen worden gebruikt voor het bouwen van open bare client toepassingen. Voor ASP.NET Core web apps en Web-Api's wordt MSAL.NET ingekapseld in een bibliotheek op een hoger niveau met de naam micro soft. Identity. Web|
-| ![MSAL python](media/sample-v2-code/logo_python.png) <br/> MSAL voor Python | Ondersteuning voor python-webtoepassingen. |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL voor Python | Ondersteuning voor python-webtoepassingen. |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL voor Java | Ondersteuning voor Java-webtoepassingen. |
 
 Selecteer het tabblad voor het platform waarin u bent geïnteresseerd:

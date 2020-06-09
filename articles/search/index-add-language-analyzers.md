@@ -2,37 +2,43 @@
 title: Taal analyse functies toevoegen aan teken reeks velden
 titleSuffix: Azure Cognitive Search
 description: Meertalige tekst analyse in meerdere talen voor niet-Engelse query's en indexen in azure Cognitive Search.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283145"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555193"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
 
-Een *taal analyse* is een specifiek type [tekst analyse](search-analyzers.md) dat lexicale analyses uitvoert met behulp van de taal kundige regels van de doel taal. Elk doorzoekbaar veld heeft een eigenschap **Analyzer** . Als uw index vertaalde teken reeksen bevat, zoals afzonderlijke velden voor Engelse en Chinese tekst, kunt u taal analysen opgeven voor elk veld om toegang te krijgen tot de uitgebreide taal mogelijkheden van die analyse functies.  
+Een *taal analyse* is een specifiek type [tekst analyse](search-analyzers.md) dat lexicale analyses uitvoert met behulp van de taal kundige regels van de doel taal. Elk doorzoekbaar veld heeft een eigenschap **Analyzer** . Als uw inhoud bestaat uit vertaalde teken reeksen, zoals afzonderlijke velden voor Engelse en Chinese tekst, kunt u taal analysen opgeven voor elk veld om toegang te krijgen tot de uitgebreide taal mogelijkheden van die analyse functies.
 
-Azure Cognitive Search ondersteunt 35-analyse functies die worden ondersteund door Lucene, en 50-analyse functies die worden ondersteund door een eigen micro soft-technologie voor natuurlijke taal verwerking die wordt gebruikt in Office en Bing.
+## <a name="when-to-use-a-language-analyzer"></a>Wanneer moet u een taal analyse gebruiken?
 
-## <a name="comparing-analyzers"></a>Analyse functies vergelijken
+U moet een taal analyse overwegen wanneer u weet dat de structuur van een woord of zin een waarde toevoegt aan het parseren van tekst. Een voor beeld hiervan is het koppelen van onregelmatige woord vormen (' meebrengen ' en ' ingebrachte ') of meervouden (muizen ' en ' muis '). Zonder taal kundig bewustzijn worden deze teken reeksen alleen op fysieke kenmerken geparseerd, waardoor de verbinding niet kan worden onderschept. Omdat grote stukken tekst waarschijnlijk deze inhoud bevatten, zijn de velden met beschrijvingen, beoordelingen of samen vattingen goede kandidaten voor een taal analyse.
+
+U moet ook taal analyse functies beschouwen als de inhoud uit niet-westerse teken reeksen bestaat. Hoewel de [standaard analyse functie](search-analyzers.md#default-analyzer) language-neutraal is, is het concept van het gebruik van spaties en speciale tekens (afbreek streepjes en slashes) voor het scheiden van teken reeksen meer van toepassing op westerse talen dan andere Westerse versies. 
+
+Bijvoorbeeld, in het Chinees, Japans, Koreaans (CJK) en andere Aziatische talen, is een spatie niet noodzakelijkerwijs een woord scheidings teken. Bekijk de volgende Japanse teken reeks. Omdat het geen spaties bevat, zal een taal-neutraal Analyzer waarschijnlijk de hele teken reeks als één token analyseren, wanneer de teken reeks in feite een zin is.
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+In het bovenstaande voor beeld zou een geslaagde query het volledige token moeten bevatten, of een gedeeltelijk token met behulp van een achtervoegsel Joker teken, wat resulteert in een onnatuurlijke en beperkende Zoek ervaring.
+
+Een betere ervaring is het zoeken naar afzonderlijke woorden: 明るい (helder), 私たちの (onze), 銀河系 (Galaxy). Het gebruik van een van de Japanse analyse functies die beschikbaar zijn in Cognitive Search is waarschijnlijker om dit gedrag te ontgrendelen omdat deze analyse functies beter zijn ingericht bij het splitsen van het tekst segment in betekenis volle woorden in de doel taal.
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>Lucene en micro soft-analyse functies vergelijken
+
+Azure Cognitive Search ondersteunt 35 taal analysen die worden ondersteund door Lucene, en 50 taal analyse functies die worden ondersteund door een eigen micro soft-technologie voor natuurlijke taal verwerking die wordt gebruikt in Office en Bing.
 
 Sommige ontwikkel aars hebben mogelijk de voor keur aan een bekendere, eenvoudige, open-source oplossing van Lucene. De taal analysen van Lucene zijn sneller, maar de micro soft-analyse functies hebben geavanceerde mogelijkheden, zoals lemmatisering, het ontsamenen van woorden (in talen zoals Duits, Deens, Nederlands, Zweeds, Noors, Estland, finish, Hong aars, Slowaaks) en entiteits herkenning (Url's, e-mails, datums, cijfers). Voer, indien mogelijk, vergelijkingen uit van de micro soft-en lucene-analyse functies om te bepalen welke een beter aansluit. 
 
@@ -99,7 +105,7 @@ Zie [Create index &#40;Azure Cognitive Search REST API&#41;](https://docs.micros
 |Malajalam|ml. micro soft||  
 |Maleis (Latijns)|MS. micro soft||  
 |Marathi|Mr. micro soft||  
-|Norwegian|NB. micro soft|No. lucene|  
+|Noors|NB. micro soft|No. lucene|  
 |Perzisch||FA. lucene|  
 |Pools|pl. micro soft|pl. lucene|  
 |Portugees (Brazilië)|pt-br. micro soft|pt-br. lucene|  

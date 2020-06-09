@@ -16,12 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 1ff8c382813654b1dee38a99bf2cc0ca67afbedd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313824"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561187"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs van python gebruiken
 
@@ -103,7 +104,7 @@ class NotificationHub:
 ### <a name="create-security-token"></a>Beveiligings token maken
 
 De Details voor het maken van het beveiligings token zijn [hier](https://msdn.microsoft.com/library/dn495627.aspx)beschikbaar.
-Voeg de volgende methoden toe `NotificationHub` aan de klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de Connection String.
+Voeg de volgende methoden toe aan de `NotificationHub` klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de Connection String.
 
 ```python
 @staticmethod
@@ -165,7 +166,7 @@ Deze klasse is een container voor een systeem eigen meldings hoofdtekst of een s
 
 Raadpleeg de [documentatie van Notification hubs rest-api's](https://msdn.microsoft.com/library/dn495827.aspx) en de specifieke indelingen voor het meldings platform voor alle beschik bare opties.
 
-Nu met deze klasse, schrijft u de methoden voor het verzenden van `NotificationHub` meldingen binnen de klasse.
+Nu met deze klasse, schrijft u de methoden voor het verzenden van meldingen binnen de `NotificationHub` klasse.
 
 ```python
 def make_http_request(self, url, payload, headers):

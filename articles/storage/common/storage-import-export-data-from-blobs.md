@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169199"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509471"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>De Azure Import/Export-service gebruiken voor het exporteren van gegevens uit Azure Blob-opslag
 
@@ -39,7 +39,7 @@ U moet het volgende doen:
 
 Voer de volgende stappen uit om een export taak te maken in de Azure Portal.
 
-1. Meld u aan bij https://portal.azure.com/ .
+1. Meld u aan bij <https://portal.azure.com/> .
 2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar import/export-taken](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Het exporteren is voltooid.
 
 Als u versie 1.4.0.300 van het WAImportExport-hulp programma gebruikt, gebruikt u de volgende opdracht om het station te ontgrendelen:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Hier volgt een voor beeld van de voorbeeld invoer.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Als u eerdere versies van het hulp programma gebruikt, gebruikt u het dialoog venster BitLocker om het station te ontgrendelen.
 
@@ -143,11 +147,11 @@ Deze *optionele* stap helpt u bij het bepalen van het aantal stations dat vereis
 2. Unzip naar de standaardmap `waimportexportv1` . Bijvoorbeeld `C:\WaImportExportV1`.
 3. Open een Power shell-of opdracht regel venster met Administrator bevoegdheden. Als u de map wilt wijzigen in de map ungezipte, voert u de volgende opdracht uit:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. Als u het aantal schijven wilt controleren dat is vereist voor de geselecteerde blobs, voert u de volgende opdracht uit:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     De para meters worden in de volgende tabel beschreven:
 

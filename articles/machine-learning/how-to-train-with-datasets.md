@@ -11,12 +11,13 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/20/2020
-ms.openlocfilehash: 2d573591c2ec70c0d9ec1598dca3af295d36b4c7
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: a9b9faed111e6126bfdb30e4237a988afd947823
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433771"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560143"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,7 @@ Azure Machine Learning gegevens sets bieden een naadloze integratie met Azure Ma
 
 Als u gegevens sets wilt maken en trainen, hebt u het volgende nodig:
 
-* Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een gratis account aan voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 
 * Een [Azure machine learning-werk ruimte](how-to-manage-workspace.md).
 

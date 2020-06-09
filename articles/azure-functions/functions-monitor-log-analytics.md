@@ -5,20 +5,21 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: 44de63ccd90ca8a76835fabe48d6047139ddc634
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121621"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561718"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
 Azure Functions biedt een integratie met [Azure monitor-logboeken](../azure-monitor/platform/data-platform-logs.md) om functies te bewaken. Dit artikel laat u zien hoe u Azure Functions kunt configureren voor het verzenden van door het systeem gegenereerde en door de gebruiker gegenereerde logboeken naar Azure Monitor-Logboeken.
 
-Met Azure Monitor Logboeken kunt u logboeken van verschillende resources in dezelfde werk ruimte consolideren, waar het kan worden geanalyseerd met [query's](../azure-monitor/log-query/log-query-overview.md) om verzamelde gegevens snel op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen met behulp van [log Analytics](../azure-monitor/log-query/portals.md) in de Azure Portal en vervolgens de gegevens rechtstreeks analyseren met behulp van deze hulpprogram ma's of query's opslaan voor gebruik met [Visualisaties](../azure-monitor/visualizations.md) of [waarschuwings regels](../azure-monitor/platform/alerts-overview.md).
+Met Azure Monitor Logboeken kunt u logboeken van verschillende resources in dezelfde werk ruimte consolideren, waar het kan worden geanalyseerd met [query's](../azure-monitor/log-query/log-query-overview.md) om verzamelde gegevens snel op te halen, samen te voegen en te analyseren.  U kunt query's maken en testen door [Log Analytics](../azure-monitor/log-query/portals.md) in Azure Portal te gebruiken. Vervolgens kunt u de gegevens onmiddellijk analyseren met deze hulpprogramma's, maar u kunt de query's ook opslaan om deze te gebruiken met [visualisaties](../azure-monitor/visualizations.md) of [waarschuwingsregels](../azure-monitor/platform/alerts-overview.md).
 
-Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/) die wordt gebruikt door Azure Data Explorer die geschikt is voor eenvoudige logboek query's, maar bevat ook geavanceerde functies zoals aggregaties, samen voegingen en slimme analyses. U kunt de query taal snel leren kennen met [meerdere lessen](../azure-monitor/log-query/get-started-queries.md).
+Azure Monitor gebruikt een versie van de [Kusto-querytaal](/azure/kusto/query/) (KQL) die door Azure Data Explorer wordt gebruikt en die geschikt is voor eenvoudige logboekquery's maar die ook geavanceerde functies bevat, zoals aggregaties, joins en slimme analyse. Via [diverse lessen](../azure-monitor/log-query/get-started-queries.md) kunt u de querytaal snel leren.
 
 > [!NOTE]
 > Integratie met Azure Monitor Logboeken is momenteel beschikbaar als open bare Preview voor functie-apps die worden uitgevoerd op Windows-verbruiks-, Premium-en speciale hosting abonnementen.
@@ -44,7 +45,7 @@ Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/)
 Als u aangepaste logboeken wilt genereren, gebruikt u de registratie-instructie die specifiek is voor uw taal. Hier volgen enkele voor beelden van code fragmenten:
 
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
@@ -56,7 +57,7 @@ log.LogInformation("My app logs here.");
 context.getLogger().info("My app logs here.");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 context.log('My app logs here.');

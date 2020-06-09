@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122325"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559091"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -71,7 +72,7 @@ GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
 Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie actie voor de publicatie.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-node` actie voor het instellen van de omgeving:
 
@@ -101,7 +102,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt v
         python-version: 3.6
 ```
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-dotnet` actie voor het instellen van de omgeving:
 
@@ -140,7 +141,7 @@ Dit is afhankelijk van de taal en voor talen die door Azure Functions worden ond
 
 In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app bouwt, die specifiek is voor de taal:
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -169,7 +170,7 @@ In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app
         popd
 ```
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

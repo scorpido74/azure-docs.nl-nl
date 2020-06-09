@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 3b6476b794d2e1b2e9a36aa26f35c247641d44e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eba63ff500aad4538f5b30f11bac168cf14816c0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418147"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558169"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Gegevens kopiëren van MongoDB met behulp van Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit een MongoDB-data base te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
@@ -50,11 +51,11 @@ De volgende eigenschappen worden ondersteund voor MongoDB gekoppelde service:
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type |De eigenschap type moet worden ingesteld op: **MongoDbV2** |Ja |
-| Verbindings |Geef de MongoDB op connection string bijvoorbeeld `mongodb://[username:password@]host[:port][/[database][?options]]`. Raadpleeg de [hand leiding voor MongoDb op Connection String](https://docs.mongodb.com/manual/reference/connection-string/) voor meer informatie. <br/><br /> U kunt ook een wacht woord in azure Key Vault plaatsen en de `password` configuratie uit de Connection String halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. |Ja |
+| Verbindings |Geef de MongoDB op connection string bijvoorbeeld `mongodb://[username:password@]host[:port][/[database][?options]]` . Raadpleeg de [hand leiding voor MongoDb op Connection String](https://docs.mongodb.com/manual/reference/connection-string/) voor meer informatie. <br/><br /> U kunt ook een wacht woord in Azure Key Vault plaatsen en de  `password`   configuratie uit de Connection String halen. Raadpleeg [referenties opslaan in azure Key Vault](store-credentials-in-key-vault.md) met meer informatie. |Ja |
 | database | De naam van de data base die u wilt openen. | Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -82,7 +83,7 @@ Zie [gegevens sets en gekoppelde services](concepts-datasets-linked-services.md)
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MongoDbV2Collection** | Ja |
 | collectionName |De naam van de verzameling in de MongoDB-data base. |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -112,7 +113,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MongoDbV2Source** | Ja |
-| filter | Hiermee geeft u selectie filter op met behulp van query operators. Als u alle documenten in een verzameling wilt retour neren, laat u deze para meter weg{}of geeft u een leeg document () door. | Nee |
+| filter | Hiermee geeft u selectie filter op met behulp van query operators. Als u alle documenten in een verzameling wilt retour neren, laat u deze para meter weg of geeft u een leeg document ( {} ) door. | Nee |
 | cursorMethods. project | Hiermee geeft u de velden op die moeten worden geretourneerd in de documenten voor projectie. Als u alle velden in de overeenkomende documenten wilt retour neren, laat u deze para meter weg. | Nee |
 | cursorMethods. sort | Hiermee geeft u de volg orde waarin de query overeenkomende documenten retourneert. Raadpleeg [cursor. sort ()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nee |
 | cursorMethods. Limit | Hiermee geeft u het maximum aantal documenten op dat door de server wordt geretourneerd. Raadpleeg [cursor. Limit ()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nee |
@@ -122,7 +123,7 @@ De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopiee
 >[!TIP]
 >ADF-ondersteuning die BSON-document verbruikt in de **strikte modus**. Zorg ervoor dat uw filter query in de strikte modus in plaats van in de shell modus is. Meer beschrijving vindt u in [MongoDb hand matig](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

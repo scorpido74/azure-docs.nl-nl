@@ -6,18 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/7/2020
-ms.openlocfilehash: 18004ba474eb354f6723538a29f9eb90b23fbff2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: tracking-python
+ms.openlocfilehash: 7286887b10661d291f6c6d2b6c067dd7e1bf43aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925861"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559228"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>SSL-connectiviteit in uw toepassing configureren om veilig verbinding te maken met Azure Database for MySQL
-Azure Database for MySQL ondersteunt het verbinden van uw Azure Database for MySQL server met client toepassingen met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
+Azure Database for MySQL biedt ondersteuning voor het gebruik van Secure Sockets Layer (SSL) om uw Azure Database for MySQL-server te verbinden met clienttoepassingen. Het afdwingen van SSL-verbindingen tussen uw databaseserver en clienttoepassingen zorgt dat u bent beschermt tegen 'man in the middle'-aanvallen omdat de gegevensstroom tussen de server en uw toepassing wordt versleuteld.
 
 ## <a name="step-1-obtain-ssl-certificate"></a>Stap 1: een SSL-certificaat verkrijgen
-Down load het certificaat dat nodig is om via SSL met uw Azure Database for MySQL [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) -server te communiceren en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
+Down load het certificaat dat nodig is om via SSL met uw Azure Database for MySQL-server te communiceren [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) en sla het certificaat bestand op uw lokale station op (in deze zelf studie wordt c:\ssl bijvoorbeeld gebruikt).
 **Voor micro soft Internet Explorer en micro soft Edge:** Wanneer het downloaden is voltooid, wijzigt u de naam van het certificaat in BaltimoreCyberTrustRoot. CRT. pem.
 
 ## <a name="step-2-bind-ssl"></a>Stap 2: SSL binden
@@ -45,7 +46,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 ```
 
 > [!NOTE]
-> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een `SSL connection error: Certificate signature check failed`fout bericht weer gegeven. Als dit het geval is, `--ssl-mode=REQUIRED --ssl-ca={filepath}` vervangt u `--ssl`de para meters door.
+> Wanneer u de MySQL-opdracht regel interface in Windows gebruikt, wordt er mogelijk een fout bericht weer gegeven `SSL connection error: Certificate signature check failed` . Als dit het geval is, vervangt u de `--ssl-mode=REQUIRED --ssl-ca={filepath}` para meters door `--ssl` .
 
 ## <a name="step-3--enforcing-ssl-connections-in-azure"></a>Stap 3: SSL-verbindingen in azure afdwingen 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken

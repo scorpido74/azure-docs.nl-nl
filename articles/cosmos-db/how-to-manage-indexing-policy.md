@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 341c315bfdcb99a2cacb32d8aed892c684c44601
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869927"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558895"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 
@@ -42,7 +43,7 @@ Hier volgen enkele voor beelden van beleids regels voor indexering die worden we
     }
 ```
 
-Dit indexerings beleid is gelijk aan het onderstaande dat hand matig ```kind```wordt ```dataType```ingesteld, ```precision``` , en op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
+Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
 
 ```json
     {
@@ -96,7 +97,7 @@ Dit indexerings beleid is gelijk aan het onderstaande dat hand matig ```kind```w
     }
 ```
 
-Dit indexerings beleid is gelijk aan het onderstaande dat hand matig ```kind```wordt ```dataType```ingesteld, ```precision``` , en op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
+Dit indexerings beleid is gelijk aan het onderstaande dat hand matig wordt ingesteld ```kind``` , ```dataType``` , en ```precision``` op de standaard waarden. Deze eigenschappen zijn niet langer nodig om expliciet in te stellen en u kunt ze volledig uit het indexerings beleid weglaten (zoals wordt weer gegeven in het bovenstaande voor beeld).
 
 ```json
     {
@@ -172,10 +173,10 @@ Dit indexerings beleid is gelijk aan het onderstaande dat hand matig ```kind```w
 
 ## <a name="composite-indexing-policy-examples"></a>Voor beelden van samengesteld indexerings beleid
 
-Naast het opnemen of uitsluiten van paden voor afzonderlijke eigenschappen, kunt u ook een samengestelde index opgeven. Als u een query wilt uitvoeren met een `ORDER BY` -component voor meerdere eigenschappen, is een [samengestelde index](index-policy.md#composite-indexes) voor die eigenschappen vereist. Daarnaast hebben samengestelde indexen een prestatie voordelen voor query's met een filter en een component ORDER BY op verschillende eigenschappen.
+Naast het opnemen of uitsluiten van paden voor afzonderlijke eigenschappen, kunt u ook een samengestelde index opgeven. Als u een query wilt uitvoeren met een- `ORDER BY` component voor meerdere eigenschappen, is een [samengestelde index](index-policy.md#composite-indexes) voor die eigenschappen vereist. Daarnaast hebben samengestelde indexen een prestatie voordelen voor query's met een filter en een component ORDER BY op verschillende eigenschappen.
 
 > [!NOTE]
-> Samengestelde paden hebben een impliciete `/?` , omdat alleen de scalaire waarde op dat pad is geïndexeerd. Het `/*` Joker teken wordt niet ondersteund in samengestelde paden. U moet geen `/?` op `/*` te geven of in een samengesteld pad.
+> Samengestelde paden hebben een impliciete `/?` , omdat alleen de scalaire waarde op dat pad is geïndexeerd. Het `/*` Joker teken wordt niet ondersteund in samengestelde paden. U moet `/?` geen op te geven of `/*` in een samengesteld pad.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>Samengestelde index gedefinieerd voor (naam ASC, leeftijd DESC):
 
@@ -323,7 +324,7 @@ Dit beleid kan worden gebruikt in situaties waarin de [TTL-functie (time-to-Live
 
 ### <a name="no-indexing"></a>Geen indexering
 
-Met dit beleid wordt indexeren uitgeschakeld. Als `indexingMode` is ingesteld op `none`, kunt u geen TTL instellen op de container.
+Met dit beleid wordt indexeren uitgeschakeld. Als `indexingMode` is ingesteld op `none` , kunt u geen TTL instellen op de container.
 
 ```json
     {
@@ -375,7 +376,7 @@ Als u een container met een aangepast indexerings beleid wilt maken, [maakt u ee
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-Het `DocumentCollection` object van de [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) bevat een `IndexingPolicy` eigenschap waarmee u de `IndexingMode` kunt wijzigen en toevoegen of verwijderen. `IncludedPaths` `ExcludedPaths`
+Het `DocumentCollection` object van de [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) bevat een `IndexingPolicy` eigenschap waarmee u de kunt wijzigen `IndexingMode` en toevoegen of verwijderen `IncludedPaths` `ExcludedPaths` .
 
 ```csharp
 // Retrieve the container's details
@@ -394,7 +395,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Als u de voortgang van de index transformatie wilt `RequestOptions` bijhouden, geeft u `PopulateQuotaInfo` een object `true`door dat de eigenschap instelt op.
+Als u de voortgang van de index transformatie wilt bijhouden, geeft `RequestOptions` u een object door dat de `PopulateQuotaInfo` eigenschap instelt op `true` .
 
 ```csharp
 // retrieve the container's details
@@ -405,7 +406,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-Het `ContainerProperties` object van de [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Zie [deze Snelstartgids](create-sql-api-dotnet.md) met betrekking tot het gebruik) toont `IndexingPolicy` een eigenschap waarmee u de `IndexingMode` kunt wijzigen en toevoegen of `IncludedPaths` verwijderen `ExcludedPaths`.
+Het `ContainerProperties` object van de [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Zie [deze Snelstartgids](create-sql-api-dotnet.md) met betrekking tot het gebruik) toont een `IndexingPolicy` eigenschap waarmee u de kunt wijzigen `IndexingMode` en toevoegen of `IncludedPaths` verwijderen `ExcludedPaths` .
 
 ```csharp
 // Retrieve the container's details
@@ -429,7 +430,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Als u de voortgang van de index transformatie wilt `RequestOptions` bijhouden, geeft u `PopulateQuotaInfo` een object `true`door waarmee de eigenschap wordt ingesteld en `x-ms-documentdb-collection-index-transformation-progress` haalt u de waarde op uit de reactie header.
+Als u de voortgang van de index transformatie wilt bijhouden, geeft `RequestOptions` u een object door waarmee de eigenschap wordt ingesteld `PopulateQuotaInfo` `true` en haalt u de waarde op uit de `x-ms-documentdb-collection-index-transformation-progress` reactie header.
 
 ```csharp
 // retrieve the container's details
@@ -463,7 +464,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>De Java-SDK gebruiken
 
-Het `DocumentCollection` object van de [Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) ( [Zie deze Snelstartgids](create-sql-api-java.md) met betrekking tot het gebruik `getIndexingPolicy()` ) `setIndexingPolicy()` wordt weer gegeven en beschreven. Met `IndexingPolicy` het object dat wordt gemanipuleerd, kunt u de indexerings modus wijzigen en opgenomen en uitgesloten paden toevoegen of verwijderen.
+Het `DocumentCollection` object van de [Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (Zie [deze Snelstartgids](create-sql-api-java.md) met betrekking tot het gebruik) wordt weer gegeven `getIndexingPolicy()` en `setIndexingPolicy()` beschreven. `IndexingPolicy`Met het object dat wordt gemanipuleerd, kunt u de indexerings modus wijzigen en opgenomen en uitgesloten paden toevoegen of verwijderen.
 
 ```java
 // Retrieve the container's details
@@ -529,7 +530,7 @@ indexingPolicy.setCompositeIndexes(compositeIndexes);
 });
 ```
 
-Als u de voortgang van de index transformatie op een container wilt `RequestOptions` bijhouden, geeft u een object door dat de quotum gegevens aanvraagt dat moet worden `x-ms-documentdb-collection-index-transformation-progress` ingevuld. vervolgens haalt u de waarde op uit de reactie header.
+Als u de voortgang van de index transformatie op een container wilt bijhouden, geeft u een `RequestOptions` object door dat de quotum gegevens aanvraagt dat moet worden ingevuld. vervolgens haalt u de waarde op uit de `x-ms-documentdb-collection-index-transformation-progress` reactie header.
 
 ```java
 // set the RequestOptions object
@@ -545,7 +546,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>De node. js-SDK gebruiken
 
-De `ContainerDefinition` interface van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos) (Zie [deze Snelstartgids](create-sql-api-nodejs.md) met betrekking tot het gebruik `indexingPolicy` ) toont een eigenschap waarmee u `indexingMode` de kunt wijzigen en `includedPaths` toevoegen `excludedPaths`of verwijderen.
+De `ContainerDefinition` interface van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos) (Zie [deze Snelstartgids](create-sql-api-nodejs.md) met betrekking tot het gebruik) toont een `indexingPolicy` eigenschap waarmee u de kunt wijzigen `indexingMode` en toevoegen of verwijderen `includedPaths` `excludedPaths` .
 
 De details van de container ophalen
 
@@ -602,7 +603,7 @@ De container bijwerken met wijzigingen
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Als u de voortgang van de index transformatie op een container wilt `RequestOptions` bijhouden, geeft u `populateQuotaInfo` een object `true`door waarmee de eigenschap wordt ingesteld en `x-ms-documentdb-collection-index-transformation-progress` haalt u de waarde op uit de reactie header.
+Als u de voortgang van de index transformatie op een container wilt bijhouden, geeft `RequestOptions` u een object door waarmee de eigenschap wordt ingesteld `populateQuotaInfo` `true` en haalt u de waarde op uit de `x-ms-documentdb-collection-index-transformation-progress` reactie header.
 
 ```javascript
 // retrieve the container's details

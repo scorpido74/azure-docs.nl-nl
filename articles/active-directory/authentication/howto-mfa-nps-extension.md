@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871225"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554829"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Uw bestaande NPS-infrastructuur integreren met Azure Multi-Factor Authentication
 
@@ -64,6 +64,10 @@ Deze bibliotheken worden automatisch met de extensie geïnstalleerd.
 - [Microsoft Azure Active Directory-module voor Windows PowerShell versie 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 De Microsoft Azure Active Directory-module voor Windows PowerShell is geïnstalleerd, als deze nog niet aanwezig is, via een configuratie script dat u uitvoert als onderdeel van het installatie proces. U hoeft deze module niet vooraf te installeren als deze nog niet is geïnstalleerd.
+
+U moet de volgende bibliotheek hand matig installeren:
+
+- [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -201,7 +205,7 @@ Herhaal deze stappen voor alle extra NPS-servers die u wilt instellen voor taak 
 Als uw vorige computer certificaat is verlopen en er een nieuw certificaat is gegenereerd, moet u verlopen certificaten verwijderen. Verlopen certificaten kunnen leiden tot problemen met het starten van de NPS-extensie.
 
 > [!NOTE]
-> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \< TenantID \> , ou = micro soft NPS extension**zijn. 
+> Als u uw eigen certificaten gebruikt in plaats van certificaten te genereren met het Power shell-script, moet u ervoor zorgen dat ze worden uitgelijnd op de NPS-naamgevings Conventie. De naam van het onderwerp moet **CN = \<TenantID\> , ou = micro soft NPS extension**zijn. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Aanvullende stappen Microsoft Azure Government
 
@@ -271,7 +275,7 @@ Het volgende script is beschikbaar voor het uitvoeren van basis stappen voor de 
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hoe kan ik controleren of het certificaat van de client is geïnstalleerd zoals verwacht?
 
-Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de **netwerk service**van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \< tenantid \> , ou = micro soft NPS-extensie**
+Zoek naar het zelfondertekende certificaat dat is gemaakt door het installatie programma in het certificaat archief en controleer of de persoonlijke sleutel machtigingen heeft die zijn verleend aan de **netwerk service**van de gebruiker. Het certificaat heeft de onderwerpnaam **CN \<tenantid\> , OE = micro soft NPS-extensie**
 
 Zelfondertekende certificaten die zijn gegenereerd door het script *AzureMfaNpsExtnConfigSetup. ps1* , hebben ook een levens duur van twee jaar. Wanneer u controleert of het certificaat is geïnstalleerd, moet u ook controleren of het certificaat niet is verlopen.
 

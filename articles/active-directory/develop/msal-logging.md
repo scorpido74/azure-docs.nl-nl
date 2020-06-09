@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 300b7e4fe3e3c150a78fee5b63458feab266aafe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77084890"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558677"
 ---
 # <a name="logging-in-msal-applications"></a>Logboek registratie in MSAL-toepassingen
 
@@ -46,11 +46,11 @@ Voor meer informatie over het MSAL van logboek registratie in een bepaalde taal,
  > [!NOTE]
  > Zie de [MSAL.net-wiki](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki) voor voor beelden van MSAL.net-logboek registratie en meer.
 
-In MSAL 3. x wordt logboek registratie per toepassing ingesteld bij het maken van de `.WithLogging` app met behulp van de opbouw functie voor Builder. Deze methode accepteert optionele para meters:
+In MSAL 3. x wordt logboek registratie per toepassing ingesteld bij het maken van de app met behulp van de `.WithLogging` opbouw functie voor Builder. Deze methode accepteert optionele para meters:
 
 - `Level`Hiermee kunt u bepalen welk registratie niveau u wilt. Als u deze instelt op fouten, worden er alleen fouten opgehaald
 - `PiiLoggingEnabled`Hiermee kunt u persoonlijke en organisatie gegevens registreren indien ingesteld op waar. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens registreert.
-- `LogCallback`is ingesteld op een gemachtigde die de logboek registratie doet. Als `PiiLoggingEnabled` True is, ontvangt deze methode de berichten twee keer: wanneer de `containsPii` para meter is ingesteld op False en het bericht zonder persoons gegevens, en een tweede keer `containsPii` met de para meter is ingesteld op True en het bericht persoons gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+- `LogCallback`is ingesteld op een gemachtigde die de logboek registratie doet. Als `PiiLoggingEnabled` True is, ontvangt deze methode de berichten twee keer: wanneer de `containsPii` para meter is ingesteld op False en het bericht zonder persoons gegevens, en een tweede keer met de `containsPii` para meter is ingesteld op True en het bericht persoons gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
 - `DefaultLoggingEnabled`Hiermee schakelt u de standaard logboek registratie in voor het platform. De standaard instelling is False. Als u deze instelt op True, wordt gebeurtenis tracering gebruikt in Desktop/UWP-toepassingen, NSLog op iOS en logcat op Android.
 
 ```csharp
@@ -87,9 +87,9 @@ class Program
 Schakel logboek registratie in bij het maken van een app door het maken van een logboek registratie. De retour aanroep heeft de volgende para meters:
 
 - `tag`is een teken reeks die door de bibliotheek wordt door gegeven aan de call back. Het is gekoppeld aan de logboek vermelding en kan worden gebruikt om logboek registratie berichten te sorteren.
-- `logLevel`Hiermee kunt u bepalen welk registratie niveau u wilt. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info`en `Verbose`.
+- `logLevel`Hiermee kunt u bepalen welk registratie niveau u wilt. De ondersteunde logboek niveaus zijn: `Error` , `Warning` , en `Info` `Verbose` .
 - `message`is de inhoud van de logboek vermelding.
-- `containsPII`Hiermee wordt aangegeven of berichten met persoonlijke gegevens of organisatie gegevens worden geregistreerd. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Als `containsPII` dat `true`het geval is, ontvangt deze methode de berichten twee keer: `containsPII` eenmaal waarvoor de `false` para meter `message` is ingesteld op en het zonder persoons gegevens, `containsPii` en een tweede `true` keer waarbij de para meter is ingesteld op en het bericht persoonlijke gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
+- `containsPII`Hiermee wordt aangegeven of berichten met persoonlijke gegevens of organisatie gegevens worden geregistreerd. Deze instelling is standaard ingesteld op ONWAAR, zodat uw toepassing geen persoonlijke gegevens kan registreren. Als `containsPII` `true` dat het geval is, ontvangt deze methode de berichten twee keer: eenmaal waarvoor de `containsPII` para meter is ingesteld op `false` en het `message` zonder persoons gegevens, en een tweede keer waarbij de `containsPii` para meter is ingesteld op `true` en het bericht persoonlijke gegevens kan bevatten. In sommige gevallen (wanneer het bericht geen persoonlijke gegevens bevat), is het bericht hetzelfde.
 
 ```java
 private StringBuilder mLogs;
@@ -124,12 +124,12 @@ Logboek registratie in logcat is standaard uitgeschakeld. In te scha kelen:
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascript"></a>[Javascript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
- Schakel logboek registratie in MSAL. js (Java script) in door een traceer object door te geven tijdens `UserAgentApplication` de configuratie voor het maken van een exemplaar. Dit logger object heeft de volgende eigenschappen:
+ Schakel logboek registratie in MSAL. js (Java script) in door een traceer object door te geven tijdens de configuratie voor het maken van een `UserAgentApplication` exemplaar. Dit logger object heeft de volgende eigenschappen:
 
 - `localCallback`: een call back-instantie die kan worden geleverd door de ontwikkelaar om logboeken op een aangepaste manier te gebruiken en publiceren. Implementeer de localCallback-methode, afhankelijk van hoe u logboeken wilt omleiden.
-- `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error`, `Warning`, `Info`en `Verbose`. De standaardwaarde is `Info`.
+- `level`(optioneel): het Configureer bare logboek niveau. De ondersteunde logboek niveaus zijn: `Error` , `Warning` , en `Info` `Verbose` . De standaardwaarde is `Info`.
 - `piiLoggingEnabled`(optioneel): als deze optie is ingesteld op waar, worden persoonlijke en organisatie gegevens vastgelegd in een logboek. Standaard is dit false, zodat uw toepassing geen persoonlijke gegevens kan registreren. Persoonlijke gegevens logboeken worden nooit geschreven naar de standaard uitvoer, zoals console, Logcat of NSLog.
 - `correlationId`(optioneel): een unieke id, die wordt gebruikt om de aanvraag toe te wijzen met het antwoord op fout opsporing. De standaard instelling is RFC4122-versie 4 GUID (128 bits).
 
@@ -194,7 +194,7 @@ Bijvoorbeeld:
 
 ### <a name="personal-data"></a>Persoonsgegevens
 
-Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Als u inschakelt `pii.Enabled`, wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
+Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Als u inschakelt `pii.Enabled` , wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
 
 ```objc
 // By default, the `MSALLogger` doesn't capture any PII
@@ -271,7 +271,7 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 ### <a name="personal-data"></a>Persoonsgegevens
 
-Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Als u inschakelt `pii.Enabled`, wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
+Standaard worden door MSAL geen persoonlijke gegevens (PII) vastgelegd of geregistreerd. Met de bibliotheek kunnen app-ontwikkel aars dit inschakelen via een eigenschap in de MSALLogger-klasse. Als u inschakelt `pii.Enabled` , wordt de app verantwoordelijk voor het veilig verwerken van uiterst gevoelige gegevens en de volgende regelgevings vereisten.
 
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
@@ -350,7 +350,7 @@ MSAL-logboek registratie legt geen persoonlijke of bedrijfs gegevens vast. In he
             .build();
 ```
 
-Schakel persoonlijke en organisatorische gegevens registratie in door in `logPii()` te stellen op de opbouw functie voor client toepassingen. Als u persoonlijke of bedrijfs gegevens logboek registratie inschakelt, moet uw app verantwoordelijk zijn voor het veilig verwerken van uiterst gevoelige gegevens en het voldoen aan wettelijke vereisten.
+Schakel persoonlijke en organisatorische gegevens registratie in door in te stellen `logPii()` op de opbouw functie voor client toepassingen. Als u persoonlijke of bedrijfs gegevens logboek registratie inschakelt, moet uw app verantwoordelijk zijn voor het veilig verwerken van uiterst gevoelige gegevens en het voldoen aan wettelijke vereisten.
 
 In het volgende voor beeld wordt logboek registratie van persoonlijk of organisatie gegevens ingeschakeld:
 
@@ -365,7 +365,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
 
 ## <a name="msal-for-python-logging"></a>MSAL voor python-logboek registratie
 
-Logboek registratie in MSAL python maakt gebruik van het standaard logboek registratie mechanisme `logging.info("msg")` van python, bijvoorbeeld kunt u de MSAL-logboek registratie als volgt configureren (en in de [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)in actie zien):
+Logboek registratie in MSAL python maakt gebruik van het standaard logboek registratie mechanisme van python, bijvoorbeeld `logging.info("msg")` kunt u de MSAL-logboek registratie als volgt configureren (en in de [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32)in actie zien):
 
 ### <a name="enable-debug-logging-for-all-modules"></a>Logboek registratie voor fout opsporing inschakelen voor alle modules
 

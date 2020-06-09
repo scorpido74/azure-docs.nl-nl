@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418208"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558858"
 ---
 # <a name="permissions-in-azure-security-center"></a>Machtigingen in Azure Security Center
 
@@ -40,15 +40,14 @@ Naast deze rollen zijn er twee specifieke Security Center-rollen:
 
 De volgende tabel bevat rollen en toegestane acties in Security Center.
 
-| Rol | Beveiligings beleid bewerken | Aanbevelingen voor beveiliging Toep assen op een resource</br> (inclusief ' Quick Fix! ') | Waarschuwingen negeren | Waarschuwingen en aanbevelingen weer geven |
-|:--- |:---:|:---:|:---:|:---:|
-| Abonnements eigenaar | ✔ | ✔ | ✔ | ✔ |
-| Mede werker van abonnement | -- | ✔ | ✔ | ✔ |
-| Eigenaar van resource groep | -- | ✔ | -- | ✔ |
-| Inzender voor resource groep | -- | ✔ | -- | ✔ |
-| Lezer | -- | -- | -- | ✔ |
-| Beveiligingsbeheerder | ✔ | -- | ✔ | ✔ |
-| Beveiligingslezer | -- | -- | -- | ✔ |
+|Bewerking|Beveiligings lezer/ <br> Lezer |Beveiligingsbeheerder  |Inzender voor resource groepen/ <br> Eigenaar van resource groep  |Mede werker van abonnement  |Abonnements eigenaar  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Beveiligings beleid bewerken|-|✔|-|-|✔|
+|Prijs categorie voor abonnement wijzigen|-|✔|-|-|-|
+|Automatische inrichting in-of uitschakelen|-|✔|-|-|-|
+|Aanbevelingen voor beveiliging Toep assen op een resource</br> (en gebruik een [snelle oplossing!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
+|Waarschuwingen negeren|-|✔|-|✔|✔|
+|Waarschuwingen en aanbevelingen weer geven|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > We raden u aan de rol toe te wijzen die gebruikers minimaal nodig hebben om hun taken uit te voeren. Wijs bijvoorbeeld de rol Lezer toe aan gebruikers die alleen informatie over de beveiligings status van een resource hoeven te bekijken, maar geen actie ondernemen, zoals het Toep assen van aanbevelingen of het bewerken van beleid.

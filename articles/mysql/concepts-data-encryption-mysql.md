@@ -6,23 +6,23 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0873f9b55adbf54abe47bf275f953c3cc2b1cd3f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849723"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488440"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Gegevens versleuteling Azure Database for MySQL met een door de klant beheerde sleutel
-
-> [!NOTE]
-> Op dit moment moet u toegang aanvragen om deze mogelijkheid te gebruiken. Neem hiervoor contact op met AskAzureDBforMySQL@service.microsoft.com .
 
 Gegevensversleuteling met door de klant beheerde sleutels voor Azure Database for MySQL stelt u in staat om inactieve gegevens te beveiligen met BYOK (Bring Your Own Key). Daarnaast kunnen organisaties hiermee een scheiding van taken implementeren bij het beheer van sleutels en gegevens. Met door de klant beheerde versleuteling bent u verantwoordelijk voor, en hebt u het volledige beheer over, de levenscyclus van een sleutel, de machtigingen voor sleutelgebruik, en het controleren van de bewerkingen van sleutels.
 
 Gegevens versleuteling met door de klant beheerde sleutels voor Azure Database for MySQL is ingesteld op server niveau. Voor een bepaalde server wordt een door de klant beheerde sleutel, de sleutel versleutelings sleutel (KEK), gebruikt om de gegevens versleutelings sleutel (DEK) te versleutelen die door de service wordt gebruikt. De KEK is een asymmetrische sleutel die is opgeslagen in een [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) exemplaar van een klant en door de klant wordt beheerd. De sleutel versleutelings sleutel (KEK) en de gegevens versleutelings sleutel (DEK) wordt verderop in dit artikel uitvoeriger beschreven.
 
 Key Vault is een op de cloud gebaseerd extern systeem voor sleutel beheer. Het is Maxi maal beschikbaar en biedt schaal bare, veilige opslag voor RSA cryptografische sleutels, optioneel ondersteund door FIPS 140-2 level 2 gevalideerde hardware security modules (Hsm's). Het biedt geen directe toegang tot een opgeslagen sleutel, maar biedt ook services voor versleuteling en ontsleuteling naar gemachtigde entiteiten. Key Vault kunt de sleutel genereren, importeren of [laten overzetten van een on-premises HSM-apparaat](../key-vault/key-Vault-hsm-protected-keys.md).
+
+> [!NOTE]
+> Deze functie wordt momenteel wereld wijd geïmplementeerd en is binnenkort beschikbaar in alle regio's. Als u deze niet in uw regio ziet, neemt u contact op metAskAzureDBforMySQL@service.microsoft.com
 
 > [!NOTE]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for MySQL de prijs categorieën ' Algemeen ' en ' geoptimaliseerd voor geheugen ' ondersteunt.
@@ -129,6 +129,19 @@ Als u problemen wilt voor komen tijdens het instellen van door de klant beheerde
 * Start het herstel-of het maken van de replica van de hoofd Azure Database for MySQL.
 * Behoud de zojuist gemaakte server (hersteld/replica) in een niet-toegankelijke status, omdat de unieke identiteit nog geen machtigingen heeft gekregen om Key Vault.
 * Valideer op de herstelde/replica-server de door de klant beheerde sleutel opnieuw in de instellingen voor gegevens versleuteling om ervoor te zorgen dat de zojuist gemaakte server terugloopt en de machtigingen voor het uitpakken van de sleutel in Key Vault.
+
+## <a name="limitations"></a>Beperkingen
+
+Voor Azure Database for MySQL is de ondersteuning voor het versleutelen van gegevens op rest met behulp van door de klant beheerde sleutel (CMK) beperkt-
+
+* Ondersteuning voor deze functionaliteit is beperkt tot de prijs categorie **Algemeen** en **geoptimaliseerd voor geheugen** .
+* Deze functie wordt alleen ondersteund in regio's en servers die opslag ondersteunen tot 16TB. Raadpleeg de sectie opslag [hier](concepts-pricing-tiers.md#storage) in de documentatie voor de lijst met Azure-regio's die opslag tot 16TB ondersteunen.
+
+    > [!NOTE]
+    > - Alle nieuwe MySQL-servers die zijn gemaakt in de hierboven vermelde regio's, ondersteuning voor versleuteling met klant Manager-sleutels is **beschikbaar**. De PITR-server (Point-in-time) is niet in aanmerking komende, of de Lees replica is niet in theorie ' nieuw '.
+    > - Als u wilt valideren of uw ingerichte server Maxi maal 16TB ondersteunt, gaat u naar de Blade prijs categorie in de portal en ziet u de maximale opslag grootte die wordt ondersteund door uw ingerichte server. Als u de schuif regelaar omhoog kunt verplaatsen naar 4 TB, ondersteunt uw server mogelijk geen versleuteling met door de klant beheerde sleutels. De gegevens worden echter te allen tijde versleuteld met behulp van service beheerde sleutels. Neem contact op met AskAzureDBforMySQL@service.microsoft.com Als u vragen hebt.
+
+* Versleuteling wordt alleen ondersteund met de cryptografische sleutel RSA 2048.
 
 ## <a name="next-steps"></a>Volgende stappen
 

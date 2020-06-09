@@ -4,23 +4,24 @@ description: Meer informatie over hoe u de Azure CLI gebruikt om gedeelde VM-ins
 author: axayjo
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: 30a376755bf0041d5d6f5cb289f5aecd1a734dc5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8d129ae2c6048e592bfc43f07ee609ce930aa3fd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792799"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558779"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-cli-20"></a>Gedeelde installatie kopieën maken en gebruiken voor schaal sets voor virtuele machines met Azure CLI 2,0
 
-Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden gebruikt wanneer de VM-exemplaren zijn geïmplementeerd. Een [Galerie met gedeelde afbeeldingen](shared-image-galleries.md) vereenvoudigt het delen van aangepaste afbeeldingen in uw organisatie. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt voor het opstarten van configuraties, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere besturingssysteemconfiguraties. 
+Wanneer u een schaalset maakt, geeft u een installatiekopie op die moet worden gebruikt wanneer de VM-exemplaren zijn geïmplementeerd. Met een [Shared Image Gallery](shared-image-galleries.md) kunt u het delen van aangepaste installatiekopieën in uw organisatie vereenvoudigen. Aangepaste installatiekopieën zijn soortgelijk aan Marketplace-installatiekopieën, maar u kunt deze zelf maken. Aangepaste installatiekopieën kunnen worden gebruikt voor het opstarten van configuraties, zoals het vooraf laden van toepassingen, toepassingsconfiguraties en andere besturingssysteemconfiguraties. 
 
-Met de galerie gedeelde afbeeldingen kunt u uw installatie kopieën delen met anderen. Kies welke installatie kopieën u wilt delen, in welke regio's u ze beschikbaar wilt maken en met wie u wilt delen. 
+Met de galerie gedeelde afbeeldingen kunt u uw installatie kopieën delen met anderen. U kunt kiezen welke installatiekopieën u wilt delen, in welke regio’s u ze beschikbaar wilt maken en met wie u ze wilt delen. 
 
 
 [!INCLUDE [virtual-machines-common-shared-images-cli](../../includes/virtual-machines-common-shared-images-cli.md)]

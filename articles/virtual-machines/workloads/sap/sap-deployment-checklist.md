@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060071"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556662"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -86,7 +86,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
     - [Installatie van SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Definieer een regel matige ontwerp-en implementatie uitgebracht tussen u als de klant, de systeem integrator, micro soft en andere betrokken partijen.
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>Test fase (sterk aanbevolen)
  
 U kunt een pilot uitvoeren vóór of tijdens de planning en voor bereiding van het project. U kunt ook de pilot fase gebruiken om benaderingen en ontwerpen te testen die zijn aangebracht tijdens de plannings-en voorbereidings fase. En u kunt de test fase uitbreiden om het een echt concept te maken.
@@ -213,7 +213,7 @@ Tijdens deze fase implementeert u doorgaans Ontwikkel systemen, eenheids test sy
 14. Optimaliseer en verwerk de op rollen gebaseerde toegang, machtigingen en processen van uw team om ervoor te zorgen dat u een schei ding van taken hebt. Op hetzelfde moment moet u ervoor zorgen dat alle teams hun taken in de Azure-infra structuur kunnen uitvoeren.
 15. Ontwikkel, test en documenteer procedures voor hoge Beschik baarheid en herstel na nood gevallen om uw mede werkers in staat te stellen deze taken uit te voeren. Identificeer tekortkomingen en pas nieuwe Azure-functionaliteit aan die u integreert in uw implementaties.
 
- 
+
 ## <a name="production-preparation-phase"></a>Fase productie voorbereiding 
 In deze fase verzamelt u wat u hebt ervaren en geleerd tijdens uw implementaties zonder productie en past u deze toe op toekomstige productie-implementaties. U moet ook het werk van de gegevens overdracht voorbereiden tussen de huidige hosting locatie en Azure.
 

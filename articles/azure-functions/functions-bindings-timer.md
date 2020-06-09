@@ -6,13 +6,13 @@ ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
-ms.custom: ''
-ms.openlocfilehash: 566d6ccf43024692e19bcd6639fe5cfbbba0660d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 07c9c683ebc66070e3b280b3e4fc0af65db0ad54
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80056415"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559897"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Timer trigger voor Azure Functions 
 
@@ -78,7 +78,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een binding van een timer trigger in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie wordt een logboek geschreven dat aangeeft of deze functie wordt aangeroepen vanwege een gemiste schema gebeurtenis. Er wordt een [Timer object](#usage) door gegeven aan de functie.
 
@@ -145,7 +145,7 @@ def main(mytimer: func.TimerRequest) -> None:
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie als [cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+In het volgende voor beeld wordt de functie geactiveerd en wordt elke vijf minuten uitgevoerd. De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie [als cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")
@@ -166,7 +166,7 @@ public void keepAlive(
 
 Gebruik in [C# class libraries](functions-dotnet-class-library.md)het [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
-De constructor van het kenmerk heeft een CRON-expressie of `TimeSpan`een. U kunt alleen `TimeSpan` gebruiken als de functie-app wordt uitgevoerd op een app service-abonnement. `TimeSpan`wordt niet ondersteund voor verbruiks-of elastische Premium-functies.
+De constructor van het kenmerk heeft een CRON-expressie of een `TimeSpan` . U kunt `TimeSpan` alleen gebruiken als de functie-app wordt uitgevoerd op een app service-abonnement. `TimeSpan`wordt niet ondersteund voor verbruiks-of elastische Premium-functies.
 
 In het volgende voor beeld ziet u een CRON-expressie:
 
@@ -186,7 +186,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -196,7 +196,7 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie als [cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+De `@TimerTrigger` aantekening voor de functie definieert het schema met dezelfde teken reeks notatie [als cron-expressies](https://en.wikipedia.org/wiki/Cron#CRON_expression).
 
 ```java
 @FunctionName("keepAlive")
@@ -213,21 +213,21 @@ public void keepAlive(
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `TimerTrigger` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `TimerTrigger` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**type** | N.v.t. | Moet worden ingesteld op ' Timer trigger '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
 |**direction** | N.v.t. | Moet worden ingesteld op in. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
 |**naam** | N.v.t. | De naam van de variabele die het Timer object in functie code vertegenwoordigt. | 
-|**planning**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de **%** app-instelling die wordt verpakt in tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
-|**runOnStartup**|**RunOnStartup**|Als `true`de functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true`, met name bij de productie. |
-|**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, is de `true` standaard waarde voor schema's met een terugkeer patroon dat groter is dan of gelijk is aan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, is `false`de standaard waarde.
+|**planning**|**ScheduleExpression**|Een [cron-expressie](#ncrontab-expressions) of een [time span](#timespan) -waarde. A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan. U kunt de schema-expressie in een app-instelling plaatsen en deze eigenschap instellen op de naam van de app-instelling die wordt verpakt in **%** tekens, zoals in dit voor beeld:% ScheduleAppSetting%. |
+|**runOnStartup**|**RunOnStartup**|Als de `true` functie wordt aangeroepen wanneer de runtime wordt gestart. De runtime wordt bijvoorbeeld gestart wanneer de functie-app wordt geactiveerd nadat de inactiviteit is voltooid. Wanneer de functie-app opnieuw wordt gestart vanwege functie wijzigingen en wanneer de functie-app wordt geschaald. Daarom moet **runOnStartup** zelden worden ingesteld op `true` , met name bij de productie. |
+|**useMonitor**|**UseMonitor**|Ingesteld op `true` of `false` om aan te geven of het schema moet worden bewaakt. Het plannen van de controle houdt in dat het schema wordt gebruikt om ervoor te zorgen dat het schema goed wordt onderhouden, zelfs wanneer de functie-app-exemplaren opnieuw worden gestart. Als niet expliciet is ingesteld, is de standaard waarde `true` voor schema's met een terugkeer patroon dat groter is dan of gelijk is aan 1 minuut. Voor schema's die meer dan één keer per minuut activeren, is de standaard waarde `false` .
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 > [!CAUTION]
-> We raden u aan **runOnStartup** om runOnStartup `true` in te stellen op in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.   
+> We raden u aan om **runOnStartup** in te stellen op `true` in productie. Met deze instelling wordt de code op zeer onvoorspelbare tijden uitgevoerd. In bepaalde productie-instellingen kan deze extra uitvoeringen leiden tot aanzienlijk hogere kosten voor apps die worden gehost in verbruiks abonnementen. Als **runOnStartup** is ingeschakeld, wordt de trigger bijvoorbeeld aangeroepen wanneer uw functie-app wordt geschaald. Zorg ervoor dat u het productie gedrag van uw functies volledig begrijpt voordat u **runOnStartup** in productie inschakelt.   
 
 ## <a name="usage"></a>Gebruik
 
@@ -246,7 +246,7 @@ Wanneer een timer functie wordt geactiveerd, wordt er een timer object door gege
 }
 ```
 
-De `IsPastDue` eigenschap is `true` op het moment dat de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
+De `IsPastDue` eigenschap is op het `true` moment dat de huidige functie aanroep later is dan gepland. Het opnieuw starten van een functie-app kan ertoe leiden dat een aanroep wordt gemist.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB-expressies 
 
@@ -259,10 +259,10 @@ Elk veld kan een van de volgende typen waarden hebben:
 |Type  |Voorbeeld  |Wanneer geactiveerd  |
 |---------|---------|---------|
 |Een specifieke waarde |<nobr>"0 5 * * * *"</nobr>|op hh: 05:00 waarbij UU elk uur (één keer per uur)|
-|Alle waarden (`*`)|<nobr>"0 * 5 * * *"</nobr>|bij 5: mm: 00 elke dag, waarbij mm elke minuut van het uur is (60 keer per dag)|
-|Een bereik (`-` operator)|<nobr>"5-7 * * * * *"</nobr>|op uu: mm: 05, uu: mm: 06 en uu: mm: 07 waarbij UU: mm elke minuut van elk uur (3 keer per minuut)|
-|Een reeks waarden (`,` operator)|<nobr>"5, 8, 10 * * * * *"</nobr>|op uu: mm: 05, uu: mm: 08 en uu: mm: 10 waarbij UU: mm elke minuut van elk uur (3 keer per minuut)|
-|Een interval waarde (`/` operator)|<nobr>"0 */5 * * * *"</nobr>|op uu: 00:00, uu: 05:00, uu: 10:00, enzovoort: 55:00 waarbij UU elk uur (12 keer per uur)|
+|Alle waarden ( `*` )|<nobr>"0 * 5 * * *"</nobr>|bij 5: mm: 00 elke dag, waarbij mm elke minuut van het uur is (60 keer per dag)|
+|Een bereik ( `-` operator)|<nobr>"5-7 * * * * *"</nobr>|op uu: mm: 05, uu: mm: 06 en uu: mm: 07 waarbij UU: mm elke minuut van elk uur (3 keer per minuut)|
+|Een reeks waarden ( `,` operator)|<nobr>"5, 8, 10 * * * * *"</nobr>|op uu: mm: 05, uu: mm: 08 en uu: mm: 10 waarbij UU: mm elke minuut van elk uur (3 keer per minuut)|
+|Een interval waarde ( `/` operator)|<nobr>"0 */5 * * * *"</nobr>|op uu: 00:00, uu: 05:00, uu: 10:00, enzovoort: 55:00 waarbij UU elk uur (12 keer per uur)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -285,7 +285,7 @@ Hier volgen enkele voor beelden van NCRONTAB-expressies die u kunt gebruiken voo
 
 De getallen in een CRON-expressie verwijzen naar een datum en tijd, niet een tijds Panne. Bijvoorbeeld, een 5 in het `hour` veld verwijst naar 5:00 uur, niet om de vijf uur.
 
-De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u de CRON-expressie op basis van een andere tijd zone wilt gebruiken, maakt u een app `WEBSITE_TIME_ZONE`-instelling voor de functie-app met de naam. Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073).
+De standaardtijd zone die wordt gebruikt in de CRON-expressies is Coordinated Universal Time (UTC). Als u de CRON-expressie op basis van een andere tijd zone wilt gebruiken, maakt u een app-instelling voor de functie-app met de naam `WEBSITE_TIME_ZONE` . Stel de waarde in op de naam van de gewenste tijd zone, zoals weer gegeven in de [micro soft-tijd zone-index](https://technet.microsoft.com/library/cc749073).
 
   > [!NOTE]
   > `WEBSITE_TIME_ZONE`wordt momenteel niet ondersteund in het verbruiks abonnement voor Linux.
@@ -296,21 +296,21 @@ Bijvoorbeeld, *Eastern Standard Time* is UTC-05:00. Als u wilt dat uw timer trig
 "0 0 15 * * *"
 ``` 
 
-Of maak een app-instelling voor de naam `WEBSITE_TIME_ZONE` van de functie-app en stel de waarde in op **Eastern Standard Time**.  Gebruikt vervolgens de volgende NCRONTAB-expressie: 
+Of maak een app-instelling voor de naam van de functie-app `WEBSITE_TIME_ZONE` en stel de waarde in op **Eastern Standard Time**.  Gebruikt vervolgens de volgende NCRONTAB-expressie: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-Wanneer u gebruikt `WEBSITE_TIME_ZONE`, wordt de tijd aangepast voor tijd wijzigingen in de specifieke tijd zone, zoals zomer tijd. 
+Wanneer u gebruikt `WEBSITE_TIME_ZONE` , wordt de tijd aangepast voor tijd wijzigingen in de specifieke tijd zone, zoals zomer tijd. 
 
 ## <a name="timespan"></a>TimeSpan
 
  A `TimeSpan` kan alleen worden gebruikt voor een functie-app die wordt uitgevoerd op een app service plan.
 
-In tegens telling tot een CRON `TimeSpan` -expressie specificeert een waarde het tijds interval tussen elke functie aanroep. Wanneer een functie wordt voltooid nadat deze langer dan het opgegeven interval is uitgevoerd, roept de timer de functie opnieuw aan.
+In tegens telling tot een CRON-expressie `TimeSpan` specificeert een waarde het tijds interval tussen elke functie aanroep. Wanneer een functie wordt voltooid nadat deze langer dan het opgegeven interval is uitgevoerd, roept de timer de functie opnieuw aan.
 
-Wordt weer gegeven als een teken `TimeSpan` reeks, `hh:mm:ss` de `hh` notatie is kleiner dan 24. Als de eerste twee cijfers 24 of hoger zijn, is `dd:hh:mm`de notatie. Hier volgen enkele voorbeelden:
+Wordt weer gegeven als een teken reeks, de `TimeSpan` notatie is `hh:mm:ss` `hh` kleiner dan 24. Als de eerste twee cijfers 24 of hoger zijn, is de notatie `dd:hh:mm` . Enkele voorbeelden:
 
 |Voorbeeld |Wanneer geactiveerd  |
 |---------|---------|

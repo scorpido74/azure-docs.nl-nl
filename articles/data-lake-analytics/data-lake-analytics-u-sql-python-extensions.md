@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d047fd62e897163bf4ab6bf7e085462b136bf8fe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60813414"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553331"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>U-SQL-scripts uitbreiden met Python-code in Azure Data Lake Analytics
 
@@ -32,8 +33,8 @@ Met python-extensies voor U-SQL kunnen ontwikkel aars zeer parallelle uitvoering
 
 * Gebruik de `REFERENCE ASSEMBLY` instructie om python-extensies in te scha kelen voor het U-SQL-script
 * De `REDUCE` bewerking voor het partitioneren van de invoer gegevens op een sleutel gebruiken
-* De python-uitbrei dingen voor U-SQL bevatten een ingebouwde versmaller () waarmee python-`Extension.Python.Reducer`code wordt uitgevoerd op elk hoek punt dat aan de verlaagings eenheid wordt toegewezen
-* Het U-SQL-script bevat de Inge sloten python-code die een `usqlml_main` functie heeft aangeroepen die een Panda data frame als invoer accepteert en een Panda data frame als uitvoer retourneert.
+* De python-uitbrei dingen voor U-SQL bevatten een ingebouwde versmaller ( `Extension.Python.Reducer` ) waarmee python-code wordt uitgevoerd op elk hoek punt dat aan de verlaagings eenheid wordt toegewezen
+* Het U-SQL-script bevat de Inge sloten python-code die een functie heeft aangeroepen `usqlml_main` die een Panda data frame als invoer accepteert en een Panda data frame als uitvoer retourneert.
 
 --
 

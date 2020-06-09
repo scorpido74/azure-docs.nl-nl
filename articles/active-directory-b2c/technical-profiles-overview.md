@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504f8288ad6bf7565a0cae91c11a14ea65b6e160
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229932"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556457"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Over technische profielen in Azure Active Directory B2C aangepast beleid
 
@@ -49,7 +49,7 @@ Met een technisch profiel kunnen deze soorten scenario's worden ingeschakeld:
 Alle typen technische profielen delen hetzelfde concept. U verzendt invoer claims, voert claims-trans formatie uit en communiceert met de geconfigureerde partij, zoals een id-provider, REST API of Azure AD-adreslijst Services. Nadat het proces is voltooid, retourneert het technische profiel de uitvoer claims en kan er uitvoer claims trans formatie worden uitgevoerd. In het volgende diagram ziet u hoe de trans formaties en toewijzingen waarnaar wordt verwezen in het technische profiel worden verwerkt. De uitvoer claims van het technische profiel worden direct opgeslagen in de claim Bag, onafhankelijk van de partij waarbij het technische profiel communiceert, nadat elke claim transformatie is uitgevoerd.
 
 ![Diagram dat de technische profiel stroom illustreert](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **Eenmalige aanmelding (SSO) sessie beheer** : Hiermee wordt de sessie status van het technische profiel hersteld met behulp van [SSO-sessie beheer](custom-policy-reference-sso.md).
 1. **Invoer claims trans formatie** -invoer claims van elke invoer [claim transformatie](claimstransformations.md) worden opgehaald uit de verzameling claims.  De uitvoer claims van een invoer claims transformatie kunnen invoer claims van een volgende invoer claim transformatie zijn.
 1. **Invoer claims** : claims worden opgehaald uit de claim Bag en worden gebruikt voor het technische profiel. Een [zelfbevestigend technisch profiel](self-asserted-technical-profile.md) gebruikt bijvoorbeeld de invoer claims om de uitvoer claims die de gebruiker levert, vooraf in te vullen. Een REST API technisch profiel gebruikt de invoer claims voor het verzenden van invoer parameters naar het REST API eind punt. Azure Active Directory gebruikt een invoer claim als een unieke id voor het lezen, bijwerken of verwijderen van een account.
@@ -68,7 +68,7 @@ Alle typen technische profielen delen hetzelfde concept. U verzendt invoer claim
 
 Een technisch profiel kan een ander technisch profiel bevatten om instellingen te wijzigen of nieuwe functionaliteit toe te voegen.  Het `IncludeTechnicalProfile` element is een verwijzing naar het basis-technische profiel van waaruit een technisch profiel is afgeleid. Er is geen limiet voor het aantal niveaus.
 
-Het **Aad-UserReadUsingAlternativeSecurityId-error-** technisch profiel bevat bijvoorbeeld de **Aad-UserReadUsingAlternativeSecurityId**. Met dit technische profiel wordt `RaiseErrorIfClaimsPrincipalDoesNotExist` het meta gegevens `true`item ingesteld op en wordt er een fout gegenereerd als er geen sociaal account in de directory bestaat. **Aad-UserReadUsingAlternativeSecurityId-fout** onderdrukt dit gedrag en schakelt dat fout bericht uit.
+Het **Aad-UserReadUsingAlternativeSecurityId-error-** technisch profiel bevat bijvoorbeeld de **Aad-UserReadUsingAlternativeSecurityId**. Met dit technische profiel wordt het `RaiseErrorIfClaimsPrincipalDoesNotExist` meta gegevens item ingesteld op en wordt er `true` een fout gegenereerd als er geen sociaal account in de directory bestaat. **Aad-UserReadUsingAlternativeSecurityId-fout** onderdrukt dit gedrag en schakelt dat fout bericht uit.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">

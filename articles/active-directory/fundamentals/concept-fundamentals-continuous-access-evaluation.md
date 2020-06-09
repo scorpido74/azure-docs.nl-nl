@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: a9e34b63017eae61a886bcff8faffa2910783f3e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148120"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559136"
 ---
 # <a name="continuous-access-evaluation"></a>Continue toegangsevaluatie
 
@@ -76,7 +76,7 @@ De levens duur van het toegangs token wordt verhoogd naar 24 uur in CAE-sessies.
 1. Er wordt een toegangs token aan de resource provider door gegeven. De resource provider evalueert de geldigheid van het token en controleert of er een intrekkings gebeurtenis voor de gebruiker is. De resource provider gebruikt deze informatie om te bepalen of u toegang wilt verlenen aan de resource.
 1. In dit geval weigert de resource provider de toegang en stuurt een 401 + claim-Challenge terug naar de client
 1. De-client die geschikt is voor CAE, begrijpt de 401 + claim Challenge. Het omzeilt de caches en gaat terug naar stap 1, verzendt het vernieuwings token samen met de claim uitdaging terug naar Azure AD. Azure AD evalueert vervolgens alle voor waarden en vraagt de gebruiker in dit geval opnieuw te verifiëren.
- 
+
 ## <a name="faqs"></a>Veelgestelde vragen
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>Wat is de levens duur van mijn toegangs token?

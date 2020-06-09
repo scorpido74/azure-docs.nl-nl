@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799866"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560893"
 ---
 # <a name="consulting-service-offers"></a>Aanbiedingen voor advies service
 
@@ -22,16 +22,7 @@ Aanbiedingen voor Consulting-Services zijn klant gerichte afspraken. Uitgevers h
 
 ## <a name="compare-consulting-services"></a>Consulting Services vergelijken
 
-De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. De volgende tabel bevat een overzicht van de volgende opties:
-
-|         |Azure Marketplace  |Microsoft AppSource |
-|---------|---------|---------|
-|Doelgroep      |IT-professionals en Cloud ontwikkelaars|Zakelijke gebruikers en besluit vormers|
-|Relevantie van oplossing      |Technische apps die zijn gebouwd voor of gebouwd op Azure|Zakelijke apps die gebruikmaken van of uitbreiden van Dynamics 365, Power BI, Office 365, Azure (invoeg toepassing of voltooide apps voor toevoegen)|
-|Publicatie opties      |Contact opnemen met mij, proef versie, trans acties of services voor Azure|Neem contact op met mij, proef versie of services voor Dynamics 365 en Power BI|
-|In-product ervaring      |Azure Portal|Dynamics 365, Office 365, Office-client-apps| 
-|Overige      |On-premises publicatie via Azure Stack, advies Services voor Azure, beheerde services voor Azure|Advies Services voor Dynamics 365 en Power BI|
-||
+De commerciële Marketplace-winkel, Microsoft AppSource en Azure Marketplace, zijn afgestemd op doel groepen en Cloud producten om klanten te helpen bij het vinden van wat ze nodig hebben. Elke winkel heeft gespecialiseerde publicatie opties om u te helpen bij het maximaliseren van uw publicatie investeringen. Zie [Microsoft AppSource en Azure Marketplace vergelijken](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)voor meer informatie over het verschil tussen de twee winkeljes.
 
 Consulting Services-aanbiedingen die zijn gebaseerd op Dynamics 365, Power apps en Power BI, komen in aanmerking voor de lijst op AppSource. Down load het PDF-bestand met de [Microsoft AppSource Consulting Services-overzichts richtlijnen](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) voor meer informatie.
 
@@ -79,7 +70,7 @@ Aanvullende bronnen en ondersteuning:
 
 Ga naar de pagina [competenties van Microsoft Partner Network](https://partner.microsoft.com/membership/competencies) voor meer informatie over competenties.
 
-Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 21 landen/regio's verzenden:
+Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende twintig landen/regio's verzenden:
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -87,8 +78,7 @@ Systeem-integrator-partners kunnen advies-service aanbiedingen voor de volgende 
 | Finland  | Frankrijk | Duitsland  | India   |
 | Italië    | Japan  |  Mexico  |  Nederland  |
 |  Nieuw-Zeeland  |  Noorwegen  |  Polen  | Zuid-Afrika |
-|  Spanje  | Zweden  | Zwitserland  |  Verenigde Staten  |
-| Verenigd Koninkrijk  |
+|  Zweden  | Zwitserland  |  Verenigde Staten  | Verenigd Koninkrijk  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Registreren voor advies Services in de commerciële Marketplace

@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 4b10660302eb831a982d261cdfdaf91f4dbdfb38
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: tracking-python
+ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248767"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559941"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-bindingen voor Azure Functions
 
@@ -310,7 +311,7 @@ Zie [aan de slag met Azure Table Storage](../cosmos-db/table-storage-how-to-use-
 Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld wordt een tabel-invoer binding weer gegeven in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij trigger om één tabelrij te lezen. 
 
@@ -536,7 +537,7 @@ Het opslag account dat moet worden gebruikt, wordt in de volgende volg orde bepa
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -556,8 +557,8 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
-|**draaien** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
+|**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
+|**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
 |**naam** | N.v.t. | De naam van de variabele die de tabel of entiteit in functie code vertegenwoordigt. | 
 |**tableName** | **TableName** | De naam van de tabel.| 
 |**partitionKey** | **PartitionKey** |Optioneel. De partitie sleutel van de tabel entiteit die moet worden gelezen. Zie de sectie [gebruik](#input---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
@@ -596,7 +597,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
   > [!NOTE]
   > `IQueryable`wordt niet ondersteund in de [runtime van functions v2](functions-versions.md). U kunt ook de [methode para meter CloudTable param gebruiken](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) om de tabel te lezen met behulp van de SDK van Azure Storage. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Stel de `filter` Eigenschappen en in `take` . Niet instellen `partitionKey` of `rowKey` . Open de entiteit (of entiteiten) van de invoer tabel met behulp van `context.bindings.<BINDING_NAME>` . De gedeserialiseerd objecten hebben `RowKey` en `PartitionKey` Eigenschappen.
 
@@ -696,7 +697,7 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een tabel-uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie worden meerdere tabel entiteiten geschreven.
 
@@ -921,7 +922,7 @@ U kunt het- `StorageAccount` kenmerk gebruiken om het opslag account op te geven
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -943,8 +944,8 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
-|**draaien** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
+|**type** | N.v.t. | Moet worden ingesteld op `table` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal.|
+|**direction** | N.v.t. | Moet worden ingesteld op `out` . Deze eigenschap wordt automatisch ingesteld wanneer u de binding maakt in de Azure Portal. |
 |**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de tabel of entiteit vertegenwoordigt. Instellen op `$return` om te verwijzen naar de functie retour waarde.| 
 |**tableName** |**TableName** | De naam van de tabel.| 
 |**partitionKey** |**PartitionKey** | De partitie sleutel van de tabel entiteit die moet worden geschreven. Zie de [sectie gebruik](#output---usage) voor richt lijnen voor het gebruik van deze eigenschap.| 
@@ -967,7 +968,7 @@ Toegang tot de entiteit uitvoer tabel met behulp van een methode parameter `ICol
 
 U kunt ook een `CloudTable` methode parameter gebruiken om naar de tabel te schrijven met behulp van de Azure Storage SDK. Als u probeert verbinding te maken met `CloudTable` een fout bericht, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 U krijgt toegang tot de uitvoer gebeurtenis door gebruik te maken van `context.bindings.<name>` `<name>` de waarde die is opgegeven in de `name` eigenschap van *Function. json*.
 

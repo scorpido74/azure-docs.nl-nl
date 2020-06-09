@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1610ba173f31ecee05b2816758eab2d7c6da98f9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: tracking-python
+ms.openlocfilehash: 3a274ca84be8e4803bae614dcb3eba5d8086bd2d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798449"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559528"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB python SDK voor SQL API: release opmerkingen en bronnen
 

@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604880"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488784"
 ---
 Door gebruik te maken van regionale VNet-integratie kan uw app toegang tot:
 
@@ -56,11 +56,7 @@ Er wordt één adres gebruikt voor elk exemplaar van het abonnement. Als u uw ap
 
 Als u wilt dat uw apps in een ander abonnement een VNet bereiken dat al is verbonden met apps in een ander abonnement, selecteert u een ander subnet dan het subnetwerk dat wordt gebruikt door de bestaande VNet-integratie.
 
-De functie is beschikbaar als preview-versie voor Linux. Het Linux-formulier van de functie ondersteunt alleen het maken van aanroepen naar RFC 1918-adressen (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-or-function-app-for-containers"></a>Web-of functie-app voor containers
-
-Als u uw app host op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie zonder extra wijzigingen. Als u web-of functie-app voor containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door het platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de omgevings variabele SSH_PORT wanneer u gebruikmaakt van regionale VNet-integratie. Er is geen ondersteuning voor gateway-vereiste VNet-integratie in Linux.
+De functie wordt volledig ondersteund voor Windows-en Linux-web-apps. Alle gedragingen handelen hetzelfde tussen Windows-apps en Linux-apps.
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 

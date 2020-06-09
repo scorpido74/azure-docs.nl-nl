@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699382"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552084"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Ontwikkelen voor Azure Files met Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -42,14 +43,14 @@ pip install azure-storage-file
 ```
 
 > [!NOTE]
-> Als u een upgrade uitvoert van de Azure Storage SDK voor python versie 0,36 of eerder, verwijdert u de oudere `pip uninstall azure-storage` SDK met voordat u het meest recente pakket installeert.
+> Als u een upgrade uitvoert van de Azure Storage SDK voor python versie 0,36 of eerder, verwijdert u de oudere SDK met `pip uninstall azure-storage` voordat u het meest recente pakket installeert.
 
 Voor alternatieve installatie methoden gaat u naar de [Azure Storage SDK voor python op github](https://github.com/Azure/azure-storage-python/).
 
 ## <a name="view-the-sample-application"></a>De voorbeeld toepassing weer geven
 f als u een voorbeeld toepassing wilt weer geven en uitvoeren die laat zien hoe u python met Azure Files gebruikt, raadpleegt u [Azure Storage: aan de slag met Azure files in python](https://github.com/Azure-Samples/storage-file-python-getting-started). 
 
-Als u de voorbeeld toepassing wilt uitvoeren, moet u ervoor zorgen dat `azure-storage-file` u `azure-storage-common` zowel de als-pakketten hebt geïnstalleerd.
+Als u de voorbeeld toepassing wilt uitvoeren, moet u ervoor zorgen dat u zowel de als-pakketten hebt geïnstalleerd `azure-storage-file` `azure-storage-common` .
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Uw toepassing instellen voor gebruik Azure Files
 Voeg het volgende toe boven aan elk python-bron bestand waarin u programmatisch toegang wilt krijgen Azure Storage.
@@ -59,14 +60,14 @@ from azure.storage.file import FileService
 ```
 
 ## <a name="set-up-a-connection-to-azure-files"></a>Een verbinding met Azure Files instellen 
-Met `FileService` het object kunt u werken met shares, mappen en bestanden. Met de volgende code wordt `FileService` een object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang `<myaccount>` en `<mykey>` door uw accountnaam en -sleutel.
+`FileService`Met het object kunt u werken met shares, mappen en bestanden. Met de volgende code wordt een `FileService` object gemaakt met behulp van de naam van het opslag account en de account sleutel. Vervang `<myaccount>` en `<mykey>` door uw accountnaam en -sleutel.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ## <a name="create-an-azure-file-share"></a>Een Azure-bestandsshare maken
-In het volgende code voorbeeld kunt u een `FileService` -object gebruiken om de share te maken als deze niet bestaat.
+In het volgende code voorbeeld kunt u een- `FileService` object gebruiken om de share te maken als deze niet bestaat.
 
 ```python
 file_service.create_share('myshare')
@@ -80,7 +81,7 @@ file_service.create_directory('myshare', 'sampledir')
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Bestanden en mappen in een Azure-bestands share opsommen
-Als u de bestanden en mappen in een share wilt weer geven, gebruikt u de methode **directory's\_\_en\_bestanden weer geven** . Deze methode retourneert een generator. Met de volgende code wordt de **naam** van elk bestand en elke map in een share naar de-console uitgevoerd.
+Als u de bestanden en mappen in een share wilt weer geven, gebruikt u de methode ** \_ directory's \_ en \_ bestanden weer geven** . Deze methode retourneert een generator. Met de volgende code wordt de **naam** van elk bestand en elke map in een share naar de-console uitgevoerd.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -91,7 +92,7 @@ for file_or_dir in generator:
 ## <a name="upload-a-file"></a>Bestand uploaden 
 Azure-bestands share bevat ten minste een hoofdmap waarin bestanden kunnen worden opgeslagen. In deze sectie leert u hoe u een bestand van de lokale opslag uploadt naar de hoofdmap van een share.
 
-Gebruik de `create_file_from_path`methoden, `create_file_from_stream` `create_file_from_bytes` of `create_file_from_text` om een bestand te maken en gegevens te uploaden. Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
+Gebruik de `create_file_from_path` methoden, of om een bestand te maken en gegevens te uploaden `create_file_from_stream` `create_file_from_bytes` `create_file_from_text` . Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
 
 `create_file_from_path`uploadt de inhoud van een bestand uit het opgegeven pad en `create_file_from_stream` uploadt de inhoud van een al geopend bestand/stream. `create_file_from_bytes`uploadt een byte matrix en `create_file_from_text` uploadt de opgegeven tekst waarde met behulp van de opgegeven code ring (wordt standaard ingesteld op UTF-8).
 
@@ -108,16 +109,16 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>Bestand downloaden
-Als u gegevens uit een bestand wilt downloaden `get_file_to_path`, `get_file_to_stream`gebruikt `get_file_to_bytes`,, `get_file_to_text`of. Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
+Als u gegevens uit een bestand wilt downloaden, gebruikt,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` of `get_file_to_text` . Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
 
-In het volgende voor beeld ziet `get_file_to_path` u hoe u de inhoud van het bestand **MyFile** downloadt en opslaat in het bestand **out-Sunset. png** .
+In het volgende voor beeld ziet u hoe u `get_file_to_path` de inhoud van het bestand **MyFile** downloadt en opslaat in het bestand **out-Sunset. png** .
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
 ## <a name="delete-a-file"></a>Een bestand verwijderen
-Als u een bestand wilt verwijderen, roept `delete_file`u vervolgens aan.
+Als u een bestand wilt verwijderen, roept u vervolgens aan `delete_file` .
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')

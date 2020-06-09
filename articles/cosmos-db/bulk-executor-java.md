@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485368"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559271"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Gebruik de BulkExecutor-bibliotheek voor Java om bulkbewerkingen uit te voeren in Azure Cosmos DB
 
 In deze zelf studie vindt u instructies voor het gebruik van de uitvoerige Java-bibliotheek van de Azure Cosmos DB om Azure Cosmos DB documenten te importeren en bij te werken. Zie [overzichts artikel bulk](bulk-executor-overview.md) -uitvoerder bibliotheek voor meer informatie over de bibliotheek voor bulk doorvoer In deze zelf studie bouwt u een Java-toepassing die wille keurige documenten genereert en deze worden bulksgewijs geïmporteerd in een Azure Cosmos-container. Na het importeren worden enkele eigenschappen van een document bulksgewijs bijgewerkt. 
 
-Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteund door Azure Cosmos DB-API-accounts voor SQL-API'S en Gremlin. In dit artikel wordt beschreven hoe u een bulk-uitvoerder Java-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van een bulk-uitvoerder .NET-bibliotheek met Gremlin-API [bulk bewerkingen uitvoeren in azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). De beschrijving van de bulksgewijs-uitvoerder bibliotheek is beschikbaar voor toepassingen die gebruikmaken van de Java SDK 2. x-versie. De service is momenteel niet beschikbaar voor de versies van 3. x, 4. x of hoger.
+Op dit moment wordt de bibliotheek voor bulksgewijs uitvoering alleen ondersteund door Azure Cosmos DB-API-accounts voor SQL-API'S en Gremlin. In dit artikel wordt beschreven hoe u een bulk-uitvoerder Java-bibliotheek met SQL API-accounts gebruikt. Zie voor meer informatie over het gebruik van een bulk-uitvoerder .NET-bibliotheek met Gremlin-API [bulk bewerkingen uitvoeren in azure Cosmos DB Gremlin-API](bulk-executor-graph-dotnet.md). De hier beschreven bibliotheek voor bulk-uitvoerder is alleen beschikbaar voor de [Azure Cosmos DB Java Sync SDK v2](sql-api-sdk-java.md) en is de momenteel aanbevolen oplossing voor Java-bulk ondersteuning. De service is momenteel niet beschikbaar voor de versies van 3. x, 4. x of hoger.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -105,7 +105,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    De importal-methode accepteert de volgende para meters:
  
-   |**Bepaalde**  |**Beschrijving**  |
+   |**Parameter**  |**Beschrijving**  |
    |---------|---------|
    |isUpsert    |   Een markering om upsert van de documenten in te scha kelen. Als er al een document met de opgegeven ID bestaat, wordt het bijgewerkt.  |
    |disableAutomaticIdGeneration     |   Een markering om het automatisch genereren van ID uit te scha kelen. Deze waarde is standaard ingesteld op True.   |
@@ -113,7 +113,7 @@ De gekloonde opslag plaats bevat twee voor beelden van ' bulkimport ' en ' Bulku
 
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Bepaalde**  |**Beschrijving**  |
+   |**Parameter**  |**Beschrijving**  |
    |---------|---------|
    |int getNumberOfDocumentsImported ()  |   Het totale aantal documenten dat is geïmporteerd uit de documenten die zijn geleverd aan de API-aanroep voor bulk import.      |
    |dubbele getTotalRequestUnitsConsumed ()   |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk import.       |
@@ -171,13 +171,13 @@ U kunt bestaande documenten bijwerken met behulp van de BulkUpdateAsync-API. In 
 
    De methode updateAll accepteert de volgende para meters:
 
-   |**Bepaalde** |**Beschrijving** |
+   |**Parameter** |**Beschrijving** |
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  De maximale graad van gelijktijdigheid per partitie sleutel bereik. De standaard waarde is 20.  |
  
    **Definitie van antwoord object voor bulk import** Het resultaat van de API-aanroep voor Bulk Import bevat de volgende Get-methoden:
 
-   |**Bepaalde** |**Beschrijving**  |
+   |**Parameter** |**Beschrijving**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated ()  |   Het totale aantal documenten dat is bijgewerkt van de documenten die zijn geleverd aan de API-aanroep voor bulksgewijs bijwerken.      |
    |dubbele getTotalRequestUnitsConsumed () |  Het totale aantal aanvraag eenheden (RU) dat wordt gebruikt door de API-aanroep voor bulk updates.       |
