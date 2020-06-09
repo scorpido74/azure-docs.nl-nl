@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4472909b731af5067b4d38c2a04a2d10a4039242
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75461191"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559994"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Beleid voor het best Ellen van gebeurtenissen voor Azure Stream Analytics configureren
 
-In dit artikel wordt beschreven hoe u een late aankomst en beleid voor onbestelbare gebeurtenissen in Azure Stream Analytics kunt instellen en gebruiken. Deze beleids regels worden alleen toegepast wanneer u de [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) -component in de query gebruikt.
+In dit artikel wordt beschreven hoe u een late aankomst en beleid voor onbestelbare gebeurtenissen in Azure Stream Analytics kunt instellen en gebruiken. Deze beleids regels worden alleen toegepast wanneer u de component [time stamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) gebruikt in uw query en ze worden alleen toegepast op Cloud-invoer bronnen.
 
 ## <a name="event-time-and-arrival-time"></a>Tijd van gebeurtenis en aankomst tijd
 

@@ -3,15 +3,15 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8acf2f9087646a76617368a6b61eb5097796c72c
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 39e3f73741750f9245ec762f26d24e65eb107263
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331913"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560602"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
-In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
+In dit artikel wordt beschreven of een resource type [labels](tag-resources.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport. U kunt kosten op labels weer geven in de [Cost Management kosten analyse](../../cost-management-billing/costs/group-filter.md) en de gegevens voor de [factuur en dagelijks gebruik van Azure](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 Down load [tag-support. CSV](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)om dezelfde gegevens op te halen als een bestand met door komma's gescheiden waarden.
 
@@ -101,7 +101,7 @@ Ga naar de naam ruimte van een resource provider:
 > - [Micro soft. IoTCentral](#microsoftiotcentral)
 > - [Micro soft. IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Micro soft. Kubernetes](#microsoftkubernetes)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Micro soft. LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
@@ -825,7 +825,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | werkruimten | Ja | Nee |
+> | workspaces | Ja | Nee |
 > | werk ruimten/dbWorkspaces | Nee | Nee |
 > | werk ruimten/storageEncryption | Nee | Nee |
 > | werk ruimten/virtualNetworkPeerings | Nee | Nee |
@@ -977,7 +977,7 @@ Ga naar de naam ruimte van een resource provider:
 > | hostpools / sessionhosts | Nee | Nee |
 > | hostpools / sessionhosts / usersessions | Nee | Nee |
 > | hostpools / usersessions | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
@@ -1264,7 +1264,7 @@ Ga naar de naam ruimte van een resource provider:
 > | kluizen/eventGridFilters | Nee | Nee |
 > | kluizen/geheimen | Nee | Nee |
 
-## <a name="microsoftkubernetes"></a>Micro soft. Kubernetes
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
@@ -1320,7 +1320,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/reken bewerkingen | Nee | Nee |
 > | werk ruimten/eventGridFilters | Nee | Nee |
 
@@ -1604,7 +1604,7 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters | Ja | Ja |
 > | linkTargets | Nee | Nee |
 > | storageInsightConfigs | Nee | Nee |
-> | werkruimten | Ja | Ja |
+> | workspaces | Ja | Ja |
 > | werk ruimten/dataExports | Nee | Nee |
 > | werk ruimten/gegevens bronnen | Nee | Nee |
 > | werk ruimten/linkedServices | Nee | Nee |

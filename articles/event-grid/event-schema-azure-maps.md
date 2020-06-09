@@ -2,17 +2,17 @@
 title: Azure Maps als Event Grid bron
 description: Hierin worden de eigenschappen en schema's beschreven die voor Azure Maps gebeurtenissen worden gegeven met Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: f015bf682d7ce3475aba5baa73ab72b1426691fe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393406"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560674"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps als Event Grid bron
 
@@ -129,7 +129,7 @@ Het fout object wordt geretourneerd als er een fout optreedt in de Maps-API. Het
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| error | ErrorDetails |Dit object wordt geretourneerd als er een fout optreedt in de Maps-API  |
+| fout | ErrorDetails |Dit object wordt geretourneerd als er een fout optreedt in de Maps-API  |
 
 Het error Details-object wordt geretourneerd als er een fout optreedt in de Maps-API. De error Details of het object heeft de volgende eigenschappen:
 
@@ -141,13 +141,13 @@ Het error Details-object wordt geretourneerd als er een fout optreedt in de Maps
 
 De InnerError is een object dat informatie over de servicespecifieke bevat over de fout. Het object InnerError heeft de volgende eigenschappen: 
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | code | tekenreeks | Het fout bericht. |
 
 Het object geometrische elementen bevat een lijst met geometrie-Id's van de geofences die zijn verlopen ten opzichte van de gebruikers tijd in de aanvraag. Het object geometrische elementen heeft geometrie-items met de volgende eigenschappen: 
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 |:-------- |:---- |:----------- |
 | DeviceID | tekenreeks | ID van het apparaat. |
 | afstand | tekenreeks | <p>Afstand van de coördinaat tot de dichtstbijzijnde rand van de geofence. Positief betekent dat de coördinaat zich buiten de geofence bevindt. Als de coördinaat zich buiten de geofence bevindt, maar meer dan de waarde van searchBuffer verwijderd van de dichtstbijzijnde geofence-rand, is de waarde 999. Negatief betekent dat de coördinaat zich binnen de geofence bevindt. Als de coördinaat zich binnen de veelhoek bevindt, maar meer dan de waarde van searchBuffer verwijderd van de dichtstbijzijnde rand van de geoomheining, is de waarde-999. Een waarde van 999 betekent dat het vertrouwen van de coördinaten goed buiten de geofence ligt. Een waarde van-999 betekent dat het vertrouwen van de coördinaten goed is binnen de geofence.<p> |
@@ -158,7 +158,7 @@ Het object geometrische elementen bevat een lijst met geometrie-Id's van de geof
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | teken reeks [] | Lijsten van de geometrie-ID van de geofence die is verlopen ten opzichte van de gebruikers tijd in de aanvraag. |
 | geoelementen | geometrieën [] |Hiermee wordt een lijst weer gegeven met geometrieën die de coördinaten positie bevatten of de searchBuffer rond de positie overlappen. |

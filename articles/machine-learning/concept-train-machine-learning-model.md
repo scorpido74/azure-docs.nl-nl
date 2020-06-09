@@ -9,12 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: c63fb819f0db7a3a367f5351fd80eb14e5733d99
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683007"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559459"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellen trainen met Azure Machine Learning
 
@@ -114,7 +115,7 @@ Met de ontwerper kunt u modellen trainen met behulp van een slepen-en-neerzetten
 
 ## <a name="many-models-solution-accelerator"></a>Veel modellen oplossings versneller
 
-De [vele modellen oplossings versneller](https://aka.ms/many-models) (preview) is gebaseerd op Azure machine learning en stelt u in staat honderden of zelfs duizenden machine learning modellen te trainen, te bedienen en te beheren.
+De [Many Models Solution Accelerator](https://aka.ms/many-models) (preview) heeft Azure Machine Learning als basis en stelt u in staat om honderden, of zelfs duizenden machine Learning-modellen, te trainen, te gebruiken en te beheren.
 
 Het bouwen van een model __voor elk exemplaar of individu__ in de volgende scenario's kan bijvoorbeeld leiden tot betere resultaten:
 

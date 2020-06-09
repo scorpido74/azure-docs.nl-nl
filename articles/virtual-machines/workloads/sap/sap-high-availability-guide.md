@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594828"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557319"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver
 
@@ -238,7 +238,7 @@ U kunt kiezen uit vier quorum modi wanneer u Windows Server Failover Clustering 
 * **Knoop punt-en schijf meerderheid**. Elk knoop punt en een toegewezen schijf (een schijfwitness) in de cluster opslag kan stemmen wanneer deze beschikbaar zijn en in communicatie. Het cluster functioneert alleen met een meerderheid van stemmen, dat wil zeggen, met meer dan de helft van de stemmen. Deze modus is handig in een cluster omgeving met een even aantal knoop punten. Als de helft van de knoop punten en de schijf online zijn, behoudt het cluster de status in orde.
 * **Knoop punt-en bestands share meerderheid**. Elk knoop punt plus een aangewezen bestands share (een bestandssharewitness) die de beheerder maakt kan stemmen, ongeacht of de knoop punten en de bestands share beschikbaar en in communicatie zijn. Het cluster functioneert alleen met een meerderheid van stemmen, dat wil zeggen, met meer dan de helft van de stemmen. Deze modus is handig in een cluster omgeving met een even aantal knoop punten. Het is vergelijkbaar met de modus voor het knoop punt en de schijf meerderheid, maar maakt gebruik van een bestandssharewitness in plaats van een witness-schijf. Deze modus is eenvoudig te implementeren, maar als de bestands share zelf niet Maxi maal beschikbaar is, kan het een Single Point of Failure worden.
 * **Geen meerderheid: alleen schijf**. Het cluster heeft een quorum als één knoop punt beschikbaar is en in communicatie met een specifieke schijf in de cluster opslag. Alleen de knoop punten die zich ook in de communicatie met die schijf bevinden, kunnen lid worden van het cluster. U wordt aangeraden deze modus niet te gebruiken.
- 
+
 
 ## <a name="windows-server-failover-clustering-on-premises"></a><a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Windows Server failover clustering on-premises
 In afbeelding 1 ziet u een cluster met twee knoop punten. Als de netwerk verbinding tussen de knoop punten uitvalt en beide knoop punten weer actief blijven, bepaalt een quorum schijf of bestands share welk knoop punt de toepassingen en services van het cluster blijft leveren. Het knoop punt dat toegang heeft tot de quorum schijf of de bestands share is het knoop punt dat ervoor zorgt dat de services worden voortgezet.
@@ -377,7 +377,7 @@ _**Afbeelding 9:** SAP-architectuur sjabloon voor hoge Beschik baarheid 2, met e
 
 ### <a name="deployment-scenario-using-architectural-template-3"></a>Implementatie scenario met architectuur sjabloon 3
 
-In afbeelding 10 ziet u een voor beeld van een architectuur met een hoge Beschik baarheid van de SAP-Weaver in&gt; Azure &lt;voor&gt; **twee** SAP-systemen, met &lt;SID1 en SID2. Dit scenario wordt als volgt ingesteld:
+In afbeelding 10 ziet u een voor beeld van een architectuur met een hoge Beschik baarheid van de SAP-Weaver in azure voor **twee** SAP-systemen, met &lt; SID1 &gt; en &lt; SID2 &gt; . Dit scenario wordt als volgt ingesteld:
 
 - Eén toegewezen cluster wordt gebruikt voor **zowel** het SAP ASCS/SCS SID1-exemplaar *als* het SAP ASCS/SCS SID2-exemplaar (één cluster).
 - Er wordt één toegewezen cluster gebruikt voor DBMS-SID1 en een ander toegewijd cluster wordt gebruikt voor DBMS SID2 (twee clusters).
@@ -626,7 +626,7 @@ U kunt hand matig de andere twee namen van virtuele hosts maken, **PR1-ascs-SAP*
 ### <a name="set-static-ip-addresses-for-the-sap-virtual-machines"></a><a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Statische IP-adressen voor de virtuele machines van SAP instellen
 Nadat u de virtuele machines hebt geïmplementeerd voor gebruik in uw cluster, moet u vaste IP-adressen instellen voor alle virtuele machines. Doe dit in de Azure Virtual Network-configuratie en niet in het gast besturingssysteem.
 
-1. Selecteer in het Azure Portal**IP-adres**van de **resource groep** > **netwerk kaart** > **instellingen** > .
+1. Selecteer in het Azure Portal **Resource Group**  >  **Network Card**  >  **Settings**  >  **IP-adres**van de resource groep netwerk kaart instellingen.
 2. Selecteer op de Blade **IP-adressen** onder **toewijzing**de optie **statisch**. Geef in het vak **IP-adres** het IP-adres op dat u wilt gebruiken.
 
    > [!NOTE]
@@ -737,7 +737,7 @@ Stel het IP-adres van de load balancer **PR1-lb-DBMS** in op het IP-adres van de
 
 Als u andere nummers wilt gebruiken voor de SAP-instanties ASCS of SCS, moet u de namen en waarden van de poorten van de standaard waarden wijzigen.
 
-1. Selecteer ** <in de Azure Portal *sid* ->-lb-ascs Load Balancer** > **taakverdelings regels**.
+1. Selecteer in de Azure Portal ** < *sid* ->-lb-ascs Load Balancer**  >  **taakverdelings regels**.
 2. Wijzig deze waarden voor alle taakverdelings regels die horen bij het SAP ASCS-of SCS-exemplaar:
 
    * Naam
@@ -762,7 +762,7 @@ _**Afbeelding 17:** Een virtuele machine toevoegen aan een domein_
 
 ### <a name="add-registry-entries-on-both-cluster-nodes-of-the-sap-ascsscs-instance"></a><a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Voeg register vermeldingen toe aan cluster knooppunten van het SAP ASCS/SCS-exemplaar
 
-Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen gedurende een bepaalde periode inactief zijn (een time-out voor inactiviteit). SAP-werk processen in dialoogvenster exemplaren openen verbindingen met het SAP-bewerkings proces zodra de eerste aanvraag voor het plaatsen/verwijderen van de wachtrij moet worden verzonden. Deze verbindingen blijven doorgaans tot stand worden gebracht tot het werk proces of het proces voor het in de wachtrij plaatsen opnieuw wordt gestart. Als de verbinding echter gedurende een bepaalde periode inactief is, worden de verbindingen met de interne Azure-load balancer gesloten. Dit is geen probleem omdat het SAP werk proces de verbinding met het bewerkings proces moet herstellen als het niet meer bestaat. Deze activiteiten zijn gedocumenteerd in de ontwikkel aars van SAP-processen, maar ze maken een grote hoeveelheid extra inhoud in deze traceringen. Het is een goed idee om het TCP/IP- `KeepAliveTime` adres `KeepAliveInterval` en de cluster knooppunten te wijzigen. Combi neer deze wijzigingen in de TCP/IP-para meters met SAP-profiel parameters, verderop in het artikel beschreven.
+Azure Load Balancer heeft een interne load balancer die verbindingen sluit wanneer de verbindingen gedurende een bepaalde periode inactief zijn (een time-out voor inactiviteit). SAP-werk processen in dialoogvenster exemplaren openen verbindingen met het SAP-bewerkings proces zodra de eerste aanvraag voor het plaatsen/verwijderen van de wachtrij moet worden verzonden. Deze verbindingen blijven doorgaans tot stand worden gebracht tot het werk proces of het proces voor het in de wachtrij plaatsen opnieuw wordt gestart. Als de verbinding echter gedurende een bepaalde periode inactief is, worden de verbindingen met de interne Azure-load balancer gesloten. Dit is geen probleem omdat het SAP werk proces de verbinding met het bewerkings proces moet herstellen als het niet meer bestaat. Deze activiteiten zijn gedocumenteerd in de ontwikkel aars van SAP-processen, maar ze maken een grote hoeveelheid extra inhoud in deze traceringen. Het is een goed idee om het TCP/IP-adres `KeepAliveTime` en de `KeepAliveInterval` cluster knooppunten te wijzigen. Combi neer deze wijzigingen in de TCP/IP-para meters met SAP-profiel parameters, verderop in het artikel beschreven.
 
 Als u Register vermeldingen wilt toevoegen aan cluster knooppunten van het SAP ASCS/SCS-exemplaar, voegt u eerst deze Windows-register vermeldingen toe op beide Windows-cluster knooppunten voor SAP ASCS/SCS:
 
@@ -940,7 +940,7 @@ Het configureren van een cluster bestands share-Witness omvat de volgende taken:
 
    _**Afbeelding 36:** De bestandssharewitness selecteren_
 
-4. Voer het UNC-pad naar de bestands share in (in het \\voor beeld domcontr-0\FSW). Selecteer **volgende**om een lijst weer te geven met de wijzigingen die u kunt aanbrengen.
+4. Voer het UNC-pad naar de bestands share in (in het voor beeld \\ domcontr-0\FSW). Selecteer **volgende**om een lijst weer te geven met de wijzigingen die u kunt aanbrengen.
 
    ![Afbeelding 37: de locatie van de bestands share voor de witness-share definiëren][sap-ha-guide-figure-3026]
 
@@ -952,7 +952,7 @@ Het configureren van een cluster bestands share-Witness omvat de volgende taken:
 
    _**Afbeelding 38:** Bevestiging dat u het cluster opnieuw hebt geconfigureerd_
 
-Nadat het Windows-failovercluster is geïnstalleerd, moeten de wijzigingen worden aangebracht in een aantal drempel waarden om de detectie van failover aan de voor waarden in azure aan te passen. De para meters die moeten worden gewijzigd, worden beschreven https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ in deze blog:. Ervan uitgaande dat uw twee virtuele machines die de configuratie van het Windows-cluster voor ASCS/SCS maken, zich in hetzelfde SubNet bevinden, moeten de volgende para meters worden gewijzigd in deze waarden:
+Nadat het Windows-failovercluster is geïnstalleerd, moeten de wijzigingen worden aangebracht in een aantal drempel waarden om de detectie van failover aan de voor waarden in azure aan te passen. De para meters die moeten worden gewijzigd, worden beschreven in deze blog: https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/ . Ervan uitgaande dat uw twee virtuele machines die de configuratie van het Windows-cluster voor ASCS/SCS maken, zich in hetzelfde SubNet bevinden, moeten de volgende para meters worden gewijzigd in deze waarden:
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 
@@ -1132,7 +1132,7 @@ Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omv
 1. Maak een DNS-vermelding voor de naam van de virtuele host van het ASCS/SCS-exemplaar in Windows DNS-beheer.
 
    > [!IMPORTANT]
-   > Het IP-adres dat u toewijst aan de naam van de virtuele host van het ASCS/SCS-exemplaar moet hetzelfde zijn als het IP-adres dat u hebt toegewezen aan Azure Load Balancer (**<*sid*>-lb-ASCS**).  
+   > Het IP-adres dat u toewijst aan de naam van de virtuele host van het ASCS/SCS-exemplaar moet hetzelfde zijn als het IP-adres dat u hebt toegewezen aan Azure Load Balancer (** < *sid*>-lb-ASCS**).  
    >
    >
 
@@ -1142,7 +1142,7 @@ Het installeren van SAP met een ASCS/SCS-exemplaar met hoge Beschik baarheid omv
 
    _**Afbeelding 56:** Definieer de DNS-vermelding voor de virtuele naam en het TCP/IP-adres van het SAP ASCS/SCS-cluster_
 
-2. Selecteer **DNS-beheer** > **domein**om het IP-adres te definiëren dat aan de naam van de virtuele host is toegewezen.
+2. Selecteer **DNS-beheer**domein om het IP-adres te definiëren dat aan de naam van de virtuele host is toegewezen  >  **Domain**.
 
    ![Afbeelding 57: nieuwe virtuele naam en TCP/IP-adres voor SAP ASCS/SCS-cluster configuratie][sap-ha-guide-figure-3047]
 
@@ -1168,7 +1168,7 @@ De volgende taken worden niet beschreven in de standaard-SAP-installatie documen
 
 #### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen
 
-U moet een nieuwe profiel parameter toevoegen. De profiel parameter voor komt dat verbindingen tussen SAP-werk processen en de bewerkings server worden afgesloten wanneer ze te lang niet actief zijn. We hebben het probleem scenario vermeld in [Register vermeldingen toevoegen op cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-ha-guide-8.11]. In deze sectie hebben we ook twee wijzigingen in de para meters van een eenvoudige TCP/IP-verbinding geïntroduceerd. In een tweede stap moet u de server voor het plaatsen van een `keep_alive` signaal zo instellen dat de verbindingen de drempel waarde voor de inactieve periode van Azure Internal Load Balancer niet bereiken.
+U moet een nieuwe profiel parameter toevoegen. De profiel parameter voor komt dat verbindingen tussen SAP-werk processen en de bewerkings server worden afgesloten wanneer ze te lang niet actief zijn. We hebben het probleem scenario vermeld in [Register vermeldingen toevoegen op cluster knooppunten van het SAP ASCS/SCS-exemplaar][sap-ha-guide-8.11]. In deze sectie hebben we ook twee wijzigingen in de para meters van een eenvoudige TCP/IP-verbinding geïntroduceerd. In een tweede stap moet u de server voor het plaatsen van een `keep_alive` signaal zo instellen dat de verbindingen de drempel waarde voor de inactieve periode van Azure internal Load Balancer niet bereiken.
 
 Het SAP-Profiel van het ASCS/SCS-exemplaar wijzigen:
 
@@ -1292,7 +1292,7 @@ U moet een Windows Firewall-Test poort openen op beide cluster knooppunten. Gebr
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-De **ProbePort** is ingesteld op **62000**. U hebt nu toegang tot de bestands share ** \\\ascsha-clsap\sapmnt** vanaf andere hosts, zoals van **ascsha-dba's**.
+De **ProbePort** is ingesteld op **62000**. U hebt nu toegang tot de bestands share ** \\ \ascsha-clsap\sapmnt** vanaf andere hosts, zoals van **ascsha-dba's**.
 
 ### <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Het data base-exemplaar installeren
 
@@ -1316,7 +1316,7 @@ Installeer het exemplaar van de primaire toepassings server (PAS) <*SID*>-di-0 o
 
 ### <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>De SAP-aanvullende toepassings server installeren
 
-Installeer een extra SAP-toepassings server (AAS) op alle virtuele machines die u hebt aangewezen voor het hosten van een SAP-toepassings Server exemplaar. Bijvoorbeeld op <*sid*>-di-1 om *sid* te <>-di-&lt;n.&gt;
+Installeer een extra SAP-toepassings server (AAS) op alle virtuele machines die u hebt aangewezen voor het hosten van een SAP-toepassings Server exemplaar. Bijvoorbeeld op <*sid*>-di-1 om *sid* te <>-di- &lt; n &gt; .
 
 > [!NOTE]
 > Hiermee voltooit u de installatie van een SAP NetWeaver-systeem met een hoge Beschik baarheid. Ga vervolgens verder met het testen van de failover.

@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: aa8d7bf4b9c709c5fb7ff32e89f0af6c4e82b3e7
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450757"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487947"
 ---
-# <a name="init-image-transformation"></a>Trans formatie van init-afbeelding
+# <a name="init-image-transformation"></a>Afbeeldingstransformatie initiëren
 
 In dit artikel wordt beschreven hoe u de module voor het **transformeren van installatie kopieën** in azure machine learning Designer (preview) gebruikt om de afbeeldings transformatie te initialiseren om op te geven hoe u de afbeelding wilt transformeren.
 
@@ -51,7 +51,6 @@ In dit artikel wordt beschreven hoe u de module voor het **transformeren van ins
 
 14.  Geef voor **wille keurig perspectief**op of u de perspectief transformatie van de opgegeven pil-afbeelding wille keurig wilt uitvoeren met de kans 0,5.
 
-15.  Geef bij **wille keurig wissen**op of een rechthoekige regio in een afbeelding wille keurig moet worden geselecteerd en dat er pixels worden gewist met de kans van 0,5.
 
 16.  Maak verbinding met het [Toep assen van de installatie kopie transformatie](apply-image-transformation.md) module om de opgegeven trans formatie toe te passen op de gegevensset van de invoer installatie kopie.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2020
 ms.author: prtyag
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 16dc15b4369904643d0138a4b8e5b94c47868d31
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 6d723e95212e457a81eedf7726bf3c5bd2499643
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204934"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488882"
 ---
 # <a name="enable-kdump-service"></a>Kdump-service inschakelen
 
@@ -30,18 +30,34 @@ Dit document bevat informatie over het inschakelen van de kdump-service op Azure
 |-----------------------------|--------------|-----------------------|-------------|
 |   Type I                    |  SuSE        |   SLES 12 SP3         |  S224m      |
 |   Type I                    |  SuSE        |   SLES 12 SP4         |  S224m      |
+|   Type I                    |  SuSE        |   SLES 12 SP2         |  S72        |
 |   Type I                    |  SuSE        |   SLES 12 SP2         |  S72m       |
 |   Type I                    |  SuSE        |   SLES 12 SP3         |  S72m       |
 |   Type I                    |  SuSE        |   SLES 12 SP2         |  S96        |
 |   Type I                    |  SuSE        |   SLES 12 SP3         |  S96        |
+|   Type I                    |  SuSE        |   SLES 12 SP2         |  S192       |
+|   Type I                    |  SuSE        |   SLES 12 SP3         |  S192       |
+|   Type I                    |  SuSE        |   SLES 12 SP4         |  S192       |
+|   Type I                    |  SuSE        |   SLES 12 SP2         |  S192m      |
+|   Type I                    |  SuSE        |   SLES 12 SP3         |  S192m      |
+|   Type I                    |  SuSE        |   SLES 12 SP4         |  S192m      |
+|   Type I                    |  SuSE        |   SLES 12 SP2         |  S144       |
+|   Type I                    |  SuSE        |   SLES 12 SP3         |  S144       |
+|   Type I                    |  SuSE        |   SLES 12 SP2         |  S144m      |
+|   Type I                    |  SuSE        |   SLES 12 SP3         |  S144m      |
+|   Type II                   |  SuSE        |   SLES 12 SP2         |  S384       |
 |   Type II                   |  SuSE        |   SLES 12 SP3         |  S384       |
-|   Type II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Type II                   |  SuSE        |   SLES 12 SP4         |  S384       |
+|   Type II                   |  SuSE        |   SLES 12 SP2         |  S384xm     |
 |   Type II                   |  SuSE        |   SLES 12 SP3         |  S384xm     |
 |   Type II                   |  SuSE        |   SLES 12 SP4         |  S384xm     |
+|   Type II                   |  SuSE        |   SLES 12 SP2         |  S576m      |
+|   Type II                   |  SuSE        |   SLES 12 SP3         |  S576m      |
+|   Type II                   |  SuSE        |   SLES 12 SP4         |  S576m      |
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De kdump- `/var/crash` service maakt gebruik van Directory voor het schrijven van dumps, zorg ervoor dat de partitie overeenkomt met deze map voldoende ruimte heeft voor dumps.
+- De kdump-service maakt gebruik van `/var/crash` Directory voor het schrijven van dumps, zorg ervoor dat de partitie overeenkomt met deze map voldoende ruimte heeft voor dumps.
 
 ## <a name="setup-details"></a>Details van de installatie
 
@@ -68,7 +84,6 @@ Dit document bevat informatie over het inschakelen van de kdump-service op Azure
 - Kernel-crash activeren
 
     ```bash
-    echo 1 > /proc/sys/kernel/sysrq
     echo c > /proc/sysrq-trigger
     ```
 
@@ -86,6 +101,6 @@ Als het script mislukt met een fout of kdump niet is ingeschakeld, verhoogt u de
 
 * BESTURINGSSYSTEEM leverancier
 
-* Versie van het besturingssysteem
+* Besturingssysteemversie
 
 * Kernelversie

@@ -9,12 +9,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75360715"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556367"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
 
@@ -323,7 +324,7 @@ De voortgang wordt gedeeltelijk weergegeven in het uitvoervenster. Vervolgens zi
 De implementatie duurt enkele minuten. Daarna worden uw web- en/of werkrollen uitgevoerd in Azure.
 
 ### <a name="investigate-logs"></a>Logboeken onderzoeken
-Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **map c:\resources\directory\\{Role} \LogFiles** . **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
+Nadat de virtuele machine van de cloudservice wordt gestart en Python installeert, kunt u de logboeken controleren op foutberichten. Deze logboeken bevinden zich in de map **map c:\resources\directory \\ {Role} \LogFiles** . **PrepPython.err.txt** bevat ten minste één fout doordat het script probeert te detecteren of Python is geïnstalleerd. Mogelijk geeft **PipInstaller.err.txt** ook aan dat de versie van pip is verouderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de documentatie bij PTVS voor meer informatie over het werken met web- en werkrollen in Python-tools voor Visual Studio:

@@ -2,17 +2,17 @@
 title: Gebeurtenissen publiceren met gebeurtenis domeinen met Azure Event Grid
 description: Laat zien hoe u grote sets met onderwerpen beheert in Azure Event Grid en gebeurtenissen hierop publiceert met behulp van gebeurtenis domeinen.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72786544"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560993"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Onderwerpen beheren en gebeurtenissen publiceren met behulp van gebeurtenis domeinen
 
@@ -78,16 +78,16 @@ Het maken is voltooid met de volgende waarden:
 }
 ```
 
-Let op `endpoint` de `id` en de vereisten die nodig zijn voor het beheren van het domein en het publiceren van gebeurtenissen.
+Let `endpoint` op de en de vereisten die `id` nodig zijn voor het beheren van het domein en het publiceren van gebeurtenissen.
 
 ## <a name="manage-access-to-topics"></a>Toegang tot onderwerpen beheren
 
 Het beheren van toegang tot onderwerpen geschiedt via [roltoewijzing](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). De roltoewijzing maakt gebruik van op rollen gebaseerd toegangs beheer om bewerkingen op Azure-resources te beperken tot geautoriseerde gebruikers binnen een bepaald bereik.
 
-Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)`, waarmee u abonnementen kunt maken en verwijderen, en `EventGrid EventSubscription Reader (Preview)`waarmee u alleen gebeurtenis abonnementen kunt weer geven.
+Event Grid heeft twee ingebouwde rollen, die u kunt gebruiken om bepaalde gebruikers toegang te verlenen voor verschillende onderwerpen binnen een domein. Deze rollen zijn `EventGrid EventSubscription Contributor (Preview)` , waarmee u abonnementen kunt maken en verwijderen, en `EventGrid EventSubscription Reader (Preview)` waarmee u alleen gebeurtenis abonnementen kunt weer geven.
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azurecli)
-De volgende Azure CLI-opdracht `alice@contoso.com` beperkt het maken en verwijderen van gebeurtenis abonnementen alleen `demotopic1`in het onderwerp:
+De volgende Azure CLI-opdracht beperkt het `alice@contoso.com` maken en verwijderen van gebeurtenis abonnementen alleen in het onderwerp `demotopic1` :
 
 ```azurecli-interactive
 az role assignment create \
@@ -97,7 +97,7 @@ az role assignment create \
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
-De volgende Power shell- `alice@contoso.com` opdracht is beperkt tot het maken en verwijderen van `demotopic1`alleen gebeurtenis abonnementen in het onderwerp:
+De volgende Power shell-opdracht is beperkt `alice@contoso.com` tot het maken en verwijderen van alleen gebeurtenis abonnementen in het onderwerp `demotopic1` :
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -113,7 +113,7 @@ Zie voor meer informatie over het beheren van toegang voor Event Grid-bewerkinge
 
 De Event Grid-Service maakt en beheert automatisch het bijbehorende onderwerp in een domein op basis van de aanroep voor het maken van een gebeurtenis abonnement voor een domein onderwerp. Er is geen afzonderlijke stap voor het maken van een onderwerp in een domein. Op dezelfde manier wordt het onderwerp ook verwijderd wanneer het laatste gebeurtenis abonnement voor een onderwerp wordt verwijderd.
 
-Abonneren op een onderwerp in een domein is hetzelfde als abonneren op een andere Azure-resource. Geef voor de bron Resource-ID de gebeurtenis domein-ID op die wordt geretourneerd bij het maken van het domein. Als u het onderwerp wilt opgeven waarop u zich wilt abonneren `/topics/<my-topic>` , voegt u toe aan het einde van de bron resource-id. Als u een gebeurtenis abonnement voor een domein scope wilt maken dat alle gebeurtenissen in het domein ontvangt, geeft u de gebeurtenis domein-ID op zonder onderwerpen op te geven.
+Abonneren op een onderwerp in een domein is hetzelfde als abonneren op een andere Azure-resource. Geef voor de bron Resource-ID de gebeurtenis domein-ID op die wordt geretourneerd bij het maken van het domein. Als u het onderwerp wilt opgeven waarop u zich wilt abonneren, voegt u toe `/topics/<my-topic>` aan het einde van de bron resource-id. Als u een gebeurtenis abonnement voor een domein scope wilt maken dat alle gebeurtenissen in het domein ontvangt, geeft u de gebeurtenis domein-ID op zonder onderwerpen op te geven.
 
 Normaal gesp roken maakt de gebruiker aan wie u toegang hebt verleend in de voor gaande sectie het abonnement. U kunt dit artikel vereenvoudigen door het abonnement te maken. 
 
@@ -137,7 +137,7 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Als u een eind punt nodig hebt om uw gebeurtenissen te abonneren op, kunt u altijd een [vooraf gemaakte web-app](https://github.com/Azure-Samples/azure-event-grid-viewer) implementeren waarin de binnenkomende gebeurtenissen worden weer gegeven. U kunt uw evenementen verzenden naar uw test website op `https://<your-site-name>.azurewebsites.net/api/updates`.
+Als u een eind punt nodig hebt om uw gebeurtenissen te abonneren op, kunt u altijd een [vooraf gemaakte web-app](https://github.com/Azure-Samples/azure-event-grid-viewer) implementeren waarin de binnenkomende gebeurtenissen worden weer gegeven. U kunt uw evenementen verzenden naar uw test website op `https://<your-site-name>.azurewebsites.net/api/updates` .
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -146,7 +146,7 @@ Machtigingen die zijn ingesteld voor een onderwerp worden opgeslagen in Azure Ac
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Gebeurtenissen publiceren naar een Event Grid domein
 
-Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publiceren naar een aangepast onderwerp](./post-to-custom-topic.md). In plaats van naar het aangepaste onderwerp te publiceren, publiceert u echter alle gebeurtenissen naar het domein eindpunt. In de gegevens van de JSON-gebeurtenis geeft u het onderwerp op waarnaar u de gebeurtenissen wilt laten gaan. De volgende matrix met gebeurtenissen zou ertoe leiden dat de `"id": "1111"` gebeurtenis met `demotopic1` het onderwerp en `"id": "2222"` de gebeurtenis met zou worden `demotopic2`verzonden naar het onderwerp:
+Het publiceren van gebeurtenissen naar een domein is hetzelfde als het [publiceren naar een aangepast onderwerp](./post-to-custom-topic.md). In plaats van naar het aangepaste onderwerp te publiceren, publiceert u echter alle gebeurtenissen naar het domein eindpunt. In de gegevens van de JSON-gebeurtenis geeft u het onderwerp op waarnaar u de gebeurtenissen wilt laten gaan. De volgende matrix met gebeurtenissen zou ertoe leiden dat de gebeurtenis met het onderwerp en de `"id": "1111"` `demotopic1` gebeurtenis met `"id": "2222"` zou worden verzonden naar het onderwerp `demotopic2` :
 
 ```json
 [{

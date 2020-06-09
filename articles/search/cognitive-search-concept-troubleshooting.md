@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 25f0e0f15a299ef8b946b3d5fa0eb3eddc2272c2
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245484"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508617"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tips voor AI-verrijking in azure Cognitive Search
 
@@ -77,11 +77,15 @@ Voeg een ```enriched``` veld toe als onderdeel van de index definitie voor fout 
 }
 ```
 
+### <a name="debug-sessions"></a>Foutopsporingssessies
+
+Debug-sessies is een visuele editor die werkt met een bestaande vaardig heden in de Azure Portal. Binnen een foutopsporingssessie kunt u fouten identificeren en oplossen, wijzigingen valideren en wijzigingen naar een productie vaardighedenset pushen in de AI-verrijkings pijplijn. Dit is een preview-functie en de toegang wordt per case verleend. [Raadpleeg de documentatie](https://docs.microsoft.com/azure/search/cognitive-search-debug-session) voor meer informatie over het Toep assen voor toegang.
+
 ## <a name="tip-5-expected-content-fails-to-appear"></a>Tip 5: verwachte inhoud kan niet worden weer gegeven
 
 Ontbrekende inhoud kan het gevolg zijn van het weghalen van documenten tijdens het indexeren. Voor de lagen gratis en basis is de document grootte beperkt. Bestanden die de limiet overschrijden, worden verwijderd tijdens het indexeren. U kunt controleren op verwijderde documenten in de Azure Portal. Dubbel klik op de tegel Indexeer functies in het dash board van de zoek service. Bekijk de verhouding van geslaagde documenten die zijn geïndexeerd. Als dit niet 100% is, kunt u op de verhouding klikken om meer details te krijgen. 
 
-Als het probleem te maken heeft met de bestands grootte, ziet u mogelijk een fout zoals de volgende: \<' de BLOB-naam> ' heeft de \<grootte van de bestands grootte> bytes, wat de maximale grootte voor document extractie voor uw huidige servicelaag overschrijdt. ' Zie [service limieten](search-limits-quotas-capacity.md)voor meer informatie over de limieten voor de Indexeer functie.
+Als het probleem betrekking heeft op de bestands grootte, ziet u mogelijk een fout zoals: ' de BLOB \<file-name> ' heeft de grootte van de \<file-size> bytes, wat de maximale grootte voor het uitpakken van documenten voor uw huidige servicelaag overschrijdt. ' Zie [service limieten](search-limits-quotas-capacity.md)voor meer informatie over de limieten voor de Indexeer functie.
 
 Een tweede reden waarom inhoud niet wordt weer gegeven, kan betrekking hebben op fouten in de i/o-toewijzing. De naam van een uitvoer doel is bijvoorbeeld ' personen ', maar de naam van het index veld is kleine letters ' personen '. Het systeem kan 201 succes berichten retour neren voor de volledige pijp lijn, zodat u kunt zien dat indexeren is geslaagd, wanneer een veld leeg is. 
 
@@ -96,7 +100,7 @@ Voor geplande Indexeer functies worden de indexeringen hervat op schema in het l
 > [!NOTE]
 > Als een Indexeer functie is ingesteld op een bepaald schema, maar herhaaldelijk meerdere keren een fout optreedt in hetzelfde document, wordt de Indexeer functie gestart op een minder frequent interval (Maxi maal ten minste één keer per 24 uur) totdat de voortgang weer wordt uitgevoerd.  Als u van mening bent dat het probleem dat de Indexeer functie niet op een bepaald moment vastloopt, kunt u een on-demand uitvoering van de Indexeer functie uitvoeren. als dat wel het geval is, keert de Indexeer functie weer terug naar het ingestelde plannings interval.
 
-Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kiest u de optie voor het uitvoeren van de Indexeer functie beperkt`"maxRunTime": "PT1H"`de verwerking tot 1 uur (). Mogelijk wilt u het verwerkings venster uitbreiden naar iets langer.
+Voor indexering op basis van een portal (zoals beschreven in de Quick Start) kiest u de optie voor het uitvoeren van de Indexeer functie beperkt de verwerking tot 1 uur ( `"maxRunTime": "PT1H"` ). Mogelijk wilt u het verwerkings venster uitbreiden naar iets langer.
 
 ## <a name="tip-7-increase-indexing-throughput"></a>Tip 7: door Voer van indexering verg Roten
 

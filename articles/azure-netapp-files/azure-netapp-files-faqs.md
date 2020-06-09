@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: 8e9ee573ca908c41fe7c7887d0f306971369f83f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: d3f5095f8b8c140f704160feff9cd12ad9ca0974
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417494"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553761"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -177,7 +177,7 @@ Nee. Azure NetApp Files wordt niet ondersteund door Azure Storage Explorer.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Hoe kan ik bepalen of een map de limiet grootte nadert?
 
-U kunt de `stat` opdracht van een client gebruiken om te zien of een map de maximum grootte bereikt (320 MB).
+U kunt de `stat` opdracht van een client gebruiken om te zien of een directory de maximale grootte van Directory-meta gegevens (320 MB) nadert.
 
 Voor een map van 320 MB is het aantal blokken 655360, waarbij elke blok grootte 512 bytes is.  (Dat wil zeggen 320x1024x1024/512.)  
 

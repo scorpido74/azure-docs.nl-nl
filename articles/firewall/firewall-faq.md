@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649607"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509233"
 ---
 # <a name="azure-firewall-faq"></a>Veelgestelde vragen over Azure Firewall
 
@@ -125,11 +125,11 @@ Ja. Het configureren van de Udr's voor het omleiden van verkeer tussen subnetten
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Azure Firewall uitgaande SNAT tussen particuliere netwerken?
 
-Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall zodanig configureren dat uw open bare IP-adres bereik **niet** kan worden gesnat. Zie [Azure firewall SNAT-particuliere IP-adresbereiken](snat-private-range.md)voor meer informatie.
+Azure Firewall geen SNAT wanneer het doel-IP-adres een privé-IP-bereik is per [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Als uw organisatie gebruikmaakt van een openbaar IP-adres bereik voor particuliere netwerken, Azure Firewall SNATs het verkeer naar een van de privé-IP-adressen van de firewall in AzureFirewallSubnet. U kunt Azure Firewall configureren om SNAT **niet** in te schakelen voor uw openbare IP-adresbereik. Raadpleeg [Azure Firewall SNAT voor privé-IP-adresbereiken](snat-private-range.md) voor meer informatie.
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wordt geforceerde tunneling/keten van een virtueel netwerk apparaat ondersteund?
 
-Geforceerde tunneling wordt ondersteund bij het maken van een nieuwe firewall. U kunt een bestaande firewall niet configureren voor geforceerde tunneling. Zie [Azure firewall geforceerde tunneling](forced-tunneling.md)voor meer informatie. 
+Geforceerde tunneling wordt ondersteund bij het maken van een nieuwe firewall. U kunt een bestaande firewall niet configureren voor geforceerde tunneling. Zie [Geforceerde tunneling van Azure Firewall](forced-tunneling.md) voor meer informatie. 
 
 Azure Firewall moet een rechtstreekse Internet verbinding hebben. Als uw AzureFirewallSubnet een standaard route naar uw on-premises netwerk via BGP leert, moet u dit overschrijven met een 0.0.0.0/0-UDR met de **NextHopType** -waarde ingesteld als **Internet** om directe Internet connectiviteit te onderhouden.
 
@@ -211,3 +211,7 @@ Een TCP-ping maakt geen verbinding met de doel-FQDN. Dit gebeurt omdat de transp
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Gelden er limieten voor het aantal IP-adressen dat door IP-groepen wordt ondersteund?
 
 Ja. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) voor meer informatie
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Kan ik een IP-groep verplaatsen naar een andere resource groep?
+
+Nee. het verplaatsen van een IP-groep naar een andere resource groep wordt momenteel niet ondersteund.

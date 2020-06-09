@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e54c0c156fde8201e6c5803c2c94f67692a7fd7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484775"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508842"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Persoonlijke koppeling voor Azure Database for MariaDB
 
@@ -116,7 +116,7 @@ De volgende situaties en resultaten zijn mogelijk wanneer u een persoonlijke kop
 
 Als u volledig alleen wilt vertrouwen op privé-eind punten voor toegang tot hun Azure Database for MariaDB, kunt u het instellen van alle open bare eind punten ([firewall regels](concepts-firewall-rules.md) en [VNet-service-eind punten](concepts-data-access-security-vnet.md)) uitschakelen door de configuratie voor het **weigeren van open bare netwerk toegang** op de database server in te stellen. 
 
-Als deze instelling is ingesteld op *Ja*, zijn alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for MariaDB. Als deze instelling is ingesteld op *Nee*, kunnen clients verbinding maken met uw Azure database for MariaDB op basis van de instellingen van uw firewall of VNet-service-eind punten. Wanneer de waarde van de toegang tot het particuliere netwerk eenmaal is ingesteld, kunt u ook bestaande firewall-en VNet-service-eindpunt regels toevoegen en/of bijwerken.
+Als deze instelling is ingesteld op *Ja*, zijn alleen verbindingen via persoonlijke eind punten toegestaan voor uw Azure database for MariaDB. Als deze instelling is ingesteld op *Nee*, kunnen clients verbinding maken met uw Azure database for MariaDB op basis van de instellingen van uw firewall of VNet-service-eind punten. Nadat de waarde van de toegang tot het particuliere netwerk is ingesteld, kunnen klanten ook bestaande firewall regels en VNet-service-eindpunt regels toevoegen en/of bijwerken.
 
 > [!Note]
 > Deze functie is beschikbaar in alle Azure-regio's waar Azure Database for PostgreSQL-één server ondersteunt de prijs categorieën voor Algemeen en geoptimaliseerd voor geheugen.

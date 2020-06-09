@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 1dbd3765b691d1ba7b958d765a59f6451f380a2e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633888"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559079"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Invoer binding voor Azure Blob Storage voor Azure Functions
 
@@ -41,7 +42,7 @@ public static void Run(
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [C# script-code (. CSX)](functions-reference-csharp.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een tekst-blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op te geven in de `path` Eigenschappen:
 
 ```json
 {
@@ -84,13 +85,13 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [Java script-code](functions-reference-node.md) die gebruikmaakt van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op te geven in de `path` Eigenschappen:
 
 ```json
 {
@@ -139,7 +140,7 @@ module.exports = function(context) {
 
 In het volgende voor beeld ziet u BLOB-invoer-en uitvoer bindingen in een *Function. json* -bestand en [python-code](functions-reference-python.md) die gebruikmaken van de bindingen. De functie maakt een kopie van een blob. De functie wordt geactiveerd door een wachtrij bericht dat de naam bevat van de blob die moet worden gekopieerd. De nieuwe BLOB heet *{originalblobname}-Copy*.
 
-In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op `path` te geven in de eigenschappen:
+In het bestand *Function. json* wordt de `queueTrigger` eigenschap meta gegevens gebruikt om de naam van de BLOB op te geven in de `path` Eigenschappen:
 
 ```json
 {
@@ -195,7 +196,7 @@ Deze sectie bevat de volgende voor beelden:
 
 #### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP-trigger, naam van de BLOB opzoeken in de query reeks
 
- In het volgende voor beeld ziet u een Java- `HttpTrigger` functie die gebruikmaakt van de aantekening om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De `BlobInput` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie `byte[]`als een.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt `HttpTrigger` van de aantekening om een para meter te ontvangen met de naam van een bestand in een BLOB storage-container. De `BlobInput` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]` .
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -220,7 +221,7 @@ Deze sectie bevat de volgende voor beelden:
 
 #### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>Wachtrij trigger, naam van de BLOB ontvangen van wachtrij bericht
 
- In het volgende voor beeld ziet u een Java- `QueueTrigger` functie die gebruikmaakt van de aantekening om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De `BlobInput` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie `byte[]`als een.
+ In het volgende voor beeld ziet u een Java-functie die gebruikmaakt `QueueTrigger` van de aantekening om een bericht te ontvangen met daarin de naam van een bestand in een BLOB storage-container. De `BlobInput` aantekening leest vervolgens het bestand en geeft de inhoud door aan de functie als een `byte[]` .
 
 ```java
   @FunctionName("getBlobSize")
@@ -240,7 +241,7 @@ Deze sectie bevat de volgende voor beelden:
   }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `@BlobInput` annotatie voor para meters waarvan de waarde afkomstig is uit een blob.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Gebruik in de [runtime-bibliotheek van Java functions](/java/api/overview/azure/functions/runtime)de `@BlobInput` annotatie voor para meters waarvan de waarde afkomstig is uit een blob.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
 
 ---
 
@@ -277,13 +278,13 @@ public static void Run(
 }
 ```
 
-U kunt het `StorageAccount` -kenmerk gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie [trigger-Attributes en annotaties](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)(Engelstalig) voor meer informatie.
+U kunt het- `StorageAccount` kenmerk gebruiken om het opslag account op te geven op klasse, methode of parameter niveau. Zie [trigger-Attributes en annotaties](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)(Engelstalig) voor meer informatie.
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -293,21 +294,21 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met `@BlobInput` het kenmerk krijgt u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, `dataType` stelt `binary`u in op. Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
+`@BlobInput`Met het kenmerk krijgt u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary` . Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `Blob` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `Blob` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op `blob`. |
-|**direction** | N.v.t. | Moet worden ingesteld op `in`. Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
+|**type** | N.v.t. | Moet worden ingesteld op `blob` . |
+|**direction** | N.v.t. | Moet worden ingesteld op `in` . Uitzonde ringen worden vermeld in de sectie [gebruik](#usage) . |
 |**naam** | N.v.t. | De naam van de variabele die de BLOB in functie code vertegenwoordigt.|
 |**programmapad** |**BlobPath** | Het pad naar de blob. |
-|**verbinding** |**Combi**| De naam van een app-instelling die de [opslag Connection String](../storage/common/storage-configure-connection-string.md) bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met `AzureWebJobsStorage`de naam.<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**Combi** |**Verbinding**| De naam van een app-instelling die de [opslag Connection String](../storage/common/storage-configure-connection-string.md) bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met ' AzureWebJobs ', kunt u hier alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' mijn opslag ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyStorage '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard opslag Connection String in de app-instelling met de naam `AzureWebJobsStorage` .<br><br>Het connection string moet voor een opslag account voor algemeen gebruik zijn, niet een [opslag account met alleen BLOB](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 |N.v.t. | **Toegang** | Hiermee wordt aangegeven of u wilt lezen of schrijven. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -322,9 +323,9 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Toegang krijgen tot BLOB `context.bindings.<NAME>` - `<NAME>` gegevens die overeenkomen met de waarde die is gedefinieerd in *Function. json*.
+Toegang krijgen tot BLOB-gegevens die `context.bindings.<NAME>` `<NAME>` overeenkomen met de waarde die is gedefinieerd in *Function. json*.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -332,7 +333,7 @@ Toegang tot BLOB-gegevens via de para meter getypeerd als [InputStream](https://
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met `@BlobInput` het kenmerk krijgt u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, `dataType` stelt `binary`u in op. Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
+`@BlobInput`Met het kenmerk krijgt u toegang tot de BLOB waarmee de functie is geactiveerd. Als u een byte matrix met het-kenmerk gebruikt, stelt u `dataType` in op `binary` . Raadpleeg het [invoer voorbeeld](#example) voor meer informatie.
 
 ---
 

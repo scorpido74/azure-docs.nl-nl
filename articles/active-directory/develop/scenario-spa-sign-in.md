@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 7e809def048c95b6688a13ac99783615eb045d11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53a84bd970d564411ec9a56b54159e5a96717a6e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885186"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558753"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Toepassing met één pagina: aanmelden en afmelden
 
@@ -24,8 +24,8 @@ Meer informatie over het toevoegen van een aanmelding aan de code voor uw toepas
 
 Voordat u tokens kunt ophalen voor toegang tot Api's in uw toepassing, hebt u een geverifieerde gebruikers context nodig. U kunt op twee manieren gebruikers aan uw toepassing aanmelden in MSAL. js:
 
-* [Pop-upvenster](#sign-in-with-a-pop-up-window), met behulp `loginPopup` van de-methode
-* [Omleiden](#sign-in-with-redirect), met behulp van de `loginRedirect` -methode
+* [Pop-upvenster](#sign-in-with-a-pop-up-window), met behulp van de- `loginPopup` methode
+* [Omleiden](#sign-in-with-redirect), met behulp van de- `loginRedirect` methode
 
 U kunt eventueel ook de scopes door geven van de Api's waarvoor u de gebruiker om toestemming moet vragen op het moment dat u zich aanmeldt.
 
@@ -42,25 +42,37 @@ U kunt niet zowel de pop-up-als omleidings methoden in uw toepassing gebruiken. 
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Aanmelden met een pop-upvenster
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
 }
 
-userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
-    //login success
-    let idToken = loginResponse.idToken;
-}).catch(function (error) {
-    //login failure
-    console.log(error);
-});
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
+myMsal.loginPopup(loginRequest)
+    .then(function (loginResponse) {
+        //login success
+        let idToken = loginResponse.idToken;
+    }).catch(function (error) {
+        //login failure
+        console.log(error);
+    });
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-Met de MSAL-hoek wrapper kunt u specifieke routes in uw toepassing beveiligen `MsalGuard` door deze toe te voegen aan de definitie van de route. Deze Guard roept de-methode aan om u aan te melden wanneer de route wordt geopend.
+Met de MSAL-hoek wrapper kunt u specifieke routes in uw toepassing beveiligen door deze toe te voegen `MsalGuard` aan de definitie van de route. Deze Guard roept de-methode aan om u aan te melden wanneer de route wordt geopend.
 
 ```javascript
 // In app-routing.module.ts
@@ -91,7 +103,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-Schakel de `popUp` configuratie optie in voor een pop-upvenster. U kunt ook de volgende bereiken door geven die toestemming nodig heeft:
+Schakel de configuratie optie in voor een pop-upvenster `popUp` . U kunt ook de volgende bereiken door geven die toestemming nodig heeft:
 
 ```javascript
 // In app.module.ts
@@ -103,7 +115,7 @@ Schakel de `popUp` configuratie optie in voor een pop-upvenster. U kunt ook de v
             }
         }, {
             popUp: true,
-            consentScopes: ["https://graph.microsoft.com/User.ReadWrite"]
+            consentScopes: ["User.ReadWrite"]
         })
     ]
 })
@@ -112,22 +124,33 @@ Schakel de `popUp` configuratie optie in voor een pop-upvenster. U kunt ook de v
 
 ## <a name="sign-in-with-redirect"></a>Aanmelden met omleiding
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 De omleidings methoden retour neren geen belofte als gevolg van de verplaatsing van de hoofd toepassing. Als u de geretourneerde tokens wilt verwerken en openen, moet u geslaagde en fout-Call backs registreren voordat u de omleidings methoden aanroept.
 
 ```javascript
+
+const config = {
+    auth: {
+        clientId: 'your_app_id',
+        redirectUri: "your_app_redirect_uri", //defaults to application start page
+        postLogoutRedirectUri: "your_app_logout_redirect_uri"
+    }
+}
+
+const loginRequest = {
+    scopes: ["User.ReadWrite"]
+}
+
+const myMsal = new userAgentApplication(config);
+
 function authCallback(error, response) {
     //handle redirect response
 }
 
-userAgentApplication.handleRedirectCallback(authCallback);
+myMsal.handleRedirectCallback(authCallback);
 
-const loginRequest = {
-    scopes: ["https://graph.microsoft.com/User.ReadWrite"]
-}
-
-userAgentApplication.loginRedirect(loginRequest);
+myMsal.loginRedirect(loginRequest);
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)
@@ -141,11 +164,11 @@ De code is hetzelfde als hierboven beschreven in het gedeelte over aanmelden met
 
 ## <a name="sign-out"></a>Afmelden
 
-De MSAL-bibliotheek biedt `logout` een methode waarmee de cache in browser opslag wordt gewist en waarmee een afmeldings aanvraag wordt verzonden naar Azure Active Directory (Azure AD). Nadat u zich hebt afgemeld, wordt de tape wisselaar standaard weer doorgestuurd naar de start pagina van de toepassing.
+De MSAL-bibliotheek biedt een `logout` methode waarmee de cache in browser opslag wordt gewist en waarmee een afmeldings aanvraag wordt verzonden naar Azure Active Directory (Azure AD). Nadat u zich hebt afgemeld, wordt de tape wisselaar standaard weer doorgestuurd naar de start pagina van de toepassing.
 
-U kunt de URI configureren waarnaar de omleiding moet worden omgeleid na het instellen `postLogoutRedirectUri`van de registratie. Deze URI moet ook worden geregistreerd als de afmeldings-URI in de registratie van uw toepassing.
+U kunt de URI configureren waarnaar de omleiding moet worden omgeleid na het instellen van de registratie `postLogoutRedirectUri` . Deze URI moet ook worden geregistreerd als de afmeldings-URI in de registratie van uw toepassing.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -156,9 +179,9 @@ const config = {
     }
 }
 
-const userAgentApplication = new UserAgentApplication(config);
-userAgentApplication.logout();
+const myMsal = new UserAgentApplication(config);
 
+myMsal.logout();
 ```
 
 # <a name="angular"></a>[Angular](#tab/angular)

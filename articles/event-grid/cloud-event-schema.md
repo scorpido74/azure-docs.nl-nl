@@ -2,17 +2,17 @@
 title: Azure Event Grid gebruiken met gebeurtenissen in het CloudEvents-schema
 description: Hierin wordt beschreven hoe u het CloudEvents-schema gebruikt voor gebeurtenissen in Azure Event Grid. De service ondersteunt gebeurtenissen in de JSON-implementatie van Cloud gebeurtenissen.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394382"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560699"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0-schema met Event Grid
 
@@ -56,7 +56,7 @@ Hier volgt een voor beeld van een Azure Blob Storage-gebeurtenis in de indeling 
 
 [Hier](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)vindt u een gedetailleerde beschrijving van de beschik bare velden, hun typen en definities in CloudEvents v 1.0.
 
-De waarden van headers voor gebeurtenissen die in het CloudEvents-schema en het Event Grid schema worden bezorgd, `content-type`zijn hetzelfde, behalve voor. Voor het CloudEvents-schema is `"content-type":"application/cloudevents+json; charset=utf-8"`die header waarde. Voor Event Grid schema is `"content-type":"application/json; charset=utf-8"`die header waarde.
+De waarden van headers voor gebeurtenissen die in het CloudEvents-schema en het Event Grid schema worden bezorgd, zijn hetzelfde, behalve voor `content-type` . Voor het CloudEvents-schema is die header waarde `"content-type":"application/cloudevents+json; charset=utf-8"` . Voor Event Grid schema is die header waarde `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="event-grid-for-cloudevents"></a>Event Grid voor CloudEvents
 

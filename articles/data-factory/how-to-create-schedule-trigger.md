@@ -11,12 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641520"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560803"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Een trigger maken waarmee een pijp lijn volgens een planning wordt uitgevoerd
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,11 +67,11 @@ U kunt een **schema trigger** maken om een pijp lijn te plannen die regel matig 
 
     ![De knop Publiceren](./media/how-to-create-schedule-trigger/publish-2.png)
 
-1. Ga naar het tabblad **pijplijn uitvoeringen** aan de linkerkant en selecteer vervolgens **vernieuwen** om de lijst te vernieuwen. U ziet de pijplijn uitvoeringen die worden geactiveerd door de geplande trigger. Bekijk de waarden in de kolom **Geactiveerd door**. Als u de optie **nu activeren** gebruikt, ziet u de hand matige trigger wordt uitgevoerd in de lijst. 
+1. Ga naar het tabblad **pijplijn uitvoeringen** aan de linkerkant en selecteer vervolgens **vernieuwen** om de lijst te vernieuwen. U ziet de pijplijn uitvoeringen die worden geactiveerd door de geplande trigger. Let op de waarden in de kolom **geactiveerd door** . Als u de optie **nu activeren** gebruikt, ziet u de hand matige trigger wordt uitgevoerd in de lijst. 
 
     ![Geactiveerde uitvoeringen controleren](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. Schakel naar de weergave **Triggeruitvoeringen**. 
+1. Schakel over naar de weer gave **trigger uitvoeringen** . 
 
     ![Triggeruitvoeringen controleren](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -206,7 +207,7 @@ Als u een plannings trigger wilt maken en starten die elke 15 minuten wordt uitg
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-Als u de uitvoering van een trigger wilt bewaken, voegt u `Console.WriteLine` de volgende code toe vóór de laatste instructie in het voor beeld:
+Als u de uitvoering van een trigger wilt bewaken, voegt u de volgende code toe vóór de laatste `Console.WriteLine` instructie in het voor beeld:
 
 ```csharp
             // Check that the trigger runs every 15 minutes
@@ -371,7 +372,7 @@ In de volgende tabel worden de **schedule**-elementen in detail beschreven:
 | **wachten** | Minuten van het uur waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul>
 | **loopt** | Uren van de dag waarop de trigger wordt uitgevoerd. | <ul><li>Geheel getal</li><li>Matrix van gehele getallen</li></ul> |
 | **weekDays** | Dagen van de week waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een weekfrequentie. | <ul><li>Maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag, zondag</li><li>Array met dagwaarden (maximale grootte van de array is 7)</li><li>Dagwaarden zijn niet hoofdlettergevoelig</li></ul> |
-| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. | <ul><li>Matrix van **monthlyOccurrence** -objecten `{ "day": day,  "occurrence": occurrence }`:.</li><li>Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.</li><li>Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.</li></ul> |
+| **monthlyOccurrences** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. | <ul><li>Matrix van **monthlyOccurrence** -objecten: `{ "day": day,  "occurrence": occurrence }` .</li><li>Het attribuut **day** is de dag van de week waarop de trigger wordt uitgevoerd. Zo betekent de eigenschap **monthlyOccurrences** met een waarde **day** van `{Sunday}` dat er elke zondag van de maand een uitvoering is. Het attribuut **day** is verplicht.</li><li>Het attribuut **occurrence** slaat op het uitvoeren van de trigger op de opgegeven dag, **day**, tijdens de maand. Zo betekent de eigenschap **monthlyOccurrences** met de waarden **day** en **occurrence** van `{Sunday, -1}` dat er elke laatste zondag van de maand een uitvoering is. Het attribuut **occurrence** is optioneel.</li></ul> |
 | **monthDays** | Dagen van de maand waarop de trigger wordt uitgevoerd. De waarde kan alleen worden opgegeven met een maandfrequentie. | <ul><li>Alle waarden < = -1 en > =-31</li><li>Alle waarden > = -1 en < =-31</li><li>Array met waarden</li></ul> |
 
 

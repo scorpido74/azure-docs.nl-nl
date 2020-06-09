@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 67af2fec75c2a4ead10e59c651dac1542c095659
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 54b8161634d15853719d98a52d0d17e2e55a6bb3
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84430101"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559361"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Gegevens verplaatsen naar en tussen ML-pijplijnstappen (Python)
 
@@ -36,7 +36,7 @@ In dit artikel wordt uitgelegd hoe u:
 
 U hebt het volgende nodig:
 
-- Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 - De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of toegang tot [Azure machine learning Studio](https://ml.azure.com/).
 

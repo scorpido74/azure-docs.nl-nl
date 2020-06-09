@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265959"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559339"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sjablonen in azure API Management
 
@@ -32,7 +33,7 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
     -   [Ezelsoor](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
-    -   [Javascript](#JavaScript)  
+    -   [JavaScript](#JavaScript)  
     -   [Doel stelling C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
@@ -344,7 +345,7 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
   
 ### <a name="data-model"></a>Gegevensmodel  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|tekenreeks|De ID van de huidige API.|  
 |`apiName`|tekenreeks|De naam van de API.|  
@@ -654,7 +655,7 @@ Met de sjablonen in deze sectie kunt u de inhoud van de API-pagina's in de ontwi
   
 -   [Java](#Stub)  
   
--   [Javascript](#JavaScript)  
+-   [JavaScript](#JavaScript)  
   
 -   [Doel stelling C](#ObjectiveC)  
   

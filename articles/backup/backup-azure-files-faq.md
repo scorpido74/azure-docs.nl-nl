@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 70ed8594be09ab74478f4703aa632b9ce966b5ee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118011"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488695"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -56,7 +56,7 @@ U kunt op elk moment maximaal 200 momentopnamen voor een bestandsshare hebben. D
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Kan ik gegevens herstellen vanuit een verwijderde Azure-bestandsshare?
 
-Wanneer een Azure-bestands share wordt verwijderd, wordt de lijst met back-ups die worden verwijderd weer gegeven en wordt een bevestiging gevraagd. Op dit moment kan een verwijderde Azure-bestands share niet worden hersteld.
+Als de bestands share de modus voorlopig verwijderd heeft, moet u eerst de verwijdering van de bestands share ongedaan maken om de herstel bewerking uit te voeren. Met de bewerking voor het ongedaan maken van de verwijdering wordt de bestands share in de actieve staat gezet, waar u kunt herstellen naar elk gewenst moment. Ga naar [deze koppeling](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share) of Zie het script voor het [verwijderen van bestands shares](./scripts/backup-powershell-script-undelete-file-share.md)voor meer informatie over het ongedaan maken van de verwijdering van de bestands share. Als de bestands share permanent wordt verwijderd, kunt u de inhoud en moment opnamen niet meer herstellen.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Kan ik gegevens herstellen vanuit back-ups als ik ben gestopt met de beveiliging van een Azure-bestandsshare?
 

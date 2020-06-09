@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874071"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488746"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integreren met Azure Machine Learning (preview-versie)
 
@@ -24,7 +24,7 @@ Voer de volgende stappen uit voordat u een machine learning model toevoegt als e
 
 1. Gebruik Azure Machine Learning om [uw model te implementeren als een webservice](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where).
 
-2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md#example-entry-script) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice.
+2. Uw score script moet [voorbeeld invoer en uitvoer](../machine-learning/how-to-deploy-and-where.md#example-entry-script) bevatten die door Azure machine learning worden gebruikt om een schema specificatie te genereren. Stream Analytics gebruikt het schema om inzicht te krijgen in de functie handtekening van uw webservice. U kunt deze voor [beeld-Swagger-definitie](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) als referentie gebruiken om ervoor te zorgen dat u deze correct hebt ingesteld.
 
 3. Zorg ervoor dat uw webservice een JSON-geserialiseerde gegevens accepteert en retourneert.
 

@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418538"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558484"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Het proces van de team data Science in actie: Azure Synapse Analytics gebruiken
 In deze zelf studie leert u hoe u een machine learning model bouwt en implementeert met behulp van Azure Synapse Analytics voor een openbaar beschik bare gegevensset, de NYC-gegevensset voor de [taxi](https://www.andresmh.com/nyctaxitrips/) Het binaire classificatie model heeft voor speld, ongeacht of er een tip voor een reis wordt betaald.  Modellen bevatten een multi klasse-classificatie (ongeacht of er sprake is van een tip) en regressie (de verdeling van de fooien die worden betaald).
@@ -43,17 +43,17 @@ De NYC-gegevens over de taxi bestaan uit ongeveer 20 GB gecomprimeerde CSV-besta
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-De **unieke sleutel** die wordt gebruikt voor\_het koppelen van\_reis gegevens en reis tarief, bestaat uit de volgende drie velden:
+De **unieke sleutel** die wordt gebruikt voor het koppelen \_ van reis gegevens en reis \_ tarief, bestaat uit de volgende drie velden:
 
 * medallion,
-* Hack\_-licentie en
-* datum\_/tijd van ophalen.
+* Hack- \_ licentie en
+* \_datum/tijd van ophalen.
 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Drie typen Voorspellings taken adresseren
-We formuleren drie Voorspellings problemen op basis van *het\_fooien aantal* om drie soorten model taken te illustreren:
+We formuleren drie Voorspellings problemen op basis van het *fooien \_ aantal* om drie soorten model taken te illustreren:
 
-1. **Binaire classificatie**: als u wilt voors pellen of er voor een reis een tip is betaald, dat wil zeggen, is een *\_fooiwaarde* van meer dan $0 een positief voor beeld, terwijl een *\_tip-bedrag* van $0 een negatief voor beeld is.
-2. **Classificatie**met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien\_bedrag* in vijf bakken of klassen:
+1. **Binaire classificatie**: als u wilt voors pellen of er voor een reis een tip is betaald, dat wil zeggen, is een *fooiwaarde \_ * van meer dan $0 een positief voor beeld, terwijl een *Tip- \_ bedrag* van $0 een negatief voor beeld is.
+2. **Classificatie**met verschillende klassen: om het bereik van fooien voor de reis te voors pellen. We delen het *fooien \_ bedrag* in vijf bakken of klassen:
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -70,16 +70,16 @@ Voer de volgende stappen uit om uw Azure data Science-omgeving in te stellen.
 * Wanneer u uw eigen Azure Blob-opslag inricht, kiest u een geografische locatie voor uw Azure Blob-opslag in of zo dicht mogelijk bij **Zuid-Centraal VS**, waar de NYCe taxi gegevens worden opgeslagen. De gegevens worden gekopieerd met AzCopy uit de open bare Blob-opslag container naar een container in uw eigen opslag account. Hoe dichter uw Azure Blob-opslag is naar Zuid-Centraal, hoe sneller deze taak (stap 4) wordt voltooid.
 * Als u uw eigen Azure Storage-account wilt maken, volgt u de stappen die worden beschreven in [over Azure Storage-accounts](../../storage/common/storage-create-storage-account.md). Zorg ervoor dat u notities maakt voor de waarden van de volgende referenties voor het opslag account, omdat deze later in dit overzicht nodig zijn.
 
-  * **Naam van opslagaccount**
+  * **Naam van opslag account**
   * **Sleutel van het opslag account**
   * **Container naam** (die u wilt dat de gegevens worden opgeslagen in de Azure Blob-opslag)
 
 **Richt uw Azure Synapse Analytics-exemplaar in.**
 Volg de documentatie op [een Azure SQL data warehouse in het Azure portal maken en een query uitvoeren](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) om een Azure Synapse Analytics-exemplaar in te richten. Zorg ervoor dat u een notatie maakt voor de volgende Azure Synapse Analytics-referenties die in latere stappen zullen worden gebruikt.
 
-* **Server naam**: \<server naam>. database.Windows.net
+* **Server naam**: \<server Name> . database.Windows.net
 * **SQLDW-naam (data base)**
-* **Gebruikers**
+* **Gebruikersnaam**
 * **Wachtwoord**
 
 **Installeer Visual Studio en SQL Server Data Tools.** Zie aan de slag [met Visual Studio 2019 voor SQL Data Warehouse voor](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)instructies.
@@ -323,7 +323,7 @@ U moet bepalen wat er gebeurt als u dubbele bron-en doel bestanden hebt.
 
 ![Uitvoer van AzCopy][21]
 
-U kunt uw eigen gegevens gebruiken. Als uw gegevens zich op uw on-premises machine in uw echte app bevindt, kunt u nog steeds AzCopy gebruiken om on-premises gegevens te uploaden naar uw persoonlijke Azure Blob-opslag. U hoeft alleen de **bron** locatie te wijzigen, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`in de AzCopy-opdracht van het Power shell-script bestand naar de lokale map die uw gegevens bevat.
+U kunt uw eigen gegevens gebruiken. Als uw gegevens zich op uw on-premises machine in uw echte app bevindt, kunt u nog steeds AzCopy gebruiken om on-premises gegevens te uploaden naar uw persoonlijke Azure Blob-opslag. U hoeft alleen de **bron** locatie te wijzigen, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` in de AzCopy-opdracht van het Power shell-script bestand naar de lokale map die uw gegevens bevat.
 
 > [!TIP]
 > Als uw gegevens zich al in uw persoonlijke Azure Blob-opslag in uw echte App-toepassing bevindt, kunt u de AzCopy-stap in het Power shell-script overs Laan en de gegevens rechtstreeks uploaden naar Azure Azure Synapse Analytics. Hiervoor zijn aanvullende bewerkingen van het script vereist om het te passen op de indeling van uw gegevens.
@@ -350,7 +350,7 @@ Dit zijn de typen taken voor het verkennen van gegevens en het genereren van fun
 
 * Verken gegevens distributies van een paar velden in verschillende tijd Vensters.
 * Onderzoek de kwaliteit van de gegevens van de velden lengte graad en breedte graad.
-* Genereer binaire en classificatie labels voor multi klassen op basis van het **fooien\_bedrag**.
+* Genereer binaire en classificatie labels voor multi klassen op basis van het **fooien \_ bedrag**.
 * Maak functies en bereken/vergelijk de retour waarden voor de reis.
 * Voeg de twee tabellen samen en extraheer een wille keurig voor beeld die wordt gebruikt om modellen te maken.
 
@@ -366,7 +366,7 @@ Deze query's bieden een snelle controle van het aantal rijen en kolommen in de t
 **Uitvoer:** U moet 173.179.759 rijen en 14 kolommen ophalen.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Exploratie: reis distributie per Medallion
-In dit voor beeld wordt de Medallions (taxi-nummers) geïdentificeerd die meer dan 100 trips binnen een opgegeven periode hebben voltooid. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de **datum van ophalen\_**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
+In dit voor beeld wordt de Medallions (taxi-nummers) geïdentificeerd die meer dan 100 trips binnen een opgegeven periode hebben voltooid. De query zou profiteren van de gepartitioneerde tabel toegang, omdat deze wordt voor bereid op het partitie schema van de ** \_ datum van ophalen**. Bij het uitvoeren van query's op de volledige gegevensset wordt ook gebruikgemaakt van de gepartitioneerde tabel en/of index scan.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -540,7 +540,7 @@ Hier volgt een voor beeld van het aanroepen van deze functie voor het genereren 
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Gegevens voorbereiden voor het maken van modellen
-Met de volgende query wordt de **nyctaxi\_-reis** -en **nyctaxi\_-ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie **\_klasse**met meerdere klassen **gekanteld**, en wordt een voor beeld geëxtraheerd uit de volledig gekoppelde gegevensset. De steek proef wordt uitgevoerd door een subset van de trips op te halen op basis van de ophaal tijd.  Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio (klassiek)](https://studio.azureml.net) [import gegevens][importeren voor] directe gegevens opname van het SQL database-exemplaar in Azure worden geplakt. De query sluit records met onjuiste (0, 0) coördinaten toe.
+Met de volgende query wordt de **nyctaxi- \_ reis** -en **nyctaxi- \_ ritbedrag** tabellen toegevoegd, wordt een binaire classificatie label met een classificatie ** \_ klasse**met meerdere klassen **gekanteld**, en wordt een voor beeld geëxtraheerd uit de volledig gekoppelde gegevensset. De steek proef wordt uitgevoerd door een subset van de trips op te halen op basis van de ophaal tijd.  Deze query kan worden gekopieerd en vervolgens rechtstreeks in de module [Azure machine learning Studio (klassiek)](https://studio.azureml.net) [import gegevens][importeren voor] directe gegevens opname van het SQL database-exemplaar in Azure worden geplakt. De query sluit records met onjuiste (0, 0) coördinaten toe.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -675,7 +675,7 @@ De tijd voor het lezen van de voorbeeld tabel is 14,096495 seconden.
 Het aantal opgehaalde rijen en kolommen = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Beschrijvende statistieken
-Nu bent u klaar om de voorbeeld gegevens te verkennen. We beginnen met het bekijken van een aantal beschrijvende statistieken voor de **reis\_afstand** (of andere velden die u opgeeft).
+Nu bent u klaar om de voorbeeld gegevens te verkennen. We beginnen met het bekijken van een aantal beschrijvende statistieken voor de **reis \_ afstand** (of andere velden die u opgeeft).
 
     df1['trip_distance'].describe()
 
@@ -718,13 +718,13 @@ en
 ![Uitvoer van het regel teken][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Visualisatie: scatterplot-voor beelden
-Er wordt een spreidings diagram weer gegeven tussen de **duur van de reis\_tijd\_in\_seconden** en **reis\_afstand** om te zien of er een correlatie is
+Er wordt een spreidings diagram weer gegeven tussen de ** \_ duur van de reis tijd \_ in \_ seconden** en **reis \_ afstand** om te zien of er een correlatie is
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Scatterplot uitvoer van relatie tussen tijd en afstand][6]
 
-Op dezelfde manier kunnen we de relatie **tussen\_tarief code** en **reis\_afstand**controleren.
+Op dezelfde manier kunnen we de relatie tussen **tarief \_ code** en **reis \_ afstand**controleren.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
@@ -844,7 +844,7 @@ Een voor beeld van een experiment met binaire classificatie voor het lezen van g
 ![Azure ML-trein][10]
 
 > [!IMPORTANT]
-> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u het **label en** sluit u de velden **Tip\_-klasse**, **\_foois hoeveelheid**en **\_totaal bedrag**uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
+> In de voor beelden van model gegevens extractie en bemonsterings query's in de vorige secties **zijn alle labels voor de drie model oefeningen opgenomen in de query**. Een belang rijke (vereiste) stap in elk van de modellerings oefeningen is het **uitsluiten** van de overbodige labels voor de andere twee problemen en eventuele andere **doel lekkages**. Als u bijvoorbeeld een binaire classificatie gebruikt, gebruikt u het **label en** sluit u de velden **Tip- \_ klasse**, **foois \_ hoeveelheid**en **totaal \_ bedrag**uit. Deze laatste zijn doelwit lekkages, omdat ze de fooi hebben betaald.
 >
 > Als u overbodige kolommen of doel lekkages wilt uitsluiten, kunt u de module [kolommen selecteren in gegevensset][select-columns] of de [meta gegevens bewerken][edit-metadata]gebruiken. Zie [kolommen selecteren in gegevensset][select-columns] en referentie pagina's voor [meta gegevens bewerken][edit-metadata] voor meer informatie.
 >

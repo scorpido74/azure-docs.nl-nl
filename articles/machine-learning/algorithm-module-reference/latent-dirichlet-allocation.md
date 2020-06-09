@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/11/2020
-ms.openlocfilehash: 1384491489c175ffc338f80a99aa8d5050f835d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: a75bf458a1c6735de42349de5d5cb6845e9ae464
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109223"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487964"
 ---
 # <a name="latent-dirichlet-allocation"></a>Latente Dirichlet-toewijzing
 
@@ -68,9 +68,9 @@ Deze module vereist een gegevensset die een kolom met tekst bevat, hetzij RAW of
 
 6. Selecteer de optie **normaliseren** om uitvoer waarden te converteren naar kansen. In plaats van de getransformeerde waarden als gehele getallen weer te geven, worden waarden in de uitvoer-en functie gegevensset als volgt getransformeerd:
 
-    + De waarden in de gegevensset worden weer gegeven als een kans `P(topic|document)`waarbij.
+    + De waarden in de gegevensset worden weer gegeven als een kans waarbij `P(topic|document)` .
 
-    + Waarden in de matrix van het functie-onderwerp worden weer gegeven als `P(word|topic)`een kans waar.
+    + Waarden in de matrix van het functie-onderwerp worden weer gegeven als een kans waar `P(word|topic)` .
 
     > [!NOTE] 
     > In Azure Machine Learning Designer (preview), omdat de bibliotheek die we hebben gebaseerd, scikit-Learn niet langer ondersteuning bieden voor niet-genormaliseerde *doc_topic_distr* uitvoer van versie 0,19, kan in deze module **normaliseren** para meter alleen worden toegepast op de matrix uitvoer van de **functie** , **getransformeerde gegevensset** -uitvoer wordt altijd genormaliseerd.
@@ -83,15 +83,15 @@ Deze module vereist een gegevensset die een kolom met tekst bevat, hetzij RAW of
 
     + **Alfa-para meter**. Geef een eerdere kans op voor de sparsity van het onderwerp gewicht per document.  Komt overeen met de `doc_topic_prior` para meter sklearn.
 
-    + Het **geschatte aantal documenten**. Typ een getal dat de beste schatting aangeeft van het aantal documenten (rijen) dat wordt verwerkt. Hiermee kan de module een hash-tabel met voldoende grootte toewijzen.  Komt overeen met `total_samples` de para meter in scikit-learn.
+    + Het **geschatte aantal documenten**. Typ een getal dat de beste schatting aangeeft van het aantal documenten (rijen) dat wordt verwerkt. Hiermee kan de module een hash-tabel met voldoende grootte toewijzen.  Komt overeen met de `total_samples` para meter in scikit-learn.
 
-    + **De grootte van de batch**. Typ een getal dat aangeeft hoeveel rijen moeten worden ingevoegd in elke batch tekst die wordt verzonden naar het LDA-model. Komt overeen met `batch_size` de para meter in scikit-learn.
+    + **De grootte van de batch**. Typ een getal dat aangeeft hoeveel rijen moeten worden ingevoegd in elke batch tekst die wordt verzonden naar het LDA-model. Komt overeen met de `batch_size` para meter in scikit-learn.
 
-    + De **begin waarde van de iteratie die wordt gebruikt voor het plannen van de trainings update**. Geef de begin waarde op die de downweights-Learning frequentie voor vroege iteraties in online training aangeeft. Komt overeen met `learning_offset` de para meter in scikit-learn.
+    + De **begin waarde van de iteratie die wordt gebruikt voor het plannen van de trainings update**. Geef de begin waarde op die de downweights-Learning frequentie voor vroege iteraties in online training aangeeft. Komt overeen met de `learning_offset` para meter in scikit-learn.
 
-    + **Kracht die tijdens de updates op de herhaling wordt toegepast**. Geef het energie niveau op dat wordt toegepast op het aantal iteraties voor het beheren van het leer tempo tijdens online-updates. Komt overeen met `learning_decay` de para meter in scikit-learn.
+    + **Kracht die tijdens de updates op de herhaling wordt toegepast**. Geef het energie niveau op dat wordt toegepast op het aantal iteraties voor het beheren van het leer tempo tijdens online-updates. Komt overeen met de `learning_decay` para meter in scikit-learn.
 
-    + **Aantal Passes over de gegevens**. Geef het maximum aantal keren op dat het algoritme voor de gegevens wordt gerecycled. Komt overeen met `max_iter` de para meter in scikit-learn.
+    + **Aantal Passes over de gegevens**. Geef het maximum aantal keren op dat het algoritme voor de gegevens wordt gerecycled. Komt overeen met de `max_iter` para meter in scikit-learn.
 
 8. Selecteer de optie, maak een **woorden lijst van ngrams** of maak een **woorden lijst van ngrams vóór LDA**. Als u de n-gram lijst in een eerste keer wilt maken, moet u voordat u tekst classificeert.
 
@@ -116,7 +116,8 @@ De module heeft twee uitvoer:
 
 Deze module voert ook de *LDA-trans formatie* uit waarmee Lda op de gegevensset wordt toegepast.
 
-U kunt deze trans formatie opslaan door gegevensset te registreren onder uitvoer, tabblad **Logboeken** in het rechterdeel venster van de module en deze opnieuw te gebruiken voor andere gegevens sets. Dit kan handig zijn als u hebt getraind op een grote verzameling en u de coëfficiënten of categorieën opnieuw wilt gebruiken.
+U kunt deze trans formatie opslaan door deze opnieuw te gebruiken voor andere gegevens sets. Dit kan handig zijn als u hebt getraind op een grote verzameling en u de coëfficiënten of categorieën opnieuw wilt gebruiken.
+Als u deze trans formatie opnieuw wilt gebruiken, klikt u op het pictogram gegevensset registreren in het rechter paneel van de module LDA om deze te laten deel **uitmaken** van een module onder **gegevens sets** in de lijst module. Vervolgens kunt u deze module verbinden om de transformatie module toe te [passen](apply-transformation.md) om deze trans formatie opnieuw te gebruiken.
 
 ### <a name="refining-an-lda-model-or-results"></a>Een LDA-model of-resultaten verfijnen
 
@@ -182,14 +183,14 @@ Nadat de termen van de term zijn berekend, worden afzonderlijke tekst rijen verg
 |Doel kolom (men)|Kolom selectie||Vereist|StringFeature|Naam of index van doel kolom|  
 |Aantal te model lerene onderwerpen|Geheel getal|[1; 1000]|Vereist|5|De document distributie met N onderwerpen model leren|  
 |N-gram|Geheel getal|[1; 10]|Vereist|2|Volg orde van N-gram gegenereerd tijdens hashing|  
-|Normaliseren|Booleaans|Waar of onwaar|Vereist|waar|Normaliseer uitvoer naar kansen.  De getransformeerde gegevensset is P (onderwerp&#124;document) en de matrix van het functie onderwerp is P (woord&#124;onderwerp)|  
+|Normaliseren|Booleaans|Waar of onwaar|Vereist|true|Normaliseer uitvoer naar kansen.  De getransformeerde gegevensset is P (onderwerp&#124;document) en de matrix van het functie onderwerp is P (woord&#124;onderwerp)|  
 |Alle opties weer geven|Booleaans|Waar of onwaar|Vereist|False|Geeft aanvullende para meters die specifiek zijn voor scikit-Learn Online LDA|  
-|Rho-para meter|Drijvend|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Voorafgaande distributie over onderwerps woord|  
-|Alpha-para meter|Drijvend|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Document onderwerp voorafgaande distributie|  
+|Rho-para meter|Float|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Voorafgaande distributie over onderwerps woord|  
+|Alpha-para meter|Float|[0.00001; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,01|Document onderwerp voorafgaande distributie|  
 |Geschat aantal documenten|Geheel getal|[1; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|1000|Het geschatte aantal documenten (komt overeen met total_samples para meter)|  
 |Grootte van de batch|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|32|Grootte van de batch|  
 |Aanvankelijke waarde van herhaling die wordt gebruikt voor de update planning voor het trainings tempo|Geheel getal|[0; int. MaxValue|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0|Aanvankelijke waarde voor downweights Learning rate voor vroege iteraties. Komt overeen met de para meter learning_offset|  
-|Kracht toegepast op de herhaling tijdens updates|Drijvend|[0,0; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0.5|Kracht toegepast op het aantal iteraties om het leer tempo te beheren. Komt overeen met de para meter learning_decay |  
+|Kracht toegepast op de herhaling tijdens updates|Float|[0,0; 1.0]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|0,5|Kracht toegepast op het aantal iteraties om het leer tempo te beheren. Komt overeen met de para meter learning_decay |  
 |Aantal opleidings herhalingen|Geheel getal|[1; 1024]|Van toepassing wanneer het selectie vakje **alle opties weer geven** is geselecteerd|25|Aantal opleidings herhalingen|  
 |Woorden lijst van ngrams bouwen|Booleaans|Waar of onwaar|Van toepassing wanneer het selectie vakje **alle opties weer geven** *is uitgeschakeld*|True|Bouwt een woorden lijst van ngrams vóór de Computing LDA. Nuttig voor model inspectie en-interpretatie|  
 |Maximale grootte van ngram-woorden lijst|Geheel getal|[1; int. MaxValue|Van toepassing wanneer de keuze **lijst Dictionary van Ngrams** waar is|20.000|Maximale grootte van de ngrams-woorden lijst. Als het aantal tokens in de invoer groter is dan deze grootte, kunnen er conflicten optreden|  

@@ -1,14 +1,14 @@
 ---
 title: Machtigingen voor opslag plaatsen in Azure Container Registry
-description: Een token maken met machtigingen die zijn gericht op specifieke opslag plaatsen in een REGI ster om installatie kopieën op te halen of te pushen of om andere acties uit te voeren
+description: Een token maken met machtigingen die zijn gericht op specifieke opslag plaatsen in een Premium-REGI ster om installatie kopieën op te halen of te pushen of om andere acties uit te voeren
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8534c62db862f5c929d0145948fc4049c036d412
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142189"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509403"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Een token met machtigingen voor een opslag plaats maken
 
@@ -20,7 +20,7 @@ Scenario's voor het maken van een token zijn onder andere:
 * Een externe organisatie voorzien van machtigingen voor een specifieke opslag plaats 
 * Beperk de toegang tot opslag plaatsen tot verschillende gebruikers groepen in uw organisatie. U kunt bijvoorbeeld schrijf-en lees toegang bieden aan ontwikkel aars die installatie kopieën bouwen die gericht zijn op specifieke opslag plaatsen en lees toegang tot teams die vanuit deze opslag plaatsen worden geïmplementeerd.
 
-Deze functie is beschikbaar in **Premium** container registers. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten van het REGI ster.
+Deze functie is beschikbaar in de service tier van het **Premium** -container register. Zie [Azure container Registry service lagen](container-registry-skus.md)voor meer informatie over de service lagen en limieten van het REGI ster.
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
@@ -61,7 +61,7 @@ In de volgende afbeelding ziet u de relatie tussen tokens en Scope Maps.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure cli** -Azure cli-opdrachten voor het maken en beheren van tokens zijn beschikbaar in azure CLI versie 2.0.76 of hoger. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli).
+* **Azure cli** -Azure cli-opdrachten voor het maken en beheren van tokens zijn beschikbaar in azure CLI versie 2.0.76 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 * **Docker** : u hebt een lokale docker-installatie nodig om te verifiëren met het REGI ster om installatie kopieën op te halen of te pushen. Docker biedt installatie-instructies voor de systemen [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) en [Linux](https://docs.docker.com/engine/installation/#supported-platforms).
 * **Container register** : als u er nog geen hebt, maakt u een Premium container registry in uw Azure-abonnement of werkt u een bestaand REGI ster bij. Gebruik bijvoorbeeld de [Azure Portal](container-registry-get-started-portal.md) of de [Azure cli](container-registry-get-started-azure-cli.md). 
 

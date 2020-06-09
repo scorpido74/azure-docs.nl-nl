@@ -2,17 +2,17 @@
 title: Azure Service Bus als Event Grid bron
 description: Hierin worden de eigenschappen beschreven die worden gegeven voor Service Bus gebeurtenissen met Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393247"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559482"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus als Event Grid bron
 
@@ -79,7 +79,7 @@ Het schema voor een wachtrij gebeurtenis met een onbestelbare berichten is verge
 
 Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid biedt deze waarde. |
 | Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
@@ -92,7 +92,7 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 
 Het gegevens object heeft de volgende eigenschappen:
 
-| Eigenschap | Type | Beschrijving |
+| Eigenschap | Type | Description |
 | -------- | ---- | ----------- |
 | namespaceName | tekenreeks | De naam ruimte van de Service Bus waarin de resource zich bevindt. |
 | requestUri | tekenreeks | De URI naar de specifieke wachtrij of het abonnement waarmee de gebeurtenis wordt verzonden. |

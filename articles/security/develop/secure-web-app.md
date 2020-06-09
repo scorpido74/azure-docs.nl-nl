@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.custom: has-adal-ref
-ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 857303009b31945b0fe4f5555cb7e545cd16719d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612772"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558878"
 ---
 # <a name="develop-a-secure-web-app"></a>Een beveiligde web-app ontwikkelen
 
@@ -180,8 +180,8 @@ De browser wordt geopend, Meld u aan met uw referenties. Nadat u zich hebt aange
 De implementatie scripts `deploy-powershell.ps1` en `deploy-bash.sh` bevatten code waarmee de volledige toepassing wordt geïmplementeerd.
 De oplossing implementeren:
 
-1. Als u het `deploy-powershell.ps1` bestand in Power shell uitvoert, typt `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` u de naam van de regio en de resource groep vervangen door de juiste Azure-regio's en een naam voor de resource groep
-2. Als u zich in Linux bevindt `deploy-bash.sh` `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, voert u het bestand uit door te typen.`chmod +x deploy-bash.sh`
+1. Als u het bestand in Power shell uitvoert, `deploy-powershell.ps1` typt u `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` de naam van de regio en de resource groep vervangen door de juiste Azure-regio's en een naam voor de resource groep
+2. Als u zich in Linux bevindt, voert u het bestand uit door te typen `deploy-bash.sh` `/deploy-bash.sh REGION RESOURCE_GROUP_NAME` .`chmod +x deploy-bash.sh`
 
 In de volgende voor beelden worden de fragmenten van de belangrijkste onderdelen gedemonstreerd. U kunt de voor beelden afzonderlijk of met de rest van de onderdelen implementeren door de Deploy-bestanden uit te voeren.
 
@@ -309,9 +309,9 @@ De onderstaande code is afhankelijk van de PGUSERNAME-en PGPASSWORD-geheimen die
    ```
 
 Nadat u de Data Base hebt geïmplementeerd, moet u de referenties en connection string opslaan in Azure Key Vault.
-In de map scripts bevindt zich `functions.sql` een bestand met de PL/pgSQL-code die opgeslagen functies maakt wanneer u deze uitvoert. Het uitvoeren van dit bestand parameterizes de invoer om SQL-injectie te beperken.
+In de map scripts bevindt zich een `functions.sql` bestand met de PL/pgSQL-code die opgeslagen functies maakt wanneer u deze uitvoert. Het uitvoeren van dit bestand parameterizes de invoer om SQL-injectie te beperken.
 
-PostgreSQL is gebundeld met een `psql` hulp programma dat wordt gebruikt om verbinding te maken met de data base. Als u `functions.sql`wilt uitvoeren, moet u verbinding maken met het Azure database for PostgreSQL exemplaar van uw lokale computer en het van daaruit uitvoeren. De installatie van het hulp programma psql is opgenomen in de standaard installatie voor PostgreSQL op elk besturings systeem.
+PostgreSQL is gebundeld met een hulp programma `psql` dat wordt gebruikt om verbinding te maken met de data base. Als u wilt uitvoeren `functions.sql` , moet u verbinding maken met het Azure database for PostgreSQL exemplaar van uw lokale computer en het van daaruit uitvoeren. De installatie van het hulp programma psql is opgenomen in de standaard installatie voor PostgreSQL op elk besturings systeem.
 Zie de [psql-documentatie](https://www.postgresql.org/docs/9.3/app-psql.html)voor meer informatie.
 
 Azure Cloud Shell ook het `psql` hulp programma bevat. U kunt Cloud Shell rechtstreeks vanuit de Azure Portal gebruiken door het pictogram Cloud Shell te selecteren.
@@ -437,7 +437,7 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-De Dockerfile hierboven wordt gebruikt voor het bouwen van de container die wordt gehost op de `mcr.microsoft.com/samples/basic-linux-app`Azure container Registry op.
+De Dockerfile hierboven wordt gebruikt voor het bouwen van de container die wordt gehost op de Azure Container Registry op `mcr.microsoft.com/samples/basic-linux-app` .
 
 De onderstaande code:
 
@@ -696,7 +696,7 @@ App Service-exemplaren kunnen worden geïntegreerd met virtuele netwerken. Met d
 
 1. Selecteer op de volgende pagina **VNET toevoegen (preview)**.
 
-1. Selecteer in het volgende menu het virtuele netwerk dat u hebt gemaakt in de implementatie die `hello-vnet`begint met. U kunt een nieuw subnet maken of een bestaande selecteren.
+1. Selecteer in het volgende menu het virtuele netwerk dat u hebt gemaakt in de implementatie die begint met `hello-vnet` . U kunt een nieuw subnet maken of een bestaande selecteren.
    In dit geval maakt u een nieuw subnet. Stel het **adres bereik** in op **10.0.3.0/24** en noem het subnet **app-subnet**.
 
    ![Configuratie van virtuele netwerk App Service](./media/secure-web-app/app-vnet-config.png)
@@ -723,7 +723,7 @@ Nu u de integratie van het virtuele netwerk hebt ingeschakeld, kunt u netwerk be
 
    *De NSG configureren*
 
-4. Voeg in de uitgaande regels voor de gateway NSG een regel toe waarmee uitgaande verbindingen met het App Service-exemplaar worden toegestaan door een regel te maken die de `AppService`servicetag van de service bedoelt:
+4. Voeg in de uitgaande regels voor de gateway NSG een regel toe waarmee uitgaande verbindingen met het App Service-exemplaar worden toegestaan door een regel te maken die de servicetag van de service bedoelt `AppService` :
 
    ![Uitgaande regels voor de NSG toevoegen](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -754,7 +754,7 @@ Nu u de integratie van het virtuele netwerk hebt ingeschakeld, kunt u netwerk be
 Als u de kwets baarheid wilt beperken, wijzigt u de App Service netwerk instellingen zodanig dat alleen de toepassings gateway toegang heeft tot de toepassing.
 Hiertoe gaat u naar het tabblad App Service netwerk, selecteert u het tabblad **IP-beperkingen** en maakt u een regel voor toestaan waarmee alleen het IP-adres van de toepassings gateway rechtstreeks toegang heeft tot de service.
 
-U kunt het IP-adres van de gateway ophalen van de pagina overzicht. Geef op het tabblad **IP-adres CIDR** het IP-adres op in de `<GATEWAY_IP_ADDRESS>/32`volgende indeling:.
+U kunt het IP-adres van de gateway ophalen van de pagina overzicht. Geef op het tabblad **IP-adres CIDR** het IP-adres op in de volgende indeling: `<GATEWAY_IP_ADDRESS>/32` .
 
 ![Alleen de gateway toestaan](./media/secure-web-app/app-allow-gw-only.png)
 
@@ -783,16 +783,16 @@ Configureer in de Azure Portal de app zodanig dat de vereiste referenties worden
    *Azure AD-App-registratie configureren*
 
 4. Er wordt een scherm weer gegeven waarin de geregistreerde app en de bijbehorende informatie worden weer gegeven. U moet deze gegevens toevoegen aan het Azure Key Vault-exemplaar.
-   1. Kopieer de client-ID en sla deze op in Key Vault als `CLIENTID`.
-   2. Kopieer de omleidings-URI die u in de vorige stap hebt ingevoerd `REDIRECTURI`en sla deze op als.
-   3. Kopieer de naam van de standaardmap van Azure AD, met de indelings *naam*. microsoftonline.com, en sla deze op `TENANT`in Key Vault als.
-   4. Ga naar het tabblad **certificaten & geheimen** van de Azure AD-app die u eerder hebt gemaakt en selecteer **Nieuw client geheim**, zoals wordt weer gegeven in de volgende scherm afbeelding. Stel een verval datum in en kopieer de gegenereerde waarde en sla deze op Key Vault als `CLIENTSECRET`.
+   1. Kopieer de client-ID en sla deze op in Key Vault als `CLIENTID` .
+   2. Kopieer de omleidings-URI die u in de vorige stap hebt ingevoerd en sla deze op als `REDIRECTURI` .
+   3. Kopieer de naam van de standaardmap van Azure AD, met de indelings *naam*. microsoftonline.com, en sla deze op in Key Vault als `TENANT` .
+   4. Ga naar het tabblad **certificaten & geheimen** van de Azure AD-app die u eerder hebt gemaakt en selecteer **Nieuw client geheim**, zoals wordt weer gegeven in de volgende scherm afbeelding. Stel een verval datum in en kopieer de gegenereerde waarde en sla deze op Key Vault als `CLIENTSECRET` .
 
       ![Azure AD-autorisatie geheim](./media/secure-web-app/ad-auth-secrets.png)
 
       *Azure AD-autorisatie geheim*
 
-   5. Genereer een veilige wille keurige geheime sleutel met behulp van een opdracht regel/online hulp programma. Sla het op in Key Vault `FLASKSECRETKEY`als. Het toepassings raamwerk gebruikt deze sleutel om sessies te maken.
+   5. Genereer een veilige wille keurige geheime sleutel met behulp van een opdracht regel/online hulp programma. Sla het op in Key Vault als `FLASKSECRETKEY` . Het toepassings raamwerk gebruikt deze sleutel om sessies te maken.
         Zie [fles-sessies](http://flask.pocoo.org/docs/1.0/quickstart/#sessions)voor meer informatie over het genereren van een geheime sleutel.
 
 5. Nadat u de aanmelding hebt geconfigureerd, moet u gebruikers toevoegen aan de Azure AD-koppeling zodat ze zich kunnen aanmelden bij de bron. Als u deze wilt toevoegen, gaat u naar het tabblad **gebruikers** in azure AD, selecteert u **alle gebruikers**en selecteert u vervolgens **nieuwe gebruiker** of **nieuwe gast gebruiker**. Voor het testen kunt u een gast gebruiker toevoegen en de gebruiker uitnodigen voor de Directory. U kunt ook een nieuwe gebruiker toevoegen als het domein waarop de app wordt uitgevoerd, is gevalideerd. In dit voor beeld kunnen alleen gebruikers die zijn geregistreerd in de Azure AD-Tenant, worden geregistreerd voor toegang. Raadpleeg de documentatie voor meer informatie over de toegang tot multi tenants.
@@ -804,7 +804,7 @@ Configureer in de Azure Portal de app zodanig dat de vereiste referenties worden
 Nadat u de Azure AD-configuratie en geheimen aan Key Vault hebt toegevoegd, kunnen gebruikers worden geverifieerd in de app met behulp van Azure OAuth-verificatie.
 In de app-code wordt dit verwerkt door de Azure Active Directory Authentication Library (ADAL).
 
-Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen en de data base, kan de toepassings service worden bereikt via de toepassings-URL van\/de gateway (https:/GATEWAY_HASH. cloudapp. net), die u vanaf de Blade kunt ophalen.
+Nadat de geheimen zich in Key Vault bevinden en de toepassing toegang heeft tot de geheimen en de data base, kan de toepassings service worden bereikt via de toepassings-URL van de gateway (https: \/ /GATEWAY_HASH. cloudapp. net), die u vanaf de Blade kunt ophalen.
 
 Als u zich bij Azure AD aanmeldt, krijgt u een fout bericht ' gebruiker is niet geregistreerd in de directory waarin u zich probeert aan te melden ', moet u de gebruiker toevoegen. Als u de gebruiker wilt toevoegen, gaat u naar het tabblad **gebruikers** van Azure AD en voegt u de gebruiker hand matig toe door hun gegevens in te voeren of door de gebruiker uit te nodigen door hun e-mail adres als gast gebruiker in te voeren op Azure AD in de Blade **gasten uitnodigen** .
 
@@ -882,7 +882,7 @@ Als u Azure Sentinel wilt instellen, moet u eerst een Log Analytics-werk ruimte 
 
 Deze werk ruimte maken:
 
-1. Zoek in het zoekvak in het Azure Portal naar **log Analytics**. Selecteer **log Analytics-werk ruimten**.
+1. Zoek in het zoekvak in het Azure Portal naar **log Analytics**. Selecteer **Log Analytics-werkruimten**.
 
    ![Zoeken naar Log Analytics-werk ruimten](./media/secure-web-app/sentinel-log-analytics.png)
 
@@ -991,6 +991,6 @@ Beveiliging is een soort gelijke toepassing die afhankelijkheden controleert. U 
 
 De volgende artikelen kunnen u helpen bij het ontwerpen, ontwikkelen en implementeren van beveiligde toepassingen.
 
-- [Ontwerpen](secure-design.md)
+- [Ontwerp](secure-design.md)
 - [Ontwikkelen](secure-develop.md)
 - [Implementeren](secure-deploy.md)

@@ -3,12 +3,12 @@ title: De Microsoft Azure Recovery Services-agent (MARS) installeren
 description: Meer informatie over het installeren van de Microsoft Azure Recovery Services-agent (MARS) voor het maken van back-ups van Windows-machines.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422922"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508757"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installeer de Azure Backup MARS-agent
 
@@ -66,7 +66,7 @@ Het type opslag replicatie wijzigen:
 Als uw computer beperkte internet toegang heeft, moet u ervoor zorgen dat de firewall instellingen op de computer of de proxy de volgende Url's en IP-adressen toestaan:
 
 * URL's
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
@@ -100,7 +100,7 @@ Zie [ExpressRoute Routing requirements](https://docs.microsoft.com/azure/express
 
 Alle voor gaande Url's en IP-adressen gebruiken het HTTPS-protocol op poort 443.
 
-### <a name="private-endpoints"></a>Privé-eind punten
+### <a name="private-endpoints"></a>Privé-eindpunten
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -134,13 +134,13 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
 ## <a name="install-and-register-the-agent"></a>De agent installeren en registreren
 
 1. Voer het bestand *MARSagentinstaller. exe* uit op de computers waarvan u een back-up wilt maken.
-1. In de installatie wizard van de MARS-agent selecteert u **installatie-instellingen**. Hier kunt u kiezen waar u de agent wilt installeren en kiest u een locatie voor de cache. Selecteer **volgende**.
+1. In de installatie wizard van de MARS-agent selecteert u **installatie-instellingen**. Hier kunt u kiezen waar u de agent wilt installeren en kiest u een locatie voor de cache. Selecteer vervolgens **Volgende**.
    * Azure Backup gebruikt de cache om moment opnamen van gegevens op te slaan voordat ze naar Azure worden verzonden.
    * De cache locatie moet vrije ruimte hebben die gelijk is aan ten minste 5 procent van de grootte van de gegevens waarvan u een back-up maakt.
 
     ![Installatie-instellingen kiezen in de installatie wizard van de MARS-agent](./media/backup-configure-vault/mars1.png)
 
-1. Geef voor **proxy configuratie**op hoe de agent die wordt uitgevoerd op de Windows-computer, verbinding maakt met internet. Selecteer **volgende**.
+1. Geef voor **proxy configuratie**op hoe de agent die wordt uitgevoerd op de Windows-computer, verbinding maakt met internet. Selecteer vervolgens **Volgende**.
 
    * Als u een aangepaste proxy gebruikt, geeft u de benodigde proxy-instellingen en referenties op.
    * Houd er rekening mee dat de agent toegang moet hebben tot [specifieke url's](#before-you-start).
@@ -149,7 +149,7 @@ Als u de agent al op alle computers hebt geïnstalleerd, moet u ervoor zorgen da
 
 1. Controleer de vereisten voor de **installatie**en selecteer **installeren**.
 1. Nadat de agent is geïnstalleerd, selecteert u **door gaan naar registratie**.
-1. In de >  **wizard Server registreren****kluis-id**, bladert u naar en selecteert u het referentie bestand dat u hebt gedownload. Selecteer **volgende**.
+1. In de **wizard Server registreren**  >  **kluis-id**, bladert u naar en selecteert u het referentie bestand dat u hebt gedownload. Selecteer vervolgens **Volgende**.
 
     ![Kluis referenties toevoegen met behulp van de wizard Server registreren](./media/backup-configure-vault/register1.png)
 

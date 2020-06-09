@@ -1,14 +1,14 @@
 ---
 title: Persoonlijke koppeling instellen
-description: Een persoonlijk eind punt instellen in een container register en toegang inschakelen via een persoonlijke koppeling in een lokaal virtueel netwerk
+description: Stel een persoonlijk eind punt in op een container register en Schakel toegang in via een persoonlijke koppeling in een lokaal virtueel netwerk. Toegang voor persoonlijke koppelingen is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850042"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509335"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Een persoonlijke Azure-koppeling configureren voor een Azure container Registry 
 
@@ -24,7 +24,7 @@ Deze functie is beschikbaar in de service tier van het **Premium** -container re
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, wordt Azure CLI-versie 2.6.0 of hoger aanbevolen. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli]. Of voer uit in [Azure Cloud shell](../cloud-shell/quickstart.md).
+* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, wordt Azure CLI-versie 2.6.0 of hoger aanbevolen. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren. Of voer uit in [Azure Cloud shell](../cloud-shell/quickstart.md).
 * Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en [importeert](container-registry-import-images.md) u een voorbeeld installatie kopie, bijvoorbeeld `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken.
 * Als u toegang tot het REGI ster wilt configureren met behulp van een persoonlijke koppeling in een ander Azure-abonnement, moet u de resource provider registreren voor Azure Container Registry in dat abonnement. Bijvoorbeeld:
 
@@ -214,7 +214,7 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
     | ------- | ----- |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
-    | Name | Voer een unieke naam in. |
+    | Naam | Voer een unieke naam in. |
     | Subbron |**REGI ster** selecteren|
     | **Netwerken** | |
     | Virtueel netwerk| Selecteer het virtuele netwerk waarin uw virtuele machine is geïmplementeerd, zoals *myDockerVMVNET*. |
@@ -236,11 +236,11 @@ Stel een persoonlijke koppeling in wanneer u een REGI ster maakt of Voeg een per
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | **Project Details** | |
+    | **Projectgegevens** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Voer de naam van een bestaande groep in of maak een nieuwe.|
     | **Exemplaar Details** |  |
-    | Name | Voer een naam in. |
+    | Naam | Voer een naam in. |
     |Regio|Selecteer een regio.|
     |||
 5. Selecteer **volgende: resource**.

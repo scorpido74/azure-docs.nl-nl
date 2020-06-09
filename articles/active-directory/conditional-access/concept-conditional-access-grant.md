@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583208"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558728"
 ---
 # <a name="conditional-access-grant"></a>Voorwaardelijke toegang: verlenen
 
@@ -28,7 +28,7 @@ Binnen een beleid voor voorwaardelijke toegang kan een beheerder gebruik maken v
 
 De blok kering houdt rekening met eventuele toewijzingen en voor komt toegang op basis van de configuratie van het beleid voor voorwaardelijke toegang.
 
-Blok is een krachtig besturings element dat moet worden beheerd met de juiste kennis. Het is aan te raden dat beheerders de [modus alleen rapport](concept-conditional-access-report-only.md) gebruiken om te testen voordat ze worden ingeschakeld.
+Blok is een krachtig besturings element dat moet worden beheerd met de juiste kennis. Beleids regels met blok-instructies kunnen onbedoelde neven effecten hebben. Goed te testen en valideren zijn essentieel voordat u op schaal schakelt. Beheerders moeten hulpprogram ma's zoals de [modus alleen rapport-alleen voorwaardelijke toegang](concept-conditional-access-report-only.md) en [het What if-hulp programma in voorwaardelijke toegang](what-if-tool.md) gebruiken bij het aanbrengen van wijzigingen.
 
 ## <a name="grant-access"></a>Toegang verlenen
 
@@ -37,7 +37,7 @@ Beheerders kunnen ervoor kiezen om een of meer besturings elementen af te dwinge
 - [Multi-factor Authentication (Azure Multi-Factor Authentication) vereisen](../authentication/concept-mfa-howitworks.md)
 - [Vereisen dat het apparaat wordt gemarkeerd als compatibel (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Hybride Azure AD-aangesloten apparaat vereisen](../devices/concept-azure-ad-join-hybrid.md)
-- [Goedgekeurde client-app vereisen](app-based-conditional-access.md)
+- [Goedgekeurde client-apps vereisen](app-based-conditional-access.md)
 - [Beleid voor app-beveiliging vereisen](app-protection-based-conditional-access.md)
 
 Wanneer beheerders ervoor kiezen deze opties te combi neren, kunnen ze de volgende methoden kiezen:
@@ -47,11 +47,11 @@ Wanneer beheerders ervoor kiezen deze opties te combi neren, kunnen ze de volgen
 
 Voor voorwaardelijke toegang is standaard alle geselecteerde besturings elementen vereist.
 
-### <a name="require-multi-factor-authentication"></a>Multi-factor Authentication vereisen
+### <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication vereisen
 
 Als u dit selectie vakje inschakelt, moeten gebruikers Azure Multi-Factor Authentication uitvoeren. Meer informatie over het implementeren van Azure Multi-Factor Authentication vindt u in het artikel [planning van een Azure-implementatie op basis van de cloud multi-factor Authentication](../authentication/howto-mfa-getstarted.md).
 
-### <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat wordt gemarkeerd als compatibel
+### <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat moet worden gemarkeerd als compatibel
 
 Organisaties die Microsoft Intune hebben geïmplementeerd, kunnen de informatie gebruiken die wordt geretourneerd door hun apparaten om apparaten te identificeren die aan specifieke nalevings vereisten voldoen. Deze informatie over beleids naleving wordt vanuit intune doorgestuurd naar Azure AD, waarbij voorwaardelijke toegang kan besluiten om toegang tot resources toe te kennen of te blok keren. Zie voor meer informatie over nalevings beleid het artikel [regels instellen op apparaten om toegang tot resources in uw organisatie in te stellen met intune](/intune/protect/device-compliance-get-started).
 
@@ -63,7 +63,9 @@ Apparaten moeten worden geregistreerd in azure AD voordat ze kunnen worden gemar
 
 Organisaties kunnen ervoor kiezen om de apparaat-id te gebruiken als onderdeel van het beleid voor voorwaardelijke toegang. Organisaties kunnen vereisen dat apparaten hybride Azure AD zijn toegevoegd met dit selectie vakje. Zie het artikel [Wat is een apparaat-id?](../devices/overview.md)voor meer informatie over apparaat-id's.
 
-### <a name="require-approved-client-app"></a>Goedgekeurde client-app vereisen
+Wanneer u de [code van de OAuth-stroom](../develop/v2-oauth2-device-code.md)van het apparaat gebruikt, wordt het beleid voor het toekennen van beheerde apparaten of de status van een apparaat niet ondersteund. Dit komt doordat het apparaat dat de verificatie uitvoert, de apparaats status niet kan verstrekken aan het apparaat dat een code levert en de apparaatstatus in het token is vergrendeld op het apparaat dat de verificatie uitvoert. Gebruik in plaats daarvan het besturings element multi-factor Authentication-toekenning vereisen.
+
+### <a name="require-approved-client-app"></a>Goedgekeurde client-apps vereisen
 
 Organisaties kunnen vereisen dat een toegangs poging tot de geselecteerde Cloud-apps moet worden uitgevoerd vanuit een goedgekeurde client-app. Deze goedgekeurde client-apps ondersteunen het [intune-beveiligings beleid voor apps](/intune/app-protection-policy) onafhankelijk van een MDM-oplossing (Mobile-Device Management).
 
@@ -86,7 +88,7 @@ Deze instelling is van toepassing op de volgende iOS-en Android-apps:
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Micro soft planner
+- Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
 - Microsoft PowerPoint
@@ -122,7 +124,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 - Microsoft Cortana
 - Microsoft OneDrive
 - Microsoft Outlook
-- Micro soft planner
+- Microsoft Planner
 
 **Opmerkingen**
 

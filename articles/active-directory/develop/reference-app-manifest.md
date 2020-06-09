@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2368cdd3fbd2699cb3579d922d81ad66efdc91
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737330"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558597"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory app-manifest
 
@@ -33,7 +33,7 @@ U kunt de kenmerken van een app configureren via de Azure Portal of programmatis
 Het toepassings manifest configureren:
 
 1. Ga naar de [Azure Portal](https://portal.azure.com). Zoek en selecteer de **Azure Active Directory** service.
-1. Selecteer **app-registraties**.
+1. Selecteer **App-registraties**.
 1. Selecteer de app die u wilt configureren.
 1. Selecteer op de pagina **Overzicht** van de app de sectie **Manifest**. Een manifest editor op het web wordt geopend, zodat u het manifest in de portal kunt bewerken. Desgewenst kunt u **downloaden** selecteren om het manifest lokaal te bewerken en vervolgens **uploaden** gebruiken om het opnieuw toe te passen op uw toepassing.
 
@@ -153,7 +153,7 @@ Voorbeeld:
     "appRoles": [
         {
            "allowedMemberTypes": [
-               "User"
+               "User"
            ],
            "description": "Read-only access to device information",
            "displayName": "Read Only",
@@ -349,7 +349,7 @@ Voorbeeld:
 
 | Sleutel | Waardetype |
 | :--- | :--- |
-| name | Tekenreeks |
+| naam | Tekenreeks |
 
 De weergave naam voor de app.
 

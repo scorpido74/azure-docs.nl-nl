@@ -63,7 +63,7 @@ An HDInsight cluster wordt geleverd met het hulp programma DistCp, dat kan worde
 
 Omdat de laagste granulatie van DistCp één bestand is, is het instellen van het maximum aantal gelijktijdige kopieën de belangrijkste para meter om deze te optimaliseren ten opzichte van Data Lake Storage. Het aantal gelijktijdige kopieën is gelijk aan de para meter aantal mappers (**m**) op de opdracht regel. Met deze para meter geeft u het maximum aantal mappers op dat wordt gebruikt om gegevens te kopiëren. De standaard waarde is 20.
 
-**Hierbij**
+**Voorbeeld**
 
     hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
@@ -77,7 +77,7 @@ Hier volgen een aantal richtlijnen.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Hierbij**
+**Voorbeeld**
 
 We gaan ervan uit dat u een 4x D14v2s-cluster hebt en u probeert 10 TB aan gegevens over te brengen van tien verschillende mappen. Elk van de mappen bevat verschillende hoeveel heden gegevens en de bestands grootten in elke map verschillen.
 

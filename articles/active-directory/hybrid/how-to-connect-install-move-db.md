@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93ffd448113b58589611389b71f5bcbfec7a2e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019278"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558542"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect-database verplaatsen van SQL Server Express naar SQL Server 
 
@@ -42,7 +42,7 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
 8. Zodra de database is bijgevoegd, gaat u terug naar de Azure AD Connect-server en installeert u Azure AD Connect.
 9. Zodra de MSI-installatie is voltooid, wordt de wizard Azure AD Connect gestart met de Express-installatiemodus. Sluit het scherm door op het pictogram Afsluiten te klikken.
    ![Welkom](./media/how-to-connect-install-move-db/db1.png)
-10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Navigeer naar het \<mappad> \program files\microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
+10. Start een nieuwe opdrachtprompt of PowerShell-sessie. Ga naar de map \<drive>\program files\Microsoft Azure AD Connect. Voer de opdracht .\AzureADConnect.exe /useexistingdatabase uit om de wizard Azure AD Connect te starten in de installatiemodus Bestaande database gebruiken.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. U wordt verwelkomd met het scherm Welkom bij Azure AD Connect. Nadat u akkoord bent gegaan met de licentievoorwaarden en privacyverklaring, klikt u op **Doorgaan**.
     ![Welkom](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ Voer de volgende stappen uit om de Azure AD Connect-database te verplaatsen naar
 14. Op het scherm **Verbinding maken met uw adreslijsten** wordt het bestaande AD-forest dat is geconfigureerd voor adreslijstsynchronisatie, weergegeven met een rood kruis ernaast. Voor het synchroniseren van wijzigingen vanuit een on-premises AD-forest is een AD DS-account vereist. Met de wizard Azure AD Connect kunnen de referenties van het AD DS-account dat is opgeslagen in de ADsync-database, niet worden opgehaald, omdat deze referenties zijn versleuteld en alleen kunnen worden ontsleuteld met de vorige Azure AD Connect-server. Klik op **Referenties wijzigen** om het AD DS-account voor het AD-forest op te geven.
     ![Adreslijsten](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. In het pop-updialoogvenster kunt u (i) de referenties van een ondernemingsadministrator opgeven en het AD DS-account voor u laten maken in Azure AD Connect of (ii) zelf het AD DS-account maken en de bijbehorende referenties opgeven in Azure AD Connect. Zodra u een optie hebt geselecteerd en de benodigde referenties hebt opgegeven, klikt u op **OK** om het pop-updialoogvenster te sluiten.
     ![Welkom](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. Zodra de referenties zijn opgegeven, verandert het rode kruis in een groen vinkje. Klik op **Volgende**.
     ![Welkom](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. Klik in het scherm **gereed voor configuratie** op **installeren**.
     ![Welkom](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. Zodra de installatie is voltooid, wordt de Azure AD Connect-server automatisch ingeschakeld voor de faseringsmodus. U wordt aangeraden om de serverconfiguratie en exports die in behandeling zijn, te controleren op onverwachte wijzigingen, voordat u de faseringsmodus uitschakelt. 
 
 ## <a name="next-steps"></a>Volgende stappen

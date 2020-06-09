@@ -3,17 +3,17 @@ title: De Creator gebruiken om kaarten voor de binnenste toe te maken
 description: Gebruik Azure Maps Maker om kaarten voor de binnenste toe te voegen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745926"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560350"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>De Creator gebruiken om kaarten voor de binnenste toe te maken
 
@@ -38,6 +38,9 @@ Kaarten voor een binnenste maken:
 4. Down load het [voorbeeld teken pakket](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 In deze zelf studie wordt gebruikgemaakt van de toepassing [postman](https://www.postman.com/) , maar u kunt een andere API-ontwikkel omgeving kiezen.
+
+>[!IMPORTANT]
+> De API-url's in dit document moeten mogelijk worden aangepast op basis van de locatie van de bron van de maker. Zie [toegang tot Creator-Services](how-to-manage-creator.md#access-to-creator-services)voor meer informatie.
 
 ## <a name="upload-a-drawing-package"></a>Een teken pakket uploaden
 
@@ -147,7 +150,7 @@ Het voorbeeld tekening pakket moet worden geconverteerd zonder fouten of waarsch
 
 De gegevensset is een verzameling kaart functies, zoals gebouwen, niveaus en ruimtes. Gebruik de [DataSet Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview)om een gegevensset te maken. De DataSet Create API neemt het `conversionId` voor het geconverteerde teken pakket en retourneert een `datasetId` van de gemaakte gegevensset. De volgende stappen laten zien hoe u een gegevensset kunt maken.
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
+1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Maak een **post** -aanvraag naar de [gegevensset Create API](https://docs.microsoft.com/rest/api/maps/dataset/createpreview) om een nieuwe gegevensset te maken. Voordat u de aanvraag indient, voegt u zowel uw abonnements sleutel als de `conversionId` met de `conversionId` tijdens het conversie proces opgehaalde stap 5 toe.  De aanvraag moet er ongeveer uitzien als de volgende URL:
 
@@ -178,7 +181,7 @@ De gegevensset is een verzameling kaart functies, zoals gebouwen, niveaus en rui
 
 Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tilesets worden gemaakt op basis van bestaande gegevens sets. Een tegelset is echter onafhankelijk van de gegevensset waaruit deze is gebrond. Als de gegevensset wordt verwijderd, blijft de tegelset bestaan. Volg de onderstaande stappen om een tegelset te maken:
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
+1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Maak een **post** -aanvraag op het tabblad opbouw functie. De aanvraag-URL moet eruitzien als de volgende URL:
 
@@ -207,7 +210,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
 
  Gegevens sets kunnen worden opgevraagd met behulp van de [WFS-API](https://docs.microsoft.com/rest/api/maps/wfs). Met de WFS-API kunt u een query uitvoeren voor functie verzamelingen, een specifieke verzameling of een specifieke functie met een functie **-id**. De functie **-id** is een unieke aanduiding van de functie binnen de gegevensset. Het wordt gebruikt om bijvoorbeeld te identificeren welke onderdeel status in een bepaalde statusset moet worden bijgewerkt.
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
+1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Maak een **Get** -aanvraag om een lijst van de verzamelingen in uw gegevensset weer te geven. Vervang door `<dataset-id>` uw `datasetId` . Gebruik uw Azure Maps primaire sleutel in plaats van de tijdelijke aanduiding. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
@@ -283,7 +286,7 @@ Een tegelset is een set vector tegels die op de kaart worden weer gegeven. Tiles
 
 ## <a name="create-a-feature-stateset"></a>Een functie statusset maken
 
-1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**
+1. Selecteer in de toepassing postman de optie **Nieuw**. Selecteer **aanvraag**in het venster **Nieuw maken** . Voer de **naam** van een aanvraag in en selecteer een verzameling. Klik op **Opslaan**.
 
 2. Maak een **post** -aanvraag naar de API voor het maken van de [statusset](https://docs.microsoft.com/rest/api/maps/featurestate/createstatesetpreview). Gebruik de `datasetId` van de gegevensset die de status bevat die u wilt wijzigen. De aanvraag moet er ongeveer uitzien als de volgende URL:
 
@@ -415,7 +418,7 @@ Meer informatie over de verschillende Azure Maps services die in dit artikel wor
 > [Gegevens conversie](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Sets](creator-indoor-maps.md#datasets)
+> [Gegevensset](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tegelset](creator-indoor-maps.md#tilesets)

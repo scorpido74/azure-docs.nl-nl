@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: d6817ac4ebc272747776eab8b11dba62f318e4ed
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: tracking-python
+ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690726"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560830"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus uitvoer binding voor Azure Functions
 
@@ -86,7 +87,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een Service Bus uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie gebruikt een timer trigger om elke 15 seconden een wachtrij bericht te verzenden.
 
@@ -142,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 In het volgende voor beeld ziet u hoe u kunt schrijven naar een Service Bus wachtrij in python.
 
-Een definitie van een Service Bus binding is gedefinieerd in *Function. json* waarbij *type* is `serviceBus`ingesteld op.
+Een definitie van een Service Bus binding is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `serviceBus` .
 
 ```json
 {
@@ -174,7 +175,7 @@ Een definitie van een Service Bus binding is gedefinieerd in *Function. json* wa
 }
 ```
 
-`set` In * _ \_init_\_. py*kunt u een bericht naar de wachtrij schrijven door een waarde door te geven aan de-methode.
+In * _ \_ init_ \_ . py*kunt u een bericht naar de wachtrij schrijven door een waarde door te geven aan de- `set` methode.
 
 ```python
 import azure.functions as func
@@ -190,7 +191,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-In het volgende voor beeld ziet u een Java-functie die een bericht naar `myqueue` een service bus wachtrij verzendt wanneer het wordt geactiveerd door een HTTP-aanvraag.
+In het volgende voor beeld ziet u een Java-functie die een bericht naar een Service Bus wachtrij verzendt wanneer het wordt `myqueue` geactiveerd door een HTTP-aanvraag.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -204,9 +205,9 @@ public String pushToQueue(
  }
 ```
 
- Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@QueueOutput` functies de annotatie voor functie parameters waarvan de waarde zou worden geschreven naar een service bus wachtrij.  Het parameter type moet zijn `OutputBinding<T>`, waarbij T een systeem eigen Java-type is van een POJO.
+ Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@QueueOutput` annotatie voor functie parameters waarvan de waarde zou worden geschreven naar een service bus wachtrij.  Het parameter type moet zijn `OutputBinding<T>` , waarbij T een systeem eigen Java-type is van een POJO.
 
-Java-functies kunnen ook worden geschreven naar een Service Bus onderwerp. In het volgende voor beeld `@ServiceBusTopicOutput` wordt met behulp van de aantekening de configuratie voor de uitvoer binding beschreven. 
+Java-functies kunnen ook worden geschreven naar een Service Bus onderwerp. In het volgende voor beeld wordt met behulp `@ServiceBusTopicOutput` van de aantekening de configuratie voor de uitvoer binding beschreven. 
 
 ```java
 @FunctionName("sbtopicsend")
@@ -242,7 +243,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-U kunt de `Connection` eigenschap instellen om de naam op te geven van een app-instelling die het service bus connection string bevat dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+U kunt de `Connection` eigenschap instellen om de naam op te geven van een app-instelling die het Service Bus Connection String bevat dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -255,13 +256,13 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Zie voor een volledig voor beeld [uitvoer-voor beeld](#example).
 
-U kunt het `ServiceBusAccount` -kenmerk gebruiken om het service bus-account op te geven dat moet worden gebruikt bij klasse, methode of parameter niveau.  Zie [trigger-Attributes](functions-bindings-service-bus-trigger.md#attributes-and-annotations)(Engelstalig) voor meer informatie.
+U kunt het- `ServiceBusAccount` kenmerk gebruiken om het service bus-account op te geven dat moet worden gebruikt bij klasse, methode of parameter niveau.  Zie [trigger-Attributes](functions-bindings-service-bus-trigger.md#attributes-and-annotations)(Engelstalig) voor meer informatie.
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -271,29 +272,29 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-De `ServiceBusQueueOutput` aantekeningen `ServiceBusTopicOutput` en zijn beschikbaar om een bericht te schrijven als een functie-uitvoer. De para meter die is gedecoreerd met deze annotaties moet worden gedeclareerd als een `OutputBinding<T>` WHERE `T` is het type dat overeenkomt met het type van het bericht.
+De `ServiceBusQueueOutput` `ServiceBusTopicOutput` aantekeningen en zijn beschikbaar om een bericht te schrijven als een functie-uitvoer. De para meter die is gedecoreerd met deze annotaties moet worden gedeclareerd als een `OutputBinding<T>` WHERE `T` is het type dat overeenkomt met het type van het bericht.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `ServiceBus` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `ServiceBus` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | n.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
-|**draaien** | n.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
-|**naam** | n.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
+|**type** | N.v.t. | Moet worden ingesteld op ' serviceBus '. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal.|
+|**direction** | N.v.t. | Moet worden ingesteld op out. Deze eigenschap wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**naam** | N.v.t. | De naam van de variabele die de wachtrij of het onderwerp van het bericht in de functie code vertegenwoordigt. Ingesteld op ' $return ' om te verwijzen naar de retour waarde van de functie. |
 |**queueName**|**QueueName**|De naam van de wachtrij.  Stel deze waarde alleen in als u wachtrij berichten verzendt, niet voor een onderwerp.
 |**onderwerpnaam**|**Onderwerpnaam**|De naam van het onderwerp. Stel deze waarde alleen in als er onderwerp-berichten worden verzonden, niet voor een wachtrij.|
-|**verbinding**|**Combi**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u leeg `connection` laat, gebruikt de functions runtime de standaard service bus connection string in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp.|
-|**accessRights** (alleen v1)|**Toegang**|Toegangs rechten voor de connection string. Beschik bare `manage` waarden `listen`zijn en. De standaard waarde `manage`is, waarmee wordt aangegeven `connection` dat de de machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt `accessRights` u in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
+|**Combi**|**Verbinding**|De naam van een app-instelling die de Service Bus connection string bevat die moet worden gebruikt voor deze binding. Als de naam van de app-instelling begint met "AzureWebJobs", kunt u alleen de rest van de naam opgeven. Als u bijvoorbeeld instelt `connection` op ' MyServiceBus ', zoekt de functie runtime naar een app-instelling met de naam ' AzureWebJobsMyServiceBus '. Als u `connection` leeg laat, gebruikt de functions runtime de standaard Service Bus Connection String in de app-instelling met de naam ' AzureWebJobsServiceBus '.<br><br>Volg de stappen die worden weer gegeven in [de beheer referenties ophalen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)om een Connection String te verkrijgen. De connection string moet voor een Service Bus naam ruimte zijn, niet beperkt tot een specifieke wachtrij of een specifiek onderwerp.|
+|**accessRights** (alleen v1)|**Toegang**|Toegangs rechten voor de connection string. Beschik bare waarden zijn `manage` en `listen` . De standaard waarde is `manage` , waarmee wordt aangegeven dat de de `connection` machtiging **beheren** heeft. Als u een connection string gebruikt dat niet de machtiging **beheren** heeft, stelt u `accessRights` in op ' Luis teren '. Anders kan het uitvoeren van de functions-runtime geen bewerkingen uitvoeren waarvoor het beheer van rechten nodig is. In Azure Functions versie 2. x en hoger is deze eigenschap niet beschikbaar omdat de meest recente versie van de Service Bus SDK geen ondersteuning biedt voor het beheren van bewerkingen.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Gebruik
 
-In Azure Functions 1. x wordt de wachtrij door de runtime gemaakt als deze nog niet bestaat en is `accessRights` ingesteld `manage`op. In functies versie 2. x en hoger moet de wachtrij of het onderwerp al bestaan; Als u een wachtrij of onderwerp opgeeft dat niet bestaat, mislukt de functie. 
+In Azure Functions 1. x wordt de wachtrij door de runtime gemaakt als deze nog niet bestaat en is ingesteld `accessRights` op `manage` . In functies versie 2. x en hoger moet de wachtrij of het onderwerp al bestaan; Als u een wachtrij of onderwerp opgeeft dat niet bestaat, mislukt de functie. 
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -304,13 +305,13 @@ Gebruik de volgende parameter typen voor de uitvoer binding:
 * `out byte[]`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
 * `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
 * `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
-* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de `Add` -methode aanroept.
+* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
 
 Wanneer u werkt met C#-functies:
 
-* Asynchrone functies hebben een retour waarde nodig `IAsyncCollector` of in plaats `out` van een para meter.
+* Asynchrone functies hebben een retour waarde nodig of `IAsyncCollector` in plaats van een `out` para meter.
 
-* Als u toegang wilt krijgen tot de sessie- [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) id, maakt u `sessionId` een binding met een type en gebruikt u de eigenschap.
+* Als u toegang wilt krijgen tot de sessie-ID, maakt u een binding met een [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type en gebruikt u de `sessionId` eigenschap.
 
 # <a name="c-script"></a>[C#-script](#tab/csharp-script)
 
@@ -321,17 +322,17 @@ Gebruik de volgende parameter typen voor de uitvoer binding:
 * `out byte[]`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, wordt door functies geen bericht gemaakt.
 * `out BrokeredMessage`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 1. x)
 * `out Message`-Als de waarde van de para meter null is wanneer de functie wordt afgesloten, maakt functies geen bericht (voor de functies 2. x en hoger)
-* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de `Add` -methode aanroept.
+* `ICollector<T>`of `IAsyncCollector<T>` -voor het maken van meerdere berichten. Er wordt een bericht gemaakt wanneer u de-methode aanroept `Add` .
 
 Wanneer u werkt met C#-functies:
 
-* Asynchrone functies hebben een retour waarde nodig `IAsyncCollector` of in plaats `out` van een para meter.
+* Asynchrone functies hebben een retour waarde nodig of `IAsyncCollector` in plaats van een `out` para meter.
 
-* Als u toegang wilt krijgen tot de sessie- [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) id, maakt u `sessionId` een binding met een type en gebruikt u de eigenschap.
+* Als u toegang wilt krijgen tot de sessie-ID, maakt u een binding met een [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) type en gebruikt u de `sessionId` eigenschap.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Toegang tot de wachtrij of het onderwerp `context.bindings.<name from function.json>`met behulp van. U kunt een teken reeks, een byte matrix of een Java Script-object (gedeserialiseerd in JSON) toewijzen aan `context.binding.<name>`.
+Toegang tot de wachtrij of het onderwerp met behulp van `context.bindings.<name from function.json>` . U kunt een teken reeks, een byte matrix of een Java Script-object (gedeserialiseerd in JSON) toewijzen aan `context.binding.<name>` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -380,13 +381,13 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
     }
 }
 ```
-Als u hebt `isSessionsEnabled` ingesteld op `true`, wordt `sessionHandlerOptions` de gehonoreerd.  Als u hebt `isSessionsEnabled` ingesteld op `false`, wordt `messageHandlerOptions` de gehonoreerd.
+Als u hebt `isSessionsEnabled` ingesteld op `true` , `sessionHandlerOptions` wordt de gehonoreerd.  Als u hebt `isSessionsEnabled` ingesteld op `false` , `messageHandlerOptions` wordt de gehonoreerd.
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------|
 |prefetchCount|0|Hiermee wordt het aantal berichten opgehaald of ingesteld dat de ontvanger van het bericht tegelijk kan aanvragen.|
 |maxAutoRenewDuration|00:05:00|De maximale duur waarbinnen de bericht vergrendeling automatisch wordt vernieuwd.|
-|Automatisch aanvullen|waar|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.|
+|Automatisch aanvullen|true|Hiermee wordt aangegeven of de trigger automatisch moet worden voltooid na de verwerking, of dat de functie code hand matig wordt aangeroepen.|
 |maxConcurrentCalls|16|Het maximum aantal gelijktijdige aanroepen naar de call back dat de bericht pomp moet initiëren per geschaald exemplaar. De functie runtime verwerkt standaard meerdere berichten tegelijk.|
 |maxConcurrentSessions|2000|Het maximum aantal sessies dat gelijktijdig kan worden verwerkt per geschaald exemplaar.|
 

@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.custom: mvc
-ms.openlocfilehash: 5bd16b256076886232062be9786914e55db0185f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: e148d50af39e69750c3024d98abc833e40654705
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233752"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558743"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-starter"></a>Een CI/CD-pijp lijn maken voor python met Azure DevOps starter
 
@@ -26,7 +26,7 @@ In deze Quick Start gebruikt u de vereenvoudigde Azure DevOps starter-ervaring v
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) 
 - Een [Azure DevOps](https://azure.microsoft.com/services/devops/) -account en-organisatie.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
@@ -87,7 +87,7 @@ In de vorige stap heeft DevOps starter automatisch een volledige CI/CD-pijp lijn
 
 1. Wijs het veld **status** aan en selecteer vervolgens het **weglatings teken** (...). In een menu worden verschillende opties weer gegeven, zoals het in de wachtrij plaatsen van een nieuwe build, het onderbreken van een build en het bewerken van de build-pijp lijn.
 
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 
 1. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. In de build worden verschillende taken uitgevoerd, zoals het ophalen van bronnen uit de Git-opslagplaats, het herstellen van afhankelijkheden, en het publiceren van uitvoergegevens die worden gebruikt voor implementaties.
 

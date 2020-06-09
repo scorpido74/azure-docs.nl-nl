@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983598"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555861"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
@@ -229,12 +230,12 @@ De **script module python uitvoeren** bevat een voor beeld van python-code die u
     Het **python-script** tekstvak is vooraf ingevuld met enkele instructies in opmerkingen, en voorbeeld code voor gegevens toegang en-uitvoer. U moet deze code bewerken of vervangen. Zorg ervoor dat u python-conventies voor inspringing en hoofdletter gebruik volgt.
 
     + Het script moet een functie bevatten met `azureml_main` de naam van het toegangs punt voor deze module.
-    + De functie voor het toegangs punt moet twee invoer argumenten `Param<dataframe1>` hebben `Param<dataframe2>`: en, zelfs wanneer deze argumenten niet worden gebruikt in uw script.
-    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen `.\Script Bundle`in de map,, die ook aan `sys.path`de python worden toegevoegd. 
+    + De functie voor het toegangs punt moet twee invoer argumenten hebben: `Param<dataframe1>` en `Param<dataframe2>` , zelfs wanneer deze argumenten niet worden gebruikt in uw script.
+    + Gezipte bestanden die zijn verbonden met de derde invoer poort, worden uitgepakt en opgeslagen in de map, `.\Script Bundle` , die ook aan de python worden toegevoegd `sys.path` . 
 
-    Als uw zip-bestand bevat `mymodule.py`, kunt u het ook `import mymodule`importeren met.
+    Als uw zip-bestand bevat, kunt u `mymodule.py` het ook importeren met `import mymodule` .
 
-    + Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van `pandas.DataFrame`het type zijn. U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
+    + Er kunnen twee gegevens sets worden geretourneerd naar de ontwerper. dit moet een reeks van het type zijn `pandas.DataFrame` . U kunt andere uitvoer in uw Python-code maken en deze rechtstreeks naar Azure Storage schrijven.
 
 6. Verzend de pijp lijn of selecteer de module en klik op **geselecteerde uitvoeren** om alleen het python-script uit te voeren.
 

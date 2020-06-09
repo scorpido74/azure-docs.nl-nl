@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734583"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558849"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Bureau blad-app voor het aanroepen van web-Api's: code configuratie
 
@@ -29,7 +29,7 @@ De volgende micro soft-verificatie bibliotheken (MSALs) ondersteunen desktop toe
   Microsoft Authentication Library | Beschrijving
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platformen, zoals Linux, Windows en macOS.
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Biedt ondersteuning voor het bouwen van een bureaublad toepassing op meerdere platforms.
   ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | Biedt ondersteuning voor desktop toepassingen die alleen op macOS worden uitgevoerd.
 
@@ -39,7 +39,7 @@ Vanuit een code point van de weer gave zijn desktop toepassingen open bare clien
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-U moet MSAL.NET `IPublicClientApplication`bouwen en bewerken.
+U moet MSAL.NET bouwen en bewerken `IPublicClientApplication` .
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -52,7 +52,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Als u van plan bent interactieve verificatie of de code stroom van het apparaat te gebruiken, zoals `.WithRedirectUri` eerder weer gegeven, gebruikt u de aanpassings functie.
+Als u van plan bent interactieve verificatie of de code stroom van het apparaat te gebruiken, zoals eerder weer gegeven, gebruikt u de `.WithRedirectUri` aanpassings functie.
 
 ```csharp
 IPublicClientApplication app;
@@ -103,16 +103,16 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="learn-more"></a>Meer informatie
+### <a name="learn-more"></a>Lees meer
 
 Voor meer informatie over het configureren van een MSAL.NET-bureaublad toepassing:
 
-- Zie de referentie documentatie [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met `PublicClientApplicationBuilder`alle wijzigingen die beschikbaar zijn op.
-- Zie PublicClientApplicationOptions in de referentie documentatie voor een beschrijving `PublicClientApplicationOptions`van alle [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) opties die worden weer gegeven in.
+- `PublicClientApplicationBuilder`Zie de referentie documentatie [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)voor een lijst met alle wijzigingen die beschikbaar zijn op.
+- `PublicClientApplicationOptions`Zie [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) in de referentie documentatie voor een beschrijving van alle opties die worden weer gegeven in.
 
 ### <a name="complete-example-with-configuration-options"></a>Volledig voor beeld met configuratie opties
 
-Stel dat u een .NET core-console toepassing hebt `appsettings.json` die het volgende configuratie bestand bevat:
+Stel dat u een .NET core-console toepassing hebt die het volgende `appsettings.json` configuratie bestand bevat:
 
 ```json
 {
@@ -180,7 +180,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-Voordat u de `.Build()` -methode aanroept, kunt u uw configuratie overschrijven met aanroepen naar `.WithXXX` methoden, zoals eerder is weer gegeven.
+Voordat `.Build()` u de-methode aanroept, kunt u uw configuratie overschrijven met aanroepen naar `.WithXXX` methoden, zoals eerder is weer gegeven.
 
 # <a name="java"></a>[Java](#tab/java)
 

@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: b7ab7abb74701abeeac126b34efdf784beff2d03
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702094"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561824"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio-notebooks (preview) maken, ontwikkelen en onderhouden
 
@@ -390,8 +391,8 @@ Met de volgende sneltoetsen kunt u gemakkelijker code in azure Synapse-notebooks
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: een Apache Spark groep maken (preview) in azure Synapse Analytics met behulp van web-hulpprogram ma's](../quickstart-apache-spark-notebook.md)
-- [Wat is Apache Spark in azure Synapse Analytics](apache-spark-overview.md)
+- [Quickstart: Een Apache Spark-pool (preview) maken in Azure Synapse Analytics met behulp van webhulpprogramma's](../quickstart-apache-spark-notebook.md)
+- [Wat is Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
 - [.NET gebruiken voor Apache Spark met Azure Synapse Analytics](spark-dotnet.md)
-- [Documentatie voor .NET for Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Documentatie voor .NET voor Apache Spark](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

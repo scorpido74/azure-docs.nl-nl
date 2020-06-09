@@ -8,13 +8,13 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159963"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559580"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Open-source technologieën Veelgestelde vragen over Web Apps in azure
 
@@ -26,8 +26,8 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over problemen met open
 
 PHP-logboek registratie inschakelen:
 
-1. Meld u aan bij uw **kudu** -`https://*yourwebsitename*.scm.azurewebsites.net`website ().
-2. Selecteer in het bovenste menu de optie **debug console** > **cmd**.
+1. Meld u aan bij uw **kudu-website** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. Selecteer in het bovenste menu de optie **debug console**  >  **cmd**.
 3. Selecteer de map van de **site** .
 4. Selecteer de map **wwwroot** .
 5. Selecteer het **+** pictogram en selecteer vervolgens **nieuw bestand**.
@@ -56,7 +56,7 @@ Als u de versie van de node. js-toepassing wilt wijzigen, kunt u een van de volg
   1. Ga in het Azure Portal naar uw web-app.
   2. Selecteer **Toepassings instellingen**op de Blade **instellingen** .
   3. In **app-instellingen**kunt u WEBSITE_NODE_DEFAULT_VERSION toevoegen als de sleutel en de versie van node. js die u als waarde wilt gebruiken.
-  4. Ga naar uw **kudu** -console`https://*yourwebsitename*.scm.azurewebsites.net`().
+  4. Ga naar uw **kudu-console** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. Als u de versie van node. js wilt controleren, voert u de volgende opdracht in:  
      ```
      node -v
@@ -91,7 +91,7 @@ Als deze fout wordt weer geven in de bestanden debug. log of php_errors. log, ov
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Hoe kan ik fouten opsporen in een node. js-app die wordt gehost in App Service?
 
-1.  Ga naar uw **kudu** -console`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`().
+1.  Ga naar uw **kudu-console** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Ga naar de map met toepassings Logboeken (D:\home\LogFiles\Application).
 3.  Controleer in het bestand logging_errors. txt op inhoud.
 
@@ -138,7 +138,7 @@ Om de fout op te lossen:
 
 1. Verwijder het bestand sqljdbc*. jar uit de map app/lib.
 2. Als u de aangepaste Tomcat of de Tomcat-webserver van Azure Marketplace gebruikt, kopieert u dit jar-bestand naar de map tomcat lib.
-3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **Java 1,8** > **Tomcat-server**), kopieert u het bestand sqljdbc. * in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
+3. Als u Java inschakelt vanuit de Azure Portal (Selecteer **Java 1,8**  >  **Tomcat-server**), kopieert u het bestand sqljdbc. * in de map die parallel is met uw app. Voeg vervolgens de volgende Classpath-instelling toe aan het bestand Web. config:
 
     ```xml
     <httpPlatform>

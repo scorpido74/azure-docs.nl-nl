@@ -4,29 +4,25 @@ description: App integreren in Azure App Service met Azure Virtual Networks.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee2c279db7dde0e3e6acadb318c470813dccc7a3
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170780"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488785"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uw app integreren met een virtueel Azure-netwerk
 
-In dit artikel wordt de functie Azure App Service VNet-integratie beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Network][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen.
+In dit artikel wordt de functie Azure App Service VNet-integratie beschreven en wordt uitgelegd hoe u deze kunt instellen met apps in [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). Met [Azure Virtual Network][VNETOverview] (VNets) kunt u veel van uw Azure-resources in een niet-Internet routeerbaar netwerk plaatsen. Met de VNet-integratie functie kunnen uw apps toegang krijgen tot bronnen in of via een VNet. Met VNet-integratie kunnen uw apps niet privé worden geopend.
 
-Azure App Service heeft twee variaties:
+Azure App Service heeft twee varianten van de VNet-integratie functie:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>VNet-integratie inschakelen
-
-> [!NOTE]
-> Als de Blade "netwerk" is uitgeschakeld (grijs weer gegeven) in het menu voor uw Linux-apps, betekent dit dat de functie op dit moment niet beschikbaar is.
->
 
 1. Ga naar de gebruikers interface van het **netwerk** in de app Service Portal. Selecteer onder **VNet-integratie**de optie **Klik hier om te configureren**.
 
@@ -75,8 +71,8 @@ Gateway-vereiste VNet-integratie biedt ondersteuning voor het verbinden met een 
 
 U kunt Gateway-vereiste VNet-integratie niet gebruiken:
 
-* Met Linux-apps.
 * Met een VNet dat is verbonden met Azure ExpressRoute.
+* Vanuit een Linux-app
 * Om toegang te krijgen tot beveiligde bronnen van service-eind punten.
 * Met een gateway voor samen werking die zowel ExpressRoute als Point-to-site-of site-naar-site-Vpn's ondersteunt.
 

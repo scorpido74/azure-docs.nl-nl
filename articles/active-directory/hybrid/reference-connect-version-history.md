@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 53ac540950dc6f64107ee20448b2c24981837b05
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725292"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558510"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -569,7 +569,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Name                          | Access               | Van toepassing op
+Type     | Naam                          | Access               | Van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
@@ -1055,7 +1055,7 @@ Azure AD Connect-synchronisatie
 
 Desktop-SSO
 
-* Voor de wizard Azure AD Connect is poort 9090 niet meer nodig om te worden geopend op het netwerk bij het configureren van Pass-Through-verificatie en desktop-SSO. Alleen poort 443 is vereist. 
+* Voor de wizard Azure AD Connect is poort 9090 niet meer nodig om te worden geopend op het netwerk bij het configureren van Pass-Through-verificatie en desktop-SSO. Alleen poort 443 is vereist.
 
 ## <a name="114430"></a>1.1.443.0
 Uitgebracht: maart 2017

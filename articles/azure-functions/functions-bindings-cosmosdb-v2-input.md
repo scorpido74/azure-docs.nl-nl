@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: eabcf40e28927919215979ccc46fa029d19adbfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 338fecfe914c1a3667c828355bd4071c317aaebf
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943428"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561592"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x
 
@@ -35,7 +36,7 @@ Deze sectie bevat de volgende voor beelden:
 * [HTTP-trigger, meerdere docs ophalen met behulp van SqlQuery](#http-trigger-get-multiple-docs-using-sqlquery-c)
 * [HTTP-trigger, meerdere docs ophalen met behulp van DocumentClient](#http-trigger-get-multiple-docs-using-documentclient-c)
 
-De voor beelden verwijzen naar een `ToDoItem` eenvoudig type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -53,7 +54,7 @@ namespace CosmosDBSamplesV2
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>Wachtrij trigger, ID opzoeken vanuit JSON 
 
-Het volgende voor beeld toont een [C#-functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een wachtrij bericht dat een JSON-object bevat. De wachtrij trigger parseert de JSON naar een object van het `ToDoItemLookup`type, dat de id en de partitie sleutel waarde bevat die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
+Het volgende voor beeld toont een [C#-functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een wachtrij bericht dat een JSON-object bevat. De wachtrij trigger parseert de JSON naar een object van `ToDoItemLookup` het type, dat de id en de partitie sleutel waarde bevat die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -204,7 +205,7 @@ namespace CosmosDBSamplesV2
 
 Het volgende voor beeld toont een [C#-functie](functions-dotnet-class-library.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-In het voor beeld ziet u hoe u een bindings `SqlQuery` expressie gebruikt in de para meter. U kunt route gegevens door geven aan `SqlQuery` de para meter zoals weer gegeven, maar de waarden van de [query reeksen kunnen niet worden door gegeven](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
+In het voor beeld ziet u hoe u een bindings expressie gebruikt in de `SqlQuery` para meter. U kunt route gegevens door geven aan de `SqlQuery` para meter zoals weer gegeven, maar de waarden van de [query reeksen kunnen niet worden door gegeven](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583).
 
 > [!NOTE]
 > Als u alleen een query wilt uitvoeren op basis van de ID, is het raadzaam om een zoek opdracht te gebruiken, zoals de [voor gaande voor beelden](#http-trigger-look-up-id-from-query-string-c), omdat er minder [aanvraag eenheden](../cosmos-db/request-units.md)worden gebruikt. Lees bewerkingen op punten (GET) zijn [efficiënter](../cosmos-db/optimize-cost-queries.md) dan QUERY'S op id.
@@ -364,7 +365,7 @@ Deze sectie bevat de volgende voor beelden:
 * [HTTP-trigger, meerdere docs ophalen met behulp van SqlQuery](#http-trigger-get-multiple-docs-using-sqlquery-c-script)
 * [HTTP-trigger, meerdere docs ophalen met behulp van DocumentClient](#http-trigger-get-multiple-docs-using-documentclient-c-script)
 
-De voor beelden van HTTP-triggers verwijzen `ToDoItem` naar een eenvoudig type:
+De voor beelden van HTTP-triggers verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -417,7 +418,7 @@ Dit is de C#-script code:
 
 In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De trigger van de wachtrij bevat `departmentId`een para meter. Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
+De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
 Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
@@ -716,7 +717,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Deze sectie bevat de volgende voor beelden van het lezen van één document door een ID-waarde op te geven uit verschillende bronnen:
 
@@ -894,7 +895,7 @@ module.exports = function (context, req, toDoItem) {
 
 In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De trigger van de wachtrij bevat `departmentId`een para meter. Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
+De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
 Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
@@ -1104,7 +1105,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
-De trigger van de wachtrij bevat `departmentId`een para meter. Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
+De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
 Hier vindt u de bindings gegevens in het bestand *Function. json* :
 
@@ -1142,7 +1143,7 @@ Deze sectie bevat de volgende voor beelden:
 * [HTTP-trigger, ID opzoeken op basis van route gegevens, met behulp van SqlQuery](#http-trigger-look-up-id-from-route-data-using-sqlquery-java)
 * [HTTP-trigger, meerdere documenten ophalen van route gegevens, met behulp van SqlQuery](#http-trigger-get-multiple-docs-from-route-data-using-sqlquery-java)
 
-De voor beelden verwijzen naar een `ToDoItem` eenvoudig type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```java
 public class ToDoItem {
@@ -1211,7 +1212,7 @@ public class DocByIdFromQueryString {
 }
  ```
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBInput` functies de annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBInput` annotatie voor functie parameters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
 
 <a id="http-trigger-look-up-id-from-query-string---pojo-parameter-java"></a>
 
@@ -1261,7 +1262,7 @@ public class DocByIdFromQueryStringPojo {
 
 ### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-trigger, ID van route gegevens opzoeken
 
-In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID en de waarde van de partitie sleutel op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, en ```Optional<String>```dit te retour neren als een.
+In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID en de waarde van de partitie sleutel op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, en dit te retour neren als een ```Optional<String>``` .
 
 ```java
 public class DocByIdFromRoute {
@@ -1308,7 +1309,7 @@ public class DocByIdFromRoute {
 
 ### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-trigger, ID opzoeken op basis van route gegevens, met behulp van SqlQuery
 
-In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een, omdat er ```ToDoItem[]```veel documenten kunnen worden geretourneerd, afhankelijk van de query criteria.
+In het volgende voor beeld ziet u een Java-functie die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter om de ID op te geven die moet worden gezocht. Deze ID wordt gebruikt om een document op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een ```ToDoItem[]``` , omdat er veel documenten kunnen worden geretourneerd, afhankelijk van de query criteria.
 
 > [!NOTE]
 > Als u alleen een query wilt uitvoeren op basis van de ID, is het raadzaam om een zoek opdracht te gebruiken, zoals de [voor gaande voor beelden](#http-trigger-look-up-id-from-query-string---pojo-parameter-java), omdat er minder [aanvraag eenheden](../cosmos-db/request-units.md)worden gebruikt. Lees bewerkingen op punten (GET) zijn [efficiënter](../cosmos-db/optimize-cost-queries.md) dan QUERY'S op id.
@@ -1356,7 +1357,7 @@ public class DocByIdFromRouteSqlQuery {
 
 ### <a name="http-trigger-get-multiple-docs-from-route-data-using-sqlquery"></a>HTTP-trigger, meerdere documenten ophalen van route gegevens, met behulp van SqlQuery
 
-In het volgende voor beeld ziet u een Java-functie waarmee meerdere documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route ```desc``` parameter om de teken reeks op te geven waarnaar ```description``` in het veld moet worden gezocht. De zoek term wordt gebruikt om een verzameling documenten op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset ```ToDoItem[]``` wordt geconverteerd naar een en wordt door gegeven als argument voor de functie.
+In het volgende voor beeld ziet u een Java-functie waarmee meerdere documenten worden opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een route parameter ```desc``` om de teken reeks op te geven waarnaar in het veld moet worden gezocht ```description``` . De zoek term wordt gebruikt om een verzameling documenten op te halen uit de opgegeven Data Base en verzameling, waarbij de resultatenset wordt geconverteerd naar een ```ToDoItem[]``` en wordt door gegeven als argument voor de functie.
 
 ```java
 public class DocsFromRouteSqlQuery {
@@ -1410,7 +1411,7 @@ De constructor van het kenmerk neemt de naam van de data base en de verzameling.
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -1420,23 +1421,23 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gebruik in de [runtime-bibliotheek van Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)- `@CosmosDBOutput` functies de aantekening voor para meters die naar Cosmos DB schrijven. Het parameter type van de aantekening `OutputBinding<T>`moet `T` zijn, waarbij een systeem eigen Java-type of een POJO is.
+Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)de `@CosmosDBOutput` aantekening voor para meters die naar Cosmos DB schrijven. Het parameter type van de aantekening moet zijn `OutputBinding<T>` , waarbij `T` een systeem eigen Java-type of een POJO is.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `CosmosDB` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDB` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert**     | N.v.t. | Moet worden ingesteld op `cosmosDB`.        |
-|**direction**     | N.v.t. | Moet worden ingesteld op `in`.         |
+|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |
 |**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** |**DatabaseName** |De data base met het document.        |
-|**collectionName** |**CollectionName** | De naam van de verzameling die het document bevat. |
-|**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de `id` eigenschappen en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |
-|**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt om meerdere documenten op te halen. De eigenschap ondersteunt runtime bindingen, zoals in dit voor beeld `SELECT * FROM c where c.departmentId = {departmentId}`:. Stel de `id` eigenschappen en `sqlQuery` niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald.|
+|**collectionName** |**NaamVerzameling** | De naam van de verzameling die het document bevat. |
+|**id**    | **Id** | De ID van het document dat moet worden opgehaald. Deze eigenschap ondersteunt [bindings expressies](./functions-bindings-expressions-patterns.md). Stel de `id` Eigenschappen en **sqlQuery** niet in. Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald. |
+|**sqlQuery**  |**SqlQuery**  | Een Azure Cosmos DB SQL-query die wordt gebruikt om meerdere documenten op te halen. De eigenschap ondersteunt runtime bindingen, zoals in dit voor beeld: `SELECT * FROM c where c.departmentId = {departmentId}` . Stel de `id` Eigenschappen en niet in `sqlQuery` . Als u er niet een hebt ingesteld, wordt de volledige verzameling opgehaald.|
 |**connectionStringSetting**     |**ConnectionStringSetting**|De naam van de app-instelling met uw Azure Cosmos DB connection string. |
 |**partitionKey**|**PartitionKey**|Hiermee geeft u de partitie sleutel waarde voor de zoek opdracht op. Kan bindende para meters bevatten. Dit is vereist voor zoek acties in [gepartitioneerde](../cosmos-db/partition-data.md#logical-partitions) verzamelingen.|
 |**preferredLocations**| **PreferredLocations**| Beschrijving Hiermee worden voorkeurs locaties (regio's) gedefinieerd voor accounts met geo-gerepliceerde data bases in de Azure Cosmos DB-service. De waarden moeten worden gescheiden door komma's. Bijvoorbeeld ' vs-Oost, VS Zuid-Centraal, Europa-noord '. |
@@ -1453,17 +1454,17 @@ Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht i
 
 Wanneer de functie is afgesloten, worden alle wijzigingen die zijn aangebracht in het invoer document via benoemde invoer parameters automatisch behouden.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Updates worden niet automatisch doorgevoerd bij het afsluiten van de functie. Gebruik `context.bindings.<documentName>In` en `context.bindings.<documentName>Out` om updates te maken. Zie het Java script-voor beeld.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Gegevens worden via een `DocumentList` para meter beschikbaar gemaakt voor de functie. Wijzigingen in het document worden niet automatisch doorgevoerd.
+Gegevens worden via een para meter beschikbaar gemaakt voor de functie `DocumentList` . Wijzigingen in het document worden niet automatisch doorgevoerd.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Met de [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) aantekening in de [runtime bibliotheek van Java functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Met de aantekening in de [runtime bibliotheek van Java functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime) [@CosmosDBInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.cosmosdbinput) worden Cosmos DB gegevens aan de functie toegevoegd. Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
 
 ---
 

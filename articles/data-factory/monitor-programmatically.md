@@ -10,12 +10,13 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398793"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561223"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Een Azure-data factory programmatisch bewaken
 
@@ -27,7 +28,7 @@ In dit artikel wordt beschreven hoe u een pijp lijn in een data factory bewaakt 
 
 ## <a name="data-range"></a>Gegevens bereik
 
-Data Factory slaat alleen pijplijn run data op voor 45 dagen. Wanneer u een query uitvoert op programmeer niveau voor gegevens over Data Factory pijplijn uitvoeringen, bijvoorbeeld met de Power `Get-AzDataFactoryV2PipelineRun` shell-opdracht, zijn er geen maximum datums `LastUpdatedAfter` voor `LastUpdatedBefore` de optionele para meters. Als u bijvoorbeeld een query uitvoert voor gegevens in het afgelopen jaar, retourneert de query geen fout, maar retourneert alleen pijplijn gegevens uit de afgelopen 45 dagen.
+Data Factory slaat alleen pijplijn run data op voor 45 dagen. Wanneer u een query uitvoert op programmeer niveau voor gegevens over Data Factory pijplijn uitvoeringen, bijvoorbeeld met de Power shell-opdracht, `Get-AzDataFactoryV2PipelineRun` zijn er geen maximum datums voor de optionele `LastUpdatedAfter` `LastUpdatedBefore` para meters. Als u bijvoorbeeld een query uitvoert voor gegevens in het afgelopen jaar, retourneert de query geen fout, maar retourneert alleen pijplijn gegevens uit de afgelopen 45 dagen.
 
 Als u de gegevens van de pijplijn periode langer dan 45 dagen wilt behouden, stelt u uw eigen diagnostische logboek registratie in met [Azure monitor](monitor-using-azure-monitor.md).
 

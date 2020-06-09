@@ -6,16 +6,17 @@ keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechno
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283652"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557475"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Talen die worden ondersteund op de Data Science Virtual Machine 
 
@@ -27,7 +28,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,7 |
 | Ondersteunde DSVM-edities      | Windows Server 2016     |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden `conda` twee wereld wijde omgevingen gemaakt: <br /> * De `root` omgeving die zich `/anaconda/` bevindt in is python 3,7. <br/> * De `python2` omgeving die zich `/anaconda/envs/python2` bevindt in is Python 2,7.       |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden twee wereld wijde `conda` omgevingen gemaakt: <br /> * De `root` omgeving die zich bevindt in `/anaconda/` is python 3,7. <br/> * De `python2` omgeving die zich bevindt in `/anaconda/envs/python2` is Python 2,7.       |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia.      |
 
@@ -55,7 +56,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
   Gebruik Python Tools for Visual Studio (PTVS), dat is geïnstalleerd in de Visual Studio Community-editie. Standaard is de enige omgeving die automatisch in PTVS wordt ingesteld, python 3,6. 
 
     > [!NOTE]
-    > Om PTVS te laten verwijzen naar python 2,7, moet u een aangepaste omgeving maken in PTVS. Als u dit pad naar de omgeving in Visual Studio Community Edition wilt instellen, gaat u naar **hulpprogram ma's** -> **python tools** -> **python-omgevingen** en selecteert u **+ Custom**. Stel vervolgens de locatie in op **c:\anaconda\envs\python2** en selecteer **Automatische detectie**.
+    > Om PTVS te laten verwijzen naar python 2,7, moet u een aangepaste omgeving maken in PTVS. Als u dit pad naar de omgeving in Visual Studio Community Edition wilt instellen, gaat u naar **hulpprogram ma's**  ->  **python tools**  ->  **python-omgevingen** en selecteert u **+ Custom**. Stel vervolgens de locatie in op **c:\anaconda\envs\python2** en selecteer **Automatische detectie**.
 
 * Gebruiken in Jupyter:
 
@@ -63,7 +64,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Python-pakketten installeren:
 
-  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of python2 `activate` -omgeving met behulp van de opdracht als beheerder. Vervolgens kunt u een pakket beheer programma gebruiken, `conda` zoals `pip` of om pakketten te installeren of bij te werken.
+  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, activeert u de hoofd-of python2-omgeving met behulp van de `activate` opdracht als beheerder. Vervolgens kunt u een pakket beheer programma gebruiken, zoals `conda` of `pip` om pakketten te installeren of bij te werken.
 
 ## <a name="python-linux-edition"></a>Python (Linux Edition)
 
@@ -71,7 +72,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 | ------------- | ------------- |
 | Ondersteunde taal versies | Python 2,7 en 3,5 |
 | Ondersteunde DSVM-edities      | Linux   |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden `conda` twee wereld wijde omgevingen gemaakt: <br /> * `root`de omgeving die `/anaconda/` zich bevindt in is Python 2,7. <br/> * `py35`de omgeving die `/anaconda/envs/py35`zich bevindt in is python 3,5.       |
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Er worden twee wereld wijde `conda` omgevingen gemaakt: <br /> * `root`de omgeving die zich bevindt in `/anaconda/` is Python 2,7. <br/> * `py35`de omgeving die zich bevindt in `/anaconda/envs/py35` is Python 3,5.       |
 | Koppelingen naar voor beelden      | Er zijn voor beelden van Jupyter-notebooks voor python opgenomen.     |
 | Gerelateerde hulpprogram ma's op de DSVM      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Hoe gebruiken en uitvoeren    
@@ -100,7 +101,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Python-pakketten installeren:
 
-  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, gaat u naar de hoofd-of py35 `source activate` -omgeving met behulp van de opdracht als Administrator of als gebruiker met sudo-machtigingen. Vervolgens kunt u een pakket beheer programma gebruiken, `conda` zoals `pip` of om pakketten te installeren of bij te werken.
+  De standaard python-omgevingen op de DSVM zijn wereld wijde omgevingen die door alle gebruikers kunnen worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, gaat u naar de hoofd-of py35-omgeving met behulp van de `source activate` opdracht als Administrator of als gebruiker met sudo-machtigingen. Vervolgens kunt u een pakket beheer programma gebruiken, zoals `conda` of `pip` om pakketten te installeren of bij te werken.
 
 
 ## <a name="r"></a>R
@@ -130,13 +131,13 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * R-pakketten installeren:
 
-  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R-pakket beheer `install.packages()` uitvoeren om pakketten te installeren of bij te werken.
+  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R-pakket beheer uitvoeren `install.packages()` om pakketten te installeren of bij te werken.
 
 **Linux**:
 
 * Uitvoeren in Terminal:
 
-  Open een Terminal en voer `R`uit.  
+  Open een Terminal en voer uit `R` .  
 
 * Gebruiken in een IDE:
 
@@ -148,7 +149,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * R-pakketten installeren:
 
-  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R-pakket beheer `install.packages()` uitvoeren om pakketten te installeren of bij te werken.
+  R is geïnstalleerd op de DSVM in een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Als u pakketten wilt installeren in de globale omgeving, voert u R uit met een van de voor gaande methoden. Vervolgens kunt u de R-pakket beheer uitvoeren `install.packages()` om pakketten te installeren of bij te werken.
 
 
 ## <a name="julia"></a>Julia
@@ -166,7 +167,7 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Uitvoeren vanaf een opdracht prompt
 
-  Open een opdracht prompt en voer `julia`uit.
+  Open een opdracht prompt en voer uit `julia` .
 * Gebruiken in een IDE:
 
   Gebruiken `Juno` met de Julia IDE die is geïnstalleerd op de DSVM en beschikbaar is als snelkoppeling op het bureau blad.
@@ -177,16 +178,16 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Julia-pakketten installeren:
 
-  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, `Pkg.add()` zoals het installeren of bijwerken van pakketten.
+  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, zoals `Pkg.add()` het installeren of bijwerken van pakketten.
 
 
 **Linux**:
 * Uitvoeren in een Terminal:
 
-  Open een Terminal en voer `julia`uit.
+  Open een Terminal en voer uit `julia` .
 * Gebruiken in een IDE:
 
-  Gebruik `Juno`, waarbij de Julia IDE is geïnstalleerd op de DSVM en beschikbaar is als snelkoppeling voor een **toepassings** menu.
+  Gebruik `Juno` , waarbij de Julia IDE is geïnstalleerd op de DSVM en beschikbaar is als snelkoppeling voor een **toepassings** menu.
 
 * Gebruiken in Jupyter:
 
@@ -194,14 +195,14 @@ De Data Science Virtual Machine (DSVM) wordt geleverd met verschillende vooraf o
 
 * Julia-pakketten installeren:
 
-  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, `Pkg.add()` zoals het installeren of bijwerken van pakketten.
+  De standaard locatie voor Julia is een wereld wijde omgeving die door alle gebruikers kan worden gelezen. Maar alleen beheerders kunnen globale pakketten schrijven en installeren. Voer Julia uit met behulp van een van de voor gaande methoden om pakketten te installeren in de wereld wijde omgeving. Vervolgens kunt u Julia Package Manager-opdrachten uitvoeren, zoals `Pkg.add()` het installeren of bijwerken van pakketten.
 
 ## <a name="other-languages"></a>Andere talen
 
-**C#**: beschikbaar in Windows en toegankelijk via de Visual Studio Community-editie of de `Developer Command Prompt for Visual Studio`, waar u de `csc` opdracht kunt uitvoeren.
+**C#**: beschikbaar in Windows en toegankelijk via de Visual Studio Community-editie of de `Developer Command Prompt for Visual Studio` , waar u de opdracht kunt uitvoeren `csc` .
 
-**Java**: openjdk is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u Java wilt gebruiken, `javac` typt `java` u de of-opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux.
+**Java**: openjdk is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u Java wilt gebruiken, typt u de `javac` of- `java` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux.
 
-**Node. js**: node. js is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u toegang wilt krijgen tot node. `node` js `npm` , typt u de of-opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux. In Windows is de Visual Studio-uitbrei ding voor de node. js-hulpprogram ma's geïnstalleerd om een grafische IDE te bieden om uw node. js-toepassing te ontwikkelen.
+**Node. js**: node. js is beschikbaar op zowel de Linux-als Windows-edities van de DSVM en is ingesteld op het pad. Als u toegang wilt krijgen tot node. js, typt u de `node` of- `npm` opdracht bij een opdracht prompt in Windows of op de bash-shell in Linux. In Windows is de Visual Studio-uitbrei ding voor de node. js-hulpprogram ma's geïnstalleerd om een grafische IDE te bieden om uw node. js-toepassing te ontwikkelen.
 
-**F #**: beschikbaar in Windows en toegankelijk via de Visual Studio Community Edition of op een `Developer Command Prompt for Visual Studio`, waar u de `fsc` opdracht kunt uitvoeren.
+**F #**: beschikbaar in Windows en toegankelijk via de Visual Studio Community Edition of op een `Developer Command Prompt for Visual Studio` , waar u de opdracht kunt uitvoeren `fsc` .

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: fe4dec0d1223468126723a19d5218d6e93707f50
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734634"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558816"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-app die gebruikers aanmeldt: code configuratie
 
@@ -31,7 +31,7 @@ De bibliotheken die worden gebruikt voor het beveiligen van een web-app (en een 
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identiteits model-uitbrei dingen voor .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Micro soft Identity model-extensies voor .NET, die rechtstreeks worden gebruikt door ASP.NET en ASP.NET Core, stelt een reeks dll-bestanden voor die worden uitgevoerd op zowel .NET Framework als .NET core. Vanuit een ASP.NET-of ASP.NET Core-Web-App kunt u de token validatie controleren met behulp van de **TokenValidationParameters** -klasse (met name in sommige partner scenario's). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Ondersteuning voor Java-webtoepassingen |
-| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Ondersteuning voor python-webtoepassingen |
+| ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Ondersteuning voor python-webtoepassingen |
 
 Selecteer het tabblad dat overeenkomt met het platform waarin u bent geïnteresseerd:
 
@@ -65,11 +65,11 @@ U kunt voor meer informatie over de volledige implementatie verwijzen naar dit v
 
 Webtoepassingen die gebruikers aanmelden met behulp van het micro soft-identiteits platform, worden meestal geconfigureerd via configuratie bestanden. De instellingen die u moet invullen zijn:
 
-- De Cloud instantie (`Instance`) als u wilt dat uw app in nationale Clouds wordt uitgevoerd, bijvoorbeeld
-- De doel groep in de Tenant-`TenantId`id ()
-- De client-ID`ClientId`() voor uw toepassing, zoals gekopieerd van de Azure Portal
+- De Cloud instantie ( `Instance` ) als u wilt dat uw app in nationale Clouds wordt uitgevoerd, bijvoorbeeld
+- De doel groep in de Tenant-ID ( `TenantId` )
+- De client-ID ( `ClientId` ) voor uw toepassing, zoals gekopieerd van de Azure Portal
 
-Soms kunnen toepassingen worden parametrized door `Authority`, dat wil zeggen een samen voeging `Instance` van `TenantId`en.
+Soms kunnen toepassingen worden parametrized door `Authority` , dat wil zeggen een samen voeging van `Instance` en `TenantId` .
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -100,7 +100,7 @@ In ASP.NET Core bevinden deze instellingen zich in het bestand [appSettings. jso
 }
 ```
 
-In ASP.NET Core bevat een ander bestand ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) de URL (`applicationUrl`) en de TLS/SSL-poort`sslPort`() voor uw toepassing en verschillende profielen.
+In ASP.NET Core bevat een ander bestand ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)) de URL ( `applicationUrl` ) en de TLS/SSL-poort ( `sslPort` ) voor uw toepassing en verschillende profielen.
 
 ```Json
 {
@@ -132,9 +132,9 @@ In ASP.NET Core bevat een ander bestand ([properties\launchSettings.json](https:
 }
 ```
 
-In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met deze url's. Voor de twee voorafgaande configuratie bestanden zouden ze zijn `https://localhost:44321/signin-oidc`. De reden hiervoor `applicationUrl` is `http://localhost:3110`, maar `sslPort` is opgegeven (44321). `CallbackPath`is `/signin-oidc`, zoals gedefinieerd in `appsettings.json`.
+In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met deze url's. Voor de twee voorafgaande configuratie bestanden zouden ze zijn `https://localhost:44321/signin-oidc` . De reden hiervoor is `applicationUrl` `http://localhost:3110` , maar `sslPort` is opgegeven (44321). `CallbackPath`is `/signin-oidc` , zoals gedefinieerd in `appsettings.json` .
 
-Op dezelfde manier wordt de afmeldings-URI ingesteld op `https://localhost:44321/signout-callback-oidc`.
+Op dezelfde manier wordt de afmeldings-URI ingesteld op `https://localhost:44321/signout-callback-oidc` .
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -160,11 +160,11 @@ In ASP.NET wordt de toepassing geconfigureerd via het bestand [Web. config](http
   </appSettings>
 ```
 
-In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met deze url's. Dat wil zeggen dat ze moeten `https://localhost:44326/`zijn.
+In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met deze url's. Dat wil zeggen dat ze moeten zijn `https://localhost:44326/` .
 
 # <a name="java"></a>[Java](#tab/java)
 
-In Java bevindt de configuratie zich in het bestand [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) , `src/main/resources`dat zich onder bevindt.
+In Java bevindt de configuratie zich in het bestand [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) , dat zich onder bevindt `src/main/resources` .
 
 ```Java
 aad.clientId=Enter_the_Application_Id_here
@@ -174,7 +174,7 @@ aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
 aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met `redirectUri` de instanties die de toepassing definieert. Dat wil zeggen dat ze moeten `http://localhost:8080/msal4jsample/secure/aad` zijn `http://localhost:8080/msal4jsample/graph/me`en.
+In de Azure Portal moeten de antwoord-Uri's die u moet registreren op de **verificatie** pagina voor uw toepassing, overeenkomen met de `redirectUri` instanties die de toepassing definieert. Dat wil zeggen dat ze moeten zijn `http://localhost:8080/msal4jsample/secure/aad` en `http://localhost:8080/msal4jsample/graph/me` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -211,13 +211,13 @@ In ASP.NET Core web-apps (en Web-Api's) is de toepassing beveiligd omdat u een `
 Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorheen Azure AD v 2.0), moet u de volgende code toevoegen. De opmerkingen in de code moeten zichzelf verklaren.
 
 > [!NOTE]
-> Als u uw project start met het standaard ASP.NET Core-webproject in Visual Studio of met `dotnet new mvc --auth SingleAuth` of `dotnet new webapp --auth SingleAuth`, ziet u code zoals in het volgende voor `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));`beeld:.
+> Als u uw project start met het standaard ASP.NET Core-webproject in Visual Studio of met `dotnet new mvc --auth SingleAuth` of `dotnet new webapp --auth SingleAuth` , ziet u code zoals in het volgende voor beeld: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
 > 
 > Deze code maakt gebruik van het verouderde pakket **micro soft. AspNetCore. Authentication. AzureAD. UI** NuGet, dat wordt gebruikt voor het maken van een Azure AD v 1.0-toepassing. In dit artikel wordt uitgelegd hoe u een micro soft Identity platform (Azure AD v 2.0)-toepassing maakt waarmee die code wordt vervangen.
 
 1. Voeg de NuGet-pakketten [micro soft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) en [micro soft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) toe aan uw project. Verwijder het NuGet-pakket micro soft. AspNetCore. Authentication. AzureAD. UI als dit aanwezig is.
 
-2. Werk de code in `ConfigureServices` zodat deze gebruikmaakt van de `AddSignIn` methoden `AddMicrosoftIdentityUI` en.
+2. Werk de code in `ConfigureServices` zodat deze gebruikmaakt van de `AddSignIn` `AddMicrosoftIdentityUI` methoden en.
 
    ```c#
    public class Startup
@@ -237,7 +237,7 @@ Als u verificatie wilt toevoegen met het micro soft-identiteits platform (voorhe
      }).AddMicrosoftIdentityUI();
     ```
 
-3. Schakel in `Configure` de methode in *Startup.cs*verificatie in met een aanroep naar`app.UseAuthentication();`
+3. Schakel in de `Configure` methode in *Startup.cs*verificatie in met een aanroep naar`app.UseAuthentication();`
 
    ```c#
    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -256,11 +256,11 @@ In de bovenstaande code:
   - Hiermee configureert u opties voor het lezen van het configuratie bestand (hier uit de sectie ' AzureAD ')
   - Hiermee configureert u de OpenID Connect Connect-opties, zodat de instantie het micro soft Identity platform-eind punt is.
   - Valideert de uitgever van het token.
-  - Zorgt ervoor dat de claims die overeenkomen met de naam `preferred_username` , zijn toegewezen uit de claim in het id-token.
+  - Zorgt ervoor dat de claims die overeenkomen met de naam, zijn toegewezen uit de `preferred_username` claim in het ID-token.
 
-- Naast het configuratie object kunt u de naam van de configuratie sectie opgeven tijdens het aanroepen `AddSignIn`van. Standaard is dit `AzureAd`.
+- Naast het configuratie object kunt u de naam van de configuratie sectie opgeven tijdens het aanroepen van `AddSignIn` . Standaard is dit `AzureAd` .
 
-- `AddSignIn`heeft andere para meters voor geavanceerde scenario's. U kunt bijvoorbeeld bij het traceren van middleware-gebeurtenissen voor OpenID Connect verbinden u helpen bij het oplossen van problemen met uw webtoepassing als verificatie niet werkt. Als u de optionele `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` para `true` meter instelt op, ziet u hoe informatie wordt verwerkt door de set ASP.net core middleware, terwijl deze wordt uitgevoerd op basis van de HTTP-reactie op `HttpContext.User`de identiteit van de gebruiker in.
+- `AddSignIn`heeft andere para meters voor geavanceerde scenario's. U kunt bijvoorbeeld bij het traceren van middleware-gebeurtenissen voor OpenID Connect verbinden u helpen bij het oplossen van problemen met uw webtoepassing als verificatie niet werkt. Als u de optionele para meter instelt `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` op `true` , ziet u hoe informatie wordt verwerkt door de set ASP.net core middleware, terwijl deze wordt uitgevoerd op basis van de HTTP-reactie op de identiteit van de gebruiker in `HttpContext.User` .
 
 - De `AddMicrosoftIdentityUI` extensie methode is gedefinieerd in **micro soft. Identity. Web. UI**. Het bevat een standaard controller voor het afmelden.
 
@@ -292,9 +292,9 @@ De code die betrekking heeft op verificatie in een ASP.NET-Web-app en Web-Api's 
 
 # <a name="java"></a>[Java](#tab/java)
 
-Het Java-voor beeld maakt gebruik van het lente-Framework. De toepassing is beveiligd omdat u een filter implementeert, waarmee elke HTTP-reactie wordt onderschept. In de Quick start voor Java-Web-apps bevindt zich `AuthFilter` dit filter in. `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`
+Het Java-voor beeld maakt gebruik van het lente-Framework. De toepassing is beveiligd omdat u een filter implementeert, waarmee elke HTTP-reactie wordt onderschept. In de Quick start voor Java-Web-apps bevindt zich dit filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java` .
 
-Het filter verwerkt de OAuth 2,0-autorisatie code stroom en controleert of de gebruiker is geverifieerd`isAuthenticated()` (methode). Als de gebruiker niet is geverifieerd, wordt de URL van de Azure AD-autorisatie-eind punten berekend en wordt de browser omgeleid naar deze URI.
+Het filter verwerkt de OAuth 2,0-autorisatie code stroom en controleert of de gebruiker is geverifieerd ( `isAuthenticated()` methode). Als de gebruiker niet is geverifieerd, wordt de URL van de Azure AD-autorisatie-eind punten berekend en wordt de browser omgeleid naar deze URI.
 
 Wanneer het antwoord arriveert, met daarin de autorisatie code, wordt het token verkregen met behulp van MSAL java. Wanneer het het token uiteindelijk van het token eindpunt ontvangt (op de omleidings-URI), is de gebruiker aangemeld.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6bfbbacd0b30e206a9c1873c4df204117155e044
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465232"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559678"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Uitbrei ding van NVIDIA GPU-stuur programma voor Linux
 
@@ -85,9 +85,9 @@ Alle instellingen zijn optioneel. Standaard wordt de kernel niet bijgewerkt als 
 
 | Naam | Beschrijving | Standaardwaarde | Geldige waarden | Gegevenstype |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | onjuist | de waarde True, false | booleaans |
+| updateOS | De kernel bijwerken, zelfs als deze niet vereist is voor installatie van Stuur Programma's | false | de waarde True, false | booleaans |
 | driverVersion | NV: raster versie van het stuur programma<br> NC/ND: CUDA Toolkit-versie. De meest recente Stuur Programma's voor de gekozen CUDA worden automatisch geïnstalleerd. | meest recente | RASTER: ' 430,30 ', ' 418,70 ', ' 410,92 ', ' 410,71 ', ' 390,75 ', ' 390,57 ', ' 390,42 '<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | tekenreeks |
-| installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | waar | de waarde True, false | booleaans |
+| installCUDA | Installeer de CUDA Toolkit. Alleen relevant voor virtuele machines van de NC/ND-serie. | true | de waarde True, false | booleaans |
 
 
 ## <a name="deployment"></a>Implementatie
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-In het volgende voor beeld worden de bovenstaande Azure Resource Manager-en Power shell-voor beelden Spie gels en worden ook aangepaste instellingen toegevoegd als voor beeld voor een niet-standaard installatie van een stuur programma. Met name wordt de kernel van het besturings systeem bijgewerkt en wordt een specifiek stuur programma van de CUDA Toolkit geïnstalleerd.
+In het volgende voor beeld worden de bovenstaande Azure Resource Manager-en Power shell-voor beelden Spie gels.
 
 ```azurecli
 az vm extension set \
@@ -146,10 +146,22 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 \
+  --version 1.3 \
+  }'
+```
+
+In het volgende voor beeld worden ook twee optionele aangepaste instellingen toegevoegd als voor beeld voor een niet-standaard installatie van een stuur programma. Met name wordt de kernel van het besturings systeem bijgewerkt naar de meest recente versie en wordt een specifiek stuur programma van de CUDA Toolkit geïnstalleerd. Let op: de instellingen zijn optioneel en standaard. Houd er rekening mee dat het bijwerken van de kernel de installatie tijden van de extensie kan verhogen. Ook is het kiezen van een specifieke (oudere) CUDA tolkit-versie mogelijk niet altijd compatibel met nieuwere kernels.
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85" \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +179,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uitvoer voor uitvoering van extensie wordt vastgelegd in het volgende bestand:
+Uitvoer voor uitvoering van extensie wordt vastgelegd in het volgende bestand. Raadpleeg dit bestand om de status van (een wille keurige, langdurige) installatie bij te houden en om eventuele fouten op te lossen.
 
 ```bash
 /var/log/azure/nvidia-vmext-status

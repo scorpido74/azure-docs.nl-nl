@@ -7,38 +7,36 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/05/2020
+ms.openlocfilehash: a7fb5d9274771fb736e9373e343a1d520fdbbe55
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891236"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553142"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
-Een *Analyzer* is een onderdeel van de [Zoek machine voor volledige tekst](search-lucene-query-architecture.md) die verantwoordelijk is voor het verwerken van tekst in query reeksen en geïndexeerde documenten. Verschillende analyse functies bewerken tekst op verschillende manieren, afhankelijk van het scenario. Language analyzers verwerken tekst met taal kundige regels om de zoek kwaliteit te verbeteren, terwijl andere analyse functies meer basis taken uitvoeren, zoals het omzetten van tekens in kleine letters, bijvoorbeeld. 
+Een *Analyzer* is een onderdeel van de [Zoek machine voor volledige tekst](search-lucene-query-architecture.md) die verantwoordelijk is voor het verwerken van tekst in query reeksen en geïndexeerde documenten. Processen zijn transformatieve, waardoor een teken reeks wordt gewijzigd via acties, zoals:
 
-Het volgende video segment wordt snel doorgestuurd naar een uitleg over hoe tekst verwerking werkt in azure Cognitive Search.
++ Verwijder niet-essentiële woorden (stopwords) en interpunctie
++ Zinsdelen en afgebroken woorden in onderdeel delen splitsen
++ Kleine letters in hoofd letters
++ Verminder het aantal woorden in primitieve hoofd formulieren voor efficiëntie van de opslag, zodat treffers kunnen worden gevonden ongeacht het aantal tien tallen
+
+Tijdens het indexeren wordt een analyse uitgevoerd wanneer de index is gemaakt en vervolgens opnieuw tijdens het uitvoeren van de query wanneer de index wordt gelezen. Het is waarschijnlijker dat u de verwachte Zoek resultaten krijgt als u dezelfde analyse functie voor beide bewerkingen gebruikt.
+
+Als u niet bekend bent met tekst analyse, luistert u naar de volgende video clip voor een korte uitleg van hoe tekst verwerking werkt in azure Cognitive Search.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 
-
-Taal analyse functies worden het vaakst gebruikt en er is een standaardtaal analyse toegewezen aan elk Doorzoek bare veld in een Azure Cognitive Search-index. De volgende taal transformaties zijn gebruikelijk tijdens de analyse van tekst:
-
-+ Niet-essentiële woorden (stopwords) en interpunctie worden verwijderd.
-+ Woord groepen en afgebroken woorden worden onderverdeeld in onderdeel onderdelen.
-+ Hoofd letters zijn kleine woorden.
-+ Woorden worden gereduceerd tot hoofd formulieren, zodat er een overeenkomst kan worden gevonden, ongeacht de tien tallen.
-
-Taal analysen converteren een tekst invoer in primitieve of hoofd formulieren die efficiënt zijn voor het opslaan en ophalen van informatie. Conversie vindt plaats tijdens het indexeren, wanneer de index is gemaakt en wanneer de index wordt gelezen tijdens de zoek opdracht. Het is waarschijnlijker dat u de verwachte Zoek resultaten krijgt als u dezelfde analyse functie voor beide bewerkingen gebruikt.
-
 ## <a name="default-analyzer"></a>Standaard-Analyzer  
 
-Azure Cognitive Search maakt gebruik van [Apache Lucene Standard Analyzer (standaard-lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) als standaard, waardoor tekst wordt gesplitst in elementen volgens de regels voor [Unicode-tekst segmenten](https://unicode.org/reports/tr29/) . Daarnaast worden alle tekens in de vorm van een kleine letters door de standaard-Analyzer geconverteerd. Zowel geïndexeerde documenten als zoek termen voeren de analyse uit tijdens het indexeren en verwerken van query's.  
+In azure Cognitive Search query's wordt er automatisch een tekst analyse aangeroepen voor alle teken reeks velden die als doorzoekbaar zijn gemarkeerd. 
 
-Deze wordt automatisch gebruikt voor elk Doorzoek bare veld. U kunt de standaard waarde voor een veld per veld overschrijven. Alternatieve analyse functies kunnen een [taal analyse](index-add-language-analyzers.md), een [aangepaste analyse functie](index-add-custom-analyzers.md)of een vooraf gedefinieerde analyse zijn van de [lijst met beschik bare analyse](index-add-custom-analyzers.md#AnalyzerTable)functies.
+Azure Cognitive Search maakt standaard gebruik van de [Apache Lucene Standard Analyzer (standaard-lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html), die tekst in elementen afbreekt volgens de regels voor [Unicode-tekst segmentatie](https://unicode.org/reports/tr29/) . Daarnaast worden alle tekens in de vorm van een kleine letters door de standaard-Analyzer geconverteerd. Zowel geïndexeerde documenten als zoek termen voeren de analyse uit tijdens het indexeren en verwerken van query's.  
 
+U kunt de standaard waarde voor een veld per veld overschrijven. Alternatieve analyse functies kunnen een [taal analyse](index-add-language-analyzers.md) zijn voor linguïstische verwerking, een [aangepaste analyse functie](index-add-custom-analyzers.md)of een vooraf gedefinieerde analyse van de [lijst met beschik bare analyse](index-add-custom-analyzers.md#AnalyzerTable)functies.
 
 ## <a name="types-of-analyzers"></a>Typen analyse functies
 
@@ -46,7 +44,7 @@ In de volgende lijst wordt beschreven welke analyse functies beschikbaar zijn in
 
 | Categorie | Beschrijving |
 |----------|-------------|
-| [Standard-lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standaard. Er is geen specificatie of configuratie vereist. Deze General-Purpose Analyzer werkt goed voor de meeste talen en scenario's.|
+| [Standard-lucene Analyzer](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standaard. Er is geen specificatie of configuratie vereist. Deze General-Purpose Analyzer werkt goed voor veel talen en scenario's.|
 | Vooraf gedefinieerde analyse functies | Wordt aangeboden als een voltooid product dat is bedoeld om te worden gebruikt als-is. <br/>Er zijn twee typen: speciaal en taal. Wat maakt het ' vooraf gedefinieerd ' dat u naar de naam verwijst, zonder configuratie of aanpassing. <br/><br/>[Gespecialiseerde analyse functies (taal-neutraal)](index-add-custom-analyzers.md#AnalyzerTable) worden gebruikt wanneer tekst invoer gespecialiseerde verwerking of minimale verwerking vereist. Vooraf gedefinieerde analyse functies zonder taal zijn **Asciifolding**, **tref woord**, **patroon**, **eenvoudig**, **Stop**, **spatie**.<br/><br/>[Taal analysen](index-add-language-analyzers.md) worden gebruikt wanneer u ondersteuning voor uitgebreide taal functionaliteit voor afzonderlijke talen nodig hebt. Azure Cognitive Search biedt ondersteuning voor taal analyses van 35 en 50 micro soft voor de verwerking van natuurlijke taal. |
 |[Analysevoorzieningen aanpassen](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Verwijst naar een door de gebruiker gedefinieerde configuratie van een combi natie van bestaande elementen, die bestaat uit één tokenizer (vereist) en optionele filters (char of Token).|
 
@@ -56,7 +54,7 @@ Een paar vooraf gedefinieerde analyse functies, zoals **patroon** of **Stop**, o
 
 1. (alleen voor aangepaste analyse functies) Maak een sectie met de naam **analyse** in de index definitie. Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) en [aangepaste analyse functies toevoegen](index-add-custom-analyzers.md)voor meer informatie.
 
-2. Stel op een [veld definitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in de index de eigenschap **Analyzer** van het veld in op de naam van een doel-Analyzer (bijvoorbeeld `"analyzer" = "keyword"`. Geldige waarden zijn naam van een vooraf gedefinieerde Analyzer, taal analyse of aangepaste Analyzer die ook in het index schema is gedefinieerd. Plan het toewijzen van Analyzer in de index definitie fase voordat de index in de service wordt gemaakt.
+2. Stel op een [veld definitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in de index de eigenschap **Analyzer** van het veld in op de naam van een doel-Analyzer (bijvoorbeeld `"analyzer" = "keyword"` . Geldige waarden zijn naam van een vooraf gedefinieerde Analyzer, taal analyse of aangepaste Analyzer die ook in het index schema is gedefinieerd. Plan het toewijzen van Analyzer in de index definitie fase voordat de index in de service wordt gemaakt.
 
 3. U kunt eventueel, in plaats van één **analyse** -eigenschap, verschillende analyse functies instellen voor indexering en query's uitvoeren met behulp van de veld parameters **indexAnalyzer** en **searchAnalyzer** . U gebruikt verschillende analyse functies voor het voorbereiden en ophalen van gegevens als een van deze activiteiten vereist dat een specifieke trans formatie niet nodig is voor de andere.
 
@@ -191,7 +189,7 @@ Dit voor beeld door lopen:
 
 Standaard-Analyzer is de standaard instelling. Stel dat u de standaard instelling wilt vervangen door een andere vooraf gedefinieerde analyse, zoals de patroon analyse. Als u geen aangepaste opties instelt, hoeft u deze alleen op naam op te geven in de veld definitie.
 
-Het element ' Analyzer ' overschrijft de standaard analyse functie op basis van een veld. Er is geen globale onderdrukking. In dit voor beeld `text1` maakt gebruik van de patroon `text2`analyse en, waarmee geen Analyzer wordt opgegeven, gebruikt de standaard waarde.
+Het element ' Analyzer ' overschrijft de standaard analyse functie op basis van een veld. Er is geen globale onderdrukking. In dit voor beeld `text1` maakt gebruik van de patroon analyse en `text2` , waarmee geen Analyzer wordt opgegeven, gebruikt de standaard waarde.
 
 ~~~~
   {

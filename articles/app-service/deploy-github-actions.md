@@ -6,12 +6,13 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: be6b5f0af17aa8343dcb74fd5f0710d44332ce0e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: tracking-python
+ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193299"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559597"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Implementeren naar App Service met behulp van GitHub-acties
 
@@ -79,12 +80,12 @@ Het instellen van de omgeving kan worden uitgevoerd met behulp van een van de in
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
-|**Javascript** | `actions/setup-node` |
+|**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
 In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgeving voor de verschillende ondersteunde talen wordt ingesteld:
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -127,7 +128,7 @@ Dit is afhankelijk van de taal en voor talen die door Azure App Service worden o
 
 In de volgende voor beelden ziet u het deel van de werk stroom dat de web-app bouwt, in de verschillende ondersteunde talen.
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: 'Run npm'
@@ -188,7 +189,7 @@ Als u uw code wilt implementeren in een App Service-app, gebruikt u de `azure/we
 |---------|---------|
 | **app-naam** | Lang De naam van de App Service-app | 
 | **publicatie profiel** | Beschrijving Inhoud van profiel bestand publiceren met Web Deploy-geheimen |
-| **pakket** | Beschrijving Het pad naar het pakket of de map. *. zip, *. War, *. jar of een map om te implementeren |
+| **package** | Beschrijving Het pad naar het pakket of de map. *. zip, *. War, *. jar of een map om te implementeren |
 | **sleuf naam** | Beschrijving Voer een bestaande sleuf in, behalve de productie sleuf |
 
 ### <a name="deploy-using-publish-profile"></a>Implementeren met een publicatie profiel

@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: c72dbf24df850d8b0f7e5f26a873b78f5664c9e0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: tracking-python
+ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200935"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561165"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>De Azure Cosmos DB Emulator-certificaten exporteren voor gebruik met Java, Python en Node.js
 
@@ -70,7 +71,7 @@ Beide certificaten kunnen opnieuw worden gegenereerd door te klikken op **Gegeve
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Het certificaat gebruiken in Java
 
-Bij het uitvoeren van Java-toepassingen of MongoDB-toepassingen die gebruikmaken van de Java-client, is het eenvoudiger om het certificaat te installeren in `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` het standaard certificaat archief van Java dan door de vlaggen door te geven. Bijvoorbeeld, de opgenomen java-demo toepassing`https://localhost:8081/_explorer/index.html`() is afhankelijk van het standaard certificaat archief.
+Bij het uitvoeren van Java-toepassingen of MongoDB-toepassingen die gebruikmaken van de Java-client, is het eenvoudiger om het certificaat te installeren in het standaard certificaat archief van Java dan door de vlaggen door te geven `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` . Bijvoorbeeld, de opgenomen java-demo toepassing ( `https://localhost:8081/_explorer/index.html` ) is afhankelijk van het standaard certificaat archief.
 
 Volg de instructies in [Een certificaat toevoegen aan het Java CA certificaatarchief](https://docs.microsoft.com/azure/java-add-certificate-ca-store) om het X.509-certificaat te importeren in het standaardcertificaatarchief van Java. Vergeet niet dat u in de map %JAVA_HOME% werkt wanneer u keytool uitvoert.
 

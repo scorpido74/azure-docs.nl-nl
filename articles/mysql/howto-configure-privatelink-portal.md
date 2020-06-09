@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 29400a374c421b0d1835c94ed302c57ba45744d7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7dbce3f2645a1ae4e01dc52d516962297ea07df6
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485410"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488848"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met behulp van portal
 
@@ -173,7 +173,7 @@ In deze sectie maakt u een MySQL-server en voegt u hieraan een persoonlijk eind 
     |||
 
     > [!Note] 
-    > Raadpleeg de configuratie van de [DNS-zone van Azure-Services](../private-link/private-endpoint-dns.md).
+    > Gebruik de vooraf gedefinieerde privé-DNS-zone voor uw service of maak een nieuwe. Raadpleeg de configuratie van de [DNS-zone van Azure-Services](../private-link/private-endpoint-dns.md) voor meer informatie.
 
 1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
 2. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
@@ -237,7 +237,7 @@ Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet
     |SSL|Selecteer **vereist**.|
     ||
 
-5. Selecteer Verbinding maken.
+5. Selecteer Verbinden.
 
 6. Bladeren door data bases vanuit het menu links.
 

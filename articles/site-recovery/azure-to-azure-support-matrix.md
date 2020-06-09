@@ -4,12 +4,12 @@ description: Hiermee wordt een overzicht gegeven van de ondersteuning voor herst
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 9be07290762a7f012417c4442f93f648889c452f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 13bff6006d38489d576a0cbefbf3e7bab8afab37
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323226"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488899"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Ondersteunings matrix voor herstel na nood geval voor Azure-VM'S tussen Azure-regio's
 
@@ -28,7 +28,7 @@ In dit artikel vindt u een overzicht van de ondersteuning en vereisten voor hers
 
 ## <a name="resource-support"></a>Resource-ondersteuning
 
-**Resource actie** | **Details**
+**Resource actie** | **Nadere**
 --- | ---
 **Kluizen verplaatsen tussen resource groepen** | Niet ondersteund
 **Berekenings-en opslag/netwerk bronnen verplaatsen over resource groepen** | Niet ondersteund.<br/><br/> Als u een virtuele machine of gekoppelde onderdelen, zoals opslag/netwerk, verplaatst nadat de VM is gerepliceerd, moet u de replicatie voor de virtuele machine uitschakelen en opnieuw inschakelen.
@@ -66,7 +66,7 @@ Beperkte regio's die zijn gereserveerd voor in-the-Country nood herstel |Duitsla
 
 Deze tabel geeft een overzicht van de ondersteuning van het cache-opslag account dat wordt gebruikt door Site Recovery tijdens de replicatie.
 
-**Instelling** | **Ondersteuning** | **Details**
+**Instelling** | **Ondersteuning** | **Nadere**
 --- | --- | ---
 V2-opslag accounts voor algemeen gebruik (warme en koele laag) | Ondersteund | Het gebruik van GPv2 wordt niet aanbevolen omdat de transactie kosten voor v2 beduidend hoger zijn dan v1 opslag accounts.
 Premium Storage | Niet ondersteund | Standaard opslag accounts worden gebruikt voor cache opslag, om de kosten te optimaliseren.
@@ -80,7 +80,7 @@ Site Recovery ondersteunt replicatie van virtuele Azure-machines met de besturin
 ### <a name="windows"></a>Windows
 
 
-**Besturingssysteem** | **Details**
+**Besturingssysteem** | **Nadere**
 --- | ---
 Windows Server 2019 | Ondersteund voor Server Core, server met bureaublad ervaring.
 Windows Server 2016  | Ondersteunde Server Core, server met bureaublad ervaring.
@@ -96,47 +96,49 @@ Windows 7 (x64) met SP1 en hoger | Van versie [9,30](https://support.microsoft.c
 
 #### <a name="linux"></a>Linux
 
-**Besturingssysteem** | **Details**
+**Besturingssysteem** | **Nadere**
 --- | ---
 Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
 CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), 8,0, 8,1
 Ubuntu 14,04 LTS-server | [Ondersteunde kernel-versies](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu-servers die gebruikmaken van verificatie op basis van wacht woorden en aanmelden en het pakket Cloud-init om Cloud-Vm's te configureren, hebben mogelijk een op wacht woord gebaseerde aanmelding uitgeschakeld bij failover (afhankelijk van de cloudinit-configuratie). Aanmelden op basis van wacht woorden kan opnieuw worden ingeschakeld op de virtuele machine door het wacht woord opnieuw in te stellen in het menu > ondersteuning voor het oplossen van problemen met de >-instellingen (van de VM waarvoor een failover is uitgevoerd in de Azure Portal.
 Ubuntu 18,04 LTS-server | [Ondersteunde kernel-versie](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Debian 7 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [Ondersteunde kernel-versies](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+Debian 7 | Biedt ondersteuning voor alle 7. [ondersteunde versies](#supported-debian-kernel-versions-for-azure-virtual-machines) van de kernel voor *x* -versies
+Debian 8 | Biedt ondersteuning voor alle 8. [ondersteunde versies](#supported-debian-kernel-versions-for-azure-virtual-machines) van de kernel voor *x* -versies
+SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5 [(ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> (* * SP5 is beschikbaar via de nieuwste patch van 9,33 voor Azure en Azure DR-scenario).
 SUSE Linux Enterprise Server 15 | 15 en 15 SP1. [(Ondersteunde kernel-versies)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | Pack<br/><br/> De upgrade van replicerende machines van SP3 naar SP4 wordt niet ondersteund. Als een gerepliceerde machine is bijgewerkt, moet u de replicatie uitschakelen en de replicatie opnieuw inschakelen na de upgrade.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Met de Red Hat compatibele kernel of een onherstelbare versie van de Enter prise kernel van 3, 4 & 5 (UEK3, UEK4, UEK5)
 
+* * Opmerking: ter ondersteuning van de meest recente Linux-kernels binnen 30 dagen na de release, Azure Site Recovery roll-to-pluggable patch van de nieuwste versie van de Mobility-agent. Deze oplossing wordt uitgegerold tussen twee versies van de primaire versie. Volg de stappen die in [dit artikel](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)worden beschreven om bij te werken naar de nieuwste versie van Mobility agent (inclusief Hot Fix patch). Deze patch is momenteel geïmplementeerd voor Mobility-agents die worden gebruikt in azure naar Azure DR scenario.
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Ubuntu-kernel-versies voor virtuele Azure-machines
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/)| 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,31 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,30 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 14,04 LTS | 9,29 | 3.13.0-24-generic naar 3.13.0-170-generic,<br/>3.16.0-25-generic naar 3.16.0-77-generic,<br/>3.19.0-18-generic naar 3.19.0-80-generic,<br/>4.2.0-18-generic naar 4.2.0-42-generic,<br/>4.4.0-21-generic naar 4.4.0-148-generic,<br/>4.15.0-1023-Azure naar 4.15.0-1045-Azure |
 |||
-16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-algemeen naar 4.4.0-178-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-99-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1082-Azure|
+16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21-algemeen naar 4.4.0-178-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-99-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1082-Azure </br> 4.15.0-101-generic & 4.4.0-179-generic tot en met 9,33 patch voor warme reparatie * *|
 16,04 LTS | 9,32 | 4.4.0-21-algemeen naar 4.4.0-171-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-74-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1.066-Azure|
 16,04 LTS | 9,31 | 4.4.0-21-generic naar 4.4.0-170-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-72-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1063-Azure|
 16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-generic naar 4.4.0-166-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-66-generic<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1061-Azure|
 16,04 LTS | 9,29 | 4.4.0-21-generic naar 4.4.0-164-generic,<br/>4.8.0-34-generic naar 4.8.0-58-generic,<br/>4.10.0-14-generic naar 4.10.0-42-generic,<br/>4.11.0-13-algemeen naar 4.11.0-14-generic,<br/>4.13.0-16-generic naar 4.13.0-45-generic,<br/>4.15.0-13-algemeen naar 4.15.0-64-algemeen<br/>4.11.0-1009-Azure naar 4.11.0-1016-Azure,<br/>4.13.0-1005-Azure naar 4.13.0-1018-Azure <br/>4.15.0-1012-Azure naar 4.15.0-1059-Azure|
 |||
-18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-algemeen naar 4.15.0-99-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-47-generic </br> 5.3.0-19-generic tot 5.3.0-51-generic </br> 4.15.0-1009-Azure naar 4.15.0-1082-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1020-Azure|
+18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20-algemeen naar 4.15.0-99-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-generic naar 5.0.0-47-generic </br> 5.3.0-19-generic tot 5.3.0-51-generic </br> 4.15.0-1009-Azure naar 4.15.0-1082-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1036-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1020-Azure </br> 4.15.0-101-generic, 5.0.0-48-algemeen, 5.3.0-1022-Azure & 5.3.0-53-generic tot en met 9,33 Hot Fix patch * *|
 18,04 LTS | 9,32| 4.15.0-20-algemeen naar 4.15.0-74-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-37-generic </br> 5.3.0-19-generic tot 5.3.0-24-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1028-Azure </br> 5.3.0-1007-Azure naar 5.3.0-1009-Azure|
 18,04 LTS | 9,31| 4.15.0-20-algemeen naar 4.15.0-72-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-37-generic </br> 5.3.0-19-generic tot 5.3.0-24-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1025-Azure </br> 5.3.0-1007-Azure|
 18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-algemeen naar 4.15.0-66-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-32-algemeen </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1023-Azure|
 18,04 LTS | [9,29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-algemeen naar 4.15.0-64-algemeen </br> 4.18.0-13-algemeen naar 4.18.0-25-algemeen </br> 5.0.0-15-algemeen naar 5.0.0-29-generic </br> 4.15.0-1009-Azure naar 4.15.0-1037-Azure </br> 4.18.0-1006-Azure naar 4.18.0-1025-Azure </br> 5.0.0-1012-Azure naar 5.0.0-1020-Azure|
 
+* * Opmerking: ter ondersteuning van de meest recente Linux-kernels binnen 30 dagen na de release, Azure Site Recovery roll-to-pluggable patch van de nieuwste versie van de Mobility-agent. Deze oplossing wordt uitgegerold tussen twee versies van de primaire versie. Volg de stappen die in [dit artikel](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)worden beschreven om bij te werken naar de nieuwste versie van Mobility agent (inclusief Hot Fix patch). Deze patch is momenteel geïmplementeerd voor Mobility-agents die worden gebruikt in azure naar Azure DR scenario.
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde Debian-kernel-versies voor virtuele Azure-machines
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 Debian 7 | 9.28, 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.2.0-4-amd64 tot 3.2.0-6-amd64, 3.16.0 -0. bpo. 4-amd64 |
 |||
@@ -145,16 +147,17 @@ Debian 8 | 9,28 | 3.16.0-4-amd64 tot 3.16.0-10-amd64, 4.9.0 -0. bpo. 4-amd64 tot
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Ondersteunde SUSE Linux Enterprise Server 12 kernel-versies voor virtuele Azure-machines
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.34-Azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | patch voor hotfix voor 9,33 Hot Fix | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.34-Azure </br> 4.12.14-16.10-Azure naar 4.12.14-16,7-Azure: 5  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,30 | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.29-Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Alle Stock-SUSE 12 SP1-, SP2-, SP3-en SP4-kernels worden ondersteund.</br></br> 4.4.138-4.7-Azure naar 4.4.180-4.31-Azure,</br>4.12.14-6.3-Azure naar 4.12.14-6.23-Azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Ondersteund SUSE Linux Enterprise Server 15-kernel-versies voor virtuele Azure-machines
 
-**Release** | **Mobility Service-versie** | **Kernelversie** |
+**Heffing** | **Mobility Service-versie** | **Kernelversie** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 en 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Standaard worden alle [Stock-SuSE 15-en 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) ondersteund.</br></br> 4.12.14-5,5-Azure naar 4.12.14-5.47-Azure </br></br> 4.12.14-8.5-Azure naar 4.12.14-8.30-Azure |
 SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Standaard worden alle [Stock-SuSE 15-en 15-kernels](https://www.suse.com/support/kb/doc/?id=000019587) ondersteund.</br></br> 4.12.14-5,5-Azure naar 4.12.14-8.22-Azure |
@@ -169,7 +172,7 @@ SUSE Linux Enterprise Server 15 en 15 SP1 | 9,32 | Standaard worden alle [Stock-
 
 ## <a name="replicated-machines---compute-settings"></a>Gerepliceerde machines-Compute Settings
 
-**Instelling** | **Ondersteuning** | **Details**
+**Instelling** | **Ondersteuning** | **Nadere**
 --- | --- | ---
 Grootte | Een Azure VM-grootte met ten minste twee CPU-kernen en 1 GB RAM | Controleer de [grootte van virtuele Azure-machines](../virtual-machines/windows/sizes.md).
 Beschikbaarheidssets | Ondersteund | Als u replicatie inschakelt voor een virtuele machine van Azure met de standaard opties, wordt er automatisch een beschikbaarheidsset gemaakt, op basis van de instellingen van de bron regio. U kunt deze instellingen wijzigen.
@@ -187,7 +190,7 @@ Proximity-plaatsings groepen | Niet ondersteund | Virtuele machines die zich in 
 
 ## <a name="replicated-machines---disk-actions"></a>Gerepliceerde machines-schijf acties
 
-**Actie** | **Details**
+**Actie** | **Nadere**
 -- | ---
 Grootte van schijf op een gerepliceerde VM wijzigen | Ondersteund op de bron-VM vóór de failover. U hoeft replicatie niet uit te scha kelen of opnieuw in te scha kelen.<br/><br/> Als u de bron-VM na een failover wijzigt, worden de wijzigingen niet vastgelegd.<br/><br/> Als u na de failover de schijf grootte op de Azure-VM wijzigt, worden de wijzigingen niet door Site Recovery vastgelegd en wordt de oorspronkelijke VM-grootte door failback gewijzigd.
 Een schijf toevoegen aan een gerepliceerde VM | Ondersteund
@@ -200,7 +203,7 @@ Deze tabel bevat een overzicht van de ondersteuning voor de Azure VM-besturingss
 - Als u implementeert met de standaard instellingen, maakt Site Recovery automatisch schijven en opslag accounts op basis van de bron instellingen.
 - Als u aanpassingen aanpast, moet u de richt lijnen volgen.
 
-**Onderdeel** | **Ondersteuning** | **Details**
+**Onderdeel** | **Ondersteuning** | **Nadere**
 --- | --- | ---
 Maximale grootte van de besturingssysteem schijf | 2048 GB | Meer [informatie](../virtual-machines/windows/managed-disks-overview.md) over VM-schijven.
 Tijdelijke schijf | Niet ondersteund | De tijdelijke schijf wordt altijd uitgesloten van replicatie.<br/><br/> Sla geen permanente gegevens op de tijdelijke schijf op. [Meer informatie](../virtual-machines/windows/managed-disks-overview.md).
@@ -257,7 +260,7 @@ Premium P20 of P30 of P40 of P50 schijf | 8 kB    | 5 MB/s | 421 GB per schijf
 Premium P20 of P30 of P40 of P50 schijf | 16 kB of meer |20 MB/s | 1684 GB per schijf
 
 ## <a name="replicated-machines---networking"></a>Gerepliceerde computers-netwerken
-**Instelling** | **Ondersteuning** | **Details**
+**Instelling** | **Ondersteuning** | **Nadere**
 --- | --- | ---
 NIC | Maximum aantal dat wordt ondersteund voor een specifieke Azure VM-grootte | Nic's worden gemaakt wanneer de virtuele machine wordt gemaakt tijdens de failover.<br/><br/> Het aantal Nic's op de failover-VM is afhankelijk van het aantal Nic's op de bron-VM wanneer replicatie is ingeschakeld. Als u een NIC toevoegt of verwijdert nadat de replicatie is ingeschakeld, heeft dit geen invloed op het aantal Nic's op de gerepliceerde VM na een failover. <br/><br/> De volg orde van de Nic's na een failover is niet gegarandeerd hetzelfde als de oorspronkelijke volg orde. <br/><br/> U kunt de naam van de netwerk interface kaarten in de doel regio wijzigen op basis van de naamgevings regels van uw organisatie.
 Internet Load Balancer | Ondersteund | De vooraf geconfigureerde load balancer koppelen met behulp van een Azure Automation script in een herstel plan.

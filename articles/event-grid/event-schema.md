@@ -2,18 +2,18 @@
 title: Azure Event Grid-gebeurtenis schema
 description: Hierin worden de eigenschappen en schema's beschreven die voor alle gebeurtenissen aanwezig zijn.Gebeurtenissen bestaan uit een set van vijf vereiste teken reeks eigenschappen en een vereist gegevens object.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114000"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559415"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenis schema
 
@@ -89,13 +89,13 @@ Alle gebeurtenissen hebben dezelfde gegevens op het hoogste niveau:
 | id | tekenreeks | Ja | De unieke id voor de gebeurtenis. |
 | data | object | Nee | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
 | dataVersion | tekenreeks | Nee, maar wordt voorzien van een lege waarde. | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
-| metadataVersion | tekenreeks | Niet vereist, maar indien opgenomen, moet exact overeenkomen met `metadataVersion` het event grid schema, op `1`dit moment. Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| metadataVersion | tekenreeks | Niet vereist, maar indien opgenomen, moet exact overeenkomen met het Event Grid schema, `metadataVersion` op dit moment `1` . Als dat niet het geval is, ontvangt Event Grid een stempel op het evenement. | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegevens object:
 
 * [Azure-abonnementen (beheer bewerkingen)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
-* [Blob Storage](event-schema-blob-storage.md)
+* [Blob-opslag](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
@@ -106,9 +106,9 @@ Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegeve
 
 Voor aangepaste onderwerpen wordt het gegevens object bepaald door de uitgever van de gebeurtenis. De gegevens op het hoogste niveau moeten dezelfde velden hebben als standaard, door de resource gedefinieerde gebeurtenissen.
 
-Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken het onderwerp om gebeurtenissen te filteren en te routeren. Overweeg het pad op te geven waar de gebeurtenis zich voordeed, zodat abonnee servers kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u bijvoorbeeld een drie segment pad opgeeft, zoals `/A/B/C` in het onderwerp, kunnen abonnees filteren op het eerste segment `/A` om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E`. Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
+Bij het publiceren van gebeurtenissen naar aangepaste onderwerpen maakt u onderwerpen voor uw evenementen waarmee abonnees eenvoudig kunnen zien of ze geïnteresseerd zijn in de gebeurtenis. Abonnees gebruiken het onderwerp om gebeurtenissen te filteren en te routeren. Overweeg het pad op te geven waar de gebeurtenis zich voordeed, zodat abonnee servers kunnen filteren op segmenten van dat pad. Met het pad kunnen abonnees de gebeurtenissen op een smalle of brede manier filteren. Als u bijvoorbeeld een drie segment pad opgeeft `/A/B/C` , zoals in het onderwerp, kunnen abonnees filteren op het eerste segment `/A` om een grote set gebeurtenissen te verkrijgen. Deze abonnees ontvangen gebeurtenissen met onderwerpen als `/A/B/C` of `/A/D/E` . Andere abonnees kunnen filteren op `/A/B` om een smalle set gebeurtenissen te verkrijgen.
 
-Soms moet uw onderwerp meer details over wat er is gebeurd. De uitgever van **opslag accounts** levert bijvoorbeeld het onderwerp `/blobServices/default/containers/<container-name>/blobs/<file>` wanneer een bestand wordt toegevoegd aan een container. Een abonnee kan filteren op het pad `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet andere containers in het opslag account. Een abonnee kan ook het achtervoegsel `.txt` filteren of routeren om alleen met tekst bestanden te werken.
+Soms moet uw onderwerp meer details over wat er is gebeurd. De uitgever van **opslag accounts** levert bijvoorbeeld het onderwerp `/blobServices/default/containers/<container-name>/blobs/<file>` Wanneer een bestand wordt toegevoegd aan een container. Een abonnee kan filteren op het pad `/blobServices/default/containers/testcontainer` om alle gebeurtenissen voor die container op te halen, maar niet andere containers in het opslag account. Een abonnee kan ook het achtervoegsel filteren of routeren `.txt` om alleen met tekst bestanden te werken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

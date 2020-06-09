@@ -6,12 +6,13 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.custom: tracking-python
+ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815720"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553856"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor instellen voor uw python-toepassing
 
@@ -19,12 +20,12 @@ Azure Monitor ondersteunt gedistribueerde tracering, metrische verzameling en lo
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 - Installatie van python. In dit artikel wordt [python 3.7.0](https://www.python.org/downloads/)gebruikt, hoewel eerdere versies waarschijnlijk met kleine wijzigingen werken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Een Application Insights resource in Azure Monitor maken
 
@@ -39,7 +40,7 @@ Eerst moet u een Application Insights-resource in Azure Monitor maken, waarmee e
    | Instelling        | Waarde           | Beschrijving  |
    | ------------- |:-------------|:-----|
    | **Naam**      | Wereld wijd unieke waarde | Naam waarmee de app wordt geïdentificeerd die u bewaken |
-   | **Resource Group**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
+   | **Resource groep**     | myResourceGroup      | Naam voor de nieuwe resource groep voor het hosten van Application Insights gegevens |
    | **Locatie** | VS - oost | Een locatie bij u in de buurt of in de buurt van waar de app wordt gehost |
 
 1. Selecteer **Maken**.

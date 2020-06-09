@@ -10,13 +10,13 @@ ms.reviewer: sgilley
 ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: aa5b4c0e78872b7705af385974b9564aaeb25e67
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 38142d76d4ba92fa926d3c1b276feaab409be502
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433521"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555848"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>machine learning-pijp lijnen maken en uitvoeren met Azure Machine Learning SDK
 
@@ -32,7 +32,7 @@ De ML pijp lijnen die u maakt, zijn zichtbaar voor de leden van uw Azure Machine
 
 ML-pijp lijnen gebruiken externe Compute-doelen voor berekening en de opslag van de tussenliggende en laatste gegevens die zijn gekoppeld aan deze pijp lijn. Ze kunnen gegevens lezen en schrijven naar ondersteunde [Azure Storage](https://docs.microsoft.com/azure/storage/) locaties.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
+Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>Resources voor machine learning instellen
 
 Maak de resources die vereist zijn voor het uitvoeren van een ML-pijp lijn:
 
@@ -364,7 +364,7 @@ ws = Run.get_context().experiment.workspace
 
 Zie [gegevens verplaatsen naar en tussen ml-pijplijn stappen (python)](how-to-move-data-in-out-of-pipelines.md)voor meer informatie, inclusief alternatieve manieren om gegevens door te geven en te openen.
 
-## <a name="submit-the-pipeline"></a>De pijp lijn verzenden
+## <a name="submit-the-pipeline"></a>De pijplijn indienen
 
 Wanneer u de pijp lijn verzendt, controleert Azure Machine Learning de afhankelijkheden voor elke stap en uploadt een moment opname van de bronmap die u hebt opgegeven. Als er geen bronmap is opgegeven, wordt de huidige lokale map geüpload. De moment opname wordt ook opgeslagen als onderdeel van het experiment in uw werk ruimte.
 
@@ -398,7 +398,7 @@ Zie voor meer informatie de referentie over de experimentele [klasse](https://do
 
 Bekijk de lijst met al uw pijp lijnen en de details van de uitvoering in Studio:
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. [Uw werk ruimte weer geven](how-to-manage-workspace.md#view).
 
@@ -506,7 +506,7 @@ response = requests.post(rest_endpoint,
 
 U kunt ook een gepubliceerde pijp lijn uitvoeren vanuit de studio:
 
-1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
+1. Meld u aan bij [Azure Machine Learning Studio](https://ml.azure.com).
 
 1. [Uw werk ruimte weer geven](how-to-manage-workspace.md#view).
 

@@ -6,16 +6,17 @@ keywords: hulpprogramma's voor datatechnologie, virtuele machine voor datatechno
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270067"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557490"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Diep gaande lessen en AI-frameworks voor Azure Data Science VM
 Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
@@ -26,8 +27,8 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | ------------- | ------------- |
 | Ondersteunde versies | |
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)     |
-| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Caffe is geïnstalleerd in `/opt/caffe`.   Voor beelden zijn `/opt/caffe/examples`in.|
-| Het uitvoeren van het programma      | gebruik X2Go om u aan te melden bij uw virtuele machine, start een nieuwe terminal en voer het volgende in:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Er wordt een nieuw browser venster geopend met voorbeeld notitieblokken. Binaire bestanden worden geïnstalleerd in/opt/Caffe/build/install/bin.<br/><br/>De geïnstalleerde versie van Caffe vereist python 2,7 en werkt niet met python 3,5, die standaard wordt geactiveerd. Als u wilt overschakelen naar python 2,7 `source activate root` , voert u uit om over te scha kelen naar de Anaconda-omgeving.|    
+| Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Caffe is geïnstalleerd in `/opt/caffe` .   Voor beelden zijn in `/opt/caffe/examples` .|
+| Het uitvoeren van het programma      | gebruik X2Go om u aan te melden bij uw virtuele machine, start een nieuwe terminal en voer het volgende in:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Er wordt een nieuw browser venster geopend met voorbeeld notitieblokken. Binaire bestanden worden geïnstalleerd in/opt/Caffe/build/install/bin.<br/><br/>De geïnstalleerde versie van Caffe vereist python 2,7 en werkt niet met python 3,5, die standaard wordt geactiveerd. Als u wilt overschakelen naar python 2,7, voert `source activate root` u uit om over te scha kelen naar de Anaconda-omgeving.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
@@ -45,7 +46,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde versies | 5.2 |
 | Ondersteunde DSVM-edities      | Linux (Ubuntu)     |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | Chainer is geïnstalleerd in Python 3,5. |
-| Het uitvoeren van het programma      | Terminal: Activeer de python 3,5-omgeving, `python`Voer uit en `import chainer`klik vervolgens. <br/> * JupyterHub: [Maak verbinding met JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en ga vervolgens naar de map Chainer om voorbeeld notitieblokken te vinden.| 
+| Het uitvoeren van het programma      | Terminal: Activeer de python 3,5-omgeving, voer uit `python` en klik vervolgens `import chainer` . <br/> * JupyterHub: [Maak verbinding met JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en ga vervolgens naar de map Chainer om voorbeeld notitieblokken te vinden.| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA-, cuDNN-, NVIDIA-stuurprogramma](https://developer.nvidia.com/cuda-toolkit)
 
@@ -90,7 +91,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde versies | 1.3.0 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | MXNet is geïnstalleerd in `C:\dsvm\tools\mxnet` op Windows en `/dsvm/tools/mxnet` op Ubuntu. Python-bindingen worden geïnstalleerd in Python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) en in Python 3,5 op [Linux](./dsvm-tools-languages.md#python-linux-edition)) R-bindingen zijn ook opgenomen in de Ubuntu-DSVM. |
-| Het uitvoeren van het programma      | Terminal: Activeer de juiste Conda-omgeving en voer `import mxnet`vervolgens uit. <br/>Jupyter: Maak verbinding met [Jupyter](provision-vm.md#access-the-dsvm) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open de `mxnet` map voor voor beelden. |
+| Het uitvoeren van het programma      | Terminal: Activeer de juiste Conda-omgeving en voer vervolgens uit `import mxnet` . <br/>Jupyter: Maak verbinding met [Jupyter](provision-vm.md#access-the-dsvm) of [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)en open de `mxnet` map voor voor beelden. |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
@@ -99,7 +100,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde versies | 1.0.1 |
 | Ondersteunde DSVM-edities      | Windows en Linux   |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | MXNet model server is geïnstalleerd in Python 3,6 op [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) en in Python 3,5 op [Linux](./dsvm-tools-languages.md#python-linux-edition)) |
-| Het uitvoeren van het programma      | Terminal: Voer `sudo systemctl stop jupyterhub` uit om de JupyterHub-service eerst te stoppen, omdat beide luistert op dezelfde poort. Activeer vervolgens de juiste Conda-omgeving en voer uit`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
+| Het uitvoeren van het programma      | Terminal: Voer uit `sudo systemctl stop jupyterhub` om de JupyterHub-service eerst te stoppen, omdat beide luistert op dezelfde poort. Activeer vervolgens de juiste Conda-omgeving en voer uit`mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia-systeem beheer interface (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
@@ -109,7 +110,7 @@ Uitgebreide lessen op het DSVM worden hieronder weer gegeven.
 | Ondersteunde DSVM-edities      | Windows en Linux   |
 | Wat is het voor? | NVIDIA-hulp programma voor het uitvoeren van een query op GPU-activiteit |
 | Hoe wordt het geconfigureerd/geïnstalleerd op de DSVM?  | `nvidia-smi`bevindt zich op het systeempad. |
-| Het uitvoeren van het programma      | Open op een virtuele machine **met GPU**een opdracht prompt (in Windows) of een Terminal (op Linux) en voer deze uit `nvidia-smi`. |
+| Het uitvoeren van het programma      | Open op een virtuele machine **met GPU**een opdracht prompt (in Windows) of een Terminal (op Linux) en voer deze uit `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

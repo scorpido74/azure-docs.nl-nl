@@ -3,14 +3,15 @@ title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676190"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553083"
 ---
-# <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
+# <a name="azure-functions-python-developer-guide"></a>Ontwikkelaarshandleiding voor Azure Functions Python
 
 Dit artikel is een inleiding tot het ontwikkelen van Azure Functions met behulp van python. De onderstaande inhoud veronderstelt dat u de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md)al hebt gelezen.
 
@@ -307,7 +308,7 @@ Dit gedrag voor schalen is voldoende voor veel toepassingen. Toepassingen met ee
 
 In dergelijke gevallen kunt u de prestaties verder verbeteren door gebruik te maken van async-patronen en werk processen in meerdere talen te gebruiken.
 
-### <a name="async"></a>Asynchroon
+### <a name="async"></a>Async
 
 Omdat python een single-threaded runtime is, kan een host-exemplaar voor python slechts één functie aanroep tegelijk verwerken. Voor toepassingen die een groot aantal I/O-gebeurtenissen verwerken en/of I/O-gebonden zijn, kunt u de prestaties verbeteren door functions asynchroon uit te voeren.
 

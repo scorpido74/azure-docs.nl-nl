@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 6bf26a739169c561e95c7376a75166daf9aa9fb0
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 81832e3ccfb3529f94b41b903a8b73fbbe7bbd40
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309982"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553071"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -22,6 +22,69 @@ In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs en tijdelijke oplossingen.
 
+## <a name="2020-06-08"></a>2020-06-08
+
+### <a name="azure-machine-learning-sdk-for-python-v170"></a>Azure Machine Learning SDK voor python v-1.7.0
+
++ **Oplossingen en verbeteringen voor oplossingen**
+  + **Azure-cli-ml**
+    + Het verwijderen van model profileren uit Mir contrib is voltooid door de CLI-opdrachten en pakket afhankelijkheden op te schonen. model Profiler is in core beschikbaar.
+    + Hiermee wordt de minimale Azure CLI-versie bijgewerkt naar 2.3.0
+  + **azureml-automl-core**
+    + Betere uitzonderings bericht in parametrisatie stap fit_transform () vanwege aangepaste transformator parameters.
+    + Voeg ondersteuning toe voor meerdere talen voor diep gaande modellen, zoals BERT in automatische MILLILITERs.
+    + De afgeschafte lag_length-para meter uit de documentatie verwijderen.
+    + De documentatie voor de prognose parameters is verbeterd. De para meter lag_length is afgeschaft.
+  + **azureml-automl-runtime**
+    + De fout wordt opgelost wanneer een van de categorische-kolommen leeg is in de prognose-en test tijd.
+    + Los de uitvoerings fouten op wanneer de lookback-functies zijn ingeschakeld en de gegevens korte korrels bevatten.
+    + Het probleem met gedupliceerd time-index fout bericht wordt opgelost wanneer lags of Rolling Windows is ingesteld op ' auto '.
+    + U hebt het probleem opgelost met Prophet-en Arima-modellen in gegevens sets, die de lookback-functies bevatten.
+    + Toegevoegde data van datums vóór 1677-09-21 of na 2262-04-11 in kolommen overige en vervolgens de datum en tijd in de prognose taken. Verbeterde fout berichten.
+    + De documentatie voor de prognose parameters is verbeterd. De para meter lag_length is afgeschaft.
+    + Betere uitzonderings bericht in parametrisatie stap fit_transform () vanwege aangepaste transformator parameters.
+    + Voeg ondersteuning toe voor meerdere talen voor diep gaande modellen, zoals BERT in automatische MILLILITERs.
+    + Bij cache bewerkingen die resulteren in een aantal OSErrors wordt de gebruikers fout gegenereerd.
+    + Er zijn controles toegevoegd om te zorgen dat training-en validatie gegevens hetzelfde aantal en een set kolommen hebben
+    + Probleem opgelost met het automatisch gegenereerde AutoML-Score script wanneer de gegevens aanhalings tekens bevatten
+    + Het inschakelen van uitleg voor AutoML Prophet en ensembleed modellen die Prophet model bevatten.
+    + Een recent probleem van een klant onthulde een live-site fout, waarbij we berichten volgen langs de cursus over het opruimen van klassen, zelfs wanneer de logica voor de verdeling van de klasse niet correct is ingeschakeld. De logboeken/berichten met deze PR verwijderen.
+  + **azureml-cli-algemeen**
+    + Het verwijderen van model profileren uit Mir contrib is voltooid door de CLI-opdrachten en pakket afhankelijkheden op te schonen. model Profiler is in core beschikbaar.
+  + **azureml-contrib-reinforcementlearning**
+    + Hulp programma belasting testen
+  + **azureml-core**
+    + Wijzigingen in de documentatie op Script_run_config. py
+    + Hiermee wordt een bug opgelost met het afdrukken van de uitvoer van de verzenden-pipeline-CLI
+    + Verbeterde documentatie voor azureml-core/azureml. data
+    + Oplossen van problemen bij het ophalen van een opslag account met de opdracht hdfs getconf
+    + Verbeterde documentatie voor register_azure_blob_container en register_azure_file_share
+  + **azureml-datadrift**
+    + Verbeterde implementatie voor het uitschakelen en inschakelen van dataset drift monitors
+  + **azureml-interpret**
+    + In uitleg client verwijdert u NaNs of inf-bestanden vóór JSON-serialisatie bij het uploaden van artefacten
+    + Bijwerken naar de meest recente versie van interpreteren-Community voor het verbeteren van geheugen fouten voor globale toelichtingen met veel functies en klassen
+    + Voeg true_ys optionele para meter toe aan het uploaden van uitleg om extra functies in de Studio-gebruikers interface in te scha kelen
+    + Verbeter de prestaties van download_model_explanations () en list_model_explanations ()
+    + Kleine aanpassingen aan notebooks, voor hulp bij fout opsporing
+  + **azureml-opendatasets**
+    + voor azureml-opendatapreps is de versie 1.4.0 of hoger van azureml vereist. Er is een waarschuwing toegevoegd als een lagere versie wordt gedetecteerd
+  + **azureml-pipeline-core**
+    + Met deze wijziging kan de gebruiker een optioneel runconfig opgeven voor de moduleVersion bij het aanroepen van de module. Publish_python_script.
+    + Het inschakelen van knooppunt accounts kan een pijplijn parameter zijn in ParallelRunStep in azureml. pipeline. stappen
+  + **azureml-pipeline-steps**
+    + Met deze wijziging kan de gebruiker een optioneel runconfig opgeven voor de moduleVersion bij het aanroepen van de module. Publish_python_script.
+  + **azureml-train-automl-client**
+    + Voeg ondersteuning toe voor meerdere talen voor diep gaande modellen, zoals BERT in automatische MILLILITERs.
+    + De afgeschafte lag_length-para meter uit de documentatie verwijderen.
+    + De documentatie voor de prognose parameters is verbeterd. De para meter lag_length is afgeschaft.
+  + **azureml-train-automl-runtime**
+    + Het inschakelen van uitleg voor AutoML Prophet en ensembleed modellen die Prophet model bevatten.
+    + Documentatie-updates voor azureml-Train-automl-*-pakketten.
+  + **azureml-train-core**
+    + Ondersteuning voor tensor flow-versie 2,1 in de PyTorch-estimator
+    + Verbeteringen aan het pakket voor de azureml-trein kern.
+  
 ## <a name="2020-05-26"></a>2020-05-26
 
 ### <a name="azure-machine-learning-sdk-for-python-v160"></a>Azure Machine Learning SDK voor python v-1.6.0
@@ -1258,7 +1321,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + U hebt klassen toegevoegd om Amerikaanse populatie per regio en post te krijgen.
   + **azureml-pipeline-core**
     + De eigenschap label is toegevoegd aan de definitie van de invoer-en uitvoer poort.
-  + **azureml-telemetrie**
+  + **azureml-telemetry**
     + Er is een onjuiste telemetrie-configuratie hersteld.
   + **azureml-Train-automl**
     + Er is een fout opgetreden bij het uitvoeren van een probleem waarbij tijdens de installatie fouten geen logboek wordt ontvangen van het veld ' Errors ' voor de installatie en daarom niet is opgeslagen in de bovenliggende run ' Errors '.
@@ -1424,7 +1487,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + DBFS Data Store wordt nu ondersteund voor invoer en uitvoer in DatabricksStep.
     + Bijgewerkte documentatie voor Azure Batch stap met betrekking tot invoer/uitvoer.
     + In AzureBatchStep is *delete_batch_job_after_finish* standaard waarde gewijzigd in *True*.
-  + **azureml-telemetry**
+  + **azureml-telemetrie**
     +  Verplaats azureml-contrib-opendatasets naar azureml-opendatasets.
     + Toestaan dat open gegevensset-klassen kunnen worden geregistreerd voor Azure Machine Learning werk ruimte en gebruikmaken van de functies van AML-gegevensset naadloos.
     + Verbeter de NoaaIsdWeather-verrijkings prestaties in een niet-SPARK-versie aanzienlijk.
@@ -1622,13 +1685,13 @@ Er is een wijziging doorgegaan die de prestaties verbeterd, omdat deze problemen
   + U kunt nu * * globbing gebruiken bij het lezen van Azure Blob Storage.
     + zoals.`dprep.read_csv(path='https://yourblob.blob.core.windows.net/yourcontainer/**/data/*.csv')`
 
-+ **Opgeloste fouten**
++ **Oplossingen voor oplossingen**
   + Er is een fout met betrekking tot het lezen van een Parquet-bestand van een externe bron (Azure-Blob) opgelost.
 
 ## <a name="2019-05-14"></a>2019-05-14
 
 ### <a name="azure-machine-learning-sdk-for-python-v1039"></a>Azure Machine Learning SDK voor python v-1.0.39
-+ **Gewijzigde**
++ **Wijzigingen**
   + De auto_prepare_environment-optie voor het uitvoeren van de configuratie wordt afgeschaft, waarbij automatisch voorbereiden de standaard instelling wordt.
 
 ## <a name="2019-05-08"></a>2019-05-08
@@ -1832,7 +1895,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Azure Machine Learning SDK voor python v-1.0.18
 
- + **Gewijzigde**
+ + **Wijzigingen**
    + Het azureml-tensorboard-pakket vervangt azureml-contrib-tensorboard.
    + Met deze release kunt u een gebruikers account instellen op uw beheerde Compute-Cluster (amlcompute), terwijl u het maakt. U kunt dit doen door deze eigenschappen door te geven in de inrichtings configuratie. Meer informatie kunt u vinden in de [SDK-referentie documentatie](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--).
 
@@ -1892,7 +1955,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
   + Azure Machine Learning pijp lijnen hebben AzureBatchStep ([notebook](https://aka.ms/pl-azbatch)), HyperDriveStep (notebook) en op tijd gebaseerde plannings functionaliteit ([notebook](https://aka.ms/pl-schedule)) toegevoegd.
   +  DataTranferStep is bijgewerkt om te werken met Azure SQL Database en Azure data base for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)).
 
-+ **Gewijzigde**
++ **Wijzigingen**
   + Afgeschaft `PublishedPipeline.get_published_pipeline` ten gunste van `PublishedPipeline.get` .
   + Afgeschaft `Schedule.get_schedule` ten gunste van `Schedule.get` .
 
@@ -1901,7 +1964,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
 + **Nieuwe functies**
   + Data prep ondersteunt nu het lezen van een Azure-SQL database met behulp van gegevens opslag.
 
-+ **Gewijzigde**
++ **Wijzigingen**
   + Verbeterde geheugen prestaties van bepaalde bewerkingen op grote gegevens.
   + `read_pandas_dataframe()`u moet nu `temp_folder` opgeven.
   + De `name` eigenschap op `ColumnProfile` is afgeschaft: gebruik `column_name` in plaats daarvan.
@@ -1920,7 +1983,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
 
 ### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning data prep SDK v 1.0.8
 
-+ **Opgeloste fouten**
++ **Oplossingen voor oplossingen**
   + De prestaties van het ophalen van gegevens profielen is verbeterd.
   + Vaste kleine fouten met betrekking tot fout rapportage.
 
@@ -1954,7 +2017,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure Machine Learning data prep SDK v 1.0.6
 
-+ **Opgeloste fouten**
++ **Oplossingen voor oplossingen**
   + Probleem opgelost met het lezen van open bare Azure Blob-containers die zijn gelezen op Spark
 
 ## <a name="2018-12-20"></a>2018-12-20
@@ -1970,7 +2033,7 @@ Opmerking: de python-SDK voor gegevens voorbereiding wordt niet meer geïnstalle
   + De mogelijkheid is toegevoegd om het retour type van sommige expressies te controleren om ervoor te zorgen dat de type consistentie en het vroegst mislukken.
   + U kunt nu oproepen `parse_json` voor het parseren van waarden in een kolom als JSON-objecten en deze uitbreiden in meerdere kolommen.
 
-+ **Opgeloste fouten**
++ **Oplossingen voor oplossingen**
   + Er is een fout opgelost die is vastgelopen `set_column_types` in Python 3.5.2.
   + Er is een fout opgelost die is vastgelopen tijdens het verbinden met de gegevens opslag met behulp van een AML-afbeelding.
 
@@ -2009,7 +2072,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met behulp van Azur
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **Vernieuwd**
++ **Bijgewerkt**
   + Voor machine learning pijp lijnen:
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) accepteert nu runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) wordt nu gekopieerd van en naar een SQL-gegevens bron
@@ -2021,7 +2084,7 @@ Azure Machine Learning Compute kan worden gemaakt in Python, met behulp van Azur
 + **Wijzigingen die fouten veroorzaken**
   * `SummaryFunction.N`is gewijzigd in `SummaryFunction.Count` .
 
-+ **Oplossingen voor oplossingen**
++ **Opgeloste fouten**
   * Gebruik het meest recente AML run-token bij het lezen van en schrijven naar gegevens opslag op externe uitvoeringen. Als het AML-uitvoerings token is bijgewerkt in Python, wordt de data prep-runtime echter niet bijgewerkt met het bijgewerkte token voor de AML-uitvoering.
   * Meer duidelijkere fout berichten
   * to_spark_dataframe () zal niet langer vastlopen als Spark gebruikmaakt van `Kryo` serialisatie
@@ -2074,7 +2137,7 @@ Lees voor meer informatie over de SDK voor gegevens voorbereiding door [referent
    * Kan alle kolom gegevens typen ophalen uit een gegevens stroom of een Data profiel door het aanroepen van`.dtypes`
    * Kan het aantal rijen ophalen van een gegevens stroom of een Data profiel door het aanroepen van`.row_count`
 
-+ **Oplossingen voor oplossingen**
++ **Opgeloste fouten**
    * Vaste lange en dubbele conversie
    * Vaste bevestiging na elke kolom toevoegen
    * Er is een probleem met FuzzyGrouping opgelost, waarbij in sommige gevallen geen groepen worden gedetecteerd
@@ -2179,7 +2242,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) met bekende bugs 
   * De extra index logica is verwijderd.
   * Filter verwijderd uit get_output-API.
 
-+ **Pipelines**
++ **Pijplijnen**
   * Een methode pijplijn. publish () is toegevoegd om een pijp lijn rechtstreeks te publiceren, zonder eerst een uitvoering uit te voeren.
   * Er is een methode PipelineRun. get_pipeline_runs () toegevoegd voor het ophalen van de pijplijn uitvoeringen die zijn gegenereerd op basis van een gepubliceerde pijp lijn.
 

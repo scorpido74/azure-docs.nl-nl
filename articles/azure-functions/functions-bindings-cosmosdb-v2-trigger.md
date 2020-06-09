@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: e7a422e0637c6343e1b2757fdf9aee7375ee2c3f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277568"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561630"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Cosmos DB trigger voor Azure Functions 2. x
 
@@ -90,7 +91,7 @@ Dit is de C#-script code:
     }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een Cosmos DB trigger binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie schrijft logboek berichten wanneer Cosmos DB records worden toegevoegd of gewijzigd.
 
@@ -169,7 +170,7 @@ Deze functie wordt aangeroepen wanneer er invoeg-of update bewerkingen zijn in d
 ```
 
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBTrigger` functies de annotatie voor para meters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable `Optional<T>`-waarden met.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBTrigger` annotatie voor para meters waarvan de waarde afkomstig is van Cosmos db.  Deze aantekening kan worden gebruikt met systeem eigen Java-typen, Pojo's of nullable-waarden met `Optional<T>` .
 
 ---
 
@@ -198,7 +199,7 @@ Zie [trigger](#example)voor een volledig voor beeld.
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -208,27 +209,27 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Gebruik in de [runtime-bibliotheek van Java](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)- `@CosmosDBInput` functies de annotatie voor para meters die gegevens uit Cosmos DB lezen.
+Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)de `@CosmosDBInput` annotatie voor para meters die gegevens uit Cosmos DB lezen.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `CosmosDBTrigger` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDBTrigger` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger`. |
-|**direction** | N.v.t. | Moet worden ingesteld op `in`. Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
+|**type** | N.v.t. | Moet worden ingesteld op `cosmosDBTrigger` . |
+|**direction** | N.v.t. | Moet worden ingesteld op `in` . Deze para meter wordt automatisch ingesteld wanneer u de trigger maakt in de Azure Portal. |
 |**naam** | N.v.t. | De naam van de variabele die wordt gebruikt in de functie code die de lijst met documenten met wijzigingen vertegenwoordigt. |
 |**connectionStringSetting**|**ConnectionStringSetting** | De naam van een app-instelling die de connection string bevat die wordt gebruikt om verbinding te maken met het Azure Cosmos DB account dat wordt bewaakt. |
 |**databaseName**|**DatabaseName**  | De naam van de Azure Cosmos DB-Data Base met de verzameling die wordt bewaakt. |
-|**collectionName** |**CollectionName** | De naam van de verzameling die wordt bewaakt. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Beschrijving De naam van een app-instelling die de connection string bevat naar het Azure Cosmos DB-account waarin de lease verzameling zich bevindt. Als deze niet wordt ingesteld `connectionStringSetting` , wordt de waarde gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. De connection string voor de leases-verzameling moet schrijf machtigingen hebben.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | Beschrijving De naam van de data base die de verzameling bevat die wordt gebruikt voor het opslaan van leases. Als deze niet wordt ingesteld, wordt de `databaseName` waarde van de instelling gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. |
+|**collectionName** |**NaamVerzameling** | De naam van de verzameling die wordt bewaakt. |
+|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Beschrijving De naam van een app-instelling die de connection string bevat naar het Azure Cosmos DB-account waarin de lease verzameling zich bevindt. Als deze niet wordt ingesteld, `connectionStringSetting` wordt de waarde gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. De connection string voor de leases-verzameling moet schrijf machtigingen hebben.|
+|**leaseDatabaseName** |**LeaseDatabaseName** | Beschrijving De naam van de data base die de verzameling bevat die wordt gebruikt voor het opslaan van leases. Als deze niet wordt ingesteld, wordt de waarde van de `databaseName` instelling gebruikt. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt in de portal. |
 |**leaseCollectionName** | **LeaseCollectionName** | Beschrijving De naam van de verzameling die wordt gebruikt voor het opslaan van leases. Als deze niet wordt ingesteld, `leases` wordt de waarde gebruikt. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Beschrijving Als deze eigenschap `true`is ingesteld op, wordt de leases-verzameling automatisch gemaakt als deze nog niet bestaat. De standaardwaarde is `false`. |
-|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| Beschrijving Hiermee wordt het aantal aanvraag eenheden gedefinieerd dat moet worden toegewezen wanneer de leases-verzameling wordt gemaakt. Deze instelling wordt alleen gebruikt wanneer `createLeaseCollectionIfNotExists` is ingesteld op `true`. Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt met behulp van de portal.
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Beschrijving Als deze eigenschap `true` is ingesteld op, wordt de leases-verzameling automatisch gemaakt als deze nog niet bestaat. De standaardwaarde is `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| Beschrijving Hiermee wordt het aantal aanvraag eenheden gedefinieerd dat moet worden toegewezen wanneer de leases-verzameling wordt gemaakt. Deze instelling wordt alleen gebruikt wanneer `createLeaseCollectionIfNotExists` is ingesteld op `true` . Deze para meter wordt automatisch ingesteld wanneer de binding wordt gemaakt met behulp van de portal.
 |**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Beschrijving Als deze optie is ingesteld, wordt de waarde als voor voegsel toegevoegd aan de leases die zijn gemaakt in de lease verzameling voor deze functie. Met een voor voegsel kunnen twee afzonderlijke Azure Functions dezelfde lease verzameling delen door gebruik te maken van verschillende voor voegsels.
 |**feedPollDelay**| **FeedPollDelay**| Beschrijving De tijd (in milliseconden) voor de vertraging tussen het pollen van een partitie voor nieuwe wijzigingen in de feed, nadat alle huidige wijzigingen zijn vertraagd. De standaard waarde is 5.000 milliseconden of 5 seconden.
 |**leaseAcquireInterval**| **LeaseAcquireInterval**| Beschrijving Als deze instelling is ingesteld, wordt in milliseconden het interval voor het starten van een taak gedefinieerd om te berekenen of de partities gelijkmatig worden verdeeld over bekende exemplaren van hosts. De standaard waarde is 13000 (13 seconden).
@@ -236,7 +237,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 |**leaseRenewInterval**| **LeaseRenewInterval**| Beschrijving Wanneer dit is ingesteld, wordt in milliseconden het Vernieuwings interval voor alle leases gedefinieerd voor partities die momenteel door een instantie worden beheerd. De standaard waarde is 17000 (17 seconden).
 |**checkpointFrequency**| **CheckpointFrequency**| Beschrijving Als deze instelling is ingesteld, wordt in milliseconden het interval tussen de controle punten van de lease gedefinieerd. De standaard waarde is altijd na elke functie aanroep.
 |**maxItemsPerInvocation**| **MaxItemsPerInvocation**| Beschrijving Als deze eigenschap is ingesteld, wordt het maximum aantal items ingesteld dat per functie aanroep wordt ontvangen. Als bewerkingen in de bewaakte verzameling worden uitgevoerd via opgeslagen procedures, blijft het [transactie bereik](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) behouden bij het lezen van items van de wijzigings feed. Als gevolg hiervan kan het aantal ontvangen items hoger zijn dan de opgegeven waarde, zodat de items die door dezelfde trans actie worden gewijzigd, worden geretourneerd als onderdeel van één atomische batch.
-|**startFromBeginning**| **StartFromBeginning**| Beschrijving Met deze optie geeft u aan dat de trigger wijzigingen moet lezen aan het begin van de wijzigings geschiedenis van de verzameling, in plaats van vanaf de huidige tijd. Lezen vanaf het begin werkt alleen de eerste keer dat de trigger wordt gestart, zoals bij volgende uitvoeringen, de controle punten al zijn opgeslagen. Als u deze optie `true` instelt op wanneer er al leases zijn gemaakt, heeft dit geen effect. |
+|**startFromBeginning**| **StartFromBeginning**| Beschrijving Met deze optie geeft u aan dat de trigger wijzigingen moet lezen aan het begin van de wijzigings geschiedenis van de verzameling, in plaats van vanaf de huidige tijd. Lezen vanaf het begin werkt alleen de eerste keer dat de trigger wordt gestart, zoals bij volgende uitvoeringen, de controle punten al zijn opgeslagen. Als u deze optie instelt op `true` wanneer er al leases zijn gemaakt, heeft dit geen effect. |
 |**preferredLocations**| **PreferredLocations**| Beschrijving Hiermee worden voorkeurs locaties (regio's) gedefinieerd voor accounts met geo-gerepliceerde data bases in de Azure Cosmos DB-service. De waarden moeten worden gescheiden door komma's. Bijvoorbeeld ' vs-Oost, VS Zuid-Centraal, Europa-noord '. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -246,7 +247,7 @@ De volgende tabel bevat informatie over de binding configuratie-eigenschappen di
 Voor de trigger is een tweede verzameling vereist die wordt gebruikt voor het opslaan van _leases_ via de partities. Zowel de verzameling die wordt bewaakt als de verzameling die de leases bevat, moet beschikbaar zijn voor de werking van de trigger.
 
 >[!IMPORTANT]
-> Als er meerdere functies zijn geconfigureerd voor het gebruik van een Cosmos DB trigger voor dezelfde verzameling, moeten voor elk van de functies een toegewezen lease verzameling worden gebruikt `LeaseCollectionPrefix` , of moet voor elke functie een andere worden opgegeven. Anders wordt slechts een van de functies geactiveerd. Zie de [sectie configuratie](#configuration)voor meer informatie over het voor voegsel.
+> Als er meerdere functies zijn geconfigureerd voor het gebruik van een Cosmos DB trigger voor dezelfde verzameling, moeten voor elk van de functies een toegewezen lease verzameling worden gebruikt, of moet voor elke functie een andere worden opgegeven `LeaseCollectionPrefix` . Anders wordt slechts een van de functies geactiveerd. Zie de [sectie configuratie](#configuration)voor meer informatie over het voor voegsel.
 
 De trigger geeft niet aan of een document is bijgewerkt of ingevoegd, maar het document zelf wordt geleverd. Als u updates wilt afhandelen en anders wilt invoegen, kunt u dit doen door tijds tempel velden te implementeren voor invoegen of bijwerken.
 

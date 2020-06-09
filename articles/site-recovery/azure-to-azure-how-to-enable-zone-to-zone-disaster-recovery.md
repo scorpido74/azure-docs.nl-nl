@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996496"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488933"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zone inschakelen voor herstel na nood geval voor Azure virtual machines
 
@@ -20,7 +20,7 @@ In dit artikel wordt beschreven hoe u virtuele Azure-machines kunt repliceren, f
 
 >[!NOTE]
 >
->- Site Recovery biedt momenteel geen ondersteuning voor herstel plannen voor zone-naar zone herstel na nood gevallen. 
+>- Site Recovery biedt momenteel geen ondersteuning voor herstel plannen voor zone-naar zone herstel na nood gevallen via de portal. Gebruik Power shell of REST API om herstel plannen te gebruiken voor zones voor herstel na nood gevallen. 
 >- Ondersteuning voor zone-naar-zone herstel na nood gevallen is momenteel beperkt tot twee regio's: Zuidoost-Azië en UK-zuid.  
 
 Site Recovery-service draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen door uw zakelijke apps tijdens geplande en ongeplande uitval te laten werken. Het is de aanbevolen optie voor nood herstel om ervoor te zorgen dat uw toepassingen actief blijven als er regionale storingen optreden.

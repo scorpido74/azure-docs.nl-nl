@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983445"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559472"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -84,11 +85,11 @@ Dit probleem wordt opgelost met pijp lijnen. Azure Machine Learning zijn automat
 
 Daarnaast kan de uitvoer van een stap, indien gewenst, opnieuw worden gebruikt. Als u hergebruik als een mogelijkheid opgeeft en er geen upstream-afhankelijkheden zijn waarmee herberekening wordt geactiveerd, gebruikt de pipeline-service een versie van de resultaten in de cache. Een dergelijk hergebruik kan de ontwikkelings tijd aanzienlijk verminderen. Als u een complexe gegevens voorbereidings taak hebt, moet u deze waarschijnlijk vaker opnieuw uitvoeren dan strikt nood zakelijk is. Met pijp lijnen hebt u het volgende gedaan: als dat nodig is, wordt de stap uitgevoerd, als dat niet het geval is.
 
-Al deze afhankelijkheids analyse, indeling en activering worden afgehandeld door Azure Machine Learning wanneer u een object van een [pijp lijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) maakt, het doorgeeft `Experiment`aan een en `submit()`aanroepen. 
+Al deze afhankelijkheids analyse, indeling en activering worden afgehandeld door Azure Machine Learning wanneer u een object van een [pijp lijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) maakt, het doorgeeft aan een `Experiment` en aanroepen `submit()` . 
 
 ### <a name="coordinating-the-steps-involved"></a>De betrokken stappen coördineren
 
-Wanneer u een `Pipeline` -object maakt en uitvoert, worden de volgende stappen op hoog niveau uitgevoerd:
+Wanneer u een-object maakt en uitvoert `Pipeline` , worden de volgende stappen op hoog niveau uitgevoerd:
 
 + Voor elke stap berekent de service vereisten voor:
     + Hardware Compute-resources
@@ -98,7 +99,7 @@ Wanneer u een `Pipeline` -object maakt en uitvoert, worden de volgende stappen o
 + De service bepaalt de afhankelijkheden tussen de stappen, wat resulteert in een dynamische uitvoerings grafiek
 + Wanneer elk knoop punt in de uitvoerings grafiek wordt uitgevoerd:
     + Met de service worden de benodigde hardware-en software omgeving geconfigureerd (mogelijk worden bestaande resources opnieuw gebruikt)
-    + De stap wordt uitgevoerd, zodat informatie over logboek registratie en controle `Experiment` kan worden verstrekt aan het betreffende object
+    + De stap wordt uitgevoerd, zodat informatie over logboek registratie en controle kan worden verstrekt aan het betreffende `Experiment` object
     + Wanneer de stap is voltooid, worden de uitvoer voor bereid als invoer voor de volgende stap en/of naar opslag geschreven
     + Resources die niet meer nodig zijn, worden voltooid en ontkoppeld
 
@@ -106,7 +107,7 @@ Wanneer u een `Pipeline` -object maakt en uitvoert, worden de volgende stappen o
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Pijp lijnen bouwen met de python-SDK
 
-In de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)is een pijp lijn een python-object dat is gedefinieerd `azureml.pipeline.core` in de module. Een [pijplijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) object bevat een geordende sequentie van een of meer [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objecten. De `PipelineStep` klasse is abstract en de daad werkelijke stappen zijn subklassen, zoals [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)of [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). De [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) -klasse bevat een herbruikbare reeks stappen die kunnen worden gedeeld tussen pijp lijnen. Een `Pipeline` uitvoering als onderdeel van een `Experiment`.
+In de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)is een pijp lijn een python-object dat is gedefinieerd in de `azureml.pipeline.core` module. Een [pijplijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) object bevat een geordende sequentie van een of meer [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objecten. De `PipelineStep` klasse is abstract en de daad werkelijke stappen zijn subklassen, zoals [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)of [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). De [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) -klasse bevat een herbruikbare reeks stappen die kunnen worden gedeeld tussen pijp lijnen. Een `Pipeline` uitvoering als onderdeel van een `Experiment` .
 
 Een Azure ML-pijp lijn is gekoppeld aan een Azure Machine Learning-werk ruimte en een pijplijn stap is gekoppeld aan een berekenings doel dat in die werk ruimte beschikbaar is. Zie [Azure machine learning-werk ruimten maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) of [Wat zijn reken doelen in azure machine learning?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)voor meer informatie.
 
@@ -118,20 +119,20 @@ Ontwikkel aars die de voor keur geven aan een visueel ontwerp vlak kunnen de Azu
 
 Wanneer u pijp lijnen visueel ontwerpt, worden de invoer en uitvoer van een stap zichtbaar weer gegeven. U kunt gegevens verbindingen slepen en neerzetten om de gegevensstroom van uw pijp lijn snel te begrijpen en te wijzigen.
  
-![Voor beeld van Azure Machine Learning Designer](./media/concept-designer/designer-drag-and-drop.gif)
+![Voorbeeld van ontwerpfunctie van Azure Machine Learning](./media/concept-designer/designer-drag-and-drop.gif)
 
 ### <a name="understanding-the-execution-graph"></a>Uitleg over de uitvoerings grafiek
 
 De stappen binnen een pijp lijn kunnen afhankelijkheden hebben met andere stappen. De Azure ML pijp lijn-service is het werk van deze afhankelijkheden te analyseren en te organiseren. De knoop punten in het resulterende ' uitvoerings grafiek ' zijn verwerkings stappen. Elke stap kan betrekking hebben op het maken of opnieuw gebruiken van een bepaalde combi natie van hardware en software, het opnieuw gebruiken van resultaten in de cache, enzovoort. De indeling en Optima Lise ring van de service van deze uitvoerings grafiek kan een aanzienlijk snellere fase versnellen en de kosten verlagen. 
 
-Omdat stappen onafhankelijk van elkaar worden uitgevoerd, moeten objecten die de invoer-en uitvoer gegevens bevatten, extern worden gedefinieerd. Dit is de rol van [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)en [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), Objects. Deze gegevens objecten zijn gekoppeld aan een [gegevens opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) object dat de opslag configuratie inkapselt. De `PipelineStep` basis klasse wordt altijd gemaakt met een `name` teken reeks, een lijst `inputs`met en een lijst van `outputs`. Normaal gesp roken bevat het ook een lijst `arguments` met en wordt er vaak een lijst met `resource_inputs`weer geven. Subklassen hebben over het algemeen ook extra argumenten (bijvoorbeeld: `PythonScriptStep` de bestands naam en het pad van het script moet worden uitgevoerd). 
+Omdat stappen onafhankelijk van elkaar worden uitgevoerd, moeten objecten die de invoer-en uitvoer gegevens bevatten, extern worden gedefinieerd. Dit is de rol van [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)en [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), Objects. Deze gegevens objecten zijn gekoppeld aan een [gegevens opslag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) object dat de opslag configuratie inkapselt. De `PipelineStep` basis klasse wordt altijd gemaakt met een `name` teken reeks, een lijst met `inputs` en een lijst van `outputs` . Normaal gesp roken bevat het ook een lijst met `arguments` en wordt er vaak een lijst met weer geven `resource_inputs` . Subklassen hebben over het algemeen ook extra argumenten (bijvoorbeeld: `PythonScriptStep` de bestands naam en het pad van het script moet worden uitgevoerd). 
 
 De uitvoerings grafiek is acyclische, maar pijp lijnen kunnen worden uitgevoerd op een terugkerende planning en kunnen python-scripts uitvoeren die status informatie kunnen schrijven naar het bestands systeem, waardoor het mogelijk is om complexe profielen te maken. Als u uw pijp lijn zo ontwerpt dat bepaalde stappen parallel of asynchroon worden uitgevoerd, Azure Machine Learning de afhankelijkheids analyse en coördinatie van de uitwaaiers en de samen werking op transparante wijze afhandelen. Over het algemeen hoeft u zich niet meer te houden aan de details van het uitvoerings diagram, maar het is beschikbaar via het kenmerk [pipeline. Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) . 
 
 
 ### <a name="a-simple-python-pipeline"></a>Een eenvoudige python-pijp lijn
 
-Dit fragment toont de objecten en aanroepen die nodig zijn om een basis `Pipeline`te maken en uit te voeren:
+Dit fragment toont de objecten en aanroepen die nodig zijn om een basis te maken en uit te voeren `Pipeline` :
 
 ```python
 ws = Workspace.from_config() 
@@ -161,7 +162,7 @@ pipeline_run = experiment.submit(pipeline)
 pipeline_run.wait_for_completion()
 ```
 
-Het fragment begint met algemene Azure Machine Learning objecten, a `Workspace`, a `Datastore`, een [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)en een `Experiment`. Vervolgens maakt de code de objecten die moeten worden `input_data` bewaard `output_data`en. De matrix `steps` bevat één element, een `PythonScriptStep` dat de gegevens objecten gaat gebruiken en wordt uitgevoerd op de `compute_target`. Vervolgens maakt de code een instantie van `Pipeline` het object zelf, waarbij de werk ruimte en de stappen matrix worden door gegeven. De aanroep om `experiment.submit(pipeline)` de Azure ml-pijplijn uitvoering te starten. De aanroep naar `wait_for_completion()` blokken tot de pijp lijn is voltooid. 
+Het fragment begint met algemene Azure Machine Learning objecten, a `Workspace` , a `Datastore` , een [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)en een `Experiment` . Vervolgens maakt de code de objecten die moeten worden bewaard `input_data` en `output_data` . De matrix `steps` bevat één element, een `PythonScriptStep` dat de gegevens objecten gaat gebruiken en wordt uitgevoerd op de `compute_target` . Vervolgens maakt de code een instantie `Pipeline` van het object zelf, waarbij de werk ruimte en de stappen matrix worden door gegeven. De aanroep om `experiment.submit(pipeline)` de Azure ml-pijplijn uitvoering te starten. De aanroep naar `wait_for_completion()` blokken tot de pijp lijn is voltooid. 
 
 Zie voor meer informatie over het verbinden van uw pijp lijn met uw gegevens de artikelen [gegevens toegang in azure machine learning](concept-data.md) en het [verplaatsen van gegevens naar en tussen ml-pijplijn stappen (python)](how-to-move-data-in-out-of-pipelines.md). 
 
@@ -183,7 +184,7 @@ Het is eenvoudig om enthousiast te raken over het opnieuw gebruiken van in de ca
 
 * Zware koppeling tussen pijplijn stappen. Als u een afhankelijke stap vaak nodig hebt om de uitvoer van een vorige stap te wijzigen, is het waarschijnlijk dat de afzonderlijke stappen momenteel meer kosten in beslag nemen dan een voor deel. Een andere aanwijzing dat de stappen zijn gekoppeld, zijn argumenten voor een stap die geen gegevens bevat, maar vlaggen voor het beheren van de verwerking. 
 
-* De reken resources voor tijdig optimaliseren. Er zijn bijvoorbeeld vaak verschillende fasen voor het voorbereiden van gegevens en een van de volgende ' Oh ' is een plek waar ik een `MpiStep` voor parallelle programmering zou kunnen gebruiken, maar dit is een plek waar ik `PythonScriptStep` met een minder krachtig reken doel zou kunnen gebruiken, enzovoort. En wellicht, in de lange uitvoering, het maken van nauw keurige stappen zoals die mogelijk de moeite waard zijn, met name als er sprake is van het gebruik van in cache opgeslagen resultaten in plaats van altijd opnieuw te hoeven worden berekend. Maar pijp lijnen zijn niet bedoeld als vervanging voor de systeem eigen `multiprocessing` module van python. 
+* De reken resources voor tijdig optimaliseren. Er zijn bijvoorbeeld vaak verschillende fasen voor het voorbereiden van gegevens en een van de volgende ' Oh ' is een plek waar ik een `MpiStep` voor parallelle programmering zou kunnen gebruiken, maar dit is een plek waar ik `PythonScriptStep` met een minder krachtig reken doel zou kunnen gebruiken, enzovoort. En wellicht, in de lange uitvoering, het maken van nauw keurige stappen zoals die mogelijk de moeite waard zijn, met name als er sprake is van het gebruik van in cache opgeslagen resultaten in plaats van altijd opnieuw te hoeven worden berekend. Maar pijp lijnen zijn niet bedoeld als vervanging voor de systeem eigen module van python `multiprocessing` . 
 
 Totdat een project een grote of bijnae implementatie krijgt, moeten uw pijp lijnen grof zijn in plaats van nauw keurig te zijn. Als u uw ML-project wilt beschouwen als _fasen_ en een pijp lijn als u een volledige werk stroom levert om u door een bepaalde fase te verplaatsen, bent u op het juiste pad. 
 
@@ -202,7 +203,7 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>De juiste PipelineStep-subklasse kiezen
 
-De `PythonScriptStep` is de meest flexibele subklasse van de samen `PipelineStep`vatting. Andere subklassen, zoals `EstimatorStep` subklassen, en `DataTransferStep` kunnen specifieke taken uitvoeren met minder code. Zo kan een `EstimatorStep` alleen worden gemaakt door een naam voor de stap, een `Estimator`en een reken doel door te geven. U kunt ook invoer en uitvoer, pijplijn parameters en argumenten negeren. Zie [modellen trainen met Azure machine learning met behulp van Estimator](how-to-train-ml-models.md)voor meer informatie. 
+De `PythonScriptStep` is de meest flexibele subklasse van de samen vatting `PipelineStep` . Andere subklassen, zoals `EstimatorStep` subklassen, en `DataTransferStep` kunnen specifieke taken uitvoeren met minder code. Zo `EstimatorStep` kan een alleen worden gemaakt door een naam voor de stap, een `Estimator` en een reken doel door te geven. U kunt ook invoer en uitvoer, pijplijn parameters en argumenten negeren. Zie [modellen trainen met Azure machine learning met behulp van Estimator](how-to-train-ml-models.md)voor meer informatie. 
 
 Zo `DataTransferStep` kunt u eenvoudig gegevens verplaatsen tussen gegevens bronnen en Sinks. De code om deze overdracht hand matig uit te voeren, is eenvoudig, maar herhaaldelijk. In plaats daarvan kunt u gewoon een `DataTransferStep` met een naam, verwijzingen naar een gegevens bron en een gegevens-Sink en een reken doel maken. De notebook [Azure machine learning pijp lijn met DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) toont deze flexibiliteit.
 

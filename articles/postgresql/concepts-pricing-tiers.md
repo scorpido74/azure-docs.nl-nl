@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097078"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487981"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Prijscategorieën in Azure Database for PostgreSQL - enkele server
 
 U kunt een Azure Database for PostgreSQL-server maken in een van drie verschillende prijs Categorieën: basis, Algemeen en geoptimaliseerd voor geheugen. De prijs categorieën worden onderscheiden van de hoeveelheid Compute in vCores die kan worden ingericht, het geheugen per vCore en de opslag technologie die wordt gebruikt om de gegevens op te slaan. Alle resources worden ingericht op het niveau van de PostgreSQL-server. Een server kan een of meer data bases bevatten.
 
-|    | **Hoofd** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+|    | **Standaard** | **Algemeen gebruik** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Compute genereren | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | vCores | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -43,7 +43,7 @@ Reken bronnen worden weer gegeven als vCores, die de logische CPU van de onderli
 
 De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikbaar is voor uw Azure Database for PostgreSQL-server. De opslag wordt gebruikt voor de database bestanden, tijdelijke bestanden, transactie logboeken en de PostgreSQL-server Logboeken. De totale hoeveelheid opslag ruimte die u hebt ingericht, definieert ook de I/O-capaciteit die beschikbaar is voor uw server.
 
-|    | **Hoofd** | **Algemeen** | **Geoptimaliseerd voor geheugen** |
+|    | **Standaard** | **Algemeen gebruik** | **Geoptimaliseerd voor geheugen** |
 |:---|:----------|:--------------------|:---------------------|
 | Opslagtype | Basis opslag | Opslag Algemeen | Opslag Algemeen |
 | Opslag grootte | 5 GB tot 1 TB | 5 GB tot 16 TB | 5 GB tot 16 TB |
@@ -51,7 +51,7 @@ De opslag ruimte die u inricht, is de hoeveelheid opslag capaciteit die beschikb
 | IOPS | Variabele |3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Maxi maal 20.000 IOPS |
 
 > [!NOTE]
-> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost.
+> Opslag tot 16TB en 20.000 IOPS wordt ondersteund in de volgende regio's: VS-Oost, VS-Oost 2, centraal VS, VS-West, Noord-Centraal VS, Zuid-Centraal VS, Europa-noord, Europa-west, UK-zuid, UK-west, Zuidoost-Azië, Azië-oost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Australië-oost, Australië-Zuid-Oost, VS-West
 >
 > Alle andere regio's ondersteunen Maxi maal 4 TB opslag ruimte en 6000 IOPS.
 >
@@ -73,7 +73,7 @@ Als u bijvoorbeeld 110 GB aan opslag hebt ingericht en het werkelijke gebruik me
 
 Wanneer de server is ingesteld op alleen-lezen, worden alle bestaande sessies losgekoppeld en worden niet-doorgevoerde trans acties teruggedraaid. Eventuele volgende schrijf bewerkingen en trans acties worden niet doorgevoerd. Alle volgende Lees query's werken niet meer.  
 
-U kunt de hoeveelheid ingerichte opslag naar uw server verg Roten of een nieuwe sessie starten in de modus lezen-schrijven en gegevens verwijderen om vrije opslag vrij te maken. Met `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` uitvoeren wordt de huidige sessie ingesteld op de schrijf modus lezen. Om beschadiging van gegevens te voor komen, moet u geen schrijf bewerkingen uitvoeren wanneer de server nog steeds de status alleen-lezen heeft.
+U kunt de hoeveelheid ingerichte opslag naar uw server verg Roten of een nieuwe sessie starten in de modus lezen-schrijven en gegevens verwijderen om vrije opslag vrij te maken. Met uitvoeren `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` wordt de huidige sessie ingesteld op de schrijf modus lezen. Om beschadiging van gegevens te voor komen, moet u geen schrijf bewerkingen uitvoeren wanneer de server nog steeds de status alleen-lezen heeft.
 
 U wordt aangeraden opslag ruimte automatisch te verg Roten of een waarschuwing in te stellen om u te waarschuwen wanneer uw server opslag de drempel waarde nadert, zodat u kunt voor komen dat u de status alleen-lezen krijgt. Zie de documentatie over het [instellen van een waarschuwing](howto-alert-on-metric.md)voor meer informatie.
 

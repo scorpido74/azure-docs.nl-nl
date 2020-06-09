@@ -4,14 +4,14 @@ description: Meer informatie over hoe Azure Cosmos DB database beveiliging biedt
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 0782d5f091671a235df1ab85a8b9706c7efe9170
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583729"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509029"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Op rollen gebaseerd toegangsbeheer in Azure Cosmos DB
 
@@ -43,14 +43,39 @@ Naast de ingebouwde rollen kunnen gebruikers ook [aangepaste rollen](../role-bas
 
 ## <a name="preventing-changes-from-cosmos-sdk"></a>Wijzigingen van de Cosmos-SDK voor komen
 
-De resource provider Cosmos kan worden vergrendeld om te voor komen dat bronnen worden gewijzigd, zoals Cosmos-account, data bases, containers en door Voer van clients die verbinding maken via account sleutels (bijvoorbeeld toepassingen die verbinding maken via Cosmos SDK). Als deze instelling is ingesteld, moeten wijzigingen aan resources afkomstig zijn van een gebruiker met de juiste RBAC-rol en referenties. Deze mogelijkheid is ingesteld met `disableKeyBasedMetadataWriteAccess` eigenschaps waarde in de resource provider Cosmos. Hieronder vindt u een voor beeld van een Azure Resource Manager sjabloon met de instelling van deze eigenschap.
+> [!WARNING]
+> Het inschakelen van deze functie kan gevaarlijke gevolgen hebben voor uw toepassing. Lees dit zorgvuldig door voordat u deze functie inschakelt.
+
+De resource provider van Azure Cosmos DB kan worden vergrendeld om te voor komen dat er wijzigingen worden aangebracht in resources die zijn gemaakt met behulp van account sleutels (dat wil zeggen door toepassingen die verbinding maken via Cosmos SDK). Dit omvat ook wijzigingen die zijn aangebracht vanuit het Azure Portal. Dit kan wenselijk zijn voor gebruikers die een hogere mate van controle en governance voor productie omgevingen willen en functies zoals resource vergrendelingen inschakelen en Diagnostische logboeken inschakelen voor bewerkingen in het besturings vlak. Clients die verbinding maken via Cosmos DB SDK, kunnen geen eigenschappen wijzigen voor Cosmos-accounts, data bases, containers en door voer. Bewerkingen met betrekking tot het lezen en schrijven van gegevens naar Cosmos-containers zelf worden niet beïnvloed.
+
+Als deze instelling is ingesteld, kunnen wijzigingen aan resources alleen worden gemaakt van een gebruiker met de juiste RBAC-rol en Azure Active Directory referenties, inclusief beheerde service-identiteiten.
+
+### <a name="check-list-before-enabling"></a>Lijst controleren voordat deze wordt ingeschakeld
+
+Met deze instelling wordt voor komen dat alle Cosmos-bronnen worden gewijzigd vanuit elke client die verbinding maakt met behulp van account sleutels, inclusief een Cosmos DB SDK, alle hulpprogram ma's die verbinding maken via account sleutels of via de Azure Portal. Als u problemen of fouten van toepassingen na het inschakelen van deze functie wilt voor komen, controleert u of toepassingen of Azure Portal gebruikers een van de volgende acties uitvoeren voordat u deze functie inschakelt, waaronder:
+
+- Elke wijziging van het Cosmos-account met alle eigenschappen of het toevoegen of verwijderen van regio's.
+
+- Maken, verwijderen van onderliggende resources, zoals data bases en containers. Dit omvat resources voor andere API'S, zoals Cassandra-, MongoDB-, Gremlin-en Table-resources.
+
+- De door Voer van resources op Data Base-of container niveau bijwerken.
+
+- Container eigenschappen wijzigen, inclusief het index beleid, de TTL en de unieke sleutels.
+
+- Opgeslagen procedures, triggers of door de gebruiker gedefinieerde functies wijzigen.
+
+Als uw toepassingen (of gebruikers via Azure Portal) een van deze acties uitvoeren, moeten ze worden gemigreerd om te worden uitgevoerd via [arm-sjablonen](manage-sql-with-resource-manager.md), [Power shell](manage-with-powershell.md), [Azure cli](manage-with-cli.md), [rest](/rest/api/cosmos-db-resource-provider/) of [Azure-beheer bibliotheek](https://github.com/Azure-Samples/cosmos-management-net). Houd er rekening mee dat Azure Management beschikbaar is in [meerdere talen](https://docs.microsoft.com/azure/?product=featured#languages-and-tools).
+
+### <a name="set-via-arm-template"></a>Instellen via ARM-sjabloon
+
+Als u deze eigenschap wilt instellen met behulp van een ARM-sjabloon, werkt u uw bestaande sjabloon bij of exporteert u een nieuwe sjabloon voor uw huidige implementatie. vervolgens neemt `"disableKeyBasedMetadataWriteAccess": true` u de eigenschappen op voor de databaseAccounts-resources. Hieronder volgt een eenvoudig voor beeld van een Azure Resource Manager sjabloon met deze eigenschaps instelling.
 
 ```json
 {
     {
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "name": "[variables('accountName')]",
-      "apiVersion": "2019-08-01",
+      "apiVersion": "2020-04-01",
       "location": "[parameters('location')]",
       "kind": "GlobalDocumentDB",
       "properties": {
@@ -62,11 +87,25 @@ De resource provider Cosmos kan worden vergrendeld om te voor komen dat bronnen 
     }
 }
 ```
-Als u een bestaande resource manager-sjabloon exporteert en deze bijwerkt met deze eigenschap, kan deze de functionaliteit van uw sjabloon volledig vervangen. Dus als niet alle waarden zijn opgenomen, worden deze teruggezet naar de standaard waarde. Een andere manier om de schrijf toegang op basis van sleutels uit te scha kelen, is door gebruik te maken van Azure CLI, zoals wordt weer gegeven in de volgende opdracht:
 
-```cli
-az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+> [!IMPORTANT]
+> Zorg ervoor dat u de andere eigenschappen voor uw account en onderliggende resources opneemt wanneer redploying met deze eigenschap. Implementeer deze sjabloon niet als zodanig, of Hiermee worden al uw account eigenschappen opnieuw ingesteld.
 
+### <a name="set-via-azure-cli"></a>Instellen via Azure CLI
+
+Gebruik de onderstaande opdracht om in te scha kelen met behulp van Azure CLI:
+
+```azurecli-interactive
+az cosmosdb update  --name [CosmosDBAccountName] --resource-group [ResourceGroupName]  --disable-key-based-metadata-write-access true
+
+```
+
+### <a name="set-via-powershell"></a>Instellen via Power shell
+
+Als u het gebruik van Azure PowerShell wilt inschakelen, gebruikt u de onderstaande opdracht:
+
+```azurepowershell-interactive
+Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBAccountName] -DisableKeyBasedMetadataWriteAccess true
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

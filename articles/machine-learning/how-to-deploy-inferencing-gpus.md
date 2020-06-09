@@ -10,12 +10,13 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: c6442a5c4af5b9804456f0b4b9e78c8999249f25
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 766b7720d9a126276f4e86ff549b3047bf127691
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433396"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557216"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Een diep leer model implementeren voor demijnen met GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +53,7 @@ Detrainer of model Score is de fase waarin het geïmplementeerde model wordt geb
 Gebruik de volgende code om verbinding te maken met een bestaande werk ruimte:
 
 > [!IMPORTANT]
-> Dit code fragment verwacht dat de werkruimte configuratie wordt opgeslagen in de huidige map of het bovenliggende item. Zie [Azure machine learning-werk ruimten maken en beheren](how-to-manage-workspace.md)voor meer informatie over het maken van een werk ruimte.   Zie [een configuratie bestand voor een werk ruimte maken](how-to-configure-environment.md#workspace)voor meer informatie over het opslaan van de configuratie in een bestand.
+> Dit codefragment verwacht dat de werkruimteconfiguratie wordt opgeslagen in de huidige of de bovenliggende map. Zie [Azure Machine Learning-werkruimten maken en beheren](how-to-manage-workspace.md) voor meer informatie over het maken van een werkruimte.   Zie [Een configuratiebestand voor een werkruimte maken](how-to-configure-environment.md#workspace) voor meer informatie over de configuratie als bestand opslaan.
 
 ```python
 from azureml.core import Workspace

@@ -1,14 +1,14 @@
 ---
 title: Toegang beperken met behulp van een service-eind punt
-description: Toegang tot een Azure container Registry beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
+description: Beperk de toegang tot een Azure container Registry met behulp van een service-eind punt in een virtueel Azure-netwerk. Toegang tot het service-eind punt is een functie van de laag Premium-Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685052"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509284"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Toegang tot een container register beperken met behulp van een service-eind punt in een virtueel Azure-netwerk
 
@@ -30,7 +30,7 @@ Het configureren van een Registry-service-eind punt is beschikbaar in de service
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, is Azure CLI-versie 2.0.58 of later vereist. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][azure-cli].
+* Als u de stappen van Azure CLI in dit artikel wilt gebruiken, is Azure CLI-versie 2.0.58 of later vereist. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 * Als u nog geen container register hebt, maakt u er een (vereist een Premium-laag) en pusht u een voor beeld van een installatie kopie, zoals `hello-world` van docker hub. Gebruik bijvoorbeeld de [Azure Portal][quickstart-portal] of de [Azure cli][quickstart-cli] om een REGI ster te maken. 
 

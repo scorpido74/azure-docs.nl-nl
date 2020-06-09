@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121181"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488814"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Een Azure Key Vault verplaatsen naar een ander abonnement
 
@@ -30,9 +30,9 @@ Zorg ervoor dat u bekend bent met de gevolgen van deze wijziging en volg de rich
 
 Wanneer u een sleutel kluis maakt, wordt deze automatisch gebonden aan de standaard Azure Active Directory Tenant-ID voor het abonnement waarin deze is gemaakt. Alle vermeldingen van het toegangsbeleid zijn ook gekoppeld aan deze tenant-ID. Als u uw Azure-abonnement verplaatst van Tenant A naar Tenant B, worden uw bestaande sleutel kluizen niet toegankelijk voor de service-principals (gebruikers en toepassingen) in Tenant B. U moet het volgende doen om dit probleem op te lossen:
 
-* Wijzig de Tenant-ID die is gekoppeld aan alle bestaande sleutel kluizen in het abonnement op Tenant B.
+* De tenant-ID die is gekoppeld aan alle bestaande sleutelkluizen in het abonnement te wijzigen in tenant B.
 * Alle bestaande vermeldingen van het toegangsbeleid te verwijderen.
-* Nieuwe beleids regels voor toegang toevoegen die zijn gekoppeld aan Tenant B.
+* Nieuwe aan tenant B gekoppelde vermeldingen van het toegangsbeleid toe te voegen.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -66,9 +66,8 @@ Zorg ervoor dat u naar de pagina Azure Policy gaat in de Azure Portal en Bekijk 
 4. Selecteer de knop "verplaatsen"
 5. Selecteer ' verplaatsen naar een ander abonnement ' in de vervolg keuzelijst opties
 6. Selecteer de resource groep waarnaar u de sleutel kluis wilt verplaatsen
-7. Selecteer de resource groep waarnaar u de sleutel kluis wilt verplaatsen
-8. De waarschuwing bevestigen over het verplaatsen van resources
-9. Selecteer OK
+7. De waarschuwing bevestigen over het verplaatsen van resources
+8. Selecteer OK
 
 ### <a name="additional-steps-post-move"></a>Aanvullende stappen (post verplaatsing)
 
@@ -95,10 +94,10 @@ az keyvault update -n myvault --remove Properties.accessPolicies           # Rem
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
 
-Nu de kluis is gekoppeld aan de juiste Tenant-ID en de oude vermeldingen van het toegangs beleid worden verwijderd, stelt u nieuwe vermeldingen voor het toegangs beleid in met de Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet of de Azure cli [AZ set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) opdracht.
+Nu uw kluis is gekoppeld aan de juiste tenant-ID en de oude toegangsbeleidsregels zijn verwijderd, kunt u nieuwe toegangsbeleidsregels instellen met de Azure PowerShell-cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) of de Azure CLI-opdracht [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy).
 
-Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-Tenant. Zie voor meer informatie over beheerde identiteiten [Key Vault verificatie bieden met een beheerde identiteit](managed-identity.md).
+Als u een beheerde identiteit voor Azure-resources gebruikt, moet u deze ook bijwerken naar de nieuwe Azure AD-tenant. Zie [Key Vault-verificatie bieden met een beheerde identiteit](managed-identity.md)voor meer informatie over beheerde identiteiten.
 
-Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken omdat de oude identiteit niet meer in de juiste AAD-Tenant voor komt.
+Als u MSI gebruikt, moet u ook de MSI-identiteit bijwerken, omdat de oude identiteit niet meer in de juiste AAD-tenant voorkomt.
 
 

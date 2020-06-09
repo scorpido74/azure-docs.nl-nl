@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827292"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558566"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronisatie: een wijziging in de standaard configuratie aanbrengen
 Het doel van dit artikel is om u te laten zien hoe u wijzigingen aanbrengt in de standaard configuratie in Azure Active Directory (Azure AD) Connect Sync. Het bevat stappen voor enkele veelvoorkomende scenario's. Met deze kennis moet u eenvoudige wijzigingen in uw eigen configuratie kunnen aanbrengen op basis van uw eigen bedrijfs regels.
@@ -243,7 +243,7 @@ Niet alle Azure AD-kenmerken worden geïmporteerd in de on-premises AD connector
  5. Klik op **OK** om op te slaan.
 ![Bron kenmerk toevoegen aan on-premises AD connector-schema](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Stap 3: de User type toevoegen aan het Azure AD-connector schema
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>Stap 3: het kenmerk User type toevoegen aan het Azure AD-connector schema
 Het kenmerk User type wordt standaard niet geïmporteerd in de Azure AD Connect ruimte. Het kenmerk User type toevoegen aan de lijst met geïmporteerde kenmerken:
 
  1. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
@@ -340,7 +340,7 @@ U kunt de volgende stappen gebruiken om de wijzigingen te controleren terwijl u 
 
 1. Een **volledige import** bewerking uitvoeren op de **on-premises AD-connector**:
 
-   1. Ga naar het tabblad **bewerkingen** in het Synchronization Service Manager.
+   1. Ga naar het tabblad **connectors** in de Synchronization Service Manager.
    2. Klik met de rechter muisknop op de **on-premises AD-connector** en selecteer **uitvoeren**.
    3. Selecteer in het pop-updialoogvenster **volledige import** en klik vervolgens op **OK**.
    4. Wacht tot de bewerking is voltooid.

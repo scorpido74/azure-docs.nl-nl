@@ -5,15 +5,16 @@ description: Details over hulpprogram ma's die zijn opgenomen in de Ubuntu-Data 
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161278"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560221"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Naslag informatie: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -52,7 +53,7 @@ Enkele voor beelden van notebooks zijn beschikbaar in JupyterHub.
 
 H2O is een snelle, in-Memory, gedistribueerde machine learning en predictive analytics platform. Er wordt een python-pakket geïnstalleerd in de hoofd-en py35-Anaconda-omgeving. Er is ook een R-pakket geïnstalleerd. 
 
-Als u H2O vanaf de opdracht regel wilt openen `java -jar /dsvm/tools/h2o/current/h2o.jar`, voert u uit. Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt toegang krijgen tot de flow-webgebruikersinterface `http://localhost:54321` door te bladeren naar om aan de slag te gaan. Voor beelden van notebooks zijn ook beschikbaar in JupyterHub.
+Als u H2O vanaf de opdracht regel wilt openen, voert u uit `java -jar /dsvm/tools/h2o/current/h2o.jar` . Er zijn verschillende [opdracht regel opties](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) die u mogelijk wilt configureren. U kunt toegang krijgen tot de flow-webgebruikersinterface door te bladeren naar `http://localhost:54321` om aan de slag te gaan. Voor beelden van notebooks zijn ook beschikbaar in JupyterHub.
 
 ### <a name="keras"></a>Keras
 
@@ -137,12 +138,12 @@ Als u een grafische interface gebruikt of X11 door sturen hebt ingesteld, kunt u
 
 De Anaconda-distributie wordt ook geleverd met een Jupyter-notebook, een omgeving om code en analyse te delen. De Jupyter-notebook wordt geopend via JupyterHub. U meldt zich aan met uw lokale Linux-gebruikers naam en-wacht woord.
 
-De Jupyter-notebook server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de `https://localhost:8000/`Jupyter-notebook server op.
+De Jupyter-notebook server is vooraf geconfigureerd met python 2-, python 3-en R-kernels. Gebruik het pictogram **Jupyter notebook** bureau blad om de browser te openen en toegang te krijgen tot de notebook server. Als u gebruikmaakt van de virtuele machine via SSH of de X2Go-client, kunt u ook toegang krijgen tot de Jupyter-notebook server op `https://localhost:8000/` .
 
 > [!NOTE]
 > Ga door als u certificaat waarschuwingen ontvangt.
 
-U kunt vanaf elke host toegang krijgen tot de Jupyter-notebook server. Voer **de\<DNS-naam of het IP\>-adres van de https://-vm in: 8000/**.
+U kunt vanaf elke host toegang krijgen tot de Jupyter-notebook server. Voer **https:// \<VM DNS name or IP address\> : 8000/**.
 
 > [!NOTE]
 > Poort 8000 wordt standaard geopend in de firewall wanneer de virtuele machine wordt ingericht. 
@@ -173,7 +174,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt door ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```uit te voeren.
+U kunt de Hadoop-gerelateerde services stoppen wanneer u deze niet nodig hebt door uit te voeren ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` .
 
 De/dsvm/samples/MRS Directory bevat een voor beeld van het ontwikkelen en testen van Microsoft Machine Learning Server in een externe Spark-context (het zelfstandige Spark-exemplaar op de DSVM).
 
@@ -259,7 +260,7 @@ De VM wordt geleverd met machine learning-hulpprogram ma's en-algoritmen die voo
 * **Vowpal Wabbit**: een Fast Online Learning-algoritme.
 * **xgboost**: een hulp programma dat geoptimaliseerde, gestimuleerde structuur algoritmen biedt.
 * **Rattle**: een op R gebaseerd grafisch hulp programma voor het snel verkennen en model leren van gegevens.
-* **Python**: Anaconda python wordt geleverd met machine learning-algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp `pip install` van de opdracht.
+* **Python**: Anaconda python wordt geleverd met machine learning-algoritmen met bibliotheken zoals Scikit. U kunt andere bibliotheken installeren met behulp van de `pip install` opdracht.
 * **LightGBM**: een snelle, gedistribueerde, hoogwaardige kleur overgang voor het verbeteren van het Framework op basis van de beslissings structuur algoritmen.
 * **R**: er is een uitgebreide bibliotheek met machine learning functies beschikbaar voor R. vooraf geïnstalleerde bibliotheken zijn LM, GLM, randomForest en rpart. U kunt andere bibliotheken installeren door deze opdracht uit te voeren:
   
@@ -329,7 +330,7 @@ Nu wordt een grafische interface geopend met een reeks tabbladen. Gebruik de vol
 > [!NOTE]
 > Als u geen toegang hebt om het pakket te installeren in de systeemmap (de standaard instelling), ziet u mogelijk een prompt op uw R-console venster om pakketten te installeren in uw persoonlijke bibliotheek. Antwoord **y** als u deze prompts ziet.
 
-1. Selecteer **Uitvoeren**.
+1. Selecteer **uitvoeren**.
 1. Er wordt een dialoog venster weer gegeven waarin u wordt gevraagd of u de voor beeld-weer gegevens set wilt gebruiken. Selecteer **Ja** om het voor beeld te laden.
 1. Selecteer het tabblad **model** .
 1. Selecteer **uitvoeren** om een beslissings structuur te maken.
@@ -338,7 +339,7 @@ Nu wordt een grafische interface geopend met een reeks tabbladen. Gebruik de vol
 1. Selecteer het tabblad **evalueren** .
 1. Selecteer de optie **risico** en selecteer **uitvoeren** om twee **risico's (cumulatief)** prestatie grafieken weer te geven.
 1. Selecteer het tabblad **logboek** om de gegenereerde R-code voor de voor gaande bewerkingen weer te geven.
-   (Vanwege een fout in de huidige release van Rattle moet u een **#** teken invoegen vóór het exporteren van **Dit logboek** in de tekst van het logboek.)
+   (Vanwege een fout in de huidige release van Rattle moet u een **#** teken invoegen vóór het **exporteren van dit logboek** in de tekst van het logboek.)
 1. Selecteer de knop **exporteren** om het R-script bestand met de naam weather_script op te slaan *. R* naar de basismap.
 
 U kunt Rattle en R afsluiten. Nu kunt u het gegenereerde R-script wijzigen. Of gebruik het script zoals het is en voer het op elk gewenst moment uit om alles te herhalen dat is uitgevoerd in de Rattle-gebruikers interface. Met name voor beginners in R is dit een manier om snel analyses en machine learning uit te voeren in een eenvoudige grafische interface, terwijl automatisch code wordt gegenereerd in R om te wijzigen of te leren.

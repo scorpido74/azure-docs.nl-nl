@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189800"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561736"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -67,7 +67,7 @@ Stroom logboeken zijn de bron van waarheid voor alle netwerk activiteiten in uw 
 Stroom logboeken bevatten de volgende eigenschappen:
 
 * de **tijd** waarop de gebeurtenis is geregistreerd
-* **systemId** -resource-id van de netwerk beveiligings groep.
+* **systemId** -systeem-id van de netwerk beveiligings groep.
 * **categorie** : de categorie van de gebeurtenis. De categorie is altijd **NetworkSecurityGroupFlowEvent**
 * **ResourceID** -de resource-id van de NSG
 * **operationname** -altijd NetworkSecurityGroupFlowEvents
@@ -303,7 +303,7 @@ Voor voortzetting _C_ en de laatste _E_ stroom status zijn de aantallen voor byt
 
 Gebruik de relevante koppeling hieronder voor hulp lijnen voor het inschakelen van stroom Logboeken.
 
-- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [Azure-portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 - [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
 - [CLI](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
@@ -311,7 +311,7 @@ Gebruik de relevante koppeling hieronder voor hulp lijnen voor het inschakelen v
 
 ## <a name="updating-parameters"></a>Para meters bijwerken
 
-**Azure Portal**
+**Azure-portal**
 
 Ga in het Azure Portal naar de sectie NSG-stroom Logboeken in Network Watcher. Klik vervolgens op de naam van de NSG. Hiermee wordt het deel venster instellingen voor het stroom logboek weer gegeven. Wijzig de gewenste para meters en druk op **Opslaan** om de wijzigingen te implementeren.
 
@@ -323,7 +323,7 @@ Als u para meters wilt bijwerken via opdracht regel Programma's, gebruikt u deze
 
 *Stroom logboeken lezen en exporteren*
 
-- [Weergave &amp; stroom logboeken downloaden vanuit de portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
+- [&amp;Weergave stroom logboeken downloaden vanuit de portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
 - [Stroom logboeken lezen met behulp van Power shell-functies](https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs)
 - [NSG-stroom logboeken exporteren naar Splunk](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 
@@ -363,7 +363,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Opslag inrichten**: opslag moet worden ingericht in afstemming met het verwachte flow-logboek volume.
 
-## <a name="troubleshooting-common-issues"></a>Algemene problemen oplossen
+## <a name="troubleshooting-common-issues"></a>Oplossen van algemene problemen
 
 **Ik kan de NSG-stroomlogboeken niet inschakelen**
 

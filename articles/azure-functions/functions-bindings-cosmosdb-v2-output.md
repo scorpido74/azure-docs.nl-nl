@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: tracking-python
+ms.openlocfilehash: b58924607f002af27d21343389404fcc66d1f35d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735008"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561670"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB uitvoer binding voor Azure Functions 2. x
 
@@ -27,7 +28,7 @@ Deze sectie bevat de volgende voor beelden:
 * [Wachtrij trigger, een document schrijven](#queue-trigger-write-one-doc-c)
 * [Wachtrij trigger, documenten schrijven met IAsyncCollector](#queue-trigger-write-docs-using-iasynccollector-c)
 
-De voor beelden verwijzen naar een `ToDoItem` eenvoudig type:
+De voor beelden verwijzen naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -189,9 +190,9 @@ Dit is de C#-script code:
 
 ### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Wachtrij trigger, documenten schrijven met IAsyncCollector
 
-Als u meerdere documenten wilt maken, kunt u `ICollector<T>` een `IAsyncCollector<T>` binding `T` met of een van de ondersteunde typen.
+Als u meerdere documenten wilt maken, kunt u `ICollector<T>` een binding met of `IAsyncCollector<T>` `T` een van de ondersteunde typen.
 
-Dit voor beeld verwijst naar een `ToDoItem` eenvoudig type:
+Dit voor beeld verwijst naar een eenvoudig `ToDoItem` type:
 
 ```cs
 namespace CosmosDBSamplesV2
@@ -247,7 +248,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 In het volgende voor beeld ziet u een Azure Cosmos DB uitvoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie maakt gebruik van een wachtrij-invoer binding voor een wachtrij die JSON ontvangt in de volgende indeling:
 
@@ -306,7 +307,7 @@ Dit is de Java script-code:
 
 In het volgende voor beeld ziet u hoe u een document naar een Azure CosmosDB-data base schrijft als uitvoer van een functie.
 
-De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is ingesteld `cosmosDB`op.
+De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is ingesteld op `cosmosDB` .
 
 ```json
 {
@@ -340,7 +341,7 @@ De bindings definitie is gedefinieerd in *Function. json* waarbij *type* is inge
 }
 ```
 
-Als u naar de Data Base wilt schrijven, geeft u een `set` document object door aan de methode van de data base-para meter.
+Als u naar de Data Base wilt schrijven, geeft u een document object door aan de `set` methode van de data base-para meter.
 
 ```python
 import azure.functions as func
@@ -387,7 +388,7 @@ public String cosmosDbQueryById(
 
 #### <a name="http-trigger-save-one-document-to-database-via-return-value"></a>HTTP-trigger, sla het ene document op in de data base via de retour waarde
 
-In ```@CosmosDBOutput``` het volgende voor beeld ziet u een Java-functie waarvan de hand tekening aantekeningen bevat en de ```String```retour waarde van het type heeft. Het JSON-document dat door de functie wordt geretourneerd, wordt automatisch naar de bijbehorende CosmosDB-verzameling geschreven.
+In het volgende voor beeld ziet u een Java-functie waarvan de hand tekening aantekeningen bevat ```@CosmosDBOutput``` en de retour waarde van het type heeft ```String``` . Het JSON-document dat door de functie wordt geretourneerd, wordt automatisch naar de bijbehorende CosmosDB-verzameling geschreven.
 
 ```java
     @FunctionName("WriteOneDoc")
@@ -426,7 +427,7 @@ In ```@CosmosDBOutput``` het volgende voor beeld ziet u een Java-functie waarvan
 
 ### <a name="http-trigger-save-one-document-to-database-via-outputbinding"></a>HTTP-trigger, sla één document op in de data base via OutputBinding
 
-In het volgende voor beeld ziet u een Java-functie die een document schrijft ```OutputBinding<T>``` naar CosmosDB via een uitvoer parameter. In dit voor beeld moet ```outputItem``` de para meter worden voorzien van ```@CosmosDBOutput```een annotatie, niet de functie handtekening. Met ```OutputBinding<T>``` kunt u gebruikmaken van de binding om het document naar CosmosDB te schrijven en tegelijkertijd een andere waarde te retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
+In het volgende voor beeld ziet u een Java-functie die een document schrijft naar CosmosDB via een ```OutputBinding<T>``` uitvoer parameter. In dit voor beeld ```outputItem``` moet de para meter worden voorzien van een annotatie ```@CosmosDBOutput``` , niet de functie handtekening. Met ```OutputBinding<T>``` kunt u gebruikmaken van de binding om het document naar CosmosDB te schrijven en tegelijkertijd een andere waarde te retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
 
 ```java
     @FunctionName("WriteOneDocOutputBinding")
@@ -472,7 +473,7 @@ In het volgende voor beeld ziet u een Java-functie die een document schrijft ```
 
 ### <a name="http-trigger-save-multiple-documents-to-database-via-outputbinding"></a>HTTP-trigger, meerdere documenten opslaan in de data base via OutputBinding
 
-In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar ```OutputBinding<T>``` CosmosDB schrijft via een uitvoer parameter. In dit voor beeld wordt ```outputItem``` er met ```@CosmosDBOutput```de para meter een annotatie en niet de functie handtekening gebruikt. De output- ```outputItem``` para meter heeft een lijst ```ToDoItem``` met objecten als het parameter type van de sjabloon. Met ```OutputBinding<T>``` kunt u uw functie gebruiken om te profiteren van de binding om de documenten te schrijven naar CosmosDB, terwijl u ook een andere waarde kunt retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
+In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar CosmosDB schrijft via een ```OutputBinding<T>``` uitvoer parameter. In dit voor beeld ```outputItem``` wordt er met de para meter een annotatie ```@CosmosDBOutput``` en niet de functie handtekening gebruikt. De output-para meter ```outputItem``` heeft een lijst met ```ToDoItem``` objecten als het parameter type van de sjabloon. Met ```OutputBinding<T>``` kunt u uw functie gebruiken om te profiteren van de binding om de documenten te schrijven naar CosmosDB, terwijl u ook een andere waarde kunt retour neren naar de functie aanroeper, zoals een JSON-of XML-document.
 
 ```java
     @FunctionName("WriteMultipleDocsOutputBinding")
@@ -519,7 +520,7 @@ In het volgende voor beeld ziet u een Java-functie die meerdere documenten naar 
     }
 ```
 
-Gebruik in de [runtime-bibliotheek van Java](/java/api/overview/azure/functions/runtime)- `@CosmosDBOutput` functies de aantekening voor para meters die worden geschreven naar Cosmos db.  Het parameter type van de aantekening moet zijn ```OutputBinding<T>```, waarbij T een systeem eigen Java-type of een POJO is.
+Gebruik in de [runtime-bibliotheek van Java-functies](/java/api/overview/azure/functions/runtime)de `@CosmosDBOutput` aantekening voor para meters die worden geschreven naar Cosmos db.  Het parameter type van de aantekening moet zijn ```OutputBinding<T>``` , waarbij T een systeem eigen Java-type of een POJO is.
 
 ---
 
@@ -545,7 +546,7 @@ De constructor van het kenmerk neemt de naam van de data base en de verzameling.
 
 Kenmerken worden niet ondersteund door een C#-script.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Kenmerken worden niet ondersteund door Java script.
 
@@ -555,27 +556,27 @@ Kenmerken worden niet ondersteund door python.
 
 # <a name="java"></a>[Java](#tab/java)
 
-De `CosmosDBOutput` aantekening is beschikbaar voor het schrijven van gegevens naar Cosmos db. U kunt de aantekening Toep assen op de functie of op een afzonderlijke functie parameter. Wanneer u gebruikt voor de functie methode, is de geretourneerde waarde van de functie wat naar Cosmos DB wordt geschreven. Als u de aantekening met een para meter gebruikt, moet het parameter type worden gedeclareerd als `OutputBinding<T>` een `T` locatie van een systeem eigen Java-type of een POJO.
+De `CosmosDBOutput` aantekening is beschikbaar voor het schrijven van gegevens naar Cosmos db. U kunt de aantekening Toep assen op de functie of op een afzonderlijke functie parameter. Wanneer u gebruikt voor de functie methode, is de geretourneerde waarde van de functie wat naar Cosmos DB wordt geschreven. Als u de aantekening met een para meter gebruikt, moet het parameter type worden gedeclareerd als een `OutputBinding<T>` locatie van `T` een systeem eigen Java-type of een POJO.
 
 ---
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het `CosmosDB` -kenmerk.
+De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDB` kenmerk.
 
 |function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**voert**     | n.v.t. | Moet worden ingesteld op `cosmosDB`.        |
-|**draaien**     | n.v.t. | Moet worden ingesteld op `out`.         |
-|**naam**     | n.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
+|**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
+|**direction**     | N.v.t. | Moet worden ingesteld op `out` .         |
+|**naam**     | N.v.t. | De naam van de bindings parameter die het document in de functie vertegenwoordigt.  |
 |**databaseName** | **DatabaseName**|De data base met de verzameling waarin het document is gemaakt.     |
-|**collectionName** |**CollectionName**  | De naam van de verzameling waar het document wordt gemaakt. |
+|**collectionName** |**NaamVerzameling**  | De naam van de verzameling waar het document wordt gemaakt. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Een Booleaanse waarde die aangeeft of de verzameling wordt gemaakt wanneer deze niet bestaat. De standaard waarde is *False* omdat nieuwe verzamelingen worden gemaakt met gereserveerde door Voer, wat gevolgen heeft voor de kosten. Zie de pagina [prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor meer informatie.  |
 |**partitionKey**|**PartitionKey** |Wanneer `CreateIfNotExists` is ingesteld op True, wordt het pad van de partitie sleutel voor de gemaakte verzameling gedefinieerd.|
 |**collectionThroughput**|**CollectionThroughput**| Wanneer `CreateIfNotExists` is True, wordt de [door Voer](../cosmos-db/set-throughput.md) van de gemaakte verzameling gedefinieerd.|
 |**connectionStringSetting**    |**ConnectionStringSetting** |De naam van de app-instelling met uw Azure Cosmos DB connection string.        |
 |**preferredLocations**| **PreferredLocations**| Beschrijving Hiermee worden voorkeurs locaties (regio's) gedefinieerd voor accounts met geo-gerepliceerde data bases in de Azure Cosmos DB-service. De waarden moeten worden gescheiden door komma's. Bijvoorbeeld ' vs-Oost, VS Zuid-Centraal, Europa-noord '. |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Beschrijving Als deze optie `true` `PreferredLocations`is ingesteld op, kan het gebruikmaken van [schrijf bewerkingen in meerdere regio's](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) in de Azure Cosmos DB-service. |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| Beschrijving Als `true` `PreferredLocations` deze optie is ingesteld op, kan het gebruikmaken van [schrijf bewerkingen in meerdere regio's](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) in de Azure Cosmos DB-service. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -617,7 +618,7 @@ In deze sectie worden de algemene configuratie-instellingen beschreven die besch
 |---------|---------|---------|
 |GatewayMode|Gateway|De verbindings modus die wordt gebruikt door de functie bij het maken van verbinding met de Azure Cosmos DB-service. Opties zijn `Direct` en`Gateway`|
 |Protocol|Https|Het verbindings protocol dat door de functie wordt gebruikt bij het verbinden met de Azure Cosmos DB-service.  Lees [hier voor een uitleg van beide modi](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|n.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
+|leasePrefix|N.v.t.|Het lease voorvoegsel dat moet worden gebruikt voor alle functies in een app.|
 
 ## <a name="next-steps"></a>Volgende stappen
 
