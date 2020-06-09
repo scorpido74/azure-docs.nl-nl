@@ -15,6 +15,11 @@
       href: provision-vm.md
     - name: Een Ubuntu Data Science Virtual Machine maken
       href: dsvm-ubuntu-intro.md
+- name: Zelfstudies
+  items:
+    - name: Een DSVM maken met een ARM-sjabloon
+      displayName: Resource Manager
+      href: dsvm-tutorial-resource-manager.md
 - name: Concepten
   items:
     - name: Deep Learning en AI-frameworks

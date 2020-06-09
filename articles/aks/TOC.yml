@@ -133,6 +133,8 @@
           href: upgrade-cluster.md
         - name: SLA voor uptime gebruiken
           href: uptime-sla.md
+        - name: De knooppuntkopie upgraden (preview)
+          href: node-image-upgrade.md
         - name: OS-updates van knooppunt verwerken
           href: node-updates-kured.md
         - name: Een AKS-cluster configureren

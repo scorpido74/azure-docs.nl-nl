@@ -1,5 +1,5 @@
 ---
-title: Gegevens kopiëren van Azure-Blob Storage naar Azure SQL Database
+title: Gegevens kopiëren vanuit Azure Blob Storage naar Azure SQL Database
 description: Deze zelfstudie bevat stapsgewijze instructies voor het kopiëren van gegevens uit Azure Blob Storage naar Azure SQL Database.
 services: data-factory
 documentationcenter: ''
@@ -11,61 +11,61 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: a835e67b1091a55c832955d8dac8615289a6d99e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ad257d0bea38d03803bf2be44313a3e086e7654c
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418691"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118168"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In deze zelfstudie maakt u een data factory met een pijplijn die gegevens kopieert van Azure Blob Storage naar Azure SQL Database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie [ondersteunde gegevens archieven en-indelingen](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en Sinks.
+In deze zelfstudie maakt u een data factory met een pijplijn die gegevens kopieert van Azure Blob Storage naar Azure SQL Database. Het configuratiepatroon in deze zelfstudie geldt voor het kopiëren van een gegevensarchief op basis van bestanden naar een relationeel gegevensarchief. Zie [Ondersteunde gegevensarchieven en -indelingen](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevensarchieven die worden ondersteund als bron en als sink.
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Gekoppelde Azure Storage- en Azure SQL Database-services maken.
 > * Gegevenssets voor Azure Blob Storage en Azure SQL Database maken.
 > * Een pijplijn met een kopieeractiviteit maken
-> * Een pijplijnuitvoering starten.
+> * Een pijplijnuitvoering starten
 > * De uitvoering van de pijplijn en van de activiteit controleren
 
-In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere mechanismen gebruiken om te communiceren met Azure Data Factory; Raadpleeg de voor beelden onder **Quick**starts.
+In deze zelfstudie wordt .NET SDK gebruikt. U kunt andere methoden gebruiken voor interactie met Azure Data Factory. Kijk voor voorbeelden onder **Quickstarts**.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* *Azure Storage-account*. U gebruikt de blob-opslag als *bron*-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u [een opslag account voor algemeen gebruik maken](../storage/common/storage-account-create.md).
-* *Azure SQL database*. U gebruikt de database als *sink*-gegevensopslag. Als u geen Azure SQL Database hebt, raadpleegt u [een Azure SQL database maken](../sql-database/sql-database-single-database-get-started.md).
-* *Visual Studio*. In de procedure in dit artikel wordt gebruikgemaakt van Visual Studio 2019.
-* *[Azure SDK voor .net](/dotnet/azure/dotnet-tools)*.
-* *Azure Active Directory-toepassing*. Als u geen Azure Active Directory toepassing hebt, raadpleegt u het gedeelte [een Azure Active Directory toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) van [How to: gebruik de portal om een Azure AD-toepassing te maken](../active-directory/develop/howto-create-service-principal-portal.md). Kopieer de volgende waarden voor gebruik in latere stappen: **toepassings-id**, **verificatie sleutel**en **Directory-id (Tenant)**. Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
+* *Een Azure Storage-account*. U gebruikt de blob-opslag als *bron*-gegevensopslag. Zie [Een opslagaccount voor algemene doeleinden maken](../storage/common/storage-account-create.md) als u geen Azure Storage-account hebt.
+* *Azure SQL-database*. U gebruikt de database als *sink*-gegevensopslag. Zie [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) als u geen Azure SQL-database hebt.
+* *Visual Studio*. De procedures in dit artikel zijn gebaseerd op Visual Studio 2019.
+* *[Azure-SDK voor .NET](/dotnet/azure/dotnet-tools)* .
+* *Azure Active Directory-toepassing*. Als u geen Azure Active Directory-toepassing hebt, raadpleegt u de sectie [Een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) van [Procedure: De portal gebruiken om een Azure AD-toepassing te maken](../active-directory/develop/howto-create-service-principal-portal.md). Kopieer de volgende waarden voor gebruik in latere stappen: **Toepassings-id (client-id)** , **Verificatiesleutel** en **Map-id (tenant-id)** . Wijs de toepassing toe aan de rol **Inzender** door de instructies in hetzelfde artikel te volgen.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
 
-Bereid nu uw Azure-Blob en Azure SQL Database voor de zelf studie voor door een bron blog en een Sink SQL-tabel te maken.
+Maak nu een bron-blob en een SQL-sink-tabel om Azure Blob Storage en Azure SQL Database voor te bereiden voor gebruik in deze zelfstudie:
 
 #### <a name="create-a-source-blob"></a>Een bron-blob maken
 
-Maak eerst een bron-BLOB door een container te maken en een invoer tekst bestand te uploaden:
+Maak eerst een bron-blob door een container te maken en er een invoertekstbestand naar te uploaden:
 
-1. Open Klad blok. Kopieer de volgende tekst en sla deze lokaal op in een bestand met de naam *inputEmp. txt*.
+1. Open Kladblok. Kopieer de volgende tekst en sla deze lokaal op in een bestand met de naam *inputEmp.txt*.
 
     ```inputEmp.txt
     John|Doe
     Jane|Doe
     ```
 
-2. Gebruik een hulp programma zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om de *adfv2tutorial* -container te maken en om het bestand *inputEmp. txt* naar de container te uploaden.
+2. Gebruik een hulpprogramma zoals [Azure Opslagverkenner](https://azure.microsoft.com/features/storage-explorer/) om de container *adfv2tutorial* te maken en om het bestand *inputEmp.txt* naar de container te uploaden.
 
 #### <a name="create-a-sink-sql-table"></a>Een SQL-sink-tabel maken
 
-Maak vervolgens een Sink SQL-tabel:
+Maak vervolgens een SQL-sink-tabel:
 
 1. Gebruik het volgende SQL-script om de tabel *dbo.emp* te maken in de Azure SQL-database.
 
@@ -81,31 +81,31 @@ Maak vervolgens een Sink SQL-tabel:
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-2. Geef Azure-services toegang tot de SQL-server. Zorg ervoor dat u toegang verleent tot Azure-Services in uw Azure SQL-Server, zodat de Data Factory-service gegevens naar uw Azure SQL-Server kan schrijven. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
+2. Geef Azure-services toegang tot SQL Database. Zorg ervoor dat u toegang tot Azure-services geeft in uw server, zodat de Data Factory-service gegevens kan schrijven naar SQL Database. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
 
-    1. Ga naar de [Azure Portal](https://portal.azure.com) om uw SQL-Server te beheren. Zoek en selecteer **SQL-servers**.
+    1. Ga naar de [Azure-portal](https://portal.azure.com) om uw SQL-server te beheren. Zoek en selecteer **SQL-servers**.
 
     2. Selecteer uw server.
 
-    3. Selecteer in de **beveiligings** titel van het menu SQL Server de optie **firewalls en virtuele netwerken**.
+    3. Selecteer onder de koptekst **Beveiliging** van het SQL-servermenu de optie **Firewalls en virtuele netwerken**.
 
-    4. Selecteer **op**de pagina **firewall en virtuele netwerken** onder **Azure-Services en-bronnen toestaan om toegang te krijgen tot deze server**.
+    4. Selecteer op de pagina **Firewalls en virtuele netwerken** onder **Toestaan dat Azure-services en -resources toegang tot deze server krijgen** de optie **AAN**.
 
 ## <a name="create-a-visual-studio-project"></a>Een Visual Studio-project maken
 
-Maak met behulp van Visual Studio een C# .NET-console toepassing.
+Maak met behulp van Visual Studio een C# .NET-consoletoepassing.
 
 1. Open Visual Studio.
-2. Selecteer in het **Start** venster **een nieuw project maken**.
-3. Kies in het venster **een nieuw project maken** de C#-versie van **console-app (.NET Framework)** in de lijst met project typen. Selecteer **volgende**.
-4. Voer in het venster **uw nieuwe project configureren** de **project naam** *ADFv2Tutorial*in. Voor **locatie**, bladert u naar en/of maakt u de Directory voor het opslaan van het project in. Selecteer vervolgens **maken**. Het nieuwe project wordt weer gegeven in de Visual Studio IDE.
+2. Selecteer in het **Startvenster** de optie **Een nieuw project maken**.
+3. Kies in het venster **Een nieuw project maken** de C#-versie van **Consoletoepassing (.NET Framework)** uit de lijst met projecttypen. Selecteer vervolgens **Volgende**.
+4. Voer in het venster **Uw nieuwe project configureren** bij **Projectnaam** de naam *ADFv2Tutorial* in. Bij **Locatie** bladert u naar en/of maakt u de map waarin u het project wilt opslaan. Selecteer vervolgens **Maken**. Het nieuwe project verschijnt in de Visual Studio IDE.
 
 ## <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-Installeer vervolgens de vereiste bibliotheek pakketten met behulp van de NuGet Package Manager.
+Vervolgens installeert u de vereiste bibliotheekpakketten met behulp van de NuGet Package Manager.
 
-1. Kies in de menu balk **extra** > **NuGet package manager** > -**console**.
-2. Voer in het deel venster **Package Manager-console** de volgende opdrachten uit om pakketten te installeren. Zie voor informatie over het Azure Data Factory NuGet-pakket [micro soft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
+1. Op de menubalk kiest u **Tools** > **NuGet Package Manager** > **Package Manager Console**.
+2. Voer in het deelvenster **Package Manager Console** de volgende opdrachten uit om pakketten te installeren. Zie [Microsoft.Azure.Management.DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) voor informatie over het Azure Data Factory NuGet-pakket.
 
     ```package manager console
     Install-Package Microsoft.Azure.Management.DataFactory
@@ -117,7 +117,7 @@ Installeer vervolgens de vereiste bibliotheek pakketten met behulp van de NuGet 
 
 Volg deze stappen om een data factory-client te maken.
 
-1. Open *Program.cs*en vervang de bestaande `using` instructies door de volgende code om verwijzingen naar naam ruimten toe te voegen.
+1. Open *Program.cs* en overschrijf de bestaande `using`-instructies met de volgende code om verwijzingen naar naamruimten toe te voegen.
 
     ```csharp
     using System;
@@ -131,12 +131,12 @@ Volg deze stappen om een data factory-client te maken.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Voeg de volgende code toe aan `Main` de methode waarmee variabelen worden ingesteld. Vervang de 14 tijdelijke aanduidingen door uw eigen waarden.
+2. Voeg de volgende code toe aan de methode `Main` waarmee variabelen worden ingesteld. Vervang de 14 tijdelijke aanduidingen door uw eigen waarden.
 
-    Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/)voor een overzicht van de Azure-regio's waarin Data Factory momenteel beschikbaar is. Kies in de vervolg keuzelijst **Products** de optie **Browse** > **Analytics** > **Data Factory**. Kies vervolgens in de vervolg keuzelijst **regio's** de regio's die u interesseren. Er wordt een raster met de beschikbaarheids status van Data Factory producten voor de geselecteerde regio's weer gegeven.
+    Zie [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) om de lijst met Azure-regio’s te bekijken waarin Data Factory momenteel beschikbaar is. Kies in de vervolgkeuzelijst **Producten** de optie **Bladeren** > **Analytics** > **Data Factory**. Kies vervolgens in de vervolgkeuzelijst **Regio’s** de regio’s waarin u interesse hebt. Er verschijnt een raster met de beschikbaarheidsstatus van Data Factory-producten voor uw geselecteerde regio’s.
 
     > [!NOTE]
-    > Gegevens archieven, zoals Azure Storage en Azure SQL Database, en reken processen, zoals HDInsight, die Data Factory gebruikt, kunnen zich in andere regio's bevindt dan wat u voor Data Factory kiest.
+    > Gegevensarchieven (zoals Azure Storage en Azure SQL Database) en berekeningen (zoals HDInsight) die Data Factory gebruikt, kunnen zich in andere regio's bevinden dan wat u kiest voor Data Factory.
 
     ```csharp
     // Set variables
@@ -171,7 +171,7 @@ Volg deze stappen om een data factory-client te maken.
     string pipelineName = "Adfv2TutorialBlobToSqlCopy";
     ```
 
-3. Voeg de volgende code toe aan `Main` de methode waarmee een instantie van `DataFactoryManagementClient` de klasse wordt gemaakt. U gebruikt dit object om een data factory, een gekoppelde service, gegevenssets en een pijplijn te maken. U kunt dit object ook gebruiken om de details van de pijplijnuitvoering te controleren.
+3. Voeg de volgende code toe aan de methode `Main` waarmee een exemplaar van de klasse `DataFactoryManagementClient` wordt gemaakt. U gebruikt dit object om een data factory, een gekoppelde service, gegevenssets en een pijplijn te maken. U kunt dit object ook gebruiken om de details van de pijplijnuitvoering te controleren.
 
     ```csharp
     // Authenticate and create a data factory management client
@@ -186,7 +186,7 @@ Volg deze stappen om een data factory-client te maken.
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *Data Factory*wordt gemaakt.
+Voeg de volgende code toe aan de methode `Main` waarmee een *data factory* wordt gemaakt.
 
 ```csharp
 // Create a data factory
@@ -214,11 +214,11 @@ while (
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
-In deze zelf studie maakt u twee gekoppelde services voor respectievelijk de bron en Sink.
+In deze zelfstudie maakt u twee gekoppelde services voor respectievelijk de bron en de sink.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Een gekoppelde Azure Storage-service maken
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *Azure Storage gekoppelde service*wordt gemaakt. Zie [Eigenschappen van gekoppelde Azure Blob-service](connector-azure-blob-storage.md#linked-service-properties)voor meer informatie over ondersteunde eigenschappen en Details.
+Voeg de volgende code toe aan de methode `Main` waarmee een *gekoppelde Azure Storage-service* wordt gemaakt. Zie [Eigenschappen van een gekoppelde Azure Storage-service](connector-azure-blob-storage.md#linked-service-properties) voor informatie over ondersteunde eigenschappen en details.
 
 ```csharp
 // Create an Azure Storage linked service
@@ -244,7 +244,7 @@ Console.WriteLine(
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Een gekoppelde Azure SQL Database-service maken
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *Azure SQL database gekoppelde service*wordt gemaakt. Zie [Azure SQL database eigenschappen van gekoppelde service](connector-azure-sql-database.md#linked-service-properties)voor meer informatie over ondersteunde eigenschappen en Details.
+Voeg de volgende code toe aan de methode `Main` waarmee een *gekoppelde Azure SQL Database-service* wordt gemaakt. Zie [Eigenschappen van een gekoppelde Azure SQL Database-service](connector-azure-sql-database.md#linked-service-properties) voor informatie over ondersteunde eigenschappen en details.
 
 ```csharp
 // Create an Azure SQL Database linked service
@@ -267,17 +267,17 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-In deze sectie maakt u twee gegevens sets: een voor de bron, de andere voor de sink.
+In deze sectie maakt u twee gegevenssets: één voor de bron en de andere voor de sink.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Een gegevensset maken voor de brongegevens in Azure Blob
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *Azure Blob-gegevensset*wordt gemaakt. Zie [Eigenschappen van Azure Blob-gegevensset](connector-azure-blob-storage.md#dataset-properties)voor meer informatie over ondersteunde eigenschappen en Details.
+Voeg de volgende code toe aan de methode `Main` waarmee een *Azure Blob-gegevensset* wordt gemaakt. Zie [Eigenschappen van een Azure Blob-gegevensset](connector-azure-blob-storage.md#dataset-properties) voor informatie over ondersteunde eigenschappen en details.
 
 U definieert een gegevensset die de brongegevens in Azure Blob vertegenwoordigt. Deze Blob-gegevensset verwijst naar de gekoppelde Azure Storage-service die u in de vorige stap hebt gemaakt en beschrijft het volgende:
 
-- De locatie van de BLOB waaruit moet worden gekopieerd `FolderPath` : en`FileName`
-- De BLOB-indeling die aangeeft hoe de inhoud moet `TextFormat` worden geparseerd: en de bijbehorende instellingen, zoals kolom scheidings teken
-- De gegevens structuur, inclusief kolom namen en gegevens typen, die in dit voor beeld worden toegewezen aan de SQL-Sink-tabel
+- De locatie van de blob waaruit moet worden gekopieerd: `FolderPath` en `FileName`
+- De blob-indeling die aangeeft hoe de inhoud moet worden geparseerd: `TextFormat` en de bijbehorende instellingen, zoals het kolomscheidingsteken
+- De gegevensstructuur, inclusief kolomnamen en gegevenstypen, die in dit voorbeeld worden gekoppeld aan de SQL-sink-tabel
 
 ```csharp
 // Create an Azure Blob dataset
@@ -309,9 +309,9 @@ Console.WriteLine(
 
 ### <a name="create-a-dataset-for-sink-azure-sql-database"></a>Een gegevensset maken voor de sink-gegevens in Azure SQL Database
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *Azure SQL database-gegevensset*wordt gemaakt. Zie [Eigenschappen van Azure SQL database-gegevensset](connector-azure-sql-database.md#dataset-properties)voor meer informatie over ondersteunde eigenschappen en Details.
+Voeg de volgende code toe aan de methode `Main` waarmee een *Azure SQL Database-gegevensset* wordt gemaakt. Zie [Eigenschappen van een Azure SQL Database-gegevensset](connector-azure-sql-database.md#dataset-properties) voor informatie over ondersteunde eigenschappen en details.
 
-U definieert een gegevensset die de sink-gegevens in Azure SQL Database vertegenwoordigt. Deze gegevensset verwijst naar de Azure SQL Database gekoppelde service die u in de vorige stap hebt gemaakt. De gegevensset geeft ook aan in welke SQL-tabel de gekopieerde gegevens worden opgeslagen.
+U definieert een gegevensset die de sink-gegevens in Azure SQL Database vertegenwoordigt. Deze gegevensset verwijst naar de gekoppelde Azure SQL Database-service die u in de vorige stap hebt gemaakt. De gegevensset geeft ook aan in welke SQL-tabel de gekopieerde gegevens worden opgeslagen.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -337,7 +337,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-Voeg de volgende code toe aan `Main` de methode waarmee een *pijp lijn met een Kopieer activiteit*wordt gemaakt. In deze zelf studie bevat deze pijp lijn één activiteit: `CopyActivity`, die in de BLOB-gegevensset als bron en de SQL-gegevensset als Sink neemt. Zie [activiteit kopiëren in azure Data Factory](copy-activity-overview.md)voor meer informatie over de details van de Kopieer activiteit.
+Voeg de volgende code toe aan de methode `Main` waarmee een *pijplijn met een kopieeractiviteit* wordt gemaakt. In deze zelfstudie bevat deze pijplijn maar één activiteit: `CopyActivity`, waarbij de blob-gegevensset als bron wordt gebruikt en de SQL-gegevensset als sink. Zie [Kopieeractiviteit in Azure Data Factory](copy-activity-overview.md) voor informatie over kopieeractiviteitsdetails.
 
 ```csharp
 // Create a pipeline with copy activity
@@ -371,7 +371,7 @@ Console.WriteLine(
 
 ## <a name="create-a-pipeline-run"></a>Een pijplijnuitvoering maken
 
-Voeg de volgende code toe aan `Main` de methode die *een pijplijn uitvoering activeert*.
+Voeg de volgende code toe aan de methode `Main`waarmee een *pijplijnuitvoering wordt geactiveerd*.
 
 ```csharp
 // Create a pipeline run
@@ -384,9 +384,9 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>Een pijplijnuitvoering controleren
 
-Voeg nu de code in om de status van de pijplijn uitvoeringen te controleren en om meer informatie over de uitvoering van de Kopieer activiteit te krijgen.
+Voeg nu de code in om statussen van de pijplijnuitvoering te controleren en details van de uitvoering van de kopieeractiviteit te verkrijgen.
 
-1. Voeg de volgende code toe aan `Main` de methode om voortdurend de statussen van de pijplijn uitvoering te controleren totdat deze klaar is met het kopiëren van de gegevens.
+1. Voeg de volgende code toe aan de methode `Main` om continu de statussen van de pijplijnuitvoering te controleren totdat deze klaar is met het kopiëren van de gegevens.
 
     ```csharp
     // Monitor the pipeline run
@@ -405,7 +405,7 @@ Voeg nu de code in om de status van de pijplijn uitvoeringen te controleren en o
     }
     ```
 
-2. Voeg de volgende code toe aan `Main` de methode waarmee details van de uitvoer van de Kopieer activiteit worden opgehaald, zoals de grootte van de gegevens die zijn gelezen of geschreven.
+2. Voeg de volgende code toe aan de methode `Main` om details van de kopieeractiviteit weer te geven, zoals de omvang van de gelezen of weggeschreven gegevens.
 
     ```csharp
     // Check the copy activity run details
@@ -432,9 +432,9 @@ Voeg nu de code in om de status van de pijplijn uitvoeringen te controleren en o
 
 ## <a name="run-the-code"></a>De code uitvoeren
 
-Bouw de toepassing door build**Build Solution** **te kiezen.** >  Start vervolgens de toepassing door **debug** > **Start Debugging**te kiezen en de uitvoering van de pijp lijn te controleren.
+Bouw de toepassing door **Bouwen** > **Oplossing bouwen** te kiezen. Start de toepassing vervolgens door **Fouten opsporen** > **Foutopsporing starten** te kiezen, en verifieer de pijplijnuitvoering.
 
-In de console ziet u de voortgang van het maken van een data factory, een gekoppelde service, gegevenssets, pijplijn en pijplijnuitvoering. Vervolgens wordt de uitvoeringsstatus van de pijplijn gecontroleerd. Wacht totdat u de details van de Kopieer activiteit ziet met de grootte van de gelezen/geschreven gegevens. Met hulpprogram ma's als SQL Server Management Studio (SSMS) of Visual Studio kunt u verbinding maken met uw doel Azure SQL Database en controleren of de opgegeven doel tabel de gekopieerde gegevens bevat.
+In de console ziet u de voortgang van het maken van een data factory, een gekoppelde service, gegevenssets, pijplijn en pijplijnuitvoering. Vervolgens wordt de uitvoeringsstatus van de pijplijn gecontroleerd. Wacht totdat u details ziet van de uitvoering van de kopieeractiviteit, waaronder de omvang van de gelezen/weggeschreven gegevens. Vervolgens kunt u met hulpprogramma's zoals SQL Server Management Studio (SSMS) of Visual Studio verbinding maken met de database van Azure SQL Database en controleren of de opgegeven doeltabel de gekopieerde gegevens bevat.
 
 ### <a name="sample-output"></a>Voorbeelduitvoer
 
@@ -566,15 +566,15 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. U hebt geleerd hoe u:
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Gekoppelde Azure Storage- en Azure SQL Database-services maken.
 > * Gegevenssets voor Azure Blob Storage en Azure SQL Database maken.
-> * Maak een pijp lijn met een Kopieer activiteit.
+> * Een pijplijn met een kopieeractiviteit maken.
 > * Een pijplijnuitvoering starten.
-> * De uitvoering van de pijplijn en van de activiteit controleren
+> * De uitvoering van de pijplijn en van de activiteit controleren.
 
 Ga verder met de volgende zelfstudie als u wilt weten hoe u on-premises gegevens kopieert naar de cloud:
 

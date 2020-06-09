@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: Migreren van EA naar MCA-API's
           href: migrate-cost-management-api.md
+        - name: Groeps- en filteropties
+          href: group-filter.md
     - name: Instructiegidsen
       items:
         - name: Onverwachte kosten voorkomen en analyseren

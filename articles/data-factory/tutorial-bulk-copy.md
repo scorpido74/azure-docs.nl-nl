@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 0f73095f72d07989cdfa309454a2b54efa8e5f95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a6a6aaedc1bb4abc5cf02ea1cd081ad48ec78d19
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418754"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118192"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Meerdere tabellen bulksgewijs kopiëren met behulp van Azure Data Factory
 
@@ -27,12 +27,12 @@ Deze zelfstudie demonstreert het **kopiëren van een aantal tabellen uit Azure S
 Op hoog niveau bevat deze zelfstudie de volgende stappen:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
-> * De uitvoering van de pijplijn en van de activiteit controleren
+> * De uitvoering van de pijplijn en van de activiteit controleren.
 
 In deze zelfstudie wordt Azure PowerShell gebruikt. Zie [Quickstarts](quickstart-create-data-factory-dot-net.md) (Snelstartgidsen) voor meer informatie over het gebruik van andere hulpprogramma's/SDK's voor het maken van een gegevensfactory. 
 
@@ -44,22 +44,22 @@ In dit scenario hebben we een aantal tabellen in Azure SQL Database die we wille
 * De eerste pijplijn zoekt de lijst op met tabellen die moeten worden gekopieerd naar de sinkgegevensopslag.  U kunt ook een metagegevenstabel bijhouden waarin alle tabellen worden vermeld die moeten worden gekopieerd naar de sinkgegevensopslag. De pijplijn activeert vervolgens een andere pijplijn, die elke tabel in de database langsloopt en de bewerking uitvoert waarmee de gegevens worden gekopieerd.
 * De tweede pijplijn voert de daadwerkelijke kopieerbewerking uit. De lijst met tabellen wordt gebruikt als parameter. Kopieer voor elke tabel in de lijst de specifieke tabel in Azure SQL Database naar de bijbehorende tabel in SQL Data Warehouse met behulp van [gefaseerd kopiëren via Blob storage en PolyBase](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) (Engelstalig artikel) voor de beste prestaties. In dit voorbeeld wordt de lijst met tabellen in de eerste pijplijn doorgegeven als een waarde voor de parameter. 
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure PowerShell**. Volg de instructies in [How to install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Azure PowerShell installeren en configureren).
-* **Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
-* **Azure SQL database**. Deze database bevat de brongegevens. 
+* **Een Azure Storage-account**. Het Azure Storage-account wordt gebruikt als faseringsblobopslag in de bulksgewijze kopieerbewerking. 
+* **Azure SQL-database**. Deze database bevat de brongegevens. 
 * **Azure SQL Data Warehouse**. Dit datawarehouse bevat de uit de SQL Database gekopieerde gegevens. 
 
 ### <a name="prepare-sql-database-and-sql-data-warehouse"></a>SQL Database en SQL Data Warehouse voorbereiden
 
 **De Azure SQL Database-bron voorbereiden**:
 
-Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../sql-database/sql-database-get-started-portal.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een SQL0datawarehouse gekopieerd.
+Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel [Create an Azure SQL database](../azure-sql/database/single-database-create-quickstart.md) (Een Azure SQL-database maken) te volgen. In deze zelfstudie worden alle tabellen van deze voorbeelddatabase naar een SQL0datawarehouse gekopieerd.
 
 **De Azure SQL Data Warehouse-sink voorbereiden**:
 
@@ -69,7 +69,7 @@ Maak een Azure SQL Database met Adventure Works LT-testgegevens door het artikel
 
 ## <a name="azure-services-to-access-sql-server"></a>Azure-services voor toegang tot SQL-server
 
-Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data Warehouse. Zorg ervoor dat de instelling **Toegang tot Azure-services toestaan** voor uw Azure SQL-server op **AAN** staat. Met deze instelling kan de Data Factory-service gegevens lezen uit uw Azure SQL Database en schrijven naar uw Azure SQL Data Warehouse. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
+Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data Warehouse. Zorg ervoor dat de instelling **Toegang tot Azure-services toestaan** voor uw server op **AAN** staat. Met deze instelling kan de Data Factory-service gegevens lezen uit uw Azure SQL Database en schrijven naar uw Azure SQL Data Warehouse. Voer de volgende stappen uit om dit te controleren en de instelling in te schakelen:
 
 1. Klik op **Alle services** aan de linkerkant en klik op **SQL-servers**.
 2. Selecteer uw server en klik op **Firewall** onder **INSTELLINGEN**.
@@ -77,7 +77,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Start **Power shell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
+1. Start **PowerShell**. Houd Azure PowerShell open tot het einde van deze zelfstudie. Als u het programma sluit en opnieuw opent, moet u de opdrachten opnieuw uitvoeren.
 
     Voer de volgende opdracht uit en geef de gebruikersnaam en het wachtwoord op waarmee u zich aanmeldt bij Azure Portal:
         
@@ -94,7 +94,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Voer de cmdlet **set-AzDataFactoryV2** uit om een Data Factory te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
+2. Voer de cmdlet **Set-AzDataFactoryV2** uit om een data factory te maken. Vervang voordat u de opdracht uitvoert de tijdelijke aanduidingen door uw eigen waarden. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -111,7 +111,7 @@ Geef Azure-services toegang tot SQL-server voor zowel SQL Database als SQL Data 
         ```
 
     * Als u Data Factory-exemplaren wilt maken, moet u bijdrager of beheerder zijn van het Azure-abonnement.
-    * Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
+    * Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
 
@@ -119,7 +119,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
 
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Maak de gekoppelde Azure SQL Database-bronservice
 
-1. Maak een JSON-bestand met de naam **AzureSqlDatabaseLinkedService.json** in de map **C:\ADFv2TutorialBulkCopy** met de volgende inhoud (maak de map ADFv2TutorialBulkCopy als deze nog niet bestaat):
+1. Maak een JSON-bestand met de naam **AzureSqlDWLinkedService.json** in de map **C:\ADFv2TutorialBulkCopy** en de volgende inhoud: (Maak de map ADFv2TutorialBulkCopy als deze nog niet bestaat.)
 
     > [!IMPORTANT]
     > Vervang &lt;servername&gt;, &lt;databasename&gt;, &lt;username&gt;@&lt;servername&gt; en &lt;password&gt; door de waarden van uw Azure SQL Database voordat u het bestand opslaat.
@@ -138,7 +138,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
 
 2. Schakel in **Azure PowerShell** over naar de map **ADFv2TutorialBulkCopy**.
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
+3. Voer de cmdlet **Set-AzDataFactoryV2LinkedService** uit om de gekoppelde service te maken: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -172,7 +172,7 @@ In deze zelfstudie maakt u drie gekoppelde services maken voor respectievelijk d
     }
     ```
 
-2. Als u de gekoppelde service wilt maken: **AzureSqlDWLinkedService**, voert u de cmdlet **set-AzDataFactoryV2LinkedService** uit.
+2. Om de gekoppelde service **AzureSqlDWLinkedService** te maken, voert u de cmdlet **Set-AzDataFactoryV2LinkedService** uit.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -208,7 +208,7 @@ In deze zelfstudie gebruikt u Azure Blob-opslag als een tussentijds faseringsgeb
     }
     ```
 
-2. Als u de gekoppelde service wilt maken: **AzureStorageLinkedService**, voert u de cmdlet **set-AzDataFactoryV2LinkedService** uit.
+2. Om de gekoppelde service **AzureStorageLinkedService** te maken, voert u de cmdlet **Set-AzDataFactoryV2LinkedService** uit.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -247,7 +247,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. Als u de gegevensset wilt maken: **AzureSqlDatabaseDataset**, voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
+2. De gegevensset maken: **AzureSqlDatabaseDataset**, voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -265,7 +265,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>Een gegevensset maken voor de sink in SQL Data Warehouse
 
-1. Maak een JSON-bestand met de naam **AzureSqlDWDataset.json** in de map **C:\ADFv2TutorialBulkCopy**, met de volgende inhoud: De tableName' wordt ingesteld als een parameter; de kopieeractiviteit waarin naar deze gegevensset wordt verwezen, geeft later de werkelijke waarde door naar de gegevensset.
+1. Maak een JSON-bestand met de naam **AzureSqlDWDataset.json** in de map **C:\ADFv2TutorialBulkCopy**. Geef dit bestand de volgende inhoud: 'tableName' is ingesteld als een parameter. De kopieeractiviteit die naar deze gegevensset verwijst, geeft de werkelijke waarde later door aan de gegevensset.
 
     ```json
     {
@@ -291,7 +291,7 @@ In deze zelfstudie maakt u bron- en sinkgegevenssets, waarmee de locatie wordt o
     }
     ```
 
-2. Als u de gegevensset wilt maken: **AzureSqlDWDataset**, voert u de cmdlet **set-AzDataFactoryV2Dataset** uit.
+2. De gegevensset maken: **AzureSqlDWDataset**, voert u de cmdlet **Set-AzDataFactoryV2Dataset** uit.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -383,7 +383,7 @@ In deze pijplijn wordt een lijst met tabellen gebruikt als parameter. Voor elke 
     }
     ```
 
-2. Als u de pijp lijn wilt maken: **IterateAndCopySQLTables**, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
+2. De pijplijn maken: **IterateAndCopySQLTables**, voert u de cdmlet **Set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -459,7 +459,7 @@ Deze pijplijn voert twee stappen uit:
     }
     ```
 
-2. Als u de pijp lijn wilt maken: **GetTableListAndTriggerCopyData**, voert u de cmdlet **set-AzDataFactoryV2Pipeline** uit.
+2. De pijplijn maken: **GetTableListAndTriggerCopyData**, voert u de cmdlet **Set-AzDataFactoryV2Pipeline** uit.
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
@@ -507,7 +507,7 @@ Deze pijplijn voert twee stappen uit:
     $result
     ```
 
-    Hier volgt een voorbeeld van de voorbeelduitvoer:
+    Hier volgt een voorbeeld van de voorbeelduitvoering:
 
     ```json
     Pipeline run details:
@@ -560,7 +560,7 @@ Deze pijplijn voert twee stappen uit:
     ($result | Where-Object {$_.ActivityName -eq "TriggerCopy"}).Output.ToString()
     ```
 
-    Hier volgt een voorbeeld van de voorbeelduitvoer:
+    Hier volgt een voorbeeld van de voorbeelduitvoering:
 
     ```json
     {
@@ -579,12 +579,12 @@ Deze pijplijn voert twee stappen uit:
 In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Gekoppelde Azure SQL Database-, Azure SQL Data Warehouse- en Azure Storage-services maken.
 > * Gegevenssets voor Azure SQL Database en Azure SQL Data Warehouse maken.
 > * Een pijplijn maken om de te kopiëren tabellen op te zoeken en een andere pijplijn om de kopieerbewerking daadwerkelijk uit te voeren. 
 > * Een pijplijnuitvoering starten.
-> * De uitvoering van de pijplijn en van de activiteit controleren
+> * De uitvoering van de pijplijn en van de activiteit controleren.
 
 Ga door naar de volgende zelfstudie voor informatie over het incrementeel kopiëren van gegevens uit een bron naar een bestemming:
 > [!div class="nextstepaction"]
