@@ -1,78 +1,19 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: Overzicht
-  items:
-    - name: Over Azure Digital Twins
-      href: about-digital-twins.md
 - name: Snelstartgidsen
   expanded: true
-  items:
-    - name: Beschikbare ruimten zoeken
-      href: quickstart-view-occupancy-dotnet.md
 - name: Zelfstudies
   items:
     - name: Een gebouw bewaken met Digital Twins
-      items:
-        - name: Implementeren en configureren
-          href: tutorial-facilities-setup.md
-        - name: Omstandigheden inrichten en bewaken
-          href: tutorial-facilities-udf.md
-        - name: Meldingen versturen met Logic Apps
-          href: tutorial-facilities-events.md
-        - name: Gebeurtenissen visualiseren met Time Series Insights
-          href: tutorial-facilities-analyze.md
 - name: Concepten
   items:
-    - name: Objectmodel en graaf voor ruimtelijke intelligentie van Digital Twins
-      href: concepts-objectmodel-spatialgraph.md
-    - name: Apparaatconnectiviteit en inkomende telemetriegegevens
-      href: concepts-device-ingress.md
-    - name: Gegevensverwerking en door gebruikers gedefinieerde functies
-      href: concepts-user-defined-functions.md
-    - name: Routering van gebeurtenissen en berichten
-      href: concepts-events-routing.md
-    - name: Servicebeperkingen van de openbare preview
-      href: concepts-service-limits.md
     - name: Beveiliging
-      items:
-        - name: Aanbevolen procedures voor beveiliging
-          href: security-best-practices.md
-        - name: Toegangsbeheer op basis van rollen
-          href: security-role-based-access-control.md
-        - name: Roltoewijzingen maken en beheren
-          href: security-create-manage-role-assignments.md
-        - name: Verificatie via beheer-API's
-          href: security-authenticating-apis.md
 - name: Instructiegidsen
   items:
-    - name: Multitenant-toepassingen inschakelen
-      href: how-to-multitenant-applications.md
-    - name: Door gebruikers gedefinieerde functies maken
-      href: how-to-user-defined-functions.md
-    - name: Gebeurtenissen en berichten via eindpunten routeren
-      href: how-to-egress-endpoints.md
-    - name: Blobs toevoegen aan objecten
-      href: how-to-add-blobs.md
-    - name: Digital Twins Swagger gebruiken
-      href: how-to-use-swagger.md
-    - name: Problemen met door gebruiker gedefinieerde functies oplossen
-      href: how-to-diagnose-user-defined-functions.md
-    - name: Bewaking configureren
-      href: how-to-configure-monitoring.md
     - name: Query's uitvoeren op Digital Twins-API's
-      items:
-        - name: Postman instellen
-          href: how-to-configure-postman.md
-        - name: Digital Twins-API's gebruiken
-          href: how-to-navigate-apis.md
-        - name: Veelvoorkomende querypatronen
-          href: how-to-query-common-apis.md
 - name: Naslaginformatie
-  items:
-    - name: Bibliotheek met door de gebruiker gedefinieerde functies
-      href: reference-user-defined-functions-client-library.md
 - name: Resources
-  expanded: true
   items:
     - name: Bronnen voor ontwikkelaars
       items:
@@ -116,3 +57,4 @@
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Updates voor Azure IoT
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
+  expanded: true

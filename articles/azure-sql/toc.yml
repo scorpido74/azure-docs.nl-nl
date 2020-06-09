@@ -447,7 +447,7 @@
             - name: Resource Health gebruiken om connectiviteitsproblemen op te lossen
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: DTU migreren naar vCore
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: Databaseresources schalen
               href: database/single-database-scale.md
             - name: Poolresources schalen
