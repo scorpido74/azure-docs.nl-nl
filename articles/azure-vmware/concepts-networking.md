@@ -3,18 +3,18 @@ title: Concepten-netwerk-interconnectiviteit
 description: Meer informatie over belang rijke aspecten en gebruiks voorbeelden van netwerken en interconnectiviteit in azure VMware-oplossing (AVS)
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457079"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629213"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-oplossing (AVS) Preview-netwerken en interconnectiviteit-concepten
 
 Met netwerk interconnectiviteit tussen uw persoonlijke Clouds van Azure VMware (AVS) en on-premises omgevingen of virtuele netwerken in azure kunt u uw privécloud openen en gebruiken. In dit artikel worden enkele belang rijke netwerk-en interconnectiviteit-concepten beschreven die de basis vormen van interconnectiviteit.
 
-Een handig perspectief op interconnectiviteit is het overwegen van de twee typen AVS-implementaties van privécloud-Clouds. De implementaties met eenvoudige Azure-interconnectiviteit en de implementaties met volledig on-premises naar privécloud interconnectiviteit.
+Een handig perspectief op interconnectiviteit is het overwegen van de twee typen AVS-implementaties voor privécloud: implementaties met eenvoudige Azure-interconnectiviteit en-implementaties, met volledige on-premises naar privécloud interconnectiviteit.
 
 De use cases voor de persoonlijke Clouds van AVS zijn:
 - nieuwe workloads voor virtuele VMware-machines in de Cloud
@@ -25,7 +25,7 @@ De use cases voor de persoonlijke Clouds van AVS zijn:
 
  Alle use cases voor de AVS-service zijn ingeschakeld met on-premises verbindingen met de privécloud. Het basis interconnectiviteit model is het meest geschikt voor AVS-evaluaties of-implementaties die geen toegang nodig hebben tot on-premises omgevingen.
 
-De twee typen AVS-interconnectiviteit worden in de onderstaande secties beschreven.  De meest eenvoudige interconnectiviteit is ' Azure Virtual Network-connectiviteit ', waarmee u uw privécloud kunt beheren en gebruiken met slechts één virtueel netwerk in Azure. De interconnectiviteit die wordt beschreven in ' on-premises connectiviteit ', breidt de connectiviteit van het virtuele netwerk uit om ook interconnectiviteit te omvatten tussen on-premises omgevingen en persoonlijke Clouds van AVS.
+De twee typen AVS-interconnectiviteit worden in de onderstaande secties beschreven.  De meest eenvoudige interconnectiviteit is ' Azure Virtual Network-connectiviteit '; u kunt hiermee uw privécloud beheren en gebruiken met slechts één virtueel netwerk in Azure. De interconnectiviteit die wordt beschreven in ' on-premises connectiviteit ', breidt de connectiviteit van het virtuele netwerk uit om ook interconnectiviteit te omvatten tussen on-premises omgevingen en persoonlijke Clouds van AVS.
 
 ## <a name="azure-virtual-network-interconnectivity"></a>Azure Virtual Network interconnectiviteit
 

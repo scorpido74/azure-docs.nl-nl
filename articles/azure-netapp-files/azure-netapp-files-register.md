@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64e47d9617e300ef114fb8d07517be46dbc859e3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274058"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636220"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registreren voor Azure NetApp Files
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u zich registreert voor Azure NetApp Files, 
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Een Waitlist-aanvraag indienen voor toegang tot de service
 
-1. Een Waitlist-aanvraag indienen om toegang te krijgen tot de Azure NetApp Files-service via de [inzendings pagina van Azure NetApp files Waitlist](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. Een Waitlist-aanvraag indienen om toegang te krijgen tot de Azure NetApp Files-service via de [inzendings pagina van Azure NetApp files Waitlist](https://aka.ms/azurenetappfiles). 
 
     Waitlist-aanmelding biedt geen garantie voor directe toegang tot de service. 
 
@@ -65,7 +65,7 @@ Voor het gebruik van de service moet u de Azure-resourceprovider registreren voo
        
    `<SubID>` is uw abonnements-id.
 
-    Als u de naam `Microsoft.NetApp/ANFGA`van de functie niet ziet, hebt u geen toegang tot de service. Stop bij deze stap. Volg de instructies in [een Waitlist-aanvraag verzenden om toegang te krijgen tot de service](#waitlist) om service toegang aan te vragen voordat u doorgaat. 
+    Als u de naam van de functie niet ziet `Microsoft.NetApp/ANFGA` , hebt u geen toegang tot de service. Stop bij deze stap. Volg de instructies in [een Waitlist-aanvraag verzenden om toegang te krijgen tot de service](#waitlist) om service toegang aan te vragen voordat u doorgaat. 
 
 4. Voer de volgende opdracht uit om de Azure-resourceprovider te registreren in de Azure Cloud Shell-console: 
     

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4b09df3110907d58badda2c389b9ee39a9b02532
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233311"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636186"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u een T-SQL streaming-taak maakt in Azure SQL
 2. Definieer de streaming-taak query als onderdeel van de streaming-taak maken.
 
 > [!NOTE]
-> Als u de functie voor het streamen van T-SQL in Azure SQL Edge wilt inschakelen, schakelt u TF 11515 in als opstart optie of gebruikt u de [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) -opdracht. Zie [configure using MSSQL. conf file](configure.md#configure-using-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met het bestand MSSQL. conf. Deze vereiste wordt verwijderd in toekomstige updates van Azure SQL Edge (preview).
+> Als u de functie voor het streamen van T-SQL in Azure SQL Edge wilt inschakelen, schakelt u TF 11515 in als opstart optie of gebruikt u de [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) -opdracht. Zie [configureren met een MSSQL. conf-bestand](configure.md#configure-by-using-an-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met het bestand MSSQL. conf. Deze vereiste wordt verwijderd in toekomstige updates van Azure SQL Edge (preview).
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Een invoer-en uitvoer object voor externe streams configureren
 
@@ -44,10 +44,10 @@ Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als inv
 
 | Gegevensbrontype | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | Y | Y | Gegevens bron om streaminggegevens te lezen/schrijven naar een Azure IoT Edge hub. Raadpleeg [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) voor meer informatie over Azure IOT Edge hub.|
-| SQL Database | N | Y | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. Het SQL Database kan een lokale SQL EDGE-Data Base of een externe SQL Server of Azure SQL Database|
-| Azure Blob Storage | N | Y | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
-| Kafka | Y | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel/AMD-versie van Azure SQL Edge en is niet beschikbaar voor de ARM64-versie van SQL Edge.|
+| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen/schrijven naar een Azure IoT Edge hub. Raadpleeg [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) voor meer informatie over Azure IOT Edge hub.|
+| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. Het SQL Database kan een lokale SQL EDGE-Data Base of een externe SQL Server of Azure SQL Database|
+| Azure Blob Storage | N | J | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
+| Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel/AMD-versie van Azure SQL Edge en is niet beschikbaar voor de ARM64-versie van SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Voor beeld: een extern stream-invoer/uitvoer-object maken voor Azure IoT Edge hub
 

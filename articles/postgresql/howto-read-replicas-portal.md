@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768947"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636623"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Lees replica's maken en beheren in Azure Database for PostgreSQL-één server van de Azure Portal
 
@@ -21,39 +21,43 @@ In dit artikel leert u hoe u in Azure Database for PostgreSQL Lees replica's maa
 ## <a name="prerequisites"></a>Vereisten
 Een [Azure database for postgresql-server](quickstart-create-server-database-portal.md) als de hoofd server.
 
+## <a name="azure-replication-support"></a>Ondersteuning voor Azure-replicatie
+
+Het [lezen van replica's](concepts-read-replicas.md) en [logische decodering](concepts-logical.md) is beide afhankelijk van het post gres-logboek (write-Ahead) (Wal) voor informatie. Deze twee functies hebben verschillende niveaus van logboek registratie nodig van post gres. Voor logische decodering is een hoger niveau van logboek registratie vereist dan bij het lezen van replica's.
+
+Als u het juiste niveau van logboek registratie wilt configureren, gebruikt u de Azure Replication support-para meter. Ondersteuning voor Azure-replicatie heeft drie instellings opties:
+
+* **Uit** : Hiermee wordt de minste informatie in de wal geplaatst. Deze instelling is niet beschikbaar op de meeste Azure Database for PostgreSQL-servers.  
+* **Replica** : uitgebreidere dan **uit**. Dit is het minimale registratie niveau dat nodig is voor het werken met [replica's](concepts-read-replicas.md) . Deze instelling is de standaard waarde op de meeste servers.
+* **Logisch** -uitgebreidere dan de **replica**. Dit is het minimale registratie niveau voor het werken met logische code ring. Het lezen van replica's werkt ook bij deze instelling.
+
+De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Intern worden met deze para meter de post gres-para meters `wal_level` , `max_replication_slots` en ingesteld `max_wal_senders` .
+
 ## <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
-Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen. De master server wordt voor bereid voor replicatie door de para meter Azure. replication_support in te stellen. Wanneer de replicatie parameter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. In de Azure Portal worden deze twee stappen ingekapseld door één knop, **ondersteuning voor replicatie inschakelen**.
 
-1. Selecteer in de Azure Portal de bestaande Azure Database for PostgreSQL-server die als een Master moet worden gebruikt.
+1. Selecteer in de Azure Portal een bestaande Azure Database for PostgreSQL-server die als een Master moet worden gebruikt.
 
-2. Selecteer op de zijbalk van de server onder **instellingen**de optie **replicatie**.
+2. Selecteer in het menu van de server de optie **replicatie**. Als ondersteuning voor Azure-replicatie is ingesteld op ten minste een **replica**, kunt u lees replica's maken. 
 
-> [!NOTE] 
-> Als u de **ondersteuning voor replicatie uitschakelen** grijs weer gegeven, zijn de replicatie-instellingen standaard al op uw server ingesteld. U kunt de volgende stappen overs Laan en een lees replica maken. 
+3. Als Azure-replicatie ondersteuning niet is ingesteld op ten minste een **replica**, stelt u deze in. Selecteer **Opslaan**.
 
-3. Selecteer **ondersteuning voor replicatie inschakelen**. 
+   ![Azure Database for PostgreSQL replicatie: replica instellen en opslaan](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![Ondersteuning voor replicatie inschakelen](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
 
-4. Bevestig dat u de ondersteuning voor replicatie wilt inschakelen. Met deze bewerking wordt de hoofd server opnieuw gestart. 
+   ![Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![Ondersteuning voor replicatie inschakelen bevestigen](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. Zodra de bewerking is voltooid, ontvangt u twee meldingen over Azure Portal. Er is één melding voor het bijwerken van de server parameter. Er is een andere melding voor de herstart van de server die onmiddellijk volgt.
 
-   ![Geslaagde meldingen-inschakelen](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Geslaagde meldingen](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. Vernieuw de Azure Portal pagina om de werk balk replicatie bij te werken. U kunt nu lees replica's maken voor deze server.
-
-   ![Bijgewerkte werk balk](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Het inschakelen van ondersteuning voor replicatie is een eenmalige bewerking per hoofd server. Er wordt een **ondersteunings** knop voor het uitschakelen van de replicatie voor uw gemak geboden. Het is niet raadzaam om replicatie ondersteuning uit te scha kelen, tenzij u zeker weet dat u nooit een replica maakt op deze hoofd server. U kunt ondersteuning voor replicatie niet uitschakelen als uw hoofd server bestaande replica's heeft.
-
 
 ## <a name="create-a-read-replica"></a>Een lees replica maken
 Voer de volgende stappen uit om een lees replica te maken:
 
-1. Selecteer de bestaande Azure Database for PostgreSQL-server om te gebruiken als de hoofd server. 
+1. Selecteer een bestaande Azure Database for PostgreSQL-server om te gebruiken als de hoofd server. 
 
 2. Selecteer op de zijbalk van de server onder **instellingen**de optie **replicatie**.
 
@@ -119,7 +123,7 @@ Voer de volgende stappen uit om een server te verwijderen uit de Azure Portal:
 
 1. Selecteer in de Azure Portal uw Master Azure Database for PostgreSQL-server.
 
-2. Open de pagina **overzicht** voor de-server. Selecteer **verwijderen**.
+2. Open de pagina **overzicht** voor de-server. Selecteer **Verwijderen**.
 
    ![Selecteer op de pagina overzicht van de server om de hoofd server te verwijderen](./media/howto-read-replicas-portal/delete-server.png)
  
@@ -131,7 +135,7 @@ Voer de volgende stappen uit om een server te verwijderen uit de Azure Portal:
 ## <a name="delete-a-replica"></a>Een replica verwijderen
 U kunt een lees replica verwijderen die vergelijkbaar is met de manier waarop u een hoofd server verwijdert.
 
-- Open in de Azure Portal de pagina **overzicht** voor de Lees replica. Selecteer **verwijderen**.
+- Open in de Azure Portal de pagina **overzicht** voor de Lees replica. Selecteer **Verwijderen**.
 
    ![Selecteer op de pagina overzicht van replica de optie om de replica te verwijderen](./media/howto-read-replicas-portal/delete-replica.png)
  

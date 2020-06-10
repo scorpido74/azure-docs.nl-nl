@@ -4,12 +4,12 @@ description: Schakel automatisch schalen in een Cloud groep in om het aantal rek
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780246"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609009"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Een automatische formule voor het schalen van reken knooppunten in een batch-pool maken
 
@@ -127,6 +127,9 @@ U kunt de waarde van deze door de service gedefinieerde variabelen ophalen om aa
 | $CurrentLowPriorityNodes |Het huidige aantal reken knooppunten met lage prioriteit, inclusief alle knoop punten die zijn voor rang. |
 | $PreemptedNodeCount | Het aantal knoop punten in de groep die een afgebroken status hebben. |
 
+> [!IMPORTANT]
+> Taak release taken zijn momenteel niet opgenomen in de bovenstaande variabelen die taak aantallen bieden, zoals $ActiveTasks en $PendingTasks. Afhankelijk van uw formule voor automatisch schalen, kan dit ertoe leiden dat knoop punten worden verwijderd en er geen knoop punten beschikbaar zijn voor het uitvoeren van de taak release taken.
+
 > [!TIP]
 > De alleen-lezen, service gedefinieerde variabelen die in de vorige tabel worden weer gegeven, zijn *objecten* die verschillende methoden bieden om toegang te krijgen tot gegevens die zijn gekoppeld aan elk. Zie [voorbeeld gegevens verkrijgen](#getsampledata) verderop in dit artikel voor meer informatie.
 >
@@ -162,7 +165,7 @@ Deze typen worden ondersteund in een formule:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>Bewerkingen
+## <a name="operations"></a>Operations
 
 Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige sectie.
 
@@ -187,10 +190,10 @@ Deze bewerkingen zijn toegestaan voor de typen die worden vermeld in de vorige s
 
 Bij het testen van een dubbele met een ternaire operator ( `double ? statement1 : statement2` ), is niet nul **waar**en is nul **False**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Functies
 Deze vooraf gedefinieerde **functies** zijn beschikbaar voor gebruik bij het definiëren van een formule voor automatisch schalen.
 
-| Functie | Retour type | Beschrijving |
+| Functie | Retourtype | Beschrijving |
 | --- | --- | --- |
 | Gem (doubleVecList) |double |Retourneert de gemiddelde waarde voor alle waarden in de doubleVecList. |
 | len (doubleVecList) |double |Retourneert de lengte van de vector die is gemaakt op basis van de doubleVecList. |

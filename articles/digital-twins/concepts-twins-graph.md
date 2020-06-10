@@ -1,0 +1,191 @@
+---
+title: Digital apparaatdubbels en de dubbele grafiek
+titleSuffix: Azure Digital Twins
+description: Meer informatie over het concept van een digitaal, en hoe hun relaties een grafiek maken.
+author: baanders
+ms.author: baanders
+ms.date: 3/12/2020
+ms.topic: conceptual
+ms.service: digital-twins
+ms.openlocfilehash: 05c0c66e7b6d301a749b301178c1f666a48d434b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84613003"
+---
+# <a name="understand-digital-twins-and-their-twin-graph"></a>Meer informatie over digitale apparaatdubbels en hun twee grafieken
+
+In een Azure Digital Apparaatdubbels-oplossing worden de entiteiten in uw omgeving vertegenwoordigd door Azure **Digital apparaatdubbels**. Een digitale dubbele is een exemplaar van een van uw door uw eigen gedefinieerde [modellen](concepts-models.md). Het kan worden verbonden met andere digitale apparaatdubbels via **relaties** om een **dubbele grafiek**te vormen: deze dubbele grafiek is de weer gave van uw gehele omgeving.
+
+> [!TIP]
+> ' Azure Digital Apparaatdubbels ' verwijst naar deze Azure-service als geheel. ' Digitale twee (en) ' of alleen ' dubbele (s) ' verwijzen naar afzonderlijke dubbele knoop punten in uw exemplaar van de service.
+
+## <a name="creating-digital-twins"></a>Digital apparaatdubbels maken
+
+Voordat u een digitale dubbele in uw Azure Digital Apparaatdubbels-exemplaar kunt maken, moet u een *model* hebben dat naar de service wordt geüpload. Een model beschrijft de set eigenschappen, telemetrie-berichten en relaties die een bepaalde dubbele kan hebben, onder andere. Zie [concepten: Custom modelers](concepts-models.md)(Engelstalig) voor informatie over de typen die in een model zijn gedefinieerd.
+
+Na het maken en uploaden van een model, kan uw client-app een exemplaar van het type maken. Dit is een digitale dubbele. Nadat u bijvoorbeeld een model van de *vloer*hebt gemaakt, kunt u een of meer digitale apparaatdubbels maken die gebruikmaken van dit type (zoals een *Floor*-type met dubbele naam *GroundFloor*, een andere met de naam *Floor2*, enzovoort). 
+
+Hieronder vindt u een code fragment van de clientcode die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het instantiëren van een dubbele van het type *kamer*.
+
+In de huidige preview van Azure Digital Apparaatdubbels moeten alle eigenschappen van een dubbele instantie worden geïnitialiseerd voordat de dubbele kan worden gemaakt. Dit doet u door een JSON-document te maken dat de nood zakelijke initialisatie waarden levert.
+
+```csharp
+public Task<boolean> CreateRoom(string id, double temperature, double humidity) 
+{
+    // Define the model for the twin to be created
+    Dictionary<string, object> meta = new Dictionary<string, object>()
+    {
+      { "$model", "dtmi:com:contoso:Room;2" }
+    };
+    // Initialize the twin properties
+    Dictionary<string, object> initData = new Dictionary<string, object>()
+    {
+      { "$metadata", meta },
+      { "Temperature", temperature},
+      { "Humidity", humidity},
+    };
+    try
+    {
+      await client.DigitalTwins.AddAsync(id, initData);
+      return true;
+    }
+    catch (ErrorResponseException e)
+    {
+      Console.WriteLine($"*** Error creating twin {id}: {e.Response.StatusCode}");
+      return false;
+    }
+}
+```
+
+## <a name="relationships-creating-a-graph-of-digital-twins"></a>Relaties: een grafiek met digitale apparaatdubbels maken
+
+Apparaatdubbels zijn verbonden met een twee ledige grafiek met hun relaties. De relaties die een dubbele kan hebben, worden gedefinieerd als onderdeel van het model.  
+
+De model *Floor* kan bijvoorbeeld een *contains* -relatie definiëren die de apparaatdubbels van het type *room*bedoelt. Met deze definitie kunt u met Azure Digital Apparaatdubbels de relaties maken van elke *vloer* , in plaats van een wille keurige *kamer* , met inbegrip *van apparaatdubbels* die subtypen *bevatten.* 
+
+Hier volgt een voor beeld van een client code die gebruikmaakt van de [DigitalTwins-api's](how-to-use-apis-sdks.md) voor het bouwen van een relatie tussen een van de twee *basis*typen, *GroundFloor* en een *kamer*type digitale dubbele naam *Cafe*.
+
+```csharp
+// Create Twins, using functions similar to the previous sample
+await CreateRoom("Cafe", 70, 66);
+await CreateFloor("GroundFloor", averageTemperature=70);
+// Create relationships
+Dictionary<string, object> targetrec = new Dictionary<string, object>()
+{
+    { "$targetId", "Cafe" }
+};
+try
+{
+    await client.DigitalTwins.AddEdgeAsync("GroundFloor", "contains", "GF-to-Cafe", targetrec);
+} catch(ErrorResponseException e)
+{
+    Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
+}
+```
+
+Het resultaat van dit proces is een set knoop punten (de Digital apparaatdubbels) die is verbonden via randen (hun relaties) in een grafiek.
+
+## <a name="json-representations-of-graph-elements"></a>JSON-representaties van grafiek elementen
+
+Digitale en dubbele gegevens en relatie gegevens worden beide opgeslagen in JSON-indeling. Dit betekent dat wanneer u een [query uitvoert op de dubbele grafiek](how-to-query-graph.md) in uw Azure Digital apparaatdubbels-exemplaar, het resultaat een JSON-weer gave is van digitale apparaatdubbels en relaties die u hebt gemaakt.
+
+### <a name="digital-twin-json-format"></a>Digitale dubbele JSON-indeling
+
+Wanneer het wordt weer gegeven als een JSON-object, worden de volgende velden weer gegeven in een digitale dubbele:
+
+| Veldnaam | Beschrijving |
+| --- | --- |
+| `$dtId` | Een door de gebruiker gegeven teken reeks voor de ID van de digitale dubbele |
+| `$conformance` | Een enum met de status van de conformiteit van deze digitale twee richting *(conformiteit*, *non-conformiteit*, *onbekend*) |
+| `{propertyName}` | De waarde van een eigenschap in JSON ( `string` , Number type of object) |
+| `$relationships` | De URL van het pad naar de verzameling relationships. Dit veld is niet aanwezig als de digitale twee kanten geen uitgaande relatie randen hebben. |
+| `$metadata.$model` | Beschrijving De ID van de model interface die dit digitale dubbele |
+| `$metadata.{propertyName}.desiredValue` | [Alleen voor Beschrijf bare eigenschappen] De gewenste waarde van de opgegeven eigenschap |
+| `$metadata.{propertyName}.desiredVersion` | [Alleen voor Beschrijf bare eigenschappen] De versie van de gewenste waarde |
+| `$metadata.{propertyName}.ackVersion` | De versie die wordt bevestigd door de apparaat-app die de digitale-twee implementeert |
+| `$metadata.{propertyName}.ackCode` | [Alleen voor Beschrijf bare eigenschappen] De `ack` code die wordt geretourneerd door de apparaat-app die de digitale-twee implementeert |
+| `$metadata.{propertyName}.ackDescription` | [Alleen voor Beschrijf bare eigenschappen] De `ack` beschrijving die wordt geretourneerd door de apparaat-app die de digitale-twee implementeert |
+| `{componentName}` | Een JSON-object dat de eigenschaps waarden en meta gegevens van de component bevat, vergelijkbaar met die van het hoofd object. Dit object bestaat ook als het onderdeel geen eigenschappen heeft. |
+| `{componentName}.{propertyName}` | De waarde van de eigenschap van het onderdeel in JSON ( `string` , Number type of object) |
+| `{componentName}.$metadata` | De meta gegevens voor het onderdeel, vergelijkbaar met het hoofd niveau`$metadata` |
+
+Hier volgt een voor beeld van een digitale dubbele indeling als een JSON-object:
+
+```json
+{
+  "$dtId": "Cafe",
+  "Temperature": 72,
+  "Location": {
+    "x": 101,
+    "y": 33
+  },
+  "component": {
+    "TableOccupancy": 1,
+    "$metadata": {
+      "$model": "dtmi:com:contoso:Table;1",
+      "TableOccupancy": {
+        "desiredValue": 1,
+        "desiredVersion": 3,
+        "ackVersion": 2,
+        "ackCode": 200,
+        "ackDescription": "OK"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:contoso:Room;1",
+    "Temperature": {
+      "desiredValue": 72,
+      "desiredVersion": 5,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "OK"
+    },
+    "Location": {
+      "desiredValue": {
+        "x": 101,
+        "y": 33,
+      },
+      "desiredVersion": 8,
+      "ackVersion": 8,
+      "ackCode": 200,
+      "ackDescription": "OK"
+    }
+  }
+}
+```
+
+### <a name="relationship-json-format"></a>De relatie-JSON-indeling
+
+Wanneer wordt weer gegeven als een JSON-object, worden de volgende velden weer gegeven in een relatie van een digitale dubbele:
+
+| Veldnaam | Beschrijving |
+| --- | --- |
+| `$edgeId` | Een door de gebruiker gegeven teken reeks die de ID van deze relatie rand vertegenwoordigt. Deze teken reeks is uniek in de context van de bron digitale dubbele, wat betekent dat deze `sourceId`  +  `edgeId` uniek is in de context van het Azure Digital apparaatdubbels-exemplaar. |
+| `$sourceId` | De ID van de bron digitale dubbele |
+| `$targetId` | De ID van de doel-digitale-dubbele |
+| `$relationshipName` | De naam van de relatie |
+| `{propertyName}` | Beschrijving De waarde van een eigenschap van deze relatie, in JSON ( `string` , Number type of object) |
+
+Hier volgt een voor beeld van een relatie die is opgemaakt als een JSON-object:
+
+```json
+{
+  "$edgeId": "Edge-01",
+  "$sourceId": "GroundFloor",
+  "$relationship": "contains",
+  "$targetId": "Cafe",
+  "startDate": "2020-02-04"
+}
+```
+
+## <a name="next-steps"></a>Volgende stappen
+
+Zie grafiek elementen beheren met Azure Digital-Api's:
+* [Instructies: een digitale twee richtings beheer beheren](how-to-manage-twin.md)
+* [Instructies: een dubbele grafiek met relaties beheren](how-to-manage-graph.md)
+
+U kunt ook meer informatie vinden over het uitvoeren van query's op de Azure Digital Apparaatdubbels-grafiek:
+* [Concepten: query taal](concepts-query-language.md)

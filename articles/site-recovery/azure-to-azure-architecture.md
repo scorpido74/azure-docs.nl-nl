@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983326"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629697"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architectuur voor herstel na noodgevallen van Azure naar Azure
 
@@ -26,7 +26,7 @@ In dit artikel worden de architectuur, onderdelen en processen beschreven die wo
 
 De onderdelen die betrekking hebben op herstel na nood geval voor virtuele Azure-machines, worden in de volgende tabel samenvatten.
 
-**Component** | **Vereisten**
+**Onderdeel** | **Vereisten**
 --- | ---
 **Vm's in bron regio** | Een of meer virtuele Azure-machines in een [ondersteunde bron regio](azure-to-azure-support-matrix.md#region-support).<br/><br/> Op Vm's kan elk [ondersteund besturings systeem](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)worden uitgevoerd.
 **Opslag van de bron-VM** | Virtuele Azure-machines kunnen worden beheerd of beschikken over niet-beheerde schijven over opslag accounts.<br/><br/>[Meer informatie over](azure-to-azure-support-matrix.md#replicated-machines---storage) ondersteunde Azure-opslag.
@@ -34,7 +34,7 @@ De onderdelen die betrekking hebben op herstel na nood geval voor virtuele Azure
 **Cache-opslag account** | U hebt een cache-opslag account in het bron netwerk nodig. Tijdens de replicatie worden wijzigingen in de virtuele machine opgeslagen in de cache voordat ze worden verzonden naar de doel opslag.  Cache-opslag accounts moeten standaard zijn.<br/><br/> Het gebruik van een cache zorgt voor een minimale impact op productie toepassingen die worden uitgevoerd op een virtuele machine.<br/><br/> Meer [informatie](azure-to-azure-support-matrix.md#cache-storage) over vereisten voor cache opslag. 
 **Doel resources** | Doel bronnen worden gebruikt tijdens de replicatie en wanneer een failover optreedt. Site Recovery kunt de doel resource standaard instellen, maar u kunt ze ook maken/aanpassen.<br/><br/> Controleer in de doel regio of u Vm's kunt maken en of uw abonnement voldoende bronnen heeft ter ondersteuning van VM-grootten die in de doel regio nodig zijn. 
 
-![Bron-en doel replicatie](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Bron-en doel replicatie](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Doel resources
 
@@ -116,7 +116,7 @@ Wanneer u replicatie voor een virtuele machine van Azure inschakelt, gebeurt het
 4. Site Recovery worden de gegevens in de cache verwerkt, verzonden naar het doel-opslag account of naar de replica Managed disks.
 5. Nadat de gegevens zijn verwerkt, worden er om de vijf minuten crash consistente herstel punten gegenereerd. App-consistente herstel punten worden gegenereerd volgens de instelling die is opgegeven in het replicatie beleid.
 
-![Replicatie proces inschakelen, stap 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Replicatie proces inschakelen, stap 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replicatieproces**
 
@@ -146,9 +146,9 @@ Details van de vereisten voor netwerk connectiviteit vindt u in het [technisch d
 
 **Regel** |  **Details** | **Servicetag**
 --- | --- | --- 
-HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad. \<regio-naam>
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de bron regio | Opslagpad.\<region-name>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Active Directory (Azure AD)  | AzureActiveDirectory
-HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de doel regio. | EventsHub. \<regio-naam>
+HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de doel regio. | EventsHub.\<region-name>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Key Vault (dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE-functionaliteit via de portal) | AzureKeyVault
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Automation Controller (dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal) | GuestAndHybridManagement
@@ -157,9 +157,9 @@ HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azur
 
 **Regel** |  **Details** | **Servicetag**
 --- | --- | --- 
-HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de doel regio | Opslagpad. \<regio-naam>
+HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met opslag accounts in de doel regio | Opslagpad.\<region-name>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure AD  | AzureActiveDirectory
-HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de bron regio. | EventsHub. \<regio-naam>
+HTTPS-uitgaand toestaan: poort 443 | Sta bereiken toe die overeenkomen met de hub van gebeurtenissen in de bron regio. | EventsHub.\<region-name>
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Site Recovery  | AzureSiteRecovery
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Key Vault (dit is alleen vereist voor het inschakelen van replicatie van virtuele machines met ADE-functionaliteit via de portal) | AzureKeyVault
 HTTPS-uitgaand toestaan: poort 443 | Bereiken toestaan die overeenkomen met Azure Automation Controller (dit is alleen vereist voor het inschakelen van de automatische upgrade van de Mobility-agent voor een gerepliceerd item via de portal) | GuestAndHybridManagement
@@ -191,7 +191,7 @@ Als u multi-VM-consistentie inschakelt, communiceren machines in de replicatiegr
 
 Wanneer u een failover initieert, worden de virtuele machines gemaakt in de doel resource groep, het virtuele doel netwerk, het doel-subnet en de beschikbaarheidsset doel. Tijdens een failover kunt u elk herstel punt gebruiken.
 
-![Failoverproces](./media/concepts-azure-to-azure-architecture/failover.png)
+![Failoverproces](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 1b5d51eafc0cb21a02f8a750bd78b5be7aca734f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331964"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605507"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -305,7 +305,7 @@ Hier volgt een voor beeld van hoe een parameterisering-sjabloon eruit kan zien:
 ```
 Hier volgt een uitleg van de manier waarop de vorige sjabloon is samengesteld, onderverdeeld op resource type.
 
-#### <a name="pipelines"></a>Pipelines
+#### <a name="pipelines"></a>Pijplijnen
     
 * Een eigenschap in het pad `activities/typeProperties/waitTimeInSeconds` is para meters. Alle activiteiten in een pijp lijn met de naam eigenschap `waitTimeInSeconds` (bijvoorbeeld de `Wait` activiteit) worden als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap `headers` (bijvoorbeeld in een `Web` activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als die van de bron-Factory.
@@ -361,6 +361,14 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts e
                         "value": "-::secureString"
                     },
                     "resourceId": "="
+                },
+                "computeProperties": {
+                    "dataFlowProperties": {
+                        "externalComputeInfo": [{
+                                "accessToken": "-::secureString"
+                            }
+                        ]
+                    }
                 }
             }
         }
@@ -395,6 +403,7 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts e
                     "accessKeyId": "=",
                     "servicePrincipalId": "=",
                     "userId": "=",
+                    "host": "=",
                     "clientId": "=",
                     "clusterUserName": "=",
                     "clusterSshUserName": "=",
@@ -413,7 +422,10 @@ Hieronder ziet u de huidige standaard sjabloon parameterisering. Als u slechts e
                     "systemNumber": "=",
                     "server": "=",
                     "url":"=",
+                    "environmentUrl": "=",
                     "aadResourceId": "=",
+                    "sasUri": "|:-sasUri:secureString",
+                    "sasToken": "|",
                     "connectionString": "|:-connectionString:secureString"
                 }
             }

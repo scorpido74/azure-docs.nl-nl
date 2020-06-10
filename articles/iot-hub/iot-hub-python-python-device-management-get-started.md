@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 3e48e52294884294a2e4649e8fc0e0b9c42e0c0a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759767"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608533"
 ---
 # <a name="get-started-with-device-management-python"></a>Aan de slag met Apparaatbeheer (python)
 
@@ -40,7 +40,7 @@ Aan het einde van deze zelf studie hebt u twee python-console-apps:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -68,7 +68,7 @@ In deze sectie doet u het volgende:
 
 2. Maak met behulp van een tekst editor een bestand met de naam **dmpatterns_getstarted_device. py** in uw werkmap.
 
-3. Voeg de volgende `import` -instructies toe aan het begin van het bestand **dmpatterns_getstarted_device. py** .
+3. Voeg de volgende- `import` instructies toe aan het begin van het bestand **dmpatterns_getstarted_device. py** .
 
     ```python
     import threading
@@ -161,7 +161,7 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
 
 2. Maak met behulp van een tekst editor een bestand met de naam **dmpatterns_getstarted_service. py** in uw werkmap.
 
-3. Voeg de volgende `import` -instructies toe aan het begin van het bestand **dmpatterns_getstarted_service. py** .
+3. Voeg de volgende- `import` instructies toe aan het begin van het bestand **dmpatterns_getstarted_service. py** .
 
     ```python
     import sys, time
@@ -170,7 +170,7 @@ In deze sectie maakt u een python-console-app die extern opnieuw opstarten op ee
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. Voeg de volgende variabelen declaraties toe. Vervang de `{IoTHubConnectionString}` waarde van de tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de iot hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` waarde van de tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [Registreer een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende variabelen declaraties toe. Vervang de `{IoTHubConnectionString}` waarde van de tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` waarde van de tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [Registreer een nieuw apparaat in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

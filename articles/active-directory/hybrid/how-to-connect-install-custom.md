@@ -10,16 +10,16 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f96e70c6699fb7ce85bd1c01f72028f537f994f2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fd13fa0b75f428a07288098dcffe54c9c5af6fc0
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680313"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636016"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
@@ -133,7 +133,7 @@ Met de functie Overeenkomend in forests kunt u definiëren hoe gebruikers van uw
 | [E-mailkenmerk](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Deze optie koppelt gebruikers en contactpersonen als het e-mailkenmerk in verschillende forests dezelfde waarde heeft. Gebruik deze optie wanneer uw contactpersonen met behulp van GALSync zijn aangemaakt. Als u deze optie kiest, worden gebruikersobjecten waarvan het e-mailkenmerk niet is ingevuld, niet naar Azure AD gesynchroniseerd. |
 | [ObjectSID en msExchangeMasterAccountSID / msRTCSIP-OriginatorSid](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Deze optie koppelt een ingeschakelde gebruiker in een account-forest met een uitgeschakelde gebruiker in een bron-forest. In Exchange wordt deze configuratie een gekoppeld postvak genoemd. Deze optie kan ook worden gebruikt als u alleen Lync gebruikt en Exchange niet in de bron-forest aanwezig is. |
 | sAMAccountName en MailNickName |Deze optie koppelt kenmerken waarbij wordt verwacht dat de aanmeldings-id van de gebruiker gevonden kan worden. |
-| Een specifiek kenmerk |Met deze optie kunt u uw eigen kenmerk selecteren. Als u deze optie kiest, worden gebruikersobjecten waarvan het (geselecteerde) kenmerk niet is ingevuld, niet naar Azure AD gesynchroniseerd. **Beperking:** Zorg dat u een kenmerk kiest dat al in de metaverse te vinden is. Als u een aangepast kenmerk kiest dat niet in de metaverse staat, kan de wizard niet voltooid worden. |
+| Een specifiek kenmerk |Met deze optie kunt u uw eigen kenmerk selecteren. Als u deze optie kiest, worden gebruikersobjecten waarvan het (geselecteerde) kenmerk niet is ingevuld, niet naar Azure AD gesynchroniseerd. **Beperking:** Alleen kenmerken die al in de tekst van het tegenovergestelde veld kunnen worden gevonden, zijn beschikbaar voor deze optie. ". |
 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Selecteren hoe gebruikers moeten worden aangeduid met Azure AD - bronanker
 Het kenmerk sourceAnchor is onveranderbaar tijdens de levensduur van een gebruikersobject. Het is de primaire sleutel die de on-premises gebruiker aan de gebruiker in Azure AD koppelt.
@@ -359,7 +359,7 @@ De configuratie wordt op deze pagina uitgevoerd.
 >
 
 
-![Gereed voor configuratie](./media/how-to-connect-install-custom/readytoconfigure2.png)
+![Klaar om te configureren](./media/how-to-connect-install-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>Faseringsmodus
 Het is mogelijk om een nieuwe synchronisatieserver parallel met de faseringsmodus in te stellen. Het is alleen ondersteund als u één synchronisatieserver naar één map in de cloud laat exporteren. Als u echter vanaf een andere server wilt verplaatsen, bijvoorbeeld een server met DirSync, dan kunt u Azure AD Connect in de faseringsmodus inschakelen. Wanneer dit is ingeschakeld, importeert en synchroniseert de synchronisatie-engine zoals gewoonlijk, maar hij exporteert niets naar Azure AD of AD. De functies Wachtwoordsynchronisatie en Wachtwoord terugschrijven zijn uitgeschakeld in de faseringsmodus.
@@ -393,7 +393,7 @@ Als u wilt controleren of end-to-end-verificatie is gelukt, voert u een of meer 
 * Controleer of u zich kunt aanmelden met een apparaat vanaf het extranet. Maak op een computer thuis of op een mobiel apparaat verbinding met https://myapps.microsoft.com en voer uw referenties in.
 * Aanmelding uitgebreide client controleren. Maak verbinding met https://testconnectivity.microsoft.com, kies het tabblad **Office 365** en vervolgens **Office 365 Test Eenmalige aanmelding**.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 De volgende sectie bevat oplossingen voor fouten en informatie die u kunt gebruiken als u een probleem ondervindt bij het installeren van Azure AD Connect.
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>De ADSync-database bevat al gegevens en kan niet worden overschreven

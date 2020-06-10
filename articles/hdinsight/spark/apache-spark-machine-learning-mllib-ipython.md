@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559949"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608414"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib gebruiken om een machine learning-toepassing te bouwen en een gegevensset te analyseren
 
@@ -24,7 +24,7 @@ MLlib is een belang rijke Spark-bibliotheek die veel hulpprogram ma's biedt die 
 * Classificatie
 * Regressie
 * Clustering
-* Modelleren
+* Modellen maken
 * Enkelvouds waarde (SVD) en Principal component analyse (PCA)
 * Hypo Thesen testen en voorbeeld statistieken berekenen
 
@@ -174,13 +174,13 @@ Laten we een idee krijgen van wat de gegevensset bevat.
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    Het `%%sql` Magic wordt gevolgd `-o countResultsdf` door ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **countResultsdf**. Zie `%%sql` [kernels die beschikbaar zijn op Jupyter-notebooks met Apache Spark HDInsight-clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic en andere magics die beschikbaar zijn in de PySpark-kernel.
+    Het `%%sql` Magic wordt gevolgd door `-o countResultsdf` ervoor te zorgen dat de uitvoer van de query lokaal wordt opgeslagen op de Jupyter-server (doorgaans de hoofd knooppunt van het cluster). De uitvoer wordt persistent gemaakt als een [Panda](https://pandas.pydata.org/) data frame met de opgegeven naam **countResultsdf**. `%%sql`Zie [kernels die beschikbaar zijn op Jupyter-notebooks met Apache Spark HDInsight-clusters](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)voor meer informatie over het Magic en andere magics die beschikbaar zijn in de PySpark-kernel.
 
     Dit is de uitvoer:
 
     ![SQL-query-uitvoer](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-query-uitvoer")
 
-3. U kunt ook matplotlib gebruiken, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **countResultsdf** -data frame, moet het code fragment `%%local` beginnen met het Magic. Met deze actie zorgt u ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
+3. U kunt ook matplotlib gebruiken, een bibliotheek die wordt gebruikt om visualisatie van gegevens te maken, om een plot te creëren. Omdat het waarnemings punt moet worden gemaakt van de lokaal blijvende persistente **countResultsdf** -data frame, moet het code fragment beginnen met het `%%local` Magic. Met deze actie zorgt u ervoor dat de code lokaal wordt uitgevoerd op de Jupyter-server.
 
     ```PySpark
     %%local
@@ -207,7 +207,7 @@ Laten we een idee krijgen van wat de gegevensset bevat.
 
      Gegevens met de andere resultaten (' bedrijf niet gevonden ' of ' buiten bedrijf ') zijn niet nuttig en maken toch een klein percentage van de resultaten.
 
-4. Voer de volgende code uit om de bestaande data frame (`df`) te converteren naar een nieuwe data frame waarbij elke inspectie wordt weer gegeven als een combi natie van label schendingen. In dit geval vertegenwoordigt een label van `0.0` een fout, een label dat `1.0` een geslaagde waarde vertegenwoordigt en een label dat `-1.0` een resultaat oplevert naast die twee resultaten.
+4. Voer de volgende code uit om de bestaande data frame ( `df` ) te converteren naar een nieuwe data frame waarbij elke inspectie wordt weer gegeven als een combi natie van label schendingen. In dit geval vertegenwoordigt een label van `0.0` een fout, een label dat `1.0` een geslaagde waarde vertegenwoordigt en een label dat een `-1.0` resultaat oplevert naast die twee resultaten.
 
     ```PySpark
     def labelForResults(s):
@@ -288,7 +288,7 @@ U kunt het model dat u eerder hebt gemaakt, gebruiken om te voors *pellen* wat d
 
    Er is een voor spelling voor het eerste item in de test gegevensset.
 
-1. Met `model.transform()` de-methode wordt dezelfde trans formatie toegepast op alle nieuwe gegevens met hetzelfde schema, en arriveert een voor spelling van het classificeren van de gegevens. U kunt een aantal statistieken doen om een beeld te krijgen van de manier waarop de voor spellingen zijn:
+1. Met de- `model.transform()` methode wordt dezelfde trans formatie toegepast op alle nieuwe gegevens met hetzelfde schema, en arriveert een voor spelling van het classificeren van de gegevens. U kunt een aantal statistieken doen om een beeld te krijgen van de manier waarop de voor spellingen zijn:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -313,7 +313,7 @@ U kunt het model dat u eerder hebt gemaakt, gebruiken om te voors *pellen* wat d
 
 U kunt nu een definitieve visualisatie maken om u te helpen de resultaten van deze test te controleren.
 
-1. U begint met het extra heren van de verschillende voor spellingen en resultaten van de tijdelijke tabel met voor **spellingen** die u eerder hebt gemaakt. De volgende query's scheiden de uitvoer als *true_positive*, *false_positive*, *true_negative*en *false_negative*. In de onderstaande query's schakelt u visualisatie uit met behulp `-q` van en slaat u ook de uitvoer ( `-o`met behulp van) op als dataframes die vervolgens `%%local` met het Magic kan worden gebruikt.
+1. U begint met het extra heren van de verschillende voor spellingen en resultaten van de tijdelijke tabel met voor **spellingen** die u eerder hebt gemaakt. De volgende query's scheiden de uitvoer als *true_positive*, *false_positive*, *true_negative*en *false_negative*. In de onderstaande query's schakelt u visualisatie uit met behulp van `-q` en slaat u ook de uitvoer (met behulp van `-o` ) op als dataframes die vervolgens met het Magic kan worden gebruikt `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive

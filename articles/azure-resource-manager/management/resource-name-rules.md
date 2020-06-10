@@ -3,12 +3,12 @@ title: Naamgevings beperkingen voor resources
 description: Hier worden de regels en beperkingen voor het benoemen van Azure-resources weer gegeven.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 1ed8db4c7f780af8ac06074c514a602cc1654554
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5baf9ce63442ee60d212362df92a44d0fa2723fa
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456873"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610301"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Naamgevingsregels en -beperkingen voor Azure-resources
 
@@ -174,8 +174,8 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | galerieën/afbeeldingen/versies | image | 32-bits geheel getal | Cijfers en peri Oden. |
 > | images | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
 > | momentopnamen | resourcegroep | 1-80 | Alfanumeriek, onderstrepings tekens, punten en afbreek streepjes.<br><br>Begin met alfanumeriek. Eindigen met een alfanumeriek of onderstrepings teken. |
-> | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
-> | virtualMachineScaleSets | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/""[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
+> | Informatie | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
+> | virtualMachineScaleSets | resourcegroep | 1-15 (Windows)<br>1-64 (Linux)<br><br>Zie de opmerking hieronder. | Kan niet gebruiken:<br> `\/"'[]:|<>+=;,?*@&`<br><br>Kan niet beginnen met een onderstrepings teken. Kan niet eindigen met een punt of afbreek streepje. |
 
 > [!NOTE]
 > Virtuele Azure-machines hebben twee verschillende namen: resource naam en hostnaam. Wanneer u een virtuele machine in de portal maakt, wordt dezelfde waarde gebruikt voor beide namen. De beperkingen in de voor gaande tabel zijn voor de hostnaam. De werkelijke resourcenaam mag niet langer zijn dan 64 tekens.
@@ -248,7 +248,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | werkruimten | resourcegroep | 3-30 | Alfanumerieken, onderstrepings tekens en afbreek streepjes |
+> | workspaces | resourcegroep | 3-30 | Alfanumerieken, onderstrepings tekens en afbreek streepjes |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -444,14 +444,14 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | --- | --- | --- | --- |
 > | commitmentPlans | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
 > | webservices | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
-> | werkruimten | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
+> | workspaces | resourcegroep | 1-260 | Kan niet gebruiken:<br>`<>*%&:?+/\\`<br><br>Kan niet eindigen met een spatie. |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
-> | werkruimten | resourcegroep | 3-33 | Alfanumerieke tekens en afbreek streepjes. |
+> | workspaces | resourcegroep | 3-33 | Alfanumerieke tekens en afbreek streepjes. |
 > | werk ruimten/reken bewerkingen | werkruimte | 2-16 | Alfanumerieke tekens en afbreek streepjes. |
 
 ## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
@@ -535,7 +535,7 @@ In de volgende tabellen verwijst de term alfanumeriek naar:
 > | Entiteit | Bereik | Lengte | Geldige tekens |
 > | --- | --- | --- | --- |
 > | clusters | resourcegroep | 4-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
-> | werkruimten | resourcegroep | 4-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
+> | workspaces | resourcegroep | 4-63 | Alfanumerieke tekens en afbreek streepjes.<br><br>Beginnen en eindigen met een alfanumerieke teken. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76717323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629001"
 ---
 # <a name="create-a-custom-voice"></a>Een aangepaste stem maken
 
@@ -28,7 +28,7 @@ Controleer de talen die worden ondersteund voor aangepaste spraak: [taal voor aa
 
 ## <a name="upload-your-datasets"></a>Uw gegevens sets uploaden
 
-Wanneer u klaar bent om uw gegevens te uploaden, gaat u naar de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal). Een aangepast spraak project maken of selecteren. Het project moet de juiste taal-en land instellingen en de gender eigenschappen delen als de gegevens die u wilt gebruiken voor uw spraak training. Selecteer `en-GB` bijvoorbeeld als de audio-opnames in het Engels met een UK-accent zijn gedaan.
+Wanneer u klaar bent om uw gegevens te uploaden, gaat u naar de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal). Een aangepast spraak project maken of selecteren. Het project moet de juiste taal-en land instellingen en de gender eigenschappen delen als de gegevens die u wilt gebruiken voor uw spraak training. Selecteer bijvoorbeeld `en-GB` als de audio-opnames in het Engels met een UK-accent zijn gedaan.
 
 Ga naar het tabblad **gegevens** en klik op **gegevens uploaden**. Selecteer in de wizard het juiste gegevens type dat overeenkomt met wat u hebt voor bereid.
 
@@ -62,13 +62,13 @@ U kunt een uitingen met lage uitspraak scores of slecht signaal-naar-ruis-verhou
 
 Nadat uw gegevensset is gevalideerd, kunt u deze gebruiken om uw aangepaste spraak model te maken.
 
-1.  Navigeer naar **tekst-naar-spraak > aangepaste spraak > training**.
+1.  Navigeer naar **tekst-naar-spraak > aangepaste spraak > [naam van project] > training**.
 
 2.  Klik op **model trainen**.
 
 3.  Voer vervolgens een **naam** en **Beschrijving** in die u helpen bij het identificeren van dit model.
 
-    Kies een naam zorgvuldig. De naam die u hier opgeeft, is de naam die u gebruikt om de stem in uw aanvraag voor spraak synthese op te geven als onderdeel van de SSML-invoer. Alleen letters, cijfers en enkele Lees tekens zoals-, \_en (', ') zijn toegestaan. Gebruik verschillende namen voor verschillende spraak modellen.
+    Kies een naam zorgvuldig. De naam die u hier opgeeft, is de naam die u gebruikt om de stem in uw aanvraag voor spraak synthese op te geven als onderdeel van de SSML-invoer. Alleen letters, cijfers en enkele Lees tekens zoals-, \_ en (', ') zijn toegestaan. Gebruik verschillende namen voor verschillende spraak modellen.
 
     Een veelvoorkomend gebruik van het veld **Beschrijving** bestaat uit het vastleggen van de namen van de gegevens sets die zijn gebruikt voor het maken van het model.
 
@@ -106,7 +106,7 @@ Als u de Neural-functie voor spraak training gebruikt, kunt u een model trainen 
 
 Nadat het letter type is gemaakt, kunt u het testen voordat u het voor gebruik implementeert.
 
-1.  Navigeer naar **tekst-naar-spraak > aangepaste spraak > testen**.
+1.  Navigeer naar **tekst-naar-spraak > aangepaste spraak > [naam van project] > testen**.
 
 2.  Klik op **test toevoegen**.
 
@@ -117,7 +117,7 @@ Nadat het letter type is gemaakt, kunt u het testen voordat u het voor gebruik i
     > [!NOTE]
     > De taal van de tekst moet hetzelfde zijn als de taal van uw spraak lettertype. Alleen goed getrainde modellen kunnen worden getest. In deze stap wordt alleen tekst zonder opmaak ondersteund.
 
-5.  Klik op **maken**.
+5.  Klik op **Create**.
 
 Zodra u uw test aanvraag hebt verzonden, keert u terug naar de pagina test. De tabel bevat nu een vermelding die overeenkomt met uw nieuwe aanvraag en de kolom Status. Het kan een paar minuten duren om spraak te maken. Wanneer de kolom status **is geslaagd**, kunt u de audio afspelen of de tekst invoer (een. txt-bestand) en audio-uitvoer (een. wav-bestand) downloaden en de Audition voor kwaliteit verder afstemmen.
 

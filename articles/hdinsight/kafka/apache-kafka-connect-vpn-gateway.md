@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, tracking-python
 ms.date: 03/04/2020
-ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8bf80cad86f45c24a475799a840b861c23fc28a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272121"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610913"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Verbinding maken met Apache Kafka in HDInsight via een virtueel Azure-netwerk
 
@@ -242,7 +242,7 @@ Gebruik de stappen in deze sectie om de volgende configuratie te maken:
 
 Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar clients. Deze configuratie werkt niet met de VPN-client, omdat deze geen naam omzetting kan gebruiken voor entiteiten in het virtuele netwerk. Gebruik voor deze configuratie de volgende stappen om Kafka te configureren voor het adverteren van IP-adressen in plaats van domein namen:
 
-1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang `CLUSTERNAME` door de naam van de Kafka in HDInsight-cluster.
+1. Ga in een webbrowser naar `https://CLUSTERNAME.azurehdinsight.net`. Vervang door `CLUSTERNAME` de naam van de Kafka in HDInsight-cluster.
 
     Wanneer u hierom wordt gevraagd, gebruikt u de HTTPS-gebruikers naam en het wacht woord voor het cluster. De Ambari-webgebruikersinterface voor het cluster wordt weer gegeven.
 
@@ -254,7 +254,7 @@ Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar 
 
     ![Configuratie van Apache Ambari Services](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. Als u de __Kafka-env-__ configuratie wilt `kafka-env` vinden, voert u in het veld __filter__ in de rechter bovenhoek in.
+4. Als u de __Kafka-env-__ configuratie wilt vinden, voert u `kafka-env` in het veld __filter__ in de rechter bovenhoek in.
 
     ![Kafka-configuratie voor Kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,9 +268,9 @@ Standaard retourneert Apache Zookeeper de domein naam van de Kafka-Brokers naar 
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Als u de interface wilt configureren waarop Kafka luistert, `listeners` voert u in het veld __filter__ in de rechter bovenhoek in.
+6. Als u de interface wilt configureren waarop Kafka luistert, voert u `listeners` in het veld __filter__ in de rechter bovenhoek in.
 
-7. Als u Kafka wilt configureren om te Luis teren op alle netwerk interfaces, __listeners__ wijzigt u de waarde `PLAINTEXT://0.0.0.0:9092`in het veld listeners in.
+7. Als u Kafka wilt configureren om te Luis teren op alle netwerk interfaces, wijzigt u de waarde in het veld __listeners__ in `PLAINTEXT://0.0.0.0:9092` .
 
 8. Gebruik de knop __Opslaan__ om de configuratie wijzigingen op te slaan. Voer een tekst bericht in waarin de wijzigingen worden beschreven. Selecteer __OK__ zodra de wijzigingen zijn opgeslagen.
 
@@ -316,7 +316,7 @@ Gebruik de volgende stappen om een python-producent en-consument te maken en uit
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    In dit script wordt ervan `$resourceGroupName` uitgegaan dat de naam van de Azure-resource groep met het virtuele netwerk is.
+    In dit script wordt ervan uitgegaan dat `$resourceGroupName` de naam van de Azure-resource groep met het virtuele netwerk is.
 
     Sla de geretourneerde informatie op voor gebruik in de volgende stappen.
 
@@ -339,12 +339,12 @@ Gebruik de volgende stappen om een python-producent en-consument te maken en uit
 
     Vervang de `'kafka_broker'` vermeldingen door de adressen uit stap 1 in deze sectie:
 
-   * Als u een __Software-VPN-client__gebruikt, vervangt `kafka_broker` u de vermeldingen door het IP-adres van uw worker-knoop punten.
+   * Als u een __Software-VPN-client__gebruikt, vervangt u de `kafka_broker` vermeldingen door het IP-adres van uw worker-knoop punten.
 
-   * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt `kafka_broker` u de vermeldingen door de FQDN van de worker-knoop punten.
+   * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt u de `kafka_broker` vermeldingen door de FQDN van de worker-knoop punten.
 
      > [!NOTE]
-     > Met deze code wordt de `test message` teken reeks naar `testtopic`het onderwerp verzonden. De standaard configuratie van Kafka in HDInsight is het onderwerp te maken als deze niet bestaat.
+     > Met deze code wordt de teken reeks `test message` naar het onderwerp verzonden `testtopic` . De standaard configuratie van Kafka in HDInsight is het onderwerp te maken als deze niet bestaat.
 
 4. Gebruik de volgende python-code om de berichten op te halen uit Kafka:
 
@@ -362,9 +362,9 @@ Gebruik de volgende stappen om een python-producent en-consument te maken en uit
 
     Vervang de `'kafka_broker'` vermeldingen door de adressen uit stap 1 in deze sectie:
 
-    * Als u een __Software-VPN-client__gebruikt, vervangt `kafka_broker` u de vermeldingen door het IP-adres van uw worker-knoop punten.
+    * Als u een __Software-VPN-client__gebruikt, vervangt u de `kafka_broker` vermeldingen door het IP-adres van uw worker-knoop punten.
 
-    * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt `kafka_broker` u de vermeldingen door de FQDN van de worker-knoop punten.
+    * Als u __naam omzetting hebt ingeschakeld via een aangepaste DNS-server__, vervangt u de `kafka_broker` vermeldingen door de FQDN van de worker-knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

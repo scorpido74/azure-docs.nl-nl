@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: e7c5e00f2e5565393ff46dbb06b30991ebcfc01f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b5b2d13c727cd0183bb14341767ee2dee89eb9f8
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873705"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604343"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Problemen met Azure Load Balancer oplossen
 
@@ -124,7 +124,7 @@ Als uw toepassing die wordt gehost in de back-end-VM van een Load Balancer probe
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Oorzaak 4: toegang tot de interne Load Balancer-frontend van de deelnemende Load Balancer back-end-VM-groep
 
-Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Een dergelijk scenario wordt niet ondersteund. Lees de [beperkingen](concepts.md#limitations) voor een gedetailleerde discussie.
+Als er een intern Load Balancer is geconfigureerd in een VNet en een van de back-end-Vm's van de deel nemer probeert toegang te krijgen tot de interne Load Balancer frontend, kunnen er fouten optreden wanneer de stroom wordt toegewezen aan de oorspronkelijke virtuele machine. Een dergelijk scenario wordt niet ondersteund.
 
 **Oplossing** Er zijn verschillende manieren om dit scenario op te heffen, met inbegrip van het gebruik van een proxy. Evalueer Application Gateway of andere proxy's van derden (bijvoorbeeld nginx of haproxy). Zie [overzicht van Application Gateway](../application-gateway/application-gateway-introduction.md) voor meer informatie over Application Gateway.
 

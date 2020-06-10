@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f8dcf4858d69f33ea50d473f6261cf45a6b7fa5
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648133"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629219"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Overzicht van TLS-beëindiging en end-to-end TLS met Application Gateway
 
@@ -68,7 +68,7 @@ Voor de SKU Application Gateway en WAF v1 is het TLS-beleid van toepassing op zo
 
 Voor de SKU Application Gateway en WAF v2 is het TLS-beleid alleen van toepassing op het front-end verkeer en worden alle versleuteling aangeboden aan de back-end-server, die controle heeft over het selecteren van specifieke code ringen en TLS-versie tijdens de handshake.
 
-Application Gateway communiceert alleen met die back-endservers die hun certificaat hebben white list met de Application Gateway of waarvan de certificaten zijn ondertekend met bekende CA-instanties en de CN van het certificaat overeenkomt met de hostnaam in de HTTP-back-end-instellingen. Dit zijn onder andere de vertrouwde Azure-Services, zoals Azure App Service/Web Apps en Azure API Management.
+Application Gateway communiceert alleen met die back-endservers die toestaan dat hun certificaat is toegestaan met de Application Gateway of waarvan de certificaten zijn ondertekend met bekende CA-instanties en de CN van het certificaat overeenkomt met de hostnaam in de HTTP-back-end-instellingen. Dit zijn onder andere de vertrouwde Azure-Services, zoals Azure App Service/Web Apps en Azure API Management.
 
 Als de certificaten van de leden in de back-end-groep niet zijn ondertekend met bekende CA-instanties, moet elk exemplaar in de back-end-groep met end-to-end TLS ingeschakeld worden geconfigureerd met een certificaat om beveiligde communicatie toe te staan. Door het certificaat toe te voegen, zorgt u ervoor dat de Application Gateway alleen communiceert met bekende back-end-exemplaren. Hiermee wordt de end-to-end-communicatie verder beveiligd.
 
@@ -80,9 +80,9 @@ Als de certificaten van de leden in de back-end-groep niet zijn ondertekend met 
 
 In dit voor beeld worden aanvragen die gebruikmaken van TLS 1.2 gerouteerd naar back-endservers in Pool1 met end-to-end TLS.
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>End-to-end-TLS en white list van certificaten
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>End-to-end-TLS en toestaan dat certificaten worden vermeld
 
-Application Gateway communiceert alleen met bekende back-end-instanties die hun certificaat hebben white list met de Application Gateway. Er zijn enkele verschillen in het end-to-end TLS-installatie proces ten opzichte van de versie van Application Gateway gebruikt. In de volgende sectie worden deze afzonderlijk uitgelegd.
+Application Gateway communiceert alleen met bekende back-end-instanties waarvoor het certificaat met de toepassings gateway is toegestaan. Er zijn enkele verschillen in het end-to-end TLS-installatie proces ten opzichte van de versie van Application Gateway gebruikt. In de volgende sectie worden deze afzonderlijk uitgelegd.
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>End-to-end TLS met de V1-SKU
 
@@ -90,7 +90,7 @@ Als u end-to-end TLS wilt inschakelen met de back-endservers en voor Application
 
 Voor HTTPS-status tests gebruikt de Application Gateway v1-SKU een exacte overeenkomst van het verificatie certificaat (open bare sleutel van het back-end-server certificaat en niet het basis certificaat) dat moet worden geüpload naar de HTTP-instellingen.
 
-Alleen verbindingen met bekende en goedgekeurde back-ends zijn vervolgens toegestaan. De resterende back-ends worden beschouwd als slecht door de status controles. Zelfondertekende certificaten zijn uitsluitend bedoeld voor testdoeleinden en het wordt afgeraden om deze in een productieomgeving te gebruiken. Dergelijke certificaten moeten worden white list met de Application Gateway, zoals beschreven in de voor gaande stappen voordat ze kunnen worden gebruikt.
+Er zijn alleen verbindingen met bekende en toegestane back-endservers toegestaan. De resterende back-ends worden beschouwd als slecht door de status controles. Zelfondertekende certificaten zijn uitsluitend bedoeld voor testdoeleinden en het wordt afgeraden om deze in een productieomgeving te gebruiken. Dergelijke certificaten moeten worden vermeld bij de toepassings gateway, zoals beschreven in de voor gaande stappen voordat ze kunnen worden gebruikt.
 
 > [!NOTE]
 > De instellingen voor verificatie en vertrouwd basis certificaat zijn niet vereist voor vertrouwde Azure-Services, zoals Azure App Service. Deze worden standaard als vertrouwd beschouwd.
@@ -138,10 +138,10 @@ Scenario | RIP | v2 |
 Scenario | RIP | v2 |
 | --- | --- | --- |
 | SNI-header (server_name) tijdens de TLS-Handshake als FQDN | Stel in als FQDN-adres van de back-endserver. Volgens [RFC 6066](https://tools.ietf.org/html/rfc6066)zijn letterlijke IPv4-en IPv6-adressen niet toegestaan in de SNI-hostnaam. <br> **Opmerking:** FQDN-naam van de back-endserver moet worden omgezet naar het IP-adres van de back-endserver (openbaar of privé) | De SNI-header (server_name) wordt ingesteld als de hostnaam van de aangepaste test die is gekoppeld aan de HTTP-instellingen (indien geconfigureerd), anders dan de hostnaam die wordt vermeld in de HTTP-instellingen, anders dan de FQDN die is vermeld in de back-end-groep. De volg orde van prioriteit is aangepaste test > HTTP-instellingen > back-end-pool. <br> **Opmerking:** Als de hostnamen die zijn geconfigureerd in HTTP-instellingen en aangepaste test verschillend zijn, wordt SNI ingesteld als de hostnaam van de aangepaste test.
-| Als het adres van de back-endadresgroep een IP-adres is (v1) of als de hostnaam van de aangepaste test is geconfigureerd als IP-adres (v2) | SNI (server_name) wordt niet ingesteld. <br> **Opmerking:** In dit geval moet de back-endserver een standaard-terugval certificaat kunnen retour neren. dit moet white list zijn in HTTP-instellingen onder verificatie certificaat. Als er geen standaard-/terugval certificaat is geconfigureerd op de back-endserver en SNI wordt verwacht, wordt de verbinding mogelijk opnieuw ingesteld door de server en worden er fouten in de test optreden | In de volg orde van prioriteit die eerder is vermeld, als ze een IP-adres hebben als hostname, wordt SNI niet ingesteld op per [RFC 6066](https://tools.ietf.org/html/rfc6066). <br> **Opmerking:** SNI wordt ook niet in v2-tests ingesteld als er geen aangepaste test is geconfigureerd en er geen hostnaam is ingesteld voor HTTP-instellingen of back-end-pool |
+| Als het adres van de back-endadresgroep een IP-adres is (v1) of als de hostnaam van de aangepaste test is geconfigureerd als IP-adres (v2) | SNI (server_name) wordt niet ingesteld. <br> **Opmerking:** In dit geval moet de back-endserver een standaard-terugval certificaat kunnen retour neren. dit moet staan vermeld in HTTP-instellingen onder verificatie certificaat. Als er geen standaard-/terugval certificaat is geconfigureerd op de back-endserver en SNI wordt verwacht, wordt de verbinding mogelijk opnieuw ingesteld door de server en worden er fouten in de test optreden | In de volg orde van prioriteit die eerder is vermeld, als ze een IP-adres hebben als hostname, wordt SNI niet ingesteld op per [RFC 6066](https://tools.ietf.org/html/rfc6066). <br> **Opmerking:** SNI wordt ook niet in v2-tests ingesteld als er geen aangepaste test is geconfigureerd en er geen hostnaam is ingesteld voor HTTP-instellingen of back-end-pool |
 
 > [!NOTE] 
-> Als er geen aangepaste test is geconfigureerd, stuurt Application Gateway een standaard test in deze indeling- \< protocol \> ://127.0.0.1: \< poort \> /. Voor een standaard HTTPS-test wordt deze bijvoorbeeld verzonden als https://127.0.0.1:443/ . Houd er rekening mee dat de hier genoemde 127.0.0.1 alleen wordt gebruikt als de header van de HTTP-host en volgens RFC 6066 niet wordt gebruikt als SNI-header. Raadpleeg voor meer informatie over fouten met betrekking tot de status testen de [hand leiding back-end](application-gateway-backend-health-troubleshooting.md)voor het oplossen van problemen.
+> Als er geen aangepaste test is geconfigureerd, stuurt Application Gateway een standaard test in deze indeling- \<protocol\> ://127.0.0.1: \<port\> /. Voor een standaard HTTPS-test wordt deze bijvoorbeeld verzonden als https://127.0.0.1:443/ . Houd er rekening mee dat de hier genoemde 127.0.0.1 alleen wordt gebruikt als de header van de HTTP-host en volgens RFC 6066 niet wordt gebruikt als SNI-header. Raadpleeg voor meer informatie over fouten met betrekking tot de status testen de [hand leiding back-end](application-gateway-backend-health-troubleshooting.md)voor het oplossen van problemen.
 
 #### <a name="for-live-traffic"></a>Voor live verkeer
 

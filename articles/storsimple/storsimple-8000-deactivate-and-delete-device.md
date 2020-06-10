@@ -5,7 +5,6 @@ services: storsimple
 documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c25955c87899291c599d7055e7213dad955c6816
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61481942"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634178"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>Een StorSimple-apparaat deactiveren en verwijderen
 
@@ -36,28 +35,29 @@ Wanneer u een apparaat deactiveert, zijn alle gegevens die lokaal op het apparaa
 >
 > Met het proces Factory reset worden alle gegevens verwijderd die lokaal op uw apparaat zijn opgeslagen. Daarom moet u een Cloud momentopname van al uw gegevens maken voordat u een apparaat deactiveert. Met deze Cloud momentopname kunt u alle gegevens in een later stadium herstellen.
 
+> [!NOTE]
+>
+> - Zorg ervoor dat de gegevens van de verwijderde volume container daad werkelijk van het apparaat worden verwijderd voordat u een fysiek StorSimple-apparaat of-Cloud toestel deactiveert. U kunt de diagrammen voor de Cloud verbruik bewaken en wanneer u de drop van Cloud gebruik ziet door de back-ups die u hebt verwijderd, kunt u door gaan met het deactiveren van het apparaat. Als u het apparaat uitschakelt voordat deze verwijdering plaatsvindt, worden de gegevens in het opslag account gelaagd en worden de kosten in rekening gebracht.
+>
+> - Voordat u een fysiek StorSimpleapparaat of Cloud apparaat deactiveert, moet u clients en hosts die afhankelijk zijn van dat apparaat, stoppen of verwijderen.
+>
+> - Als de opslag account (s) of de containers in het opslag account dat is gekoppeld aan de volume containers al zijn verwijderd voordat u de gegevens van het apparaat verwijdert, ontvangt u een fout melding en kunnen de gegevens mogelijk niet worden verwijderd. We raden u aan de gegevens op het apparaat te verwijderen voordat u het opslag account of de containers erin verwijdert. In dit geval moet u echter door gaan met het deactiveren van het apparaat en de verwijdering ervan uitgaande dat de gegevens al zijn verwijderd uit het opslag account.
+
 Na het lezen van deze zelf studie kunt u het volgende doen:
 
-* Een apparaat deactiveren en de gegevens verwijderen.
-* Een apparaat deactiveren en de gegevens behouden.
-
-> [!NOTE]
-> Voordat u een fysiek StorSimpleapparaat of Cloud apparaat deactiveert, moet u clients en hosts die afhankelijk zijn van dat apparaat, stoppen of verwijderen.
-
+- Een apparaat deactiveren en de gegevens verwijderen.
+- Een apparaat deactiveren en de gegevens behouden.
 
 ## <a name="deactivate-and-delete-data"></a>Gegevens deactiveren en verwijderen
 
 Voer de volgende stappen uit als u wilt dat het apparaat volledig wordt verwijderd en u de gegevens op het apparaat niet wilt behouden.
 
-#### <a name="to-deactivate-the-device-and-delete-the-data"></a>Het apparaat deactiveren en de gegevens verwijderen
+### <a name="to-deactivate-the-device-and-delete-the-data"></a>Het apparaat deactiveren en de gegevens verwijderen
 
-1. Voordat u een apparaat deactiveert, moet u alle volume containers (en de volumes) verwijderen die zijn gekoppeld aan het apparaat. U kunt alleen volume containers verwijderen nadat u de gekoppelde back-ups hebt verwijderd.
-
-    > [!NOTE]
-    > Zorg ervoor dat de gegevens van de verwijderde volume container daad werkelijk van het apparaat worden verwijderd voordat u een fysiek StorSimple-apparaat of-Cloud toestel deactiveert. U kunt de diagrammen voor de Cloud verbruik bewaken en wanneer u de drop van Cloud gebruik ziet door de back-ups die u hebt verwijderd, kunt u door gaan met het deactiveren van het apparaat. Als u het apparaat uitschakelt voordat deze verwijdering plaatsvindt, worden de gegevens in het opslag account gelaagd en worden de kosten in rekening gebracht.
+1. Voordat u een apparaat deactiveert, moet u alle volume containers (en de volumes) verwijderen die zijn gekoppeld aan het apparaat. U kunt alleen volume containers verwijderen nadat u de gekoppelde back-ups hebt verwijderd. Raadpleeg de opmerking in het bovenstaande overzicht voordat u een fysiek StorSimple-apparaat of-Cloud toestel deactiveert.
 
 2. Deactiveer het apparaat als volgt:
-   
+
    1. Ga naar de StorSimple-apparaatbeheerservice en klik op **Apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u wilt deactiveren, klik met de rechter muisknop en klik vervolgens op **deactiveren**.
 
         ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate1.png)
@@ -79,7 +79,8 @@ Voer de volgende stappen uit als u wilt dat het apparaat volledig wordt verwijde
 
 Als u geïnteresseerd bent in het verwijderen van het apparaat, maar de gegevens wilt behouden, voert u de volgende stappen uit:
 
-#### <a name="to-deactivate-a-device-and-retain-the-data"></a>Een apparaat deactiveren en de gegevens behouden
+### <a name="to-deactivate-a-device-and-retain-the-data"></a>Een apparaat deactiveren en de gegevens behouden
+
 1. Het apparaat deactiveren. Alle volume containers en de moment opnamen van het apparaat blijven behouden.
    
    1. Ga naar de StorSimple-apparaatbeheerservice en klik op **Apparaten**. Selecteer op de Blade **apparaten** het apparaat dat u wilt deactiveren, klik met de rechter muisknop en klik vervolgens op **deactiveren**.
@@ -99,7 +100,6 @@ Als u geïnteresseerd bent in het verwijderen van het apparaat, maar de gegevens
        ![StorSimple-apparaat deactiveren](./media/storsimple-8000-deactivate-and-delete-device/deactivate6.png)
    3. Zodra het verwijderen is voltooid, wordt u hiervan op de hoogte gebracht. De lijst met apparaten wordt ook bijgewerkt om de verwijdering weer te geven.
 
-     
 ## <a name="deactivate-and-delete-a-cloud-appliance"></a>Een Cloud apparaat deactiveren en verwijderen
 
 Voor een StorSimple Cloud Appliance wordt de toewijzing van de virtuele machine ongedaan gemaakt en verwijderd uit de portal en worden de resources die zijn aangemaakt toen deze werd ingericht. Wanneer het cloudapparaat is gedeactiveerd, kan het niet meer worden hersteld naar de oorspronkelijke staat.

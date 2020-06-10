@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 6a123fac9f199fc0b19a3e6af33ad705ce51945c
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464450"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610063"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Opslag accounts die eigendom zijn van de klant voor logboek opname in Azure Monitor
 
-Azure Monitor gebruikt opslag accounts in het opname proces van sommige gegevens typen, zoals [aangepaste logboeken](data-sources-custom-logs.md) en bepaalde [Azure-logboeken](azure-storage-iis-table.md). Tijdens het opname proces worden logboeken eerst verzonden naar een opslag account en later opgenomen in Log Analytics of Application Insights. Als u de controle over uw gegevens tijdens opname wilt, kunt u uw eigen opslag accounts gebruiken in plaats van de door de service beheerde opslag. Met uw eigen opslag account kunt u de toegang, inhoud, versleuteling en behoud van de logboeken tijdens opname beheren. We verwijzen naar dit als uw eigen opslag of BYOS. 
+Azure Monitor gebruikt opslag accounts in het opname proces van sommige gegevens typen, zoals [aangepaste logboeken](data-sources-custom-logs.md) en bepaalde [Azure-logboeken](azure-storage-iis-table.md). Tijdens het opname proces worden logboeken eerst verzonden naar een opslag account en later opgenomen in Log Analytics of Application Insights. Als u de controle over uw gegevens tijdens opname wilt, kunt u uw eigen opslag accounts gebruiken in plaats van de door de service beheerde opslag. Met uw eigen opslag account hebt u controle over de toegang, inhoud, versleuteling en behoud van de logboeken tijdens opname. We verwijzen naar dit als uw eigen opslag of BYOS. 
 
 Een scenario dat BYOS vereist, is netwerk isolatie via persoonlijke koppelingen. Wanneer u een VNet gebruikt, is netwerk isolatie vaak een vereiste en is toegang tot het open bare Internet beperkt. In dergelijke gevallen is het openen van Azure Monitor-service opslag voor logboek opname volledig geblokkeerd of als een onjuiste procedure beschouwd. In plaats daarvan moeten de logboeken worden opgenomen via een opslag account van de klant in het VNet of eenvoudig toegankelijk zijn.
 

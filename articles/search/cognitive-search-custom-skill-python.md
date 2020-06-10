@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210462"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604691"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Voor beeld: een aangepaste vaardigheid maken met behulp van python
 
@@ -41,7 +42,7 @@ In dit voor beeld wordt een Azure-functie gebruikt om het concept van het hosten
 
 De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat kan worden gepubliceerd in een functie-app in Azure. Met een functie-app kunt u functies groeperen in een logische eenheid, zodat u resources kunt beheren, implementeren en delen.
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert u `Azure Functions: Create new project...`.
+1. Druk in Visual Studio Code op F1 om het opdrachtenpalet te openen. In het opdrachtenpalet zoekt en selecteert u `Azure Functions: Create new project...`.
 
 1. Kies een maplocatie voor de Project werkruimte en kies **selecteren**.
 
@@ -57,7 +58,7 @@ De Azure Functions-projectsjabloon in Visual Studio Code maakt een project dat k
 
 Het functie-appproject wordt in een nieuwe werkruimte gemaakt. Het project bevat de configuratiebestanden [host.json](../azure-functions/functions-host-json.md) en [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file), plus eventuele taalspecifieke projectbestanden. 
 
-Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **samen voegen** van het functie-app-project. Hierin ziet u een bestand met de naam '\_\_init__. py ' met deze inhoud:
+Er wordt ook een nieuwe HTTP-geactiveerde functie gemaakt in de map **samen voegen** van het functie-app-project. Hierin ziet u een bestand met de naam ' \_ \_ init__. py ' met deze inhoud:
 
 ```py
 import logging
@@ -181,7 +182,7 @@ Wanneer u de fout opsporing hebt gestart, wordt de functie lokaal uitgevoerd. U 
 
 Wanneer u tevreden bent met het functie gedrag, kunt u het publiceren.
 
-1. Druk in Visual Studio code op F1 om het opdracht palet te openen. In het opdracht palet zoekt en selecteert **u implementeren naar functie-app...**. 
+1. Druk in Visual Studio Code op F1 om het opdrachtenpalet te openen. In het opdracht palet zoekt en selecteert **u implementeren naar functie-app...**. 
 
 1. Selecteer het Azure-abonnement waar u uw toepassing wilt implementeren.
 
@@ -207,7 +208,7 @@ Nu u de standaardhostcode hebt, moet u de functie als volgt testen:
 POST [Function URL you copied above]
 ```
 
-### <a name="request-body"></a>Aanvraagtekst
+### <a name="request-body"></a>Aanvraagbody
 ```json
 {
     "values": [
@@ -231,7 +232,7 @@ In dit voor beeld moet u hetzelfde resultaat opleveren dat u eerder hebt gezien 
 
 ## <a name="connect-to-your-pipeline"></a>Verbinding maken met uw pijp lijn
 
-Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardig heden. In het onderstaande voor beeld ziet u hoe u de vaardigheid aanroept om de titel en de auteur van het document samen te voegen in één veld dat wordt aangeroepen merged_title_author. Vervang `[your-function-url-here]` door de URL van uw nieuwe Azure-functie.
+Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardig heden. In het onderstaande voor beeld ziet u hoe u de vaardigheid aanroept om de titel en de auteur van het document samen te voegen in één veld dat wordt aangeroepen merged_title_author. Vervang door `[your-function-url-here]` de URL van uw nieuwe Azure-functie.
 
 ```json
 {
@@ -264,7 +265,7 @@ Nu u een nieuwe aangepaste vaardigheid hebt, kunt u deze toevoegen aan uw vaardi
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Gefeliciteerd! U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
+Gefeliciteerd U hebt uw eerste aangepaste vaardigheid gemaakt. U kunt nu hetzelfde patroon volgen om uw eigen aangepaste functionaliteit toe te voegen. Klik op de volgende koppelingen voor meer informatie.
 
 + [Power vaardig heden: een opslag plaats met aangepaste vaardig heden](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Een aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)

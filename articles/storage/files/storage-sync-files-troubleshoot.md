@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9c273feb8cf8f2e94a62dcf01b205df604e775e6
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: a7d1fac4ff76b39cb2107a8839e8f8e63ff90fd5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449461"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635098"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -315,6 +315,7 @@ Als u deze fouten wilt zien, voert u het Power shell-script **FileSyncErrorsRepo
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Het gelaagde bestand op de server is niet toegankelijk. Dit probleem treedt op als het gelaagde bestand niet is ingetrokken voordat een servereindpunt is verwijderd. | Zie [gelaagde bestanden niet toegankelijk op de server nadat u een server eindpunt hebt verwijderd](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)om dit probleem op te lossen. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | De wijziging van het bestand of de map kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout zich enkele dagen voordoet, gebruikt u het Power shell-script FileSyncErrorsReport. ps1 om te bepalen waarom de afhankelijke map nog niet is gesynchroniseerd. |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | De wijziging van het bestand of de map kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout zich enkele dagen voordoet, gebruikt u het Power shell-script FileSyncErrorsReport. ps1 om te bepalen waarom de afhankelijke map nog niet is gesynchroniseerd. |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | De wijziging van het bestand of de map kan nog niet worden gesynchroniseerd omdat een afhankelijke map nog niet is gesynchroniseerd en de synchronisatie sessie is mislukt. Dit item wordt gesynchroniseerd nadat de afhankelijke wijzigingen zijn gesynchroniseerd. | U hoeft geen actie te ondernemen. Als de fout zich blijft voordoen, onderzoekt u de synchronisatie sessie fout. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | De naam van het bestand of de map is ongeldig. | Wijzig de naam van het bestand of de map in kwestie. Zie het [verwerken van niet-ondersteunde tekens](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | De naam van het bestand of de map is ongeldig. | Wijzig de naam van het bestand of de map in kwestie. Zie het [verwerken van niet-ondersteunde tekens](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters) voor meer informatie. |

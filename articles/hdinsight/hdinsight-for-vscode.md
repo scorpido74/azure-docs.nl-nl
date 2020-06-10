@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: d99b9103a597442a5a98fa842eef3e98b2aad086
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.custom: tracking-python
+ms.openlocfilehash: 5c429da761c39ae6828eb5d79809b687e8a76bd3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417335"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609094"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -114,7 +115,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http \: //10.172.41.42:18080.
 
 4. Selecteer autorisatie type **Basic** of **none**.  Als u **Basic**selecteert:  
-    &emsp;één. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
+    &emsp;a. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
     &emsp;b. Voer uw Ambari-wacht woord in.
 
 5. Bekijk de **uitvoer** weergave voor verificatie.

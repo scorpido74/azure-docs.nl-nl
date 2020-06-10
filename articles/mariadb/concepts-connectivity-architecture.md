@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: b4333513d2ba210f6a472638732cc2781b8d5c0b
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 6/8/2020
+ms.openlocfilehash: 3f0df02b58835ce4b43d6ba172e79f872a9fae1e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300832"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608380"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Connectiviteits architectuur in Azure Database for MariaDB
 In dit artikel wordt uitgelegd wat de Azure Database for MariaDB connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for MariaDB exemplaar van clients, zowel binnen als buiten Azure.
@@ -71,6 +71,17 @@ De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van 
 | VS - west | 104.42.238.205, 23.99.34.75  |
 | VS - west 2 | 13.66.226.202  |
 ||||
+
+## <a name="connection-redirection"></a>Verbindings omleiding
+
+Azure Database for MariaDB ondersteunt een extra verbindings beleid, **omleiding**, waarmee de netwerk latentie tussen client toepassingen en MariaDB-servers kan worden verminderd. Als deze functie is ingesteld, wordt na de eerste TCP-sessie naar de Azure Database for MariaDB-server het back-end-adres van het knoop punt dat als host fungeert voor de MariaDB-server naar de client geretourneerd. Daarna stroomt alle volgende pakketten rechtstreeks naar de server, zodat de gateway wordt omzeild. Als pakketten rechtstreeks naar de server stromen, hebben latentie en door Voer betere prestaties.
+
+Deze functie wordt ondersteund in Azure Database for MariaDB-servers met Engine versie 10,2 en 10,3.
+
+Ondersteuning voor omleiding is beschikbaar in de PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) -uitbrei ding, ontwikkeld door micro soft en is beschikbaar op [PECL](https://pecl.php.net/package/mysqlnd_azure). Zie het artikel [omleiding configureren](./howto-redirection.md) voor meer informatie over het gebruik van omleiding in uw toepassingen.
+
+> [!IMPORTANT]
+> Ondersteuning voor omleiding in de PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) -uitbrei ding is momenteel als preview-versie beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 

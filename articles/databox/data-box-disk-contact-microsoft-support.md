@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461732"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609111"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Open een ondersteunings ticket voor Azure Data Box
 
@@ -57,7 +57,7 @@ Voer de volgende stappen uit om een ondersteunings aanvraag te maken:
 
    1. Geef in de **contact opties**uw favoriete contact wijze op (telefoon of e-mail) en de taal. De reactie tijd wordt automatisch geselecteerd op basis van uw abonnement.
    2. Geef in de **contact gegevens**uw naam, e-mail adres, optionele contact persoon, land/regio. Selecteer **wijzigingen in contact persoon opslaan voor toekomstige ondersteunings aanvragen**.
-   3. Klik op **maken**.
+   3. Klik op **Create**.
 
        ![Contactgegevens](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 

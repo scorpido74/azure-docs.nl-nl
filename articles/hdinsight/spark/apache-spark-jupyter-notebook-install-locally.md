@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
-ms.openlocfilehash: b2394c580b871105fee84d63c478c3c490b56a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191920"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604232"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter notebook op uw computer installeren en verbinding maken met Apache Spark op HDInsight
 
@@ -49,7 +49,7 @@ Down load het [Anaconda-installatie programma](https://www.anaconda.com/download
     |v 3.6 en v 3.5 |`pip install sparkmagic==0.13.1`|
     |v 3.4|`pip install sparkmagic==0.2.3`|
 
-1. Zorg `ipywidgets` ervoor dat correct is geïnstalleerd door de volgende opdracht uit te voeren:
+1. Zorg ervoor dat `ipywidgets` correct is geïnstalleerd door de volgende opdracht uit te voeren:
 
     ```cmd
     jupyter nbextension enable --py --sys-prefix widgetsnbextension
@@ -57,7 +57,7 @@ Down load het [Anaconda-installatie programma](https://www.anaconda.com/download
 
 ## <a name="install-pyspark-and-spark-kernels"></a>PySpark-en Spark-kernels installeren
 
-1. Geef aan `sparkmagic` waar wordt geïnstalleerd door de volgende opdracht in te voeren:
+1. Geef `sparkmagic` aan waar wordt geïnstalleerd door de volgende opdracht in te voeren:
 
     ```cmd
     pip show sparkmagic
@@ -90,7 +90,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
     python
     ```
 
-2. De Jupyter-configuratie gegevens worden doorgaans opgeslagen in de basismap van de gebruiker. Voer de volgende opdracht in om de basismap aan te duiden en maak een map met de naam ** \.sparkmagic**.  Het volledige pad wordt gegenereerd.
+2. De Jupyter-configuratie gegevens worden doorgaans opgeslagen in de basismap van de gebruiker. Voer de volgende opdracht in om de basismap aan te duiden en maak een map met de naam ** \. sparkmagic**.  Het volledige pad wordt gegenereerd.
 
     ```python
     import os
@@ -100,7 +100,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
     exit()
     ```
 
-3. Maak in de `.sparkmagic`map een bestand met de naam **config. json** en voeg het volgende JSON-fragment erin toe.  
+3. Maak in de map `.sparkmagic` een bestand met de naam **config. json** en voeg het volgende JSON-fragment erin toe.  
 
     ```json
     {
@@ -130,15 +130,15 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
 
     |Sjabloon waarde | Nieuwe waarde |
     |---|---|
-    |GEBRUIKERS|Cluster aanmelding, standaard is `admin`.|
+    |GEBRUIKERS|Cluster aanmelding, standaard is `admin` .|
     |CLUSTERDNSNAME|Clusternaam|
-    |{BASE64ENCODEDPASSWORD}|Een base64-gecodeerd wacht woord voor uw werkelijke wacht woord.  U kunt een base64-wacht woord [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/)genereren op.|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|Blijven gebruiken `sparkmagic 0.12.7` (clusters v 3.5 en v 3.6).  Als u `sparkmagic 0.2.3` (clusters v 3.4) gebruikt, vervangt `"should_heartbeat": true`u door.|
+    |{BASE64ENCODEDPASSWORD}|Een base64-gecodeerd wacht woord voor uw werkelijke wacht woord.  U kunt een base64-wacht woord genereren op [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|Blijven gebruiken `sparkmagic 0.12.7` (clusters v 3.5 en v 3.6).  Als u `sparkmagic 0.2.3` (clusters v 3.4) gebruikt, vervangt u door `"should_heartbeat": true` .|
 
     U kunt een volledig voorbeeld bestand zien bij [voorbeeld configuratie. json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
    > [!TIP]  
-   > Er worden heartbeats verzonden om ervoor te zorgen dat sessies niet worden gelekt. Wanneer een computer naar de slaap stand gaat of wordt uitgeschakeld, wordt de heartbeat niet verzonden, waardoor de sessie wordt opgeschoond. Als u dit gedrag wilt uitschakelen, kunt u voor clusters v 3.4 de livy-configuratie `livy.server.interactive.heartbeat.timeout` instellen op `0` basis van de Ambari-gebruikers interface. Als u de 3,5-configuratie hierboven niet instelt voor clusters v 3.5, wordt de sessie niet verwijderd.
+   > Er worden heartbeats verzonden om ervoor te zorgen dat sessies niet worden gelekt. Wanneer een computer naar de slaap stand gaat of wordt uitgeschakeld, wordt de heartbeat niet verzonden, waardoor de sessie wordt opgeschoond. Als u dit gedrag wilt uitschakelen, kunt u voor clusters v 3.4 de livy-configuratie instellen `livy.server.interactive.heartbeat.timeout` op `0` basis van de Ambari-gebruikers interface. Als u de 3,5-configuratie hierboven niet instelt voor clusters v 3.5, wordt de sessie niet verwijderd.
 
 5. Jupyter starten. Gebruik de volgende opdracht vanaf de opdracht prompt.
 
@@ -153,7 +153,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
     ![Beschik bare kernels in Jupyter notebook](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Kernels in Jupyter notebook")
 
     > [!IMPORTANT]  
-    > Nadat u **nieuwe** beoordeling van uw shell hebt geselecteerd, zijn er fouten opgetreden.  Als u de fout `TypeError: __init__() got an unexpected keyword argument 'io_loop'` ziet, kunt u een bekend probleem ondervinden met bepaalde versies van Tornado.  Als dit het geval is, stopt u de kernel en downgradet u de Tornado-installatie `pip install tornado==4.5.3`met de volgende opdracht:.
+    > Nadat u **nieuwe** beoordeling van uw shell hebt geselecteerd, zijn er fouten opgetreden.  Als u de fout ziet, `TypeError: __init__() got an unexpected keyword argument 'io_loop'` kunt u een bekend probleem ondervinden met bepaalde versies van Tornado.  Als dit het geval is, stopt u de kernel en downgradet u de Tornado-installatie met de volgende opdracht: `pip install tornado==4.5.3` .
 
     b. Voer het volgende code fragment uit.
 
@@ -170,7 +170,7 @@ In deze sectie configureert u de Spark Magic die u eerder hebt geïnstalleerd om
 
 Redenen om Jupyter op uw computer te installeren en deze vervolgens te verbinden met een Apache Spark cluster op HDInsight:
 
-* Biedt u de mogelijkheid om uw notitie blokken lokaal te maken, uw toepassing te testen op een actief cluster en de notitie blokken vervolgens te uploaden naar het cluster. Als u de notitie blokken naar het cluster wilt uploaden, kunt u deze uploaden met behulp van de Jupyter-notebook met of het cluster of deze `/HdiNotebooks` opslaan in de map in het opslag account dat aan het cluster is gekoppeld. Zie [waar worden Jupyter-notebooks opgeslagen](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)? voor meer informatie over hoe notitie blokken op het cluster worden opgeslagen.
+* Biedt u de mogelijkheid om uw notitie blokken lokaal te maken, uw toepassing te testen op een actief cluster en de notitie blokken vervolgens te uploaden naar het cluster. Als u de notitie blokken naar het cluster wilt uploaden, kunt u deze uploaden met behulp van de Jupyter-notebook met of het cluster of deze opslaan `/HdiNotebooks` in de map in het opslag account dat aan het cluster is gekoppeld. Zie [waar worden Jupyter-notebooks opgeslagen](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)? voor meer informatie over hoe notitie blokken op het cluster worden opgeslagen.
 * Met de notitie blokken die lokaal beschikbaar zijn, kunt u verbinding maken met verschillende Spark-clusters op basis van uw toepassings vereiste.
 * U kunt GitHub gebruiken om een broncode beheer systeem te implementeren en versie beheer voor de notitie blokken te hebben. U kunt ook een samenwerkings omgeving hebben waarin meerdere gebruikers met hetzelfde notitie blok kunnen werken.
 * U kunt lokaal met notitie blokken werken zonder dat u zelf een cluster hebt. U hebt alleen een cluster nodig om uw notitie blokken te testen, zodat u uw notitie blokken of een ontwikkel omgeving niet hand matig kunt beheren.

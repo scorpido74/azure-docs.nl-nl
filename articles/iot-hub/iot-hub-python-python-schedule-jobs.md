@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527398"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606459"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Taken plannen en uitzenden (python)
 
@@ -77,7 +78,7 @@ In deze sectie maakt u een python-console-app die reageert op een directe method
 
 2. Maak een nieuw **simDevice.py** -bestand in uw werkmap met behulp van een tekst editor.
 
-3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **simDevice.py** -bestand. Vervang `deviceConnectionString` door de Connection String van het apparaat dat u hierboven hebt gemaakt:
+3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **simDevice.py** -bestand. Vervang door `deviceConnectionString` de Connection String van het apparaat dat u hierboven hebt gemaakt:
 
     ```python
     import threading
@@ -162,7 +163,7 @@ Ga als volgt te werk om een gedeeld toegangs beleid te maken dat **service Conne
 
 3. Selecteer in het bovenste menu boven de lijst met beleids regels **toevoegen**.
 
-4. Voer in het deel venster **een gedeeld toegangs beleid toevoegen** een beschrijvende naam in voor uw beleid. bijvoorbeeld: *serviceAndRegistryReadWrite*. Selecteer onder **machtigingen** **service verbinding** en **REGI ster schrijven** (**REGI ster lezen** wordt automatisch geselecteerd wanneer u **register schrijven**selecteert). Selecteer vervolgens **maken**.
+4. Voer in het deel venster **een gedeeld toegangs beleid toevoegen** een beschrijvende naam in voor uw beleid. bijvoorbeeld: *serviceAndRegistryReadWrite*. Selecteer onder **machtigingen** **service verbinding** en **REGI ster schrijven** (**REGI ster lezen** wordt automatisch geselecteerd wanneer u **register schrijven**selecteert). Selecteer vervolgens **Maken**.
 
     ![Weer geven hoe een nieuw beleid voor gedeelde toegang moet worden toegevoegd](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
@@ -186,7 +187,7 @@ In deze sectie maakt u een python-console-app die een externe **lockDoor** op ee
 
 2. Maak een nieuw **scheduleJobService.py** -bestand in uw werkmap met behulp van een tekst editor.
 
-3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **scheduleJobService.py** -bestand. Vervang de `{IoTHubConnectionString}` tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de iot hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub):
+3. Voeg de volgende `import` instructies en variabelen toe aan het begin van het **scheduleJobService.py** -bestand. Vervang de `{IoTHubConnectionString}` tijdelijke aanduiding door de IOT hub-Connection String die u eerder hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang de `{deviceId}` tijdelijke aanduiding door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys

@@ -10,16 +10,35 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725547"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628056"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Gegevens voorbereiden voor Custom Speech
 
-Wanneer u de nauw keurigheid van micro soft-spraak herkenning wilt testen of uw aangepaste modellen wilt trainen, hebt u audio-en tekst gegevens nodig. Op deze pagina hebben we betrekking op de typen gegevens, het gebruik en het beheer ervan.
+Wanneer u de nauw keurigheid van micro soft-spraak herkenning wilt testen of uw aangepaste modellen wilt trainen, hebt u audio-en tekst gegevens nodig. Op deze pagina hebben we betrekking op de typen gegevens die een aangepast spraak model nodig heeft.
+
+## <a name="data-diversity"></a>Gegevensdiversiteit
+
+Tekst en audio die worden gebruikt om een aangepast model te testen en te trainen, moeten steek proeven bevatten uit een verscheidenheid aan luid sprekers en scenario's die u nodig hebt om uw model te herkennen.
+Houd rekening met deze factoren bij het verzamelen van gegevens voor aangepast model testen en training:
+
+* Uw tekst-en spraak audio gegevens moeten voldoen aan de soorten mondelinge instructies die uw gebruikers doen wanneer ze met uw model werken. Zo kan een model dat de temperatuur behoeften voor de Tempe ratuur verhoogt en verlaagt dat mensen kunnen aandoen om dergelijke wijzigingen aan te vragen.
+* Uw gegevens moeten alle spraak afwijkingen bevatten die door uw model moeten worden herkend. Veel factoren kunnen spraak variëren, waaronder accenten, dialecten, taal mixen, leeftijd, geslacht, stem pitch, stress niveau en tijdstip van de dag.
+* U moet voor beelden uit verschillende omgevingen (binnen en buiten, weg-ruis) van uw model toevoegen.
+* Audio moet worden verzameld met behulp van hardware-apparaten die door het productie systeem worden gebruikt. Als uw model spraak moet identificeren op registratie apparaten van verschillende kwaliteit, moeten de audio gegevens die u opgeeft voor het trainen van uw model ook deze verschillende scenario's vertegenwoordigen.
+* U kunt later meer gegevens aan uw model toevoegen, maar zorg ervoor dat de gegevensset gevarieerd en representatief is voor de behoeften van uw project.
+* Het opnemen van gegevens die zich *niet* in uw aangepaste model herkennings behoeften bevindt, kunnen een nadelige invloed hebben op de herkennings kwaliteit. u hoeft dus geen gegevens op te nemen die uw model niet hoeft te transcriberen.
+
+Een model dat is getraind voor een subset van scenario's kan alleen goed worden uitgevoerd in deze scenario's. Kies zorgvuldig de gegevens die het volledige bereik van scenario's voor uw aangepaste model moeten herkennen.
+
+> [!TIP]
+> Begin met kleine sets voorbeeld gegevens die overeenkomen met de taal en akoestische die uw model zal tegen komen.
+> Neem bijvoorbeeld een klein, maar representatieve steek proef van de audio op dezelfde hardware en in dezelfde akoestische omgeving in uw model vindt u in productie scenario's.
+> Kleine gegevens sets van de mede werker van de vertegenwoordiger kunnen problemen bloot leggen voordat u hebt geïnvesteerd in het verzamelen van een veel grotere gegevens sets voor training.
 
 ## <a name="data-types"></a>Gegevenstypen
 
@@ -57,7 +76,7 @@ Gebruik deze tabel om ervoor te zorgen dat uw audio bestanden correct zijn inged
 
 | Eigenschap                 | Waarde                 |
 |--------------------------|-----------------------|
-| Bestands indeling              | RIFF (WAV)            |
+| Bestandsindeling              | RIFF (WAV)            |
 | Sample frequentie              | 8.000 Hz of 16.000 Hz |
 | Kanalen                 | 1 (mono)              |
 | Maximum lengte per audio | 2 uur               |
@@ -85,7 +104,7 @@ Audio bestanden kunnen stilte aan het begin en het einde van de opname hebben. I
 
 | Eigenschap                 | Waarde                               |
 |--------------------------|-------------------------------------|
-| Bestands indeling              | RIFF (WAV)                          |
+| Bestandsindeling              | RIFF (WAV)                          |
 | Sample frequentie              | 8.000 Hz of 16.000 Hz               |
 | Kanalen                 | 1 (mono)                            |
 | Maximum lengte per audio | 2 uur (testen)/60 s (training) |

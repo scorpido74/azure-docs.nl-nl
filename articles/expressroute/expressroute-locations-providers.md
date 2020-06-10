@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58fd207698ca15f5d2fe74d84b6d01ca18cc1120
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: b4f90fe7c37fd43c62a4b74989be6cb4dcceda0c
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455957"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636362"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partners en peeringlocaties voor ExpressRoute
 
@@ -110,7 +110,7 @@ De volgende tabel geeft de connectiviteitslocaties en de serviceproviders voor e
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Frankrijk - zuid | N.v.t. | DE CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Australië - zuidoost | 10G, 100G | AARNet, Devoli, Equinix, Mega Port, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | N.v.t. | 10G | Claro, C3ntro, Equinix, Mega Port, Neutrona netwerken |
-| **Milaan** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | N.v.t. | 10G | |
+| **Milaan** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | N.v.t. | 10G | Retelit |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | N.v.t. | 10G, 100G | Bell Canada, Cologix, Mega Port, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | India - west | 10G | Global CloudXchange (GCX), revertrouwen Jio, Sify, Tata Communications, Verizon |
 | **Mumbai2** | Airtel | 2 | India - west | N.v.t. | Airtel, Sify, Vodafone Idea |

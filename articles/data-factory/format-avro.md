@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 931287fa2a4104069b101236bec9f76bb7193e8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416356"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604980"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>De indeling Avro in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,7 +30,7 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | De eigenschap type van de DataSet moet worden ingesteld op **Avro**. | Ja      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen `location`onder. **Zie de sectie Details in connector artikel-> eigenschappen van gegevensset**. | Ja      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location` . **Zie de sectie Details in connector artikel-> eigenschappen van gegevensset**. | Ja      |
 | avroCompressionCodec | De compressie-codec die moet worden gebruikt bij het schrijven naar Avro-bestanden. Bij het lezen van Avro-bestanden, Data Factory de compressie-codec automatisch bepalen op basis van de meta gegevens van het bestand.<br>Ondersteunde typen zijn '**none**' (standaard), '**Deflate**', '**Snappy**'. Houd er rekening mee dat de activiteit die momenteel wordt gekopieerd, geen ondersteuning biedt voor Snappy wanneer Avro bestanden lezen/schrijven. | Nee       |
 
 > [!NOTE]
@@ -66,21 +66,49 @@ Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledi
 
 ### <a name="avro-as-source"></a>AVRO als bron
 
-De volgende eigenschappen worden ondersteund in de sectie *** \*bron\* *** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in de sectie *** \* bron \* *** van de Kopieer activiteit.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSource**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees `storeSettings`instellingen onder. **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+| storeSettings | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
 
 ### <a name="avro-as-sink"></a>AVRO als Sink
 
-De volgende eigenschappen worden ondersteund in het gedeelte *** \*Sink\* *** van de Kopieer activiteit.
+De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** van de Kopieer activiteit.
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **AvroSink**. | Ja      |
-| storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings`. **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+| storeSettings | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` . **Zie de sectie Details in connector artikel-> eigenschappen van de Kopieer activiteit**. | Nee       |
+
+
+## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
+
+In het toewijzen van gegevens stromen kunt u lezen en schrijven naar Avro-indeling in de volgende gegevens archieven: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+### <a name="source-properties"></a>Bron eigenschappen
+
+De onderstaande tabel geeft een lijst van de eigenschappen die door een AVRO-bron worden ondersteund. U kunt deze eigenschappen bewerken op het tabblad **bron opties** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Joker tekens | Alle bestanden die overeenkomen met het pad naar Joker tekens worden verwerkt. Onderdrukt de map en het bestandspad die in de gegevensset zijn ingesteld. | nee | Teken reeks [] | wildcardPaths |
+| Basispad voor partitie | Voor bestands gegevens die zijn gepartitioneerd, kunt u een basispad opgeven om gepartitioneerde mappen als kolommen te kunnen lezen | nee | Tekenreeks | partitionRootPath |
+| Lijst met bestanden | Hiermee wordt aangegeven of uw bron verwijst naar een tekst bestand met de bestanden die moeten worden verwerkt | nee | `true` of `false` | File List |
+| Kolom voor het opslaan van de bestands naam | Een nieuwe kolom maken met de naam en het pad van het bron bestand | nee | Tekenreeks | rowUrlColumn |
+| Na voltooiing | De bestanden na de verwerking verwijderen of verplaatsen. Bestandspad wordt gestart vanuit de hoofdmap van de container | nee | Verwijderen: `true` of`false` <br> Ga`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore |
+
+### <a name="sink-properties"></a>Eigenschappen van Sink
+
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een AVRO-sink. U kunt deze eigenschappen bewerken op het tabblad **instellingen** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| De map wissen | Als de doelmap vóór het schrijven is gewist | nee | `true` of `false` | afkappen |
+| Optie Bestands naam | De naamgevings indeling van de gegevens die zijn geschreven. Standaard één bestand per partitie in de indeling`part-#####-tid-<guid>` | nee | Patroon: teken reeks <br> Per partitie: teken reeks [] <br> Als gegevens in kolom: teken reeks <br> Uitvoer naar één bestand:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Alle offertes | Alle waarden tussen aanhalings tekens plaatsen | nee | `true` of `false` | quoteAll |
 
 ## <a name="data-type-support"></a>Ondersteuning voor gegevens typen
 

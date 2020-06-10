@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: 1536773840693e943b1e32f0ae7358b8b2ee7ce9
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 15b146a9299a089a3bf9601c432eb179187a9473
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324637"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610097"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Leesreplica's in Azure Database for MySQL
 
@@ -20,6 +20,12 @@ Met de functie leesreplica kunt u gegevens van een Azure Database for MySQL-serv
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MySQL servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
 Zie de [MySQL-replicatie documentatie](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)voor meer informatie over MySQL-replicatie functies en-problemen.
+
+> [!NOTE]
+> Afwijking-vrije communicatie
+>
+> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+>
 
 ## <a name="when-to-use-a-read-replica"></a>Wanneer moet u een lees replica gebruiken?
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a345b5a8a4d6a99b1b3928d61b22dfba0ba2735b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 319e6a4bff4d4d5675a03359176ac765cae80116
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248835"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608075"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Inleiding tot ingerichte door Voer in Azure Cosmos DB
 
@@ -32,7 +32,9 @@ Het instellen van een ingerichte door Voer voor een container is de meest gebrui
 
 De door Voer die is ingericht voor een container wordt gelijkmatig verdeeld over de fysieke partities en er wordt ervan uitgegaan dat er een goede partitie sleutel is die de logische partities gelijkmatig verdeelt tussen de fysieke partities. de door Voer wordt ook gelijkmatig verdeeld over alle logische partities van de container. U kunt de door Voer voor logische partities niet selectief opgeven. Omdat een of meer logische partities van een container worden gehost door een fysieke partitie, behoren de fysieke partities uitsluitend tot de container en ondersteunen ze de door Voer ingericht op de container. 
 
-Als de werk belasting die wordt uitgevoerd op een logische partitie, groter is dan de door Voer die is toegewezen aan de logische partitie, worden de verwerkings frequenties beperkt. Wanneer de snelheids beperking optreedt, kunt u de ingerichte door Voer voor de gehele container verhogen of de bewerking opnieuw uitvoeren. Zie [logische partities](partition-data.md)voor meer informatie over partitioneren.
+Als de werk belasting die wordt uitgevoerd op een logische partitie, groter is dan de door Voer die is toegewezen aan de onderliggende fysieke partitie, is het mogelijk dat uw bewerkingen een beperkt aantal zijn. Wat bekend staat als een _hete partitie_ , treedt op wanneer één logische partitie onevenredig meer aanvragen heeft dan andere partitie sleutel waarden.
+
+Wanneer de snelheids beperking optreedt, kunt u de ingerichte door Voer voor de gehele container verhogen of de bewerking opnieuw uitvoeren. U moet er ook voor zorgen dat u een partitie sleutel kiest waarmee de opslag en het aanvraag volume gelijkmatig worden verdeeld. Zie [partitioneren en horizon taal schalen in azure Cosmos DB](partition-data.md)voor meer informatie over partitioneren.
 
 We raden u aan om door voer te configureren bij de container granulatie wanneer u gegarandeerde prestaties voor de container wilt.
 

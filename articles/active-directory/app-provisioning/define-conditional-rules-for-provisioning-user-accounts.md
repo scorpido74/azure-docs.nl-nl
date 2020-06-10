@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 06/08/2020
 ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 5ccec4174020d8b6586384a71ffe84fccd753640
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593741"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605439"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -29,7 +29,7 @@ Bereik filters kunnen anders worden gebruikt, afhankelijk van het type inrichtin
 * **Uitgaande inrichting van Azure AD naar SaaS-toepassingen**. Wanneer Azure AD het bron systeem is, zijn [gebruikers-en groeps toewijzingen](../manage-apps/assign-user-or-group-access-portal.md) de meest voorkomende methode om te bepalen welke gebruikers binnen het bereik van het inrichten vallen. Deze toewijzingen worden ook gebruikt om eenmalige aanmelding in te scha kelen en één methode te bieden voor het beheren van toegang en inrichting. U kunt ook de bereik filters gebruiken, naast toewijzingen of in plaats daarvan, om gebruikers te filteren op basis van kenmerk waarden.
 
     >[!TIP]
-    > U kunt het inrichten uitschakelen op basis van toewijzingen voor een bedrijfs toepassing door de instellingen in het menu [bereik](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) onder de inrichtings instellingen te wijzigen om **alle gebruikers en groepen te synchroniseren**. Het gebruik van deze optie en bereik filters op basis van kenmerken bieden snellere prestaties dan het gebruik van groeps toewijzingen.  
+    > U kunt het inrichten uitschakelen op basis van toewijzingen voor een bedrijfs toepassing door de instellingen in het menu [bereik](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) onder de inrichtings instellingen te wijzigen om **alle gebruikers en groepen te synchroniseren**. 
 
 * **Inkomende Provisioning van HCM-toepassingen naar Azure AD en Active Directory**. Wanneer een [HCM-toepassing, zoals workday](../saas-apps/workday-tutorial.md) , het bron systeem is, zijn bereik filters de primaire methode om te bepalen welke gebruikers moeten worden ingericht van de HCM-toepassing naar Active Directory of Azure AD.
 
@@ -60,7 +60,7 @@ Op basis van dit bereik filter moeten gebruikers voldoen aan de volgende criteri
 Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen voor elke Azure AD-gebruikers inrichtings connector. In de volgende procedure wordt ervan uitgegaan dat u al automatisch inrichten hebt ingesteld voor [een van de ondersteunde toepassingen](../saas-apps/tutorial-list.md) en hoe u er een filter voor een bereik aan toevoegt.
 
 ### <a name="create-a-scoping-filter"></a>Een bereik filter maken
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise Applications** > **all applications** '.
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory**  >  **Enter prise Applications**  >  **all applications** '.
 
 2. Selecteer de toepassing waarvoor u automatische inrichting hebt geconfigureerd: bijvoorbeeld ' ServiceNow '.
 
@@ -118,9 +118,9 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 ## <a name="common-scoping-filters"></a>Algemene bereik filters
 | Doel kenmerk| Operator | Waarde | Beschrijving|
 |----|----|----|----|
-|userPrincipalName|OVEREENKOMENDE REGEX|.\*@domain.com |Alle gebruikers met userPrincipal die het domein @domain.com hebben, zijn in het bereik voor inrichting.|
-|userPrincipalName|GEEN REGEX-OVEREENKOMST|.\*@domain.com|Alle gebruikers met userPrincipal die het domein @domain.com hebben, zijn buiten het bereik voor het inrichten|
-|afdeling|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
+|userPrincipalName|OVEREENKOMENDE REGEX|.\*@domain.com |Alle gebruikers met userPrincipal die het domein hebben @domain.com , zijn in het bereik voor inrichting.|
+|userPrincipalName|GEEN REGEX-OVEREENKOMST|.\*@domain.com|Alle gebruikers met userPrincipal die het domein hebben @domain.com , zijn buiten het bereik voor het inrichten|
+|department|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
 |workerID|OVEREENKOMENDE REGEX|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| Alle werk nemers met workerIDs tussen 1000000 en 2000000 zijn binnen het bereik van de inrichting.|
 
 ## <a name="related-articles"></a>Verwante artikelen:

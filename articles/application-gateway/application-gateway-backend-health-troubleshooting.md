@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 626f52aa8a14cd16d36bef8930cfb75654ef3f32
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648436"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628786"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Problemen met back-endservers oplossen in Application Gateway
 ==================================================
@@ -81,7 +81,7 @@ Nadat u een status van een onjuiste back-endserver hebt ontvangen voor alle serv
 In het bericht dat wordt weer gegeven in de kolom **Details** vindt u meer informatie over het probleem en op basis van die, kunt u beginnen met het oplossen van het probleem.
 
 > [!NOTE]
-> De standaard test aanvraag wordt verzonden in de indeling van \< protocol \> ://127.0.0.1: \< poort \> /. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
+> De standaard test aanvraag wordt verzonden met de indeling \<protocol\> ://127.0.0.1: \<port\> /. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
 
 <a name="error-messages"></a>Foutberichten
 ------------------------
@@ -170,7 +170,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 **Bericht:** De status code van het \' HTTP-antwoord van de back-end komt niet overeen met de test instelling. Verwacht: {HTTPStatusCode0} ontvangen: {HTTPStatusCode1}.
 
-**Oorzaak:** Nadat de TCP-verbinding tot stand is gebracht en een TLS-handshake is uitgevoerd (als TLS is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test een \< protocol \> ://127.0.0.1: \< poort \> /, en worden de antwoord status codes in de rage 200 tot 399 als gezond beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
+**Oorzaak:** Nadat de TCP-verbinding tot stand is gebracht en een TLS-handshake is uitgevoerd (als TLS is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test naar \<protocol\> ://127.0.0.1: \<port\> /en worden de antwoord status codes in de rage 200 tot en met 399 als in orde beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
 
 **Oplossing:** Afhankelijk van de reactie code van de back-endserver kunt u de volgende stappen uitvoeren. Enkele van de algemene status codes worden hier weer gegeven:
 
@@ -209,7 +209,7 @@ Meer informatie over [Application Gateway probe matching](https://docs.microsoft
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Back-end-server certificaat ongeldig CA
 
-**Bericht:** Het server certificaat dat door de back-end wordt gebruikt, is niet ondertekend door een bekende certificerings instantie (CA). White List de back-end op het Application Gateway door het basis certificaat van het server certificaat dat door de back-end wordt gebruikt, te uploaden.
+**Bericht:** Het server certificaat dat door de back-end wordt gebruikt, is niet ondertekend door een bekende certificerings instantie (CA). De back-end op het Application Gateway toestaan door het basis certificaat van het server certificaat te uploaden dat wordt gebruikt door de back-end.
 
 **Oorzaak:** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de back-endserver wordt geverifieerd om te zorgen dat de server in orde is.
 Als een TLS/SSL-certificaat wordt vertrouwd, moet dat certificaat van de back-endserver worden uitgegeven door een certificerings instantie die is opgenomen in het vertrouwde archief van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde certificerings instantie (bijvoorbeeld als er een zelfondertekend certificaat is gebruikt), moeten gebruikers het certificaat van de verlener uploaden naar Application Gateway.

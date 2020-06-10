@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 0bb1371de827fbb68afd5d114f49afa4acec0deb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 142ac150e863b69a4580812478828062c1f5c6c6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759736"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605592"
 ---
 # <a name="get-started-with-device-twins-python"></a>Aan de slag met Device apparaatdubbels (python)
 
@@ -32,7 +32,7 @@ Aan het einde van deze zelf studie hebt u twee python-console-apps:
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
@@ -69,7 +69,7 @@ In deze sectie maakt u een python-console-app waarmee de meta gegevens van de lo
    from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. Voeg de volgende code toe. Vervang `[IoTHub Connection String]` door de IOT hub-Connection String die u hebt gekopieerd in [de iot hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang `[Device Id]` door de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe. Vervang door `[IoTHub Connection String]` de IOT hub-Connection String die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang door `[Device Id]` de apparaat-id die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"

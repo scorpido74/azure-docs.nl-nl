@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77460021"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608771"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Apache Storm topologieën ontwikkelen met behulp van python in HDInsight
 
@@ -32,11 +32,11 @@ Meer informatie over het maken van een [Apache Storm](https://storm.apache.org/)
 
 * [Jdk-versie 8 (Java Developer Kit)](https://aka.ms/azure-jdks).
 
-* [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
+* [Apache Maven](https://maven.apache.org/download.cgi) correct [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een systeem voor het bouwen van Java-projecten.
 
 ## <a name="storm-multi-language-support"></a>Ondersteuning voor Storm meerdere talen
 
-Apache Storm is ontworpen om te werken met onderdelen die zijn geschreven met behulp van een programmeer taal. De onderdelen moeten weten hoe u kunt werken met de Thrift-definitie voor Storm. Voor python wordt een module meegeleverd als onderdeel van het Apache Storm project, waarmee u eenvoudig kunt interface met storm. U kunt deze module vinden op [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm is ontworpen om te werken met onderdelen die zijn geschreven met behulp van een programmeer taal. De onderdelen moeten weten hoe u kunt werken met de Thrift-definitie voor Storm. Voor python wordt een module meegeleverd als onderdeel van het Apache Storm project, waarmee u eenvoudig kunt interface met storm. U kunt deze module vinden op [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) .
 
 Storm is een Java-proces dat wordt uitgevoerd op de Java Virtual Machine (JVM). Onderdelen die in andere talen zijn geschreven, worden uitgevoerd als subprocessen. De Storm communiceert met deze subprocessen met behulp van JSON-berichten die via stdin/stdout worden verzonden. Meer informatie over de communicatie tussen onderdelen vindt u in de documentatie over het [multi-lang protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
@@ -58,9 +58,9 @@ spouts:
     parallelism: 1
 ```
 
-De klasse `FluxShellSpout` wordt gebruikt om het `sentencespout.py` script te starten dat de Spout implementeert.
+De klasse `FluxShellSpout` wordt gebruikt om het script te starten `sentencespout.py` dat de Spout implementeert.
 
-Stroom verwacht dat de python-scripts zich bevinden in de `/resources` map in het jar-bestand dat de topologie bevat. In dit voor beeld worden de python-scripts `/multilang/resources` in de Directory opgeslagen. Het `pom.xml` bevat dit bestand met de volgende XML:
+Stroom verwacht dat de python-scripts zich bevinden in de `/resources` map in het jar-bestand dat de topologie bevat. In dit voor beeld worden de python-scripts in de `/multilang/resources` Directory opgeslagen. Het `pom.xml` bevat dit bestand met de volgende XML:
 
 ```xml
 <!-- include the Python components -->
@@ -70,23 +70,23 @@ Stroom verwacht dat de python-scripts zich bevinden in de `/resources` map in he
 </resource>
 ```
 
-Zoals eerder vermeld, is er een `storm.py` bestand dat de Thrift-definitie voor Storm implementeert. Het stroom kader wordt `storm.py` automatisch opgenomen wanneer het project is gemaakt, zodat u zich geen zorgen hoeft te maken over het opnemen ervan.
+Zoals eerder vermeld, is er een `storm.py` bestand dat de Thrift-definitie voor Storm implementeert. Het stroom kader `storm.py` wordt automatisch opgenomen wanneer het project is gemaakt, zodat u zich geen zorgen hoeft te maken over het opnemen ervan.
 
 ## <a name="build-the-project"></a>Het project bouwen
 
-1. Down load het project [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount)van.
+1. Down load het project van [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) .
 
-1. Open een opdracht prompt en ga naar de hoofdmap van het `hdinsight-python-storm-wordcount-master`project:. Voer de volgende opdracht in:
+1. Open een opdracht prompt en ga naar de hoofdmap van het project: `hdinsight-python-storm-wordcount-master` . Voer de volgende opdracht in:
 
     ```cmd
     mvn clean compile package
     ```
 
-    Met deze opdracht maakt `target/WordCount-1.0-SNAPSHOT.jar` u een bestand met de gecompileerde topologie.
+    Met deze opdracht maakt u een `target/WordCount-1.0-SNAPSHOT.jar` bestand met de gecompileerde topologie.
 
 ## <a name="run-the-storm-topology-on-hdinsight"></a>De Storm-topologie op HDInsight uitvoeren
 
-1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om `WordCount-1.0-SNAPSHOT.jar` het bestand te kopiëren naar uw Storm op HDInsight-cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om het `WordCount-1.0-SNAPSHOT.jar` bestand te kopiëren naar uw Storm op HDInsight-cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
     ```cmd
     scp target/WordCount-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
@@ -106,7 +106,7 @@ Zoals eerder vermeld, is er een `storm.py` bestand dat de Thrift-definitie voor 
 
     Zodra het is gestart, wordt een storm-topologie uitgevoerd totdat deze wordt gestopt.
 
-1. Gebruik de Storm-gebruikers interface om de topologie op het cluster weer te geven. De Storm-gebruikers interface bevindt zich op `https://CLUSTERNAME.azurehdinsight.net/stormui`. Vervang `CLUSTERNAME` door de naam van uw cluster.
+1. Gebruik de Storm-gebruikers interface om de topologie op het cluster weer te geven. De Storm-gebruikers interface bevindt zich op `https://CLUSTERNAME.azurehdinsight.net/stormui` . Vervang door `CLUSTERNAME` de naam van uw cluster.
 
 1. Stop de Storm-topologie. Gebruik de volgende opdracht om de topologie op het cluster te stoppen:
 

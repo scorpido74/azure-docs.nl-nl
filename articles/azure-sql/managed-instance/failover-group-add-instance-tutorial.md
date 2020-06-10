@@ -13,12 +13,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 925e6788035952a4e7b54b8d50b910243a754a09
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 31dba12023643f96018d1192111a19c80d0ba3ef
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041281"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636203"
 ---
 # <a name="tutorial-add-a-sql-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL beheerd exemplaar toevoegen aan een failovergroep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -400,7 +400,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar van Azure SQL.  |
 
 ---
@@ -458,7 +458,7 @@ Maak het secundaire SQL-beheerde exemplaar met behulp van de Azure Portal.
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens Azure SQL in het zoekvak. Beschrijving Selecteer de ster naast **Azure SQL** om deze te favoriet en voeg deze toe als een item in de linkernavigatiebalk. 
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie over de verschillende data bases weer geven door details weer geven te selecteren op de tegel data bases.
-1. Selecteer **maken** in de tegel **SQL SQL Managed instances** . 
+1. Selecteer **maken** in de tegel **SQL Managed instances** . 
 
     ![SQL Managed instance selecteren](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
@@ -729,7 +729,7 @@ In dit gedeelte van de zelf studie worden de volgende Power shell-cmdlets gebrui
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar van Azure SQL.  |
 
 ---
@@ -764,13 +764,13 @@ Maak de gateway voor het virtuele netwerk van uw primaire SQL-beheerd exemplaar 
     | **Abonnement** |  Het abonnement waarin uw primaire door SQL beheerde exemplaar is. |
     | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `primary-mi-gateway` . | 
     | **Regio** | De regio waar uw primaire SQL Managed instance zich bevindt. |
-    | **Gateway type** | Selecteer **VPN**. |
+    | **Gatewaytype** | Selecteer **VPN**. |
     | **VPN-type** | **Op route gebaseerd** selecteren |
     | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
     | **Locatie**| De locatie waar uw primaire SQL beheerde instantie en primair virtuele netwerk zich bevindt.   |
     | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-primary` . |
     | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-    | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `primary-gateway-IP` . |
+    | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `primary-gateway-IP` . |
     | &nbsp; | &nbsp; |
 
 1. Wijzig de andere waarden als standaard en selecteer vervolgens **controleren + maken** om de instellingen voor de gateway van uw virtuele netwerk te controleren.
@@ -846,13 +846,13 @@ Herhaal de stappen in de vorige sectie om het subnet van het virtuele netwerk en
    | **Abonnement** |  Het abonnement waarin uw secundaire SQL Managed instance zich bevindt. |
    | **Naam** | De naam van de gateway van uw virtuele netwerk, zoals `secondary-mi-gateway` . | 
    | **Regio** | De regio waar uw secundaire SQL Managed instance zich bevindt. |
-   | **Gateway type** | Selecteer **VPN**. |
+   | **Gatewaytype** | Selecteer **VPN**. |
    | **VPN-type** | **Op route gebaseerd** selecteren |
    | **SKU**| De standaard waarde van wijzigen `VpnGw1` . |
    | **Locatie**| De locatie waar uw secundaire SQL Managed instance en secundaire virtuele netwerk zich bevindt.   |
    | **Virtueel netwerk**| Selecteer het virtuele netwerk dat is gemaakt in sectie 2, zoals `vnet-sql-mi-secondary` . |
    | **Openbaar IP-adres**| Selecteer **Nieuw maken**. |
-   | **Naam van openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
+   | **Naam openbaar IP-adres**| Voer een naam in voor uw IP-adres, zoals `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Instellingen van secundaire gateway](./media/failover-group-add-instance-tutorial/settings-for-secondary-gateway.png)
@@ -1114,7 +1114,7 @@ In dit gedeelte van de zelf studie wordt gebruikgemaakt van de volgende Power sh
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add SQL Managed Instance to a failover group")]
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -1131,7 +1131,7 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Hiermee voegt u een configuratie van een netwerk beveiligings regel toe aan een netwerk beveiligings groep. |
 | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Hiermee wordt een netwerk beveiligings groep bijgewerkt.  | 
 | [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Hiermee voegt u een route naar een route tabel toe. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
+| [Get-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Hiermee werkt u een route tabel bij.  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Hiermee maakt u een beheerd exemplaar van Azure SQL.  |
 | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Retourneert informatie over Azure SQL Managed data base instance. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Hiermee maakt u een openbaar IP-adres.  | 
