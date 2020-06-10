@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067216"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629563"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgraden naar een V2-opslagaccount voor algemeen gebruik
 
@@ -60,7 +60,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Een toegangs laag voor BLOB-gegevens opgeven
 
-V2-accounts voor algemeen gebruik ondersteunen alle Azure Storage-services en gegevens objecten, maar toegangs lagen zijn alleen beschikbaar voor blok-blobs in Blob Storage. Wanneer u een upgrade uitvoert naar een v2-opslag account voor algemeen gebruik, kunt u een standaard account toegangs niveau van warme of koud opgeven. Dit geeft aan dat de standaardlaag uw BLOB-gegevens worden geüpload alsof de afzonderlijke BLOB-Access tier-para meter niet is opgegeven.
+V2-accounts voor algemeen gebruik ondersteunen alle Azure Storage-services en gegevens objecten, maar toegangs lagen zijn alleen beschikbaar voor het blok keren van blobs in Blob Storage. Wanneer u een upgrade uitvoert naar een v2-opslag account voor algemeen gebruik, kunt u een standaard account toegangs niveau van warme of koud opgeven. Dit geeft aan dat de standaardlaag uw BLOB-gegevens worden geüpload alsof de afzonderlijke BLOB-Access tier-para meter niet is opgegeven.
 
 Met Blob-toegangs lagen kunt u de meest rendabele opslag kiezen op basis van uw verwachte gebruiks patronen. Blok-blobs kunnen worden opgeslagen in een warme, koele of archief laag. Zie [Azure Blob Storage: warme, cool en archief opslag lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 
@@ -73,7 +73,7 @@ In beide gevallen is de eerste prioriteit het schatten van de kosten voor het op
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 
-Een upgrade uitvoeren van een v1-opslag account naar een v2-account voor algemeen gebruik is gratis. U kunt de gewenste gegevenslaagtoepassing tijdens het upgrade proces opgeven. Als er bij een upgrade geen AccountName is opgegeven, is de standaardlaag van de bijgewerkte account `Hot`. Het wijzigen van de opslag toegangs laag na de upgrade kan echter leiden tot wijzigingen in uw factuur, zodat u de nieuwe gegevenslaagtoepassing tijdens de upgrade kunt opgeven.
+Een upgrade uitvoeren van een v1-opslag account naar een v2-account voor algemeen gebruik is gratis. U kunt de gewenste gegevenslaagtoepassing tijdens het upgrade proces opgeven. Als er bij een upgrade geen AccountName is opgegeven, is de standaardlaag van de bijgewerkte account `Hot` . Het wijzigen van de opslag toegangs laag na de upgrade kan echter leiden tot wijzigingen in uw factuur, zodat u de nieuwe gegevenslaagtoepassing tijdens de upgrade kunt opgeven.
 
 Alle opslagaccounts maken gebruik van een prijsmodel voor het opslaan van blobs op basis van laag van elke blob. Als u een opslagaccount gebruikt, zijn de volgende factureringsvoorwaarden van toepassing:
 
@@ -167,4 +167,4 @@ De overdrachtskosten van geo-replicatiegegevens voor Blob Storage-accounts kan o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Create a storage account](storage-account-create.md)
+* [Een opslagaccount maken](storage-account-create.md)

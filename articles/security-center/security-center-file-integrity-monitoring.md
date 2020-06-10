@@ -13,15 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: 46ff4d9c941af25fcec3a70d7a2e6da95da59f32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106692"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628292"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Bestandsintegriteit bewaken in Azure Security Center
 Meer informatie over het configureren van FIM (File Integrity Monitoring) in Azure Security Center met behulp van deze procedure.
+
+
+## <a name="availability"></a>Beschikbaarheid
+
+- Release status: **algemeen beschikbaar**
+- Vereiste rollen: de eigenaar van de **werk ruimte** kan FIM inschakelen/uitschakelen (Zie [Azure-rollen voor log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) voor meer informatie. **Lezer** kan resultaten weer geven.
+- Clouds
+    - ✔ Commerciële Clouds
+    - ✔ US Gov Cloud
+    - ✘ China gov/andere gov
+
 
 ## <a name="what-is-fim-in-security-center"></a>Wat is FIM in Security Center?
 Met de File Integrity Monitoring (FIM), ook wel bekend als wijzigings controle, worden bestanden en registers van het besturings systeem, toepassings software en anderen onderzocht op wijzigingen die mogelijk duiden op een aanval. Een vergelijkings methode wordt gebruikt om te bepalen of de huidige status van het bestand afwijkt van de laatste scan van het bestand. U kunt deze vergelijking gebruiken om te bepalen of er geldige of verdachte wijzigingen zijn aangebracht in uw bestanden.
@@ -49,8 +60,8 @@ Security Center biedt de volgende lijst met aanbevolen items die moeten worden b
 
 |**Linux-bestanden**|**Windows-bestanden**|**Windows-register sleutels**|
 |:----|:----|:----|
-|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/bin/passwd|C:\Boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/bin/login|C:\autoexec.bat|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/bin/passwd|C:\Boot.ini|HKLM\SOFTWARE\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
 |/etc/*. conf|C:\config.sys|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\IniFileMapping\SYSTEM.ini\boot|
 |/usr/bin|C:\Windows\system.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows|
 |/usr/sbin|C:\Windows\win.ini|HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon|
@@ -61,8 +72,8 @@ Security Center biedt de volgende lijst met aanbevolen items die moeten worden b
 |/usr/local/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnceEx|
 |/opt/bin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServices|
 |/opt/sbin||HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunServicesOnce|
-|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
-|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg\{603BCC1F-4B59-4E08-B724-D2C6297EF351}|
+|/etc/crontab||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ C689AAB8-8E78-11D0-8C47-00C04FC295EE}|
+|/etc/init.d||HKLM\SOFTWARE\WOW6432Node\Microsoft\Cryptography\OID\EncodingType 0 \ CryptSIPDllRemoveSignedDataMsg \{ 603BCC1F-4B59-4E08-B724-D2C6297EF351}|
 |/etc/cron.hourly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\IniFileMapping\system.ini\boot|
 |/etc/cron.daily||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Windows|
 |/etc/cron.weekly||HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Winlogon|
@@ -97,7 +108,7 @@ De volgende informatie wordt gegeven voor elke werk ruimte:
 De volgende knoppen kunnen ook worden weer gegeven voor een werk ruimte:
 
 - ![Pictogram inschakelen][3] Geeft aan dat FIM niet is ingeschakeld voor de werk ruimte. Als u de werk ruimte selecteert, kunt u FIM inschakelen op alle computers onder de werk ruimte.
-- ![Pictogram][4] upgrade plan geeft aan dat de werk ruimte of het abonnement niet wordt uitgevoerd onder de Standard-laag van Security Center. Als u de FIM-functie wilt gebruiken, moet uw abonnement standaard worden uitgevoerd.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren naar Standard. Zie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging voor](security-center-pricing.md)meer informatie over de laag standaard en hoe u de upgrade uitvoert.
+- ![Pictogram upgrade plan ][4] geeft aan dat de werk ruimte of het abonnement niet wordt uitgevoerd onder de Standard-laag van Security Center. Als u de FIM-functie wilt gebruiken, moet uw abonnement standaard worden uitgevoerd.  Als u de werk ruimte selecteert, kunt u een upgrade uitvoeren naar Standard. Zie [upgraden naar de Standard-laag van Security Center voor verbeterde beveiliging voor](security-center-pricing.md)meer informatie over de laag standaard en hoe u de upgrade uitvoert.
 - Een leeg (er is geen knop) betekent dat FIM al is ingeschakeld in de werk ruimte.
 
 Onder **File Integrity Monitoring**kunt u een werk ruimte selecteren om FIM voor die werk ruimte in te scha kelen, het dash board bestands integriteit controleren voor die werk ruimte weer te geven of een upgrade van de werk ruimte naar Standard [uit](security-center-pricing.md) te voeren.
@@ -216,7 +227,7 @@ Joker tekens gebruiken om het bijhouden van meerdere mappen te vereenvoudigen. D
 -   Joker tekens zijn vereist voor het bijhouden van meerdere bestanden.
 -   Joker tekens kunnen alleen worden gebruikt in het laatste segment van een pad, zoals C:\folder\file of/etc/*. conf
 -   Als een omgevings variabele een pad bevat dat niet geldig is, wordt de validatie uitgevoerd, maar het pad mislukt wanneer de inventarisatie wordt uitgevoerd.
--   Bij het instellen van het pad vermijdt u algemene paden zoals\*c:. *, waardoor er te veel mappen worden gepasseerd.
+-   Bij het instellen van het pad vermijdt u algemene paden zoals c: \* . *, waardoor er te veel mappen worden gepasseerd.
 
 ## <a name="disable-fim"></a>FIM uitschakelen
 U kunt FIM uitschakelen. FIM maakt gebruik van de Azure Wijzigingen bijhouden-oplossing om wijzigingen in uw omgeving bij te houden en te identificeren. Door FIM uit te scha kelen, verwijdert u de Wijzigingen bijhouden-oplossing uit de geselecteerde werk ruimte.

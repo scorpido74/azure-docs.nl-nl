@@ -7,18 +7,16 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509250"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629589"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Deel drie: machtigingen voor mappen en bestands niveau configureren via SMB 
 
 Voordat u aan dit artikel begint, moet u ervoor zorgen dat u het vorige artikel hebt voltooid, [machtigingen op share niveau toewijzen aan een identiteit](storage-files-identity-ad-ds-assign-permissions.md). Om ervoor te zorgen dat de machtigingen op share niveau aanwezig zijn.
-
-Nadat u machtigingen op share niveau hebt toegewezen met RBAC, moet u de juiste Windows-Acl's (ook wel NTFS-machtigingen) toewijzen aan de hoofdmap, map of bestands niveau om te profiteren van nauw keurig toegangs beheer. U kunt de RBAC-machtigingen op share niveau beschouwen als de gate keeper op hoog niveau die bepaalt of een gebruiker toegang heeft tot de share. Hoewel de Windows-Acl's op een meer gedetailleerd niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand.
 
 Nadat u machtigingen op share niveau hebt toegewezen met RBAC, moet u de juiste Windows-Acl's configureren op basis van de hoofdmap, map of bestands niveau om te profiteren van nauw keurig toegangs beheer. U kunt de RBAC-machtigingen op share niveau beschouwen als de gate keeper op hoog niveau die bepaalt of een gebruiker toegang heeft tot de share. Hoewel de Windows-Acl's op een meer gedetailleerd niveau werken om te bepalen welke bewerkingen de gebruiker kan uitvoeren op het niveau van de map of het bestand. Machtigingen op share niveau en op het niveau van bestanden en mappen worden afgedwongen wanneer een gebruiker toegang probeert te krijgen tot een bestand of map, dus als er een verschil is tussen een van beide, wordt alleen de meest beperkende waarde toegepast. Als een gebruiker bijvoorbeeld lees-en schrijf toegang heeft op bestands niveau, maar alleen op share niveau leest, kan het bestand alleen worden gelezen. Hetzelfde geldt als het is omgekeerd, en een gebruiker had Lees-en schrijf toegang op het niveau van de share, maar alleen lezen op bestands niveau, maar kan het bestand nog steeds lezen.
 

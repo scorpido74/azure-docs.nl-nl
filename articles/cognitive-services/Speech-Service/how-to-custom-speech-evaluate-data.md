@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806093"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629063"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Nauwkeurigheid van Custom Speech evalueren
 
@@ -52,11 +52,11 @@ Als u de kwaliteit van het spraak-naar-tekst basislijn model van micro soft of e
 Modellen naast elkaar evalueren:
 
 1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
-2. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
+2. Navigeer naar **spraak-naar-tekst > Custom Speech > [name of project] > te testen**.
 3. Klik op **test toevoegen**.
 4. Selecteer **nauw keurigheid evalueren**. Geef een naam en beschrijving op voor de test en selecteer uw transcriptie-gegevensset voor audio + met Human label.
 5. Selecteer Maxi maal twee modellen die u wilt testen.
-6. Klik op **maken**.
+6. Klik op **Create**.
 
 Nadat de test is gemaakt, kunt u de resultaten naast elkaar vergelijken.
 

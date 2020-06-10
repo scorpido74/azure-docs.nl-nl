@@ -13,18 +13,18 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220616"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605456"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>De locatie voorwaarde gebruiken in een beleid voor voorwaardelijke toegang 
 
 Zoals uitgelegd in het [overzichts artikel](overview.md) beleid voor voorwaardelijke toegang zijn de meest eenvoudige een instructie if-then waarmee signalen worden gecombineerd, om beslissingen te nemen en organisatie beleid af te dwingen. Een van de signalen die kunnen worden opgenomen in het besluitvormings proces is de netwerk locatie.
 
-![Conceptuele voorwaardelijke signalen plus beslissing voor het afdwingen van afdwinging](./media/location-condition/conditional-access-signal-decision-enforcement.png)
+![Conceptueel voorwaardelijk signaal plus beslissing om afdwinging in te schakelen](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
 Organisaties kunnen deze netwerk locatie gebruiken voor algemene taken, zoals: 
 
@@ -34,7 +34,7 @@ Organisaties kunnen deze netwerk locatie gebruiken voor algemene taken, zoals:
 De netwerk locatie wordt bepaald door het open bare IP-adres dat een client biedt om Azure Active Directory. Beleid voor voorwaardelijke toegang is standaard van toepassing op alle IPv4-en IPv6-adressen. 
 
 > [!TIP]
-> IPV6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
+> IPv6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
 
 ## <a name="named-locations"></a>Benoemde locaties
 
@@ -50,7 +50,7 @@ Het aantal benoemde locaties dat u kunt configureren, is beperkt door de grootte
 - Maxi maal 90 benoemde locaties waaraan één IP-bereik is toegewezen.
 
 > [!TIP]
-> IPV6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
+> IPv6-bereiken worden alleen ondersteund in de interface van de **[benoemde locatie (preview)](#preview-features)** . 
 
 ### <a name="trusted-locations"></a>Vertrouwde locaties
 
@@ -65,7 +65,7 @@ Met deze optie kunt u bepalen in het beleid voor voorwaardelijke toegang, waarbi
 Sommige organisaties kunnen ervoor kiezen om volledige IP-grenzen van landen of regio's te definiëren als benoemde locaties voor beleids regels voor voorwaardelijke toegang. Ze kunnen deze locaties gebruiken bij het blok keren van onnodig verkeer wanneer ze weten dat gebruikers nooit van een locatie, zoals Noord-Korea, zijn. Deze toewijzingen van het IP-adres aan het land worden regel matig bijgewerkt. 
 
 > [!NOTE]
-> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken.
+> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken en kunnen niet worden gemarkeerd als vertrouwd.
 
 ![Maak een nieuwe locatie op basis van een land of regio in de Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -102,7 +102,7 @@ Met de voor beeld van benoemde locatie kunt u
 
 - Maxi maal 195 benoemde locaties configureren
 - Maxi maal 2000 IP-bereiken per benoemde locatie configureren
-- Maxi maal IPv6-adressen configureren
+- IPv6-adressen naast IPv4-adressen configureren
 
 Er zijn ook extra controles toegevoegd om de wijziging van de onjuiste configuratie te verminderen.
 
@@ -115,7 +115,7 @@ Er zijn nu twee opties voor het maken van de preview-versie:
 - **Locatie van IP-bereiken**
 
 > [!NOTE]
-> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken.
+> Landen bevatten geen IPv6-adresbereiken, alleen bekende IPv4-adresbereiken en kunnen niet worden gemarkeerd als vertrouwd.
 
 ![Preview-interface voor benoemde locaties](./media/location-condition/named-location-preview.png)
 

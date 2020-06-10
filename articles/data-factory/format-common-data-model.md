@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 0dce717461754ac1259bc666adf4eb9f7ef9d6c2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465266"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604934"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Gemeen schappelijke gegevens model indeling in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,7 +30,7 @@ Het common data model is beschikbaar als een [inline-gegevensset](data-flow-sour
 
 ### <a name="source-properties"></a>Bron eigenschappen
 
-De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een CDM-bron.
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een CDM-bron. U kunt deze eigenschappen bewerken op het tabblad **bron opties** .
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
@@ -49,7 +49,13 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Verzameling entiteit | Pad naar entiteits verwijzing | ja | Tekenreeks | vennootschap |
 | Geen bestanden gevonden | Als deze eigenschap waar is, wordt er geen fout gegenereerd als er geen bestanden worden gevonden | nee | `true` of `false` | ignoreNoFilesFound |
 
-#### <a name="cdm-source-example"></a>Voor beeld van CDM-bron
+#### <a name="import-schema"></a>Schema importeren
+
+CDM is alleen beschikbaar als een inline-gegevensset en heeft standaard geen bijbehorend schema. Als u kolom meta gegevens wilt ophalen, klikt u op de knop **schema importeren** op het tabblad **projectie** . Hiermee kunt u verwijzen naar de kolom namen en gegevens typen die door de verzameling zijn opgegeven. Als u het schema wilt importeren, moet de [fout opsporings sessie van de gegevens stroom](concepts-data-flow-debug-mode.md) actief zijn.
+
+![Schema importeren](media/format-common-data-model/import-schema-source.png)
+
+### <a name="cdm-source-example"></a>Voor beeld van CDM-bron
 
 De onderstaande afbeelding is een voor beeld van een configuratie van een CDM-bron in het toewijzen van gegevens stromen.
 
@@ -79,10 +85,9 @@ source(output(
     fileSystem: 'data') ~> CDMSource
 ```
 
-
 ### <a name="sink-properties"></a>Eigenschappen van Sink
 
-De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een CDM-sink.
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een CDM-sink. U kunt deze eigenschappen bewerken op het tabblad **instellingen** .
 
 | Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
 | ---- | ----------- | -------- | -------------- | ---------------- |
@@ -103,7 +108,7 @@ De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteun
 | Kolom scheidings teken | Als u naar DelimitedText schrijft, kolommen beperken | Ja, als u naar DelimitedText schrijft | Tekenreeks | columnDelimiter |
 | Eerste rij als koptekst | Als u DelimitedText gebruikt, of de kolom namen worden toegevoegd als koptekst | nee | `true` of `false` | columnNamesAsHeader |
 
-#### <a name="cdm-sink-example"></a>Voor beeld van CDM-Sink
+### <a name="cdm-sink-example"></a>Voor beeld van CDM-Sink
 
 De onderstaande afbeelding is een voor beeld van een configuratie van een CDM-Sink bij het toewijzen van gegevens stromen.
 

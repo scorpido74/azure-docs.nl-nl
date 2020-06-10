@@ -12,41 +12,45 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 12/13/2019
-ms.openlocfilehash: 62e8bbbc3781c7e27671e8cb303ef2dcad2a30f3
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 06/04/2020
+ms.openlocfilehash: fc2c8ea232004488664bc7f15b1d1bb3b83f2e7b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324331"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609604"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Zowel Azure SQL Database als Azure SQL Managed instance maken database back-ups die gedurende de duur van de geconfigureerde Bewaar periode worden bewaard. Ze maken gebruik van [geografisch redundante opslag met lees toegang (RA-GRS)](../../storage/common/storage-redundancy.md) om ervoor te zorgen dat back-ups worden bewaard, zelfs als het Data Center niet beschikbaar is.
-
-Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat uw gegevens worden beschermd tegen onbedoelde beschadiging of verwijdering. Als uw-beveiligings regels vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
-
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="what-is-a-sql-database-backup"></a>Wat is een SQL Database back-up?
+## <a name="what-is-a-database-backup"></a>Wat is een back-up van de data base?
 
-Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) -ups elke 12 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de vijf tot tien minuten. De back-ups worden opgeslagen in [Ra-GRS-opslag-blobs](../../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gekoppeld Data Center](../../best-practices-availability-paired-regions.md) voor beveiliging tegen een storing in het Data Center. Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differentiële en transactie logboek back-ups moeten worden hersteld.
+Database back-ups zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit en herstel na nood gevallen, omdat ze uw gegevens beschermen tegen beschadiging of verwijdering.
+
+Zowel SQL Database als SQL Managed instance gebruiken SQL Server technologie om elke week [volledige back-ups](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) te maken, [differentiële back](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) -ups elke 12-24 uur en [back-ups van transactie logboeken](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) om de vijf tot tien minuten. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
+
+Wanneer u een Data Base herstelt, bepaalt de service welke volledige, differentiële en transactie logboek back-ups moeten worden hersteld.
+
+Deze back-ups maken het herstellen van data bases mogelijk op een bepaald moment binnen de geconfigureerde Bewaar periode. De back-ups worden opgeslagen als [Ra-GRS-opslag-blobs](../../storage/common/storage-redundancy.md) die worden gerepliceerd naar een [gepaard gebied](../../best-practices-availability-paired-regions.md) voor beveiliging tegen storingen die invloed hebben op back-upopslag in de primaire regio. 
+
+Als uw regels voor gegevens bescherming vereisen dat uw back-ups langere tijd beschikbaar zijn (tot tien jaar), kunt u de [lange termijn retentie](long-term-retention-overview.md) voor zowel één als gepoolde data bases configureren.
 
 U kunt deze back-ups gebruiken om:
 
-- **Een bestaande data base herstellen naar een bepaald tijdstip in het verleden** binnen de retentie periode met behulp van de Azure Portal, Azure PowerShell, Azure CLI of de rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server in hetzelfde abonnement als de oorspronkelijke data base. In een beheerd exemplaar kan deze bewerking een kopie maken van de data base of dezelfde of een ander beheerd exemplaar onder hetzelfde abonnement.
-- **Een verwijderde data base herstellen naar het tijdstip van de verwijdering** of op elk moment binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op dezelfde server of hetzelfde beheerde exemplaar en in hetzelfde abonnement als waarin de oorspronkelijke Data Base is gemaakt.
-- **Een Data Base herstellen naar een andere geografische regio**. Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw server en data base. Er wordt een nieuwe Data Base op een bestaande server gemaakt, waar dan ook ter wereld.
-- **Een Data Base herstellen op basis van een specifieke lange termijn back-up** op een enkele data base of gegroepeerde Data Base, als de data base is geconfigureerd met een Bewaar beleid voor de lange termijn (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
+- [Een bestaande data base herstellen naar een bepaald tijdstip in het verleden](recovery-using-backups.md#point-in-time-restore) binnen de retentie periode met behulp van Azure Portal, Azure PowerShell, Azure CLI of rest API. Voor afzonderlijke en gepoolde data bases maakt deze bewerking een nieuwe Data Base op dezelfde server als de oorspronkelijke Data Base, maar onder een andere naam om te voor komen dat de oorspronkelijke Data Base wordt overschreven. Nadat het herstellen is voltooid, kunt u de oorspronkelijke data base verwijderen of de [naam ervan wijzigen](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) , en de naam van de herstelde data base wijzigen in de oorspronkelijke data base. Op een beheerd exemplaar kan deze bewerking op dezelfde manier een kopie maken van de Data Base op hetzelfde of een ander beheerd exemplaar onder hetzelfde abonnement en in dezelfde regio.
+- [Een verwijderde data base herstellen naar het tijdstip van de verwijdering](recovery-using-backups.md#deleted-database-restore) of naar een bepaald tijdstip binnen de Bewaar periode. De verwijderde data base kan alleen worden teruggezet op een server of een beheerd exemplaar waarop de oorspronkelijke Data Base is gemaakt. Bij het verwijderen van een Data Base neemt de service een definitieve back-up van transactie logboeken voordat deze wordt verwijderd, om verlies van gegevens te voor komen.
+- [Een Data Base herstellen naar een andere geografische regio](recovery-using-backups.md#geo-restore). Met geo-Restore kunt u een geografische nood situatie herstellen wanneer u geen toegang hebt tot uw data base of back-ups in de primaire regio. Er wordt in elke Azure-regio een nieuwe data base gemaakt op een bestaande server of een beheerd exemplaar.
+- [Een Data Base herstellen op basis van een specifieke lange termijn back-up](long-term-retention-overview.md) van een enkele data base of gepoolde data base, als de data base is geconfigureerd met een lange termijn retentie beleid (LTR). Met LTR kunt u een oude versie van de data base herstellen met behulp van [de Azure Portal](long-term-backup-retention-configure.md#using-the-azure-portal) of [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) om te voldoen aan een nalevings aanvraag of een oude versie van de toepassing uit te voeren. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
 
 Zie [Data Base terugzetten van back-ups](recovery-using-backups.md)om een herstel bewerking uit te voeren.
 
 > [!NOTE]
-> In Azure Storage verwijst de term *replicatie* naar het kopiëren van bestanden van de ene locatie naar een andere. In Azure SQL Database en SQL Managed instance verwijst *database replicatie* naar het houden van meerdere secundaire data bases gesynchroniseerd met een primaire data base.
+> In Azure Storage verwijst de term *replicatie* naar het kopiëren van blobs van de ene locatie naar een andere. In SQL verwijst *database replicatie* naar verschillende technologieën om te voor komen dat meerdere secundaire data bases worden gesynchroniseerd met een primaire data base.
 
-U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
+U kunt back-ups van de configuratie-en herstel bewerkingen proberen met de volgende voor beelden:
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
@@ -56,64 +60,77 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 | Een verwijderde database herstellen | [Eén data base](recovery-using-backups.md) | [Eén data base](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Een Data Base herstellen vanuit Azure Blob-opslag | Eén data base-N.v.t. <br/>Beheerd exemplaar-N.v.t.  | Eén data base-N.v.t. <br/>[Beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
-## <a name="backup-frequency"></a>Back-upfrequentie
+## <a name="backup-scheduling"></a>Back-upplanning
 
-### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
+De eerste volledige back-up wordt direct na het maken of herstellen van een nieuwe data base gepland. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base die normaal gesp roken groter is dan een nieuwe data base. Na de eerste volledige back-up worden alle verdere back-ups automatisch gepland en beheerd. De exacte timing van alle database back-ups wordt bepaald door de SQL Database of de SQL Managed instance service, omdat deze de algehele systeem werk belasting evenwichtig benadert. U kunt het schema van back-uptaken niet wijzigen of uitschakelen.
 
-SQL Database en SQL Managed instance ondersteunen self-service for Point-in-time Restore (PITR) door automatisch volledige back-ups, differentiële back-ups en back-ups van transactie logboeken te maken. Volledige database back-ups worden wekelijks gemaakt en differentiële back-ups van data bases worden over het algemeen elke 12 uur gemaakt. Back-ups van transactie logboeken worden over het algemeen elke vijf tot tien minuten gemaakt. De frequentie van back-ups van transactie Logboeken is gebaseerd op de berekenings grootte en de hoeveelheid database activiteit.
-
-De eerste volledige back-up wordt onmiddellijk gepland nadat er een Data Base is gemaakt. Deze back-up wordt gewoonlijk binnen 30 minuten voltooid, maar kan langer duren als de data base groot is. De eerste back-up kan bijvoorbeeld langer duren op een herstelde data base of een kopie van een Data Base. Na de eerste volledige back-up worden alle verdere back-ups automatisch op de achtergrond gepland en beheerd. De exacte timing van alle database back-ups wordt bepaald door SQL Database of een door SQL beheerd exemplaar, omdat het de algehele systeem werk belasting evenwichtig benadert. U kunt de back-uptaken niet wijzigen of uitschakelen.
-
-### <a name="default-backup-retention-period"></a>Standaard retentie periode voor back-ups
-
-PITR-back-ups worden beveiligd met geografisch redundante opslag. Zie [Redundantie in Azure Storage](../../storage/common/storage-redundancy.md) voor meer informatie.
-
-Zie herstel naar een bepaald [tijdstip](recovery-using-backups.md#point-in-time-restore)voor meer informatie over PITR.
-
-### <a name="long-term-retention"></a>Lange bewaartermijn
-
-Voor enkelvoudige en gepoolde data bases kunt u de lange termijn retentie (LTR) van volledige back-ups configureren voor Maxi maal tien jaar in Azure Blob-opslag. Als u het LTR-beleid inschakelt, worden de wekelijkse volledige back-ups automatisch gekopieerd naar een andere RA-GRS-opslag container. Om aan verschillende nalevings vereisten te voldoen, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie van back-ups en de retentie periode of peri Oden. U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
-
-Net als bij PITR-back-ups worden LTR-back-ups beschermd met geografisch redundante opslag. Zie [Redundantie in Azure Storage](../../storage/common/storage-redundancy.md) voor meer informatie.
-
-Voor meer informatie over LTR, Zie [lange termijn retentie van back-ups](long-term-retention-overview.md).
+> [!IMPORTANT]
+> Voor een nieuwe, herstelde of gekopieerde data base wordt herstel naar een bepaald tijdstip beschikbaar vanaf het moment dat de eerste back-up van het transactie logboek dat volgt, de eerste volledige back-up wordt gemaakt.
 
 ## <a name="backup-storage-consumption"></a>Opslag gebruik back-ups
 
-Voor afzonderlijke data bases en beheerde exemplaren wordt deze vergelijking gebruikt voor het berekenen van het totale opslag gebruik van back-ups:
+Met SQL Server-technologie voor back-up en herstel is het herstellen van een Data Base naar een bepaald tijdstip een niet-onderbroken back-upketen die bestaat uit één volledige back-up, eventueel een differentiële back-up en een of meer back-ups van transactie Logboeken. Het back-upschema van SQL Database en SQL Managed instance bevat een volledige back-up elke week. Daarom moet het systeem, om PITR binnen de gehele Bewaar periode in te scha kelen, extra volledige, differentiële en transactie logboek back-ups opslaan gedurende een periode die langer is dan de geconfigureerde Bewaar periode. 
 
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`
+Met andere woorden: voor elk tijdstip tijdens de Bewaar periode moet er een volledige back-up worden gemaakt die ouder is dan de oudste tijd van de retentie periode, evenals een ononderbroken keten van differentiële en transactie logboek back-ups van die volledige back-up tot de volgende volledige back-up.
+
+> [!NOTE]
+> Om PITR in te scha kelen, worden extra back-ups gedurende een week langer opgeslagen dan de geconfigureerde Bewaar periode. Back-upopslag wordt in rekening gebracht tegen hetzelfde tarief voor alle back-ups. 
+
+Voor afzonderlijke data bases wordt deze vergelijking gebruikt voor het berekenen van het totale opslag gebruik van back-ups:
+
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
 
 Voor gegroepeerde Data bases wordt de totale opslag grootte van de back-up geaggregeerd op het groeps niveau en wordt als volgt berekend:
 
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
 
-Back-ups die plaatsvinden vóór de Bewaar periode, worden automatisch opgeschoond op basis van hun tijds tempel. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up is vereist, worden ze samen in wekelijkse segmenten opgeschoond.
+Voor beheerde instanties wordt de totale opslag grootte van de back-up geaggregeerd op het exemplaar niveau en wordt als volgt berekend:
 
-SQL Database en SQL Managed instance berekenen uw totale in-retentie back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de data base is verwijderd, neemt het verbruik af als ouderdom van back-ups. Nadat back-ups ouder zijn geworden dan de retentie periode, wordt de facturering stopgezet.
+`Total backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+Back-ups die niet meer nodig zijn om de PITR-functionaliteit te bieden, worden automatisch verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond.
+
+Voor alle data bases, inclusief [TDe versleutelde](transparent-data-encryption-tde-overview.md) data bases, worden back-ups gecomprimeerd om compressie van back-upopslag en kosten te verminderen. De gemiddelde compressie ratio van back-ups is 3-4 keer, maar dit kan aanzienlijk lager of hoger zijn, afhankelijk van de aard van de gegevens en of gegevens compressie wordt gebruikt in de-data base.
+
+SQL Database en SQL Managed instance berekenen de totale gebruikte back-upopslag als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te berekenen. Nadat de data base is verwijderd, neemt het verbruik af naarmate back-ups worden verwijderd. Zodra alle back-ups zijn verwijderd en PITR niet meer mogelijk is, wordt de facturering gestopt.
    
-   > [!IMPORTANT]
-   > Back-ups van een Data Base worden bewaard voor de opgegeven Bewaar periode, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen veelvuldig opslag-en reken kosten worden bespaard, waardoor de opslag kosten voor back-ups toenemen, omdat micro soft een back-up van de opgegeven Bewaar periode voor elke verwijderde data base vasthoudt, elke keer dat deze wordt verwijderd. 
+> [!IMPORTANT]
+> Back-ups van een Data Base worden bewaard om PITR in te scha kelen, zelfs als de data base is verwijderd. Tijdens het verwijderen en opnieuw maken van een Data Base kunnen opslag-en reken kosten worden bespaard, kunnen de kosten voor back-upopslag toenemen omdat de service back-ups voor elke verwijderde data base behoudt, telkens wanneer deze wordt verwijderd. 
 
 ### <a name="monitor-consumption"></a>Verbruik bewaken
 
-Elk type back-up (volledig, differentieel en logboek) wordt op de Blade database bewaking gerapporteerd als een afzonderlijke metriek. In het volgende diagram ziet u hoe u het verbruik van back-upopslag voor één data base bewaakt. Deze functie is momenteel niet beschikbaar voor beheerde exemplaren.
+Voor vCore-data bases wordt de opslag die wordt gebruikt door elk type back-up (volledig, differentieel en logboek) op de Blade database bewaking gerapporteerd als een afzonderlijke metriek. In het volgende diagram ziet u hoe u het verbruik van back-upopslag voor één data base bewaakt. Deze functie is momenteel niet beschikbaar voor beheerde exemplaren.
 
 ![Gebruik van database back-ups in de Azure Portal bewaken](./media/automated-backups-overview/backup-metrics.png)
 
 ### <a name="fine-tune-backup-storage-consumption"></a>Het gebruik van back-upopslag nauw keuriger instellen
 
-Het verbruik van het back-upopslag is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases. Bekijk een aantal van de volgende afstemmings technieken om het verbruik van back-upopslag te verminderen:
+Voor het verbruik van back-upopslag tot de maximale gegevens grootte voor een Data Base worden geen kosten in rekening gebracht. Het verbruik van het back-upopslag is afhankelijk van de werk belasting en de maximale grootte van de afzonderlijke data bases. Bekijk een aantal van de volgende afstemmings technieken om het verbruik van back-upopslag te verminderen:
 
 - Verminder de [Bewaar periode voor back-ups](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) naar de minimale vereisten voor uw behoeften.
 - Vermijd grote schrijf bewerkingen, zoals het opnieuw opbouwen van indexen, vaker dan u nodig hebt.
-- Overweeg het gebruik van [geclusterde column Store-indexen](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes), het aantal niet-geclusterde indexen te verlagen en te overwegen om bewerkingen met bulksgewijs laden te maken met het aantal rijen rond 1.000.000.
-- In de servicelaag voor algemeen gebruik is de ingerichte gegevens opslag minder duur dan de prijs van de overtollige back-upopslag. Als u continu hoge back-upopslagkosten hebt, kunt u overwegen om de gegevens opslag te verg Roten om op te slaan in de back-upopslag.
-- Gebruik TempDB in plaats van permanente tabellen in uw ETL-logica voor het opslaan van tijdelijke resultaten. (Alleen van toepassing op een door SQL beheerd exemplaar.)
-- Overweeg TDE versleuteling uit te scha kelen voor data bases die geen gevoelige gegevens bevatten (bijvoorbeeld data bases voor ontwikkeling of testen). Back-ups voor niet-versleutelde data bases worden doorgaans gecomprimeerd met een hogere compressie ratio.
+- Overweeg het gebruik van [geclusterde column Store-indexen](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) en de volgende gerelateerde [Aanbevolen procedures](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance), en/of verklein het aantal niet-geclusterde indexen voor bewerkingen voor grote gegevens belasting.
+- In de servicelaag Algemeen is de ingerichte gegevens opslag minder duur dan de prijs van de back-upopslag. Als u voortdurend veel overtollige back-upopslagkosten hebt, kunt u overwegen gegevens opslag te verg Roten om op te slaan in de back-upopslag.
+- Gebruik TempDB in plaats van permanente tabellen in uw toepassings logica om tijdelijke resultaten en/of tijdelijke gegevens op te slaan.
+
+## <a name="backup-retention"></a>Retentie van back-ups
+
+Voor alle nieuwe, herstelde en gekopieerde data bases Azure SQL Database en Azure SQL Managed instance voldoende back-ups behouden zodat PITR in de afgelopen 7 dagen standaard is toegestaan. Met uitzonde ring van grootschalige-data bases kunt u de [retentie periode voor back-ups](#change-the-pitr-backup-retention-period) per data base wijzigen in het bereik van 1-35 dagen. Zoals beschreven in [back-upopslag](#backup-storage-consumption), is het mogelijk dat back-ups die zijn opgeslagen om PITR in te scha kelen, ouder zijn dan de retentie periode.
+
+Als u een Data Base verwijdert, houdt het systeem back-ups op dezelfde manier als voor een online-data base met de specifieke Bewaar periode. U kunt de Bewaar periode voor back-ups niet wijzigen voor een verwijderde data base.
 
 > [!IMPORTANT]
-> Voor analytische data-datamart \ Data Warehouse-workloads raden wij u ten zeerste aan om [geclusterde column Store-indexen](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)te gebruiken, het aantal niet-geclusterde indexen te verminderen en te overwegen om bulksgewijs laad bewerkingen met een aantal rijen rond 1.000.000 om het verbruik van de back-upopslag te verminderen.
+> Als u een server of een beheerd exemplaar verwijdert, worden ook alle data bases op die server of het beheerde exemplaar verwijderd en kunnen deze niet worden hersteld. U kunt een verwijderde server of een beheerd exemplaar niet herstellen. Maar als u wel lange termijn retentie (LTR) hebt geconfigureerd voor een Data Base of een beheerd exemplaar, worden back-ups voor lange termijn retentie niet verwijderd en kunnen ze worden gebruikt voor het herstellen van data bases op een andere server of een beheerd exemplaar in hetzelfde abonnement, tot een tijdstip waarop een back-up met lange termijn retentie is gemaakt.
+
+De retentie van back-ups voor PITR in de afgelopen 1-35 dagen wordt soms een retentie voor de korte termijn voor back-ups genoemd. Als u back-ups langer wilt bewaren dan de maximale Bewaar periode voor de korte termijn van 35 dagen, kunt u de [lange termijn retentie](long-term-retention-overview.md)inschakelen.
+
+### <a name="long-term-retention"></a>Lange bewaartermijn
+
+Voor enkelvoudige en gegroepeerde Data bases en beheerde exemplaren kunt u de lange termijn retentie (LTR) van volledige back-ups configureren voor Maxi maal tien jaar in Azure Blob-opslag. Als u een LTR-beleid inschakelt, worden de wekelijkse volledige back-ups automatisch gekopieerd naar een andere RA-GRS-opslag container. Om aan verschillende nalevings vereisten te voldoen, kunt u verschillende Bewaar perioden selecteren voor wekelijkse, maandelijkse en/of jaarlijkse volledige back-ups. Het opslag verbruik is afhankelijk van de geselecteerde frequentie van V.L.N.R.-back-ups en de retentie periode of-peri Oden. U kunt de [LTR-prijs calculator](https://azure.microsoft.com/pricing/calculator/?service=sql-database) gebruiken om de kosten van v.l.n.r.-opslag te schatten.
+
+Net als bij PITR-back-ups worden LTR-back-ups beschermd met geografisch redundante opslag. Zie [Redundantie in Azure Storage](../../storage/common/storage-redundancy.md) voor meer informatie.
+
+Voor meer informatie over LTR, Zie [lange termijn retentie van back-ups](long-term-retention-overview.md).
 
 ## <a name="storage-costs"></a>Opslagkosten
 
@@ -121,17 +138,23 @@ De prijs voor opslag is afhankelijk van het feit of u het DTU-model of het vCore
 
 ### <a name="dtu-model"></a>DTU-model
 
-Er worden geen extra kosten in rekening gebracht voor back-upopslag voor data bases en Pools voor elastische Data Base als u het DTU-model gebruikt.
+In het DTU-model worden geen extra kosten in rekening gebracht voor back-upopslag voor data bases en elastische Pools. De prijs van back-upopslag is onderdeel van de prijs van de data base of groep.
 
 ### <a name="vcore-model"></a>vCore-model
 
-Voor afzonderlijke data bases in SQL Database is een minimum hoeveelheid voor back-upopslag gelijk aan 100 procent van de grootte van de data base, zonder extra kosten. Voor elastische Pools in SQL Database en afzonderlijke instanties en exemplaar groepen in SQL Managed instance is een minimum hoeveelheid voor back-upopslag gelijk aan 100 procent van de toegewezen gegevens opslag voor respectievelijk de grootte van de groep of het exemplaar, maar zonder extra kosten. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
+Voor afzonderlijke data bases in SQL Database is een back-upopslagwaarde gelijk aan 100 procent van de maximale grootte van de gegevens opslag voor de data base, zonder extra kosten. Voor elastische Pools en beheerde instanties is een back-upopslagwaarde gelijk aan 100 procent van de maximale gegevens opslag voor de pool of de maximale grootte van het exemplaar van de opslag, respectievelijk, zonder extra kosten. 
 
-Met SQL Database en SQL Managed instance wordt de totale Bewaar back-upopslag berekend als een cumulatieve waarde. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, die verantwoordelijk is voor het samen voegen van dit uur gebruik om uw verbruik aan het einde van elke maand te verkrijgen. Nadat de data base is verwijderd, verkleint micro soft het verbruik als de leeftijd van de back-ups. Nadat back-ups ouder zijn geworden dan de retentie periode, wordt de facturering stopgezet. Omdat alle logboek back-ups en differentiële back-ups worden bewaard voor de volledige Bewaar periode, worden er voor veel gewijzigde data bases hogere back-upkosten in rekening gebracht.
+Extra verbruik van back-upopslag, indien van toepassing, wordt in GB per maand in rekening gebracht. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van afzonderlijke data bases, elastische groepen en beheerde exemplaren. Sterk gewijzigde data bases hebben meer differentiële en logboek back-ups, omdat de grootte van deze back-ups evenredig is met de hoeveelheid gegevens wijzigingen. Daarom zullen dergelijke data bases hogere back-upkosten hebben.
 
-Ga ervan uit dat een Data Base 744 GB aan back-upopslag heeft verzameld en dat deze hoeveelheid constant blijft gedurende een hele maand. Als u dit cumulatieve opslag gebruik wilt converteren naar het uurverbruik, deelt u dit op 744,0 (31 dagen per maand * 24 uur per dag). Zo rapporteert SQL Database dat de data base elk uur 1 GB PITR back-up heeft verbruikt. In azure billing wordt dit verbruik geaggregeerd en wordt een gebruik van 744 GB voor de hele maand weer gegeven. De kosten worden berekend op basis van het $/GB/month-tempo in uw regio.
+SQL Database en SQL Managed instance berekent uw totale back-upopslag als een cumulatieve waarde voor alle back-upbestanden. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, waarmee dit uur gebruik wordt geaggregeerd om het verbruik van back-upopslag aan het einde van elke maand te verkrijgen. Als een Data Base wordt verwijderd, neemt het verbruik van back-upopslag geleidelijk af naarmate oudere back-ups worden verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond. Zodra alle back-ups zijn verwijderd, wordt de facturering gestopt. 
 
-Nu is een complexere voor beeld. Stel dat de data base in het midden van de maand de Bewaar periode heeft verhoogd tot 14 dagen. Stel dat deze toename (hypothetisch) resulteert in de totale back-upopslag, verdubbeld tot 1.488 GB. SQL Database zou 1 GB aan gebruik melden voor uren van 1 tot en met 372. Hiermee wordt het gebruik gerapporteerd als 2 GB voor uren 373 tot 744. Dit gebruik wordt geaggregeerd naar een voltooide factuur van 1.116 GB/maand.
+Als een vereenvoudigd voor beeld wordt ervan uitgegaan dat een Data Base 744 GB back-upopslag heeft gecumuleerd en dat deze hoeveelheid gedurende een hele maand constant blijft, omdat de data base volledig niet actief is. Als u dit cumulatieve opslag gebruik wilt converteren naar het uurverbruik, deelt u dit op 744,0 (31 dagen per maand * 24 uur per dag). SQL Database meldt zich aan de Azure-facturerings pijplijn dat de data base elk uur 1 GB PITR-back-up heeft verbruikt, tegen een constant tarief. In azure billing wordt dit verbruik geaggregeerd en wordt een gebruik van 744 GB voor de hele maand weer gegeven. De kosten worden berekend op basis van het percentage van de hoeveelheid/GB per maand in uw regio.
+
+Nu is een complexere voor beeld. Stel dat voor dezelfde niet-actieve Data Base de Bewaar periode van 7 dagen tot 14 dagen in het midden van de maand is verhoogd. Dit verhoogt de resultaten van de totale back-upopslag, verdubbeld tot 1.488 GB. SQL Database zou 1 GB aan gebruik melden voor uren 1 tot en met 372 (de eerste helft van de maand). Hiermee wordt het gebruik gerapporteerd als 2 GB voor uren 373 tot 744 (de tweede helft van de maand). Dit gebruik wordt geaggregeerd naar een voltooide factuur van 1.116 GB/maand.
+
+De daad werkelijke facturerings scenario's voor back-ups zijn complexer. Omdat de frequentie van de wijzigingen in de data base afhankelijk is van de werk belasting en de variabele gedurende een bepaalde periode, is de grootte van elke differentiële back-up en logboek registratie ook afhankelijk, waardoor het verbruik van de back-upopslag per uur dienovereenkomstig wordt geschommeld. Daarnaast bevat elke differentiële back-up alle wijzigingen die zijn aangebracht in de data base sinds de laatste volledige back-up, waardoor de totale grootte van alle differentiële back-ups geleidelijk in de loop van een week toeneemt en vervolgens weer wordt versneld als er een oudere set van volledige, differentiële en logboek back-ups wordt weer gegeven. Als er bijvoorbeeld een zware schrijf activiteit zoals het opnieuw opbouwen van de index is uitgevoerd nadat een volledige back-up is voltooid, worden de wijzigingen die zijn aangebracht door het opnieuw opbouwen van de index opgenomen in de back-ups van de transactie logboeken die zijn gemaakt tijdens het opnieuw opbouwen, in de volgende differentiële back-up en in elke differentiële back-up die tot de volgende volledige back-up wordt Voor het laatste scenario in grotere data bases maakt een optimalisatie in de service een volledige back-up in plaats van een differentiële back-up als een differentiële back-up uitzonderlijk groot zou zijn. Dit beperkt de grootte van alle differentiële back-ups tot de volgende volledige back-up.
+
+U kunt het totale opslag verbruik van back-ups voor elk back-uptype (volledig, Differentieel, transactie logboek) in de loop van de tijd bewaken, zoals beschreven in het [monitor gebruik](#monitor-consumption).
 
 ### <a name="monitor-costs"></a>Kosten bewaken
 
@@ -141,35 +164,21 @@ Voeg een filter toe voor **service naam**en selecteer vervolgens **SQL data base
 
 ![Kosten analyse back-upopslag](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
-## <a name="backup-retention"></a>Retentie van back-ups
-
-Alle data bases in SQL Database en SQL Managed instance hebben een standaard periode van 7 dagen voor het bewaren van back-ups. U kunt [de Bewaar periode voor back-ups wijzigen naar een](#change-the-pitr-backup-retention-period) waarde van 35 dagen.
-
-Als u een Data Base verwijdert, houdt Azure de back-ups op dezelfde manier als voor een online-data base. Als u bijvoorbeeld een eenvoudige data base verwijdert met een Bewaar periode van zeven dagen, wordt een back-up die vier dagen oud is, drie dagen lang opgeslagen.
-
-Als u de back-ups langer wilt bewaren dan de maximale Bewaar periode, kunt u de back-upeigenschappen wijzigen om een of meer lange termijn Bewaar perioden toe te voegen aan uw data base. Zie [Langetermijnretentie](long-term-retention-overview.md) voor meer informatie.
-
-> [!IMPORTANT]
-> Het instellen van de Bewaar periode voor back-ups op 1 dag (of op een wille keurige waarde tussen 1-7) wordt op dit moment alleen ondersteund via Power shell of REST API. Mini maal vereiste versie AZ. SQL module is v 2.6.0, of kan worden uitgevoerd via Cloud shell, die altijd de nieuwste AZ. SQL-versie heeft.
-
-> [!IMPORTANT]
-> Als u de server of het beheerde exemplaar verwijdert, worden ook alle data bases die worden beheerd door die server of het beheerde exemplaar verwijderd. Ze kunnen niet worden hersteld. U kunt een verwijderde server of een beheerd exemplaar niet herstellen. Maar als u lange termijn retentie voor SQL Database of beheerd-exemplaar hebt geconfigureerd, worden de back-ups voor de data bases met LTR niet verwijderd en kunnen deze data bases worden hersteld.
-
 ## <a name="encrypted-backups"></a>Versleutelde back-ups
 
-Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Wanneer TDE is ingeschakeld voor SQL Database of SQL Managed instance, worden back-ups ook versleuteld. Alle nieuwe data bases in SQL Database en SQL Managed instance worden standaard geconfigureerd met TDE ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
+Als uw data base is versleuteld met TDE, worden back-ups automatisch versleuteld op rest, waaronder LTR-back-ups. Alle nieuwe data bases in Azure SQL worden geconfigureerd met TDE standaard ingeschakeld. Zie [transparent Data Encryption met SQL Database & Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)voor meer informatie over TDe.
 
 ## <a name="backup-integrity"></a>Back-upintegriteit
 
-Het Azure SQL engineering-team test voortdurend het herstellen van automatische database back-ups van data bases in SQL Database. (Deze test is niet beschikbaar in het SQL Managed instance.) Bij herstel naar een bepaald tijdstip ontvangen data bases ook DBCC CHECKDB-integriteits controles.
-
-SQL Managed instance gebruikt een automatische initiële back-up `CHECKSUM` van data bases die zijn hersteld met de systeem eigen `RESTORE` opdracht of met Azure Data Migration service nadat de migratie is voltooid.
+Het Azure SQL engineering-team test automatisch het herstellen van automatische database back-ups. (Deze test is momenteel niet beschikbaar in het SQL Managed instance.) Bij herstel naar een bepaald tijdstip ontvangen data bases ook DBCC CHECKDB-integriteits controles.
 
 Problemen die tijdens de integriteits controle worden gevonden, zullen leiden tot een waarschuwing voor het technische team. Zie [gegevens integriteit in SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)voor meer informatie.
 
+Alle database back-ups worden gemaakt met de CONTROLESOM optie om extra back-upintegriteit te bieden.
+
 ## <a name="compliance"></a>Naleving
 
-Wanneer u uw data base migreert van een service tier op basis van DTU naar een vCore service tier, blijft de retentie van de PITR bewaard om ervoor te zorgen dat het gegevens herstel beleid van uw toepassing niet wordt aangetast. Als de standaard retentie niet voldoet aan uw nalevings vereisten, kunt u de Bewaar periode voor PITR wijzigen met behulp van Power shell of de REST API. Zie [de retentie periode voor PITR-back-ups wijzigen](#change-the-pitr-backup-retention-period)voor meer informatie.
+Wanneer u uw data base migreert van een service tier op basis van DTU naar een vCore service tier, blijft de retentie van de PITR bewaard om ervoor te zorgen dat het gegevens herstel beleid van uw toepassing niet wordt aangetast. Als de standaard retentie niet voldoet aan uw nalevings vereisten, kunt u de retentie periode van PITR wijzigen. Zie [de retentie periode voor PITR-back-ups wijzigen](#change-the-pitr-backup-retention-period)voor meer informatie.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -178,18 +187,18 @@ Wanneer u uw data base migreert van een service tier op basis van DTU naar een v
 U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van de Azure Portal, Power shell of de REST API. In de volgende voor beelden ziet u hoe u de retentie van PITR wijzigt in 28 dagen.
 
 > [!WARNING]
-> Als u de huidige Bewaar periode verkort, zijn alle bestaande back-ups die ouder zijn dan de nieuwe Bewaar periode niet meer beschikbaar. Als u de huidige retentie periode verhoogt, worden de bestaande back-ups bewaard totdat het einde van de langere Bewaar periode is bereikt.
+> Als u de huidige retentie periode verlaagt, verliest u de mogelijkheid om te herstellen naar punten die ouder zijn dan de nieuwe Bewaar periode. Back-ups die niet meer nodig zijn voor het leveren van PITR binnen de nieuwe Bewaar periode, worden verwijderd. Als u de huidige retentie periode verhoogt, hebt u niet onmiddellijk de mogelijkheid om binnen de nieuwe Bewaar periode naar oudere tijdstippen te herstellen. U krijgt deze mogelijkheid na verloop van tijd, naarmate het systeem meer back-ups gaat bewaren.
 
 > [!NOTE]
 > Deze Api's zijn alleen van invloed op de PITR-retentie periode. Als u LTR hebt geconfigureerd voor uw data base, heeft dit geen invloed op dit probleem. Zie [lange termijn retentie](long-term-retention-overview.md)voor informatie over het wijzigen van v.l.n.r.-Bewaar perioden.
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>De retentie periode voor PITR-back-ups wijzigen met behulp van de Azure Portal
 
-Als u de retentie periode voor PITR-back-ups wilt wijzigen met behulp van de Azure Portal, gaat u naar het Server object waarvan u de Bewaar periode wilt wijzigen in de portal. Selecteer vervolgens de gewenste optie op basis van het Server object dat u wilt wijzigen.
+Als u de retentie periode voor PITR-back-ups wilt wijzigen met behulp van de Azure Portal, gaat u naar de server of het beheerde exemplaar met de data bases waarvan u de Bewaar periode wilt wijzigen. 
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
-Wijzigingen in PITR voor het bewaren van back-ups voor SQL Database worden uitgevoerd op server niveau. Wijzigingen die op server niveau zijn aangebracht, zijn van toepassing op de data bases op de server. Als u de PITR-retentie voor een server van de Azure Portal wilt wijzigen, gaat u naar de Blade Server overzicht. Selecteer **back-ups beheren** in het linkerdeel venster en selecteer vervolgens **retentie configureren** aan de bovenkant van het scherm:
+Wijzigingen in PITR voor het bewaren van back-ups voor SQL Database worden uitgevoerd op de server pagina in de portal. Als u de retentie van PITR voor data bases op een server wilt wijzigen, gaat u naar de Blade Server overzicht. Selecteer **back-ups beheren** in het linkerdeel venster, selecteer de data bases binnen het bereik van uw wijziging en selecteer vervolgens **retentie configureren** aan de bovenkant van het scherm:
 
 ![PITR-retentie, server niveau wijzigen](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 

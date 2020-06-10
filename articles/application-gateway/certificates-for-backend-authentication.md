@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 010ecc234afd745844b5b7868030d3c4e823872f
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133053"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628915"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Certificaten maken om de back-end met Azure-toepassing gateway toe te staan
 
@@ -52,7 +52,7 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
    ![Base-64-code ring](./media/certificates-for-backend-authentication/base64.png)
 
-5. Als u het **bestand wilt exporteren**, **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik vervolgens op **volgende**.
+5. Als u het **bestand wilt exporteren**, **bladert** u naar de locatie waarnaar u het certificaat wilt exporteren. Geef bij **Bestandsnaam** de naam van het certificaatbestand op. Klik op **Volgende**.
 
    ![Bladeren](./media/certificates-for-backend-authentication/browse.png)
 
@@ -74,7 +74,7 @@ Exporteer vanuit uw TLS/SSL-certificaat het bestand met de open bare sleutel. CE
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Vertrouwd basis certificaat exporteren (voor v2-SKU)
 
-Het vertrouwde basis certificaat is vereist voor het white list van back-end-instanties in de app Application Gateway v2. Het basis certificaat is een base-64 Encoded X. 509 (. CER) basis certificaat van de back-end-server certificaten. In dit voor beeld gebruiken we een TLS/SSL-certificaat voor het back-end-certificaat, exporteert u de open bare sleutel en exporteert u vervolgens het basis certificaat van de vertrouwde certificerings instantie uit de open bare sleutel met base64-gecodeerde indeling om het vertrouwde basis certificaat te verkrijgen. De tussenliggende certificaten moeten worden gebundeld met het server certificaat en moeten worden geïnstalleerd op de back-endserver.
+Het vertrouwde basis certificaat is vereist voor het toestaan van back-end-instanties in de app Application Gateway v2 SKU. Het basis certificaat is een base-64 Encoded X. 509 (. CER) basis certificaat van de back-end-server certificaten. In dit voor beeld gebruiken we een TLS/SSL-certificaat voor het back-end-certificaat, exporteert u de open bare sleutel en exporteert u vervolgens het basis certificaat van de vertrouwde certificerings instantie uit de open bare sleutel met base64-gecodeerde indeling om het vertrouwde basis certificaat te verkrijgen. De tussenliggende certificaten moeten worden gebundeld met het server certificaat en moeten worden geïnstalleerd op de back-endserver.
 
 Met de volgende stappen kunt u het. cer-bestand voor uw certificaat exporteren:
 
@@ -106,5 +106,5 @@ Met de volgende stappen kunt u het. cer-bestand voor uw certificaat exporteren:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt nu het verificatie certificaat/het vertrouwde basis certificaat in base-64 Encoded X. 509 (. CER)-indeling. U kunt dit toevoegen aan de toepassings gateway om uw back-endservers te White listen voor end-to-end TLS-versleuteling. Zie [end-to-end TLS configureren met behulp van Application Gateway met Power shell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+U hebt nu het verificatie certificaat/het vertrouwde basis certificaat in base-64 Encoded X. 509 (. CER)-indeling. U kunt dit toevoegen aan de toepassings gateway om uw back-endservers toe te staan voor end-to-end TLS-versleuteling. Zie [end-to-end TLS configureren met behulp van Application Gateway met Power shell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

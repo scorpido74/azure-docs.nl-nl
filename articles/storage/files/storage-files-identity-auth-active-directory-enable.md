@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: f505f8222bd5959a9bb0213dc5c8c48092723bba
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 67c25d7065136f4748b6c0f57a8627db445c1a4e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266624"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610964"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Overzicht-on-premises Active Directory Domain Services authenticatie via SMB voor Azure-bestands shares
 
@@ -57,7 +57,7 @@ Voordat u AD DS verificatie voor Azure-bestands shares inschakelt, moet u ervoor
 
 ## <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Azure Files verificatie met AD DS is beschikbaar in [alle open bare regio's en Azure gov-regio's](https://azure.microsoft.com/global-infrastructure/locations/).
+Azure Files verificatie met AD DS is beschikbaar in [alle open bare, Azure gov-en China-regio's](https://azure.microsoft.com/global-infrastructure/locations/).
 
 ## <a name="overview"></a>Overzicht
 

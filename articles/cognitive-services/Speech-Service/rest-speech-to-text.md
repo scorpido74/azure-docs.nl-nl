@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 7664ce89c01c543544bc576c5eee3fd288d323d5
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248512"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636084"
 ---
 # <a name="speech-to-text-rest-api"></a>REST API voor spraak-naar-tekst
 
@@ -113,6 +113,8 @@ var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"Good morning.\",\"Grading
 var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
+
+Het is raadzaam streaming (gesegmenteerd) te uploaden tijdens het boeken van de audio gegevens, waardoor de latentie aanzienlijk kan worden verminderd. Zie [voorbeeld code in verschillende programmeer talen](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment) voor het inschakelen van streaming.
 
 >[!NOTE]
 >De functie voor het beoordelen van uitspraak is momenteel alleen beschikbaar voor `westus` `eastasia` en `centralindia` regio's. Deze functie is momenteel alleen beschikbaar in de `en-US` taal.

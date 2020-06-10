@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202013"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608448"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services-beveiliging
 
@@ -110,7 +111,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 Als u een omgevings variabele wilt ophalen, moet deze in het geheugen worden gelezen. Afhankelijk van de taal die u gebruikt, moet u rekening houden met de volgende code fragmenten. Deze code fragmenten laten zien hoe u de omgevings variabele kunt ophalen `ENVIRONMENT_VARIABLE_KEY` en toewijzen aan een variabele met de naam `value` .
 
-# <a name="c"></a>[G #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` Zie <span class="docon docon-navigate-external x-hidden-focus"></span> </a>voor meer informatie.
 
@@ -200,7 +201,7 @@ NSString* value =
 
 Klanten-lockbox is beschikbaar voor deze cognitieve service:
 
-* Vertaler
+* Translator
 
 Voor Language Understanding heeft micro soft-technici geen toegang tot klant gegevens in de E0-SKU. Als u de mogelijkheid wilt aanvragen om de E0-SKU te gebruiken, vult u het [aanvraag formulier](https://aka.ms/cogsvc-cmk)voor de Luis in en verzendt u dit. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Nadat u hebt goedgekeurd voor het gebruik van de E0 SKU met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 

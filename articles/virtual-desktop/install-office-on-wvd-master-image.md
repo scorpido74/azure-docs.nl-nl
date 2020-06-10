@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127851"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628995"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
@@ -38,7 +38,7 @@ Voor het Office Deployment Tool is een XML-configuratie bestand vereist. Als u h
 
 Deze XML-voorbeeld configuratie heeft de volgende kenmerken:
 
-- Installeer Office vanuit het maandelijkse kanaal en lever updates van het maandelijkse kanaal wanneer ze worden uitgevoerd.
+- • Installeer Office vanuit het maandelijkse bedrijfs kanaal en lever updates van het maandelijkse bedrijfs kanaal wanneer ze worden uitgevoerd.
 - Gebruik de x64-architectuur.
 - Automatische updates uitschakelen.
 - Verwijder alle bestaande installaties van Office en migreer de instellingen.
@@ -53,7 +53,7 @@ Dit is de XML-voorbeeld configuratie:
 - Installeer OneDrive in de modus per gebruiker. Zie voor meer informatie [OneDrive installeren in de modus per computer](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie\\beleid\\Beheersjablonen\\\\de licentie-instellingen voor Microsoft Office 2016 (computer)**
+>Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie \\ beleid \\ Beheersjablonen de licentie- \\ \\ instellingen voor Microsoft Office 2016 (computer)**
 
 Het Office Deployment Tool bevat Setup. exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
 
@@ -63,11 +63,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>Voor beeld van configuratie. XML
 
-In het volgende XML-voor beeld wordt de maandelijkse release geïnstalleerd.
+Met het volgende XML-voor beeld wordt de maandelijkse versie van het Enter prise Channel geïnstalleerd.
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -116,11 +116,11 @@ OneDrive wordt normaal gesp roken per gebruiker geïnstalleerd. In deze omgeving
 
 U kunt als volgt OneDrive installeren in de modus per computer:
 
-1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of [\\\\UNC]-locatie (File://UNC) is nauw keurig.
+1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of [ \\ \\ UNC]-locatie (File://UNC) is nauw keurig.
 
 2. Down load OneDriveSetup. exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
 
-3. Als u Office met OneDrive hebt geïnstalleerd door ** \<ExcludeApp id = "OneDrive"\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
+3. Als u Office hebt geïnstalleerd met OneDrive door niets **\<ExcludeApp ID="OneDrive" /\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5549f9eaf2bc44dfa7e99df04fd7864dd4b655ce
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422474"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610896"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Replicatie van inkomende gegevens configureren in Azure Database for MariaDB
 
@@ -42,6 +42,12 @@ Bekijk de [beperkingen en vereisten](concepts-data-in-replication.md#limitations
 
    Firewallregels bijwerken met de [Azure-portal](howto-manage-firewall-portal.md) of [Azure CLI](howto-manage-firewall-cli.md).
 
+> [!NOTE]
+> Afwijking-vrije communicatie
+>
+> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+>
+
 ## <a name="configure-the-master-server"></a>De hoofd server configureren
 
 In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in een Cloud database service voor Replicatie van inkomende gegevens wordt gehost, voor bereid en geconfigureerd. De MariaDB-server is de Master in Replicatie van inkomende gegevens.
@@ -60,13 +66,13 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Als de variabele [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) de waarde `ON`retourneert, wordt de binaire logboek registratie ingeschakeld op de server.
+   Als de variabele [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) de waarde retourneert `ON` , wordt de binaire logboek registratie ingeschakeld op de server.
 
-   Als `log_bin` de waarde `OFF`wordt geretourneerd, bewerkt u het bestand **My. cnf** zodat binaire logboek registratie wordt `log_bin=ON` ingeschakeld. Start de server opnieuw op om de wijziging van kracht te laten worden.
+   Als `log_bin` de waarde wordt geretourneerd `OFF` , bewerkt u het bestand **My. cnf** zodat `log_bin=ON` binaire logboek registratie wordt ingeschakeld. Start de server opnieuw op om de wijziging van kracht te laten worden.
 
 3. Configureer de instellingen van de hoofd server.
 
-    Replicatie van inkomende gegevens moet de para `lower_case_table_names` meter consistent zijn tussen de Master-en replica-servers. De `lower_case_table_names` para meter wordt standaard `1` ingesteld op Azure database for MariaDB.
+    Replicatie van inkomende gegevens moet de para meter `lower_case_table_names` consistent zijn tussen de Master-en replica-servers. De `lower_case_table_names` para meter wordt standaard ingesteld op `1` Azure database for MariaDB.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -78,7 +84,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
    
    Zie de [MariaDB-documentatie](https://mariadb.com/kb/en/library/create-user/)voor meer informatie over het toevoegen van gebruikers accounts op uw hoofd server.
 
-   Door de volgende opdrachten te gebruiken, heeft de nieuwe replicatie functie vanaf elke computer toegang tot de Master, niet alleen de computer die als host fungeert voor het model zelf. Geef voor deze toegang **syncuser\@'% '** op in de opdracht om een gebruiker te maken.
+   Door de volgende opdrachten te gebruiken, heeft de nieuwe replicatie functie vanaf elke computer toegang tot de Master, niet alleen de computer die als host fungeert voor het model zelf. Geef voor deze toegang **syncuser \@ '% '** op in de opdracht om een gebruiker te maken.
    
    Zie [account namen opgeven](https://mariadb.com/kb/en/library/create-user/#account-names)voor meer informatie over MariaDB-documentatie.
 
@@ -128,7 +134,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
 
 6. De huidige binaire logboek bestandsnaam en-offset ophalen.
 
-   Voer de opdracht [`show master status`](https://mariadb.com/kb/en/library/show-master-status/)uit om de naam van het huidige binaire logboek bestand en-offset te bepalen.
+   Voer de opdracht uit om de naam van het huidige binaire logboek bestand en-offset te bepalen [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) .
     
    ```sql
    show master status;
@@ -141,7 +147,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
    
 7. De GTID-positie ophalen (optioneel, vereist voor replicatie met GTID).
 
-   Voer de functie [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) uit om de GTID-positie voor de bijbehorende binlog-bestands naam en-offset op te halen.
+   Voer de functie uit [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) om de GTID-positie voor de bijbehorende binlog-bestands naam en-offset op te halen.
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
@@ -177,7 +183,7 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
 
    Alle Replicatie van inkomende gegevens-functies worden uitgevoerd door opgeslagen procedures. U kunt alle procedures vinden op [replicatie van inkomende gegevens opgeslagen procedures](reference-data-in-stored-procedures.md). Opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench.
 
-   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB for MariaDB-service. Stel vervolgens het externe exemplaar in als de hoofd server met behulp `mysql.az_replication_change_master` van `mysql.az_replication_change_master_with_gtid` de of opgeslagen procedure op de Azure DB for MariaDB-server.
+   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB for MariaDB-service. Stel vervolgens het externe exemplaar in als de hoofd server met behulp van de `mysql.az_replication_change_master` of `mysql.az_replication_change_master_with_gtid` opgeslagen procedure op de Azure DB for MariaDB-server.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -241,13 +247,13 @@ In de volgende stappen wordt de MariaDB-server die on-premises, in een VM of in 
    show slave status;
    ```
 
-   `Slave_SQL_Running` Als `Slave_IO_Running` de status `yes`en de waarde van `Seconds_Behind_Master` is `0`, werkt de replicatie. `Seconds_Behind_Master`Hiermee wordt aangegeven hoe laat de replica. Als dat niet `0`het geval is, verwerkt de replica de updates.
+   Als `Slave_IO_Running` `Slave_SQL_Running` de status en `yes` de waarde van is, werkt de `Seconds_Behind_Master` `0` replicatie. `Seconds_Behind_Master`Hiermee wordt aangegeven hoe laat de replica. Als dat niet het geval `0` is, verwerkt de replica de updates.
 
 4. Werk de bijbehorende server variabelen bij om de replicatie van gegevens te beveiligen (alleen vereist voor replicatie zonder GTID).
     
-    Vanwege een systeem eigen replicatie beperking in MariaDB moet u voor- [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) en [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) -variabelen instellen voor replicatie zonder het GTID-scenario.
+    Vanwege een systeem eigen replicatie beperking in MariaDB moet u voor- [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) en- [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) variabelen instellen voor replicatie zonder het GTID-scenario.
 
-    Controleer de en `sync_master_info` `sync_relay_log_info` de variabelen van uw slave-server om er zeker van te zijn dat de replicatie van de gegevens stabiel is `1`en stel de variabelen in op.
+    Controleer de en de variabelen van uw slave `sync_master_info` `sync_relay_log_info` -server om er zeker van te zijn dat de replicatie van de gegevens stabiel is en stel de variabelen in op `1` .
     
 ## <a name="other-stored-procedures"></a>Andere opgeslagen procedures
 

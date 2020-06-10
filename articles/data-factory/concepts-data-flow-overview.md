@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187848"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635119"
 ---
 # <a name="what-are-mapping-data-flows"></a>Wat zijn toewijzingsgegevensstromen?
 
@@ -22,6 +22,8 @@ ms.locfileid: "82187848"
 Het toewijzen van gegevens stromen zijn visueel ontworpen gegevens transformaties in Azure Data Factory. Met gegevens stromen kunnen data engineers grafische gegevens transformatie logica ontwikkelen zonder code te schrijven. De resulterende gegevens stromen worden uitgevoerd als activiteiten binnen Azure Data Factory pijp lijnen die gebruikmaken van uitgeschaalde Apache Spark clusters. Gegevens stroom activiteiten kunnen worden ingeschakeld via bestaande Data Factory plannings-, beheer-, stroom-en bewakings mogelijkheden.
 
 Het toewijzen van gegevens stromen biedt een volledig visuele ervaring zonder code ring vereist. Uw gegevens stromen worden uitgevoerd op uw uitvoerings cluster voor uitgeschaalde gegevens verwerking. Azure Data Factory verwerkt alle code omzetting, optimalisatie van paden en de uitvoering van uw gegevens stroom taken.
+
+![Architectuur](media/data-flow/adf-data-flows.png "Architectuur")
 
 ## <a name="getting-started"></a>Aan de slag
 

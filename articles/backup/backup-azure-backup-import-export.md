@@ -4,12 +4,12 @@ description: Meer informatie over hoe u Azure Backup kunt gebruiken om gegevens 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183888"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629286"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werk stroom voor offline back-up in Azure Backup
 
@@ -45,7 +45,7 @@ De volgende Azure Backup-functies of-workloads bieden ondersteuning voor het geb
 ## <a name="prerequisites"></a>Vereisten
 
   > [!NOTE]
-  > De volgende vereisten en werk stroom zijn alleen van toepassing op offline back-ups van bestanden en mappen met behulp van de [nieuwste Azure Recovery Services-agent](https://aka.ms/azurebackup_agent). Als u offline back-ups wilt uitvoeren voor workloads met System Center DPM of Azure Backup Server, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](backup-azure-backup-server-import-export-.md).
+  > De volgende vereisten en werk stroom zijn alleen van toepassing op offline back-ups van bestanden en mappen met behulp van de [nieuwste Azure Recovery Services-agent](https://aka.ms/azurebackup_agent). Als u offline back-ups wilt uitvoeren voor workloads met System Center DPM of Azure Backup Server, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](backup-azure-backup-server-import-export.md).
 
 Voordat u de werk stroom voor offline back-ups start, moet u de volgende vereisten volt ooien:
 
@@ -135,8 +135,8 @@ Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor di
 
     | Parameter | Beschrijving |
     | --- | --- |
-    | s:&lt;*pad naar locatie van tijdelijke bestanden*&gt; |Deze verplichte invoer wordt gebruikt om het pad naar de faserings locatie op te geven die u hebt ingevoerd in de werk stroom in de sectie ' offline back-up initiëren '. |
-    | p:&lt;*pad naar PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven dat u in de werk stroom hebt ingevoerd in de sectie ' offline back-up initiëren '. |
+    | s: &lt; *pad naar locatie van tijdelijke bestanden*&gt; |Deze verplichte invoer wordt gebruikt om het pad naar de faserings locatie op te geven die u hebt ingevoerd in de werk stroom in de sectie ' offline back-up initiëren '. |
+    | p: &lt; *pad naar PublishSettingsFile*&gt; |Deze optionele invoer wordt gebruikt om het pad naar het Azure Publish settings-bestand op te geven dat u in de werk stroom hebt ingevoerd in de sectie ' offline back-up initiëren '. |
 
     Wanneer u de opdracht uitvoert, vraagt het hulp programma de selectie van de Azure import-taak aan die overeenkomt met de stations die moeten worden voor bereid. Als er slechts één import taak is gekoppeld aan de gegeven faserings locatie, ziet u een pagina zoals deze.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ca8285eb9553e0c69a024714c2f5a258bd9b0ba0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712227"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628190"
 ---
 # <a name="how-provisioning-works"></a>Hoe inrichting werkt
 
@@ -172,7 +172,7 @@ Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden 
 
 De Azure AD-inrichtings service zorgt ervoor dat de bron-en doel systemen synchroon blijven door het inrichtings account te verwijderen wanneer gebruikers niet meer toegang mogen hebben. 
 
-De Azure AD-inrichtings service verwijdert een gebruiker in een toepassing zacht wanneer de suupports wordt verwijderd (update aanvraag met Active = false) en een van de volgende gebeurtenissen zich voordoet:
+De Azure AD-inrichtings service verwijdert een gebruiker in een toepassing zacht wanneer de toepassing tijdelijke verwijderingen (update aanvragen met Active = false) ondersteunt en een van de volgende gebeurtenissen optreedt:
 
 * Het gebruikers account wordt verwijderd in azure AD
 *   De gebruiker is niet toegewezen aan de toepassing

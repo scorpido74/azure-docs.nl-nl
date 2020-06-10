@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: 545d04bdede76a6ce25c9e4665f39c01ff6caa73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: be9e396a778b81e730906e4a6971505e164dfa43
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531980"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636713"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL biedt twee metrische gegevens voor het controleren
 
 De **maximale vertraging** voor de metrische gegevens van replica's toont de vertraging in bytes tussen het hoofd en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de hoofd server.
 
-De metriek van de **replica vertraging** toont de tijd sinds de laatste geplayte trans actie. Als er geen trans acties worden uitgevoerd op de hoofd server, wordt deze tijds vertraging door de metriek aangegeven. Deze metriek is alleen beschikbaar voor replica servers. Replica vertraging wordt berekend op basis `pg_stat_wal_receiver` van de weer gave:
+De metriek van de **replica vertraging** toont de tijd sinds de laatste geplayte trans actie. Als er geen trans acties worden uitgevoerd op de hoofd server, wordt deze tijds vertraging door de metriek aangegeven. Deze metriek is alleen beschikbaar voor replica servers. Replica vertraging wordt berekend op basis van de `pg_stat_wal_receiver` weer gave:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -147,7 +147,15 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 In deze sectie vindt u een overzicht van de overwegingen voor de functie replica lezen.
 
 ### <a name="prerequisites"></a>Vereisten
-Voordat u een lees replica maakt, moet `azure.replication_support` de para meter worden ingesteld op **replica** op de hoofd server. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. De `azure.replication_support` para meter is alleen van toepassing op de lagen algemeen en geoptimaliseerd voor geheugen.
+Het lezen van replica's en [logische decodering](concepts-logical.md) is beide afhankelijk van het post gres-logboek (write-Ahead) (Wal) voor informatie. Deze twee functies hebben verschillende niveaus van logboek registratie nodig van post gres. Voor logische decodering is een hoger niveau van logboek registratie vereist dan bij het lezen van replica's.
+
+Als u het juiste niveau van logboek registratie wilt configureren, gebruikt u de Azure Replication support-para meter. Ondersteuning voor Azure-replicatie heeft drie instellings opties:
+
+* **Uit** : Hiermee wordt de minste informatie in de wal geplaatst. Deze instelling is niet beschikbaar op de meeste Azure Database for PostgreSQL-servers.  
+* **Replica** : uitgebreidere dan **uit**. Dit is het minimale registratie niveau dat nodig is voor het werken met [replica's](concepts-read-replicas.md) . Deze instelling is de standaard waarde op de meeste servers.
+* **Logisch** -uitgebreidere dan de **replica**. Dit is het minimale registratie niveau voor het werken met logische code ring. Het lezen van replica's werkt ook bij deze instelling.
+
+De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Intern worden met deze para meter de post gres-para meters `wal_level` , `max_replication_slots` en ingesteld `max_wal_senders` .
 
 ### <a name="new-replicas"></a>Nieuwe replica's
 Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-server. Een bestaande server kan niet worden gemaakt in een replica. Het is niet mogelijk om een replica van een andere Lees replica te maken.
@@ -158,14 +166,14 @@ Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instelli
 > [!IMPORTANT]
 > Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
-PostgreSQL vereist dat de waarde van `max_connections` de para meter op de Lees replica groter dan of gelijk aan de hoofd waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
+PostgreSQL vereist dat de waarde van de `max_connections` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
 
 Als u de hierboven beschreven server waarden wilt bijwerken, maar niet aan de limieten wilt voldoen, treedt er een fout op.
 
 Firewall regels, regels voor virtuele netwerken en parameter instellingen worden niet overgenomen van de hoofd server naar de replica wanneer de replica wordt gemaakt of daarna.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van `max_prepared_transactions` de para meter op de Lees replica groter dan of gelijk aan de hoofd waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.
+[Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van de `max_prepared_transactions` para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de replica opnieuw gestart om de wijziging toe te passen. De gestopte replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen accepteert. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.

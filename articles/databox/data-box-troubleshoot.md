@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 461c5b1603a4c06e680aab671238a1c8ccd5dacd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628892"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609077"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Problemen oplossen die verband houden met Azure Data Box en Azure Data Box Heavy
 
@@ -51,8 +51,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -70,8 +70,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
 
@@ -88,8 +88,8 @@ Dit zijn fouten met betrekking tot container-en share namen.
     - De namen mogen alleen letters, cijfers en afbreek streepjes bevatten.
     - De namen mogen niet beginnen of eindigen met een afbreek streepje.
     - De namen mogen geen opeenvolgende afbreek streepjes bevatten.
-    - Voor beelden van geldige namen `my-folder-1`:,`my-really-extra-long-folder-111`
-    - Voor beelden van namen die ongeldig zijn `my-folder_1`: `my`, `--myfolder`, `myfolder--`,,`myfolder!`
+    - Voor beelden van geldige namen: `my-folder-1` ,`my-really-extra-long-folder-111`
+    - Voor beelden van namen die ongeldig zijn: `my-folder_1` , `my` , `--myfolder` , `myfolder--` ,`myfolder!`
 
     Zie de Azure-naamgevings conventies voor [container namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) en [share namen](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names)voor meer informatie.
     
@@ -102,7 +102,7 @@ Dit zijn fouten met betrekking tot container-en share namen.
 - Down load op de pagina verbinding maken en kopiëren van de lokale webinterface en controleer de fout bestanden om de mapnamen met problemen te identificeren. 
 - Wijzig de naam van de map of containers om er zeker van te zijn dat ze compatibel zijn met Azure-naamgevings conventies.
 
-Zie de Azure-naamgevings conventies voor [directory's](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) en [containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)voor meer informatie.
+Zie de Azure-naamgevings conventies voor [directory's](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names)   en [containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names)voor meer informatie.
 
 ## <a name="container-or-share-size-limit-errors"></a>Fouten in de container of share grootte beperken
 

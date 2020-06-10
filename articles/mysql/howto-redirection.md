@@ -5,20 +5,22 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/5/2020
-ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 6/8/2020
+ms.openlocfilehash: 4036fe5b08a087f1f26027d5c5d98da851fb377c
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483371"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610284"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Verbinding maken met Azure Database for MySQL met behulp van omleiding
 
 In dit onderwerp wordt uitgelegd hoe u met de omleidings modus verbinding maakt met een toepassing op uw Azure Database for MySQL-server. Omleiding is gericht op het verminderen van de netwerk latentie tussen client toepassingen en MySQL-servers door toepassingen toe te staan rechtstreeks verbinding te maken met back-end-server knooppunten.
 
 ## <a name="before-you-begin"></a>Voordat u begint
-Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. Raadpleeg voor meer informatie [hoe u Azure database for mysql server maakt vanuit de portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [hoe u Azure database for mysql server maakt met behulp van CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+Meld u aan bij de [Azure-portal](https://portal.azure.com). Een Azure Database for MySQL-server met Engine versie 5,6, 5,7 of 8,0 maken. 
+
+Zie een Azure Database for MySQL-server maken met behulp van de [Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) of [Azure cli](quickstart-create-mysql-server-database-using-azure-cli.md)voor meer informatie.
 
 ## <a name="enable-redirection"></a>Omleiding inschakelen
 

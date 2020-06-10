@@ -3,12 +3,12 @@ title: Concepten-opslag
 description: Meer informatie over de mogelijkheden voor de belangrijkste opslag in de Azure VMware-oplossing (AVS) preview van persoonlijke Clouds.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740354"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604113"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware-oplossing (AVS) voor beeld van opslag concepten
 
@@ -32,7 +32,7 @@ vSAN data stores gebruiken standaard versleuteling voor Data-at-rest. De versleu
 
 ## <a name="scaling"></a>Schalen
 
-De capaciteit van de systeem eigen cluster opslag wordt geschaald door hosts toe te voegen aan een cluster. Voor clusters die fungeren als host, wordt de onbewerkte capaciteit van het cluster uitgebreid met 15,4 TB per extra host. Clusters die zijn gebouwd met GP-hosts hebben hun onbewerkte capaciteit met 7,7 TB gestegen met elke extra host. In beide typen clusters nemen hosts ongeveer 10 minuten toe om aan een cluster te worden toegevoegd. Zie de [zelf studie zelf een persoonlijke Cloud schalen] [zelf studie-schalen-Private-Cloud] voor instructies voor het schalen van clusters.
+De capaciteit van de systeem eigen cluster opslag wordt geschaald door hosts toe te voegen aan een cluster. Voor clusters die fungeren als host, wordt de onbewerkte capaciteit van het cluster uitgebreid met 15,4 TB per extra host. Clusters die zijn gebouwd met GP-hosts hebben hun onbewerkte capaciteit met 7,7 TB gestegen met elke extra host. In beide typen clusters nemen hosts ongeveer 10 minuten toe om aan een cluster te worden toegevoegd. Raadpleeg de [zelf studie][tutorial-scale-private-cloud] voor het schalen van een privécloud voor instructies over het schalen van clusters.
 
 ## <a name="azure-storage-integration"></a>Integratie van Azure Storage
 
@@ -45,5 +45,5 @@ De volgende stap is om meer te weten te komen over [persoonlijke Cloud identitei
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

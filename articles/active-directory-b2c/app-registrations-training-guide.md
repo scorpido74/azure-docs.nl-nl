@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300146"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84627994"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>De nieuwe App-registraties ervaring voor Azure Active Directory B2C
 
-De nieuwe **[app-registraties](https://aka.ms/b2cappregistrations)** -ervaring voor Azure Active Directory Azure AD B2C (Azure AD B2C) is nu algemeen beschikbaar. Als u bekend bent met de ervaring van **toepassingen** voor het registreren van toepassingen voor Azure AD B2C, wordt dit hier beschreven als ' verouderde ervaring ' in deze hand leiding kunt u aan de slag met de nieuwe ervaring.
+De nieuwe **[app-registraties](https://aka.ms/b2cappregistrations)** -ervaring voor Azure Active Directory B2C (Azure AD B2C) is nu algemeen beschikbaar. Als u bekend bent met de ervaring van **toepassingen** voor het registreren van toepassingen voor Azure AD B2C, wordt dit hier beschreven als ' verouderde ervaring ' in deze hand leiding kunt u aan de slag met de nieuwe ervaring.
 
 ## <a name="overview"></a>Overzicht
 Voorheen moest u uw Azure AD B2C consumenten toepassingen onafhankelijk van de rest van uw apps beheren met behulp van de oude ervaring. Dat heeft verschillende ervaring voor het maken van apps op verschillende locaties in Azure.

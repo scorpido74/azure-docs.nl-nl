@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: a7b4de3b1d2998a1b6083283c3f397fc77fe9670
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: e0daa2b02c16d8d5a65b5e7e0f983a4f47181d40
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167584"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635965"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
 
@@ -28,7 +28,7 @@ De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen v
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL-database |Open bare preview | |
+| Azure SQL Database |Open bare preview | |
 | Azure Synapse Analytics (voorheen Azure SQL DW) |Open bare preview | |
 | Azure Data Explorer | |Open bare preview |
 
@@ -38,16 +38,17 @@ Azure-gegevens share biedt gegevens gebruikers flexibiliteit bij het bepalen van
 
 De onderstaande tabel bevat informatie over verschillende combi Naties en keuzen die gebruikers van gegevens hebben wanneer ze hun gegevens delen accepteren en configureren. Zie [toewijzing van gegevensset configureren](how-to-configure-mapping.md)voor meer informatie over het configureren van gegevensset-toewijzingen.
 
-|  | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL-database | Azure Synapse Analytics 
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob Storage | ✓ || ✓|
-| Azure Data Lake Storage Gen1 | ✓ | | ✓|
-| Azure Data Lake Storage Gen2 | ✓ | | ✓|
-| Azure SQL-database | ✓ | | ✓| ✓| ✓|
-| Azure Synapse Analytics (voorheen Azure SQL DW) | ✓ | | ✓| ✓| ✓|
+|  | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure Data Explorer
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob Storage | ✓ || ✓ ||
+| Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
+| Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
+| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
+| Azure Synapse Analytics (voorheen Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ ||
+| Azure Data Explorer |||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Delen vanuit een opslag account
-De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands systemen van Azure Data Lake gen1 en Azure Data Lake Gen2. Het biedt ook ondersteuning voor het delen van blobs, mappen en containers vanuit Azure Blob Storage. Momenteel wordt alleen blok-BLOB ondersteund. Wanneer mappen worden gedeeld in delen op basis van moment opnamen, kan de gegevens consument ervoor kiezen om een volledige kopie van de share gegevens te maken of om alleen nieuwe of bijgewerkte bestanden te kopiëren. Bestaande bestanden met dezelfde naam worden overschreven.
+De Azure-gegevens share ondersteunt het delen van bestanden, mappen en bestands systemen van Azure Data Lake gen1 en Azure Data Lake Gen2. Het biedt ook ondersteuning voor het delen van blobs, mappen en containers vanuit Azure Blob Storage. Momenteel wordt alleen blok-BLOB ondersteund. Wanneer bestands systemen, containers of mappen worden gedeeld in delen op basis van moment opnamen, kan de gegevens consument ervoor kiezen om een volledige kopie van de share gegevens te maken of om alleen nieuwe of bijgewerkte bestanden te kopiëren. Incrementele moment opname is gebaseerd op de tijd van de laatste wijziging van de bestanden. Bestaande bestanden met dezelfde naam worden overschreven.
 
 ## <a name="share-from-a-sql-based-source"></a>Delen vanuit een bron op basis van SQL
 Azure data share ondersteunt het delen van tabellen of weer gaven van Azure SQL Database en Azure Synapse Analytics (voorheen Azure SQL DW). Gegevens gebruikers kunnen ervoor kiezen om de gegevens in Azure Data Lake Store Gen2 of Azure Blob Storage te accepteren als CSV-of Parquet-bestand. Houd er rekening mee dat bestands indelingen standaard CSV zijn. De gegevens verbruiker kan ervoor kiezen om de gegevens indien gewenst te ontvangen in de Parquet-indeling. Dit kan worden gedaan in de instellingen voor gegevensset toewijzing bij de ontvangst van de gegevens. 

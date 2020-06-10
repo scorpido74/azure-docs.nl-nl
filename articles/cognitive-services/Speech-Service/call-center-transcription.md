@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806317"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636123"
 ---
 # <a name="speech-service-for-telephony-data"></a>Spraak service voor telefoon gegevens
 
@@ -40,7 +40,7 @@ Buiten het functionele aspect van de functies van de spraak service, hun primair
 - Real-time analyse, waarmee het audio signaal wordt verwerkt om verschillende inzichten te extra heren wanneer de aanroep plaatsvindt (waarbij sentiment een prominente use-case is).
 - Spraak assistenten (bots), de dialoog tussen de klant en de bot in een poging om het probleem van de klant op te lossen zonder deel te nemen aan de agent of de toepassing van de AI-protocollen (kunst matige intelligentie) om de agent te helpen.
 
-Een typisch architectuur diagram van de implementatie van een batch-scenario wordt weer gegeven in de afbeelding ![onder Call Center transcriptie-architectuur](media/scenarios/call-center-transcription-architecture.png)
+Een typisch architectuur diagram van de implementatie van een batch-scenario wordt weer gegeven in de afbeelding onder ![ Call Center transcriptie-architectuur](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Technologie onderdelen voor spraak analyse
 
@@ -62,7 +62,7 @@ Het is niet ongebruikelijk dat er 35 procent van een ondersteunings oproep wordt
 
 Sommige bedrijven experimenteren met het bieden van vertaalde transcripten van ondersteunings gesprekken van vreemde talen zodat bezorg managers de wereld wijde ervaring van hun klanten kunnen begrijpen. Onze [Vertaal](translation.md) mogelijkheden zijn niet meer zo. We kunnen audio-naar-audio-of audio-naar-tekst omzetten voor een groot aantal land instellingen.
 
-### <a name="text-to-speech"></a>Tekst naar spraak
+### <a name="text-to-speech"></a>Text to Speech
 
 [Tekst-naar-spraak](text-to-speech.md) is een ander belang rijk gebied bij het implementeren van bots dat communiceert met de klanten. De typische locatie is dat de klant spreekt, hun stem wordt getranscribeerd naar tekst, de tekst wordt geanalyseerd voor intenties, een antwoord wordt op basis van de herkende intentie en vervolgens een activum wordt geoppereerd aan de klant of een gewerkte spraak respons wordt gegenereerd. Natuurlijk is dit allemaal snel te doen, waardoor lage latentie een belang rijk onderdeel is van het succes van deze systemen.
 
@@ -70,7 +70,7 @@ Onze end-to-end-latentie is aanzienlijk laag voor de verschillende technologieë
 
 Onze nieuwe stemmen worden ook niet onderscheiden van mensen stemmen. U kunt onze stemmen gebruiken om uw bot unieke persoonlijkheid te geven.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 Een andere nietmachine van analyses is het identificeren van interacties waar een bepaalde gebeurtenis of ervaring heeft plaatsgevonden. Dit gebeurt meestal met een van de twee benaderingen; een ad-hoc-zoek opdracht waarbij de gebruiker simpelweg een woord groep en het systeem reageert, of een meer gestructureerde query waarbij een analist een set logische instructies kan maken die een scenario in een aanroep identificeert en vervolgens elke aanroep kan worden geïndexeerd op basis van die set query's. Een goed Zoek voorbeeld is de alomtegenwoordige-nalevings verklaring "deze oproep moet worden geregistreerd voor kwaliteits doeleinden... ". Veel bedrijven willen er zeker van zijn dat hun agents deze disclaimer aan klanten leveren voordat de aanroep daad werkelijk wordt geregistreerd. De meeste analyse systemen hebben de mogelijkheid om de gedragingen te trenden die worden gevonden door query-en zoek algoritmen, en deze rapportage van trends is uiteindelijk een van de belangrijkste functies van een Analytics-systeem. Met de functie [cognitieve Services](https://azure.microsoft.com/services/cognitive-services/directory/search/) kunt u uw end-to-end-oplossing aanzienlijk verbeteren met indexerings-en zoek mogelijkheden.
 
@@ -97,7 +97,7 @@ Een typische oplossing maakt gebruik van de volgende services:
 - [Azure functions](https://docs.microsoft.com/azure/azure-functions/) wordt gebruikt om de SAS-URI (Shared Access signatures) voor elke record te maken en de HTTP POST-aanvraag voor het starten van een transcriptie te activeren. Daarnaast wordt Azure Functions gebruikt voor het maken van aanvragen voor het ophalen en verwijderen van transcripties met behulp van de batch transcriptie-API.
 
 Intern gebruiken we de bovenstaande technologieën om micro soft-klant gesprekken in batch-modus te ondersteunen.
-![Batch-architectuur](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Technologieën die worden gebruikt ter ondersteuning van micro soft-klant gesprekken in batch-modus.":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Real-time transcriptie voor Call Center-gegevens
 
@@ -125,7 +125,7 @@ Een ander scenario is directe integratie met behulp van SIP (Session Initiation 
 | -------------- | ----- | ----------- |
 | Spraak naar tekst | [Akoestisch model](how-to-customize-acoustic-models.md) | Maak een aangepast akoestische model voor toepassingen, hulpprogram ma's of apparaten die in bepaalde omgevingen worden gebruikt, zoals in een auto of op een fabriek, elk met specifieke registratie voorwaarden. Voor beelden zijn onder andere geaccentde spraak, specifieke achtergrond geluiden of het gebruik van een specifieke microfoon voor de opname. |
 |                | [Taalmodel](how-to-customize-language-model.md) | Maak een aangepast taal model om transcriptie te verbeteren van de branchespecifieke woorden lijst en grammatica, zoals medische terminologie of het jargon. |
-|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier definiëren en weer geven voor een woord of term. Het is handig voor het afhandelen van aangepaste voor waarden, zoals product namen of acroniemen. Alles wat u nodig hebt om aan de slag te gaan is een uitspraak bestand dat `.txt` een eenvoudig bestand is. |
+|                | [Uitspraakmodel](how-to-customize-pronunciation.md) | Met een aangepast uitspraak model kunt u het fonetische formulier definiëren en weer geven voor een woord of term. Het is handig voor het afhandelen van aangepaste voor waarden, zoals product namen of acroniemen. Alles wat u nodig hebt om aan de slag te gaan is een uitspraak bestand dat een eenvoudig `.txt` bestand is. |
 | Tekst naar spraak | [Spraakstijl](how-to-customize-voice-font.md) | Met aangepaste spraak lettertypen kunt u een herken bare, een-op-een-spraak voor uw merk maken. Er is slechts een kleine hoeveelheid gegevens nodig om aan de slag te gaan. Hoe meer gegevens u verstrekt, des te meer natuurlijke en Human-like uw gesp roken letter type klinkt. |
 
 ## <a name="sample-code"></a>Voorbeeldcode

@@ -10,12 +10,12 @@ ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554105"
+ms.locfileid: "84629405"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -62,8 +62,8 @@ In de volgende tabel ziet u welke typen opslag accounts ZRS ondersteunen in welk
 |    Type opslagaccount    |    Ondersteunde regio’s    |    Ondersteunde services    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Algemeen gebruik v2<sup>1</sup>    | Azië - zuidoost<br /> Australië - oost<br /> Europa - noord<br />  Europa - west<br /> Frankrijk - centraal<br /> Japan - oost<br /> Zuid-Afrika - noord<br /> Verenigd Koninkrijk Zuid<br /> US - centraal<br /> US - oost<br /> US - oost 2<br /> US - west 2    |    Blok-blobs<br /> Pagina-blobs<sup>2</sup><br /> Bestands shares (standaard)<br /> Tabellen<br /> Wachtrijen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Europa - west<br /> US - oost    |    Alleen blok-blobs    |
-|    FileStorage    | Europa - west<br /> US - oost    |    Alleen Azure Files    |
+|    BlockBlobStorage<sup>1</sup>    | Azië - zuidoost<br /> Europa - west<br /> US - oost    |    Alleen blok-blobs    |
+|    FileStorage    | Azië - zuidoost<br /> Europa - west<br /> US - oost    |    Alleen Azure Files    |
 
 <sup>1</sup> de Archive-laag wordt momenteel niet ondersteund voor ZRS-accounts.<br />
 <sup>2</sup> opslag accounts die Azure Managed disks voor virtuele machines bevatten, gebruiken altijd LRS. Onbeheerde schijven van Azure moeten ook LRS gebruiken. Het is mogelijk om een opslag account te maken voor Azure unmanaged disks die gebruikmaken van GRS, maar dit wordt niet aanbevolen vanwege mogelijke problemen met de consistentie van de asynchrone geo-replicatie. Geen van de beheerde schijven of niet-Managed disks ondersteunen ZRS of GZRS. Zie [prijzen voor Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)(Engelstalig) voor meer informatie over Managed disks.

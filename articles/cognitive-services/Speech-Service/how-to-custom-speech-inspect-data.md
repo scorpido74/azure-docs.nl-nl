@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a8fec876556d943d29756a38ffc27ae8095e3c4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: e871d2c8e0fe00fa7db3144a787447163c82e62d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466235"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629037"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-gegevens controleren
 
@@ -33,7 +33,7 @@ Op deze pagina leert u hoe u de kwaliteit van het spraak-naar-tekst model van mi
 Volg deze instructies om een test te maken:
 
 1. Meld u aan bij de [Custom speech Portal](https://speech.microsoft.com/customspeech).
-2. Navigeer naar **> voor spraak naar tekst Custom Speech > tests**uit te voeren.
+2. Navigeer naar **spraak-naar-tekst > Custom Speech > [name of project] > te testen**.
 3. Klik op **test toevoegen**.
 4. Selecteer **kwaliteit controleren (alleen audio gegevens)**. Geef de test een naam, beschrijving en selecteer uw audio gegevensset.
 5. Selecteer Maxi maal twee modellen die u wilt testen.

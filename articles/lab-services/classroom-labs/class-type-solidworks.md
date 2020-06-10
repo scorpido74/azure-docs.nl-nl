@@ -2,25 +2,20 @@
 title: Stel een SolidWorks Lab in voor engineering met Azure Lab Services | Microsoft Docs
 description: Meer informatie over het instellen van een Lab voor technische cursussen met behulp van SolidWorks.
 services: lab-services
-documentationcenter: na
 author: nicolela
-manager: ''
-editor: ''
 ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/03/2020
 ms.author: nicolela
-ms.openlocfilehash: d4c8a34e9838dc4b6e09f9ed18aa38d16022421f
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ee2f1636547378102f35b432914426b3e24d92ef
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450785"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634743"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Een Lab voor technische klassen instellen met behulp van SolidWorks
+
 [SolidWorks](https://www.solidworks.com/) biedt een 3D-omgeving met computer aided design (CAD) voor het model leren van solide objecten en wordt gebruikt in diverse technische velden.  Met SolidWorks kunnen technici hun ontwerpen eenvoudig maken, visualiseren, simuleren en documenteren.
 
 Een licentie optie die veel door universiteiten wordt gebruikt, is ' netwerk licenties van SolidWorks '.   Met deze optie delen gebruikers een pool van licenties die worden beheerd door een licentie server.  Dit type licentie wordt ook wel een ' zwevende ' licentie genoemd omdat u slechts voldoende licenties nodig hebt voor het aantal gelijktijdige gebruikers.  Wanneer een gebruiker wordt uitgevoerd met SolidWorks, gaat de licentie terug naar de centraal beheerde licentie groep zodat deze door een andere gebruiker opnieuw kan worden gebruikt.
@@ -28,6 +23,7 @@ Een licentie optie die veel door universiteiten wordt gebruikt, is ' netwerk lic
 In dit artikel laten we zien hoe u een klasse instelt die gebruikmaakt van SolidWorks 2019 en netwerk licenties.
 
 ## <a name="license-server"></a>Licentie server
+
 Voor SolidWorks-netwerk licenties moet SolidNetWork License Manager zijn geïnstalleerd en geactiveerd op uw licentie server.  Deze licentie server bevindt zich doorgaans in uw on-premises netwerk of in een particulier netwerk in Azure.  Zie voor meer informatie over het instellen van SolidNetWork License Manager op uw server [een licentie Manager installeren en activeren](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) in de installatie handleiding voor SolidWorks.  Wanneer u dit instelt, onthoud dan het **poort nummer** en het [**serie nummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm) dat wordt gebruikt, aangezien ze in latere stappen nodig zijn.
 
 Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) koppelen aan uw [Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account).  De peering van het netwerk moet worden uitgevoerd voordat u het Lab maakt, zodat de virtuele machines van het lab toegang hebben tot de licentie server en vice versa.
@@ -36,9 +32,11 @@ Nadat de licentie server is ingesteld, moet u het [virtuele netwerk (VNet)](http
 > Controleer of de juiste poorten zijn geopend op de firewalls om communicatie tussen de virtuele machines van het lab en de licentie server toe te staan.  Zie bijvoorbeeld de instructies voor het wijzigen van de [computer poorten voor licentie beheer voor Windows Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm) die laten zien hoe u regels voor binnenkomend en uitgaand verkeer toevoegt aan de firewall van de licentie server.  Mogelijk moet u ook poorten openen voor de virtuele lab-machines.  Volg de stappen in het artikel over [firewall instellingen voor Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) voor meer informatie hierover, inclusief het verkrijgen van het open bare IP-adres van het lab.
 
 ## <a name="lab-configuration"></a>Lab-configuratie
+
 Als u dit Lab wilt instellen, hebt u een Azure-abonnement en een Lab-account nodig om aan de slag te gaan. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. Zodra u een Azure-abonnement hebt ontvangen, kunt u een nieuw Lab-account maken in Azure Lab Services. Zie de zelf studie over het [instellen van een Lab-account](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)voor meer informatie over het maken van een nieuw Lab-account. U kunt ook een bestaand Lab-account gebruiken.
 
 ### <a name="lab-account-settings"></a>Instellingen van Lab-account
+
 Schakel de instellingen die worden beschreven in de onderstaande tabel voor het lab-account in. Voor meer informatie over het inschakelen van Marketplace-installatie kopieën raadpleegt u het artikel over het [opgeven van Marketplace-installatie kopieën die beschikbaar zijn voor Lab-makers](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
 | Account instelling Lab | Instructies |
@@ -49,6 +47,7 @@ Schakel de instellingen die worden beschreven in de onderstaande tabel voor het 
 > Naast Windows 10 ondersteunt SolidWorks andere versies van Windows.  Raadpleeg de [systeem vereisten voor SolidWorks](https://www.solidworks.com/sw/support/SystemRequirements.html) voor meer informatie.
 
 ### <a name="lab-settings"></a>Lab-instellingen
+
 Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslokaal Lab. Zie een leslokaal cursus instellen voor meer informatie over het maken van een leslokaal Lab.
 
 | Lab-instellingen | Waarde/instructies |
@@ -63,6 +62,7 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslo
 > Vergeet niet om het [virtuele netwerk](https://www.mathworks.com/support/requirements/matlab-system-requirements.html) voor het lab-account te koppelen aan het virtuele netwerk van de licentie server **voordat** u het Lab maakt.
 
 ## <a name="template-virtual-machine-configuration"></a>Configuratie van de virtuele machine van de sjabloon
+
 De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon kunt instellen door de installatie bestanden van de SolidWorks te downloaden en de client software te installeren:
 
 1. Start de virtuele machine van de sjabloon en maak verbinding met de computer met behulp van RDP.
@@ -84,7 +84,7 @@ De stappen in deze sectie laten zien hoe u de virtuele machine van uw sjabloon k
 
 Laten we een mogelijke schatting van de kosten voor deze klasse beslaan. Deze schatting omvat niet de kosten voor het uitvoeren van de licentie server. We gebruiken een klasse van 25 studenten. Er zijn 20 uur geplande tijd voor de klasse. Daarnaast krijgt elke student tien uur quota voor huis werk of toewijzingen buiten een geplande klasse tijd. De grootte van de virtuele machine die u hebt gekozen, is een **kleine GPU (visualisatie)**. dit zijn 160 Lab-eenheden.
 
-25 studenten * (20 geplande uren + 10 quotum uren) * 160 Lab-eenheden * 0,01 USD per uur = 1200,00 USD
+25 studenten \* (20 geplande uren + 10 quotum uren) \* 160 Lab-eenheden * 0,01 USD per uur = 1200,00 USD
 
 >[!IMPORTANT]
 > Kosten raming is alleen bedoeld als voor beeld.  Zie [Azure Lab Services prijzen](https://azure.microsoft.com/pricing/details/lab-services/)voor actuele Details over prijzen.  
@@ -98,4 +98,3 @@ De volgende stappen zijn gebruikelijk voor het instellen van elk lab.
 - [Quota instellen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Een planning instellen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
 - [E-mail registratie koppelingen naar studenten](how-to-configure-student-usage.md#send-invitations-to-users)
-

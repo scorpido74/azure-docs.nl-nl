@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67148346"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610607"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Problemen met het kopiëren van gegevens in Azure Data Box Disk oplossen
 
@@ -26,7 +26,7 @@ In deze sectie vindt u meer informatie over enkele van de meest voorkomende prob
 
 ### <a name="issue-drive-getting-mounted-as-read-only"></a>Probleem: station wordt gekoppeld als alleen-lezen
  
-**Wordt** 
+**Oorzaak** 
 
 Dit kan worden veroorzaakt door een niet-gereinigd bestands systeem.
 
@@ -36,7 +36,7 @@ Het opnieuw koppelen van een station als lezen/schrijven werkt niet met Data Box
 
 Het opnieuw koppelen is geslaagd, maar de gegevens blijven niet behouden.
 
-**Afsluiting**
+**Oplossing**
 
 Voer de volgende stappen uit op uw Linux-systeem:
 
@@ -47,7 +47,7 @@ Voer de volgende stappen uit op uw Linux-systeem:
     unmount /mnt/DataBoxDisk/mountVol1
     ```
 
-3. Voer `ntfsfix` uit op het bijbehorende pad. Het gemarkeerde aantal moet gelijk zijn aan stap 2.
+3. Voer uit `ntfsfix` op het bijbehorende pad. Het gemarkeerde aantal moet gelijk zijn aan stap 2.
 
     ```
     ntfsfix /mnt/DataBoxDisk/bitlockerVol1/dislocker-file
@@ -72,11 +72,11 @@ Voer de volgende stappen uit op uw Linux-systeem:
  
 ### <a name="issue-error-with-data-not-persisting-after-copy"></a>Probleem: fout met gegevens die niet worden bewaard na kopiëren
  
-**Wordt** 
+**Oorzaak** 
 
 Als u ziet dat uw station geen gegevens bevat nadat het is ontkoppeld (terwijl er gegevens naar zijn gekopieerd), is het mogelijk dat u een station hebt gekoppeld als lezen-schrijven nadat het station als alleen-lezen is gekoppeld.
 
-**Afsluiting**
+**Oplossing**
  
 Als dat het geval is, raadpleegt u de oplossing voor stations die worden [gekoppeld als alleen-lezen](#issue-drive-getting-mounted-as-read-only).
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 02cbf64261bbfbf50561e1b7466b46b27b688e0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e06cf07809d3eca208fc18f4ee6022538400d315
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67148281"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610590"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>Problemen met het ontgrendelen van schijven oplossen in Azure Data Box Disk
 
@@ -47,17 +47,17 @@ In deze sectie vindt u een aantal veelvoorkomende problemen tijdens de implement
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>Probleem: kan station niet ontgrendelen met BitLocker
  
-**Wordt** 
+**Oorzaak** 
 
 U hebt het wacht woord in het dialoog venster van BitLocker gebruikt en probeert de schijf te ontgrendelen via het dialoog venster BitLocker-ontgrendelings stations. Dit werkt niet.
 
-**Afsluiting**
+**Oplossing**
 
 Als u de Data Box schijven wilt ontgrendelen, moet u het hulp programma Data Box Disk ontgrendelen gebruiken en het wacht woord van de Azure Portal opgeven. Ga voor meer informatie naar [zelf studie: Azure data Box Disk uitpakken, verbinding maken en ontgrendelen](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey).
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>Probleem: kan sommige volumes niet ontgrendelen of controleren. Neem contact op met Microsoft Ondersteuning.
  
-**Wordt**
+**Oorzaak**
 
 Mogelijk wordt de volgende fout in het fouten logboek weer geven en kunnen sommige volumes niet worden ontgrendeld of geverifieerd.
 
@@ -65,7 +65,7 @@ Mogelijk wordt de volgende fout in het fouten logboek weer geven en kunnen sommi
  
 Dit geeft aan dat er waarschijnlijk de juiste versie van Windows Power shell op uw Windows-client ontbreekt.
 
-**Afsluiting**
+**Oplossing**
 
 U kunt [Windows Power shell v 5,0](https://www.microsoft.com/download/details.aspx?id=54616) installeren en de bewerking opnieuw proberen.
  

@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665218"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609043"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Waarschuwingen registreren in Azure Monitor
 
-In dit artikel vindt u informatie over logboek waarschuwingen, een van de typen waarschuwingen die worden ondersteund in de [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md) en waarmee gebruikers het Analytics platform van Azure kunnen gebruiken als basis voor waarschuwingen.
+Logboek waarschuwingen zijn een van de waarschuwings typen die worden ondersteund in [Azure-waarschuwingen](../../azure-monitor/platform/alerts-overview.md). Met logboek waarschuwingen kunnen gebruikers het Azure Analytics-platform gebruiken als basis voor waarschuwingen.
 
 De logboek waarschuwing bestaat uit logboek zoek regels die zijn gemaakt voor [Azure monitor logboeken](../../azure-monitor/learn/tutorial-viewdata.md) of [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Zie [logboek waarschuwingen maken in azure](../../azure-monitor/platform/alerts-log.md) voor meer informatie over het gebruik ervan.
 
@@ -132,7 +132,7 @@ Laten we dit gedrag zien in actie met een praktisch voor beeld. Stel dat er een 
 Op elk interval hieronder evalueert het Azure Alerts-systeem de voor waarde voor de *aanmelding contoso-log-alert*.
 
 
-| Time    | Aantal records dat wordt geretourneerd door de zoek query van het logboek | Logboek voorwaarde evalution | Resultaat 
+| Tijd    | Aantal records dat wordt geretourneerd door de zoek query van het logboek | Logboek voorwaarde evalution | Resultaat 
 | ------- | ----------| ----------| ------- 
 | 1:05 UUR | 0 records | 0 is niet > 0 dus onwaar |  De waarschuwing wordt niet geactiveerd. Er zijn geen acties aangeroepen.
 | 1:10 UUR | 2 records | 2 > 0 waar  | Waarschuwingen worden geactiveerd en actie groepen worden aangeroepen. Waarschuwings status actief.
@@ -147,12 +147,12 @@ Om 1:20 uur als er geen nul records worden weer gegeven met de 500-resultaat cod
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Prijzen en facturering van logboek waarschuwingen
 
-De prijzen die van toepassing zijn op logboek waarschuwingen worden vermeld op de pagina [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) . In azure-facturen worden logboek waarschuwingen weer gegeven als `microsoft.insights/scheduledqueryrules` type met:
+De prijzen die van toepassing zijn op logboek waarschuwingen worden vermeld op de pagina [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) . In azure-facturen worden logboek waarschuwingen weer gegeven als type `microsoft.insights/scheduledqueryrules` met:
 
 - Waarschuwingen registreren op Application Insights die worden weer gegeven met de naam van een exacte waarschuwing samen met de eigenschappen van de resource groep en de waarschuwing
 - Waarschuwingen in het logboek vastleggen op Log Analytics die worden weer gegeven met de naam van de resource groep en van de waarschuwing. Wanneer gemaakt met behulp van de [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-De [verouderde log Analytics-API](../../azure-monitor/platform/api-alerts.md) heeft waarschuwings acties en schema's als onderdeel van log Analytics opgeslagen zoek opdracht en niet de juiste [Azure-resources](../../azure-resource-manager/management/overview.md). Daarom is het mogelijk om facturering in te scha kelen voor dergelijke verouderde logboek waarschuwingen die zijn gemaakt voor Log Analytics met behulp van Azure Portal **zonder** [over te scha kelen naar een nieuwe API](../../azure-monitor/platform/alerts-log-api-switch.md) of via [verouderde log Analytics API](../../azure-monitor/platform/api-alerts.md) -verborgen pseudo-waarschuwings regels worden gemaakt `microsoft.insights/scheduledqueryrules` voor facturering op Azure. De verborgen pseudo-waarschuwings regels die voor facturering `microsoft.insights/scheduledqueryrules` zijn gemaakt, `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` worden weer gegeven als samen met de eigenschappen van de resource groep en de waarschuwing.
+De [verouderde log Analytics-API](../../azure-monitor/platform/api-alerts.md) heeft waarschuwings acties en schema's als onderdeel van log Analytics opgeslagen zoek opdracht en niet de juiste [Azure-resources](../../azure-resource-manager/management/overview.md). Daarom is het mogelijk om facturering in te scha kelen voor dergelijke verouderde logboek waarschuwingen die zijn gemaakt voor Log Analytics met behulp van Azure Portal **zonder** [over te scha kelen naar een nieuwe API](../../azure-monitor/platform/alerts-log-api-switch.md) of via [verouderde log Analytics API](../../azure-monitor/platform/api-alerts.md) -verborgen pseudo-waarschuwings regels worden gemaakt `microsoft.insights/scheduledqueryrules` voor facturering op Azure. De verborgen pseudo-waarschuwings regels die voor facturering zijn gemaakt `microsoft.insights/scheduledqueryrules` , worden weer gegeven als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` samen met de eigenschappen van de resource groep en de waarschuwing.
 
 > [!NOTE]
 > Als er ongeldige tekens zoals `<, >, %, &, \, ?, /` aanwezig zijn, worden deze vervangen door `_` in de verborgen pseudo-waarschuwings regel naam en dus ook in de Azure-factuur.

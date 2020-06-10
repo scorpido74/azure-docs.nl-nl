@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759686"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608499"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub (python)
 
@@ -38,7 +38,7 @@ Aan het einde van deze zelf studie voert u de python-console-app uit:
 
 [!INCLUDE [iot-hub-include-python-v2-async-installation-notes](../../includes/iot-hub-include-python-v2-async-installation-notes.md)]
 
-* Zorg ervoor dat poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort kan worden geblokkeerd in sommige bedrijfs-en educatieve netwerk omgevingen. Zie [verbinding maken met IOT hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)voor meer informatie en manieren om dit probleem te omzeilen.
+* Zorg ervoor dat de poort 8883 is geopend in uw firewall. Het voor beeld van het apparaat in dit artikel maakt gebruik van het MQTT-protocol, dat communiceert via poort 8883. Deze poort is in sommige netwerkomgevingen van bedrijven en onderwijsinstellingen mogelijk geblokkeerd. Zie [Verbinding maken met IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub) voor meer informatie en manieren om dit probleem te omzeilen.
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -75,7 +75,7 @@ In deze sectie maakt u de app apparaat om een bestand te uploaden naar IoT hub.
     PATH_TO_FILE = r"[Full path to local file]"
     ```
 
-1. Vervang `[Device Connection String]` in het bestand door de Connection String van uw IOT hub-apparaat. Vervang `[Full path to local file]` door het pad naar het test bestand dat u hebt gemaakt of een bestand op het apparaat dat u wilt uploaden.
+1. Vervang in het bestand door `[Device Connection String]` de Connection String van uw IOT hub-apparaat. Vervang door `[Full path to local file]` het pad naar het test bestand dat u hebt gemaakt of een bestand op het apparaat dat u wilt uploaden.
 
 1. Maak een functie om het bestand naar de Blob-opslag te uploaden:
 

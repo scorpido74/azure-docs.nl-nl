@@ -9,20 +9,20 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/03/2020
-ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 143c94527b947495709d2e94f107dc578e7f2866
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433318"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610168"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Trans formatie sinken bij toewijzing van gegevens stroom
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Nadat u uw gegevens hebt getransformeerd, kunt u de gegevens in een doel-gegevensset opvangen. Elke gegevens stroom vereist ten minste één sink-trans formatie, maar u kunt indien nodig naar zoveel sinks schrijven om uw transformatie stroom te volt ooien. Als u naar extra sinks wilt schrijven, maakt u nieuwe streams via nieuwe vertakkingen en voorwaardelijke splitsingen.
+Nadat u klaar bent met het transformeren van uw gegevens, schrijft u deze naar een doel archief met de Sink-trans formatie. Elke gegevens stroom vereist ten minste één sink-trans formatie, maar u kunt indien nodig naar zoveel sinks schrijven om uw transformatie stroom te volt ooien. Als u naar extra sinks wilt schrijven, maakt u nieuwe streams via nieuwe vertakkingen en voorwaardelijke splitsingen.
 
-Elke Sink-trans formatie is aan precies één Data Factory-gegevensset gekoppeld. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven.
+Elke Sink-trans formatie is gekoppeld aan precies één Azure Data Factory DataSet-object of gekoppelde service. De Sink-trans formatie bepaalt de vorm en locatie van de gegevens waarnaar u wilt schrijven.
 
 ## <a name="inline-datasets"></a>Inline gegevens sets
 
@@ -36,30 +36,28 @@ Als u een inline gegevensset wilt gebruiken, selecteert u de gewenste indeling i
 
 ![Inline gegevensset](media/data-flow/inline-selector.png "Inline gegevensset")
 
-### <a name="supported-inline-dataset-formats"></a>Ondersteunde indelingen voor inline-gegevensset
+##  <a name="supported-sink-types"></a><a name="supported-sinks"></a>Ondersteunde Sink-typen
 
-Momenteel is de enige beschik bare indeling voor de inline-gegevensset het [common data model](format-common-data-model.md#sink-properties) dat is gelezen van [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md).
+Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
 
-## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Ondersteunde Sink-connectors in gegevens stroom toewijzen
+| Connector | Indeling | Gegevensset/inline |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common data model (preview-versie)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure-CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
 
-Momenteel kunnen de volgende gegevens sets worden gebruikt in een Sink-trans formatie:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
+De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **instellingen** . voor beelden van informatie en gegevensstroom scripts in deze instellingen vindt u in de documentatie van de connector. 
 
-De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **instellingen** . informatie over deze instellingen vindt u in de documentatie van de connector. 
-
-Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens naar deze andere Connect oren uit uw gegevens stroom wilt schrijven, gebruikt u de Kopieer activiteit om die gegevens uit een van de ondersteunde tijdelijke gebieden te laden nadat de gegevens stroom is voltooid.
+Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens wilt schrijven naar deze andere bronnen uit uw gegevens stroom, gebruikt u de Kopieer activiteit om die gegevens uit een ondersteunde sink te laden.
 
 ## <a name="sink-settings"></a>Sink-instellingen
 
 Nadat u een Sink hebt toegevoegd, configureert u via het tabblad **sink** . Hier kunt u de gegevensset voor uw sinks selecteren of maken. Hieronder ziet u een video met een aantal verschillende Sink-opties voor door tekst gescheiden bestands typen:
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tf7T]
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
 ![Sink-instellingen](media/data-flow/sink-settings.png "Sink-instellingen")
 

@@ -10,18 +10,19 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341722"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607030"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Een Insights-token gebruiken om inzichten op te halen voor een installatie kopie
 
-Bing Visual Search-API retourneert informatie over een afbeelding die u opgeeft. U kunt de afbeelding opgeven door de URL van de afbeelding te gebruiken, een inzichttoken of door een afbeelding te uploaden. Zie [Wat is Bing Visual Search-API?](overview.md)voor meer informatie over deze opties. In dit artikel wordt gedemonstreerd hoe u een Insights-token gebruikt. Voor voor beelden van hoe u een afbeelding uploadt om inzicht te krijgen, raadpleegt u de Quick starts ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node. js](quickstarts/nodejs.md) | [python](quickstarts/python.md)).
+Bing Visual Search-API retourneert informatie over een afbeelding die u opgeeft. U kunt de afbeelding opgeven door de URL van de afbeelding te gebruiken, een inzichttoken of door een afbeelding te uploaden. Zie [Wat is Bing Visual Search-API?](overview.md)voor meer informatie over deze opties. In dit artikel wordt gedemonstreerd hoe u een Insights-token gebruikt. Voor voor beelden van hoe u een afbeelding uploadt om inzicht te krijgen, raadpleegt u de Quick starts ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [node. js](quickstarts/nodejs.md)  |  [python](quickstarts/python.md)).
 
-Als u Bing Visual Search een afbeeldings token of URL verzendt, worden de formulier gegevens weer gegeven die u moet gebruiken in de hoofd tekst van het bericht. De formulier gegevens moeten de `Content-Disposition` koptekst bevatten en u moet de `name` para meter instellen op ' knowledgeRequest '. Voor meer informatie over `imageInfo` het object raadpleegt u de aanvraag:
+Als u Bing Visual Search een afbeeldings token of URL verzendt, worden de formulier gegevens weer gegeven die u moet gebruiken in de hoofd tekst van het bericht. De formulier gegevens moeten de `Content-Disposition` koptekst bevatten en u moet de `name` para meter instellen op ' knowledgeRequest '. Voor meer informatie over het `imageInfo` object raadpleegt u de aanvraag:
 
 ```json
 {
@@ -43,7 +44,7 @@ Als u Bing Visual Search een afbeeldings token of URL verzendt, worden de formul
 }
 ```
 
-In de voor beelden in dit artikel ziet u hoe u het Insights-token gebruikt. U krijgt het Insights-token van `Image` een object in een/Images/Search API-antwoord. Zie [Wat is het Bing afbeeldingen zoeken-API?](../Bing-Image-Search/overview.md)voor informatie over het verkrijgen van het Insights-token.
+In de voor beelden in dit artikel ziet u hoe u het Insights-token gebruikt. U krijgt het Insights-token van een `Image` object in een/Images/Search API-antwoord. Zie [Wat is het Bing afbeeldingen zoeken-API?](../Bing-Image-Search/overview.md)voor informatie over het verkrijgen van het Insights-token.
 
 ```
 --boundary_1234-abcd
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Zie [C#](#use-with-c) | [Java](#use-with-java) | [node. js](#use-with-nodejs) | [python](#use-with-python)voor voor beelden die gebruikmaken van het Insights-token.
+Zie [C#](#use-with-c)  |  [Java](#use-with-java)  |  [node. js](#use-with-nodejs)  |  [python](#use-with-python)voor voor beelden die gebruikmaken van het Insights-token.
 
 ## <a name="use-with-c"></a>Gebruiken met C #
 

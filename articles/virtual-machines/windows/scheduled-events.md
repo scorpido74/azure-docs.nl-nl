@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dda71869411cbb37a24c2d39ef1d78563cfe6cab
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297918"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604096"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events voor Windows-Vm's
 
@@ -56,7 +56,7 @@ Als de virtuele machine niet is gemaakt binnen een Virtual Network, zijn de stan
 ### <a name="version-and-region-availability"></a>Beschik baarheid van versie en regio
 Er is een versie van de Scheduled Events-service. Versies zijn verplicht en de huidige versie is `2019-01-01` .
 
-| Versie | Release type | Regio's | Opmerkingen bij de release | 
+| Versie | Release type | Regio's | Releaseopmerkingen | 
 | - | - | - | - |
 | 2019-08-01 | Algemene Beschik baarheid | Alles | <li> Ondersteuning toegevoegd voor Event source |
 | 2019-04-01 | Algemene Beschik baarheid | Alles | <li> Er is ondersteuning toegevoegd voor de beschrijving van de gebeurtenis |
@@ -142,10 +142,18 @@ Elke gebeurtenis wordt een minimale tijd in de toekomst gepland op basis van het
 Geplande gebeurtenissen worden verzonden naar:
  - Zelfstandige Virtual Machines.
  - Alle Virtual Machines in een Cloud service.     
- - Alle Virtual Machines in een Beschikbaarheidsset.     
+ - Alle Virtual Machines in een Beschikbaarheidsset. 
+ - Alle Virtual Machines in een beschikbaarheids zone.
  - Alle Virtual Machines in een plaatsings groep voor schaal sets (inclusief batch).       
 
-Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke vm's worden beïnvloed. 
+> [!NOTE]
+> In een beschikbaarheids zone gaan geplande gebeurtenissen alleen naar enkele, betroffen Vm's in de beschikbaarheids zone.
+> 
+> Als u bijvoorbeeld in een beschikbaarheidsset over 100 Vm's in de set beschikt en er een update is voor een van de virtuele machines, gaat de geplande gebeurtenis naar alle 100 Vm's in de beschikbaarheidsset.
+>
+> Als u in een beschikbaarheids zone 100 Vm's in de beschikbaarheids zone hebt, wordt de gebeurtenis alleen verplaatst naar de virtuele machine die dit probleem heeft.
+>
+> Daarom moet u het `Resources` veld in de gebeurtenis controleren om te bepalen welke vm's worden beïnvloed. 
 
 ### <a name="starting-an-event"></a>Een gebeurtenis starten 
 

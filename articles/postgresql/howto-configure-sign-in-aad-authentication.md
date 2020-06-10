@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: cbec7843b16298abfb9da683fc4dcec1e0a63a9d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236320"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635999"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Azure Active Directory gebruiken voor verificatie met PostgreSQL
 
@@ -130,6 +130,15 @@ Nu kunt u een verbinding tot stand brengen met Azure Database for PostgreSQL zoa
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
+
+Belang rijke overwegingen bij het maken van verbinding:
+
+* `user@tenant.onmicrosoft.com`is de naam van de Azure AD-gebruiker of-groep waarmee u verbinding probeert te maken
+* De server naam altijd toevoegen na de gebruikers-of groeps naam van Azure AD (bijvoorbeeld `@mydb` )
+* Zorg ervoor dat u de exacte manier gebruikt waarop de naam van de Azure AD-gebruiker of-groep is gespeld
+* Namen van Azure AD-gebruikers en-groepen zijn hoofdletter gevoelig
+* Wanneer u verbinding maakt als een groep, gebruikt u alleen de groeps naam (bijvoorbeeld `GroupName@mydb` )
+* Als de naam spaties bevat, gebruikt u `\` vóór elke spatie om deze te escapen
 
 U bent nu geverifieerd voor uw PostgreSQL-server met behulp van Azure AD-verificatie.
 

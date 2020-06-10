@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229866"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636679"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory gebruiken voor verificatie met MySQL
 
@@ -123,6 +123,15 @@ mysql -h mydb.mysql.database.azure.com \
   --enable-cleartext-plugin \ 
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
+
+Belang rijke overwegingen bij het maken van verbinding:
+
+* `user@tenant.onmicrosoft.com`is de naam van de Azure AD-gebruiker of-groep waarmee u verbinding probeert te maken
+* De server naam altijd toevoegen na de gebruikers-of groeps naam van Azure AD (bijvoorbeeld `@mydb` )
+* Zorg ervoor dat u de exacte manier gebruikt waarop de naam van de Azure AD-gebruiker of-groep is gespeld
+* Namen van Azure AD-gebruikers en-groepen zijn hoofdletter gevoelig
+* Wanneer u verbinding maakt als een groep, gebruikt u alleen de groeps naam (bijvoorbeeld `GroupName@mydb` )
+* Als de naam spaties bevat, gebruikt u `\` vóór elke spatie om deze te escapen
 
 Let op de instelling ' Enable-anti-tekst-plugin ': u moet een vergelijk bare configuratie met andere clients gebruiken om ervoor te zorgen dat het token wordt verzonden naar de server zonder hash-bewerking.
 

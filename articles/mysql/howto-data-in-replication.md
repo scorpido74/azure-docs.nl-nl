@@ -6,16 +6,22 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4bc57bd896eb8d250975ec8e9300d0498d70835
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474041"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604148"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL Replicatie van inkomende gegevens configureren
 
 In dit artikel wordt beschreven hoe u Replicatie van inkomende gegevens instelt in Azure Database for MySQL door de hoofd-en replica servers te configureren. In dit artikel wordt ervan uitgegaan dat u een eerdere ervaring hebt met MySQL-servers en-data bases.
+
+> [!NOTE]
+> Afwijking-vrije communicatie
+>
+> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+>
 
 Voor het maken van een replica in de Azure Database for MySQL-service, Replicatie van inkomende gegevens synchroniseert gegevens van een hoofd-MySQL-server on-premises, in virtuele machines (Vm's) of in Cloud database services.
 
@@ -59,11 +65,11 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    Als de variabele [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) wordt geretourneerd met de waarde ' on ', wordt de binaire logboek registratie ingeschakeld op de server. 
 
-   Als `log_bin` wordt geretourneerd met de waarde uit, schakelt u binaire logboek registratie in door het bestand My. cnf te bewerken, `log_bin=ON` zodat de server opnieuw wordt opgestart om de wijziging van kracht te laten worden.
+   Als `log_bin` wordt geretourneerd met de waarde uit, schakelt u binaire logboek registratie in door het bestand My. cnf te bewerken, zodat de `log_bin=ON` server opnieuw wordt opgestart om de wijziging van kracht te laten worden.
 
 3. Instellingen van de hoofd server
 
-   Replicatie van inkomende gegevens vereist dat `lower_case_table_names` para meters consistent zijn tussen de Master-en replica-servers. Deze para meter is standaard 1 in Azure Database for MySQL. 
+   Replicatie van inkomende gegevens vereist dat para meters `lower_case_table_names` consistent zijn tussen de Master-en replica-servers. Deze para meter is standaard 1 in Azure Database for MySQL. 
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -155,7 +161,7 @@ De volgende stappen maken en configureren van de MySQL-server die on-premises wo
 
    Alle Replicatie van inkomende gegevens-functies worden uitgevoerd door opgeslagen procedures. U kunt alle procedures vinden op [replicatie van inkomende gegevens opgeslagen procedures](reference-data-in-stored-procedures.md). De opgeslagen procedures kunnen worden uitgevoerd in de MySQL-shell of MySQL Workbench. 
 
-   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB voor MySQL-service en stelt u het externe exemplaar in als de hoofd server. Dit wordt gedaan met behulp `mysql.az_replication_change_master` van de opgeslagen procedure op de Azure DB voor mysql-server.
+   Als u twee servers wilt koppelen en replicatie wilt starten, meldt u zich aan bij de doel replica server in de Azure DB voor MySQL-service en stelt u het externe exemplaar in als de hoofd server. Dit wordt gedaan met behulp van de `mysql.az_replication_change_master` opgeslagen procedure op de Azure DB voor mysql-server.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');

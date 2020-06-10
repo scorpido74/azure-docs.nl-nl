@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668563"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628536"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Het back-end-server certificaat is niet white list voor een toepassings gateway met een interne Load Balancer met een App Service Environment
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Het back-endserver certificaat is niet toegestaan voor een toepassings gateway die gebruikmaakt van een interne Load Balancer met een App Service Environment
 
-In dit artikel wordt het volgende probleem opgelost: een certificaat is niet white list wanneer u een toepassings gateway maakt met behulp van een interne Load Balancer (ILB) in combi natie met een App Service Environment (ASE) bij de back-end wanneer u end-to-end TLS gebruikt in Azure.
+In dit artikel wordt het volgende probleem opgelost: een certificaat is niet toegestaan in de lijst wanneer u een toepassings gateway maakt met behulp van een interne Load Balancer (ILB) in combi natie met een App Service Environment (ASE) bij de back-end wanneer u end-to-end TLS gebruikt in Azure.
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -41,7 +41,7 @@ Wanneer u een toepassings gateway maakt met behulp van een ILB met een ASE aan d
 - **Poort:**: 443
 - **Aangepaste test:** Hostnaam – test.appgwtestase.com
 - **Verificatie certificaat:** . cer van test.appgwtestase.com
-- **Back-end status:** Onjuist: het back-endserver certificaat is niet white list met Application Gateway.
+- **Back-end status:** Onjuist: het back-endserver certificaat is niet toegestaan met Application Gateway.
 
 **ASE-configuratie:**
 
@@ -68,7 +68,7 @@ Wanneer u een Fully Qualified Domain Name (FQDN) gebruikt om toegang te krijgen 
 
 - Schakel de optie **voor app service gebruiken** voor de toepassings gateway uit als u het IP-adres van de ILB gebruikt.
 
-Als u de overhead wilt beperken, kunt u het ILB-certificaat uploaden in de HTTP-instellingen om het probe-pad te laten werken. (Deze stap is alleen bedoeld voor white list. Het wordt niet gebruikt voor TLS-communicatie.) U kunt het ILB-certificaat ophalen door de ILB te openen met het IP-adres van uw browser op HTTPS en vervolgens het TLS/SSL-certificaat te exporteren in een met base64 64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
+Als u de overhead wilt beperken, kunt u het ILB-certificaat uploaden in de HTTP-instellingen om het probe-pad te laten werken. (Deze stap is alleen bedoeld voor vermelding toestaan. Het wordt niet gebruikt voor TLS-communicatie.) U kunt het ILB-certificaat ophalen door de ILB te openen met het IP-adres van uw browser op HTTPS en vervolgens het TLS/SSL-certificaat te exporteren in een met base64 64 gecodeerde CER-indeling en het certificaat te uploaden naar de respectievelijke HTTP-instellingen.
 
 ## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 

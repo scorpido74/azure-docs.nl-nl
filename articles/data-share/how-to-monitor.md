@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3d13919a54e170d410abba5da66172c2029d9b5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490516"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636271"
 ---
 # <a name="monitor-azure-data-share"></a>Azure Data Share bewaken  
 
@@ -40,13 +40,17 @@ Bekijk de status van uw abonnementen voor delen door te navigeren naar verzonden
 
 ## <a name="snapshot-history"></a>Momentopname geschiedenis 
 
-Op het tabblad geschiedenis kunt u de moment opnamen weer geven die zijn gekopieerd naar de Tenant van uw gegevens verbruiker. U kunt de frequentie en duur van elk moment opname-interval bewaken. 
+Op het tabblad **geschiedenis** van een share kunt u zien wanneer gegevens worden gekopieerd van gegevens provider naar het gegevens archief van de gegevens consument. U kunt de frequentie, duur en status van elke moment opname bewaken. 
 
 ![Momentopname geschiedenis](./media/sent-shares.png "Momentopname geschiedenis") 
 
-U kunt meer informatie over de uitvoering van elke moment opname bekijken door te klikken op de begin datum van de uitvoering. 
+U kunt meer informatie over de uitvoering van elke moment opname bekijken door te klikken op de begin datum van de uitvoering. Klik vervolgens op de status van elke gegevensset om de hoeveelheid overgedragen gegevens weer te geven, het aantal gekopieerde bestanden/records, de duur van de moment opname, het aantal gebruikte vCores en het fout bericht als er een is. 
 
-Er worden standaard Maxi maal 30 dagen van de momentopname geschiedenis weer gegeven. Als u meer dan 30 dagen voor de geschiedenis wilt zien, gaat u naar bewaking-> Diagnostische instellingen en selecteert u **Diagnostische instelling toevoegen**. U moet een opslag account selecteren om deze logboeken op te slaan in. 
+Er worden Maxi maal 30 dagen aan de momentopname geschiedenis weer gegeven. Als u meer dan 30 dagen aan geschiedenis wilt besparen, kunt u gebruikmaken van de diagnostische instelling.
+
+## <a name="diagnostic-setting"></a>Diagnostische instelling
+
+U kunt de diagnostische instelling zo configureren dat logboek gegevens of-gebeurtenissen worden opgeslagen. Navigeer naar bewaking-> Diagnostische instellingen en selecteer **Diagnostische instelling toevoegen**. Selecteer de logboek gegevens of gebeurtenissen die u wilt, en waar u deze wilt opslaan of verzenden. 
 
 ![Momentopname geschiedenis](./media/diagnostic-settings.png "Diagnostische instellingen") 
 

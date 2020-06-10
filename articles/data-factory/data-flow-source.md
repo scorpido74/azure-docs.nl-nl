@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/05/2020
+ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433299"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610176"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Bron transformatie in gegevens stroom toewijzen 
 
@@ -23,7 +23,7 @@ Met een bron transformatie configureert u de gegevens bron voor de gegevens stro
 
 Elke gegevens stroom vereist ten minste één bron transformatie, maar u kunt zoveel bronnen toevoegen als u nodig hebt om uw gegevens transformaties te volt ooien. U kunt deze bronnen samen voegen met een koppelings-, zoek-of een Union-trans formatie.
 
-Elke bron transformatie is gekoppeld aan precies één Data Factory-gegevensset. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van een bestand gebruikt, kunt u Joker tekens en bestands lijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
+Elke bron transformatie is gekoppeld aan precies één gegevensset of gekoppelde service. De gegevensset definieert de vorm en locatie van de gegevens waarnaar u wilt schrijven of waaruit u wilt lezen. Als u een gegevensset op basis van een bestand gebruikt, kunt u Joker tekens en bestands lijsten in uw bron gebruiken om met meer dan één bestand tegelijk te werken.
 
 ## <a name="inline-datasets"></a>Inline gegevens sets
 
@@ -37,22 +37,20 @@ Als u een inline gegevensset wilt gebruiken, selecteert u de gewenste indeling i
 
 ![Inline gegevensset](media/data-flow/inline-selector.png "Inline gegevensset")
 
-### <a name="supported-inline-dataset-formats"></a>Ondersteunde indelingen voor inline-gegevensset
-
-Momenteel is de enige beschik bare indeling voor de inline-gegevensset het [common data model](format-common-data-model.md#source-properties) dat is gelezen van [Azure data Lake Store Gen2](connector-azure-data-lake-storage.md).
-
-## <a name="supported-source-datasets-in-mapping-data-flow"></a>Ondersteunde bron gegevens sets in de toewijzing van gegevens stroom
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>Ondersteunde bron typen
 
 Toewijzing van gegevens stroom volgt een extractie benadering, Load, Transform (ELT) en werkt met *faserings* gegevens sets die allemaal in azure zijn. Momenteel kunnen de volgende gegevens sets worden gebruikt in een bron transformatie:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, AVRO, Text, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [Azure-CosmosDB](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **bron opties** . informatie over deze instellingen vindt u in de documentatie van de connector. 
+| Connector | Indeling | Gegevensset/inline |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tekst met scheidings tekens](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common data model (preview-versie)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure-CosmosDB (SQL-API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+De instellingen die specifiek zijn voor deze connectors bevinden zich op het tabblad **bron opties** . voor beelden van informatie en gegevensstroom scripts in deze instellingen vindt u in de documentatie van de connector. 
 
 Azure Data Factory heeft toegang tot meer dan [90 systeemeigen connectors](connector-overview.md). Als u gegevens uit deze andere bronnen in uw gegevens stroom wilt toevoegen, gebruikt u de Kopieer activiteit om die gegevens te laden in een van de ondersteunde staging-gebieden.
 
@@ -62,6 +60,10 @@ Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instelli
 
 ![Tabblad Bron instellingen](media/data-flow/source1.png "Tabblad Bron instellingen")
 
+**Naam van de uitvoer stroom:** De naam van de bron transformatie.
+
+**Bron type:** Kies of u een inline-gegevensset of een bestaand DataSet-object wilt gebruiken.
+ 
 **Verbinding testen:** Testen of de Spark-service van de gegevens stroom verbinding kan maken met de gekoppelde service die in de bron-gegevensset wordt gebruikt. De foutopsporingsmodus moet zijn ingeschakeld om deze functie in te scha kelen.
 
 **Schema-drift:** [schema-drift](concepts-data-flow-schema-drift.md) Data Factory is de mogelijkheid van een systeem eigen flexibele schema's in uw gegevens stromen zonder dat er expliciet kolom wijzigingen hoeven te worden gedefinieerd.
@@ -76,12 +78,14 @@ Nadat u een bron hebt toegevoegd, configureert u via het tabblad **bron instelli
 
 **Steek proeven:** Schakel steek proeven in om het aantal rijen van de bron te beperken. Gebruik deze instelling wanneer u gegevens uit uw bron test of van uw source gebruikt voor fout opsporing.
 
-**Meerregelige rijen:** Selecteer meerregelige rijen als uw bron tekst bestand teken reeks waarden bevat die meerdere rijen bevatten, dat wil zeggen een nieuwe regel in een waarde. Deze instelling is alleen beschikbaar in DelimitedText-gegevens sets.
-
 Als u wilt valideren of uw bron juist is geconfigureerd, schakelt u de foutopsporingsmodus in en haalt u een voor beeld van de gegevens op. Zie [debug mode (foutopsporingsmodus](concepts-data-flow-debug-mode.md)) voor meer informatie.
 
 > [!NOTE]
 > Wanneer de foutopsporingsmodus is ingeschakeld, wordt de sampling-instelling in de bron tijdens de preview-versie overschreven door de configuratie van het aantal rijen in de instellingen voor fout opsporing.
+
+## <a name="source-options"></a>Bron opties
+
+Het tabblad Bron opties bevat instellingen die specifiek zijn voor de gekozen connector en notatie. Raadpleeg de documentatie van de relevante [connector](#supported-sources)voor meer informatie en voor beelden.
 
 ## <a name="projection"></a>Projectie
 
@@ -99,26 +103,18 @@ U kunt de kolom gegevens typen wijzigen in een trans formatie die is afgeleid va
 
 Met de knop **schema importeren** op het tabblad **projectie** kunt u een actief debug-cluster gebruiken om een schema projectie te maken. Bij het importeren van het schema dat in elk bron type beschikbaar is, wordt de projectie die in de gegevensset is gedefinieerd, overschreven. Het object dataset wordt niet gewijzigd.
 
-Dit is handig in gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren waarvoor geen schema definities in de gegevensset bestaan.
+Dit is handig in gegevens sets zoals Avro en CosmosDB die ondersteuning bieden voor complexe gegevens structuren waarvoor geen schema definities in de gegevensset bestaan. Voor inline gegevens sets is dit de enige manier om te verwijzen naar kolom meta gegevens zonder schema-drift.
 
 ## <a name="optimize-the-source-transformation"></a>De bron transformatie optimaliseren
 
-Op het tabblad **optimaliseren** voor de bron transformatie ziet u mogelijk een type **bron** partitie. Deze optie is alleen beschikbaar als uw bron Azure SQL Database is. Dit komt omdat Data Factory verbinding probeert te maken met het parallel uitvoeren van grote query's op uw SQL Database bron.
+Op het tabblad **Optimize** kunnen partitie gegevens worden bewerkt tijdens elke transformatie stap. In de meeste gevallen is het **gebruik van huidige partitionering** geoptimaliseerd voor de ideale partitie structuur voor een bron.
+
+Als u leest van een Azure SQL Database bron, worden de gegevens waarschijnlijk het snelst gelezen door aangepaste **bron** partities. ADF leest grote query's door gelijktijdig verbinding te maken met uw data base. Deze partitionering van de bron kan worden uitgevoerd op een kolom of met behulp van een query.
 
 ![Instellingen van de bron partitie](media/data-flow/sourcepart3.png "partitioneren")
-
-U hoeft geen gegevens op uw SQL Database bron te partitioneren, maar partities zijn handig voor grote query's. U kunt de partitie baseren op een kolom of een query.
-
-### <a name="use-a-column-to-partition-data"></a>Een kolom gebruiken om gegevens te partitioneren
-
-Selecteer in de bron tabel een kolom waarop moet worden gepartitioneerd. Stel ook het aantal partities in.
-
-### <a name="use-a-query-to-partition-data"></a>Een query gebruiken om gegevens te partitioneren
-
-U kunt ervoor kiezen om de verbindingen te partitioneren op basis van een query. Voer de inhoud van een WHERE-predikaat in. Voer bijvoorbeeld jaar > 1980 in.
 
 Zie het [tabblad optimaliseren](concepts-data-flow-overview.md#optimize)voor meer informatie over optimalisatie binnen de toewijzing van gegevens stromen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Beginnen met het bouwen van een [afgeleide kolom transformatie](data-flow-derived-column.md) en een [geselecteerde trans formatie](data-flow-select.md).
+Begin met het bouwen van uw gegevens stroom met een [afgeleide kolom transformatie](data-flow-derived-column.md) en een [geselecteerde trans formatie](data-flow-select.md).

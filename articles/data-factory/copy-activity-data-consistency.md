@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: a386c7d44cf5ba7eda895006cda7ce1fa9b798ac
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a45c8ce820532d11f18758924dc3399818cb9158
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664975"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610216"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Verificatie van de gegevens consistentie in de Kopieer activiteit (preview-versie)
 
@@ -34,7 +34,7 @@ Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Dat
 
 ### <a name="source-data-stores"></a>Brongegevens archieven
 
--   [Azure Blob-opslag](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -44,7 +44,7 @@ Wanneer u gegevens van de bron naar het doel archief verplaatst, biedt Azure Dat
 
 ### <a name="destination-data-stores"></a>Doel gegevens archieven
 
--   [Azure Blob-opslag](connector-azure-blob-storage.md)
+-   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 -   [Azure File Storage](connector-azure-file-storage.md)
@@ -93,9 +93,8 @@ path | Het pad van de logboek bestanden. | Geef het pad op waarin u de logboek b
 
 >[!NOTE]
 >- Gegevens consistentie wordt niet ondersteund in het faserings kopie scenario. 
->- Bij het kopiëren van binaire bestanden uit een opslag archief naar Azure Blob Storage of Azure Data Lake Storage Gen2, wordt door de Kopieer activiteit de bestands grootte en de verificatie van de MD5-controlesom voor de consistentie van de gegevens tussen de bron-en doel opslag gegarandeerd. 
->- Bij het kopiëren van binaire bestanden uit een opslag archief naar andere opslag archieven dan Azure Blob Storage of Azure Data Lake Storage Gen2, wordt door de Kopieer activiteit de bestands grootte gecontroleerd om de gegevens consistentie tussen het bron-en doel archief te garanderen.
-
+>- Bij het kopiëren van bestanden van, of naar Azure Blob of Azure Data Lake Storage Gen2, voert ADF de MD5-controlesom verificatie op blok niveau uit met behulp van de [Azure Blob API](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) en de [Azure data Lake Storage Gen2-API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update#request-headers). Als ContentMD5 op bestanden bestaan in Azure Blob of als gegevens bronnen worden Azure Data Lake Storage Gen2, heeft ADF de MD5-controlesom controle op bestands niveau na het lezen van de bestanden. Na het kopiëren van bestanden naar Azure Blob of Azure Data Lake Storage Gen2 als gegevens doel, schrijft ADF ContentMD5 naar Azure Blob of Azure Data Lake Storage Gen2 die verder kan worden gebruikt door downstream-toepassingen voor de verificatie van gegevens consistentie.
+>- ADF heeft bestands grootte verificatie bij het kopiëren van bestanden tussen opslag archieven.
 
 ## <a name="monitoring"></a>Bewaking
 

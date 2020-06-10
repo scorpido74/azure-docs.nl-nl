@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62dce0204f77ab65473fc1735015e41f483dddb1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eddb63f82669821914edefc1b75a7b4dcdc0ca2d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049132"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636152"
 ---
 # <a name="introducing-sql-server-availability-groups-on-azure-virtual-machines"></a>Introductie van SQL Server-beschikbaarheids groepen op virtuele machines van Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,9 +43,10 @@ Om redundantie en maximale Beschik baarheid te verbeteren, moeten de SQL Server 
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL-VM-CLI](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | ENT | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
 | [Quick Start-sjablonen](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | ENT | Cloudwitness | Nee | Ja | Ja | Ja | Nee | Nee |
-| [Portal sjabloon](availability-group-azure-marketplace-template-configure.md) | 2016 </br>2012 R2 | 2016</br>2014 | ENT | Bestandsshare | Nee | Nee | Nee | Nee | Nee | Nee |
 | [Handmatig](availability-group-manually-configure-prerequisites-tutorial.md) | Alles | Alles | Alles | Alles | Ja | Ja | Ja | Ja | Ja | Ja |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
+De sjabloon **voor het SQL Server AlwaysOn-cluster (preview)** is verwijderd uit de Azure Marketplace en is niet meer beschikbaar. 
 
 Raadpleeg deze zelf studies wanneer u klaar bent om een SQL Server-beschikbaarheids groep te maken in azure Virtual Machines.
 

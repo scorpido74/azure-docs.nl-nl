@@ -2,13 +2,13 @@
 title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 05/24/2020
+ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204715"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628448"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -279,7 +279,7 @@ Voeg de vCenter Server toe aan Azure Backup Server.
 
     ![Referentie opgeven](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. Klik op **toevoegen** om de VMware-Server toe te voegen aan de lijst met servers. Klik of tik op **Volgende**.
+6. Klik op **toevoegen** om de VMware-Server toe te voegen aan de lijst met servers. Klik op **Volgende**.
 
     ![VMWare-Server en-referentie toevoegen](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -307,14 +307,14 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
 1. Selecteer op de pagina **type beveiligings groep selecteren** de optie **servers** en klik vervolgens op **volgende**. De pagina **groeps leden selecteren** wordt weer gegeven.
 
-1. In **groeps leden selecteren**selecteert u de virtuele machines (of VM-mappen) waarvan u een back-up wilt maken. Klik of tik op **Volgende**.
+1. In **groeps leden selecteren**selecteert u de virtuele machines (of VM-mappen) waarvan u een back-up wilt maken. Klik op **Volgende**.
 
     - Wanneer u een map selecteert, worden er ook Vm's of mappen in die map geselecteerd voor back-up. U kunt de selectie van mappen of Vm's die u niet wilt maken, uitschakelen.
 1. Als er al een back-up van een virtuele machine of map wordt gemaakt, kunt u deze niet selecteren. Dit zorgt ervoor dat er geen dubbele herstel punten worden gemaakt voor een virtuele machine.
 
     ![Groeps leden selecteren](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik of tik op **Volgende**.
+1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik op **Volgende**.
 
     ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -345,17 +345,17 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
     ![Methode voor maken van replica selecteren](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. Selecteer in **Opties voor consistentie controle**hoe en wanneer de consistentie controles moeten worden geautomatiseerd. Klik of tik op **Volgende**.
+1. Selecteer in **Opties voor consistentie controle**hoe en wanneer de consistentie controles moeten worden geautomatiseerd. Klik op **Volgende**.
       - U kunt consistentie controles uitvoeren wanneer de replica gegevens inconsistent worden, of volgens een ingesteld schema.
       - Als u geen automatische consistentie controles wilt configureren, kunt u een hand matige controle uitvoeren. U doet dit door met de rechter muisknop op de beveiligings groep te klikken > **consistentie controle uit te voeren**.
 
-1. Selecteer op de pagina **gegevens voor online beveiliging opgeven** de vm's of de mappen van de virtuele machine waarvan u een back-up wilt maken. U kunt de leden afzonderlijk selecteren of op **Alles selecteren** klikken om alle leden te kiezen. Klik of tik op **Volgende**.
+1. Selecteer op de pagina **gegevens voor online beveiliging opgeven** de vm's of de mappen van de virtuele machine waarvan u een back-up wilt maken. U kunt de leden afzonderlijk selecteren of op **Alles selecteren** klikken om alle leden te kiezen. Klik op **Volgende**.
 
     ![Gegevens voor online beveiliging opgeven](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. Op de pagina **online back-upschema opgeven** geeft u op hoe vaak u een back-up wilt maken van gegevens van de lokale opslag naar Azure.
 
-    - De Cloud herstel punten voor de gegevens worden gegenereerd volgens het schema. Klik of tik op **Volgende**.
+    - De Cloud herstel punten voor de gegevens worden gegenereerd volgens het schema. Klik op **Volgende**.
     - Nadat het herstel punt is gegenereerd, wordt het overgedragen naar de Recovery Services kluis in Azure.
 
     ![Online back-upschema opgeven](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
@@ -370,6 +370,21 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 1. Controleer de instellingen op de pagina **samen vatting** en klik vervolgens op **groep maken**.
 
     ![Lid van beveiligings groep en samen vatting van instellingen](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+
+## <a name="vmware-parallel-backups"></a>VMware parallelle back-ups
+
+>[!NOTE]
+> Deze functie is van toepassing op MABS v3 UR1.
+
+Met eerdere versies van MABS zijn parallelle back-ups alleen uitgevoerd in verschillende beveiligings groepen. Met MABS v3 UR1 zijn alle back-ups van uw VMWare-Vm's binnen één beveiligings groep parallel, waardoor back-ups van virtuele machines sneller kunnen worden uitgevoerd. Alle VMWare Delta-replicatie taken worden parallel uitgevoerd. Het aantal taken dat parallel moet worden uitgevoerd, is standaard ingesteld op 8.
+
+U kunt het aantal taken wijzigen met behulp van de register sleutel zoals hieronder wordt weer gegeven (dit is standaard niet aanwezig):
+
+**Sleutelpad:**`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**Sleutel type**: DWORD-waarde (32-bits).
+
+> [!NOTE]
+> U kunt het aantal taken naar een hogere waarde wijzigen. Als u het aantal taken instelt op 1, worden replicatie taken serieel uitgevoerd. Als u het getal wilt verhogen naar een hogere waarde, moet u rekening houden met de VMWare-prestaties. Houd rekening met het aantal gebruikte resources en aanvullende gebruiks vereisten op VMWare vSphere server en bepaal het aantal Delta-replicatie taken dat parallel moet worden uitgevoerd. Deze wijziging is ook van invloed op de nieuw gemaakte beveiligings groepen. Voor bestaande beveiligings groepen moet u tijdelijk een andere virtuele machine toevoegen aan de beveiligings groep. Hiermee wordt de configuratie van de beveiligings groep dienovereenkomstig bijgewerkt. U kunt deze virtuele machine uit de beveiligings groep verwijderen nadat de procedure is voltooid.
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
@@ -400,6 +415,126 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
 "SystemDefaultTlsVersions"=dword:00000001
 "SchUseStrongCrypto"=dword:00000001
+```
+
+## <a name="exclude-disk-from-vmware-vm-backup"></a>Schijf uitsluiten van de back-up van de VMware-VM
+
+> [!NOTE]
+> Deze functie is van toepassing op MABS v3 UR1.
+
+Met MABS v3 UR1 kunt u de specifieke schijf uitsluiten van de back-up van de virtuele VMware-machine. Het configuratie script **ExcludeDisk. ps1** bevindt zich in de `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+
+Volg de onderstaande stappen om de schijf uitsluiting te configureren:
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>De VMWare-VM en schijf Details identificeren die moeten worden uitgesloten
+
+  1. Ga in de VMware-console naar de VM-instellingen waarvoor u de schijf wilt uitsluiten.
+  2. Selecteer de schijf die u wilt uitsluiten en noteer het pad voor de schijf.
+
+        Als u bijvoorbeeld de harde schijf 2 wilt uitsluiten van de TestVM4, is het pad voor harde schijf 2 **[datastore1] TestVM4/TestVM4 \_ 1. vmdk**.
+
+        ![De vaste schijf die moet worden uitgesloten](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>MABS-server configureren
+
+Ga naar de MABS-server waarop de virtuele VMware-machine is geconfigureerd voor beveiliging om schijf uitsluiting te configureren.
+
+  1. Bekijk de details van de VMware-host die wordt beveiligd op de MABS-server.
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. Selecteer de VMware-host en geef een lijst van de Vm's beveiliging voor de VMware-host op.
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. Selecteer de virtuele machine waarvoor u een schijf wilt uitsluiten.
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. Als u de schijf wilt uitsluiten, gaat u naar de `Bin` map en voert u het script *ExcludeDisk. ps1* uit met de volgende para meters:
+
+        > [!NOTE]
+        > Voordat u deze opdracht uitvoert, stopt u de DPMRA-service op de MABS-server. Anders wordt de uitsluitings lijst niet bijgewerkt met het script. Zorg ervoor dat er geen taken worden uitgevoerd voordat u de service stopt.
+
+     **Als u de schijf wilt toevoegen aan of verwijderen uit de uitsluiting, voert u de volgende opdracht uit:**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **Voor beeld**:
+
+     Voer de volgende opdracht uit om de schijf uitsluiting voor TestVM4 toe te voegen:
+
+       ```powershell
+      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. Controleer of de schijf is toegevoegd voor uitsluiting.
+
+     **Als u de bestaande uitsluiting voor specifieke Vm's wilt weer geven, voert u de volgende opdracht uit:**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **Hierbij**
+
+        ```powershell
+        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     Wanneer u de beveiliging voor deze virtuele machine configureert, wordt de uitgesloten schijf niet weer gegeven tijdens de beveiliging.
+
+        > [!NOTE]
+        > Als u deze stappen uitvoert voor een al beveiligde VM, moet u de consistentie controle hand matig uitvoeren na het toevoegen van de schijf voor uitsluiting.
+
+### <a name="remove-the-disk-from-exclusion"></a>De schijf uit de uitsluiting verwijderen
+
+Als u de schijf uit de uitsluiting wilt verwijderen, voert u de volgende opdracht uit:
+
+```powershell
+C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 12/17/2019
 ms.custom: has-adal-ref
-ms.openlocfilehash: 57160088c283b1f2c686429168cc858fee58324a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433118"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629242"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,9 +71,14 @@ Interactieve verificatie is handig voor testen en leren, maar biedt geen onderst
 
 Dit proces is nodig voor het inschakelen van verificatie die is losgekoppeld van een specifieke gebruikers aanmelding, waarmee u zich kunt verifiëren bij de Azure Machine Learning python SDK in geautomatiseerde werk stromen. Met Service-Principal-verificatie kunt u [zich ook verifiëren bij de rest API](#azure-machine-learning-rest-api-auth).
 
-Als u Service-Principal-verificatie wilt instellen, maakt u eerst een app-registratie in Azure Active Directory en verleent u vervolgens uw app-rollen toegang tot uw ML-werk ruimte. De eenvoudigste manier om deze installatie te volt ooien, is via de [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/) in de Azure Portal. Nadat u zich hebt aangemeld bij de portal, klikt u op het `>_` pictogram in de rechter bovenhoek van de pagina bij uw naam om de shell te openen.
+> [!TIP]
+> Service-principals moeten toegang hebben tot uw werk ruimte via [Azure op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md).
+>
+> Met de ingebouwde rollen van **eigenaar** of **Inzender** voor uw werk ruimte kan de Service-Principal alle activiteiten uitvoeren, zoals het trainen van een model, het implementeren van een model, enzovoort. Zie [toegang tot een Azure machine learning-werk ruimte beheren](how-to-assign-roles.md)voor meer informatie over het gebruik van rollen.
 
-Als u de Cloud shell nog niet eerder in uw Azure-account hebt gebruikt, moet u een opslag account resource maken voor het opslaan van bestanden die zijn geschreven. In het algemeen heeft dit opslag account een te verwaarlozen maandelijkse kosten. Installeer de machine learning-extensie ook als u deze nog niet eerder hebt gebruikt met de volgende opdracht.
+Als u Service-Principal-verificatie wilt instellen, maakt u eerst een app-registratie in Azure Active Directory en wijst u vervolgens een rol toe aan uw app. De eenvoudigste manier om deze installatie te volt ooien, is via de [Azure Cloud shell](https://azure.microsoft.com/features/cloud-shell/) in de Azure Portal. Nadat u zich hebt aangemeld bij de portal, klikt u op het `>_` pictogram in de rechter bovenhoek van de pagina bij uw naam om de shell te openen.
+
+Als u de Cloud Shell nog niet eerder in uw Azure-account hebt gebruikt, moet u een opslag account resource maken voor het opslaan van bestanden die zijn geschreven. In het algemeen heeft dit opslag account een te verwaarlozen maandelijkse kosten. Installeer de machine learning-extensie ook als u deze nog niet eerder hebt gebruikt met de volgende opdracht.
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -307,6 +312,9 @@ Als u de verificatie van tokens wilt beheren, gebruikt `token_auth_enabled` u de
 
 Als token verificatie is ingeschakeld, kunt u de `get_token` methode gebruiken om een JSON Web token (JWT) op te halen en de verval tijd van dat token:
 
+> [!TIP]
+> Als u een Service-Principal gebruikt om het token op te halen en de minimale vereiste toegang wilt hebben om een token op te halen, wijst u deze toe aan de rol van **lezer** voor de werk ruimte.
+
 ```python
 token, refresh_by = service.get_token()
 print(token)
@@ -323,5 +331,6 @@ print(token)
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Geheimen gebruiken in trainingen](how-to-use-secrets-in-runs.md).
 * [Train en implementeer een installatie kopie classificatie model](tutorial-train-models-with-aml.md).
 * [Een Azure machine learning model gebruiken dat is geïmplementeerd als een webservice](how-to-consume-web-service.md).

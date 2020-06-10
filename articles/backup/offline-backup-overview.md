@@ -3,12 +3,12 @@ title: Overzicht van offline back-up
 description: Meer informatie over de onderdelen van offline back-ups. Ze omvatten offline back-ups op basis van Azure Data Box en offline back-ups op basis van de Azure import/export-service.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744641"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628334"
 ---
 # <a name="overview-of-offline-backup"></a>Overzicht van offline back-up
 
@@ -60,7 +60,7 @@ Hier volgt een samen vatting van de architectuur:
 
 Als u offline back-ups wilt gebruiken op basis van de Azure import/export-service met de MARS-agent, raadpleegt u [offline back-upwerk stroom in azure backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Als u hetzelfde wilt gebruiken in combi natie met MABS of DPM-A, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Als u hetzelfde wilt gebruiken in combi natie met MABS of DPM-A, raadpleegt u [offline back-upwerk stroom voor dpm en Azure backup server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
 
 ## <a name="offline-backup-support-summary"></a>Samen vatting van offline back-upondersteuning
 
@@ -83,4 +83,4 @@ In de volgende tabel worden de twee beschik bare opties vergeleken, zodat u de j
 
 - [Offline back-up Azure Backup met behulp van Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Werk stroom voor offline back-up in Azure Backup](backup-azure-backup-import-export.md)
-- [Werk stroom voor offline back-ups voor DPM en Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Werk stroom voor offline back-ups voor DPM en Azure Backup Server](backup-azure-backup-server-import-export.md)

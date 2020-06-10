@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310611"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605191"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
 > [!IMPORTANT]
 > MSIX app attach is momenteel beschikbaar als open bare preview.
-> Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 In dit onderwerp vindt u instructies voor het instellen van een MSIX-app-koppeling in een virtueel-bureaublad omgeving van Windows.
 
@@ -90,7 +90,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de heuvel-VHD-opdracht voor fase ring en ontkoppeling-VHD gebruikt voor het destage. 
+Nadat u automatische updates hebt uitgeschakeld, moet u Hyper-V inschakelen omdat u de opdracht Mount-VHD gebruikt voor fase ring en ontkoppeling-VHD om te destageren. 
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All

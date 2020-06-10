@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4a9639343827ebc5bb17a6d62d9b65d0b561e932
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 84067917a43fc7c84770b8852f11622ffe2af930
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597742"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629313"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routes in de preview-versie van statische Web Apps van Azure
 
@@ -35,7 +35,7 @@ De volgende tabel bevat de juiste locatie voor het plaatsen van uw _routes. json
 |Framework/bibliotheek | Locatie  |
 |---------|----------|
 | Angular | _publicatie_   |
-| Reageren   | _Open_  |
+| React   | _Open_  |
 | Svelte  | _Open_   |
 | Vue     | _Open_ |
 
@@ -45,9 +45,9 @@ Routes worden gedefinieerd in het bestand _routes. json_ als een matrix van rout
 
 | Regel eigenschap  | Vereist | Standaardwaarde | Opmerking                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Ja      | n.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index. html_.</ul>|
-| `serve`        | Nee       | n.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als een `serve` waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. |
-| `allowedRoles` | Nee       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z` , `A-Z` , en `0-9` `_` .<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
+| `route`        | Ja      | N.v.t.          | Het route patroon dat is aangevraagd door de aanroeper.<ul><li>[Joker tekens](#wildcards) worden aan het einde van route paden ondersteund. De routerings _beheerder/ \* _ komt bijvoorbeeld overeen met een wille keurige route onder het pad van de _beheerder_ .<li>Het standaard bestand van een route is _index. html_.</ul>|
+| `serve`        | Nee       | N.v.t.          | Hiermee wordt het bestand of het pad gedefinieerd dat door de aanvraag wordt geretourneerd. Het bestandspad en de naam kunnen afwijken van het aangevraagde pad. Als een `serve` waarde is gedefinieerd, wordt het aangevraagde pad gebruikt. |
+| `allowedRoles` | Nee       | toegang     | Een matrix met namen van rollen. <ul><li>Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `_`.<li>De ingebouwde rol `anonymous` is van toepassing op alle niet-geverifieerde gebruikers.<li>De ingebouwde rol `authenticated` is van toepassing op elke aangemelde gebruiker.<li>Gebruikers moeten deel uitmaken van ten minste één rol.<li>Rollen worden _op basis van_ elkaar vergeleken. Als een gebruiker zich in een van de vermelde rollen bevindt, wordt de toegang verleend.<li>Afzonderlijke gebruikers zijn gekoppeld aan rollen door middel van [uitnodigingen](authentication-authorization.md).</ul> |
 | `statusCode`   | Nee       | 200           | Het antwoord van de [HTTP-status code](https://wikipedia.org/wiki/List_of_HTTP_status_codes) voor de aanvraag. |
 
 ## <a name="securing-routes-with-roles"></a>Routes beveiligen met rollen
@@ -214,6 +214,7 @@ In het volgende voor beeld ziet u hoe u routerings regels voor statische inhoud 
     },
     {
       "errorType": "Unauthenticated",
+      "statusCode": "301",
       "serve": "/login"
     }
   ]

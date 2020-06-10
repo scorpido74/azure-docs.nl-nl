@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b32685aa060363d00f1566e009beee36bbf9680
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 21f074be2cefcf5df261b354f169e8c210c9256f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298547"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604837"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,17 +29,17 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 | Eigenschap         | Beschrijving                                                  | Vereist |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | De eigenschap type van de DataSet moet worden ingesteld op **DelimitedText**. | Yes      |
-| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location` .  | Yes      |
-| columnDelimiter  | De teken (s) die worden gebruikt voor het scheiden van kolommen in een bestand. <br>De standaard waarde is **een `,` komma **. Wanneer het kolom scheidings teken is gedefinieerd als lege reeks, wat betekent dat er geen scheidings teken is, wordt de hele regel als één kolom beschouwd.<br>Kolom scheidings teken is op dit moment alleen toegestaan voor de toewijzing van gegevens stromen, maar niet voor het kopiëren van een activiteit.  | No       |
-| rowDelimiter     | Het afzonderlijke teken of ' \r\n ' die wordt gebruikt om rijen in een bestand te scheiden. <br>De standaard waarde is een van de volgende waarden **voor lezen: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij** het toewijzen van gegevens stroom en de Kopieer activiteit respectievelijk. <br>Als het scheidings teken van de rij is ingesteld op geen scheidings teken (lege reeks), moet het kolom scheidings teken worden ingesteld als geen scheidings teken (lege teken reeks), wat betekent dat de gehele inhoud als één waarde wordt behandeld.<br>Op dit moment wordt het rijnummer als lege teken reeks alleen ondersteund voor het toewijzen van gegevens stroom, maar niet voor het kopiëren van de activiteit. | No       |
-| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"` . <br>Voor het toewijzen van gegevens stroom `quoteChar` kan geen lege teken reeks zijn. <br>Voor kopieer activiteit, als `quoteChar` is gedefinieerd als lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarde is opgenomen, en `escapeChar` wordt gebruikt om het scheidings teken van de kolom en zichzelf te escapenen. | No       |
-| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back `\` slash **. <br>Voor het toewijzen van gegevens stroom `escapeChar` kan geen lege teken reeks zijn. <br/>Voor kopieer activiteit geldt `escapeChar` dat als is gedefinieerd als lege teken reeks, de `quoteChar` moet worden ingesteld als een lege teken reeks, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | No       |
-| firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij moet worden behandeld/gemaakt als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard). | No       |
-| nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | No       |
-| encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' VS-ASCII ', ' UTF-7 ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737 "," IBM775 "," IBM850 "," IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 ', ' IBM863 ', ' IBM864 ', ' IBM865 ', ' IBM869 ', ' IBM870 ', ' IBM01140 ', ' IBM01141 ', ' IBM01142 ', ' IBM01143 ', ' IBM01144 ', IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Opmerking toewijzing gegevens stroom ondersteunt geen UTF-7-code ring. | No       |
-| compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. De standaard waarde is niet gecomprimeerd. <br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '. <br>**Opmerking** wanneer u de Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden standaard bestanden uitgepakt naar de map:. `<path specified in dataset>/<folder named as source zip file>/` Gebruik de `preserveZipFileNameAsFolder` bron van de [Kopieer activiteit](#delimited-text-as-source) om te bepalen of de zip-bestands naam moet worden behouden als mapstructuur. | No       |
-| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | No       |
+| type             | De eigenschap type van de DataSet moet worden ingesteld op **DelimitedText**. | Ja      |
+| location         | Locatie-instellingen van bestand (en). Elke connector op basis van bestanden heeft een eigen locatie type en ondersteunde eigenschappen onder `location` .  | Ja      |
+| columnDelimiter  | De teken (s) die worden gebruikt voor het scheiden van kolommen in een bestand. <br>De standaard waarde is **een `,` komma **. Wanneer het kolom scheidings teken is gedefinieerd als lege reeks, wat betekent dat er geen scheidings teken is, wordt de hele regel als één kolom beschouwd.<br>Kolom scheidings teken is op dit moment alleen toegestaan voor de toewijzing van gegevens stromen, maar niet voor het kopiëren van een activiteit.  | Nee       |
+| rowDelimiter     | Het afzonderlijke teken of ' \r\n ' die wordt gebruikt om rijen in een bestand te scheiden. <br>De standaard waarde is een van de volgende waarden **voor lezen: ["\r\n", "\r", "\n"]** en **"\n" of "\r\n" bij** het toewijzen van gegevens stroom en de Kopieer activiteit respectievelijk. <br>Als het scheidings teken van de rij is ingesteld op geen scheidings teken (lege reeks), moet het kolom scheidings teken worden ingesteld als geen scheidings teken (lege teken reeks), wat betekent dat de gehele inhoud als één waarde wordt behandeld.<br>Op dit moment wordt het rijnummer als lege teken reeks alleen ondersteund voor het toewijzen van gegevens stroom, maar niet voor het kopiëren van de activiteit. | Nee       |
+| quoteChar        | De kolom waarden voor één teken om te citeren als deze kolom scheidings tekens bevat. <br>De standaard waarde is **dubbele aanhalings tekens** `"` . <br>Voor het toewijzen van gegevens stroom `quoteChar` kan geen lege teken reeks zijn. <br>Voor kopieer activiteit, als `quoteChar` is gedefinieerd als lege teken reeks, betekent dit dat er geen aanhalings tekens en kolom waarde is opgenomen, en `escapeChar` wordt gebruikt om het scheidings teken van de kolom en zichzelf te escapenen. | Nee       |
+| escapeChar       | Het enkele teken om aanhalings tekens binnen een waarde in de offerte op te lossen.<br>De standaard waarde is **back `\` slash **. <br>Voor het toewijzen van gegevens stroom `escapeChar` kan geen lege teken reeks zijn. <br/>Voor kopieer activiteit geldt `escapeChar` dat als is gedefinieerd als lege teken reeks, de `quoteChar` moet worden ingesteld als een lege teken reeks, in dat geval dat alle kolom waarden geen scheidings tekens bevatten. | Nee       |
+| firstRowAsHeader | Hiermee wordt aangegeven of de eerste rij moet worden behandeld/gemaakt als een kopregel met namen van kolommen.<br>Toegestane waarden zijn **True** en **False** (standaard). | Nee       |
+| nullValue        | Hiermee wordt de teken reeks representatie van een null-waarde opgegeven. <br>De standaard waarde is een **lege teken reeks**. | Nee       |
+| encodingName     | Het coderings type dat wordt gebruikt voor het lezen/schrijven van test bestanden. <br>Toegestane waarden zijn als volgt: ' UTF-8 ', ' UTF-16 ', ' UTF-16BE ', ' UTF-32 ', ' UTF-32BE ', ' VS-ASCII ', ' UTF-7 ', ' BIG5 ', ' EUC-JP ', ' EUC-KR ', ' GB2312 "," GB18030 "," JOHAB "," SHIFT-JIS "," CP875 "," CP866 "," IBM00858 "," IBM037 "," IBM273 "," IBM437 "," IBM500 "," IBM737 "," IBM775 "," IBM850 "," IBM852 "," IBM855 "," IBM857 "," IBM860 "," IBM861 ', ' IBM863 ', ' IBM864 ', ' IBM865 ', ' IBM869 ', ' IBM870 ', ' IBM01140 ', ' IBM01141 ', ' IBM01142 ', ' IBM01143 ', ' IBM01144 ', IBM01145 "," IBM01146 "," IBM01147 "," IBM01148 "," IBM01149 "," ISO-2022-JP "," ISO-2022-KR "," ISO-8859-1 "," ISO-8859-2 "," ISO-8859-3 "," ISO-8859-4 "," ISO-8859-5 "," ISO-8859-6 "," ISO-8859-7 "," ISO-8859-8 "," ISO-8859-9 "," ISO-8859-13 " , "ISO-8859-15", "WINDOWS-874", "WINDOWS-1250", "WINDOWS-1251", "WINDOWS-1252", "WINDOWS-1253", "WINDOWS-1254", "WINDOWS-1255", "WINDOWS-1256", "WINDOWS-1257", "WINDOWS-1258".<br>Opmerking toewijzing gegevens stroom ondersteunt geen UTF-7-code ring. | Nee       |
+| compressionCodec | De compressie-codec die wordt gebruikt om tekst bestanden te lezen/schrijven. <br>Toegestane waarden zijn **bzip2**, **gzip**, **Deflate**, **ZipDeflate**, **Snappy**of **LZ4**. De standaard waarde is niet gecomprimeerd. <br>**Houd er rekening mee** dat het kopiëren van gegevens op dit moment geen ondersteuning biedt voor ' snappy ' & ' LZ4 ' en dat de toewijzing van data stroom niet wordt ondersteund ' ZipDeflate '. <br>**Opmerking** wanneer u de Kopieer activiteit gebruikt om **ZipDeflate** -bestand (en) te decomprimeren en te schrijven naar Sink-gegevens archief op basis van een bestand, worden standaard bestanden uitgepakt naar de map:. `<path specified in dataset>/<folder named as source zip file>/` Gebruik de `preserveZipFileNameAsFolder` bron van de [Kopieer activiteit](#delimited-text-as-source) om te bepalen of de zip-bestands naam moet worden behouden als mapstructuur. | Nee       |
+| compressionLevel | De compressie ratio. <br>Toegestane waarden zijn **optimaal** of **snelst**.<br>- **Snelst:** De compressie bewerking moet zo snel mogelijk worden voltooid, zelfs als het resulterende bestand niet optimaal is gecomprimeerd.<br>- **Optimaal**: de compressie bewerking moet optimaal worden gecomprimeerd, zelfs als het volt ooien van de bewerking langer duurt. Zie het onderwerp [compressie niveau](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) voor meer informatie. | Nee       |
 
 Hieronder ziet u een voor beeld van een gegevensset met scheidings tekens op Azure Blob Storage:
 
@@ -79,18 +79,18 @@ De volgende eigenschappen worden ondersteund in de sectie *** \* bron \* *** van
 
 | Eigenschap       | Beschrijving                                                  | Vereist |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSource**. | Yes      |
-| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . | No       |
-| storeSettings  | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings` . | No       |
+| type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSource**. | Ja      |
+| formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor **Lees instellingen voor tekst met scheidings tekens** . | Nee       |
+| storeSettings  | Een groep eigenschappen voor het lezen van gegevens uit een gegevens archief. Elke connector op basis van een bestand heeft zijn eigen ondersteunde Lees instellingen onder `storeSettings` . | Nee       |
 
 Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** onder `formatSettings` :
 
 | Eigenschap      | Beschrijving                                                  | Vereist |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSettings**. | Yes      |
-| skipLineCount | Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. <br>Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. | No       |
-| compressionProperties | Een groep eigenschappen voor het decomprimeren van gegevens voor een bepaalde compressie-codec. | No       |
-| preserveZipFileNameAsFolder<br>(*onder `compressionProperties` *) | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur. Als deze eigenschap is ingesteld op True (standaard) Data Factory worden uitgepakte bestanden naar; genoteerd `<path specified in dataset>/<folder named as source zip file>/` . Als u deze instelt op ONWAAR Data Factory, worden uitgepakte bestanden rechtstreeks naar opgeslagen `<path specified in dataset>` .  | No |
+| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSettings**. | Ja      |
+| skipLineCount | Hiermee wordt het aantal **niet-lege** rijen aangegeven dat moet worden overgeslagen bij het lezen van gegevens van invoer bestanden. <br>Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. | Nee       |
+| compressionProperties | Een groep eigenschappen voor het decomprimeren van gegevens voor een bepaalde compressie-codec. | Nee       |
+| preserveZipFileNameAsFolder<br>(*onder `compressionProperties` *) | Van toepassing wanneer de invoer-gegevensset is geconfigureerd met **ZipDeflate** -compressie. Hiermee wordt aangegeven of de naam van het bron-zip-bestand tijdens het kopiëren moet worden bewaard als mapstructuur. Als deze eigenschap is ingesteld op True (standaard) Data Factory worden uitgepakte bestanden naar; genoteerd `<path specified in dataset>/<folder named as source zip file>/` . Als u deze instelt op ONWAAR Data Factory, worden uitgepakte bestanden rechtstreeks naar opgeslagen `<path specified in dataset>` .  | Nee |
 
 ```json
 "activities": [
@@ -126,20 +126,76 @@ De volgende eigenschappen worden ondersteund in het gedeelte *** \* sink \* *** 
 
 | Eigenschap       | Beschrijving                                                  | Vereist |
 | -------------- | ------------------------------------------------------------ | -------- |
-| type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Yes      |
+| type           | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **DelimitedTextSink**. | Ja      |
 | formatSettings | Een groep eigenschappen. Raadpleeg de onderstaande tabel voor het **schrijven van instellingen voor tekst met scheidings tekens** hieronder. |          |
-| storeSettings  | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` .  | No       |
+| storeSettings  | Een groep eigenschappen voor het schrijven van gegevens naar een gegevens archief. Elke connector op basis van bestanden heeft eigen ondersteunde schrijf instellingen onder `storeSettings` .  | Nee       |
 
 Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens** onder `formatSettings` :
 
 | Eigenschap      | Beschrijving                                                  | Vereist                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSettings**. | Yes                                                   |
+| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSettings**. | Ja                                                   |
 | File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld `.csv` `.txt` . Deze moet worden opgegeven wanneer de `fileName` niet is opgegeven in de DelimitedText-gegevensset. Als de bestands naam in de uitvoer gegevensset is geconfigureerd, wordt deze gebruikt als de naam van het sink-bestand en de instelling voor de bestands extensie wordt genegeerd.  | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 
-Meer informatie over de [bron transformatie](data-flow-source.md) en [sink-trans formatie](data-flow-sink.md) in de toewijzing van gegevens stroom.
+Bij het toewijzen van gegevens stromen kunt u in de volgende gegevens archieven lezen en schrijven naar tekst indeling met scheidings tekens: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure data Lake Storage gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)en [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+### <a name="source-properties"></a>Bron eigenschappen
+
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een tekst bron met scheidings tekens. U kunt deze eigenschappen bewerken op het tabblad **bron opties** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Joker tekens | Alle bestanden die overeenkomen met het pad naar Joker tekens worden verwerkt. Onderdrukt de map en het bestandspad die in de gegevensset zijn ingesteld. | nee | Teken reeks [] | wildcardPaths |
+| Basispad voor partitie | Voor bestands gegevens die zijn gepartitioneerd, kunt u een basispad opgeven om gepartitioneerde mappen als kolommen te kunnen lezen | nee | Tekenreeks | partitionRootPath |
+| Lijst met bestanden | Hiermee wordt aangegeven of uw bron verwijst naar een tekst bestand met de bestanden die moeten worden verwerkt | nee | `true` of `false` | File List |
+| Meerregelige rijen | Bevat het bron bestand rijen die meerdere regels omspannen. Meerregelige waarden moeten tussen aanhalings tekens staan. | Nee `true` of`false` | multiLineRow |
+| Kolom voor het opslaan van de bestands naam | Een nieuwe kolom maken met de naam en het pad van het bron bestand | nee | Tekenreeks | rowUrlColumn |
+| Na voltooiing | De bestanden na de verwerking verwijderen of verplaatsen. Bestandspad wordt gestart vanuit de hoofdmap van de container | nee | Verwijderen: `true` of`false` <br> Ga`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Filteren op laatst gewijzigd | Kiezen of bestanden moeten worden gefilterd op basis van het tijdstip waarop deze voor het laatst zijn gewijzigd | nee | Tijdstempel | modifiedAfter <br> modifiedBefore |
+
+### <a name="source-example"></a>Bron voorbeeld
+
+De onderstaande afbeelding is een voor beeld van een tekst bron configuratie met scheidings tekens in het toewijzen van gegevens stromen.
+
+![DelimitedText-bron](media/data-flow/delimited-text-source.png)
+
+Het gekoppelde gegevensstroom script is:
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    multiLineRow: true,
+    wildcardPaths:['*.csv']) ~> CSVSource
+```
+
+### <a name="sink-properties"></a>Eigenschappen van Sink
+
+De onderstaande tabel geeft een lijst van de eigenschappen die worden ondersteund door een tekst filter met scheidings tekens. U kunt deze eigenschappen bewerken op het tabblad **instellingen** .
+
+| Naam | Beschrijving | Vereist | Toegestane waarden | Eigenschap gegevens stroom script |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| De map wissen | Als de doelmap vóór het schrijven is gewist | nee | `true` of `false` | afkappen |
+| Optie Bestands naam | De naamgevings indeling van de gegevens die zijn geschreven. Standaard één bestand per partitie in de indeling`part-#####-tid-<guid>` | nee | Patroon: teken reeks <br> Per partitie: teken reeks [] <br> Als gegevens in kolom: teken reeks <br> Uitvoer naar één bestand:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Alle offertes | Alle waarden tussen aanhalings tekens plaatsen | nee | `true` of `false` | quoteAll |
+
+### <a name="sink-example"></a>Sink-voor beeld
+
+De onderstaande afbeelding is een voor beeld van een configuratie met scheidings tekens voor tekst in het toewijzen van gegevens stromen.
+
+![DelimitedText-Sink](media/data-flow/delimited-text-sink.png)
+
+Het gekoppelde gegevensstroom script is:
+
+```
+CSVSource sink(allowSchemaDrift: true,
+    validateSchema: false,
+    truncate: true,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> CSVSink
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

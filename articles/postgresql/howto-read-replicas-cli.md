@@ -5,17 +5,28 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e9be14548704557b4bdd39119294671852040348
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76774805"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636577"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Maak en beheer Lees replica's vanuit Azure CLI, REST API
 
 In dit artikel leert u hoe u in Azure Database for PostgreSQL Lees replica's maakt en beheert met behulp van de Azure CLI en REST API. Zie het [overzicht](concepts-read-replicas.md)voor meer informatie over het lezen van replica's.
+
+## <a name="azure-replication-support"></a>Ondersteuning voor Azure-replicatie
+Het [lezen van replica's](concepts-read-replicas.md) en [logische decodering](concepts-logical.md) is beide afhankelijk van het post gres-logboek (write-Ahead) (Wal) voor informatie. Deze twee functies hebben verschillende niveaus van logboek registratie nodig van post gres. Voor logische decodering is een hoger niveau van logboek registratie vereist dan bij het lezen van replica's.
+
+Als u het juiste niveau van logboek registratie wilt configureren, gebruikt u de Azure Replication support-para meter. Ondersteuning voor Azure-replicatie heeft drie instellings opties:
+
+* **Uit** : Hiermee wordt de minste informatie in de wal geplaatst. Deze instelling is niet beschikbaar op de meeste Azure Database for PostgreSQL-servers.  
+* **Replica** : uitgebreidere dan **uit**. Dit is het minimale registratie niveau dat nodig is voor het werken met [replica's](concepts-read-replicas.md) . Deze instelling is de standaard waarde op de meeste servers.
+* **Logisch** -uitgebreidere dan de **replica**. Dit is het minimale registratie niveau voor het werken met logische code ring. Het lezen van replica's werkt ook bij deze instelling.
+
+De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Intern worden met deze para meter de post gres-para meters `wal_level` , `max_replication_slots` en ingesteld `max_wal_senders` .
 
 ## <a name="azure-cli"></a>Azure CLI
 U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
@@ -27,22 +38,20 @@ U kunt met behulp van de Azure CLI Lees replica's maken en beheren.
 
 
 ### <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
-Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen.
 
-De `azure.replication_support` para meter moet worden ingesteld op **replica** op de hoofd server. Wanneer deze statische para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden.
+1. Controleer de waarde van de hoofd server `azure.replication_support` . Dit moet ten minste een REPLICA zijn voor het werken met replica's.
 
-1. Stel `azure.replication_support` in op replica.
+   ```azurecli-interactive
+   az postgres server configuration show --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support
+   ```
+
+2. Als `azure.replication_support` niet ten minste een replica is, stelt u deze in. 
 
    ```azurecli-interactive
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
-> [!NOTE]
-> Als u de fout ' ongeldige waarde gegeven ' krijgt tijdens het instellen van Azure. replication_support vanuit de Azure CLI, is het waarschijnlijk dat uw server standaard al een REPLICA heeft ingesteld. Er wordt voor komen dat deze instelling correct wordt weer gegeven op nieuwere servers waarbij REPLICA de interne standaard is. <br><br>
-> U kunt de stappen voor het voorbereiden van de hoofd stap overs Laan en de replica maken. <br><br>
-> Als u wilt bevestigen dat uw server zich in deze categorie bevindt, gaat u naar de pagina replicatie van de server in de Azure Portal. ' Replicatie uitschakelen ' wordt grijs weer gegeven en ' replica toevoegen ' is actief op de werk balk.
-
-2. Start de server opnieuw op om de wijziging toe te passen.
+3. Start de server opnieuw op om de wijziging toe te passen.
 
    ```azurecli-interactive
    az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -55,8 +64,8 @@ De opdracht [AZ post gres Server replica Create](/cli/azure/postgres/server/repl
 | Instelling | Voorbeeldwaarde | Beschrijving  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  De resource groep waar de replica-server wordt gemaakt.  |
-| name | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |
-| source-server | mydemoserver | De naam of bron-ID van de bestaande hoofd server waaruit moet worden gerepliceerd. |
+| naam | mydemoserver-replica | De naam van de nieuwe replica server die wordt gemaakt. |
+| source-server | mydemoserver | De naam of bron-ID van de bestaande hoofd server waaruit moet worden gerepliceerd. Gebruik de resource-ID als u wilt dat de replica en de resource groepen van de hoofd groep verschillend zijn. |
 
 In het CLI-voor beeld hieronder wordt de replica gemaakt in dezelfde regio als de Master.
 
@@ -64,7 +73,7 @@ In het CLI-voor beeld hieronder wordt de replica gemaakt in dezelfde regio als d
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-Gebruik de `--location` para meter om een lees replica te maken. In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
+Gebruik de para meter om een lees replica te maken `--location` . In het CLI-voor beeld hieronder wordt de replica in VS West gemaakt.
 
 ```azurecli-interactive
 az postgres server replica create --name mydemoserver-replica --source-server mydemoserver --resource-group myresourcegroup --location westus
@@ -109,11 +118,14 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 U kunt met behulp van de [Azure rest API](/rest/api/azure/)Lees replica's maken en beheren.
 
 ### <a name="prepare-the-master-server"></a>De hoofd server voorbereiden
-Deze stappen moeten worden gebruikt om een hoofd server voor te bereiden in de lagen Algemeen of geoptimaliseerd voor geheugen.
 
-De `azure.replication_support` para meter moet worden ingesteld op **replica** op de hoofd server. Wanneer deze statische para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden.
+1. Controleer de waarde van de hoofd server `azure.replication_support` . Dit moet ten minste een REPLICA zijn voor het werken met replica's.
 
-1. Stel `azure.replication_support` in op replica.
+   ```http
+   GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01
+   ```
+
+2. Als `azure.replication_support` niet ten minste een replica is, stelt u deze in.
 
    ```http
    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}/configurations/azure.replication_support?api-version=2017-12-01

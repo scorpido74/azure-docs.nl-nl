@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200125"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607343"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Exemplaar-Id's voor virtuele machines van Azure VM-schaal sets begrijpen
 In dit artikel worden exemplaar-Id's beschreven voor schaal sets en de verschillende manieren waarop ze zich bevinden.
@@ -23,7 +23,7 @@ In dit artikel worden exemplaar-Id's beschreven voor schaal sets en de verschill
 
 Elke virtuele machine in een schaalset haalt een exemplaar-ID op die een unieke identificatie heeft. Deze exemplaar-ID wordt in de schaalset-Api's gebruikt om bewerkingen uit te voeren op een specifieke virtuele machine in de schaalset. U kunt bijvoorbeeld een specifieke exemplaar-ID opgeven voor het opnieuw instellen van de installatie kopie bij gebruik van de Reimage-API:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (Zie de [rest API documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)voor meer informatie)
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Zie de [rest API documentatie](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)voor meer informatie)
 
 Power shell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Zie de [Power shell-documentatie](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm)voor meer informatie)
 

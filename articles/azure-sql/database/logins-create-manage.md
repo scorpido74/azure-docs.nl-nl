@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220558"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605095"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ Op dit punt wordt de server of het beheerde exemplaar alleen geconfigureerd voor
 
   - Maak een extra SQL-aanmelding in de hoofd database.
   - Voeg de aanmelding toe aan de [vaste serverrol sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) met de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) . Deze aanmelding heeft volledige beheerders machtigingen.
-  - U kunt ook een [Azure AD-aanmeldings](authentication-aad-configure.md)#provision-Azure-AD-admin-SQL-Managed-instance) maken met behulp van de syntaxis voor het maken van een [aanmelding](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
+  - U kunt ook een [Azure AD-aanmelding](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) maken met de syntaxis voor het maken van een [aanmelding](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
 
 - **Maak in SQL Database SQL-aanmeldingen met beperkte beheerders machtigingen**
 

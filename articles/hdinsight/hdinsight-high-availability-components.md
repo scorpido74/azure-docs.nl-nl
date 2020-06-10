@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069632"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609162"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Services met hoge Beschik baarheid die worden ondersteund door Azure HDInsight
 
  HDInsight is ontwikkeld met een unieke architectuur voor hoge Beschik baarheid (HA) van essentiële services, zodat u een optimale Beschik baarheid kunt bieden voor uw analyse onderdelen. Sommige onderdelen van deze architectuur zijn ontwikkeld door micro soft om automatische failover te bieden. Andere onderdelen zijn standaard Apache-onderdelen die zijn geïmplementeerd ter ondersteuning van specifieke services. In dit artikel wordt de architectuur van het service model HA in HDInsight beschreven, hoe HDInsight failover ondersteunt voor HA-Services en best practices voor het herstellen van andere service onderbrekingen.
+ 
+> [!NOTE]
+> Afwijking-vrije communicatie
+>
+> Micro soft biedt ondersteuning voor een gevarieerde en inbegrips omgeving. Dit artikel bevat verwijzingen naar het woord _Slave_. De micro soft- [stijl gids voor beschik bare communicatie](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) herkent deze als een uitsluitend woord. Het woord wordt in dit artikel gebruikt voor consistentie omdat het momenteel het woord is dat wordt weer gegeven in de software. Wanneer de software is bijgewerkt om het woord te verwijderen, wordt dit artikel zodanig bijgewerkt dat het in uitlijning is.
+>
+
 
 ## <a name="high-availability-infrastructure"></a>Infra structuur met hoge Beschik baarheid
 
@@ -48,9 +55,9 @@ In de volgende secties vindt u meer informatie over de manier waarop deze servic
 
 Micro soft biedt ondersteuning voor de vier Apache-Services in de volgende tabel in HDInsight-clusters. Om ze te onderscheiden van services met hoge Beschik baarheid die worden ondersteund door onderdelen van Apache, worden de *Services van HDINSIGHT ha*genoemd.
 
-| Service | Clusterknooppunten | Cluster typen | Doel |
+| Service | Clusterknooppunten | Cluster typen | Functie |
 |---|---|---|---|
-| Apache Ambari-server| Actieve hoofd knooppunt | Alle | Bewaakt en beheert het cluster.|
+| Apache Ambari-server| Actieve hoofd knooppunt | Alles | Bewaakt en beheert het cluster.|
 | Tijdlijn server van de toepassing voor Apache-GARENs | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt fout opsporingsgegevens over garen taken die op het cluster worden uitgevoerd.|
 | Taak geschiedenis server voor Hadoop-MapReduce | Actieve hoofd knooppunt | Alle behalve Kafka | Onderhoudt gegevens van fout opsporing voor MapReduce-taken.|
 | Apache Livy | Actieve hoofd knooppunt | Spark | Maakt eenvoudige interactie met een Spark-cluster mogelijk via een REST-interface |

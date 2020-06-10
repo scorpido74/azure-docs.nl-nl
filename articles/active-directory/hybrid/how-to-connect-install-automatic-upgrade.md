@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324212"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635812"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische upgrade
 Deze functie is geïntroduceerd in build [1.1.105.0 (uitgebracht op februari 2016)](reference-connect-version-history.md#111050).  Deze functie is bijgewerkt in [Build 1.1.561](reference-connect-version-history.md#115610) en ondersteunt nu aanvullende scenario's die voorheen niet werden ondersteund.
@@ -37,7 +37,7 @@ Automatische upgrade is standaard ingeschakeld voor het volgende:
 
 De huidige status van automatische upgrade kan worden weer gegeven met de Power shell-cmdlet `Get-ADSyncAutoUpgrade` . Het heeft de volgende statussen:
 
-| Staat | Opmerking |
+| Status | Opmerking |
 | --- | --- |
 | Ingeschakeld |Automatische upgrade is ingeschakeld. |
 | Onderbroken |Alleen ingesteld door het systeem. Het systeem komt **momenteel niet** in aanmerking voor automatische upgrades. |
@@ -50,12 +50,16 @@ Automatische upgrade maakt gebruik van Azure AD Connect Health voor de upgrade-i
 
 Als de **Synchronization Service Manager** gebruikers interface op de server wordt uitgevoerd, wordt de upgrade onderbroken totdat de gebruikers interface is gesloten.
 
-## <a name="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Probleemoplossing
 Als de installatie van uw verbinding niet werkt zoals verwacht, voert u de volgende stappen uit om erachter te komen wat er mis kan zijn.
 
 Eerst moet u niet verwachten dat er wordt geprobeerd de automatische upgrade uit te voeren op de eerste dag dat een nieuwe versie wordt uitgebracht. Er is opzettelijk een wille keurige aselecte manier voordat een upgrade wordt uitgevoerd en er wordt geen waarschuwing verzonden als uw installatie niet onmiddellijk wordt bijgewerkt.
 
 Als u denkt dat er iets niet klopt, voert u eerst uit `Get-ADSyncAutoUpgrade` om ervoor te zorgen dat automatische upgrade is ingeschakeld.
+
+Als de status is onderbroken, kunt u de gebruiken `Get-ADSyncAutoUpgrade -Detail` om de reden weer te geven.  De blokkerings reden kan een teken reeks waarde bevatten, maar bevat meestal de teken reeks waarde van de UpgradeResult, dat wil zeggen, `UpgradeNotSupportedNonLocalDbInstall` of `UpgradeAbortedAdSyncExeInUse` .  Een samengestelde waarde kan ook worden geretourneerd, zoals `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` .
+
+Het is ook mogelijk om een resultaat te krijgen dat geen UpgradeResult is, dat wil zeggen ' AADHealthEndpointNotDefined ' of ' DirSyncInPlaceUpgradeNonLocalDb '.
 
 Zorg er vervolgens voor dat u de vereiste Url's hebt geopend in uw proxy of firewall. Automatische updates maakt gebruik van Azure AD Connect Health zoals beschreven in het [overzicht](#overview). Als u een proxy gebruikt, zorg er dan voor dat de status is geconfigureerd voor het gebruik van een [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Test ook de [status verbinding](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) met Azure AD.
 
