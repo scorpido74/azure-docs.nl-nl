@@ -155,6 +155,8 @@
           displayname: VM
     - name: Beheren en configureren
       items:
+        - name: Op schaal implementeren
+          href: platform/deploy-scale.md
         - name: Rolmachtigingen en -beveiliging
           href: platform/roles-permissions-security.md
         - name: IP-adressen

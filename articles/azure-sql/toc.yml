@@ -967,8 +967,6 @@
                   items:
                     - name: CLI voor Azure SQL-VM
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Azure-portalsjabloon
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Azure-quickstartsjablonen
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Meerdere regio's

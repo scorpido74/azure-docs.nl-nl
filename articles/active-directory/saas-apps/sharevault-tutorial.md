@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/12/2020
+ms.date: 06/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9013fe7b05467400afc300bd08c92eedc95ed0e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7b8fc62744b8e0f4f088522bdef5fb484aa7a8d
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662187"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465436"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ShareVault
 
@@ -65,7 +65,7 @@ Configureer en test eenmalige aanmelding van Azure AD met ShareVault met behulp 
 Voltooi de volgende bouwstenen om eenmalige aanmelding van Azure AD met ShareVault te configureren en te testen:
 
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
     1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[ShareVault-eenmalige aanmelding configureren](#configure-sharevault-sso)** : als u de instellingen voor eenmalige aanmelding aan de toepassingszijde wilt configureren.
     1. **[Een Sharevault-testgebruiker maken](#create-sharevault-test-user)** : als u een equivalent van B.Simon in ShareVault wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
@@ -102,7 +102,7 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     | ------------- | --------- |
     | sv.svid |  < `svid number` > |
     | sv.firstname | user.givenname |
-    | user.lastname | user.surname |
+    | sv.lastname | user.surname |
     | sv.email | user.userprincipalname |
 
 1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
@@ -111,9 +111,9 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
@@ -136,7 +136,7 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-sharevault-sso"></a>Eenmalige aanmelding voor ShareVault configureren

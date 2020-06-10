@@ -1,6 +1,6 @@
 ---
-title: CLI-voor beeld-kopiëren-Azure SQL database-nieuwe server
-description: Azure CLI-voorbeeld script om een SQL database naar een nieuwe server te kopiëren
+title: 'Azure CLI: Database kopiëren in Azure SQL Database naar nieuwe server'
+description: Azure CLI-voorbeeldscript om een database in Azure SQL Database te kopiëren naar een nieuwe server
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067481"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022689"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>CLI gebruiken om een SQL database naar een nieuwe server te kopiëren
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>CLI gebruiken om een database in Azure SQL Database te kopiëren naar een nieuwe server
 
-In dit voor beeld van Azure CLI-script wordt een kopie gemaakt van een bestaande data base in een nieuwe server.
+Met dit Azure CLI-voorbeeldscript wordt een kopie van een bestaande database gemaakt in een nieuwe server.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -42,23 +42,23 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resourcegroep en alle resources die eraan zijn gekoppeld te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 az group delete --name $targetResource
 ```
 
-## <a name="sample-reference"></a>Voorbeeld verwijzing
+## <a name="sample-reference"></a>Voorbeeldverwijzing
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [AZ SQL DB Copy](/cli/azure/sql/db#az-sql-db-copy) | Hiermee maakt u een kopie van een database die gebruikmaakt van de momentopname op de huidige tijd. |
+| [az sql db copy](/cli/azure/sql/db#az-sql-db-copy) | Hiermee maakt u een kopie van een database die gebruikmaakt van de momentopname op de huidige tijd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../sql-database-cli-samples.md).
+Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

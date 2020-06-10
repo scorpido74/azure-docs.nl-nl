@@ -1,60 +1,61 @@
 ---
 title: SQL BACPAC-bestanden met sjablonen importeren
-description: Meer informatie over het gebruik van Azure SQL Database extensies om SQL BACPAC-bestanden te importeren met Azure Resource Manager-sjablonen.
+description: Meer informatie over het gebruik van Azure SQL Database-extensies om SQL BACPAC-bestanden te importeren met Azure Resource Manager-sjablonen.
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 69e2b25a16a984445a32f884fab5caec6651df32
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80754323"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018392"
 ---
-# <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Zelf studie: SQL BACPAC-bestanden met ARM-sjablonen importeren
+# <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Zelfstudie: SQL BACPAC-bestanden met ARM-sjablonen importeren
 
-Meer informatie over het gebruik van Azure SQL Database-extensies voor het importeren van een BACPAC-bestand met Azure Resource Manager-sjablonen (ARM). Implementatie artefacten zijn alle bestanden, naast de hoofd sjabloon bestanden, die nodig zijn om een implementatie te volt ooien. Het BACPAC-bestand is een artefact.
+Meer informatie over het gebruik van Azure SQL Database-extensies om een BACPAC-bestand te importeren met Azure Resource Manager-sjablonen (ARM). Implementatieartefacten zijn, naast de hoofdsjabloonbestanden, bestanden die vereist zijn om een implementatie te voltooien. Het BACPAC-bestand is een artefact.
 
-In deze zelf studie maakt u een sjabloon voor het implementeren van een Azure SQL-Server en een SQL database en het importeren van een BACPAC-bestand. Zie [zelf studie: extensies voor virtuele machines implementeren met arm-sjablonen](./template-tutorial-deploy-vm-extensions.md)voor meer informatie over het implementeren van extensies van virtuele Azure-machines met behulp van arm-sjablonen.
+In deze zelfstudie maakt u een sjabloon voor het implementeren van een [logische SQL-server](../../azure-sql/database/logical-servers.md) en één database, en importeert u een BACPAC-bestand. Voor informatie over het implementeren van extensies van virtuele Azure-machines met behulp van ARM-sjablonen, raadpleegt u [Zelfstudie: Extensies van virtuele machines implementeren met ARM-sjablonen](./template-tutorial-deploy-vm-extensions.md).
 
 Deze zelfstudie bestaat uit de volgende taken:
 
 > [!div class="checklist"]
-> * Bereid een BACPAC-bestand voor.
-> * Open een Quick Start-sjabloon.
-> * Bewerk de sjabloon.
-> * Implementeer de sjabloon.
-> * Controleer de implementatie.
+>
+> * Een BACPAC-bestand voorbereiden.
+> * Een quickstartsjabloon openen.
+> * De sjabloon bewerken.
+> * De sjabloon implementeren.
+> * De implementatie controleren.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* Visual Studio Code met de extensie Resource Manager Tools. Zie [Visual Studio code gebruiken om arm-sjablonen te maken](./use-vs-code-to-create-template.md).
-* Gebruik een gegenereerd wacht woord voor het beheerders account van Azure SQL Server om de beveiliging te verbeteren. Hier volgt een voor beeld dat u kunt gebruiken om een wacht woord te genereren:
+* Visual Studio Code met de extensie Resource Manager Tools. Raadpleeg [Visual Studio Code gebruiken om ARM-sjablonen te maken](./use-vs-code-to-create-template.md).
+* Gebruik een gegenereerd wachtwoord voor het serverbeheerdersaccount om de beveiliging te verbeteren. Hierna volgt een voorbeeld dat u kunt gebruiken om een wachtwoord te genereren:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [zelf studie: Azure Key Vault integreren in arm-sjabloon implementatie](./template-tutorial-use-key-vault.md)voor meer informatie. We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
+    Azure Key Vault is ontworpen om cryptografische sleutels en andere geheimen te beveiligen. Zie [Zelfstudie: Azure Key Vault integreren in ARM-sjabloonimplementatie](./template-tutorial-use-key-vault.md). We raden u ook aan om uw wachtwoord elke drie maanden te wijzigen.
 
 ## <a name="prepare-a-bacpac-file"></a>Een BACPAC-bestand voorbereiden
 
-Een BACPAC-bestand wordt gedeeld in [github](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een Azure SQL-database exporteren naar een BACPAC-bestand](../../sql-database/sql-database-export.md) als u een eigen account wilt maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
+Een BACPAC-bestand wordt gedeeld in [GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac). Zie [Een Azure SQL-database exporteren naar een BACPAC-bestand](../../azure-sql/database/database-export.md) als u een eigen account wilt maken. Als u ervoor kiest het bestand naar uw eigen locatie te publiceren, moet u de sjabloon later in de zelfstudie bijwerken.
 
-Het BACPAC-bestand moet worden opgeslagen in een Azure Storage-account voordat het kan worden geïmporteerd met behulp van een ARM-sjabloon. Het volgende Power shell-script bereidt het BACPAC-bestand voor met de volgende stappen:
+Het BACPAC-bestand moet worden opgeslagen in een Azure Storage-account voordat het kan worden geïmporteerd met behulp van een ARM-sjabloon. Met het volgende PowerShell-script bereidt u het BACPAC-bestand voor met de volgende stappen:
 
 * Het BACPAC-bestand downloaden.
 * Een Azure Storage-account maken.
-* Maak een BLOB-container voor het opslag account.
+* Een blobcontainer in een opslagaccount maken.
 * Het BACPAC-bestand uploaden naar de container.
-* De sleutel van het opslag account en de URL van de BLOB weer geven.
+* De sleutel van het opslagaccount en de URL van de blob weergeven.
 
-1. Selecteer **proberen** om de Cloud shell te openen. Plak het volgende Power shell-script in het shell-venster.
+1. Selecteer **Uitproberen** om de Cloud shell te openen. Plak het volgende PowerShell-script in het shell-venster.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -94,13 +95,13 @@ Het BACPAC-bestand moet worden opgeslagen in een Azure Storage-account voordat h
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Noteer de sleutel van het opslag account en de URL van het BACPAC-bestand. U hebt deze waarden nodig wanneer u de sjabloon implementeert.
+1. Noteer de sleutel van het opslagaccount en de URL van het BACPAC-bestand. U hebt deze waarden nodig wanneer u de sjabloon gaat implementeren.
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+De sjabloon die in deze zelfstudie wordt gebruikt, wordt opgeslagen in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
-1. Selecteer **bestand** > **openen**in Visual Studio code.
+1. Selecteer in Visual Studio Code **Bestand** > **Bestand openen**.
 1. Plak de volgende URL in **Bestandsnaam**:
 
     ```url
@@ -109,17 +110,17 @@ De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github]
 
 1. Selecteer **Openen** om het bestand te openen.
 
-    Er zijn twee resources gedefinieerd in de sjabloon:
+    Er worden twee resources gedefinieerd in de sjabloon:
 
    * `Microsoft.Sql/servers`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/servers).
    * `Microsoft.SQL.servers/databases`. Zie de [sjabloonverwijzing](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
 
         Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
-1. Selecteer **bestand** > **Opslaan als** om een kopie van het bestand op te slaan op de lokale computer met de naam *azuredeploy. json*.
+1. Selecteer **Bestand** > **Opslaan als** om het bestand op uw lokale computer op te slaan als *azuredeploy.json*.
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
-1. Voeg twee extra para meters aan het einde van de sectie **para meters** toe om de sleutel van het opslag account en de BACPAC-URL in te stellen.
+1. Voeg twee extra parameters toe aan het einde van de sectie **parameters** om de sleutel van het opslagaccount en de BACPAC-URL in te stellen.
 
     ```json
         "storageAccountKey": {
@@ -136,13 +137,13 @@ De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github]
         }
     ```
 
-    Voeg een komma toe na **adminPassword**. Als u het JSON-bestand wilt Format teren vanuit Visual Studio code, selecteert u SHIFT + ALT + F.
+    Voeg een komma toe na **adminPassword**. Als u het JSON-bestand wilt opmaken vanuit Visual Studio Code, selecteert u Shift+Alt+F.
 
-    Zie [een BACPAC-bestand voorbereiden](#prepare-a-bacpac-file)om deze twee waarden op te halen.
+    Zie [Een BACPAC-bestand voorbereiden](#prepare-a-bacpac-file) om deze twee waarden op te halen.
 
 1. Voeg twee extra resources aan de sjabloon toe.
 
-    * Als u de extensie SQL Database wilt toestaan om BACPAC-bestanden te importeren, moet u verkeer van Azure-Services toestaan. Voeg de volgende firewall regel definitie toe onder de SQL Server-definitie:
+    * Als u wilt toestaan dat de SQL Database-extensie BACPAC-bestanden kan importeren, moet u verkeer vanaf Azure-services toestaan. Voeg de volgende firewallregeldefinitie toe onder de serverdefinitie:
 
         ```json
         "resources": [
@@ -164,7 +165,7 @@ De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github]
 
         De sjabloon ziet er als volgt uit:
 
-        ![Sjabloon met definitie van firewall regel](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
+        ![Sjabloon met definitie van firewallregel](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
 
     * Voeg met de volgende JSON een SQL Database-extensieresource toe aan de databasedefinitie:
 
@@ -191,15 +192,15 @@ De sjabloon die in deze zelf studie wordt gebruikt, wordt opgeslagen in [github]
 
         De sjabloon ziet er als volgt uit:
 
-        ![Sjabloon met SQL Database extensie](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
+        ![Sjabloon met SQL Database-extensie](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
         Zie de [verwijzing voor SQL Database-extensies](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions) voor meer informatie over de resourcedefinitie. Hier volgen enkele belangrijke elementen:
 
         * **dependsOn**: de extensieresource moet worden gemaakt nadat de SQL-database is gemaakt.
-        * **storageKeyType**: Geef het type van de opslag sleutel op die moet worden gebruikt. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Gebruik `StorageAccessKey` in deze zelf studie.
-        * **storageKey**: Geef de sleutel op voor het opslag account waarin het BACPAC-bestand wordt opgeslagen. Als het type opslag sleutel is `SharedAccessKey`, moet het worden voorafgegaan door een '? '.
-        * **storageUri**: Geef de URL op van het BACPAC-bestand dat is opgeslagen in een opslag account.
-        * **administratorLoginPassword**: het wachtwoord van de SQL-beheerder. Gebruik een gegenereerd wachtwoord. Zie [vereisten](#prerequisites).
+        * **storageKeyType**: Geef het type van de te gebruiken opslagsleutel op. De waarde kan `StorageAccessKey` of `SharedAccessKey` zijn. Gebruik in deze zelfstudie `StorageAccessKey`.
+        * **storageKey**: Geef de sleutel op voor het opslagaccount waarin het BACPAC-bestand wordt opgeslagen. Als het type opslagsleutel `SharedAccessKey` is, moet deze worden voorafgegaan door een '?'.
+        * **storageUri**: Geef de URL op van het BACPAC-bestand dat is opgeslagen in een opslagaccount.
+        * **administratorLoginPassword**: het wachtwoord van de SQL-beheerder. Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 De voltooide sjabloon ziet er als volgt uit:
 
@@ -232,30 +233,30 @@ New-AzResourceGroupDeployment `
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-U kunt dezelfde project naam gebruiken die u hebt gebruikt bij het voorbereiden van het BACPAC-bestand, zodat alle resources worden opgeslagen in dezelfde resource groep. Op deze manier is het eenvoudiger om resource taken te beheren, zoals het opschonen van de resources. Als u dezelfde project naam gebruikt, kunt u de `New-AzResourceGroup` opdracht uit het script verwijderen of antwoord geven op Ja (y) of Nee (n) wanneer u wordt gevraagd of u de bestaande resource groep wilt bijwerken.
+U kunt dezelfde projectnaam gebruiken die u ook hebt gebruikt bij het voorbereiden van het BACPAC-bestand, zodat alle resources worden opgeslagen in dezelfde resourcegroep. Op deze manier is het eenvoudiger om resourcetaken, zoals het opschonen van de resources, te beheren. Als u dezelfde projectnaam gebruikt, kunt u ofwel de opdracht `New-AzResourceGroup` verwijderen uit het script ofwel ja (y) of nee (n) antwoorden wanneer u wordt gevraagd of u de bestaande resourcegroep wilt bijwerken.
 
-Gebruik een gegenereerd wachtwoord. Zie [vereisten](#prerequisites).
+Gebruik een gegenereerd wachtwoord. Zie [Vereisten](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-Als u toegang wilt krijgen tot de SQL-Server vanaf uw client computer, moet u een extra firewall regel toevoegen. Zie [IP-firewall regels maken en beheren](../../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)voor meer informatie.
+U moet een extra firewallregel toevoegen om de server te benaderen vanaf uw clientcomputer. Raadpleeg [IP-firewallregels maken en beheren](../../azure-sql/database/firewall-configure.md#create-and-manage-ip-firewall-rules) voor meer informatie.
 
-Selecteer in de Azure Portal de SQL database van de zojuist geïmplementeerde resource groep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet twee tabellen die zijn geïmporteerd in de-data base.
+Selecteer in Azure Portal de SQL-database in de geïmplementeerde resourcegroep. Selecteer **Query-editor (preview)** en voer vervolgens de beheerdersreferenties in. U ziet dat twee tabellen in de database worden geïmporteerd.
 
-![Query-Editor (preview-versie)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
+![Query-editor (preview)](./media/template-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-query-editor.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt, op door de resourcegroep te verwijderen.
 
-1. Selecteer in het Azure Portal **resource groep** in het menu links.
+1. Selecteer **Resourcegroep** in het linkermenu in Azure Portal.
 1. Voer de naam van de resourcegroep in het veld **Filter by name** in.
-1. Selecteer de naam van de resourcegroep. U ziet in totaal zes resources in de resource groep.
-1. Selecteer **resource groep verwijderen** in het bovenste menu.
+1. Selecteer de naam van de resourcegroep. U ziet in totaal zes resources in de resourcegroep.
+1. Selecteer **Resourcegroep verwijderen** in het bovenste menu.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een SQL-Server en een SQL database geïmplementeerd en een BACPAC-bestand geïmporteerd. Zie voor meer informatie over het oplossen van problemen met sjabloon implementatie:
+In deze zelfstudie hebt u een server en een database geïmplementeerd en een BACPAC-bestand geïmporteerd. Raadpleeg voor meer informatie over het oplossen van problemen met sjabloonimplementatie:
 
 > [!div class="nextstepaction"]
-> [Problemen met ARM-sjabloon implementaties oplossen](./template-tutorial-troubleshoot.md)
+> [Problemen met ARM-sjabloonimplementatie oplossen](./template-tutorial-troubleshoot.md)

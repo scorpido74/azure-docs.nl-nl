@@ -1,5 +1,5 @@
 ---
-title: Zelf studie voor het kopiëren van gegevens naar Azure Data Box via NFS | Microsoft Docs
+title: Zelfstudie voor het kopiëren van gegevens naar Azure Data Box via NFS | Microsoft Docs
 description: Leer hoe u gegevens kopieert naar uw Azure Data Box via NFS
 services: databox
 author: alkohli
@@ -8,14 +8,14 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501824"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219126"
 ---
-# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelf studie: gegevens kopiëren naar Azure Data Box via NFS
+# <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Zelfstudie: Gegevens kopiëren naar Azure Data Box via NFS
 
 Deze zelfstudie beschrijft hoe u verbinding kunt maken en gegevens kunt kopiëren vanaf uw hostcomputer via de lokale gebruikersinterface.
 
@@ -31,10 +31,10 @@ In deze zelfstudie leert u het volgende:
 
 Zorg voordat u begint voor het volgende:
 
-1. U hebt de [zelfstudie: Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
+1. U hebt de zelfstudie [ Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is bijgewerkt naar **Geleverd**.
-3. U hebt een hostcomputer nodig waarop de gegevens staan die u naar de Data Box wilt kopiëren. Op uw hostcomputer moet
-    - Een [ondersteund besturings systeem](data-box-system-requirements.md)uitvoeren.
+3. U hebt een hostcomputer waarop de gegevens staan die u naar de Data Box wilt kopiëren. Op uw hostcomputer moet
+    - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
     - Verbonden zijn met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt, maar dit heeft invloed op de kopieersnelheden. 
 
 ## <a name="connect-to-data-box"></a>Verbinding maken met Data Box
@@ -78,7 +78,7 @@ Voer de volgende stappen uit om Data Box zo te configureren dat toegang tot NFS-
     
     `sudo mount -t nfs -o sec=sys,resvport 10.161.23.130:/Mystoracct_Blob /home/databoxubuntuhost/databox`
 
-    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks naar de *hoofdmap* in het opslag account te kopiëren.
+    **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
 
 ## <a name="copy-data-to-data-box"></a>Gegevens kopiëren naar Data Box
 
@@ -88,13 +88,15 @@ Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopi�
 *  Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die staan beschreven in de [limieten voor Azure-opslag en Data Box](data-box-limits.md). 
 * Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 * We adviseren u om niet SMB en NFS tegelijk te gebruiken of om dezelfde gegevens naar dezelfde eindbestemming in Azure te kopiëren. In dergelijke gevallen kan de definitieve uitkomst niet worden vastgesteld.
-* **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks naar de *hoofdmap* in het opslag account te kopiëren.
-* Bij het opnemen van hoofdletter gevoelige Directory-en bestands namen van een NFS-share naar NFS op Data Box:
-  * Het geval blijft in de naam.
-  * De bestanden zijn niet hoofdletter gevoelig.
+* **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
+* Bij het opnemen van hoofdlettergevoelige map- en bestandsnamen van een NSF-share naar NFS op Data Box:
+  * Blijven de hoofd- en kleine letters behouden in de naam.
+  * De bestanden zijn niet hoofdlettergevoelig.
 
-    Als u bijvoorbeeld kopieert `SampleFile.txt` en `Samplefile.Txt`, wordt het hoofdletter gebruik in de naam bewaard wanneer het wordt gekopieerd naar Data box, maar wordt het tweede bestand overschreven wanneer dit wordt beschouwd als hetzelfde bestand.
-* Zorg ervoor dat u een kopie van de bron gegevens bewaart totdat u kunt bevestigen dat de Data Box uw gegevens heeft overgebracht naar Azure Storage.
+    Als u bijvoorbeeld `SampleFile.txt` en `Samplefile.Txt` kopieert, blijven de hoofd- en kleine letters behouden in de naam als ze wordt gekopieerd naar Data Box, maar het tweede bestand overschrijft het eerste, omdat ze worden gezien als één bestand.
+
+> [!IMPORTANT]
+> Zorg dat u een kopie van de brongegevens in uw on-premises omgeving hebt totdat u kunt bevestigen dat de gegevens met Data Box naar Azure Storage zijn overgebracht.
 
 Gebruik een hulpprogramma voor kopiëren dat op Robocopy lijkt als u een Linux-hostcomputer gebruikt. Voorbeelden van beschikbare alternatieven in Linux zijn [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) en [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -102,31 +104,31 @@ De opdracht `cp` is een van de beste opties om een map te kopiëren. Ga voor mee
 
 Volg deze richtlijnen als u rsync gebruikt voor een kopie met meerdere threads:
 
- - Installeer het **CIFS Utils**- of **NFS Utils**-pakket, afhankelijk van het bestandssysteem dat uw Linux-client gebruikt.
+* Installeer het **CIFS Utils**- of **NFS Utils**-pakket, afhankelijk van het bestandssysteem dat uw Linux-client gebruikt.
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  Installeer **Rsync** en **Parallel** (varieert en is afhankelijk van de gedistribueerde Linux-versie).
+* Installeer **Rsync** en **Parallel** (varieert en is afhankelijk van de gedistribueerde Linux-versie).
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - Maak een koppelpunt.
+* Maak een koppelpunt.
 
     `sudo mkdir /mnt/databox`
 
- - Koppel het volume.
+* Koppel het volume.
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - Spiegel de mapstructuur.  
+* Spiegel de mapstructuur.  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - Kopieer bestanden. 
+* Kopieer bestanden.
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -135,27 +137,25 @@ Volg deze richtlijnen als u rsync gebruikt voor een kopie met meerdere threads:
      We adviseren u om met 16 parallelle kopieën te beginnen en het aantal threads te verhogen op basis van de beschikbare resources.
 
 > [!IMPORTANT]
-> De volgende Linux-bestands typen worden niet ondersteund: symbolische koppelingen, teken bestanden, blok keren van bestanden, sockets en pijp leidingen. Deze bestands typen veroorzaken fouten tijdens de **voorbereiding voor verzending** stap.
+> De volgende Linux-bestandstypen worden niet ondersteund: symbolische koppelingen, tekenbestanden, blokbestanden, sockets en pijpen. Deze bestandstypen veroorzaken fouten tijdens de stap **Voorbereiden voor verzending**.
 
 Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
-    
-   ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Data Box, zoals:
 
 > [!div class="checklist"]
+>
 > * Vereisten
 > * Verbinding maken met Data Box
 > * Gegevens kopiëren naar Data Box
-
 
 Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box naar Microsoft verzendt.
 
 > [!div class="nextstepaction"]
 > [Uw Azure Data Box verzenden naar Microsoft](./data-box-deploy-picked-up.md)
-
