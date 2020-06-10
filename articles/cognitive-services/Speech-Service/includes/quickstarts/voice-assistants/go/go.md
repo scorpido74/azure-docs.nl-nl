@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: 9e41ed6bdc31ce70b2744fa9a87e10c51aaac15a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1b8d557d36b0265e9c32d4af6ca7435697531a50
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673200"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637543"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,7 +29,7 @@ Voordat u aan de slag gaat:
 Werk het bestand go. rest met de nieuwste SDK-versie bij door deze regel toe te voegen
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.0
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
 )
 ```
 

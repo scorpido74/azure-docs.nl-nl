@@ -10,12 +10,13 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193000"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608482"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Zelf studie: persoonlijker gebruiken in azure notebook
 
@@ -91,12 +92,12 @@ Deze waarden hebben een zeer korte duur om wijzigingen in deze zelf studie weer 
 
 ## <a name="set-up-the-azure-notebook"></a>De Azure-notebook instellen
 
-1. Wijzig de kernel in `Python 3.6`.
+1. Wijzig de kernel in `Python 3.6` .
 1. Open het `Personalizer.ipynb`-bestand.
 
 ## <a name="run-notebook-cells"></a>Notebook-cellen uitvoeren
 
-Voer elke uitvoer bare cel uit en wacht totdat deze is geretourneerd. U weet dat het wordt uitgevoerd wanneer de haakjes naast de cel een getal weer geven in plaats `*`van een. In de volgende secties wordt uitgelegd wat elke cel programmatisch en wat u kunt verwachten voor de uitvoer.
+Voer elke uitvoer bare cel uit en wacht totdat deze is geretourneerd. U weet dat het wordt uitgevoerd wanneer de haakjes naast de cel een getal weer geven in plaats van een `*` . In de volgende secties wordt uitgelegd wat elke cel programmatisch en wat u kunt verwachten voor de uitvoer.
 
 ### <a name="include-the-python-modules"></a>De python-modules toevoegen
 
@@ -135,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>De laatste tijd voor het bijwerken van het model ophalen
 
-Wanneer de functie, `get_last_updated`, wordt aangeroepen, wordt de datum en tijd afgedrukt waarop het model is bijgewerkt.
+Wanneer de functie, `get_last_updated` , wordt aangeroepen, wordt de datum en tijd afgedrukt waarop het model is bijgewerkt.
 
 Deze cellen hebben geen uitvoer. De functie voert de laatste model trainings datum uit als deze wordt aangeroepen.
 
@@ -198,7 +199,7 @@ Deze cel
 * Hiermee wordt de wille keurige Seed ingesteld voor de positie gebeurtenis-ID
 * Lees bewerkingen in de JSON-gegevens bestanden
 * calls `get_last_updated` -methode-Learning-beleid is verwijderd in voorbeeld uitvoer
-* methode `get_service_settings` aanroepen
+* methode aanroepen `get_service_settings`
 
 De cel heeft uitvoer van de aanroep naar `get_last_updated` en `get_service_settings` functions.
 
@@ -262,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Problemen met de eerste REST-aanroep oplossen
 
-Deze vorige cel is de eerste cel die aan persoonlijke voor keuren wordt door gebeld. Zorg ervoor dat de REST-status code in de `<Response [200]>`uitvoer is. Als er een fout optreedt, zoals 404, maar u zeker weet dat de bron sleutel en de naam juist zijn, laadt u het notitie blok opnieuw.
+Deze vorige cel is de eerste cel die aan persoonlijke voor keuren wordt door gebeld. Zorg ervoor dat de REST-status code in de uitvoer is `<Response [200]>` . Als er een fout optreedt, zoals 404, maar u zeker weet dat de bron sleutel en de naam juist zijn, laadt u het notitie blok opnieuw.
 
 Zorg ervoor dat het aantal koffie en gebruikers beide vier zijn. Als er een fout optreedt, controleert u of u alle drie de JSON-bestanden hebt geüpload.
 
@@ -389,9 +390,9 @@ def get_reward_from_simulated_data(name, weather, timeofday, prediction):
 
 De volgende cel is het _belangrijkste_ werk van het notitie blok, het ophalen van een wille keurige gebruiker, het ophalen van de lijst met koffie en het verzenden van beide naar de classificatie-API. Vergelijking van de voor spelling met de bekende voor keuren van de gebruiker en vervolgens terugsturen naar de Personaler-service.
 
-De lus wordt uitgevoerd `num_requests` voor tijden. Persoonlijkere het maken van een model vereist een paar duizend aanroepen om te rangschikken.
+De lus wordt uitgevoerd voor `num_requests` tijden. Persoonlijkere het maken van een model vereist een paar duizend aanroepen om te rangschikken.
 
-Hier volgt een voor beeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig, voor een beknoptere keuze. U kunt de volledige JSON voor koffie in `coffee.json`bekijken.
+Hier volgt een voor beeld van de JSON die wordt verzonden naar de Rank-API. De lijst met koffie is niet volledig, voor een beknoptere keuze. U kunt de volledige JSON voor koffie in bekijken `coffee.json` .
 
 JSON verzonden naar de positie-API:
 
@@ -548,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Grafiek resultaten om de verbeteringen te bekijken
 
-Maak een grafiek van de `count` en `rewards`.
+Maak een grafiek van de `count` en `rewards` .
 
 ```python
 def createChart(x, y):

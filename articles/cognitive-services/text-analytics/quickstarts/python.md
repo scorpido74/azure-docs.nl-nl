@@ -10,12 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 7f2a4ff98345aa43dd6a99eafd60ff2d05ee1bee
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 1071f3dabf7148381edecedce495f645c52e748d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378548"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610250"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Quick Start: de python-REST API gebruiken om de Text Analytics cognitieve service aan te roepen 
 <a name="HOLTop"></a>
@@ -70,7 +71,7 @@ Voeg `/text/analytics/v2.1/languages` toe aan het Text Analytics basis-eind punt
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-De payload van de API bestaat uit een lijst met `documents`-Tuples die een `id` en een `text` -kenmerk bevatten. Het `text` kenmerk slaat de tekst die moet worden geanalyseerd en de `id` kan een wille keurige waarde zijn. 
+De payload van de API bestaat uit een lijst met `documents` -Tuples die een `id` en een-kenmerk bevatten `text` . Het `text` kenmerk slaat de tekst die moet worden geanalyseerd en de `id` kan een wille keurige waarde zijn. 
 
 ```python
 documents = {"documents": [
@@ -80,7 +81,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` header en verzend de aanvraag met `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -139,7 +140,7 @@ Als u de sentiment (tussen positieve of negatieve) van een set documenten wilt d
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
-Net als bij het voor beeld van de taal detectie maakt u `documents` een woorden lijst met een sleutel die bestaat uit een lijst met documenten. Elk document is een tuple die bestaat uit de `id`, de te analyseren `text` en de `language` van de tekst. 
+Net als bij het voor beeld van de taal detectie maakt u een woorden lijst met een `documents` sleutel die bestaat uit een lijst met documenten. Elk document is een tuple die bestaat uit de `id`, de te analyseren `text` en de `language` van de tekst. 
 
 ```python
 documents = {"documents": [
@@ -154,7 +155,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` header en verzend de aanvraag met `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -195,7 +196,7 @@ De sentiment-score voor een document ligt tussen 0,0 en 1,0, met een hogere scor
 
 ## <a name="extract-key-phrases"></a>Belangrijke woordgroepen herkennen
  
-Als u de sleutel zinnen uit een reeks documenten wilt extra heren `/text/analytics/v2.1/keyPhrases` , voegt u toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
+Als u de sleutel zinnen uit een reeks documenten wilt extra heren, voegt `/text/analytics/v2.1/keyPhrases` u toe aan het Text Analytics basis-eind punt om de URL voor de taal detectie op te maken. Bijvoorbeeld: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -216,7 +217,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`. 
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` header en verzend de aanvraag met `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -285,7 +286,7 @@ documents = {"documents": [
 ]}
 ```
 
-Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan `Ocp-Apim-Subscription-Key` de header en verzend de aanvraag met `requests.post()`.
+Gebruik de bibliotheek aanvragen om de documenten naar de API te verzenden. Voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key` header en verzend de aanvraag met `requests.post()` .
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
