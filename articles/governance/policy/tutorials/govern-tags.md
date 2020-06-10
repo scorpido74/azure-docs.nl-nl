@@ -1,58 +1,58 @@
 ---
-title: 'Zelf studie: Manage tag governance'
-description: In deze zelf studie gebruikt u het effect wijzigen van Azure Policy om een tag governance model op nieuwe en bestaande resources te maken en af te dwingen.
+title: 'Zelfstudie: Tag governance beheren'
+description: In deze zelfstudie gebruikt u het effect Modify van Azure Policy om een model voor tag-governance model te maken en af te dwingen voor nieuwe en bestaande resources.
 ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759060"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142262"
 ---
-# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelf studie: tag governance met Azure Policy beheren
+# <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelfstudie: Tag-governance beheren met Azure Policy
 
-[Labels](../../../azure-resource-manager/management/tag-resources.md) zijn een belang rijk onderdeel van het organiseren van uw Azure-resources in een taxonomie. Bij het volgen van de [Aanbevolen procedures voor het beheer](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)van labels kunnen Tags de basis vormen voor het Toep assen van uw bedrijfs beleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
-Ongeacht hoe of waarom u tags gebruikt, is het belang rijk dat u deze Tags snel kunt toevoegen, wijzigen en verwijderen in uw Azure-resources. Zie [tag-ondersteuning](../../../azure-resource-manager/management/tag-support.md)als u wilt weten of uw Azure-resource Tags ondersteunt.
+[Tags](../../../azure-resource-manager/management/tag-resources.md) zijn een belangrijk onderdeel bij het organiseren van uw Azure-resources in een taxonomie. Wanneer u de [best practices voor tagbeheer](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources) volgt, kunnen tags de basis vormen voor het toepassen van uw bedrijfsbeleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources).
+Ongeacht hoe of waarom u tags gebruikt, is het belangrijk dat u tags snel kunt toevoegen, wijzigen en verwijderen voor Azure-resources. Zie [Tagondersteuning](../../../azure-resource-manager/management/tag-support.md) als u wilt weten of een Azure-resource ondersteuning biedt voor tags.
 
-Het [wijzigings](../concepts/effects.md#modify) effect van Azure Policy is ontworpen om u te helpen bij het beheer van labels, ongeacht de fase van het resource governance waarin u zich bevindt. **Wijzigen** helpt bij het volgende:
+Het effect [Modify](../concepts/effects.md#modify) van Azure Policy is ontworpen om u te helpen bij de governance van tags, ongeacht de fase van de resource-governance waarin u zich bevindt. **Modify** is handig in deze situaties:
 
-- U hebt nog geen ervaring met de Cloud en hebt geen tag governance
-- Heeft al duizenden resources zonder tag governance
+- U hebt nog geen ervaring met de cloud en beschikt niet over tag-governance
+- U hebt al duizenden resources zonder tag-governance
 - U hebt al een bestaande taxonomie die u moet wijzigen
 
-In deze zelf studie voert u de volgende taken uit:
+In deze zelfstudie voert u de volgende taken uit:
 
 > [!div class="checklist"]
 > - Identificeer de vereisten van uw bedrijf
-> - Elke vereiste toewijzen aan een beleids definitie
-> - De code beleidsregels groeperen in een initiatief
+> - Elke vereiste toewijzen aan een beleidsdefinitie
+> - De tagbeleidsregels groeperen in een initiatief
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u er nog geen hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="identify-requirements"></a>Vereisten identificeren
 
-Net als bij een goede implementatie van governance-besturings elementen, moeten de vereisten afkomstig zijn van uw bedrijfs behoeften en goed begrijpen voordat u technische controles kunt maken. Voor dit scenario zelf studie zijn de volgende items onze zakelijke vereisten:
+Net als bij een goede implementatie van beheeropties voor governance, moeten de vereisten zijn te herleiden naar uw bedrijfsbehoeften en moeten ze volledig duidelijk zijn voordat u technische beheeropties gaat maken. Voor het scenario in deze zelfstudie zijn de volgende items de vereisten van ons bedrijf:
 
-- Twee vereiste labels voor alle resources: _CostCenter_ en _env_
-- _CostCenter_ moet zijn opgenomen in alle containers en afzonderlijke resources
-  - Bronnen nemen toe van de container waarin ze zich bevinden, maar kunnen afzonderlijk worden overschreven
-- _Env_ moet zijn opgenomen in alle containers en afzonderlijke resources
-  - Bronnen bepalen omgeving per container naam schema en kunnen niet worden overschreven
+- Twee vereiste tags voor alle resources: _CostCenter_ en _Env_
+- _CostCenter_ moet bestaan voor alle containers en afzonderlijke resources
+  - Resources nemen kenmerken over van de container waarin ze zich bevinden, maar deze kunnen afzonderlijk worden overschreven
+- _Env_ moet bestaan voor alle containers en afzonderlijke resources
+  - Resources bepalen de omgeving aan de hand van het naamgevingsschema voor containers en mogen niet worden overschreven
   - Alle resources in een container maken deel uit van dezelfde omgeving
 
 ## <a name="configure-the-costcenter-tag"></a>De CostCenter-tag configureren
 
-In termen die specifiek zijn voor een Azure-omgeving die wordt beheerd door Azure Policy, oproep de _CostCenter_ -label vereisten voor het volgende:
+In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, geldt het volgende voor de tag _CostCenter_:
 
-- Niet toestaan dat resource groepen de _CostCenter_ -tag missen
-- Resources wijzigen om de _CostCenter_ -code uit de bovenliggende resource groep toe te voegen wanneer deze ontbreekt
+- Resourcegroepen weigeren die geen tag _CostCenter_ hebben
+- Resources wijzigen om de tag _CostCenter_ toe te voegen vanuit de bovenliggende resourcegroep wanneer de tag ontbreekt
 
-### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Niet toestaan dat resource groepen de CostCenter-tag missen
+### <a name="deny-resource-groups-missing-the-costcenter-tag"></a>Resourcegroepen weigeren die geen tag CostCenter hebben
 
-Omdat de _CostCenter_ voor een resource groep niet kan worden bepaald door de naam van de resource groep, moet de tag zijn gedefinieerd voor de aanvraag om de resource groep te maken. Met de volgende beleids regel met het effect [deny](../concepts/effects.md#deny) wordt voor komen dat resource groepen worden gemaakt of bijgewerkt die geen _CostCenter_ -label hebben:
+Aangezien de _CostCenter_ (kostenplaats) voor een resourcegroep niet kan worden bepaald door de naam van de resourcegroep, moet de tag zijn gedefinieerd in de aanvraag om de resourcegroep te maken. Met de volgende beleidsregel met het effect [Deny](../concepts/effects.md#deny) wordt voorkomen dat er resourcegroepen worden gemaakt of bijgewerkt die geen tag _CostCenter_ hebben:
 
 ```json
 "if": {
@@ -72,11 +72,11 @@ Omdat de _CostCenter_ voor een resource groep niet kan worden bepaald door de na
 ```
 
 > [!NOTE]
-> Omdat deze beleids regel is gericht op een resource groep, moet de _modus_ voor de beleids definitie ' all ' zijn in plaats van ' Indexed '.
+> Omdat deze beleidsregel gericht is op een resourcegroep, moet de _mode_ in de beleidsdefinitie 'All' zijn in plaats van 'Indexed'.
 
-### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Resources wijzigen om de CostCenter-tag over te nemen als deze ontbreken
+### <a name="modify-resources-to-inherit-the-costcenter-tag-when-missing"></a>Resources wijzigen om de CostCenter-tag over te nemen als deze ontbreekt
 
-De tweede _CostCenter_ moet voor alle resources de tag overnemen van de bovenliggende resource groep wanneer deze ontbreekt. Als de tag al is gedefinieerd voor de resource, zelfs als deze afwijkt van de bovenliggende resource groep, moet deze op zichzelf blijven staan. De volgende beleids regel gebruikt u [wijzigen](../concepts/effects.md#modify):
+De tweede vereiste voor _CostCenter_ is dat resources de tag van de bovenliggende resourcegroep moeten overnemen wanneer deze ontbreekt. Als de tag al is gedefinieerd voor de resource, moet deze ongewijzigd blijven, zelfs als de tag afwijkt van die van de bovenliggende resourcegroep. In de volgende beleidsregel wordt het effect [Modify](../concepts/effects.md#modify) gebruikt:
 
 ```json
 "policyRule": {
@@ -100,21 +100,21 @@ De tweede _CostCenter_ moet voor alle resources de tag overnemen van de bovenlig
 }
 ```
 
-Deze beleids regel maakt gebruik van de bewerking **toevoegen** in plaats van **addOrReplace** , omdat we de waarde van tag niet willen wijzigen als deze aanwezig zijn bij het [herstellen](../how-to/remediate-resources.md) van bestaande resources. Ook wordt de `[resourcegroup()]` functie sjabloon gebruikt om de label waarde van de bovenliggende resource groep op te halen.
+In deze beleidsregel wordt de bewerking **add** gebruikt in plaats van **addOrReplace**, aangezien we de waarde van de tag niet willen wijzigen als deze aanwezig is wanneer we bestaande resources gaan [herstellen](../how-to/remediate-resources.md). In de regel wordt ook de sjabloonfunctie `[resourcegroup()]` gebruikt om de tagwaarde van de bovenliggende resourcegroep op te vragen.
 
 > [!NOTE]
-> Omdat deze beleids regel is gericht op resources die labels ondersteunen, moet de _modus_ voor de beleids definitie Indexed zijn. Deze configuratie zorgt er ook voor dat er door dit beleid geen resource groepen worden overgeslagen.
+> Omdat deze beleidsregel gericht is op resources die tags ondersteunen, moet de _mode_ in de beleidsdefinitie 'Indexed' zijn. Deze configuratie zorgt er ook voor resourcegroepen worden overgeslagen door dit beleid.
 
-## <a name="configure-the-env-tag"></a>De env-tag configureren
+## <a name="configure-the-env-tag"></a>De Env-tag configureren
 
-In termen die specifiek zijn voor een Azure-omgeving die wordt beheerd door Azure Policy, oproep de _env_ -label vereisten voor het volgende:
+In terminologie die specifiek is voor een Azure-omgeving die wordt beheerd met Azure Policy, geldt het volgende voor de tag _Env_:
 
-- Wijzig de _env_ -tag voor de resource groep op basis van het naamgevings schema van de resource groep
-- Wijzig de _env_ -tag voor alle resources in de resource groep in dezelfde als de bovenliggende resource groep
+- De tag _Env_ wijzigen voor de resourcegroep op basis van het naamgevingsschema van de resourcegroep
+- De tag _Env_ voor alle resources in de resourcegroep wijzigen in de tag van de bovenliggende resourcegroep
 
-### <a name="modify-resource-groups-env-tag-based-on-name"></a>De env-tag van de resource groepen wijzigen op basis van de naam
+### <a name="modify-resource-groups-env-tag-based-on-name"></a>De Env-tag van resourcegroepen wijzigen op basis van de naam
 
-Een [wijzigings](../concepts/effects.md#modify) beleid is vereist voor elke omgeving die in uw Azure-omgeving bestaat. Het wijzigings beleid voor elk ziet er ongeveer uit als deze beleids definitie:
+Er is een [Modify](../concepts/effects.md#modify)-beleid vereist voor elke omgeving die in uw Azure-omgeving bestaat. Het beleid Modify voor elke omgeving ziet er ongeveer uit zoals deze beleidsdefinitie:
 
 ```json
 "policyRule": {
@@ -146,13 +146,13 @@ Een [wijzigings](../concepts/effects.md#modify) beleid is vereist voor elke omge
 ```
 
 > [!NOTE]
-> Omdat deze beleids regel is gericht op een resource groep, moet de _modus_ voor de beleids definitie ' all ' zijn in plaats van ' Indexed '.
+> Omdat deze beleidsregel gericht is op een resourcegroep, moet de _mode_ in de beleidsdefinitie 'All' zijn in plaats van 'Indexed'.
 
-Dit beleid komt alleen overeen met resource groepen met het voorbeeld naamgevings schema dat wordt `prd-`gebruikt voor productie resources van. Complexere naamgevings regels kunnen worden bereikt met verschillende **match** -voor **waarden in plaats van in dit** voor beeld.
+Dit beleid komt alleen overeen met resourcegroepen met het voorbeeldnaamgevingsschema dat wordt gebruikt voor productieresources `prd-`. Er kan een complexer naamgevingsschema worden gehanteerd met verschillende **match**-voorwaarden in plaats van slechts één **like** zoals in dit voorbeeld.
 
-### <a name="modify-resources-to-inherit-the-env-tag"></a>Resources wijzigen om de env-tag over te nemen
+### <a name="modify-resources-to-inherit-the-env-tag"></a>Resources wijzigen om de Env-tag over te nemen
 
-De zakelijke vereiste vraagt om alle resources de _env_ -tag te hebben voor de bovenliggende resource groep. Dit label kan niet worden overschreven. Daarom gebruiken we de bewerking **addOrReplace** met het [wijzigings](../concepts/effects.md#modify) effect. Het voor beeld-wijzigings beleid ziet er als volgt uit:
+Om aan de bedrijfsvereiste te voldoen, moeten alle resources dezelfde tag _Env_ hebben als de bovenliggende resourcegroep. Deze tag kan niet worden overschreven en daarom gebruiken we de bewerking **addOrReplace** met het effect [Modify](../concepts/effects.md#modify). Het voorbeeld van het beleid Modify ziet eruit zoals de volgende regel:
 
 ```json
 "policyRule": {
@@ -184,15 +184,15 @@ De zakelijke vereiste vraagt om alle resources de _env_ -tag te hebben voor de b
 ```
 
 > [!NOTE]
-> Omdat deze beleids regel is gericht op resources die labels ondersteunen, moet de _modus_ voor de beleids definitie Indexed zijn. Deze configuratie zorgt er ook voor dat er door dit beleid geen resource groepen worden overgeslagen.
+> Omdat deze beleidsregel gericht is op resources die tags ondersteunen, moet de _mode_ in de beleidsdefinitie 'Indexed' zijn. Deze configuratie zorgt er ook voor resourcegroepen worden overgeslagen door dit beleid.
 
-Deze beleids regel zoekt naar resources die geen waarde hebben voor de bovenliggende resource groepen voor de _env_ -tag of waarvoor de _env_ -code ontbreekt. Voor overeenkomende resources is de _env_ -tag ingesteld op de waarde van de bovenliggende resource groepen, zelfs als de tag al in de resource aanwezig is, maar met een andere waarde.
+Deze beleidsregel zoekt naar resources waarvan de waarde voor de tag _Env_ niet overeenkomt met de waarde voor de tag _Env_ van de bovenliggende resourcegroepen of waar de tag ontbreekt. Voor overeenkomende resources wordt de tag _Env_ ingesteld op de waarde van de tag van de bovenliggende resourcegroep, zelfs als de tag al in de resource aanwezig is maar een andere waarde heeft.
 
 ## <a name="assign-the-initiative-and-remediate-resources"></a>Het initiatief toewijzen en resources herstellen
 
-Zodra de code beleidsregels zijn gemaakt, voegt u deze toe aan één initiatief voor tag governance en wijst u deze toe aan een beheer groep of abonnement. Het initiatief en het opgenomen beleid evalueren vervolgens de naleving van bestaande resources en wijzigt aanvragen voor nieuwe of bijgewerkte resources die overeenkomen met de **if** -eigenschap in de beleids regel. Het beleid werkt echter niet automatisch bestaande niet-compatibele resources bij met de gedefinieerde label wijzigingen.
+Zodra de bovenstaande beleidsregels voor tags zijn gemaakt, voegt u ze samen in één initiatief voor tag-governance en wijst u ze toe aan een beheergroep of abonnement. Het initiatief en de daarin opgenomen beleidsregels evalueren vervolgens de naleving van bestaande resources en wijzigt aanvragen voor nieuwe of bijgewerkte resources die overeenkomen met de eigenschap **if** in de beleidsregel. Het is echter niet zo dat met het beleid bestaande, niet-conforme resources automatisch worden bijgewerkt met de gedefinieerde tagwijzigingen.
 
-Net als [deployIfNotExists](../concepts/effects.md#deployifnotexists) -beleid gebruikt het **Modify** -beleid herstel taken om bestaande niet-compatibele resources te wijzigen. Volg de instructies voor het [herstellen van resources](../how-to/remediate-resources.md) om uw niet-compatibele **wijzigings** resources te identificeren en de labels te corrigeren op uw gedefinieerde taxonomie.
+Net als bij een [deployIfNotExists](../concepts/effects.md#deployifnotexists)-beleid, gebruikt het beleid **Modify** hersteltaken om bestaande, niet-conforme resources te wijzigen. Volg de instructies in [Resources herstellen](../how-to/remediate-resources.md) om uw niet-conforme **Modify**-resources te identificeren en de tags voor uw gedefinieerde taxonomie te corrigeren.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -206,16 +206,16 @@ Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle bovenstaande to
 
 ## <a name="review"></a>Beoordelen
 
-In deze zelf studie hebt u geleerd over de volgende taken:
+In deze zelfstudie is aandacht besteed aan de volgende taken:
 
 > [!div class="checklist"]
 > - De vereisten van uw bedrijf geïdentificeerd
-> - Elke vereiste aan een beleids definitie toegewezen
-> - Het code beleid is gegroepeerd in een initiatief
+> - Elke vereiste toewijzen aan een beleidsdefinitie
+> - De tagbeleidsregels groeperen in een initiatief
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees het volgende artikel voor meer informatie over de structuur van beleidsdefinities:
 
 > [!div class="nextstepaction"]
-> [Structuur van Azure-beleidsdefinities](../concepts/definition-structure.md)
+> [Structuur van Azure Policy-definities](../concepts/definition-structure.md)

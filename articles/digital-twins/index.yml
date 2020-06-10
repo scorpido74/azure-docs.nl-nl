@@ -1,75 +1,81 @@
 ### YamlMime:Landing
 title: Documentatie voor de preview van Azure Digital Twins
-summary: Leer hoe u Azure Digital Twins gebruikt om mensen, plaatsen en dingen te verbinden, en om IoT-oplossingen te bouwen met ruimtelijke intelligentie. Volg de stapsgewijze instructies in de snelstarts en zelfstudies om een fictief slim gebouw te bewaken, raak vertrouwd met diepgaande concepten en maak een innovatieve IoT-oplossing die uw fysieke omgeving modelleert.
+summary: Meer informatie over het gebruik van Azure Digital Twins om een digitale vertegenwoordiging van uw assets, omgevingen en bedrijfssystemen te maken en zo de volgende generatie IoT-oplossingen te bouwen die de echte wereld modelleren.
 metadata:
   title: Documentatie voor de preview van Azure Digital Twins - zelfstudies, API-verwijzing | Microsoft Docs
   description: Leer hoe u Azure Digital Twins gebruikt om mensen, plaatsen en dingen te verbinden en om IoT-oplossingen te bouwen met ruimtelijke intelligentie.
-  services: digital-twins
   ms.service: digital-twins
-  ms.subservice: digital-twins
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/07/2020
-  ms.openlocfilehash: e5d66ffb35cb0ce50aa7898cad30bf9fd0bf57ac
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  author: philmea
+  ms.author: philmea
+  ms.date: 02/12/2020
+  ms.openlocfilehash: 93bfe0db668e3aaa78e7f58b715490dfe26fbe7a
+  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77110583"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84610029"
 landingContent:
 - title: Over Azure Digital Twins
   linkLists:
   - linkListType: overview
     links:
     - text: Wat is Azure Digital Twins?
-      url: about-digital-twins.md
-  - linkListType: concept
-    links:
-    - text: Inzicht in het objectmodel en de grafiek voor ruimtelijke intelligentie van Digital Twins
-      url: concepts-objectmodel-spatialgraph.md
-  - linkListType: video
-    links:
-    - text: Inleiding in Azure Digital Twins
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
-- title: Aan de slag
+      url: overview.md
+- title: Aan de slag met zelfstudies
   linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Beschikbare ruimten zoeken
-      url: quickstart-view-occupancy-dotnet.md
   - linkListType: tutorial
     links:
-    - text: Implementeren en configureren
-      url: tutorial-facilities-setup.md
-    - text: Omstandigheden inrichten en bewaken
-      url: tutorial-facilities-udf.md
-    - text: Meldingen versturen met Logic Apps
-      url: tutorial-facilities-events.md
-    - text: Gebeurtenissen visualiseren met Time Series Insights
-      url: tutorial-facilities-analyze.md
-- title: Ontwikkelen met Azure Digital Twins
+    - text: Een client-app coderen
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: De basisbeginselen verkennen met een voorbeeldclient-app
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Een end-to-end-oplossing verbinden
+      url: tutorial-end-to-end.md
+- title: Leren
   linkLists:
   - linkListType: concept
     links:
-    - text: Apparaatconnectiviteit en inkomende telemetriegegevens
-      url: concepts-device-ingress.md
-    - text: Gegevensverwerking en door gebruikers gedefinieerde functies
-      url: concepts-user-defined-functions.md
+    - text: Aangepaste modellen
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digital twins en het tweelinggrafiek
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Querytaal
+      url: concepts-query-language.md
+- title: Ontwikkelen
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Postman instellen
-      url: how-to-configure-postman.md
-    - text: Door gebruikers gedefinieerde functies maken
-      url: how-to-user-defined-functions.md
+    - text: De Azure Digital Twins-CLI gebruiken
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een Azure Digital Twins-exemplaar maken
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Een clienttoepassing verifiëren
+      url: how-to-authenticate-client.md
 - title: API-verwijzing
   linkLists:
-  - linkListType: reference
-    links:
-    - text: Bibliotheek met door de gebruiker gedefinieerde functies
-      url: reference-user-defined-functions-client-library.md
   - linkListType: how-to-guide
     links:
-    - text: Digital Twins Swagger gebruiken
-      url: how-to-use-swagger.md
+    - text: De Azure Digital Twins-API's en -SDK's gebruiken
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aangepaste SDK's maken met AutoRest
+      url: how-to-create-custom-sdks.md
+  - linkListType: reference
+    links:
+    - text: REST-API’s
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: fa5568a5af483a61b4e0854cbc7c2ade3b8dc4b1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 4461ad5e1ddd867305b5fbbd01bc84f3af9035d7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889152"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197138"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Zelfstudie: Gegevens streamen naar Azure Databricks met behulp van Event Hubs
 
@@ -34,15 +34,15 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een Apache Spark-cluster in Azure Databricks maken
 > * Een Twitter-app voor toegang tot streaminggegevens maken
 > * Notitieblokken maken in Azure Databricks
-> * Bibliotheken koppelen voor Event Hubs en Twitter API
+> * Bibliotheken toevoegen voor Event Hubs en Twitter-API
 > * Tweets verzenden naar Event Hubs
 > * Tweets lezen van Event Hubs
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 > [!Note]
-> Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Deze zelfstudie kan niet worden uitgevoerd met behulp van een **gratis Azure-proefabonnement**.
+> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **Betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedingslimiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit) en [vraagt u een quotumverhoging aan](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) voor vCPU’s in uw regio. Wanneer u uw Azure Databricks-werkruimte maakt, kunt u de prijscategorie **Proefversie (Premium - 14 dagen gratis DBU’s)** selecteren om de werkruimte 14 dagen lang toegang te geven tot gratis Premium Azure Databricks DBU’s.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -62,9 +62,9 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure Portal.
 
-1. Selecteer in de Azure Portal **een resource** > maken**gegevens en analyses** > **Azure Databricks**.
+1. Selecteer in Azure Portal **Een resource maken** > **Gegevens en analyses** > **Azure Databricks**.
 
-    ![Databricks op Azure Portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks op Azure Portal")
+    ![Databricks in de Azure-portal](./media/databricks-stream-from-eventhubs/azure-databricks-on-portal.png "Databricks in de Azure-portal")
 
 3. Geef bij **Azure Databricks Service** de waarden op voor het maken van een Databricks-werkruimte.
 
@@ -78,13 +78,13 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **VS - oost 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
-    |**Prijs categorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
+    |**Prijscategorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
     Selecteer **Vastmaken aan dashboard** en selecteer **Maken**.
 
-4. Het duurt enkele minuten om het account te maken. Tijdens het maken van het account geeft de Portal de tegel **implementatie verzenden voor Azure Databricks** aan de rechter kant weer. Mogelijk moet u op uw dashboard naar rechts scrollen om de tegel te zien. Bovenaan het scherm wordt ook een voortgangsbalk weergegeven. U kunt beide gebieden bekijken voor de voortgang.
+4. Het duurt enkele minuten om het account te maken. Tijdens het maken van het account wordt rechts in de portal de tegel **Implementatie verzenden voor Azure Databricks** weergegeven. Mogelijk moet u op uw dashboard naar rechts scrollen om de tegel te zien. Bovenaan het scherm wordt ook een voortgangsbalk weergegeven. U kunt beide gebieden bekijken voor de voortgang.
 
-    ![Tegel implementatie van Databricks](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Tegel implementatie van Databricks")
+    ![Tegel voor Databricks-implementatie](./media/databricks-stream-from-eventhubs/databricks-deployment-tile.png "Tegel voor Databricks-implementatie")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
@@ -92,19 +92,19 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Cluster**.
 
-    ![Databricks op Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Databricks op Azure")
+    ![Databricks in Azure](./media/databricks-stream-from-eventhubs/databricks-on-azure.png "Databricks in Azure")
 
 3. Op de pagina **Nieuw cluster** geeft u de waarden op waarmee een nieuw cluster wordt gemaakt.
 
-    ![Een Databricks Spark-cluster maken in azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in azure")
+    ![Een Databricks Spark-cluster maken in Azure](./media/databricks-stream-from-eventhubs/create-databricks-spark-cluster.png "Een Databricks Spark-cluster maken in Azure")
 
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
    * Voer een naam in voor het cluster.
-   * Voor dit artikel maakt u een cluster met **6,0** runtime.
-   * Zorg ervoor dat u het selectie vakje **beëindigen na \_ \_ minuten van inactiviteit** selecteert. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
+   * Maak voor dit artikel een cluster met de **6.0**-runtime.
+   * Zorg ervoor dat u het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
 
-   Selecteer cluster-Worker en stuur programma-node grootte die geschikt is voor uw technische criteria en [budget](https://azure.microsoft.com/pricing/details/databricks/).
+   Selecteer een grootte voor de clusterwerkrol en het stuurprogrammaknooppunt die geschikt is voor uw technische criteria en [budget](https://azure.microsoft.com/pricing/details/databricks/).
 
      Selecteer **Cluster maken**. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
@@ -112,9 +112,9 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. Volg de instructies om een Twitter-toepassing te maken en leg de waarden vast die u nodig hebt om deze zelfstudie te voltooien.
 
-1. Ga in een webbrowser naar [Twitter voor ontwikkel aars](https://developer.twitter.com/en/apps)en selecteer **een app maken**. Mogelijk wordt er een bericht weer gegeven met de mede deling dat u moet aanvragen voor een Twitter-ontwikkelaars account. U kunt dit gewoon doen, en nadat uw toepassing is goedgekeurd, moet u een bevestigings-e-mail krijgen. Het kan enkele dagen duren voordat een ontwikkelaars account wordt goedgekeurd.
+1. Ga in een webbrowser naar [Twitter For Developers](https://developer.twitter.com/en/apps) en selecteer **Create an app**. Mogelijk wordt er een bericht weergegeven met de mededeling dat u een Twitter-ontwikkelaarsaccount moet aanvragen. Dit kunt u desgewenst doen. Als uw aanvraag is goedgekeurd, krijgt u hierover een bevestigingsmail. Het kan enkele dagen duren voordat de aanvraag voor een ontwikkelaarsaccount wordt goedgekeurd.
 
-    ![Bevestiging van Twitter-ontwikkelaars account](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Bevestiging van Twitter-ontwikkelaars account")
+    ![Bevestiging van Twitter-ontwikkelaarsaccount](./media/databricks-stream-from-eventhubs/databricks-twitter-dev-confirmation.png "Bevestiging van Twitter-ontwikkelaarsaccount")
 
 2. Voer op de pagina **Create an application** de gegevens voor de nieuwe app in en selecteer **Create your Twitter application**.
 
@@ -122,7 +122,7 @@ Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. V
 
     ![Details van Twitter-toepassing](./media/databricks-stream-from-eventhubs/databricks-provide-twitter-app-details-create.png "Details van Twitter-toepassing")
 
-3. Selecteer op de pagina toepassing het tabblad **sleutels en tokens** en kopieer de waarden voor de **CONSUMer-API-sleutel** en de **geheime sleutel**van de consument-API. Selecteer ook **maken** onder **toegangs token en geheim toegangs token** om de toegangs tokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
+3. Selecteer op de toepassingspagina het tabblad **Keys and Tokens** en kopieer de waarden voor **Consumer API Key** en **Consumer API Secret Key**. Selecteer ook **Create** onder **Access Token and Access Token Secret** om de toegangstokens te genereren. Kopieer de waarden voor **Access Token** en **Access Token Secret**.
 
     ![Details van Twitter-toepassing](./media/databricks-stream-from-eventhubs/twitter-app-key-secret.png "Details van Twitter-toepassing")
 
@@ -130,22 +130,22 @@ Sla de waarden op die u hebt opgehaald voor de Twitter-toepassing. U hebt deze w
 
 ## <a name="attach-libraries-to-spark-cluster"></a>Bibliotheken koppelen aan een Apache Spark-cluster
 
-In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event Hubs. U gebruikt ook de [Apache Spark Event Hubs-connector](https://github.com/Azure/azure-event-hubs-spark) om gegevens naar Azure Event Hubs te lezen en schrijven. Als u deze Api's wilt gebruiken als onderdeel van uw cluster, voegt u deze toe als bibliotheken aan Azure Databricks en koppelt u deze aan uw Spark-cluster. De volgende instructies laten zien hoe u een bibliotheek kunt toevoegen.
+In deze zelfstudie gebruikt u de Twitter-API's om tweets te verzenden naar Event Hubs. U gebruikt ook de [Apache Spark Event Hubs-connector](https://github.com/Azure/azure-event-hubs-spark) om gegevens naar Azure Event Hubs te lezen en schrijven. Als u deze API's wilt gebruiken als onderdeel van uw cluster, kunt u ze als bibliotheken toevoegen aan Azure Databricks en ze aan uw Spark-cluster koppelen. De volgende instructies laten zien hoe u een bibliotheek toevoegt.
 
-1. Selecteer in de werk ruimte Azure Databricks de optie **clusters**en kies uw bestaande Spark-cluster. Kies in het menu cluster de optie **bibliotheken** en klik op **nieuwe installeren**.
+1. Selecteer in de Azure Databricks-werkruimte **Clusters** en kies uw bestaande Spark-cluster. Kies in het menu Cluster **Bibliotheken** en klik op **Nieuwe installeren**.
 
-   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Bibliotheek toevoegen cluster zoeken")
+   ![Dialoogvenster voor toevoegen van bibliotheek](./media/databricks-stream-from-eventhubs/databricks-add-library-locate-cluster.png "Bibliotheek toevoegen en cluster zoeken")
 
-   ![Het dialoog venster bibliotheek toevoegen](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Nieuwe bibliotheek toevoegen installeren")
+   ![Dialoogvenster voor toevoegen van bibliotheek](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Nieuwe bibliotheek toevoegen/installeren")
 
-2. Selecteer op de pagina nieuwe bibliotheek voor **bron** **maven**. Voer individueel de volgende coördinaten in voor de Spark Event Hubs-connector en de Twitter API in- **coördinaten**.
+2. Selecteer op de pagina Nieuwe bibliotheek **Maven** bij **Bron**. Voer bij **Coördinaten** de volgende coördinaten afzonderlijk in voor de Spark Event Hubs-connector en de Twitter-API.
 
    * Apache Spark Event Hubs-connector - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
 
 3. Selecteer **Installeren**.
 
-4. Zorg ervoor dat beide bibliotheken zijn geïnstalleerd en correct zijn aangesloten in het menu cluster.
+4. Zorg ervoor dat beide bibliotheken zijn geïnstalleerd en correct zijn gekoppeld in het menu Cluster.
 
     ![Bibliotheken controleren](./media/databricks-stream-from-eventhubs/databricks-add-library-check.png "Bibliotheken controleren")
 
@@ -160,11 +160,11 @@ In deze sectie kunt u twee notitieblokken in de Databricks-werkruimte maken met 
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer in de **Werkruimte**-vervolgkeuzelijst, **Notitieblok** > **maken**.
 
-    ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-create-notebook.png "Notitieblok maken in Databricks")
 
-2. Voer in het dialoogvenster **Notitieblok maken** een naam in, voer in **SendTweetsToEventHub**, selecteer **Scala** als taal en selecteer het Spark-cluster dat u eerder hebt gemaakt.
+2. Voer in het dialoogvenster **Notitieblok maken** als naam **SendTweetsToEventHub** in, selecteer **Scala** als taal en selecteer het Apache Spark-cluster dat u eerder hebt gemaakt.
 
-    ![Een notitie blok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Een notitie blok maken in Databricks")
+    ![Notitieblok maken in Databricks](./media/databricks-stream-from-eventhubs/databricks-notebook-details.png "Notitieblok maken in Databricks")
 
     Selecteer **Maken**.
 
@@ -175,7 +175,7 @@ In deze sectie kunt u twee notitieblokken in de Databricks-werkruimte maken met 
 Plak in het notitieblok **SendTweetsToEventHub** de volgende code en vervang de tijdelijke aanduidingen door waarden voor uw Event Hubs-naamruimte en Twitter-toepassing die u eerder hebt gemaakt. Dit notitieblok streamt tweets met het sleutelwoord 'Azure' in realtime naar Event Hubs.
 
 > [!NOTE]
-> De Twitter-API heeft bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html)voor de aanvraag. Als u niet tevreden bent met de standaard frequentie beperking in Twitter API, kunt u in dit voor beeld tekst inhoud genereren zonder Twitter API te gebruiken. Hiervoor stelt u variabele **Data Source** in in `test` plaats van `twitter` en vult u de lijst **testSource** met de voorkeurs test invoer.
+> Voor de Twitter-API gelden bepaalde beperkingen en [quota](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Als u niet tevreden bent met de standaardfrequentiebeperking in de Twitter-API, kunt u in dit voorbeeld tekstinhoud genereren zonder de Twitter-API te gebruiken. Hiervoor stelt u de variabele **dataSource** in op `test` in plaats van `twitter` en vult u de lijst **testSource** met de gewenste testinvoer.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -283,7 +283,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. U ziet uit
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -388,7 +388,7 @@ De uitvoer lijkt nu op die in het volgende codefragment:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -406,7 +406,7 @@ Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Dit doet u 
 
 ![Een Databricks-cluster stoppen](./media/databricks-stream-from-eventhubs/terminate-databricks-cluster.png "Een Databricks-cluster stoppen")
 
-Als u het cluster niet hand matig beëindigt, wordt het automatisch gestopt, op voor waarde dat u tijdens het maken van het cluster het selectie vakje **beëindigen na \_ \_ minuten van inactiviteit** hebt ingeschakeld. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
+Als u het cluster niet handmatig beëindigt, stopt het cluster automatisch, op voorwaarde dat het selectievakje **Beëindigen na \_\_ minuten inactiviteit** is ingeschakeld tijdens het maken van het cluster. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze zelfstudie heeft u het volgende geleerd:
@@ -420,7 +420,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Tweets verzenden naar Event Hubs
 > * Tweets lezen van Event Hubs
 
-Ga naar de volgende zelf studie voor meer informatie over het uitvoeren van sentiment-analyse op de gestreamde gegevens met behulp van Azure Databricks en [Cognitive Services-API](../cognitive-services/text-analytics/overview.md).
+Ga verder naar de volgende zelfstudie voor meer informatie over het uitvoeren van sentimentanalyses op de gestreamde gegevens met behulp van Azure Databricks en [Cognitive Services API](../cognitive-services/text-analytics/overview.md).
 
 > [!div class="nextstepaction"]
->[Sentimentanalyse voor streaminggegevens met behulp van Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)
+>[Sentimentanalyse over het streamen van gegevens met behulp van Azure Databricks](databricks-sentiment-analysis-cognitive-services.md)

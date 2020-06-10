@@ -1,34 +1,34 @@
 ---
 title: Voorbeelden van geavanceerde query's
-description: Gebruik Azure resource Graph om geavanceerde query's uit te voeren, waaronder het werken met kolommen, het weer geven van gebruikte labels en het vergelijken van resources met reguliere expressies.
-ms.date: 03/20/2020
+description: Gebruik Azure Resource Graph voor het uitvoeren van enkele geavanceerde query's, waaronder het werken met kolommen, het opvragen van alle gebruikte tags en het vinden van resources met behulp van reguliere expressies.
+ms.date: 06/01/2020
 ms.topic: sample
-ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 8eca10385b9ff7b5c8f0e55165f902e9b051ac39
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81381507"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231075"
 ---
-# <a name="advanced-resource-graph-query-samples"></a>Voor beelden van geavanceerde resource grafiek query's
+# <a name="advanced-resource-graph-query-samples"></a>Geavanceerde queryvoorbeelden van Resource Graph
 
 Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige basiskennis hebben van de [querytaal](../concepts/query-language.md). Als u nog geen ervaring hebt met [Azure Data Explorer](/azure/data-explorer/data-explorer-overview), is het raadzaam om eerst de basisbeginselen door te nemen, zodat u weet hoe u aanvragen opstelt voor de resources die u zoekt.
 
 We nemen de volgende geavanceerde query's door:
 
 > [!div class="checklist"]
-> - [API-versie weer geven voor elk resource type](#apiversion)
-> - [De capaciteit en grootte van schaal sets voor virtuele machines ophalen](#vmss-capacity)
+> - [Resourcetypen en API-versies weergeven](#apiversion)
+> - [Capaciteit en grootte van een virtuele-machineschaalset ophalen](#vmss-capacity)
 > - [Kolommen verwijderen uit resultaten](#remove-column)
 > - [Een lijst weergeven van alle tagnamen](#list-all-tags)
 > - [Virtuele machines zoeken met reguliere expressies](#vm-regex)
-> - [Cosmos DB met specifieke schrijf locaties weer geven](#mvexpand-cosmosdb)
-> - [Sleutel kluis met de naam van het abonnement](#join)
-> - [SQL-data bases en hun elastische Pools weer geven](#join-sql)
-> - [Virtuele machines weer geven met hun netwerk interface en openbaar IP-adres](#join-vmpip)
-> - [Opslag accounts met een specifieke tag in de resource groep zoeken](#join-findstoragetag)
-> - [Resultaten van twee query's combi neren tot één resultaat](#unionresults)
-> - [De namen van de Tenant en het abonnement toevoegen met DisplayName](#displaynames)
+> - [Een lijst met Cosmos DB met specifieke schrijflocaties weergeven](#mvexpand-cosmosdb)
+> - [Sleutelkluizen met abonnementsnaam](#join)
+> - [Een lijst met SQL-databases en elastische pools weergeven](#join-sql)
+> - [Een lijst met virtuele machines weergeven met bijbehorende netwerkinterfaces en openbare IP-adressen](#join-vmpip)
+> - [Opslagaccounts met een specifieke tag in de resourcegroep zoeken](#join-findstoragetag)
+> - [Resultaten van twee query's combineren tot één resultaat](#unionresults)
+> - [Namen van tenant en abonnement toevoegen met DisplayNames](#displaynames)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -36,9 +36,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Azure CLI (met een extensie) en Azure PowerShell (met een module) ondersteunen Azure Resource Graph. Controleer voordat u een van de volgende query's uitvoert, of uw omgeving gereed is. Zie [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) en [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) voor stappen voor het installeren en valideren van uw gewenste shellomgeving.
 
-## <a name="show-resource-types-and-api-versions"></a><a name="apiversion" />Resource typen en API-versies weer geven
+## <a name="show-resource-types-and-api-versions"></a><a name="apiversion"></a>Resourcetypen en API-versies weergeven
 
-Resource Graph maakt hoofd zakelijk gebruik van de meest recente niet-preview versie van de API van `GET` een resource provider naar resource-eigenschappen tijdens een update. In sommige gevallen is de gebruikte API-versie onderdrukt om meer actuele of veelgebruikte eigenschappen te bieden in de resultaten. De volgende query geeft een overzicht van de API-versie die wordt gebruikt voor het verzamelen van eigenschappen voor elk resource type:
+In Resource Graph wordt hoofdzakelijk de meest recente, niet-preview versie van de API van een resourceprovider gebruikt om met `GET` resource-eigenschappen op te halen tijdens een update. In sommige gevallen is de gebruikte API-versie onderdrukt om meer actuele of veelgebruikte eigenschappen te kunnen bieden in de resultaten. In de volgende query worden details opgevraagd van de API-versie die wordt gebruikt voor het verzamelen van eigenschappen voor elk resourcetype:
 
 ```kusto
 Resources
@@ -61,15 +61,15 @@ Search-AzGraph -Query "Resources | distinct type, apiVersion | where isnotnull(a
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20distinct%20type%2C%20apiVersion%20%7C%20where%20isnotnull(apiVersion)%20%7C%20order%20by%20type%20asc" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20distinct%20type%2C%20apiVersion%0D%0A%7C%20where%20isnotnull%28apiVersion%29%0D%0A%7C%20order%20by%20type%20asc" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20distinct%20type%2C%20apiVersion%0D%0A%7C%20where%20isnotnull%28apiVersion%29%0D%0A%7C%20order%20by%20type%20asc" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20distinct%20type%2C%20apiVersion%0D%0A%7C%20where%20isnotnull%28apiVersion%29%0D%0A%7C%20order%20by%20type%20asc" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity" />Capaciteit en grootte van een virtuele-machineschaalset ophalen
+## <a name="get-virtual-machine-scale-set-capacity-and-size"></a><a name="vmss-capacity"></a>Capaciteit en grootte van een virtuele-machineschaalset ophalen
 
 Met deze query zoekt u virtuele-machineschaalsetresources en verkrijgt u diverse informatie, waaronder de grootte van de virtuele machines en de capaciteit van de schaalset. Deze query maakt gebruik van de functie `toint()` om de capaciteit te converteren naar een waarde die kan worden gesorteerd. Ten slotte worden de namen van de kolommen gewijzigd in eigenschappen met aangepaste namen.
 
@@ -95,17 +95,17 @@ Search-AzGraph -Query "Resources | where type=~ 'microsoft.compute/virtualmachin
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~%20'microsoft.compute%2Fvirtualmachinescalesets'%20%7C%20where%20name%20contains%20'contoso'%20%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint(sku.capacity)%2C%20Tier%20%3D%20sku.name%20%7C%20order%20by%20Capacity%20desc" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%20%27microsoft.compute%2Fvirtualmachinescalesets%27%0D%0A%7C%20where%20name%20contains%20%27contoso%27%0D%0A%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint%28sku.capacity%29%2C%20Tier%20%3D%20sku.name%0D%0A%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%20%27microsoft.compute%2Fvirtualmachinescalesets%27%0D%0A%7C%20where%20name%20contains%20%27contoso%27%0D%0A%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint%28sku.capacity%29%2C%20Tier%20%3D%20sku.name%0D%0A%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%20%27microsoft.compute%2Fvirtualmachinescalesets%27%0D%0A%7C%20where%20name%20contains%20%27contoso%27%0D%0A%7C%20project%20subscriptionId%2C%20name%2C%20location%2C%20resourceGroup%2C%20Capacity%20%3D%20toint%28sku.capacity%29%2C%20Tier%20%3D%20sku.name%0D%0A%7C%20order%20by%20Capacity%20desc" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="remove-columns-from-results"></a><a name="remove-column" />Kolommen verwijderen uit resultaten
+## <a name="remove-columns-from-results"></a><a name="remove-column"></a>Kolommen verwijderen uit resultaten
 
-De volgende query gebruikt `summarize` om resources per abonnement te tellen `join` , om deze te combi neren met abonnements details uit de `project-away` tabel _ResourceContainers_ en om een aantal van de kolommen te verwijderen.
+De volgende query maakt gebruik van `summarize` om resources te tellen per abonnement, `join` om het resultaat te combineren met abonnementsgegevens uit de tabel _ResourceContainers_ en ten slotte `project-away` om een aantal van de kolommen te verwijderen.
 
 ```kusto
 Resources
@@ -128,15 +128,15 @@ Search-AzGraph -Query "Resources | summarize resourceCount=count() by subscripti
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20resourceCount%3Dcount()%20by%20subscriptionId%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20summarize%20resourceCount%3Dcount%28%29%20by%20subscriptionId%0D%0A%7C%20join%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20summarize%20resourceCount%3Dcount%28%29%20by%20subscriptionId%0D%0A%7C%20join%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20summarize%20resourceCount%3Dcount%28%29%20by%20subscriptionId%0D%0A%7C%20join%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20project-away%20subscriptionId%2C%20subscriptionId1" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="list-all-tag-names"></a><a name="list-all-tags" />Een lijst weergeven van alle tagnamen
+## <a name="list-all-tag-names"></a><a name="list-all-tags"></a>Een lijst weergeven van alle tagnamen
 
 Deze query start met de tag en bouwt een JSON-object dat alle unieke tagnamen en hun overeenkomende typen vermeldt.
 
@@ -160,17 +160,17 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20tags%20%7C%20summarize%20buildschema(tags)" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20project%20tags%0D%0A%7C%20summarize%20buildschema%28tags%29" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20project%20tags%0D%0A%7C%20summarize%20buildschema%28tags%29" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20project%20tags%0D%0A%7C%20summarize%20buildschema%28tags%29" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex" />Virtuele machines zoeken met reguliere expressies
+## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex"></a>Virtuele machines zoeken met reguliere expressies
 
-Deze query zoekt virtuele machines die overeenkomen met een [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference) (ook wel _regex_ genoemd). **Met \@ ** de matching matching is `^Contoso(.*)[0-9]+$`het mogelijk om de regex te definiëren die overeenkomt met.
+Deze query zoekt virtuele machines die overeenkomen met een [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference) (ook wel _regex_ genoemd). Met **matches regex \@** kunt u de betreffende reguliere expressie definiëren. Dat is `^Contoso(.*)[0-9]+$`.
 De definitie van deze reguliere expressie wordt als volgt uitgelegd:
 
 - `^`: Overeenkomst moet beginnen aan het begin van de tekenreeks.
@@ -205,17 +205,17 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20and%20name%20matches%20regex%20%40'%5EContoso(.*)%5B0-9%5D%2B%24'%20%7C%20project%20name%20%7C%20order%20by%20name%20asc" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%20and%20name%20matches%20regex%20%40%27%5EContoso%28.%2A%29%5B0-9%5D%2B%24%27%0D%0A%7C%20project%20name%0D%0A%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%20and%20name%20matches%20regex%20%40%27%5EContoso%28.%2A%29%5B0-9%5D%2B%24%27%0D%0A%7C%20project%20name%0D%0A%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%20and%20name%20matches%20regex%20%40%27%5EContoso%28.%2A%29%5B0-9%5D%2B%24%27%0D%0A%7C%20project%20name%0D%0A%7C%20order%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb" />Cosmos DB met specifieke schrijf locaties weer geven
+## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>Een lijst met Cosmos DB met specifieke schrijflocaties weergeven
 
-De volgende query is beperkt tot Cosmos DB resources, `mv-expand` gebruikt om de eigenschappen verzameling voor **Eigenschappen. writeLocations**uit te vouwen, vervolgens projecteren specifieke velden en de resultaten verder te beperken tot **Eigenschappen. writeLocations. locatie** waarden die overeenkomen met ' VS ' of ' vs-West '.
+De volgende query is beperkt tot Cosmos DB-resources, gebruikt `mv-expand` voor het uitvouwen van de eigenschappenverzameling voor **properties.writeLocations**, daarna projectspecifieke velden en beperkt de resultaten verder tot waarden van **properties.writeLocations.locationName** die overeenkomen met 'East US' of 'West US'.
 
 ```kusto
 Resources
@@ -241,51 +241,50 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.documentdb%2Fdatabaseaccounts'%20%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20(properties.writeLocations)%20%7C%20mv-expand%20writeLocations%20%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring(writeLocations.locationName)%20%7C%20where%20writeLocation%20in%20('East%20US'%2C%20'West%20US')%20%7C%20summarize%20by%20id%2C%20name" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure-portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.documentdb%2Fdatabaseaccounts%27%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20%28properties.writeLocations%29%0D%0A%7C%20mv-expand%20writeLocations%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring%28writeLocations.locationName%29%0D%0A%7C%20where%20writeLocation%20in%20%28%27East%20US%27%2C%20%27West%20US%27%29%0D%0A%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.documentdb%2Fdatabaseaccounts%27%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20%28properties.writeLocations%29%0D%0A%7C%20mv-expand%20writeLocations%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring%28writeLocations.locationName%29%0D%0A%7C%20where%20writeLocation%20in%20%28%27East%20US%27%2C%20%27West%20US%27%29%0D%0A%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.documentdb%2Fdatabaseaccounts%27%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocations%20%3D%20%28properties.writeLocations%29%0D%0A%7C%20mv-expand%20writeLocations%0D%0A%7C%20project%20id%2C%20name%2C%20writeLocation%20%3D%20tostring%28writeLocations.locationName%29%0D%0A%7C%20where%20writeLocation%20in%20%28%27East%20US%27%2C%20%27West%20US%27%29%0D%0A%7C%20summarize%20by%20id%2C%20name" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="key-vault-with-subscription-name"></a><a name="join" />Sleutel kluis met de naam van het abonnement
+## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>Sleutelkluizen met abonnementsnaam
 
-Met de volgende query wordt een complex gebruik `join`van weer gegeven. Met de query wordt de gekoppelde tabel beperkt tot resources voor `project` abonnementen en met om alleen het oorspronkelijke veld _subscriptionId_ op te nemen _en de naam_ van het veld met de naam van de _subnaam_. De naam van het veld `join` wordt voor komen dat het wordt toegevoegd als _NAME1_ omdat het veld al in _resources_bestaat. De oorspronkelijke tabel wordt gefilterd `where` en het `project` volgende bevat kolommen uit beide tabellen. Het query resultaat is een enkele sleutel kluis met het type, de naam van de sleutel kluis en de naam van het abonnement dat in wordt weer gegeven.
+De volgende query toont een complex gebruik van `join` met **kind** als _leftouter_. Met de query wordt de gekoppelde tabel beperkt tot abonnementsresources, en met `project` wordt alleen het oorspronkelijke veld _subscriptionId_ opgenomen en het veld _name_ met de naam gewijzigd in _SubName_. Door de wijziging van de veldnaam wordt voorkomen dat `join` dit toevoegt als _name1_ omdat het veld al bestaat in _resources_. De oorspronkelijke tabel wordt gefilterd met `where` en het volgende `project` bevat kolommen uit beide tabellen. Het queryresultaat bestaat uit alle sleutelkluizen, met het type kluis en de naam van de sleutelkluis, en de naam van het abonnement waarin de kluis zich bevindt.
 
 ```kusto
 Resources
-| join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
+| join kind=leftouter (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
 | where type == 'microsoft.keyvault/vaults'
 | project type, name, SubName
-| limit 1
 ```
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-az graph query -q "Resources | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId | where type == 'microsoft.keyvault/vaults' | project type, name, SubName| limit 1"
+az graph query -q "Resources | join kind=leftouter (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId | where type == 'microsoft.keyvault/vaults' | project type, name, SubName"
 ```
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "Resources | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId | where type == 'microsoft.keyvault/vaults' | project type, name, SubName| limit 1"
+Search-AzGraph -Query "Resources | join kind=leftouter (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId | where type == 'microsoft.keyvault/vaults' | project type, name, SubName"
 ```
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20join%20(ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions'%20%7C%20project%20SubName%3Dname%2C%20subscriptionId)%20on%20subscriptionId%20%7C%20where%20type%20%3D%3D%20'microsoft.keyvault%2Fvaults'%20%7C%20project%20type%2C%20name%2C%20SubName%7C%20limit%201" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20join%20kind%3Dleftouter%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20where%20type%20%3D%3D%20%27microsoft.keyvault%2Fvaults%27%0D%0A%7C%20project%20type%2C%20name%2C%20SubName" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20join%20kind%3Dleftouter%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20where%20type%20%3D%3D%20%27microsoft.keyvault%2Fvaults%27%0D%0A%7C%20project%20type%2C%20name%2C%20SubName" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20join%20kind%3Dleftouter%20%28ResourceContainers%20%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%27%20%7C%20project%20SubName%3Dname%2C%20subscriptionId%29%20on%20subscriptionId%0D%0A%7C%20where%20type%20%3D%3D%20%27microsoft.keyvault%2Fvaults%27%0D%0A%7C%20project%20type%2C%20name%2C%20SubName" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="list-sql-databases-and-their-elastic-pools"></a><a name="join-sql" />SQL-data bases en hun elastische Pools weer geven
+## <a name="list-sql-databases-and-their-elastic-pools"></a><a name="join-sql"></a>Een lijst met SQL-databases en elastische pools weergeven
 
-De volgende query gebruikt **leftouter** `join` om SQL database resources en de bijbehorende elastische Pools samen te brengen, indien aanwezig.
+In de volgende query wordt **leftouter** `join` gebruikt om SQL Database-resources en de bijbehorende elastische pools samen te voegen, indien die er zijn.
 
 ```kusto
 Resources
@@ -313,17 +312,17 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Fdatabases'%20%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower(tostring(properties.elasticPoolId))%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.sql%2Fservers%2Felasticpools'%20%7C%20project%20elasticPoolId%20%3D%20tolower(id)%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state)%20on%20elasticPoolId%20%7C%20project-away%20elasticPoolId1" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Fdatabases%27%0D%0A%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower%28tostring%28properties.elasticPoolId%29%29%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Felasticpools%27%0D%0A%20%20%20%20%7C%20project%20elasticPoolId%20%3D%20tolower%28id%29%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state%29%0D%0Aon%20elasticPoolId%0D%0A%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Fdatabases%27%0D%0A%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower%28tostring%28properties.elasticPoolId%29%29%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Felasticpools%27%0D%0A%20%20%20%20%7C%20project%20elasticPoolId%20%3D%20tolower%28id%29%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state%29%0D%0Aon%20elasticPoolId%0D%0A%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Fdatabases%27%0D%0A%7C%20project%20databaseId%20%3D%20id%2C%20databaseName%20%3D%20name%2C%20elasticPoolId%20%3D%20tolower%28tostring%28properties.elasticPoolId%29%29%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.sql%2Fservers%2Felasticpools%27%0D%0A%20%20%20%20%7C%20project%20elasticPoolId%20%3D%20tolower%28id%29%2C%20elasticPoolName%20%3D%20name%2C%20elasticPoolState%20%3D%20properties.state%29%0D%0Aon%20elasticPoolId%0D%0A%7C%20project-away%20elasticPoolId1" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip" />Virtuele machines weer geven met hun netwerk interface en openbaar IP-adres
+## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>Een lijst met virtuele machines weergeven met bijbehorende netwerkinterfaces en openbare IP-adressen
 
-Deze query gebruikt twee **leftouter** `join` -opdrachten voor het samen voegen van virtuele machines, hun gerelateerde netwerk interfaces en een openbaar IP-adres dat betrekking heeft op deze netwerk interfaces.
+In deze query worden twee `join`-opdrachten met **leftouter** gebruikt om een lijst weer te geven van virtuele machines, de bijbehorende netwerkinterfaces en alle openbare IP-adressen die zijn gerelateerd aan deze netwerkinterfaces.
 
 ```kusto
 Resources
@@ -364,17 +363,17 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.compute%2Fvirtualmachines'%20%7C%20extend%20nics%3Darray_length(properties.networkProfile.networkInterfaces)%20%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20'true'%20or%20isempty(nic)%20%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring(properties.hardwareProfile.vmSize)%2C%20nicId%20%3D%20tostring(nic.id)%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworkinterfaces'%20%7C%20extend%20ipConfigsCount%3Darray_length(properties.ipConfigurations)%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20'true'%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring(ipconfig.properties.publicIPAddress.id))%20on%20nicId%20%7C%20project-away%20nicId1%20%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%20%7C%20join%20kind%3Dleftouter%20(%20Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fpublicipaddresses'%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress)%20on%20publicIpId%20%7C%20project-away%20publicIpId1" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%0D%0A%7C%20extend%20nics%3Darray_length%28properties.networkProfile.networkInterfaces%29%20%0D%0A%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%0D%0A%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20%27true%27%20or%20isempty%28nic%29%20%0D%0A%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring%28properties.hardwareProfile.vmSize%29%2C%20nicId%20%3D%20tostring%28nic.id%29%20%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0D%0A%20%20%20%20%7C%20extend%20ipConfigsCount%3Darray_length%28properties.ipConfigurations%29%20%0D%0A%20%20%20%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%0D%0A%20%20%20%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20%27true%27%0D%0A%20%20%20%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring%28ipconfig.properties.publicIPAddress.id%29%29%0D%0Aon%20nicId%0D%0A%7C%20project-away%20nicId1%0D%0A%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fpublicipaddresses%27%0D%0A%20%20%20%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress%29%0D%0Aon%20publicIpId%0D%0A%7C%20project-away%20publicIpId1" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%0D%0A%7C%20extend%20nics%3Darray_length%28properties.networkProfile.networkInterfaces%29%20%0D%0A%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%0D%0A%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20%27true%27%20or%20isempty%28nic%29%20%0D%0A%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring%28properties.hardwareProfile.vmSize%29%2C%20nicId%20%3D%20tostring%28nic.id%29%20%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0D%0A%20%20%20%20%7C%20extend%20ipConfigsCount%3Darray_length%28properties.ipConfigurations%29%20%0D%0A%20%20%20%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%0D%0A%20%20%20%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20%27true%27%0D%0A%20%20%20%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring%28ipconfig.properties.publicIPAddress.id%29%29%0D%0Aon%20nicId%0D%0A%7C%20project-away%20nicId1%0D%0A%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fpublicipaddresses%27%0D%0A%20%20%20%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress%29%0D%0Aon%20publicIpId%0D%0A%7C%20project-away%20publicIpId1" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.compute%2Fvirtualmachines%27%0D%0A%7C%20extend%20nics%3Darray_length%28properties.networkProfile.networkInterfaces%29%20%0D%0A%7C%20mv-expand%20nic%3Dproperties.networkProfile.networkInterfaces%20%0D%0A%7C%20where%20nics%20%3D%3D%201%20or%20nic.properties.primary%20%3D~%20%27true%27%20or%20isempty%28nic%29%20%0D%0A%7C%20project%20vmId%20%3D%20id%2C%20vmName%20%3D%20name%2C%20vmSize%3Dtostring%28properties.hardwareProfile.vmSize%29%2C%20nicId%20%3D%20tostring%28nic.id%29%20%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fnetworkinterfaces%27%0D%0A%20%20%20%20%7C%20extend%20ipConfigsCount%3Darray_length%28properties.ipConfigurations%29%20%0D%0A%20%20%20%20%7C%20mv-expand%20ipconfig%3Dproperties.ipConfigurations%20%0D%0A%20%20%20%20%7C%20where%20ipConfigsCount%20%3D%3D%201%20or%20ipconfig.properties.primary%20%3D~%20%27true%27%0D%0A%20%20%20%20%7C%20project%20nicId%20%3D%20id%2C%20publicIpId%20%3D%20tostring%28ipconfig.properties.publicIPAddress.id%29%29%0D%0Aon%20nicId%0D%0A%7C%20project-away%20nicId1%0D%0A%7C%20summarize%20by%20vmId%2C%20vmName%2C%20vmSize%2C%20nicId%2C%20publicIpId%0D%0A%7C%20join%20kind%3Dleftouter%20%28%0D%0A%20%20%20%20Resources%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.network%2Fpublicipaddresses%27%0D%0A%20%20%20%20%7C%20project%20publicIpId%20%3D%20id%2C%20publicIpAddress%20%3D%20properties.ipAddress%29%0D%0Aon%20publicIpId%0D%0A%7C%20project-away%20publicIpId1" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag" />Opslag accounts met een specifieke tag in de resource groep zoeken
+## <a name="find-storage-accounts-with-a-specific-tag-on-the-resource-group"></a><a name="join-findstoragetag"></a>Opslagaccounts met een specifieke tag in de resourcegroep zoeken
 
-De volgende query maakt gebruik van een **inner** `join` verbinding om opslag accounts te verbinden met resource groepen met een opgegeven hoofdletter gevoelige label naam en label waarde.
+In de volgende query wordt een **inner** `join` gebruikt om opslagaccounts te verbinden met resourcegroepen die een opgegeven hoofdlettergevoelige tagnaam en -waarde hebben.
 
 ```kusto
 Resources
@@ -402,15 +401,15 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.storage%2Fstorageaccounts'%20%7C%20join%20kind%3Dinner%20(%20ResourceContainers%20%7C%20where%20type%20%3D~%20'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20where%20tags%5B'Key1'%5D%20%3D~%20'Value1'%20%7C%20project%20subscriptionId%2C%20resourceGroup)%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20where%20tags%5B%27Key1%27%5D%20%3D~%20%27Value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20where%20tags%5B%27Key1%27%5D%20%3D~%20%27Value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20where%20tags%5B%27Key1%27%5D%20%3D~%20%27Value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-Als het nodig is om een hoofdletter gevoelige label naam en label waarde te zoeken, gebruikt `mv-expand` u met de para meter **bagexpansion** . Deze query gebruikt meer quota dan de vorige query. Gebruik `mv-expand` deze daarom alleen als dat nodig is.
+Als het nodig is om een tagnaam en -waarde te zoeken die niet hoofdlettergevoelig zijn, gebruikt u `mv-expand` met de parameter **bagexpansion**. Deze query gebruikt meer quota dan de vorige query, dus gebruik `mv-expand` alleen als dat echt nodig is.
 
 ```kusto
 Resources
@@ -440,17 +439,17 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.storage/storageaccou
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%20%7C%20join%20kind%3Dinner%20%28%20ResourceContainers%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%20%7C%20where%20isnotempty%28tags%29%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%20on%20subscriptionId%2C%20resourceGroup%20%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%0D%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0D%0A%20%20%20%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%0D%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0D%0A%20%20%20%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27microsoft.storage%2Fstorageaccounts%27%0D%0A%7C%20join%20kind%3Dinner%20%28%0D%0A%20%20%20%20ResourceContainers%0D%0A%20%20%20%20%7C%20where%20type%20%3D~%20%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%0D%0A%20%20%20%20%7C%20mv-expand%20bagexpansion%3Darray%20tags%0D%0A%20%20%20%20%7C%20where%20isnotempty%28tags%29%0D%0A%20%20%20%20%7C%20where%20tags%5B0%5D%20%3D~%20%27key1%27%20and%20tags%5B1%5D%20%3D~%20%27value1%27%0D%0A%20%20%20%20%7C%20project%20subscriptionId%2C%20resourceGroup%29%0D%0Aon%20subscriptionId%2C%20resourceGroup%0D%0A%7C%20project-away%20subscriptionId1%2C%20resourceGroup1" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults" />Resultaten van twee query's combi neren tot één resultaat
+## <a name="combine-results-from-two-queries-into-a-single-result"></a><a name="unionresults"></a>Resultaten van twee query's combineren tot één resultaat
 
-De volgende query wordt `union` gebruikt om resultaten uit de tabel _ResourceContainers_ op te halen en toe te voegen aan de resultaten van de tabel _resources_ .
+De volgende query gebruikt `union` om resultaten op te halen uit de tabel _ResourceContainers_ en deze toe te voegen aan de resultaten uit de tabel _Resources_.
 
 ```kusto
 ResourceContainers
@@ -472,17 +471,17 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
+![Pictogram van Resource Graph Explorer](../media/resource-graph-small.png) Probeer deze query in Azure Resource Graph Explorer:
 
-- Azure portal: pictogram <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">Portal.Azure.com</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure Government portal: pictogram <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">Portal.Azure.us</a> ![openen in nieuw venster](../../media/new-window.png)
-- Azure China-portal: pictogram <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%20%7C%20where%20type%3D%3D'microsoft.resources%2Fsubscriptions%2Fresourcegroups'%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%20%7C%20union%20%20(Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205)" target="_blank">Portal.Azure.cn</a> ![openen in nieuw venster](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%0D%0A%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%0D%0A%7C%20union%20%20%28Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205%29" target="_blank">portal.azure.com</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure Government-portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%0D%0A%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%0D%0A%7C%20union%20%20%28Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205%29" target="_blank">portal.azure.us</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
+- Azure China 21Vianet-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/ResourceContainers%0D%0A%7C%20where%20type%3D%3D%27microsoft.resources%2Fsubscriptions%2Fresourcegroups%27%20%7C%20project%20name%2C%20type%20%20%7C%20limit%205%0D%0A%7C%20union%20%20%28Resources%20%7C%20project%20name%2C%20type%20%7C%20limit%205%29" target="_blank">portal.azure.cn</a> ![Pictogram Koppeling in nieuw venster openen](../../media/new-window.png)
 
 ---
 
-## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames" />De namen van de Tenant en het abonnement toevoegen met DisplayName
+## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>Namen van tenant en abonnement toevoegen met DisplayNames
 
-Deze query gebruikt de nieuwe para meter **include** met de optie _DisplayName_ om **subscriptionDisplayName** en **tenantDisplayName** toe te voegen aan de resultaten. Deze para meter is alleen beschikbaar voor Azure CLI en Azure PowerShell.
+Deze query gebruikt de nieuwe parameter **Include** met de optie _DisplayNames_ om **subscriptionDisplayName** en **tenantDisplayName** toe te voegen aan de resultaten. Deze parameter is alleen beschikbaar voor Azure CLI en Azure PowerShell.
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames
@@ -492,14 +491,14 @@ az graph query -q "limit 1" --include displayNames
 Search-AzGraph -Query "limit 1" -Include DisplayNames
 ```
 
-Een alternatief voor het ophalen van de naam van het abonnement `join` is het gebruiken van de operator en verbinding maken `Microsoft.Resources/subscriptions` met de **ResourceContainers** -tabel en het type. `join`werkt in azure CLI, Azure PowerShell, portal en alle ondersteunde SDK. Zie voor beeld [-sleutel kluis met abonnements naam](#join).
+Een alternatieve manier om de naam van het abonnement op te halen, is door de operator `join` te gebruiken en verbinding maken met de tabel **ResourceContainers** en het type `Microsoft.Resources/subscriptions`. `join` werkt in Azure CLI, Azure PowerShell, de portal en alle ondersteunde SDK's. Zie [Sleutelkluizen met abonnementsnaam](#join) voor een voorbeeld.
 
 > [!NOTE]
-> Als de query geen gebruik maakt van **project** om de geretourneerde eigenschappen op te geven, worden **subscriptionDisplayName** en **tenantDisplayName** automatisch opgenomen in de resultaten.
-> Als de query gebruikmaakt van **project**, moeten alle _DisplayName_ -velden expliciet worden opgenomen in het **project** of worden ze niet geretourneerd in de resultaten, zelfs niet wanneer de para meter **include** wordt gebruikt. De para meter **include** werkt niet bij [tabellen](../concepts/query-language.md#resource-graph-tables).
+> Als in de query niet **project** wordt gebruikt om de geretourneerde eigenschappen op te geven, worden **subscriptionDisplayName** en **tenantDisplayName** automatisch opgenomen in de resultaten.
+> Als in de query **project** wel wordt gebruikt, moet elk van de _DisplayName_-velden expliciet worden opgenomen in het **project**, anders worden ze niet geretourneerd in de resultaten, zelfs niet wanneer de parameter **Include** wordt gebruikt. De parameter **Include** werkt niet met [tabellen](../concepts/query-language.md#resource-graph-tables).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Bekijk voor beelden van [Start query's](starter.md).
-- Meer informatie over de [query taal](../concepts/query-language.md).
-- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
+- Bekijk voorbeelden uit [Starter-query's](starter.md).
+- Lees meer over de [querytaal](../concepts/query-language.md).
+- Lees meer over het [verkennen van resources](../concepts/explore-resources.md).

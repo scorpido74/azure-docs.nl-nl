@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221263"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Zelfstudie: Integratie van een eenmalige aanmelding (SSO) van Azure Active Directory met Anyone Home CRM
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u hoe u Anyone Home CRM kunt integreren met Azure Activ
 
 * in Azure AD beheren wie toegang heeft tot Anyone Home CRM.
 * ervoor zorgen dat gebruikers zich automatisch kunnen aanmelden bij Anyone Home CRM met hun Azure AD-account.
-* uw accounts op één centrale locatie beheren: Azure Portal.
+* Uw accounts op een centrale locatie beheren: Azure Portal.
 
 Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
@@ -36,7 +36,7 @@ Zie [Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Activ
 
 U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) krijgen.
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
 * Een abonnement waarop een eenmalige aanmelding (SSO) voor Anyone Home CRM mogelijk is gemaakt.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
@@ -65,15 +65,15 @@ Configureer en test de eenmalige aanmelding van Azure AD met Anyone Home CRM met
 Voltooi de volgende stappen om een eenmalige aanmelding van Azure AD met Anyone Home CRM te configureren en te testen:
 
 1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** : zodat uw gebruikers deze functie kunnen gebruiken.
-    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B. Simon.
-    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** : zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : om eenmalige aanmelding van Azure AD te testen met B.Simon.
+    1. **[De Azure AD-testgebruiker toewijzen](#assign-the-azure-ad-test-user)** zodat B.Simon eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[Eenmalige aanmelding Anyone Home CRM configureren](#configure-anyone-home-crm-sso)** : om de instellingen voor een eenmalige aanmelding aan de toepassingszijde te configureren.
     1. **[Een Anyone Home CRM-testgebruiker aanmaken](#create-anyone-home-crm-test-user)** : als u een equivalent van B.Simon in Anyone Home CRM wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
 1. **[Eenmalige aanmelding testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in Azure Portal.
 
 1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de **Anyone Home CRM**-toepassing de sectie **Beheren** en selecteer **eenmalige aanmelding**.
 1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
@@ -88,17 +88,17 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem voor deze waarden contact op met het [clientondersteuningsteam van Anyone Home CRM](mailto:lightson@anyonehome.com). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke id en antwoord-URL. Neem voor deze waarden contact op met het [clientondersteuningsteam van Anyone Home CRM](mailto:support@anyonehome.com). U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-1. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de kopieerknop om de **URL voor federatieve metagegevens van de app** te kopiëren en slaat u deze op uw computer op.
 
     ![De link om het certificaat te downloaden](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
+In deze sectie gaat u een testgebruiker met de naam B.Simon maken in Azure Portal.
 
-1. Selecteer in het linkerdeelvenster van de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
+1. Selecteer in het linkerdeelvenster van Azure Portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Volg de volgende stappen bij de eigenschappen voor **Gebruiker**:
    1. Voer in het veld **Naam**`B.Simon` in.  
@@ -110,7 +110,7 @@ In deze sectie gaat u een testgebruiker met de naam B.Simon maken in de Azure-po
 
 In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen tot Anyone Home CRM.
 
-1. Selecteer in de Azure-portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer in Azure Portal de optie **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
 1. Selecteer in de lijst met toepassingen de optie **Anyone Home CRM**.
 1. Zoek op de overzichtspagina van de app de sectie **Beheren** en selecteer **Gebruikers en groepen**.
 
@@ -121,16 +121,16 @@ In deze sectie geeft u B. Simon toestemming om eenmalige aanmelding van Azure te
     ![De koppeling Gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoogvenster **Gebruikers en groepen** de optie **B.Simon** in de lijst Gebruikers. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
-1. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ## <a name="configure-anyone-home-crm-sso"></a>Eenmalige aanmelding Anyone Home CRM configureren
 
-Als u de eenmalige aanmelding aan de **Anyone Home CRM**-zijde wilt configureren, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Anyone Home CRM](mailto:lightson@anyonehome.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u de eenmalige aanmelding aan de **Anyone Home CRM**-zijde wilt configureren, moet u de **App-URL voor federatieve metagegevens** verzenden naar het [ondersteuningsteam van Anyone Home CRM](mailto:support@anyonehome.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-anyone-home-crm-test-user"></a>Een testgebruiker voor Anyone Home CRM aanmaken
 
-In deze sectie maakt u in Anyone Home CRM een gebruiker aan met de naam Britta Simon. Werk samen met [het ondersteuningsteam van Anyone Home CRM](mailto:lightson@anyonehome.com) om de gebruikers aan het platform van Anyone Home CRM toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u in Anyone Home CRM een gebruiker aan met de naam Britta Simon. Werk samen met [het ondersteuningsteam van Anyone Home CRM](mailto:support@anyonehome.com) om de gebruikers aan het platform van Anyone Home CRM toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>Eenmalige aanmelding testen 
 

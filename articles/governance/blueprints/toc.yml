@@ -4,16 +4,19 @@
   items:
     - name: Wat is Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Snelstartgidsen
   expanded: true
   items:
     - name: Een blauwdruk maken - Portal
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Een blauwdruk maken - PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Een blauwdruk maken - Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Een blauwdruk maken - Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Een blauwdruk maken - REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: Naslaginformatie
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Azure-SDK voor .NET
@@ -285,7 +290,7 @@
     - name: GitHub - Azure Blueprints-voorbeelden
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Microsoft Q&A voor Azure Blueprints
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: YouTube-kanaal Governance
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Azure Friday - Overzicht van Azure Blueprints

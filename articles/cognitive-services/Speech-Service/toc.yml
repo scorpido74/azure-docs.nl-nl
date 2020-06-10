@@ -462,6 +462,8 @@
       items:
         - name: Wat is Sprekerherkenning?
           href: speaker-recognition-overview.md
+        - name: Basis van sprekerherkenning
+          href: speaker-recognition-basics.md
     - name: Naslaginformatie
       items:
         - name: REST-API’s

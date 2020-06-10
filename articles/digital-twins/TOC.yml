@@ -1,60 +1,130 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: Overzicht
-- name: Snelstartgidsen
-  expanded: true
+  items:
+    - name: Over Azure Digital Twins
+      href: overview.md
+    - name: Verschillen met de vorige versie
+      href: overview-differences.md
 - name: Zelfstudies
   items:
-    - name: Een gebouw bewaken met Digital Twins
+    - name: Een client-app coderen
+      href: tutorial-code.md
+    - name: De basisbeginselen verkennen met een voorbeeldclient-app
+      href: tutorial-command-line-app.md
+    - name: Een end-to-end-oplossing verbinden
+      href: tutorial-end-to-end.md
 - name: Concepten
   items:
-    - name: Beveiliging
+    - name: Aangepaste modellen
+      href: concepts-models.md
+    - name: Digital twins en het tweelinggrafiek
+      href: concepts-twins-graph.md
+    - name: Querytaal
+      href: concepts-query-language.md
+    - name: Integratie met andere services
+      href: concepts-integration.md
+    - name: Gebeurtenisroutes
+      href: concepts-route-events.md
+    - name: Beveiliging voor Azure Digital Twins-oplossingen
+      href: concepts-security.md
 - name: Instructiegidsen
   items:
-    - name: Query's uitvoeren op Digital Twins-API's
+    - name: De Azure Digital Twins-CLI gebruiken
+      href: how-to-use-cli.md
+    - name: De API's en SDK's gebruiken
+      href: how-to-use-apis-sdks.md
+    - name: Aangepaste SDK's maken met AutoRest
+      href: how-to-create-custom-sdks.md
+    - name: Een Azure Digital Twins-exemplaar maken
+      href: how-to-set-up-instance.md
+    - name: Een clienttoepassing verifiëren
+      href: how-to-authenticate-client.md
+    - name: Modellen parseren en valideren
+      href: how-to-use-parser.md
+    - name: Een dubbel model beheren
+      href: how-to-manage-model.md
+    - name: Een digital twin beheren
+      href: how-to-manage-twin.md
+    - name: Een tweelinggrafiek met relaties beheren
+      href: how-to-manage-graph.md
+    - name: Query uitvoeren op de tweelinggrafiek
+      href: how-to-query-graph.md
+    - name: Eindpunten en routes beheren
+      href: how-to-manage-routes.md
+    - name: Gebeurtenisgegevens interpreteren
+      href: how-to-interpret-event-data.md
+    - name: Een Azure-functie instellen om gegevens te verwerken
+      href: how-to-create-azure-function.md
+    - name: Telemetrie opnemen vanuit IoT Hub
+      href: how-to-ingest-iot-hub-data.md
 - name: Naslaginformatie
+  items:
+    - name: REST API's voor Digital Twins
+      href: 'https://docs.microsoft.com/rest/api/azure-digitaltwins/'
+    - name: '.NET-SDK (C#) voor Digital Twins'
+      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core'
+    - name: Digital Twins-servicelimieten
+      href: reference-service-limits.md
+    - name: DTDL v2-specificaties
+      href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+    - name: DTMI-specificaties
+      href: 'https://github.com/Azure/digital-twin-model-identifier'
+    - name: Azure CLI
+      href: /cli/azure/iot
+    - name: Azure IoT CLI-extensie
+      href: /cli/azure/ext/azure-iot/iot?view=azure-cli-latest
+    - name: Azure Cloud Shell
+      href: 'https://shell.azure.com'
+    - name: Azure PowerShell
+      href: '/powershell/module/az.iothub#iot'
+    - name: Azure Portal
+      href: 'https://portal.azure.com'
+    - name: Documentatie voor Azure RBAC
+      href: /role-based-access-control/overview
 - name: Resources
   items:
-    - name: Bronnen voor ontwikkelaars
-      items:
-        - name: Graph Viewer voor Azure Digital Twins
-          href: 'https://github.com/Azure/azure-digital-twins-graph-viewer'
-        - name: 'Azure Digital Twins-voorbeelden voor C# (.NET)'
-          href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
-        - name: REST API voor Azure Digital Twins
-          href: 'https://docs.westcentralus.azuresmartspaces.net/management/swagger'
+    - name: DTDL-extensie voor VS Code
+      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl'
+    - name: Opties voor ondersteuning en hulp
+      href: /azure/iot-fundamentals/iot-support-help
+    - name: Verhalen van klanten
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Channel 9-video's
+      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
+    - name: Aanvragen van klantgegevens
+      href: resources-customer-data-requests.md
     - name: Prijzen en beschikbaarheid
       items:
         - name: Prijzen
-          href: 'https://azure.microsoft.com/pricing/details/digital-twins/'
-        - name: Prijscalculator
-          href: 'https://azure.microsoft.com/pricing/calculator/'
-        - name: Beschikbaarheid in regio’s
-          href: 'https://azure.microsoft.com/regions/services/'
-    - name: Opties voor ondersteuning en hulp
+          href: 'https://azure.microsoft.com/pricing/details/digital-twins'
+        - name: Regio’s en beschikbaarheid
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins'
+- name: Verwant
+  items:
+    - name: Oplossingen
       items:
-        - name: Ondersteuningsopties in Azure
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Opties voor ondersteuning en hulp voor Azure IoT
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-digital-twins'
-        - name: Microsoft Q&A-vragenpagina
-          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
-        - name: Codevoorbeelden voor Azure IoT
-          href: 'https://docs.microsoft.com/samples/browse/?term=iot'
-    - name: Feedback en forums
+        - name: IoT-oplossingsversnellers
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /azure/iot-central/iot-support-help
+    - name: Platformservices
       items:
-        - name: Microsoft Q&A-vragenpagina
-          href: 'https://docs.microsoft.com/answers/topics/azure-digital-twins.html'
-        - name: Productaanvragen en -suggesties
-          href: 'https://feedback.azure.com/forums/916621-azure-digital-twins'
-    - name: Verhalen van klanten
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20Digital%20Twins%22&ff=&p=0&so=story_publish_date%20desc'
-    - name: Azure-video's
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=digital-twins&sort=newest'
-    - name: Channel 9-video's
-      href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
-    - name: Updates voor Azure IoT
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-  expanded: true
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug en Play
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Kaarten
+          href: /azure/azure-maps
+        - name: Service-SDK's
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Randoplossingen
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT Device-SDK's
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

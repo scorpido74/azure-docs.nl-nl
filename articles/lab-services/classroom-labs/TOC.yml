@@ -42,6 +42,8 @@
               href: class-type-ethical-hacking.md
             - name: Databasebeheer
               href: class-type-database-management.md
+            - name: Azure SQL Database-beheer en -ontwikkeling
+              href: class-type-sql-server.md
             - name: Python en Jupyter Notebooks
               href: class-type-jupyter-notebook.md
             - name: Ontwikkeling met Android Studio via de mobiele app
@@ -74,6 +76,8 @@
           href: allow-lab-creator-pick-lab-location.md
         - name: Verbinding maken met een virtueel peernetwerk
           href: how-to-connect-peer-virtual-network.md
+        - name: Een lab maken met een gedeelde resource
+          href: how-to-create-a-lab-with-shared-resource.md
         - name: Een gedeelde installatiekopiegalerie toevoegen of loskoppelen
           href: how-to-attach-detach-shared-image-gallery.md
         - name: Extra eigenaren toevoegen aan een leslokaallab

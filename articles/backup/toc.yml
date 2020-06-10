@@ -219,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Azure Backup-server (MABS)
       items:
-        - name: Beveiligingsmatrix voor Azure Backup Server
-          href: backup-mabs-protection-matrix.md
+        - name: Beveiligingsmatrices
+          items:
+            - name: MABS V3 UR1-beschermingsmatrix
+              href: backup-mabs-protection-matrix.md
+            - name: MABS V3 RTM-beschermingsmatrix
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: Installeren of upgraden
           items:
             - name: Azure Backup Server installeren
@@ -229,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: Wat is er nieuw in MABS?
               href: backup-mabs-whats-new-mabs.md
-            - name: Opmerkingen bij de release van MABS V3
+            - name: Opmerkingen bij de release van MABS
               href: backup-mabs-release-notes-v3.md
             - name: Installatie zonder toezicht
               href: backup-mabs-unattended-install.md
@@ -284,7 +288,9 @@
         - name: Offline back-up met import/export (MARS)
           href: backup-azure-backup-import-export.md
         - name: Offline back-up met import/export (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: Offline back-up voor DPM en MABS (vorige versies)
+          href: offline-backup-server-previous-versions.md
     - name: Bewaken en waarschuwingen
       items:
         - name: Backup Explorer gebruiken
