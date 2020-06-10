@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: bd9eaad0c141eda815da159e3c13d6c51f5e6200
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593596"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297990"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een VuePress-site publiceren in Azure Static Web Apps Preview
 
@@ -110,7 +110,7 @@ De volgende stappen laten zien hoe u een nieuwe Static Web Apps-toepassing maakt
 
 1. Ga naar [Azure Portal](https://portal.azure.com)
 1. Klik op **Een resource maken**
-1. Ga naar **Static Web Apps**
+1. Zoek **Static Web Apps**
 1. Klik op **Static Web Apps (preview)**
 1. Klik op **Maken**.
 
@@ -120,7 +120,7 @@ De volgende stappen laten zien hoe u een nieuwe Static Web Apps-toepassing maakt
 
 1. Selecteer in _Resourcegroep_ de optie **Nieuw**. Voer bij _Naam van nieuwe resourcegroep_ in: **vuepress-static-app**. Selecteer vervolgens **OK**.
 
-1. Geef vervolgens een globaal unieke naam op voor de app in het vak **Naam**. Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `-`. Deze waarde wordt gebruikt als het URL-voorvoegsel voor de statische app in de indeling `https://<APP_NAME>.azurestaticapps.net`.
+1. Voer vervolgens een naam in voor uw app in het vak **Naam**. Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `-`.
 
 1. Selecteer voor _Regio_ een beschikbare regio dicht bij u in de buurt.
 

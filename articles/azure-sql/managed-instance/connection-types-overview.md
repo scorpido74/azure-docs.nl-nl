@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: cee913e846ebfef174a3cd6383401eace89187f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 347f9522bacc768265027f1a2070ac4605ade158
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044337"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655680"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Verbindings typen van Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,24 +31,24 @@ Azure SQL Managed instance ondersteunt de volgende twee verbindings typen:
 
 ## <a name="redirect-connection-type"></a>Verbindings type omleiden
 
-Verbindings type omleiden betekent dat wanneer de TCP-sessie tot stand is gebracht met de SQL-engine, de client sessie het virtuele IP-doel van het virtuele cluster knooppunt van de load balancer verkrijgt. Volgende pakketten stromen rechtstreeks naar het virtuele cluster knooppunt, waarbij de gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
+Wanneer de TCP-sessie in het verbindings type omleiding tot stand is gebracht, haalt de client sessie het virtuele IP-doel adres van het virtuele cluster knooppunt op uit het load balancer. Volgende pakketten stromen rechtstreeks naar het virtuele cluster knooppunt, waarbij de gateway wordt omzeild. In het volgende diagram ziet u deze verkeers stroom.
 
-![omleiding. png](./media/connection-types-overview/redirect.png)
+![redirect.png](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
-> Het verbindings type voor omleiding werkt momenteel alleen voor een persoonlijk eind punt. Ongeacht de instelling van het verbindings type, wordt de verbinding via het open bare eind punt tot stand gebracht via een proxy.
+> Het verbindings type omleiding werkt momenteel alleen voor een persoonlijk eind punt. Ongeacht de instelling van het verbindings type, wordt de verbinding via het open bare eind punt tot stand gebracht via een proxy.
 
 ## <a name="proxy-connection-type"></a>Type proxy verbinding
 
-Proxy Verbindings type betekent dat de TCP-sessie tot stand is gebracht met behulp van de gateway en dat alle volgende pakketten door de server worden gebruikt. In het volgende diagram ziet u deze verkeers stroom.
+In het Proxy Verbindings type wordt de TCP-sessie tot stand gebracht met behulp van de gateway en alle daaropvolgende pakketten stroomt. In het volgende diagram ziet u deze verkeers stroom.
 
-![proxy. png](./media/connection-types-overview/proxy.png)
+![proxy.png](./media/connection-types-overview/proxy.png)
 
 ## <a name="script-to-change-connection-type-settings-using-powershell"></a>Script voor het wijzigen van de instellingen van het verbindings type met Power shell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Het volgende Power shell-script laat zien hoe u het verbindings type voor een SQL Managed instance wijzigt in `Redirect` .
+Het volgende Power shell-script laat zien hoe u het verbindings type voor een beheerd exemplaar wijzigt in `Redirect` .
 
 ```powershell
 Install-Module -Name Az
@@ -60,7 +60,7 @@ Connect-AzAccount
 Get-AzSubscription
 # Use your SubscriptionId in place of {subscription-id} below
 Select-AzSubscription -SubscriptionId {subscription-id}
-# Replace {rg-name} with the resource group for your SQL Managed Instance, and replace {mi-name} with the name of your SQL Managed Instance
+# Replace {rg-name} with the resource group for your managed instance, and replace {mi-name} with the name of your managed instance
 $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```

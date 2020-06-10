@@ -1,20 +1,20 @@
 ---
-title: 'Zelf studie: een web-app maken (caching-legging)-Azure cache voor redis'
-description: Meer informatie over het maken van een web-app met Azure cache voor redis die gebruikmaakt van het cache-leggings patroon.
+title: 'Zelfstudie: Een web-app maken (cache-aside): Azure Cache voor Redis'
+description: Informatie over het maken van een web-app met Azure Cache voor Redis die gebruikmaakt van het cache-aside-patroon.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411940"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195580"
 ---
-# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: Een cache-aside-leaderboard maken in ASP.NET
+# <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: een cache-aside-leaderboard maken in ASP.NET
 
 In deze zelfstudie werkt u de ASP.NET-web-app *ContosoTeamStats* bij die is gemaakt in de [Quickstart van ASP.NET voor Azure Cache voor Redis](cache-web-app-howto.md), om een leaderboard op te nemen waarin het [cache-aside-patroon](https://docs.microsoft.com/azure/architecture/patterns/cache-aside) wordt gebruikt met Azure Cache voor Redis. In de voorbeeldtoepassing wordt een lijst met teamstatistieken uit een database weergegeven en ziet u verschillende manieren waarop u Azure Cache voor Redis kunt gebruiken om gegevens op te slaan in en op te halen uit de cache om de prestaties te verbeteren. Wanneer u de zelfstudie hebt voltooid, hebt u een actieve web-app die naar een database leest en schrijft. Deze web-app is geoptimaliseerd met Azure Cache voor Redis en wordt gehost in Azure.
 
@@ -33,7 +33,7 @@ In deze zelfstudie leert u het volgende:
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * Deze zelfstudie gaat verder waar u was gebleven in [Quickstart van ASP.NET voor Azure Cache voor Redis](cache-web-app-howto.md). Als u dat nog niet hebt gedaan, volgt u eerst de snelstartgids.
-* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende werk belastingen:
+* Installeer [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de volgende workloads:
     * ASP.NET-ontwikkeling en webontwikkeling
     * Azure-ontwikkeling
     * .NET-desktopontwikkeling met SQL Server Express LocalDB of [SQL Server 2017 Express-editie](https://www.microsoft.com/sql-server/sql-server-editions-express).
@@ -148,7 +148,7 @@ Meer informatie over dit pakket vindt u op de NuGet-pagina [EntityFramework](htt
 
 1. Voeg de volgende sectie `connectionStrings` toe aan de sectie `configuration`. De naam van de verbindingsreeks moet overeenkomen met de naam van de contextklasse van de Entity Framework-database. Dit is `TeamContext`.
 
-    In deze connection string wordt ervan uitgegaan dat u voldoet aan de [vereisten](#prerequisites) en geïnstalleerde SQL Server Express LocalDB, die deel uitmaakt van de *.net desktop Development* -werk belasting die is geïnstalleerd met Visual Studio 2019.
+    Bij deze verbindingsreeks wordt ervan uitgegaan dat u hebt voldaan aan de [Vereisten](#prerequisites) en SQL Server Express LocalDB hebt geïnstalleerd, dat deel uitmaakt van de werkbelasting *.NET-desktopontwikkeling* die wordt geïnstalleerd met Visual Studio 2019.
 
     ```xml
     <connectionStrings>
@@ -179,7 +179,7 @@ Meer informatie over dit pakket vindt u op de NuGet-pagina [EntityFramework](htt
 
     ![Controllerklasse toevoegen](./media/cache-web-app-cache-aside-leaderboard/cache-add-controller-class.png)
 
-1. Selecteer in de vervolgkeuzelijst **Model class** de optie **Team (ContosoTeamStats.Models)**. Selecteer in de vervolgkeuzelijst **Data context class** de optie **TeamContext (ContosoTeamStats.Models)**. Typ `TeamsController` in het tekstvak voor de naam van de **Controller** (als dit niet automatisch wordt ingevuld). Klik op **Add** om de controllerklasse te maken en de standaardweergaven toe te voegen.
+1. Selecteer in de vervolgkeuzelijst **Model class** de optie **Team (ContosoTeamStats.Models)** . Selecteer in de vervolgkeuzelijst **Data context class** de optie **TeamContext (ContosoTeamStats.Models)** . Typ `TeamsController` in het tekstvak voor de naam van de **Controller** (als dit niet automatisch wordt ingevuld). Klik op **Add** om de controllerklasse te maken en de standaardweergaven toe te voegen.
 
     ![Controller configureren](./media/cache-web-app-cache-aside-leaderboard/cache-configure-controller.png)
 
@@ -250,7 +250,7 @@ U hebt het clientbibliotheekpakket *StackExchange.Redis* al geïnstalleerd in de
 
     ![TeamsController](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Voeg de volgende twee `using` instructies toe aan **TeamsController.cs**:
+1. Voeg de volgende twee `using`-instructies toe aan **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -634,7 +634,7 @@ In deze test worden de toepassing en de database beide lokaal uitgevoerd. De Azu
 
 De app lokaal uitvoeren:
 
-1. Druk op **CTRL + F5** om de toepassing uit te voeren.
+1. Druk op **Ctrl+F5** om de toepassing uit te voeren.
 
     ![App die lokaal wordt uitgevoerd](./media/cache-web-app-cache-aside-leaderboard/cache-local-application.png)
 
@@ -642,9 +642,9 @@ De app lokaal uitvoeren:
 
 ## <a name="publish-and-run-in-azure"></a>Publiceren en uitvoeren in Azure
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>Een Azure SQL database inrichten voor de app
+### <a name="provision-a-database-for-the-app"></a>Een database inrichten voor de app
 
-In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet worden gebruikt wanneer deze wordt gehost in Azure.
+In deze sectie richt u een nieuwe database in SQL Database in die de app gaat gebruiken terwijl deze wordt gehost in Azure.
 
 1. Klik linksboven in [Azure Portal](https://portal.azure.com/) op **Een resource maken**.
 
@@ -654,7 +654,7 @@ In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet wor
 
    | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Database naam** | *ContosoTeamsDatabase* | Zie [Data Base-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)voor geldige database namen. |
+   | **Databasenaam** | *ContosoTeamsDatabase* | Zie [Database-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) voor geldige databasenamen. |
    | **Abonnement** | *Uw abonnement*  | Selecteer hetzelfde abonnement dat u gebruikt om de cache te maken en de App Service te hosten. |
    | **Resourcegroep**  | *TestResourceGroup* | Klik op **Bestaande gebruiken** en gebruik dezelfde resourcegroep als waarin u de cache en App Service hebt geplaatst. |
    | **Bron selecteren** | **Lege database** | Begin met een lege database. |
@@ -663,8 +663,8 @@ In deze sectie richt u een nieuwe SQL Azure-database in voor de app die moet wor
 
    | Instelling       | Voorgestelde waarde | Beschrijving |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Server naam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
-   | **Aanmelding bij de server beheerder** | Een geldige naam | Zie [Data Base-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)voor geldige aanmeldings namen. |
+   | **Servernaam** | Een wereldwijd unieke naam | Zie [Naming conventions](/azure/architecture/best-practices/resource-naming) (Naamgevingsconventies) voor geldige servernamen. |
+   | **Aanmeldgegevens van serverbeheerder** | Een geldige naam | Zie [Database-id's](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) voor geldige aanmeldingsnamen. |
    | **Wachtwoord** | Een geldig wachtwoord | Uw wachtwoord moet uit ten minste 8 tekens bestaan en moet tekens bevatten uit drie van de volgende categorieën: hoofdletters, kleine letters, cijfers en niet-alfanumerieke tekens. |
    | **Locatie** | *VS - oost* | Selecteer dezelfde regio als waarin u de cache en de App Service hebt gemaakt. |
 
@@ -703,7 +703,7 @@ In deze stap van de zelfstudie publiceert u de toepassingsupdate in Azure om dez
 
     | Bewerking | Beschrijving |
     | --- | --- |
-    | Nieuwe maken |Een nieuw team maken |
+    | Create New |Een nieuw team maken |
     | Play Season |Speel een seizoen wedstrijden, werk de teamstatistieken bij en wis eventuele verouderde teamgegevens uit de cache. |
     | Clear Cache |Wis de teamstatistieken uit de cache. |
     | List from Cache |Haal de teamstatistieken op uit de cache. Als er een cache ontbreekt, moet u de statistieken uit de database laden en in de cache opslaan voor later gebruik. |
@@ -723,8 +723,8 @@ Wanneer u klaar bent met de voorbeeldtoepassing uit de zelfstudie, kunt u de Azu
 > Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via de respectievelijke blades.
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
-2. Typ de naam van de resourcegroep in het tekstvak **Items filteren...**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+2. Typ de naam van de resourcegroep in het tekstvak **Items filteren...** .
 3. Klik op **...** rechts van de resourcegroep en klik op **Resourcegroep verwijderen**.
 
     ![Verwijderen](./media/cache-web-app-cache-aside-leaderboard/cache-delete-resource-group.png)

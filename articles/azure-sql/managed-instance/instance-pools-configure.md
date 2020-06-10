@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 569b1fd964665e3efec87adebd5f9a76de01f381
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216375"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659647"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Azure SQL Managed instance implementeren in een instantie groep
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,13 +28,13 @@ In dit artikel vindt u informatie over het maken van een [exemplaar groep](insta
 
 In de volgende tabel ziet u de beschik bare bewerkingen met betrekking tot exemplaar groepen en hun Beschik baarheid in de Azure Portal en Power shell.
 
-|Opdracht|Azure Portal|PowerShell|
+|Opdracht|Azure-portal|PowerShell|
 |:---|:---|:---|
-|Een exemplaar groep maken|Nee|Yes|
-|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Yes |
-|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Yes |
-|Een exemplaar groep verwijderen|Nee|Yes|
-|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Yes|
+|Een exemplaar groep maken|Nee|Ja|
+|Een exemplaar groep bijwerken (beperkt aantal eigenschappen)|Nee |Ja |
+|Het gebruik en de eigenschappen van een exemplaar groep controleren|Nee|Ja |
+|Een exemplaar groep verwijderen|Nee|Ja|
+|Een beheerd exemplaar maken binnen een exemplaar groep|Nee|Ja|
 |Resource gebruik voor een beheerd exemplaar bijwerken|Ja |Ja|
 |Gebruik en eigenschappen voor een beheerd exemplaar controleren|Ja|Ja|
 |Een beheerd exemplaar uit de groep verwijderen|Ja|Ja|
@@ -54,7 +54,7 @@ Beschik bare [Power shell-opdrachten](https://docs.microsoft.com/powershell/modu
 
 Als u Power shell wilt gebruiken, [installeert u de nieuwste versie van Power shell core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)en volgt u de instructies om [de Azure PowerShell-module te installeren](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instanties gebruikt u de standaard [Managed instance-opdrachten](api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances), maar de eigenschap name van de *instantie groep* moet worden ingevuld wanneer u deze opdrachten gebruikt voor een instantie in een groep.
+Voor bewerkingen met betrekking tot instanties in Pools en afzonderlijke instanties gebruikt u de standaard [Managed instance-opdrachten](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), maar de eigenschap name van de *instantie groep* moet worden ingevuld wanneer u deze opdrachten gebruikt voor een instantie in een groep.
 
 ## <a name="deployment-process"></a>Implementatieproces
 

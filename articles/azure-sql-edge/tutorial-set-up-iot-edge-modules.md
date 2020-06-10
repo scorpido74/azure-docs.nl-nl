@@ -2,19 +2,19 @@
 title: IoT Edge-modules instellen in Azure SQL Edge
 description: In deel twee van deze driedelige Azure SQL Edge-zelfstudie over het voorspellen van verontreinigingen in ijzererts gaat u IoT Edge-modules en -verbindingen instellen.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593497"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235026"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge-modules en -verbindingen instellen
 
@@ -25,7 +25,7 @@ In deel twee van deze driedelige zelfstudie over het voorspellen van verontreini
 
 ## <a name="create-azure-stream-analytics-module"></a>Azure Stream Analytics-module maken
 
-Maak een Azure Stream Analytics-module om te gebruiken in deze zelfstudie. Zie [Streaming-taken gebruiken met SQL Database Edge](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge) voor meer informatie over het gebruiken van streaming-taken met SQL Edge.
+Maak een Azure Stream Analytics-module om te gebruiken in deze zelfstudie. Zie [Streaming-taken gebruiken met SQL Edge](stream-analytics.md) voor meer informatie over het gebruik van streaming-taken met SQL Edge.
 
 Nadat de Azure Stream Analytics-taak is gemaakt met de hostomgeving ingesteld op Edge, stelt u de in- en uitvoer voor de zelfstudie in.
 
@@ -101,7 +101,7 @@ Geef nu de containerreferenties op in de IoT Edge-module.
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>De Azure SQL Edge-module implementeren
 
-1. Implementeer de Azure SQL Edge-module door de stappen te volgen die worden beschreven in [Azure SQL Edge implementeren (preview-versie)](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge).
+1. Implementeer de Azure SQL Edge-module door de stappen te volgen die worden beschreven in [Azure SQL Edge implementeren (preview)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
 
 2. Geef bij de **Route opgeven** op de pagina **Modules instellen** als volgt de routes op voor de communicatie van de module met de IoT Edge-hub. 
 

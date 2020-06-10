@@ -1,20 +1,20 @@
 ---
-title: Zelf studie-Azure Analysis Services rollen configureren | Microsoft Docs
-description: Meer informatie over het configureren van Azure Analysis Services beheerders-en gebruikers rollen met behulp van de Azure Portal of SQL Server Management Studio.
+title: Zelfstudie - Azure Analysis Services-rollen configureren | Microsoft Docs
+description: Meer informatie over het configureren van Azure Analysis Services-beheerders- en -gebruikersrollen met behulp van de Azure-portal of SQL Server Management Studio.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81454251"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016386"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder- en gebruikersrollen configureren
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Zelfstudie: Serverbeheerder en gebruikersrollen configureren
 
  In deze zelfstudie gebruikt u SQL Server Management Studio (SSMS) om verbinding te maken met uw server in Azure voor het configureren van de serverbeheerderrol en de modeldatabaserol. U maakt ook kennis met [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200). TMSL is een scripttaal op basis van JSON voor tabelvormige modellen op het compatibiliteitsniveau van 1200 en hoger. Het kan worden gebruikt om veel in tabelvormige modelleertaken te automatiseren. TMSL wordt vaak gebruikt met PowerShell, maar in deze zelfstudie gebruikt u de XMLA-query-editor in SSMS. In deze zelfstudie voert u de volgende taken uit: 
   
@@ -59,7 +59,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
     ![Verbinding maken in SSMS](./media/analysis-services-tutorial-roles/aas-connect-ssms-auth.png)
 
     > [!TIP]
-    > Aangeraden wordt Active Directory Universal met ondersteuning voor MFA te kiezen. Dit type verificatie ondersteunt [niet-interactieve en multi-factor authentication](../../sql-database/sql-database-ssms-mfa-authentication.md). 
+    > Aangeraden wordt Active Directory Universal met ondersteuning voor MFA te kiezen. Dit type verificatie ondersteunt [niet-interactieve en multi-factor authentication](../../azure-sql/database/authentication-mfa-ssms-overview.md). 
 
 3. In **Objectverkenner** vouwt u de weergave uit om serverobjecten te zien. Klik met de rechtermuisknop om servereigenschappen te bekijken.
    
@@ -67,7 +67,7 @@ Voor de resterende taken gebruikt u SSMS voor het maken van verbinding met en he
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Een gebruikersaccount toevoegen aan de rol van serverbeheerder
 
-In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligings groep opgeeft, `obj:groupid@tenantid`gebruikt u.
+In deze taak voegt u een gebruikers- of groepsaccount uit uw Azure AD toe aan de serverbeheerderrol. Als u een beveiligingsgroep opgeeft, gebruikt u `obj:groupid@tenantid`.
 
 1. Klik in **Objectverkenner** met de rechtermuisknop op de naam van uw server en klik vervolgens op **Eigenschappen**. 
 2. In het **eigenschappenvenster van de analyseserver** klikt u op **Beveiliging** > **Toevoegen**.
@@ -130,13 +130,13 @@ In deze taak gebruikt u de opdracht [Maken](https://docs.microsoft.com/analysis-
 ## <a name="verify-your-changes"></a>Uw wijzigingen verifiëren
 
 1. Klik in **Objectverkenner** op uw servernaam en klik vervolgens op **Vernieuwen** of druk op **F5**.
-2. Vouw **data bases** > uit van**AdventureWorks** > -**rollen**. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
+2. Vouw **Databases** > **adventureworks** > **Rollen** uit. Controleer of het gebruikersaccount en de rolwijzigingen die u hebt toegevoegd in de voorgaande taken, worden weergegeven.   
 
     ![Verifiëren in Objectverkenner](./media/analysis-services-tutorial-roles/aas-connect-ssms-verify.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Als u dit wilt doen, gebruikt u**lidmaatschap** van **rollen** > om gebruikers accounts te verwijderen, of klikt u met de rechter muisknop op een rol en klikt u vervolgens op **verwijderen**.
+Verwijder de accounts en rollen voor gebruikers of groepen wanneer u deze niet meer nodig hebt. Wanneer u gebruikersaccounts wilt verwijderen, gebruikt u  **Roleigenschappen** > **Lidmaatschap** of klikt u met de rechtermuisknop op een rol en klikt u vervolgens op **verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

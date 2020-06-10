@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858035"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659708"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime maken en configureren
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,13 +48,13 @@ U kunt een bestaande Azure IR configureren om de locatie ervan te wijzigen met b
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Een Azure IR maken via Azure Data Factory gebruikers interface
 Gebruik de volgende stappen om een Azure IR te maken met behulp van Azure Data Factory-gebruikers interface.
 
-1. Selecteer op de pagina **aan de slag** van Azure Data Factory gebruikers interface het tabblad **Auteur** in het linkerdeel venster.
+1. Selecteer op de pagina **aan de slag** van Azure Data Factory gebruikers interface het [tabblad beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) in het deel venster uiterst links.
 
-   ![De knop auteur van start pagina](media/doc-common-process/get-started-page-author-button.png)
+   ![De knop Start pagina beheren](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Selecteer **verbindingen** aan de onderkant van het linkerdeel venster en selecteer **Integration Runtimes** in het venster **verbindingen** . Selecteer **+ Nieuw**.
+1. Selecteer **integratie-Runtimes** in het linkerdeel venster en selecteer **+ Nieuw**.
 
-   ![Een Integration Runtime maken](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![Een Integration Runtime maken](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend**en selecteer **door gaan**. 
 
@@ -90,6 +90,6 @@ Zodra een Azure IR is gemaakt, kunt u ernaar verwijzen in de definitie van de ge
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende artikelen voor meer informatie over het maken van andere typen Integration Runtimes:
 
-- [Zelf-hostende Integration runtime maken](create-self-hosted-integration-runtime.md)
+- [Een zelf-hostende integratieruntime maken](create-self-hosted-integration-runtime.md)
 - [Azure-SSIS-integratie-runtime maken](create-azure-ssis-integration-runtime.md)
  

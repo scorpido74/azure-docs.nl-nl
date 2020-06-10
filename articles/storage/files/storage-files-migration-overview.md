@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685995"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660754"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migreren naar Azure-bestandsshares
 
@@ -120,9 +120,9 @@ De volgende tabel classificeert micro soft-hulpprogram ma's en hun huidige gesch
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Ondersteund. Azure-bestands shares kunnen worden gekoppeld als netwerk stations. | Volledige kwaliteit. * |
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Azure File Sync | Systeem eigen geïntegreerd in azure-bestands shares. | Volledige kwaliteit. * |
 |![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| Opslag migratie service | Indirect ondersteund. Azure-bestands shares kunnen worden gekoppeld als netwerk stations op SMS-doel servers. | Volledige kwaliteit. * |
+|![Ja, aanbevolen](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, versie 10,4 of hoger| Ondersteund. | Volledige kwaliteit. * |
 |![Niet volledig aanbevolen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Ondersteund. | Meta gegevens worden niet gekopieerd. [Data box kan worden gebruikt met Azure file sync](storage-sync-offline-data-transfer.md). |
-|![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Ondersteund. | Meta gegevens worden niet gekopieerd. |
-|![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Opslagverkenner | Ondersteund. | Meta gegevens worden niet gekopieerd. |
+|![Niet volledig aanbevolen](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer, versie 1,14 | Ondersteund. | Er worden geen Acl's gekopieerd. Ondersteunt tijds tempels.  |
 |![Niet aanbevolen](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Ondersteund. | Meta gegevens worden niet gekopieerd. |
 |||||
 

@@ -3,16 +3,16 @@ title: Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 description: Azure File Storage koppelen op Linux Vm's met behulp van SMB met de Azure CLI
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 0314095a053087a7d490926c41c6ae386c304919
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab798ccbbbfc9cfc11ae85fd698ecedcb5e8e73
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066652"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658157"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure File Storage koppelen aan linux-Vm's met behulp van SMB
 
@@ -22,7 +22,7 @@ File Storage biedt bestands shares in de cloud die gebruikmaken van het standaar
 
 Het verplaatsen van bestanden van een virtuele machine naar een SMB-koppeling die wordt gehost op File Storage is een uitstekende manier om fouten in Logboeken op te sporen. Dezelfde SMB-share kan lokaal worden gekoppeld aan uw Mac-, Linux-of Windows-werk station. SMB is niet de beste oplossing voor het streamen van Linux-of toepassings Logboeken in realtime, omdat het SMB-protocol niet is gebouwd om dergelijke zware logboek registratie taken af te handelen. Een speciaal hulp programma voor Unified logging-laag, zoals gefluent, zou een betere keuze zijn dan SMB voor het verzamelen van de uitvoer van Linux-en toepassings Logboeken.
 
-Voor deze hand leiding moet u de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer **az --version** uit om de versie op te vragen. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
+Voor deze hand leiding moet u de Azure CLI-versie 2.0.4 of hoger uitvoeren. Voer **AZ--version** uit om de versie te vinden. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Maak een nieuw opslag account in de resource groep die u hebt gemaakt met [AZ Storage account create](/cli/azure/storage/account). In dit voor beeld wordt een opslag account gemaakt met de naam *mySTORAGEACCT\<wille keurig getal>* en wordt de naam van dat opslag account in de variabele **STORAGEACCT**geplaatst. Namen van opslag accounts moeten uniek zijn, `$RANDOM` waarbij een getal wordt toegevoegd aan het einde om het uniek te maken.
+Maak een nieuw opslag account in de resource groep die u hebt gemaakt met [AZ Storage account create](/cli/azure/storage/account). In dit voor beeld wordt een opslag account gemaakt met de naam *mySTORAGEACCT \<random number> * en wordt de naam van dat opslag account in de variabele **STORAGEACCT**geplaatst. Namen van opslag accounts moeten uniek zijn, waarbij `$RANDOM` een getal wordt toegevoegd aan het einde om het uniek te maken.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \
@@ -93,7 +93,7 @@ Koppel de Azure-bestands share aan de lokale map.
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-De bovenstaande opdracht gebruikt de [koppelings](https://linux.die.net/man/8/mount) opdracht voor het koppelen van de Azure-bestands share en opties die specifiek zijn voor [CIFS](https://linux.die.net/man/8/mount.cifs). Met name de opties file_mode en dir_mode stellen bestanden en mappen in op `0777`machtigingen. De `0777` machtiging biedt Lees-, schrijf-en uitvoer machtigingen voor alle gebruikers. U kunt deze machtigingen wijzigen door de waarden te vervangen door andere [CHMOD-machtigingen](https://en.wikipedia.org/wiki/Chmod). U kunt ook andere [CIFS](https://linux.die.net/man/8/mount.cifs) -opties gebruiken, zoals GID of UID. 
+De bovenstaande opdracht gebruikt de [koppelings](https://linux.die.net/man/8/mount) opdracht voor het koppelen van de Azure-bestands share en opties die specifiek zijn voor [CIFS](https://linux.die.net/man/8/mount.cifs). Met name de opties file_mode en dir_mode stellen bestanden en mappen in op machtigingen `0777` . De `0777` machtiging biedt Lees-, schrijf-en uitvoer machtigingen voor alle gebruikers. U kunt deze machtigingen wijzigen door de waarden te vervangen door andere [CHMOD-machtigingen](https://en.wikipedia.org/wiki/Chmod). U kunt ook andere [CIFS](https://linux.die.net/man/8/mount.cifs) -opties gebruiken, zoals GID of UID. 
 
 
 ## <a name="persist-the-mount"></a>De koppeling persistent maken

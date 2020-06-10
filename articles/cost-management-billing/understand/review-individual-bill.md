@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199123"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194152"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Zelfstudie: Inzicht in uw Azure-factuur
 
 Dit artikel helpt u om uw Azure-factuur te begrijpen en controleren. Voor elke factureringsperiode ontvangt u normaal gesproken een factuur per e-mail. De factuur is een afspiegeling van de kosten die u hebt gemaakt. De kostengegevens op de factuur zijn ook beschikbaar in de Azure-portal. In deze zelfstudie vergelijkt u uw factuur met het bestand met gedetailleerde dagelijkse gebruiksgegevens en met de kostenanalyse in de Azure-portal.
 
 Deze zelfstudie is alleen van toepassing op Azure-klanten met een individueel abonnement. Bekende voorbeelden van individuele abonnementen zijn abonnementen van het type betalen per gebruik die rechtstreeks zijn gekocht via de Azure-website.
+
+Zie [Onverwachte kosten analyseren](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges) als u hulp nodig hebt bij onverwachte kosten. Zie [Uw Azure-abonnement annuleren](../manage/cancel-azure-subscription.md) als u uw Azure-abonnement wilt annuleren.
 
 In deze zelfstudie leert u het volgende:
 
@@ -47,7 +49,7 @@ De eerste stap voor het vergelijken van gebruik en kosten is het downloaden van 
 
 Typ in de Azure-portal *abonnementen* in het zoekvak en klik vervolgens op [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-![Naar Abonnementen navigeren](./media/review-individual-bill/navigate-subscriptions.png)
+[![Ga naar Abonnementen](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Klik in de lijst met abonnementen op het abonnement.
 
@@ -147,7 +149,7 @@ Een virtuele machine (VM) die in Azure is gemaakt, kan bijvoorbeeld de volgende 
 
 Wanneer de virtuele machine wordt gemaakt, begint elke meter gebruiksrecords te verzenden. Dit gebruik en de metertarieven worden bijgehouden in het Azure-metersysteem.
 
-In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het berekenen van uw factuur.
+In het CSV-gebruiksbestand kunt u de meters zien die zijn gebruikt voor het berekenen van uw factuur, zoals in het vorige voorbeeld.
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>Uw factuur betalen
 

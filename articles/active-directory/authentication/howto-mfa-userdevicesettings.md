@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309762"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658678"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Gebruikers instellingen voor Azure Multi-Factor Authentication beheren
 
@@ -27,10 +27,14 @@ Als u de gebruikers van Azure Multi-Factor Authentication wilt beheren, kunt u v
 Als u de rol *authenticatie beheerder* hebt toegewezen, kunt u vereisen dat gebruikers hun wacht woord opnieuw instellen, zich opnieuw registreren voor MFA of de bestaande MFA-sessies van hun gebruikers object intrekken. Voer de volgende stappen uit om gebruikers instellingen te beheren:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
+1. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**  >  **alle gebruikers**.
 1. Kies de gebruiker waarvoor u een actie wilt uitvoeren en selecteer **verificatie methoden**. Selecteer boven aan het venster een van de volgende opties voor de gebruiker:
    - **Wacht woord opnieuw instellen** stelt het wacht woord van de gebruiker opnieuw in en wijst een tijdelijk wacht woord toe dat moet worden gewijzigd bij de volgende aanmelding.
    - **Vereisen dat het opnieuw registreren van MFA vereist** is, zodat wanneer de gebruiker de volgende keer zich aanmeldt, wordt gevraagd om een nieuwe MFA-verificatie methode in te stellen.
+   
+      > [!NOTE]
+      > De momenteel geregistreerde verificatie methoden van de gebruiker worden niet verwijderd wanneer een beheerder opnieuw moet worden geregistreerd voor MFA. Nadat een gebruiker zich opnieuw heeft geregistreerd voor MFA, raden we u aan hun beveiligings gegevens te controleren en eventuele eerder geregistreerde authenticatie methoden te verwijderen die niet meer bruikbaar zijn.
+   
    - Met **MFA-sessies intrekken** worden de MFA-sessies van de gebruiker gewist en moeten ze MFA de volgende keer dat het beleid op het apparaat wordt vereist, worden uitgevoerd.
 
    ![Verificatie methoden beheren vanuit de Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
@@ -42,10 +46,10 @@ Als dat nodig is, kunt u alle app-wacht woorden verwijderen die een gebruiker he
 Voer de volgende stappen uit om de app-wacht woorden van een gebruiker te verwijderen:
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer aan de linkerkant **Azure Active Directory** > **gebruikers** > **alle gebruikers**.
+1. Selecteer aan de linkerkant **Azure Active Directory**  >  **gebruikers**  >  **alle gebruikers**.
 1. Selecteer **multi-factor Authentication**. Mogelijk moet u naar rechts schuiven om deze menu optie weer te geven. Selecteer de onderstaande scherm afbeelding om het volledige Azure Portal venster en de menu locatie weer te geven:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication selecteren in het venster gebruikers in azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Schakel het selectie vakje in naast de gebruiker of gebruikers die u wilt beheren. Er wordt aan de rechter kant een lijst met opties voor snelle stappen weer gegeven.
-1. Selecteer **gebruikers instellingen beheren**en schakel het selectie vakje in om **alle bestaande app-wacht woorden te verwijderen die door de geselecteerde gebruikers zijn gegenereerd**, zoals ![wordt weer gegeven in het volgende voor beeld: alle bestaande app-wacht woorden verwijderen](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Selecteer **gebruikers instellingen beheren**en schakel het selectie vakje in om **alle bestaande app-wacht woorden te verwijderen die door de geselecteerde gebruikers zijn gegenereerd**, zoals wordt weer gegeven in het volgende voor beeld: ![ alle bestaande app-wacht woorden verwijderen](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Selecteer **Opslaan**en **sluiten**.
 
 ## <a name="next-steps"></a>Volgende stappen

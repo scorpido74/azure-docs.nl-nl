@@ -1,5 +1,5 @@
 ---
-title: Overzicht van virtuele Linux-machines in azure
+title: Overzicht van Linux-VM’s in Azure
 description: Overzicht van virtuele Linux-machines in Azure.
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9921db093cc111917d50acfccc10165c0eab6b0f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: MT
+ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930740"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232985"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuele Linux-machines in Azure
 
-Azure Virtual Machines (VM) is een van de verschillende soorten [schaal bare computer bronnen op aanvraag](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Normaal gesproken kiest u voor een VM wanneer u meer controle nodig hebt over de computeromgeving dan andere opties bieden. In dit artikel vindt u informatie over wat u moet overwegen voordat u een VM maakt, hoe u deze maakt en hoe u deze beheert.
+Azure Virtual Machines (VM) vormen een van de diverse typen [schaalbare on-demand computerresources](/azure/architecture/guide/technology-choices/compute-decision-tree) die Azure biedt. Normaal gesproken kiest u voor een VM wanneer u meer controle nodig hebt over de computeromgeving dan andere opties bieden. In dit artikel vindt u informatie over wat u moet overwegen voordat u een VM maakt, hoe u deze maakt en hoe u deze beheert.
 
 Een VM in Azure biedt u de flexibiliteit van virtualisatie zonder dat u de fysieke hardware hoeft te kopen en te beheren waarop de VM wordt uitgevoerd. U moet de VM echter wel onderhouden door taken uit te voeren, zoals het configureren, patchen en onderhouden van de software die erop wordt uitgevoerd.
 
@@ -58,7 +58,7 @@ Voor Azure is een toonaangevende serviceovereenkomst (SLA) van 99,9% aangekondig
 ## <a name="vm-size"></a>VM-grootte
 De [grootte](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) van de VM die u gebruikt, wordt bepaald door de workload die u wilt uitvoeren. De grootte die u vervolgens kiest, bepaalt factoren als processorsnelheid, geheugen en opslagcapaciteit. Azure biedt een groot aantal verschillende grootten voor verschillende manieren van gebruik.
 
-Azure berekent een [prijs per uur](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) op basis van de grootte en het besturings systeem van de virtuele machine. Voor niet-hele uren worden alleen de minuten van gebruik in rekening gebracht. De opslag wordt afzonderlijk berekend en in rekening gebracht.
+Azure rekent een [uurprijs](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) op basis van de grootte en het besturingssysteem van de VM. Voor niet-hele uren worden alleen de minuten van gebruik in rekening gebracht. De opslag wordt afzonderlijk berekend en in rekening gebracht.
 
 ## <a name="vm-limits"></a>VM-limieten
 Uw abonnement heeft een standaard [quotumlimiet](../../azure-resource-manager/management/azure-subscription-service-limits.md) ingebouwd die de implementatie van veel VM’s voor uw project kan beïnvloeden. De huidige limiet per abonnement is 20 VM's per regio. Limieten kunnen worden verhoogd door [een ondersteuningsticket in te dienen met een aanvraag voor een verhoging](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
@@ -78,26 +78,26 @@ Microsoft werkt nauw samen met partners om ervoor te zorgen dat de beschikbare i
 
 * [Linux op door Azure goedgekeurde distributies](endorsed-distros.md)
 * SUSE - [Azure Marketplace - SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/marketplace/apps?search=suse%20sles&page=1)
-* Red Hat- [Azure Marketplace-Red Hat Enterprise Linux 8,1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
-* Canoniek- [Azure Marketplace-Ubuntu-Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
+* Red Hat - [Azure Marketplace - Red Hat Enterprise Linux 8.1](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RedHatEnterpriseLinux81-ARM)
+* Canonical - [Azure Marketplace - Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer)
 * Debian - [Azure Marketplace - Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian)
 * FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
-* CoreOS- [Azure Marketplace-container Linux door CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
+* CoreOS - [Azure Marketplace - Container Linux door CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS)
 * RancherOS - [Azure Marketplace - RancherOS](https://azuremarketplace.microsoft.com/marketplace/apps/rancher.rancheros)
 * Bitnami - [Bitnami Library voor Azure](https://azure.bitnami.com/)
 * Mesosphere - [Azure Marketplace - Mesosphere DC/OS voor Azure](https://azure.microsoft.com/services/kubernetes-service/mesosphere/)
-* Docker- [Azure Marketplace-docker-installatie kopieën](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
+* Docker - [Azure Marketplace - Docker-installatiekopieën](https://azuremarketplace.microsoft.com/marketplace/apps?search=docker&page=1&filters=virtual-machine-images)
 * Jenkins - [Azure Marketplace - CloudBees Jenkins Platform](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudbees.cloudbees-core-contact)
 
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-Voor een juiste DevOps-cultuur moet alle infrastructuur uit code bestaan.  Wanneer alle infra structuur in code wordt geduurd, kan deze eenvoudig opnieuw worden gemaakt.  Azure werkt met de belangrijkste automatiseringstools zoals Ansible, Chef, SaltStack en Puppet.  Azure heeft ook eigen tools voor automatisering:
+Voor een juiste DevOps-cultuur moet alle infrastructuur uit code bestaan.  Als alle infrastructuur bestaat uit code, kan deze namelijk eenvoudig opnieuw worden opgebouwd.  Azure werkt met de belangrijkste automatiseringstools zoals Ansible, Chef, SaltStack en Puppet.  Azure heeft ook eigen tools voor automatisering:
 
 * [Azure-sjablonen](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure biedt ondersteuning voor [Cloud-init](https://cloud-init.io/) voor de meeste Linux-distributies die dit ondersteunen.  We werken samen met onze goedgekeurde Linux distributie-partners om ervoor te zorgen dat installatie kopieën met Cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets.
+Azure biedt ondersteuning voor [cloud init](https://cloud-init.io/) voor de meeste Linux-distributies die dit ondersteunen.  We werken samen met onze goedgekeurde Linux-distributiepartners om ervoor te zorgen dat installatiekopieën met cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatiekopieën kunnen uw cloud-init-implementaties en -configuraties naadloos werken met VM's en virtuele-machineschaalsets.
 
 * [Cloud-init gebruiken op virtuele Linux-machines in Azure](using-cloud-init.md)
 
@@ -108,7 +108,7 @@ Azure biedt ondersteuning voor [Cloud-init](https://cloud-init.io/) voor de mees
 
 ## <a name="networking"></a>Netwerken
 * [Overzicht van Virtual Network](../../virtual-network/virtual-networks-overview.md)
-* [IP-adressen in Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP-adressen in Azure](../../virtual-network/public-ip-addresses.md)
 * [Poorten openen voor een Linux-VM in Azure](nsg-quickstart.md)
 * [Een Fully Qualified Domain Name maken in Azure Portal](portal-create-fqdn.md)
 

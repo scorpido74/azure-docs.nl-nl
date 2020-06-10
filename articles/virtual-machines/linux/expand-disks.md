@@ -3,16 +3,16 @@ title: Virtuele harde schijven op een Linux-VM uitvouwen
 description: Meer informatie over het uitbreiden van virtuele harde schijven op een Linux-VM met de Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945191"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659741"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuele harde schijven op een Linux VM uitbreiden met de Azure CLI
 
@@ -35,7 +35,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen zoals *myResourceG
     ```
 
     > [!NOTE]
-    > De toewijzing van de virtuele harde schijf moet worden opgeheven voor de VM. Als de virtuele machine `az vm stop` wordt gestopt, worden de reken resources niet vrijgegeven. Gebruik `az vm deallocate`om reken resources vrij te geven.
+    > De toewijzing van de virtuele harde schijf moet worden opgeheven voor de VM. Als de virtuele machine `az vm stop` wordt gestopt, worden de reken resources niet vrijgegeven. Gebruik om reken resources vrij te geven `az vm deallocate` .
 
 1. Bekijk een lijst met beheerde schijven in een resource groep met [AZ Disk List](/cli/azure/disk#az-disk-list). In het volgende voor beeld wordt een lijst met beheerde schijven in de resource groep met de naam *myResourceGroup*weer gegeven:
 
@@ -88,7 +88,7 @@ Als u een uitgebreide schijf wilt gebruiken, vouwt u de onderliggende partitie e
     sudo parted /dev/sdc
     ```
 
-    Informatie over de bestaande partitie-indeling weer `print`geven met. De uitvoer is vergelijkbaar met het volgende voor beeld, waarin wordt weer gegeven dat de onderliggende schijf 215 GB is:
+    Informatie over de bestaande partitie-indeling weer geven met `print` . De uitvoer is vergelijkbaar met het volgende voor beeld, waarin wordt weer gegeven dat de onderliggende schijf 215 GB is:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Als u een uitgebreide schijf wilt gebruiken, vouwt u de onderliggende partitie e
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Vouw de partitie uit `resizepart`met. Voer het partitie nummer, de *1*en een grootte in voor de nieuwe partitie:
+    c. Vouw de partitie uit met `resizepart` . Voer het partitie nummer, de *1*en een grootte in voor de nieuwe partitie:
 
     ```bash
     (parted) resizepart
@@ -113,27 +113,27 @@ Als u een uitgebreide schijf wilt gebruiken, vouwt u de onderliggende partitie e
     End?  [107GB]? 215GB
     ```
 
-    d. Voer `quit`in om af te sluiten.
+    d. Voer in om af te sluiten `quit` .
 
-1. Controleer met de partitie een andere grootte door de partitie consistentie `e2fsck`te controleren met:
+1. Controleer met de partitie een andere grootte door de partitie consistentie te controleren met `e2fsck` :
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Formaat van het bestands `resize2fs`systeem wijzigen met:
+1. Formaat van het bestands systeem wijzigen met `resize2fs` :
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-1. Koppel de partitie aan de gewenste locatie, zoals `/datadrive`:
+1. Koppel de partitie aan de gewenste locatie, zoals `/datadrive` :
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Gebruik `df -h`om te controleren of de grootte van de gegevens schijf is gewijzigd. In de volgende voorbeeld uitvoer ziet u dat het gegevens station */dev/sdc1* nu 200 GB is:
+1. Gebruik om te controleren of de grootte van de gegevens schijf is gewijzigd `df -h` . In de volgende voorbeeld uitvoer ziet u dat het gegevens station */dev/sdc1* nu 200 GB is:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

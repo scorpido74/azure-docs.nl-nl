@@ -3,23 +3,23 @@ title: Virtuele Azure-machines migreren naar Managed Disks
 description: Virtuele Azure-machines die zijn gemaakt met onbeheerde schijven in opslag accounts migreren om Managed Disks te gebruiken.
 author: roygara
 ms.service: virtual-machines-windows
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/30/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e8f2753ac9062803a2d6252eca1829cb0b168f02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d64ebb053ef01e375edd52ad0bf2c1f424f1b837
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921348"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660832"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Virtuele Azure-machines migreren naar Managed Disks in azure
 
 Azure Managed Disks vereenvoudigt uw opslag beheer door de nood zaak om opslag accounts afzonderlijk te beheren, te verwijderen.  U kunt ook uw bestaande Azure-Vm's migreren naar Managed Disks om te profiteren van betere betrouw baarheid van Vm's in een Beschikbaarheidsset. Zo zorgt u ervoor dat de schijven van verschillende virtuele machines in een Beschikbaarheidsset voldoende van elkaar zijn geïsoleerd om één storings punt te voor komen. Er worden automatisch schijven van verschillende virtuele machines in een Beschikbaarheidsset in verschillende opslag schaal eenheden (stempels) geplaatst, waardoor de impact van de enkelvoudige opslag schaal eenheid wordt beperkt als gevolg van hardware-en software fouten.
 Op basis van uw behoeften kunt u kiezen uit vier typen opslag opties. Voor meer informatie over de beschik bare schijf typen raadpleegt u ons artikel [een schijf type selecteren](disks-types.md)
 
-## <a name="migration-scenarios"></a> Migratiescenario's
+## <a name="migration-scenarios"></a>Migratiescenario's
 
 In de volgende scenario's kunt u migreren naar Managed Disks:
 

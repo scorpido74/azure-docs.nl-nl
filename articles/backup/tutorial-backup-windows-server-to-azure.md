@@ -1,15 +1,15 @@
 ---
-title: 'Zelf studie: back-up maken van Windows Server naar Azure'
+title: Zelfstudie - Een back-up maken van een Windows-server naar Azure
 description: In deze zelfstudie wordt beschreven hoe u een back-up maakt van een on-premises Windows-server naar een Recovery Services-kluis.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 560a4907fc812aae027ad9e1a1c262fc994c0da9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238746"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295538"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Een back-up maken van een Windows-server naar Azure
 
@@ -23,7 +23,7 @@ U kunt Azure Backup gebruiken om uw Windows-server te beschermen tegen beschadig
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij Azure Portal op <https://portal.azure.com.>
+Meld u aan bij Azure Portal op <https://portal.azure.com>.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -59,7 +59,7 @@ De Microsoft Azure Recovery Services-agent (MARS) maakt een koppeling tussen de 
 
 3. In het menu **Doel van back-up**:
 
-   * **waar wordt uw werk belasting uitgevoerd?**, selecteer dan **on-premises**
+   * Selecteer voor **Waar wordt uw workload uitgevoerd?** de optie **On-premises**
    * Selecteer voor **Waarvan wilt u een back-up maken?** de opties **Bestanden en mappen** en **Systeemstatus**
 
    ![informatie opgeven voor de kluis](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)

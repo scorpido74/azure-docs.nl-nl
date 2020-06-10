@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194758"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660286"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Gegevens laden in azure Synapse Analytics met behulp van Azure Data Factory
 
@@ -43,11 +43,11 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Azure Synapse Analytics: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure Synapse Analytics hebt, raadpleegt u de instructies in [Create a Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../azure-sql/database/single-database-create-quickstart.md)te volgen.
-* Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
+* Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure Storage-account hebt, raadpleegt u de instructies in [een opslag account maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource maken**  >  **gegevens en analyses**  >  **Data Factory**:
+1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de volgende items:
 
@@ -75,7 +75,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 1. Voer de volgende stappen uit op de pagina **brongegevens archief** :
     >[!TIP]
     >In deze zelf studie gebruikt u *SQL-verificatie* als verificatie type voor uw bron gegevensopslag, maar u kunt andere ondersteunde verificatie methoden kiezen:*Service-Principal* en *beheerde identiteit* , indien nodig. Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties) voor meer informatie.
-    >Om geheimen veilig op te slaan voor gegevens archieven, is het ook raadzaam om een Azure Key Vault te gebruiken. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
+    >Het ook raadzaam om een Azure Key Vault te gebruiken om geheimen voor gegevensarchieven veilig op te slaan. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
 
     a. Klik op **+ nieuwe verbinding maken**.
 
@@ -98,7 +98,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 1. Voer op de pagina **doel gegevens archief** de volgende stappen uit:
     >[!TIP]
     >In deze zelf studie gebruikt u *SQL-verificatie* als verificatie type voor uw doel gegevens opslag, maar u kunt andere ondersteunde verificatie methoden kiezen:*Service-Principal* en *beheerde identiteit* , indien nodig. Raadpleeg de bijbehorende secties in [dit artikel](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#linked-service-properties) voor meer informatie.
-    >Om geheimen veilig op te slaan voor gegevens archieven, is het ook raadzaam om een Azure Key Vault te gebruiken. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
+    >Het ook raadzaam om een Azure Key Vault te gebruiken om geheimen voor gegevensarchieven veilig op te slaan. Raadpleeg [dit artikel](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) voor gedetailleerde illustraties.
 
     a. Klik op **+ Nieuwe verbinding maken** om een verbinding toe te voegen
 
@@ -121,7 +121,7 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 
 1. Bekijk de inhoud op de pagina **kolom toewijzing** en selecteer **volgende**. De intelligente tabel toewijzing is gebaseerd op de naam van de kolom. Als u Data Factory automatisch tabellen maakt, kan het gegevens type worden geconverteerd als er incompatibiliteits problemen zijn tussen de bron-en doel opslag. Als er een niet-ondersteund gegevens type conversie is tussen de kolom Bron en doel, wordt er een fout bericht weer gegeven naast de overeenkomende tabel.
 
-    ![Pagina kolom toewijzing](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    ![Pagina kolomtoewijzing](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
 1. Voer op de pagina **instellingen** de volgende stappen uit:
 
@@ -136,11 +136,13 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi√
 1. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**.
 
     ![Overzichtspagina](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. Selecteer op de **pagina implementatie**de optie **monitor** om de pijp lijn (taak) te bewaken.
 
-1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. Wanneer de uitvoering van de pijp lijn is voltooid, selecteert u de koppeling **CopyFromSQLToSQLDW** onder de kolom **pijplijn naam** om details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren.
+1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren. 
+ 
+1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. Wanneer de uitvoering van de pijp lijn is voltooid, selecteert u de koppeling **CopyFromSQLToSQLDW** onder de kolom **pijplijn naam** om details van de uitvoering van de activiteit weer te geven of om de pijp lijn opnieuw uit te voeren.
 
-    [![Pijplijn uitvoeringen controleren](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+    [![Pijplijnuitvoeringen](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox) controleren
+
 1. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u de koppeling **alle pijplijn uitvoeringen** bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen.
 
     ![Uitvoering van activiteiten controleren](./media/load-azure-sql-data-warehouse/activity-monitoring.png)

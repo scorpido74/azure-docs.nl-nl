@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856896"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659632"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 [Azure files](storage-files-introduction.md) kunnen op twee manieren worden geïmplementeerd: door de Serverloze Azure-bestands shares rechtstreeks te koppelen of door Azure-bestands shares on-premises in de cache op te maken met behulp van Azure file sync. Welke implementatie optie u kiest, wijzigt de dingen die u moet overwegen bij het plannen van uw implementatie. 
@@ -45,7 +45,7 @@ Voor klanten die migreren van on-premises bestands servers of het maken van nieu
 Als u van plan bent om de sleutel van het opslag account te gebruiken voor toegang tot uw Azure-bestands shares, kunt u het beste service-eind punten gebruiken zoals beschreven in de sectie [netwerken](#networking) .
 
 ## <a name="networking"></a>Netwerken
-Azure-bestands shares zijn overal toegankelijk via het open bare eind punt van het opslag account. Dit betekent dat geverifieerde aanvragen, zoals aanvragen die zijn geautoriseerd door de aanmeldings identiteit van een gebruiker, veilig kunnen zijn van binnen of buiten Azure. In veel klanten omgevingen kan een initiële koppeling van de Azure-bestands share op uw on-premises werk station mislukken, zelfs als de koppeling van Azure-Vm's slaagt. De reden hiervoor is dat veel organisaties en Internet serviceproviders (Isp's) de poort blok keren die door SMB wordt gebruikt om te communiceren, poort 445. Ga naar [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) voor een overzicht van welke internetproviders toegang via poort 445 toestaan en welke niet.
+Azure-bestands shares zijn overal toegankelijk via het open bare eind punt van het opslag account. Dit betekent dat geverifieerde aanvragen, zoals aanvragen die zijn geautoriseerd door de aanmeldingsidentiteit van een gebruiker, veilig kunnen zijn van binnen of buiten Azure. In veel klantomgevingen kan een initiële koppeling van de Azure-bestandsshare op uw on-premises werkstation mislukken, zelfs als het wel lukt om Azure-VM's te koppelen. De reden hiervoor is dat veel organisaties en internetproviders (ISP's) de poort blokkeren die door SMB wordt gebruikt voor communicatie: poort 445. Ga naar [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) voor een overzicht van welke internetproviders toegang via poort 445 toestaan en welke niet.
 
 Als u de toegang tot uw Azure-bestands share wilt blok keren, hebt u twee belang rijke opties:
 
@@ -64,14 +64,14 @@ Zie [Azure files netwerk overwegingen](storage-files-networking-overview.md)voor
 ## <a name="encryption"></a>Versleuteling
 Azure Files ondersteunt twee verschillende soorten versleuteling: versleuteling in transit, dat betrekking heeft op de versleuteling die wordt gebruikt bij het koppelen/openen van de Azure-bestands share, en versleuteling op rest, die betrekking heeft op hoe de gegevens worden versleuteld wanneer deze op schijf worden opgeslagen. 
 
-### <a name="encryption-in-transit"></a>Versleuteling 'in transit'
-Standaard hebben alle Azure Storage-accounts versleuteling in transit ingeschakeld. Dit betekent dat wanneer u een bestands share koppelt via SMB of toegang krijgt via het FileREST-Protocol (zoals via de Azure Portal, Power shell/CLI of Azure Sdk's), Azure Files alleen de verbinding toestaat als deze wordt gemaakt met SMB 3.0 + met versleuteling of HTTPS. Clients die geen ondersteuning bieden voor SMB 3,0 of clients die SMB 3,0 ondersteunen maar geen SMB-versleuteling, kunnen de Azure-bestands share niet koppelen als versleuteling in transit is ingeschakeld. Zie de gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md)en [Linux](storage-how-to-use-files-linux.md)voor meer informatie over welke besturings systemen SMB 3,0 met versleuteling ondersteunen. Alle huidige versies van de Power shell, CLI en Sdk's ondersteunen HTTPS.  
+### <a name="encryption-in-transit"></a>Versleuteling tijdens overdracht
+Standaard is versleuteling in transit ingeschakeld voor alle Azure-opslagaccounts. Dit betekent dat wanneer u een bestandsshare koppelt via SMB of de bestandsshare opent via het FileREST-protocol (bijvoorbeeld via de Azure-portal, PowerShell/CLI of Azure-SDK's), de verbinding alleen wordt toegestaan als deze wordt gemaakt met SMB 3.0+ met versleuteling of HTTPS. Op clients die SMB 3.0 niet ondersteunen of op clients die SMB 3.0 wel ondersteunen maar SMB-versleuteling niet, kan de Azure-bestandsshare niet worden gekoppeld als versleuteling in transit is ingeschakeld. Zie onze gedetailleerde documentatie voor [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md) en [Linux-](storage-how-to-use-files-linux.md) voor meer informatie over besturingssystemen waarin SMB 3.0 met versleuteling wordt ondersteund. Alle huidige versies van PowerShell, CLI en SDK's ondersteunen HTTPS.  
 
-U kunt versleuteling voor een Azure Storage-account uitschakelen in door voer. Wanneer versleuteling is uitgeschakeld, staat Azure Files ook toe dat SMB 2,1, SMB 3,0 zonder versleuteling en niet-versleutelde API-aanroepen van FileREST via HTTP. De belangrijkste reden om versleuteling in transit uit te scha kelen, is het ondersteunen van een verouderde toepassing die moet worden uitgevoerd op een ouder besturings systeem, zoals Windows Server 2008 R2 of een oudere Linux-distributie. Met Azure Files worden SMB 2,1-verbindingen alleen toegestaan binnen dezelfde Azure-regio als de Azure-bestands share. een SMB 2,1-client buiten de Azure-regio van de Azure-bestands share, zoals on-premises of in een andere Azure-regio, heeft geen toegang tot de bestands share.
+U kunt versleuteling in transit uitschakelen voor een Azure-opslagaccount. Wanneer versleuteling is uitgeschakeld, staat Azure Files ook toe dat SMB 2,1, SMB 3,0 zonder versleuteling en niet-versleutelde API-aanroepen van FileREST via HTTP. De belangrijkste reden om versleuteling in transit uit te schakelen, is het ondersteunen van een verouderde toepassing die moet worden uitgevoerd op een ouder besturingssysteem, zoals Windows Server 2008 R2 of een oudere Linux-distributie. In Azure Files worden SMB 2.1-verbindingen alleen toegestaan binnen dezelfde Azure-regio als de Azure-bestandsshare. SMB 2.1-clients buiten de Azure-regio van de Azure-bestandsshare, zoals on-premises clients of clients in een andere Azure-regio, hebben geen toegang tot de bestandsshare.
 
 We raden u ten zeerste aan te zorgen dat de versleuteling van gegevens in-transit is ingeschakeld.
 
-Zie [veilige overdracht vereisen in azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor meer informatie over het door sturen van versleuteling.
+Zie [Veilige overdracht vereisen in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie over versleuteling in transit.
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
@@ -94,7 +94,7 @@ Over het algemeen zijn Azure Files functies en interoperabiliteit met andere ser
     - Standaard bestands shares zijn beschikbaar in elke Azure-regio.
 - Azure Kubernetes service (AKS) biedt ondersteuning voor Premium-bestands shares in versie 1,13 en hoger.
 
-Als een bestands share is gemaakt als een Premium-of een standaard bestands share, kunt u deze niet automatisch converteren naar de andere laag. Als u wilt overschakelen naar de andere laag, moet u een nieuwe bestands share in die laag maken en de gegevens van de oorspronkelijke share hand matig kopiëren naar de nieuwe share die u hebt gemaakt. U kunt het `robocopy` beste voor Windows `rsync` of voor macOS en Linux gebruiken om die kopie uit te voeren.
+Als een bestands share is gemaakt als een Premium-of een standaard bestands share, kunt u deze niet automatisch converteren naar de andere laag. Als u wilt overschakelen naar de andere laag, moet u een nieuwe bestands share in die laag maken en de gegevens van de oorspronkelijke share hand matig kopiëren naar de nieuwe share die u hebt gemaakt. `robocopy`U kunt het beste voor Windows of `rsync` voor MacOS en Linux gebruiken om die kopie uit te voeren.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Informatie over het inrichten voor Premium-bestands shares
 Premium-bestands shares worden ingericht op basis van een vaste GiB/IOPS/doorvoer ratio. Voor elke GiB die is ingericht, wordt de share één IOPS en 0,1 MiB/s-door Voer verleend tot het maximum aantal limieten per share. De mini maal toegestane inrichting is 100 GiB met een minimale IOPS/door voer.
@@ -160,17 +160,12 @@ Nieuwe bestands shares beginnen met het volledige aantal tegoeden in de burst-Bu
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Migratie
-In veel gevallen is het niet mogelijk om een net nieuwe bestands share te maken voor uw organisatie, maar om een bestaande bestands share te migreren van een on-premises Bestands server of een NAS-apparaat naar Azure Files. Er zijn veel hulpprogram ma's, zowel door micro soft als derden, voor het uitvoeren van een migratie naar een bestands share, maar ze kunnen ongeveer worden onderverdeeld in twee categorieën:
+In veel gevallen is het niet mogelijk om een net nieuwe bestands share te maken voor uw organisatie, maar om een bestaande bestands share te migreren van een on-premises Bestands server of een NAS-apparaat naar Azure Files. Het is belang rijk dat u de juiste migratie strategie en het hulp programma voor uw scenario kiest voor het slagen van de migratie. 
 
-- **Hulpprogram ma's voor het onderhouden van bestandssysteem kenmerken, zoals acl's en tijds tempels**:
-    - **[Azure file sync](storage-sync-files-planning.md)**: Azure File Sync kan worden gebruikt als methode om gegevens op te nemen in een Azure-bestands share, zelfs wanneer de gewenste end-implementatie geen on-premises aanwezigheid houdt. Azure File Sync kunnen worden geïnstalleerd in plaats van bestaande Windows Server 2012 R2-, Windows Server 2016-en Windows Server 2019-implementaties. Een voor deel van het gebruik van Azure File Sync als een opname mechanisme is dat eind gebruikers de bestaande bestands share op locatie kunnen blijven gebruiken. knippen naar de Azure-bestands share kan zich voordoen nadat alle gegevens zijn geüpload op de achtergrond.
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy is een bekend Kopieer hulpprogramma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken.
-
-- **Hulpprogram ma's die geen kenmerken van bestands systeem onderhouden**:
-    - **Data Box**: data Box biedt een mechanisme voor het overdragen van offline gegevens om gegevens fysiek naar Azure te verzenden. Deze methode is ontworpen om de door voer te verbeteren en band breedte te besparen, maar biedt momenteel geen ondersteuning voor bestandssysteem kenmerken zoals tijds tempels en Acl's.
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van gegevens van en naar Azure files, evenals Azure Blob-opslag, met behulp van eenvoudige opdrachten met optimale prestaties.
+In het [artikel migratie overzicht](storage-files-migration-overview.md) vindt u een korte beschrijving van de basis beginselen en een tabel die u leidt naar migratie handleidingen die waarschijnlijk uw scenario beslaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Een Azure File Sync-implementatie plannen](storage-sync-files-planning.md)
 * [Azure Files implementeren](storage-files-deployment-guide.md)
 * [Azure File Sync implementeren](storage-sync-files-deployment-guide.md)
+* [Bekijk het artikel over migratie overzicht om de migratie handleiding voor uw scenario te vinden](storage-files-migration-overview.md)

@@ -1,22 +1,22 @@
 ---
-title: 'Snelstartgids: Blob Storage-gebeurtenissen verzenden naar web-eind punt-Portal'
-description: 'Snelstartgids: gebruik Azure Event Grid en Azure Portal voor het maken van een Blob Storage-account en Abonneer u op de gebeurtenissen. De gebeurtenissen naar een webhook verzenden.'
+title: 'Quickstart: Blob Storage-gebeurtenissen verzenden naar een webeindpunt – portal'
+description: 'Quickstart: Gebruik Azure Event Grid en Azure Portal om een Blob-opslagaccount te maken en u aan te melden voor de gebeurtenissen ervan. De gebeurtenissen naar een webhook verzenden.'
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605831"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310457"
 ---
-# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Snelstartgids: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal
+# <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Quickstart: Blob Storage-gebeurtenissen routeren naar een webeindpunt met Azure Portal
 
 Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u Azure Portal om een Blob-opslagaccount te maken, u aan te melden bij gebeurtenissen voor die blob-opslag en een gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
@@ -38,17 +38,17 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
    Voor het abonneren op gebeurtenissen moet u een algemeen v2-opslagaccount of een Blob-opslagaccount maken.
    
-1. Voer de volgende stappen uit op de pagina **opslag account maken** :
+1. Voer op de pagina **Opslagaccount maken** de volgende stappen uit:
     1. Selecteer uw Azure-abonnement. 
-    2. Maak voor de **resource groep**een nieuwe resource groep of selecteer een bestaande. 
-    3. Voer de naam van uw opslagaccount in. 
-    4. Selecteer **controleren + maken**. 
+    2. Geef voor **Resourcegroep** een nieuwe resourcegroep op of selecteer een bestaande. 
+    3. Voer de naam in van uw opslagaccount. 
+    4. Selecteer **Controleren + maken**. 
 
        ![Eerste stappen](./media/blob-event-quickstart-portal/provide-blob-values.png)    
-    5. Controleer de instellingen op de pagina **controleren en maken** en selecteer **maken**. 
+    5. Controleer de instellingen op de pagina **Controleren en maken** en selecteer **Maken**. 
 
         >[!NOTE]
-        > Alleen opslag accounts van het type **StorageV2 (algemeen gebruik v2)** en **BlobStorage** ondersteunings gebeurtenis integratie. **Storage (Genral doel v1)** biedt *geen* ondersteuning voor integratie met Event grid.
+        > Alleen opslagaccounts van het type **StorageV2 (algemeen gebruik v2)** en integratie van **BlobStorage-** ondersteuningsgebeurtenissen. **Storage (algemeen gebruik v1)** biedt *geen* ondersteuning voor integratie met Event Grid.
 
 ## <a name="create-a-message-endpoint"></a>Het eindpunt van een bericht maken
 
@@ -57,25 +57,25 @@ Voordat u zich kunt abonneren op gebeurtenissen voor de Blob-opslag, moet u het 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
-2. Voer op de pagina **aangepaste implementatie** de volgende stappen uit: 
-    1. Voor **resource groep**selecteert u de resource groep die u hebt gemaakt bij het maken van het opslag account. Het is eenvoudiger om de opschoon bewerking uit te voeren nadat u klaar bent met de zelf studie door de resource groep te verwijderen.  
-    2. Voer voor **site naam**een naam in voor de web-app.
-    3. Voer voor de naam van het **hosting plan**een naam in voor het app service plan dat moet worden gebruikt voor het hosten van de web-app.
-    4. Schakel het selectie vakje in **als ik ga akkoord met de bovenstaande voor waarden**. 
+2. Voer op de pagina **Aangepaste implementatie** de volgende stappen uit: 
+    1. Selecteer voor **Resourcegroep** de resourcegroep die u hebt gemaakt toen u het opslagaccount maakte. Het is voor u eenvoudiger om op te schonen door de resourcegroep te verwijderen wanneer u klaar bent met de zelfstudie.  
+    2. Voer in het vak **Sitenaam** een naam in voor de web-app.
+    3. Voer voor **Naam van hostingplan** een naam in voor het App Service-plan dat u wilt gebruiken voor het hosten van de web-app.
+    4. Schakel het selectievakje in voor **Ik ga akkoord met de bovenstaande voorwaarden**. 
     5. Selecteer **Aankoop**. 
 
-       ![Implementatie parameters](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
-1. De implementatie kan enkele minuten duren. Selecteer waarschuwingen (klok pictogram) in de portal en selecteer vervolgens **Ga naar resource groep**. 
+       ![Implementatieparameters](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. De implementatie kan enkele minuten duren. Selecteer Waarschuwingen (belpictogram) in de portal en selecteer vervolgens **Naar de resourcegroep gaan**. 
 
-    ![Waarschuwing: Navigeer naar resource groep](./media/blob-event-quickstart-portal/navigate-resource-group.png)
-4. Selecteer de web-app die u hebt gemaakt op de pagina **resource groep** in de lijst met resources. U ziet ook het App Service plan en het opslag account in deze lijst. 
+    ![Waarschuwing: navigeren naar resourcegroep](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. Selecteer in de lijst met resources op de pagina **Resourcegroep** de web-app die u hebt gemaakt. U ziet ook het App Service-plan en het opslagaccount in deze lijst. 
 
     ![Website selecteren](./media/blob-event-quickstart-portal/resource-group-resources.png)
-5. Selecteer op de pagina **app service** voor uw web-app de URL om naar de website te navigeren. De URL moet de volgende indeling hebben: `https://<your-site-name>.azurewebsites.net`.
+5. Selecteer op de pagina **App Service** voor uw web-app de URL om naar de website te gaan. De URL moet de volgende indeling hebben: `https://<your-site-name>.azurewebsites.net`.
     
     ![Naar website navigeren](./media/blob-event-quickstart-portal/web-site.png)
 
-6. Controleer of u de site ziet, maar er zijn nog geen gebeurtenissen naar verzonden.
+6. Controleer of de site wordt weergegeven en dat er zijn nog geen gebeurtenissen naar zijn gepost.
 
    ![Nieuwe site weergeven](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -85,20 +85,26 @@ Voordat u zich kunt abonneren op gebeurtenissen voor de Blob-opslag, moet u het 
 
 U abonneert u op een onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren en waar de gebeurtenissen naartoe moeten worden gestuurd.
 
-1. Navigeer in de portal naar uw Azure Storage-account dat u eerder hebt gemaakt. Selecteer in het menu links **alle resources** en selecteer uw opslag account. 
-2. Selecteer op de pagina **opslag account** **gebeurtenissen** in het menu links.
-1. Selecteer **Meer opties** en **Webhook**. U verzendt gebeurtenissen naar uw viewer-app met behulp van een webhook voor het eind punt. 
+1. Navigeer in de portal naar uw Azure Storage-account dat u eerder hebt gemaakt. Selecteer in het menu aan de linkerkant **Alle resources** en selecteer uw opslagaccount. 
+2. Selecteer op de pagina **Opslagaccount** de optie **Gebeurtenissen** in het linkermenu. 
+1. Selecteer **Meer opties** en **Webhook**. U verzendt gebeurtenissen naar uw viewer-app met behulp van een webhook voor het eindpunt. 
 
    ![Webhook selecteren](./media/blob-event-quickstart-portal/select-web-hook.png)
-3. Voer op de pagina **gebeurtenis abonnement maken** de volgende stappen uit: 
-    1. Voer een **naam** in voor het gebeurtenis abonnement.
-    2. Selecteer een **webhook** voor het **type eind punt**. 
+3. Voer op de pagina **Gebeurtenisabonnement maken** de volgende stappen uit: 
+    1. Voer een **naam** in voor het gebeurtenisabonnement.
+    2. Voer een **naam** in voor het **systeemonderwerp**. 
 
-       ![Type webhook-eind punt selecteren](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. Klik voor **eind punt**op **Selecteer een eind punt**en voer de URL van uw web-app `api/updates` in en voeg deze toe aan de URL van `https://spegridsite.azurewebsites.net/api/updates`de start pagina (bijvoorbeeld:) en selecteer vervolgens **selectie bevestigen**.
+       ![Namen invoeren voor gebeurtenisabonnement en systeemonderwerp](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
 
-   ![Selecteren van het eind punt bevestigen](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
-5. Selecteer nu **maken** op de pagina **gebeurtenis abonnement maken** om het gebeurtenis abonnement te maken. 
+       > [!NOTE]
+       > Voorheen maakte de Event Grid-service bij het maken van een abonnement voor een gebeurtenis die door Azure-bronnen werd gegenereerd, automatisch een systeemonderwerp aan met een willekeurig gegenereerde naam. Nu kunt u met dit tekstvak een naam voor het systeemonderwerp opgeven. U kunt de resource van dit systeemonderwerp gebruiken om metrische gegevens en diagnostische logboeken te detecteren.
+    2. Selecteer **Webhook** voor het **Eindpunttype**. 
+
+       ![Eindpunttype voor webhook selecteren](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. Klik bij **Eindpunt** op **Een eindpunt selecteren** en voer de URL van uw web-app in. Voeg `api/updates` toe aan de URL van de startpagina (bijvoorbeeld `https://spegridsite.azurewebsites.net/api/updates`) en selecteer **Selectie bevestigen**.
+
+   ![Selectie van eindpunt bevestigen](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. Selecteer nu op de pagina **Gebeurtenisabonnement maken** de optie **Maken** om het gebeurtenisabonnement te maken. 
 
    ![Logboeken selecteren](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -112,11 +118,11 @@ Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid n
 
 U activeert een gebeurtenis voor de Blob-opslag door een bestand te uploaden. Het bestand heeft geen specifieke inhoud nodig. In de artikelen wordt ervan uitgegaan dat u een bestand met de naam testfile.txt hebt, maar het bestand kan elke willekeurige naam hebben.
 
-1. Navigeer in het Azure Portal naar uw Blob Storage-account en selecteer **containers** op de pagina **overzicht** .
+1. Ga in de Azure Portal naar uw Blob Storage-account en selecteer **Containers** op de pagina **Overzicht**.
 
    ![Blobs selecteren](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. Selecteer **+ Container**. Geef een naam op voor de container en gebruik een toegangs niveau en selecteer **maken**. 
+1. Selecteer **+ Container**. Geef de container een naam en gebruik een willekeurig toegangsniveau. Selecteer **Maken**. 
 
    ![Container toevoegen](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -124,15 +130,15 @@ U activeert een gebeurtenis voor de Blob-opslag door een bestand te uploaden. He
 
    ![Container selecteren](./media/blob-event-quickstart-portal/select-container.png)
 
-1. Als u een bestand wilt uploaden, selecteert u **Uploaden**. Blader op de pagina **BLOB uploaden** naar een bestand dat u wilt uploaden om te testen en selecteer vervolgens **uploaden** op die pagina. 
+1. Als u een bestand wilt uploaden, selecteert u **Uploaden**. Blader op de pagina **Blob uploaden** naar het bestand dat u wilt uploaden om te testen en selecteer **Uploaden**. 
 
    ![Uploaden selecteren](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. Blader naar het testbestand en upload het.
 
-1. U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Het bericht bevindt zich in de JSON-indeling en bevat een matrix met een of meer gebeurtenissen. In het volgende voor beeld bevat het JSON-bericht een matrix met één gebeurtenis. Bekijk uw web-app en u ziet dat er een gebeurtenis is gemaakt voor het maken van een **BLOB** . 
+1. U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Het bericht heeft de JSON-indeling en bevat een matrix met een of meer gebeurtenissen. In het volgende voorbeeld bevat het JSON-bericht een matrix met één gebeurtenis. Wanneer u uw web-app bekijkt, ziet u dat er een **blob**-gebeurtenis is ontvangen. 
 
-   ![Gebeurtenis BLOB gemaakt](./media/blob-event-quickstart-portal/blob-created-event.png)
+   ![Blob-gebeurtenis](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,5 +1,5 @@
 ---
-title: Richt lijn voor het inrichten van SQL Server Vm's met Azure PowerShell | Microsoft Docs
+title: Hand leiding voor het inrichten van Azure PowerShell om SQL Server in te richten op Azure VM
 description: Bevat stappen en Power shell-opdrachten voor het maken van een Azure-VM met SQL Server galerie installatie kopieën van virtuele machines.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,15 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 39289740bd1d00a5916db45178f1eb1ef9bc7b12
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: def998c018a90cc288204650ae8d713bf1b4b5bc
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046108"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656914"
 ---
-# <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>SQL Server virtuele machines inrichten met Azure PowerShell
+# <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Azure PowerShell gebruiken om SQL Server in te richten op Azure Virtual Machines
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In deze hand leiding worden uw opties uitgelegd voor het maken van Windows SQL Server-Vm's met Azure PowerShell. Voor een gestroomlijnd Azure PowerShell-voor beeld met meer standaard waarden raadpleegt u de [virtuele machine van SQL Azure PowerShell Quick](sql-vm-create-powershell-quickstart.md)start.

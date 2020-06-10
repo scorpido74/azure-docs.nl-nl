@@ -4,25 +4,25 @@ description: Meer informatie over het maken en beheren van meerdere knooppunt gr
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d6616c3de86e3115e13c60f9d1b484366a368899
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610918"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658384"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Meerdere knooppunt groepen maken en beheren voor een cluster in azure Kubernetes service (AKS)
 
 In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Deze knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Het eerste aantal knoop punten en hun grootte (SKU) wordt gedefinieerd wanneer u een AKS-cluster maakt, waarmee een [systeem knooppunt groep][use-system-pool]wordt gemaakt. Als u toepassingen wilt ondersteunen die verschillende reken-of opslag vereisten hebben, kunt u extra *gebruikers knooppunt groepen*maken. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Met gebruikers knooppunt groepen kunt u uw toepassing op een specifieke locatie plaatsen. Gebruik bijvoorbeeld deze extra knooppunt groepen voor gebruikers om Gpu's te bieden voor computerintensieve toepassingen, of om toegang te krijgen tot high-performance SSD-opslag.
 
 > [!NOTE]
-> Deze functie biedt meer controle over het maken en beheren van meerdere knooppunt groepen. Als gevolg hiervan zijn afzonderlijke opdrachten vereist voor maken/bijwerken/verwijderen. Eerder cluster bewerkingen via `az aks create` of `az aks update` gebruikt de managedCluster-API en waren de enige optie om uw besturings vlak en een groep met één knoop punt te wijzigen. Deze functie beschrijft een afzonderlijke bewerking voor agent groepen via de agent pool-API en vereist het gebruik van de opdrachtset voor het `az aks nodepool` uitvoeren van bewerkingen op een afzonderlijke knooppunt groep.
+> Deze functie biedt meer controle over het maken en beheren van meerdere knooppunt groepen. Als gevolg hiervan zijn afzonderlijke opdrachten vereist voor maken/bijwerken/verwijderen. Eerder cluster bewerkingen via `az aks create` of `az aks update` gebruikt de MANAGEDCLUSTER-API en waren de enige optie om uw besturings vlak en een groep met één knoop punt te wijzigen. Deze functie beschrijft een afzonderlijke bewerking voor agent groepen via de agent pool-API en vereist het gebruik van de `az aks nodepool` opdrachtset voor het uitvoeren van bewerkingen op een afzonderlijke knooppunt groep.
 
 In dit artikel wordt beschreven hoe u meerdere knooppunt groepen kunt maken en beheren in een AKS-cluster.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-U moet de Azure CLI-versie 2.2.0 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+U moet de Azure CLI-versie 2.2.0 of hoger hebben geïnstalleerd en geconfigureerd. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -67,7 +67,7 @@ Het duurt een paar minuten om het cluster te maken.
 > [!NOTE]
 > Om ervoor te zorgen dat uw cluster betrouwbaar werkt, moet u ten minste twee knoop punten in de standaard knooppunt groep uitvoeren, aangezien essentiële systeem services worden uitgevoerd in deze knooppunt groep.
 
-Wanneer het cluster gereed is, gebruikt u de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] om de cluster referenties te verkrijgen `kubectl`voor gebruik met:
+Wanneer het cluster gereed is, gebruikt u de opdracht [AZ AKS Get-credentials][az-aks-get-credentials] om de cluster referenties te verkrijgen voor gebruik met `kubectl` :
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -123,7 +123,7 @@ In de volgende voorbeeld uitvoer ziet u dat *mynodepool* is gemaakt met drie kno
 ```
 
 > [!TIP]
-> Als er geen *VmSize* is opgegeven wanneer u een knooppunt groep toevoegt, is de standaard grootte *Standard_DS2_v3* voor Windows-knooppunt groepen en *Standard_DS2_v2* voor Linux-knooppunt groepen. Als er geen *OrchestratorVersion* is opgegeven, wordt standaard dezelfde versie gebruikt als het besturings vlak.
+> Als er geen *VmSize* is opgegeven wanneer u een knooppunt groep toevoegt, is de standaard grootte *Standard_D2s_v3* voor Windows-knooppunt groepen en *Standard_DS2_v2* voor Linux-knooppunt groepen. Als er geen *OrchestratorVersion* is opgegeven, wordt standaard dezelfde versie gebruikt als het besturings vlak.
 
 ### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Een knooppunt groep toevoegen met een uniek subnet (preview-versie)
 
@@ -153,7 +153,7 @@ az aks nodepool add \
 > [!NOTE]
 > Upgrade-en schaal bewerkingen op een cluster of knooppunt groep kunnen niet tegelijkertijd plaatsvinden, als er een fout wordt geretourneerd. In plaats daarvan moet elk bewerkings type worden voltooid voor de doel resource vóór de volgende aanvraag op dezelfde resource. Meer informatie hierover vindt u in onze [probleemoplossings handleiding](https://aka.ms/aks-pending-upgrade).
 
-Als uw AKS-cluster in de eerste stap is gemaakt, is `--kubernetes-version` er een van *1.15.7* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
+Als uw AKS-cluster in de eerste stap is gemaakt, is er een `--kubernetes-version` van *1.15.7* opgegeven. Hiermee stelt u de Kubernetes-versie in voor zowel het besturings vlak als de standaard knooppunt groep. Met de opdrachten in deze sectie wordt uitgelegd hoe u één specifieke knooppunt groep bijwerkt.
 
 De relatie tussen het upgraden van de Kubernetes-versie van het besturings vlak en de knooppunt groep wordt uitgelegd in de [volgende sectie](#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
@@ -222,11 +222,11 @@ Een AKS-cluster heeft twee cluster resource objecten waaraan Kubernetes-versies 
 
 Een besturings vlak wordt toegewezen aan een of meer knooppunt groepen. Het gedrag van een upgrade bewerking is afhankelijk van welke Azure CLI-opdracht wordt gebruikt.
 
-Voor het bijwerken van `az aks upgrade`een AKS-besturings vlak is het vereist. Met deze opdracht worden de versie van het besturings element en alle knooppunt Pools in het cluster bijgewerkt.
+Voor het bijwerken van een AKS-besturings vlak is het vereist `az aks upgrade` . Met deze opdracht worden de versie van het besturings element en alle knooppunt Pools in het cluster bijgewerkt.
 
-Als de `az aks upgrade` opdracht met de `--control-plane-only` vlag wordt uitgegeven, wordt alleen het cluster besturings vlak bijgewerkt. Geen van de gekoppelde knooppunt Pools in het cluster is gewijzigd.
+Als de `az aks upgrade` opdracht met de vlag wordt uitgegeven, wordt `--control-plane-only` alleen het cluster besturings vlak bijgewerkt. Geen van de gekoppelde knooppunt Pools in het cluster is gewijzigd.
 
-Voor het upgraden van `az aks nodepool upgrade`afzonderlijke knooppunt Pools is het nodig. Met deze opdracht wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
+Voor het upgraden van afzonderlijke knooppunt Pools is het nodig `az aks nodepool upgrade` . Met deze opdracht wordt alleen de doel knooppunt groep met de opgegeven Kubernetes-versie bijgewerkt
 
 ### <a name="validation-rules-for-upgrades"></a>Validatie regels voor upgrades
 
@@ -235,7 +235,7 @@ De geldige Kubernetes-upgrades voor de besturings vlak-en knooppunt groepen van 
 * Regels voor geldige versies voor het upgraden van knooppunt groepen:
    * De versie van de knooppunt groep moet dezelfde *primaire* versie hebben als het besturings vlak.
    * De *secundaire* versie van de knooppunt groep moet binnen twee *secundaire* versies van de besturings vlak versie zijn.
-   * De versie van de knooppunt groep mag niet hoger zijn `major.minor.patch` dan de versie van het besturings element.
+   * De versie van de knooppunt groep mag niet hoger zijn dan de versie van het besturings element `major.minor.patch` .
 
 * Regels voor het verzenden van een upgrade bewerking:
    * U kunt de Kubernetes-versie van het besturings vlak of de groep met knooppunt groepen niet verlagen.
@@ -424,7 +424,7 @@ De Kubernetes scheduler kan taints en verdragen gebruiken om te beperken welke w
 
 Zie [Best Practices for Advanced scheduler-functies in AKS][taints-tolerations] voor meer informatie over het gebruik van geavanceerde Kubernetes-functies.
 
-In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de opdracht--node-taints. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van `kubectl get nodes` de vorige opdracht. De Taint wordt toegepast als een *sleutel =* waardepaar en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
+In dit voor beeld past u een Taint toe op uw GPU-knoop punt met behulp van de opdracht--node-taints. Geef de naam van uw op GPU gebaseerde knoop punt op uit de uitvoer van de vorige `kubectl get nodes` opdracht. De Taint wordt toegepast als een *sleutel =* waardepaar en vervolgens een plannings optie. In het volgende voor beeld wordt het combi natie *SKU = GPU* gebruikt en definieert u de mogelijkheid om het *schema* niet te gebruiken:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -432,7 +432,7 @@ az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:No
 
 In het volgende voor beeld van een YAML-manifest wordt met behulp van een tolerantie toegestaan dat de Kubernetes scheduler een NGINX pod op het op GPU gebaseerde knoop punt uitvoert. Zie [Gpu's gebruiken voor computerintensieve werk belastingen op AKS][gpu-cluster]voor een meer geschikt, maar tijdrovende voor beeld om een tensor flow-taak uit te voeren op basis van de MNIST-gegevensset.
 
-Maak een bestand met `gpu-toleration.yaml` de naam en kopieer het in het volgende voor beeld YAML:
+Maak een bestand `gpu-toleration.yaml` met de naam en kopieer het in het volgende voor beeld YAML:
 
 ```yaml
 apiVersion: v1
@@ -490,7 +490,7 @@ Alleen een van de peulen waarvoor deze tolerantie is toegepast, kan worden gepla
 
 Wanneer u een knooppunt groep maakt, kunt u taints, labels of Tags toevoegen aan die knooppunt groep. Wanneer u een Taint, label of tag toevoegt, krijgen alle knoop punten in die knooppunt groep ook de Taint, het label of de tag.
 
-Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een Taint te maken. Geef de naam *taintnp* op en gebruik `--node-taints` de para meter om *SKU = GPU: schema* voor de Taint op te geven.
+Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een Taint te maken. Geef de naam *taintnp* op en gebruik de `--node-taints` para meter om *SKU = GPU: schema* voor de Taint op te geven.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -530,7 +530,7 @@ De Taint-informatie is zichtbaar in Kubernetes voor het afhandelen van plannings
 
 U kunt ook labels toevoegen aan een knooppunt groep tijdens het maken van de knooppunt groep. Labels die in de knooppunt groep zijn ingesteld, worden toegevoegd aan elk knoop punt in de knooppunt groep. Deze [labels zijn zichtbaar in Kubernetes][kubernetes-labels] voor het afhandelen van plannings regels voor knoop punten.
 
-Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een label te maken. Geef de naam *labelnp* op en gebruik `--labels` de para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
+Gebruik [AZ AKS nodepool add][az-aks-nodepool-add]om een knooppunt groep met een label te maken. Geef de naam *labelnp* op en gebruik de `--labels` para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -572,7 +572,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 U kunt een Azure-tag Toep assen op knooppunt groepen in uw AKS-cluster. Labels die worden toegepast op een knooppunt groep, worden toegepast op elk knoop punt in de knooppunt groep en blijven behouden via upgrades. Labels worden ook toegepast op nieuwe knoop punten die worden toegevoegd aan een knooppunt groep tijdens scale-out bewerkingen. Het toevoegen van een tag kan helpen bij taken zoals het bijhouden van het beleid of het schatten van de kosten.
 
-Maak een knooppunt groep met behulp van de [AZ AKS nodepool add][az-aks-nodepool-add]. Geef de naam *tagnodepool* op en gebruik `--tag` de para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
+Maak een knooppunt groep met behulp van de [AZ AKS nodepool add][az-aks-nodepool-add]. Geef de naam *tagnodepool* op en gebruik de `--tag` para meter om *Dept = it* en *CostCenter = 9999* voor labels op te geven.
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -585,7 +585,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> U kunt ook de para `--tags` meter gebruiken bij het gebruik van [AZ AKS nodepool update][az-aks-nodepool-update] opdracht en tijdens het maken van het cluster. Tijdens het maken van het `--tags` cluster past de para meter de tag toe op de eerste knooppunt groep die met het cluster is gemaakt. Alle label namen moeten voldoen aan de beperkingen in [Tags gebruiken om uw Azure-resources te organiseren][tag-limitation]. Als u een knooppunt groep met `--tags` de para meter bijwerkt, worden alle bestaande label waarden bijgewerkt en worden nieuwe labels toegevoegd. Als uw knooppunt groep bijvoorbeeld *Dept = it* en *CostCenter = 9999* heeft voor Tags en u deze hebt bijgewerkt met *team = dev* en *CostCenter = 111* voor labels, hebt u nodepool *Dept = it*, *CostCenter = 111*en *team = dev* for Tags.
+> U kunt ook de `--tags` para meter gebruiken bij het gebruik van [AZ AKS nodepool update][az-aks-nodepool-update] opdracht en tijdens het maken van het cluster. Tijdens het maken van het cluster `--tags` past de para meter de tag toe op de eerste knooppunt groep die met het cluster is gemaakt. Alle label namen moeten voldoen aan de beperkingen in [Tags gebruiken om uw Azure-resources te organiseren][tag-limitation]. Als u een knooppunt groep met de para meter bijwerkt `--tags` , worden alle bestaande label waarden bijgewerkt en worden nieuwe labels toegevoegd. Als uw knooppunt groep bijvoorbeeld *Dept = it* en *CostCenter = 9999* heeft voor Tags en u deze hebt bijgewerkt met *team = dev* en *CostCenter = 111* voor labels, hebt u nodepool *Dept = it*, *CostCenter = 111*en *team = dev* for Tags.
 
 In de volgende voorbeeld uitvoer van de opdracht [AZ AKS nodepool List][az-aks-nodepool-list] ziet u dat *Tagnodepool* knoop punten *maakt* met de opgegeven *tag*:
 
@@ -618,7 +618,7 @@ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Wanneer u een Azure Resource Manager sjabloon gebruikt om resources te maken en te beheren, kunt u de instellingen in uw sjabloon doorgaans bijwerken en opnieuw implementeren om de resource bij te werken. Met knooppunt Pools in AKS kan het oorspronkelijke knooppunt groeps profiel niet worden bijgewerkt nadat het AKS-cluster is gemaakt. Dit gedrag houdt in dat u een bestaande resource manager-sjabloon niet kunt bijwerken, een wijziging kunt aanbrengen in de knooppunt groepen en opnieuw moet implementeren. In plaats daarvan moet u een afzonderlijke resource manager-sjabloon maken waarmee alleen de knooppunt groepen voor een bestaand AKS-cluster worden bijgewerkt.
 
-Maak een sjabloon `aks-agentpools.json` , zoals en plak het volgende voor beeld-manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
+Maak een sjabloon, zoals `aks-agentpools.json` en plak het volgende voor beeld-manifest. Met deze voorbeeld sjabloon worden de volgende instellingen geconfigureerd:
 
 * Hiermee werkt u de *Linux* -knooppunt groep met de naam *myagentpool* bij om drie knoop punten uit te voeren.
 * Hiermee stelt u de knoop punten in de knooppunt groep in op het uitvoeren van Kubernetes-versie *1.15.7*.

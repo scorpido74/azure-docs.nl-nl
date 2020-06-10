@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: f22b7eca6db55f886dbd4fea563d993bbee11ecb
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464654"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661115"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 
@@ -163,7 +163,7 @@ De volgende tabel bevat de interop-status van NTFS-bestandssysteem functies:
 | Bestand/map | Notitie |
 |-|-|
 | pagefile.sys | Bestand dat specifiek is voor systeem |
-| Desktop. ini | Bestand dat specifiek is voor systeem |
+| Desktop.ini | Bestand dat specifiek is voor systeem |
 | duims. db | Tijdelijk bestand voor miniatuur weergaven |
 | ehthumbs. db | Tijdelijk bestand voor miniatuur weergaven van media |
 | ~$\*.\* | Tijdelijk Office-bestand |
@@ -283,7 +283,7 @@ De belangrijkste reden om versleuteling voor het opslag account uit te scha kele
 
 We raden u ten zeerste aan te zorgen dat de versleuteling van gegevens in-transit is ingeschakeld.
 
-Zie [veilige overdracht vereisen in azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)voor meer informatie over het door sturen van versleuteling.
+Zie [Veilige overdracht vereisen in Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie over versleuteling in transit.
 
 ### <a name="azure-file-share-encryption-at-rest"></a>Versleuteling van Azure-bestands shares in rust
 [!INCLUDE [storage-files-encryption-at-rest](../../../includes/storage-files-encryption-at-rest.md)]
@@ -356,7 +356,7 @@ Als u een bestaande Windows-Bestands server hebt, kan Azure File Sync rechtstree
 
 Het is ook mogelijk om Data Box te gebruiken om gegevens te migreren naar een Azure File Sync-implementatie. De meeste tijd, wanneer klanten Data Box willen gebruiken om gegevens op te nemen, doen ze dit omdat ze denken dat ze de snelheid van de implementatie verg Roten of dat ze hulp kunnen bieden bij beperkte bandbreedte scenario's. Hoewel het gebruik van een Data Box voor het opnemen van gegevens in uw Azure File Sync-implementatie het bandbreedte gebruik verlaagt, is het waarschijnlijk sneller voor de meeste scenario's om een online gegevens upload uit te voeren via een van de hierboven beschreven methoden. Zie voor meer informatie over het gebruik van Data Box om gegevens op te nemen in uw Azure File Sync-implementatie de [gegevens migreren naar Azure file sync met Azure data Box](storage-sync-offline-data-transfer.md).
 
-Een veelvoorkomende fout bij het migreren van gegevens naar de nieuwe Azure File Sync-implementatie is het kopiëren van gegevens rechtstreeks naar de Azure-bestands share in plaats van op hun Windows-bestands servers. Hoewel Azure File Sync alle nieuwe bestanden in de Azure-bestands share herkent en deze weer synchroniseert met uw Windows-bestands shares, is dit doorgaans aanzienlijk langzamer dan het laden van gegevens via de Windows-Bestands server. Veel Azure Copy-hulpprogram ma's, zoals AzCopy, hebben het extra nadeel van het kopiëren van alle belang rijke meta gegevens van een bestand, zoals tijds tempels en Acl's.
+Een veelvoorkomende fout bij het migreren van gegevens naar de nieuwe Azure File Sync-implementatie is het kopiëren van gegevens rechtstreeks naar de Azure-bestands share in plaats van op hun Windows-bestands servers. Hoewel Azure File Sync alle nieuwe bestanden in de Azure-bestands share herkent en deze weer synchroniseert met uw Windows-bestands shares, is dit doorgaans aanzienlijk langzamer dan het laden van gegevens via de Windows-Bestands server. Bij het gebruik van Azure Copy-hulpprogram ma's, zoals AzCopy, is het belang rijk dat u de meest recente versie gebruikt. Raadpleeg de [tabel hulp middelen](storage-files-migration-overview.md#file-copy-tools) voor het kopiëren van bestanden om een overzicht te krijgen van de Azure Copy-hulpprogram ma's om ervoor te zorgen dat u alle belang rijke meta gegevens van een bestand, zoals tijds tempels en acl's, kunt kopiëren.
 
 ## <a name="antivirus"></a>Antivirus
 Omdat anti virus werkt door bestanden te scannen op bekende schadelijke code, kan een antivirus product ertoe leiden dat gelaagde bestanden worden teruggehaald. In versies 4,0 en hoger van de Azure File Sync-agent hebben gelaagde bestanden het beveiligde Windows-kenmerk FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ingesteld. We raden u aan om te leren werken met uw software leverancier voor meer informatie over het configureren van de oplossing voor het overs laan van het lezen van bestanden met deze kenmerkset (veel doen dat automatisch). 
@@ -382,7 +382,7 @@ Als u een on-premises back-upoplossing gebruikt, moeten back-ups worden uitgevoe
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Firewall-en proxy-instellingen overwegen](storage-sync-files-firewall-and-proxy.md)
-* [Planning voor de implementatie van Azure Files](storage-files-planning.md)
+* [Implementatie van Azure Files plannen](storage-files-planning.md)
 * [Azure Files implementeren](storage-files-deployment-guide.md)
 * [Azure Files SYNC implementeren](storage-sync-files-deployment-guide.md)
 * [Azure File Sync bewaken](storage-sync-files-monitoring.md)

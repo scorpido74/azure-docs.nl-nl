@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6a1a51ee09422607ae1392704add4d49d3367d57
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: c35930a93751cc82c3145d414a2a09b3a1e90c53
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759044"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659832"
 ---
 # <a name="limitations"></a>Beperkingen
 
@@ -45,6 +45,7 @@ Het toegestane aantal veelhoeken voor alle geladen modellen is afhankelijk van d
 **Windows 10 Desktop**
 
 * UWP/x86 is het enige ondersteunde UWP-platform. UWP/x64 wordt niet ondersteund.
+* Win32/x64 is het enige win32-platform dat wordt ondersteund. Win32/x86 wordt niet ondersteund.
 
 **Hololens 2**
 

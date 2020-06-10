@@ -1,6 +1,6 @@
 ---
-title: 'Azure Quick Start: een certificaat instellen en ophalen van Key Vault met behulp van Azure Portal | Microsoft Docs'
-description: Quick Start laat zien hoe u een certificaat kunt instellen en ophalen van Azure Key Vault met behulp van de Azure Portal
+title: 'Azure Quickstart: Een certificaat uit Key Vault instellen en ophalen met behulp van Azure Portal | Microsoft Docs'
+description: Quickstart waarin wordt getoond hoe u een certificaat uit Azure Key Vault instelt en ophaalt met behulp van de Azure Portal
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b0d6221aaafe3ade70bc23ce4196a7b53c9474c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424718"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169964"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Snelstartgids: een certificaat instellen en ophalen van Azure Key Vault met behulp van de Azure Portal
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Quickstart: Een certificaat uit Azure Key Vault instellen en ophalen met behulp van de Azure-portal
 
-Azure Key Vault is een cloudservice die werkt als een beveiligd archief voor geheimen. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Azure-sleutelkluizen kunnen worden gemaakt en beheerd via Azure Portal. In deze Quick Start maakt u een sleutel kluis en gebruikt u deze om een certificaat op te slaan. Raadpleeg het [Overzicht](../general/overview.md) voor meer informatie over Key Vault.
+Azure Key Vault is een cloudservice die werkt als een beveiligd archief voor geheimen. U kunt veilig sleutels, wachtwoorden, certificaten en andere geheime informatie opslaan. Azure-sleutelkluizen kunnen worden gemaakt en beheerd via Azure Portal. In deze quickstart kunt u een sleutelkluis maken en daarin een certificaat opslaan. Raadpleeg het [Overzicht](../general/overview.md) voor meer informatie over Key Vault.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -30,22 +30,22 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Een kluis maken
 
-1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu van de Azure-portal of op de **startpagina** de optie **Een resource maken**.
 2. Typ **Sleutelkluis** in het zoekvak.
 3. Kies **Sleutelkluis** in de lijst met resultaten.
 4. Kies **Maken** in de sectie Sleutelkluis.
 5. Geef in de sectie **Sleutelkluis maken** de volgende gegevens op:
-    - **Naam**: geef een unieke naam op. Voor deze Quick Start gebruiken we voor **beeld-kluis**. 
-    - **Abonnement**: kies een abonnement.
-    - Kies onder **resource groep**de optie **nieuwe maken** en voer een naam voor de resource groep in.
+    - **Naam**: geef een unieke naam op. Voor deze quickstart gebruiken we **Example-Vault**. 
+    - **Abonnement**: Kies een abonnement.
+    - Kies **Nieuwe maken** bij **Resourcegroep** en voer de naam van een resourcegroep in.
     - Kies een locatie in de vervolgkeuzelijst **Locatie**.
     - Houd voor de overige opties de standaardwaarden aan.
 6. Selecteer na het opgeven van de bovenstaande gegevens **Maken**.
 
 Let op de onderstaande twee eigenschappen:
 
-* **Kluis naam**: in het voor beeld is dit **voor beeld-kluis**. U gebruikt deze naam voor andere stappen.
-* **Vault URI**: In het voorbeeld is dit https://example-vault.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
+* **Kluisnaam**: In het voorbeeld is dat **Example-Vault**. U gebruikt deze naam voor andere stappen.
+* **Kluis-URI**: in het voorbeeld is dat https://example-vault.vault.azure.net/. Toepassingen die via de REST API gebruikmaken van uw kluis, moeten deze URI gebruiken.
 
 Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op deze nieuwe kluis uit te voeren.
 
@@ -53,21 +53,22 @@ Vanaf dit punt is uw Azure-account nu als enige gemachtigd om bewerkingen op dez
 
 ## <a name="add-a-certificate-to-key-vault"></a>Een certificaat toevoegen aan Key Vault
 
-Als u een certificaat wilt toevoegen aan de kluis, hoeft u alleen maar een paar extra stappen uit te voeren. In dit geval voegen we een zelfondertekend certificaat toe dat kan worden gebruikt door een toepassing. Het certificaat heet **ExampleCertificate**.
+Als u een certificaat wilt toevoegen aan de kluis, hoeft u maar een paar extra stappen uit te voeren. In dit geval voegen we een zelfondertekend certificaat toe dat door een toepassing kan worden gebruikt. Het certificaat wordt **ExampleCertificate** genoemd.
 
-1. Selecteer op de pagina eigenschappen van Key Vault de optie **certificaten**.
+1. Selecteer op de eigenschappenpagina's van de sleutelkluis **Certificaten**.
 2. Klik op **Genereren/importeren**.
-3. Kies in het scherm **een certificaat maken** de volgende waarden:
-    - **Methode voor het maken van certificaten**: genereren.
-    - **Certificaat naam**: ExampleCertificate.
-    - **Onderwerp**: CN = ExampleDomain
-    - Houd voor de overige waarden de standaardwaarden aan. Klik op **maken**.
+3. Kies op het scherm **Een certificaat maken** de volgende waarden:
+    - **Methode voor het maken van certificaten**: Genereren.
+    - **Naam van het certificaat**: ExampleCertificate.
+    - **Onderwerp**: CN=ExampleDomain
+    - Houd voor de overige waarden de standaardwaarden aan. Klik op **Create**.
 
-Zodra u het bericht ontvangt dat het certificaat is gemaakt, kunt u erop klikken in de lijst. Vervolgens ziet u enkele van de eigenschappen. Als u op de huidige versie klikt, ziet u de waarde die u hebt opgegeven in de vorige stap.
+Zodra u het bericht ontvangt dat het certificaat met succes is gemaakt, kunt u erop klikken in de lijst. Vervolgens ziet u enkele van de eigenschappen. Als u op de huidige versie klikt, ziet u de waarde die u hebt opgegeven in de vorige stap.
 
-![Certificaat eigenschappen](../media/certificates/quick-create-portal/current-version-hidden.png)
+![Certificaateigenschappen](../media/certificates/quick-create-portal/current-version-hidden.png)
 
-Als u op de knop ' downloaden in CER-indeling ' of ' downloaden in PFX/PEM-indeling ' klikt, kunt u het certificaat down load. 
+## <a name="export-certificate-from-key-vault"></a>Certificaat uit Key Vault exporteren
+Als u klikt op de knop “Downloaden in CER-indeling” of “Downloaden in PFX/PEM-indeling”, kunt u het certificaat downloaden. 
 
 ![Certificaat downloaden](../media/certificates/quick-create-portal/current-version-shown.png)
 
@@ -83,8 +84,8 @@ Als u die niet meer nodig hebt, verwijdert u de resourcegroep. Hierdoor worden o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Key Vault gemaakt en een certificaat opgeslagen. Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+In deze quickstart hebt u een Key Vault gemaakt en daar een certificaat in opgeslagen. Voor meer informatie over Key Vault en hoe u Key Vault integreert met uw toepassingen gaat u verder naar de artikelen hieronder.
 
-- Een [overzicht van Azure Key Vault](../general/overview.md) lezen
-- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](../general/developers-guide.md)
-- [Azure Key Vault aanbevolen procedures](../general/best-practices.md) controleren
+- Lees een [Overzicht van Azure Key Vault](../general/overview.md)
+- Zie de [Gids voor Azure Key Vault-ontwikkelaars](../general/developers-guide.md)
+- Bekijk de [best practices voor Azure Key Vault](../general/best-practices.md)

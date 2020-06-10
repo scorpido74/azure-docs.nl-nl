@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265162"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661100"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Lees de veelgestelde vragen (FAQ) over Azure Files
 [Azure files](storage-files-introduction.md) biedt volledig beheerde bestands shares in de cloud die toegankelijk zijn via het industrie standaard [SMB-protocol (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). U kunt Azure-bestands shares gelijktijdig koppelen aan Cloud-of on-premises implementaties van Windows, Linux en macOS. U kunt ook Azure-bestands shares op Windows Server-computers in de cache opslaan met behulp van Azure File Sync voor snelle toegang, waarbij de gegevens worden gebruikt.
@@ -109,7 +109,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
+    Het eerste conflict van CompanyReport.docx zou bijvoorbeeld CompanyReport-CentralServer.docx als CentralServer is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1.docx. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
 * <a id="afs-storage-redundancy"></a>
   **Wordt geografisch redundante opslag ondersteund voor Azure File Sync?**  
@@ -160,7 +160,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-ntfs-acls"></a>
   **Behoudt Azure File Sync NTFS Acl's op Directory-en bestands niveau en gegevens die zijn opgeslagen in Azure Files?**
 
-    Vanaf februari 2020 24 worden de nieuwe en bestaande Acl's die zijn gelaagd door Azure file sync bewaard in de NTFS-indeling en worden de ACL-wijzigingen die rechtstreeks aan de Azure-bestands share zijn aangebracht, gesynchroniseerd met alle servers in de synchronisatie groep. Eventuele wijzigingen aan de Acl's die zijn aangebracht in Azure Files worden via Azure file sync gesynchroniseerd. Wanneer u gegevens naar Azure Files kopieert, moet u ervoor zorgen dat u SMB gebruikt om toegang te krijgen tot de share en uw Acl's te bewaren. Bestaande op REST gebaseerde hulp middelen, zoals AzCopy of Storage Explorer, behouden geen Acl's.
+    Vanaf februari 2020 24 worden de nieuwe en bestaande Acl's die zijn gelaagd door Azure file sync bewaard in de NTFS-indeling en worden de ACL-wijzigingen die rechtstreeks aan de Azure-bestands share zijn aangebracht, gesynchroniseerd met alle servers in de synchronisatie groep. Eventuele wijzigingen aan de Acl's die zijn aangebracht in Azure Files worden via Azure file sync gesynchroniseerd. Wanneer u gegevens naar Azure Files kopieert, moet u ervoor zorgen dat u een kopieer programma gebruikt dat de nodige ' betrouw baarheid ' ondersteunt om kenmerken, tijds tempels en Acl's te kopiëren naar een Azure-bestands share, hetzij via SMB of voor de REST. Bij het gebruik van Azure Copy-hulpprogram ma's, zoals AzCopy, is het belang rijk dat u de meest recente versie gebruikt. Raadpleeg de [tabel hulp middelen](storage-files-migration-overview.md#file-copy-tools) voor het kopiëren van bestanden om een overzicht te krijgen van de Azure Copy-hulpprogram ma's om ervoor te zorgen dat u alle belang rijke meta gegevens van een bestand kunt kopiëren.
 
     Als u Azure Backup hebt ingeschakeld op de bestands shares die door het bestand sync worden beheerd, kunnen Acl's van bestanden worden hersteld als onderdeel van de werk stroom voor het terugzetten van back-ups. Dit werkt voor de volledige share of afzonderlijke bestanden/directory's.
 

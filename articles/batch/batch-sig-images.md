@@ -4,12 +4,12 @@ description: Aangepaste installatie kopieën zijn een efficiënte manier om reke
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: tracking-python
-ms.openlocfilehash: bd71983a5c932b515a7d41a680a55772567694ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561260"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656606"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -44,6 +44,8 @@ Het gebruik van een gedeelde installatie kopie die voor uw scenario is geconfigu
 
 > [!NOTE]
 > De gedeelde installatie kopie moet zich in hetzelfde abonnement als het batch-account bevallen. De installatie kopie kan zich in verschillende regio's bevinden, zolang deze replica's bevat in dezelfde regio als uw batch-account.
+
+Als u een Azure AD-toepassing gebruikt om een aangepaste installatie kopie groep te maken met een installatie kopie van een gedeelde installatie kopie, moet aan die toepassing een [ingebouwde rol van Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) zijn toegewezen waarmee deze toegang krijgt tot de gedeelde installatie kopie. U kunt deze toegang verlenen in de Azure Portal door te navigeren naar de gedeelde installatie kopie, **toegangs beheer (IAM)** te selecteren en een roltoewijzing voor de toepassing toe te voegen.
 
 ## <a name="prepare-a-custom-image"></a>Een aangepaste installatie kopie voorbereiden
 

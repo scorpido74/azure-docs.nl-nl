@@ -1,6 +1,6 @@
 ---
-title: CLI-voor beeld-actieve geo-replicatie-enkele Azure SQL Database
-description: Azure CLI-voorbeeld script voor het instellen van actieve geo-replicatie voor één data base in Azure SQL Database en failover.
+title: CLI-voorbeeld van actieve geo-replicatie voor één Azure SQL Database
+description: Azure CLI-voorbeeldscript voor het instellen van actieve geo-replicatie voor een individuele database in Azure SQL Database en het uitvoeren van een failover.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3bc6cbe025854286b0a24a34240396eea16292b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 93afb5b52df7ac3ff638ff5fc180c3c4774880b8
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067418"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020384"
 ---
-# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>CLI gebruiken voor het configureren van actieve geo-replicatie voor één data base in Azure SQL Database
+# <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>CLI gebruiken voor het configureren van actieve geo-replicatie voor een individuele database in Azure SQL Database
 
-In dit voor beeld van Azure CLI-script wordt actieve geo-replicatie voor één data base geconfigureerd en wordt een failover uitgevoerd naar een secundaire replica van de data base.
+In dit voorbeeld van een Azure CLI-script configureert u actieve geo-replicatie voor één database en voert u de failover uit naar een secundaire replica van de database.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -42,22 +42,22 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Opschonen van implementatie
 
-Gebruik de volgende opdracht om de resource groep en alle bijbehorende resources te verwijderen.
+Gebruik de volgende opdracht om de resourcegroep en alle resources die er aan zijn gekoppeld te verwijderen.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Voorbeeld verwijzing
+## <a name="sample-reference"></a>Voorbeeldverwijzing
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | | |
 |---|---|
-| [AZ SQL DB replica](/cli/azure/sql/db/replica) | Data base-replica opdrachten. |
+| [az sql db replica](/cli/azure/sql/db/replica) | Opdrachten voor databasereplicatie. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../sql-database-cli-samples.md).
+Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

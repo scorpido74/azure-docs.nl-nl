@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 08/06/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: e0d2d2ea99822c95b9fab73642db37430771c583
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 83ba361541949b1be8205361d968ec6614b97cc9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82083761"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217949"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Quickstart: Een Table-API compileren met Node.js en Azure Cosmos DB
 
@@ -24,12 +24,12 @@ ms.locfileid: "82083761"
 > * [Python](create-table-python.md)
 > 
 
-In deze Quick Start maakt u een Azure Cosmos DB Table-API-account en gebruikt u Data Explorer en een node. js-app die is gekloond van GitHub om tabellen en entiteiten te maken. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
+In deze snelstart maakt u een Azure Cosmos DB Table-API-account en gebruikt u Data Explorer en een Node.js-app die is gekloond van GitHub om tabellen en entiteiten te maken. Met Azure Cosmos DB, een databaseservice met meerdere modellen, kunt u snel databases met documenten, tabellen, sleutelwaarden en grafieken maken en hier query's op uitvoeren. Deze databases hebben wereldwijde distributie en horizontale schaalmogelijkheden.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement. U kunt ook de [Azure Cosmos DB-emulator](https://aka.ms/cosmosdb-emulator) met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`gebruiken.
-- [Node. js 0.10.29 +](https://nodejs.org/) .
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement. U kunt ook de [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) gebruiken met een URI van `https://localhost:8081` en de sleutel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Node.js 0.10.29+](https://nodejs.org/).
 - [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Een databaseaccount maken
@@ -70,25 +70,85 @@ We gaan nu een Table-app klonen vanaf GitHub, de verbindingsreeks instellen en d
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-> ! Tips Zie het artikel [Cosmos DB Table-API voor beeld](table-storage-how-to-use-nodejs.md) voor een gedetailleerd overzicht van soort gelijke code. 
+> [!TIP]
+> Zie het artikel [Voorbeeld van Cosmos DB Table-API](table-storage-how-to-use-nodejs.md) voor een gedetailleerd overzicht van soortgelijke code. 
 
+## <a name="review-the-code"></a>De code bekijken
+
+Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. Als u deze stap wilt overslaan, kunt u verdergaan naar de sectie [De verbindingsreeks bijwerken](#update-your-connection-string) van dit document.
+
+* De volgende code laat zien hoe u een tabel maakt in de Azure Storage:
+
+  ```javascript
+  storageClient.createTableIfNotExists(tableName, function (error, createResult) {
+    if (error) return callback(error);
+
+    if (createResult.isSuccessful) {
+      console.log("1. Create Table operation executed successfully for: ", tableName);
+    }
+  }
+
+  ```
+
+* De volgende code laat zien hoe u gegevens invoegt in de tabel:
+
+  ```javascript
+  var customer = createCustomerEntityDescriptor("Harp", "Walter", "Walter@contoso.com", "425-555-0101");
+
+  storageClient.insertOrMergeEntity(tableName, customer, function (error, result, response) {
+    if (error) return callback(error);
+
+    console.log("   insertOrMergeEntity succeeded.");
+  }
+  ```
+
+* De volgende code laat zien hoe u gegevens uit de tabel opvraagt:
+
+  ```javascript
+  console.log("6. Retrieving entities with surname of Smith and first names > 1 and <= 75");
+
+  var storageTableQuery = storage.TableQuery;
+  var segmentSize = 10;
+
+  // Demonstrate a partition range query whereby we are searching within a partition for a set of entities that are within a specific range. 
+  var tableQuery = new storageTableQuery()
+      .top(segmentSize)
+      .where('PartitionKey eq ?', lastName)
+      .and('RowKey gt ?', "0001").and('RowKey le ?', "0075");
+  
+  runPageQuery(tableQuery, null, function (error, result) {
+  
+      if (error) return callback(error);
+  
+  ```
+
+* De volgende code laat zien hoe u gegevens uit de tabel verwijdert:
+
+  ```javascript
+  storageClient.deleteEntity(tableName, customer, function entitiesQueried(error, result) {
+      if (error) return callback(error);
+  
+      console.log("   deleteEntity succeeded.");
+  }
+  ```
+  
 ## <a name="update-your-connection-string"></a>Uw verbindingsreeks bijwerken
 
 Ga nu terug naar Azure Portal om de verbindingsreeksinformatie op te halen en kopieer deze in de app. Hierdoor kan de app communiceren met de gehoste database. 
 
-1. Selecteer in uw Azure Cosmos DB-account [Azure portal](https://portal.azure.com/)in de Azure Portal **verbindings reeks**. 
+1. Selecteer in uw Azure Cosmos DB-account in de [Azure-portal](https://portal.azure.com/) de optie **Verbindingsreeks**. 
 
     ![De vereiste verbindingsreeksinformatie bekijken en kopiëren vanuit het deelvenster Verbindingsreeks](./media/create-table-nodejs/connection-string.png)
 
-2. Kopieer de primaire VERBINDINGS reeks met behulp van de knop kopiëren aan de rechter kant.
+2. Kopieer de PRIMARY CONNECTION STRING met behulp van de knop Kopiëren aan de rechterkant.
 
-3. Open het bestand *app. config* en plak de waarde in de Connections Tring op regel drie. 
+3. Open het bestand *app.config* en plak de waarde in de connectionString op regel drie. 
 
     > [!IMPORTANT]
     > Als uw eindpunt documents.azure.com gebruikt, hebt u een preview-account en moet u een [nieuw Table-API-account](#create-a-database-account) maken om te kunnen werken met de algemeen beschikbare SDK voor Table- API.
     >
 
-3. Sla het bestand *app. config* op.
+3. Sla het bestand *app.config* op.
 
 U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicatie met Azure Cosmos DB. 
 
@@ -100,13 +160,13 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
     cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. Voer de volgende opdracht uit om de modules [Azure], [node-uuid], [nconf] en [async] lokaal te installeren, en om een vermelding voor ze in het bestand *package. json* op te slaan.
+2. Voer de volgende opdracht uit om de modules [azure], [node-uuid], [nconf] en [async] lokaal uit te voeren en een vermelding voor deze modules op te slaan in het bestand *package.json*.
 
    ```
    npm install azure-storage node-uuid async nconf --save
    ```
 
-2. Voer in het git-Terminal venster de volgende opdrachten uit om de node. js-toepassing uit te voeren.
+2. Voer in het git-terminalvenster de volgende opdrachten uit om de Node.js-toepassing uit te voeren.
 
     ```
     node ./tableSample.js 
@@ -126,7 +186,7 @@ U hebt uw app nu bijgewerkt met alle informatie die nodig is voor de communicati
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, hoe u een tabel maakt met behulp van de Data Explorer en hoe u een node. js-app uitvoert om tabel gegevens toe te voegen.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
+In deze snelstart hebt u geleerd hoe u een Azure Cosmos DB-account kunt maken, hoe u een tabel kunt maken met de Data Explorer en hoe u een Node.js-app uitvoert om tabelgegevens toe te voegen.  Nu kunt u een query uitvoeren op uw gegevens met de Table-API.  
 
 > [!div class="nextstepaction"]
 > [Tabelgegevens importeren in de Table-API](table-import.md)

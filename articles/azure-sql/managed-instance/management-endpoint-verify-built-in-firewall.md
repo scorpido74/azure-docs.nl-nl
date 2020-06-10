@@ -1,5 +1,5 @@
 ---
-title: Poort beveiliging in ingebouwde firewall verifiëren
+title: Poort beveiliging in de ingebouwde firewall verifiëren
 description: Meer informatie over het controleren van de ingebouwde firewall beveiliging in Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 04a630e51a68fab8f6c60262fbd14fad2e4aef1c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 561aba31bfd1cc37173f3ee41625ba3687f5e657
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045072"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660911"
 ---
 # <a name="verify-the-azure-sql-managed-instance-built-in-firewall"></a>De ingebouwde firewall van het door Azure SQL beheerde exemplaar controleren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Voor de [verplichte binnenkomende beveiligings regels](connectivity-architecture-overview.md#mandatory-inbound-security-rules) van Azure SQL Managed instance zijn beheer poorten 9000, 9003, 1438, 1440 en 1452 vereist die moeten worden geopend vanuit **elke bron** in de netwerk beveiligings groep (NSG) die het SQL Managed instance beveiligt. Hoewel deze poorten zijn geopend op het niveau van de NSG, worden ze op netwerk niveau beschermd door de ingebouwde firewall.
+Voor de [verplichte binnenkomende beveiligings regels](connectivity-architecture-overview.md#mandatory-inbound-security-rules) van Azure SQL Managed instance zijn beheer poorten 9000, 9003, 1438, 1440 en 1452 vereist om te kunnen worden geopend vanuit **elke bron** in de netwerk beveiligings groep (NSG) die een SQL-beheerd exemplaar beveiligt. Hoewel deze poorten zijn geopend op het niveau van de NSG, worden ze op netwerk niveau beschermd door de ingebouwde firewall.
 
 ## <a name="verify-firewall"></a>Firewall controleren
 
@@ -31,4 +31,4 @@ Als u deze poorten wilt controleren, gebruikt u een hulp programma voor beveilig
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [connectiviteits architectuur voor Azure SQL Managed instance](connectivity-architecture-overview.md)voor meer informatie over door SQL beheerde instanties en connectiviteit.
+Zie voor meer informatie over SQL Managed instance en Connectivity de [Azure SQL Managed instance connectivity-architectuur](connectivity-architecture-overview.md).

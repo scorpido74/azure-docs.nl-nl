@@ -4,16 +4,16 @@ description: Meer informatie over het toevoegen van een permanente gegevens schi
 author: roygara
 manager: twooley
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250411"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658330"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Een schijf toevoegen aan een virtuele Linux-machine
 In dit artikel wordt beschreven hoe u een permanente schijf aan uw virtuele machine koppelt, zodat u uw gegevens kunt bewaren, zelfs als uw virtuele machine opnieuw wordt ingericht door onderhoud of het wijzigen van de grootte.
@@ -69,13 +69,13 @@ De uitvoer lijkt op die in het volgende voorbeeld:
 > [!NOTE]
 > Het is raadzaam om de meest recente versies van fdisk of een deel daarvan te gebruiken die beschikbaar zijn voor uw distributie.
 
-Hier is *Dit SDC* de schijf die u wilt. De schijf partitioneren `parted`met, als de schijf grootte 2 tebibytes (Tib) of groter is, moet u GPT-partitionering gebruiken, als deze zich onder 2TiB bevindt, dan kunt u gebruikmaken van MBR-of GPT-partitionering. Als u gebruik maakt van MBR-partities, kunt u `fdisk`gebruiken. Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld `fdisk` wordt het proces op */dev/SDC*gestart:
+Hier is *Dit SDC* de schijf die u wilt. De schijf partitioneren met `parted` , als de schijf grootte 2 tebibytes (Tib) of groter is, moet u GPT-partitionering gebruiken, als deze zich onder 2TiB bevindt, dan kunt u gebruikmaken van MBR-of GPT-partitionering. Als u gebruik maakt van MBR-partities, kunt u gebruiken `fdisk` . Maak een primaire schijf op partitie 1 en accepteer de andere standaard waarden. In het volgende voor beeld wordt het `fdisk` proces op */dev/SDC*gestart:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen `p` we ook voor een primaire partitie en accepteren we de rest van de standaard waarden. De uitvoer ziet er ongeveer als volgt uit:
+Gebruik de opdracht `n` om een nieuwe partitie toe te voegen. In dit voor beeld kiezen we ook `p` voor een primaire partitie en accepteren we de rest van de standaard waarden. De uitvoer ziet er ongeveer als volgt uit:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -97,7 +97,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Druk de partitie tabel af door `p` te typen en `w` vervolgens te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
+Druk de partitie tabel af door te typen `p` en vervolgens `w` te gebruiken om de tabel naar schijf te schrijven en af te sluiten. De uitvoer moet er ongeveer uitzien als in het volgende voor beeld:
 
 ```bash
 Command (m for help): p
@@ -154,7 +154,7 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Maak nu een directory voor het koppelen van het bestands systeem `mkdir`met behulp van. In het volgende voor beeld maakt u een map op */datadrive*:
+Maak nu een directory voor het koppelen van het bestands systeem met behulp van `mkdir` . In het volgende voor beeld maakt u een map op */datadrive*:
 
 ```bash
 sudo mkdir /datadrive

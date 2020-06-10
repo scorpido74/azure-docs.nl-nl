@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: gebeurtenis gegevens migreren naar SQL Data Warehouse-Azure Event Hubs'
-description: 'Zelf studie: deze zelf studie laat zien hoe u gegevens van uw Event Hub kunt vastleggen in een SQL data warehouse met behulp van een Azure-functie die wordt geactiveerd door een event grid.'
+title: 'Zelfstudie: gebeurtenisgegevens migreren naar SQL Data Warehouse - Azure Event Hubs'
+description: 'Zelfstudie: In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een Event Grid.'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
@@ -9,52 +9,55 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130853"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015995"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelf studie: vastgelegde Event Hubs gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Zelfstudie: Vastgelegde Event Hub-gegevens migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) is de eenvoudigste manier om automatisch gestreamde gegevens in Event Hubs te verzenden naar een Azure Blob Storage of Azure Data Lake Store. U kunt de gegevens vervolgens verwerken en verzenden naar andere opslagdoelen van uw keuze, zoals SQL Data Warehouse of Cosmos DB. In deze zelfstudie leest u hoe u gegevens uit uw Event Hub vastlegt in een SQL Data Warehouse met behulp van een Azure-functie die wordt geactiveerd door een [Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
-*   U maakt eerst een Event Hub, waarbij de functie **Capture** is ingeschakeld, en stelt een Azure Blob Storage in als doel. Gegevens die worden gegenereerd door WindTurbineGenerator, worden gestreamd naar de Event Hub en automatisch vastgelegd in Azure Storage als Avro-bestanden. 
-*   Vervolgens maakt u een Azure Event Grid-abonnement met de Event Hubs-naamruimte als bron en het Azure Functions-eindpunt als doel.
-*   Wanneer een nieuw Avro-bestand wordt verzonden naar de Azure Storage Blob met de functie Event Hubs Capture, stelt Event Grid Azure Functions op de hoogte met de blob-URI. Vervolgens worden de gegevens gemigreerd van de blob naar een SQL Data Warehouse.
+- U maakt eerst een Event Hub, waarbij de functie **Capture** is ingeschakeld, en stelt een Azure Blob Storage in als doel. Gegevens die worden gegenereerd door WindTurbineGenerator, worden gestreamd naar de Event Hub en automatisch vastgelegd in Azure Storage als Avro-bestanden.
+- Vervolgens maakt u een Azure Event Grid-abonnement met de Event Hubs-naamruimte als bron en het Azure Functions-eindpunt als doel.
+- Wanneer een nieuw Avro-bestand wordt verzonden naar de Azure Storage Blob met de functie Event Hubs Capture, stelt Event Grid Azure Functions op de hoogte met de blob-URI. Vervolgens worden de gegevens gemigreerd van de blob naar een SQL Data Warehouse.
 
-In deze zelfstudie voert u de volgende acties uit: 
+In deze zelfstudie voert u de volgende acties uit:
 
 > [!div class="checklist"]
-> * De infrastructuur implementeren
-> * Code publiceren naar een Azure Functions-app
-> * Event Grid-abonnement maken vanuit de Azure Functions-app
-> * Voorbeeldgegevens streamen naar Event Hub. 
-> * Vastgelegde gegevens verifiëren in SQL Data Warehouse
+>
+> - De infrastructuur implementeren
+> - Code publiceren naar een Azure Functions-app
+> - Event Grid-abonnement maken vanuit de Azure Functions-app
+> - Voorbeeldgegevens streamen naar Event Hub.
+> - Vastgelegde gegevens verifiëren in SQL Data Warehouse
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Visual studio 2019](https://www.visualstudio.com/vs/). Zorg ervoor dat u tijdens de installatie de volgende werkbelastingen installeert: .NET-desktopontwikkeling, Azure-ontwikkeling, ASP.NET- en webontwikkeling, Node.js-ontwikkeling en Python-ontwikkeling
-- Het git-voor [beeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) downloaden de voorbeeld oplossing bevat de volgende onderdelen:
-    - *WindTurbineDataGenerator*: een eenvoudige uitgever waarmee voorbeeldgegevens van windturbines worden verzonden naar een Event Hub waarvoor Capture is ingeschakeld
-    - *FunctionDWDumper*: een Azure-functie die een Event Grid-melding ontvangt wanneer een Avro-bestand wordt vastgelegd in de Azure Storage Blob. Het URI-pad van de blob wordt ontvangen en de inhoud wordt gelezen, waarna deze gegevens worden doorgestuurd naar een SQL Data Warehouse.
+- [Visual Studio 2019](https://www.visualstudio.com/vs/). Zorg ervoor dat u tijdens de installatie de volgende werkbelastingen installeert: .NET-desktopontwikkeling, Azure-ontwikkeling, ASP.NET- en webontwikkeling, Node.js-ontwikkeling en Python-ontwikkeling
+- Download het [Git-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo). De voorbeeldoplossing bevat de volgende onderdelen:
 
-    In dit voor beeld wordt het meest recente Azure. Messa ging. Event hubs-pakket gebruikt. U vindt [hier](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)het oude voor beeld dat gebruikmaakt van het pakket micro soft. Azure. Event hubs. 
+  - *WindTurbineDataGenerator*: een eenvoudige uitgever waarmee voorbeeldgegevens van windturbines worden verzonden naar een Event Hub waarvoor Capture is ingeschakeld
+  - *FunctionDWDumper*: een Azure-functie die een Event Grid-melding ontvangt wanneer een Avro-bestand wordt vastgelegd in de Azure Storage Blob. Het URI-pad van de blob wordt ontvangen en de inhoud wordt gelezen, waarna deze gegevens worden doorgestuurd naar een SQL Data Warehouse.
+
+  In dit voorbeeld wordt het meest recente Azure.Messaging.Eventhubs-pakket gebruikt. U vindt het oude voorbeeld dat gebruikmaakt van het Microsoft.Azure.EventHubs-pakket [hier](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
 ### <a name="deploy-the-infrastructure"></a>De infrastructuur implementeren
+
 Gebruik Azure PowerShell of de Azure CLI om de infrastructuur te implementeren die nodig is voor deze zelfstudie met behulp van deze [Azure Resource Manager-sjabloon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Met deze sjabloon maakt u de volgende bronnen:
 
--   Event Hub waarbij de functie Capture is ingeschakeld
--   Opslagaccount voor de vastgelegde gebeurtenisgegevens
--   Azure App Service-plan voor het hosten van de Functions-app
--   Functions-app voor het verwerken van vastgelegde gebeurtenisbestanden
--   SQL Server voor het hosten van het datawarehouse
--   SQL Data Warehouse voor het opslaan van de gemigreerde gegevens
+- Event Hub waarbij de functie Capture is ingeschakeld
+- Opslagaccount voor de vastgelegde gebeurtenisgegevens
+- Azure App Service-plan voor het hosten van de Functions-app
+- Functions-app voor het verwerken van vastgelegde gebeurtenisbestanden
+- Logische SQL-server voor het hosten van het datawarehouse
+- SQL Data Warehouse voor het opslaan van de gemigreerde gegevens
 
 In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor het implementeren van de infrastructuur die is vereist voor de zelfstudie. Werk de namen van de volgende objecten bij voordat u de opdrachten uitvoert: 
 
@@ -62,7 +65,7 @@ In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor he
 - Regio van de resourcegroup
 - Event Hubs-naamruimte
 - Event Hub
-- Azure SQL Server
+- Logische SQL-server
 - SQL-gebruiker (en wachtwoord)
 - Azure SQL-database
 - Azure Storage 
@@ -71,6 +74,7 @@ In de volgende secties vindt u Azure CLI- en Azure PowerShell-opdrachten voor he
 Het duurt even voordat alle Azure-artefacten zijn gemaakt met deze scripts. Wacht totdat het script is voltooid voordat u doorgaat. Als de implementatie mislukt, verwijdert u de resourcegroep, lost u het gerapporteerde probleem op en voert u de opdracht opnieuw uit. 
 
 #### <a name="azure-cli"></a>Azure CLI
+
 Voer de volgende opdrachten uit om de sjabloon te implementeren met Azure CLI:
 
 ```azurecli-interactive
@@ -91,8 +95,8 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
+### <a name="create-a-table-in-sql-data-warehouse"></a>Een tabel maken in SQL Data Warehouse
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Een tabel maken in SQL Data Warehouse 
 Maak een tabel in uw SQL Data Warehouse door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren met [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) of de Query-editor in de portal. 
 
 ```sql
@@ -108,13 +112,13 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Code publiceren naar de Functions-app
 
-1. Open de oplossing *EventHubsCaptureEventGridDemo. SLN* in Visual Studio 2019.
+1. Open de oplossing *EventHubsCaptureEventGridDemo.sln* in Visual Studio 2019.
 
 1. Klik in Solution Explorer met de rechtermuisknop op *FunctionEGDWDumper* en selecteer **Publish**.
 
    ![Functie-app publiceren](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. Selecteer **Azure Function App** en **Select Existing**. Selecteer **publiceren**.
+1. Selecteer **Azure Function App** en **Select Existing**. Selecteer **Publiceren**.
 
    ![Bestaande functie-app](./media/store-captured-data-data-warehouse/pick-target.png)
 
@@ -150,11 +154,11 @@ Nadat de functie is gepubliceerd, kunt u zich abonneren op de vastleggebeurtenis
 ## <a name="generate-sample-data"></a>Voorbeeldgegevens genereren  
 U bent nu klaar met het instellen van uw Event Hub, SQL Data Warehouse, Azure Functions-app en Event Grid-abonnement. U kunt WindTurbineDataGenerator.exe uitvoeren om gegevensstromen te genereren naar de Event Hub nadat u de verbindingsreeks en de naam van uw Event Hub hebt bijgewerkt in de broncode. 
 
-1. Selecteer in de portal de naamruimte van uw gebeurtenishub. Selecteer **verbindings reeksen**.
+1. Selecteer in de portal de naamruimte van uw gebeurtenishub. Selecteer **Verbindingsreeksen**.
 
    ![Selecteer Verbindingsreeksen](./media/store-captured-data-data-warehouse/event-hub-connection.png)
 
-2. **RootManageSharedAccessKey** selecteren
+2. Selecteer **RootManageSharedAccessKey**.
 
    ![Sleutel selecteren](./media/store-captured-data-data-warehouse/show-root-key.png)
 

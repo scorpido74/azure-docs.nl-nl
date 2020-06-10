@@ -5,15 +5,15 @@ services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2802907d9e3ddb1c09c2f94074a977d00d191a84
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580223"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658807"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure CLI
 
@@ -42,11 +42,11 @@ Dit soort beheerde schijven heeft twee unieke statussen:
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
-Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestands grootte van de VHD die u wilt uploaden, in bytes. Om dat te krijgen, kunt u ofwel `wc -c <yourFileName>.vhd` of `ls -al <yourFileName>.vhd`gebruiken. Deze waarde wordt gebruikt bij het opgeven van de para meter **--Upload-size-bytes** .
+Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestands grootte van de VHD die u wilt uploaden, in bytes. Om dat te krijgen, kunt u ofwel `wc -c <yourFileName>.vhd` of gebruiken `ls -al <yourFileName>.vhd` . Deze waarde wordt gebruikt bij het opgeven van de para meter **--Upload-size-bytes** .
 
 Maak een lege standaard HDD voor het uploaden door zowel de para meter **--for-upload** als de para meter **--Upload-size-bytes** op te geven in een cmdlet voor het maken van een [schijf](/cli/azure/disk#az-disk-create) :
 
-Vervang `<yourdiskname>`, `<yourresourcegroupname>` `<yourregion>` door de waarden van uw keuze. De `--upload-size-bytes` para meter bevat een voorbeeld waarde `34359738880`van, vervang deze door een waarde die voor u van toepassing is.
+Vervang `<yourdiskname>` , `<yourresourcegroupname>` door `<yourregion>` de waarden van uw keuze. De `--upload-size-bytes` para meter bevat een voorbeeld waarde van `34359738880` , vervang deze door een waarde die voor u van toepassing is.
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -56,7 +56,7 @@ Als u een Premium SSD of een standaard SSD wilt uploaden, moet u **standard_lrs*
 
 Nu u een lege beheerde schijf hebt gemaakt die voor het upload proces is geconfigureerd, kunt u er een VHD naar uploaden. Als u een VHD naar de schijf wilt uploaden, moet u een Beschrijf bare SAS hebben, zodat u deze kunt raadplegen als bestemming voor uw Upload.
 
-Als u een Beschrijf bare SAS van uw lege beheerde schijf `<yourdiskname>`wilt `<yourresourcegroupname>`genereren, vervangt u en vervolgens gebruikt u de volgende opdracht:
+Als u een Beschrijf bare SAS van uw lege beheerde schijf wilt genereren, vervangt u `<yourdiskname>` en `<yourresourcegroupname>` vervolgens gebruikt u de volgende opdracht:
 
 ```azurecli
 az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
@@ -84,7 +84,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
-Vervang `<yourdiskname>`en `<yourresourcegroupname>`gebruik vervolgens de volgende opdracht om de schijf bruikbaar te maken:
+Vervang `<yourdiskname>` en `<yourresourcegroupname>` gebruik vervolgens de volgende opdracht om de schijf bruikbaar te maken:
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -99,7 +99,7 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > [!IMPORTANT]
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
-Vervang de `<sourceResourceGroupHere>`waarden `<sourceDiskNameHere>`, `<targetDiskNameHere>` `<targetResourceGroupHere>`,, en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+Vervang de `<sourceResourceGroupHere>` waarden,,, `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

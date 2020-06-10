@@ -10,12 +10,12 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: c8531af9e8d43dfe1279306cea57a93cf89ded90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88fffc083b918157857c5c170cddda2016944c89
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045793"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660340"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>De configuratie van het service-geaidede subnet inschakelen voor een beheerd exemplaar van Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Automatisch geconfigureerde netwerk beveiligings groepen en route tabel regels z
 De service-geaidede configuratie wordt automatisch ingeschakeld wanneer u [subnet-delegering](../../virtual-network/subnet-delegation-overview.md) voor de resource provider inschakelt `Microsoft.Sql/managedInstances` .
 
 > [!IMPORTANT] 
-> Zodra de subnet-delegering is ingeschakeld, kunt u deze niet uitschakelen totdat u het laatste virtuele cluster verwijdert uit het subnet. Zie het volgende [artikel](virtual-cluster-delete.md#delete-virtual-cluster-from-the-azure-portal)voor meer informatie over het verwijderen van een virtueel cluster.
+> Zodra de subnet-delegering is ingeschakeld, kunt u deze niet uitschakelen totdat u het laatste virtuele cluster verwijdert uit het subnet. Zie het volgende [artikel](virtual-cluster-delete.md#delete-a-virtual-cluster-from-the-azure-portal)voor meer informatie over het verwijderen van een virtueel cluster.
 
 > [!NOTE] 
 > Omdat de configuratie van het service-geaidede subnet essentieel is voor het onderhouden van SLA, vanaf 1 mei 2020, is het niet mogelijk om beheerde exemplaren te implementeren in subnetten die niet worden overgedragen aan de resource provider van het beheerde exemplaar. Op 1 juli 2020 worden alle subnetten met beheerde exemplaren automatisch overgedragen aan de resource provider van het beheerde exemplaar. 

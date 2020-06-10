@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 03/13/2020
-ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.date: 06/09/2020
+ms.openlocfilehash: 23563074bc8bbf02b36e86ff6c78acf3034670a6
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418259"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655865"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Zelf-hostende Integration Runtime maken en configureren
 
@@ -56,13 +56,13 @@ Gebruik de volgende procedures om een zelf-hostende Integration runtime te maken
 
 Gebruik de volgende stappen om een zelf-hostende IR te maken met behulp van Azure Data Factory gebruikers interface.
 
-1. Selecteer op de pagina **aan de slag** van Azure Data Factory gebruikers interface het tabblad **Auteur** in het deel venster aan de linkerkant.
+1. Selecteer op de pagina **aan de slag** van Azure Data Factory gebruikers interface het [tabblad beheren](https://docs.microsoft.com/azure/data-factory/author-management-hub) in het deel venster uiterst links.
 
-   ![De knop auteur van start pagina](media/doc-common-process/get-started-page-author-button.png)
+   ![De knop Start pagina beheren](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Selecteer **verbindingen** onder aan het meest linkse deel venster en selecteer **Integration Runtimes** in het venster **verbindingen** . Selecteer **+ Nieuw**.
+1. Selecteer **integratie-Runtimes** in het linkerdeel venster en selecteer **+ Nieuw**.
 
-   ![Een Integration Runtime maken](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
+   ![Een Integration Runtime maken](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Selecteer op de pagina **Integration runtime Setup** de optie **Azure, zelf-hostend**en selecteer **door gaan**. 
 
@@ -97,7 +97,7 @@ U kunt zelf-hostende IR-instellingen automatiseren op een virtuele Azure-machine
 
 U kunt een opdracht regel gebruiken om een bestaande zelf-hostende IR in te stellen of te beheren. Dit gebruik kan vooral helpen bij het automatiseren van de installatie en registratie van zelf-hostende IR-knoop punten.
 
-Dmgcmd. exe is opgenomen in het zelf-hostende installatie programma. Het bevindt zich meestal in de map C:\Program Files\Microsoft Integration Runtime\4.0\Shared\. Deze toepassing ondersteunt verschillende para meters en kan worden aangeroepen via een opdracht regel met behulp van batch scripts voor automatisering.
+Dmgcmd.exe is opgenomen in het zelf-hostende installatie programma. Het bevindt zich meestal in de map C:\Program Files\Microsoft Integration Runtime\4.0\Shared\. Deze toepassing ondersteunt verschillende para meters en kan worden aangeroepen via een opdracht regel met behulp van batch scripts voor automatisering.
 
 Gebruik de toepassing als volgt:
 
@@ -272,7 +272,7 @@ Bekijk de volgende video van 12 minuten om een inleiding en demonstratie van dez
 
 Zie [een gedeelde zelf-hostende Integration runtime maken](create-shared-self-hosted-integration-runtime-powershell.md) voor meer informatie over het delen van een zelf-hostende Integration runtime met meerdere gegevens fabrieken.
 
-### <a name="monitoring"></a>Bewaking
+### <a name="monitoring"></a>Controleren
 
 #### <a name="shared-ir"></a>Gedeelde IR
 
@@ -352,8 +352,8 @@ Wanneer de zelf-hostende Integration runtime de proxy server gebruikt om verbind
 Er zijn drie configuratie opties:
 
 - **Geen proxy gebruiken**: de zelf-hostende Integration runtime gebruikt geen proxy om verbinding te maken met Cloud Services.
-- **Systeem proxy gebruiken**: de zelf-hostende Integration runtime maakt gebruik van de proxy-instelling die is geconfigureerd in diahost. exe. config en diawp. exe. config. Als deze bestanden geen proxy configuratie opgeven, maakt de zelf-hostende Integration runtime rechtstreeks verbinding met de Cloud service zonder een proxy te passeren.
-- **Aangepaste proxy gebruiken**: Configureer de http-proxy-instelling die moet worden gebruikt voor de zelf-hostende Integration runtime, in plaats van configuraties te gebruiken in diahost. exe. config en diawp. exe. config. **Adres** -en **poort** waarden zijn vereist. De waarden voor **gebruikers naam** en **wacht woord** zijn optioneel, afhankelijk van de verificatie-instelling van uw proxy. Alle instellingen worden versleuteld met Windows DPAPI op de zelf-hostende Integration runtime en lokaal opgeslagen op de computer.
+- **Systeem proxy gebruiken**: de zelf-hostende Integration runtime maakt gebruik van de proxy-instelling die is geconfigureerd in diahost.exe.config en diawp.exe.config. Als deze bestanden geen proxy configuratie opgeven, maakt de zelf-hostende Integration runtime rechtstreeks verbinding met de Cloud service zonder een proxy te passeren.
+- **Aangepaste proxy gebruiken**: Configureer de http-proxy-instelling die moet worden gebruikt voor de zelf-hostende Integration runtime, in plaats van configuraties te gebruiken in diahost.exe.config en diawp.exe.config. **Adres** -en **poort** waarden zijn vereist. De waarden voor **gebruikers naam** en **wacht woord** zijn optioneel, afhankelijk van de verificatie-instelling van uw proxy. Alle instellingen worden versleuteld met Windows DPAPI op de zelf-hostende Integration runtime en lokaal opgeslagen op de computer.
 
 De integratie runtime host service wordt automatisch opnieuw opgestart nadat u de bijgewerkte proxy-instellingen hebt opgeslagen.
 
@@ -373,7 +373,7 @@ U kunt het hulp programma Configuration Manager gebruiken om de HTTP-proxy weer 
 
 ### <a name="configure-proxy-server-settings"></a>Proxyserver instellingen configureren
 
-Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebruikt de zelf-hostende Integration runtime de proxy-instellingen in diahost. exe. config en diawp. exe. config. Als deze bestanden geen proxy opgeven, maakt de zelf-hostende Integration runtime rechtstreeks verbinding met de Cloud service zonder een proxy te passeren. De volgende procedure bevat instructies voor het bijwerken van het bestand diahost. exe. config:
+Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebruikt de zelf-hostende Integration runtime de proxy-instellingen in diahost.exe.config en diawp.exe.config. Als deze bestanden geen proxy opgeven, maakt de zelf-hostende Integration runtime rechtstreeks verbinding met de Cloud service zonder een proxy te passeren. De volgende procedure bevat instructies voor het bijwerken van het diahost.exe.config-bestand:
 
 1. Maak in Verkenner een veilige kopie van C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config als back-up van het oorspronkelijke bestand.
 1. Open Klad blok als Administrator.
@@ -407,7 +407,7 @@ Als u de optie **systeem proxy gebruiken** voor de http-proxy selecteert, gebrui
    Als de service niet start, hebt u waarschijnlijk onjuiste XML-label syntaxis toegevoegd in het configuratie bestand van de toepassing dat u hebt bewerkt.
 
 > [!IMPORTANT]
-> Vergeet niet om zowel diahost. exe. config als diawp. exe. config bij te werken.
+> Vergeet niet om zowel diahost.exe.config als diawp.exe.config bij te werken.
 
 U moet er ook voor zorgen dat Microsoft Azure zich in de acceptatie lijst van uw bedrijf bevindt. U kunt de lijst met geldige Azure IP-adressen downloaden van het [micro soft Download centrum](https://www.microsoft.com/download/details.aspx?id=41653).
 

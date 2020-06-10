@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245926"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656576"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Bekijk de Video Indexer uitvoer die door de API is geproduceerd
 
@@ -28,7 +28,7 @@ Wanneer u de API **Get video-index** aanroept en de reactie status OK is, krijgt
 
 U kunt de samen vatting van de video ook visueel bekijken door op de knop **afspelen** op de video op de [video indexer](https://www.videoindexer.ai/) website te drukken. Zie [video Insights weer geven en bewerken](video-indexer-view-edit.md)voor meer informatie.
 
-![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Inzichten](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de API **video-index ophalen** . 
 
@@ -42,7 +42,7 @@ In dit artikel wordt de JSON-inhoud onderzocht die wordt geretourneerd door de A
 |---|---|
 |accountId|De VI-account-ID van de afspeel lijst.|
 |id|De ID van de afspeel lijst.|
-|name|De naam van de afspeel lijst.|
+|naam|De naam van de afspeel lijst.|
 |description|De beschrijving van de afspeel lijst.|
 |userName|De naam van de gebruiker die de afspeel lijst heeft gemaakt.|
 |toegevoegd|De aanmaak tijd van de afspeel lijst.|
@@ -80,7 +80,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 
 |Kenmerk | Beschrijving|
 |---|---|
-|name|De naam van de video. Bijvoorbeeld Azure Monitor.|
+|naam|De naam van de video. Bijvoorbeeld Azure Monitor.|
 |id|De ID van de video. Bijvoorbeeld 63c6d532ff.|
 |privacyMode|Uw uitsplitsing kan een van de volgende modi hebben: **persoonlijk**, **openbaar**. **Openbaar** : de video is zichtbaar voor iedereen in uw account en iedereen met een koppeling naar de video. **Persoonlijk** : de video is zichtbaar voor iedereen in uw account.|
 |duur|Bevat één duur die aangeeft hoe lang een inzicht heeft plaatsgevonden. De duur is in seconden.|
@@ -89,7 +89,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 |aanhoudende|Kan nul of meer gezichten bevatten. Zie [gezichten](#faces)voor meer gedetailleerde informatie.|
 |trefwoorden|Kan nul of meer tref woorden bevatten. Zie [tref woorden](#keywords)voor meer gedetailleerde informatie.|
 |gevoel|Kan nul of meer gevoel bevatten. Zie [gevoel](#sentiments)voor meer gedetailleerde informatie.|
-|audioEffects| Kan nul of meer audioEffects bevatten. Zie [audioEffects](#audioEffects)voor meer gedetailleerde informatie.|
+|audioEffects| Kan nul of meer audioEffects bevatten. Zie [audioEffects](#audioeffects)voor meer gedetailleerde informatie.|
 |Labels| Mag niet meer dan nul labels bevatten. Zie [labels](#labels)voor meer informatie.|
 |merken| Kan nul of meer merken bevatten. Zie [Brands](#brands)voor meer gedetailleerde informatie.|
 |statistieken | Zie [Statistieken](#statistics)voor meer informatie.|
@@ -102,7 +102,7 @@ In deze sectie vindt u een overzicht van de inzichten.
 |---|---|
 |accountId|De VI-account-ID van de video.|
 |id|De ID van de video.|
-|name|De naam van de video.
+|naam|De naam van de video.
 |state|De status van de video (geüpload, verwerkt, verwerkt, mislukt, in quarantaine geplaatst).|
 |processingProgress|De verwerkings voortgang tijdens de verwerking (bijvoorbeeld 20%).|
 |failureCode|De fout code als de verwerking is mislukt (bijvoorbeeld ' UnsupportedFileType ').|
@@ -166,7 +166,7 @@ Een gezicht kan een ID, een naam, een miniatuur, andere meta gegevens en een lij
 |Labels|De [labels](#labels) begrijpen.|
 |afzonderlijke|De [Foto's](#shots) begrijpen.|
 |merken|De [Brands](#brands) begrijpen.|
-|audioEffects|[AudioEffects](#audioEffects) Insight.|
+|audioEffects|[AudioEffects](#audioeffects) Insight.|
 |gevoel|[Gevoel](#sentiments) Insight.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) Insight.|
 |textualContentModeration|[TextualContentModeration](#textualcontentmoderation) Insight.|
@@ -310,14 +310,14 @@ Voorbeeld:
 |Naam|Beschrijving|
 |---|---|
 |id|De face-ID.|
-|name|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
+|naam|De naam van het gezicht. Dit kan ' onbekend #0, een geïdentificeerde beroemdheden of een door de klant getrainde persoon zijn.|
 |betrouwbaarheid|De gezichts-id-betrouw baarheid.|
 |description|Een beschrijving van de beroemdheden. |
 |thumbnailId|De ID van de miniatuur van het gezicht.|
 |knownPersonId|De interne ID van een bekende persoon.|
 |referenceId|Als het een Bing-beroemdheden is, is dit de Bing-ID.|
 |Type|Op dit moment hebben we alleen Bing.|
-|titel|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
+|title|Als het een beroemdheden is, is dit de titel (bijvoorbeeld ' micro soft CEO ').|
 |imageUrl|Als het een beroemdheden is, wordt de afbeeldings-URL.|
 |vaak|Dit zijn exemplaren van waar het gezicht zich in het opgegeven tijds bereik bevindt. Elk exemplaar heeft ook een thumbnailsId. |
 
@@ -355,7 +355,7 @@ Voorbeeld:
 |Naam|Beschrijving|
 |---|---|
 |id|De label-ID.|
-|name|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
+|naam|De naam van het label (bijvoorbeeld ' computer ', ' TV ').|
 |language|De naam taal van het label (bij omzetting). BCP-47|
 |vaak|Een lijst met tijds bereiken waar dit label wordt weer gegeven (een label kan meerdere keren voor komen). Elk exemplaar heeft een veld betrouw baarheid. |
 
@@ -497,9 +497,9 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 |Naam|Beschrijving|
 |---|---|
 |id|De merk-ID.|
-|name|De naam van het merk.|
-|referenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
-|referenceUrl | De Wikipedia-URL van het merk, indien aanwezig. Bijvoorbeeld [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|naam|De naam van het merk.|
+|referenceId | Het achtervoegsel van de brand Wikipedia-URL. "Target_Corporation" is bijvoorbeeld het achtervoegsel van [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
+|referenceUrl | De Wikipedia-URL van het merk, indien aanwezig. Bijvoorbeeld [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation) .
 |description|De beschrijving van de Brands.|
 |tags|Een lijst met vooraf gedefinieerde labels die aan dit merk zijn gekoppeld.|
 |betrouwbaarheid|De betrouw bare waarde van de Video Indexer merk detector (0-1).|
@@ -561,7 +561,7 @@ Merk namen van bedrijven en producten die worden herkend in de spraak naar tekst
 |SpeakerLongestMonolog|De langste monolog van de spreker. Als de spreker stiltes bevat in de monolog, is deze opgenomen. Stilte aan het begin en het einde van de monolog wordt verwijderd.| 
 |SpeakerTalkToListenRatio|De berekening is gebaseerd op de tijd die is besteed aan de monolog van de spreker (zonder de stilte in tussen) gedeeld door de totale tijd van de video. De tijd wordt afgerond op het derde decimale punt.|
 
-#### <a name="audioeffects"></a><a id="audioEffects"/>audioEffects
+#### <a name="audioeffects"></a>audioEffects
 
 |Naam|Beschrijving|
 |---|---|
@@ -770,7 +770,7 @@ Video Indexer van de belangrijkste onderwerpen van transcripten wordt verduideli
 |Naam|Beschrijving|
 |---|---|
 |id|De onderwerp-ID.|
-|name|De naam van het onderwerp, bijvoorbeeld ' Farmaceutischen '.|
+|naam|De naam van het onderwerp, bijvoorbeeld ' Farmaceutischen '.|
 |referenceId|Brood kruimels die de hiërarchie van onderwerpen weer spie gelen. Bijvoorbeeld: "Health en Wellbeing/medicijn en gezondheids zorg/farmaceutische bedrijven".|
 |betrouwbaarheid|De betrouwbaarheids Score in het bereik [0, 1]. Hoger is meer vertrouwen.|
 |language|De taal die wordt gebruikt in het onderwerp.|

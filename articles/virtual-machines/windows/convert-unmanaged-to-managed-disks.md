@@ -4,15 +4,15 @@ description: Een Windows-VM van niet-beheerde schijven converteren naar beheerde
 author: roygara
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081945"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658190"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Een virtuele Windows-machine van niet-beheerde schijven converteren naar beheerde schijven
 
@@ -35,7 +35,7 @@ Als u bestaande virtuele Windows-machines (Vm's) hebt die gebruikmaken van niet-
 ## <a name="convert-single-instance-vms"></a>Vm's met één exemplaar converteren
 In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaar converteert van niet-beheerde schijven naar beheerde schijven. (Als uw Vm's zich in een beschikbaarheidsset bevinden, raadpleegt u de volgende sectie.) 
 
-1. Hef de toewijzing van de virtuele machine op met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . `myVM` In het volgende voor beeld wordt de toewijzing van de virtuele machine met de `myResourceGroup`naam in de resource groep met de naam: 
+1. Hef de toewijzing van de virtuele machine op met behulp van de cmdlet [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) . In het volgende voor beeld wordt de toewijzing van de virtuele machine met de naam `myVM` in de resource groep met de naam `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -55,7 +55,7 @@ In deze sectie wordt beschreven hoe u virtuele Azure-machines met één exemplaa
 
 Als de virtuele machines die u wilt converteren naar Managed disks zich in een beschikbaarheidsset bevinden, moet u eerst de beschikbaarheidsset converteren naar een beheerde beschikbaarheidsset.
 
-1. Converteer de beschikbaarheidsset met behulp van de cmdlet [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) . In het volgende voor beeld wordt de beschikbaarheidsset bijgewerkt met de `myAvailabilitySet` naam `myResourceGroup`in de resource groep met de naam:
+1. Converteer de beschikbaarheidsset met behulp van de cmdlet [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) . In het volgende voor beeld wordt de beschikbaarheidsset bijgewerkt met de naam `myAvailabilitySet` in de resource groep met de naam `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -65,7 +65,7 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned 
    ```
 
-   Als de regio waar uw beschikbaarheidsset zich bevindt slechts 2 beheerde fout domeinen bevat, maar het aantal onbeheerde fout domeinen 3 is, wordt met deze opdracht een fout weer gegeven die vergelijkbaar is met ' het opgegeven aantal fout domeinen 3 moet in het bereik van 1 tot 2 liggen. ' U kunt de fout oplossen door het fout domein bij te werken naar `Sku` 2 `Aligned` en als volgt bij te werken:
+   Als de regio waar uw beschikbaarheidsset zich bevindt slechts 2 beheerde fout domeinen bevat, maar het aantal onbeheerde fout domeinen 3 is, wordt met deze opdracht een fout weer gegeven die vergelijkbaar is met ' het opgegeven aantal fout domeinen 3 moet in het bereik van 1 tot 2 liggen. ' U kunt de fout oplossen door het fout domein bij te werken naar 2 en als volgt bij te werken `Sku` `Aligned` :
 
    ```azurepowershell-interactive
    $avSet.PlatformFaultDomainCount = 2
@@ -88,14 +88,14 @@ Als de virtuele machines die u wilt converteren naar Managed disks zich in een b
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er een fout optreedt tijdens de conversie, of als een virtuele machine een mislukte status heeft vanwege problemen in een eerdere conversie, voert u `ConvertTo-AzVMManagedDisk` de cmdlet opnieuw uit. Bij een eenvoudige nieuwe poging wordt de blok kering doorgaans opgeheven.
+Als er een fout optreedt tijdens de conversie, of als een virtuele machine een mislukte status heeft vanwege problemen in een eerdere conversie, voert u de `ConvertTo-AzVMManagedDisk` cmdlet opnieuw uit. Bij een eenvoudige nieuwe poging wordt de blok kering doorgaans opgeheven.
 Voordat u converteert, moet u ervoor zorgen dat alle VM-extensies de status ' provisioning geslaagd ' hebben of dat de conversie mislukt met de fout code 409.
 
 ## <a name="convert-using-the-azure-portal"></a>Converteren met behulp van de Azure Portal
 
 U kunt ook niet-beheerde schijven converteren naar Managed disks met behulp van de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 2. Selecteer de virtuele machine in de lijst met virtuele machines in de portal.
 3. Selecteer in de Blade voor de virtuele machine **schijven** in het menu.
 4. Selecteer boven aan de Blade **schijven** **migreren naar Managed disks**.

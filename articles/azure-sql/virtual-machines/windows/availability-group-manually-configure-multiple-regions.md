@@ -1,6 +1,6 @@
 ---
-title: Beschikbaarheids groep in verschillende regio's configureren
-description: In dit artikel wordt uitgelegd hoe u een SQL Server beschikbaarheids groep configureert op virtuele machines van Azure met een replica in een andere regio.
+title: Een SQL Server AlwaysOn-beschikbaarheids groep configureren in verschillende regio's
+description: In dit artikel wordt uitgelegd hoe u een SQL Server always on-beschikbaarheids groep configureert op virtuele machines van Azure met een replica in een andere regio.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -15,14 +15,15 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 996b5a59c5c79a045cd396a24778fe0928682c5a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 00f016dd4a2a713124ef3db2ef6c595f68e9318d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044288"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657043"
 ---
-# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Een beschikbaarheids groep configureren op Azure SQL Server virtuele machines in verschillende regio's
+# <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Een SQL Server AlwaysOn-beschikbaarheids groep configureren in verschillende Azure-regio's
+
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 In dit artikel wordt uitgelegd hoe u een replica van een SQL Server always on-beschikbaarheids groep configureert op virtuele machines van Azure op een externe Azure-locatie. Gebruik deze configuratie ter ondersteuning van herstel na nood gevallen.
@@ -107,13 +108,13 @@ Voer de volgende stappen uit om een replica te maken in een extern Data Center:
 
 1. Voeg het IP-adres toe als afhankelijkheid voor de naam van het basis cluster.
 
-   Open de cluster eigenschappen eenmaal en selecteer het tabblad **afhankelijkheden** . CONFIGUREER een or-afhankelijkheid voor de twee IP-adressen: 
+   Open de cluster eigenschappen en selecteer het tabblad **afhankelijkheden** . CONFIGUREER een or-afhankelijkheid voor de twee IP-adressen: 
 
    ![Cluster eigenschappen](./media/availability-group-manually-configure-multiple-regions/cluster-ip-dependencies.png)
 
 1. Voeg een IP-adres bron toe aan de rol van de beschikbaarheids groep in het cluster. 
 
-   Klik met de rechter muisknop op de rol van de beschikbaarheids groep in Failoverclusterbeheer, selecteer **resource toevoegen**, **meer resources**en selecteer **IP-adres**.
+   Klik met de rechter muisknop op de rol van de beschikbaarheids groep in Failoverclusterbeheer, kies **resource toevoegen**, **meer resources**en **IP-adres**selecteren.
 
    ![IP-adres maken](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -133,7 +134,7 @@ Voer de volgende stappen uit om een replica te maken in een extern Data Center:
 
 1. [Stel de cluster parameters in Power shell in](availability-group-manually-configure-tutorial.md#setparam).
 
-Voer het Power shell-script uit met de netwerk naam van het cluster, het IP-adres en de test poort die u hebt geconfigureerd op het load balancer in de nieuwe regio.
+   Voer het Power shell-script uit met de netwerk naam van het cluster, het IP-adres en de test poort die u hebt geconfigureerd op het load balancer in de nieuwe regio.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -170,16 +171,16 @@ Als u de verbindings reeksen niet kunt wijzigen, kunt u de cache voor naam omzet
 Als u de verbinding van de listener met de externe regio wilt testen, kunt u een failover uitvoeren voor de replicatie naar de externe regio. Hoewel de replica asynchroon is, is failover kwetsbaar voor mogelijk gegevens verlies. Als u een failover wilt uitvoeren zonder gegevens verlies, wijzigt u de beschikbaarheids modus in synchroon en stelt u de failover-modus in op automatisch. Voer de volgende stappen uit:
 
 1. In **objectverkenner**maakt u verbinding met het exemplaar van SQL Server dat als host fungeert voor de primaire replica.
-1. Klik onder **AlwaysOn-beschikbaarheidsgroepen**, **beschikbaarheids groepen**met de rechter muisknop op uw beschikbaarheids groep en klik op **Eigenschappen**.
+1. Klik onder **AlwaysOn-beschikbaarheidsgroepen**, **beschikbaarheids groepen**met de rechter muisknop op uw beschikbaarheids groep en selecteer **Eigenschappen**.
 1. Stel op de pagina **Algemeen** onder **beschikbaarheids replica's**de secundaire replica in op de Dr-site om de beschikbaarheids modus voor **synchrone door Voer** en de modus **automatische** failover te gebruiken.
 1. Als u een secundaire replica op dezelfde site hebt als uw primaire replica voor hoge Beschik baarheid, stelt u deze replica in op **asynchroon door voeren** en **hand matig**.
-1. Klik op OK.
-1. Klik in **objectverkenner**met de rechter muisknop op de beschikbaarheids groep en klik op **dash board weer geven**.
+1. Selecteer OK.
+1. Klik in **objectverkenner**met de rechter muisknop op de beschikbaarheids groep en selecteer **dash board weer geven**.
 1. Controleer op het dash board of de replica op de DR-site is gesynchroniseerd.
-1. Klik in **objectverkenner**met de rechter muisknop op de beschikbaarheids groep en klik op **failover...**. SQL Server beheer Studios opent een wizard voor het uitvoeren van een failover van SQL Server.  
-1. Klik op **volgende**en selecteer de SQL Server instantie in de Dr-site. Klik nogmaals op **volgende** .
-1. Maak verbinding met het SQL Server-exemplaar op de DR-site en klik op **volgende**.
-1. Controleer op de pagina **samen vatting** de instellingen en klik op **volt ooien**.
+1. Klik in **objectverkenner**met de rechter muisknop op de beschikbaarheids groep en selecteer **failover...**. SQL Server beheer Studios opent een wizard voor het uitvoeren van een failover van SQL Server.  
+1. Selecteer **volgende**en selecteer de SQL Server instantie in de Dr-site. Selecteer **volgende** opnieuw.
+1. Maak verbinding met het SQL Server-exemplaar op de DR-site en selecteer **volgende**.
+1. Controleer op de pagina **samen vatting** de instellingen en selecteer **volt ooien**.
 
 Nadat de verbinding is getest, verplaatst u de primaire replica terug naar uw primaire data centrum en stelt u de beschikbaarheids modus weer in op de normale instellingen van het besturings systeem. De volgende tabel bevat de normale operationele instellingen voor de architectuur die in dit document wordt beschreven:
 
@@ -197,7 +198,7 @@ Zie de volgende onderwerpen voor meer informatie:
 - [Een geplande hand matige failover van een beschikbaarheids groep uitvoeren (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
 - [Een geforceerde hand matige failover van een beschikbaarheids groep uitvoeren (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
-## <a name="additional-links"></a>Aanvullende koppelingen
+## <a name="next-steps"></a>Volgende stappen
 
 * [AlwaysOn-beschikbaarheids groepen](https://msdn.microsoft.com/library/hh510230.aspx)
 * [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)

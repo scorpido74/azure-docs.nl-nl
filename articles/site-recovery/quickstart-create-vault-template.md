@@ -1,25 +1,25 @@
 ---
-title: Quick start voor het maken van een Azure Recovery Services kluis met behulp van een Azure Resource Manager sjabloon.
-description: In deze Quick Start leert u hoe u een Azure Recovery Services kluis kunt maken met behulp van een Azure Resource Manager sjabloon.
+title: Quickstart voor het maken van een Azure Recovery Services-kluis met behulp van een Azure Resource Manager-sjabloon.
+description: In deze quickstart leert u hoe u met een sjabloon van Azure Resource Manager een Azure Recovery Services-kluis maakt.
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
 author: davidsmatlak
 ms.author: v-dasmat
-ms.openlocfilehash: 47c25ebd0fe18d470b04ccbcc85a8638c1ce0346
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
-ms.translationtype: MT
+ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598386"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217282"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Snelstartgids: een Recovery Services kluis maken met behulp van een resource manager-sjabloon
+# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Quickstart: Een Recovery Services-kluis maken met behulp van een Resource Manager-sjabloon
 
-In deze Quick Start wordt beschreven hoe u een Recovery Services kluis instelt met behulp van een Azure Resource Manager sjabloon. De [Azure site Recovery](site-recovery-overview.md) -service draagt bij aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR), zodat uw zakelijke toepassingen online blijven tijdens geplande en ongeplande uitval. Site Recovery beheert herstel na nood gevallen van on-premises machines en Azure virtual machines (VM), met inbegrip van replicatie, failover en herstel.
+In deze quickstart wordt beschreven hoe u een Recovery Services-kluis instelt met behulp van een Azure Resource Manager-sjabloon. De service [Azure Site Recovery](site-recovery-overview.md) draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) zodat uw zakelijke apps online blijven tijdens geplande en ongeplande uitval. Site Recovery beheert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u geen actief Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) maken voordat u begint.
+Als u nog geen actief abonnement op Azure hebt, kunt u een [gratis account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -29,47 +29,47 @@ Geen.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)start-sjablonen.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/).
 
 :::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json" range="1-66" highlight="41-65":::
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
-- [Micro soft. Recovery Services-kluizen](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults): maakt de kluis.
-- [Micro soft. Recovery Services/kluizen/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): Hiermee configureert u de instellingen voor back-upredundantie van de kluis.
+- [Microsoft.Recovery Services-kluizen](/azure/templates/microsoft.recoveryservices/vaults): Hiermee wordt de kluis gemaakt.
+- [Microsoft.Recovery Services/vaults/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): Hiermee configureert u de instellingen voor redundantie van back-ups van de kluis.
 
-De sjabloon bevat optionele para meters voor de back-upconfiguratie van de kluis. De instellingen voor opslag redundantie zijn lokaal redundante opslag (LRS) of geografisch redundante opslag (GRS). Zie [opslag redundantie instellen](../backup/backup-create-rs-vault.md#set-storage-redundancy)voor meer informatie.
+De sjabloon bevat optionele parameters voor de back-upconfiguratie van de kluis. De instellingen voor opslagredundantie zijn lokaal redundante opslag (LRS) of geografisch redundante opslag (GRS). Zie [Opslagredundantie instellen](../backup/backup-create-rs-vault.md#set-storage-redundancy) voor meer informatie.
 
-Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)start-sjablonen voor meer Azure Recovery Services-sjablonen.
+Zie [Azure Quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular)voor meer Azure Recovery Services-sjablonen.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Voor het implementeren van de sjabloon zijn het **abonnement**, de **resource groep**en de **kluis naam** vereist.
+Als u de sjabloon wilt implementeren, zijn de **Abonnement**, **Resourcegroep** en **Kluisnaam** vereist.
 
-1. Als u zich wilt aanmelden bij Azure en de sjabloon wilt openen, selecteert u de installatie kopie **implementeren naar Azure** .
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure en de sjabloon te openen.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
-1. Selecteer of voer de volgende waarden in:
+1. Typ of selecteer de volgende waarden:
 
-   :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Sjabloon voor het maken van een Recovery Services kluis.":::
+   :::image type="content" source="media/quickstart-create-vault-template/create-vault-template.png" alt-text="Sjabloon voor het maken van een Recovery Services-kluis.":::
 
-   - **Abonnement**: Selecteer uw Azure-abonnement.
-   - **Resource groep**: Selecteer een bestaande groep of selecteer **nieuwe maken** om een groep toe te voegen.
-   - **Locatie**: wordt standaard ingesteld op de locatie van de resource groep en is niet meer beschikbaar nadat een resource groep is geselecteerd.
-   - **Kluis naam**: Geef een naam op voor de kluis.
-   - **Opslag type wijzigen**: de standaard waarde is **False**. Selecteer **waar** alleen als u het opslag type van de kluis wilt wijzigen.
-   - **Kluis opslag type**: de standaard waarde is **GloballyRedundant**. Als het opslag type is ingesteld op **True**, selecteert u **LocallyRedundant**.
-   - **Locatie**: de functie `[resourceGroup().location]` wordt standaard ingesteld op de locatie van de resource groep. Als u de locatie wilt wijzigen, voert u een waarde in, bijvoorbeeld **westus**.
-   - Schakel het selectie vakje **Ik ga akkoord met de bovenstaande voor waarden in**.
+   - **Abonnement**: selecteer uw Azure-abonnement.
+   - **Resourcegroep**: Selecteer een bestaande groep of selecteer **Nieuwe maken** om een groep toe te voegen.
+   - **Locatie**: wordt standaard ingesteld op de locatie van de resourcegroep en is niet meer beschikbaar nadat u een resourcegroep hebt geselecteerd.
+   - **Kluisnaam**: Geef een naam op voor de kluis.
+   - **Opslagtype wijzigen**: De standaardinstelling is **onwaar**. Selecteer **waar** alleen als u het opslagtype van de kluis moet wijzigen.
+   - **Kluisopslagtype**: De standaardinstelling is **GloballyRedundant**. Als het opslagtype is ingesteld op **waar**, selecteert u **LocallyRedundant**.
+   - **Locatie**: de functie `[resourceGroup().location]` is standaard ingesteld op de locatie van de resourcegroep. Als u de locatie wilt wijzigen, voert u een waarde in, zoals **westus**.
+   - Schakel het selectievakje **Ik ga akkoord met de bovenstaande voorwaarden** in.
 
-1. Selecteer de knop **aanschaffen** om te beginnen met de implementatie van de kluis. Na een geslaagde implementatie wordt er een melding weer gegeven.
+1. Als u de implementatie van de kluis wilt starten, selecteert u de knop **Kopen**. Na een geslaagde implementatie wordt er een melding weergegeven.
 
-   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="De kluis implementatie is voltooid.":::
+   :::image type="content" source="media/quickstart-create-vault-template/deployment-success.png" alt-text="De kluisimplementatie is voltooid.":::
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Als u wilt bevestigen dat de kluis is gemaakt, gebruikt u Azure CLI of Azure PowerShell.
+Gebruik Azure CLI of Azure PowerShell om te controleren of de kluis is gemaakt.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -130,7 +130,7 @@ GeoRedundant
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om de nieuwe resources te gebruiken, hoeft u geen actie te ondernemen. Als dat niet het geval is, kunt u de resource groep en de kluis die in deze Quick start is gemaakt, verwijderen. Als u de resource groep en de bijbehorende resources wilt verwijderen, gebruikt u Azure CLI of Azure PowerShell.
+Als u van plan bent om de nieuwe resources te gebruiken, hoeft u geen actie te ondernemen. Als dat niet het geval is, kunt u de resourcegroep en de kluis verwijderen die in deze quickstart is gemaakt. Gebruik Azure CLI of Azure PowerShell om de resourcegroep en de bijbehorende resources te verwijderen.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -153,7 +153,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Recovery Services kluis gemaakt. Ga naar het volgende artikel Quick start voor meer informatie over herstel na nood gevallen.
+In deze quickstart hebt u een Recovery Services-kluis gemaakt. Ga naar het volgende quickstart-artikel voor meer informatie over herstel na noodgevallen.
 
 > [!div class="nextstepaction"]
 > [Herstel na noodgeval instellen](azure-to-azure-quickstart.md)

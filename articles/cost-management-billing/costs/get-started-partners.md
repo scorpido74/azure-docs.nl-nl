@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204882"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997125"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -246,7 +246,7 @@ Wanneer de eigenschap **PartnerEarnedCreditApplied** _Waar_ is, hebben de gekopp
 
 Wanneer de eigenschap **PartnerEarnedCreditApplied** _Onwaar_ is, voldoen de gekoppelde kosten niet aan de vereiste rechten voor het tegoed. Of de aangeschafte service komt niet in aanmerking voor het verdiende tegoed van de partner.
 
-Service-gebruiksgegevens hebben doorgaans 8-24 uur om te verschijnen in Cost Management. Zie [Frequentie voor het bijwerken van gebruiks gegevens verschilt](understand-cost-mgt-data.md#usage-data-update-frequency-varies)voor meer informatie. PEC-tegoeden worden binnen 48 uur na de toegangstijd weergegeven in Azure Cost Management.
+Service-gebruiksgegevens hebben doorgaans 8-24 uur om te verschijnen in Cost Management. Zie [Updates en retentie voor kosten- en gebruiksgegevens](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) voor meer informatie. PEC-tegoeden worden binnen 48 uur na de toegangstijd weergegeven in Azure Cost Management.
 
 
 U kunt ook groeperen en filteren op de eigenschap **PartnerEarnedCreditApplied** met behulp van de **Groeperen op**-opties. Gebruik de opties om kosten te onderzoeken die wel of geen PEC hebben.

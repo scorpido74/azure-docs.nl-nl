@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158194"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660127"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Azure IoT Central uitbreiden met aangepaste analyses met behulp van Azure Databricks
 
@@ -74,7 +74,7 @@ Gebruik de [Azure Portal om een Azure Databricks service te maken](https://porta
 
 | Instelling | Waarde |
 | ------- | ----- |
-| Naam van de werkruimte    | De naam van uw werk ruimte kiezen |
+| Werkruimtenaam    | De naam van uw werk ruimte kiezen |
 | Abonnement | Uw abonnement |
 | Resourcegroep | IoTCentralAnalysis |
 | Locatie | VS - oost |
@@ -109,12 +109,12 @@ Ga op de website van [Azure IOT Central Application Manager](https://aka.ms/iotc
     | Instelling | Waarde |
     | ------- | ----- |
     | Weergavenaam | Exporteren naar Event Hubs |
-    | Ingeschakeld | Aan |
+    | Ingeschakeld | Uit |
     | Event Hubs-naamruimte | De naam van uw Event Hubs-naam ruimte |
     | Event Hub | centralexport |
-    | Metingen | Aan |
-    | Apparaten | Uit |
-    | Apparaatsjablonen | Uit |
+    | Metingen | Uit |
+    | Apparaten | Aan |
+    | Apparaatsjablonen | Aan |
 
 ![Configuratie voor gegevens export](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -231,4 +231,4 @@ In deze hand leiding hebt u het volgende geleerd:
 * Telemetrie streamen vanuit een IoT Central-toepassing met *doorlopende gegevens export*.
 * Maak een Azure Databricks omgeving om telemetriegegevens te analyseren en af te zetten.
 
-Nu u weet hoe u aangepaste analyses maakt, is de voorgestelde volgende stap om te leren hoe u [uw toepassing beheert](howto-administer.md).
+Nu u weet hoe u aangepaste analyses maakt, is de voorgestelde volgende stap informatie over het [visualiseren en analyseren van uw Azure IOT Central-gegevens in een Power bi dash board](howto-connect-powerbi.md).

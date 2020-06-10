@@ -4,16 +4,16 @@ description: Meer informatie over het uploaden van een VHD naar een Azure Manage
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 6242baf5a541231d367d456450388ef455312780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 153bbc39ceba52548d667fa4c83d0edc867fcb93
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182511"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660605"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Een VHD uploaden naar Azure of een beheerde schijf kopiëren naar een andere regio-Azure PowerShell
 
@@ -42,11 +42,11 @@ Dit soort beheerde schijven heeft twee unieke statussen:
 
 ## <a name="create-an-empty-managed-disk"></a>Een lege beheerde schijf maken
 
-Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestands grootte van de VHD die u wilt uploaden, in bytes. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende gebruiken: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
+Voordat u een lege standaard HDD voor het uploaden kunt maken, hebt u de bestands grootte van de VHD die u wilt uploaden, in bytes. Met de voorbeeld code krijgt u maar zelf, kunt u het volgende gebruiken: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length` . Deze waarde wordt gebruikt bij het opgeven van de para meter **-UploadSizeInBytes** .
 
 Maak nu op uw lokale shell een lege standaard HDD voor het uploaden door de **Upload** -instelling op te geven in de para meter **-CreateOption** en de para meter **-UploadSizeInBytes** in de cmdlet [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) . Roep vervolgens [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) aan om de schijf te maken.
 
-Vervang `<yourdiskname>`, `<yourresourcegroupname>`en `<yourregion>` Voer de volgende opdrachten uit:
+Vervang `<yourdiskname>` , `<yourresourcegroupname>` en `<yourregion>` Voer de volgende opdrachten uit:
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -60,7 +60,7 @@ Als u een Premium SSD of een standaard SSD wilt uploaden, moet u **Standard_LRS*
 
 Nu u een lege beheerde schijf hebt gemaakt die voor het upload proces is geconfigureerd, kunt u er een VHD naar uploaden. Als u een VHD naar de schijf wilt uploaden, moet u een Beschrijf bare SAS hebben, zodat u deze kunt raadplegen als bestemming voor uw Upload.
 
-Als u een Beschrijf bare SAS wilt genereren van de lege `<yourdiskname>`beheerde `<yourresourcegroupname>`schijf, vervangt u en vervolgens gebruikt u de volgende opdrachten:
+Als u een Beschrijf bare SAS wilt genereren van de lege beheerde schijf, vervangt u `<yourdiskname>` en `<yourresourcegroupname>` vervolgens gebruikt u de volgende opdrachten:
 
 ```powershell
 $diskSas = Grant-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -DurationInSecond 86400 -Access 'Write'
@@ -82,7 +82,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" $diskSas.AccessSAS --blob-type PageBlo
 
 Nadat het uploaden is voltooid en u geen gegevens meer naar de schijf hoeft te schrijven, trekt u de SAS in. Als u de SA'S intrekt, wordt de status van de beheerde schijf gewijzigd en kunt u de schijf koppelen aan een virtuele machine.
 
-Vervang `<yourdiskname>`en `<yourresourcegroupname>`Voer vervolgens de volgende opdracht uit:
+Vervang `<yourdiskname>` en `<yourresourcegroupname>` Voer vervolgens de volgende opdracht uit:
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>'
@@ -97,7 +97,7 @@ Het volgende script zal dit voor u doen, het proces is vergelijkbaar met de stap
 > [!IMPORTANT]
 > U moet een offset van 512 toevoegen wanneer u de schijf grootte in bytes van een beheerde schijf van Azure opgeeft. Dit komt doordat Azure de voet tekst weglaat wanneer de schijf grootte wordt geretourneerd. Als u dit niet doet, mislukt de kopie. Het volgende script doet dit al voor u.
 
-Vervang de `<sourceResourceGroupHere>`waarden `<sourceDiskNameHere>`, `<targetDiskNameHere>` `<targetResourceGroupHere>`,, `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
+Vervang de `<sourceResourceGroupHere>` waarden,,, `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` `<yourOSTypeHere>` en `<yourTargetLocationHere>` (een voor beeld van een locatie waarde is uswest2) met de waarde en voer vervolgens het volgende script uit om een beheerde schijf te kopiëren.
 
 ```powershell
 

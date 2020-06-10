@@ -1,84 +1,86 @@
 ---
-title: 'Snelstartgids: webverkeer omleiden met een resource manager-sjabloon'
+title: 'Quickstart: Webverkeer omleiden met behulp van een Resource Manager-sjabloon'
 titleSuffix: Azure Application Gateway
-description: Meer informatie over het gebruik van een resource manager-sjabloon voor het maken van een Azure-toepassing gateway waarmee webverkeer wordt doorgestuurd naar virtuele machines in een back-end-groep.
+description: Leer hoe u een Resource Manager-sjabloon kunt gebruiken om een Azure-toepassingsgateway te maken om webverkeer om te leiden naar virtuele machines in een back-endpool.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/23/2020
+ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604906"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170491"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Snelstartgids: webverkeer omleiden met Azure-toepassing gateway-Resource Manager-sjabloon
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Quickstart: Webverkeer omleiden met Azure Application Gateway - Resource Manager-sjabloon
 
-In deze Snelstartgids gebruikt u een resource manager-sjabloon om een Azure-toepassing gateway te maken. Vervolgens test u de toepassings gateway om er zeker van te zijn dat deze correct werkt.
+In deze quickstart gebruikt u een Resource Manager-sjabloon om een Azure-toepassingsgateway te maken. Vervolgens test u de toepassingsgateway om er zeker van te zijn dat deze juist werkt.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-U kunt deze Snelstartgids ook volt ooien met behulp van de [Azure Portal](quick-create-portal.md), [Azure POWERSHELL](quick-create-powershell.md)of [Azure cli](quick-create-cli.md).
+U kunt deze quickstart ook voltooien met via de [Azure-portal](quick-create-portal.md), [Azure PowerShell](quick-create-powershell.md) of [Azure CLI](quick-create-cli.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 ## <a name="create-an-application-gateway"></a>Een toepassingsgateway maken
 
-Met het oog op de eenvoud maakt deze sjabloon een eenvoudige configuratie met een openbaar front-end-IP, een basis-listener voor het hosten van één site op de toepassings gateway, een basis regel voor aanvraag Routering en twee virtuele machines in de back-end-pool.
+Met deze sjabloon wordt een eenvoudige configuratie gemaakt met een openbaar front-end-IP-adres, een basislistener om een enkele site op de toepassingsgateway te hosten, een eenvoudige regel voor het doorsturen van aanvragen, en twee virtuele machines in de back-endpool.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json) start-sjablonen
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
-Er zijn meerdere Azure-resources gedefinieerd in de sjabloon:
+Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
-- [**Micro soft. Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
-- [**Micro soft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses) : een voor de toepassings gateway en twee voor de virtuele machines.
-- [**Micro soft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Micro soft. Compute/informatie**](/azure/templates/microsoft.compute/virtualmachines) : twee virtuele machines
-- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : twee voor de virtuele machines
-- [**Micro soft. Compute/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : IIS en de webpagina's configureren
+- [**Microsoft.Network/applicationgateways**](/azure/templates/microsoft.network/applicationgateways)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses) : een voor de toepassingsgateway en twee voor de virtuele machines.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : twee virtuele machines
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : twee voor de virtuele machines
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) : om IIS en de webpagina’s te configureren
 
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
 Resource Manager-sjabloon implementeren in Azure:
 
-1. Selecteer **implementeren naar Azure** om u aan te melden bij Azure en de sjabloon te openen. Met de sjabloon maakt u een toepassings gateway, de netwerk infrastructuur en twee virtuele machines in de back-end-groep met IIS.
+1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u een toepassingsgateway, de netwerkinfrastructuur, en twee virtuele machines in de back-endpool waarop IIS wordt uitgevoerd.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
-2. Selecteer of maak een resource groep, typ de gebruikers naam en het wacht woord voor de beheerder van de virtuele machine.
-3. Selecteer **Ik ga akkoord met de bovenstaande voor waarden** en selecteer vervolgens **kopen**. Het volt ooien van de implementatie kan 20 minuten of langer duren.
+2. Selecteer of maak een resourcegroep, typ de gebruikersnaam en het wachtwoord voor de beheerder van de virtuele machine.
+3. Selecteer **Controleren en maken** en selecteer vervolgens **Maken**.
+
+   De implementatie kan 20 minuten of langer duren.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-Hoewel IIS niet is vereist voor het maken van de toepassings gateway, wordt dit geïnstalleerd om te controleren of de toepassings gateway is gemaakt door Azure. Gebruik IIS om de toepassingsgateway te testen:
+IIS is niet vereist om de toepassingsgateway te maken, maar is geïnstalleerd om te controleren of het maken van de toepassingsgateway in Azure is geslaagd. Gebruik IIS om de toepassingsgateway te testen:
 
-1. Zoek het open bare IP-adres voor de toepassings gateway op de pagina **overzicht** . ![Neem het open bare IP-](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png) adres van de toepassings gateway op of u kunt **alle resources**selecteren, *myAGPublicIPAddress* invoeren in het zoekvak en deze vervolgens selecteren in de zoek resultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
-2. Kopieer het open bare IP-adres en plak het in de adres balk van uw browser om door dat IP-adres te bladeren.
-3. Controleer het antwoord. Een geldige reactie verifieert of de toepassings gateway is gemaakt en kan verbinding maken met de back-end.
+1. Zoek het openbare IP-adres voor de toepassingsgateway op de bijbehorende pagina **Overzicht**.![Noteer het openbare IP-adres van de toepassingsgateway](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png). Of selecteer **Alle bronnen**, voer in het zoekvak *myAGPublicIPAddress* in en selecteer het adres vervolgens in de zoekresultaten. Het openbare IP-adres wordt weergegeven op de pagina **Overzicht**.
+2. Kopieer het openbare IP-adres en plak het in de adresbalk van de browser om het IP-adres te bekijken.
+3. Controleer het antwoord. Een geldig antwoord verifieert dat de toepassingsgateway is gemaakt en verbinding kan maken met de back-end.
 
    ![Toepassingsgateway testen](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
-   Vernieuw de browser meerdere keren en controleer de verbindingen met zowel myVM1 als myVM2.
+   Vernieuw de browser meerdere keren. Als het goed is, ziet u nu verbindingen naar myVM1 en myVM2.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources die u hebt gemaakt met de Application Gateway niet meer nodig hebt, verwijdert u de resource groep. Hiermee verwijdert u de toepassings gateway en alle gerelateerde resources.
+Wanneer u de bij de toepassingsgateway gemaakte resources niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee verwijdert u de toepassingsgateway en alle gerelateerde resources.
 
-Als u de resource groep wilt verwijderen, `Remove-AzResourceGroup` roept u de cmdlet aan:
+Als u de resourcegroep wilt verwijderen, roept u de cmdlet `Remove-AzResourceGroup` aan:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group name>

@@ -1,59 +1,59 @@
 ---
-title: 'Quick Start: uw eerste Portal-query'
-description: In deze Snelstartgids volgt u de stappen voor het uitvoeren van uw eerste query vanuit Azure Portal met behulp van Azure resource Graph Explorer.
-ms.date: 11/21/2019
+title: 'Quickstart: Uw eerste portalquery'
+description: In deze quickstart volgt u de stappen om uw eerste query vanuit de Azure-portal uit te voeren met behulp van Azure Resource Graph Explorer.
+ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74406800"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148035"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met Azure resource Graph Explorer
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Quickstart: Uw eerste Resource Graph-query uitvoeren met Azure Resource Graph Explorer
 
-De kracht van Azure resource Graph is rechtstreeks beschikbaar in Azure Portal via Azure resource Graph Explorer. Resource Graph Explorer biedt doorzoekbaar informatie over de Azure Resource Manager resource typen en eigenschappen die u kunt opvragen. Resource Graph Explorer biedt ook een schone interface voor het werken met meerdere query's, het evalueren van de resultaten en het converteren van de resultaten van sommige query's in een grafiek die kan worden vastgemaakt aan een Azure-dash board.
+De kracht van Azure resource Graph is rechtstreeks beschikbaar in de Azure-portal via Azure Resource Graph Explorer. Resource Graph Explorer biedt doorzoekbare informatie over de typen en eigenschappen van Azure Resource Manager-resources die u kunt opvragen. Resource Graph Explorer biedt ook een duidelijke interface voor het werken met meerdere query's, het evalueren van de resultaten en het converteren van de resultaten van sommige query's naar een grafiek die kan worden vastgemaakt aan een Azure-dashboard.
 
-Aan het einde van deze Quick Start hebt u Azure Portal en resource Graph Explorer gebruikt voor het uitvoeren van uw eerste resource grafiek query en de resultaten vastgemaakt aan een dash board.
+Aan het einde van deze quickstart hebt u uw eerste Resource Graph-query uitgevoerd en de resultaten vastgemaakt aan een dashboard met behulp van de Azure-portal en Resource Graph Explorer.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="run-your-first-resource-graph-query"></a>Uw eerste Resource Graph-query uitvoeren
 
-Open de [Azure Portal](https://portal.azure.com) om de resource Graph Explorer te vinden en gebruiken volg deze stappen om uw eerste resource grafiek query uit te voeren:
+Open de [Azure-portal](https://portal.azure.com), zoek Resource Graph Explorer en gebruik deze om uw eerste Resource Graph-query uit te voeren met de volgende stappen:
 
-1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **resource Graph Explorer**.
+1. Selecteer **Alle services** in het linkerdeelvenster. Zoek naar en selecteer **Resource Graph Explorer**.
 
-1. Voer in het gedeelte **query 1** van het venster de query `Resources | project name, type | limit 5` in en selecteer **query uitvoeren**.
-
-   > [!NOTE]
-   > Zoals in dit voor beeld van een query geen sorteer volgorde wordt `order by`opgegeven, zoals het uitvoeren van deze query, is het waarschijnlijk dat een andere set resources per aanvraag kan worden verkregen.
-
-1. Controleer het antwoord op de query op het tabblad **resultaten** . Selecteer het tabblad **berichten** om de details van de query te bekijken, inclusief het aantal resultaten en de duur van de query. Eventuele fouten worden weer gegeven op dit tabblad.
-
-1. Werk de query bij `order by` naar de eigenschap **naam** : `Resources | project name, type | limit 5 | order by name asc`. Selecteer vervolgens **query uitvoeren**.
+1. Voer in het gedeelte **Query 1** van het venster de query `Resources | project name, type | limit 5` in en selecteer **Query uitvoeren**.
 
    > [!NOTE]
-   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Hiermee worden de queryresultaten eerst beperkt en daarna geordend.
+   > Omdat deze voorbeeldquery geen sorteermodificator geeft, bijvoorbeeld `order by`, zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd.
 
-1. Werk de query bij naar `order by` de eerste eigenschap **name** en `limit` vervolgens naar de vijf belangrijkste resultaten `Resources | project name, type | order by name asc | limit 5`:. Selecteer vervolgens **query uitvoeren**.
+1. Bekijk de uitvoer van de query op het tabblad **Resultaten**. Selecteer het tabblad **Berichten** om de details van de query te bekijken, inclusief het aantal resultaten en de duur van de query. Eventuele fouten worden weergegeven op dit tabblad.
 
-Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat er niets in uw omgeving wordt gewijzigd, worden de geretourneerde resultaten consistent en zoals verwacht: besteld op basis van de eigenschap **name** , maar is nog steeds beperkt tot de vijf belangrijkste resultaten.
+1. Werk de query als volgt bij om de eigenschap **Naam** te `order by`: `Resources | project name, type | limit 5 | order by name asc`. Selecteer vervolgens **Query uitvoeren**.
 
-### <a name="schema-browser"></a>Schema browser
+   > [!NOTE]
+   > Net als bij de eerste query zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd. De volgorde van de queryopdrachten is belangrijk. In dit voorbeeld komt `order by` na `limit`. Met deze opdracht worden de queryresultaten eerst beperkt en vervolgens gerangschikt.
 
-De schema browser bevindt zich in het linkerdeel venster van de resource Graph Explorer. Deze lijst met resources bevat alle _resource typen_ van Azure-resources die beide worden ondersteund door Azure resource Graph en die zich bevinden in een Tenant waartoe u toegang hebt. Als u een resource type of subeigenschappen uitbreidt, worden onderliggende eigenschappen weer gegeven die kunnen worden gebruikt om een resource grafiek query te maken.
+1. Werk de query als volgt bij om eerst te `order by` op de eigenschap **Naam** en daarna de resultaten van de top vijf te `limit`: `Resources | project name, type | order by name asc | limit 5`. Selecteer vervolgens **Query uitvoeren**.
 
-Het resource type wordt geselecteerd `where type =="<resource type>"` in het query venster. Als u een van de onderliggende eigenschappen `where <propertyName> == "INSERT_VALUE_HERE"` selecteert, wordt deze toegevoegd aan het query-vak.
-De schema browser is een uitstekende manier om eigenschappen te ontdekken voor gebruik in query's. Vervang de _\_insert-waarde\_hier_ met uw eigen waarde, pas de query aan met voor waarden, Opera tors en functies om uw beoogde resultaten te behalen.
+Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en gesorteerd op de eigenschap **Naam**, maar nog steeds beperkt tot de top vijf.
 
-## <a name="create-a-chart-from-the-resource-graph-query"></a>Een grafiek maken op basis van de resource grafiek query
+### <a name="schema-browser"></a>Schemabrowser
 
-Als u na het uitvoeren van de laatste query hierboven het tabblad **grafieken** selecteert, krijgt u een bericht dat de resultatenset niet compatibel is met een diagram van een cirkel diagram. Query's waarin de resultaten van een lijst worden weer gegeven, kunnen niet worden gemaakt in een grafiek, maar query's die tellingen van resources bieden, zijn mogelijk. Met behulp van het [voor beeld van het aantal virtuele machines voor het tellen van query's per OS-type](./samples/starter.md#count-virtual-machines-by-os-type), gaan we een visualisatie maken op basis van de resource Graph-query.
+De schemabrowser bevindt zich in het linkerdeelvenster van Resource Graph Explorer. Deze lijst met resources bevat alle _resourcetypen_ van Azure-resources die worden ondersteund door Azure Resource Graph en die zich bevinden in een tenant waartoe u toegang hebt. Als u een resourcetype of subeigenschappen uitvouwt, worden onderliggende eigenschappen weergegeven waarmee u een Resource Graph-query kunt maken.
 
-1. Voer in het gedeelte **query 1** van het venster de volgende query in en selecteer **query uitvoeren**.
+Als u het resourcetype selecteert, wordt `where type =="<resource type>"` in het queryvak geplaatst. Als u een onderliggende eigenschap selecteert, wordt `where <propertyName> == "INSERT_VALUE_HERE"` toegevoegd aan het queryvak.
+De schemabrowser is een uitstekende manier om te verkennen welke eigenschappen u kunt gebruiken in query's. Vervang _INSERT\_VALUE\_HERE_ door uw eigen waarde en pas de query aan met voorwaarden, operators en functies om de beoogde resultaten te verkrijgen.
+
+## <a name="create-a-chart-from-the-resource-graph-query"></a>Een grafiek maken op basis van de Resource Graph-query
+
+Als u na het uitvoeren van de laatste query hierboven het tabblad **Grafieken** selecteert, wordt er een bericht weergegeven dat de resultatenset niet compatibel is met een visualisatie van een cirkeldiagram. Er kan geen grafiek worden gemaakt van query's die een lijst met resultaten weergeven, maar wel van query's die aantallen resources weergeven. Laten we een visualisatie van de Resource Graph-query maken met behulp van de [voorbeeldquery voor telling van het aantal virtuele machines op type besturingssysteem](./samples/starter.md#count-os).
+
+1. Voer in het gedeelte **Query 1** van het venster de volgende query in en selecteer **Query uitvoeren**.
 
    ```kusto
    Resources
@@ -61,65 +61,65 @@ Als u na het uitvoeren van de laatste query hierboven het tabblad **grafieken** 
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-1. Selecteer het tabblad **resultaten** en houd er rekening mee dat de reactie op deze query aantallen bevat.
+1. Selecteer het tabblad **Resultaten** en merk op dat met deze query aantallen als resultaat worden weergegeven.
 
-1. Selecteer het tabblad **grafieken** . De query resulteert nu in visualisaties. Wijzig het type van het _grafiek type selecteren..._ voor een _staaf diagram_ of een ring _diagram_ om te experimenteren met de beschik bare visualisatie opties.
+1. Selecteer het tabblad **Grafieken**. Nu worden er visualisaties als resultaat weergegeven. Wijzig het type van _Grafiektype selecteren..._ in _Staafdiagram_ of _Ringdiagram_ om te experimenteren met de beschikbare visualisatieopties.
 
-## <a name="pin-the-query-visualization-to-a-dashboard"></a>De query visualisatie vastmaken aan een dash board
+## <a name="pin-the-query-visualization-to-a-dashboard"></a>De visualisatie van de query vastmaken aan een dashboard
 
-Wanneer u resultaten hebt van een query die kan worden gevisualiseerd, kan deze gegevens visualisatie worden vastgemaakt aan een van uw Dash boards. Voer de volgende stappen uit nadat u de bovenstaande query hebt uitgevoerd:
+Wanneer uw resultaten van een query kunnen worden gevisualiseerd, kan deze gegevensvisualisatie worden vastgemaakt aan een van uw dashboards. Voer de volgende stappen uit nadat u de bovenstaande query hebt uitgevoerd:
 
-1. Selecteer **Opslaan** en geef de naam ' VM'S per OS-type ' op. Selecteer vervolgens **Opslaan** onder aan het rechterdeel venster.
+1. Selecteer **Opslaan** en geef de naam 'VM's per type besturingssysteem' op. Selecteer vervolgens **Opslaan** onder in het rechterdeelvenster.
 
-1. Selecteer **query uitvoeren** om de query nu opnieuw uit te voeren, zodat deze is opgeslagen.
+1. Selecteer **Query uitvoeren** om de opgeslagen query opnieuw uit te voeren.
 
-1. Selecteer op het tabblad **grafieken** een gegevens visualisatie. Selecteer vervolgens **vastmaken aan dash board**.
+1. Selecteer een gegevensvisualisatie op het tabblad **Grafieken**. Selecteer vervolgens **Vastmaken aan dashboard**.
 
-1. Selecteer de portal melding die wordt weer gegeven of selecteer **dash board** in het linkerdeel venster.
+1. Selecteer de portalmelding die wordt weergegeven of selecteer **Dashboard** in het linkerdeelvenster.
 
-De query is nu beschikbaar op uw dash board met de titel van de tegel die overeenkomt met de naam van de query. Als de query niet is opgeslagen toen deze werd vastgemaakt, wordt in plaats daarvan ' query 1 ' genoemd.
+De query is nu beschikbaar op uw dashboard, waarbij de titel van de tegel overeenkomt met de naam van de query. Als de query niet is opgeslagen bij het vastmaken, heeft deze de naam 'Query 1'.
 
-De query en de resulterende gegevens visualisatie worden telkens uitgevoerd en bijgewerkt wanneer het dash board wordt geladen, waardoor realtime en dynamische inzichten in uw Azure-omgeving rechtstreeks in uw werk stroom worden geboden.
-
-> [!NOTE]
-> Query's die resulteren in een lijst kunnen ook worden vastgemaakt aan het dash board. De functie is niet beperkt tot gegevens visualisaties van query's.
-
-## <a name="import-example-resource-graph-explorer-dashboards"></a>Voor beeld van resource Graph Explorer-Dash boards importeren
-
-Als u voor beelden van resource Graph-query's en hoe resource Graph Explorer kan worden gebruikt om uw Azure Portal werk stroom te verbeteren, kunt u deze voorbeeld dashboards uitproberen.
-
-- [Resource grafiek Verkenner-voorbeeld dashboard #1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
-
-  [![Voorbeeld afbeelding voor voorbeeld dashboard #1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
-
-- [Resource grafiek Verkenner-voorbeeld Dashboard #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
-
-  [![Voorbeeld afbeelding voor voorbeeld Dashboard #2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+De query en de resulterende gegevensvisualisatie worden telkens uitgevoerd en bijgewerkt wanneer het dashboard wordt geladen, waardoor rechtstreeks in uw werkstroom realtime en dynamische inzichten in uw Azure-omgeving worden geboden.
 
 > [!NOTE]
-> Het aantal en de grafieken in het bovenstaande voor beeld van Dashboard afbeeldingen zijn afhankelijk van uw Azure-omgeving.
+> Ook query's waarmee een lijst als resultaat wordt weergegeven, kunnen worden vastgemaakt aan het dashboard. De functie is niet beperkt tot gegevensvisualisaties van query's.
 
-1. Selecteer en down load het voorbeeld dashboard dat u wilt evalueren.
+## <a name="import-example-resource-graph-explorer-dashboards"></a>Voorbeelden van Resource Graph Explorer-dashboards importeren
 
-1. Selecteer in Azure Portal **dash board** in het linkerdeel venster.
+Als u voorbeelden van Resource Graph-query's wilt bekijken of als u wilt weten hoe Resource Graph Explorer kan worden gebruikt om uw werkstroom in de Azure-portal te verbeteren, kunt u deze voorbeelddashboards uitproberen.
 
-1. Selecteer **uploaden**, zoek naar het gedownloade voorbeeld dashboard bestand en selecteer dit. Selecteer vervolgens **openen**.
+- [Resource Graph Explorer-voorbeelddashboard 1](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-1/resourcegraphexplorer-sample-1.json)
 
-Het geïmporteerde dash board wordt automatisch weer gegeven. Omdat deze nu aanwezig is in uw Azure Portal, kunt u naar behoefte verkennen en wijzigingen aanbrengen of nieuwe Dash boards maken op basis van het voor beeld om te delen met uw teams. Zie [Dash boards maken en delen in de Azure Portal](../../azure-portal/azure-portal-dashboards.md)voor meer informatie over het werken met Dash boards.
+  [![Voorbeeldafbeelding van voorbeelddashboard 1](./media/arge-sample1-small.png)](./media/arge-sample1-large.png#lightbox)
+
+- [Resource Graph Explorer-voorbeelddashboard 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
+
+  [![Voorbeeldafbeelding van voorbeelddashboard 2](./media/arge-sample2-small.png)](./media/arge-sample2-large.png#lightbox)
+
+> [!NOTE]
+> De aantallen en grafieken in de bovenstaande schermafbeeldingen van de voorbeelddashboards kunnen per Azure-omgeving verschillen.
+
+1. Selecteer en download het voorbeelddashboard dat u wilt evalueren.
+
+1. Selecteer **Dashboard** in het linkerdeelvenster van de Azure-portal.
+
+1. Selecteer **Uploaden** en zoek en selecteer het gedownloade voorbeelddashboardbestand. Selecteer vervolgens **Openen**.
+
+Het geïmporteerde dashboard wordt automatisch weergegeven. Omdat het dashboard nu bestaat in uw Azure-portal, kunt u het naar behoefte verkennen en wijzigen of nieuwe dashboards maken op basis van het voorbeeld en deze met uw teams delen. Zie [Dashboards maken en delen in de Azure-portal](../../azure-portal/azure-portal-dashboards.md) voor meer informatie over het werken met dashboards.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de voorbeeld resource grafiek dashboards uit uw Azure Portal omgeving wilt verwijderen, kunt u dit doen door de volgende stappen uit te voeren:
+Als u de Resource Graph-voorbeelddashboards uit uw Azure-portalomgeving wilt verwijderen, kunt u dit doen met de volgende stappen:
 
-1. Selecteer **dash board** in het linkerdeel venster.
+1. Selecteer **Dashboard** in het linkerdeelvenster.
 
-1. Selecteer in de vervolg keuzelijst dash board het voorbeeld Dashboard van de resource die u wilt verwijderen.
+1. Selecteer in de vervolgkeuzelijst Dashboard het Resource Graph-voorbeelddashboard dat u wilt verwijderen.
 
-1. Selecteer **verwijderen** in het menu dash board aan de bovenkant van het dash board en selecteer **OK** om te bevestigen.
+1. Selecteer **Verwijderen** in het menu boven aan het dashboard en selecteer **OK** om de verwijdering te bevestigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u Azure resource Graph Explorer gebruikt om uw eerste query uit te voeren en de voor beelden van Dash boards te bekijken. Ga verder naar de pagina met details van de query taal voor meer informatie over de taal van de resource grafiek.
+In deze quickstart hebt u Azure Resource Graph Explorer gebruikt om uw eerste query uit te voeren en de Resource Graph-dashboardvoorbeelden te bekijken. Ga door naar de pagina met details van de querytaal voor meer informatie over de taal van Resource Graph.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over de query taal](./concepts/query-language.md)
+> [Meer informatie over de querytaal](./concepts/query-language.md)

@@ -1,6 +1,6 @@
 ---
-title: Een lid van de Azure Block Chain-service maken met behulp van Azure Resource Manager-sjabloon
-description: Meer informatie over hoe u een lid van de Azure Block Chain-service maakt met behulp van Azure Resource Manager-sjabloon.
+title: Een Azure Blockchain Service-lid maken met behulp van een Azure Resource Manager-sjabloon
+description: Meer informatie over het maken van een lid van Azure Blockchain Service met behulp van een Azure Resource Manager-sjabloon.
 services: azure-resource-manager
 author: PatAltimore
 ms.service: azure-resource-manager
@@ -8,72 +8,72 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
 ms.date: 04/22/2020
-ms.openlocfilehash: db5cabd82ebfed3b1de7659e4b9450ccee0ff001
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82115292"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310356"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Snelstartgids: een lid van de Azure Block Chain-service maken met behulp van een Azure Resource Manager sjabloon
+# <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Quickstart: Een Azure Blockchain Service-lid maken met behulp van een Azure Resource Manager-sjabloon
 
-In deze Quick Start implementeert u een nieuw Block Chain-lid en consortium in azure Block Chain service met behulp van een Azure Resource Manager sjabloon.
-
-Een lid van de Azure Block Chain-service is een Block Chain-knoop punt in een particulier consortium Block chain-netwerk. Bij het inrichten van een lid kunt u een consortium netwerk maken of eraan toevoegen. U hebt ten minste één lid nodig voor een consortium netwerk. Het aantal Block Chain-leden dat nodig is voor deel nemers is afhankelijk van uw scenario. Consortium deelnemers kunnen een of meer Block Chain leden hebben of ze kunnen leden delen met andere deel nemers. Zie [Azure Block Chain Service consortium](consortium.md)voor meer informatie over consortiums.
+In deze quickstart implementeert u een nieuw blockchain-lid en -consortium in Azure Blockchain Service met behulp van een Azure Resource Manager-sjabloon. Een lid van de Azure Blockchain Service is een blockchain-knooppunt in een privé-blockchain-netwerk van een consortium. Bij het inrichten van een lid kunt u een consortium-netwerk maken of het lid aan een netwerk toevoegen. U hebt voor een consortium-netwerk ten minste één lid nodig. Het aantal blockchain-leden dat deelnemers nodig hebben, is afhankelijk van uw scenario. Consortium-deelnemers kunnen een of meer blockchain-leden hebben of ze kunnen leden delen met andere deelnemers. Zie [Azure Blockchain Service-consortium](consortium.md) voor meer informatie over consortiums.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Geen.
 
-## <a name="review-the-template"></a>De sjabloon controleren
+## <a name="create-a-blockchain-service-member"></a>Een Blockchain Service-lid maken
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/blob/master/201-blockchain-asaservice/)start-sjablonen.
+### <a name="review-the-template"></a>De sjabloon controleren
 
-[!code-json[<Azure Resource Manager template create blockchain member>](~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json)]
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/201-blockchain-asaservice/).
+
+:::code language="json" source="~/quickstart-templates/201-blockchain-asaservice/azuredeploy.json" range="1-84" highlight="52-80":::
 
 Azure-resources die in de sjabloon zijn gedefinieerd:
 
-* [**Micro soft. Block Chain/blockchainMembers**](https://docs.microsoft.com/azure/templates/microsoft.blockchain/blockchainmembers)
+* [**Microsoft.Blockchain/blockchainMembers**](/azure/templates/microsoft.blockchain/blockchainmembers)
 
-## <a name="deploy-the-template"></a>De sjabloon implementeren
+### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer de volgende koppeling om u aan te melden bij Azure en een sjabloon te openen.
+1. Selecteer de volgende koppeling om u aan te melden bij Azure en open een sjabloon.
 
-    [![Implementeren in Azure](./media/create-member-template/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
+    [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-blockchain-asaservice%2Fazuredeploy.json)
 
-1. Geef de instellingen voor het lid van de Azure Block Chain-service op.
+1. Geef de instellingen voor het lid van de Azure Blockchain-service op.
 
     Instelling | Beschrijving
     --------|------------
     Abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep | Maak een nieuwe resource groep of kies een bestaande naam uit uw abonnement.
-    Locatie | Kies een locatie om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bestaan. Beschik bare locaties voor de implementatie zijn *Europa West, Oost, southeastasia, Europa West, northeurope, westus2*en *japaneast*.
-    De naam van lid | Kies een unieke naam voor het lid van de Azure Block Chain-service. De naam van het block Chain-lid mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet tussen 2 en 20 tekens lang zijn.
-    Consortium naam | Voer een unieke naam in. Zie [Azure Block Chain Service consortium](consortium.md)voor meer informatie over consortiums.
-    Wacht woord voor lid | Het wacht woord van het lid-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor uw lid wordt gemaakt. U gebruikt het wacht woord voor het account en het lid van het account voor het beheer van consortiums.
-    SKU-laag | De prijs categorie voor uw nieuwe service. U kunt kiezen uit de lagen **Standard** en **Basic** . Gebruik de *basis* -laag voor het ontwikkelen, testen en testen van concepten. De *Standard* -laag gebruiken voor implementaties van productie cijfers. U moet ook de laag *standaard* gebruiken als u Block Chain Data Manager gebruikt of een groot aantal privé transacties verzendt. Het wijzigen van de prijs categorie tussen basis en standaard nadat het maken van een lid is niet ondersteund.
-    SKU-naam | De knooppunt configuratie en de kosten voor uw nieuwe service.
+    Resourcegroep | U kunt een nieuwe resourcegroepnaam maken of een bestaande naam uit uw abonnement kiezen.
+    Locatie | Kies een locatie om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bevinden. Beschikbare locaties voor de implementatie zijn *westeurope, eastus, southeastasia, westeurope, northeurope, westus2* en *japaneast*.
+    Lidnaam | Kies een unieke naam voor het lid van de Azure Blockchain Service. De blockchain-naam mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet minimaal 2 en maximaal 20 tekens lang zijn.
+    Consortium-naam | Voer een unieke naam in. Zie [Azure Blockchain Service-consortium](consortium.md) voor meer informatie over consortiums.
+    Wachtwoord voor lid | Het wachtwoord van het lidaccount wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor het lid wordt gemaakt. U gebruikt het lidaccount en het wachtwoord van het lidaccount voor het beheer van consortiums.
+    SKU-categorie | De prijscategorie voor de nieuwe service. Kies tussen de categorieën **Standard** en **Basic**. Gebruik de categorie *Basic* voor ontwikkeling, tests en het testen van concepten. Gebruik de categorie *Standard* voor implementaties van productiekwaliteit. U moet de categorie *Standard* ook gebruiken als u Blockchain Data Manager gebruikt of een groot aantal privé transacties verzendt. Wanneer een lid is gemaakt, kan de prijscategorie niet meer worden gewijzigd van Basic in Standard en andersom.
+    SKU-naam | De knooppuntconfiguratie en kosten voor uw nieuwe service.
 
-1. Selecteer **aanschaffen** om de sjabloon te implementeren.
+1. Selecteer **Aankoop** om de sjabloon te implementeren.
 
-  De Azure Portal wordt hier gebruikt om de sjabloon te implementeren. U kunt ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../../azure-resource-manager/templates/deploy-powershell.md).
+  Hier wordt de Azure Portal gebruikt om de sjabloon te implementeren. U kunt ook Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt het block Chain-lid gebruiken dat u hebt gemaakt voor de volgende Snelstartgids of zelf studie. Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de resource groep te verwijderen die u hebt gemaakt voor de Snelstartgids.
+U kunt voor de volgende quickstart of zelfstudie het blockchain-lid gebruiken dat u hebt gemaakt. Als u ze niet meer nodig hebt, kunt u alle resources die u voor de quickstart hebt gemaakt, verwijderen door de resourcegroep te verwijderen.
 
-De resourcegroep verwijderen:
+Zo verwijdert u de resourcegroep:
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-2. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. Ga in de Azure Portal naar **Resourcegroep** in het linkernavigatievenster en selecteer de resourcegroep die u wilt verwijderen.
+2. Selecteer **Resourcegroep verwijderen**. Controleer de verwijdering door de naam van de resourcegroep in te voeren en **Verwijderen** te selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lid van de Azure Block Chain-service en een nieuw consortium geïmplementeerd. Probeer de volgende Snelstartgids om Azure Block Chain Development Kit te gebruiken voor Ethereum om te koppelen aan een lid van de Azure Block Chain-service.
+In deze quickstart hebt u een lid van de Azure Blockchain Service en een nieuw consortium geïmplementeerd. Probeer de volgende quickstart om de Azure Blockchain Development Kit voor Ethereum te gebruiken om een koppeling te maken met een lid van de Azure Block Chain Service.
 
 > [!div class="nextstepaction"]
-> [Visual Studio code gebruiken om verbinding te maken met de Azure Block Chain-Service](connect-vscode.md)
+> [Visual Studio Code gebruiken om verbinding te maken met Azure Blockchain Service](connect-vscode.md)

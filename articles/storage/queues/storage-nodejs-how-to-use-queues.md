@@ -1,6 +1,6 @@
 ---
-title: Azure-wachtrij opslag gebruiken vanuit node. js-Azure Storage
-description: Meer informatie over het gebruik van Azure Queue-service voor het maken en verwijderen van wacht rijen en het invoegen, ophalen en verwijderen van berichten. Voor beelden geschreven in node. js.
+title: Gebruik Azure Queue Storage van Node.js-Azure Storage
+description: Meer informatie over het gebruik van Azure Queue-service voor het maken en verwijderen van wacht rijen en het invoegen, ophalen en verwijderen van berichten. Voor beelden geschreven in Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,30 +9,33 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 878c4a5028b114ad10d19c03c0239c9d7a8bc6ce
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465419"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659573"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van node. js
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Azure Queue-service gebruiken voor het maken en verwijderen van wacht rijen van Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Overzicht
-In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de Microsoft Azure Queue-service. De voor beelden zijn geschreven met behulp van de node. js-API. De gedekte scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen**.
+In deze hand leiding wordt beschreven hoe u algemene scenario's uitvoert met behulp van de Microsoft Azure Queue-service. De voor beelden zijn geschreven met behulp van de Node.js-API. De gedekte scenario's zijn het **Invoegen**, **inspecteren**, **ophalen**en **verwijderen** van wachtrij berichten, en het **maken en verwijderen van wacht rijen**.
+
+> [!IMPORTANT]
+> In dit artikel wordt verwezen naar de oudere versie van de Azure Storage-client bibliotheek voor Java script. Als u aan de slag wilt gaan met de nieuwste versie, raadpleegt u [Quick Start: Azure Queue Storage-client bibliotheek voor Java script](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Een node. js-toepassing maken
-Maak een lege node. js-toepassing. Zie een node. [js-web-app maken in azure app service](../../app-service/app-service-web-get-started-nodejs.md), [een node. js-toepassing bouwen en implementeren in een Azure-Cloud service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) met Windows Power shell of [Visual Studio code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)voor instructies voor het maken van een node. js-toepassing.
+## <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
+Maak een lege Node.js-toepassing. Zie [een Node.js web-app maken in azure app service](../../app-service/app-service-web-get-started-nodejs.md), [een Node.js-toepassing bouwen en implementeren in een Azure-Cloud service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) met Windows Power shell of [Visual Studio code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)voor instructies voor het maken van een Node.js-toepassing.
 
 ## <a name="configure-your-application-to-access-storage"></a>Uw toepassing configureren voor toegang tot opslag
-Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor node. js nodig. Dit omvat een set gebruiks vriendelijke bibliotheken die communiceren met de opslag REST-services.
+Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor Node.js nodig. Dit omvat een aantal gebruiks vriendelijke bibliotheken die communiceren met de opslag REST-services.
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Gebruik node Package Manager (NPM) om het pakket te verkrijgen
 1. Gebruik een opdracht regel interface zoals **Power shell** (Windows,) **Terminal** (Mac,) of **bash** (UNIX), navigeer naar de map waarin u uw voorbeeld toepassing hebt gemaakt.
@@ -54,7 +57,7 @@ Als u Azure Storage wilt gebruiken, hebt u de Azure Storage SDK voor node. js no
 3. U kunt de **ls** -opdracht hand matig uitvoeren om te controleren of er een map met **knooppunt \_ modules** is gemaakt. In deze map vindt u het **azure-storage**-pakket. Dit pakket bevat de bibliotheken die u nodig hebt om toegang te krijgen tot opslag.
 
 ### <a name="import-the-package"></a>Het pakket importeren
-Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan het bovenste **server. js** -bestand van de toepassing waarin u opslag wilt gebruiken:
+Als u Klad blok of een andere tekst editor gebruikt, voegt u het volgende toe aan de bovenkant van het **server.js** -bestand van de toepassing waarin u opslag wilt gebruiken:
 
 ```javascript
 var azure = require('azure-storage');

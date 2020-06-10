@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebbf789d804ab903489c809fc96f1514d6c4f577
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80666872"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658083"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>De gebruikers interface in Azure Active Directory B2C aanpassen
 
@@ -100,7 +100,7 @@ Het belang rijk punt is dat u de inhoud host op een openbaar beschik bare HTTPS-
 
 Ga aan de slag met uw eigen HTML en CSS op uw pagina's voor gebruikers ervaring door deze richt lijnen te volgen.
 
-- Maak goed opgemaakte HTML-inhoud met `<div id="api"></div>` een leeg element ergens in `<body>`de. Dit element markeert waar de Azure AD B2C inhoud wordt ingevoegd. In het volgende voor beeld ziet u een minimale pagina:
+- Maak goed opgemaakte HTML-inhoud met een leeg `<div id="api"></div>` element ergens in de `<body>` . Dit element markeert waar de Azure AD B2C inhoud wordt ingevoegd. In het volgende voor beeld ziet u een minimale pagina:
 
     ```html
     <!DOCTYPE html>
@@ -170,7 +170,7 @@ Als u de pagina's van uw gebruikers stroom wilt aanpassen, moet u eerst de huis 
 Begin met het instellen van het banner logo, de achtergrond afbeelding en de achtergrond kleur in de **bedrijfs huisstijl**.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 1. Selecteer **bedrijfs huisstijl**onder **beheren**.
 1. Volg de stappen in [huis stijl toevoegen aan de aanmeldings pagina van uw organisatie Azure Active Directory](../active-directory/fundamentals/customize-branding.md).
@@ -202,7 +202,7 @@ In dit voor beeld wordt een aangepast banner logo en een achtergrond afbeelding 
 
 ### <a name="use-company-branding-assets-in-custom-html"></a>Bedrijfs huisstijl assets gebruiken in aangepaste HTML
 
-Als u de huismerk activa van uw bedrijf in aangepaste HTML wilt gebruiken, voegt u `<div id="api">` de volgende tags toe buiten de tag:
+Als u de huismerk activa van uw bedrijf in aangepaste HTML wilt gebruiken, voegt u de volgende tags toe buiten de `<div id="api">` Tag:
 
 ```HTML
 <img data-tenant-branding-background="true" />
@@ -213,9 +213,9 @@ De afbeeldings bron wordt vervangen door de achtergrond afbeelding en het logo b
 
 ## <a name="localize-content"></a>Inhoud lokaliseren
 
-U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](user-flow-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de `ui-locales` OpenID Connect Connect-para meter naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
+U kunt uw HTML-inhoud lokaliseren door [taal aanpassing](user-flow-language-customization.md) in te scha kelen in uw Azure AD B2C-Tenant. Als u deze functie inschakelt, kunnen Azure AD B2C de OpenID Connect Connect-para meter `ui_locales` naar uw eind punt door sturen. De inhouds server kan deze para meter gebruiken om taalspecifieke HTML-pagina's op te geven.
 
-Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde `{Culture:RFC5646}`gebruikt.
+Inhoud kan vanaf verschillende locaties worden opgehaald op basis van de land instelling die wordt gebruikt. In het eind punt waarvoor CORS is ingeschakeld, stelt u een mapstructuur in om inhoud voor specifieke talen te hosten. U belt het juiste nummer als u de Joker teken waarde gebruikt `{Culture:RFC5646}` .
 
 Uw aangepaste pagina-URI kan er bijvoorbeeld als volgt uitzien:
 

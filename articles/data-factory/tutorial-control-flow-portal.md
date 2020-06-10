@@ -1,5 +1,5 @@
 ---
-title: Activiteiten in een pijp lijn vertakkingen en koppelen met behulp van Azure Portal
+title: Activiteiten in een pijplijn vertakken en koppelen met behulp van de Microsoft Azure-portal
 description: Leer de stroom van gegevens in Azure Data Factory beheren door activiteiten te vertakken en te koppelen.
 services: data-factory
 author: djpmsft
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0694d6f093864231206ec2282b6d358c57ed1dc4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418743"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022126"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Activiteiten vertakken en koppelen in een Data Factory-pijplijn
 
@@ -24,12 +24,12 @@ ms.locfileid: "81418743"
 
 In deze zelfstudie maakt u een Data Factory-pijplijn die enkele van de stroombeheerfuncties demonstreert. Deze pijplijn voert een eenvoudige kopieerbewerking uit van een container in Azure Blob Storage naar een andere container in hetzelfde opslagaccount. Als de kopieerbewerking is geslaagd, worden de details over de geslaagde kopieerbewerking (zoals de hoeveelheid geschreven gegevens) via de pijplijn verzonden in een e-mail met een succesbericht. Als de kopieerbewerking is mislukt, worden de details over de mislukte kopieerbewerking (zoals de foutmelding) via de pijplijn verzonden in een e-mail met de foutmelding. In de zelfstudie ziet u hoe u parameters kunt doorgeven.
 
-Een overzicht van het scenario: ![overzicht](media/tutorial-control-flow-portal/overview.png)
+Een overzicht van het scenario: ![Overzicht](media/tutorial-control-flow-portal/overview.png)
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn maken met een kopieeractiviteit en een webactiviteit
@@ -42,9 +42,9 @@ In deze zelfstudie wordt Azure Portal gebruikt. U kunt andere methoden gebruiken
 
 ## <a name="prerequisites"></a>Vereisten
 
-* **Azure-abonnement**. Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
-* **Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [een opslag account maken](../storage/common/storage-account-create.md) voor de stappen om er een te maken.
-* **Azure SQL database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
+* **Azure-abonnement**. Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+* **Een Azure Storage-account**. U gebruikt de blob-opslag als **bron**-gegevensopslag. Als u geen Azure-opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken.
+* **Azure SQL-database**. U gebruikt de database als **sink**-gegevensopslag. Als u geen Azure SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../azure-sql/database/single-database-create-quickstart.md) om een database te maken.
 
 ### <a name="create-blob-table"></a>Blobtabel maken
 
@@ -129,32 +129,32 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Start de webbrowser **Microsoft Edge** of **Google Chrome**. Op dit moment wordt de Data Factory-gebruikersinterface alleen ondersteund in de webbrowsers Microsoft Edge en Google Chrome.
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**:
+1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
 
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. Voer op de blade **New data factory****ADFTutorialDataFactory** in bij **Name**.
+2. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in als **naam**.
 
-     ![Pagina Nieuwe gegevensfactory](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
+     ![De pagina Nieuwe data factory](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   De naam van de Azure-data factory moet **wereld wijd uniek**zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+   De naam van de Azure-gegevensfactory moet **wereldwijd uniek** zijn. Als u het volgende foutbericht krijgt, wijzigt u de naam van de gegevensfactory (bijvoorbeeld uwnaamADFTutorialDataFactory) en probeert u het opnieuw. Zie het artikel [Data factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Selecteer het Azure-**abonnement** waarin u de gegevensfactory wilt maken.
 4. Voer een van de volgende stappen uit voor de **Resourcegroep**:
 
-      - Selecteer **bestaande gebruiken**en selecteer een bestaande resource groep in de vervolg keuzelijst.
-      - Selecteer **nieuwe maken**en voer de naam van een resource groep in.   
+      - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
+      - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.   
          
         Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
 4. Selecteer **V2** als de **versie**.
 5. Selecteer de **locatie** voor de gegevensfactory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevensopslagexemplaren (Azure Storage, Azure SQL Database, enzovoort) en berekeningen (HDInsight, enzovoort) die worden gebruikt in Data Factory, kunnen zich in andere regio's bevinden.
 6. Selecteer **Vastmaken aan dashboard**.     
-7. Klik op **maken**.      
-8. Op het dash board ziet u de volgende tegel met de status: **Data Factory implementeren**.
+7. Klik op **Create**.      
+8. Op het dashboard ziet u de volgende tegel met de status: **Gegevensfactory implementeren**.
 
     ![tegel met de status 'gegevensfactory implementeren'](media/tutorial-control-flow-portal/deploying-data-factory.png)
-9. Wanneer het maken is voltooid, ziet u de pagina **Data Factory** zoals in de afbeelding wordt weergegeven.
+9. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
 
    ![Startpagina van de gegevensfactory](./media/tutorial-control-flow-portal/data-factory-home-page.png)
 10. Klik op de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
@@ -175,7 +175,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 
     - **sourceBlobContainer** - parameter in de pijplijn die wordt gebruikt voor de bron-blob-gegevensset.
     - **sinkBlobContainer** - parameter in de pijplijn die wordt gebruikt voor de sink-blob-gegevensset
-    - **ontvanger** : deze para meter wordt gebruikt door de twee webactiviteiten in de pijp lijn die e-mail berichten over geslaagde of mislukte verzen ding naar de ontvanger hebben waarvan het e-mail adres is opgegeven met deze para meter.
+    - **ontvanger** - deze parameter wordt gebruikt voor de twee webactiviteiten in de pijplijn waarmee een e-mail met een succesbericht of foutmelding wordt verzonden naar de ontvanger die met deze parameter wordt gespecificeerd.
 
    ![Menu Nieuwe pijplijn](./media/tutorial-control-flow-portal/pipeline-parameters.png)
 4. Vouw in de **Activiteiten**-werkset de optie **Gegevensstroom** uit. Gebruik vervolgens slepen-en-neerzetten om de **kopieeractiviteit** te verplaatsen naar het ontwerpoppervlak voor pijplijnen.
@@ -184,7 +184,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 5. Ga in het venster **Eigenschappen** voor de **kopieeractiviteit** onderaan naar het tabblad **Bron** en klik op **+ Nieuw**. In deze stap maakt u een brongegevensset voor de kopieeractiviteit.
 
    ![Brongegevensset](./media/tutorial-control-flow-portal/new-source-dataset-button.png)
-6. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure Blob-opslag** en klik op **Voltooien**.
+6. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure Blob Storage** en klik op **Voltooien**.
 
    ![Azure Blob Storage selecteren](./media/tutorial-control-flow-portal/select-azure-blob-storage.png)
 7. U ziet een nieuw **tabblad** met de naam **AzureBlob1**. Wijzig de naam van de gegevensset in **SourceBlobDataset**.
@@ -195,7 +195,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
    ![Gegevenssetverbinding - nieuwe gekoppelde service](./media/tutorial-control-flow-portal/dataset-connection-new-button.png)
 9. Voer in het venster **Nieuwe gekoppelde service** de volgende stappen uit:
 
-    1. Voer **AzureStorageLinkedService** in bij **Name**.
+    1. Voer **AzureStorageLinkedService** in als **Naam**.
     2. Selecteer uw Azure-opslagaccount als **Naam van opslagaccount**.
     3. Klik op **Opslaan**.
 
@@ -209,7 +209,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 13. Ga in het venster Eigenschappen naar het tabblad **Sink** en klik op **+ Nieuw** voor **Sink-gegevensset**. In deze stap maakt u een sink-gegevensset voor de kopieeractiviteit. Dit doet u op dezelfde manier als waarop u de brongegevensset hebt gemaakt.
 
     ![Knop Nieuwe sink-gegevensset](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
-14. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure Blob-opslag** en klik op **Voltooien**.
+14. Selecteer in het venster **Nieuwe gegevensset** de optie **Azure Blob Storage** en klik op **Voltooien**.
 15. Voer op de pagina **Algemene instellingen** voor de gegevensset **SinkBlobDataset** in als **Naam**.
 16. Ga naar het tabblad **Verbinding** en voer de volgende stappen uit:
 
@@ -268,7 +268,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
         ```
 
         ![Instellingen voor de tweede webactiviteit](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
-22. Selecteer **kopieeractiviteit** in de pijplijnontwerper en klik op de knop **+->**. Selecteer vervolgens **Fout**.  
+22. Selecteer **kopieeractiviteit** in de pijplijnontwerper en klik op de knop **+->** . Selecteer vervolgens **Fout**.  
 
     ![Instellingen voor de tweede webactiviteit](./media/tutorial-control-flow-portal/select-copy-failure-link.png)
 23. Sleep de **rode** knop naast de kopieeractiviteit naar de tweede webactiviteit **SendFailureEmailActivity**. U kunt de activiteiten verplaatsen, zodat de pijplijn er uitziet zoals in de volgende afbeelding:
@@ -277,7 +277,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 24. Klik in de werkbalk op de knop **Valideren** om de pijplijn te valideren. Sluit het venster met de **uitvoergegevens van de pijplijnvalidatie** door op de knop **>>** te klikken.
 
     ![Pijplijn valideren](./media/tutorial-control-flow-portal/validate-pipeline.png)
-24. Als u entiteiten (gegevenssets, pijplijnen enzovoort) wilt publiceren in de Data Factory-service, selecteert u **Alles publiceren**. Wacht tot u het bericht **Publiceren gelukt** ziet.
+24. Als u entiteiten (gegevenssets, pijplijnen enzovoort) wilt publiceren in de Data Factory-service, selecteert u **Alles publiceren**. Wacht tot u het bericht **Gepubliceerd** ziet.
 
     ![Publiceren](./media/tutorial-control-flow-portal/publish-button.png)
 
@@ -332,7 +332,7 @@ In deze stap maakt u een pijplijn met één kopieeractiviteit en twee webactivit
 In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
-> * Een gegevensfactory maken.
+> * Een data factory maken.
 > * Een gekoppelde Azure Storage-service maken
 > * Een Azure Blob-gegevensset maken
 > * Een pijplijn met een kopieeractiviteit en een webactiviteit maken
