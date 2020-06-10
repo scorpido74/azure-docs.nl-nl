@@ -12,35 +12,35 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: f61560b01c2ac7bc4db18c31399fcce1743f4824
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cd06076e18e4c675f4b2eac8082994884ed0dbf5
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653738"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629644"
 ---
-# <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Gegevens kopiëren van en naar een SFTP-server met behulp van Azure Data Factory
+# <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar de SFTP-server met behulp van Azure Data Factory
 
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-sftp-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-sftp-connector.md)
 > * [Huidige versie](connector-sftp.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In dit artikel wordt beschreven hoe u gegevens kopieert van en naar SFTP-server. Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
+In dit artikel wordt beschreven hoe u gegevens kopieert van en naar de SFTP-server (Secure FTP). Lees het [artikel Inleiding](introduction.md)voor meer informatie over Azure Data Factory.
 
 ## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
 
-Deze SFTP-connector wordt ondersteund voor de volgende activiteiten:
+De SFTP-connector wordt ondersteund voor de volgende activiteiten:
 
 - [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
 - [Opzoek activiteit](control-flow-lookup-activity.md)
 - [GetMetadata-activiteit](control-flow-get-metadata-activity.md)
 - [Activiteit verwijderen](delete-activity.md)
 
-Deze SFTP-connector ondersteunt met name:
+Met name de SFTP-connector ondersteunt:
 
-- Kopiëren van bestanden van/naar SFTP met behulp van **basis** -of **SshPublicKey** -verificatie.
-- Kopiëren van bestanden als-is of parseren/genereren van bestanden met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
+- Kopiëren van bestanden van en naar de SFTP-server met behulp van *basis* -of *SshPublicKey* -verificatie.
+- Kopiëren van bestanden als of door bestanden te parseren of te genereren met de [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -54,26 +54,26 @@ De volgende secties bevatten informatie over eigenschappen die worden gebruikt v
 
 ## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
 
-De volgende eigenschappen worden ondersteund voor met SFTP gekoppelde service:
+De volgende eigenschappen worden ondersteund voor de gekoppelde SFTP-service:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **SFTP**. |Ja |
-| host | Naam of IP-adres van de SFTP-server. |Ja |
-| poort | Poort waarop de SFTP-server luistert.<br/>Toegestane waarden zijn: integer, standaard waarde is **22**. |Nee |
-| skipHostKeyValidation | Geef op of de validatie van de host-sleutel moet worden overgeslagen.<br/>Toegestane waarden zijn: **True**, **False** (standaard).  | Nee |
-| hostKeyFingerprint | Geef de vinger afdruk van de host-sleutel op. | Ja als ' skipHostKeyValidation ' is ingesteld op false.  |
-| authenticationType | Geef het verificatie type op.<br/>Toegestane waarden zijn: **Basic**, **SshPublicKey**. Raadpleeg de sectie [basis verificatie](#using-basic-authentication) en [verificatie van open bare SSH-sleutel](#using-ssh-public-key-authentication) voor meer informatie over de eigenschappen en JSON-voor beelden. |Ja |
-| connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. |Nee |
+| type | De eigenschap type moet worden ingesteld op *SFTP*. |Ja |
+| host | De naam of het IP-adres van de SFTP-server. |Ja |
+| poort | De poort waarop de SFTP-server luistert.<br/>De toegestane waarde is een geheel getal en de standaard waarde is *22*. |Nee |
+| skipHostKeyValidation | Geef op of de validatie van de host-sleutel moet worden overgeslagen.<br/>Toegestane waarden zijn *True* en *False* (standaard).  | Nee |
+| hostKeyFingerprint | Geef de vinger afdruk van de host-sleutel op. | Ja, als ' skipHostKeyValidation ' is ingesteld op false.  |
+| authenticationType | Geef het verificatie type op.<br/>Toegestane waarden zijn *Basic* en *SshPublicKey*. Zie de sectie [basis verificatie gebruiken](#use-basic-authentication) voor meer eigenschappen. Zie de sectie [verificatie met open bare SSH-sleutel gebruiken](#use-ssh-public-key-authentication) voor json-voor beelden. |Ja |
+| connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Zie de sectie [vereisten](#prerequisites) voor meer informatie. Als de Integration runtime niet is opgegeven, gebruikt de service de standaard Azure Integration Runtime. |Nee |
 
-### <a name="using-basic-authentication"></a>Basis verificatie gebruiken
+### <a name="use-basic-authentication"></a>Basis verificatie gebruiken
 
-Als u basis verificatie wilt gebruiken, stelt u de eigenschap ' authenticationType ' in op **Basic**en geeft u de volgende eigenschappen op, naast de SFTP-connector algemene versies die zijn geïntroduceerd in de laatste sectie:
+Als u basis verificatie wilt gebruiken, stelt u de eigenschap *authenticationType* in op *Basic*en geeft u de volgende eigenschappen op, naast de algemene eigenschappen van de SFTP-connector die in de voor gaande sectie zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | Gebruiker die toegang heeft tot de SFTP-server. |Ja |
-| wachtwoord | Wacht woord voor de gebruiker (gebruikers naam). Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| userName | De gebruiker die toegang heeft tot de SFTP-server. |Ja |
+| wachtwoord | Het wacht woord voor de gebruiker (gebruikers naam). Markeer dit veld als een SecureString om het veilig op te slaan in uw data factory of [verwijs naar een geheim dat is opgeslagen in een Azure-sleutel kluis](store-credentials-in-key-vault.md). | Ja |
 
 **Voorbeeld:**
 
@@ -96,26 +96,26 @@ Als u basis verificatie wilt gebruiken, stelt u de eigenschap ' authenticationTy
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
 }
 ```
 
-### <a name="using-ssh-public-key-authentication"></a>Verificatie met open bare SSH-sleutel gebruiken
+### <a name="use-ssh-public-key-authentication"></a>Authenticatie met open bare SSH-sleutel gebruiken
 
 Als u verificatie via een open bare SSH-sleutel wilt gebruiken, stelt u de eigenschap authenticationType in als **SshPublicKey**en geeft u de volgende eigenschappen op, naast de SFTP-connector generic die in de laatste sectie zijn geïntroduceerd:
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| userName | Gebruiker die toegang heeft tot de SFTP-server |Ja |
-| privateKeyPath | Geef een absoluut pad op naar het bestand met de persoonlijke sleutel waartoe Integration Runtime toegang heeft. Is alleen van toepassing als het zelf-hostende type Integration Runtime is opgegeven in connectVia. | Geef de `privateKeyPath` or op `privateKeyContent` .  |
-| privateKeyContent | Met base64 gecodeerde SSH-inhoud voor persoonlijke sleutels. De persoonlijke SSH-sleutel moet de OpenSSH-indeling hebben. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Geef de `privateKeyPath` or op `privateKeyContent` . |
-| Wachtzin | Geef de wachtwoordzin/het wacht woord op voor het ontsleutelen van de persoonlijke sleutel als het sleutel bestand wordt beveiligd door een wachtwoordzin. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
+| userName | De gebruiker die toegang heeft tot de SFTP-server. |Ja |
+| privateKeyPath | Geef het absolute pad op naar het bestand met de persoonlijke sleutel waartoe de Integration runtime toegang kan krijgen. Dit geldt alleen wanneer het zelf-hostende type Integration runtime is opgegeven in ' connectVia '. | Geef ofwel `privateKeyPath` of op `privateKeyContent` .  |
+| privateKeyContent | Met base64 gecodeerde SSH-inhoud voor persoonlijke sleutels. De persoonlijke SSH-sleutel moet de OpenSSH-indeling hebben. Markeer dit veld als een SecureString om het veilig op te slaan in uw data factory of [verwijs naar een geheim dat is opgeslagen in een Azure-sleutel kluis](store-credentials-in-key-vault.md). | Geef ofwel `privateKeyPath` of op `privateKeyContent` . |
+| Wachtzin | Geef de wachtwoordzin of het wacht woord op om de persoonlijke sleutel te ontsleutelen als het sleutel bestand wordt beveiligd door een wachtwoordzin. Markeer dit veld als een SecureString om het veilig op te slaan in uw data factory of [verwijs naar een geheim dat is opgeslagen in een Azure-sleutel kluis](store-credentials-in-key-vault.md). | Ja, als het persoonlijke-sleutel bestand is beveiligd door een wachtwoordzin. |
 
 > [!NOTE]
-> SFTP-connector ondersteunt RSA/DSA OpenSSH-sleutel. Zorg ervoor dat de inhoud van het sleutel bestand begint met de persoonlijke sleutel-----BEGIN [RSA/DSA]-----. Als het persoonlijke-sleutel bestand een PPK is, gebruikt u het hulp programma Putty om te converteren van. ppk naar OpenSSH-indeling. 
+> De SFTP-connector ondersteunt een RSA/DSA OpenSSH-sleutel. Zorg ervoor dat de inhoud van het sleutel bestand begint met de persoonlijke sleutel-----BEGIN [RSA/DSA]-----. Als het persoonlijke-sleutel bestand een PPK is, gebruikt u het hulp programma voor het maken van een conversie van PPK naar OpenSSH-indeling. 
 
 **Voor beeld 1: SshPublicKey-verificatie met het bestandspad van de persoonlijke sleutel**
 
@@ -138,7 +138,7 @@ Als u verificatie via een open bare SSH-sleutel wilt gebruiken, stelt u de eigen
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
@@ -169,7 +169,7 @@ Als u verificatie via een open bare SSH-sleutel wilt gebruiken, stelt u de eigen
             }
         },
         "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
+            "referenceName": "<name of integration runtime>",
             "type": "IntegrationRuntimeReference"
         }
     }
@@ -182,13 +182,13 @@ Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een v
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund voor SFTP onder `location` instellingen in gegevensset op basis van indeling:
+De volgende eigenschappen worden ondersteund voor SFTP onder `location` instellingen in de gegevensset op basis van een indeling:
 
 | Eigenschap   | Beschrijving                                                  | Vereist |
 | ---------- | ------------------------------------------------------------ | -------- |
-| type       | De eigenschap type onder `location` in DataSet moet worden ingesteld op **SftpLocation**. | Ja      |
-| folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u de instellingen voor de activiteit bron op. | Nee       |
-| fileName   | De bestands naam onder de opgegeven folderPath. Als u Joker tekens wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de instellingen van de activiteit bron op. | Nee       |
+| type       | De eigenschap *type* onder `location` in DataSet moet worden ingesteld op *SftpLocation*. | Ja      |
+| folderPath | Het pad naar de map. Als u een Joker teken wilt gebruiken om de map te filteren, slaat u deze instelling over en geeft u het pad op in de instellingen van de activiteiten bron. | Nee       |
+| fileName   | De bestands naam onder de opgegeven folderPath. Als u een Joker teken wilt gebruiken om bestanden te filteren, slaat u deze instelling over en geeft u de bestands naam op in de instellingen van de activiteit bron. | Nee       |
 
 **Voorbeeld:**
 
@@ -218,27 +218,27 @@ De volgende eigenschappen worden ondersteund voor SFTP onder `location` instelli
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die door de SFTP-bron worden ondersteund.
+Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. Deze sectie bevat een lijst met eigenschappen die worden ondersteund door de SFTP-bron.
 
 ### <a name="sftp-as-source"></a>SFTP als bron
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` instellingen in op indeling gebaseerde Kopieer Bron:
+De volgende eigenschappen worden ondersteund voor SFTP onder de `storeSettings` instellingen in de op indeling gebaseerde kopie bron:
 
 | Eigenschap                 | Beschrijving                                                  | Vereist                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **SftpReadSettings**. | Ja                                           |
-| ***Zoek de bestanden die moeten worden gekopieerd:*** |  |  |
-| OPTIE 1: statisch pad<br> | Kopiëren uit de opgegeven map of het opgegeven bestandspad in de gegevensset. Als u alle bestanden uit een map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
-| OPTIE 2: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. <br>Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Nee                                            |
-| OPTIE 2: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder de opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Bekijk meer voor beelden in [map-en bestands filter voorbeelden](#folder-and-file-filter-examples). | Ja |
-| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven bestandenset moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren, één bestand per regel dat het relatieve pad is naar het pad dat is geconfigureerd in de gegevensset.<br/>Wanneer u deze optie gebruikt, geeft u geen bestands naam op in DataSet. Meer voor beelden vindt u in [voor beelden van bestands lijsten](#file-list-examples). |Nee |
-| ***Aanvullende instellingen:*** |  | |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Houd er rekening mee dat wanneer recursief is ingesteld op True en de Sink een archief op basis van bestanden is, een lege map of submap niet wordt gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn **True** (standaard) en **Onwaar**.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
-| modifiedDatetimeStart    | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | Nee                                            |
+| type                     | De eigenschap *type* onder `storeSettings` moet worden ingesteld op *SftpReadSettings*. | Ja                                           |
+| ***De te kopiëren bestanden zoeken*** |  |  |
+| OPTIE 1: statisch pad<br> | Kopieer vanuit de map of het bestandspad dat is opgegeven in de gegevensset. Als u alle bestanden uit een map wilt kopiëren, moet u ook opgeven `wildcardFileName` als `*` . |  |
+| OPTIE 2: Joker teken<br>- wildcardFolderPath | Het mappad met Joker tekens om de bron mappen te filteren. <br>Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruiken `^` om te escapen als uw werkelijke mapnaam een Joker teken of escape-teken bevat. <br>Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | Nee                                            |
+| OPTIE 2: Joker teken<br>- wildcardFileName | De naam van het bestand met Joker tekens onder het opgegeven folderPath/wildcardFolderPath voor het filteren van bron bestanden. <br>Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruiken `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat.  Zie voor [beelden van mappen en bestanden](#folder-and-file-filter-examples)voor meer voor beelden. | Ja |
+| OPTIE 3: een lijst met bestanden<br>- fileListPath | Hiermee wordt aangegeven dat een opgegeven set bestanden moet worden gekopieerd. Wijs naar een tekst bestand met een lijst met bestanden die u wilt kopiëren (één bestand per regel, met het relatieve pad naar het pad dat in de gegevensset is geconfigureerd).<br/>Wanneer u deze optie gebruikt, geeft u de bestands naam niet op in de gegevensset. Zie voor [beelden van bestands lijst](#file-list-examples)voor meer voor beelden. |Nee |
+| ***Aanvullende instellingen*** |  | |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Als recursief is ingesteld op True en de Sink een archief op basis van bestanden is, wordt een lege map of submap niet gekopieerd of gemaakt bij de sink. <br>Toegestane waarden zijn *True* (standaard) en *Onwaar*.<br>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . |Nee |
+| modifiedDatetimeStart    | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. <br>De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op de UTC-tijd zone in de indeling *2018-12-01T05:00:00Z*. <br> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.<br/>Deze eigenschap is niet van toepassing wanneer u configureert `fileListPath` . | Nee                                            |
 | modifiedDatetimeEnd      | Hetzelfde als hierboven.                                               | Nee                                            |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee                                            |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee                                            |
 
 **Voorbeeld:**
 
@@ -281,22 +281,22 @@ De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` ins
 ]
 ```
 
-### <a name="sftp-as-sink"></a>SFTP als Sink
+### <a name="sftp-as-a-sink"></a>SFTP als een Sink
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` instellingen in op indeling gebaseerde kopie-Sink:
+De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` instellingen in een op indeling gebaseerde kopie-Sink:
 
 | Eigenschap                 | Beschrijving                                                  | Vereist |
 | ------------------------ | ------------------------------------------------------------ | -------- |
-| type                     | De eigenschap type onder `storeSettings` moet worden ingesteld op **SftpWriteSettings**. | Ja      |
+| type                     | De eigenschap *type* onder `storeSettings` moet worden ingesteld op *SftpWriteSettings*. | Ja      |
 | copyBehavior             | Hiermee wordt het Kopieer gedrag gedefinieerd wanneer de bron bestanden van een gegevens archief op basis van een bestand zijn.<br/><br/>Toegestane waarden zijn:<br/><b>-PreserveHierarchy (standaard instelling)</b>: behoudt de bestands hiërarchie in de doelmap. Het relatieve pad van het bron bestand naar de bronmap is identiek aan het relatieve pad van het doel bestand naar de doelmap.<br/><b>-FlattenHierarchy</b>: alle bestanden in de bronmap bevinden zich in het eerste niveau van de doelmap. De doel bestanden hebben automatisch gegenereerde namen. <br/><b>-MergeFiles</b>: alle bestanden van de bronmap worden samengevoegd met één bestand. Als de bestands naam is opgegeven, is de naam van het samengevoegde bestand de opgegeven naam. Anders is het een automatisch gegenereerde bestands naam. | Nee       |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met het gegevens archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee       |
-| useTempFileRename | Geef aan of u een tijdelijk bestand (en) wilt uploaden en de naam wilt wijzigen of rechtstreeks naar de doelmap of bestands locatie wilt schrijven. Standaard schrijft ADF eerst naar tijdelijke bestanden en vervolgens wordt de naam van het bestand gewijzigd bij het uploaden van de upload, ten opzichte van 1) voor komen dat conflicten worden geschreven als gevolg van een beschadigd bestand als u ander proces schrijft naar hetzelfde bestand en 2) ervoor moet zorgen dat de oorspronkelijke versie van het bestand bestaat tijdens de hele overdracht. Als de naam van de SFTP-server niet wordt ondersteund, schakelt u deze optie uit en zorgt u ervoor dat u geen gelijktijdige schrijf bewerkingen naar het doel bestand hebt. Zie de tip voor probleem oplossing onder deze tabel. | Nee. De standaard waarde is True. |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met het opslag archief kan worden verbonden. Geef alleen een waarde op als u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee       |
+| useTempFileRename | Geef aan of u wilt uploaden naar tijdelijke bestanden en wijzig de naam ervan, of rechtstreeks naar de doelmap of bestands locatie. Standaard worden Azure Data Factory eerst naar tijdelijke bestanden geschreven en wordt de naam ervan gewijzigd wanneer het uploaden is voltooid. Met deze reeks kunt u (1) conflicten voor komen die kunnen leiden tot een beschadigd bestand als u andere processen naar hetzelfde bestand schrijft, en (2) ervoor te zorgen dat de oorspronkelijke versie van het bestand bestaat tijdens de overdracht. Als uw SFTP-server geen bewerking voor naamswijziging ondersteunt, schakelt u deze optie uit en zorgt u ervoor dat u geen gelijktijdige schrijf bewerkingen naar het doel bestand hebt. Zie de tip voor probleem oplossing aan het einde van deze tabel voor meer informatie. | Nee. De standaard waarde is *True*. |
 | operationTimeout | De wacht tijd voordat elke schrijf aanvraag naar een SFTP-server verkeert. De standaard waarde is 60 minuten (01:00:00).|Nee |
 
 >[!TIP]
->Als u de fout melding ' UserErrorSftpPathNotFound ', ' UserErrorSftpPermissionDenied ' of ' SftpOperationFail ' tijdens het schrijven van gegevens naar SFTP raakt, en de door u gebruikt SFTP-gebruiker beschikt over de juiste machtiging, controleert u of de SFTP-server de bewerking bestands naam wijzigen niet ondersteunt, schakelt u de optie upload with Temp file ( `useTempFileRename` ) uit en probeert u het opnieuw. Meer informatie over deze eigenschap vindt u in de bovenstaande tabel. Als u een zelf-hostend Integration Runtime gebruikt voor kopiëren, moet u ervoor zorgen dat u versie 4,6 of hoger gebruikt.
+>Als de fout ' UserErrorSftpPathNotFound ', ' UserErrorSftpPermissionDenied ' of ' SftpOperationFail ' wordt weer gegeven wanneer u gegevens naar SFTP schrijft en de SFTP-gebruiker die u gebruikt beschikt over de juiste machtigingen, controleert u of de SFTP-server de bewerking bestands naam *wijzigen al werkt* . Als dat niet het geval is, schakelt u de optie **Upload with Temp file** ( `useTempFileRename` ) uit en probeert u het opnieuw. Zie de voor gaande tabel voor meer informatie over deze eigenschap. Als u een zelf-hostende Integration runtime voor de Kopieer activiteit gebruikt, zorg er dan voor dat u versie 4,6 of hoger gebruikt.
 
 **Voorbeeld:**
 
@@ -335,59 +335,57 @@ De volgende eigenschappen worden ondersteund voor SFTP onder `storeSettings` ins
 
 ### <a name="folder-and-file-filter-examples"></a>Voor beelden van map-en bestands filter
 
-In deze sectie wordt het resulterende gedrag van het mappad en de bestands naam met Joker teken filters beschreven.
+In deze sectie wordt beschreven wat het gedrag is van het gebruik van Joker filters met mappaden en bestands namen.
 
 | folderPath | fileName | recursieve | De structuur van de bronmap en het filter resultaat ( **vetgedrukte** bestanden worden opgehaald)|
 |:--- |:--- |:--- |:--- |
-| `Folder*` | (leeg, standaard instelling gebruiken) | onjuist | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand2. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. CSV<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
-| `Folder*` | (leeg, standaard instelling gebruiken) | waar | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand2. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
-| `Folder*` | `*.csv` | onjuist | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. CSV<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
-| `Folder*` | `*.csv` | waar | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
+| `Folder*` | (leeg, standaard instelling gebruiken) | false | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand2. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. CSV<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
+| `Folder*` | (leeg, standaard instelling gebruiken) | true | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand2. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File4. json**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
+| `Folder*` | `*.csv` | false | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3. CSV<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. CSV<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
+| `Folder*` | `*.csv` | true | Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6. CSV |
 
 ### <a name="file-list-examples"></a>Voor beelden van bestands lijst
 
-In deze sectie wordt het resulterende gedrag van het gebruik van het pad naar een bestands lijst in de bron van de Kopieer activiteit beschreven.
+In deze tabel wordt het gedrag beschreven dat het gebruik van het pad naar een bestands lijst in de bron van de Kopieer activiteit oplevert. Hierbij wordt ervan uitgegaan dat u de volgende structuur van de bronmap hebt en u de bestanden wilt kopiëren die vetgedrukt zijn:
 
-Ervan uitgaande dat u de volgende structuur van de bronmap hebt en de bestanden vet wilt kopiëren:
-
-| Voorbeeld bron structuur                                      | Inhoud in FileListToCopy. txt                             | ADF-configuratie                                            |
+| Voorbeeld bron structuur                                      | Inhoud in FileListToCopy. txt                             | Azure Data Factory configuratie                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
-| basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metagegevensarchiefmethode<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | Bestand1. CSV<br>Subfolder1/File3. CSV<br>Subfolder1/File5. CSV | **In gegevensset:**<br>-Mappad:`root/FolderA`<br><br>**Bron van Kopieer activiteit:**<br>-Pad naar bestands lijst:`root/Metadata/FileListToCopy.txt` <br><br>Het pad naar de bestands lijst verwijst naar een tekst bestand in hetzelfde gegevens archief dat een lijst bevat met bestanden die u wilt kopiëren, één bestand per regel met het relatieve pad naar het pad dat is geconfigureerd in de gegevensset. |
+| basis<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mapa<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Bestand1. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bestand2. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. CSV**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metagegevensarchiefmethode<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | Bestand1. CSV<br>Subfolder1/File3. CSV<br>Subfolder1/File5. CSV | **In de gegevensset:**<br>-Mappad:`root/FolderA`<br><br>**In de bron van de Kopieer activiteit:**<br>-Pad naar bestands lijst:`root/Metadata/FileListToCopy.txt` <br><br>Het pad naar de bestands lijst verwijst naar een tekst bestand in hetzelfde gegevens archief dat een lijst bevat met bestanden die u wilt kopiëren (één bestand per regel, met het relatieve pad naar het pad dat in de gegevensset is geconfigureerd). |
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+Voor informatie over eigenschappen van opzoek activiteiten raadpleegt u [activity (opzoek activiteit) in azure Data Factory](control-flow-lookup-activity.md).
 
 ## <a name="getmetadata-activity-properties"></a>Eigenschappen van GetMetadata-activiteit
 
-Als u meer wilt weten over de eigenschappen, controleert u de [GetMetadata-activiteit](control-flow-get-metadata-activity.md) 
+Zie [GetMetadata activity in azure Data Factory](control-flow-get-metadata-activity.md)voor meer informatie over eigenschappen van de GetMetadata-activiteit. 
 
 ## <a name="delete-activity-properties"></a>Eigenschappen van activiteit verwijderen
 
-Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwijderen](delete-activity.md)
+Zie [activiteit verwijderen in azure Data Factory](delete-activity.md)voor meer informatie over de eigenschappen van de activiteit.
 
 ## <a name="legacy-models"></a>Verouderde modellen
 
 >[!NOTE]
->De volgende modellen worden nog steeds ondersteund voor compatibiliteit met eerdere versies. U wordt aangeraden het nieuwe model te gebruiken dat hierboven wordt beschreven en de gebruikers interface van de ADF-ontwerp functie is overgeschakeld op het genereren van het nieuwe model.
+>De volgende modellen worden nog steeds ondersteund voor achterwaartse compatibiliteit. U wordt aangeraden het eerder besproken nieuwe model te gebruiken, omdat de gebruikers interface van Azure Data Factory-ontwerp is overgeschakeld op het genereren van het nieuwe model.
 
 ### <a name="legacy-dataset-model"></a>Verouderd gegevensset-model
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **file share** |Ja |
-| folderPath | Pad naar de map. Het Joker teken filter wordt ondersteund, toegestane joker tekens zijn: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruik `^` om te escapen als uw werkelijke bestands naam Joker teken of escape-teken bevat. <br/><br/>Voor beelden: root folder/submap/, zie voor beelden van [mappen en bestands filters](#folder-and-file-filter-examples)voor meer voor beelden. |Ja |
-| fileName |  De **naam of het Joker teken** voor het bestand (en) onder de opgegeven folderPath. Als u geen waarde opgeeft voor deze eigenschap, wijst de gegevensset naar alle bestanden in de map. <br/><br/>Voor het filter zijn toegestane joker tekens: `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"fileName": "*.csv"`<br/>-Voor beeld 2:`"fileName": "???20180427.txt"`<br/>Gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. |Nee |
-| modifiedDatetimeStart | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat de prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van enorme hoeveel heden bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.| Nee |
-| modifiedDatetimeEnd | Bestanden filteren op basis van het kenmerk: laatst gewijzigd. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het tijds bereik ligt tussen `modifiedDatetimeStart` en `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de notatie "2018-12-01T05:00:00Z". <br/><br/> Houd er rekening mee dat de prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van enorme hoeveel heden bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft datetime-waarde `modifiedDatetimeEnd` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde wordt geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft datetime-waarde `modifiedDatetimeStart` , maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is kleiner is dan de datum/tijd-waarde wordt geselecteerd.| Nee |
-| formaat | Als u bestanden wilt **kopiëren als-zich bevindt** tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie indeling in de gegevensset voor invoer en uitvoer over.<br/><br/>Als u bestanden wilt parseren met een specifieke indeling, worden de volgende typen bestands indelingen ondersteund: **TextFormat**, **JsonFormat**, **Avro Format**, **OrcFormat**, **ParquetFormat**. Stel de eigenschap **type** onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, [Orc-indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nee (alleen voor het scenario binair kopiëren) |
-| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn: **gzip**, **Deflate**, **bzip2**en **ZipDeflate**.<br/>Ondersteunde niveaus zijn: **optimaal** en **snelst**. |Nee |
+| type | De eigenschap *type* van de DataSet moet worden ingesteld op *file share*. |Ja |
+| folderPath | Het pad naar de map. Een Joker teken filter wordt ondersteund. Toegestane joker tekens zijn `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken); gebruiken `^` om te escapen als uw werkelijke bestands naam een Joker teken of escape-teken bevat. <br/><br/>Voor beelden: root folder/submap/, zie voor beelden van [mappen en bestands filters](#folder-and-file-filter-examples)voor meer voor beelden. |Ja |
+| fileName |  De **naam of het Joker teken filter** voor de bestanden onder het opgegeven folderPath. Als u geen waarde opgeeft voor deze eigenschap, wijst de gegevensset naar alle bestanden in de map. <br/><br/>Voor het filter zijn de toegestane joker tekens `*` (komt overeen met nul of meer tekens) en `?` (komt overeen met nul of één teken).<br/>-Voor beeld 1:`"fileName": "*.csv"`<br/>-Voor beeld 2:`"fileName": "???20180427.txt"`<br/>Gebruik `^` om te escapen als uw werkelijke mapnaam Joker teken of escape-teken bevat. |Nee |
+| modifiedDatetimeStart | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de indeling *2018-12-01T05:00:00Z*. <br/><br/> De algehele prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van een groot aantal bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| Nee |
+| modifiedDatetimeEnd | Bestanden worden gefilterd op basis van het kenmerk dat het *laatst is gewijzigd*. De bestanden worden geselecteerd als het tijdstip van de laatste wijziging binnen het bereik van `modifiedDatetimeStart` tot is `modifiedDatetimeEnd` . De tijd wordt toegepast op UTC-tijd zone in de indeling *2018-12-01T05:00:00Z*. <br/><br/> De algehele prestaties van het verplaatsen van gegevens worden beïnvloed door deze instelling in te scha kelen wanneer u bestands filter van een groot aantal bestanden wilt uitvoeren. <br/><br/> De eigenschappen kunnen NULL zijn, wat betekent dat er geen filter voor bestands kenmerken wordt toegepast op de gegevensset.  Wanneer `modifiedDatetimeStart` heeft een datum/tijd `modifiedDatetimeEnd` -waarde, maar null is, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is groter dan of gelijk is aan de datum/tijd-waarde zijn geselecteerd.  Wanneer `modifiedDatetimeEnd` heeft een datum/tijd `modifiedDatetimeStart` -waarde, maar is null, betekent dit dat de bestanden waarvan het kenmerk laatst gewijzigd is, kleiner zijn dan de waarde voor datum/tijd.| Nee |
+| formaat | Als u bestanden wilt kopiëren als zich bevindt tussen archieven op basis van bestanden (binaire kopie), slaat u de sectie opmaak over in de gegevensset voor invoer en uitvoer.<br/><br/>Als u bestanden wilt parseren met een specifieke indeling, worden de volgende typen bestands indelingen ondersteund: *TextFormat*, *JsonFormat*, *Avro Format*, *OrcFormat*en *ParquetFormat*. Stel de eigenschap *type* onder indeling in op een van deze waarden. Zie voor meer informatie secties [tekst indeling](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON-indeling](supported-file-formats-and-compression-codecs-legacy.md#json-format), [Avro](supported-file-formats-and-compression-codecs-legacy.md#avro-format)-indeling, [Orc-indeling](supported-file-formats-and-compression-codecs-legacy.md#orc-format)en Parquet- [indeling](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) . |Nee (alleen voor het scenario binair kopiëren) |
+| compressie | Geef het type en compressie niveau voor de gegevens op. Zie [ondersteunde bestands indelingen en compressie-codecs](supported-file-formats-and-compression-codecs-legacy.md#compression-support)voor meer informatie.<br/>Ondersteunde typen zijn *gzip*, *Deflate*, *bzip2*en *ZipDeflate*.<br/>Ondersteunde niveaus zijn *optimaal* en *snelst*. |Nee |
 
 >[!TIP]
->Als u alle bestanden in een map wilt kopiëren, geeft u alleen **FolderPath** op.<br>Als u één bestand met een bepaalde naam wilt kopiëren, geeft u **FolderPath** op met een map en een **Bestands** naam met een bestand.<br>Als u een subset van bestanden onder een map wilt kopiëren, geeft u **FolderPath** op met een deel van de map en de **Bestands naam** met het Joker teken filter.
+>Als u alle bestanden in een map wilt kopiëren, geeft u alleen *FolderPath* op.<br>Als u één bestand met een opgegeven naam wilt kopiëren, geeft u *FolderPath* op met het deel van de map en de *Bestands* naam van het bestand.<br>Als u een subset van bestanden onder een map wilt kopiëren, geeft u *FolderPath* op met het deel van de map en de *Bestands naam* met het Joker teken filter.
 
 >[!NOTE]
->Als u de eigenschap File filter gebruikt voor het bestand, wordt deze nog steeds ondersteund als-is, terwijl u de nieuwe filter mogelijkheid wilt gebruiken die wordt toegevoegd aan "bestands naam" naar voren.
+>Als u de eigenschap *File* filter gebruikt voor het bestand, wordt deze nog steeds ondersteund als is, maar we raden u aan de nieuwe filter mogelijkheid te gebruiken die vanaf nu is toegevoegd aan de *Bestands naam* .
 
 **Voorbeeld:**
 
@@ -424,9 +422,9 @@ Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwij
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **FileSystemSource** |Ja |
-| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Opmerking Wanneer recursief is ingesteld op True en Sink is op bestanden gebaseerd archief, wordt lege map/submap niet gekopieerd/gemaakt bij sink.<br/>Toegestane waarden zijn: **True** (standaard), **False** | Nee |
-| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig verbinding maakt met opslag archief. Geef alleen op wanneer u de gelijktijdige verbinding met het gegevens archief wilt beperken. | Nee |
+| type | De eigenschap *type* van de bron van de Kopieer activiteit moet zijn ingesteld op *FileSystemSource* |Ja |
+| recursieve | Geeft aan of de gegevens recursief worden gelezen uit de submappen of alleen vanuit de opgegeven map. Als recursief is ingesteld op *True* en de Sink een archief op basis van bestanden is, worden lege mappen en submappen niet gekopieerd of gemaakt bij de sink.<br/>Toegestane waarden zijn *True* (standaard) en *Onwaar* | Nee |
+| maxConcurrentConnections | Het aantal verbindingen dat gelijktijdig met een opslag archief kan worden verbonden. Geef alleen een getal op als u de gelijktijdige verbindingen met het gegevens archief wilt beperken. | Nee |
 
 **Voorbeeld:**
 

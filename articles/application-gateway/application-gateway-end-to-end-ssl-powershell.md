@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/8/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b5d2687ce95ca7db139ae06ab83bc3ecee8cf8a
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648418"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628806"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>End-to-end TLS configureren met behulp van Application Gateway met Power shell
 
@@ -167,7 +167,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    > [!NOTE]
    > De standaard test haalt de open bare sleutel op uit de *standaard* TLS-binding op het IP-adres van de back-end en vergelijkt de waarde van de open bare sleutel die wordt ontvangen voor de open bare-sleutel waarde die u hier opgeeft. 
    > 
-   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat u naar https://127.0.0.1/ de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* -TLS-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag ontvangt op https://127.0.0.1/ de back-endservers, moet u een standaard TLS-binding instellen. Als u dit niet doet, mislukt de test dan en de back-end niet white list.
+   > Als u hostheaders en Servernaamindicatie (SNI) gebruikt op de back-end, is de opgehaalde open bare sleutel mogelijk niet de beoogde site waarnaar verkeer loopt. Als u twijfel achtig bent, gaat u naar https://127.0.0.1/ de back-endservers om te bevestigen welk certificaat wordt gebruikt voor de *standaard* -TLS-binding. Gebruik de open bare sleutel van die aanvraag in deze sectie. Als u gebruikmaakt van host-headers en SNI voor HTTPS-bindingen en u geen antwoord en certificaat van een hand matige browser aanvraag ontvangt op https://127.0.0.1/ de back-endservers, moet u een standaard TLS-binding instellen. Als u dit niet doet, kan dit mislukken en is de back-end niet toegestaan.
    
    Zie [overzicht van TLS-beëindiging en end-to-end-TLS met Application Gateway](ssl-overview.md)voor meer informatie over SNI in Application Gateway.
 
@@ -176,7 +176,7 @@ Alle configuratie-items worden ingesteld voordat u de toepassings gateway maakt.
    ```
 
    > [!NOTE]
-   > Het certificaat dat u in de vorige stap hebt opgegeven, moet de open bare sleutel zijn van het pfx-certificaat dat aanwezig is op de back-end. Exporteer het certificaat (niet het basis certificaat) dat is geïnstalleerd op de back-endserver in de indeling claim, bewijs en reden (CER) en gebruik het in deze stap. Deze stap whitelists de back-end met de toepassings gateway.
+   > Het certificaat dat u in de vorige stap hebt opgegeven, moet de open bare sleutel zijn van het pfx-certificaat dat aanwezig is op de back-end. Exporteer het certificaat (niet het basis certificaat) dat is geïnstalleerd op de back-endserver in de indeling claim, bewijs en reden (CER) en gebruik het in deze stap. Met deze stap wordt de back-end met de toepassings gateway toegestaan.
 
    Als u de SKU van Application Gateway v2 gebruikt, maakt u een vertrouwd basis certificaat in plaats van een verificatie certificaat. Zie [overzicht van end-to-end-TLS met Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku)voor meer informatie:
 

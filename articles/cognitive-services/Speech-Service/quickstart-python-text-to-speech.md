@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400820"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607990"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Tekst-naar-spraak converteren met behulp van python
 
@@ -26,7 +27,7 @@ Voor dit artikel is een [Azure Cognitive Services-account](https://docs.microsof
 ## <a name="prerequisites"></a>Vereisten
 
 * Python 2.7.x of 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>of uw favoriete tekst editor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio code <span class="docon docon-navigate-external x-hidden-focus"></span> </a>of uw favoriete tekst editor
 * Een sleutel van een Azure-abonnement voor de speech-service
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
@@ -67,13 +68,13 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-De `subscription_key` is uw unieke sleutel van de Azure Portal. `tts`vraagt de gebruiker om tekst in te voeren die naar spraak wordt geconverteerd. Deze invoer is een letterlijke teken reeks, dus tekens moeten dus niet worden voorafgegaan. `timestr` Hiermee haalt u de huidige tijd op die we gebruiken om uw bestand een naam te gegeven.
+De `subscription_key` is uw unieke sleutel van de Azure Portal. `tts`vraagt de gebruiker om tekst in te voeren die naar spraak wordt geconverteerd. Deze invoer is een letterlijke teken reeks, dus tekens moeten dus niet worden voorafgegaan. `timestr`Hiermee haalt u de huidige tijd op die we gebruiken om uw bestand een naam te gegeven.
 
 ## <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-Voor de REST API tekst naar spraak is een toegangs token voor verificatie vereist. Voor het verkrijgen van een toegangs token is een uitwisseling vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs `issueToken` token met behulp van het eind punt uitgewisseld.
+Voor de REST API tekst naar spraak is een toegangs token voor verificatie vereist. Voor het verkrijgen van een toegangs token is een uitwisseling vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs token met behulp van het eind punt uitgewisseld `issueToken` .
 
-In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio gebruikt, werkt u de waarde voor `fetch_token_url`bij. Zie [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst.
+In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio gebruikt, werkt u de waarde voor bij `fetch_token_url` . Zie [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst.
 
 Kopieer deze code naar de `TextToSpeech` klasse:
 
@@ -92,14 +93,14 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Een aanvraag indienen en het antwoord opslaan
 
-Hier gaat u de aanvraag maken en het antwoord op de spraak actie Opslaan. Eerst moet u de `base_url` en `path`opgeven. In dit voor beeld wordt ervan uitgegaan dat u gebruikmaakt van het eind punt vs West. Als uw resource is geregistreerd in een andere regio, moet u ervoor zorgen dat `base_url`u de hebt bijgewerkt. Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
+Hier gaat u de aanvraag maken en het antwoord op de spraak actie Opslaan. Eerst moet u de `base_url` en opgeven `path` . In dit voor beeld wordt ervan uitgegaan dat u gebruikmaakt van het eind punt vs West. Als uw resource is geregistreerd in een andere regio, moet u ervoor zorgen dat u de hebt bijgewerkt `base_url` . Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
 
 Vervolgens moet u de vereiste headers voor de aanvraag toevoegen. Zorg ervoor dat u bijwerkt `User-Agent` met de naam van uw resource (in de Azure Portal) en stel `X-Microsoft-OutputFormat` deze in op de audio-uitvoer van uw voor keur. Zie [audio-uitvoer](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)voor een volledige lijst met uitvoer indelingen.
 
-Maak vervolgens de aanvraag tekst met behulp van SSML (Speech synthese Markup Language). In dit voor beeld wordt de structuur gedefinieerd en `tts` wordt de invoer gebruikt die u eerder hebt gemaakt.
+Maak vervolgens de aanvraag tekst met behulp van SSML (Speech synthese Markup Language). In dit voor beeld wordt de structuur gedefinieerd en wordt de invoer gebruikt die `tts` u eerder hebt gemaakt.
 
 >[!NOTE]
-> In dit voor beeld `Guy24kRUS` wordt het letter type Voice gebruikt. Zie [taal ondersteuning](language-support.md)voor een volledige lijst van door micro soft geboden stemmen/talen.
+> In dit voor beeld wordt het `Guy24kRUS` letter type Voice gebruikt. Zie [taal ondersteuning](language-support.md)voor een volledige lijst van door micro soft geboden stemmen/talen.
 > Zie [aangepaste spraak lettertypen maken](how-to-customize-voice-font.md)als u geïnteresseerd bent in het maken van een unieke, herken bare spraak voor uw merk.
 
 Ten slotte maakt u een aanvraag voor de service. Als de aanvraag is gelukt en er een 200-status code wordt geretourneerd, wordt het spraak antwoord naar een tijds tempel bestand geschreven.

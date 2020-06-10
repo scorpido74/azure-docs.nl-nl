@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3633a648f551d33fb9cb12021c2c07bbf1a235dc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260135"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610573"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Logboeken voor het oplossen van problemen bij het uploaden van gegevens in Azure Data Box Disk
 
@@ -46,7 +46,7 @@ In elk geval ziet u de fout logboeken en de uitgebreide Logboeken. Selecteer elk
 
 ## <a name="sample-upload-logs"></a>Voor beeld van upload logboeken
 
-Hieronder ziet u een `_verbose.xml` voor beeld van de. In dit geval is de volg orde zonder fouten voltooid.
+Hieronder ziet u een voor beeld van de `_verbose.xml` . In dit geval is de volg orde zonder fouten voltooid.
 
 ```xml
 
@@ -110,13 +110,13 @@ Voor dezelfde bestelling wordt een voor beeld van de `_error.xml` hieronder weer
 </DriveLog>
 ```
 
-Hieronder ziet u een `_error.xml` voor beeld van de volg orde waarin fouten zijn voltooid. 
+Hieronder ziet u een voor beeld van de `_error.xml` volg orde waarin fouten zijn voltooid. 
 
 Het fout bestand in dit geval bevat een `Summary` sectie en een andere sectie die alle fouten op bestands niveau bevat. 
 
-De `Summary` bevat de `ValidationErrors` en `CopyErrors`. In dit geval zijn er 8 bestanden of mappen geüpload naar Azure en zijn er geen validatie fouten. Wanneer de gegevens zijn gekopieerd naar Azure Storage account, zijn vijf bestanden of mappen geüpload. De naam van de resterende drie bestanden of mappen is gewijzigd volgens de naamgevings conventies van Azure container en vervolgens met succes geüpload naar Azure.
+De `Summary` bevat de `ValidationErrors` en `CopyErrors` . In dit geval zijn er 8 bestanden of mappen geüpload naar Azure en zijn er geen validatie fouten. Wanneer de gegevens zijn gekopieerd naar Azure Storage account, zijn vijf bestanden of mappen geüpload. De naam van de resterende drie bestanden of mappen is gewijzigd volgens de naamgevings conventies van Azure container en vervolgens met succes geüpload naar Azure.
 
-De bestands niveau status bevat een `BlobStatus` beschrijving van alle acties die zijn uitgevoerd voor het uploaden van de blobs. In dit geval worden drie containers gewijzigd, omdat de mappen waarnaar de gegevens zijn gekopieerd niet voldoen aan de Azure-naamgevings conventies voor containers. Voor de blobs die in deze containers worden geüpload, zijn de nieuwe container naam, het pad van de BLOB in azure, het oorspronkelijke ongeldige bestandspad en de grootte van de BLOB opgenomen.
+De bestands niveau status bevat `BlobStatus` een beschrijving van alle acties die zijn uitgevoerd voor het uploaden van de blobs. In dit geval worden drie containers gewijzigd, omdat de mappen waarnaar de gegevens zijn gekopieerd niet voldoen aan de Azure-naamgevings conventies voor containers. Voor de blobs die in deze containers worden geüpload, zijn de nieuwe container naam, het pad van de BLOB in azure, het oorspronkelijke ongeldige bestandspad en de grootte van de BLOB opgenomen.
     
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
@@ -168,12 +168,12 @@ De fouten die worden gegenereerd bij het uploaden van de gegevens naar Azure, wo
 |`ManagedDiskCreationTerminalFailure` | Kan niet uploaden als managed disks. De bestanden zijn beschikbaar in het opslag account voor staging als pagina-blobs. U kunt pagina-blobs hand matig converteren naar Managed disks.  |
 |`DiskConversionNotStartedTierInfoMissing` | Omdat het VHD-bestand buiten de mappen van de voorgemaakte laag is gekopieerd, is er geen beheerde schijf gemaakt. Het bestand wordt geüpload als pagina-BLOB naar het staging Storage-account zoals opgegeven tijdens het maken van de order. U kunt deze hand matig converteren naar een beheerde schijf.|
 |`InvalidWorkitem` | Kan de gegevens niet uploaden omdat deze niet voldoet aan de conventies voor Azure-naamgeving en-limieten.|
-|`InvalidPageBlobUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-pb-`voor voegsel.|
-|`InvalidAzureFileUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-af`prefix-.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Geüpload als blok-blobs in een container met `databoxdisk-invalid-md`prefix-.|
-|`InvalidManagedDiskUploadAsPageBlob` |Geüpload als pagina-blobs in een container met `databoxdisk-invalid-md-`voor voegsel. |
-|`MovedToOverflowShare` |Geüploade bestanden naar een nieuwe share omdat de oorspronkelijke share grootte de maximale grootte voor Azure-limiet overschrijdt. De naam van `-2`de nieuwe bestands share bevat de oorspronkelijke naam.   |
-|`MovedToDefaultAzureShare` |Geüploade bestanden die geen deel uitmaken van een map naar een standaard share. De share naam begint met `databox-`. |
+|`InvalidPageBlobUploadAsBlockBlob` | Geüpload als blok-blobs in een container met voor voegsel `databoxdisk-invalid-pb-` .|
+|`InvalidAzureFileUploadAsBlockBlob` | Geüpload als blok-blobs in een container met prefix `databoxdisk-invalid-af` -.|
+|`InvalidManagedDiskUploadAsBlockBlob` | Geüpload als blok-blobs in een container met prefix `databoxdisk-invalid-md` -.|
+|`InvalidManagedDiskUploadAsPageBlob` |Geüpload als pagina-blobs in een container met voor voegsel `databoxdisk-invalid-md-` . |
+|`MovedToOverflowShare` |Geüploade bestanden naar een nieuwe share omdat de oorspronkelijke share grootte de maximale grootte voor Azure-limiet overschrijdt. De naam van de nieuwe bestands share bevat de oorspronkelijke naam `-2` .   |
+|`MovedToDefaultAzureShare` |Geüploade bestanden die geen deel uitmaken van een map naar een standaard share. De share naam begint met `databox-` . |
 |`ContainerRenamed` |De container voor deze bestanden voldoet niet aan Azure-naamgevings conventies en de naam ervan wordt gewijzigd. De nieuwe naam begint met `databox-` en is een achtervoegsel met de SHA1-hash van de oorspronkelijke naam |
 |`ShareRenamed` |De share voor deze bestanden voldoet niet aan de naamgevings conventies van Azure en de naam ervan wordt gewijzigd. De nieuwe naam begint met `databox-` en wordt voorafgegaan door de SHA1-hash van de oorspronkelijke naam. |
 |`BlobRenamed` |Deze bestanden voldoen niet aan Azure-naamgevings regels en hebben een andere naam gekregen. Controleer het `BlobPath` veld voor de nieuwe naam. |

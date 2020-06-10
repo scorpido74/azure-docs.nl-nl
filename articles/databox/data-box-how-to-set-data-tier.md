@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 31178284313ad7dafb094b109a75d4550cabd39c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a68793d893d8eb8de681eb438de39afc212370c9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560368"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608703"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box of Azure Data Box Heavy gebruiken om gegevens te verzenden naar de juiste Azure Storage BLOB-laag
 
@@ -48,7 +48,7 @@ U kunt ook eerst een opslag account maken met het opgegeven kenmerk van de toega
 Zodra de gegevens van Data Box apparaat naar de laag standaard worden geüpload, kunt u de gegevens naar een andere laag verplaatsen. Er zijn twee manieren om deze gegevens te verplaatsen naar een niet-standaard-laag.
 
 - **Levenscyclus beheer voor Azure Blob-opslag** : u kunt een op beleid gebaseerde aanpak gebruiken om gegevens automatisch te trapsgewijs of te laten verlopen aan het einde van de levens cyclus. Ga voor meer informatie naar [beheer van de levens cyclus van Azure Blob-opslag](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts).
-- **Scripts** : u kunt een script methode gebruiken via Azure PowerShell om laag niveau op blobniveau in te scha kelen. U kunt de `SetBlobTier` bewerking aanroepen om de laag in te stellen op de blob.
+- **Scripts** : u kunt een script methode gebruiken via Azure PowerShell om laag niveau op blobniveau in te scha kelen. U kunt de bewerking aanroepen `SetBlobTier` om de laag in te stellen op de blob.
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Azure PowerShell gebruiken om de BLOB-laag in te stellen
 

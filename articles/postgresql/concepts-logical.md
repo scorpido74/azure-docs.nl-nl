@@ -5,41 +5,57 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1213b38f2b67e8fed179cfda4308943808893e1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80522145"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634562"
 ---
 # <a name="logical-decoding"></a>Logische decodering
  
 Met [logische decodering in postgresql](https://www.postgresql.org/docs/current/logicaldecoding.html) kunt u gegevens wijzigingen streamen naar externe gebruikers. Logische decodering wordt populair gebruikt voor het streamen van gebeurtenissen en change data capture scenario's.
 
 Logische decodering maakt gebruik van een uitvoer-invoeg toepassing om het Write-Ahead logboek (WAL) van post gres te converteren naar een lees bare indeling. Azure Database for PostgreSQL biedt twee uitvoer-invoeg toepassingen: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) en [wal2json](https://github.com/eulerto/wal2json).
- 
 
 > [!NOTE]
 > Logische decodering is in open bare preview op Azure Database for PostgreSQL-één server.
 
 
-## <a name="set-up-your-server"></a>Uw server instellen
-Als u logische decodering wilt gebruiken, moet u uw server in staat stellen om de WAL op te slaan en te streamen. 
+## <a name="set-up-your-server"></a>Uw server instellen 
+Logische decodering en het [lezen van replica's](concepts-read-replicas.md) zijn beide afhankelijk van het post gres-logboek (Wal) voor het schrijven van gegevens. Deze twee functies hebben verschillende niveaus van logboek registratie nodig van post gres. Voor logische decodering is een hoger niveau van logboek registratie vereist dan bij het lezen van replica's.
 
-1. Stel Azure. replication_support in `logical` voor het gebruik van de Azure cli. 
+Als u het juiste niveau van logboek registratie wilt configureren, gebruikt u de Azure Replication support-para meter. Ondersteuning voor Azure-replicatie heeft drie instellings opties:
+
+* **Uit** : Hiermee wordt de minste informatie in de wal geplaatst. Deze instelling is niet beschikbaar op de meeste Azure Database for PostgreSQL-servers.  
+* **Replica** : uitgebreidere dan **uit**. Dit is het minimale registratie niveau dat nodig is voor het werken met [replica's](concepts-read-replicas.md) . Deze instelling is de standaard waarde op de meeste servers.
+* **Logisch** -uitgebreidere dan de **replica**. Dit is het minimale registratie niveau voor het werken met logische code ring. Het lezen van replica's werkt ook bij deze instelling.
+
+De server moet opnieuw worden opgestart na het wijzigen van deze para meter. Intern worden met deze para meter de post gres-para meters `wal_level` , `max_replication_slots` en ingesteld `max_wal_senders` .
+
+### <a name="using-azure-cli"></a>Azure CLI gebruiken
+
+1. Stel Azure. replication_support in op `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
-   ```
+   ``` 
 
-   > [!NOTE]
-   > Als u lees replica's gebruikt, is Azure. replication_support zo ingesteld `logical` dat replica's ook kunnen worden uitgevoerd. Als u geen logische decodering meer gebruikt, wijzigt u de instelling `replica`weer in. 
-
-
-2. Start de server opnieuw op om de wijzigingen toe te passen.
+2. Start de server opnieuw op om de wijziging toe te passen.
    ```
    az postgres server restart --resource-group mygroup --name myserver
    ```
+
+### <a name="using-azure-portal"></a>Azure Portal gebruiken
+
+1. Stel ondersteuning voor Azure-replicatie in op **logisch**. Selecteer **Opslaan**.
+
+   ![Azure Database for PostgreSQL-replicatie-ondersteuning van Azure-replicatie](./media/concepts-logical/replication-support.png)
+
+2. Start de server opnieuw op om de wijziging toe te passen door **Ja**te selecteren.
+
+   ![Azure Database for PostgreSQL-replicatie: bevestig opnieuw opstarten](./media/concepts-logical/confirm-restart.png)
+
 
 ## <a name="start-logical-decoding"></a>Logische decodering starten
 
@@ -135,13 +151,13 @@ SELECT * FROM pg_replication_slots;
 ## <a name="how-to-drop-a-slot"></a>Een sleuf verwijderen
 Als u een replicatie sleuf niet actief verbruikt, moet u deze verwijderen.
 
-Een replicatie sleuf verwijderen met de `test_slot` naam SQL:
+Een replicatie sleuf verwijderen met de naam `test_slot` SQL:
 ```SQL
 SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Als u geen logische decodering meer gebruikt, wijzigt u Azure. replication_support `replica` terug `off`naar of. De WAL-gegevens die `logical` worden bewaard door zijn uitgebreider en moeten worden uitgeschakeld wanneer de logische decodering niet wordt gebruikt. 
+> Als u geen logische decodering meer gebruikt, wijzigt u Azure. replication_support terug naar `replica` of `off` . De WAL-gegevens die `logical` worden bewaard door zijn uitgebreider en moeten worden uitgeschakeld wanneer de logische decodering niet wordt gebruikt. 
 
  
 ## <a name="next-steps"></a>Volgende stappen

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0d0e3220d38f9824b9504a0077d6742a62aeb9e8
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204987"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629275"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Verbeterde beveiligde Score (preview) in Azure Security Center
 
@@ -106,7 +106,7 @@ De volgende tabel bevat de beveiligings opties in Azure Security Center. Voor el
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Poorten voor beveiligde beheer (maximale score 8)</p></strong>Met beveiligings aanvallen kunt u toegang krijgen tot een virtuele machine met bedoelings beheer poorten. Aangezien de poorten niet altijd open hoeven te zijn, is een beperkings strategie het verminderen van de bloot stelling aan de poorten met Just-in-time-netwerk toegangs beheer, netwerk beveiligings groepen en poort beheer voor virtuele machines.<br>Omdat veel IT-organisaties geen SSH-communicatie van hun netwerk blok keren, kunnen aanvallers versleutelde tunnels maken waarmee RDP-poorten op geïnfecteerde systemen kunnen communiceren met de opdracht van de aanvaller om servers te beheren. Kwaadwillende personen kunnen het Windows-subsysteem voor extern beheer gebruiken om zich op een later tijdstip in uw omgeving te verplaatsen en gestolen referenties te gebruiken om toegang te krijgen tot andere bronnen in een netwerk.</td>
-    <td class="tg-lboi"; width=55%>-Just-in-time-netwerk toegangs beheer moet worden toegepast op virtuele machines<br>-Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>-Beheer poorten moeten worden gesloten op uw virtuele machines</td>
+    <td class="tg-lboi"; width=55%>-Beheer poorten van virtuele machines moeten worden beveiligd met Just-in-time-netwerk toegangs beheer<br>-Virtuele machines moeten worden gekoppeld aan een netwerk beveiligings groep<br>-Beheer poorten moeten worden gesloten op uw virtuele machines</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Systeem updates Toep assen (maximum score 6)</p></strong>Systeem updates bieden organisaties de mogelijkheid om operationele efficiëntie te hand haven, beveiligings problemen te verminderen en een stabielere omgeving te bieden voor eind gebruikers. Als updates niet worden toegepast, worden niet-opgeloste beveiligings problemen en resultaten in omgevingen beschreven die vatbaar zijn voor aanvallen. Deze beveiligings problemen kunnen worden misbruikt en leiden tot gegevens verlies, gegevens exfiltration, Ransomware en misbruik van bronnen. Voor het implementeren van systeem updates kunt u de <a href="https://docs.microsoft.com/azure/automation/automation-update-management">updatebeheer-oplossing gebruiken om patches en updates</a> voor uw virtuele machines te beheren. Update beheer is het proces van het beheren van de implementatie en het onderhoud van software releases.</td>

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: db4161379c844506b3f50b162979ad6fa312e0bd
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: a9c9afc6e1730e2b370cf3b1ae32393250d83178
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485440"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634792"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Een persoonlijke koppeling voor Azure Database for MySQL maken en beheren met CLI
 
@@ -91,7 +91,7 @@ az network private-endpoint create \
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
     --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMySQL/servers/$Servername" \    
-    --group-ids mysqlServer \  
+    --group-id mysqlServer \  
     --connection-name myConnection  
  ```
 
@@ -175,7 +175,7 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
     | Wachtwoord | Voer een wacht woord in dat is opgegeven tijdens het maken van de MySQL-server. |
     ||
 
-5. Selecteer Verbinding maken.
+5. Selecteer Verbinden.
 
 6. Bladeren door data bases vanuit het menu links.
 

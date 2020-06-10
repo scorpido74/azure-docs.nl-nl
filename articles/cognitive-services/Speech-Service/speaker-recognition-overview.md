@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261784"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635166"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Wat is de Azure Speaker Recognition-service?
 
@@ -27,7 +27,7 @@ Speaker Verification stroomlijnt het proces van het controleren van de identitei
 
 ### <a name="how-does-speaker-verification-work"></a>Hoe werkt Speaker Verification?
 
-![Hoe werkt de luidspreker verificatie](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="Speaker Verification stroom diagram.":::
 
 De luidspreker verificatie kan tekst afhankelijke of tekst onafhankelijk zijn. **Tekst afhankelijke** verificatie betekent dat de sprekers dezelfde wachtwoordzin moeten kiezen voor gebruik tijdens de inschrijvings-en verificatie fases. **Tekst onafhankelijke** verificatie betekent dat sprekers in de alledaagse taal in de registratie-en verificatie zinnen kunnen spreken.
 
@@ -59,4 +59,5 @@ Net als bij alle Cognitive Services resources moeten ontwikkel aars die gebruikm
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
+> * Voltooi het Speaker Recognition [basis-artikel](speaker-recognition-basics.md) voor een uitvoering van veelvoorkomende ontwerp patronen die u in uw toepassingen kunt gebruiken.
 > * Raadpleeg de [video zelf studie](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) voor tekst onafhankelijke luidspreker verificatie.

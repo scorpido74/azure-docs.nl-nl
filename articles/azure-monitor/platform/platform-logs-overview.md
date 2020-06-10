@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c61a7b46a2f1cc6fa518e5001d5e1905946d5e8e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659317"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610080"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Overzicht van Azure platform-logboeken
 Platform logboeken bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. Ze worden automatisch gegenereerd, maar u moet bepaalde platform logboeken configureren om te worden doorgestuurd naar een of meer doelen die moeten worden bewaard. Dit artikel bevat een overzicht van de platform logboeken, inclusief welke informatie ze bieden en hoe u deze kunt configureren voor het verzamelen en analyseren van gegevens.
@@ -44,11 +44,11 @@ Er zijn verschillende opties voor het weer geven en analyseren van de verschille
 ## <a name="destinations"></a>Bestemmingen
 U kunt platform logboeken verzenden naar een of meer van de doelen in de volgende tabel, afhankelijk van uw bewakings vereisten. Configureer doelen voor platform logboeken door [een diagnostische instelling te maken](diagnostic-settings.md).
 
-| Doel | Scenario | Verwijzingen |
+| Doel | Scenario | Referenties |
 |:---|:---|:---|:---|
-| Log Analytics-werkruimte | Analyseer de logboeken met andere bewakings gegevens en gebruik Azure Monitor functies, zoals logboek query's en waarschuwingen. | [Activiteiten logboek en resource logboeken](resource-logs-collect-workspace.md)<br>[Azure activity Directory-logboeken](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Azure Storage | Archiveer de logboeken voor controle, statische analyse of back-up. |[Activiteiten logboek en resource logboeken](archive-diagnostic-logs.md)<br>[Azure activity Directory-logboeken](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Event Hub | De logboeken streamen naar logboek registraties en telemetrie-systemen van derden.  |[Activiteiten logboek en resource logboeken](resource-logs-stream-event-hubs.md)<br>[Azure activity Directory-logboeken](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
+| Log Analytics-werkruimte | Analyseer de logboeken met andere bewakings gegevens en gebruik Azure Monitor functies, zoals logboek query's en waarschuwingen. | [Activiteiten logboek en resource logboeken](resource-logs-collect-workspace.md)<br>[Azure Active Directory logboeken](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure Storage | Archiveer de logboeken voor controle, statische analyse of back-up. |[Activiteiten logboek en resource logboeken](archive-diagnostic-logs.md)<br>[Azure Active Directory logboeken](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Event Hub | De logboeken streamen naar logboek registraties en telemetrie-systemen van derden.  |[Activiteiten logboek en resource logboeken](resource-logs-stream-event-hubs.md)<br>[Azure Active Directory logboeken](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
 
 
 

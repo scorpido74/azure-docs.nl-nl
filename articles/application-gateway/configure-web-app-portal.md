@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ad1e1ae2db5c4b2dfcac0bb08fc73b85054416b
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075166"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628635"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
 
 Omdat app service een multi tenant-service is in plaats van een exclusief gebruik, gebruikt deze host-header in de inkomende aanvraag om de aanvraag om te zetten in het juiste app service-eind punt. Normaal gesp roken is de DNS-naam van de toepassing, die op zijn beurt de DNS-naam die is gekoppeld aan de toepassings gateway voor de app service, afwijkt van de domein naam van de back-end-app service. Daarom is de host-header in de oorspronkelijke aanvraag die wordt ontvangen door de toepassings gateway niet hetzelfde als de hostnaam van de back-end-service. Als gevolg hiervan, tenzij de host-header in de aanvraag van de toepassings gateway naar de back-end is gewijzigd in de hostnaam van de back-end-service, kunnen de back-endservers van meerdere tenants de aanvraag niet omzetten naar het juiste eind punt.
 
-Application Gateway biedt een switch die `Pick host name from backend address` wordt aangeroepen en die de host-header in de aanvraag overschrijft met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end. Deze mogelijkheid biedt ondersteuning voor back-ends met meerdere tenants, zoals Azure app service en API management. 
+Application Gateway biedt een switch die wordt aangeroepen `Pick host name from backend address` en die de host-header in de aanvraag overschrijft met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end. Deze mogelijkheid biedt ondersteuning voor back-ends met meerdere tenants, zoals Azure app service en API management. 
 
 In dit artikel leert u het volgende:
 
@@ -59,13 +59,13 @@ In dit artikel leert u het volgende:
 3. Kies het protocol als HTTP of HTTPS volgens uw use-case. 
 
    > [!NOTE]
-   > Als u HTTPS selecteert, hoeft u geen verificatie certificaat of vertrouwd basis certificaat te uploaden om de app service-back-end te white list omdat app service een vertrouwde Azure-service is.
+   > Als u HTTPS selecteert, hoeft u geen verificatie certificaat of vertrouwd basis certificaat te uploaden om de app service-back-end toe te staan omdat de app service een vertrouwde Azure-service is.
 
-4. Schakel het selectie vakje in voor het **gebruik van app service** . Houd er rekening mee `Create a probe with pick host name from backend address` dat `Pick host name from backend address` de switches automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de host-header in de aanvraag met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end.  
+4. Schakel het selectie vakje in voor het **gebruik van app service** . Houd er rekening mee dat de switches `Create a probe with pick host name from backend address` `Pick host name from backend address` automatisch worden ingeschakeld.`Pick host name from backend address` overschrijft de host-header in de aanvraag met de hostnaam van de back-end wanneer de aanvraag wordt doorgestuurd van de Application Gateway naar de back-end.  
 
-   `Create a probe with pick host name from backend address`maakt automatisch een status test en koppelt deze aan deze HTTP-instelling. U hoeft geen andere Health probe voor deze HTTP-instelling te maken. U kunt controleren of er een nieuwe test met de <HTTP Setting name> <Unique GUID> naam is toegevoegd aan de lijst met status controles en dat deze al de switch `Pick host name from backend http settings enabled`heeft.
+   `Create a probe with pick host name from backend address`maakt automatisch een status test en koppelt deze aan deze HTTP-instelling. U hoeft geen andere Health probe voor deze HTTP-instelling te maken. U kunt controleren of er een nieuwe test met de naam <HTTP Setting name> <Unique GUID> is toegevoegd aan de lijst met status controles en dat deze al de switch heeft `Pick host name from backend http settings enabled` .
 
-   Als u al een of meer HTTP-instellingen hebt die worden gebruikt voor app service en als deze HTTP-instellingen hetzelfde protocol gebruiken als de protocollen die u maakt, wordt in plaats van de `Create a probe with pick host name from backend address` switch een vervolg keuzelijst weer geven om een van de aangepaste tests te selecteren. Dit komt doordat er al een HTTP-instelling met app service bestaat, dus er zou ook een status test met de switch `Pick host name from backend http settings enabled` bestaan. Kies die aangepaste test in de vervolg keuzelijst.
+   Als u al een of meer HTTP-instellingen hebt die worden gebruikt voor app service en als deze HTTP-instellingen hetzelfde protocol gebruiken als de protocollen die u maakt, wordt in plaats van de `Create a probe with pick host name from backend address` Switch een vervolg keuzelijst weer geven om een van de aangepaste tests te selecteren. Dit komt doordat er al een HTTP-instelling met app service bestaat, dus er zou ook een status test met de switch bestaan `Pick host name from backend http settings enabled` . Kies die aangepaste test in de vervolg keuzelijst.
 
 5. Klik op **OK** om de http-instelling te maken.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 271acdb968bf5bbec3632bbc1f6def854196cd8e
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529104"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629338"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Een Premium Azure-bestands share maken
 Premium-bestands shares worden aangeboden op media SSD (Solid-State Disk) en zijn handig voor i/o-intensieve workloads, waaronder hosting data bases en HPC (High-Performance Computing). Premium-bestands shares worden gehost in een speciaal type opslag account, een FileStorage-account genoemd. Premium-bestands shares zijn ontworpen voor hoge prestaties en schaal bare toepassingen op bedrijfs niveau en bieden consistente shares met lage latentie, hoge IOPS en hoge door voer.
@@ -46,6 +46,9 @@ Elk opslagaccount moet behoren tot een Azure-resourcegroep. Een resourcegroep is
 1. Voer vervolgens een naam in voor het opslagaccount. De naam die u kiest, moet uniek zijn binnen Azure. Verder moet de naam 3 tot 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 1. Selecteer een locatie voor uw opslagaccount of gebruik de standaardlocatie.
 1. Selecteer **Premium**voor **prestaties** .
+
+    U moet **Premium** voor **FileStorage** selecteren als beschik bare optie in de vervolg keuzelijst **account soort** .
+
 1. Selecteer **account type** en kies **FileStorage**.
 1. Zorg ervoor dat **replicatie** is ingesteld op de standaard waarde van **lokaal redundante opslag (LRS)**.
 

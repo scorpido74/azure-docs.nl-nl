@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257821"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629376"
 ---
 # <a name="service-updates-in-site-recovery"></a>Service-updates in Site Recovery
 
@@ -48,7 +48,7 @@ Site Recovery waarschuwt u voor verlopen onderdelen (of bijna verlopen) via e-ma
 
 E-mail meldingen worden als volgt verzonden.
 
-**Tegelijk** | **Frequentie**
+**Tijd** | **Frequentie**
 --- | ---
 60 dagen voor het verval van het onderdeel | Eenmaal per twee weken
 Volgende 53 dagen | Eenmaal per week
@@ -90,14 +90,13 @@ In dit scenario wordt u ten zeerste aangeraden [Automatische updates in te scha 
 - Tijdens het inschakelen van het replicatie proces.
 - Door de instellingen voor de extensie-update in de kluis in te stellen.
 
-Als u updates hand matig wilt beheren, gaat u als volgt te werk:
+Als u updates hand matig wilt beheren, kunt u een van de volgende opties kiezen:
 
-1. Klik in de kluis > **gerepliceerde items**op deze melding aan de bovenkant van het scherm: 
+1. Wanneer een nieuwe agent update beschikbaar is, geeft Site Recovery een melding in de kluis aan de bovenkant van de pagina. Klik in de kluis > **gerepliceerde items**op deze melding aan de bovenkant van het scherm: 
     
-    **Er is een nieuwe Site Recovery update voor de replicatie agent beschikbaar. Klik om te installeren->**
+    **Er is een nieuwe Site Recovery update voor de replicatie agent beschikbaar. Klik om te installeren->** <br/><br/>Selecteer de Vm's waarvoor u de update wilt Toep assen en klik vervolgens op **OK**.
 
-4. Selecteer de Vm's waarvoor u de update wilt Toep assen en klik vervolgens op **OK**.
-
+2. Op de pagina overzicht van VM nood herstel vindt u het veld ' agent status ', waarmee ' essentiële upgrade ' wordt weer gegeven als de agent verloopt. Klik erop en volg de volgende instructies om de virtuele machine hand matig bij te werken.
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Herstel na nood geval voor virtuele VMware-machines en fysieke servers naar Azure
 

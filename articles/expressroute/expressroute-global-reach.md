@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7e98f4a401a9fcab12bd7a276c47df67c7936b1d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853412"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636730"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute is een privé-en robuuste manier om uw on-premises netwerken te verbinden met Microsoft Cloud. U hebt toegang tot veel micro soft-Cloud Services, zoals Azure, en Office 365 vanuit uw privé Data Center of uw bedrijfs netwerk. Zo kunt u bijvoorbeeld een filiaal in San Francisco hebben met een ExpressRoute-circuit in Silicon dal en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde plaats. Beide filialen kunnen hoge snelheid hebben voor de verbinding met Azure-resources in VS West en UK-zuid. De filialen kunnen gegevens echter niet rechtstreeks met elkaar uitwisselen. Met andere woorden, 10.0.1.0/24 kan gegevens verzenden naar 10.0.3.0/24 en 10.0.4.0/24, maar niet op 10.0.2.0/24.
@@ -23,7 +23,7 @@ Met **ExpressRoute Global Reach**kunt u ExpressRoute-circuits samen koppelen om 
 
 ![met][2]
 
-## <a name="use-case"></a>Gebruiksvoorbeeld
+## <a name="use-case"></a>Toepassing
 ExpressRoute Global Reach is ontworpen voor een aanvulling op de WAN-implementatie van uw service provider en verbindt uw filialen over de hele wereld. Als uw service provider bijvoorbeeld voornamelijk in de Verenigde Staten werkt en al uw branches in de V.S. is gekoppeld, maar de service provider niet werkt in Japan en Hong Kong, met ExpressRoute Global Reach u met een lokale service provider kunt werken en micro soft uw vertakkingen in de VS verbindt met ExpressRoute en ons wereld wijde netwerk.
 
 ![use-case][3]
@@ -43,6 +43,7 @@ ExpressRoute Global Reach op dit moment wordt momenteel ondersteund op de volgen
 * Nieuw-Zeeland
 * Noorwegen
 * Singapore
+* Zweden
 * Zwitserland
 * Verenigd Koninkrijk
 * Verenigde Staten

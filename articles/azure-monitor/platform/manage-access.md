@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b0106be09ac4c45ada712b333311aedf0402f785
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b6b5e43ed0baed8cd84078809c5eb0fe146b0ecb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432812"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636288"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Toegang tot logboek gegevens en-werk ruimten in Azure Monitor beheren
 
@@ -266,6 +266,18 @@ Als u een rol wilt maken met alleen toegang tot de tabel _Security Baseline Base
     "Microsoft.OperationalInsights/workspaces/read",
     "Microsoft.OperationalInsights/workspaces/query/read",
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+],
+```
+In de bovenstaande voor beelden wordt een white list gedefinieerd van tabellen die zijn toegestaan. In dit voor beeld wordt de Black-definitie weer gegeven wanneer een gebruiker toegang heeft tot alle tabellen, maar de _SecurityAlert_ -tabel:
+
+```
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
+"notActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/SecurityAlert/read"
 ],
 ```
 

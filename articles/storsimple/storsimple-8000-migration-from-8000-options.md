@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4aa492567f3357867a3a3f385e8339ada093e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767052"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608928"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Opties voor het migreren van gegevens uit de StorSimple 8000-serie
 
@@ -40,6 +40,12 @@ Ga naar [Azure file sync StorSimple 8100 en 8600](https://docs.microsoft.com/azu
 StorSimple 5000-7000 series en StorSimple 8000 Series-klanten kunnen ervoor kiezen om te migreren naar Panzura vrijheid NAS om hun gegevens in azure te blijven gebruiken. De oplossing Panzura vrijheid biedt een NAS-oplossing die data centers, kant oren, open bare en persoonlijke Clouds omvat. De oplossing maakt lokale, hybride en in-Cloud gegevens werk stromen mogelijk voor NFS-, SMB-en mobiele clients.
 
 Deze migratie wordt ondersteund door Panzura en klanten kunnen aan de slag gaan door de ondersteuning voor migratie van de [Panzura-website](https://panzura.com/migrate-storsimple-panzura/)aan te vragen.
+
+#### <a name="migrate-to-nasuni"></a>Migreren naar Nasuni
+
+Het is eenvoudig om uw hele StorSimple-omgeving te verplaatsen naar een stabiel, veilig platform voor bestands Services met hoge prestaties en Nasuni. Nasuni biedt de beveiliging en prestaties van on-premises bestands opslag en combineert deze met de schaal baarheid en duurzaamheid van Azure.  Als een toonaangevende Azure Independent Software Vendor (ISV) biedt Nasuni alle hulpprogram ma's die nodig zijn om uw StorSimple-gegevens te verplaatsen naar een modern platform waarmee u uw bestanden op meerdere locaties kunt delen en samen werken.
+
+Ga vandaag nog aan de slag: [Nasuni-website](https://info.nasuni.com/storsimple8000-webinar).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

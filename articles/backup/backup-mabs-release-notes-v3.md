@@ -2,14 +2,14 @@
 title: Release opmerkingen voor Microsoft Azure Backup Server v3
 description: In dit artikel vindt u informatie over bekende problemen en tijdelijke oplossingen voor Microsoft Azure Backup Server v3 (MABS).
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185622"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629200"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Release opmerkingen voor Microsoft Azure Backup Server
 
@@ -71,6 +71,40 @@ In dit artikel vindt u de bekende problemen en tijdelijke oplossingen voor Micro
 
 9. Start de MSDPM-service.
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>Na de installatie van UR1 worden de MABS-rapporten niet bijgewerkt met nieuwe RDL-bestanden
+
+**Beschrijving**: met UR1 is het probleem met de rapport opmaak van MABS opgelost met bijgewerkte RDL-bestanden. De nieuwe RDL-bestanden worden niet automatisch vervangen door bestaande bestanden.
+
+**Tijdelijke oplossing**: Voer de volgende stappen uit om de RDL-bestanden te vervangen:
+
+1. Open SQL Reporting Services Web Portal-URL op de computer MABS.
+1. Op de URL van de webportal is de map map dpmreports aanwezig in de indeling van**`DPMReports_<GUID>`**
+
+    >[!NOTE]
+    >Er is altijd maar één map met deze naamgevings Conventie. Als MABS is bijgewerkt van een vorige versie, kan er ook nog een oudere map zijn, maar u kunt deze niet openen.
+
+    ![Map map dpmreports](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. Selecteer en open de **`DPMReports_<GUID>`** map. De afzonderlijke rapport bestanden worden weer gegeven, zoals hieronder wordt weer gegeven.
+
+    ![Lijst met afzonderlijke rapport bestanden](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. Selecteer de rapport bestanden die niet eindigen met een **rapport**, klik met de rechter muisknop op **optie** en selecteer **beheren**.
+
+    ![Selecteer beheren voor rapport bestanden](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. Selecteer op de pagina nieuw de optie **vervangen** om de bestanden te vervangen door de meest recente rapport bestanden.
+
+    De meest recente rapport bestanden vindt u in het pad`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    Bijvoorbeeld: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![De bestanden vervangen door de meest recente rapport bestanden](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    Nadat de bestanden zijn vervangen, moet u ervoor zorgen dat de **naam** en de **Beschrijving** intact zijn en niet leeg zijn.
+
+1. Nadat de bestanden zijn vervangen, start u de MABS-services opnieuw en gebruikt u de rapport bestanden.
+
 ## <a name="next-steps"></a>Volgende stappen
 
-[Wat is er nieuw in MABS v3](backup-mabs-whats-new-mabs.md)
+[Wat is er nieuw in MABS](backup-mabs-whats-new-mabs.md)

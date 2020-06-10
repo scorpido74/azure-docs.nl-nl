@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ec1b03bf0b3cf95f65013bddbc54e15ab985198e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401019"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607994"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>De lijst met tekst-naar-spraak-stemmen ophalen met behulp van python
 
@@ -26,7 +27,7 @@ Voor dit artikel is een [Azure Cognitive Services-account](https://docs.microsof
 ## <a name="prerequisites"></a>Vereisten
 
 * Python 2.7.x of 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>of uw favoriete tekst editor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio code <span class="docon docon-navigate-external x-hidden-focus"></span> </a>of uw favoriete tekst editor
 * Een sleutel van een Azure-abonnement voor de speech-service
 
 ## <a name="create-a-project-and-import-required-modules"></a>Een project maken en de vereiste modules importeren
@@ -57,9 +58,9 @@ De `subscription_key` is uw unieke sleutel van de Azure Portal.
 
 ## <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-Voor dit eind punt is een toegangs token voor verificatie vereist. Voor het verkrijgen van een toegangs token is een uitwisseling vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs `issueToken` token met behulp van het eind punt uitgewisseld.
+Voor dit eind punt is een toegangs token voor verificatie vereist. Voor het verkrijgen van een toegangs token is een uitwisseling vereist. In dit voor beeld wordt uw abonnements sleutel voor spraak Services voor een toegangs token met behulp van het eind punt uitgewisseld `issueToken` .
 
-In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio gebruikt, werkt u de waarde voor `fetch_token_url`bij. Zie [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst.
+In dit voor beeld wordt ervan uitgegaan dat uw speech service-abonnement zich in de regio vs-West bevindt. Als u een andere regio gebruikt, werkt u de waarde voor bij `fetch_token_url` . Zie [regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)voor een volledige lijst.
 
 Kopieer deze code naar de `GetVoices` klasse:
 
@@ -78,7 +79,7 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Een aanvraag indienen en het antwoord opslaan
 
-Hier gaat u de aanvraag maken en de lijst met geretourneerde stemmen opslaan. Eerst moet u de `base_url` en `path`opgeven. In dit voor beeld wordt ervan uitgegaan dat u gebruikmaakt van het eind punt vs West. Als uw resource is geregistreerd in een andere regio, moet u ervoor zorgen dat `base_url`u de hebt bijgewerkt. Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
+Hier gaat u de aanvraag maken en de lijst met geretourneerde stemmen opslaan. Eerst moet u de `base_url` en opgeven `path` . In dit voor beeld wordt ervan uitgegaan dat u gebruikmaakt van het eind punt vs West. Als uw resource is geregistreerd in een andere regio, moet u ervoor zorgen dat u de hebt bijgewerkt `base_url` . Zie [Speech Service regio's](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)(Engelstalig) voor meer informatie.
 
 Voeg vervolgens de vereiste headers voor de aanvraag toe. Ten slotte maakt u een aanvraag voor de service. Als de aanvraag is gelukt en er een 200-status code wordt geretourneerd, wordt het antwoord naar het bestand geschreven.
 

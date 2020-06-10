@@ -1,0 +1,138 @@
+---
+title: Azure Monitor implementeren
+description: Implementeer Azure Monitor-functies op schaal met behulp van Azure Policy.
+ms.subservice: ''
+ms.topic: conceptual
+ms.date: 06/08/2020
+ms.openlocfilehash: 5da174b374265126df2113f5ccf41397745d39d6
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84632246"
+---
+# <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor op schaal implementeren met behulp van Azure Policy
+Hoewel sommige Azure Monitor functies eenmaal of een beperkt aantal keren worden geconfigureerd, moeten andere worden herhaald voor elke resource die u wilt bewaken. In dit artikel worden methoden beschreven voor het gebruik van Azure Policy om Azure Monitor op schaal te implementeren om ervoor te zorgen dat de bewaking consistent en correct is geconfigureerd voor al uw Azure-resources.
+
+U moet bijvoorbeeld een diagnostische instelling maken voor al uw bestaande Azure-resources en voor elke nieuwe resource die u maakt. U moet ook een agent hebben geïnstalleerd en geconfigureerd telkens wanneer u een virtuele machine maakt. U kunt methoden zoals Power shell of CLI gebruiken om deze acties uit te voeren, omdat deze methoden beschikbaar zijn voor alle functies van Azure Monitor. Met Azure Policy kunt u logica hebben die automatisch de juiste configuratie uitvoert, telkens wanneer u een resource maakt of wijzigt.
+
+
+## <a name="azure-policy"></a>Azure Policy
+In deze sectie vindt u een korte inleiding op [Azure Policy](../../governance/policy/overview.md) waarmee u de organisatie standaarden in uw hele Azure-abonnement of-beheer groep kunt beoordelen en afdwingen met minimale inspanning. Raadpleeg de [documentatie van Azure Policy](../../governance/policy/overview.md) voor volledige informatie.
+
+Met Azure Policy kunt u configuratie vereisten opgeven voor alle resources die worden gemaakt en resources identificeren die niet voldoen aan het beleid, blok keren dat de resources worden gemaakt of de vereiste configuratie toevoegen. Het onderscheppen van aanroepen voor het maken van een nieuwe resource of het wijzigen van een bestaande resource werkt. Het kan worden gereageerd als de aanvraag wordt geweigerd als deze niet overeenkomt met de verwachte eigenschappen in een beleids definitie, het markeren voor niet-naleving of het implementeren van een gerelateerde bron. U kunt bestaande bronnen herstellen met een **deployIfNotExists** of een beleids definitie **wijzigen** .
+
+Azure Policy bestaat uit de objecten in de volgende tabel. Zie [Azure Policy objecten](../../governance/policy/overview.md#azure-policy-objects) voor een gedetailleerde beschrijving van elk.
+
+| Item | Beschrijving |
+|:---|:---|
+| Beleidsdefinitie | Beschrijft de nalevings voorwaarden van de resource en het effect dat moet worden genomen als aan een voor waarde wordt voldaan. Dit kan alle resources van een bepaald type zijn of alleen resources die overeenkomen met bepaalde eigenschappen. Het gevolg kan zijn dat u de resource wilt markeren voor naleving of een gerelateerde resource wilt implementeren. Beleids definities worden geschreven met behulp van JSON zoals beschreven in [Azure Policy definitie structuur](../../governance/policy/concepts/definition-structure.md). Effecten worden beschreven in [inzicht Azure Policy effecten](../../governance/policy/concepts/effects.md).
+| Beleids initiatief | Een groep beleids definities die samen moeten worden toegepast. U kunt bijvoorbeeld een beleids definitie hebben om bron logboeken te verzenden naar een Log Analytics-werk ruimte en een andere om bron logboeken te verzenden naar Event hubs. Maak een initiatief dat beide beleids definities bevat en pas het initiatief toe op resources in plaats van de afzonderlijke beleids definities. Initiatieven worden geschreven met behulp van JSON zoals beschreven in [Azure Policy Initiative-structuur](../../governance/policy/concepts/initiative-definition-structure.md). |
+| Toewijzing | Een beleids definitie of-initiatief wordt pas van kracht nadat het is toegewezen aan een bereik. U kunt bijvoorbeeld een beleid toewijzen aan een resource groep om dit toe te passen op alle resources die zijn gemaakt in die resource, of dit Toep assen op een abonnement om het toe te passen op alle resources in dat abonnement.  Zie [Azure Policy toewijzings structuur](../../governance/policy/concepts/assignment-structure.md)voor meer informatie. |
+
+## <a name="built-in-policy-definitions-for-azure-monitor"></a>Ingebouwde beleidsdefinities voor Azure Monitor
+Azure Policy bevat verschillende vooraf gedefinieerde definities die betrekking hebben op Azure Monitor. U kunt deze beleids definities toewijzen aan uw bestaande abonnement of ze gebruiken als basis voor het maken van uw eigen aangepaste definities. Zie [Azure Policy ingebouwde beleids definities voor Azure monitor](../policy-samples.md)voor een volledige lijst van de ingebouwde politiek in de categorie **bewaking** .
+
+Als u de ingebouwde beleids definities wilt weer geven die betrekking hebben op bewaking, voert u de volgende handelingen uit:
+
+1. Ga naar **Azure Policy** in het Azure Portal.
+2. **Definities**selecteren.
+3. Selecteer bij **type**de optie *ingebouwd* en selecteer bij **categorie**de optie *bewaking*.
+
+  ![Ingebouwde beleids definities](media/deploy-scale/builtin-policies.png)
+
+
+## <a name="diagnostic-settings"></a>Diagnostische instellingen
+[Diagnostische instellingen](../platform/diagnostic-settings.md) verzamelen resource logboeken en metrische gegevens van Azure-resources op meerdere locaties, meestal naar een log Analytics-werk ruimte, waarmee u de gegevens kunt analyseren met [logboek query's](../log-query/log-query-overview.md) en [logboek waarschuwingen](alerts-log.md). Gebruik beleid om automatisch een diagnostische instelling te maken telkens wanneer u een resource maakt.
+
+Elk Azure-resource type heeft een unieke set categorieën die moeten worden weer gegeven in de diagnostische instelling. Daarom vereist elk resource type een afzonderlijke beleids definitie. Sommige resource typen hebben ingebouwde beleids definities die u zonder wijzigingen kunt toewijzen. Voor andere resource typen moet u een aangepaste definitie maken.
+
+### <a name="built-in-policy-definitions-for-azure-monitor"></a>Ingebouwde beleidsdefinities voor Azure Monitor
+Er zijn twee ingebouwde beleids definities voor elk resource type, een om te verzenden naar Log Analytics werk ruimte en een andere naar Event hub. Als u slechts één locatie nodig hebt, wijst u dat beleid toe voor het bron type. Als u beide nodig hebt, wijst u beide beleids definities toe voor de resource.
+
+De volgende afbeelding toont bijvoorbeeld de ingebouwde beleids definities voor Diagnostische instellingen voor Data Lake Analytics.
+
+  ![Ingebouwde beleids definities](media/deploy-scale/builtin-diagnostic-settings.png)
+
+### <a name="custom-policy-definitions"></a>Aangepaste beleids definities
+Voor bron typen die geen ingebouwd beleid hebben, moet u een aangepaste beleids definitie maken. U kunt dit hand matig doen in het Azure Portal door een bestaand ingebouwd beleid te kopiëren en vervolgens te wijzigen voor uw resource type. Het is efficiënter om het beleid te maken met behulp van een script in de PowerShell Gallery.
+
+De script [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) maakt beleids bestanden voor een bepaald bron type dat u kunt installeren met behulp van Power shell of cli. Gebruik de volgende procedure om een aangepaste beleids definitie te maken voor Diagnostische instellingen.
+
+
+1. Zorg ervoor dat [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) is geïnstalleerd.
+2. Installeer het script met de volgende opdracht:
+  
+    ```azurepowershell
+    Install-Script -Name Create-AzDiagPolicy
+    ```
+
+3. Voer het script uit met de para meters om op te geven waarnaar de logboeken moeten worden verzonden. U wordt gevraagd om een abonnement en een resource type op te geven. Als u bijvoorbeeld een beleids definitie wilt maken die naar Log Analytics werk ruimte en Event hub verzendt, gebruikt u de volgende opdracht.
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+4. U kunt ook een abonnement en een resource type opgeven in de opdracht. Gebruik bijvoorbeeld de volgende opdracht om een beleids definitie te maken die wordt verzonden naar Log Analytics werk ruimte en Event hub voor Azure SQL Server-data bases.
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+5. Het script maakt afzonderlijke mappen voor elke beleids definitie, elk met drie bestanden met de naam azurepolicy, JSON, azurepolicy. rules. json, azurepolicy. para meters. json. Als u het beleid hand matig wilt maken in de Azure Portal, kunt u de inhoud van azurepolicy. json kopiëren en plakken omdat hierin de volledige beleids definitie is opgenomen. Gebruik de andere twee bestanden met Power shell of CLI om de beleids definitie te maken op basis van een opdracht regel.
+
+    In de volgende voor beelden ziet u hoe u de beleids definitie kunt installeren vanuit Power shell en CLI. Elk bevat meta gegevens om een **bewakings** categorie op te geven voor het groeperen van de nieuwe beleids definitie met de ingebouwde beleids definities.
+
+      ```azurepowershell
+      New-AzPolicyDefinition -name "Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace" -policy .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json -parameter .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json -mode All -Metadata '{"category":"Monitoring"}'
+      ```
+
+      ```azurecli
+      az policy definition create --name 'deploy-diag-setting-sql-database--workspace' --display-name 'Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace'  --rules 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json' --params 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json' --subscription 'AzureMonitor_Docs' --mode All
+      ```
+
+### <a name="initiative"></a>Initiatieven
+In plaats van een toewijzing voor elke beleids definitie te maken, is een algemene strategie een initiatief te maken dat de beleids definities bevat voor het maken van diagnostische instellingen voor elke Azure-service. Maak een toewijzing tussen het initiatief en een beheer groep, abonnement of resource groep, afhankelijk van hoe u uw omgeving beheert. Deze strategie biedt de volgende voor delen:
+
+- Maak een enkele toewijzing voor het initiatief in plaats van meerdere toewijzingen voor elk resource type. Gebruik hetzelfde initiatief voor meerdere bewakings groepen, abonnementen of resource groepen.
+- Wijzig het initiatief wanneer u een nieuw resource type of doel wilt toevoegen. Uw eerste vereisten zijn bijvoorbeeld het verzenden van gegevens alleen naar een Log Analytics-werk ruimte, maar u kunt later ook Event hub toevoegen. Wijzig het initiatief in plaats van nieuwe toewijzingen te maken.
+
+Zie [een initiatief definitie maken en toewijzen](../../governance/policy/tutorials/create-and-manage.md#create-and-assign-an-initiative-definition) voor meer informatie over het maken van een initiatief. Houd rekening met de volgende aanbevelingen:
+
+- Stel de **categorie** in op **bewaking** om deze te groeperen met gerelateerde ingebouwde en aangepaste beleids definities.
+- In plaats van de gegevens op te geven voor de Log Analytics-werk ruimte en de Event hub voor beleids definities die zijn opgenomen in het initiatief, gebruikt u een para meter common Initiative. Zo kunt u eenvoudig een algemene waarde voor alle beleids definities opgeven en die waarde zo nodig wijzigen.
+
+![Initiatiefdefinitie](media/deploy-scale/initiative-definition.png)
+
+### <a name="assignment"></a>Toewijzing 
+Wijs het initiatief toe aan een Azure-beheer groep,-abonnement of-resource groep, afhankelijk van het bereik van uw resources om te bewaken. Een [beheer groep](../../governance/management-groups/overview.md) is met name handig voor het bereik beleid, met name als uw organisatie meerdere abonnementen heeft.
+
+![Initiatieftoewijzing](media/deploy-scale/initiative-assignment.png)
+
+Door initiatief parameters te gebruiken, kunt u de werk ruimte of enige andere details één keer opgeven voor alle beleids definities in het initiatief. 
+
+![Initiatiefparameters](media/deploy-scale/initiative-parameters.png)
+
+### <a name="remediation"></a>Herstel
+Het initiatief wordt toegepast op elke virtuele machine wanneer deze wordt gemaakt. Met een [herstel taak](../../governance/policy/how-to/remediate-resources.md) worden de beleids definities in het initiatief voor bestaande resources geïmplementeerd. Hierdoor kunt u Diagnostische instellingen maken voor alle resources die al zijn gemaakt. Wanneer u de toewijzing maakt met behulp van de Azure Portal, hebt u de mogelijkheid om op hetzelfde moment een herstel taak te maken. Zie [niet-compatibele resources herstellen met Azure Policy](../../governance/policy/how-to/remediate-resources.md) voor meer informatie over het herstel.
+
+![Initiatief herstellen](media/deploy-scale/initiative-remediation.png)
+
+
+## <a name="azure-monitor-for-vms"></a>Azure Monitor voor virtuele machines
+[Azure monitor voor VM's](../insights/vminsights-overview.md) is het primaire hulp programma in azure monitor voor het bewaken van virtuele machines. Als u Azure Monitor voor VM's inschakelt, worden zowel de Log Analytics agent als de afhankelijkheids agent geïnstalleerd. In plaats van deze taken hand matig uit te voeren, gebruikt u Azure Policy om ervoor te zorgen dat elke virtuele machine is geconfigureerd terwijl u deze maakt.
+
+Azure Monitor voor VM's bevat twee ingebouwde initiatieven met de naam **enable Azure monitor voor VM's** en **Azure monitor voor Virtual Machine Scale sets in te scha kelen**. Deze initiatieven bevatten een reeks beleids definities die vereist zijn voor het installeren van de Log Analytics agent en de afhankelijkheids agent die vereist is voor het inschakelen van Azure Monitor voor VM's. 
+
+In plaats van toewijzingen voor deze initiatieven te maken met behulp van de Azure Policy-interface, bevat Azure Monitor voor VM's een functie waarmee u het aantal virtuele machines in elk bereik kunt controleren om te bepalen of het initiatief is toegepast. U kunt vervolgens de werk ruimte configureren en de vereiste toewijzingen maken met deze interface.
+
+Zie [Azure monitor voor VM's inschakelen met behulp van Azure Policy](../insights/vminsights-enable-at-scale-policy.md)voor meer informatie over dit proces.
+
+![Azure Monitor voor VM's beleid](../platform/media/deploy-scale/vminsights-policy.png)
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Lees meer over [Azure Policy](../../governance/policy/overview.md).
+- Meer informatie over [Diagnostische instellingen](diagnostic-settings.md).
+- Zie de [Northstar Playbook-opslag plaats](https://github.com/Azure/CET-NorthStar) met architectuur-en implementatie richtlijnen voor grootschalige Azure-acceptatie voor ondernemingen.

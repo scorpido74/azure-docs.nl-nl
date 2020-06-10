@@ -2,22 +2,22 @@
 title: SSO-toepassingen voor eenmalige aanmelding-micro soft-identiteits platform | Microsoft Docs
 description: Eenmalige aanmelding (SSO) configureren voor niet-galerie toepassingen in het micro soft Identity platform (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 8c828ab0a3d4f2aff6724967e1467b87df09d09b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758364"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606068"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Eenmalige aanmelding op basis van SAML configureren voor niet-galerie toepassingen
 
@@ -122,9 +122,9 @@ Vanuit Azure AD kunt u het actieve certificaat in base64-of RAW-indeling rechtst
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Stap 4. De toepassing instellen voor gebruik van Azure AD
 
-De sectie ** \< applicationname->instellen** bevat de waarden die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. De vereiste waarden variëren afhankelijk van de toepassing. Zie de SAML-documentatie van de toepassing voor meer informatie. Als u de documentatie wilt vinden, gaat u naar de kop ** \< toepassings naam instellen>** en selecteert u **Stapsgewijze instructies weer geven**. De documentatie wordt weer gegeven op de pagina **aanmelden configureren** . Op deze pagina vindt u instructies voor het invullen van de **aanmeldings-URL**, de **Azure ad-id**en de **afmeldings-URL** -waarden in de kop ** \< toepassings naam instellen>** .
+In de sectie **instellen \<applicationName> ** worden de waarden vermeld die moeten worden geconfigureerd in de toepassing, zodat Azure AD wordt gebruikt als een SAML-ID-provider. De vereiste waarden variëren afhankelijk van de toepassing. Zie de SAML-documentatie van de toepassing voor meer informatie. Als u de documentatie wilt vinden, gaat u naar de kop **instellen \<application name> ** en selecteert u **Stapsgewijze instructies voor weer gave**. De documentatie wordt weer gegeven op de pagina **aanmelden configureren** . Op deze pagina vindt u instructies voor het invullen van de **aanmeldings-URL**, de **Azure ad-id**en de **afmeldings-URL** - ** \<application name> ** waarden in de kop instellen.
 
-1. Schuif omlaag naar de sectie **toepassings groep instellen \<>** . 
+1. Schuif omlaag naar de sectie **instellen \<applicationName> ** . 
    
    ![Stap 4 de toepassing instellen](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

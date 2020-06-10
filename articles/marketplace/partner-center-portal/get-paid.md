@@ -5,13 +5,13 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849022"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636560"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Betalen in de commerciële Marketplace
 
@@ -27,21 +27,6 @@ Wanneer u [zich aanmeldt voor een ontwikkelaars account](https://go.microsoft.co
 De kosten zijn officieel gedefinieerd in de [Microsoft Azure Marketplace Publisher-overeenkomst](https://go.microsoft.com/fwlink/p/?LinkID=699560). Controleer het document altijd als u vragen hebt.
 
 De winkel kosten worden toegepast op alle aanbiedingen die zijn verzameld door de commerciële Marketplace, inclusief invoeg toepassingen.
-
-## <a name="price-tiers"></a>Prijs Categorieën
-
-De prijs categorie die u selecteert, stelt de verkoop prijs in alle landen/regio's in waar u uw aanbieding wilt distribueren. U kunt ook aanvullende prijs functies gebruiken, zoals het kiezen van verschillende prijzen voor verschillende markten.
-
-U kunt uw app gratis aanbieden of u kunt kiezen voor een prijs die klanten moeten betalen om uw aanbieding te verkrijgen. Prijs categorieën beginnen bij. 99 USD, met extra stappen (1,09 USD, 1,19 USD, enzovoort). De toename tussen prijs categorieën neemt toe naarmate de prijs hoger wordt.
-
-> [!NOTE] 
-> Deze prijs categorieën zijn ook van toepassing op alle invoeg toepassingen die u binnen uw aanbieding aanbiedt.
-
-Elke prijs categorie heeft een overeenkomende waarde in elk van de valuta's die worden aangeboden in de Store. We gebruiken deze waarden om u te helpen bij het verkopen van uw aanbieding tegen een vergelijkbaar prijs punt wereld wijd. Als gevolg van wijzigingen in de wisselkoers tarieven, kan het exacte verkoop bedrag echter enigszins variëren van de ene valuta naar de andere.
-
-U hebt ook de mogelijkheid om een prijs voor vrije vorm in te voeren voor uw keuze in de lokale valuta van een specifieke markt. Wanneer u dit doet, wordt de prijs niet aangepast (zelfs als de conversie tarieven veranderen), tenzij u een update met een nieuwe prijs verzendt. 
-
-Houd er rekening mee dat de prijs die u selecteert, mogelijk verkoop of belasting toegevoegde waarde bevat die uw klanten moeten betalen. Zie [belasting Details voor betaalde aanbieding](tax-details-paid-transactions.md)voor meer informatie.
 
 ## <a name="payout-reporting"></a>Betalingsrapportage
 

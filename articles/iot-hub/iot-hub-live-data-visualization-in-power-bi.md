@@ -7,18 +7,18 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 6/06/2019
+ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: f0b909d10790511408e090546fd3359889ea5aca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954628"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634390"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Real-time sensor gegevens visualiseren vanuit Azure IoT Hub met behulp van Power BI
 
-![End-to-end-diagram](./media/iot-hub-live-data-visualization-in-power-bi/1_end-to-end-diagram.png)
+![End-to-end-diagram](./media/iot-hub-live-data-visualization-in-power-bi/end-to-end-diagram.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
@@ -52,7 +52,7 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
 ### <a name="create-a-stream-analytics-job"></a>Een Stream Analytics-taak maken
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource** > maken**Internet of Things** > **Stream Analytics taak**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken**  >  **Internet of Things**  >  **Stream Analytics taak**.
 
 2. Voer de volgende informatie in voor de taak.
 
@@ -62,7 +62,7 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
    **Locatie**: gebruik dezelfde locatie als de resource groep.
 
-   ![Een Stream Analytics-taak maken in azure](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job-azure.png)
+   ![Een Stream Analytics-taak maken in azure](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
 3. Selecteer **Maken**.
 
@@ -70,13 +70,13 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
 1. Open de taak Stream Analytics.
 
-2. Selecteer **invoer**onder **taak topologie**.
+2. Selecteer onder **Taaktopologie** de optie **Invoer**.
 
 3. Selecteer in het deel venster **invoer** de optie **stroom invoer toevoegen**en selecteer vervolgens **IOT hub** in de vervolg keuzelijst. Voer in het deel venster Nieuw invoer de volgende gegevens in:
 
    **Invoer alias**: Voer een unieke alias in voor de invoer.
 
-   **IOT hub van uw abonnement opgeven**: Selecteer dit keuze rondje.
+   **Selecteer IOT hub uit uw abonnement**: Selecteer dit keuze rondje.
 
    **Abonnement**: Selecteer het Azure-abonnement dat u voor deze zelf studie gebruikt.
 
@@ -92,13 +92,13 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
    Vul alle andere velden in op de standaard waarden.
 
-   ![Een invoer toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job-azure.png)
+   ![Een invoer toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-input-to-stream-analytics-job.png)
 
 4. Selecteer **Opslaan**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Een uitvoer aan de Stream Analytics-taak toevoegen
 
-1. Selecteer **uitvoer**onder **taak topologie**.
+1. Selecteer onder **Taaktopologie** de optie **Uitvoer**.
 
 2. Selecteer in het deel venster **uitvoer** de optie **toevoegen** en **Power bi**.
 
@@ -114,29 +114,33 @@ Laten we beginnen met het maken van een Stream Analytics taak. Nadat u de taak h
 
    **Tabel naam**: Voer een tabel naam in.
 
-   ![Een uitvoer toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job-azure.png)
+   **Verificatie modus**: Vul de standaard waarde in.
+
+   ![Een uitvoer toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-output-to-stream-analytics-job.png)
 
 5. Selecteer **Opslaan**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>De query van de Stream Analytics-taak configureren
 
-1. Selecteer **Query** onder **Taaktopologie**.
+1. Selecteer **query**onder **taak topologie**.
 
 2. Vervang `[YourInputAlias]` door de invoeralias van de taak.
 
 3. Vervang `[YourOutputAlias]` door de uitvoeralias van de taak.
 
-   ![Een query toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-query-stream-analytics-job-azure.png)
+   ![Een query toevoegen aan een Stream Analytics-taak in azure](./media/iot-hub-live-data-visualization-in-power-bi/add-query-to-stream-analytics-job.png)
 
-4. Selecteer **Opslaan**.
+4. Selecteer **query opslaan**.
 
 ### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
 
-Selecteer in de taak stream Analytics **overzicht** **en selecteer** > **nu** > **Start**starten. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
+Selecteer in de taak stream Analytics **overzicht** **en selecteer**  >  **nu**starten  >  **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 
-![Een Stream Analytics-taak uitvoeren in azure](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job-azure.png)
+![Een Stream Analytics-taak uitvoeren in azure](./media/iot-hub-live-data-visualization-in-power-bi/run-stream-analytics-job.png)
 
 ## <a name="create-and-publish-a-power-bi-report-to-visualize-the-data"></a>Een Power BI rapport maken en publiceren om de gegevens te visualiseren
+
+De volgende stappen laten zien hoe u een rapport maakt en publiceert met behulp van de Power BI-service. U kunt deze stappen met een bepaalde wijziging volgen, als u het ' nieuwe uiterlijk ' wilt gebruiken in Power BI. Zie [het nieuwe uiterlijk van de Power bi-service](https://docs.microsoft.com/power-bi/consumer/service-new-look)als u meer wilt weten over de verschillen en hoe u in het nieuwe uiterlijk kunt navigeren.
 
 1. Zorg ervoor dat de voorbeeld toepassing wordt uitgevoerd op het apparaat. Als dat niet het geval is, raadpleegt u de zelf studies onder [het instellen van uw apparaat](https://docs.microsoft.com/azure/iot-hub/iot-hub-raspberry-pi-kit-node-get-started).
 
@@ -150,7 +154,7 @@ Selecteer in de taak stream Analytics **overzicht** **en selecteer** > **nu** > 
 
 5. Voor de gegevensset die u hebt gemaakt, selecteert u **rapport toevoegen** (het eerste pictogram rechts van de naam van de gegevensset).
 
-   ![Een micro soft Power BI-rapport maken](./media/iot-hub-live-data-visualization-in-power-bi/start-power-bi.png)
+   ![Een micro soft Power BI-rapport maken](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-create-report.png)
 
 6. Maak een lijndiagram om in realtime de temperatuur gedurende een bepaalde periode weer te geven.
 
@@ -164,9 +168,9 @@ Selecteer in de taak stream Analytics **overzicht** **en selecteer** > **nu** > 
 
       Er wordt een lijndiagram gemaakt. De x-as geeft de datum en tijd in UTC-tijdzone aan. De y-as geeft de temperatuur van de sensor aan.
 
-      ![Een lijn diagram voor de Tempe ratuur toevoegen aan een rapport van micro soft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temp.png)
+      ![Een lijn diagram voor de Tempe ratuur toevoegen aan een rapport van micro soft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-temperature.png)
 
-7. Maak een ander lijndiagram om in realtime de vochtigheid gedurende een bepaalde periode weer te geven. Volg hiervoor de bovenstaande stappen en plaats **EventEnqueuedUtcTime** op de x-as en **vochtigheid** op de y-as.
+7. Maak een ander lijndiagram om in realtime de vochtigheid gedurende een bepaalde periode weer te geven. Als u dit wilt doen, klikt u op een leeg deel van het canvas en voert u dezelfde stappen uit om **EventEnqueuedUtcTime** op de x-as en **vochtigheid** op de y-as te plaatsen.
 
    ![Een lijn diagram voor de vochtigheid toevoegen aan een rapport van micro soft Power BI](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-add-humidity.png)
 
@@ -174,13 +178,20 @@ Selecteer in de taak stream Analytics **overzicht** **en selecteer** > **nu** > 
 
 9. Selecteer **rapporten** in het linkerdeel venster en selecteer vervolgens het rapport dat u zojuist hebt gemaakt.
 
-10. Selecteer **bestand** > **publiceren op Internet**.
+10. Selecteer **bestand**  >  **publiceren op Internet**.
+
+    ![Selecteer publiceren op internet voor het micro soft Power BI-rapport](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-select-publish-to-web.png)
+
+    > [!NOTE]
+    > Als u een melding krijgt dat u contact opneemt met uw beheerder om het maken van code in te scha kelen, moet u mogelijk contact opnemen met de gebruikers. Het maken van code insluiten moet zijn ingeschakeld voordat u deze stap kunt volt ooien.
+    >
+    > ![Neem contact op met de beheerder](./media/iot-hub-live-data-visualization-in-power-bi/contact-admin.png)
 
 11. Selecteer **invoeg code maken**en selecteer vervolgens **publiceren**.
 
 U hebt de rapport koppeling die u kunt delen met iedereen voor toegang tot rapporten en een code fragment dat u kunt gebruiken om het rapport te integreren in uw blog of website.
 
-![Een micro soft Power BI-rapport publiceren](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-publish.png)
+![Een micro soft Power BI-rapport publiceren](./media/iot-hub-live-data-visualization-in-power-bi/power-bi-web-output.png)
 
 Micro soft biedt u ook de [Power bi mobiele apps](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/) voor het weer geven en communiceren met uw Power bi Dash boards en rapporten op uw mobiele apparaat.
 

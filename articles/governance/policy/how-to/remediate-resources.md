@@ -1,14 +1,14 @@
 ---
 title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849957"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636305"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Niet-compatibele resources herstellen met Azure Policy
 
@@ -17,7 +17,7 @@ Resources die niet compatibel zijn met een **deployIfNotExists** -of **Modify** 
 ## <a name="how-remediation-security-works"></a>Hoe herstel beveiliging werkt
 
 Als Azure Policy de sjabloon uitvoert in de **deployIfNotExists** -beleids definitie, wordt een [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md)gebruikt.
-Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. De _locatie_ van de beheerde identiteit heeft geen invloed op de bewerking met Azure Policy.
+Azure Policy maakt een beheerde identiteit voor elke toewijzing, maar moet informatie over de rollen hebben om de beheerde identiteit te verlenen. Als de beheerde identiteit ontbrekende rollen heeft, wordt deze fout weer gegeven tijdens het toewijzen van het beleid of een initiatief. Wanneer u de portal gebruikt, wordt de beheerde identiteit door Azure Policy automatisch verleend aan de vermelde rollen zodra de toewijzing is gestart. De _locatie_ van de beheerde identiteit heeft geen invloed op de werking van Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Beheerde identiteit: er ontbreekt een rol" border="false":::
 
@@ -51,9 +51,6 @@ Wanneer u een toewijzing maakt met behulp van de portal, worden de beheerde iden
 - Tijdens het gebruik van de SDK (zoals Azure PowerShell)
 - Wanneer een resource buiten het toewijzings bereik wordt gewijzigd door de sjabloon
 - Wanneer een resource buiten het toewijzings bereik wordt gelezen door de sjabloon
-
-> [!NOTE]
-> Azure PowerShell en .NET zijn de enige Sdk's die momenteel ondersteuning bieden voor deze mogelijkheid.
 
 ### <a name="create-managed-identity-with-powershell"></a>Beheerde identiteit maken met Power shell
 
@@ -183,7 +180,7 @@ Zie de module [AZ. PolicyInsights](/powershell/module/az.policyinsights/#policy_
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Een herstel taak maken tijdens beleids toewijzing in de Azure Portal
 
-Een gestroomlijnde manier om een herstel taak te maken, is door de Azure Portal tijdens het toewijzen van beleid. Als de beleids definitie die moet worden toegewezen, een **deployIfNotExists** of een **wijzigings** effect is, biedt de wizard op het tabblad **herstel** een optie voor het maken van een _remedation-taak_ . Als deze optie is geselecteerd, wordt er een remedation-taak gemaakt op hetzelfde moment als de beleids toewijzing.
+Een gestroomlijnde manier om een herstel taak te maken, is door de Azure Portal tijdens het toewijzen van beleid. Als de beleids definitie die moet worden toegewezen, een **deployIfNotExists** of een **wijzigings** effect is, biedt de wizard op het tabblad **herstel** een optie voor het _maken van een herstel taak_ . Als deze optie is geselecteerd, wordt een herstel taak gemaakt op hetzelfde moment als de beleids toewijzing.
 
 ## <a name="next-steps"></a>Volgende stappen
 

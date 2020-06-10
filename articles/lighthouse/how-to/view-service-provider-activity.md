@@ -2,13 +2,13 @@
 title: Activiteit van serviceprovider bekijken
 description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bekijken die door service providers worden uitgevoerd via het beheer van gedelegeerde resources van Azure.
 ms.date: 01/15/2020
-ms.topic: conceptual
-ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: 42af2aa7fca5031eb50bd421a5207320858b70cf
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649633"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636441"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
 

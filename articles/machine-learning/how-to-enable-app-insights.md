@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
+ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 2473d864e0ad0fca4a886a6135a9caac0742e3d7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 021d548c56810021af7257b25c40d7d4cc68ec12
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557075"
+ms.locfileid: "84629458"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt k
 >[!Important]
 > Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden alleen de meest recente uitvoer van het model vastgelegd. 
 
-De meta gegevens en het antwoord op de service-die overeenkomen met de meta gegevens van de webservice en de voor spellingen van het model, worden vastgelegd in de Azure-toepassing Insights-traceringen onder het bericht `"model_data_collection"` . U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
+Als u gegevens wilt vastleggen voor een aanvraag voor de webservice, voegt `print` u instructies toe aan uw score.py-bestand. Elke `print` instructie resulteert in één vermelding in de traceer tabel in Application Insights, onder het bericht `STDOUT` . De inhoud van de `print` instructie wordt opgenomen onder `customDimensions` en vervolgens `Contents` in de tracerings tabel. Als u een JSON-teken reeks afdrukt, produceert deze een hiërarchische gegevens structuur in de tracerings uitvoer onder `Contents` .
+
+U kunt Azure-toepassing inzichten rechtstreeks doorzoeken op toegang tot deze gegevens of een [continue export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) naar een opslag account instellen voor een langere retentie of verdere verwerking. Model gegevens kunnen vervolgens worden gebruikt in de Azure Machine Learning voor het instellen van labels, retraining, uitleg, gegevens analyse of ander gebruik. 
 
 <a name="python"></a>
 
@@ -71,10 +73,48 @@ De meta gegevens en het antwoord op de service-die overeenkomen met de meta gege
 
 Als u aangepaste traceringen wilt registreren, volgt u het standaard implementatie proces voor AKS of ACI in het document [implementeren en where](how-to-deploy-and-where.md) . Gebruik vervolgens de volgende stappen:
 
-1. Het Score bestand bijwerken door afdruk instructies toe te voegen
+1. Als u gegevens wilt verzenden naar Application Insights tijdens de defactorion, werkt u het Score bestand bij door afdruk instructies toe te voegen. Om complexere informatie, zoals de gegevens van de aanvraag en het antwoord, te registreren in de vorm van een JSON-structuur. In het volgende voor beeld score.py-bestand wordt de tijd geregistreerd die het model heeft geïnitialiseerd, de invoer en uitvoer tijdens de afleiding en de tijd waarop fouten optreden:
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. De service configuratie bijwerken
@@ -118,19 +158,19 @@ Om het weer te geven:
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Selecteer het tabblad **overzicht** om een basis verzameling metrische gegevens voor uw service weer te geven
+1. Klik op het tabblad **overzicht** of de sectie __bewaking__ in de lijst aan de linkerkant op __Logboeken__.
 
-   [![Overzicht](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![Tabblad Overzicht van bewaking](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. Als u de meta gegevens en het antwoord van de webservice-aanvraag wilt bekijken, selecteert u de tabel **aanvragen** in het gedeelte **Logboeken (Analytics)** en selecteert u **uitvoeren** om aanvragen weer te geven.
+1. Als u informatie wilt weer geven die is vastgelegd in het score.py-bestand, bekijkt u de tabel __traces__ . Met de volgende query zoekt u naar Logboeken waarin de __invoer__ waarde is vastgelegd:
 
-   [![Gegevens modelleren](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. Als u wilt zoeken naar uw aangepaste traceringen, selecteert u **Analytics**
-4. Selecteer in de sectie schema **traceringen**. Selecteer vervolgens **uitvoeren** om de query uit te voeren. Gegevens moeten worden weer gegeven in een tabel indeling en moeten worden toegewezen aan uw aangepaste aanroepen in uw score bestand
-
-   [![Aangepaste traceringen](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![gegevens traceren](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 Zie [Wat is Application Insights?](../azure-monitor/app/app-insights-overview.md)voor meer informatie over het gebruik van Azure-toepassing Insights.
 
@@ -139,7 +179,7 @@ Zie [Wat is Application Insights?](../azure-monitor/app/app-insights-overview.md
 >[!Important]
 > Azure-toepassing Insights ondersteunt alleen export naar Blob Storage. Aanvullende limieten van deze export mogelijkheid worden vermeld in [telemetrie exporteren vanuit app Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
 
-U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) berichten verzenden naar een ondersteund opslag account, waarbij een langere retentie kan worden ingesteld. De `"model_data_collection"` berichten worden opgeslagen in JSON-indeling en kunnen gemakkelijk worden geparseerd om model gegevens op te halen. 
+U kunt met behulp van Azure-toepassing Insights [doorlopend exporteren](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) berichten verzenden naar een ondersteund opslag account, waarbij een langere retentie kan worden ingesteld. De gegevens worden opgeslagen in JSON-indeling en kunnen gemakkelijk worden geparseerd om model gegevens op te halen. 
 
 Azure Data Factory, Azure ML-pijp lijnen of andere hulpprogram ma's voor gegevens verwerking kunnen worden gebruikt om de gegevens naar behoefte te transformeren. Wanneer u de gegevens hebt getransformeerd, kunt u deze registreren bij de Azure Machine Learning-werk ruimte als een gegevensset. Zie [gegevens sets maken en registreren](how-to-create-register-datasets.md)voor meer informatie.
 

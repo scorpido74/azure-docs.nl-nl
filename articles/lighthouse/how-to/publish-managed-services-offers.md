@@ -2,13 +2,13 @@
 title: Een beheerde service aanbieding naar Azure Marketplace publiceren
 description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten worden vrijgegeven aan het beheer van de gedelegeerde resources van Azure.
 ms.date: 05/04/2020
-ms.topic: conceptual
-ms.openlocfilehash: 04da33d0232371f4175a935bf1e35925376babbc
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.topic: how-to
+ms.openlocfilehash: f1aef8bbf5279891fb8edf2222cc1dda3326bdd6
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788736"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636509"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Een beheerde service aanbieding naar Azure Marketplace publiceren
 

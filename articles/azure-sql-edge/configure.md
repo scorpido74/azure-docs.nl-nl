@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge configureren (preview-versie)
-description: Meer informatie over het configureren van Azure SQL Edge (preview)
+description: Meer informatie over het configureren van Azure SQL Edge (preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,54 +9,54 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235150"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636237"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Azure SQL Edge configureren (preview-versie)
 
 Azure SQL Edge ondersteunt configuratie via een van de volgende twee opties:
 
-- Het gebruik van omgevings variabelen.
-- Gebruik het bestand MSSQL. conf dat in de map/var/opt/MSSQL is geplaatst.
+- Omgevingsvariabelen
+- Een MSSQL. conf-bestand dat in de map/var/opt/MSSQL is geplaatst
 
 > [!NOTE]
 > Als omgevings variabelen worden ingesteld, worden de instellingen overschreven die zijn opgegeven in het bestand MSSQL. conf.
 
-## <a name="configure-using-environment-variables"></a>Configureren met omgevings variabelen
+## <a name="configure-by-using-environment-variables"></a>Configureren met behulp van omgevings variabelen
 
-In Azure SQL Edge worden verschillende omgevings variabelen weer gegeven die kunnen worden gebruikt voor het configureren van de SQL Edge-container. Deze omgevings variabelen zijn een subset van de omgevings variabelen die beschikbaar zijn voor SQL Server on Linux. Zie [omgevings variabelen](/sql/linux/sql-server-linux-configure-environment-variables/)voor meer informatie over SQL Server on Linux omgevings variabelen.
+In Azure SQL Edge worden verschillende omgevings variabelen weer gegeven die kunnen worden gebruikt voor het configureren van de SQL Edge-container. Deze omgevings variabelen zijn een subset van de beschik bare voor SQL Server on Linux. Zie [omgevings variabelen](/sql/linux/sql-server-linux-configure-environment-variables/)voor meer informatie over SQL Server on Linux omgevings variabelen.
 
-De volgende SQL Server on Linux omgevings variabelen worden niet ondersteund voor Azure SQL Edge. Indien gedefinieerd, worden deze omgevings variabelen genegeerd tijdens het initialiseren van de container.
+De volgende SQL Server on Linux omgevings variabele wordt niet ondersteund voor Azure SQL Edge. Indien gedefinieerd, wordt deze omgevings variabele genegeerd tijdens het initialiseren van de container.
 
 | Omgevingsvariabele | Beschrijving |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | Beschikbaarheids groep inschakelen. Bijvoorbeeld: ' 1 ' is ingeschakeld en ' 0 ' is uitgeschakeld |
+| **MSSQL_ENABLE_HADR** | Beschikbaarheids groep inschakelen. Bijvoorbeeld: **1** is ingeschakeld en **0** is uitgeschakeld. |
 
 > [!IMPORTANT]
-> De omgevings variabele *MSSQL_PID* voor SQL Edge accepteert alleen **Premium** en **Developer** als geldige waarden. Azure SQL Edge biedt geen ondersteuning voor initialisatie met behulp van een product code.
+> De omgevings variabele **MSSQL_PID** voor SQL Edge accepteert alleen **Premium** en **Developer** als geldige waarden. Azure SQL Edge biedt geen ondersteuning voor initialisatie met behulp van een product code.
 
 > [!NOTE]
-> Voor het downloaden van de gebruiksrecht overeenkomst voor de Azure SQL Edge-gebruiksrecht overeenkomst, verwijzen wij u naar de [licentieovereenkomst voor eind gebruikers](https://go.microsoft.com/fwlink/?linkid=2128283).
+> Down load de [licentie voorwaarden voor micro soft-software](https://go.microsoft.com/fwlink/?linkid=2128283) voor Azure SQL Edge.
 
-### <a name="specifying-the-environment-variables"></a>De omgevings variabelen opgeven
+### <a name="specify-the-environment-variables"></a>De omgevings variabelen opgeven
 
-U kunt omgevings variabelen voor SQL Edge opgeven wanneer u Azure SQL Edge implementeert via de [Azure Portal](deploy-portal.md). Dit kan worden toegevoegd in de sectie omgevings variabelen van de module-implementatie of als onderdeel van de optie voor het maken van de container, zoals hieronder wordt beschreven.
+Geef omgevings variabelen voor SQL Edge op wanneer u de service implementeert via de [Azure Portal](deploy-portal.md). U kunt deze toevoegen in het gedeelte **omgevings variabelen** van de module-implementatie of als onderdeel van de opties voor het maken van de **container**.
 
-*Opties instellen met omgevings variabelen*
+Waarden toevoegen in **omgevings variabelen**.
 
-![instellen met omgevings variabelen lijst](media/configure/set-environment-variables.png)
+![Instellen met behulp van omgevings variabelen lijst](media/configure/set-environment-variables.png)
 
-*Instellen met behulp van opties voor het maken van containers*
+Waarden toevoegen in de opties voor het **maken van containers**.
 
-![instellen met behulp van opties voor het maken van containers](media/configure/set-environment-variables-using-create-options.png)
+![Instellen met behulp van de optie voor het maken van containers](media/configure/set-environment-variables-using-create-options.png)
 
-## <a name="configure-using-mssqlconf-file"></a>Configureren met het bestand MSSQL. conf
+## <a name="configure-by-using-an-mssqlconf-file"></a>Configureren met behulp van een MSSQL. conf-bestand
 
-Azure SQL Edge bevat niet het [configuratie hulpprogramma MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf/) , zoals SQL Server on Linux wel, omdat het bestand MSSQL. conf hand matig moet worden geconfigureerd en geplaatst in de permanente opslag schijf die is toegewezen aan de map/var/opt/MSSQL/in de SQL-Edge-module. Bij het implementeren van SQL Edge vanuit Azure Marketplace, wordt deze toewijzing opgegeven als de optie voor het koppelen * * in de optie voor het maken van een container
+Azure SQL Edge bevat niet het [configuratie hulpprogramma MSSQL-conf,](/sql/linux/sql-server-linux-configure-mssql-conf/) zoals SQL Server on Linux wel. U moet het bestand MSSQL. conf hand matig configureren en het in het permanente opslag station plaatsen dat is gekoppeld aan de map/var/opt/MSSQL/in de SQL-Edge-module. Wanneer u de SQL-rand vanuit Azure Marketplace implementeert, wordt deze toewijzing opgegeven als de optie **koppelen** in de opties voor het maken van de **container**.
 
 ```json
     {
@@ -76,13 +76,13 @@ De volgende MSSQL. conf-opties zijn niet van toepassing op SQL Edge:
 |Optie|Beschrijving|
 |:---|:---|
 |**Feedback van klanten** | Kies of SQL Server feedback naar micro soft verzendt. |
-|**Database Mail profiel** | Stel het standaard-e-mail profiel voor de data base in voor SQL Server on Linux. |
+|**Data base mail-profiel** | Stel het standaard-e-mail profiel voor de data base in voor SQL Server on Linux. |
 |**Hoge beschikbaarheid** | Beschikbaarheids groepen inschakelen. |
-|**Micro soft Distributed Transaction Coordinator** | MSDTC op Linux configureren en problemen oplossen. Aanvullende configuratie opties voor gedistribueerde trans acties worden ook niet ondersteund voor SQL-rand. Voor meer informatie over deze aanvullende configuratie opties raadpleegt [u MSDTC configureren](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc) |
-|**MLServices-gebruiksrecht overeenkomsten** | Accepteer R-en python-gebruiksrecht overeenkomsten voor Machine Learning Services-pakketten. Is alleen van toepassing op SQL Server 2019.|
+|**Micro soft Distributed Transaction Coordinator** | MSDTC op Linux configureren en problemen oplossen. Aanvullende configuratie opties voor gedistribueerde trans acties worden niet ondersteund voor SQL-rand. Zie [Configure MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc)(Engelstalig) voor meer informatie over deze aanvullende configuratie opties. |
+|**MLServices-gebruiksrecht overeenkomsten** | Accepteer R-en python-gebruiksrecht overeenkomsten voor Azure Machine Learning-pakketten. Is alleen van toepassing op SQL Server 2019.|
 |**outboundnetworkaccess** |Schakel uitgaande netwerk toegang in voor [Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R-, python-en Java-extensies.|
 
-Hieronder vindt u een voor beeld van een MSSQL. conf-bestand, dat geschikt is voor SQL Edge. Zie [MSSQL. conf-indeling](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)voor meer informatie over de indeling van het bestand MSSQL. conf.
+Het volgende voor beeld van het bestand MSSQL. conf werkt voor SQL Edge. Zie [MSSQL. conf-indeling](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format)voor meer informatie over de indeling van een MSSQL. conf-bestand.
 
 ```ini
 [EULA]
@@ -114,7 +114,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-step"></a>Volgende stap
+## <a name="next-steps"></a>Volgende stappen
 
 - [Verbinding maken met Azure SQL Edge](connect.md)
 - [Een end-to-end IoT-oplossing bouwen met SQL Edge](tutorial-deploy-azure-resources.md)

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255166"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609247"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Zelf studie: RDS MySQL migreren naar Azure Database for MySQL online met behulp van DMS
 
@@ -67,6 +67,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 1. Als u een nieuwe parameter groep wilt maken, volgt u de instructies van AWS in het artikel [MySQL-database logboek bestanden](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html), in de sectie **binaire logboek registratie-indeling** .
 2. Maak een nieuwe parameter groep met de volgende configuratie:
+    * log_bin = op
     * binlog_format = row
     * binlog_checksum = geen
 3. Sla de nieuwe parameter groep op.
@@ -139,11 +140,11 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
    ![Portal-abonnementen weergeven](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-subscription1.png)
 
-2. Selecteer het abonnement waarin u het exemplaar van Azure Database Migration Service wilt maken en selecteer vervolgens **resource providers**.
+2. Selecteer het abonnement waarin u het Azure Database Migration Service-exemplaar wilt maken en selecteer vervolgens **Resourceproviders**.
 
     ![Resourceproviders weergeven](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
-3. Zoek naar migratie, klik rechts van **micro soft. DataMigration**, selecteer **registreren**.
+3. Zoek naar migratie en selecteer rechts van **Microsoft.DataMigration** de optie **Registreren**.
 
     ![Resourceprovider registreren](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 

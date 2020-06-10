@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 77145c691f5b2b6364de64e491aac3c84495d464
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 0fe167490cd466ca30857c2ed324846e80ab581d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726125"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635591"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
@@ -79,7 +79,6 @@ De namen van de systeem eigenschappen variëren op basis van het eind punt waarn
 |Naam van systeem eigenschap|Event Hubs|Azure Storage|Service Bus|Event Grid|
 |--------------------|----------|-------------|-----------|----------|
 |Bericht-ID|bericht-id|messageId|MessageId|bericht-id|
-|Tijd in wachtrij voor IOT hub|iothub-enqueuedtime|enqueuedTime|iothub-enqueuedtime|iothub-enqueuedtime|
 |Gebruikers-id|user-id|userId|UserId|user-id|
 |Verbindings apparaat-id|iothub-verbinding-apparaat-id| connectionDeviceId|iothub-verbinding-apparaat-id|iothub-verbinding-apparaat-id|
 |Id van de verbindings module|iothub-verbinding-module-id|connectionModuleId|iothub-verbinding-module-id|iothub-verbinding-module-id|

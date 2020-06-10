@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0178d95072bec7af60fa500e662abdd9698c72d0
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406885"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635744"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
@@ -44,7 +44,7 @@ Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaa
 Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Ondersteunt Pass-Through-verificatie "alternatieve ID" als de gebruikers naam, in plaats van "userPrincipalName"?
-Als u zich aanmeldt met een niet-UPN-waarde, zoals een alternatief e-mail adres, wordt momenteel getest in een persoonlijke Preview voor Pass-Through-verificatie (PTA) en wacht woord-hash-synchronisatie (PHS).
+Ja, aanmelden met een niet-UPN-waarde, zoals een alternatieve e-mail, wordt ondersteund voor Pass-Through-verificatie (PTA) en wacht woord-hash-synchronisatie (PHS). Voor meer informatie over [alternatieve aanmeldings-id](../authentication/howto-authentication-use-email-signin.md).
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Fungeert wachtwoord hash synchroniseren als terugval voor Pass-Through-verificatie?
 
@@ -87,7 +87,7 @@ Ja. Als WPAD (Web Proxy Auto-Discovery) is ingeschakeld in uw on-premises omgevi
 Als u geen WPAD hebt in uw-omgeving, kunt u proxy gegevens toevoegen (zoals hieronder wordt weer gegeven), zodat een Pass-Through-verificatie agent kan communiceren met Azure AD:
 - Configureer proxy-informatie in Internet Explorer voordat u de Pass-Through-verificatie agent op de server installeert. Hiermee kunt u de installatie van de verificatie agent volt ooien, maar deze wordt nog steeds weer gegeven als **inactief** in de beheer Portal.
 - Ga op de-server naar ' C:\Program Files\Microsoft Azure AD Connect authentication agent '.
-- Bewerk het configuratie bestand ' AzureADConnectAuthenticationAgentService ' en voeg de volgende regels toe (Vervang '\:http//contosoproxy.com:8080 ' door het daad werkelijke proxy adres):
+- Bewerk het configuratie bestand ' AzureADConnectAuthenticationAgentService ' en voeg de volgende regels toe (Vervang ' http \: //contosoproxy.com:8080 ' door het daad werkelijke proxy adres):
 
 ```
    <system.net>
