@@ -10,12 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
-ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: fb95e21f9df5cf5eded03ea51f56bab86bbbecb3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844357"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609128"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelf studie: de insluitende lezer starten met behulp van het python-voorbeeld project
 
@@ -57,7 +58,7 @@ Het **getimmersivereadertoken** -API-eind punt moet worden beveiligd achter een 
 
 ## <a name="create-a-python-web-app-on-windows"></a>Een Python-web-app maken in Windows
 
-Maak een Python-web- `flask` app met behulp van op Windows.
+Maak een Python-web-app met behulp `flask` van op Windows.
 
 Installeer [Git](https://git-scm.com/).
 
@@ -77,11 +78,11 @@ Voeg optionele functies toe door de selectie vakjes in te scha kelen en op de kn
 
 ![Installatie dialoogvenster van python Windows-stap 2](./media/pythoninstalltwo.jpg)
 
-Kies aangepaste installatie en stel het installatiepad in als uw hoofdmap, bijvoorbeeld en klik `C:\Python37-32\` vervolgens op de knop installeren.
+Kies aangepaste installatie en stel het installatiepad in als uw hoofdmap, bijvoorbeeld en `C:\Python37-32\` klik vervolgens op de knop installeren.
 
 ![Installatie dialoogvenster van python Windows-stap 3](./media/pythoninstallthree.jpg)
 
-Nadat de installatie van python is voltooid, opent u een `cd` opdracht prompt en naar de map python-scripts.
+Nadat de installatie van python is voltooid, opent u een opdracht prompt en `cd` naar de map python-scripts.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -157,7 +158,7 @@ deactivate
 
 Het `(advanced-python)` voor voegsel moet nu worden verwijderd omdat de omgeving nu wordt gedeactiveerd.
 
-Om de omgeving opnieuw uit te `workon advanced-python` voeren vanuit de hoofdmap van het voorbeeld project.
+Om de omgeving opnieuw uit te voeren `workon advanced-python` vanuit de hoofdmap van het voorbeeld project.
 
 ```cmd
 workon advanced-python
@@ -165,17 +166,17 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit `flask run` door in te voeren vanuit de hoofdmap van het voorbeeld project.
+Wanneer de omgeving actief is, voert u het voorbeeld project uit door in te voeren `flask run` vanuit de hoofdmap van het voorbeeld project.
 
 ```cmd
 flask run
 ```
 
-Open uw browser en ga naar _http://localhost:5000_.
+Open uw browser en ga naar _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Een Python-web-app maken op OSX
 
-Een Python-web-app `flask` maken met behulp van op OSX.
+Een Python-web-app maken met behulp `flask` van op OSX.
 
 Installeer [Git](https://git-scm.com/).
 
@@ -213,10 +214,10 @@ sudo nano /etc/paths
 
 - Voer uw wacht woord in als u hierom wordt gevraagd.
 - Voeg het pad van de PIP-installatie toe aan de padvariabele.
-- Ga naar de onderkant van het bestand en geef het pad op dat u wilt toevoegen als laatste item in de lijst, bijvoorbeeld `PATH=$PATH:/usr/local/bin`.
+- Ga naar de onderkant van het bestand en geef het pad op dat u wilt toevoegen als laatste item in de lijst, `PATH=$PATH:/usr/local/bin` bijvoorbeeld.
 - Druk op Control-x om af te sluiten.
 - Voer `Y` in om de gewijzigde buffer op te slaan.
-- Dat is alles. Als u deze wilt testen, typt u in nieuw terminal `echo $PATH`venster:.
+- Dat is alles. Als u deze wilt testen, typt u in nieuw terminal venster: `echo $PATH` .
 
 Installatie kolf.
 
@@ -294,7 +295,7 @@ deactivate
 
 Het `(advanced-python)` voor voegsel moet nu worden verwijderd omdat de omgeving nu wordt gedeactiveerd.
 
-Om de omgeving opnieuw uit te `workon advanced-python` voeren vanuit de hoofdmap van het voorbeeld project.
+Om de omgeving opnieuw uit te voeren `workon advanced-python` vanuit de hoofdmap van het voorbeeld project.
 
 ```bash
 workon advanced-python
@@ -302,13 +303,13 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit `flask run` door in te voeren vanuit de hoofdmap van het voorbeeld project.
+Wanneer de omgeving actief is, voert u het voorbeeld project uit door in te voeren `flask run` vanuit de hoofdmap van het voorbeeld project.
 
 ```bash
 flask run
 ```
 
-Open uw browser en ga naar _http://localhost:5000_.
+Open uw browser en ga naar _http://localhost:5000_ .
 
 ## <a name="next-steps"></a>Volgende stappen
 
