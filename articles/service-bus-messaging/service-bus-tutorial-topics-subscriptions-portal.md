@@ -9,20 +9,20 @@ ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 321417813346e7d5c92876c22516c627aff5ab12
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76310115"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300746"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die informatie tussen toepassingen en services verzendt. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert hoe u onderwerpen en abonnementen van Service Bus kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van kanalen voor publiceren/abonneren met Azure Portal en .NET.
+Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Asynchrone bewerkingen bieden flexibele, Brokered Messaging, samen met gestructureerde FIFO-berichtenuitwisseling (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert hoe u onderwerpen en abonnementen van Service Bus kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van kanalen voor publiceren/abonneren met Azure Portal en .NET.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
+> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
 > * Onderwerpfilters toevoegen met .NET-code
 > * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
@@ -32,13 +32,13 @@ Een voorbeeld van dit scenario is het bijwerken van het voorraadassortiment voor
 
 ![onderwerp](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
-Als u geen Azure-abonnement hebt, kunt u een [gratis account][] maken voordat u begint.
+Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-onderwerpen en -abonnementen
@@ -53,9 +53,9 @@ Elk [abonnement op een onderwerp](service-bus-messaging-overview.md#topics) kan 
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Filterregels voor abonnementen maken
 
-Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
+Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) controleren.
 
-### <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
+## <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
 Ga als volgt te werk om de code uit te voeren:
 
@@ -395,14 +395,14 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtenentiteiten op een eenvoudige manier beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren of de mogelijkheid van het testen van onderwerpen, wachtrijen, abonnementen, relay-services, Notification Hubs en Event Hubs. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u resources ingericht met behulp van Azure Portal en vervolgens berichten verzonden en ontvangen van een Service Bus-onderwerp en de daarbij behorende abonnementen. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
+> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
 > * Onderwerpfilters toevoegen met .NET-code
 > * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
@@ -413,7 +413,7 @@ Meer voorbeelden voor het verzenden en ontvangen van berichten vindt u in [de Se
 Ga naar de volgende zelfstudie voor meer informatie over het gebruik van de mogelijkheden voor publiceren/abonneren van Service Bus.
 
 > [!div class="nextstepaction"]
-> [Voorraad bijwerken met PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Voorraad bijwerken met behulp van PowerShell en onderwerpen/abonnementen](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [gratis account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 31681397961045da02add7ccb37f29f6c835c08d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267083"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659891"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Door de klant beheerde sleutels configureren voor uw Azure Cosmos-account met Azure Key Vault
 
@@ -30,9 +30,9 @@ U moet door de klant beheerde sleutels opslaan in [Azure Key Vault](../key-vault
 
    ![De vermelding resource providers in het menu links](./media/how-to-setup-cmk/portal-rp.png)
 
-1. Zoek naar de resource provider **micro soft. DocumentDB** . Controleer of de resource provider al is gemarkeerd als geregistreerd. Als dat niet het geval is, kiest u de resource provider en selecteert u **registreren**:
+1. Zoek naar de resource provider van de **Microsoft.DocumentDB** . Controleer of de resource provider al is gemarkeerd als geregistreerd. Als dat niet het geval is, kiest u de resource provider en selecteert u **registreren**:
 
-   ![De resource provider micro soft. DocumentDB registreren](./media/how-to-setup-cmk/portal-rp-register.png)
+   ![De resource provider voor de Microsoft.DocumentDB registreren](./media/how-to-setup-cmk/portal-rp-register.png)
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Uw Azure Key Vault-exemplaar configureren
 
@@ -44,7 +44,7 @@ Als u een nieuw exemplaar van Azure Key Vault maakt, schakelt u deze eigenschapp
 
 Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of deze eigenschappen zijn ingeschakeld door te kijken naar de sectie **Eigenschappen** op de Azure Portal. Als een van deze eigenschappen niet is ingeschakeld, raadpleegt u de secties ' voorlopig verwijderen inschakelen ' en ' beveiliging opschonen inschakelen ' in een van de volgende artikelen:
 
-- [Voorlopig verwijderen gebruiken met Power shell](../key-vault/general/soft-delete-powershell.md)
+- [Voorlopig verwijderen gebruiken met PowerShell](../key-vault/general/soft-delete-powershell.md)
 - [Voorlopig verwijderen gebruiken met Azure CLI](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Een toegangs beleid toevoegen aan uw Azure Key Vault-exemplaar
@@ -59,7 +59,7 @@ Als u een bestaand Azure Key Vault exemplaar gebruikt, kunt u controleren of dez
 
    ![De juiste machtigingen selecteren](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Vervolgens zoekt u naar **Azure Cosmos DB** Principal en selecteert u deze (om eenvoudiger te vinden, kunt u ook zoeken op Principal-id: `a232010e-820c-4083-83bb-3ace5fc29d0b` voor elke Azure-regio, met uitzonde ring van Azure Government regio's waar de principal-id is `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Kies tot slot onderaan **selecteren** . Als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren zoals beschreven in de sectie [de resource provider registreren](#register-resource-provider) in dit artikel.
+1. Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Vervolgens zoekt u naar **Azure Cosmos DB** Principal en selecteert u deze (om eenvoudiger te vinden, kunt u ook zoeken op Principal-id: `a232010e-820c-4083-83bb-3ace5fc29d0b` voor elke Azure-regio, met uitzonde ring van Azure Government regio's waar de principal-id is `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Kies tot slot onderaan **selecteren** . Als de principal van de **Azure Cosmos DB** zich niet in de lijst bevindt, moet u de resource provider voor **Microsoft.DocumentDB** mogelijk opnieuw registreren zoals beschreven in de sectie [de resource provider registreren](#register-resource-provider) van dit artikel.
 
    ![Selecteer de Azure Cosmos DB-Principal](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -220,6 +220,31 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="key-rotation"></a>Sleutelroulatie
+
+Het draaien van de door de klant beheerde sleutel die wordt gebruikt door uw Azure Cosmos-account kan op twee manieren worden uitgevoerd.
+
+- Maak een nieuwe versie van de sleutel die momenteel wordt gebruikt vanuit Azure Key Vault:
+
+  ![Een nieuwe sleutel versie maken](./media/how-to-setup-cmk/portal-akv-rot.png)
+
+- Wissel de sleutel die momenteel wordt gebruikt door een volledig andere toe door de `keyVaultKeyUri` eigenschap van uw account bij te werken. Ga als volgt te werk in Power shell:
+
+    ```powershell
+    $resourceGroupName = "myResourceGroup"
+    $accountName = "mycosmosaccount"
+    $newKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-new-key>"
+    
+    $account = Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+        -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+    
+    $account.Properties.keyVaultKeyUri = $newKeyUri
+    
+    $account | Set-AzResource -Force
+    ```
+
+De vorige sleutel of sleutel versie kan na 24 uur worden uitgeschakeld, of nadat de [Azure Key Vault controle logboeken](../key-vault/general/logging.md) geen activiteit meer van Azure Cosmos DB op die sleutel of sleutel versie weer geven.
+    
 ## <a name="error-handling"></a>Foutafhandeling
 
 Bij het gebruik van door de klant beheerde sleutels (CMK) in Azure Cosmos DB, als er fouten zijn, Azure Cosmos DB de fout Details samen met een HTTP-substatuscode in het antwoord. U kunt deze substatuscode gebruiken om fouten in de hoofd oorzaak van het probleem op te sporen. Zie de [HTTP-status codes voor Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) artikel om de lijst met ondersteunde HTTP-substatus codes op te halen.
@@ -267,14 +292,6 @@ U kunt de gegevens van uw Azure Cosmos-account programmatisch ophalen en zoeken 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wat is de invloed van door de klant beheerde sleutels op een back-up?
 
 Azure Cosmos DB maakt [regel matig en automatisch een back-up](./online-backup-and-restore.md) van de gegevens die in uw account zijn opgeslagen. Met deze bewerking wordt een back-up gemaakt van de versleutelde gegevens. Als u de herstelde back-up wilt gebruiken, is de versleutelings sleutel die u hebt gebruikt op het moment van de back-up, vereist. Dit betekent dat er geen intrekken is gemaakt en dat de versie van de sleutel die werd gebruikt op het moment van de back-up nog steeds is ingeschakeld.
-
-### <a name="how-do-i-rotate-an-encryption-key"></a>Hoe kan ik een versleutelings sleutel draaien?
-
-Het draaien van sleutels wordt uitgevoerd door een nieuwe versie van de sleutel te maken in Azure Key Vault:
-
-![Een nieuwe sleutel versie maken](./media/how-to-setup-cmk/portal-akv-rot.png)
-
-De vorige versie kan na 24 uur worden uitgeschakeld of nadat de [Azure Key Vault controle logboeken](../key-vault/general/logging.md) geen activiteit meer van Azure Cosmos DB op die versie weer geven.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Hoe kan ik een versleutelings sleutel intrekken?
 

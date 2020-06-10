@@ -5,45 +5,45 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 9367719b1a1050ce8abf36804b3d0d0d58c7484b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 24f49885892fb69c14ebd589587470edd78eeefe
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183368"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298840"
 ---
 Web-API-resources moeten worden geregistreerd in uw tenant voordat deze in staat zijn om beveiligde resourceaanvragen door clienttoepassingen die een toegangstoken aanbieden, kunnen accepteren en erop kunnen reageren.
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u de huidige **toepassingen** gebruiken of onze nieuwe **Preview-ervaring (Unified app-registraties)** . [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregintro).
+Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
+
+#### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
+1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *webapi1*.
+1. Selecteer onder **Omleidings-id** de optie **Web**, en voer vervolgens een eindpunt in waarop met Azure AD B2C tokens worden geretourneerd die zijn aangevraagd via de toepassing. In deze zelfstudie wordt het voorbeeld lokaal uitgevoerd en luistert dit op `http://localhost:5000`.
+1. Selecteer **Registreren**.
+1. Noteer de **Toepassings-id (client)** voor gebruik in een latere stap.
+
+Schakel vervolgens de impliciete toekenningsstroom in:
+
+1. Selecteer **Verificatie** onder **Beheren**.
+1. Selecteer **De nieuwe ervaring proberen** (indien weergegeven).
+1. Schakel onder **Impliciete toekenning** de selectievakjes **Toegangstokens** en **Id-tokens** in.
+1. Selecteer **Opslaan**.
 
 #### <a name="applications"></a>[Toepassingen](#tab/applications/)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Selecteer **toepassingen**en selecteer vervolgens **toevoegen**.
+1. Selecteer het filter **Map + Abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C-tenant bevat.
+1. Selecteer **Azure AD B2C** in het linkermenu. Of selecteer **Alle services** en zoek naar en selecteer **Azure AD B2C**.
+1. Selecteer **Toepassingen (verouderd)** , en selecteer vervolgens **Toevoegen**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld *webapi1*.
-1. Selecteer **Ja**voor **Web-app/Web-API**.
-1. Selecteer **Ja**als u **impliciete stroom wilt toestaan**.
+1. Selecteer **Ja** bij **Web-app/web-API**.
+1. Selecteer **ja**voor **Impliciete stroom toestaan**.
 1. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. In deze zelfstudie wordt het voorbeeld lokaal uitgevoerd en luistert dit op `https://localhost:5000`.
-1. Voor **App ID-URI**, voegt u een API-eind punt-id toe aan de weer gegeven URI. Voor deze zelf studie voert `api`u in, zodat de volledige URI gelijk is `https://contosob2c.onmicrosoft.com/api`aan.
+1. Voeg voor **App-ID-URI** een id voor een API-eindpunt toe aan de weergegeven URI. Voer voor deze zelfstudie `api` in, zodat de volledige URI lijkt op `https://contosob2c.onmicrosoft.com/api`.
 1. Selecteer **Maken**.
-1. Noteer de **toepassings-id** voor gebruik in een latere stap.
-
-#### <a name="app-registrations-preview"></a>[App-registraties (preview-versie)](#tab/app-reg-preview/)
-
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
-1. Selecteer in het linkermenu **Azure AD B2C**. U kunt ook **alle services** selecteren en **Azure AD B2C**zoeken en selecteren.
-1. Selecteer **app-registraties (preview)** en selecteer vervolgens **nieuwe registratie**.
-1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *webapi1*.
-1. Onder **omleidings-URI**selecteert u **Web**en voert u vervolgens een eind punt in, waar Azure AD B2C tokens moet retour neren die door uw toepassing worden aangevraagd. In deze zelfstudie wordt het voorbeeld lokaal uitgevoerd en luistert dit op `http://localhost:5000`.
-1. Selecteer **Registreren**.
-1. Noteer de **id van de toepassing (client)** voor gebruik in een latere stap.
-
-Schakel vervolgens de impliciete toekennings stroom in:
-
-1. Selecteer onder **beheren**de optie **verificatie**.
-1. Selecteer **de nieuwe ervaring uitproberen** (indien weer gegeven).
-1. Schakel onder **impliciete toekenning**de selectie vakjes **toegangs tokens** en **id-tokens** in.
-1. Selecteer **Opslaan**.
+1. Noteer de **TOEPASSINGS-ID** voor gebruik in een latere stap.

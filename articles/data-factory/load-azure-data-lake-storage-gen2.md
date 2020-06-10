@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/13/2019
-ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417773"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660444"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Gegevens laden in Azure Data Lake Storage Gen2 met Azure Data Factory
 
@@ -42,95 +42,90 @@ Dit artikel laat u zien hoe u met het hulp programma Data Factory Gegevens kopi�
 
 ## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
-1. Selecteer in het menu links de optie **een resource** > maken**gegevens en analyses** > **Data Factory**:
+1. Selecteer in het linkermenu **Een resource maken** > **Gegevens en analyses** > **Data factory**:
    
-   ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Selectie van Data Factory in het deelvenster Nieuw](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding: 
-      
-   ![Pagina Nieuwe gegevensfactory](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)
+2. Geef op de pagina **nieuw Data Factory** waarden op voor de volgende velden:
  
-    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadADLSDemo\" is niet beschikbaar ' wordt weer gegeven, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
+    * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als u de fout melding ' Data Factory-naam *naamvanuwgegevensfactory* is niet beschikbaar ' ontvangt, voert u een andere naam in voor de Data Factory. U kunt bijvoorbeeld _**de naam**_**ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
     * **Versie**: Selecteer **v2**.
     * **Locatie**: Selecteer de locatie voor de Data Factory. In de vervolgkeuzelijst worden alleen ondersteunde locaties weergegeven. De gegevens archieven die door data factory worden gebruikt, kunnen zich op andere locaties en regio's bevinden. 
 
 3. Selecteer **Maken**.
+
 4. Nadat het maken is voltooid, gaat u naar uw data factory. U ziet de **Data Factory** start pagina zoals wordt weer gegeven in de volgende afbeelding: 
    
-   ![Startpagina van de gegevensfactory](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
+   ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
 
    Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>Gegevens laden in Azure Data Lake Storage Gen2
 
-1. Selecteer op de pagina **aan de slag** de **gegevens kopiëren** tegel om het gegevens kopiëren-hulp programma te starten: 
+1. Selecteer op de pagina **Aan de slag** de tegel **Gegevens kopiëren** om het hulpprogramma Gegevens kopiëren te openen.
 
-   ![De tegel Copy Data-hulpprogramma](./media/load-azure-data-lake-storage-gen2/copy-data-tool-tile.png)
-2. Geef op de pagina **Eigenschappen** **CopyFromAmazonS3ToADLS** op voor het veld **taak naam** en selecteer **volgende**:
+2. Geef op de pagina **Eigenschappen** **CopyFromAmazonS3ToADLS** op voor het veld **taak naam** en selecteer **volgende**.
 
     ![De pagina Eigenschappen](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. Klik op de pagina **brongegevens archief** op **+ nieuwe verbinding maken**:
-
-    ![De pagina Brongegevensarchief](./media/load-azure-data-lake-storage-gen2/source-data-store-page.png)
-    
-    Selecteer **Amazon S3** in de galerie connector en selecteer **door gaan**
+3. Klik op de pagina **Brongegevensarchief** op **+ Nieuwe verbinding maken**. Selecteer **Amazon S3** in de galerie connector en selecteer **door gaan**.
     
     ![S3-pagina van brongegevens archief](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
-4. Voer op de pagina **Amazon S3-verbinding opgeven** de volgende stappen uit:
+4. Voer de volgende stappen uit op de pagina **nieuwe gekoppelde service (Amazon S3)** :
 
    1. Geef de waarde voor de **toegangs sleutel-id** op.
    2. Geef de waarde voor de **geheime toegangs sleutel** op.
-   3. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
-   4. U ziet dat er een nieuwe verbinding wordt gemaakt. Selecteer **Next**.
-   
+   3. Klik op **verbinding testen** om de instellingen te valideren en selecteer vervolgens **maken**.
+
       ![Amazon S3-account opgeven](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-      
-5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopiëren. Selecteer de map/het bestand, selecteer **kiezen**:
+   4. U ziet dat er een nieuwe AmazonS3-verbinding wordt gemaakt. Selecteer **Next**. 
+
+5. Blader op de pagina **Het invoerbestand of de invoermap kiezen** naar de map en het bestand dat u wilt kopiëren. Selecteer de map/het bestand en selecteer vervolgens **kiezen**.
 
     ![Het invoerbestand of de invoermap kiezen](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. Geef het kopieergedrag op door de opties **Bestanden recursief kopiëren** en **binaire kopie** in te schakelen. Selecteer **volgende**:
+6. Geef het Kopieer gedrag op door de **recursief** en **binaire Kopieer** opties te controleren. Selecteer **Next**.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. Klik op de pagina **doel gegevens archief** op **+ nieuwe verbinding maken**en selecteer vervolgens **Azure data Lake Storage Gen2**en selecteer **door gaan**:
+7. Klik op de pagina **doel gegevens archief** op **+ nieuwe verbinding maken**en selecteer vervolgens **Azure data Lake Storage Gen2**en selecteer **door gaan**.
 
     ![De pagina Doelgegevensarchief](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 
-8. Voer de volgende stappen uit op de pagina **Azure data Lake Storage verbinding opgeven** :
+8. Voer de volgende stappen uit op de pagina **nieuwe gekoppelde service (Azure data Lake Storage Gen2)** :
 
-   1. Selecteer uw Data Lake Storage Gen2 geschikte account in de vervolg keuzelijst opslag account naam.
-   2. Selecteer **Voltooien** om de verbinding te maken. Selecteer **volgende**.
-   
-   ![Azure Data Lake Storage Gen2 account opgeven](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
+   1. Selecteer het account dat geschikt is voor Data Lake Storage Gen2 in de vervolgkeuzelijst Opslagaccountnaam.
+   2. Selecteer **maken** om de verbinding te maken. Selecteer vervolgens **Volgende**.   
 
-9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfroms3** in als de naam van de uitvoermap en selecteer **volgende**. Bij ADF worden de bijbehorende ADLS Gen2 bestands systeem en submappen tijdens het kopiëren gemaakt als deze niet bestaat.
+        ![Azure Data Lake Storage Gen2 account opgeven](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
+
+9. Voer op de pagina **het uitvoer bestand of de map kiezen** **copyfroms3** in als de naam van de uitvoermap en selecteer **volgende**. Bij het maken van de ADF worden de bijbehorende ADLS Gen2 bestands systeem en submappen tijdens het kopiëren gemaakt als deze niet bestaat.
 
     ![Uitvoermap opgeven](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
-10. Selecteer op de pagina **instellingen** de optie **volgende** om de standaard instellingen te gebruiken:
+10. Selecteer op de pagina **Instellingen** de optie **Volgende** om de standaardinstellingen te gebruiken.
 
-    ![De pagina Instellingen](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
-11. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**:
+    ![Pagina Instellingen](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
+
+11. Controleer de instellingen op de pagina **samen vatting** en selecteer **volgende**.
 
     ![Overzichtspagina](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
-12. Selecteer op de **pagina implementatie**de optie **monitor** om de pijp lijn te bewaken:
 
-    ![De pagina Implementatie](./media/load-azure-data-lake-storage-gen2/deployment-page.png)
-13. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **acties** bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren:
+12. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren. 
+ 
+13. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u een pijplijn uitvoering die wordt geactiveerd door een hand matige trigger. U kunt via koppelingen in de kolom **NAAM PIJPLIJN** details van activiteiten bekijken en de pijplijn opnieuw uitvoeren.
 
     ![Pijplijnuitvoeringen controleren](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
 
-14. Selecteer de koppeling **uitvoeringen van activiteit weer** geven in de kolom **acties** om de uitvoering van activiteiten te bekijken die zijn gekoppeld aan de pijplijn uitvoering. Omdat er slechts één activiteit (kopieeractiviteit) in de pijplijn is, ziet u slechts één vermelding in de lijst. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u de koppeling **pijp lijnen** bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen. 
-
+14. Als u de uitvoering van activiteiten wilt zien die zijn gekoppeld aan de pijplijn uitvoering, selecteert u de koppeling **CopyFromAmazonS3ToADLS** onder de kolom pijplijn naam. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom NAAM ACTIVITEIT om details van de kopieerbewerking te zien. U kunt details, zoals het volume van de gegevens die uit de bron zijn gekopieerd, bewaken naar de sink, gegevens doorvoer, uitvoerings stappen met de overeenkomstige duur en de gebruikte configuratie.
+ 
     ![Uitvoering van activiteiten controleren](./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png)
-
-15. Als u de uitvoerings Details voor elke Kopieer activiteit wilt bewaken, selecteert u de **Details** koppeling (bril-afbeelding) onder **acties** in de weer gave activiteiten bewaking. U kunt details, zoals het volume van de gegevens die uit de bron zijn gekopieerd, bewaken naar de sink, gegevens doorvoer, uitvoerings stappen met de overeenkomstige duur en de gebruikte configuraties:
-
+    
     ![Details van uitvoering van activiteit bewaken](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
+
+15. Selecteer Vernieuwen om de weergave te vernieuwen. Selecteer **Alle pijplijnuitvoeringen** bovenaan om terug te gaan naar de weergave Pijplijnuitvoeringen.
 
 16. Controleer of de gegevens zijn gekopieerd naar uw Data Lake Storage Gen2-account.
 

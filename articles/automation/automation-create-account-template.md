@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/22/2020
-ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/09/2020
+ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837141"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661030"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Een Automation-account maken met behulp van een Azure Resource Manager sjabloon
 
@@ -35,8 +35,8 @@ De volgende tabel geeft een overzicht van de API-versie voor de resources die in
 
 | Resource | Resourcetype | API-versie |
 |:---|:---|:---|
-| Werkruimte | werkruimten | 2017-03-15-preview |
-| Automation-account | automation | 2015-10-31 | 
+| Werkruimte | workspaces | 2020-03-01-preview |
+| Automation-account | automation | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>Voordat u de sjabloon gebruikt
 
@@ -48,14 +48,14 @@ De JSON-sjabloon is zo geconfigureerd dat u wordt gevraagd om:
 
 * De naam van de werk ruimte.
 * De regio waarin u de werk ruimte wilt maken.
+* Om resource-of werkruimte machtigingen in te scha kelen.
 * De naam van het Automation-account.
-* De regio waarin het account moet worden gemaakt.
+* De regio waarin het Automation-account moet worden gemaakt.
 
 De volgende para meters in de sjabloon zijn ingesteld met een standaard waarde voor de Log Analytics-werk ruimte:
 
 * *SKU* wordt standaard ingesteld op de prijs categorie per GB die is uitgebracht in het prijs model van april 2018.
 * *dataRetention* standaard ingesteld op 30 dagen.
-* *capacityReservationLevel* wordt standaard ingesteld op 100 GB.
 
 >[!WARNING]
 >Als u een Log Analytics-werk ruimte wilt maken of configureren in een abonnement dat is aangemeld bij het prijs model van april 2018, is de enige geldige Log Analytics prijs categorie *PerGB2018*.
@@ -63,7 +63,7 @@ De volgende para meters in de sjabloon zijn ingesteld met een standaard waarde v
 
 Met de JSON-sjabloon wordt een standaard waarde opgegeven voor de andere para meters die waarschijnlijk worden gebruikt als een standaard configuratie in uw omgeving. U kunt de sjabloon opslaan in een Azure-opslag account voor gedeelde toegang in uw organisatie. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md)voor meer informatie over het werken met sjablonen.
 
-Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang rijk dat u de volgende configuratie details kent. Ze kunnen u helpen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld. 
+Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang rijk dat u de volgende configuratie details kent. Ze kunnen u helpen bij het maken, configureren en gebruiken van een Log Analytics werkruimte die aan uw nieuwe Automation-account is gekoppeld.
 
 * Bekijk [aanvullende informatie](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) om de configuratie opties voor de werk ruimte volledig te begrijpen, zoals de toegangs beheer modus, de prijs categorie en de retentie en het capaciteits reserverings niveau.
 
@@ -107,14 +107,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
-            }
-        },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
+                "description": "Number of days to retain data."
             }
         },
         "location": {
@@ -122,6 +115,12 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -176,13 +175,11 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -194,7 +191,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
         "resources": [
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [
@@ -209,7 +206,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
             "resources": [
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('sampleGraphicalRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -229,7 +226,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePowerShellRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -249,7 +246,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePython2RunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -270,10 +267,10 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
                 ]
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -290,7 +287,7 @@ Als u geen ervaring hebt met Azure Automation en Azure Monitor, is het belang ri
 
 2. Bewerk de sjabloon om te voldoen aan uw vereisten. Overweeg om een [Resource Manager-parameter bestand](../azure-resource-manager/templates/parameter-files.md) te maken in plaats van para meters door te geven als inline-waarden.
 
-3. Sla dit bestand op als deployAzAutomationAccttemplate. json naar een lokale map.
+3. Sla dit bestand als deployAzAutomationAccttemplate.jsop in een lokale map.
 
 4. U kunt deze sjabloon nu implementeren. U kunt Power shell of de Azure CLI gebruiken. Wanneer u wordt gevraagd om een naam voor de werk ruimte en het Automation-account, geeft u een naam op die wereld wijd uniek is voor al uw Azure-abonnementen.
 

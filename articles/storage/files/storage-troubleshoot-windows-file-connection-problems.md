@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267814"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657729"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files in Windows oplossen
 
@@ -273,7 +273,7 @@ Wanneer een bestand via het netwerk wordt gekopieerd, wordt het bestand ontsleut
 Dit probleem kan optreden als u Encrypting File System (EFS) gebruikt. Met BitLocker versleutelde bestanden kunnen naar Azure Files worden gekopieerd. Azure Files ondersteunt echter geen NTFS EFS.
 
 ### <a name="workaround"></a>Tijdelijke oplossing
-Als u een bestand wilt kopiëren via het netwerk, moet u het eerst decoderen. Gebruik een van de volgende methoden:
+Als u een bestand wilt kopiëren via het netwerk, moet u het eerst decoderen. Hanteer één van de volgende methoden:
 
 - Gebruik de opdracht **copy/d** . Hierdoor kunnen de versleutelde bestanden worden opgeslagen als ontsleutelde bestanden op de bestemming.
 - Stel de volgende register sleutel in:
@@ -330,7 +330,7 @@ Op dit moment kunt u overwegen om uw AAD DS opnieuw te implementeren met een nie
 ### <a name="self-diagnostics-steps"></a>Stappen voor zelf diagnostische gegevens
 Zorg er eerst voor dat u alle vier de stappen hebt gevolgd om [Azure files AD-verificatie in te scha kelen](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
 
-Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u geen koppeling hebt gemaakt, downloadt u [AzFileDiagnostics. ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) om u te helpen de client omgeving te valideren, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot Azure files, biedt prescriptieve richt lijnen voor zelf herstel en verzamelt de diagnostische traceringen.
+Probeer vervolgens de [Azure-bestands share te koppelen met de sleutel van het opslag account](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Als u de koppeling niet hebt gemaakt, downloadt u [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) om u te helpen bij het valideren van de client omgeving, detecteert u de niet-compatibele client configuratie die toegang zou hebben tot de Azure files, bevat prescriptieve richt lijnen voor zelf herstel en worden de diagnostische traceringen verzameld.
 
 Ten derde kunt u de cmdlet debug-AzStorageAccountAuth uitvoeren om een set basis controles uit te voeren op uw AD-configuratie met de aangemelde AD-gebruiker. Deze cmdlet wordt ondersteund met [versie AzFilesHybrid v 0.1.2 en hoger](https://github.com/Azure-Samples/azure-files-samples/releases). U moet deze cmdlet uitvoeren met een AD-gebruiker die de machtiging Eigenaar heeft voor het doelopslagaccount.  
 ```PowerShell
@@ -345,9 +345,9 @@ De cmdlet voert deze controles hieronder uit, en biedt richt lijnen voor fouten:
 3. CheckADObject: Controleer of de aangemelde gebruiker een geldige weer gave heeft in het AD-domein waaraan het opslag account is gekoppeld
 4. CheckGetKerberosTicket: er wordt geprobeerd een Kerberos-ticket op te halen om verbinding te maken met het opslag account 
 5. CheckADObjectPasswordIsCorrect: Controleer of het wacht woord dat is geconfigureerd voor de AD-identiteit die het opslag account vertegenwoordigt, overeenkomt met de sleutel van het opslag account kerb
-6. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD
-
-We werken er actief aan om deze diagnostische cmdlet uit te breiden voor betere richt lijnen voor probleem oplossing.
+6. CheckSidHasAadUser: Controleer of de aangemelde AD-gebruiker is gesynchroniseerd met Azure AD. Als u wilt controleren of een specifieke AD-gebruiker is gesynchroniseerd met Azure AD, kunt u de-gebruikers naam en-domein opgeven in de invoer parameters.
+7. CheckAadUserHasSid: Controleer of een Azure AD-gebruiker een SID in AD heeft, moet de gebruiker de object-id van de Azure AD-gebruiker met-ObjectId invoeren. 
+8. CheckStorageAccountDomainJoined: Controleer of u een identiteit hebt geregistreerd in AD om het opslag account aan te duiden. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Kan de machtigingen voor mappen en bestands niveau (Windows-Acl's) niet configureren met Windows bestanden Verkenner
 

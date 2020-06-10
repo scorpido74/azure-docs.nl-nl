@@ -5,16 +5,16 @@ author: roygara
 manager: twooley
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f2d905d041198bd35c4657052bf18d981904dc44
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f4489b3073462a93319886ee5560ed5a6660111
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758394"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659966"
 ---
 # <a name="create-a-snapshot"></a>Een momentopname maken 
 
@@ -65,7 +65,7 @@ az snapshot list \
 5. Selecteer een bestaande resource groep of typ de naam van een nieuwe. 
 7. Voor de **bron schijf**selecteert u de beheerde schijf voor de moment opname.
 8. Het **account type** selecteren dat moet worden gebruikt voor het opslaan van de moment opname. Gebruik **Standard-HDD** tenzij u het hebt opgeslagen op een high-upssd.
-9. Klik op **maken**.
+9. Klik op **Create**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

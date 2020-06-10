@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258569"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658017"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, wordt elke storing die invloed heeft op data bases op een server of een beheerd exemplaar, automatisch failover. U kunt de groep voor automatische failover beheren met:
 
-- [Azure Portal](geo-distributed-application-configure-tutorial.md)
+- [Azure-portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: failover-groep](scripts/add-database-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/add-database-to-failover-group-powershell.md)
 - [Rest API: failovergroep](/rest/api/sql/failovergroups).
@@ -229,9 +229,9 @@ Als uw toepassing gebruikmaakt van SQL Managed instance als de gegevenslaag, vol
 Om ervoor te zorgen dat de verbinding met het primaire SQL-beheerde exemplaar na een failover niet wordt onderbroken, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair SQL-beheerd exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire SQL-beheerde exemplaar. U kunt dit doen door de optionele para meter op te geven `DNS Zone Partner` met behulp van de Azure Portal, Power shell of de rest API.
 
 > [!IMPORTANT]
-> Het eerste door SQL beheerde exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende exemplaren in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.
+> Het eerste beheerde exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.
 
-Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-sql-managed-instance)voor meer informatie over het maken van het secundaire SQL-beheerde exemplaar in dezelfde DNS-zone als het primaire exemplaar.
+Zie [een secundaire beheerde instantie maken](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire SQL-beheerde exemplaar in dezelfde DNS-zone als het primaire exemplaar.
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Replicatie verkeer tussen twee instanties inschakelen
 

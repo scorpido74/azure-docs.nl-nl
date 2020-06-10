@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417841"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655636"
 ---
 # <a name="monitor-copy-activity"></a>Kopieeractiviteit bewaken
 
@@ -48,19 +48,19 @@ In de **Details van de onderste uitvoering en de duur** worden de belangrijkste 
 
 ## <a name="monitor-programmatically"></a>Programmatisch controleren
 
-De details van de gegevens van de Kopieer activiteit en prestatie kenmerken worden ook weer gegeven in de sectie > **uitvoer** resultaat van de **Kopieer activiteit**, die wordt gebruikt om de weer gave van de UI-bewaking te genereren. Hieronder vindt u een volledige lijst met eigenschappen die kunnen worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw Kopieer scenario. Zie [programmatisch een Azure-Data Factory bewaken](monitor-programmatically.md)voor meer informatie over het uitvoeren van een programma voor het bewaken van activiteiten in het algemeen.
+De details van de gegevens van de Kopieer activiteit en prestatie kenmerken worden ook weer gegeven in de sectie uitvoer resultaat van de **Kopieer activiteit**  >  **Output** , die wordt gebruikt om de weer gave van de UI-bewaking te genereren. Hieronder vindt u een volledige lijst met eigenschappen die kunnen worden geretourneerd. U ziet alleen de eigenschappen die van toepassing zijn op uw Kopieer scenario. Zie [programmatisch een Azure-Data Factory bewaken](monitor-programmatically.md)voor meer informatie over het uitvoeren van een programma voor het bewaken van activiteiten in het algemeen.
 
 | Naam van eigenschap  | Beschrijving | Eenheid in uitvoer |
 |:--- |:--- |:--- |
 | dataRead | De werkelijke hoeveelheid gegevens die uit de bron is gelezen. | Int64-waarde, in bytes |
-| dataWritten | De werkelijke koppeling van gegevens die zijn geschreven/doorgevoerd in de sink. De grootte kan afwijken van `dataRead` de grootte, omdat in elk gegevens archief de gegevens worden opgeslagen. | Int64-waarde, in bytes |
+| dataWritten | De werkelijke koppeling van gegevens die zijn geschreven/doorgevoerd in de sink. De grootte kan afwijken van de `dataRead` grootte, omdat in elk gegevens archief de gegevens worden opgeslagen. | Int64-waarde, in bytes |
 | filesRead | Het aantal bestanden dat is gelezen van de bron op basis van een bestand. | Int64-waarde (geen eenheid) |
 | filesWritten | Het aantal bestanden dat is geschreven/doorgevoerd naar de op bestanden gebaseerde sink. | Int64-waarde (geen eenheid) |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
 | sinkPeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
 | rowsRead | Het aantal rijen dat is gelezen van de bron (niet van toepassing op een binaire kopie). | Int64-waarde (geen eenheid) |
 | rowsCopied | Het aantal rijen dat is gekopieerd naar de Sink (niet van toepassing op een binaire kopie). | Int64-waarde (geen eenheid) |
-| rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door in te stellen `enableSkipIncompatibleRow` op waar. | Int64-waarde (geen eenheid) |
+| rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door in te stellen op `enableSkipIncompatibleRow` waar. | Int64-waarde (geen eenheid) |
 | copyDuration | De duur van de Kopieer uitvoering. | Int32-waarde, in seconden |
 | doorvoer | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int32-waarde (geen eenheid) |
@@ -68,14 +68,14 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
 | sqlDwPolyBase | Hiermee wordt aangegeven of poly Base wordt gebruikt wanneer gegevens naar SQL Data Warehouse worden gekopieerd. | Booleaans |
 | redshiftUnload | Hiermee wordt aangegeven of verwijderen wordt gebruikt wanneer gegevens uit Redshift worden gekopieerd. | Booleaans |
 | hdfsDistcp | Hiermee wordt aangegeven of DistCp wordt gebruikt wanneer gegevens worden gekopieerd uit HDFS. | Booleaans |
-| effectiveIntegrationRuntime | Het uitvoeren van de uitvoering van de activiteit (IR) of runtime (Integration runtime), in `<IR name> (<region if it's Azure IR>)`de indeling. | Tekst (teken reeks) |
+| effectiveIntegrationRuntime | Het uitvoeren van de uitvoering van de activiteit (IR) of runtime (Integration runtime), in de indeling `<IR name> (<region if it's Azure IR>)` . | Tekst (teken reeks) |
 | usedDataIntegrationUnits | De efficiënte gegevens integratie-eenheden tijdens het kopiëren. | Int32-waarde |
 | usedParallelCopies | De effectief parallelCopies tijdens de Kopieer activiteit. | Int32-waarde |
-| redirectRowPath | Pad naar het logboek van overgeslagen rijen die niet compatibel zijn in de Blob-opslag `redirectIncompatibleRowSettings` die u configureert in de eigenschap. Zie [fout tolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (teken reeks) |
+| redirectRowPath | Pad naar het logboek van overgeslagen rijen die niet compatibel zijn in de Blob-opslag die u configureert in de `redirectIncompatibleRowSettings` eigenschap. Zie [fout tolerantie](copy-activity-overview.md#fault-tolerance). | Tekst (teken reeks) |
 | executionDetails | Meer details over de stadia waarin de Kopieer activiteit wordt uitgevoerd, en de bijbehorende stappen, duur, configuraties, enzovoort. We raden u aan deze sectie niet te parseren omdat deze kan worden gewijzigd. Raadpleeg de sectie [visueel bewaken](#monitor-visually) voor meer informatie over de manier waarop u de prestaties van kopiëren kunt begrijpen en oplossen. | Matrix |
 | perfRecommendation | Tips voor het afstemmen van de prestaties kopiëren. Zie [Tips voor het afstemmen van prestaties](copy-activity-performance-troubleshooting.md#performance-tuning-tips) voor meer informatie. | Matrix |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "output": {

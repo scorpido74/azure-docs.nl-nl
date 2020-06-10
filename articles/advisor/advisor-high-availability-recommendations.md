@@ -3,12 +3,12 @@ title: Verbeter de beschik baarheid van uw toepassing met Azure Advisor
 description: Gebruik Azure Advisor om de maximale Beschik baarheid van uw Azure-implementaties te verbeteren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed092a51b5a4aba1dfa64c17f5ed3d6f72212da
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788022"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658479"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbeter de beschik baarheid van uw toepassing met Azure Advisor
 
@@ -29,7 +29,7 @@ U wordt aangeraden om twee of meer virtuele machines in een beschikbaarheidsset 
 
 Virtuele machines die deel uitmaken van een beschikbaarheidsset met schijven die opslag accounts of opslag schaal eenheden delen, zijn niet flexibel voor opslag met een enkele storing in de geheugen grootte tijdens uitval. Advisor identificeert deze beschikbaarheids sets en raadt u aan om te migreren naar Azure Managed Disks. Dit zorgt ervoor dat de schijven van de verschillende virtuele machines in de beschikbaarheidsset voldoende geïsoleerd zijn om een Single Point of Failure te voor komen. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Bekend probleem met installatie kopie versie van virtueel apparaat voor controle punt
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Bekend probleem met de installatiekopieversie van Check Point Network Virtual Appliance
 
 Met Advisor kan worden vastgesteld of op uw virtuele machine een versie van Check Point wordt uitgevoerd waarvan bekend is dat deze de netwerk verbinding verliest in het geval van een platform-onderhouds bewerking. Advisor-aanbeveling helpt u bij te werken naar een nieuwere versie van de installatie kopie waarmee dit probleem wordt opgelost. Dit zorgt voor bedrijfs continuïteit door middel van een betere netwerk verbinding.
 
@@ -93,6 +93,14 @@ Azure Advisor identificeert Azure Cosmos DB accounts die gebruikmaken van oude v
 
 Met Azure Advisor worden Azure Cosmos DB accounts geïdentificeerd die gebruikmaken van oude versies van de Cosmos DB Spark-connector en wordt aanbevolen om een upgrade uit te voeren naar de nieuwste versie van Maven voor de nieuwste oplossingen, prestatie verbeteringen en nieuwe functies. [Meer informatie over Cosmos DB Spark-connector](https://aka.ms/cosmosdb/spark-connector)
 
+## <a name="upgrade-recommendation-for-deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Upgrade aanbeveling voor afschaffing van Kafka 1,1 in HDInsight 4,0 Kafka-cluster
+
+Vanaf 1 juli 2020 kunnen klanten geen nieuwe Kafka-clusters maken met Kafka 1.1 op HDInsight 4.0. Bestaande clusters worden zonder ondersteuning van Microsoft uitgevoerd zoals ze zijn. Overweeg om de overstap naar Kafka 2.1 op HDInsight 4.0 voor 30 juni 2020 te maken om potentiële systeem- en ondersteuningsonderbrekingen te voorkomen.
+
+## <a name="upgrade-recommendation-for-deprecation-of-older-spark-versions-in-hdinsight-spark-cluster"></a>Upgrade aanbeveling voor oudere Spark-versies in HDInsight Spark-cluster
+
+Vanaf 1 juli 2020 kunnen klanten geen nieuwe Spark-clusters maken met Apache Spark 2.1 en 2.2 op HDInsight 3.6 en Spark 2.3 op HDInsight 4.0. Bestaande clusters worden zonder ondersteuning van Microsoft uitgevoerd zoals ze zijn. ",
+
 ## <a name="enable-virtual-machine-replication"></a>Replicatie van virtuele machines inschakelen
 Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio, zijn niet flexibel voor regionale storingen. Het repliceren van virtuele machines vermindert de impact van het bedrijf tijdens de tijd van een onderbreking van de Azure-regio. Advisor detecteert Vm's waarvoor geen replicatie is ingeschakeld en raadt u aan om replicatie in te scha kelen, zodat u in het geval van een storing snel uw virtuele machines in een externe Azure-regio kunt weer geven. [Meer informatie over replicatie van virtuele machines](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
@@ -105,7 +113,7 @@ Virtuele machines waarvoor geen replicatie is ingeschakeld voor een andere regio
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor meer informatie over Advisor-aanbevelingen:
-* [Inleiding tot Azure Advisor](advisor-overview.md)
+* [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
 * [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
 * [Aanbevelingen voor Advisor-prestaties](advisor-performance-recommendations.md)

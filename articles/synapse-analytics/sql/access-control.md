@@ -1,6 +1,6 @@
 ---
-title: Toegang tot werk ruimten, gegevens en pijp lijnen beheren
-description: Meer informatie over het beheren van toegangs beheer voor werk ruimten, gegevens en pijp lijnen in een Azure Synapse Analytics-werk ruimte (preview).
+title: Toegang tot werkruimten, gegevens en pijplijnen beheren
+description: Meer informatie over toegangsbeheer voor werkruimten, gegevens en pijplijnen in een Azure Synapse Analytics-werkruimte (preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,91 +9,113 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424767"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310254"
 ---
-# <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werk ruimten, gegevens en pijp lijnen beheren
+# <a name="manage-access-to-workspaces-data-and-pipelines"></a>Toegang tot werkruimten, gegevens en pijplijnen beheren
 
-Meer informatie over het beheren van toegangs beheer voor werk ruimten, gegevens en pijp lijnen in een Azure Synapse Analytics-werk ruimte (preview).
-
-> [!NOTE]
-> Voor GA is RBAC beter ontwikkeld door de introductie van Synapse Azure RBAC-rollen
-
-## <a name="access-control-for-workspace"></a>Access Control voor werk ruimte
-
-Voor een productie-implementatie in een Azure Synapse-werk ruimte raden we u aan om uw omgeving te organiseren, zodat u gebruikers en beheerders eenvoudig kunt inrichten.
+Meer informatie over toegangsbeheer voor werkruimten, gegevens en pijplijnen in een Azure Synapse Analytics-werkruimte (preview).
 
 > [!NOTE]
-> De aanpak die u hier kunt volgen, is door verschillende beveiligings groepen te maken en vervolgens de werk ruimte te configureren om ze consistent te gebruiken. Nadat de groepen zijn ingesteld, hoeft een beheerder alleen lidmaatschap van de beveiligings groepen te beheren.
+> Voor GA is RBAC beter ontwikkeld door de introductie van Synapse-specifieke Azure RBAC-rollen
 
-### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Stap 1: Stel beveiligings groepen in met een naam die volgt op dit patroon
+## <a name="access-control-for-workspace"></a>Toegangsbeheer voor werkruimte
 
-1. Beveiligings groep met de naam maken`Synapse_WORKSPACENAME_Users`
-2. Beveiligings groep met de naam maken`Synapse_WORKSPACENAME_Admins`
-3. `Synapse_WORKSPACENAME_Admins` is toegevoegd aan `ProjectSynapse_WORKSPACENAME_Users`
+Voor een productie-implementatie in een Azure Synapse-werkruimte raden we u aan om uw omgeving zo te organiseren dat u gebruikers en beheerders eenvoudig kunt inrichten.
 
-### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Stap 2: de standaard ADLS Gen2-account voorbereiden
+> [!NOTE]
+> Dit wordt hier gedaan door verschillende beveiligingsgroepen te maken en de werkruimte vervolgens te configureren om deze consistent te gebruiken. Nadat de groepen zijn ingesteld, hoeft een beheerder alleen het lidmaatschap van de beveiligingsgroepen te beheren.
 
-Wanneer u uw werk ruimte hebt ingericht, moest u een ADLSGEN2-account en een container voor het bestands systeem voor de werk ruimte kiezen.
+### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Stap 1: Beveiligingsgroepen instellen met namen die voldoen aan dit patroon
 
-1. Open de [Azure Portal](https://portal.azure.com)
-2. Ga naar het ADLSGEN2-account
-3. Ga naar de container (bestands systeem) die u hebt gekozen voor de Azure Synapse-werk ruimte
-4. Klik op **Access Control (IAM)**
+1. Beveiligingsgroep maken met de naam `Synapse_WORKSPACENAME_Users`
+2. Beveiligingsgroep maken met de naam `Synapse_WORKSPACENAME_Admins`
+3. `Synapse_WORKSPACENAME_Admins` is toegevoegd aan `Synapse_WORKSPACENAME_Users`
+
+> [!NOTE]
+> Meer informatie over het maken van een beveiligingsgroep vindt u in [dit artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+>
+> Meer informatie over het toevoegen van een beveiligings groep vanuit een andere beveiligings groep vindt u in [dit artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal).
+>
+> WORKSPACENAME: vervang dit deel door de naam van uw werkruimte.
+
+### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Stap 2: Het standaard ADLS Gen2-account voorbereiden
+
+Toen u uw werkruimte inrichtte moest u een [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)-account selecteren en een container voor het bestandssysteem voor de werkruimte die u wilt gebruiken.
+
+1. Open de [Azure-portal](https://portal.azure.com)
+2. Ga naar het Azure Data Lake Storage Gen2-account
+3. Ga naar de container (bestandssysteem) die u voor de Azure Synapse-werkruimte hebt gekozen
+4. Klik op **Toegangsbeheer (IAM)**
 5. Wijs de volgende rollen toe:
-   1. Rol van **lezer** :`Synapse_WORKSPACENAME_Users`
-   2. Rol van **gegevens eigenaar van opslag-BLOB** :`Synapse_WORKSPACENAME_Admins`
-   3. Rol van gegevensbeheerderrol voor **opslag BLOB** :`Synapse_WORKSPACENAME_Users`
-   4. Rol van **gegevens eigenaar van opslag-BLOB** :`WORKSPACENAME`
-  
-### <a name="step-3-configure-the-workspace-admin-list"></a>Stap 3: de beheer lijst voor de werk ruimte configureren
+   1. De rol van **Lezer** aan: `Synapse_WORKSPACENAME_Users`
+   2. De rol van **Eigenaar van opslagblobgegevens** aan: `Synapse_WORKSPACENAME_Admins`
+   3. De rol van **Bijdrager voor opslagblobgegevens** aan: `Synapse_WORKSPACENAME_Users`
+   4. De rol van **Eigenaar van opslagblobgegevens** aan: `WORKSPACENAME`
 
-1. Ga naar de [ **Web-UI van Azure Synapse**](https://web.azuresynapse.net)
-2. Ga naar **Manage**  > **beveiligings** > **toegangs beheer** beheren
-3. Klik op **beheerder toevoegen**en selecteer`Synapse_WORKSPACENAME_Admins`
+> [!NOTE]
+> WORKSPACENAME: vervang dit deel door de naam van uw werkruimte.
 
-### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Stap 4: SQL-beheerders toegang voor de werk ruimte configureren
+### <a name="step-3-configure-the-workspace-admin-list"></a>Stap 3: De lijst met werkruimtebeheerders configureren
 
-1. Ga naar [Azure Portal](https://portal.azure.com)
-2. Navigeer naar uw werk ruimte
-3. Ga naar **instellingen** > **Active Directory beheerder**
-4. Klik op **beheerder instellen**
+1. Ga naar de [**Azure Synapse-webinterface**](https://web.azuresynapse.net)
+2. Ga naar **Beheren**  > **Beveiliging** > **Toegangsbeheer**
+3. Klik op **Beheerder toevoegen** en selecteer `Synapse_WORKSPACENAME_Admins`
+
+### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Stap 4: SQL-beheerderstoegang voor de werkruimte configureren
+
+1. Ga naar de [Azure-portal](https://portal.azure.com)
+2. Navigeer naar de werkruimte
+3. Ga naar **Instellingen** > **Active Directory-beheerder**
+4. Klik op **Beheerder instellen**
 5. Selecteer `Synapse_WORKSPACENAME_Admins`
-6. Klik op **selecteren**
-7. Klik op **Opslaan**
+6. klik op **Selecteren**
+7. klik op **Opslaan**
 
-### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Stap 5: gebruikers en beheerders toevoegen en verwijderen voor beveiligings groepen
+> [!NOTE]
+> WORKSPACENAME: vervang dit deel door de naam van uw werkruimte.
 
-1. Gebruikers toevoegen die beheerders toegang nodig hebben tot`Synapse_WORKSPACENAME_Admins`
-2. Alle andere gebruikers toevoegen aan`Synapse_WORKSPACENAME_Users`
+### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Stap 5: Gebruikers en beheerders toevoegen aan en verwijderen uit beveiligingsgroepen
 
-## <a name="access-control-to-data"></a>Access Control naar gegevens
+1. Gebruikers toevoegen die beheerderstoegang nodig hebben tot `Synapse_WORKSPACENAME_Admins`
+2. Alle andere gebruikers toevoegen aan `Synapse_WORKSPACENAME_Users`
 
-Toegangs beheer voor de onderliggende gegevens wordt in drie delen gesplitst:
+> [!NOTE]
+> Meer informatie over het toevoegen van een gebruiker als een lid aan een beveiligingsgroep vindt u in [dit artikel](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal)
+> 
+> WORKSPACENAME: vervang dit deel door de naam van uw werkruimte.
 
-- Toegang tot het gegevens vlak van het opslag account (al eerder geconfigureerd in stap 2)
-- Data-vlak toegang tot de SQL-data bases (voor zowel SQL-groepen als SQL op aanvraag)
-- Een referentie maken voor SQL on-demand-data bases via het opslag account
+## <a name="access-control-to-data"></a>Toegangsbeheer voor gegevens
 
-## <a name="access-control-to-sql-databases"></a>Toegangs beheer voor SQL-data bases
+Toegangsbeheer voor de onderliggende gegevens wordt in drie delen gesplitst:
+
+- Toegang op gegevensvlak tot het opslagaccount (hierboven geconfigureerd in stap 2)
+- Toegang op gegevensvlak tot de SQL Databases (voor zowel SQL-pools als SQL op aanvraag)
+- Een referentie maken voor SQL-databases op aanvraag via het opslagaccount
+
+## <a name="access-control-to-sql-databases"></a>Toegangsbeheer voor SQL Databases
 
 > [!TIP]
-> De onderstaande stappen moeten worden uitgevoerd voor **elke** SQL database om gebruikers toegang te verlenen tot alle SQL-data bases.
+> De onderstaande stappen moeten worden uitgevoerd voor **elke** SQL-database om gebruikerstoegang te verlenen tot alle SQL-databases, met uitzondering van de sectie [Machtigingen op serverniveau](#server-level-permission). Hier kunt u de sysadmin-rol aan een gebruiker toewijzen.
 
 ### <a name="sql-on-demand"></a>SQL on-demand
 
-Volg de stappen in dit voor beeld om toegang te verlenen aan een gebruiker aan **één** SQL on-demand-Data Base:
+In deze sectie vindt u voorbeelden van hoe u gebruikers een machtiging kunt geven voor een bepaalde database of volledige servermachtigingen.
+
+#### <a name="database-level-permission"></a>Machtiging op databaseniveau
+
+Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot een **individuele** SQL-database op aanvraag:
 
 1. AANMELDING maken
 
     ```sql
     use master
     go
-    CREATE LOGIN [John.Thomas@microsoft.com] FROM EXTERNAL PROVIDER;
+    CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
     go
     ```
 
@@ -102,7 +124,7 @@ Volg de stappen in dit voor beeld om toegang te verlenen aan een gebruiker aan *
     ```sql
     use yourdb -- Use your DB name
     go
-    CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
+    CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
 
 3. GEBRUIKER toevoegen aan leden van de opgegeven rol
@@ -110,21 +132,33 @@ Volg de stappen in dit voor beeld om toegang te verlenen aan een gebruiker aan *
     ```sql
     use yourdb -- Use your DB name
     go
-    alter role db_owner Add member john -- Type USER name from step 2
+    alter role db_owner Add member alias -- Type USER name from step 2
     ```
 
-### <a name="sql-pools"></a>SQL-groepen
+> [!NOTE]
+> Vervang de alias door de alias van de gebruiker die u toegang wilt geven en het domein door het bedrijfsdomein dat u gebruikt.
 
-Ga als volgt te werk om een gebruiker toegang te verlenen tot een **enkele** SQL database:
+#### <a name="server-level-permission"></a>Machtiging op serverniveau
 
-1. Maak de gebruiker in de-data base door de volgende opdracht uit te voeren die gericht is op de gewenste data base in de context kiezer (vervolg keuzelijst om data bases te selecteren):
+Volg de stappen in dit voorbeeld als u een gebruiker toegang wilt verlenen tot **alle** SQL-databases op aanvraag:
+
+```sql
+CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+```
+
+### <a name="sql-pools"></a>SQL-pools
+
+Volg deze stappen als u een gebruiker toegang wilt verlenen tot een **individuele** SQL Database:
+
+1. Maak de gebruiker in de database door de volgende opdracht uit te voeren, gericht op de gewenste database in de contextkiezer (vervolgkeuzelijst voor het selecteren van databases):
 
     ```sql
     --Create user in SQL DB
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
-2. De gebruiker een rol geven om toegang te krijgen tot de Data Base:
+2. Zo kent u de gebruiker een rol toe om toegang te krijgen tot de database:
 
     ```sql
     --Create user in SQL DB
@@ -132,26 +166,26 @@ Ga als volgt te werk om een gebruiker toegang te verlenen tot een **enkele** SQL
     ```
 
 > [!IMPORTANT]
-> *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees-en schrijf machtigingen als het verlenen van *db_owner* machtiging niet gewenst is.
-> *Db_owner* machtiging is vereist voor een Spark-gebruiker om rechtstreeks vanuit Spark naar/vanuit een SQL-groep te lezen en te schrijven.
+> *db_datareader* en *db_datawriter* kunnen worden gebruikt voor lees- en schrijfmachtigingen als het verlenen van *db_owner*-toestemming niet wenselijk is.
+> Een Spark-gebruiker heeft de *db_owner*-machtiging nodig om rechtstreeks vanuit Spark naar/vanuit een SQL-pool te lezen en te schrijven.
 
-Nadat de gebruikers zijn gemaakt, controleert u of SQL on-demand een query kan uitvoeren op het opslag account:
+Wanneer de gebruikers zijn gemaakt, controleert u of SQL op aanvraag een query kan uitvoeren voor het opslagaccount:
 
-- Voer de volgende opdracht uit om de **Master** -data base van SQL on-demand te richten:
+- Voer de volgende opdracht uit voor de **master**database van SQL op aanvraag:
 
     ```sql
     CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
     WITH IDENTITY='User Identity';
     ```
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Toegangs beheer voor werk ruimte pijplijn uitvoeringen
+## <a name="access-control-to-workspace-pipeline-runs"></a>Toegangsbeheer voor pijplijnuitvoeringen in een werkruimte
 
-### <a name="workspace-managed-identity"></a>Door een werk ruimte beheerde identiteit
+### <a name="workspace-managed-identity"></a>Door een werkruimte beheerde identiteit
 
 > [!IMPORTANT]
-> Als u pijp lijnen wilt uitvoeren die gegevens sets of activiteiten bevatten die verwijzen naar een SQL-groep, moet de werk ruimte-id rechtstreeks toegang krijgen tot de SQL-groep.
+> Als u pijplijnen wilt uitvoeren die gegevenssets of activiteiten bevatten die verwijzen naar een SQL-pool, moet de werkruimte-id rechtstreeks toegang hebben tot de SQL-pool.
 
-Voer de volgende opdrachten uit op elke SQL-groep om de beheerde identiteit van de werk ruimte toe te staan om pijp lijnen uit te voeren op de SQL-groeps database:
+Voer de volgende opdrachten uit voor elke SQL-pool opdat de door de werkruimte beheerde identiteit pijplijnen kan uitvoeren op de database van de SQL-pool:
 
 ```sql
 --Create user in DB
@@ -161,7 +195,7 @@ CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 ```
 
-Deze machtiging kan worden verwijderd door het volgende script uit te voeren in dezelfde SQL-groep:
+Deze machtiging kan worden verwijderd door in dezelfde SQL-pool het volgende script uit te voeren:
 
 ```sql
 --Revoking permission to the identity
@@ -173,4 +207,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een overzicht van toegang en beheer in Synapse SQL [Synapse SQL Access Control](../sql/access-control.md). Zie [principals](https://msdn.microsoft.com/library/ms181127.aspx)voor meer informatie over data base-principals. Meer informatie over database rollen vindt u in het artikel [database rollen](https://msdn.microsoft.com/library/ms189121.aspx) .
+Zie [Door Azure Synapse-werkruimte beheerde identiteit](../security/synapse-workspace-managed-identity.md) voor een overzicht van door de Synapse-werkruimte beheerde identiteit. Zie [Principals](https://msdn.microsoft.com/library/ms181127.aspx) voor meer informatie over database-principals. Meer informatie over databaserollen vindt u in het artikel [Databaserollen](https://msdn.microsoft.com/library/ms189121.aspx).

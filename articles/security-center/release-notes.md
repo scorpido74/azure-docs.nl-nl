@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 3fa9de1057160340fdf10d72809a104cae985162
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 688f04ecf951265b9015b9516d63cf3399adcdc1
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248155"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655448"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Wat is er nieuw in Azure Security Center?
 
@@ -113,9 +113,9 @@ De drie aanbevelingen die worden verplaatst zijn:
 
 De twee nieuwe aanbevelingen die aan het besturings element worden toegevoegd, zijn:
 
-- **[Preview] gast configuratie agent moet zijn geïnstalleerd** -met behulp van [Azure Policy-gast configuratie](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) kunt u binnen virtuele machines inzicht krijgen in de instellingen van de server en de toepassing (alleen Windows).
+- De **gast configuratie-extensie moet worden geïnstalleerd op virtuele Windows-machines (preview)** : het gebruik van [Azure Policy-gast configuratie](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) biedt zicht baarheid in virtuele machines naar server-en toepassings instellingen (alleen Windows).
 
-- **[Preview] Windows exploit Guard moet zijn ingeschakeld** : Windows Defender exploit Guard maakt gebruik van de Azure Policy-gast configuratie agent. Exploit Guard heeft vier onderdelen die zijn ontworpen voor het vergren delen van apparaten tegen een groot aantal aanvals vectoren en voor het blok keren van gedrag dat vaak wordt gebruikt voor aanvallen op schadelijke software, terwijl ondernemingen hun beveiligings Risico's en productiviteits vereisten kunnen afstemmen (alleen Windows).
+- **Windows Defender exploit Guard moet zijn ingeschakeld op uw computers (preview)** : Windows Defender exploit Guard maakt gebruik van de Azure Policy-gast configuratie agent. Exploit Guard heeft vier onderdelen die zijn ontworpen voor het vergren delen van apparaten tegen een groot aantal aanvals vectoren en voor het blok keren van gedrag dat vaak wordt gebruikt voor aanvallen op schadelijke software, terwijl ondernemingen hun beveiligings Risico's en productiviteits vereisten kunnen afstemmen (alleen Windows).
 
 Meer informatie over Windows Defender exploit Guard in [een exploit Guard-beleid maken en implementeren](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy).
 

@@ -1,43 +1,43 @@
 ---
 title: Werken met externe entiteiten in Unity
-description: Zelf studie waarin wordt uitgelegd hoe u met ARR-entiteiten werkt.
+description: Zelfstudie waarin wordt uitgelegd hoe u met ARR-entiteiten werkt.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
-ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 5d995e9a5cdb6fc18532e0c3533959e9feece908
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81310210"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021242"
 ---
-# <a name="tutorial-working-with-remote-entities-in-unity"></a>Zelf studie: werken met externe entiteiten in Unity
+# <a name="tutorial-working-with-remote-entities-in-unity"></a>Zelfstudie: Werken met externe entiteiten in Unity
 
-[Zelf studie: voor het instellen van een eenheids project](project-setup.md) hebt u geleerd hoe u een nieuw unit-project kunt configureren voor gebruik met de externe rendering van Azure. In deze zelf studie hebben we een overzicht van de meest voorkomende functionaliteit die elke ARR-gebruiker nodig heeft.
+[Zelfstudie: een volledig nieuw Unity-project opstarten](project-setup.md) liet zien hoe u een nieuw Unity-project configureert om te kunnen werken met Azure Remote Rendering. In deze zelfstudie bekijken we de meest voorkomende functionaliteit die elke ARR-gebruiker nodig heeft.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 >
-> * Objecten selecteren met behulp van Ray-casts.
-> * Object statussen onderdrukken, zoals tint kleur, selectie status en zicht baarheid.
+> * Objecten kiezen met behulp van ray casts.
+> * Objectstatussen overschrijven zoals tint, selectiestatus en zichtbaarheid.
 > * Externe entiteiten verwijderen.
-> * Verplaats externe entiteiten rond.
-> * Gebruik geknipte abonnementen om binnen objecten te zoeken.
+> * Externe entiteiten verplaatsen.
+> * Geknipte vlakken gebruiken om in objecten te kijken.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Deze zelf studie bouwt bovenop [een zelf studie: een geheel nieuw eenheids project instellen](project-setup.md).
+* Deze zelfstudie borduurt voort op de [zelfstudie: een volledig nieuw Unity-project opstarten](project-setup.md).
 
 > [!TIP]
-> De [opslag plaats](https://github.com/Azure/azure-remote-rendering) voor de ARR-voor beelden bevat voor bereide eenheids projecten voor alle zelf studies in de map *Unity* , die u als referentie kunt gebruiken.
+> De [ARR-voorbeeldopslagplaats](https://github.com/Azure/azure-remote-rendering) bevat voorbereide Unity-projecten voor alle zelfstudies in de map *Unity*, die u als referentie kunt gebruiken.
 
 ## <a name="pick-objects"></a>Objecten kiezen
 
-We willen met objecten werken, dus het eerste wat u nodig hebt, is het verzamelen van objecten onder de muis aanwijzer.
+We willen interactie hebben met objecten, dus het eerste dat we nodig hebben, is het kiezen van objecten onder de muiscursor.
 
-Maak een [Nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) met de naam **RemoteRaycaster** en vervang de volledige inhoud door de onderstaande code:
+Maak een [nieuw script](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) met de naam **RemoteRaycaster** en vervang de volledige inhoud door de onderstaande code:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -113,16 +113,16 @@ Voeg dit onderdeel toe aan het object *RemoteRendering* in uw scène.
 
 > [!WARNING]
 >
-> Het onderdeel *RemoteRaycaster* vereist dat een *ARRServiceUnity* -onderdeel aan hetzelfde object is gekoppeld. *ARRServiceUnity* is een helperklasse waarmee u eenvoudiger toegang hebt tot bepaalde ARR-functies. Er kan echter slechts één exemplaar van dit onderdeel in de scène zijn. Zorg er daarom voor dat u alle onderdelen toevoegt waarvoor *ARRServiceUnity* is vereist voor dezelfde GameObject.
-> Als u de ARR-functionaliteit van meerdere spel objecten wilt gebruiken, voegt u de *ARRServiceUnity* -component alleen toe aan een van deze elementen en verwijst u naar die in de andere scripts, of opent u de ARR-functionaliteit rechtstreeks.
+> Voor het onderdeel *RemoteRaycaster* moet een *ARRServiceUnity-* onderdeel aan hetzelfde object zijn gekoppeld. *ARRServiceUnity* is een hulpklasse waarmee u eenvoudiger toegang krijgt tot bepaalde ARR-functies. Er kan echter maar één exemplaar van dit onderdeel in de scène zijn. Zorg er daarom voor dat u alle onderdelen waarvoor *ARRServiceUnity* is vereist aan hetzelfde GameObject toevoegt.
+> Als u vanuit meerdere game-objecten toegang wilt krijgen tot de ARR-functionaliteit, voegt u het onderdeel *ARRServiceUnity* toe aan één van deze objecten en verwijst u daarnaar in de andere scripts of u benadert de ARR-functionaliteit rechtstreeks.
 
-Druk op afspelen, maak verbinding met een sessie en laad een model. Wijs nu objecten in de scène aan en Bekijk de uitvoer van de console. De naam van het object moet worden afgedrukt van elk deel waarvan u de muis aanwijzer over hebt.
+Druk op afspelen, maak verbinding met een sessie en laad een model. Wijs nu naar objecten in de scène en bekijk de uitvoer van de console. Deze moet de objectnaam afdrukken van elke tegel waar u met de muis overheen beweegt.
 
 ## <a name="highlight-objects"></a>Objecten markeren
 
-Als volgende stap willen we visuele feedback geven over de onderdelen van een model waarnaar de gebruiker verwijst. Om dit te verhalen, koppelen we een [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) aan de entiteit die we hebben gekozen. Dit onderdeel kan worden gebruikt om verschillende functies voor een object in of uit te scha kelen. Hier gebruiken we het om een tint kleur in te stellen en de [Contour weergave](../../overview/features/outlines.md)in te scha kelen.
+Als volgende stap willen we visuele feedback geven over de tegels van een model waarnaar de gebruiker wijst. Hiervoor voegen we een [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) toe aan de entiteit die we hebben geselecteerd. Dit onderdeel kan worden gebruikt om verschillende functies van een object in of uit te schakelen. Hier gebruiken we het om een tint in te stellen en [contourweergave](../../overview/features/outlines.md) in te schakelen.
 
-Maak een ander script bestand met de naam **RemoteModelEntity** en vervang de inhoud door de volgende code:
+Maak een ander scriptbestand met de naam **RemoteModelEntity** en vervang de inhoud door de volgende code:
 
 ```csharp
 using System.Collections;
@@ -192,11 +192,11 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Wijs dit script niet toe aan een spel object, omdat het via een programma via de onderstaande code wordt toegewezen.
+> Wijs dit script niet toe aan een Unity-gameobject, aangezien het door de onderstaande code programmatisch wordt toegewezen.
 
-Daarna moeten we onze *RemoteRaycaster* uitbreiden om de *RemoteModelEntity* -component toe te voegen aan het object dat we zojuist hebben gekozen.
+Daarna moeten we onze *RemoteRaycaster* uitbreiden om het onderdeel *RemoteModelEntity* toe te voegen aan het object dat we zojuist hebben geselecteerd.
 
-Voeg de volgende code toe aan de **RemoteRaycaster** -implementatie en verwijder de dubbele functies:
+Voeg de volgende code toe aan de implementatie van **RemoteRaycaster** en verwijder de dubbele functies:
 
 ```csharp
     private RemoteModelEntity focusedModel = null;
@@ -242,11 +242,11 @@ Voeg de volgende code toe aan de **RemoteRaycaster** -implementatie en verwijder
     }
 ```
 
-Voer uw project uit en wijs een model aan. u ziet nu een rode tint en een wit selectie kader.
+Voer uw project uit en wijs naar een model. U zou moeten zien dat het een rode tint en witte contouren krijgt.
 
 ## <a name="isolate-the-selected-object"></a>Het geselecteerde object isoleren
 
-Een ander gebruik van de [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) is de mogelijkheid om zicht baarheid te negeren. Zo kunt u een geselecteerd object isoleren van de rest van het model. Open het script **RemoteModelEntity** , voeg de volgende code toe en verwijder de dubbele functies:
+Een ander manier waarop de [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) kan worden gebruikt is voor het overschrijven van zichtbaarheid. Hierdoor kunt u een geselecteerd object isoleren van de rest van het model. Open het **RemoteModelEntity**-script, voeg de volgende code toe en verwijder de dubbele functies:
 
 ```csharp
     private bool isolated = false;
@@ -304,9 +304,9 @@ Een ander gebruik van de [HierarchicalStateOverrideComponent](../../overview/fea
     }
 ```
 
-Deze code is afhankelijk van een status onderdrukkings onderdeel op het bovenste object in de hiërarchie, waardoor alle objecten onzichtbaar worden. Vervolgens wordt de zicht baarheid van het geselecteerde object overschreven om ervoor te zorgen dat het ene object zichtbaar is. Daarom moeten we een onderdeel voor status onderdrukking maken op het hoofd object.
+Deze code is afhankelijk van het feit dat hij in het hoogste object in de hiërarchie moet beschikken over een statusoverschrijvend onderdeel, waardoor alle objecten onzichtbaar worden. Vervolgens wordt de zichtbaarheid van het geselecteerde object opnieuw overschreven zodat dat ene object zichtbaar wordt. Daarom moeten we een statusoverschrijvend onderdeel maken voor het object in de hoofdmap.
 
-Open het script **RemoteRendering** en voeg de volgende code toe boven aan de *LoadModel* -functie:
+Open het **RemoteRendering**-script en voeg onderstaande code toe bovenaan de *LoadModel*-functie:
 
 ```csharp
     public async void LoadModel()
@@ -319,7 +319,7 @@ Open het script **RemoteRendering** en voeg de volgende code toe boven aan de *L
     }
 ```
 
-Ten slotte is er een manier nodig om zicht baarheid te scha kelen. Open het **RemoteRaycaster** -script en vervang de functie *Update* :
+Eindelijk hebben we nog een manier nodig om de zichtbaarheid te veranderen. Open het **RemoteRaycaster**-script en vervang de functie *Bijwerken*:
 
 ```csharp
     private void Update()
@@ -340,15 +340,15 @@ Ten slotte is er een manier nodig om zicht baarheid te scha kelen. Open het **Re
     }
 ```
 
-Voer de code uit en klik met de rechter muisknop op een deel van het model. De rest van het model verdwijnt en alleen het gemarkeerde onderdeel blijft zichtbaar.
+Voer de code uit en klik met de rechtermuisknop op een tegel van het model. De rest van het model verdwijnt en alleen het gemarkeerde deel blijft zichtbaar.
 
-## <a name="remove-gameobject-instances-of-remote-entities"></a>GameObject exemplaren van externe entiteiten verwijderen
+## <a name="remove-gameobject-instances-of-remote-entities"></a>GameObject-exemplaren van externe entiteiten verwijderen
 
-Mogelijk hebt u opgemerkt dat de code blijft bezig met het maken van objecten, maar u kunt ze nooit opschonen. Dit wordt ook weer gegeven in het deel venster object hiërarchie. Wanneer u de externe object hiërarchie uitvouwt tijdens simulatie, ziet u dat er meer objecten worden weer gegeven telkens wanneer u de muis aanwijzer boven een nieuw deel van het model houdt.
+U hebt misschien gemerkt dat de code objecten blijft maken, maar ze nooit opruimt. Dit wordt ook weergegeven in het deelvenster objecthiërarchie. Wanneer u tijdens simulatie de hiërarchie van externe objecten uitbreidt,ziet u iedere keer dat u met een muis over een tegel van het model beweegt steeds meer objecten verschijnen.
 
-Het hebben van veel objecten in een scène heeft een negatieve invloed op de prestaties. U moet altijd objecten opschonen die niet meer nodig zijn.
+Als er zich veel objecten in een scène bevinden, heeft dit een negatieve invloed op de prestaties. Objecten die niet meer worden gebruikt, moeten worden opgeschoond.
 
-Voeg de onderstaande code toe aan het script **RemoteRaycaster** en verwijder de dubbele functies:
+Voer onderstaande code in in het script **RemoteRaycaster**en verwijder de dubbele functies:
 
 ```csharp
     private void ClearFocus()
@@ -372,7 +372,7 @@ Voeg de onderstaande code toe aan het script **RemoteRaycaster** en verwijder de
 
 ## <a name="move-objects"></a>Objecten verplaatsen
 
-Als volgende stap willen we een geselecteerd object verplaatsen. In het script **RemoteRaycaster** voegt u deze code in en verwijdert u de functie duplicate:
+Als volgende stap willen we een geselecteerd object verplaatsen. Voer deze code in in het script **RemoteRaycaster**en verwijder de dubbele functie:
 
 ```csharp
     private Vector3 lastPosition = Vector3.zero;
@@ -412,9 +412,9 @@ Als volgende stap willen we een geselecteerd object verplaatsen. In het script *
 ```
 
 > [!IMPORTANT]
-> Als u deze code uitvoert, zult u merken dat er niets gebeurt. Dat komt doordat het wijzigen van de trans formatie van een object de status wijziging niet automatisch synchroniseert naar de server, om prestatie redenen. In plaats daarvan moet u deze status wijziging hand matig pushen naar de-server of **SyncEveryFrame** inschakelen voor het onderdeel *RemoteEntitySyncObject* .
+> als u deze code uitvoert, zult u merken dat er niets gebeurt. Dat komt omdat het wijzigen van de transformatie van een object om prestatieredenen niet automatisch de statuswijziging naar de server synchroniseert. In plaats daarvan moet u deze statuswijziging handmatig naar de server pushen of u schakelt **SyncEveryFrame** in op het onderdeel *RemoteEntitySyncObject*.
 
-Open het script **RemoteModelEntity** en voeg deze regel toe:
+Open het **RemoteModelEntity**-script en voeg deze regel toe:
 
 ```csharp
     public void OnEnable()
@@ -425,15 +425,15 @@ Open het script **RemoteModelEntity** en voeg deze regel toe:
     }
 ```
 
-Als u de code opnieuw uitvoert, kunt u met de rechter muisknop op een object klikken en dit slepen.
+Als u de code opnieuw uitvoert, moet u daarna met de linkermuisknop op een object kunnen klikken en het object rond kunnen slepen.
 
-## <a name="add-a-cut-plane"></a>Een knip vlak toevoegen
+## <a name="add-a-cut-plane"></a>Een snijvlak toevoegen
 
-De laatste functie die we willen uitproberen in deze zelf studie, gebruikt [geknipte abonnementen](../../overview/features/cut-planes.md). Een knip vlak vermindert delen van gerenderde objecten, zodat u erin kunt zoeken.
+De laatste functie die we in deze zelfstudie willen behandelen, is het gebruik van [snijvlakken](../../overview/features/cut-planes.md). Een snijvlak snijdt tegels van weergegeven objecten weg zodat u in de objecten kunt kijken.
 
-Maak een nieuwe GameObject in de scène- **CutPlane**. Maak een nieuw script en noem het **RemoteCutPlane**. Voeg het onderdeel toe aan het nieuwe GameObject.
+Maak een nieuw GameObject aan in de scène **CutPlane**. Maak een nieuw script en noem dit **RemoteCutPlane**. Voeg het onderdeel toe aan het nieuwe GameObject.
 
-Open het script bestand en vervang de inhoud door de volgende code:
+Open het scriptbestand en vervang de inhoud door de volgende code:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -487,11 +487,11 @@ public class RemoteCutPlane : MonoBehaviour
 }
 ```
 
-Wanneer u de code nu uitvoert, ziet u hoe het model geopend is door het vlak. U kunt het *CutPlane* -object selecteren en dit verplaatsen en roteren in het *scène* venster. U kunt het Knip vlak in-en uitschakelen door het Knip vlak object uit te scha kelen.
+Wanneer u de code uitvoert, zou u moeten zien dat het model door het vlak is opengesneden. U kunt het *CutPlane*-object selecteren en verplaatsen en roteren in het venster *Scène*. U kunt het snijvlak in- en uitschakelen door het snijvlakobject uit te schakelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kent nu de belangrijkste functionaliteit voor interactie met externe objecten. In de volgende zelf studie ziet u hoe u het uiterlijk van een scène kunt aanpassen.
+U kent nu de belangrijkste functionaliteit voor interactie met externe objecten. In de volgende zelfstudie besteden we aandacht aan het aanpassen van het uiterlijk van een scène.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: de omgeving en het materiaal wijzigen](changing-environment-and-materials.md)
+> [Zelfstudie: de omgeving en de materialen wijzigen](changing-environment-and-materials.md)

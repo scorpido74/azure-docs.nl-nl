@@ -4,16 +4,16 @@ description: Bestanden veilig verplaatsen van en naar een virtuele Linux-machine
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 531edf5bb857b570e595fc1a179a887013e094f3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969608"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659767"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Bestanden verplaatsen van en naar een virtuele Linux-machine met behulp van SCP
 
@@ -41,9 +41,9 @@ Als voor beeld wordt een Azure-configuratie bestand naar een virtuele Linux-mach
 
 ## <a name="ssh-key-pair-authentication"></a>Verificatie van SSH-sleutel paar
 
-SCP gebruikt SSH voor de transportlaag. SSH verwerkt de verificatie op de doelhost en verplaatst het bestand in een versleutelde tunnel die standaard wordt meegeleverd met SSH. Voor SSH-verificatie kunnen gebruikers namen en wacht woorden worden gebruikt. De open bare en persoonlijke sleutel verificatie van SSH wordt echter aanbevolen als een beveiligings best practice. Nadat de verbinding is geverifieerd door de SSH, begint SCP het bestand te kopiëren. Door gebruik te maken `~/.ssh/config` van een juist geconfigureerde en open bare en persoonlijke SSH-sleutel, kan de SCP-verbinding tot stand worden gebracht door alleen een server naam (of IP-adres) te gebruiken. Als u slechts één SSH-sleutel hebt, wordt deze in de `~/.ssh/` directory gezocht en wordt deze standaard gebruikt om u aan te melden bij de virtuele machine.
+SCP gebruikt SSH voor de transportlaag. SSH verwerkt de verificatie op de doelhost en verplaatst het bestand in een versleutelde tunnel die standaard wordt meegeleverd met SSH. Voor SSH-verificatie kunnen gebruikers namen en wacht woorden worden gebruikt. De open bare en persoonlijke sleutel verificatie van SSH wordt echter aanbevolen als een beveiligings best practice. Nadat de verbinding is geverifieerd door de SSH, begint SCP het bestand te kopiëren. Door gebruik te maken van een juist geconfigureerde `~/.ssh/config` en open bare en persoonlijke SSH-sleutel, kan de SCP-verbinding tot stand worden gebracht door alleen een server naam (of IP-adres) te gebruiken. Als u slechts één SSH-sleutel hebt, wordt deze in de `~/.ssh/` directory gezocht en wordt deze standaard gebruikt om u aan te melden bij de virtuele machine.
 
-Zie [SSH-sleutels maken](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)voor `~/.ssh/config` meer informatie over het configureren van open bare en persoonlijke sleutels voor SSH.
+Zie SSH-sleutels maken voor meer informatie over het configureren van `~/.ssh/config` open bare [Create SSH keys](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)en persoonlijke sleutels voor SSH.
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>Een bestand aan een virtuele Linux-machine SCP
 

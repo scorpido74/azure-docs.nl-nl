@@ -3,16 +3,16 @@ title: Ultra schijven voor virtuele Windows-machines-Azure Managed Disks
 description: Meer informatie over Ultra schijven voor virtuele Azure-machines
 author: roygara
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dcecd80fce20046b05a3c35b878e33e13001ee86
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 714488329ff760833319e7b39267353a80777c71
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196957"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657396"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra Disk gebruiken
 

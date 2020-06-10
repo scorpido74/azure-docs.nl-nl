@@ -9,18 +9,21 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019, tracking-python
-ms.openlocfilehash: 5c45cb765fec9f34e5db0e9bd66ef020499eadf1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 00eb7c1488c90add48e3b6755ca1835d2ce1ff2d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559167"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657705"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Azure-wachtrij opslag gebruiken v 2.1 van python
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 In dit artikel worden algemene scenario's beschreven die gebruikmaken van de Azure Queue Storage-service. De gedekte scenario's zijn het invoegen, inspecteren, ophalen en verwijderen van wachtrij berichten, en het maken en verwijderen van wacht rijen.
+
+> [!IMPORTANT]
+> In dit artikel wordt verwezen naar de oudere versie van de Azure Storage-client bibliotheek voor python. Om aan de slag te gaan met de nieuwste versie, raadpleegt u [Quick Start: client bibliotheek voor Azure Queue Storage voor python](storage-quickstart-queues-python.md)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 
@@ -151,7 +154,7 @@ queue_service.delete_queue('taskqueue')
 Nu u de basis principes van wachtrij opslag hebt geleerd, volgt u deze koppelingen voor meer informatie.
 
 * [Azure queues python API-verwijzing](/python/api/azure-storage-queue)
-* [Python Developer Center](https://azure.microsoft.com/develop/python/)
+* [Python-ontwikkelaars centrum](https://azure.microsoft.com/develop/python/)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355)
 
 [Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/

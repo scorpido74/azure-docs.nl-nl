@@ -3,17 +3,17 @@ title: Uw investeringen in de cloud optimaliseren met Azure Cost Management
 description: Dit artikel helpt u de meeste waarde uit uw investeringen in de cloud te halen, uw kosten te verlagen en te evalueren waar uw geld wordt uitgegeven.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791609"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142415"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Uw investeringen in de cloud optimaliseren met Azure Cost Management
 
@@ -131,14 +131,39 @@ Zie [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-services-ov
 
 Blijf op de hoogte van de ontwikkeling van de kosten voor uw organisatie in de loop van de tijd. Gebruik de volgende technieken om uw uitgaven goed te begrijpen en te beheren.
 
-### <a name="organize-and-tag-your-resources"></a>Uw resources ordenen en labelen
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>Resources organiseren om kosteninzichten en verantwoording te maximaliseren
 
-Organiseer uw resources met de kosten in gedachte. Wanneer u abonnementen en resourcegroepen maakt, moet u nadenken over de teams die verantwoordelijk zijn voor de gekoppelde kosten. Zorg ervoor dat uw bij uw rapportage uw organisatie in het oog houdt. Abonnementen en resourcegroepen bieden goede buckets om de uitgaven voor uw organisatie in te delen en te kenmerken. Tags bieden een goede manier om de kosten te berekenen. U kunt tags gebruiken als filter. En u kunt ze groeperen op het analyseren van gegevens en het onderzoeken van de kosten. Enterprise Agreement-klanten kunnen ook afdelingen maken en hier abonnementen onder plaatsen. Op kosten gebaseerde organisatie in Azure zorgt ervoor dat de relevante personen in uw organisatie het account kunnen blijven gebruiken om de uitgaven van hun team te verminderen.
+Een goed geplande organisatiestructuur voor uw Azure-facturering en resourcehiërarchieën zorgt voor een goed begrip en controle over de kosten bij het maken van uw cloudinfrastructuur. Bekijk de video [Entiteitshiërarchieën instellen](https://www.youtube.com/watch?v=n3TLRaYJ1NY) om een beter inzicht te krijgen in de beschikbare organisatiehulpprogramma's en hoe u deze kunt gebruiken. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
-Bekijk de video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Tagbeleid controleren met Azure Cost Management) voor inzicht in de beschikbare hulpprogramma’s waarmee u schaalbare resourcetags kunt afdwingen in uw organisatie. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+Stel uzelf de volgende vragen wanneer u een hiërarchie evalueert en maakt die aan uw behoeften voldoet.
+
+*Welke factureringshiërarchie is beschikbaar en wat zijn de verschillende bereiken die ik kan gebruiken?*
+
+Identificeer de factureringsregeling voor uw organisatie door uw Azure-aanbiedingstype te bepalen. De beschikbare bereiken voor elke Azure-factureringsregeling worden beschreven in [Bereiken begrijpen en gebruiken](understand-work-scopes.md).
+
+*Hoe kan ik mijn abonnementen en resourcegroepen organiseren als ik meerdere teams heb?*
+
+Het maken van een abonnement of resourcegroep voor elk team is een veelvoorkomende procedure. Op deze manier kunt u kosten differentiëren en teams verantwoordelijk houden. De kosten zijn echter gebonden aan het abonnement of de resource groep.
+
+Als u al teams met meerdere abonnementen hebt, kunt u de abonnementen groeperen in beheergroepen om de kosten samen te analyseren. Beheergroepen, abonnementen en resourcegroepen maken allemaal deel uit van de Azure RBAC-hiërarchie. Gebruik ze gezamenlijk voor toegangsbeheer in uw teams.
+
+Resources kunnen meerdere bereiken omvatten, vooral wanneer ze worden gedeeld door meerdere teams of workloads. Overweeg het identificeren van resources met tags. In de volgende sectie worden tags verder besproken.
+
+*Heb ik ontwikkel-en productieomgevingen?*
+
+Overweeg om ontwikkel-en testabonnementen te maken voor uw ontwikkelomgevingen om te profiteren van gereduceerde prijzen. Als de workloads meerdere teams of Azure-bereiken omvatten, kunt u tags gebruiken om ze te identificeren.
+
+### <a name="tag-shared-resources"></a>Gedeelde tagresources
+
+Tags zijn een efficiënte manier om inzicht te krijgen in kosten die betrekking hebben op meerdere teams en Azure-bereiken. U heeft bijvoorbeeld een resource zoals een e-mailserver die veel teams gebruiken. U kunt een gedeelde resource, zoals de e-mailserver, plaatsen in een abonnement dat is toegewezen aan gedeelde resources of in een bestaand abonnement. Als u deze in een bestaand abonnement plaatst, wil de eigenaar van het abonnement niet dat de kosten voor zijn team elke maand oplopen. Voor dit voorbeeld kunt u een tag gebruiken om de resource te identificeren die wordt gedeeld.
+
+Op dezelfde manier kunt u ook web-apps of -omgevingen hebben, zoals Test of Productie, die resources gebruiken over meerdere abonnementen waarvan verschillende teams eigenaar zijn. Als u meer inzicht wilt krijgen in de volledige kosten van de workloads, voorziet u de resources die ze gebruiken, van een tag. Wanneer tags correct worden toegepast, kunt u ze als filter toepassen in een kostenanalyse om trends beter te begrijpen.
+
+Nadat u resourcetags hebt gepland, kunt u een Azure-beleid configureren om resourcetags af te dwingen. Bekijk de video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Tagbeleid controleren met Azure Cost Management) voor inzicht in de beschikbare hulpprogramma's waarmee u schaalbare resourcetags kunt afdwingen. Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>Kostenanalyse gebruiken
 
