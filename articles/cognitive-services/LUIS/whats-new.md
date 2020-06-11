@@ -3,18 +3,24 @@ title: Wat is er nieuw-Language Understanding (LUIS)
 description: Dit artikel wordt regel matig bijgewerkt met nieuws over de Azure Cognitive Services Language Understanding-API.
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675953"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678746"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
-Meer informatie over wat er nieuw is in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over nieuwe functies in de service. Deze items zijn release opmerkingen, Video's, blog berichten en andere soorten informatie. Voeg een bladwijzer toe aan deze pagina om up-to-date te blijven over de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="june-2020"></a>Juni 2020
+
+* [Preview 3,0-ontwerpen](luis-migration-authoring-entities.md) SDK
+    * Versie 3.2.0-Preview. 3- [.net-NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * Versie 4.0.0-Preview. 3- [js-NPM](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
 
 ### <a name="may-2020---build"></a>Mei 2020-build
 

@@ -2,29 +2,70 @@
 title: Functies-LUIS
 description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/10/2020
+ms.openlocfilehash: 823c51f0b58481e30ff54814dde03285ad094b9e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742713"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677588"
 ---
 # <a name="machine-learning-ml-features"></a>Functies voor machine learning (ML)
 
-In machine learning is een **functie**   een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert.
+In machine learning is een **functie**   een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert en doorloopt.
 
 Machine learning-functies geven LUIS belang rijke aanwijzingen voor waar u kunt zoeken naar dingen die een concept zullen onderscheiden. Ze zijn hints die LUIS kunnen gebruiken, maar geen vaste regels.  Deze hints worden gebruikt in combi natie met de labels om de gegevens te vinden.
 
- LUIS ondersteunt beide woordgroepen lijsten en het gebruik van andere entiteiten als functies:
+## <a name="what-is-a-feature"></a>Wat is een functie?
+
+Een functie is een onderscheidende eigenschappen die kunnen worden beschreven als een functie: f (x) = y. De functie wordt gebruikt om te weten waar in het voor beeld utterance voor de onderscheidende kenmerken moet worden gezocht. Wat vindt u bij het maken van uw schema, wat weet u over het voor beeld utterance dat de eigenschappen aangeeft? Uw antwoord is uw beste gids voor het maken van functies.
+
+## <a name="types-of-features"></a>Typen functies
+
+ LUIS ondersteunt beide woordgroepen lijsten en modellen als functies:
 * Functie woordgroepen lijst
 * Model (intentie of entiteit) als onderdeel
 
 Functies moeten worden beschouwd als een vereist deel van het schema ontwerp.
 
+## <a name="how-you-find-features-in-your-example-utterances"></a>Hoe u functies in uw voor beeld vindt uitingen
+
+Omdat LUIS een op talen gebaseerde toepassing is, zijn de functies gebaseerd op tekst. Kies tekst die aangeeft welke eigenschappen u wilt onderscheiden. Voor LUIS is de op tekst gebaseerde kleinste eenheid het token. Voor de Engelse taal is een token een aaneengesloten reeks, zonder spaties of lees tekens, van letters en cijfers. Een spatie is geen token.
+
+Omdat spaties en interpunctie geen tokens zijn, richt u zich op de tekst aanwijzingen die u als functies kunt gebruiken. Vergeet niet om ook variaties van het woord op te brengen:
+* meervouds formulieren
+* werkwoordsvormen
+* veelgebruikt
+* spelling en spel fout
+
+Moet de tekst, als een onderscheiding eigenschappen, het volgende hebben:
+* Overeenkomen met een exact woord of woord groep: overweeg een reguliere expressie-entiteit toe te voegen, of een lijst entiteit als een functie voor de entiteit of het doel
+* Een bekende concept, zoals datums, tijden of namen van personen, met een vooraf samengestelde entiteit gebruiken als onderdeel van de entiteit of het doel
+* Nieuwe voor beelden meer informatie over de tijd: gebruik een woordgroepen lijst met enkele voor beelden van het concept als een functie voor de entiteit of het doel
+
+## <a name="combine-features"></a>Functies combi neren
+
+Omdat er verschillende opties zijn in de manier waarop een Trait wordt beschreven, kunt u meer dan één functie gebruiken waarmee u die eigenschappen of het concept kunt beschrijven. Een veelvoorkomende koppeling is het gebruik van een woordgroepen lijst functie en een van de entiteits typen die doorgaans worden gebruikt als onderdelen: prebuilde entiteit, reguliere expressie-entiteit of lijst entiteit.
+
+### <a name="ticket-booking-entity-example"></a>Voor beeld van ticket reserverings entiteit
+
+Een voor beeld: een app voor het reserveren van een vlucht met een vlucht reservering en een ticket boekings entiteit.
+
+De ticket reserverings entiteit is een door een machine geleerde entiteit voor de vlucht bestemming. U kunt de locatie extra heren door twee functies te gebruiken:
+* Woordgroepen lijst met relevante woorden `plane` , zoals,, `flight` `reservation` ,`ticket`
+* Vooraf gebouwde `geographyV2` entiteit als onderdeel van de entiteit
+
+### <a name="pizza-entity-example"></a>Voor beeld van pizza-entiteit
+
+In een ander voor beeld kunt u een app overwegen om een pizza te best Ellen met een pizza-order intentie maken en een pizza-entiteit.
+
+De entiteit pizza is een door de machine geleerde entiteit voor de details van de pizza. Voor het uitpakken van de details gebruikt u twee functies om het volgende te helpen:
+* Woordgroepen lijst met relevante woorden `cheese` , zoals,, `crust` `pepperoni` ,`pineapple`
+* Vooraf gebouwde `number` entiteit als onderdeel van de entiteit
+
 ## <a name="a-phrase-list-for-a-particular-concept"></a>Een woordgroepen lijst voor een bepaald concept
 
-Een woordgroepen lijst is een lijst met woorden of zinsdelen waarmee een bepaald concept wordt ingekapseld.
+Een woordgroepen lijst is een lijst met woorden of zinsdelen waarmee een bepaald concept wordt ingekapseld en wordt toegepast als een hoofdletter gevoelige overeenkomst op het token niveau.
 
 Wanneer u een woordgroepen lijst toevoegt, kunt u de functie als volgt instellen:
 * **[Global](#global-features)**. Een globale functie is van toepassing op de hele app.
@@ -55,6 +96,18 @@ Als u de medische voor waarden wilt extra heren:
 * Maak eerst een voor beeld van uitingen en label medische voor waarden binnen deze uitingen.
 * Maak vervolgens een woordgroepen lijst met voor beelden van de voor waarden binnen het onderwerps domein. Deze woordgroepen lijst moet de werkelijke term bevatten die u hebt gelabeld en andere termen die hetzelfde concept beschrijven.
 * Voeg de woordgroepen lijst toe aan de entiteit of subentiteit die het concept extraheert dat in de woordgroepen lijst wordt gebruikt. Het meest voorkomende scenario is een onderdeel (onderliggend) van een machine learning-entiteit. Als de lijst met zinsdelen moet worden toegepast op alle intenties of entiteiten, markeert u de woordgroepen lijst als een globale woordgroepen lijst. De `enabledForAllModels` vlag bepaalt dit model bereik in de API.
+
+### <a name="token-matches-for-a-phrase-list"></a>Overeenkomende tokens voor een woordgroepen lijst
+
+Een woordgroepen lijst is van toepassing op token niveau, ongeacht het geval. In het volgende diagram ziet u hoe een woordgroepen lijst met het woord `Ann` wordt toegepast op variaties van dezelfde tekens in die volg orde.
+
+
+| Token variatie van`Ann` | De woordgroepen lijst komt overeen wanneer het token wordt gevonden |
+|--------------------------|---------------------------------------|
+| Anne<br>Anne<br>           | Ja, token is`Ann`                  |
+| Anne                    | Ja, token is`Ann`                  |
+| Anne                     | Geen-token is`Anne`                  |
+
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>

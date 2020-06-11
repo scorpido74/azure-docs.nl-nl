@@ -1,14 +1,14 @@
 ---
 title: App testen in de LUIS-Portal
 description: Gebruik Language Understanding (LUIS) om voortdurend aan uw toepassing te werken om deze te verfijnen en de taal inzichten te verbeteren.
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344149"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677730"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Uw LUIS-app testen in de LUIS-Portal
 
@@ -65,9 +65,25 @@ In het deel venster inspectie kunt u de test utterance toevoegen aan een intenti
 
 ## <a name="disable-required-features"></a>Vereiste onderdelen uitschakelen
 
-Selecteer deze wissel knop om te zien wat de voor spelling zou zijn als de functie van de entiteit niet is vereist.
+Met deze wissel knop kunt u bepalen of de getrainde app op de juiste wijze uw entiteiten kan voors pellen op basis van de vereiste onderdelen. De standaard instelling is het Toep assen van de functie zoals vereist tijdens de voor spelling. Selecteer deze wissel knop om te zien wat de voor spelling zou zijn als de functie van de subentiteit niet is vereist.
 
-Met deze wissel knop kunt u bepalen of de getrainde app op de juiste wijze uw entiteiten kan voors pellen op basis van de vereiste onderdelen. De getrainde app kan een door een machine geleerde entiteit mogelijk verkeerd voors pellen op basis van het onjuiste labelen van bijvoorbeeld uitingen of de vereiste functie komt niet overeen met de tekst.
+### <a name="when-to-disable-required-features"></a>Wanneer u de vereiste onderdelen wilt uitschakelen
+
+De getrainde app kan een door de machine geleerde entiteit op basis van een van de volgende voor spelden:
+* Onjuiste labeling van bijvoorbeeld uitingen.
+* De vereiste functie komt niet overeen met de tekst.
+
+Een voor beeld is een door een machine geleerde entiteit met een subentiteit van de naam van een persoon.
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="Scherm opname van door de LUIS Portal machine geleerde entiteits schema met vereiste functie":::
+
+Een voor beeld van een utterance voor deze entiteit is: `Assign Bob Jones to work on the new security feature` .
+
+De extractie moet worden beschouwd `security feature` als de beschrijving van het ticket en `Bob Jones` als de engineer, twee subentiteiten `Assign ticket` .
+
+Om ervoor te zorgen dat de subentiteit kan voors pellen, voegt u de vooraf opgebouwde entiteit [persoonnaam](luis-reference-prebuilt-person.md) AA een functie toe aan de `engineer` subentiteit. Als u de functie verplicht maakt, betekent dit dat de subentiteit alleen wordt geëxtraheerd als de vooraf samengestelde entiteit voor de persoon voor de tekst wordt voor speld. Dit betekent dat een wille keurige naam in de tekst die geen voor spelde subentiteit heeft, als een gelabelde subentiteit wordt geretourneerd `engineer` .
+
+Wanneer u het interactieve test venster gebruikt en een subentiteit ziet, met een vereiste functie, niet voor te voors pellen, schakelt u deze instelling uit om te zien of de subentiteit zou worden voor speld zonder dat de functie vereist is. Het kan zijn dat de subentiteit op de juiste wijze kan worden voor speld zonder de functie als vereist vanwege het corrigeren van het labelen van bijvoorbeeld uitingen.
 
 ## <a name="view-sentiment-results"></a>Sentiment-resultaten weer geven
 

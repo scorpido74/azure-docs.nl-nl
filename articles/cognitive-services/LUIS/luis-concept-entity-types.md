@@ -2,13 +2,13 @@
 title: Entiteits typen-LUIS
 description: Een entiteit extraheert gegevens uit een utterance tijdens de Voorspellings runtime. Een _optioneel_, secundair doel is het verhogen van de voor spelling van de intentie of andere entiteiten door gebruik te maken van de entiteit als een functie.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682171"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676485"
 ---
 # <a name="extract-data-with-entities"></a>Gegevens ophalen met entiteiten
 
@@ -41,7 +41,9 @@ Hoewel [intenties](luis-concept-intent.md) vereist zijn, zijn entiteiten optione
 
 Als uw toepassing zich ontwikkelt en er een nieuwe nood zaak voor gegevens wordt geïdentificeerd, kunt u later de juiste entiteiten aan uw LUIS-model toevoegen.
 
-## <a name="entity-compared-to-intent"></a>Entiteit vergeleken met intentie
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>Entiteit vertegenwoordigt gegevens extractie
 
 De entiteit vertegenwoordigt een gegevens concept _binnen de utterance_. Een intentie classificeert de _hele utterance_.
 
@@ -53,6 +55,10 @@ Houd rekening met de volgende vier uitingen:
 |Iets verzenden|sendSomething|-|Niets te extra heren. Het model bevat geen vereiste functie om `something` in deze context op te halen en er is geen ontvanger opgegeven.|
 |Bob een huidige verzenden|sendSomething|`Bob`, `present`|Het model wordt uitgepakt `Bob` door een vereiste functie van vooraf gedefinieerde entiteit toe te voegen `personName` . Er is een machine learning-entiteit gebruikt om uit te pakken `present` .|
 |Een doos van Choco lade verzenden|sendSomething|`Bob`, `box of chocolates`|De twee belang rijke gegevens, `Bob` en de `box of chocolates` , zijn geëxtraheerd door de machine learning-entiteiten.|
+
+## <a name="label-entities-in-all-intents"></a>Entiteiten in alle intenties labelen
+
+Entiteiten halen gegevens op, ongeacht het voorspelde doel. Zorg ervoor dat u _alle_ voor beeld-uitingen in alle intenties labelt. Het `None` doel van de intentie is dat Verwar ring wordt veroorzaakt, zelfs als er veel trainings uitingen voor de andere intentie zijn.
 
 ## <a name="design-entities-for-decomposition"></a>Entiteiten voor ontleding ontwerpen
 
@@ -85,10 +91,10 @@ Een subentiteit naar een bovenliggend item moet een machine learning-entiteit zi
 
 Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtraheerd en hoe deze moeten worden weer gegeven nadat deze is geëxtraheerd.
 
-|Entiteitstype|Doel|
+|Entiteitstype|Functie|
 |--|--|
 |[**Machine-geleerd**](tutorial-machine-learned-entity.md)|Extraheer geneste, complexe gegevens die zijn geleerd van voor beelden met labels. |
-|[**Orderverzamellijst**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
+|[**Lijst**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
 |[**Patroon. alle**](#patternany-entity)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is, omdat de entiteit vrije vorm is. Alleen beschikbaar in [patronen](luis-concept-patterns.md).|
 |[**Vooraf gedefinieerde**](luis-reference-prebuilt-entities.md)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of entiteit momenteel niet wordt ondersteund, draagt u bij aan het project.|
 |[**Reguliere expressie**](reference-entity-regular-expression.md)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|

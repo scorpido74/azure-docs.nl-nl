@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650604"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678060"
 ---
 # <a name="what-is-speech-to-text"></a>Wat is spraak-naar-tekst?
 
@@ -25,7 +25,7 @@ Spraak-naar-tekst van de speech-service, ook wel spraak herkenning genoemd, bied
 
 De spraak-naar-tekst-service is standaard ingesteld op het gebruik van het universele-taal model. Dit model is getraind met gegevens van micro soft en wordt geïmplementeerd in de Cloud. Het is optimaal voor gespreks-en dicteer scenario's. Wanneer u spraak naar tekst gebruikt voor herkenning en transcriptie in een unieke omgeving, kunt u aangepaste akoestische, taal-en uitspraak modellen maken en trainen. Aanpassing is handig voor het adresseren van omgevings lawaai of branchespecifieke woorden lijsten.
 
-Met aanvullende referentie tekst als invoer, biedt spraak-naar-tekst-service ook de mogelijkheid om de uitspraak [te beoordelen en](rest-speech-to-text.md#pronunciation-assessment-parameters) feedback te geven over de nauw keurigheid en fluency van gesp roken audio. Met het beoordelen van uitspraak kunnen taal kennisers oefenen, direct feedback krijgen en de uitspraak verbeteren zodat ze kunnen praten en presen teren. Docenten kunnen de mogelijkheid gebruiken om de uitspraak van meerdere sprekers in realtime te evalueren. De functie ondersteunt momenteel Amerikaans-Engels en vertrouwt samen met spraak beoordelingen die door experts worden uitgevoerd.
+Met aanvullende referentie tekst als invoer, biedt spraak-naar-tekst-service ook de mogelijkheid om de uitspraak [te beoordelen en](rest-speech-to-text.md#pronunciation-assessment-parameters) feedback te geven over de nauw keurigheid en fluency van gesp roken audio. Met het beoordelen van uitspraak kunnen taal kennisers oefenen, direct feedback krijgen en de uitspraak verbeteren zodat ze kunnen praten en presen teren. Docenten kunnen de mogelijkheid gebruiken om de uitspraak van meerdere sprekers in realtime te evalueren. De functie ondersteunt momenteel de Engelse versie en vertrouwt samen met spraak beoordelingen die door experts worden uitgevoerd.
 
 > [!NOTE]
 > Bing Speech is uit bedrijf genomen op 15 oktober 2019. Als uw toepassingen, hulpprogram ma's of producten gebruikmaken van de Bing Speech Api's, hebben we gidsen gemaakt om u te helpen migreren naar de spraak service.

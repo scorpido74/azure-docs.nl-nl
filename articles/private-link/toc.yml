@@ -13,6 +13,7 @@
     - name: Een privé-eindpunt maken - Azure CLI
       href: create-private-endpoint-cli.md
     - name: Een privé-eindpunt maken - ARM-sjabloon
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: Een Private Link-service maken - Portal
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: Een Private Link-service maken - Azure CLI
       href: create-private-link-service-cli.md
     - name: Een Private Link-service maken - ARM-sjabloon
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: Concepten
   items:

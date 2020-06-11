@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
-ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c1b98a72af3442b596a9fdde66d254e3e5c2c19
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220554"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678610"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Taal ondersteuning voor een QnA Maker resource en kennis bases
 
@@ -33,7 +33,7 @@ De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker bron.
 |--|
 |Arabisch|
 |Armeens|
-|Bengaals|
+|Bengalese|
 |Baskisch|
 |Bulgaars|
 |Catalaans|
@@ -65,7 +65,7 @@ De volgende lijst bevat de talen die worden ondersteund voor een QnA Maker bron.
 |Litouws|
 |Malajalam|
 |Maleisisch|
-|Norwegian|
+|Noors|
 |Pools|
 |Portugees|
 |Punjabi|

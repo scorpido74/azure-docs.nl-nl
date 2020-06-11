@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 311c85e254711a219ac93424b77f35c2662008b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a9fac89f529cfefbb8a8d82135838bb96e2689db
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658446"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669814"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taal detectie voor spraak naar tekst
 
@@ -29,7 +29,7 @@ In dit artikel leert u hoe u kunt gebruiken `AutoDetectSourceLanguageConfig` om 
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische taal detectie met de Speech SDK
 
-Automatische taal detectie heeft momenteel een limiet aan services zijde van twee talen per detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig` object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig` en gebruikt u deze om een te maken `SpeechRecognizer` .
+Automatische taal detectie heeft momenteel een limiet van vier talen aan services aan kant-en-detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig` object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig` en gebruikt u deze om een te maken `SpeechRecognizer` .
 
 > [!TIP]
 > U kunt ook een aangepast model opgeven dat moet worden gebruikt voor het uitvoeren van spraak op tekst. Zie voor meer informatie [een aangepast model gebruiken voor automatische taal detectie](#use-a-custom-model-for-automatic-language-detection).
