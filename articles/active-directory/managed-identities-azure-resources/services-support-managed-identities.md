@@ -4,19 +4,19 @@ description: Lijst met services die beheerde identiteiten voor Azure-resources e
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 05/12/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 604e26a9af2377804135ef9cfac4c30b1335e3c9
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 66f3e8b07ecb3bceb2f147aa27b1fb1ad585be91
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635778"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673678"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
 
@@ -95,6 +95,12 @@ Raadpleeg de volgende lijst voor het configureren van een beheerde identiteit vo
 
 - [Azure-CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
+### <a name="azure-data-explorer"></a>Azure Data Explorer
+
+Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | ![Beschikbaar][check] | ![Beschikbaar][check] | Niet beschikbaar | ![Beschikbaar][check] |
+| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -241,7 +247,14 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine
 - [REST](qs-configure-rest-vm.md)
 
 
+### <a name="azure-vm-image-builder"></a>Opbouw functie voor installatie kopieën van Azure VM
 
+| Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Systeem toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | 
+| Gebruiker toegewezen | [Beschikbaar in ondersteunde regio's](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#regions) | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+
+Voor meer informatie over het configureren van een beheerde identiteit voor de opbouw functie voor installatie kopieën van Azure VM (in regio's waar beschikbaar), raadpleegt u het [overzicht van Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#permissions).
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Services die ondersteuning bieden voor Azure AD-verificatie
 

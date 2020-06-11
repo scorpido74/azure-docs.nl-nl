@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196494"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668233"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -338,11 +338,31 @@ Nee, gebruik alleen alfanumerieke tekens in het wacht woord voor het pfx-bestand
 Met Kubernetes kan het maken van `deployment` en `service` de resource een groep van Peul intern in het cluster weer geven. Om dezelfde service extern beschikbaar te maken, wordt een [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) resource gedefinieerd die taak verdeling, TLS-beëindiging en op naam gebaseerde virtuele hosting biedt.
 Om aan deze `Ingress` resource te voldoen, moet een ingangs controller worden geluisterd naar wijzigingen in `Ingress` resources en wordt het Load Balancer beleid geconfigureerd.
 
-Met de Application Gateway ingangs controller kan [Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) worden gebruikt als binnenkomend verkeer voor een [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/) , ook wel een AKS-cluster genoemd.
+Met de Application Gateway ingangs controller (AGIC) kan [Azure-toepassing gateway](https://azure.microsoft.com/services/application-gateway/) worden gebruikt als binnenkomend verkeer voor een [Azure Kubernetes-service](https://azure.microsoft.com/services/kubernetes-service/) , ook wel een AKS-cluster genoemd.
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Kan één exemplaar van een ingangs controller meerdere toepassings gateways beheren?
 
 Op dit moment kan slechts één exemplaar van de ingangs controller aan een Application Gateway worden gekoppeld.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Waarom werkt mijn AKS-cluster met kubenet niet met AGIC?
+
+AGIC probeert de resource van de route tabel automatisch te koppelen aan het subnet van de Application Gateway, maar kan niet worden uitgevoerd vanwege een gebrek aan machtigingen van de AGIC. Als de route tabel niet kan worden gekoppeld aan het subnet Application Gateway, wordt er een fout weer gegeven in de AGIC-Logboeken. in dat geval moet u de route tabel die door het AKS-cluster is gemaakt, hand matig koppelen aan het subnet van de Application Gateway. Zie de instructies [hier](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)voor meer informatie.
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Kan ik mijn AKS-cluster en Application Gateway in afzonderlijke virtuele netwerken koppelen? 
+
+Ja, zolang de virtuele netwerken zijn gekoppeld en ze geen overlappende adres ruimten hebben. Als u AKS met kubenet uitvoert, moet u ervoor zorgen dat u de door AKS gegenereerde route tabel koppelt aan het subnet Application Gateway. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>Welke functies worden niet ondersteund voor de invoeg toepassing AGIC? 
+
+Bekijk de verschillen tussen de AGIC die zijn geïmplementeerd via helm en geïmplementeerd als een AKS- [here](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) invoeg toepassing.
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Wanneer moet ik de invoeg toepassing gebruiken versus de helm-implementatie? 
+
+Zie de verschillen tussen de AGIC die zijn geïmplementeerd via helm en geïmplementeerd als een AKS-invoeg toepassing, met name de tabellen die worden gebruikt voor het gebruik van AGIC die worden geïmplementeerd via helm, in [plaats van een](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)AKS-invoeg toepassing. Over het algemeen kunt u met helm implementeren van bèta functies en kandidaten voor een officiële versie testen. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Kan ik bepalen welke versie van AGIC wordt geïmplementeerd met de invoeg toepassing?
+
+Nee, AGIC-invoeg toepassing is een beheerde service, wat betekent dat micro soft de invoeg toepassing automatisch bijwerkt naar de nieuwste stabiele versie. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnostische gegevens en logboekregistratie
 

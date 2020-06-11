@@ -3,17 +3,17 @@ title: Beveiligingsmaatregelen
 description: Een controle lijst met beveiligings controles voor het evalueren van Azure SQL Database
 services: sql-database
 author: msmbaldwin
-manager: rkalrin
+manager: rkarlin
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 09045e01ad4d40ab770dd6203f2dd4b299317a55
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 97d2cd8e9ba51e4fc6ebab8459b04f4f37e876d3
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050007"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668420"
 ---
 # <a name="security-controls-for-azure-sql-database-and-sql-managed-instance"></a>Beveiligings controles voor Azure SQL Database en SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Verificatie| Ja | Azure Active Directory (Azure AD) |
 | Autorisatie| Ja | Geen |
 
-## <a name="data-protection"></a>Gegevensbeveiliging
+## <a name="data-protection"></a>Gegevensbescherming
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|

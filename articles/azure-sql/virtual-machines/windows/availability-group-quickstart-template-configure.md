@@ -4,7 +4,6 @@ description: Gebruik de sjablonen van Azure Quick Start om het Windows-failoverc
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -15,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8476029fb189db846eca3eba31fe8cc62d3726f8
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1359acfb768f7ac2fa3527afd041595d313249d0
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219461"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669236"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Gebruik sjablonen van Azure Quick Start om een beschikbaarheids groep te configureren voor SQL Server op Azure VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -98,23 +97,23 @@ Voor de always on-beschikbaarheids groep-listener is een intern exemplaar van Az
 
 U hoeft alleen de interne load balancer te maken. In stap 4 wordt de rest van de configuratie (zoals de back-end-pool, de status test en de regels voor taak verdeling) verwerkt met de Snelstartgids **101-SQL-VM-aglistener-Setup** . 
 
-1. Open in de Azure Portal de resource groep die de SQL Server virtuele machines bevat. 
+1. Open in Azure-portal de resourcegroep die de virtuele SQL Server-machines omvat. 
 2. Selecteer in de resource groep de optie **toevoegen**.
 3. Zoeken naar **Load Balancer**. Selecteer in de zoek resultaten **Load Balancer**, die is gepubliceerd door **micro soft**.
 4. Selecteer op **Load Balancer** de blade Load Balancer **maken**.
-5. Configureer in het dialoog venster **Load Balancer maken** de Load Balancer als volgt:
+5. Configureer de taakverdeler in het dialoogvenster **Taakverdeler maken** als volgt:
 
    | Instelling | Waarde |
    | --- | --- |
    | **Naam** |Voer een tekst naam in die de load balancer vertegenwoordigt. Voer bijvoorbeeld **sqlLB**. |
    | **Type** |**Intern**: de meeste implementaties gebruiken een interne Load Balancer, waarmee toepassingen binnen hetzelfde virtuele netwerk verbinding kunnen maken met de beschikbaarheids groep.  </br> **Extern**: Hiermee kunnen toepassingen verbinding maken met de beschikbaarheids groep via een open bare Internet verbinding. |
    | **Virtueel netwerk** | Selecteer het virtuele netwerk waarin de SQL Server exemplaren zich bevinden. |
-   | **Subnetrouter** | Selecteer het subnet waarin de SQL Server exemplaren zich bevinden. |
-   | **Toewijzing van IP-adres** |**Statisch** |
+   | **Subnet** | Selecteer het subnet waarin de SQL Server-exemplaren zich bevinden. |
+   | **IP-adrestoewijzing** |**Statisch** |
    | **Privé IP-adres** | Geef een beschikbaar IP-adres op in het subnet. |
    | **Abonnement** |Als u meerdere abonnementen hebt, kan dit veld worden weer gegeven. Selecteer het abonnement dat u aan deze resource wilt koppelen. Dit is normaal gesp roken hetzelfde abonnement als alle resources voor de beschikbaarheids groep. |
-   | **Resourcegroep** |Selecteer de resource groep waarvan de SQL Server exemplaren zich bevinden. |
-   | **Locatie** |Selecteer de Azure-locatie waar de SQL Server exemplaren zich bevinden. |
+   | **Resourcegroep** |Selecteer de resourcegroep waarin de SQL Server-exemplaren zich bevinden. |
+   | **Locatie** |Selecteer de Azure-locatie waar de SQL Server-exemplaren zich bevinden. |
    | &nbsp; | &nbsp; |
 
 6. Selecteer **Maken**. 

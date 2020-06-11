@@ -1,26 +1,20 @@
 ---
 title: Azure VM-grootten-HPC | Microsoft Docs
 description: Geeft een lijst van de verschillende beschik bare grootten voor High Performance Computing virtuele machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839059"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678627"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>High Performance Computing VM-grootten
 
@@ -92,7 +86,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 - **Virtuele machines** : implementeer de met RDMA compatibele HPC-vm's in dezelfde schaalset of beschikbaarheidsset (wanneer u het Azure Resource Manager-implementatie model gebruikt). Als u het klassieke implementatie model gebruikt, implementeert u de virtuele machines in dezelfde Cloud service.
 
-- **Virtuele-machine schaal sets** : in een VMSS (virtuele-machine schaalset) moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep voor InfiniBand-communicatie in de VMSS. Stel bijvoorbeeld in een resource manager-sjabloon de `singlePlacementGroup` eigenschap in op. `true` Houd er rekening mee dat de maximale VMSS-grootte die met `singlePlacementGroup` de eigenschap `true` kan worden ingesteld, standaard wordt beperkt bij 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één VMSS-Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-supportability/how-to-create-azure-support-request.md) . De limiet voor het aantal virtuele machines in één VMSS kan worden verhoogd tot 300. Houd er rekening mee dat bij het implementeren van Vm's met beschikbaarheids sets de maximum limiet is 200 Vm's per Beschikbaarheidsset.
+- **Virtuele-machine schaal sets** : in een VMSS (virtuele-machine schaalset) moet u ervoor zorgen dat u de implementatie beperkt tot één plaatsings groep voor InfiniBand-communicatie in de VMSS. Stel bijvoorbeeld in een resource manager-sjabloon de eigenschap in `singlePlacementGroup` op `true` . Houd er rekening mee dat de maximale VMSS-grootte die met de eigenschap kan worden ingesteld `singlePlacementGroup` , `true` Standaard wordt beperkt bij 100 vm's. Als uw HPC-taken schaal behoeften hoger zijn dan 100 Vm's in één VMSS-Tenant, kunt u een verhoging aanvragen, [een online klant ondersteunings aanvraag openen](../azure-supportability/how-to-create-azure-support-request.md) . De limiet voor het aantal virtuele machines in één VMSS kan worden verhoogd tot 300. Houd er rekening mee dat bij het implementeren van Vm's met beschikbaarheids sets de maximum limiet is 200 Vm's per Beschikbaarheidsset.
 
 - **Mpi tussen virtuele machines** : als RDMA (bijvoorbeeld met MPI-communicatie) is vereist tussen virtuele machines (vm's), moet u ervoor zorgen dat de vm's zich in dezelfde virtuele-machine schaalset of beschik bare set bevinden.
 
@@ -100,7 +94,7 @@ Azure biedt verschillende opties voor het maken van clusters van Windows HPC-Vm'
 
 - **Azure batch** : maak een [Azure batch](/azure/batch/) groep voor het uitvoeren van MPI-workloads. Als u computerintensieve instanties wilt gebruiken bij het uitvoeren van MPI-toepassingen met Azure Batch, raadpleegt u [taken met meerdere instanties gebruiken om mpi-toepassingen (Message Passing Interface) uit te voeren in azure batch](../batch/batch-mpi.md).
 
-- **Micro soft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-mpi die gebruikmaakt van het Azure RDMA-netwerk wanneer het is geïmplementeerd op RDMA-compatibele Linux-vm's. Zie voor beelden van implementaties [een Linux RDMA-cluster met HPC Pack instellen voor het uitvoeren van MPI-toepassingen](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **Micro soft HPC Pack**  -  [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) bevat een runtime-omgeving voor MS-mpi die gebruikmaakt van het Azure RDMA-netwerk wanneer het is GEÏMPLEMENTEERD op RDMA-compatibele Linux-vm's. Zie voor beelden van implementaties [een Linux RDMA-cluster met HPC Pack instellen voor het uitvoeren van MPI-toepassingen](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="deployment-considerations"></a>Overwegingen bij de implementatie
 

@@ -4,7 +4,6 @@ description: Beschrijft de overwegingen voor back-up en herstel voor SQL Server-
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 390154e50f705e07370f5ad3ad32fe73068e2cd4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220830"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669191"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Back-ups maken en herstellen voor SQL Server op virtuele machines in azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -130,23 +129,23 @@ De volgende tabel bevat een overzicht van de mogelijkheden van elke back-up-en h
 
 || **Automatische back-up** | **Azure Backup voor SQL** | **Hand matige back-up** |
 |---|---|---|---|
-| Vereist extra Azure-service |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Back-upbeleid configureren in Azure Portal | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
-| Data bases herstellen in Azure Portal |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Meerdere servers beheren in één dash board |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Terugzetten naar eerder tijdstip | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Beoogd herstel punt (RPO) van 15 minuten | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Retentie beleid voor back-ups op korte termijn (dagen) | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
-| Bewaar beleid voor lange termijn back-ups (maanden, jaren) |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Ingebouwde ondersteuning voor SQL Server altijd |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Back-up naar Azure Storage account (s) | ![Yes](./media/backup-restore/yes.png)geautomatiseerde | ![Yes](./media/backup-restore/yes.png)geautomatiseerde | ![Yes](./media/backup-restore/yes.png)(door de klant beheerd) |
-| Beheer van opslag-en back-upbestanden | | ![Yes](./media/backup-restore/yes.png) |  |
-| Back-up naar gekoppelde schijven op de VM |   |   | ![Yes](./media/backup-restore/yes.png) |
-| Centrale, aanpas bare back-uprapporten |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Geconsolideerde e-mail waarschuwingen voor fouten |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Bewaking aanpassen op basis van Azure Monitor logboeken |   | ![Yes](./media/backup-restore/yes.png) |   |
-| Back-uptaken controleren met SSMS of Transact-SQL-scripts | ![Yes](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
-| Data bases herstellen met SSMS of Transact-SQL-scripts | ![Yes](./media/backup-restore/yes.png) |   | ![Ja](./media/backup-restore/yes.png) |
+| Vereist extra Azure-service |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Back-upbeleid configureren in Azure Portal | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
+| Data bases herstellen in Azure Portal |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Meerdere servers beheren in één dash board |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Terugzetten naar eerder tijdstip | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
+| Beoogd herstel punt (RPO) van 15 minuten | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
+| Retentie beleid voor back-ups op korte termijn (dagen) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |
+| Bewaar beleid voor lange termijn back-ups (maanden, jaren) |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Ingebouwde ondersteuning voor SQL Server altijd |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Back-up naar Azure Storage account (s) | ![Ja](./media/backup-restore/yes.png)geautomatiseerde | ![Ja](./media/backup-restore/yes.png)geautomatiseerde | ![Ja](./media/backup-restore/yes.png)(door de klant beheerd) |
+| Beheer van opslag-en back-upbestanden | | ![Ja](./media/backup-restore/yes.png) |  |
+| Back-up naar gekoppelde schijven op de VM |   |   | ![Ja](./media/backup-restore/yes.png) |
+| Centrale, aanpas bare back-uprapporten |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Geconsolideerde e-mail waarschuwingen voor fouten |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Bewaking aanpassen op basis van Azure Monitor logboeken |   | ![Ja](./media/backup-restore/yes.png) |   |
+| Back-uptaken controleren met SSMS of Transact-SQL-scripts | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |
+| Data bases herstellen met SSMS of Transact-SQL-scripts | ![Ja](./media/backup-restore/yes.png) |   | ![Ja](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Volgende stappen
 

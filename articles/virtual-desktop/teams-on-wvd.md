@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267134"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667043"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Micro soft teams gebruiken op het virtuele bureau blad van Windows
 
@@ -32,7 +32,7 @@ Met media optimalisatie voor micro soft-teams verwerkt de Windows desktop-client
 Voordat u micro soft teams kunt gebruiken op het virtuele bureau blad van Windows, moet u de volgende dingen doen:
 
 - [Bereid uw netwerk](/microsoftteams/prepare-network/) voor op micro soft teams.
-- Installeer de [Windows desktop-client](connect-windows-7-and-10.md) op een Windows 10-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Installeer de [Windows desktop-client](connect-windows-7-and-10.md) op een Windows 10-of Windows 10 IOT Enter prise-apparaat dat voldoet aan de hardwarevereisten voor teams van micro soft teams [op een Windows-PC](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Verbinding maken met een Windows 10-of Windows 10 Enter prise virtual machine (VM).
 - Installeer de teams bureau blad-app op de host met behulp van installatie per computer. Voor media optimalisatie voor micro soft-teams is teams 1.3.00.4461 of hoger vereist.
 
@@ -53,7 +53,7 @@ Als u teams per computer wilt installeren, stelt u de volgende register sleutel 
 
 ### <a name="install-the-teams-websocket-service"></a>De teams-WebSocket-service installeren
 
-Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
+Installeer de [WebSocket-service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) op uw VM-installatie kopie. Als er een installatie fout optreedt, installeert u de [meest recente versie van micro soft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) en probeert u het opnieuw.
 
 ### <a name="install-microsoft-teams"></a>Micro soft teams installeren
 
@@ -131,9 +131,9 @@ Feedback geven over micro soft-teams op het virtuele Windows-bureau blad op de s
 
 ## <a name="collect-teams-logs"></a>Teams-logboeken verzamelen
 
-Als u problemen ondervindt met de teams bureau blad-app in uw Windows Virtual Desktop-omgeving, verzamelt u client Logboeken onder **%AppData%\Microsoft\Teams\logs.txt** op de host-VM.
+Als u problemen ondervindt met de teams bureau blad-app in uw Windows Virtual Desktop-omgeving, verzamelt u client Logboeken onder **% AppData% \Microsoft\Teams\logs.txt** op de host-VM.
 
-Als u problemen ondervindt met aanroepen en vergaderingen, kunt u de logboeken van teams via web-client verzamelen met de toetscombinatie **CTRL**  +  **Alt**  +  **SHIFT**  +  **1**. Logboeken worden geschreven naar het **logboek voor diagnostische gegevens van%userprofile%\Downloads\MSTeams DATE_TIME. txt** op de host-VM.
+Als u problemen ondervindt met aanroepen en vergaderingen, kunt u de logboeken van teams via web-client verzamelen met de toetscombinatie **CTRL**  +  **Alt**  +  **SHIFT**  +  **1**. Logboeken worden geschreven naar het **%userprofile%\Downloads\MSTeams Diagnostics-logboek DATE_TIME.txt** op de host-VM.
 
 ## <a name="contact-microsoft-teams-support"></a>Contact opnemen met micro soft teams ondersteuning
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 998155c2505277170518a62af4ae2481e217a1df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 092cee943161048bf252fb5e27a1c1169a70bed0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650112"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674462"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB Java-SDK v2 synchroniseren
 
@@ -20,7 +20,8 @@ ms.locfileid: "83650112"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java-SDK v2](performance-tips-async-java.md)
 > * [Sync Java-SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -150,7 +151,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) tekst (of de equivalente eigenschap RequestCharge in [ResourceResponse \< t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) of [FeedResponse \< T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt.
+    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (of de equivalente eigenschap RequestCharge in [ResourceResponse \<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) of [FeedResponse \<T> ](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt.
 
 
     ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Java SDK v2 synchroniseren (maven com. micro soft. Azure:: Azure-documentdb)

@@ -3,12 +3,12 @@ title: Geheim Key Vault met sjabloon
 description: Laat zien hoe u tijdens de implementatie een geheim kunt door geven van een sleutel kluis als een para meter.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458263"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677862"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Azure Key Vault gebruiken om een beveiligde parameter waarde door te geven tijdens de implementatie
 
@@ -18,7 +18,7 @@ Dit artikel richt zich op het scenario voor het door geven van een gevoelige waa
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Sleutel kluizen en geheimen implementeren
 
-Als u toegang wilt krijgen tot een sleutel kluis tijdens `enabledForTemplateDeployment` het implementeren van de sjabloon `true`, stelt u de sleutel kluis in op.
+Als u toegang wilt krijgen tot een sleutel kluis tijdens `enabledForTemplateDeployment` het implementeren van de sjabloon, stelt u de sleutel kluis in op `true` .
 
 Als u al een Key Vault hebt, moet u ervoor zorgen dat sjabloon implementaties zijn toegestaan.
 
@@ -95,11 +95,11 @@ Zie voor meer informatie over het maken van sleutel kluizen en het toevoegen van
 - [Een geheim instellen en ophalen met behulp van Power shell](../../key-vault/secrets/quick-create-powershell.md)
 - [Een geheim instellen en ophalen met behulp van de portal](../../key-vault/secrets/quick-create-portal.md)
 - [Een geheim instellen en ophalen met behulp van .NET](../../key-vault/secrets/quick-create-net.md)
-- [Een geheim instellen en ophalen met behulp van node. js](../../key-vault/secrets/quick-create-node.md)
+- [Een geheim instellen en ophalen met behulp van Node.js](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Toegang verlenen tot de geheimen
 
-De gebruiker die de sjabloon implementeert, moet beschikken `Microsoft.KeyVault/vaults/deploy/action` over de machtiging voor het bereik van de resource groep en de sleutel kluis. De rollen [eigenaar](../../role-based-access-control/built-in-roles.md#owner) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) verlenen deze toegang. Als u de sleutel kluis hebt gemaakt, bent u de eigenaar, zodat u over de juiste machtigingen beschikt.
+De gebruiker die de sjabloon implementeert, moet beschikken over de `Microsoft.KeyVault/vaults/deploy/action` machtiging voor het bereik van de resource groep en de sleutel kluis. De rollen [eigenaar](../../role-based-access-control/built-in-roles.md#owner) en [Inzender](../../role-based-access-control/built-in-roles.md#contributor) verlenen deze toegang. Als u de sleutel kluis hebt gemaakt, bent u de eigenaar, zodat u over de juiste machtigingen beschikt.
 
 De volgende procedure laat zien hoe u een rol met de minimale machtiging maakt en hoe u de gebruiker toewijst
 
@@ -163,7 +163,7 @@ Met de volgende sjabloon wordt een SQL-Server geïmplementeerd met een beheerder
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +201,7 @@ In het volgende parameter bestand moet het sleutel kluis geheim al bestaan en ku
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +267,7 @@ Met de volgende sjabloon wordt de sleutel kluis-ID dynamisch gemaakt en door geg
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +314,7 @@ Met de volgende sjabloon wordt de sleutel kluis-ID dynamisch gemaakt en door geg
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {

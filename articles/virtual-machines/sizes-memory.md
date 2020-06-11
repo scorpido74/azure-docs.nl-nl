@@ -1,26 +1,20 @@
 ---
 title: Groottes van Azure VM-geheugen | Microsoft Docs
 description: Geeft een lijst van de verschillende voor geheugen geoptimaliseerde grootten die beschikbaar zijn voor virtuele machines in Azure. Bevat informatie over het aantal Vcpu's, gegevens schijven en Nic's en de opslag doorvoer en netwerk bandbreedte voor grootten in deze serie.
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
 keywords: VM-isolatie, geïsoleerde VM, isolatie, geïsoleerd
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248291"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678661"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Grootte van virtuele machines geoptimaliseerd voor geheugen
 

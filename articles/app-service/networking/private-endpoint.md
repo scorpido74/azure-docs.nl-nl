@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295436"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668182"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privé-eind punten gebruiken voor Azure-web-app (preview-versie)
 
@@ -45,7 +45,7 @@ Het subnet waar u het persoonlijke eind punt aansluit, kan andere resources beva
 U kunt het persoonlijke eind punt ook implementeren in een andere regio dan de web-app. 
 
 > [!Note]
->De VNet-integratie functie kan niet hetzelfde subnet gebruiken dan het persoonlijke eind punt. Dit is een beperking van de VNet-integratie functie.
+>De VNet-integratie functie kan niet hetzelfde subnet als een persoonlijk eind punt gebruiken. Dit is een beperking van de VNet-integratie functie.
 
 Vanuit een beveiligings perspectief:
 
@@ -74,7 +74,7 @@ Als u de kudu-console wilt gebruiken, of kudu REST API (bijvoorbeeld implementat
 
 ## <a name="pricing"></a>Prijzen
 
-Zie [prijzen voor persoonlijke Azure-koppelingen][pricing]voor prijs informatie.
+Zie [prijzen van Azure Private Link][pricing] voor meer informatie over prijzen.
 
 ## <a name="limitations"></a>Beperkingen
 

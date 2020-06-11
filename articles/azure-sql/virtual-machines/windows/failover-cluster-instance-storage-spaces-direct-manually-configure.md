@@ -4,7 +4,6 @@ description: In dit artikel wordt uitgelegd hoe u een SQL Server failover cluste
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 55ad535c965ae910b26900c2c555e21378ba49d9
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 0333088c1b373fcf41fdab3eb4b4a9ec2c2d8eb5
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656738"
+ms.locfileid: "84669049"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren op virtuele machines van Azure
 
@@ -245,14 +244,14 @@ Als u het cluster wilt valideren met behulp van de gebruikers interface, voert u
 
 1. Klik onder **Serverbeheer**op **extra**en selecteer vervolgens **Failoverclusterbeheer**.
 1. Selecteer onder **Failoverclusterbeheer** **actie**en selecteer vervolgens **configuratie valideren**.
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Voer onder **servers of een cluster selecteren**de namen van beide virtuele machines in.
-1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Next**.
+1. Onder **test opties**selecteert u **alleen geselecteerde tests uitvoeren**. Selecteer **Volgende**.
 1. Selecteer onder **selectie testen**alle tests, met uitzonde ring van **opslag**, zoals hier wordt weer gegeven:
 
    ![Cluster validatie tests selecteren](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/10-validate-cluster-test.png)
 
-1. Selecteer **Next**.
+1. Selecteer **Volgende**.
 1. Klik onder **bevestiging**op **volgende**.
 
 Met de wizard een configuratie valideren worden de validatie tests uitgevoerd.

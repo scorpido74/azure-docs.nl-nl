@@ -4,7 +4,6 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het u
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
-manager: felixwu
 editor: ''
 tags: azure-service-management
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 92313b3fabfdbdce2cb2f3b84026a6b681cc2063
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c0302c8bac483979211b2ec7cb91c8a70b69cb9b
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344221"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669016"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Veelgestelde vragen over SQL Server op virtuele Windows-machines in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -163,7 +162,7 @@ In dit artikel vindt u antwoorden op enkele van de meest voorkomende vragen over
 
 1. **Kan ik een tweede exemplaar van SQL Server op dezelfde VM installeren? Kan ik de geïnstalleerde functies van het standaard exemplaar wijzigen?**
 
-   Ja. De SQL Server-installatie media bevindt zich in een map op station **C** . Voer **Setup. exe** vanaf die locatie uit om nieuwe exemplaren van SQL Server toe te voegen of om andere geïnstalleerde functies van SQL Server op de computer te wijzigen. Houd er rekening mee dat sommige functies, zoals geautomatiseerde back-ups, automatische patching en Azure Key Vault integratie, alleen kunnen worden uitgevoerd op het standaard exemplaar of een benoemd exemplaar dat correct is geconfigureerd (zie vraag 3). 
+   Ja. De SQL Server-installatie media bevindt zich in een map op station **C** . Voer **Setup.exe** uit vanaf die locatie om nieuwe SQL Server instanties toe te voegen of om andere geïnstalleerde functies van SQL Server op de computer te wijzigen. Houd er rekening mee dat sommige functies, zoals geautomatiseerde back-ups, automatische patching en Azure Key Vault integratie, alleen kunnen worden uitgevoerd op het standaard exemplaar of een benoemd exemplaar dat correct is geconfigureerd (zie vraag 3). 
 
 1. **Kan ik het standaardexemplaar van SQL Server verwijderen?**
 

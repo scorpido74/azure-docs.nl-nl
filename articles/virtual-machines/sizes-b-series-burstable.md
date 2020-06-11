@@ -2,18 +2,18 @@
 title: B-serie-Burstable-Azure Virtual Machines
 description: Beschrijft de B-serie van de afbreekbaar Azure VM-grootten.
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161077"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678542"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Grootte van de B-serie bebreekbaar virtuele machines
 
@@ -31,7 +31,7 @@ Updates voor geheugen behoud: ondersteund
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Basis CPU-prestaties van VM | Maximale CPU-prestaties van VM | Eerste tegoeden | Tegoeden per uur | Maximum aantal gestorte tegoeden | Max. aantal gegevensschijven | Max. door Voer in cache en tijdelijke opslag: IOPS/MBps | Maxi maal aantal niet-opgeslagen schijf doorvoer: IOPS/MBps | Max. aantal NIC's |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
+| Standard_B1ls<sup>1</sup> | 1  | 0,5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
 | Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
 | Standard_B1ms             | 1  | 2   | 4   | 20%  | 100%  | 30  | 12  | 288  | 2  | 800/10    | 640/10    | 2  |
 | Standard_B2s              | 2  | 4   | 8   | 40%  | 200%  | 60  | 24  | 576  | 4  | 1600/15   | 1280/15   | 3  |
@@ -58,7 +58,7 @@ Basis lijn: 270%
 
 ![Grafiek van verkeers gegevens per uur](./media/b-series-burstable/office-workload.png)
 
-| Scenario | Time | CPU-gebruik (%) | Geaccumuleerde tegoeden<sup>1</sup> | Tegoed beschikbaar |
+| Scenario | Tijd | CPU-gebruik (%) | Geaccumuleerde tegoeden<sup>1</sup> | Tegoed beschikbaar |
 | --- | --- | --- | --- | --- |
 | B16ms-implementatie | Implementatie | Implementatie  | 480 (eerste tegoed) | 480 |
 | Geen verkeer | 0:00 | 0 | 162 | 642 |
@@ -86,11 +86,11 @@ Basis lijn: 270%
 | Geen verkeer | 22:00 | 0 | 162 | 642 |
 | Geen verkeer | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> crediteringen die in een uur worden gebruikt, zijn gelijk aan: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`.  
+<sup>1</sup> crediteringen die in een uur worden gebruikt, zijn gelijk aan: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
 Voor een D16s_v3 met 16 Vcpu's en 64 GiB geheugen is het uurtarief $0,936 per uur (maandelijks $673,92) en voor B16ms met 16 Vcpu's en 64 GiB geheugen de rente per uur $0,794 (maandelijks $547,86). <b>Dit resulteert in een besparing van 15%.</b>
 
-## <a name="q--a"></a>Vragen en antwoorden
+## <a name="q--a"></a>Vragenronde
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>V: Hoe krijg ik 135% basislijn prestaties van een VM?
 

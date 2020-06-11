@@ -2,18 +2,17 @@
 title: Klassieke Azure CLI-opdrachten
 description: Azure opdracht regel interface-opdrachten (CLI) voor het beheren van resources.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e5fd1a6934d246463e3fd5ad24db7079ca088d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250879"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678423"
 ---
 # <a name="azure-classic-cli-commands"></a>Klassieke Azure CLI-opdrachten 
 
@@ -25,9 +24,9 @@ Dit artikel bevat de syntaxis en opties voor de klassieke opdracht regel interfa
 
 Als u aan de slag wilt gaan, installeert u eerst [de klassieke Azure-cli](../cli-install-nodejs.md) en [maakt u verbinding met uw Azure-abonnement](/cli/azure/authenticate-azure-cli).
 
-Voor de syntaxis en opties van de huidige opdracht op de opdracht regel in de modus `azure help` Resource Manager typt of, om de Help voor een `azure help [command]`specifieke opdracht weer te geven. Ook vindt u hier CLI-voor beelden in de documentatie voor het maken en beheren van specifieke Azure-Services.
+Voor de syntaxis en opties van de huidige opdracht op de opdracht regel in de modus Resource Manager typt `azure help` of, om de Help voor een specifieke opdracht weer te geven `azure help [command]` . Ook vindt u hier CLI-voor beelden in de documentatie voor het maken en beheren van specifieke Azure-Services.
 
-Optionele para meters worden weer gegeven tussen vier Kante haken `[parameter]`(bijvoorbeeld). Alle andere para meters zijn vereist.
+Optionele para meters worden weer gegeven tussen vier Kante haken (bijvoorbeeld `[parameter]` ). Alle andere para meters zijn vereist.
 
 Naast opdracht-specifieke optionele para meters die hier worden beschreven, zijn er drie optionele para meters die kunnen worden gebruikt voor het weer geven van gedetailleerde uitvoer, zoals aanvraag opties en status codes. De `-v` para meter biedt uitgebreide uitvoer en de `-vv` para meter biedt nog gedetailleerde uitgebreide uitvoer. De `--json` optie levert het resultaat op in onbewerkte JSON-indeling.
 
@@ -125,7 +124,7 @@ Uw Azure-abonnements gegevens worden gebruikt door het hulp programma om verbind
 
     config set <name> <value>
 
-**Hiermee wordt de Azure CLI-werk modus `arm` ingesteld op ofwel of`asm`**
+**Hiermee wordt de Azure CLI-werk modus ingesteld op ofwel `arm` of`asm`**
 
     config mode [options] <modename>
 
@@ -1706,7 +1705,7 @@ Parameter opties:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Vanaf CLI versie 0,10 kunt u een korte alias opgeven, zoals "UbuntuLTS" of "Win2012R2Datacenter", `image-urn` voor een aantal populaire Marketplace-installatie kopieën. Uitvoeren `azure help vm quick-create` voor opties. Vanaf versie 0,10 `azure vm quick-create` maakt bovendien gebruik van Premium Storage standaard als deze beschikbaar is in de geselecteerde regio.
+> Vanaf CLI versie 0,10 kunt u een korte alias opgeven, zoals "UbuntuLTS" of "Win2012R2Datacenter", `image-urn` voor een aantal populaire Marketplace-installatie kopieën. Uitvoeren `azure help vm quick-create` voor opties. Vanaf versie 0,10 maakt bovendien gebruik van `azure vm quick-create` Premium Storage standaard als deze beschikbaar is in de geselecteerde regio.
 > 
 > 
 

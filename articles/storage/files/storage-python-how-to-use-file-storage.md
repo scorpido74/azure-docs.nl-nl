@@ -8,12 +8,12 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: tracking-python
-ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d04b158761d501d4a79d91fe551670b57f9847f3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552084"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678712"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Ontwikkelen voor Azure Files met Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -48,7 +48,7 @@ pip install azure-storage-file
 Voor alternatieve installatie methoden gaat u naar de [Azure Storage SDK voor python op github](https://github.com/Azure/azure-storage-python/).
 
 ## <a name="view-the-sample-application"></a>De voorbeeld toepassing weer geven
-f als u een voorbeeld toepassing wilt weer geven en uitvoeren die laat zien hoe u python met Azure Files gebruikt, raadpleegt u [Azure Storage: aan de slag met Azure files in python](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+Zie [Azure Storage: aan de slag met Azure files in python](https://github.com/Azure-Samples/storage-file-python-getting-started)om een voorbeeld toepassing weer te geven en uit te voeren die laat zien hoe u python gebruikt met Azure files. 
 
 Als u de voorbeeld toepassing wilt uitvoeren, moet u ervoor zorgen dat u zowel de als-pakketten hebt geïnstalleerd `azure-storage-file` `azure-storage-common` .
 
@@ -96,7 +96,7 @@ Gebruik de `create_file_from_path` methoden, of om een bestand te maken en gegev
 
 `create_file_from_path`uploadt de inhoud van een bestand uit het opgegeven pad en `create_file_from_stream` uploadt de inhoud van een al geopend bestand/stream. `create_file_from_bytes`uploadt een byte matrix en `create_file_from_text` uploadt de opgegeven tekst waarde met behulp van de opgegeven code ring (wordt standaard ingesteld op UTF-8).
 
-In het volgende voor beeld wordt de inhoud van het bestand **Zons ondergang. png** geüpload naar het bestand **MyFile** .
+In het volgende voor beeld wordt de inhoud van het **sunset.png** -bestand geüpload naar het bestand **MyFile** .
 
 ```python
 from azure.storage.file import ContentSettings
@@ -111,7 +111,7 @@ file_service.create_file_from_path(
 ## <a name="download-a-file"></a>Bestand downloaden
 Als u gegevens uit een bestand wilt downloaden, gebruikt,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` of `get_file_to_text` . Dit zijn methoden op hoog niveau die de benodigde Chunking uitvoeren wanneer de grootte van de gegevens groter is dan 64 MB.
 
-In het volgende voor beeld ziet u hoe u `get_file_to_path` de inhoud van het bestand **MyFile** downloadt en opslaat in het bestand **out-Sunset. png** .
+In het volgende voor beeld ziet u hoe u `get_file_to_path` de inhoud van het bestand **MyFile** downloadt en opslaat in het **out-sunset.png** -bestand.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
@@ -180,6 +180,6 @@ file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ## <a name="next-steps"></a>Volgende stappen
 Nu u hebt geleerd hoe u Azure Files kunt bewerken met python, volgt u deze koppelingen voor meer informatie.
 
-* [Python Developer Center](https://azure.microsoft.com/develop/python/)
+* [Python-ontwikkelaars centrum](https://azure.microsoft.com/develop/python/)
 * [REST-API voor Azure Storage-services](https://msdn.microsoft.com/library/azure/dd179355)
 * [Microsoft Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python)

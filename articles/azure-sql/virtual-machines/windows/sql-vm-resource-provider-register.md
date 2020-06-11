@@ -4,7 +4,6 @@ description: Registreer uw Azure SQL Server-virtuele machine met de resource pro
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c6e40842235f0070d283974eaded25390e3555e7
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: b7372d1e542c4261e982721386c96a34e4be633e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661124"
+ms.locfileid: "84667425"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider"></a>Een SQL Server VM registreren in azure met de resource provider van de SQL-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -321,7 +320,7 @@ Het ongedaan maken van de registratie van de virtuele SQL-machine bij de resourc
 
 Voer de volgende stappen uit om de registratie van uw SQL Server virtuele machine bij de resource provider ongedaan te maken met behulp van de Azure Portal:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij [Azure Portal](https://portal.azure.com).
 1. Ga naar de SQL-VM-resource. 
   
    ![Resource van virtuele SQL-machines](./media/sql-vm-resource-provider-register/sql-vm-manage.png)

@@ -5,16 +5,23 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/5/2020
-ms.openlocfilehash: 8e2b6f43dcbf38e0e412b817937721d44a65308b
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 6/10/2020
+ms.openlocfilehash: 9b808eb69a013cb513de4ef15f112d7392dfe36e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559211"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669875"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beperkingen in Azure Database for MySQL
 In de volgende secties worden capaciteit, ondersteuning voor opslag-engine, ondersteuning van bevoegdheden, ondersteuning voor gegevens manipulatie en functionele limieten in de database service beschreven. Zie ook [algemene beperkingen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) die van toepassing zijn op de MySQL-data base-engine.
+
+## <a name="server-parameters"></a>Serverparameters
+
+> [!NOTE]
+> Als u op zoek bent naar de minimale/maximale waarden voor server parameters zoals `max_connections` en `innodb_buffer_pool_size` , wordt deze informatie verplaatst naar het artikel **[server parameters](./concepts-server-parameters.md)** .
+
+Azure Database for MySQL biedt ondersteuning voor het afstemmen van de waarden van server parameters. De minimum-en maximum waarde van sommige para meters (bijvoorbeeld `max_connections`, `join_buffer_size` , `query_cache_size` ) wordt bepaald door de prijs categorie en vCores van de-server. Raadpleeg [server parameters](./concepts-server-parameters.md) voor meer informatie over deze limieten. 
 
 ## <a name="storage-engine-support"></a>Ondersteuning voor opslag engine
 
@@ -35,8 +42,6 @@ In de volgende secties worden capaciteit, ondersteuning voor opslag-engine, onde
 - SUPER bevoegdheid: een soort gelijke [Super bevoegdheid](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) is ook beperkt.
 - DEFINE: vereist Super privileges om te maken en beperkt. Als u gegevens importeert met behulp van een back-up, verwijdert u de `CREATE DEFINER` opdrachten hand matig of gebruikt u de `--skip-definer` opdracht bij het uitvoeren van een mysqldump.
 
-## <a name="server-parameters"></a>Serverparameters
-Azure Database for MySQL biedt ondersteuning voor het afstemmen van de waarden van server parameters. De minimum-en maximum waarde van sommige para meters worden bepaald door de prijs categorie en de vCores van de server. Raadpleeg [server parameters](./concepts-server-parameters.md) voor meer informatie over deze limieten. 
 
 ## <a name="data-manipulation-statement-support"></a>Ondersteuning voor gegevens manipulatie-instructies
 

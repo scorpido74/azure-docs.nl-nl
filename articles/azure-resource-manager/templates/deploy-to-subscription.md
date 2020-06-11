@@ -3,12 +3,12 @@ title: Resources implementeren voor het abonnement
 description: Hierin wordt beschreven hoe u een resource groep maakt in een Azure Resource Manager sjabloon. Ook wordt uitgelegd hoe u resources kunt implementeren in het bereik van Azure-abonnementen.
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 60f77d7bb29af8bcd1a0932a9ac93f5fe4b8e3ac
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 17ae335fa40a71ed266211150df382404efbf61b
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299244"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673969"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Resource groepen en-resources op abonnements niveau maken
 
@@ -37,7 +37,7 @@ U kunt de volgende bron typen implementeren op abonnements niveau:
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 * [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
-* [Koptags](/azure/templates/microsoft.resources/tags)
+* [tags](/azure/templates/microsoft.resources/tags)
 * [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
 
 ### <a name="schema"></a>Schema
@@ -87,7 +87,7 @@ Gebruik voor REST API [implementaties-maken bij abonnements bereik](/rest/api/re
 
 Voor implementaties op abonnements niveau moet u een locatie opgeven voor de implementatie. De locatie van de implementatie is gescheiden van de locatie van de resources die u implementeert. De implementatie locatie geeft aan waar de implementatie gegevens moeten worden opgeslagen.
 
-U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy. json** implementeert, wordt er een standaard implementatie naam van **azuredeploy**gemaakt.
+U kunt een naam opgeven voor de implementatie of de naam van de standaard implementatie gebruiken. De standaard naam is de naam van het sjabloon bestand. Als u bijvoorbeeld een sjabloon met de naam **azuredeploy.jsop** implementeert, maakt de standaard implementatie naam **azuredeploy**.
 
 Voor elke implementatie naam is de locatie onveranderbaar. U kunt geen implementatie op één locatie maken wanneer er een bestaande implementatie met dezelfde naam op een andere locatie is. Als u de fout code krijgt `InvalidDeploymentLocation` , moet u een andere naam of dezelfde locatie gebruiken als de vorige implementatie voor die naam.
 
@@ -209,8 +209,8 @@ In het volgende voor beeld wordt een resource groep gemaakt en wordt een opslag 
     {
       "type": "Microsoft.Resources/resourceGroups",
       "apiVersion": "2019-10-01",
-      "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
+      "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
@@ -224,7 +224,7 @@ In het volgende voor beeld wordt een resource groep gemaakt en wordt een opslag 
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {},
           "variables": {},
@@ -414,6 +414,6 @@ New-AzSubscriptionDeployment `
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [toegang tot Azure-resources beheren met RBAC en Azure Resource Manager sjablonen](../../role-based-access-control/role-assignments-template.md)voor meer informatie over het toewijzen van rollen.
-* Zie [deployASCwithWorkspaceSettings. json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)(Engelstalig) voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
+* Zie [deployASCwithWorkspaceSettings.js](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)voor een voor beeld van de implementatie van werk ruimte-instellingen voor Azure Security Center.
 * Voorbeeld sjablonen vindt u op [github](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments).
 * U kunt ook sjablonen implementeren op het niveau van de [beheer groep](deploy-to-management-group.md) en het [Tenant niveau](deploy-to-tenant.md).

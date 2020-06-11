@@ -7,22 +7,22 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1f07e6eb1a219db4f8eb94c54acaa3181e186da6
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649894"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670018"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Azure-Event Hubs integreren met persoonlijke Azure-koppeling
 Met Azure Private Link service kunt u toegang krijgen tot Azure-Services (bijvoorbeeld Azure Event Hubs, Azure Storage en Azure Cosmos DB) en door Azure gehoste klanten/partner services via een **persoonlijk eind punt** in uw virtuele netwerk.
 
-Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het persoonlijke eind punt maakt gebruik van een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. Al het verkeer naar de service kan worden gerouteerd via het persoonlijke eind punt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of open bare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulatie niveau krijgt in toegangs beheer.
+Een persoonlijk eind punt is een netwerk interface waarmee u privé en veilig kunt verbinden met een service die wordt aangestuurd door een persoonlijke Azure-koppeling. Het privé-eindpunt maakt gebruik van een privé-IP-adres van uw VNet, waardoor de service feitelijk in uw VNet wordt geplaatst. Al het verkeer naar de service kan worden gerouteerd via het privé-eindpunt, zodat er geen gateways, NAT-apparaten, ExpressRoute of VPN-verbindingen of openbare IP-adressen nodig zijn. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt verbinding maken met een exemplaar van een Azure-resource, zodat u het hoogste granulariteit krijgt in toegangsbeheer.
 
-Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor meer informatie.
+Zie [Wat is een Azure Private Link?](../private-link/private-link-overview.md) voor meer informatie.
 
 > [!IMPORTANT]
-> Deze functie wordt alleen ondersteund met de **toegewezen** laag. Zie [overzicht van Event hubs dedicated](event-hubs-dedicated-overview.md)voor meer informatie over de toegewezen laag. 
+> Deze functie wordt ondersteund voor zowel de **standaard** als de **toegewezen** laag. 
 
 >[!WARNING]
 > Het inschakelen van persoonlijke eind punten kan verhinderen dat andere Azure-Services communiceren met Event Hubs.
@@ -47,22 +47,22 @@ Zie [Wat is Azure private link?](../private-link/private-link-overview.md) voor 
 Als u een Event Hubs naam ruimte met een persoonlijke Azure-koppeling wilt integreren, hebt u de volgende entiteiten of machtigingen nodig:
 
 - Een Event Hubs naam ruimte.
-- Een virtueel Azure-netwerk.
-- Een subnet in het virtuele netwerk.
+- Een Azure Virtual Network.
+- Een subnet binnen het virtueel netwerk.
 - Eigenaar-of Inzender machtigingen voor de naam ruimte en het virtuele netwerk.
 
-Uw persoonlijke eind punt en het virtuele netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het persoonlijke eind punt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw naam ruimte kan zich in een andere regio bevinden.
+Uw privé-eindpunt en het virtueel netwerk moeten zich in dezelfde regio bevinden. Wanneer u een regio voor het privé-eindpunt selecteert met behulp van de portal, worden er automatisch alleen virtuele netwerken gefilterd die zich in die regio bevinden. Uw naam ruimte kan zich in een andere regio bevinden.
 
-Uw persoonlijke eind punt maakt gebruik van een privé-IP-adres in uw virtuele netwerk.
+Uw privé-eindpunt maakt gebruik van een privé IP-adres in uw virtueel netwerk.
 
 ### <a name="steps"></a>Stappen
 Als u al een Event Hubs naam ruimte hebt, kunt u een koppeling voor een particuliere verbinding maken door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 2. Typ in de zoek balk in **Event hubs**.
 3. Selecteer de **naam ruimte** in de lijst waaraan u een persoonlijk eind punt wilt toevoegen.
 4. Selecteer het tabblad **netwerken** onder **instellingen**.
-5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. Als u geen toegewezen laag van Event Hubs gebruikt, wordt er een bericht weer gegeven: **privé-eindpunt verbindingen op Event hubs worden alleen ondersteund door naam ruimten die zijn gemaakt onder een toegewezen cluster**.
+5. Selecteer het tabblad **verbindingen met privé-eind punten** boven aan de pagina. 
 6. Selecteer de knop **+ privé-eind punt** boven aan de pagina.
 
     ![Installatiekopie](./media/private-link-service/private-link-service-3.png)
@@ -194,16 +194,16 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Privé-eind punten beheren met Azure Portal
 
-Wanneer u een persoonlijk eind punt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
+Wanneer u een privé-eindpunt maakt, moet de verbinding worden goedgekeurd. Als de resource waarvoor u een persoonlijk eind punt maakt zich in uw directory bevindt, kunt u de verbindings aanvraag goed keuren die u voldoende machtigingen hebt. Als u verbinding maakt met een Azure-resource in een andere Directory, moet u wachten tot de eigenaar van die resource uw verbindings aanvraag goed keuren.
 
-Er zijn vier inrichtings provincies:
+Er zijn vier inrichtingsstatussen:
 
-| Service actie | Status privé-eind punt service gebruiker | Beschrijving |
+| Service actie | Status privé-eindpunt serviceconsument | Beschrijving |
 |--|--|--|
-| Geen | In behandeling | De verbinding wordt hand matig gemaakt en in afwachting van goed keuring van de resource-eigenaar van de persoonlijke koppeling. |
-| Goedkeuren | Goedgekeurd | De verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt. |
-| Afwijzen | Geweigerd | De verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling. |
-| Verwijderen | De verbinding verbroken | De verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling, het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. |
+| Geen | In behandeling | De verbinding wordt handmatig gemaakt en in afwachting van goedkeuring door de resource-eigenaar van de Private Link. |
+| Goedkeuren | Goedgekeurd | De verbinding werd automatisch of handmatig goedgekeurd en is klaar om te worden gebruikt. |
+| Afwijzen | Afgewezen | De verbinding werd afgewezen door de resource-eigenaar van de private link. |
+| Verwijderen | Ontkoppeld | De verbinding is verwijderd door de resource-eigenaar van de private link, het privé-eindpunt wordt informatief en moet worden verwijderd voor opschoning. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Een verbinding met een privé-eind punt goed keuren, afwijzen of verwijderen
 
@@ -236,11 +236,11 @@ Er zijn vier inrichtings provincies:
 2. Selecteer op de pagina **verbinding verwijderen** de optie **Ja** om het verwijderen van het persoonlijke eind punt te bevestigen. Als u **Nee**selecteert, gebeurt er niets.
 3. U ziet dat de status is gewijzigd in **verbroken**. Vervolgens ziet u dat het eind punt verdwijnt uit de lijst.
 
-## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de persoonlijke verbinding werkt
+## <a name="validate-that-the-private-link-connection-works"></a>Controleren of de verbinding van de Private Link werkt
 
 U moet controleren of de resources binnen hetzelfde subnet van de persoonlijke eindpunt resource verbinding maken met uw Event Hubs naam ruimte via een privé-IP-adres en dat ze de juiste integratie van de persoonlijke DNS-zone hebben.
 
-Maak eerst een virtuele machine aan de hand van de stappen in [een virtuele Windows-machine maken in de Azure Portal](../virtual-machines/windows/quick-create-portal.md)
+Maak eerst een nieuwe virtuele machine door de instructies te volgen in [Een virtuele Windows-machine in de Azure Portal maken](../virtual-machines/windows/quick-create-portal.md)
 
 Op het tabblad **netwerk** : 
 
@@ -266,15 +266,15 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en ontwerp overwegingen
 
-**Prijzen**: Zie [prijzen voor persoonlijke Azure-koppelingen](https://azure.microsoft.com/pricing/details/private-link/)voor prijs informatie.
+**Pricing**: Zie [Prijs van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
 
 **Beperkingen**: deze functie is beschikbaar in alle open bare Azure-regio's.
 
 **Maximum aantal privé-eind punten per Event hubs naam ruimte**: 120.
 
-Zie voor meer informatie [Azure Private Link service: beperkingen](../private-link/private-link-service-overview.md#limitations)
+Zie [Azure Private Link-service: beperkingen](../private-link/private-link-service-overview.md#limitations) voor meer informatie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [persoonlijke Azure-koppelingen](../private-link/private-link-service-overview.md)
+- Meer informatie over [Azure Private Link](../private-link/private-link-service-overview.md)
 - Meer informatie over [Azure Event hubs](event-hubs-about.md)

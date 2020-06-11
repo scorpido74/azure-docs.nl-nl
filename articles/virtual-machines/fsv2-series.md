@@ -1,18 +1,18 @@
 ---
-title: Fsv2-serie-Azure Virtual Machines
+title: Fsv2-serie
 description: Specificaties voor de virtuele machines uit de Fsv2-serie.
-services: virtual-machines
 author: brbell
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: f28c6b61aee3c8cbc078db1c2cfb48ed1fba4554
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 81cace31b8d9ab27aff749ea496687e01430ce26
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164845"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675283"
 ---
 # <a name="fsv2-series"></a>Fsv2-serie
 

@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u een service implementeert over veel r
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152524"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677879"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatie procedures met Azure Deployment Manager (open bare preview) inschakelen
 
@@ -193,7 +193,7 @@ In de implementatie sjabloon maakt u een artefact bron voor de binaire bestanden
 
 ### <a name="steps"></a>Stappen
 
-U kunt een stap definiëren die vóór of na de implementatie bewerking moet worden uitgevoerd. Op dit moment zijn `wait` alleen de stappen ' status controle ' beschikbaar.
+U kunt een stap definiëren die vóór of na de implementatie bewerking moet worden uitgevoerd. Op dit moment zijn alleen de stappen `wait` ' status controle ' beschikbaar.
 
 Tijdens de wacht stap wordt de implementatie gepauzeerd voordat u doorgaat. U kunt controleren of de service wordt uitgevoerd zoals verwacht voordat u de volgende service-eenheid implementeert. In het volgende voor beeld ziet u de algemene notatie van een wacht stap.
 
@@ -262,13 +262,13 @@ In het volgende voor beeld wordt de algemene indeling van de implementatie weer 
 
 Zie de naslag informatie voor de implementatie van een [sjabloon](/azure/templates/Microsoft.DeploymentManager/rollouts).
 
-## <a name="parameter-file"></a>Parameter bestand
+## <a name="parameter-file"></a>Parameterbestand
 
 U maakt twee parameter bestanden. Er wordt één parameter bestand gebruikt bij het implementeren van de service topologie en de andere wordt gebruikt voor de implementatie van implementeren. Er zijn enkele waarden die u nodig hebt om ervoor te zorgen dat beide para meters hetzelfde zijn.
 
 ## <a name="containerroot-variable"></a>containerRoot-variabele
 
-Bij implementaties met een versie, wordt het pad naar uw artefacten gewijzigd met elke nieuwe versie. De eerste keer dat u een implementatie uitvoert, is `https://<base-uri-blob-container>/binaries/1.0.0.0`het pad mogelijk. De tweede keer is het mogelijk `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager vereenvoudigt het ophalen van het juiste hoofdpad voor de huidige implementatie met `$containerRoot` behulp van de variabele. Deze waarde verandert in elke versie en is niet bekend vóór de implementatie.
+Bij implementaties met een versie, wordt het pad naar uw artefacten gewijzigd met elke nieuwe versie. De eerste keer dat u een implementatie uitvoert, is het pad mogelijk `https://<base-uri-blob-container>/binaries/1.0.0.0` . De tweede keer is het mogelijk `https://<base-uri-blob-container>/binaries/1.0.0.1` . Deployment Manager vereenvoudigt het ophalen van het juiste hoofdpad voor de huidige implementatie met behulp van de `$containerRoot` variabele. Deze waarde verandert in elke versie en is niet bekend vóór de implementatie.
 
 Gebruik de `$containerRoot` variabele in het parameter bestand voor de sjabloon om de Azure-resources te implementeren. Tijdens de implementatie wordt deze variabele vervangen door de werkelijke waarden van de implementatie.
 
@@ -294,13 +294,13 @@ Tijdens de implementatie maakt u bijvoorbeeld een artefact bron voor de binaire 
 },
 ```
 
-Let op `artifactRoot` de `sasUri` eigenschappen and. De basis voor artefacten kan worden ingesteld op een `binaries/1.0.0.0`waarde zoals. De SAS-URI is de URI naar uw opslag container met een SAS-token voor toegang. Deployment Manager maakt automatisch de waarde van de `$containerRoot` variabele. Deze waarden worden gecombineerd in de indeling `<container>/<artifactRoot>`.
+Let op `artifactRoot` de `sasUri` Eigenschappen and. De basis voor artefacten kan worden ingesteld op een waarde zoals `binaries/1.0.0.0` . De SAS-URI is de URI naar uw opslag container met een SAS-token voor toegang. Deployment Manager maakt automatisch de waarde van de `$containerRoot` variabele. Deze waarden worden gecombineerd in de indeling `<container>/<artifactRoot>` .
 
-Uw sjabloon en parameter bestand moeten het juiste pad kennen voor het ophalen van de versie binaire bestanden. Als u bijvoorbeeld bestanden voor een web-app wilt implementeren, maakt u het volgende parameter bestand met de variabele $containerRoot. U moet twee backslashes ()`\\`voor het pad gebruiken, omdat de eerste een escape-teken is.
+Uw sjabloon en parameter bestand moeten het juiste pad kennen voor het ophalen van de versie binaire bestanden. Als u bijvoorbeeld bestanden voor een web-app wilt implementeren, maakt u het volgende parameter bestand met de variabele $containerRoot. U moet twee backslashes ( `\\` ) voor het pad gebruiken, omdat de eerste een escape-teken is.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

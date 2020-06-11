@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/10/2020
+ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299771"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668335"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Prestaties van de Kopieer activiteit oplossen
 
@@ -57,7 +57,7 @@ In de details van de uitvoering en de duur onder aan de weer gave controle activ
 | --------------- | ------------------------------------------------------------ |
 | Wachtrij           | De verstreken tijd totdat de Kopieer activiteit daad werkelijk wordt gestart op de Integration runtime. |
 | Script vooraf kopiëren | De verstreken tijd tussen de Kopieer activiteit, te beginnen bij de IR-en kopieer activiteit, waarbij het vooraf kopiëren van het script in de Sink-gegevens opslag wordt voltooid. Toep assen wanneer u het script voor het vooraf kopiëren van de data base-sinks configureert, bijvoorbeeld wanneer u gegevens schrijft in Azure SQL Database opschonen voordat nieuwe gegevens worden gekopieerd. |
-| Overdragen        | De verstreken tijd tussen het einde van de vorige stap en de IR waarbij alle gegevens van de bron naar de Sink worden overgebracht. Substaps onder "overdracht" worden parallel uitgevoerd.<br><br>- **Tijd tot eerste byte:** De verstreken tijd tussen het einde van de vorige stap en de tijd waarop de IR de eerste byte van de brongegevens opslag ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd.<br>- **Bron van vermelding:** De hoeveelheid tijd die is besteed aan het inventariseren van bron bestanden of gegevens partities. Deze laatste is van toepassing wanneer u partitie opties voor database bronnen configureert, bijvoorbeeld wanneer u gegevens kopieert uit data bases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen van Bron:** De hoeveelheid tijd die is besteed aan het ophalen van gegevens uit de brongegevens opslag.<br/>- **Schrijven naar Sink:** De hoeveelheid tijd die is besteed aan het schrijven van gegevens naar het sink-gegevens archief. |
+| Overdragen        | De verstreken tijd tussen het einde van de vorige stap en de IR waarbij alle gegevens van de bron naar de Sink worden overgebracht. <br/>Let op de substappen onder overdracht parallel uitvoeren en sommige bewerkingen worden nu niet weer gegeven, zoals het parseren/genereren van de bestands indeling.<br><br/>- **Tijd tot eerste byte:** De verstreken tijd tussen het einde van de vorige stap en de tijd waarop de IR de eerste byte van de brongegevens opslag ontvangt. Is van toepassing op bronnen die niet op bestanden zijn gebaseerd.<br>- **Bron van vermelding:** De hoeveelheid tijd die is besteed aan het inventariseren van bron bestanden of gegevens partities. Deze laatste is van toepassing wanneer u partitie opties voor database bronnen configureert, bijvoorbeeld wanneer u gegevens kopieert uit data bases zoals Oracle/SAP HANA/Teradata/Netezza/etc.<br/>-**Lezen van Bron:** De hoeveelheid tijd die is besteed aan het ophalen van gegevens uit de brongegevens opslag.<br/>- **Schrijven naar Sink:** De hoeveelheid tijd die is besteed aan het schrijven van gegevens naar het sink-gegevens archief. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Problemen met Kopieer activiteit op Azure IR oplossen
 
@@ -70,7 +70,6 @@ Als de prestaties van de Kopieer activiteit niet voldoen aan uw verwachting, kun
 - **"Overdrachts tijd tot eerste byte" heeft langdurige duur**van het werk: Dit betekent dat uw bron query lang duurt om gegevens te retour neren. De query of server controleren en optimaliseren. Als u meer hulp nodig hebt, neemt u contact op met uw Data Store-team.
 
 - **"Overdrachts bron" heeft langdurige lange werk duur**: Dit betekent dat het inventariseren van bron bestanden of gegevens partities van de bron database traag is.
-
   - Als u gegevens uit een op een bestand gebaseerde bron kopieert en u **Joker teken filter** gebruikt voor het pad naar de map of de bestands naam (of `wildcardFolderPath` `wildcardFileName` ) of het **filter Laatst gewijzigd tijd** ( `modifiedDatetimeStart` of `modifiedDatetimeEnd` ) gebruikt, ziet u dat filter zou leiden tot een Kopieer activiteit met alle bestanden onder de opgegeven map naar client zijde en vervolgens het filter Toep assen. Dergelijke bestands inventarisatie kan het knel punt worden, vooral wanneer slechts een kleine set bestanden voldoet aan de filter regel.
 
     - Controleer of u [bestanden kunt kopiëren op basis van een bestandspad of naam in datum-gepartitioneerd](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Op die manier wordt geen last gegeven van de vermelding van de bron zijde.

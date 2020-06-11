@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 316f5dcb3a5fe0cbf8fb6a2f65c0ab11fc45c146
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607275"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666720"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Een virtuele Ubuntu-machine voor Azure voorbereiden
 
@@ -50,8 +50,8 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
     Ubuntu 16,04 en Ubuntu 18,04:
    
-        # sudo sed -i 's/archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
-        # sed -i 's/[a-z][a-z]\.archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
         # sudo apt-get update
 
 
@@ -67,7 +67,9 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 5. Wijzig de kernel-opstart regel voor grub zodat er aanvullende kernel-para meters voor Azure worden toegevoegd. Als u dit wilt openen `/etc/default/grub` in een tekst editor, zoekt u de variabele met de naam `GRUB_CMDLINE_LINUX_DEFAULT` (of voegt u deze toe, indien nodig) en bewerkt u deze met de volgende para meters:
    
-        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
+    ```
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+    ```
 
     Sla het bestand op en sluit dit en voer het vervolgens uit `sudo update-grub` . Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning biedt voor technische ondersteuning van Azure bij problemen met de fout opsporing.
 
@@ -76,46 +78,49 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 7. Installeer de Cloud-init (de inrichtings agent) en de Azure Linux-agent (de handler voor gast uitbreidingen). Cloud-init gebruikt netplan voor het configureren van de systeem netwerk configuratie tijdens het inrichten en elke volgende keer opstarten.
 
         # sudo apt update
-        # sudo apt install -y cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
 
    > [!Note]
    >  Het `walinuxagent` pakket kan de `NetworkManager` pakketten en verwijderen `NetworkManager-gnome` als deze zijn geïnstalleerd.
 
-8. Verwijder de Cloud-init-standaard configuraties en overgebleven artefacten die mogelijk conflicteren met Cloud-init-inrichting op Azure:
+8. Verwijder Cloud-init-standaard configuraties en overgebleven netplan artefacten die mogelijk conflicteren met Cloud-init inrichten op Azure:
 
         # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
         # rm -f /etc/cloud/ds-identify.cfg
+        # rm -f /etc/netplan/*.yaml
 
 9. Cloud-init configureren om het systeem in te richten met behulp van de Azure-gegevens Bron:
 
-        # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
-        datasource_list: [ Azure ]
-        EOF
+    ```
+    # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+    datasource_list: [ Azure ]
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
-        system_info:
-        package_mirrors:
-            - arches: [i386, amd64]
-            failsafe:
-                primary: http://archive.ubuntu.com/ubuntu
-                security: http://security.ubuntu.com/ubuntu
-            search:
-                primary:
-                - http://azure.archive.ubuntu.com/ubuntu/
-                security: []
-            - arches: [armhf, armel, default]
-            failsafe:
-                primary: http://ports.ubuntu.com/ubuntu-ports
-                security: http://ports.ubuntu.com/ubuntu-ports
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+    system_info:
+       package_mirrors:
+         - arches: [i386, amd64]
+           failsafe:
+             primary: http://archive.ubuntu.com/ubuntu
+             security: http://security.ubuntu.com/ubuntu
+           search:
+             primary:
+               - http://azure.archive.ubuntu.com/ubuntu/
+             security: []
+         - arches: [armhf, armel, default]
+           failsafe:
+             primary: http://ports.ubuntu.com/ubuntu-ports
+             security: http://ports.ubuntu.com/ubuntu-ports
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-        reporting:
-        logging:
-            type: log
-        telemetry:
-            type: hyperv
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+    reporting:
+      logging:
+        type: log
+      telemetry:
+        type: hyperv
+    EOF
+    ```
 
 10. Configureer de Azure Linux-agent om te vertrouwen op Cloud-init om het inrichten uit te voeren. Bekijk het [project WALinuxAgent](https://github.com/Azure/WALinuxAgent) voor meer informatie over deze opties.
 
@@ -142,6 +147,12 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
         # sudo rm -f /var/log/waagent.log
 
 12. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
+
+    > [!NOTE]
+    > De `sudo waagent -force -deprovision+user` opdracht zal proberen het systeem op te schonen en het geschikt maken voor opnieuw inrichten. `+user`Met deze optie worden de laatste ingerichte gebruikers account en de bijbehorende gegevens verwijderd.
+
+    > [!WARNING]
+    > Het ongedaan maken van de inrichting met de bovenstaande opdracht garandeert niet dat de installatie kopie is gewist van alle gevoelige informatie en is geschikt voor herdistributie.
 
         # sudo waagent -force -deprovision+user
         # rm -f ~/.bash_history

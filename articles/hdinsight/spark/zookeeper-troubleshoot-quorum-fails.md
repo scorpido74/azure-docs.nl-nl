@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860491"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673357"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server kan geen quorum vormen in azure HDInsight
 
@@ -27,7 +27,7 @@ In dit artikel worden probleemoplossings stappen en mogelijke oplossingen beschr
 
 ## <a name="sample-log"></a>Voorbeeld logboek
 
-Er wordt mogelijk een fout bericht met de volgende strekking weer gegeven:
+Er wordt mogelijk een fout bericht weer gegeven dat vergelijkbaar is met het volgende in de garens-Logboeken (/var/log/Hadoop-Yarn/yarn/yarn-yarn *. log op de hoofd knooppunten):
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +116,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException in het Zookeeper-server logboek vereist geen opschoning van de moment opname
 
+* Deze uitzonde ring wordt weer gegeven op de Zookeeper-servers (/var/log/Zookeeper/Zookeeper-Zookeeper-* of/var/log/hdinsight-Zookeeper/Zookeeper *-bestanden)
 * Deze uitzonde ring betekent meestal dat de client niet langer actief is en dat de server geen bericht kan verzenden
 * Met deze uitzonde ring wordt ook aangegeven dat de Zookeeper-client tijdig sessies beëindigt
 * Zoek naar de andere symptomen die in dit document worden beschreven

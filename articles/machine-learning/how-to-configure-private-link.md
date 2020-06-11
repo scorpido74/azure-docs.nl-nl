@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 9a5a739ec9a17d37d8bcfd65face91c8223c452c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432242"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666926"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Een persoonlijke Azure-koppeling configureren voor een Azure Machine Learning-werk ruimte (preview)
 
@@ -42,7 +42,7 @@ Op dit moment ondersteunen we alleen het inschakelen van een persoonlijk eind pu
 
 Bij het implementeren van een sjabloon moet u de volgende informatie opgeven:
 
-* Naam van de werkruimte
+* Werkruimtenaam
 * Azure-regio voor het maken van de resources in
 * Werkruimte editie (Basic of ENTER prise)
 * Als u instellingen voor sterke vertrouwelijkheid voor de werk ruimte wilt inschakelen
@@ -99,14 +99,13 @@ Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azu
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>Een werk ruimte gebruiken via een persoonlijk eind punt
 
-Omdat de communicatie met de werk ruimte alleen is toegestaan vanuit het virtuele netwerk, moeten ontwikkel omgevingen die gebruikmaken van de werk ruimte lid zijn van het virtuele netwerk. Bijvoorbeeld een virtuele machine in het virtuele netwerk of een computer die is verbonden met het virtuele netwerk met behulp van een VPN-gateway.
+Omdat de communicatie met de werk ruimte alleen is toegestaan vanuit het virtuele netwerk, moeten ontwikkel omgevingen die gebruikmaken van de werk ruimte lid zijn van het virtuele netwerk. Bijvoorbeeld een virtuele machine in het virtuele netwerk.
 
 > [!IMPORTANT]
 > Om te voor komen dat de verbinding tijdelijk wordt verbroken, raadt micro soft aan de DNS-cache te wissen op computers die verbinding maken met de werk ruimte nadat een persoonlijke koppeling is ingeschakeld. 
 
 Raadpleeg de [virtual machines documentatie](/azure/virtual-machines/)voor meer informatie over Azure virtual machines.
 
-Zie [Wat is VPN-gateway](/azure/vpn-gateway/vpn-gateway-about-vpngateways)? voor meer informatie over VPN-gateways.
 
 ## <a name="using-azure-storage"></a>Met behulp van Azure Storage
 

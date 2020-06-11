@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden over resources op te halen.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 15b1610dfcacb37bce2e265b4e16f675e944b9db
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: b04861e0d3c1b96b77e3865652a4300213b49a09
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331505"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676723"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Resource functies voor ARM-sjablonen
 
@@ -83,7 +83,7 @@ In het volgende voor beeld wordt de resource-ID voor een resource groeps vergren
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -132,9 +132,9 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Micro soft. AppConfiguration/configurationStores | Listkeys ophalen |
 | Micro soft. Automation/automationAccounts | [Listkeys ophalen](/rest/api/automation/keys/listbyautomationaccount) |
-| Micro soft. batch/batchAccounts | [listkeys ophalen](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Micro soft. BatchAI/werk ruimten/experimenten/taken | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Micro soft. Block Chain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft.Bat-CH/batchAccounts | [listkeys ophalen](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/werk ruimten/experimenten/taken | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Micro soft. Block Chain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Micro soft. cache/redis | [Listkeys ophalen](/rest/api/redis/redis/listkeys) |
 | Micro soft. CognitiveServices/accounts | [Listkeys ophalen](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
@@ -163,12 +163,12 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. DevTestLab/Labs/planningen | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Micro soft. DevTestLab/Labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Micro soft. DevTestLab/Labs/informatie | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Micro soft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Micro soft. DocumentDB/databaseAccounts | [Listkeys ophalen](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [Listkeys ophalen](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Micro soft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Micro soft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Micro soft. EventGrid/domeinen | [Listkeys ophalen](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Micro soft. EventGrid/topics | [Listkeys ophalen](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Micro soft. EventGrid/domeinen | [Listkeys ophalen](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Micro soft. EventGrid/topics | [Listkeys ophalen](/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
 | Micro soft. EventHub/naam ruimten/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
 | Micro soft. EventHub/naam ruimten/disasterRecoveryConfigs/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
 | Micro soft. EventHub/naam ruimten/Event hubs/authorizationRules | [listkeys ophalen](/rest/api/eventhub) |
@@ -215,9 +215,9 @@ Het mogelijke gebruik van lijst * wordt weer gegeven in de volgende tabel.
 | Micro soft. ServiceBus/naam ruimten/wacht rijen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/queues/listkeys) |
 | Micro soft. ServiceBus/naam ruimten/onderwerpen/authorizationRules | [listkeys ophalen](/rest/api/servicebus/topics/listkeys) |
 | Micro soft. SignalRService/Signa lering | [listkeys ophalen](/rest/api/signalr/signalr/listkeys) |
-| Micro soft. Storage/Storage accounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Micro soft. Storage/Storage accounts | [listkeys ophalen](/rest/api/storagerp/storageaccounts/listkeys) |
-| Micro soft. Storage/Storage accounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts | [listkeys ophalen](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Micro soft. StorSimple/managers/apparaten | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Micro soft. StorSimple/managers/apparaten | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Micro soft. StorSimple/managers | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
@@ -290,7 +290,7 @@ Om het SAS-token op te halen, geeft u een object voor de verloop tijd door. De v
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storagename": {
@@ -386,7 +386,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -559,7 +559,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": {
@@ -653,7 +653,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -725,7 +725,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -827,7 +827,7 @@ Vaak moet u deze functie gebruiken wanneer u een opslag account of een virtueel 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -873,7 +873,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -935,7 +935,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -982,7 +982,7 @@ De volgende sjabloon wijst een ingebouwde rol toe. U kunt de app implementeren v
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {

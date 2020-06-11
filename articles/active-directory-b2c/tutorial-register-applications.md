@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e97df60739b04884e8a9cd68679c23d4407e4947
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c3be9136f260d73647e144d4d00bb58ce5e6774d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298799"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672609"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Zelf studie: een webtoepassing registreren in Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
 > * Een web-app registreren
-> * Een client geheim maken
+> * Een clientgeheim maken
 
 Als u in plaats daarvan een systeem eigen app gebruikt (bijvoorbeeld iOS, Android, mobiel & bureau blad), leert u [hoe u een systeem eigen client toepassing kunt registreren](add-native-application.md).
 
@@ -38,16 +38,16 @@ Als u nog geen eigen [Azure AD B2C Tenant](tutorial-create-tenant.md)hebt gemaak
 
 ## <a name="register-a-web-application"></a>Een web-app registreren
 
-Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u gebruikmaken van onze nieuwe geïntegreerde **app-registraties** ervaring of onze oudere **toepassingen (** verouderd). [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
+Als u een toepassing wilt registreren in de Azure AD B2C-tenant, kunt u de nieuwe uniforme ervaring voor **App-registraties** of de verouderde ervaring **Toepassingen (verouderd)** gebruiken. [Meer informatie over de nieuwe ervaring](https://aka.ms/b2cappregtraining).
 
 #### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/)
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **app-registraties**en selecteer vervolgens **nieuwe registratie**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
 1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *webapp1*.
-1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory (een Azure AD-adres lijst en persoonlijke micro soft-accounts (bijvoorbeeld Skype, Xbox)**.
+1. Onder **ondersteunde account typen**selecteert u **accounts in elke organisatie Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C**.
 1. Onder **omleidings-URI**selecteert u **Web**en voert u `https://jwt.ms` in het tekstvak URL in.
 
     De omleidings-URI is het eind punt waarnaar de gebruiker wordt verzonden door de autorisatie server (Azure AD B2C in dit geval) nadat de interactie met de gebruiker is voltooid en aan welke toegangs token of autorisatie code wordt verzonden wanneer de autorisatie is geslaagd. In een productie toepassing is dit doorgaans een openbaar toegankelijk eind punt waarop uw app wordt uitgevoerd, zoals `https://contoso.com/auth-response` . Voor test doeleinden als deze zelf studie kunt u deze instellen op `https://jwt.ms` een webtoepassing van micro soft die de gedecodeerde inhoud van een token weergeeft (de inhoud van het token verlaat uw browser nooit). Tijdens het ontwikkelen van apps kunt u het eind punt toevoegen waar uw toepassing lokaal luistert, zoals `https://localhost:5000` . U kunt op elk gewenst moment omleidings-Uri's toevoegen en wijzigen in uw geregistreerde toepassingen.
@@ -62,8 +62,8 @@ Als u een toepassing in uw Azure AD B2C-Tenant wilt registreren, kunt u gebruikm
 
 Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toekennings stroom in:
 
-1. Selecteer onder **beheren**de optie **verificatie**.
-1. Schakel onder **impliciete toekenning**de selectie vakjes **toegangs tokens** en **id-tokens** in.
+1. Selecteer **Verificatie** onder **Beheren**.
+1. Schakel onder **Impliciete toekenning** de selectievakjes **Toegangstokens** en **Id-tokens** in.
 1. Selecteer **Opslaan**.
 
 #### <a name="applications-legacy"></a>[Toepassingen (verouderd)](#tab/applications-legacy/)
@@ -71,7 +71,7 @@ Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toe
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
 1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
-1. Selecteer **toepassingen (verouderd)** en selecteer vervolgens **toevoegen**.
+1. Selecteer **Toepassingen (verouderd)** , en selecteer vervolgens **Toevoegen**.
 1. Voer een naam in voor de toepassing. Bijvoorbeeld *webapp1*.
 1. Selecteer voor **Inclusief webtoepassing/ web-API** en **Impliciete stroom toestaan****Ja**.
 1. Voer voor de **Antwoord-URL** een eindpunt in waarop Azure AD B2C tokens retourneert die door uw toepassing worden aangevraagd. U kunt de service bijvoorbeeld zo instellen dat deze lokaal luistert op `https://localhost:44316` . Als u het poort nummer nog niet kent, kunt u een waarde voor de tijdelijke aanduiding opgeven en deze later wijzigen.
@@ -87,7 +87,7 @@ Zodra de registratie van de toepassing is voltooid, schakelt u de impliciete toe
 
 * * *
 
-## <a name="create-a-client-secret"></a>Een client geheim maken
+## <a name="create-a-client-secret"></a>Een clientgeheim maken
 
 Als uw toepassing een autorisatie code voor een toegangs token uitwisselt, moet u een toepassings geheim maken.
 
@@ -115,7 +115,7 @@ In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een web-app registreren
-> * Een client geheim maken
+> * Een clientgeheim maken
 
 Vervolgens leert u hoe u gebruikers stromen kunt maken om gebruikers in staat te stellen zich aan te melden, zich aan te melden en hun profielen te beheren.
 

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 8a60d34c73eed5d71599a90e463138186e21fdf7
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929210"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677896"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Een bestaande hostgroep uitbreiden met nieuwe sessie-hosts
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de lente 2020-update met Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)als u de versie van het Windows-bureau blad van Virtual Desktop 2019 zonder Azure Resource Manager objecten gebruikt.
+>Deze inhoud is van toepassing op de update uit het voorjaar van 2020 met Azure Resource Manager Windows Virtual Desktop-objecten. Zie [dit artikel](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md) als u de release van Windows Virtual Desktop uit het najaar van 2019 zonder Azure Resource Manager-objecten gebruikt.
 >
-> De Windows Virtual Desktop lente 2020-update is momenteel beschikbaar als open bare preview. Deze preview-versie is beschikbaar zonder service level agreement. het wordt niet aangeraden deze te gebruiken voor productie werkbelastingen. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
-> Zie voor meer informatie [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> De update van Windows Virtual Desktop uit het voorjaar van 2020 is momenteel beschikbaar als openbare preview. Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. 
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
 Wanneer u het gebruik in uw hostgroep wilt verbeteren, moet u mogelijk uw bestaande hostgroep uitbreiden met nieuwe sessie-hosts om de nieuwe belasting af te handelen.
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u een bestaande hostgroep kunt uitbreiden met
 
 Voordat u begint, moet u ervoor zorgen dat u een hostgroep en virtuele machines (Vm's) voor de host hebt gemaakt met behulp van een van de volgende methoden:
 
-- [Azure Portal](./create-host-pools-azure-marketplace.md)
+- [Azure-portal](./create-host-pools-azure-marketplace.md)
 - [Een hostpool maken met PowerShell](./create-host-pools-powershell.md)
 
 U hebt ook de volgende informatie nodig bij het maken van de hostgroep en de Vm's voor de sessiehost:
@@ -50,7 +50,7 @@ U kunt als volgt uw hostgroep uitbreiden door virtuele machines toe te voegen:
 
 3. Selecteer in het menu aan de linkerkant van het scherm de optie **hostgroepen**en selecteer vervolgens de naam van de hostgroep waaraan u virtuele machines wilt toevoegen.
 
-4. Selecteer **virtuele machines** in het menu aan de linkerkant van het scherm.
+4. Selecteer **sessie-hosts** in het menu aan de linkerkant van het scherm.
 
 5. Selecteer **+ toevoegen** om te beginnen met het maken van de hostgroep.
 

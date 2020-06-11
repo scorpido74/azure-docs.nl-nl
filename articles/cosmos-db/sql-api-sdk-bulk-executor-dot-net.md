@@ -8,19 +8,20 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 12140bd6fac888a4f5dc47023ec1fa8aad0a9969
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6c51494d94a519890d139028ef42e9768ae4b84a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171664"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672728"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET-bibliotheek voor bulksgewijs laden: informatie downloaden 
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
@@ -29,7 +30,7 @@ ms.locfileid: "84171664"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -70,7 +71,7 @@ ms.locfileid: "84171664"
 
 * Inclusief MongoBulkExecutor ter ondersteuning van .NET Standard 2,0. Deze functie is functioneel gelijk aan 1.3.0-release, met toevoeging van ondersteuning van .NET Standard 2,0 als het doel raamwerk.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-Preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
 
 * .NET Standard 2,0 is toegevoegd als een van de ondersteunde doel stellingen om de bulk-uitvoerder bibliotheek te laten werken met .NET core-toepassingen.
 

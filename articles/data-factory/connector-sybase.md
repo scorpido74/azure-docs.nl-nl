@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416620"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669831"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Gegevens van Sybase kopiëren met behulp van Azure Data Factory
-> [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-onprem-sybase-connector.md)
+> [!div class="op_single_selector" title1="Selecteer de versie van de Data Factory-service die u gebruikt:"]
+> * [Versie 1:](v1/data-factory-onprem-sybase-connector.md)
 > * [Huidige versie](connector-sybase.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -37,8 +37,10 @@ U kunt gegevens van Sybase-data base kopiëren naar elk ondersteund Sink-gegeven
 
 Deze Sybase-connector ondersteunt met name:
 
-- SAP Sybase SQL Anywhere (ASA) **versie 16 en hoger**; IQ en ASE worden niet ondersteund.
+- SAP Sybase SQL Anywhere (ASA) **versie 16 en hoger**.
 - Kopiëren van gegevens met behulp van **basis** -of **Windows** -verificatie.
+
+Sybase IQ en ASE worden niet ondersteund. U kunt in plaats daarvan een algemene ODBC-Connector met Sybase-stuur programma gebruiken.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -67,7 +69,7 @@ De volgende eigenschappen worden ondersteund voor Sybase-gekoppelde service:
 | wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Het [Integration runtime](concepts-integration-runtime.md) dat moet worden gebruikt om verbinding te maken met het gegevens archief. Een zelf-hostende Integration Runtime is vereist zoals vermeld in de [vereisten](#prerequisites). |Ja |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -103,7 +105,7 @@ Als u gegevens wilt kopiëren vanuit Sybase, worden de volgende eigenschappen on
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **SybaseTable** | Ja |
 | tableName | De naam van de tabel in de Sybase-data base. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {
@@ -120,7 +122,7 @@ Als u gegevens wilt kopiëren vanuit Sybase, worden de volgende eigenschappen on
 }
 ```
 
-Als u getypte gegevensset gebruikt `RelationalTable` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalTable` getypte gegevensset gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
@@ -135,7 +137,7 @@ Als u gegevens wilt kopiëren van Sybase, worden de volgende eigenschappen onder
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **SybaseSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM MyTable"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[
@@ -167,7 +169,7 @@ Als u gegevens wilt kopiëren van Sybase, worden de volgende eigenschappen onder
 ]
 ```
 
-Als u getypte bron gebruikt `RelationalSource` , wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
+Als u `RelationalSource` getypte bron gebruikt, wordt deze nog steeds ondersteund als-is, terwijl u wordt geadviseerd om het nieuwe item te gebruiken.
 
 ## <a name="data-type-mapping-for-sybase"></a>Toewijzing van gegevens type voor Sybase
 

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Een Azure Arc-Kubernetes-cluster verbinden met Azure Arc
 keywords: Kubernetes, Arc, azure, K8s, containers
 ms.custom: references_regions
-ms.openlocfilehash: 85ef8bb9868784df66199a4aea261e6b752ae7f8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 232d5e5a5f6efd6ddbd6124f78de4f4b8c1cd639
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636254"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676417"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Een Azure Arc-Kubernetes-cluster verbinden (preview-versie)
 
@@ -103,7 +103,7 @@ Maak eerst een resource groep om de verbonden cluster bron te bewaren.
 az group create --name AzureArcTest -l EastUS -o table
 ```
 
-**Uitvoer**
+**Uitvoer:**
 
 ```console
 Location    Name
@@ -122,7 +122,7 @@ We gaan ons Kubernetes-cluster nu koppelen aan Azure. De werk stroom voor `az co
 az connectedk8s connect --name AzureArcTest1 --resource-group AzureArcTest
 ```
 
-**Uitvoer**
+**Uitvoer:**
 
 ```console
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
@@ -160,7 +160,7 @@ Uw verbonden clusters weer geven:
 az connectedk8s list -g AzureArcTest -o table
 ```
 
-**Uitvoer**
+**Uitvoer:**
 
 ```console
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
@@ -177,7 +177,7 @@ Azure Arc enabled Kubernetes implementeert enkele opera tors in de `azure-arc` n
 kubectl -n azure-arc get deployments,pods
 ```
 
-**Uitvoer**
+**Uitvoer:**
 
 ```console
 NAME                                        READY   UP-TO-DATE AVAILABLE AGE
@@ -208,7 +208,7 @@ Azure Arc enabled Kubernetes bestaat uit een aantal agents (opera tors) die in u
 * `deployment.apps/metrics-agent`: verzamelt metrische gegevens van andere Arc-agents om ervoor te zorgen dat deze agents de optimale prestaties vertonen
 * `deployment.apps/cluster-metadata-operator`: Hiermee worden de meta gegevens van het cluster verzameld, de Cluster versie, het aantal knoop punten en de Arc-agent versie
 * `deployment.apps/resource-sync-agent`: synchroniseert de hierboven vermelde meta gegevens van het cluster naar Azure
-* `deployment.apps/clusteridentityoperator`: onderhoudt het MSI-certificaat (Managed Service Identity) dat door andere agents wordt gebruikt voor communicatie met Azure
+* `deployment.apps/clusteridentityoperator`: Azure Arc enabled Kubernetes ondersteunt momenteel de toegewezen identiteit van het systeem. clusteridentityoperator onderhoudt het Managed Service Identity (MSI)-certificaat dat door andere agents wordt gebruikt voor communicatie met Azure.
 * `deployment.apps/flux-logs-agent`: Hiermee worden logboeken van de stroom-Opera tors verzameld die zijn geïmplementeerd als onderdeel van de configuratie van broncode beheer
 
 ## <a name="delete-a-connected-cluster"></a>Een verbonden cluster verwijderen

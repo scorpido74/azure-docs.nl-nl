@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118560"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677182"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken voor het bewaken van metrische gegevens en logboeken
 
@@ -170,7 +170,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Name | Waarde
+Naam | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net` . Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -210,7 +210,7 @@ In deze optionele sectie worden extra bestemmingen gedefinieerd waarnaar de uitb
 
 Element | Waarde
 ------- | -----
-name | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
+naam | Een teken reeks die wordt gebruikt om te verwijzen naar deze Sink elders in de configuratie van de extensie.
 type | Het type Sink dat wordt gedefinieerd. Bepaalt de andere waarden (indien van toepassing) in exemplaren van dit type.
 
 Versie 3,0 van de diagnostische Linux-extensie ondersteunt twee Sink-typen: EventHub en JsonBlob.
@@ -344,7 +344,7 @@ Voor beelden van de metrische gegevens die zijn opgegeven in de sectie Performan
 
 Deze optionele sectie bepaalt het verzamelen van metrische gegevens. Onbewerkte voor beelden worden geaggregeerd voor elke [scheduledTransferPeriod](#metrics) om deze waarden te produceren:
 
-* gemiddeld
+* mean
 * minimum
 * maximum
 * laatst verzamelde waarde
@@ -451,7 +451,7 @@ Hiermee bepaalt u het vastleggen van logboek bestanden. LAD legt nieuwe tekst re
 
 Element | Waarde
 ------- | -----
-file | De volledige padnaam van het logboek bestand dat moet worden bekeken en vastgelegd. De padnaam moet een naam hebben van één bestand; de naam van een map kan niet worden genoemd of joker tekens bevatten.
+file | De volledige padnaam van het logboek bestand dat moet worden bekeken en vastgelegd. De padnaam moet een naam hebben van één bestand; de naam van een map kan niet worden genoemd of joker tekens bevatten. Het gebruikers account ' omsagent ' moet lees toegang hebben tot het bestandspad.
 tabel | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (zoals opgegeven in de beveiligde configuratie), waarin nieuwe regels van de "staart" van het bestand worden geschreven.
 wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarnaar logboek regels worden verzonden.
 
@@ -566,7 +566,7 @@ Geaggregeerde waarden voor alle schijven kunnen worden verkregen door in te stel
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>LAD 3.0 via de CLI installeren en configureren
 
-Ervan uitgaande dat uw beveiligde instellingen zich in het bestand PrivateConfig. json bevinden en dat uw open bare configuratie-informatie zich in PublicConfig. json bevindt, voert u de volgende opdracht uit:
+Als uw beveiligde instellingen zich in het bestand bevinden PrivateConfig.jsop en uw open bare configuratie-informatie zich in PublicConfig.jsbevindt, voert u de volgende opdracht uit:
 
 ```azurecli
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
@@ -578,7 +578,7 @@ De opdracht gaat ervan uit dat u gebruikmaakt van de Azure resource management-m
 
 Op basis van de voor gaande definities ziet u hier een voor beeld van een LAD-extensie configuratie van 3,0 met enkele uitleg. Als u dit voor beeld wilt Toep assen op uw aanvraag, moet u uw eigen opslag accountnaam, SAS-token voor het account en Event hubs SAS-tokens gebruiken.
 
-### <a name="privateconfigjson"></a>PrivateConfig. json
+### <a name="privateconfigjson"></a>PrivateConfig.jsop
 
 Deze persoonlijke instellingen configureren:
 
@@ -628,7 +628,7 @@ Deze persoonlijke instellingen configureren:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig. json
+### <a name="publicconfigjson"></a>PublicConfig.jsop
 
 Deze open bare instellingen veroorzaken LAD:
 

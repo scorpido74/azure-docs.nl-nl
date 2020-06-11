@@ -8,20 +8,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 43096e61fee740c6d1f1093cd441b8d2ee5901f8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d7b2e5b811e6e9972c94862a92b8f5808dcbe592
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171630"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678117"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed processor SDK: down load en release-opmerkingen
 
 > [!div class="op_single_selector"]
 >
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
@@ -30,7 +31,7 @@ ms.locfileid: "84171630"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
@@ -98,7 +99,7 @@ ms.locfileid: "84171630"
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
 * Er is een nieuwe API &lt; (taak IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync) toegevoegd. Dit kan worden gebruikt om de geschatte hoeveelheid werk voor elke partitie te verkrijgen.
-* Biedt ondersteuning voor micro soft. Azure. DocumentDB SDK 2,0. Vereist micro soft. Azure. DocumentDB 2,0 of hoger.
+* Ondersteunt Microsoft.Azure.DocumentDB SDK 2,0. Vereist Microsoft.Azure.DocumentDB 2,0 of hoger.
 
 ### <a name="206"></a><a name="2.0.6"></a>2.0.6
 * De open bare eigenschap ChangeFeedEventHost. HostName is toegevoegd voor compatibiliteit met v1.
@@ -115,10 +116,10 @@ ms.locfileid: "84171630"
   * De GetEstimatedRemainingWork-API heeft 0 geretourneerd wanneer er geen leases in de lease verzameling aanwezig waren.
 
 * De volgende uitzonde ringen worden openbaar gemaakt. Uitbrei dingen die IPartitionProcessor implementeren, kunnen deze uitzonde ringen genereren.
-  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. LeaseLostException. 
-  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionException. 
-  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionNotFoundException.
-  * Micro soft. Azure. Documents. ChangeFeedProcessor. exceptions. PartitionSplitException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. exceptions. LeaseLostException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. exceptions. PartitionException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. exceptions. PartitionNotFoundException.
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. exceptions. PartitionSplitException. 
 
 ### <a name="202-prerelease"></a><a name="2.0.2-prerelease"></a>2.0.2-Prerelease
 * Kleine wijzigingen in de API:

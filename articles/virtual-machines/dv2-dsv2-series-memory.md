@@ -1,18 +1,18 @@
 ---
 title: Voor geheugen geoptimaliseerde dv2-en DSv2-serie-Vm's-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de dv2-en DSv2-serie.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: fb493154f81eb5ab63ed9593479356fe89552211
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77914038"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678253"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Voor geheugen geoptimaliseerde dv2-en Dsv2-serie
 

@@ -3,16 +3,16 @@ title: Onderhouds beheer voor virtuele Azure-machines met Power shell
 description: Meer informatie over hoe u kunt bepalen wanneer onderhoud wordt toegepast op uw Azure-Vm's met behulp van onderhouds beheer en Power shell.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: e0bb3586d637c9399db057b7cd3225bf8cd36e2f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996479"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675839"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Updates beheren met onderhouds beheer en Azure PowerShell
 
@@ -20,7 +20,7 @@ Met de onderhouds controle kunt u bepalen wanneer u updates wilt Toep assen op u
  
 ## <a name="enable-the-powershell-module"></a>De Power shell-module inschakelen
 
-Zorg ervoor `PowerShellGet` dat het up-to-date is.    
+Zorg ervoor dat `PowerShellGet` het up-to-date is.    
 
 ```azurepowershell-interactive  
 Install-Module -Name PowerShellGet -Repository PSGallery -Force 
@@ -73,7 +73,7 @@ Gebruik [New-AzConfigurationAssignment](https://docs.microsoft.com/powershell/mo
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
-Pas de configuratie toe op een virtuele machine met behulp van de ID van de configuratie. Geef `-ResourceType VirtualMachines` de naam van de virtuele machine `-ResourceName`en de resource groep van de virtuele machine voor `-ResourceGroupName`op. 
+Pas de configuratie toe op een virtuele machine met behulp van de ID van de configuratie. Geef `-ResourceType VirtualMachines` de naam van de virtuele machine en `-ResourceName` de resource groep van de virtuele machine voor op `-ResourceGroupName` . 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -88,7 +88,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Als u een configuratie wilt Toep assen op een specifieke host, moet u `-ResourceType hosts`ook `-ResourceParentName` de naam van de hostgroep en `-ResourceParentType hostGroups`gebruiken. 
+Als u een configuratie wilt Toep assen op een specifieke host, moet u `-ResourceType hosts` ook `-ResourceParentName` de naam van de hostgroep en gebruiken `-ResourceParentType hostGroups` . 
 
 
 ```azurepowershell-interactive
@@ -183,7 +183,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Update status controleren
-Gebruik [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) om de status van een update te controleren. Met `default` de onderstaande opdrachten wordt de status van de meest recente update weer gegeven met `-ApplyUpdateName` voor de para meter. U kunt de naam van de update vervangen (geretourneerd door de opdracht [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) om de status van een specifieke update op te halen.
+Gebruik [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) om de status van een update te controleren. Met de onderstaande opdrachten wordt de status van de meest recente update weer gegeven met `default` voor de `-ApplyUpdateName` para meter. U kunt de naam van de update vervangen (geretourneerd door de opdracht [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) om de status van een specifieke update op te halen.
 
 ```text
 Status         : Completed

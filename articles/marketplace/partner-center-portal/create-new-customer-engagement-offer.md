@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: e49ed542af140b28e8ebe58e5c8920d0959c9387
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848896"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672762"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -139,7 +139,7 @@ Geef hier Marketplace-Details op voor elke taal/markt, zoals aanbiedings naam, b
 > [!NOTE]
 > De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Naam
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -315,7 +315,7 @@ Micro soft kan de complexiteit van het instellen van een test drive verwijderen 
 
 - **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld `https://testdrive.crm.dynamics.com` ).
 
-- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \& gt; **Aanpassing** \& gt Bronnen voor ontwikkel **aars** \& gt **Web-API van het exemplaar (Service root URL)**, kopieer de URL die u hier kunt vinden (bijvoorbeeld `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen**  >  **aanpassing**  >  **ontwikkelaars resources**  >  **instance Web API (Service root URL)**, kopieer de URL die u hier kunt vinden (bijvoorbeeld `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Rolnaam** (vereist): Geef de naam op van de beveiligingsrol die u hebt gedefinieerd in uw aangepaste Dynamics 365-test drive. Deze beveiligingsrol naam wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628995"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672694"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Office installeren op een master-VHD-installatiekopie
 
@@ -55,13 +55,13 @@ Dit is de XML-voorbeeld configuratie:
 >[!NOTE]
 >Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie \\ beleid \\ Beheersjablonen de licentie- \\ \\ instellingen voor Microsoft Office 2016 (computer)**
 
-Het Office Deployment Tool bevat Setup. exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
+Het Office Deployment Tool bevat setup.exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Voor beeld van configuratie. XML
+#### <a name="sample-configurationxml"></a>Voorbeeld configuration.xml
 
 Met het volgende XML-voor beeld wordt de maandelijkse versie van het Enter prise Channel geïnstalleerd.
 
@@ -118,7 +118,7 @@ U kunt als volgt OneDrive installeren in de modus per computer:
 
 1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of [ \\ \\ UNC]-locatie (File://UNC) is nauw keurig.
 
-2. Down load OneDriveSetup. exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
+2. Down load OneDriveSetup.exe naar uw gefaseerde locatie met deze koppeling:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Als u Office hebt geïnstalleerd met OneDrive door niets **\<ExcludeApp ID="OneDrive" /\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
     
@@ -156,9 +156,11 @@ U kunt als volgt OneDrive installeren in de modus per computer:
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Teams en Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Micro soft teams en Skype voor bedrijven
 
-Virtueel bureau blad van Windows biedt geen ondersteuning voor Skype voor bedrijven en teams.
+Het virtuele bureau blad van Windows biedt geen ondersteuning voor Skype voor bedrijven.
+
+Voor hulp bij het installeren van micro soft teams raadpleegt [u micro soft teams gebruiken op virtuele Windows-bureau blad](teams-on-wvd.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

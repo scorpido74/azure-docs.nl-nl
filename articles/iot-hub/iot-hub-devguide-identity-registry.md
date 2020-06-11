@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730179"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674951"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Inzicht in het identiteits register in uw IoT-hub
 
@@ -106,7 +106,7 @@ Een complexere implementatie kan de informatie bevatten van [Azure monitor](../a
 
 IoT Hub kunt uw IoT-oplossing waarschuwen wanneer een identiteit wordt gemaakt of verwijderd door levenscyclus meldingen te verzenden. Hiervoor moet uw IoT-oplossing een route maken en de gegevens bron instellen op *DeviceLifecycleEvents* of *ModuleLifecycleEvents*. Standaard worden er geen levenscyclus meldingen verzonden, dat wil zeggen dat er geen dergelijke routes vooraf bestaan. Het meldings bericht bevat eigenschappen en hoofd tekst.
 
-Eigenschappen: eigenschappen van het bericht systeem worden voorafgegaan door `$` het symbool.
+Eigenschappen: eigenschappen van het bericht systeem worden voorafgegaan door het `$` symbool.
 
 Meldings bericht voor het apparaat:
 
@@ -188,7 +188,7 @@ Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschap
 
 | Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
-| deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |vereist, alleen-lezen |Een met IoT-hub gegenereerde, hoofdletter gevoelige teken reeks tot 128 tekens lang. Deze waarde wordt gebruikt om apparaten met dezelfde **deviceId**te onderscheiden, wanneer ze zijn verwijderd en opnieuw gemaakt. |
 | ETAG |vereist, alleen-lezen |Een teken reeks die een zwakke ETag vertegenwoordigt voor de apparaat-id, zoals per [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | dienst |optioneel |Een samengesteld object met verificatie-informatie en beveiligings materialen. |
@@ -204,7 +204,7 @@ Apparaat-id's worden weer gegeven als JSON-documenten met de volgende eigenschap
 > De verbindings status kan alleen de IoT Hub weer gave van de status van de verbinding weer geven. Updates van deze status kunnen worden vertraagd, afhankelijk van de netwerk omstandigheden en configuraties.
 
 > [!NOTE]
-> De Sdk's van het apparaat bieden momenteel geen ondersteuning `+` voor `#` het gebruik van de en-tekens in het **deviceId**.
+> De Sdk's van het apparaat bieden momenteel geen ondersteuning `+` voor het gebruik van de en- `#` tekens in het **deviceId**.
 
 ## <a name="module-identity-properties"></a>Eigenschappen van module-identiteit
 
@@ -212,8 +212,8 @@ Module-identiteiten worden weer gegeven als JSON-documenten met de volgende eige
 
 | Eigenschap | Opties | Beschrijving |
 | --- | --- | --- |
-| deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens `- . + % _ # * ? ! ( ) , = @ $ '`:. |
-| moduleId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens `- . + % _ # * ? ! ( ) , = @ $ '`:. |
+| deviceId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
+| moduleId |vereist, alleen-lezen voor updates |Een hoofdletter gevoelige teken reeks (Maxi maal 128 tekens lang) van ASCII 7-bits alfanumerieke tekens plus bepaalde speciale tekens: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |vereist, alleen-lezen |Een met IoT-hub gegenereerde, hoofdletter gevoelige teken reeks tot 128 tekens lang. Deze waarde wordt gebruikt om apparaten met dezelfde **deviceId**te onderscheiden, wanneer ze zijn verwijderd en opnieuw gemaakt. |
 | ETAG |vereist, alleen-lezen |Een teken reeks die een zwakke ETag vertegenwoordigt voor de apparaat-id, zoals per [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | dienst |optioneel |Een samengesteld object met verificatie-informatie en beveiligings materialen. |
@@ -226,7 +226,7 @@ Module-identiteiten worden weer gegeven als JSON-documenten met de volgende eige
 | lastActivityTime |alleen-lezen |Een tijdelijke indicator, met de datum en laatste keer dat het apparaat is verbonden, ontvangen of een bericht heeft verzonden. |
 
 > [!NOTE]
-> De Sdk's van het apparaat bieden momenteel geen ondersteuning `+` voor `#` het gebruik van de en-tekens in de **deviceId** en **moduleId**.
+> De Sdk's van het apparaat bieden momenteel geen ondersteuning `+` voor het gebruik van de en- `#` tekens in de **deviceId** en **moduleId**.
 
 ## <a name="additional-reference-material"></a>Extra referentie materiaal
 

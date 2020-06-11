@@ -1,28 +1,27 @@
 ---
-title: Mobiliteits dekking (Transit) | Microsoft Azure kaarten
-description: In dit artikel vindt u meer informatie over mobiliteits dekking in Microsoft Azure Maps
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: Mobiliteits dekking (Transit)
+description: In dit artikel leert u meer over de dekking van open bare door Voer in Microsoft Azure Maps Mobility service.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310237"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673639"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobiliteits dekking Azure Maps
 
-Azure Maps biedt een [Mobility-service](https://aka.ms/AzureMapsMobilityService). De Mobility-service verbetert de ontwikkelings tijd voor toepassingen met functies voor openbaar door Voer, Bike share en scooter-share. Functies voor open bare door Voer zijn zoeken naar nabijgelegen stations, zoeken naar stops, zoeken naar doorlopende regels, plannings gegevens ophalen, in realtime geplaatste aankomsten voor open bare door Voer, lijst tops en route handleidingen weer geven. De service retourneert gegevens in realtime en statische Beschik baarheid naar gedeelde Voer tuigen, zoals auto's, Bikes en scooters. Daarnaast biedt de Mobility-service mogelijkheden voor route ring met multimodale reis plannings opties. Met multimodale reis planning worden de fietsen-, Hailing-en doorvoer opties in één reis opgenomen. Gebruikers cam benadert gedetailleerde en multimodale stapsgewijze waarschuwingen en service meldingen.
+De Azure Maps [Mobility-service](https://aka.ms/AzureMapsMobilityService) verbetert de ontwikkelings tijd voor toepassingen met open bare doorvoer functies, zoals Transit Routering en zoek opdrachten voor open bare door Voer in de buurt. Gebruikers kunnen gedetailleerde informatie ophalen over door Voer-stops, lijnen en schema's. De Mobility-service biedt gebruikers ook de mogelijkheid om stop-en lijn geometries op te halen, waarschuwingen voor onderbrekingen, regels en service gebieden, en dagelijkse aankomsten van open bare door Voer en service waarschuwingen. Daarnaast biedt de Mobility-service mogelijkheden voor route ring met multimodale reis plannings opties. Met multimodale reis planning worden de lopende, fietsen en opties voor open bare door Voer in één reis opgenomen. Gebruikers hebben ook toegang tot gedetailleerde multimodale stapsgewijze routes. 
 
-Azure Maps heeft niet hetzelfde niveau van informatie en nauw keurigheid voor alle steden en landen/regio's. De mogelijkheid om doorvoer gegevens aan te roepen, is afhankelijk van de plaats. De gegevens omvatten mogelijk niet alle open bare doorvoer opties en instanties die de plaats van dienst zijn.
+Azure Maps biedt niet hetzelfde niveau van informatie en nauw keurigheid voor alle steden en landen/regio's. De mogelijkheid om open bare doorvoer gegevens aan te roepen, is afhankelijk van het metro gebied. Daarnaast mogen de kaart gegevens niet alle open bare doorvoer opties en-instanties bevatten die het metro gebied gebruiken.
 
 De volgende tabel bevat informatie over de dekking van Azure Maps Mobility-service.
-
 
 | Symbool | Betekenis |
 |--------|---------|

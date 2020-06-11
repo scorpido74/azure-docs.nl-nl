@@ -1,6 +1,6 @@
 ---
 title: Bijhouden van gegevens wijzigingen in Azure SQL Edge (preview-versie)
-description: Meer informatie over het bijhouden van wijzigingen en het change data capture in Azure SQL Edge (preview)
+description: Meer informatie over het bijhouden van wijzigingen en het change data capture in Azure SQL Edge (preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,54 +9,56 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3e3a6c3e171383d1812f63b945735d1b82f70b9c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6d0a081f2b0adb143a6b37a647a00014846f8fe2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235103"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669593"
 ---
-# <a name="tracking-data-changes-in-azure-sql-edge-preview"></a>Bijhouden van gegevens wijzigingen in Azure SQL Edge (preview-versie)
+# <a name="track-data-changes-in-azure-sql-edge-preview"></a>Bijhouden van gegevens wijzigingen in Azure SQL Edge (preview-versie)
 
-Azure SQL Edge ondersteunt de twee SQL Server-functies waarmee wijzigingen in gegevens in een Data Base worden bijgehouden:[Wijzigingen bijhouden](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) en [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture). Met deze functies kunnen toepassingen bepalen welke DML-wijzigingen (insert-, update-en delete-bewerkingen) zijn aangebracht in gebruikers tabellen in een Data Base. Wijzigingen voor het vastleggen van gegevens en het bijhouden van wijzigingen kunnen worden ingeschakeld voor dezelfde data base. Er zijn geen speciale overwegingen vereist.
+Azure SQL Edge ondersteunt de twee SQL Server functies waarmee wijzigingen in gegevens worden bijgehouden in een Data Base: het bijhouden en [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Capture) [wijzigen](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#Tracking) . Met deze functies kunnen toepassingen bepalen welke taal wijzigingen voor het wijzigen van de gegevens (insert-, update-en delete-bewerkingen) zijn aangebracht in gebruikers tabellen in een Data Base. U kunt change data capture en het bijhouden van wijzigingen inschakelen voor dezelfde data base. Er zijn geen speciale overwegingen vereist.
 
-De mogelijkheid om gegevens op te vragen die in een Data Base zijn gewijzigd, is een belang rijke vereiste voor sommige toepassingen om efficiënt te zijn. Om gegevens wijzigingen te bepalen, moeten ontwikkel aars van toepassingen meestal een aangepaste traceer methode implementeren in hun toepassingen met behulp van een combi natie van triggers, time stamp-kolommen en aanvullende tabellen. Het maken van deze toepassingen vergt meestal veel werk voor het implementeren van schema-updates en is vaak een hoge prestatie overhead. In het geval van een IoT-oplossing moet het bijhouden van wijzigingen van de rand regel matig worden verplaatst naar een Cloud of Data Center. Zo zou het gebruik van de laatste synchronisatie en het uploaden van de wijzigingen in de Cloud of het Data Center-doel snel en effectief kunnen worden uitgevoerd. Raadpleeg voor meer informatie over de voor delen van het gebruik van Wijzigingen bijhouden en Change Data Capture voor [delen van het gebruik van Change Data Capture of wijzigingen bijhouden](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#benefits-of-using-change-data-capture-or-change-tracking). 
+De mogelijkheid om gegevens op te vragen die in een Data Base zijn gewijzigd, is een belang rijke vereiste voor sommige toepassingen om efficiënt te zijn. Om gegevens wijzigingen te bepalen, moeten ontwikkel aars van toepassingen meestal een aangepaste traceer methode implementeren in hun toepassingen met behulp van een combi natie van triggers, time stamp-kolommen en aanvullende tabellen. Het maken van deze toepassingen vergt meestal veel werk voor het implementeren van schema-updates en is vaak een hoge prestatie overhead.
 
-Als u inzicht wilt krijgen in de functie verschillen tussen Wijzigingen bijhouden en Change Data Capture, raadpleegt u de [functie verschillen tussen het vastleggen van gegevens en het wijzigingen bijhouden](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#feature-differences-between-change-data-capture-and-change-tracking)
+In het geval van een IoT-oplossing, waar u regel matig gegevens van de rand naar een Cloud of Data Center moet verplaatsen, kan het bijhouden van wijzigingen erg nuttig zijn. Gebruikers kunnen snel en effectief query's uitvoeren op de wijzigingen van de laatste synchronisatie en deze wijzigingen uploaden naar de Cloud of het Data Center-doel. Zie voor meer informatie voor [delen van het gebruik van Change Data Capture of het bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#benefits-of-using-change-data-capture-or-change-tracking). 
 
-## <a name="change-data-capture"></a>Change Data Capture
+Deze twee functies zijn niet hetzelfde. Zie voor meer informatie [functie verschillen tussen Change Data Capture en het bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/track-data-changes-sql-server#feature-differences-between-change-data-capture-and-change-tracking)
 
-Zie [Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server)voor meer informatie over de werking van Change Data Capture.
+## <a name="change-data-capture"></a>Gegevensregistratie wijzigen
 
-Voor informatie over het in-of uitschakelen van Change Data Capture, raadpleegt u [Change Data Capture inschakelen en uitschakelen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)
+Zie [over Change Data Capture](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server)voor meer informatie over de werking van deze functie.
 
-Voor het beheren en controleren van Change Data Capture raadpleegt u [Change Data Capture beheren en controleren](https://docs.microsoft.com/sql/relational-databases/track-changes/administer-and-monitor-change-data-capture-sql-server)
+Zie change data capture in- [en uitschakelen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server)voor meer informatie over het in-of uitschakelen van deze functie.
 
-Raadpleeg voor meer informatie over het uitvoeren van query's en het werken met de gewijzigde gegevens [werk met wijzigings gegevens](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-data-sql-server)
+Zie [Change Data Capture beheren en controleren](https://docs.microsoft.com/sql/relational-databases/track-changes/administer-and-monitor-change-data-capture-sql-server)als u deze functie wilt beheren en controleren.
 
-## <a name="change-tracking"></a>Tracering wijzigen
+Zie [werken met gegevens wijzigen](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-data-sql-server)als u wilt weten hoe u de gewijzigde gegevens kunt opvragen en ermee kunt werken.
 
-Raadpleeg [Wijzigingen bijhouden](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)voor meer informatie over de werking van wijzigingen bijhouden.
+## <a name="change-tracking"></a>Wijzigingen bijhouden
 
-Voor informatie over het in-of uitschakelen van Wijzigingen bijhouden raadpleegt u [Wijzigingen bijhouden inschakelen en uitschakelen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server)
+Zie [informatie over het bijhouden van wijzigingen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)voor meer informatie over de werking van deze functie.
 
-Als u Wijzigingen bijhouden wilt beheren, bewaken en beheren, raadpleegt u [Wijzigingen bijhouden beheren en controleren](https://docs.microsoft.com/sql/relational-databases/track-changes/manage-change-tracking-sql-server)
+Zie voor meer informatie over het in-of uitschakelen van deze functie, het [bijhouden van wijzigingen in-en uitschakelen](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server).
 
-Raadpleeg voor meer informatie over het uitvoeren van query's en het werken met de gewijzigde gegevens [werk met wijzigings gegevens](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-tracking-sql-server)
+Als u deze functie wilt beheren, bewaken en beheren, raadpleegt u [Wijzigingen bijhouden beheren en controleren](https://docs.microsoft.com/sql/relational-databases/track-changes/manage-change-tracking-sql-server).
+
+Zie [werken met gegevens wijzigen](https://docs.microsoft.com/sql/relational-databases/track-changes/work-with-change-tracking-sql-server)als u wilt weten hoe u de gewijzigde gegevens kunt opvragen en ermee kunt werken.
 
 ## <a name="temporal-tables"></a>Tijdelijke tabellen
 
-Naast de ondersteuning van Wijzigingen bijhouden en het wijzigen van gegevens Capture-functies van SQL Server, ondersteunt Azure SQL Edge ook de functie voor tijdelijke tabellen van SQL Server. Tijdelijke tabellen (ook wel de tijdelijke systeem versie tabellen genoemd) als een database functie die ingebouwde ondersteuning biedt voor het leveren van informatie over gegevens die in de tabel zijn opgeslagen, op elk gewenst moment, in plaats van alleen de gegevens die op het huidige tijdstip in de tijd kloppen.
+Azure SQL Edge biedt ook ondersteuning voor de functie voor tijdelijke tabellen van SQL Server. Deze functie (ook wel de *tijdelijke systeem versie tabellen*genoemd) biedt ingebouwde ondersteuning voor het leveren van informatie over gegevens die in de tabel zijn opgeslagen op elk gewenst moment. De functie biedt niet alleen informatie over de gegevens die op het huidige tijdstip op dat moment juist zijn.
 
-Een tijdelijke systeem versie tabel is een soort gebruikers tabel die is ontworpen om een volledige geschiedenis van gegevens wijzigingen te kunnen bijhouden en eenvoudige point-time-analyses mogelijk te maken. Dit type tijdelijke tabel wordt een tijdelijke systeem versie tabel genoemd, omdat de geldigheids periode voor elke rij wordt beheerd door het systeem (dat wil zeggen, data base-engine).
+Een tijdelijke systeem versie tabel is een soort gebruikers tabel die is ontworpen om een volledige geschiedenis van gegevens wijzigingen te kunnen bijhouden en om eenvoudige point-in-time-analyses mogelijk te maken. Dit type tijdelijke tabel wordt een tijdelijke systeem versie tabel genoemd, omdat de geldigheids periode voor elke rij wordt beheerd door het systeem (dat wil zeggen, de data base-engine).
 
-Elke tijdelijke tabel heeft twee expliciet gedefinieerde kolommen, elk met een DATETIME2-gegevens type. Deze kolommen worden een periode kolom genoemd. Deze periode kolommen worden uitsluitend door het systeem gebruikt om de geldigheids periode voor elke rij vast te leggen wanneer een rij wordt gewijzigd.
+Elke tijdelijke tabel heeft twee expliciet gedefinieerde kolommen, elk met een `datetime2` gegevens type. Deze kolommen worden een *periode* kolom genoemd. Het systeem gebruikt deze periode kolommen uitsluitend voor het vastleggen van de geldigheids periode voor elke rij wanneer een rij wordt gewijzigd.
 
-Naast deze periode kolommen bevat een tijdelijke tabel ook een verwijzing naar een andere tabel met een gespiegeld schema. Het systeem gebruikt deze tabel om automatisch de vorige versie van de rij op te slaan telkens wanneer een rij in de tijdelijke tabel wordt bijgewerkt of verwijderd. Deze aanvullende tabel wordt de geschiedenis tabel genoemd, terwijl de hoofd tabel waarin de huidige (werkelijke) rij versies worden opgeslagen, wordt aangeduid als de huidige tabel of net als de tijdelijke tabel. Tijdens het maken van een tijdelijke tabel kunnen gebruikers een bestaande geschiedenis tabel opgeven (moet schema compatibel zijn) of een systeem standaard geschiedenis tabel laten maken.
+Naast deze periode kolommen bevat een tijdelijke tabel ook een verwijzing naar een andere tabel met een gespiegeld schema. Het systeem gebruikt deze tabel om automatisch de vorige versie van de rij op te slaan telkens wanneer een rij in de tijdelijke tabel wordt bijgewerkt of verwijderd. Deze aanvullende tabel wordt de *geschiedenis* tabel genoemd, terwijl de hoofd tabel waarin de huidige (werkelijke) versies van de rijen worden opgeslagen, wordt aangeduid als de *huidige* tabel of gewoon als de tijdelijke tabel. Tijdens het maken van een tijdelijke tabel kunnen gebruikers een bestaande geschiedenis tabel opgeven (deze moet voldoen aan het schema) of het systeem de standaard geschiedenis tabel laten maken.
 
-Raadpleeg [tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) voor meer informatie over tijdelijke tabellen
+Zie [tijdelijke tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables)voor meer informatie.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
 - [Streamen van gegevens in Azure SQL Edge (preview-versie)](stream-data.md)
 - [Machine learning en AI met ONNX in Azure SQL Edge (preview-versie)](onnx-overview.md)

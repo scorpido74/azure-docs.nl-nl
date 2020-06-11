@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: bf53afc0168417bc223a55cd73f9a97b5bb3ac47
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b74940993033d52f993dc507fba38c35ea2b92bb
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299975"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673255"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Configureer bare levens duur van tokens in Azure Active Directory (preview-versie)
 
@@ -75,7 +75,7 @@ Wanneer een gebruiker wordt geverifieerd bij Azure AD, wordt een eenmalige aanme
 
 In azure AD worden twee soorten SSO-sessie tokens gebruikt: permanent en niet-persistent. Permanente sessie tokens worden opgeslagen als permanente cookies door de browser. Niet-permanente sessie tokens worden opgeslagen als sessie cookies. (Sessie cookies worden vernietigd wanneer de browser wordt gesloten.) Normaal gesp roken wordt een niet-persistent sessie token opgeslagen. Maar wanneer de gebruiker het selectie vakje **aangemeld blijven** tijdens de verificatie inschakelt, wordt een persistent sessie token opgeslagen.
 
-Niet-permanente sessie tokens hebben een levens duur van 24 uur. Permanente tokens hebben een levens duur van 180 dagen. Wanneer een SSO-sessie token wordt gebruikt binnen de geldigheids periode, wordt de geldigheids periode nog eens 24 uur of 180 dagen verlengd, afhankelijk van het type token. Als een SSO-sessie token niet binnen de geldigheids periode wordt gebruikt, wordt dit beschouwd als verlopen en wordt het niet langer geaccepteerd.
+Niet-permanente sessie tokens hebben een levens duur van 24 uur. Permanente tokens hebben een levens duur van 90 dagen. Wanneer een SSO-sessie token wordt gebruikt binnen de geldigheids periode, wordt de geldigheids periode nog eens 24 uur of 90 dagen verlengd, afhankelijk van het type token. Als een SSO-sessie token niet binnen de geldigheids periode wordt gebruikt, wordt dit beschouwd als verlopen en wordt het niet langer geaccepteerd.
 
 U kunt een beleid gebruiken om de tijd in te stellen nadat het eerste sessie token is uitgegeven, waarboven het sessie token niet meer wordt geaccepteerd. (Hiervoor gebruikt u de eigenschap maximum leeftijd van sessie token.) U kunt de levens duur van een sessie token aanpassen om te bepalen wanneer en hoe vaak een gebruiker verplicht is om referenties opnieuw in te voeren, in plaats van op de achtergrond te worden geverifieerd wanneer een webtoepassing wordt gebruikt.
 
@@ -550,4 +550,4 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 Voor het gebruik van deze functie is een Azure AD Premium P1-licentie vereist. Zie [Algemeen beschik bare functies van de gratis en Premium-edities vergelijken](https://azure.microsoft.com/pricing/details/active-directory/)om de juiste licentie voor uw vereisten te vinden.
 
-Klanten met [Microsoft 365 Business licenties](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot functies voor voorwaardelijke toegang.
+Klanten met een [Microsoft 365 Business-licentie](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) hebben ook toegang tot de functies voor voorwaardelijke toegang.

@@ -7,29 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 073878d6dfb0637b8d0fb7fdf5c7f6d77d2b2c8d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857041"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672643"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Netwerk beveiliging voor Azure Event Grid bronnen
 In dit artikel wordt beschreven hoe u de volgende beveiligings functies gebruikt met Azure Event Grid: 
 
-- Service tags voor uitgaand verkeer (preview-versie)
+- Service tags voor uitgaand verkeer
 - IP-firewall regels voor binnenkomend verkeer (preview-versie)
-- Privé-eind punten voor ingangs (preview)
+- Privé-eind punten voor ingangs
 
 
 ## <a name="service-tags"></a>Servicetags
 Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk beveiligings regels wordt geminimaliseerd. Zie [service Tags Overview](../virtual-network/service-tags-overview.md)(Engelstalig) voor meer informatie over service tags.
 
-U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules) of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **AzureEventGrid**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
+U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](../virtual-network/security-overview.md#security-rules)   of [Azure firewall](../firewall/service-tags.md). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **AzureEventGrid**) op te geven in het juiste *bron*-   of *doel*   veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren.
 
-| Servicetag | Doel | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. <br/><br/>*Opmerking:* Deze tag behandelt Azure Event Grid-eind punten in VS Zuid-Centraal, VS Oost, VS Oost 2, VS West 2 en VS centraal. | Beide | Nee | Nee |
+| Servicetag | Functie | Kunt u inkomend of uitgaand gebruiken? | Kan regionaal worden? | Kunt gebruiken met Azure Firewall? |
+| --- | -------- |:---:|:---:|:---:|
+| AzureEventGrid | Azure Event Grid. | Beide | Nee | Nee |
 
 
 ## <a name="ip-firewall"></a>IP-firewall 
@@ -38,7 +38,7 @@ Azure Event Grid ondersteunt toegangs beheer op basis van IP voor het publiceren
 Het onderwerp en het domein zijn standaard toegankelijk vanaf internet, zolang de aanvraag geldig is voor verificatie en autorisatie. Met IP-firewall kunt u dit nog verder beperken tot een reeks IP-adressen of IP-adresbereiken in CIDR-notatie [(Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . Uitgevers die afkomstig zijn van een ander IP-adres, worden geweigerd en ontvangen een 403 (verboden)-antwoord.
 
 
-## <a name="private-endpoints"></a>Privé-eind punten
+## <a name="private-endpoints"></a>Privé-eindpunten
 U kunt [privé-eind punten](../private-link/private-endpoint-overview.md) gebruiken om direct vanuit uw virtuele netwerk toegang te geven tot uw onderwerpen en domeinen, zonder dat u het open bare Internet [hoeft te passeren](../private-link/private-link-overview.md) . Een persoonlijk eind punt is een speciale netwerk interface voor een Azure-service in uw VNet. Wanneer u een persoonlijk eind punt maakt voor uw onderwerp of domein, biedt het een beveiligde verbinding tussen clients in uw VNet en uw Event Grid bron. Het persoonlijke eind punt krijgt een IP-adres uit het IP-adres bereik van uw VNet. De verbinding tussen het persoonlijke eind punt en de Event Grid-Service maakt gebruik van een beveiligde persoonlijke koppeling.
 
 ![Architectuurdiagram](./media/network-security/architecture-diagram.png)
@@ -54,14 +54,14 @@ Wanneer u een persoonlijk eind punt maakt voor een onderwerp of domein in uw VNe
 Uitgevers in een VNet met behulp van het privé-eind punt moeten hetzelfde connection string gebruiken voor het onderwerp of het domein als clients die verbinding maken met het open bare eind punt. Met DNS-omzetting worden verbindingen van het VNet naar het onderwerp of het domein via een persoonlijke koppeling automatisch gerouteerd. Event Grid maakt standaard een [privé-DNS-zone](../dns/private-dns-overview.md) die is gekoppeld aan het VNet met de nood zakelijke update voor de privé-eind punten. Als u echter uw eigen DNS-server gebruikt, moet u mogelijk aanvullende wijzigingen aanbrengen in uw DNS-configuratie.
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
-Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-record voor de resource bijgewerkt naar een alias in een subdomein met `privatelink`het voor voegsel. Standaard wordt een privé-DNS-zone gemaakt die overeenkomt met het subdomein van de persoonlijke koppeling. 
+Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-record voor de resource bijgewerkt naar een alias in een subdomein met het voor voegsel `privatelink` . Standaard wordt een privé-DNS-zone gemaakt die overeenkomt met het subdomein van de persoonlijke koppeling. 
 
 Wanneer u het onderwerp of de URL van het domein eindpunt oplost van buiten het VNet met het persoonlijke eind punt, wordt dit omgezet in het open bare eind punt van de service. De DNS-bron records voor onderwerpa, wanneer deze zijn omgezet van **buiten het VNet** dat als host fungeert voor het persoonlijke eind punt, zijn:
 
 | Naam                                          | Type      | Waarde                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager-profiel\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
 
 U kunt de toegang voor een client buiten het VNet weigeren of beheren via het open bare eind punt met behulp van de [IP-firewall](#ip-firewall). 
 
@@ -74,9 +74,9 @@ Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wor
 
 Deze aanpak maakt het mogelijk om toegang tot het onderwerp of het domein te krijgen met dezelfde connection string voor clients op het VNet dat als host fungeert voor de persoonlijke eind punten en clients buiten het VNet.
 
-Als u een aangepaste DNS-server in uw netwerk gebruikt, kunnen clients de FQDN voor het onderwerp of het domein-eind punt omzetten in het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` voor het VNet of configureer de A-records voor met het IP-adres van het privé-eind punt.
+Als u een aangepaste DNS-server in uw netwerk gebruikt, kunnen clients de FQDN voor het onderwerp of het domein-eind punt omzetten in het IP-adres van het privé-eind punt. Configureer uw DNS-server voor het delegeren van het subdomein van uw privé-koppeling naar de privé-DNS-zone voor het VNet of configureer de A-records voor `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` met het IP-adres van het privé-eind punt.
 
-De aanbevolen DNS-zone naam `privatelink.eventgrid.azure.net`is.
+De aanbevolen DNS-zone naam is `privatelink.eventgrid.azure.net` .
 
 ### <a name="private-endpoints-and-publishing"></a>Persoonlijke eind punten en publicatie
 
@@ -85,9 +85,9 @@ In de volgende tabel worden de verschillende statussen van de verbinding met het
 | Verbindings status   |  Publiceren voltooid (Ja/Nee) |
 | ------------------ | -------------------------------|
 | Goedgekeurd           | Ja                            |
-| Geweigerd           | Nee                             |
+| Afgewezen           | Nee                             |
 | In behandeling            | Nee                             |
-| De verbinding verbroken       | Nee                             |
+| Ontkoppeld       | Nee                             |
 
 Voor een geslaagde publicatie moet de verbindings status van het particuliere eind punt worden **goedgekeurd**. Als een verbinding wordt geweigerd, kan deze niet worden goedgekeurd met behulp van de Azure Portal. De enige mogelijkheid is de verbinding te verwijderen en in plaats daarvan een nieuwe te maken.
 

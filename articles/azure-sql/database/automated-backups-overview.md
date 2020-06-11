@@ -6,19 +6,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-manager: craigg
 ms.date: 06/04/2020
-ms.openlocfilehash: fc2c8ea232004488664bc7f15b1d1bb3b83f2e7b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 41df5190f2a7435ad91de94cb6f407037e1783a2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609604"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667825"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatische back-ups-Azure SQL Database & SQL Managed instance
 
@@ -76,18 +74,6 @@ Met andere woorden: voor elk tijdstip tijdens de Bewaar periode moet er een voll
 > [!NOTE]
 > Om PITR in te scha kelen, worden extra back-ups gedurende een week langer opgeslagen dan de geconfigureerde Bewaar periode. Back-upopslag wordt in rekening gebracht tegen hetzelfde tarief voor alle back-ups. 
 
-Voor afzonderlijke data bases wordt deze vergelijking gebruikt voor het berekenen van het totale opslag gebruik van back-ups:
-
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
-
-Voor gegroepeerde Data bases wordt de totale opslag grootte van de back-up geaggregeerd op het groeps niveau en wordt als volgt berekend:
-
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
-
-Voor beheerde instanties wordt de totale opslag grootte van de back-up geaggregeerd op het exemplaar niveau en wordt als volgt berekend:
-
-`Total backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
-
 Back-ups die niet meer nodig zijn om de PITR-functionaliteit te bieden, worden automatisch verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond.
 
 Voor alle data bases, inclusief [TDe versleutelde](transparent-data-encryption-tde-overview.md) data bases, worden back-ups gecomprimeerd om compressie van back-upopslag en kosten te verminderen. De gemiddelde compressie ratio van back-ups is 3-4 keer, maar dit kan aanzienlijk lager of hoger zijn, afhankelijk van de aard van de gegevens en of gegevens compressie wordt gebruikt in de-data base.
@@ -144,9 +130,21 @@ In het DTU-model worden geen extra kosten in rekening gebracht voor back-upopsla
 
 Voor afzonderlijke data bases in SQL Database is een back-upopslagwaarde gelijk aan 100 procent van de maximale grootte van de gegevens opslag voor de data base, zonder extra kosten. Voor elastische Pools en beheerde instanties is een back-upopslagwaarde gelijk aan 100 procent van de maximale gegevens opslag voor de pool of de maximale grootte van het exemplaar van de opslag, respectievelijk, zonder extra kosten. 
 
-Extra verbruik van back-upopslag, indien van toepassing, wordt in GB per maand in rekening gebracht. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van afzonderlijke data bases, elastische groepen en beheerde exemplaren. Sterk gewijzigde data bases hebben meer differentiële en logboek back-ups, omdat de grootte van deze back-ups evenredig is met de hoeveelheid gegevens wijzigingen. Daarom zullen dergelijke data bases hogere back-upkosten hebben.
+Voor afzonderlijke data bases wordt deze vergelijking gebruikt voor het berekenen van het totale factureer bare gebruik van back-ups:
 
-SQL Database en SQL Managed instance berekent uw totale back-upopslag als een cumulatieve waarde voor alle back-upbestanden. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, waarmee dit uur gebruik wordt geaggregeerd om het verbruik van back-upopslag aan het einde van elke maand te verkrijgen. Als een Data Base wordt verwijderd, neemt het verbruik van back-upopslag geleidelijk af naarmate oudere back-ups worden verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond. Zodra alle back-ups zijn verwijderd, wordt de facturering gestopt. 
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
+
+Voor gegroepeerde Data bases wordt de totale factureer bare opslag grootte geaggregeerd op het groeps niveau en wordt als volgt berekend:
+
+`Total billable backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
+
+Voor beheerde instanties wordt de totale factureer bare opslag grootte op het exemplaar niveau geaggregeerd en als volgt berekend:
+
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+De totale factureer bare back-upopslag wordt in GB per maand in rekening gebracht. Dit verbruik van back-upopslag is afhankelijk van de werk belasting en de grootte van afzonderlijke data bases, elastische Pools en beheerde exemplaren. Sterk gewijzigde data bases hebben meer differentiële en logboek back-ups, omdat de grootte van deze back-ups evenredig is met de hoeveelheid gegevens wijzigingen. Daarom zullen dergelijke data bases hogere back-upkosten hebben.
+
+SQL Database en SQL Managed instance berekent uw totale factureer bare back-upopslag als een cumulatieve waarde voor alle back-upbestanden. Elk uur wordt deze waarde gerapporteerd aan de Azure-facturerings pijplijn, waarmee dit uur gebruik wordt geaggregeerd om het verbruik van back-upopslag aan het einde van elke maand te verkrijgen. Als een Data Base wordt verwijderd, neemt het verbruik van back-upopslag geleidelijk af naarmate oudere back-ups worden verwijderd. Omdat voor differentiële back-ups en logboek back-ups een eerdere volledige back-up kan worden herstorable, worden alle drie de back-uptypen samen in wekelijkse sets opgeschoond. Zodra alle back-ups zijn verwijderd, wordt de facturering gestopt. 
 
 Als een vereenvoudigd voor beeld wordt ervan uitgegaan dat een Data Base 744 GB back-upopslag heeft gecumuleerd en dat deze hoeveelheid gedurende een hele maand constant blijft, omdat de data base volledig niet actief is. Als u dit cumulatieve opslag gebruik wilt converteren naar het uurverbruik, deelt u dit op 744,0 (31 dagen per maand * 24 uur per dag). SQL Database meldt zich aan de Azure-facturerings pijplijn dat de data base elk uur 1 GB PITR-back-up heeft verbruikt, tegen een constant tarief. In azure billing wordt dit verbruik geaggregeerd en wordt een gebruik van 744 GB voor de hele maand weer gegeven. De kosten worden berekend op basis van het percentage van de hoeveelheid/GB per maand in uw regio.
 

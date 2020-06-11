@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371357"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678763"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Het afsluiten van Azure Windows VM is vastgelopen op het opnieuw starten, afsluiten of stoppen van services
 
@@ -43,25 +43,25 @@ Windows gebruikt het afsluit proces om systeem onderhouds bewerkingen uit te voe
 
 Gebruik de [seriële console](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) om de volgende stappen uit te voeren:
 
-1. Open een beheer-Power shell en controleer de service die is vastgelopen bij het stoppen.
+1. Open een beheer-Power shell en controleer de service die niet meer reageert bij het stoppen.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. Haal de PID van de vastgelopen service op in een beheer opdracht.
+2. Haal de PID van de niet-reagerende service op in een beheer opdracht.
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Een voor beeld van een geheugen dump ophalen uit <STOPPING SERVICE>het vastgelopen proces.
+3. Een voor beeld van een geheugen dump ophalen van het proces dat niet reageert <STOPPING SERVICE> .
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Beëindig nu het vastgelopen proces om het afsluit proces te ontgrendelen.
+4. Beëindig nu het niet-reagerende proces om het afsluit proces te ontgrendelen.
 
    ``
    taskkill /PID <PID> /t /f

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e653adfd7a148cea7bfb1ecfdbbf386eff0c3e86
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723320"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676230"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Extensie van de virtuele machine Key Vault voor Linux
 
@@ -53,9 +53,9 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
       "settings": {
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreName": <It is ignored on Linux>,
           "linkOnRenewal": <Not available on Linux e.g.: false>,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
@@ -72,17 +72,17 @@ De volgende JSON toont het schema voor de extensie van de Key Vault-VM. Voor de 
 
 ### <a name="property-values"></a>Eigenschaps waarden
 
-| Name | Waarde/voor beeld | Gegevenstype |
+| Naam | Waarde/voor beeld | Gegevenstype |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | datum |
+| apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | tekenreeks |
 | type | KeyVaultForLinux | tekenreeks |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | tekenreeks |
-| Naam certificaat archief | MY | tekenreeks |
-| linkOnRenewal | onjuist | booleaans |
-| certificateStoreLocation  | LocalMachine | tekenreeks |
-| requiredInitialSync | waar | booleaans |
+| Naam certificaat archief | Het wordt genegeerd op Linux | tekenreeks |
+| linkOnRenewal | false | booleaans |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | tekenreeks |
+| requiredInitialSync | true | booleaans |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | teken reeks matrix
 
 
@@ -109,8 +109,8 @@ De JSON-configuratie voor een extensie van een virtuele machine moet zijn genest
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
       }
@@ -211,6 +211,13 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
+```
+### <a name="logs-and-configuration"></a>Logboeken en configuratie
+
+```
+/var/log/waagent.log
+/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
+/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
 
 ### <a name="support"></a>Ondersteuning

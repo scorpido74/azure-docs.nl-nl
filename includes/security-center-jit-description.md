@@ -4,20 +4,18 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 5efa8b845952c8ab5b66b781fb534c3754239b4e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615957"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677424"
 ---
 ## <a name="attack-scenario"></a>Aanvals scenario
 
 Brute force-aanvallen zijn vaak gericht op beheer poorten als middel om toegang te krijgen tot een virtuele machine. Als dit lukt, kan een aanvaller de controle over de virtuele machine overnemen en een aanvaller binnen in uw omgeving tot stand brengen.
 
 Een manier om de bloot stelling aan een beveiligings aanval te verminderen is het beperken van de hoeveelheid tijd die een poort is geopend. Beheer poorten hoeven niet te allen tijde open zijn. Ze hoeven alleen te zijn geopend terwijl u verbonden bent met de virtuele machine, bijvoorbeeld om beheer-of onderhouds taken uit te voeren. Wanneer just-in-time is ingeschakeld, maakt Security Center gebruik van [netwerk beveiligings groep](../articles/virtual-network/security-overview.md#security-rules) (NSG) en Azure firewall regels, waarmee de toegang tot beheer poorten wordt beperkt zodat deze niet kunnen worden benaderd door aanvallers.
-
-![Just-in-time-scenario](../articles/security-center/media/security-center-just-in-time/just-in-time-scenario.png)
 
 ## <a name="how-does-jit-access-work"></a>Hoe werkt JIT-toegang?
 

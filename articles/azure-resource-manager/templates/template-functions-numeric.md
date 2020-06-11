@@ -3,12 +3,12 @@ title: Sjabloon functies-numeriek
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om te werken met getallen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: dc15ade453fc5ea4dc031ced0377892f4f8cf27d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192345"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677913"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numerieke functies voor ARM-sjablonen
 
@@ -19,8 +19,8 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen 
 * [div](#div)
 * [float](#float)
 * [int](#int)
-* [aantal](#max)
-* [Haal](#min)
+* [max](#max)
+* [min](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
@@ -48,7 +48,7 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -171,7 +171,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -262,7 +262,7 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToConvert": {
@@ -287,7 +287,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
-## <a name="max"></a>aantal
+## <a name="max"></a>max
 
 `max (arg1)`
 
@@ -309,7 +309,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -338,7 +338,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 
 `min (arg1)`
 
@@ -360,7 +360,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -412,7 +412,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -470,7 +470,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {
@@ -528,7 +528,7 @@ Met de volgende [voorbeeld sjabloon wordt](https://github.com/Azure/azure-docs-j
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "first": {

@@ -4,12 +4,12 @@ description: Implementeer Azure Monitor-functies op schaal met behulp van Azure 
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5da174b374265126df2113f5ccf41397745d39d6
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632246"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678695"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor op schaal implementeren met behulp van Azure Policy
 Hoewel sommige Azure Monitor functies eenmaal of een beperkt aantal keren worden geconfigureerd, moeten andere worden herhaald voor elke resource die u wilt bewaken. In dit artikel worden methoden beschreven voor het gebruik van Azure Policy om Azure Monitor op schaal te implementeren om ervoor te zorgen dat de bewaking consistent en correct is geconfigureerd voor al uw Azure-resources.
@@ -79,7 +79,7 @@ De script [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Creat
    Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
    ```
 
-5. Het script maakt afzonderlijke mappen voor elke beleids definitie, elk met drie bestanden met de naam azurepolicy, JSON, azurepolicy. rules. json, azurepolicy. para meters. json. Als u het beleid hand matig wilt maken in de Azure Portal, kunt u de inhoud van azurepolicy. json kopiëren en plakken omdat hierin de volledige beleids definitie is opgenomen. Gebruik de andere twee bestanden met Power shell of CLI om de beleids definitie te maken op basis van een opdracht regel.
+5. Het script maakt afzonderlijke mappen voor elke beleids definitie, elk met drie bestanden met de naam azurepolicy, JSON, azurepolicy.rules.jsop, azurepolicy.parameters.jsop. Als u het beleid hand matig wilt maken in de Azure Portal, kunt u de inhoud van azurepolicy.jskopiëren en plakken omdat het de volledige beleids definitie bevat. Gebruik de andere twee bestanden met Power shell of CLI om de beleids definitie te maken op basis van een opdracht regel.
 
     In de volgende voor beelden ziet u hoe u de beleids definitie kunt installeren vanuit Power shell en CLI. Elk bevat meta gegevens om een **bewakings** categorie op te geven voor het groeperen van de nieuwe beleids definitie met de ingebouwde beleids definities.
 
@@ -135,4 +135,3 @@ Zie [Azure monitor voor VM's inschakelen met behulp van Azure Policy](../insight
 
 - Lees meer over [Azure Policy](../../governance/policy/overview.md).
 - Meer informatie over [Diagnostische instellingen](diagnostic-settings.md).
-- Zie de [Northstar Playbook-opslag plaats](https://github.com/Azure/CET-NorthStar) met architectuur-en implementatie richtlijnen voor grootschalige Azure-acceptatie voor ondernemingen.

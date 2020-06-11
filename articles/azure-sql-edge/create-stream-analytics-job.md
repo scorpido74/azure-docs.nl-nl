@@ -1,6 +1,6 @@
 ---
 title: Een T-SQL streaming-taak in Azure SQL Edge maken (preview)
-description: Meer informatie over het maken van Stream Analytics taken in Azure SQL Edge (preview)
+description: Meer informatie over het maken van Stream Analytics-taken in Azure SQL Edge (preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,51 +9,48 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 4b09df3110907d58badda2c389b9ee39a9b02532
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 931511a44e19bfe094791a3ee9b9ca30e03648cb
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636186"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669655"
 ---
-# <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-taak in Azure SQL Edge maken (preview) 
+# <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Een Azure Stream Analytics-taak in Azure SQL Edge maken (preview) 
 
-In dit artikel wordt uitgelegd hoe u een T-SQL streaming-taak maakt in Azure SQL Edge (preview). Als u een streaming-taak wilt maken in SQL-rand, moeten de volgende stappen worden uitgevoerd
-
-1. De externe stream-invoer-en uitvoer objecten maken
-2. Definieer de streaming-taak query als onderdeel van de streaming-taak maken.
+In dit artikel wordt uitgelegd hoe u een T-SQL streaming-taak maakt in Azure SQL Edge (preview). U maakt de externe stream-invoer-en uitvoer objecten en vervolgens definieert u de query van de streaming-taak als onderdeel van het maken van de streaming-taak.
 
 > [!NOTE]
-> Als u de functie voor het streamen van T-SQL in Azure SQL Edge wilt inschakelen, schakelt u TF 11515 in als opstart optie of gebruikt u de [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) -opdracht. Zie [configureren met een MSSQL. conf-bestand](configure.md#configure-by-using-an-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met het bestand MSSQL. conf. Deze vereiste wordt verwijderd in toekomstige updates van Azure SQL Edge (preview).
+> Als u de functie voor het streamen van T-SQL in Azure SQL Edge wilt inschakelen, schakelt u TF 11515 in als opstart optie of gebruikt u de [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) -opdracht. Zie [configureren met een MSSQL. conf-bestand](configure.md#configure-by-using-an-mssqlconf-file)voor meer informatie over het inschakelen van tracerings vlaggen met behulp van een MSSQL. conf-bestand.
 
-## <a name="configure-an-external-stream-input-and-output-object"></a>Een invoer-en uitvoer object voor externe streams configureren
+## <a name="configure-the-external-stream-input-and-output-objects"></a>De externe stream-invoer-en uitvoer objecten configureren
 
-T-SQL streaming maakt gebruik van de functionaliteit van de externe gegevens bron van SQL Server om de gegevens bronnen te definiëren die zijn gekoppeld aan de externe stroom-invoer en uitvoer van de streaming-taak. De volgende T-SQL-opdrachten zijn vereist voor het maken van een externe stream-invoer of-uitvoer object.
+T-SQL streaming maakt gebruik van de functionaliteit van de externe gegevens bron van SQL Server om de gegevens bronnen te definiëren die zijn gekoppeld aan de externe stream-invoer en uitvoer van de streaming-taak. Gebruik de volgende T-SQL-opdrachten om een externe stream-invoer of-uitvoer object te maken:
 
-[CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
+- [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-file-format-transact-sql)
 
-[CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
+- [CREATE EXTERNAL DATA SOURCE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)
 
-[EXTERNE STREAM maken (Transact-SQL)](#example-create-an-external-stream-object-sql-database)
+- [EXTERNE STREAM maken (Transact-SQL)](#example-create-an-external-stream-object-to-azure-sql-database)
 
-Daarnaast is in het geval van een SQL-rand (of SQL Server Azure SQL) die als uitvoer stroom wordt gebruikt, de T-SQL-opdracht [Create Data Base scoped CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql) vereist om de referenties voor toegang tot SQL database te definiëren.
+Als Azure SQL Edge, SQL Server of Azure SQL Database als een uitvoer stroom wordt gebruikt, hebt u de [Data Base scoped CREDENTIAL (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql)nodig. Deze T-SQL-opdracht definieert de referenties voor toegang tot de SQL database.
 
 ### <a name="supported-input-and-output-stream-data-sources"></a>Ondersteunde gegevens bronnen voor invoer en uitvoer stroom
 
 Azure SQL Edge ondersteunt momenteel alleen de volgende gegevens bronnen als invoer en uitvoer van streams.
 
-| Gegevensbrontype | Invoer | Uitvoer | Beschrijving |
+| Gegevens bron type | Invoer | Uitvoer | Beschrijving |
 |------------------|-------|--------|------------------|
-| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen/schrijven naar een Azure IoT Edge hub. Raadpleeg [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) voor meer informatie over Azure IOT Edge hub.|
-| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. Het SQL Database kan een lokale SQL EDGE-Data Base of een externe SQL Server of Azure SQL Database|
+| Azure IoT Edge hub | J | J | Gegevens bron om streaminggegevens te lezen en schrijven naar een Azure IoT Edge hub. Zie [IOT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)voor meer informatie.|
+| SQL Database | N | J | Gegevens bron verbinding om streaminggegevens te schrijven naar SQL Database. De SQL database kan een lokale Data Base zijn in Azure SQL Edge of een externe data base in SQL Server of Azure SQL Database.|
 | Azure Blob Storage | N | J | Gegevens bron voor het schrijven van gegevens naar een BLOB in een Azure-opslag account. |
-| Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel/AMD-versie van Azure SQL Edge en is niet beschikbaar voor de ARM64-versie van SQL Edge.|
+| Kafka | J | N | Gegevens bron voor het lezen van streaminggegevens uit een Kafka-onderwerp. Deze adapter is momenteel alleen beschikbaar voor Intel-of AMD-versies van Azure SQL Edge. Het is niet beschikbaar voor de ARM64-versie van Azure SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Voor beeld: een extern stream-invoer/uitvoer-object maken voor Azure IoT Edge hub
 
-In het volgende voor beeld wordt een extern Stream-object gemaakt voor de Edge hub. Als u een externe stream-invoer/uitvoer-gegevens bron voor Azure IoT Edge hub wilt maken, moet u eerst een externe bestands indeling maken voor SQL om inzicht te krijgen in de indeling van de gegevens die worden gelezen of geschreven.
+In het volgende voor beeld wordt een extern Stream-object gemaakt voor Azure IoT Edge hub. Als u een externe stream-invoer/uitvoer-gegevens bron voor Azure IoT Edge hub wilt maken, moet u eerst een externe bestands indeling maken voor de indeling van de gegevens die worden gelezen of geschreven.
 
-1. Maak een externe bestands indeling met het notatie type JSON.
+1. Een externe bestands indeling van het type JSON maken.
 
     ```sql
     Create External file format InputFileFormat
@@ -63,7 +60,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de Edge h
     go
     ```
 
-2. Een externe gegevens bron maken voor de IoT Edge hub. Het T-SQL-script hieronder maakt u een gegevens bron verbinding met een Edge-hub die op dezelfde docker-host wordt uitgevoerd als SQL-rand.
+2. Een externe gegevens bron maken voor Azure IoT Edge hub. Met het volgende T-SQL-script wordt een gegevens bron verbinding gemaakt met een IoT Edge hub die wordt uitgevoerd op dezelfde docker-host als Azure SQL Edge.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
@@ -72,7 +69,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de Edge h
     go
     ```
 
-3. Maak het externe Stream-object voor de IoT Edge hub. Met T-SQL-script hieronder maakt u een Stream-object voor de Edge-hub. In het geval van een Edge hub Stream-object is de locatie parameter de naam van het onderwerp van de Edge hub/het kanaal dat wordt gelezen of waarnaar wordt geschreven.
+3. Maak het externe Stream-object voor Azure IoT Edge hub. Met het volgende T-SQL-script wordt een Stream-object gemaakt voor de IoT Edge hub. In het geval van een IoT Edge hub-stroom object is de locatie parameter de naam van het onderwerp van de IoT Edge hub of het kanaal dat wordt gelezen of geschreven.
 
     ```sql
     CREATE EXTERNAL STREAM MyTempSensors WITH (
@@ -85,9 +82,9 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de Edge h
     go
     ```
 
-### <a name="example-create-an-external-stream-object-sql-database"></a>Voor beeld: een extern Stream-object maken SQL Database
+### <a name="example-create-an-external-stream-object-to-azure-sql-database"></a>Voor beeld: een extern Stream-object maken voor Azure SQL Database
 
-In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale SQL EDGE-Data Base. 
+In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale data base in Azure SQL Edge. 
 
 1. Maak een hoofd sleutel voor de data base. Dit is vereist om het referentie geheim te versleutelen.
 
@@ -95,7 +92,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<<Strong_Password_For_Master_Key_Encryption>>';
     ```
 
-2. Maak een Data Base-bereik referentie voor toegang tot de SQL Server bron. In het volgende voor beeld wordt een referentie met de externe gegevens bron gemaakt met identiteit = ' username ' en SECRET = ' password '.
+2. Maak een database bereik referentie voor toegang tot de SQL Server bron. In het volgende voor beeld wordt een referentie voor de externe gegevens bron gemaakt met identiteit = username en geheim = wacht woord.
 
     ```sql
     CREATE DATABASE SCOPED CREDENTIAL SQLCredential
@@ -105,9 +102,9 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 
 3. Een externe gegevens bron maken met externe gegevens bron maken. Het volgende voor beeld:
 
-    * Hiermee maakt u een externe gegevens bron met de naam LocalSQLOutput
-    * Hiermee wordt de externe gegevens bron geïdentificeerd (locatie = ' <vendor> :// <server> [: <port> ] '). In het voor beeld verwijst deze naar een lokaal exemplaar van SQL Edge.
-    * Ten slotte maakt het voor beeld gebruik van de referentie die eerder is gemaakt.
+    * Hiermee maakt u een externe gegevens bron met de naam *LocalSQLOutput*.
+    * Hiermee wordt de externe gegevens bron geïdentificeerd (locatie = ' <vendor> :// <server> [: <port> ] '). In het voor beeld verwijst deze naar een lokaal exemplaar van de Azure SQL-rand.
+    * Maakt gebruik van de referentie die eerder is gemaakt.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
@@ -117,7 +114,7 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
     go
     ```
 
-4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements* in de Data Base- *MySQLDatabase*.
+4. Maak het externe Stream-object. In het volgende voor beeld wordt een extern Stream-object gemaakt dat verwijst naar een tabel *dbo. TemperatureMeasurements*, in de Data Base- *MySQLDatabase*.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
@@ -130,19 +127,19 @@ In het volgende voor beeld wordt een extern Stream-object gemaakt voor de lokale
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>De streaming-taak en de streaming-query's maken
 
-Gebruik de opgeslagen procedure **sys. sp_create_streaming_job** systeem om de streaming-query's te definiëren en de streaming-taak te maken. Voor de opgeslagen procedure **sp_create_streaming_job** worden twee para meters gebruikt
+Gebruik de door het `sys.sp_create_streaming_job` systeem opgeslagen procedure om de streaming-query's te definiëren en de streaming-taak te maken. De `sp_create_streaming_job` opgeslagen procedure heeft de volgende para meters:
 
-- job_name-naam van de streaming-taak. De namen van streaming-taken zijn uniek binnen het exemplaar.
-- statement- [Stream Analytics op query's](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?) gebaseerde streaming-query-instructies.
+- `job_name`: De naam van de streaming-taak. De namen van streaming-taken zijn uniek binnen het exemplaar.
+- `statement`: Query's op basis van streaming-query-instructies in de [query taal stream Analytics](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
 
-In het onderstaande voor beeld maakt u een eenvoudige streaming-taak met één streaming-query. Deze query leest de invoer van de Edge hub en schrijft deze naar de *dbo. TemperatureMeasurements* in de data base.
+In het volgende voor beeld wordt een eenvoudige streaming-taak gemaakt met één streaming-query. Deze query leest de invoer van de IoT Edge hub en schrijft naar `dbo.TemperatureMeasurements` in de-data base.
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob1',
 @statement= N'Select * INTO TemperatureMeasurements from MyEdgeHubInput'
 ```
 
-In het onderstaande voor beeld wordt een complexere streaming-taak gemaakt met meerdere verschillende query's, met inbegrip van een query die gebruikmaakt van de ingebouwde functie AnomalyDetection_ChangePoint om afwijkingen in de gegevens van de Tempe ratuur te identificeren.
+In het volgende voor beeld wordt een complexere streaming-taak gemaakt met meerdere verschillende query's. Deze query's bevatten een die gebruikmaakt van de ingebouwde `AnomalyDetection_ChangePoint` functie om afwijkingen in de gegevens van de Tempe ratuur te identificeren.
 
 ```sql
 EXEC sys.sp_create_streaming_job @name=N'StreamingJob2', @statement=
@@ -162,30 +159,30 @@ INTO TemperatureAnomalies FROM MyEdgeHubInput2;
 go
 ```
 
-## <a name="start-stop-drop-and-monitor-streaming-jobs"></a>Streaming-taken starten, stoppen, verwijderen en bewaken
+## <a name="start-stop-drop-and-monitor-streaming-jobs"></a>Streaming-taken starten, stoppen, neerzetten en controleren
 
-Als u een streaming-taak in SQL-rand wilt starten, voert u de opgeslagen procedure **sys. sp_start_streaming_job** uit. Voor de opgeslagen procedure moet dezelfde van de streaming-taak worden gestart als invoer.
+Voer de opgeslagen procedure uit als u een streaming-taak in Azure SQL Edge wilt starten `sys.sp_start_streaming_job` . De opgeslagen procedure vereist dat de naam van de streaming-taak als invoer wordt gestart.
 
 ```sql
 exec sys.sp_start_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Als u een streaming-taak in SQL Edge wilt stoppen, voert u de opgeslagen procedure **sys. sp_stop_streaming_job** uit. Voor de opgeslagen procedure moet dezelfde van de streaming-taak worden gestopt als invoer.
+Voer de opgeslagen procedure uit om een streaming-taak te stoppen `sys.sp_stop_streaming_job` . Voor de opgeslagen procedure moet de naam van de streaming-taak als invoer worden gestopt.
 
 ```sql
 exec sys.sp_stop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Voer de opgeslagen procedure **sys. sp_drop_streaming_job** uit als u een streaming-taak in SQL Edge wilt verwijderen. Voor de opgeslagen procedure moet hetzelfde van de streaming-taak worden verwijderd als invoer.
+Voer de opgeslagen procedure uit om een streaming-taak neer te zetten (of te verwijderen) `sys.sp_drop_streaming_job` . Voor de opgeslagen procedure moet de naam van de streaming-taak worden verwijderd als invoer.
 
 ```sql
 exec sys.sp_drop_streaming_job @name=N'StreamingJob1'
 go
 ```
 
-Als u de huidige status van een streaming-taak in SQL Edge wilt ophalen, voert u de opgeslagen procedure **sys. sp_get_streaming_job** uit. Voor de opgeslagen procedure moet hetzelfde van de streaming-taak worden verwijderd als invoer en wordt de naam en de huidige status van de streaming-taak uitgevoerd.
+Voer de opgeslagen procedure uit om de huidige status van een streaming-taak op te halen `sys.sp_get_streaming_job` . Voor de opgeslagen procedure moet de naam van de streaming-taak worden verwijderd als invoer. De naam en de huidige status van de streaming-taak worden uitgevoerd.
 
 ```sql
 exec sys.sp_get_streaming_job @name=N'StreamingJob1'
@@ -202,13 +199,13 @@ De streaming-taak kan een van de volgende statussen hebben:
 
 | Status | Beschrijving |
 |--------| ------------|
-| Gemaakt | De streaming-taak is gemaakt, maar is nog niet gestart |
-| Starten | De streaming-taak bevindt zich in de start fase |
-| Actieve | De streaming-taak wordt uitgevoerd, maar er is geen invoer voor het proces |
-| Wordt verwerkt | De streaming-taak wordt uitgevoerd en verwerkt de invoer. Deze status geeft een goede status aan voor de streaming-taak |
-| Verminderd beschikbaar | De streaming-taak wordt uitgevoerd, maar er zijn een aantal niet-fatale invoer/uitvoer-serialisatie/deserialisatie-fouten opgetreden tijdens de invoer verwerking. De invoer taak wordt nog steeds uitgevoerd, maar gaat weg van invoer die fouten ondervindt |
-| Gestopt | De streaming-taak is gestopt |
-| Mislukt | De streaming-taak is mislukt. Dit is in het algemeen een indicatie van een fatale fout tijdens de verwerking |
+| Gemaakt | De streaming-taak is gemaakt, maar is nog niet gestart. |
+| Starten | De streaming-taak bevindt zich in de begin fase. |
+| Actieve | De streaming-taak wordt uitgevoerd, maar er is geen invoer om te verwerken. |
+| Wordt verwerkt | De streaming-taak wordt uitgevoerd en verwerkt de invoer. Deze status geeft aan dat de streaming-taak een goede status heeft. |
+| Verminderd beschikbaar | De streaming-taak wordt uitgevoerd, maar er zijn enkele niet-fatale fouten opgetreden tijdens de invoer verwerking. De invoer taak wordt nog steeds uitgevoerd, maar gaat weg van invoer die fouten tegen komt. |
+| Gestopt | De streaming-taak is gestopt. |
+| Mislukt | De streaming-taak is mislukt. Dit is doorgaans een indicatie van een fatale fout tijdens de verwerking. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

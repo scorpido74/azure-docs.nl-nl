@@ -1,29 +1,29 @@
 ---
 title: Fouten bij niet-gevonden resources
-description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
+description: Hierin wordt beschreven hoe u fouten oplost wanneer een bron niet kan worden gevonden. De fout kan optreden bij het implementeren van een Azure Resource Manager sjabloon of bij het nemen van beheer acties.
 ms.topic: troubleshooting
-ms.date: 06/01/2020
-ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/10/2020
+ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259351"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667944"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
+# <a name="resolve-resource-not-found-errors"></a>Fouten bij niet-gevonden resources oplossen
 
-In dit artikel worden de fouten beschreven die kunnen worden weer gegeven wanneer een resource niet kan worden gevonden tijdens de implementatie.
+In dit artikel wordt de fout beschreven die wordt weer gegeven wanneer een resource niet kan worden gevonden tijdens een bewerking. Normaal gesp roken ziet u deze fout bij het implementeren van resources. U ziet deze fout ook wanneer u beheer taken uitvoert en Azure Resource Manager de vereiste resource niet kunt vinden. Als u bijvoorbeeld labels probeert toe te voegen aan een resource die niet bestaat, wordt deze fout weer gegeven.
 
 ## <a name="symptom"></a>Symptoom
 
-Wanneer uw sjabloon de naam bevat van een resource die niet kan worden omgezet, wordt een fout bericht van de volgende strekking weer gegeven:
+Er zijn twee fout codes die aangeven dat de resource niet kan worden gevonden. De **NotFound** -fout retourneert een resultaat vergelijkbaar met het volgende:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Als u de functies [Reference](template-functions-resource.md#reference) of [listkeys ophalen](template-functions-resource.md#listkeys) gebruikt met een resource die niet kan worden omgezet, wordt de volgende fout weer gegeven:
+De **ResourceNotFound** -fout retourneert een resultaat vergelijkbaar met het volgende:
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +33,23 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Oorzaak
 
-Resource Manager moet de eigenschappen van een resource ophalen, maar de resource in uw abonnement kan niet worden geïdentificeerd.
+Resource Manager moet de eigenschappen van een resource ophalen, maar kan de resource niet vinden in uw abonnementen.
 
-## <a name="solution-1---set-dependencies"></a>Oplossing 1: afhankelijkheden instellen
+## <a name="solution-1---check-resource-properties"></a>Oplossing 1-Controleer de resource-eigenschappen
 
-Als u probeert de ontbrekende resource in de sjabloon te implementeren, controleert u of u een afhankelijkheid moet toevoegen. Resource Manager optimaliseert de implementatie door zo mogelijk bronnen parallel te maken. Als u een resource moet implementeren na een andere resource, moet u het element **dependsOn** in uw sjabloon gebruiken. Als u bijvoorbeeld een web-app implementeert, moet het App Service plan bestaan. Als u nog niet hebt opgegeven dat de web-app afhankelijk is van het App Service-abonnement, maakt Resource Manager beide resources tegelijk. Er wordt een fout bericht weer gegeven dat de resource van het App Service plan niet kan worden gevonden, omdat deze nog niet bestaat bij het instellen van een eigenschap in de web-app. U kunt deze fout voor komen door de afhankelijkheid in de web-app in te stellen.
+Wanneer u deze fout tijdens het uitvoeren van een beheer taak ontvangt, controleert u de waarden die u voor de resource opgeeft. De drie te controleren waarden zijn:
+
+* Resourcenaam
+* Naam van de resourcegroep
+* Abonnement
+
+Als u Power shell of Azure CLI gebruikt, controleert u of u de opdracht uitvoert in het abonnement dat de resource bevat. U kunt het abonnement wijzigen met [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) of [AZ account set](/cli/azure/account#az-account-set). Veel opdrachten bieden ook een abonnements parameter waarmee u een ander abonnement kunt opgeven dan de huidige context.
+
+Als u problemen hebt met het controleren van de eigenschappen, meldt u zich aan bij de [Portal](https://portal.azure.com). Zoek de resource die u wilt gebruiken en controleer de resource naam, resource groep en het abonnement.
+
+## <a name="solution-2---set-dependencies"></a>Oplossing 2: afhankelijkheden instellen
+
+Als deze fout optreedt bij het implementeren van een sjabloon, moet u mogelijk een afhankelijkheid toevoegen. Resource Manager optimaliseert de implementatie door zo mogelijk bronnen parallel te maken. Als u een resource moet implementeren na een andere resource, moet u het element **dependsOn** in uw sjabloon gebruiken. Als u bijvoorbeeld een web-app implementeert, moet het App Service plan bestaan. Als u nog niet hebt opgegeven dat de web-app afhankelijk is van het App Service-abonnement, maakt Resource Manager beide resources tegelijk. Er wordt een fout bericht weer gegeven dat de resource van het App Service plan niet kan worden gevonden, omdat deze nog niet bestaat bij het instellen van een eigenschap in de web-app. U kunt deze fout voor komen door de afhankelijkheid in de web-app in te stellen.
 
 ```json
 {
@@ -70,23 +82,19 @@ Wanneer u afhankelijkheids problemen ziet, moet u inzicht krijgen in de volg ord
 
    ![sequentiële implementatie](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Oplossing 2: de resource uit de verschillende resource groep ophalen
+## <a name="solution-3---get-external-resource"></a>Oplossing 3-externe bron ophalen
 
-Als de resource in een andere resource groep aanwezig is dan het item dat wordt geïmplementeerd in, gebruikt u de [functie resourceId](template-functions-resource.md#resourceid) om de volledig gekwalificeerde naam van de resource op te halen.
+Als u een sjabloon implementeert en u een bron wilt ophalen die in een ander abonnement of een andere resource groep bestaat, gebruikt u de [functie resourceId](template-functions-resource.md#resourceid). Deze functie wordt geretourneerd om de volledig gekwalificeerde naam van de resource op te halen.
+
+De para meters voor het abonnement en de resource groep in de functie resourceId zijn optioneel. Als u deze niet opgeeft, worden deze standaard ingesteld op het huidige abonnement en de resource groep. Wanneer u met een resource in een andere resource groep of een ander abonnement werkt, moet u deze waarden opgeven.
+
+In het volgende voor beeld wordt de resource-ID opgehaald voor een resource die bestaat in een andere resource groep.
 
 ```json
 "properties": {
   "name": "[parameters('siteName')]",
   "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
-```
-
-## <a name="solution-3---check-reference-function"></a>Oplossing 3-controle functie referentie
-
-Zoek naar een expressie die de functie [Reference](template-functions-resource.md#reference) bevat. De waarden die u opgeeft, variëren op basis van het feit of de resource zich in dezelfde sjabloon, resource groep en abonnement bevindt. Controleer of u de vereiste parameter waarden voor uw scenario opgeeft. Als de resource zich in een andere resource groep bevindt, geeft u de volledige Resource-ID op. Als u bijvoorbeeld wilt verwijzen naar een opslag account in een andere resource groep, gebruikt u:
-
-```json
-"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
 ## <a name="solution-4---get-managed-identity-from-resource"></a>Oplossing 4: beheerde identiteit ophalen van resource
@@ -116,4 +124,12 @@ Als u de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
+```
+
+## <a name="solution-5---check-functions"></a>Oplossing 5-functies controleren
+
+Bij het implementeren van een sjabloon zoekt u naar expressies die gebruikmaken van de functies [Reference](template-functions-resource.md#reference) of [listkeys ophalen](template-functions-resource.md#listkeys) . De waarden die u opgeeft, variëren op basis van het feit of de resource zich in dezelfde sjabloon, resource groep en abonnement bevindt. Controleer of u de vereiste parameter waarden opgeeft voor uw scenario. Als de resource zich in een andere resource groep bevindt, geeft u de volledige Resource-ID op. Als u bijvoorbeeld wilt verwijzen naar een opslag account in een andere resource groep, gebruikt u:
+
+```json
+"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```

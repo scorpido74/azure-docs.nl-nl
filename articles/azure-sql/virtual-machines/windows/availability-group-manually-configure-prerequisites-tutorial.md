@@ -4,7 +4,6 @@ description: In deze zelf studie ziet u hoe u de vereisten configureert voor het
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -15,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 229a402413f48a28faf11f57c2abd0aa478f3564
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: b72e894b7280a2d3e0fa978125e53ae79b2d20e3
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657052"
+ms.locfileid: "84669355"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Vereisten voor het maken van AlwaysOn-beschikbaarheids groepen op SQL Server op Azure Virtual Machines
 
@@ -514,11 +513,11 @@ De methode voor het openen van de poorten is afhankelijk van de firewall-oplossi
 1. Op de eerste SQL Server **Start** scherm, start u **Windows Firewall met geavanceerde beveiliging**.
 2. Selecteer in het linkerdeel venster **regels voor binnenkomende verbindingen**. Selecteer **nieuwe regel**in het rechterdeel venster.
 3. Kies **poort**bij **regel type**.
-4. Geef voor de poort **TCP** op en typ de juiste poort nummers. Bekijk het volgende voorbeeld:
+4. Geef voor de poort **TCP** op en typ de juiste poort nummers. Zie het volgende voorbeeld:
 
    ![SQL-firewall](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. Selecteer **Next**.
+5. Selecteer **Volgende**.
 6. Laat op de pagina **actie** **de optie verbinding toestaan** ingeschakeld en selecteer **volgende**.
 7. Accepteer de standaard instellingen op de **profiel** pagina en selecteer **volgende**.
 8. Geef op de pagina **naam** een regel naam op (zoals **Azure lb probe**) in het tekstvak **naam** en selecteer vervolgens **volt ooien**.

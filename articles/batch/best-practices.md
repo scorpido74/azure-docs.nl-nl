@@ -3,12 +3,12 @@ title: Aanbevolen procedures
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871363"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677778"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -171,13 +171,17 @@ Voor door de gebruiker gedefinieerde routes (Udr's), moet u ervoor zorgen dat u 
 
 ### <a name="honoring-dns"></a>DNS naleven
 
-Zorg ervoor dat uw systemen DNS-time-to-Live (TTL) door lopen voor de URL van uw batch-account service. Bovendien moet u ervoor zorgen dat uw batch-service-clients en andere verbindings mechanismen voor de batch-service niet afhankelijk zijn van IP-adressen.
+Zorg ervoor dat uw systemen DNS-time-to-Live (TTL) door lopen voor de URL van uw batch-account service. Bovendien moet u ervoor zorgen dat uw batch-service-clients en andere verbindings mechanismen voor de batch-service niet afhankelijk zijn van IP-adressen (of [een groep maken met statische open bare IP-adressen](create-pool-public-ip.md) , zoals hieronder wordt beschreven).
 
 Als uw aanvragen een HTTP-reactie van het 5xx-niveau ontvangen en er in het antwoord een ' Connection: Close-header is, moet uw batch-serviceclient de aanbeveling volgen door de bestaande verbinding te sluiten, DNS opnieuw te verhelpen voor de service-URL van de batch-account en om een nieuwe verbinding te kunnen volgen.
 
-### <a name="retrying-requests-automatically"></a>Aanvragen automatisch opnieuw proberen
+### <a name="retry-requests-automatically"></a>Aanvragen automatisch opnieuw proberen
 
 Zorg ervoor dat uw batch-service-clients over het juiste beleid voor nieuwe pogingen beschikken om uw aanvragen automatisch opnieuw uit te voeren, zelfs tijdens normale werking en niet alleen tijdens een service-onderhouds periode. Deze beleids regels voor opnieuw proberen moeten een interval van ten minste vijf minuten omvatten. Automatische mogelijkheden voor opnieuw proberen worden geboden bij verschillende batch-Sdk's, zoals de [.net RetryPolicyProvider-klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+
+### <a name="static-public-ip-addresses"></a>Statische openbare IP-adressen
+
+Doorgaans worden virtuele machines in een batch-pool geopend via open bare IP-adressen die kunnen worden gewijzigd gedurende de levens duur van de groep. Hierdoor kan het lastig zijn om te communiceren met een Data Base of een andere externe service die de toegang tot bepaalde IP-adressen beperkt. Om ervoor te zorgen dat de open bare IP-adressen in uw pool onverwacht niet worden gewijzigd, kunt u een groep maken met behulp van een set statische open bare IP-adressen die u beheert. Zie [een Azure batch groep met opgegeven open bare IP-adressen maken](create-pool-public-ip.md)voor meer informatie.
 
 ## <a name="batch-node-underlying-dependencies"></a>Onderliggende afhankelijkheden van het batch knooppunt
 

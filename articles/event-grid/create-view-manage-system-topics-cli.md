@@ -7,15 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: spelluru
-ms.openlocfilehash: c361e7303f73aee1d2e60bd4dd0b9ed0d0e4746f
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 19a22a0a3b528a9a72fdd51c589e42bf2fba5ce7
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457461"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669933"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Event Grid systeem onderwerpen maken, weer geven en beheren met behulp van Azure CLI
 In dit artikel wordt beschreven hoe u systeem onderwerpen maakt en beheert met behulp van Azure CLI. Zie [systeem onderwerpen](system-topics.md)voor een overzicht van systeem onderwerpen.
+
+## <a name="install-extension-for-azure-cli"></a>Extensie voor Azure CLI installeren
+Voor Azure CLI hebt u de [extensie Event grid](/cli/azure/azure-cli-extensions-list)nodig.
+
+In Cloud shell:
+
+- Als u de extensie eerder hebt geïnstalleerd, werkt u deze bij:`az extension update -n eventgrid`
+- Als u de extensie nog niet eerder hebt geïnstalleerd, installeert u deze:`az extension add -n eventgrid`
+
+Voor een lokale installatie:
+
+1. [Installeer de Azure cli](/cli/azure/install-azure-cli). Zorg ervoor dat u de nieuwste versie hebt door te controleren met AZ--version.
+2. Eerdere versies van de uitbrei ding verwijderen:`az extension remove -n eventgrid`
+3. Installeer de eventgrid-extensie met`az extension add -n eventgrid`
 
 ## <a name="create-a-system-topic"></a>Een systeem onderwerp maken
 

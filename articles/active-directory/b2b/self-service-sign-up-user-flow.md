@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712346"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673100"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Een self-service-aanmeldings stroom voor gebruikers toevoegen aan een app (preview)
 |     |
@@ -81,7 +81,7 @@ Vervolgens maakt u de gebruikers stroom voor de Self-Service-aanmelding en voegt
 
 U kunt de volg orde kiezen waarin de kenmerken worden weer gegeven op de registratie pagina. 
 
-1. Selecteer **Azure Active Directory**In het [Azure Portal](https://portal.azure.com).
+1. Selecteer **Azure Active Directory** in de [Azure-portal](https://portal.azure.com).
 2. Selecteer **externe identiteiten**, selecteer **gebruikers stromen (preview-versie)**.
 3. Selecteer de self-service voor het registreren van de gebruikers stroom in de lijst.
 4. Onder **aanpassen**selecteert u **pagina-indelingen**.
@@ -109,3 +109,5 @@ U kunt nu toepassingen koppelen aan de gebruikers stroom.
 
 - [Google toevoegen aan uw lijst met sociale id-providers](google-federation.md)
 - [Facebook toevoegen aan uw lijst met sociale id-providers](facebook-federation.md)
+<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
+<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->

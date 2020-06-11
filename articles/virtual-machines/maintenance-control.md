@@ -3,16 +3,16 @@ title: Overzicht van onderhouds beheer voor virtuele Azure-machines met behulp v
 description: Meer informatie over hoe u kunt bepalen wanneer onderhoud wordt toegepast op uw Azure-Vm's met behulp van onderhouds beheer.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4c5e30d0607db2d529ae41ebab6dc82e925ff2a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82139197"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675791"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>Platform updates beheren met onderhouds controle 
 
@@ -38,7 +38,7 @@ U kunt onderhouds configuraties maken en beheren met een van de volgende opties:
 
 - [Azure-CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
-- [Azure Portal](maintenance-control-portal.md)
+- [Azure-portal](maintenance-control-portal.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

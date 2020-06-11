@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: fd4ed98383d38be8528bafd6ec7d149381386fac
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298914"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672517"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C beheren met Microsoft Graph
 
@@ -46,7 +46,15 @@ Hoewel de OAuth 2,0-toewijzings stroom voor client referenties momenteel niet re
 
 Voordat uw scripts en toepassingen kunnen communiceren met de [Microsoft Graph-API][ms-graph-api] om Azure AD B2C resources te beheren, moet u een toepassings registratie in uw Azure AD B2C-Tenant maken die de vereiste API-machtigingen verleent.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Selecteer het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die uw Azure AD B2C Tenant bevat.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
+1. Selecteer **App-registraties** en selecteer vervolgens **Nieuwe registratie**.
+1. Voer een **naam** in voor de toepassing. Bijvoorbeeld *managementapp1*.
+1. Selecteer **alleen accounts in deze organisatie Directory**.
+1. Schakel onder **machtigingen**het selectie vakje *verlenen beheerder toestemming voor openid connect-en offline_access machtigingen* uit.
+1. Selecteer **Registreren**.
+1. Noteer de **toepassings-id** van de toepassing die wordt weer gegeven op de overzichts pagina van de toepassing. U gebruikt deze waarde in een latere stap.
 
 ### <a name="grant-api-access"></a>API-toegang verlenen
 

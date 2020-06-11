@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887330"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677425"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Beveilig uw beheer poorten met Just-in-time-toegang
 
@@ -115,7 +115,7 @@ Een bestaande just-in-time-beleid van een virtuele machine bewerken:
 
 1. Op het tabblad **geconfigureerd** , onder **vm's**, selecteert u een virtuele machine waaraan u een poort wilt toevoegen door te klikken op de drie puntjes in de rij voor die virtuele machine. 
 
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 
 1. Onder **JIT VM-toegangs configuratie**kunt u de bestaande instellingen van een reeds beveiligde poort bewerken of een nieuwe aangepaste poort toevoegen. 
   ![JIT-VM-toegang](./media/security-center-just-in-time/edit-policy.png)
@@ -198,7 +198,7 @@ De just-in-time VM-toegangs functie kan worden gebruikt via de Azure Security Ce
 
 ### <a name="jit-vm-access-via-powershell"></a>JIT-VM-toegang via Power shell
 
-Als u de just-in-time-toegang tot een VM wilt gebruiken via Power shell, gebruikt u de officiële Azure Security Center `Set-AzJitNetworkAccessPolicy`Power shell-cmdlets en specifiek.
+Als u de just-in-time-toegang tot een VM wilt gebruiken via Power shell, gebruikt u de officiële Azure Security Center Power shell-cmdlets en specifiek `Set-AzJitNetworkAccessPolicy` .
 
 In het volgende voor beeld wordt een just-in-time-VM-toegangs beleid ingesteld op een specifieke virtuele machine en worden de volgende opties ingesteld:
 
@@ -211,7 +211,7 @@ Voer de volgende handelingen uit in Power shell om dit te bewerkstelligen:
 
 1.    Wijs een variabele toe die het just-in-time-VM-toegangs beleid voor een virtuele machine bevat:
 
-        $JitPolicy = (@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" poorten = (@ {Number = 22;        Protocol = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"}, @ {Number = 3389;        Protocol = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"})})
+        $JitPolicy = (@ {id = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   poorten = (@ {Number = 22;        Protocol = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"}, @ {Number = 3389;        Protocol = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"})})
 
 2.    Voeg het just-in-time-VM-toegangs beleid in op een matrix:
     
@@ -228,7 +228,7 @@ In het volgende voor beeld ziet u een just-in-time-toegangs aanvraag voor een vi
 Voer het volgende uit in Power shell:
 1.    De toegangs eigenschappen van de VM-aanvraag configureren
 
-        $JitPolicyVm 1 = (@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" poorten = (@ {Number = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})})
+        $JitPolicyVm 1 = (@ {id = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   poorten = (@ {Number = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})})
 2.    De para meters voor de VM-toegangs aanvraag invoegen in een matrix:
 
         $JitPolicyArr = @ ($JitPolicyVm 1)

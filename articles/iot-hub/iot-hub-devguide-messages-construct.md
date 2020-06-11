@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 0fe167490cd466ca30857c2ed324846e80ab581d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635591"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674974"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-berichten maken en lezen
 
@@ -75,7 +75,6 @@ Zie [Azure IOT sdk's](iot-hub-devguide-sdks.md)(Engelstalig) voor meer informati
 
 De namen van de systeem eigenschappen variëren op basis van het eind punt waarnaar de berichten worden doorgestuurd. Raadpleeg de onderstaande tabel voor meer informatie over deze namen.
 
-
 |Naam van systeem eigenschap|Event Hubs|Azure Storage|Service Bus|Event Grid|
 |--------------------|----------|-------------|-----------|----------|
 |Bericht-ID|bericht-id|messageId|MessageId|bericht-id|
@@ -86,7 +85,7 @@ De namen van de systeem eigenschappen variëren op basis van het eind punt waarn
 |Verificatie methode voor de verbinding|iothub-Connection-auth-methode|connectionAuthMethod|iothub-Connection-auth-methode|iothub-Connection-auth-methode|
 |Invoer|inhouds type|Invoer|Invoer|iothub-inhouds type|
 |contentEncoding|content-encoding|contentEncoding|ContentEncoding|iothub-content-encoding|
-|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime|     |iothub-enqueuedtime|
+|iothub-enqueuedtime|iothub-enqueuedtime|enqueuedTime| N.v.t. |iothub-enqueuedtime|
 |iothub-interface-naam|iothub-interface-naam|interfaceName|Iothub-interface-naam|iothub-interface-naam|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 

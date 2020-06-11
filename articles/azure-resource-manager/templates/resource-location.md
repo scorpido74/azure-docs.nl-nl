@@ -3,12 +3,12 @@ title: Resource locatie van sjabloon
 description: Hierin wordt beschreven hoe u een resource locatie instelt in een Azure Resource Manager sjabloon.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0bf0ac79c7e304a61561808dc2290ceb4a379e6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156426"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672677"
 ---
 # <a name="set-resource-location-in-arm-template"></a>De resource locatie in een ARM-sjabloon instellen
 
@@ -18,7 +18,7 @@ Bij het implementeren van een Azure Resource Manager ARM-sjabloon moet u een loc
 
 Verschillende resource typen worden ondersteund op verschillende locaties. Gebruik Azure PowerShell of Azure CLI om de ondersteunde locaties voor een resource type op te halen.
 
-# <a name="powershell"></a>[Zo](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
@@ -38,13 +38,13 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>Locatie parameter gebruiken
 
-Gebruik een para meter om de locatie voor resources op te geven om flexibiliteit te bieden bij het implementeren van uw sjabloon. Stel de standaard waarde van de para meter `resourceGroup().location`in op.
+Gebruik een para meter om de locatie voor resources op te geven om flexibiliteit te bieden bij het implementeren van uw sjabloon. Stel de standaard waarde van de para meter in op `resourceGroup().location` .
 
 In het volgende voor beeld ziet u een opslag account dat is geïmplementeerd op een locatie die is opgegeven als een para meter:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "storageAccountType": {

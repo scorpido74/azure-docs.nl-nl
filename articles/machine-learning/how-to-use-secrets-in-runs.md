@@ -1,5 +1,5 @@
 ---
-title: Geheimen gebruiken in trainings uitvoeringen
+title: Verificatie geheimen in trainingen
 titleSuffix: Azure Machine Learning
 description: Geheimen op beveiligde wijze door geven aan trainings uitvoeringen met behulp van werkruimte Key Vault
 services: machine-learning
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: dd3ebeb0f9c55fcc4dee090097459326cbe08eed
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434436"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677472"
 ---
-# <a name="use-secrets-in-training-runs"></a>Geheimen gebruiken in trainings uitvoeringen
+# <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Verificatie referentie geheimen gebruiken in Azure Machine Learning training-uitvoeringen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u geheimen kunt gebruiken in de training die veilig worden uitgevoerd. Verificatie-informatie, zoals uw gebruikers naam en wacht woord, zijn geheimen. Als u bijvoorbeeld verbinding maakt met een externe data base om trainings gegevens op te vragen, moet u uw gebruikers naam en wacht woord door geven aan de context voor externe uitvoering. Het coderen van dergelijke waarden in trainings scripts is onveilig, omdat het geheim zou worden weer gegeven. 

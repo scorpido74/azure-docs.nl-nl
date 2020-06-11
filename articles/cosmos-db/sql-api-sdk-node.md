@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL node. js-API, SDK & resources'
-description: Meer informatie over de SQL node. js-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB node. js-SDK.
+title: 'Azure Cosmos DB: SQL Node.js API, SDK & resources'
+description: Meer informatie over de SQL Node.js-API en SDK, inclusief release datums, pensioen datums en wijzigingen die zijn aangebracht tussen elke versie van de Azure Cosmos DB Node.js SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,18 +8,19 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b0d9b0bd520b3bfca57f2bf7f306ebddd15cc3e5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171596"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677658"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB node. js SDK voor SQL API: release opmerkingen en bronnen
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK voor SQL API: release opmerkingen en bronnen
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [.NET-wijzigings feed](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK v3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [.NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java-SDK v2](sql-api-sdk-async-java.md)
@@ -28,7 +29,7 @@ ms.locfileid: "84171596"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-resourceprovider](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk-uitvoerder-.NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk-uitvoerder-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk-uitvoerder-java](sql-api-sdk-bulk-executor-java.md)
 
 |Resource  |Koppeling  |
@@ -37,20 +38,20 @@ ms.locfileid: "84171596"
 |API-documentatie  |  [Naslag documentatie voor Java script SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK-installatie-instructies  |  [Installatie-instructies](https://github.com/Azure/azure-cosmos-js#installation)
 |Bijdragen aan SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Voorbeelden | [Voor beelden van node. js-code](sql-api-nodejs-samples.md)
+| Voorbeelden | [Voor beelden vanNode.js code](sql-api-nodejs-samples.md)
 | Zelf studie aan de slag | [Aan de slag met de Java script-SDK](sql-api-nodejs-get-started.md)
-| Zelf studie voor web-apps | [Een node. js-webtoepassing bouwen met Azure Cosmos DB](sql-api-nodejs-application.md)
-| Huidig ondersteund platform | [Node. js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK versie 3. x. x<br/>[Node. js V10 toevoegen. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK versie 3. x. x<br/>[Node. js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK versie 3. x. x<br/>[Node. js V6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK versie 2. x. x<br/>[Node. js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK-versie 1. x. x<br/> [Node. js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)-SDK-versie 1. x. x<br/> [Node. js v 0,10](https://nodejs.org/en/blog/release/v0.10.0/)-SDK-versie 1. x. x
+| Zelf studie voor web-apps | [Een Node.js-webtoepassing bouwen met behulp van Azure Cosmos DB](sql-api-nodejs-application.md)
+| Huidig ondersteund platform | [Node.js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK-versie 3. x. x<br/>[Node.js V10 toevoegen. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK-versie 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK-versie 3. x. x<br/>[Node.js V6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK-versie 2. x. x<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)-SDK-versie 1. x. x<br/> [Node.js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)-SDK-versie 1. x. x<br/> [Node.js v 0,10](https://nodejs.org/en/blog/release/v0.10.0/)-SDK-versie 1. x. x
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 ### <a name="310"></a><a name="3.1.0"></a>3.1.0
-* Stel de standaard ResponseContinuationTokenLimitInKB in op 1 KB. Standaard wordt dit in 1 KB om te voor komen dat lange headers (node. js een globale header-grootte heeft). Een gebruiker kan dit veld zo instellen dat er langere kopteksten worden toegestaan. Dit kan helpen bij het optimaliseren van query's.
+* Stel de standaard ResponseContinuationTokenLimitInKB in op 1 KB. Standaard wordt dit in 1 KB om te voor komen dat lange kopteksten (Node.js een limiet voor de grootte van de globale header heeft). Een gebruiker kan dit veld zo instellen dat er langere kopteksten worden toegestaan. Dit kan helpen bij het optimaliseren van query's.
 * Verwijder disableSSLVerification. Bij deze optie worden nieuwe alternatieven beschreven in [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
 ### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * InitialHeaders toestaan om de partitie sleutel header expliciet in te stellen
-* Package. json #-bestanden gebruiken om te voor komen dat externe bestanden worden gepubliceerd
+* package.jsop # files gebruiken om te voor komen dat externe bestanden worden gepubliceerd
 * Sorteer fout voor routerings toewijzing herstellen voor oudere versie van knoop punt + V8
 * Lost een probleem op wanneer de gebruiker opties voor gedeeltelijke nieuwe pogingen oplevert
 
@@ -101,7 +102,7 @@ In v2 zijn er veel verschillende manieren om de resultaten van een query te herh
 
 * Verwijder iterator. Next () en iterator. Current (). Gebruik fetchNext () om pagina's met resultaten op te halen.
 * Verwijder iterator. forEach (). Gebruik in plaats daarvan async-iterators.
-* iterator. executeNext () heeft de naam gewijzigd in iterator. fetchNext ()
+* iterator.executeNext () is gewijzigd in iterator. fetchNext ()
 * iterator. toArray () heeft de naam gewijzigd in iterator. fetchAll ()
 * Pagina's zijn nu goede antwoord objecten in plaats van gewone JS-objecten
 * Const-container = client. data base (dbId). container (containerId)
@@ -150,7 +151,7 @@ Mislukte aanvragen genereren nu de juiste fout of subklassen van de fout. Voorhe
 
 #### <a name="new-features"></a>Nieuwe functies
 ##### <a name="user-cancelable-requests"></a>Aanvragen die door de gebruiker worden geannuleerd
-Met de stap voor het ophalen van intern kunnen we de API browser AbortController gebruiken om bewerkingen die door de gebruiker kunnen worden geannuleerd, te ondersteunen. In het geval van bewerkingen waarbij meerdere aanvragen mogelijk worden uitgevoerd (zoals query's op meerdere partities), worden alle aanvragen voor de bewerking geannuleerd. Moderne browser gebruikers hebben al AbortController. Node. js-gebruikers moeten een polyfill-bibliotheek gebruiken
+Met de stap voor het ophalen van intern kunnen we de API browser AbortController gebruiken om bewerkingen die door de gebruiker kunnen worden geannuleerd, te ondersteunen. In het geval van bewerkingen waarbij meerdere aanvragen mogelijk worden uitgevoerd (zoals query's op meerdere partities), worden alle aanvragen voor de bewerking geannuleerd. Moderne browser gebruikers hebben al AbortController. Node.js moeten gebruikers een polyfill-bibliotheek gebruiken
 
 ``` js
  const controller = new AbortController()
@@ -181,7 +182,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>Verbeterde browser ervaring
-Hoewel het mogelijk is de v2 SDK in de browser te gebruiken, was het geen ideale ervaring. U moet meerdere ingebouwde tape wisselaars. JS-bibliotheken hebben gevuld en een bundel zoals webpack of pakje gebruiken. De V3 SDK maakt de out-of-Box-ervaring veel beter voor gebruikers van de browser.
+Hoewel het mogelijk is de v2 SDK in de browser te gebruiken, was het geen ideale ervaring. U moest verschillende ingebouwde bibliotheken node.js en een bundel zoals webpack of pakje gebruiken. De V3 SDK maakt de out-of-Box-ervaring veel beter voor gebruikers van de browser.
 
 * De aanvraag-interne aanvragen vervangen door ophalen (#245)
 * Gebruik van buffer verwijderen (#330)
@@ -218,7 +219,7 @@ Niet altijd de meest zicht bare wijzigingen, maar ze helpen ons team sneller mee
 * Regionale failover herstellen in beleid voor opnieuw proberen
 * ChangeFeed hasMoreResults eigenschap herstellen
 * Updates voor dev dependency
-* PolicheckExclusions. txt toevoegen
+* PolicheckExclusions.txt toevoegen
 
 ### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * _Ts type wijzigen van teken reeks naar getal

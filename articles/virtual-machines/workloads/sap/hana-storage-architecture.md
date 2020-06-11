@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/01/2020
+ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d790bf20da8cc0d10c8fa47d750014de4f3d285
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331726"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677301"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Opslag architectuur van SAP HANA (grote exemplaren)
 
@@ -45,6 +45,7 @@ Zie de volgende tabel voor meer informatie over de opslag toewijzing. De tabel b
 | S768m | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
 | S768xm | 40.960 GB | 6.144 GB | 4.096 GB | 6.144 GB |
 | S960m | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
+| S896m | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
 
 Meer recente Sku's van HANA grote instanties worden geleverd met opslag configuraties die er ongeveer als volgt uitzien:
 
@@ -70,7 +71,6 @@ Meer recente Sku's van HANA grote instanties worden geleverd met opslag configur
 | S672oom | 38.016 GB | 512 GB | 1.024 GB | 512 GB |
 | S896 | 16.896 GB | 512 GB | 1.024 GB | 512 GB |
 | S896oo | 25.344 GB | 512 GB | 1.024 GB | 512 GB |
-| S896m | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
 | S896om | 33.792 GB | 512 GB | 1.024 GB | 512 GB |
 | S896ooo | 42.240 GB | 512 GB | 1.024 GB | 512 GB |
 | S896oom | 50.688 GB | 512 GB | 1.024 GB | 512 GB |
@@ -126,7 +126,7 @@ Met de klasse van type I van Sku's wordt het volume waarop de opstart-LUN is opg
 De opslag die wordt gebruikt in HANA grote instanties heeft een beperking voor de bestands grootte. De limiet voor de [grootte is 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) per bestand. In tegens telling tot beperkingen van de bestands grootte in de EXT3-bestands systemen is HANA niet impliciet van de opslag beperking die wordt afgedwongen door de HANA-opslag voor grote instanties. Als gevolg van een resultaat van HANA wordt niet automatisch een nieuw gegevens bestand gemaakt wanneer de maximale bestands grootte van 16 TB is bereikt. Aangezien HANA probeert het bestand groter dan 16 TB te laten groeien, worden fouten gerapporteerd en de index server wordt aan het einde gecrasht.
 
 > [!IMPORTANT]
-> U moet de volgende para meters in het bestand Global. ini van HANA instellen om te voor komen dat HANA probeert gegevens bestanden te verg Roten dan de bestands grootte limiet van 16 TB van HANA grote exemplaren.
+> U moet de volgende para meters instellen in het global.ini configuratie bestand van HANA om te voor komen dat HANA gegevens bestanden probeert te verg Roten dan de bestands grootte limiet van 16 TB voor de omvang van de omvang van een grote opslag.
 > 
 > - datavolume_striping = True
 > - datavolume_striping_size_gb = 15000

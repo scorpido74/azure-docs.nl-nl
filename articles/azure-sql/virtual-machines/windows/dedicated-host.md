@@ -4,7 +4,6 @@ description: Meer informatie over het uitvoeren van een SQL Server-VM op een toe
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c16c2cdae671a9b18a34b88b9490b5b61c24c8e
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40c851e5ff5fc83ccf6b6d67e319bb97bd860bd5
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220225"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669100"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>SQL Server VM uitvoeren op een toegewezen Azure-host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

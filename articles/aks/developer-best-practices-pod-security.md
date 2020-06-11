@@ -6,18 +6,18 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 9fd7d6c6d472400afea05ac0cd87321a46dddb37
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 3a62dcbbec90ec73ded722a6efbbd5907fb21f9f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677921"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674037"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor pod-beveiliging in azure Kubernetes service (AKS)
 
 Als u toepassingen ontwikkelt en uitvoert in azure Kubernetes service (AKS), is de beveiliging van uw peul een belang rijke overweging. Uw toepassingen moeten worden ontworpen voor het principe van het minst vereiste aantal bevoegdheden. Het is belang rijk om persoonlijke gegevens veilig te houden. U wilt niet dat referenties zoals database verbindings reeksen, sleutels of geheimen en certificaten die worden blootgesteld aan de buiten wereld waar een aanvaller kan profiteren van deze geheimen voor schadelijke doel einden. Voeg ze niet toe aan uw code of sluit ze in op uw container installatie kopieën. Deze aanpak maakt een risico voor bloot stelling en beperkt de mogelijkheid om deze referenties te draaien, omdat de container installatie kopieën opnieuw moeten worden opgebouwd.
 
-Dit artikel Best practices is gericht op het beveiligen van AKS. Procedures voor:
+Dit artikel Best practices is gericht op het beveiligen van AKS. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Pod-beveiligings context gebruiken om de toegang tot processen en services of bevoegdheids escalatie te beperken
@@ -114,7 +114,7 @@ Dit artikel is gericht op hoe u uw peul kunt beveiligen. Raadpleeg de volgende a
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
 [aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
-[selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->

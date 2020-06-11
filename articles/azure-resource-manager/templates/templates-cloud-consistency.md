@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156103"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677675"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>ARM-sjablonen ontwikkelen voor Cloud consistentie
 
@@ -51,7 +51,7 @@ Nieuwe sjabloon functies die worden geïntroduceerd in Azure Resource Manager zi
 
 Azure Resource Manager mogelijkheden zullen altijd eerst worden geïntroduceerd in globaal Azure. U kunt het volgende Power shell-script gebruiken om te controleren of nieuw geïntroduceerde-sjabloon functies ook beschikbaar zijn in Azure Stack:
 
-1. Maak een kloon van de GitHub-opslag [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions)plaats:.
+1. Maak een kloon van de GitHub-opslag plaats: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) .
 
 1. Zodra u een lokale kloon van de opslag plaats hebt, maakt u verbinding met de Azure Resource Manager van het doel met Power shell.
 
@@ -106,7 +106,7 @@ Een betere gewoonte voor implementaties in meerdere Clouds is het opslaan van uw
 
 Aangezien de Blob-opslag op elke Cloud een andere eindpunt Fully Qualified Domain Name (FQDN) gebruikt, configureert u de sjabloon met de locatie van de gekoppelde sjablonen met twee para meters. Para meters kunnen gebruikers invoer accepteren tijdens de implementatie. Sjablonen worden meestal gemaakt en gedeeld door meerdere personen, zodat een best practice een standaard naam moet gebruiken voor deze para meters. Met behulp van naam conventies kunt u sjablonen herbruikbaarder maken voor verschillende regio's, Clouds en auteurs.
 
-In de volgende code `_artifactsLocation` wordt gebruikt om te verwijzen naar één locatie, die alle implementatie-gerelateerde artefacten bevat. U ziet dat er een standaard waarde wordt gegeven. Als er bij de implementatie geen invoer waarde is opgegeven voor `_artifactsLocation`, wordt de standaard waarde gebruikt. De `_artifactsLocationSasToken` wordt gebruikt als invoer voor de `sasToken`. De standaard waarde moet een lege teken reeks zijn voor scenario's waarbij `_artifactsLocation` het niet is beveiligd, bijvoorbeeld een open bare github-opslag plaats.
+In de volgende code `_artifactsLocation` wordt gebruikt om te verwijzen naar één locatie, die alle implementatie-gerelateerde artefacten bevat. U ziet dat er een standaard waarde wordt gegeven. Als er bij de implementatie geen invoer waarde is opgegeven voor `_artifactsLocation` , wordt de standaard waarde gebruikt. De `_artifactsLocationSasToken` wordt gebruikt als invoer voor de `sasToken` . De standaard waarde moet een lege teken reeks zijn voor scenario's waarbij het `_artifactsLocation` niet is beveiligd, bijvoorbeeld een open bare github-opslag plaats.
 
 ```json
 "parameters": {
@@ -127,13 +127,13 @@ In de volgende code `_artifactsLocation` wordt gebruikt om te verwijzen naar é�
 }
 ```
 
-In de hele sjabloon worden koppelingen gegenereerd door de basis-URI (van de `_artifactsLocation` para meter) te combi neren met een pad dat `_artifactsLocationSasToken`relatief is voor artefacten en de. De volgende code laat zien hoe u de koppeling met de geneste sjabloon kunt opgeven met behulp van de URI-sjabloon functie:
+In de hele sjabloon worden koppelingen gegenereerd door de basis-URI (van de `_artifactsLocation` para meter) te combi neren met een pad dat relatief is voor artefacten en de `_artifactsLocationSasToken` . De volgende code laat zien hoe u de koppeling met de geneste sjabloon kunt opgeven met behulp van de URI-sjabloon functie:
 
 ```json
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -146,11 +146,11 @@ In de hele sjabloon worden koppelingen gegenereerd door de basis-URI (van de `_a
 ]
 ```
 
-Door deze methode te gebruiken, wordt de standaard waarde `_artifactsLocation` voor de para meter gebruikt. Als de gekoppelde sjablonen moeten worden opgehaald van een andere locatie, kan de parameter invoer worden gebruikt tijdens de implementatie om de standaard waarde te overschrijven. u hoeft de sjabloon zelf niet te wijzigen.
+Door deze methode te gebruiken, wordt de standaard waarde voor de `_artifactsLocation` para meter gebruikt. Als de gekoppelde sjablonen moeten worden opgehaald van een andere locatie, kan de parameter invoer worden gebruikt tijdens de implementatie om de standaard waarde te overschrijven. u hoeft de sjabloon zelf niet te wijzigen.
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>_ArtifactsLocation gebruiken in plaats van hardcoding-koppelingen
 
-Naast het gebruik van geneste sjablonen, wordt de `_artifactsLocation` URL in de para meter gebruikt als basis voor alle gerelateerde artefacten van een implementatie sjabloon. Sommige VM-extensies bevatten een koppeling naar een script dat buiten de sjabloon is opgeslagen. Voor deze uitbrei dingen mag u de koppelingen niet voorlopig hardcoderen we. De aangepaste scripts en Power shell DSC-uitbrei dingen kunnen bijvoorbeeld worden gekoppeld aan een extern script op GitHub, zoals wordt weer gegeven:
+Naast het gebruik van geneste sjablonen, wordt de URL in de `_artifactsLocation` para meter gebruikt als basis voor alle gerelateerde artefacten van een implementatie sjabloon. Sommige VM-extensies bevatten een koppeling naar een script dat buiten de sjabloon is opgeslagen. Voor deze uitbrei dingen mag u de koppelingen niet voorlopig hardcoderen we. De aangepaste scripts en Power shell DSC-uitbrei dingen kunnen bijvoorbeeld worden gekoppeld aan een extern script op GitHub, zoals wordt weer gegeven:
 
 ```json
 "properties": {
@@ -168,7 +168,7 @@ Naast het gebruik van geneste sjablonen, wordt de `_artifactsLocation` URL in de
 
 Als u de koppelingen naar het script hardcoding, kan het zijn dat de sjabloon niet kan worden geïmplementeerd op een andere locatie. Tijdens de configuratie van de VM-resource initieert de VM-agent die wordt uitgevoerd in de virtuele machine een down load van alle scripts die zijn gekoppeld aan de VM-extensie en slaat vervolgens de scripts op de lokale schijf van de virtuele machine op. Deze aanpak fungeert als de geneste sjabloon koppelingen die eerder zijn uitgelegd in de sectie geneste sjablonen gebruiken voor verschillende regio's.
 
-Resource Manager haalt geneste sjablonen op tijdens runtime. Voor VM-extensies wordt het ophalen van externe artefacten uitgevoerd door de VM-agent. Naast de andere initiator van het ophalen van artefacten, is de oplossing in de sjabloon definitie hetzelfde. Gebruik de para meter _artifactsLocation met een standaard waarde van het basispad waar alle artefacten worden opgeslagen (met inbegrip van de VM-extensie scripts `_artifactsLocationSasToken` ) en de para meter voor de invoer voor de sasToken.
+Resource Manager haalt geneste sjablonen op tijdens runtime. Voor VM-extensies wordt het ophalen van externe artefacten uitgevoerd door de VM-agent. Naast de andere initiator van het ophalen van artefacten, is de oplossing in de sjabloon definitie hetzelfde. Gebruik de para meter _artifactsLocation met een standaard waarde van het basispad waar alle artefacten worden opgeslagen (met inbegrip van de VM-extensie scripts) en de `_artifactsLocationSasToken` para meter voor de invoer voor de sasToken.
 
 ```json
 "parameters": {
@@ -231,7 +231,7 @@ Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, Re
 
 ### <a name="verify-the-version-of-all-resource-types"></a>De versie van alle resource typen controleren
 
-Een set eigenschappen is gebruikelijk voor alle resource typen, maar elke resource heeft ook eigen specifieke eigenschappen. Nieuwe functies en gerelateerde eigenschappen worden op momenten door een nieuwe API-versie toegevoegd aan bestaande resource typen. Een resource in een sjabloon heeft een eigen API-versie- `apiVersion`eigenschap. Deze versie wordt gegarandeerd dat een bestaande bron configuratie in een sjabloon niet wordt beïnvloed door wijzigingen op het platform.
+Een set eigenschappen is gebruikelijk voor alle resource typen, maar elke resource heeft ook eigen specifieke eigenschappen. Nieuwe functies en gerelateerde eigenschappen worden op momenten door een nieuwe API-versie toegevoegd aan bestaande resource typen. Een resource in een sjabloon heeft een eigen API-versie-eigenschap `apiVersion` . Deze versie wordt gegarandeerd dat een bestaande bron configuratie in een sjabloon niet wordt beïnvloed door wijzigingen op het platform.
 
 Nieuwe API-versies die zijn geïntroduceerd in bestaande resource typen in Global Azure zijn mogelijk niet onmiddellijk beschikbaar in alle regio's, soevereine Clouds of Azure Stack. Als u een lijst wilt weer geven van de beschik bare resource providers, resource typen en API-versies voor een Cloud, kunt u resource Explorer gebruiken in Azure Portal. Zoek naar resource Explorer in het menu alle services. Vouw het knoop punt providers in resource Explorer uit om alle beschik bare resource providers, hun resource typen en API-versies in die cloud te retour neren.
 
@@ -255,7 +255,7 @@ Hoewel u de regio namen kunt voorlopig hardcoderen we wanneer u de bron eigensch
 
 Als u wilt dat verschillende regio's worden opgegeven, voegt u een locatie voor invoer parameters toe aan de sjabloon met een standaard waarde. Als er tijdens de implementatie geen waarde is opgegeven, wordt de standaard waarde gebruikt.
 
-De functie `[resourceGroup()]` Temp late retourneert een object dat de volgende sleutel/waarde-paren bevat:
+De functie Temp late `[resourceGroup()]` retourneert een object dat de volgende sleutel/waarde-paren bevat:
 
 ```json
 {
@@ -295,13 +295,13 @@ Met deze sjabloon functie kunt u uw sjabloon implementeren in een wille keurige 
 
 ### <a name="track-versions-using-api-profiles"></a>Versies bijhouden met API-profielen
 
-Het kan zeer lastig zijn om alle beschik bare resource providers en gerelateerde API-versies bij te houden die aanwezig zijn in Azure Stack. Op het moment van schrijven is `2018-04-01`de nieuwste API-versie voor **micro soft. Compute/Availability sets** in azure bijvoorbeeld, terwijl de beschik bare API-versie gemeen schappelijk `2016-03-30`is voor Azure en Azure stack is. De common API-versie voor **micro soft. Storage/Storage accounts** die wordt gedeeld tussen alle Azure `2016-01-01`-en Azure stack locaties, is, terwijl de `2018-02-01`nieuwste API-versie in Azure is.
+Het kan zeer lastig zijn om alle beschik bare resource providers en gerelateerde API-versies bij te houden die aanwezig zijn in Azure Stack. Op het moment van schrijven is de nieuwste API-versie voor **micro soft. Compute/Availability sets** in azure bijvoorbeeld `2018-04-01` , terwijl de beschik bare API-versie gemeen schappelijk is voor Azure en Azure stack is `2016-03-30` . De common API-versie voor **micro soft. Storage/Storage accounts** die wordt gedeeld tussen alle Azure-en Azure stack locaties `2016-01-01` , is, terwijl de nieuwste API-versie in Azure is `2018-02-01` .
 
-Daarom heeft Resource Manager het concept van API-profielen in sjablonen geïntroduceerd. Zonder API-profielen wordt elke bron in een sjabloon geconfigureerd met een `apiVersion` -element dat de API-versie voor die specifieke resource beschrijft.
+Daarom heeft Resource Manager het concept van API-profielen in sjablonen geïntroduceerd. Zonder API-profielen wordt elke bron in een sjabloon geconfigureerd met een- `apiVersion` element dat de API-versie voor die specifieke resource beschrijft.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -338,11 +338,11 @@ Daarom heeft Resource Manager het concept van API-profielen in sjablonen geïntr
 }
 ```
 
-Een API-profiel versie fungeert als een alias voor een enkele API-versie per resource type die gemeen schappelijk is voor Azure en Azure Stack. In plaats van een API-versie op te geven voor elke resource in een sjabloon, geeft u alleen de API-profiel versie op `apiProfile` in een nieuw `apiVersion` hoofd element, met de naam en laat u het element voor de afzonderlijke resources weg.
+Een API-profiel versie fungeert als een alias voor een enkele API-versie per resource type die gemeen schappelijk is voor Azure en Azure Stack. In plaats van een API-versie op te geven voor elke resource in een sjabloon, geeft u alleen de API-profiel versie op in een nieuw hoofd element, met `apiProfile` de naam en laat u het `apiVersion` element voor de afzonderlijke resources weg.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -384,7 +384,7 @@ Het API-profiel is geen vereist element in een sjabloon. Zelfs als u het element
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -452,7 +452,7 @@ Met de volgende functie van de referentie sjabloon wordt de naam ruimte van het 
 "diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
-Door de hardcoded waarde van het eind punt van het opslag account `reference` te vervangen door de sjabloon functie, kunt u dezelfde sjabloon gebruiken om te implementeren in verschillende omgevingen zonder wijzigingen aan te brengen in de eindpunt referentie.
+Door de hardcoded waarde van het eind punt van het opslag account te vervangen door de `reference` sjabloon functie, kunt u dezelfde sjabloon gebruiken om te implementeren in verschillende omgevingen zonder wijzigingen aan te brengen in de eindpunt referentie.
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Verwijzen naar bestaande resources op unieke ID
 
@@ -532,7 +532,7 @@ Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrast
 
 Beheerde schijven verwerken de opslag voor een Azure-Tenant. In plaats van een opslag account expliciet te maken en de URI voor een virtuele harde schijf (VHD) op te geven, kunt u beheerde schijven gebruiken om deze acties impliciet uit te voeren wanneer u een virtuele machine implementeert. Met Managed disks wordt de beschik baarheid verbeterd doordat alle schijven van virtuele machines in dezelfde beschikbaarheidsset in verschillende opslag eenheden worden geplaatst. Daarnaast kunnen bestaande Vhd's van de standaard-naar Premium-opslag worden geconverteerd met een aanzienlijk minder downtime.
 
-Hoewel beheerde schijven zich op het schema voor Azure Stack bevinden, worden ze momenteel niet ondersteund. Tot die manier kunt u Cloud consistente sjablonen voor Azure Stack ontwikkelen door expliciet Vhd's op te geven met behulp van het `vhd` -element in de sjabloon voor de VM-resource, zoals wordt weer gegeven:
+Hoewel beheerde schijven zich op het schema voor Azure Stack bevinden, worden ze momenteel niet ondersteund. Tot die manier kunt u Cloud consistente sjablonen voor Azure Stack ontwikkelen door expliciet Vhd's op te geven met behulp van het- `vhd` element in de sjabloon voor de VM-resource, zoals wordt weer gegeven:
 
 ```json
 "storageProfile": {
@@ -553,7 +553,7 @@ Hoewel beheerde schijven zich op het schema voor Azure Stack bevinden, worden ze
 }
 ```
 
-Als u daarentegen een configuratie van een beheerde schijf in een sjabloon wilt opgeven `vhd` , verwijdert u het element uit de configuratie van de schijf.
+Als u daarentegen een configuratie van een beheerde schijf in een sjabloon wilt opgeven, verwijdert u het `vhd` element uit de configuratie van de schijf.
 
 ```json
 "storageProfile": {
@@ -584,13 +584,13 @@ Met de declaratieve aanpak van de sjabloon kunt u de eind status van de resource
 
 Er bestaan veel typen VM-extensies. Bij het ontwikkelen van een sjabloon voor consistentie in de Cloud, moet u ervoor zorgen dat u alleen de extensies gebruikt die beschikbaar zijn in alle regio's van de sjabloon doelen.
 
-Voer de volgende Azure CLI-opdracht uit om een lijst op te halen van de VM-extensies die `myLocation`beschikbaar zijn voor een specifieke regio (in dit voor beeld):
+Voer de volgende Azure CLI-opdracht uit om een lijst op te halen van de VM-extensies die beschikbaar zijn voor een specifieke regio (in dit voor beeld `myLocation` ):
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-U kunt ook de Azure PowerShell [Get-AzureRmVmImagePublisher-](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet uitvoeren en `-Location` gebruiken om de locatie van de installatie kopie van de virtuele machine op te geven. Bijvoorbeeld:
+U kunt ook de Azure PowerShell [Get-AzureRmVmImagePublisher-](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet uitvoeren en gebruiken `-Location` om de locatie van de installatie kopie van de virtuele machine op te geven. Bijvoorbeeld:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -623,7 +623,7 @@ U kunt ook VM-extensies gebruiken in virtuele-machine schaal sets. Dezelfde loca
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Er is ook een versie van elke specifieke extensie. Deze versie wordt weer gegeven in `typeHandlerVersion` de eigenschap van de VM-extensie. Zorg ervoor dat de versie die is opgegeven `typeHandlerVersion` in het element van de VM-extensies van uw sjabloon beschikbaar is op de locaties waar u de sjabloon wilt implementeren. Met de volgende code wordt bijvoorbeeld versie 1,7 opgegeven:
+Er is ook een versie van elke specifieke extensie. Deze versie wordt weer gegeven in de `typeHandlerVersion` eigenschap van de VM-extensie. Zorg ervoor dat de versie die is opgegeven in het `typeHandlerVersion` element van de VM-extensies van uw sjabloon beschikbaar is op de locaties waar u de sjabloon wilt implementeren. Met de volgende code wordt bijvoorbeeld versie 1,7 opgegeven:
 
 ```json
 {

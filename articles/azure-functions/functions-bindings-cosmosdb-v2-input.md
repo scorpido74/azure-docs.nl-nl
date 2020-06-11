@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: 338fecfe914c1a3667c828355bd4071c317aaebf
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: bce234b0d2fee38f0644ae0bd961cdcd815b0bd2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561592"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667893"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x"></a>Invoer binding Azure Cosmos DB voor Azure Functions 2. x
 
@@ -382,9 +382,9 @@ namespace CosmosDBSamplesV2
 
 ### <a name="queue-trigger-look-up-id-from-string"></a>Wachtrij trigger, ID opzoeken op basis van teken reeks
 
-In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *function.jsin* bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -416,11 +416,11 @@ Dit is de C#-script code:
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery
 
-In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *function.jsin* een bestand en een [C#-script functie](functions-reference-csharp.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
 De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -459,7 +459,7 @@ Dit is de C#-script code:
 
 In het volgende voor beeld wordt een [C#-script functie](functions-reference-csharp.md) weer gegeven waarmee één document wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -522,7 +522,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 In het volgende voor beeld wordt een [C#-script functie](functions-reference-csharp.md) weer gegeven waarmee één document wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -586,7 +586,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 
 In het volgende voor beeld ziet u een [C#-script functie](functions-reference-csharp.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De query is opgegeven in de `SqlQuery` kenmerk eigenschap.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -644,7 +644,7 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 
 In het volgende voor beeld ziet u een [C#-script functie](functions-reference-csharp.md) waarmee een lijst met documenten wordt opgehaald. De functie wordt geactiveerd door een HTTP-aanvraag. De code gebruikt een `DocumentClient` exemplaar van de Azure Cosmos DB binding om een lijst met documenten te lezen. Het `DocumentClient` exemplaar kan ook worden gebruikt voor schrijf bewerkingen.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -730,9 +730,9 @@ Deze sectie bevat de volgende voor beelden van het lezen van één document door
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>Wachtrij trigger, ID opzoeken vanuit JSON
 
-In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -776,7 +776,7 @@ Dit is de Java script-code:
 
 In het volgende voor beeld ziet u een [Java script-functie](functions-reference-node.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -835,7 +835,7 @@ module.exports = function (context, req, toDoItem) {
 
 In het volgende voor beeld ziet u een [Java script-functie](functions-reference-node.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -893,11 +893,11 @@ module.exports = function (context, req, toDoItem) {
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery
 
-In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *function.jsin* een bestand en een [Java script-functie](functions-reference-node.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
 De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -939,9 +939,9 @@ Deze sectie bevat de volgende voor beelden van het lezen van één document door
 
 ### <a name="queue-trigger-look-up-id-from-json"></a>Wachtrij trigger, ID opzoeken vanuit JSON
 
-In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
+In het volgende voor beeld ziet u een Cosmos DB invoer binding in een *function.jsin* een bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. Met de functie wordt één document gelezen en wordt de tekst waarde van het document bijgewerkt.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -987,7 +987,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList) -> func.Docu
 
 In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van een query reeks om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -1018,7 +1018,6 @@ Hier is het bestand *Function. json* :
       "PartitionKey": "{Query.partitionKeyValue}"
     }
   ],
-  "disabled": true,
   "scriptFile": "__init__.py"
 }
 ```
@@ -1046,7 +1045,7 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 In het volgende voor beeld ziet u een [python-functie](functions-reference-python.md) die één document ophaalt. De functie wordt geactiveerd door een HTTP-aanvraag die gebruikmaakt van route gegevens om de ID en de partitie sleutel waarde op te geven die moet worden gezocht. Deze ID en partitie sleutel waarde worden gebruikt om een `ToDoItem` document op te halen uit de opgegeven Data Base en verzameling.
 
-Hier is het bestand *Function. json* :
+Dit is de *function.jsvoor* het volgende bestand:
 
 ```json
 {
@@ -1103,11 +1102,11 @@ def main(req: func.HttpRequest, todoitems: func.DocumentList) -> str:
 
 ### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Wachtrij trigger, meerdere documenten ophalen met behulp van SqlQuery
 
-In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *Function. json* -bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
+In het volgende voor beeld ziet u een Azure Cosmos DB invoer binding in een *function.jsin* een bestand en een [python-functie](functions-reference-python.md) die gebruikmaakt van de binding. De functie haalt meerdere documenten op die zijn opgegeven door een SQL-query, met behulp van een wachtrij trigger om de query parameters aan te passen.
 
 De trigger van de wachtrij bevat een para meter `departmentId` . Een wachtrij bericht waarin `{ "departmentId" : "Finance" }` alle records voor de afdeling Financiën worden geretourneerd.
 
-Hier vindt u de bindings gegevens in het bestand *Function. json* :
+Hier vindt u de bindings gegevens in de *function.js* in het bestand:
 
 ```json
 {
@@ -1427,9 +1426,9 @@ Gebruik in de [runtime-bibliotheek van Java-functies](https://docs.microsoft.com
 
 ## <a name="configuration"></a>Configuratie
 
-De volgende tabel bevat informatie over de binding configuratie-eigenschappen die u hebt ingesteld in het bestand *Function. json* en het- `CosmosDB` kenmerk.
+De volgende tabel bevat uitleg over de binding configuratie-eigenschappen die u hebt ingesteld in de *function.jsvoor* het bestand en het `CosmosDB` kenmerk.
 
-|function. json-eigenschap | Kenmerk eigenschap |Beschrijving|
+|function.jsbij eigenschap | Kenmerk eigenschap |Beschrijving|
 |---------|---------|----------------------|
 |**type**     | N.v.t. | Moet worden ingesteld op `cosmosDB` .        |
 |**direction**     | N.v.t. | Moet worden ingesteld op `in` .         |

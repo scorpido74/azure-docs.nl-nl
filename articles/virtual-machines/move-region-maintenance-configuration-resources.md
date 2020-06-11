@@ -1,19 +1,17 @@
 ---
 title: Resources die zijn gekoppeld aan een onderhouds configuratie verplaatsen naar een andere regio
 description: Meer informatie over het verplaatsen van resources die zijn gekoppeld aan een VM-onderhouds configuratie naar een andere Azure-regio
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304444"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676888"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Resources in een onderhouds beheer configuratie verplaatsen naar een andere regio
 
@@ -42,7 +40,7 @@ Voordat u begint met het verplaatsen van de resources die zijn gekoppeld aan een
 
 1. Voordat u begint, moet u deze variabelen definiëren. We hebben hier een voor beeld gegeven.
 
-    **Variabele** | **Nadere** | **Voorbeeld**
+    **Variabele** | **Details** | **Hierbij**
     --- | ---
     $subId | ID voor het abonnement dat de onderhouds configuraties bevat | "ons-abonnement-ID"
     $rsrcGroupName | Naam van resource groep (Azure VM) | "VMResourceGroup"

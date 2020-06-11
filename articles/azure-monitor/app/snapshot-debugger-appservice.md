@@ -6,12 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298271"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676836"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Snapshot Debugger voor .NET-apps in Azure App Service inschakelen
 
@@ -28,12 +28,12 @@ Als u een preview-versie van .NET Core gebruikt, volgt u de instructies voor het
 
 Application Insights Snapshot Debugger wordt vooraf geïnstalleerd als onderdeel van de App Services runtime, maar u moet deze inschakelen om moment opnamen voor uw App Service-app op te halen. Nadat u een app hebt geïmplementeerd, moet u, zelfs als u de SDK van Application Insights in de bron code hebt opgenomen, de volgende stappen volgen om de fout opsporing voor moment opnamen in te scha kelen.
 
-1. Ga naar het deel venster **app Services** in het Azure Portal.
-2. Navigeer naar **instellingen >** deel venster Application Insights.
+1. Ga naar het onderdeel Azure van het configuratie scherm voor uw App Service.
+2. Ga naar de pagina **instellingen > Application Insights** .
 
    ![App Insights inschakelen op App Services portal](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Volg de instructies in het deel venster om een nieuwe resource te maken of selecteer een bestaande app Insights-resource om uw app te controleren. Zorg er ook voor dat beide Schakel opties voor Snapshot Debugger zijn **ingeschakeld**.
+3. Volg de instructies op de pagina om een nieuwe resource te maken of selecteer een bestaande app Insights-resource om uw app te controleren. Zorg er ook voor dat beide Schakel opties voor Snapshot Debugger zijn **ingeschakeld**.
 
    ![App Insights-site-uitbrei ding toevoegen][Enablement UI]
 

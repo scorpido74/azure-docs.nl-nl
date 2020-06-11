@@ -3,19 +3,19 @@ title: 'Sjabloon functies: objecten'
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon voor het werken met objecten.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 2f77cd85802a2ecb3670cfc6d6b36e5e852fb2a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fede4d6c71e45b119e500d4c9c6f91765d052036
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231319"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676791"
 ---
 # <a name="object-functions-for-arm-templates"></a>Object functies voor ARM-sjablonen
 
 Resource Manager biedt verschillende functies voor het werken met objecten in uw Azure Resource Manager-sjabloon (ARM).
 
 * [daarin](#contains)
-* [gelaten](#empty)
+* [leeg](#empty)
 * [Snij punt](#intersection)
 * [JSON](#json)
 * [lange](#length)
@@ -44,7 +44,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringToTest": {
@@ -124,7 +124,7 @@ Met de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sa
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "testArray": {
@@ -191,7 +191,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {
@@ -259,7 +259,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "jsonObject1": {
@@ -298,7 +298,7 @@ De uitvoer van het vorige voor beeld met de standaard waarden is:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| jsonOutput1 | Booleaans | True |
+| jsonOutput1 | Boolean-waarde | True |
 | jsonOutput2 | Object | {"a": "b"} |
 | paramOutput | Object | {"a": "demo waarde"}
 
@@ -324,7 +324,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "arrayToTest": {
@@ -402,7 +402,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstObject": {

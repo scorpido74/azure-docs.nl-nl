@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 6/10/2020
+ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322058"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667587"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database serverloos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ De volgende tabel bevat een overzicht van de verschillen tussen de serverloze Co
 
 | | **Serverloze compute** | **Ingerichte compute** |
 |:---|:---|:---|
-|**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. |  Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
+|**Database gebruiks patroon**| Onregelmatige, onvoorspelbaar gebruik met minder gemiddelde reken capaciteit gedurende een bepaalde periode. | Meer reguliere gebruiks patronen met een hoger gemiddelde reken gebruik gedurende een bepaalde periode of meerdere data bases met elastische Pools.|
 | **Prestatie beheer-inspanning** |Lower|Hoger|
 |**Berekening schalen**|Automatisch|Handmatig|
 |**Reactie tijd van berekeningen**|Lager dan inactieve Peri Oden|Onmiddellijk|
@@ -161,19 +161,8 @@ Als door de [klant beheerde transparante gegevens versleuteling](transparent-dat
 
 Het maken van een nieuwe data base of het verplaatsen van een bestaande Data Base naar een serverloze Compute-laag volgt hetzelfde patroon als het maken van een nieuwe data base in een ingerichte Compute-laag en omvat de volgende twee stappen.
 
-1. Geef de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. In de volgende tabel worden de opties voor service doelstelling weer gegeven:
+1. Geef de service doelstelling op. De service doelstelling schrijft de service tier, het genereren van hardware en het maximale aantal vCores. Zie [limieten voor serverloze resources](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5) voor opties voor service doelstelling
 
-   |Naam van service doelstelling|Servicelaag|Hardware genereren|Maximum aantal vCores|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Algemeen gebruik|GEN5|1|
-   |GP_S_Gen5_2|Algemeen gebruik|GEN5|2|
-   |GP_S_Gen5_4|Algemeen gebruik|GEN5|4|
-   |GP_S_Gen5_6|Algemeen gebruik|GEN5|6|
-   |GP_S_Gen5_8|Algemeen gebruik|GEN5|8|
-   |GP_S_Gen5_10|Algemeen gebruik|GEN5|10|
-   |GP_S_Gen5_12|Algemeen gebruik|GEN5|12|
-   |GP_S_Gen5_14|Algemeen gebruik|GEN5|14|
-   |GP_S_Gen5_16|Algemeen gebruik|GEN5|16|
 
 2. Geef desgewenst de minimale vCores en de vertraging voor autopause op om de standaard waarden te wijzigen. De volgende tabel bevat de beschik bare waarden voor deze para meters.
 
@@ -265,7 +254,7 @@ Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause 
 Het wijzigen van de maximale of minimale vCores en de vertraging voor autopause wordt uitgevoerd met behulp van de opdracht [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) in azure CLI met behulp van de `capacity` `min-capacity` argumenten, en `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Controleren
+## <a name="monitoring"></a>Bewaking
 
 ### <a name="resources-used-and-billed"></a>Gebruikte resources en gefactureerd
 
@@ -356,7 +345,7 @@ Stel dat de reken eenheids prijs $0.000145/vCore/seconde is.  De reken tijd die 
 
 Azure Hybrid Benefit (AHB) en gereserveerde capaciteits kortingen zijn niet van toepassing op de serverloze Compute-laag.
 
-## <a name="available-regions"></a>Beschik bare regio's
+## <a name="available-regions"></a>Beschikbare regio's
 
 De compute-laag zonder server is wereld wijd beschikbaar, met uitzonde ring van de volgende regio's: China-oost, China-noord, Duitsland-centraal, Duitsland-noordoost, UK-noord, UK-zuid 2, West-Centraal VS en US Gov Central (Iowa).
 

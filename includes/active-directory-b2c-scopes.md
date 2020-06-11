@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: bbbc606497b53a0790d667a63b45101a3c18bbc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297481"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680272"
 ---
-#### <a name="app-registrations-preview"></a>[App-registraties (preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[App-registraties](#tab/app-reg-ga/) 
 
-1. Selecteer **app-registraties (preview)**.
+1. Selecteer **App-registraties**.
 1. Selecteer de *webapi1* -toepassing om de pagina **overzicht** te openen.
 1. Onder **beheren**selecteert u **een API zichtbaar**maken.
 1. Selecteer de koppeling **instellen** naast de URI van de **toepassings-id**.
@@ -29,9 +29,9 @@ ms.locfileid: "84297481"
     1. **Weergave naam van beheerders toestemming**:`Write access to demo API`
     1. **Beschrijving van beheerders toestemming**:`Allows write access to the demo API`
 
-#### <a name="applications"></a>[Toepassingen](#tab/applications/)
+#### <a name="applications-legacy"></a>[Toepassingen (verouderd)](#tab/applications-legacy/)
 
-1. Selecteer **toepassingen**.
+1. **Toepassingen (verouderd)** selecteren.
 1. Selecteer de toepassing *webapi1* om de **Eigenschappen** pagina te openen.
 1. Selecteer **Gepubliceerde bereiken**. Gepubliceerde bereiken kunnen worden gebruikt om bepaalde machtigingen toe te kennen aan een client toepassing voor de Web-API.
 1. Voer bij **bereik**, Enter `demo.read` en voor **Beschrijving**in `Read access to the web API` .

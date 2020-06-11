@@ -2,13 +2,13 @@
 title: Resources vergren delen om wijzigingen te voor komen
 description: Voor komen dat gebruikers essentiële Azure-resources bijwerken of verwijderen door een vergren deling toe te passen op alle gebruikers en rollen.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d6617b7e13ebf7a58cdbbf9356eac1d035a1f73
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/10/2020
+ms.openlocfilehash: cf5e2c7d19b9b90be3e9ca9e64e832794cd70c92
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483488"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678032"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Resources vergrendelen om onverwachte wijzigingen te voorkomen
 
@@ -35,9 +35,11 @@ Het Toep assen van vergren delingen kan leiden tot onverwachte resultaten omdat 
 
 * Een alleen-lezen vergrendeling voor een **resource groep** die een **virtuele machine** bevat, voor komt dat alle gebruikers de virtuele machine starten of opnieuw starten. Deze bewerkingen vereisen een POST-aanvraag.
 
-* Een alleen-lezen vergrendeling voor een **abonnement** voor komt dat **Azure Advisor** goed werkt. Advisor kan de resultaten van de query's niet opslaan.
+* Als u een vergren deling van een **resource groep** niet kunt verwijderen, voor komt u dat Azure Resource Manager [implementaties automatisch verwijdert](../templates/deployment-history-deletions.md) in de geschiedenis. Als u 800-implementaties in de geschiedenis bereikt, zullen uw implementaties mislukken.
 
 * Het is niet mogelijk om de vergren deling van de **resource groep** die is gemaakt door de **Azure backup-service** te verwijderen, waardoor back-ups mislukken. De service ondersteunt Maxi maal 18 herstel punten. Wanneer deze is vergrendeld, kan de back-upservice geen herstel punten opschonen. Zie [Veelgestelde vragen-back-ups maken van Azure vm's](../../backup/backup-azure-vm-backup-faq.md)voor meer informatie.
+
+* Een alleen-lezen vergrendeling voor een **abonnement** voor komt dat **Azure Advisor** goed werkt. Advisor kan de resultaten van de query's niet opslaan.
 
 ## <a name="who-can-create-or-delete-locks"></a>Wie kan vergren delingen maken of verwijderen?
 

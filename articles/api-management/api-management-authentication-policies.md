@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221035"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674224"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-verificatiebeleid
 In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids regels. Zie [beleid in API Management](https://go.microsoft.com/fwlink/?LinkID=398186)voor meer informatie over het toevoegen en configureren van beleid.
@@ -50,14 +50,14 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 |Naam|Beschrijving|Vereist|
 |----------|-----------------|--------------|
-|verificatie-basis|Hoofd element.|Yes|
+|verificatie-basis|Hoofd element.|Ja|
 
 ### <a name="attributes"></a>Kenmerken
 
 |Naam|Beschrijving|Vereist|Standaard|
 |----------|-----------------|--------------|-------------|
-|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Yes|N.v.t.|
-|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Yes|N.v.t.|
+|gebruikersnaam|Hiermee geeft u de gebruikers naam van de basis referentie.|Ja|N.v.t.|
+|wachtwoord|Hiermee geeft u het wacht woord van de basis referentie op.|Ja|N.v.t.|
 
 ### <a name="usage"></a>Gebruik
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -77,27 +77,38 @@ In dit onderwerp vindt u een verwijzing naar de volgende API Management-beleids 
 
 ### <a name="examples"></a>Voorbeelden
 
-In dit voor beeld wordt het client certificaat aangeduid met de vinger afdruk.
+In dit voor beeld wordt het client certificaat aangeduid met de vinger afdruk:
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de resource naam.
+
+In dit voor beeld wordt het client certificaat aangeduid met de naam van de resource:
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+In dit voor beeld wordt het client certificaat ingesteld in het beleid in plaats van opgehaald uit het ingebouwde certificaat archief:
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>Elementen  
   
 |Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-certificaat|Hoofd element.|Yes|  
+|verificatie-certificaat|Hoofd element.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
 |Naam|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|vingerafdruk|De vinger afdruk voor het client certificaat.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|  
-|certificaat-id|De naam van de certificaat resource.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|  
+|vingerafdruk|De vinger afdruk voor het client certificaat.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|
+|certificaat-id|De naam van de certificaat resource.|Ofwel `thumbprint` of `certificate-id` moeten aanwezig zijn.|N.v.t.|
+|body|Client certificaat als een byte matrix.|Nee|N.v.t.|
+|wachtwoord|Het wacht woord voor het client certificaat.|Wordt gebruikt als het certificaat dat is opgegeven in `body` , is beveiligd met een wacht woord.|N.v.t.|
   
 ### <a name="usage"></a>Gebruik  
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -163,15 +174,15 @@ In dit voor beeld wordt het client certificaat geïdentificeerd op basis van de 
   
 |Naam|Beschrijving|Vereist|  
 |----------|-----------------|--------------|  
-|verificatie-beheerd identiteit |Hoofd element.|Yes|  
+|verificatie-beheerd identiteit |Hoofd element.|Ja|  
   
 ### <a name="attributes"></a>Kenmerken  
   
 |Naam|Beschrijving|Vereist|Standaard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Yes|N.v.t.|  
-|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele die de token waarde ontvangt als object type `string` . |No|N.v.t.|  
-|negeren-fout|True. Als `true` deze is ingesteld op, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|No|onjuist|  
+|resource|Tekenreeks. De App-ID van de doel-Web-API (beveiligde bron) in Azure Active Directory.|Ja|N.v.t.|  
+|uitvoer-token-variabele-naam|Tekenreeks. De naam van de context variabele die de token waarde ontvangt als object type `string` . |Nee|N.v.t.|  
+|negeren-fout|True. Als `true` deze is ingesteld op, blijft de beleids pijplijn worden uitgevoerd, zelfs als er geen toegangs token is verkregen.|Nee|false|  
   
 ### <a name="usage"></a>Gebruik  
  Dit beleid kan worden gebruikt in de volgende beleids [secties](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) en [bereiken](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  

@@ -1,6 +1,6 @@
 ---
-title: Backup-en Restore-data bases-Azure SQL Edge (preview)
-description: Meer informatie over de mogelijkheden voor back-up en herstel in Azure SQL Edge (preview)
+title: Back-up en herstel van data bases-Azure SQL Edge (preview)
+description: Meer informatie over de mogelijkheden voor back-up en herstel in Azure SQL Edge (preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,39 +9,41 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 902576f82faa18fbb0e7c7eaed5c06993bd379cc
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 92a37babbcc0bbba3845267ca2eb0f95b9fceafa
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235188"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667859"
 ---
-# <a name="backup-and-restore-databases-in-azure-sql-edge-preview"></a>Back-up en herstel van data bases in Azure SQL Edge (preview-versie) 
+# <a name="back-up-and-restore-databases-in-azure-sql-edge-preview"></a>Back-ups van data bases in Azure SQL Edge maken en herstellen (preview-versie) 
 
-Azure SQL Edge is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine op Linux, waardoor de database mogelijkheden voor back-up en herstel worden geboden als die beschikbaar zijn in SQL Server on Linux en SQL Server in containers worden uitgevoerd. Het onderdeel back-up en herstel biedt een essentiële beveiliging voor het beveiligen van gegevens die zijn opgeslagen in uw Azure SQL Edge-data bases. Om het risico op onherstelbaar gegevens verlies te minimaliseren, is het raadzaam om regel matig een back-up van uw data bases te maken om de wijzigingen in uw gegevens regel matig te hand haven. Een goed geplande strategie voor back-up en herstel beschermt databases tegen gegevensverlies veroorzaakt door een verscheidenheid aan fouten. Test uw strategie door een set van back-ups te herstellen en vervolgens uw database terug te zetten zodat u voorbereid bent en doeltreffend kunt reageren op een noodgeval.
+Azure SQL Edge is gebaseerd op de nieuwste versies van de Microsoft SQL Server data base-engine op Linux. Het biedt vergelijk bare mogelijkheden voor back-up en herstel van data bases die beschikbaar zijn in SQL Server on Linux en SQL Server worden uitgevoerd in containers. Het onderdeel back-up maken en herstellen biedt een essentiële beveiliging voor het beveiligen van gegevens die zijn opgeslagen in uw Azure SQL Edge-data bases. 
 
-Zie back-up [en herstel van SQL server-data bases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/)voor meer informatie over waarom back-ups belang rijk zijn.
+Als u het risico op onherstelbaar gegevens verlies wilt beperken, moet u regel matig een back-up van uw data bases maken om de wijzigingen in uw gegevens regel matig te hand haven. Een goed geplande strategie voor back-up en herstel beschermt databases tegen gegevensverlies veroorzaakt door een verscheidenheid aan fouten. Test uw strategie door een reeks back-ups te herstellen en vervolgens uw data base te herstellen, om u voor te bereiden om effectief te reageren op een nood geval.
 
-Azure SQL Edge ondersteunt het maken van back-ups naar en herstellen vanuit lokale opslag of vanuit Azure-blobs. Voor meer informatie over het maken van back-ups en het herstellen van Azure Blob Storage raadpleegt u [SQL Server Backup en Restore with Microsoft Azure Blob Storage service](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/) en [SQL Server Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url).
+Zie [back-up en herstel van SQL server-data bases](/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases/)voor meer informatie over waarom back-ups belang rijk zijn.
 
-## <a name="backing-up-a-database-in-azure-sql-edge"></a>Back-ups maken van een data base in Azure SQL Edge
+Met Azure SQL Edge kunt u een back-up maken van en herstellen vanuit lokale opslag en Azure-blobs. Zie [SQL Server Backup en Restore with Azure Blob Storage](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service/) (Engelstalig) en [SQL Server back-up naar URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url)voor meer informatie.
 
-Azure SQL Edge ondersteunt dezelfde back-uptypen als wordt ondersteund door SQL Server. Raadpleeg [overzicht van back-ups](/sql/relational-databases/backup-restore/backup-overview-sql-server/)voor een volledige lijst met de back-uptypen die worden ondersteund in SQL Server.
+## <a name="back-up-a-database-in-azure-sql-edge"></a>Back-up maken van een data base in Azure SQL Edge
+
+Azure SQL Edge ondersteunt dezelfde back-uptypen als SQL Server. Zie [overzicht van back-ups](/sql/relational-databases/backup-restore/backup-overview-sql-server/)voor een volledige lijst.
 
 > [!IMPORTANT] 
-> Data bases die zijn gemaakt in Azure SQL Edge maken standaard gebruik van eenvoudig herstel model. Als dergelijke logboek back-ups niet kunnen worden uitgevoerd op deze data bases. Als er een logboek back-up moet worden uitgevoerd op deze data bases, moet een beheerder het herstel model van de data base wijzigen in een volledig herstel model. Zie [overzicht van herstel](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)modellen voor een volledige lijst met herstel modellen die door SQL Server worden ondersteund.
+> Data bases die zijn gemaakt in Azure SQL Edge maken standaard gebruik van het eenvoudige herstel model. U kunt geen logboek back-ups uitvoeren op deze data bases. Als u dit wilt doen, moet u een beheerder hebben om het herstel model van de data base te wijzigen in het volledige herstel model. Zie [recovery model Overview (overzicht van herstel](/sql/relational-databases/backup-restore/recovery-models-sql-server#RMov)modellen) voor een volledige lijst met door SQL Server worden ondersteund.
 
-### <a name="backup-to-local-disk"></a>Back-up op lokale schijf
+### <a name="back-up-to-local-disk"></a>Back-up naar lokale schijf
 
-In het onderstaande voor beeld wordt de Transact-SQL-opdracht BACKUP data base gebruikt voor het maken van een back-up van een data base in de container. In dit voor beeld wordt een nieuwe map met de naam ' back-up ' gemaakt voor het opslaan van de back-upbestanden.
+In het volgende voor beeld gebruikt u de `BACKUP DATABASE` Transact-SQL-opdracht om een back-up van de data base in de container te maken. In dit voor beeld maakt u een nieuwe map met de naam *Backup* om de back-upbestanden op te slaan.
 
-1. Maak een map voor de back-ups. Deze opdracht moet worden uitgevoerd op de host waar de Azure SQL Edge-container wordt uitgevoerd. Vervang in de onderstaande opdracht **<AzureSQLEdge_Container_Name>** door de naam van de Azure SQL Edge-container in uw implementatie.
+1. Maak een map voor de back-ups. Voer deze opdracht uit op de host waar de Azure SQL Edge-container wordt uitgevoerd. Vervang in de volgende opdracht **<AzureSQLEdge_Container_Name>** door de naam van de Azure SQL Edge-container in uw implementatie.
 
     ```bash
     sudo docker exec -it <AzureSQLEdge_Container_Name> mkdir /var/opt/mssql/backup
     ```
 
-2. Maak verbinding met het Azure SQL Edge-exemplaar met behulp van SQL Server Management Studio (SSMS) of gebruik Azure Data Studio (ADS) en voer de opdracht Backup Data Base uit om de back-up van uw gebruikers database te maken. In het onderstaande voor beeld maken we de back-up van de *IronOreSilicaPrediction* -data base.
+2. Maak verbinding met de Azure SQL Edge-instantie met behulp van SQL Server Management Studio (SSMS) of met behulp van Azure Data Studio. Voer de `BACKUP DATABASE` opdracht uit om de back-up van uw gebruikers database te maken. In het volgende voor beeld maakt u een back-up van de *IronOreSilicaPrediction* -data base.
 
     ```sql
     BACKUP DATABASE [IronOreSilicaPrediction] 
@@ -51,7 +53,7 @@ In het onderstaande voor beeld wordt de Transact-SQL-opdracht BACKUP data base g
     GO
     ```
 
-3. Nadat u de opdracht hebt uitgevoerd en de back-up van de data base is voltooid, ziet u berichten die vergelijkbaar zijn met de volgende in het gedeelte met resultaten van SSMS of ADS.
+3. Nadat u de opdracht hebt uitgevoerd en de back-up van de data base is voltooid, ziet u berichten die vergelijkbaar zijn met de volgende in de sectie met resultaten van SSMS of Azure Data Studio.
 
     ```txt
     10 percent processed.
@@ -71,11 +73,11 @@ In het onderstaande voor beeld wordt de Transact-SQL-opdracht BACKUP data base g
     Completion time: 2020-04-09T23:54:48.4957691-07:00
     ```
 
-### <a name="backup-to-url"></a>Back-up naar URL
+### <a name="back-up-to-url"></a>Back-up naar URL
 
-Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Voor meer informatie over pagina-blobs en blok-blobs verwijzen we naar de [back-up om de BLOB tegenover de pagina te blok keren](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob). In het onderstaande voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
+Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Zie [een back-up maken om de BLOB tegenover de pagina te blok keren](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-ver15#blockbloborpageblob)voor meer informatie. In het volgende voor beeld wordt er een back-up van de Data Base *IronOreSilicaPrediction* gemaakt naar een blok-blob. 
 
-1. De eerste stap bij het configureren van back-ups voor blok-blobs is het genereren van een SAS-token (Shared Access Signature) dat kan worden gebruikt om een SQL Server referentie te maken op Azure SQL Edge. Het script maakt een Shared Access Signature dat is gekoppeld aan een opgeslagen toegangs beleid. Zie [Shared Access Signatures, Part 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie. Het script schrijft ook de T-SQL-opdracht die is vereist om de referentie te maken op SQL Server. In het onderstaande script wordt ervan uitgegaan dat u al een Azure-abonnement hebt met een opslag account en een opslag container voor de back-ups.
+1. Als u back-ups wilt configureren om blobs te blok keren, moet u eerst een SAS-token (Shared Access Signature) genereren dat u kunt gebruiken om een SQL Server referentie te maken op Azure SQL Edge. Het script maakt een SAS die is gekoppeld aan een opgeslagen toegangs beleid. Zie [Shared Access Signatures, Part 1: uitleg over het SAS-model](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)voor meer informatie. Het script schrijft ook de T-SQL-opdracht die is vereist om de referentie te maken op SQL Server. In het volgende script wordt ervan uitgegaan dat u al een Azure-abonnement hebt met een opslag account en een opslag container voor de back-ups.
 
     ```PowerShell
     # Define global variables for the script  
@@ -107,9 +109,9 @@ Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Voor meer i
     Write-Host $tSql
     ```
 
-    Nadat het script is uitgevoerd, kopieert u de opdracht referentie maken naar een query hulp programma, maakt u verbinding met een exemplaar van SQL Server en voert u de opdracht uit om de referentie te maken met de Shared Access Signature.
+    Nadat het script is uitgevoerd, kopieert `CREATE CREDENTIAL` u de opdracht naar een query hulp programma. Vervolgens maakt u verbinding met een exemplaar van SQL Server en voert u de opdracht uit om de referentie met de SAS te maken.
 
-2. Maak verbinding met het Azure SQL Edge-exemplaar met behulp van SQL Server Management Studio (SSMS) of gebruik Azure Data Studio (ADS) en maak de referentie met behulp van de opdracht uit de vorige stap. Zorg ervoor dat u de opdracht referentie maken vervangt door de werkelijke uitvoer van de vorige stap.
+2. Maak verbinding met het exemplaar van de Azure SQL-rand door SSMS of Azure Data Studio te gebruiken en de referentie te maken met behulp van de opdracht uit de vorige stap. Zorg ervoor dat u de `CREATE CREDENTIAL` opdracht vervangt door de werkelijke uitvoer van de vorige stap.
 
     ```sql
     IF NOT EXISTS  
@@ -129,21 +131,21 @@ Azure SQL Edge ondersteunt back-ups naar pagina-blobs en blok-blobs. Voor meer i
     GO
     ```
 
-## <a name="restoring-a-database-in-azure-sql-edge"></a>Een data base in Azure SQL Edge herstellen
+## <a name="restore-a-database-in-azure-sql-edge"></a>Een data base in Azure SQL Edge herstellen
 
-Azure SQL Edge ondersteunt het herstellen van een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstel en herstel](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)voor een overzicht van herstel en herstel in SQL Server. Voor een overzicht van het eenvoudige herstel model in SQL Server raadpleegt u [complete data base restores (Simple Recovery model)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15).
+In Azure SQL Edge kunt u herstellen vanaf een lokale schijf, een netwerk locatie of een Azure Blob Storage-account. Zie [overzicht van herstellen en](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-ver15)herstellen voor meer informatie over herstel en herstel in SQL Server. Zie [volledige database herstel (Simple Recovery model)](https://docs.microsoft.com/sql/relational-databases/backup-restore/complete-database-restores-simple-recovery-model?view=sql-server-ver15)voor een overzicht van het eenvoudige herstel model in SQL Server.
 
-### <a name="restore-from-local-disk"></a>Herstellen vanaf lokale schijf
+### <a name="restore-from-a-local-disk"></a>Herstellen vanaf een lokale schijf
 
-In dit voor beeld wordt de *IronOreSilicaPrediction* -back-up gebruikt die in het vorige voor beeld is uitgevoerd voor herstel als een nieuwe Data Base met een andere naam.
+In dit voor beeld wordt de *IronOreSilicaPrediction* -back-up gebruikt die u in het vorige voor beeld hebt gemaakt. Nu herstelt u deze als een nieuwe Data Base met een andere naam.
 
-1. Als het back-upbestand van de data base niet al in de container aanwezig is, kunt u de onderstaande opdracht gebruiken om het bestand naar de container te kopiëren. In het volgende voor beeld wordt ervan uitgegaan dat het back-upbestand aanwezig is op de lokale host en wordt gekopieerd naar de map/var/opt/MSSQL/Backup naar een Azure SQL Edge-container met de naam sql1.
+1. Als het back-upbestand van de data base zich nog niet in de container bevindt, kunt u de volgende opdracht gebruiken om het bestand naar de container te kopiëren. In het volgende voor beeld wordt ervan uitgegaan dat het back-upbestand aanwezig is op de lokale host en wordt gekopieerd naar de map/var/opt/MSSQL/Backup naar een Azure SQL Edge-container met de naam *sql1*.
 
     ```bash
     sudo docker cp IronOrePredictDB.bak sql1:/var/opt/mssql/backup
     ```
 
-2. Maak verbinding met het Azure SQL Edge-exemplaar met behulp van SQL Server Management Studio (SSMS) of gebruik Azure Data Studio (ADS) om de opdracht Restore uit te voeren. In het onderstaande voor beeld is **IronOrePredictDB. bak** teruggezet om een nieuwe Data Base te maken **IronOreSilicaPrediction_2**
+2. Maak verbinding met het exemplaar van de Azure SQL-rand door SSMS of Azure Data Studio te gebruiken om de opdracht Restore uit te voeren. In het volgende voor beeld wordt **IronOrePredictDB. bak** teruggezet om een nieuwe Data Base te maken, **IronOreSilicaPrediction_2**.
 
     ```sql
     Restore FilelistOnly from disk = N'/var/opt/mssql/backup/IronOrePredictDB.bak'
@@ -154,7 +156,7 @@ In dit voor beeld wordt de *IronOreSilicaPrediction* -back-up gebruikt die in he
     MOVE 'IronOreSilicaPrediction_log' TO '/var/opt/mssql/data/IronOreSilicaPrediction_Primary_2.ldf'
     ```
 
-3. Nadat u de herstel opdracht hebt uitgevoerd en de herstel bewerking is geslaagd, ziet u de berichten die vergelijkbaar zijn met het volgende in het uitvoer venster. 
+3. Wanneer u de herstel opdracht hebt uitgevoerd en de herstel bewerking is geslaagd, ziet u de berichten die vergelijkbaar zijn met de volgende in het uitvoer venster. 
 
     ```txt
     Processed 51648 pages for database 'IronOreSilicaPrediction_2', file 'IronOreSilicaPrediction' on file 1.
@@ -166,7 +168,7 @@ In dit voor beeld wordt de *IronOreSilicaPrediction* -back-up gebruikt die in he
 
 ### <a name="restore-from-url"></a>Herstellen vanaf URL
 
-Azure SQL Edge biedt ook ondersteuning voor het herstellen van een Data Base vanuit een Azure Storage-account. Herstel bewerkingen kunnen worden uitgevoerd vanuit de blok-blobs of pagina-BLOB-back-ups. In het onderstaande voor beeld wordt het back-upbestand van de *IronOreSilicaPrediction_2020_04_16. bak* -Data Base op een blok-BLOB teruggezet om de data base te maken *IronOreSilicaPrediction_3*.
+Azure SQL Edge biedt ook ondersteuning voor het herstellen van een Data Base vanuit een Azure Storage-account. U kunt herstellen vanuit de blok-blobs of pagina-BLOB-back-ups. In het volgende voor beeld wordt het back-upbestand van de *IronOreSilicaPrediction_2020_04_16. bak* -Data Base op een blok-BLOB teruggezet om de data base te maken, *IronOreSilicaPrediction_3*.
 
 ```sql
 RESTORE DATABASE IronOreSilicaPrediction_3

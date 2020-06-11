@@ -4,18 +4,17 @@ description: Meer informatie over het uitvoeren van een offline migratie vanuit 
 services: sql-database
 author: joplum
 ms.author: joplum
-manager: prda
 ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
-ms.openlocfilehash: e72b75b39205d245351480d914ed26eeec8939f7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 551276895de0ba659349c20205fa21d3d2c6b43e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051330"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669563"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Uw SQLite-data base naar Azure SQL Database Server migreren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

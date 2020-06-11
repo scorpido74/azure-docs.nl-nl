@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266964"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668403"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Tijdelijke verbindings fouten in SQL Database en SQL Managed instance oplossen
 
@@ -150,7 +149,7 @@ Als de telling bijvoorbeeld gelijk is aan 3 en het interval 10 seconden is, geef
 Met de **ConnectRetryCount** -en **ConnectRetryInterval** -para meters kan uw **SqlConnection** -object de verbindings bewerking opnieuw proberen zonder dat uw programma wordt weer gegeven, zoals het retour neren van uw programma. De nieuwe pogingen kunnen in de volgende situaties optreden:
 
 - aanroep van de methode mySqlConnection. Open
-- aanroep van de methode mySqlConnection. Execute
+- Aanroep van mySqlConnection.Exemethode schattige
 
 Er is een subtlety. Als er een tijdelijke fout optreedt tijdens het uitvoeren van uw *query* , probeert uw **SqlConnection** -object de verbindings bewerking niet opnieuw uit te voeren. De query wordt zeker niet opnieuw uitgevoerd. De verbinding wordt echter door **SqlConnection** zeer snel gecontroleerd voordat de query wordt verzonden voor uitvoering. Als de snelle controle een verbindings probleem detecteert, probeert **SqlConnection** de verbindings bewerking opnieuw. Als de nieuwe poging slaagt, wordt uw query verzonden voor uitvoering.
 
@@ -227,7 +226,7 @@ Als uw programma geen verbinding kan maken met uw data base in SQL Database, moe
 
 Op elke Windows-computer kunt u deze hulpprogram ma's proberen:
 
-- SQL Server Management Studio (SSMS. exe), die verbinding maakt met behulp van ADO.NET
+- SQL Server Management Studio (ssms.exe), die verbinding maakt met behulp van ADO.NET
 - `sqlcmd.exe`, die verbinding maakt met behulp van [ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
 
 Wanneer het programma is verbonden, test u of een korte SQL SELECT-query werkt.
@@ -243,7 +242,7 @@ In Linux kunnen de volgende hulpprogram ma's handig zijn:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Wijzig de voorbeeld waarde in uw IP-adres.
 
-In Windows kan het hulp programma [Portqry. exe](https://www.microsoft.com/download/details.aspx?id=17148) handig zijn. Hier volgt een voor beeld van de uitvoering van een query naar de poort situatie op een data base in SQL Database en die werd uitgevoerd op een laptop computer:
+In Windows kan het hulp programma [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nuttig zijn. Hier volgt een voor beeld van de uitvoering van een query naar de poort situatie op een data base in SQL Database en die werd uitgevoerd op een laptop computer:
 
 ```cmd
 [C:\Users\johndoe\]

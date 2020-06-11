@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778561"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678580"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Live Azure App Service-apps met Application Insights profiel
 
@@ -25,9 +25,9 @@ Als u Profiler voor een app wilt inschakelen, volgt u de onderstaande instructie
 
 Application Insights Profiler wordt vooraf geïnstalleerd als onderdeel van de App Services runtime. In de onderstaande stappen ziet u hoe u deze functie inschakelt voor uw App Service. Volg deze stappen, zelfs als u de app Insights-SDK in uw toepassing hebt opgenomen tijdens het bouwen.
 
-1. Schakel de instelling altijd on in voor uw app service. U kunt de instelling op de pagina configuratie van uw App Service onder algemene instellingen bijwerken.
-1. Ga naar het deel venster **app Services** in het Azure Portal.
-1. Navigeer naar **instellingen >** deel venster Application Insights.
+1. Ga naar het onderdeel Azure van het configuratie scherm voor uw App Service.
+1. Schakel de instelling altijd on in voor uw app service. U kunt deze instelling vinden onder **instellingen**, **configuratie** pagina (zie scherm afbeelding in de volgende stap) en klik op het tabblad **algemene instellingen** .
+1. Navigeer naar **instellingen > pagina Application Insights** .
 
    ![App Insights inschakelen op App Services portal](./media/profiler/AppInsights-AppServices.png)
 
@@ -50,7 +50,7 @@ Dit zijn de instellingen die nodig zijn om de Profiler in te scha kelen:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-U kunt deze waarden instellen met behulp van [Azure Resource Manager sjablonen](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure Power shell](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [Azure cli](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+U kunt deze waarden instellen met behulp van [Azure Resource Manager sjablonen](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp), [Azure cli](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Profiler hand matig inschakelen voor andere Clouds
 

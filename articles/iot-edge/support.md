@@ -4,16 +4,16 @@ description: Meer informatie over de besturings systemen die de Azure IoT Edge d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/12/2020
+ms.date: 06/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ec143fbca94c5423ca67e09fa2932e55c06f418e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bafc0424d4d8e4e518bfc999dcb72f96ee9d6289
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652766"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678644"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Ondersteunde systemen Azure IoT Edge
 
@@ -103,13 +103,13 @@ IoT Edge release-assets en release opmerkingen zijn beschikbaar op de pagina [me
 
 IoT Edge onderdelen kunnen afzonderlijk worden geïnstalleerd of bijgewerkt, en zijn achterwaarts compatibel met onderdelen van oudere versies. De volgende tabel bevat de onderdelen die zijn opgenomen in elke versie:
 
-| Release   | Beveiligings-daemon  | Edge hub<br>Edge-agent | Libiothsm | Moby  |
-| --------- | ---------------- | ---------------------- | --------- | ----- |
-| **1.0.9** | 1.0.9.1<br>1.0.9            | 1.0.9.1<br>1.0.9                  | 1.0.9.1<br>1.0.9     |       |
-| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
-| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+| Release | Beveiligings-daemon | Edge hub<br>Edge-agent | Libiothsm | Moby |
+|--|--|--|--|--|
+| **1.0.9** | 1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
 IoT Edge maakt gebruik van de SDK van micro soft. Azure. device. client. Zie de [Azure IOT C# SDK github opslag plaats](https://github.com/Azure/azure-iot-sdk-csharp) of de [Azure SDK voor .net-referentie-inhoud](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet)voor meer informatie. De volgende lijst bevat de versie van de client-SDK waarvoor elke release wordt getest:
 
@@ -119,7 +119,7 @@ IoT Edge maakt gebruik van de SDK van micro soft. Azure. device. client. Zie de 
 * **IOT Edge 1.0.6**: Client SDK 1.17.1
 * **IOT Edge 1.0.5**: Client SDK 1.17.1
 
-## <a name="virtual-machines"></a>Virtual Machines
+## <a name="virtual-machines"></a>Virtuele machines
 
 Azure IoT Edge kunnen worden uitgevoerd op virtuele machines. Het gebruik van een virtuele machine als een IoT Edge apparaat is gebruikelijk wanneer klanten bestaande infra structuur willen uitbreiden met Edge Intelligence. De serie van het VM-besturings systeem van de host moet overeenkomen met de familie van het gast besturingssysteem dat in de container van een module wordt gebruikt. Deze vereiste is hetzelfde als wanneer Azure IoT Edge rechtstreeks op een apparaat wordt uitgevoerd. Azure IoT Edge is neutraal van de onderliggende technologie en werkt in Vm's op basis van platforms, zoals Hyper-V en vSphere.
 

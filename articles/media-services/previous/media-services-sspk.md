@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344030"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677149"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licenties voor micro soft &reg; Smooth streaming client Porting kit 
 ## <a name="overview"></a>Overzicht
@@ -113,52 +113,41 @@ Interim-en definitieve SSPK-licenties kunnen technische vragen verzenden naar [s
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Licenties voor micro soft Smooth Streaming-client eindproduct overeenkomst
 * Advanced Digital Broadcast SA
 * Kablosuz Iletism Sanayive dis Ticaret W.S.
-* Albis Technologies Ltd.
-* Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONIK-SAN. VE BOTER. A. Ş
-* Britse lucht Broadcasting beperkt
-* CastPal Technology Inc., Shenzhen
+* Arcelik A. S
 * Comp-elektronica, Inc.
-* Dongguan Digital AV Technology Corp. Ltd.
-* EchoStar-aankoop maatschappij
-* Enseo, Inc.
-* FilmFlex-films, beperkt
+* EXPRESSIS-TECHNOLOGIE BEPERKT
 * Fluendo S.A.
 * FUNAI ELECTRIC CO., LTD
-* Gibson-innovaties beperkt
-* Haier-informatie aanvrager S. R. L
-* HANDAN BroadInfoCom co., Ltd.
 * Hisense International Co., Ltd. 
-* Homecast co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation, beperkt
+* Hongkong Konka Ltd
+* Innolux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia co., Ltd.
 * KDDI Corporation
+* Mega Fame Electronics Co. Limited
+* MIRC-elektronica beperkt
 * Nintendo Co., Ltd.
-* Oranje SA
-* Saffron digitaal beperkt
-* Sagemcom Broadband SAS
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics co., Ltd.
+* Shenzhen ATEKO PHOTO Electric Co., Ltd.
 * Shenzhen Chuangwei-RGB co., Ltd.
-* Shenzhen Coship Electronics CO., LTD
 * Shenzhen Jiuzhou Electric Co., Ltd
 * Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC co., Ltd
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin industrieel Corp.
 * Deutschland Fernsehen GmbH & co. KG
-* SmarDTV S.A.
+* SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation
 * Technicolor-bezorgings technologieën, SAS
-* Tongfang Global Ltd.
 * Belangrijkste Victory-investeringen, Ltd.
-* Toshibay Products & Services Corporation
-* Universele media Corporation/Slovakia/s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* UMC Polen SP. z. o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten

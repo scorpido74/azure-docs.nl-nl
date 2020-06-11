@@ -1,16 +1,16 @@
 ---
-title: Resource-eigenschappen weergeven
+title: Eigenschappen van de bron ontdekken
 description: Hierin wordt beschreven hoe u naar bron eigenschappen zoekt.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 5714a25cfdc2e2dd76bfe2953040ebb961b51932
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/10/2020
+ms.openlocfilehash: 6e00ee875d9b0f7fadf27a44c55920872c815045
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466564"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668556"
 ---
-# <a name="view-resource-properties"></a>Resource-eigenschappen weergeven
+# <a name="discover-resource-properties"></a>Eigenschappen van de bron ontdekken
 
 Voordat u Resource Manager-sjablonen maakt, moet u weten welke resource typen er beschikbaar zijn en welke waarden u moet gebruiken in uw sjabloon. In dit artikel ziet u enkele manieren waarop u de eigenschappen kunt vinden die u wilt toevoegen aan uw sjabloon.
 

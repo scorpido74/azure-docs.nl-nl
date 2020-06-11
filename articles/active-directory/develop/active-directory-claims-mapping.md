@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 91a70395bc359f0c5e199f91a739a7cef9205605
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737500"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673272"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Procedure: claims aanpassen die worden verzonden in tokens voor een specifieke app in een Tenant (preview-versie)
 
@@ -292,7 +292,7 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | id | ObjectID |
 | Gebruiker | mail | E-mailadres |
 | Gebruiker | userPrincipalName | User principal name |
-| Gebruiker | afdeling|Afdeling|
+| Gebruiker | department|Afdeling|
 | Gebruiker | onpremisessamaccountname | Naam van on-premises SAM-account |
 | Gebruiker | netbiosname| NetBios-naam |
 | Gebruiker | DNS | DNS-domeinnaam |
@@ -321,10 +321,11 @@ Het ID-element identificeert welke eigenschap van de bron de waarde voor de clai
 | Gebruiker | othermail | Andere E-mail |
 | Gebruiker | land | Land/regio |
 | Gebruiker | city | Plaats |
-| Gebruiker | state | Status |
+| Gebruiker | state | Staat |
 | Gebruiker | JobTitle | Functie |
 | Gebruiker | employeeid | Werknemer-id |
 | Gebruiker | facsimiletelephonenumber | Telefoon nummer Fax |
+| Gebruiker | assignedroles | lijst met app-rollen die aan de gebruiker zijn toegewezen|
 | toepassing, resource, doel groep | displayname | Weergavenaam |
 | toepassing, resource, doel groep | geobjecteerd | ObjectID |
 | toepassing, resource, doel groep | tags | Service-Principal-tag |

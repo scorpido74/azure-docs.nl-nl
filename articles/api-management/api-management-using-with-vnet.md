@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 970c20edd3a24594f22ff7e72cd4275118193845
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323787"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674275"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -118,8 +118,8 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 | */1433                     | Uitgaand           | TCP                | VIRTUAL_NETWORK/SQL                 | **Toegang tot Azure SQL-eind punten**                           | Externe & intern  |
 | */5671, 5672, 443          | Uitgaand           | TCP                | VIRTUAL_NETWORK-EventHub            | Afhankelijkheid voor [logboek registratie van Event hub-beleid](api-management-howto-log-event-hubs.md) en bewakings agent | Externe & intern  |
 | */445                      | Uitgaand           | TCP                | VIRTUAL_NETWORK/opslag             | Afhankelijkheid van de Azure-bestands share voor [Git](api-management-configuration-repository-git.md)                      | Externe & intern  |
-| */1886                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-Cloud            | Vereist voor het publiceren van de status naar Resource Health          | Externe & intern  |
-| */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md) publiceren                       | Externe & intern  |
+| */443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-Cloud            | Status-en bewakings uitbreiding         | Externe & intern  |
+| */1886, 443                     | Uitgaand           | TCP                | VIRTUAL_NETWORK-AzureMonitor         | [Diagnostische logboeken en metrische gegevens](api-management-howto-use-azure-monitor.md) en [resource Health](../service-health/resource-health-overview.md) publiceren                     | Externe & intern  |
 | */25, 587, 25028                       | Uitgaand           | TCP                | VIRTUAL_NETWORK/INTERNET            | Verbinding maken met SMTP relay voor het verzenden van e-mail berichten                    | Externe & intern  |
 | */6381-6383              | Binnenkomende &-uitgaand | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Toegang tot de redis-service voor [cache](api-management-caching-policies.md) beleidsregels tussen computers         | Externe & intern  |
 | */4290              | Binnenkomende &-uitgaand | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Synchronisatie tellers voor beleids regels voor [frequentie limiet](api-management-access-restriction-policies.md#LimitCallRateByKey) tussen computers         | Externe & intern  |
@@ -234,7 +234,7 @@ De IP-adressen worden gedeeld door **Azure-omgeving**. Wanneer het IP-adres voor
 | Openbare Azure-peering| Australië - oost| 20.40.125.155|
 | Openbare Azure-peering| VS - west 2| 51.143.127.203|
 | Openbare Azure-peering| VS-Oost 2 EUAP| 52.253.229.253|
-| Openbare Azure-peering| Centrale VS-EUAP| 52.253.159.160|
+| Openbare Azure-peering| VS - centraal EUAP| 52.253.159.160|
 | Openbare Azure-peering| VS - zuid-centraal| 20.188.77.119|
 | Openbare Azure-peering| VS - oost 2| 20.44.72.3|
 | Openbare Azure-peering| Europa - noord| 52.142.95.35|

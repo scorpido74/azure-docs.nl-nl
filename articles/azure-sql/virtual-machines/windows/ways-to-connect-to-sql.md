@@ -4,7 +4,6 @@ description: Meer informatie over hoe u verbinding maakt met uw SQL Server virtu
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -14,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c014799cc0e6a2c985bb6df5872d65880e7d2a26
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: aa0fdddbf31cadad55582f4d45c8e536ce74acd9
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219403"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667416"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Verbinding maken met een SQL Server virtuele machine in azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +41,7 @@ De opties voor connectiviteit zijn onder andere:
 
 | Optie | Beschrijving |
 |---|---|
-| **Public** | Verbinding maken met SQL Server via internet. |
+| **Openbaar** | Verbinding maken met SQL Server via internet. |
 | **Privé** | Verbinding maken met SQL Server in hetzelfde virtuele netwerk. |
 | **Lokale** | Maak verbinding met SQL Server lokaal op dezelfde virtuele machine. | 
 
