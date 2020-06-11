@@ -1,24 +1,24 @@
 ---
 title: M-serie-Azure Virtual Machines
 description: Specificaties voor de virtuele machines uit de M-serie.
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744686"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675941"
 ---
 # <a name="m-series"></a>M-serie
 
-De M-serie biedt een hoog aantal vCPU (Maxi maal 128 Vcpu's) en een grote hoeveelheid geheugen (Maxi maal 3,8 TiB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen. Groottes uit de M-serie worden ondersteund door&reg; zowel&reg; de Intel Xeon CPU E7-8890 v3 @ 2,50 GHz als&reg; op&reg; de Intel Xeon Platinum 8280M (Cascade Lake).
+De M-serie biedt een hoog aantal vCPU (Maxi maal 128 Vcpu's) en een grote hoeveelheid geheugen (Maxi maal 3,8 TiB). Het is ook ideaal voor zeer grote data bases of andere toepassingen die profiteren van hoog aantal vCPU en grote hoeveel heden geheugen. Groottes uit de M-serie worden ondersteund door zowel de Intel &reg; Xeon &reg; CPU E7-8890 v3 @ 2,50 GHz als op de Intel &reg; Xeon &reg; Platinum 8280M (Cascade Lake).
 
-De Intel&reg; Hyper-Threading-technologie van de M-serie onderdeel.
+De Intel &reg; Hyper-Threading-technologie van de M-serie onderdeel.
 
 ACU: 160-180
 

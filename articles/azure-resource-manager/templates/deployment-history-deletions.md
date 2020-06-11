@@ -2,13 +2,13 @@
 title: Verwijderingen in de implementatiegeschiedenis
 description: Hierin wordt beschreven hoe Azure Resource Manager automatisch implementaties uit de implementatie geschiedenis verwijdert. Implementaties worden verwijderd wanneer de geschiedenis bijna de limiet van 800 overschrijdt.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/10/2020
+ms.openlocfilehash: c16b71646e20b71c0d0ca8c9f8e028773983022f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462733"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673986"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische verwijderingen van de implementatie geschiedenis
 
@@ -18,10 +18,12 @@ Vanaf 2020 juni verwijdert Azure Resource Manager automatisch implementaties uit
 
 > [!NOTE]
 > Het verwijderen van een implementatie uit de geschiedenis heeft geen invloed op de resources die zijn geïmplementeerd.
+>
+> Als u een [CanNotDelete-vergren deling](../management/lock-resources.md) op een resource groep hebt, kunnen de implementaties voor die resource groep niet worden verwijderd. U moet de vergren deling verwijderen om te profiteren van automatische verwijderingen in de implementatie geschiedenis.
 
 ## <a name="when-deployments-are-deleted"></a>Wanneer implementaties worden verwijderd
 
-Implementaties worden alleen uit de implementatie geschiedenis verwijderd wanneer u de limiet van 800 hebt bereikt. Azure Resource Manager verwijdert een kleine set van de oudste implementaties om ruimte vrij te maken voor toekomstige implementaties. De meeste geschiedenis blijft ongewijzigd. De oudste implementaties worden eerst altijd verwijderd.
+Implementaties worden verwijderd uit de implementatie geschiedenis wanneer u 790-implementaties bereikt. Azure Resource Manager verwijdert een kleine set van de oudste implementaties om ruimte vrij te maken voor toekomstige implementaties. De meeste geschiedenis blijft ongewijzigd. De oudste implementaties worden eerst altijd verwijderd.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Verwijderingen uit de implementatie geschiedenis":::
 

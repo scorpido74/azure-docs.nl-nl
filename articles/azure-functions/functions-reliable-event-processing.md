@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561864"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676128"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions betrouw bare gebeurtenis verwerking
 
@@ -91,7 +91,7 @@ Er zijn twee onderdelen vereist voor het implementeren van een circuit onderbrek
 
 Implementatie details kunnen variëren, maar als u de status wilt delen tussen instanties, hebt u een opslag mechanisme nodig. U kunt ervoor kiezen om de status op te slaan in Azure Storage, een redis-cache of een ander account dat toegankelijk is voor een verzameling functies.
 
-[Azure Logic apps](../logic-apps/logic-apps-overview.md) of [duurzame entiteiten](./durable/durable-functions-overview.md) zijn natuurlijk geschikt voor het beheren van de werk stroom en de status van het circuit. Andere services werken mogelijk net zo goed, maar logische apps worden gebruikt voor dit voor beeld. Met Logic apps kunt u de uitvoering van een functie onderbreken en opnieuw starten, zodat u de controle hebt die vereist is voor het implementeren van het patroon circuit onderbreker.
+[Azure Logic apps](../logic-apps/logic-apps-overview.md) of [duurzame functies](./durable/durable-functions-overview.md) zijn natuurlijk geschikt voor het beheren van de werk stroom en de status van het circuit. Andere services werken mogelijk net zo goed, maar logische apps worden gebruikt voor dit voor beeld. Met Logic apps kunt u de uitvoering van een functie onderbreken en opnieuw starten, zodat u de controle hebt die vereist is voor het implementeren van het patroon circuit onderbreker.
 
 ### <a name="define-a-failure-threshold-across-instances"></a>Een drempel waarde voor fouten voor alle instanties definiëren
 
@@ -123,7 +123,7 @@ Wanneer u deze methode gebruikt, gaan er geen berichten verloren, worden alle be
 ## <a name="resources"></a>Resources
 
 - [Voor beelden van betrouw bare gebeurtenis verwerking](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Circuit onderbreker van Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Circuit onderbreker van de duurzame Azure-entiteit](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Volgende stappen
 

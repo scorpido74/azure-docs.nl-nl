@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 05/29/2020
-ms.openlocfilehash: a916d6b181acfc8b32b243ee14ed35aa8565a76e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/10/2020
+ms.openlocfilehash: 9dfa45e463ecd53524e7516160324a80824e4d8d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343333"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669525"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ In dit artikel vindt u gedetailleerde resource limieten voor afzonderlijke data 
 
 Zie [overzicht van resource limieten op een server](resource-limits-logical-server.md)voor de limieten voor DTU-aankoop modellen voor afzonderlijke data bases op een server.
 
-U kunt de servicelaag, de reken grootte en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#the-azure-cli)of de [rest API](single-database-manage.md#rest-api).
+U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoeveelheid voor één data base instellen met behulp van de [Azure Portal](single-database-manage.md#the-azure-portal), [Transact-SQL](single-database-manage.md#transact-sql-t-sql), [Power shell](single-database-manage.md#powershell), de [Azure cli](single-database-manage.md#the-azure-cli)of de [rest API](single-database-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Zie [Eén data base schalen](single-database-scale.md)voor richt lijnen en overwegingen voor schalen.
@@ -36,12 +36,12 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-1"></a>GEN5 Compute Generation (deel 1)
 
-|Reken grootte|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
+|Berekenings grootte (Service doelstelling)|GP_S_Gen5_1|GP_S_Gen5_2|GP_S_Gen5_4|GP_S_Gen5_6|GP_S_Gen5_8|
 |:--- | --: |--: |--: |--: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|
 |Min-maximale vCores|0.5-1|0.5-2|0,5-4|0,75-6|1.0-8|
 |Min-Maxi maal geheugen (GB)|2.02-3|2.05-6|2.10-12|2,25-18|3,00-24|
-|Minimale automatische onderbrekings vertraging (minuten)|60|60|60|60|60|
+|Min-maximale vertraging voor automatisch onderbreken (minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|512|1024|1024|1024|1536|
@@ -62,12 +62,12 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-2"></a>GEN5 Compute Generation (deel 2)
 
-|Reken grootte|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
+|Berekenings grootte (Service doelstelling)|GP_S_Gen5_10|GP_S_Gen5_12|GP_S_Gen5_14|GP_S_Gen5_16|
 |:--- | --: |--: |--: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|
 |Min-maximale vCores|1,25-10|1,50-12|1,75-14|2.00-16|
 |Min-Maxi maal geheugen (GB)|3,75-30|4.50-36|5,25-42|6,00-48|
-|Minimale automatische onderbrekings vertraging (minuten)|60|60|60|60|
+|Min-maximale vertraging voor automatisch onderbreken (minuten)|60-10080|60-10080|60-10080|60-10080|
 |Column Store-ondersteuning|Ja|Ja|Ja|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
 |Maximale gegevens grootte (GB)|1536|3072|3072|3072|
@@ -86,11 +86,38 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 \*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.
 
+### <a name="gen5-compute-generation-part-3"></a>GEN5 Compute Generation (deel 3)
+
+|Berekenings grootte (Service doelstelling)|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
+|:--- | --: |--: |--: |--: |--:|
+|Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|
+|Min-maximale vCores|2,25-18|2,5-20|3-24|4-32|5-40|
+|Min-Maxi maal geheugen (GB)|6.75-54|7.5-60|9-72|12-96|15-120|
+|Min-maximale vertraging voor automatisch onderbreken (minuten)|60-10080|60-10080|60-10080|60-10080|60-10080|
+|Column Store-ondersteuning|Ja|Ja|Ja|Ja|Ja|
+|OLTP-opslag in het geheugen (GB)|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Maximale gegevens grootte (GB)|3072|3072|4096|4096|4096|
+|Maximale logboek grootte (GB)|922|922|1229|1229|1229|
+|Maximale gegevens grootte TempDB (GB)|576|640|768|1024|1280|
+|Opslagtype|Externe SSD|Externe SSD|Externe SSD|Externe SSD|Externe SSD|
+|I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
+|Max. gegevensiops *|5760|6400|7680|10240|12800|
+|Maximale logboek frequentie (MBps)|30|30|30|30|30|
+|Maxi maal aantal gelijktijdige werk nemers (aanvragen)|1350|1500|1800|2400|3000|
+|Maximaal aantal gelijktijdige sessies|30.000|30.000|30.000|30.000|30.000|
+|Aantal replica's|1|1|1|1|1|
+|Meerdere AZ|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Uitschalen voor leesbewerking|N.v.t.|N.v.t.|N.v.t.|N.v.t.|N.v.t.|
+|Opgenomen back-upopslag|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|1X-DB-grootte|
+
+\*De maximum waarde voor i/o-grootten tussen 8 KB en 64 KB. Werkelijke IOPS zijn werk belasting afhankelijk. Zie [Data io governance](resource-limits-logical-server.md#resource-governance)voor meer informatie.
+
+
 ## <a name="hyperscale---provisioned-compute---gen4"></a>Grootschalige-ingerichte Compute-Gen4
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 Compute Generation (deel 1)
 
-|Prestatie niveau|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
+|Berekenings grootte (Service doelstelling)|HS_Gen4_1|HS_Gen4_2|HS_Gen4_3|HS_Gen4_4|HS_Gen4_5|HS_Gen4_6|
 |:--- | --: |--: |--: |---: | --: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|1|2|3|4|5|6|
@@ -115,7 +142,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 Compute Generation (deel 2)
 
-|Prestatie niveau|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
+|Berekenings grootte (Service doelstelling)|HS_Gen4_7|HS_Gen4_8|HS_Gen4_9|HS_Gen4_10|HS_Gen4_16|HS_Gen4_24|
 |:--- | ---: |--: |--: | --: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
@@ -144,7 +171,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-1"></a>GEN5 Compute Generation (deel 1)
 
-|Prestatie niveau|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
+|Berekenings grootte (Service doelstelling)|HS_Gen5_2|HS_Gen5_4|HS_Gen5_6|HS_Gen_8|HS_Gen5_10|HS_Gen5_12|HS_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
@@ -171,7 +198,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-2"></a>GEN5 Compute Generation (deel 2)
 
-|Prestatie niveau|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|Berekenings grootte (Service doelstelling)|HS_Gen5_16|HS_Gen5_18|HS_Gen5_20|HS_Gen_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: |--: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
@@ -211,7 +238,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 Compute Generation (deel 1)
 
-|Reken grootte|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Berekenings grootte (Service doelstelling)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|1|2|3|4|5|6|
@@ -236,7 +263,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 Compute Generation (deel 2)
 
-|Reken grootte|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
+|Berekenings grootte (Service doelstelling)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
@@ -263,7 +290,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-1"></a>GEN5 Compute Generation (deel 1)
 
-|Reken grootte|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Berekenings grootte (Service doelstelling)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
@@ -288,7 +315,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-2"></a>GEN5 Compute Generation (deel 2)
 
-|Reken grootte|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Berekenings grootte (Service doelstelling)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
@@ -315,7 +342,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Generatie van Fsv2-Series (preview-versie)
 
-|Reken grootte|GP_Fsv2_72|
+|Berekenings grootte (Service doelstelling)|GP_Fsv2_72|
 |:--- | --: |
 |Compute genereren|Fsv2-serie|
 |vCores|72|
@@ -346,7 +373,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen4-compute-generation-part-1"></a>Gen4 Compute Generation (deel 1)
 
-|Reken grootte|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Berekenings grootte (Service doelstelling)|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|1|2|3|4|5|6|
@@ -372,7 +399,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen4-compute-generation-part-2"></a>Gen4 Compute Generation (deel 2)
 
-|Reken grootte|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Berekenings grootte (Service doelstelling)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
@@ -400,7 +427,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-1"></a>GEN5 Compute Generation (deel 1)
 
-|Reken grootte|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Berekenings grootte (Service doelstelling)|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
@@ -426,7 +453,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="gen5-compute-generation-part-2"></a>GEN5 Compute Generation (deel 2)
 
-|Reken grootte|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Berekenings grootte (Service doelstelling)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
@@ -454,7 +481,7 @@ De [Compute-laag zonder server](serverless-tier-overview.md) is momenteel alleen
 
 ### <a name="m-series-compute-generation-preview"></a>Generatie van d-Series Compute (preview-versie)
 
-|Reken grootte|BC_M_128|
+|Berekenings grootte (Service doelstelling)|BC_M_128|
 |:--- | --: |
 |Compute genereren|M-serie|
 |vCores|128|

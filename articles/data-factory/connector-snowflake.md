@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
-ms.openlocfilehash: fd067a0a0e99291dd4cea924a15c1157bc3b9f9f
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 74e2c452d229373d271225dcbb28359b6af1524d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84425500"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670494"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Gegevens van en naar sneeuw kopiëren met behulp van Azure Data Factory
 
@@ -144,7 +144,7 @@ Als u gegevens van sneeuw vlokken wilt kopiëren, worden de volgende eigenschapp
 | Eigenschap                     | Beschrijving                                                  | Vereist |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op **SnowflakeSource**. | Ja      |
-| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw. | Nee       |
+| query          | Hiermee geeft u de SQL-query op voor het lezen van gegevens van sneeuw.<br>Het uitvoeren van een opgeslagen procedure wordt niet ondersteund. | Nee       |
 | exportSettings | Geavanceerde instellingen voor het ophalen van gegevens uit sneeuw. U kunt de bestanden configureren die worden ondersteund door kopiëren naar de opdracht die door de ADF wordt door gegeven wanneer de instructie wordt aangeroepen. | Nee       |
 | ***Onder `exportSettings` :*** |  |  |
 | type | Het type export opdracht, ingesteld op **SnowflakeExportCopyCommand**. | Ja |

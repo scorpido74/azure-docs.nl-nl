@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c86e88f481c6ad27f551a87afae7547c32a331
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273044"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676248"
 ---
 # <a name="expressroute-routing-requirements"></a>Routeringsvereisten voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u routering instellen en beheren. Sommige connecitiviteitsproviders bieden het instellen en beheren van routering aan als een beheerde service. Neem contact op met uw connectiviteitsprovider om na te gaan of ze deze service leveren. Als dat niet het geval is, moet u voldoen aan de volgende vereisten:
@@ -179,8 +179,8 @@ U kunt meer dan één ExpressRoute-circuit per geopolitieke regio aanschaffen. H
 | Zwitserland - west | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
 | Duitsland - noord | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
 | Duitsland - west-centraal | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
-| Noor wegen-Oost | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
-| Noor wegen West | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
+| Noorwegen - oost | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Noorwegen - west | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Azië en Stille Oceaan** | |
 | Azië - oost | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Azië - zuidoost | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
@@ -220,17 +220,18 @@ Daarnaast worden voorvoegsels door Microsoft gemarkeerd op basis van de service 
 
 | **Service** | **BGP-communitywaarde** |
 | --- | --- |
-| Exchange Online * * | 12076:5010 |
-| Share point online * * | 12076:5020 |
-| Skype voor bedrijven online * * | 12076:5030 |
-| CRM Online * * * |12076:5040 |
-| Wereld wijde services van Azure * | 12076:5050 |
+| Exchange Online\*\* | 12076:5010 |
+| Share point online\*\* | 12076:5020 |
+| Skype voor bedrijven online\*\*/\*\*\* | 12076:5030 |
+| CRM Online\*\*\*\* |12076:5040 |
+| Wereld wijde services van Azure\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Andere Office 365 Online Services * * | 12076:5100 |
 
-* Azure Global Services omvat op dit moment alleen Azure DevOps. \
-* * Autorisatie vereist van micro soft, Zie [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md)\
-CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u de regionale Community voor uw Dynamics-implementaties.
+\*Azure Global Services omvat op dit moment alleen Azure DevOps. \
+\*\*Autorisatie vereist van micro soft; Raadpleeg [route filters configureren voor micro soft-peering](how-to-routefilter-portal.md)\
+\*\*\*Deze community publiceert ook de benodigde routes voor de micro soft teams-Services. \
+\*\*\*\*CRM Online ondersteunt Dynamics v 8.2 en lager. Voor hogere versies selecteert u de regionale Community voor uw Dynamics-implementaties.
 
 > [!NOTE]
 > BGP-communitywaarden die u instelt op de routes die worden geadverteerd naar Microsoft, worden niet door Microsoft erkend.

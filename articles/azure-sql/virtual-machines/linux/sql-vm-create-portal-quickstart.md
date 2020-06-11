@@ -3,7 +3,6 @@ title: 'Snelstartgids: een Linux SQL Server VM maken in azure'
 description: Deze zelfstudie laat zien hoe u een virtuele SQL Server 2017-machine voor Linux in Azure Portal kunt maken.
 services: virtual-machines-linux
 author: MashaMSFT
-manager: craigg
 ms.date: 10/22/2019
 tags: azure-service-management
 ms.topic: conceptual
@@ -11,12 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 767bdeef48ed78b32ad5e3b0e43002a21cb1c9b6
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343707"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669508"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Richt een virtuele Linux-machine in met SQL Server in het Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -92,11 +91,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
      ![Poorten voor inkomend verkeer](./media/sql-vm-create-portal-quickstart/port-settings.png)
 
 1. Maak eventuele wijzigingen in de instellingen in de volgende aanvullende tabbladen of behoud de standaardinstellingen.
-    * **Cd's**
+    * **Disks**
     * **Netwerken**
     * **Beheer**
     * **Gastconfiguratie**
-    * **Tags**
+    * **Koptags**
 
 1. Selecteer **Controleren + maken**.
 1. Selecteer in het deelvenster **Controleren + maken** de optie **Maken**.
@@ -153,7 +152,7 @@ Op de nieuwe virtuele machine wordt SQL Server geïnstalleerd met een willekeuri
 
 Meerdere SQL-Server-[pakketten](sql-server-on-linux-vm-what-is-iaas-overview.md#packages) worden standaard geïnstalleerd, met inbegrip van het pakket met opdrachtregelprogramma's van SQL Server. Het pakket bevat de hulpprogramma's **sqlcmd** en **bcp**. Voor meer gebruiksgemak kunt u ervoor kiezen het pad naar de hulpprogramma's `/opt/mssql-tools/bin/` toe te voegen aan de omgevingsvariabele **PAD**.
 
-1. Voer de volgende opdrachten uit als u het **PAD** wilt wijzigen voor zowel aanmeldingssessies als interactieve/niet-aanmeldingssessies:
+1. Voer de volgende opdrachten uit om het **pad** voor zowel aanmeldings sessies als interactieve/niet-aanmeldings sessies te wijzigen:
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile

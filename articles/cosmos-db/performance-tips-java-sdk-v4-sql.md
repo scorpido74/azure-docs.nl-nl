@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0e8dc52b160ee69e9c8bfd810c80c1035fc6e0d0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677696"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674499"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Tips voor betere prestaties voor Azure Cosmos DB Java SDK v4
 
@@ -20,11 +20,12 @@ ms.locfileid: "83677696"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java-SDK v2](performance-tips-async-java.md)
 > * [Sync Java-SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
-> De tips voor prestaties in dit artikel zijn alleen voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [release opmerkingen](sql-api-sdk-java-v4.md), de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md) ) voor meer informatie. Als u momenteel een oudere versie dan V4 gebruikt, raadpleegt u de [migratie naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) -hand leiding voor hulp bij het upgraden naar v4.
+> De tips voor prestaties in dit artikel zijn alleen voor Azure Cosmos DB Java SDK v4. Raadpleeg de Azure Cosmos DB Java SDK v4- [release opmerkingen](sql-api-sdk-java-v4.md), de [maven-opslag plaats](https://mvnrepository.com/artifact/com.azure/azure-cosmos)en Azure Cosmos DB Java SDK v4 [Troubleshooting Guide (Engelstalig](troubleshoot-java-sdk-v4-sql.md) ) voor meer informatie. Als u momenteel een oudere versie dan v4 gebruikt, raadpleegt u de gids [Migreren naar Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) voor hulp om te upgraden naar v4.
 >
 
 Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloos kan worden geschaald met gegarandeerde latentie en door voer. U hoeft geen grote architectuur wijzigingen aan te brengen of complexe code te schrijven om uw data base te schalen met Azure Cosmos DB. Omhoog en omlaag schalen is net zo eenvoudig als het maken van één API-aanroep of SDK-methode aanroep. Omdat Azure Cosmos DB echter via netwerk aanroepen wordt geopend, zijn er optimalisaties aan de client zijde die u kunt uitvoeren om de prestaties van de piek te bereiken wanneer u Azure Cosmos DB Java SDK v4 gebruikt.
@@ -45,9 +46,9 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
 
     De *ConnectionMode* wordt geconfigureerd tijdens de bouw van het exemplaar van de Azure Cosmos DB-client met de para meter *Connection Policy* :
     
-   #### <a name="async"></a>[Asynchroon](#tab/api-async)
+   #### <a name="async"></a>[Async](#tab/api-async)
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     public ConnectionPolicy getConnectionPolicy() {
@@ -64,7 +65,7 @@ Als u daarom vraagt hoe u de prestaties van mijn Data Base kunt verbeteren? Houd
         .buildAsyncClient();
     ```
 
-    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+    #### <a name="sync"></a>[Sync](#tab/api-sync)
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
 
@@ -137,9 +138,9 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     De volgende code fragmenten laten zien hoe u uw Azure Cosmos DB-client voor respectievelijk de asynchrone API-of API-bewerking voor de synchronisatie kunt initialiseren:
 
-    #### <a name="async"></a>[Asynchroon](#tab/api-async)
+    #### <a name="async"></a>[Async](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-async-client"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-async-client"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     CosmosAsyncClient client = new CosmosClientBuilder()
@@ -150,7 +151,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
         .buildAsyncClient();
     ```
 
-    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+    #### <a name="sync"></a>[Sync](#tab/api-sync)
  
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-sync-client"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
 
@@ -245,7 +246,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
     De asynchrone functionaliteit van Azure Cosmos DB Java SDK is gebaseerd op [Netty](https://netty.io/) niet-blokkerende io. De SDK gebruikt een vast aantal i/o-Netty voor gebeurtenissen uit de Event-lus (net zoveel CPU-kernen die uw computer heeft) voor het uitvoeren van i/o-bewerkingen. De stroom die door de API wordt geretourneerd, geeft het resultaat van een van de gedeelde i/o-Netty-threads. Het is dus belang rijk om de Netty-threads van de gedeelde IO-gebeurtenis-lus niet te blok keren. Het uitvoeren van CPU-intensieve werk of het blok keren van een bewerking op de Netty thread voor de IO-gebeurtenis kan leiden tot deadlock of de SDK-door Voer aanzienlijk verminderen.
 
     Met de volgende code wordt bijvoorbeeld een CPU-intensieve werk uitgevoerd op de Event-lus IO Netty-thread:
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-noscheduler"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-noscheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     Mono<CosmosAsyncItemResponse<CustomPOJO>> createItemPub = asyncContainer.createItem(item);
@@ -261,7 +262,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     Wanneer het resultaat wordt ontvangen als u CPU-intensief werk wilt uitvoeren, moet u dit voor komen door de Event loop IO Netty-thread. U kunt in plaats daarvan uw eigen planner opgeven om uw eigen thread te bieden voor het uitvoeren van uw werk, zoals hieronder wordt weer gegeven.
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-scheduler"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     import reactor.core.scheduler.Schedulers;
@@ -324,15 +325,15 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     Als u de prestaties van punt schrijf bewerkingen wilt verbeteren, geeft u de item partitie sleutel op in de API-aanroep punt schrijven, zoals hieronder wordt weer gegeven:
 
-    #### <a name="async"></a>[Asynchroon](#tab/api-async)
+    #### <a name="async"></a>[Async](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-good-async"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-good-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     asyncContainer.createItem(item,new PartitionKey(pk),new CosmosItemRequestOptions()).block();
     ```
 
-    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+    #### <a name="sync"></a>[Sync](#tab/api-sync)
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-good-sync"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
 
@@ -344,15 +345,15 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     in plaats van alleen de instantie item op te geven, zoals hieronder wordt weer gegeven:
 
-    #### <a name="async"></a>[Asynchroon](#tab/api-async)
+    #### <a name="async"></a>[Async](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-bad-async"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-createitem-bad-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     asyncContainer.createItem(item).block();
     ```
 
-    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+    #### <a name="sync"></a>[Sync](#tab/api-sync)
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-createitem-bad-sync"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API
 
@@ -393,11 +394,11 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
 
     De complexiteit van een query is van invloed op het aantal aanvraag eenheden dat voor een bewerking wordt verbruikt. Het aantal predikaten, de aard van de predikaten, het aantal Udf's en de grootte van de bron gegevens sets beïnvloeden de kosten van de query bewerkingen.
 
-    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse \< t> of FeedResponse \< t>.
+    Als u de overhead van een wille keurige bewerking (maken, bijwerken of verwijderen) wilt meten, inspecteert u de [x-MS-Request-factuurkop](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) tekst om het aantal aanvraag eenheden te meten dat door deze bewerkingen wordt verbruikt. U kunt ook de equivalente eigenschap RequestCharge bekijken in ResourceResponse \<T> of FeedResponse \<T> .
 
-    #### <a name="async"></a>[Asynchroon](#tab/api-async)
+    #### <a name="async"></a>[Async](#tab/api-async)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-request-charge-async"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) async API
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-request-charge-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) Async API
 
     ```java
     CosmosAsyncItemResponse<CustomPOJO> response = asyncContainer.createItem(item).block();
@@ -405,7 +406,7 @@ Raadpleeg de [Windows](https://docs.microsoft.com/azure/virtual-network/create-v
     response.getRequestCharge();
     ```     
 
-    #### <a name="sync"></a>[Synchroniseren](#tab/api-sync)
+    #### <a name="sync"></a>[Sync](#tab/api-sync)
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-request-charge-sync"></a>Java SDK v4 (maven com. Azure:: Azure-Cosmos) Sync API    
 

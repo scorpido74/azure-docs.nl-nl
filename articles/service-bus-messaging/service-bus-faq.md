@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38187bef1d9c73b20c3b1930f97e7dae2468c889
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760246"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673442"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus-Veelgestelde vragen (FAQ)
 
@@ -65,7 +65,7 @@ Ga als volgt te werk om de juiste IP-adressen voor uw verbindingen te zoeken naa
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Noteer het IP-adres dat is `Non-authoritative answer`geretourneerd in. Dit IP-adres is statisch. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
+2. Noteer het IP-adres dat is geretourneerd in `Non-authoritative answer` . Dit IP-adres is statisch. Wanneer u de naam ruimte op een ander cluster herstelt, wordt het enige tijdstip gewijzigd dat het zou veranderen.
 
 Als u de zone redundantie voor uw naam ruimte gebruikt, moet u een aantal extra stappen uitvoeren: 
 
@@ -123,25 +123,18 @@ Het is belang rijk te weten dat dit geen nieuwe kosten zijn, dat wil zeggen dat 
 
 Zie het [overzicht van service bus quota's][Quotas overview]voor een lijst met Service Bus limieten en quota's.
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Zijn er gebruiks quota's Service Bus?
-Standaard stelt micro soft voor elke Cloud service een cumulatief maandelijks gebruiks quotum in dat wordt berekend over alle abonnementen van een klant. Als u meer dan deze limieten nodig hebt, kunt u op elk gewenst moment contact opnemen met de klanten service om inzicht te krijgen in uw behoeften en deze limieten op de juiste manier aan te passen. Voor Service Bus is het statistische gebruiks quotum 5.000.000.000 berichten per maand.
-
-Micro soft behoudt zich het recht voor het uitschakelen van een klant account dat de gebruiks quota's in een bepaalde maand heeft overschreden, maar e-mail meldingen worden verzonden en er worden meerdere pogingen gedaan om contact op te nemen met een klant voordat actie wordt ondernomen. Klanten die deze quota overschrijden, zijn nog steeds verantwoordelijk voor de kosten die de quota overschrijden.
-
-Net als bij andere services in azure dwingt Service Bus een set specifieke quota's af om ervoor te zorgen dat resources redelijk worden gebruikt. In het [overzicht van service bus quota's][Quotas overview]vindt u meer informatie over deze quota's.
-
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Hoe kan ik de grootte van een bericht afhandelen > 1 MB?
 Service Bus Messa ging Services (wacht rijen en onderwerpen/abonnementen) toestaan dat toepassingen berichten met een grootte van Maxi maal 256 KB (Standard-laag) of 1 MB (Premium-laag) kunnen verzenden. Als u wilt omgaan met berichten van meer dan 1 MB, gebruikt u het claim controle patroon dat in [dit blog bericht](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern)wordt beschreven.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Waarom kan ik geen naam ruimte maken nadat ik deze heb verwijderd uit een ander abonnement? 
-Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists`. 
+Wanneer u een naam ruimte uit een abonnement verwijdert, wacht u vier uur voordat u deze opnieuw maakt met dezelfde naam in een ander abonnement. Anders wordt het volgende fout bericht weer gegeven: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Wat zijn de uitzonde ringen die worden gegenereerd door Azure Service Bus Api's en de voorgestelde acties?
 Zie [overzicht van uitzonde ringen][Exceptions overview]voor een lijst met mogelijke service bus uitzonde ringen.
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Wat is een Shared Access Signature en welke talen ondersteunen het genereren van een hand tekening?
-Shared Access Signatures zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie het artikel over [gedeelde hand tekeningen][Shared Access Signatures] voor meer informatie over het genereren van uw eigen hand tekeningen in node. js, PHP, Java, python en C#.
+Shared Access Signatures zijn een verificatie methode op basis van SHA-256 Secure hashes of Uri's. Zie het artikel over [gedeelde toegangs handtekeningen][Shared Access Signatures] voor informatie over het genereren van uw eigen hand tekeningen in Node.js, PHP, Java, python en C#.
 
 ## <a name="subscription-and-namespace-management"></a>Abonnement-en naam ruimte beheer
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Hoe kan ik een naam ruimte migreren naar een ander Azure-abonnement?

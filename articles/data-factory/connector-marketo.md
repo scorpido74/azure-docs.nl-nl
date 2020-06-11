@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: efb450f4da58c73c134d9f6b6aad6193f786912d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415010"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669865"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Gegevens kopiëren van Marketo met behulp van Azure Data Factory (preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Deze Marketo-connector wordt ondersteund voor de volgende activiteiten:
 
 U kunt gegevens van Marketo kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
 
-Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
+Marketo-exemplaar dat is geïntegreerd met externe CRM, wordt momenteel niet ondersteund.
 
 >[!NOTE]
 >Deze Marketo-connector is gebaseerd op de Marketo-REST API. Houd er rekening mee dat de Marketo [gelijktijdige aanvraag limiet](https://developers.marketo.com/rest-api/) aan service zijde heeft. Als u fouten krijgt met de melding ' fout bij het gebruik van REST API: de maximale frequentie limiet ' 100 ' is overschreden met in ' 20 ' seconden (606) ' of ' fout bij het gebruik van REST API: gelijktijdige toegangs limiet ' 10 ' bereikt (615) ', kunt u overwegen om de uitvoering van de gelijktijdige Kopieer activiteit te verminderen om het aantal aanvragen voor de service te verminderen.
@@ -60,7 +60,7 @@ De volgende eigenschappen worden ondersteund voor de Marketo-gekoppelde service:
 | useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via TLS. De standaardwaarde is waar.  | Nee |
 | usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via TLS. De standaardwaarde is waar.  | Nee |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {
@@ -90,7 +90,7 @@ Als u gegevens wilt kopiëren uit Marketo, stelt u de eigenschap type van de geg
 | type | De eigenschap type van de gegevensset moet worden ingesteld op: **MarketoObject** | Ja |
 | tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
 
-**Voorbeeld**
+**Hierbij**
 
 ```json
 {
@@ -120,7 +120,7 @@ Als u gegevens wilt kopiëren uit Marketo, stelt u het bron type in de Kopieer a
 | type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **MarketoSource** | Ja |
 | query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Activitiy_Types"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 "activities":[

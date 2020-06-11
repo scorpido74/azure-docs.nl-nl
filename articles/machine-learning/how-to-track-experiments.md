@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: bbe4cfe2cce70735e765601e46cb62cd3939c693
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433096"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675199"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Uitvoeringen en metrische gegevens van Azure ML-experimenten bewaken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ Gebruik de __script module python uitvoeren__ om logboek registratie logica toe 
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ U kunt de metrische gegevens van een getraind model weer geven met behulp van ``
 
 Wanneer een experiment is uitgevoerd, kunt u bladeren naar de record voor het uitvoeren van opgenomen experimenten. U kunt de geschiedenis openen vanuit de [Azure machine learning Studio](https://ml.azure.com).
 
-Ga naar het tabblad experimenten en selecteer uw experiment. U wordt naar het dash board voor experimenteren geleid, waar u bijgehouden metrische gegevens en grafieken kunt zien die voor elke uitvoering worden vastgelegd. In dit geval hebben we de MSE en de alpha-waarden geregistreerd.
+Ga naar het tabblad experimenten en selecteer uw experiment. U wordt naar het dash board voor experimenteren geleid, waar u bijgehouden metrische gegevens en grafieken kunt zien die voor elke uitvoering worden vastgelegd. 
 
-  ![Details uitvoeren in de Azure Machine Learning Studio](./media/how-to-track-experiments/experiment-dashboard.png)
+U kunt de tabel run List bewerken om de laatste, minimale of maximale vastgelegde waarde voor uw uitvoeringen weer te geven. U kunt meerdere uitvoeringen selecteren of deselecteren in de lijst met uitgevoerde uitvoeringen en met de geselecteerde uitvoeringen worden de grafieken gevuld met uw gegevens. U kunt ook nieuwe grafieken toevoegen of grafieken bewerken om de vastgelegde metrische gegevens (minimum, maximum, laatste of alle waarden) te vergelijken in meerdere uitvoeringen. Als u uw gegevens effectiever wilt verkennen, kunt u ook uw grafieken maximaliseren.
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Details uitvoeren in de Azure Machine Learning Studio":::
 
 U kunt inzoomen op een specifieke uitvoering om de uitvoer of logboeken weer te geven of de moment opname te downloaden van het experiment dat u hebt verzonden, zodat u de map experiment met anderen kunt delen.
 

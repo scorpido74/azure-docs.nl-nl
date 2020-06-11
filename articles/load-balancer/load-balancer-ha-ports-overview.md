@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476974"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674649"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten met hoge Beschik baarheid
 
@@ -87,15 +87,12 @@ Als uw scenario vereist dat u meer dan één HA-poort front-end voor dezelfde ba
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Een intern load balancer met HA-poorten en een open bare load balancer op hetzelfde back-end-exemplaar
 
-U kunt *één* open bare Standard Load Balancer resource configureren voor de back-end-bronnen, samen met één interne Standard load BALANCER met ha-poorten.
-
->[!NOTE]
->Deze functie is momenteel beschikbaar via Azure Resource Manager sjablonen, maar is niet beschikbaar via de Azure Portal.
+U kunt *één* open bare Standard Load Balancer bron configureren voor de back-endservers, samen met één interne Standard load BALANCER met ha-poorten.
 
 ## <a name="limitations"></a>Beperkingen
 
 - De taakverdelings regels voor HA-poorten zijn alleen beschikbaar voor interne Standard Load Balancer.
-- De combi natie van Load-Balancing regel van HA-poorten en een niet-HA-poort regel voor taak verdeling die naar dezelfde backend-ipconfigurations verwijst, wordt niet ondersteund.
+- De combi natie van een regel voor taak verdeling van HA-poorten en een niet-HA-poort regel voor taak verdeling die verwijst naar dezelfde backend (s) voor de back-end, wordt alleen ondersteund als voor beide zwevende IP-adressen zijn ingeschakeld.
 - Bestaande IP-fragmenten worden doorgestuurd door HA-poorten taakverdelings regels naar hetzelfde doel als eerste pakket.  IP-fragmentatie van een UDP-of TCP-pakket wordt niet ondersteund.
 - Flow-symmetrie (voornamelijk voor NVA-scenario's) wordt ondersteund met een back-end-exemplaar en één NIC (en één IP-configuratie) alleen wanneer deze worden gebruikt zoals weer gegeven in het diagram hierboven en met behulp van de taakverdelings regels voor HA-poorten. Het is in geen enkel ander scenario opgenomen. Dit betekent dat twee of meer Load Balancer resources en de bijbehorende regels onafhankelijke beslissingen nemen en nooit gecoördineerd zijn. Bekijk de beschrijving en het diagram voor [virtuele netwerk apparaten](#nva). Wanneer u meerdere Nic's gebruikt of de NVA tussen een open bare en interne Load Balancer, is de stroom symmetrie niet beschikbaar.  U kunt dit mogelijk omzeilen door middel van de bron NAT'ing de ingangs stroom naar het IP-adres van het apparaat zodat antwoorden op dezelfde NVA kunnen worden ontvangen.  We raden u echter ten zeerste aan om één NIC te gebruiken en de referentie architectuur te gebruiken die wordt weer gegeven in het bovenstaande diagram.
 

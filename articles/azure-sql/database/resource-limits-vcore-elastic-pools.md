@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 05/29/2020
-ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235748"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668454"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Zie [SQL database DTU-resource limieten-elastische Pools](resource-limits-dtu-el
 > [!IMPORTANT]
 > In sommige gevallen moet u mogelijk een Data Base verkleinen om ongebruikte ruimte te claimen. Zie [Bestands ruimte beheren in Azure SQL database](file-space-manage.md)voor meer informatie.
 
-U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](elastic-pool-manage.md#powershell), de [Azure cli](elastic-pool-manage.md#azure-cli)of de [rest API](elastic-pool-manage.md#rest-api).
+U kunt de servicelaag, de reken grootte (Service doelstelling) en de opslag hoeveelheid instellen met behulp van de [Azure Portal](elastic-pool-manage.md#azure-portal), [Power shell](elastic-pool-manage.md#powershell), de [Azure cli](elastic-pool-manage.md#azure-cli)of de [rest API](elastic-pool-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Zie [een elastische pool schalen](elastic-pool-scale.md)voor meer informatie over schaling en overwegingen.
@@ -40,7 +40,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Service tier voor algemeen gebruik: generatie 4 Compute platform (deel 1)
 
-|Reken grootte|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Berekenings grootte (Service doelstelling)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|1|2|3|4|5|6|
@@ -72,7 +72,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Service tier voor algemeen gebruik: generatie 4 Compute platform (deel 2)
 
-|Reken grootte|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|Berekenings grootte (Service doelstelling)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
@@ -106,7 +106,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Service tier voor algemeen gebruik: generatie 5 Compute platform (deel 1)
 
-|Reken grootte|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Berekenings grootte (Service doelstelling)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|2|4|6|8|10|12|14|
@@ -138,7 +138,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Service tier voor algemeen gebruik: generatie 5 Compute platform (deel 2)
 
-|Reken grootte|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Berekenings grootte (Service doelstelling)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
@@ -172,13 +172,13 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Generatie van Fsv2-Series (preview-versie)
 
-|Reken grootte|GP_Fsv2_72|
+|Berekenings grootte (Service doelstelling)|GP_Fsv2_72|
 |:--- | --: |
 |Compute genereren|Fsv2-serie|
 |vCores|72|
 |Geheugen (GB)|136,2|
 |Maximum aantal Db's per pool <sup>1</sup>|500|
-|Column Store-ondersteuning|Yes|
+|Column Store-ondersteuning|Ja|
 |OLTP-opslag in het geheugen (GB)|N.v.t.|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|1024|
@@ -209,7 +209,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Bedrijfskritische servicelaag: generatie 4 Compute platform (deel 1)
 
-|Reken grootte|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Berekenings grootte (Service doelstelling)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|2|3|4|5|6|
@@ -241,7 +241,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Bedrijfskritische servicelaag: generatie 4 Compute platform (deel 2)
 
-|Reken grootte|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Berekenings grootte (Service doelstelling)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Compute genereren|Gen4|Gen4|Gen4|Gen4|Gen4|Gen4|
 |vCores|7|8|9|10|16|24|
@@ -275,7 +275,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Bedrijfskritische servicelaag: generatie 5 Compute platform (deel 1)
 
-|Reken grootte|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Berekenings grootte (Service doelstelling)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|4|6|8|10|12|14|
@@ -307,7 +307,7 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Bedrijfskritische servicelaag: generatie 5 Compute platform (deel 2)
 
-|Reken grootte|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Berekenings grootte (Service doelstelling)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Compute genereren|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|GEN5|
 |vCores|16|18|20|24|32|40|80|
@@ -341,13 +341,13 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 
 ### <a name="m-series-compute-generation-preview"></a>Generatie van d-Series Compute (preview-versie)
 
-|Reken grootte|BC_M_128|
+|Berekenings grootte (Service doelstelling)|BC_M_128|
 |:--- | --: |
 |Compute genereren|M-serie|
 |vCores|128|
 |Geheugen (GB)|3767,1|
 |Maximum aantal Db's per pool <sup>1</sup>|100|
-|Column Store-ondersteuning|Yes|
+|Column Store-ondersteuning|Ja|
 |OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
@@ -361,8 +361,8 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Min/max vCore keuzen voor elastische pool per data base|0-128|
 |Aantal replica's|4|
-|Meerdere AZ|Yes|
-|Uitschalen voor leesbewerking|Yes|
+|Meerdere AZ|Ja|
+|Uitschalen voor leesbewerking|Ja|
 |Opgenomen back-upopslag|1X-DB-grootte|
 
 <sup>1</sup> Zie [resource beheer in compacte elastische Pools](elastic-pool-resource-management.md) voor aanvullende overwegingen.
@@ -378,7 +378,7 @@ Als alle vCores van een elastische pool bezet zijn, ontvangt elke data base in d
 De volgende tabel beschrijft de eigenschappen voor gepoolde data bases.
 
 > [!NOTE]
-> De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools met dezelfde reken grootte. Zo is het maximum aantal gelijktijdige werk rollen voor een GP_Gen4_1-data base 200 werk nemers. Daarom is het maximum aantal gelijktijdige werk rollen voor een data base in een GP_Gen4_1 groep ook 200 werk nemers. Opmerking: het totale aantal gelijktijdige werk rollen in GP_Gen4_1 pool is 210.
+> De resource limieten van afzonderlijke data bases in elastische Pools zijn in het algemeen hetzelfde als voor afzonderlijke data bases buiten Pools met dezelfde reken grootte (Service doelstelling). Zo is het maximum aantal gelijktijdige werk rollen voor een GP_Gen4_1-data base 200 werk nemers. Daarom is het maximum aantal gelijktijdige werk rollen voor een data base in een GP_Gen4_1 groep ook 200 werk nemers. Opmerking: het totale aantal gelijktijdige werk rollen in GP_Gen4_1 pool is 210.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |

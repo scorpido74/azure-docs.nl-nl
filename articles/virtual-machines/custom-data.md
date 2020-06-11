@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259113"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678355"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Aangepaste gegevens en Cloud-init op Azure Virtual Machines
 
-## <a name="what-is-custom-data"></a>Wat zijn aangepaste gegevens?
-
-Klanten vragen vaak hoe ze een script of andere meta gegevens kunnen injecteren in een Microsoft Azure virtuele machine op het moment van inrichting.  In andere Clouds wordt dit concept vaak gebruikers gegevens genoemd.  In Microsoft Azure hebben we een vergelijk bare functie met de naam aangepaste gegevens. 
+Mogelijk moet u op het tijdstip van de inrichting een script of andere meta gegevens in een Microsoft Azure virtuele machine injecteren.  In andere Clouds wordt dit concept vaak gebruikers gegevens genoemd.  In Microsoft Azure hebben we een vergelijk bare functie met de naam aangepaste gegevens. 
 
 Aangepaste gegevens worden alleen beschikbaar gesteld voor de virtuele machine tijdens de eerste keer opstarten/initiële installatie. deze worden aangeroepen. Inrichting is het proces waarbij VM-para meters (bijvoorbeeld hostname, gebruikers naam, wacht woord, certificaten, aangepaste gegevens, sleutels enz.) beschikbaar worden gemaakt voor de virtuele machine en een inrichtings agent verwerkt, zoals de [Linux-agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) en [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
 
@@ -65,12 +63,12 @@ De inrichtings agents die op de virtuele machines-handler zijn geïnstalleerd, h
 Aangepaste gegevens worden in *%systemdrive%\AzureData\CustomData.bin* geplaatst als een binair bestand, maar worden niet verwerkt. Als u dit bestand wilt verwerken, moet u een aangepaste installatie kopie maken en code schrijven om de CustomData. bin te verwerken.
 
 ### <a name="linux"></a>Linux  
-Op Linux-besturings systemen worden aangepaste gegevens door gegeven aan de virtuele machine via het OVF-env. XML-bestand, dat tijdens het inrichten wordt gekopieerd naar de map */var/lib/waagent* .  Nieuwere versies van de Microsoft Azure Linux-agent kopiëren ook de met base64 gecodeerde gegevens naar */var/lib/waagent/CustomData* , en voor het gemak.
+Op Linux-besturings systemen worden aangepaste gegevens door gegeven aan de virtuele machine via het ovf-env.xml-bestand, dat tijdens het inrichten wordt gekopieerd naar de map */var/lib/waagent* .  Nieuwere versies van de Microsoft Azure Linux-agent kopiëren ook de met base64 gecodeerde gegevens naar */var/lib/waagent/CustomData* , en voor het gemak.
 
 Azure ondersteunt momenteel twee inrichtings agenten:
 * Linux-agent: door de agent worden standaard geen aangepaste gegevens verwerkt. u moet een aangepaste installatie kopie bouwen waarvoor deze is ingeschakeld. De relevante instellingen, zoals in de [documentatie](https://github.com/Azure/WALinuxAgent#configuration) , zijn:
     * Provisioning. DecodeCustomData
-    * Provisioning. ExecuteCustomData
+    * Provisioning.ExecuteCustomData
 
 Wanneer u aangepaste gegevens inschakelt en een script uitvoert, wordt de VM-rapportage die het gereed is voor het uitvoeren van het script, vertraagd of wordt het inrichten voltooid totdat het is voltooid. Als het script de totale tijd van 40 minuten voor de inrichting van de virtuele machine overschrijdt, mislukt het maken van de virtuele machine. Opmerking: als het script niet kan worden uitgevoerd of wanneer er fouten optreden tijdens het uitvoeren, wordt er geen fatale inrichtings fout beschouwd. u moet een aanmeldingsscriptpad maken om u te waarschuwen voor de voltooiings status van het script.
 

@@ -3,16 +3,16 @@ title: Onderhouds beheer voor virtuele Azure-machines met CLI
 description: Meer informatie over hoe u kunt bepalen wanneer onderhoud wordt toegepast op uw Azure-Vm's met behulp van onderhouds beheer en CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137498"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675856"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Updates beheren met onderhouds beheer en de Azure CLI
 
@@ -39,7 +39,7 @@ Met `--maintenanceScope host` kunt u ervoor zorgen dat de onderhouds configurati
 
 Als u probeert een configuratie met dezelfde naam te maken, maar op een andere locatie, krijgt u een fout melding. Configuratie namen moeten uniek zijn voor uw abonnement.
 
-U kunt een query uitvoeren voor beschik `az maintenance configuration list`bare onderhouds configuraties met.
+U kunt een query uitvoeren voor beschik bare onderhouds configuraties met `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -51,7 +51,7 @@ Gebruiken `az maintenance assignment create` om de configuratie toe te wijzen aa
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
-Pas de configuratie toe op een virtuele machine met behulp van de ID van de configuratie. Geef `--resource-type virtualMachines` de naam van de virtuele machine voor `--resource-name`en de resource groep voor voor de virtuele machine in `--resource-group`, en de locatie van de virtuele machine voor `--location`. 
+Pas de configuratie toe op een virtuele machine met behulp van de ID van de configuratie. Geef `--resource-type virtualMachines` de naam van de virtuele machine voor en `--resource-name` de resource groep voor voor de virtuele machine in `--resource-group` , en de locatie van de virtuele machine voor `--location` . 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -66,9 +66,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Toegewezen host
 
-Als u een configuratie wilt Toep assen op een specifieke host, moet `--resource-type hosts`u `--resource-parent-name` de naam van de hostgroep en `--resource-parent-type hostGroups`gebruiken. 
+Als u een configuratie wilt Toep assen op een specifieke host, moet `--resource-type hosts` u `--resource-parent-name` de naam van de hostgroep en gebruiken `--resource-parent-type hostGroups` . 
 
-De para `--resource-id` meter is de id van de host. U kunt [AZ VM host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) gebruiken om de id van uw specifieke host op te halen.
+De para meter `--resource-id` is de id van de host. U kunt [AZ VM host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) gebruiken om de id van uw specifieke host op te halen.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -85,7 +85,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>Configuratie controleren
 
-U kunt controleren of de configuratie correct is toegepast, of controleren welke configuratie momenteel wordt toegepast met `az maintenance assignment list`.
+U kunt controleren of de configuratie correct is toegepast, of controleren welke configuratie momenteel wordt toegepast met `az maintenance assignment list` .
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -118,7 +118,7 @@ az maintenance assignment list \
 
 Gebruiken `az maintenance update list` om te zien of er updates in behandeling zijn. Update--abonnement als ID voor het abonnement dat de virtuele machine bevat.
 
-Als er geen updates zijn, wordt er een fout bericht weer gegeven met de volgende tekst: `Resource not found...StatusCode: 404`.
+Als er geen updates zijn, wordt er een fout bericht weer gegeven met de volgende tekst: `Resource not found...StatusCode: 404` .
 
 Als er updates zijn, wordt er slechts één geretourneerd, zelfs als er meerdere updates in behandeling zijn. De gegevens voor deze update worden geretourneerd in een object:
 
@@ -199,9 +199,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>De status van het Toep assen van updates controleren 
 
-U kunt de voortgang van de updates controleren met behulp `az maintenance applyupdate get`van. 
+U kunt de voortgang van de updates controleren met behulp van `az maintenance applyupdate get` . 
 
-U kunt als `default` Update naam gebruiken om de resultaten voor de laatste update te bekijken of door `myUpdateName` de naam te vervangen van de update die is geretourneerd tijdens het `az maintenance applyupdate create`uitvoeren van.
+U kunt `default` als update naam gebruiken om de resultaten voor de laatste update te bekijken of door `myUpdateName` de naam te vervangen van de update die is geretourneerd tijdens het uitvoeren van `az maintenance applyupdate create` .
 
 ```text
 Status         : Completed

@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170355"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672626"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Problemen vaststellen en oplossen bij het gebruik van Azure Cosmos DB .NET SDK
 
@@ -32,10 +32,10 @@ Bekijk de volgende controle lijst voordat u uw toepassing naar productie gaat ve
 *    De nieuwste [SDK](sql-api-sdk-dotnet-standard.md)gebruiken. Preview-Sdk's mogen niet worden gebruikt voor productie. Dit voor komt dat bekende problemen die al zijn opgelost, worden gerepareerd.
 *    Bekijk de [Tips voor prestaties](performance-tips.md)en volg de aanbevolen procedures. Dit helpt voor komen dat schalen, latentie en andere prestatie problemen worden opgelost.
 *    Schakel de SDK-logboek registratie in om u te helpen bij het oplossen van een probleem. Het inschakelen van de logboek registratie kan van invloed zijn op de prestaties, zodat het het beste kan worden ingeschakeld wanneer u problemen oplost. U kunt de volgende logboeken inschakelen:
-    *    [Metrische gegevens vastleggen](monitor-accounts.md) met behulp van de Azure Portal. Met metrische gegevens van de portal wordt de Azure Cosmos DB telemetrie weer gegeven. Dit is handig om te bepalen of het probleem overeenkomt met Azure Cosmos DB of van de client zijde.
-    *    Registreer de [Diagnostische teken reeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) in de v2 SDK of [diagnoses](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) in de V3 SDK van de punt bewerkings reacties.
-    *    De [metrische gegevens](sql-api-query-metrics.md) van de SQL-query registreren bij alle antwoorden op query's 
-    *    Volg de installatie van de [SDK-logboek registratie]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)
+*    [Metrische gegevens vastleggen](monitor-accounts.md) met behulp van de Azure Portal. Met metrische gegevens van de portal wordt de Azure Cosmos DB telemetrie weer gegeven. Dit is handig om te bepalen of het probleem overeenkomt met Azure Cosmos DB of van de client zijde.
+*    Registreer de [Diagnostische teken reeks](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) in de v2 SDK of [diagnoses](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) in de V3 SDK van de punt bewerkings reacties.
+*    De [metrische gegevens](sql-api-query-metrics.md) van de SQL-query registreren bij alle antwoorden op query's 
+*    Volg de installatie van de [SDK-logboek registratie]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md)
 
 Bekijk de sectie [veelvoorkomende problemen en tijdelijke oplossingen](#common-issues-workarounds) in dit artikel.
 

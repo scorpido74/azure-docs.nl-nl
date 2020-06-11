@@ -3,12 +3,12 @@ title: Meerdere exemplaren van een eigenschap definiëren
 description: Gebruik een Kopieer bewerking in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het maken van een eigenschap in een resource.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583406"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678457"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Eigenschaps herhaling in ARM-sjablonen
 
@@ -51,11 +51,11 @@ Eerdere versies van Power shell, CLI en de REST API bieden geen ondersteuning vo
 
 ## <a name="property-iteration"></a>Eigenschaps herhaling
 
-In het volgende voor beeld ziet u `copy` hoe u kunt Toep assen op de eigenschap data disks op een virtuele machine:
+In het volgende voor beeld ziet u hoe u kunt Toep assen `copy` op de eigenschap data disks op een virtuele machine:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {
@@ -126,7 +126,7 @@ Resource Manager breidt de `copy` matrix uit tijdens de implementatie. De naam v
       ...
 ```
 
-De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven `copyIndex` en om de huidige index in de matrix op te halen.
+De Kopieer bewerking is handig bij het werken met matrices, omdat u elk element in de matrix kunt door lopen. Gebruik de `length` functie op de matrix om het aantal voor herhalingen op te geven en `copyIndex` om de huidige index in de matrix op te halen.
 
 Met de volgende voorbeeld sjabloon wordt een failovergroep gemaakt voor data bases die worden door gegeven als een matrix.
 

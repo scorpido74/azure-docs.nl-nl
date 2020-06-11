@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c0ae6a96a303c1c9d2887e6ed4dfb0d1fed4453
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603464"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672575"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>DNS beheren en voorwaardelijke doorstuur servers maken in een Azure AD Domain Services beheerd domein
 
@@ -58,7 +58,7 @@ Als u DNS-records wilt maken en wijzigen in azure AD DS, moet u de DNS-server hu
 
     ![De Hulpprogram ma's voor de DNS-server installeren in de lijst met beschik bare hulpprogram ma's voor functie beheer](./media/manage-dns/install-dns-tools.png)
 
-1. Selecteer **installeren**op de pagina **bevestiging** . Het kan een paar minuten duren voordat de groepsbeleid-beheer hulpprogramma's zijn geïnstalleerd.
+1. Selecteer **installeren**op de pagina **bevestiging** . Het kan een paar minuten duren voordat de hulpprogram ma's voor het beheer van dnsGroup-beleid zijn geïnstalleerd.
 1. Wanneer de installatie van de functie is voltooid, selecteert u **sluiten** om de wizard **functies en onderdelen toevoegen** af te sluiten.
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>De DNS-beheer console openen voor het beheren van DNS
@@ -96,7 +96,7 @@ Voer de volgende stappen uit om een voorwaardelijke doorstuur server te maken in
 
 1. Schakel het selectie vakje **in om deze voorwaardelijke doorstuur server op te slaan in Active Directory en repliceer deze als volgt en**Selecteer vervolgens de optie voor *alle DNS-servers in dit domein*, zoals wordt weer gegeven in het volgende voor beeld:
 
-    ![DNS-console-domein beheren](./media/manage-dns/store-in-domain.png)
+    ![DNS-console: alle DNS-servers in dit domein selecteren](./media/manage-dns/store-in-domain.png)
 
     > [!IMPORTANT]
     > Als de voorwaardelijke doorstuur server wordt opgeslagen in het *forest* in plaats van het *domein*, mislukt de voorwaardelijke doorstuur server.

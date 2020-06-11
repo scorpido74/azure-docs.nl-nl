@@ -3,12 +3,12 @@ title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup
 description: In dit artikel vindt u informatie over het maken van een back-up van een SAP HANA Data Base naar Azure virtual machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 20086516dc37538474a31c7735e9b2d3b1a3d5b2
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248563"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667315"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Back-ups maken van SAP HANA-databases in virtuele Azure-machines
 
@@ -20,7 +20,7 @@ In dit artikel leert u het volgende:
 > [!div class="checklist"]
 >
 > * Een kluis maken en configureren
-> * Data bases ontdekken
+> * Databases detecteren
 > * Back-ups configureren
 > * Een back-uptaak op aanvraag uitvoeren
 
@@ -43,15 +43,15 @@ De volgende tabel geeft een lijst van de verschillende alternatieven die u kunt 
 
 | **Optie**                        | **Voordelen**                                               | **Nadelen**                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Privé-eind punten                 | Back-ups via privé-IP-adressen in het virtuele netwerk toestaan  <br><br>   Nauw keurig beheer van het netwerk en de kluis zijde bieden | Standaard [kosten](https://azure.microsoft.com/pricing/details/private-link/) voor privé-eind punten |
-| NSG-service Tags                  | Eenvoudiger te beheren als bereik wijzigingen worden automatisch samengevoegd   <br><br>   Geen extra kosten | Kan alleen worden gebruikt met Nsg's  <br><br>    Biedt toegang tot de volledige service |
+| Privé-eindpunten                 | Back-ups via privé-IP-adressen in het virtuele netwerk toestaan  <br><br>   Nauw keurig beheer van het netwerk en de kluis zijde bieden | Standaard [kosten](https://azure.microsoft.com/pricing/details/private-link/) voor privé-eind punten |
+| NSG-service Tags                  | Eenvoudiger om te beheren omdat veranderingen in het bereik automatisch worden samengevoegd   <br><br>   Geen extra kosten | Kan alleen worden gebruikt met NSG's  <br><br>    Biedt toegang tot de gehele service |
 | Azure Firewall FQDN-Tags          | Eenvoudiger te beheren omdat de vereiste FQDN-s automatisch worden beheerd | Kan alleen worden gebruikt met Azure Firewall                         |
 | Toegang tot FQDN/Ip's van service toestaan | Geen extra kosten   <br><br>  Werkt met alle netwerk beveiligings apparaten en firewalls | Er is mogelijk een groot aantal IP-adressen of FQDN-namen vereist om toegang te krijgen   |
-| Een HTTP-proxy gebruiken                 | Eén toegangs punt voor Internet toegang tot Vm's                       | Aanvullende kosten voor het uitvoeren van een virtuele machine met de proxy software         |
+| Een HTTP-proxy gebruiken                 | Eén internettoegangspunt voor virtuele machines                       | Extra kosten voor het uitvoeren van een virtuele machine met de proxysoftware         |
 
 Meer informatie over het gebruik van deze opties vindt u hieronder:
 
-#### <a name="private-endpoints"></a>Privé-eind punten
+#### <a name="private-endpoints"></a>Privé-eindpunten
 
 Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een virtueel netwerk naar uw Recovery Services kluis. Het persoonlijke eind punt gebruikt een IP-adres van de VNET-Address ruimte voor uw kluis. Het netwerk verkeer tussen uw resources binnen het virtuele netwerk en de kluis wordt verplaatst naar het virtuele netwerk en een privé-koppeling in het micro soft backbone-netwerk. Dit elimineert de bloot stelling van het open bare Internet. Lees [hier](https://docs.microsoft.com/azure/backup/private-endpoints)meer over privé-eind punten voor Azure backup.
 
@@ -59,11 +59,11 @@ Met persoonlijke eind punten kunt u veilig verbinding maken met servers in een v
 
 Als u netwerk beveiligings groepen (NSG) gebruikt, gebruikt u de *AzureBackup* -servicetag om uitgaande toegang tot Azure backup toe te staan. Naast het Azure Backup-label moet u ook connectiviteit voor verificatie en gegevens overdracht toestaan door soort gelijke [NSG regels](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) te maken voor *Azure AD* en *Azure Storage*.  In de volgende stappen wordt het proces beschreven voor het maken van een regel voor de Azure Backup-tag:
 
-1. In **alle services**gaat u naar **netwerk beveiligings groepen** en selecteert u de netwerk beveiligings groep.
+1. In **Alle services** gaat u naar **Netwerkbeveiligingsgroepen** en selecteert u de netwerkbeveiligingsgroep.
 
-1. Selecteer **uitgaande beveiligings regels** onder **instellingen**.
+1. Selecteer de optie **Uitgaande beveiligingsregels** onder **Instellingen**.
 
-1. Selecteer **Toevoegen**. Voer alle vereiste gegevens voor het maken van een nieuwe regel in, zoals beschreven in de instellingen van de [beveiligings regel](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
+1. Selecteer **Toevoegen**. Voer alle vereiste details in voor het maken van een nieuwe regel, zoals beschreven in de [instellingen voor beveiligingsregels](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Zorg ervoor dat de optie **bestemming** is ingesteld op *service label* en **doel service label** is ingesteld op *AzureBackup*.
 
 1. Klik op **toevoegen** om de zojuist gemaakte uitgaande beveiligings regel op te slaan.
 
@@ -89,23 +89,23 @@ U kunt ook de volgende FQDN-namen gebruiken om toegang te verlenen tot de vereis
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>Een HTTP-proxy server gebruiken om verkeer te routeren
 
-Wanneer u een back-up maakt van een SAP HANA data base die wordt uitgevoerd op een virtuele machine van Azure, gebruikt de back-upextensie op de VM de HTTPS-Api's om beheer opdrachten naar Azure Backup en gegevens naar Azure Storage te verzenden. Voor de back-upextensie wordt ook Azure AD gebruikt voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. Gebruik de lijst met IP-adressen en FQDN-namen die hierboven worden genoemd om toegang tot de vereiste services toe te staan. Geverifieerde proxy servers worden niet ondersteund.
+Wanneer u een back-up maakt van een SAP HANA data base die wordt uitgevoerd op een virtuele machine van Azure, gebruikt de back-upextensie op de VM de HTTPS-Api's om beheer opdrachten naar Azure Backup en gegevens naar Azure Storage te verzenden. De back-upextensie maakt ook gebruik van Azure AD voor verificatie. Leid het verkeer van de back-upextensie voor deze drie services via de HTTP-proxy. Gebruik de lijst met IP-adressen en FQDN-namen die hierboven worden genoemd om toegang tot de vereiste services toe te staan. Geverifieerde proxy servers worden niet ondersteund.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-the-databases"></a>De data bases ontdekken
+## <a name="discover-the-databases"></a>De databases detecteren
 
-1. Klik in de kluis in **aan**de slag op **back-up**. In **waar wordt uw workload uitgevoerd?** Selecteer **SAP Hana in azure VM**.
-2. Klik op **detectie starten**. Hiermee initieert u de detectie van onbeveiligde virtuele Linux-machines in de kluis regio.
+1. Klik in de kluis bij **Aan de slag** op **Back-up**. In **Waar wordt uw werkbelasting uitgevoerd?** selecteert u **SAP HANA in Azure-VM**.
+2. Klik op **Detectie starten**. Hiermee start u de detectie van niet-beveiligde virtuele Linux-machines in de regio van de kluis.
 
    * Na detectie worden onbeveiligde Vm's weer gegeven in de portal, vermeld op naam en resource groep.
    * Als een virtuele machine niet naar verwachting wordt vermeld, controleert u of er al een back-up is gemaakt in een kluis.
    * Meerdere virtuele machines kunnen dezelfde naam hebben, maar ze behoren tot verschillende resource groepen.
 
-3. In **virtual machines selecteren**klikt u op de koppeling om het script te downloaden dat machtigingen biedt voor de Azure backup-service om toegang te krijgen tot de SAP Hana vm's voor database detectie.
+3. In **Virtuele machines selecteren** klikt u op de koppeling om het script dat machtigingen biedt voor de Azure Backup-service te downloaden, voor toegang tot de virtuele SAP HANA-machines voor de detectie van databases.
 4. Voer het script uit op elke VM die als host fungeert voor SAP HANA-data bases waarvan u een back-up wilt maken.
-5. Nadat u het script op de virtuele machines hebt uitgevoerd, selecteert u de virtuele machines in **virtual machines selecteren**. Klik vervolgens op **Discover db's**.
-6. Azure Backup detecteert alle SAP HANA-data bases op de virtuele machine. Tijdens de detectie wordt de virtuele machine door Azure Backup geregistreerd bij de kluis en wordt een extensie op de VM geïnstalleerd. Er is geen agent geïnstalleerd op de data base.
+5. Nadat u het script op de virtuele machines hebt uitgevoerd, selecteert u de virtuele machines in **virtual machines selecteren**. Klik vervolgens op **DB's detecteren**.
+6. Azure Backup detecteert alle SAP HANA databases op de virtuele machine. Tijdens het detecteren registreert Azure Backup de virtuele machine met de kluis en wordt een extensie op de virtuele machine geïnstalleerd. Er is geen agent geïnstalleerd op de database.
 
     ![SAP HANA-data bases ontdekken](./media/backup-azure-sap-hana-database/hana-discover.png)
 
@@ -125,21 +125,21 @@ Schakel nu back-up in.
 4. Nadat u het beleid hebt gemaakt, klikt u in het menu **back-up** op **back-up inschakelen**.
 
     ![Back-up inschakelen](./media/backup-azure-sap-hana-database/enable-backup.png)
-5. Volg de voortgang van de configuratie van de back-up in het gebied **meldingen** van de portal.
+5. Volg de voortgang van de back-upconfiguratie in het **Systeemvak** van de portal.
 
 ### <a name="create-a-backup-policy"></a>Maak een back-upbeleid
 
-Een back-upbeleid definieert wanneer er back-ups worden gemaakt en hoe lang ze worden bewaard.
+Een back-upbeleid bepaalt wanneer back-ups worden gemaakt en hoe lang ze worden bewaard.
 
 * Een beleid wordt gemaakt op kluisniveau.
 * U kunt hetzelfde back-upbeleid gebruiken voor meerdere kluizen, maar u moet het back-upbeleid toepassen op elke kluis.
 
 >[!NOTE]
->Azure Backup wordt niet automatisch aangepast aan de zomer-en winter tijd bij het maken van een back-up van een SAP HANA-data base die wordt uitgevoerd in een Azure VM.
+>Azure Backup past de tijd niet automatisch aan de zomertijd aan wanneer u een back-up van een SAP HANA-database maakt die op een virtuele Azure-machine wordt uitgevoerd.
 >
->Pas het beleid zo nodig hand matig aan.
+>Pas het beleid waar nodig handmatig aan.
 
-Geef de beleids instellingen als volgt op:
+Geef als volgt de beleidsinstellingen op:
 
 1. Geef bij **Beleidsnaam** een naam voor het nieuwe beleid op.
 
@@ -153,34 +153,34 @@ Geef de beleids instellingen als volgt op:
 
    ![Back-upfrequentie selecteren](./media/backup-azure-sap-hana-database/backup-frequency.png)
 
-3. Configureer in **Bewaar termijn**de Bewaar instellingen voor de volledige back-up.
+3. In **Bewaartermijn** configureert u de bewaarinstellingen voor de volledige back-up.
     * Alle opties zijn standaard geselecteerd. Wis de limieten voor het Bewaar bereik die u niet wilt gebruiken en stel de beperkingen in die u doet.
-    * De minimale Bewaar periode voor elk type back-up (volledig/differentieel/logboek) is zeven dagen.
+    * De minimale bewaarperiode voor elk type back-up (volledig/differentieel/logboek) is zeven dagen.
     * Herstelpunten worden getagd voor retentie op basis van de bewaarperiode. Als u een dagelijkse volledige back-up selecteert, wordt slechts één volledige back-up per dag geactiveerd.
-    * De back-up voor een specifieke dag wordt gelabeld en bewaard op basis van het wekelijkse Bewaar bereik en de instelling.
+    * De back-up voor een specifieke dag wordt getagd en bewaard op basis van de wekelijkse bewaarperiode en uw instellingen.
     * De maandelijkse en jaarlijkse bewaarperioden werken op soortgelijke wijze.
 
-4. Klik in het menu **beleid voor volledige back-up** op **OK** om de instellingen te accepteren.
+4. In het menu **Beleid voor een volledige back-up** klikt u op **OK** om de instellingen te accepteren.
 5. Selecteer **differentiële back-up** om een differentieel beleid toe te voegen.
 6. In **Beleid voor een differentiële back-up** selecteert u **Inschakelen** om de frequentie- en bewaarinstellingen te openen.
     * U kunt maximaal één differentiële back-up per dag activeren.
     * Differentiële back-ups kunnen maximaal 180 dagen worden bewaard. Als dat voor u te kort is, moet u volledige back-ups gebruiken.
 
-    ![Differentiële back-upbeleid](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
+    ![Beleid voor differentiële back-ups](./media/backup-azure-sap-hana-database/differential-backup-policy.png)
 
     > [!NOTE]
     > Incrementele back-ups worden momenteel niet ondersteund.
 
-7. Klik op **OK** om het beleid op te slaan en terug te gaan naar het hoofd menu van het **back-upbeleid** .
-8. Selecteer **logboek back-up** om een transactionele logboek back-upbeleid toe te voegen.
-    * Selecteer in **logboek back-up**de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboek back-ups beheert.
+7. Klik op **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
+8. Selecteer **Logboekback-up** als u een back-upbeleid voor een transactielogboek wilt toevoegen;
+    * Selecteer in **logboek back-up**de optie **inschakelen**.  Dit kan niet worden uitgeschakeld omdat SAP HANA alle logboekback-ups beheert.
     * Stel de besturings elementen voor de frequentie en de retentie in.
 
     > [!NOTE]
     > Logboek back-ups gaan alleen naar de stroom nadat een geslaagde volledige back-up is voltooid.
 
-9. Klik op **OK** om het beleid op te slaan en terug te gaan naar het hoofd menu van het **back-upbeleid** .
-10. Klik op **OK**nadat u klaar bent met het definiëren van het back-upbeleid.
+9. Klik op **OK** om het beleid op te slaan en terug te gaan naar het hoofdmenu **Back-upbeleid**.
+10. Zodra u het back-upbeleid hebt gedefinieerd, klikt u op **OK**.
 
 > [!NOTE]
 > Elke logboek back-up wordt gekoppeld aan de vorige volledige back-up om een herstel keten te vormen. Deze volledige back-up wordt bewaard totdat de retentie van de laatste back-up van het logboek is verlopen. Dit kan betekenen dat de volledige back-up gedurende een extra periode wordt bewaard om ervoor te zorgen dat alle logboeken kunnen worden hersteld. We gaan ervan uit dat de gebruiker een wekelijkse volledige back-up, een dagelijks differentieel en twee uur logboeken heeft. Deze zijn allemaal 30 dagen bewaard. Maar de wekelijkse volledige kan echter echt worden opgeruimd/verwijderd nadat de volgende volledige back-up beschikbaar is, dat wil zeggen, na 30 en 7 dagen. Stel dat er een wekelijkse volledige back-up plaatsvindt op een zestiende. Volgens het Bewaar beleid moet het worden bewaard tot dec 16de. De laatste keer dat de back-up van het logboek is gemaakt voor deze volledige, wordt de volgende geplande volledige, op nov 22. Totdat dit logboek beschikbaar is tot dec 22, kan de zestien 16de volledig niet worden verwijderd. Tot en met dec 22 wordt dus de ge16dede volledige nov bewaard.
@@ -191,7 +191,7 @@ Back-ups worden uitgevoerd volgens het beleids schema. U kunt als volgt een back
 
 1. Klik in het menu kluis op **Back-upitems**.
 2. Selecteer in **Back-upitems**de virtuele machine waarop de SAP Hana-data base wordt uitgevoerd en klik vervolgens op **Nu back-up maken**.
-3. In **Nu back-up**kunt u het besturings element kalender gebruiken om de laatste dag te selecteren dat het herstel punt moet worden bewaard. Klik vervolgens op **OK**.
+3. Kies in **Nu back-up**het type back-up dat u wilt uitvoeren. Klik vervolgens op **OK**. Deze back-up wordt bewaard op basis van het beleid dat aan dit back-upitem is gekoppeld.
 4. De portal meldingen bewaken. U kunt de voortgang van de taak in het kluis dashboard controleren > **back-uptaken**worden  >  **uitgevoerd**. Afhankelijk van de grootte van de data base kan het maken van de eerste back-up enige tijd duren.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA Studio-back-up uitvoeren op een Data Base met Azure Backup ingeschakeld
@@ -211,5 +211,5 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het [herstellen van SAP Hana-data bases die worden uitgevoerd op virtuele Azure-machines](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
+* Meer informatie over [het herstellen van SAP HANA-databases die worden uitgevoerd op virtuele Azure-machines](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
 * Meer informatie over het [beheren van SAP Hana databases waarvan een back-up is gemaakt met behulp van Azure backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)

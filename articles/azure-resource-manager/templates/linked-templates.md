@@ -3,12 +3,12 @@ title: Koppelings sjablonen voor implementatie
 description: Hierin wordt beschreven hoe u gekoppelde sjablonen in een Azure Resource Manager sjabloon gebruikt om een modulaire sjabloon oplossing te maken. Toont hoe parameter waarden worden door gegeven, geef een parameter bestand op en dynamisch gemaakte Url's.
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6594386fd2d8c8ab9d9c1414d7e04f4352a3f086
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609303"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678270"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources
 
@@ -69,7 +69,7 @@ In het volgende voor beeld wordt een opslag account met een geneste sjabloon ge�
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -96,7 +96,7 @@ In het volgende voor beeld wordt een opslag account met een geneste sjabloon ge�
 
 Wanneer u een geneste sjabloon gebruikt, kunt u opgeven of sjabloon expressies worden geëvalueerd binnen het bereik van de bovenliggende sjabloon of de geneste sjabloon. Het bereik bepaalt hoe para meters, variabelen en functies, zoals [resourceGroup](template-functions-resource.md#resourcegroup) en [abonnementen](template-functions-resource.md#subscription) , worden opgelost.
 
-U stelt het bereik in via `expressionEvaluationOptions` de eigenschap. De `expressionEvaluationOptions` eigenschap is standaard ingesteld op `outer`, wat inhoudt dat het bereik van de bovenliggende sjabloon wordt gebruikt. Stel de waarde in `inner` op om te zorgen dat expressies worden geëvalueerd binnen het bereik van de geneste sjabloon.
+U stelt het bereik in via de `expressionEvaluationOptions` eigenschap. De `expressionEvaluationOptions` eigenschap is standaard ingesteld op `outer` , wat inhoudt dat het bereik van de bovenliggende sjabloon wordt gebruikt. Stel de waarde in op om te `inner` zorgen dat expressies worden geëvalueerd binnen het bereik van de geneste sjabloon.
 
 ```json
 {
@@ -132,7 +132,7 @@ In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens he
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ In de volgende sjabloon ziet u hoe sjabloon expressies worden omgezet volgens he
 }
 ```
 
-De waarde van `exampleVar` wijzigingen, afhankelijk van de waarde van de `scope` eigenschap in `expressionEvaluationOptions`. In de volgende tabel ziet u de resultaten voor beide bereiken.
+De waarde van `exampleVar` wijzigingen, afhankelijk van de waarde van de `scope` eigenschap in `expressionEvaluationOptions` . In de volgende tabel ziet u de resultaten voor beide bereiken.
 
 | `expressionEvaluationOptions` `scope` | Uitvoer |
 | ----- | ------ |
 | wend | van geneste sjabloon |
 | Outer (of standaard) | van bovenliggende sjabloon |
 
-In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sleutel kluis geheim opgehaald dat moet worden gebruikt voor het wacht woord. Het bereik is ingesteld op `inner` omdat het de sleutel kluis-id dynamisch maakt ( `adminPassword.reference.keyVault` Zie in de buitenste sjablonen `parameters`) en geeft deze door als een para meter voor de geneste sjabloon.
+In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sleutel kluis geheim opgehaald dat moet worden gebruikt voor het wacht woord. Het bereik is ingesteld op `inner` omdat het de sleutel kluis-id dynamisch maakt (Zie `adminPassword.reference.keyVault` in de buitenste sjablonen `parameters` ) en geeft deze door als een para meter voor de geneste sjabloon.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sl
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,7 +277,7 @@ In het volgende voor beeld wordt een SQL Server geïmplementeerd en wordt een sl
 
 > [!NOTE]
 >
-> Wanneer Scope is ingesteld op `outer`, kunt u de `reference` functie niet gebruiken in de sectie outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon `inner` wilt retour neren, gebruikt u bereik of converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
+> Wanneer Scope is ingesteld op `outer` , kunt u de functie niet gebruiken `reference` in de sectie outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u de waarden voor een geïmplementeerde resource in een geneste sjabloon wilt retour neren, gebruikt u `inner` bereik of converteert u uw geneste sjabloon naar een gekoppelde sjabloon.
 
 ## <a name="linked-template"></a>Gekoppelde sjabloon
 
@@ -308,11 +308,11 @@ Als u een sjabloon wilt koppelen, moet u een implementatie van een [resource](/a
 }
 ```
 
-Bij het verwijzen naar een gekoppelde sjabloon, mag de `uri` waarde van niet een lokaal bestand zijn of een bestand dat alleen beschikbaar is op uw lokale netwerk. U moet een URI-waarde opgeven die kan worden gedownload als **http** of **https**. 
+Bij het verwijzen naar een gekoppelde sjabloon, mag de waarde van `uri` niet een lokaal bestand zijn of een bestand dat alleen beschikbaar is op uw lokale netwerk. U moet een URI-waarde opgeven die kan worden gedownload als **http** of **https**.
 
 > [!NOTE]
 >
-> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden **https**omgezet in iets waarbij gebruik wordt gemaakt `_artifactsLocation` van **http** of HTTPS, bijvoorbeeld met behulp van de para meter als volgt:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> U kunt verwijzen naar sjablonen met behulp van para meters die uiteindelijk worden omgezet in iets waarbij gebruik wordt gemaakt van **http** of **https**, bijvoorbeeld met behulp van de `_artifactsLocation` para meter als volgt:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
@@ -369,7 +369,7 @@ U kunt niet zowel inline-para meters als een koppeling naar een parameter bestan
 
 ## <a name="contentversion"></a>contentVersion
 
-U hoeft de `contentVersion` eigenschap voor de `templateLink` eigenschap of `parametersLink` niet op te geven. Als u geen opgeeft `contentVersion`, wordt de huidige versie van de sjabloon geïmplementeerd. Als u een waarde voor de inhouds versie opgeeft, moet deze overeenkomen met de versie in de gekoppelde sjabloon. anders mislukt de implementatie met een fout.
+U hoeft de `contentVersion` eigenschap voor de eigenschap of niet op te geven `templateLink` `parametersLink` . Als u geen opgeeft `contentVersion` , wordt de huidige versie van de sjabloon geïmplementeerd. Als u een waarde voor de inhouds versie opgeeft, moet deze overeenkomen met de versie in de gekoppelde sjabloon. anders mislukt de implementatie met een fout.
 
 ## <a name="using-variables-to-link-templates"></a>Variabelen gebruiken om sjablonen te koppelen
 
@@ -425,7 +425,7 @@ In de volgende voorbeeld sjabloon ziet u hoe u een kopie gebruikt met een genest
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -453,7 +453,7 @@ In de volgende voorbeeld sjabloon ziet u hoe u een kopie gebruikt met een genest
 
 ## <a name="get-values-from-linked-template"></a>Waarden ophalen uit de gekoppelde sjabloon
 
-Als u een uitvoer waarde van een gekoppelde sjabloon wilt ophalen, haalt u de eigenschaps waarde `"[reference('deploymentName').outputs.propertyName.value]"`op met de syntaxis zoals:.
+Als u een uitvoer waarde van een gekoppelde sjabloon wilt ophalen, haalt u de eigenschaps waarde op met de syntaxis zoals: `"[reference('deploymentName').outputs.propertyName.value]"` .
 
 Bij het ophalen van een uitvoer eigenschap van een gekoppelde sjabloon, mag de naam van de eigenschap geen streepje bevatten.
 
@@ -461,7 +461,7 @@ De volgende voor beelden laten zien hoe u kunt verwijzen naar een gekoppelde sja
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +479,7 @@ Met de hoofd sjabloon wordt de gekoppelde sjabloon geïmplementeerd en wordt de 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +512,7 @@ In het volgende voor beeld ziet u een sjabloon waarmee een openbaar IP-adres wor
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +543,11 @@ In het volgende voor beeld ziet u een sjabloon waarmee een openbaar IP-adres wor
 }
 ```
 
-Als u het open bare IP-adres uit de vorige sjabloon wilt gebruiken bij het implementeren van een load balancer, koppelt u deze `Microsoft.Resources/deployments` aan de sjabloon en declareert u een afhankelijkheid van de resource. Het open bare IP-adres op de load balancer wordt ingesteld op de uitvoer waarde van de gekoppelde sjabloon.
+Als u het open bare IP-adres uit de vorige sjabloon wilt gebruiken bij het implementeren van een load balancer, koppelt u deze aan de sjabloon en declareert u een afhankelijkheid van de `Microsoft.Resources/deployments` resource. Het open bare IP-adres op de load balancer wordt ingesteld op de uitvoer waarde van de gekoppelde sjabloon.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +620,7 @@ U kunt deze afzonderlijke vermeldingen in de geschiedenis gebruiken om uitvoer w
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +658,7 @@ De volgende sjabloon is een koppeling naar de vorige sjabloon. Er worden drie op
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +725,7 @@ In het volgende voor beeld ziet u hoe u een SAS-token kunt door geven wanneer u 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }

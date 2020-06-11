@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2344b339575c7338049bfa74c2fc72911e39a362
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627994"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672167"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>De nieuwe App-registraties ervaring voor Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ In de nieuwe ervaring selecteert u een type ondersteunings account uit de volgen
 
 Als u meer wilt weten over de verschillende typen accounts, selecteert u **Help mij kiezen** tijdens het maken. 
 
-In de verouderde ervaring werden apps altijd gemaakt als klant gerichte toepassingen. Voor deze apps wordt het account type ingesteld op **accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C.**. 
+In de verouderde ervaring werden apps altijd gemaakt als klant gerichte toepassingen. Voor deze apps wordt het account type ingesteld op **accounts in een organisatorische Directory of een id-provider. Voor het verifiëren van gebruikers met Azure AD B2C**.
 > [!NOTE]
 > Deze optie is vereist om Azure AD B2C gebruikers stromen te kunnen uitvoeren om gebruikers voor deze toepassing te verifiëren. Meer informatie [over het registreren van een toepassing voor gebruik met gebruikers stromen.](tutorial-register-applications.md)
 
@@ -72,29 +72,29 @@ U ziet mogelijk niet alle Microsoft Graph machtigingen, omdat veel van deze mach
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Beheerders toestemming en offline_access + OpenID Connect-bereiken  
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Het bereik van de **OpenID Connect** is nodig zodat Azure AD B2C gebruikers in een app kunnen ondertekenen. Het **offline_access** bereik is vereist voor het uitgeven van vernieuwings tokens voor een gebruiker. Deze bereiken zijn eerder toegevoegd en de beheerder heeft standaard toestemming gegeven. U kunt nu eenvoudig machtigingen voor deze bereiken toevoegen tijdens het maken van het proces door ervoor te zorgen **dat de optie verlenende beheerder toestemming geeft voor OpenID Connect en offline_access machtigingen** is geselecteerd. Anders kunnen de Microsoft Graph machtigingen worden toegevoegd met beheerders toestemming in de instellingen voor **API-machtigingen** voor een bestaande app.
+Het bereik van de **OpenID Connect** is nodig zodat Azure AD B2C gebruikers in een app kunnen ondertekenen. Het **offline_access** bereik is vereist voor het uitgeven van vernieuwings tokens voor een gebruiker. Deze bereiken zijn eerder toegevoegd en de beheerder heeft standaard toestemming gegeven. U kunt nu eenvoudig machtigingen voor deze bereiken toevoegen tijdens het maken van het proces door ervoor te zorgen dat de optie **verlenende beheerder toestemming geeft voor OpenID Connect en offline_access machtigingen** is geselecteerd. Anders kunnen de Microsoft Graph machtigingen worden toegevoegd met beheerders toestemming in de instellingen voor **API-machtigingen** voor een bestaande app.
 
 Meer informatie over [machtigingen en toestemming](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformen/authenticatie: antwoord-Url's/omleidings-Uri's
 In de verouderde ervaring zijn de verschillende platform typen beheerd onder **Eigenschappen** als antwoord-url's voor web-apps/api's en omleidings-URI voor native clients. ' Native clients ' zijn ook bekend als ' open bare clients ' en bevatten apps voor iOS-, macOS-, Android-en andere typen mobiele en desktop toepassingen. 
 
-In de nieuwe ervaring worden antwoord-Url's en omleidings-Uri's beide aangeduid als omleidings-Uri's. Dit vindt u in de sectie **verificatie** van een app. De App-registraties is niet beperkt tot een web-app/API of een systeem eigen toepassing. U kunt dezelfde app-registratie voor al deze platform typen gebruiken door de respectieve omleidings-Uri's te registreren. 
+In de nieuwe ervaring worden antwoord-Url's en omleidings-Uri's beide aangeduid als omleidings-Uri's. Dit vindt u in de sectie **verificatie** van een app. App-registraties zijn niet beperkt tot een web-app of een systeem eigen toepassing. U kunt dezelfde app-registratie voor al deze platform typen gebruiken door de respectieve omleidings-Uri's te registreren. 
 
 Omleidings-Uri's moeten worden gekoppeld aan een app-type, hetzij Web ofwel openbaar (mobiel en desktop). [Meer informatie over omleidings-Uri's](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Of een toepassing moet worden behandeld als een open bare client, indien mogelijk, wordt uitgesteld in runtime van het platform type omleidings-URI. De instelling **toepassing behandelen als een open bare client** moet worden ingesteld op *Ja* voor stromen die mogelijk geen omleidings-URI gebruiken, zoals ROPC stromen.
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 De **IOS/macOS-** en **Android** -platformen zijn een type open bare client. Ze bieden een eenvoudige manier om iOS/macOS-of Android-apps met bijbehorende omleidings-Uri's te configureren voor gebruik met MSAL. Meer informatie over de [configuratie opties](../active-directory/develop/msal-client-applications.md)voor de toepassing.
 
 
 ## <a name="application-certificates--secrets"></a>Toepassings certificaten & geheimen
 
-In de nieuwe ervaring, in plaats van **sleutels**, gebruikt u de Blade **certificaten & geheimen** voor het beheren van certificaten en geheimen. Met referenties kunnen toepassingen zichzelf identificeren bij de verificatie service bij het ontvangen van tokens op een webadresseer bare locatie (met behulp van een HTTPS-schema). U wordt aangeraden een certificaat te gebruiken in plaats van een client geheim voor client referentie scenario's bij het verifiëren van Azure AD. Certificaten kunnen niet worden gebruikt om te verifiëren tegen Azure AD B2C.
+In de nieuwe ervaring, in plaats van **sleutels**, gebruikt u de Blade **certificaten & geheimen** voor het beheren van certificaten en geheimen. Met certificaten & geheimen kunnen toepassingen zichzelf identificeren bij de verificatie service bij het ontvangen van tokens op een webadresseer bare locatie (met behulp van een HTTPS-schema). U wordt aangeraden een certificaat te gebruiken in plaats van een client geheim voor client referentie scenario's bij het verifiëren van Azure AD. Certificaten kunnen niet worden gebruikt om te verifiëren tegen Azure AD B2C.
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Functies die niet beschikbaar zijn in Azure AD B2C-tenants
-De volgende Azure AD-App-registratie mogelijkheden zijn niet van toepassing op Azure AD B2C-tenants:
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Functies die niet van toepassing zijn in Azure AD B2C tenants
+De volgende Azure AD-App-registratie mogelijkheden zijn niet van toepassing op of beschikbaar in Azure AD B2C tenants:
 - **Rollen en beheerders** : hiervoor is een Azure AD Premium P1-of P2-licentie vereist die momenteel niet beschikbaar is voor Azure AD B2C.
 - **Branding** -gebruikers interface/UX-aanpassing is geconfigureerd in de **huis stijl** van het bedrijf of als onderdeel van een gebruikers stroom. Meer informatie over [het aanpassen van de gebruikers interface in azure Active Directory B2C](customize-ui-overview.md).
 - **Verificatie** van de uitgever van het domein-uw app is geregistreerd op *. onmicrosoft.com*, dat geen geverifieerd domein is. Daarnaast wordt het domein van de uitgever voornamelijk gebruikt voor het verlenen van toestemming van de gebruiker, wat niet van toepassing is op Azure AD B2C-apps voor gebruikers verificatie. [Meer informatie over het Publisher-domein](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
@@ -112,9 +112,9 @@ De nieuwe ervaring heeft de volgende beperkingen:
 ## <a name="next-steps"></a>Volgende stappen
 
 Om aan de slag te gaan met de nieuwe app registratie-ervaring:
-* Meer informatie [over het registreren van een webtoepassing](tutorial-register-applications.md)
-* Meer informatie [over het registreren van een web-API](add-web-api-application.md)
-* Meer informatie [over het registreren van een systeem eigen client toepassing](add-native-application.md)
+* Meer informatie [over het registreren van een webtoepassing](tutorial-register-applications.md).
+* Meer informatie [over het registreren van een web-API](add-web-api-application.md).
+* Meer informatie [over het registreren van een systeem eigen client toepassing](add-native-application.md).
 * Meer informatie [over hoe u een Microsoft Graph-toepassing registreert om Azure AD B2C resources te beheren](microsoft-graph-get-started.md).
 * Meer informatie [over het gebruik van Azure AD B2C als een SAML-service provider.](identity-provider-adfs2016-custom.md)
-* Meer informatie over [toepassings typen](application-types.md)
+* Meer informatie over [toepassings typen](application-types.md).

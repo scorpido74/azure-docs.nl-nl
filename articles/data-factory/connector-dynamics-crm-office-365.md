@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/10/2020
+ms.openlocfilehash: 6aef73381b9294f6bbd83ff99c3fa99eafb4fb1f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891533"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678296"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Gegevens kopiëren van en naar Dynamics 365 (Common Data Service) of Dynamics CRM door gebruik te maken van Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -81,13 +81,13 @@ De volgende eigenschappen worden ondersteund voor de Dynamics gekoppelde service
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op **Dynamics**, **DynamicsCrm**of **CommonDataServiceForApps**. | Ja |
 | deploymentType | Het implementatie type van het Dynamics-exemplaar. Deze moet **online** zijn voor Dynamics online. | Ja |
-| serviceUri | De service-URL van uw Dynamics-exemplaar, `https://adfdynamics.crm.dynamics.com`bijvoorbeeld. | Ja |
+| serviceUri | De service-URL van uw Dynamics-exemplaar, bijvoorbeeld `https://adfdynamics.crm.dynamics.com` . | Ja |
 | authenticationType | Het verificatie type om verbinding te maken met een Dynamics-Server. Toegestane waarden zijn: **AADServicePrincipal** of **' Office365 '**. | Ja |
-| servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja wanneer verificatie `AADServicePrincipal` wordt gebruikt |
-| servicePrincipalCredentialType | Geef het referentie type op dat moet worden gebruikt voor Service-Principal-verificatie. Toegestane waarden zijn: **ServicePrincipalKey** of **ServicePrincipalCert**. | Ja wanneer verificatie `AADServicePrincipal` wordt gebruikt |
-| servicePrincipalCredential | Geef de Service-Principal-referentie op. <br>Wanneer u `ServicePrincipalKey` als referentie type gebruikt `servicePrincipalCredential` , kan dit een teken reeks zijn (ADF versleutelt deze bij de implementatie van een gekoppelde service) of een verwijzing naar een geheim in Azure. <br>Wanneer u `ServicePrincipalCert` als referentie gebruikt `servicePrincipalCredential` , moet u een verwijzing naar een certificaat in Azure. | Ja wanneer verificatie `AADServicePrincipal` wordt gebruikt | 
-| gebruikersnaam | Geef de gebruikers naam op om een verbinding met Dynamics te maken. | Ja wanneer verificatie `Office365` wordt gebruikt |
-| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja wanneer verificatie `Office365` wordt gebruikt |
+| servicePrincipalId | Geef de client-ID van de Azure Active Directory toepassing op. | Ja wanneer verificatie wordt gebruikt `AADServicePrincipal` |
+| servicePrincipalCredentialType | Geef het referentie type op dat moet worden gebruikt voor Service-Principal-verificatie. Toegestane waarden zijn: **ServicePrincipalKey** of **ServicePrincipalCert**. | Ja wanneer verificatie wordt gebruikt `AADServicePrincipal` |
+| servicePrincipalCredential | Geef de Service-Principal-referentie op. <br>Wanneer u `ServicePrincipalKey` als referentie type gebruikt, `servicePrincipalCredential` kan dit een teken reeks zijn (ADF versleutelt deze bij de implementatie van een gekoppelde service) of een verwijzing naar een geheim in Azure. <br>Wanneer u `ServicePrincipalCert` als referentie gebruikt, `servicePrincipalCredential` moet u een verwijzing naar een certificaat in Azure. | Ja wanneer verificatie wordt gebruikt `AADServicePrincipal` |
+| gebruikersnaam | Geef de gebruikers naam op om een verbinding met Dynamics te maken. | Ja wanneer verificatie wordt gebruikt `Office365` |
+| wachtwoord | Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja wanneer verificatie wordt gebruikt `Office365` |
 | connectVia | De [Integration runtime](concepts-integration-runtime.md) die moet worden gebruikt om verbinding te maken met het gegevens archief. Als u niets opgeeft, wordt de standaard Azure Integration Runtime gebruikt. | Nee voor bron, ja voor Sink als de gekoppelde bron service geen Integration runtime heeft |
 
 >[!NOTE]
@@ -378,18 +378,18 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 | Dynamics-gegevens type | Data Factory tussentijds gegevens type | Ondersteund als bron | Ondersteund als Sink |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Omvang | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Boolean-waarde | ✓ | ✓ |
-| AttributeType. klant | GUID | ✓ | |
+| AttributeTypeCode. Boolean | Booleaans | ✓ | ✓ |
+| AttributeType. klant | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-lookup-field)) |
 | AttributeType. DateTime | Datum/tijd | ✓ | ✓ |
 | AttributeType. decimaal | Decimal | ✓ | ✓ |
-| AttributeType. Double | Double | ✓ | ✓ |
+| AttributeType. Double | Dubbel | ✓ | ✓ |
 | AttributeType. EntityName | Tekenreeks | ✓ | ✓ |
 | AttributeType. integer | Int32 | ✓ | ✓ |
-| AttributeType. lookup | GUID | ✓ | ✓ (met één doel gekoppeld) |
-| AttributeType. ManagedProperty | Boolean-waarde | ✓ | |
+| AttributeType. lookup | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-lookup-field)) |
+| AttributeType. ManagedProperty | Booleaans | ✓ | |
 | AttributeType. Memo | Tekenreeks | ✓ | ✓ |
 | AttributeType. geld | Decimal | ✓ | ✓ |
-| AttributeType. owner | GUID | ✓ | |
+| AttributeType. owner | GUID | ✓ | ✓ (Zie de [richt lijnen](#writing-data-to-lookup-field)) |
 | AttributeType. selectie lijst | Int32 | ✓ | ✓ |
 | AttributeType. uniqueidentifier | GUID | ✓ | ✓ |
 | AttributeType. String | Tekenreeks | ✓ | ✓ |
@@ -398,6 +398,34 @@ Configureer het bijbehorende Data Factory gegevens type in een gegevensset struc
 
 > [!NOTE]
 > De Dynamics-gegevens typen AttributeType. CalendarRules, AttributeType. MultiSelectPicklist en AttributeType. PartyList worden niet ondersteund.
+
+## <a name="writing-data-to-lookup-field"></a>Gegevens schrijven naar opzoek veld
+
+Als u gegevens wilt schrijven naar een opzoek veld met meerdere doelen, bijvoorbeeld *klant* en *eigenaar*, volgt u deze richt lijnen en bijvoorbeeld:
+
+1. Zorg ervoor dat de bron zowel de veld waarde als de bijbehorende doel entiteit naam bevat.
+   - Als alle records worden toegewezen aan dezelfde doel entiteit, moet u ervoor zorgen dat de bron gegevens een kolom bevat waarin de naam van de doel entiteit is opgeslagen, of dat u een extra kolom wilt toevoegen in de bron van de Kopieer activiteit om de doel entiteit te definiëren.
+   - Als verschillende records zijn gekoppeld aan een andere doel entiteit, moet u ervoor zorgen dat de bron gegevens een kolom hebben waarin de bijbehorende naam van de doel entiteit wordt opgeslagen.
+
+2. Wijs zowel de kolom waarde als entiteits verwijzing toe van de bron naar de sink. De verwijzings kolom entiteit moet worden toegewezen aan een virtuele kolom met een speciaal naamgevings patroon `{lookup_field_name}@EntityReference` . Het is niet echt aanwezig in Dynamics, maar wordt gebruikt om aan te geven dat dit de kolom meta gegevens is van het opgegeven opzoek veld voor meerdere doel items.
+
+ De bron heeft bijvoorbeeld twee kolommen:
+
+- `CustomerField`kolom van het type *GUID*. Dit is de primaire sleutel waarde van de doel entiteit in Dynamics.
+- `Target`kolom van het type *teken reeks*, die de logische naam van de doel entiteit is. 
+
+En u wilt deze gegevens kopiëren naar het veld van de Dynamics-entiteit Sink `CustomerField` van het type *klant*. 
+
+Wijs in kolom toewijzing kopiëren de twee kolommen als volgt toe:
+
+- `CustomerField` -> `CustomerField`: dit is de normale veld toewijzing.
+- `Target` -> `CustomerField@EntityReference`: de kolom sink is een virtuele kolom die de verwijzing naar de entiteit vertegenwoordigt. Voer een dergelijke veld naam in de toewijzing in, omdat deze niet wordt weer gegeven door het importeren van schema's.
+
+![Kolom toewijzing voor Dynamics-opzoek velden](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
+
+Als alle bron records zijn gekoppeld aan dezelfde doel entiteit en uw bron gegevens bevat niet de naam van de doel entiteit, is hier een snelkoppeling: Voeg in bron van Kopieer activiteit een extra kolom toe. U kunt de naam opgeven na het patroon `{lookup_field_name}@EntityReference` en de waarde van de naam van de doel entiteit. in dat geval wordt expliciete kolom toewijzing optioneel, omdat met de Kopieer activiteit standaard kolommen worden toegewezen op naam.
+
+![Veld voor Dynamics lookup-entiteits verwijzing toevoegen](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
 
 ## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
 

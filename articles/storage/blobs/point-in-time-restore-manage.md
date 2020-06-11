@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170100"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675993"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs inschakelen en beheren (preview-versie)
 
@@ -30,35 +30,19 @@ Zie herstel naar een bepaald [tijdstip voor blok-blobs (preview)](point-in-time-
 
 ## <a name="install-the-preview-module"></a>De preview-module installeren
 
-Als u Azure Point-in-time Restore met Power shell wilt configureren, installeert u eerst versie [1.14.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/1.14.1-preview) van de module AZ. Storage Power shell. Voer de volgende stappen uit om de preview-module te installeren:
+Als u Azure Point-in-time Restore met Power shell wilt configureren, installeert u eerst de module AZ. Storage preview versie 1.14.1-Preview of hoger. Het gebruik van de nieuwste preview-versie wordt aanbevolen, maar herstel naar een bepaald tijdstip wordt ondersteund in versie 1.14.1-Preview en hoger. Verwijder alle andere versies van de module AZ. storage.
 
-1. Verwijder eerdere installaties van Azure PowerShell van Windows met de optie **Apps & onderdelen** onder **instellingen**.
+Met de volgende opdracht installeert AZ. Storage [2.0.1-Preview-](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) module:
 
-1. Zorg ervoor dat de meest recente versie van PowerShellGet is geïnstalleerd. Open een Windows Power shell-venster en voer de volgende opdracht uit om de meest recente versie te installeren:
-
-    ```powershell
-    Install-Module PowerShellGet –Repository PSGallery –Force
-    ```
-
-1. Sluit het Power shell-venster en open het opnieuw nadat u PowerShellGet hebt geïnstalleerd.
-
-1. Installeer de nieuwste versie van Azure PowerShell:
-
-    ```powershell
-    Install-Module Az –Repository PSGallery –AllowClobber
-    ```
-
-1. Installeer de module AZ. Storage Preview:
-
-    ```powershell
-    Install-Module Az.Storage -Repository PSGallery -RequiredVersion 1.14.1-preview -AllowPrerelease -AllowClobber -Force
-    ```
+```powershell
+Install-Module -Name Az.Storage -RequiredVersion 2.0.1-preview -AllowPrerelease
+```
 
 Zie [Install Azure PowerShell with PowerShellGet](/powershell/azure/install-az-ps)(Engelstalig) voor meer informatie over het installeren van Azure PowerShell.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Herstel naar een bepaald tijdstip inschakelen en configureren
 
-Voordat u herstel naar een bepaald tijdstip inschakelt en configureert, moet u de vereisten hiervoor inschakelen: voorlopig verwijderen, feed wijzigen en BLOB-versie beheer. Raadpleeg de volgende artikelen voor meer informatie over het inschakelen van elk van deze functies:
+Voordat u herstel naar een bepaald tijdstip inschakelt en configureert, moet u de vereisten voor het opslag account inschakelen: voorlopig verwijderen, feed wijzigen en BLOB-versie beheer. Raadpleeg de volgende artikelen voor meer informatie over het inschakelen van elk van deze functies:
 
 - [Voorlopig verwijderen voor blobs inschakelen](soft-delete-enable.md)
 - [De wijzigings feed in-en uitschakelen](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
@@ -99,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Een herstel bewerking uitvoeren
 
-Als u een herstel bewerking wilt starten, roept u de opdracht Restore-AzStorageBlobRange aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
+Als u een herstel bewerking wilt starten, roept u de opdracht **Restore-AzStorageBlobRange** aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
 
 Houd bij het opgeven van een aantal blobs dat moet worden hersteld de volgende regels in acht:
 
@@ -115,7 +99,7 @@ Houd bij het opgeven van een aantal blobs dat moet worden hersteld de volgende r
 
 ### <a name="restore-all-containers-in-the-account"></a>Alle containers in het account herstellen
 
-Als u alle containers en blobs in het opslag account wilt herstellen, roept u de opdracht Restore-AzStorageBlobRange aan, waarbij u de `-BlobRestoreRange` para meter weglaat. In het volgende voor beeld worden de containers in het opslag account teruggezet naar de status 12 uur vóór het huidige tijdstip:
+Als u alle containers en blobs in het opslag account wilt herstellen, roept u de opdracht **Restore-AzStorageBlobRange** aan, waarbij u de `-BlobRestoreRange` para meter weglaat. In het volgende voor beeld worden de containers in het opslag account teruggezet naar de status 12 uur vóór het huidige tijdstip:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -126,7 +110,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-a-single-range-of-block-blobs"></a>Eén bereik van blok-blobs herstellen
 
-Als u een bereik van blobs wilt herstellen, roept u de opdracht Restore-AzStorageBlobRange aan en geeft u een lexicographical-bereik van container-en BLOB-namen op voor de `-BlobRestoreRange` para meter. Het begin van het bereik is inclusief en het einde van het bereik is exclusief.
+Als u een bereik van blobs wilt herstellen, roept u de opdracht **Restore-AzStorageBlobRange** aan en geeft u een lexicographical-bereik van container-en BLOB-namen op voor de `-BlobRestoreRange` para meter. Het begin van het bereik is inclusief en het einde van het bereik is exclusief.
 
 Als u bijvoorbeeld de blobs in één container met de naam *sample-container*wilt herstellen, kunt u een bereik opgeven dat begint met voor *beeld-container* en eindigt met *sample-container1*. Er zijn geen vereisten voor de containers met de naam in het begin-en eind bereik. Omdat het einde van het bereik exclusief is, zelfs als het opslag account een container met de naam *sample-container1*bevat, wordt alleen de container met de naam *sample-container* teruggezet:
 
@@ -140,7 +124,7 @@ Als u een subset van blobs in een container wilt herstellen, gebruikt u een slas
 $range = New-AzStorageBlobRangeToRestore -StartRange sample-container/d -EndRange sample-container/g
 ```
 
-Geef vervolgens het bereik op voor de opdracht Restore-AzStorageBlobRange. Geef het herstel punt op door een UTC- **datum** waarde voor de para meter op te geven `-TimeToRestore` . In het volgende voor beeld worden de blobs in het opgegeven bereik tot de status 3 dagen vóór het huidige moment hersteld:
+Geef vervolgens het bereik op voor de opdracht **Restore-AzStorageBlobRange** . Geef het herstel punt op door een UTC- **datum** waarde voor de para meter op te geven `-TimeToRestore` . In het volgende voor beeld worden de blobs in het opgegeven bereik tot de status 3 dagen vóór het huidige moment hersteld:
 
 ```powershell
 # Specify -TimeToRestore as a UTC value
@@ -155,13 +139,31 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 Als u meerdere bereiken van blok-blobs wilt herstellen, geeft u een matrix met bereiken op voor de `-BlobRestoreRange` para meter. Er worden Maxi maal tien bereiken ondersteund per herstel bewerking. In het volgende voor beeld wordt twee bereiken opgegeven voor het herstellen van de volledige inhoud van *container1* en *container4*:
 
 ```powershell
+# Specify a range that includes the complete contents of container1.
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2
+# Specify a range that includes the complete contents of container4.
 $range2 = New-AzStorageBlobRangeToRestore -StartRange container4 -EndRange container5
 
 Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddMinutes(-30) `
     -BlobRestoreRange @($range1, $range2)
+```
+
+### <a name="restore-block-blobs-asynchronously"></a>Blok-blobs asynchroon herstellen
+
+Als u een herstel bewerking asynchroon wilt uitvoeren, voegt u de `-AsJob` para meter toe aan de aanroep **Restore-AzStorageBlobRange** en slaat u het resultaat van de aanroep op in een variabele. De opdracht **Restore-AzStorageBlobRange** retourneert een object van het type **AzureLongRunningJob**. U kunt de eigenschap **State** van dit object controleren om te bepalen of de herstel bewerking is voltooid. De waarde van de eigenschap **State** kan worden **uitgevoerd** of **voltooid**.
+
+In het volgende voor beeld ziet u hoe u een herstel bewerking asynchroon aanroept:
+
+```powershell
+$job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
+    -StorageAccountName $accountName `
+    -TimeToRestore (Get-Date).AddMinutes(-5) `
+    -AsJob
+
+# Check the state of the job.
+$job.State
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

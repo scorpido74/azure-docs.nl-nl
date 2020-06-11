@@ -1,35 +1,43 @@
 ---
-title: Tips voor Azure Cosmos DB prestaties voor .NET
-description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB.
+title: Tips voor Azure Cosmos DB prestaties voor .NET SDK v2
+description: Meer informatie over client configuratie opties voor het verbeteren van de prestaties van Azure Cosmos DB .NET v2 SDK.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: sngun
-ms.openlocfilehash: b8d55e5096f3af8d91027eec090cf1f9240a82cb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 07ca4674c1b8dafc9c02ff8fdf82de330862de73
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432118"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674020"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Tips voor betere prestaties voor Azure Cosmos DB en .NET SDK v2
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
-> * [.NET](performance-tips.md)
-> 
+> * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java-SDK v2](performance-tips-async-java.md)
+> * [Sync Java-SDK v2](performance-tips-java.md)
 
 Azure Cosmos DB is een snelle en flexibele gedistribueerde data base die naadloos kan worden geschaald met gegarandeerde latentie en door voer. U hoeft geen grote architectuur wijzigingen aan te brengen of complexe code te schrijven om uw data base te schalen met Azure Cosmos DB. Omhoog en omlaag schalen is net zo eenvoudig als het maken van één API-aanroep. Zie voor meer informatie [over het inrichten van container doorvoer](how-to-provision-container-throughput.md) of [het inrichten van de doorvoer capaciteit van de data base](how-to-provision-database-throughput.md). Maar omdat Azure Cosmos DB via netwerk aanroepen wordt geopend, zijn er optimalisaties aan de client zijde die u kunt uitvoeren om piek prestaties te bereiken wanneer u de [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)gebruikt.
 
 Als u de prestaties van uw Data Base wilt verbeteren, kunt u de volgende opties overwegen:
 
+## <a name="upgrade-to-the-net-v3-sdk"></a>Upgrade uitvoeren naar de .NET v3 SDK
+De [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) wordt uitgebracht. Als u de .NET v3 SDK gebruikt, raadpleegt u de [.net v3-prestatie gids](performance-tips-dotnet-sdk-v3-sql.md) voor de volgende informatie:
+- De standaard instelling is de directe TCP-modus
+- Ondersteuning voor stream-API
+- Ondersteuning voor aangepaste serialisatiefunctie voor het toestaan van System.Text.JSop gebruik
+- Geïntegreerde batch-en bulk ondersteuning
+
 ## <a name="hosting-recommendations"></a>Aanbevelingen hosten
 
 **Gebruik Windows 64-bits in plaats van Linux of Windows 32-bits host processing voor query-intensieve werk belastingen.**
 
-U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop. dll om query's lokaal te parseren en te optimaliseren. ServiceInterop. dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop. dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
+U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De SQL SDK bevat een systeem eigen ServiceInterop.dll om query's lokaal te parseren en te optimaliseren. ServiceInterop.dll wordt alleen ondersteund op het Windows x64-platform. Voor Linux en andere niet-ondersteunde platforms waarbij ServiceInterop.dll niet beschikbaar is, wordt er een extra netwerk aanroep naar de gateway verzonden om de geoptimaliseerde query te krijgen. De volgende typen toepassingen gebruiken standaard 32-bits host verwerking. Voer de volgende stappen uit op basis van het type van uw toepassing om de verwerking van de host te wijzigen in 64-bits verwerking:
 
 - Voor uitvoer bare toepassingen kunt u de verwerking van een host wijzigen door het [platform doel](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) in te stellen op **x64** in het venster **project eigenschappen** op het tabblad **opbouwen** .
 
@@ -41,7 +49,7 @@ U wordt aangeraden Windows 64-bits host te verwerken voor betere prestaties. De 
 
 > [!NOTE] 
 > Nieuwe Visual Studio-projecten worden standaard ingesteld op **elke CPU**. We raden u aan om uw project in te stellen op **x64** zodat het niet wordt overgeschakeld naar **x86**. Een project ingesteld op **een wille keurige CPU** kan eenvoudig overschakelen naar **x86** als er een alleen-x86-afhankelijkheid is toegevoegd.<br/>
-> ServiceInterop. dll moet zich in de map bevindt waarin de SDK-DLL wordt uitgevoerd. Dit is alleen een probleem als u hand matig Dll's kopieert of aangepaste build/Deployment-systemen hebt.
+> ServiceInterop.dll moet zich in de map bevindt waarin de SDK-DLL wordt uitgevoerd. Dit is alleen een probleem als u hand matig Dll's kopieert of aangepaste build/Deployment-systemen hebt.
     
 **Garbage Collection aan de server zijde inschakelen (GC)**
 
@@ -61,15 +69,15 @@ Als u test met hoge doorvoer niveaus (meer dan 50.000 RU/s), kan de client toepa
 
 Hoe een client verbinding maakt met Azure Cosmos DB heeft belang rijke gevolgen voor de prestaties, met name voor de waargenomen latentie aan de client zijde. Er zijn twee belang rijke configuratie-instellingen beschikbaar voor het configureren van beleid voor client verbindingen: de verbindings *modus* en het verbindings *protocol*.  De twee beschik bare modi zijn:
 
-   * Gatewaymodus
+   * Gateway modus (standaard)
       
-     De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard instelling voor de [micro soft. Azure. DocumentDB-SDK](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat telkens wanneer gegevens worden gelezen vanuit of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerk-hops zijn. We raden ook de verbindings modus voor de gateway aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen.
+     De gateway modus wordt op alle SDK-platforms ondersteund en is de geconfigureerde standaard instelling voor de [Microsoft.Azure.DocumentDB-SDK](sql-api-sdk-dotnet.md). Als uw toepassing wordt uitgevoerd in een bedrijfs netwerk met strikte firewall beperkingen, is de gateway modus de beste keuze, omdat deze gebruikmaakt van de standaard HTTPS-poort en een enkel eind punt. De verhoudingen van de prestaties zijn echter wel dat de gateway modus een extra netwerk-hop omvat telkens wanneer gegevens worden gelezen vanuit of geschreven naar Azure Cosmos DB. De directe modus biedt dus betere prestaties omdat er minder netwerk-hops zijn. We raden ook de verbindings modus voor de gateway aan wanneer u toepassingen uitvoert in omgevingen met een beperkt aantal socket verbindingen.
 
      Wanneer u de SDK in Azure Functions gebruikt, met name in het [verbruiks abonnement](../azure-functions/functions-scale.md#consumption-plan), moet u rekening houden met de huidige [limieten voor verbindingen](../azure-functions/manage-connections.md). In dat geval kan de gateway modus beter zijn als u ook met andere op HTTP gebaseerde clients in uw Azure Functions-toepassing werkt.
 
    * Directe modus
 
-     Directe modus ondersteunt connectiviteit via TCP-protocol en is de standaard connectiviteits modus als u gebruikmaakt van de [SDK van micro soft. Azure. Cosmos/. net v3](sql-api-sdk-dotnet-standard.md).
+     Directe modus ondersteunt connectiviteit via een TCP-protocol.
 
 In de gateway modus maakt Azure Cosmos DB gebruik van poort 443 en poorten 10250, 10255 en 10256 wanneer u de Azure Cosmos DB-API voor MongoDB gebruikt. Poort 10250 wordt toegewezen aan een standaard MongoDB-instantie zonder geo-replicatie. Poorten 10255 en 10256 worden toegewezen aan het MongoDB-exemplaar met geo-replicatie.
      
@@ -82,19 +90,7 @@ Wanneer u TCP in directe modus gebruikt, moet u, naast de gateway poorten, ervoo
 
 Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daarnaast biedt het een efficiënt TCP-protocol, dat ook wordt doorzocht in het communicatie model en dat beschikbaar is via de .NET-client-SDK. TCP-protocol gebruikt TLS voor initiële verificatie en het versleutelen van verkeer. Gebruik, indien mogelijk, het TCP-protocol voor de beste prestaties.
 
-Voor SDK v3 configureert u de verbindings modus wanneer u de instantie maakt `CosmosClient` , in `CosmosClientOptions` . Houd er rekening mee dat de directe modus de standaard instelling is.
-
-```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-new CosmosClientOptions
-{
-    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-});
-```
-
-Voor de micro soft. Azure. DocumentDB SDK configureert u de verbindings modus tijdens het bouwen van het `DocumentClient` exemplaar met behulp van de `ConnectionPolicy` para meter. Als u de directe modus gebruikt, kunt u deze ook instellen met `Protocol` behulp van de `ConnectionPolicy` para meter.
+Voor de Microsoft.Azure.DocumentDB SDK configureert u de verbindings modus tijdens het bouwen van het `DocumentClient` exemplaar met behulp van de `ConnectionPolicy` para meter. Als u de directe modus gebruikt, kunt u deze ook instellen met `Protocol` behulp van de `ConnectionPolicy` para meter.
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -140,15 +136,9 @@ Omdat aanroepen naar Azure Cosmos DB via het netwerk worden gemaakt, moet u moge
 
 De Azure Cosmos DB Sdk's worden voortdurend verbeterd om de beste prestaties te leveren. Raadpleeg de [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) -pagina's om de meest recente SDK te bepalen en verbeteringen te bekijken.
 
-**Stream-Api's gebruiken**
-
-[.NET SDK v3](sql-api-sdk-dotnet-standard.md) bevat stream-api's die gegevens kunnen ontvangen en retour neren zonder serialisatie. 
-
-Middle-tier-toepassingen die geen reacties rechtstreeks van de SDK gebruiken, maar door sturen naar andere toepassings lagen, kunnen profiteren van de stream-Api's. Zie de voor beelden van [artikel beheer](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) voor voor beeld van stroom verwerking.
-
 **Een singleton Azure Cosmos DB-client gebruiken voor de levens duur van uw toepassing**
 
-Elk `DocumentClient` en- `CosmosClient` exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Om efficiënt verbindings beheer en betere prestaties van de SDK-client mogelijk te maken, wordt u aangeraden één exemplaar te gebruiken per `AppDomain` voor de levens duur van de toepassing.
+Elk `DocumentClient` exemplaar is thread-safe en voert efficiënt verbindings beheer en adres caching uit wanneer deze in de directe modus worden uitgevoerd. Om efficiënt verbindings beheer en betere prestaties van de SDK-client mogelijk te maken, wordt u aangeraden één exemplaar te gebruiken per `AppDomain` voor de levens duur van de toepassing.
 
    <a id="max-connection"></a>
 
@@ -164,7 +154,7 @@ SQL .NET SDK 1.9.0 en hoger ondersteunen parallelle query's, waarmee u parallel 
 
 ***Afstemmings graad van parallelle uitvoering***
 
-Parallelle query werkt door meerdere partities parallel te doorzoeken. Maar gegevens van een afzonderlijke partitie worden serieel opgehaald ten opzichte van de query. De instelling `MaxDegreeOfParallelism` in [SDK v2](sql-api-sdk-dotnet.md) of `MaxConcurrency` in [SDK v3](sql-api-sdk-dotnet-standard.md) voor het aantal partities is de beste kans om de meest uitvoerende query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog getal. Het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
+Parallelle query werkt door meerdere partities parallel te doorzoeken. Maar gegevens van een afzonderlijke partitie worden serieel opgehaald ten opzichte van de query. De instelling `MaxDegreeOfParallelism` in [SDK v2](sql-api-sdk-dotnet.md) tot het aantal partities is de beste kans om de meest uitvoerende query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de mate van parallelle uitvoering instellen op een hoog getal. Het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de mate van parallelle uitvoering.
 
 Houd er rekening mee dat parallelle query's het meest voor deel opleveren als de gegevens gelijkmatig worden verdeeld over alle partities met betrekking tot de query. Als de gepartitioneerde verzameling is gepartitioneerd zodat alle of de meeste gegevens die door een query zijn geretourneerd, in een paar partities worden geconcentreerd (één partitie is het ergste geval), kunnen deze partities de prestaties van de query opsporen.
 
@@ -180,7 +170,7 @@ Tijdens de prestatie tests moet u de belasting verg Roten tot een klein aantal a
 
 Ondersteuning voor het beleid voor opnieuw proberen is opgenomen in deze Sdk's:
 - Versie 1.8.0 en hoger van de [.NET SDK voor SQL](sql-api-sdk-dotnet.md) en de [Java SDK voor SQL](sql-api-sdk-java.md)
-- Versie 1.9.0 en hoger van de [node. js SDK voor SQL](sql-api-sdk-node.md) en de [python-SDK voor SQL](sql-api-sdk-python.md)
+- Versie 1.9.0 en hoger van de [Node.js SDK voor SQL](sql-api-sdk-node.md) en de [python-SDK voor SQL](sql-api-sdk-python.md)
 - Alle ondersteunde versies van de [.net core](sql-api-sdk-dotnet-core.md) sdk's 
 
 Zie [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)voor meer informatie.

@@ -4,7 +4,6 @@ description: In dit artikel worden toepassings patronen behandeld voor SQL Serve
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 0c70e4aa29f987ab718a12bdba6b7d7631233c9b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b77756f81eb5085b9c1d386b7c59d5aae03d1fb8
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343724"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669491"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Toepassings patronen en ontwikkelings strategieën voor het SQL Server op Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +40,7 @@ Voor elk toepassings patroon vindt u een on-premises scenario, de respectieve Cl
 
 **Technische revisoren:** Corey Sanders, getekend McDaniel, Narayan Annamalai, NIR Mashkowski, Sanjay Mishra, Silvano Coriani, Stefan Schackow, Tim Hickey, Tim Wieman, Xin Jin
 
-## <a name="introduction"></a>Introductie
+## <a name="introduction"></a>Inleiding
 U kunt veel typen n-tier-toepassingen ontwikkelen door de onderdelen van de verschillende toepassings lagen op verschillende computers en in afzonderlijke onderdelen te scheiden. U kunt bijvoorbeeld de onderdelen van de client toepassing en de bedrijfs regels op de ene computer, de front-end-weblaag en de onderdelen van de Data Access-laag op een andere computer en een back-enddatabase op een andere computer plaatsen. Dit type structurering helpt bij het isoleren van elke laag van elkaar. Als u wijzigt waar gegevens vandaan komen, hoeft u de client of de webtoepassing niet te wijzigen, maar alleen de onderdelen van de Data Access-laag.
 
 Een typische toepassing met *n-tier* omvat de presentatielaag, de zakelijke laag en de gegevenslaag:

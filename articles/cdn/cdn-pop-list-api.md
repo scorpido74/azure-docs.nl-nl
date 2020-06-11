@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260187"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668284"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>De huidige POP-IP-lijst voor Azure CDN ophalen
 
@@ -39,7 +39,7 @@ Configureer IP-Acl's voor voor uw back-ends om verkeer te accepteren van Azure C
 * Azure CDN van de IPv4-back-end-IP-ruimte van micro soft: 147.243.0.0/16
 * Azure CDN van de IPv6-back-end-IP-ruimte van micro soft: 2a01:111:2050::/44
 
-IP-adresbereiken en service tags voor micro soft-Services vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519)
+Als u service tags met Azure CDN van micro soft wilt gebruiken, moet u de Azure front-deur label gebruiken. IP-adresbereiken en service tags voor micro soft-Services vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519)
 
 
 ## <a name="typical-use-case"></a>Typische gebruiksscenario’s

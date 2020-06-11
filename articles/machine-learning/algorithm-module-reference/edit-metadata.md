@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064247"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669967"
 ---
 # <a name="edit-metadata-module"></a>Meta gegevens module bewerken
 
@@ -34,7 +34,7 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
   
 + De naam van kolommen wijzigen.
   
- Gebruik de meta gegevens bewerken op elk gewenst moment om de definitie van een kolom te wijzigen, meestal om te voldoen aan de vereisten voor een downstream-module. Sommige modules werken bijvoorbeeld alleen met specifieke gegevens typen of vereisen markeringen voor de kolommen, zoals `IsFeature` of. `IsCategorical`  
+ Gebruik de meta gegevens bewerken op elk gewenst moment om de definitie van een kolom te wijzigen, meestal om te voldoen aan de vereisten voor een downstream-module. Sommige modules werken bijvoorbeeld alleen met specifieke gegevens typen of vereisen markeringen voor de kolommen, zoals `IsFeature` of `IsCategorical` .  
   
  Nadat u de vereiste bewerking hebt uitgevoerd, kunt u de meta gegevens herstellen naar de oorspronkelijke staat.
   
@@ -55,7 +55,8 @@ Veelvoorkomende meta gegevens wijzigingen kunnen het volgende omvatten:
     + Het kolom Type en de waarden worden gewijzigd nadat u de bewerking meta gegevens bewerken hebt uitgevoerd. U kunt het oorspronkelijke gegevens type op elk gewenst moment herstellen met behulp van meta gegevens bewerken om het kolom gegevens type opnieuw in te stellen.  
 
     > [!NOTE]
-    > Als u een wille keurig type getal wijzigt in het type **datum/tijd** , laat u het veld **datum in notatie** leeg. Het is momenteel niet mogelijk om de indeling van de doel gegevens op te geven.  
+        > De **datum notatie** is [gebaseerd op python ingebouwde datum/tijd-indeling](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+        > Als u een wille keurig type getal wijzigt in het type **datum/tijd** , laat u het veld **datum in notatie** leeg. Het is momenteel niet mogelijk om de indeling van de doel gegevens op te geven.
 
 1. Selecteer de optie **categorische** om op te geven dat de waarden in de geselecteerde kolommen als categorieën moeten worden behandeld.
 

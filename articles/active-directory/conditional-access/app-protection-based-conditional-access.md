@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccb5543fbeae4d4fe9c0104d873cd9776ea45a5a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681411"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672949"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Procedure: beveiligings beleid voor apps en een goedgekeurde client-app vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -37,7 +37,7 @@ Zie [vereisten voor app-beveiligings beleid](concept-conditional-access-grant.md
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scenario 1: Office 365-apps vereist goedgekeurde apps met app-beveiligings beleid
 
-In dit scenario heeft Contoso besloten dat voor alle mobiele toegang tot Office 365-bronnen goedgekeurde client-apps moeten worden gebruikt, zoals Outlook Mobile, OneDrive en micro soft-teams die worden beveiligd door een beveiligings beleid voor apps voordat ze toegang krijgen. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
+In dit scenario heeft Contoso besloten dat voor alle mobiele toegang tot Office 365-bronnen goedgekeurde client-apps, zoals Outlook Mobile en OneDrive, worden gebruikt, beveiligd door een beveiligings beleid voor apps voordat ze toegang krijgen. Al hun gebruikers aanmelden met Azure AD-referenties en hebben licenties toegewezen die Azure AD Premium P1 of P2 en Microsoft Intune bevatten.
 
 Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgekeurde client-app op mobiele apparaten te vereisen.
 
@@ -49,7 +49,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -58,8 +58,8 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
    1. Stel **configureren** in op **Ja**.
    1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
-   - **Goedgekeurde client-app vereisen**
-   - **Beveiligings beleid voor apps vereisen (preview-versie)**
+   - **Goedgekeurde client-apps vereisen**
+   - **Beleid voor app-beveiliging vereisen (preview)**
    - **Alle geselecteerde besturings elementen vereisen**
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
@@ -73,7 +73,7 @@ Configureer voor het beleid voor voorwaardelijke toegang in deze stap de volgend
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:
@@ -101,7 +101,7 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 (preview-versie)**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -110,8 +110,8 @@ Organisaties moeten de volgende stappen uitvoeren om het gebruik van een goedgek
    1. Stel **configureren** in op **Ja**.
    1. Selecteer **browser**.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
-   - **Goedgekeurde client-app vereisen**
-   - **Beveiligings beleid voor apps vereisen (preview-versie)**
+   - **Goedgekeurde client-apps vereisen**
+   - **Beleid voor app-beveiliging vereisen (preview)**
    - **Alle geselecteerde besturings elementen vereisen**
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
@@ -134,7 +134,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. Onder **Cloud-apps of-acties**  >  **gaat**u naar **Office 365 Exchange Online** en **Office 365 share point online**.
 1. Onder **voor waarden**selecteert u **apparaat platforms**.
    1. Stel **configureren** in op **Ja**.
@@ -143,8 +143,8 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
    1. Stel **configureren** in op **Ja**.
    1. Selecteer **Mobiele apps en bureaubladclients** en **Clients met moderne verificatie**.
 1. Selecteer onder **toegangs beheer**  >  **verlenen**de volgende opties:
-   - **Goedgekeurde client-app vereisen**
-   - **Beveiligings beleid voor apps vereisen (preview-versie)**
+   - **Goedgekeurde client-apps vereisen**
+   - **Beleid voor app-beveiliging vereisen (preview)**
    - **Een van de geselecteerde besturings elementen vereisen**
 1. Bevestig de instellingen en stel **beleid inschakelen** in **op aan**.
 1. Selecteer **maken** om uw beleid te maken en in te scha kelen.
@@ -156,7 +156,7 @@ Organisaties moeten de volgende drie stappen uitvoeren om het gebruik van een go
 1. Geef uw beleid een naam. Het is raadzaam dat organisaties een zinvolle norm maken voor de namen van hun beleid.
 1. Onder **toewijzingen**selecteert u **gebruikers en groepen**
    1. Onder **opnemen**selecteert u **alle gebruikers** of de specifieke **gebruikers en groepen** waarop u dit beleid wilt Toep assen. 
-   1. Selecteer **Done**.
+   1. Selecteer **Voltooid**.
 1. **Cloud apps or actions**  >  **Include**Selecteer **Office 365 Exchange Online**onder Cloud-apps of-acties.
 1. Onder **voor waarden**:
    1. **Client-apps (preview-versie)**:

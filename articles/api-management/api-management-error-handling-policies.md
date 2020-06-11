@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 2c021a6d10c95b58ac444de8ea895ca01371a2b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75902445"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674258"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fout bij het verwerken van API Management-beleid
 
-Door een `ProxyError` object op te geven, kunnen uitgevers met Azure API Management reageren op fout voorwaarden. Dit kan voor komen tijdens het verwerken van aanvragen. Het `ProxyError` object wordt geopend via de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error en kan worden gebruikt door beleid in `on-error` de sectie Policy. In dit artikel vindt u informatie over de mogelijkheden voor het afhandelen van fouten in azure API Management.
+Door een object op te geven `ProxyError` , kunnen uitgevers met Azure API Management reageren op fout voorwaarden. Dit kan voor komen tijdens het verwerken van aanvragen. Het `ProxyError` object wordt geopend via de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error en kan worden gebruikt door beleid in de `on-error` sectie Policy. In dit artikel vindt u informatie over de mogelijkheden voor het afhandelen van fouten in azure API Management.
 
 ## <a name="error-handling-in-api-management"></a>Fout afhandeling in API Management
 
-Beleids regels in azure API management worden onderverdeeld `inbound`in `backend`, `outbound`,, `on-error` en, zoals in het volgende voor beeld wordt weer gegeven.
+Beleids regels in azure API management worden onderverdeeld in `inbound` , `backend` ,, en, `outbound` `on-error` zoals in het volgende voor beeld wordt weer gegeven.
 
 ```xml
 <policies>
@@ -47,13 +47,13 @@ Beleids regels in azure API management worden onderverdeeld `inbound`in `backend
 </policies>
 ```
 
-Tijdens de verwerking van een aanvraag worden de ingebouwde stappen uitgevoerd, samen met alle beleids regels die binnen het bereik van de aanvraag vallen. Als er een fout optreedt, wordt de verwerking direct naar `on-error` de sectie beleid verwezen.
+Tijdens de verwerking van een aanvraag worden de ingebouwde stappen uitgevoerd, samen met alle beleids regels die binnen het bereik van de aanvraag vallen. Als er een fout optreedt, wordt de verwerking direct naar de `on-error` sectie beleid verwezen.
 De `on-error` sectie beleid kan worden gebruikt in elk bereik. API-uitgevers kunnen aangepaste gedragingen configureren, zoals het vastleggen van de fout in Event hubs of het maken van een nieuw antwoord om terug te keren naar de aanroeper.
 
 > [!NOTE]
 > De `on-error` sectie is standaard niet in beleids regels aanwezig. Als u de `on-error` sectie wilt toevoegen aan een beleid, bladert u naar het gewenste beleid in de beleids editor en voegt u het toe. Zie [beleid in API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/)voor meer informatie over het configureren van beleid.
 >
-> Als er geen `on-error` sectie is, ontvangen aanroepers 400-of 500-http-antwoord berichten als er een fout optreedt.
+> Als er geen `on-error` sectie is, ontvangen aanroepers 400-of 500-HTTP-antwoord berichten als er een fout optreedt.
 
 ### <a name="policies-allowed-in-on-error"></a>Beleid dat is toegestaan in on-error
 
@@ -71,10 +71,14 @@ Het volgende beleid kan worden gebruikt in de `on-error` sectie Policy.
 -   [aanmelden bij eventhub](api-management-advanced-policies.md#log-to-eventhub)
 -   [JSON-to-XML](api-management-transformation-policies.md#ConvertJSONtoXML)
 -   [XML naar JSON](api-management-transformation-policies.md#ConvertXMLtoJSON)
+-   [limiet-gelijktijdigheid](api-management-advanced-policies.md#LimitConcurrency)
+-   [model-reactie](api-management-advanced-policies.md#mock-response)
+-   [voeren](api-management-advanced-policies.md#Retry)
+-   [tracerings](api-management-advanced-policies.md#Trace)
 
 ## <a name="lasterror"></a>LastError
 
-Als er een fout optreedt en er wordt verwezen naar `on-error` de beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error, die kan worden geopend door beleid in `on-error` de sectie. Last error heeft de volgende eigenschappen.
+Als er een fout optreedt en er wordt verwezen naar de `on-error` beleids sectie, wordt de fout opgeslagen in de [context. ](api-management-policy-expressions.md#ContextVariables)De eigenschap Last error, die kan worden geopend door beleid in de `on-error` sectie. Last error heeft de volgende eigenschappen.
 
 | Naam       | Type   | Beschrijving                                                                                               | Vereist |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
@@ -90,7 +94,7 @@ Als er een fout optreedt en er wordt verwezen naar `on-error` de beleids sectie,
 > U kunt de status code openen met behulp van context. Response. status code.
 
 > [!NOTE]
-> Alle beleids regels hebben een `id` optioneel kenmerk dat kan worden toegevoegd aan het hoofd element van het beleid. Als dit kenmerk aanwezig is in een beleid als er een fout optreedt, kan de waarde van het kenmerk worden opgehaald met behulp `context.LastError.PolicyId` van de eigenschap.
+> Alle beleids regels hebben een optioneel `id` kenmerk dat kan worden toegevoegd aan het hoofd element van het beleid. Als dit kenmerk aanwezig is in een beleid als er een fout optreedt, kan de waarde van het kenmerk worden opgehaald met behulp van de `context.LastError.PolicyId` eigenschap.
 
 ## <a name="predefined-errors-for-built-in-steps"></a>Vooraf gedefinieerde fouten voor ingebouwde stappen
 
@@ -120,12 +124,12 @@ De volgende fouten zijn vooraf gedefinieerd voor fout situaties die kunnen optre
 | check-header | De vereiste header is niet weer gegeven of de waarde ontbreekt               | HeaderNotFound            | Header {header-name} is niet gevonden in de aanvraag. Toegang geweigerd.                                                                    |
 | check-header | De vereiste header is niet weer gegeven of de waarde ontbreekt               | HeaderValueNotAllowed     | Header {header-name} waarde {header-value} is niet toegestaan. Toegang geweigerd.                                                          |
 | validate-JWT | JWT-token ontbreekt in aanvraag                                 | TokenNotFound             | De JWT is niet gevonden in de aanvraag. Toegang geweigerd.                                                                                         |
-| validate-JWT | Validatie van hand tekening is mislukt                                     | TokenSignatureInvalid     | <bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
-| validate-JWT | Ongeldige doel groep                                                | TokenAudienceNotAllowed   | <bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
-| validate-JWT | Ongeldige verlener                                                  | TokenIssuerNotAllowed     | <bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
-| validate-JWT | Token is verlopen                                                   | TokenExpired              | <bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
-| validate-JWT | De handtekening sleutel is niet omgezet op basis van de ID                            | TokenSignatureKeyNotFound | <bericht van de JWT\>-bibliotheek. Toegang geweigerd.                                                                                          |
-| validate-JWT | De vereiste claims ontbreken in het token                          | TokenClaimNotFound        | In het JWT-token ontbreken de volgende claims:\><c1,\><C2,... Toegang geweigerd.                                                            |
+| validate-JWT | Validatie van hand tekening is mislukt                                     | TokenSignatureInvalid     | <bericht van de JWT-bibliotheek \> . Toegang geweigerd.                                                                                          |
+| validate-JWT | Ongeldige doel groep                                                | TokenAudienceNotAllowed   | <bericht van de JWT-bibliotheek \> . Toegang geweigerd.                                                                                          |
+| validate-JWT | Ongeldige verlener                                                  | TokenIssuerNotAllowed     | <bericht van de JWT-bibliotheek \> . Toegang geweigerd.                                                                                          |
+| validate-JWT | Token is verlopen                                                   | TokenExpired              | <bericht van de JWT-bibliotheek \> . Toegang geweigerd.                                                                                          |
+| validate-JWT | De handtekening sleutel is niet omgezet op basis van de ID                            | TokenSignatureKeyNotFound | <bericht van de JWT-bibliotheek \> . Toegang geweigerd.                                                                                          |
+| validate-JWT | De vereiste claims ontbreken in het token                          | TokenClaimNotFound        | In het JWT-token ontbreken de volgende claims: <C1 \> , <C2 \> ,... Toegang geweigerd.                                                            |
 | validate-JWT | Claim waarden komen niet overeen                                           | TokenClaimValueNotAllowed | Claim {claim naam} waarde {claim-value} is niet toegestaan. Toegang geweigerd.                                                             |
 | validate-JWT | Andere validatie fouten                                       | JwtInvalid                | <bericht van de JWT-bibliotheek\>                                                                                                          |
 | aanvraag voor door sturen of verzenden | De status code van het HTTP-antwoord is niet ontvangen van de back-end binnen de geconfigureerde time-out | Time-out | veelvoud |
