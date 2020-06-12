@@ -24,7 +24,7 @@ Met Azure Policy kunt u configuratie vereisten opgeven voor alle resources die w
 
 Azure Policy bestaat uit de objecten in de volgende tabel. Zie [Azure Policy objecten](../../governance/policy/overview.md#azure-policy-objects) voor een gedetailleerde beschrijving van elk.
 
-| Item | Beschrijving |
+| Item | Description |
 |:---|:---|
 | Beleidsdefinitie | Beschrijft de nalevings voorwaarden van de resource en het effect dat moet worden genomen als aan een voor waarde wordt voldaan. Dit kan alle resources van een bepaald type zijn of alleen resources die overeenkomen met bepaalde eigenschappen. Het gevolg kan zijn dat u de resource wilt markeren voor naleving of een gerelateerde resource wilt implementeren. Beleids definities worden geschreven met behulp van JSON zoals beschreven in [Azure Policy definitie structuur](../../governance/policy/concepts/definition-structure.md). Effecten worden beschreven in [inzicht Azure Policy effecten](../../governance/policy/concepts/effects.md).
 | Beleids initiatief | Een groep beleids definities die samen moeten worden toegepast. U kunt bijvoorbeeld een beleids definitie hebben om bron logboeken te verzenden naar een Log Analytics-werk ruimte en een andere om bron logboeken te verzenden naar Event hubs. Maak een initiatief dat beide beleids definities bevat en pas het initiatief toe op resources in plaats van de afzonderlijke beleids definities. Initiatieven worden geschreven met behulp van JSON zoals beschreven in [Azure Policy Initiative-structuur](../../governance/policy/concepts/initiative-definition-structure.md). |

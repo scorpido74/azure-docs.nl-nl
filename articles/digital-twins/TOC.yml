@@ -58,6 +58,8 @@
       href: how-to-create-azure-function.md
     - name: Telemetrie opnemen vanuit IoT Hub
       href: how-to-ingest-iot-hub-data.md
+    - name: Integreren met Azure Maps
+      href: how-to-integrate-maps.md
 - name: Naslaginformatie
   items:
     - name: REST API's voor Digital Twins

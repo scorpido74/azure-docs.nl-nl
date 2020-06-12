@@ -30,6 +30,10 @@
       href: tutorial-url-redirect-cli.md
     - name: Automatisch schalen en zoneredundantie
       href: tutorial-autoscale-ps.md
+    - name: Opnamecontrollerinvoegtoepassing voor AKS (Greenfield)
+      href: tutorial-ingress-controller-add-on-new.md
+    - name: Invoegtoepassing voor inkomend verkeer voor AKS (Brownfield)
+      href: tutorial-ingress-controller-add-on-existing.md
 - name: Voorbeelden
   items:
     - name: Azure PowerShell
@@ -136,10 +140,12 @@
               href: application-gateway-configure-ssl-policy-powershell.md
     - name: Inkomend verkeer voor AKS
       items:
-        - name: Instellen met bestaande Application Gateway
+        - name: Inkomend verkeer voor AKS via Helm (Brownfield)
           href: ingress-controller-install-existing.md
-        - name: Instellen met nieuwe Application Gateway
+        - name: Inkomend verkeer voor AKS via Helm (Greenfield)
           href: ingress-controller-install-new.md
+        - name: Invoegtoepassing voor inkomend verkeer voor AKS uitschakelen en opnieuw inschakelen
+          href: ingress-controller-disable-addon.md
         - name: Cookieaffiniteit inschakelen
           href: ingress-controller-cookie-affinity.md
         - name: Ondersteuning voor meerdere naamruimten inschakelen

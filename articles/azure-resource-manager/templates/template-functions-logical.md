@@ -14,7 +14,7 @@ ms.locfileid: "84677386"
 
 Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw Azure Resource Manager-sjablonen (ARM).
 
-* [maar](#and)
+* [en](#and)
 * [booleaans](#bool)
 * [If](#if)
 * [ten](#not)
@@ -28,11 +28,11 @@ Controleert of alle parameter waarden waar zijn.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
+| Arg1 |Yes |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Yes |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |No |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -80,9 +80,9 @@ Zet de para meter om in een Boole-waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
+| Arg1 |Yes |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
 
 ### <a name="return-value"></a>Retourwaarde
 Een Boolean van de geconverteerde waarde.
@@ -134,11 +134,11 @@ Retourneert een waarde op basis van het feit of een voor waarde waar of onwaar i
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| regeling |Ja |booleaans |De waarde om te controleren of deze True of False is. |
-| trueValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
-| falseValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
+| regeling |Yes |booleaans |De waarde om te controleren of deze True of False is. |
+| trueValue |Yes | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
+| falseValue |Yes | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -239,9 +239,9 @@ Zet Boole-waarde om in tegenovergestelde waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |booleaans |De waarde die moet worden geconverteerd. |
+| Arg1 |Yes |booleaans |De waarde die moet worden geconverteerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -312,11 +312,11 @@ Controleert of een parameter waarde waar is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Vereist | Type | Description |
 |:--- |:--- |:--- |:--- |
-| Arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
+| Arg1 |Yes |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Yes |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |No |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 

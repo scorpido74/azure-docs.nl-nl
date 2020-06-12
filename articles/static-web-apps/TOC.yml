@@ -33,6 +33,8 @@
       href: add-api.md
     - name: App-instellingen configureren
       href: application-settings.md
+    - name: Front-end-frameworks en -bibliotheken configureren
+      href: front-end-frameworks.md
 - name: Zelfstudies
   items:
     - name: Publiceren vanuit een statische sitegenerator

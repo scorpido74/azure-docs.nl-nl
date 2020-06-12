@@ -259,7 +259,7 @@
                 - name: Omgaan met slechte records en bestanden
                   href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
                   maintainContext: true
-                - name: Taken toe-eigenen voor hoge gelijktijdigheid
+                - name: Toe-eigening van taken voor hoge gelijktijdigheid
                   href: /azure/databricks/spark/latest/spark-sql/preemption
                   maintainContext: true
                 - name: Omgaan met grote query's in interactieve werkstromen
@@ -1072,6 +1072,8 @@
               maintainContext: true
         - name: Best practices met betrekking tot de AVG
           href: /azure/databricks/security/privacy/gdpr-delta
+        - name: IP-toegangslijst
+          href: /azure/databricks/security/network/ip-access-list
         - name: Verkeer tussen clusterwerkknooppunten versleutelen
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: Door de klant beheerde sleutels inschakelen voor notebooks
@@ -1160,10 +1162,13 @@
             - name: Toegang tot notebookfuncties beheren
               href: /azure/databricks/administration-guide/workspace/notebooks
               maintainContext: true
-        - name: Clusterconfiguratie inschakelen
+        - name: Clusters beheren
           items:
-            - name: Overzicht van clusterconfiguratie
+            - name: Clusterconfiguratie-opties beheren
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Clusterbeleid beheren
+              href: /azure/databricks/administration-guide/clusters/policies
               maintainContext: true
             - name: Containerservices inschakelen
               href: /azure/databricks/administration-guide/clusters/container-services
@@ -1191,8 +1196,6 @@
             - name: Door de gebruiker gedefinieerde route-instellingen
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
-            - name: MySQL-IP-adressen
-              href: mysql-ip-address.md
     - name: Problemen oplossen
       items:
         - name: Veelgestelde vragen
@@ -1256,6 +1259,18 @@
               maintainContext: true
             - name: De gebruikersinterface van Apache Spark toont minder dan het totale geheugen van het knooppunt
               href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
+            - name: CPU-kern voorkomt het maken van clusters
+              href: /azure/databricks/kb/clusters/azure-core-limit
+              maintainContext: true
+            - name: IP-adreslimiet voorkomt het maken van clusters
+              href: /azure/databricks/kb/clusters/azure-ip-limit
+              maintainContext: true
+            - name: Trage clusterstart en ontbrekende knooppunten
+              href: /azure/databricks/kb/clusters/azure-nodes-not-acquired
+              maintainContext: true
+            - name: Een cluster configureren om een aangepaste NTP-server te maken
+              href: /azure/databricks/kb/clusters/use-internal-ntp
               maintainContext: true
         - name: Gegevensbeheer
           items:
@@ -1332,6 +1347,9 @@
               maintainContext: true
             - name: Leesprestaties optimaliseren met JDBC-gegevensbronnen
               href: /azure/databricks/kb/data-sources/jdbc-optimize-read
+              maintainContext: true
+            - name: ADLS- en WASB-schrijfbewerkingen beperkt
+              href: /azure/databricks/kb/data-sources/azure-storage-throttling
               maintainContext: true
         - name: DBFS
           items:
@@ -1500,6 +1518,9 @@
             - name: Problemen met de opdracht annuleren oplossen
               href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
               maintainContext: true
+            - name: De huidige gebruikersnaam voor de notebook ophalen
+              href: /azure/databricks/kb/notebooks/get-notebook-username
+              maintainContext: true
         - name: Beveiliging en machtigingen
           items:
             - name: Tabel maken mislukt met beveiligingsuitzondering
@@ -1642,28 +1663,31 @@
                     - name: Problemen oplossen met Azure AD-toegangstokens
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
-            - name: Clusters
+            - name: Clusters-API
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true
-            - name: DBFS
+            - name: Clusterbeleid-API
+              href: /azure/databricks/dev-tools/api/latest/policies
+              maintainContext: true
+            - name: DBFS-API
               href: /azure/databricks/dev-tools/api/latest/dbfs
               maintainContext: true
-            - name: Groepen
+            - name: Groep-API
               href: /azure/databricks/dev-tools/api/latest/groups
               maintainContext: true
             - name: API voor exemplaargroepen
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: Taken
+            - name: Taak-API
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
-            - name: Bibliotheken
+            - name: Bibliotheek-API
               href: /azure/databricks/dev-tools/api/latest/libraries
               maintainContext: true
-            - name: MLflow
+            - name: MLflow-API
               href: /azure/databricks/dev-tools/api/latest/mlflow
               maintainContext: true
-            - name: SCIM
+            - name: SCIM-API's
               items:
                 - name: Overzicht van SCIM API
                   href: /azure/databricks/dev-tools/api/latest/scim/index
@@ -1674,17 +1698,14 @@
                 - name: SCIM API (groepen)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
-            - name: Geheimen
+            - name: Geheimen-API
               href: /azure/databricks/dev-tools/api/latest/secrets
               maintainContext: true
-            - name: Tokens
+            - name: Token-API
               href: /azure/databricks/dev-tools/api/latest/tokens
               maintainContext: true
-            - name: Werkruimte
+            - name: Werkruimte-API
               href: /azure/databricks/dev-tools/api/latest/workspace
-              maintainContext: true
-            - name: Runtimeversiestring voor REST API-aanroepen
-              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
               maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
@@ -1767,6 +1788,9 @@
           items:
             - name: Opmerkingen bij de release van het platform
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Juni 2020
+              href: /azure/databricks/release-notes/product/2020/june
               maintainContext: true
             - name: Mei 2020
               href: /azure/databricks/release-notes/product/2020/may

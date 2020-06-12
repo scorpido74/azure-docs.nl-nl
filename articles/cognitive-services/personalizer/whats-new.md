@@ -8,20 +8,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 04/23/2020
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 55153cc7fc125c97a5b73084f83dd320240ca256
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342103"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700631"
 ---
 # <a name="whats-new-in-personalizer"></a>Wat is er nieuw in personaliseren?
 
-Meer informatie over wat er nieuw is in de service. Deze items kunnen opmerkingen bij de release, Video's, blog berichten en andere soorten informatie bevatten. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over nieuwe functies in de service. Deze items kunnen opmerkingen bij de release, Video's, blog berichten en andere soorten informatie bevatten. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
+
+### <a name="june-2020"></a>Juni 2020
+
+* Nieuwe zelf studie- [persoonlijker gebruiken in een web-app](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Mei 2020-build-conferentie
 
@@ -33,7 +37,7 @@ De volgende opties zijn beschikbaar in de **open bare preview-versie**:
 
 * TLS 1,2 wordt nu afgedwongen voor alle HTTP-aanvragen voor deze service. Zie [Azure Cognitive Services Security](../cognitive-services-security.md)(Engelstalig) voor meer informatie.
 
-### <a name="november-2019---ignite-conference"></a>November 2019-Ignite-conferentie
+### <a name="november-2019---ignite-conference"></a>November 2019: Ignite Conference
 
 * Personaler is algemeen beschikbaar (GA)
 * Azure Notebooks [zelf studie](tutorial-use-azure-notebook-generate-loop-data.md) met volledige levens cyclus

@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: Aangepaste analyses maken met Databricks
           href: howto-create-custom-analytics.md
+        - name: Uw gegevens visualiseren in Power BI
+          href: howto-connect-powerbi.md
     - name: Beheer
       items:
         - name: Uw toepassing beheren

@@ -138,6 +138,8 @@
 - name: Resources
   expanded: true
   items:
+    - name: Opties voor ondersteuning en hulp
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Aanvragen van klantgegevens
       href: time-series-insights-customer-data-requests.md
     - name: Bronnen voor ontwikkelaars
@@ -158,22 +160,6 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Beschikbaarheid in regio’s
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: Opties voor ondersteuning en hulp
-      items:
-        - name: Ondersteuningsopties in Azure
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Opties voor ondersteuning en hulp voor Azure IoT
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Microsoft Q&A-vragenpagina
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-    - name: Feedback en forums
-      items:
-        - name: Microsoft Q&A-vragenpagina
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-        - name: Productaanvragen en -suggesties
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Azure-video's
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Channel 9-video's

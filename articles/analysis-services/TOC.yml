@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Een service-principal toevoegen aan serverbeheerdersrol
           href: analysis-services-addservprinc-admins.md
+        - name: Schakelen tussen regio's
+          href: move-between-regions.md
     - name: Model
       items:
         - name: Modelleren in tabelvorm
