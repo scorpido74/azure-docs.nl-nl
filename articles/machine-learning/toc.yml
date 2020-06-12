@@ -128,6 +128,8 @@
           href: concept-data.md
         - name: Gegevensopname
           href: concept-data-ingestion.md
+        - name: Gegevensverwerking
+          href: concept-optimize-data-processing.md
     - name: Modeltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

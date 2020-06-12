@@ -378,8 +378,6 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: Een SaaS-aanbieding maken
               href: ./partner-center-portal/create-new-saas-offer.md
-            - name: SaaS-facturering naar gebruik
-              href: ./partner-center-portal/saas-metered-billing.md
             - name: SaaS-uitvoerings-API's
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -391,6 +389,8 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS-uitvoerings-API's - Veelgestelde vragen
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
+            - name: SaaS-facturering naar gebruik
+              href: ./partner-center-portal/saas-metered-billing.md
         - name: Overzicht van leadbeheer
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
