@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220125"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689840"
 ---
 # <a name="configure-the-review-tool"></a>Het beoordelingsprogramma configureren
 
@@ -25,7 +25,7 @@ Het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.co
 
 ## <a name="manage-team-and-subteams"></a>Team en subteams beheren
 
-Op het tabblad **team** kunt u uw team leden en subteamnen&mdash;groepen van gebruikers beheren die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
+Op het tabblad **team** kunt u uw team leden en subteamnen &mdash; groepen van gebruikers beheren die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
 
 ![Team instellingen voor het hulp programma bekijken](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteam
 
 ## <a name="tags"></a>Tags
 
-Op het tabblad **labels** kunt u naast de twee standaard markeringen&mdash;**isadult** (**a**) en **isracy** (**r**) aangepaste toezicht Tags definiëren. Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
+Op het tabblad **labels** kunt u naast de twee standaard markeringen &mdash; **isadult** (**a**) en **isracy** (**r**) aangepaste toezicht Tags definiëren. Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
 
 ![De weer gave Tags, inclusief de selectie vakjes ' is zichtbaar '](images/tags-4-disable.png)
 
@@ -97,7 +97,7 @@ Het [hulp programma voor beoordeling](./human-in-the-loop.md) bevat de volgende 
 - Emotion
 - Face
 - PhotoDNA-Cloud service
-- Tekstanalyse
+- Text Analytics
 
 ### <a name="add-a-connector"></a>Een connector toevoegen
 

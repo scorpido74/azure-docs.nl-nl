@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220015"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691710"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Gegevens opslag en verwijderen in Language Understanding (LUIS) Cognitive Services
 LUIS slaat gegevens op die zijn versleuteld in een Azure-gegevens opslag die overeenkomt met de regio die is opgegeven door de sleutel. Deze gegevens worden 30 dagen bewaard. 
@@ -28,7 +28,7 @@ Gebruikers hebben volledige controle over het [exporteren](luis-how-to-start-new
 
 Uitingen kan op twee verschillende plaatsen worden opgeslagen. 
 
-* Tijdens **het ontwerp proces**worden uitingen gemaakt en opgeslagen in de bedoeling. Uitingen in intenties zijn vereist voor een geslaagde LUIS-app. Zodra de app is gepubliceerd en er query's worden ontvangen op het eind punt, wordt de query `log=false`reeks van het eindpunt verzoek,, bepaalt of het eind punt utterance is opgeslagen. Als het eind punt wordt opgeslagen, maakt het deel uit van het actieve Learning uitingen dat wordt weer gegeven in de sectie **Build** van de portal, in de sectie beoordeling van het **eind punt uitingen** . 
+* Tijdens **het ontwerp proces**worden uitingen gemaakt en opgeslagen in de bedoeling. Uitingen in intenties zijn vereist voor een geslaagde LUIS-app. Zodra de app is gepubliceerd en er query's worden ontvangen op het eind punt, wordt de query reeks van het eindpunt verzoek, `log=false` , bepaalt of het eind punt utterance is opgeslagen. Als het eind punt wordt opgeslagen, maakt het deel uit van het actieve Learning uitingen dat wordt weer gegeven in de sectie **Build** van de portal, in de sectie beoordeling van het **eind punt uitingen** . 
 * Wanneer u **endpoint uitingen bekijkt**en een utterance aan een intentie toevoegt, wordt de utterance niet meer opgeslagen als onderdeel van het eind punt uitingen dat moet worden gecontroleerd. Deze wordt toegevoegd aan de intenties van de app. 
 
 <a name="utterances-in-an-intent"></a>

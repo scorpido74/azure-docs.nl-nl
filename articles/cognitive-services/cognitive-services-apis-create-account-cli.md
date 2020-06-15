@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219608"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704706"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -32,7 +32,7 @@ In deze Quick Start leert u hoe u zich kunt registreren voor Azure Cognitive Ser
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>De Azure CLI installeren en aanmelden 
 
-Installeer de [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
+Installeer de [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Als u zich wilt aanmelden bij de lokale installatie van de CLI, voert u de opdracht [AZ login](https://docs.microsoft.com/cli/azure/reference-index#az-login) :
 
 ```azurecli-interactive
 az login
@@ -60,7 +60,7 @@ az account list-locations \
 
 Nadat u uw Azure-locatie hebt, maakt u een nieuwe resource groep in de Azure CLI met behulp van de opdracht [AZ Group Create](/cli/azure/group#az-group-create) .
 
-Vervang in het onderstaande voor beeld de Azure- `westus2` locatie door een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
+Vervang in het onderstaande voor beeld de Azure-locatie door `westus2` een van de Azure-locaties die beschikbaar zijn voor uw abonnement.
 
 ```azurecli-interactive
 az group create \
@@ -82,7 +82,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 
 > [!NOTE]
-> Veel van de onderstaande Cognitive Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken `F0` , gebruikt u als de SKU voor uw resource.
+> Veel van de onderstaande Cognitive Services hebben een gratis laag die u kunt gebruiken om de service te proberen. Als u de gratis laag wilt gebruiken, gebruikt u `F0` als de SKU voor uw resource.
 
 ### <a name="vision"></a>Vision
 
@@ -95,17 +95,17 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Zoeken
 
 | Service            | Soort                  |
 |--------------------|-----------------------|
 | Bing Automatische suggesties   | `Bing.Autosuggest.v7` |
-| Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
-| Bing Entiteiten zoeken | `Bing.EntitySearch`   |
+| Bing Custom Search | `Bing.CustomSearch`   |
+| Bing Entity Search | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
 | Bing Spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Speech
+### <a name="speech"></a>Spraak
 
 | Service            | Soort                 |
 |--------------------|----------------------|
@@ -140,7 +140,7 @@ az cognitiveservices account list-kinds
 
 Als u een nieuwe Cognitive Services resource wilt maken en hierop wilt abonneren, gebruikt u de opdracht [AZ cognitiveservices account create](https://docs.microsoft.com/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) . Met deze opdracht wordt een nieuwe factureer bare resource toegevoegd aan de resource groep die u eerder hebt gemaakt. Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u wilt gebruiken, samen met de prijs categorie (of SKU) en een Azure-locatie:
 
-U kunt een F0 (gratis) resource maken voor anomalie detectie, met de `anomaly-detector-resource` naam met de onderstaande opdracht.
+U kunt een F0 (gratis) resource maken voor anomalie detectie, `anomaly-detector-resource` met de naam met de onderstaande opdracht.
 
 ```azurecli-interactive
 az cognitiveservices account create \

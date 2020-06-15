@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220191"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710555"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Ondersteuning van talen en regio's voor de Bing Nieuws zoeken-API
 
@@ -23,11 +23,11 @@ Het Bing Nieuws zoeken-API ondersteunt talrijke landen/regio's, veel met meer da
 
 U kunt een land/regio opgeven met behulp van de `cc` query parameter. Als u een land/regio opgeeft, moet u ook een of meer taal codes opgeven met de `Accept-Language` http-header. De ondersteunde talen variëren per teleenheid/regio. ze worden vermeld voor elk land/elke regio in de tabel markten.
 
-U kunt ook de markt opgeven met behulp van `mkt` de query parameter en een code uit de tabel **markten** . Als u een markt opgeeft, geeft u een land/regio en een voorkeurs taal op. In `setLang` dit geval kan de query parameter worden ingesteld op een taal code. doorgaans is dit dezelfde taal die wordt opgegeven `mkt` door tenzij de gebruiker de voor keur geeft om Bing in een andere taal te zien.
+U kunt ook de markt opgeven met behulp `mkt` van de query parameter en een code uit de tabel **markten** . Als u een markt opgeeft, geeft u een land/regio en een voorkeurs taal op. `setLang`In dit geval kan de query parameter worden ingesteld op een taal code. Dit is meestal dezelfde taal die wordt opgegeven door `mkt` tenzij de gebruiker de voor keur geeft om Bing te zien in een andere taal.
 
 ## <a name="supported-markets-for-news-search-endpoint"></a>Ondersteunde markten voor het zoeken naar nieuws-eind punten
 
-Voor het `/news/search` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om `mkt` de query parameter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
+Voor het `/news/search` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de query parameter op te geven `mkt` . Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
 Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opgeven, raadpleegt u [land codes](#countrycodes).  
 
@@ -76,7 +76,7 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |Turkije|Turks|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>Ondersteunde markten voor nieuws eindpunt
-Voor het `/news` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om `mkt` de query parameter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
+Voor het `/news` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de query parameter op te geven `mkt` . Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
 Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opgeven, raadpleegt u [land codes](#countrycodes).  
 
@@ -99,7 +99,7 @@ Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opg
 |Volksrepubliek China|Chinees|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>Ondersteunde markten voor het verloop van nieuws-eind punten
-Voor het `/news/trendingtopics` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om `mkt` de query parameter op te geven. Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
+Voor het `/news/trendingtopics` eind punt bevat de volgende tabel de waarden van de markt code die u kunt gebruiken om de query parameter op te geven `mkt` . Bing retourneert inhoud alleen voor deze markten. De lijst is onderhevig aan wijzigingen.  
 
 Voor een lijst met land-of regio codes die u in de `cc` query parameter kunt opgeven, raadpleegt u [land codes](#countrycodes).  
 

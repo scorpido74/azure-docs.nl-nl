@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927204"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730302"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Wat is de SDK voor spraak apparaten?
 
@@ -37,7 +37,11 @@ De SDK voor spraak apparaten maakt een groot aantal scenario's met spraak functi
 
 ### <a name="android"></a>Android
 
-Voor Android downloaden apparaten de nieuwste versie van de [Android speech-apparaten SDK](https://aka.ms/sdsdk-download-android).
+De speech-apparaten SDK voor Android ondersteunt de [roobo v1](speech-devices-sdk-roobo-v1.md) -en gelijkwaardige apparaten, voor deze down load de meest recente versie van de [Android speech-apparaten SDK](https://aka.ms/sdsdk-download-android).
+
+
+Als u een ander Android-apparaat hebt, zoals een telefoon of mobiel, start u met de [Android Speech SDK](speech-sdk.md)
+
 
 ### <a name="windows"></a>Windows
 

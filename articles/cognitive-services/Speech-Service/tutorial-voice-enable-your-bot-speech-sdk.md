@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457096"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753184"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Zelf studie: spraak-uw bot inschakelen met de Speech SDK
 
@@ -265,7 +265,7 @@ De registratie pagina van Azure bot-kanalen bevat een **test in de optie Web Cha
 
 1. Zoek en open uw **EchoBotTutorial-BotRegistration-# #** # #-resource in de [Azure Portal](https://portal.azure.com)
 1. Selecteer in de **bot Management** -navigatie de optie **instellingen**. Kopieer de waarde onder **micro soft app id**
-1. Open de Visual Studio EchoBot-oplossing. Zoek in het Solution Explorer naar het bestand **appSettings. json** en dubbel klik erop.
+1. Open de Visual Studio EchoBot-oplossing. Zoek in het Solution Explorer naar en dubbel klik op **appsettings.jsop**
 1. Vervang de lege teken reeks naast **MicrosoftAppId** in het JSON-bestand met de GEKOPIEERDE id-waarde
 1. Terug naar de Azure Portal, in **bot Management** -navigatie, selecteert **u instellingen**en klikt u op **(beheren)** naast **micro soft app-id**
 1. Klik op **Nieuw client geheim**. Voeg een beschrijving toe (bijvoorbeeld Web Chat) en klik op **toevoegen**. Het nieuwe geheim kopiëren
@@ -323,13 +323,16 @@ Als er een fout bericht wordt weer gegeven in het hoofd venster van de app, gebr
 
 | Fout | Wat moet u doen? |
 |-------|----------------------|
-|Fout AuthenticationFailure: de WebSocket-upgrade is mislukt met een verificatie fout (401). Controleren op juiste abonnements sleutel (of autorisatie token) en regio naam| Controleer op de pagina instellingen van de app of u de sleutel voor spraak abonnementen en de regio juist hebt ingevoerd.<br>Zorg ervoor dat de spraak sleutel en de sleutel regio correct zijn ingevoerd. |
-|Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: er kan geen verbinding worden gemaakt met de bot voordat een bericht wordt verzonden | Zorg ervoor dat u het selectie vakje [streaming-eind punt inschakelen](#register-the-direct-line-speech-channel) en/of [ **websockets** ](#enable-web-sockets) op op hebt ingeschakeld.<br>Zorg ervoor dat uw Azure App Service actief is. Als dat het geval is, start u de App Service opnieuw op.|
-|Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: de antwoord status code geeft geen succes aan: 500 (InternalServerError)| Uw bot heeft een Neural-stem opgegeven in het veld [uitspreken](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) van uitvoer activiteit, maar de Azure-regio die aan uw spraak abonnements sleutel is gekoppeld, biedt geen ondersteuning voor Neural stemmen. Zie de [standaard-en Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|Fout ConnectionFailure: de verbinding is door de externe host gesloten. Fout code: 1000. Fout Details: maximum aantal niet-actieve verbindingen van WebSocket-verbinding (> 300000 MS)| Dit is een verwachte fout wanneer er meer dan vijf minuten een verbinding met het kanaal is geopend en inactief is. |
+|Fout (AuthenticationFailure): bijwerken van WebSocket is mislukt met een verificatie fout (401). Controleren op juiste abonnements sleutel (of autorisatie token) en regio naam| Controleer op de pagina instellingen van de app of u de sleutel voor spraak abonnementen en de regio juist hebt ingevoerd.<br>Zorg ervoor dat de spraak sleutel en de sleutel regio correct zijn ingevoerd. |
+|Fout (ConnectionFailure): de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: er kan geen verbinding worden gemaakt met de bot voordat een bericht wordt verzonden | Zorg ervoor dat u het selectie vakje [streaming-eind punt inschakelen](#register-the-direct-line-speech-channel) en/of [ **websockets** ](#enable-web-sockets) op op hebt ingeschakeld.<br>Zorg ervoor dat uw Azure App Service actief is. Als dat het geval is, start u de App Service opnieuw op.|
+|Fout (ConnectionFailure): de verbinding is door de externe host gesloten. Fout code: 1002. Fout Details: de server heeft de status code ' 503 ' geretourneerd wanneer de status code ' 101 ' werd verwacht | Zorg ervoor dat u het selectie vakje [streaming-eind punt inschakelen](#register-the-direct-line-speech-channel) en/of [ **websockets** ](#enable-web-sockets) op op hebt ingeschakeld.<br>Zorg ervoor dat uw Azure App Service actief is. Als dat het geval is, start u de App Service opnieuw op.|
+|Fout (ConnectionFailure): de verbinding is door de externe host gesloten. Fout code: 1011. Fout Details: de antwoord status code geeft geen succes aan: 500 (InternalServerError)| Uw bot heeft een Neural-stem opgegeven in het veld [uitspreken](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) van uitvoer activiteit, maar de Azure-regio die aan uw spraak abonnements sleutel is gekoppeld, biedt geen ondersteuning voor Neural stemmen. Zie de [standaard-en Neural stemmen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Als uw probleem niet wordt opgelost in de tabel, raadpleegt u [spraak assistenten: veelgestelde vragen](faq-voice-assistants.md).
+Als uw probleem niet wordt opgelost in de tabel, raadpleegt u [spraak assistenten: veelgestelde vragen](faq-voice-assistants.md). Als uw probleem nog steeds niet kan worden opgelost nadat u alle stappen in deze zelf studie hebt uitgevoerd, voert u een nieuw probleem in op de GitHub-pagina van de [Voice Assistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
+#### <a name="a-note-on-connection-time-out"></a>Een opmerking over de time-out van de verbinding
+
+Als u verbonden bent met een bot en er in de afgelopen vijf minuten geen activiteit is opgetreden, sluit de service automatisch de WebSocket-verbinding met de client en met de bot. Dit is standaard. Er wordt een bericht weer gegeven in de onderste balk: *Er is een time-out opgetreden voor de actieve verbinding, maar u kunt opnieuw verbinding maken op aanvraag*. U hoeft niet op de knop opnieuw verbinding maken te klikken. u hoeft alleen maar op de knop microfoon te drukken en te praten, een SMS-bericht te typen of het tref woord te zeggen (als er een is ingeschakeld). De verbinding wordt automatisch hersteld.  
 ### <a name="view-bot-activities"></a>Bot-activiteiten weer geven
 
 Elke bot verzendt en ontvangt **activiteiten** berichten. In het venster **activiteiten logboek** van de Windows Voice Assistant-client ziet u getimede logboeken met elke activiteit die de client heeft ontvangen van de bot. U kunt ook de activiteiten zien die de client naar de bot heeft verzonden met behulp van de- [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) methode. Wanneer u een logboek item selecteert, worden de details van de gekoppelde activiteit als JSON weer gegeven.

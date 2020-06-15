@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220268"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696708"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden filteren die het zoek antwoord bevat  
 
@@ -53,13 +53,13 @@ Als u de antwoorden wilt filteren die worden geretourneerd door Bing, gebruikt u
 
 U kunt filteren op de typen antwoorden die Bing bevat in het antwoord (bijvoorbeeld afbeeldingen, Video's en nieuws) door gebruik te maken van de [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) -query parameter, een door komma's gescheiden lijst met antwoorden. Er wordt een antwoord opgenomen in het antwoord als Bing relevante inhoud voor de zoek actie vindt. 
 
-Voor het uitsluiten van specifieke antwoorden van het antwoord, zoals afbeeldingen, `-` laten voorafgaan door een teken naar het antwoord type. Bijvoorbeeld:
+Voor het uitsluiten van specifieke antwoorden van het antwoord, zoals afbeeldingen, laten voorafgaan door een `-` teken naar het antwoord type. Bijvoorbeeld:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Hieronder ziet u hoe u kunt `responseFilter` gebruiken om afbeeldingen, Video's en nieuws van zeil dinghies aan te vragen. Wanneer u de query reeks codeert, veranderen de komma's in% 2C.  
+Hieronder ziet u hoe u kunt gebruiken `responseFilter` om afbeeldingen, Video's en nieuws van zeil dinghies aan te vragen. Wanneer u de query reeks codeert, veranderen de komma's in% 2C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -98,18 +98,18 @@ Hieronder ziet u de respons op de vorige query. Omdat Bing geen relevante video-
 
 Bing heeft geen video-en nieuws resultaten in het vorige antwoord geretourneerd, maar dit betekent niet dat de inhoud van de video en het nieuws niet bestaat. Het betekent gewoon dat de pagina deze niet bevat. Als u echter door meer resultaten [bladert](./paging-webpages.md) , zullen de volgende pagina's waarschijnlijk deze bevatten. Als u de [VIDEO'S zoeken API](../bing-video-search/search-the-web.md) en [Nieuws zoeken API](../bing-news-search/search-the-web.md) -eind punten rechtstreeks aanroept, bevat het antwoord waarschijnlijk ook resultaten.
 
-Het gebruik van kan worden gebruikt `responseFilter` om resultaten van één API te verkrijgen. Als u inhoud van één Bing-API wilt, moet u die API rechtstreeks aanroepen. Als u bijvoorbeeld alleen installatie kopieën wilt ontvangen, verzendt u een aanvraag naar het eind punt `https://api.cognitive.microsoft.com/bing/v7.0/images/search` van de afbeeldingen zoeken-API of een van de andere eind punten van de [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) . Het aanroepen van de enkelvoudige API is niet alleen belang rijk voor de prestaties, maar omdat de leveranciersspecifieke Api's rijkere resultaten bieden. U kunt bijvoorbeeld filters gebruiken die niet beschikbaar zijn voor de Webzoekopdrachten-API om de resultaten te filteren.  
+Het gebruik van kan worden gebruikt `responseFilter` om resultaten van één API te verkrijgen. Als u inhoud van één Bing-API wilt, moet u die API rechtstreeks aanroepen. Als u bijvoorbeeld alleen installatie kopieën wilt ontvangen, verzendt u een aanvraag naar het eind punt van de Afbeeldingen zoeken-API `https://api.cognitive.microsoft.com/bing/v7.0/images/search` of een van de andere eind punten van de [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) . Het aanroepen van de enkelvoudige API is niet alleen belang rijk voor de prestaties, maar omdat de leveranciersspecifieke Api's rijkere resultaten bieden. U kunt bijvoorbeeld filters gebruiken die niet beschikbaar zijn voor de Webzoekopdrachten-API om de resultaten te filteren.  
 
 ### <a name="site"></a>Site
 
-Als u zoek resultaten wilt ophalen uit een specifiek domein, `site:` neemt u de query parameter op in de query teken reeks.  
+Als u zoek resultaten wilt ophalen uit een specifiek domein, neemt u de `site:` query parameter op in de query teken reeks.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
 > [!NOTE]
-> Afhankelijk van de query, kunt u, als u `site:` de query operator gebruikt, de kans bestaat dat het antwoord inhoud voor volwassenen bevat, ongeacht de instelling van [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt.
+> Afhankelijk van de query, kunt u, als u de `site:` query operator gebruikt, de kans bestaat dat het antwoord inhoud voor volwassenen bevat, ongeacht de instelling van [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt.
 
 ### <a name="freshness"></a>Nieuwheid
 
@@ -119,7 +119,7 @@ Als u de resultaten van webantwoorden wilt beperken tot webpagina's die Bing heb
 * `Week`— Webpagina's retour neren die zijn gedetecteerd in de afgelopen 7 dagen
 * `Month`— Webpagina's retour neren die in de afgelopen 30 dagen zijn gedetecteerd
 
-U kunt deze para meter ook instellen op een aangepast datum bereik in het formulier `YYYY-MM-DD..YYYY-MM-DD`. 
+U kunt deze para meter ook instellen op een aangepast datum bereik in het formulier `YYYY-MM-DD..YYYY-MM-DD` . 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
@@ -131,7 +131,7 @@ De resultaten kunnen webpagina's bevatten die buiten de opgegeven periode vallen
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Het aantal antwoorden in het antwoord beperken
 
-Bing kan meerdere antwoord typen retour neren in het JSON-antwoord. Als u bijvoorbeeld query's gaat uitvoeren op *dinghies*, kan Bing retour neren `webpages`, `images` `videos`, en `relatedSearches`.
+Bing kan meerdere antwoord typen retour neren in het JSON-antwoord. Als u bijvoorbeeld query's gaat uitvoeren op *dinghies*, kan Bing retour neren `webpages` , `images` , `videos` en `relatedSearches` .
 
 ```json
 {
@@ -159,7 +159,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Het antwoord bevat alleen `webPages` en `images`.
+Het antwoord bevat alleen `webPages` en `images` .
 
 ```json
 {
@@ -215,8 +215,8 @@ Hier volgt de reactie op de bovenstaande aanvraag. Bing retourneert de twee best
 }
 ```
 
-Als u op `promote` News hebt ingesteld, bevat het antwoord niet het nieuws antwoord omdat het geen geclassificeerd&mdash;antwoord is dat u alleen geclassificeerde antwoorden kunt promo veren.
+Als u `promote` op News hebt ingesteld, bevat het antwoord niet het nieuws antwoord omdat het geen geclassificeerd antwoord is &mdash; dat u alleen geclassificeerde antwoorden kunt promo veren.
 
-De antwoorden die u wilt promoten, tellen niet mee voor de `answerCount` limiet. Als de geclassificeerde antwoorden bijvoorbeeld nieuws, afbeeldingen en Video's zijn, en u hebt ingesteld `answerCount` op 1 en `promote` nieuws, bevat het antwoord nieuws en afbeeldingen. Of, als de geclassificeerde antwoorden Video's, afbeeldingen en nieuws zijn, bevat het antwoord Video's en nieuws.
+De antwoorden die u wilt promoten, tellen niet mee voor de `answerCount` limiet. Als de geclassificeerde antwoorden bijvoorbeeld nieuws, afbeeldingen en Video's zijn, en u hebt ingesteld `answerCount` op 1 en `promote` Nieuws, bevat het antwoord nieuws en afbeeldingen. Of, als de geclassificeerde antwoorden Video's, afbeeldingen en nieuws zijn, bevat het antwoord Video's en nieuws.
 
-U kunt alleen `promote` gebruiken als u de `answerCount` query parameter opgeeft.
+U kunt `promote` alleen gebruiken als u de `answerCount` query parameter opgeeft.

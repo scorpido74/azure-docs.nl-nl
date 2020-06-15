@@ -97,6 +97,8 @@
           href: budget.md
         - name: Privé-eindpunten gebruiken met Batch-accounts
           href: private-connectivity.md
+        - name: Door de klant beheerde sleutels configureren
+          href: batch-customer-managed-key.md
     - name: Verifiëren met Azure AD
       items:
         - name: Azure AD met Batch-service

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 43476f3e3f125bc338ba25e8cce0e96baa76262b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636101"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730319"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -27,8 +27,6 @@ Taal ondersteuning is afhankelijk van de functionaliteit van de spraak service. 
 Zowel de micro soft Speech SDK als de REST API ondersteunen de volgende talen (land instellingen). 
 
 Om de nauw keurigheid te verbeteren, wordt aanpassing aangeboden voor een subset van de talen via het uploaden van **Audio en Transcripten met menselijke labels** of **gerelateerde tekst: zinnen**. Zie aan de [slag met Custom speech](how-to-custom-speech.md)voor meer informatie over aanpassingen.
-
-Zie [een model verbeteren voor Custom speech](how-to-custom-speech-improve-accuracy.md#add-new-words-with-pronunciation)voor meer informatie over hoe u de uitspraak kunt verbeteren.
 
 <!--
 To get the AM and ML bits:

@@ -12,11 +12,11 @@ ms.topic: reference
 ms.date: 10/03/2019
 ms.author: diberry
 ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219718"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686627"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
@@ -53,7 +53,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    -   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -75,7 +75,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -97,7 +97,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -119,7 +119,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -141,7 +141,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -163,7 +163,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -187,7 +187,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -209,7 +209,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2,-   |
+[Number](luis-reference-prebuilt-number.md)   |    V2,-   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2,-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2,-   |
@@ -231,7 +231,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    -   |
+[Number](luis-reference-prebuilt-number.md)   |    -   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
@@ -253,7 +253,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -275,7 +275,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   |
@@ -297,7 +297,7 @@ De volgende entiteiten worden ondersteund:
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   |
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   |
 [Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   |
-[Telwoord](luis-reference-prebuilt-number.md)   |    V2, V3   |
+[Number](luis-reference-prebuilt-number.md)   |    V2, V3   |
 [Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
 [Percentage](luis-reference-prebuilt-percentage.md)   |    -   |
@@ -308,7 +308,7 @@ De volgende entiteiten worden ondersteund:
 
 Opmerkingen over [afgeschafte vooraf samengestelde entiteiten](luis-reference-prebuilt-deprecated.md) weer geven
 
-De woordgroep is niet beschikbaar in alle subcultuur van Portugees (Brazilië) ```pt-BR```.
+De woordgroep is niet beschikbaar in alle subcultuur van Portugees (Brazilië) ```pt-BR``` .
 
 ## <a name="turkish-entity-support"></a>Turkse entiteit ondersteuning
 

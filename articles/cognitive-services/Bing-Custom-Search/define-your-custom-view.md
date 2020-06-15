@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220213"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710164"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Uw Bing Aangepaste zoekopdrachten-ervaring configureren
 
@@ -27,7 +27,7 @@ Gebruik het volgende bij het definiëren van uw segmenten van het web:
 
 | Segment naam | Beschrijving                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Een domein segment bevat alle inhoud die binnen een Internet domein is gevonden. Bijvoorbeeld `www.microsoft.com`. `www.` Als u dit weglaat, zoekt Bing ook de subdomeinen van het domein. Als u bijvoorbeeld opgeeft `microsoft.com`, retourneert Bing ook resultaten van `support.microsoft.com` of. `technet.microsoft.com` |
+| Domain     | Een domein segment bevat alle inhoud die binnen een Internet domein is gevonden. Bijvoorbeeld `www.microsoft.com`. Als u dit weglaat, `www.` zoekt Bing ook de subdomeinen van het domein. Als u bijvoorbeeld opgeeft `microsoft.com` , retourneert Bing ook resultaten van `support.microsoft.com` of `technet.microsoft.com` . |
 | Subpagina    | Een segment van een subpagina bevat alle inhoud die is gevonden op de subpagina en de onderliggende paden. U kunt Maxi maal twee subpagina's in het pad opgeven. Bijvoorbeeld: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Webpagina    | Een segment van een webpagina kan alleen die webpagina in een aangepaste zoek opdracht bevatten. U kunt eventueel ook opgeven of u subpagina's wilt toevoegen.                                                                                                                                                                                  |
 

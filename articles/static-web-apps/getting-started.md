@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8de6e9cff8149423f4b00b07e3113be6606181b5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714233"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259249"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Quickstart: Uw eerste statische web-app bouwen
 
@@ -31,25 +31,25 @@ In dit artikel wordt gebruikgemaakt van een sjabloon voor GitHub-opslagplaatsen,
 
 # <a name="angular"></a>[Angular](#tab/angular)
 
-- Ga naar de volgende locatie om een nieuwe opslagplaats te maken
+- Zorg ervoor dat u bent aangemeld bij GitHub en ga naar de volgende locatie om een nieuwe opslagplaats te maken
   - https://github.com/staticwebdev/angular-basic/generate
 - Geef de opslagplaats de naam **mijn-eerste-statische-web-app**
 
 # <a name="react"></a>[React](#tab/react)
 
-- Ga naar de volgende locatie om een nieuwe opslagplaats te maken
+- Zorg ervoor dat u bent aangemeld bij GitHub en ga naar de volgende locatie om een nieuwe opslagplaats te maken
   - https://github.com/staticwebdev/react-basic/generate
 - Geef de opslagplaats de naam **mijn-eerste-statische-web-app**
 
 # <a name="vue"></a>[Vue](#tab/vue)
 
-- Ga naar de volgende locatie om een nieuwe opslagplaats te maken
+- Zorg ervoor dat u bent aangemeld bij GitHub en ga naar de volgende locatie om een nieuwe opslagplaats te maken
   - https://github.com/staticwebdev/vue-basic/generate
 - Geef de opslagplaats de naam **mijn-eerste-statische-web-app**
 
 # <a name="no-framework"></a>[Geen framework](#tab/vanilla-javascript)
 
-- Ga naar de volgende locatie om een nieuwe opslagplaats te maken
+- Zorg ervoor dat u bent aangemeld bij GitHub en ga naar de volgende locatie om een nieuwe opslagplaats te maken
   - https://github.com/staticwebdev/vanilla-basic/generate
 - Geef de opslagplaats de naam **mijn-eerste-statische-web-app**
 

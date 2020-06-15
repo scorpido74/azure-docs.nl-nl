@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220631"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693087"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Taal ondersteuning van Knowledge Base-inhoud voor QnA Maker
 
@@ -25,7 +25,7 @@ De taal bepaalt de relevantie van de resultaten QnA Maker worden uitgevoerd als 
 
 ## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Eén taal voor alle kennis grondslagen in de resource
 
-Met QnA Maker kunt u de taal voor uw QnA-service selecteren tijdens het maken van de eerste Knowledge Base. Voor alle Knowledge bases in een QnA Maker resource moeten alle kennis bronnen zich in dezelfde taal bevinden. Deze taal kan niet worden gewijzigd.
+Met QnA Maker kunt u de taal voor uw QnA-service selecteren tijdens het maken van uw eerste Knowledge Base. Alle Knowledge Bases in een QnA Maker-resource moeten in dezelfde taal zijn. De taal kan niet worden gewijzigd.
 
 Het maken van kennis grondslagen in verschillende talen in een resource is een negatieve invloed op de relevantie van de resultaten QnA Maker levert antwoord op gebruikers query's.
 
