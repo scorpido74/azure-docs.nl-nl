@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 649c9a2e0dd9df21a9a59140d9f2999768aab555
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1b71e8108ecab0f6d420e404bd602a900ebfcfb2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745401"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258280"
 ---
 # <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Zelfstudie: SQL on-demand (preview) gebruiken met Power BI Desktop en een rapport maken
 
@@ -29,10 +29,14 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het voltooien van deze zelfstudie hebt u de volgende software nodig:
+Voor het voltooien van deze zelfstudie moet aan de volgende vereisten worden voldaan:
+
+- [Power BI Desktop](https://powerbi.microsoft.com/downloads/): nodig voor het visualiseren van de gegevens en het maken van een rapport.
+- [Azure Synapse-werkruimte](https://docs.microsoft.com/azure/synapse-analytics/quickstart-synapse-studio): nodig voor het maken van een database, externe gegevensbron en-weergave.
+
+Optioneel:
 
 - Een SQL-query-hulpprogramma, zoals [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) of [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
-- [Power BI Desktop](https://powerbi.microsoft.com/downloads/).
 
 Waarden voor de volgende parameters:
 

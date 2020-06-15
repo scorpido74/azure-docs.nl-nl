@@ -2,21 +2,21 @@
 title: 'Zelfstudie: sjabloon maken en implementeren'
 description: Uw eerste Azure Resource Manager-sjabloon maken. In deze zelfstudie krijgt u meer informatie over de syntaxis van sjabloonbestanden en het implementeren van een opslagaccount.
 author: mumian
-ms.date: 05/20/2020
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2180ca80d87643eb885d814318e516b4b3c53f37
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714794"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235215"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Zelfstudie: Uw eerste ARM-sjabloon maken en implementeren
 
 Deze zelfstudie is een introductie toe Azure Resource Manager-sjablonen (ARM). U ziet hoe u een basissjabloon maakt en deze implementeert in Azure. U krijgt informatie over de structuur van de sjabloon en de hulpprogramma’s die u nodig hebt om met sjablonen te werken. Het voltooien van deze zelfstudie kost ongeveer **12 minuten**, maar de daadwerkelijke tijd is afhankelijk van hoeveel hulpprogramma’s u moet installeren.
 
-Deze zelfstudie is de eerste van een reeks. Naarmate u vordert in de reeks, past u het basissjabloon stap voor stap aan totdat alle kernonderdelen van een ARM-sjabloon zijn behandeld. Deze elementen zijn de bouwstenen voor veel complexere sjablonen. We hopen dat u aan het einde van de reeks in staat bent uw eigen sjablonen te maken en klaar bent om uw implementaties te automatiseren met sjablonen.
+Deze zelfstudie is de eerste van een reeks. Naarmate u vordert in de reeks, past u de basissjabloon stap voor stap aan totdat alle kernonderdelen van een ARM-sjabloon zijn behandeld. Deze elementen zijn de bouwstenen voor veel complexere sjablonen. We hopen dat u aan het einde van de reeks in staat bent uw eigen sjablonen te maken en klaar bent om uw implementaties te automatiseren met sjablonen.
 
 Zie [Azure Resource Manager-sjablonen](overview.md)als u meer wilt weten over de voordelen van het gebruik van sjablonen het automatiseren van implementaties met sjablonen.
 
@@ -39,6 +39,9 @@ U hebt ook Azure PowerShell of Azure CLI nodig om het sjabloon te implementeren.
 - [Azure CLI installeren in Linux](/cli/azure/install-azure-cli-linux)
 
 Nadat u Azure PowerShell of Azure CLI hebt geïnstalleerd moet u zich voor de eerste keer aanmelden. Bekijk [Aanmelden - PowerShell](/powershell/azure/install-az-ps#sign-in) of [Aanmelden - Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in) voor ondersteuning.
+
+> [!IMPORTANT]
+> Als u Azure CLI gebruikt, moet u beschikken over versie 2.6 of hoger. De opdrachten die in deze zelfstudie worden weergegeven, werken niet als u een eerdere versie gebruikt. U kunt de geïnstalleerde versie controleren met de opdracht: `az --version`.
 
 U bent nu klaar om te beginnen met het leren over sjablonen.
 

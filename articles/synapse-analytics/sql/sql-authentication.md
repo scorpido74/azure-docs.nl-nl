@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: ff29b9ab87b2cd48297f5f1ee195f11fb56b428a
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7295bb2e87373a80c6b105ab7284a43e6f0804da
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700316"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020769"
 ---
 # <a name="sql-authentication"></a>SQL-verificatie
 
@@ -164,9 +164,9 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 > [!NOTE]
-> Een veelvoorkomende reden voor het maken van een databasegebruiker op basis van een SQL Database Server-aanmelding is voor gebruikers die toegang nodig hebben tot meerdere databases. Aangezien ingesloten databasegebruikers individuele entiteiten zijn, heeft elke database zijn eigen gebruiker en eigen wachtwoord. Dit kan overhead veroorzaken, omdat de gebruiker zijn eigen wachtwoord voor elke database moet onthouden en dit erg ingewikkeld kan zijn als ze meerdere wachtwoorden in vele databases moeten wijzigen. Wanneer u echter gebruikmaakt van SQL Server-aanmeldingen en hoge beschikbaarheid (actieve geo-replicatie en failover-groepen), moeten de SQL Server-aanmeldingen handmatig worden ingesteld op elke server. Anders wordt de databasegebruiker niet meer toegewezen aan de serveraanmelding nadat een failover is uitgevoerd en heeft de gebruiker geen toegang meer tot de database na failover. 
+> Een veelvoorkomende reden voor het maken van een databasegebruiker op basis van een serveraanmelding is voor gebruikers die toegang nodig hebben tot meerdere databases. Aangezien ingesloten databasegebruikers individuele entiteiten zijn, heeft elke database zijn eigen gebruiker en eigen wachtwoord. Dit kan overhead veroorzaken, omdat de gebruiker zijn eigen wachtwoord voor elke database moet onthouden en dit erg ingewikkeld kan zijn als ze meerdere wachtwoorden in vele databases moeten wijzigen. Wanneer u echter gebruikmaakt van SQL Server-aanmeldingen en hoge beschikbaarheid (actieve geo-replicatie en failover-groepen), moeten de SQL Server-aanmeldingen handmatig worden ingesteld op elke server. Anders wordt de databasegebruiker niet meer toegewezen aan de serveraanmelding nadat een failover is uitgevoerd en heeft de gebruiker geen toegang meer tot de database na failover. 
 
-Zie [De Azure SQL Database-beveiliging configureren en beheren voor geografisch herstel en failovers](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie over de configuratie van aanmeldingen voor geo-replicatie.
+Zie [De Azure SQL Database-beveiliging configureren en beheren voor geografisch herstel en failovers](../../azure-sql/database/active-geo-replication-security-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) voor meer informatie over de configuratie van aanmeldingen voor geo-replicatie.
 
 ### <a name="configuring-the-database-level-firewall"></a>De firewall op databaseniveau configureren
 

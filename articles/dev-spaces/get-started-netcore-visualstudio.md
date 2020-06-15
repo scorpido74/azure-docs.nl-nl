@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: In deze zelfstudie ziet u hoe u Azure Dev Spaces en Visual Studio gebruikt om fouten op te sporen en snel een .NET Core-toepassing te herhalen in Azure Kubernetes Service
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, servicemesh, servicemeshroutering, kubectl, k8s
-ms.openlocfilehash: a807af3ffe14da943786051a3ece03b777a0edf5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873611"
+ms.locfileid: "83995901"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Een Kubernetes-ontwikkelaarsruimte maken: Visual Studio en .NET Core met Azure Dev Spaces
 
@@ -26,28 +26,59 @@ In deze handleiding leert u het volgende:
 > [!Note]
 > **Als u op enig moment niet verder kunt**, kunt u de [probleemoplossingssectie](troubleshooting.md) raadplegen.
 
+## <a name="install-the-azure-cli"></a>Azure-CLI installeren
+Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
+Meld u aan bij Azure. Typ de volgende opdracht in een terminalvenster:
+
+```azurecli
+az login
+```
+
+> [!Note]
+> Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+
+#### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
+U kunt uw abonnementen bekijken door het volgende uit te voeren: 
+
+```azurecli
+az account list --output table
+```
+
+Zoek naar het abonnement met de waarde *True* voor *IsDefault*.
+Als dit niet het abonnement is dat u wilt gebruiken, kunt u het standaardabonnement wijzigen:
+
+```azurecli
+az account set --subscription <subscription ID>
+```
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Een Kubernetes-cluster maken dat is ingeschakeld voor Azure Dev Spaces
 
-1. Meld u aan bij Azure Portal op https://portal.azure.com.
-1. Kies **Een resource maken** > ga naar **Kubernetes** > selecteer **Kubernetes-service** > **Maken**.
+Maak vanaf de opdrachtprompt de resourcegroep in een [regio die ondersteuning biedt voor Azure Dev Spaces][supported-regions].
 
-   Voer de volgende stappen uit onder elke kop van het formulier *Kubernetes-cluster maken*, en controleer of uw geselecteerde [regio ondersteuning biedt voor Azure Dev Spaces][supported-regions].
+```azurecli
+az group create --name MyResourceGroup --location <region>
+```
 
-   - **PROJECTDETAILS**: selecteer een Azure-abonnement en een nieuwe of bestaande Azure-resourcegroep.
-   - **CLUSTERDETAILS**: voer een naam, regio, versie en DNS-voorvoegsel voor het AKS-cluster in.
-   - **SCHAAL**: selecteer een VM-grootte voor de AKS-agentknooppunten en het aantal knooppunten. Als u begint met Azure Dev Spaces, is één knooppunt voldoende voor het verkennen van alle functies. Het aantal knooppunten kan op elk gewenst moment na de implementatie van het cluster gemakkelijk worden aangepast. Let op: de VM-grootte kan niet meer worden gewijzigd als een AKS-cluster eenmaal is gemaakt. Zodra een AKS-cluster is geïmplementeerd, kunt u echter eenvoudig een nieuw AKS-cluster met grotere virtuele machines maken en Dev Spaces gebruiken om dat grotere cluster opnieuw te implementeren als u wilt opschalen.
+Maak een Kubernetes-cluster met de volgende opdracht:
 
-   ![Configuratie-instellingen voor Kubernetes](media/common/Kubernetes-Create-Cluster-2.PNG)
+```azurecli
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
+```
 
+Het duurt een paar minuten om het cluster te maken.
 
-   Selecteer **Volgende: Verificatie** wanneer u klaar bent.
+### <a name="configure-your-aks-cluster-to-use-azure-dev-spaces"></a>Uw AKS-cluster configureren voor het gebruik van Azure Dev Spaces
 
-1. Kies de gewenste instelling voor RBAC (op rollen gebaseerd toegangsbeheer). Azure Dev Spaces biedt ondersteuning voor clusters waarop RBAC is ingeschakeld of uitgeschakeld.
+Voer de volgende Azure CLI-opdracht in. Gebruik daarbij de resourcegroep die uw AKS-cluster en de naam van uw AKS-cluster bevat. Met de opdracht wordt uw cluster geconfigureerd met ondersteuning voor Azure Dev Spaces.
 
-    ![RBAC-instelling](media/common/k8s-RBAC.PNG)
-
-1. Selecteer **Controleren + maken** en vervolgens **Maken** wanneer u klaar bent.
+   ```azurecli
+   az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+   ```
+   
+> [!IMPORTANT]
+> Met het Azure Dev Spaces-configuratieproces wordt de eventueel aanwezige `azds`-naamruimte in het cluster verwijderd.
 
 ## <a name="get-the-visual-studio-tools"></a>Visual Studio-hulpprogramma's downloaden
 Installeer de nieuwste versie van [Visual Studio 2019](https://www.visualstudio.com/vs/) in Windows met de Azure Development-workload.

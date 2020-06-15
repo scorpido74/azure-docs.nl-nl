@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 470cc8cc16c8bdb32bac32a7227690899abb9c51
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644669"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140970"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Wat is Apache Spark in Azure Synapse Analytics?
 
@@ -41,7 +41,7 @@ Spark-pools in Azure Synapse bieden een volledig beheerde Spark-service. De voor
 | Ondersteuning voor Azure Data Lake Storage, tweede generatie| Spark-pools in Azure Synapse kunnen Azure Data Lake Storage van de tweede generatie en blob-opslag gebruiken. Zie [Overzicht van Azure Data Lake Storage](../../data-lake-store/data-lake-store-overview.md) voor meer informatie over Data Lake Storage. |
 | Integratie met IDE's van derden | Azure Synapse biedt een IDE-invoegtoepassing voor [JetBrains' IntelliJ IDEA](https://www.jetbrains.com/idea/) die nuttig is om toepassingen te maken en in te dienen bij een Spark-pool. |
 | Vooraf geladen Anaconda-bibliotheken |Spark-pools in Azure Synapse worden geleverd met Anaconda-bibliotheken die vooraf zijn geïnstalleerd. [Anaconda](https://docs.continuum.io/anaconda/) voorziet in bijna 200 bibliotheken voor machine learning, data-analyse, visualisatie, enzovoort. |
-| Schaalbaarheid | Apache Spark-pools in Azure Synapse kunnen automatisch schalen, als u deze functie inschakelt, zodat pools naar wens omhoog en omlaag kunnen worden geschaald. Bovendien kunnen Spark-pools zonder gegevensverlies worden afgesloten, omdat alle gegevens zijn opgeslagen in Azure Storage of Data Lake Storage. |
+| Schaalbaarheid | Apache Spark-pools in Azure Synapse kunnen automatisch schalen, als u deze functie inschakelt, zodat pools naar wens omhoog en omlaag kunnen worden geschaald door knooppunten toe te voegen of te verwijderen. Bovendien kunnen Spark-pools zonder gegevensverlies worden afgesloten, omdat alle gegevens zijn opgeslagen in Azure Storage of Data Lake Storage. |
 
 De volgende onderdelen zijn standaard beschikbaar voor Spark-pools in Azure Synapse.
 

@@ -5,22 +5,18 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122745"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231513"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Quickstart: Uw eerste functie maken in Azure met behulp van Visual Studio
 
-Met Azure Functions kunt u uw code in een serverloze omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing moet publiceren.
+In dit artikel gebruikt u Visual Studio om een op een C#-klassenbibliotheek gebaseerde functie te maken die reageert op HTTP-aanvragen. Nadat u de code lokaal hebt getest, implementeert u deze in de serverloze omgeving van Azure Functions.  
 
-In deze quickstart leert u hoe u met Visual Studio 2019 lokaal een 'Hello World' C#-functie-app voor HTTP-triggers kunt maken en testen , die u vervolgens naar Azure publiceert. 
-
-![De reactie van de lokale host van de functie in de browser](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
-
-Deze quickstart is ontworpen voor Visual Studio 2019. 
+Voor het voltooien van deze quickstart worden kosten van een paar dollarcent of minder in rekening gebracht bij uw Azure-account.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,11 +30,19 @@ Als u geen [Azure-abonnement](../guides/developer/azure-developer-guide.md#under
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio maakt een project en klasse die standaardcode voor het type HTTP-triggerfunctie bevat. Met het kenmerk van de `FunctionName`-methode wordt de naam van de functie ingesteld. Deze is standaard `Function1`. Met het kenmerk `HttpTrigger` wordt aangegeven dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
+Visual Studio maakt een project en klasse die standaardcode voor het type HTTP-triggerfunctie bevat. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks. Met het kenmerk `HttpTrigger` wordt aangegeven dat de functie wordt geactiveerd door een HTTP-aanvraag. 
 
-U kunt de mogelijkheden van de functie uitbreiden met in- en uitvoerbindingen door de juiste kenmerken op de methode toe te passen. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
+## <a name="rename-the-function"></a>De naam van de functie wijzigen
 
-Nu u uw functieproject en een HTTP-triggerfunctie hebt gemaakt, kunt u deze testen op uw lokale computer.
+Met het kenmerk van de `FunctionName`-methode wordt de naam van de functie ingesteld. Deze wordt standaard gegenereerd als `Function1`. Aangezien het hulpprogramma u niet toestaat de standaardnaam van de functie te wijzigen wanneer u het project maakt, raden we u aan even de tijd te nemen om een betere naam te maken voor de functieklasse, het bestand en de metagegevens.
+
+1. Klik in **Verkenner** met de rechtermuisknop op het bestand Function1.cs, en wijzig de naam in `HttpExample.cs`.
+
+1. Wijzig in de code de naam van de klasse Function1 in HttpExample.
+
+1. Wijzig in de `HttpTrigger`-methode met de naam `run` de naam van het kenmerk van de `FunctionName`-methode, in `HttpExample`.
+
+Nu u de naam van de functie hebt gewijzigd, kunt u deze testen op de lokale computer.
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
@@ -56,19 +60,41 @@ Voordat u uw project kunt publiceren, moet u een functie-app in uw Azure-abonnem
 
 ## <a name="test-your-function-in-azure"></a>Uw functie testen in Azure
 
-1. Kopieer de basis-URL van de functie-app van de pagina **Profiel publiceren**. Vervang het `localhost:port`-deel van de URL dat u hebt gebruikt bij het lokaal testen van de functie door de nieuwe basis-URL. Voeg de queryreeks `?name=<YOUR_NAME>` toe aan de URL en voer de aanvraag uit.
+1. In Cloud Explorer moet de nieuwe functie-app zijn geselecteerd. Als dit niet het geval is, vouwt u uw abonnement uit > **App Services**, en selecteert u de nieuwe functie-app.
+
+1. Klik met de rechtermuisknop op de functie-app en kies **Openen in browser**. Hiermee opent u de hoofdmap van de functie-app in uw standaardwebbrowser, en wordt de pagina geopend waarop staat aangegeven dat de functie-app actief is. 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="Functie-app actief":::
+
+1. Voeg in de adresbalk van de browser de tekenreeks `/api/HttpExample?name=Functions` toe aan de basis-URL, en voer de aanvraag uit.
 
     De URL die uw HTTP-triggerfunctie aanroept, heeft de volgende indeling:
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. Plak deze nieuwe URL van de HTTP-aanvraag in de adresbalk van uw browser. Hieronder ziet u het antwoord op de externe GET-aanvraag dat door de functie wordt geretourneerd, weergegeven in de browser:
+2. Ga naar deze URL. U ziet nu in de browser een antwoord op de externe GET-aanvraag dat is geretourneerd met de functie. Dit ziet er ongeveer als volgt uit:
 
-    ![Het antwoord van de functie in de browser](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Het antwoord van de functie in de browser":::
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+Andere Quick Starts in deze verzameling zijn op deze Quick Start gebaseerd. Verwijder de resources niet als u van plan bent om te werken met volgende quickstarts, zelfstudies of een van de services die u in deze quickstart hebt gemaakt.
+
+*Resources* verwijst in Azure naar functie-apps, functies, opslagaccounts,enzovoort. Deze zijn gegroepeerd in *resourcegroepen*. U kunt alle resources in een groep verwijderen door de groep zelf te verwijderen. 
+
+U hebt resources gemaakt om deze snelstartgidsen te voltooien. Deze resources kunnen bij u in rekening worden gebracht, afhankelijk van de [accountstatus](https://azure.microsoft.com/account/) en [serviceprijzen](https://azure.microsoft.com/pricing/). Als u de resources niet meer nodig hebt, kunt u ze als volgt verwijderen:
+
+1. Vouw in Cloud Explorer uw abonnement uit > **App Services**, klik met de rechtermuisknop op de functie-app en kies **Openen in portal**. 
+
+1. Selecteer op de pagina Functie-app het tabblad **Overzicht**, en selecteer vervolgens de koppeling onder **Resourcegroep**.
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Selecteer op de pagina Functie-app de resourcegroep die u wilt verwijderen":::
+
+2. Bekijk op de pagina **Resourcegroep** de lijst met opgenomen resources, en controleer of dit de resources zijn die u wilt verwijderen.
+ 
+3. Selecteer **Resourcegroep verwijderen** en volg de instructies.
+
+   Verwijderen kan enkele minuten duren. Wanneer dit is voltooid, verschijnt een aantal seconden een melding in beeld. U kunt ook het belpictogram boven aan de pagina selecteren om de melding te bekijken.
 
 ## <a name="next-steps"></a>Volgende stappen
 

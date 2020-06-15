@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 1aa2545f3bd4e7558c99a31dca43f65510bab59e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872141"
+ms.locfileid: "83995935"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen op Kubernetes: Visual Studio en .NET Core - Azure Dev Spaces
 
@@ -32,25 +32,43 @@ Met Azure Dev Spaces kunt u ook fouten opsporen en herhalen met:
 
 - Een Azure-abonnement. Als u nog geen account hebt, kunt u [een gratis account aanmaken](https://azure.microsoft.com/free).
 - Visual Studio 2019 in Windows met de Azure Development-workload geïnstalleerd. Als Visual Studio nog niet is geïnstalleerd, downloadt u het [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een upgrade maken van een Azure Kubernetes Service-cluster
 
-U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Om een cluster te maken:
+U moet een AKS-cluster maken in een [ondersteunde regio][supported-regions]. Met de onderstaande opdrachten maakt u een resourcegroep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Kies *En een resource maken > Kubernetes-service*. 
-1. Voer het _Abonnement_, de _resourcegroep_, _Kubernetes-clusternaam_, _Regio_, _Kubernetes-versie_en _DNS-naamvoorvoegsel_ in.
-
-    ![AKS maken in de Azure-portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
-
-1. Klik op *Controleren + maken*.
-1. Klik op *Create*.
+```azurecli
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
+```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure Dev Spaces instellen op uw AKS-cluster inschakelen
 
-Navigeer naar uw AKS-cluster in de Azure-portal en klik op *Dev Spaces*. wijzig *Dev Spaces gebruiken* naar *Ja* en klik op *Opslaan*.
+Gebruik de opdracht `use-dev-spaces` om Dev Spaces in te schakelen voor uw AKS-cluster en volg de prompts. Met de onderstaande opdracht schakelt u Dev Spaces in voor het cluster *MyAKS* in de groep *MyResourceGroup* en maakt u een *standaard* dev-ruimte.
 
-![Dev Spaces in de Azure-portal inschakelen](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
+> [!NOTE]
+> Met de opdracht `use-dev-spaces` wordt ook de CLI voor Azure Dev Spaces geïnstalleerd als die nog niet is geïnstalleerd. U kunt de CLI voor Azure Dev Spaces niet installeren in Azure Cloud Shell.
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+```
+
+```output
+'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
+
+Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
+
+Select a dev space or Kubernetes namespace to use as a dev space.
+ [1] default
+Type a number or a new name: 1
+
+Kubernetes namespace 'default' will be configured as a dev space. This will enable Azure Dev Spaces instrumentation for new workloads in the namespace. Continue? (Y/n): Y
+
+Configuring and selecting dev space 'default'...3s
+
+Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
+```
 
 ## <a name="create-a-new-aspnet-web-app"></a>Een nieuwe ASP.NET-web-app maken
 

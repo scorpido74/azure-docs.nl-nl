@@ -3,17 +3,17 @@ title: 'Zelfstudie: Gegevensexports uit Azure Cost Management instellen en beher
 description: In dit artikel leest u hoe u gegevensexports uit Azure Cost Management instelt en beheert, zodat u deze kunt gebruiken in externe systemen.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 05/27/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877946"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142304"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Geëxporteerde gegevens maken en beheren
 
@@ -49,17 +49,15 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 ## <a name="create-a-daily-export"></a>Een dagelijkse export uitvoeren
 
-Als u een gegevensexport wilt maken of weergeven, of een export wilt plannen, opent u het gewenste bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Selecteer bovenaan de pagina Kostenanalyse **Exporteren** en kies vervolgens een exportoptie. Selecteer bijvoorbeeld **Export plannen**.  
+Als u een gegevensexport wilt maken of weergeven, of een export wilt plannen, opent u het gewenste bereik in de Azure-portal en selecteert u **Kostenanalyse** in het menu. Ga bijvoorbeeld naar **Abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **Kostenanalyse** in het menu. Selecteer bovenaan de pagina Kostenanalyse **Instellingen** en vervolgens **Exporteren**, en kies een exportoptie.
 
 > [!NOTE]
 > - Naast abonnementen kunt u exports maken voor resourcegroepen, accounts, afdelingen en registraties. Zie [Understand and work with scopes](understand-work-scopes.md) (Engelstalig) voor meer informatie over bereiken.
 >- Wanneer u als partner bent aangemeld bij het bereik van het factureringsaccount of bij de tenant van een klant, kunt u gegevens exporteren naar een Azure Storage-account dat is gekoppeld aan uw partneropslagaccount. U moet hiervoor wel een actief abonnement hebben in uw CSP-tenant.
->
-
 
 Selecteer **Toevoegen**, typ een naam voor de export en selecteer de optie **Dagelijkse export van kosten (maand tot heden)** . Selecteer **Next**.
 
-![Voorbeeld van een nieuwe export, waarbij het type export wordt weergegeven](./media/tutorial-export-acm-data/basics_exports.png)
+[![Voorbeeld van een nieuwe export, waarbij het type export wordt weergegeven](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
 
 Geef het abonnement voor uw Azure opslagaccount op en selecteer vervolgens uw opslagaccount.  Geef de opslagcontainer en het pad naar de map op waar u het exportbestand wilt opslaan. Selecteer **Next**.
 
@@ -83,10 +81,19 @@ Er zijn twee soorten exportopties:
 **Aangepast**: hiermee kunt u wekelijkse en maandelijkse exports plannen met week-tot-datum- en maand-tot-heden-opties. *De eerste uitvoer wordt onmiddellijk uitgevoerd.*
 
 Als u een Betalen per gebruik-, MSDN- of Visual Studio-abonnement hebt, komt de factureringsperiode van uw factuur mogelijk niet overeen met de kalendermaand. Voor deze typen abonnementen en resourcegroepen kunt u een export maken die is afgestemd op uw factuurperiode of op kalendermaanden. Als u een export wilt maken die is afgestemd op uw factuurmaand, gaat u naar **Aangepast** en selecteert u **Factureringsperiode tot heden**.  Als u een export wilt maken die is afgestemd op de kalendermaand, selecteert u **Maand tot heden**.
->
->
 
 ![Nieuwe export: het tabblad Basis toont een aangepaste wekelijkse week-tot-heden-selectie](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+#### <a name="create-an-export-for-multiple-subscriptions"></a>Een export maken voor meerdere abonnementen
+
+Als u een Enterprise Agreement hebt, kunt u een beheergroep gebruiken om gegevens over abonnementskosten te verzamelen in één container. Vervolgens kunt u gegevens over kostenbeheer exporteren voor de beheergroep.
+
+Exports voor beheergroepen van andere typen abonnementen worden niet ondersteund.
+
+1. Maak een beheergroep en wijs abonnementen aan deze groep toe.
+1. Selecteer in Exporteren de optie **Bereik**.
+1. Selecteer **Deze beheergroep selecteren**.
+1. Maak een export in het bereik om gegevens over kostenbeheer op te halen voor de abonnementen in de beheergroep.
 
 ## <a name="verify-that-data-is-collected"></a>Controleren of de gegevens zijn geëxporteerd
 
@@ -104,6 +111,18 @@ Het bestand wordt geopend met het programma of de toepassing waarmee bestanden m
 
 ![Voorbeeld van geëxporteerde CSV-gegevens, weergegeven in Excel](./media/tutorial-export-acm-data/example-export-data.png)
 
+### <a name="download-an-exported-csv-data-file"></a>Een geëxporteerd CSV-gegevensbestand downloaden
+
+U kunt het geëxporteerde CSV-bestand ook downloaden in de Azure-portal. In de volgende stappen wordt uitgelegd hoe u het bestand kunt vinden in Kostenanalyse.
+
+1. Selecteer in Kostenanalyse **Instellingen**, en selecteer vervolgens **Exports**.
+1. Selecteer in de lijst met exports het opslagaccount voor een export.
+1. Klik in uw opslagaccount op **Containers**.
+1. Selecteer de container in de lijst met containers.
+1. Navigeer door de mappen en opslagblobs naar de gewenste datum.
+1. Selecteer het CSV-bestand en selecteer vervolgens **Downloaden**.
+
+[![Voorbeeld van download met exportgegevens](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
 ## <a name="access-exported-data-from-other-systems"></a>Geëxporteerde gegevens gebruiken in externe systemen
 

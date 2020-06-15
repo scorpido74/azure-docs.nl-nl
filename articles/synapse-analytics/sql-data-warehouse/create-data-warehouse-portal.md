@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e393b653ecb9e9d7b8eff277b91215ccc5bf6342
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 282222aad68df94ea9eff4151d31eb5e488bca81
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770819"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84117036"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Quickstart: Een Synapse SQL-pool maken en query uitvoeren met behulp van de Azure-portal
 
@@ -37,7 +37,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 ## <a name="create-a-sql-pool"></a>Een SQL-pool maken
 
-Datawarehouses worden gemaakt met behulp van SQL-pool in Azure Synapse Analytics. Een Azure SQL-pool wordt gemaakt met een gedefinieerde set [compute-resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische Azure SQL-server](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Datawarehouses worden gemaakt met behulp van SQL-pool in Azure Synapse Analytics. Een Azure SQL-pool wordt gemaakt met een gedefinieerde set [compute-resources](memory-concurrency-limits.md). De database wordt gemaakt in een [Azure-resourcegroep](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) en in een [logische SQL-server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 Volg de stappen om een SQL-pool te maken die de voorbeelddatabase **AdventureWorksDW** bevat.
 
@@ -64,7 +64,7 @@ Volg de stappen om een SQL-pool te maken die de voorbeelddatabase **AdventureWor
 
    ![prestatieniveau van datawarehouse wijzigen](./media/create-data-warehouse-portal/create-sql-pool-performance-level.png)  
 
-   Zie [Rekenproces beheren in Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md)voor meer informatie over prestatieniveaus.
+   Zie [Rekenproces beheren in Azure Synapse Analytics](sql-data-warehouse-manage-compute-overview.md) voor meer informatie over prestatieniveaus.
 
 5. Selecteer **Extra instellingen**, onder **Bestaande gegevens gebruiken**, **Voorbeeld**, zodat AdventureWorksDW als de voorbeelddatabase wordt gemaakt.
 
@@ -76,16 +76,16 @@ Volg de stappen om een SQL-pool te maken die de voorbeelddatabase **AdventureWor
 
    ![Maken selecteren](./media/create-data-warehouse-portal/create-sql-pool-create.png)
 
-6. Selecteer **Meldingen** op de werkbalk om het implementatieproces te bewaken.
+7. Selecteer **Meldingen** op de werkbalk om het implementatieproces te bewaken.
 
    ![melding](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Een serverfirewallregel maken
 
-De service Azure Synapse maakt een firewall op serverniveau. Deze firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld. Volg deze stappen om een [firewallregel op serverniveau](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
+De service Azure Synapse maakt een firewall op serverniveau. Deze firewall voorkomt dat externe toepassingen en hulpprogramma's verbinding maken met de server of databases op de server. Als u de connectiviteit wilt inschakelen, kunt u firewallregels toevoegen waarmee connectiviteit voor bepaalde IP-adressen wordt ingeschakeld. Volg deze stappen om een [firewallregel op serverniveau](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te maken voor het IP-adres van uw client.
 
 > [!NOTE]
-> Azure Synapse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u geen verbinding maken met uw Azure SQL Database-server, tenzij de IT-afdeling poort 1433 openstelt.
+> Azure Synapse communiceert via poort 1433. Als u verbinding wilt maken vanuit een bedrijfsnetwerk, is uitgaand verkeer via poort 1433 mogelijk niet toegestaan vanwege de firewall van het netwerk. In dat geval kunt u alleen verbinding maken met uw server als uw IT-afdeling poort 1433 openstelt.
 
 1. Nadat de implementatie is voltooid, selecteert u **Alle services** in het linkermenu. Selecteer **Databases**, selecteer de ster naast **Azure Synapse Analytics** om Azure Synapse Analytics toe te voegen aan uw favorieten.
 
@@ -99,24 +99,24 @@ De service Azure Synapse maakt een firewall op serverniveau. Deze firewall voork
 
    ![serverinstellingen](./media/create-data-warehouse-portal/server-settings.png)
 
-5. De pagina **Firewallinstellingen** voor de SQL Database-server wordt geopend.
+5. De pagina **Firewallinstellingen** voor de server wordt geopend.
 
    ![serverfirewallregel](./media/create-data-warehouse-portal/server-firewall-rule.png)
 
 6. Selecteer **IP van client toevoegen** op de werkbalk om uw huidige IP-adres aan een nieuwe firewallregel toe te voegen. Een firewallregel kan poort 1433 openen voor een afzonderlijk IP-adres of voor een aantal IP-adressen.
 
-7. selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres waarbij poort 1433 op de logische server wordt geopend.
+7. selecteer **Opslaan**. Er wordt een firewallregel op serverniveau gemaakt voor uw huidige IP-adres, waarbij poort 1433 wordt geopend op de server.
 
 8. selecteer **OK** en sluit de pagina **Firewallinstellingen**.
 
-U kunt nu via dit IP-adres verbinding maken met de SQL-pools en de bijbehorende datawarehouses. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.
+U kunt nu via dit IP-adres verbinding maken met de server en de bijbehorende SQL-pools. De verbinding werkt met SQL Server Management Studio of een ander hulpprogramma van uw keuze. Wanneer u verbinding maakt, gebruikt u het ServerAdmin-account dat u eerder hebt gemaakt.
 
 > [!IMPORTANT]
 > Voor alle Azure-services is toegang via de SQL Database-firewall standaard ingeschakeld. Selecteer **UIT** op deze pagina en selecteer vervolgens op **Opslaan** om de firewall uit te schakelen voor alle Azure-services.
 
 ## <a name="get-the-fully-qualified-server-name"></a>De volledig gekwalificeerde servernaam ophalen
 
-Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het verbinding maken met de server.
+Haal de volledig gekwalificeerde servernaam van uw server op uit de Azure-portal. Later gebruikt u de volledig gekwalificeerde servernaam bij het verbinding maken met de server.
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -128,7 +128,7 @@ Haal de volledig gekwalificeerde servernaam van uw SQL-server op uit Azure Porta
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Als serverbeheerder verbinding maken met de server
 
-In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio) om een verbinding tot stand te brengen met de Azure SQL-server.
+In deze sectie wordt gebruikgemaakt van [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SQL Server Management Studio) om een verbinding tot stand te brengen met de server.
 
 1. Open SQL Server Management Studio.
 
@@ -196,7 +196,7 @@ Volg deze stappen om de resources op te schonen die u niet meer nodig hebt.
 
 3. Als u de SQL-pool wilt verwijderen zodat er geen kosten in rekening worden gebracht voor berekenen of opslaan, selecteert u **Verwijderen**.
 
-4. Als u de door u gemaakte SQL-server wilt verwijderen, klikt u op **select sqlpoolservername.database.windows.net** in de vorige afbeelding. Selecteer vervolgens **Verwijderen**. Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
+4. Als u de door u gemaakte server wilt verwijderen, klikt u op **select sqlpoolservername.database.windows.net** in de vorige afbeelding. Selecteer vervolgens **Verwijderen**. Wees voorzichtig met verwijderen. Als u de server verwijdert, worden ook alle databases verwijderd die zijn toegewezen aan de server.
 
 5. Als u de resourcegroep wilt verwijderen, selecteert u **myResourceGroup**. Selecteer vervolgens **Resourcegroep verwijderen**.
 

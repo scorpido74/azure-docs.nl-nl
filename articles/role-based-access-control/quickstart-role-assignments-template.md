@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 56d2647c3da84e9534220e7b237ea24b2b45e8b3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: da25f4bc585da26b9765fd36d65a8b5e0689f725
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853855"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300661"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Quickstart: Een Azure-roltoewijzing toevoegen met behulp van een Azure Resource Manager-sjabloon
 
@@ -40,6 +40,10 @@ Om een roltoewijzing toe te voegen, moet u drie elementen opgeven: beveiligingsp
 De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). De sjabloon heeft drie parameters en een resourcessectie. De resourcessectie bevat de drie elementen van een roltoewijzing: beveiligingsprincipal, roldefinitie en bereik. 
 
 :::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+
+De resource die is gedefinieerd in de sjabloon:
+
+- [Microsoft.Authorization/roleAssignments](/azure/templates/Microsoft.Authorization/roleAssignments)
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 

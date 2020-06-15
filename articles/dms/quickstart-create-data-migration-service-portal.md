@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 01/08/2020
-ms.openlocfilehash: 3b2a6566322f29870d2376007060acedac62692a
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873530"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187543"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Quickstart: Een Azure Database Migration Service-exemplaar maken met behulp van Azure Portal
 
-In deze quickstart maakt u gebruik van de Azure-portal om een Azure Database Migration Service-exemplaar te maken.  Nadat u het exemplaar hebt gemaakt, kunt u deze gebruiken om gegevens vanuit een on-premises SQL-server te migreren naar Azure SQL Database.
+In deze quickstart maakt u gebruik van de Azure-portal om een Azure Database Migration Service-exemplaar te maken.  Nadat u het exemplaar hebt gemaakt, kunt u deze gebruiken om gegevens vanuit SQL Server te migreren naar Azure SQL Database.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -78,4 +78,4 @@ Alle resources die u in deze QuickStart hebt gemaakt, kunt u verwijderen door de
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een on-premises SQL-server migreren naar Azure SQL Database](tutorial-sql-server-to-azure-sql.md)
+> [SQL Server naar Azure SQL Database migreren](tutorial-sql-server-to-azure-sql.md)

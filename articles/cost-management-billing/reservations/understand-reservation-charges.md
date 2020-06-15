@@ -7,16 +7,18 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: f0b093950b7f8fbbfbb0ca8ceb48cb0aa6341e10
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 46236355ca569c28ed9418f9c341a1510c1335b1
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200279"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84114068"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>Hoe reserveringskorting wordt toegepast bij het uitvoeren van Azure SQL Database-instanties
 
 Wanneer u gereserveerde capaciteit voor Azure SQL Database hebt gekocht, wordt de reserveringskorting automatisch toegepast op SQL Database-instanties die overeenkomen met de kenmerken en hoeveelheid van de reservering. Een reservering dekt de rekenkosten van uw SQL Database-instantie. Er worden tegen de normale tarieven software-, opslag- en netwerkkosten in rekening gebracht. U kunt de licentiekosten voor SQL Database-instanties dekken via [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/).
+
+Houd er rekening mee dat reserveringskortingen niet van toepassing zijn op serverloze modellen van Azure SQL Database.
 
 Raadpleeg voor gereserveerde VM-instanties [Understand Azure Reserved VM Instances discount](../manage/understand-vm-reservation-charges.md) (Meer informatie over korting voor gereserveerde VM-instanties voor Azure).
 
@@ -52,7 +54,7 @@ Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
 - [Wat zijn Azure-reserveringen?](save-compute-costs-reservations.md)
 - [Vooruitbetalen voor Virtual Machines met Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [Vooruitbetalen voor compute-resources van SQL Database met gereserveerde capaciteit voor Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Azure-reserveringen beheren](manage-reserved-vm-instance.md)
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)

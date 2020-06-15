@@ -1,6 +1,6 @@
 ---
-title: CLI-voorbeeld-herstellen-back-up-Azure SQL database
-description: Azure CLI-voorbeeldscript om een Azure SQL-Database te herstellen naar een eerder tijdstip vanuit automatische back-ups
+title: 'Azure CLI: Een back-up terugzetten'
+description: Azure CLI-voorbeeldscript om een database in Azure SQL te herstellen naar een eerder tijdstip vanuit automatische back-ups.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: efb73bc04e3c79740651fecdd98258b8101f84b1
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c33191097afc54189df1099a2d13f606e1516e54
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774279"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022621"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>CLI gebruiken om een enkele Azure SQL-Database te herstellen naar een eerder tijdstip
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>CLI gebruiken om een enkele database in Azure SQL Database te herstellen naar een eerder tijdstip
 
-In dit voorbeeld van Azure CLI wordt een Azure-SQL database teruggezet naar een bepaald tijdstip.  
+In dit voorbeeld van Azure CLI wordt een enkele database in Azure-SQL Database teruggezet naar een bepaald tijdstip.  
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
@@ -60,4 +60,4 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../sql-database-cli-samples.md).
+Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

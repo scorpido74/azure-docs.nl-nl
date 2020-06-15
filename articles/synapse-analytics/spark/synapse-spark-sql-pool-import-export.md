@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739274"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020860"
 ---
 # <a name="introduction"></a>Inleiding
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 De instructies voor importeren zijn niet vereist, ze worden vooraf geïmporteerd voor de notebookervaring.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool in de logische server (DW-exemplaar) die is gekoppeld aan de werkruimte
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Gegevens overdragen van of naar een SQL-pool die is gekoppeld aan de werkruimte
 
 > [!NOTE]
 > **Importeren niet vereist in notebookervaring**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 De verificatie voor opslag en de SQL-server is voltooid
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database op een logische server buiten de werkruimte
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Als u gegevens overbrengt naar of van een SQL-pool of database buiten de werkruimte
 
 > [!NOTE]
 > Importeren niet vereist in notebookervaring

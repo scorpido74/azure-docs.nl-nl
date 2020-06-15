@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 1a46cb537892d4255fd274b5754ab8e8c0278308
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c6ae8d79ee40729f47a906561d6c8ae586765f5d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774462"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019840"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Gebruik CLI om een beheerd-exemplaardatabase te herstellen naar een ander geografisch gebied
 
@@ -28,7 +28,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 ### <a name="prerequisites"></a>Vereisten
 
-Een bestaand paar beheerde exemplaren, zie [Azure CLI gebruiken om een beheerd exemplaar van Azure SQL Database te maken](sql-database-create-configure-managed-instance-cli.md).
+Een bestaand paar beheerde exemplaren, zie [Azure CLI gebruiken om een beheerd exemplaar van Azure SQL te maken](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -64,4 +64,4 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../sql-database-cli-samples.md).
+Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).
