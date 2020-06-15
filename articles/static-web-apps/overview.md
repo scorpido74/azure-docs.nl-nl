@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: d416044599535e8acd363d09099e8667bba59a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599063"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488916"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Wat is Azure Static Web Apps Preview?
 
@@ -30,7 +30,7 @@ Met Static Web Apps worden statische activa gescheiden van een traditionele webs
 
 ## <a name="key-features"></a>Belangrijke functies
 
-- **Gratis webhosting** voor statische inhoud zoals HTML, CSS, JavaScript en afbeeldingen.
+- **Webhosting** voor statische inhoud zoals HTML, CSS, JavaScript en afbeeldingen.
 - Ondersteuning voor **Geïntegreerde API** geboden in Azure Functions.
 - **Eigen GitHub-integratie** waarbij wijzigingen in de opslagplaats builds en implementaties activeren.
 - **Wereldwijd gedistribueerde** statische inhoud, waardoor inhoud zich dichter bij de gebruikers bevindt.

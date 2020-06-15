@@ -1,0 +1,93 @@
+---
+title: 'Quickstart: Een Resource Manager-sjabloon gebruiken om een Windows-virtuele machine te maken'
+description: In deze snelstart leert u hoe u een Resource Manager-sjabloon gebruikt om een virtuele Windows-machine te maken
+author: cynthn
+ms.service: virtual-machines-windows
+ms.topic: quickstart
+ms.workload: infrastructure
+ms.date: 06/04/2020
+ms.author: cynthn
+ms.custom: subject-armqs
+ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552000"
+---
+# <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Quickstart: Een virtuele Windows-machine maken met een Resource Manager-sjabloon
+
+In deze snelstart wordt beschreven hoe u een Resource Manager-sjabloon gebruikt voor het implementeren van een virtuele Windows-machine (VM) in Azure. 
+
+[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+
+## <a name="prerequisites"></a>Vereisten
+
+Geen.
+
+## <a name="create-a-windows-virtual-machine"></a>Een virtuele Windows-machine maken
+
+### <a name="review-the-template"></a>De sjabloon controleren
+
+De sjabloon die in deze snelstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
+
+:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json" range="1-225" highlight="67-224":::
+
+
+Verschillende resources worden in de sjabloon gedefinieerd:
+
+- [**Microsoft.Network/virtualNetworks/subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets): een subnet maken.
+- [**Microsoft.Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): een opslagaccount maken.
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): een openbaar IP-adres maken.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups): een netwerkbeveiligingsgroep maken.
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks): een virtueel netwerk maken.
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): een NIC maken.
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines) : een virtuele machine maken.
+
+
+
+### <a name="deploy-the-template"></a>De sjabloon implementeren
+
+1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
+
+    [![Implementeren in Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+
+1. Typ of selecteer de volgende waarden. Gebruik waar mogelijk de standaardwaarden.
+
+    - **Abonnement**: selecteer een Azure-abonnement.
+    - **Resourcegroep**: selecteer een bestaande resourcegroep in de vervolgkeuzelijst of selecteer **Nieuwe maken**, geef een unieke naam op voor de nieuwe resourcegroep en klik vervolgens op **OK**.
+    - **Locatie**: selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
+    - **Gebruikersnaam van beheerder**: geef een gebruikersnaam op, zoals *azureuser*.
+    - **Beheerderswachtwoord**: geef een wachtwoord op voor de beheerdersaccount. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+    - **DNS-labelvoorvoegsel**: voer een unieke ID in om te gebruiken als onderdeel van het DNS label.
+    - **Versie van besturingssysteem van Windows**: selecteer welke versie van Windows u wilt uitvoeren op de VM.
+    - **VM-grootte**: selecteer de [grootte](sizes.md) die kan worden gebruikt voor de VM.
+    - **Locatie**: de standaardlocatie is hetzelfde als van de resourcegroep als die al bestaat.
+1. Selecteer **Controleren + maken**. Selecteer nadat de validatie is afgerond **Maken** om de VM te maken en te implementeren.
+
+
+Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast Azure Portal kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
+
+## <a name="review-deployed-resources"></a>Geïmplementeerde resources bekijken
+
+U kunt de Azure-portal ook gebruiken om de VM en andere resources die zijn gemaakt te controleren. Selecteer wanneer de implementatie is voltooid **Naar de resourcegroep gaan** om de VM en andere resources te bekijken.
+
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u de resourcegroep niet meer nodig hebt, verwijdert u deze. Hierdoor worden ook de VM en alle resources in de resourcegroep verwijderd. 
+
+1. Selecteer de **Resourcegroep**.
+1. Selecteer **Verwijderen** op de pagina van de resourcegroep.
+1. Typ ter bevestiging de naam van de resourcegroep. Selecteer vervolgens **Verwijderen**.
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+In deze snelstart hebt u een eenvoudige virtuele machine geïmplementeerd met een Resource Manager-sjabloon. Voor meer informatie over virtuele machines in Azure, gaat u verder met de zelfstudie voor virtuele Linux-machines.
+
+
+> [!div class="nextstepaction"]
+> [Zelfstudies over virtuele Windows-machines](./tutorial-manage-vm.md)

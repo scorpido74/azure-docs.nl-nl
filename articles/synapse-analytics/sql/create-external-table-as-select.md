@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cbf6d42f3b1d130a6bf89f07bd3a7009ff0e8fa8
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 97e0b53aeac5a0adc939c87304ea35bb967eac52
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647515"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345067"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Queryresultaten opslaan in opslag met behulp van SQL op aanvraag (preview) met behulp van Azure Synapse Analytics
 
@@ -22,17 +22,16 @@ In dit artikel leert u hoe u queryresultaten opslaat in de opslag met behulp van
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap is om de onderstaande artikelen door te nemen en te controleren of u aan de vereisten voldoet:
+De eerste stap bestaat uit het **maken van een database** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatiescript worden de gegevensbronnen, referenties voor het databasebereik en externe bestandsindelingen gemaakt die worden gebruikt om gegevens in deze voorbeelden te lezen.
 
-- [De eerste installatie](query-data-storage.md#first-time-setup)
-- [Vereisten](query-data-storage.md#prerequisites)
+Volg de instructies in dit artikel om gegevensbronnen, referenties voor het databasebereik en externe bestandsindelingen die worden gebruikt om gegevens in de uitvoeropslag te schrijven.
 
 ## <a name="create-external-table-as-select"></a>Create external table as select
 
 U kunt de instructie CREATE EXTERNAL TABLE AS SELECT (CETAS) gebruiken om de queryresultaten op te slaan in de opslag.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u nog geen database hebt gemaakt, lees dan [De eerste installatie](query-data-storage.md#first-time-setup). U moet de LOCATION voor de externe gegevensbron MyDataSource wijzigen zodat deze verwijst naar een locatie waarvoor u schrijfmachtigingen hebt. 
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
 
 ```sql
 USE [mydbname];
@@ -44,7 +43,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
 GO
 
 CREATE EXTERNAL DATA SOURCE [MyDataSource] WITH (
-    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL [SasTokenWrite]
+    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL = [SasTokenWrite]
 );
 GO
 
@@ -63,8 +62,9 @@ SELECT
     *
 FROM
     OPENROWSET(
-        BULK 'https://sqlondemandstorage.blob.core.windows.net/csv/population-unix/population.csv',
-        FORMAT='CSV'
+        BULK 'csv/population-unix/population.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0'
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),
@@ -79,7 +79,7 @@ FROM
 U kunt de externe tabel die is gemaakt via CETAS gebruiken als een gewone externe tabel.
 
 > [!NOTE]
-> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt. Als u nog geen database hebt gemaakt, lees dan [De eerste installatie](query-data-storage.md#first-time-setup).
+> Wijzig de eerste regel in de query, d.w.z. [mydbname], zodat u de database gebruikt die u hebt gemaakt.
 
 ```sql
 USE [mydbname];
@@ -96,4 +96,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg voor meer informatie over het uitvoeren van een query op verschillende bestandstypen de artikelen [Query's uitvoeren op één CSV-bestand](query-single-csv-file.md), [Query uitvoeren op Parquet-bestanden](query-parquet-files.md)en [Query's uitvoeren op JSON-bestanden](query-json-files.md).
+Bekijk voor meer informatie over het uitvoeren van een query op verschillende bestandstypen de artikelen [Query's uitvoeren op één CSV-bestand](query-single-csv-file.md), [Query uitvoeren op Parquet-bestanden](query-parquet-files.md)en [Query's uitvoeren op JSON-bestanden](query-json-files.md).

@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053066"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324603"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Quickstart: Eenvoudige R-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ In dit voorbeeld wordt de opgeslagen procedure [sp_execute_external_script](/sql
 
 Als u een R-script wilt uitvoeren, geeft u het door als een op het systeem opgeslagen procedure, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-In de volgende stappen voert u dit voorbeeld van een R-script uit in uw SQL-database:
+In de volgende stappen voert u dit voorbeeld van een R-script uit in uw database:
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. Open **SQL Server Management Studio** en maak verbinding met de SQL-database.
+1. Open **SQL Server Management Studio** en maak verbinding met de database.
 
-   Als u hulp nodig hebt bij het tot stand brengen van een verbinding, raadpleegt u [quickstart: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](connect-query-ssms.md).
+   Als u hulp nodig hebt bij het tot stand brengen van een verbinding, raadpleegt u [quickstart: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een database in Azure SQL Database](connect-query-ssms.md).
 
 1. Geef het volledige R-script door aan de [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) opgeslagen procedure.
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   Als er fouten optreden, kan dit zijn omdat de openbare preview van Machine Learning Services (met R) niet is ingeschakeld voor uw SQL-database. Zie het gedeelte [Vereisten](#prerequisites) hierboven.
+   Als er fouten optreden, kan dit zijn omdat de openbare preview van Machine Learning Services (met R) niet is ingeschakeld voor uw database. Zie het gedeelte [Vereisten](#prerequisites) hierboven.
 
    > [!NOTE]
    > Als u een beheerder bent, kunt u automatisch externe code uitvoeren. U kunt machtigingen verlenen aan andere gebruikers met behulp van de opdracht:
@@ -196,7 +196,7 @@ Laten we voor nu alleen de standaardinvoer- en uitvoervariabelen van sp_execute_
 
 ## <a name="check-r-version"></a>R-versie controleren
 
-Als u wilt zien welke versie van R is geïnstalleerd in uw SQL database, voert u het volgende script uit:
+Als u wilt zien welke versie van R is geïnstalleerd in uw database, voert u het volgende script uit.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>R-pakketten vermelden
 
-Microsoft biedt een aantal R-pakketten waarin Machine Learning Services vooraf zijn geïnstalleerd in de SQL-database.
+Microsoft biedt een aantal R-pakketten waarin Machine Learning Services vooraf zijn geïnstalleerd in de database.
 
 Voer het volgende script uit om een lijst met de geïnstalleerde R-pakketten te zien, inclusief informatie over de versie, de afhankelijkheden, de licentie en het bibliotheekpad.
 

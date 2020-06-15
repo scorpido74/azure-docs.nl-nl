@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: Automatiseringsrichtlijnen voor partners
           href: virtual-wan-configure-automation-providers.md
-    - name: IPSec-beleid
-      href: virtual-wan-ipsec.md
+    - name: Site-naar-site
+      items:
+        - name: Over IPSec-beleid
+          href: virtual-wan-ipsec.md
+        - name: Meerdere ISP-koppelingen - selectie van Azure-pad
+          href: path-selection-multiple-links.md
 - name: Instructiegidsen
   items:
     - name: Virtuele netwerkgateway verbinden met een virtual WAN
@@ -58,8 +62,6 @@
       items:
         - name: Een site-naar-site-verbinding maken
           href: virtual-wan-site-to-site-portal.md
-        - name: Meerdere ISP-koppelingen - selectie van Azure-pad
-          href: path-selection-multiple-links.md
     - name: Gebruikers-VPN (punt-naar-site)
       items:
         - name: Gebruikers-VPN-verbinding maken

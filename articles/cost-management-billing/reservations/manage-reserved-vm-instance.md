@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019993"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434179"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Reserveringen voor Azure-resources beheren
 
@@ -20,6 +20,7 @@ Nadat u een Azure-reservering hebt gekocht, moet u de reservering mogelijk toepa
 
 Als u voor Azure gereserveerde virtuele machine-instanties hebt aangeschaft, kunt u de optimalisatie-instelling voor de reservering wijzigen. De reserveringskorting kan worden toegepast op virtuele machines in dezelfde serie, maar u kunt ook datacentercapaciteit voor een specifieke VM-grootte reserveren. Probeer ook reserveringen te optimaliseren, zodat deze volledig worden gebruikt.
 
+*De machtiging die is vereist om een reservering te beheren is afzonderlijk van abonnementsmachtigingen.*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +56,9 @@ Het bereik is alleen van toepassing op afzonderlijke abonnementen met tarieven v
 
 U kunt het reserveringsbeheer delegeren door personen toe te voegen aan rollen voor de reserveringsbestelling of de reservering. De standaardinstelling is dat de persoon die de reservering heeft besteld en de accountbeheerder de rol van eigenaar hebben voor de reserveringsbestelling en de reservering.
 
-U kunt de toegang tot reserveringsorders en reserveringen onafhankelijk van de abonnementen waarvoor de reserveringskorting geldt, beheren. Wanneer u iemand een machtiging geeft om een reserveringsorder of de reservering te beheren, geeft u die persoon hiermee geen machtiging om ook het abonnement te beheren. Evenzo is iemand die van u een machtiging krijgt om een abonnement in het bereik van de reservering te beheren, ook niet gemachtigd om de reserveringsorder of de reservering te beheren.
+U kunt de toegang tot reserveringsorders en reserveringen beheren, *onafhankelijk van de abonnementen* waarvoor de reserveringskorting geldt. Wanneer u iemand een machtiging geeft om een reserveringsorder of de reservering te beheren, geeft u die persoon hiermee geen machtiging om ook het abonnement te beheren. Evenzo is iemand die van u een machtiging krijgt om een abonnement in het bereik van de reservering te beheren, ook niet gemachtigd om de reserveringsorder of de reservering te beheren.
 
 Als de gebruiker een uitwisseling of een restitutie wil uitvoeren, moet deze persoon toegang hebben tot de reserveringsorder. Wanneer u machtigingen aan iemand toewijst, kunt u het beste machtigingen voor de reserveringsorder geven, niet voor de reservering.
-
 
 U kunt het toegangsbeheer voor een reservering als volgt delegeren:
 

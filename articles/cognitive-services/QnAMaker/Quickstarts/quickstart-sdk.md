@@ -2,19 +2,19 @@
 title: 'Snelstartgids: SDK gebruiken om Knowledge Base-QnA Maker te maken en te beheren'
 description: In deze Quick start ziet u hoe u uw Knowledge Base maakt en beheert met behulp van de client-SDK.
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 06/11/2020
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 97d0ddd571f089cea2c656f6277e45d0d5eddb3d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f80e791435d4bf9093b07842430e678b93843311
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608618"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765132"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Snelstartgids: Knowledge Base maken en beheren
+# <a name="quickstart-qna-maker-client-library-for-net"></a>Snelstartgids: QnA Maker-client bibliotheek voor .NET
 
-Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
+Ga aan de slag met de QnA Maker-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -28,6 +28,13 @@ Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket
 [!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+
+* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure-CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
@@ -36,3 +43,4 @@ Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
 * [Een knowledge base bewerken](../how-to/edit-knowledge-base.md)
 * [Gebruiks analyse ophalen](../how-to/get-analytics-knowledge-base.md)
+

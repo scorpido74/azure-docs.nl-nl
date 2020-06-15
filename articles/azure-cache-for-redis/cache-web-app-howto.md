@@ -1,5 +1,5 @@
 ---
-title: Een ASP.NET-Web-app maken met Azure cache voor redis
+title: Een ASP.NET-web-app maken met Azure Cache voor Redis
 description: In deze snelstart leert u hoe u een ASP.NET-web-app maakt met Azure Cache voor Redis
 author: yegu-ms
 ms.service: cache
@@ -7,25 +7,25 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 904e15611ae3032c0523d5132fea9973fbfe3f3f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74927074"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457113"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Snelstartgids: Azure cache gebruiken voor redis met een ASP.NET-Web-app 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Quickstart: Azure Cache voor Redis met ASP.NET-web-app gebruiken 
 
-In deze Quick Start gebruikt u Visual Studio 2019 voor het maken van een ASP.NET-webtoepassing die verbinding maakt met Azure cache voor redis om gegevens op te slaan en op te halen uit de cache. Vervolgens implementeert u de app om Azure App Service.
+In deze snelstartgids gebruikt u Visual Studio 2019 om een ASP.NET-web-app die verbinding maakt met Azure Cache voor Redis om gegevens op te slaan en op te halen uit de cache. U kunt de app vervolgens in Azure App Service implementeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de **ASP.net-en web-ontwikkeling** en werk belastingen voor **Azure-ontwikkel aars** .
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) met de workloads **ASP.NET and web development** en **Azure development**.
 
 ## <a name="create-the-visual-studio-project"></a>Het Visual Studio-project maken
 
-1. Open Visual Studio en selecteer vervolgens **bestand** >**Nieuw** > **project**.
+1. Open Visual Studio en selecteer vervolgens **Bestand** >**Nieuw** > **Project**.
 
 2. Voer in het dialoogvenster **Nieuw project** de volgende stappen uit:
 
@@ -59,7 +59,7 @@ Maak vervolgens de cache voor de app.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Het bestand *CacheSecrets.config* bewerken
 
-1. Maak een bestand op de computer met de naam *CacheSecrets. config*. Plaats het op een locatie waar deze niet wordt ingecheckt met de bron code van uw voorbeeld toepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich op *C:\AppSecrets\CacheSecrets.config*.
+1. Maak op de computer een bestand met de naam *CacheSecrets.config*. Sla dit bestand op een locatie op waar het niet wordt ingecheckt met de broncode van de voorbeeldtoepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich op *C:\AppSecrets\CacheSecrets.config*.
 
 1. Bewerk het bestand *CacheSecrets.config*. Voeg nu de volgende inhoud toe:
 
@@ -101,7 +101,7 @@ Omdat het bestand *CacheSecrets.config* niet in Azure wordt geïmplementeerd met
 2. Ga in het bestand *web.config* naar het element `<appSetting>`. Voeg vervolgens het volgende `file`-kenmerk toe. Als u een andere bestandsnaam of -locatie gebruikt, vervangt u deze waarden door de waarden die in het voorbeeld worden weergegeven.
 
 * Voor: `<appSettings>`
-* After`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Na:  `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 De ASP.NET-runtime voegt de inhoud van het externe bestand samen met de opmaak van het element `<appSettings>`. Als het opgegeven bestand niet kan worden gevonden, negeert de runtime het bestandskenmerk. Uw geheimen (de verbindingsreeks naar uw cache) worden niet opgenomen in de broncode van de toepassing. Wanneer u de web-app implementeert in Azure, wordt het bestand *CacheSecrets.config* niet geïmplementeerd.
 
@@ -143,30 +143,34 @@ De ASP.NET-runtime voegt de inhoud van het externe bestand samen met de opmaak v
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            
+            using (ConnectionMultiplexer redis = lazyConnection.Value)
+            {
+               IDatabase cache = redis.GetDatabase();
 
-            // Perform cache operations using the cache object...
 
-            // Simple PING command
-            ViewBag.command1 = "PING";
-            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+               // Perform cache operations using the cache object...
 
-            // Simple get and put of integral data types into the cache
-            ViewBag.command2 = "GET Message";
-            ViewBag.command2Result = cache.StringGet("Message").ToString();
+               // Simple PING command
+               ViewBag.command1 = "PING";
+               ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
 
-            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+               // Simple get and put of integral data types into the cache
+               ViewBag.command2 = "GET Message";
+               ViewBag.command2Result = cache.StringGet("Message").ToString();
 
-            // Demonstrate "SET Message" executed as expected...
-            ViewBag.command4 = "GET Message";
-            ViewBag.command4Result = cache.StringGet("Message").ToString();
+               ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+               ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
 
-            // Get the client list, useful to see if connection list is growing...
-            ViewBag.command5 = "CLIENT LIST";
-            ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+               // Demonstrate "SET Message" executed as expected...
+               ViewBag.command4 = "GET Message";
+               ViewBag.command4Result = cache.StringGet("Message").ToString();
 
-            lazyConnection.Value.Dispose();
+               // Get the client list, useful to see if connection list is growing...
+               ViewBag.command5 = "CLIENT LIST";
+               ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+
+            }
 
             return View();
         }
@@ -188,9 +192,9 @@ De ASP.NET-runtime voegt de inhoud van het externe bestand samen met de opmaak v
 
 ### <a name="to-add-a-new-rediscache-view"></a>Een nieuwe RedisCache-weergave toevoegen
 
-1. Vouw in **Solution Explorer** de map **Views** uit en klik met de rechtermuisknop op de map **Home**. Kies **Add** > **weer gave toevoegen...**.
+1. Vouw in **Solution Explorer** de map **Views** uit en klik met de rechtermuisknop op de map **Home**. Kies **Add** > **View...** .
 
-2. Voer in het dialoogvenster **Add View** als weergavenaam in: **RedisCache**. Selecteer vervolgens **toevoegen**.
+2. Voer in het dialoogvenster **Add View** als weergavenaam in: **RedisCache**. Selecteer vervolgens **Toevoegen**.
 
 3. Vervang de code in het bestand *RedisCache.cshtml* door de volgende code:
 
@@ -232,10 +236,10 @@ De ASP.NET-runtime voegt de inhoud van het externe bestand samen met de opmaak v
 
 ## <a name="run-the-app-locally"></a>De app lokaal uitvoeren
 
-Het project is standaard geconfigureerd om de app lokaal te hosten in [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) voor het testen en opsporen van fouten.
+Het project is standaard geconfigureerd voor het lokaal hosten van de app in [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) voor testen en foutopsporing.
 
 ### <a name="to-run-the-app-locally"></a>De app lokaal uitvoeren
-1. Selecteer in Visual Studio **debug** > **Start Debugging** om de app lokaal te bouwen en te starten voor testen en fout opsporing.
+1. Selecteer in Visual Studio **Debug** > **Start Debugging** om de app lokaal te bouwen en te starten voor testen en foutopsporing.
 
 2. Selecteer in de browser **Azure Cache voor Redis Test** op de navigatiebalk.
 
@@ -261,10 +265,10 @@ Nadat het lokaal testen van de app is geslaagd, implementeert u de app in Azure 
 
     | Instelling | Aanbevolen waarde | Beschrijving |
     | ------- | :---------------: | ----------- |
-    | **App-naam** | Gebruik de standaard. | De app-naam is de hostnaam voor de app wanneer deze is geïmplementeerd in Azure. Aan de naam is mogelijk een tijdstempel als achtervoegsel toegevoegd om deze uniek te maken, indien nodig. |
+    | **Naam van app** | Gebruik de standaard. | De app-naam is de hostnaam voor de app wanneer deze is geïmplementeerd in Azure. Aan de naam is mogelijk een tijdstempel als achtervoegsel toegevoegd om deze uniek te maken, indien nodig. |
     | **Abonnement** | Kies uw Azure-abonnement. | Voor dit abonnement worden eventuele gerelateerde hostingkosten in rekening gebracht. Als u meerdere Azure-abonnementen hebt, controleert u of het gewenste abonnement is geselecteerd.|
     | **Resourcegroep** | Gebruik dezelfde resourcegroep waar u de cache hebt gemaakt. (Bijvoorbeeld, *TestResourceGroup*.) | Met een resourcegroep kunt u alle resources als een groep beheren. Als u de app later wilt verwijderen, verwijdert u gewoon de groep. |
-    | **App Service plan** | Selecteer **Nieuw** en maak vervolgens een nieuw App Service-plan met de naam *TestingPlan*. <br />Gebruik dezelfde **locatie** die u hebt gebruikt bij het maken van uw cache. <br />Kies **Vrij** voor de grootte. | Een App Service-plan definieert een set van rekenresources waarmee een web-app wordt uitgevoerd. |
+    | **App Service-plan** | Selecteer **Nieuw** en maak vervolgens een nieuw App Service-plan met de naam *TestingPlan*. <br />Gebruik dezelfde **locatie** die u hebt gebruikt bij het maken van uw cache. <br />Kies **Vrij** voor de grootte. | Een App Service-plan definieert een set van rekenresources waarmee een web-app wordt uitgevoerd. |
 
     ![Dialoogvenster App Service](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
@@ -309,7 +313,7 @@ Als klaar bent met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-reso
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer vervolgens **Resourcegroepen**.
 
-2. Typ in het vak **Filteren op naam...** de naam van de resourcegroep. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de resourcegroep, in de resultatenlijst, de optie **...**. Selecteer vervolgens **Resourcegroep verwijderen**.
+2. Typ in het vak **Filteren op naam...** de naam van de resourcegroep. In de instructies voor dit artikel is een resourcegroep met de naam *TestResources* gebruikt. Selecteer in de resourcegroep, in de resultatenlijst, de optie **...** . Selecteer vervolgens **Resourcegroep verwijderen**.
 
     ![Verwijderen](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
@@ -322,4 +326,4 @@ Na enkele ogenblikken worden de resourcegroep en alle bijbehorende resources ver
 In de volgende zelfstudie gebruikt u Azure Cache voor Redis in een realistischer scenario om de prestaties van een app te verbeteren. U werkt deze toepassing bij zodat leaderboardresultaten in de cache worden geplaatst met behulp van het cache-aside-patroon met ASP.NET en een database.
 
 > [!div class="nextstepaction"]
-> [een cache-aside-leaderboard maken in ASP.NET](cache-web-app-cache-aside-leaderboard.md)
+> [Een 'cache-aside' leaderboard maken in ASP.NET](cache-web-app-cache-aside-leaderboard.md)

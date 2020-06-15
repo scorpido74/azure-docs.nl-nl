@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/19/2019
+ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d57bf7fa6d56c1704a78219f8a0af1182ce8a955
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739096"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331531"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technisch overzicht en functieoverzicht van Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Dit zijn de primaire resources waarmee u werkt in een Azure AD B2C-tenant:
   * Id-providers voor *sociale netwerken* zoals Facebook, LinkedIn of Twitter die u wilt ondersteunen in uw toepassingen.
   * *Externe* id-providers die ondersteuning bieden voor standaardidentiteitsprotocollen zoals OAuth 2.0 en OpenID Connect.
   * *Lokale* accounts waarmee gebruikers zich kunnen registreren en kunnen aanmelden met een gebruikersnaam (of een e-mailadres of een andere id) en een wachtwoord.
-* **Sleutels**: u kunt versleutelingssleutels toevoegen en beheren voor het ondertekenen en valideren van tokens.
+* **Sleutels**: u kunt versleutelingssleutels toevoegen en beheren voor het ondertekenen en valideren van tokens, clientgeheimen, certificaten en wachtwoorden.
 
 Een Azure AD B2C-tenant is de eerste resource die u moet maken om aan de slag te gaan met Azure AD B2C. Ga voor meer informatie naar [Zelfstudie: Een Azure Active Directory B2C-tenant maken](tutorial-create-tenant.md).
 
@@ -69,7 +69,7 @@ Meer informatie over de typen gebruikersaccounts in Azure AD B2C kunt u lezen in
 
 ## <a name="external-identity-providers"></a>Externe id-providers
 
-U kunt Azure AD B2C configureren zodat gebruikers zich kunnen aanmelden bij uw toepassing met referenties van externe id-providers voor sociale netwerken of voor ondernemingen (IdP). Azure AD B2C ondersteunt externe id-providers zoals Facebook, Microsoft-account, Google, Twitter en iedere andere id-provider die ondersteuning biedt voor OAuth 1.0, OAuth 2.0, OpenID Connect, SAML of WS Federation-protocollen.
+U kunt Azure AD B2C configureren zodat gebruikers zich kunnen aanmelden bij uw toepassing met referenties van externe id-providers voor sociale netwerken of voor ondernemingen (IdP). Azure AD B2C ondersteunt externe id-providers zoals Facebook, Microsoft-account, Google, Twitter en iedere andere id-provider die ondersteuning biedt voor OAuth 1.0, OAuth 2.0, OpenID Connect en SAML-protocollen.
 
 ![Externe id-providers](media/technical-overview/external-idps.png)
 
@@ -134,15 +134,13 @@ Meer informatie over aangepaste beleidsregels vindt u in [Aangepaste beleidsrege
 
 ## <a name="protocols-and-tokens"></a>Protocollen en tokens
 
-Azure AD B2C ondersteunt de [OpenID Connect- en OAuth 2.0-protocollen](protocols-overview.md) voor gebruikersbelevingen. In de Azure AD B2C-implementatie van OpenID Connect wordt deze gebruikerservaring via de toepassing gestart door verificatieaanvragen te verzenden naar Azure AD B2C.
+- Voor toepassing ondersteunt Azure AD B2C de [OAuth 2.0](protocols-overview.md), [OpenID Connect](openid-connect.md) en [SAML-protocollen](connect-with-saml-service-providers.md) voor gebruikersbelevingen. De gebruikerservaring wordt via de toepassing gestart door verificatieaanvragen te verzenden naar Azure AD B2C. Het resultaat van een aanvraag bij Azure AD B2C is een beveiligingstoken, zoals een [id-token of toegangstoken](tokens-overview.md) of SAML-token. Met dit beveiligingstoken wordt de identiteit van de gebruiker gedefinieerd binnen de toepassing.
 
-Het resultaat van een aanvraag bij Azure AD B2C is een beveiligingstoken, zoals een [id-token of toegangstoken](tokens-overview.md). Met dit beveiligingstoken wordt de identiteit van de gebruiker gedefinieerd. Tokens worden ontvangen van Azure AD B2C-eindpunten, zoals `/token` of `/authorize`. Met deze tokens kunt u claims openen waarmee u een identiteit kunt valideren en toegang verlenen tot veilige resources.
+- Voor externe identiteiten ondersteunt Azure AD B2C federatie met elke id-provider op basis van OAuth 1.0, OAuth 2.0-, OpenID Connect en SAML.
 
-Voor externe identiteiten ondersteunt Azure AD B2C federatie met elke id-provider op basis van OAuth 1.0, OAuth 2.0-, OpenID Connect, SAML en WS-Fed.
+In het volgende diagram ziet u hoe Azure AD B2C in dezelfde verificatiestroom kan communiceren met behulp van verschillende protocollen:
 
 ![Diagram van op OIDC gebaseerde client-app die federeert met SAML op basis van SAML](media/technical-overview/protocols.png)
-
-In het bovenstaande diagram ziet u hoe Azure AD B2C in dezelfde verificatiestroom kan communiceren met behulp van verschillende protocollen:
 
 1. De Relying Party-toepassing initieert een autorisatieaanvraag bij Azure AD B2C met behulp van OpenID Connect.
 1. Wanneer een gebruiker van de toepassing zich wil aanmelden met een externe id-provider die het SAML-protocol gebruikt, roept Azure AD B2C het SAML-protocol aan om te communiceren met die id-provider.

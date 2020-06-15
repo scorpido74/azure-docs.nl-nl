@@ -10,14 +10,14 @@
     - name: CF in Azure maken
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF-app implementeren in Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: Cloud Foundry in Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: CF OMS Nozzle implementeren
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: Cloud Foundry integreren met Azure
       href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
-- name: Bronnen
+- name: Resources
   items:
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'

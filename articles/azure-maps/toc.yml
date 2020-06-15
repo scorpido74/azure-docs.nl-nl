@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Dekking
       items:
+        - name: Dekking
+          href: geographic-coverage.md
         - name: Dekking voor geocodering
           href: geocoding-coverage.md
         - name: Dekking voor verkeer
