@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605473"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735539"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken
 
@@ -33,7 +33,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
+> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 
@@ -44,7 +44,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
+> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -54,7 +54,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
+> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie.
 > * U kunt deze versie ook uitvoeren van de Text Analytics-client bibliotheek [in uw browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
@@ -66,7 +66,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * De laatste stabiele versie van de Text Analytics-client bibliotheek is `3.0` .
+> * De nieuwste stabiele versie van de Text Analytics-API is `3.0` .
 >    * Volg alleen de instructies voor de versie die u gebruikt.
 > * De code in dit artikel maakt gebruik van synchrone methoden en onbeveiligde referentie opslag om eenvoud. Voor productie scenario's wordt u aangeraden de batch-asynchrone methoden te gebruiken voor prestaties en schaal baarheid. Zie de onderstaande naslag documentatie. 
 
@@ -83,7 +83,7 @@ Als u op dit tabblad hebt geklikt, ziet u waarschijnlijk geen Snelstartgids in u
 | Taal | Beschik bare versie | 
 |----------|------------------------|
 | Ruby     | [Versie 2,1](ruby-sdk.md) | 
-| Aan de slag       | [Versie 2,1](go-sdk.md) | 
+| Go       | [Versie 2,1](go-sdk.md) | 
 
 ::: zone-end
 

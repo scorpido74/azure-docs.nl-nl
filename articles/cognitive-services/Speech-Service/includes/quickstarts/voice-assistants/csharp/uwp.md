@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 548d324a67b1bbee4741724faf2cf27ec6c3c3c1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671092"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754666"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,7 +32,7 @@ De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend
 
 Laten we een code toevoegen die als een skelet voor het project werkt.
 
-1. Open **Solution Explorer** `MainPage.xaml`in Solution Explorer.
+1. Open in **Solution Explorer** `MainPage.xaml` .
 
 1. Vervang in de XAML-weer gave van de ontwerp functie de volledige inhoud door het volgende code fragment dat een elementaire-gebruikers interface definieert:
 
@@ -83,9 +83,9 @@ Laten we een code toevoegen die als een skelet voor het project werkt.
 
 De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing weer te geven.
 
-1. Open in **Solution Explorer**het bron bestand `MainPage.xaml.cs`voor de code achter. (Deze wordt gegroepeerd onder `MainPage.xaml`.) Vervang de inhoud van dit bestand door de onderstaande, inclusief:
+1. Open in **Solution Explorer**het bron bestand voor de code achter `MainPage.xaml.cs` . (Deze wordt gegroepeerd onder `MainPage.xaml` .) Vervang de inhoud van dit bestand door de onderstaande, inclusief:
 
-- `using`instructies voor de `Speech` en `Speech.Dialog` -naam ruimten
+- `using`instructies voor de `Speech` en- `Speech.Dialog` naam ruimten
 - Een eenvoudige implementatie om toegang tot de microfoon te garanderen, bekabeld tot een knop-handler
 - Helpers van de Basic-gebruikers interface om berichten en fouten in de toepassing weer te geven
 - Een overloop punt voor het pad van de initialisatie code dat later wordt ingevuld
@@ -259,16 +259,16 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
         }
     }
     ```
-1. Voeg het volgende code fragment toe aan de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code maakt `DialogServiceConnector` u de met uw abonnements gegevens.
+1. Voeg het volgende code fragment toe aan de methode hoofd tekst van `InitializeDialogServiceConnector` . Met deze code maakt `DialogServiceConnector` u de met uw abonnements gegevens.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
-    // the RecoLanguage property is optional (default en-US)
+    // the botConfig.Language property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
 
     var botConfig = BotFrameworkConfig.FromSubscription(speechSubscriptionKey, region);
-    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    botConfig.Language = "en-US";
     connector = new DialogServiceConnector(botConfig);
     ```
 
@@ -278,9 +278,9 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
    > [!NOTE]
    > Zie voor meer informatie over het configureren van uw bot de bot Framework-documentatie voor [het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
-1. Vervang de teken `YourSpeechSubscriptionKey` reeksen `YourServiceRegion` en met uw eigen waarden voor uw spraak abonnement en- [regio](~/articles/cognitive-services/speech-service/regions.md).
+1. Vervang de teken reeksen `YourSpeechSubscriptionKey` en `YourServiceRegion` met uw eigen waarden voor uw spraak abonnement en- [regio](~/articles/cognitive-services/speech-service/regions.md).
 
-1. Voeg het volgende code fragment toe aan het einde van de methode hoofd `InitializeDialogServiceConnector`tekst van. Met deze code worden handlers ingesteld voor gebeurtenissen die zijn vertrouwd `DialogServiceConnector` door om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
+1. Voeg het volgende code fragment toe aan het einde van de methode hoofd tekst van `InitializeDialogServiceConnector` . Met deze code worden handlers ingesteld voor gebeurtenissen `DialogServiceConnector` die zijn vertrouwd door om de bot-activiteiten, de resultaten van spraak herkenning en andere informatie te communiceren.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
     };
     ```
 
-1. Voeg het volgende code fragment toe aan de hoofd tekst `ListenButton_ButtonClicked` van de methode `MainPage` in de klasse. `DialogServiceConnector` Met deze code wordt geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
+1. Voeg het volgende code fragment toe aan de hoofd tekst van de `ListenButton_ButtonClicked` methode in de `MainPage` klasse. Met deze code wordt `DialogServiceConnector` geluisterd, omdat u de configuratie al hebt ingesteld en de gebeurtenis-handlers hebt geregistreerd.
 
     ```csharp
     if (connector == null)
@@ -368,9 +368,9 @@ De Ontwerpweergave is bijgewerkt om de gebruikers interface van de toepassing we
 
 Nu bent u klaar om uw app te bouwen en uw aangepaste spraak assistent te testen met behulp van de speech-service.
 
-1. **Kies** > build**Build Solution** in de menu balk om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
+1. **Kies Build**  >  **Build Solution** in de menu balk om de toepassing te bouwen. De code moet nu zonder fouten worden gecompileerd.
 
-1. Kies **fout** > **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
+1. Kies **fout**  >  **opsporing starten** (of druk op **F5**) om de toepassing te starten. Het venster **HelloWorld** wordt weer gegeven.
 
    ![Voor beeld van UWP Voice Assistant-toepassing in C#-Quick Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
