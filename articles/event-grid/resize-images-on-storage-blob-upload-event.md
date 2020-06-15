@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652696"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560525"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Zelfstudie: Formaat van geüploade afbeeldingen automatisch wijzigen met Event Grid
 
@@ -75,14 +75,19 @@ Voor Azure Functions is een algemeen opslagaccount vereist. Naast het Blob-opsla
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Stel een variabele in voor de naam van het nieuwe opslagaccount dat voor Azure Functions vereist is.
+2. Stel een variabele in die de locatie moet bevatten voor de resources die moeten worden gemaakt. 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. Stel een variabele in voor de naam van het nieuwe opslagaccount dat voor Azure Functions vereist is.
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Maak het opslagaccount voor de Azure-functie.
+4. Maak het opslagaccount voor de Azure-functie.
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ Geef de naam van uw eigen unieke functie-app op in de volgende opdracht. De naam
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ De functie vereist referenties voor het Blob-opslagaccount, die worden toegevoeg
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[Node.js V10 SDK](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -211,6 +213,7 @@ Een gebeurtenisabonnement geeft aan welke door de provider gegenereerde gebeurte
     | **Abonnement** | Uw Azure-abonnement | Uw huidige Azure-abonnement is standaard geselecteerd. |
     | **Resourcegroep** | myResourceGroup | Selecteer **Bestaande gebruiken** en kies de resourcegroep die u in deze zelfstudie hebt gebruikt. |
     | **Resource** | Uw Blob-opslagaccount | Kies het Blob-opslagaccount dat u hebt gemaakt. |
+    | **Naam van systeemonderwerp** | imagestoragesystopic | Geef een naam op voor het systeemonderwerp. Zie [Overzicht van systeemonderwerpen](system-topics.md) voor meer informatie over systeemonderwerpen. |    
     | **Gebeurtenistypen** | BlobCreated | Schakel alle typen uit behalve **BlobCreated**. Alleen gebeurtenistypen van `Microsoft.Storage.BlobCreated` worden doorgegeven aan de functie. |
     | **Eindpunttype** | automatisch gegenereerd | Vooraf gedefinieerd als **Azure-functie**. |
     | **Eindpunt** | automatisch gegenereerd | Naam van de functie. In dit geval is deze **Miniatuur**. |

@@ -408,6 +408,8 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Service voor Marketplace-meting
           items:
+            - name: Service voor anomaliedetectie
+              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: Verificatiestrategieën
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Service-API's voor Marketplace-meting

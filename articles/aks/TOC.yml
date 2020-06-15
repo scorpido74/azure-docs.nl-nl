@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: Integratie van Azure Active Directory inschakelen
           items:
-            - name: Azure AD integreren (preview)
+            - name: Door AKS beheerde AAD (preview)
               href: managed-aad.md
             - name: Azure CLI gebruiken
               href: azure-ad-integration-cli.md
-            - name: Azure Portal gebruiken
-              href: azure-ad-integration.md
         - name: Gebruik Kubernetes-RBAC met Azure AD-integratie
           href: azure-ad-rbac.md
           maintainContext: true

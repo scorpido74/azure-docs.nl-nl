@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python) | Microsoft Azure kaarten'
-description: In deze zelf studie wordt uitgelegd hoe u met behulp van Azure Notebooks (python) sensor gegevens samenvoegt met weers verwachtingen van Microsoft Azure Maps.
+title: 'Zelfstudie: Sensorgegevens samenvoegen met weervoorspellingsgegevens met behulp van Azure Notebooks (Python) | Microsoft Azure Maps'
+description: In deze zelfstudie wordt uitgelegd hoe u met behulp van Azure Notebooks (Python) sensorgegevens samenvoegt met weervoorspellingsgegevens van Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 01/29/2020
@@ -8,47 +8,47 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333498"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560379"
 ---
-# <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python)
+# <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelfstudie: Sensorgegevens samenvoegen met weervoorspellingsgegevens met behulp van Azure Notebooks (Python)
 
-Wind kracht is een alternatieve energie bron voor fossiele brand stoffen om te bestrijden tegen klimaat verandering. Omdat wind niet consistent is met aard, moeten de voedings exploitanten van de wind machine learning (ML) modellen bouwen om de snelheid van de wind energie te voors pellen. Deze voor spelling is nodig om te voldoen aan de elektriciteits vraag en de stabiliteit van het raster te garanderen. In deze zelf studie wordt uitgelegd hoe Azure Maps weers prognose gegevens worden gecombineerd met voorbeeld gegevens voor weer lees-en achterlezen. Er worden gegevens over de weers verwachting aangevraagd door de Azure Maps weer service aan te roepen.
+Windkracht is een alternatieve energiebron voor fossiele brandstoffen om klimaatverandering tegen te gaan. Omdat wind van nature niet consistent is, moeten exploitanten van windenergie machine learning-modellen (ML) bouwen om de capaciteit van windenergie te voorspellen. Deze voorspelling is nodig om te kunnen voldoen aan de vraag naar elektriciteit en om de stabiliteit van het elektriciteitsnet te bewaren. In deze zelfstudie wordt uitgelegd hoe Azure Maps weervoorspellingsgegevens worden gecombineerd met voorbeeldgegevens voor weermetingen. Er worden gegevens over de weervoorspelling aangevraagd door de Weather-service van Azure Maps aan te roepen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Werk met gegevens bestanden in [Azure notebooks](https://docs.microsoft.com/azure/notebooks) in de Cloud.
-> * De demo gegevens laden uit het bestand.
-> * Roep Azure Maps REST-Api's in python.
-> * De locatie gegevens op de kaart weer geven.
-> * Verrijk de demo gegevens met Azure Maps dagelijkse gegevens over [prognoses](https://aka.ms/AzureMapsWeatherDailyForecast) .
-> * De prognose gegevens in grafieken te tekenen.
+> * Werken met gegevensbestanden in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in de cloud.
+> * Demogegevens laden uit een bestand.
+> * Azure Maps REST API's aanroepen in Python.
+> * Locatiegegevens op de kaart weergeven.
+> * De demogegevens verrijken met de [dagelijkse weervoorspellingsgegevens](https://aka.ms/AzureMapsWeatherDailyForecast) van Azure Maps.
+> * De voorspellingsgegevens in grafieken plotten.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelf studie wilt volt ooien, moet u eerst het volgende doen:
+Voor het voltooien van deze zelfstudie moet u eerst het volgende doen:
 
-1. Maak een abonnement Azure Maps account in de prijs categorie S0 door de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps)te volgen.
-2. Down load de primaire abonnements sleutel voor uw account en volg de instructies in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+1. Een account voor een Azure Maps-abonnement in de prijscategorie S0 maken door de instructies in [Een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) te volgen.
+2. De primaire abonnementssleutel voor uw account ophalen door de instructies in [Primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) te volgen.
 
 
-Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
+Zie [Verificatie beheren in Azure Maps](./how-to-manage-authentication.md) voor meer informatie over verificatie in Azure Maps.
 
-Volg de instructies voor het [maken van een Azure-notebook](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)om vertrouwd te raken met Azure-notebooks en te weten hoe u aan de slag kunt gaan.
+Volg de instructies in [Een Azure-notebook maken](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook) om vertrouwd te raken met Azure Notebooks en te leren hoe u aan de slag kunt gaan.
 
 > [!Note]
-> Het Jupyter-notebook bestand voor dit project kan worden gedownload van de [weer kaarten Jupyter notebook-opslag plaats](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
+> Het Jupyter Notebook-bestand voor dit project kan worden gedownload van de [Jupyter Notebook-opslagplaats voor weerkaarten](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data).
 
 ## <a name="load-the-required-modules-and-frameworks"></a>De vereiste modules en frameworks laden
 
-Als u alle vereiste modules en frameworks wilt laden, voert u het volgende script uit:
+Voer het volgende script uit om alle vereiste modules en frameworks te laden:
 
 ```python
 import pandas as pd
@@ -58,17 +58,17 @@ from IPython.display import Image, display
 import aiohttp
 ```
 
-## <a name="import-weather-data"></a>Weer gegevens importeren
+## <a name="import-weather-data"></a>Weergegevens importeren
 
-Voor het omwille van deze zelf studie gebruiken we de weer gegeven gegevens van Sens oren die worden geïnstalleerd in vier verschillende wind turbines. De voorbeeld gegevens bestaan uit 30 dagen aan weers omstandigheden. Deze leesingen worden verzameld van weer data centers in de buurt van elke turbine-locatie. De voorbeeld gegevens bevatten gegevens voor de Tempe ratuur, de wind snelheid en de richting. U kunt de demo gegevens [hier](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data)downloaden. In het onderstaande script worden demo gegevens in azure notebook geïmporteerd.
+Voor deze zelfstudie gebruiken we de weermeetgegevens van sensoren die zijn geïnstalleerd in vier verschillende windturbines. De voorbeeldgegevens bestaan uit 30 dagen aan weermetingen. Deze metingen worden verzameld van weerdatacentrums in de buurt van elke turbine. De demogegevens bevatten metingen van de temperatuur, windsnelheid en windrichting. U kunt de demogegevens [hier](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data) downloaden. Met het onderstaande script worden demogegevens in het Azure-notebook geïmporteerd.
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
 ```
 
-## <a name="request-daily-forecast-data"></a>Dagelijkse prognose gegevens aanvragen
+## <a name="request-daily-forecast-data"></a>Dagelijkse voorspellingsgegevens aanvragen
 
-In ons scenario willen we dagelijks een prognose aanvragen voor elke sensor locatie. Met het volgende script wordt de [dagelijkse prognose-API](https://aka.ms/AzureMapsWeatherDailyForecast) van de Azure Maps weer service aangeroepen. Deze API retourneert weers verwachtingen voor elke wind turbine, voor de komende vijf tien dagen vanaf de huidige datum.
+In ons scenario willen we dagelijks de voorspelling aanvragen voor elke sensorlocatie. Met het volgende script wordt de [dagelijkse voorspellings-API](https://aka.ms/AzureMapsWeatherDailyForecast) van de Weather-service van Azure Maps aangeroepen. Deze API retourneert de weersvoorspelling voor elke windturbine, voor de komende 15 dagen vanaf de huidige datum.
 
 
 ```python
@@ -107,7 +107,7 @@ for i in range(0, len(coords), 2):
 await session.close()
 ```
 
-In het onderstaande script worden de turbine-locaties op de kaart weer gegeven door de Azure Maps [service toewijzings installatie kopie ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)aan te roepen.
+Met het onderstaande script worden de turbinelocaties op de kaart weergegeven door de Azure Maps-service [Kaartafbeelding ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage) aan te roepen.
 
 ```python
 # Render the turbine locations on the map by calling the Azure Maps Get Map Image service
@@ -126,10 +126,10 @@ await session.close()
 display(Image(poi_range_map))
 ```
 
-![Turbine-locaties](./media/weather-service-tutorial/location-map.png)
+![Turbinelocaties](./media/weather-service-tutorial/location-map.png)
 
 
-De prognose gegevens worden gegroepeerd met de demo gegevens op basis van de Station-ID. De Station-ID is voor het weer Data Center. Deze groepering breidt de demo gegevens uit met de prognose gegevens.
+De voorspellingsgegevens worden gegroepeerd met de demogegevens op basis van de station-id. De station-id is een aanduiding voor het weerdatacentrum. Deze groepering breidt de demogegevens uit met de voorspellingsgegevens.
 
 ```python
 # Group forecasted data for all locations
@@ -144,7 +144,7 @@ combined_weather_data = pd.concat([df,forecast_data])
 grouped_weather_data = combined_weather_data.groupby(['StationID'])
 ```
 
-De volgende tabel bevat de gecombineerde historische en prognose gegevens voor een van de turbine-locaties.
+De volgende tabel bevat de gecombineerde historische en voorspellingsgegevens voor een van de turbinelocaties.
 
 ```python
 # Display data for first location
@@ -155,9 +155,9 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ![Gegroepeerde gegevens](./media/weather-service-tutorial/grouped-data.png)</center>
 
-## <a name="plot-forecast-data"></a>Prognose gegevens tekenen
+## <a name="plot-forecast-data"></a>Voorspellingsgegevens plotten
 
-We zetten de geraamde waarden op tegen de dagen waarvoor ze worden geforecastd. In dit plot kunnen we de snelheid en richtings wijzigingen van de wind gedurende de volgende 15 dagen zien.
+We zetten de voorspelde waarden uit tegen de dagen waarvoor ze worden voorspeld. Met deze plot kunnen we de wijzigingen in de windsnelheid en -richting voor de komende 15 dagen weergeven.
 
 ```python
 # Plot wind speed
@@ -176,24 +176,24 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-In de grafieken hieronder worden de prognose gegevens gevisualiseerd. Zie het linkerframe voor meer informatie over het wijzigen van wind snelheid. Zie het juiste diagram voor het wijzigen van de richting van de wind. Deze gegevens zijn voor spelling voor de volgende vijf tien dagen vanaf de dag dat de gegevens worden aangevraagd.
+In de onderstaande grafieken worden de voorspellingsgegevens gevisualiseerd. Zie de linkergrafiek voor de wijzigingen in de windsnelheid. Zie de rechtergrafiek voor de wijzigingen in de windrichting. Deze gegevens vormen de voorspelling voor de komende 15 dagen vanaf de dag dat de gegevens worden aangevraagd.
 
 <center>
 
-![Plot wikkeling-](./media/weather-service-tutorial/speed-date-plot.png) ![richtings tekening in wind snelheid](./media/weather-service-tutorial/direction-date-plot.png)</center>
+![Plot van windsnelheid](./media/weather-service-tutorial/speed-date-plot.png) ![Plot van windrichting](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u Azure Maps REST-Api's aanroept om weer prognose gegevens op te halen. U hebt ook geleerd hoe u de gegevens in grafieken kunt visualiseren.
+In deze zelfstudie hebt u geleerd hoe u Azure Maps REST API's aanroept om weervoorspellingsgegevens op te halen. U hebt ook geleerd hoe u de gegevens kunt visualiseren in grafieken.
 
-Zie voor meer informatie over het aanroepen van Azure Maps REST-Api's in Azure Notebooks [EV-route ring met behulp van Azure notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
+Zie [Elektrische voertuigen routeren met Azure Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing) voor meer informatie over het aanroepen van Azure Maps REST API's in Azure Notebooks.
 
-Zie voor het verkennen van de Azure Maps Api's die in deze zelf studie worden gebruikt:
+Als u meer wilt weten over de Azure Maps API's die in deze zelfstudie worden gebruikt, raadpleegt u:
 
-* [Dagelijkse prognose](https://aka.ms/AzureMapsWeatherDailyForecast)
-* [Afbeelding van de kaart ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Dagelijkse voorspelling](https://aka.ms/AzureMapsWeatherDailyForecast)
+* [Renderen - Kaartafbeelding ophalen](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Zie [Azure Maps rest api's](https://docs.microsoft.com/azure/azure-maps/consumption-model)voor een volledige lijst met Azure Maps rest api's.
+Zie [Azure Maps REST API's](https://docs.microsoft.com/azure/azure-maps/consumption-model) voor een volledige lijst met Azure Maps REST API's.
 
-Zie [Azure notebooks](https://docs.microsoft.com/azure/notebooks)voor meer informatie over Azure notebooks.
+Zie [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) voor meer informatie over Azure Notebooks.

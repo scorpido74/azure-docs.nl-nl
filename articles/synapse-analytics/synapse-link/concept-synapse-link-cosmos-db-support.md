@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658836"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235289"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Ondersteunde functies van Azure Synapse Link (preview) voor Azure Cosmos DB
 
-In dit artikel worden de functies beschreven die momenteel worden ondersteund in Azure Synapse Link voor Azure Cosmos DB. 
+In dit artikel worden de functies beschreven die momenteel worden ondersteund in Azure Synapse Link voor Azure Cosmos DB.
 
 ## <a name="azure-synapse-support"></a>Ondersteuning in Azure Synapse
 
 Er zijn twee typen containers in Azure Cosmos DB:
 * HTAP-container: een container waarvoor Synapse Link is ingeschakeld. Deze container heeft zowel een transactionele opslag als een analytische opslag. 
 * OLTP-container: een container met alleen een transactieopslag, zonder dat Synapse Link is ingeschakeld. 
+
+> [!IMPORTANT]
+> Azure Synapse-koppeling voor Azure Cosmos DB wordt momenteel ondersteund voor werkruimten waarvoor geen beheerd virtueel netwerk is ingeschakeld. 
 
 U kunt verbinding maken met een Azure Cosmos DB-container zonder Synapse Link in te schakelen. In dit geval kunt u alleen lezen/schrijven naar de transactionele opslag. Hier volgt een lijst met de functies die momenteel worden ondersteund in Synapse Link voor Azure Cosmos DB. 
 

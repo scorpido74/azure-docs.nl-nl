@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714471"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559560"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Zelfstudie: Een Python-runbook maken
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md)
-- [Een grafisch runbook maken](automation-tutorial-runbook-graphical.md)
-- [Een PowerShell Workflow-runbook maken](automation-tutorial-runbook-textual.md)
-- [Azure Automation-runbooktypen](../automation-runbook-types.md)
-- [Azure voor Python-ontwikkelaars](/azure/python/)
-- [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- Zie [Een PowerShell-runbook maken](automation-tutorial-runbook-textual-powershell.md) om aan de slag te gaan met PowerShell-runbooks.
+- Zie [Een grafisch runbook maken](automation-tutorial-runbook-graphical.md) om aan de slag te gaan met grafische runbooks.
+- Zie [Een PowerShell Workflow-runbook maken](automation-tutorial-runbook-textual.md) om aan de slag te gaan met PowerShell Workflow-runbooks.
+- Zie [Azure Automation-runbooktypen](../automation-runbook-types.md) voor meer informatie over runbooktypen, hun voordelen en beperkingen.
+- Zie [Azure voor Python-ontwikkelaars](/azure/python/) voor meer informatie over het ontwikkelen van Azure met Python.
+- Zie de [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python) voor voorbeelden van Python 2-runbooks.

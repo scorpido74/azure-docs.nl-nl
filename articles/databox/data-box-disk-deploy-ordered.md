@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e7ab15749ccd4ef2808e9cbb362196e38e3d7f4b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: de481abd82b4fc7dd2eae3763f82b8dd96cc14a9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746085"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266522"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Zelfstudie: Een Azure Data Box Disk bestellen
 
@@ -105,7 +105,7 @@ Voer de volgende stappen uit om Data Box Disk te bestellen.
 
 7. In het tabblad **Verzendadres** geeft u uw voor- en achternaam, de naam en het postadres van het bedrijf en een geldig telefoonnummer op. Klik op **Adres valideren**. De service controleert of de service beschikbaar is voor de regio van het verzendadres. Als de service beschikbaar is voor het opgegeven verzendadres, ontvangt u daarover een melding.
 
-   Nadat de bestelling is verwerkt, ontvangt u een e-mailmelding. Zie [Zelfbeheerde verzending gebruiken](data-box-disk-portal-customer-managed-shipping.md) voor meer informatie over zelfbeheerde verzendingen.
+   Nadat de bestelling is verwerkt, ontvangt u een e-mailmelding. Zie [Zelfbeheerde verzending gebruiken](data-box-disk-portal-customer-managed-shipping.md) als u voor zelfbeheerde verzending hebt gekozen.
 
     ![Verzendadres opgeven](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 8. In de **Meldingsdetails** geeft u een e-mailadres op. De service stuurt e-mailmeldingen naar het opgegeven e-mailadres over updates van de bestelstatus.

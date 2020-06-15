@@ -1,66 +1,66 @@
 ---
-title: Verbinding maken met python-Azure Database for PostgreSQL-één server
-description: In deze Quick Start vindt u voor beelden van python-code die u kunt gebruiken om verbinding te maken en gegevens op te vragen van Azure Database for PostgreSQL-één server.
+title: Verbinding maken met Python - Azure Database for PostgreSQL - individuele server
+description: Deze quickstart bevat een voorbeeld van Python-code dat u kunt gebruiken om verbinding te maken met en gegevens op te vragen uit een Azure Database for PostgreSQL - individuele server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76769066"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560941"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Snelstartgids: python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL-één server
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Quickstart: Python gebruiken om verbinding te maken en gegevens op te vragen in Azure Database for PostgreSQL - individuele server
 
-In deze Quick Start werkt u met een Azure Database for PostgreSQL met behulp van python in macOS, Ubuntu Linux of Windows. De Quick Start laat zien hoe u verbinding maakt met de data base en hoe u SQL-instructies gebruikt om gegevens te zoeken, in te voegen, bij te werken en te verwijderen. In het artikel wordt ervan uitgegaan dat u bekend bent met python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
+In deze quickstart werkt u met een Azure Database for PostgreSQL-exemplaar met behulp van Python in macOS, Ubuntu Linux of Windows. In de quickstart ziet u hoe u verbinding kunt maken met de database en SQL-instructies kunt gebruiken om gegevens in de database op te vragen, in te voegen, bij te werken en te verwijderen. In dit artikel wordt ervan uitgegaan dat u bekend bent met Python, maar geen ervaring hebt met het werken met Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-- Volt ooien van [Quick Start: een Azure database for postgresql-server maken in azure Portal](quickstart-create-server-database-portal.md) of [Quick start: een Azure database for PostgreSQL maken met behulp van de Azure cli](quickstart-create-server-database-azure-cli.md).
+- Voltooiing van [quickstart: Een Azure Database for PostgreSQL-server maken in Azure Portal](quickstart-create-server-database-portal.md) of [quickstart: Een Azure Database for PostgreSQL-exemplaar maken met Azure CLI](quickstart-create-server-database-azure-cli.md).
   
-- [Python](https://www.python.org/downloads/) 2.7.9 + of 3.4 +.
+- [Python](https://www.python.org/downloads/) 2.7.9+ of 3.4+.
   
-- Laatste [PIP](https://pip.pypa.io/en/stable/installing/) -pakket installatie programma.
+- Nieuwste [PIP](https://pip.pypa.io/en/stable/installing/)-pakketinstallatieprogramma.
 
-## <a name="install-the-python-libraries-for-postgresql"></a>De python-bibliotheken voor PostgreSQL installeren
-De [psycopg2](https://pypi.python.org/pypi/psycopg2/) -module maakt het mogelijk om verbinding te maken met en query's uit te stellen op een postgresql-data base en is beschikbaar als Linux-, macOS-of Windows- [wiel](https://pythonwheels.com/) pakket. Installeer de binaire versie van de module, inclusief alle afhankelijkheden. Zie installatie voor meer `psycopg2` informatie over de installatie en [Installation](http://initd.org/psycopg/docs/install.html)vereisten. 
+## <a name="install-the-python-libraries-for-postgresql"></a>De Python-bibliotheken voor PostgreSQL installeren
+Met de module [psycopg2](https://pypi.python.org/pypi/psycopg2/) kunt u verbinding maken met en query's uitvoeren op een PostgreSQL-database. Deze module is beschikbaar als [wheel](https://pythonwheels.com/)-pakket voor Linux, macOS of Windows. Installeer de binaire versie van de module, inclusief alle afhankelijkheden. Zie [Installatie](http://initd.org/psycopg/docs/install.html) voor meer informatie over de installatie en vereisten van `psycopg2`. 
 
-Als u `psycopg2`wilt installeren, opent u een Terminal of opdracht prompt en `pip install psycopg2`voert u de opdracht uit.
+Als u `psycopg2` wilt installeren, opent u een terminal of opdrachtprompt en voert u de opdracht `pip install psycopg2` uit.
 
-## <a name="get-database-connection-information"></a>Verbindings gegevens voor data base ophalen
-Voor het maken van verbinding met een Azure Database for PostgreSQL-Data Base zijn de volledig gekwalificeerde server naam en aanmeldings referenties vereist. U kunt deze informatie ophalen van de Azure Portal.
+## <a name="get-database-connection-information"></a>De verbindingsgegevens voor de database ophalen
+Voor het maken van verbinding met een Azure Database for PostgreSQL-database zijn de volledig gekwalificeerde servernaam en aanmeldingsreferenties vereist. U kunt deze informatie ophalen uit Azure Portal.
 
-1. Zoek en selecteer in de [Azure Portal](https://portal.azure.com/)de naam van de Azure database for postgresql-server. 
-1. Op de **overzichts** pagina van de server kopieert u de volledig gekwalificeerde **Server naam** en de **gebruikers naam**van de beheerder. De volledig gekwalificeerde **Server naam** is altijd van het formulier * \<mijn-server naam>. postgres.database.Azure.com*, en de **gebruikers naam** van de beheerder is altijd de indeling * \<mijn-beheerder-gebruikers naam\<> @ mijn-server naam>*. 
+1. Zoek en selecteer in [Azure Portal](https://portal.azure.com/) uw Azure Database for PostgreSQL-servernaam. 
+1. Kopieer op de pagina **Overzicht** van de server de volledig gekwalificeerde **servernaam** en de **gebruikersnaam met beheerdersrechten**. De volledig gekwalificeerde **servernaam** heeft altijd de vorm *\<my-server-name>.postgres.database.azure.com* en de **gebruikersnaam met beheerdersrechten** heeft altijd van de vorm *\<my-admin-username>@\<my-server-name>* . 
    
-   U hebt ook uw beheerders wachtwoord nodig. Als u het verg eten bent, kunt u deze opnieuw instellen op deze pagina. 
+   U hebt ook uw beheerderswachtwoord nodig. Als u deze vergeten bent, kunt u deze opnieuw instellen op deze pagina. 
    
    ![Servernaam Azure Database for PostgreSQL](./media/connect-python/1-connection-string.png)
 
-## <a name="how-to-run-the-python-examples"></a>De python-voor beelden uitvoeren
+## <a name="how-to-run-the-python-examples"></a>De Python-voorbeelden uitvoeren
 
-Voor elk code voorbeeld in dit artikel:
+Voor elk codevoorbeeld in dit artikel:
 
-1. Maak een nieuw bestand in een tekst editor. 
+1. Maak een nieuw bestand in een teksteditor. 
    
-1. Voeg het code voorbeeld toe aan het bestand. Vervang in de code:
-   - `<server-name>`en `<admin-username>` met de waarden die u hebt gekopieerd uit het Azure Portal.
-   - `<admin-password>`met uw server wachtwoord.
-   - `<database-name>`met de naam van uw Azure Database for PostgreSQL-data base. Er is automatisch een standaard database met de naam *post gres* gemaakt toen u de server maakte. U kunt de naam van de data base wijzigen of een nieuwe data base maken met behulp van SQL-opdrachten. 
+1. Voeg het codevoorbeeld toe aan het bestand. Vervang in de code:
+   - `<server-name>` en `<admin-username>` door de waarden die u hebt gekopieerd uit Azure Portal.
+   - `<admin-password>` door uw serverwachtwoord.
+   - `<database-name>` door de naam van uw Azure Database for PostgreSQL-database. Er is automatisch een standaarddatabase met de naam *postgres* gemaakt toen u uw server maakte. U kunt de naam van de database wijzigen of een nieuwe database maken met behulp van SQL-opdrachten. 
    
-1. Sla het bestand in de projectmap op met de extensie *. py* , zoals *postgres-insert.py*. Voor Windows moet u ervoor zorgen dat UTF-8-code ring is geselecteerd wanneer u het bestand opslaat. 
+1. Sla het bestand op in uw projectmap met een *.py*-extensie, zoals *postgres-insert.py*. In Windows moet u ervoor zorgen dat UTF-8-codering is geselecteerd wanneer u het bestand opslaat. 
    
-1. Als u het bestand wilt uitvoeren, gaat u naar de projectmap in de opdracht regel interface en typt `python` u, gevolgd door de bestands naam `python postgres-insert.py`, bijvoorbeeld.
+1. Als u het bestand wilt uitvoeren, gaat u naar uw projectmap in een opdrachtregelinterface en typt u `python` gevolgd door de bestandsnaam, bijvoorbeeld `python postgres-insert.py`.
 
 ## <a name="create-a-table-and-insert-data"></a>Een tabel maken en gegevens invoegen
-In het volgende code voorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-data base met behulp van de functie [psycopg2. Connect](http://initd.org/psycopg/docs/connection.html) en worden gegevens geladen met een SQL **Insert** -instructie. De functie [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) voert de SQL-query uit op de data base. 
+In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database met behulp van de functie [psycopg2.connect](http://initd.org/psycopg/docs/connection.html) en worden gegevens geladen met de SQL-instructie **INSERT**. Met de functie [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) wordt de SQL-query uitgevoerd op de database. 
 
 ```Python
 import psycopg2
@@ -104,7 +104,7 @@ Wanneer de code wordt uitgevoerd, wordt de volgende uitvoer gegenereerd:
 ![Opdrachtregeluitvoer](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Gegevens lezen
-Het volgende code voorbeeld maakt verbinding met uw Azure Database for PostgreSQL-data base en gebruikt [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) met de SQL **Select** -instructie om gegevens te lezen. Deze functie accepteert een query en retourneert een resultatenset om over te lopen met behulp van [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall). 
+In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database en wordt [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) gebruikt met de SQL-instructie **SELECT** om gegevens te lezen. Deze functie accepteert een query en retourneert een resultatenset die met behulp van [cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) kan worden herhaald. 
 
 ```Python
 import psycopg2
@@ -138,7 +138,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Gegevens bijwerken
-Het volgende code voorbeeld maakt verbinding met uw Azure Database for PostgreSQL-data base en gebruikt [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) met de instructie SQL **Update** om gegevens bij te werken. 
+In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database en wordt [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) gebruikt met de SQL-instructie **UPDATE** om gegevens bij te werken. 
 
 ```Python
 import psycopg2
@@ -168,7 +168,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Gegevens verwijderen
-Het volgende code voorbeeld maakt verbinding met uw Azure Database for PostgreSQL-data base en gebruikt [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) met de instructie SQL **Delete** om een inventaris item te verwijderen dat u eerder hebt ingevoegd. 
+In het volgende codevoorbeeld wordt verbinding gemaakt met uw Azure Database for PostgreSQL-database en wordt [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) gebruikt met de SQL-instructie **DELETE** om een door u eerder ingevoegd inventarisitem te verwijderen. 
 
 ```Python
 import psycopg2

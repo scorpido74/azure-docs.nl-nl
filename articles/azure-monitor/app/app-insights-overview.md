@@ -4,18 +4,18 @@ description: Dit is een service waarmee u de prestaties van toepassingen kunt be
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6630de971dd9cc7ece2e0f87821db5fd62c39af0
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c25929100fdfa6f4652e99c0d2563d9e56cfb62b
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828726"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996088"
 ---
 # <a name="what-is-application-insights"></a>Wat is Application Insights?
 Application Insights, een functie van [Azure Monitor](../overview.md), is een uitbreidbare APM-service (Application Performance Management) voor ontwikkelaars en DevOps-professionals. Hiermee kunt u uw livetoepassingen controleren. De service detecteert automatisch afwijkingen in prestaties en bevat krachtige analysehulpmiddelen om u te helpen bij het vaststellen van problemen en te begrijpen wat gebruikers daadwerkelijk doen met uw app.  De service is bedoeld om u te helpen de prestaties en bruikbaarheid van uw apps continu te verbeteren. Het werkt voor apps op uiteenlopende platforms, waaronder .NET, Node.js, Java en Python, on-premises, of in een hybride of openbare cloud gehost. De service kan ook worden geïntegreerd met uw DevOps-proces en bevat verbindingspunten naar verschillende hulpmiddelen voor ontwikkelaars. Gebruik de service voor het controleren en analyseren van telemetrie van mobiele apps door Application Insights te integreren met Visual Studio App Center.
 
 ## <a name="how-does-application-insights-work"></a>Hoe werkt Application Insights?
-U installeert een klein instrumentatiepakket (SDK) in uw toepassing of u schakelt Application Insights zonder code in wanneer dit wordt [ondersteund](../../azure-monitor/app/platforms.md). Met de instrumentatie wordt uw app bewaakt en worden de telemetriegegevens doorgestuurd naar een Azure Application Insights-resource met een unieke GUID, waarnaar wordt verwezen als een instrumentatiesleutel.
+U installeert een klein instrumentatiepakket (SDK) in uw toepassing of u schakelt Application Insights met behulp van de Application Insights-agent in wanneer dit wordt [ondersteund](../../azure-monitor/app/platforms.md). Met de instrumentatie wordt uw app bewaakt en worden de telemetriegegevens doorgestuurd naar een Azure Application Insights-resource met een unieke GUID, waarnaar wordt verwezen als een instrumentatiesleutel.
 
 U kunt niet alleen de webservicetoepassing instrumenteren, maar ook de onderdelen die op de achtergrond worden uitgevoerd en de JavaScript-code van de webpagina's zelf. De toepassing en de bijbehorende onderdelen kunnen overal worden uitgevoerd en hoeven niet te worden gehost in Azure.
 
@@ -26,7 +26,7 @@ Bovendien kunt u telemetrie ophalen uit de hostomgevingen, zoals gegevens van pr
 Al deze telemetriestromen worden geïntegreerd in Azure Monitor. In Azure Portal kunt u krachtige analyse- en zoekhulpmiddelen toepassen op de onbewerkte gegevens.
 
 ### <a name="whats-the-overhead"></a>Wat is de impact?
-De impact op de prestaties van uw app is erg klein. De aanroepen voor het bijhouden van het appgebruik blokkeren uw app niet en worden batchgewijs in een afzonderlijke thread verzonden.
+De impact op de prestaties van uw app is klein. De aanroepen voor het bijhouden van het appgebruik blokkeren uw app niet en worden batchgewijs in een afzonderlijke thread verzonden.
 
 ## <a name="what-does-application-insights-monitor"></a>Wat wordt er door Application Insights gecontroleerd?
 

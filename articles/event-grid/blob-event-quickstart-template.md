@@ -1,24 +1,24 @@
 ---
-title: Blob Storage-gebeurtenissen verzenden naar web-eind punt-sjabloon
-description: Gebruik Azure Event Grid en een Azure Resource Manager sjabloon voor het maken van een Blob Storage-account en Abonneer u op de gebeurtenissen. De gebeurtenissen verzenden naar een webhook.
+title: Blob Storage-gebeurtenissen verzenden naar een webeindpunt - sjabloon
+description: Gebruik Azure Event Grid en een Azure Resource Manager-sjabloon om een Blob-opslagaccount te maken en u te abonneren op de gebeurtenissen ervan. Verstuur de gebeurtenissen naar een webhook.
 services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 02/27/2020
+ms.date: 06/03/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0cf880411a5c2a8eefd592a01de40b5098f31cda
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605523"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424124"
 ---
-# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Blob Storage-gebeurtenissen naar een webeindpunt routeren met behulp van Azure Resource Manager sjabloon
+# <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Blob Storage-gebeurtenissen naar een webeindpunt routeren met behulp van een Azure Resource Manager-sjabloon
 
-Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u een **Azure Resource Manager sjabloon** voor het maken van een Blob Storage-account, het abonneren op gebeurtenissen voor die Blob-opslag en het activeren van een gebeurtenis om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
+Azure Event Grid is een gebeurtenisservice voor de cloud. In dit artikel gebruikt u een **Azure Resource Manager-sjabloon** om een Blob Storage-account te maken, u te abonneren op de gebeurtenissen voor die blob-opslag en een gebeurtenis te activeren om het resultaat weer te geven. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -32,39 +32,40 @@ Voordat u zich kunt abonneren op gebeurtenissen voor de Blob-opslag, moet u het 
 
 1. Selecteer **Implementeren in Azure** om de oplossing voor uw abonnement te implementeren. Geef in Azure Portal waarden op voor de parameters.
 
-    [Implementeren in Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
+    [Implementeren naar Azure](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json)
 1. De implementatie kan enkele minuten duren. Controleer of uw web-app wordt uitgevoerd nadat de implementatie is voltooid. Navigeer in een webbrowser naar: `https://<your-site-name>.azurewebsites.net`
 
 1. De site wordt weergegeven, maar er zijn nog geen gebeurtenissen op gepubliceerd.
 
    ![Nieuwe site weergeven](./media/blob-event-quickstart-portal/view-site.png)
 
-## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Een opslag account maken met een Event Grid-abonnement
+## <a name="create-a-storage-account-with-an-event-grid-subscription"></a>Een opslagaccount met een Event Grid-abonnement maken
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage)start-sjablonen.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage).
 
 [!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
 
 Er worden twee Azure-resources gedefinieerd in de sjabloon:
 
-* [**Micro soft. Storage/Storage accounts**](/azure/templates/microsoft.storage/storageaccounts): een Azure Storage-account maken.
-* [**"Micro soft. Storage/Storage accounts/providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): een Azure Event grid-abonnement maken voor het opslag account.
+* [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): een Azure Storage-account maken.
+* [**Microsoft.EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics): een systeemonderwerp maken met de naam die is opgegeven voor het opslagaccount. 
+* [**Microsoft.EventGrid/systemTopics/eventSubscriptions**](/azure/templates/microsoft.eventgrid/systemtopics/eventsubscriptions): een Azure Event Grid-abonnement maken voor het systeemonderwerp.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer de volgende koppeling om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
+1. Selecteer de volgende koppeling om u aan te melden bij Azure en open een sjabloon. Met de sjabloon worden een sleutelkluis en een geheim gemaakt.
 
     [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-event-grid-subscription-and-storage%2Fazuredeploy.json)
 
-2. Geef het **eind punt**op: Geef de URL van uw web- `api/updates` app op en voeg deze toe aan de URL van de start pagina.
-3. Selecteer **aanschaffen** om de sjabloon te implementeren.
+2. Het **eindpunt opgeven**: geef de URL van uw web-app op en voeg `api/updates` toe aan de URL van de startpagina.
+3. Selecteer **Aankoop** om de sjabloon te implementeren.
 
-  De Azure Portal wordt hier gebruikt om de sjabloon te implementeren. U kunt ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md).
+  Hier wordt de Azure Portal gebruikt om de sjabloon te implementeren. U kunt ook Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 
 > [!NOTE]
-> [Hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)vindt u meer Azure Event grid sjabloon voorbeelden.
+> U vindt [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid) meer Azure Event Grid-sjabloonvoorbeelden.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
@@ -76,20 +77,20 @@ Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid n
 
 U activeert een gebeurtenis voor de Blob-opslag door een bestand te uploaden. Het bestand heeft geen specifieke inhoud nodig. In de artikelen wordt ervan uitgegaan dat u een bestand met de naam testfile.txt hebt, maar het bestand kan elke willekeurige naam hebben.
 
-Wanneer u het bestand uploadt naar de Azure Blob-opslag, stuurt Event Grid een bericht naar het eind punt dat u hebt geconfigureerd bij het abonneren. Het bericht bevindt zich in de JSON-indeling en bevat een matrix met een of meer gebeurtenissen. In het volgende voor beeld bevat het JSON-bericht een matrix met één gebeurtenis. Bekijk uw web-app en u ziet dat er een gebeurtenis Blob gemaakt is ontvangen.
+Wanneer u het bestand uploadt naar de Azure Blob-opslag, stuurt Event Grid een bericht naar het eindpunt dat u hebt geconfigureerd bij het abonneren. Het bericht heeft de JSON-indeling en bevat een matrix met een of meer gebeurtenissen. In het volgende voorbeeld bevat het JSON-bericht een matrix met één gebeurtenis. Bekijk uw web-app en u ziet dat er een gebeurtenis Blob gemaakt is ontvangen.
 
 ![Resultaten weergeven](./media/blob-event-quickstart-portal/view-results.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, [verwijdert u de resource groep](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
-).
+[Verwijder de resourcegroep](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group
+) als u deze niet meer nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over Azure Resource Manager sjablonen:
+Zie de volgende artikelen voor meer informatie over de Azure Resource Manager-sjablonen:
 
-* [Documentatie over Azure Resource Manager](/azure/azure-resource-manager)
-* [Resources definiëren in Azure Resource Manager sjablonen](/azure/templates/)
-* [Azure-quickstartsjablonen](https://azure.microsoft.com/resources/templates/)
-* [Azure Event grid sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).
+* [Documentatie voor Azure Resource Manager](/azure/azure-resource-manager)
+* [Resources definiëren in Azure Resource Manager-sjablonen](/azure/templates/)
+* [Azure-quickstart-sjablonen](https://azure.microsoft.com/resources/templates/)
+* [Azure Event Grid-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

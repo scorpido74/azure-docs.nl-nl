@@ -3,17 +3,17 @@ title: 'Zelfstudie: Azure-budgetten maken en beheren'
 description: Deze zelfstudie helpt u bij het plannen en verantwoorden van de kosten van Azure-Services die u gebruikt.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101753"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559324"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Zelfstudie: Azure-budgetten maken en beheren
 
@@ -115,6 +115,15 @@ Nadat u een budget hebt gemaakt, wordt het weergegeven in de kostenanalyse. Het 
 
 In het voorgaande voorbeeld hebt u een budget voor een abonnement gemaakt. U kunt ook een budget voor een resourcegroep maken. Als u een budget voor een resourcegroep wilt maken, gaat u naar **Cost Management + facturering** &gt; **Abonnementen** &gt; een abonnement selecteren > **Resourcegroepen** > een resourcegroep selecteren > **Budgetten** > en kunt u vervolgens een budget **toevoegen**.
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Een budget voor gecombineerde Azure- en AWS-kosten maken
+
+U kunt uw Azure- en AWS-kosten groeperen door een beheergroep toe te wijzen aan uw connector, samen met de geconsolideerde en gekoppelde accounts. Wijs uw Azure-abonnementen toe aan dezelfde beheergroep. Maak vervolgens een budget voor de gecombineerde kosten.
+
+1. In Cost Management selecteert u **Budgetten**.
+1. Selecteer **Toevoegen**.
+1. Selecteer **Bereik wijzigen** en selecteer vervolgens de beheergroep.
+1. Ga door met het maken van het budget tot de bewerking is voltooid.
+
 ## <a name="costs-in-budget-evaluations"></a>Kosten in budgetevaluaties
 
 Evaluaties van budgetkosten bevatten nu gegevens van gereserveerde instanties en aankopen. Als de kosten van toepassing zijn op u, kunt u waarschuwingen ontvangen wanneer de kosten zijn opgenomen in uw evaluaties. U wordt aangeraden zich aan te melden bij de [Azure-portal](https://portal.azure.com) om te controleren of de budgetdrempels goed zijn geconfigureerd voor de nieuwe kosten. De gefactureerde kosten voor Azure blijven gelijk. Budgetten worden nu geëvalueerd op basis van een uitgebreidere set kosten. Als de kosten niet op u van toepassing zijn, blijft uw budgetgedrag gelijk.
@@ -124,8 +133,7 @@ Als u de nieuwe kosten wilt filteren zodat budgetten alleen worden geëvalueerd 
 - Type van uitgever: Azure
 - Kostentype: Gebruik
 
-Evaluaties van budgetkosten zijn gebaseerd op de werkelijke kosten. Ze bevatten geen afschrijvingen. Zie [Understanding grouping and filtering options](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) voor meer informatie over de beschikbare filteropties in budgetten.
-
+Evaluaties van budgetkosten zijn gebaseerd op de werkelijke kosten. Ze bevatten geen afschrijvingen. Zie [Understanding grouping and filtering options](group-filter.md) voor meer informatie over de beschikbare filteropties in budgetten.
 
 ## <a name="trigger-an-action-group"></a>Een actiegroep activeren
 

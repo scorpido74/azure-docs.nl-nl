@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844519"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995646"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -75,7 +75,12 @@ De volgende aanbiedingen worden nog niet ondersteund:
 | **Ondersteuningsplannen** | Pro Direct-ondersteuning Azure Government | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Ondersteuningsplannen** | Developer-ondersteuning Azure Government  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Uw type aanbieding bepalen
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade van gratis proefversie naar betalen per gebruik
+
+Raadpleeg de [Veelgestelde vragen over een gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor informatie over de beschikbaarheid van services in de gratis laag, nadat u een upgrade hebt uitgevoerd van de gratis proefversie naar betalen per gebruik.
+
+### <a name="determine-your-offer-type"></a>Uw type aanbieding bepalen
+
 Als u geen gegevens voor een abonnement ziet en u wilt bepalen of uw abonnement onder de ondersteunde aanbiedingen valt, kunt u controleren of uw abonnement wordt ondersteund. Als u wilt valideren of een Azure-abonnement wordt ondersteund, meldt u zich aan bij de [Azure-portal](https://portal.azure.com). Selecteer vervolgens **Alle services** in het linkerdeelvenster. Selecteer **Abonnementen** in de lijst met services. Selecteer in het menu van de lijst met abonnementen het abonnement dat u wilt controleren. Uw abonnement wordt weergegeven op het tabblad Overzicht en u ziet daar onder andere de **aanbieding** en de **aanbieding-id**. In de volgende afbeelding ziet u een voorbeeld.
 
 ![Voorbeeld van het tabblad Overzicht van een abonnement met de naam en id van de aanbieding](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +111,7 @@ Azure Cost Management ontvangt tags als onderdeel van elke gebruiksrecord die do
 - Resourcetags worden alleen ondersteund voor resources die zijn geïmplementeerd voor resourcegroepen.
 - Sommige geïmplementeerde resources bieden mogelijk geen ondersteuning voor tags of bevatten geen tags in gebruiksgegevens. Zie [Tags-ondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md).
 - Resourcetags worden alleen opgenomen in gebruiksgegevens terwijl de tag wordt toegepast: tags worden niet toegepast op historische gegevens.
-- Resourcetags zijn alleen beschikbaar in Cost Management nadat de gegevens zijn vernieuwd. Zie [Updatefrequentie van gebruiksgegevens varieert](#usage-data-update-frequency-varies).
+- Resourcetags zijn pas beschikbaar in Cost Management als de gegevens zijn vernieuwd. Zie [Updates en retentie voor kosten- en gebruiksgegevens](#cost-and-usage-data-updates-and-retention).
 - Resourcetags zijn alleen beschikbaar in Cost Management wanneer de resource actief is of wordt uitgevoerd en gebruiksrecords produceert (dus niet wanneer de toewijzing van een virtuele machine ongedaan wordt gemaakt).
 - Voor het beheren van tags moet de inzender toegang tot elke resource hebben.
 - Voor het beheren van tagbeleid moet de eigenaar of beleidsinzender toegang hebben tot een beheergroep, abonnement of resourcegroep.
@@ -114,7 +119,7 @@ Azure Cost Management ontvangt tags als onderdeel van elke gebruiksrecord die do
 Als een specifieke tag niet wordt weergegeven in Cost Management, ga dan het volgende na:
 
 - Is de tag rechtstreeks toegepast op de resource?
-- Is de tag meer dan 24 uur geleden toegepast? Zie [Frequentie van bijwerken van gebruiksgegevens varieert](#usage-data-update-frequency-varies)
+- Is de tag meer dan 24 uur geleden toegepast? Zie [Updates en retentie voor kosten- en gebruiksgegevens](#cost-and-usage-data-updates-and-retention)
 - Ondersteunt het resourcetype tags? De volgende resourcetypen bieden geen ondersteuning voor tags in gebruiksgegevens vanaf 1 december 2019. Zie [Tagsondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md) voor een volledige lijst van wat er wordt ondersteund.
     - Azure Active Directory B2C
     - Azure-firewalls
@@ -134,24 +139,22 @@ Hier volgen enkele tips voor het werken met tags:
 - Gebruik de Tags-API in combinatie met Query of UsageDetails om alle kosten op basis van de huidige tags op te halen.
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade van gratis proefversie naar betalen per gebruik
+## <a name="cost-and-usage-data-updates-and-retention"></a>Updates en retentie voor kosten- en gebruiksgegevens
 
-Raadpleeg de [Veelgestelde vragen over een gratis Azure-account](https://azure.microsoft.com/free/free-account-faq/) voor informatie over de beschikbaarheid van services in de gratis laag, nadat u een upgrade hebt uitgevoerd van de gratis proefversie naar betalen per gebruik.
+Kosten en gebruiksgegevens zijn gewoonlijk binnen 8 tot 24 uur beschikbaar in Cost Management en Facturering in de Azure-portal en in [ondersteunende API's](../index.yml). Houd rekening met de volgende punten wanneer u kosten gaat bekijken:
 
-## <a name="rated-usage-data-refresh-schedule"></a>Vernieuwingsschema voor gebruikstarieven van gegevens
-
-Kosten en gebruiksgegevens zijn beschikbaar in Cost Management en Facturering in de Azure-portal en in [ondersteunende API's](../index.yml). Houd rekening met de volgende punten wanneer u kosten gaat bekijken:
-
+- Voor elke Azure-service (zoals Azure Storage, Azure Compute en Azure SQL) worden gebruiksgegevens verzonden op verschillende tijden: gegevens voor sommige services worden eerder weergegeven dan andere.
 - Geschatte kosten voor de huidige factureringsperiode worden zes keer per dag bijgewerkt.
 - Geschatte kosten voor de huidige factureringsperiode kunnen veranderen wanneer u meer gebruikt.
 - Elke update is cumulatief en bevat alle regelitems en gegevens van de vorige update.
 - De huidige factureringsperiode wordt voltooid of _afgesloten_ door Azure als er maximaal 72 uur (drie kalenderdagen) zijn verstreken nadat de factureringsperiode is beëindigd.
 
-In de volgende voorbeelden ziet u hoe factureringsperioden kunnen worden beëindigd.
+In de volgende voorbeelden ziet u hoe factureringsperioden kunnen worden beëindigd:
 
-EA-abonnementen (Enterprise Agreement): als de factureringsmaand eindigt op 31 maart, worden de geschatte kosten maximaal 72 uur later bijgewerkt. In dit voorbeeld zou dat middernacht (UTC) zijn op 4 april.
+* EA-abonnementen (Enterprise Agreement): als de factureringsmaand eindigt op 31 maart, worden de geschatte kosten maximaal 72 uur later bijgewerkt. In dit voorbeeld zou dat middernacht (UTC) zijn op 4 april.
+* Abonnementen van betalen per gebruik: als de factureringsmaand eindigt op 15 mei, worden de geschatte kosten maximaal 72 uur later bijgewerkt. In dit voorbeeld zou dat middernacht (UTC) zijn op 19 mei.
 
-Abonnementen van betalen per gebruik: als de factureringsmaand eindigt op 15 mei, worden de geschatte kosten maximaal 72 uur later bijgewerkt. In dit voorbeeld zou dat middernacht (UTC) zijn op 19 mei.
+Zodra de kosten- en gebruiksgegevens beschikbaar zijn in Cost Management en Facturering, wordt deze ten minste 7 jaar bewaard.
 
 ### <a name="rerated-data"></a>Opnieuw berekende tarieven
 
@@ -166,16 +169,6 @@ De in Cost Management weergegeven kosten worden afgerond. Kosten die worden gere
   - Kosten 2: $ 0,004
   -    Weergegeven samengevoegde kosten: 0,004 + 0,004 = 0,008. De weergegeven kosten zijn $ 0,01.
 - Query-API: de kosten worden weergegeven met acht decimalen en worden niet afgerond.
-
-
-## <a name="usage-data-update-frequency-varies"></a>Frequentie van bijwerken van gebruiksgegevens varieert
-
-De beschikbaarheid van de gemaakte kosten voor gebruiksgegevens in Cost Management is afhankelijk van een aantal factoren, waaronder:
-
-- Hoe vaak Azure-services (zoals Storage, Compute, CDN en SQL) gegevens van het gebruik verzenden.
-- De tijd die nodig is om de gebruiksgegevens te verwerken met behulp van de beoordelings-engine en de pijplijnen voor kostenbeheer.
-
-Sommige services verzenden vaker gebruiksgegevens dan andere. Het is dus mogelijk dat u in Cost Management voor sommige services eerder gegevens ziet dan voor andere services, omdat die minder vaak gegevens verzenden. Het duurt meestal 8-24 uur voordat gebruiksgegevens van een service beschikbaar zijn in Cost Management. Houd er rekening mee dat gegevens voor een open maand worden vernieuwd wanneer u meer gebruik maakt omdat updates cumulatief zijn.
 
 ## <a name="historical-data-might-not-match-invoice"></a>Historische gegevens komen mogelijk niet overeenkomen met de factuur
 

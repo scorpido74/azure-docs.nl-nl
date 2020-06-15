@@ -1,7 +1,7 @@
 ---
-title: "Snelstartgids: een zoek index in python maken met REST Api's"
+title: "Quickstart: Een zoekindex maken in Python met behulp van REST API's"
 titleSuffix: Azure Cognitive Search
-description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van python, Jupyter-notebooks en de Azure Cognitive Search REST API.
+description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van Python, Jupyter Notebooks en de REST API van Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,54 +9,55 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 04/01/2020
-ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 73af4c28b5963564f45af7e038b02f7e70d11c4a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80585931"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609893"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Snelstartgids: een Azure Cognitive Search-index in python maken met behulp van Jupyter-notebooks
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Quickstart: Een Azure Cognitive Search-index maken in Python met behulp van Jupyter-notebooks
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
-> * [Power shell (REST)](search-create-index-rest-api.md)
-> * [G #](search-create-index-dotnet.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Portal](search-create-index-portal.md)
 > 
 
-Bouw een Jupyter-notebook dat een Azure Cognitive Search-index maakt, laadt en opvraagt met behulp van python en de [Azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u stap voor stap een notitie blok maakt. U kunt ook [een voltooide Jupyter python-notebook downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-python-samples).
+Bouw een Jupyter-notebook waarmee een Azure Cognitive Search-index wordt gemaakt en geladen en waarmee query's kunnen worden uitgevoerd met behulp van Python en de [REST API's van Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt stap voor stap uitgelegd hoe u een notebook maakt. Een andere optie is om [een voltooide Jupyter Python-notebook te downloaden en uit te voeren](https://github.com/Azure-Samples/azure-search-python-samples).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start. 
+De volgende services en hulpprogramma's zijn vereist voor deze quickstart. 
 
-+ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), met python 3. x-en Jupyter-notebooks.
++ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), biedt Python 3.x en Jupyter Notebooks.
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt de gratis laag voor deze Quick Start gebruiken. 
++ [Maak een Azure Cognitive Search-service](search-create-service-portal.md) of [zoek een bestaande service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze quickstart de gratis laag gebruiken. 
 
 ## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoekservice wordt gemaakt met beide, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, volgt u deze stappen om de benodigde informatie op te halen:
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. [Meld u aan bij Azure Portal](https://portal.azure.com/) en haal op de pagina **Overzicht** van uw zoekservice de URL op. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal onder **Instellingen** > **Sleutels** een beheersleutel op voor volledige rechten op de service. Er zijn twee uitwisselbare beheersleutels die voor bedrijfscontinuïteit worden verstrekt voor het geval u een moet overschakelen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+![Een HTTP-eindpunt en toegangssleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eindpunt en toegangssleutel ophalen")
 
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+Voor alle aanvragen is een API-sleutel vereist op elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
 ## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
 
-Start in deze taak een Jupyter-notebook en controleer of u verbinding kunt maken met Azure Cognitive Search. U doet dit door een lijst met indexen van uw service op te vragen. In Windows met Anaconda3 kunt u Anaconda Navigator gebruiken om een notitie blok te starten.
+In deze taak start u een Jupyter-notebook en controleert u of u verbinding kunt maken met Azure Cognitive Search. Hiervoor gaat u een lijst met indices uit uw service aanvragen. In Windows met Anaconda3 kunt u Anaconda Navigator gebruiken om een notebook te starten.
 
-1. Maak een nieuw Python3-notebook.
+1. Maak een nieuwe Python3-notebook.
 
-1. In de eerste cel laadt u de bibliotheken die worden gebruikt voor het werken met JSON en het formuleren van HTTP-aanvragen.
+1. In de eerste cel laadt u de bibliotheken die worden gebruiken om met JSON te werken en HTTP-aanvragen te formuleren.
 
    ```python
    import json
@@ -64,7 +65,7 @@ Start in deze taak een Jupyter-notebook en controleer of u verbinding kunt maken
    from pprint import pprint
    ```
 
-1. In de tweede cel voert u de elementen van de aanvraag in die constanten zijn voor elke aanvraag. Vervang de naam van de zoek service (YOUR-SEARCH-SERVICE-NAME) en de beheer-API-sleutel (uw-beheer-API-sleutel) met geldige waarden. 
+1. In de tweede cel voert u de aanvraagelementen in die bij elke aanvraag constanten zullen zijn. Vervang de naam van de zoekservice (YOUR-SEARCH-SERVICE-NAME) en de beheer-API-sleutel (YOUR-ADMIN-API-KEY) door geldige waarden. 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
@@ -73,9 +74,9 @@ Start in deze taak een Jupyter-notebook en controleer of u verbinding kunt maken
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-   Als u ConnectionError `"Failed to establish a new connection"`ontvangt, controleert u of de API-sleutel een primaire of secundaire Administrator sleutel is en of alle voor-en achterstallige`?` tekens `/`(en) aanwezig zijn.
+   Als ConnectionError `"Failed to establish a new connection"` wordt weergegeven, controleert u of de api-key een primaire of secundaire beheersleutel is en of alle voorloop- en volgtekens (`?` en `/`) op de goede plaats staan.
 
-1. Formuleer de aanvraag in de derde cel. Deze GET-aanvraag streeft naar de index verzameling van uw zoek service en selecteert de eigenschap name van bestaande indexen.
+1. Formuleer de aanvraag in de derde cel. Deze GET-aanvraag is gericht op de verzameling indices van uw zoekservice; hiermee selecteert u de naameigenschap van bestaande indices.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -84,21 +85,21 @@ Start in deze taak een Jupyter-notebook en controleer of u verbinding kunt maken
    pprint(index_list)
    ```
 
-1. Voer elke stap uit. Als er indexen bestaan, bevat het antwoord een lijst met index namen. In de onderstaande scherm afbeelding heeft de service al een azureblob-index en een realestate-US-voorbeeld index.
+1. Voer elke stap uit. Als er indices aanwezig zijn, bevat het resultaat een lijst met indexnamen. In de onderstaande schermopname is de service al voorzien van de indices azureblob en realestate-us-sample.
 
-   ![Python-script in Jupyter notebook met HTTP-aanvragen voor Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Python-script in Jupyter notebook met HTTP-aanvragen voor Azure Cognitive Search")
+   ![Python-script in Jupyter-notebook met HTTP-aanvragen voor Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Python-script in Jupyter-notebook met HTTP-aanvragen voor Azure Cognitive Search")
 
-   Een lege index verzameling retourneert daarentegen het volgende antwoord:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Daarentegen wordt door een lege indexverzameling de volgende reactie geretourneerd: `{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-Tenzij u de portal gebruikt, moet er een index op de service bestaan voordat u gegevens kunt laden. Deze stap maakt gebruik van de [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) om een index schema naar de service te pushen.
+Er moet een index in de service aanwezig zijn voordat u gegevens laadt, tenzij u de portal gebruikt. Bij deze stap gebruiken we de [REST API Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) om een indexschema naar de service te pushen.
 
-Vereiste elementen van een index bevatten een naam, een verzameling velden en een sleutel. De verzameling velden definieert de structuur van een *document*. Elk veld heeft een naam, type en kenmerken die bepalen hoe het veld wordt gebruikt (bijvoorbeeld of het in volledige tekst kan worden doorzocht, kan worden gefilterd of kunnen worden opgehaald in Zoek resultaten). Binnen een index moet een van de velden van het `Edm.String` type worden aangewezen als de *sleutel* voor document identiteit.
+De vereiste elementen van een index zijn een naam, een verzameling velden en een sleutel. Met de verzameling velden wordt de structuur van een *document* gedefinieerd. Elk veld is voorzien van een naam, type en kenmerken die bepalen hoe het veld wordt gebruikt (bijvoorbeeld of er op volledige tekst kan worden gezocht, of er filters kunnen worden toegepast en of het veld kan worden opgehaald in de zoekresultaten). In een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor de documentidentiteit.
 
-Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder worden weer gegeven. Het is een subset van een grotere [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die wordt gebruikt in andere scenario's. Deze Quick start is in deze Snelstartgids bijgesneden.
+Deze index heeft de naam 'hotels-quickstart' en beschikt over de onderstaande velddefinities. Dit is een subset van de grotere [Hotels-index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die in andere scenario's wordt gebruikt. We hebben de index voor deze quickstart ingekort.
 
-1. Plak in de volgende cel het volgende voor beeld in een cel om het schema op te geven. 
+1. In de volgende cel plakt u het volgende voorbeeld in een cel om het schema op te geven. 
 
     ```python
     index_schema = {
@@ -126,7 +127,7 @@ Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder w
     }
     ```
 
-2. Formuleer de aanvraag in een andere cel. Deze POST-aanvraag streeft naar de index verzameling van uw zoek service en maakt een index op basis van het index schema dat u in de vorige cel hebt gegeven.
+2. Formuleer de aanvraag in een andere cel. Deze POST-aanvraag is gericht op de verzameling indices van uw zoekservice en hiermee wordt een index gemaakt op basis van het indexschema dat u in de vorige cel hebt opgegeven.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -137,20 +138,20 @@ Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder w
 
 3. Voer elke stap uit.
 
-   Het antwoord bevat de JSON-weer gave van het schema. Op de volgende scherm afbeelding wordt slechts een deel van het antwoord weer gegeven.
+   Het antwoord bevat de JSON-weergave van het schema. In de volgende schermopname ziet u een klein deel van het antwoord.
 
-    ![Aanvraag voor het maken van een index](media/search-get-started-python/create-index.png "Aanvraag voor het maken van een index")
+    ![Aanvraag om een index te maken](media/search-get-started-python/create-index.png "Aanvraag om een index te maken")
 
 > [!Tip]
-> U kunt het maken van een index ook controleren door de lijst indexen te controleren in de portal.
+> U kunt ook controleren of de index wordt gemaakt door de lijst met indices in de portal te bekijken.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2-documenten laden
+## <a name="2---load-documents"></a>2 - Documenten laden
 
-Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-eind punt van uw index. De REST API is het [toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Documenten zijn afkomstig van [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) op github.
+Voor het pushen van documenten gebruikt u een HTTP POST-aanvraag in het URL-eindpunt van uw index. De REST API is [Documenten toevoegen, bijwerken of verwijderen](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Documenten zijn afkomstig van [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) op GitHub.
 
-1. Geef in een nieuwe cel vier documenten op die voldoen aan het index schema. Geef een upload actie op voor elk document.
+1. In een nieuwe cel geeft u vier documenten op die het indexschema bevestigen. Geef voor elk document een uploadactie op.
 
     ```python
     documents = {
@@ -235,7 +236,7 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
     }
     ```   
 
-2. Formuleer de aanvraag in een andere cel. Deze POST-aanvraag streeft naar de docs-verzameling van de hotels-index Snelstartgids en duwt de documenten die in de vorige stap zijn opgenomen.
+2. Formuleer de aanvraag in een andere cel. Deze POST-aanvraag is gericht op de verzameling documenten van de index hotels-quickstart en pusht de documenten die in de vorige stap zijn opgegeven.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -244,15 +245,15 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
    pprint(index_content)
    ```
 
-3. Voer elke stap uit om de documenten naar een index in uw zoek service te pushen. De resultaten moeten er ongeveer uitzien als in het volgende voor beeld. 
+3. Voer elke stap uit om de documenten naar een index in uw zoekservice te pushen. De resultaten moeten er ongeveer uitzien als in het volgende voorbeeld. 
 
-    ![Documenten verzenden naar een index](media/search-get-started-python/load-index.png "Documenten verzenden naar een index")
+    ![Documenten naar een index verzenden](media/search-get-started-python/load-index.png "Documenten naar een index verzenden")
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van de [Zoek documenten rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Bij deze stap ziet u hoe u een query op een index uitvoert met behulp van de [REST API Documenten zoeken](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-1. Geef in een cel een query expressie op waarmee een lege zoek opdracht wordt uitgevoerd (Search = *), waarbij een niet-geordede lijst wordt geretourneerd (zoek score = 1,0) van wille keurige documenten. Azure Cognitive Search retourneert standaard 50 overeenkomsten per keer. Als gestructureerd retourneert deze query een volledige document structuur en-waarden. Voeg $count = True toe om een telling van alle documenten in de resultaten op te halen.
+1. Geef in een cel een query-expressie op waarmee een lege zoekopdracht (search=*) wordt uitgevoerd en waardoor een niet-geclassificeerde lijst (zoekscore  = 1,0) met willekeurige documenten wordt geretourneerd. Standaard worden in Azure Cognitive Search 50 resultaten per keer geretourneerd. Volgens de structuur worden met deze query een gehele documentstructuur en waarden geretourneerd. Voeg $count=true toe om een telling van alle documenten in de resultaten te krijgen.
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -263,7 +264,7 @@ In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van d
    pprint(query)
    ```
 
-1. Geef in een nieuwe cel het volgende voor beeld op om te zoeken naar de termen "Hotels" en "WiFi". Voeg $select toe om op te geven welke velden moeten worden meegenomen in de zoek resultaten.
+1. Geef in een nieuwe cel het volgende voorbeeld op om te zoeken op de termen 'hotels' en 'wifi'. Voeg $select toe om op te geven welke velden moeten worden meegenomen in de zoekresultaten.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
@@ -278,7 +279,7 @@ In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van d
 
     ![Een index doorzoeken](media/search-get-started-python/search-index.png "Een index doorzoeken")
 
-1. Pas vervolgens een $filter-expressie toe waarmee alleen die hotels worden geselecteerd met een classificatie van meer dan 4. 
+1. Pas vervolgens een $filter-expressie toe waarmee alleen die hotels worden geselecteerd die een hogere waardering hebben dan 4. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
@@ -289,7 +290,7 @@ In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van d
    pprint(query)     
    ```
 
-1. De zoek engine retourneert standaard de documenten van het hoogste 50, maar u kunt het beste met de bovenkant en de paginering toevoegen en kiezen hoeveel documenten per resultaat moeten worden weer gegeven. Met deze query worden twee documenten in elke resultatenset geretourneerd.
+1. Standaard worden met de zoekengine de 50 hoogste documenten geretourneerd, maar u kunt top en skip gebruiken om paginering toe te voegen en te kiezen hoeveel documenten elk resultaat bevat. Met deze query worden twee documenten in elke resultatenset geretourneerd.
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
@@ -300,7 +301,7 @@ In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van d
    pprint(query)
    ```
 
-1. In dit laatste voor beeld gebruikt u $orderby om de resultaten te sorteren op plaats. Dit voor beeld bevat velden uit de adres verzameling.
+1. In dit laatste voorbeeld gebruiken we $orderby om resultaten op stad te sorteren. Dit voorbeeld bevat velden uit de adresverzameling.
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
@@ -313,15 +314,15 @@ In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van d
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de resources die u hebt gemaakt, nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog steeds nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt resources afzonderlijk verwijderen, maar u kunt ook de resourcegroep verwijderen als u de volledige resourceset wilt verwijderen.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+U kunt resources vinden en beheren in de portal via de koppeling **Alle resources** of **Resourcegroepen** in het navigatiedeelvenster aan de linkerkant.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
+Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, indexeerfuncties en gegevensbronnen. U kunt afzonderlijke items in de portal verwijderen om onder de limiet te blijven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als vereenvoudiging maakt deze Snelstartgids gebruik van een verkorte versie van de hotels-index. U kunt de volledige versie maken om meer interessante query's uit te proberen. Als u de volledige versie en alle 50-documenten wilt ophalen, voert u de wizard **gegevens importeren** uit, selecteert u *hotels-voor beeld* van de ingebouwde voorbeeld gegevens bronnen.
+Om het iets eenvoudiger te maken, wordt in deze quickstart een beknopte versie van de Hotels-index gebruikt. U kunt de volledige versie maken om meer interessante query's te testen. U kunt de volledige versie en alle 50 documenten ophalen door de wizard **Gegevens importeren** uit te voeren en *hotels-sample* te selecteren bij de meegeleverde voorbeeldgegevensbronnen.
 
 > [!div class="nextstepaction"]
-> [Snelstartgids: een index in de Azure Portal maken](search-get-started-portal.md)
+> [Snelstart: Een index maken in Azure Portal](search-get-started-portal.md)

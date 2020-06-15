@@ -8,14 +8,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062222"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559867"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Quick Start: een grafiek database maken in Azure Cosmos DB met behulp van python en de Azure Portal
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Quickstart: een grafiekdatabase maken in Azure Cosmos DB met behulp van Python en de Azure-portal
 
 > [!div class="op_single_selector"]
 > * [Gremlin-console](create-graph-gremlin-console.md)
@@ -26,12 +27,12 @@ ms.locfileid: "77062222"
 > * [PHP](create-graph-php.md)
 >  
 
-In deze Quick Start maakt en beheert u een Azure Cosmos DB Gremlin (Graph) API-account van de Azure Portal en voegt u gegevens toe met behulp van een python-app die is gekloond van GitHub. Azure Cosmos DB is een database service met meerdere modellen waarmee u snel documenten, tabellen, sleutel waarden en grafische data bases met globale distributie en mogelijkheden voor horizontale schaal kunt maken en er query's op uitvoert.
+In deze quickstart maakt en beheert u een Azure Cosmos DB Gremlin-API-account (grafiek) vanuit Azure Portal en voegt u gegevens toe met behulp van een Python-app die is gekloond uit GitHub. Met Azure Cosmos DB, een databaseservice met meerdere modellen, kunt u snel databases met documenten, tabellen, sleutelwaarden en grafieken maken en hier query's op uitvoeren. Deze databases hebben wereldwijde distributie en horizontale schaalmogelijkheden.
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [Probeer gratis Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/) zonder een Azure-abonnement.
-- [Python 3.5 +](https://www.python.org/downloads/) inclusief [PIP](https://pip.pypa.io/en/stable/installing/) -pakket installatie programma.
-- [Python-stuur programma voor Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python).
+- Een Azure-account met een actief abonnement. [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Of [probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) zonder Azure-abonnement.
+- [Python 3.5+](https://www.python.org/downloads/) met installatieprogramma voor [pip](https://pip.pypa.io/en/stable/installing/)-pakket.
+- [Python-stuurprogramma voor Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python).
 - [Git](https://git-scm.com/downloads).
 
 > [!NOTE]
@@ -71,9 +72,9 @@ Nu gaan we werken met code. We gaan nu een Gremlin API-app klonen vanaf GitHub, 
 
 ## <a name="review-the-code"></a>De code bekijken
 
-Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. De code fragmenten zijn allemaal afkomstig uit het *Connect.py* -bestand in de map *C:\git-samples\azure-Cosmos-DB-Graph-python-Getting-Started\\ * . Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-information). 
+Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code worden gemaakt, kunt u de volgende codefragmenten bekijken. De codefragmenten zijn alle afkomstig uit het bestand *connect.py* in de map *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* . Als u deze stap wilt overslaan, kunt u verdergaan naar [Uw verbindingsreeks bijwerken](#update-your-connection-information). 
 
-* De Gremlin `client` wordt geïnitialiseerd in regel 104 in *Connect.py*:
+* De Gremlin-`client` wordt geïnitialiseerd in regel 104 in *:connect.py*:
 
     ```python
     ...
@@ -83,7 +84,7 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
     ...
     ```
 
-* Een reeks Gremlin-stappen wordt aan het begin van het *Connect.py* -bestand gedeclareerd. Ze worden vervolgens uitgevoerd met behulp van de methode `client.submitAsync()`:
+* Een reeks stappen in Gremlin zijn gedeclareerd aan het begin van het bestand *connect.py*. Ze worden vervolgens uitgevoerd met behulp van de methode `client.submitAsync()`:
 
     ```python
     client.submitAsync(_gremlin_cleanup_graph)
@@ -93,13 +94,13 @@ Deze stap is optioneel. Als u wilt weten hoe de databaseresources in de code wor
 
 Ga nu terug naar Azure Portal om de verbindingsgegevens op te halen en deze in de app te kopiëren. Met behulp van deze instellingen kan de app communiceren met de gehoste database.
 
-1. Selecteer in uw Azure Cosmos DB-account in de [Azure Portal](https://portal.azure.com/)de optie **sleutels**. 
+1. Selecteer in uw Azure Cosmos DB-account in [Azure Portal](https://portal.azure.com/) de optie **Sleutels**. 
 
     Kopieer het eerste gedeelte van de URI-waarde.
 
     ![Een toegangssleutel in Azure Portal bekijken en kopiëren op de pagina Sleutels](./media/create-graph-python/keys.png)
 
-2. Open het *Connect.py* -bestand en plak in regel 104 de URI- `<YOUR_ENDPOINT>` waarde hier.
+2. Open het bestand *connect.py* en plak hier in regel 104 de URI-waarde over `<YOUR_ENDPOINT>` heen:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -127,7 +128,7 @@ Ga nu terug naar Azure Portal om de verbindingsgegevens op te halen en deze in d
         password="<YOUR_PASSWORD>")
     ```
 
-4. Gebruik op de pagina **sleutels** de Kopieer knop om de primaire sleutel te kopiëren en plak deze `<YOUR_PASSWORD>` in de `password=<YOUR_PASSWORD>` para meter.
+4. Gebruik op de pagina **Sleutels** de kopieerknop om de PRIMAIRE SLEUTEL te kopiëren en vervang `<YOUR_PASSWORD>` in de parameter `password=<YOUR_PASSWORD>` door deze waarde.
 
     De gehele definitie van het object `client` moet er nu als de volgende code uitzien:
     ```python
@@ -136,9 +137,9 @@ Ga nu terug naar Azure Portal om de verbindingsgegevens op te halen en deze in d
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-6. Sla het *Connect.py* -bestand op.
+6. Sla het bestand *connect.py* op.
 
-## <a name="run-the-console-app"></a>De app console uitvoeren
+## <a name="run-the-console-app"></a>De console-app uitvoeren
 
 1. `cd` in het git-terminalvenster naar de map azure-cosmos-db-graph-python-getting-started.
 
@@ -167,27 +168,27 @@ Ga nu terug naar Azure Portal om de verbindingsgegevens op te halen en deze in d
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Voorbeeldgegevens bekijken en toevoegen
 
-Nadat de hoek punten en randen zijn ingevoegd, kunt u nu teruggaan naar Data Explorer en de hoek punten zien die aan de grafiek zijn toegevoegd en extra gegevens punten toevoegen.
+Zodra de hoekpunten en randen zijn ingevoegd, kunt u teruggaan naar Data Explorer en de hoekpunten bekijken die zijn toegevoegd aan de grafiek. Ook kunt u extra gegevenspunten toevoegen.
 
-1. Selecteer **Data Explorer**in uw Azure Cosmos DB-account in de Azure Portal, vouw **voorbeeld diagram**uit, selecteer **grafiek**en selecteer vervolgens **filter Toep assen**. 
+1. In uw Azure Cosmos DB-account in Azure Portal selecteert u **Data Explorer**. Vouw hier **sample-graph** uit, selecteer **Grafiek** en selecteer vervolgens **Filter toepassen**. 
 
-   ![Nieuwe documenten maken in Data Explorer in Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
+   ![Nieuwe documenten maken in Data Explorer in de Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. In de lijst met **resultaten** ziet u dat er drie nieuwe gebruikers worden toegevoegd aan de grafiek. U kunt de hoekpunten verplaatsen via slepen en neerzetten, in- en uitzoomen door te scrollen met het muiswiel en de grafiek uitvouwen met de dubbele pijl. 
+2. In de lijst met **resultaten** ziet u drie nieuwe gebruikers die zijn toegevoegd aan de grafiek. U kunt de hoekpunten verplaatsen via slepen en neerzetten, in- en uitzoomen door te scrollen met het muiswiel en de grafiek uitvouwen met de dubbele pijl. 
 
    ![Nieuwe hoekpunten in de grafiek in Data Explorer in Azure Portal](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
-3. Laten we nu enkele nieuwe gebruikers toevoegen. Selecteer de knop **Nieuw hoek punt** om gegevens aan uw grafiek toe te voegen.
+3. Laten we nu enkele nieuwe gebruikers toevoegen. Selecteer de knop **Nieuw hoekpunt** om gegevens toe te voegen aan uw grafiek.
 
-   ![Nieuwe documenten maken in Data Explorer in Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
+   ![Nieuwe documenten maken in Data Explorer in de Azure Portal](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. Geef het label *persoon* op.
 
-5. Selecteer **eigenschap toevoegen** om elk van de volgende eigenschappen toe te voegen. U kunt unieke eigenschappen maken voor elke persoon in de grafiek. Alleen de id-sleutel is vereist.
+5. Selecteer **Eigenschap toevoegen** om elk van de volgende eigenschappen toe te voegen. U kunt unieke eigenschappen maken voor elke persoon in de grafiek. Alleen de id-sleutel is vereist.
 
     sleutel|waarde|Opmerkingen
     ----|----|----
-    PK|/pk| 
+    pk|/pk| 
     id|ashley|De unieke id voor het hoekpunt. Als u geen id opgeeft, wordt er een id voor u gegenereerd.
     geslacht|vrouwelijk| 
     technisch | java | 
@@ -197,30 +198,30 @@ Nadat de hoek punten en randen zijn ingevoegd, kunt u nu teruggaan naar Data Exp
 
 6. Selecteer **OK**. Mogelijk moet u het scherm groter maken om **OK** weer te geven onder aan het scherm.
 
-7. Selecteer **Nieuw hoek punt** en voeg een extra nieuwe gebruiker toe. 
+7. Selecteer **Nieuw hoekpunt** en voeg nog een nieuwe gebruiker toe. 
 
 8. Geef het label *persoon* op.
 
-9. Selecteer **eigenschap toevoegen** om elk van de volgende eigenschappen toe te voegen:
+9. Selecteer **Eigenschap toevoegen** om elk van de volgende eigenschappen toe te voegen:
 
     sleutel|waarde|Opmerkingen
     ----|----|----
-    PK|/pk| 
+    pk|/pk| 
     id|rakesh|De unieke id voor het hoekpunt. Als u geen id opgeeft, wordt er een id voor u gegenereerd.
     geslacht|man| 
     school|MIT| 
 
 10. Selecteer **OK**. 
 
-11. Selecteer de knop **filter Toep assen** met het `g.V()` standaard filter om alle waarden in de grafiek weer te geven. Alle gebruikers worden nu weergegeven in de lijst met **resultaten**. 
+11. Selecteer de knop **Filter toepassen** met het standaard-`g.V()`-filter om alle waarden in de grafiek weer te geven. Alle gebruikers worden nu weergegeven in de lijst met **resultaten**. 
 
-    Als u meer gegevens toevoegt, kunt u filters gebruiken om de resultaten te beperken. Data Explorer maakt standaard gebruik van `g.V()` voor het ophalen van alle hoekpunten van een grafiek. U kunt dit wijzigen in een andere [grafiekquery](tutorial-query-graph.md), bijvoorbeeld `g.V().count()`, om een telling van alle hoekpunten in de grafiek in JSON-indeling te retourneren. Als u het filter hebt gewijzigd, wijzigt u het filter `g.V()` weer in en selecteert u **filter Toep assen** om alle resultaten weer te geven.
+    Als u meer gegevens toevoegt, kunt u filters gebruiken om de resultaten te beperken. Data Explorer maakt standaard gebruik van `g.V()` voor het ophalen van alle hoekpunten van een grafiek. U kunt dit wijzigen in een andere [grafiekquery](tutorial-query-graph.md), bijvoorbeeld `g.V().count()`, om een telling van alle hoekpunten in de grafiek in JSON-indeling te retourneren. Nadat u het filter hebt gewijzigd, wijzigt u het weer in `g.V()` en selecteert u **Filter toepassen** om alle resultaten opnieuw weer te geven.
 
-12. Nu kunnen we rakesh en ashley met elkaar verbinden. Zorg ervoor dat **Ashley** is geselecteerd in de lijst met **resultaten** en selecteer vervolgens de knop Bewerken naast **doelen** aan de rechter kant. Mogelijk moet u het scherm verbreden om het gedeelte **Eigenschappen** te kunnen zien.
+12. Nu kunnen we rakesh en ashley met elkaar verbinden. Zorg ervoor dat **ashley** in de lijst met **resultaten** is geselecteerd en selecteer vervolgens rechtsonder, naast **Doelen**, de knop Bewerken. Mogelijk moet u het scherm verbreden om het gedeelte **Eigenschappen** te kunnen zien.
 
     ![Het doel van een hoekpunt in een grafiek wijzigen](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. Typ *Rakesh*in het vak **doel** en typ in het *vak Type* **rand label** de optie controleren.
+13. Typ in het vak **Doel** de naam *rakesh* en in het vak **Edge-label** het woord *kent*. Schakel vervolgens het selectievakje in.
 
     ![Een verbinding tussen ashley en rakesh toevoegen in Data Explorer](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
@@ -240,7 +241,7 @@ Hiermee is het onderdeel voor het maken van resources van deze zelfstudie voltoo
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u geleerd hoe u een Azure Cosmos DB account maakt, een grafiek maakt met behulp van de Data Explorer en een python-app uitvoert om gegevens toe te voegen aan de grafiek. U kunt nu complexere query's maken en met Gremlin krachtige logica implementeren om door een graaf te gaan. 
+In deze quickstart hebt u geleerd hoe u een Azure Cosmos DB-account kunt maken, hoe u een grafiek kunt maken met de Data Explorer en hoe u een Python-app uitvoert om gegevens aan de grafiek toe te voegen. U kunt nu complexere query's maken en met Gremlin krachtige logica implementeren om door een graaf te gaan. 
 
 > [!div class="nextstepaction"]
 > [Query’s uitvoeren met Gremlin](tutorial-query-graph.md)

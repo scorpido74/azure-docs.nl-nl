@@ -1,5 +1,5 @@
 ---
-title: "Zelf studie: taak verdeling van Vm's over beschikbaarheids zones-Azure Portal"
+title: "Zelfstudie: Taken over VM's binnen beschikbaarheidszones verdelen - Azure Portal | Microsoft Docs"
 titleSuffix: Azure Load Balancer
 description: Deze zelfstudie laat zien hoe u met behulp van Azure Portal een standaard Load Balancer kunt maken met een zone-redundante frontend voor de taakverdeling van VM's over beschikbaarheidszones
 services: load-balancer
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251880"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344183"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Zelfstudie: Met behulp van Azure Portal taakverdeling uitvoeren van virtuele machines over beschikbaarheidszones met een standaard Load Balancer
 
-Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. Procedures voor:
+Taakverdeling zorgt voor een hogere beschikbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines. In deze zelfstudie leert u stapsgewijs hoe u een openbare Standard Load Balancer maakt die de taakverdeling van VM's over beschikbaarheidszones regelt. Hiermee kunt u uw apps en gegevens beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter. Met zone-redundantie kunnen een of meer beschikbaarheidszones mislukken en overleeft het gegevenspad zolang één zone in de regio een goede status behoudt. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een Load Balancer van het type Standard maken
@@ -49,8 +49,8 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 
 Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar IP-adres. Wanneer u een nieuwe openbaar IP-adres maakt tijdens het maken van de load balancer, wordt het automatisch geconfigureerd als een standaard SKU-versie en is het ook automatisch zone-redundant.
 
-1. Klik linksboven in het scherm op **een resource** > **maken netwerk** > **Load Balancer**.
-2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer **Controleren + maken**:
+1. Klik linksboven in het scherm op **Een resource maken** > **Netwerken** > **Load balancer**.
+2. Voer op het tabblad **Basis** van de pagina **Load balancer maken** de volgende gegevens in of selecteer deze, accepteer de standaardwaarden voor de overige instellingen en selecteer vervolgens **Controleren + maken**:
 
     | Instelling                 | Waarde                                              |
     | ---                     | ---                                                |
@@ -58,8 +58,8 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
     | Resourcegroep         | Selecteer **Nieuwe maken** en typ *MyResourceGroupLBAZ* in het tekstvak.|
     | Naam                   | *myLoadBalancer*                                   |
     | Regio         | Selecteer **Europa - west**.                                        |
-    | Type          | Select **Openbaar**.                                        |
-    | SKU           | Selecteer **standaard**.                          |
+    | Type          | Selecteer **Openbaar**.                                        |
+    | SKU           | selecteer **Standaard**.                          |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
     | Naam openbaar IP-adres              | Typ *myPublicIP* in het tekstvak.   |
     |Beschikbaarheidszone| Selecteer **Zone-redundant**.    |
@@ -69,24 +69,24 @@ Standard Load Balancer biedt alleen ondersteuning voor een standaard, openbaar I
 
 In deze sectie maakt u een virtueel netwerk en virtuele machines in verschillende zones voor de regio en installeert u vervolgens IIS op de virtuele machines om de zone-redundante load balancer te testen. Dus als één zone niet werkt, dan mislukt de teststatus voor de virtuele machine in dezelfde zone, maar wordt het verkeer nog steeds geregeld door VM's in de andere zones.
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
 
-In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+In deze sectie moet u de volgende parameters in de stappen vervangen door onderstaande informatie:
 
 | Parameter                   | Waarde                |
 |-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLBAZ (bestaande resource groep selecteren) |
-| **\<de naam van het virtuele netwerk>** | myVNet          |
-| **\<regio-naam>**          | Europa -west      |
-| **\<IPv4-adres ruimte>**   | 10.0.0.0 \ 16          |
-| **\<>van subnet naam**          | myBackendSubnet        |
-| **\<>van het subnet-adres bereik** | 10.0.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLBAZ (selecteer een bestaande resourcegroep) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa -west      |
+| **\<IPv4-address-space>**   | 10.0.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerkbeveiligingsgroep om de binnenkomende verbindingen met uw virtuele netwerk te definiëren.
+Maak een netwerkbeveiligingsgroep om binnenkomende verbindingen met uw virtuele netwerk te definiëren.
 
 1. Klik linksboven in het scherm op **Een resource maken**, typ *Netwerkbeveiligingsgroep* in het zoekvak en klik op **Maken** op de pagina Netwerkbeveiligingsgroep.
 2. Voer deze waarden in op de pagina Netwerkbeveiligingsgroep maken:
@@ -127,7 +127,7 @@ In deze sectie maakt u netwerkbeveiligingsgroepsregels om inkomende verbindingen
 
 Maak virtuele machines in verschillende zones (zone 1, zone 2 en zone 3) voor de regio die als back-endservers voor de load balancer kunnen functioneren.
 
-1. Klik in de linkerbovenhoek van het scherm op **een resource** > **Compute** > **Windows Server 2016 Data Center** maken en voer deze waarden in voor de virtuele machine:
+1. Klik linksboven in het scherm op **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** en voer deze waarden in voor de virtuele machine:
     - *myVM1* als naam van de virtuele machine.        
     - *azureuser* als gebruikersnaam van de beheerder.    
     - *myResourceGroupLBAZ*: voor **Resourcegroep** selecteert u **Bestaande gebruiken** en vervolgens *myResourceGroupLBAZ*.
@@ -140,9 +140,6 @@ Maak virtuele machines in verschillende zones (zone 1, zone 2 en zone 3) voor de
     - *myNetworkSecurityGroup* als naam van netwerkbeveiligingsgroep (firewall).
 5. Klik op **Uitgeschakeld** om diagnostische gegevens over opstarten uit te schakelen.
 6. Klik op **OK**, controleer de instellingen op de overzichtspagina en klik op **Maken**.
-  
-   ![Een virtuele machine maken](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Volg stap 1 tot en met 6 om een tweede VM te maken met de naam *VM2* in Zone 2 en een derde VM in Zone 3, en met *myVnet* als het virtuele netwerk, *myBackendSubnet* als het subnet en **myNetworkSecurityGroup* als de netwerkbeveiligingsgroep.
 
 ### <a name="install-iis-on-vms"></a>IIS installeren op VM's
@@ -150,7 +147,7 @@ Maak virtuele machines in verschillende zones (zone 1, zone 2 en zone 3) voor de
 1. Klik in het linkermenu op **Alle resources** en klik in de lijst met resources op **myVM1**, die zich in de resourcegroep *myResourceGroupLBAZ* bevindt.
 2. Klik op de pagina **Overzicht** op **Verbinding maken** om extern verbinding te maken met de VM.
 3. Meld u aan bij de VM met gebruikersnaam *azureuser*.
-4. Navigeer op het bureau blad van de server naar **Windows-beheer Programma's**>**Windows Power shell**.
+4. Ga op de serverdesktop naar **Windows Systeembeheer**>**Windows Powershell**.
 5. Voer in het venster PowerShell de volgende opdrachten uit om de IIS-server te installeren, het standaardbestand iisstart.htm te verwijderen en een nieuw bestand iisstart.htm toe te voegen dat de naam van de VM weergeeft:
    ```azurepowershell-interactive
     
@@ -175,7 +172,7 @@ In deze sectie configureert u de instellingen voor de load balancer voor een bac
 
 Om verkeer te distribueren naar de VM's bevat een back-end-adresgroep de IP-adressen van de virtuele netwerkinterfacekaarten (NIC's) die zijn verbonden met de load balancer. Maak de back-endadresgroep *myBackendPool* om *VM1* en *VM2* en *VM3* op te nemen.
 
-1. Klik in het linkermenu op **alle resources** en klik vervolgens op **myLoadBalancer** in de lijst met resources.
+1. Klik in het linkermenu op **Alle resources** en vervolgens in de lijst met resources op **myLoadBalancer**.
 2. Klik onder **Instellingen** op **Back-endpools** en vervolgens op **Toevoegen**.
 3. Ga als volgt te werk op de pagina **Een back-endpool toevoegen**:
     - Typ *myBackEndPool* als de naam van uw back-endpool.
@@ -193,7 +190,7 @@ Om verkeer te distribueren naar de VM's bevat een back-end-adresgroep de IP-adre
 
 U gebruikt een statustest om de load balancer de status van uw app te laten bewaken. De statustest voegt dynamisch VM's toe aan de load balancer-rotatie of verwijdert ze, op basis van hun reactie op statuscontroles. Maak een statustest (*myHealthProbe*) om de status van de VM's te bewaken.
 
-1. Klik in het linkermenu op **alle resources** en klik vervolgens op **myLoadBalancer** in de lijst met resources.
+1. Klik in het linkermenu op **Alle resources** en vervolgens in de lijst met resources op **myLoadBalancer**.
 2. Klik onder **Instellingen** op **Tests** en klik op **Toevoegen**.
 3. Gebruik deze waarden om de statustest te maken:
     - *myHealthProbe* als naam van de statustest.
@@ -209,7 +206,7 @@ U gebruikt een statustest om de load balancer de status van uw app te laten bewa
 
 Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de VM's te definiëren. U definieert de front-end-IP-configuratie voor het inkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak de regel *myLoadBalancerRuleWeb* voor de load balancer voor het luisteren naar poort 80 in de front-end *FrontendLoadBalancer* en het verzenden van netwerkverkeer met gelijke taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt. 
 
-1. Klik in het linkermenu op **alle resources** en klik vervolgens op **myLoadBalancer** in de lijst met resources.
+1. Klik in het linkermenu op **Alle resources** en vervolgens in de lijst met resources op **myLoadBalancer**.
 2. Klik onder **Instellingen** op **Taakverdelingsregels** en vervolgens op **Toevoegen**.
 3. Gebruik deze waarden om de taakverdelingsregel te configureren:
     - *myHTTPRule* als naam van de taakverdelingsregel.

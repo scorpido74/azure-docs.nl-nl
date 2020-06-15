@@ -9,19 +9,19 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6b3fb07322009134a75621a19cd013e2f967972a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81423316"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561623"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Zelf studie: een virtuele Linux-machine en een python-app gebruiken om geheimen op te slaan in Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Zelfstudie: Een Linux-VM en een Python-app gebruiken voor het opslaan van geheimen in Azure Key Vault
 
 Azure Key Vault helpt u bij het beveiligen van geheimen zoals de API-sleutels en databaseverbindingsreeksen die nodig zijn voor toegang tot uw toepassingen, services en IT-resources.
 
-In deze zelfstudie voert u de stappen uit om een Azure-webtoepassing gegevens te laten lezen uit Azure Key Vault met behulp van beheerde identiteiten voor Azure-resources. Procedures voor:
+In deze zelfstudie voert u de stappen uit om een Azure-webtoepassing gegevens te laten lezen uit Azure Key Vault met behulp van beheerde identiteiten voor Azure-resources. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Een sleutelkluis maken
@@ -43,13 +43,13 @@ Lees voordat u verdergaat de [Basisconcepten over Key Vault](../general/basic-co
 
 ## <a name="understand-managed-service-identity"></a>Informatie over Managed Service Identity
 
-Azure Key Vault kunnen referenties veilig opslaan, zodat ze zich niet in uw code bevinden. Om deze op te halen, moet u zich verifiëren bij Azure Key Vault. En om u te verifiëren bij Key Vault, hebt u een referentie nodig. Dat is een klassiek bootstrap-probleem. Via Azure en Azure Active Directory (Azure Active Directory) biedt Managed Service Identity (MSI) een 'bootstrap-identiteit' die het eenvoudiger maakt om dingen aan de gang te krijgen.
+In Azure Key Vault kunnen referenties veilig worden opgeslagen zodat ze zich niet in uw code bevinden. Om deze op te halen, moet u zich verifiëren bij Azure Key Vault. En om u te verifiëren bij Key Vault, hebt u een referentie nodig. Dat is een klassiek bootstrap-probleem. Via Azure en Azure Active Directory (Azure Active Directory) biedt Managed Service Identity (MSI) een 'bootstrap-identiteit' die het eenvoudiger maakt om dingen aan de gang te krijgen.
 
 Wanneer u MSI inschakelt voor een Azure-service, zoals Virtual Machines, App Service of Functions, wordt in Azure een Service-principal gemaakt voor het exemplaar van de service in Azure Active Directory. Azure stuurt de referenties voor de service-principal naar het exemplaar van de service.
 
 ![MSI](../media/MSI.png)
 
-Vervolgens roept uw ​​code een lokale metagegevensservice aan die beschikbaar is op de Azure-resource om een ​​toegangstoken te verkrijgen. Uw code gebruikt het toegangstoken dat wordt verkregen van het lokale MSI-eindpunt om zich te authenticeren bij een Azure Key Vault-service.
+Vervolgens wordt met de ​​code een lokale metagegevensservice aangeroepen die beschikbaar is in de Azure-resource, om een ​​toegangstoken te verkrijgen. Uw code gebruikt het toegangstoken dat wordt verkregen van het lokale MSI-eindpunt om zich te authenticeren bij een Azure Key Vault-service.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -76,7 +76,7 @@ U gebruikt deze resourcegroep in de hele zelfstudie.
 
 Vervolgens maakt u een sleutelkluis in de resourcegroep die u in de vorige stap hebt gemaakt. Geef de volgende informatie op:
 
-* Naam sleutel kluis: de naam moet een teken reeks van 3-24 tekens zijn en moet alleen 0-9, a-z, A-Z en afbreek streepjes (-) bevatten.
+* Naam van de sleutelkluis: De naam moet een tekenreeks zijn met 3-24 tekens en mag alleen 0-9, a-z, A-Z en streepjes (-) bevatten.
 * Naam van de resourcegroep.
 * Locatie: **VS - west**.
 
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Maak een VM met de opdracht `az vm create`.
 
-In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. Door de parameter `--generate-ssh-keys` wordt automatisch een SSH-sleutel gegenereerd en in de standaardsleutellocatie (**~/.ssh**) geplaatst. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
+In het volgende voorbeeld wordt een virtuele machine met de naam **myVM** gemaakt en voegt u een gebruikersaccount met de naam **azureuser** toe. Door de parameter `--generate-ssh-keys` wordt automatisch een SSH-sleutel gegenereerd en in de standaardsleutellocatie ( **~/.ssh**) geplaatst. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \

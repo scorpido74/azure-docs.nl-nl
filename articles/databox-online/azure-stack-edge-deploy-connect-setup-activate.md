@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het maken van verbinding met, configureren en activeren van Azure Stack edge-apparaat in Azure Portal | Microsoft Docs
-description: Zelf studie voor het implementeren van Azure Stack Edge geeft u de mogelijkheid om uw fysieke apparaat te verbinden, in te stellen en te activeren.
+title: Zelfstudie voor verbinding maken met, configureren en activeren van Azure Stack Edge-apparaat in Azure Portal | Microsoft Docs
+description: In de zelfstudie voor het implementeren van Azure Stack Edge krijgt u de instructie om uw fysieke apparaat te verbinden, in te stellen en te activeren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,146 +9,146 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7c8a35b2699035b3ce4f96a94ca970da2cf343c4
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
-ms.translationtype: MT
+ms.openlocfilehash: e0a0d9415cc55c24bb4dc0690c73d9f79fc0ce0e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570606"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608431"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Zelf studie: Azure Stack Edge verbinden, instellen en activeren 
+# <a name="tutorial-connect-set-up-and-activate-azure-stack-edge"></a>Zelfstudie: Azure Stack Edge verbinden, instellen en activeren 
 
-In deze zelf studie wordt beschreven hoe u met behulp van de lokale webinterface verbinding kunt maken met uw Azure Stack edge-apparaat en hoe u deze activeert.
+In deze zelfstudie wordt beschreven hoe u met behulp van de lokale webinterface verbinding kunt maken met uw Azure Stack Edge-apparaat, hoe u het apparaat instelt en activeert.
 
-Het installatie-en activerings proces kan ongeveer 20 minuten duren.
+Het installatie- en activeringsproces kan ongeveer 20 minuten duren.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Verbinding maken met een fysiek apparaat
 > * Het fysieke apparaat instellen en activeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u uw Azure Stack edge-apparaat configureert en instelt, moet u het volgende doen:
+Zorg dat aan deze voorwaarde wordt voldaan voordat u uw Azure Stack Edge-apparaat configureert en instelt:
 
-* U hebt het fysieke apparaat geïnstalleerd zoals beschreven in [Azure stack Edge installeren](azure-stack-edge-deploy-install.md).
-* U hebt de activerings sleutel van de Azure Stack Edge-service die u hebt gemaakt om het Azure Stack edge-apparaat te beheren. Ga naar [voorbereiden voor de implementatie van Azure stack Edge](azure-stack-edge-deploy-prep.md)voor meer informatie.
+* U hebt het fysieke apparaat geïnstalleerd zoals beschreven in [Azure Stack Edge installeren](azure-stack-edge-deploy-install.md).
+* U hebt de activeringssleutel van de Azure Stack Edge-service die u hebt gemaakt om het Azure Stack Edge-apparaat te beheren. Ga voor meer informatie naar [Voorbereiding voor implementatie van Azure Stack Edge](azure-stack-edge-deploy-prep.md).
 
-## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de lokale web-UI instellen 
+## <a name="connect-to-the-local-web-ui-setup"></a>Verbinding maken met de lokale gebruikersinterface instellen
 
-1. Configureer de Ethernet-adapter op uw computer om verbinding te maken met het Azure Stack edge-apparaat met een statisch IP-adres van 192.168.100.5 en subnet 255.255.255.0.
+1. Configureer de Ethernet-adapter op de computer die u wilt verbinden met het Azure Stack Edge-apparaat met het statische IP-adres 192.168.100.5 en het subnet 255.255.255.0.
 
-2. Verbind de computer met poort 1 op het apparaat. Gebruik de volgende afbeelding om poort 1 op uw apparaat te identificeren.
+2. Verbind de computer met poort 1 op het apparaat. Gebruik de volgende afbeelding om poort 1 op uw apparaat te vinden.
 
     ![Achterpaneel van een bekabeld apparaat](./media/azure-stack-edge-deploy-install/backplane-cabled.png)
 
+3. Open een browservenster en krijg toegang tot de lokale gebruikersinterface van het apparaat op `https://192.168.100.10`.  
+    Deze actie kan enkele minuten duren nadat u het apparaat hebt ingeschakeld.
 
-3. Open een browser venster en ga naar de lokale web-UI van het `https://192.168.100.10`apparaat op.  
-    Deze actie kan enkele minuten duren nadat u het apparaat hebt ingeschakeld. 
-
-    Er wordt een fout bericht of een waarschuwing weer gegeven waarin wordt aangegeven dat er een probleem is met het beveiligings certificaat van de website. 
+    U ziet nu een foutmelding of waarschuwing waarin wordt aangegeven dat er een probleem is met het beveiligingscertificaat van de website.
    
-    ![Fout bericht van beveiligings certificaat voor website](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
+    ![Foutbericht van beveiligingscertificaat voor website](./media/azure-stack-edge-deploy-connect-setup-activate/image2.png)
 
-4. Selecteer **door gaan naar deze webpagina**.  
+4. Selecteer **Doorgaan naar deze webpagina**.  
     Deze stappen kunnen variëren, afhankelijk van de browser die u gebruikt.
 
-5. Meld u aan bij de webgebruikersinterface van uw apparaat. Het standaard wachtwoord is *Wachtwoord1*. 
+5. Meld u aan bij de webgebruikersinterface van uw apparaat. Het standaardapparaatwachtwoord is *Wachtwoord1*. 
    
-    ![Aanmeldings pagina van Azure Stack edge-apparaat](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
+    ![Aanmeldingspagina van het Azure Stack Edge-apparaat](./media/azure-stack-edge-deploy-connect-setup-activate/image3.png)
 
-6. Wijzig bij de prompt het beheerders wachtwoord van het apparaat.  
-    Het nieuwe wacht woord moet tussen 8 en 16 tekens bevatten. De naam moet drie van de volgende tekens bevatten: hoofd letters, kleine letters, cijfers en speciale tekens.
+6. Wijzig het beheerderswachtwoord voor het apparaat als u daarom wordt gevraagd.  
+    Het nieuwe wachtwoord moet tussen 8 en 16 tekens bevatten. Het wachtwoord moet drie van de volgende tekens bevatten: kleine letters, hoofdletters, cijfers en speciale tekens.
 
-U bent nu klaar met het dash board van uw apparaat.
+U bent nu op het dashboard van uw apparaat.
 
 ## <a name="set-up-and-activate-the-physical-device"></a>Het fysieke apparaat instellen en activeren
  
-Uw dash board geeft de verschillende instellingen weer die nodig zijn voor het configureren en registreren van het fysieke apparaat bij de service Azure Stack Edge. De **apparaatnaam**, **netwerk instellingen**, **webproxy-instellingen**en **tijd instellingen** zijn optioneel. De enige vereiste instellingen zijn **Cloud instellingen**.
+Uw dashboard geeft de verschillende instellingen weer die nodig zijn voor het configureren en registreren van het fysieke apparaat bij de Azure Stack Edge-service. De **Apparaatnaam**, **Netwerkinstellingen**, **Instellingen webproxy** en **Tijdinstellingen** zijn optioneel. De enige vereiste instellingen zijn **Cloudinstellingen**.
    
-![De pagina dash board van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![Pagina 'Dashboard' van de lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
-1. Selecteer **apparaatnaam**in het linkerdeel venster en geef een beschrijvende naam op voor het apparaat.  
-    De beschrijvende naam moet tussen 1 en 15 tekens lang zijn en mag alleen letters, cijfers en afbreek streepjes bevatten.
+1. Selecteer in het linkerdeelvenster **Apparaatnaam** en geef een beschrijvende naam op voor het apparaat.  
+    De beschrijvende naam moet tussen 1 en 15 tekens lang zijn en mag alleen letters, cijfers en afbreekstreepjes bevatten.
 
-    ![Pagina apparaatnaam van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![Pagina 'Apparaatnaam' van de lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
-2. Beschrijving Selecteer in het linkerdeel venster **netwerk instellingen** en configureer vervolgens de instellingen.  
-    Op het fysieke apparaat zijn er zes netwerk interfaces. POORT 1 en poort 2 zijn 1 Gbps netwerk interfaces. POORT 3, poort 4, poort 5 en poort 6 zijn alle netwerk interfaces van 25 Gbps die ook kunnen dienen als 10-Gbps-netwerk interfaces. POORT 1 wordt automatisch geconfigureerd als een beheer poort en poort 2 tot poort 6 zijn alle gegevens poorten. De pagina **netwerk instellingen** is zoals hieronder wordt weer gegeven.
+2. (Optioneel) Selecteer in het linkerdeelvenster **Netwerkinstellingen** en configureer vervolgens de instellingen.  
+    Er zijn zes netwerkinterfaces op het fysieke apparaat. Poort 1 en poort 2 zijn 1-Gbps-netwerkinterfaces. Poort 3, poort 4, poort 5 en poort 6 zijn allemaal netwerkinterfaces van 25 Gbps die ook kunnen dienen als netwerkinterfaces van 10 Gbps. Poort 1 wordt automatisch geconfigureerd als een beheerpoort en poort 2 tot poort 6 zijn allemaal gegevenspoorten. De pagina **Netwerkinstellingen** is zoals hieronder wordt weergegeven.
     
-    ![Pagina netwerk instellingen van lokale webinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![Pagina 'Netwerkinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
-    Houd bij het configureren van de netwerk instellingen het volgende in acht:
+    Houd bij het configureren van de netwerkinstellingen rekening met het volgende:
 
    - Als DHCP is ingeschakeld in uw omgeving, worden netwerkinterfaces automatisch geconfigureerd. Er wordt automatisch een IP-adres, subnet, gateway en DNS toegewezen.
    - Als DHCP niet is ingeschakeld, kunt u indien nodig statische IP-adressen toewijzen.
-   - U kunt uw netwerk interface configureren als IPv4.
+   - U kunt uw netwerkinterface configureren als IPv4.
 
      >[!NOTE] 
-     > Het is raadzaam om het lokale IP-adres van de netwerk interface niet te wijzigen van statisch naar DHCP, tenzij u een ander IP-adres hebt om verbinding te maken met het apparaat. Als u één netwerk interface gebruikt en u overschakelt naar DHCP, is er geen manier om het DHCP-adres te bepalen. Als u een DHCP-adres wilt wijzigen, wacht u totdat het apparaat is geregistreerd bij de service en wijzigt u vervolgens. U kunt vervolgens de IP-adressen van alle adapters weer geven in de eigenschappen van het **apparaat** in de Azure portal voor uw service.
+     > Het is raadzaam om het lokale IP-adres van de netwerkinterface niet te wijzigen van statisch naar DHCP, tenzij u een ander IP-adres hebt om verbinding te maken met het apparaat. Als u één netwerkinterface gebruikt en u overschakelt naar DHCP, is er geen manier om het DHCP-adres te bepalen. Als u wilt wijzigen naar een DHCP-adres, wacht u totdat het apparaat is geregistreerd bij de service en brengt u vervolgens de wijziging aan. U kunt vervolgens de IP-adressen van alle adapters in de **Apparaateigenschappen** weergeven in de Azure Portal voor uw service.
 
-3. Beschrijving Selecteer in het linkerdeel venster **web proxy-instellingen**en configureer vervolgens uw webproxyserver. Hoewel de configuratie van de webproxy optioneel is, kunt u deze alleen op deze pagina configureren als u een webproxy gebruikt.
+3. (Optioneel) Selecteer in het linkerdeelvenster de optie **Webproxy-instellingen** en configureer vervolgens uw webproxyserver. De configuratie van uw webproxy is weliswaar optioneel, maar als u een webproxy gebruikt, kan deze alleen op deze pagina worden geconfigureerd.
    
-   ![Pagina Web Proxy-instellingen voor lokale webinterfaces](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![Pagina 'Webproxy-instellingen' voor lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
-   Ga als volgt te werk op de pagina **web proxy-instellingen** :
+   Ga op de pagina **Webproxy-instellingen** als volgt te werkt:
    
-   a. Voer in het vak **webproxy-URL** de URL in deze indeling in `http://host-IP address or FQDN:Port number`:. HTTPS-Url's worden niet ondersteund.
+   a. Voer in het vak **Webproxy-URL** de URL in deze indeling in: `http://host-IP address or FQDN:Port number`. HTTPS-URL's worden niet ondersteund.
 
-   b. Onder **verificatie**selecteert u **geen** of **NTLM**.
+   b. Selecteer onder **Verificatie** **Geen** of **NTLM**. Als u berekening inschakelt en IoT Edge-module op uw Azure Stack Edge-apparaat gebruikt, raden we u aan om de verificatie van de webproxy in te stellen op **Geen**. **NTLM** wordt niet ondersteund.
 
-   c. Als u verificatie gebruikt, voert u een gebruikers naam en wacht woord in.
+   c. Als u verificatie gebruikt, voert u een gebruikersnaam en wachtwoord in.
 
-   d. Selecteer **instellingen Toep assen**om de geconfigureerde web proxy-instellingen te valideren en toe te passen.
-   
+   d. Selecteer **Instellingen toepassen** om de geconfigureerde webproxy-instellingen te valideren en toe te passen.
+
    > [!NOTE]
-   > De bestanden voor het automatisch configureren van de proxy (PAC) worden niet ondersteund. Een PAC-bestand definieert hoe webbrowsers en andere gebruikers agenten automatisch de juiste proxy server (toegangs methode) kunnen kiezen voor het ophalen van een bepaalde URL.
+   > De bestanden voor het automatisch configureren van de proxy (PAC-bestanden) worden niet ondersteund. Een PAC-bestand definieert hoe webbrowsers en andere gebruikersagenten automatisch de juiste proxyserver (toegangsmethode) kunnen kiezen voor het ophalen van een bepaalde URL.
    > Proxy's die al het verkeer proberen te onderscheppen en lezen (en vervolgens alles opnieuw ondertekenen met hun eigen certificering) zijn niet compatibel, omdat het certificaat van de proxy niet wordt vertrouwd.
-   > Normaal gesp roken werken transparante proxy's goed met Azure Stack Edge.
+   > Normaal gesproken werken transparante proxy's goed met Azure Stack Edge.
 
-4. Beschrijving Selecteer in het linkerdeel venster **tijd instellingen**en configureer vervolgens de tijd zone en de primaire en secundaire NTP-servers voor uw apparaat.  
-    NTP-servers zijn vereist omdat uw apparaat tijd moet synchroniseren zodat het kan worden geverifieerd bij uw Cloud serviceproviders.
+4. (Optioneel) Selecteer in het linkerdeelvenster **Tijdinstellingen** en configureer vervolgens de tijdzone en de primaire en secundaire NTP-servers voor uw apparaat.  
+    NTP-servers zijn vereist, omdat uw apparaat de tijd moet synchroniseren voor verificatie met uw cloudserviceproviders.
        
-    Ga als volgt te werk op de pagina **tijd instellingen** :
+    Ga op de pagina **Tijdinstellingen** als volgt te werkt:
     
-    1. Selecteer in de vervolg keuzelijst **tijd zone** de tijd zone die overeenkomt met de geografische locatie waar het apparaat wordt geïmplementeerd.
-        De standaard tijd zone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
+    1. Selecteer in de vervolgkeuzelijst **Tijdzone** de tijdzone die overeenkomt met de geografische locatie waar het apparaat wordt geïmplementeerd.
+        De standaard tijdzone voor uw apparaat is PST. Het apparaat zal deze tijdzone gebruiken voor alle geplande bewerkingen.
 
-    2. Voer in het vak **primaire NTP-server** de primaire server voor uw apparaat in of accepteer de standaard waarde van time.Windows.com.  
-        Zorg ervoor dat uw netwerk NTP-verkeer kan door geven van uw Data Center naar Internet.
+    2. Voer in het vak **Primaire NTP-server** de primaire server voor uw apparaat in of accepteer de standaardwaarde van time.windows.com.  
+        Zorg ervoor dat in uw netwerk NTP-verkeer kan worden doorgegeven van uw datacenter naar internet.
 
     3. Voer desgewenst in het vak **secundaire NTP-server** een secundaire server in voor uw apparaat.
 
-    4. Selecteer **instellingen Toep assen**om de geconfigureerde tijd instellingen te valideren en toe te passen.
+    4. Selecteer **Instellingen toepassen** om de geconfigureerde tijdinstellingen te valideren en toe te passen.
 
-        ![Pagina tijd instellingen van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![Pagina 'Tijdinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. Beschrijving Selecteer **opslag instellingen** in het linkerdeel venster om de opslag tolerantie op uw apparaat te configureren. Deze functie is momenteel beschikbaar als preview-product. De opslag op het apparaat is standaard niet robuust en er zijn gegevens verlies als een gegevens schijf op het apparaat mislukt. Wanneer u de optie voor robuuste gegevens inschakelt, wordt de opslag op het apparaat opnieuw geconfigureerd en kan het apparaat de storing van één gegevens schijf zonder gegevens verlies tot gevolg hebben. Als u de opslag configureert als een robuuste schijf, vermindert u de bruikbare capaciteit van uw apparaat.
+5. (Optioneel) Selecteer in het linkerdeelvenster **Opslaginstellingen** om de tolerantie voor opslag op uw apparaat te configureren. Deze functie is momenteel beschikbaar als preview-product. De opslag op het apparaat is standaard niet tolerant en er treedt gegevensverlies op als een gegevensschijf op het apparaat mislukt. Wanneer u de optie Tolerant inschakelt, wordt de opslag op het apparaat opnieuw geconfigureerd en kan het apparaat de storing van één gegevensschijf doorstaan zonder dat dit gegevensverlies tot gevolg heeft. Als u de opslag configureert als tolerant, vermindert u de bruikbare capaciteit van uw apparaat.
 
     > [!IMPORTANT] 
     > De tolerantie kan alleen worden geconfigureerd voordat u het apparaat activeert. 
 
-    ![Pagina opslag instellingen van de lokale webinterface](./media/azure-stack-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![Pagina 'Opslaginstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/storage-settings.png)
 
-6. Selecteer in het linkerdeel venster **Cloud instellingen**en activeer vervolgens uw apparaat met de Azure stack Edge-service in de Azure Portal.
+6. Selecteer in het linkerdeelvenster de optie **Cloudinstellingen** en activeer uw apparaat vervolgens met de Azure Stack Edge-service in de Azure Portal.
     
-    1. Voer in het vak **activerings sleutel** de activerings sleutel in die u hebt ontvangen voor [de activerings sleutel](azure-stack-edge-deploy-prep.md#get-the-activation-key) voor Azure stack Edge.
+    1. Voer in het vak **Activeringssleutel** de activeringssleutel in die u hebt ontvangen in [De activeringssleutel krijgen](azure-stack-edge-deploy-prep.md#get-the-activation-key) voor Azure Stack Edge.
     2. Selecteer **Toepassen**.
        
-        ![Pagina Cloud instellingen van de lokale webinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![Pagina 'Cloudinstellingen' van lokale webgebruikersinterface](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. De eerste keer dat het apparaat wordt geactiveerd. Het apparaat wordt vervolgens gescand op essentiële updates en, indien beschikbaar, worden de updates automatisch toegepast. U ziet een melding voor dat effect.
+    3. Eerst wordt het apparaat geactiveerd. Het apparaat wordt vervolgens gescand op essentiële updates en, indien beschikbaar, worden de updates automatisch toegepast. U ziet hiervoor een melding.
 
-        Het dialoog venster bevat ook een herstel sleutel die u moet kopiëren en opslaan op een veilige locatie. Deze sleutel wordt gebruikt om uw gegevens te herstellen in het geval dat het apparaat niet kan worden opgestart.
+        Het dialoogvenster bevat ook een herstelsleutel die u moet kopiëren en opslaan op een veilige locatie. Deze sleutel wordt gebruikt om uw gegevens te herstellen in het geval dat het apparaat niet kan worden opgestart.
 
-        ![De pagina Cloud instellingen van de lokale webinterface is bijgewerkt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![Pagina 'Cloudinstellingen' van lokale webgebruikersinterface bijgewerkt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
     4. Mogelijk moet u enkele minuten wachten nadat de update is voltooid. De pagina wordt bijgewerkt om aan te geven dat het apparaat is geactiveerd.
 
-        ![De pagina Cloud instellingen van de lokale webinterface is bijgewerkt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![Pagina 'Cloudinstellingen' van lokale webgebruikersinterface bijgewerkt](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
-De installatie van het apparaat is voltooid. U kunt nu shares toevoegen aan uw apparaat.
+De apparaatinstelling is voltooid. U kunt nu shares toevoegen op uw apparaat.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -158,7 +158,7 @@ In deze zelfstudie heeft u het volgende geleerd:
 > * Verbinding maken met een fysiek apparaat
 > * Het fysieke apparaat instellen en activeren
 
-Zie voor meer informatie over het overdragen van gegevens met uw Azure Stack edge-apparaat:
+Als u wilt weten hoe u gegevens overdraagt met uw Azure Stack Edge-apparaat, gaat u naar:
 
 > [!div class="nextstepaction"]
-> [Gegevens overdragen met Azure stack Edge](./azure-stack-edge-deploy-add-shares.md).
+> [Gegevens overdragen met Azure Stack Edge](./azure-stack-edge-deploy-add-shares.md).

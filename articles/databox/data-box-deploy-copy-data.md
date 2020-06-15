@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1730317296c672eb9347986ec41fdba25427408e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a3e66e7f6857361136fb4b7839953790f66b4db5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200486"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219113"
 ---
-::: zone target="docs" 
+::: zone target="docs"
 
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Zelfstudie: Gegevens naar Azure Data Box Disk kopiëren via SMB
 
@@ -35,10 +35,10 @@ Deze zelfstudie beschrijft hoe u verbinding kunt maken en gegevens kunt kopiëre
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Vereisten
 > * Verbinding maken met Data Box
 > * Gegevens kopiëren naar Data Box
-
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -47,15 +47,16 @@ Zorg voordat u begint voor het volgende:
 1. U hebt de zelfstudie [ Azure Data Box instellen](data-box-deploy-set-up.md) voltooid.
 2. U hebt uw Data Box ontvangen en de bestelstatus in de portal is **Geleverd**.
 3. U hebt een hostcomputer waarop de gegevens staan die u naar de Data Box wilt kopiëren. Op uw hostcomputer moet
-    - Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
-    - Verbonden zijn met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt, maar dit heeft wel gevolgen voor de kopieersnelheid.
+   * Een [ondersteund besturingssysteem](data-box-system-requirements.md) worden uitgevoerd.
+   * Verbonden zijn met een netwerk met hoge snelheid. Het wordt aangeraden dat u beschikt over minstens één 10-GbE-verbinding. Als er geen 10 GbE-verbinding beschikbaar is, kan een 1 GbE-gegevenskoppeling worden gebruikt, maar dit heeft wel gevolgen voor de kopieersnelheid.
 
 ## <a name="connect-to-data-box"></a>Verbinding maken met Data Box
 
 Data Box maakt op basis van het geselecteerde opslagaccount maximaal:
-- Drie shares voor elk gekoppeld opslagaccount voor GPv1 en GPv2.
-- Eén share voor premium opslag.
-- Eén share voor een blob-opslagaccount.
+
+* Drie shares voor elk gekoppeld opslagaccount voor GPv1 en GPv2.
+* Eén share voor premium opslag.
+* Eén share voor een blob-opslagaccount.
 
 Onder blok-blob- en pagina-blob-shares zijn entiteiten op het eerste niveau containers en entiteiten op het tweede niveau blobs. Onder shares voor Azure Files zijn entiteiten op het eerste niveau shares en entiteiten op het tweede niveau bestanden.
 
@@ -85,7 +86,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
     - Azure-blok-blob - `\\10.126.76.172\devicemanagertest1_BlockBlob`
     - Azure-pagina-blob - `\\10.126.76.172\devicemanagertest1_PageBlob`
     - Azure Files - `\\10.126.76.172\devicemanagertest1_AzFile`
-    
+
 4. Voer het wachtwoord voor de share in wanneer er om wordt gevraagd. Het volgende voorbeeld laat zien hoe u verbinding met een share kunt maken via de voorgaande opdracht.
 
     ```
@@ -100,7 +101,7 @@ Als u een hostcomputer met Windows Server gebruikt, voert u deze stappen uit om 
 
     Als het goed is, worden de shares nu weergegeven als mappen.
     
-    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)    
+    ![Verbinding met de share maken via Verkenner 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map**. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
     
@@ -113,7 +114,7 @@ Als u een Linux-client gebruikt, gebruikt u de volgende opdracht om de SMB-share
 Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopiëren. Neem de volgende punten door voordat u gegevens gaat kopiëren:
 
 * Zorg dat u de gegevens kopieert naar shares die overeenkomen met de juiste gegevensindeling. U moet bijvoorbeeld de blok-blobgegevens naar de share voor blok-blobs kopiëren. Kopieer de VHD's naar pagina-blob. Als de gegevensindeling niet overeenkomt met het betreffende sharetype, zal het uploaden van gegevens naar Azure op een later tijdstip mislukken.
-*  Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslag en Data Box](data-box-limits.md).
+* Zorg er tijdens het kopiëren van gegevens voor dat de gegevensgrootte voldoet aan de limieten die worden vermeld in de [limieten voor Azure-opslag en Data Box](data-box-limits.md).
 * Als de gegevens die door Data Box worden geüpload gelijktijdig door andere toepassingen buiten Data Box worden geüpload, kan dit tot fouten voor de uploadtaak en beschadigde gegevens leiden.
 * We raden aan dat:
   * U niet zowel SMB als NFS tegelijkertijd gebruikt.
@@ -121,7 +122,9 @@ Nadat u verbinding met de Data Box-shares hebt gemaakt, moet u de gegevens kopi�
 
   In dergelijke gevallen kan de definitieve uitkomst namelijk niet worden vastgesteld.
 * Maak altijd een map voor de bestanden die u van plan bent te kopiëren in de bestandsshare en kopieer de bestanden vervolgens naar die map. De map gemaakt onder shares met blok-blobs en pagina-blobs vertegenwoordigt een container waarnaar gegevens als blobs worden geüpload. Het is niet mogelijk om bestanden rechtstreeks te kopiëren naar de *root*-map in het opslagaccount.
-* Zorg dat u een kopie van de brongegevens in uw on-premises omgeving hebt totdat u kunt bevestigen dat de gegevens met Data Box naar Azure Storage zijn overgebracht.
+
+> [!IMPORTANT]
+> Zorg dat u een kopie van de brongegevens in uw on-premises omgeving hebt totdat u kunt bevestigen dat de gegevens met Data Box naar Azure Storage zijn overgebracht.
 
 Begin met het kopiëren van gegevens nadat u verbinding met de SMB-share hebt gemaakt. U kunt elk programma voor het kopiëren van bestanden dat compatibel is met SMB, zoals Robocopy, gebruiken om de gegevens te kopiëren. Er kunnen meerdere kopieertaken worden gestart met Robocopy. Gebruik de volgende opdracht:
     
@@ -203,7 +206,6 @@ In het volgende voorbeeld ziet u de uitvoer van de Robocopy-opdracht voor het ko
         Files :        17        17         0         0         0         0
         Bytes :     3.9 k     3.9 k         0         0         0         0          
     C:\Users>
-       
 
 Gebruik de volgende parameters in Robocopy om de prestaties te optimaliseren als u de gegevens kopieert.
 
@@ -211,13 +213,12 @@ Gebruik de volgende parameters in Robocopy om de prestaties te optimaliseren als
 |----------------|--------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
 |    Data Box         |    2 Robocopy-sessies <br> 16 threads per sessie    |    3 Robocopy-sessies <br> 16 threads per sessie    |    2 Robocopy-sessies <br> 24 threads per sessie    |
 
-
 Ga voor meer informatie over opdrachten voor Robocopy naar [Robocopy en een paar voorbeelden](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
 Open de doelmap om de gekopieerde bestanden weer te geven en te controleren. Download de foutbestanden om problemen op te lossen als er fouten zijn opgetreden tijdens het kopiëren. Zie [Foutenlogboeken bekijken tijdens het kopiëren van gegevens naar Data Box](data-box-logs.md#view-error-log-during-data-copy) voor meer informatie. Zie [Problemen met Data Box oplossen](data-box-troubleshoot.md) voor een gedetailleerde lijst met fouten tijdens het kopiëren van gegevens.
 
 Om de gegevensintegriteit te garanderen wordt de controlesom inline berekend terwijl de gegevens worden gekopieerd. Verifieer de gebruikte ruimte en vrije ruimte op uw apparaat na het kopiëren.
-    
+
    ![Vrije en ongebruikte ruimte verifiëren op het dashboard](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ::: zone-end
@@ -230,6 +231,8 @@ Zorg er altijd voor dat de namen van shares en mappen, en de gegevensgrootte de 
 
 ## <a name="copy-data-via-smb"></a>Gegevens kopiëren via SMB
 
+Ga als volgt te werk om gegevens te kopiëren via SMB:
+
 1. Als u een Windows-host gebruikt, gebruikt u de volgende opdracht om verbinding te maken met de SMB-shares:
 
     `\\<IP address of your device>\ShareName`
@@ -240,6 +243,8 @@ Zorg er altijd voor dat de namen van shares en mappen, en de gegevensgrootte de 
 Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens naar Azure Data Box Disk kopiëren via SMB](data-box-deploy-copy-data.md).
 
 ## <a name="copy-data-via-nfs"></a>Gegevens kopiëren via NFS
+
+Ga als volgt te werk om gegevens te kopiëren via NFS:
 
 1. Als u een NFS-host gebruikt, gebruikt u de volgende opdracht om de NFS-shares op uw Data Box te koppelen:
 
@@ -252,6 +257,8 @@ Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens kopiëren naar Azure
 
 ## <a name="copy-data-via-rest"></a>Gegevens kopiëren via REST
 
+Ga als volgt te werk om gegevens te kopiëren via REST:
+
 1. Als u gegevens wilt kopiëren met behulp van Data Box-Blob-opslag via REST API's, kunt u verbinding maken via *http* of *https*.
 2. Als u gegevens wilt kopiëren naar Data Box-Blob-opslag, kunt u AzCopy gebruiken.
 
@@ -259,12 +266,16 @@ Ga voor stapsgewijze instructies naar [Zelfstudie: Gegevens kopiëren naar Azure
 
 ## <a name="copy-data-via-data-copy-service"></a>Gegevens kopiëren via een gegevenskopieerservice
 
-1. U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevenskopieerservice. Ga in de lokale webgebruikersinterface van uw Data Box naar **Beheren > Gegevens kopiëren > Maken**. 
+Ga als volgt te werk om gegevens te kopiëren via een gegevenskopieerservice:
+
+1. U moet een taak maken als u gegevens wilt kopiëren met behulp van de gegevenskopieerservice. Ga in de lokale webgebruikersinterface van uw Data Box naar **Beheren > Gegevens kopiëren > Maken**.
 2. Vul de parameters in en maak een taak.
 
 Ga voor stapsgewijze instructies naar [Zelfstudie: De gegevenskopieerservice gebruiken om gegevens te kopiëren naar Azure Data Box](data-box-deploy-copy-data-via-copy-service.md).
 
 ## <a name="copy-data-to-managed-disks"></a>Gegevens kopiëren naar beheerde schijven
+
+Ga als volgt te werk om gegevens te kopiëren naar beheerde schijven:
 
 1. Wanneer u het Data Box-apparaat bestelt, moet u beheerde schijven als opslaglocatie hebben geselecteerd.
 2. U kunt verbinding maken met Data Box via SMB- of NFS-shares.
@@ -274,7 +285,6 @@ Ga voor stapsgewijze instructies naar [Zelfstudie: Data Box gebruiken om gegeven
 
 ::: zone-end
 
-
 ::: zone target="docs"
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -282,10 +292,10 @@ Ga voor stapsgewijze instructies naar [Zelfstudie: Data Box gebruiken om gegeven
 In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot Azure Data Box, zoals:
 
 > [!div class="checklist"]
+>
 > * Vereisten
 > * Verbinding maken met Data Box
 > * Gegevens kopiëren naar Data Box
-
 
 Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box naar Microsoft verzendt.
 
@@ -293,4 +303,3 @@ Ga naar de volgende zelfstudie om te lezen hoe u uw Data Box naar Microsoft verz
 > [Uw Azure Data Box verzenden naar Microsoft](./data-box-deploy-picked-up.md)
 
 ::: zone-end
-

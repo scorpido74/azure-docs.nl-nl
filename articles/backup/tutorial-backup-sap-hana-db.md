@@ -3,12 +3,12 @@ title: 'Zelfstudie: back-ups maken van SAP HANA-databases in virtuele Azure-mach
 description: In deze zelfstudie ontdekt u hoe u een back-up naar een Azure Backup Recovery Services-kluis maakt van SAP HANA-databases die op een virtuele Azure-machine worden uitgevoerd.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747218"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417290"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Zelfstudie: Een back-up maken van SAP HANA-databases in een Azure-VM
 
@@ -22,21 +22,22 @@ In deze zelfstudie ziet u hoe u een back-up naar een Azure Backup Recovery Servi
 
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) vindt u alle scenario's die we momenteel ondersteunen.
 
+>[!NOTE]
+>[Aan de slag](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) met de preview voor back-ups van SAP HANA voor RHEL (7.4, 7.6, 7.7 or 8.1). Neem voor verdere vragen contact met ons op via [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+
 ## <a name="prerequisites"></a>Vereisten
 
 Doe het volgende voordat u back-ups gaat configureren:
 
 * Sta connectiviteit van de virtuele machine naar internet toe, zodat de virtuele machine Azure kan bereiken. Dit wordt beschreven in de onderstaande procedure [De netwerkverbinding instellen](#set-up-network-connectivity).
 * Er moet een sleutel in de **hdbuserstore** bestaan waarmee aan de volgende criteria wordt voldaan:
-  * De sleutel moet aanwezig zijn in de standaard-**hdbuserstore**
+  * De sleutel moet aanwezig zijn in de standaard-**hdbuserstore**. De standaardwaarde is het `<sid>adm`-account waaronder SAP HANA is geïnstalleerd.
   * Voor MDC moet de sleutel verwijzen naar de SQL-poort van **NAMESERVER**. In het geval van SDC moet worden verwezen naar de SQL-poort van **INDEXSERVER**
   * De sleutel moet over referenties beschikken om gebruikers toe te voegen en te verwijderen
 * Voer als de hoofdgebruiker het SAP HANA-back-upconfiguratiescript uit (script vóór registratie) op de virtuele machine waarop HANA is geïnstalleerd. [Met behulp van dit script](https://aka.ms/scriptforpermsonhana) wordt het HANA-systeem voorbereid op de back-up. Raadpleeg de sectie [Wat doet het script vóór registratie](#what-the-pre-registration-script-does) voor meer informatie over het script vóór registratie.
 
 >[!NOTE]
->Azure Backup past de tijd niet automatisch aan de zomertijd aan wanneer u een back-up van een SAP HANA-database maakt die op een virtuele Azure-machine wordt uitgevoerd.
->
->Pas het beleid waar nodig handmatig aan.
+>Het script voor registratie vooraf installeert de **compat-unixODBC234** voor SAP HANA-workloads die worden uitgevoerd op RHEL (7.4, 7.6 en 7.7) en **unixODBC** voor RHEL 8.1. [Dit pakket bevindt zich in de opslagplaats RHEL for SAP HANA (voor RHEL 7 Server) Update Services for SAP Solutions (RPM's)](https://access.redhat.com/solutions/5094721).  Voor de Azure Marketplace RHEL-installatie kopie is de opslagplaats **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms**.
 
 ## <a name="set-up-network-connectivity"></a>De netwerkverbinding instellen
 
@@ -99,7 +100,7 @@ Een HTTP-proxy gebruiken | Gedetailleerde controle via de proxy over de opslag-U
 
 Door het script vóór registratie uit te voeren, worden de volgende functies uitgevoerd:
 
-* Alle eventueel benodigde pakketten die zijn vereist door de Azure Backup-agent worden op uw distributie geïnstalleerd of bijgewerkt.
+* Afhankelijk van uw Linux-distributie installeert het script alle eventueel benodigde pakketten die vereist zijn door de Azure Backup-agent of werkt deze bij.
 * De uitgaande netwerkverbinding met Azure Backup-servers en afhankelijke services zoals Azure Active Directory en Azure Storage wordt gecontroleerd.
 * Er worden logboeken vastgelegd in uw HANA-systeem met behulp van de gebruikerssleutel die wordt vermeld als onderdeel van de [vereisten](#prerequisites). De gebruikerssleutel wordt gebruikt om een back-upgebruiker (AZUREWLBACKUPHANAUSER) in het HANA-systeem te maken, en de gebruikerssleutel kan worden verwijderd nadat het script vóór registratie is uitgevoerd.
 * Deze vereiste rollen en machtigingen worden aan AZUREWLBACKUPHANAUSER toegewezen:

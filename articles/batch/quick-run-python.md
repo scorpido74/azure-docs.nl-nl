@@ -1,31 +1,32 @@
 ---
-title: Python-API gebruiken om een Azure Batch-taak uit te voeren
-description: Voer snel een Azure Batch voorbeeld taak en taken uit met behulp van de batch python-client bibliotheek. Meer informatie over de belangrijkste concepten van de batch-service.
+title: De Python-API gebruiken om een Azure Batch-job uit te voeren
+description: Voer snel een Azure Batch-job en -taken uit met behulp van de Batch Python-clientbibliotheek. Meer informatie over de belangrijkste concepten van de Batch-service.
 ms.topic: quickstart
 ms.date: 11/27/2018
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+- tracking-python
+ms.openlocfilehash: 5c4f8a90a43d19f3bc94da04681d9d690dc33e70
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117196"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561777"
 ---
-# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Snelstartgids: gebruik python API om een Azure Batch-taak uit te voeren
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Quickstart: De Python-API gebruiken om een Azure Batch-job uit te voeren
 
-In deze Quick Start gebruikt u de python API om een Azure Batch-taak uit een app uit te voeren. De app uploadt invoer gegevensbestand naar Azure Storage en maakt een *pool* met batch-reken knooppunten (virtuele machines). Vervolgens wordt er een *taak* gemaakt waarmee *taken* worden uitgevoerd voor het verwerken van elk invoer bestand in de pool met behulp van een basis opdracht.
+In deze quickstart gebruikt u de Python-API om een Azure Batch-job vanuit een app uit te voeren. Met de app worden invoergegevensbestanden geüpload naar Azure Storage en wordt vervolgens een *pool* met Batch-rekenknooppunten (virtuele machines) gemaakt. Vervolgens wordt er een *job* gemaakt waarmee *taken* worden uitgevoerd om elk invoerbestand in de pool te verwerken met behulp van een basisopdracht.
 
-Hier vindt u belang rijke concepten van de batch-service en kunt u een batch maken met meer realistische workloads op grotere schaal.
+Hier krijgt u informatie over de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
-![Overzicht van de Azure Batch werk stroom](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
+![Overzicht van de Azure Batch-werkstroom](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-account met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Een **Azure batch** -account en een gekoppeld **Azure Storage** -account. Gebruik de [Azure Portal](quick-create-portal.md) of [cli](quick-create-cli.md) om deze accounts te maken.
-- [Python](https://python.org/downloads), versie 2,7 3,3 of hoger, inclusief [PIP](https://pip.pypa.io/en/stable/installing/) -pakket beheer
+- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- Een **Azure Batch**-account en een gekoppeld **Azure Storage**-account. Gebruik [Azure Portal](quick-create-portal.md) of de [CLI](quick-create-cli.md) om deze accounts te maken.
+- [Python](https://python.org/downloads)-versie 2.7 of 3.3 of hoger, inclusief de [PIP](https://pip.pypa.io/en/stable/installing/)-pakketmanager
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -41,7 +42,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Ga naar de map die het python-script `python_quickstart_client.py`bevat.
+Ga naar de map met het Python-script `python_quickstart_client.py`.
 
 Installeer de vereiste pakketten in de Python-ontwikkelomgeving met behulp van `pip`.
 
@@ -118,7 +119,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die Batch later kan downloaden naar rekenknooppunten.
+De app gebruikt de `blob_client`-verwijzing om een container te maken in het opslagaccount en om gegevensbestanden naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -130,7 +131,7 @@ input_files = [
     for file_path in input_file_paths]
 ```
 
-De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie met gedeelde sleutels. Batch ondersteunt ook Azure Active Directory-verificatie.
+De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. Batch ondersteunt ook Azure Active Directory-verificatie.
 
 ```python
 credentials = batch_auth.SharedKeyCredentials(config._BATCH_ACCOUNT_NAME,
@@ -141,7 +142,7 @@ batch_client = batch.BatchServiceClient(
     batch_url=config._BATCH_ACCOUNT_URL)
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
+### <a name="create-a-pool-of-compute-nodes"></a>Een pool van rekenknooppunten maken
 
 Voor het maken van een Batch-pool gebruikt de app de [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter)-klasse om het aantal rekenknooppunten, de VM-grootte en een poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) een [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) naar een Ubuntu Server 18.04 LTS-installatiekopie op die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse Linux- en Windows Server-installatiekopieën in Azure Marketplace, evenals aangepaste VM-installatiekopieën.
 
@@ -168,7 +169,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Een Batch-taak maken
 
-Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De app gebruikt de [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-klasse om een taak te maken in de pool. Met de methode [Job. add](/python/api/azure-batch/azure.batch.operations.joboperations) wordt een taak toegevoegd aan het opgegeven batch-account. De Batch-taak heeft in eerste instantie geen taken.
+Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De app gebruikt de [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter)-klasse om een taak te maken in de pool. Met de methode [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) wordt een taak toegevoegd aan het opgegeven Batch-account. De Batch-taak heeft in eerste instantie geen taken.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -224,7 +225,7 @@ for task in tasks:
 
 De gemaakte opslagcontainer wordt automatisch verwijderd met de app en u krijgt de mogelijkheid de Batch-pool en -taak te verwijderen. Er worden kosten berekend voor de pool zolang de knooppunten actief zijn, zelfs als er geen taken zijn gepland. Verwijder de pool wanneer u deze niet meer nodig hebt. Wanneer u de pool verwijdert, wordt ook alle taakuitvoer op de knooppunten verwijderd. 
 
-Verwijder de resourcegroep, het Batch-account en het opslagaccount wanneer u deze niet meer nodig hebt. Hiertoe selecteert u de resource groep voor het batch-account in het Azure Portal en selecteert u **resource groep verwijderen**.
+Verwijder de resourcegroep, het Batch-account en het opslagaccount wanneer u deze niet meer nodig hebt. Hiervoor selecteert u in Azure Portal de resourcegroep voor het Batch-account en selecteert u **Resourcegroep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c68a95530f345d1ec0ed077681ec4cd6eb3775
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: 733e7529af5de453462efb1a13c21203681e442c
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402444"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83994257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Zelfstudie: Integratie van eenmalige aanmelding (SSO) bij Azure Active Directory met Trelica
 
@@ -90,9 +90,11 @@ Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azu
     1. Voer in het vak **Antwoord-URL** een URL met het patroon `https://app.trelica.com/Id/Saml2/<CUSTOM_IDENTIFIER>/Acs` in.
 
     > [!NOTE]
-    > De waarde van de **antwoord-URL** is niet de echte waarde. Werk deze waarde bij met de werkelijke antwoord-URL. Neem contact op met het [klantondersteuningsteam van Trelica](mailto:support@trelica.com) om deze waarde op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde van de antwoord-URL is niet de echte waarde. Werk deze waarde bij met de werkelijke antwoord-URL (ook wel de ACS genoemd).
+    > U vindt deze door u aan te melden bij Trelica, en naar de [configuratiepagina met SAML-id-providers](https://app.trelica.com/Admin/Profile/SAML) te gaan (Beheerder > Account > SAML). Klik op de knop Kopiëren naast de **ASC-URL (Assertion Consumer Service)** om deze op het klembord te plaatsen, klaar om in het tekstvak **Antwoord-URL** te worden geplakt in Azure AD.
+    > Lees de [Help-documentatie voor Trelica](https://docs.trelica.com/admin/saml/azure-ad) of neem contact op met het [ondersteuningsteam voor de Trelica-client](mailto:support@trelica.com) als u vragen hebt.
 
-1. Ga op de pagina **Eenmalige aanmelding instellen met SAML** naar het gedeelte **SAML-handtekeningcertificaat**. Klik rechts naast **App-URL voor federatieve metagegevens** op de knop Kopiëren om de URL te kopiëren. Sla de URL op uw computer op.
+1. Op de pagina **Eenmalige aanmelding instellen met SAML** klikt u in de sectie **SAML-handtekeningcertificaat** op de knop Kopiëren om de **URL voor federatieve metagegevens van de app** te kopiëren. Sla deze URL op de computer op.
 
     ![Het gedeelte SAML-handtekeningcertificaat, met de knop Kopiëren gemarkeerd naast App-URL voor federatieve metagegevens](common/copy-metadataurl.png)
 
@@ -128,11 +130,11 @@ In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te 
 
 ## <a name="configure-trelica-sso"></a>Eenmalige aanmelding configureren voor Trelica
 
-Als u eenmalige aanmelding aan de zijde van **Trelica** wilt configureren, stuurt u de gekopieerde waarde van **App-URL voor federatieve metagegevens** naar het [ondersteuningsteam van Trelica](mailto:support@trelica.com). Het team configureert deze instelling dusdanig dat de SAML SSO-verbinding goed is ingesteld aan beide zijden.
+Als u eenmalige aanmelding wilt configureren aan de **Trelica**-zijde, gaat u naar de [configuratiepagina met SAML-id-providers](https://app.trelica.com/Admin/Profile/SAML) (Beheerder > Account >SAML). Klik op de knop **Nieuw**. Voer **Azure AD** in bij Naam, en kies **Metagegevens van URL** voor Type metagegevens. Plak de **App-URL voor federatieve metagegevens** die u hebt opgehaald uit Azure AD, in het veld **URL voor metagegevens** in Trelica.
+
+Lees de [Help-documentatie voor Trelica](https://docs.trelica.com/admin/saml/azure-ad) of neem contact op met het [ondersteuningsteam voor de Trelica-client](mailto:support@trelica.com) als u vragen hebt.
 
 ### <a name="create-a-trelica-test-user"></a>Een testgebruiker voor Trelica maken
-
-In deze sectie gaat u in Trelica een gebruiker maken met de naam B.Simon.
 
 Trelica ondersteunt Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. U hoeft geen handelingen uit te voeren in dit gedeelte. Als er nog geen gebruiker in Trelica bestaat, wordt er een nieuwe gemaakt na verificatie.
 

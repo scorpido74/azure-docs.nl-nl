@@ -3,17 +3,17 @@ title: 'Quickstart: Azure-kosten verkennen met kostenanalyse'
 description: Deze snelstart helpt u kostenanalyse te gebruiken om de kosten van Azure voor uw bedrijf te verkennen en te analyseren.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 06/08/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874497"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560581"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quickstart: Kosten verkennen en analyseren met kostenanalyse
 
@@ -107,8 +107,7 @@ Als u bestedingsprognose uitschakelt, ziet u geen geschatte uitgaven voor datums
 
 Over het algemeen zijn binnen acht tot twaalf uur gegevens of meldingen te zien over de verbruikte resources.
 
-
-**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.
+**Groeperen op** algemene eigenschappen om de kosten te specificeren en de belangrijkste kostenfactoren te identificeren. Als u bijvoorbeeld op resourcetag wilt groeperen, selecteert u de tagcode waarop u wilt groeperen. De kosten worden per tagwaarde weergegeven, met een extra segment voor resources waarop die tag niet is toegepast.  Zie [Groeps- en filteropties](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter) voor meer informatie over opties voor groeperen en filteren.
 
 De meeste [Azure-resources bieden ondersteuning voor het gebruik van tags](../../azure-resource-manager/management/tag-support.md). Maar sommige tags zijn niet beschikbaar in Cost Management en facturering. Bovendien worden resourcegroeptags niet ondersteund. Ondersteuning voor labels is van toepassing op het gebruik dat is gerapporteerd *nadat* de tag is toegepast op de resource. Tags worden niet met terugwerkende kracht toegepast voor samengetelde kosten.
 
@@ -142,42 +141,6 @@ U kunt de volledige gegevensset voor elke weergave bekijken. Selecties of filter
 
 ![Gegevens voor de huidige weergave in tabelvorm](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
-
-## <a name="understanding-grouping-and-filtering-options"></a>Over groeperings- en filteropties
-
-Kostenanalyse heeft veel opties voor groeperen en filteren. Als u een video wilt bekijken over de opties voor groeperen en filteren, bekijkt u de video [Cost Management-rapportage per dimensie en tag](https://www.youtube.com/watch?v=2Vx7V17zbmk). Als u andere video’s wilt bekijken, gaat u naar het [YouTube-kanaal voor Cost Management](https://www.youtube.com/c/AzureCostManagement).
-
->[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
-
-De volgende tabel bevat een aantal van de meest gebruikte groeperings- en filteropties en informatie over wanneer u deze kunt gebruiken.
-
-| Eigenschap | Wanneer gebruikt u dit? | Opmerkingen |
-| --- | --- | --- |
-| **Beschikbaarheidszones** | AWS-kosten opsplitsen per beschikbaarheidszone. | Alleen van toepassing op AWS-bereiken en beheergroepen. Azure-gegevens omvatten geen beschikbaarheidszone en worden als **Niet van toepassing** weergegeven. |
-| **Factureringsperiode** | Kosten voor betalen per gebruik opsplitsen per maand dat ze zijn (of worden) gefactureerd. | Gebruik **Factureringsperiode** om een nauwkeurige weergave van gefactureerde kosten voor betalen per gebruik te zien. Voeg twee extra dagen vóór en na de factureringsperiode toe als u wilt filteren op een aangepast datumbereik. Door u te beperken tot de exacte datums van de factureringsperiode, komt het datumbereik niet overeen met dat op de factuur. De kosten van alle facturen in de factureringsperiode worden weergegeven. Gebruik **Factuur-ID** om op een specifieke factuur te filteren. Alleen van toepassing op Betalen per gebruik-abonnementen omdat EA en MCA per kalendermaand worden gefactureerd. Bij EA/MCA-accounts kunnen kalendermaanden worden gebruikt in de datumkiezer of kan maandelijkse granulariteit worden gebruikt om hetzelfde doel te bereiken. |
-| **Kostentype** | Gebruikskosten, aankoopkosten, restitutiekosten en kosten voor ongebruikte reserveringen opsplitsen. | Reserveringsaankopen en restituties zijn alleen beschikbaar wanneer u werkelijke kosten gebruikt en niet wanneer u afgeschreven kosten gebruikt. Kosten voor ongebruikte reserveringen zijn alleen beschikbaar wanneer u de afgeschreven kosten bekijkt. |
-| **Afdeling** | Kosten opsplitsen per EA-afdeling. | Alleen beschikbaar voor EA- en beheergroepen. Betalen per gebruik-abonnementen hebben geen afdeling en worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
-| **Inschrijvingsaccount** | Kosten opsplitsen per eigenaar van EA-account. | Alleen beschikbaar voor EA-factureringsaccounts, afdelingen en beheergroepen. Betalen per gebruik-abonnementen hebben geen EA-inschrijvingsaccounts en worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
-| **Frequentie** | Op gebruik gebaseerde, eenmalige en terugkerende kosten opsplitsen. | |
-| **Factuur-id** | Kosten opsplitsen per gefactureerde factuur. | Niet-gefactureerde kosten hebben nog geen factuur-id en EA-kosten bevatten geen factuurgegevens, zij worden daarom weergegeven als **Niet van toepassing**.  |
-| **Meter** | Kosten opsplitsen per gebruiksmeter. | Aankopen en het gebruik van Marketplace worden weergegeven als **Niet van toepassing**. Raadpleeg **Kostentype** om aankopen aan te duiden en **Type van uitgever** om kosten voor Marketplace aan te duiden. |
-| **Bewerking** | Kosten voor AWS opsplitsen per bewerking. | Alleen van toepassing op AWS-bereiken en beheergroepen. Azure-gegevens omvatten geen bewerking en worden als **Niet van toepassing** weergegeven, gebruik in de plaats daarvan **Meter**. |
-| **Prijsmodel** | Kosten opsplitsen per on-demand-gebruik, reservering of spotgebruik. | Aankopen worden weergegeven als **OnDemand-** . Als u **Niet van toepassing** ziet, groepeert u op **Reservering** om te bepalen of het bij het gebruik om een reservering gaat of om on-demand-gebruik, en groepeert u op **Kostentype** als het om aankopen gaat.
-| **Provider** | Kosten opsplitsen per kosten voor AWS en voor Azure. | Alleen beschikbaar voor beheergroepen. |
-| **Type van uitgever** | De kosten voor AWS, Azure en Marketplace opsplitsen. |  |
-| **Reservering** | Kosten opsplitsen per reservering. | Alle gebruik of aankopen die niet aan een reservering zijn gekoppeld, worden weergegeven als **Niet van toepassing**. Groeperen op **Type van uitgever** om andere aankopen via Azure, AWS of Marketplace aan te duiden. |
-| **Resource** | Kosten opsplitsen per resource. | Aankopen worden weergegeven als **Niet van toepassing** omdat ze worden toegepast op het niveau van een EA-/Betalen per gebruik-factureringsrekening of MCA-factureringsprofiel en niet aan een specifieke resource zijn gekoppeld. Groeperen op **Type van uitgever** om andere aankopen via Azure, AWS of Marketplace aan te duiden. |
-| **Resourcegroep** | Kosten opsplitsen per resourcegroep. | Aankopen, tenantresources die niet zijn gekoppeld aan abonnementen, abonnementsresources die niet zijn geïmplementeerd naar een resourcegroep en klassieke resources hebben geen resourcegroep en worden weergegeven als **Overige**, **Klassieke services**, **$system** of **Niet van toepassing**. |
-| **Resourcetype** | Kosten opsplitsen per resourcetype. | Aankopen en Klassieke services hebben geen Azure Resource Manager-resourcetype en worden weergegeven als **Overige**, **Klassieke services** of **Niet van toepassing**. |
-| **Resourcelocatie** | Kosten opsplitsen per locatie of regio. | Aankopen en het gebruik van Marketplace kunnen worden weergegeven als **Niet-toegewezen**, **Onbekend**, **Toewijzing opgeheven** of **Niet van toepassing**. |
-| **Servicenaam** of **metercategorie** | Kosten opsplitsen per Azure-service. | Aankopen en het gebruik van Marketplace worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
-| **Servicelaag** of **Subcategorie van de meter** | Kosten opsplitsen per subclassificatie van de Azure-gebruiksmeter. | Aankopen en het gebruik van Marketplace worden weergegeven als **Niet van toepassing** of **Niet-toegewezen**. |
-| **Abonnement** | Kosten opsplitsen per Azure-abonnement en gekoppeld AWS-account. | Aankopen en tenantresources worden mogelijk als **Niet van toepassing** weergegeven. |
-| **Tag** | Kosten opsplitsen per tagwaarde voor een specifieke tagsleutel. | Tags zijn niet beschikbaar voor aankopen, tenantresources die niet zijn gekoppeld aan abonnementen, abonnementsresources die niet zijn geïmplementeerd naar een resourcegroep, of klassieke resources. Houd er rekening mee dat sommige services geen tags in gebruiksgegevens bevatten. Meer informatie over de [ondersteuning voor tags voor elk resourcetype](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
-
-Zie [Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten](../understand/understand-usage.md) voor meer informatie over de gebruiksvoorwaarden.
-
-
 ## <a name="saving-and-sharing-customized-views"></a>Aangepaste weergaven opslaan en delen
 
 Sla aangepaste weergaven op en deel ze met anderen door een kostenanalyses vast te maken aan het dashboard in de Azure-portal of door een koppeling naar een kostenanalyse te kopiëren.
@@ -192,54 +155,12 @@ Als u een koppeling naar de kostenanalyse wilt delen, selecteert u **Delen** bov
 
 Als u meer wilt weten over het verlenen van toegang tot kosten voor elk ondersteund bereik, raadpleegt u [Understand and work with scopes](understand-work-scopes.md) (Engelstalig).
 
-
-
-## <a name="automation-and-offline-analysis"></a>Automatiseren en offline analyses maken
+## <a name="download-usage-data"></a>Gebruiksgegevens downloaden
 
 Er zijn momenten waarop u de gegevens wilt downloaden voor verdere analyse, deze wilt samenvoegen met uw eigen gegevens of deze integreert in uw eigen systemen. Cost Management biedt een aantal verschillende opties. Als u behoefte hebt aan een tijdelijk kostenoverzicht dat de grote lijnen bevat, zoals het overzicht dat in een kostenanalyse beschikbaar is, moet u om te beginnen de weergave bouwen die u nodig hebt. Download deze vervolgens door **Exporteren** en **Gegevens naar CSV downloaden** of **Gegevens naar Excel downloaden** te selecteren. Het gedownloade Excel-bestand biedt aanvullende context voor de weergave die u hebt gebruikt om de download te genereren, zoals het bereik, de configuratie van de query, de totalen en de datum waarop de download is gegenereerd.
 
 Als u de volledige, niet-geaggregeerde gegevensset nodig hebt, kunt u deze downloaden vanuit het factureringsaccount. Ga vervolgens in de lijst met services in het linkerdeelvenster in de portal naar **Kostenbeheer en facturering**. Selecteer uw factureringsaccount, indien van toepassing. Ga naar **Gebruik + kosten** en selecteer vervolgens het pictogram **Downloaden** voor de gewenste factureringsperiode.
 
-Ga op dezelfde manier te werk om het downloaden van kostengegevens te automatiseren. Gebruik de [Query-API](/rest/api/cost-management/query) als u behoefte hebt aan uitgebreidere analyses door gebruik te maken van dynamisch filteren, in groeperen indelen en de mogelijkheid om gegevens samen te voegen, of gebruik de [UsageDetails-API](/rest/api/consumption/usageDetails) voor de volledige, niet-samengevoegde gegevensset. De datum waarop deze versies van deze API's algemeen beschikbaar zijn, is 01-01-2019. Gebruik de **2019-04-01-preview** als u toegang wilt hebben tot de preview-versie van de reservering en Marketplace-aankopen binnen deze API's.
-
-Een voorbeeld hiervan is een geaggregeerde weergave van afgeschreven kosten die zijn uitgesplitst per kostentype (gebruik, aankoop of restitutie), type van uitgever (Azure of Marketplace), resourcegroep (leeg voor aankopen) en reservering (leeg indien niet van toepassing).
-
-```
-POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
-Content-Type: application/json
-
-{
-  "type": "AmortizedCost",
-  "timeframe": "Custom",
-  "timePeriod": { "from": "2019-04-01", "to": "2019-04-30" },
-  "dataset": {
-    "granularity": "None",
-    "aggregation": {
-      "totalCost": { "name": "PreTaxCost", "function": "Sum" }
-    },
-    "grouping": [
-      { "type": "dimension", "name": "ChargeType" },
-      { "type": "dimension", "name": "PublisherType" },
-      { "type": "dimension", "name": "Frequency" },
-      { "type": "dimension", "name": "ResourceGroup" },
-      { "type": "dimension", "name": "SubscriptionName" },
-      { "type": "dimension", "name": "SubscriptionId" },
-      { "type": "dimension", "name": "ReservationName" },
-      { "type": "dimension", "name": "ReservationId" },
-    ]
-  },
-}
-```
-
-En als u de geaggregeerde gegevens niet nodig hebt en liever de volledige, onbewerkte gegevensset wilt zien, doet u het volgende:
-
-```
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
-```
-
-Als u de werkelijke kosten wilt zien omdat u de aankopen wilt zien op het moment dat ze worden samengevoegd, wijzigt u het **type**/**Metrisch** in **ActualCost**. Zie de documentatie voor de [Query](/rest/api/cost-management/query)- en [UsageDetails](/rest/api/consumption/usageDetails)-API voor meer informatie over deze API's. Houd er rekening mee dat de gepubliceerde documenten betrekking hebben op de versies die algemeen beschikbaar zijn. Ze werken echter beide hetzelfde voor de API-versie *2019-04-01-preview*, behalve waar het gaat om het nieuwe kenmerk type/metrisch en de gewijzigde eigenschapnamen. (Lees hieronder meer over de eigenschapnamen.)
-
-Cost Management-API's werken voor alle bereiken boven het resourceniveau: resourcegroep, abonnement en beheergroep via RBAC-toegang van Azure, EA-factureringsaccounts (inschrijvingen), afdelingen en inschrijvingsaccounts via toegang tot de EA-portal. Lees meer over bereiken, waaronder hoe u uw bereik-id kunt vaststellen of toegang kunt beheren, in [Understand and work with scopes](understand-work-scopes.md) (Engelstalig).
 
 ## <a name="next-steps"></a>Volgende stappen
 

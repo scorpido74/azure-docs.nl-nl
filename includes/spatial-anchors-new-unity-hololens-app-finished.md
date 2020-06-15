@@ -1,21 +1,21 @@
 ---
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
 ms.date: 05/14/2019
 ms.topic: include
-ms.author: pmorgan
+ms.author: crtreasu
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 76d42361a65dd6a92704cd1189e5dddab50331f4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67722940"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429665"
 ---
-## <a name="putting-everything-together"></a>Alles samen zetten
+## <a name="putting-everything-together"></a>Alles bij elkaar
 
-Hier ziet u hoe het `AzureSpatialAnchorsScript` volledige klassen bestand eruit moet zien, nadat alle verschillende elementen samen zijn geplaatst. U kunt deze gebruiken als referentie om te vergelijken met uw eigen bestand, en als er verschillen zijn opgetreden.
+Hier ziet u hoe het volledige klassebestand `AzureSpatialAnchorsScript` eruit moet zien, nadat alle verschillende elementen bij elkaar zijn geplaatst. U kunt deze gebruiken ter referentie om te vergelijken met uw eigen bestand, en om te controleren of er verschillen zijn opgetreden.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;
@@ -396,7 +396,7 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie leert u meer over het gebruik van Azure spatiale ankers in een nieuwe app voor het HoloLens. Ga verder met de volgende zelf studie voor meer informatie over het gebruik van Azure spatiale ankers in een nieuwe Android-app.
+In deze zelfstudie leert u meer over het gebruik van Azure Spatial Anchors in een nieuwe Unity HoloLens-app. Ga verder met de volgende zelfstudie voor meer informatie over het gebruik van Azure Spatial Anchors in een nieuwe Android-app.
 
 > [!div class="nextstepaction"]
 > [Een nieuwe app voor Android starten](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

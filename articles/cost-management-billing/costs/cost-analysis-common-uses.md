@@ -3,20 +3,69 @@ title: Veelgebruikte toepassingen van kostenanalyse in Azure Cost Management
 description: In dit artikel wordt uitgelegd hoe u veelvoorkomende analysetaken kunt uitvoeren in Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261487"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142495"
 ---
 # <a name="common-cost-analysis-uses"></a>Veelgebruikte toepassingen van kostenanalyse
 
 Gebruikers van Azure Cost Management willen vaak antwoorden op vragen die veel andere gebruikers ook hebben gesteld. Dit artikel begeleidt u bij het uitvoeren van veelvoorkomende analysetaken in Cost Management.
+
+## <a name="view-forecasted-costs"></a>Geraamde kosten weergeven
+
+Geraamde kosten worden weergegeven in gebieden voor kostenanalyse, voor gebieds- en gestapelde kolomweergaven. De prognose is gebaseerd op uw resourcegebruik in het verleden. Wijzigingen in uw resourcegebruik zijn van invloed op de geraamde kosten.
+
+Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+
+In de standaardweergave bevat de bovenste grafiek de sectie Werkelijke/afgeschreven kosten en de sectie Geraamde kosten. De effen kleur van de grafiek duidt de Werkelijke/afgeschreven kosten aan. De gearceerde kleur duidt de Geraamde kosten aan.
+
+[![Geraamde kosten](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>Geraamde kosten weergeven gegroepeerd op service
+
+De standaardweergave laat geen geraamde kosten zien gegroepeerd op een service, daarom moet u een groep kiezen om toe te voegen.
+
+Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+
+Selecteer **Groeperen op** > **Servicenaam**.
+
+De weergave laat uw kosten zien, gegroepeerd voor elke service. De geraamde kosten worden niet voor elke service berekend. Ze worden geschat voor het **Totaal** van al uw services.
+
+[![Gegroepeerde geraamde kosten](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>Geraamde kosten voor een service weergeven
+
+U kunt geraamde kosten weergeven die zijn beperkt tot één service. Het kan bijvoorbeeld voorkomen dat u alleen de geraamde kosten wilt zien voor virtuele machines.
+
+1. Ga in de Azure-portal naar het onderdeel Kostenanalyse voor uw bereik. Bijvoorbeeld: **Kostenbeheer en facturering** > **Kostenbeheer** > **Kostenanalyse**.
+1. Selecteer **Filter toevoegen** en selecteer vervolgens **Servicenaam**.
+1. Selecteer een service in de lijst **Kiezen**. Selecteer bijvoorbeeld **virtuele machines**.
+
+Bekijk de werkelijke kosten voor de selectie en de geraamde kosten.
+
+U kunt meer aanpassingen aan de weergave toevoegen.
+
+1. Voeg een tweede filter toe voor **Meter**, en selecteer een waarde om te filteren op een afzonderlijk metertype onder de geselecteerde servicenaam.
+1. Groepeer op **Resource** om de specifieke resources te zien waarvoor kosten in rekening worden gebracht. De geraamde kosten worden niet voor elke service berekend. Ze worden geschat voor het **Totaal** van al uw resources.
+
+[![Geraamde kosten voor een service](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Uw totale kosten voor Azure en AWS weergeven  
+
+Als u de totale kosten voor Azure en AWS wilt weergeven, gebruikt u beheergroepsbereiken in Azure.
+
+1. Maak een beheergroep of selecteer een bestaande beheergroep.
+1. Wijs de bestaande Azure-abonnementen die u nodig hebt, toe aan de beheergroep.
+1. Wijs *dezelfde* beheergroep toe aan het gekoppelde account van de connector.
+1. Ga naar Kostenanalyse en selecteer **Samengevoegde kosten**.
+1. Selecteer **Groeperen op** - **Provider**.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Uitsplitsing van kosten weergeven per Azure-service
 
@@ -37,7 +86,6 @@ Als u de factuurgegevens in de Azure-portal wilt bekijken, navigeert u naar kost
 Als u de factuurgegevens bekijkt, kunt u de service identificeren die onverwachte kosten heeft en bepalen welke resources rechtstreeks zijn gekoppeld aan de resource in de kostenanalyse. Als u bijvoorbeeld kosten wilt analyseren voor de virtuele-machineservice, gaat u naar de weergave **Geaccumuleerde kosten**. Stel vervolgens de granulariteit in op **Dagelijks** en filter kosten op **Servicenaam: Virtuele machines** en groepskosten op **Resource**.
 
 [![Voorbeeld van samengevoegde kosten voor virtuele machines](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Uitsplitsing van kosten weergeven per Azure-resource
 

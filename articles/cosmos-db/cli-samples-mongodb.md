@@ -1,33 +1,34 @@
 ---
-title: Azure CLI-voor beelden voor Azure Cosmos DB MongoDB-API
-description: Azure CLI-voor beelden voor Azure Cosmos DB MongoDB-API
+title: Voorbeelden van Azure CLI voor Azure Cosmos DB MongoDB API
+description: Voorbeelden van Azure CLI voor Azure Cosmos DB MongoDB API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 9/25/2019
+ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: f7807a4c2024e16f563adbcb46a5c60e5c542dda
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: af510e5d29e494e96f6df6143fe012db20fb6ca4
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77524560"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509454"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Azure CLI-voor beelden voor Azure Cosmos DB MongoDB-API
+# <a name="azure-cli-samples-for-azure-cosmos-db-mongodb-api"></a>Voorbeelden van Azure CLI voor Azure Cosmos DB MongoDB API
 
-De volgende tabel bevat koppelingen naar Azure CLI-voorbeeld scripts voor Azure Cosmos DB MongoDB-API. Referentie pagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [Naslag informatie voor Azure cli](/cli/azure/cosmosdb). Alle Azure Cosmos DB CLI-voorbeeld scripts vindt u in de [Azure Cosmos DB cli github-opslag plaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+De volgende tabel bevat koppelingen naar Azure CLI-voorbeeldscripts voor Azure Cosmos DB MongoDB API. Referentiepagina's voor alle Azure Cosmos DB CLI-opdrachten zijn beschikbaar in de [naslaginformatie voor Azure CLI](/cli/azure/cosmosdb). Alle Azure Cosmos DB CLI-voorbeeldscripts vindt u in de [documentatie van Azure Cosmos DB CLI GitHub-opslagplaats](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
 
 > [!NOTE]
-> Op dit moment kunt u alleen 3,2-versie maken (dat wil zeggen, accounts die gebruikmaken `*.documents.azure.com`van het eind punt in de indeling) van de API van Azure Cosmos DB voor MongoDb-accounts met behulp van Power shell, CLI en Resource Manager-sjablonen. Als u 3,6-versie van accounts wilt maken, gebruikt u Azure Portal in plaats daarvan.
+> Op dit moment kunt u alleen de 3.2-versie maken (dat wil zeggen, accounts die gebruikmaken van het eindpunt in de indeling `*.documents.azure.com`) van de Azure Cosmos DB-API voor MongoDB-accounts met behulp van PowerShell, CLI en Resource Manager-sjablonen. Als u de 3.6-versie van accounts wilt maken, gebruikt u in plaats daarvan Azure Portal.
 
 | |  |
 |---|---|
-| [Een Azure Cosmos-account,-data base en-verzameling maken](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB-account,-data base en-verzameling voor de MongoDB-API. |
-| [Door Voer wijzigen](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Update RU/s voor een Data Base en verzameling.|
-| [Toevoegen of failover-regio's](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Voeg een regio toe, wijzig de failover-prioriteit, Activeer een hand matige failover.|
-| [Account sleutels en verbindings reeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Lijst met account sleutels, alleen-lezen sleutels, sleutels opnieuw genereren en verbindings reeksen weer geven.|
-| [Beveiligen met IP-firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Maak een Cosmos-account met IP-firewall geconfigureerd.|
-| [Nieuw account beveiligen met Service-eind punten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Maak een Cosmos-account en Beveilig met Service-eind punten.|
-| [Bestaand account beveiligen met Service-eind punten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Werk een Cosmos-account bij om te beveiligen met Service-eind punten wanneer het subnet uiteindelijk is geconfigureerd.|
+| [Een Azure Cosmos-account, -database en -verzameling maken](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Hiermee maakt u een Azure Cosmos DB MongoDB-API-account, -database en -verzameling voor MongoDB-API. |
+| [Doorvoer wijzigen](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | RU/s bijwerken voor een database en verzameling.|
+| [Regio's toevoegen of er een failover voor uitvoeren](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Een regio toevoegen, de failoverprioriteit wijzigen, een handmatige failover activeren.|
+| [Accountsleutels en verbindingsreeksen](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Accountsleutels en alleen-lezensleutels weergeven, sleutels opnieuw genereren en verbindingsreeksen weergeven.|
+| [Beveiligen met IP-firewall](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken met een geconfigureerde IP-firewall.|
+| [Nieuw account beveiligen met service-eindpunten](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account maken en beveiligen met service-eindpunten.|
+| [Bestaand account beveiligen met service-eind punten](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Een Cosmos-account bijwerken om het te beveiligen met service-eindpunten wanneer het subnet uiteindelijk is geconfigureerd.|
+| [Resources vergrendelen tegen verwijdering](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Voorkomen dat resources worden verwijderd met een resourcevergrendeling.|
 |||

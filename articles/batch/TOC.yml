@@ -95,6 +95,8 @@
           href: batch-management-dotnet.md
         - name: Kostenanalyse en budgetten
           href: budget.md
+        - name: Privé-eindpunten gebruiken met Batch-accounts
+          href: private-connectivity.md
     - name: Verifiëren met Azure AD
       items:
         - name: Azure AD met Batch-service

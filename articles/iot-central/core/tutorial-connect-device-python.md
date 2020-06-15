@@ -1,52 +1,53 @@
 ---
-title: 'Zelf studie: een generieke python-client-app verbinden met Azure IoT Central | Microsoft Docs'
-description: In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een apparaat met een Python-Client-App verbindt met uw Azure IoT Central-toepassing. U maakt een sjabloon voor een apparaat door een mogelijkheidsprofiel te importeren en weer gaven toe te voegen waarmee u kunt communiceren met een verbonden apparaat
+title: 'Zelfstudie: een generieke Python-client-app verbinden met Azure IoT Central | Microsoft Docs'
+description: In deze zelfstudie wordt uitgelegd hoe u, als apparaatontwikkelaar, een apparaat met een Python-client-app verbindt met uw Azure IoT Central-toepassing. U maakt een apparaatsjabloon door een apparaatondersteuningsprofiel te importeren en weergaven toe te voegen waarmee u kunt communiceren met een verbonden apparaat
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 30ceed388412f08e31b9c9b0c7ea6fdf2fed143e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758184"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607207"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Zelf studie: een client toepassing maken en verbinden met uw Azure IoT Central-toepassing (python)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Zelfstudie: Een clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing (Python)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
-In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een python-client toepassing verbindt met uw Azure IoT Central-toepassing. Met de python-toepassing wordt het gedrag van een omgevings sensor apparaat gesimuleerd. U gebruikt een voor beeld van een _mogelijkheidsprofiel_ om een _sjabloon_ voor het apparaat te maken in IOT Central. U voegt weer gaven toe aan de sjabloon voor het apparaat om een operator in staat te stellen te communiceren met een apparaat.
+In deze zelfstudie wordt uitgelegd hoe u, als apparaatontwikkelaar, een Python-clienttoepassing verbindt met uw Azure IoT Central-toepassing. De Python-toepassing simuleert het gedrag van een omgevingssensorapparaat. U gebruikt een voorbeeld van een _apparaatondersteuningsprofiel_ om _een apparaatsjabloon_ te maken in IoT Central. U voegt weergaven toe aan de apparaatsjabloon zodat een operator met een apparaat kan communiceren.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Importeer een mogelijkheidsprofiel om een sjabloon voor een apparaat te maken.
-> * Standaard-en aangepaste weer gaven toevoegen aan een sjabloon voor een apparaat.
-> * Een sjabloon voor een apparaat publiceren en een echt apparaat toevoegen aan uw IoT Central-toepassing.
-> * Maak de python-apparaatcode en voer deze uit en zie verbinding maken met uw IoT Central-toepassing.
-> * De gesimuleerde telemetrie weer geven die vanaf het apparaat is verzonden.
-> * Gebruik een weer gave om apparaateigenschappen te beheren.
-> * U kunt synchrone en asynchrone opdrachten aanroepen om het apparaat te beheren.
+> * Een apparaatondersteuningsprofiel importeren om een apparaatsjabloon te maken.
+> * Standaardweergaven en aangepaste weergaven toevoegen aan een apparaatsjabloon.
+> * Een apparaatsjabloon publiceren en een echt apparaat toevoegen aan uw IoT Central-toepassing.
+> * De Python-apparaatcode maken, deze uitvoeren en kijken hoe deze verbinding maakt met uw IoT Central-toepassing.
+> * De gesimuleerde telemetrie bekijken die vanaf het apparaat wordt verzonden.
+> * Een weergave gebruiken om apparaateigenschappen te beheren.
+> * Synchrone en asynchrone opdrachten aanroepen om het apparaat te beheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
-* Een Azure IoT Central-toepassing gemaakt met behulp van de sjabloon voor **aangepaste toepassingen** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-* Een ontwikkel machine met [python](https://www.python.org/) versie 3,7 of hoger is geïnstalleerd. U kunt uitvoeren `python3 --version` op de opdracht regel om uw versie te controleren. Python is beschikbaar voor een groot aantal besturings systemen. In de instructies in deze zelf studie wordt ervan uitgegaan dat u de opdracht **python3** uitvoert vanaf de opdracht prompt van Windows.
+* Een Azure IoT Central-toepassing gemaakt met behulp van de sjabloon **Aangepaste toepassing**. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+* Een ontwikkelmachine waarop [Python](https://www.python.org/) versie 3.7 of hoger is geïnstalleerd. Voer `python3 --version` uit op de opdrachtprompt om uw versie te controleren. Python is beschikbaar voor een groot aantal verschillende besturingssystemen. In de instructies in deze zelfstudie wordt ervan uitgegaan dat u de opdracht **python3** uitvoert vanaf de Windows-opdrachtprompt.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
 ### <a name="create-a-python-application"></a>Een Python-toepassing maken
 
-De volgende stappen laten zien hoe u een python-client toepassing maakt die verbinding maakt met het apparaat dat u aan de toepassing hebt toegevoegd. Met deze python-toepassing wordt het gedrag van een echt apparaat gesimuleerd.
+In de volgende stappen ziet u hoe u een Python-clienttoepassing maakt die verbinding maakt met het echte apparaat dat u aan de toepassing hebt toegevoegd. Deze Python-toepassing simuleert het gedrag van een echt apparaat.
 
-1. Navigeer in uw opdracht regel omgeving naar de `environmental-sensor` map die u eerder hebt gemaakt.
+1. Ga in uw opdrachtregelprogramma naar de map `environmental-sensor` die u eerder hebt gemaakt.
 
 1. Voer de volgende opdrachten uit om de vereiste bibliotheken te installeren:
 
@@ -54,9 +55,9 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
     pip install azure-iot-device
     ```
 
-1. Maak in de map een bestand met de `environmental-sensor` naam **environmental_sensor. py** .
+1. Maak een bestand met de naam **environmental_sensor.py** in de map `environmental-sensor`.
 
-1. Voeg de volgende `import` -instructies toe aan het begin van het bestand **environmental_sensor. py** :
+1. Voeg de volgende `import`-instructies toe aan het begin van het bestand **environmental_sensor.py**:
 
     ```python
     import asyncio
@@ -71,7 +72,7 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
     from azure.iot.device import Message
     ```
 
-1. Voeg de volgende asynchrone `main` functie-en variabelen declaraties toe aan het bestand:
+1. Voeg de volgende asynchrone functie `main` en variabelendeclaraties aan het bestand toe:
 
     ```python
     async def main():
@@ -90,11 +91,11 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
     asyncio.run(main())
     ```
 
-    Werk de tijdelijke `{your Scope ID}`aanduidingen `{your Device ID}`, en `{your Primary Key}` met de waarden die u eerder hebt genoteerd, bij. In een echte toepassing is het niet mogelijk om deze informatie in de toepassing op te lossen.
+    Werk de tijdelijke aanduidingen voor `{your Scope ID}`, `{your Device ID}` en `{your Primary Key}` bij met de waarden die u eerder hebt genoteerd. In een echte toepassing moet u deze informatie niet in de code van de toepassing vastleggen.
 
-    Alle volgende functie definities en code zijn genest binnen de `main` functie.
+    Alle volgende functiedefinities en code zijn genest binnen de functie `main`.
 
-1. Voeg de volgende twee functies toe aan `main` de functie om het apparaat te registreren en te verbinden met uw IOT Central-toepassing. Registratie maakt gebruik van de Azure Device Provisioning Service:
+1. Voeg de volgende twee functies toe binnen de functie `main` om het apparaat te registreren en te verbinden met uw IoT Central-toepassing. Registratie maakt gebruik van de Azure Device Provisioning Service:
 
     ```python
       async def register_device():
@@ -128,7 +129,7 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
           return device_client
     ```
 
-1. Voeg de volgende functie binnen de `main` functie toe om telemetrie te verzenden naar uw IOT Central-toepassing:
+1. Voeg de volgende twee functies toe binnen de functie `main` om het apparaat te registreren en te verbinden met uw IoT Central-toepassing:
 
     ```python
       async def send_telemetry():
@@ -143,9 +144,9 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
           await asyncio.sleep(delay)
     ```
 
-    De namen van de telemetrie-`temp` items `humid`(en) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de telemetriegegevens (`temp` en `humid`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-1. Voeg de volgende functies toe binnen `main` de functie voor het afhandelen van opdrachten die worden aangeroepen vanuit uw IOT Central-toepassing:
+1. Voeg de volgende functies toe binnen de functie `main` om opdrachten te verwerken die worden aangeroepen vanaf uw IoT Central-toepassing:
 
     ```python
       async def blink_command(request):
@@ -199,9 +200,9 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
           await commands[method_request.name](method_request)
     ```
 
-    De namen van de opdrachten (`blink`, `turnon` `turnoff`, en `rundiagnostics`) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de opdrachten (`blink`, `turnon`, `turnoff` en `rundiagnostics`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-    Op dit moment gebruikt IoT Central niet het antwoord schema dat is gedefinieerd in het functionaliteits model van het apparaat. Voor een synchrone opdracht kan de nettolading van de reactie een wille keurige geldige JSON zijn. Voor een asynchrone opdracht moet het apparaat onmiddellijk een 202-antwoord retour neren, gevolgd door de gerapporteerde eigenschap bijwerken wanneer het werk is voltooid. De indeling van de gerapporteerde eigenschaps update is:
+    Op dit moment gebruikt IoT Central niet het antwoordschema dat is gedefinieerd in het apparaatondersteuningsprofiel. Voor een synchrone opdracht kan de nettolading van het antwoord een willekeurige geldige JSON zijn. Voor een asynchrone opdracht moet het apparaat onmiddellijk een 202-antwoord retourneren, gevolgd door de gerapporteerde eigenschapsupdate wanneer het werk is voltooid. De indeling van de gerapporteerde eigenschapsupdate is:
 
     ```json
     {
@@ -211,9 +212,9 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
     }
     ```
 
-    Een operator kan de reactie lading weer geven in de opdracht geschiedenis.
+    Een operator kan de nettolading van het antwoord weergeven in de opdrachtgeschiedenis.
 
-1. Voeg de volgende functies toe binnen `main` de functie voor het afhandelen van eigenschaps updates die zijn verzonden vanuit uw IOT Central-toepassing:
+1. Voeg de volgende functies toe binnen de functie `main` om eigenschapsupdates te verwerken die zijn verzonden vanaf uw IoT Central-toepassing:
 
     ```python
         async def name_setting(value, version):
@@ -241,11 +242,11 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
             )
     ```
 
-    Wanneer de operator een schrijf bare eigenschap in de IoT Central toepassing instelt, gebruikt de toepassing een door het apparaat dubbele gewenste eigenschap om de waarde naar het apparaat te verzenden. Het apparaat reageert vervolgens met behulp van een dubbele gerapporteerde eigenschap van het apparaat. Wanneer IoT Central de gerapporteerde eigenschaps waarde ontvangt, wordt de eigenschappen weergave bijgewerkt met de status **gesynchroniseerd**.
+    Wanneer de operator een schrijfbare eigenschap instelt in de IoT Central-toepassing, gebruikt de toepassing een door de apparaatdubbel gewenste eigenschap om de waarde naar het apparaat te verzenden. Het apparaat reageert vervolgens met behulp van een door de apparaatdubbel gerapporteerde eigenschap. Wanneer IoT Central de gerapporteerde eigenschapswaarde ontvangt, wordt de eigenschapsweergave bijgewerkt met de status **gesynchroniseerd**.
 
-    De namen van de eigenschappen (`name` en `brightness`) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de eigenschappen (`name` en `brightness`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-1. Voeg de volgende functies toe binnen `main` de functie om de toepassing te beheren:
+1. Voeg de volgende functies toe binnen de functie `main` om de toepassing te beheren:
 
     ```python
       # Define behavior for halting the application
@@ -283,34 +284,35 @@ De volgende stappen laten zien hoe u een python-client toepassing maakt die verb
         print('Device could not connect')
     ```
 
-1. Sla het bestand **environmental_sensor. py** op.
+1. Sla het bestand **environmental_sensor.py** op.
 
-## <a name="run-your-python-application"></a>Uw python-toepassing uitvoeren
+## <a name="run-your-python-application"></a>Uw Python-toepassing uitvoeren
 
-Voer de volgende opdracht uit in de opdracht regel omgeving om de client toepassing van het apparaat te starten:
+Als u de apparaatclienttoepassing wilt uitvoeren, voert u de volgende opdracht uit in uw opdrachtregelprogramma:
 
 ```cmd
 python3 environmental_sensor.py
 ```
 
-U kunt zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en dat telemetrie wordt verzonden:
+U kunt zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en begint met het verzenden van telemetrie:
 
-![De client toepassing uitvoeren](media/tutorial-connect-device-python/run-application.png)
+![De clienttoepassing uitvoeren](media/tutorial-connect-device-python/run-application.png)
 
 [!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
 
 U kunt zien hoe het apparaat reageert op opdrachten en updates van eigenschappen:
 
-![De client toepassing observeren](media/tutorial-connect-device-python/run-application-2.png)
+![De clienttoepassing observeren](media/tutorial-connect-device-python/run-application-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis beginselen van het maken van een apparaat met behulp van node. js hebt geleerd, kunt u als apparaat voor ontwikkel aars het volgende doen:
+U, als apparaatontwikkelaar, kent nu de basisbeginselen van het maken van een apparaat met behulp van Node.js. Hierna volgen enkele voorgestelde volgende stappen:
 
-- Meer informatie over het verbinden van een echt apparaat met IoT Central in het [MXChip IOT DevKit-apparaat verbinden met uw Azure IOT Central Application](./howto-connect-devkit.md) procedures-artikel.
-- Lees [verbinding maken met Azure IOT Central](./concepts-get-connected.md) voor meer informatie over het registreren van apparaten met IOT Central en hoe IOT Central verbindingen met apparaten beveiligt.
+* In het artikel met instructies [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](./howto-connect-devkit.md) leest u hoe u een echt apparaat verbindt met IoT Central.
+* Lees [Wat zijn apparaatsjablonen?](./concepts-device-templates.md) voor meer informatie over de rol van apparaatsjablonen wanneer u uw apparaatcode implementeert.
+* Lees [Verbinding maken met Azure IoT Central](./concepts-get-connected.md) voor meer informatie over het registreren van apparaten met IoT Central en hoe IoT Central apparaatverbindingen beveiligt.
 
-Als u liever door wilt gaan met de set IoT Central zelf studies en meer wilt weten over het bouwen van een IoT Central oplossing, raadpleegt u:
+Als u liever wilt doorgaan met de set zelfstudies over IoT Central en meer wilt leren over het bouwen van een IoT Central-oplossing, raadpleegt u:
 
 > [!div class="nextstepaction"]
 > [Een gateway-apparaatsjabloon maken](./tutorial-define-gateway-device-type.md)

@@ -1,23 +1,23 @@
 ---
-title: 'Quick Start: een Azure Cosmos DB en een container maken met behulp van Azure Resource Manager sjabloon'
-description: Quick Start laat zien hoe een Azure Cosmos-data base en een container met behulp van Azure Resource Manager sjabloon
+title: 'Quickstart: een Azure Cosmos DB en een container maken met een Azure Resource Manager-sjabloon'
+description: Quickstart waarin wordt getoond hoe u een Azure Cosmos-database en een container maken met een Azure Resource Manager-sjabloon
 author: SnehaGunda
 ms.author: sngun
 tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
-ms.date: 02/27/2020
+ms.date: 06/01/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: f524a1e1db426b9b9dafb2fb95d77538a34b04ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 273305894e05b397d0f48acd7a483a9fdfc247ef
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605471"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324030"
 ---
-# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Snelstartgids: een Azure Cosmos DB en een container maken met behulp van Azure Resource Manager sjabloon
+# <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Quickstart: Een Azure Cosmos DB en een container maken met een Azure Resource Manager-sjabloon
 
-Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel sleutel/waarde-data bases, document databases en grafiek databases te maken en op te vragen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon voor het maken van een Azure Cosmos-data base en een container in die data base. U kunt later gegevens opslaan in deze container.
+Azure Cosmos DB is de globaal gedistribueerde multimodel-databaseservice van Microsoft. U kunt Azure Cosmos DB gebruiken om snel databases voor sleutels en waarden, documentdatabases en grafiekdatabases te maken en te doorzoeken. Deze quickstart is gericht op het implementeren van een Resource Manager-sjabloon voor het maken van een Azure Cosmos-database en een container in die database. U kunt later gegevens opslaan in deze container.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -25,63 +25,66 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Een Azure-abonnement of gratis Azure Cosmos DB proef account
+Een Azure-abonnement of gratis Azure Cosmos DB-proefaccount
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 - [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-## <a name="create-an-azure-cosmos-account-database-container"></a>Een Azure Cosmos-account,-Data Base,-container maken
+## <a name="create-an-azure-cosmos-account-database-container"></a>Een Azure Cosmos-account, -database en -container maken
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig uit [Azure Quick](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/)start-sjablonen.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql/).
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
-Er zijn drie Azure-resources gedefinieerd in de sjabloon:
+Er worden drie Azure-resources gedefinieerd in de sjabloon:
 
-* [Micro soft. DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): Maak een Azure Cosmos-account.
+* [Microsoft.DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): Maak een Azure Cosmos-account.
 
-* [Micro soft. DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): een Azure Cosmos-data base maken.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Maak een Azure Cosmos-database.
 
-* [Micro soft. DocumentDB/databaseAccounts/sqlDatabases/containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Maak een Azure Cosmos-container.
+* [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Maak een Azure Cosmos-container.
 
-Meer Azure Cosmos DB sjabloon voorbeelden vindt u in de Quick Start- [sjabloon galerie](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
+Meer voorbeelden van Azure Cosmos DB-sjablonen vindt u in de [galerie met quickstart-sjablonen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Documentdb).
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een Azure Cosmos-account, een Data Base en een container.
+1. Selecteer de volgende afbeelding om u aan te melden bij Azure en een sjabloon te openen. Met de sjabloon maakt u een Azure Cosmos-account, -database en -container.
 
-   [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-create%2Fazuredeploy.json)
+   [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-sql%2Fazuredeploy.json)
 
 2. Typ of selecteer de volgende waarden.
 
-   ![Resource Manager-sjabloon, integratie van Azure Cosmos DB, portal implementeren](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
+   ![Resource Manager-sjabloon, Azure Cosmos DB-integratie, portal voor implementeren](./media/quick-create-template/create-cosmosdb-using-template-portal.png)
 
-    Tenzij deze is opgegeven, gebruikt u de standaard waarden om de Azure Cosmos-resources te maken.
+    Gebruik de standaardwaarden om de Azure Cosmos-resources te maken, tenzij er iets anders is aangegeven.
 
-    * **Abonnement**: Selecteer een Azure-abonnement.
-    * **Resource groep**: Selecteer **nieuwe maken**, voer een unieke naam in voor de resource groep en klik vervolgens op **OK**.
+    * **Abonnement**: selecteer een Azure-abonnement.
+    * **Resourcegroep**: selecteer **Nieuwe maken**, geef een unieke naam op voor de resourcegroep en klik op **OK**.
     * **Locatie**: selecteer een locatie.  Bijvoorbeeld **VS - centraal**.
-    * **Account naam**: Voer een naam in voor het Azure Cosmos-account. Het moet wereld wijd uniek zijn.
-    * **Locatie**: Geef een locatie op waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevindt als de resource groep.
-    * **Primaire regio**: de primaire replica regio voor het Azure Cosmos-account.
-    * **Secundaire regio**: de secundaire replica regio voor het Azure Cosmos-account.
-    * **Database naam**: de naam van de Azure Cosmos-data base.
-    * **Container naam**: de naam van de Azure Cosmos-container.
-    * **Door Voer**: de door Voer voor de container, minimale doorvoer waarde is 400 ru/s.
-    * **Ik ga akkoord met de bovenstaande voorwaarden**: selecteer dit.
+    * **Accountnaam**: voer een naam in voor het Azure Cosmos-account. De naam moet wereldwijd uniek zijn.
+    * **Locatie**: geef aan waar u uw Azure Cosmos-account wilt maken. Het Azure Cosmos-account kan zich op dezelfde locatie bevinden als de resourcegroep.
+    * **Primaire regio**: De primaire-replicaregio voor het Azure Cosmos-account.
+    * **Secundaire regio**: De secundaire-replicaregio voor het Azure Cosmos-account.
+    * **Standaardconsistentieniveau**: Het standaardconsistentieniveau voor het Azure Cosmos-account.
+    * **Voorvoegsel max. veroudering**: Max. aantal verouderde aanvragen. Vereist voor BoundedStaleness.
+    * **Max. interval in seconden**: Maximale vertragingstijd. Vereist voor BoundedStaleness.
+    * **Databasenaam**: De naam van de Azure Cosmos-database.
+    * **Containernaam**: De naam van de Azure Cosmos-container.
+    * **Doorvoer**:  De doorvoer van de container. De minimale doorvoerwaarde is 400 RU/s.
+    * **Ik ga akkoord met de bovenstaande voorwaarden**: Selecteren.
 
 3. Selecteer **Aankoop**. Nadat het Azure Cosmos-account is geïmplementeerd, ontvangt u een melding:
 
-   ![Resource Manager-sjabloon, integratie van Cosmos DB, portal-melding implementeren](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
+   ![Resource Manager-sjabloon, Cosmos DB-integratie, melding van portal voor implementeren](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de Azure Portal, kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md).
+Voor het implementeren van de sjabloon wordt de Azure-portal gebruikt. Naast Azure Portal kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie [Sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md) voor meer informatie over andere implementatiemethoden.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
-U kunt de Azure Portal gebruiken om het Azure Cosmos-account, de data base en de container te controleren, of door het volgende Azure CLI-of Azure PowerShell-script te gebruiken om het gemaakte geheim weer te geven.
+U kunt Azure Portal gebruiken om het Azure Cosmos-account, de database en de container te controleren, of u gebruikt het volgende Azure CLI- of Azure PowerShell-script om het gemaakte geheim weer te geven.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -105,8 +108,8 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u van plan bent om verder te gaan met de volgende en zelf studies, kunt u deze resources in plaats daarvan blijven gebruiken.
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, waarmee het Azure Cosmos-account en de gerelateerde resources worden verwijderd. De resource groep verwijderen met behulp van Azure CLI of Azure Power shell:
+Als u van plan bent om door te gaan met andere zelfstudies, kunt u deze resources behouden.
+Als u een resourcegroep niet meer nodig hebt, verwijdert u de resourcegroep. Hiermee worden ook het Azure Cosmos-account en de gerelateerde resources verwijderd. De resourcegroep verwijderen met behulp van Azure CLI of Azure PowerShell:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -129,8 +132,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een Azure Cosmos-account, een Data Base en een container gemaakt met behulp van een Azure Resource Manager sjabloon en de implementatie gevalideerd. Ga verder met de volgende artikelen voor meer informatie over Azure Cosmos DB en Azure Resource Manager.
+In deze quickstart hebt u een Azure Cosmos-account, -database en -container gemaakt met behulp van een Azure Resource Manager-sjabloon en hebt u de implementatie gevalideerd. Als u meer wilt weten over Azure Cosmos DB en Azure Resource Manager, vindt u meer informatie in de onderstaande artikelen.
 
 - Een [overzicht van Azure Cosmos DB](introduction.md) lezen
 - Meer informatie over [Azure Resource Manager](../azure-resource-manager/management/overview.md)
-- Andere [Azure Cosmos DB Resource Manager-sjablonen](resource-manager-samples.md) ophalen
+- Andere [Azure Cosmos DB Resource Manager-sjablonen](resource-manager-samples.md) bekijken

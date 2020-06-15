@@ -1,6 +1,6 @@
 ---
-title: 'CLI-voorbeeld: een beheerd exemplaar maken in Azure SQL Database'
-description: Azure CLI-voorbeeldscript voor het maken van een beheerd exemplaar in Azure SQL Database
+title: 'Azure CLI: Een beheerd exemplaar maken'
+description: Azure CLI-voorbeeldscript voor het maken van een beheerd exemplaar van Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: f52a460be33b23da3da0cb32075ab5f75bb8d129
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: fd2c7a33c0747aa21a8bda53ad5437c9e79a6557
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772621"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84115415"
 ---
-# <a name="use-cli-to-create-an-azure-sql-database-managed-instance"></a>CLI gebruiken om een door Azure SQL Database beheerd exemplaar te maken
+# <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>CLI gebruiken om een beheerd exemplaar van Azure SQL te maken
 
-In dit voorbeeld van Azure CLI-script wordt een Azure SQL Database beheerd exemplaar gemaakt in een toegewezen subnet binnen een nieuw virtueel netwerk. Er wordt ook een routetabel en een netwerkbeveiligingsgroep voor het virtuele netwerk geconfigureerd. Zodra het script is uitgevoerd, kunt u toegang krijgen tot het beheerde exemplaar vanuit het virtuele netwerk of vanuit een on-premises omgeving. Zie [Azure VM configureren om verbinding te maken met een Azure SQL Database beheerd exemplaar](../sql-database-managed-instance-configure-vm.md) en [On-premises een punt-naar-site-verbinding met een Azure SQL Database beheerd exemplaar configureren](../sql-database-managed-instance-configure-p2s.md).
+In dit Azure CLI-voorbeeldscript wordt een beheerd exemplaar van Azure SQL gemaakt in een toegewezen subnet binnen een nieuw virtueel netwerk. Er wordt ook een routetabel en een netwerkbeveiligingsgroep voor het virtuele netwerk geconfigureerd. Zodra het script is uitgevoerd, kunt u toegang krijgen tot het beheerde exemplaar vanuit het virtuele netwerk of vanuit een on-premises omgeving. Zie [Azure VM configureren om verbinding te maken met een beheerd exemplaar van Azure SQL]../../azure-sql/managed-instance/connect-vm-instance-configure.md) en [On-premises een punt-naar-site-verbinding met een beheerd exemplaar van Azure SQL](../../azure-sql/managed-instance/point-to-site-p2s-configure.md).
 
 > [!IMPORTANT]
-> Zie [ondersteunde regio's](../sql-database-managed-instance-resource-limits.md#supported-regions) en [ondersteunde abonnementstypen](../sql-database-managed-instance-resource-limits.md#supported-subscription-types) voor beperkingen.
+> Zie [ondersteunde regio's](../../azure-sql/managed-instance/resource-limits.md#supported-regions) en [ondersteunde abonnementstypen](../../azure-sql/managed-instance/resource-limits.md#supported-subscription-types) voor beperkingen.
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel gebruikmaken van Azure CLI versie 2.0 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren](/cli/azure/install-azure-cli).
 
@@ -54,10 +54,10 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 | [az network vnet](/cli/azure/network/vnet) | Opdrachten virtueel netwerk. |
 | [az network vnet subnet](/cli/azure/network/vnet/subnet) | Opdrachten virtueel netwerk subnet. |
 | [az network routetabel](/cli/azure/network/route-table) | Opdrachten voor netwerkroutetabel. |
-| [az sql mi](/cli/azure/sql/mi) | Opdrachten voor beheerd exemplaar. |
+| [az sql mi](/cli/azure/sql/mi) | Opdrachten voor een met SQL beheerd exemplaar. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../sql-database-cli-samples.md).
+Aanvullende voorbeelden van SQL Database CLI-scripts vindt u in de [documentatie van Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

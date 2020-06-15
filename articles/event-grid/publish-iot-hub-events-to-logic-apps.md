@@ -5,14 +5,14 @@ services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 2a0b25fc73bf0f549a199592d558c0097c2db8b8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722555"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457062"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Zelfstudie: E-mailmeldingen over gebeurtenissen van Azure IoT Hub verzenden met Event Grid en Logic Apps
 
@@ -175,19 +175,26 @@ In deze sectie configureert u de IoT-hub voor het publiceren van gebeurtenissen 
 
 4. Maak het gebeurtenisabonnement met de volgende waarden: 
 
-   * **Gebeurtenisabonnementdetails**: Geef een beschrijvende naam op en selecteer **Event Grid-schema**.
+    1. Voer de volgende taken uit in de sectie **Gebeurtenisabonnementdetails**:
+        1. Geef een **naam** op voor het gebeurtenisabonnement. 
+        2. Selecteer **Gebeurtenisrasterschema** voor **Gebeurtenisschema**. 
+   2. Voer de volgende taken uit in de sectie **Onderwerpdetails**:
+       1. Controleer of het **Type onderwerp** is ingesteld op **IoT Hub**. 
+       2. Controleer of de naam van de IoT-hub is ingesteld als de waarde voor het veld **Bronresource**. 
+       3. Voer een naam in voor het **systeemonderwerp** dat voor u wordt gemaakt. Zie [Overzicht van systeemonderwerpen](system-topics.md) voor meer informatie over systeemonderwerpen.
+   3. Voer de volgende taken uit in de sectie **Gebeurtenistypen**: 
+        1. Schakel in **Filteren op gebeurtenistypen** alle keuzes uit behalve **Apparaat is gemaakt**.
 
-   * **Gebeurtenistypen**: Schakel in **Filteren op gebeurtenistypen** alle keuzes uit behalve **Apparaat is gemaakt**.
+           ![gebeurtenistypen abonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. Voer de volgende taken uit in de sectie **Eindpuntdetails**: 
+       1. Selecteer **Eindpunttype** als **Webhook**.
+       2. Klik op **Eindpunt selecteren**, plak de URL die u hebt gekopieerd vanuit uw logische app en bevestig uw selectie.
 
-       ![gebeurtenistypen abonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![eindpunt-URL selecteren](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Eindpuntdetails**: Selecteer Eindpunttype als **Webhook**, selecteer *Eindpunt selecteren*, plak de URL die u hebt gekopieerd in uw logische app en bevestig uw selectie.
+         Als u klaar bent, moet het deelvenster er als volgt uitzien: 
 
-     ![eindpunt-URL selecteren](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   Als u klaar bent, moet het deelvenster er als volgt uitzien: 
-
-    ![Voorbeeld van formulier voor gebeurtenisabonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Voorbeeld van formulier voor gebeurtenisabonnement](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. U kunt het gebeurtenisabonnement nu opslaan en dan meldingen ontvangen voor elk apparaat dat wordt gemaakt in uw IoT-hub. Voor deze zelfstudie gaan we echter de optionele velden gebruiken om te filteren op specifieke apparaten. Selecteer **Filters** bovenaan het deelvenster.
 

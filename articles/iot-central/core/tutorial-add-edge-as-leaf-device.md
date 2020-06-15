@@ -1,211 +1,219 @@
 ---
-title: Een Azure IoT Edge apparaat toevoegen aan Azure IoT Central | Microsoft Docs
-description: Als operator kunt u een Azure IoT Edge apparaat toevoegen aan uw Azure IoT Central-toepassing
+title: Een Azure IoT Edge-apparaat toevoegen aan Azure IoT Central | Microsoft Docs
+description: Als operator kunt u een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing
 author: rangv
 ms.author: rangv
-ms.date: 12/09/2019
+ms.date: 05/29/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 1b90364bee42b31843ac8d84f5a692a3eeb6d3f1
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758171"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417548"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Zelf studie: een Azure IoT Edge apparaat toevoegen aan uw Azure IoT Central-toepassing
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Zelfstudie: Een Azure IoT Edge-apparaat toevoegen aan uw Azure IoT Central-toepassing
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op operators, oplossingenbouwers en ontwikkelaars van apparaten.*
 
-Deze zelf studie laat zien hoe u een Azure IoT Edge apparaat kunt configureren en toevoegen aan uw Azure IoT Central-toepassing. In de zelf studie wordt een door de IoT Edge ingeschakelde Linux-virtuele machine (VM) van Azure Marketplace gebruikt om een IoT Edge apparaat te simuleren. Het IoT Edge apparaat gebruikt een module die gesimuleerde telemetrie van een omgeving genereert. U kunt de telemetrie bekijken in een dash board in uw IoT Central-toepassing.
+In deze zelfstudie wordt getoond hoe u een Azure IoT Edge-apparaat aan uw Azure IoT Central-toepassing kunt toevoegen en deze kunt configureren. In de zelfstudie wordt een door IoT Edge ingeschakelde virtuele Linux-machine (VM) gebruikt om een IoT Edge-apparaat te simuleren. Het IoT Edge-apparaat gebruikt een module die gesimuleerde telemetrie van een omgeving genereert. U kunt de telemetrie bekijken in een dashboard in uw IoT Central-toepassing.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een sjabloon voor een apparaat maken voor een IoT Edge apparaat
-> * Een IoT Edge apparaat maken in IoT Central
+> * Een apparaatsjabloon maken voor een IoT Edge-apparaat
+> * Een IoT Edge-apparaat maken in IoT Central
 > * Een gesimuleerd IoT Edge-apparaat implementeren op een virtuele Linux-machine
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi de Snelstartgids [een Azure IOT Central-toepassing maken](./quick-deploy-iot-central.md) om een IOT Central toepassing te maken met behulp van de aangepaste **app > aangepaste toepassings** sjabloon.
+Voltooi de quickstart [Een Azure IoT Central-toepassing maken](./quick-deploy-iot-central.md) om een IoT Central-toepassing te maken met behulp van de toepassing **Aangepaste app > Aangepaste sjabloon**.
 
-Voor het volt ooien van de stappen in deze zelf studie hebt u een actief Azure-abonnement nodig.
+U hebt een actief Azure-abonnement nodig om de stappen in deze zelfstudie te voltooien.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Down load het IoT Edge-manifest bestand vanuit GitHub. Klik met de rechter muisknop op de volgende koppeling en selecteer vervolgens **Koppeling opslaan als**: [EnvironmentalSensorManifest. json](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+Download het IoT Edge-manifestbestand vanuit GitHub. Klik met de rechtermuisknop op de volgende koppeling en selecteer **Koppeling opslaan als**: [EnvironmentalSensorManifest.json](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
 
-## <a name="create-device-template"></a>Sjabloon voor het maken van een apparaat
+## <a name="create-device-template"></a>Sjabloonapparaat maken
 
-In deze sectie maakt u een sjabloon voor een IoT Edge apparaat dat verbinding maakt met uw IoT Central-toepassing. U importeert een IoT Edge-manifest om aan de slag te gaan en wijzigt vervolgens de sjabloon om telemetriegegevens en weer gaven toe te voegen:
+In deze sectie maakt u een IoT Central-apparaatsjabloon voor een IoT Edge-apparaat. U importeert een IoT Edge-manifest om aan de slag te gaan en wijzigt vervolgens de sjabloon om telemetriegegevens en weergaven toe te voegen:
 
 ### <a name="import-manifest-to-create-template"></a>Manifest importeren om sjabloon te maken
 
-Een sjabloon voor een apparaat maken vanuit een IoT Edge-manifest:
+Om een apparaatsjabloon maken van een IoT Edge-manifest te maken:
 
-1. Navigeer in uw IoT Central-toepassing naar **Apparaatinstellingen** en selecteer **+ Nieuw**.
+1. Ga in uw IoT Central-toepassing naar **Apparaatsjablonen** en selecteer **en Nieuwe**.
 
-1. Selecteer op de pagina **sjabloon type selecteren** de tegel **Azure IOT Edge** . Selecteer vervolgens **volgende: aanpassen**.
+1. Selecteer op de pagina **Sjabloontype selecteren** de tegel **Azure IoT Edge**. Selecteer vervolgens**Volgende: Aanpassen**.
 
-1. Selecteer op de pagina **een Azure IOT Edge implementatie manifest uploaden** de optie **Bladeren** om de **EnvironmentalSensorManifest. json** te uploaden die u eerder hebt gedownload. Selecteer **volgende: controleren**.
+1. Voer op de pagina **Een Azure IoT Edge-implementatiemanifest uploaden** de *Omgevingssensor van het Edge-apparaat* in als de naam van de sjabloon. Selecteer vervolgens **Bladeren** om de **EnvironmentalSensorManifest.json** te uploaden die u eerder hebt gedownload. Selecteer vervolgens**Volgende: Review**.
 
-1. Op de pagina **controleren** selecteert u **maken**.
+1. Selecteer op de pagina **Beoordelen** de optie **Maken**.
 
-1. Wanneer de sjabloon is gemaakt, wijzigt u de naam ervan in het *apparaat voor omgevings sensor rand*.
+1. Selecteer de interface **Beheren** in de module **SimulatedTemperatureSensor** om de twee eigenschappen weer te geven die in het manifest zijn gedefinieerd:
 
-1. Selecteer in de **SimulatedTemperatureSensor** -module de optie **Manage** interface om de twee eigenschappen te bekijken die in het manifest zijn gedefinieerd:
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/imported-manifest.png" alt-text="Het apparaatprofiel is gemaakt op basis van IoT Edge-manifest":::
 
-![De apparaatprofiel is gemaakt op basis van IoT Edge manifest](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
+### <a name="add-telemetry-to-manifest"></a>Telemetrie toevoegen aan uw manifest
 
-### <a name="add-telemetry-to-manifest"></a>Telemetrie aan manifest toevoegen
-
-Een IoT Edge-manifest definieert niet de telemetrie die een module verzendt. U moet de telemetrie-definities toevoegen aan de sjabloon voor het apparaat. De **SimulatedTemperatureSensor** -module verzendt telemetrie-berichten die eruitzien als de volgende JSON:
+Een IoT Edge-manifest definieert niet de telemetrie die een module verzendt. U kunt de telemetrie-definities toevoegen aan de sjabloon voor het apparaat in IoT Central. De **SimulatedTemperatureSensor**-module verzendt telemetrie-berichten die eruitzien als de volgende JSON:
 
 ```json
 {
-    "machine": {
-        "temperature": 75.0,
-        "pressure": 40.2
-    },
-    "ambient": {
-        "temperature": 23.0,
-        "humidity": 30.0
-    },
-    "timeCreated": ""
+  "machine": {
+    "temperature": 75.0,
+    "pressure": 40.2
+  },
+  "ambient": {
+    "temperature": 23.0,
+    "humidity": 30.0
+  },
+  "timeCreated": ""
 }
 ```
 
-De telemetrie-definities toevoegen aan de sjabloon voor het apparaat:
+Om de telemetrie-definities toe te voegen aan de sjabloon voor het apparaat:
 
-1. Selecteer de interface **beheren** in het **apparaat sjabloon rand van omgevings sensor** .
+1. Selecteer de interface **Beheren** in het sjabloon **Omgevingssensor van Edge-apparaat**.
 
-1. Selecteer **+ toevoegen**. Voer de *computer* in als **weergave naam** en zorg ervoor dat het **capaciteits type** **telemetrie**is.
+1. Selecteer  **en een mogelijkheid toevoegen**. Voer *machine* in als de **Weergavenaam** en zorg ervoor dat het **Capaciteitstype** **Telemetrie** is.
 
-1. Selecteer **object** als schema type en selecteer vervolgens **definiëren**. Voeg op de pagina object definitie de *Tempe ratuur* en *Druk* toe als kenmerken van het type **Double** en selecteer vervolgens **Toep assen**.
+1. Selecteer **Object** als schematype en selecteer **Definiëren**. Voeg op de pagina objectdefinitie *temperatuur* en *druk* toe als kenmerken van het type **Double** en selecteer vervolgens **Toepassen**.
 
-1. Selecteer **+ toevoegen**. Voer een *omgeving* in als **weergave naam** en zorg ervoor dat het **capaciteits type** **telemetrie**is.
+1. Selecteer  **en een mogelijkheid toevoegen**. Voer *omgeving* in als de **Weergavenaam** en zorg ervoor dat het **Capaciteitstype** **Telemetrie** is.
 
-1. Selecteer **object** als schema type en selecteer vervolgens **definiëren**. Voeg op de pagina object definitie de *Tempe ratuur* en *vochtigheid* toe als kenmerken van het type **Double** en selecteer vervolgens **Toep assen**.
+1. Selecteer **Object** als schematype en selecteer **Definiëren**. Voeg op de pagina objectdefinitie *temperatuur* en *vochtigheid* toe als kenmerken van het type **Double** en selecteer vervolgens **Toepassen**.
 
-1. Selecteer **+ toevoegen**. Voer *TimeCreated* in als **weergave naam** en zorg ervoor dat het **capaciteits type** **telemetrie**is.
+1. Selecteer  **en een mogelijkheid toevoegen**. Voer *timeCreated* in als de **Weergavenaam** en zorg ervoor dat het **Capaciteitstype** **Telemetrie** is.
 
-1. Selecteer **DateTime** als schema type.
+1. Selecteer **Datum/tijd** als schematype.
 
 1. Selecteer **Opslaan** om de sjabloon bij te werken.
 
-De **beheer** interface bevat nu de telemetrie-typen **machine**, **omgeving**en **TimeCreated** :
+De interface **Beheren** bevat nu de telemetrietypen **machine**, **omgeving** en **timeCreated**:
 
-![Interface met computer-en omgevings telemetrie-typen](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Interface met telemetrietypen machine en omgeving":::
 
-### <a name="add-views-to-template"></a>Weer gaven toevoegen aan sjabloon
+### <a name="add-views-to-template"></a>Weergaven toevoegen aan sjabloon
 
-De sjabloon voor het apparaat heeft nog geen weer gave waarmee een operator de telemetrie van het IoT Edge apparaat kan zien. Een weer gave toevoegen aan de sjabloon voor het apparaat:
+De sjabloon voor het apparaat heeft nog geen weergave waarmee een operator de telemetrie van het IoT Edge apparaat kan zien. Een weergave toevoegen aan de sjabloon voor het apparaat:
 
-1. Selecteer **weer gaven** in het **apparaat sjabloon rand van omgevings sensor** .
+1. Selecteer de **Weergaven** in het sjabloon **Omgevingssensor van Edge-apparaat**.
 
-1. Selecteer op de pagina **selecteren om een nieuwe weer gave toe te voegen** de tegel **apparaat visualiseren** .
+1. Selecteer op de pagina **Selecteren om een nieuwe weergave toe te voegen** de tegel  **Het apparaat wordt gevisualiseerd**.
 
-1. Wijzig de weergave naam om de *telemetrie van IOT edge apparaat weer te geven*.
+1. Wijzig de weergavenaam in *Telemetrie van het IoT Edge-apparaat weergeven*.
 
-1. Selecteer de typen **omgeving** en **machine** telemetrie. Selecteer vervolgens **tegel toevoegen**.
+1. Selecteer de telemetrietypen **omgeving** en **machine**. Selecteer vervolgens **Tegel toevoegen**.
 
-1. Selecteer **Opslaan** om de **weer gave IOT Edge de telemetrie** van het apparaat op te slaan.
+1. Selecteer **Opslaan** om de weergave **Telemetrie van IoT Edge-apparaat weergeven** op te slaan.
 
-![Device-sjabloon met telemetrie-weer gave](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Apparaatsjabloon met telemetrieweergave":::
 
 ### <a name="publish-the-template"></a>De sjabloon publiceren
 
-Voordat u een apparaat kunt toevoegen dat gebruikmaakt van de sjabloon **omgevings rand apparaat** , moet u de sjabloon publiceren.
+Voordat u een apparaat kunt toevoegen dat gebruikmaakt van de apparaatsjabloon **Omgevingssensor van Edge-apparaat**, moet u het sjabloon publiceren.
 
-Ga naar de sjabloon voor het apparaat van de **omgevings sensor rand** en selecteer **publiceren**. Selecteer vervolgens **publiceren** om de sjabloon te publiceren:
+Ga naar het sjabloon **Omgevingssensor van Edge-apparaat** en selecteer **Publiceren**. Selecteer **Publiceren** in het deelvenster **Dit apparaatsjabloon op de toepassing publiceren** om het sjabloon te publiceren:
 
-![De sjabloon voor het apparaat publiceren](./media/tutorial-add-edge-as-leaf-device/publish-template.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="De sjabloon van het apparaat publiceren":::
 
-## <a name="add-iot-edge-device"></a>IoT Edge apparaat toevoegen
+## <a name="add-iot-edge-device"></a>IoT Edge-apparaat toevoegen
 
-Nu u de sjabloon **omgevings rand apparaat** hebt gepubliceerd, kunt u een apparaat toevoegen aan uw IOT Central-toepassing:
+Nu u het sjabloon **Omgevingssensor van het Edge-apparaat** hebt gepubliceerd, kunt u een apparaat toevoegen aan uw IoT Central-toepassing:
 
-1. Navigeer in uw IoT Central-toepassing naar de pagina **apparaten** en selecteer **omgevings sensor rand apparaat** in de lijst met beschik bare sjablonen.
+1. Ga in uw IoT Central-toepassing naar de pagina **Apparaten** en selecteer **Omgevingssensor van het Edge-apparaat** in de lijst met beschikbare sjablonen.
 
-1. Selecteer **+** deze optie om een nieuw apparaat uit de sjabloon toe te voegen. Selecteer op de pagina **nieuw apparaat** maken de optie **maken**.
+1. Selecteer **en Nieuwe** om een nieuw apparaat uit de sjabloon toe te voegen. Selecteer op de pagina **Nieuw apparaat maken** de optie **Maken**.
 
-U hebt nu een nieuw apparaat met de status **geregistreerd**:
+U hebt nu een nieuw apparaat met de status **Geregistreerd**:
 
-![De sjabloon voor het apparaat publiceren](./media/tutorial-add-edge-as-leaf-device/new-device.png)
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Nieuw, geregistreerd apparaat":::
 
-### <a name="get-the-device-credentials"></a>De referenties van het apparaat ophalen
+### <a name="get-the-device-credentials"></a>De apparaatreferenties ophalen
 
-Wanneer u het IoT Edge-apparaat later in deze zelf studie implementeert, hebt u de referenties nodig waarmee het apparaat verbinding kan maken met uw IoT Central-toepassing. De referenties van het apparaat ophalen:
+Wanneer u het IoT Edge-apparaat later in deze zelfstudie implementeert, hebt u de referenties nodig waarmee het apparaat verbinding kan maken met uw IoT Central-toepassing. De apparaatreferenties ophalen:
 
-1. Selecteer op de pagina **apparaat** het apparaat dat u hebt gemaakt.
+1. Selecteer op de pagina **Apparaat** het apparaat dat u hebt gemaakt.
 
 1. Selecteer **Verbinden**.
 
-1. Noteer de **id-Scope**, de **apparaat-id**en de **primaire sleutel**op de pagina **apparaat-verbinding** . U kunt deze waarden later gebruiken.
+1. Noteer het **id-bereik**, de **apparaat-id** en de **Primaire sleutel** op de pagina **Apparaatverbinding**. U gebruikt deze waarden later.
 
 1. Selecteer **Sluiten**.
 
-U bent nu klaar met het configureren van uw IoT Central-toepassing om een IoT Edge apparaat in te scha kelen om verbinding te maken.
+U bent nu klaar met het configureren van uw IoT Central-toepassing om een IoT Edge-apparaat verbinding te laten maken.
 
 ## <a name="deploy-an-iot-edge-device"></a>Een IoT Edge-apparaat implementeren
 
-In deze zelf studie gebruikt u een met Azure IoT Edge ingeschakelde Linux-VM die is gemaakt in azure om een IoT Edge apparaat te simuleren. De met IoT Edge ingeschakelde VM maken:
+In deze zelfstudie gebruikt u een met Azure IoT Edge ingeschakelde Linux-VM die is gemaakt in Azure om een IoT Edge-apparaat te simuleren. Als u de virtuele machine met IoT Edge ingeschakeld wilt maken in uw Azure-abonnement, klikt u op:
 
-1. Navigeer naar [Azure IOT Edge op Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) in azure Marketplace. Selecteer **nu ophalen**.
+[![De knop Implementeren naar Azure voor iotedge-vm-Deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
-1. Op de pagina **deze app maken in azure** selecteert u **door gaan**. Met deze koppeling gaat u naar de Azure Portal, waar u zich mogelijk moet aanmelden bij uw Azure-abonnement.
+Op de pagina **Aangepaste implementatie**:
 
-1. Selecteer op de pagina **Azure IOT Edge op Ubuntu** in de Azure Portal **maken**.
+1. Selecteer uw Azure-abonnement.
 
-1. Op de pagina basis pagina's voor het **maken van een virtuele machine >** :
+1. Selecteer **Nieuwe maken** om een nieuwe resourcegroep te maken met de naam *central-edge-rg*.
 
-    - Selecteer uw Azure-abonnement.
-    - Maak een nieuwe resource groep met de naam **IOT-Edge-devices**.
-    - De naam van de virtuele machine gebruiken: **iotedgevm**.
-    - Kies de dichtstbijzijnde regio voor u.
-    - Stel het verificatie type in op **wacht woord**.
-    - Kies een gebruikers naam en wacht woord.
-    - U kunt de andere opties op de standaard waarden laten staan.
-    - Selecteer **controleren + maken**.
+1. Kies een regio dicht bij u in de buurt.
 
-1. Wanneer de validatie is voltooid, selecteert u **maken**.
+1. Voeg een uniek **DNS-labelvoorvoegsel** toe, zoals *contoso-central-edge*.
 
-Nadat de implementatie is voltooid, selecteert u na enkele minuten **naar resource**.
+1. Kies een gebruikersnaam voor de beheerder voor de virtuele machine.
 
-### <a name="provision-vm-as-an-iot-edge-device"></a>VM inrichten als een IoT Edge apparaat 
+1. Voer *temp* in als de verbindingsreeks. Later configureert u het apparaat om verbinding te maken via DPM.
 
-Als u een virtuele machine als IoT Edge apparaat wilt inrichten:
+1. Accepteer de standaardwaarden voor de VM-grootte, de Ubuntu-versie en de locatie.
 
-1. Selecteer **seriële console**in het gedeelte **ondersteuning en probleem oplossing** .
+1. Selecteer **Wachtwoord** als het verificatietype.
 
-1. Druk op **Enter** om de `login:` prompt weer te geven. Voer uw gebruikers naam en wacht woord in om u aan te melden.
+1. Voer een wachtwoord in voor de virtuele machine.
 
-1. Voer de volgende opdracht uit om de runtime versie van IoT Edge te controleren. Op het moment van schrijven is de versie 1.0.8:
+1. Selecteer vervolgens **Controleren en maken**.
+
+1. Controleer uw keuzes en selecteer vervolgens **Maken**:
+
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="Een IoT Edge-VM maken":::
+
+Het uitvoeren van implementatie duurt enkele minuten. Wanneer de implementatie is voltooid, gaat u naar de resourcegroep **central-edge-rg** in de Azure-portal.
+
+### <a name="configure-the-iot-edge-vm"></a>De IoT Edge-VM configureren
+
+Als u IoT Edge in de VM wilt configureren om DPM te gebruiken om uw IoT Central-toepassing te registreren en er verbinding mee te maken:
+
+1. Selecteer in de resourcegroep **contoso-edge-rg** het exemplaar van de virtuele machine.
+
+1. Selecteer in **Seriële console** in het gedeelte **Ondersteuning en probleemoplossing**. Als u wordt gevraagd om de diagnostische gegevens over opstarten te configureren, volgt u de instructies in de portal.
+
+1. Druk op **Invoeren** om de prompt `login:` weer te geven. Voer uw gebruikersnaam en wachtwoord in om u aan te melden.
+
+1. Voer de volgende opdracht uit om de versie van IoT Edge-runtime te controleren. Op het moment van schrijven is de versie 1.0.9.1:
 
     ```bash
     sudo iotedge --version
     ```
 
-1. Gebruik de `nano` editor om het bestand IOT Edge config. yaml te openen:
+1. Gebruik de `nano`-editor om het IoT Edge-bestand config.yaml te openen:
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-1. Schuif omlaag totdat u ziet `# Manual provisioning configuration`. Commentaar bij de volgende drie regels, zoals wordt weer gegeven in het volgende code fragment:
+1. Schuif omlaag totdat u `# Manual provisioning configuration` ziet. Commentaar bij de volgende drie regels, zoals wordt weergegeven in het volgende fragment:
 
     ```yaml
     # Manual provisioning configuration
     #provisioning:
     #  source: "manual"
-    #  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+    #  device_connection_string: "temp"
     ```
 
-1. Schuif omlaag totdat u ziet `# DPS symmetric key provisioning configuration`. Verwijder de opmerking bij de volgende acht regels, zoals wordt weer gegeven in het volgende code fragment:
+1. Schuif omlaag totdat u `# DPS symmetric key provisioning configuration` ziet. Verwijder de opmerking bij de volgende acht regels, zoals wordt weergegeven in het volgende fragment:
 
     ```yaml
     # DPS symmetric key provisioning configuration
@@ -219,13 +227,16 @@ Als u een virtuele machine als IoT Edge apparaat wilt inrichten:
         symmetric_key: "{symmetric_key}"
     ```
 
-1. Vervang `{scope_id}` door het **id-bereik** voor u eerder een notitie hebt gemaakt.
+    > [!TIP]
+    > Zorg ervoor dat er geen ruimte meer is vóór `provisioning:`
 
-1. Vervang `{registration_id}` door de **apparaat-id** die u eerder hebt genoteerd.
+1. Vervang `{scope_id}` door het **id-bereik** dat u eerder heeft opgeschreven.
 
-1. Vervang `{symmetric_key}` door de **primaire sleutel** die u eerder hebt genoteerd.
+1. Vervang `{registration_id}` door de **apparaat-id** die u eerder hebt opgeschreven.
 
-1. Sla de wijzigingen op (**CTRL-O**) en sluit de `nano` editor (**CTRL-X**).
+1. Vervang `{symmetric_key}` door het **primaire sleutel** die u eerder heeft opgeschreven.
+
+1. Sla de wijzigingen op (**CTRL-O**) en sluit de `nano`-editor af (**CTRL-X**).
 
 1. Voer de volgende opdracht uit om de IoT Edge-daemon opnieuw te starten:
 
@@ -233,13 +244,13 @@ Als u een virtuele machine als IoT Edge apparaat wilt inrichten:
     sudo systemctl restart iotedge
     ```
 
-1. Voer de volgende opdracht uit om de status van de IoT Edge modules te controleren:
+1. Voer de volgende opdracht uit om de status van de IoT Edge-modules te controleren:
 
     ```bash
     iotedge list
     ```
 
-    De uitvoer ziet er als volgt uit:
+    Hieronder ziet u een voorbeeld van uitvoer van de modules die worden uitgevoerd:
 
     ```bash
     NAME                        STATUS           DESCRIPTION      CONFIG
@@ -248,25 +259,38 @@ Als u een virtuele machine als IoT Edge apparaat wilt inrichten:
     edgeHub                     running          Up 22 seconds    mcr.microsoft.com/azureiotedge-hub:1.0
     ```
 
-## <a name="view-the-telemetry"></a>De telemetrie weer geven
+    > [!TIP]
+    > Mogelijk moet u wachten totdat alle modules worden uitgevoerd.
 
-Het gesimuleerde IoT Edge apparaat wordt nu uitgevoerd in de virtuele machine. In uw IoT Central-toepassing wordt de apparaatstatus nu **ingericht** op de pagina **apparaten** :
+## <a name="view-the-telemetry"></a>De telemetrie weergeven
 
-![Ingericht apparaat](./media/tutorial-add-edge-as-leaf-device/provisioned-device.png)
+Het gesimuleerde IoT Edge-apparaat wordt nu uitgevoerd in de virtuele machine. In uw IoT Central-toepassing is de apparaatstatus nu **Ingericht** op de pagina **Apparaten**:
 
-U kunt de telemetrie bekijken op de pagina **IOT edge apparaat-telemetrie** :
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Ingericht IoT Edge-apparaat":::
 
-![Telemetrie van apparaat](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
+U kunt de telemetrie van het apparaat zien op de pagina **Telemetrie van IoT Edge-apparaat weergeven**:
 
-Op de pagina **modules** wordt de status van de IOT Edge modules weer gegeven:
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Apparaattelemetrie":::
 
-![Telemetrie van apparaat](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
+Op de pagina **Modules** wordt de status van de IoT Edge-modules op het apparaat weergegeven:
+
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Status van apparaatmodule":::
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u van plan bent om verder te gaan met de IoT Edge-VM, kunt u de resources die u in deze zelfstudie hebt gebruikt, blijven behouden en opnieuw gebruiken. Als dat niet het geval is, kunt u de resources die u in deze zelfstudie hebt gemaakt, verwijderen om extra kosten te voorkomen:
+
+* Als u de IoT Edge-VM en de bijbehorende resources wilt verwijderen, verwijdert u de resourcegroep **contoso-edge-rg** in de Azure-portal.
+* Als u de IoT Central-toepassing wilt verwijderen, gaat u naar de pagina **Uw toepassing** in het gedeelte **Beheer** van de toepassing en selecteert u **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als ontwikkel aars van apparaten, nu u hebt geleerd hoe u IoT Edge apparaten in IoT Central kunt gebruiken en beheren, is een voorgestelde volgende stap te lezen:
-
-<!-- Next how-tos in the sequence -->
+Als ontwikkelaar van apparaten, hebt u nu geleerd hoe u IoT Edge-apparaten in IoT Central kunt gebruiken en beheren. Een voorgestelde volgende stap is om deze artikelen te lezen:
 
 > [!div class="nextstepaction"]
-> [Maak verbinding met Azure IoT Central](./concepts-get-connected.md)
+> [IoT Edge-modules ontwikkelen](../../iot-edge/tutorial-develop-for-linux.md)
+
+Als ontwikkelaar van oplossingen of als operator, hebt u nu geleerd hoe u IoT Edge-apparaten in IoT Central kunt gebruiken en beheren. Een voorgestelde volgende stap is:
+
+> [!div class="nextstepaction"]
+> [Apparaatgroepen gebruiken om apparaattelemetrie te analyseren](./tutorial-use-device-groups.md)

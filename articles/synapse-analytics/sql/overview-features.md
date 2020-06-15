@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 556cce9e18c812759ccb6c4b8ee2c91c4cef2b5a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b4c44f0097b2896a063f3f3922760860e1d4a22
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658894"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118300"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Transact-SQL-functies die worden ondersteund in Azure Synapse SQL
 
@@ -42,7 +42,7 @@ Met verbruiksmodellen in Synapse SQL kunt u verschillende databaseobjecten gebru
 | **[Tabelindexen](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | Ja | Nee |
 | **[Tabelpartities](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                     | Ja | Nee |
 | **[Statistieken](develop-tables-statistics.md)**            | Ja | Ja |
-| **[Resource-klassen en gelijktijdigheid](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Ja    | Nee |
+| **[Werkbelastingbeheer, resourceklassen en gelijktijdigheidsbeheer](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Ja    | Nee |
 
 ## <a name="query-language"></a>Querytaal
 
@@ -50,7 +50,7 @@ Querytalen die in Synapse SQL worden gebruikt, kunnen afhankelijk van het verbru
 
 |   | Ingericht | Serverloos |
 | --- | --- | --- |
-| **SELECT-instructie** | Ja. Transact-SQL-querycomponenten [FOR XML/FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en [PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) worden niet ondersteund. | Ja. Transact-SQL-querycomponenten [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en queryhints worden niet ondersteund. [OFFSET/FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) en [PIVOT/UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen alleen worden gebruikt om gegevens in tijdelijke tabellen (geen externe gegevens) op te vragen. |
+| **SELECT-instructie** | Ja. Transact-SQL-querycomponenten [FOR XML/FOR JSON](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en [PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) worden niet ondersteund. | Ja. Transact-SQL-querycomponenten [FOR XML](/sql/t-sql/queries/select-for-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [MATCH](/sql/t-sql/queries/match-sql-graph?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), [PREDICT](/sql/t-sql/queries/predict-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) en queryhints worden niet ondersteund. [OFFSET/FETCH](/sql/t-sql/queries/select-order-by-clause-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#using-offset-and-fetch-to-limit-the-rows-returned) en [PIVOT/UNPIVOT](/sql/t-sql/queries/from-using-pivot-and-unpivot?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kunnen worden gebruikt om systeemobjecten (geen externe gegevens) op te vragen. |
 | **INSERT-instructie** | Ja | Nee |
 | **UPDATE-instructie** | Ja | Nee |
 | **DELETE-instructie** | Ja | Nee |
@@ -77,20 +77,31 @@ Met Synapse SQL kunt u ingebouwde beveiligingsfuncties gebruiken om uw gegevens 
 | --- | --- | --- |
 | **Aanmeldingen** | N.v.t. (alleen opgenomen gebruikers worden ondersteund in databases) | Ja |
 | **Gebruikers** |  N.v.t. (alleen opgenomen gebruikers worden ondersteund in databases) | Ja |
-| **[Ingesloten gebruikers](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Ja. **Opmerking:** slechts één AAD-gebruiker kan een onbeperkte beheerder zijn | Ja |
-| **AAD-verificatie (Azure Active Directory)**| Ja, AAD-gebruikers | Ja, AAD-aanmeldingen en -gebruikers |
-| **AAD-passthrough-verificatie voor opslag** | Ja | Ja |
+| **[Ingesloten gebruikers](/sql/relational-databases/security/contained-database-users-making-your-database-portable?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Ja. **Opmerking:** slechts één Azure Active Directory-gebruiker kan een onbeperkte beheerder zijn | Ja |
+| **Verificatie van SQL-gebruikersnaam/-wachtwoord**| Ja | Ja |
+| **AAD-verificatie (Azure Active Directory)**| Ja, Azure AD-gebruikers | Ja, Azure AD-aanmeldingen en -gebruikers |
+| **Passthrough-verificatie voor opslag voor Azure Active Directory (AAD)** | Ja | Ja |
 | **SAS-tokenverificatie voor opslag** | Nee | Ja, met behulp van [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) of [CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) op exemplaarniveau. |
 | **Verificatie met toegangssleutel voor opslag** | Ja, met behulp van [DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) in [EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nee |
-| **Verificatie van beheerde identiteit voor opslag** | Ja, met behulp van [Managed Service Identity-referenties](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Ja, met `Managed Identity`-referenties. |
+| **Verificatie van [beheerde identiteit](../security/synapse-workspace-managed-identity.md) voor opslag** | Ja, met behulp van [Managed Service Identity-referenties](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Ja, met `Managed Identity`-referenties. |
 | **Verificatie van toepassingsidentiteit voor opslag** | [Ja](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nee |
 | **Machtigingen - objectniveau** | Ja, inclusief de mogelijkheid om machtigingen voor gebruikers toe te kennen, te weigeren en in te trekken | Ja, inclusief de mogelijkheid om machtigingen toe te kennen, te weigeren en in te trekken voor gebruikers/aanmeldingen op de ondersteunde systeemobjecten |
 | **Machtigingen - schemaniveau** | Ja, inclusief de mogelijkheid om machtigingen voor gebruikers/aanmeldingen in het schema toe te kennen, te weigeren en in te trekken | Ja, inclusief de mogelijkheid om machtigingen voor gebruikers/aanmeldingen in het schema toe te kennen, te weigeren en in te trekken |
 | **Machtigingen - [databaseniveau](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** | Ja | Ja |
 | **Machtigingen - [serverniveau](/sql/relational-databases/security/authentication-access/server-level-roles)** | Nee | Ja, sysadmin en andere serverrollen worden ondersteund |
+| **Machtigingen - [Beveiliging op kolomniveau](/azure/synapse-analytics/sql-data-warehouse/column-level-security?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)** | Ja | Ja |
 | **Rollen/groepen** | Ja (databasebereik) | Ja (zowel server- als databasebereik) |
 | **Beveiligings- &amp; identiteitsfuncties** | Enkele Transact-SQL-beveiligingsfuncties en -operators: `CURRENT_USER`, `HAS_DBACCESS`, `IS_MEMBER`, `IS_ROLEMEMBER`, `SESSION_USER`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS`, `OPEN/CLOSE MASTER KEY` | Enkele Transact-SQL-beveiligingsfuncties en -operators: `CURRENT_USER`, `HAS_DBACCESS`, `HAS_PERMS_BY_NAME`, `IS_MEMBER', 'IS_ROLEMEMBER`, `IS_SRVROLEMEMBER`, `SESSION_USER`, `SUSER_NAME`, `SUSER_SNAME`, `SYSTEM_USER`, `USER`, `USER_NAME`, `EXECUTE AS` en `REVERT`. Beveiligingsfuncties kunnen niet worden gebruikt om externe gegevens op te vragen (sla het resultaat op in een variabele die in de query kan worden gebruikt).  |
 | **REFERENTIES MET DATABASEBEREIK** | Ja | Ja |
+| **REFERENTIES MET SERVERBEREIK** | Nee | Ja |
+| **Beveiliging op rijniveau** | [Ja](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&view=sql-server-ver15) | Nee |
+| **TDE (Transparent Data Encryption)** | [Ja](/azure/sql-database/transparent-data-encryption-azure-sql?toc=%2Fazure%2Fsynapse-analytics%2Ftoc.json&bc=%2Fazure%2Fsynapse-analytics%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal) | Nee | 
+| **Gegevensdetectie en -classificatie** | [Ja](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nee |
+| **Beoordeling van beveiligingsproblemen** | [Ja](/azure/sql-database/sql-vulnerability-assessment?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nee |
+| **Advanced Threat Protection** | [Ja](/azure/sql-database/sql-database-threat-detection-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+| **Controle** | [Ja](/azure/sql-database/sql-database-auditing?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Nee |
+| **[Firewallregels](../security/synapse-workspace-ip-firewall.md)**| Ja | Ja |
+| **[Privé-eindpunt](../security/synapse-workspace-managed-private-endpoints.md)**| Ja | Ja |
 
 SQL-pool en SQL op aanvraag gebruiken de standaard Transact-SQL-taal om gegevens op te vragen. Raadpleeg de [Transact-SQL-taalverwijzing](/sql/t-sql/language-reference) voor gedetailleerde verschillen.
 
@@ -120,6 +131,7 @@ Geanalyseerde gegevens kunnen op verschillende opslagtypen worden opgeslagen. De
 | **Interne opslag** | Ja | Nee |
 | **Azure Data Lake v2** | Ja | Ja |
 | **Azure Blob Storage** | Ja | Ja |
+| **Azure CosmosDB analytical storage** | Nee | Ja, met [Synapse-koppeling](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (onder [gated preview](/azure/cosmos-db/synapse-link?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#limitations)) |
 
 ## <a name="data-formats"></a>Bestandsindelingen
 
@@ -133,6 +145,7 @@ Geanalyseerde gegevens kunnen in verschillende bestandsindelingen worden opgesla
 | **Hive ORC** | [Ja](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nee |
 | **Hive RC** | [Ja](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Nee |
 | **JSON** | Ja | [Ja](query-json-files.md) |
+| **Avro** | Nee | Nee |
 | **[Delta-lake](https://delta.io/)** | Nee | Nee |
 | **[CDM](https://docs.microsoft.com/common-data-model/)** | Nee | Nee |
 

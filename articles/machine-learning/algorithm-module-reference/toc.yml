@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: Aanbevelingsfunctie voor SVD-score
       href: score-svd-recommender.md
+    - name: Aanbevelingsfunctie voor wide en deep learning-scores
+      href: score-wide-and-deep-recommender.md
     - name: Aanbevelingsfunctie van SVD-training
       href: train-svd-recommender.md
+    - name: Aanbevelingsfunctie voor wide en deep learning-trainingen
+      href: train-wide-and-deep-recommender.md
 - name: Anomaliedetectie
   items:
     - name: Anomaliedetectie op basis van PCA

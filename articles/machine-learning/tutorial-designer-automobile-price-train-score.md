@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.custom: designer
-ms.openlocfilehash: 16f281cce70fb8d2a943b62c796c3037649c3c72
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f6d684829092d8be97785c46058186f3ca5542b2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656580"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84119023"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelfstudie: Prijzen voor auto's voorspellen met de ontwerpfunctie (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -220,11 +220,9 @@ Train het model door hiervoor een gegevensset te gebruiken waarin de prijs een v
 
 1. Selecteer **Regression** > **Linear Regression** en sleep dit naar het pijplijncanvas.
 
+1. In het modulepalet vouwt u de sectie **Module training** uit en sleept u de module **Train Model** naar het canvas.
+
 1. Koppel de uitvoer van de module **Linear Regression** aan de linkerinvoer van de module **Train Model**.
-
-1. In het modulepalet vouwt u de sectie **Moduletraining** uit en sleept u de module **Train Model** naar het canvas.
-
-1. Selecteer de module **Train Model** en sleep dit naar het pijplijncanvas.
 
 1. Koppel de trainingsgegevensuitvoer (linkerpoort) van de module **Split Data** aan de rechterinvoer van de module **Train Model**.
     

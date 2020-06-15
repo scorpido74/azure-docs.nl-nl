@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 6debf422d0c16a6a2bfe180e6febb4973846e0f0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870691"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344013"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Hugo-site publiceren in Azure Static Web Apps Preview
 
@@ -109,7 +109,7 @@ De volgende stappen laten zien hoe u een nieuwe statische site-app maakt en deze
 
 1. Selecteer in _Resourcegroep_ de optie **Nieuw**. Voer bij _Naam van nieuwe resourcegroep_ in: **statische-hugo-app**. Selecteer vervolgens **OK**.
 
-1. Geef vervolgens een globaal unieke naam op voor de app in het vak **Naam**. Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `-`. Deze waarde wordt gebruikt als het URL-voorvoegsel voor de statische app in de indeling `https://<APP_NAME>....`.
+1. Voer vervolgens een naam in voor uw app in het vak **Naam**. Geldige tekens zijn `a-z`, `A-Z`, `0-9` en `-`.
 
 1. Selecteer voor _Regio_ een beschikbare regio dicht bij u in de buurt.
 
@@ -153,21 +153,25 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Open de Hugo-app in een teksteditor en open het bestand _.github/workflows/azure-pages-<NAAM_VAN-WERKSTROOM>.yml_.
 
-1. Vervang de regel `- uses: actions/checkout@v2` (regel 18) door het volgende, om de Hugo-toepassing te bouwen.
+1. Vervang de regel `- uses: actions/checkout@v2` (regel 18) door het volgende, om de Hugo-toepassing te bouwen. Als u Hugo Extended vereist, verwijdert u het commentaar van `extended: true`.
 
    ```yml
    - uses: actions/checkout@v2
      with:
-       submodules: true
+       submodules: true  # Fetch Hugo themes (true OR recursive)
+       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
    - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.8
+     uses: peaceiris/actions-hugo@v2.4.11
      with:
-       hugo-version: "latest"
+       hugo-version: "latest"  # Hugo version: latest OR x.y.z
+       # extended: true
 
    - name: Build
      run: hugo
    ```
+   
+   Zie [peaceiris/actions-hugo](https://github.com/peaceiris/actions-hugo) voor meer informatie over het installeren van Hugo op GitHub Actions Runner.
 
 1. Voer de bijgewerkte werkstroom door en push deze naar GitHub.
 

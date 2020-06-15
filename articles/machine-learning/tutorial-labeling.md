@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: f880f189b19b4909268b6e0b24654fc4682ab7c8
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759180"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628396"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Zelfstudie: Een labelproject (preview) maken voor een afbeeldingsclassificatie met meerdere klassen 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Nu u toegang hebt tot de gegevens die u wilt voorzien van een label, maakt u het
 
 1. Selecteer **+ Project toevoegen**.
 
-    ![Een project maken](media/tutorial-labeling/create-project.png)
+    :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Een project maken":::
 
 ### <a name="project-details"></a>Projectgegevens
 
@@ -109,6 +109,12 @@ Nu u toegang hebt tot de gegevens die u wilt voorzien van een label, maakt u het
     1. Selecteer in de lijst de cirkel naast de naam van de gegevensset, bijvoorbeeld **images-for-tutorial**.
 
 1. Selecteer **Volgende** om door te gaan met het maken van het project.
+
+### <a name="incremental-refresh"></a>Incrementeel vernieuwen
+
+Als u van plan bent nieuwe installatiekopieën toe te voegen aan uw gegevensset, worden deze nieuwe installatiekopieën met incrementeel vernieuwen gevonden en toegevoegd aan uw project.  Wanneer u deze functie inschakelt, controleert het project regelmatig of er nieuwe installatiekopieën zijn.  U voegt voor deze zelfstudie geen nieuwe installatiekopieën toe aan het gegevensarchief. Zorg er daarom voor dat deze functie is uitgeschakeld.
+
+Selecteer **Volgende** om door te gaan.
 
 ### <a name="label-classes"></a>Labelklassen
 

@@ -1,6 +1,6 @@
 ---
-title: Gebeurtenissen verzenden of ontvangen van Azure Event Hubs met python (oud)
-description: In dit scenario ziet u hoe u python-scripts maakt en uitvoert waarmee gebeurtenissen worden verzonden naar of ontvangen van Azure Event Hubs met behulp van het oude pakket voor Azure-eventhub versie 1.
+title: Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behulp van Python (verouderd)
+description: In dit overzicht ziet u hoe u Python-scripts kunt maken en uitvoeren waarmee gebeurtenissen worden verzonden naar of ontvangen van Azure Event Hubs met behulp van het oude pakket azure-eventhub versie 1.
 services: event-hubs
 author: spelluru
 manager: femila
@@ -9,45 +9,46 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77162596"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558955"
 ---
-# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Quick Start: gebeurtenissen verzenden en ontvangen met Event Hubs met behulp van python (Azure-eventhub versie 1)
-In deze Quick start ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het python-pakket van **Azure-eventhub versie 1** . 
+# <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Quickstart: Gebeurtenissen verzenden en ontvangen met Event Hubs met behulp van Python (azure-eventhub versie 1)
+In deze quickstart ziet u hoe u gebeurtenissen kunt verzenden naar en ontvangen van een Event Hub met behulp van het Python-pakket **azure-eventhub versie 1**. 
 
 > [!WARNING]
-> Deze Snelstartgids maakt gebruik van het oude pakket voor Azure-eventhub versie 1. Zie [gebeurtenissen verzenden en ontvangen met Azure-eventhub versie 5](get-started-python-send-v2.md)voor een Snelstartgids die gebruikmaakt van de meest recente **versie 5** van het pakket. Raadpleeg de [hand leiding voor het migreren van Azure-eventhub versie 1 naar versie 5](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)als u uw toepassing wilt verplaatsen van het oude pakket naar een nieuwe.
+> In deze quickstart wordt het oude pakket azure-eventhub versie 1 gebruikt. Zie [Gebeurtenissen verzenden en ontvangen met behulp van azure-eventhub versie 5](get-started-python-send-v2.md) voor een quickstart waarin het nieuwste pakket azure-eventhub **versie 5** wordt gebruikt. Als u uw toepassing van het oude naar een nieuw pakket wilt verplaatsen, raadpleegt u de [Handleiding voor het migreren van azure-eventhub versie 1 naar versie 5](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
  
 
 ## <a name="prerequisites"></a>Vereisten
-Als u niet bekend bent met Azure Event Hubs, raadpleegt u [Event hubs Overview](event-hubs-about.md) voordat u deze Snelstartgids. 
+Als u nog geen ervaring hebt met Azure Event Hubs, raadpleegt u het [Event Hubs-overzicht](event-hubs-about.md) voordat u deze quickstart uitvoert. 
 
 Voor het voltooien van deze snelstart moet aan de volgende vereisten worden voldaan:
 
-- **Microsoft Azure abonnement**. Als u Azure-Services, met inbegrip van Azure Event Hubs, wilt gebruiken, hebt u een abonnement nodig.  Als u geen bestaand Azure-account hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/free/) of de voor delen van uw MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
-- Python 3,4 of hoger, met `pip` geïnstalleerd en bijgewerkt.
-- Het python-pakket voor Event Hubs. Als u het pakket wilt installeren, voert u deze opdracht uit in een opdracht prompt met python in het pad: 
+- **Microsoft Azure-abonnement**. Als u Azure-services wilt gebruiken, met inbegrip van Azure Event Hubs, hebt u een abonnement nodig.  Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/free/) of uw voordelen als MSDN-abonnee gebruiken wanneer u [een account maakt](https://azure.microsoft.com).
+- Python 3.4 of hoger, waarbij `pip` is geïnstalleerd en bijgewerkt.
+- Het Python-pakket voor Event Hubs. Als u het pakket wilt installeren, voert u deze opdracht uit in een opdrachtprompt met Python in het pad: 
   
   ```cmd
   pip install azure-eventhub==1.3.*
   ```
-- **Een event hubs naam ruimte en een event hub maken**. De eerste stap is het gebruik van de [Azure Portal](https://portal.azure.com) om een naam ruimte van het type Event hubs te maken en de beheer referenties te verkrijgen die uw toepassing nodig heeft om met de Event hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Vervolgens haalt u de waarde van de toegangs sleutel voor de Event Hub door de volgende instructies uit het artikel: [get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangs sleutel in de code die u verderop in deze Quick Start schrijft. De naam van de standaard sleutel is: **RootManageSharedAccessKey**. 
+- **Een Event Hubs-naamruimte en een Event Hub maken**. In de eerste stap gebruikt u [Azure Portal](https://portal.azure.com) om een naamruimte van het type Event Hubs te maken en de beheerreferenties te verkrijgen die de toepassing nodig heeft om met de Event Hub te communiceren. Volg de procedure in [dit artikel](event-hubs-create.md) om een naamruimte en een Event Hub te maken. Haal vervolgens de waarde van de toegangssleutel voor de Event Hub op door de instructies in het artikel te volgen: [Verbindingstekenreeks ophalen](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). U gebruikt de toegangssleutel in de code die u verderop in deze quickstart schrijft. De standaardsleutelnaam is: **RootManageSharedAccessKey**. 
 
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-Een python-toepassing maken die gebeurtenissen naar een Event Hub verzendt:
+Een Python-toepassing maken die gebeurtenissen naar een Event Hub verzendt:
 
 > [!NOTE]
-> In plaats van de Snelstartgids te gebruiken, kunt u de voor [beeld-apps](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) downloaden en uitvoeren vanuit github. Vervang de `EventHubConnectionString` teken `EventHubName` reeks en door uw event hub waarden.
+> In plaats van de quickstart te gebruiken, kunt u de [voorbeeld-apps](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) downloaden en uitvoeren vanuit GitHub. Vervang de tekenreeksen `EventHubConnectionString` en `EventHubName` door uw Event Hub-waarden.
 
-1. Open uw favoriete python-editor, zoals [Visual Studio code](https://code.visualstudio.com/)
-2. Maak een nieuw bestand met de naam *Send.py*. Met dit script worden 100 gebeurtenissen naar uw Event Hub verzonden.
-3. Plak de volgende code in *Send.py*, waarbij u de \<Event hubs naam ruimte \<>, eventhub \<>, accesskeynaam> \<en de primaire sleutel waarde> met uw waarden. 
+1. Open uw favoriete Python-editor, bijvoorbeeld [Visual Studio Code](https://code.visualstudio.com/)
+2. Maak een nieuw bestand met de naam *send.py*. Met dit script worden 100 gebeurtenissen naar uw Event Hub verzonden.
+3. Plak de volgende code in *send.py*, waarbij u de Event Hubs \<namespace>, \<eventhub>, \<AccessKeyName> en \<primary key value> vervangt door uw waarden: 
    
    ```python
    import sys
@@ -97,7 +98,7 @@ Een python-toepassing maken die gebeurtenissen naar een Event Hub verzendt:
    
 4. Sla het bestand op. 
 
-Als u het script wilt uitvoeren, voert u de volgende opdracht uit in de map waarin u *Send.py*hebt opgeslagen:
+Als u het script wilt uitvoeren, voert u de volgende opdracht uit in de map waar u *sender.py* hebt opgeslagen:
 
 ```cmd
 start python send.py
@@ -107,10 +108,10 @@ Gefeliciteerd! U hebt nu berichten verzonden naar een Event Hub.
 
 ## <a name="receive-events"></a>Gebeurtenissen ontvangen
 
-Een python-toepassing maken die gebeurtenissen ontvangt van een Event Hub:
+Een Python-toepassing maken die gebeurtenissen ontvangt van een Event Hub:
 
-1. Maak een bestand met de naam *recv.py*in uw python-editor.
-2. Plak de volgende code in *recv.py*, waarbij u de \<Event hubs naam ruimte \<>, eventhub \<>, accesskeynaam> \<en de primaire sleutel waarde> met uw waarden. 
+1. Maak in uw Python-editor een bestand met de naam *recv.py*.
+2. Plak de volgende code in *recv.py*, waarbij u de Event Hubs \<namespace>, \<eventhub>, \<AccessKeyName> en \<primary key value> vervangt door uw waarden: 
    
    ```python
    import os
@@ -161,7 +162,7 @@ Een python-toepassing maken die gebeurtenissen ontvangt van een Event Hub:
    
 4. Sla het bestand op.
 
-Als u het script wilt uitvoeren, voert u de volgende opdracht uit in de map waarin u *recv.py*hebt opgeslagen:
+Als u het script wilt uitvoeren, voert u de volgende opdracht uit in de map waar u *recv.py* hebt opgeslagen:
 
 ```cmd
 start python recv.py

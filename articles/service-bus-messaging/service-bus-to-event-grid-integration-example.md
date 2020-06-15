@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Service Bus voor voor beelden van Event Grid-integratie'
-description: 'Zelf studie: in dit artikel vindt u voor beelden van de integratie van Service Bus Messa ging en Event Grid.'
+title: 'Zelfstudie: Voorbeelden integratie Azure Service Bus naar Event Grid'
+description: 'Zelfstudie: In dit artikel vindt u voorbeelden van de integratie van Service Bus-berichten met Event Grid.'
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -12,25 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 548a51fef693aae6e9b9068f9731b82aaa85dfe3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067772"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610382"
 ---
-# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Zelf studie: reageren op Azure Service Bus gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps
-In deze zelf studie leert u hoe u kunt reageren op Azure Service Bus gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps. 
+# <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Zelfstudie: Reageren op Azure Service Bus-gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps
+In deze zelfstudie leert u hoe u kunt reageren op Azure Service Bus-gebeurtenissen die via Azure Event Grid worden ontvangen met behulp van Azure Functions en Azure Logic Apps. 
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
 > * Een Service Bus-naamruimte maken
-> * Een voorbeeld toepassing voorbereiden om berichten te verzenden
-> * Een test functie instellen op Azure
+> * Een voorbeeldtoepassing voorbereiden om berichten te verzenden
+> * Een test kunt instellen op Azure
 > * Functie en naamruimte met elkaar verbinden via Event Grid
-> * Berichten verzenden naar het Service Bus onderwerp
+> * Berichten kunt verzenden naar Service Bus-onderwerp
 > * Berichten ontvangen met behulp van Azure Functions
 > * Berichten ontvangen met behulp van Logic Apps
 
@@ -38,33 +38,33 @@ In deze zelfstudie leert u het volgende:
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 ## <a name="create-a-service-bus-namespace"></a>Een Service Bus-naamruimte maken
-Volg de instructies in deze zelf studie: [Quick Start: gebruik de Azure Portal om een service bus onderwerp en abonnementen aan het onderwerp te maken](service-bus-quickstart-topics-subscriptions-portal.md) om de volgende taken uit te voeren:
+Volg de instructies in deze zelfstudie: [Snelstart: De Azure-portal gebruiken om een Service Bus-onderwerp en abonnementen te maken voor het onderwerp ](service-bus-quickstart-topics-subscriptions-portal.md)om de volgende taken uit te voeren:
 
-- Maak een **Premium** -service bus naam ruimte. 
-- Haal de connection string op. 
-- Maak een Service Bus onderwerp.
-- Maak twee abonnementen op het onderwerp. 
+- Een **premium** Service Bus-naamruimte maken. 
+- De verbindingsreeks ophalen. 
+- Een Service Bus-onderwerp maken.
+- Twee abonnementen maken op het onderwerp. 
 
-## <a name="prepare-a-sample-application-to-send-messages"></a>Een voorbeeld toepassing voorbereiden om berichten te verzenden
-U kunt een willekeurige methode gebruiken om een bericht naar uw Service Bus-onderwerp te verzenden. In de voorbeeld code aan het einde van deze procedure wordt ervan uitgegaan dat u Visual Studio 2017 gebruikt.
+## <a name="prepare-a-sample-application-to-send-messages"></a>Een voorbeeldtoepassing voorbereiden om berichten te verzenden
+U kunt een willekeurige methode gebruiken om een bericht naar uw Service Bus-onderwerp te verzenden. In de voorbeeldcode aan het einde van deze procedure wordt ervan uitgegaan dat u van Visual Studio 2017 gebruikmaakt.
 
 1. Kloon de [GitHub azure-service-bus repository](https://github.com/Azure/azure-service-bus/) (opslagplaats van GitHub-azure-service-bus).
 2. Ga in Visual Studio naar de map *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* en open het bestand *SBEventGridIntegration.sln*.
 3. Ga naar het project **MessageSender** en selecteer **Program.cs**.
-4. Vul de naam van het Service Bus onderwerp in en de connection string die u hebt ontvangen van de vorige stap:
+4. Vul de naam van het Service Bus-onderwerp in en de verbindingstekenreeks die u hebt ontvangen van de vorige stap:
 
     ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
-5. Bouw en voer het programma uit om test berichten te verzenden naar het Service Bus onderwerp. 
+5. Bouw en voer het programma uit om testberichten te verzenden naar het Service Bus-onderwerp. 
 
-## <a name="set-up-a-test-function-on-azure"></a>Een test functie instellen op Azure 
-Voordat u het volledige scenario doorloopt, stelt u ten minste een kleine test functie in, die u kunt gebruiken om fouten op te sporen en de gebeurtenissen te observeren die stromen. Volg de instructies in de [eerste functie maken in het Azure Portal](../azure-functions/functions-create-first-azure-function.md) artikel om de volgende taken uit te voeren: 
+## <a name="set-up-a-test-function-on-azure"></a>Een test kunt instellen op Azure 
+Voordat u het hele scenario doorwerkt, dient u in elk geval een kleine testfunctie in te stellen. Deze kunt u gebruiken om te zien welke gebeurtenissen er worden gestroomd en om de fouten erin op te sporen. Volg de instructies in het artikel [Uw eerste functie maken in de Azure Portal](../azure-functions/functions-create-first-azure-function.md) om de volgende taken uit te voeren: 
 
 1. Een functie-app maken.
 2. Een door HTTP geactiveerde functie maken. 
@@ -72,9 +72,9 @@ Voordat u het volledige scenario doorloopt, stelt u ten minste een kleine test f
 Voer vervolgens de volgende stappen uit: 
 
 
-# <a name="azure-functions-v2"></a>[Azure Functions v2](#tab/v2)
+# <a name="azure-functions-v2"></a>[Azure Functions V2](#tab/v2)
 
-1. Vouw **functies** in de structuur weergave uit en selecteer de functie. Vervang de code voor de functie door de volgende code: 
+1. Vouw **Functies** in de structuurweergave uit en selecteer de functie. Vervang de code voor de functie door de volgende code: 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -122,21 +122,27 @@ Voer vervolgens de volgende stappen uit:
     }
     
     ```
-2. Selecteer **Opslaan en uitvoeren**.
+2. Selecteer **Opslaan** op de werkbalk om de code voor de functie op te slaan.
 
-    ![Uitvoer functie-app](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-3. Selecteer **functie-URL ophalen** en noteer de URL. 
+    ![Functiecode opslaan](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
+3. Selecteer **Testen/uitvoeren** op de werkbalk, voer een naam in de hoofdtekst in en selecteer **Uitvoeren**. 
+
+    ![Testuitvoering](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+4. Controleer of de uitvoer en logboeken worden weergegeven, zoals in de volgende afbeelding. 
+
+    ![Testuitvoering - uitvoer](./media/service-bus-to-event-grid-integration-example/test-run-output.png)
+3. Selecteer **Functie-URL ophalen** en noteer de URL. 
 
     ![Functie-URL ophalen](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Selecteer de knop **kopiëren** naast de URL-tekst.    
+    ![Functie-URL kopiëren](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
-# <a name="azure-functions-v1"></a>[Azure Functions v1](#tab/v1)
+# <a name="azure-functions-v1"></a>[Azure Functions V1](#tab/v1)
 
-1. De functie voor het gebruik van **v1** -versie configureren: 
-    1. Selecteer de functie-app in de structuur weergave en selecteer **functie-app-instellingen**. 
-
-        ![Instellingen voor functie-app]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
-    2. Selecteer **~ 1** voor **runtime versie**. 
-2. Vouw **functies** in de structuur weergave uit en selecteer de functie. Vervang de code voor de functie door de volgende code: 
+1. De functie voor het gebruik van **V1**-versie configureren: 
+    1. Selecteer uw functie-app in de structuurweergave en selecteer **Instellingen functie-app**. 
+    2. Selecteer **~1** voor **Runtime-versie**. 
+2. Vouw **Functies** in de structuurweergave uit en selecteer de functie. Vervang de code voor de functie door de volgende code: 
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -183,42 +189,48 @@ Voer vervolgens de volgende stappen uit:
     ```
 4. Selecteer **Opslaan en uitvoeren**.
 
-    ![Uitvoer functie-app](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Selecteer **functie-URL ophalen** en noteer de URL. 
+    ![Uitvoer van de functie-app](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+4. Selecteer **Functie-URL ophalen** op de werkbalk. 
 
     ![Functie-URL ophalen](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Selecteer de knop **kopiëren** naast de URL-tekst.    
+    ![Functie-URL kopiëren](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Functie en naamruimte met elkaar verbinden via Event Grid
-In deze sectie kunt u de functie en de naam ruimte Service Bus koppelen met behulp van de Azure Portal. 
+In deze sectie koppelt u de functie en de Service Bus-naamruimte met behulp van de Azure Portal. 
 
-Voer de volgende stappen uit om een Azure Event Grid-abonnement te maken:
+Volg de volgende stappen als u een Azure Event Grid-abonnement wilt maken:
 
-1. Ga in het Azure Portal naar uw naam ruimte en selecteer vervolgens in het linkerdeel venster **gebeurtenissen**. Het venster met de naamruimte wordt geopend, waarbij twee Event Grid-abonnementen in het rechterdeelvenster worden weergegeven. 
+1. Ga in Azure Portal naar uw naamruimte en selecteer **Gebeurtenissen** in het linkerdeelvenster. Het venster met de naamruimte wordt geopend, waarbij twee Event Grid-abonnementen in het rechterdeelvenster worden weergegeven. 
     
-    ![Service Bus-gebeurtenissen pagina](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
-2. Selecteer **+ gebeurtenis abonnement** op de werk balk. 
-3. Voer op de pagina **gebeurtenis abonnement maken** de volgende stappen uit:
+    ![Service Bus - pagina gebeurtenissen](./media/service-bus-to-event-grid-integration-example/service-bus-events-page.png)
+2. Selecteer **+ Gebeurtenisabonnement** op de werkbalk. 
+3. Voer op de pagina **Gebeurtenisabonnement maken** de volgende stappen uit:
     1. Voer een **naam** in voor het abonnement. 
-    2. Selecteer een **webhook** voor het **type eind punt**. 
+    2. Voer een **naam** in voor het **systeemonderwerp**. Systeemonderwerpen zijn onderwerpen die zijn gemaakt voor Azure-resources, zoals Azure Storage-account en Azure Service Bus. Zie [Overzicht van systeemonderwerpen](../event-grid/system-topics.md) voor meer informatie over systeemonderwerpen.
+    2. Selecteer **Webhook** voor het **Eindpunttype**. 
 
-        ![Service Bus-Event Grid-abonnement](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
-    3. Kies **een eind punt selecteren**, plak de functie-URL en selecteer vervolgens **selectie bevestigen**. 
+        ![Service Bus - Event Grid-abonnement](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
+    3. Kies **Een eindpunt selecteren**, plak de functie-URL en selecteer vervolgens **Selectie bevestigen**. 
 
-        ![Functie: Selecteer het eind punt](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Ga naar het tabblad **filters** , voer de naam in van het **eerste abonnement** op het service bus onderwerp dat u eerder hebt gemaakt, en selecteer vervolgens de knop **maken** . 
+        ![Functie: het eindpunt selecteren](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
+    4. Open het tabblad **Filters** en voer de volgende taken uit:
+        1. Selecteer **Filteren van onderwerpen inschakelen**.
+        2. Voer de naam in van het **eerste abonnement** op het Service Bus-onderwerp dat u eerder hebt gemaakt.
+        3. Selecteer de knop **Create** (Maken). 
 
-        ![Filter voor gebeurtenis abonnementen](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Controleer of het gebeurtenis abonnement in de lijst wordt weer geven.
+            ![Filter Gebeurtenisabonnement](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Ga naar het tabblad **Gebeurtenisabonnementen** van de pagina **Gebeurtenissen** en bevestig dat u het gebeurtenisabonnement in de lijst ziet.
 
-    ![Gebeurtenis abonnement in de lijst](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
+    ![Gebeurtenisabonnement in de lijst](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
-## <a name="send-messages-to-the-service-bus-topic"></a>Berichten verzenden naar het Service Bus onderwerp
-1. Voer de .NET C#-toepassing uit, waarmee berichten naar het onderwerp Service Bus worden verzonden. 
+## <a name="send-messages-to-the-service-bus-topic"></a>Berichten kunt verzenden naar Service Bus-onderwerp
+1. Voer de .NET C#-toepassing uit, waarmee berichten naar het Service Bus-onderwerp worden verzonden. 
 
-    ![Console-app-uitvoer](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
-1. Vouw op de pagina voor uw Azure function-app **functies**uit, vouw uw **functie**uit en selecteer **monitor**. 
+    ![Uitvoer console-app](./media/service-bus-to-event-grid-integration-example/console-app-output.png)
+1. Vouw op de pagina voor uw Azure-functie-app **Functies** uit, vouw uw **functie** uit en selecteer **Bewaken**. 
 
     ![Functie bewaken](./media/service-bus-to-event-grid-integration-example/function-monitor.png)
 
@@ -228,96 +240,100 @@ In de vorige sectie hebt u een eenvoudig test- en foutopsporingsscenario gezien,
 In deze sectie leert u hoe u berichten ontvangt en verwerkt nadat u een gebeurtenis hebt ontvangen.
 
 ### <a name="publish-a-function-from-visual-studio"></a>Een functie publiceren vanuit Visual Studio
-1. In dezelfde Visual Studio-oplossing (**SBEventGridIntegration**) die u hebt geopend, selecteert u **ReceiveMessagesOnEvent.cs** in het **SBEventGridIntegration** -project. 
-2. Voer uw Service Bus in connection string in de volgende code:
+1. In dezelfde Visual Studio-oplossing (**SBEventGridIntegration**) die u hebt geopend, selecteert u **ReceiveMessagesOnEvent.cs** in het project **SBEventGridIntegration**. 
+2. Voer uw Service Bus-verbindingsreeks in de volgende code in:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
-3. Down load het **publicatie profiel** voor de functie:
+3. Download het **publicatieprofiel** voor de functie:
     1. Selecteer uw functie-app. 
-    2. Selecteer het tabblad **overzicht** als dit nog niet is geselecteerd. 
-    3. Selecteer **publicatie profiel ophalen** op de werk balk. 
+    2. Selecteer het tabblad **Overzicht** als dit nog niet is geselecteerd. 
+    3. Selecteer **Publicatieprofiel ophalen** op de werkbalk. 
 
-        ![Publicatie profiel ophalen voor de functie](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
-    4. Sla het bestand op in de map van uw project. 
+        ![Publicatieprofiel ophalen voor de functie](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
+    4. Sla het bestand op de map van uw project. 
 4. Klik vervolgens in Visual Studio met de rechtermuisknop op **SBEventGridIntegration** selecteer **Publish**. 
-5. Selecteer **Start** op de pagina **publiceren** . 
-6. Voer op de pagina **een publicatie doel** selecteren de volgende stappen uit, selecteer **profiel importeren**. 
+5. Voer in het dialoogvenster **Publiceren** de volgende stappen uit: 
+    1. Selecteer **Start** op de pagina **Publiceren** 
+    2. Voor het **Doel** selecteert u **Profiel importeren**. 
+    3. Selecteer **Next**. 
 
-    ![Knop Visual Studio-profiel importeren](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Selecteer het **publicatie profiel bestand** dat u eerder hebt gedownload. 
-8. Selecteer **publiceren** op de pagina **publiceren** . 
+        ![Visual Studio - knop Profiel importeren](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Selecteer het **publicatieprofielbestand** dat u eerder hebt gedownload en selecteer **Voltooien**.
 
-    ![Visual Studio-publiceren](./media/service-bus-to-event-grid-integration-example/select-publish.png)
-9. Bevestig dat u de nieuwe Azure Function **ReceiveMessagesOnEvent**ziet. Vernieuw de pagina als dat nodig is. 
+    ![Het publicatieprofiel selecteren](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
+8. Selecteer **Publiceren** op de pagina **Publiceren**. 
+
+    ![Visual Studio - Publiceren](./media/service-bus-to-event-grid-integration-example/select-publish.png)
+9. Controleer of u de nieuwe Azure-functie **ReceiveMessagesOnEvent** ziet. Vernieuw de pagina indien nodig. 
 
     ![Controleer of de nieuwe functie is gemaakt](./media/service-bus-to-event-grid-integration-example/function-receive-messages.png)
 10. Haal de URL naar de nieuwe functie op en noteer deze. 
 
-### <a name="event-grid-subscription"></a>Event Grid abonnement
+### <a name="event-grid-subscription"></a>Event Grid-abonnement
 
 1. Het bestaande Event Grid-abonnement verwijderen:
-    1. Selecteer op de pagina **Service Bus naam ruimte** de optie **gebeurtenissen** in het menu links. 
-    2. Selecteer het bestaande gebeurtenis abonnement. 
-    3. Selecteer op de pagina **gebeurtenis abonnement** de optie **verwijderen**.
-2. Volg de instructies in de sectie [verbinding maken met de functie en de naam ruimte via event grid](#connect-the-function-and-namespace-via-event-grid) om een event grid-abonnement te maken met behulp van de nieuwe functie-URL.
-3. Volg de instructies in de sectie [berichten verzenden naar het onderwerp service bus](#send-messages-to-the-service-bus-topic) om berichten naar het onderwerp te verzenden en de functie te controleren. 
+    1. Selecteer in het linkermenu op de pagina **Service Bus-naamruimte** de optie **Gebeurtenissen**. 
+    2. Selecteer het bestaande gebeurtenisabonnement. 
+    3. Selecteer op de pagina **Gebeurtenisabonnement** de optie **Verwijderen**.
+2. Volg de instructies in de sectie [De functie en naamruimte verbinden via Event Grid](#connect-the-function-and-namespace-via-event-grid) om een Event Grid-abonnement te maken met behulp van de nieuwe functie-URL.
+3. Volg de instructies in de sectie [Berichten verzenden naar het Service Bus-onderwerp](#send-messages-to-the-service-bus-topic) om berichten naar het onderwerp te verzenden en de functie te bewaken. 
 
 ## <a name="receive-messages-by-using-logic-apps"></a>Berichten ontvangen met behulp van Logic Apps
-Verbind een logische app met Azure Service Bus en Azure Event Grid door de volgende stappen uit te voeren:
+Verbind aan de hand van de volgende stappen een logische app met Azure Service Bus en Azure Event Grid:
 
 1. Maak een logische app in de Azure Portal.
-    1. Selecteer **+ een resource maken**, selecteer **integratie**en selecteer vervolgens **logische app**. 
-    2. Voer op de pagina **logische app-maken** een **naam** in voor de logische app.
-    3. Selecteer uw Azure- **abonnement**. 
-    4. Selecteer **bestaande gebruiken** voor de **resource groep**en selecteer de resource groep die u hebt gebruikt voor andere resources (zoals Azure function, service bus naam ruimte) die u eerder hebt gemaakt. 
-    5. Selecteer de **locatie** voor de logische app. 
-    6. Selecteer **maken** om de logische app te maken. 
-2. Selecteer op de pagina **Logic apps Designer** de optie **lege logische app** onder **sjablonen**. 
-3. Voer de volgende stappen uit in de ontwerp functie:
-    1. Zoeken naar **Event grid**. 
-    2. Selecteren **Wanneer een bron gebeurtenis plaatsvindt (preview)-Azure Event grid**. 
+    1. Selecteer **+ Een resource maken**, selecteer **Integratie** en selecteer **Logische app**. 
+    2. Voer op de pagina **Logische app - Maken** een **naam** in voor de logische app.
+    3. Selecteer uw Azure-**abonnement**. 
+    4. Selecteer **Bestaande gebruiken** voor de **Resourcegroep** en selecteer de resourcegroep die u hebt gebruikt voor andere resources (zoals Azure-functie, Service Bus-naamruimte) die u eerder hebt gemaakt. 
+    5. Selecteer de **Locatie** voor de logische app. 
+    6. Selecteer **Maken** om de logische app te maken. 
+2. Op de pagina **Ontwerper van logische apps** selecteert u **Lege logische app** onder **Sjablonen**. 
+3. Voer in de ontwerper de volgende stappen uit:
+    1. Zoek naar **Event Grid**. 
+    2. Selecteer **Wanneer een resourcegebeurtenis optreedt (preview) - Azure Event Grid**. 
 
-        ![Logic Apps Designer: Selecteer Event Grid trigger](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
-4. Selecteer **Aanmelden**, voer uw Azure-referenties in en selecteer **toegang toestaan**. 
-5. Voer de volgende stappen uit op de pagina **Wanneer een bron gebeurtenis zich voordoet** :
+        ![Ontwerper van logische apps: Event Grid-trigger selecteren](./media/service-bus-to-event-grid-integration-example/logic-apps-event-grid-trigger.png)
+4. Selecteer **Aanmelden**, voer uw Azure-referenties in en selecteer **Toegang toestaan**. 
+5. Voer de volgende stappen uit op de pagina **Wanneer een resourcegebeurtenis zich voordoet**:
     1. Selecteer uw Azure-abonnement. 
-    2. Selecteer voor **resource type**de optie **micro soft. ServiceBus. namespaces**. 
-    3. Selecteer bij **resource naam**uw service bus naam ruimte. 
-    4. Selecteer **nieuwe para meter toevoegen**en selecteer **achtervoegsel filter**. 
-    5. Voer bij **achtervoegsel filter**de naam in van het tweede service bus-onderwerp-abonnement. 
-        ![Logic Apps Designer: gebeurtenis configureren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
-6. Selecteer **+ nieuwe stap** in de ontwerp functie en voer de volgende stappen uit:
-    1. Zoeken naar **Service Bus**.
+    2. Voor **Resourcetype** selecteert u **Microsoft.ServiceBus.Namespaces**. 
+    3. Voor **Resourcenaam** selecteert u uw Service Bus-naamruimte. 
+    4. Selecteer **Nieuwe parameter toevoegen** en selecteer **Achtervoegselfilter**. 
+    5. Voer voor **Achtervoegselfilter** de naam in van het tweede abonnement voor Service Bus-onderwerp. 
+        ![Ontwerper van logische apps: gebeurtenis configureren](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
+6. Selecteer **+ Nieuwe stap** in de ontwerper en voer de volgende stappen uit:
+    1. Zoek naar **Service Bus**.
     2. Selecteer **Service Bus** in de lijst. 
-    3. Selecteer voor **Get-berichten** in de lijst met **acties** . 
-    4. Selecteer **berichten ophalen uit een onderwerp-abonnement (Peek-vergren delen)**. 
+    3. Selecteer voor **Berichten ophalen** in de lijst **Acties**. 
+    4. Selecteer **Berichten van een onderwerpabonnement ontvangen (kort weergeven)** . 
 
-        ![Logic Apps Designer: de actie berichten ophalen](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. Voer een **naam in voor de verbinding**. Bijvoorbeeld: **berichten van het onderwerp-abonnement ophalen**en de naam ruimte service bus selecteren. 
+        ![Ontwerper van logische apps: de actie berichten ophalen](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
+    5. Geef een **naam voor de verbinding op**. Bijvoorbeeld: **Ontvang berichten van het onderwerp-abonnement** en selecteer de Service Bus-naamruimte. 
 
-        ![Logic Apps Designer: Selecteer de Service Bus naam ruimte](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
+        ![Ontwerper van logische apps: de Service Bus-naamruimte selecteren](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
     6. selecteer **RootManageSharedAccessKey**.
 
-        ![Logic Apps Designer: Selecteer de gedeelde toegangs sleutel](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
+        ![Ontwerper van logische apps: de gedeelde toegangssleutel selecteren](./media/service-bus-to-event-grid-integration-example/logic-app-shared-access-key.png) 
     7. Selecteer **Maken**. 
     8. Selecteer uw onderwerp en abonnement. 
     
-        ![Logic Apps Designer: Selecteer uw Service Bus onderwerp en abonnement](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
-7. Selecteer **+ nieuwe stap**en voer de volgende stappen uit: 
+        ![Ontwerper van logische apps: uw Service Bus-onderwerp en -abonnement selecteren](./media/service-bus-to-event-grid-integration-example/logic-app-select-topic-subscription.png)
+7. Selecteer **+ Nieuwe stap** en voer de volgende stappen uit: 
     1. Selecteer **Service Bus**.
-    2. Selecteer in de lijst met acties **het bericht in een onderwerp-abonnement volt ooien** . 
-    3. Selecteer uw Service Bus **onderwerp**.
-    4. Selecteer het tweede **abonnement** op het onderwerp.
-    5. Selecteer **token** vergren delen van de **dynamische inhoud**voor **het lock-token van het bericht**. 
+    2. Selecteer **Het bericht in een onderwerp met een abonnement voltooien** in de lijst met acties. 
+    3. Selecteer uw Service Bus-**onderwerp**.
+    4. Selecteer de tweede **abonnement** op het onderwerp.
+    5. Selecteer voor **Vergrendelingstoken van het bericht** de optie **Vergrendelingstoken** van de **Dynamische inhoud**. 
 
-        ![Logic Apps Designer: Selecteer uw Service Bus onderwerp en abonnement](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
-8. Selecteer **Opslaan** in de werk balk van de Logic apps Designer om de logische app op te slaan. 
-9. Volg de instructies in de sectie [berichten verzenden naar het onderwerp service bus](#send-messages-to-the-service-bus-topic) om berichten naar het onderwerp te verzenden. 
-10. Ga naar de **overzichts** pagina van uw logische app. U ziet dat de logische app wordt uitgevoerd in de geschiedenis van de **uitvoering** van de verzonden berichten.
+        ![Ontwerper van logische apps: uw Service Bus-onderwerp en -abonnement selecteren](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)
+8. Selecteer **Opslaan** op de werkbalk van de Ontwerper voor logische apps om de logische app op te slaan. 
+9. Volg de instructies in de sectie [Berichten verzenden naar het Service Bus-onderwerp](#send-messages-to-the-service-bus-topic) om berichten naar het onderwerp te verzenden. 
+10. Ga naar de pagina **Overzicht** van uw logische app. U ziet de uitvoeringen van de logische app in de **Geschiedenis van uitvoeringen** voor de verzonden berichten.
 
-    ![Logic Apps Designer-Logic app-uitvoeringen](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
+    ![Ontwerper van logische apps - uitvoeringen van logische app](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

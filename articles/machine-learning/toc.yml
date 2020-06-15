@@ -93,6 +93,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Concepten
   items:
+    - name: Enterprise- versus Basic-edities
+      href: concept-editions.md
     - name: Kosten voorspellen en beheren
       href: concept-plan-manage-cost.md
     - name: Designer (ML slepen en neerzetten)
@@ -365,6 +367,8 @@
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure IoT Edge-apparaten
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA-interferentie
