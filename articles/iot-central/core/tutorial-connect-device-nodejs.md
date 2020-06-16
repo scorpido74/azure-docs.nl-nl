@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een algemene node. js-client-app verbinden met Azure IoT Central | Microsoft Docs'
-description: In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een apparaat met een node. js-client-app verbindt met uw Azure IoT Central-toepassing. U maakt een sjabloon voor een apparaat door een mogelijkheidsprofiel te importeren en weer gaven toe te voegen waarmee u kunt communiceren met een verbonden apparaat
+title: 'Zelfstudie: een generieke Node.js-client-app verbinden met Azure IoT Central | Microsoft Docs'
+description: In deze zelfstudie wordt uitgelegd hoe u, als apparaatontwikkelaar, een apparaat met een Node.js-client-app verbindt met uw Azure IoT Central-toepassing. U maakt een apparaatsjabloon door een apparaatondersteuningsprofiel te importeren en weergaven toe te voegen waarmee u kunt communiceren met een verbonden apparaat
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/24/2020
@@ -8,57 +8,57 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758199"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417902"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelf studie: een client toepassing maken en verbinden met uw Azure IoT Central-toepassing (node. js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Zelfstudie: Een clienttoepassing maken en verbinden met uw Azure IoT Central-toepassing (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
-*Dit artikel is van toepassing op oplossingen bouwers en ontwikkel aars van apparaten.*
+*Dit artikel is van toepassing op oplossingenbouwers en apparaatontwikkelaars.*
 
-In deze zelf studie wordt uitgelegd hoe u als een ontwikkelaar van een apparaat een node. js-client toepassing verbindt met uw Azure IoT Central-toepassing. Met de node. js-toepassing wordt het gedrag van een omgevings sensor apparaat gesimuleerd. U gebruikt een voor beeld van een _mogelijkheidsprofiel_ om een _sjabloon_ voor het apparaat te maken in IOT Central. U voegt weer gaven toe aan de sjabloon voor het apparaat om een operator in staat te stellen te communiceren met een apparaat.
+In deze zelfstudie wordt uitgelegd hoe u, als apparaatontwikkelaar, een Node.js-clienttoepassing verbindt met uw Azure IoT Central-toepassing. De Node.js-toepassing simuleert het gedrag van een omgevingssensorapparaat. U gebruikt een voorbeeld van een _apparaatondersteuningsprofiel_ om _een apparaatsjabloon_ te maken in IoT Central. U voegt weergaven toe aan de apparaatsjabloon zodat een operator met een apparaat kan communiceren.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Importeer een mogelijkheidsprofiel om een sjabloon voor een apparaat te maken.
-> * Standaard-en aangepaste weer gaven toevoegen aan een sjabloon voor een apparaat.
-> * Een sjabloon voor een apparaat publiceren en een echt apparaat toevoegen aan uw IoT Central-toepassing.
-> * Maak de apparaatcode van node. js en voer deze uit om verbinding te maken met uw IoT Central-toepassing.
-> * De gesimuleerde telemetrie weer geven die vanaf het apparaat is verzonden.
-> * Gebruik een weer gave om apparaateigenschappen te beheren.
-> * U kunt synchrone en asynchrone opdrachten aanroepen om het apparaat te beheren.
+> * Een apparaatondersteuningsprofiel importeren om een apparaatsjabloon te maken.
+> * Standaardweergaven en aangepaste weergaven toevoegen aan een apparaatsjabloon.
+> * Een apparaatsjabloon publiceren en een echt apparaat toevoegen aan uw IoT Central-toepassing.
+> * De Node.js-apparaatcode maken, deze uitvoeren en kijken hoe deze verbinding maakt met uw IoT Central-toepassing.
+> * De gesimuleerde telemetrie bekijken die vanaf het apparaat wordt verzonden.
+> * Een weergave gebruiken om apparaateigenschappen te beheren.
+> * Synchrone en asynchrone opdrachten aanroepen om het apparaat te beheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt het volgende nodig om de stappen in dit artikel uit te voeren:
 
-* Een Azure IoT Central-toepassing gemaakt met behulp van de sjabloon voor **aangepaste toepassingen** . Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
-* Een ontwikkelings machine waarop de [node. js](https://nodejs.org/) -versie 10.0.0 of hoger is geïnstalleerd. U kunt uitvoeren `node --version` op de opdracht regel om uw versie te controleren. In de instructies in deze zelf studie wordt ervan uitgegaan dat u de **knoop punt** opdracht uitvoert vanaf de Windows-opdracht prompt. U kunt node. js echter gebruiken op veel andere besturings systemen.
+* Een Azure IoT Central-toepassing gemaakt met behulp van de sjabloon **Aangepaste toepassing**. Zie voor meer informatie de [snelstart over het maken van een toepassing](quick-deploy-iot-central.md).
+* Een ontwikkelmachine waarop [Node.js](https://nodejs.org/) versie 10.0.0 of hoger is geïnstalleerd. Voer `node --version` uit op de opdrachtregel om uw versie te controleren. In de instructies in deze zelfstudie wordt ervan uitgegaan dat u de opdracht **node** uitvoert vanaf de Windows-opdrachtprompt. U kunt Node.js echter gebruiken met verschillende andere besturingssystemen.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
 ### <a name="create-a-nodejs-application"></a>Een Node.js-toepassing maken
 
-De volgende stappen laten zien hoe u een node. js-client toepassing maakt die verbinding maakt met het echte apparaat dat u hebt toegevoegd aan de toepassing. Met deze node. js-toepassing wordt het gedrag van een echt apparaat gesimuleerd.
+In de volgende stappen ziet u hoe u een Node.js-clienttoepassing maakt die verbinding maakt met het echte apparaat dat u aan de toepassing hebt toegevoegd. Deze Node.js-toepassing simuleert het gedrag van een echt apparaat.
 
-1. Navigeer in uw opdracht regel omgeving naar de `environmental-sensor` map die u eerder hebt gemaakt.
+1. Ga in uw opdrachtregelprogramma naar de map `environmental-sensor` die u eerder hebt gemaakt.
 
-1. Als u het node. js-project wilt initialiseren en de vereiste afhankelijkheden wilt installeren, voert u de volgende opdrachten uit: accepteer `npm init`alle standaard opties wanneer u uitvoert.
+1. U kunt het Node.js-project initialiseren en de vereiste afhankelijkheden installeren door de volgende opdrachten uit te voeren (accepteer alle standaardopties wanneer u `npm init`uitvoert):
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Maak in de map een bestand met de `environmental-sensor` naam **environmentalSensor. js** .
+1. Maak een bestand met de naam **environmentalSensor.js** in de map `environmental-sensor`.
 
-1. Voeg de volgende `require` -instructies toe aan het begin van het bestand **environmentalSensor. js** :
+1. Voeg de volgende `require`-instructies toe aan het begin van het bestand **environmentalSensor.js**:
 
     ```javascript
     "use strict";
@@ -87,9 +87,9 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     var ledOn = true;
     ```
 
-    Werk de tijdelijke `{your Scope ID}`aanduidingen `{your Device ID}`, en `{your Primary Key}` met de waarden die u eerder hebt genoteerd, bij. In dit `targetTemperature` voor beeld initialiseert u op nul, kunt u het huidige aantal lees bewerkingen van het apparaat of een waarde vanaf het dubbele apparaat gebruiken.
+    Werk de tijdelijke aanduidingen voor `{your Scope ID}`, `{your Device ID}` en `{your Primary Key}` bij met de waarden die u eerder hebt genoteerd. In dit voorbeeld zet u `targetTemperature` op nul. U kunt ook de huidige waarde van het apparaat of een waarde van de apparaatdubbel gebruiken.
 
-1. Als u gesimuleerde telemetrie naar uw Azure IoT Central-toepassing wilt verzenden, voegt u de volgende functie toe aan het bestand:
+1. Als u telemetrie wilt verzenden naar uw Azure IoT Central-toepassing, voegt u de volgende functie toe aan het bestand:
 
     ```javascript
     // Send simulated device telemetry.
@@ -107,9 +107,9 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     }
     ```
 
-    De namen van de telemetrie-`temp` items `humid`(en) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de telemetriegegevens (`temp` en `humid`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-1. Als u dubbele eigenschappen van een apparaat wilt verzenden naar uw Azure IoT Central-toepassing, voegt u de volgende functie toe aan het bestand:
+1. Als u eigenschappen van de app wilt verzenden naar uw Azure IoT Central-toepassing, voegt u de volgende functie toe aan het bestand:
 
     ```javascript
     // Send device twin reported properties.
@@ -119,9 +119,9 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     }
     ```
 
-    IoT Central gebruikt apparaatdubbels om eigenschaps waarden te synchroniseren tussen het apparaat en de IoT Central toepassing. Waarden van eigenschap van apparaat gebruiken dubbele gerapporteerde eigenschappen. Beschrijf bare eigenschappen gebruiken zowel dubbele gerapporteerde als gewenste eigenschappen van het apparaat.
+    IoT Central gebruikt apparaatdubbels om de waarden van eigenschappen te synchroniseren tussen het apparaat en de IoT Central-toepassing. Waarden van eigenschappen van een apparaat gebruiken door apparaatdubbels gerapporteerde eigenschappen. Beschrijfbare eigenschappen gebruiken zowel eigenschappen gerapporteerd door apparaatdubbels als gewenste eigenschappen.
 
-1. Voeg de volgende code toe om de Beschrijf bare eigenschappen te definiëren en te verwerken waarop uw apparaat reageert:
+1. Voeg de volgende code toe om de beschrijfbare eigenschappen te definiëren en te verwerken waarop uw apparaat reageert:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -162,11 +162,11 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     }
     ```
 
-    Wanneer de operator een schrijf bare eigenschap in de IoT Central toepassing instelt, gebruikt de toepassing een door het apparaat dubbele gewenste eigenschap om de waarde naar het apparaat te verzenden. Het apparaat reageert vervolgens met behulp van een dubbele gerapporteerde eigenschap van het apparaat. Wanneer IoT Central de gerapporteerde eigenschaps waarde ontvangt, wordt de eigenschappen weergave bijgewerkt met de status **gesynchroniseerd**.
+    Wanneer de operator een schrijfbare eigenschap instelt in de IoT Central-toepassing, gebruikt de toepassing een door de apparaatdubbel gewenste eigenschap om de waarde naar het apparaat te verzenden. Het apparaat reageert vervolgens met behulp van een door de apparaatdubbel gerapporteerde eigenschap. Wanneer IoT Central de gerapporteerde eigenschapswaarde ontvangt, wordt de eigenschapsweergave bijgewerkt met de status **gesynchroniseerd**.
 
-    De namen van de eigenschappen (`name` en `brightness`) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de eigenschappen (`name` en `brightness`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-1. Voeg de volgende code toe om de opdrachten te verwerken die zijn verzonden vanuit de IoT Central-toepassing:
+1. Voeg de volgende code toe om de opdrachten te verwerken die worden verzonden vanuit de IoT Central-toepassing:
 
     ```javascript
     // Setup command handlers
@@ -246,9 +246,9 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     }
     ```
 
-    De namen van de opdrachten (`blink`, `turnon` `turnoff`, en `rundiagnostics`) moeten overeenkomen met de namen die worden gebruikt in de sjabloon voor het apparaat.
+    De namen van de opdrachten (`blink`, `turnon`, `turnoff` en `rundiagnostics`) moeten overeenkomen met de namen die in de apparaatsjabloon worden gebruikt.
 
-    Op dit moment gebruikt IoT Central niet het antwoord schema dat is gedefinieerd in het functionaliteits model van het apparaat. Voor een synchrone opdracht kan de nettolading van de reactie een wille keurige geldige JSON zijn. Voor een asynchrone opdracht moet het apparaat onmiddellijk een 202-antwoord retour neren, gevolgd door de gerapporteerde eigenschap bijwerken wanneer het werk is voltooid. De indeling van de gerapporteerde eigenschaps update is:
+    Op dit moment gebruikt IoT Central niet het antwoordschema dat is gedefinieerd in het apparaatondersteuningsprofiel. Voor een synchrone opdracht kan de nettolading van het antwoord een willekeurige geldige JSON zijn. Voor een asynchrone opdracht moet het apparaat onmiddellijk een 202-antwoord retourneren, gevolgd door de gerapporteerde eigenschapsupdate wanneer het werk is voltooid. De indeling van de gerapporteerde eigenschapsupdate is:
 
     ```json
     {
@@ -258,7 +258,7 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
     }
     ```
 
-    Een operator kan de reactie lading weer geven in de opdracht geschiedenis.
+    Een operator kan de nettolading van het antwoord weergeven in de opdrachtgeschiedenis.
 
 1. Voeg de volgende code toe voor het voltooien van de verbinding met Azure IoT Central en het aansluiten van de functies in de clientcode:
 
@@ -310,30 +310,31 @@ De volgende stappen laten zien hoe u een node. js-client toepassing maakt die ve
 
 ## <a name="run-your-nodejs-application"></a>De Node.js-toepassing uitvoeren
 
-Voer de volgende opdracht uit in de opdracht regel omgeving om de client toepassing van het apparaat te starten:
+Als u de apparaatclienttoepassing wilt uitvoeren, voert u de volgende opdracht uit in uw opdrachtregelprogramma:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-U kunt zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en dat telemetrie wordt verzonden:
+U kunt zien dat het apparaat verbinding maakt met uw Azure IoT Central-toepassing en begint met het verzenden van telemetrie:
 
-![De client toepassing uitvoeren](media/tutorial-connect-device-nodejs/run-application.png)
+![De clienttoepassing uitvoeren](media/tutorial-connect-device-nodejs/run-application.png)
 
 [!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
 
 U kunt zien hoe het apparaat reageert op opdrachten en updates van eigenschappen:
 
-![De client toepassing observeren](media/tutorial-connect-device-nodejs/run-application-2.png)
+![De clienttoepassing observeren](media/tutorial-connect-device-nodejs/run-application-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis beginselen van het maken van een apparaat met behulp van node. js hebt geleerd, kunt u als apparaat voor ontwikkel aars het volgende doen:
+U, als apparaatontwikkelaar, kent nu de basisbeginselen van het maken van een apparaat met behulp van Node.js. Hierna volgen enkele voorgestelde volgende stappen:
 
-- Meer informatie over het verbinden van een echt apparaat met IoT Central in het [MXChip IOT DevKit-apparaat verbinden met uw Azure IOT Central Application](./howto-connect-devkit.md) procedures-artikel.
-- Lees [verbinding maken met Azure IOT Central](./concepts-get-connected.md) voor meer informatie over het registreren van apparaten met IOT Central en hoe IOT Central verbindingen met apparaten beveiligt.
+* In het artikel met instructies [Een MXChip IoT DevKit-apparaat verbinden met uw Azure IoT Central-toepassing](./howto-connect-devkit.md) leest u hoe u een echt apparaat verbindt met IoT Central.
+* Lees [Wat zijn apparaatsjablonen?](./concepts-device-templates.md) voor meer informatie over de rol van apparaatsjablonen wanneer u uw apparaatcode implementeert.
+* Lees [Verbinding maken met Azure IoT Central](./concepts-get-connected.md) voor meer informatie over het registreren van apparaten met IoT Central en hoe IoT Central apparaatverbindingen beveiligt.
 
-Als u liever door wilt gaan met de set IoT Central zelf studies en meer wilt weten over het bouwen van een IoT Central oplossing, raadpleegt u:
+Als u liever wilt doorgaan met de set zelfstudies over IoT Central en meer wilt leren over het bouwen van een IoT Central-oplossing, raadpleegt u:
 
 > [!div class="nextstepaction"]
 > [Een gateway-apparaatsjabloon maken](./tutorial-define-gateway-device-type.md)

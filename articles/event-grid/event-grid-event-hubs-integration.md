@@ -1,21 +1,21 @@
 ---
-title: 'Zelf studie: Event Hubs gegevens verzenden naar Data Warehouse-Event Grid'
-description: 'Zelf studie: hier wordt beschreven hoe u Azure Event Grid en Event Hubs kunt gebruiken om gegevens te migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
+title: 'Zelfstudie: Event Hubs-gegevens naar datawarehouse verzenden - Event Grid'
+description: 'Zelfstudie: In dit artikel wordt beschreven hoe u met Azure Event Grid en Event Hubs gegevens kunt migreren naar een SQL Data Warehouse. Er wordt een Azure-functie gebruikt om een |Capture-bestand op te halen.'
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 6f5bd129b175210cd5b9415a65b8db06d904e24d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73718193"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610693"
 ---
-# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelf studie: stream big data naar een Data Warehouse
+# <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Zelfstudie: Big data streamen naar een datawarehouse
 Azure [Event Grid](overview.md) is een intelligente service voor het routeren van gebeurtenissen waarmee u kunt reageren op meldingen (gebeurtenissen) van apps en services. Het kan bijvoorbeeld een Azure-functie activeren voor het verwerken van Event Hubs-gegevens die zijn opgenomen in een Azure Blob-opslag of Azure Data Lake Storage en de gegevens naar andere gegevensopslagplaatsen migreren. Dit [Event Hubs en Event Grid-voorbeeld](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) laat zien hoe u Event Hubs gebruikt met Event Grid voor het naadloos migreren van opgenomen gegevens van Event Hubs uit blob-opslag naar een SQL Data Warehouse.
 
 ![Overzicht van toepassing](media/event-grid-event-hubs-integration/overview.png)
@@ -45,7 +45,7 @@ In dit artikel voert u de volgende stappen uit:
 U hebt het volgende nodig om deze zelfstudie te voltooien:
 
 * Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
-* [Visual studio 2019](https://www.visualstudio.com/vs/) met werk belastingen voor: .net desktop Development, Azure development, ASP.net and Web Development, node. js Development en python Development.
+* [Visual studio 2019](https://www.visualstudio.com/vs/) met werkbelastingen voor: .NET-desktopontwikkeling, Azure-ontwikkeling, ASP.NET- en webontwikkeling, Node.js-ontwikkeling en Python-ontwikkeling.
 * Download het [voorbeeldproject EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) op uw computer.
 
 ## <a name="deploy-the-infrastructure"></a>De infrastructuur implementeren
@@ -79,13 +79,12 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 ### <a name="use-azure-cli"></a>Azure CLI gebruiken
 
 1. Maak een Azure-resourcegroep door de volgende CLI-opdracht uit te voeren: 
-    1. Kopieer en plak de volgende opdracht in het Cloud Shell-venster
+    1. Kopieer en plak de volgende opdracht in het Cloud Shell-venster. Wijzig de naam en locatie van de resourcegroep als u dat wilt.
 
         ```azurecli
-        az group create -l eastus -n <Name for the resource group>
+        az group create -l eastus -n rgDataMigration
         ```
-    1. Geef een naam op voor de **resourcegroep**
-    2. Druk op **Enter**. 
+    2. Druk op **ENTER**. 
 
         Hier volgt een voorbeeld:
     
@@ -107,7 +106,7 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
 
         ```azurecli
         az group deployment create \
-            --resource-group rgDataMigrationSample \
+            --resource-group rgDataMigration \
             --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json \
             --parameters eventHubNamespaceName=<event-hub-namespace> eventHubName=hubdatamigration sqlServerName=<sql-server-name> sqlServerUserName=<user-name> sqlServerPassword=<password> sqlServerDatabaseName=<database-name> storageName=<unique-storage-name> functionAppName=<app-name>
         ```
@@ -132,9 +131,9 @@ In deze stap implementeert u de vereiste infrastructuur met behulp van een [Reso
     1. Kopieer en plak de volgende opdracht in het Cloud Shell-venster.
 
         ```powershell
-        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location eastus
         ```
-    2. Geef een naam op voor de **resource groep**.
+    2. Geef een naam op voor de **resourcegroep**.
     3. Druk op Enter. 
 3. Implementeer alle resources die worden vermeld in de vorige sectie (gebeurtenishub, opslagaccount, functie-app, SQL-datawarehouse) door de volgende opdracht uit te voeren:
     1. Kopieer en plak de opdracht in het Cloud Shell-venster. U kunt de opdracht ook kopiëren en plakken in een editor naar keuze, waarden instellen en de opdracht vervolgens kopiëren naar Cloud Shell. 
@@ -170,11 +169,11 @@ Sluit Cloud Shell met de knop **Cloud Shell** in de portal of met de knop **X** 
 ### <a name="create-a-table-in-sql-data-warehouse"></a>Een tabel maken in SQL Data Warehouse
 Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) uit te voeren. Gebruik hiervoor Visual Studio of de query-editor in de portal. De volgende stappen laten zien hoe u de query-editor gebruikt: 
 
-1. Selecteer uw SQL-datawarehouse in de lijst met resources in de resourcegroep. 
-2. Selecteer in het menu links op de pagina SQL-datawarehouse **Query-editor (preview)**. 
+1. Selecteer uw **Synapse SQL-pool (datawarehouse)** in de lijst met resources in de resourcegroep. 
+2. Selecteer in het menu links op de pagina SQL-datawarehouse **Query-editor (preview)** . 
 
     ![De pagina SQL-datawarehouse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Voer de naam van **gebruiker** en het **wachtwoord** voor de SQL-server in, en selecteer **OK**. 
+2. Voer de naam van **gebruiker** en het **wachtwoord** voor de SQL-server in, en selecteer **OK**. U moet uw client-IP-adres mogelijk aan de firewall koppelen om in te kunnen loggen bij de SQL-server. 
 
     ![SQL-serververificatie](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. Kopieer en plak het volgende SQL-script in het queryvenster: 
@@ -193,6 +192,17 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
     ![SQL-query uitvoeren](media/event-grid-event-hubs-integration/run-sql-query.png)
 5. Houd dit tabblad of venster geopend zodat u kunt controleren of de gegevens aan het einde van de zelfstudie zijn gemaakt. 
 
+### <a name="update-the-function-runtime-version"></a>De runtime-versie van de functie bijwerken
+
+1. Selecteer **Resourcegroepen** in het linkermenu van Azure Portal.
+2. Selecteer de resourcegroep waarin de functie-app bestaat. 
+3. Selecteer de functie-app van het type **App Service** in de lijst met resources in de resourcegroep.
+4. Selecteer **Configuratie** onder **Instellingen** in het linkermenu. 
+5. Schakel over naar het tabblad **Runtime-instellingen van de functie** in het rechter deelvenster. 
+5. Werk de **runtime-versie** bij naar **~3**. 
+
+    ![De runtime-versie van de functie bijwerken](media/event-grid-event-hubs-integration/function-runtime-version.png)
+    
 
 ## <a name="publish-the-azure-functions-app"></a>De Azure Functions-app publiceren
 
@@ -204,13 +214,20 @@ Maak een tabel in uw datawarehouse door het script [CreateDataWarehouseTable.sql
 4. Als u het volgende scherm ziet, selecteert u **Start**. 
 
    ![De knop Start voor het publiceren](media/event-grid-event-hubs-integration/start-publish-button.png) 
-5. Op de pagina **Pick a publish target** (Publicatiedoel kiezen) selecteert u de optie **Select existing** (Bestaande selecteren) en selecteert u **Create Profile** (Profiel maken). 
+5. In het dialoogvenster **Publiceren** selecteert u **Azure** voor **Doel** en vervolgens **Volgende**. 
 
-   ![Kies een publicatiedoel](media/event-grid-event-hubs-integration/publish-select-existing.png)
-6. Selecteer op de App Service-pagina uw **Azure-abonnement**, selecteer de **functie-app** in uw resourcegroep en selecteer **OK**. 
+   ![De knop Start voor het publiceren](media/event-grid-event-hubs-integration/publish-select-azure.png)
+6. Selecteer achtereenvolgens **Azure-functie-app** en **Volgende**. 
 
-   ![App Service-pagina](media/event-grid-event-hubs-integration/publish-app-service.png) 
-1. Als Visual Studio het profiel heeft geconfigureerd, selecteert u **Publish**.
+   ![Azure-functie-app selecteren - Windows](media/event-grid-event-hubs-integration/select-azure-function-windows.png)
+7. Selecteer uw Azure-abonnement op het tabblad **Functions-instantie**, vouw de resourcegroep uit en selecteer vervolgens uw functie-app en **Voltooien**. Als u dit nog niet hebt gedaan, moet u zich aanmelden bij uw Azure-account. 
+
+   ![Uw functie-app selecteren](media/event-grid-event-hubs-integration/publish-select-function-app.png)
+8. In het gedeelte **Service-afhankelijkheden** selecteert u **Configureren**.
+9. Selecteer op de pagina **Afhankelijkheid configureren** het opslagaccount dat u eerder hebt gemaakt en selecteer vervolgens **Volgende**. 
+10. Behoud de instellingen voor de naam en waarde van de verbindingsreeks en selecteer **Volgende**.
+11. Wis de optie **Secrets Store** en selecteer vervolgens **Voltooien**.  
+8. Als Visual Studio het profiel heeft geconfigureerd, selecteert u **Publish**.
 
    ![Selecteer Publish](media/event-grid-event-hubs-integration/select-publish.png)
 
@@ -224,21 +241,24 @@ Nadat de functie is gepubliceerd, kunt u zich abonneren op de gebeurtenis.
 4. Selecteer uw resourcegroep in de lijst.
 
     ![Uw resourcegroep selecteren](media/event-grid-event-hubs-integration/select-resource-group.png)
-4. Selecteer het App Service-plan in de lijst. 
+4. Selecteer het App Service-plan (niet de App Service) in de lijst met resources in de resourcegroep. 
 5. Selecteer **Apps** in het menu links op de pagina App Service-plan, en selecteer de functie-app. 
 
     ![Selecteer uw functie-app](media/event-grid-event-hubs-integration/select-function-app-app-service-plan.png)
 6. Vouw achtereenvolgens de functie-app en de functies uit en selecteer vervolgens uw functie. 
+7. Selecteer **Event Grid-abonnement toevoegen** op de werkbalk. 
 
     ![Selecteer uw Azure-functie](media/event-grid-event-hubs-integration/select-function-add-button.png)
-7. Selecteer **Event Grid-abonnement toevoegen** op de werkbalk. 
 8. Ga als volgt te werk op de pagina **Event Grid-abonnement toevoegen**: 
-    1. Voer de volgende acties uit in de sectie **Onderwerpdetails**:
-        1. Selecteer uw Azure-abonnement.
+    1. Voer op de pagina **Gebeurtenisabonnementdetails** een naam voor het abonnement in, bijvoorbeeld captureEventSub, en selecteer **Maken**. 
+    2. Voer de volgende acties uit in de sectie **Onderwerpdetails**:
+        1. Selecteer **Event Hubs-naamruimten** voor **Onderwerptypen**. 
+        2. Selecteer uw Azure-abonnement.
         2. Selecteer de Azure-resourcegroep.
-        3. Selecteer de Event Hubs-naamruimte.
-    2. Voer op de pagina **Gebeurtenisabonnementdetails** een naam voor het abonnement in, bijvoorbeeld captureEventSub, en selecteer **Maken**. 
-
+        3. Selecteer uw Event Hubs-naamruimte.
+    3. In het gedeelte **GEBEURTENISTYPEN** moet u bevestigen dat het **Gemaakte opnamebestand** is geselecteerd voor **Filteren op gebeurtenistypen**. 
+    4. In het gedeelte **EINDPUNTDETAILS** bevestigt u dat het **Eindpunttype** op **Azure Function** en het **Eindpunt** op de Azure-functie is ingesteld. 
+    
         ![Event Grid-abonnement maken](media/event-grid-event-hubs-integration/create-event-subscription.png)
 
 ## <a name="run-the-app-to-generate-data"></a>De app uitvoeren om gegevens te genereren
@@ -260,7 +280,7 @@ U bent nu klaar met het instellen van uw gebeurtenishub, SQL-datawarehouse, Azur
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Bouw de oplossing. Voer de toepassing **WindTurbineGenerator. exe** uit. 
+6. Bouw de oplossing. Voer de toepassing **WindTurbineGenerator.exe** uit. 
 7. Voer na een paar minuten een query voor de gemigreerde gegevens uit op de tabel in het datawarehouse.
 
     ![Queryresultaten](media/event-grid-event-hubs-integration/query-results.png)

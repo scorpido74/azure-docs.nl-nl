@@ -8,26 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/19/2020
+ms.date: 06/15/2020
 ms.author: diberry
-ms.openlocfilehash: e1ac608d064e3ad60fb98f35abab61e453d20edd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654793"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791211"
 ---
 # <a name="whats-new-in-qna-maker"></a>Wat is er nieuw in QnA Maker
 
-Meer informatie over wat er nieuw is in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
+Meer informatie over nieuwe functies in de service. Bij deze items kunnen opmerkingen, Video's, blog berichten en andere soorten informatie worden vrijgegeven. Bladwijzer deze pagina om up-to-date te blijven met de service.
 
 ## <a name="release-notes"></a>Releaseopmerkingen
 
 Meer informatie over de nieuwe functies van QnA Maker.
 
+### <a name="june-2020"></a>Juni 2020
+
+* Bijgewerkte zelf studie voor de [virtuele Power-agent](tutorials/integrate-with-power-virtual-assistant-fallback-topic.md) voor snellere en eenvoudiger stappen
+
 ### <a name="may-2020"></a>Mei 2020
 
-* [Op rollen gebaseerd toegangs beheer (RBAC)](concepts/role-based-access-control.md)
+* [Toegangsbeheer op basis van rollen (RBAC)](concepts/role-based-access-control.md)
 * [Uitgebreide tekst bewerking](how-to/edit-knowledge-base.md#rich-text-editing-for-answer) voor antwoorden
 
 ### <a name="march-2020"></a>Maart 2020

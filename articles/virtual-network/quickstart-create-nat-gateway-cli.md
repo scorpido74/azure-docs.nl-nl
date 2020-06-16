@@ -1,41 +1,42 @@
 ---
-title: 'Snelstartgids: een NAT-gateway maken-Azure CLI'
+title: 'Quickstart: Een NAT-gateway maken - Azure CLI'
 titlesuffix: Azure Virtual Network NAT
-description: Deze Quick Start laat zien hoe u een NAT-gateway maakt met behulp van de Azure CLI
+description: In deze quickstart leert u hoe u een NAT-gateway kunt maken met Azure CLI
 services: virtual-network
 documentationcenter: na
 author: asudbring
 manager: KumundD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 9402960927f56092e226ab81bd3e6ede0cf6a52d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: dcc3eda4c19e8d15040feb31d2a45922035c6cb0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79202192"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341521"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Snelstartgids: een NAT-gateway maken met behulp van Azure CLI
+# <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Quickstart: Een NAT-gateway maken met Azure CLI
 
-In deze Quick start ziet u hoe u de NAT-service van Azure Virtual Network gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor een virtuele machine in Azure. 
+In deze quickstart wordt uitgelegd hoe u de Azure Virtual Network NAT-service gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor virtuele machines in Azure. 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-U kunt deze zelf studie volt ooien met behulp van Azure Cloud Shell of de betreffende opdrachten lokaal uitvoeren.  Als u Azure Cloud Shell nog nooit hebt gebruikt, [meldt u zich nu](https://shell.azure.com) aan om door te gaan met de eerste installatie.
-Als u ervoor kiest om deze opdrachten lokaal uit te voeren, moet u CLI installeren.  Voor deze zelf studie moet u een versie van de Azure CLI-versie 2.0.71 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli).
+U kunt deze zelfstudie met behulp van Azure Cloud Shell voltooien of de betreffende opdrachten lokaal uitvoeren.  Als u Azure Cloud Shell nooit hebt gebruikt, moet u zich [nu aanmelden](https://shell.azure.com) om door te gaan met de eerste installatie.
+Als u ervoor kiest om deze opdrachten lokaal uit te voeren, moet u CLI installeren.  Voor deze zelfstudie moet u Azure CLI versie 2.0.71 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam **myResourceGroupNAT** gemaakt op de locatie **eastus2** :
+In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroupNAT** gemaakt op de locatie **eastus2**:
 
 ```azurecli-interactive
   az group create \
@@ -47,7 +48,7 @@ In het volgende voor beeld wordt een resource groep met de naam **myResourceGrou
 
 ### <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-Voor toegang tot het open bare Internet hebt u een of meer open bare IP-adressen nodig voor de NAT-gateway. Gebruik [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) om een resource met een openbaar IP-adres te maken met de naam **myPublicIP** in **myResourceGroupNAT**.
+Voor toegang tot het openbare internet hebt u een of meer openbare IP-adressen nodig voor de NAT-gateway. Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) om in **myResourceGroupNAT** een openbare IP-resource te maken met de naam **myPublicIP**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -56,9 +57,9 @@ Voor toegang tot het open bare Internet hebt u een of meer open bare IP-adressen
     --sku standard
 ```
 
-### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voor voegsel maken
+### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voorvoegsel maken
 
-U kunt een of meer open bare IP-adres bronnen, open bare IP-voor voegsels of beide met NAT-gateway gebruiken. We voegen een open bare IP-prefix bron toe aan dit scenario om te demonstreren.   Gebruik [AZ Network Public-IP prefix Create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) om een open bare IP-adres voorvoegsel resource te maken met de naam **myPublicIPprefix** in **myResourceGroupNAT**.
+U kunt een of meer openbare IP-resources, openbare IP-voorvoegsels of beide met NAT-gateway gebruiken. Om dit te illustreren, voegt u een resource voor het openbare IP-voorvoegsel aan dit scenario toe.   Gebruik [az network public-ip prefix create](https://docs.microsoft.com/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) om in **myResourceGroupNAT** een resource voor het openbare IP-voorvoegsel te maken met de naam **myPublicIPprefix**.
 
 ```azurecli-interactive
   az network public-ip prefix create \
@@ -67,13 +68,13 @@ U kunt een of meer open bare IP-adres bronnen, open bare IP-voor voegsels of bei
     --length 31
 ```
 
-### <a name="create-a-nat-gateway-resource"></a>Een NAT-gateway resource maken
+### <a name="create-a-nat-gateway-resource"></a>Een NAT-gatewayresource maken
 
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service kunt maken en configureren met behulp van de NAT-gateway resource:
-  - Een open bare IP-adres groep en een openbaar IP-voor voegsel dat moet worden gebruikt voor uitgaande stromen die worden vertaald door de NAT-gateway resource.
-  - Wijzig de time-out voor inactiviteit van de standaard waarde van 4 minuten in 10 minuten.
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service met de NAT-gatewayresource kunt maken en configureren:
+  - Een openbare IP-adresgroep en een openbaar IP-voorvoegsel die moeten worden gebruikt voor uitgaande stromen die worden vertaald door de NAT-gatewayresource.
+  - Wijzig de time-out voor inactiviteit van de standaardwaarde van 4 minuten naar 10 minuten.
 
-Maak een globale Azure NAT-gateway met [AZ Network NAT gateway Create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) named **myNATgateway**. De opdracht gebruikt zowel het open bare IP-adres **myPublicIP** als het open bare IP-voor voegsel **myPublicIPprefix**. Met de opdracht wordt de time-out voor inactiviteit gewijzigd in **10** minuten.
+Maak met [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) een globaal Azure NAT-gateway met de naam **myNATgateway**. De opdracht gebruikt zowel het openbare IP-adres **myPublicIP** als het openbare IP-voorvoegsel **myPublicIPprefix**. De opdracht verandert de time-out voor inactiviteit in **10** minuten.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -84,13 +85,13 @@ Maak een globale Azure NAT-gateway met [AZ Network NAT gateway Create](https://d
     --idle-timeout 10       
   ```
 
-Op dit punt is de NAT-gateway functioneel en ontbreekt er een configuratie van de subnetten van een virtueel netwerk.
+Nu is de NAT-gateway functioneel. Het enige wat u nog hoeft te doen is te configureren welke subnetten van een virtueel netwerk er gebruik van moeten maken.
 
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 
 Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u het virtuele netwerk maken.
 
-Maak een virtueel netwerk met de naam **myVnet** met een subnet met de naam **MySubnet** in de **myResourceGroupNAT** met [AZ Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet).  De IP-adres ruimte voor het virtuele netwerk is **192.168.0.0/16**. Het subnet in het virtuele netwerk is **192.168.0.0/24**.
+Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) in **myResourceGroupNAT** een virtueel netwerk met de naam **myVnet** met een subnet met de naam **mySubnet**.  De IP-adresruimte voor het virtuele netwerk is **192.168.0.0/16**. Het subnet binnen het virtuele netwerk is **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -102,9 +103,9 @@ Maak een virtueel netwerk met de naam **myVnet** met een subnet met de naam **My
     --subnet-prefix 192.168.0.0/24
 ```
 
-### <a name="configure-nat-service-for-source-subnet"></a>NAT-service voor bron subnet configureren
+### <a name="configure-nat-service-for-source-subnet"></a>NAT-service voor bronsubnet configureren
 
-We configureren het bron- **mySubnet** in **myVnet** van het virtuele netwerk voor het gebruik van een specifieke NAT gateway resource **myNATgateway** met [AZ Network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet).  Met deze opdracht wordt de NAT-service op het opgegeven subnet geactiveerd.
+Configureer het bronsubnet **mySubnet** in het virtuele netwerk **myVnet** om een specifieke NAT-gatewayresource **myNATgateway** te gebruiken met [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet).  Met deze opdracht wordt de NAT-service op het opgegeven subnet geactiveerd.
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -114,15 +115,15 @@ We configureren het bron- **mySubnet** in **myVnet** van het virtuele netwerk vo
     --nat-gateway myNATgateway
 ```
 
-Al het uitgaande verkeer naar Internet bestemmingen maakt nu gebruik van de NAT-gateway.  Het is niet nodig om een UDR te configureren.
+Al het uitgaande verkeer naar Internetdoelen maakt nu gebruik van de NAT-gateway.  Het is niet nodig om een UDR te configureren.
 
-## <a name="create-a-vm-to-use-the-nat-service"></a>Een virtuele machine maken voor het gebruik van de NAT-service
+## <a name="create-a-vm-to-use-the-nat-service"></a>Een VM maken voor het gebruik van de NAT-service
 
-We gaan nu een VM maken voor het gebruik van de NAT-service.  Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaar niveau om toegang te krijgen tot de virtuele machine.  De NAT-service is stroom richting, en vervangt de standaard Internet bestemming in uw subnet. Het open bare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
+Nu gaat u een VM maken voor het gebruik van de NAT-service.  Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaarniveau om toegang te krijgen tot de virtuele machine.  De NAT-service neemt stroomrichting waar en vervangt de standaard Internetdoel in uw subnet. Het openbare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
 
-### <a name="create-public-ip-for-source-vm"></a>Een openbaar IP-adres voor de bron-VM maken
+### <a name="create-public-ip-for-source-vm"></a>Een openbare IP voor de bron-VM maken
 
-We maken een openbaar IP-adres dat wordt gebruikt voor toegang tot de virtuele machine.  Gebruik [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) om een resource met een openbaar IP-adres te maken met de naam **myPublicIPVM** in **myResourceGroupNAT**.
+U maakt een openbare IP die gaat worden gebruikt voor toegang tot de VM.  Gebruik [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) om in **myResourceGroupNAT** een openbare IP-resource te maken met de naam **myPublicIPVM**.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -131,9 +132,9 @@ We maken een openbaar IP-adres dat wordt gebruikt voor toegang tot de virtuele m
     --sku standard
 ```
 
-### <a name="create-an-nsg-for-vm"></a>Een NSG voor de virtuele machine maken
+### <a name="create-an-nsg-for-vm"></a>Een NSG maken voor VM
 
-Omdat standaard open bare IP-adressen standaard ' veilig ' zijn, moet er een NSG worden gemaakt om de toegang tot de SSH mogelijk te maken. Gebruik [AZ Network NSG Create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) om een NSG-resource met de naam **mijnnbg** in **myResourceGroupNAT**te maken.
+Omdat standaard openbare IP-adressen een 'standaardbeveiliging' vormen, moet u een NSG maken om inkomende toegang voor SSH-toegang toe te staan. Gebruik [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) om in **myResourceGroupNAT** een NSG-resource met de naam **myNSG** te maken.
 
 ```azurecli-interactive
   az network nsg create \
@@ -141,9 +142,9 @@ Omdat standaard open bare IP-adressen standaard ' veilig ' zijn, moet er een NSG
     --name myNSG 
 ```
 
-### <a name="expose-ssh-endpoint-on-source-vm"></a>SSH-eind punt beschikbaar maken op de bron-VM
+### <a name="expose-ssh-endpoint-on-source-vm"></a>SSH-eindpunt beschikbaar maken op de bron-VM
 
-We maken een regel in het NSG voor SSH-toegang tot de bron-VM. Gebruik [AZ Network NSG Rule Create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) om een NSG-regel met de naam **SSH** te maken in de NSG met de naam **mijnnbg** in **myResourceGroupNAT**.
+U maakt een regel in de NSG voor SSH-toegang tot de bron-VM. Gebruik [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) om een NSG-regel met de naam **ssh** te maken in de NSG met de naam **myNSG** in **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -158,9 +159,9 @@ We maken een regel in het NSG voor SSH-toegang tot de bron-VM. Gebruik [AZ Netwo
     --destination-port-ranges 22
 ```
 
-### <a name="create-nic-for-vm"></a>NIC voor VM maken
+### <a name="create-nic-for-vm"></a>NIC maken voor VM
 
-Maak een netwerk interface met [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create) en koppel deze aan het open bare IP-adres en de netwerk beveiligings groep. 
+Maak met [az network nic create](/cli/azure/network/nic#az-network-nic-create) een netwerkinterface en koppel deze aan het openbare IP-adres en de netwerkbeveiligingsgroep. 
 
 ```azurecli-interactive
   az network nic create \
@@ -174,7 +175,7 @@ Maak een netwerk interface met [AZ Network NIC Create](/cli/azure/network/nic#az
 
 ### <a name="create-vm"></a>VM maken
 
-Maak de virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create).  We genereren SSH-sleutels voor deze VM en slaan de persoonlijke sleutel op voor later gebruik.
+Maak de virtuele machine met [az vm create](/cli/azure/vm#az-vm-create).  U genereert SSH-sleutels voor deze VM en slaat de persoonlijke sleutel op voor later gebruik.
 
  ```azurecli-interactive
   az vm create \
@@ -187,9 +188,9 @@ Maak de virtuele machine met [AZ VM Create](/cli/azure/vm#az-vm-create).  We gen
 
 Wacht tot de virtuele machine is geïmplementeerd en ga vervolgens verder met de overige stappen.
 
-## <a name="discover-the-ip-address-of-the-vm"></a>Het IP-adres van de virtuele machine detecteren
+## <a name="discover-the-ip-address-of-the-vm"></a>Het IP-adres van de VM ontdekken
 
-Eerst moet het IP-adres worden gedetecteerd van de virtuele machine die u hebt gemaakt. Gebruik [AZ Network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show)om het open bare IP-adres van de virtuele machine op te halen. 
+Eerst moet het IP-adres van de VM die u hebt gemaakt, worden gedetecteerd. Gebruik [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) om het openbare IP-adres van de VM op te halen. 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -200,11 +201,11 @@ Eerst moet het IP-adres worden gedetecteerd van de virtuele machine die u hebt g
 ``` 
 
 >[!IMPORTANT]
->Kopieer het open bare IP-adres en plak het in een Klad blok, zodat u het kunt gebruiken om toegang te krijgen tot de virtuele machine.
+>Kopieer de openbare IP en plak het in een Kladblok, zodat u het kunt gebruiken om toegang te krijgen tot de VM.
 
-### <a name="sign-in-to-vm"></a>Aanmelden bij de VM
+### <a name="sign-in-to-vm"></a>Aanmelden bij VM
 
-De SSH-referenties moeten worden opgeslagen in uw Cloud Shell van de vorige bewerking.  Open een [Azure Cloud shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH naar de virtuele machine te gaan.
+De SSH-aanmeldingsgegevens moeten worden opgeslagen in uw Cloud Shell van de vorige bewerking.  Open een [Azure Cloud Shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH naar de virtuele machine uit te voeren.
 
 ```bash
 ssh <ip-address-destination>
@@ -214,7 +215,7 @@ U bent nu klaar om de NAT-service te gebruiken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt de opdracht [AZ Group delete](/cli/azure/group#az-group-delete) gebruiken om de resource groep en alle resources in te verwijderen wanneer u deze niet meer nodig hebt.
+U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken om de resourcegroep en alle gerelateerde resources daarin te verwijderen wanneer u ze niet meer nodig hebt.
 
 ```azurecli-interactive 
   az group delete \
@@ -223,15 +224,15 @@ U kunt de opdracht [AZ Group delete](/cli/azure/group#az-group-delete) gebruiken
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een NAT-gateway en een virtuele machine gemaakt om deze te gebruiken. 
+In deze zelfstudie hebt u een NAT-gateway gemaakt en een VM om de gateway te gebruiken. 
 
-Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Problemen vaststellen, zoals de bron uitputting van de beschik bare SNAT-poorten.  Bron uitputting van de SNAT-poorten wordt opgelost door extra open bare IP-adres bronnen of open bare IP-prefix bronnen of beide toe te voegen.
+Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Problemen vaststellen, zoals de resource-uitputting van de beschikbare SNAT-poorten.  Resource-uitputting van de SNAT-poorten kan worden verholpen door extra openbare IP-adresresources of openbare IP-voorvoegselresources of beide toe te voegen.
 
 
 - Meer informatie over [Azure Virtual Network NAT](./nat-overview.md)
-- Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure cli](./quickstart-create-nat-gateway-cli.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure Portal](./quickstart-create-nat-gateway-portal.md).
+- Meer informatie over [NAT-gatewayresource](./nat-gateway-resource.md).
+- Quickstart voor het implementeren van [NAT-gatewayresource met Azure CLI](./quickstart-create-nat-gateway-cli.md).
+- Quickstart voor het implementeren van [NAT-gatewayresource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
+- Quickstart voor het implementeren van [NAT-gatewayresource met Azure Portal](./quickstart-create-nat-gateway-portal.md).
 > [!div class="nextstepaction"]
 
