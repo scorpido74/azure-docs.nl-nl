@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Smart Global governance | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en intelligent Global governance.
+title: 'Zelfstudie: Integratie van Azure AD SSO met Smart Global Governance'
+description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Smart Global Governance.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,158 +15,159 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb14f4c8dd498bf26ac093f7a491876cd2e73940
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: MT
+ms.openlocfilehash: 5c3b2f5332f3dc94f10a7822068b165db13b3d33
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872633"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456756"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Smart Global governance
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Zelfstudie: Eenmalige aanmelding (SSO) van Azure Active Directory integreren met Smart Global governance
 
-In deze zelf studie leert u hoe u intelligent Global governance integreert met Azure Active Directory (Azure AD). Wanneer u Smart Global governance integreert met Azure AD, kunt u het volgende doen:
+In deze zelfstudie leert u hoe u Smart Global Governance integreert met Azure Active Directory (Azure AD). Wanneer u Smart Global governance integreert met Azure AD, kunt u het volgende doen:
 
-* Controle in azure AD die toegang heeft tot slimme Global governance.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Smart governance met hun Azure AD-accounts.
-* Beheer uw accounts op één centrale locatie: de Azure Portal.
+* Azure AD gebruiken om te bepalen wie er toegang heeft tot Smart Global Governance.
+* Ervoor zorgen dat uw gebruikers zich automatisch met hun Azure AD-account kunnen aanmelden bij Smart Global Governance.
+* Uw accounts op één centrale locatie beheren: de Azure-portal.
 
-Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)voor meer informatie over SaaS-app-integratie met Azure AD.
+Zie [Eenmalige aanmelding voor toepassingen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) voor meer informatie over de integratie van SaaS-apps met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U hebt de volgende items nodig om aan de slag te gaan:
+U hebt het volgende nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* Smart Global governance-abonnement met eenmalige aanmelding (SSO).
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/).
+* Een abonnement op Smart Global Governance met eenmalige aanmelding ingeschakeld.
 
-## <a name="scenario-description"></a>Scenariobeschrijving
+## <a name="tutorial-description"></a>Beschrijving van zelfstudie
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Smart Global governance ondersteunt SSO **met SP en IDP**
-* Zodra u slim algemeen bestuur hebt geconfigureerd, kunt u sessie beheer afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie beheer is uitgebreid met voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Smart Global Governance ondersteunt door SP geïnitieerde en door IdP geïnitieerde SSO.
 
-## <a name="adding-smart-global-governance-from-the-gallery"></a>Slimme Global governance toevoegen vanuit de galerie
+Zodra u Smart Global Governance hebt geconfigureerd, kunt u sessiebeheer afdwingen, waardoor exfiltratie en infiltratie van gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessiebeheer is een uitbreiding van voorwaardelijke toegang. [Meer informatie over het afdwingen van sessiebeheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-Als u de integratie van Smart Global governance wilt configureren in azure AD, moet u slimme algemene governance vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+## <a name="add-smart-global-governance-from-the-gallery"></a>Smart Global Governance toevoegen vanuit de galerie
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een werk-of school account of een persoonlijke Microsoft-account.
-1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
-1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
-1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
-1. In de sectie **toevoegen vanuit de galerie** typt u **Smart Global governance** in het zoekvak.
-1. Selecteer **Slim algemeen governance** vanuit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
+Om de integratie van Smart Global Governance in Azure AD te configureren, moet u Smart Global Governance vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-smart-global-governance"></a>Eenmalige aanmelding van Azure AD configureren en testen voor intelligent algemeen bestuur
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com) met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster.
+1. Ga naar **Bedrijfstoepassingen** en selecteer vervolgens **Alle toepassingen**.
+1. Selecteer **Nieuwe toepassing** om een toepassing toe te voegen.
+1. Ga in het gedeelte **Toevoegen uit de galerie** naar het zoekvak en voer **Smart Global Governance** in.
+1. Selecteer **Smart Global Governance** in de zoekresultaten en voeg vervolgens de app toe. Wacht enkele seconden tot de app is toegevoegd aan de tenant.
 
-Configureer en test Azure AD SSO met Smart Global governance met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in het slimme wereld wijde governance.
+## <a name="configure-and-test-azure-ad-sso-for-smart-global-governance"></a>Eenmalige aanmelding van Azure AD configureren en testen voor Smart Global Governance
 
-Als u Azure AD SSO wilt configureren en testen met Smart Global governance, voert u de volgende bouw stenen uit:
+U gaat Azure AD SSO configureren en testen met Smart Global Governance met behulp van een testgebruiker met de naam B.Simon. Eenmalige aanmelding werkt alleen als u een koppelingsrelatie tot stand brengt tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Smart Global Governance.
 
-1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
-1. **[Smart Global governance SSO configureren](#configure-smart-global-governance-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak slimme globale governance test gebruiker](#create-smart-global-governance-test-user)** -om een soort tegen te brengen van B. Simon in het slimme Global governance dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+Volg deze algemene stappen om Azure AD SSO te configureren en testen met Smart Global Governance:
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO-configureren
+1. **[Eenmalige aanmelding van Azure AD configureren](#configure-azure-ad-sso)** zodat uw gebruikers deze functie kunnen gebruiken.
+    1. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** om eenmalige aanmelding van Azure AD te testen.
+    1. **[Toegang verlenen aan de testgebruiker](#grant-access-to-the-test-user)** zodat de gebruiker eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[Eenmalige aanmelding voor Smart Global Governance configureren](#configure-smart-global-governance-sso)** aan de kant van de toepassing.
+    1. **[Een testgebruiker voor Smart Global Governance maken](#create-a-smart-global-governance-test-user)** als een tegenhanger voor de Azure AD-voorstelling van de gebruiker.
+1. **[Eenmalige aanmelding testen](#test-sso)** om te controleren of de configuratie werkt.
 
-Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
+## <a name="configure-azure-ad-sso"></a>Eenmalige aanmelding van Azure AD configureren
 
-1. Ga in het [Azure Portal](https://portal.azure.com/) **naar de pagina** **Smart Global governance** -toepassing integreren en selecteer **eenmalige aanmelding**.
-1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
-1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
+Volg deze stappen om eenmalige aanmelding van Azure AD in te schakelen in de Azure-portal:
 
-   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
+1. Zoek in de [Azure-portal](https://portal.azure.com/) op de integratiepagina van de toepassing **Smart Global Governance** de sectie **Beheren** en selecteer **Eenmalige aanmelding**.
+1. Selecteer **SAML** op de pagina **Selecteer een methode voor eenmalige aanmelding**.
+1. Selecteer op de pagina **Eenmalige aanmelding instellen met SAML** het potloodpictogram voor **Standaard-SAML-configuratie** om de instellingen te bewerken:
 
-1. Als u de toepassing in de gestarte modus **IDP** wilt configureren, voert u in de sectie **basis configuratie van SAML** de waarden voor de volgende velden in:
+   ![Potloodpictogram voor Standaard-SAML-configuratie](common/edit-urls.png)
 
-    a. Gebruik een van de volgende URL in het tekstvak **id** :
+1. In het gedeelte **Standaard SAML-configuratie** voert u de volgende stappen uit als u de toepassing in de door IDP geïnitieerde modus wilt configureren.
+
+    a. Voer in het vak **Id** een van deze URL's in:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/metadata`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/metadata`|
 
-    b. Gebruik een van de volgende URL in het tekstvak **antwoord-URL** :
+    b. Voer in het vak **Antwoord-URL** een van deze URL's in:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform/authentication-saml2/acs`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo/authentication-saml2/acs`|
 
-1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
+1. Als u de toepassing in de door SP geïnitieerde modus wilt configureren, selecteert u **Extra URL's instellen** en voert u de volgende stap uit.
 
-    Gebruik een van de volgende URL in het tekstvak **URL voor aanmelding** :
+   - Voer in het vak **Aanmeldings-URL** een van deze URL's in:
 
     | | |
     |-|-|
     | `https://eu-fr-south.console.smartglobalprivacy.com/dpo`|
     | `https://eu-fr-south.console.smartglobalprivacy.com/platform`|
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , **certificaat (RAW)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en selecteer de koppeling **Downloaden** voor **Certificaat (Raw)** om het certificaat te downloaden en op te slaan op de computer:
 
-    ![De link om het certificaat te downloaden](common/certificateraw.png)
+    ![De koppeling om het certificaat te downloaden](common/certificateraw.png)
 
-1. Kopieer de gewenste URL ('s) op basis van uw vereiste op de sectie **slimme globale governance instellen** .
+1. In de sectie **Smart Global Governance instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
-In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+In dit gedeelte gaat u een testgebruiker met de naam B.Simon maken in de Azure-portal.
 
-1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** boven aan het scherm.
-1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam**`B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
-   1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
-   1. Klik op **Maken**.
+1. Selecteer in de Azure-portal aan de linkerkant **Azure Active Directory**. Selecteer **Gebruikers** en daarna **Alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Ga als volgt te werk in het venster dat**** verschijnt:
+   1. Voer in het vak **Naam** de naam **B.Simon** in.  
+   1. Voer in het vak **Gebruikersnaam** \<username>@\<companydomain> in.\<extension>. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Selecteer **Maken**.
 
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
+### <a name="grant-access-to-the-test-user"></a>De testgebruiker toegang geven
 
-In deze sectie schakelt u B. Simon in om de eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan het slimme Global governance.
+In deze sectie geeft u B.Simon toestemming om eenmalige aanmelding van Azure te gebruiken door die gebruiker toegang te verlenen tot Smart Global Governance.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
-1. Selecteer in de lijst toepassingen de optie **Smart Global governance**.
-1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+1. Selecteer in de Azure-portal **Bedrijfstoepassingen** en selecteer **Alle toepassingen**.
+1. Selecteer **Smart Global Governance** in de lijst met toepassingen.
+1. Ga op de overzichtspagina van de app naar de sectie **Beheren** en selecteer **Gebruikers en groepen**:
 
-   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+   ![Gebruikers en groepen selecteren](common/users-groups-blade.png)
 
-1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+1. Selecteer **Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**:
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+    ![Gebruiker toevoegen selecteren](common/add-assign-user.png)
 
-1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
-1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
-1. Klik in het dialoog venster **toewijzing toevoegen** op de knop **toewijzen** .
+1. Selecteer in het dialoogvenster **Gebruikers en groepen** **B.Simon** in de lijst **Gebruikers** en selecteer vervolgens de knop **Selecteren** onderaan het scherm.
+1. Als u een waarde voor een rol verwacht in de SAML-assertie, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren. Klik vervolgens op de knop **Selecteren** onderaan het scherm.
+1. Selecteer **Toewijzen** in het dialoogvenster **Toewijzing toevoegen**.
 
-## <a name="configure-smart-global-governance-sso"></a>Smart Global governance-SSO configureren
+## <a name="configure-smart-global-governance-sso"></a>Eenmalige aanmelding configureren in Smart Global Governance
 
-Voor het configureren van eenmalige aanmelding op de **slimme algemene governance** -zijde moet u het gedownloade **certificaat (RAW)** en de juiste gekopieerde url's verzenden van Azure Portal naar het [slimme Global governance-ondersteunings team](mailto:support.tech@smartglobal.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding wilt configureren in Smart Global Governance, moet u het gedownloade Raw-certificaat en de juiste URL's die u hebt gekopieerd uit de Azure-portal verzenden naar het [ondersteuningsteam van Smart Global Governance](mailto:support.tech@smartglobal.com). Zij zorgen er dan voor dat de SAML-verbinding voor eenmalige aanmelding aan beide kanten juist is.
 
-### <a name="create-smart-global-governance-test-user"></a>Slimme globale governance test gebruiker maken
+### <a name="create-a-smart-global-governance-test-user"></a>Een testgebruiker voor Smart Global Governance maken
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in Smart Global governance. Werk samen met het [slimme Global governance-ondersteunings team](mailto:support.tech@smartglobal.com) om de gebruikers toe te voegen aan het slimme Global governance-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+Werk samen met het  [ondersteuningsteam van Smart Global Governance](mailto:support.tech@smartglobal.com) om een gebruiker met de naam B.Simon toe te voegen aan Smart Global Governance. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>Eenmalige aanmelding testen 
 
-In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
+In deze sectie test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
-Wanneer u op de tegel Smart Global governance in het toegangs venster klikt, moet u automatisch worden aangemeld bij het slimme Global governance waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u in het toegangsvenster de tegel Smart Global Governance selecteert, moet u automatisch worden aangemeld bij het exemplaar van Smart Global Governance waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Inleiding tot het toegangsvenster](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
+- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Slimme Global governance proberen met Azure AD](https://aad.portal.azure.com/)
+- [Smart Global Governance uitproberen met Azure AD](https://aad.portal.azure.com/)
 
-- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Wat is sessiebeheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Intelligent Global governance beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Smart Global Governance beveiligen met geavanceerde zichtbaarheid en besturingselementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
