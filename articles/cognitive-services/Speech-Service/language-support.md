@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730319"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783092"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Taal-en spraak ondersteuning voor de spraak service
 
@@ -312,6 +312,27 @@ De API voor **spraak omzetting** ondersteunt verschillende talen voor conversie 
 | Vietnamees              | `vi`          |
 | Welsh                   | `cy`          |
 | Yucatec Maya            | `yua`         |
+
+## <a name="speaker-recognition"></a>Speaker Recognition
+
+Raadpleeg de volgende tabel voor ondersteunde talen voor de verschillende Speaker Recognition-Api's. Zie het [overzicht](speaker-recognition-overview.md) voor meer informatie over speaker Recognition.
+
+| Landinstelling | Taal | Tekst afhankelijke verificatie | Tekst onafhankelijke verificatie | Tekst onafhankelijke identificatie |
+|----|----|----|----|----|
+| nl-NL | Engels (VS) | ja | ja | ja |
+|zh-CN  |Chinees (Mandarijn, vereenvoudigd)|    N.v.t.|    ja|    ja|
+|de-DE  |Duits (Duitsland)   |N.v.t.    |ja    |ja|
+|en-GB  |Engels (UK)   |N.v.t.    |ja    |ja|
+|fr-FR  |Frans (Frankrijk)    |N.v.t.    |ja    |ja|
+|en-AU  |Engels (Australië)    |N.v.t.    |ja    |ja|
+|en-CA  |Engels (Canada)   |N.v.t.|   ja|    ja|
+|FR-CA  |Frans (Canada)    |N.v.t.    |ja|   ja|
+|it-IT  |Italiaans|   N.v.t. |ja|   ja|
+|es-ES| Spaans (Spanje) |N.v.t.    |ja|   ja|
+|es-MX  |Spaans (Mexico)   |N.v.t.|   ja|    ja|
+|ja-JP| Japans    |N.v.t.    |ja    |ja|
+|pt-BR| Portugees (Brazilië)|    N.v.t.|    ja|    ja|
+|ko-KR| Koreaans  |N.v.t.    |ja|   ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 

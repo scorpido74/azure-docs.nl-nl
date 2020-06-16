@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635166"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780882"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Wat is de Azure Speaker Recognition-service?
 
@@ -55,6 +55,20 @@ Inschrijvings gegevens voor de spreker worden opgeslagen in een beveiligd systee
 U bepaalt hoe lang de gegevens bewaard moeten blijven. U kunt inschrijvings gegevens voor afzonderlijke sprekers maken, bijwerken en verwijderen via API-aanroepen. Wanneer het abonnement wordt verwijderd, worden alle gegevens over de registratie van de sprekernotities die zijn gekoppeld aan het abonnement, ook verwijderd. 
 
 Net als bij alle Cognitive Services resources moeten ontwikkel aars die gebruikmaken van de Speaker Recognition-service op de hoogte zijn van het beleid van micro soft op klant gegevens. Zorg ervoor dat u de juiste machtigingen hebt ontvangen van de gebruikers voor Speaker Recognition. Zie de [pagina Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   in het micro soft vertrouwens centrum voor meer informatie. 
+
+## <a name="common-questions-and-solutions"></a>Veelgestelde vragen en oplossingen
+
+| Vraag | Oplossing |
+|---------|----------|
+| Welke scenario's kunnen Speaker Recognition worden gebruikt voor? | Call Center klantverificatie, op spraak gebaseerde patiënten check-in, Meeting Transcriptie, personalisatie van apparaten op meerdere gebruikers|
+| Wat is het verschil tussen identificatie en verificatie? | Identificatie is het proces van het detecteren van welk lid van een groep luid sprekers spreekt. Verificatie is het bevestigen dat een spreker overeenkomt met een bekende of **Inge schreven** stem.|
+| Wat is het verschil tussen tekst afhankelijke en tekst onafhankelijke verificatie? | Voor een tekst afhankelijke verificatie is een specifieke wachtwoordzin vereist voor zowel de inschrijving als de herkenning. Tekst onafhankelijke verificatie vereist een langere stem voorbeeld voor de inschrijving, maar alles kan worden gesp roken, inclusief tijdens de herkenning.|
+| Welke talen worden ondersteund? | Engels, Frans, Spaans, Chinees, Duits, Italiaans, Japans en Portugees |
+| Welke Azure-regio's worden ondersteund? | Speaker Recognition is een preview-service en is momenteel alleen beschikbaar in de regio vs-West.|
+| Welke audio-indelingen worden ondersteund? | Mono 16-bits, 16kHz PCM-encoded WAV |
+| **Accepteren** en **weigeren** van antwoorden is niet nauw keurig, hoe kunt u de drempel waarde afstemmen? | Omdat de optimale drempel sterk varieert met scenario's, bepaalt de API of ' geaccepteerd ' of ' afwijzen ' op basis van een standaard drempelwaarde van 0,5. Ervaren gebruikers worden geadviseerd om de standaard beslissing te negeren en het resultaat te verfijnen op basis van uw eigen scenario. |
+| Kunt u één spreker meerdere keren inschrijven? | Ja, voor een tekst afhankelijke verificatie kunt u een spreker van Maxi maal 50 keer inschrijven. Voor tekst onafhankelijke verificatie of Speaker-identificatie kunt u inschrijven met Maxi maal 300 seconden aan audio. |
+| Welke gegevens worden opgeslagen in azure? | Inschrijvings audio wordt opgeslagen in de service totdat het spraak profiel wordt [verwijderd](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Audio-voor beelden voor herkenning blijven niet behouden of worden opgeslagen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

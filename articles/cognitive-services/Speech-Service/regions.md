@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220466"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782531"
 ---
 # <a name="speech-service-supported-regions"></a>Ondersteunde regio's voor spraak Services
 
@@ -38,7 +38,7 @@ De speech-service is beschikbaar in deze regio's voor **spraak herkenning**, **t
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Als u de [spraak-SDK](speech-sdk.md)gebruikt, worden regio's opgegeven met de **regio-id** (bijvoorbeeld als een para meter `SpeechConfig.FromSubscription`aan). Zorg ervoor dat de regio overeenkomt met de regio van uw abonnement.
+Als u de [spraak-SDK](speech-sdk.md)gebruikt, worden regio's opgegeven met de **regio-id** (bijvoorbeeld als een para meter aan `SpeechConfig.FromSubscription` ). Zorg ervoor dat de regio overeenkomt met de regio van uw abonnement.
 
 ### <a name="intent-recognition"></a>Intentieherkenning
 
@@ -75,6 +75,10 @@ De [spraak-SDK](speech-sdk.md) ondersteunt de mogelijkheden van de **Voice Assis
 | Europa - noord   | `northeurope`        |
 | Azië - zuidoost | `southeastasia`      |
 
+### <a name="speaker-recognition"></a>Speaker Recognition
+
+Speaker Recognition is momenteel alleen beschikbaar in de `westus` regio.
+
 ## <a name="rest-apis"></a>REST-API’s
 
 De spraak service stelt ook REST-eind punten beschikbaar voor aanvragen voor spraak naar tekst en tekst naar spraak.
@@ -89,12 +93,12 @@ Het eind punt voor de REST API heeft de volgende indeling:
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Vervang `<REGION_IDENTIFIER>` door de id die overeenkomt met de regio van uw abonnement uit deze tabel:
+Vervang door `<REGION_IDENTIFIER>` de id die overeenkomt met de regio van uw abonnement uit deze tabel:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> De para meter language moet worden toegevoegd aan de URL om te voor komen dat er een 4xx HTTP-fout wordt ontvangen. Bijvoorbeeld, de taal die is ingesteld op Amerikaans-Engels met het eind punt VS `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`West is:.
+> De para meter language moet worden toegevoegd aan de URL om te voor komen dat er een 4xx HTTP-fout wordt ontvangen. Bijvoorbeeld, de taal die is ingesteld op Amerikaans-Engels met het eind punt vs West is: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
 ### <a name="text-to-speech"></a>Tekst naar spraak
 
