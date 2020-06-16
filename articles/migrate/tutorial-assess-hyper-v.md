@@ -1,181 +1,189 @@
 ---
-title: Virtuele Hyper-V-machines evalueren voor migratie naar Azure met Azure Migrate | Microsoft Docs
-description: Hierin wordt beschreven hoe u on-premises virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure met behulp van Azure Migrate server-evaluatie.
+title: Hyper-V-VM's beoordelen voor migratie naar Azure met Azure Migrate | Microsoft Docs
+description: Hier wordt beschreven hoe u met behulp van Azure Migrate-serverevaluatie on-premises Hyper-V-VM's kunt evalueren voor migratie naar Azure.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 2c4233df6566f3187c8366188b0eb960189b43c5
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535448"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331760"
 ---
-# <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
+# <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Hyper-V-VM's beoordelen met Azure Migrate-serverevaluatie
 
-Dit artikel laat u zien hoe u on-premises virtuele Hyper-V-machines kunt beoordelen met behulp van het [Azure migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) tool.
+In dit artikel leest u hoe u on-premises Hyper-V-VM's kunt beoordelen met behulp van het hulpprogramma [Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool).
 
 
-Deze zelf studie is de tweede in een serie die laat zien hoe u virtuele Hyper-V-machines kunt beoordelen en migreren naar Azure. In deze zelfstudie leert u het volgende:
+Deze zelfstudie is de tweede in een reeks die laat zien hoe u Hyper-V-VM's kunt evalueren en migreren naar Azure. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Stel een Azure Migrate project in.
-> * Een Azure Migrate apparaat instellen en registreren.
-> * Start doorlopende detectie van on-premises Vm's.
-> * Gedetecteerde Vm's groeperen en de groep beoordelen.
-> * Bekijk de evaluatie.
+> * Een Azure Migrate-project instellen.
+> * Azure Migrate-apparaat instellen en registreren.
+> * Continue detectie van on-premises VM's starten.
+> * Gedetecteerde VM's groeperen en de groep evalueren.
+> * De evaluatie controleren.
 
 > [!NOTE]
-> In zelf studies ziet u het eenvoudigste installatiepad voor een scenario, zodat u snel een haalbaarheids test kunt instellen. Zelf studies gebruiken waar mogelijk standaard opties en worden niet alle mogelijke instellingen en paden weer gegeven. Raadpleeg de artikelen met procedures voor gedetailleerde instructies.
+> In zelfstudies ziet u het eenvoudigste implementatiepad voor een scenario, zodat u snel een haalbaarheidstest kunt instellen. Waar mogelijk maken zelfstudies gebruik van standaardopties en niet alle mogelijke instellingen en paden worden weergegeven. Raadpleeg de artikelen met procedures voor gedetailleerde instructies.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Voltooi](tutorial-prepare-hyper-v.md) de eerste zelf studie in deze serie. Als dat niet het geval is, werken de instructies in deze zelf studie niet.
-- In de eerste zelf studie hebt u het volgende gedaan:
-    - [Bereid Azure](tutorial-prepare-hyper-v.md#prepare-azure) voor op het werken met Azure Migrate.
-    - Bereid de evaluatie van [Hyper-V-](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) hosts en vm's voor.
-    - [Controleer](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) wat u nodig hebt om het Azure migrate apparaat voor Hyper-V-evaluatie te implementeren.
+- [Voltooi](tutorial-prepare-hyper-v.md) de eerste zelfstudie in de serie. Als u dit niet doet, werken de instructies in deze zelfstudie niet.
+- In de eerste zelfstudie hebt u het volgende gedaan:
+    - [Azure voorbereiden](tutorial-prepare-hyper-v.md#prepare-azure) om te werken met Azure Migrate.
+    - Beoordeling van [Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment)-hosts en -VM's voorbereiden.
+    - [Controleren](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) wat u nodig hebt om het Azure Migrate-apparaat voor Hyper-V-evaluatie te implementeren.
 
-## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
+## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate-project instellen
 
 1. Zoek in de Azure-portal in **Alle services** naar **Azure Migrate**.
-2. Selecteer in de zoek resultaten **Azure migrate**.
+2. Selecteer **Azure Migrate** in de lijst met zoekresultaten.
 3. In **Overzicht**, onder **Servers ontdekken, evalueren en migreren**, klikt u op **Servers evalueren en migreren**.
 
-    ![Servers detecteren en beoordelen](./media/tutorial-assess-hyper-v/assess-migrate.png)
+    ![Servers detecteren en evalueren](./media/tutorial-assess-hyper-v/assess-migrate.png)
 
 4. Klik in **Aan de slag** op **Hulpprogramma's toevoegen**.
-5. Selecteer uw Azure-abonnement op het tabblad **project migreren** en maak een resource groep als u er nog geen hebt.
-6. Geef in **Project Details**de project naam en de regio op waarin u het project wilt maken. Bekijk ondersteunde geografies voor [open bare](migrate-support-matrix.md#supported-geographies-public-cloud) en [overheids Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
+5. Selecteer op het tabblad **Project migreren** uw Azure-abonnement en maak een resourcegroep als u er nog geen hebt.
+6. Geef in **Projectdetails** de projectnaam en de regio op waarin u het project wilt maken. Bekijk ondersteunde geografische regio's voor [openbare](migrate-support-matrix.md#supported-geographies-public-cloud) clouds en [overheidsclouds](migrate-support-matrix.md#supported-geographies-azure-government).
 
-    - De project regio wordt alleen gebruikt om de meta gegevens op te slaan die zijn verzameld van on-premises Vm's.
-    - U kunt een andere Azure-doel regio selecteren wanneer u de virtuele machines migreert. Alle Azure-regio's worden ondersteund voor het migratie doel.
+    - De projectregio wordt alleen gebruikt om de metagegevens op te slaan die worden verzameld van on-premises virtuele machines.
+    - U kunt een andere Azure-doelregio selecteren wanneer u de virtuele machines migreert. Alle Azure-regio's worden ondersteund voor het migratiedoel.
 
     ![Een Azure Migrate-project maken](./media/tutorial-assess-hyper-v/migrate-project.png)
 
 7. Klik op **Volgende**.
-8. Selecteer in **hulp programma voor beoordeling selecteren**de optie **Azure migrate: Server analyse** > **volgende**.
+8. In **Evaluatieprogramma selecteren** selecteert u **Azure Migrate: Serverevaluatie** > **Volgende**.
 
     ![Een Azure Migrate-project maken](./media/tutorial-assess-hyper-v/assessment-tool.png)
 
 9. In **Migratieprogramma selecteren** selecteert u **Het toevoegen van een migratieprogramma voorlopig overslaan** > **Volgende**.
-10. Controleer de instellingen in **hulp middelen voor beoordeling en toevoegen**en klik op **hulp middelen toevoegen**.
+10. Controleer in **Evalueren en hulpprogramma's toevoegen** de instellingen en klik op **Hulpmiddelen toevoegen**.
 11. Wacht een paar minuten tot het Azure Migrate-project is geïmplementeerd. U wordt naar de projectpagina geleid. Als u het project niet ziet, kunt u het openen vanuit **Servers** in het Azure Migrate-dashboard.
 
-## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate apparaat instellen
+## <a name="set-up-the-azure-migrate-appliance"></a>Het Azure Migrate-apparaat instellen
 
 
-Azure Migrate: Server evaluatie maakt gebruik van een licht gewicht Azure Migrate apparaat. Het apparaat voert VM-detectie uit en verzendt meta gegevens en prestatie gegevens van de virtuele machine naar Azure Migrate. Het apparaat kan op verschillende manieren worden ingesteld.
+Azure Migrate-serverevaluatie maakt gebruik van een lichtgewicht Azure Migrate-apparaat. Het apparaat voert VM-detectie uit en verzendt metagegevens en prestatiegegevens van de virtuele machine naar Azure Migrate. Het apparaat kan op verschillende manieren worden ingesteld.
 
-- Ingesteld op een Hyper-V-VM met behulp van een gedownloade Hyper-V VHD. Dit is de methode die in deze zelf studie wordt gebruikt.
-- Ingesteld op een Hyper-V-VM of fysieke machine met een Power shell-installatie script. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u geen virtuele machine kunt instellen met behulp van de VHD of als u zich in azure Government bevindt.
+- Ingesteld op een Hyper-V-VM met behulp van een gedownloade Hyper-V-VHD. Dit is de methode die in deze zelfstudie wordt gebruikt.
+- Ingesteld op een Hyper-V-VM of fysieke machine met een PowerShell-installatiescript. [Deze methode](deploy-appliance-script.md) moet worden gebruikt als u een virtuele machine niet kunt instellen met behulp de VHD of als u zich in Azure Government bevindt.
 
-Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gemaakt met Azure Migrate: Server evaluatie, het voor de eerste keer configureren en registreren bij het Azure Migrate-project.
+Nadat u het apparaat hebt gemaakt, controleert u of er verbinding kan worden gemaakt met Azure Migrate-serverevaluatie, configureert u het voor de eerste keer en registreert u het bij het Azure Migrate-project.
 
 ### <a name="download-the-vhd"></a>De VHD downloaden
 
-Down load de sjabloon voor de gezipte VHD voor het apparaat.
+Download het zip-bestand met de VHD-sjabloon voor het apparaat.
 
-1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **detecteren**.
-2. Zijn uw machines in **Discover-computers** > **gevirtualiseerde?** Klik op **Ja, met Hyper-V**.
-3. Klik op **downloaden** om het VHD-bestand te downloaden.
+1. In **Migratiedoelen** > **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Ontdekken**.
+2. In **Machines ontdekken** > **Zijn de machines gevirtualiseerd?** klikt u op **Ja, met Hyper-V**.
+3. Klik op **Downloaden** om het VHD-bestand te downloaden.
 
-    ![Virtuele machine downloaden](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
+    ![VM downloaden](./media/tutorial-assess-hyper-v/download-appliance-hyperv.png)
 
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
-Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
+Controleer of het zip-bestand veilig is voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
 
-2. Voer de volgende Power shell-opdracht uit om de hash voor het ZIP-bestand te genereren
+2. Gebruik de volgende PowerShell-opdracht om de hash voor het zip-bestand te genereren
     - ```C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v1.19.06.27.zip -Algorithm SHA256```
 
-3.  Voor de toestel versie 2.19.07.30 moet de gegenereerde hash overeenkomen met deze instellingen.
+3.  Controleer de meest recente versie van het apparaat en de hashwaarden:
 
-  **Algoritme** | **Hash-waarde**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+    - Voor de openbare Azure-cloud:
 
-### <a name="create-the-appliance-vm"></a>De apparaat-VM maken
+        **Scenario** | **Downloaden** | **SHA256**
+        --- | --- | ---
+        Hyper-V (8,93 MB) | [Nieuwste versie](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+
+    - Voor Azure Government:
+
+        **Scenario*** | **Downloaden** | **SHA256**
+        --- | --- | ---
+        Hyper-V (63,1 MB) | [Nieuwste versie](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
+
+### <a name="create-the-appliance-vm"></a>Het VM-apparaat maken
 
 Importeer het gedownloade bestand en maak de virtuele machine.
 
 1. Na het downloaden van het gecomprimeerde VHD-bestand naar de Hyper-V-host waarop de apparaat-VM wordt geplaatst, pakt u het zip-bestand uit.
-    - In de geëxtraheerde locatie wordt het bestand uitgepakt naar een map met de naam **AzureMigrateAppliance_VersionNumber**.
-    - Deze map bevat een submap, ook wel **AzureMigrateAppliance_VersionNumber**genoemd.
-    - Deze submap bevat drie verdere submappen: **moment opnamen**, **virtuele harde schijven**en **virtual machines**.
+    - Op de uitgepakte locatie wordt het bestand uitgepakt naar een map met de naam **AzureMigrateAppliance_VersionNumber**.
+    - Deze map bevat een submap, ook wel **AzureMigrateAppliance_VersionNumber** genoemd.
+    - Deze submap bevat weer drie submappen: **Momentopnamen**, **Virtuele harde schijven** en **Virtuele machines**.
 
-2. Open Hyper-V-beheer. Klik in **acties**op **virtuele machine importeren**.
+2. Open Hyper-V-beheer. Klik in **Acties** op **Virtuele machine importeren**.
 
     ![VHD implementeren](./media/tutorial-assess-hyper-v/deploy-vhd.png)
 
-2. Klik in de wizard virtuele machine importeren > **voordat u begint**op **volgende**.
-3. Selecteer in **map zoeken**de map **virtual machines** . Klik vervolgens op **Volgende**.
-1. Klik in **virtuele machine selecteren**op **volgende**.
-2. In **import type kiezen**klikt u op **de virtuele machine kopiëren (een nieuwe unieke id maken)**. Klik vervolgens op **Volgende**.
-3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
-4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
-5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden. [Meer informatie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) over het maken van een virtuele switch.
-6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **Voltooien**.
-7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
+2. Klik in de wizard Virtuele machine importeren > **Voordat u begint** op **Volgende**.
+3. Selecteer in **Map zoeken** de map **Virtual Machines**. Klik op **Volgende**.
+1. Klik in **Virtuele machine selecteren** op **Volgende**.
+2. Klik in **Importtype kiezen** op **De virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
+3. Laat in **Bestemming kiezen** de standaardinstelling ongewijzigd. Klik op **Volgende**.
+4. Laat in **Opslagmappen** de standaardinstelling ongewijzigd. Klik op **Volgende**.
+5. Geef in **Netwerk kiezen** de virtuele switch op die door de virtuele machine wordt gebruikt. De switch heeft internetverbinding nodig om gegevens naar Azure te verzenden. [Lees meer](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) over het maken van een virtuele switch.
+6. Controleer de instellingen in **Samenvatting**. Klik vervolgens op **Voltooien**.
+7. Start de virtuele machine in Hyper-V-beheer > **Virtual Machines**.
 
 
-## <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
+## <a name="verify-appliance-access-to-azure"></a>Apparaattoegang tot Azure controleren
 
-Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met Azure-Url's voor [open bare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls) Clouds.
+Zorg ervoor dat de apparaat-VM verbinding kan maken met Azure-URL's voor [openbare](migrate-appliance.md#public-cloud-urls) en [overheids](migrate-appliance.md#government-cloud-urls)clouds.
 
 ### <a name="configure-the-appliance"></a>Het apparaat configureren
 
 Het apparaat voor de eerste keer instellen.
 
 > [!NOTE]
-> Als u het apparaat instelt met behulp van een [Power shell-script](deploy-appliance-script.md) in plaats van de gedownloade VHD, zijn de eerste twee stappen in deze procedure niet relevant.
+> Als u het apparaat instelt met behulp van een [PowerShell-script](deploy-appliance-script.md) in plaats van de gedownloade VHD, zijn de eerste twee stappen in deze procedure niet relevant.
 
-1. Klik in Hyper-V-beheer > **virtual machines**met de rechter muisknop op de virtuele machine > **verbinding maken**.
-2. Geef de taal, de tijd zone en het wacht woord op voor het apparaat.
-3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https://*-apparaatnaam of IP-adres*: 44368**.
+1. Klik in Hyper-V-beheer > **Virtual Machines** met de rechtermuisknop op de virtuele machine > **Verbinding maken**.
+2. Geef de taal, de tijdzone en een wachtwoord op voor het apparaat.
+3. Open een browser op een computer die verbinding kan maken met de VM en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
 
-   U kunt de app ook vanuit het toestel bureau blad openen door te klikken op de snelkoppeling naar de app.
-1. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
-    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
-      - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in http://ProxyIPAddress het http://ProxyFQDNformulier of.
+   U kunt de app ook openen vanaf het bureaublad van het apparaat door te klikken op de snelkoppeling naar de app.
+1. Ga als volgt te werk in de web-app > **Vereisten instellen**:
+    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine een proxy gebruikt:
+      - Klik op **Proxyinstellingen** en geef het proxyadres en de controlepoort op in het formulier http://ProxyIPAddress of http://ProxyFQDN.
       - Geef referenties op als de proxy verificatie nodig heeft.
       - Alleen HTTP-proxy wordt ondersteund.
-    - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat de machine detectie goed werkt.
-    - **Updates installeren**: Azure migrate server beoordeling controleert of de meest recente updates zijn geïnstalleerd op het apparaat.
+    - **Tijdsynchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet zijn gesynchroniseerd met internettijd voor VM zodat detectie goed werkt.
+    - **Updates installeren**: Azure Migrate-serverevaluatie controleert of de meest recente updates zijn geïnstalleerd op het apparaat.
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
-2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
-    - Meld u aan met uw gebruikers naam en wacht woord.
+1. Klik op **Aanmelden**. Als dit niet wordt weergegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+2. Meld u aan met uw Azure-referenties op het nieuwe tabblad.
+    - Meld u aan met uw gebruikersnaam en wachtwoord.
     - Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
 4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
 5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
-6. Klik op **registreren**.
+6. Klik op **Registreren**.
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>Referenties voor SMB-Vhd's delegeren
+### <a name="delegate-credentials-for-smb-vhds"></a>Referenties voor SMB-VHD's delegeren
 
-Als u virtuele harde schijven uitvoert op Smb's, moet u de overdracht van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Hiervoor moet u het volgende doen:
+Als u VHD's uitvoert op SMB's, moet u de delegatie van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Hiervoor is het volgende vereist:
 
-- U schakelt elke host in als gemachtigde voor het apparaat. Als u de zelf studies in volg orde hebt gevolgd, hebt u dit gedaan in de vorige zelf studie, wanneer u Hyper-V voor de evaluatie en migratie hebt voor bereid. U moet CredSSP [hand matig](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)instellen voor de hosts of door [een script](tutorial-prepare-hyper-v.md#prepare-with-a-script) uit te voeren dat dit doet.
-- Schakel CredSSP-delegering in, zodat het Azure Migrate apparaat kan fungeren als de client, en de referenties voor een host delegeren.
+- U schakelt elke host in als gemachtigde voor het apparaat. Als u de zelfstudies in volgorde hebt gevolgd, hebt u dit gedaan in de vorige zelfstudie, toen u Hyper-V voor de evaluatie en migratie hebt voorbereid. U moet CredSSP ofwel [handmatig](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts) voor de hosts hebben ingesteld, of door [een script uit te voeren](tutorial-prepare-hyper-v.md#prepare-with-a-script) dat dit doet.
+- Schakel CredSSP-delegatie in, zodat het Azure Migrate-apparaat kan fungeren als de client, waarbij de referenties naar een host worden gedelegeerd.
 
-Schakel op het apparaat als volgt in:
+Schakel dit als volgt in op het apparaat:
 
-#### <a name="option-1"></a>Mogelijkheid 1
+#### <a name="option-1"></a>Optie 1
 
-Voer de volgende opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voor beelden van hostnamen.
+Voer deze opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voorbeelden van hostnamen.
 
 ```
 Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
@@ -185,125 +193,125 @@ Voorbeeld: ` Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.cont
 
 #### <a name="option-2"></a>Optie 2
 
-U kunt dit ook doen in het Lokale groepsbeleidsobjecteditor op het apparaat:
+U kunt dit ook doen in de editor voor Lokaal groepsbeleid op het apparaat:
 
-1. Klik in de**computer configuratie**van het **lokale computer beleid** > op **Beheersjablonen** > **System** > **delegering**van systeem referenties.
-2. Dubbel klik op **delegeren van nieuwe referenties toestaan**en selecteer **ingeschakeld**.
-3. Klik in **Opties**op **weer geven**en voeg elke Hyper-V-host die u wilt detecteren, toe aan de lijst met **wsman/** als voor voegsel.
-4. Dubbel klik vervolgens bij het **delegeren van referenties**op toestaan van het **delegeren van nieuwe referenties met NTLM-Server verificatie**. Voeg nogmaals elke Hyper-V-host die u wilt detecteren, toe aan de lijst met **wsman/** als voor voegsel.
+1. Klik in **Lokaal computerbeleid** > **Computerconfiguratie** op **Administratieve sjablonen** > **Systeem** > **Delegatie van referenties**.
+2. Dubbelklik op **Delegeren van nieuwe referenties toestaan** en selecteer **Ingeschakeld**.
+3. Klik in **Opties** op **Weergeven** en voeg elke Hyper-V-host toe die u op de lijst wilt detecteren, waarbij u **wsman/** gebruikt als voorvoegsel.
+4. Dubbelklik vervolgens in **Delegatie van referenties** op **Delegeren van nieuwe referenties toestaan met NTLM-serververificatie**. Voeg weer elke Hyper-V-host toe die u op de lijst wilt detecteren, met **wsman/** als voorvoegsel.
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 
-Maak verbinding van het apparaat met Hyper-V-hosts of-clusters en start de VM-detectie.
+Maak vanaf het apparaat verbinding met Hyper-V-hosts of -clusters en start de VM-detectie.
 
-1. Geef bij **gebruikers naam** en **wacht woord**de account referenties op die door het apparaat worden gebruikt voor het detecteren van vm's. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
-2. Klik op **host toevoegen**en geef de gegevens van de Hyper-V-host/het cluster op.
-3. Klik op **Valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
-    - Als de validatie voor een host mislukt, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
-    - Als u hosts of clusters wilt verwijderen, selecteert u > **verwijderen**.
+1. Geef in **Gebruikersnaam** en **Wachtwoord** de accountreferenties op die door het apparaat worden gebruikt om VM's te detecteren. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
+2. Klik op **Host toevoegen** en geef de gegevens van de Hyper-V-host/het cluster.
+3. Klik op **Valideren**. Na validatie wordt het aantal VM's weergegeven dat op elke host/elk cluster kan worden gedetecteerd.
+    - Als de validatie mislukt voor een host, raadpleegt u de fout door te klikken op het pictogram in de kolom **Status**. Los problemen op en valideer opnieuw.
+    - Als u hosts of clusters wilt verwijderen, selecteert u > **Verwijderen**.
     - U kunt een specifieke host niet verwijderen uit een cluster. U kunt alleen het hele cluster verwijderen.
     - U kunt een cluster toevoegen, zelfs als er problemen zijn met specifieke hosts in het cluster.
-4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.
+4. Klik na validatie op **Opslaan en detectie starten** om het detectieproces te starten.
 
-De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per host voor de meta gegevens van gedetecteerde servers die worden weer gegeven in de Azure Portal.
+De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per host voordat de metagegevens van de gedetecteerde servers worden weergegeven in de Azure-portal.
 
 ### <a name="verify-vms-in-the-portal"></a>VM's verifiëren in de portal
 
-Nadat de detectie is voltooid, kunt u controleren of de virtuele machines in de portal worden weer gegeven.
+Nadat de detectie is voltooid, kunt u controleren of de VM's worden weergegeven in de portal.
 
-1. Open het Azure Migrate dash board.
-2. Klik op de pagina **Azure migrate servers** > **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
+1. Open het Azure Migrate-dashboard.
+2. Klik op de pagina **Azure Migrate - Servers** > **Azure Migrate: Serverevaluatie** op het pictogram dat het aantal voor **Gedetecteerde servers** weergeeft.
 
 ## <a name="set-up-an-assessment"></a>Een evaluatie instellen
 
-Er zijn twee soorten evaluaties die u kunt uitvoeren met behulp van Azure Migrate server-evaluatie.
+U kunt twee soorten evaluaties uitvoeren met behulp van Azure Migrate-serverevaluatie.
 
-**Beoordeling** | **Details** | **Gegevens**
+**Evaluatie** | **Details** | **Gegevens**
 --- | --- | ---
-**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatie gegevens | **Aanbevolen VM-grootte**: op basis van gegevens van CPU en geheugen gebruik.<br/><br/> **Aanbevolen schijf type (Standard of Premium Managed disk)**: op basis van de IOPS en door Voer van de on-premises schijven.
-**Als on-premises** | Evaluaties op basis van on-premises grootte. | **Aanbevolen VM-grootte**: op basis van de on-PREMISes VM-grootte<br/><br> **Aanbevolen schijf type**: op basis van de instelling voor het opslag type die u voor de evaluatie selecteert.
+**Op basis van prestaties** | Evaluaties op basis van verzamelde prestatiegegevens | **Aanbevolen VM-grootte**: Gebaseerd op verbruiksgegevens voor CPU en geheugen.<br/><br/> **Aanbevolen schijftype (standaard of premium beheerde schijf)** : Op basis van de IOPS en doorvoer van de on-premises schijven.
+**Zoals on-premises** | Evaluaties op basis van on-premises grootte aanpassen. | **Aanbevolen VM-grootte**: Op basis van de on-premises VM-grootte<br/><br> **Aanbevolen schijftype**: Op basis van de instelling voor het opslagtype die u voor de evaluatie selecteert.
 
 
 
 ### <a name="run-an-assessment"></a>Een evaluatie uitvoeren
 
-Voer een evaluatie als volgt uit:
+Voer als volgt een evaluatie uit:
 
-1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
-2. Klik in **servers** > **Azure migrate: Server evaluatie**op **evalueren**.
+1. Bekijk de [best practices](best-practices-assessment.md) voor het maken van evaluaties.
+2. In **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Evalueren**.
 
     ![Evalueren](./media/tutorial-assess-hyper-v/assess.png)
 
-3. Geef in **servers beoordelen**een naam op voor de evaluatie.
+3. Geef bij **Servers evalueren** een naam op voor de evaluatie.
 4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.
 
-    ![Eigenschappen van beoordeling](./media/tutorial-assess-hyper-v/assessment-properties.png)
+    ![Evaluatie-eigenschappen](./media/tutorial-assess-hyper-v/assessment-properties.png)
 
-3. In **een groep selecteren of maken**, selecteert u **nieuwe maken**en geeft u een groeps naam op. Een groep verzamelt een of meer Vm's samen voor evaluatie.
-4. Selecteer op **computers toevoegen aan de groep**de optie vm's die u aan de groep wilt toevoegen.
-5. Klik op **evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
+3. In **Een groep selecteren of maken** selecteert u **Nieuwe maken** en geeft u een groepsnaam op. Een groep verzamelt een of meer VM's voor evaluatie.
+4. Selecteer in **Machines toevoegen aan de groep** de VM's die aan de groep moeten worden toegevoegd.
+5. Klik op **Evaluatie maken** om de groep te maken en de evaluatie uit te voeren.
 
     ![Een evaluatie maken](./media/tutorial-assess-hyper-v/assessment-create.png)
 
-6. Nadat de evaluatie is gemaakt, bekijkt u deze in **servers** > **Azure migrate: Server Assessment**.
+6. Nadat de evaluatie is gemaakt, kunt u deze bekijken in **Servers** > **Azure Migrate: Server-evaluatieserver**.
 7. Klik op **Evaluatie exporteren** om deze te downloaden als een Excel-bestand.
 
 
-## <a name="review-an-assessment"></a>Een evaluatie controleren
+## <a name="review-an-assessment"></a>Een evaluatie beoordelen
 
-Een evaluatie beschrijft:
+Een evaluatie beschrijft het volgende:
 
-- **Azure-gereedheid**: of vm's geschikt zijn voor migratie naar Azure.
-- **Schatting van maandelijkse kosten**: de geschatte maandelijkse reken-en opslag kosten voor het uitvoeren van de virtuele machines in Azure.
-- **Schatting maandelijkse opslag kosten**: geschatte kosten voor schijf opslag na migratie.
-
-
-### <a name="view-an-assessment"></a>Een evaluatie weer geven
-
-1. In **migratie doelen** >  **servers** > **Azure migrate: Server evaluatie**klikt u op **evaluaties**.
-2. Klik in **beoordelingen**op een evaluatie om deze te openen.
-
-    ![Evaluatie samenvatting](./media/tutorial-assess-hyper-v/assessment-summary.png)
+- **Azure-gereedheid**: Hiermee wordt aangegeven of VM's geschikt zijn voor migratie naar Azure.
+- **Schatting maandelijkse kosten**: De geschatte maandelijkse reken- en opslagkosten voor het uitvoeren van de VM's in Azure.
+- **Schatting maandelijkse opslagkosten**: Geschatte kosten voor schijfopslag na migratie.
 
 
-### <a name="review-azure-readiness"></a>Azure-gereedheid controleren
+### <a name="view-an-assessment"></a>Een evaluatie weergeven
 
-1. Controleer in **Azure Readiness**of de vm's gereed zijn voor migratie naar Azure.
-2. Controleer de status van de virtuele machine:
-    - **Gereed voor Azure**: Azure migrate RAADT een VM-grootte en schattingen voor de kosten aan voor vm's in de evaluatie.
-    - **Klaar met voor waarden**: toont problemen en voorgestelde herbemiddeling.
-    - **Niet gereed voor Azure**: toont problemen en voorgestelde herbemiddeling.
-    - **Gereedheid onbekend**: wordt gebruikt wanneer Azure migrate de gereedheid niet kan beoordelen door problemen met de beschik baarheid van gegevens.
+1. In **Migratiedoelen** >  **Servers** > **Azure Migrate: Serverevaluatie** klikt u op **Evaluaties**.
+2. Klik in **Evaluaties** op een evaluatie om deze te openen.
 
-2. Klik op de status van een **Azure-gereedheid** . U kunt details van de VM-gereedheid bekijken en inzoomen op de details van de virtuele machine, met inbegrip van compute-, opslag-en netwerk instellingen.
+    ![Evaluatie-overzicht](./media/tutorial-assess-hyper-v/assessment-summary.png)
 
-### <a name="review-cost-details"></a>Details van kosten bekijken
 
-In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitvoeren van Vm's in Azure.
+### <a name="review-azure-readiness"></a>Azure-gereedheid beoordelen
 
-1. Bekijk de maandelijkse reken-en opslag kosten. De kosten worden geaggregeerd voor alle virtuele machines in de geraamde groep.
+1. Controleer in **Azure-gereedheid** of de VM's gereed zijn voor migratie naar Azure.
+2. Controleer de VM-status:
+    - **Gereed voor Azure**: Azure Migrate raadt een VM-grootte en schattingen voor de kosten aan voor VM's in de evaluatie.
+    - **Gereed met voorwaarden**: Geeft problemen en voorgesteld herstel weer.
+    - **Niet gereed voor Azure**: Geeft problemen en voorgesteld herstel weer.
+    - **Gereedheid onbekend**: Wordt gebruikt wanneer Azure Migrate de gereedheid niet kan evalueren door problemen met de beschikbaarheid van gegevens.
 
-    - Schattingen van kosten zijn gebaseerd op de grootte aanbevelingen voor een machine en de schijven en eigenschappen.
-    - De geschatte maandelijkse kosten voor Compute en opslag worden weer gegeven.
-    - De kosten raming is voor het uitvoeren van de on-premises Vm's als IaaS Vm's. Azure Migrate server-evaluatie houdt geen rekening met PaaS-of SaaS-kosten.
+2. Klik op een **Azure-gereedheid**-status. U kunt details van de VM-gereedheid weergeven en inzoomen op de details van de VM, inclusief berekenings-, opslag- en netwerkinstellingen.
 
-2. U kunt de maandelijkse schattingen voor de opslag kosten bekijken. In deze weer gave worden geaggregeerde opslag kosten voor de geschatte groep weer gegeven, gesplitst over verschillende typen opslag schijven.
-3. U kunt inzoomen om de details van specifieke Vm's te bekijken.
+### <a name="review-cost-details"></a>Gedetailleerde kosten beoordelen
+
+Deze weergave toont de geschatte berekenings- en opslagkosten om virtuele machines in Azure uit te voeren.
+
+1. Controleer de maandelijkse berekenings- en opslagkosten. De kosten worden geaggregeerd voor alle VM's in de geëvalueerde groep.
+
+    - Schattingen van kosten zijn gebaseerd op de grootte-aanbevelingen voor een machine en de schijven en eigenschappen.
+    - De geschatte maandelijkse kosten voor berekening en opslag worden weergegeven.
+    - De schatting van de kosten is voor het uitvoeren van de on-premises VM's als IaaS-VM's. Azure Migrate Serverevaluatie houdt geen rekening met PaaS-of SaaS-kosten.
+
+2. U kunt de schatting van de maandelijkse opslagkosten controleren. In deze weergave worden geaggregeerde opslagkosten voor de geëvalueerde groep weergegeven, gesplitst over verschillende typen opslagschijven.
+3. U kunt inzoomen om de details voor specifieke VM's te bekijken.
 
 
 ### <a name="review-confidence-rating"></a>Betrouwbaarheidsclassificatie controleren
 
-Wanneer u evaluaties op basis van prestaties uitvoert, wordt een betrouwbaarheids classificatie aan de evaluatie toegewezen.
+Wanneer u evaluaties op basis van prestaties uitvoert, wordt er een betrouwbaarheidsclassificatie aan de evaluatie toegewezen.
 
 ![Betrouwbaarheidsclassificatie](./media/tutorial-assess-hyper-v/confidence-rating.png)
 
-- Er wordt een classificatie van 1 ster (laagste) tot 5 sterren (hoogst) toegekend.
-- De betrouwbaarheids classificatie helpt u bij het schatten van de betrouw baarheid van de grootte aanbevelingen van de evaluatie.
-- De betrouwbaarheids classificatie is gebaseerd op de beschik baarheid van gegevens punten die nodig zijn om de evaluatie te berekenen.
+- Er wordt een classificatie van 1 ster (laagst) tot 5 sterren (hoogst) toegekend.
+- De betrouwbaarheidsclassificatie helpt u om de betrouwbaarheid in te schatten van de aanbevelingen voor de grootte die de evaluatie geeft.
+- De betrouwbaarheidsclassificatie is op basis van de beschikbaarheid van de gegevenspunten die nodig zijn om de evaluatie te berekenen.
 
-De betrouwbaarheids classificaties voor een evaluatie zijn als volgt.
+De betrouwbaarheidsclassificatie voor een evaluatie zijn als volgt.
 
-**Beschik baarheid van gegevens punt** | **Betrouwbaarheidsclassificatie**
+**Beschikbaarheid van gegevenspunten** | **Betrouwbaarheidsclassificatie**
 --- | ---
 0%-20% | 1 ster
 21%-40% | 2 sterren
@@ -311,7 +319,7 @@ De betrouwbaarheids classificaties voor een evaluatie zijn als volgt.
 61%-80% | 4 sterren
 81%-100% | 5 sterren
 
-Meer [informatie](best-practices-assessment.md#best-practices-for-confidence-ratings) over best practices voor betrouwbaarheids classificaties.
+[Meer informatie](best-practices-assessment.md#best-practices-for-confidence-ratings) over de aanbevolen procedures voor betrouwbaarheidsclassificaties.
 
 
 
@@ -322,10 +330,10 @@ Meer [informatie](best-practices-assessment.md#best-practices-for-confidence-rat
 In deze zelfstudie hebt u:
 
 > [!div class="checklist"]
-> * Een Azure Migrate apparaat instellen
-> * Een evaluatie gemaakt en geëvalueerd
+> * Een Azure Migrate-apparaat ingesteld
+> * Een evaluatie gemaakt en gecontroleerd
 
-Ga door naar de derde zelf studie in de reeks om te leren hoe u virtuele Hyper-V-machines naar Azure migreert met Azure Migrate server migratie.
+Ga door naar de derde zelfstudie in deze reeks om te leren hoe u Hyper-V-VM's migreert naar Azure met Azure Migrate Server Migration.
 
 > [!div class="nextstepaction"]
 > [Hyper-V-VM's migreren](./tutorial-migrate-hyper-v.md)
