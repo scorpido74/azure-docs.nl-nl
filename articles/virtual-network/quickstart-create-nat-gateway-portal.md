@@ -1,160 +1,161 @@
 ---
-title: 'Snelstartgids: een NAT-gateway maken-Azure Portal'
+title: 'Quickstart: Een NAT-gateway maken - Azure-portal'
 titlesuffix: Azure Virtual Network NAT
-description: In deze Quick start ziet u hoe u een NAT-gateway maakt met behulp van de Azure Portal
+description: In deze quickstart leert u hoe u een NAT-gateway kunt maken met de Azure-portal
 services: virtual-network
 documentationcenter: na
 author: asudbring
 manager: KumudD
 Customer intent: I want to create a NAT gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1ff13d8ef0ca4c6cf499c3245d3ef14370283075
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 38cd4e9e7abdfe2d1548a8388a3f160cf3da1f1a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80066389"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341232"
 ---
-# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Snelstartgids: een NAT-gateway maken met behulp van de Azure Portal
+# <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Quickstart: Een NAT-gateway maken met de Azure-portal
 
-In deze Quick start ziet u hoe u de NAT-service van Azure Virtual Network gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor een virtuele machine in Azure. 
+In deze quickstart wordt uitgelegd hoe u de Azure Virtual Network NAT-service gebruikt. U maakt een NAT-gateway om uitgaande connectiviteit te bieden voor virtuele machines in Azure. 
 
-Als u wilt, kunt u deze stappen uitvoeren met behulp van de [Azure cli](quickstart-create-nat-gateway-cli.md), [Azure PowerShell](quickstart-create-nat-gateway-powershell.md)of een [arm-sjabloon](quickstart-create-nat-gateway-powershell.md) implementeren in plaats van de portal.
+Indien gewenst kunt u deze stappen uitvoeren met behulp van de [Azure CLI](quickstart-create-nat-gateway-cli.md) of [Azure PowerShell](quickstart-create-nat-gateway-powershell.md), of een [ARM-sjabloon](quickstart-create-nat-gateway-powershell.md) implementeren in plaats van de portal te gebruiken.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
-## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en para meters
+## <a name="virtual-network-and-parameters"></a>Virtueel netwerk en parameters
 
-Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u de resource groep en het virtuele netwerk maken.
+Voordat u een virtuele machine implementeert en uw NAT-gateway kunt gebruiken, moet u de resourcegroep en het virtuele netwerk maken.
 
-In deze sectie moet u de volgende para meters in de stappen vervangen door de onderstaande informatie:
+In deze sectie moet u de volgende parameters in de stappen vervangen door onderstaande informatie:
 
 | Parameter                   | Waarde                |
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupNAT |
-| **\<de naam van het virtuele netwerk>** | myVNet          |
-| **\<regio-naam>**          | VS - oost 2      |
-| **\<IPv4-adres ruimte>**   | 192.168.0.0 \ 16          |
-| **\<>van subnet naam**          | mySubnet        |
-| **\<>van het subnet-adres bereik** | 192.168.0.0 \ 24          |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | VS - oost 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0\16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 192.168.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-## <a name="create-a-vm-to-use-the-nat-gateway"></a>Een virtuele machine maken voor het gebruik van de NAT-gateway
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Een VM maken voor het gebruik van de NAT-gateway
 
-We gaan nu een VM maken voor het gebruik van de NAT-service. Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaar niveau om toegang te krijgen tot de virtuele machine. De NAT-service is stroom richting, en vervangt de standaard Internet bestemming in uw subnet. Het open bare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
+We gaan nu een VM maken voor het gebruik van de NAT-service. Deze VM heeft een openbaar IP-adres dat kan worden gebruikt als een openbaar IP-adres op exemplaarniveau om toegang te krijgen tot de virtuele machine. De NAT-service neemt stroomrichting waar en vervangt de standaard internetbestemming in uw subnet. Het openbare IP-adres van de virtuele machine wordt niet gebruikt voor uitgaande verbindingen.
 
-1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **Compute** > **Ubuntu Server 18,04 LTS**maken of zoek naar **Ubuntu Server 18,04 LTS** in de zoek functie voor Marketplace.
+1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** > **Compute** > **Ubuntu Server 18.04 LTS**, of zoek naar **Ubuntu Server 18.04 LTS** in de zoekactie voor Marketplace.
 
 2. In **Een virtuele machine maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
-   - **Abonnements** > **resource groep**: Selecteer **myResourceGroupNAT**.
-   - **Details** > van de naam van de**virtuele machine**: Typ **myVM**.
-   - **Exemplaar Details** > **regio** > Selecteer **VS Oost 2**.
-   - **Administrator account** > **Verificatie type**van Administrator-account: Selecteer **wacht woord**.
-   - **Beheerders account** > Geef de **gebruikers naam**, het **wacht woord**en de **wachtwoord** gegevens op.
-   - **Binnenkomende poort regels** > **open bare binnenkomende poorten**: Selecteer **geselecteerde poorten toestaan**.
-   - **Binnenkomende poort regels** > **Selecteer binnenkomende poorten**: Selecteer **SSH (22)**
+   - **Abonnement** > **Resourcegroep**: Selecteer **myResourceGroupNAT**.
+   - **Instantiedetails** > **Naam van virtuele machine**: Typ **myVM**.
+   - **Instantiedetails** > **Regio** > selecteer **US - oost 2**.
+   - **Beheerdersaccount** > **Verificatietype**: Selecteer **Wachtwoord**.
+   - **Beheerdersaccount** > Voer gegevens in bij **Gebruikersnaam**, **Wachtwoord** en **Wachtwoord bevestigen**.
+   - **Regels voor binnenkomende poort** > **Openbare poorten voor inkomend verkeer**: Selecteer **Geselecteerde poorten toestaan**.
+   - **Regels voor binnenkomende poort** > **Binnenkomende poorten selecteren**: **SSH (22)** selecteren
    - Selecteer het tabblad **Netwerken** of selecteer **Volgende: Schijven** en vervolgens **Volgende: Netwerken**.
 
-3. Controleer op het tabblad **netwerken** of het volgende is geselecteerd:
+3. Zorg ervoor dat de volgende opties zijn geselecteerd op het tabblad **Netwerken**:
    - **Virtueel netwerk**: **myVnet**
    - **Subnet**: **mySubnet**
-   - **Open bare IP-** > Selecteer **nieuwe maken**.  Typ **myPublicIPVM** in het veld **naam** in het venster **openbaar IP-adres maken** en kies **standaard** voor de **SKU**.  Klik op **OK**.
-   - **NIC-netwerk beveiligings groep**: Selecteer **basis**.
-   - **Open bare binnenkomende poorten**: Selecteer **geselecteerde poorten toestaan**.
-   - **Selecteer binnenkomende poorten**: Bevestig **SSH** is geselecteerd.
+   - **Openbaar IP-adres** > selecteer **Nieuwe maken**.  In het venster **Openbaar IP-adres maken** typt u **myPublicIPVM** in het veld **Naam** en kiest u **Standaard** bij **SKU**.  Klik op **OK**.
+   - **NIC-netwerkbeveiligingsgroep**: Selecteer **Basic**.
+   - **Openbare binnenkomende poorten**: Selecteer **Geselecteerde poorten toestaan**.
+   - **Binnenkomende poorten selecteren**: Bevestig dat **SSH** is geselecteerd.
 
-4. Stel op het tabblad **beheer** , onder **bewaking**, **Diagnostische gegevens over opstarten** in op **uit**.
+4. Op het tabblad **Beheer** onder **Bewaking** stelt u **Diagnostische gegevens over opstarten** in op **Uit**.
 
-5. Selecteer **controleren + maken**. 
+5. Selecteer **Controleren + maken**. 
 
-6. Controleer de instellingen en klik op **maken**.
+6. Controleer de instellingen en klik op **Maken**.
 
 ## <a name="create-the-nat-gateway"></a>De NAT-gateway maken
 
-U kunt een of meer open bare IP-adres bronnen, open bare IP-voor voegsels of beide gebruiken. We voegen een open bare IP-resource, een openbaar IP-voor voegsel en een NAT-gateway bron toe.
+U kunt een of meer openbare IP-adresresources, openbare IP-voorvoegsels of beide gebruiken. We voegen een openbare IP-resource, een openbaar IP-voorvoegsel en een NAT-gatewayresource toe.
 
-In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service kunt maken en configureren met behulp van de NAT-gateway resource:
-  - Een open bare IP-adres groep en een openbaar IP-voor voegsel dat moet worden gebruikt voor uitgaande stromen die worden vertaald door de NAT-gateway resource.
-  - Wijzig de time-out voor inactiviteit van de standaard waarde van 4 minuten in 10 minuten.
+In deze sectie wordt beschreven hoe u de volgende onderdelen van de NAT-service met de NAT-gatewayresource kunt maken en configureren:
+  - Een openbare IP-adresgroep en een openbaar IP-voorvoegsel die moeten worden gebruikt voor uitgaande stromen die worden omgezet door de NAT-gatewayresource.
+  - Wijzig de time-out voor inactiviteit van de standaardwaarde van 4 minuten naar 10 minuten.
 
 ### <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **netwerk** > **openbaar IP-adres**maken of zoek naar een **openbaar IP-adres** in de zoek actie voor Marketplace.
+1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** > **Netwerken** > **Openbaar IP-adres**, of zoek naar **Openbaar IP-adres** in de zoekactie voor Marketplace.
 
-2. Voer in **openbaar IP-adres maken**de volgende gegevens in of Selecteer deze:
+2. Typ of selecteer in **Openbaar IP-adres maken** deze informatie:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | IP-versie | Selecteer **IPv4**.
-    | SKU | Selecteer **standaard**.
-    | Naam | Voer **myPublicIP**in. |
+    | SKU | selecteer **Standaard**.
+    | Naam | Typ **myPublicIP**. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **myResourceGroupNAT**. |
     | Locatie | Selecteer **VS - oost 2**.|
 
 3. Laat de overige standaardwaarden staan en selecteer **Maken**.
 
-### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voor voegsel maken
+### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voorvoegsel maken
 
-1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **netwerk** > **openbaar IP-voor voegsel**maken of zoek naar een **openbaar IP-voor voegsel** in de zoek opdracht voor Marketplace. 
+1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** > **Netwerken** > **Openbaar IP-voorvoegsel**, of zoek naar **Openbaar IP-voorvoegsel** in de zoekactie voor Marketplace. 
 
-2. Typ of Selecteer in het **voor voegsel een openbaar IP-adres maken**de volgende waarden op het tabblad **basis beginselen** :
-   - **Abonnements** > **resource groep**: Selecteer **myResourceGroupNAT**>
-   - **Instance details** > **Naam**van instantie Details: Typ **myPublicIPprefix**.
-   - **Exemplaar Details** > **regio**: Selecteer **VS Oost 2**.
-   - **Instance details** > **Grootte van het voor voegsel**van instantie Details: Select **/31 (2 adressen)**
+2. In **Een openbaar IP-voorvoegsel maken** typt of selecteert u de volgende waarden op het tabblad **Basisinformatie**:
+   - **Abonnement** > **Resourcegroep**: Selecteer **myResourceGroupNAT**>
+   - **Instantiedetails** > **Naam**: Typ **myPublicIPprefix**.
+   - **Instantiedetails** > **Regio**: Selecteer **VS - oost 2**.
+   - **Instantiedetails** > **Voorvoegselgrootte**: Selecteer **/31 (2 adressen)**
 
-3. Laat de overige standaard instellingen ongewijzigd en selecteer **controleren + maken**.
+3. Laat de overige standaardwaarden staan en selecteer **Beoordelen en maken**.
 
 4. Controleer de instellingen en selecteer vervolgens **Maken**.
    
 
-### <a name="create-a-nat-gateway-resource"></a>Een NAT-gateway resource maken
+### <a name="create-a-nat-gateway-resource"></a>Een NAT-gatewayresource maken
 
-1. Selecteer in de linkerbovenhoek van de Portal de optie **een resource** > **netwerk** > **NAT gateway**of zoek naar de NAT- **Gateway** in de zoek functie op Marketplace.
+1. Selecteer in de linkerbovenhoek van de portal **Een resource maken** > **Netwerken** > **NAT-gateway**, of zoek naar **NAT-gateway** in de zoekactie voor Marketplace.
 
-2. Typ of Selecteer in de **Gateway Create Network Address Translation (NAT)** de volgende waarden op het tabblad **basis beginselen** :
-   - **Abonnements** > **resource groep**: Selecteer **myResourceGroupNAT**.
-   - **Exemplaar Details** > **NAT-gateway naam**: Typ **myNATgateway**.
-   - **Exemplaar Details** > **regio**: Selecteer **VS Oost 2**.
-   - **Instance details** > **Time-out voor exemplaar gegevens inactiviteit (minuten)**: type **10**.
-   - Selecteer het tabblad **openbaar IP-adres** of selecteer **volgende: openbaar IP-adres**.
+2. In **Network Address Translation (NAT)-gateway maken**, typt of selecteert u de volgende waarden op het tabblad **Basisinstellingen**:
+   - **Abonnement** > **Resourcegroep**: Selecteer **myResourceGroupNAT**.
+   - **Instantiedetails** > **Naam van NAT-gateway**: Typ **myNATgateway**.
+   - **Instantiedetails** > **Regio**: Selecteer **VS - oost 2**.
+   - **Instantiedetails** > **Time-out voor inactiviteit (minuten)** : Typ **10**.
+   - Selecteer het tabblad **Openbaar IP** of selecteer **Volgende: Openbaar IP**.
 
-3. Typ of selecteer de volgende waarden op het tabblad **openbaar IP** :
-   - **Open bare IP-adressen**: Selecteer **myPublicIP**.
-   - Voor **voegsels van open bare IP-adressen**: Selecteer **myPublicIPprefix**.
-   - Selecteer het tabblad **subnet** of selecteer **volgende: subnet**.
+3. Typ of selecteer de volgende waarden op het tabblad **Openbaar IP**:
+   - **Openbare IP-adressen**: Selecteer **myPublicIP**.
+   - **Voorvoegsels voor openbare IP**: Selecteer **myPublicIPprefix**.
+   - Selecteer het tabblad **Subnet** of selecteer **Volgende: Subnet**.
 
-4. Op het tabblad **subnet** typt of selecteert u de volgende waarden:
-   - **Virtual Network**: Selecteer **myResourceGroupNAT** > **myVnet**.
-   - **Subnetnaam**: Schakel het selectie vakje in naast **mySubnet**.
+4. Typ of selecteer de volgende waarden op het tabblad **Subnet**:
+   - **Virtueel netwerk**: Selecteer **myResourceGroupNAT** > **myVnet**.
+   - **Subnetnaam**: Selecteer het vakje naast **mySubnet**.
 
-5. Selecteer **controleren + maken**.
+5. Selecteer **Controleren + maken**.
 
 6. Controleer de instellingen en selecteer vervolgens **Maken**.
 
-## <a name="discover-the-ip-address-of-the-vm"></a>Het IP-adres van de virtuele machine detecteren
+## <a name="discover-the-ip-address-of-the-vm"></a>Het IP-adres van de VM ontdekken
 
-1. Selecteer op de linkerkant van de portal **resource groepen**.
+1. Selecteer aan de linkerkant van de portal de optie **Resourcegroepen**.
 2. Selecteer **myResourceGroupNAT**.
 3. Selecteer **myVM**.
-4. Kopieer in het **overzicht**de waarde voor het **open bare IP-adres** en plak deze in Klad blok, zodat u deze kunt gebruiken om toegang te krijgen tot de virtuele machine.
+4. Kopieer in **Overzicht** de waarde van **Openbare IP-adres** en plak deze in Kladblok, zodat u deze kunt gebruiken om toegang te krijgen tot de virtuele machine.
 
 >[!IMPORTANT]
->Kopieer het open bare IP-adres en plak het in een Klad blok, zodat u het kunt gebruiken om toegang te krijgen tot de virtuele machine.
+>Kopieer de openbare IP en plak deze in Kladblok, zodat u deze kunt gebruiken om toegang te krijgen tot de VM.
 
 ## <a name="sign-in-to-vm"></a>Aanmelden bij de VM
 
-Open een [Azure Cloud shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH naar de virtuele machine te gaan.
+Open [Azure Cloud Shell](https://shell.azure.com) in uw browser. Gebruik het IP-adres dat in de vorige stap is opgehaald om SSH op de virtuele machine uit te voeren.
 
 ```azurecli-interactive
 ssh <username>@<ip-address-destination>
@@ -164,19 +165,19 @@ U bent nu klaar om de NAT-service te gebruiken.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u deze niet meer nodig hebt, verwijdert u de resource groep, de NAT-gateway en alle gerelateerde resources. Selecteer de **myResourceGroupNAT** van de resource groep die de NAT-gateway bevat en selecteer vervolgens **verwijderen**.
+U kunt de resourcegroep, de NAT-gateway en alle gerelateerde resources verwijderen als u deze niet meer nodig hebt. Selecteer de resourcegroep **myResourceGroupNAT** met de NAT-gateway en selecteer vervolgens **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u een NAT-gateway en een virtuele machine gemaakt om deze te gebruiken. 
+In deze zelfstudie hebt u een NAT-gateway gemaakt en een VM om de gateway te gebruiken. 
 
-Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Problemen vaststellen, zoals de bron uitputting van de beschik bare SNAT-poorten.  Bron uitputting van de SNAT-poorten wordt opgelost door extra open bare IP-adres bronnen of open bare IP-prefix bronnen of beide toe te voegen.
+Controleer de metrische gegevens in Azure Monitor om uw NAT-service weer te geven. Stel problemen vast, zoals de resource-uitputting van de beschikbare SNAT-poorten.  Resource-uitputting van de SNAT-poorten kan worden verholpen door extra openbare IP-adresresources of openbare IP-voorvoegselresources of beide toe te voegen.
 
 
 - Meer informatie over [Azure Virtual Network NAT](./nat-overview.md)
-- Meer informatie over de [NAT gateway-resource](./nat-gateway-resource.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure cli](./quickstart-create-nat-gateway-cli.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md).
-- Quick start voor het implementeren van [NAT-gateway resource met behulp van Azure Portal](./quickstart-create-nat-gateway-portal.md).
+- Meer informatie over [NAT-gatewayresource](./nat-gateway-resource.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met Azure CLI](./quickstart-create-nat-gateway-cli.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met behulp van Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
+- Quickstart voor het implementeren van [NAT-gatewayresource met de Azure-portal](./quickstart-create-nat-gateway-portal.md)
 > [!div class="nextstepaction"]
 

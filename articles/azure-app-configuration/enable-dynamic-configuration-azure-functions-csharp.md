@@ -1,6 +1,6 @@
 ---
-title: Zelf studie voor het gebruik van Azure-app configuratie dynamische configuratie in een Azure Functions-app | Microsoft Docs
-description: In deze zelf studie leert u hoe u de configuratie gegevens voor Azure Functions-apps dynamisch kunt bijwerken
+title: Zelfstudie voor het gebruik van dynamische configuratie van Azure App Configuration in een Azure Functions-app | Microsoft Docs
+description: In deze zelfstudie leert u hoe u de configuratiegegevens voor Azure Functions-apps dynamisch bijwerkt.
 services: azure-app-configuration
 documentationcenter: ''
 author: zhenlan
@@ -15,40 +15,40 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74185448"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558148"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Zelf studie: dynamische configuratie in een Azure Functions-app gebruiken
+# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Zelfstudie: Dynamische configuratie gebruiken in een Azure Functions-app
 
-De app-configuratie .NET Standard-configuratie provider ondersteunt het in cache opslaan en vernieuwen van de configuratie die dynamisch wordt aangedreven door de toepassings activiteit. In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. Het is gebaseerd op de Azure Functions-app die is geïntroduceerd in de Quick starts. Voordat u doorgaat, moet u eerst [een Azure functions-app maken met Azure-app configuratie](./quickstart-azure-functions-csharp.md) .
+De configuratieprovider .NET Standard van App Configuration ondersteunt het dynamisch cachen en vernieuwen van een configuratie op basis van toepassingsactiviteit. In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementeren in uw code. We maken gebruik van de Azure Functions-app die is geïntroduceerd in de quickstarts. Voordat u verdergaat, moet u eerst de quickstart [Een Azure Functions-app maken met Azure App Configuration](./quickstart-azure-functions-csharp.md) voltooien als u dat nog niet hebt gedaan.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Stel uw Azure Functions-app in om de configuratie bij te werken als reactie op wijzigingen in een app-configuratie archief.
-> * Injecteer de nieuwste configuratie voor uw Azure Functions-aanroepen.
+> * Uw Azure Functions-app instellen voor het bijwerken van de configuratie als reactie op wijzigingen in een archief van App Configuration.
+> * De nieuwste configuratie injecteren in uw Azure Functions-aanroepen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de werk belasting **Azure Development**
-- [Azure Functions-hulpprogram ma's](../azure-functions/functions-develop-vs.md#check-your-tools-version)
-- Snelstartgids volt ooien [een Azure functions-app maken met Azure-app configuratie](./quickstart-azure-functions-csharp.md)
+- Azure-abonnement: [u kunt een gratis abonnement nemen](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) met de workload **Azure development**
+- [Hulpprogramma's van Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
+- Neem de quickstart [Een Azure Functions-app maken met Azure App Configuration](./quickstart-azure-functions-csharp.md) door voordat u verdergaat.
 
 ## <a name="reload-data-from-app-configuration"></a>Gegevens opnieuw laden vanuit app-configuratie
 
-1. Open *Function1.cs*. Voeg naast `static` de eigenschap `Configuration`een nieuwe `static` eigenschap `ConfigurationRefresher` toe om een singleton-exemplaar van `IConfigurationRefresher` te maken dat wordt gebruikt om configuratie-updates te Signa leren tijdens functie aanroepen op een later tijdstip.
+1. Open *Function1.cs*. Voeg als aanvulling op de `static` eigenschap `Configuration` een nieuwe `static` eigenschap `ConfigurationRefresher` toe om een singleton-instantie van `IConfigurationRefresher` te behouden die wordt gebruikt om later tijdens Functions-aanroepen configuratie-updates aan te geven.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
     private static IConfigurationRefresher ConfigurationRefresher { set; get; }
     ```
 
-2. Werk de constructor bij en gebruik de `ConfigureRefresh` -methode om de instelling op te geven die moet worden vernieuwd vanuit het configuratie archief van de app. Er wordt een `IConfigurationRefresher` exemplaar van opgehaald met `GetRefresher` de methode. U kunt ook het venster verloop tijd van de configuratie cache wijzigen in 1 minuut van de standaard 30 seconden.
+2. Werk de constructor bij en gebruik de methode `ConfigureRefresh` om de instelling op te geven die moet worden vernieuwd vanuit het App Configuration-archief. Er wordt een instantie van `IConfigurationRefresher` opgehaald met de methode `GetRefresher`. Desgewenst wijzigen we de periode waarna de configuratiecache verloopt van 1 minuut in de standaardwaarde van 30 seconden.
 
     ```csharp
     static Function1()
@@ -67,7 +67,7 @@ In deze zelfstudie leert u het volgende:
     }
     ```
 
-3. Werk de `Run` methode en het signaal bij om de configuratie te `Refresh` vernieuwen met behulp van de-methode aan het begin van de functie aanroep. Dit is niet het geval wanneer het venster voor de verval tijd van de cache niet is bereikt. Verwijder de `await` operator als u de voor keur geeft aan de configuratie die wordt vernieuwd zonder te blok keren.
+3. Werk de methode `Run` bij en geef aan het begin van de Functions-aanroep aan dat de configuratie moet worden bijgewerkt met de methode `TryRefreshAsync`. Er gebeurt niks (no-op) als de verloopperiode van de cache niet wordt bereikt. Verwijder de operator `await` als u de configuratie liever wilt bijwerken zonder blokkering.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ In deze zelfstudie leert u het volgende:
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
@@ -88,11 +88,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="test-the-function-locally"></a>De functie lokaal testen
 
-1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
+1. Stel een omgevingsvariabele met de naam **ConnectionString** in en stel deze in op de toegangssleutel van het App Configuration-archief. Als u de Windows-opdrachtprompt gebruikt, voert u de volgende opdracht uit en start u de opdrachtprompt opnieuw om de wijziging door te voeren:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Als u Windows Power shell gebruikt, voert u de volgende opdracht uit:
+    Als u Windows PowerShell gebruikt, voert u de volgende opdracht uit:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
@@ -100,29 +100,29 @@ In deze zelfstudie leert u het volgende:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Druk op F5 om de functie testen. Als hierom wordt gevraagd, accepteert u de aanvraag van Visual Studio om **Azure functions core** -hulpprogram ma's te downloaden en installeren. Mogelijk moet u ook een firewall-uitzonde ring inschakelen, zodat de hulpprogram ma's HTTP-aanvragen kunnen afhandelen.
+2. Druk op F5 om de functie testen. Accepteer desgevraagd de aanvraag van Visual Studio om **Azure Functions Core-hulpprogramma's (CLI)** te downloaden en installeren. Mogelijk moet u ook een firewall-uitzondering inschakelen, zodat de hulpprogramma's HTTP-aanvragen kunnen afhandelen.
 
 3. Kopieer de URL van uw functie vanuit de uitvoer van de Azure Functions-runtime.
 
     ![Quickstart over foutopsporing in functies in Visual Studio](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Plak de URL van de HTTP-aanvraag in de adresbalk van uw browser. In de volgende afbeelding ziet u het antwoord in de browser op de lokale GET-aanvraag die door de functie wordt geretourneerd.
+4. Plak de URL van de HTTP-aanvraag in de adresbalk van uw browser. In de afbeelding hieronder ziet u de reactie in de browser op de lokale GET-aanvraag die door de functie wordt geretourneerd.
 
     ![Quickstart over lokaal opstarten functies](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+5. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **Alle resources** en selecteer de instantie van het App Configuration-archief dat u in de quickstart hebt gemaakt.
 
-6. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutel bij:
+6. Selecteer **Configuratieverkenner** en werk de waarde van de volgende sleutel bij:
 
     | Sleutel | Waarde |
     |---|---|
-    | TestApp:Settings:Message | Gegevens van Azure-app configuratie-bijgewerkt |
+    | TestApp:Settings:Message | Gegevens van Azure App Configuration - bijgewerkt |
 
-7. Vernieuw de browser enkele keren. Wanneer de cache-instelling na een minuut verloopt, wordt op de pagina de reactie van de functie aanroep met de bijgewerkte waarde weer gegeven.
+7. Vernieuw de browser een paar keer. Wanneer de cache-instelling na een minuut verloopt, ziet u op de pagina de reactie van de Functions-aanroep met de bijgewerkte waarde.
 
-    ![Quick Start-functie lokaal vernieuwen](./media/quickstarts/dotnet-core-function-refresh-local.png)
+    ![Functions-app lokaal bijwerken](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-De voorbeeld code die in deze zelf studie wordt gebruikt, kan worden gedownload van de [app-configuratie github opslag plaats](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction)
+De voorbeeldcode in deze zelfstudie kan worden gedownload van de opslagplaats [App Configuration op GitHub](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -130,7 +130,7 @@ De voorbeeld code die in deze zelf studie wordt gebruikt, kan worden gedownload 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u uw Azure Functions-app ingeschakeld om de configuratie-instellingen van de app-configuratie dynamisch te vernieuwen. Ga verder met de volgende zelf studie als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot de app-configuratie te stroom lijnen.
+In deze zelfstudie hebt u uw Azure Functions-app ingesteld voor het dynamisch vernieuwen van configuratie-instellingen vanuit App Configuration. Als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot App Configuration te stroomlijnen, gaat u verder met de volgende zelfstudie.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
+> [Integratie van beheerde identiteit](./howto-integrate-azure-managed-service-identity.md)
