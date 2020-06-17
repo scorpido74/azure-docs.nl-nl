@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718441"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888307"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Ondersteuning van talen en regio's voor tekst-en spraak omzetting
 
@@ -186,7 +186,7 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabisch`Arab` | <--> | Latijnse`Latn` |
-|Bengalese  | `bn` | Bengaals`Beng` | <--> | Latijnse`Latn` |
+| Bengalese  | `bn` | Bengaals`Beng` | <--> | Latijnse`Latn` |
 | Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Latijnse`Latn` |
 | Chinees (Vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees`Hans`| <--> | Traditioneel Chinees`Hant`|
 | Chinees (Traditioneel) | `zh-Hant` | Traditioneel Chinees`Hant`| <--> | Latijnse`Latn` |
@@ -325,7 +325,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Vietnamees      | `vi`          |
 | Welsh | `cy` |
 
-## <a name="speech-translation"></a>Speech Translation
+## <a name="speech-translation"></a>Spraakomzetting
 Spraak omzetting is beschikbaar via Translator met Cognitive Services Speech Service. Raadpleeg de documentatie van de [Speech-Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) voor meer informatie over het gebruik van spraak omzetting en voor het weer geven van alle [beschik bare taal opties](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
 
 ### <a name="speech-to-text"></a>Spraak naar tekst

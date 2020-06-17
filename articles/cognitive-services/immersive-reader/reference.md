@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267236"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907377"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
@@ -111,7 +111,7 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync` .
+Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync` . Houd er rekening mee dat er een verwijzing naar de `iframe` met de insluitende lezer kan worden geopend via `container.firstChild` .
 
 ```typescript
 {
@@ -135,7 +135,7 @@ enum CookiePolicy { Disable, Enable }
 | tekst/zonder opmaak | Tekst zonder opmaak. |
 | text/html | HTML-inhoud. [Meer informatie](#html-support)|
 | Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](./how-to/display-math.md).
-| application/vnd. openxmlformats-officedocument. WordprocessingML. document | Micro soft Word. docx-indelings document.
+| Application/vnd.openxmlformats-officedocument.wordprocessingml.document | Micro soft Word. docx-indelings document.
 
 ### <a name="html-support"></a>HTML-ondersteuning
 
@@ -209,7 +209,7 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon` , `text` of `iconAndText` . Wordt standaard ingesteld op `icon` . |
+| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. De waarde kan `icon`, `text`of `iconAndText` zijn. Wordt standaard ingesteld op `icon` . |
 | `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. Wordt standaard ingesteld op Engels `en` . |
 | `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
 

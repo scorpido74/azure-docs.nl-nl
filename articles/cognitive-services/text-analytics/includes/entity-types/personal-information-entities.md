@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637438"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902576"
 ---
 > [!NOTE]
 > Als u wilt detecteren `PHI` , gebruikt u de `domain=phi` para meter en de model versie `2020-04-01` of hoger.
@@ -33,14 +33,14 @@ De volgende entiteits categorieën worden geretourneerd bij het verzenden van aa
 | Organisatie | Sporten | Sport organisaties. | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
 | Adres | N.v.t. | Volledige mailing adressen.  | `2020-04-01` | Ook geretourneerd met `domain=phi` . |
 | EU GPS-coördinaten | N.v.t. | GPS-coördinaten voor locaties binnen de Europese Unie.  | `2019-10-01` |  |
-| E-mail | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
+| Email | N.v.t. | E-mail adressen. | `2019-10-01` | Ook geretourneerd met `domain=phi` .   |
 | URL | N.v.t. | Url's naar websites. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | IP | N.v.t. | IP-adressen van het netwerk. | `2019-10-01` | |
 | DateTime | N.v.t. | Datums en tijden van de dag. | `2019-10-01` |  | 
 | DateTime | Date | Kalender datums. | `2019-10-01` | Ook geretourneerd met `domain=phi` . |
 | Aantal | N.v.t. | Cijfers en numerieke aantallen. | `2019-10-01` |  |
 | Aantal | Leeftijd | Leeftijd. | `2019-10-01` | | |
-| Internationale classificatie van ziekten (ICD-10-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, negende revisie.   | `2020-04-01` | |
+| Internationale classificatie van ziekten (ICD-9-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, negende revisie.   | `2020-04-01` | |
 | Internationale classificatie van ziekten (ICD-10-CM) | N.v.t. | Entiteiten met betrekking tot de internationale classificatie van ziekten, tiende revisie.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-gegevens
