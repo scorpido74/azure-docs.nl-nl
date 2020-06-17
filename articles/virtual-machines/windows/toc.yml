@@ -194,6 +194,8 @@
               href: ../dav4-dasv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Ddv4- en Ddsv4-serie
               href: ../ddv4-ddsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Dv4- en Dsv4-serie
+              href: ../dv4-dsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Geoptimaliseerde rekenkracht
           items:
             - name: Overzicht
@@ -213,6 +215,8 @@
               href: ../eav4-easv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Edv4- en Edsv4-serie
               href: ../edv4-edsv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Ev4- en Esv4-serie
+              href: ../ev4-esv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: M-serie
               href: ../m-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Mv2-serie
@@ -277,6 +281,8 @@
         - name: Spot-VM's
           href: spot-vms.md
           displayName: 'pre-empt, preempt'
+        - name: Virtuele Azure-machines zonder tijdelijke schijf
+          href: ../azure-vms-no-temp-disk.md
         - name: Vorige generaties
           href: ../sizes-previous-gen.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
           displayName: D-series Ds-series A-series Basic
@@ -371,7 +377,7 @@
               href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: Foutcodes
               href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-        - name: 'C# gebruiken'
+        - name: C# gebruiken
           href: csharp.md
         - name: Een gespecialiseerde schijf gebruiken
           items:
@@ -379,7 +385,7 @@
               href: create-vm-specialized-portal.md
             - name: PowerShell
               href: create-vm-specialized.md
-        - name: 'Een ARM-sjabloon met C# gebruiken'
+        - name: Een ARM-sjabloon met C# gebruiken
           href: csharp-template.md
           displayName: Azure Resource Manager
         - name: Een virtuele machine maken met Chef
@@ -624,7 +630,7 @@
           href: ../extensions/agent-windows.md
         - name: Speculatieve uitvoering beperken
           href: mitigate-se.md
-        - name: Azire Instance Metadata Service
+        - name: Metagegevens bewaken
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen
           href: nested-virtualization.md
@@ -663,7 +669,7 @@
             - name: Overzicht van agents
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Veelgestelde vragen
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure Diagnostics-extensie
               items:
                 - name: Overzicht
@@ -736,7 +742,7 @@
             - name: Veelgestelde vragen over algemene beschikbaarheid
               href: ../../azure-monitor/insights/vminsights-ga-release-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Veelgestelde vragen
-              href: '../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms'
+              href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#azure-monitor-for-vms
             - name: Bewaking inschakelen
               items:
                 - name: Bewakingsoverzicht inschakelen

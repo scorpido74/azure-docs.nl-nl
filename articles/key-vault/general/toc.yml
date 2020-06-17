@@ -66,6 +66,8 @@
   items:
     - name: Verifiëren
       items:
+        - name: Verifiëren bij Key Vault
+          href: authentication.md
         - name: Een beheerde identiteit in App Service gebruiken
           href: managed-identity.md
         - name: Een toegangscontrolebeleid gebruiken
@@ -123,7 +125,7 @@
     - name: Algemene parameters en headers
       href: common-parameters-and-headers.md
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET

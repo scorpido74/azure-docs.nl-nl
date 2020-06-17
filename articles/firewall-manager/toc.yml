@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: Algemeen implementatieproces
       href: deployment-overview.md
-    - name: Vertrouwde beveiligingspartners
+    - name: Beveiligingspartnerproviders
       href: trusted-security-partners.md
     - name: Logica voor verwerking van regels
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: Instructiegidsen
   items:
-    - name: Vertrouwde beveiligingspartners implementeren
+    - name: Beveiligingspartnerproviders implementeren
       href: deploy-trusted-security-partner.md
     - name: Migreren naar firewallbeleid - PowerShell
       href: migrate-to-policy.md

@@ -52,7 +52,7 @@
           href: luis-tutorial-pattern.md
     - name: Gebruiken met een bot
       items:
-        - name: 'Met C#'
+        - name: Met C#
           href: luis-csharp-tutorial-bf-v4.md
           displayName: 'bot framework, framework, sdk, abs'
         - name: Met Node.js
@@ -125,6 +125,14 @@
         - name: Ontwerpstrategieën
           href: luis-concept-enterprise.md
           displayName: import
+    - name: DevOps-procedures toepassen met LUIS
+      items:
+        - name: Broncodebeheer en vertakkingsstrategieën voor LUIS
+          href: luis-concept-devops-sourcecontrol.md
+        - name: Testen voor DevOps
+          href: luis-concept-devops-testing.md
+        - name: CI/CD-werkstromen
+          href: luis-concept-devops-automation.md
 - name: Instructiegidsen
   items:
     - name: Een nieuwe app starten
@@ -238,11 +246,13 @@
         - name: Containerbeperkingen
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: DevOps gebruiken
+      href: luis-how-to-devops-with-github.md
     - name: Verwante services
       items:
         - name: Azure Bot Service
           href: 'https://dev.botframework.com/'
-        - name: 'Bot Builder 4.x SDK C#'
+        - name: Bot Builder 4.x SDK C#
           href: 'https://github.com/Microsoft/botbuilder-dotnet'
         - name: QnA Maker
           href: 'https://qnamaker.ai/'
@@ -284,7 +294,7 @@
               href: luis-reference-response-codes.md
         - name: SDK's
           items:
-            - name: 'C#'
+            - name: C#
               items:
                 - name: NuGet - ontwerpen
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'
