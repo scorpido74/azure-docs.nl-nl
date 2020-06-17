@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault firewalls en virtuele netwerken configureren-Azure Key Vault
-description: Stapsgewijze instructies voor het configureren van Key Vault firewalls en virtuele netwerken
+title: Key Vault-firewalls en virtuele netwerken configureren - Azure Key Vault
+description: Stapsgewijze instructies om Key Vault-firewalls en virtuele netwerken te configureren
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
@@ -9,67 +9,68 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0438f573c33c71e0f30b7db1909e3649b21010a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: 78ae393c47de7a9d03d7b3de9b3dcd315d228f05
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086586"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605422"
 ---
-# <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault firewalls en virtuele netwerken configureren
+# <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault-firewalls en virtuele netwerken configureren
 
-In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure Key Vault firewalls en virtuele netwerken om de toegang tot uw sleutel kluis te beperken. Met de [service-eind punten voor virtuele netwerken voor Key Vault](overview-vnet-service-endpoints.md)) kunt u de toegang beperken tot een opgegeven virtueel netwerk en een aantal IPv4-adresbereiken (Internet Protocol versie 4).
+In dit artikel vindt u stapsgewijze instructies voor het configureren van Azure Key Vault-firewalls en virtuele netwerken om de toegang tot uw sleutelkluis te beperken. Met de [service-eindpunten van het virtuele netwerk voor Key Vault](overview-vnet-service-endpoints.md)) kunt u de toegang tot een opgegeven virtueel netwerk en een aantal IPv4-adresbereiken (internetprotocol versie 4) beperken.
 
 > [!IMPORTANT]
-> Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen Key Vault [gegevensvlak](secure-your-key-vault.md#data-plane-access-control) bewerkingen uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit geldt ook voor toegang tot Key Vault vanuit de Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutel kluis van de Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weer geven als hun client computer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault kiezer door andere Azure-Services. Gebruikers kunnen mogelijk een lijst met sleutel kluizen zien, maar geen lijst met sleutels als firewall regels hun client computer verhinderen.
+> Als de firewallregels van kracht zijn, kunnen gebruikers alleen Key Vault-[gegevenslaagbewerkingen](secure-your-key-vault.md#data-plane-access-control) uitvoeren wanneer hun aanvragen afkomstig zijn van toegestane virtuele netwerken of IPv4-adresbereiken. Dit is tevens van toepassing voor toegang tot Key Vault vanuit Azure Portal. Hoewel gebruikers kunnen bladeren naar een sleutelkluis van Azure Portal, kunnen ze mogelijk geen sleutels, geheimen of certificaten weergeven als hun clientcomputer niet in de lijst met toegestane clients staat. Dit is ook van invloed op de Key Vault-kiezer door andere Azure-Services. Gebruikers zien mogelijk een lijst met sleutelkluizen, maar geen lijst met sleutels als firewallregels hun clientcomputer weigeren.
 
 ## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
 
-U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behulp van de Azure Portal:
+U kunt als volgt Key Vault-firewalls en virtuele netwerken configureren met behulp van Azure Portal:
 
-1. Blader naar de sleutel kluis die u wilt beveiligen.
-2. Selecteer **netwerken**en selecteer vervolgens het tabblad **firewalls en virtuele netwerken** .
-3. Selecteer onder **toegang toestaan vanuit**de optie **geselecteerde netwerken**.
-4. Als u bestaande virtuele netwerken wilt toevoegen aan firewalls en regels voor virtuele netwerken, selecteert u **+ bestaande virtuele netwerken toevoegen**.
-5. Selecteer op de nieuwe blade die wordt geopend, het abonnement, de virtuele netwerken en de subnetten die u toegang wilt geven tot deze sleutel kluis. Als voor de virtuele netwerken en subnetten die u selecteert, geen service-eind punten zijn ingeschakeld, bevestigt u dat u service-eind punten wilt inschakelen en selecteert u **inschakelen**. Het kan tot vijf tien minuten duren voordat deze is doorgevoerd.
-6. Voeg onder **IP-netwerken**IPv4-adresbereiken toe door IPv4-adresbereiken te typen in [CIDR (Klasseloze route ring tussen domeinen)](https://tools.ietf.org/html/rfc4632) of afzonderlijke IP-adressen.
+1. Blader naar de sleutelkluis die u wilt beveiligen.
+2. Selecteer **Netwerken** en het tabblad **Firewalls en virtuele netwerken**.
+3. Selecteer **Geselecteerde netwerken** onder **Toegang toestaan uit**.
+4. Als u bestaande virtuele netwerken wilt toevoegen aan firewalls en regels voor virtuele netwerken, selecteert u **+ Bestaande virtuele netwerken toevoegen**.
+5. Selecteer op de nieuwe blade die wordt geopend het abonnement, de virtuele netwerken en de subnetten die u toegang wilt geven tot deze sleutelkluis. Als voor de virtuele netwerken en subnetten die u selecteert geen service-eindpunten zijn ingeschakeld, bevestigt u dat u service-eindpunten wilt inschakelen en selecteert u **Inschakelen**. Het kan tot vijftien minuten duren voordat deze instelling van kracht is.
+6. Voeg onder **IP-netwerken** IPv4-adresbereiken toe door IPv4-adresbereiken in [CIDR-notatie (Classless Inter-Domain Routing)](https://tools.ietf.org/html/rfc4632) of afzonderlijke IP-adressen in te voeren.
+7. Als u wilt toestaan dat vertrouwde services van Microsoft de Key Vault-firewall overslaan, selecteert u Ja. Klik op de volgende koppeling voor een volledige lijst van de huidige vertrouwde Key Vault-services. [Vertrouwde services van Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
 7. Selecteer **Opslaan**.
 
-U kunt ook nieuwe virtuele netwerken en subnetten toevoegen en vervolgens service-eind punten inschakelen voor de zojuist gemaakte virtuele netwerken en subnetten door **+ nieuw virtueel netwerk toevoegen**te selecteren. Volg vervolgens de aanwijzingen.
+U kunt ook nieuwe virtuele netwerken en subnetten toevoegen en vervolgens service-eindpunten inschakelen voor de zojuist gemaakte virtuele netwerken en subnetten door **+ Nieuw virtuele netwerk toevoegen** te selecteren. Volg daarna de aanwijzingen.
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken 
 
-U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behulp van de Azure CLI
+U kunt als volgt Key Vault-firewalls en virtuele netwerken configureren met behulp van Azure CLI
 
-1. [Installeer Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) en [Meld u aan](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. [Installeer Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) en [meld u aan](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
-2. Beschik bare regels voor virtuele netwerken weer geven. Als u geen regels voor deze sleutel kluis hebt ingesteld, is de lijst leeg.
+2. Bekijk de beschikbare regels voor virtuele netwerken. Als u geen regels voor deze sleutelkluis hebt ingesteld, is de lijst leeg.
    ```azurecli
    az keyvault network-rule list --resource-group myresourcegroup --name mykeyvault
    ```
 
-3. Schakel een service-eind punt in voor Key Vault op een bestaand virtueel netwerk en subnet.
+3. Schakel een service-eindpunt in voor Key Vault op een bestaand virtueel netwerk en subnet.
    ```azurecli
    az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --service-endpoints "Microsoft.KeyVault"
    ```
 
-4. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+4. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
    ```azurecli
    subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
    az keyvault network-rule add --resource-group "demo9311" --name "demo9311premium" --subnet $subnetid
    ```
 
-5. Een IP-adres bereik toevoegen waaruit verkeer kan worden toegestaan.
+5. Voeg een IP-adresbereik toe waaruit verkeer kan worden toegestaan.
    ```azurecli
    az keyvault network-rule add --resource-group "myresourcegroup" --name "mykeyvault" --ip-address "191.10.18.0/24"
    ```
 
-6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt `bypass` u in `AzureServices`op.
+6. Als deze sleutelkluis toegankelijk moet zijn voor vertrouwde services, stelt u `bypass` in op `AzureServices`.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mykeyvault" --bypass AzureServices
    ```
 
-7. Schakel de netwerk regels in door de standaard actie in te `Deny`stellen op.
+7. Schakel de netwerkregels in door de standaardactie in te stellen op `Deny`.
    ```azurecli
    az keyvault update --resource-group "myresourcegroup" --name "mekeyvault" --default-action Deny
    ```
@@ -78,47 +79,47 @@ U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-U kunt als volgt Key Vault firewalls en virtuele netwerken configureren met behulp van Power shell:
+U kunt als volgt Key Vault-firewalls en virtuele netwerken configureren met behulp van PowerShell:
 
-1. Installeer de nieuwste [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)en [Meld](https://docs.microsoft.com/powershell/azure/authenticate-azureps)u aan.
+1. Installeer de nieuwste versie van [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) en [meld u aan](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 
-2. Beschik bare regels voor virtuele netwerken weer geven. Als u geen regels voor deze sleutel kluis hebt ingesteld, is de lijst leeg.
+2. Bekijk de beschikbare regels voor virtuele netwerken. Als u geen regels voor deze sleutelkluis hebt ingesteld, is de lijst leeg.
    ```powershell
    (Get-AzKeyVault -VaultName "mykeyvault").NetworkAcls
    ```
 
-3. Service-eind punt inschakelen voor Key Vault op een bestaand virtueel netwerk en subnet.
+3. Schakel een service-eindpunt in voor Key Vault op een bestaand virtueel netwerk en subnet.
    ```powershell
    Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.1.1.0/24" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
    ```
 
-4. Voeg een netwerk regel toe voor een virtueel netwerk en een subnet.
+4. Voeg een netwerkregel toe voor een virtueel netwerk en subnet.
    ```powershell
    $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -VirtualNetworkResourceId $subnet.Id
    ```
 
-5. Een IP-adres bereik toevoegen waaruit verkeer kan worden toegestaan.
+5. Voeg een IP-adresbereik toe waaruit verkeer kan worden toegestaan.
    ```powershell
    Add-AzKeyVaultNetworkRule -VaultName "mykeyvault" -IpAddressRange "16.17.18.0/24"
    ```
 
-6. Als deze sleutel kluis toegankelijk moet zijn voor vertrouwde services, stelt `bypass` u in `AzureServices`op.
+6. Als deze sleutelkluis toegankelijk moet zijn voor vertrouwde services, stelt u `bypass` in op `AzureServices`.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -Bypass AzureServices
    ```
 
-7. Schakel de netwerk regels in door de standaard actie in te `Deny`stellen op.
+7. Schakel de netwerkregels in door de standaardactie in te stellen op `Deny`.
    ```powershell
    Update-AzKeyVaultNetworkRuleSet -VaultName "mykeyvault" -DefaultAction Deny
    ```
 
 ## <a name="references"></a>Verwijzingen
 
-* Azure CLI-opdrachten: [AZ-inkluis netwerk-regel](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
-* Azure PowerShell-cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
+* Azure CLI-opdrachten: [az keyvault network-rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
+* Azure PowerShell-cmdlets: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Virtuele netwerk service-eind punten voor Key Vault](overview-vnet-service-endpoints.md))
-* [Uw sleutel kluis beveiligen](secure-your-key-vault.md))
+* [Service-eindpunten voor virtuele netwerken voor Key Vault](overview-vnet-service-endpoints.md))
+* [Uw sleutelkluis beveiligen](secure-your-key-vault.md))

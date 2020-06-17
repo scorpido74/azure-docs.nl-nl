@@ -1,91 +1,91 @@
 ---
-title: 'Door gebeurtenis gestuurde architecturen op Edge: Azure Event Grid op IoT Edge'
-description: Gebruik Azure Event Grid als een module op IoT Edge voor het door sturen van gebeurtenissen tussen modules, edge-apparaten en de Cloud.
+title: Gebeurtenisgestuurde architecturen aan de rand — Azure Event Grid in IoT Edge
+description: Gebruik Azure Event Grid als een module in IoT Edge voor het doorsturen van gebeurtenissen tussen modules, edge-apparaten en de cloud.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
-ms.author: babanisa
-ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.author: femila
+ms.openlocfilehash: d569a4be6c9747dea4280d17ed2f888c3bed9936
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844650"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561691"
 ---
-# <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Wat is Azure Event Grid op Azure IoT Edge?
-Event Grid op IoT Edge biedt de kracht en flexibiliteit van Azure Event Grid tot aan de rand. Maak onderwerpen, publiceer gebeurtenissen en Abonneer u op meerdere doelen, ongeacht of ze modules zijn op hetzelfde apparaat, andere edge-apparaten of services in de Cloud.
+# <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Wat is Azure Event Grid in Azure IoT Edge?
+Event Grid in IoT Edge brengt de kracht en flexibiliteit van Azure Event Grid naar de rand. Maak onderwerpen, publiceer gebeurtenissen en abonneer op meerdere doelen, ongeacht of het modules op hetzelfde apparaat, andere edge-apparaten of services in de cloud zijn.
 
-Net als in de Cloud, wordt door de module Event Grid op IoT Edge de route ring, het filteren en de betrouw bare levering van gebeurtenissen op schaal verwerkt. Filter gebeurtenissen om ervoor te zorgen dat alleen relevante gebeurtenissen worden verzonden naar verschillende gebeurtenis-handlers met behulp van geavanceerde teken reeks-, numerieke en Booleaanse filters. Pogings logica zorgt ervoor dat de gebeurtenis de doel bestemming bereikt, zelfs als deze niet beschikbaar is op het moment van publiceren. Hiermee kunt u Event Grid op IoT Edge als een krachtig archief-en doorstuur mechanisme gebruiken.
+Net als in de cloud, verwerkt de module Event Grid in IoT Edge op schaal routering, filteren en betrouwbare levering van gebeurtenissen. Filter gebeurtenissen om ervoor te zorgen dat alleen relevante gebeurtenissen worden verzonden naar verschillende gebeurtenis-handlers met behulp van geavanceerde tekenreeks-, numerieke en booleaanse filters. Met logica voor opnieuw proberen wordt ervoor gezorgd dat de gebeurtenis de doelbestemming bereikt, ook als die niet beschikbaar is op het publicatiemoment. Hierdoor kunt u Event Grid in IoT Edge gebruiken als een krachtig opslag- en doorstuurmechanisme.
 
-Event Grid op IoT Edge ondersteunt zowel CloudEvents v 1.0 als aangepaste gebeurtenis schema's. Het ondersteunt ook dezelfde pub/sub-semantiek als Event Grid in de Cloud voor eenvoudige interoperabiliteit.
+Event Grid in IoT Edge ondersteunt zowel CloudEvents v1.0 als aangepaste gebeurtenisschema's. Ook wordt dezelfde semantiek voor publiceren en abonneren ondersteund als in Event Grid in de cloud voor eenvoudige interoperabiliteit.
 
-Dit artikel bevat een overzicht van Azure Event Grid op IoT Edge. Zie [publiceren, abonneren op gebeurtenissen lokaal](pub-sub-events-webhook-local.md)voor stapsgewijze instructies voor het gebruik van deze module aan de rand. 
+In dit artikel vindt u een overzicht van Azure Event Grid in IoT Edge. Zie [Gebeurtenissen lokaal publiceren en erop abonneren](pub-sub-events-webhook-local.md) voor stapsgewijze instructies voor het gebruik van deze module aan de rand. 
 
-![Event Grid op IoT Edge model van bronnen en handlers](../media/edge-overview/functional-model.png)
+![Event Grid in IoT Edge-model van bronnen en handlers](../media/edge-overview/functional-model.png)
 
-In deze afbeelding ziet u een aantal manieren waarop u Event Grid op IoT Edge kunt gebruiken. Dit is geen uitgebreide lijst met ondersteunde functies.
+In deze afbeelding ziet u een aantal manieren waarop u Event Grid in IoT Edge kunt gebruiken. Het is geen uitputtende lijst met ondersteunde functies.
 
-## <a name="when-to-use-event-grid-on-iot-edge"></a>Wanneer gebruikt u Event Grid op IoT Edge
+## <a name="when-to-use-event-grid-on-iot-edge"></a>Wanneer gebruikt u Event Grid in IoT Edge?
 
-Event Grid op IoT Edge biedt een eenvoudig te gebruiken, betrouw bare gebeurtenis model voor tussen de rand en de Cloud.
+Event Grid in IoT Edge biedt een eenvoudig te gebruiken, betrouwbaar gebeurtenismodel voor tussen de rand en de cloud.
 
-Event Grid op IoT Edge is gebouwd met een symmetrische runtime surface area naar de Azure-Cloud service, zodat u altijd dezelfde gebeurtenissen en API-aanroepen kunt gebruiken als u dat nodig hebt. Of u nu pub/sub in de Cloud, aan de rand of tussen de twee, Event Grid op IoT Edge kunt u de oplossing die u wilt bezoeken.
+Event Grid in IoT Edge is gebouwd met een symmetrisch runtime surface area ten opzichte van de Azure-cloudservice, zodat u overal dezelfde gebeurtenissen en API-aanroepen kunt gebruiken. Of u nu publiceert en abonneert in de cloud, aan de rand of tussen de cloud en de rand, Event Grid in IoT Edge kan uw ene standaardoplossing worden.
 
-Gebruik Event Grid op IoT Edge om eenvoudige werk stromen tussen modules te activeren. U kunt bijvoorbeeld een onderwerp maken en de gebeurtenissen opslag-BLOB gemaakt publiceren vanuit uw opslag module naar het onderwerp. U kunt nu een of meer functies of aangepaste modules abonneren op die onderwerpen.
+Gebruik Event Grid in IoT Edge om eenvoudige werkstromen tussen modules te activeren. Maak bijvoorbeeld een onderwerp en publiceer opslagblob gemaakt-gebeurtenissen vanuit uw opslagmodule in het onderwerp. U kunt nu een of meer functies of aangepaste modules abonneren op die onderwerpen.
 
-Breid uw functionaliteit uit tussen apparaten van de rand. Als u de gebeurtenissen van de BLOB-module publiceert en u de reken kracht van meerdere nabij door edge-apparaten wilt gebruiken, maakt u abonnementen voor meerdere apparaten.
+Breid uw functionaliteit tussen edge-apparaten uit. Als u blobmodulegebeurtenissen publiceert en u de rekenkracht van meerdere edge-apparaten in de buurt wilt gebruiken, maakt u abonnementen voor meerdere apparaten.
 
-Tot slot maakt u verbinding met de Cloud. Als de gebeurtenissen van uw BLOB-module periodiek moeten worden gesynchroniseerd met de Cloud, gebruikt u de grotere beschik bare reken kracht in de Cloud of verwerkte gegevens naar boven, maakt u aanvullende Cloud service abonnementen.
+Maak ten slotte verbinding met de cloud. Als uw blobmodulegebeurtenissen periodiek moeten worden gesynchroniseerd met de cloud, gebruikt u de grotere beschikbare rekenkracht in de cloud of verzendt u verwerkte gegevens ernaartoe en maakt u aanvullende cloudserviceabonnementen.
 
-Event Grid op IoT Edge biedt een flexibele en betrouw bare, losgekoppelde gebeurtenis architectuur.
+Event Grid in IoT Edge biedt een flexibele en betrouwbare ontkoppelde gebeurtenisarchitectuur.
 
 ## <a name="event-sources"></a>Gebeurtenisbronnen
 
-Net als in de cloud kan Event Grid op IoT Edge directe integratie tussen modules toestaan voor het bouwen van op gebeurtenissen gebaseerde architecturen. Op dit moment kunnen de gebeurtenissen worden verzonden naar Event Grid op IoT Edge van:
+Net als in de cloud is met Event Grid in IoT Edge directe integratie tussen modules mogelijk voor het bouwen van gebeurtenissengestuurde architecturen. Momenteel kunnen de gebeurtenissen naar Event Grid in IoT Edge worden verzonden vanuit de volgende locaties:
 
 * Azure Blob Storage op IoT Edge
-* CloudEvents bronnen
-* Aangepaste modules & containers via HTTP POST
+* CloudEvents-bronnen
+* Aangepaste modules en containers via HTTP POST
 
 ## <a name="event-handlers"></a>Event Handlers
 
-Event Grid op IoT Edge is gebouwd voor het verzenden van gebeurtenissen naar elke gewenste locatie. Momenteel worden de volgende bestemmingen ondersteund:
+Event Grid in IoT Edge is gebouwd voor het verzenden van gebeurtenissen naar elke gewenste locatie. Momenteel worden de volgende doelen ondersteund:
 
 * Andere modules, waaronder IoT Hub, functies en aangepaste modules
 * Andere edge-apparaten
 * WebHooks
-* Azure Event Grid-Cloud service
+* Azure Event Grid-cloudservice
 * Event Hubs
 * Service Bus-wachtrijen
 * Service Bus-onderwerpen
 * Opslagwachtrijen
 
 ## <a name="supported-environments"></a>Ondersteunde omgevingen
-Momenteel worden de Windows 64-bits, Linux 64-bits en ARM 32-bits omgevingen ondersteund.
+Momenteel worden de Windows 64 bits-, Linux 64 bits- en ARM 32 bitsomgevingen ondersteund.
 
 ## <a name="concepts"></a>Concepten
 
-Er zijn vijf concepten in Azure Event Grid waarmee u aan de slag kunt gaan:
+Azure Event Grid bevat vijf concepten waarmee u aan de slag kunt:
 
-* **Gebeurtenissen** : wat er is gebeurd.
-* **Gebeurtenis bronnen** : waar het evenement plaatsvond.
-* **Onderwerpen** : het eind punt waar uitgevers gebeurtenissen verzenden.
-* **Gebeurtenis abonnementen** : het eind punt of het ingebouwde mechanisme om gebeurtenissen te routeren, soms naar meer dan één handler. Abonnementen worden ook gebruikt door handlers om binnenkomende gebeurtenissen op een slimme manier te filteren.
-* **Gebeurtenis-handlers** : de app of service die reageert op de gebeurtenis.
+* **Gebeurtenissen**: wat er is gebeurd.
+* **Gebeurtenisbronnen**: waar de gebeurtenis heeft plaatsgevonden.
+* **Onderwerpen**: het eindpunt waarnaar uitgevers gebeurtenissen verzenden.
+* **Gebeurtenisabonnementen**: het eindpunt of ingebouwde mechanisme voor het routeren van gebeurtenissen, soms naar meerdere handlers. Abonnementen worden ook gebruikt door handlers om binnenkomende gebeurtenissen op een slimme manier te filteren.
+* **Gebeurtenis-handlers**: de app of de service die op de gebeurtenis reageert.
 
 ## <a name="cost"></a>Kosten
 
-Event Grid op IoT Edge is gratis tijdens de open bare preview.
+Event Grid in IoT Edge is gratis tijdens de openbare preview.
 
 ## <a name="issues"></a>Problemen
-Meld problemen met het gebruik van Event Grid op IoT Edge [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)op.
+Meld problemen met het gebruik van Event Grid in IoT Edge op [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Publiceren, lokaal abonneren op gebeurtenissen](pub-sub-events-webhook-local.md)
-* [Publiceren, abonneren op gebeurtenissen in de Cloud](pub-sub-events-webhook-cloud.md)
-* [Gebeurtenissen door sturen naar Event Grid Cloud](forward-events-event-grid-cloud.md)
-* [Gebeurtenissen door sturen naar IoTHub](forward-events-iothub.md)
+* [Gebeurtenissen lokaal publiceren en erop abonneren](pub-sub-events-webhook-local.md)
+* [Gebeurtenissen in de cloud publiceren en erop abonneren](pub-sub-events-webhook-cloud.md)
+* [Gebeurtenissen doorsturen naar Event Grid-cloud](forward-events-event-grid-cloud.md)
+* [Gebeurtenissen doorsturen naar IoTHub](forward-events-iothub.md)
 * [Lokaal reageren op gebeurtenissen in Blob Storage](react-blob-storage-events-locally.md)

@@ -1,6 +1,6 @@
 ---
-title: Private Link
-description: Overzicht van de functie Privé-eindpunt
+title: Azure Private Link
+description: Overzicht van de functie Privé-eindpunt.
 author: rohitnayakmsft
 ms.author: rohitna
 titleSuffix: Azure SQL Database and Azure Synapse Analytics
@@ -9,36 +9,36 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219880"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343996"
 ---
-# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Private Link voor Azure SQL Database en Azure Synapse Analytics
+# <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link voor Azure SQL Database en Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 Met een Private Link kunt u via een **privé-eindpunt** verbinding maken met verschillende PaaS-services in Azure. Raadpleeg de pagina [Documentatie over Private Link](../../private-link/index.yml) voor een lijst van PaaS-services die de Private Link-functionaliteit ondersteunen. Een privé-eindpunt is een privé-IP-adres binnen een specifiek [VNet](../../virtual-network/virtual-networks-overview.md) en subnet.
 
 > [!IMPORTANT]
-> Dit artikel is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics (voorheen SQL Data Warehouse). Ter vereenvoudiging verwijst de term “database” naar beide databases in Azure SQL Database en Azure Synapse Analytics. Alle verwijzingen naar “server” verwijzen ook naar de [logische SQL Server](logical-servers.md) die als host fungeert voor Azure SQL Database en Azure Synapse Analytics. Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**.
+> Dit artikel is van toepassing op zowel Azure SQL Database als Azure Synapse Analytics (voorheen Azure SQL Data Warehouse). Ter vereenvoudiging verwijst de term “database” naar beide databases in Azure SQL Database en Azure Synapse Analytics. Alle verwijzingen naar “server” verwijzen ook naar de [logische SQL Server](logical-servers.md) die als host fungeert voor Azure SQL Database en Azure Synapse Analytics. Dit artikel is *niet* van toepassing op **Azure SQL Managed Instance**.
 
 ## <a name="data-exfiltration-prevention"></a>Preventie van gegevensexfiltratie
 
 Gegevensexfiltratie in Azure SQL Database is wanneer een geautoriseerde gebruiker, zoals een databasebeheerder, gegevens uit het ene systeem kan extraheren en naar een andere locatie of systeem buiten de organisatie kan verplaatsen. De gebruiker verplaatst bijvoorbeeld de gegevens naar een opslagaccount dat eigendom is van een derde partij.
 
-Overweeg een scenario met een gebruiker die SQL Server Management Studio (SSMS) uitvoert binnen een Azure VM die verbinding maakt met een SQL Database. Deze SQL Database bevindt zich in het datacentrum US – West. In het onderstaande voorbeeld ziet u hoe u de toegang tot de openbare eindpunten op SQL Database met behulp van besturingselementen voor netwerktoegang kunt beperken.
+Overweeg een scenario met een gebruiker die SQL Server Management Studio (SSMS) uitvoert binnen een virtuele machine in Azure die verbinding maakt met een database in SQL Database. Deze SQL Database bevindt zich in het datacentrum US - west. In het onderstaande voorbeeld ziet u hoe u de toegang tot de openbare eindpunten op SQL Database met behulp van besturingselementen voor netwerktoegang kunt beperken.
 
 1. Schakel alle Azure-serviceverkeer uit naar SQL Database via het openbare eindpunt door Azure-services toestaan **UIT** te schakelen. Zorg ervoor dat er geen IP-adressen zijn toegestaan in de firewallregels op server- en databaseniveau. Zie [Azure SQL Database en Azure Synapse Analytics-netwerk toegangsbeheer](network-access-controls-overview.md)voor meer informatie.
-1. Alleen verkeer naar de SQL Database toestaan met behulp van het privé-IP-adres van de VM. Zie de artikelen over [Service-eindpunt](vnet-service-endpoint-rule-overview.md) en [VNet-firewallregels](firewall-configure.md)voor meer informatie.
+1. Alleen verkeer naar de database in SQL Database toestaan met behulp van het privé-IP-adres van de VM. Zie de artikelen over [Service-eindpunt](vnet-service-endpoint-rule-overview.md) en [firewallregels voor virtuele netwerken](firewall-configure.md)voor meer informatie.
 1. Op de Azure VM beperkt u het bereik van de uitgaande verbinding met behulp van [Netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/manage-network-security-group.md) en servicetags als volgt
     - Geef een NSG-regel op om verkeer voor Service Tag = SQL.WestUs toe te staan – alleen verbinding toestaan met SQL Database in US – West
     - Geef een NSG-regel (met een **hogere prioriteit**) op om verkeer te weigeren voor Service Tag = SQL – verbindingen met SQL Database in alle regio's weigeren
 
-Aan het einde van deze installatie kan de Azure VM alleen verbinding maken met SQL Databases in de regio US – West. De connectiviteit is echter niet beperkt tot één SQL Database. De VM kan nog steeds verbinding maken met SQL Databases in de regio US – West, met inbegrip van de databases die geen onderdeel zijn van het abonnement. Hoewel we het bereik van de gegevensexfiltratie in het bovenstaande scenario naar een bepaalde regio hebben gereduceerd, hebben we het niet geheel verwijderd.
+Aan het einde van deze installatie kan de Azure-VM alleen verbinding maken met een database in SQL Database in de regio US - west. De connectiviteit is echter niet beperkt tot één database in SQL Database. De VM kan nog steeds verbinding maken met elke database in de regio US - west, met inbegrip van de databases die geen onderdeel zijn van het abonnement. Hoewel we het bereik van de gegevensexfiltratie in het bovenstaande scenario naar een bepaalde regio hebben gereduceerd, hebben we het niet geheel verwijderd.
 
-Met Private Link kunnen klanten nu netwerk toegangsbeheer instellen, zoals NSG's om de toegang tot het privé-eindpunt te beperken. Afzonderlijke Azure PaaS-resources worden vervolgens toegewezen aan specifieke privé-eindpunten. Een kwaadwillende Insider heeft alleen toegang tot de toegewezen PaaS-resource (bijvoorbeeld een SQL Database) en geen andere resource. 
+Met Private Link kunnen klanten nu netwerk toegangsbeheer instellen, zoals NSG's om de toegang tot het privé-eindpunt te beperken. Afzonderlijke Azure PaaS-resources worden vervolgens toegewezen aan specifieke privé-eindpunten. Een kwaadwillende Insider heeft alleen toegang tot de toegewezen PaaS-resource (bijvoorbeeld een database in SQL Database) en geen andere resource. 
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>On-premises connectiviteit via privé-peering
 
@@ -49,15 +49,15 @@ Met Private Link kunnen klanten cross-premises toegang tot het privé-eindpunt i
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Private Link instellen voor Azure SQL Database 
 
 ### <a name="creation-process"></a>Proces maken
-Privé-eindpunten kunnen worden gemaakt met behulp van de portal, PowerShell of Azure CLI:
-- [Portal](../../private-link/create-private-endpoint-portal.md)
+Privé-eindpunten kunnen worden gemaakt met behulp van de Azure-portal, PowerShell of de Azure CLI:
+- [De portal](../../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../../private-link/create-private-endpoint-powershell.md)
 - [CLI](../../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Goedkeuringsproces
 Zodra de netwerkbeheerder het privé-eindpunt (PE) heeft gemaakt, kan de SQL-beheerder de verbinding met het privé-eindpunt (PEC) met SQL Database beheren.
 
-1. Ga naar de SQL Server Resource in de Azure Portal volgens de stappen in de onderstaande schermopname
+1. Ga naar de serverresource in de Azure-portal volgens de stappen in de onderstaande schermopname
 
     - (1) Selecteer de verbindingen met het privé-eindpunt in het linker deelvenster
     - (2) Toont een lijst met alle privé-eindpunt verbindingen (PEC's)
@@ -74,11 +74,11 @@ Zodra de netwerkbeheerder het privé-eindpunt (PE) heeft gemaakt, kan de SQL-beh
 
 ## <a name="use-cases-of-private-link-for-azure-sql-database"></a>Cases van Private Link gebruiken voor Azure SQL Database 
 
-Clients kunnen verbinding maken met het privé-eindpunt van hetzelfde VNet, gepeerd VNet in dezelfde regio, of via VNet-naar-VNet-verbindingen tussen regio's. Daarnaast kunnen clients via on-premises verbinding maken met behulp van ExpressRoute, privé peering of VPN-tunneling. Hieronder ziet u een vereenvoudigd diagram waarin de algemene gebruikscases worden weergegeven.
+Clients kunnen verbinding maken met het privé-eindpunt van hetzelfde virtuele netwerk, een peered virtueel netwerk in dezelfde regio, of via een verbinding van virtueel netwerk tot virtueel netwerk tussen regio's. Daarnaast kunnen clients via on-premises verbinding maken met behulp van ExpressRoute, privé peering of VPN-tunneling. Hieronder ziet u een vereenvoudigd diagram waarin de algemene gebruikscases worden weergegeven.
 
  ![Schema van connectiviteitsopties][1]
 
-## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network-vnet"></a>De connectiviteit met de SQL Database testen vanaf een Azure VM in hetzelfde Virtual Network (VNet)
+## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>De connectiviteit met de SQL Database testen vanaf een Azure-VM in hetzelfde virtuele netwerk
 
 Voor dit scenario wordt ervan uitgegaan dat u een Azure Virtuele machine (VM) hebt gemaakt met Windows Server 2016. 
 
@@ -93,7 +93,7 @@ Voor dit scenario wordt ervan uitgegaan dat u een Azure Virtuele machine (VM) he
 
 [Telnet-client](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754293%28v%3dws.10%29) is een Windows-functie die kan worden gebruikt om de connectiviteit te testen. Afhankelijk van de versie van het Windows-besturingssysteem moet u deze functie mogelijk expliciet inschakelen. 
 
-Open een opdrachtpromptvenster nadat u Telnet hebt geïnstalleerd. Voer de Telnet-opdracht uit en geef het IP-adres en het privé-eindpunt van de SQL Database op.
+Open een opdrachtpromptvenster nadat u Telnet hebt geïnstalleerd. Voer de Telnet-opdracht uit en geef het IP-adres en het privé-eindpunt van de database in SQL Database op.
 
 ```
 >telnet 10.1.1.5 1433
@@ -159,17 +159,17 @@ where session_id=@@SPID
 Verbindingen met een privé-eindpunt ondersteunen uitsluitend **Proxy** als het [verbindingsbeleid](connectivity-architecture.md#connection-policy)
 
 
-## <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Verbinding maken vanaf een Azure VM in een Peered Virtual Network (VNet) 
+## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>Verbinding maken vanaf een Azure-VM in een Peered Virtual Network 
 
-Configureer [VNet peering](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) om verbinding te maken met de SQL Database van een Azure VM in een peered VNet.
+Configureer [peering van virtuele netwerken](../../virtual-network/tutorial-connect-virtual-networks-powershell.md) om verbinding te maken met de SQL Database vanuit een Azure-VM in een peered virtueel netwerk.
 
-## <a name="connecting-from-an-azure-vm-in-vnet-to-vnet-environment"></a>Verbinding maken vanaf een Azure VM in VNet-naar-VNet-omgeving
+## <a name="connecting-from-an-azure-vm-in-virtual-network-to-virtual-network-environment"></a>Verbinding maken van een Azure-VM in een virtueel netwerk naar een virtuele netwerkomgeving
 
-Configureer [VNet-naar-VNet VPN-gatewayverbinding](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) om connectiviteit te maken met een SQL Database vanaf een Azure VM in een andere regio of een ander abonnement.
+Configureer [een VPN-gatewayverbinding van virtueel netwerk naar virtueel netwerk](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) om connectiviteit te maken met een database in SQL Database vanaf een Azure VM in een andere regio of een ander abonnement.
 
 ## <a name="connecting-from-an-on-premises-environment-over-vpn"></a>Verbinding maken vanuit een on-premises omgeving via VPN
 
-Als u verbinding wilt maken vanuit een on-premises omgeving met de SQL Database, kiest en implementeert u een van de volgende opties:
+Als u verbinding wilt maken vanuit een on-premises omgeving met de database in SQL Database, kiest en implementeert u een van de volgende opties:
 - [Punt-naar-site-verbinding](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 - [Site-naar-site-VPN-verbinding](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 - [ExpressRoute-circuit](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
@@ -177,7 +177,7 @@ Als u verbinding wilt maken vanuit een on-premises omgeving met de SQL Database,
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Verbinding maken vanaf Azure Synapse Analytics met Azure Storage met behulp van PolyBase
 
-PolyBase wordt vaak gebruikt voor het laden van gegevens in Azure Synapse Analytics vanaf Azure Storage-accounts. Als het Azure Storage-account waarvan u gegevens wilt laden, alleen toegang heeft tot een set VNet-subnetten via Privé-eindpunten, Service-eindpunten of op IP-gebaseerde firewalls, wordt de connectiviteit van PolyBase naar het account verbroken. Voor het inschakelen van zowel PolyBase import- en exportscenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met een VNet, volgt u de stappen die [hier](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) worden weer gegeven. 
+PolyBase wordt vaak gebruikt voor het laden van gegevens in Azure Synapse Analytics vanaf Azure Storage-accounts. Als het Azure Storage-account waarvan u gegevens wilt laden, alleen toegang heeft tot een set virtueel netwerk-subnetten via Privé-eindpunten, Service-eindpunten of op IP-gebaseerde firewalls, wordt de connectiviteit van PolyBase naar het account verbroken. Voor het inschakelen van zowel PolyBase import- en exportscenario's met Azure Synapse Analytics waarmee verbinding wordt gemaakt met Azure Storage dat is beveiligd met een virtueel netwerk, volgt u de stappen die [hier](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage) worden weergegeven. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

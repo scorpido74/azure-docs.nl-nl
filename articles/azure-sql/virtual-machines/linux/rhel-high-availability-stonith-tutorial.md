@@ -1,5 +1,5 @@
 ---
-title: Beschikbaarheidsgroepen voor SQL Server configureren op virtuele RHEL-machines in Azure | Linux Virtual Machines | Microsoft Docs
+title: Beschikbaarheidsgroepen voor SQL Server configureren op virtuele RHEL-machines in Azure | Virtuele Linux-machines | Microsoft Docs
 description: Meer informatie over het instellen van hoge beschikbaarheid in een RHEL-clusteromgeving en het instellen van STONITH
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84024634"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343772"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Beschikbaarheidsgroepen voor SQL Server configureren op virtuele RHEL-machines in Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84024634"
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> - Een nieuwe resourcegroep, beschikbaarheidsset en Azure Linux Virtual Machines maken (VM)
+> - Een nieuwe resourcegroep, beschikbaarheidsset en virtuele Linux-machines (VM's) maken
 > - Hoge beschikbaarheid inschakelen
 > - Een Pacemaker-cluster maken
 > - Een fencing-agent configureren door een STONITH-apparaat te maken
@@ -35,7 +35,7 @@ In deze zelfstudie leert u het volgende:
 > - Resources van de beschikbaarheidsgroep configureren in het Pacemaker-cluster
 > - Een failover en de fencing-agent testen
 
-In deze zelfstudie wordt de Azure CLI (opdrachtregelinterface) gebruikt om resources in Azure te implementeren.
+In deze zelfstudie wordt de Azure CLI gebruikt om resources in Azure te implementeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -134,7 +134,7 @@ Wanneer de opdracht is voltooid, zou u de volgende resultaten moeten hebben:
     > [!IMPORTANT]
     > Namen van virtuele machines voor het instellen van een beschikbaarheidsgroep mogen maximaal vijftien tekens lang zijn. Een gebruikersnaam mag geen hoofdletters bevatten en wachtwoorden moeten langer zijn dan 12 tekens.
 
-1. We willen drie virtuele machines maken in de beschikbaarheidsset. Vervang het volgende in onderstaande opdracht:
+1. We willen drie VM's maken in de beschikbaarheidsset. Vervang het volgende in onderstaande opdracht:
 
     - `<resourceGroupName>`
     - `<VM-basename>`
@@ -531,11 +531,11 @@ In dat geval moet de volgende uitvoer worden weergegeven:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>AlwaysOn-beschikbaarheidsgroep in SQL Server configureren
+## <a name="configure-an-availability-group"></a>Een beschikbaarheidsgroep configureren
 
-Gebruik de volgende stappen om AlwaysOn-beschikbaarheidsgroep in SQL Server voor uw virtuele machines te configureren. Zie [AlwaysOn-beschikbaarheidsgroep in SQL Server configureren voor hoge beschikbaarheid op Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) voor meer informatie
+Gebruik de volgende stappen om een AlwaysOn-beschikbaarheidsgroep in SQL Server voor uw VM's te configureren. Zie [AlwaysOn-beschikbaarheidsgroep in SQL Server configureren voor hoge beschikbaarheid op Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) voor meer informatie
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>AlwaysOn-beschikbaarheidsgroepen inschakelen en MSSQL-server opnieuw starten
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>AlwaysOn-beschikbaarheidsgroepen inschakelen en MSSQL-server opnieuw starten
 
 Schakel AlwaysOn-beschikbaarheidsgroepen in op elk knooppunt dat als host fungeert voor een SQL Server-exemplaar. Start vervolgens de MSSQL-server opnieuw op. Voer het volgende script uit:
 
@@ -548,7 +548,7 @@ sudo systemctl restart mssql-server
 
 AD-verificatie wordt momenteel niet ondersteund voor het eindpunt van de beschikbaarheidsgroep. Daarom moeten we een certificaat gebruiken voor eindpuntversleuteling voor beschikbaarheidsgroepen.
 
-1. Maak verbinding met **alle knooppunten** met behulp van SQL Server Management Studio (SSMS) of SQL CMD. Voer de volgende opdrachten uit om de AlwaysOn_health-sessie in te schakelen en een hoofdsleutel te maken:
+1. Maak verbinding met **alle knooppunten** met behulp van SQL Server Management Studio (SSMS) of SQL CMD. Voer de volgende opdrachten uit om een AlwaysOn_health-sessie in te schakelen en een hoofdsleutel te maken:
 
     > [!IMPORTANT]
     > Als u extern verbinding maakt met uw SQL Server-exemplaar, moet u poort 1433 op de firewall hebben geopend. U moet ook voor elke VM binnenkomende verbindingen met poort 1433 in uw NSG toestaan. Zie [Een beveiligingsregel maken](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) voor informatie over het maken van een beveiligingsregel voor binnenkomend verkeer voor meer informatie.
@@ -566,19 +566,19 @@ AD-verificatie wordt momenteel niet ondersteund voor het eindpunt van de beschik
 1. Maak verbinding met de primaire replica met behulp van SSMS of SQL CMD. Met de onderstaande opdrachten maakt u een certificaat op `/var/opt/mssql/data/dbm_certificate.cer` en een persoonlijke sleutel op `var/opt/mssql/data/dbm_certificate.pvk` op uw primaire SQL Server-replica:
 
     - Vervang het `<Private_Key_Password>` door uw eigen wachtwoord.
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 Sluit de SQL CMD-sessie af door de opdracht `exit` uit te voeren, en ga terug naar uw SSH-sessie.
  
@@ -631,7 +631,7 @@ Sluit de SQL CMD-sessie af door de opdracht `exit` uit te voeren, en ga terug na
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>De eindpunten voor databasespiegeling maken op alle replica's
 
-Voer op alle SQL-exemplaren het volgende script uit met behulp van SQL CMD of SQL Server Management Studio:
+Voer op alle SQL Server-exemplaren het volgende script uit met behulp van SQL CMD of SQL Server Management Studio:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Een SQL Server-aanmelding maken voor Pacemaker
 
-Maak op alle SQL Servers een SQL-aanmelding voor Pacemaker. Met het volgende Transact-SQL-script maakt u een aanmelding.
+Maak op alle SQL Server-exemplaren een SQL Server-aanmelding voor Pacemaker. Met het volgende Transact-SQL-script maakt u een aanmelding.
 
 - Vervang `<password>` door uw eigen complexe wachtwoord.
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Sla op alle SQL Servers de referenties op die voor de SQL Server aanmelding worden gebruikt. 
+Sla op alle SQL Server-exemplaren de referenties op die voor de SQL Server aanmelding worden gebruikt. 
 
 1. Zo maakt u het bestand:
 
@@ -985,7 +985,7 @@ Zie voor meer informatie over het testen van een fencing-apparaat het volgende [
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een beschikbaarheidsgroep-listener voor uw SQL Servers wilt gebruiken, moet u een load balancer maken en configureren.
+Als u een beschikbaarheidsgroep-listener voor uw SQL Server-exemplaren wilt gebruiken, moet u een load balancer maken en configureren.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Listener voor beschikbaarheidsgroep configureren voor SQL Server in virtuele RHEL-machines in Azure](rhel-high-availability-listener-tutorial.md)
+> [Zelfstudie: Een listener voor beschikbaarheidsgroep configureren voor SQL Server in virtuele RHEL-machines in Azure](rhel-high-availability-listener-tutorial.md)

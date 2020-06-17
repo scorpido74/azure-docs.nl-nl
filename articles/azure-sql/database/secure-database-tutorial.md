@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267906"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323923"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>Zelfstudie: Een Azure SQL-database beveiligen
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Zelfstudie: Een database beveiligen in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 In deze zelfstudie leert u het volgende:
@@ -42,7 +42,7 @@ Met Azure SQL Database kunt u gegevens beveiligen door:
 Zie voor meer informatie de artikelen [Overzicht van Azure SQL Database-beveiliging](/azure/sql-database/sql-database-security-index) en [-mogelijkheden](security-overview.md).
 
 > [!TIP]
-> De volgende Microsoft Learn-module helpt u gratis te leren over het [Beveiligen van uw Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
+> De volgende Microsoft Learn-module helpt u gratis te leren over het [Beveiligen van uw database in Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -50,7 +50,7 @@ Zorg dat u over het volgende beschikt als u de zelfstudie wilt uitvoeren:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Een [server](logical-servers.md) en een individuele database
-  - Maak deze met [Azure-portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md) of [PowerShell](powershell-script-content-guide.md)
+  - Maak deze met de [Azure-portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md) of [PowerShell](powershell-script-content-guide.md)
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 

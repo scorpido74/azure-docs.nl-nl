@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053242"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324586"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Quickstart: Een voorspellend model maken en trainen in R met Azure SQL Database Machine Learning Services (preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,9 +53,9 @@ De vereisten van een lineair model zijn eenvoudig:
 
 In de volgende stappen stelt u de trainingsgegevens in, maakt u een regressiemodel en traint u het met de trainingsgegevens. Vervolgens slaat u het model op in een SQL-tabel.
 
-1. Open **SQL Server Management Studio** en maak verbinding met de SQL-database.
+1. Open **SQL Server Management Studio** en maak verbinding met de database.
 
-   Als u hulp nodig hebt bij het tot stand brengen van een verbinding, raadpleegt u [Quickstart: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een Azure SQL database](connect-query-ssms.md).
+   Als u hulp nodig hebt bij het tot stand brengen van een verbinding, raadpleegt u [quickstart: SQL Server Management Studio gebruiken om verbinding te maken en query's uit te voeren op een database in Azure SQL Database](connect-query-ssms.md).
 
 1. Maak de tabel **CarSpeed** om de trainingsgegevens op te slaan.
 
@@ -252,4 +252,4 @@ Zie de volgende artikelen voor meer informatie over Azure SQL Database Machine L
 - [Azure SQL Database Machine Learning Services met R (preview)](machine-learning-services-overview.md)
 - [Eenvoudige R-scripts maken en uitvoeren in Azure SQL Database Machine Learning Services (preview)](r-script-create-quickstart.md)
 - [Geavanceerde R-functies schrijven in Azure SQL Database met behulp van Machine Learning Services (preview)](machine-learning-services-functions.md)
-- [Quickstart: Werken met R en SQL-gegevens in Azure SQL Database Machine Learning Services (preview)](machine-learning-services-data-issues.md)
+- [Werken met R en SQL-gegevens in Azure SQL Database Machine Learning Services (preview)](machine-learning-services-data-issues.md)

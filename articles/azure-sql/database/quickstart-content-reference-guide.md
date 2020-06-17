@@ -1,6 +1,6 @@
 ---
 title: Inhoudsverwijzing snelstarts voor individuele database
-description: Vind een inhoudsverwijzing met alle snelstarts waarmee u snel aan de slag kunt gaan met individuele databases in Azure SQL Database
+description: Vind een inhoudsverwijzing met alle quickstarts waarmee u snel aan de slag kunt gaan met individuele databases in Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84052901"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338291"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Aan de slag met individuele databases in Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Een individuele database](../index.yml) is een volledig beheerde PaaS-database-als-een-service (DbaaS) die ideaal is als opslag-engine voor moderne toepassingen in de cloud. In dit gedeelte leert u hoe u snel een individuele database in Azure SQL Database maakt en configureert.
+[Een individuele database](../index.yml) is een volledig beheerde DbaaS (Database as a Service) op een PaaS (Platform as a Service) die ideaal is als opslag-engine voor moderne toepassingen in de cloud. In deze sectie leert u hoe u snel een individuele database in Azure SQL Database maakt en configureert.
 
 ## <a name="quickstart-overview"></a>Overzicht van quickstarts
 
-Dit gedeelte bevat een overzicht van beschikbare artikelen waarmee u snel aan de slag kunt met individuele databases. In de volgende snelstarts leert u snel een individuele database te maken, een firewallregel op serverniveau te configureren en vervolgens een database te importeren in de nieuwe individuele database via een `.bacpac`-bestand:
+Deze sectie bevat een overzicht van beschikbare artikelen waarmee u snel aan de slag kunt met individuele databases. In de volgende snelstarts leert u snel een individuele database te maken, een firewallregel op serverniveau te configureren en vervolgens een database te importeren in de nieuwe individuele database via een `.bacpac`-bestand:
 
 - [Een individuele database maken met Azure Portal](single-database-create-quickstart.md).
 - Nadat de database is gemaakt, moet u uw [database beveiligen door firewallregels te configureren](firewall-create-server-level-portal-quickstart.md).
@@ -48,14 +48,14 @@ Met de artikelen in deze quickstarts kunt u uw database snel maken of importeren
 Met de volgende Microsoft Learn-modules kunt u gratis leren over Azure SQL Database.
 
 - [Een database inrichten in SQL Database om toepassingsgegevens op te slaan](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Een ASP.NET-toepassing ontwikkelen en configureren waarmee een query wordt uitgevoerd op Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Azure SQL Database beveiligen](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Een ASP.NET-toepassing ontwikkelen en configureren waarmee een query wordt uitgevoerd op een database in Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Uw database beveiligen in Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zoek een [lijst met ondersteunde functies in Azure SQL Database](features-comparison.md).
 - Leer hoe u uw [database veiliger maakt](secure-database-tutorial.md).
 - U vindt meer uitgebreide informatie in [Individuele database gebruiken in Azure SQL Database](how-to-content-reference-guide.md).
-- Meer voorbeeldscripts zoeken die zijn geschreven in [PowerShell](powershell-script-content-guide.md) en [Azure CLI](az-cli-script-samples-content-guide.md).
+- Meer voorbeeldscripts zoeken die zijn geschreven in [PowerShell](powershell-script-content-guide.md) en de [Azure CLI](az-cli-script-samples-content-guide.md).
 - Meer informatie over de [Management-API](single-database-manage.md) die u kunt gebruiken om uw databases te configureren.
-- [Identificeer de juiste Azure SQL Database- of met SQL beheerd exemplaar-SKU voor de on-premises database](/sql/dma/dma-sku-recommend-sql-db/).
+- [Identificeer de juiste Azure SQL Database- of met Azure SQL beheerd exemplaar-SKU voor de on-premises database](/sql/dma/dma-sku-recommend-sql-db/).

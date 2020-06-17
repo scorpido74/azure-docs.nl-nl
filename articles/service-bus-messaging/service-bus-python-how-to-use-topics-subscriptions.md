@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Azure Service Bus-onderwerpen en-abonnementen gebruiken met python'
-description: In dit artikel leest u hoe u een Azure Service Bus onderwerp, een abonnement, berichten verzendt naar een onderwerp en berichten van het abonnement ontvangt.
+title: 'Quickstart: Azure Service Bus-onderwerpen en -abonnementen met Python gebruiken'
+description: In dit artikel ziet u hoe u een Azure Service Bus-onderwerp en -abonnement kunt maken, en hoe u berichten naar een onderwerp verzendt en berichten van een abonnement ontvangt.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -13,39 +13,40 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.custom: tracking-python
+ms.openlocfilehash: ed2bf757762beafda3d4b2958438672c03d8d234
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478066"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560049"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met python
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Quickstart: Service Bus-onderwerpen en -abonnementen met Python gebruiken
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-In dit artikel wordt beschreven hoe u python gebruikt met Azure Service Bus-onderwerpen en-abonnementen. De voor beelden gebruiken het [Azure PYTHON SDK][Azure Python package] -pakket voor het volgende: 
+In dit artikel wordt beschreven hoe u Python met Azure Service Bus-onderwerpen en -abonnementen gebruikt. De voorbeelden gebruiken het [Azure Python SDK][Azure Python package]-pakket voor het volgende: 
 
-- Onderwerpen en abonnementen maken voor onderwerpen
-- Abonnements filters en-regels maken
+- Onderwerpen en abonnementen op onderwerpen maken
+- Abonnementsfilters en -regels maken
 - Berichten verzenden naar onderwerpen 
 - Berichten ontvangen van abonnementen
 - Onderwerpen en abonnementen verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
-- Een Azure-abonnement. U kunt de [voor delen van uw Visual Studio-of MSDN-abonnee](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) activeren of zich aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Een Service Bus naam ruimte, gemaakt door de stappen te volgen op [Quick Start: gebruik de Azure Portal om een service bus onderwerp en abonnementen te maken](service-bus-quickstart-topics-subscriptions-portal.md). Kopieer de naam van de naam ruimte, de naam van de gedeelde toegangs sleutel en de waarde van de primaire sleutel van het scherm **gedeelde toegangs beleid** , zodat u dit later in deze Snelstartgids kunt gebruiken. 
-- Python 3.4 x of hoger, met het [Azure PYTHON SDK][Azure Python package] -pakket geïnstalleerd. Raadpleeg de [installatie handleiding voor python](/azure/developer/python/azure-sdk-install)voor meer informatie.
+- Een Azure-abonnement. U kunt uw [voordelen als Visual Studio- of MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) of u aanmelden voor een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Een Service Bus-naamruimte, gemaakt door de stappen uit te voeren in [Quickstart: De Azure-portal gebruiken om een Service Bus-onderwerp en -abonnementen te maken](service-bus-quickstart-topics-subscriptions-portal.md). Kopieer de naamruimte, de naam van de gedeelde toegangssleutel, en de primaire sleutelwaarde op het scherm **Beleid voor gedeelde toegang** voor later gebruik in deze quickstart. 
+- Python 3.4x of hoger, met het [Azure Python SDK][Azure Python package]-pakket geïnstalleerd. Raadpleeg de [Python-installatiehandleiding](/azure/developer/python/azure-sdk-install) voor meer informatie.
 
 ## <a name="create-a-servicebusservice-object"></a>Een ServiceBusService-object maken
 
-Met een **ServiceBusService** -object kunt u werken met onderwerpen en abonnementen op onderwerpen. Als u toegang wilt krijgen tot Service Bus, voegt u de volgende regel toe aan de bovenkant van uw python-bestand:
+Met een **ServiceBusService**-object kunt u werken met onderwerpen en abonnementen op onderwerpen. Als u via programmacode toegang wilt krijgen tot Service Bus, voegt u de volgende regel toe bovenaan het Python-bestand:
 
 ```python
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Voeg de volgende code toe om een **ServiceBusService** -object te maken. Vervang `<namespace>`, `<sharedaccesskeyname>`, en `<sharedaccesskeyvalue>` door de naam van uw service bus naam ruimte, naam Shared Access Signature (SAS) en primaire-sleutel waarde. U kunt deze waarden vinden onder **beleid voor gedeelde toegang** in uw service bus naam ruimte in de [Azure Portal][Azure portal].
+Voeg de volgende code toe om een **ServiceBusClient**-object te maken. Vervang `<namespace>`, `<sharedaccesskeyname>` en `<sharedaccesskeyvalue>` door de naam van uw Service Bus-naamruimte, de naam van uw SAS-sleutel (Shared Access Signature) en de waarde voor de primaire sleutel. U vindt deze waarden onder **Beleid voor gedeelde toegang** in uw Service Bus-naamruimte in de [Azure-portal][Azure portal].
 
 ```python
 bus_service = ServiceBusService(
@@ -56,13 +57,13 @@ bus_service = ServiceBusService(
 
 ## <a name="create-a-topic"></a>Een onderwerp maken
 
-De volgende code gebruikt de `create_topic` methode voor het maken van een service bus `mytopic`onderwerp met de naam, met de standaard instellingen:
+De volgende code maakt gebruik van de methode `create_topic` om een Service Bus-onderwerp te maken met de naam `mytopic`, met de standaardinstellingen:
 
 ```python
 bus_service.create_topic('mytopic')
 ```
 
-U kunt de opties voor het onderwerp gebruiken om standaard instellingen voor het onderwerp te overschrijven, zoals de TTL (time to Live) van het bericht of de maximum grootte van het onderwerp. In het volgende voor beeld wordt een `mytopic` onderwerp gemaakt met de naam met een maximale grootte van 5 GB en de standaard bericht-TTL van één minuut:
+U kunt onderwerpopties gebruiken om de standaardinstellingen voor onderwerpen te overschrijven, zoals Time to Live van bericht (TTL) of de maximumgrootte van het onderwerp. In het volgende voorbeeld wordt een onderwerp gemaakt met de naam `mytopic`, met een maximale grootte van 5 GB en een standaardbericht-TTL van één minuut:
 
 ```python
 topic_options = Topic()
@@ -74,7 +75,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## <a name="create-subscriptions"></a>Abonnementen maken
 
-U kunt ook het object **ServiceBusService** gebruiken om abonnementen op onderwerpen te maken. Een abonnement kan een filter hebben om de ontvangen berichten te beperken tot de virtuele wachtrij. Als u geen filter opgeeft, gebruiken nieuwe abonnementen het standaard **MatchAll** -filter, waarmee alle berichten die in het onderwerp worden gepubliceerd, worden geplaatst in de virtuele wachtrij van het abonnement. In `mytopic` het volgende voor beeld wordt een abonnement `AllMessages` gemaakt met de naam die gebruikmaakt van het **MatchAll** -filter:
+U kunt ook het **ServiceBusService**-object gebruiken om abonnementen op onderwerpen te maken. Een abonnement kan een filter hebben om te beperken hoeveel berichten in de bijbehorende virtuele wachtrij worden geplaatst. Als u geen filter opgeeft, maken nieuwe abonnementen gebruik van het standaardfilter **MatchAll**, waarmee alle berichten die in het onderwerp zijn gepubliceerd, in de virtuele wachtrij van het abonnement worden geplaatst. In het volgende voorbeeld maakt u een abonnement in `mytopic` met de naam `AllMessages`, dat gebruikmaakt van het filter **MatchAll**:
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -82,13 +83,13 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 ### <a name="use-filters-with-subscriptions"></a>Filters gebruiken met abonnementen
 
-Gebruik de `create_rule` methode van het object **ServiceBusService** om de berichten te filteren die worden weer gegeven in een abonnement. U kunt regels opgeven wanneer u het abonnement maakt, of regels toevoegen aan bestaande abonnementen.
+Gebruik de methode `create_rule` van het **ServiceBusService**-object om de berichten te filteren die worden weergegeven in een abonnement. U kunt regels opgeven wanneer u het abonnement maakt, of regels toevoegen aan bestaande abonnementen.
 
-Het meest flexibele type filter is een **SqlFilter**die gebruikmaakt van een SUBSET van SQL-92. SQL-filters worden toegepast op basis van de eigenschappen van berichten die zijn gepubliceerd in het onderwerp. Zie de syntaxis van [SqlFilter. SqlExpression][SqlFilter.SqlExpression] voor meer informatie over de expressies die u kunt gebruiken met een SQL-filter.
+Het meest flexibele type filter is een **SqlFilter**, dat gebruikmaakt van een subset van SQL-92. SQL-filters worden uitgevoerd op basis van de eigenschappen van berichten die zijn gepubliceerd in het onderwerp. Zie de [SqlFilter.SqlExpression][SqlFilter.SqlExpression]-syntaxis voor meer informatie over de expressies die u kunt gebruiken met een SQL-filter.
 
-Omdat het standaard filter van **MatchAll** automatisch wordt toegepast op alle nieuwe abonnementen, moet u het verwijderen van de abonnementen die u wilt filteren, of worden door **MatchAll** alle andere filters overschreven die u opgeeft. U kunt de standaard regel verwijderen met de `delete_rule` methode van het object **ServiceBusService** .
+Omdat het standaardfilter **MatchAll** automatisch wordt toegepast op alle nieuwe abonnementen, moet u dit filter verwijderen uit abonnementen die u wilt filteren. Als u dit niet doet, overschrijft **MatchAll** alle andere filters die u eventueel opgeeft. U kunt de standaardregel verwijderen met de methode `delete_rule` van het **ServiceBusService**-object.
 
-In het volgende voor beeld wordt een `mytopic` abonnement `HighMessages`met de naam gemaakt met een `HighMessageFilter` **SqlFilter** -regel met de naam. De `HighMessageFilter` regel selecteert alleen berichten met een aangepaste `messageposition` eigenschap die groter is dan 3:
+In het volgende voorbeeld maakt u een abonnement in `mytopic` met de naam `HighMessages`, met een regel **SqlFilter** met de naam `HighMessageFilter`. Met de regel `HighMessageFilter` worden alleen berichten geselecteerd met een aangepaste eigenschap `messageposition` die groter is dan 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -101,7 +102,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-In het volgende voor beeld wordt een `mytopic` abonnement `LowMessages`met de naam gemaakt met een `LowMessageFilter` **SqlFilter** -regel met de naam. De `LowMessageFilter` regel selecteert alleen berichten met een `messageposition` eigenschap die kleiner is dan of gelijk is aan 3:
+In het volgende voorbeeld maakt u een abonnement in `mytopic` met de naam `LowMessages`, met een regel **SqlFilter** met de naam `LowMessageFilter`. Met de regel `LowMessageFilter` worden alleen berichten geselecteerd met een eigenschap `messageposition` die kleiner is dan of gelijk is aan 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -114,13 +115,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-`AllMessages` `mytopic` In feite worden berichten die worden verzonden naar, altijd bezorgd bij de ontvangers van het `AllMessages` abonnement. `HighMessages` `LowMessages` Berichten worden ook selectief bezorgd bij `HighMessages` het `LowMessages` of-abonnement, afhankelijk van de waarde `messageposition` van de eigenschap van het bericht. 
+Wanneer `AllMessages`, `HighMessages` en `LowMessages` alle van kracht zijn, worden berichten die worden verzonden naar `mytopic`, altijd bezorgd bij ontvangers van het `AllMessages`-abonnement. Berichten worden ook selectief bezorgd bij het `HighMessages`- of `LowMessages`-abonnement, afhankelijk van de eigenschapswaarde `messageposition` van het bericht. 
 
 ## <a name="send-messages-to-a-topic"></a>Berichten verzenden naar een onderwerp
 
-Toepassingen gebruiken de `send_topic_message` methode van het object **ServiceBusService** om berichten te verzenden naar een service bus onderwerp.
+Toepassingen gebruiken de methode `send_topic_message` van het **ServiceBusService**-object om berichten naar een Service Bus-onderwerp te verzenden.
 
-In het volgende voor beeld worden vijf test berichten `mytopic` naar het onderwerp verzonden. De waarde `messageposition` van de aangepaste eigenschap is afhankelijk van de herhaling van de lus en bepaalt welke abonnementen de berichten ontvangen. 
+In het volgende voorbeeld worden vijf testberichten naar het onderwerp `mytopic` verzonden. De eigenschapswaarde van de aangepaste `messageposition` is afhankelijk van de herhaling van de lus en bepaalt welke abonnementen de berichten ontvangen. 
 
 ```python
 for i in range(5):
@@ -129,28 +130,28 @@ for i in range(5):
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-### <a name="message-size-limits-and-quotas"></a>Limieten en quota voor de bericht grootte
+### <a name="message-size-limits-and-quotas"></a>Limieten en quota voor berichtgrootten
 
-Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten dat een onderwerp kan bevatten, maar er is een kapje op de totale grootte van de berichten die het onderwerp bevat. U kunt de grootte van het onderwerp opgeven tijdens de aanmaak tijd, met een bovengrens van 5 GB. 
+Service Bus-onderwerpen ondersteunen een maximale grootte van 256 kB in de [Standard-laag](service-bus-premium-messaging.md) en 1 MB in de [Premium-laag](service-bus-premium-messaging.md). De koptekst, die de standaard- en aangepaste toepassingseigenschappen bevat, kan maximaal 64 kB groot zijn. Er is geen limiet voor het aantal berichten dat een onderwerp kan bevatten, maar er is een limiet voor de totale grootte van de berichten die het onderwerp kan bevatten. U kunt tijdens het maken van het onderwerp de grootte ervan definiëren, met een bovengrens van 5 GB. 
 
-Zie [Service Bus quota's][Service Bus quotas]voor meer informatie over quota's.
+Zie [Service Bus-quota][Service Bus quotas] voor meer informatie over quota.
 
-## <a name="receive-messages-from-a-subscription"></a>Berichten ontvangen van een abonnement
+## <a name="receive-messages-from-a-subscription"></a>Berichten van een abonnement ontvangen
 
-Toepassingen gebruiken de `receive_subscription_message` -methode voor het **ServiceBusService** -object om berichten van een abonnement te ontvangen. In het volgende voor beeld worden berichten `LowMessages` van het abonnement ontvangen en verwijderd wanneer ze zijn gelezen:
+Toepassingen gebruiken de methode `receive_subscription_message` van het **ServiceBusService**-object om berichten van een abonnement te ontvangen. In het volgende voorbeeld worden berichten van het `LowMessages`-abonnement ontvangen en verwijderd wanneer ze zijn gelezen:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-De optionele `peek_lock` para meter `receive_subscription_message` van bepaalt of Service Bus berichten uit het abonnement verwijdert wanneer ze worden gelezen. De standaard modus voor het ontvangen van *PeekLock*berichten is PeekLock `peek_lock` of is ingesteld op **True**, waarmee berichten worden gelezen en vergrendeld zonder dat ze worden verwijderd uit het abonnement. Elk bericht moet vervolgens expliciet worden voltooid om het te verwijderen uit het abonnement.
+Met de optionele parameter `peek_lock` van `receive_subscription_message` wordt bepaald of Service Bus berichten verwijdert uit het abonnement wanneer ze zijn gelezen. De standaardmodus voor het ontvangen van berichten is *PeekLock*, of `peek_lock` ingesteld op **Waar**. Hierbij worden berichten gelezen (peek) en vergrendeld zonder dat ze uit het abonnement worden verwijderd. Elk bericht moet vervolgens expliciet worden voltooid om het uit het abonnement te verwijderen.
 
-Als u berichten van het abonnement wilt verwijderen wanneer ze worden gelezen, kunt u `peek_lock` de para meter instellen op **False**, zoals in het vorige voor beeld. Berichten verwijderen als onderdeel van de receive-bewerking is het eenvoudigste model en werkt prima als de toepassing ontbrekende berichten kan verdragen als er een fout optreedt. Om dit gedrag te begrijpen, moet u een scenario overwegen waarin de toepassing een receive-aanvraag uitgeeft en vervolgens vastloopt voordat het proces wordt verwerkt. Als het bericht is verwijderd op het moment dat de toepassing opnieuw wordt gestart en opnieuw bezig is met het uitvoeren van berichten, heeft het bericht gemist dat het is ontvangen voordat het vastloopt.
+Als u berichten uit het abonnement wilt verwijderen wanneer ze zijn gelezen, kunt u de parameter `peek_lock` instellen op **False**, zoals in het voorgaande voorbeeld. Berichten verwijderen als onderdeel van de ontvangstbewerking is het eenvoudigste model, en werkt prima als de app toelaat dat berichten ontbreken als er een fout optreedt. Neem bijvoorbeeld een scenario waarin de toepassing een ontvangstaanvraag indient en vervolgens vastloopt voordat het bericht wordt verwerkt. Als het bericht bij ontvangst is verwijderd en de app opnieuw wordt gestart en opnieuw berichten gaat verwerken, heeft deze het bericht gemist dat is ontvangen vóór het vastlopen.
 
-Als uw toepassing gemiste berichten niet kan verdragen, wordt de ontvangst een bewerking met twee fasen. PeekLock vindt het volgende bericht dat moet worden gebruikt, vergrendelt het om te voor komen dat andere gebruikers het ontvangen en retourneert het naar de toepassing. Nadat het bericht is verwerkt of opgeslagen, voltooit de toepassing de tweede fase van het ontvangst proces door de `complete` methode aan te roepen voor het **bericht** object.  Met `complete` de-methode wordt het bericht gemarkeerd als verbruikt en wordt het verwijderd uit het abonnement.
+Als de toepassing niet toelaat dat berichten worden gemist, bestaat het ontvangen uit twee fasen. PeekLock zoekt naar het volgende bericht dat moet worden verwerkt, vergrendelt dit om te voorkomen dat andere verwerkende apps het ontvangen, en retourneert het bericht vervolgens naar de app. Nadat het bericht is verwerkt of opgeslagen, voltooit de app de tweede fase van het ontvangstproces door de methode `complete` in het **Message**-object aan te roepen.  Met de methode `complete` wordt het bericht gemarkeerd als verwerkt en wordt het uit het abonnement verwijderd.
 
-In het volgende voor beeld ziet u een kort vergrendelings scenario:
+In het volgende voorbeeld ziet u een PeekLock-scenario:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -159,39 +160,39 @@ if msg.body is not None:
     msg.complete()
 ```
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Vastlopen van toepassingen en onleesbare berichten verwerken
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Het vastlopen van de app en onleesbare berichten afhandelen
 
-Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvanger een bericht om de een of andere reden niet kan verwerken, kan `unlock` de toepassing de-methode aanroepen in het **bericht** object. Service Bus ontgrendelt het bericht in het abonnement en maakt het beschikbaar om opnieuw te worden ontvangen, ofwel door dezelfde of een andere verbruikte toepassing.
+Service Bus biedt functionaliteit om netjes te herstellen bij fouten in uw toepassing of problemen bij het verwerken van een bericht. Als een ontvangende app een bericht om de een of andere reden niet kan verwerken, kan deze de methode `unlock` in het **Message**-object aanroepen. Service Bus ontgrendelt het bericht in het abonnement en maakt het beschikbaar, zodat het opnieuw kan worden ontvangen, ofwel door dezelfde of door een andere verwerkende app.
 
-Er is ook een time-out voor berichten die in het abonnement zijn vergrendeld. Als een toepassing een bericht niet kan verwerken voordat de time-out voor de vergren deling is verlopen, bijvoorbeeld als de toepassing vastloopt, Service Bus het bericht automatisch ontgrendelen en wordt het beschikbaar om opnieuw te worden ontvangen.
+Er is ook een time-out voor berichten die in het abonnement zijn vergrendeld. Als een app een bericht niet kan verwerken voordat de time-out voor vergrendeling verloopt, bijvoorbeeld als de app vastloopt, dan ontgrendelt Service Bus automatisch het bericht en maakt het dit beschikbaar, zodat het weer kan worden ontvangen.
 
-Als een toepassing vastloopt na het verwerken van een bericht, `complete` maar voordat de methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing geleverd wanneer het opnieuw wordt gestart. Dit gedrag wordt vaak een eenmalige *verwerking*genoemd. Elk bericht wordt ten minste één keer verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als uw scenario dubbele verwerking niet kan verdragen, kunt u de eigenschap **MessageId** van het bericht gebruiken, dat constant blijft tijdens bezorgings pogingen, om dubbele bericht bezorging af te handelen. 
+Als een app vastloopt na het verwerken van een bericht, maar voordat deze de methode `complete` aanroept, wordt het bericht opnieuw bij de app bezorgd wanneer deze opnieuw wordt gestart. Deze werkwijze wordt ook wel *Ten minste één keer verwerken* genoemd. Elk bericht wordt minstens één keer verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als uw situatie geen dubbele verwerking toelaat, kunt u de eigenschap **MessageId** van het bericht gebruiken, die constant blijft tijdens de bezorgingspogingen, om dubbele berichtbezorging te verwerken. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
 
-Als u onderwerpen en abonnementen wilt verwijderen, [Azure portal][Azure portal] gebruikt u de `delete_topic` Azure portal of de-methode. Met de volgende code wordt het onderwerp `mytopic`met de naam:
+Als u onderwerpen en abonnementen wilt verwijderen, gebruikt u de [Azure-portal][Azure portal] of de methode `delete_topic`. Met de volgende code verwijdert u het onderwerp met de naam `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-Als u een onderwerp verwijdert, worden alle abonnementen op het onderwerp verwijderd. U kunt ook afzonderlijke abonnementen verwijderen. `HighMessages` Met de volgende code wordt het abonnement uit het `mytopic` onderwerp verwijderd:
+Als u een onderwerp verwijdert, worden alle abonnementen op het onderwerp verwijderd. U kunt abonnementen ook afzonderlijk verwijderen. Met de volgende code wordt het abonnement met de naam `HighMessages` verwijderd uit het onderwerp `mytopic`:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u deze verwijdert. Als u automatisch abonnementen wilt verwijderen nadat een bepaalde tijds periode is verstreken, kunt u de para meter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
+Onderwerpen en abonnementen zijn standaard permanent en bestaan tot u ze verwijdert. Als u abonnementen automatisch wilt verwijderen nadat een bepaalde tijdsperiode is verstreken, kunt u de parameter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) instellen voor het abonnement. 
 
 > [!TIP]
-> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunt u verbinding maken met een Service Bus naam ruimte en eenvoudig bericht entiteiten beheren. Het hulp programma biedt geavanceerde functies, zoals de functionaliteit voor importeren/exporteren, en de mogelijkheid om onderwerpen, wacht rijen, abonnementen, relay-Services, Notification hubs en Event hubs te testen. 
+> U kunt resources van Service Bus beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met Service Bus Explorer kunt u verbinding maken met een Service Bus-naamruimte en eenvoudig berichtenentiteiten beheren. Het hulpprogramma biedt geavanceerde functies zoals functionaliteit voor importeren/exporteren en de mogelijkheid om onderwerpen, wachtrijen, abonnementen, relayservices, notification hubs en event hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u de basis principes van Service Bus onderwerpen hebt geleerd, volgt u deze koppelingen voor meer informatie:
+Nu u de basisprincipes van Service Bus-onderwerpen hebt geleerd, kunt u deze koppelingen volgen voor meer informatie:
 
 * [Wachtrijen, onderwerpen en abonnementen][Queues, topics, and subscriptions]
-* Naslag informatie voor [SqlFilter. SqlExpression][SqlFilter.SqlExpression]
+* [SqlFilter.SqlExpression][SqlFilter.SqlExpression]-referentie
 
 [Azure portal]: https://portal.azure.com
 [Azure Python package]: https://pypi.python.org/pypi/azure

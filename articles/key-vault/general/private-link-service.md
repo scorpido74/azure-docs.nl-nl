@@ -7,12 +7,12 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: a8c153094d38d137ce50c6ff4f922b7708bfcb24
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266828"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610148"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Sleutelkluis integreren met Azure Private Link
 
@@ -225,13 +225,16 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 ## <a name="limitations-and-design-considerations"></a>Beperkingen en overwegingen bij het ontwerp
 
+> [!NOTE]
+> Het aantal sleutelkluizen met ingeschakelde privé-eindpunten per abonnement is een aanpasbare limiet. De limiet die hieronder wordt weergegeven, is de standaardlimiet. Als u een hogere limiet wilt aanvragen voor uw service, kunt u een e-mail sturen naar akv-privatelink@microsoft.com. We zullen deze aanvragen per geval goedkeuren.
+
 **Pricing**: Zie [Prijs van Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/) voor meer informatie over prijzen.
 
 **Beperkingen**:  Privé-eindpunt voor Azure Key Vault is alleen beschikbaar in openbare Azure-regio's.
 
 **Maximum aantal privé-eindpunten per Sleutelkluis**: 64.
 
-**Maximum aantal Sleutelkluizen met privé-eindpunten per abonnement**: 64.
+**Standaardaantal sleutelkluizen met privé-eindpunten per abonnement**: 400.
 
 Zie [Azure Private Link-service: beperkingen](../../private-link/private-link-service-overview.md#limitations) voor meer informatie
 

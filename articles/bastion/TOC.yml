@@ -33,7 +33,7 @@
     - name: Verbinding maken met een schaalset voor virtuele machines
       href: bastion-connect-vm-scale-set.md
     - name: Verbinding maken met DevTest Labs-VM's
-      href: ../lab-services/enable-browser-connection-lab-virtual-machines.md?toc=%2fazure%2fbastion%2ftoc.json
+      href: ../devtest-labs/enable-browser-connection-lab-virtual-machines.md?toc=%2fazure%2fbastion%2ftoc.json
     - name: Werken met een sessie van een virtuele machine
       items:
         - name: Kopiëren en plakken

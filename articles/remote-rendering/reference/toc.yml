@@ -1,3 +1,5 @@
+- name: Formaten van virtuele machines
+  href: vm-sizes.md
 - name: Materiaaltoewijzing voor modelindelingen
   href: material-mapping.md
 - name: Regio's

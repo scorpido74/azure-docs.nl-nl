@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171549"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629636"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Een gegevenslabelproject maken en labels exporteren 
 
@@ -40,7 +40,6 @@ In dit artikel leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-
 * De gegevens die u wilt labelen, hetzij in lokale bestanden of in Azure Blob-opslag.
 * De set labels die u wilt toepassen.
 * De instructies voor het labelen.
@@ -67,6 +66,8 @@ Selecteer **Volgende** wanneer u klaar bent om door te gaan.
 
 Als u al een gegevensset hebt gemaakt die uw gegevens bevat, selecteert u deze set in de vervolgkeuzelijst **Een bestaande gegevensset selecteren**. U kunt ook **Een gegevensset maken** selecteren om een bestaande Azure-gegevensopslag te gebruiken of lokale bestanden te uploaden.
 
+> [!NOTE]
+> Een project kan niet meer dan 500.000 afbeeldingen bevatten.  Als uw gegevensset meer afbeeldingen bevat, worden alleen de eerste 500.000 afbeeldingen geladen.  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Een gegevensset maken uit een Azure-gegevensopslag
 
@@ -85,8 +86,6 @@ Een gegevensset maken op basis van gegevens die u al hebt opgeslagen in Azure Bl
 1. Selecteer **Next**.
 1. Bevestig de details. Selecteer **Terug** om de instellingen te wijzigen of **Maken** om de gegevensset te maken.
 
-> [!NOTE]
-> De gegevens die u kiest, worden in het project geladen.  Zodra het project is gemaakt en u meer gegevens toevoegt aan de gegevensopslag, worden deze niet weergegeven in het project.  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Een gegevensset maken uit geüploade gegevens
 
@@ -102,6 +101,19 @@ Uw gegevens rechtstreeks uploaden:
 1. Bevestig de details. Selecteer **Terug** om de instellingen te wijzigen of **Maken** om de gegevensset te maken.
 
 De gegevens worden geüpload naar de Blob-standaardopslag (workspaceblobstore) van uw Machine Learning-werkruimte.
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Incrementeel vernieuwen configureren
+
+Als u van plan bent nieuwe afbeeldingen toe te voegen aan uw gegevensset, gebruikt u incrementeel vernieuwen om deze nieuwe afbeeldingen toe te voegen aan uw project.   Als **Incrementeel vernieuwen** is ingeschakeld, wordt de gegevensset regelmatig gecontroleerd op nieuwe afbeeldingen die moeten worden toegevoegd aan een project, op basis van de voltooiingssnelheid voor het labelen.   De controle op nieuwe gegevens stopt wanneer het project de maximale 500.000 afbeeldingen bevat.
+
+Als u meer afbeeldingen aan uw project wilt toevoegen, gebruikt u [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) om te uploaden naar de juiste map in de Blob-opslag. 
+
+Schakel het selectievakje voor **Incrementele vernieuwing inschakelen** in wanneer u wilt dat het project doorlopend controleert op nieuwe gegevens in de gegevensopslag.
+
+Schakel dit selectievakje uit als u niet wilt dat nieuwe afbeeldingen die worden weergegeven in de gegevensopslag, worden toegevoegd aan het project.
+
+U vindt de tijdstempel voor de laatste vernieuwing in de sectie **Incrementeel vernieuwen** van het tabblad **Details** voor het project.
+
 
 ## <a name="specify-label-classes"></a>Labelklassen opgeven
 

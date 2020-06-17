@@ -1,35 +1,35 @@
 ---
-title: 'Snelstartgids: aangepaste gebeurtenissen verzenden naar Azure function-Event Grid'
-description: 'Snelstartgids: gebruik Azure Event Grid en Azure CLI of portal om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Een Azure-functie wordt gebruikt voor het eind punt.'
+title: 'Quickstart: Aangepaste gebeurtenissen verzenden naar een Azure-functie - Event Grid'
+description: 'Quickstart: Gebruik Azure Event Grid en Azure CLI of de portal om een onderwerp te publiceren en u te abonneren op deze gebeurtenis. Er wordt een Azure-functie gebruikt voor het eindpunt.'
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292151"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557862"
 ---
-# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Snelstartgids: aangepaste gebeurtenissen door sturen naar een Azure-functie met Event Grid
+# <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Quickstart: Aangepaste gebeurtenissen routeren naar een Azure-functie met Event Grid
 
-Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Functions is een van de ondersteunde gebeurtenis-handlers. In dit artikel gebruikt u Azure Portal om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren, en de gebeurtenis te activeren om het resultaat weer te geven. U verzendt de gebeurtenissen naar een Azure-functie.
+Azure Event Grid is een gebeurtenisservice voor de cloud. Azure Functions is een van de ondersteunde gebeurtenishandlers. In dit artikel gebruikt u Azure Portal om een aangepast onderwerp te maken, u op het aangepaste onderwerp te abonneren, en de gebeurtenis te activeren om het resultaat weer te geven. U verzendt de gebeurtenissen naar een Azure-functie.
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-azure-function"></a>Azure-functie maken
+## <a name="create-azure-function"></a>Een Azure-functie maken
 
-Voordat u zich abonneert op het aangepaste onderwerp, kunt u een functie maken om de gebeurtenissen te verwerken. Klik in de Azure Portal op een resource maken en typ functie en kies vervolgens functie-app en klik vervolgens op maken. Selecteer nieuwe maken onder resource groep en geef deze een naam. U gebruikt deze voor de rest van de zelf studie. Geef de functie-app een naam, laat de optie ' publiceren ' op ' code ' staan, selecteer een wille keurige runtime en regio en klik vervolgens op maken.
+Voordat u zich abonneert op het aangepaste onderwerp, gaan we een functie maken om de gebeurtenissen te verwerken. Klik in Azure Portal op Een resource maken, typ functie, kies Functie-app en klik vervolgens op Maken. Selecteer Nieuwe maken onder resourcegroep en geef deze een naam. U gebruikt deze voor de rest van de zelfstudie. Geef de functie-app een naam, laat de wisselknop Publiceren op Code staan, selecteer een willekeurige runtime en regio en klik vervolgens op Maken.
 
-Als uw functie-app klaar is, gaat u naar deze en klikt u op + nieuwe functie. Selecteer in de portal voor de ontwikkel omgeving en klik op door gaan. Kies onder een functie maken de optie meer sjablonen om meer sjablonen weer te geven en zoek vervolgens naar ' Azure Event Grid trigger ' en selecteer deze. Als dit de eerste keer is dat u deze trigger gebruikt, moet u mogelijk op installeren klikken om de uitbrei ding te installeren.
+Als uw functie-app klaar is, gaat u ernaartoe en klikt u op + Nieuwe functie. Selecteer In de portal voor de ontwikkelomgeving en klik op Doorgaan. Kies onder Een functie maken de optie Meer sjablonen om meer sjablonen weer te geven en zoek vervolgens naar Azure Event Grid-trigger en selecteer die optie. Als dit de eerste keer is dat u deze trigger gebruikt, moet u mogelijk op Installeren klikken om de extensie te installeren.
 
-![Trigger voor functie Event Grid](./media/custom-event-to-function/grid-trigger.png)
+![De functie Event Grid-trigger](./media/custom-event-to-function/grid-trigger.png)
 
-Nadat u de uitbrei ding hebt geïnstalleerd, klikt u op door gaan, geeft u een naam op voor de functie en klikt u vervolgens op maken.
+Nadat u de extensie hebt geïnstalleerd, klikt u op Doorgaan, geeft u uw functie een naam en klikt u vervolgens op Maken.
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
 
@@ -38,56 +38,56 @@ Nadat u de uitbrei ding hebt geïnstalleerd, klikt u op door gaan, geeft u een n
 Een Event Grid-onderwerp biedt een door de gebruiker gedefinieerd eindpunt waarop u de gebeurtenissen kunt posten. 
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer **alle services** in het navigatie menu links, zoek naar **Event Grid**en selecteer **Event grid onderwerpen**. 
+2. Selecteer **Alle services** in het navigatiemenu links, zoek naar **Event Grid** en selecteer **Event Grid-onderwerpen**. 
 
-    ![Event Grid onderwerpen selecteren](./media/custom-event-to-function/select-event-grid-topics.png)
-3. Selecteer op de pagina **Event grid onderwerpen** **+ toevoegen** op de werk balk. 
+    ![Event Grid-onderwerpen selecteren](./media/custom-event-to-function/select-event-grid-topics.png)
+3. Selecteer op de pagina **Event Grid-onderwerpen** de optie **+ Toevoegen** op de werkbalk. 
 
-    ![Knop Event Grid onderwerp toevoegen](./media/custom-event-to-function/add-event-grid-topic-button.png)
+    ![De knop Event Grid-onderwerp toevoegen](./media/custom-event-to-function/add-event-grid-topic-button.png)
 
-4. Voer op de pagina **onderwerp maken** de volgende stappen uit:
+4. Voer de volgende stappen uit op de pagina **Onderwerp maken**:
 
     1. Geef een unieke **naam** op voor het aangepaste onderwerp. De onderwerpnaam moet uniek zijn omdat deze wordt vertegenwoordigd door een DNS-vermelding. Gebruik niet de naam die in de afbeelding wordt weergegeven. Maak in plaats daarvan uw eigen naam - deze moet tussen 3 en 50 tekens lang zijn en mag alleen de waarden a-z, A-Z, 0-9 en '-' bevatten.
-    2. Selecteer uw Azure- **abonnement**.
-    3. Selecteer dezelfde resource groep uit de vorige stappen.
-    4. Selecteer een **locatie** voor het onderwerp Event grid.
-    5. Behoud de standaard waarde **Event grid schema** voor het veld **gebeurtenis schema** . 
+    2. Selecteer uw Azure-**abonnement**.
+    3. Selecteer de resourcegroep uit de vorige stappen.
+    4. Selecteer een **locatie** voor het Event Grid-onderwerp.
+    5. Behoud de standaardwaarde **Event Grid-schema** voor het veld **Gebeurtenisschema**. 
 
-       ![Pagina onderwerp maken](./media/custom-event-to-function/create-custom-topic.png)
+       ![De pagina Onderwerp maken](./media/custom-event-to-function/create-custom-topic.png)
     6. Selecteer **Maken**. 
 
-5. Nadat het aangepaste onderwerp is gemaakt, ziet u een melding dat de implementatie gelukt is. Selecteer **Ga naar resource groep**. 
+5. Nadat het aangepaste onderwerp is gemaakt, ziet u een melding dat de implementatie gelukt is. Selecteer **Naar de resourcegroep gaan**. 
 
    ![Zie melding implementatie gelukt](./media/custom-event-to-function/success-notification.png)
 
-6. Selecteer op de pagina **resource groep** het onderwerp Event grid. 
+6. Selecteer op de pagina **Resourcegroep** het Event Grid-onderwerp. 
 
-   ![De resource van het event grid-onderwerp selecteren](./media/custom-event-to-function/select-event-grid-topic.png)
+   ![De Event Grid-onderwerpresource selecteren](./media/custom-event-to-function/select-event-grid-topic.png)
 
-7. U ziet de pagina **Event grid onderwerp** voor uw event grid. Laat deze pagina geopend. U kunt deze later in de Quick Start gebruiken. 
+7. U ziet de pagina **Event Grid-onderwerp** voor uw Event Grid. Laat deze pagina geopend. U gebruikt deze later in de quickstart. 
 
-    ![Start pagina van Event Grid onderwerp](./media/custom-event-to-function/event-grid-topic-home-page.png)
+    ![Startpagina van Event Grid-onderwerp](./media/custom-event-to-function/event-grid-topic-home-page.png)
 
 ## <a name="subscribe-to-custom-topic"></a>Abonneren op aangepast onderwerp
 
 U abonneert u op een Event Grid-onderwerp om Event Grid te laten weten welke gebeurtenissen u wilt traceren en waar de gebeurtenissen naartoe moeten worden gestuurd.
 
-1. Selecteer nu op de pagina **onderwerp Event grid** voor uw aangepaste onderwerp **+ gebeurtenis abonnement** op de werk balk.
+1. Selecteer op de pagina **Event Grid-onderwerp** voor uw aangepaste onderwerp **+ Gebeurtenisabonnement** op de werkbalk.
 
    ![Gebeurtenisabonnement toevoegen](./media/custom-event-to-function/new-event-subscription.png)
 
-2. Voer op de pagina **gebeurtenis abonnement maken** de volgende stappen uit:
-    1. Voer een **naam** in voor het gebeurtenis abonnement.
-    3. Selecteer **Azure-functie** voor het **type eind punt**. 
-    4. Kies **een eind punt selecteren**. 
+2. Voer op de pagina **Gebeurtenisabonnement maken** de volgende stappen uit:
+    1. Voer een **naam** in voor het gebeurtenisabonnement.
+    3. Selecteer **Azure-functie** voor het **Eindpunttype**. 
+    4. Kies **Een eindpunt selecteren**. 
 
        ![Waarden opgeven voor gebeurtenisabonnement](./media/custom-event-to-function/provide-subscription-values.png)
 
-    5. Voor het eind punt selecteert u het Azure-abonnement en de resource groep waarin uw functie-app zich bevindt en selecteert u vervolgens de functie-app en de functie die u eerder hebt gemaakt. Selecteer **Confirm Selection** (Selectie bevestigen).
+    5. Selecteer voor het eindpunt het Azure-abonnement en de resourcegroep waarin uw functie-app zich bevindt en selecteer vervolgens de functie-app en de functie die u eerder hebt gemaakt. Selecteer **Confirm Selection** (Selectie bevestigen).
 
        ![Eindpunt-URL opgeven](./media/custom-event-to-function/provide-endpoint.png)
 
-    6. Selecteer op de pagina **gebeurtenis abonnement maken** de optie **maken**.
+    6. Selecteer **Maken** als u terug bent op de pagina **Gebeurtenisabonnement maken**.
 
 ## <a name="send-an-event-to-your-topic"></a>Een gebeurtenis verzenden naar het onderwerp
 
@@ -97,25 +97,25 @@ Het eerste voorbeeld maakt gebruik van Azure CLI. In dit voorbeeld worden de URL
 
 
 ### <a name="azure-cli"></a>Azure CLI
-1. Selecteer **Cloud shell**In het Azure Portal. Selecteer **bash** in de linkerbovenhoek van het Cloud shell-venster. 
+1. Selecteer **Cloud Shell** in Azure Portal. Selecteer **Bash** in de linkerbovenhoek van het Cloud Shell-venster. 
 
-    ![Cloud Shell-bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
-1. Voer de volgende opdracht uit om het **eind punt** voor het onderwerp op te halen: nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
+    ![Cloud Shell - Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
+1. Voer de volgende opdracht uit om het **eindpunt** voor het onderwerp op te halen: Nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en **naam van de resourcegroep** bij voordat u de opdracht uitvoert. 
 
     ```azurecli
     endpoint=$(az eventgrid topic show --name <topic name> -g <resource group name> --query "endpoint" --output tsv)
     ```
-2. Voer de volgende opdracht uit om de **sleutel** op te halen voor het aangepaste onderwerp: nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert. 
+2. Voer de volgende opdracht uit om de **sleutel** voor het aangepaste onderwerp op te halen: Nadat u de opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en **naam van de resourcegroep** bij voordat u de opdracht uitvoert. 
 
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
     ```
-3. Kopieer de volgende instructie met de gebeurtenis definitie en druk op **Enter**. 
+3. Kopieer de volgende instructie met de gebeurtenisdefinitie en druk op **ENTER**. 
 
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
     ```
-4. Voer de volgende **krul** opdracht uit om de gebeurtenis te plaatsen:
+4. Voer de volgende **curl**-opdracht uit om de gebeurtenis te plaatsen:
 
     ```
     curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
@@ -124,20 +124,20 @@ Het eerste voorbeeld maakt gebruik van Azure CLI. In dit voorbeeld worden de URL
 ### <a name="azure-powershell"></a>Azure PowerShell
 In het tweede voorbeeld wordt PowerShell gebruikt om gelijksoortige stappen uit te voeren.
 
-1. Selecteer in de Azure Portal **Cloud shell** (ook naar `https://shell.azure.com/`). Selecteer **Power shell** in de linkerbovenhoek van het venster Cloud shell. Zie de **Cloud shell** venster afbeelding voor beeld in de sectie Azure cli.
-2. Stel de volgende variabelen in. Nadat u elke opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en de naam van de **resource groep** bij voordat u de opdracht uitvoert:
+1. Selecteer **Cloud Shell** in Azure Portal (of ga naar `https://shell.azure.com/`). Selecteer **PowerShell** in de linkerbovenhoek van het Cloud Shell-venster. Zie de voorbeeldafbeelding van een **Cloud Shell**-venster in de sectie Azure CLI.
+2. Stel de volgende variabelen in. Nadat u elke opdracht hebt gekopieerd en geplakt, werkt u de **onderwerpnaam** en **naam van de resourcegroep** bij voordat u de opdracht uitvoert:
 
     ```powershell
     $resourceGroupName = <resource group name>
     $topicName = <topic name>
     ```
-3. Voer de volgende opdrachten uit om het **eind punt** en de **sleutels** voor het onderwerp op te halen:
+3. Voer de volgende opdrachten uit om het **eindpunt** en de **sleutels** voor het onderwerp op te halen:
 
     ```powershell
     $endpoint = (Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName).Endpoint
     $keys = Get-AzEventGridTopicKey -ResourceGroupName $resourceGroupName -Name $topicName
     ```
-4. De gebeurtenis voor te bereiden. Kopieer de instructies en voer deze uit in het venster Cloud Shell. 
+4. Bereid de gebeurtenis voor. Kopieer de instructies en voer deze uit in het Cloud Shell-venster. 
 
     ```powershell
     $eventID = Get-Random 99999
@@ -162,28 +162,28 @@ In het tweede voorbeeld wordt PowerShell gebruikt om gelijksoortige stappen uit 
     #Append square brackets to the converted JSON payload since they are expected in the event's JSON payload syntax
     $body = "["+(ConvertTo-Json $htbody)+"]"
     ```
-5. Gebruik de cmdlet **invoke-WebRequest** om de gebeurtenis te verzenden. 
+5. Gebruik de cmdlet **Invoke-WebRequest** om de gebeurtenis te verzenden. 
 
     ```powershell
     Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
     ```
 
-### <a name="verify-in-the-event-grid-viewer"></a>Controleren in de Event Grid viewer
-U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Navigeer naar uw door Event Grid geactiveerde functie en open de logboeken. U ziet een kopie van de gegevens lading van de gebeurtenis in de logboeken. Als u niet zeker weet of u het venster Logboeken eerst opent of op opnieuw verbinding maken klikt, moet u opnieuw proberen om een test gebeurtenis te verzenden.
+### <a name="verify-in-the-event-grid-viewer"></a>Controleren in de Event Grid-viewer
+U hebt de gebeurtenis geactiveerd en Event Grid heeft het bericht verzonden naar het eindpunt dat u hebt geconfigureerd toen u zich abonneerde. Navigeer naar de door Event Grid geactiveerde functie en open de logboeken. U ziet een kopie van de gegevenspayload van de gebeurtenis in de logboeken. Als u er niet voor zorgt dat u het logboekvenster het eerst opent, of als u op Opnieuw verbinding maken klikt, verzendt u opnieuw een testgebeurtenis.
 
-![Het trigger logboek voor de functie is voltooid](./media/custom-event-to-function/successful-function.png)
+![Geslaagd functietriggerlogboek](./media/custom-event-to-function/successful-function.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 Als u verder wilt werken met deze gebeurtenis, schoon dan de resources die u in dit artikel hebt gemaakt, niet op. Verwijder anders de resources die u in dit artikel hebt gemaakt.
 
-1. Selecteer **resource groepen** in het menu links. Als u deze niet ziet, selecteert u in het menu links **alle services** en selecteert u **resource groepen**. 
-2. Selecteer de resource groep om de pagina **resource groep** te starten. 
-3. Selecteer **resource groep verwijderen** op de werk balk. 
-4. Bevestig de verwijdering door de naam van de resource groep in te voeren en **verwijderen**te selecteren. 
+1. Selecteer **Resourcegroepen** in het linkermenu. Als u deze optie niet ziet in het linkermenu, selecteert u **Alle services** in het linkermenu en selecteert u **Resourcegroepen**. 
+2. Selecteer de resourcegroep om de pagina **Resourcegroep** te openen. 
+3. Selecteer **Resourcegroep verwijderen** op de taakbalk. 
+4. Controleer de verwijdering door de naam van de resourcegroep in te voeren en **Verwijderen** te selecteren. 
 
     ![Resourcegroepen](./media/custom-event-to-function/delete-resource-groups.png)
 
-    De andere resource groep die u in de installatie kopie ziet, is gemaakt en gebruikt door het Cloud Shell venster. Als u het venster Cloud Shell later niet wilt gebruiken, moet u het verwijderen. 
+    De andere resourcegroep die u in de afbeelding ziet, is gemaakt en gebruikt door het Cloud Shell-venster. Verwijder deze als u het Cloud Shell-venster later niet meer gaat gebruiken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

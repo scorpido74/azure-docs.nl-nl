@@ -9,57 +9,49 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: dcad90713227e55437523c91997175242078e9e4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836478"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605405"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Aan de slag met Azure Synapse Analytics
 
-Deze zelfstudie leidt u door alle basisstappen die nodig zijn om Azure Synapse Analytics in te stellen en te gebruiken.
+Dit document leidt u door alle basisstappen die nodig zijn om Azure Synapse Analytics in te stellen en te gebruiken.
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Een opslagaccount voorbereiden voor gebruik met een Synapse-werkruimte
 
-1. Open de [Azure-portal](https://portal.azure.com)
-1. Maak een nieuw opslagaccount met de volgende instellingen:
-    * Op het tabblad **Basis**
+* Open de [Azure-portal](https://portal.azure.com)
+* Maak een nieuw opslagaccount met de volgende instellingen:
 
-    |Instelling | Voorgestelde waarde | Beschrijving |
-    |---|---|---|
-    |**Naam van opslagaccount**| U kunt een willekeurige naam opgeven.|In dit document heeft het de naam `contosolake`.
-    |**Type account**|Moet worden ingesteld op `StorageV2`||
-    |**Locatie**|U kunt elke willekeurige locatie kiezen| Het wordt aangeraden dat uw Synapse-werkruimte en Azure Data Lake Storage (ADLS) Gen2-account zich in dezelfde regio bevinden.|
-    ||||
-    
-    * Op het tabblad **Geavanceerd**
-    
-    |Instelling | Voorgestelde waarde | Beschrijving |
-    |---|---|---|
-    |**Data Lake Storage Gen2**|`Enabled`| Azure Synapse werkt alleen met opslagaccounts waarvoor deze instelling is ingeschakeld.|
-    ||||
+    |Tabblad|Instelling | Voorgestelde waarde | Beschrijving |
+    |---|---|---|---|
+    |Basisbeginselen|**Naam van opslagaccount**| U kunt een willekeurige naam opgeven.|In dit document heeft het de naam `contosolake`.|
+    |Basisbeginselen|**Type account**|Moet worden ingesteld op `StorageV2`||
+    |Basisbeginselen|**Locatie**|U kunt elke willekeurige locatie kiezen| Het wordt aangeraden dat uw Synapse-werkruimte en Azure Data Lake Storage (ADLS) Gen2-account zich in dezelfde regio bevinden.|
+    |Geavanceerd|**Data Lake Storage Gen2**|`Enabled`| Azure Synapse werkt alleen met opslagaccounts waarvoor deze instelling is ingeschakeld.|
 
 1. Nadat het opslagaccount is gemaakt, selecteert u in het linkernavigatievenster **Toegangsbeheer (IAM)** . Wijs vervolgens de volgende rollen toe of zorg ervoor dat deze al zijn toegewezen. 
+
     a. * Wijs uzelf de rol **Eigenaar** toe in het opslagaccount b. * Wijs uzelf de rol **Eigenaar van opslagblobgegevens** toe in het opslagaccount
+
 1. Selecteer in het navigatievenster links de optie **Containers** en maak een container. U kunt een willekeurige naam opgeven. Accepteer het standaard **Openbaar toegangsniveau**. In dit document heeft de container de naam `users`. Selecteer **Maken**. 
+
+In de volgende stap configureert u de Synapse-werkruimte voor het gebruik van dit opslagaccount als primair opslagaccount en de container voor het opslaan van werkruimtegegevens. In de werkruimte worden gegevens opgeslagen in Apache Spark-tabellen en Spark-toepassingslogboeken in dit account in een map met de naam `/synapse/workspacename`.
 
 ## <a name="create-a-synapse-workspace"></a>Een Synapse-werkruimte maken
 
-1. Open [Azure Portal](https://portal.azure.com) en zoek bovenin naar `Synapse`.
-1. Selecteer in de zoekresultaten onder **Services** de optie **Azure Synapse Analytics (voorbeeld van werkruimten)**
-1. Selecteer **+ Toevoegen**
-1. Tabblad **Basisbeginselen**:
+* Open [Azure Portal](https://portal.azure.com) en zoek bovenin naar `Synapse`.
+* Selecteer in de zoekresultaten onder **Services** de optie **Azure Synapse Analytics (voorbeeld van werkruimten)**
+* Selecteer **+ Toevoegen** om een werkruimte te maken met behulp van deze instellingen
 
-    |Instelling | Voorgestelde waarde | Beschrijving |
-    |---|---|---|
-    |**Werkruimtenaam**|U kunt deze werkruimte elke naam geven die u wilt.| In dit document gebruiken we `myworkspace`
-    |**Regio**|Laat de regio van het opslagaccount overeenkomen||
-    |||
+    |Tabblad|Instelling | Voorgestelde waarde | Beschrijving |
+    |---|---|---|---|
+    |Basisbeginselen|**Werkruimtenaam**|U kunt deze werkruimte elke naam geven die u wilt.| In dit document gebruiken we `myworkspace`|
+    |Basisbeginselen|**Regio**|Laat de regio van het opslagaccount overeenkomen|
 
 1. Selecteer onder **Data Lake Storage Gen 2 selecteren** het account en de container die u eerder hebt gemaakt.
-    > [!NOTE]
-    > We verwijzen naar het opslagaccount dat u hier hebt gekozen als het primaire opslagaccount van de Synapse-werkruimte. Dit account wordt gebruikt om gegevens op te slaan in Apache Spark-tabellen en voor logboeken die worden gemaakt wanneer Apache Spark-pools worden gemaakt of Apache Spark-toepassingen worden uitgevoerd.
 
 1. Selecteer **Controleren + maken**. Selecteer **Maken**. Uw werkruimte is binnen een paar minuten klaar.
 
@@ -81,27 +73,17 @@ Wanneer uw Synapse-werkruimte is gemaakt, kunt u Synapse Studio op twee manieren
 ## <a name="create-a-sql-pool"></a>Een SQL-pool maken
 
 1. Selecteer in Synapse Studio in de navigatie aan de linkerkant **Beheren > SQL-pools**
-
-    > [!NOTE] 
-    > Alle Synapse-werkruimten beschikken over een vooraf gemaakte pool met de naam **SQL on-demand**.
-
 1. Selecteer **+ Nieuw** en voer deze instellingen in:
 
     |Instelling | Voorgestelde waarde | 
-    |---|---|---|
+    |---|---|
     |**Naam van SQL-pool**| `SQLDB1`|
     |**Prestatieniveau**|`DW100C`|
-    |||
 
 1. Selecteer **Bekijken en maken** en selecteer vervolgens **Maken**.
-1. Uw SQL-pool is binnen een paar minuten klaar.
+1. Uw SQL-pool is binnen een paar minuten klaar. Wanneer uw SQL-pool is gemaakt, wordt deze gekoppeld aan een SQL-pooldatabase, ook wel **SQLDB1**genoemd.
 
-    > [!NOTE]
-    > Een Synapse SQL-pool komt overeen met wat voorheen een Azure SQL Data Warehouse werd genoemd
-
-Een SQL-pool verbruikt factureerbare resources zolang deze worden uitgevoerd. U kunt de pool dus onderbreken wanneer dit nodig is om de kosten te verlagen.
-
-Wanneer uw SQL-pool is gemaakt, wordt deze gekoppeld aan een SQL-pooldatabase, ook wel **SQLDB1**genoemd.
+Een SQL-pool verbruikt factureerbare resources zolang deze worden uitgevoerd. U kunt de pool later onderbreken om de kosten te verlagen.
 
 ## <a name="create-an-apache-spark-pool"></a>Een Apache Spark-pool maken
 
@@ -109,11 +91,10 @@ Wanneer uw SQL-pool is gemaakt, wordt deze gekoppeld aan een SQL-pooldatabase, o
 1. Selecteer **+ Nieuw** en voer deze instellingen in:
 
     |Instelling | Voorgestelde waarde | 
-    |---|---|---|
+    |---|---|
     |**Naam van Apache Spark-pool**|`Spark1`
     |**Knooppuntgrootte**| `Small`|
     |**Aantal knooppunten**| Stel het minimum in op 3 en het maximum op 3|
-    |||
 
 1. Selecteer **Bekijken en maken** en selecteer vervolgens **Maken**.
 1. Uw Apache Spark-pool is binnen een paar seconden gereed.
@@ -126,7 +107,7 @@ Omdat ze uit metagegevens bestaan, kunnen Apache Spark-pools niet worden gestart
 Wanneer u een Apache Spark-activiteit uitvoert in Synapse, geeft u een Apache Spark-pool op die moet worden gebruikt. De pool informeert Synapse hoeveel Apache Spark-resources moeten worden gebruikt. U betaalt alleen voor de resources die worden gebruikt. Wanneer u het gebruik van de pool actief stopt, treedt er automatisch een time-out op in de resources en worden ze gerecycled.
 
 > [!NOTE]
-> Apache Spark-databases worden onafhankelijk van Apache Spark-pools gemaakt. Een werkruimte heeft altijd een Apache Spark-database met de naam **standaard** en u kunt extra Apache Spark-databases maken.
+> Apache Spark-databases worden onafhankelijk van Apache Spark-pools gemaakt. Een werkruimte heeft altijd een Apache Spark-database met de naam **standaard** en u kunt extra Spark-databases maken.
 
 ## <a name="the-sql-on-demand-pool"></a>De SQL on-demand-pool
 
@@ -149,7 +130,7 @@ Elke werkruimte wordt geleverd met een vooraf gemaakte en niet-verwijderbare poo
 1. Ga naar **SQLDB1 > Tabellen**. U ziet dat er meerdere tabellen zijn geladen.
 1. Klik met de rechtermuisknop op de tabel **dbo.Trip** en selecteer **Nieuw SQL-script > Eerste 100 rijen selecteren**
 1. Er wordt een nieuw SQL-script gemaakt, dat automatisch wordt uitgevoerd.
-1. U ziet dat bovenaan het SQL-script **Verbinding maken met** automatisch is ingesteld op de SQL-pool met de naam SQLDB1.
+1. U ziet dat bovenaan het SQL-script **Verbinding maken met** automatisch is ingesteld op de SQL-pool met de naam `SQLDB1`.
 1. Vervang de tekst van het SQL-script door deze code en voer deze uit.
 
     ```sql
@@ -167,7 +148,7 @@ Elke werkruimte wordt geleverd met een vooraf gemaakte en niet-verwijderbare poo
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>De gegevens van het NYC-taxivoorbeeld laden in de Apache Spark-database nyctaxi
 
-Er zijn gegevens beschikbaar in een tabel in `SQLDB1`. We laden deze nu in een Apache Spark-database met de naam nyctaxi.
+Er zijn gegevens beschikbaar in een tabel in `SQLDB1`. We laden deze nu in een Spark-database met de naam `nyctaxi`.
 
 1. Ga in Synapse Studio naar de hub **Ontwikkelen**
 1. Selecteer **+** en selecteer **Notebook**
@@ -183,13 +164,13 @@ Er zijn gegevens beschikbaar in een tabel in `SQLDB1`. We laden deze nu in een A
 
 1. Ga naar de hub **Data**, klik met de rechtermuisknop op **Databases** en selecteer **Vernieuwen**.
 1. U ziet nu deze databases:
-    - SQLDB (SQL-pool)
+    - SQLDB1 (SQL-pool)
     - nyctaxi (Apache Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>De gegevens over de NYC-taxi met behulp van Apache Spark en notebooks analyseren
 
 1. Ga terug naar uw notebook
-1. Maak een nieuwe codecel, voer de onderstaande tekst in en voer de cel uit om een voorbeeld te geven van de NYC-taxigegevens die we hebben geladen in de Apache Spark-database `nyctaxi`.
+1. Maak een nieuwe codecel, voer de onderstaande tekst in en voer de cel uit om een voorbeeld te geven van de NYC-taxigegevens die we in de Spark-database `nyctaxi` hebben geladen.
 
    ```py
    %%pyspark
@@ -209,10 +190,10 @@ Er zijn gegevens beschikbaar in een tabel in `SQLDB1`. We laden deze nu in een A
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. Selecteer **Grafiek** in de celresultaten om de gevisualiseerde gegevens weer te geven
  
@@ -299,9 +280,9 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. Selecteer **Gekoppeld**
 1. Navigeer naar **Opslagaccounts > myworkspace (Primary - contosolake)**
 1. Selecteer **gebruikers (Primair)**
-1. U ziet een map met de naam NYCTaxi. Hierin ziet u twee mappen, PassengerCountStats.csv en PassengerCountStats.parquet.
-1. Ga naar de map PassengerCountStats.parquet.
-1. Klik met de rechtermuisknop op het parquet-bestand en selecteer **Nieuwe notebook**. Er wordt dan een notebook gemaakt met een cel die er als volgt uitziet:
+1. U ziet een map met de naam `NYCTaxi`. In deze map ziet u de twee mappen `PassengerCountStats.csv` en `PassengerCountStats.parquet`.
+1. Ga naar de map `PassengerCountStats.parquet`.
+1. Klik met de rechtermuisknop op het `.parquet`-bestand en selecteer **Nieuwe notebook**. Er wordt nu een notebook gemaakt met een cel die er als volgt uitziet:
 
     ```py
     %%pyspark
@@ -342,11 +323,10 @@ U kunt een Power BI-werkruimte koppelen aan uw Synapse-werkruimte. Zo kunt u een
 1. Selecteer **+ Nieuw** en selecteer **Verbinding maken met Power BI** en stel deze velden in:
 
     |Instelling | Voorgestelde waarde | 
-    |---|---|---|
+    |---|---|
     |**Naam**|`NYCTaxiWorkspace1`|
     |**Werkruimtenaam**|`NYCTaxiWorkspace1`|
-    |||
-    
+        
 1. Selecteer **Maken**.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-synapse-workspace"></a>Een Power BI-gegevensset maken die gebruikmaakt van gegevens in uw Synapse-werkruimte

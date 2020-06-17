@@ -1,5 +1,5 @@
 ---
-title: Listener voor beschikbaarheidsgroep voor SQL Server configureren op virtuele RHEL-machines in Azure - Linux Virtual Machines | Microsoft Docs
+title: Een listener voor beschikbaarheidsgroep voor SQL Server configureren op virtuele RHEL-machines in Azure - virtuele Linux-machines | Microsoft Docs
 description: Meer informatie over het instellen van een listener voor beschikbaarheidsgroep in SQL Server op virtuele RHEL-machines in Azure
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,14 +8,14 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025063"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343758"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Listener voor beschikbaarheidsgroep configureren voor SQL Server in virtuele RHEL-machines in Azure
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Zelfstudie: Een listener voor beschikbaarheidsgroep configureren voor SQL Server in virtuele RHEL-machines in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "84025063"
 >
 > In deze zelfstudie gebruiken we SQL Server 2017 met RHEL 7.6, maar u kunt ook SQL Server 2019 in RHEL 7 of RHEL 8 gebruiken om hoge beschikbaarheid te configureren. De opdrachten voor het configureren van resources van beschikbaarheidsgroep zijn gewijzigd in RHEL 8. In het artikel [Resource voor beschikbaarheidsgroep maken](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) en RHEL 8-resources vindt u meer informatie over de juiste opdrachten.
 
-In deze zelfstudie worden de stappen uitgelegd voor het maken van een listener voor beschikbaarheidsgroep voor uw SQL-servers op virtuele RHEL-machines in Azure. U leert het volgende:
+In deze zelfstudie worden de stappen uitgelegd voor het maken van een listener voor beschikbaarheidsgroep voor uw SQL-servers op virtuele RHEL-machines (VM's) in Azure. U leert het volgende:
 
 > [!div class="checklist"]
 > - Een taakverdeler (load balancer) maken in Azure Portal
@@ -37,13 +37,13 @@ In deze zelfstudie worden de stappen uitgelegd voor het maken van een listener v
 
 ## <a name="prerequisite"></a>Vereiste
 
-Afgeronde zelfstudie [ **: Beschikbaarheidsgroepen configureren voor SQL Server op virtuele RHEL-machines in Azure**](rhel-high-availability-stonith-tutorial.md)
+Afgeronde [Zelfstudie: Beschikbaarheidsgroepen configureren voor SQL Server op virtuele RHEL-machines in Azure](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Een taakverdeler maken in Azure-portal
 
 De volgende instructies leiden u door stappen 1 tot en met 4 van de sectie [Een taakverdeler maken en configureren in Azure-portal](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal) van het artikel [Taakverdeler - Azure-portal](../windows/availability-group-load-balancer-portal-configure.md).
 
-### <a name="create-the-load-balancer"></a>Taakverdeler maken
+### <a name="create-the-load-balancer"></a>Load balancer maken
 
 1. Open in Azure-portal de resourcegroep die de virtuele SQL Server-machines omvat. 
 
@@ -59,7 +59,7 @@ De volgende instructies leiden u door stappen 1 tot en met 4 van de sectie [Een 
    | --- | --- |
    | **Naam** |Een tekstnaam voor de taakverdeler. Bijvoorbeeld: **sqlLB**. |
    | **Type** |**Intern** |
-   | **Virtueel netwerk** |Het standaard-VNet dat is gemaakt moet de naam **VM1VNET** krijgen. |
+   | **Virtueel netwerk** |Het standaard-virtuele netwerk dat is gemaakt moet de naam **VM1VNET** hebben. |
    | **Subnet** |Selecteer het subnet waarin de SQL Server-exemplaren zich bevinden. De standaardwaarde is **VM1Subnet**.|
    | **IP-adrestoewijzing** |**Statisch** |
    | **Privé IP-adres** |Gebruik het `virtualip`-IP-adres dat in het cluster is gemaakt. |
@@ -204,7 +204,7 @@ Op dit moment heeft de resourcegroep een taakverdeler die verbinding maakt met a
     GO
     ```
 
-1. Meld u aan bij elk virtuele-machineknooppunt. Gebruik de volgende opdracht om het hosts-bestand te openen en de omzetting van hostnamen voor de `ag1-listener` in te stellen op elke machine.
+1. Meld u aan bij elk VM-knooppunt. Gebruik de volgende opdracht om het hosts-bestand te openen en de omzetting van hostnamen voor de `ag1-listener` in te stellen op elke machine.
 
     ```
     sudo vi /etc/hosts
@@ -220,7 +220,7 @@ Op dit moment heeft de resourcegroep een taakverdeler die verbinding maakt met a
 
 ## <a name="test-the-listener-and-a-failover"></a>De listener en een failover testen
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Aanmelden bij SQL Server met de listener voor beschikbaarheidsgroep testen
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>Aanmelden bij SQL Server met de listener voor beschikbaarheidsgroep testen
 
 1. Gebruik SQLCMD om u aan te melden bij het primaire knooppunt van SQL Server met de naam van de listener voor beschikbaarheidsgroep:
 
@@ -238,7 +238,7 @@ Op dit moment heeft de resourcegroep een taakverdeler die verbinding maakt met a
 
     Uw uitvoer moet het huidige primaire knooppunt weergeven. Als u nooit eerder een failover hebt getest, moet dit `VM1` zijn.
 
-    Verlaat de SQL-sessie door de opdracht `exit` te typen.
+    Verlaat de SQL Server-sessie door de opdracht `exit` te typen.
 
 ### <a name="test-a-failover"></a>Een failover testen
 
@@ -280,7 +280,7 @@ Op dit moment heeft de resourcegroep een taakverdeler die verbinding maakt met a
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. Controleer de server waarmee u verbinding hebt. Voer de volgende opdracht uit in SQLCMD:
 
@@ -292,7 +292,7 @@ Op dit moment heeft de resourcegroep een taakverdeler die verbinding maakt met a
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Taakverdelers in Azure:
+Zie voor meer informatie over taakverdelers in Azure:
 
 > [!div class="nextstepaction"]
-> [Een taakverdeler configureren voor een beschikbaarheidsgroep op virtuele Azure SQL Server-machines](../windows/availability-group-load-balancer-portal-configure.md)
+> [Een taakverdeler configureren voor een beschikbaarheidsgroep op SQL Server op Azure-VM's](../windows/availability-group-load-balancer-portal-configure.md)

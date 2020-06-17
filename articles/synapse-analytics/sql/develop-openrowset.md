@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702026"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560875"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET gebruiken met SQL on demand (preview)
 
@@ -107,19 +107,19 @@ U hebt twee keuzen voor invoerbestanden die de doelgegevens bevatten waarop quer
 **'unstructured_data_path'**
 
 Het argument unstructured_data_path is een pad naar de gegevens in de vorm van een absolute of relatieve verwijzing:
-- Een absoluut pad in de indeling '\<voorvoegsel>://\<pad_naar_opslagaccount>/\<pad_naar_opslag>' biedt een gebruiker de gelegenheid om bestanden rechtstreeks te lezen.
+- Absoluut pad in de indeling \<prefix>://\<storage_account_path>/\<storage_path> stelt een gebruiker in staat de bestanden rechtstreeks te lezen.
 - Een relatief pad in de indeling <pad_naar_opslag> dat moet worden gebruikt met de parameter `DATA_SOURCE` en dat het bestandspatroon beschrijft op de locatie <pad_naar_opslagaccount> locatie die is gedefinieerd in `EXTERNAL DATA SOURCE`. 
 
  Hieronder vindt u de relevante <storage account path> waarden voor koppeling aan uw specifieke externe gegevensbron. 
 
 | Externe gegevensbron       | Voorvoegsel | Pad van opslagaccount                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | https  | \<opslagaccount>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | https  | \<opslagaccount>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | https  | \<opslagaccount>.dfs.core.windows.net              |
+| Azure Blob Storage         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
 ||||
 
-'\<pad_naar_opslag>'
+'\<storage_path>'
 
  Een pad binnen de opslag dat verwijst naar de map of het bestand dat u wilt lezen. Als het pad naar een container of map verwijst, worden alle bestanden in die specifieke container of map gelezen. Bestanden in submappen worden uitgesloten. 
 
@@ -130,7 +130,7 @@ Hieronder ziet u een voorbeeld waarmee alle *CSV-* bestanden worden gelezen die 
 Als u opgeeft dat unstructured_data_path een map is, haalt een SQL on demand-query bestanden uit die map op. 
 
 > [!NOTE]
-> In tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand geen submappen. Eveneens in tegenstelling tot Hadoop en PolyBase, retourneert SQL on demand ook bestanden waarvan de bestandsnaam begint met een onderstrepingsteken (_) of een punt (.).
+> In tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand geen submappen. Eveneens in tegenstelling tot Hadoop en PolyBase, retourneert SQL on-demand ook bestanden waarvan de bestandsnaam begint met een onderstrepingsteken (_) of een punt (.).
 
 Als in het onderstaande voorbeeld unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, retourneert een SQL on-demand-query rijen uit mydata.txt en _hidden.txt. Er worden geen gegevens geretourneerd uit mydata2.txt en mydata3.txt omdat deze bestanden zich in een submap bevinden.
 

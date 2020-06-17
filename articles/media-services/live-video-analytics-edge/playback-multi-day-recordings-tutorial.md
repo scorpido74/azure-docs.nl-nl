@@ -3,12 +3,12 @@ title: Opnamen van meerdere dagen afspelen - Azure
 description: In deze zelfstudie leert u hoe u Azure Media Service-API's gebruikt om een continue video-opname van meerdere dagen af te spelen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 0b294769fce58f5aaae82fec590c783e8328d826
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260040"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433654"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Zelfstudie: Opnamen van meerdere dagen afspelen  
 
@@ -57,7 +57,7 @@ Als onderdeel van de [zelfstudie voor CVR](continuous-video-recording-tutorial.m
 }
 ```
 
-Open vervolgens in Visual Studio Code de map src/ams-asset-player. Deze map bevat de bestanden die nodig zijn voor deze zelfstudie. Open het bestand appSettings.json en kopieer de inhoud naar een nieuw bestand, appSettings.Developer.json. Voer de volgende bewerkingen uit in het laatste bestand:
+Open vervolgens in Visual Studio Code de map src/ams-asset-player. Deze map bevat de bestanden die nodig zijn voor deze zelfstudie. Open het bestand appSettings.json en kopieer de inhoud naar een nieuw bestand, appsettings.development.json. Voer de volgende bewerkingen uit in het laatste bestand:
 
 ```
   "AMS" : {

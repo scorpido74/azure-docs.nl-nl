@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 840c0157713e9758092ca5cc51ee2745428ae568
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169845"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483525"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Quickstart: Gebruikers aanmelden en de Microsoft Graph API aanroepen vanuit een iOS- of macOS-app
 
@@ -70,56 +70,32 @@ Deze quickstart is van toepassing op iOS- en macOS-apps. Sommige stappen zijn al
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Al geconfigureerd](media/quickstart-v2-ios/green-check.png) Uw toepassing is al geconfigureerd met deze kenmerken
-
-#### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeldproject downloaden
-
-- [Het codevoorbeeld voor iOS downloaden](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [Het codevoorbeeld voor macOS downloaden](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeldproject downloaden
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [Het codevoorbeeld voor iOS downloaden]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [Het codevoorbeeld voor macOS downloaden]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>Stap 2: Het voorbeeldproject downloaden
+> 
+> - [Het codevoorbeeld voor iOS downloaden](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [Het codevoorbeeld voor macOS downloaden](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>Stap 3: Afhankelijkheden installeren
 
 Navigeer in een terminalvenster naar de map met het gedownloade codevoorbeeld en voer `pod install` uit om de MSAL-bibliotheek te installeren.
 
-#### <a name="step-4-configure-your-project"></a>Stap 4: Het project configureren
-
-> [!div renderon="docs"]
-> Als u hierboven optie 1 hebt geselecteerd, kunt u deze stappen overslaan.
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. Pak het zip-bestand uit en open het project in XCode.
-> 1. Bewerk **ViewController.swift** en vervang de regel die begint met 'let kClientID' door het volgende codefragment. Vergeet niet om de waarde voor `kClientID` bij te werken met de client-id die u eerder in de quickstart hebt opgeslagen tijdens het registreren van uw app in de portal:
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. Bewerk **ViewController.swift** en vervang de regel die begint met 'let kAuthority' door het volgende codefragment:
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. Bewerk **ViewController.swift** en vervang de regel die begint met 'let kGraphEndpoint' door het volgende codefragment:
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. Open de projectinstellingen. Voer in de sectie **Identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
-> 1. Alleen voor iOS: klik met de rechtermuisknop op **Info.plist** en selecteer **Openen als** > **Broncode**.
-> 1. Alleen voor iOS: vervang, onder het dict-hoofdknooppunt, `CFBundleURLSchemes` door de ***bundel-id*** die u hebt ingevoerd in de portal.
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. Bouw de app en voer deze uit.
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Stap 4: Uw app is geconfigureerd en klaar om te worden uitgevoerd
+> Uw project is geconfigureerd met waarden van de eigenschappen van uw app en is klaar om te worden uitgevoerd.
+> >  [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
->
+>#### <a name="step-4-configure-your-project"></a>Stap 4: Het project configureren
+> Als u hierboven optie 1 hebt geselecteerd, kunt u deze stappen overslaan.
 > 1. Pak het zip-bestand uit en open het project in XCode.
 > 1. Bewerk **ViewController.swift** en vervang de regel die begint met 'let kClientID' door het volgende codefragment. Vergeet niet om de waarde voor `kClientID` bij te werken met de client-id die u eerder in deze quickstart hebt opgeslagen tijdens het registreren van uw app in de portal:
 >    ```swift
@@ -136,8 +112,8 @@ Navigeer in een terminalvenster naar de map met het gedownloade codevoorbeeld en
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Open de projectinstellingen. Voer in de sectie **Identiteit** de **bundel-id** in die u hebt ingevoerd in de portal.
-> 1. Alleen voor iOS: klik met de rechtermuisknop op **Info.plist** en selecteer **Openen als** > **Broncode**.
-> 1. Alleen voor iOS: vervang, onder het dict-hoofdknooppunt, `Enter_the_bundle_Id_Here` door de ***bundel-id*** die u hebt gebruikt in de portal.
+> 1. Klik met de rechtermuisknop op **Info.plist** en selecteer **Openen als** > **Broncode**.
+> 1. Vervang onder het dict-hoofdknooppunt `Enter_the_bundle_Id_Here` door de ***bundel-id*** die u hebt gebruikt in de portal.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

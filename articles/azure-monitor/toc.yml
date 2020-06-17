@@ -946,14 +946,14 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Inschakelen voor bestaand AKS-cluster
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Inschakelen voor een cluster dat geschikt is voor Arc
+              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Inschakelen voor een hybride cluster
               href: insights/container-insights-hybrid-setup.md
             - name: Inschakelen voor Azure Red Hat OpenShift v3
               href: insights/container-insights-azure-redhat-setup.md
             - name: Inschakelen voor Azure Red Hat OpenShift v4
               href: insights/container-insights-azure-redhat4-setup.md
-            - name: Inschakelen voor een cluster dat geschikt is voor Arc
-              href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Regiotoewijzingen
               href: insights/container-insights-region-mapping.md
         - name: Prestaties bewaken

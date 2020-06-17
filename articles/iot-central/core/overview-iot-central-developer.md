@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83665790"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417018"
 ---
 # <a name="iot-central-device-development-overview"></a>Overzicht van het ontwikkelen van IoT Central-apparaten
 
@@ -85,7 +85,9 @@ Gebruik een van de [SDK's voor Azure IoT-apparaten](#languages-and-sdks) om het 
 - De eigenschapswaarden synchroniseren tussen het apparaat en IoT Central. In de apparaatsjabloon worden de eigenschapsnamen en gegevenstypen opgegeven, zodat IoT Central de informatie kan weergeven.
 - Opdrachthandlers implementeren voor de opdrachten die worden opgegeven in de apparaatsjabloon. In de apparaatsjabloon worden de opdrachtnamen en parameters opgegeven die het apparaat moet gebruiken.
 
-Zie [Create and connect a Node.js client application](./tutorial-connect-device-nodejs.md) (Een Node.js-clienttoepassing maken en verbinden) of [Create and connect a Python client application](./tutorial-connect-device-python.md) (Een Python-clienttoepassing maken en verbinden) voor meer informatie.
+Zie [Wat zijn apparaatsjablonen?](./concepts-device-templates.md) voor meer informatie over de rol van apparaatsjablonen.
+
+Zie [Een Node.js-clienttoepassing maken en verbinden](./tutorial-connect-device-nodejs.md) of [Een Python-clienttoepassing maken en verbinden](./tutorial-connect-device-python.md) voor een voorbeeld van code.
 
 ### <a name="languages-and-sdks"></a>Talen en SDK's
 

@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296524"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464807"
 ---
 # <a name="azure-files-networking-considerations"></a>Aandachtspunten voor Azure Files-netwerken 
 U kunt op twee manieren verbinding maken met een Azure-bestandsshare:
 
 - U kunt de share rechtstreeks openen via de SMB- of FileREST-protocollen. Dit toegangspatroon wordt voornamelijk gebruikt om de noodzaak voor on-premises servers zoveel mogelijk te elimineren.
-- Het maken van een cache van de Azure-bestandsshare op een on-premises server met Azure File Sync, en het verkrijgen van toegang tot de gegevens van de bestandsshare vanaf de on-premises server met het protocol van uw keuze (SMB, NFS, FTPS, enzovoort) voor uw use-case. Dit toegangspatroon is handig omdat het een goede combinatie is van on-premises prestaties, de schaal van de cloud en serverloze koppelbare services, zoals Azure Backup.
+- Het maken van een cache van de Azure-bestandsshare op een on-premises server (of op een Azure-VM) met Azure File Sync, en het verkrijgen van toegang tot de gegevens van de bestandsshare vanaf de on-premises server met het protocol van uw keuze (SMB, NFS, FTPS, enzovoort) voor uw use-case. Dit toegangspatroon is handig omdat het een goede combinatie is van on-premises prestaties, de schaal van de cloud en serverloze koppelbare services, zoals Azure Backup.
 
-In dit artikel wordt uitgelegd hoe u netwerken kunt configureren als het in uw use-case nodig is de Azure-bestandsshare rechtstreeks te openen in plaats van met Azure File Sync. Zie [Azure File Sync-proxy- en firewallinstellingen configureren](storage-sync-files-firewall-and-proxy.md) voor meer informatie over aandachtspunten voor een netwerk voor een Azure File Sync-implementatie.
+In dit artikel wordt uitgelegd hoe u netwerken kunt configureren als het in uw use-case nodig is de Azure-bestandsshare rechtstreeks te openen in plaats van met Azure File Sync. Zie [Aandachtspunten voor Azure File Sync-netwerken](storage-sync-files-networking-overview.md) voor meer informatie over netwerkaandachtspunten voor een Azure File Sync-implementatie.
 
 Een netwerkconfiguratie voor Azure-bestandsshares wordt uitgevoerd op het Azure-opslagaccount. Een opslagaccount is een beheerconstructie die een gedeelde opslaggroep vertegenwoordigt waarin u meerdere bestandsshares kunt implementeren, evenals andere opslagresources, zoals blob-containers of wachtrijen. Opslagaccounts stellen meerdere instellingen beschikbaar waarmee u netwerktoegang tot uw bestandsshares kunt beveiligen: netwerkeindpunten, firewallinstellingen voor opslagaccounts en versleuteling in transit. 
 

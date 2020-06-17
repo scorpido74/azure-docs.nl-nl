@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682458"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344200"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Nieuwe functies in Azure Cognitive Search
 
@@ -29,7 +29,7 @@ Meer informatie over nieuwe functies in de service. Voeg een bladwijzer toe aan 
 
 + Gebruik een [door het systeem beheerde identiteit (preview)](search-howto-managed-identities-data-sources.md) om een verbinding met een Azure-gegevensbron in te stellen voor indexeren. Geldt voor [indexeerfuncties](search-indexer-overview.md) die inhoud opnemen uit Azure-gegevensbronnen, zoals Azure SQL Database, Azure Cosmos DB en Azure Storage.
 
-+ Wijzig de basis voor het berekenen van zoekscores, van per shard in alle shards, met behulp van de [queryparameter scoringStatistics=Global](index-similarity-and-scoring.md#scoring-statistics).
++ Wijzig de basis voor het berekenen van zoekscores, van per shard in alle shards, met behulp van de queryparameters [scoringStatistics=global](index-similarity-and-scoring.md#scoring-statistics) en sessionId.
 
 ### <a name="march-2020"></a>Maart 2020
 

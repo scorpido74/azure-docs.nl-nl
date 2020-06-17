@@ -1,20 +1,20 @@
 ---
-title: 'Cheatsheet: Azure Synapse Analytics'
+title: 'Cheatsheet: Azure Synapse Analytics (preview van werkruimten)'
 description: Naslaggids waarmee de gebruiker Azure Synapse Analytics leert kennen
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: c49e5f421f88b4d2676204ff0a32a0aa2b808be1
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 95fa4a0b5761b9d5a17e03c0edf9a727777d3a7f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652655"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609349"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet voor Azure Synapse Analytics
 
@@ -27,15 +27,15 @@ Het cheatsheet voor Azure Synapse Analytics bevat een overzicht van de basisconc
 > [!div class="mx-imgBorder"]
 >![Synapse-architectuur](media/overview-cheat-sheet/azure-synapse-architecture-cheat-sheet.png)
 
-## <a name="concepts"></a>Concepten
-| Zelfstandig naamwoorden en werkwoorden                         | Wat het doet       |
+## <a name="terminology"></a>Terminologie
+| Termijn                         | Definitie      |
 |:---                                 |:---                 |
-| **Synapse-werkruimte (preview)** | Een beveiligbare samenwerkingsgrens voor het uitvoeren van zakelijke cloudanalyses in Azure. Een werkruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2-account en -bestandssysteem (voor het opslaan van tijdelijke gegevens). Een werkruimte bevindt zich onder een resourcegroep. |
+| **Synapse-werkruimte** | Een beveiligbare samenwerkingsgrens voor het uitvoeren van zakelijke cloudanalyses in Azure. Een werkruimte wordt geïmplementeerd in een specifieke regio en heeft een gekoppeld ADLS Gen2-account en -bestandssysteem (voor het opslaan van tijdelijke gegevens). Een werkruimte bevindt zich onder een resourcegroep. |
 | **Synapse SQL**   | Hiermee kunt u analyses uitvoeren met pools of met on-demand functies.  |
 | **SQL-pool**   | 0-to-N in SQL ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Elke SQL-pool heeft een gekoppelde database. Een SQL-pool kan handmatig of automatisch worden geschaald, onderbroken en hervat. Een SQL-pool kan worden geschaald van 100 DWU's tot 30.000 DWU's.       |
-| **SQL on-demand (preview)**   | Het verwerkingssysteem voor gedistribueerde gegevens dat is gebouwd voor grote volumes gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data lake. Het is serverloos, zodat u de infrastructuur niet hoeft te beheren.       |
-|**Apache Spark** | Spark-runtime die wordt gebruikt in een Spark-pool. De huidige versie die wordt ondersteund is Spark 2.4 met python 3.6.1, scala 2.11.12, .NET-ondersteuning voor Apache Spark 0.5 en Delta Lake 0.3.  | 
-| **Apache Spark-pool (preview)**  | 0-to-N in Spark ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
+| **SQL on-demand**   | Het verwerkingssysteem voor gedistribueerde gegevens dat is gebouwd voor grote volumes gegevens waarmee u T-SQL-query's kunt uitvoeren op gegevens in data lake. Het is serverloos, zodat u de infrastructuur niet hoeft te beheren.       |
+|**Apache Spark for Synapse** | Spark-runtime die wordt gebruikt in een Spark-pool. De huidige versie die wordt ondersteund is Spark 2.4 met python 3.6.1, scala 2.11.12, .NET-ondersteuning voor Apache Spark 0.5 en Delta Lake 0.3.  | 
+| **Apache Spark-pool**  | 0-to-N in Spark ingerichte resources en de bijbehorende databases kunnen in een werkruimte worden geïmplementeerd. Een Spark-pool kan automatisch worden onderbroken, hervat en geschaald.  |
 | **Spark-toepassing**  |   Het bestaat uit een stuurprogrammaproces en een reeks uitvoeringsprocedures. Een Spark-toepassing wordt uitgevoerd in een Spark-pool.            |
 | **Spark-sessie**  |   Uniform invoerpunt van een Spark-toepassing. Een sessie biedt een manier om te communiceren met de verschillende functies van Spark en met een kleiner aantal constructs. Als u een notebook wilt uitvoeren, moet u een sessie maken. Een sessie kan worden geconfigureerd om te worden uitgevoerd op een specifiek aantal uitvoerders van een specifiek formaat. De standaardconfiguratie voor een notebook-sessie is om op twee middelgrote uitvoerders te worden uitgevoerd. |
 | **SQL-aanvraag**  |   Een bewerking zoals een query die wordt uitgevoerd via een SQL-pool of SQL on-demand. |
@@ -56,6 +56,6 @@ Het cheatsheet voor Azure Synapse Analytics bevat een overzicht van de basisconc
 - [Een werkruimte maken](quickstart-create-workspace.md)
 - [Synapse Studio gebruiken](quickstart-synapse-studio.md)
 - [Een SQL-pool maken](quickstart-create-sql-pool-portal.md)
-- [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
 - [Een Apache Spark-pool maken](quickstart-create-apache-spark-pool-portal.md)
+- [SQL on-demand gebruiken](quickstart-sql-on-demand.md)
 

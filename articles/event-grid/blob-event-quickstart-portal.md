@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8c1627b0a9ae37f7d784c49613eb14b0c851b9b1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310457"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457045"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Quickstart: Blob Storage-gebeurtenissen routeren naar een webeindpunt met Azure Portal
 
@@ -92,12 +92,9 @@ U abonneert u op een onderwerp om Event Grid te laten weten welke gebeurtenissen
    ![Webhook selecteren](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Voer op de pagina **Gebeurtenisabonnement maken** de volgende stappen uit: 
     1. Voer een **naam** in voor het gebeurtenisabonnement.
-    2. Voer een **naam** in voor het **systeemonderwerp**. 
+    2. Voer een **naam** in voor het **systeemonderwerp**. Zie [Overzicht van systeemonderwerpen](system-topics.md) voor meer informatie over systeemonderwerpen.
 
        ![Namen invoeren voor gebeurtenisabonnement en systeemonderwerp](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-
-       > [!NOTE]
-       > Voorheen maakte de Event Grid-service bij het maken van een abonnement voor een gebeurtenis die door Azure-bronnen werd gegenereerd, automatisch een systeemonderwerp aan met een willekeurig gegenereerde naam. Nu kunt u met dit tekstvak een naam voor het systeemonderwerp opgeven. U kunt de resource van dit systeemonderwerp gebruiken om metrische gegevens en diagnostische logboeken te detecteren.
     2. Selecteer **Webhook** voor het **Eindpunttype**. 
 
        ![Eindpunttype voor webhook selecteren](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)

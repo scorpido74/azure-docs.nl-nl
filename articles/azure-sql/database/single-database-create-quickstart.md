@@ -1,6 +1,6 @@
 ---
 title: Een individuele database maken
-description: Maak een afzonderlijke Azure SQL Database met de Azure Portal, PowerShell of Azure CLI. Voer een query voor de database uit met de query-editor in de Azure Portal.
+description: Maak één database in Azure SQL Database met de Azure-portal, PowerShell of Azure CLI. Voer een query voor de database uit met de query-editor in de Azure Portal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 8b4e057fe41bdf76612888e9d4715d7cdee0ce29
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1ae3159365e63159b8ed62c09bc20441ba65d8aa
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053209"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343843"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Quickstart: Een individuele database maken in Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-In deze quickstart gebruikt u de Azure Portal, een PowerShell-script of een Azure CLI-script om één Azure SQL Database te maken. Voer daarna in de Azure Portal een query voor de database uit met de **Query-editor**.
+In deze quickstart gebruikt u de Azure-portal, een PowerShell-script of een Azure CLI-script om één database in Azure SQL Database te maken. Voer daarna in de Azure Portal een query voor de database uit met de **Query-editor**.
 
 Een [individuele database](single-database-overview.md) is de snelste en eenvoudigste optie voor Azure SQL Database. U beheert een individuele database binnen een [server](logical-servers.md), die zich binnen een [Azure-resourcegroep](../../active-directory-b2c/overview.md) in een opgegeven Azure-regio bevindt. In deze quickstart maakt u een nieuwe resourcegroep en server voor de nieuwe database.
 
 U kunt een individuele database maken in de *ingerichte* of *serverloze* berekeningslaag. Aan een ingerichte database is vooraf een vaste hoeveelheid berekeningsresources, inclusief CPU en geheugen, toegewezen, en de database maakt gebruik van een van de volgende twee [aankoopmodellen](purchasing-models.md). In deze quickstart wordt een ingerichte database gemaakt met het aankoopmodel [op basis van vCore](service-tiers-vcore.md), maar u kunt ook een aankoopmodel [op basis van DTU](service-tiers-dtu.md) kiezen.
 
-De serverloze berekeningslaag is alleen beschikbaar in het aankoopmodel op basis van vCore en heeft een automatisch geschaald bereik van berekeningsresources, inclusief CPU en geheugen. Voor meer informatie over het maken van een individuele database in de serverloze berekeningslaag raadpleegt u [Een serverloze database maken](serverless-tier-overview.md#create-new-database-in-serverless-compute-tier).
+De serverloze berekeningslaag is alleen beschikbaar in het aankoopmodel op basis van vCore en heeft een automatisch geschaald bereik van berekeningsresources, inclusief CPU en geheugen. Voor meer informatie over het maken van een individuele database in de serverloze berekeningslaag raadpleegt u [Een serverloze database maken](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier).
 
 ## <a name="prerequisite"></a>Vereiste
 
@@ -68,7 +67,7 @@ Bewaar de resourcegroep, server en individuele database als u verder wilt gaan m
 
 Wanneer u klaar bent met deze resources, kunt u de resourcegroep die u hebt gemaakt, verwijderen. U verwijdert daarmee ook de server en individuele database in die groep.
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Zo verwijdert u **myResourceGroup** en alle bijbehorende resources met behulp van de Azure Portal:
 
@@ -76,7 +75,7 @@ Zo verwijdert u **myResourceGroup** en alle bijbehorende resources met behulp va
 1. Selecteer **Resourcegroep verwijderen** op de pagina van de resourcegroep.
 1. Typ *myResourceGroup* onder **Typ de naam van de resourcegroep** en selecteer **Verwijderen**.
 
-### <a name="azure-cli"></a>[Azure-CLI](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[De Azure CLI](#tab/azure-cli)
 
 Als u de resourcegroep inclusief alle resources wilt verwijderen, voert u de volgende Azure CLI-opdracht uit met de naam van uw resourcegroep:
 
@@ -99,4 +98,6 @@ Remove-AzResourceGroup -Name <your resource group>
 Verschillende hulpprogramma's en talen gebruiken om [verbinding te maken met en query's uit te voeren voor](connect-query-content-reference-guide.md) de database:
 > [!div class="nextstepaction"]
 > [Verbinding maken en query's uitvoeren met behulp van SQL Server Management Studio](connect-query-ssms.md)
+>
 > [Verbinding maken en query's uitvoeren met behulp van Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+ 

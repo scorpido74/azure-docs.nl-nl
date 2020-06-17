@@ -1,20 +1,6 @@
 - name: Documentatie over het ontwikkelen van beveiligde toepassingen
   href: index.yml
-- name: Voorbeeld-apps
-  expanded: true
-  items:
-    - name: Nieuw voor veilige ontwikkeling
-      items:
-        - name: Web-app in een Linux-container
-          href: secure-web-app.md
-        - name: Web-app met Azure Active Directory
-          href: secure-aad-app.md
-    - name: Oplossingen die voldoen aan branchenalevingsvereisten
-      items:
-        - name: Betaalkaartenbranche
-          href: secure-pci-web-app.md
 - name: Concepten
-  expanded: true
   items:
     - name: Aanbevolen procedures
       items:
@@ -26,8 +12,8 @@
           href: secure-develop.md
         - name: Beveiligde apps implementeren
           href: secure-deploy.md
-- name: Resources
   expanded: true
+- name: Resources
   items:
     - name: Microsoft Security Code Analysis
       items:
@@ -95,3 +81,4 @@
               href: threat-modeling-tool-sensitive-data.md
             - name: Sessiebeheer
               href: threat-modeling-tool-session-management.md
+  expanded: true
