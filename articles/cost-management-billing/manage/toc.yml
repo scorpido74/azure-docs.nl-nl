@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Factureringsaccount voor Microsoft-klantovereenkomst instellen
           href: mca-setup-account.md
-        - name: Registreren met Office 365-account
-          href: office-365-account-for-azure-subscription.md
-        - name: Registreren voor Office 365 met een Azure-account
-          href: azure-account-for-office-365-subscription.md
+        - name: Aanmelden met een Microsoft 365-account
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Registreren voor Microsoft 365 met een Azure-account
+          href: azure-account-for-microsoft-365-subscription.md
         - name: Betalen met sterke klantverificatie
           href: open-banking-strong-customer-authentication.md
     - name: Abonnementen beheren

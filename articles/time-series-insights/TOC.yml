@@ -41,9 +41,9 @@
           items:
             - name: Verifiëren en autoriseren
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Gegevens opvragen met C#'
+            - name: Gegevens opvragen met C#
               href: time-series-insights-query-data-csharp.md
-            - name: 'Referentiegegevens beheren in C#'
+            - name: Referentiegegevens beheren in C#
               href: time-series-insights-manage-reference-data-csharp.md
             - name: Een aangepaste weergave delen
               href: time-series-insights-parameterized-urls.md
@@ -65,7 +65,7 @@
           items:
             - name: Verifiëren en autoriseren
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Gegevens opvragen met C#'
+            - name: Gegevens opvragen met C#
               href: time-series-insights-update-query-data-csharp.md
             - name: Integratie met Power BI
               href: concepts-power-bi.md
@@ -111,6 +111,12 @@
           href: time-series-insights-update-how-to-shape-events.md
         - name: Verbinding maken met Power BI
           href: how-to-connect-power-bi.md
+- name: Wijzigingen die fouten veroorzaken
+  items:
+    - name: Azure Time Series Insights preview
+      items:
+        - name: Ondersteuning toevoegen voor lang gegevenstype
+          href: time-series-insights-long-data-type.md
 - name: Naslaginformatie
   items:
     - name: Time Series Insights

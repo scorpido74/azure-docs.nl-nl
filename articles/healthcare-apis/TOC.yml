@@ -1,0 +1,97 @@
+- name: Azure-API voor FHIR
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over Azure-API voor FHIR
+      href: overview.md
+- name: Snelstartgidsen
+  expanded: true
+  items:
+    - name: Azure-API implementeren voor FHIR - Portal
+      href: fhir-paas-portal-quickstart.md
+    - name: Azure-API implementeren voor FHIR - PowerShell
+      href: fhir-paas-powershell-quickstart.md
+    - name: Azure-API implementeren voor FHIR - CLI
+      href: fhir-paas-cli-quickstart.md
+    - name: FHIR-server implementeren voor Azure - Portal
+      href: fhir-oss-portal-quickstart.md
+    - name: FHIR-server implementeren voor Azure - PowerShell
+      href: fhir-oss-powershell-quickstart.md
+    - name: FHIR-server implementeren voor Azure - CLI
+      href: fhir-oss-cli-quickstart.md
+- name: Zelfstudies
+  expanded: false
+  items:
+    - name: JavaScript-toepassing implementeren
+      expanded: false
+      items:
+        - name: 1. Initiële installatie en FHIR-implementatie
+          href: tutorial-web-app-fhir-server.md
+        - name: 2. Openbare client-app registreren
+          href: tutorial-web-app-public-app-reg.md
+        - name: 3. Installatie testen met Postman
+          href: tutorial-web-app-test-postman.md
+        - name: 4. Webtoepassing schrijven
+          href: tutorial-web-app-write-web-app.md
+    - name: Toegang tot FHIR-API met Postman
+      href: access-fhir-postman-tutorial.md
+    - name: SMART op FHIR-proxy gebruiken
+      href: use-smart-on-fhir-proxy.md
+- name: Instructiegidsen
+  expanded: false
+  items:
+    - name: Toepassingen registreren
+      expanded: false
+      items:
+        - name: Overzicht van toepassingen registreren voor Azure API for FHIR
+          href: fhir-app-registration.md
+        - name: Resourcetoepassing
+          href: register-resource-azure-ad-client-app.md
+        - name: Vertrouwelijke clienttoepassing
+          href: register-confidential-azure-ad-client-app.md
+        - name: Openbare clienttoepassing
+          href: register-public-azure-ad-client-app.md
+        - name: Serviceclienttoepassing
+          href: register-service-azure-ad-client-app.md
+    - name: Instellingen configureren
+      expanded: false
+      items:
+        - name: Aanvullende Azure API for FHIR-instellingen configureren
+          href: azure-api-for-fhir-additional-settings.md
+        - name: Azure RBAC configureren
+          href: configure-azure-rbac.md
+        - name: Lokale RBAC configureren
+          href: configure-local-rbac.md
+        - name: Database-instellingen configureren
+          href: configure-database.md
+        - name: CORS configureren
+          href: configure-cross-origin-resource-sharing.md
+        - name: Export configureren
+          href: configure-export-data.md
+    - name: ID's van identiteitsobjecten vinden
+      href: find-identity-object-ids.md
+    - name: Diagnostische logboekregistratie inschakelen in Azure API for FHIR®
+      href: enable-diagnostic-logging.md
+    - name: Een token verkrijgen voor Azure-API voor FHIR - CLI
+      href: get-healthcare-apis-access-token-cli.md
+- name: Concepten
+  expanded: false
+  items:
+    - name: Overzicht van Azure AD en Azure API for FHIR
+      href: azure-ad-hcapi.md
+    - name: Validatie van toegangstokens
+      href: azure-ad-hcapi-token-validation.md
+    - name: Aangepaste HTTP-headers gebruiken om gegevens toe te voegen aan auditlogboeken
+      href: use-custom-headers.md
+- name: Resources
+  items:
+    - name: Veelgestelde vragen
+      href: fhir-faq.md
+    - name: Ondersteunde functies
+      href: fhir-features-supported.md
+    - name: Partnerecosysteem
+      href: partner-ecosystem.md
+- name: Naslaginformatie
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/healthcareapis/healthcareapis

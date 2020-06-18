@@ -4,6 +4,10 @@
   items:
     - name: Over Kubernetes met Azure Arc
       href: overview.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      href: ./policy-samples.md
 - name: Instructiegidsen
   items:
     - name: Clusterbewerkingen

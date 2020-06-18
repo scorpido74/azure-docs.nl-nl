@@ -1,48 +1,53 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Documentatie voor Azure API for FHIR Preview
+### YamlMime:Landing
+title: Documentatie voor Azure API for FHIR
+summary: Azure API for FHIR is een beheerde, op standaarden beheerde en compatibele API voor klinische gezondheidsgegevens die oplossingen voor praktische analyses en machine learning mogelijk maakt.
 metadata:
-  title: Documentatie voor Azure API for FHIR Preview
-  meta.description: Learn how Azure API for FHIR can power healthcare iteroperability in Azure.
+  title: Documentatie voor Azure API for FHIR - zelfstudies, instructiegidsen
+  description: Azure API for FHIR is een beheerde, op standaarden beheerde en compatibele API voor klinische gezondheidsgegevens die oplossingen voor praktische analyses en machine learning mogelijk maakt.
   services: healthcare-apis
-  author: hansenms
-  manager: dougseven
-  ms.author: mihansen
   ms.service: healthcare-apis
   ms.subservice: fhir
   ms.topic: landing-page
-  ms.date: 02/07/2019
-abstract:
-  description: 'Azure API for FHIR® Preview is een volledig beheerde, op standaarden gebaseerde, conforme API voor klinische gezondheidsgegevens waarmee u nieuwe systemen voor analyses, machine learning en bruikbare intelligentie kunt maken met uw gezondheidsgegevens.'
-sections:
-  - title: null
-    items:
-      - type: paragraph
-        text: FHIR&reg; is het gedeponeerde handelsmerk van HL7 en wordt gebruikt met de toestemming van HL7.
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Ontdek hoe de Azure API for FHIR Preview de interoperabiliteit in de gezondheidszorg in Azure kan verbeteren door een pijlkoppeling te selecteren <img src="media/index/link.jpg" height="15" width="15"></img>.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-            title: Azure Portal
-          - image:
-              src: media/index/powershell.svg
-            title: Azure PowerShell
-          - image:
-              src: media/index/cli.svg
-            title: Azure-CLI
-        rows:
-          - title: Azure API for FHIR implementeren
-            values:
-              - href: fhir-paas-portal-quickstart.md
-              - href: fhir-paas-powershell-quickstart.md
-              - href: fhir-paas-cli-quickstart.md
-          - title: Een open-source FHIR-server implementeren
-            values:
-              - href: fhir-oss-portal-quickstart.md
-              - href: fhir-oss-powershell-quickstart.md
-              - href: fhir-oss-cli-quickstart.md
+  ms.collection: collection
+  author: hansenms
+  ms.author: mihansen
+  ms.date: 11/06/2019
+  ms.openlocfilehash: f4572a38073a929d00bcccce94d9e73634b92633
+  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/24/2020
+  ms.locfileid: "84819752"
+landingContent:
+- title: Beginnen met Azure API for FHIR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure API for FHIR?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: API-server implementeren voor FHIR
+      url: fhir-paas-portal-quickstart.md
+- title: Zelfstudies instellen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Javascript-app implementeren om gegevens van de FHIR-service te lezen
+      url: tutorial-web-app-fhir-server.md
+    - text: Toegang tot FHIR-API met Postman
+      url: access-fhir-postman-tutorial.md
+    - text: SMART integratie voor externe apps en medische gegevens
+      url: use-smart-on-fhir-proxy.md
+- title: Apps registreren voor AD-verificatie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Een resourcetoepassing registreren
+      url: register-resource-azure-ad-client-app.md
+    - text: Een vertrouwelijke client-app registreren
+      url: register-confidential-azure-ad-client-app.md
+    - text: Een openbare client-app registreren
+      url: register-public-azure-ad-client-app.md
+    - text: Een serviceclient-app registreren
+      url: register-service-azure-ad-client-app.md

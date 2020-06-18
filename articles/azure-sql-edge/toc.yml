@@ -6,6 +6,8 @@
       href: overview.md
     - name: Ondersteunde edities en functies
       href: features.md
+    - name: Releaseopmerkingen
+      href: release-notes.md
 - name: Snelstartgidsen
   expanded: true
   items:
@@ -69,7 +71,7 @@
               href: sys-external-streaming-jobs.md
             - name: sys.external_streams (Transact-SQL)
               href: sys-external-streams.md
-    - name: Tijdreeksgegevens verwerken
+    - name: Time Series-gegevens verwerken
       items:
         - name: Date_Bucket (Transact-SQL)
           href: date-bucket-tsql.md

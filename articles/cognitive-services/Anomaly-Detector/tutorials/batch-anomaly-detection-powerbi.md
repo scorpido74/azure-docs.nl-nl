@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402659"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944811"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Zelf studie: afwijkingen visualiseren met batch detectie en Power BI
 
@@ -32,8 +32,8 @@ In deze zelfstudie leert u het volgende:
 * Een [Azure-abonnement](https://azure.microsoft.com/free/)
 * [Micro soft power bi Desktop](https://powerbi.microsoft.com/get-started/)gratis beschikbaar.
 * Een Excel-bestand (. XLSX) dat gegevens punten van de tijd reeks bevat. De voorbeeld gegevens voor deze Quick Start vindt u op [github](https://go.microsoft.com/fwlink/?linkid=2090962)
-* Wanneer u uw Azure-abonnement hebt <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=", maakt u een"  target="_blank">Text Analytics resource Maak een <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Text Analytics resource in de Azure Portal om uw sleutel en eind punt op te halen. 
-    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Text Analytics-API. U gaat later in de Quick Start.
+* Nadat u uw Azure-abonnement hebt <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" gemaakt, maakt u een anomalie detector-resource en "  target="_blank"> maakt u een anomalie detectie resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. 
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de anomalie detector-API. U gaat later in de Quick Start.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -160,11 +160,11 @@ Klik aan de rechter kant van het Power BI venster onder het deel venster **velde
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure.png)
 
-Selecteer op het scherm dat wordt weer gegeven **gefilterde waarde** als berekening. Stel de **basis waarde** in op `Sum of Value`. Sleep `IsAnomaly` vervolgens van de **aangeroepen functie** velden om te **filteren**. Selecteer `True` in de vervolg keuzelijst **filter** .
+Selecteer op het scherm dat wordt weer gegeven **gefilterde waarde** als berekening. Stel de **basis waarde** in op `Sum of Value` . Sleep vervolgens `IsAnomaly` van de **aangeroepen functie** velden om te **filteren**. Selecteer `True` in de vervolg keuzelijst **filter** .
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/new-quick-measure-2.png)
 
-Nadat u op **OK**hebt geklikt `Value for True` , hebt u een veld aan de onderkant van de lijst met velden. Klik er met de rechter muisknop op en wijzig de naam ervan in **afwijkingen**. Voeg deze toe aan de **waarden**van de grafiek. Selecteer vervolgens het hulp programma **opmaken** en stel het type X-as in op **categorische**.
+Nadat u op **OK**hebt geklikt, hebt u een `Value for True` veld aan de onderkant van de lijst met velden. Klik er met de rechter muisknop op en wijzig de naam ervan in **afwijkingen**. Voeg deze toe aan de **waarden**van de grafiek. Selecteer vervolgens het hulp programma **opmaken** en stel het type X-as in op **categorische**.
 
 ![Een afbeelding van het scherm nieuwe snelle meting](../media/tutorials/format-x-axis.png)
 
