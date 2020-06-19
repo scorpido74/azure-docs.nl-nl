@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: b76690cfbe0eb4851bdd1e4316235a7a9092c86e
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84781205"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974650"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech Service-containers installeren en uitvoeren (preview-versie)
 
@@ -28,10 +28,10 @@ Met spraak containers kunnen klanten een spraak toepassings architectuur maken d
 
 | Functie | Functies | Jongste |
 |--|--|--|
-| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.2.0 |
-| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.2.0 |
-| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.4.0 |
-| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.4.0 |
+| Spraak naar tekst | Analyseert sentiment en transcribeert doorlopend realtime spraak of batch audio-opnamen met tussenliggende resultaten.  | 2.3.1 |
+| Custom Speech-naar-tekst | Door gebruik te maken van een aangepast model van de [Custom speech Portal](https://speech.microsoft.com/customspeech), transcribeert doorlopend realtime spraak of batch opnames in tekst met tussenliggende resultaten. | 2.3.1 |
+| Tekst naar spraak | Hiermee wordt tekst geconverteerd naar een spreek spraak met tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
+| Aangepaste tekst-naar-spraak | Door gebruik te maken van een aangepast model van de [aangepaste Voice Portal](https://aka.ms/custom-voice-portal), converteert u tekst naar een natuurlijk geluids fragment met de invoer van een tekst zonder opmaak of een SSML (Speech synthese Markup Language). | 1.5.0 |
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -165,7 +165,7 @@ Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en z
 De volgende code is een voor beeld van de indeling:
 
 ```
-2.2.0-amd64-en-us-preview
+2.3.1-amd64-en-us-preview
 ```
 
 Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
@@ -194,7 +194,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> De `latest` tag haalt de `en-US` land instellingen en de `jessarus` Stem op. Zie [land instellingen voor tekst naar spraak](#text-to-speech-locales)voor aanvullende land instellingen.
+> De `latest` tag haalt de `en-US` land instellingen en de `ariarus` Stem op. Zie [land instellingen voor tekst naar spraak](#text-to-speech-locales)voor aanvullende land instellingen.
 
 #### <a name="text-to-speech-locales"></a>Land instellingen voor tekst naar spraak
 
@@ -207,13 +207,13 @@ Alle tags, met uitzonde ring van voor, `latest` hebben de volgende indeling en z
 De volgende code is een voor beeld van de indeling:
 
 ```
-1.3.0-amd64-en-us-jessarus-preview
+1.5.0-amd64-en-us-ariarus-preview
 ```
 
 Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#text-to-speech)voor alle ondersteunde land instellingen en overeenkomstige stemmen van de **tekst-naar-spraak** -container.
 
 > [!IMPORTANT]
-> Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice` element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van hebben `en-US-JessaRUS` .
+> Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice` element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van hebben `en-US-AriaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 

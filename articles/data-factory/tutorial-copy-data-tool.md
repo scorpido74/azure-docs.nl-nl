@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: a0ed57657a461e4af8e58931b133437e5897796a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/08/2020
+ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022058"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660956"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Gegevens kopiëren vanuit Azure Blob-opslag naar een SQL Database met het hulpprogramma Gegevens kopiëren
 
@@ -156,11 +156,13 @@ Bereid uw Blob-opslag en de SQL Database voor voor gebruik tijdens de zelfstudie
     ![Pagina kolomtoewijzing](./media/tutorial-copy-data-tool/column-mapping.png)
 
 1. Selecteer op de pagina **Instellingen** de optie **Volgende**.
-1. Bekijk op de **Overzichtspagina** de waarden voor alle instellingen en selecteer vervolgens **Volgende**.
-1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren.
- 
-    ![De pijplijn bewaken](./media/tutorial-copy-data-tool/monitor-pipeline.png)
 
+1. Bekijk op de **Overzichtspagina** de waarden voor alle instellingen en selecteer vervolgens **Volgende**.
+
+1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak te controleren.
+
+    ![De pijplijn bewaken](./media/tutorial-copy-data-tool/monitor-pipeline.png)
+    
 1. Selecteer op de pagina Pijplijnuitvoeringen **Vernieuwen** om de lijst te vernieuwen. Klik op de link onder **PIJPLIJNNAAM** om details van de uitvoering van de activiteit weer te geven of de pijplijn opnieuw uit te voeren. 
     ![Pijplijnuitvoering](./media/tutorial-copy-data-tool/pipeline-run.png)
 
@@ -168,9 +170,7 @@ Bereid uw Blob-opslag en de SQL Database voor voor gebruik tijdens de zelfstudie
 
     ![Uitvoering van activiteiten controleren](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-
 1. Controleer of de gegevens zijn opgenomen in de tabel **dbo.emp** in uw SQL Database.
-
 
 1. Selecteer het tabblad **Auteur** aan de linkerkant om over te schakelen naar de bewerkingsmodus. U kunt de gekoppelde services, gegevenssets en pijplijnen die zijn gemaakt met het hulpprogramma, bijwerken met behulp van de editor. Bekijk [de Azure Portal-versie van deze tutorial](tutorial-copy-data-portal.md) voor details over het bewerken van entiteiten in de Data Factory-UI.
 

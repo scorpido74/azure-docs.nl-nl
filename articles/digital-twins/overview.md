@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 11ec9a4294cb1d5895d1bbc4e75c6b1a9b071f65
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613314"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737118"
 ---
 # <a name="what-is-azure-digital-twins"></a>Wat is Azure Digital Twins?
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 **Azure Digital Twins** is een IoT-platform dat het maken van uitgebreide digitale modellen van hele omgevingen mogelijk maakt. Deze omgevingen kunnen gebouwen, fabrieken, boerderijen, energienetwerken, spoorwegen, stadiums en meer zijn, zelfs steden. Deze digitale modellen kunnen worden gebruikt om inzichten te verkrijgen die betere producten, geoptimaliseerde bewerkingen, lagere kosten en baanbrekende klantervaringen opleveren.
 

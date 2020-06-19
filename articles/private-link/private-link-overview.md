@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/02/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4752fe65cf06b894413df2fda0decdfbb427afd5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449376"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673408"
 ---
 # <a name="what-is-azure-private-link"></a>Wat is Azure Private Link? 
 Met Azure Private Link hebt u via een [privé-eindpunt](private-endpoint-overview.md) in uw virtuele netwerk toegang tot Azure PaaS-services (bijvoorbeeld Azure Storage en SQL Database) en in Azure gehoste services van klanten of partners.
@@ -63,7 +63,7 @@ Azure Private Link biedt de volgende voordelen:
 |Azure Event Grid| Alle openbare regio's       |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Alle openbare regio's      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | EAST US, WEST US 2, SOUTH CENTRAL US      |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| IoT Hub | Alle openbare regio's    |   Preview   <br/> [Meer informatie](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure IoT Hub | Alle openbare regio's    |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | EAST US, WEST US 2, SOUTH CENTRAL US      |   Preview   <br/> [Meer informatie](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics en Application Insights) | Alle openbare regio's      |   Algemene beschikbaarheid   <br/> [Meer informatie](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
 

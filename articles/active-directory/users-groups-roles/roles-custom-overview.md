@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae244d93d679199aaa0bd08891cd34d4ca3a2ddc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa76f68be2f886ead16bd718cbeb8d14c78fe6d7
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085107"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731984"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Aangepaste beheerders rollen in Azure Active Directory (preview-versie)
 
@@ -58,7 +58,7 @@ Een roltoewijzing is het object dat een functie definitie koppelt aan een gebrui
 
 - Gebruiker (een persoon die een gebruikers profiel heeft in Azure Active Directory)
 - Roldefinitie ophalen
-- Bron bereik
+- Resourcebereik
 
 U kunt [roltoewijzingen maken](roles-create-custom.md) met behulp van de Azure Portal, Azure AD Power shell of graph API. U kunt ook [de toewijzingen voor een aangepaste rol weer geven](roles-view-assignments.md#view-the-assignments-of-a-role).
 

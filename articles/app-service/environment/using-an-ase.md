@@ -218,7 +218,7 @@ Als u gebruikt https://resources.azure.com , voert u de volgende stappen uit om 
 1. Ga naar resources.azure.com en meld u aan met uw Azure-account.
 1. Ga door naar de abonnementen van de \/ \[ abonnements naam \] \/ resourceGroups \/ \[ resource groep naam \] \/ providers \/ micro soft. web \/ hostingEnvironments \/ \[ ASE name \] .
 1. Selecteer bovenaan **lezen/schrijven** .
-1. Selecteer **bewerken**.
+1. Selecteer **Bewerken**.
 1. Stel **upgradePreference** in op een van de drie gewenste waarden.
 1. Selecteer **patch**.
 

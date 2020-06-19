@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344013"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669899"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Zelfstudie: Een Hugo-site publiceren in Azure Static Web Apps Preview
 
@@ -133,9 +133,9 @@ Vervolgens voegt u configuratie-instellingen toe die tijdens het bouwproces word
 
 1. Klik op de knop **Volgende: Build >** om de configuratie van de build te bewerken
 
-1. Stel _App-locatie_ in op **Openbaar**.
+1. Stel _App-locatie_ in op **/** .
 
-1. Laat _Locatie van app-artefact_ leeg.
+1. Stel _Locatie van app-artefact_ in op **openbaar**.
 
    Een waarde voor _API-locatie_ is niet nodig omdat u momenteel geen API implementeert.
 

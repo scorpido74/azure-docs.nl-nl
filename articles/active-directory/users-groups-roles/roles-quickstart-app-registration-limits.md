@@ -7,24 +7,24 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5acfa98636f54f87facf9771beb7d94dbd2b324
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559042"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84731729"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Snelstartgids: machtiging verlenen voor het maken van onbeperkte app-registraties
 
 In deze Quick Start maakt u een aangepaste rol met machtigingen voor het maken van een onbeperkt aantal app-registraties en vervolgens wijst u die rol toe aan een gebruiker. De toegewezen gebruiker kan vervolgens de Azure AD-Portal, Azure AD Power shell of de Microsoft Graph-API gebruiken om toepassings registraties te maken. In tegens telling tot de ingebouwde rol ontwikkelaar van de toepassing verleent deze aangepaste rol de mogelijkheid om een onbeperkt aantal toepassings registraties te maken. De ontwikkelaar van de toepassing verleent de mogelijkheid, maar het totale aantal gemaakte objecten is beperkt tot 250 om te voor komen dat [het object quotum voor het hele directory](directory-service-limits-restrictions.md)wordt bereikt.
 
-Als u nog geen abonnement op Azure hebt, [Maak dan een gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisite"></a>Vereiste
 
@@ -32,7 +32,7 @@ De rol van de meest bevoegde rol is vereist voor het maken en toewijzen van aang
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Een nieuwe aangepaste rol maken met behulp van de Azure AD-Portal
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com)   met privileged Role Administrator of Global Administrator Permissions in de Azure AD-organisatie.
 1. Selecteer **Azure Active Directory**, selecteer **rollen en beheerders**en selecteer vervolgens **nieuwe aangepaste rol**.
 
     ![Rollen maken of bewerken op de pagina rollen en beheerders](./media/roles-create-custom/new-custom-role.png)
@@ -49,7 +49,7 @@ De rol van de meest bevoegde rol is vereist voor het maken en toewijzen van aang
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>De rol toewijzen aan een gebruiker met behulp van de Azure AD-Portal
 
-1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met privileged Role Administrator of Global Administrator Permissions in uw Azure AD-organisatie.
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com)   met privileged Role Administrator of Global Administrator Permissions in uw Azure AD-organisatie.
 1. Selecteer **Azure Active Directory** en selecteer vervolgens **rollen en beheerders**.
 1. Selecteer de rol maker van de toepassing registreren en selecteer **toewijzing toevoegen**.
 1. Selecteer de gewenste gebruiker en klik op **selecteren** om de gebruiker aan de rol toe te voegen.

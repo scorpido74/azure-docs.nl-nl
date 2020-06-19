@@ -1,23 +1,23 @@
 ---
-title: Azure front-deur | Microsoft Docs
-description: In dit artikel vindt u een overzicht van Azure Front Door. Uitzoeken of dit de juiste keuze is voor taak verdeling van gebruikers verkeer voor uw toepassing.
+title: Uw regels-Engine configureren-Azure front deur
+description: In dit artikel wordt beschreven hoe u uw regel engines configureert voor Azure front-deur
 services: frontdoor
 documentationcenter: ''
 author: megan-beatty
 editor: ''
 ms.service: frontdoor
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4574597c0b93f2985953bfbc815cca220ecc4f28
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: ed54f26f37617d420fae1aaf3f51853b0439a349
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515599"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743555"
 ---
 # <a name="configure-your-rules-engine"></a>Uw regels-Engine configureren 
 
@@ -34,7 +34,7 @@ ms.locfileid: "82515599"
 
 3. Klik op **regel toevoegen** om uw eerste regel te maken. Vervolgens kunt u de regel definiëren door te klikken op **voor waarde toevoegen** of **actie toevoegen** . 
     
-    *Noten*
+    *Opmerkingen:*
     - Als u een voor waarde of actie van regel wilt verwijderen, kunt u aan de rechter kant van de specifieke voor waarde of actie de prullen mand gebruiken.
     - Als u een regel wilt maken die van toepassing is op alle binnenkomend verkeer, geeft u geen voor waarden op. 
     - Als u wilt stoppen met het evalueren van regels zodra aan de voor waarde voor de eerste overeenkomst is voldaan, controleert u de **regel stoppen**. 
@@ -45,7 +45,7 @@ ms.locfileid: "82515599"
 
 5. Wanneer u een of meer regels hebt gemaakt, drukt u op **Opslaan**. Met deze actie wordt de configuratie van de engine voor regels gemaakt. 
 
-6. Wanneer u een of meer configuraties hebt gemaakt, koppelt u een configuratie van een regel Engine aan een route regel. Hoewel één configuratie kan worden toegepast op veel route regels, mag een route regel slechts één engine configuratie voor regels bevatten. Als u de koppeling wilt maken, gaat u naar de**routerings regels**van de **front deur Designer** > . Selecteer de route regel waarvan u de configuratie van de engine voor regels wilt toevoegen, gaat u naar **router Details** > **regel engine configuratie**en selecteert u de configuratie die u wilt koppelen. 
+6. Wanneer u een of meer configuraties hebt gemaakt, koppelt u een configuratie van een regel Engine aan een route regel. Hoewel één configuratie kan worden toegepast op veel route regels, mag een route regel slechts één engine configuratie voor regels bevatten. Als u de koppeling wilt maken, gaat **Front Door designer**u naar de  >  **routerings regels**van de front deur Designer. Selecteer de route regel waarvan u de configuratie van de engine voor regels wilt toevoegen, gaat u naar **router Details**  >  **regel engine configuratie**en selecteert u de configuratie die u wilt koppelen. 
 
 ![Engine voor regels zoeken](./media/front-door-rules-engine/rules-engine-tutorial-5.png)
 

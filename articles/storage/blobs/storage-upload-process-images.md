@@ -5,24 +5,26 @@ author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/11/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37e751d78bddd76847a4859b6f24e37bec5c9acb
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196051"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730489"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Zelfstudie: Afbeeldingsgegevens uploaden in de cloud met Azure Storage
 
 Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u een web-app implementeert die de Azure Blob Storage-clientbibliotheek gebruikt om afbeeldingen te uploaden in een opslagaccount. Wanneer u klaar bent, hebt u een web-app die afbeeldingen vanuit Azure-opslag kan opslaan en weergeven.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
 ![App voor wijzigen van afbeeldingen in .NET](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 ![App voor wijzigen van afbeeldingen in Node.js V10](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -30,6 +32,7 @@ Deze zelfstudie is deel één van een serie. In deze zelfstudie leert u hoe u ee
 In deel 1 van de reeks leert u het volgende:
 
 > [!div class="checklist"]
+
 > * Create a storage account
 > * Een container maken en machtigingen instellen
 > * Een toegangssleutel ophalen
@@ -51,7 +54,11 @@ Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). Een
 
 In het volgende voorbeeld wordt een resourcegroep met de naam `myResourceGroup` gemaakt.
 
-```azurecli-interactive
+```bash
+az group create --name myResourceGroup --location southeastasia
+```
+
+```powershell
 az group create --name myResourceGroup --location southeastasia
 ```
 
@@ -64,10 +71,17 @@ Met het voorbeeld worden afbeeldingen geüpload naar een blobcontainer in een Az
 
 Vervang de tijdelijke aanduiding `<blob_storage_account>` in de volgende opdracht door uw eigen, wereldwijd unieke naam voor het Blob-opslagaccount.
 
-```azurecli-interactive
+```bash
 blobStorageAccount="<blob_storage_account>"
 
 az storage account create --name $blobStorageAccount --location southeastasia \
+  --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
+```
+
+```powershell
+$blobStorageAccount="<blob_storage_account>"
+
+az storage account create --name $blobStorageAccount --location southeastasia `
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
@@ -79,14 +93,28 @@ Haal de opslagaccountsleutel op met behulp van de opdracht [az storage account k
 
 De openbare toegang tot de container met de *installatiekopieën* is ingesteld op `off`. De openbare toegang tot de container met *miniaturen* is ingesteld op `container`. De instelling `container` van de openbare toegang zorgt ervoor dat gebruikers die de webpagina bezoeken, de miniaturen kunnen bekijken.
 
-```azurecli-interactive
+```bash
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
   -n $blobStorageAccount --query "[0].value" --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount \
-  --account-key $blobStorageAccountKey --public-access off
+  --account-key $blobStorageAccountKey
 
 az storage container create -n thumbnails --account-name $blobStorageAccount \
+  --account-key $blobStorageAccountKey --public-access container
+
+echo "Make a note of your Blob storage account key..."
+echo $blobStorageAccountKey
+```
+
+```powershell
+$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup `
+  -n $blobStorageAccount --query "[0].value" --output tsv)
+
+az storage container create -n images --account-name $blobStorageAccount `
+  --account-key $blobStorageAccountKey
+
+az storage container create -n thumbnails --account-name $blobStorageAccount `
   --account-key $blobStorageAccountKey --public-access container
 
 echo "Make a note of your Blob storage account key..."
@@ -103,7 +131,11 @@ Maak een App Service-plan met de opdracht [az appservice plan create](/cli/azure
 
 In het volgende voorbeeld wordt een App Service-plan gemaakt met de naam `myAppServicePlan` en de prijscategorie **Gratis**:
 
-```azurecli-interactive
+```bash
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
+```
+
+```powershell
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku Free
 ```
 
@@ -113,8 +145,14 @@ De web-app biedt een hostingruimte voor de code van de voorbeeld-app. De ruimte 
 
 Vervang `<web_app>` in de volgende opdracht door een unieke naam. Geldige tekens zijn `a-z`, `0-9` en `-`. Als `<web_app>` niet uniek is, krijgt u het volgende foutbericht: *Er bestaat al een website met de naam `<web_app>`.* De standaard-URL van de web-app is `https://<web_app>.azurewebsites.net`.  
 
-```azurecli-interactive
+```bash
 webapp="<web_app>"
+
+az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
+```
+
+```powershell
+$webapp="<web_app>"
 
 az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
@@ -127,18 +165,31 @@ App Service ondersteunt diverse manieren om inhoud in een web-app te implementer
 
 Het voorbeeldproject bevat een [ASP.NET MVC](https://www.asp.net/mvc)-app. De app accepteert een afbeelding, slaat deze op in een opslagaccount en geeft afbeeldingen weer vanuit een miniaturencontainer. De web-app maakt gebruik van de naamruimten [Azure.Storage](/dotnet/api/azure.storage), [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs) en [Azure.Storage.Blobs.Models](/dotnet/api/azure.storage.blobs.models) voor interactie met de Azure Storage-service.
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
+```
+
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 App Service ondersteunt diverse manieren om inhoud in een web-app te implementeren. In deze zelfstudie implementeert u de web-app vanaf een [openbare GitHub-voorbeeldopslagplaats](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) (Engelstalig). Configureer GitHub-implementatie naar de webtoepassing met de opdracht [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
-```azurecli-interactive
+```bash
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
   --branch master --manual-integration \
+  --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+```
+
+```powershell
+az webapp deployment source config --name $webapp --resource-group myResourceGroup `
+  --branch master --manual-integration `
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
 ```
 
@@ -150,7 +201,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 De voorbeeld-web-app gebruikt de [Azure Storage Api's voor .NET](/dotnet/api/overview/azure/storage) om installatiekopieën te uploaden. Referenties van het opslagaccount worden ingesteld in de app-instellingen voor de web-app. Voeg app-instellingen toe aan de geïmplementeerde app met de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AzureStorageConfig__AccountName=$blobStorageAccount \
     AzureStorageConfig__ImageContainer=images \
@@ -158,14 +209,28 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AzureStorageConfig__AccountName=$blobStorageAccount `
+    AzureStorageConfig__ImageContainer=images `
+    AzureStorageConfig__ThumbnailContainer=thumbnails `
+    AzureStorageConfig__AccountKey=$blobStorageAccountKey
+```
+
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
 
 De voorbeeldweb-app gebruikt de [Azure Storage-clientbibliotheek](https://github.com/Azure/azure-storage-js) om toegangstokens aan te vragen. Hiermee worden afbeeldingen geüpload. De referenties van het opslagaccount die worden gebruikt door de Storage-SDK, worden ingesteld in de app-instellingen voor de web-app. Voeg app-instellingen toe aan de geïmplementeerde app met de opdracht [az webapp config appsettings set](/cli/azure/webapp/config/appsettings).
 
-```azurecli-interactive
+```bash
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
   --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
     AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+```
+
+```powershell
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup `
+  --settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount `
+  AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
 ```
 
 ---
@@ -212,8 +277,8 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 In de vorige taak zijn de volgende klassen en methoden gebruikt:
 
-| Klasse    | Methode   |
-|----------|----------|
+| Klasse | Methode |
+|-------|--------|
 | [Uri](/dotnet/api/system.uri) | [URI-constructor](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String)-constructor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
@@ -283,7 +348,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
 
     try {
-      
+
       await uploadStreamToBlockBlob(aborter, stream,
         blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
 
@@ -296,6 +361,7 @@ router.post('/', uploadStrategy, async (req, res) => {
     }
 });
 ```
+
 ---
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Controleren of de afbeelding in het opslagaccount wordt weergegeven
@@ -317,9 +383,11 @@ Kies een bestand met de bestandenkiezer en selecteer **Uploaden**.
 Ga terug naar de app om te controleren of de naar de **thumbnails**-container geüploade afbeelding zichtbaar is.
 
 # <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
 ![.NET-app voor wijzigen van afbeeldingen, met nieuwe afbeelding weergegeven](media/storage-upload-process-images/figure2.png)
 
 # <a name="nodejs-v10"></a>[Node.js v10](#tab/nodejsv10)
+
 ![Node. js V10-app voor wijzigen van afbeeldingen, met nieuwe afbeelding weergegeven](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
