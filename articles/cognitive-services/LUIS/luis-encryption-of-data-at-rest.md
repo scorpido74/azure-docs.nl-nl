@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372335"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052701"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Language Understanding-service versleuteling van gegevens in rust
 
@@ -32,19 +32,17 @@ Uw abonnement maakt standaard gebruik van door micro soft beheerde versleuteling
 
 Er is ook een optie voor het beheren van uw abonnement met uw eigen sleutels. Door de klant beheerde sleutels (CMK), ook wel bekend als het nemen van uw eigen sleutel (BYOK), bieden meer flexibiliteit voor het maken, draaien, uitschakelen en intrekken van toegangs beheer. U kunt ook de versleutelings sleutels controleren die worden gebruikt voor het beveiligen van uw gegevens.
 
-U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
+U moet Azure Key Vault gebruiken om uw door de klant beheerde sleutels op te slaan. U kunt uw eigen sleutels maken en deze opslaan in een sleutelkluis of u kunt de Azure Key Vault API's gebruiken om sleutels te genereren. De Cognitive Services resource en de sleutel kluis moeten zich in dezelfde regio bevinden en in dezelfde Azure Active Directory (Azure AD)-Tenant, maar ze kunnen zich in verschillende abonnementen bevinden. Zie [Wat is Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)voor meer informatie over Azure Key Vault.
 
 ### <a name="customer-managed-keys-for-language-understanding"></a>Door de klant beheerde sleutels voor Language Understanding
 
 Als u de mogelijkheid wilt aanvragen om door de klant beheerde sleutels te gebruiken, vult u het aanvraag formulier voor de door de [klant beheerde sleutel](https://aka.ms/cogsvc-cmk)van de Luis-service in en verzendt u deze. Het duurt ongeveer 3-5 werk dagen voordat de status van uw aanvraag wordt weer gegeven. Afhankelijk van de vraag, kunt u in een wachtrij plaatsen en worden goedgekeurd als er ruimte beschikbaar is. Na goed keuring voor het gebruik van CMK met LUIS, moet u een nieuwe Language Understanding resource maken op basis van de Azure Portal en E0 selecteren als prijs categorie. De nieuwe SKU werkt hetzelfde als de F0-SKU die al beschikbaar is, met uitzonde ring van CMK. Gebruikers kunnen geen upgrade uitvoeren van de F0 naar de nieuwe E0-SKU.
 
-E0-resources zijn alleen beschikbaar voor de ontwerp service en de E0-laag wordt in eerste instantie alleen ondersteund in de regio vs-West.
-
 ![Installatie kopie van LUIS-abonnement](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Regionale beschikbaarheid
 
-Door de klant beheerde sleutels zijn momenteel beschikbaar in de regio **VS-West** .
+Door de klant beheerde sleutels zijn beschikbaar in alle [ontwerp regio's](luis-reference-regions.md). 
 
 ### <a name="limitations"></a>Beperkingen
 

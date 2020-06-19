@@ -2,21 +2,21 @@
 title: Zicht baarheid en beheer van apps met Microsoft Cloud App Security
 description: Leer hoe u de risico niveaus van apps kunt identificeren, inbreuken en lekkages in realtime kunt stopzetten en app-connectors kunt gebruiken om te profiteren van provider-Api's voor zicht baarheid en beheer.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/03/2020
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206e1a06acddae0973d5dbc7e64212026149f217
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62a77c1b21a6d602a2d54f56a2ed294fe800ac38
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77069740"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763649"
 ---
 # <a name="cloud-app-visibility-and-control"></a>Zichtbaarheid en beheer van cloud-apps
 
@@ -34,7 +34,7 @@ Gebruik Microsoft Cloud app-detectie (een Azure Active Directory Premium P1-func
 - Advanced Shadow IT Discovery-rapportage
 - Goedgekeurde apps beheren
  
-### <a name="learn-more"></a>Meer informatie
+### <a name="learn-more"></a>Lees meer
 
 - [Schaduw in uw netwerk detecteren en beheren](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)
 - [Gedetecteerde apps met Cloud App Security](https://docs.microsoft.com/cloud-app-security/discovered-apps)
@@ -51,7 +51,7 @@ Met dit besturings element kunt u het volgende doen:
 - Toegang tot bestanden beheren  
 - Documenten beveiligen bij downloaden  
  
-### <a name="learn-more"></a>Meer informatie
+### <a name="learn-more"></a>Lees meer
 
 - [Apps beveiligen met sessie beheer in Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
  
@@ -59,7 +59,7 @@ Met dit besturings element kunt u het volgende doen:
 
 App-connectors maken gebruik van de Api's van app-providers om de zicht baarheid en controle door Microsoft Cloud App Security over de apps waarmee u verbinding maakt, beter zichtbaar te maken. Cloud App Security maakt gebruik van de Api's van de Cloud provider. Elke service heeft een eigen Framework en API-beperkingen, zoals beperking, API-limieten, dynamische time-verschuiving van API-Vensters en andere. Het Cloud App Security product team heeft deze services gebruikt om het gebruik van Api's te optimaliseren en de beste prestaties te leveren. Rekening houdend met de verschillende beperkingen van services, maken de Cloud App Security-engines gebruik van de Maxi maal toegestane capaciteit. Sommige bewerkingen, zoals het scannen van alle bestanden in de Tenant, vereisen talrijke API-aanroepen zodat ze gedurende een langere periode worden verspreid. Sommige beleids regels worden gedurende enkele uren of dagen verwacht. 
  
-### <a name="learn-more"></a>Meer informatie  
+### <a name="learn-more"></a>Lees meer  
 
 - [Apps verbinden in Cloud App Security](https://docs.microsoft.com/cloud-app-security/enable-instant-visibility-protection-and-governance-actions-for-your-apps)
 

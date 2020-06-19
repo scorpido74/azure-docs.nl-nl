@@ -194,11 +194,7 @@
         - name: Migreren vanuit samengestelde entiteit
           href: migrate-from-composite-entity.md
         - name: Naar ontwerpresource migreren
-          items:
-            - name: Overzicht
-              href: luis-migration-authoring.md
-            - name: Migreren
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Migreren naar V3-API
           href: luis-migration-api-v3.md
     - name: Een app beheren
@@ -209,11 +205,7 @@
         - name: Instellingen voor app en versie
           href: how-to-application-settings-portal.md
         - name: Naar ontwerpresource migreren
-          items:
-            - name: Overzicht
-              href: luis-migration-authoring.md
-            - name: Migreren
-              href: luis-migration-authoring-steps.md
+          href: luis-migration-authoring.md
         - name: Auteurs en samenwerkers
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md

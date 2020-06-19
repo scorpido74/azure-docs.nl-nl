@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b07ffe92a5dd0c105188fab55bc679c04f660ed2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ed46859184dd17141892373943ac43e407b21eb6
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300940"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817671"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Quickstart: Een Java web-app maken in Azure App Service on Windows
 
@@ -48,6 +48,8 @@ cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>De Maven-invoegtoepassing configureren
+
+Bij het implementeren naar Azure App Service kunnen uw Azure-referenties automatisch worden opgehaald van de Azure CLI. Als Azure CLI niet is geïnstalleerd, wordt u door de Maven-invoegtoepassing aangemeld met OAuth of apparaataanmelding. Raadpleeg indien nodig de details van [verificatie met Maven-invoegtoepassingen](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
 U kunt de volgende Maven-opdracht uitvoeren in de opdrachtprompt om de implementatie te configureren. Kies **'2'** voor het **Windows**-besturingssysteem in de eerste stap en accepteer vervolgens de standaardconfiguraties door op **ENTER** te drukken tot u **Bevestigen (J/N)** ziet. Druk vervolgens op **'j'** om de configuratie te voltooien. 
 
@@ -145,7 +147,7 @@ U kunt de configuraties voor App Service indien nodig rechtstreeks in uw pom-bes
 ---|---|---|---
 `<schemaVersion>` | false | Geef de versie van het configuratieschema op. Ondersteunde waarden zijn: `v1` of `v2`. | 1.5.2
 `<resourceGroup>` | true | Azure-resourcegroep voor uw web-app. | 0.1.0+
-`<appName>` | true | De naam is van uw web-app | 0.1.0+
+`<appName>` | true | De naam is van uw web-app. | 0.1.0+
 `<region>` | true | Hiermee geeft u de regio op waar uw web-app wordt gehost. De standaard waarde is **westeurope**. Alle geldige regio's staan in de sectie [Ondersteunde regio's](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
 `<pricingTier>` | false | De prijscategorie voor uw web-app. De standaardwaarde is **P1V2**.| 0.1.0+
 `<runtime>` | true | De configuratie van de runtime-omgeving. U kunt u de details [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) bekijken. | 0.1.0+

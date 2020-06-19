@@ -188,6 +188,8 @@
       items:
         - name: Write-back van apparaat inschakelen
           href: how-to-connect-device-writeback.md
+        - name: Groep terugschrijven inschakelen
+          href: how-to-connect-group-writeback.md
         - name: Apparaatopties
           href: how-to-connect-device-options.md
         - name: Aanvullende functies in Azure AD Connect

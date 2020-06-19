@@ -17,7 +17,7 @@
           href: prepare-buy-reservation.md
         - name: App Service
           href: prepay-app-service-isolated-stamp.md
-        - name: Azure Cache voor Redis-reservering
+        - name: Azure Cache voor Redis
           href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Cosmos DB
           href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -52,7 +52,7 @@
         - name: Reserveringen beheren
           href: manage-reserved-vm-instance.md
         - name: Instelling voor optimaliseren wijzigen
-          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
         - name: Reserveringen uitwisselen en restitutie
           href: exchange-and-refund-azure-reservations.md
     - name: Kosten rapporteren

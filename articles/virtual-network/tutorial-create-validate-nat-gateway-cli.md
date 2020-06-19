@@ -12,14 +12,14 @@ ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 06/11/2020
 ms.author: allensu
-ms.openlocfilehash: b1ca26a63c910861d333f707d13946c5e046f599
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 717a9e9d3cc1dec350d0b4ace54687590f741768
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340977"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84737288"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Zelfstudie: Een NAT-gateway maken met behulp van de Azure CLI en de NAT-service testen
 
@@ -43,6 +43,7 @@ In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroupN
   az group create \
     --name myResourceGroupNAT \
     --location eastus2
+    
 ```
 
 ## <a name="create-the-nat-gateway"></a>De NAT-gateway maken
@@ -56,6 +57,7 @@ Voor toegang tot het openbare internet hebt u een of meer openbare IP-adressen n
   --resource-group myResourceGroupNAT \
   --name myPublicIPsource \
   --sku standard
+  
 ```
 
 ### <a name="create-a-public-ip-prefix"></a>Een openbaar IP-voorvoegsel maken
@@ -67,6 +69,7 @@ U kunt een of meer openbare IP-resources, openbare IP-voorvoegsels of beide met 
   --resource-group myResourceGroupNAT \
   --name myPublicIPprefixsource \
   --length 31
+  
 ```
 
 ### <a name="create-a-nat-gateway-resource"></a>Een NAT-gatewayresource maken
@@ -84,6 +87,7 @@ Maak met [az network nat gateway create](https://docs.microsoft.com/cli/azure/ne
     --public-ip-addresses myPublicIPsource \
     --public-ip-prefixes myPublicIPprefixsource \
     --idle-timeout 10       
+    
   ```
 
 Nu is de NAT-gateway functioneel. Het enige wat u nog hoeft te doen is te configureren welke subnetten van een virtueel netwerk er gebruik van moeten maken.
@@ -101,11 +105,11 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location eastus2 \
     --name myVnetsource \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetsource \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="configure-nat-service-for-source-subnet"></a>NAT-service voor bronsubnet configureren
@@ -118,6 +122,7 @@ Gebruik [az network vnet subnet update](https://docs.microsoft.com/cli/azure/net
     --vnet-name myVnetsource \
     --name mySubnetsource \
     --nat-gateway myNATgateway
+    
 ```
 
 Al het uitgaande verkeer naar internetbestemmingen maakt nu gebruik van de NAT-service.  Het is niet nodig om een UDR te configureren.
@@ -135,6 +140,7 @@ U maakt een openbaar IP-adres dat gebruikt gaat worden voor toegang tot de bron-
     --resource-group myResourceGroupNAT \
     --name myPublicIPsourceVM \
     --sku standard
+    
 ```
 
 ### <a name="create-an-nsg-for-source-vm"></a>Een netwerkbeveiligingsgroep maken voor de bron-VM
@@ -145,6 +151,7 @@ Omdat standaard openbare IP-adressen 'standaard beveiligd zijn', moet u een netw
   az network nsg create \
     --resource-group myResourceGroupNAT \
     --name myNSGsource 
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>SSH-eindpunt beschikbaar maken op de bron-VM
@@ -162,6 +169,7 @@ U maakt een regel in de NSG voor SSH-toegang tot de bron-VM. Gebruik [az network
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="create-nic-for-source-vm"></a>NIC maken voor bron-VM
@@ -176,6 +184,7 @@ Maak met [az network nic create](/cli/azure/network/nic#az-network-nic-create) e
     --subnet mySubnetsource \
     --public-ip-address myPublicIPSourceVM \
     --network-security-group myNSGsource
+    
 ```
 
 ### <a name="create-a-source-vm"></a>Een bron-VM maken
@@ -190,6 +199,7 @@ Maak de virtuele machine met [az vm create](/cli/azure/vm#az-vm-create).  U gene
     --image UbuntuLTS \
     --generate-ssh-keys \
     --no-wait
+    
 ```
 
 Hoewel de opdracht direct een resultaat retourneert, kan het een paar minuten duren voordat de VM is geïmplementeerd.
@@ -207,11 +217,11 @@ Maak met [az network vnet create](https://docs.microsoft.com/cli/azure/network/v
 ```azurecli-interactive
   az network vnet create \
     --resource-group myResourceGroupNAT \
-    --location westus \
     --name myVnetdestination \
     --address-prefix 192.168.0.0/16 \
     --subnet-name mySubnetdestination \
     --subnet-prefix 192.168.0.0/24
+    
 ```
 
 ### <a name="create-public-ip-for-destination-vm"></a>Openbare IP maken voor doel-VM
@@ -222,8 +232,8 @@ U maakt een openbaar IP-adres dat gebruikt gaat worden voor toegang tot de bron-
   az network public-ip create \
   --resource-group myResourceGroupNAT \
   --name myPublicIPdestinationVM \
-  --sku standard \
-  --location westus
+  --sku standard
+  
 ```
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Een NSG maken voor de doel-VM
@@ -233,8 +243,8 @@ Standaard openbare IP-adressen zijn 'standaard beveiligd' en dus moet u een NSG 
 ```azurecli-interactive
     az network nsg create \
     --resource-group myResourceGroupNAT \
-    --name myNSGdestination \
-    --location westus
+    --name myNSGdestination
+    
 ```
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>SSH-eindpunt beschikbaar maken op de doel-VM
@@ -252,6 +262,7 @@ U maakt een regel in de NSG voor SSH-toegang tot de doel-VM. Gebruik [az network
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 22
+    
 ```
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>HTTP-eindpunt beschikbaar maken op doel-VM
@@ -269,6 +280,7 @@ U maakt een regel in de NSG voor SSH-toegang tot de doel-VM. Gebruik [az network
     --protocol tcp \
     --direction inbound \
     --destination-port-ranges 80
+    
 ```
 
 ### <a name="create-nic-for-destination-vm"></a>NIC maken voor doel-VM
@@ -282,8 +294,8 @@ Maak met [az network nic create](/cli/azure/network/nic#az-network-nic-create) e
     --vnet-name myVnetdestination \
     --subnet mySubnetdestination \
     --public-ip-address myPublicIPdestinationVM \
-    --network-security-group myNSGdestination \
-    --location westus
+    --network-security-group myNSGdestination
+    
 ```
 
 ### <a name="create-a-destination-vm"></a>Een doel-VM maken
@@ -297,8 +309,8 @@ Maak de virtuele machine met [az vm create](/cli/azure/vm#az-vm-create).  U gene
     --nics myNicdestination \
     --image UbuntuLTS \
     --generate-ssh-keys \
-    --no-wait \
-    --location westus
+    --no-wait
+    
 ```
 Hoewel de opdracht direct een resultaat retourneert, kan het een paar minuten duren voordat de VM is geïmplementeerd.
 
@@ -312,6 +324,7 @@ Eerst moet het IP-adres van de doel-VM worden gedetecteerd.  Gebruik [az network
     --name myPublicIPdestinationVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -328,16 +341,14 @@ ssh <ip-address-destination>
 Kopieer en plak de volgende opdrachten zodra u bent aangemeld.  
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get -y install nginx && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt -y install nginx && \
 sudo ln -sf /dev/null /var/log/nginx/access.log && \
 sudo touch /var/www/html/index.html && \
 sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
+
 ```
 
 Met deze opdrachten wordt uw virtuele machine bijgewerkt, nginx geïnstalleerd en een bestand van 100 KB gemaakt. Dit bestand wordt opgehaald van de bron-VM met behulp van de NAT-service.
@@ -354,6 +365,7 @@ Eerst moet het IP-adres van de bron-VM worden gedetecteerd.  Gebruik [az network
     --name myPublicIPsourceVM \
     --query [ipAddress] \
     --output tsv
+    
 ``` 
 
 >[!IMPORTANT]
@@ -370,12 +382,9 @@ ssh <ip-address-source>
 Kopieer en plak de volgende opdrachten om het testen van de NAT-service voor te bereiden.
 
 ```bash
-sudo apt-get -y update && \
-sudo apt-get -y upgrade && \
-sudo apt-get -y dist-upgrade && \
-sudo apt-get -y autoremove && \
-sudo apt-get -y autoclean && \
-sudo apt-get install -y nload golang && \
+sudo apt -y update && \
+sudo apt -y upgrade && \
+sudo apt install -y nload golang && \
 echo 'export GOPATH=${HOME}/go' >> .bashrc && \
 echo 'export PATH=${PATH}:${GOPATH}/bin' >> .bashrc && \
 . ~/.bashrc &&
@@ -411,6 +420,7 @@ U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
+  
 ```
 
 ## <a name="next-steps"></a>Volgende stappen

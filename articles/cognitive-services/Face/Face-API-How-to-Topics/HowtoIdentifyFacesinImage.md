@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 248bae81db1bc8cb69bac4618bd7593658336636
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76169921"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986710"
 ---
 # <a name="example-identify-faces-in-images"></a>Voor beeld: gezichten identificeren in afbeeldingen
 
@@ -41,7 +41,7 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription key>
 ```
 
-Als alternatief geeft u de abonnements sleutel op in de header van de HTTP-aanvraag **OCP-APIM-Subscription &lt;-Key&gt;: Subscription Key**.
+Als alternatief geeft u de abonnements sleutel op in de header van de HTTP-aanvraag **OCP-APIM-Subscription-Key: &lt; Subscription Key &gt; **.
 Wanneer u een client bibliotheek gebruikt, wordt de abonnements sleutel door gegeven via de constructor van de FaceClient-klasse. Bijvoorbeeld:
  
 ```csharp 
@@ -50,7 +50,11 @@ private readonly IFaceClient faceClient = new FaceClient(
             new System.Net.Http.DelegatingHandler[] { });
 ```
  
-Als u de abonnements sleutel wilt ophalen, gaat u naar de Azure Marketplace vanuit de Azure Portal. Zie [abonnementen](https://azure.microsoft.com/try/cognitive-services/)voor meer informatie.
+Volg deze instructies om een sleutel op te halen.
+
+1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Als u er al een hebt, kunt u door gaan naar de volgende stap.
+2. Maak een [gezichts bron](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) in de Azure Portal om uw sleutel op te halen. Zorg ervoor dat u de gratis laag (F0) selecteert tijdens de installatie. 
+3. Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel te verzamelen. 
 
 ## <a name="step-2-create-the-persongroup"></a>Stap 2: De PersonGroup maken
 

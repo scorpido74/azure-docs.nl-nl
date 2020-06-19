@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5b32421a04e09bd32d2bba21ff4faf920d84dd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221843"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100881"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Back-ups van uw formulieren Recognizer-modellen maken en herstellen
 
@@ -45,7 +45,7 @@ Het proces voor het kopiëren van een aangepast model bestaat uit de volgende st
 Met de volgende HTTP-aanvraag wordt de Kopieer autorisatie van uw doel bron opgehaald. U moet het eind punt en de sleutel van uw doel resource als kopteksten invoeren.
 
 ```
-POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization HTTP/1.1
+POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -53,7 +53,7 @@ U ontvangt een `201\Created` reactie met een `modelId` waarde in de hoofd tekst.
 
 ```
 HTTP/1.1 201 Created
-Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
+Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
 {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
 ```
 
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 Met de volgende HTTP-aanvraag wordt de Kopieer bewerking gestart op de bron bron. U moet het eind punt en de sleutel van uw bron resource opgeven als koptekst. U ziet dat de aanvraag-URL de model-ID bevat van het bron model dat u wilt kopiëren.
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -76,19 +76,29 @@ De hoofd tekst van uw aanvraag moet de volgende indeling hebben. U moet de resou
 }
 ```
 
+> [!NOTE]
+> De copy-API ondersteunt de functie [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) op transparante wijze. Hiervoor is geen speciale behandeling vereist, maar houd er rekening mee dat als u tussen een niet-versleutelde resource naar een versleutelde bron kopieert, de aanvraag header moet worden toegevoegd `x-ms-forms-copy-degrade: true` . Als deze header niet is opgenomen, mislukt de Kopieer bewerking en wordt er een geretourneerd `DataProtectionTransformServiceError` .
+
 U ontvangt een `202\Accepted` antwoord met een bewerkings locatie-header. Deze waarde is de URL die u gebruikt om de voortgang van de bewerking bij te houden. Kopieer het naar een tijdelijke locatie voor de volgende stap.
 
 ```
 HTTP/1.1 202 Accepted
-Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
+Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
 ```
+
+### <a name="common-errors"></a>Algemene fouten
+
+|Fout|Oplossing|
+|:--|:--|
+| 400/ongeldige aanvraag met`"code:" "1002"` | Geeft een validatie fout of een onjuist gevormde Kopieer aanvraag aan. Veelvoorkomende problemen zijn onder andere: a) ongeldige of gewijzigde `copyAuthorization` nettolading. b) verlopen waarde voor `expirationDateTimeTicks` token ( `copyAuhtorization` Payload is 24 uur geldig). c) ongeldig of wordt niet ondersteund `targetResourceRegion` . d) ongeldige of verkeerd ingedeelde `targetResourceId` teken reeks.
+|
 
 ## <a name="track-copy-progress"></a>Voortgang van kopiëren bijhouden
 
 Volg de voortgang van de query op de resulterende API voor het **kopiëren van modellen ophalen** op basis van het bron-eind punt.
 
 ```
-GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
+GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -100,12 +110,22 @@ Content-Type: application/json; charset=utf-8
 {"status":"succeeded","createdDateTime":"2020-04-23T18:18:01.0275043Z","lastUpdatedDateTime":"2020-04-23T18:18:01.0275048Z","copyResult":{}}
 ```
 
+### <a name="common-errors"></a>Algemene fouten
+
+|Fout|Oplossing|
+|:--|:--|
+|"fouten": [{"code": "AuthorizationError",<br>"bericht": "autorisatie fout vanwege <br>ontbrekende of ongeldige autorisatie claims. "}]   | Deze gebeurtenis treedt op wanneer de `copyAuthorization` Payload of inhoud wordt gewijzigd vanuit wat is geretourneerd door de `copyAuthorization` API. Zorg ervoor dat de payload hetzelfde is als de exacte inhoud die is geretourneerd door de eerdere `copyAuthorization` aanroep.|
+|"fouten": [{"code": "AuthorizationError",<br>bericht ': ' kan autorisatie niet ophalen <br>metagegevensarchiefmethode. Als dit probleem zich blijft voordoen, gebruikt u een andere <br>doel model waarnaar moet worden gekopieerd. "}] | Geeft aan dat de `copyAuthorization` Payload opnieuw wordt gebruikt met een Kopieer aanvraag. Een Kopieer aanvraag die slaagt, staat geen verdere aanvragen toe die gebruikmaken van dezelfde `copyAuthorization` payload. Als u een afzonderlijke fout verhoogt (zoals de hieronder vermelde) en u de kopie vervolgens opnieuw probeert met dezelfde autorisatie lading, wordt deze fout gegenereerd. De oplossing is een nieuwe Payload genereren `copyAuthorization` en vervolgens de Kopieer aanvraag opnieuw uitgeven.|
+|"fouten": [{"code": "DataProtectionTransformServiceError",<br>"bericht": "aanvraag voor gegevens overdracht is niet toegestaan <br>zoals het downgradet naar een minder veilig Data Protection-schema. Raadpleeg de documentatie of neem contact op met de service beheerder <br>voor meer informatie. "}]    | Deze gebeurtenis treedt op bij het kopiëren tussen een `AEK` ingeschakelde resource naar een niet- `AEK` ingeschakelde resource. Om het kopiëren van versleutelde modellen naar het doel als niet-versleutelde header te kunnen opgeven `x-ms-forms-copy-degrade: true` met de Kopieer aanvraag.|
+|"fouten": [{"code": "ResourceResolverError",<br>' bericht ': ' kan geen informatie ophalen voor de cognitieve resource met de id '... '. Controleer of de resource geldig is en bestaat in de opgegeven regio ' westus2 '.. "}] | Geeft aan dat de Azure-resource die wordt aangegeven door de `targetResourceId` geen geldige cognitieve resource is of niet bestaat. Controleer de Kopieer aanvraag en geef deze opnieuw op om dit probleem op te lossen.|
+
+
 ### <a name="optional-track-the-target-model-id"></a>Beschrijving De doel model-ID bijhouden 
 
 U kunt ook de API voor **aangepast model ophalen** gebruiken om de status van de bewerking bij te houden door een query uit te geven op het doel model. Roep deze API aan met de doel model-ID die u in de eerste stap hebt gekopieerd.
 
 ```
-GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
+GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -124,19 +144,19 @@ De volgende code fragmenten gebruiken krul om ervoor te zorgen dat de API-aanroe
 ### <a name="generate-copy-authorization-request"></a>Kopieer autorisatie aanvraag genereren
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
 ```
 
 ### <a name="start-copy-operation"></a>Kopieer bewerking starten
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
 ```
 
 ### <a name="track-copy-progress"></a>Voortgang van kopiëren bijhouden
 
 ```bash
-curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0-preview/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
+curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
