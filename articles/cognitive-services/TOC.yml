@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Aangepaste subdomeinen voor Cognitive Services
       href: cognitive-services-custom-subdomains.md
-    - name: Cognitive Services-beperkingsproces
-      href: cognitive-services-gating-process.md
     - name: Taalondersteuning
       href: language-support.md
 - name: Snelstartgidsen
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: Diagnostische logboeken
       href: diagnostic-logging.md
+    - name: ARM-sjabloon
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: Voorbeelden
+  items:
+    - name: Ingebouwde modules voor Azure Policy
+      href: ./policy-samples.md
 - name: Beveiliging
   items:
     - name: Cognitive Services-beveiliging

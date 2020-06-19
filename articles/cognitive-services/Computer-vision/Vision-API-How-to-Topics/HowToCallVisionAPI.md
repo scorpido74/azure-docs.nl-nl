@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177050"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983467"
 ---
 # <a name="call-the-computer-vision-api"></a>De Computer Vision-API aanroepen
 
@@ -25,14 +25,6 @@ In dit artikel wordt beschreven hoe u de Computer Vision-API aanroept met behulp
 - Tags, een beschrijving en categorieën ophalen
 - Domein-specifieke informatie of ' beroemdheden ' ophalen
 
-## <a name="prerequisites"></a>Vereisten
-
-- Een afbeeldings-URL of een pad naar een lokaal opgeslagen afbeelding
-- Ondersteunde invoer methoden: een onbewerkte binaire afbeelding in de vorm van een toepassing/octet-stream of een afbeeldings-URL
-- Ondersteunde indelingen voor afbeeldings bestanden: JPEG, PNG, GIF en BMP
-- Afbeeldings bestands grootte: 4 MB of minder
-- Afmetingen afbeelding: 50 &times; 50 pixels of meer
-  
 In de voor beelden in dit artikel worden de volgende functies gedemonstreerd:
 
 * Een afbeelding analyseren om een matrix met tags en een beschrijving te retour neren
@@ -42,14 +34,22 @@ De functies bieden de volgende opties:
 
 - **Optie 1**: bereik analyse-alleen een opgegeven model analyseren
 - **Optie 2**: verbeterde analyse-analyseren om aanvullende details te bieden met behulp van een [86-categorie taxonomie](../Category-Taxonomy.md)
+
+## <a name="prerequisites"></a>Vereisten
+
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een afbeeldings-URL of een pad naar een lokaal opgeslagen afbeelding
+* Ondersteunde invoer methoden: een onbewerkte binaire afbeelding in de vorm van een toepassing/octet-stream of een afbeeldings-URL
+* Ondersteunde indelingen voor afbeeldings bestanden: JPEG, PNG, GIF en BMP
+* Afbeeldings bestands grootte: 4 MB of minder
+* Afmetingen afbeelding: 50 &times; 50 pixels of meer
   
 ## <a name="authorize-the-api-call"></a>De API-aanroep autoriseren
 
 Voor elke aanroep naar de Computer Vision-API is een abonnementssleutel vereist. Deze sleutel moet worden door gegeven via een query reeks parameter of worden opgegeven in de aanvraag header.
-
-Ga op een van de volgende manieren te werk om een gratis proef versie te verkrijgen:
-* Ga naar de pagina [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) . 
-* Ga naar de pagina [een Cognitive Services-account maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision.
 
 U kunt de abonnements sleutel door geven door een van de volgende handelingen uit te voeren:
 
@@ -180,12 +180,12 @@ Hier volgt een voorbeeld:
 Veld | Type | Inhoud
 ------|------|------|
 Tags  | `object` | Het object op het hoogste niveau voor een matrix met tags.
-tags[].Name | `string`  | Het sleutel woord van de classificatie Tags.
-tags[].Score    | `number`  | De betrouwbaarheids score tussen 0 en 1.
-description  | `object` | Het object op het hoogste niveau voor een beschrijving.
+tags[].Name | `string`    | Het sleutel woord van de classificatie Tags.
+tags[].Score    | `number`    | De betrouwbaarheids score tussen 0 en 1.
+description     | `object`    | Het object op het hoogste niveau voor een beschrijving.
 description.tags[] |    `string`    | De lijst met tags.  Als er onvoldoende vertrouwen is in de mogelijkheid om een bijschrift te maken, zijn de tags mogelijk de enige informatie die beschikbaar is voor de oproepende functie.
-description.captions[].text | `string`  | Een zin die de afbeelding beschrijft.
-description.captions[].confidence   | `number`  | De betrouwbaarheids score voor de woord groep.
+description.captions[].text    | `string`    | Een zin die de afbeelding beschrijft.
+description.captions[].confidence    | `number`    | De betrouwbaarheids score voor de woord groep.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>De JSON-uitvoer van domein-specifieke modellen ophalen en begrijpen
 
@@ -239,12 +239,12 @@ Voor domein-specifieke modellen met behulp van optie 2 (verbeterde analyse) is h
 
 Het veld Categorieën bevat een lijst met een of meer van de [86-categorieën](../Category-Taxonomy.md) in de oorspronkelijke taxonomie. Categorieën die eindigen op een onderstrepings teken, komen overeen met die categorie en de onderliggende items (bijvoorbeeld ' people_ ' of ' people_group ' voor het model ' beroemdheden ').
 
-Veld   | Type  | Inhoud
+Veld    | Type    | Inhoud
 ------|------|------|
-categorieën | `object`   | Het object op het hoogste niveau.
-categories[].name    | `string` | De naam in de taxonomie lijst van de 86-categorie.
-categories[].score  | `number`  | De betrouwbaarheids score tussen 0 en 1.
-categories[].detail  | `object?`      | Beschrijving Het detail-object.
+categorieën | `object`    | Het object op het hoogste niveau.
+categories[].name     | `string`    | De naam in de taxonomie lijst van de 86-categorie.
+categories[].score    | `number`    | De betrouwbaarheids score tussen 0 en 1.
+categories[].detail     | `object?`      | Beschrijving Het detail-object.
 
 Als er meerdere categorieën overeenkomen (bijvoorbeeld de classificatie van 86-categorie retourneert een score voor zowel ' people_ ' als ' people_young ' als model = beroemdheden), worden de details aan de meest algemene overeenkomst (' people_ ' in dit voor beeld) toegevoegd.
 

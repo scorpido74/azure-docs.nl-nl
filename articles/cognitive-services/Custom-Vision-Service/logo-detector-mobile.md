@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0962afb360df0ec6a414f676a2c280b3837c687d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2bd17e10e6123c48087116e947dc21f4cf788ef3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403669"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987866"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Zelf studie: Azure service-logo's herkennen in camera afbeeldingen
 
@@ -28,7 +28,7 @@ In deze zelfstudie leert u hoe u het volgende kunt doen:
 > - Uw app verbinden met Azure Computer Vision en Custom Vision.
 > - Een service-principal-account in Azure maken om Azure-services te implementeren vanuit de app.
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint. 
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/cognitive-services/) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -175,7 +175,7 @@ Volg deze stappen om de app uit te voeren:
 
 Als u alle stappen in dit scenario hebt gevolgd en de app hebt gebruikt om Azure-services te implementeren in uw account, gaat u naar de [Azure Portal](https://ms.portal.azure.com/) wanneer u hiermee klaar bent en annuleert u de services die u niet wilt gebruiken. Annuleer daar de services die u niet wilt gebruiken.
 
-Bovendien, als u in de toekomst uw eigen objectdetectieproject wilt maken met Custom Vision, kunt u overwegen om het logodetectieproject dat u in deze zelfstudie hebt gemaakt, te verwijderen. Met een gratis proefversie van Custom Vision kunt u maar twee projecten maken. Om het logo detectie-project op de [Custom Vision website](https://customvision.ai) te verwijderen, open **Projecten** en selecteer vervolgens het prullenbakpictogram onder **Mijn nieuwe Project**.
+Bovendien, als u in de toekomst uw eigen objectdetectieproject wilt maken met Custom Vision, kunt u overwegen om het logodetectieproject dat u in deze zelfstudie hebt gemaakt, te verwijderen. Een gratis abonnement voor Custom Vision is slechts voor twee projecten toegestaan. Om het logo detectie-project op de [Custom Vision website](https://customvision.ai) te verwijderen, open **Projecten** en selecteer vervolgens het prullenbakpictogram onder **Mijn nieuwe Project**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

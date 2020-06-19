@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 01ed6d836e5d6bfe139e4a21a0ff6a9708c261d3
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006440"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84977931"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Moet de gebruiker hub en spoke met SD-WAN/VPN-apparaten hebben om virtueel WAN van Azure te gebruiken?
 
-Virtual WAN biedt tal van functies die zijn ingebouwd in één enkel deel venster, zoals site/site-naar-site VPN-connectiviteit, gebruikers-P2S connectiviteit, ExpressRoute-connectiviteit, Virtual Network connectiviteit, VPN ExpressRoute interconnectiviteit, VNET naar transitieve VNET-connectiviteit, gecentraliseerde route ring, Azure firewall en firewall Manager beveiliging, bewaking, ExpressRoute versleuteling en vele andere mogelijkheden. U hoeft niet al deze gebruiks voorbeelden te hebben om virtueel WAN te gaan gebruiken. U kunt gewoon aan de slag met slechts één use-case. De virtuele WAN-architectuur is een hub-en spoke-architectuur met ingebouwde schaal-en prestatie mogelijkheden waarbij vertakkingen (VPN/SD-WAN-apparaten), gebruikers (Azure VPN-clients, openVPN of IKEv2-clients), ExpressRoute-circuits, virtuele netwerken fungeren als spokes voor virtuele hub (s). Alle hubs zijn verbonden met een volledig net in een standaard virtuele WAN, waardoor de gebruiker de micro soft-backbone eenvoudig kan gebruiken voor een wille keurige verbinding (wille keurige spoke). Voor hub en spoke met SD-WAN/VPN-apparaten kunnen gebruikers deze hand matig instellen in de Azure Virtual WAN-portal of gebruikmaken van de virtuele WAN-partner CPE (SD-WAN/VPN) om verbinding met Azure in te stellen. Virtuele WAN-partners bieden automatisering voor de connectiviteit. Dit is de mogelijkheid om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met de virtuele WAN-hub van Azure. Voor punt-naar-site/gebruiker-VPN-verbindingen ondersteunen we [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554), openvpn of IKEv2-client. 
+Virtual WAN biedt tal van functies die zijn ingebouwd in één enkel deel venster, zoals site/site-naar-site VPN-connectiviteit, gebruikers-P2S connectiviteit, ExpressRoute-connectiviteit, Virtual Network connectiviteit, VPN ExpressRoute interconnectiviteit, VNET naar transitieve VNET-connectiviteit, gecentraliseerde route ring, Azure firewall en firewall Manager beveiliging, bewaking, ExpressRoute versleuteling en vele andere mogelijkheden. U hoeft niet al deze use cases te hebben om Virtual WAN te gaan gebruiken. U kunt gewoon aan de slag met slechts één use-case. De virtuele WAN-architectuur is een hub-en spoke-architectuur met ingebouwde schaal-en prestatie mogelijkheden waarbij vertakkingen (VPN/SD-WAN-apparaten), gebruikers (Azure VPN-clients, openVPN of IKEv2-clients), ExpressRoute-circuits, virtuele netwerken fungeren als spokes voor virtuele hub (s). Alle hubs zijn verbonden in full mesh in een standaard virtuele WAN, waardoor de gebruiker de Microsoft-backbone eenvoudig kan gebruiken voor any-to-any-connectiviteit (elke willekeurige spoke). Voor hub en spoke met SD-WAN/VPN-apparaten kunnen gebruikers deze hand matig instellen in de Azure Virtual WAN-portal of gebruikmaken van de virtuele WAN-partner CPE (SD-WAN/VPN) om verbinding met Azure in te stellen. Virtuele WAN-partners bieden automatisering voor de connectiviteit. Dit is de mogelijkheid om de apparaatgegevens te exporteren naar Azure, de Azure-configuratie te downloaden en verbinding te maken met de virtuele WAN-hub van Azure. Voor punt-naar-site/gebruiker-VPN-verbindingen ondersteunen we [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554), openvpn of IKEv2-client. 
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Welke client ondersteunt de Azure Virtual WAN-gebruikers VPN (punt-naar-site)?
 
@@ -32,7 +32,7 @@ Elke gateway heeft twee instanties, de splitsing gaat zo dat elke gateway-instan
 Er zijn twee opties voor het toevoegen van DNS-servers voor de P2S-clients.
 
 1. Een ondersteunings ticket openen met micro soft en uw DNS-servers toevoegen aan de hub
-2. Als u de Azure VPN-client voor Windows 10 gebruikt, kunt u het gedownloade XML-profiel bestand wijzigen en de ** \<dnsservers>\<dnsserver> \</dnsserver>\</dnsservers>** -labels toevoegen voordat u het importeert.
+2. Als u de Azure VPN-client voor Windows 10 gebruikt, kunt u het gedownloade XML-profiel bestand wijzigen en de ** \<dnsservers> \<dnsserver> \</dnsserver> \</dnsservers> ** Tags toevoegen voordat u het importeert.
 
 ```
 <azvpnprofile>
@@ -135,7 +135,7 @@ Ja. Zie de [prijzenpagina](https://azure.microsoft.com/pricing/details/virtual-w
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Hoe worden nieuwe partners die nog niet zijn vermeld in de startlijst van partners, opgenomen?
 
-Alle virtuele WAN-Api's zijn open API. U kunt de documentatie raadplegen voor het beoordelen van de technische haal baarheid. Als u een vraag hebt, stuurt u een e-mail azurevirtualwan@microsoft.comnaar. Een ideale partner is iemand die een apparaat heeft dat kan worden ingericht voor een IKEv1 of IKEv2 IPSec-verbinding.
+Alle virtuele WAN-Api's zijn open API. U kunt de documentatie raadplegen voor het beoordelen van de technische haal baarheid. Als u een vraag hebt, stuurt u een e-mail naar azurevirtualwan@microsoft.com . Een ideale partner is iemand die een apparaat heeft dat kan worden ingericht voor een IKEv1 of IKEv2 IPSec-verbinding.
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Wat gebeurt er als een apparaat dat ik gebruik niet voor komt in de lijst met virtuele WAN-partners? Kan ik deze nog steeds gebruiken om verbinding te maken met Azure Virtual WAN VPN?
 
@@ -212,9 +212,14 @@ Een virtuele hub kan een geleerde standaard route door geven naar een virtueel n
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Hoe selecteer de virtuele hub in een virtueel WAN het beste pad voor een route van meerdere hubs
 
 Als een virtuele hub dezelfde route van meerdere externe hubs bewaart, is de volg orde waarin deze wordt beslist als volgt:
-1) Route oorsprong a) netwerk routes: VNET-voor voegsels worden rechtstreeks door de Virtual hub gateway b-hub geRouteTableeerd (statisch geconfigureerde routes) c) BGP d) InterHub-routes
-2)  Route-metric: Virtual WAN geeft de voor keur aan ExpressRoute via VPN. ExpressRoute-peer heeft een hogere gewichts verhouding vergeleken met de VPN-peer
-3)  Als padlengte
+1. Treffer voorvoegsel lang
+2. Lokale routes via interhub
+3. Statische routes via BGP
+4. ExpressRoute (er) via VPN
+5. Als padlengte
+
+De door Voer van de ene naar de andere is altijd via de wereld wijde bereik. als de aanvraag via een van de twee hubs binnenkomt en er een VPN en er in een externe hub aanwezig is, zal VPN de voor keur hebben ten opzichte van een externe hub om een eind punt te bereiken dat is verbonden via VPN of er in de externe hub
+
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Is er ondersteuning voor IPv6 in virtuele WAN?
 
