@@ -1,6 +1,6 @@
 ---
-title: Azure private endpoint ARM-sjabloon
-description: Meer informatie over persoonlijke Azure-koppelingen
+title: Een persoonlijk eind punt maken in een persoonlijke Azure-koppeling
+description: In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een persoonlijk eind punt te maken.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,65 +8,65 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: af00119f1da3368b8592e020eee1ebb2a39a8501
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669950"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817972"
 ---
-# <a name="quickstart-create-a-private-endpoint---resource-manager-template"></a>Snelstartgids: een privé-eind punt maken-Resource Manager-sjabloon
+# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Snelstartgids: een persoonlijk eind punt maken met behulp van een Azure Resource Manager sjabloon
 
-In deze Quick Start gebruikt u een resource manager-sjabloon om een persoonlijk eind punt te maken.
+In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een persoonlijk eind punt te maken.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-U kunt deze quickstart ook voltooien met via de [Azure-portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md) of [Azure CLI](create-private-endpoint-cli.md).
+U kunt deze Snelstartgids ook volt ooien met behulp van de [Azure Portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md)of de [Azure cli](create-private-endpoint-cli.md).
 
-## <a name="prerequisites"></a>Vereisten
+## <a name="prerequisite"></a>Vereiste
 
-- Een Azure-account met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+U hebt een Azure-account met een actief abonnement nodig. [Gratis een account maken](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
-## <a name="create-an-private-endpoint"></a>Een persoonlijk eind punt maken
+## <a name="create-a-private-endpoint"></a>Een privé-eindpunt maken
 
-met deze sjabloon maakt u een persoonlijk eind punt voor een Azure SQL-Server.
+Met deze sjabloon maakt u een persoonlijk eind punt voor een exemplaar van Azure SQL Database.
 
 ### <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
 Er worden meerdere Azure-resources gedefinieerd in de sjabloon:
 
-- [**Micro soft. SQL/servers**](/azure/templates/microsoft.sql/servers) : Azure SQL Server met de voorbeeld database
-- [**Micro soft. SQL/servers/data bases**](/azure/templates/microsoft.sql/servers/databases) : voorbeeld database
-- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network waar het persoonlijke eind punt wordt geïmplementeerd
-- [**Micro soft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : persoonlijk eind punt voor toegang tot de Azure SQL-Server
-- [**Micro soft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : wordt gebruikt om het IP-adres van het privé-eind punt op te lossen
+- [**Micro soft. SQL/servers**](/azure/templates/microsoft.sql/servers): het exemplaar van SQL database met de voorbeeld database.
+- [**Micro soft. SQL/servers/data bases**](/azure/templates/microsoft.sql/servers/databases): de voorbeeld database.
+- [**Micro soft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): het virtuele netwerk waarin het persoonlijke eind punt wordt geïmplementeerd.
+- [**Micro soft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints): het persoonlijke eind punt om toegang te krijgen tot het exemplaar van SQL database.
+- [**Micro soft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones): de zone die wordt gebruikt om het IP-adres van het privé-eind punt op te lossen.
 - [**Micro soft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
-- [**Micro soft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) : persoonlijk eind punt koppelen aan een privé-DNS-zone
-- [**Micro soft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses) : openbaar IP-adres voor toegang tot de virtuele machine
-- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : de netwerk interface voor de virtuele machine
-- [**Micro soft. Compute/informatie**](/azure/templates/microsoft.compute/virtualmachines) : virtuele machine voor het testen van de particuliere verbinding met het persoonlijke eind punt naar de Azure SQL-Server
+- [**Micro soft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups): de zone groep die wordt gebruikt om het persoonlijke eind punt te koppelen aan een privé-DNS-zone.
+- [**Micro soft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses): het open bare IP-adres dat wordt gebruikt voor toegang tot de virtuele machine.
+- [**Micro soft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): de netwerk interface voor de virtuele machine.
+- [**Micro soft. Compute/informatie**](/azure/templates/microsoft.compute/virtualmachines): de virtuele machine die wordt gebruikt voor het testen van de particuliere verbinding met het persoonlijke eind punt naar het exemplaar van SQL database.
 
 ### <a name="deploy-the-template"></a>De sjabloon implementeren
 
-Resource Manager-sjabloon implementeren in Azure:
+U kunt als volgt de Azure Resource Manager-sjabloon implementeren in Azure:
 
-1. Selecteer **Implementeren in Azure** om u aan te melden bij Azure, en open de sjabloon. Met de sjabloon maakt u het persoonlijke eind punt, de Azure SQL-Server, de netwerk infrastructuur en de virtuele machines die u wilt valideren.
+1. Als u zich wilt aanmelden bij Azure en de sjabloon wilt openen, selecteert **u implementeren naar Azure**. Met de sjabloon maakt u het persoonlijke eind punt, het exemplaar van SQL Database, de netwerk infrastructuur en een virtuele machine die moet worden gevalideerd.
 
    [![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
 
-2. Selecteer of maak een resource groep,
-3. Typ de aanmeldings naam en het wacht woord voor de SQL-beheerder
+2. Selecteer of maak een resource groep.
+3. Typ de aanmelding en het wacht woord voor de SQL-beheerder.
 4. Typ de gebruikers naam en het wacht woord voor de beheerder van de virtuele machine.
-5. Selecteer **Ik ga akkoord met de bovenstaande voorwaarden** en selecteer vervolgens **Kopen**. De implementatie kan 20 minuten of langer duren.
+5. Lees de instructie voor waarden. Als u akkoord gaat, selecteert u **Ik ga akkoord met de voor waarden die hierboven worden vermeld**  >  **Purchase**. De implementatie kan 20 minuten of langer duren.
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 
 > [!NOTE]
-> De ARM-sjabloon genereert een unieke naam voor de virtuele-myVm<b>{UniqueID}</b> -resource en voor de Azure SQL server sqlserver<b>{UniqueID}</b> -resource, vervangt u <b>{UniqueID}</b> door de gegenereerde waarde.
+> De Azure Resource Manager sjabloon genereert een unieke naam voor de virtuele-myVm<b>{UniqueID}</b> -resource en voor de SQL database sqlserver<b>{UniqueID}</b> -resource. Vervang de gegenereerde waarde voor **{UniqueID}**.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
@@ -74,31 +74,32 @@ Maak als volgt verbinding met de VM- _myVm {UniqueID}_ van het Internet:
 
 1. Voer _myVm {UniqueID}_ in de zoek balk van de portal in.
 
-2. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
+2. Selecteer **Verbinden**. **Verbinding maken met de virtuele machine** wordt geopend.
 
 3. Selecteer **RDP-bestand downloaden**. In Azure wordt een _RDP_-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
-4. Open het gedownloade RDP- \* bestand.
+4. Open het gedownloade RDP-bestand.
 
    a. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-   b. Voer de gebruikersnaam en het wachtwoord in die u hebt opgegeven bij het maken van de virtuele machine.
+   b. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven tijdens het maken van de virtuele machine.
 
       > [!NOTE]
-      > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
+      > Mogelijk moet u **meer opties**selecteren  >  **een ander account gebruiken**om de referenties op te geven die u hebt ingevoerd tijdens het maken van de virtuele machine.
 
 5. Selecteer **OK**.
 
 6. Er wordt mogelijk een certificaatwaarschuwing weergegeven tijdens het aanmelden. Als er een certificaatwaarschuwing wordt weergegeven, selecteert u **Ja** of **Doorgaan**.
 
-7. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.
+7. Wanneer het VM-bureau blad wordt weer gegeven, minimaliseert u het om terug te gaan naar het lokale bureau blad.
 
-### <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database Server privé benaderen vanuit de VM
+### <a name="access-the-sql-database-server-privately-from-the-vm"></a>De SQL Database-Server privé openen vanuit de VM
 
-In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Database-Server via de VM.
+U kunt als volgt via het persoonlijke eind punt verbinding maken met de SQL Database-Server vanaf de VM.
 
 1.  Open Power shell in de Extern bureaublad van _myVM {UniqueID}_.
-2.  Voer nslookup sqlserver {UniqueID}. data base. Windows. net   in, wordt er een bericht weer gegeven dat er ongeveer als volgt uitziet:
+2.  Voer het volgende in: nslookup sqlserver {UniqueID}. data base. Windows. net. 
+    U ontvangt een bericht dat er ongeveer als volgt uitziet:
 
     ```
       Server:  UnKnown
@@ -109,16 +110,18 @@ In deze sectie maakt u via het persoonlijke eind punt verbinding met de SQL Data
       Aliases:  sqlserver.database.windows.net
     ```
 
-3.  Installeer SQL Server Management Studio
-4.  Typ of Selecteer in verbinding maken met server de volgende informatie: server type: Selecteer data base-engine.
-    Server naam: Selecteer sqlserver {UniqueID}. data base. Windows. net username: Voer een gebruikers naam in die tijdens het maken is opgegeven.
-    Wachtwoord: Voer een wachtwoord in dat tijdens het maken is opgegeven.
-    Wachtwoord onthouden: Selecteer Ja.
+3.  Installeer SQL Server Management Studio.
+4.  Typ of Selecteer in **verbinding maken met server**de volgende informatie:
+    - **Server type**: Selecteer **Data base-engine**.
+    - **Server naam**: Selecteer **sqlserver {UniqueID}. data base. Windows. net**.
+    - **Gebruikers naam**: Voer een gebruikers naam in die tijdens het maken is opgegeven.
+    - **Wacht woord**: Voer een wacht woord in dat u hebt opgegeven tijdens het maken.
+    - **Wacht woord onthouden**: Selecteer **Ja**.
 
 5.  Selecteer **Verbinden**.
-6.  Blader in het menu aan de linkerkant door **Databases**.
-7.  Eventueel Gegevens uit een voor beeld van een _Data Base_ maken of er query's op uitvoeren
-8.  Sluit de verbinding met extern bureau blad met _myVm {UniqueID}_.
+6.  Ga in het menu aan de linkerkant naar **data bases**.
+7.  U kunt desgewenst informatie uit voor _beeld-DB_maken of er query's op uitvoeren.
+8.  Sluit de Extern bureaublad verbinding met _myVm {UniqueID}_.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -132,4 +135,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Private Link](private-link-overview.md)
+Meer informatie over [persoonlijke Azure-koppelingen](private-link-overview.md).

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.openlocfilehash: b42a5b83f5442755614a3cb2ae81cffda09b4b3b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238105"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696759"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Registreren voor een Azure-abonnement met uw Office 365-account
 Als u een Office 365-abonnement hebt, kunt u uw Office 365-account gebruiken om een Azure-abonnement te maken. Meld u aan bij de [Azure-portal](https://portal.azure.com/) met uw Office 365-gebruikersnaam en -wachtwoord. Als u virtuele machines wilt instellen of andere Azure-services wilt gebruiken, moet u zich aanmelden voor een Azure-abonnement. U kunt uw Azure-abonnement delen met anderen en [Op rollen gebaseerd toegangsbeheer gebruiken om de toegang tot uw Azure-abonnement en -resources te beheren](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

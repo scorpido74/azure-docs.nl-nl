@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b84f98bd383c2b90c3291527b336d798e9b9cae9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 14760eaef309ec5695b423b98e59a8ae1ab5cacb
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662231"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886786"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>Zelfstudie: Veranderingen in uw vaardighedenset diagnosticeren, herstellen en doorvoeren
 
@@ -173,12 +173,12 @@ Nadat de uitvoering van de foutopsporingssessie is voltooid, klikt u op het tabb
 ## <a name="fix-missing-skill-output-values"></a>Ontbrekende uitvoerwaarden voor vaardigheid herstellen
 
 > [!div class="mx-imgBorder"]
-> ![Fouten en waarschuwingen](media/cognitive-search-debug/warnings-missing-value-locs-orgs.png)
+> ![Fouten en waarschuwingen](media/cognitive-search-debug/warnings-missing-value-locations-organizations.png)
 
 Er ontbreken uitvoerwaarden van een vaardigheid. Als u de vaardigheid met de fout wilt identificeren, gaat u naar de verrijkte gegevensstructuur, zoekt u de waardenaam en bekijkt u de oorspronkelijke bron. De ontbrekende waarden voor organisaties en locaties zijn uitvoerwaarden van vaardigheid #1. Als u de expressie-evaluator </> voor elk pad opent, worden respectievelijk de expressies /document/content/organizations en /document/content/locations weergegeven.
 
 > [!div class="mx-imgBorder"]
-> ![Expressie-evaluator voor de entiteit organizations](media/cognitive-search-debug/expression-eval-missing-value-locs-orgs.png)
+> ![Expressie-evaluator voor de entiteit organizations](media/cognitive-search-debug/expression-eval-missing-value-locations-organizations.png)
 
 De uitvoer voor deze entiteiten is leeg en mag niet leeg zijn. Wat zijn de invoerwaarden die dit resultaat opleveren?
 
@@ -187,7 +187,7 @@ De uitvoer voor deze entiteiten is leeg en mag niet leeg zijn. Wat zijn de invoe
 1. Open de expressie-evaluator **</>** voor de INPUT 'text'.
 
 > [!div class="mx-imgBorder"]
-> ![Invoer voor vaardigheid text](media/cognitive-search-debug/input-skill-missing-value-locs-orgs.png)
+> ![Invoer voor vaardigheid text](media/cognitive-search-debug/input-skill-missing-value-locations-organizations.png)
 
 Het weergegeven resultaat voor deze invoer ziet er niet uit als een tekstinvoer. Het lijkt op een afbeelding die wordt omgeven door nieuwe lijnen. Het ontbreken van tekst betekent dat er geen entiteiten kunnen worden geïdentificeerd. In de hiërarchie van de vaardighedenset ziet u dat de inhoud eerst wordt verwerkt door vaardigheid #6 (OCR) en vervolgens wordt doorgegeven aan vaardigheid #5 (samenvoegen). 
 
@@ -195,7 +195,7 @@ Het weergegeven resultaat voor deze invoer ziet er niet uit als een tekstinvoer.
 1. Selecteer het tabblad **Uitvoerbewerkingen** in het detailvenster van de vaardigheid en open de expressie-evaluator **</>** voor de OUTPUTS 'mergedText'.
 
 > [!div class="mx-imgBorder"]
-> ![Uitvoer voor de vaardigheid Samenvoegen](media/cognitive-search-debug/merge-output-detail-missing-value-locs-orgs.png)
+> ![Uitvoer voor de vaardigheid Samenvoegen](media/cognitive-search-debug/merge-output-detail-missing-value-locations-organizations.png)
 
 Hier wordt de tekst gekoppeld aan de afbeelding. In de expressie /document/merged_content is de fout in de paden 'organizations' en 'locations' voor vaardigheid #1 zichtbaar. In plaats van /document/content moet /document/merged_content worden gebruikt voor de invoerwaarde 'text'.
 
@@ -216,7 +216,7 @@ Nadat de indexeerfunctie is uitgevoerd, zijn de fouten nog steeds aanwezig. Ga t
 1. Open de expressie-evaluator **</>** voor de entiteit 'organizations'.
 
 > [!div class="mx-imgBorder"]
-> ![Uitvoer voor de entiteit organizations](media/cognitive-search-debug/skill-output-detail-missing-value-locs-orgs.png)
+> ![Uitvoer voor de entiteit organizations](media/cognitive-search-debug/skill-output-detail-missing-value-locations-organizations.png)
 
 Als u het resultaat van de expressie evalueert, wordt het juiste resultaat geretourneerd. De vaardigheid is bezig met het identificeren van de juiste waarde voor de entiteit 'organizations'. De uitvoertoewijzing in het pad van de entiteit levert echter nog steeds een fout op. Bij het vergelijken van het uitvoerpad in de vaardigheid met het uitvoerpad dat een fout oplevert, de vaardigheid die boven de uitvoerwaarden ligt, organizations en locations onder het knooppunt /document/content. Terwijl bij de toewijzing van het uitvoerveld wordt verwacht dat de resultaten onder het knooppunt/document/merged_content vallen. In de vorige stap is de invoer gewijzigd van /document/content in /document/merged_content. De context van de vaardigheidsinstellingen moet worden gewijzigd om ervoor te zorgen dat de uitvoer wordt gegenereerd met de juiste context.
 
@@ -228,7 +228,7 @@ Als u het resultaat van de expressie evalueert, wordt het juiste resultaat geret
 1. Klik op **Uitvoeren** in het venstermenu van de sessie. Hiermee wordt een andere uitvoering van de vaardighedenset met behulp van het document gestart.
 
 > [!div class="mx-imgBorder"]
-> ![Correctie van context in vaardigheidsinstelling](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locs-orgs.png)
+> ![Correctie van context in vaardigheidsinstelling](media/cognitive-search-debug/skill-setting-context-correction-missing-value-locations-organizations.png)
 
 Alle fouten zijn opgelost.
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7270d05fa7668278db285336c45b5d5c1fb39c77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b4cc6e046b3d6442526df40cad574dbdb9159d5f
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149359"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073300"
 ---
 Ga aan de slag met de face-client bibliotheek voor python. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen. De face-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -27,24 +27,22 @@ Gebruik de face client-bibliotheek voor python voor het volgende:
 * Gezichten verifiëren
 * Een moment opname maken voor gegevens migratie
 
-[Reference documentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | PiPy-voor[beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face) ([Source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [package)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | voor referentie documentatie
+[Referentie documentatie](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  van bibliotheek [Pakket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  Voor [beelden](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Nadat u een sleutel en eind punt hebt verkregen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT` respectievelijk.
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="create-a-face-azure-resource"></a>Een gezichts-Azure-resource maken
-
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor gezicht met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook een [proef versie](https://azure.microsoft.com/try/cognitive-services/#decision) van zeven dagen gratis ontvangen. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-
-Nadat u een sleutel van uw proef abonnement of-resource hebt ontvangen, moet u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de `FACE_SUBSCRIPTION_KEY` sleutel `FACE_ENDPOINT`en het eind punt, respectievelijk met de naam en.
  
 ### <a name="create-a-new-python-application"></a>Een nieuwe Python-toepassing maken
 
-Maak bijvoorbeeld een nieuwe python&mdash;-script*QuickStart-file.py*. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
+Maak bijvoorbeeld een nieuwe python &mdash; -script*QuickStart-file.py*. Open het vervolgens in uw voorkeurs editor of IDE en importeer de volgende bibliotheken.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_imports)]
 
@@ -63,7 +61,7 @@ U kunt de client bibliotheek installeren met:
 pip install --upgrade azure-cognitiveservices-vision-face
 ```
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de client bibliotheek face python.
 
@@ -92,7 +90,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de fa
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) hebt gemaakt `FACE_SUBSCRIPTION_KEY`voor uw gezichts sleutel met de naam.
+> In deze Quick Start wordt ervan uitgegaan dat u [een omgevings variabele hebt gemaakt](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) voor uw gezichts sleutel met de naam `FACE_SUBSCRIPTION_KEY` .
 
 Exemplaar een client met uw eind punt en sleutel. Maak een [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) -object met uw sleutel en gebruik het met uw eind punt om een [FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) -object te maken.
 
@@ -140,9 +138,9 @@ Met de volgende code wordt een **PersonGroup** gemaakt met drie verschillende **
 
 ### <a name="create-persongroup"></a>PersonGroup maken
 
-Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/imagesproject:.
+Als u dit scenario wilt door lopen, moet u de volgende installatie kopieën opslaan in de hoofd directory van uw project: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-Deze groep met installatie kopieën bevat drie sets gezichts afbeeldingen die overeenkomen met drie verschillende personen. Met de code worden drie **persoons** objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die `woman`beginnen `man`met, `child`en.
+Deze groep met installatie kopieën bevat drie sets gezichts afbeeldingen die overeenkomen met drie verschillende personen. Met de code worden drie **persoons** objecten gedefinieerd en gekoppeld aan afbeeldings bestanden die beginnen met `woman` , `man` en `child` .
 
 Nadat u uw installatie kopieën hebt ingesteld, definieert u een label boven aan het script voor het **PersonGroup** -object dat u maakt.
 
@@ -173,7 +171,7 @@ De volgende code neemt een afbeelding met meerdere gezichten en zoekt naar de id
 
 ### <a name="get-a-test-image"></a>Een test installatie kopie ophalen
 
-De volgende code zoekt in de hoofdmap van het project naar een afbeelding _Test-Image-person-Group. jpg_ en detecteert de gezichten in de installatie kopie. U kunt deze installatie kopie vinden met de installatie kopieën **PersonGroup** die worden gebruikt https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/imagesvoor PersonGroup Management:.
+De volgende code zoekt in de hoofdmap van uw project naar een afbeelding _test-image-person-group.jpg_ en detecteert de gezichten in de installatie kopie. U kunt deze installatie kopie vinden met de installatie kopieën die worden gebruikt voor **PersonGroup** Management: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify_testimage)]
 
@@ -211,7 +209,7 @@ De volgende code vergelijkt elk van de bron installatie kopieën met de doel ins
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Een moment opname maken voor gegevens migratie
 
-Met de functie moment opnamen kunt u opgeslagen gezichts gegevens, zoals een getraind **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup** -object hebt gemaakt met een gratis proef abonnement en nu wilt migreren naar een betaald abonnement. Zie de [informatie over uw gezicht migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een uitgebreid overzicht van de functie moment opnamen.
+Met de functie moment opnamen kunt u opgeslagen gezichts gegevens, zoals een getraind **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup** -object hebt gemaakt met behulp van een gratis abonnement en u dit nu wilt migreren naar een betaald abonnement. Zie de [informatie over uw gezicht migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een uitgebreid overzicht van de functie moment opnamen.
 
 In dit voor beeld migreert u de **PersonGroup** die u hebt gemaakt in [een persoons groep maken en trainen](#create-and-train-a-person-group). U kunt deze sectie eerst volt ooien of uw eigen face data-construct (s) gebruiken.
 
@@ -249,7 +247,7 @@ De rest van de momentopname bewerkingen worden uitgevoerd binnen een asynchrone 
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
 
-1. Gebruik de `wait_for_operation` functie opnieuw om de id op te vragen totdat de bewerking is voltooid.
+1. Gebruik de functie opnieuw `wait_for_operation` om de id op te vragen totdat de bewerking is voltooid.
 
     [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
 
@@ -257,7 +255,7 @@ Zodra u deze stappen hebt voltooid, kunt u toegang krijgen tot uw gezichts gegev
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit met `python` de opdracht in uw Quick Start-bestand.
+Voer de toepassing uit met de `python` opdracht in uw Quick Start-bestand.
 
 ```console
 python quickstart-file.py

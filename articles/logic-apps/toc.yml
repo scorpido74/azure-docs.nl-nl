@@ -94,12 +94,6 @@
           href: logic-apps-handle-large-messages.md
         - name: Beperkingsfouten of 429-fouten verwerken
           href: handle-throttling-problems-429-errors.md
-        - name: Beveiligen
-          items:
-            - name: Beveiliging verbeteren voor logische apps
-              href: logic-apps-securing-a-logic-app.md
-            - name: Verifiëren met beheerde identiteiten
-              href: create-managed-service-identity.md
         - name: Aangepaste connectors ontwikkelen
           href: custom-connector-overview.md
         - name: Aangepaste API's ontwikkelen
@@ -316,6 +310,14 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: Beveiligen
+      items:
+        - name: Beveiliging verbeteren voor logische apps
+          href: logic-apps-securing-a-logic-app.md
+        - name: Verifiëren met beheerde identiteiten
+          href: create-managed-service-identity.md
+        - name: Verbindingen blokkeren in logische apps
+          href: block-connections-connectors.md
     - name: Beheren
       items:
         - name: Logische apps beheren - Azure-portal

@@ -2,7 +2,7 @@
 title: 'PowerShell: Geo-back-up voor met Azure SQL beheerd exemplaar herstellen'
 description: Azure PowerShell-voorbeeldscript voor het terugzetten van een met Azure SQL beheerd database-exemplaar uit een geografisch redundante back-up.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: PowerShell
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: eeb20f51b22805775ed491267b69d0ba60c90bc3
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 658bedad3b74bf30ba23562ebf025af4781f1034
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220855"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687528"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Gebruik PowerShell om een met Azure SQL beheerd-exemplaardatabase te herstellen naar een ander geografisch gebied
 

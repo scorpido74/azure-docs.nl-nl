@@ -10,36 +10,31 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d8f40ab57ee2569b2cb5bf62f391919476b8ab17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136012"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073373"
 ---
 <a name="HOLTop"></a>
 
-[Reference documentation](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) | [Bron](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)code | [pakket](https://github.com/Azure/azure-sdk-for-go) referentie documentatie bibliotheek
+[Referentie documentatie](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)  |  [Bron code](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)  |  van bibliotheek [Pakket](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
 * De nieuwste versie van [Go](https://golang.org/dl/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="setting-up"></a>Instellen
 
-### <a name="create-a-computer-vision-azure-resource"></a>Een Computer Vision Azure-resource maken
-
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Computer Vision met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
-
-* Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
-
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het `COMPUTER_VISION_SUBSCRIPTION_KEY` eind `COMPUTER_VISION_ENDPOINT`punt-URL, respectievelijk met de naam en.
-
 ### <a name="create-a-go-project-directory"></a>Een go-projectmap maken
 
-Maak in een console venster (cmd, Power shell, Terminal, bash) een nieuwe werk ruimte voor uw Go-project `my-app`met de naam en navigeer ernaar.
+Maak in een console venster (cmd, Power shell, Terminal, bash) een nieuwe werk ruimte voor uw Go-project `my-app` met de naam en navigeer ernaar.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -50,10 +45,10 @@ Uw werk ruimte bevat drie mappen:
 
 * **src** -deze map bevat bron code en pakketten. Alle pakketten die met de `go get` opdracht zijn geïnstalleerd, worden in deze map geplaatst.
 * **pakket** -deze map bevat de gecompileerde go package-objecten. Deze bestanden hebben allemaal een `.a` extensie.
-* **bin** : deze map bevat de binaire uitvoer bare bestanden die worden gemaakt wanneer u uitvoert `go install`.
+* **bin** : deze map bevat de binaire uitvoer bare bestanden die worden gemaakt wanneer u uitvoert `go install` .
 
 > [!TIP]
-> Zie de [Go-taal documentatie](https://golang.org/doc/code.html#Workspaces)voor meer informatie over de structuur van een go-werk ruimte. Deze hand leiding bevat informatie over `$GOPATH` het `$GOROOT`instellen van en.
+> Zie de [Go-taal documentatie](https://golang.org/doc/code.html#Workspaces)voor meer informatie over de structuur van een go-werk ruimte. Deze hand leiding bevat informatie over het instellen van `$GOPATH` en `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>De client bibliotheek voor Go installeren
 
@@ -71,7 +66,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Een go-toepassing maken
 
-Maak vervolgens een bestand in de **src** -map met `sample-app.go`de naam:
+Maak vervolgens een bestand in de **src** -map met de naam `sample-app.go` :
 
 ```bash
 cd src
@@ -88,7 +83,7 @@ Declareer ook een context in de hoofdmap van uw script. U hebt dit object nodig 
 
 Vervolgens begint u met het toevoegen van code om verschillende Computer Vision bewerkingen uit te voeren.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision go-SDK.
 
@@ -110,7 +105,7 @@ Deze code fragmenten laten zien hoe u de volgende taken kunt uitvoeren met de Co
 ## <a name="authenticate-the-client"></a>De client verifiëren
 
 > [!NOTE]
-> Bij deze stap wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw computer vision `COMPUTER_VISION_SUBSCRIPTION_KEY` sleutel `COMPUTER_VISION_ENDPOINT` en eind punt, met de naam en respectievelijk.
+> Bij deze stap wordt ervan uitgegaan dat u [omgevings variabelen hebt gemaakt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor uw computer vision sleutel en eind punt, met de naam `COMPUTER_VISION_SUBSCRIPTION_KEY` en `COMPUTER_VISION_ENDPOINT` respectievelijk.
 
 Maak een `main` functie en voeg de volgende code toe om een client met uw eind punt en sleutel te instantiëren.
 
@@ -163,7 +158,7 @@ Met de volgende functie worden algemene objecten in de installatie kopie gedetec
 
 Met de volgende code worden de bedrijfs merken en-logo's in de installatie kopie gedetecteerd en afgedrukt in de-console. Voor meer informatie, [merk detectie](../../concept-brand-detection.md).
 
-Declareer eerst een verwijzing naar een nieuwe installatie kopie binnen `main` uw functie.
+Declareer eerst een verwijzing naar een nieuwe installatie kopie binnen uw `main` functie.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_brand_url)]
 
@@ -203,13 +198,13 @@ Met de volgende code worden gegevens over gedetecteerde bezienswaardigheden in d
 
 ### <a name="get-the-image-type"></a>Het afbeeldings type ophalen
 
-De volgende functie drukt informatie over het type afbeelding&mdash;af, ongeacht of het een illustratie of lijn tekening is.
+De volgende functie drukt informatie over het type afbeelding af &mdash; , ongeacht of het een illustratie of lijn tekening is.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Gedrukte en handgeschreven tekst lezen
 
-Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom. De code in deze sectie definieert een functie, `RecognizeTextReadAPIRemoteImage`, die het client object gebruikt voor het detecteren en uitpakken van gedrukte of handgeschreven tekst in de afbeelding.
+Computer Vision kunt zicht bare tekst in een afbeelding lezen en deze converteren naar een teken stroom. De code in deze sectie definieert een functie, `RecognizeTextReadAPIRemoteImage` , die het client object gebruikt voor het detecteren en uitpakken van gedrukte of handgeschreven tekst in de afbeelding.
 
 Voeg de voorbeeld afbeelding en functie aanroep toe aan de `main` functie.
 
@@ -220,7 +215,7 @@ Voeg de voorbeeld afbeelding en functie aanroep toe aan de `main` functie.
 
 ### <a name="call-the-read-api"></a>De Lees-API aanroepen
 
-Definieer de nieuwe functie voor het lezen van `RecognizeTextReadAPIRemoteImage`tekst,. Voeg de onderstaande code toe, die de **BatchReadFile** -methode voor de gegeven afbeelding aanroept. Deze methode retourneert een bewerkings-ID en start een asynchroon proces om de inhoud van de afbeelding te lezen.
+Definieer de nieuwe functie voor het lezen van tekst, `RecognizeTextReadAPIRemoteImage` . Voeg de onderstaande code toe, die de **BatchReadFile** -methode voor de gegeven afbeelding aanroept. Deze methode retourneert een bewerkings-ID en start een asynchroon proces om de inhoud van de afbeelding te lezen.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_call)]
 
@@ -238,7 +233,7 @@ Voeg de volgende code toe om de opgehaalde tekst gegevens te parseren en weer te
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit vanuit de map van uw `go run` toepassing met de opdracht.
+Voer de toepassing uit vanuit de map van uw toepassing met de `go run` opdracht.
 
 ```bash
 go run sample-app.go
