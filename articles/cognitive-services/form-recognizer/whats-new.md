@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: e3bf279142383ccdb3e82ffee49bd593640bb937
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8b6cad548c9fdc5b5157c842d6302c8635e21a15
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996819"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099325"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Wat is er nieuw in Form Recognizer?
 
@@ -22,6 +22,17 @@ De Form Recognizer-service wordt doorlopend bijgewerkt. Gebruik dit artikel om o
 
 > [!NOTE]
 > De Quick starts en hand leidingen voor de formulier Recognizer gebruiken altijd de nieuwste versie van de API, tenzij opgegeven.
+
+## <a name="june-2020"></a>Juni 2020
+
+### <a name="new-features"></a>Nieuwe functies
+* **CopyModel-API is toegevoegd aan de client-sdk's** U kunt nu de client-Sdk's gebruiken om modellen van het ene naar het andere abonnement te kopiëren. Zie [back-ups maken en modellen herstellen](./disaster-recovery.md) voor algemene informatie over deze functie.
+* **Integratie van Azure Active Directory** U kunt nu uw AAD-referenties gebruiken om uw formulieren Recognizer-client objecten in de Sdk's te verifiëren.
+* **SDK-specifieke wijzigingen** Dit omvat zowel toevoegingen aan de secundaire functie als belang rijke wijzigingen. Raadpleeg de SDK-changelogs voor meer informatie.
+  * [C# SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
+  * [Python SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
+  * [Java script SDK preview 3 wijzigingen logboek](https://github.com/Azure/azure-sdk-for-js/blob/%40azure/ai-form-recognizer_1.0.0-preview.3/sdk/formrecognizer/ai-form-recognizer/CHANGELOG.md)
 
 ## <a name="april-2020"></a>April 2020
 

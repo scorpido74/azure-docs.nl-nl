@@ -3,8 +3,8 @@ title: Referentiemateriaal om aan de slag te gaan
 titleSuffix: Azure SQL Managed Instance
 description: 'Referentiemateriaal voor inhoud om u te helpen aan de slag te gaan met Azure SQL Managed Instance. '
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,12 +12,12 @@ author: davidtrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 07/11/2019
-ms.openlocfilehash: 5ed88514650b9931a52e5f155abc34fbf734a3b7
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 7c7268aa361c77f1d466ab7a58b74aa91090dc4b
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310764"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708566"
 ---
 # <a name="getting-started-with-azure-sql-managed-instance"></a>Aan de slag met Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

@@ -4,18 +4,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 367ae27a6afec803d2e3f98f54bdcf852330ddc6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 95bd83575809f6ecda716ff751b47b7bb499cae3
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70274578"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073233"
 ---
 ## <a name="configure-an-environment-variable-for-authentication"></a>Een omgevings variabele configureren voor verificatie
 
 Toepassingen moeten toegang verifiëren tot de Cognitive Services die ze gebruiken. Als u zich wilt verifiëren, raden we u aan een omgevings variabele te maken voor het opslaan van de sleutels voor uw Azure-resources. 
 
-Nadat u uw sleutel hebt, schrijft u deze naar een nieuwe omgevings variabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een consolevenster en volgt u de aanwijzingen voor uw besturingssysteem. Vervang `your-key` door een van de sleutels voor uw resource.
+Nadat u uw sleutel hebt, schrijft u deze naar een nieuwe omgevings variabele op de lokale computer waarop de toepassing wordt uitgevoerd. Als u de omgevingsvariabele wilt instellen, opent u een consolevenster en volgt u de aanwijzingen voor uw besturingssysteem. Vervang door `your-key` een van de sleutels voor uw resource.
 
 #### <a name="windows"></a>[Windows](#tab/windows)
 
@@ -33,7 +33,7 @@ export COGNITIVE_SERVICE_KEY=your-key
 
 Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
-#### <a name="macos"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[MacOS](#tab/unix)
 
 Bewerk uw .bash_profile en voeg de omgevingsvariabele toe:
 
@@ -41,6 +41,6 @@ Bewerk uw .bash_profile en voeg de omgevingsvariabele toe:
 export COGNITIVE_SERVICE_KEY=your-key
 ```
 
-Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
+Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
 
 ***

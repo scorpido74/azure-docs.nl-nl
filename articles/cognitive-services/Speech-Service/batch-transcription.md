@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208615"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099770"
 ---
 # <a name="what-is-batch-transcription"></a>Wat is batch-transcriptie?
 
-Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt naar audio bestanden met een SAS-URI (Shared Access Signature) verwijzen en transcriptie-resultaten asynchroon ontvangen.
+Batch-transcriptie is een reeks REST API bewerkingen waarmee u een grote hoeveelheid audio in de opslag kunt transcriberen. U kunt naar audio bestanden met een SAS-URI (Shared Access Signature) verwijzen en transcriptie-resultaten asynchroon ontvangen. Met de nieuwe v 3.0 API hebt u de keuze om een of meer audio bestanden te transcriberen of een hele opslag container te verwerken.
 
 Asynchrone spraak-naar-tekst transcriptie is slechts een van de functies. U kunt batch-transcriptie REST-Api's gebruiken om de volgende methoden aan te roepen:
 
@@ -27,17 +27,18 @@ Asynchrone spraak-naar-tekst transcriptie is slechts een van de functies. U kunt
 
 |    Batch transcriptie-bewerking                                             |    Methode    |    REST API-aanroep                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    Hiermee maakt u een nieuwe transcriptie.                                              |    POST      |    API/speechtotext/v 2.0/transcripties            |
-|    Hiermee wordt een lijst met transcripties voor het geverifieerde abonnement opgehaald.    |    GET       |    API/speechtotext/v 2.0/transcripties            |
-|    Hiermee wordt een lijst met ondersteunde land instellingen voor offline-transcripties opgehaald.              |    GET       |    API/speechtotext/v 2.0/transcripties/land instellingen    |
-|    Hiermee worden de onveranderlijke gegevens van de transcriptie die door de ID worden geïdentificeerd, bijgewerkt.    |    VERZENDEN     |    API/speechtotext/v 2.0/transcripties/{id}       |
-|    Hiermee wordt de opgegeven transcriptie-taak verwijderd.                                 |    DELETE    |    API/speechtotext/v 2.0/transcripties/{id}       |
-|    Hiermee wordt de transcriptie opgehaald die wordt geïdentificeerd door de opgegeven ID.                        |    GET       |    API/speechtotext/v 2.0/transcripties/{id}       |
+|    Hiermee maakt u een nieuwe transcriptie.                                              |    POST      |    speechtotext/v 3.0/transcripties            |
+|    Hiermee wordt een lijst met transcripties voor het geverifieerde abonnement opgehaald.    |    GET       |    speechtotext/v 3.0/transcripties            |
+|    Hiermee wordt een lijst met ondersteunde land instellingen voor offline-transcripties opgehaald.              |    GET       |    speechtotext/v 3.0/transcripties/land instellingen    |
+|    Hiermee worden de onveranderlijke gegevens van de transcriptie die door de ID worden geïdentificeerd, bijgewerkt.    |    VERZENDEN     |    speechtotext/v 3.0/transcripties/{id}       |
+|    Hiermee wordt de opgegeven transcriptie-taak verwijderd.                                 |    DELETE    |    speechtotext/v 3.0/transcripties/{id}       |
+|    Hiermee wordt de transcriptie opgehaald die wordt geïdentificeerd door de opgegeven ID.                        |    GET       |    speechtotext/v 3.0/transcripties/{id}       |
+|    Hiermee worden de resultaat bestanden opgehaald van de transcriptie die wordt geïdentificeerd door de opgegeven ID.    |    GET       |    speechtotext/v 3.0/transcripties/{id}/bestanden |
 
 
 
 
-U kunt de gedetailleerde API bekijken en testen, die beschikbaar is als [Swagger-document](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A), onder de kop `Custom Speech transcriptions`.
+U kunt de gedetailleerde API bekijken en testen, die beschikbaar is als [Swagger-document](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
 
 Batch transcriptie-taken worden gepland op basis van de beste inspanningen. Er is momenteel geen schatting voor wanneer de status van een taak wordt gewijzigd. Onder normale belasting van het systeem moet het binnen enkele minuten plaatsvinden. Zodra de status wordt uitgevoerd, wordt de daad werkelijke transcriptie sneller verwerkt dan de audio real-time.
 
@@ -54,7 +55,7 @@ Net als bij alle functies van de speech-service maakt u een abonnements sleutel 
 
 ### <a name="custom-models"></a>Aangepaste modellen
 
-Als u van plan bent om akoestische of taal modellen aan te passen, volgt u de stappen in [Customize akoestische modellen](how-to-customize-acoustic-models.md) en [ontwerp aanpassing taal modellen](how-to-customize-language-model.md). Als u de gemaakte modellen in batch transcriptie wilt gebruiken, moet u hun model-Id's hebben. U kunt de model-ID ophalen wanneer u de details van het model inspecteert. Een geïmplementeerd aangepast eind punt is niet nodig voor de batch transcriptie-service.
+Volg de stappen in [akoestische aanpassing](how-to-customize-acoustic-models.md) en [taal aanpassing](how-to-customize-language-model.md)als u van plan bent om modellen aan te passen. Als u de gemaakte modellen in batch transcriptie wilt gebruiken, hebt u hun model locatie nodig. U kunt de model locatie ophalen wanneer u de details van het model ( `self` eigenschap) inspecteert. Een geïmplementeerd aangepast eind punt is *niet nodig* voor de batch transcriptie-service.
 
 ## <a name="the-batch-transcription-api"></a>De batch-transcriptie-API
 
@@ -72,25 +73,52 @@ Voor audio stromen met stereo worden de linker-en rechter kanalen gesplitst tijd
 
 ### <a name="configuration"></a>Configuratie
 
-Configuratie parameters worden als JSON opgegeven:
+Configuratie parameters worden als JSON opgegeven (een of meer afzonderlijke bestanden):
 
 ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to use, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "ProfanityFilterMode": "None | Removed | Tags | Masked",
-    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True | False",
-    "AddSentiment" : "True | False",
-    "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
-  }
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
+
+Configuratie parameters worden opgegeven als JSON (verwerking van een hele opslag container):
+
+```json
+{
+  "contentContainerUrl": "<SAS URL to the Azure blob container to transcribe>",
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of container using default model for en-US"
+}
+```
+
+Als u aangepaste getrainde modellen in batch transcripties wilt gebruiken, kunt u er als volgt naar verwijzen:
+
+```json
+{
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "model": {
+    "self": "https://westus.api.cognitive.microsoft.com/speechtotext/v3.0/models/{id}"
+  },
+  "displayName": "Transcription of file using default model for en-US"
+}
+```
+
 
 ### <a name="configuration-properties"></a>Configuratie-eigenschappen
 
@@ -98,52 +126,59 @@ Gebruik deze optionele eigenschappen om transcriptie te configureren:
 
 :::row:::
    :::column span="1":::
-      **Bepaalde**
+      **Parameter**
    :::column-end:::
    :::column span="2":::
       **Beschrijving**
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ProfanityFilterMode`
+      `profanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      Hiermee geeft u op hoe scheld woorden in de herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden `None` zijn het uitschakelen van het filteren `Masked` van grove woorden, het vervangen van woorden `Removed` met sterretjes, om alle woorden van het resultaat `Tags` te verwijderen, of om "Gods gang" tags toe te voegen. De standaardinstelling is `Masked`.
+      Hiermee geeft u op hoe scheld woorden in de herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden zijn `None` het uitschakelen van het filteren van grove woorden, `Masked` het vervangen van woorden met sterretjes, `Removed` om alle woorden van het resultaat te verwijderen, of `Tags` om "Gods gang" tags toe te voegen. De standaardinstelling is `Masked`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `PunctuationMode`
+      `punctuationMode`
    :::column-end:::
    :::column span="2":::
-      Hiermee wordt aangegeven hoe interpunctie in herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden `None` zijn om Lees tekens uit `Dictated` te scha kelen, zodat er expliciete ( `Automatic` gesp roken) Lees tekens worden gebruikt, zodat de `DictatedAndAutomatic` decoder met interpunctie kan omgaan of gedicteerde en automatische interpunctie mag gebruiken. De standaardinstelling is `DictatedAndAutomatic`.
+      Hiermee wordt aangegeven hoe interpunctie in herkennings resultaten moet worden afgehandeld. Geaccepteerde waarden zijn `None` om Lees tekens uit te scha kelen, `Dictated` zodat er expliciete (gesp roken) Lees tekens worden `Automatic` gebruikt, zodat de decoder met interpunctie kan omgaan of `DictatedAndAutomatic` gedicteerde en automatische interpunctie mag gebruiken. De standaardinstelling is `DictatedAndAutomatic`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddWordLevelTimestamps`
+      `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
-      Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden `true` zijn het inschakelen van tijds tempels op `false` woord niveau en (de standaard waarde) om deze uit te scha kelen.
+      Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` het inschakelen van tijds tempels op woord niveau en `false` (de standaard waarde) om deze uit te scha kelen.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddSentiment`
+      `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      Hiermee wordt aangegeven of sentiment analyse moet worden toegepast op de utterance. Geaccepteerde waarden `true` moeten worden ingeschakeld `false` en (de standaard waarde) om deze uit te scha kelen. Zie [sentimentanalyse](#sentiment-analysis) voor meer informatie.
+      Hiermee geeft u op dat diarization analyse moet worden uitgevoerd op de invoer, die naar verwachting mono-kanaal met twee stemmen is. Geaccepteerde waarden zijn `true` diarization en `false` (de standaard waarde) om deze optie uit te scha kelen. Het moet ook `wordLevelTimestampsEnabled` worden ingesteld op True.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddDiarization`
+      `channels`
    :::column-end:::
    :::column span="2":::
-      Hiermee geeft u op dat diarization analyse moet worden uitgevoerd op de invoer, die naar verwachting mono-kanaal met twee stemmen is. Geaccepteerde waarden `true` zijn diarization en `false` (de standaard waarde) om deze optie uit te scha kelen. Het moet `AddWordLevelTimestamps` ook worden ingesteld op True.
+      Een optionele matrix met kanaal nummers die moeten worden verwerkt. Hier kunt u een subset van de beschik bare kanalen in het audio bestand opgeven die moeten worden verwerkt (bijvoorbeeld `0` alleen). Als dat niet het geval is, `0` worden kanalen en `1` getranscribeerd als standaard.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `TranscriptionResultsContainerUrl`
+      `timeToLive`
    :::column-end:::
    :::column span="2":::
-      Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
+      Een optionele duur voor het automatisch verwijderen van transcripties na het volt ooien van de transcriptie. Het `timeToLive` is handig in transcripties voor massa verwerking om ervoor te zorgen dat ze uiteindelijk worden verwijderd (bijvoorbeeld `PT12H` ). Als niet is opgegeven of ingesteld op `PT0H` , wordt de transcriptie niet automatisch verwijderd.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `destinationContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Optionele URL met [service-sa's](../../storage/common/storage-sas-overview.md) naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container. Wanneer deze niet is opgegeven, slaat micro soft de resultaten op in een opslag container die door micro soft wordt beheerd. Wanneer de transcriptie wordt verwijderd door het aanroepen van [Delete transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), worden de resultaat gegevens ook verwijderd.
 :::row-end:::
 
 ### <a name="storage"></a>Storage
@@ -152,65 +187,65 @@ Batch transcriptie ondersteunt [Azure Blob-opslag](https://docs.microsoft.com/az
 
 ## <a name="the-batch-transcription-result"></a>Het batch-transcriptie resultaat
 
-Voor mono-invoer audio wordt één transcriptie-resultaat bestand gemaakt. Voor stereo-invoer audio worden er twee transcriptie gegenereerd. Elk heeft deze structuur:
+Voor elke audio-invoer wordt één transcriptie-resultaat bestand gemaakt. U kunt de lijst met resultaten bestanden ophalen door [Get transcripties-bestanden aan](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)te roepen. Deze methode retourneert een lijst met resultaten bestanden voor deze transcriptie. Als u het transcriptie-bestand voor een specifiek invoer bestand wilt zoeken, filtert u alle geretourneerde bestanden met `kind`  ==  `Transcription` en `name`  ==  `{originalInputName.suffix}.json` .
+
+Elk transcriptie-resultaat bestand heeft de volgende indeling:
 
 ```json
 {
-  "AudioFileResults":[
+  "source": "...",                                                 // the sas url of a given contentUrl or the path relative to the root of a given container
+  "timestamp": "2020-06-16T09:30:21Z",                             // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
+  "durationInTicks": 41200000,                                     // total audio duration in ticks (1 tick is 100 nanoseconds)
+  "duration": "PT4.12S",                                           // total audio duration, ISO 8601 encoded duration
+  "combinedRecognizedPhrases": [                                   // concatenated results for simple access in single string for each channel
     {
-      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
-      "AudioFileUrl": null                                  'always null'
-      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
-      "CombinedResults": [
+      "channel": 0,                                                // channel number of the concatenated results
+      "lexical": "hello world",
+      "itn": "hello world",
+      "maskedITN": "hello world",
+      "display": "Hello world."
+    }
+  ],
+  "recognizedPhrases": [                                           // results for each phrase and each channel individually
+    {
+      "recognitionStatus": "Success",                              // recognition state, e.g. "Success", "Failure"
+      "channel": 0,                                                // channel number of the result
+      "offset": "PT0.07S",                                         // offset in audio of this phrase, ISO 8601 encoded duration 
+      "duration": "PT1.59S",                                       // audio duration of this phrase, ISO 8601 encoded duration
+      "offsetInTicks": 700000.0,                                   // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
+      "durationInTicks": 15900000.0,                               // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
+      
+      // possible transcriptions of the current phrase with confidences
+      "nBest": [
         {
-          "ChannelNumber": null                             'always null'
-          "Lexical": string
-          "ITN": string
-          "MaskedITN": string
-          "Display": string
-        }
-      ]
-      SegmentResults:[                                      'for each individual segment'
-        {
-          "RecognitionStatus": "Success | Failure"
-          "ChannelNumber": null
-          "SpeakerId": null | "1 | 2"                       'null if no diarization
-                                                             or stereo input file, the
-                                                             speakerId as a string if
-                                                             diarization requested for
-                                                             mono audio file'
-          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
-          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
-          "OffsetInSeconds" : number                        'Real number. Two decimal places'
-          "DurationInSeconds" : number                      'Real number. Two decimal places'
-          "NBest": [
+          "confidence": 0.898652852,                               // confidence value for the recognition of the whole phrase
+          "speaker": 1,                                            // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
+          "lexical": "hello world",
+          "itn": "hello world",
+          "maskedITN": "hello world",
+          "display": "Hello world.",
+          
+          // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
+          "words": [
             {
-              "Confidence": number                          'between 0 and 1'
-              "Lexical": string
-              "ITN": string
-              "MaskedITN": string
-              "Display": string
-              "Sentiment":
-                {                                           'this is omitted if sentiment is
-                                                             not requested'
-                  "Negative": number                        'between 0 and 1'
-                  "Neutral": number                         'between 0 and 1'
-                  "Positive": number                        'between 0 and 1'
-                }
-              "Words": [
-                {
-                  "Word": string
-                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
-                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
-                  "OffsetInSeconds": number                 'Real number. Two decimal places'
-                  "DurationInSeconds": number               'Real number. Two decimal places'
-                  "Confidence": number                      'between 0 and 1'
-                }
-              ]
+              "word": "hello",
+              "offset": "PT0.09S",
+              "duration": "PT0.48S",
+              "offsetInTicks": 900000.0,
+              "durationInTicks": 4800000.0,
+              "confidence": 0.987572
+            },
+            {
+              "word": "world",
+              "offset": "PT0.59S",
+              "duration": "PT0.16S",
+              "offsetInTicks": 5900000.0,
+              "durationInTicks": 1600000.0,
+              "confidence": 0.906032
             }
           ]
         }
-      ]
+      ]    
     }
   ]
 }
@@ -227,28 +262,28 @@ Het resultaat bevat de volgende formulieren:
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Lexical`
+      `lexical`
    :::column-end:::
    :::column span="2":::
       De werkelijke woorden die worden herkend.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ITN`
+      `itn`
    :::column-end:::
    :::column span="2":::
       Inverse-text-genormaliseerde vorm van de herkende tekst. Afkortingen ("Doctor Smith" naar "Dr Smith"), telefoon nummers en andere trans formaties worden toegepast.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `MaskedITN`
+      `maskedITN`
    :::column-end:::
    :::column span="2":::
       Het formulier ITN waarin de maskering voor scheld woorden is toegepast.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Display`
+      `display`
    :::column-end:::
    :::column span="2":::
       De weergave vorm van de herkende tekst. Er zijn toegevoegde interpunctie en hoofdletter gebruik opgenomen.
@@ -258,106 +293,56 @@ Het resultaat bevat de volgende formulieren:
 
 Diarization is het proces waarbij de luid sprekers in een audio fragment worden gescheiden. Onze batch pijplijn ondersteunt diarization en kan twee luid sprekers herkennen aan mono-kanaal opnamen. De functie is niet beschikbaar op stereo-opnamen.
 
-Alle transcriptie-uitvoer bevat `SpeakerId`een. Als diarization niet wordt gebruikt, wordt dit `"SpeakerId": null` weer gegeven in de JSON-uitvoer. Voor diarization ondersteunen we twee stemmen, waardoor de luid sprekers worden aangeduid `"1"` als `"2"`of.
+De uitvoer van transcriptie met diarization ingeschakeld bevat een `Speaker` vermelding voor elke getranscribeerde woord groep. Als diarization niet wordt gebruikt, is de eigenschap `Speaker` niet aanwezig in de JSON-uitvoer. Voor diarization ondersteunen we twee stemmen, waardoor de luid sprekers worden aangeduid als `1` of `2` .
 
 Als u diarization wilt aanvragen, hoeft u alleen de relevante para meter in de HTTP-aanvraag toe te voegen, zoals hieronder wordt weer gegeven.
 
  ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "AddWordLevelTimestamps" : "True",
-    "AddDiarization" : "True"
-  }
+    "diarizationEnabled": true,
+    "wordLevelTimestampsEnabled": true,
+    "punctuationMode": "DictatedAndAutomatic",
+    "profanityFilterMode": "Masked"
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
 
-Tijds tempels op woord niveau moeten ook ' ingeschakeld ' zijn als de para meters in de bovenstaande aanvraag aangeven.
-
-## <a name="sentiment-analysis"></a>Sentimentanalyse
-
-Met de functie sentiment wordt de sentiment die wordt weer gegeven in de audio geschat. De sentiment wordt uitgedrukt door een waarde tussen 0 en 1 voor `Negative`, `Neutral`en `Positive` sentiment. Zo kan sentiment analyse worden gebruikt in aanroep centrum scenario's:
-
-- Inzicht krijgen in klant tevredenheid
-- Inzicht krijgen in de prestaties van de agents (team die de aanroepen nemen)
-- Het exacte tijdstip van een gesprek met een inschakeling in een negatieve richting zoeken
-- Wat is er goed geworden bij het omzetten van een negatieve aanroep naar een positieve richting
-- Vaststellen wat klanten zijn en wat ze leuk vinden over een product of een service
-
-Sentiment wordt per audio segment beoordeeld op basis van de lexicale vorm. De volledige tekst in dat audio segment wordt gebruikt om sentiment te berekenen. Er wordt geen geaggregeerde sentiment berekend voor de gehele transcriptie. Sentiment-analyse is momenteel alleen beschikbaar in de Engelse taal.
-
-> [!NOTE]
-> U wordt aangeraden de micro soft-Text Analytics-API te gebruiken. Het biedt meer geavanceerde functies dan sentiment analyse, zoals extractie van sleutel zinnen, automatische taal detectie en nog veel meer. U vindt informatie en voor beelden in de [Text Analytics documentatie](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
->
-
-Een voor beeld van een JSON-uitvoer ziet er als volgt uit:
-
-```json
-{
-  "AudioFileResults": [
-    {
-      "AudioFileName": "Channel.0.wav",
-      "AudioFileUrl": null,
-      "SegmentResults": [
-        {
-          "RecognitionStatus": "Success",
-          "ChannelNumber": null,
-          "Offset": 400000,
-          "Duration": 13300000,
-          "NBest": [
-            {
-              "Confidence": 0.976174,
-              "Lexical": "what's the weather like",
-              "ITN": "what's the weather like",
-              "MaskedITN": "what's the weather like",
-              "Display": "What's the weather like?",
-              "Words": null,
-              "Sentiment": {
-                "Negative": 0.206194,
-                "Neutral": 0.793785,
-                "Positive": 0.0
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+Tijds tempels op woord niveau moeten zijn ingeschakeld als de para meters in de bovenstaande aanvraag aangeven.
 
 ## <a name="best-practices"></a>Aanbevolen procedures
 
-De transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen via a `GET` op de [methode transcripties](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions). Bewaar de gegevens naar een redelijke grootte door de `take` para meter op te geven (enkele honderden). [Verwijder transcripties](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) regel matig van de service zodra u de resultaten hebt opgehaald. Dit garandeert snelle antwoorden van de transcriptie-beheer aanroepen.
+De transcriptie-service kan een groot aantal verzonden transcripties verwerken. U kunt de status van uw transcripties opvragen via a `GET` op [Get transcripties](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Roep het [verwijderen van transcriptie](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) regel matig aan bij de service zodra u de resultaten hebt opgehaald. Stel `timeToLive` de eigenschap ook in op een redelijke waarde om te zorgen dat de resultaten uiteindelijk worden verwijderd.
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
 Volledige voor beelden zijn beschikbaar in de [github-voorbeeld opslagplaats](https://aka.ms/csspeech/samples) in de `samples/batch` submap.
 
-U moet de voorbeeld code aanpassen met uw abonnements gegevens, de service regio, de SAS-URI die verwijst naar het audio bestand en model-Id's voor het geval u een aangepast akoestische of taal model wilt gebruiken.
+Werk de voorbeeld code bij met uw abonnements gegevens, de service regio, de SAS-URI die verwijst naar het audio bestand dat u wilt transcriberen en de model locatie voor het geval u een aangepast model wilt gebruiken.
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
 De voorbeeld code stelt de-client in en verzendt de transcriptie-aanvraag. Vervolgens wordt een poll uitgevoerd voor de status informatie en worden details over de voortgang van de transcriptie afgedrukt.
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
+[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
 
-Zie het [Swagger-document](https://westus.cris.ai/swagger/ui/index)voor volledige informatie over de voor gaande aanroepen. Voor het volledige voor beeld dat hier wordt weer [GitHub](https://aka.ms/csspeech/samples) gegeven, gaat `samples/batch` u naar github in de submap.
+Zie het [Swagger-document](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)voor volledige informatie over de voor gaande aanroepen. Voor het volledige voor beeld dat hier wordt weer gegeven, gaat u naar [github](https://aka.ms/csspeech/samples) in de `samples/batch` submap.
 
-Noteer de asynchrone instellingen voor het posten van audio en het ontvangen van de transcriptie-status. De client die u maakt, is een .NET HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de details van het `GetTranscriptions` audio bestand en een methode voor het ontvangen van de resultaten. `PostTranscriptions`retourneert een ingang en `GetTranscriptions` gebruikt deze om een ingang te maken om de status van transcriptie op te halen.
+Noteer de asynchrone instellingen voor het posten van audio en het ontvangen van de transcriptie-status. De client die u maakt, is een .NET HTTP-client. Er is een `PostTranscriptions` methode voor het verzenden van de details van het audio bestand en een `GetTranscriptions` methode voor het ontvangen van de statussen. `PostTranscriptions`retourneert een ingang en `GetTranscriptions` gebruikt deze om een ingang te maken om de status van transcriptie op te halen.
 
-In de huidige voorbeeld code is geen aangepast model opgegeven. De service maakt gebruik van de basis modellen voor het transcriberen van het bestand of de bestanden. Als u de modellen wilt opgeven, kunt u op dezelfde manier door geven als de model-Id's voor de akoestische en het taal model.
+In de huidige voorbeeld code is geen aangepast model opgegeven. De service gebruikt het basis model voor het transcriberen van het bestand of de bestanden. Als u het model wilt opgeven, kunt u de model verwijzing voor het aangepaste model door geven aan dezelfde methode.
 
 > [!NOTE]
-> Voor basislijn transcripties hoeft u de ID voor de basislijn modellen niet te declareren. Als u alleen een taal model-ID opgeeft (en geen akoestische model-ID), wordt er automatisch een overeenkomstig akoestische model geselecteerd. Als u alleen een akoestische model-ID opgeeft, wordt automatisch een overeenkomend taal model geselecteerd.
+> Voor basislijn transcripties hoeft u de ID voor het basis model niet te declareren.
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-U kunt het voor beeld in de `samples/batch` directory vinden in de [github-voorbeeld opslagplaats](https://aka.ms/csspeech/samples).
+U kunt het voor beeld in de `samples/batch` Directory vinden in de [github-voorbeeld opslagplaats](https://aka.ms/csspeech/samples).
 
 ## <a name="next-steps"></a>Volgende stappen
 

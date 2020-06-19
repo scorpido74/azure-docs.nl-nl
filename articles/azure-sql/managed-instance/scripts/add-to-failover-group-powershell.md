@@ -3,7 +3,7 @@ title: 'PowerShell: Een beheerd exemplaar toevoegen aan een groep voor automatis
 titleSuffix: Azure SQL Managed Instance
 description: Voorbeeldscript van Azure PowerShell om een beheerd exemplaar te maken, dit toe te voegen aan een groep voor automatische failover, en failover te testen.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 27179f217d370a5ae4b9a4e87eaebc7659b66930
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b6ad060939af0d79f93e15672af45e0224c1ca5c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220946"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708549"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>PowerShell gebruiken om een beheerd exemplaar toe te voegen aan een failovergroep 
 

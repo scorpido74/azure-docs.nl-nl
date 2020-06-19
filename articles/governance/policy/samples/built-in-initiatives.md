@@ -1,21 +1,25 @@
 ---
 title: Lijst met ingebouwde beleidsinitiatieven
 description: Toont ingebouwde beleidsinitiatieven voor Azure Policy. Categorieën omvatten Naleving van regelgeving, Gastconfiguratie en meer.
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: b3b0826e2121e7d609bd4091a162fa1820c1be53
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 41e19426daeaee799f9ad008c820a689fe552ec4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709127"
 ---
 # <a name="azure-policy-built-in-initiative-definitions"></a>Ingebouwde Azure Policy-initiatiefdefinities
 
 Deze pagina is een index van ingebouwde Azure Policy-initiatiefdefinities.
 
 De naam van elke ingebouwde initiatiefdefinitie linkt naar de initiatiefdefinitiebron op de [Azure Policy GitHub-opslagplaats](https://github.com/Azure/azure-policy). De ingebouwde initiatiefdefinities zijn gegroepeerd op de eigenschap **categorie** in **metagegevens**. Als u naar een specifieke **categorie** wilt springen, gebruikt u het menu aan de rechterkant van de pagina. Druk anders op <kbd>Ctrl</kbd>-<kbd>F</kbd> om de zoekfunctie van uw browser te gebruiken.
+
+## <a name="cosmos-db"></a>Cosmos DB
+
+[!INCLUDE [azure-policy-samples-policysets-cosmos-db](../../../../includes/policy/samples/bycat/policysets-cosmos-db.md)]
 
 ## <a name="guest-configuration"></a>Gastconfiguratie
 

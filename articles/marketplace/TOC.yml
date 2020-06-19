@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Een technische asset voor een Azure-VM maken
               items:
+                - name: 'Certificering van virtuele machines: problemen en oplossingen'
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Een technische asset voor een Azure-VM maken
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Veelgestelde vragen over technische assets van Azure-VM

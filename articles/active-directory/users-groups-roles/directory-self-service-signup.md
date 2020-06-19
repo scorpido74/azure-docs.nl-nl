@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.workload: identity
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582994"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728823"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Wat is een self-service registratie voor Azure Active Directory?
 
@@ -52,7 +52,7 @@ Een beheerder kan deze mogelijkheden configureren met de volgende para meters va
 AllowEmailVerifiedUsers en AllowAdHocSubscriptions zijn instellingen voor de hele directory die kunnen worden toegepast op een beheerde of onbeheerde map. Hier volgt een voor beeld waarin:
 
 * U beheert een directory met een geverifieerd domein, zoals contoso.com
-* U maakt gebruik van B2B-samen werking vanuit een andere Directory om een gebruiker die nog nietuserdoesnotexist@contoso.combestaat () uit te nodigen in de hoofdmap van contoso.com
+* U maakt gebruik van B2B-samen werking vanuit een andere Directory om een gebruiker die nog niet bestaat () uit te nodigen userdoesnotexist@contoso.com in de hoofdmap van contoso.com
 * De AllowEmailVerifiedUsers is ingeschakeld op de basismap
 
 Als aan de voor waarden wordt voldaan, wordt een lid van de gebruiker in de basismap gemaakt en wordt een B2B-gast gebruiker gemaakt in de uitgenodigde map.

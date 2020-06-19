@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: overview
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbdf4c57e1bf6e7f3f581b9a6186567e10743d52
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221172"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728364"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -96,9 +96,9 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
-| land |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
+| country |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
 | companyName | Een wille keurige teken reeks waarde of *Null* | (User. companyName-EQ "waarde") |
-| afdeling |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
+| department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
 | displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
 | employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
 | facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(User. facsimileTelephoneNumber-EQ "waarde") |
@@ -390,7 +390,7 @@ De volgende kenmerken van apparaten kunnen worden gebruikt.
  deviceId | een geldige Azure AD-apparaat-ID | (apparaat. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  Id | een geldige Azure AD-object-ID |  (apparaat. objectId-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | een teken reeks waarde die wordt gebruikt door auto pilot, zoals alle auto pilot-apparaten, OrderID of PurchaseOrderID  | (Device. devicePhysicalIDs-wille keurige _-bevat "[ZTDId]") (Device. devicePhysicalIds-wille keurige _-EQ "[OrderID]: 179887111881") (Device. devicePhysicalIds-wille keurige _-EQ "[PurchaseOrderId]: 76222342342")
- systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (Device. systemLabels-bevat "M365Managed")
+ systemLabels | een teken reeks die overeenkomt met de eigenschap van het intune-apparaat voor het labelen van moderne werkplek apparaten | (device.systemLabels-bevat "M365Managed")
 
 > [!Note]  
 > Voor de deviceOwnership bij het maken van dynamische groepen voor apparaten moet u de waarde instellen op ' bedrijf '. Op intune wordt het eigendom van het apparaat in plaats van het bedrijf weer gegeven. Raadpleeg [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes) voor meer informatie. 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587876"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073220"
 ---
 Ga aan de slag met de face-client bibliotheek voor go. Volg deze stappen om de bibliotheek te installeren en onze voor beelden voor basis taken uit te proberen. De face-service biedt u toegang tot geavanceerde algoritmen voor het detecteren en herkennen van menselijke gezichten in afbeeldingen.
 
@@ -30,66 +30,14 @@ Gebruik de client bibliotheek van Face service voor Ga naar:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 * De nieuwste versie van [Go](https://golang.org/dl/)
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Nadat u een sleutel en eind punt hebt verkregen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt met de naam `FACE_SUBSCRIPTION_KEY` en `FACE_ENDPOINT` respectievelijk.
 
-## <a name="set-up"></a>Instellen
-
-### <a name="create-a-face-azure-resource"></a>Een gezichts-Azure-resource maken 
-
-Begin met het gebruik van de service Face door een Azure-resource te maken. Kies het resource type dat het meest geschikt is voor u:
-
-* Een [proef resource](https://azure.microsoft.com/try/cognitive-services/#decision) (geen Azure-abonnement vereist): 
-    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/). 
-    * Dit is een uitstekende optie als u een gezichts service wilt proberen, maar geen Azure-abonnement hebt.
-* Een [Face Service-Resource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
-    * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
-* Een [resource met meerdere services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
-    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.
-
-### <a name="create-an-environment-variable"></a>Een omgevings variabele maken
-
->[!NOTE]
-> De eind punten voor niet-proef resources die zijn gemaakt na 1 juli 2019, gebruiken de aangepaste indeling voor subdomeinen die hieronder wordt weer gegeven. Zie [aangepaste subdomein namen voor Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)voor meer informatie en een volledige lijst met regionale eind punten. 
-
-Met uw sleutel en eind punt van de resource die u hebt gemaakt, maakt u twee omgevings variabelen voor verificatie:
-* `FACE_SUBSCRIPTION_KEY`-De bron sleutel voor het verifiëren van uw aanvragen.
-* `FACE_ENDPOINT`-Het resource-eind punt voor het verzenden van API-aanvragen. Dit ziet er als volgt uit: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-Volg de instructies voor uw besturings systeem.
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-Nadat u de omgevings variabele hebt toegevoegd, start u het console venster opnieuw.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
-
-#### <a name="macos"></a>[MacOS](#tab/unix)
-
-Bewerk uw `.bash_profile` en voeg de omgevings variabele toe:
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
-***
+## <a name="setting-up"></a>Instellen
 
 ### <a name="create-a-go-project-directory"></a>Een go-projectmap maken
 
@@ -138,7 +86,7 @@ Open `sample-app.go` de IDE-of tekst editor van uw voor keur. Voeg vervolgens de
 
 Vervolgens begint u met het toevoegen van code voor het uitvoeren van verschillende gezichts service bewerkingen.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de face service go-client bibliotheek.
 
@@ -251,7 +199,7 @@ De volgende code neemt een afbeelding met meerdere gezichten en zoekt naar de id
 
 ### <a name="get-a-test-image"></a>Een test installatie kopie ophalen
 
-De volgende code zoekt in de hoofdmap van het project naar een afbeelding _Test-Image-person-Group. jpg_ en laadt deze in het programma geheugen. U kunt deze installatie kopie vinden in dezelfde opslag plaats als de installatie kopieën die worden gebruikt voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+Met de volgende code wordt in de hoofdmap van het project gezocht naar een installatie kopie _test-image-person-group.jpg_ en wordt deze in het programma geheugen geladen. U kunt deze installatie kopie vinden in dezelfde opslag plaats als de installatie kopieën die worden gebruikt voor het [maken en trainen van een persoons groep](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -301,13 +249,13 @@ De volgende code vergelijkt elk van de bron installatie kopieën met de doel ins
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Een moment opname maken voor gegevens migratie
 
-Met de functie moment opnamen kunt u opgeslagen gezichts gegevens, zoals een getraind **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup** -object hebt gemaakt met een gratis proef abonnement en nu wilt migreren naar een betaald abonnement. Zie de [informatie over uw gezicht migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een uitgebreid overzicht van de functie moment opnamen.
+Met de functie moment opnamen kunt u opgeslagen gezichts gegevens, zoals een getraind **PersonGroup**, verplaatsen naar een ander Azure Cognitive Services Face-abonnement. U kunt deze functie gebruiken als u bijvoorbeeld een **PersonGroup** -object hebt gemaakt met behulp van een gratis abonnement en u dit nu wilt migreren naar een betaald abonnement. Zie de [informatie over uw gezicht migreren](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) voor een uitgebreid overzicht van de functie moment opnamen.
 
 In dit voor beeld migreert u de **PersonGroup** die u hebt gemaakt in [een persoons groep maken en trainen](#create-and-train-a-person-group). U kunt deze sectie eerst volt ooien of uw eigen face data-construct (s) gebruiken.
 
 ### <a name="set-up-target-subscription"></a>Doel abonnement instellen
 
-Eerst moet u een tweede Azure-abonnement hebben met een face-resource. u kunt dit doen door de stappen in de sectie [instellen](#set-up) te herhalen. 
+Eerst moet u een tweede Azure-abonnement hebben met een face-resource. u kunt dit doen door de stappen in de sectie [instellen](#setting-up) te herhalen. 
 
 Maak vervolgens de volgende variabelen aan de bovenkant van de methode **Main** . U moet ook nieuwe omgevings variabelen maken voor de abonnements-ID van uw Azure-account, evenals de sleutel, het eind punt en de abonnements-ID van uw nieuwe (doel) account.
 

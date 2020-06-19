@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310594"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080652"
 ---
 # <a name="long-audio-api-preview"></a>Lange audio-API (preview-versie)
 
@@ -66,7 +66,7 @@ De **HTTP-status codes** wijzen op veelvoorkomende fouten.
 |        | 400 | De spraak-synthese ondersteunt alleen het tekst bestand in UTF-8-code ring met de byte volgorde markering. | Zorg ervoor dat de invoer bestanden zich in UTF-8-code ring bevinden met de markering byte volgorde. |
 |        | 400 | Alleen geldige SSML-invoer waarden zijn toegestaan in de Voice Synthesis-aanvraag. | Controleer of de ingevoerde SSML-expressies juist zijn. |
 |        | 400 | De spraak naam {Voice name} is niet gevonden in het invoer bestand. | De stem naam van de invoer SSML is niet uitgelijnd met de model-ID. |
-|        | 400 | De hoeveelheid alinea's in het invoer bestand moet kleiner zijn dan 10.000. | Zorg ervoor dat de alinea in het bestand kleiner is dan 10.000. |
+|        | 400 | Het aantal alinea's in het invoer bestand moet kleiner zijn dan 10.000. | Zorg ervoor dat het aantal alinea's in het bestand kleiner is dan 10.000. |
 |        | 400 | Het invoer bestand moet langer zijn dan 400 tekens. | Zorg ervoor dat uw invoer bestand langer is dan 400 tekens. |
 |        | 404 | Het model dat is gedeclareerd in de definitie van de audio-synthese, is niet gevonden: {modelID}. | Controleer of {modelID} juist is. |
 |        | 429 | De limiet voor actieve audio-synthese overschrijdt. Wacht tot sommige aanvragen zijn voltooid. | De server mag Maxi maal 120 aanvragen voor elk Azure-account uitvoeren en in de wachtrij plaatsen. Wacht tot er nieuwe aanvragen zijn verzonden totdat sommige aanvragen zijn voltooid. |

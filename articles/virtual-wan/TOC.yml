@@ -44,14 +44,10 @@
           href: path-selection-multiple-links.md
 - name: Instructiegidsen
   items:
-    - name: Virtuele netwerkgateway verbinden met een virtual WAN
-      href: connect-virtual-network-gateway-vwan.md
     - name: Globale VNet-peering configureren
       href: global-peering-vnet.md
     - name: Een virtuele WAN-SKU upgraden
       href: upgrade-virtual-wan.md
-    - name: Aangepast IPsec-beleid configureren
-      href: virtual-wan-custom-ipsec-portal.md
     - name: ExpressRoute
       items:
         - name: Een ExpressRoute-verbinding maken
@@ -62,6 +58,10 @@
       items:
         - name: Een site-naar-site-verbinding maken
           href: virtual-wan-site-to-site-portal.md
+        - name: Virtuele netwerkgateway verbinden met een virtual WAN
+          href: connect-virtual-network-gateway-vwan.md
+        - name: Aangepast IPsec-beleid configureren
+          href: virtual-wan-custom-ipsec-portal.md
     - name: Gebruikers-VPN (punt-naar-site)
       items:
         - name: Gebruikers-VPN-verbinding maken
@@ -109,7 +109,7 @@
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI
