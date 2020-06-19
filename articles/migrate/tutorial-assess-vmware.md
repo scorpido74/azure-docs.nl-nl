@@ -4,12 +4,12 @@ description: Hier wordt beschreven hoe u met behulp van Azure Migrate-servereval
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 87eac5979176fe9a71db15961e4c5f822b56568e
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 231daff5972e9b2f115df9e6184c43a553f55b83
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331879"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771305"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>VMware-VM’s evalueren met Serverevaluatie
 
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 - De eerste zelfstudie in deze reeks [voltooien](tutorial-prepare-vmware.md). Als u dit niet doet, werken de instructies in deze zelfstudie niet.
 - In de eerste zelfstudie hebt u het volgende gedaan:
     - [Azure voorbereiden](tutorial-prepare-vmware.md#prepare-azure) om te werken met Azure Migrate.
-    - [VMware voorbereiden voor evaluatie](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment). Dit omvat het controleren van VMware-instellingen en het instellen van een account dat Azure Migrate kan gebruiken om toegang te krijgen tot vCenter Server.
+    - [VMware voorbereiden voor evaluatie](tutorial-prepare-vmware.md#prepare-for-assessment). Dit omvat het controleren van VMware-instellingen en het instellen van een account dat Azure Migrate kan gebruiken om toegang te krijgen tot vCenter Server.
     - [Controleren](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment) wat u nodig hebt om het Azure Migrate-apparaat voor VMware-evaluatie te implementeren.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate-project instellen
@@ -99,7 +99,7 @@ Controleer of het OVA-bestand veilig is voordat u het implementeert:
         --- | --- | ---
         VMware (10,9 GB) | [Nieuwste versie](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
 
-    - Voor Azure Goverment:
+    - Voor Azure Government:
     
         **Algoritme** | **Downloaden** | **SHA256**
         --- | --- | ---
@@ -170,7 +170,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie- en pre
 1. Geef in **vCenter Server-gegevens opgeven** de naam (FQDN) of het IP-adres van de vCenter Server-instantie op. U kunt de standaardpoort laten staan of een aangepaste poort opgeven waarop vCenter Server luistert.
 2. Geef bij **Gebruikersnaam** en **Wachtwoord** de vCenter-accountreferenties op die het apparaat gebruikt om virtuele machines op het vCenter Server-exemplaar te detecteren. 
 
-    - U moet een account met de vereiste machtigingen hebben ingesteld in de [vorige zelfstudie](tutorial-prepare-vmware.md#set-up-an-account-for-assessment).
+    - U moet een account met de vereiste machtigingen hebben ingesteld in de [vorige zelfstudie](tutorial-prepare-vmware.md#set-up-permissions-for-assessment).
     - Als u het detectiebereik wilt beperken tot specifieke VMware-objecten (vCenter Server-datacenters, clusters, een map met clusters, hosts, een map met hosts of afzonderlijke VM's), raadpleegt u de instructies in [dit artikel](set-discovery-scope.md) om het account dat wordt gebruikt door Azure Migrate te begrenzen.
 
 3. Selecteer **Verbinding valideren** om ervoor te zorgen dat het apparaat verbinding kan maken met vCenter Server.
@@ -178,7 +178,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie- en pre
 
     - U kunt hier eventueel referenties toevoegen als u een account hebt gemaakt dat u wilt gebruiken voor de functie voor [toepassingsdetectie](how-to-discover-applications.md) of de [functie voor analyse van afhankelijkheden zonder agent](how-to-create-group-machine-dependencies-agentless.md).
     - Als u deze functies niet gebruikt, kunt u deze instelling overslaan.
-    - Controleer de referenties die nodig zijn voor [toepassingsdetectie](migrate-support-matrix-vmware.md#application-discovery) of voor [analyse zonder agent](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements).
+    - Controleer de referenties die nodig zijn voor [toepassingsdetectie](migrate-support-matrix-vmware.md#application-discovery-requirements) of voor [analyse zonder agent](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless).
 
 5. **Sla op en start detectie** om VM-detectie te starten.
 

@@ -5,17 +5,17 @@ description: Beschrijvingen van de gegevens sets die worden gebruikt in voorbeel
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 9bdf1cd8832d311a71276fa18d407a5b4dd98d24
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 0ecce4db01217bc182687818af365dff334e7d10
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115490"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84705896"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Studio (klassiek)
 
@@ -38,13 +38,13 @@ U kunt elk van deze gegevens sets in uw eigen experiment gebruiken door deze naa
 </tr>
 
 <tr>
-  <td>Gegevensset opbrengst binaire classificatie volwassene</td>
+  <td>Gegevensset Binaire classificatie voor volwassen Census-inkomen</td>
   <td>
-Een subset van de 1994-optelling data base, met behulp van werk volwassenen in de leeftijd van 16 met een gecorrigeerde inkomsten index van > 100.
+Een subset van de 1994 Census-database, gebruikmakend van werkende volwassenen boven de 16 jaar met een aangepaste inkomstenindex van > 100.
 <p></p>
 <b>Gebruik:</b> Classificeer gebruikers met demografische gegevens om te voors pellen of een persoon meer dan 50.000 een jaar verdient.
 <p></p>
-<b>Verwant onderzoek:</b> Kohavi, R., Becker, B., (1996). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Kohavi, R., Becker, B., (1996). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -57,15 +57,15 @@ Deze gegevensset bevat één rij voor elke Amerikaanse lucht haven, met het numm
 </tr>
 
 <tr>
-  <td>Prijs gegevens auto Mobile (onbewerkt)</td>
+  <td>Autoprijsgegevens (onbewerkt)</td>
   <td>
-Informatie over auto's per merk en model, met inbegrip van de prijs, functies zoals het aantal flessen en MPG, evenals een verzekerings risico Score.
+Informatie over auto’s per merk en model, waaronder de prijs, kenmerken zoals het aantal cilinders en MPG, evenals een verzekeringsrisicoscore.
 <p></p>
-De risico Score is in eerste instantie gekoppeld aan automatische prijs. De waarde wordt vervolgens aangepast voor het werkelijke risico in een proces dat wordt aangeduid met de vorm van een symbool. De waarde + 3 geeft aan dat het automatische risico is en dat de waarde-3 waarschijnlijk veilig is.
+De risicoscore is aanvankelijk gekoppeld aan de autoprijs. Vervolgens wordt het aangepast voor daadwerkelijk risico in een proces dat verzekeringswiskundigen symbolisering noemen. Een waarde van +3 geeft aan dat de auto risicovol is, en een waarde van -3 dat deze waarschijnlijk veilig is.
 <p></p>
 <b>Gebruik:</b> De risico Score door functies te voors pellen met behulp van regressie of multidimensionale classificatie. 
 <p></p>
-<b>Verwant onderzoek:</b> Schlimmer, J.C. (1987). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Schlimmer, J.C. (1987). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -96,7 +96,7 @@ Donor gegevens omvatten de maanden sinds de laatste donatie), de frequentie of h
 <p></p>
 <b>Gebruik:</b> Het doel is om te voors pellen via de classificatie of het donor gedoneerde bloed in maart 2007, waarbij 1 staat voor een donor tijdens de doel periode en 0 een niet-donor. 
 <p></p>
-<b>Verwant onderzoek:</b> Yeh, I.C., (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Yeh, I.C., (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 Yeh, I-Cheng, Yang, King-Jang en afschrijven, label-PN, ' kennis detectie op RFM model met behulp van Bernoulli sequence ', ' experts Systems with Applications, 2008,<a href="https://dx.doi.org/10.1016/j.eswa.2008.07.018">https://dx.doi.org/10.1016/j.eswa.2008.07.018</a>
   </td>
@@ -109,7 +109,7 @@ Een van de drie aan kanker gerelateerde gegevens sets die worden verschaft door 
 <p></p>
 <b>Gebruik:</b> Het type kanker classificeren, gebaseerd op 9 kenmerken, sommige lineair en sommige zijn categorische. 
 <p></p>
-<b>Verwant onderzoek:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Wohlberg, W.H., Street, W.N., & Mangasarian, O.L. (1995). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -126,30 +126,30 @@ De gegevensset bevat aanvullende informatie voor elke verdachte regio van de X-R
 </tr>
 
 <tr>
-  <td>Gedeelde CRM verlangen-labels</td>
+  <td>Gedeelde labels CRM-verlangen</td>
   <td>
-Labels van de KDDe Cup 2009 Customer Relationship prediction Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency. labels</a>).
+Labels uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels">orange_small_train_appetency.labels</a>).
   </td>
 </tr>
 
 <tr>
-  <td>CRM-verloop labels gedeeld</td>
+  <td>Gedeelde labels CRM-verloop</td>
   <td>
-Labels van de KDDe Cup 2009 Customer Relationship prediction Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn. labels</a>).
+Labels uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels">orange_small_train_churn.labels</a>).
   </td>
 </tr>
 
 <tr>
   <td>Gedeelde CRM-gegevensset</td>
   <td>
-Deze gegevens zijn afkomstig van de KDDe Cup 2009 Customer Relationship predictation Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train. data. zip</a>).
+Deze gegevens komen uit de KDD Cup 2009-uitdaging Klantrelaties voorspellen (<a href="http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip">orange_small_train.data.zip</a>).
 <p></p>
-De gegevensset bevat 50.000-klanten van het Franse Telecom bedrijf oranje. Elke klant heeft 230 geanonimiseerd-functies, 190 met een numerieke en 40 categorische. De functies zijn zeer verspreid.
+De gegevensset bevat 50.000 klanten van het Franse telecombedrijf Orange. Elke klant heeft 230 geanonimiseerde kenmerken, waarvan 190 numeriek en 40 categorisch zijn. De kenmerken zijn zeer verspreid.
   </td>
 </tr>
 
 <tr>
-  <td>Gedeelde verkoop etiketten voor CRM</td>
+  <td>Gedeelde labels CRM-upselling</td>
   <td>
 Labels van de KDDe Cup 2009 Customer Relationship prediction Challenge (<a href="http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels">orange_large_train_upselling. labels</a>).
   </td>
@@ -162,15 +162,15 @@ Een verzameling gesimuleerde energie profielen, op basis van 12 verschillende vo
 <p></p>
 <b>Gebruik:</b> Gebruik regressie of classificatie om de classificatie van energie-efficiëntie te voors pellen op basis van twee echte reacties. Voor classificatie met meerdere klassen wordt de reactie variabele afgerond op het dichtstbijzijnde gehele getal. 
 <p></p>
-<b>Verwant onderzoek:</b> Xifara, A. & Tsanas, A. (2012). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Xifara, A. & Tsanas, A. (2012). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
-  <td>Gegevens van vlieg vertraging</td>
+  <td>Gegevens over vluchtvertragingen</td>
   <td>
-On-time prestatie gegevens van reizigers vlucht die zijn gemaakt op basis van de TranStats-gegevens verzameling van het Amerikaanse ministerie van Trans Port (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">op tijd</a>).
+Gegevens over tijdige passagiersvluchten opgehaald uit de TranStats-gegevensverzameling van de U.S. Department of Transportation (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">On-Time</a>).
 <p></p>
-De gegevensset heeft betrekking op de periode van april tot en met 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
+De gegevensset dekt de tijdsperiode april t/m oktober 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
   <li>De gegevensset is gefilterd op alleen de 70 drukste lucht havens in het continentale VS</li>
   <li>Geannuleerde vluchten zijn gelabeld met meer dan 15 minuten.</li>
@@ -198,25 +198,25 @@ Bevat weer gegevens, zoals de indices van Tempe ratuur en vochtigheid en wind sn
 <p></p>
 <b>Gebruik:</b> Dit is een moeilijke regressie taak, waarbij het doel is om het gebrande gebied van de bosbranden te voors pellen. 
 <p></p>
-<b>Verwant onderzoek:</b> Cortez, P., & Morais, A. (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Cortez, P., & Morais, A. (2008). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 [Cortez en Morais, 2007] P. Cortez en een. Morais. Een aanpak van gegevens analyse voor het voors pellen van forests met behulp van meteorologische gegevens. In J. Neves, M. F. Santos en J. Machado eds., nieuwe trends in kunst matige intelligentie, procedures voor de 13 EPIA 2007-Portugese conferentie over kunst matige intelligentie, december, Guimarães, Portugal, pp. 512-523, 2007. APPIA, ISBN-13 978-989-95618-0-9. Beschikbaar op: <a href="http://www.dsi.uminho.pt/~pcortez/fires.pdf">http://www.dsi.uminho.pt/~pcortez/fires.pdf</a> .
   </td>
 </tr>
 
 <tr>
-  <td>Duitse gegevensset voor credit card UCI</td>
+  <td>Gegevensset UCI German Credit Card</td>
   <td>
-De Statlog-gegevensset (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog + Duitsland + credit</a>Card) van de Icb's (Duitsland), met behulp van het bestand Duits. gegevens.
+De gegevensset UCI Statlog (German Credit Card) (<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">Statlog+German+Credit+Data</a>), die het german.data-bestand gebruikt.
 <p></p>
-De gegevensset classificeert mensen, zoals wordt beschreven door een set kenmerken, als laag of hoog risico. Elk voor beeld vertegenwoordigt een persoon. Er zijn 20 functies, zowel numeriek als categorische, en een binair label (de waarde voor het credit risico). Vermeldingen met een hoog credit bedrag hebben Label = 2, items met een laag krediet risico hebben label = 1. De kosten voor een slechtere classificatie van een voor beeld met een laag risico zijn 1, terwijl de kosten voor een slechtere voor beeld van een hoog risico worden geclassificeerd als laag 5.
+De gegevensset classificeert personen, beschreven door een set kenmerken, als laag of hoog kredietrisico. Elk voorbeeld vertegenwoordigt een persoon. Er zijn 20 kenmerken, zowel numeriek als categorisch, en een binair label (de kredietrisicowaarde). Vermeldingen van een hoog kredietrisico hebben label = 2, vermeldingen van een laag kredietrisico hebben label = 1. De kosten van het verkeerd classificeren van een voorbeeld met laag risico als hoog is 1, en de kosten van het verkeerd classificeren van een voorbeeld met hoog risico als laag is 5.
   </td>
 </tr>
 
 <tr>
-  <td>IMDB-film titels</td>
+  <td>IMDB-filmtitels</td>
   <td>
-De gegevensset bevat informatie over films die zijn geclassificeerd in Twitter tweets: IMDB-film-ID, film naam, genre en productie jaar. De gegevensset bevat 17K-films. De gegevensset is geïntroduceerd in het papier ' S. Dooms, T. de PESSEMIER en L. Martens. MovieTweetings: een gegevensset voor film classificatie die is verzameld van Twitter. Workshop voor crowdsourcing en menselijke berekeningen voor aanbevolen systemen, CrowdRec op RecSys 2013. "
+De gegevensset bevat informatie over films die zijn beoordeeld in Twitter-tweets: IMDB-film-ID, filmnaam, genre en productiejaar. De gegevensset bevat 17.000 films. De gegevensset werd geïntroduceerd in het rapport "S. Dooms, T. De Pessemier en L. Martens. MovieTweetings: a Movie Rating Dataset Collected From Twitter. Workshop on Crowdsourcing and Human Computation for Recommender Systems, CrowdRec at RecSys 2013."
   </td>
 </tr>
 
@@ -227,13 +227,13 @@ Dit is mogelijk de best bekende data base die wordt gevonden in de documentatie 
 <p></p>
 <b>Gebruik:</b> Het Iris type voors pellen op basis van de metingen.  
 <p></p>
-<b>Verwant onderzoek:</b> Fisher, R.A. (1988). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Fisher, R.A. (1988). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
   <td>Film tweets</td>
   <td>
-De gegevensset is een uitgebreide versie van de Tweetings-gegevensset van de film. De gegevensset bevat 170K-classificaties voor films, geëxtraheerd uit goed gestructureerde tweets op Twitter. Elk exemplaar vertegenwoordigt een Tweet en is een tupel: gebruikers-ID, IMDB-film-ID, classificatie, tijds tempel, aantal favorieten voor deze Tweet en het aantal retweeten van deze Tweet. De gegevensset is beschikbaar gesteld door een. zei, S. DOOMS, B. Loni en D. Tikk voor aanbevolen systemen Challenge 2014.
+Deze gegevensset is een uitgebreide versie van de gegevensset MovieTweetings. De gegevensset bevat 170.000 beoordelingen van films, geëxtraheerd uit goed gestructureerde tweets op Twitter. Elk exemplaar vertegenwoordigt een tweet en is een tuple: gebruikers-ID, IMDB-film-ID, beoordeling, tijdstempel, aantal vind-ik-leuks van deze tweet en aantal retweets van deze tweet. De gegevensset werd beschikbaar gesteld door A. Said, S. Dooms, B. Loni en D. Tikk voor Recommender Systems Challenge 2014.
   </td>
 </tr>
 
@@ -246,7 +246,7 @@ Het brandstof verbruik voor verschillende auto's in mijlen per gallon wordt weer
 <p></p>
 <b>Gebruik:</b> Brandstof voordelen voors pellen op basis van drie discrete kenmerken met meerdere waarden en vijf doorlopende kenmerken. 
 <p></p>
-<b>Verwant onderzoek:</b> StatLib, Carnegie Mellon University, (1993). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> StatLib, Carnegie Mellon University, (1993). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -256,7 +256,7 @@ Een subset van gegevens uit de data base van het National Institute of diabetes 
 <p></p>
 <b>Gebruik:</b> Voor spelt u of het onderwerp diabetes heeft (binaire classificatie). 
 <p></p>
-<b>Verwant onderzoek:</b> Sigillito, V. (1990). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml opslag plaats</a>. Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen </td>
+<b>Verwant onderzoek:</b> Sigillito, V. (1990). ICB Machine Learning- <a href="https://archive.ics.uci.edu/ml"> https://archive.ics.uci.edu/ml opslag plaats</a>. Irvine, CA: University of California, School of Information and Computer Science </td>
 </tr>
 
 <tr>
@@ -266,7 +266,7 @@ Een set meta gegevens over klanten, met inbegrip van demografische informatie en
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -277,7 +277,7 @@ Een set meta gegevens over restaurants en hun functies, zoals voedsel type, rest
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -288,7 +288,7 @@ Bevat beoordelingen van gebruikers aan restaurants op een schaal van 0 tot 2.
 <p></p>
 <b>Gebruik:</b> Gebruik deze gegevensset, in combi natie met de andere twee gegevens sets van het restaurant, om een aanbevolen systeem te trainen en te testen. 
 <p></p>
-<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen.
+<b>Verwant onderzoek:</b> Bache, K. en Lichman, M. (2013). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science.
   </td>
 </tr>
 
@@ -301,7 +301,7 @@ Deze gegevensset bevat een reeks records uit stalen annealing-experimenten. Het 
 <p></p>
 Staal kwaliteiten volgen een set-standaard, gedefinieerd door SAE en andere organisaties. U zoekt naar een specifieke ' grade ' (de variabele Class) en u wilt meer inzicht krijgen in de waarden die nodig zijn. 
 <p></p>
-<b>Verwant onderzoek:</b> Sterling, D. & Buntine, W. (NA). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: Universiteit van Californië, school van informatie en computer wetenschappen
+<b>Verwant onderzoek:</b> Sterling, D. & Buntine, W. (NA). ICB Machine Learning-opslag plaats <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml</a> . Irvine, CA: University of California, School of Information and Computer Science
 <p></p>
 Een nuttige hand leiding voor staal kwaliteiten vindt u hier:<a href="https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf">https://otk-sitecore-prod-v2-cdn.azureedge.net/-/media/from-sharepoint/documents/product/outokumpu-steel-grades-properties-global-standards.pdf</a>
   </td>
@@ -326,11 +326,11 @@ Houd er ook rekening mee dat het aantal achtergrond gebeurtenissen (h, voor hadr
 </tr>
 
 <tr>
-  <td>Weer gegevensset</td>
+  <td>Gegevensset Weer</td>
   <td>
-Op land gebaseerde weers waarnemingen van NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">samengevoegde gegevens van 201304 tot 201310</a>).
+Weerobservaties op het land per uur van NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">samengevoegde gegevens van 201304 tot 201310</a>).
 <p></p>
-De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de weers stations van de lucht haven, voor de periode van april tot en met 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
+De weersgegevens komen van observaties uit weerstations op luchthavens en dekken de tijdsperiode april t/m oktober 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
   <li>Er zijn weer station-Id's toegewezen aan de bijbehorende luchthaven-Id's</li>
   <li>Weer berichten die niet zijn gekoppeld aan de 70 drukste lucht havens zijn uitgefilterd</li>
@@ -341,7 +341,7 @@ De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de wee
 </tr>
 
 <tr>
-  <td>Wikipedia SP 500-gegevensset</td>
+  <td>Gegevensset Wikipedia SP 500</td>
   <td>
 Gegevens worden afgeleid van Wikipedia ( <a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a> ) op basis van artikelen van elke S&P 500-bedrijf, opgeslagen als XML-gegevens.
 <p></p>
@@ -354,53 +354,53 @@ Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevenss
   <li>Er zijn bekende bedrijfs categorieën toegevoegd</li>
 </ul>
 <p></p>
-Houd er rekening mee dat voor sommige bedrijven een artikel niet kan worden gevonden. het aantal records is dus kleiner dan 500.
+Voor sommige bedrijven kon er geen artikel worden gevonden, waardoor het aantal records minder dan 500 is.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 De gegevensset bevat klant gegevens en indicaties over hun reactie op een directe mailing campagne. Elke rij vertegenwoordigt een klant. De gegevensset bevat negen functies voor demografische gegevens van gebruikers en eerdere gedragingen, en drie label kolommen (bezoeken, conversie en uitgaven).  Bezoek is een binaire kolom die aangeeft dat een klant na de marketing campagne is bezocht. Conversie geeft aan dat een klant iets heeft gekocht. Best Eden aan het bedrag dat is uitgegeven.  De gegevensset is beschikbaar gesteld door Kevin Hillstrom voor MineThatData-mail analyse en gegevens analyse.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 Functies van test voorbeelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 781K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 Functies van training-voor beelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 23K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. CSV</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
-Gegevensset van de KDDe Cup 1999 kennis detectie en Hulpprogram Ma's voor gegevens analyse van<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.</a>
+Gegevensset van de KDDe Cup 1999 kennis detectie en hulp middelen voor gegevens analyse van<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.html</a>.
 <p></p>
-De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. CSV</a>) en bevat zowel trainingen als gegevens sets testen. De trainings gegevensset bevat ongeveer 126K rijen en 43 kolommen, met inbegrip van de labels. Er zijn drie kolommen die deel uitmaken van de label informatie en 40 kolommen die bestaan uit numerieke en teken reeks-en categorische-functies, zijn beschikbaar voor het trainen van het model. De test gegevens hebben ongeveer 22.5 K-test voorbeelden met dezelfde 43 kolommen als in de trainings gegevens.
+De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a>) en bevat zowel trainingen als gegevens sets testen. De trainings gegevensset bevat ongeveer 126K rijen en 43 kolommen, met inbegrip van de labels. Er zijn drie kolommen die deel uitmaken van de label informatie en 40 kolommen die bestaan uit numerieke en teken reeks-en categorische-functies, zijn beschikbaar voor het trainen van het model. De test gegevens hebben ongeveer 22.5 K-test voorbeelden met dezelfde 43 kolommen als in de trainings gegevens.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. topics. qrels. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset van Reuters. Een nieuws artikel kan worden toegewezen aan verschillende onderwerpen. De indeling van elke rij is ' &lt; naam van onderwerp &gt; &lt; document-id &gt; 1 '. De gegevensset bevat 2.6 M-onderwerps toewijzingen. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Deze gegevens zijn afkomstig van de KDDe Cup 2010 Student prestatie-evaluatie test (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance Evaluation</a>). De gebruikte gegevens zijn de Algebra_2008_2009-Trainingsset (stempel, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Uitdaging gegevensset van de KDDe Cup 2010 onderwijs gegevens analyse uitdaging. Zoek het op <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">down loads. jsp</a>.
+Deze gegevens zijn afkomstig van de KDDe Cup 2010 Student prestatie-evaluatie test (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance Evaluation</a>). De gebruikte gegevens zijn de Algebra_2008_2009-Trainingsset (stempel, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Uitdaging gegevensset van de KDDe Cup 2010 onderwijs gegevens analyse uitdaging. Zoek het op <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
-De gegevensset is gedownload en opgeslagen in Azure Blob-opslag (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a>) en bevat logboek bestanden van een student-studie systeem. De opgegeven functies omvatten de probleem-ID en de korte beschrijving, student-ID, tijds tempel en het aantal pogingen dat de student heeft gedaan voordat het probleem op de juiste manier wordt opgelost. De oorspronkelijke gegevensset heeft 8,9 M Records; Deze gegevensset is niet beschikbaar-voor beeld van de eerste 100.000 rijen. De gegevensset heeft 23 door tabs gescheiden kolommen van verschillende typen: numeriek, categorische en tijds tempel.
+De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) en bevat logboek bestanden van een student hulp systeem. De opgegeven functies omvatten de probleem-ID en de korte beschrijving, student-ID, tijds tempel en het aantal pogingen dat de student heeft gedaan voordat het probleem op de juiste manier wordt opgelost. De oorspronkelijke gegevensset heeft 8,9 M Records; Deze gegevensset is niet beschikbaar-voor beeld van de eerste 100.000 rijen. De gegevensset heeft 23 door tabs gescheiden kolommen van verschillende typen: numeriek, categorische en tijds tempel.
   </td>
 </tr>
 

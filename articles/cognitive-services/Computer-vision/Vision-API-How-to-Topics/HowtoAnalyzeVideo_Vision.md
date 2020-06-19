@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166836"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983507"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Video's in bijna realtime analyseren
 
@@ -230,12 +230,12 @@ Met deze methode kunt u het gedetecteerde gezicht direct visualiseren. U kunt de
 
 Ga als volgt te werk om aan de slag te gaan met dit voor beeld:
 
-1. Haal API-sleutels voor de Vision-API's op uit [Abonnementen](https://azure.microsoft.com/try/cognitive-services/). Voor video frame analyse zijn de volgende services van toepassing:
-    - [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. Kloon de [cognitieve-samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) github opslag plaats.
-
-3. Open het voor beeld in Visual Studio 2015 of hoger en bouw en voer de voorbeeld toepassingen uit:
+1. Maak een [Azure-account](https://azure.microsoft.com/free/cognitive-services/). Als u er al een hebt, kunt u door gaan naar de volgende stap.
+2. Maak resources voor Computer Vision en gezicht in de Azure Portal om uw sleutel en eind punt op te halen. Zorg ervoor dat u de gratis laag (F0) selecteert tijdens de installatie.
+   - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Gezicht](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Nadat de resources zijn geïmplementeerd, klikt u op **Ga naar resource** om uw sleutel en eind punt voor elke resource te verzamelen. 
+3. Kloon de [cognitieve-samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) github opslag plaats.
+4. Open het voor beeld in Visual Studio 2015 of hoger en bouw en voer de voorbeeld toepassingen uit:
     - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - Voor LiveCameraSample voert u de sleutels in het deel venster **instellingen** van de app in. De sleutels worden opgeslagen in verschillende sessies als gebruikers gegevens.
 
@@ -245,7 +245,7 @@ Met de mogelijkheden van de afbeeldings-, spraak-, video-en tekst-informatie ove
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u geleerd hoe u bijna realtime analyses kunt uitvoeren op live video streams met behulp van het gezichts-en Computer Vision Services. U hebt ook geleerd hoe u onze voorbeeld code kunt gebruiken om aan de slag te gaan. Ga naar de [registratie pagina van Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/)om aan de slag te gaan met het bouwen van uw app met behulp van gratis API-sleutels.
+In dit artikel hebt u geleerd hoe u bijna realtime analyses kunt uitvoeren op live video streams met behulp van het gezichts-en Computer Vision Services. U hebt ook geleerd hoe u onze voorbeeld code kunt gebruiken om aan de slag te gaan.
 
 U kunt feedback en suggesties bieden in de [github-opslag plaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Ga naar onze [UserVoice-site](https://cognitive.uservoice.com/)om uitgebreidere API-feedback te bieden.
 

@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995646"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791279"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -122,6 +122,7 @@ Als een specifieke tag niet wordt weergegeven in Cost Management, ga dan het vol
 - Is de tag meer dan 24 uur geleden toegepast? Zie [Updates en retentie voor kosten- en gebruiksgegevens](#cost-and-usage-data-updates-and-retention)
 - Ondersteunt het resourcetype tags? De volgende resourcetypen bieden geen ondersteuning voor tags in gebruiksgegevens vanaf 1 december 2019. Zie [Tagsondersteuning voor Azure-resources](../../azure-resource-manager/tag-support.md) voor een volledige lijst van wat er wordt ondersteund.
     - Azure Active Directory B2C
+    - Azure Bastion
     - Azure-firewalls
     - Azure NetApp Files
     - Data Factory

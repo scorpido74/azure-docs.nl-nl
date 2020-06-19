@@ -2,21 +2,21 @@
 title: Automatische SaaS-app-gebruikers inrichten in azure AD
 description: Een inleiding tot het gebruik van Azure AD voor het automatisch inrichten, het inrichten en voortdurend bijwerken van gebruikers accounts in meerdere SaaS-toepassingen van derden.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 1e72d885858b543999090a4a0521845d556802fd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593111"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781087"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Gebruikers inrichten en het ongedaan maken van de inrichting van toepassingen automatiseren met Azure AD
 

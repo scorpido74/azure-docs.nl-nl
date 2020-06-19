@@ -99,6 +99,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: VM is niet responsief wanneer een groepsbeleid wordt toegepast
           href: unresponsive-vm-apply-group-policy.md
+        - name: VM is niet responsief wanneer een beveiligingsbeleid wordt toegepast
+          href: unresponsive-vm-apply-security-policy.md
 - name: Kan geen verbinding maken met mijn VM
   items:
     - name: RDP

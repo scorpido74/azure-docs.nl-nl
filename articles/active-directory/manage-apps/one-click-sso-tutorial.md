@@ -3,25 +3,25 @@ title: Eenmalige aanmelding (SSO) van uw Azure Marketplace-toepassing | Microsof
 description: Stappen voor één klik configuratie van SSO voor uw toepassing vanuit Azure Marketplace.
 services: active-directory
 documentationCenter: na
-author: jeevansd
-manager: mtillman
-ms.reviewer: celested
+author: kenwith
+manager: celestedg
+ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: jeedes
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c7e72718e13106b9d895921a2335f1525a7b88c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67872431"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763122"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>Eén Klik op app-configuratie van eenmalige aanmelding
 
@@ -46,7 +46,7 @@ De functie SSO met één klik is ontworpen voor het configureren van eenmalige a
 
 1. Voeg de toepassing toe vanuit Azure Marketplace.
 
-2. Selecteer **eenmalige aanmelding**.
+2. Selecteer **Eenmalige aanmelding**.
 
 3. Selecteer **eenmalige aanmelding inschakelen**.
 
@@ -59,7 +59,7 @@ De functie SSO met één klik is ontworpen voor het configureren van eenmalige a
 
    ![De browser uitbreiding mijn apps veilig aanmelden installeren](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Nadat u de uitbrei ding aan de browser hebt toegevoegd, selecteert u **toepassings naam \<\>van installatie**. Nadat u bent omgeleid naar de beheer portal van de toepassing, meldt u zich aan als beheerder.
+6. Nadat u de uitbrei ding aan de browser hebt toegevoegd, selecteert u **Setup \<Application Name\> **. Nadat u bent omgeleid naar de beheer portal van de toepassing, meldt u zich aan als beheerder.
 
    ![Toepassings naam van installatie](./media/one-click-sso-tutorial/setup-sso.png)
 
@@ -84,6 +84,6 @@ De functie SSO met één klik is ontworpen voor het configureren van eenmalige a
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Lijst met zelf studies voor het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+* [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
 * [Wat is de browser uitbreiding mijn apps veilig aanmelden?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  
