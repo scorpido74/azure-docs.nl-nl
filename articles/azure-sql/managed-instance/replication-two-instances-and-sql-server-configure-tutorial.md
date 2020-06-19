@@ -2,7 +2,7 @@
 title: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
 description: Een zelfstudie waarin de replicatie wordt geconfigureerd tussen een beheerd exemplaar voor de uitgever, een beheerd exemplaar voor de distributeur en een SQL Server-abonnee op een Azure-VM, samen met de benodigde netwerkonderdelen, zoals een privé-DNS-zone en VPN-peering.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.topic: tutorial
@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: a34ac27459a84048ac5fc9ef10f6f55def6cec78
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221327"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708515"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Zelfstudie: Transactionele replicatie tussen Azure SQL Managed Instance en SQL Server configureren
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
