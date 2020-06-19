@@ -13,32 +13,32 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 7a0efa00b4fc881c113e151c6730ca5185ea0349
-  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+  ms.openlocfilehash: 55cf57d283433936b0cba03b67de8726d0ee98c8
+  ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84194440"
+  ms.lasthandoff: 06/17/2020
+  ms.locfileid: "84945593"
 highlightedContent:
   items:
   - title: Inleiding tot Azure Key Vault
     itemType: overview
     url: ./general/overview.md
-  - title: Basisbegrippen
+  - title: Verificatie
     itemType: overview
-    url: ./general/basic-concepts.md
+    url: ./general/authentication.md
   - title: Voorlopig verwijderen
     itemType: overview
     url: ./general/overview-soft-delete.md
+  - title: Basisbegrippen
+    itemType: overview
+    url: ./general/basic-concepts.md
   - title: Logboekregistratie
     itemType: overview
     url: ./general/logging.md
   - title: Beperking
     itemType: overview
     url: ./general/overview-throttling.md
-  - title: Aanbevelingen voor beveiliging
-    itemType: overview
-    url: ./general/security-recommendations.md
 conceptualContent:
   items:
   - title: Certificaten
@@ -63,6 +63,9 @@ conceptualContent:
     - url: ./keys/about-keys.md
       itemType: overview
       text: Over sleutels
+    - url: ../security/fundamentals/encryption-atrest.md
+      itemType: overview
+      text: Gegevensversleuteling
     - url: ./keys/quick-create-portal.md
       itemType: quickstart
       text: Een certificaat uit Azure Key Vault instellen en ophalen met behulp van de Azure-portal
@@ -131,6 +134,6 @@ conceptualContent:
     - url: ../aks/developer-best-practices-pod-security.md#use-azure-key-vault-with-secrets-store-csi-driver
       itemType: overview
       text: Azure Kubernetes-service - Key Vault-geheimen, -certificaten en -sleutels in AKS gebruiken
-    - url: ../data-factory/store-credentials-in-key-vault.md
+    - url: https://docs.microsoft.com/azure/databricks/security/secrets/secret-scopes
       itemType: overview
-      text: Azure Data Factory - Referenties in Key Vault onderhouden
+      text: Azure Databricks - Geheimenbeheer met Key Vault

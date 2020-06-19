@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ccf4d68b90713212685f2583ba5a8db11bd1d050
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263989"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986578"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Java
 
@@ -25,8 +25,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De sleutel van het gezichts abonnement. U kunt een abonnementssleutel voor een gratis proefversie downloaden van [Cognitive Services proberen](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op de face-service en uw sleutel op te halen.
-- Een Java IDE naar keuze.
+* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" maakt u een gezichts bron "  target="_blank"> een gezichts bron maken <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Face-API. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* Een Java IDE naar keuze.
 
 ## <a name="create-the-java-project"></a>Het Java-project maken
 

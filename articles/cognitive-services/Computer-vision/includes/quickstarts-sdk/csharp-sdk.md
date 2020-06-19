@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 5a2de6cb4c7de6f789041d8df7ca562e97ee0863
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: a8d27b77e210236216883bf630464324a47d2e80
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595241"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073202"
 ---
 <a name="HOLTop"></a>
 
@@ -22,19 +22,14 @@ ms.locfileid: "82595241"
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
 * De nieuwste versie van de [.net core SDK](https://dotnet.microsoft.com/download/).
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="setting-up"></a>Instellen
-
-### <a name="create-a-computer-vision-azure-resource"></a>Een Computer Vision Azure-resource maken
-
-Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Computer Vision met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. U kunt ook het volgende doen:
-
-* Ontvang een [proef sleutel](https://azure.microsoft.com/try/cognitive-services/#decision) die zeven dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
-
-Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel en het eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C#-toepassing maken
 
@@ -46,7 +41,7 @@ In een console venster (zoals cmd, Power shell of bash) gebruikt `dotnet new` u 
 dotnet new console -n computer-vision-quickstart
 ```
 
-Wijzig uw directory in de zojuist gemaakte app-map. U kunt de toepassing samen stellen met:
+Wijzig uw map in de zojuist gemaakte app-map. U kunt de toepassing maken met:
 
 ```dotnetcli
 dotnet build
@@ -80,7 +75,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 Als u de Visual Studio IDE gebruikt, is de client bibliotheek beschikbaar als een downloadbaar NuGet-pakket.
 
-## <a name="object-model"></a>Object model
+## <a name="object-model"></a>Objectmodel
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de Computer Vision .NET SDK.
 

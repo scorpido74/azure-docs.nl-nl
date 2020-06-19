@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85e00c360fb8fa279ec836deaf4e9b3b7e2efdb4
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 13a3a65b615501d4485c3a8ddf6b9f297be06eab
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484467"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817373"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Een basisgroep maken en leden toevoegen met Azure Active Directory
 U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azure AD). Voor de toepassing van dit artikel wordt een basisgroep toegevoegd aan één resource door de resource-eigenaar (administrator) en deze bevat specifieke leden (werknemers) die toegang nodig hebben tot die resource. Voor complexere scenario's, met inbegrip van dynamische lidmaatschappen en regels maken, zie de [Azure Active Directory gebruiker beheerdocumentatie](../users-groups-roles/index.yml).
@@ -27,8 +27,8 @@ U kunt een basisgroep maken met behulp van de portal Azure Active Directory (Azu
 Er zijn verschillende typen groepen en lidmaatschappen. De volgende informatie bevat uitleg over elke groep en elk type lidmaatschap en waarom ze worden gebruikt, om u te helpen bepalen welke opties u moet gebruiken wanneer u een groep maakt.
 
 ### <a name="group-types"></a>Groeps typen:
-- **Beveiliging**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Zie [toegang tot resources beheren met Azure Active Directory groupsManage toegang tot resources met Azure Active Directory groepen](active-directory-manage-groups.md)voor meer informatie over het beheren van toegang tot resources.
-- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
+- **Beveiliging**. Gebruikt voor het beheren van leden en toegang tot computers voor gedeelde resources voor een groep gebruikers. U kunt bijvoorbeeld een beveiligingsgroep voor een specifiek beveiligingsbeleid maken. Op deze manier kunt u in één keer een reeks machtigingen geven aan alle leden in plaats van machtigingen individueel voor elk lid toe te voegen. Een beveiligings groep kan gebruikers, apparaten, groepen en service-principals als leden en gebruikers en service-principals als eigen aren hebben. Zie voor meer informatie over het beheren van toegang tot resources [Toegang tot resources beheren met Azure Active Directory-groepen](active-directory-manage-groups.md).
+- **Office 365**. Biedt mogelijkheden voor samenwerking door leden toegang te geven tot een gedeeld postvak, agenda, bestanden, SharePoint-site en meer. Met deze optie kunt u ook personen van buiten uw organisatie toegang verlenen tot de groep. Een Office 365-groep kan alleen gebruikers als leden hebben. Zowel gebruikers als service-principals kunnen eigen aren van een Office 365-groep zijn. Zie voor meer informatie over Office 365-groepen [Informatie over Office 365-groepen](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2).
 
 ### <a name="membership-types"></a>Lidmaatschaps typen:
 - **Assign.** Hiermee kunt u specifieke gebruikers lid maken van deze groep en hen unieke machtigingen geven. Voor de doeleinden van dit artikel gebruiken we deze optie.

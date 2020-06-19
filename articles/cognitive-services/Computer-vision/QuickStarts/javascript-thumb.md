@@ -11,28 +11,29 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 379f74ce673dcae6f300b4eb23d1f2d9b46f2591
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 94e8901a0526c0e771ad570f4271937a87e83aea
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677674"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986779"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Quick Start: een miniatuur genereren met behulp van de Computer Vision REST API en Java script
 
 In deze Quick Start maakt u een miniatuur van een installatie kopie met behulp van de Computer Vision REST API. U geeft de hoogte en breedte op die van de invoer afbeelding kunnen verschillen. Computer Vision maakt gebruik van slim bijsnijden om op intelligente wijze het interessegebied te bepalen en coördinaten voor het bijsnijden te genereren op basis van dat gebied.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
-
 ## <a name="prerequisites"></a>Vereisten
 
-U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Sla de sleutel en eind punt-URL van uw abonnement op een tijdelijke locatie op.
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
 U kunt het voorbeeld maken en uitvoeren aan de hand van de volgende stappen:
 
-1. Maak een bestand met de naam _Get-thumbnail. html_, open het in een tekst editor en kopieer de volgende code naar deze map.
+1. Maak een bestand met de naam _get-thumbnail.html_, open het in een tekst editor en kopieer de volgende code hierin.
 1. U kunt eventueel de waarde van het `value` kenmerk van het `inputImage` besturings element vervangen door de URL van een andere afbeelding die u wilt analyseren.
 1. Open een browservenster.
 1. Sleep het bestand in de browser naar het browservenster.

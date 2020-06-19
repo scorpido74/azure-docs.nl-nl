@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: Beheren
       items:
+        - name: Azure VM-extensies beheren en gebruiken
+          href: ./servers/manage-vm-extensions.md
         - name: Agent beheren
           href: ./servers/manage-agent.md
 - name: Voorbeelden

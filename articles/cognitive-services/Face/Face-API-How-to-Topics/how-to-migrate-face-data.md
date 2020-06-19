@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120807"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986662"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Uw gezichts gegevens migreren naar een ander gezichts abonnement
 
-In deze hand leiding wordt beschreven hoe u gezichts gegevens, zoals een opgeslagen PersonGroup-object met gezichten, kunt verplaatsen naar een ander Azure Cognitive Services Face-abonnement. Als u de gegevens wilt verplaatsen, gebruikt u de functie snap shot. Zo voor komt u dat u een PersonGroup-of FaceList-object herhaaldelijk kunt bouwen en trainen wanneer u uw bewerkingen verplaatst of uitbreidt. Mogelijk hebt u bijvoorbeeld een PersonGroup-object gemaakt met behulp van een gratis proef abonnement en wilt u het nu migreren naar uw betaalde abonnement. Of u moet mogelijk gezichts gegevens synchroniseren tussen abonnementen in verschillende regio's voor een grote bedrijfs activiteit.
+In deze hand leiding wordt beschreven hoe u gezichts gegevens, zoals een opgeslagen PersonGroup-object met gezichten, kunt verplaatsen naar een ander Azure Cognitive Services Face-abonnement. Als u de gegevens wilt verplaatsen, gebruikt u de functie snap shot. Zo voor komt u dat u een PersonGroup-of FaceList-object herhaaldelijk kunt bouwen en trainen wanneer u uw bewerkingen verplaatst of uitbreidt. Mogelijk hebt u bijvoorbeeld een PersonGroup-object gemaakt met een gratis abonnement en wilt u dit nu migreren naar uw betaalde abonnement. Of u moet mogelijk gezichts gegevens synchroniseren tussen abonnementen in verschillende regio's voor een grote bedrijfs activiteit.
 
 Deze migratie strategie is ook van toepassing op LargePersonGroup-en LargeFaceList-objecten. Als u niet bekend bent met de concepten in deze hand leiding, raadpleegt u de definities hiervan in de hand leiding voor de [gezichts herkennings concepten](../concepts/face-recognition.md) . In deze hand leiding wordt gebruikgemaakt van de face .NET-client bibliotheek met C#.
 

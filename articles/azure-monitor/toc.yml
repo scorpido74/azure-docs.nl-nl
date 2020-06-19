@@ -114,6 +114,8 @@
         - name: Opnametijd van logboekgegevens
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Gegevens streamen naar Event Hubs
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Inzichten
       href: insights/insights-overview.md
     - name: Gegevensbeveiliging
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Activiteitenlogboek
-          items:
-            - name: Openen in de Azure-portal
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Verzamelen en analyseren
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Exporteren (verouderd)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Verzenden naar Log Analytics-werkruimte
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Verzenden naar Azure Storage
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Verzenden naar Event Hubs
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Diagnostische instelling maken
+          href: platform/activity-log.md
+        - name: Resourcelogboeken
+          href: platform/resource-logs.md
+        - name: Diagnostische instellingen
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Diagnostische instelling maken met Resource Manager
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Wijzigingen in de blobopslagindeling
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Gegevens streamen naar Event Hubs
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Overzicht van logboekquery's
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: Resourcegroepen
           href: insights/resource-group-insights.md
+        - name: Problemen met inzichten oplossen
+          href: insights/troubleshoot-workbooks.md
     - name: Oplossingen
       items:
         - name: Overzicht
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Platformlogboeken
       items:
-        - name: Ondersteunde typen resourcelogboeken en -categorieën
-          href: platform/resource-logs-categories.md
-        - name: Schema's voor resourcelogboeken
-          href: platform/resource-logs-schema.md
         - name: Schema voor activiteitenlogboek
           href: platform/activity-log-schema.md
+        - name: Schema's voor resourcelogboeken
+          href: platform/resource-logs-schema.md
+        - name: Ondersteunde resourcelogboekcategorieën
+          href: platform/resource-logs-categories.md
     - name: Diagnostische extensieschema's
       items:
         - name: Diagnostische Windows-extensie
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: Afschaffing van metrische schijfgegevens
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Wijzigingen in de blobopslagindeling
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: Resources
   items:
     - name: Azure-roadmap

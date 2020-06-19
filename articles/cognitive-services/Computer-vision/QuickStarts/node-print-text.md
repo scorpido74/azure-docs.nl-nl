@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: gedrukte tekst extra heren-REST, node. js'
+title: 'Snelstartgids: Afdruk bare tekst extra heren, REST, Node.js'
 titleSuffix: Azure Cognitive Services
 description: In deze snelstart extraheert u tekst uit een afbeelding met behulp van de Computer Vision-API met Node.js.
 services: cognitive-services
@@ -11,27 +11,29 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0e1538aa7f0790eb10708b57bd1a744e5ea77f59
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9c245ed91d710ae4bb77e45d8b9c3cceaedc252a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685101"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986738"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en node. js
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-nodejs"></a>Snelstartgids: Afdruk bare tekst (OCR) extra heren met behulp van de Computer Vision REST API en Node.js
 
 > [!NOTE]
 > Als u Engelse taal tekst wilt extra heren, kunt u overwegen de nieuwe [Lees bewerking](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)te gebruiken.
 
 In deze Quick Start haalt u gedrukte tekst op met behulp van de Computer Vision REST API met OCR (optische teken herkenning) van een afbeelding. Met de [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) -methode kunt u gedrukte tekst in een afbeelding detecteren en herkende tekens uitpakken in een door een machine bruikbare teken stroom.
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) voordat u begint.
-
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet [Node.js](https://nodejs.org) 4.x of later hebben geïnstalleerd.
-- U moet [npm](https://www.npmjs.com/) hebben geïnstalleerd.
-- U moet beschikken over een abonnementssleutel voor Computer Vision. U kunt een gratis proef versie verkrijgen van [Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Of volg de instructies in [Create a cognitive Services account](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) om u te abonneren op computer vision en uw sleutel op te halen. Vervolgens kunt u [omgevings variabelen maken](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en service-eindpunt teken reeks, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
+* Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services/)
+* [Node.js](https://nodejs.org) 4. x of hoger 
+* [NPM](https://www.npmjs.com/) 
+* Wanneer u uw Azure-abonnement hebt, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" maakt u een computer vision resource Maak "  target="_blank"> een computer vision resource <span class="docon docon-navigate-external x-hidden-focus"></span> </a> in de Azure Portal om uw sleutel en eind punt op te halen. Nadat de app is geïmplementeerd, klikt **u op Ga naar resource**.
+    * U hebt de sleutel en het eind punt nodig van de resource die u maakt om de toepassing te verbinden met de Computer Vision-service. U plakt uw sleutel en het eind punt in de onderstaande code verderop in de Quick Start.
+    * U kunt de gratis prijs categorie ( `F0` ) gebruiken om de service te proberen en later te upgraden naar een betaalde laag voor productie.
+* [Maak omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel-en eind punt-URL, `COMPUTER_VISION_SUBSCRIPTION_KEY` respectievelijk met de naam en `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample"></a>Het voorbeeld maken en uitvoeren
 
