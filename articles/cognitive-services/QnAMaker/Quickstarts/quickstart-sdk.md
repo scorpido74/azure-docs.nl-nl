@@ -2,19 +2,19 @@
 title: 'Snelstartgids: SDK gebruiken om Knowledge Base-QnA Maker te maken en te beheren'
 description: In deze Quick start ziet u hoe u uw Knowledge Base maakt en beheert met behulp van de client-SDK.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 06/18/2020
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: f80e791435d4bf9093b07842430e678b93843311
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: f158fd0f9bfa6b2580e36b6588626afa05d1c19f
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765132"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85114516"
 ---
-# <a name="quickstart-qna-maker-client-library-for-net"></a>Snelstartgids: QnA Maker-client bibliotheek voor .NET
+# <a name="quickstart-qna-maker-client-library"></a>Snelstartgids: QnA Maker-client bibliotheek
 
-Ga aan de slag met de QnA Maker-client bibliotheek voor .NET. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+Aan de slag met de QnA Maker-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]

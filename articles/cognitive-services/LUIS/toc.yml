@@ -30,9 +30,9 @@
     - name: REST-API's gebruiken
       items:
         - name: Intentie ophalen
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Model wijzigen
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Zelfstudies
   items:
     - name: Een afbreekbare app bouwen
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: Migreren naar V2-API
           href: luis-migration-api-v1-to-v2.md
+    - name: REST-API's gebruiken
+      items:
+        - name: Intentie ophalen
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Model wijzigen
+          href: get-started-get-model-rest-apis.md
     - name: Containers gebruiken
       items:
         - name: Containers installeren en uitvoeren
