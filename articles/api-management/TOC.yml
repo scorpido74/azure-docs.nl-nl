@@ -38,9 +38,11 @@
 - name: Voorbeelden
   items:
     - name: Beleidsregels
-      href: policy-samples.md
+      href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
+    - name: Ingebouwde modules voor Azure Policy
+      href: ./policy-samples.md
 - name: Concepten
   items:
     - name: Terminologie
