@@ -194,30 +194,6 @@
               href: wrangling-data-flow-overview.md
             - name: Ondersteunde functies
               href: wrangling-data-flow-functions.md
-    - name: Gegevensmigratie voor data lake en EDW
-      items:
-        - name: Waarom Azure Data Factory?
-          href: data-migration-guidance-overview.md
-        - name: Gegevens migreren van AWS S3 naar Azure
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Gegevens migreren van on-premises Hadoop-cluster naar Azure
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Gegevens migreren van een on-premises Netezza-server naar Azure
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Transformatie met toewijzingsgegevensstroom
-      items:
-        - name: Tekstbestanden met een vaste breedte verwerken
-          href: how-to-fixed-width.md
-        - name: Verwerking van foutrijen
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB naar CosmosDB
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: SSIS-migratie van on-premises
-      items:
-        - name: Overzicht SSIS-gegevensmigratie
-          href: scenario-ssis-migration-overview.md
-        - name: SSISDB-migratie naar Azure SQL Managed Instance
-          href: scenario-ssis-migration-ssisdb-mi.md
     - name: Rollen en machtigingen
       href: concepts-roles-permissions.md
     - name: Naamgevingsregels
@@ -612,7 +588,7 @@
         - name: Integratie-runtime bewaken
           href: monitor-integration-runtime.md
         - name: Azure-SSIS-integratieruntime controleren
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Azure-SSIS-integratie-runtime opnieuw configureren
           href: manage-azure-ssis-integration-runtime.md
         - name: Een data factory kopiëren of klonen
@@ -683,6 +659,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Een afhankelijkheid voor een tumblingvenstertrigger maken
           href: tumbling-window-trigger-dependency.md
+    - name: Scenario's
+      items:
+        - name: Gegevensmigratie voor data lake en EDW
+          items:
+            - name: Waarom Azure Data Factory?
+              href: data-migration-guidance-overview.md
+            - name: Gegevens migreren van AWS S3 naar Azure
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: Gegevens migreren van on-premises Hadoop-cluster naar Azure
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: Gegevens migreren van een on-premises Netezza-server naar Azure
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Transformatie met toewijzingsgegevensstroom
+          items:
+            - name: Tekstbestanden met een vaste breedte verwerken
+              href: how-to-fixed-width.md
+            - name: Verwerking van foutrijen
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB naar CosmosDB
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: SSIS-migratie van on-premises
+          items:
+            - name: Overzicht SSIS-gegevensmigratie
+              href: scenario-ssis-migration-overview.md
+            - name: SSISDB-migratie naar Azure SQL Managed Instance
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: Sjablonen
       items:
         - name: Overzicht van sjablonen

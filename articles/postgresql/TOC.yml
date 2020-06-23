@@ -193,6 +193,8 @@
           items:
             - name: Configuratie-opties
               href: concepts-hyperscale-configuration-options.md
+            - name: Vooruitbetalen voor reservecapaciteit
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Instructiegidsen
   items:
     - name: Enkele server

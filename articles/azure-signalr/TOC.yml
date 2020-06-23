@@ -25,10 +25,6 @@
   items:
     - name: 'Een serverloze, realtime app met verificatie bouwen'
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Controleren
-      items:
-        - name: Diagnostische logboeken gebruiken om de SignalR-service te bewaken
-          href: signalr-tutorial-diagnostic-logs.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -51,6 +47,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Naslaginformatie voor SignalR-servicebindingen voor Azure Functions
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Upstream-instellingen
+          href: concept-upstream.md
     - name: Hoge beschikbaarheid
       items:
         - name: Tolerantie en herstel na noodgevallen
@@ -81,12 +79,20 @@
           href: howto-private-endpoints.md
         - name: Netwerktoegangsbeheer beheren
           href: howto-network-access-control.md
+        - name: Een beheerde identiteit gebruiken
+          href: howto-use-managed-identity.md
     - name: Integreren
       items:
         - name: Azure Functions-bindingen
           href: signalr-concept-azure-functions.md
         - name: Event Grid-integratie
           href: signalr-howto-event-grid-integration.md
+    - name: Controleren
+      items:
+        - name: Diagnostische logboeken gebruiken om de SignalR-service te bewaken
+          href: signalr-howto-diagnostic-logs.md
+        - name: Controleren op naleving met Azure Policy
+          href: signalr-howto-azure-policy.md
 - name: Verwijzingen
   items:
     - name: Azure CLI
