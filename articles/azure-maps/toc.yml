@@ -91,6 +91,17 @@
           href: how-to-manage-account-keys.md
         - name: Verificatie beheren
           href: how-to-manage-authentication.md
+          items:
+            - name: Een daemon-toepassing beveiligen
+              href: how-to-secure-daemon-app.md
+            - name: Een toepassing met één pagina voor interactief aanmelden beveiligen
+              href: how-to-secure-spa-users.md
+            - name: Een webtoepassing beveiligen
+              href: how-to-secure-webapp-users.md
+            - name: Een toepassing met één pagina voor niet-interactief aanmelden beveiligen
+              href: how-to-secure-spa-app.md
+            - name: Een voor invoer beperkte toepassing beveiligen
+              href: how-to-secure-device-code.md
         - name: Prijscategorie beheren
           href: how-to-manage-pricing-tier.md
         - name: Creator beheren
@@ -229,6 +240,8 @@
       items:
         - name: Vereisten voor tekenpakketten
           href: drawing-requirements.md
+        - name: StylesObject voor dynamische kaarten
+          href: schema-stateset-stylesobject.md
         - name: Verbruiksmodel voor voertuig
           href: consumption-model.md
         - name: Uitgebreide GeoJSON-indeling
@@ -318,9 +331,9 @@
     - name: SDK's voor Azure IoT
       items:
         - name: IoT Service-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT Device-SDK's
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Azure Maps-gebruiksvoorwaarden
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-prijzen

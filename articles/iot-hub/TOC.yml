@@ -423,6 +423,8 @@
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (service)
       href: /dotnet/api/microsoft.azure.devices
+    - name: .NET (beheer)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/iot/management'
     - name: Java (apparaat)
       href: /java/api/com.microsoft.azure.sdk.iot.device
     - name: Java (service)
@@ -431,6 +433,14 @@
       href: 'https://docs.microsoft.com/javascript/api/azure-iot-device/'
     - name: Node.js (service)
       href: 'https://docs.microsoft.com/javascript/api/azure-iothub/'
+    - name: Node.js (beheer)
+      href: 'https://docs.microsoft.com/javascript/api/overview/azure/iothub/management'
+    - name: Python (apparaat)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-device'
+    - name: Python (service)
+      href: 'https://docs.microsoft.com/python/api/azure-iot-hub'
+    - name: Python (beheer)
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-iothub'
     - name: Apparaat-SDK voor C
       href: 'https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/'
     - name: REST (apparaat)

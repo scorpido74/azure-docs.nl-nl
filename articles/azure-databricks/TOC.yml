@@ -860,14 +860,14 @@
             - name: Voorbeelden van modeldeductie
               href: /azure/databricks/applications/deep-learning/inference/model-inference-examples
               maintainContext: true
-            - name: Modeldeductie met Keras
+            - name: Modeldeductie met TensorFlow Keras
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-keras
               maintainContext: true
             - name: Modeldeductie met PyTorch
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-pytorch
               maintainContext: true
-            - name: Modeldeductie met TensorFlow
-              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
+            - name: Modeldeductie met TensorFlow en TensorRT
+              href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorrt
               maintainContext: true
             - name: Prestaties van modeldeductie afstemmen
               href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
@@ -1072,14 +1072,22 @@
               maintainContext: true
         - name: Best practices met betrekking tot de AVG
           href: /azure/databricks/security/privacy/gdpr-delta
+          maintainContext: true
+        - name: Best practices voor gegevensbeheer
+          href: /azure/databricks/security/data-governance
+          maintainContext: true
         - name: IP-toegangslijst
           href: /azure/databricks/security/network/ip-access-list
+          maintainContext: true
         - name: Verkeer tussen clusterwerkknooppunten versleutelen
           href: /azure/databricks/security/encryption/encrypt-otw
+          maintainContext: true
         - name: Door de klant beheerde sleutels inschakelen voor notebooks
           href: /azure/databricks/security/keys/customer-managed-key-notebook
+          maintainContext: true
         - name: Door de klant beheerde sleutels inschakelen voor DBFS
           href: /azure/databricks/security/keys/customer-managed-keys-dbfs
+          maintainContext: true
     - name: Beheer
       items:
         - name: Beheeroverzicht
@@ -1196,6 +1204,8 @@
             - name: Door de gebruiker gedefinieerde route-instellingen
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
+            - name: MySQL-IP-adressen
+              href: mysql-ip-address.md
     - name: Problemen oplossen
       items:
         - name: Veelgestelde vragen
@@ -1886,13 +1896,13 @@
                 - name: Runtimereleases
                   href: /azure/databricks/release-notes/runtime/releases
                   maintainContext: true
-                - name: Databricks Runtime 7.0 (bèta)
+                - name: Databricks Runtime 7.0
                   href: /azure/databricks/release-notes/runtime/7.0
                   maintainContext: true
                 - name: Databricks Runtime 7.0 ML (bèta)
                   href: /azure/databricks/release-notes/runtime/7.0ml
                   maintainContext: true
-                - name: Databricks Runtime 7.0 Genomics (bèta)
+                - name: Databricks Runtime 7.0 Genomics
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.6

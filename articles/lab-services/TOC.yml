@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: Scenario's
       items:
-        - name: Labs gebruiken om les te geven
+        - name: Labservices gebruiken om les te geven
           href: classroom-labs-scenarios.md
+        - name: Labservices gebruiken voor een hackathon
+          href: hackathon-labs.md
         - name: Leslokaallabs - klastypen
           items:
             - name: Overzicht van klastypen
@@ -56,9 +58,9 @@
   items:
     - name: Beheerdershandleiding
       href: administrator-guide.md
-    - name: Handleiding voor versneld instellen van labaccount
+    - name: Installatiegids voor een versneld labaccount
       href: account-setup-guide.md
-    - name: Handleiding voor versneld instellen van lab
+    - name: Installatiegids voor een versneld lab
       href: setup-guide.md
     - name: Labaccounts maken en configureren (labaccounteigenaar)
       items:

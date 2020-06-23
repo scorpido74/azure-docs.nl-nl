@@ -18,6 +18,11 @@
     - name: Livegebeurtenis met portal en OBS
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'De portal gebruiken om inhoud te uploaden, coderen en te streamen'
+      href: manage-assets-quickstart.md
+    - name: De portal gebruiken om inhoud te versleutelen
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Zelfstudies
   items:
     - name: Externe bestanden coderen en video streamen
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Standaard coderingsschema's
       items:
+        - name: Invoermetagegevens
+          href: input-metadata-schema.md
         - name: Uitvoermetagegevens
           href: output-metadata-schema.md
 - name: Resources

@@ -30,7 +30,7 @@
       href: tutorial-url-redirect-cli.md
     - name: Automatisch schalen en zoneredundantie
       href: tutorial-autoscale-ps.md
-    - name: Opnamecontrollerinvoegtoepassing voor AKS (Greenfield)
+    - name: Invoegtoepassing voor inkomend verkeer voor AKS (Greenfield)
       href: tutorial-ingress-controller-add-on-new.md
     - name: Invoegtoepassing voor inkomend verkeer voor AKS (Brownfield)
       href: tutorial-ingress-controller-add-on-existing.md

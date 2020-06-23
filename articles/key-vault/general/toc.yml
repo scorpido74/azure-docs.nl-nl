@@ -19,6 +19,10 @@
       items:
         - name: Azure Key Vault integreren met Kubernetes
           href: key-vault-integrate-kubernetes.md
+    - name: Azure Databricks
+      items:
+        - name: Toegang tot Azure Blob Storage met Azure Databricks en Azure Key Vault
+          href: integrate-databricks-blob-storage.md
     - name: Key Vault verbinden met een web-app met een beheerde identiteit en .NET
       href: tutorial-net-create-vault-azure-web-app.md
 - name: Voorbeelden

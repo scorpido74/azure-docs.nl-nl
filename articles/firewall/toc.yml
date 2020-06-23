@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: Concepten
   items:
+    - name: Azure Firewall-functies
+      href: features.md
     - name: FQDN-tags
       href: fqdn-tags.md
     - name: FQDN's voor infrastructuur

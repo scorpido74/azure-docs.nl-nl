@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402181"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130412"
 ---
 # <a name="deploy-a-custom-model"></a>Aangepaste model implementeren
 
@@ -39,6 +39,8 @@ Nadat het eind punt is geïmplementeerd, wordt de naam van het eind punt weer ge
 ## <a name="view-logging-data"></a>Logboek gegevens weer geven
 
 Logboek gegevens kunnen worden gedownload onder **eindpunt > Details**.
+> [!NOTE]
+>De logboek gegevens zijn 30 dagen beschikbaar op micro soft-opslag in eigendom en worden daarna verwijderd. Als een opslag account van een klant is gekoppeld aan het cognitieve Services-abonnement, worden de logboek gegevens niet automatisch verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

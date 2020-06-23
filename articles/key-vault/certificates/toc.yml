@@ -34,10 +34,16 @@
       href: create-certificate-scenarios.md
     - name: Methoden voor het maken van certificaten
       href: create-certificate.md
+    - name: Een aanvraag voor certificaatondertekening maken
+      href: create-certificate-signing-request.md
+- name: Instructiegidsen
+  items:
+    - name: Key Vault integreren met DigiCert CA
+      href: how-to-integrate-certificate-authority.md
 - name: Naslaginformatie
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
