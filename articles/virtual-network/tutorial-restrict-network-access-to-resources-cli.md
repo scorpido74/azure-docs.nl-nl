@@ -11,18 +11,18 @@ Customer intent: I want only resources in a virtual network subnet to access an 
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74186407"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689330"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Netwerk toegang tot PaaS-resources beperken met virtuele netwerk service-eind punten met behulp van de Azure CLI
 
@@ -39,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.28 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstart de Azure CLI versie 2.0.28 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
@@ -160,7 +160,7 @@ De stappen die nodig zijn om netwerktoegang te beperken tot resources die zijn g
 
 ### <a name="create-a-storage-account"></a>Create a storage account
 
-Maak een Azure-opslag account met [AZ Storage account create](/cli/azure/storage/account). Vervang `<replace-with-your-unique-storage-account-name>` door een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters.
+Maak een Azure-opslag account met [AZ Storage account create](/cli/azure/storage/account). Vervang door `<replace-with-your-unique-storage-account-name>` een naam die uniek is voor alle Azure-locaties, tussen 3-24 tekens lang, met alleen cijfers en kleine letters.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -272,7 +272,7 @@ Het maken van de virtuele machine duurt een paar minuten. Na het maken noteert u
 
 ## <a name="confirm-access-to-storage-account"></a>Toegang tot opslagaccount bevestigen
 
-SSH in de *VM myvmprivate* -VM. Vervang * \<publicIpAddress>* door het open bare IP-adres van uw *VM myvmprivate* -VM.
+SSH in de *VM myvmprivate* -VM. Vervang door *\<publicIpAddress>* het open bare IP-adres van uw *VM myvmprivate* -VM.
 
 ```bash 
 ssh <publicIpAddress>
@@ -284,7 +284,7 @@ Maak een map voor een koppel punt:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Koppel de Azure-bestands share aan de map die u hebt gemaakt. Voordat u de volgende opdracht uitvoert, `<storage-account-name>` vervangt u door de account `<storage-account-key>` naam en de sleutel die u hebt opgehaald in [een opslag account maken](#create-a-storage-account).
+Koppel de Azure-bestands share aan de map die u hebt gemaakt. Voordat u de volgende opdracht uitvoert, vervangt `<storage-account-name>` u door de account naam en `<storage-account-key>` de sleutel die u hebt opgehaald in [een opslag account maken](#create-a-storage-account).
 
 ```bash
 sudo mount --types cifs //<storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -304,7 +304,7 @@ Sluit de SSH-sessie af op de *VM myvmprivate* -VM.
 
 ## <a name="confirm-access-is-denied-to-storage-account"></a>Bevestigen dat toegang tot opslagaccount wordt geweigerd
 
-Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmpublic* -VM. Vervang `<publicIpAddress>` door het open bare IP-adres van uw *VM myvmpublic* -VM: 
+Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmpublic* -VM. Vervang door `<publicIpAddress>` het open bare IP-adres van uw *VM myvmpublic* -VM: 
 
 ```bash 
 ssh <publicIpAddress>
@@ -316,17 +316,17 @@ Maak een map voor een koppel punt:
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-Probeer de Azure-bestands share te koppelen aan de map die u hebt gemaakt. In dit artikel wordt ervan uitgegaan dat u de meest recente versie van Ubuntu hebt geïmplementeerd. Als u een eerdere versie van Ubuntu gebruikt, raadpleegt u [Mount on Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor aanvullende instructies over het koppelen van bestands shares. Voordat u de volgende opdracht uitvoert, `<storage-account-name>` vervangt u door de account `<storage-account-key>` naam en de sleutel die u hebt opgehaald in [een opslag account maken](#create-a-storage-account):
+Probeer de Azure-bestands share te koppelen aan de map die u hebt gemaakt. In dit artikel wordt ervan uitgegaan dat u de meest recente versie van Ubuntu hebt geïmplementeerd. Als u een eerdere versie van Ubuntu gebruikt, raadpleegt u [Mount on Linux](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor aanvullende instructies over het koppelen van bestands shares. Voordat u de volgende opdracht uitvoert, vervangt `<storage-account-name>` u door de account naam en `<storage-account-key>` de sleutel die u hebt opgehaald in [een opslag account maken](#create-a-storage-account):
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
 ```
 
-De toegang wordt geweigerd en er wordt een `mount error(13): Permission denied` fout bericht weer gegeven omdat de *VM myvmpublic* -vm in het *open bare* subnet wordt geïmplementeerd. Het *Openbare* subnet heeft geen service-eindpunt ingeschakeld voor Azure Storage en het opslagaccount staat alleen netwerktoegang toe van het *Privé*-subnet, en niet van het *Openbare*subnet.
+De toegang wordt geweigerd en er wordt een fout bericht weer gegeven `mount error(13): Permission denied` omdat de *VM myvmpublic* -vm in het *open bare* subnet wordt geïmplementeerd. Het *Openbare* subnet heeft geen service-eindpunt ingeschakeld voor Azure Storage en het opslagaccount staat alleen netwerktoegang toe van het *Privé*-subnet, en niet van het *Openbare*subnet.
 
 Sluit de SSH-sessie af op de *VM myvmpublic* -VM.
 
-Probeer vanaf uw computer de shares in uw opslag account te bekijken met de [lijst AZ Storage share](/cli/azure/storage/share?view=azure-cli-latest). Vervang `<account-name>` en `<account-key>` door de naam en sleutel van het opslag account van [een opslag account maken](#create-a-storage-account):
+Probeer vanaf uw computer de shares in uw opslag account te bekijken met de [lijst AZ Storage share](/cli/azure/storage/share?view=azure-cli-latest). Vervang `<account-name>` en door `<account-key>` de naam en sleutel van het opslag account van [een opslag account maken](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

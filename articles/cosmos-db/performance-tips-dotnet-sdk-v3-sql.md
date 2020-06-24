@@ -3,21 +3,21 @@ title: Tips voor Azure Cosmos DB prestaties voor .NET SDK v3
 description: Meer informatie over client configuratie opties voor het verbeteren van Azure Cosmos DB .NET v3 SDK-prestaties.
 author: j82w
 ms.service: cosmos-db
-ms.topic: conceptual
-ms.date: 06/23/2020
+ms.topic: how-to
+ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 48ab7d0b04a155465f2325179cf5617de7873fd8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: a10272324a9535a0c2468d63a404f76ca56ce375
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680201"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263514"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tips voor betere prestaties van Azure Cosmos DB en .NET
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
-> * [.NET SDK v2](performance-tips.md)
+> * [.NET-SDK v2](performance-tips.md)
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Async Java-SDK v2](performance-tips-async-java.md)
 > * [Sync Java-SDK v2](performance-tips-java.md)
@@ -87,9 +87,8 @@ Azure Cosmos DB biedt een eenvoudig open, REST-programmeer model via HTTPS. Daar
 Voor SDK v3 configureert u de verbindings modus wanneer u de instantie maakt `CosmosClient` , in `CosmosClientOptions` . Houd er rekening mee dat de directe modus de standaard instelling is.
 
 ```csharp
-var serviceEndpoint = new Uri("https://contoso.documents.net");
-var authKey = "your authKey from the Azure portal";
-CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+string connectionString = "<your-account-connection-string>";
+CosmosClient client = new CosmosClient(connectionString,
 new CosmosClientOptions
 {
     ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
@@ -98,6 +97,18 @@ new CosmosClientOptions
 
 Omdat TCP alleen wordt ondersteund in de directe modus, als u de gateway modus gebruikt, wordt het HTTPS-protocol altijd gebruikt voor communicatie met de gateway.
 
+:::image type="content" source="./media/performance-tips/connection-policy.png" alt-text="Het Azure Cosmos DB verbindings beleid" border="false":::
+
+**Tijdelijke poort uitputting**
+
+Als u een hoog verbindings volume of een hoog poort gebruik voor uw instanties ziet, controleert u eerst of uw client exemplaren Singleton zijn. Met andere woorden, de client exemplaren moeten uniek zijn voor de levens duur van de toepassing.
+
+Bij het uitvoeren van het TCP-protocol optimaliseert de client voor latentie door gebruik te maken van de langdurige verbindingen, in tegens telling tot het HTTPS-protocol, waardoor de verbindingen na 2 minuten van inactiviteit worden beëindigd.
+
+In scenario's waarin u over sparse-toegang beschikt en als u een hoger aantal verbindingen krijgt in vergelijking met de toegang tot de gateway modus, kunt u het volgende doen:
+
+* Configureer de eigenschap [CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) in `PrivatePortPool` (effectief met Framework versie>= 4.6.1 en .net core versie >= 2,0): met deze eigenschap kan de SDK een kleine groep tijdelijke poorten gebruiken voor verschillende Azure Cosmos DB bestemmings eindpunten.
+* Configureer de eigenschap [CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) moet groter zijn dan of gelijk zijn aan 10 minuten. De aanbevolen waarden liggen tussen 20 minuten en 24 uur.
 
 <a id="same-region"></a>
 
@@ -105,7 +116,9 @@ Omdat TCP alleen wordt ondersteund in de directe modus, als u de gateway modus g
 
 Als dat mogelijk is, plaatst u toepassingen die Azure Cosmos DB aanroepen in dezelfde regio als de Azure Cosmos DB-Data Base. Hier volgt een vergelijking van benadering: aanroepen naar Azure Cosmos DB binnen dezelfde regio worden binnen 1 MS tot 2 MS voltooid, maar de latentie tussen de West-en Oost kust van de VS is meer dan 50 MS. Deze latentie kan variëren van aanvraag tot aanvraag, afhankelijk van de route die door de aanvraag wordt genomen, terwijl deze van de client wordt door gegeven aan de grens van het Azure-Data Center. U kunt de laagst mogelijke latentie verkrijgen door ervoor te zorgen dat de aanroepende toepassing zich in dezelfde Azure-regio bevindt als het ingerichte Azure Cosmos DB-eind punt. Zie [Azure-regio's](https://azure.microsoft.com/regions/#services)voor een lijst met beschik bare regio's.
 
-![Het Azure Cosmos DB verbindings beleid ](./media/performance-tips/same-region.png)<a id="increase-threads"></a>
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Het Azure Cosmos DB verbindings beleid" border="false":::
+
+   <a id="increase-threads"></a>
 
 **Het aantal threads/taken verhogen**
 

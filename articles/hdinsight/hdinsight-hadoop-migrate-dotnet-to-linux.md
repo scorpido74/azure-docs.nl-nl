@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
 ms.openlocfilehash: 4b402975a151d26e8f335c07930274c156ac52fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272368"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709263"
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>.NET-oplossingen voor op Windows gebaseerde HDInsight migreren naar op Linux gebaseerde HDInsight
 
-HDInsight-clusters op basis van Linux gebruiken [mono (https://mono-project.com) ](https://mono-project.com) om .NET-toepassingen uit te voeren. Met mono kunt u .NET-onderdelen gebruiken, zoals MapReduce-toepassingen met HDInsight op basis van Linux. In dit document leert u hoe u .NET-oplossingen die zijn gemaakt voor op Windows gebaseerde HDInsight-clusters kunt migreren om te werken met mono op op Linux gebaseerde HDInsight.
+HDInsight-clusters op basis van Linux gebruiken [mono ( https://mono-project.com) ](https://mono-project.com) om .NET-toepassingen uit te voeren. Met mono kunt u .NET-onderdelen gebruiken, zoals MapReduce-toepassingen met HDInsight op basis van Linux. In dit document leert u hoe u .NET-oplossingen die zijn gemaakt voor op Windows gebaseerde HDInsight-clusters kunt migreren om te werken met mono op op Linux gebaseerde HDInsight.
 
 ## <a name="mono-compatibility-with-net"></a>Mono-compatibiliteit met .NET
 
 Mono versie 4.2.1 is opgenomen in HDInsight-versie 3,6. Zie [hdinsight-onderdeel versies](hdinsight-component-versioning.md)voor meer informatie over de versie van mono die is opgenomen in hdinsight.
 
-Zie voor meer informatie over de compatibiliteit tussen mono en .net de [mono-compatibiliteithttps://www.mono-project.com/docs/about-mono/compatibility/) (](https://www.mono-project.com/docs/about-mono/compatibility/) document.
+Zie voor meer informatie over de compatibiliteit tussen mono en .NET de [mono-compatibiliteit https://www.mono-project.com/docs/about-mono/compatibility/) (](https://www.mono-project.com/docs/about-mono/compatibility/) document.
 
 > [!IMPORTANT]  
 > Het SCP.NET-Framework is compatibel met mono. Zie [Visual Studio gebruiken voor het ontwikkelen van C#-topologieën voor Apache Storm op HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md)voor meer informatie over het gebruik van SCP.net met mono.
@@ -34,24 +34,24 @@ De [.net-portabiliteit Analyzer](https://marketplace.visualstudio.com/items?item
 
 1. Installeer de [.net-portabiliteit-analyse functie](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer). Selecteer tijdens de installatie de versie van Visual Studio die u wilt gebruiken.
 
-2. Selecteer in Visual Studio 2015__instellingen voor portabiliteit Analyzer__ __analyseren__ > en controleer of __4,5__ is ingeschakeld in het gedeelte __mono__ .
+2. Selecteer in Visual Studio 2015 __Analyze__  >  __instellingen voor portabiliteit Analyzer__analyseren en controleer of __4,5__ is ingeschakeld in het gedeelte __mono__ .
 
     ![4,5 gecontroleerd in mono-sectie voor de analyse-instellingen](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-settings.png)
 
     Selecteer __OK__ om de configuratie op te slaan.
 
-3. Selecteer analyseren van__Assembly voor analyse__ __analyseren.__ >  Selecteer de assembly die uw oplossing bevat en selecteer vervolgens __openen__ om te beginnen met de analyse.
+3. Selecteer __analyseren__van  >  __Assembly voor analyse__analyseren. Selecteer de assembly die uw oplossing bevat en selecteer vervolgens __openen__ om te beginnen met de analyse.
 
-4. Wanneer de analyse is voltooid, __Analyze__ > selecteert u__analyse rapporten analyseren weer geven__. Selecteer in de resultaten van de __portabiliteit-analyse__de optie __rapport openen__ om een rapport te openen.
+4. Wanneer de analyse is voltooid, __Analyze__selecteert u  >  __analyse rapporten analyseren weer geven__. Selecteer in de resultaten van de __portabiliteit-analyse__de optie __rapport openen__ om een rapport te openen.
 
     ![Dialoog venster resultaten van portabiliteit Analyzer](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
 > [!IMPORTANT]  
-> Het analyseprogramma kan niet elk probleem met uw oplossing ondervangen. Een bestandspad van `c:\temp\file.txt` wordt bijvoorbeeld als OK beschouwd als mono op Windows wordt uitgevoerd. Hetzelfde pad is niet geldig op een Linux-platform.
+> Het analyseprogramma kan niet elk probleem met uw oplossing ondervangen. Een bestandspad van wordt bijvoorbeeld als `c:\temp\file.txt` OK beschouwd als mono op Windows wordt uitgevoerd. Hetzelfde pad is niet geldig op een Linux-platform.
 
 ## <a name="manual-portability-analysis"></a>Hand matige portabiliteit analyse
 
-Voer een hand matige controle uit voor uw code met behulp van de informatie in de [Application portabiliteit (https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) document.
+Voer een hand matige controle uit voor uw code met behulp van de informatie in de [Application portabiliteit ( https://www.mono-project.com/docs/getting-started/application-portability/) ](https://www.mono-project.com/docs/getting-started/application-portability/) document.
 
 ## <a name="modify-and-build"></a>Wijzigen en bouwen
 

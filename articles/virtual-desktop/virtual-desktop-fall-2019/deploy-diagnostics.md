@@ -4,21 +4,21 @@ description: Het hulp programma Diagnostics UX voor Windows Virtual Desktop impl
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6635fff957512b601fe0927769e4ea91e9270450
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0660947907b26e1a86bbd68bb32d1ac5d211b20e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615173"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206050"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 >[!IMPORTANT]
 >Vanaf 16 maart 2020 hebben we de diagnostische query's die van invloed zijn op de gebruikers ervaring tijdelijk uitgeschakeld vanwege een verhoogde vraag naar de service. Dit zorgt ervoor dat het hulp programma niet meer werkt omdat het afhankelijk is van deze query's. Dit artikel wordt bijgewerkt wanneer diagnostische query's weer beschikbaar zijn.
@@ -68,7 +68,7 @@ In deze sectie wordt uitgelegd hoe u Power shell kunt gebruiken om de Azure Acti
    ```powershell
    Connect-AzureAD
    ```
-4. Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateADAppRegistrationforDiagnostics. Ps1** uit in Power shell.
+4. Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het **CreateADAppRegistrationforDiagnostics.ps1** script uit in Power shell.
 5.  Wanneer u wordt gevraagd uw app een naam te geven, voert u een unieke app-naam in.
 
 
@@ -93,7 +93,7 @@ U kunt een Power shell-script uitvoeren om een Log Analytics-werk ruimte te make
 Het Power shell-script uitvoeren:
 
 1.  Open Power shell als beheerder.
-2.  Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het script **CreateLogAnalyticsWorkspaceforDiagnostics. Ps1** uit in Power shell.
+2.  Ga naar de [github-opslag plaats van RDS-sjablonen](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) en voer het **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** script uit in Power shell.
 3. Voer de volgende waarden in voor de para meters:
 
     - Voer voor **ResourceGroupName**de naam in voor de resource groep.
@@ -115,13 +115,13 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 1. Open uw Internet browser en meld u aan bij de [Azure Portal](https://portal.azure.com/) met uw beheerders account.
 2. Ga vervolgens naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
 3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
-4. Daarna gaat u naar **gegevens** > **prestatie meter items van Windows** en voegt u de volgende tellers toe:
+4. Daarna gaat u naar **gegevens**  >  **prestatie meter items van Windows** en voegt u de volgende tellers toe:
 
-    -   Logische schijf\*(\\)% beschik bare ruimte
-    -   Logische schijf (C\\:) gem. wachtrij lengte voor schijven
-    -   Beschik\*bare\\MB geheugen ()
-    -   Processor informatie (\*)\\processor tijd
-    -   Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
+    -   Logische schijf ( \* ) \\ % beschik bare ruimte
+    -   Logische schijf (C:) \\ Gem. wachtrij lengte voor schijven
+    -   Beschik \* \\ bare MB geheugen ()
+    -   Processor informatie ( \* ) \\ processor tijd
+    -   Gebruikers invoer vertraging per sessie ( \* ) \\ maximale invoer vertraging
 
 Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -147,14 +147,14 @@ Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-p
 
 1. Ga in het [Azure Portal](https://portal.azure.com/)naar **log Analytics-werk ruimten** om de geconfigureerde Windows-prestatie meter items te controleren.
 2. Selecteer onder **instellingen**de optie **Geavanceerde instellingen**.
-3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
+3. Daarna gaat u naar **gegevens**  >  **Windows-prestatie meter items**.
 4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische schijf\*(\\)% beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
-   - Logische schijf (C\\:) gem. wachtrij lengte voor schijven: de lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
-   - Beschik\*bare\\MB geheugen (): het beschik bare geheugen voor het systeem in mega bytes.
-   - Processor informatie (\*)\\processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
-   - Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
+   - Logische schijf ( \* ) \\ % beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
+   - Logische schijf (C:) \\ Gem. wachtrij lengte voor schijven: de lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
+   - Beschik \* bare MB geheugen () \\ : het beschik bare geheugen voor het systeem in mega bytes.
+   - Processor informatie ( \* ) \\ processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
+   - Gebruikers invoer vertraging per sessie ( \* ) \\ maximale invoer vertraging
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Verbinding maken met virtuele machines in uw Log Analytics-werk ruimte
 
@@ -197,7 +197,7 @@ De omleidings-URI instellen:
 
    ![De omleidings-URI-pagina](../media/redirect-uri-page.png)
 
-8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45`, bijvoorbeeld is, is <https://contosoapp45.azurewebsites.net>de bijbehorende URL).
+8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt `contosoapp45` , bijvoorbeeld is, is de bijbehorende URL <https://contosoapp45.azurewebsites.net> ).
 9. Meld u aan met het juiste Azure Active Directory gebruikers account.
 10.   Selecteer **Accepteren**.
 
@@ -226,7 +226,7 @@ Activiteiten worden gesorteerd op tijds tempel, met de nieuwste activiteit eerst
 
 Verbindings activiteiten kunnen meer dan één fout bevatten. U kunt het type activiteit uitvouwen om eventuele andere fouten te zien die de gebruiker heeft bereikt. Selecteer de naam van de fout code om een dialoog venster te openen voor meer informatie hierover.
 
-### <a name="investigate-the-session-host"></a>De sessiehost onderzoeken 
+### <a name="investigate-the-session-host"></a>De sessiehost onderzoeken
 
 Zoek en selecteer in de zoek resultaten de sessiehost waarover u informatie wilt.
 
@@ -242,26 +242,26 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 
 ### <a name="windows-performance-counter-thresholds"></a>Drempel waarden voor prestatie meter items voor Windows
 
-- Logische schijf\*(\\)% beschik bare ruimte:
+- Logische schijf ( \* ) \\ % beschik bare ruimte:
 
     - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
     - Drempel waarde: minder dan 20% is gemarkeerd als beschadigd.
 
-- Logische schijf (C\\:) gem. lengte van de wachtrij:
+- Logische schijf (C:) \\ Gem. lengte van de wachtrij:
 
     - Geeft de voor waarden van het opslag systeem aan.
     - Drempel waarde: hoger dan 5 is gemarkeerd als beschadigd.
 
-- Beschik\*bare\\mega bytes () geheugen ():
+- Beschik \* \\ bare mega bytes () geheugen ():
 
     - Het beschik bare geheugen voor het systeem.
     - Drempel waarde: minder dan 500 mega bytes, gemarkeerd als beschadigd.
 
-- Processor informatie (\*)\\processor tijd:
+- Processor informatie ( \* ) \\ processor tijd:
 
     - Drempel waarde: hoger dan 80% is gemarkeerd als beschadigd.
 
-- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
+- [Gebruikers invoer vertraging per sessie ( \* ) \\ maximale invoer vertraging](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.
 

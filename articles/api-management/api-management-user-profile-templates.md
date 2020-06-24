@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243950"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690061"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Gebruikers profiel sjablonen in azure API Management
 Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de ontwikkelaars portal aan te passen met behulp van een set sjablonen waarmee de inhoud wordt geconfigureerd. Met de syntaxis van de [DotLiquid](http://dotliquidmarkup.org/) en de editor van uw keuze, zoals [DotLiquid for designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), en een opgegeven set gelokaliseerde [teken reeks resources](api-management-template-resources.md#strings), [glyph-resources](api-management-template-resources.md#glyphs)en [pagina besturings elementen](api-management-page-controls.md), hebt u een grote flexibiliteit om de inhoud van de pagina's zo te configureren dat ze met deze sjablonen overeenkomen.  
@@ -105,7 +105,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 > [!NOTE]
 >  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
 |`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  
@@ -326,7 +326,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 > [!NOTE]
 >  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
 |`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  
@@ -489,7 +489,7 @@ Azure API Management biedt u de mogelijkheid om de inhoud van de pagina's van de
 > [!NOTE]
 >  De sjablonen [profiel](#Profile), [toepassingen](#Applications)en [abonnementen](#Subscriptions) delen hetzelfde gegevens model en ontvangen dezelfde sjabloon gegevens.  
   
-|Eigenschap|Type|Beschrijving|  
+|Eigenschap|Type|Description|  
 |--------------|----------|-----------------|  
 |`firstName`|tekenreeks|De voor naam van de huidige gebruiker.|  
 |`lastName`|tekenreeks|De achternaam van de huidige gebruiker.|  

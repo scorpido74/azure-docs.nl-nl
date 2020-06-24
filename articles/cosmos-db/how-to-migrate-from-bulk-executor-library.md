@@ -3,15 +3,15 @@ title: Migreren van de bibliotheek voor bulk-uitvoering naar de bulk ondersteuni
 description: Meer informatie over hoe u uw toepassing migreert van met behulp van de bulk-uitvoerder bibliotheek naar de bulk ondersteuning in Azure Cosmos DB SDK v3
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f204b6d73f121b8f05c807d6be47c36c006f607
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146292"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261423"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Migreren van de bibliotheek voor bulk-uitvoering naar de bulk ondersteuning in Azure Cosmos DB .NET v3 SDK
 
@@ -19,7 +19,7 @@ In dit artikel worden de vereiste stappen beschreven voor het migreren van de co
 
 ## <a name="enable-bulk-support"></a>Bulk ondersteuning inschakelen
 
-Schakel bulksgewijs ondersteuning in voor `CosmosClient` het exemplaar via de [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) -configuratie:
+Schakel bulksgewijs ondersteuning in voor het `CosmosClient` exemplaar via de [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) -configuratie:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
@@ -33,15 +33,15 @@ Als uw eerste invoer bijvoorbeeld een lijst met items is waarbij elk item het vo
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Als u Bulk Import wilt uitvoeren (vergelijkbaar met het gebruik van BulkExecutor. BulkImportAsync), moet u gelijktijdige aanroepen naar `CreateItemAsync`hebben. Bijvoorbeeld:
+Als u Bulk Import wilt uitvoeren (vergelijkbaar met het gebruik van BulkExecutor. BulkImportAsync), moet u gelijktijdige aanroepen naar hebben `CreateItemAsync` . Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Als u bulk *Update* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), moet u na het bijwerken van `ReplaceItemAsync` de waarde van het item gelijktijdige aanroepen naar de methode hebben. Bijvoorbeeld:
+Als u bulk *Update* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)), moet u `ReplaceItemAsync` na het bijwerken van de waarde van het item gelijktijdige aanroepen naar de methode hebben. Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-En als u bulksgewijs *verwijderen* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), moet u gelijktijdig aanroepen naar `DeleteItemAsync`, met de `id` -en-partitie sleutel van elk item. Bijvoorbeeld:
+En als u bulksgewijs *verwijderen* wilt uitvoeren (vergelijkbaar met het gebruik van [BulkExecutor. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)), moet u gelijktijdig aanroepen naar `DeleteItemAsync` , met de- `id` en-partitie sleutel van elk item. Bijvoorbeeld:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
@@ -80,7 +80,7 @@ De `BulkOperationResponse` bevat:
 
 ## <a name="retry-configuration"></a>Configuratie opnieuw proberen
 
-De bibliotheek voor bulksgewijs uitvoerder bevat [richt lijnen](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) voor `MaxRetryAttemptsOnThrottledRequests` het instellen van `0` de `MaxRetryWaitTimeInSeconds` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) en om het beheer te delegeren aan de bibliotheek.
+De bibliotheek voor bulksgewijs uitvoerder bevat [richt lijnen](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) voor het instellen `MaxRetryWaitTimeInSeconds` van de RetryOptions en om het `MaxRetryAttemptsOnThrottledRequests` [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) `0` beheer te delegeren aan de bibliotheek.
 
 Voor bulk ondersteuning in de .NET SDK is er geen verborgen gedrag. U kunt de opties voor opnieuw proberen rechtstreeks configureren via [CosmosClientOptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) en [CosmosClientOptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests).
 
@@ -91,7 +91,7 @@ Voor bulk ondersteuning in de .NET SDK is er geen verborgen gedrag. U kunt de op
 
 Net als bij andere bewerkingen met de .NET SDK resulteert het gebruik van de stream-Api's in betere prestaties en vermijdt overbodige serialisatie. 
 
-Het gebruik van stream-Api's is alleen mogelijk als de aard van de gegevens die u gebruikt, overeenkomt met die van een byte stroom (bijvoorbeeld bestands stromen). In dergelijke gevallen kunt u met `CreateItemStreamAsync`behulp van de `ReplaceItemStreamAsync`-,-of `DeleteItemStreamAsync` -methoden en werken met `ResponseMessage` (in plaats van `ItemResponse`) de door Voer verhogen die kan worden bereikt.
+Het gebruik van stream-Api's is alleen mogelijk als de aard van de gegevens die u gebruikt, overeenkomt met die van een byte stroom (bijvoorbeeld bestands stromen). In dergelijke gevallen kunt u met behulp `CreateItemStreamAsync` van de-, `ReplaceItemStreamAsync` -of- `DeleteItemStreamAsync` methoden en werken met `ResponseMessage` (in plaats van `ItemResponse` ) de door Voer verhogen die kan worden bereikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

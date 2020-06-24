@@ -11,18 +11,24 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e54944c0c10fb773a4a3141c0d3fb6524f288ae2
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309192"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987240"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Veelgestelde vragen over Media Services v3
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Media Services v3.
 
 ## <a name="general"></a>Algemeen
+
+### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Wat zijn de Azure Portal beperkingen voor Media Services v3?
+
+U kunt de [Azure Portal](https://portal.azure.com/) gebruiken om v3 Live-gebeurtenissen te beheren, v3-assets en-taken weer te geven, informatie over het openen van api's te verkrijgen, inhoud te versleutelen. <br/>Voor alle andere beheer taken (bijvoorbeeld het beheren van trans formaties en taken of het analyseren van v3-inhoud), gebruikt u de [rest API](https://aka.ms/ams-v3-rest-ref), [cli](https://aka.ms/ams-v3-cli-ref)of een van de ondersteunde [sdk's](media-services-apis-overview.md#sdks).
+
+Als uw video eerder is geüpload naar het Media Services-account met behulp van Media Services v3 API of als de inhoud is gegenereerd op basis van een live uitvoer, worden de knoppen **coderen**, **analyseren**en **versleutelen** niet weer geven in de Azure Portal. Gebruik de Media Services v3-Api's om deze taken uit te voeren.  
 
 ### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Wat Azure-rollen kunnen acties uitvoeren op Azure Media Services resources? 
 
@@ -95,13 +101,13 @@ DRM-systemen zoals PlayReady, Widevine en FairPlay bieden allemaal een extra ver
 
 U hoeft geen specifieke token provider te gebruiken, zoals Azure Active Directory (Azure AD). U kunt met behulp van asymmetrische sleutel versleuteling een eigen [JWT](https://jwt.io/) -provider (de zogenaamde Secure token service of STS) maken. In uw aangepaste STS kunt u claims toevoegen op basis van uw bedrijfs logica.
 
-Zorg ervoor dat de verlener, de doel groep en de claims exact overeenkomen met de inhoud van de JWT en `ContentKeyPolicyRestriction` de waarde die `ContentKeyPolicy`wordt gebruikt in.
+Zorg ervoor dat de verlener, de doel groep en de claims exact overeenkomen met de inhoud van de JWT en de `ContentKeyPolicyRestriction` waarde die wordt gebruikt in `ContentKeyPolicy` .
 
 Zie [uw inhoud beveiligen met Media Services Dynamic Encryption](content-protection-overview.md)(Engelstalig) voor meer informatie.
 
 ### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Hoe en wanneer krijg ik een JWT-token voordat ik dit gebruik om een licentie of sleutel aan te vragen?
 
-Voor productie moet u een beveiligde token service (dat wil zeggen, een webservice) hebben die een JWT-token op een HTTPS-aanvraag afgeeft. Voor test kunt u de code gebruiken die wordt weer gegeven `GetTokenAsync` in de methode die is gedefinieerd in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+Voor productie moet u een beveiligde token service (dat wil zeggen, een webservice) hebben die een JWT-token op een HTTPS-aanvraag afgeeft. Voor test kunt u de code gebruiken die wordt weer gegeven in de methode die is `GetTokenAsync` gedefinieerd in [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 
 De speler maakt een aanvraag nadat een gebruiker is geverifieerd, op STS voor een dergelijk token en wijst deze toe als de waarde van het token. U kunt de [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/)gebruiken.
 
@@ -109,7 +115,7 @@ Voor een voor beeld van het uitvoeren van een STS met een symmetrische sleutel o
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Hoe kan ik autorisatie aanvragen voor het streamen van Video's met AES-versleuteling?
 
-De juiste aanpak is het gebruik van Secure token service. In STS, afhankelijk van het gebruikers profiel, kunt u verschillende claims toevoegen (zoals ' Premium User ', ' basis gebruiker ', ' gebruiker met gratis proef versie '). Met verschillende claims in een JWT kan de gebruiker andere inhoud zien. Voor andere inhoud of activa, `ContentKeyPolicyRestriction` heeft de bijbehorende `RequiredClaims` waarde.
+De juiste aanpak is het gebruik van Secure token service. In STS, afhankelijk van het gebruikers profiel, kunt u verschillende claims toevoegen (zoals ' Premium User ', ' basis gebruiker ', ' gebruiker met gratis proef versie '). Met verschillende claims in een JWT kan de gebruiker andere inhoud zien. Voor andere inhoud of activa, heeft `ContentKeyPolicyRestriction` de bijbehorende `RequiredClaims` waarde.
 
 Gebruik Azure Media Services Api's voor het configureren van de levering van licenties en sleutels en het versleutelen van uw assets (zoals weer gegeven in [dit voor beeld](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
@@ -140,7 +146,7 @@ U kunt precies hetzelfde ontwerp en dezelfde implementatie gebruiken om live str
 Klanten hebben vaak geïnvesteerd in een licentie server farm in hun eigen Data Center of op een host die wordt gehost door DRM-service providers. Met Media Services inhouds beveiliging kunt u in de hybride modus uitvoeren. Inhoud kan worden gehost en dynamisch worden beveiligd in Media Services, terwijl DRM-licenties worden geleverd door servers buiten Media Services. In dit geval moet u rekening houden met de volgende wijzigingen:
 
 * STS moet tokens uitgeven die acceptabel zijn en kunnen worden geverifieerd door de licentie server-farm. De Widevine-licentie servers die door Axinom worden verschaft, vereisen bijvoorbeeld een specifieke JWT die een toeslag bericht bevat. U moet een STS hebben om een dergelijke JWT te kunnen uitgeven. 
-* U hoeft de service voor het leveren van licenties niet meer te configureren in Media Services. U moet de Url's voor de aangeschafte licenties (voor PlayReady, Widevine en FairPlay) opgeven wanneer `ContentKeyPolicy`u configureert.
+* U hoeft de service voor het leveren van licenties niet meer te configureren in Media Services. U moet de Url's voor de aangeschafte licenties (voor PlayReady, Widevine en FairPlay) opgeven wanneer u configureert `ContentKeyPolicy` .
 
 > [!NOTE]
 > Widevine is een service van Google en is onderworpen aan de service voorwaarden en het privacybeleid van Google.
@@ -193,11 +199,11 @@ Sinds FPS Server SDK versie 4 werd dit document samengevoegd in de programmeer h
 
 De gedownloade bestands structuur op een iOS-apparaat ziet eruit als in de volgende scherm afbeelding. De `_keys` map slaat de gedownloade fps-licenties op, met één archief bestand voor elke host van de licentie service. De `.movpkg` map slaat audio-en video-inhoud op. 
 
-De eerste map met een naam die eindigt op een streepje gevolgd door een getal bevat video-inhoud. De numerieke waarde is de piek bandbreedte van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met `Data` de naam bevat de hoofd-afspeel lijst van de fps-inhoud. Ten slotte biedt boot. XML een volledige beschrijving van de `.movpkg` inhoud van de map. 
+De eerste map met een naam die eindigt op een streepje gevolgd door een getal bevat video-inhoud. De numerieke waarde is de piek bandbreedte van de video weergaven. De tweede map met een naam die eindigt op een streepje gevolgd door 0, bevat audio-inhoud. De derde map met de naam `Data` bevat de hoofd-afspeel lijst van de fps-inhoud. Ten slotte biedt boot.xml een volledige beschrijving van de `.movpkg` inhoud van de map. 
 
 ![Structuur van offline bestanden voor de FairPlay iOS-voor beeld-app](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Hier volgt een voor beeld van een boot. XML-bestand:
+Hier volgt een voor beeld van een boot.xml bestand:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -231,10 +237,10 @@ Hier volgt een voor beeld van een boot. XML-bestand:
 
 #### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Hoe kan ik permanente licenties leveren (offline ingeschakeld) voor sommige clients/gebruikers en niet-permanente licenties (offline uitgeschakeld) voor anderen? Moet ik de inhoud dupliceren en afzonderlijke inhouds sleutels gebruiken?
 
-Omdat Media Services v3 een Asset toestaat meerdere `StreamingLocator` instanties te hebben, kunt u het volgende hebben:
+Omdat Media Services v3 een Asset toestaat meerdere instanties te hebben `StreamingLocator` , kunt u het volgende hebben:
 
-* Een `ContentKeyPolicy` exemplaar met `license_type = "persistent"`, `ContentKeyPolicyRestriction` met een claim `"persistent"`over en de `StreamingLocator`.
-* Een `ContentKeyPolicy` ander exemplaar `license_type="nonpersistent"`met `ContentKeyPolicyRestriction` , met een `"nonpersistent`claim over, en `StreamingLocator`de.
+* Een `ContentKeyPolicy` exemplaar met `license_type = "persistent"` , `ContentKeyPolicyRestriction` met een claim over `"persistent"` en de `StreamingLocator` .
+* Een ander `ContentKeyPolicy` exemplaar met `license_type="nonpersistent"` , met een `ContentKeyPolicyRestriction` claim over `"nonpersistent` , en de `StreamingLocator` .
 * Twee `StreamingLocator` exemplaren met verschillende `ContentKey` waarden.
 
 Afhankelijk van de bedrijfs logica van een aangepaste STS, worden er verschillende claims uitgegeven in het JWT-token. Met het token kan alleen de bijbehorende licentie worden verkregen en alleen de bijbehorende URL kan worden afgespeeld.
@@ -243,7 +249,7 @@ Afhankelijk van de bedrijfs logica van een aangepaste STS, worden er verschillen
 
 In het Widevine DRM-architectuur overzicht van Google worden drie beveiligings niveaus gedefinieerd. De Azure Media Services- [documentatie op de Widevine-licentie sjabloon](widevine-license-template-overview.md) bevat echter een overzicht van vijf beveiligings niveaus (vereisten voor client robuustheid voor afspelen). In deze sectie wordt uitgelegd hoe de beveiligings niveaus worden toegewezen.
 
-Beide sets beveiligings niveaus worden gedefinieerd door Google Widevine. Het verschil bevindt zich in het gebruiks niveau: architectuur of API. De vijf beveiligings niveaus worden gebruikt in de Widevine-API. Het `content_key_specs` object, dat bevat `security_level`, wordt gedeserialiseerd en door gegeven aan de Widevine Global Delivery Service van de Azure Media Services Widevine-licentie service. In de volgende tabel ziet u de toewijzing tussen de twee sets beveiligings niveaus.
+Beide sets beveiligings niveaus worden gedefinieerd door Google Widevine. Het verschil bevindt zich in het gebruiks niveau: architectuur of API. De vijf beveiligings niveaus worden gebruikt in de Widevine-API. Het `content_key_specs` object, dat bevat `security_level` , wordt gedeserialiseerd en door gegeven aan de Widevine Global Delivery Service van de Azure Media Services Widevine-licentie service. In de volgende tabel ziet u de toewijzing tussen de twee sets beveiligings niveaus.
 
 | **Beveiligings niveaus die zijn gedefinieerd in de Widevine-architectuur** |**Beveiligings niveaus die worden gebruikt in de Widevine-API**|
 |---|---| 

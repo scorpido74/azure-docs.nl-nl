@@ -3,20 +3,19 @@ title: Bron logboek registratie inschakelen in azure Traffic Manager
 description: Meer informatie over het inschakelen van bron logboek registratie voor uw Traffic Manager-profiel en het openen van de logboek bestanden die als gevolg hiervan worden gemaakt.
 services: traffic-manager
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: rohink
-ms.openlocfilehash: d0ffcffd7d4a4f2072b640ace03ec819aa416d47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d84c4a9af366e9032604aef5531742eb790bb571
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133909"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711677"
 ---
 # <a name="enable-resource-logging-in-azure-traffic-manager"></a>Bron logboek registratie inschakelen in azure Traffic Manager
 
@@ -58,7 +57,7 @@ U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shel
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
 1. Navigeer naar uw Azure Storage-account in de portal.
 2. Klik op de pagina **overzicht** van uw Azure Storage-account onder **Services** op **blobs**.
-3. Voor **containers**selecteert u **Insights-logs-probehealthstatusevents**en navigeert u omlaag naar het bestand PT1H. json en klikt u op **downloaden** om een kopie van dit logboek bestand te downloaden en op te slaan.
+3. Voor **containers**selecteert u **Insights-logs-probehealthstatusevents**en navigeert u naar de PT1H.jsin het bestand en klikt u op **downloaden** om een kopie van dit logboek bestand te downloaden en op te slaan.
 
     ![Toegang tot logboek bestanden van uw Traffic Manager profiel vanuit een Blob-opslag](./media/traffic-manager-logs/traffic-manager-logs.png)
 
@@ -71,7 +70,7 @@ De volgende tabel bevat logboeken die specifiek zijn voor de Azure Traffic Manag
 
 |||||
 |----|----|---|---|
-|**Veld naam**|**Veld type**|**Definitie**|**Voorbeeld**|
+|**Veld naam**|**Veld type**|**Beschrijving**|**Hierbij**|
 |EndpointName|Tekenreeks|De naam van het Traffic Manager-eind punt waarvan de integriteits status wordt vastgelegd.|*myPrimaryEndpoint*|
 |Status|Tekenreeks|De integriteits status van het Traffic Manager-eind punt dat is gecontroleerd. De status **kan een of meer** zijn **.**|**Omhoog**|
 |||||

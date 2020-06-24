@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526787"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752479"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Maximale grootte van de Web Application firewall-aanvraag en uitsluitings lijsten
 
@@ -31,7 +31,6 @@ De volgende kenmerken kunnen worden toegevoegd aan de uitsluitings lijsten op na
 * De naam van het aanvraag kenmerk (args) kan worden toegevoegd als een uitsluitings element, zoals:
 
    * Naam van het formulier veld
-   * XML-entiteit
    * JSON-entiteit
    * Query teken reeks argumenten voor URL
 

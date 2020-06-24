@@ -6,14 +6,14 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffe9167bb155826eea3a1e7994469d378e5925fe
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70241246"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260488"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Verbinding maken met de Azure Cosmos DB Cassandra-API vanuit Spark
 
@@ -22,7 +22,7 @@ Dit artikel is een reeks artikelen over Azure Cosmos DB Cassandra-API integratie
 ## <a name="prerequisites"></a>Vereisten
 * [Een Azure Cosmos DB Cassandra-API-account inrichten.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Uw keuze van Spark-omgeving inrichten [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Overige].
+* Uw keuze van Spark-omgeving inrichten [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)  |  [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Overige].
 
 ## <a name="dependencies-for-connectivity"></a>Afhankelijkheden voor connectiviteit
 * **Spark-connector voor Cassandra:** Spark-connector wordt gebruikt om verbinding te maken met Azure Cosmos DB Cassandra-API.  De versie van de connector die zich in [maven Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) bevindt, identificeren en gebruiken die compatibel is met de Spark-en scala-versies van uw Spark-omgeving.
@@ -40,15 +40,15 @@ Dit artikel is een reeks artikelen over Azure Cosmos DB Cassandra-API integratie
 
 De volgende tabel geeft een lijst van Azure Cosmos DB Cassandra-API specifieke doorvoer configuratie parameters die door de connector worden opgegeven. Zie voor een gedetailleerde lijst met alle configuratie parameters de pagina [configuratie verwijzing](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) van de GitHub-opslag plaats in de Spark Cassandra-connector.
 
-| **Naam van eigenschap** | **Standaardwaarde** | **Beschrijving** |
+| **Eigenschaps naam** | **Standaardwaarde** | **Beschrijving** |
 |---------|---------|---------|
-| Spark. Cassandra. output. batch. size. Rows |  1 |Aantal rijen per batch. Stel deze para meter in op 1. Deze para meter wordt gebruikt voor een hogere door Voer voor zware werk belastingen. |
+| spark.cassandra.output.bat. grootte. Rows |  1 |Aantal rijen per batch. Stel deze para meter in op 1. Deze para meter wordt gebruikt voor een hogere door Voer voor zware werk belastingen. |
 | Spark. Cassandra. Connection. connections_per_executor_max  | Geen | Maximum aantal verbindingen per knoop punt per uitvoerder. 10 * n is gelijk aan 10 verbindingen per knoop punt in een n-node Cassandra-cluster. Als u dus vijf verbindingen per knoop punt per uitvoerder nodig hebt voor een Cassandra-cluster van 5 knoop punten, moet u deze configuratie instellen op 25. Wijzig deze waarde op basis van de mate van parallellisme of het aantal uitvoerender waarvoor uw Spark-taken zijn geconfigureerd.   |
 | Spark. Cassandra. output. gelijktijdige. writes  |  100 | Hiermee wordt het aantal parallelle schrijf bewerkingen gedefinieerd dat per uitvoering kan plaatsvinden. Omdat u ' batch. size. Rows ' op 1 hebt ingesteld, moet u ervoor zorgen dat deze waarde op basis van de schaal wordt aangepast. Wijzig deze waarde op basis van de mate van parallellisme of de door Voer die u wilt voor uw werk belasting. |
 | Spark. Cassandra. gelijktijdige. Lees bewerkingen |  512 | Hiermee wordt het aantal parallelle Lees bewerkingen gedefinieerd dat per uitvoering kan plaatsvinden. Wijzig deze waarde op basis van de mate van parallellisme of de door Voer die u wilt voor uw werk belasting  |
 | Spark. Cassandra. output. throughput_mb_per_sec  | Geen | Definieert de totale schrijf doorvoer per uitvoerder. Deze para meter kan worden gebruikt als een bovengrens voor de door Voer van de Spark-taak en deze baseren op de ingerichte door Voer van uw Cosmos-container.   |
 | Spark. Cassandra. input. reads_per_sec| Geen   | Definieert de totale Lees doorvoer per uitvoerder. Deze para meter kan worden gebruikt als een bovengrens voor de door Voer van de Spark-taak en deze baseren op de ingerichte door Voer van uw Cosmos-container.  |
-| Spark. Cassandra. output. batch. grouping. buffer. size |  1000  | Hiermee wordt het aantal batches per enkele Spark-taak gedefinieerd dat in het geheugen kan worden opgeslagen voordat het naar Cassandra-API kan worden verzonden |
+| spark.cassandra.output.batch. grouping. buffer. size |  1000  | Hiermee wordt het aantal batches per enkele Spark-taak gedefinieerd dat in het geheugen kan worden opgeslagen voordat het naar Cassandra-API kan worden verzonden |
 | Spark. Cassandra. Connection. keep_alive_ms | 60000 | Hiermee definieert u de periode waarna ongebruikte verbindingen beschikbaar zijn. | 
 
 Pas de door Voer en de mate van parallelle uitvoering van deze para meters aan op basis van de werk belasting die u verwacht voor uw Spark-taken en de door Voer die u hebt ingericht voor uw Cosmos DB-account.

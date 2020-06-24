@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 1b6084b4e93f3dc17f633f1b8496f9c26e7f576f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257145"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711949"
 ---
 # <a name="scale-with-additional-process-servers"></a>Schalen met extra proces servers
 
@@ -52,9 +52,9 @@ De vereisten voor de extra proces server worden in de volgende tabel samenvatten
 Down load het installatie bestand voor de proces server als volgt:
 
 1. Meld u aan bij de Azure Portal en blader naar uw Recovery Services kluis.
-2. Open **site Recovery Infrastructure** > -**configuratie servers** voor**VMware en fysieke machines** > (onder voor VMware & fysieke machines).
+2. Open **site Recovery Infrastructure**  >  -configuratie servers voor**VMware en fysieke machines**  >  **Configuration Servers** (onder voor VMware & fysieke machines).
 3. Selecteer de configuratie server om in te zoomen op de server details. Klik vervolgens op **+ proces server**.
-4. In **proces server** >  toevoegen**kiest u waar u uw proces server wilt implementeren**, selecteert u **een scale-out proces server on-premises implementeren**.
+4. In **proces server toevoegen**  >   **kiest u waar u uw proces server wilt implementeren**, selecteert u **een scale-out proces server on-premises implementeren**.
 
    ![Pagina servers toevoegen](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Klik op **down load de Microsoft Azure site Recovery Unified Setup**. Hiermee downloadt u de meest recente versie van het installatie bestand.

@@ -2,16 +2,16 @@
 title: Migreren van Couch Base naar Azure Cosmos DB SQL-API
 description: Stapsgewijze richt lijnen voor het migreren van Couch Base naar Azure Cosmos DB SQL-API
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f7c0cb893f65688145811cbd2a0280c2d232d7a9
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657342"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261916"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migreren van Couch Base naar Azure Cosmos DB SQL-API
 
@@ -109,7 +109,7 @@ In de volgende secties wordt beschreven wanneer u elk van deze Sdk's gebruikt. B
 
 Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde SDK, kunt u de volgende stappen uitvoeren:
 
-1. Voeg Parent toe aan het bestand POM. XML:
+1. Voeg Parent toe aan het POM.xml-bestand:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Als de werk belasting die u migreert, is gebaseerd op de lente-boot gebaseerde S
    </parent>
    ```
 
-1. Voeg eigenschappen toe aan het bestand POM. XML:
+1. Eigenschappen toevoegen aan het POM.xml-bestand:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Afhankelijkheden toevoegen aan het bestand POM. XML:
+1. Afhankelijkheden toevoegen aan het POM.xml-bestand:
 
    ```java
    <dependency>
@@ -200,7 +200,7 @@ U kunt de volgende wijzigingen in uw N1QL-query's waarnemen:
 
 Gebruik de asynchrone Java-SDK met de volgende stappen:
 
-1. Configureer de volgende afhankelijkheid op het bestand POM. XML:
+1. Configureer de volgende afhankelijkheden op het POM.xml-bestand:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->

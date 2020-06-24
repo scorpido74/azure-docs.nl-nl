@@ -3,16 +3,16 @@ title: Indexeringsbeleid in Azure Cosmos DB beheren
 description: Meer informatie over het beheren van indexerings beleid, het opnemen of uitsluiten van een eigenschap van indexeren, het definiëren van indexering met verschillende Azure Cosmos DB Sdk's
 author: timsander1
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/28/2020
 ms.author: tisande
 ms.custom: tracking-python
-ms.openlocfilehash: 341c315bfdcb99a2cacb32d8aed892c684c44601
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8b41a92f16fe7d71c17b6460289db76bf02c62ce
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558895"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261508"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexeringsbeleid in Azure Cosmos DB beheren
 
@@ -362,7 +362,7 @@ Azure Cosmos-containers slaan hun indexerings beleid op als een JSON-document wa
 
 1. Klik op **Opslaan** wanneer u klaar bent.
 
-![Indexeren beheren met behulp van de Azure-portal](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
+:::image type="content" source="./media/how-to-manage-indexing-policy/indexing-policy-portal.png" alt-text="Indexeren beheren met behulp van de Azure-portal":::
 
 ## <a name="use-the-azure-cli"></a>Azure CLI gebruiken
 
@@ -544,9 +544,9 @@ containerResponse.subscribe(result -> {
 });
 ```
 
-## <a name="use-the-nodejs-sdk"></a>De node. js-SDK gebruiken
+## <a name="use-the-nodejs-sdk"></a>De Node.js SDK gebruiken
 
-De `ContainerDefinition` interface van de [node. js-SDK](https://www.npmjs.com/package/@azure/cosmos) (Zie [deze Snelstartgids](create-sql-api-nodejs.md) met betrekking tot het gebruik) toont een `indexingPolicy` eigenschap waarmee u de kunt wijzigen `indexingMode` en toevoegen of verwijderen `includedPaths` `excludedPaths` .
+De `ContainerDefinition` interface van [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) (Zie [deze Snelstartgids](create-sql-api-nodejs.md) met betrekking tot het gebruik) toont een `indexingPolicy` eigenschap waarmee u de kunt wijzigen `indexingMode` en toevoegen of `includedPaths` verwijderen `excludedPaths` .
 
 De details van de container ophalen
 

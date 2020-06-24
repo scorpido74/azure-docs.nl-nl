@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/10/2020
+ms.date: 06/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d55c6b514f6401e60891f0713cb1b4135bb62ab6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 747acc27a5eaf8551e44a3bf52f55b5a380b73ce
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84675993"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84752639"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Herstel naar een bepaald tijdstip voor blok-blobs inschakelen en beheren (preview-versie)
 
@@ -83,7 +83,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Een herstel bewerking uitvoeren
 
-Als u een herstel bewerking wilt starten, roept u de opdracht **Restore-AzStorageBlobRange** aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
+Als u een herstel bewerking wilt starten, roept u de opdracht **Restore-AzStorageBlobRange** aan, waarbij u het herstel punt opgeeft als een UTC- **datum/tijd** -waarde. U kunt lexicographical-bereiken van blobs opgeven die u wilt herstellen, of een bereik weglaten om alle blobs in alle containers in het opslag account te herstellen. Er worden Maxi maal 10 lexicographical-bereiken ondersteund per herstel bewerking. Pagina-blobs en toevoeg-blobs worden niet opgenomen in de herstel bewerking. Het kan enkele minuten duren voordat de herstel bewerking is voltooid.
 
 Houd bij het opgeven van een aantal blobs dat moet worden hersteld de volgende regels in acht:
 
@@ -165,6 +165,15 @@ $job = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 # Check the state of the job.
 $job.State
 ```
+
+Als u wilt wachten op het volt ooien van de herstel bewerking nadat deze is uitgevoerd, roept u de opdracht [wait-job](/powershell/module/microsoft.powershell.core/wait-job) aan, zoals wordt weer gegeven in het volgende voor beeld:
+
+```powershell
+$job | Wait-Job
+```
+
+## <a name="known-issues"></a>Bekende problemen
+- Voor een subset van herstel bewerkingen waarbij toevoeg-blobs aanwezig zijn, mislukt het herstellen. Voer op dit moment geen herstel bewerkingen uit als toevoeg-blobs aanwezig zijn in het account.
 
 ## <a name="next-steps"></a>Volgende stappen
 

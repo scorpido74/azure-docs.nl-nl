@@ -4,16 +4,16 @@ description: In dit artikel wordt beschreven hoe u een FSLogix-profiel container
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 3348920260b6c256b25d0ff2419cdfd2a00dea35
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484621"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207308"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Een profiel container maken met Azure Files en Azure AD DS
 
@@ -41,7 +41,7 @@ Een beheerder toevoegen:
 
 ## <a name="set-up-an-azure-storage-account"></a>Een Azure Storage account instellen
 
-Nu is het tijd om Azure AD DS-verificatie in te scha kelen via SMB (Server Message Block). 
+Nu is het tijd om Azure AD DS-verificatie in te scha kelen via SMB (Server Message Block).
 
 Verificatie inschakelen:
 
@@ -108,8 +108,8 @@ De toegangs sleutel voor het opslag account ophalen:
     - Vervang door `<share-name>` de naam van de share die u eerder hebt gemaakt.
     - Vervang door `<storage-account-key>` de sleutel van het opslag account van Azure.
 
-    Bijvoorbeeld:  
-  
+    Bijvoorbeeld:
+
      ```cmd
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
@@ -124,7 +124,7 @@ De toegangs sleutel voor het opslag account ophalen:
     - Vervang door `<user-email>` de UPN van de gebruiker die dit profiel gaat gebruiken voor toegang tot de host-vm's van de sessie.
 
     Bijvoorbeeld:
-     
+
      ```cmd
      icacls y: /grant john.doe@contoso.com:(f)
      ```
@@ -137,7 +137,7 @@ Een FSLogix-profiel container configureren:
 
 1. Meld u aan bij de host-VM die u aan het begin van dit artikel hebt geconfigureerd. vervolgens [downloadt en installeert u de FSLogix-agent](/fslogix/install-ht/).
 
-2. Pak het FSLogix-agent bestand dat u hebt gedownload uit en ga naar **x64**  >  -**releases**en open vervolgens **FSLogixAppsSetup. exe**.
+2. Pak het FSLogix-agent bestand dat u hebt gedownload uit en ga naar **x64**  >  -**releases**en open **FSLogixAppsSetup.exe**.
 
 3. Wanneer het installatie programma wordt gestart, selecteert **u ik ga akkoord met de licentie voorwaarden.** Geef, indien van toepassing, een nieuwe sleutel op.
 
@@ -203,13 +203,13 @@ Gebruikers toewijzen:
 
      ```powershell
      $pool1 = "contoso"
-     
+
      $tenant = "contoso"
-     
+
      $appgroup = "Desktop Application Group"
-     
+
      $user1 = "jane.doe@contoso.com"
-     
+
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 

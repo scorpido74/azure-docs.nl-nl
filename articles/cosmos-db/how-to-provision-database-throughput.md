@@ -3,15 +3,15 @@ title: Databasedoorvoer inrichten in Azure Cosmos DB
 description: Meer informatie over het inrichten van de door Voer op database niveau in Azure Cosmos DB met behulp van Azure Portal, CLI, Power shell en diverse andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: cc89c0052097ba9250370334386943ec4107140c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 63f8d408d76cfce86c254ad3840c2f0eefb09fd4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655318"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263636"
 ---
 # <a name="provision-standard-manual-throughput-on-a-database-in-azure-cosmos-db"></a>Standaard doorvoer (hand matig) door Voer voor een data base in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) inricht 
 
 ### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL (Core) API
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 1. [Maak een nieuw Azure Cosmos-account](create-sql-api-dotnet.md#create-account)of selecteer een bestaand Azure Cosmos-account.
 
@@ -32,7 +32,7 @@ In dit artikel wordt uitgelegd hoe u de standaard doorvoer (hand matig) inricht 
    * Voer een doorvoer in, bijvoorbeeld 1000 RU's.
    * Selecteer **OK**.
 
-    ![Schermafbeelding van het dialoogvenster Nieuwe database](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    :::image type="content" source="./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png" alt-text="Schermafbeelding van het dialoogvenster Nieuwe database":::
 
 ## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Door Voer in te richten met behulp van Azure CLI of Power shell
 

@@ -3,24 +3,25 @@ title: Systeem knooppunt groepen gebruiken in azure Kubernetes service (AKS)
 description: Meer informatie over het maken en beheren van groepen met systeem knooppunten in azure Kubernetes service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 04/28/2020
-ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 06/18/2020
+ms.author: mlearned
+ms.openlocfilehash: 9b6270f81e7af8bd508d29510698e6cf9a5a2010
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125244"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052657"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Systeem knooppunt groepen beheren in azure Kubernetes service (AKS)
 
-In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Systeem knooppunt groepen en gebruikers knooppunt groepen zijn twee verschillende modi voor de knooppunt groep voor uw AKS-clusters. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeem knooppunt groep bevatten met ten minste één knoop punt. 
+In azure Kubernetes service (AKS) worden knoop punten van dezelfde configuratie samen in *knooppunt groepen*gegroepeerd. Knooppunt groepen bevatten de onderliggende virtuele machines waarop uw toepassingen worden uitgevoerd. Systeem knooppunt groepen en gebruikers knooppunt groepen zijn twee verschillende modi voor de knooppunt groep voor uw AKS-clusters. Systeem knooppunt groepen fungeren het primaire doel van het hosten van essentieel systeem peulen, zoals CoreDNS en tunnelfront. Gebruikers knooppunt groepen gebruiken het primaire doel om uw toepassing te hosten. Toepassing peul kan echter worden gepland op systeem knooppunt groepen als u slechts één groep in uw AKS-cluster wilt hebben. Elk AKS-cluster moet ten minste één systeem knooppunt groep bevatten met ten minste één knoop punt.
 
 > [!Important]
 > Als u één systeem knooppunt groep voor uw AKS-cluster in een productie omgeving uitvoert, raden we u aan om ten minste drie knoop punten voor de knooppunt groep te gebruiken.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-* U moet de Azure CLI-versie 2.3.1 of later installeren en configureren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren][install-azure-cli].
+* U moet de Azure CLI-versie 2.3.1 of later installeren en configureren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -29,7 +30,7 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
 * Zie [quota's, beperkingen voor de grootte van virtuele machines en beschik baarheid van regio's in azure Kubernetes service (AKS)][quotas-skus-regions].
 * Het AKS-cluster moet worden gebouwd met virtuele-machine schaal sets als VM-type.
 * De naam van een knooppunt groep mag alleen kleine letters bevatten en moet beginnen met een kleine letter. Voor Linux-knooppunt Pools moet de lengte tussen de 1 en 12 tekens liggen. Voor Windows-knooppunt groepen moet de lengte tussen de 1 en 6 tekens zijn.
-* Een API-versie van 2020-03-01 of hoger moet worden gebruikt om een modus voor de knooppunt groep in te stellen.
+* Een API-versie van 2020-03-01 of hoger moet worden gebruikt om een modus voor de knooppunt groep in te stellen. Clusters die zijn gemaakt op API-versies ouder dan 2020-03-01, bevatten alleen groepen met gebruikers knooppunten, maar kunnen worden gemigreerd om systeem knooppunt groepen te bevatten door de stappen in de [groeps modus bijwerken](#update-existing-cluster-system-and-user-node-pools)te volgen.
 * De modus van een knooppunt groep is een vereiste eigenschap en moet expliciet worden ingesteld wanneer ARM-sjablonen of directe API-aanroepen worden gebruikt.
 
 ## <a name="system-and-user-node-pools"></a>Systeem-en gebruikers knooppunt groepen
@@ -56,7 +57,7 @@ U kunt de volgende bewerkingen uitvoeren met knooppunt groepen:
 
 Wanneer u een nieuw AKS-cluster maakt, maakt u automatisch een systeem knooppunt groep met één knoop punt. De eerste knooppunt groep wordt standaard ingesteld op een modus van het type systeem. Wanneer u nieuwe knooppunt Pools maakt met AZ AKS nodepool add, zijn deze knooppunt groepen gebruikers knooppunt groepen, tenzij u expliciet de modus para meter opgeeft.
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* .
+In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* gemaakt in de regio *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -115,7 +116,10 @@ Er is een modus van het type **systeem** gedefinieerd voor systeem knooppunt gro
 }
 ```
 
-## <a name="update-system-and-user-node-pools"></a>Systeem-en gebruikers knooppunt groepen bijwerken
+## <a name="update-existing-cluster-system-and-user-node-pools"></a>Bestaande cluster systeem-en gebruikers knooppunt groepen bijwerken
+
+> [!NOTE]
+> Er moet een API-versie van 2020-03-01 of hoger worden gebruikt om de groeps modus voor een systeem knooppunt in te stellen. Clusters die zijn gemaakt op API-versies ouder dan 2020-03-01, bevatten als resultaat alleen groepen van gebruikers knooppunten. Als u de functionaliteit en voor delen van systeem knooppunt groepen op oudere clusters wilt ontvangen, moet u de modus van bestaande knooppunt groepen bijwerken met de volgende opdrachten in de meest recente versie van Azure CLI.
 
 U kunt de modus voor zowel systeem-als gebruikers knooppunt groepen wijzigen. U kunt een systeem knooppunt groep alleen wijzigen in een gebruikers groep als er al een andere systeem knooppunt groep bestaat op het AKS-cluster.
 

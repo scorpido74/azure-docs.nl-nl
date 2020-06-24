@@ -7,11 +7,11 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270236"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708039"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor logboeken instellen en diagnostische gegevens verzamelen voor Azure Logic Apps
 
@@ -51,7 +51,7 @@ U kunt Log Analytics inschakelen wanneer u uw logische app maakt.
 
 Als u Log Analytics hebt ingeschakeld tijdens het maken van uw logische app, slaat u deze stap over. U hebt de Logic Apps-beheer oplossing al geïnstalleerd in uw Log Analytics-werk ruimte.
 
-1. Voer `log analytics workspaces`in het zoekvak van de [Azure Portal](https://portal.azure.com)in en selecteer vervolgens **log Analytics werk ruimten**.
+1. Voer in het zoekvak van de [Azure Portal](https://portal.azure.com)in `log analytics workspaces` en selecteer vervolgens **log Analytics werk ruimten**.
 
    ![Selecteer ' Log Analytics werk ruimten '](./media/monitor-logic-apps-log-analytics/find-select-log-analytics-workspaces.png)
 
@@ -59,7 +59,7 @@ Als u Log Analytics hebt ingeschakeld tijdens het maken van uw logische app, sla
 
    ![Uw Log Analytics-werk ruimte selecteren](./media/monitor-logic-apps-log-analytics/select-log-analytics-workspace.png)
 
-1. Selecteer in het deel venster **overzicht** onder **aan de slag met log Analytics** > **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
+1. Selecteer in het deel venster **overzicht** onder **aan de slag met log Analytics**  >  **bewakings oplossingen configureren**de optie **oplossingen weer geven**.
 
    ![Selecteer in het deel venster Overzicht de optie oplossingen weer geven.](./media/monitor-logic-apps-log-analytics/log-analytics-workspace.png)
 
@@ -67,7 +67,7 @@ Als u Log Analytics hebt ingeschakeld tijdens het maken van uw logische app, sla
 
    ![Voeg in het deel venster Overzicht een nieuwe oplossing toe](./media/monitor-logic-apps-log-analytics/add-logic-apps-management-solution.png)
 
-1. Nadat de **Marketplace** is geopend, voert `logic apps management`u in het zoekvak in en selecteert u **Logic apps beheer**.
+1. Nadat de **Marketplace** is geopend, voert u in het zoekvak in `logic apps management` en selecteert u **Logic apps beheer**.
 
    ![Selecteer ' Logic Apps-beheer ' in Marketplace](./media/monitor-logic-apps-log-analytics/select-logic-apps-management.png)
 
@@ -91,7 +91,7 @@ Wanneer u gegevens over runtime-gebeurtenissen en-gegevens in [Azure monitor log
 
 1. Zoek en selecteer uw logische app in de [Azure Portal](https://portal.azure.com).
 
-1. Klik in het menu van de logische app onder **bewaking**op **Diagnostische instellingen** > **Diagnostische instelling toevoegen**.
+1. Klik in het menu van de logische app onder **bewaking**op **Diagnostische instellingen**  >  **Diagnostische instelling toevoegen**.
 
    ![Onder bewaking selecteert u Diagnostische instellingen > diagnostische instelling toevoegen.](./media/monitor-logic-apps-log-analytics/logic-app-diagnostics.png)
 
@@ -123,7 +123,7 @@ Wanneer de logische app wordt uitgevoerd, kunt u de gegevens over die uitvoering
 
 1. Zoek in de [Azure Portal](https://portal.azure.com)uw log Analytics-werk ruimte en open deze.
 
-1. Selecteer in het menu van de werk ruimte de optie **samen vatting** > van werk ruimte**Logic apps beheer**.
+1. Selecteer in het menu van de werk ruimte de optie **samen vatting van werk ruimte**  >  **Logic apps beheer**.
 
    ![Uitvoerings status en aantal van logische app](./media/monitor-logic-apps-log-analytics/logic-app-runs-summary.png)
 
@@ -176,7 +176,7 @@ Wanneer de logische app wordt uitgevoerd, kunt u de gegevens over die uitvoering
 
 Naast Azure Monitor-Logboeken kunt u uitbreiden hoe u de diagnostische gegevens van uw logische app gebruikt met andere Azure-Services, bijvoorbeeld:
 
-* [Azure-resource logboeken archiveren in een opslag account](../azure-monitor/platform/resource-logs-collect-storage.md)
+* [Azure-resourcelogboeken archiveren naar opslagaccount](../azure-monitor/platform/resource-logs-collect-storage.md)
 * [Azure-platform logboeken streamen naar Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 U kunt vervolgens realtime-bewaking krijgen door telemetrie en analyses uit andere services te gebruiken, zoals [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) en [Power bi](../azure-monitor/platform/powerbi.md). Bijvoorbeeld:
@@ -192,11 +192,11 @@ Zorg ervoor dat u eerst [een Azure-opslag account maakt](../storage/common/stora
 
 ## <a name="azure-monitor-diagnostics-events"></a>Diagnostische gebeurtenissen Azure Monitor
 
-Elke diagnostische gebeurtenis heeft details over uw logische app en die gebeurtenis, bijvoorbeeld de status, start tijd, eind tijd, enzovoort. Voor het programmatisch instellen van bewaking, tracering en logboek registratie kunt u deze informatie gebruiken met de [rest API voor Azure Logic apps](https://docs.microsoft.com/rest/api/logic) en de [rest API voor Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). U kunt ook de `clientTrackingId` eigenschappen en `trackedProperties` gebruiken, die worden weer gegeven in 
+Elke diagnostische gebeurtenis heeft details over uw logische app en die gebeurtenis, bijvoorbeeld de status, start tijd, eind tijd, enzovoort. Voor het programmatisch instellen van bewaking, tracering en logboek registratie kunt u deze informatie gebruiken met de [rest API voor Azure Logic apps](https://docs.microsoft.com/rest/api/logic) en de [rest API voor Azure monitor](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows). U kunt ook de `clientTrackingId` Eigenschappen en gebruiken `trackedProperties` , die worden weer gegeven in 
 
 * `clientTrackingId`: Als u dit niet opgeeft, wordt deze ID automatisch door Azure gegenereerd en worden gebeurtenissen gecorreleerd in een logische app-uitvoering, inclusief alle geneste werk stromen die vanuit de logische app worden aangeroepen. U kunt deze ID hand matig opgeven in een trigger door een `x-ms-client-tracking-id` header met uw aangepaste ID-waarde in de trigger aanvraag door te geven. U kunt een trigger voor een aanvraag, een HTTP-trigger of een webhook gebruiken.
 
-* `trackedProperties`: Voor het volgen van invoer of uitvoer in diagnostische gegevens kunt u een `trackedProperties` sectie aan een actie toevoegen met behulp van de Logic app Designer of rechtstreeks in de JSON-definitie van uw logische app. In bijgehouden eigenschappen kunnen alleen de invoer en uitvoer van één actie worden bijgehouden, maar u kunt de `correlation` eigenschappen van gebeurtenissen gebruiken om te correleren over acties in een uitvoering. Als u meer dan één eigenschap wilt bijhouden, voegt u een of meer `trackedProperties` eigenschappen toe aan de sectie en de eigenschappen die u aan de actie definitie wilt toevoegen.
+* `trackedProperties`: Voor het volgen van invoer of uitvoer in diagnostische gegevens kunt u een `trackedProperties` sectie aan een actie toevoegen met behulp van de Logic app Designer of rechtstreeks in de JSON-definitie van uw logische app. In bijgehouden eigenschappen kunnen alleen de invoer en uitvoer van één actie worden bijgehouden, maar u kunt de `correlation` Eigenschappen van gebeurtenissen gebruiken om te correleren over acties in een uitvoering. Als u meer dan één eigenschap wilt bijhouden, voegt u een of meer eigenschappen toe `trackedProperties` aan de sectie en de eigenschappen die u aan de actie definitie wilt toevoegen.
 
   Hier volgt een voor beeld waarin wordt getoond hoe de definitie van de variabele-actie voor **initialisatie** bijgehouden eigenschappen bevat van de invoer van de actie, waarbij de invoer een matrix is, niet een record.
 
@@ -243,7 +243,7 @@ Elke diagnostische gebeurtenis heeft details over uw logische app en die gebeurt
   }
   ```
 
-In dit voor beeld ziet `ActionCompleted` u hoe de `clientTrackingId` gebeurtenis `trackedProperties` de kenmerken en bevat:
+In dit voor beeld ziet u hoe de `ActionCompleted` gebeurtenis de `clientTrackingId` kenmerken en bevat `trackedProperties` :
 
 ```json
 {

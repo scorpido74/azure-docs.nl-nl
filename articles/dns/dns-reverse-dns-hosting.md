@@ -3,16 +3,16 @@ title: Reverse DNS lookup zones in Azure DNS
 description: Meer informatie over het gebruik van Azure DNS voor het hosten van de reverse DNS lookup zones voor uw IP-bereiken
 author: rohinkoul
 ms.service: dns
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6fabd58baf8fb3dc30c2468efd5bdc8179d5f95
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454258"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709195"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Reverse DNS lookup zones in Azure DNS
 
@@ -29,7 +29,7 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van uw eerste
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Een DNS-zone voor reverse lookup maken
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Selecteer in het menu **hub** **nieuwe** > **netwerken**en selecteer vervolgens **DNS-zone**.
+1. Selecteer in het menu **hub** **nieuwe**  >  **netwerken**en selecteer vervolgens **DNS-zone**.
 
    ![De selectie van de DNS-zone](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -37,16 +37,16 @@ Dit artikel begeleidt u stapsgewijs door de stappen voor het maken van uw eerste
 
 ### <a name="ipv4"></a>IPv4
 
-De naam van een IPv4-zone voor reverse lookup is gebaseerd op het IP-bereik dat het vertegenwoordigt. Deze moet de volgende indeling hebben: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Zie [overzicht van omgekeerde DNS en ondersteuning in azure](dns-reverse-dns-overview.md#ipv4)voor voor beelden.
+De naam van een IPv4-zone voor reverse lookup is gebaseerd op het IP-bereik dat het vertegenwoordigt. Deze moet de volgende indeling hebben: `<IPv4 network prefix in reverse order>.in-addr.arpa` . Zie [overzicht van omgekeerde DNS en ondersteuning in azure](dns-reverse-dns-overview.md#ipv4)voor voor beelden.
 
 > [!NOTE]
-> Als u onverse DNS-lookup zones maakt in Azure DNS, moet u een koppel teken (`-`) in plaats van een slash (`/`) gebruiken in de zone naam.
+> Als u onverse DNS-lookup zones maakt in Azure DNS, moet u een koppel teken ( `-` ) in plaats van een slash () gebruiken `/` in de zone naam.
 >
-> Voor het IP-bereik 192.0.2.128/26 moet u bijvoorbeeld de zone naam `128-26.2.0.192.in-addr.arpa` gebruiken in plaats van `128/26.2.0.192.in-addr.arpa`.
+> Voor het IP-bereik 192.0.2.128/26 moet u bijvoorbeeld `128-26.2.0.192.in-addr.arpa` de zone naam gebruiken in plaats van `128/26.2.0.192.in-addr.arpa` .
 >
-> Hoewel de DNS-standaard beide methoden ondersteunen, ondersteunt Azure DNS geen DNS-zone namen die voor komen in`/`een slash ()-teken.
+> Hoewel de DNS-standaard beide methoden ondersteunen, ondersteunt Azure DNS geen DNS-zone namen die voor komen in een slash ( `/` )-teken.
 
-In het volgende voor beeld ziet u hoe u een omgekeerde DNS-zone `2.0.192.in-addr.arpa` voor Class C met de naam in azure DNS maakt via de Azure portal:
+In het volgende voor beeld ziet u hoe u een omgekeerde DNS-zone voor Class C `2.0.192.in-addr.arpa` met de naam in azure DNS maakt via de Azure portal:
 
  ![Het deel venster ' DNS-zone maken ', waarbij de vakken zijn ingevuld](./media/dns-reverse-dns-hosting/figure2.png)
 
@@ -74,10 +74,10 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-De naam van een IPv6-zone voor reverse lookup moet de volgende `<IPv6 network prefix in reverse order>.ip6.arpa`vorm hebben:.  Zie [overzicht van omgekeerde DNS en ondersteuning in azure](dns-reverse-dns-overview.md#ipv6)voor voor beelden.
+De naam van een IPv6-zone voor reverse lookup moet de volgende vorm hebben: `<IPv6 network prefix in reverse order>.ip6.arpa` .  Zie [overzicht van omgekeerde DNS en ondersteuning in azure](dns-reverse-dns-overview.md#ipv6)voor voor beelden.
 
 
-In het volgende voor beeld ziet u hoe u een IPv6 reverse `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` DNS-lookup-zone met de naam in azure DNS maakt via de Azure portal:
+In het volgende voor beeld ziet u hoe u een IPv6 reverse DNS-lookup-zone `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` met de naam in azure DNS maakt via de Azure portal:
 
  ![Het deel venster ' DNS-zone maken ', waarbij de vakken zijn ingevuld](./media/dns-reverse-dns-hosting/figure3.png)
 

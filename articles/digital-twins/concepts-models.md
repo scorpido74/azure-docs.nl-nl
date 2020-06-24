@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 30bf5d3eaa034c033cf32e26c3229a028f036313
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: cacf4c21e92b434aeb73cd76e6dda26508f41d77
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613136"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261355"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Meer informatie over dubbele modellen in azure Digital Apparaatdubbels
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Een belang rijk kenmerk van Azure Digital Apparaatdubbels is de mogelijkheid om uw eigen woorden lijst te definiëren en uw dubbele grafiek te bouwen in de zelfgedefinieerde voor waarden van uw bedrijf. Deze mogelijkheid wordt gegeven via door de gebruiker gedefinieerde **modellen**. U kunt modellen beschouwen als de zelfstandige naam woorden in een beschrijving van uw wereld. 
 
@@ -197,14 +200,14 @@ De uitbreidende interface kan geen van de definities van de bovenliggende interf
 
 ## <a name="validating-models"></a>Modellen valideren
 
-Er is een voor beeld beschikbaar voor het valideren van model documenten om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://github.com/Azure-Samples/DTDL-Validator)-voor beeld.
+Er is een voor beeld beschikbaar voor het valideren van model documenten om ervoor te zorgen dat de DTDL geldig is. Het is gebouwd op de DTDL parser-bibliotheek en is taal-neutraal. Vind het hier: [DTDL validator](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)-voor beeld.
 
 Als u meer informatie wilt over de parser-bibliotheek, met inbegrip van een voor beeld van hoe u deze kunt gebruiken, raadpleegt u [procedures: modellen parseren en valideren](how-to-use-parser.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie modellen beheren met de DigitalTwinsModels-Api's:
-* [Instructies: een twee ledig model beheren](how-to-manage-model.md)
+* [Uitleg: Een dubbel model beheren](how-to-manage-model.md)
 
 Of leer hoe digitale apparaatdubbels worden gemaakt op basis van modellen:
 * [Concepten: Digital apparaatdubbels en het dubbele diagram](concepts-twins-graph.md)

@@ -3,16 +3,16 @@ title: 'Azure Cosmos DB: overzicht van BulkExecutor-bibliotheek'
 description: Voer bulk bewerkingen uit in Azure Cosmos DB via bulksgewijze import-en bulk update-Api's die worden aangeboden door de bibliotheek voor bulk-uitvoerder.
 author: tknandu
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2ebe07f5ae2846f48bc5762a49ad018610af73a
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985589"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85260607"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB: overzicht van BulkExecutor-bibliotheek
  
@@ -42,7 +42,7 @@ De BulkExecutor-bibliotheek helpt u bij het benutten van deze enorme doorvoer en
 
 Wanneer een bulk bewerking voor het importeren of bijwerken van documenten wordt geactiveerd met een batch-entiteit, worden deze in eerste instantie in een wille keurige volg orde gerangschikt die overeenkomt met het Azure Cosmos DB partitie sleutel bereik. Binnen elke Bucket die overeenkomt met een partitie sleutel bereik, worden deze onderverdeeld in Mini batches en elke mini-batch fungeert als een Payload die aan de server zijde wordt doorgevoerd. De bibliotheek voor bulk-uitvoerder bevat optimalisaties voor gelijktijdige uitvoering van deze mini-batches binnen en tussen partitie sleutel bereik. In de volgende afbeelding ziet u hoe bulk-uitvoerder batch gegevens omzetten in verschillende partitie sleutels:  
 
-![Architectuur voor bulk-uitvoerder](./media/bulk-executor-overview/bulk-executor-architecture.png)
+:::image type="content" source="./media/bulk-executor-overview/bulk-executor-architecture.png" alt-text="Architectuur voor bulk-uitvoerder" :::
 
 De bibliotheek bulk-uitvoerder zorgt ervoor dat de door Voer die is toegewezen aan een verzameling maximally wordt gebruikt. Het maakt gebruik van een [AIMD-mechanisme](https://tools.ietf.org/html/rfc5681) voor elk Azure Cosmos DB partitie sleutel bereik om frequentie limieten en time-outs efficiënt te kunnen afhandelen. 
 

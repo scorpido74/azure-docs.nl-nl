@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 4169bfb5da5b1ad13bab0eb01397f7c1fb20b11b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68f8a7086dd164c102e42c99bb8d6ba22b71ad6f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060325"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710980"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Netwerkinterfaces toevoegen aan of verwijderen van netwerkinterfaces van virtuele machines
 
@@ -32,7 +32,7 @@ Zie [IP-adressen van netwerk interfaces beheren](virtual-network-network-interfa
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Maak gratis een account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Voer een van de volgende taken uit voordat u de rest van dit artikel start:
+Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. [Gratis een account maken](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Voer een van de volgende taken uit voordat u de rest van dit artikel start:
 
 - **Portal gebruikers**: Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw Azure-account.
 
@@ -40,13 +40,13 @@ Als u er nog geen hebt, stelt u een Azure-account in met een actief abonnement. 
 
     Als u Power shell lokaal uitvoert, gebruikt u Azure PowerShell module versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az.Network` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
 
-- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.26 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Voer `az login` uit om een verbinding op te zetten met Azure.
+- **Azure-opdracht regel interface (CLI)-gebruikers**: Voer de opdrachten uit in de [Azure Cloud shell](https://shell.azure.com/bash)of voer de CLI uit vanaf uw computer. Gebruik Azure CLI versie 2.0.26 of hoger als u de Azure CLI lokaal uitvoert. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Voer `az login` uit om een verbinding op te zetten met Azure.
 
 ## <a name="add-existing-network-interfaces-to-a-new-vm"></a>Bestaande netwerk interfaces toevoegen aan een nieuwe virtuele machine
 
 Wanneer u via de portal een virtuele machine maakt, maakt de portal een netwerk interface met de standaard instellingen en koppelt de netwerk interface voor u aan de VM. U kunt de portal niet gebruiken om bestaande netwerk interfaces toe te voegen aan een nieuwe virtuele machine of om een virtuele machine met meerdere netwerk interfaces te maken. U kunt beide doen met behulp van de CLI of Power shell. Zorg ervoor dat u vertrouwd bent met de [beperkingen](#constraints). Als u een virtuele machine met meerdere netwerk interfaces maakt, moet u ook het besturings systeem configureren om ze goed te gebruiken nadat u de virtuele machine hebt gemaakt. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 Voordat u de virtuele machine maakt, [maakt u een netwerk interface](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -65,18 +65,18 @@ Een netwerk interface toevoegen aan de virtuele machine:
 
 3. Selecteer in de opdracht balk van de virtuele machine **stoppen**en klik vervolgens op **OK** in het bevestigings venster. Wacht tot de **status** van de VM is gewijzigd in **gestopt (toewijzing opgeheven)**.
 
-4. Kies > in de menu balk van de **VM netwerk****Interface netwerk verbinding**. Kies vervolgens in **bestaande netwerk interface koppelen**de netwerk interface die u wilt toevoegen en selecteer **OK**.
+4. Kies in de menu balk van de **VM netwerk**  >  **Interface netwerk verbinding**. Kies vervolgens in **bestaande netwerk interface koppelen**de netwerk interface die u wilt toevoegen en selecteer **OK**.
 
     >[!NOTE]
     >Voor de netwerk interface die u selecteert, kan geen versneld netwerk zijn ingeschakeld, er kan geen IPv6-adres aan worden toegewezen en het moet zich in hetzelfde virtuele netwerk bevinden als de netwerk interface die momenteel aan de virtuele machine is gekoppeld.
 
     Als u geen bestaande netwerk interface hebt, moet u er eerst een maken. Hiertoe selecteert u **netwerk interface maken**. Zie [een netwerk interface maken](virtual-network-network-interface.md#create-a-network-interface)voor meer informatie over het maken van een netwerk interface. Zie voor meer informatie over aanvullende beperkingen bij het toevoegen van netwerk interfaces aan virtuele machines de [beperkingen](#constraints).
 
-5. Kies in de menu balk van de VM **overzicht** > **Start** om de virtuele machine opnieuw op te starten.
+5. Kies in de menu balk van de VM **overzicht**  >  **Start** om de virtuele machine opnieuw op te starten.
 
 Nu kunt u het VM-besturings systeem configureren om meerdere netwerk interfaces op de juiste manier te gebruiken. Meer informatie over het configureren van [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) voor meerdere netwerk interfaces.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -98,7 +98,7 @@ U kunt de netwerk interfaces die momenteel zijn gekoppeld aan een virtuele machi
 
 Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer informatie over de instellingen van de netwerk interface en hoe u deze kunt wijzigen. Zie [IP-adressen van netwerk interfaces beheren](virtual-network-network-interface-addresses.md)voor meer informatie over het toevoegen, wijzigen of verwijderen van IP-adressen die zijn toegewezen aan een netwerk interface.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -115,14 +115,14 @@ Zie [netwerk interfaces beheren](virtual-network-network-interface.md)voor meer 
 
 4. Wacht totdat de **status** van de VM is gewijzigd in **gestopt (toewijzing opgeheven)**.
 
-5. Kies in de menu balk van de virtuele machine de netwerk interface netwerk **verbinding** > **verbreken**.
+5. Kies in de menu balk van de virtuele machine de netwerk interface netwerk **verbinding**  >  **verbreken**.
 
 6. Selecteer in het dialoog venster **netwerk interface ontkoppelen** de netwerk interface die u wilt loskoppelen. Selecteer vervolgens **OK**.
 
     >[!NOTE]
     >Als er slechts één netwerk interface wordt weer gegeven, kunt u deze niet loskoppelen omdat er altijd ten minste één netwerk interface aan een virtuele machine is gekoppeld.
 
-### <a name="commands"></a>Opdrachten
+### <a name="commands"></a>Opdracht
 
 |Hulpprogramma|Opdracht|
 |---|---|

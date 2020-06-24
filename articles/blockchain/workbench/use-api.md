@@ -2,14 +2,14 @@
 title: REST-Api's van Azure Block Chain Workbench gebruiken
 description: Scenario's voor het gebruik van de preview-versie van Azure Block Chain Workbench REST API
 ms.date: 03/05/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: brendal
-ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c96e45c8bcc9834df7ef2a0b2a59f53fd8315cf
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672738"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210059"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>De preview-versie van Azure Block Chain Workbench gebruiken REST API
 

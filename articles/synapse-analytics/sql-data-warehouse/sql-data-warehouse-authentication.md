@@ -6,18 +6,18 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 868130b23bc29acf0f1271f68a45f44cee98fe98
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015621"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206727"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Verifiëren bij Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ De verbinding maakt standaard verbinding met de *hoofd* database en niet op uw g
 > [!NOTE]
 > De Transact-SQL-instructie **use MyDatabase;** wordt niet ondersteund voor het wijzigen van de Data Base voor een verbinding. Raadpleeg het artikel [query with Visual Studio](sql-data-warehouse-query-visual-studio.md) voor hulp bij het maken van verbinding met een SQL-groep met SSDT.
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory-verificatie (AAD)
+## <a name="azure-active-directory-aad-authentication"></a>AAD-verificatie (Azure Active Directory)
 
 [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) -verificatie is een mechanisme om verbinding te maken met de SQL-groep met behulp van identiteiten in azure Active Directory (Azure AD). Met Azure Active Directory-verificatie kunt u de identiteiten van database gebruikers en andere micro soft-services centraal beheren op één centrale locatie. Centraal-ID-beheer biedt één locatie voor het beheren van Azure Synapse-gebruikers en vereenvoudigt het beheer van machtigingen.
 
@@ -54,7 +54,7 @@ De verbinding maakt standaard verbinding met de *hoofd* database en niet op uw g
 Azure Active Directory voor delen zijn onder andere:
 
 * Biedt een alternatief voor SQL Server-verificatie.
-* Helpt de verspreiding van gebruikers identiteiten op meerdere servers te stoppen.
+* Het gaat de verspreiding van gebruikers-id's op servers tegen.
 * Maakt rotatie van wachtwoorden op één plek mogelijk
 * Beheer database machtigingen met externe groepen (Azure AD).
 * Elimineert het opslaan van wacht woorden door geïntegreerde Windows-verificatie in te scha kelen en o Ndere-verificatie methoden die door Azure Active Directory worden ondersteund.
@@ -76,7 +76,7 @@ Volg deze stappen om Azure Active Directory-verificatie te configureren.
 5. Inge sloten database gebruikers in uw data base maken die zijn toegewezen aan Azure AD-identiteiten
 6. Verbinding maken met uw SQL-groep met behulp van Azure AD-identiteiten
 
-Momenteel worden gebruikers Azure Active Directory niet weer gegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weer geven in [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Momenteel worden gebruikers Azure Active Directory niet weer gegeven in SSDT Objectverkenner. Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="find-the-details"></a>De details zoeken
 

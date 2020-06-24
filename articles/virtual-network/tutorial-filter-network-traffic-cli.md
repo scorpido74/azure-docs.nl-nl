@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b593630d6702f66b1b877c15688b9aea0e227fca
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80235078"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688256"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Netwerk verkeer filteren met een netwerk beveiligings groep met behulp van de Azure CLI
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.28 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 
 ## <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
@@ -119,7 +119,7 @@ In dit artikel wordt SSH (poort 22) blootgesteld aan Internet voor de *myAsgMgmt
 
 ## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
-Maak een virtueel netwerk met [az network vnet create](/cli/azure/network/vnet). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt:
+Maak een virtueel netwerk met [AZ Network vnet Create](/cli/azure/network/vnet). In het volgende voorbeeld wordt een virtueel netwerk met de naam *myVirtualNetwork* gemaakt:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 Maak twee virtuele machines in het virtuele netwerk, zodat u het filteren van verkeer in een latere stap kunt controleren. 
 
-Maak een VM met [az vm create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerk interface maakt die wordt gemaakt voor de virtuele machine lid is van de *myAsgWebServers* -toepassings beveiligings groep.
+Maak een virtuele machine met [AZ VM Create](/cli/azure/vm). In het volgende voorbeeld wordt een virtuele machine gemaakt die als een webserver fungeert. De `--asgs myAsgWebServers` optie zorgt ervoor dat Azure de netwerk interface maakt die wordt gemaakt voor de virtuele machine lid is van de *myAsgWebServers* -toepassings beveiligings groep.
 
 De `--nsg ""` optie is opgegeven om te voor komen dat Azure een standaard netwerk beveiligings groep maakt voor de netwerk interface die Azure maakt wanneer de virtuele machine wordt gemaakt. Er wordt een wacht woord gebruikt om dit artikel te stroom lijnen. Sleutels worden doorgaans gebruikt in productie-implementaties. Als u sleutels gebruikt, moet u ook het door sturen van SSH-agents configureren voor de resterende stappen. Zie de documentatie voor uw SSH-client voor meer informatie. Vervang `<replace-with-your-password>` in de volgende opdracht door een wacht woord van uw keuze.
 
@@ -196,7 +196,7 @@ Het maken van de virtuele machine duurt een paar minuten. Nadat de VM is gemaakt
 
 ## <a name="test-traffic-filters"></a>Verkeersfilters testen
 
-Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmmgmt* -VM. Vervang * \<publicIpAddress>* door het open bare IP-adres van uw VM. In het bovenstaande voor beeld is het IP-adres *13.90.242.231*.
+Gebruik de volgende opdracht om een SSH-sessie te maken met de *VM myvmmgmt* -VM. Vervang door *\<publicIpAddress>* het open bare IP-adres van uw virtuele machine. In het bovenstaande voor beeld is het IP-adres *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -230,7 +230,7 @@ De *VM myvmweb* -VM is uitgaand naar Internet om nginx op te halen omdat al het 
 curl myVmWeb
 ```
 
-Afmelden van de *VM myvmmgmt* -VM. Voer `curl <publicIpAddress>` vanaf uw eigen computer in om te controleren of u toegang hebt tot de *VM myvmweb* -webserver vanaf een andere locatie dan Azure. De verbinding is geslaagd, omdat poort 80 is toegestaan van het internet naar de *myAsgWebServers* -toepassings beveiligings groep waaraan de netwerk interface is gekoppeld met de *VM myvmweb* -VM.
+Afmelden van de *VM myvmmgmt* -VM. Voer *myVmWeb* `curl <publicIpAddress>` vanaf uw eigen computer in om te controleren of u toegang hebt tot de VM myvmweb-webserver vanaf een andere locatie dan Azure. De verbinding is geslaagd, omdat poort 80 is toegestaan van het internet naar de *myAsgWebServers* -toepassings beveiligings groep waaraan de netwerk interface is gekoppeld met de *VM myvmweb* -VM.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

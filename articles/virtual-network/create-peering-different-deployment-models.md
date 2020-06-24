@@ -4,24 +4,24 @@ description: Meer informatie over het maken van een virtuele netwerk peering tus
 services: virtual-network
 documentationcenter: ''
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2018
 ms.author: kumud
 ms.reviewer: anavin
-ms.openlocfilehash: 61df13e78dc7115d4f4d45ab18b9ffdae107dc96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 318e51f12653b5cbe6bd47b9c48a57d72286a4a7
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77023256"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710045"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>Een peering voor een virtueel netwerk maken-verschillende implementatie modellen, hetzelfde abonnement
 
@@ -84,8 +84,8 @@ U kunt de Azure Portal, de Azure [-opdracht regel interface](#cli) (CLI), Azure 
 
 Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure CLI. U kunt de stappen van de Azure Cloud Shell volt ooien door alleen de knop **proberen** te selecteren in een van de volgende stappen, of door de [klassieke cli](/cli/azure/install-cli-version-1.0?toc=%2fazure%2fvirtual-network%2ftoc.json) en [cli](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) te installeren en de opdrachten op de lokale computer uit te voeren.
 
-1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2, want de Cloud Shell meldt u automatisch aan bij Azure. Open een opdracht sessie en meld u aan bij Azure met `azure login` behulp van de opdracht.
-2. Voer de CLI in Service Management-modus uit door `azure config mode asm` de opdracht in te voeren.
+1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2, want de Cloud Shell meldt u automatisch aan bij Azure. Open een opdracht sessie en meld u aan bij Azure met behulp van de `azure login` opdracht.
+2. Voer de CLI in Service Management-modus uit door de opdracht in te voeren `azure config mode asm` .
 3. Voer de volgende opdracht in om het virtuele netwerk (klassiek) te maken:
 
    ```azurecli-interactive
@@ -110,7 +110,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
      --address-prefix 10.0.0.0/16
    ```
 
-5. Maak een virtuele netwerk peering tussen de twee virtuele netwerken die zijn gemaakt via de verschillende implementatie modellen met behulp van de CLI. Kopieer het volgende script naar een tekst editor op uw PC. Vervang `<subscription id>` door uw abonnements-id. Als u uw abonnements-ID niet weet, voert `az account show` u de opdracht in. De waarde voor **id** in de uitvoer is uw abonnements-id. Plak het gewijzigde script in uw CLI-sessie en druk vervolgens op `Enter`.
+5. Maak een virtuele netwerk peering tussen de twee virtuele netwerken die zijn gemaakt via de verschillende implementatie modellen met behulp van de CLI. Kopieer het volgende script naar een tekst editor op uw PC. Vervang door `<subscription id>` uw abonnements-id. Als u uw abonnements-ID niet weet, voert u de `az account show` opdracht in. De waarde voor **id** in de uitvoer is uw abonnements-id. Plak het gewijzigde script in uw CLI-sessie en druk vervolgens op `Enter` .
 
    ```azurecli-interactive
    # Get the ID for VNet1.
@@ -128,7 +128,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
      --allow-vnet-access
    ```
 
-6. Nadat het script is uitgevoerd, controleert u de peering voor het virtuele netwerk (Resource Manager). Kopieer de volgende opdracht, plak deze in uw CLI-sessie en druk vervolgens `Enter`op:
+6. Nadat het script is uitgevoerd, controleert u de peering voor het virtuele netwerk (Resource Manager). Kopieer de volgende opdracht, plak deze in uw CLI-sessie en druk vervolgens op `Enter` :
 
    ```azurecli-interactive
    az network vnet peering list \
@@ -147,7 +147,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
 
 1. Installeer de meest recente versie van de Power shell [Azure](https://www.powershellgallery.com/packages/Azure) -en [AZ](https://www.powershellgallery.com/packages/Az/) -modules. Zie [Overzicht van Azure PowerShell](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json) als u nog geen ervaring hebt met Azure PowerShell.
 2. Start een Power shell-sessie.
-3. Meld u in Power shell aan bij Azure door de `Add-AzureAccount` opdracht in te voeren. Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#requirements-and-constraints)voor een lijst met machtigingen.
+3. Meld u in Power shell aan bij Azure door de opdracht in te voeren `Add-AzureAccount` . Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#requirements-and-constraints)voor een lijst met machtigingen.
 4. Als u een virtueel netwerk (klassiek) met Power shell wilt maken, moet u een nieuw netwerk configuratie bestand maken of wijzigen. Meer informatie over het [exporteren, bijwerken en importeren van netwerk configuratie bestanden](virtual-networks-using-network-configuration-file.md). Het bestand moet het volgende **VirtualNetworkSite** -element bevatten voor het virtuele netwerk dat in deze zelf studie wordt gebruikt:
 
     ```xml
@@ -165,8 +165,8 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
 
     > [!WARNING]
     > Het importeren van een gewijzigd netwerk configuratie bestand kan wijzigingen veroorzaken in bestaande virtuele netwerken (klassiek) in uw abonnement. Zorg ervoor dat u het vorige virtuele netwerk alleen toevoegt en dat u geen bestaande virtuele netwerken wijzigt of verwijdert uit uw abonnement.
-5. Meld u aan bij Azure om het virtuele netwerk (Resource Manager) te maken door `Connect-AzAccount` de opdracht in te voeren. Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#requirements-and-constraints)voor een lijst met machtigingen.
-6. Maak een resource groep en een virtueel netwerk (Resource Manager). Kopieer het script, plak het in Power shell en druk vervolgens `Enter`op.
+5. Meld u aan bij Azure om het virtuele netwerk (Resource Manager) te maken door de opdracht in te voeren `Connect-AzAccount` . Het account waarmee u zich aanmeldt, moet de benodigde machtigingen hebben voor het maken van een virtuele netwerk peering. Zie [machtigingen voor peering voor virtuele netwerken](virtual-network-manage-peering.md#requirements-and-constraints)voor een lijst met machtigingen.
+6. Maak een resource groep en een virtueel netwerk (Resource Manager). Kopieer het script, plak het in Power shell en druk vervolgens op `Enter` .
 
     ```powershell
     # Create a resource group.
@@ -180,7 +180,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
       -Location eastus
     ```
 
-7. Maak een virtuele netwerk peering tussen de twee virtuele netwerken die zijn gemaakt via de verschillende implementatie modellen. Kopieer het volgende script naar een tekst editor op uw PC. Vervang `<subscription id>` door uw abonnements-id. Als u uw abonnements-ID niet weet, voert `Get-AzSubscription` u de opdracht in om deze weer te geven. De waarde voor **id** in de geretourneerde uitvoer is uw abonnements-id. Als u het script wilt uitvoeren, kopieert u het gewijzigde script uit de tekst editor, klikt u met de rechter muisknop in uw Power `Enter`shell-sessie en drukt u vervolgens op.
+7. Maak een virtuele netwerk peering tussen de twee virtuele netwerken die zijn gemaakt via de verschillende implementatie modellen. Kopieer het volgende script naar een tekst editor op uw PC. Vervang door `<subscription id>` uw abonnements-id. Als u uw abonnements-ID niet weet, voert u de `Get-AzSubscription` opdracht in om deze weer te geven. De waarde voor **id** in de geretourneerde uitvoer is uw abonnements-id. Als u het script wilt uitvoeren, kopieert u het gewijzigde script uit de tekst editor, klikt u met de rechter muisknop in uw Power shell-sessie en drukt u vervolgens op `Enter` .
 
     ```powershell
     # Peer VNet1 to VNet2.
@@ -190,7 +190,7 @@ Voer de volgende stappen uit met behulp van de klassieke Azure-CLI en de Azure C
       -RemoteVirtualNetworkId /subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnet2
     ```
 
-8. Nadat het script is uitgevoerd, controleert u de peering voor het virtuele netwerk (Resource Manager). Kopieer de volgende opdracht, plak deze in uw Power shell-sessie en druk `Enter`vervolgens op:
+8. Nadat het script is uitgevoerd, controleert u de peering voor het virtuele netwerk (Resource Manager). Kopieer de volgende opdracht, plak deze in uw Power shell-sessie en druk vervolgens op `Enter` :
 
     ```powershell
     Get-AzVirtualNetworkPeering `
@@ -232,7 +232,7 @@ Wanneer u deze zelf studie hebt voltooid, kunt u de resources die u in de zelf s
     azure network vnet delete --vnet myVnet2 --quiet
     ```
 
-### <a name="powershell"></a><a name="delete-powershell"></a>Zo
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. Voer de volgende opdracht in om het virtuele netwerk (Resource Manager) te verwijderen:
 

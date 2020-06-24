@@ -3,16 +3,16 @@ title: Kosten voor aanvraag eenheden voor Azure Cosmos DB als een sleutel waarde
 description: Meer informatie over de kosten voor aanvraag eenheden van Azure Cosmos DB voor eenvoudige schrijf-en lees bewerkingen wanneer deze worden gebruikt als sleutel/waarde-archief.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1cd6b4b52db224db5febcec1eff79b01379a5956
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77647509"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262817"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB als sleutel waarde-archief – kosten overzicht
 

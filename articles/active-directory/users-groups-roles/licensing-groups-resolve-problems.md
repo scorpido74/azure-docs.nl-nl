@@ -8,25 +8,25 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: e6d754b02566c3026b908ab0a3254db3113cd225
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582691"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727429"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Problemen met licentie toewijzing voor een groep in Azure Active Directory identificeren en oplossen
 
 Op groep gebaseerde licentie verlening in Azure Active Directory (Azure AD) introduceert het concept van gebruikers met een licentie fout status. In dit artikel bespreken we de redenen waarom gebruikers zich kunnen voordoen in deze status.
 
-Wanneer u licenties rechtstreeks aan afzonderlijke gebruikers toewijst, zonder gebruik te maken van groeps licenties, kan de toewijzings bewerking mislukken. Wanneer u bijvoorbeeld de Power shell-cmdlet `Set-MsolUserLicense` op een gebruikers systeem uitvoert, kan de cmdlet om een groot aantal redenen mislukken die betrekking hebben op bedrijfs logica. Er kan bijvoorbeeld een ontoereikend aantal licenties zijn of een conflict tussen twee service plannen die niet tegelijkertijd kunnen worden toegewezen. Het probleem wordt onmiddellijk aan u gemeld.
+Wanneer u licenties rechtstreeks aan afzonderlijke gebruikers toewijst, zonder gebruik te maken van groeps licenties, kan de toewijzings bewerking mislukken. Wanneer u bijvoorbeeld de Power shell `Set-MsolUserLicense` -cmdlet op een gebruikers systeem uitvoert, kan de cmdlet om een groot aantal redenen mislukken die betrekking hebben op bedrijfs logica. Er kan bijvoorbeeld een ontoereikend aantal licenties zijn of een conflict tussen twee service plannen die niet tegelijkertijd kunnen worden toegewezen. Het probleem wordt onmiddellijk aan u gemeld.
 
 Wanneer u gebruikmaakt van op groepen gebaseerde licentie verlening, kunnen dezelfde fouten optreden, maar deze worden op de achtergrond uitgevoerd terwijl de Azure AD-Service licenties toewijst. Daarom kunnen de fouten niet meteen naar u worden gecommuniceerd. In plaats daarvan worden ze vastgelegd op het gebruikers object en vervolgens gerapporteerd via de beheer Portal. De oorspronkelijke bedoeling van de licentie voor de gebruiker is nooit verloren gegaan, maar wordt vastgelegd in een fout status voor toekomstig onderzoek en oplossing.
 
@@ -56,7 +56,7 @@ De volgende secties bevatten een beschrijving van elk mogelijk probleem en de ma
 
 **Probleem:** Er zijn niet voldoende beschik bare licenties voor een van de producten die in de groep zijn opgegeven. U moet een licentie voor het product aanschaffen of ongebruikte licenties van andere gebruikers of groepen maken.
 
-Ga naar **Azure Active Directory** > **licenties** > voor**alle producten**om te zien hoeveel licenties er beschikbaar zijn.
+Ga naar **Azure Active Directory**  >  **licenties**voor  >  **alle producten**om te zien hoeveel licenties er beschikbaar zijn.
 
 Als u wilt zien welke gebruikers en groepen licenties gebruiken, selecteert u een product. Onder **gelicentieerde gebruikers**ziet u een lijst met alle gebruikers aan wie licenties rechtstreeks of via een of meer groepen zijn toegewezen. Onder **gelicentieerde groepen**ziet u alle groepen waaraan de producten zijn toegewezen.
 
@@ -87,7 +87,7 @@ Om dit probleem op te lossen, moet u ervoor zorgen dat het vereiste plan nog ste
 
 ## <a name="usage-location-isnt-allowed"></a>Gebruiks locatie is niet toegestaan
 
-**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven in het gedeelte**instellingen** voor **gebruikers** > **profielen** > in de Azure Portal.
+**Probleem:** Sommige micro soft-Services zijn niet op alle locaties beschikbaar vanwege lokale wetten en voor Schriften. Voordat u een licentie aan een gebruiker kunt toewijzen, moet u de eigenschap **gebruiks locatie** opgeven voor de gebruiker. U kunt de locatie opgeven in het **User**  >  **Profile**  >  gedeelte**instellingen** voor gebruikers profielen in de Azure Portal.
 
 Wanneer Azure AD probeert een groeps licentie toe te wijzen aan een gebruiker van wie de gebruiks locatie niet wordt ondersteund, mislukt deze en registreert deze een fout bij de gebruiker.
 

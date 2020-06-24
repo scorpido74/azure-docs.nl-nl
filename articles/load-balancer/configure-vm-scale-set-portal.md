@@ -4,14 +4,14 @@ description: Meer informatie over het configureren van een schaalset voor virtue
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: b2a83b226a4b2ddbbd554783de6a2b5c85c92f0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e55b2a87813da802ec1b00c610b33da4461c008
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349729"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809448"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-portal"></a>Een schaalset voor virtuele machines configureren met een bestaande Azure Load Balancer met behulp van de Azure Portal
 
@@ -36,7 +36,7 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
 > [!NOTE]
 > Bij de volgende stappen wordt ervan uitgegaan dat een virtueel netwerk met de naam **myVNet** en een Azure-Load Balancer met de naam **myLoadBalancer** eerder is geïmplementeerd.
 
-1. Klik in de linkerbovenhoek van het scherm op **een resource** > **Compute** > maken**virtuele-machine schaalset** of zoek naar **schaalset voor virtuele machines** in de zoek functie voor Marketplace.
+1. Klik in de linkerbovenhoek van het scherm op **een resource maken**  >  **Compute**  >  **virtuele-machine schaalset** of zoek naar **schaalset voor virtuele machines** in de zoek functie voor Marketplace.
 
 2. Selecteer **Maken**.
 
@@ -44,14 +44,14 @@ In deze sectie maakt u een schaalset voor virtuele machines in de Azure Portal m
 
     | Instelling                        | Waarde                                                                                                 |
     |--------------------------------|-------------------------------------------------------------------------------------------------------|
-    | **Project Details**            |                                                                                                       |
+    | **Projectgegevens**            |                                                                                                       |
     | Abonnement                   | selecteer uw Azure-abonnement                                                                        |
     | Resourcegroep                 | Selecteer Nieuw maken, Voer **myResourceGroup**in en selecteer OK of selecteer een bestaande resource groep. |
     | **Details van schaal sets**          |                                                                                                       |
     | Naam van virtuele-machineschaalset | **MyVMSS** invoeren                                                                                      |
     | Regio                         | Selecteer **VS Oost 2**                                                                                    |
     | Beschikbaarheidszone              | **Geen** selecteren                                                                                       |
-    | **Exemplaar Details**           |                                                                                                       |
+    | **Exemplaardetails**           |                                                                                                       |
     | Installatiekopie                          | Selecteer **Ubuntu Server 18,04 LTS**                                                                    |
     | Azure spot-instantie            | **Nee** selecteren                                                                                         |
     | Grootte                           | Standaard behouden                                                                                      |

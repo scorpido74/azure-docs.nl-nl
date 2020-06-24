@@ -1,19 +1,19 @@
 ---
 title: Een Azure Image Builder-sjabloon maken (preview)
 description: Meer informatie over het maken van een sjabloon voor gebruik met Azure Image Builder.
-author: danis
+author: danielsollondon
 ms.author: danis
-ms.date: 03/24/2020
+ms.date: 06/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: f567114613f484f0765a6e007c3f0ba97480a968
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779336"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263310"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Voor beeld: een Azure Image Builder-sjabloon maken 
 
@@ -29,7 +29,7 @@ Dit is de basis indeling van de sjabloon:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             }
+     },
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
@@ -88,7 +88,7 @@ Standaard wordt met de opbouw functie voor installatie kopieën een VM voor het 
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Standaard wordt de grootte van de installatie kopie niet door de opbouw functie voor installatie kopieën gewijzigd, wordt de grootte van de bron afbeelding gebruikt. U kunt de grootte van de besturingssysteem schijf (Win en Linux) verg Roten, dit is optioneel en de waarde 0 betekent dat de grootte van de bron afbeelding gelijk blijft. 
+Standaard wordt de grootte van de installatie kopie niet door de opbouw functie voor installatie kopieën gewijzigd, wordt de grootte van de bron afbeelding gebruikt. U kunt **alleen** de grootte van de besturingssysteem schijf (Win en Linux) verg Roten, dit is optioneel en de waarde 0 betekent dat de grootte van de bron afbeelding gelijk blijft. U kunt de grootte van de besturingssysteem schijf niet verkleinen tot deze kleiner is dan de grootte van de bron installatie kopie.
 
 ```json
  {
@@ -521,7 +521,7 @@ De uitvoer van de installatie kopie is een beheerde afbeeldings bron.
  
 Eigenschappen distribueren:
 - **type** – managedImage 
-- **imageId** – resource-id van de doel afbeelding, verwachte indeling:/subscriptions/ \< subscriptionId>/ResourceGroups/ \< destinationResourceGroupName>/providers/Microsoft.Compute/images/ \< Image naam>
+- **imageId** : de resource-id van de doel afbeelding, de verwachte indeling:/Subscriptions/ \<subscriptionId> /resourceGroups/ \<destinationResourceGroupName> /providers/Microsoft.Compute/images/\<imageName>
 - **locatie** : locatie van de beheerde installatie kopie.  
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.
@@ -561,7 +561,7 @@ Voordat u naar de galerie met installatie kopieën kunt distribueren, moet u een
 Eigenschappen voor gedeelde afbeeldings galerieën distribueren:
 
 - **type** -sharedImage  
-- **galleryImageId** : id van de galerie met gedeelde afbeeldingen. De indeling is:/Subscriptions/ \< subscriptionId>/ResourceGroups/ \< resourceGroupName>/providers/microsoft.compute/galleries/ \< sharedImageGalleryName>/images/ \< imageGalleryName>.
+- **galleryImageId** : id van de galerie met gedeelde afbeeldingen. De indeling is:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
 - **runOutputName** : een unieke naam voor het identificeren van de distributie.  
 - **artifactTags** -optionele door de gebruiker opgegeven sleutel waarde-paar tags.
 - **replicationRegions** : matrix van regio's voor replicatie. Een van de regio's moet de regio zijn waarin de galerie wordt geïmplementeerd.

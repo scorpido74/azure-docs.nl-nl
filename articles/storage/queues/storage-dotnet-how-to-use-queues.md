@@ -7,13 +7,13 @@ ms.date: 05/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
-ms.reviewer: cbrooks
-ms.openlocfilehash: 90a7f37fb82cfea2f3ee44c31f6d3ef0a61c64c0
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.reviewer: dineshm
+ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465402"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808841"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Aan de slag met Azure Queue Storage met .NET
 
@@ -74,7 +74,7 @@ U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 1. Klik met de rechter muisknop op uw project in **Solution Explorer**en kies **NuGet-pakketten beheren**.
 1. **Bladeren** selecteren
 1. Zoek online naar ' Azure. storage. queues ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee worden ook de bibliotheken Azure. storage. common en Azure. core geïnstalleerd. Dit zijn afhankelijkheden van de wachtrij bibliotheek.
-1. Zoek online naar ' System. Configuration. ConfigurationManager ' en selecteer **installeren** om de Configuration Manager te installeren.
+1. Zoek online naar ' System.Configuration.ConfigurationManager ' en selecteer **installeren** om de Configuration Manager te installeren.
 
 # <a name="net-v11"></a>[\.NET V11](#tab/dotnetv11)
 
@@ -89,7 +89,7 @@ U kunt NuGet gebruiken om deze pakketten te verkrijgen. Volg deze stappen:
 1. Klik met de rechter muisknop op uw project in **Solution Explorer**en kies **NuGet-pakketten beheren**.
 1. **Bladeren** selecteren
 1. Zoek online naar ' micro soft. Azure. storage. Queue ' en selecteer **installeren** om de Storage-client bibliotheek en de afhankelijkheden ervan te installeren. Hiermee wordt ook de bibliotheek micro soft. Azure. storage. common geïnstalleerd. Dit is een afhankelijkheid van de wachtrij bibliotheek.
-1. Zoek online naar ' micro soft. Azure. ConfigurationManager ' en selecteer **installeren** om de Azure Configuration Manager te installeren.
+1. Zoek online naar ' Microsoft.Azure.ConfigurationManager ' en selecteer **installeren** om de Azure-Configuration Manager te installeren.
 
 ---
 
@@ -110,13 +110,13 @@ U kunt de voorbeelden in deze gids in twee omgevingen uitvoeren:
 
 ## <a name="get-your-storage-connection-string"></a>Uw opslag connection string ophalen
 
-De Azure Storage-client bibliotheken voor .NET-ondersteuning met behulp van een opslag connection string voor het configureren van eind punten en referenties voor toegang tot opslag Services. Zie [toegangs sleutels voor opslag accounts beheren](../common/storage-account-keys-manage.md)voor meer informatie.
+De Azure Storage-client bibliotheken voor .NET-ondersteuning met behulp van een opslag connection string voor het configureren van eind punten en referenties voor toegang tot opslag Services. Zie [Toegangssleutels voor een opslagaccount beheren](../common/storage-account-keys-manage.md) voor meer informatie.
 
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieer uw referenties van de Azure Portal
 
 De voorbeeldcode moet de toegang tot uw opslagaccount autoriseren. Om te autoriseren geeft u de toepassing de referenties van uw opslagaccount in de vorm van een verbindingsreeks. Om uw opslagaccountreferenties te zien, doet u het volgende:
 
-1. Navigeer naar het [Azure Portal](https://portal.azure.com).
+1. Navigeer naar [Azure Portal](https://portal.azure.com).
 2. Zoek uw opslagaccount.
 3. In de sectie **Instellingen** van het overzicht met opslagaccounts selecteert u **Toegangssleutels**. De toegangssleutels van uw account worden weergegeven, evenals de volledige verbindingsreeks voor elke sleutel.
 4. Zoek de waarde van de **Verbindingsreeks** onder **key1** en klik op de knop **Kopiëren** om de verbindingsreeks te kopiëren. U gaat in de volgende stap de waarde voor de verbinding toevoegen aan een omgevingsvariabele.
@@ -128,7 +128,7 @@ Zie [Azure Storage-verbindingsreeksen configureren](../common/storage-configure-
 > [!NOTE]
 > De sleutel van uw opslagaccount is vergelijkbaar met het hoofdwachtwoord voor uw opslagaccount. Zorg dat de sleutel van uw opslagaccount altijd is beveiligd. Geef deze niet aan andere gebruikers en bewaar of noteer de sleutel op een veilige manier en plaats. Genereer een nieuwe sleutel via de Azure-portal als er mogelijk inbreuk op de sleutel heeft plaatsgevonden.
 
-De beste manier om de opslagverbindingsreeks te onderhouden, is met een configuratiebestand. Als u uw connection string wilt configureren, opent u het bestand *app. config* vanuit Solution Explorer in Visual Studio. Voeg de inhoud van het element `\<appSettings\>` hieronder toe. Vervang de *verbindings reeks* door de waarde die u hebt gekopieerd uit uw opslag account in de portal:
+De beste manier om de opslagverbindingsreeks te onderhouden, is met een configuratiebestand. Als u uw connection string wilt configureren, opent u het *app.config* -bestand vanuit Solution Explorer in Visual Studio. Voeg de inhoud van het element `\<appSettings\>` hieronder toe. Vervang de *verbindings reeks* door de waarde die u hebt gekopieerd uit uw opslag account in de portal:
 
 ```xml
 <configuration>
@@ -495,7 +495,7 @@ Nu u de basisprincipes van Queue Storage hebt geleerd, volgt u deze koppelingen 
 
 - Bekijk de naslagdocumentatie over de Queue-service voor meer informatie over beschikbare API's:
   - [Naslaginformatie over de Storage-clientbibliotheek voor .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-  - [Naslaginformatie over REST-API](https://msdn.microsoft.com/library/azure/dd179355)
+  - [REST API referentie](https://msdn.microsoft.com/library/azure/dd179355)
 - Leer hoe u de code die u schrijft om te werken met Azure Storage, kunt vereenvoudigen met behulp van de [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki).
 - Bekijk meer functiehandleidingen voor informatie over aanvullende mogelijkheden voor het opslaan van gegevens in Azure.
   - [Aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) voor het opslaan van gestructureerde gegevens.

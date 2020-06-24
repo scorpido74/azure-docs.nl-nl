@@ -3,17 +3,17 @@ title: Azure Cosmos DB tabellen ontwerpen voor schalen en prestaties
 description: 'Ontwerp handleiding voor Azure Table Storage: schaal bare en uitvoerende tabellen in Azure Cosmos DB en Azure-tabel opslag'
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
-ms.topic: conceptual
-ms.date: 05/21/2019
+ms.topic: how-to
+ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 78a38938ad31bb349b7215f0a26dda69f4fec966
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: beb80390bdeacd6775ccfb0b712fe6dd260fbce0
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83651916"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261083"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Ontwerp handleiding voor de Azure Table Storage-tabel: schaal bare en uitvoerende tabellen
 
@@ -52,7 +52,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -72,7 +72,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Jun</td>
@@ -109,7 +109,7 @@ In het volgende voor beeld ziet u een eenvoudig tabel ontwerp voor het opslaan v
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -129,7 +129,7 @@ De keuze van `PartitionKey` en `RowKey` is fundamenteel voor een goed ontwerp va
 
 Een tabel bestaat uit een of meer partities, en veel van de ontwerp beslissingen die u aanbrengt, worden op een geschikte manier `PartitionKey` gekozen `RowKey` om uw oplossing te optimaliseren. Een oplossing kan bestaan uit slechts één tabel die al uw entiteiten bevat, ingedeeld in partities, maar een oplossing heeft meestal meerdere tabellen. Met tabellen kunt u uw entiteiten logisch indelen en kunt u de toegang tot de gegevens beheren met behulp van toegangs beheer lijsten. U kunt een hele tabel verwijderen door één opslag bewerking te gebruiken.  
 
-### <a name="table-partitions"></a>Tabel partities
+### <a name="table-partitions"></a>Tabelpartities
 De account naam, tabel naam en `PartitionKey` samen duiden de partitie in de opslag service aan waar tabel opslag de entiteit opslaat. En als onderdeel van het adresserings schema voor entiteiten definiëren partities een bereik voor trans acties (Zie de sectie verderop in dit artikel, [trans acties van entiteits groepen](#entity-group-transactions)) en vormen de basis van hoe tabel opslag wordt geschaald. Zie [prestaties en schaal baarheid controle lijst voor tabel opslag](../storage/tables/storage-performance-checklist.md)voor meer informatie over tabel partities.  
 
 In tabel opslag, een afzonderlijk knoop punt Services, een of meer volledige partities, en de service wordt geschaald door dynamische taak verdeling van partities tussen knoop punten. Als een knoop punt wordt geladen, kan de tabel opslag het bereik van partities dat door dat knoop punt wordt verwerkt, splitsen op verschillende knoop punten. Wanneer er verkeer wordt afgedeeld, kan de partitielay-out van de partitie reeksen van de Stille knoop punten weer worden samengevoegd op één knoop punt.  
@@ -630,7 +630,7 @@ Gebruik voor deze optie index entiteiten die de volgende gegevens bevatten:
 
 ![Afbeelding van entiteit van werk nemer, met teken reeks met een lijst met werk nemer-Id's met dezelfde achternaam][15]
 
-De `EmployeeIDs` eigenschap bevat een lijst met werk nemer-id's voor werk nemers met de achternaam die is opgeslagen in de `RowKey` .  
+De `EmployeeIDs` eigenschap bevat een lijst met werk nemer-id's voor werk nemers met de achternaam die is opgeslagen in de `RowKey` en `PartitionKey` .  
 
 U kunt EGTs niet gebruiken om consistentie te behouden, omdat de index entiteiten zich in een afzonderlijke partitie bevinden van de entiteiten van de werk nemer. Zorg ervoor dat de index entiteiten uiteindelijk consistent zijn met de entiteiten van de werk nemer.  
 
@@ -1139,7 +1139,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1159,7 +1159,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1196,7 +1196,7 @@ Table Storage is een *schema-less Table-* archief. Dit betekent dat een enkele t
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td></td>
@@ -1232,7 +1232,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1254,7 +1254,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>
@@ -1295,7 +1295,7 @@ Elke entiteit moet nog steeds `PartitionKey` , `RowKey` , en `Timestamp` waarden
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Werknemer</td>

@@ -1,22 +1,22 @@
 ---
-title: Een node. js Mongoose-toepassing verbinden met Azure Cosmos DB
+title: Een Node.js Mongoose-toepassing verbinden met Azure Cosmos DB
 description: Meer informatie over hoe u het Mongoose-Framework kunt gebruiken om gegevens op te slaan en te beheren in Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: ff4455571aa5cfa5c9214bdf18af1853b0cef352
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05298ac0b76f93ba8249cc72910d33b58a9889e4
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585407"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263123"
 ---
-# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Een node. js Mongoose-toepassing verbinden met Azure Cosmos DB
+# <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Een Node.js Mongoose-toepassing verbinden met Azure Cosmos DB
 
 In deze zelf studie wordt gedemonstreerd hoe u het [Mongoose-Framework](https://mongoosejs.com/) kunt gebruiken bij het opslaan van gegevens in Cosmos db. We gebruiken de Azure Cosmos DB-API voor MongoDB voor deze walkthrough. Voor wie niet bekend is met Mongoose: dit is een framework voor objectmodellering voor MongoDB in Node.js en biedt een ongecompliceerde, op schema's gebaseerde oplossing voor het modelleren van uw toepassingsgegevens.
 
@@ -28,11 +28,11 @@ Cosmos DB is de wereld wijd gedistribueerde multi-model database service van mic
 
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-[Node. js](https://nodejs.org/) versie v 0.10.29 of hoger.
+[Node.js](https://nodejs.org/) versie v 0.10.29 of hoger.
 
 ## <a name="create-a-cosmos-account"></a>Een Cosmos-account maken
 
-We gaan een Cosmos-account maken. Als u al een account hebt dat u wilt gebruiken, kunt u verder naar de stap Uw Node.js-toepassing instellen. Als u de Azure Cosmos DB-emulator gebruikt, volgt u de stappen op [Azure Cosmos DB-emulator](local-emulator.md) om de emulator in te stellen en gaat u verder met het instellen van de node. js-toepassing.
+We gaan een Cosmos-account maken. Als u al een account hebt dat u wilt gebruiken, kunt u verder naar de stap Uw Node.js-toepassing instellen. Als u de Azure Cosmos DB-emulator gebruikt, volgt u de stappen op [Azure Cosmos DB emulator](local-emulator.md) om de emulator in te stellen en gaat u verder met het instellen van uw Node.js-toepassing.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
@@ -40,11 +40,11 @@ We gaan een Cosmos-account maken. Als u al een account hebt dat u wilt gebruiken
 In deze toepassing behandelen we twee manieren om verzamelingen te maken in Azure Cosmos DB: 
 - **Elk object model opslaan in een afzonderlijke verzameling**: we raden [u aan een Data Base met een speciale door voer te maken](set-throughput.md#set-throughput-on-a-database). Met dit capaciteits model krijgt u een betere kosten besparing.
 
-    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node. js-zelf studie: scherm afbeelding van de Azure Portal, waarin wordt getoond hoe u een Data Base maakt in de Data Explorer voor een Azure Cosmos DB-account, voor gebruik met de Mongoose-knooppunt module":::
+    :::image type="content" source="./media/mongodb-mongoose/db-level-throughput.png" alt-text="Node.js zelf studie: scherm afbeelding van de Azure Portal, waarin wordt getoond hoe u een Data Base maakt in de Data Explorer voor een Azure Cosmos DB account, voor gebruik met de Mongoose-knooppunt module":::
 
 - **Alle object modellen opslaan in een enkele Cosmos DB verzameling**: als u liever alle modellen in één verzameling opslaat, kunt u gewoon een nieuwe data base maken zonder de optie door Voer inrichten te selecteren. Als u dit capaciteits model gebruikt, wordt elke verzameling gemaakt met een eigen doorvoer capaciteit voor elk object model.
 
-Nadat u de Data Base hebt gemaakt, gebruikt u de naam in `COSMOSDB_DBNAME` de omgevings variabele hieronder.
+Nadat u de Data Base hebt gemaakt, gebruikt u de naam in de `COSMOSDB_DBNAME` omgevings variabele hieronder.
 
 ## <a name="set-up-your-nodejs-application"></a>Uw Node.js-toepassing instellen
 
@@ -88,7 +88,7 @@ Nadat u de Data Base hebt gemaakt, gebruikt u de naam in `COSMOSDB_DBNAME` de om
    COSMOSDB_PORT=10255
     ```
 
-6. Maak verbinding met Cosmos DB met behulp van het Mongoose-Framework door de volgende code toe te voegen aan het einde van index. js.
+6. Maak verbinding met Cosmos DB met behulp van het Mongoose-Framework door de volgende code toe te voegen aan het einde van index.js.
     ```JavaScript
    mongoose.connect("mongodb://"+process.env.COSMOSDB_HOST+":"+process.env.COSMOSDB_PORT+"/"+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb", {
       auth: {
@@ -194,7 +194,7 @@ In deze sectie wordt beschreven hoe u dit kunt doen met de API van Azure Cosmos 
 
 1. Nu ziet u in het Azure Portal twee verzamelingen die zijn gemaakt in Cosmos DB.
 
-    ![Node. js-zelf studie: scherm afbeelding van de Azure Portal, met een Azure Cosmos DB account, waarbij meerdere verzamelings namen zijn gemarkeerd-knooppunt database][multiple-coll]
+    ![Node.js zelf studie: scherm afbeelding van de Azure Portal, met een Azure Cosmos DB account, waarbij meerdere verzamelings namen zijn gemarkeerd-knooppunt database][multiple-coll]
 
 1. Tot slot lezen we de gegevens van Cosmos DB. Aangezien we gebruikmaken van het standaardmodel van Mongoose, zijn de leesbewerkingen hetzelfde als alle andere leesbewerkingen met Mongoose.
 
@@ -299,7 +299,7 @@ Hier maken we een basisobjectmodel, definiëren we een onderscheidende sleutel e
 
 1. Als u nu terug naar Azure Portal gaat, ziet u dat er slechts één verzameling met de naam ```alldata``` met zowel 'Family'- als 'VacationDestinations'-gegevens heeft.
 
-    ![Node. js-zelf studie: scherm afbeelding van de Azure Portal, met een Azure Cosmos DB account, waarbij de naam van de verzameling is gemarkeerd-knooppunt database][alldata]
+    ![Node.js zelf studie: scherm afbeelding van de Azure Portal met een Azure Cosmos DB-account, waarbij de naam van de verzameling is gemarkeerd-knooppunt database][alldata]
 
 1. U ziet ook dat elk object een ander kenmerk heeft dat wordt aangeroepen als ```__type```, waarmee u onderscheid tussen de twee verschillende objectmodellen kunt maken.
 

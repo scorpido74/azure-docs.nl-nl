@@ -1,17 +1,17 @@
 ---
 title: Een container maken in Azure Cosmos DB
-description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .net, Java, Python, node. js en andere Sdk's.
+description: Meer informatie over het maken van een container in Azure Cosmos DB met behulp van Azure Portal, .net, Java, Python, Node.js en andere Sdk's.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 809ebe848e38a7c99c96ef44f130da917fb35942
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 02914a9357ef9ccc10763699dc7c84aa98777139
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161619"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85261610"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Een Azure Cosmos-container maken
 
@@ -36,7 +36,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd](./media/how-to-create-container/partitioned-collection-create-sql.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-sql.png" alt-text="Scherm afbeelding van Data Explorer deel venster, met nieuwe container gemarkeerd":::
 
 ### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API voor MongoDB
 
@@ -52,7 +52,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Scherm opname van Azure Cosmos DB-API voor MongoDB, container toevoegen dialoog venster](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-mongodb.png" alt-text="Scherm opname van Azure Cosmos DB-API voor MongoDB, container toevoegen dialoog venster":::
 
 ### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
@@ -68,7 +68,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Schermopname van Cassandra-API, dialoogvenster Tabel toevoegen](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-cassandra.png" alt-text="Schermopname van Cassandra-API, dialoogvenster Tabel toevoegen":::
 
 > [!NOTE]
 > Voor de Cassandra-API wordt de primaire sleutel gebruikt als de partitiesleutel.
@@ -88,7 +88,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Schermopname van Gremlin-API, dialoogvenster Grafiek toevoegen](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-gremlin.png" alt-text="Schermopname van Gremlin-API, dialoogvenster Grafiek toevoegen":::
 
 ### <a name="table-api"></a><a id="portal-table"></a>Tabel-API
 
@@ -102,7 +102,7 @@ In dit artikel worden de verschillende manieren beschreven voor het maken van ee
    * Geef een door Voer op die moet worden ingericht (bijvoorbeeld 1000 RUs).
    * Selecteer **OK**.
 
-    ![Schermopname van Table-API, dialoogvenster Grafiek toevoegen](./media/how-to-create-container/partitioned-collection-create-table.png)
+    :::image type="content" source="./media/how-to-create-container/partitioned-collection-create-table.png" alt-text="Schermopname van Table-API, dialoogvenster Grafiek toevoegen":::
 
 > [!Note]
 > Voor de Table-API wordt de partitiesleutel opgegeven telkens wanneer u een nieuwe rij toevoegt.

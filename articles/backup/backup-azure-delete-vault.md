@@ -3,12 +3,12 @@ title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel leert u hoe u afhankelijkheden kunt verwijderen en vervolgens een Azure Backup Recovery Services kluis kunt verwijderen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 946b199119ee9e03ec9348c4e180f8e4c9b9a776
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84447744"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84751869"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 
@@ -38,7 +38,7 @@ Als u een kluis goed wilt verwijderen, moet u de stappen in deze volg orde volge
 
 - **Stap 1**: Schakel de functie voor voorlopig verwijderen uit. [Hier vindt](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) u een overzicht van de stappen voor het uitschakelen van de tijdelijke verwijdering.
 
-- **Stap 2**: Controleer na het uitschakelen van de functie voor voorlopig verwijderen of er eerder items zijn overgebleven in thee. Als er items met de status zacht verwijderd zijn, moet u deze *verwijderen* en opnieuw *verwijderen* . [Volg deze stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) om items te zoeken die u voorlopig verwijdert en deze permanent te verwijderen.
+- **Stap 2**: Controleer na het uitschakelen van zacht verwijderen of er eerder items met de status voorlopig verwijderd zijn. Als er items met de status zacht verwijderd zijn, moet u deze *verwijderen* en opnieuw *verwijderen* . [Volg deze stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) om items te zoeken die u voorlopig verwijdert en deze permanent te verwijderen.
 
 - **Stap 3**: u moet de volgende drie locaties controleren om te controleren of er beveiligde items zijn:
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om de beveiliging te stoppen en de back-upgegevens 
 
         ![Het deel venster back-up stoppen.](./media/backup-azure-delete-vault/stop-backup-item.png)
 
-    - Als het deel venster **back-upgegevens verwijderen** wordt weer gegeven, voert u de naam van het back-upitem in (dit veld is hoofdletter gevoelig) en selecteert u vervolgens een reden in de vervolg keuzelijst. Voer uw opmerkingen in, als u die hebt. Selecteer vervolgens **verwijderen**.
+    - Als het deel venster **back-upgegevens verwijderen** wordt weer gegeven, voert u de naam van het back-upitem in (dit veld is hoofdletter gevoelig) en selecteert u vervolgens een reden in de vervolg keuzelijst. Voer uw opmerkingen in, als u die hebt. Selecteer vervolgens **Verwijderen**.
 
          ![Het deel venster back-upgegevens verwijderen.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
@@ -119,7 +119,7 @@ Nadat dit proces is voltooid, kunt u de back-upitems uit de beheer console verwi
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>Back-upitems verwijderen uit de MARS-beheer console
 
 1. Open de MARS-beheer console, ga naar het deel venster **acties** en selecteer **back-up plannen**.
-2. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema en alle opgeslagen back-ups verwijderen**. Selecteer vervolgens **volgende**.
+2. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema en alle opgeslagen back-ups verwijderen**. Selecteer vervolgens **Volgende**.
 
     ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 

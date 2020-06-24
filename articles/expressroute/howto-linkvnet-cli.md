@@ -4,23 +4,23 @@ description: In dit artikel wordt beschreven hoe u virtuele netwerken (VNets) ko
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 133a586612f8a5b864c84400ece63d9ba6ccb150
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476131"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84729239"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Een virtueel netwerk verbinden met een ExpressRoute-circuit met behulp van CLI
 
 Dit artikel helpt u virtuele netwerken (VNets) te koppelen aan Azure ExpressRoute-circuits met behulp van CLI. Als u een koppeling wilt maken met behulp van Azure CLI, moeten de virtuele netwerken worden gemaakt met behulp van het Resource Manager-implementatie model. Ze kunnen zich in hetzelfde abonnement bevinden of deel uitmaken van een ander abonnement. Als u een andere methode wilt gebruiken om uw VNet te verbinden met een ExpressRoute-circuit, kunt u een artikel selecteren in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [Zo](expressroute-howto-linkvnet-arm.md)
+> * [Azure-portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-CLI](howto-linkvnet-cli.md)
 > * [Video-Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [Power shell (klassiek)](expressroute-howto-linkvnet-classic.md)
@@ -36,7 +36,7 @@ Dit artikel helpt u virtuele netwerken (VNets) te koppelen aan Azure ExpressRout
   * Volg de instructies voor het [maken van een ExpressRoute-circuit](howto-circuit-cli.md) en laat het circuit ingeschakeld door uw connectiviteits provider. 
   * Zorg ervoor dat u persoonlijke Azure-peering voor uw circuit hebt geconfigureerd. Zie het artikel [route ring configureren](howto-routing-cli.md) voor instructies voor route ring. 
   * Zorg ervoor dat persoonlijke Azure-peering is geconfigureerd. De BGP-peering tussen uw netwerk en micro soft moet actief zijn, zodat u end-to-end connectiviteit kunt inschakelen.
-  * Zorg ervoor dat u een virtueel netwerk en een virtuele netwerk gateway hebt gemaakt en volledig hebt ingericht. Volg de instructies voor het [configureren van een virtuele netwerk gateway voor ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Zorg ervoor dat u `--gateway-type ExpressRoute`gebruikt.
+  * Zorg ervoor dat u een virtueel netwerk en een virtuele netwerk gateway hebt gemaakt en volledig hebt ingericht. Volg de instructies voor het [configureren van een virtuele netwerk gateway voor ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli). Zorg ervoor dat u gebruikt `--gateway-type ExpressRoute` .
 
 * U kunt Maxi maal 10 virtuele netwerken koppelen aan een standaard ExpressRoute-circuit. Alle virtuele netwerken moeten zich in dezelfde geopolitieke regio bevinden wanneer een standaard ExpressRoute-circuit wordt gebruikt. 
 

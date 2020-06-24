@@ -3,7 +3,7 @@ title: Herstel naar een bepaald tijdstip (PITR)
 titleSuffix: Azure SQL Managed Instance
 description: Een Data Base op een Azure SQL Managed instance herstellen naar een eerder tijdstip.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 407d56c209f64d350906a17c0746b1c43f969d43
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310169"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84708636"
 ---
 # <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Een data base in een Azure SQL Managed instance herstellen naar een eerder tijdstip
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +46,7 @@ In de volgende tabel worden scenario's voor herstel naar een bepaald tijdstip vo
 
 |           |Bestaande data base herstellen naar hetzelfde exemplaar van SQL Managed instance| Bestaande data base herstellen naar een ander SQL-beheerd exemplaar|Verwijderde data base herstellen naar hetzelfde beheerde exemplaar van SQL|Verwijderde data base herstellen naar een ander SQL-beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Yes|No |Yes|No|
+|**Azure-portal**| Yes|No |Yes|No|
 |**Azure-CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 

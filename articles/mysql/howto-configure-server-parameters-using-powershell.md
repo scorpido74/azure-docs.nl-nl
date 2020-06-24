@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: conceptual
 ms.date: 4/29/2020
-ms.openlocfilehash: 0de816d25bbc1563885413d8dbd52dc7bda7d538
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6c91f1494e56e9176f8bbf79387144aea5942787
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615082"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725151"
 ---
-# <a name="customize-azure-database-for-mysql-server-parameters-using-powershell"></a>Azure Database for MySQL server parameters aanpassen met behulp van Power shell
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>Server parameters configureren in Azure Database for MySQL met behulp van Power shell
 
 U kunt configuratie parameters voor een Azure Database for MySQL server weer geven, tonen en bijwerken met behulp van Power shell. Een subset van de engine configuraties wordt weer gegeven op server niveau en kan worden gewijzigd.
 
@@ -26,7 +26,7 @@ U hebt het volgende nodig om deze hand leiding te volt ooien:
 - Een [Azure database for mysql server](quickstart-create-mysql-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met `Install-Module -Name Az.MySql -AllowPrerelease`behulp van de volgende opdracht:.
+> Hoewel de AZ. MySql Power shell-module in preview is, moet u deze afzonderlijk van de AZ Power shell-module installeren met behulp van de volgende opdracht: `Install-Module -Name Az.MySql -AllowPrerelease` .
 > Zodra de AZ. MySql Power shell-module algemeen beschikbaar is, wordt het onderdeel van toekomstige AZ Power shell-module releases en is deze systeem eigen beschikbaar vanuit Azure Cloud Shell.
 
 Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
@@ -35,7 +35,7 @@ Als u Power shell lokaal wilt gebruiken, maakt u verbinding met uw Azure-account
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Server configuratie parameters voor Azure Database for MySQL server weer geven
 
-Voer de `Get-AzMySqlConfiguration` cmdlet uit om alle para meters die kunnen worden gewijzigd op een server en hun waarden weer te geven.
+Voer de cmdlet uit om alle para meters die kunnen worden gewijzigd op een server en hun waarden weer te geven `Get-AzMySqlConfiguration` .
 
 In het volgende voor beeld worden de server configuratie parameters weer gegeven voor de server **mydemoserver** in de resource groep **myresourcegroup**.
 
@@ -47,9 +47,9 @@ Zie het gedeelte MySQL-verwijzing in [Server systeem variabelen](https://dev.mys
 
 ## <a name="show-server-configuration-parameter-details"></a>Details van server configuratie parameters weer geven
 
-Als u details over een bepaalde configuratie parameter voor een server wilt weer geven `Get-AzMySqlConfiguration` , voert u de cmdlet uit en geeft u de para meter **name** op.
+Als u details over een bepaalde configuratie parameter voor een server wilt weer geven, voert u de `Get-AzMySqlConfiguration` cmdlet uit en geeft u de para meter **name** op.
 
-In dit voor beeld worden details weer gegeven van de configuratie parameter server van het **langzame\_query\_logboek** voor server **mydemoserver** onder resource groep **myresourcegroup**.
+In dit voor beeld worden details weer gegeven van de configuratie parameter server van het **langzame \_ query \_ logboek** voor server **mydemoserver** onder resource groep **myresourcegroup**.
 
 ```azurepowershell-interactive
 Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver
@@ -57,9 +57,9 @@ Get-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup
 
 ## <a name="modify-a-server-configuration-parameter-value"></a>Een waarde voor de para meter server configuratie wijzigen
 
-U kunt ook de waarde van een bepaalde server configuratie parameter wijzigen, waarmee de onderliggende configuratie waarde wordt bijgewerkt voor de MySQL-server engine. Gebruik de `Update-AzMySqlConfiguration` cmdlet om de configuratie bij te werken.
+U kunt ook de waarde van een bepaalde server configuratie parameter wijzigen, waarmee de onderliggende configuratie waarde wordt bijgewerkt voor de MySQL-server engine. Gebruik de cmdlet om de configuratie bij te werken `Update-AzMySqlConfiguration` .
 
-Voor het bijwerken van de configuratie parameter van de **langzame\_query\_logboek** server van server **mydemoserver** onder resource groep **myresourcegroup**.
+Voor het bijwerken van de configuratie parameter van de **langzame \_ query \_ logboek** server van server **mydemoserver** onder resource groep **myresourcegroup**.
 
 ```azurepowershell-interactive
 Update-AzMySqlConfiguration -Name slow_query_log -ResourceGroupName myresourcegroup -ServerName mydemoserver -Value On

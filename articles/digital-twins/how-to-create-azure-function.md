@@ -1,5 +1,5 @@
 ---
-title: Een Azure-functie instellen voor het verwerken van gegevens
+title: Een Azure-functie instellen om gegevens te verwerken
 titleSuffix: Azure Digital Twins
 description: Zie een Azure-functie maken die kan worden geopend en geactiveerd door Digital apparaatdubbels.
 author: cschormann
@@ -7,14 +7,17 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3b416e6ccb035ede06a360c2697a9b20ca417d98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 51e2560a7ad8d62965474082633d4cb66c1d6592
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613192"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725899"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>Azure Functions-apps verbinden voor het verwerken van gegevens
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Tijdens de preview-fase wordt het bijwerken van digitale apparaatdubbels op basis van gegevens verwerkt met behulp van [**gebeurtenis routes**](concepts-route-events.md) via Compute-resources, zoals [Azure functions](../azure-functions/functions-overview.md). Een Azure-functie kan worden gebruikt om een digitale dubbele taak bij te werken als reactie op:
 * telemetrie-gegevens van apparaten die afkomstig zijn van IoT Hub
@@ -157,7 +160,7 @@ Gebruik de volgende opdracht om de door het systeem beheerde identiteit te maken
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-Gebruik de waarde *principalId* in de volgende opdracht om de identiteit van de functie-app toe te wijzen aan de rol van *eigenaar* van uw Azure Digital apparaatdubbels-instantie:
+Gebruik de waarde van *principalId* in de volgende opdracht om de functie-app-id toe te wijzen aan de *eigenaar*srol voor uw Azure Digital Twins-instantie:
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

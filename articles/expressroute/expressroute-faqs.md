@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 882a94034831b1c710031031918e70bf3581a4a6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266641"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987299"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen ExpressRoute
 
@@ -152,7 +152,7 @@ Als een van de cross Connections mislukt, wordt de verbinding niet verbroken. Er
 
 ### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Hoe kan ik de redundantie voor privé-peering implementeren?
 
-Meerdere ExpressRoute-circuits van verschillende peering locaties kunnen worden aangesloten op hetzelfde virtuele netwerk om hoge Beschik baarheid te bieden in het geval dat één circuit niet beschikbaar is. U kunt vervolgens [hogere gewichten toewijzen](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) aan de lokale verbinding om voor keur te geven aan een specifiek circuit. Het wordt ten zeerste aanbevolen om ten minste twee ExpressRoute-circuits in te stellen om afzonderlijke storings punten te voor komen. 
+Meerdere ExpressRoute-circuits van verschillende peering locaties of Maxi maal vier verbindingen vanaf dezelfde peering-locatie kunnen worden aangesloten op hetzelfde virtuele netwerk om hoge Beschik baarheid te bieden in het geval dat één circuit niet beschikbaar is. U kunt vervolgens [hogere gewichten toewijzen](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection) aan een van de lokale verbindingen om de voor keur aan een specifiek circuit te geven. Het wordt ten zeerste aanbevolen om ten minste twee ExpressRoute-circuits in te stellen om afzonderlijke storings punten te voor komen. 
 
 Bekijk [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute) wat u kunt ontwerpen voor hoge Beschik baarheid en dat u [hier](https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering) kunt ontwerpen voor herstel na nood gevallen.  
 
@@ -164,7 +164,7 @@ Bekijk [hier](https://docs.microsoft.com/azure/expressroute/designing-for-high-a
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Hoe kan ik zorgen voor hoge Beschik baarheid in een virtueel netwerk dat is verbonden met ExpressRoute?
 
-U kunt hoge Beschik baarheid bezorgen door ExpressRoute-circuits op verschillende peering-locaties (bijvoorbeeld Singapore, Singapore2) te verbinden met uw virtuele netwerk. Als een ExpressRoute-circuit wordt uitgeschakeld, wordt er een failover voor de connectiviteit uitgevoerd naar een ander ExpressRoute-circuit. Standaard wordt het verkeer dat uw virtuele netwerk verlaat, doorgestuurd op basis van een gelijke prijs routering met meerdere paden (ECMP). U kunt het verbindings gewicht gebruiken om de voor keur aan een circuit te geven. Zie optimalisatie van ExpressRoute- [route ring](expressroute-optimize-routing.md)voor meer informatie.
+U kunt hoge Beschik baarheid bezorgen door Maxi maal vier ExpressRoute-circuits op dezelfde peering-locatie aan uw virtuele netwerk te koppelen, of door ExpressRoute-circuits op verschillende peering locaties (bijvoorbeeld Singapore, Singapore2) te verbinden met uw virtuele netwerk. Als een ExpressRoute-circuit wordt uitgeschakeld, wordt er een failover voor de connectiviteit uitgevoerd naar een ander ExpressRoute-circuit. Standaard wordt het verkeer dat uw virtuele netwerk verlaat, doorgestuurd op basis van een gelijke prijs routering met meerdere paden (ECMP). U kunt het verbindings gewicht gebruiken om de voor keur aan een circuit te geven. Zie optimalisatie van ExpressRoute- [route ring](expressroute-optimize-routing.md)voor meer informatie.
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Hoe kan ik ervoor te zorgen dat mijn verkeer dat is bestemd voor open bare Azure-Services, zoals Azure Storage en Azure SQL op micro soft-peering of open bare peering, de voor keur heeft op het ExpressRoute-pad?
 
@@ -195,7 +195,7 @@ Als uw service provider ExpressRoute op beide sites biedt, kunt u samen werken m
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Kan ik meerdere ExpressRoute-circuits hebben in dezelfde metro lijn? Kan ik deze koppelen aan hetzelfde virtuele netwerk?
 
-Ja. U kunt meerdere ExpressRoute-circuits met dezelfde of verschillende service providers hebben. Als de metro meerdere ExpressRoute-peering locaties heeft en de circuits op verschillende peering-locaties worden gemaakt, kunt u deze koppelen aan hetzelfde virtuele netwerk. Als de circuits op dezelfde peering-locatie worden gemaakt, kunt u Maxi maal 4 circuits koppelen aan hetzelfde virtuele netwerk.
+Ja. U kunt meerdere ExpressRoute-circuits met dezelfde of verschillende service providers hebben. Als de metro meerdere ExpressRoute-peering locaties heeft en de circuits op verschillende peering-locaties worden gemaakt, kunt u deze koppelen aan hetzelfde virtuele netwerk. Als de circuits op dezelfde peering-locatie worden gemaakt, kunt u Maxi maal vier circuits koppelen aan hetzelfde virtuele netwerk.
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Hoe kan ik mijn virtuele netwerken met een ExpressRoute-circuit verbinden
 

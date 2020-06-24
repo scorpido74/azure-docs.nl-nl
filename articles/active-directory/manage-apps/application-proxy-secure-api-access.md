@@ -2,22 +2,21 @@
 title: Toegang tot on-premises Api's met Azure AD-toepassingsproxy
 description: Met de toepassings proxy van Azure Active Directory kunnen systeem eigen apps veilig toegang krijgen tot Api's en bedrijfs logica die u on-premises of op Cloud-Vm's host.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.custom: has-adal-ref
-ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a5db76f0258eb08f6b1f8ed102dc29e26c8d8bb0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168806"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206441"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Veilige toegang tot on-premises Api's met Azure AD-toepassingsproxy
 
@@ -35,7 +34,7 @@ In het volgende diagram ziet u hoe u Azure AD-toepassingsproxy kunt gebruiken om
 
 ![Toegang tot Azure AD-toepassingsproxy-API](./media/application-proxy-secure-api-access/overview-publish-api-app-proxy.png)
 
-De Azure AD-toepassingsproxy vormt de ruggen graat van de oplossing, werkt als een openbaar eind punt voor API-toegang en biedt verificatie en autorisatie. U kunt toegang krijgen tot uw Api's vanuit een groot aantal platformen met behulp van de [ADAL](/azure/active-directory/develop/active-directory-authentication-libraries) -bibliotheken.
+De Azure AD-toepassingsproxy vormt de ruggen graat van de oplossing, werkt als een openbaar eind punt voor API-toegang en biedt verificatie en autorisatie. U kunt toegang krijgen tot uw Api's vanuit een groot aantal platformen met behulp van de [micro soft Authentication Library (MSAL)-](/azure/active-directory/develop/active-directory-authentication-libraries) bibliotheken.
 
 Omdat Azure AD-toepassingsproxy-verificatie en-autorisatie zijn gebouwd op Azure AD, kunt u voorwaardelijke toegang van Azure AD gebruiken om ervoor te zorgen dat alleen vertrouwde apparaten toegang hebben tot Api's die zijn gepubliceerd via de toepassings proxy. Gebruik Azure AD join of Azure AD hybride gekoppeld voor Desk tops en intune-beheer voor apparaten. U kunt ook profiteren van Azure Active Directory Premium functies zoals Azure Multi-Factor Authentication en de beveiliging van de machine learning-back-up van [Azure Identity Protection](/azure/active-directory/active-directory-identityprotection).
 
@@ -137,7 +136,7 @@ U hebt de AppProxyNativeAppSample-app nu geregistreerd in Azure Active Directory
 
 ## <a name="configure-the-native-app-code"></a>De systeem eigen app-code configureren
 
-De laatste stap is het configureren van de systeem eigen app. Het volgende code fragment uit het *Form1.cs* -bestand in de NativeClient-voor beeld-app veroorzaakt de ADAL-bibliotheek om het token te verkrijgen voor het aanvragen van de API-aanroep en om het te koppelen als Bearer aan de app-header.
+De laatste stap is het configureren van de systeem eigen app. Het volgende code fragment uit het *Form1.cs* -bestand in de NativeClient-voor beeld-app veroorzaakt de MSAL-bibliotheek om het token te verkrijgen voor het aanvragen van de API-aanroep en om het te koppelen als Bearer aan de app-header.
 
    ```
    // Acquire Access Token from AAD for Proxy Application
@@ -172,7 +171,7 @@ if (authResult != null)
  }
 ```
 
-Als u de systeem eigen app wilt configureren om verbinding te maken met Azure Active Directory en de API-app-proxy aan te roepen, werkt u de waarden van de tijdelijke aanduiding bij in het bestand *app. config* van de voor beeld-app NativeClient met waarden uit Azure AD:
+Als u de systeem eigen app wilt configureren om verbinding te maken met Azure Active Directory en de API-app-proxy aan te roepen, moet u de waarden van de tijdelijke aanduidingen bijwerken in het *App.config* bestand van de voor beeld-app van de NativeClient met waarden van
 
 - Plak de **Directory-id (Tenant)** in het `<add key="ida:Tenant" value="" />` veld. U kunt deze waarde (een GUID) zoeken en kopiëren op de pagina **overzicht** van een van uw apps.
 
@@ -191,5 +190,5 @@ Nadat u de para meters hebt geconfigureerd, bouwt u de systeem eigen app en voer
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md)
-- [Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's](../develop/quickstart-configure-app-access-web-apis.md)
+- [Snelstart: Een clienttoepassing configureren voor toegang tot web-API's](../develop/quickstart-configure-app-access-web-apis.md)
 - [Systeem eigen client toepassingen inschakelen voor interactie met proxy toepassingen](application-proxy-configure-native-client-application.md)

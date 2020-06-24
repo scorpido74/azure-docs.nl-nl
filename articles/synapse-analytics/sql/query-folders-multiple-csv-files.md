@@ -1,22 +1,22 @@
 ---
-title: Query's uitvoeren op mappen en meerdere CSV-bestanden met behulp van SQL op aanvraag (preview)
+title: Query's uitvoeren op mappen en meerdere bestanden met behulp van SQL on-demand (preview)
 description: SQL on-demand (preview) ondersteunt het lezen van meerdere bestanden/mappen met behulp van joker tekens, die vergelijkbaar zijn met de joker tekens die in Windows-besturings systeem worden gebruikt.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 6c61bd420121800ade48de88cbcaadf37343262d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235413"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207628"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>Query's uitvoeren op mappen en meerdere CSV-bestanden  
+# <a name="query-folders-and-multiple-files"></a>Query uitvoeren op mappen en meerdere bestanden  
 
 In dit artikel leert u hoe u een query schrijft met behulp van SQL on-demand (preview) in azure Synapse Analytics.
 
@@ -24,7 +24,7 @@ SQL on-demand ondersteunt het lezen van meerdere bestanden/mappen met behulp van
 
 ## <a name="prerequisites"></a>Vereisten
 
-De eerste stap bestaat uit het **maken van een Data Base** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door [installatie script](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die data base. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
+De eerste stap bestaat uit het **maken van een database** waarin u de query's gaat uitvoeren. Initialiseer vervolgens de objecten door een [installatiescript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) uit te voeren op die database. Met dit installatie script worden de gegevens bronnen, referenties voor het data base-bereik en externe bestands indelingen gemaakt die in deze voor beelden worden gebruikt.
 
 U gebruikt de map *CSV/taxi* om de voorbeeld query's te volgen. Het bevat NYC-Gelee taxi-excursie records van 2016 juli tot juni 2018. Bestanden in *CSV/taxi* worden na jaar en maand benoemd met het volgende patroon: yellow_tripdata_ <year> - <month> . CSV
 

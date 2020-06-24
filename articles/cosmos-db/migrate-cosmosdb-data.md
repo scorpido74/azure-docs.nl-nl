@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 0eabb3c226a444d872e6f3e5c85ae1a9fa377de3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465759"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85263541"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Honderden terabytes aan gegevens migreren naar Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ Het aangepaste hulp programma maakt gebruik van de bibliotheek voor bulk-uitvoer
 In de volgende afbeelding wordt het migratie proces beschreven dat gebruikmaakt van dit aangepaste hulp programma. Het hulp programma wordt uitgevoerd op een set virtuele machines en elke virtuele machine voert een query uit op de tracerings verzameling in Azure Cosmos DB om een lease te verkrijgen op een van de bron gegevens partities. Zodra dit is gebeurd, wordt de bron gegevens partitie door het hulp programma gelezen en opgenomen in Azure Cosmos DB met behulp van de bulk-uitvoerder bibliotheek. Vervolgens wordt de verzameling bijhouden bijgewerkt met de voortgang van de opname van gegevens en eventuele fouten die zijn opgetreden. Nadat een gegevens partitie is verwerkt, probeert het hulp programma de volgende beschik bare bron partitie op te vragen. Het proces blijft de volgende bron partitie verwerken totdat alle gegevens zijn gemigreerd. De bron code voor het hulp programma is [hier](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion)beschikbaar.  
 
  
-![Migratie Hulpprogramma's instellen](./media/migrate-cosmosdb-data/migrationsetup.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Migratie Hulpprogramma's instellen" border="false":::
  
 
  
@@ -145,7 +145,7 @@ Nadat de migratie is voltooid, kunt u controleren of het aantal documenten in Az
 ## <a name="contact-the-azure-cosmos-db-team"></a>Contact opnemen met het Azure Cosmos DB team
 Hoewel u deze hand leiding kunt volgen om grote gegevens sets naar Azure Cosmos DB te migreren voor grootschalige migraties, is het raadzaam om het Azure Cosmos DB-product team te bereiken om de gegevens modellen en een algemene architectuur beoordeling te valideren. Op basis van uw gegevensset en werk belasting kan het product team ook andere prestaties en kosten optimalisaties Voorst Ellen die van toepassing kunnen zijn op u. Als u contact wilt opnemen met het Azure Cosmos DB team voor hulp bij grootschalige migraties, kunt u een ondersteunings ticket openen onder het probleem type ' algemeen advies ' en ' grote (TB +) migraties ', zoals hieronder wordt weer gegeven.
 
-![Onderwerp over migratie ondersteuning](./media/migrate-cosmosdb-data/supporttopic.png)
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Onderwerp over migratie ondersteuning":::
 
 
 ## <a name="next-steps"></a>Volgende stappen

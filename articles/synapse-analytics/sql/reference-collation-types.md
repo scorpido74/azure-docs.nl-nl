@@ -4,15 +4,16 @@ description: Sorterings typen die worden ondersteund in azure Synapse SQL
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: reference
+ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b10aea962a31ba600deca866a8d9f7ab3b81ea8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e9d8048c88a5ef37df2fde1ab282a834b07228a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133663"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206339"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Ondersteuning voor database sortering voor Synapse SQL
 
@@ -114,7 +115,7 @@ Als Sortation is door gegeven als eigenschaps parameter, retourneert de functie 
 
 Meer informatie over best practices voor SQL-pool en SQL on-demand vindt u in de volgende artikelen:
 
-- [Aanbevolen procedures voor SQL-groep](best-practices-sql-pool.md)
-- [Aanbevolen procedures voor SQL op aanvraag](best-practices-sql-on-demand.md)
+- [Best practices voor SQL-pool](best-practices-sql-pool.md)
+- [Best practices voor SQL on-demand](best-practices-sql-on-demand.md)
 
 

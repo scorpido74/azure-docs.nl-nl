@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261097"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690895"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-synchronisatie: filtering configureren
 Met behulp van filteren kunt u bepalen welke objecten in Azure Active Directory (Azure AD) uit uw on-premises map worden weer gegeven. Bij de standaard configuratie worden alle objecten in alle domeinen in de geconfigureerde forests gebruikt. In het algemeen is dit de aanbevolen configuratie. Gebruikers die Office 365-workloads gebruiken, zoals Exchange Online en Skype voor bedrijven, profiteren van een volledige algemene adres lijst zodat ze een e-mail kunnen verzenden en iedereen kan bellen. Met de standaard configuratie zouden ze dezelfde ervaring hebben als bij een on-premises implementatie van Exchange of Lync.
 
-In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Hier volgen enkele voorbeelden:
+In sommige gevallen moet u echter enkele wijzigingen aanbrengen in de standaard configuratie. Enkele voorbeelden:
 
 * U wilt de [multi-Azure AD-adreslijst topologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)gebruiken. Vervolgens moet u een filter Toep assen om te bepalen welke objecten worden gesynchroniseerd met een bepaalde Azure AD-adres lijst.
 * U voert een pilot uit voor Azure of Office 365 en u wilt alleen een subset van gebruikers in azure AD. In de kleine pilot is het niet belang rijk dat u beschikt over een volledige algemene adres lijst om de functionaliteit te demonstreren.
@@ -61,9 +61,9 @@ Als u meer dan één forest hebt, moet u de filter configuraties die in dit onde
 Voer de volgende stappen uit om de ingebouwde scheduler die elke 30 minuten een synchronisatie cyclus activeert, uit te scha kelen:
 
 1. Ga naar een Power shell-prompt.
-2. Voer `Set-ADSyncScheduler -SyncCycleEnabled $False` uit om de scheduler uit te scha kelen.
+2. Voer uit `Set-ADSyncScheduler -SyncCycleEnabled $False` om de scheduler uit te scha kelen.
 3. Breng de wijzigingen aan die in dit artikel worden beschreven.
-4. Voer `Set-ADSyncScheduler -SyncCycleEnabled $True` uit om de Scheduler opnieuw in te scha kelen.
+4. Voer uit `Set-ADSyncScheduler -SyncCycleEnabled $True` om de Scheduler opnieuw in te scha kelen.
 
 **Als u een Azure AD Connect-build gebruikt vóór 1.1.105.0**  
 Voer de volgende stappen uit om de geplande taak uit te scha kelen die elke drie uur een synchronisatie cyclus activeert:
@@ -144,7 +144,7 @@ Als u uw domein filter hebt bijgewerkt, moet u ook de uitvoerings profielen bijw
 3. Voor elk profiel past u de **toegevoegde** en **Verwijderde** domeinen aan.
     1. Voor elk van de vijf profielen voert u de volgende stappen uit voor elk domein **toegevoegd** :
         1. Selecteer het uitvoerings profiel en klik op **nieuwe stap**.
-        2. Selecteer op de pagina **stap configureren** in de vervolg keuzelijst **type** het stap type met de naam van het profiel dat u wilt configureren. Klik vervolgens op **Volgende**.  
+        2. Selecteer op de pagina **stap configureren** in de vervolg keuzelijst **type** het stap type met de naam van het profiel dat u wilt configureren. Klik op **Volgende**.  
         ![Profielen voor connector uitvoering 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. Selecteer op de pagina **connector configuratie** in de vervolg keuzelijst **partitie** de naam van het domein dat u aan uw domein filter hebt toegevoegd.  
         ![Profielen voor connector-uitvoering 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -278,7 +278,7 @@ In dit voor beeld wijzigt u de filtering zodat alleen gebruikers met hun e-mail 
 4. Afhankelijk van de versie van de verbinding die u gebruikt, zoekt u de regel **met de naam uit naar Aad: gebruiker toevoegen** aan of **uit voor Aad-gebruiker lid**worden van SOAInAD en klikt u op **bewerken**.
 5. Beantwoord in het pop-upvenster **Ja** om een kopie van de regel te maken.
 6. Op de pagina **Beschrijving** wijzigt u de **prioriteit** in een ongebruikte waarde, zoals 50.
-7. Klik op het **filter bereik** op de navigatie balk aan de linkerkant en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **mail**. Selecteer in **operator** **ENDSWITH**. **Typ \@contoso.com**in het **veld waarde**en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **userPrincipalName**. Selecteer in **operator** **ENDSWITH**. **Typ \@contoso.com**in het **veld waarde**.
+7. Klik op het **filter bereik** op de navigatie balk aan de linkerkant en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **mail**. Selecteer in **operator** **ENDSWITH**. Typ ** \@ contoso.com**in het **veld waarde**en klik vervolgens op **component toevoegen**. Selecteer **Attribute**in het kenmerk **userPrincipalName**. Selecteer in **operator** **ENDSWITH**. Typ ** \@ contoso.com**in het **veld waarde**.
 8. Klik op **Opslaan**.
 9. Als u de configuratie wilt volt ooien, moet u een **volledige synchronisatie**uitvoeren. Ga verder met het lezen van de sectie [Apply en controleer de wijzigingen](#apply-and-verify-changes).
 
@@ -298,11 +298,11 @@ Voer de volgende stappen uit:
 
 Na de synchronisatie worden alle wijzigingen klaargezet om te worden geëxporteerd. Voordat u de wijzigingen in azure AD daad werkelijk aanbrengt, moet u controleren of al deze wijzigingen juist zijn.
 
-1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+1. Start een opdracht prompt en ga naar `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
 2. Voer `csexport "Name of Connector" %temp%\export.xml /f:x` uit.  
    De naam van de connector bevindt zich in de synchronisatie service. Het heeft een naam die vergelijkbaar is met ' contoso.com – AAD ' voor Azure AD.
 3. Voer `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` uit.
-4. U hebt nu een bestand in% Temp% met de naam export. csv dat kan worden onderzocht in micro soft Excel. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
+4. U hebt nu een bestand in% Temp% met de naam export.csv dat in micro soft Excel kan worden onderzocht. Dit bestand bevat alle wijzigingen die moeten worden geëxporteerd.
 5. Breng de benodigde wijzigingen aan in de gegevens of configuratie en voer deze stappen opnieuw uit (importeren, synchroniseren en verifiëren) totdat de wijzigingen die worden geëxporteerd, zijn wat u verwacht.
 
 Als u tevreden bent, exporteert u de wijzigingen naar Azure AD.

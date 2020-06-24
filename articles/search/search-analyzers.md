@@ -7,32 +7,34 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: a7fb5d9274771fb736e9373e343a1d520fdbbe55
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/20/2020
+ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553142"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262154"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyse functies voor tekst verwerking in azure Cognitive Search
 
-Een *Analyzer* is een onderdeel van de [Zoek machine voor volledige tekst](search-lucene-query-architecture.md) die verantwoordelijk is voor het verwerken van tekst in query reeksen en geïndexeerde documenten. Processen zijn transformatieve, waardoor een teken reeks wordt gewijzigd via acties, zoals:
+Een *Analyzer* is een onderdeel van de [Zoek machine voor volledige tekst](search-lucene-query-architecture.md) die verantwoordelijk is voor het verwerken van tekst in query reeksen en geïndexeerde documenten. Tekst verwerking (ook wel lexicale analyse genoemd) is Transformatieve en wijzigt een teken reeks via acties, zoals:
 
 + Verwijder niet-essentiële woorden (stopwords) en interpunctie
 + Zinsdelen en afgebroken woorden in onderdeel delen splitsen
 + Kleine letters in hoofd letters
 + Verminder het aantal woorden in primitieve hoofd formulieren voor efficiëntie van de opslag, zodat treffers kunnen worden gevonden ongeacht het aantal tien tallen
 
-Tijdens het indexeren wordt een analyse uitgevoerd wanneer de index is gemaakt en vervolgens opnieuw tijdens het uitvoeren van de query wanneer de index wordt gelezen. Het is waarschijnlijker dat u de verwachte Zoek resultaten krijgt als u dezelfde analyse functie voor beide bewerkingen gebruikt.
+De analyse is van toepassing op `Edm.String` velden die zijn gemarkeerd als zoekbaar, waarmee Zoek opdrachten in volledige tekst worden aangeduid. Voor velden met deze configuratie treedt tijdens het indexeren een analyse op wanneer er tokens worden gemaakt en vervolgens tijdens het uitvoeren van de query wanneer query's worden geparseerd en de engine scant op overeenkomende tokens. Een overeenkomst wordt waarschijnlijk vaker weer gegeven wanneer dezelfde analyse functie wordt gebruikt voor indexering en query's, maar u kunt de Analyzer voor elke werk belasting afzonderlijk instellen, afhankelijk van uw vereisten.
 
-Als u niet bekend bent met tekst analyse, luistert u naar de volgende video clip voor een korte uitleg van hoe tekst verwerking werkt in azure Cognitive Search.
+Query typen die niet in volledige tekst zoeken, zoals reguliere expressie of fuzzy zoek opdracht, worden niet door de analyse fase aan de query zijde door lopen. In plaats daarvan verzendt de parser deze teken reeksen rechtstreeks naar de zoek machine, met behulp van het patroon dat u opgeeft als basis voor de overeenkomst. Deze query formulieren vereisen doorgaans tokens met hele teken reeksen om het gebruik van patronen te laten overeenkomen. Als u hele tokens wilt ophalen tijdens het indexeren, hebt u mogelijk [aangepaste analyse](index-add-custom-analyzers.md)functies nodig. Zie [Zoeken in volledige tekst in Azure Cognitive Search](search-lucene-query-architecture.md)voor meer informatie over wanneer en waarom query termen worden geanalyseerd.
+
+Voor meer achtergrond informatie over lexicale analyse, luistert u naar de volgende video clip voor een korte uitleg.
 
 > [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
 
 ## <a name="default-analyzer"></a>Standaard-Analyzer  
 
-In azure Cognitive Search query's wordt er automatisch een tekst analyse aangeroepen voor alle teken reeks velden die als doorzoekbaar zijn gemarkeerd. 
+In azure Cognitive Search query's wordt een analyse programma automatisch aangeroepen voor alle teken reeks velden die als doorzoekbaar zijn gemarkeerd. 
 
 Azure Cognitive Search maakt standaard gebruik van de [Apache Lucene Standard Analyzer (standaard-lucene)](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html), die tekst in elementen afbreekt volgens de regels voor [Unicode-tekst segmentatie](https://unicode.org/reports/tr29/) . Daarnaast worden alle tekens in de vorm van een kleine letters door de standaard-Analyzer geconverteerd. Zowel geïndexeerde documenten als zoek termen voeren de analyse uit tijdens het indexeren en verwerken van query's.  
 
@@ -52,33 +54,55 @@ Een paar vooraf gedefinieerde analyse functies, zoals **patroon** of **Stop**, o
 
 ## <a name="how-to-specify-analyzers"></a>Analyse functies opgeven
 
-1. (alleen voor aangepaste analyse functies) Maak een sectie met de naam **analyse** in de index definitie. Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) en [aangepaste analyse functies toevoegen](index-add-custom-analyzers.md)voor meer informatie.
+Het instellen van een Analyzer is optioneel. In het algemeen kunt u de standaard standaard-lucene Analyzer eerst gebruiken om te zien hoe deze werkt. Als query's niet de verwachte resultaten retour neren, is het vaak de juiste oplossing om over te scha kelen naar een andere analyse functie.
 
-2. Stel op een [veld definitie](https://docs.microsoft.com/rest/api/searchservice/create-index) in de index de eigenschap **Analyzer** van het veld in op de naam van een doel-Analyzer (bijvoorbeeld `"analyzer" = "keyword"` . Geldige waarden zijn naam van een vooraf gedefinieerde Analyzer, taal analyse of aangepaste Analyzer die ook in het index schema is gedefinieerd. Plan het toewijzen van Analyzer in de index definitie fase voordat de index in de service wordt gemaakt.
-
-3. U kunt eventueel, in plaats van één **analyse** -eigenschap, verschillende analyse functies instellen voor indexering en query's uitvoeren met behulp van de veld parameters **indexAnalyzer** en **searchAnalyzer** . U gebruikt verschillende analyse functies voor het voorbereiden en ophalen van gegevens als een van deze activiteiten vereist dat een specifieke trans formatie niet nodig is voor de andere.
-
-> [!NOTE]
-> Het is niet mogelijk om een andere [taal analyse](index-add-language-analyzers.md) te gebruiken tijdens de indexerings tijd dan bij het opvragen van een veld. Deze mogelijkheid is gereserveerd voor [aangepaste analyse](index-add-custom-analyzers.md)functies. Als u daarom probeert de eigenschappen **searchAnalyzer** of **indexAnalyzer** in te stellen op de naam van een taal analyse, retourneert de rest API een fout bericht. U moet in plaats daarvan de eigenschap **Analyzer** gebruiken.
-
-Het is niet toegestaan om **analyse** -of **indexAnalyzer** toe te wijzen aan een veld dat al fysiek is gemaakt. Als dat niet het geval is, raadpleegt u de volgende tabel voor een overzicht van de acties die moeten worden opgebouwd.
+1. Wanneer u een definitie van een veld in de [index](https://docs.microsoft.com/rest/api/searchservice/create-index)maakt, stelt u de eigenschap **Analyzer** in op een van de volgende opties: een [vooraf gedefinieerde analysator](index-add-custom-analyzers.md#AnalyzerTable) `keyword` , zoals een [taal analyse](index-add-language-analyzers.md) `en.microsoft` , zoals of een aangepaste analyse functie (gedefinieerd in hetzelfde index schema).  
  
- | Scenario | Impact | Stappen |
- |----------|--------|-------|
- | Een nieuw veld toevoegen | minimale | Als het veld nog niet in het schema bestaat, is er geen veld revisie om te maken, omdat het veld nog geen fysieke aanwezigheid in uw index heeft. U kunt [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) gebruiken om een nieuw veld toe te voegen aan een bestaande index en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) te vullen.|
- | Een **Analyzer** -of **indexAnalyzer** toevoegen aan een bestaand geïndexeerd veld. | [opnieuw opbouwen](search-howto-reindex.md) | De omgekeerde index voor dat veld moet vanaf het begin opnieuw worden gemaakt en de inhoud voor deze velden moet opnieuw worden geïndexeerd. <br/> <br/>Voor indexen onder actieve ontwikkeling [verwijdert](https://docs.microsoft.com/rest/api/searchservice/delete-index) en [maakt](https://docs.microsoft.com/rest/api/searchservice/create-index) u de index om de nieuwe veld definitie op te halen. <br/> <br/>Voor indexen in productie kunt u een nieuwe build uitstellen door een nieuw veld te maken om de gereviseerde definitie te geven en te gebruiken in plaats van de oude. Gebruik [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) om het nieuwe veld en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) op te nemen. Later kunt u als onderdeel van de geplande index onderhoud de index opschonen om verouderde velden te verwijderen. |
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+   ```
+
+   Als u een [taal analyse](index-add-language-analyzers.md)gebruikt, moet u de eigenschap **Analyzer** gebruiken om deze op te geven. De eigenschappen **searchAnalyzer** en **indexAnalyzer** ondersteunen geen taal analyse functies.
+
+1. U kunt ook **indexAnalyzer** en **searchAnalyzer** instellen om de Analyzer voor elke werk belasting te variëren. Deze eigenschappen worden samen ingesteld en vervangen de eigenschap **Analyzer** , die Null moet zijn. U kunt verschillende analyse functies gebruiken om gegevens voor te bereiden en op te halen als een van deze activiteiten vereist dat een specifieke trans formatie niet nodig is voor de andere.
+
+   ```json
+     "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": null,
+      "indexAnalyzer": "keyword",
+      "searchAnalyzer": "whitespace"
+    },
+   ```
+
+1. Voor aangepaste analyse functies maakt u een vermelding in de sectie **[analyse functies]** van de index en wijst u uw aangepaste analyse programma toe aan de veld definitie op basis van een van de vorige twee stappen. Zie [index maken](https://docs.microsoft.com/rest/api/searchservice/create-index) en [aangepaste analyse functies toevoegen](index-add-custom-analyzers.md)voor meer informatie.
 
 ## <a name="when-to-add-analyzers"></a>Wanneer u analyse functies wilt toevoegen
 
 De beste manier om analyseers toe te voegen en toe te wijzen, is tijdens de actieve ontwikkeling, wanneer het verwijderen en opnieuw maken van indexen de routine is.
 
-Als index definitie solidifies kunt u nieuwe analyse constructies toevoegen aan een index, maar moet u de **allowIndexDowntime** -vlag door geven om de index bij te [werken](https://docs.microsoft.com/rest/api/searchservice/update-index) als u deze fout wilt voor komen:
+Omdat analyse functies worden gebruikt voor Tokenize-voor waarden, moet u een analyse functie toewijzen wanneer het veld wordt gemaakt. Het toewijzen van **analyse** -of **indexAnalyzer** aan een veld dat al fysiek is gemaakt is niet toegestaan (hoewel u de eigenschap **searchAnalyzer** echter op elk gewenst moment kunt wijzigen zonder dat dit van invloed is op de index).
+
+Als u de Analysator van een bestaand veld wilt wijzigen, moet u [de index volledig opnieuw samen stellen](search-howto-reindex.md) (u kunt geen afzonderlijke velden opnieuw samen stellen). Voor indexen in productie kunt u een nieuwe build uitstellen door een nieuw veld te maken met de nieuwe analyse toewijzing en deze te gebruiken in plaats van de oude. Gebruik [update-index](https://docs.microsoft.com/rest/api/searchservice/update-index) om het nieuwe veld en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) op te nemen. Later kunt u als onderdeel van de geplande index onderhoud de index opschonen om verouderde velden te verwijderen.
+
+Als u een nieuw veld wilt toevoegen aan een bestaande index, roept u [update index](https://docs.microsoft.com/rest/api/searchservice/update-index) aan om het veld toe te voegen en [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) te vullen.
+
+Als u een aangepaste analyse functie wilt toevoegen aan een bestaande index, geeft u de **allowIndexDowntime** -vlag door in [update index](https://docs.microsoft.com/rest/api/searchservice/update-index) als u deze fout wilt voor komen:
 
 *De index update is niet toegestaan omdat deze downtime zou veroorzaken. Als u nieuwe analyse functies, tokenizers, token filters of teken filters wilt toevoegen aan een bestaande index, stelt u de query parameter ' allowIndexDowntime ' in op ' True ' in de aanvraag voor het bijwerken van de index. Houd er rekening mee dat met deze bewerking de index ten minste enkele seconden offline wordt gezet, waardoor uw indexerings-en query aanvragen mislukken. De prestaties en schrijf Beschik baarheid van de index kunnen enkele minuten na de index worden bijgewerkt, of langer voor zeer grote indexen. "*
-
-Hetzelfde geldt voor het toewijzen van een Analyzer aan een veld. Een Analyzer is een integraal onderdeel van de definitie van het veld, zodat u het alleen kunt toevoegen wanneer het veld wordt gemaakt. Als u analyse functies wilt toevoegen aan bestaande velden, moet u de index [verwijderen en opnieuw samen stellen](search-howto-reindex.md) , of een nieuw veld toevoegen met de analyse die u wilt.
-
-Zoals aangegeven, is een uitzonde ring de **searchAnalyzer** -variant. Op de drie manieren om analyse functies op te geven (**Analyzer**, **indexAnalyzer**, **searchAnalyzer**), kan alleen het kenmerk **searchAnalyzer** worden gewijzigd in een bestaand veld.
 
 ## <a name="recommendations-for-working-with-analyzers"></a>Aanbevelingen voor het werken met analyse functies
 
@@ -86,7 +110,7 @@ In deze sectie vindt u advies over het werken met analyse functies.
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Eén analyse functie voor lezen/schrijven, tenzij u specifieke vereisten hebt
 
-Met Azure Cognitive Search kunt u verschillende analyse functies opgeven voor indexering en zoeken via aanvullende **indexAnalyzer** -en **searchAnalyzer** -veld parameters. Als u geen waarde opgeeft, wordt de analyseset met de eigenschap **Analyzer** gebruikt voor het indexeren en zoeken. Als `analyzer` niet wordt opgegeven, wordt de standaard standaard-lucene Analyzer gebruikt.
+Met Azure Cognitive Search kunt u verschillende analyse functies opgeven voor indexering en zoek acties via aanvullende veld eigenschappen **indexAnalyzer** en **searchAnalyzer** . Als u geen waarde opgeeft, wordt de analyseset met de eigenschap **Analyzer** gebruikt voor het indexeren en zoeken. Als **Analyzer** niet is opgegeven, wordt de standaard standaard-lucene Analyzer gebruikt.
 
 Een algemene regel is het gebruik van dezelfde analyse functie voor indexering en query's, tenzij specifieke vereisten anders worden bepaald. Zorg ervoor dat u zorgvuldig test. Wanneer tekst verwerking afwijkt van de zoek-en indexerings tijd, loopt u het risico dat de query termen en geïndexeerde voor waarden niet overeenkomen wanneer de zoek-en indexerings analyse configuraties niet zijn uitgelijnd.
 
@@ -288,7 +312,7 @@ Als u de .NET SDK-code voorbeelden gebruikt, kunt u deze voor beelden toevoegen 
 
 ### <a name="assign-a-language-analyzer"></a>Een taal analyse toewijzen
 
-Elke Analyzer die wordt gebruikt als-is, zonder configuratie, is opgegeven voor een veld definitie. Er is geen vereiste voor het maken van een Analyzer-constructie. 
+Elke Analyzer die wordt gebruikt als-is, zonder configuratie, is opgegeven voor een veld definitie. Er is geen vereiste voor het maken van een vermelding in de sectie **[analyse functies]** van de index. 
 
 In dit voor beeld worden de Engelse en Franse analyse functies van micro soft toegewezen aan de velden Beschrijving. Het is een fragment dat is gemaakt op basis van een grotere definitie van de hotels-index, gemaakt met behulp van de klasse hotel in het hotels.cs-bestand van het [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) -voor beeld.
 

@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 247691326e3aa2c8027dd0318b23a2cbfcba1efe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c6fc0cdba4607bba55383f2662257322ef23aa2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745227"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212238"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Aan de slag met Transparent Data Encryption (TDE)
 
@@ -37,10 +37,10 @@ Volg de onderstaande stappen om TDE in te scha kelen:
 
 1. Open de data base in de [Azure Portal](https://portal.azure.com)
 2. Klik op de Blade Data Base op de knop **instellingen**
-3. Selecteer de optie ![voor het **transparant gegevens versleutelen** Portal instellingen](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. Selecteer de instellingen voor ![het instellen **van** de portal op](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
-5. Selecteer Portal instellingen **Opslaan**
-   ![opslaan](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
+3. Selecteer de optie voor het **transparant gegevens versleutelen** ![ Portal instellingen](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. Selecteer de instellingen voor het instellen **van** de ![ Portal op](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+5. Selecteer **Save** 
+    ![ Portal instellingen opslaan opslaan](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
 ## <a name="disabling-encryption"></a>Versleuteling uitschakelen
 
@@ -48,10 +48,10 @@ Volg de onderstaande stappen om TDE uit te scha kelen:
 
 1. Open de data base in de [Azure Portal](https://portal.azure.com)
 2. Klik op de Blade Data Base op de knop **instellingen**
-3. Selecteer de optie ![voor het **transparant gegevens versleutelen** Portal instellingen](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. Schakel de **Off** Portal- ![instellingen uit instellen uit](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. Selecteer Portal instelling **Opslaan**
-   ![2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
+3. Selecteer de optie voor het **transparant gegevens versleutelen** ![ Portal instellingen](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. Schakel de Portal-instellingen **uit** instellen ![ uit](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
+5. Selecteer **Save** 
+    ![ Portal instelling opslaan 2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
 ## <a name="encryption-dmvs"></a>Versleuteling Dmv's
 

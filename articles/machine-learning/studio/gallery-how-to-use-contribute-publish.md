@@ -5,17 +5,17 @@ description: Deel en ontdek analyse bronnen en meer in de Azure AI Gallery. Leer
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 882b52b74603465bd0a55a12fd9ef03f7b625046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204321"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709025"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Resources delen en ontdekken in de Azure AI Gallery
 
@@ -151,9 +151,9 @@ U kunt anderen helpen bij het schrijven van een **zelf studie** in de galerie me
 
 1. Selecteer **Nieuw Item**.
 
-1. Selecteer op de pagina **Beschrijving** voor **item type** **zelf studie** of **verzameling**. Voer een naam, een korte samen vatting, een gedetailleerde beschrijving en alle labels in die mogelijk andere gebruikers kunnen helpen bij het vinden van uw bijdrage. Klik vervolgens op **Volgende**.
+1. Selecteer op de pagina **Beschrijving** voor **item type** **zelf studie** of **verzameling**. Voer een naam, een korte samen vatting, een gedetailleerde beschrijving en alle labels in die mogelijk andere gebruikers kunnen helpen bij het vinden van uw bijdrage. Klik op **Volgende**.
 
-1. Selecteer op de pagina **selectie van afbeeldingen** een afbeelding die bij uw bijdrage wordt weer gegeven. U kunt uw eigen afbeeldings bestand uploaden of een Stock installatie kopie selecteren. Kies een installatie kopie waarmee gebruikers de inhoud en het doel van uw bijdrage kunnen identificeren. Klik vervolgens op **Volgende**.
+1. Selecteer op de pagina **selectie van afbeeldingen** een afbeelding die bij uw bijdrage wordt weer gegeven. U kunt uw eigen afbeeldings bestand uploaden of een Stock installatie kopie selecteren. Kies een installatie kopie waarmee gebruikers de inhoud en het doel van uw bijdrage kunnen identificeren. Klik op **Volgende**.
 
 1. Selecteer op de pagina **instellingen** voor **zicht baarheid**of uw bijdrage **openbaar** is (iedereen kan deze weer geven **) of niet weer geven** (alleen personen met een directe koppeling kunnen deze bekijken).
 

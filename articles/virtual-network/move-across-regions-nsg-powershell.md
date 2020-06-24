@@ -3,15 +3,15 @@ title: Een Azure-netwerk beveiligings groep (NSG) verplaatsen naar een andere Az
 description: Gebruik Azure Resource Manager sjabloon om de Azure-netwerk beveiligings groep van de ene Azure-regio naar de andere te verplaatsen met behulp van Azure PowerShell.
 author: asudbring
 ms.service: virtual-network
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75641465"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688446"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Een Azure-netwerk beveiligings groep (NSG) verplaatsen naar een andere regio met behulp van Azure PowerShell
 
@@ -61,7 +61,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name>. json** en open het in een editor naar keuze:
+4. Het bestand dat u hebt gedownload krijgt de naam van de resource groep waaruit de resource is geëxporteerd.  Zoek het bestand dat is geëxporteerd uit de opdracht met de naam ** \<resource-group-name> . json** en open het in een editor naar keuze:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -106,9 +106,9 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
     Get-AzLocation | format-table
     
     ```
-8. U kunt ook andere para meters wijzigen in de ** \<resource-group-name>. json** als u kiest, en zijn optioneel, afhankelijk van uw vereisten:
+8. U kunt ook andere para meters in de ** \<resource-group-name> . json** wijzigen als u ervoor kiest en zijn optioneel, afhankelijk van uw vereisten:
 
-    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan de sectie **securityRules** in het ** \<bestand resource-group-name>. json** :
+    * **Beveiligings regels** : u kunt bewerken welke regels in de doel-NSG worden geïmplementeerd door regels toe te voegen aan of te verwijderen uit de sectie **securityRules** in het ** \<resource-group-name> JSON** -bestand:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
             
         ```
 
-        Als u het toevoegen of verwijderen van de regels in de doel-NSG wilt volt ooien, moet u ook de aangepaste regel typen aan het einde van de ** \<resource-group-name>. json** -bestand bewerken in de indeling van het volgende voor beeld:
+        Voor het volt ooien van de toevoeging of het verwijderen van de regels in de doel-NSG moet u ook de aangepaste regel typen aan het einde van het ** \<resource-group-name> JSON** -bestand bewerken in de indeling van het voor beeld hieronder:
 
         ```json
            {
@@ -171,7 +171,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
             }
         ```
 
-9. Sla het bestand ** \<met de resource-group-name>. json** op.
+9. Sla het ** \<resource-group-name> JSON** -bestand op.
 
 10. Maak een resource groep in de doel regio voor de doel-NSG die moet worden geïmplementeerd met [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0):
     
@@ -179,7 +179,7 @@ De volgende stappen laten zien hoe u de netwerk beveiligings groep voorbereidt v
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Implementeer het bewerkte ** \<resource-group-name>. json-** bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
+11. Implementeer het bewerkte ** \<resource-group-name> . json** -bestand in de resource groep die u in de vorige stap hebt gemaakt met behulp van [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0):
 
     ```azurepowershell-interactive
 

@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: ebbb0dd059ce2bcf4a3bc260ed6d426d5be09dfe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260255"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887297"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Een Azure CDN-eind punt verwijderen
 ## <a name="overview"></a>Overzicht
@@ -52,15 +52,15 @@ In deze zelf studie wordt u begeleid bij het opschonen van assets van alle Edge-
    > 
    > 
 4. Selecteer welke assets u wilt verwijderen uit de Edge-knoop punten.  Als u alle assets wilt wissen, klikt u op het selectie vakje **Alles opschonen** .  Als dat niet het geval is, typt u het pad van elk activum dat u wilt verwijderen in het tekstvak **pad** . De onderstaande indelingen worden ondersteund in het pad.
-    1. **Enkelvoudige URL opschonen**: afzonderlijke activa opschonen door de volledige URL op te geven, met of zonder de bestands`/pictures/strasbourg.png`extensie, bijvoorbeeld,;`/pictures/strasbourg`
-    2. **Joker tekens opschonen**:\*sterretje () kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met `/*` in het pad of verwijder alle submappen en bestanden onder een specifieke map door de map op te geven gevolgd door `/*`, bijvoorbeeld.`/pictures/*`  Houd er rekening mee dat het opschonen van joker tekens momenteel niet wordt ondersteund door Azure CDN vanuit Akamai. 
+    1. **Enkelvoudige URL opschonen**: afzonderlijke activa opschonen door de volledige URL op te geven, met of zonder de bestands extensie, bijvoorbeeld, `/pictures/strasbourg.png` ;`/pictures/strasbourg`
+    2. **Joker tekens opschonen**: sterretje ( \* ) kan worden gebruikt als Joker teken. Verwijder alle mappen, submappen en bestanden onder een eind punt met `/*` in het pad of verwijder alle submappen en bestanden onder een specifieke map door de map op te geven gevolgd door `/*` , bijvoorbeeld `/pictures/*` .  Houd er rekening mee dat het opschonen van joker tekens momenteel niet wordt ondersteund door Azure CDN vanuit Akamai. 
     3. **Basis domein opschonen**: de hoofdmap van het eind punt met '/' in het pad opschonen.
    
    > [!TIP]
    > Paden moeten worden opgegeven voor opschoning en moeten een relatieve URL zijn die overeenkomt met de volgende [reguliere expressie](/dotnet/standard/base-types/regular-expression-language-quick-reference). Het leegmaken van **alle** en het weghalen van **joker tekens** wordt momenteel niet ondersteund door de **Azure CDN van de Akamai** .
    > > Eén URL leegmaken`@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Query reeks`@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
-   > > Joker teken opschonen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`. 
+   > > Joker teken opschonen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` . 
    > 
    > Als u tekst hebt ingevoerd, worden **er meer** tekstvaks weer gegeven, zodat u een lijst met meerdere assets kunt bouwen.  U kunt assets verwijderen uit de lijst door te klikken op de knop met het weglatings teken (...).
    > 

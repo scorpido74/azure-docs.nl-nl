@@ -4,12 +4,12 @@ description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken, 
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: c0c4849d76676cf165dbb051fbd904c28a98fa3b
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873573"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207945"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Een Windows Server-container maken op een Azure Kubernetes service (AKS)-cluster met behulp van Power shell
 
@@ -17,17 +17,17 @@ Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel
 
 ![Afbeelding van bladeren naar ASP.NET-voorbeeld toepassing](media/windows-container-powershell/asp-net-sample-app.png)
 
-In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service-cluster (AKS)][kubernetes-concepts] voor meer informatie.
+In dit artikel wordt ervan uitgegaan dat u basis informatie krijgt over Kubernetes-concepten. Zie [Kubernetes-kernconcepten voor Azure Kubernetes Service (AKS)][kubernetes-concepts] voor meer informatie.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis](https://azure.microsoft.com/free/) account aan voordat u begint.
+Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-Als u Power shell lokaal wilt gebruiken, moet u voor dit artikel de AZ Power shell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) . Zie [Install Azure PowerShell][install-azure-powershell](Engelstalig) voor meer informatie over het installeren van de AZ Power shell-module.
+Als u PowerShell lokaal wilt gebruiken, moet u voor dit artikel de AZ Powershell-module installeren en verbinding maken met uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount). Zie [Azure PowerShell installeren][install-azure-powershell] voor meer informatie over het installeren van de AZ PowerShell-module.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resources moeten worden gefactureerd. Selecteer een specifieke abonnements-ID met behulp van de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext) .
+Als u meerdere Azure-abonnementen hebt, kiest u het juiste abonnement waarin de resource moet worden gefactureerd. Selecteer een specifieke abonnements-id met behulp van de cmdlet [set-AzContext](/powershell/module/az.accounts/set-azcontext).
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -47,7 +47,7 @@ De volgende extra beperkingen zijn van toepassing op Windows Server-knooppunt gr
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een [Azure-resource groep](/azure/azure-resource-manager/resource-group-overview) is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie worden de meta gegevens van de resource groep opgeslagen, maar ook de resources die in Azure worden uitgevoerd als u geen andere regio opgeeft tijdens het maken van resources. Maak een resource groep met behulp van de cmdlet [New-AzResourceGroup][new-azresourcegroup] .
+Een [Azure-resourcegroep](/azure/azure-resource-manager/resource-group-overview) is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd. Wanneer u een resourcegroep maakt, wordt u gevraagd een locatie op te geven. Op deze locatie zijn de metagegevens van de resourcegroep opgeslagen. Dit is ook de locatie waar uw resources worden uitgevoerd in Azure als u tijdens het maken van de resource geen andere regio opgeeft. Maak een resourcegroep met behulp van de cdmlet [New-AzResourceGroup][new-azresourcegroup].
 
 In het volgende voorbeeld wordt een resourcegroep met de naam **myResourceGroup** gemaakt op de locatie **VS - oost**.
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name myResourceGroup -Location eastus
 
 In de volgende voorbeelduitvoer ziet u dat de resourcegroep is gemaakt:
 
-```Output
+```plaintext
 ResourceGroupName : myResourceGroup
 Location          : eastus
 ProvisioningState : Succeeded
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>Een AKS-cluster maken
 
-Gebruik het `ssh-keygen` opdracht regel programma voor het genereren van een SSH-sleutel paar. Zie voor meer informatie [snelle stappen: maken en gebruiken van een openbaar persoonlijk sleutel paar van de SSH voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
+Gebruik het `ssh-keygen`-opdrachtregelprogramma om een SSH-sleutelpaar te genereren. Zie voor meer informatie [Snelle stappen: een sleutelpaar met een openbare-persoonlijke SSH-sleutel voor virtuele Linux-machines maken en gebruiken](/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 Als u een AKS-cluster wilt uitvoeren dat knooppunt Pools ondersteunt voor Windows Server-containers, moet uw cluster gebruikmaken van een netwerk beleid dat gebruikmaakt van de invoeg toepassing [Azure cni][azure-cni-about] (Geavanceerd). Zie [Azure cni-netwerken configureren][use-advanced-networking]voor meer informatie over het plannen van de vereiste subnet bereiken en netwerk overwegingen. Gebruik de cmdlet [New-AzAks][new-azaks] hieronder om een AKS-cluster te maken met de naam **myAKSCluster**. In het volgende voor beeld worden de benodigde netwerk bronnen gemaakt als ze niet bestaan.
 
@@ -99,13 +99,13 @@ Met de bovenstaande opdracht maakt u een nieuwe knooppunt groep met de naam **np
 
 ## <a name="connect-to-the-cluster"></a>Verbinding maken met het cluster
 
-Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kubernetes-opdrachtregelclient. Als u Azure Cloud Shell gebruikt, is `kubectl` al geïnstalleerd. Als u `kubectl` lokaal wilt installeren, gebruikt u de `Install-AzAksKubectl` cmdlet:
+Als u een Kubernetes-cluster wilt beheren, gebruikt u [kubectl][kubectl], de Kubernetes-opdrachtregelclient. Als u Azure Cloud Shell gebruikt, is `kubectl` al geïnstalleerd. Als u `kubectl` lokaal wilt installeren, gebruikt u de cmdlet `Install-AzAksKubectl`:
 
 ```azurepowershell-interactive
 Install-AzAksKubectl
 ```
 
-Als u wilt configureren `kubectl` om verbinding te maken met uw Kubernetes-cluster, gebruikt u de cmdlet [import-AzAksCredential][import-azakscredential] . Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
+Als u `kubectl` wilt configureren om verbinding te maken met uw Kubernetes-cluster, gebruikt u de cmdlet [Import-AzAksCredential][import-azakscredential]. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties.
 
 ```azurepowershell-interactive
 Import-AzAksCredential -ResourceGroupName myResourceGroup -Name myAKSCluster
@@ -119,7 +119,7 @@ kubectl get nodes
 
 In de volgende voorbeeld uitvoer ziet u alle knoop punten in het cluster. Zorg ervoor dat de status van alle knoop punten **gereed**is:
 
-```Output
+```plaintext
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
 aksnpwin987654                      Ready    agent   108s   v1.16.7
@@ -187,14 +187,14 @@ kubectl apply -f sample.yaml
 
 In de volgende voorbeeld uitvoer ziet u dat de implementatie en service zijn gemaakt:
 
-```Output
+```plaintext
 deployment.apps/sample created
 service/sample created
 ```
 
 ## <a name="test-the-application"></a>De toepassing testen
 
-Wanneer de toepassing wordt uitgevoerd, stelt een Kubernetes-service de front-end van de toepassing beschikbaar op internet.
+Wanneer de toepassing wordt uitgevoerd, maakt een Kubernetes-service de front-end van de toepassing beschikbaar op internet.
 Dit proces kan enkele minuten duren. Af en toe kan de service langer dan een paar minuten duren om in te richten. In deze gevallen Maxi maal 10 minuten toestaan.
 
 Gebruik de opdracht [kubectl get service][kubectl-get] met het argument `--watch` om de voortgang te controleren.
@@ -205,14 +205,14 @@ kubectl get service sample --watch
 
 In eerste instantie wordt het **externe IP-adres** voor de **voorbeeld** service weer gegeven als **in behandeling**.
 
-```Output
+```plaintext
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
 sample             LoadBalancer   10.0.37.27   <pending>     80:30572/TCP   6s
 ```
 
-Zodra het **Extern IP-adres** is gewijzigd van **in behandeling** in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
+Zodra het **EXTERNAL-IP**-adres is gewijzigd van **in behandeling** in een echt openbaar IP-adres, gebruikt u `CTRL-C` om het controleproces van `kubectl` te stoppen. In de volgende voorbeelduitvoer ziet u een geldig openbaar IP-adres dat aan de service is toegewezen:
 
-```Output
+```plaintext
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
@@ -225,14 +225,14 @@ Als u de voor beeld-app in actie wilt zien, opent u een webbrowser op het extern
 
 ## <a name="delete-cluster"></a>Cluster verwijderen
 
-Wanneer het cluster niet meer nodig is, gebruikt u de cmdlet [Remove-AzResourceGroup][remove-azresourcegroup] om de resource groep, de container service en alle gerelateerde resources te verwijderen.
+Gebruik de cmdlet [Remove-AzResourceGroup][remove-azresourcegroup] om de resourcegroep, de containerservice en alle gerelateerde resources te verwijderen wanneer u het cluster niet meer nodig hebt.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 > [!NOTE]
-> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft niet te worden verwijderd.
+> Wanneer u het cluster verwijdert, wordt de Azure Active Directory-service-principal die door het AKS-cluster wordt gebruikt niet verwijderd. Zie [Overwegingen voor en verwijdering van AKS service-principal][sp-delete] voor stappen voor het verwijderen van de service-principal. Als u een beheerde identiteit hebt gebruikt, wordt de identiteit beheerd door het platform en hoeft deze niet te worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

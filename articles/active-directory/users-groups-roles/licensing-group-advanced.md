@@ -7,7 +7,7 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 11/08/2019
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582775"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84727667"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scenario's, beperkingen en bekende problemen met behulp van groepen voor het beheren van licenties in Azure Active Directory
 
@@ -57,7 +57,7 @@ Gebruikers hebben mogelijk één licentie nodig, maar niet een andere, of kunnen
 
 ![Scherm afbeelding van Enterprise Mobility + Security gelicentieerde gebruikers](./media/licensing-group-advanced/o365-e5-licensed-users.png)
 
-Voor dit voor beeld wijzigt u één gebruiker en stelt u de extensionAttribute1 in op `EMS;E5_baseservices;` de waarde als u wilt dat de gebruiker beide licenties moet hebben. U kunt deze wijziging on-premises aanbrengen. Nadat de wijziging is gesynchroniseerd met de Cloud, wordt de gebruiker automatisch toegevoegd aan beide groepen en worden er licenties toegewezen.
+Voor dit voor beeld wijzigt u één gebruiker en stelt u de extensionAttribute1 in op de waarde `EMS;E5_baseservices;` Als u wilt dat de gebruiker beide licenties moet hebben. U kunt deze wijziging on-premises aanbrengen. Nadat de wijziging is gesynchroniseerd met de Cloud, wordt de gebruiker automatisch toegevoegd aan beide groepen en worden er licenties toegewezen.
 
 ![Scherm afbeelding die laat zien hoe de extensionAttribute1 van de gebruiker kan worden ingesteld](./media/licensing-group-advanced/user-set-extensionAttribute1.png)
 
@@ -193,7 +193,7 @@ In deze voorbeeld uitvoer ziet u het begin van de verwerking, alle resulterende 
 
 Het is niet mogelijk om een groep te verwijderen waaraan een actieve licentie is toegewezen. Een beheerder kan een groep verwijderen die niet kan leiden tot het feit dat er licenties worden verwijderd voor gebruikers. Daarom moeten de licenties eerst uit de groep worden verwijderd voordat deze kunnen worden verwijderd.
 
-Wanneer u probeert een groep te verwijderen in de Azure Portal ziet u mogelijk een fout melding zoals deze ![: verwijderen van de scherm opname is mislukt](./media/licensing-group-advanced/groupdeletionfailed.png)
+Wanneer u probeert een groep te verwijderen in de Azure Portal ziet u mogelijk een fout melding zoals deze: verwijderen van de ![ scherm opname is mislukt](./media/licensing-group-advanced/groupdeletionfailed.png)
 
 Ga naar het tabblad **licenties** van de groep en controleer of er licenties zijn toegewezen. Zo ja, verwijdert u deze licenties en probeert u de groep opnieuw te verwijderen.
 

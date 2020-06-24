@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 3d6fa1660f5204137dbebeae36f6d06852d88412
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613157"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725797"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Aangepaste Sdk's voor Azure Digital Apparaatdubbels maken met auto rest
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de Azure Digital Apparaatdubbels Api's voor .NET (C#). Meer informatie over de .NET SDK en de Api's in het algemeen kunt u vinden in [de procedures: gebruik de Azure Digital Apparaatdubbels api's en sdk's](how-to-use-apis-sdks.md). Als u in een andere taal werkt, leert u in dit artikel hoe u uw eigen SDK kunt genereren in de taal van uw keuze, met behulp van auto rest.
 
@@ -22,10 +25,10 @@ Op dit moment is de enige gepubliceerde gegevenslaag SDK voor interactie met de 
 
 Als u een SDK wilt genereren, hebt u het volgende nodig:
 * Auto [rest](https://github.com/Azure/autorest), version 2.0.4413 (versie 3 wordt momenteel niet ondersteund)
-* [Node. js](https://nodejs.org) als een vereiste voor auto rest
+* [Node.js](https://nodejs.org) als een vereiste voor auto rest
 * Het [bestand met de Azure Digital Apparaatdubbels OpenAPI (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
 
-Als node. js is geïnstalleerd, kunt u deze opdracht uitvoeren om te controleren of u de juiste versie van auto rest hebt geïnstalleerd:
+Als Node.js is geïnstalleerd, kunt u deze opdracht uitvoeren om te controleren of u de juiste versie van auto rest hebt geïnstalleerd:
 ```cmd/sh
 npm install -g autorest@2.0.4413
 ```
@@ -182,4 +185,4 @@ try
 ## <a name="next-steps"></a>Volgende stappen
 
 Door loop de stappen voor het maken van een client-app waarin u uw SDK kunt gebruiken:
-* [Zelf studie: een client-app coderen](tutorial-code.md)
+* [Zelfstudie: Een client-app coderen](tutorial-code.md)

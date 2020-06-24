@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260272"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887580"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vooraf assets op een Azure CDN-eindpunt laden
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -44,7 +44,7 @@ In deze zelf studie wordt u begeleid bij het vooraf laden van inhoud in de cache
     Het deel venster **belasting** wordt geopend.
    
     ![Deel venster CDN laden](./media/cdn-preload-endpoint/cdn-load-blade.png)
-4. Voor het **pad naar inhoud**voert u het volledige pad in van elk activum dat u wilt laden ( `/pictures/kitten.png`bijvoorbeeld).
+4. Voor het **pad naar inhoud**voert u het volledige pad in van elk activum dat u wilt laden (bijvoorbeeld `/pictures/kitten.png` ).
    
    > [!TIP]
    > Wanneer u begint met het invoeren van tekst, worden er meer tekst vakken voor **het inhoudsdistributiepad weer** gegeven, zodat u een lijst met meerdere assets kunt bouwen. Als u assets uit de lijst wilt verwijderen, selecteert u de knop met het weglatings teken (...) en selecteert u vervolgens **verwijderen**.

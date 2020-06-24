@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 2cf997cbe16f7ff4bfe75f90d3797ec97e7d5069
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660022"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808763"
 ---
 # <a name="troubleshoot"></a>Problemen oplossen
 
@@ -105,7 +105,7 @@ Als deze twee stappen niet helpen, is het nodig om erachter te komen of video fr
 
 **Het model overschrijdt de limieten van de geselecteerde virtuele machine, met name het maximum aantal veelhoeken:**
 
-Zie specifieke [beperkingen](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
+Zie specifieke [limieten](../reference/limits.md#overall-number-of-polygons)voor de VM-grootte.
 
 **Het model bevindt zich niet in de camera frustum:**
 
@@ -146,6 +146,10 @@ Azure remote rendering hooks in de unit weergave-pijp lijn voor het samen stelle
 
 ![Unity frame debugger](./media/troubleshoot-unity-pipeline.png)
 
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Dambord patroon wordt weer gegeven na laden van model
+
+Als de gerenderde afbeelding er als volgt uitziet: Dambord, komt ![ ](../reference/media/checkerboard.png) de renderer overeen met de [grenzen van de polygoon voor de standaard VM-grootte](../reference/vm-sizes.md). U kunt dit oplossen door over te scha kelen naar de grootte van de **Premium-VM** of het aantal zicht bare veelhoeken te verlagen.
+
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>De gerenderde afbeelding in unit is ondersteboven
 
 Zorg ervoor dat u de [hand leiding voor project-installatie](../tutorials/unity/project-setup.md) precies volgt. Een afbeelding ondersteboven geeft aan dat er een eenheid is vereist voor het maken van een niet-scherm weergave doel. Dit gedrag wordt momenteel niet ondersteund en maakt een enorme prestatie-impact op HoloLens 2.
@@ -168,6 +172,10 @@ Er zijn onlogische fouten gedetecteerd bij het compileren van unit-voor beelden 
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Arm64-builds voor Unity-projecten mislukken omdat AudioPluginMsHRTF.dll ontbreekt
+
+De `AudioPluginMsHRTF.dll` for-Arm64 is toegevoegd aan het *Windows Mixed Reality* -pakket *(com. unit. XR. windowsmr. metro)* in versie 3.0.1. Zorg ervoor dat u versie 3.0.1 of hoger hebt geïnstalleerd via unit package manager. Navigeer in de menu balk Unit naar *Window > package manager* en zoek naar het *Windows Mixed Reality* -pakket.
+
 ## <a name="unstable-holograms"></a>Onstabiele hologrammen
 
 In het geval dat gerenderde objecten samen met de hoofd bewegingen worden verplaatst, kunnen er problemen optreden met de *vertraagde fase* van het project (lsr). Raadpleeg de sectie over [vertraagde fase](../overview/features/late-stage-reprojection.md) ring van het project voor richt lijnen voor het aanpaken van een dergelijke situatie.

@@ -3,16 +3,16 @@ title: Prestaties en schaal testen met Azure Cosmos DB
 description: Meer informatie over het testen van schalen en prestaties met Azure Cosmos DB. U kunt vervolgens de functionaliteit van Azure Cosmos DB evalueren voor scenario's met een hoge prestatie toepassing.
 author: SnehaGunda
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4b2394f48f9bf3ec436cda92e87fd99ad915474
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76313742"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262562"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Prestaties en schaal testen met Azure Cosmos DB
 
@@ -39,7 +39,7 @@ De snelste manier om aan de slag te gaan is het compileren en uitvoeren van het 
 
 **Stap 1:** Down load het project van [Azure Cosmos db test voorbeeld voor prestaties](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)of Splits de GitHub-opslag plaats.
 
-**Stap 2:** Wijzig de instellingen voor EndpointUrl, AuthorizationKey, CollectionThroughput en DocumentTemplate (optioneel) in app. config.
+**Stap 2:** Wijzig de instellingen voor EndpointUrl, AuthorizationKey, CollectionThroughput en DocumentTemplate (optioneel) in App.config.
 
 > [!NOTE]
 > Voordat u verzamelingen met hoge door Voer inrichten, raadpleegt u de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor het schatten van de kosten per verzameling. Azure Cosmos DB opslag en door Voer onafhankelijk van de kosten per uur. U kunt kosten besparen door de door Voer van uw Azure Cosmos-containers na het testen te verwijderen of te verlagen.

@@ -2,13 +2,13 @@
 title: Ondersteunde cluster versies in azure Service Fabric
 description: Meer informatie over cluster versies in azure Service Fabric, met inbegrip van een koppeling naar de nieuwste releases van de Service Fabric-team blog.
 ms.topic: troubleshooting
-ms.date: 06/01/2020
-ms.openlocfilehash: 5dc3835bd58670a66968448fa798c547bb06e340
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.date: 06/15/2020
+ms.openlocfilehash: 88c91558360f6be8343c955f8e6185366cd3279a
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449699"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84808920"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric versies
 
@@ -42,7 +42,7 @@ De volgende tabel bevat de versies van Service Fabric en de bijbehorende eind da
 | 7.0.470.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |1 augustus 2020  |
 | 7.0.472.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |1 augustus 2020  |
 | 7.1.409.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
-| 7.1.416.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
+| 7.1.417.* | 7.0.466.* |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
 
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
@@ -112,4 +112,4 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 | 7,0 CU4 | 7.0.470.9590 | 7.0.469.1 |
 | 7,0 CU6 | 7.0.472.9590 | 7.0.471.1 |
 | 7,1 RTO | 7.1.409.9590 | 7.1.410.1 |
-| 7,1 CU1 | 7.1.416.9590 | 7.1.418.1 |
+| 7,1 CU1 | 7.1.417.9590 | 7.1.418.1 |

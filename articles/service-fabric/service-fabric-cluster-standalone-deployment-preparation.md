@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 6a00b7d1b72d594c08021982b2448de6275414c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 495949d1a4ec927c601f174521c360f51034a2fb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610060"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079346"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>De implementatie van uw Service Fabric zelfstandige cluster plannen en voorbereiden
 
@@ -22,7 +22,7 @@ U staat op het punt een Service Fabric cluster te maken op de computers die u ' 
 ## <a name="determine-the-number-of-fault-domains-and-upgrade-domains"></a>Het aantal fout domeinen en upgrade domeinen bepalen
 Een [ *fout domein* (FD)](service-fabric-cluster-resource-manager-cluster-description.md) is een fysieke fout eenheid en is rechtstreeks gerelateerd aan de fysieke infra structuur in de data centers. Een fout domein bestaat uit hardware-onderdelen (computers, switches, netwerken en meer) die een Single Point of Failure delen. Hoewel er geen 1:1-toewijzing is tussen fout domeinen en racks, kunt u zonder problemen praten elk rek beschouwen als een fout domein.
 
-Wanneer u Fd's in ClusterConfig. json opgeeft, kunt u de naam voor elke FD kiezen. Service Fabric ondersteunt hiërarchische Fd's, zodat u uw infrastructuur topologie kunt weer spie gelen.  De volgende Fd's zijn bijvoorbeeld geldig:
+Wanneer u Fd's in ClusterConfig.jsopgeeft, kunt u de naam voor elke FD kiezen. Service Fabric ondersteunt hiërarchische Fd's, zodat u uw infrastructuur topologie kunt weer spie gelen.  De volgende Fd's zijn bijvoorbeeld geldig:
 
 * "faultDomain": "FD:/Room1/Rack1/machine1"
 * "faultDomain": "FD:/FD1"
@@ -32,7 +32,7 @@ Een *upgrade domein* (UD) is een logische eenheid van knoop punten. Tijdens Serv
 
 De eenvoudigste manier om deze concepten te bedenken is om Fd's te beschouwen als de eenheid van ongeplande fout en UDs als eenheid voor gepland onderhoud.
 
-Wanneer u een UDs in ClusterConfig. json opgeeft, kunt u de naam voor elke UD kiezen. De volgende namen zijn bijvoorbeeld geldig:
+Wanneer u een UDs in ClusterConfig.jsopgeeft, kunt u de naam voor elke UD kiezen. De volgende namen zijn bijvoorbeeld geldig:
 
 * "upgrade Domain": "UD0"
 * "upgrade Domain": "UD1A"
@@ -51,7 +51,7 @@ Test clusters waarop stateful werk belastingen worden uitgevoerd, moeten drie kn
 
 ## <a name="prepare-the-machines-that-will-serve-as-nodes"></a>De computers voorbereiden die fungeren als knoop punten
 
-Hier volgen enkele aanbevolen specificaties voor elke computer die u aan het cluster wilt toevoegen:
+Hier vindt u de aanbevolen specificaties voor computers in een Service Fabric cluster:
 
 * Mini maal 16 GB RAM-geheugen
 * Mini maal 40 GB beschik bare schijf ruimte
@@ -61,20 +61,22 @@ Hier volgen enkele aanbevolen specificaties voor elke computer die u aan het clu
 * [.NET Framework 4.5.1 of hoger](https://www.microsoft.com/download/details.aspx?id=40773), volledige installatie
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/install/installing-windows-powershell)
 * De [RemoteRegistry-service](https://technet.microsoft.com/library/cc754820) moet op alle computers worden uitgevoerd
-* Service Fabric installatie station moet een NTFS-bestands systeem zijn
+* **Service Fabric installatie station moet een NTFS-bestands systeem zijn**
+* ** *Prestatie logboeken* voor windows-Services & waarschuwingen en *Windows-gebeurtenis logboek* moet [zijn ingeschakeld](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc755249(v=ws.11))**.
 
-De Cluster beheerder die het cluster implementeert en configureert, moet over [beheerders bevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) beschikken voor elk van de computers. U kunt Service Fabric niet installeren op een domeincontroller.
+> [!IMPORTANT]
+> De Cluster beheerder die het cluster implementeert en configureert, moet over [beheerders bevoegdheden](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) beschikken voor elk van de computers. U kunt Service Fabric niet installeren op een domeincontroller.
 
 ## <a name="download-the-service-fabric-standalone-package-for-windows-server"></a>Het zelfstandige pakket voor de Service Fabric voor Windows Server downloaden
 [Down load link-service Fabric standalone package-Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) en pak het pakket uit, hetzij naar een implementatie computer die geen deel uitmaakt van het cluster, of op een van de computers die deel uitmaken van het cluster.
 
 ## <a name="modify-cluster-configuration"></a>Cluster configuratie wijzigen
-Als u een zelfstandig cluster wilt maken, moet u een zelfstandige cluster configuratie ClusterConfig. JSON-bestand maken, waarin de specificatie van het cluster wordt beschreven. U kunt het configuratie bestand baseren op de sjablonen die op de onderstaande koppeling zijn gevonden. <br>
+Als u een zelfstandig cluster wilt maken, moet u een zelfstandige cluster configuratie maken ClusterConfig.jsin het bestand, waarin de specificatie van het cluster wordt beschreven. U kunt het configuratie bestand baseren op de sjablonen die op de onderstaande koppeling zijn gevonden. <br>
 [Zelfstandige cluster configuraties](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)
 
 Zie [configuratie-instellingen voor zelfstandige Windows-clusters](service-fabric-cluster-manifest.md)voor meer informatie over de secties in dit bestand.
 
-Open een van de ClusterConfig. json-bestanden van het pakket dat u hebt gedownload en wijzig de volgende instellingen:
+Open een van de ClusterConfig.jsop bestanden van het pakket dat u hebt gedownload en wijzig de volgende instellingen:
 
 | **Configuratie-instelling** | **Beschrijving** |
 | --- | --- |
@@ -115,21 +117,21 @@ Wanneer een cluster beheerder een Service Fabric zelfstandige cluster configuree
 
 | **Uitgesloten processen van anti virus** |
 | --- |
-| Fabric. exe |
-| FabricHost. exe |
-| FabricInstallerService. exe |
-| FabricSetup. exe |
-| FabricDeployer. exe |
-| ImageBuilder. exe |
-| FabricGateway. exe |
-| FabricDCA. exe |
-| FabricFAS. exe |
-| FabricUOS. exe |
-| FabricRM. exe |
-| File Store service. exe |
+| Fabric.exe |
+| FabricHost.exe |
+| FabricInstallerService.exe |
+| FabricSetup.exe |
+| FabricDeployer.exe |
+| ImageBuilder.exe |
+| FabricGateway.exe |
+| FabricDCA.exe |
+| FabricFAS.exe |
+| FabricUOS.exe |
+| FabricRM.exe |
+| FileStoreService.exe |
 
 ## <a name="validate-environment-using-testconfiguration-script"></a>Omgeving valideren met behulp van de testconfiguration-script
-Het script de testconfiguration. ps1 kan worden gevonden in het zelfstandige pakket. Dit wordt gebruikt als Best Practices Analyzer voor het valideren van enkele van de bovenstaande criteria en moet worden gebruikt als een Sanity om te controleren of een cluster kan worden geïmplementeerd in een bepaalde omgeving. Als er een fout optreedt, raadpleegt u de lijst onder [omgeving instellen](service-fabric-cluster-standalone-deployment-preparation.md) voor het oplossen van problemen.
+Het TestConfiguration.ps1 script kan worden gevonden in het zelfstandige pakket. Dit wordt gebruikt als Best Practices Analyzer voor het valideren van enkele van de bovenstaande criteria en moet worden gebruikt als een Sanity om te controleren of een cluster kan worden geïmplementeerd in een bepaalde omgeving. Als er een fout optreedt, raadpleegt u de lijst onder [omgeving instellen](service-fabric-cluster-standalone-deployment-preparation.md) voor het oplossen van problemen.
 
 Dit script kan worden uitgevoerd op elke computer met beheerders toegang tot alle computers die worden vermeld als knoop punten in het cluster configuratie bestand. De computer waarop dit script wordt uitgevoerd, hoeft geen deel uit te maken van het cluster.
 

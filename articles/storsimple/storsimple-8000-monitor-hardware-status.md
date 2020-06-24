@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
 ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254740"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711694"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>De StorSimple Apparaatbeheer-service gebruiken voor het bewaken van hardware-onderdelen en-status
 
@@ -81,18 +81,18 @@ De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in d
 
 | Onderdeel | Module | Type | Locatie | De vervangable-eenheid (FRU) van het veld? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
-| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de SSD-of HDD-schijven in de primaire behuizing. |
-| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur binnen het chassis. |
-| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur van het middel vlak. |
-| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |Nee |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
-| Sluit |Sluit |Fysiek |Gedeeld |Ja |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
-| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |Nee |Verwijst naar het voor paneel van het chassis. |
-| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |Nee |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
-| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
-| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
-| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
-| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
-| Batterij [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de back-upbatterij modules die zijn aangesloten op de PCM. |
+| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de SSD-of HDD-schijven in de primaire behuizing. |
+| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |
+| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur van het middel vlak. |
+| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |No |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
+| Sluit |Sluit |Fysiek |Gedeeld |Yes |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
+| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |No |Verwijst naar het voor paneel van het chassis. |
+| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |No |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
+| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |No |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
+| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |No |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
+| Voeding [0-1] |PCM |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
+| Koeling [0-1] |PCM |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
+| Batterij [0-1] |PCM |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de back-upbatterij modules die zijn aangesloten op de PCM. |
 | Metis |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee wordt de status van de accu's weer gegeven: of ze moeten worden geloosd en de eind tijd nadert. |
 | Cluster |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van het cluster dat is gemaakt tussen de twee geïntegreerde controller modules. |
 | Cluster knooppunt |N.v.t. |Logisch |Gedeeld |N.v.t. |Hiermee wordt de status van de controller aangegeven als onderdeel van het cluster. |
@@ -105,43 +105,43 @@ De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in d
 | NVRAM-ruimte SSD |N.v.t. |Logisch |Gedeeld |N.v.t. |De opslag ruimte in de SSD-opslag groep die is toegewezen voor de NVRAM-logica. |
 | HDD-opslag groep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Hdd's van het apparaat. |
 | SSD-opslag groep |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Ssd's van het apparaat. |
-| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Ja |Hiermee wordt de status van de controller weer gegeven en wordt aangegeven of deze zich in de modus actief of stand-by binnen het chassis bevindt. |
-| Temperatuur sensors in controller |I/O |Fysiek |Regelaar |Nee |Voor talrijke temperatuur Sens oren, zoals I/O-module, CPU-Tempe ratuur, DIMM-en PCIe-Sens oren, wordt de status weer gegeven. Dit geeft aan of de gedetecteerde Tempe ratuur binnen de tolerantie ligt. |
-| SAS-expansie |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de SAS-expansie (Serial Attached SCSI) aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
-| SAS-connector [0-1] |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
-| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
-| Processor kern |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de processor kernen binnen elke controller aangegeven. |
-| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
-| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
-| Baseboard Management Controller (BMC) |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de Base Board management controller (BMC) aangegeven, een gespecialiseerde service processor die het hardwareapparaat bewaakt via Sens oren en met de systeem beheerder communiceert via een onafhankelijke verbinding. |
-| Ethernet |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elk van de netwerk interfaces aangegeven, dat wil zeggen, de beheer-en gegevens poorten die op de controller zijn opgenomen. |
-| NVRAM |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het NVRAM aangegeven, een niet-vluchtige wille keurig toegangs geheugen dat wordt gebruikt door de accu waarmee toepassings kritieke informatie wordt bewaard in het geval van een stroom storing. |
+| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Yes |Hiermee wordt de status van de controller weer gegeven en wordt aangegeven of deze zich in de modus actief of stand-by binnen het chassis bevindt. |
+| Temperatuur sensors in controller |I/O |Fysiek |Regelaar |No |Voor talrijke temperatuur Sens oren, zoals I/O-module, CPU-Tempe ratuur, DIMM-en PCIe-Sens oren, wordt de status weer gegeven. Dit geeft aan of de gedetecteerde Tempe ratuur binnen de tolerantie ligt. |
+| SAS-expansie |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de SAS-expansie (Serial Attached SCSI) aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
+| SAS-connector [0-1] |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
+| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
+| Processor kern |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de processor kernen binnen elke controller aangegeven. |
+| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
+| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
+| Baseboard Management Controller (BMC) |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de Base Board management controller (BMC) aangegeven, een gespecialiseerde service processor die het hardwareapparaat bewaakt via Sens oren en met de systeem beheerder communiceert via een onafhankelijke verbinding. |
+| Ethernet |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van elk van de netwerk interfaces aangegeven, dat wil zeggen, de beheer-en gegevens poorten die op de controller zijn opgenomen. |
+| NVRAM |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van het NVRAM aangegeven, een niet-vluchtige wille keurig toegangs geheugen dat wordt gebruikt door de accu waarmee toepassings kritieke informatie wordt bewaard in het geval van een stroom storing. |
 
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>Lijst met onderdelen voor EBOD Enclosure van StorSimple-apparaat
 De volgende tabel bevat een overzicht van de fysieke en logische onderdelen in de EBOD Enclosure (alleen aanwezig in het 8600-model) van uw on-premises StorSimple-apparaat.
 
 | Onderdeel | Module | Type | Locatie | FRU? | Beschrijving |
 | --- | --- | --- | --- | --- | --- |
-| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de harde schijven in de voor zijde van de EBOD-behuizing. |
-| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur binnen het chassis. |
-| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |Nee |Meet de Tempe ratuur van het middel vlak. |
-| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |Nee |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
-| Sluit |Sluit |Fysiek |Gedeeld |Ja |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
-| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |Nee |Verwijst naar het OPS-of het voor paneel van het chassis. |
-| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |Nee |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
-| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
-| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |Nee |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
-| Voeding [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
-| Koeling [0-1] |PCM |Fysiek |Gedeeld |Ja |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
+| Station in sleuf [0-11] |Schijf stations |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de harde schijven in de voor zijde van de EBOD-behuizing. |
+| Omgevings temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur binnen het chassis. |
+| Mid-vlieg temperatuur sensor |Sluit |Fysiek |Gedeeld |No |Meet de Tempe ratuur van het middel vlak. |
+| Hoorbaar alarm |Sluit |Fysiek |Gedeeld |No |Hiermee wordt aangegeven of het hoorbare alarm subsysteem binnen het chassis functioneel is. |
+| Sluit |Sluit |Fysiek |Gedeeld |Yes |Hiermee wordt de aanwezigheid van een chassis aangegeven. |
+| Instellingen voor de behuizing |Sluit |Fysiek |Gedeeld |No |Verwijst naar het OPS-of het voor paneel van het chassis. |
+| Lijn spanning-Sens oren |PCM |Fysiek |Gedeeld |No |Voor talrijke spannings sensors wordt de status weer gegeven. Dit geeft aan of de gemeten spanning binnen de tolerantie valt. |
+| Regel huidige Sens oren |PCM |Fysiek |Gedeeld |No |De status van een groot aantal regel huidige Sens oren wordt weer gegeven. Dit geeft aan of de gemeten huidige waarde binnen de tolerantie ligt. |
+| Temperatuur sensors in PCM |PCM |Fysiek |Gedeeld |No |De status van een groot aantal temperatuur Sens oren zoals de inlaat-en hotspot Sens oren wordt weer gegeven. Dit geeft aan of de gemeten Tempe ratuur binnen de tolerantie ligt. |
+| Voeding [0-1] |PCM |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de energie-eenheden in de twee PCMs die zich op de achterkant van het apparaat bevinden. |
+| Koeling [0-1] |PCM |Fysiek |Gedeeld |Yes |Er wordt één regel weer gegeven voor elk van de vier ventilatoren in de twee PCMs. |
 | Lokale opslag [HDD] |N.v.t. |Logisch |Gedeeld |N.v.t. |Hier wordt de status weer gegeven van de logische opslag groep die is gemaakt op basis van de Hdd's van het apparaat. |
-| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Ja |Hiermee wordt de status van de controllers in de EBOD-module weer gegeven. |
-| Temperatuur sensors in EBOD |I/O |Fysiek |Regelaar |Nee |De status van een groot aantal temperatuur Sens oren van elke controller wordt weer gegeven. Dit geeft aan of de Tempe ratuur binnen de tolerantie ligt. |
-| SAS-expansie |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de SAS-uitbreidings module aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
-| SAS-connector [0-2] |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
-| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
-| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
-| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
-| Verbinding met apparaat-controller |I/O |Fysiek |Regelaar |Nee |Hiermee wordt de status van de verbinding tussen de I/O-module EBOD en de apparaat-controller aangegeven. |
+| Controller [0-1] [status] |I/O |Fysiek |Regelaar |Yes |Hiermee wordt de status van de controllers in de EBOD-module weer gegeven. |
+| Temperatuur sensors in EBOD |I/O |Fysiek |Regelaar |No |De status van een groot aantal temperatuur Sens oren van elke controller wordt weer gegeven. Dit geeft aan of de Tempe ratuur binnen de tolerantie ligt. |
+| SAS-expansie |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de SAS-uitbreidings module aangegeven, die wordt gebruikt om de geïntegreerde opslag te verbinden met de controller. |
+| SAS-connector [0-2] |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van elke SAS-connector aangegeven, die wordt gebruikt voor het verbinden van geïntegreerde opslag met de SAS-uitbrei ding. |
+| SBB mid-plan Interconnect |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de mid-vlieg connector aangegeven, die wordt gebruikt voor het verbinden van elke controller met het middel vlak. |
+| Behuizing elektronica kracht |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van het energie systeem aangegeven dat wordt gebruikt door de behuizing. |
+| Behuizing elektronica Diagnostics |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de diagnostische subsystemen aangegeven die worden verschaft door de controller. |
+| Verbinding met apparaat-controller |I/O |Fysiek |Regelaar |No |Hiermee wordt de status van de verbinding tussen de I/O-module EBOD en de apparaat-controller aangegeven. |
 
 ## <a name="next-steps"></a>Volgende stappen
 * Als u de StorSimple Apparaatbeheer-service wilt gebruiken om uw apparaat te beheren, gaat u naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).

@@ -9,18 +9,18 @@ editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 182f51a150c2ef944b0104b73c63028e915c1a4a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048251"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728330"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Het verloop beleid voor Office 365-groepen configureren
 
@@ -134,7 +134,7 @@ Hier volgen enkele voor beelden van hoe u Power shell-cmdlets kunt gebruiken voo
    Connect-AzureAD
    ```
 
-1. De verloop instellingen configureren gebruik de cmdlet New-AzureADMSGroupLifecyclePolicy om de levens duur van alle Office 365-groepen in de Azure AD-organisatie tot 365 dagen in te stellen. Meldingen voor het vernieuwen van Office 365-groepen zonder eigen aars wordenemailaddress@contoso.comverzonden naar
+1. De verloop instellingen configureren gebruik de cmdlet New-AzureADMSGroupLifecyclePolicy om de levens duur van alle Office 365-groepen in de Azure AD-organisatie tot 365 dagen in te stellen. Meldingen voor het vernieuwen van Office 365-groepen zonder eigen aars worden verzonden naar emailaddress@contoso.com
   
    ``` PowerShell
    New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
@@ -144,7 +144,7 @@ Hier volgen enkele voor beelden van hoe u Power shell-cmdlets kunt gebruiken voo
 
    - De beleids-ID
    - De levens duur voor alle Office 365-groepen in de Azure AD-organisatie is ingesteld op 365 dagen
-   - Meldingen voor het vernieuwen van Office 365-groepen zonder eigen aars wordenemailaddress@contoso.comverzonden naar.
+   - Meldingen voor het vernieuwen van Office 365-groepen zonder eigen aars worden verzonden naar emailaddress@contoso.com .
   
    ```powershell
    Get-AzureADMSGroupLifecyclePolicy

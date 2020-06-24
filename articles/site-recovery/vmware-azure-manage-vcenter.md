@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/24/2019
 ms.author: ramamill
 ms.openlocfilehash: 01aef3aca4f6967b1681bff9598c7dd7a24739cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257262"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84692516"
 ---
 # <a name="manage-vmware-vcenter-server"></a>VMware vCenter Server beheren
 
@@ -26,7 +26,7 @@ De vereisten voor vCenter-servers en Vm's tijdens nood herstel van virtuele VMwa
 Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, moet Site Recovery toegang hebben tot de vCenter Server/vSphere-host. De Site Recovery process server kan vervolgens Vm's automatisch detecteren en failover naar behoefte uitvoeren. De proces server wordt standaard uitgevoerd op de configuratie Server Site Recovery. Voeg als volgt een account toe voor de configuratie server om verbinding te maken met de vCenter Server/vSphere-host:
 
 1. Meld u aan bij de configuratie server.
-1. Open het hulp programma voor de configuratie server (_cspsconfigtool. exe_) met behulp van de snelkoppeling op het bureau blad.
+1. Open het hulp programma voor configuratie server (_cspsconfigtool.exe_) met behulp van de snelkoppeling op het bureau blad.
 1. Klik op het tabblad **account beheren** op **account toevoegen**.
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
@@ -38,7 +38,7 @@ Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, moet Si
 
 ### <a name="account-permissions"></a>Account machtigingen
 
-|**Taak** | **Account** | **Machtigingen** | **Nadere**|
+|**Taak** | **Account** | **Machtigingen** | **Details**|
 |--- | --- | --- | ---|
 |**Detectie/migratie van VM'S (zonder failback)** | Mini maal een alleen-lezen gebruikers account. | Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar onderliggend** item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).|
 |**Replicatie/failover** | Mini maal een alleen-lezen gebruikers account. | Datacentrumobject –> doorgeven naar onderliggend object, rol=Alleen-lezen | Gebruiker wordt toegewezen op datacentrumniveau, en heeft toegang tot alle objecten in het datacentrum.<br/><br/> Als u de toegang wilt beperken, wijst u de rol **geen toegang** met het object **door geven naar** onderliggend item toe aan de onderliggende objecten (vSphere-hosts, gegevens opslag, virtuele machines en netwerken).<br/><br/> Nuttig voor migratie doeleinden, maar niet de volledige replicatie, failover, failback.|
@@ -48,7 +48,7 @@ Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, moet Si
 
 Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, voegt u de vCenter Server-vSphere-host waarop u de virtuele machines op de Site Recovery kluis detecteert, als volgt toe:
 
-1. Open de configuratie server in kluis > site Recovery**configuratie**servers van de **infra structuur** > .
+1. Open de configuratie server in kluis > site Recovery configuratie servers van de **infra structuur**  >  **Configuration Severs**.
 1. Klik op de pagina **Details** op **vCenter**.
 1. Geef in **VCenter toevoegen**een beschrijvende naam op voor de vSphere-host of vCenter-Server.
 1. Geef het IP-adres of de FQDN van de server op.
@@ -60,13 +60,13 @@ Wanneer u herstel na nood gevallen instelt voor on-premises VMware-Vm's, voegt u
 Als dat nodig is, kunt u de referenties die worden gebruikt om verbinding te maken met de vCenter Server/vSphere-host als volgt wijzigen:
 
 1. Meld u aan bij de configuratie server.
-1. Open het hulp programma voor de configuratie server (_cspsconfigtool. exe_) met behulp van de snelkoppeling op het bureau blad.
+1. Open het hulp programma voor configuratie server (_cspsconfigtool.exe_) met behulp van de snelkoppeling op het bureau blad.
 1. Klik op het tabblad **account beheren** op **account toevoegen** .
 
    ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
 
 1. Geef de nieuwe account gegevens op en klik op **OK**. Het account heeft de machtigingen nodig die worden vermeld in de tabel [account machtigingen](#account-permissions) .
-1. Open de configuratie server in de kluis > site Recovery**configuratie**servers van de **infra structuur** > .
+1. Open de configuratie server in de kluis > site Recovery configuratie servers van de **infra structuur**  >  **Configuration Severs**.
 1. Klik in **Details**op **server vernieuwen**.
 1. Nadat de taak server vernieuwen is voltooid, selecteert u de vCenter Server.
 1. In **samen vatting**selecteert u het zojuist toegevoegde account in **VCenter server/vSphere host-account**en klikt u op **Opslaan**.
@@ -75,7 +75,7 @@ Als dat nodig is, kunt u de referenties die worden gebruikt om verbinding te mak
 
 ## <a name="delete-a-vcenter-server"></a>Een vCenter Server verwijderen
 
-1. Open de configuratie server in de kluis > site Recovery**configuratie**servers van de **infra structuur** > .
+1. Open de configuratie server in de kluis > site Recovery configuratie servers van de **infra structuur**  >  **Configuration Severs**.
 1. Selecteer op de pagina **Details** de vCenter-Server.
 1. Klik op de knop **verwijderen** .
 
@@ -85,7 +85,7 @@ Als dat nodig is, kunt u de referenties die worden gebruikt om verbinding te mak
 
 U kunt het IP-adres van de vCenter Server wijzigen of de poorten die worden gebruikt voor communicatie tussen de server en Site Recovery. Site Recovery heeft standaard toegang tot de hostgegevens vCenter Server/vSphere via poort 443.
 
-1. Klik in de kluis > **site Recovery infrastructuur** > **configuratie servers**op de configuratie server waaraan de vCenter Server is toegevoegd.
+1. Klik in de kluis > **site Recovery infrastructuur**  >  **configuratie servers**op de configuratie server waaraan de vCenter Server is toegevoegd.
 1. Klik in **vCenter-servers**op de vCenter Server u wilt wijzigen.
 1. Werk in **samen vatting**het IP-adres en de poort bij en sla de wijzigingen op.
 
@@ -97,7 +97,7 @@ U kunt het IP-adres van de vCenter Server wijzigen of de poorten die worden gebr
 
 Als u alle Vm's wilt migreren om een nieuwe vCenter Server te gebruiken, hoeft u alleen het IP-adres bij te werken dat aan de vCenter Server is toegewezen. Voeg nog geen VMware-account toe, omdat dit kan leiden tot dubbele vermeldingen. Werk het adres als volgt bij:
 
-1. Klik in de kluis > **site Recovery infrastructuur** > **configuratie servers**op de configuratie server waaraan de vCenter Server is toegevoegd.
+1. Klik in de kluis > **site Recovery infrastructuur**  >  **configuratie servers**op de configuratie server waaraan de vCenter Server is toegevoegd.
 1. Klik in de sectie **vCenter-servers** op de vCenter Server waaruit u wilt migreren.
 1. Werk in **samen vatting**het IP-adres bij naar dat van de nieuwe vCenter Server en sla de wijzigingen op.
 1. Zodra het IP-adres is bijgewerkt, begint Site Recovery met het ontvangen van de detectie gegevens van de virtuele machine vanuit de nieuwe vCenter Server. Dit heeft geen invloed op lopende replicatie activiteiten.

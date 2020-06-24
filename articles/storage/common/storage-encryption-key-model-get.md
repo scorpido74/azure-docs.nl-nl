@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 03/13/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0df0ba4ce76d249bcb4738b41c94677e061f14ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f16902a779fdb7c86fb7506711d2bce77ca9d05
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409849"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84809229"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Bepalen welk Azure Storage versleutelings sleutel model wordt gebruikt voor het opslag account
 
@@ -32,11 +32,11 @@ Zie [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.m
 
 Gebruik een van de volgende benaderingen om te bepalen of een opslag account gebruikmaakt van door micro soft beheerde sleutels of door de klant beheerde sleutels voor versleuteling.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
 Voer de volgende stappen uit om het versleutelings model voor het opslag account te controleren met behulp van de Azure Portal:
 
-1. Ga in Azure Portal naar het nieuwe opslagaccount.
+1. Ga in Azure Portal naar uw opslagaccount.
 1. Selecteer de **versleutelings** instelling en noteer de instelling.
 
 In de volgende afbeelding ziet u een opslag account dat is versleuteld met door micro soft beheerde sleutels:
@@ -47,7 +47,7 @@ En in de volgende afbeelding ziet u een opslag account dat is versleuteld met do
 
 ![Scherm opname met de instelling voor de versleutelings sleutel in Azure Portal](media/storage-encryption-key-model-get/customer-managed-encryption-key-setting-portal.png)
 
-# <a name="powershell"></a>[Zo](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Als u het versleutelings model voor het opslag account wilt controleren met behulp van Power shell, roept u de opdracht [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount) aan en controleert u vervolgens de eigenschap sleutel **bron** voor het account.
 
@@ -57,7 +57,7 @@ $account = Get-AzStorageAccount -ResourceGroupName <resource-group> `
 $account.Encryption.KeySource
 ```
 
-Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage`, wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault`, wordt het account versleuteld met door de klant beheerde sleutels.
+Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage` , wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault` , wordt het account versleuteld met door de klant beheerde sleutels.
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/cli)
 
@@ -71,11 +71,11 @@ key_source=$(az storage account show \
     --output tsv)
 ```
 
-Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage`, wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault`, wordt het account versleuteld met door de klant beheerde sleutels.
+Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Storage` , wordt het account versleuteld met door micro soft beheerde sleutels. Als de waarde van de eigenschap sleutel **bron** is `Microsoft.Keyvault` , wordt het account versleuteld met door de klant beheerde sleutels.
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md)
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md)
 - [Door de klant beheerde sleutels gebruiken met Azure Key Vault voor het beheren van Azure Storage versleuteling](encryption-customer-managed-keys.md)

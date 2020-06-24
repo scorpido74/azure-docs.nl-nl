@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van beheerde identiteiten voor Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461443"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710300"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Beheerde identiteiten gebruiken voor Azure met Service Fabric
 
@@ -35,7 +35,7 @@ Er zijn twee typen beheerde identiteit:
 - Een door het **systeem toegewezen beheerde identiteit** wordt rechtstreeks ingeschakeld voor een Azure-service-exemplaar.  De levens cyclus van een door het systeem toegewezen identiteit is uniek voor het Azure-service-exemplaar waarop het is ingeschakeld.
 - Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. De identiteit kan worden toegewezen aan een of meer Azure-service-exemplaren en wordt onafhankelijk van de levens cyclus van die instanties beheerd.
 
-Zie [Hoe worden beheerde identiteiten voor Azure-resources werken?](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) voor meer informatie over het verschil tussen beheerde identiteits typen.
+Zie [Hoe worden beheerde identiteiten voor Azure-resources werken?](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)voor meer informatie over het verschil tussen beheerde identiteits typen.
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Ondersteunde scenario's voor Service Fabric toepassingen
 

@@ -2,16 +2,16 @@
 title: De latentie aan de server zijde controleren voor bewerkingen in Azure Cosmos DB
 description: Meer informatie over het bewaken van de server latentie voor bewerkingen in Azure Cosmos DB account of een container. Eigen aars van een Azure Cosmos DB-account kunnen inzicht krijgen in de latentie problemen aan de server zijde met uw Azure Cosmos-accounts.
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 0f1e6d07afb3b7b4d26081bc9e34ac257b280d0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5be2365fb5850c3f45b320d66c114fb791b22c3e
+ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113924"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85262698"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>De latentie aan de server zijde controleren voor bewerkingen in een Azure Cosmos DB container of-account
 
@@ -31,15 +31,15 @@ U kunt het diagnostische logboek opzoeken om de grootte van de geretourneerde ge
 
 1. Selecteer **monitor** in de navigatie balk aan de linkerkant en selecteer **metrische gegevens**.
 
-   ![Deel venster metrische gegevens in Azure Monitor](./media/monitor-server-side-latency/monitor-metrics-blade.png)
+   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Deel venster metrische gegevens in Azure Monitor":::
 
 1. Selecteer in het deel venster **metrieken** > **een resource selecteren** > Kies het vereiste **abonnement**en de **resource groep**. Voor het **bron type**selecteert u **Azure Cosmos DB accounts**, kiest u een van uw bestaande Azure Cosmos-accounts en selecteert u **Toep assen**.
    
-   ![Kies het Azure Cosmos DB-account om de metrische gegevens weer te geven](./media/monitor-server-side-latency/select-cosmos-db-account.png)
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Kies het Azure Cosmos DB-account om de metrische gegevens weer te geven":::
 
 1. Selecteer vervolgens de metrische latentie aan de **server zijde** in de lijst met beschik bare metrische gegevens. Zie het artikel [metrische gegevens per categorie](monitor-cosmos-db-reference.md) voor meer informatie over alle beschik bare metrische gegevens in deze lijst. In dit voor beeld selecteren we de **latentie aan de server zijde** en **Gem** als de aggregatie waarde. Naast deze details kunt u ook het **tijds bereik** en de **tijd granulatie** van de metrische gegevens selecteren. U kunt Maxi maal de metrische gegevens weer geven voor de afgelopen 30 dagen.  Nadat u het filter hebt toegepast, wordt een grafiek weer gegeven op basis van het filter. U kunt de latentie aan de server zijde per minuut voor de geselecteerde periode bekijken.  
 
-   ![Kies de latentie gegevens aan de server zijde van de Azure Portal](./media/monitor-server-side-latency/server-side-latency-metric.png)
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Kies de latentie gegevens aan de server zijde van de Azure Portal":::
 
 ## <a name="filters-for-server-side-latency"></a>Filters voor latentie aan server zijde
 
@@ -49,7 +49,7 @@ Als u de metrische gegevens wilt filteren, selecteert u **filter toevoegen** en 
 
 De metrische latentie gegevens aan de **server zijde** voor elke bewerking worden weer gegeven, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Filters voor metrische gegevens over latentie aan de server zijde](./media/monitor-server-side-latency/server-side-latency-filters.png)
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Filters voor metrische gegevens over latentie aan de server zijde":::
 
 U kunt de metrische gegevens ook groeperen met behulp van de optie **splitsing Toep assen** .  
 

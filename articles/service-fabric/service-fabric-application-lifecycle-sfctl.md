@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259069"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711031"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Een Azure Service Fabric-toepassing beheren met behulp van Azure Service Fabric CLI (sfctl)
 
@@ -45,13 +45,13 @@ Voer de volgende taken uit om een nieuwe toepassing te implementeren:
 
 Voordat u een toepassing maakt, uploadt u het toepassings pakket naar het archief met de Service Fabric-installatie kopie.
 
-Als uw toepassings pakket zich bijvoorbeeld in de `app_package_dir` Directory bevindt, gebruikt u de volgende opdrachten om de map te uploaden:
+Als uw toepassings pakket zich bijvoorbeeld in de directory bevindt `app_package_dir` , gebruikt u de volgende opdrachten om de map te uploaden:
 
 ```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
-Voor grote toepassings pakketten kunt u de `--show-progress` optie opgeven om de voortgang van het uploaden weer te geven.
+Voor grote toepassings pakketten kunt u de optie opgeven `--show-progress` om de voortgang van het uploaden weer te geven.
 
 ### <a name="provision-the-application-type"></a>Het toepassings type inrichten
 
@@ -85,7 +85,7 @@ sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app
 
 `app-name`is de naam die u wilt gebruiken voor het toepassings exemplaar. U kunt aanvullende para meters ophalen uit het eerder ingerichte toepassings manifest.
 
-De naam van de toepassing moet beginnen met `fabric:/`het voor voegsel.
+De naam van de toepassing moet beginnen met het voor voegsel `fabric:/` .
 
 ### <a name="create-services-for-the-new-application"></a>Services voor de nieuwe toepassing maken
 
@@ -112,7 +112,7 @@ sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
 
-Gezonde Services en toepassingen hebben een `HealthState` waarde van `Ok`.
+Gezonde Services en toepassingen hebben een `HealthState` waarde van `Ok` .
 
 ## <a name="remove-an-existing-application"></a>Een bestaande toepassing verwijderen
 
@@ -156,7 +156,7 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 
 Upgrades overschrijven bestaande para meters met welke set is opgegeven. Toepassings parameters moeten, indien nodig, worden door gegeven als argumenten voor de upgrade-opdracht. Toepassings parameters moeten worden gecodeerd als een JSON-object.
 
-Als u eerder opgegeven para meters wilt ophalen, kunt `sfctl application info` u de opdracht gebruiken.
+Als u eerder opgegeven para meters wilt ophalen, kunt u de `sfctl application info` opdracht gebruiken.
 
 Wanneer een upgrade van een toepassing wordt uitgevoerd, kan de status worden opgehaald met behulp van de `sfctl application upgrade-status` opdracht.
 

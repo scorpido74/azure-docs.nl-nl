@@ -2,14 +2,14 @@
 title: Azure Active Directory toegang configureren-Azure Block Chain-Service
 description: Azure Block Chain service configureren met Azure Active Directory toegang
 ms.date: 11/22/2019
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: janders
-ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74455867"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85208770"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Azure Active Directory toegang configureren voor de Azure Block Chain-Service
 
@@ -63,7 +63,7 @@ Volg de sectie Quick Start in het **Leesmij-bestand** om de connector te bouwen 
 
 ### <a name="connect-using-an-azure-ad-user-account"></a>Verbinding maken met behulp van een Azure AD-gebruikers account
 
-1. Voer de volgende opdracht uit om te verifiëren met behulp van een Azure AD-gebruikers account. Vervang \<myAADDirectory\> door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
+1. Voer de volgende opdracht uit om te verifiëren met behulp van een Azure AD-gebruikers account. Vervang door \<myAADDirectory\> een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
 
     ```
     connector.exe -remote <myMemberName>.blockchain.azure.com:3200 -method aadauthcode -tenant-id <myAADDirectory> 
@@ -99,7 +99,7 @@ Zie [How to: de portal gebruiken om een Azure AD-toepassing en Service-Principal
 
 Voor een mobiel apparaat of een tekst-gebaseerde browser waarbij het pop-upvenster Azure AD-verificatie niet mogelijk is, genereert Azure AD een eenmalige wachtwoord code. U kunt de wachtwoord code kopiëren en door gaan met Azure AD-verificatie in een andere omgeving.
 
-Als u de wachtwoord code wilt genereren, vervangt u **aadauthcode** door **aaddevice**. Vervang \<myAADDirectory\> door een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
+Als u de wachtwoord code wilt genereren, vervangt u **aadauthcode** door **aaddevice**. Vervang door \<myAADDirectory\> een Azure AD-domein. Bijvoorbeeld `yourdomain.onmicrosoft.com`.
 
 ```
 connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAADDirectory>

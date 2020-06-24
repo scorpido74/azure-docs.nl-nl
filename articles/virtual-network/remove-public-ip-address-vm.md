@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: f29e29f809faeeb486e5b6b9bacc84a61380a012
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144462"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709960"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>Een openbaar IP-adres ontkoppelen van een Azure-VM 
 
@@ -44,7 +44,7 @@ U kunt de [Azure Portal](#azure-portal), de Azure [-opdracht regel interface](#a
 
 Installeer de [Azure cli](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)of gebruik de Azure Cloud shell. De Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal kunt uitvoeren. In deze shell is de Azure CLI vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer de knop **try it** in de CLI-opdrachten die volgen. Als u probeert te selecteren **, wordt** een Cloud shell aangeroepen waarmee u zich kunt aanmelden bij uw Azure-account met.
 
-1. Als u de CLI lokaal gebruikt in bash, meldt u zich `az login`aan bij Azure met.
+1. Als u de CLI lokaal gebruikt in bash, meldt u zich aan bij Azure met `az login` .
 2. Een openbaar IP-adres is gekoppeld aan een IP-configuratie van een netwerk interface die is gekoppeld aan een virtuele machine. Gebruik de opdracht [AZ Network NIC-IP-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) om een openbaar IP-adres te ontkoppelen van een IP-configuratie. In het volgende voor beeld wordt een openbaar IP-adres met de naam *myVMPublicIP* uit de IP-configuratie met de naam *ipconfigmyVM* van een bestaande netwerk interface met de naam *myVMVMNic* dat is gekoppeld aan een virtuele machine genaamd *myVM* in een resource groep met de naam *myResourceGroup*ontkoppeld.
   
    ```azurecli-interactive
@@ -86,7 +86,7 @@ Installeer de [Azure cli](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-ne
 
 Installeer [Power shell](/powershell/azure/install-az-ps)of gebruik de Azure Cloud shell. De Azure Cloud Shell is een gratis shell die u rechtstreeks vanuit Azure Portal kunt uitvoeren. Hiervoor is Power shell vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Selecteer de knop **try it** in de Power shell-opdrachten die volgen. Als u probeert te selecteren **, wordt** een Cloud shell aangeroepen waarmee u zich kunt aanmelden bij uw Azure-account met.
 
-1. Als u Power shell lokaal gebruikt, meldt u `Connect-AzAccount`zich aan bij Azure met.
+1. Als u Power shell lokaal gebruikt, meldt u zich aan bij Azure met `Connect-AzAccount` .
 2. Een openbaar IP-adres is gekoppeld aan een IP-configuratie van een netwerk interface die is gekoppeld aan een virtuele machine. Gebruik de opdracht [Get-AzNetworkInterface](/powershell/module/Az.Network/Get-AzNetworkInterface) voor het ophalen van een netwerk interface. Stel de waarde voor het open bare IP-adres in op null en gebruik vervolgens de opdracht [set-AzNetworkInterface](/powershell/module/Az.Network/Set-AzNetworkInterface) om de nieuwe IP-configuratie te schrijven naar de netwerk interface.
 
    In het volgende voor beeld wordt een openbaar IP-adres met de naam *myVMPublicIP* van een netwerk interface met de naam *myVMVMNic* die is gekoppeld aan een virtuele machine met de naam *myVM*. Alle resources bevinden zich in een resource groep met de naam *myResourceGroup*.

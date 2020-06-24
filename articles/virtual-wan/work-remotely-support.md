@@ -4,15 +4,15 @@ description: Op deze pagina wordt beschreven hoe u Azure Virtual WAN kunt gebrui
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc048f3da3156f5e17cfa32479b834b7320a60a2
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337130"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753772"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Virtueel WAN van Azure en ondersteunende externe werkzaamheden
 
@@ -27,7 +27,7 @@ Wilt u dat uw externe gebruikers bronnen kunnen bereiken achter een particulier 
 Hebt u behoefte aan gebruikers om toegang te krijgen tot de intra Cloud bronnen zonder dat er verbinding hoeft te worden ingesteld tussen regio's?
 Omdat deze globale Pandemic ongekende wijzigingen voor ons maakt, is het Azure Virtual WAN-team hier om u te helpen met uw connectiviteits behoeften.
 
-Azure Virtual WAN is een netwerk service die een groot aantal netwerk-, beveiligings-en routerings functionaliteit biedt om één operationele interface te bieden. Deze functies omvatten vertakkings connectiviteit (via connectiviteits automatisering van virtuele WAN-partner apparaten zoals SD-WAN of VPN CPE), site-naar-site-VPN-verbinding, VPN voor externe gebruikers (punt-naar-site) connectiviteit, persoonlijke (ExpressRoute) connectiviteit, intra-Cloud connectiviteit (transitieve connectiviteit voor virtuele netwerken), VPN ExpressRoute interconnectiviteit, route ring, Azure firewall U hoeft niet al deze gebruiks voorbeelden te hebben om virtueel WAN te gaan gebruiken. U kunt aan de slag met slechts één use-case en uw netwerk aanpassen tijdens het ontwikkelen.
+Azure Virtual WAN is een netwerkservice die een groot aantal netwerk-, beveiligings- en routeringsfuncties samenbrengt om één operationele interface te bieden. Deze functies omvatten vertakkings connectiviteit (via connectiviteits automatisering van virtuele WAN-partner apparaten zoals SD-WAN of VPN CPE), site-naar-site-VPN-verbinding, VPN voor externe gebruikers (punt-naar-site) connectiviteit, persoonlijke (ExpressRoute) connectiviteit, intra-Cloud connectiviteit (transitieve connectiviteit voor virtuele netwerken), VPN ExpressRoute interconnectiviteit, route ring, Azure firewall U hoeft niet al deze gebruiks voorbeelden te hebben om virtueel WAN te gaan gebruiken. U kunt aan de slag met slechts één use-case en uw netwerk aanpassen tijdens het ontwikkelen.
 
 ![Virtual WAN-diagram](./media/virtual-wan-about/virtualwan1.png)
 
@@ -35,7 +35,7 @@ Nu kunt u contact met externe gebruikers maken, zodat u op de hoogte bent van wa
 
 ## <a name="set-up-remote-user-connectivity"></a><a name="connectivity"></a>Externe gebruikers connectiviteit instellen
 
-U kunt verbinding maken met uw resources in azure via een IPsec/IKE-of OpenVPN-verbinding. Voor dit type verbinding moet een VPN-client worden geconfigureerd voor de externe gebruiker. Deze client kan de [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554) of de openvpn-client zijn of een wille keurige client die IKEv2 ondersteunt. Zie [een punt-naar-site-verbinding maken](virtual-wan-point-to-site-portal.md)voor meer informatie.
+U kunt verbinding maken met uw resources in Azure via een IPsec/IKE (IKEv2)- of OpenVPN-verbinding. Voor dit type verbinding moet een VPN-client worden geconfigureerd voor de externe gebruiker. Deze client kan de [Azure VPN-client](https://go.microsoft.com/fwlink/?linkid=2117554) of de openvpn-client zijn of een wille keurige client die IKEv2 ondersteunt. Raadpleeg [Een site-naar-site-verbinding maken](virtual-wan-point-to-site-portal.md) voor meer informatie.
 
 ## <a name="connectivity-from-the-remote-user-to-on-premises"></a><a name="remote user connectivity"></a>Connectiviteit van de externe gebruiker naar on-premises
 
@@ -51,7 +51,7 @@ Een eenvoudig virtueel WAN biedt alleen site-naar-site-VPN. Om externe gebruiker
 
 ## <a name="additional-information"></a><a name="other considerations"></a>Aanvullende informatie
 
-Virtual WAN ondersteunt één hub per regio/locatie. Zie het artikel [virtuele WAN-partners en locaties](virtual-wan-locations-partners.md) voor informatie over de locatie. Elke hub ondersteunt Maxi maal 10.000 externe gebruikers verbindingen, 1.000 vertakkings verbinding, vier ExpressRoute-circuits en Maxi maal 500 Virtual Network verbindingen. Wanneer u de externe gebruikers opschaalt, kunt u, als u vragen hebt, geen informatie zoeken door een e-mail te verzenden azurevirtualwan@microsoft.comnaar. Als u technische ondersteuning nodig hebt, moet u een ondersteunings ticket openen via de Azure Portal en is de Help-informatie aan de weg.
+Virtual WAN ondersteunt één hub per regio/locatie. Zie het artikel [Virtual WAN-partners en -locaties](virtual-wan-locations-partners.md) voor informatie over de locatie. Elke hub ondersteunt Maxi maal 10.000 externe gebruikers verbindingen, 1.000 vertakkings verbinding, vier ExpressRoute-circuits en Maxi maal 500 Virtual Network verbindingen. Wanneer u de externe gebruikers opschaalt, kunt u, als u vragen hebt, geen informatie zoeken door een e-mail te verzenden naar azurevirtualwan@microsoft.com . Als u technische ondersteuning nodig hebt, moet u een ondersteunings ticket openen via de Azure Portal en is de Help-informatie aan de weg.
 
 ## <a name="faq"></a><a name="faq"></a>Veelgestelde vragen
 

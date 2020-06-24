@@ -1,5 +1,5 @@
 ---
-title: Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure
+title: Melding beëindigen voor exemplaren van virtuele-machineschaalsets van Azure
 description: Meer informatie over het inschakelen van beëindigings meldingen voor instanties van de schaalset voor virtuele machines van Azure
 author: avirishuv
 ms.author: avverma
@@ -9,14 +9,14 @@ ms.subservice: management
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 695fd03d7c1856ad39b7672d826f85bc4c68a99c
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 65fc822250ae8284c9f87af262356730ff1d54c4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125176"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85207512"
 ---
-# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure
+# <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances"></a>Melding beëindigen voor exemplaren van virtuele-machineschaalsets van Azure
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. De oplossing voegt een andere gebeurtenis – Terminate toe aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.
 
 Wanneer instanties van een schaalset eenmaal zijn geregistreerd in de-functie, hoeven niet te worden gewacht tot de opgegeven time-out is verlopen voordat het exemplaar wordt verwijderd. Nadat de melding is beëindigd, kan de instantie ervoor kiezen om op elk gewenst moment te verwijderen voordat de time-out voor beëindigen verloopt.
@@ -178,7 +178,7 @@ Hieronder ziet u de JSON die wordt verwacht in de hoofd tekst van de POST-aanvra
 
 Zorg ervoor dat elke virtuele machine in de schaalset alleen de alleen-lezen gebeurtenis alleen goedkeurt die relevant is voor die VM. Een virtuele machine kan zijn eigen VM-naam ophalen [via de meta gegevens](virtual-machine-scale-sets-instance-ids.md#instance-metadata-vm-name)van het exemplaar. Deze naam heeft de notatie {Scale-set-name} _ {instance-id} en wordt weer gegeven in de sectie resources van het query-antwoord dat hierboven wordt beschreven.
 
-U kunt ook verwijzen naar voorbeeld scripts voor het uitvoeren van query's en het reageren op gebeurtenissen met behulp van [Power shell](../virtual-machines/windows/scheduled-events.md#powershell-sample) en [python](../virtual-machines/linux/scheduled-events.md#python-sample).
+U kunt ook verwijzen naar voorbeeld scripts voor het uitvoeren van query's en het reageren op gebeurtenissen [python](../virtual-machines/linux/scheduled-events.md#python-sample).
 
 ## <a name="tips-and-best-practices"></a>Tips en best practices
 -   Meldingen alleen beëindigen bij ' delete '-bewerkingen: alle Verwijder bewerkingen (hand matig verwijderen of automatisch schalen gestarte inschalen) genereren Terminate-gebeurtenissen als voor uw schaalset *scheduledEventsProfile* is ingeschakeld. Voor andere bewerkingen, zoals opnieuw opstarten, opnieuw instellen van installatie kopieën, opnieuw implementeren en stoppen/toewijzing, worden geen Terminate-gebeurtenissen gegenereerd. Beëindigen van meldingen kan niet worden ingeschakeld voor Vm's met een lage prioriteit.
