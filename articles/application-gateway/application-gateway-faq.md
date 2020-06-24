@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84668233"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981990"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -73,7 +73,13 @@ Open voor de v2-SKU de open bare IP-resource en selecteer **configuratie**. Het 
 
 *Keep-Alive time-out* bepaalt hoe lang de Application Gateway wacht totdat een client een andere HTTP-aanvraag verzendt naar een permanente verbinding voordat deze opnieuw gebruikt of wordt gesloten. *TCP-time-out voor inactiviteit* bepaalt hoe lang een TCP-verbinding open blijft in het geval van geen activiteit. 
 
-De *time-out voor Keep-Alive* in de Application Gateway v1-sku is 120 seconden en in de v2-sku is 75 seconden. De *time-out voor TCP-inactiviteit* is een standaard waarde van 4 minuten voor het frontend-VIP (Virtual IP) van zowel de v1-als v2 SKU van Application Gateway. U kunt deze waarden niet wijzigen.
+De *time-out voor Keep-Alive* in de Application Gateway v1-sku is 120 seconden en in de v2-sku is 75 seconden. De *time-out voor TCP-inactiviteit* is een standaard waarde van 4 minuten voor het frontend-VIP (Virtual IP) van zowel de v1-als v2 SKU van Application Gateway. U kunt de time-outwaarde voor inactiviteit van de TCP-en v2-toepassings gateway configureren voor een periode van 4 minuten tot 30 minuten. Voor zowel v1-als v2-toepassings gateways moet u naar het open bare IP-adres van de Application Gateway navigeren en de time-out voor TCP-inactiviteit wijzigen op de Blade ' configuratie ' van het open bare IP-adres op de portal. U kunt de time-outwaarde voor inactiviteit van het open bare IP-adres instellen via Power shell door de volgende opdrachten uit te voeren: 
+
+```azurepowershell-interactive
+$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup
+$publicIP.IdleTimeoutInMinutes = "15"
+Set-AzPublicIpAddress -PublicIpAddress $publicIP
+```
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Verandert de IP-of DNS-naam gedurende de levens duur van de toepassings gateway?
 

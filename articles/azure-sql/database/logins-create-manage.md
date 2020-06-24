@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: ebd55151a4b1656ec1187117b7c4b6da9d37e161
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605095"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298461"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Database toegang tot SQL Database, SQL Managed instance en Azure Synapse Analytics autoriseren
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -91,7 +91,7 @@ Op dit punt wordt de server of het beheerde exemplaar alleen geconfigureerd voor
 
   - Maak een extra SQL-aanmelding in de hoofd database.
   - Maak een gebruikers account in de hoofd database die is gekoppeld aan deze nieuwe aanmelding.
-  - Voeg het gebruikers account toe aan de `dbmanager` , de- `loginmanager` rol of beide in de- `master` Data Base met behulp van de instructie [ALTER server Role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (voor Azure Synapse gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
+  - Voeg het gebruikers account toe aan de `dbmanager` , de `loginmanager` rol of beide in de- `master` Data Base met behulp van de instructie [ALTER Role](https://docs.microsoft.com/sql/t-sql/statements/alter-role-transact-sql) (voor Azure Synapse gebruikt u de instructie [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
   > `dbmanager`en `loginmanager` rollen zijn **niet** van toepassing op IMPLEMENTATIEs van SQL-beheerde exemplaren.
@@ -155,7 +155,7 @@ Nadat u een gebruikers account in een Data Base hebt gemaakt, op basis van een a
 
 Efficiënt toegangs beheer maakt gebruik van machtigingen die zijn toegewezen aan Active Directory beveiligings groepen en vaste of aangepaste rollen in plaats van aan individuele gebruikers.
 
-- Wanneer u Azure Active Directory-verificatie gebruikt, moet u Azure Active Directory gebruikers in een Azure Active Directory beveiligings groep plaatsen. Maak voor de groep een ingesloten databasegebruiker. Plaats een of meer database gebruikers in een aangepaste databaserol met specifieke machtigingen die geschikt zijn voor die groep gebruikers.
+- Wanneer u Azure Active Directory-verificatie gebruikt, moet u Azure Active Directory gebruikers in een Azure Active Directory beveiligings groep plaatsen. Maak voor de groep een ingesloten databasegebruiker. Voeg een of meer database gebruikers als lid toe aan aangepaste of ingebouwde database rollen met de specifieke machtigingen die geschikt zijn voor die groep gebruikers.
 
 - Bij het gebruik van SQL-verificatie maakt u Inge sloten database gebruikers in de-data base. Plaats een of meer database gebruikers in een aangepaste databaserol met specifieke machtigingen die geschikt zijn voor die groep gebruikers.
 

@@ -13,4 +13,4 @@ ms.locfileid: "67175803"
 ---
 > [!TIP]
 >
-> Als u van plan bent de HTTP-of webhook-bindingen te gebruiken, moet u ervoor zorgen dat er geen poort ontstaat die `HttpClient`kan worden veroorzaakt door een onjuiste instantie van. Zie [verbindingen beheren in azure functions](../articles/azure-functions/manage-connections.md)voor meer informatie.
+> Als u van plan bent de HTTP-of webhook-bindingen te gebruiken, moet u ervoor zorgen dat er geen poort ontstaat die kan worden veroorzaakt door een onjuiste instantie van `HttpClient` . Zie [verbindingen beheren in azure functions](../articles/azure-functions/manage-connections.md)voor meer informatie.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: da29b5427b2258a32e87977289689949a47f3d8e
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344778"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743436"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Problemen met prestatie problemen met Azure SQL Database en Azure SQL Managed instance oplossen met Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,6 +25,8 @@ Deze pagina bevat informatie over Azure SQL Database en prestatie problemen met 
 
 > [!NOTE]
 > Zie de [Aanbevolen stroom diagram voor probleem oplossing](intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in dit document voor een snelle probleemoplossings gids voor het oplossen van problemen met behulp van intelligent Insights.
+>
+> Intelligent Insights is een preview-functie die niet beschikbaar is in de volgende regio's: Europa-west, Europa-noord, VS-West 1 en VS-Oost 1.
 
 ## <a name="detectable-database-performance-patterns"></a>Prestatie patronen voor Detecteer bare data bases
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 9d8a973e04618e4223f90ffb9a3004d0fe40bbf7
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344676"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743487"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure Hybrid Benefit-Azure SQL Database & beheerde instantie van SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -32,7 +32,11 @@ In de ingerichte Compute-laag van het op vCore gebaseerde aankoop model kunt u u
 
 Met Azure Hybrid Benefit kunt u ervoor kiezen om alleen te betalen voor de onderliggende Azure-infra structuur met behulp van uw bestaande SQL Server licentie voor de SQL Server-data base-engine zelf (prijzen voor basis berekeningen), of u kunt betalen voor zowel de onderliggende infra structuur als de SQL Server licentie (prijs in licentie inbegrepen).
 
-U kunt uw licentie model kiezen of wijzigen met behulp van de Azure Portal of door gebruik te maken van een van de volgende Api's:
+U kunt uw licentie model kiezen of wijzigen in de Azure Portal: 
+- Voor nieuwe data bases, tijdens het maken, selecteert u **Data Base configureren** op het tabblad **basis beginselen** en selecteert u de optie om geld te besparen.
+- Voor bestaande data bases selecteert **u configureren** in het menu **instellingen** en selecteert u de optie om geld te besparen.
+
+U kunt ook een nieuwe of bestaande data base configureren met behulp van een van de volgende Api's:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

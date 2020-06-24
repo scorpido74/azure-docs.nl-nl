@@ -6,17 +6,17 @@ author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81a28773f8f13cfb8dac75f1c4e11fd773c2c8f3
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745243"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212194"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Aan de slag met Transparent Data Encryption (TDE)
 
@@ -71,7 +71,7 @@ FROM
     sys.databases;
 ```
 
-Als gevolg van ```1``` een versleutelde data ```0``` base duidt dit op een niet-versleutelde data base.
+Als gevolg van een ```1``` versleutelde data base duidt dit op ```0``` een niet-versleutelde data base.
 
 ## <a name="encryption-dmvs"></a>Versleuteling Dmv's
 

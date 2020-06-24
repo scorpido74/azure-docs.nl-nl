@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 06/12/2020
+ms.openlocfilehash: 937eee69c17d207dc348a25fe2a5e6611480db0f
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344047"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743453"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights met AI gebruiken om database prestaties te controleren en op te lossen (preview-versie)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -77,6 +77,9 @@ Intelligent Insights beschik bare opties zijn:
 | **Stream inzichten naar Azure SQL-analyse** --stream Insights Azure SQL-analyse. | Ja | Ja |
 | **Stream inzichten naar Azure Event hubs** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja |
 | **Stream inzichten om** inzicht te krijgen in azure Storage streamen om te Azure Storage voor verdere analyse en langdurige archivering. | Ja | Ja |
+
+> [!NOTE]
+> Intelligent Insights is een preview-functie die niet beschikbaar is in de volgende regio's: Europa-west, Europa-noord, VS-West 1 en VS-Oost 1.
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>De export van het Intelligent Insights-logboek configureren
 

@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 02a6bba2dd4162a1cd9f05249174c2174a85b931
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a13a873fff8f471f7c82775736a34ef9f74aaea2
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043686"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743509"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Automatisch afstemmen inschakelen in de Azure Portal om query's te bewaken en de prestaties van de werk belasting te verbeteren
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,6 @@ ms.locfileid: "84043686"
 Azure SQL Database beheert automatisch gegevens services die voortdurend uw query's bewaken en identificeert de actie die u kunt uitvoeren om de prestaties van uw workload te verbeteren. U kunt aanbevelingen bekijken en deze hand matig Toep assen of Azure SQL Database corrigerende acties automatisch Toep assen. dit wordt ook wel de **automatische afstemmings modus**genoemd.
 
 Automatisch afstemmen kan worden ingeschakeld op de server of op het niveau van de data base via:
-
 
 - De [Azure Portal](automatic-tuning-enable.md#azure-portal)
 - [Rest API](automatic-tuning-enable.md#rest-api) -aanroepen
@@ -42,7 +41,7 @@ Automatisch afstemmen kan worden ingeschakeld op de server of op het niveau van 
 Op server niveau kunt u kiezen voor het overnemen van de automatische afstemmings configuratie van ' Azure defaults ' of de configuratie niet overnemen. De standaard waarden van Azure zijn FORCE_LAST_GOOD_PLAN ingeschakeld, CREATE_INDEX is uitgeschakeld en DROP_INDEX is uitgeschakeld.
 
 > [!IMPORTANT]
-> Vanaf maart 2020 de Azure-standaard instellingen voor automatisch afstemmen zijn als volgt:
+> Vanaf maart 2020 nieuwe standaard instellingen van Azure voor automatische afstemming zijn als volgt:
 >
 > - FORCE_LAST_GOOD_PLAN = ingeschakeld, CREATE_INDEX = uitgeschakeld en DROP_INDEX = uitgeschakeld.
 > - Bestaande servers zonder geconfigureerde voor keuren voor automatisch afstemmen worden automatisch geconfigureerd om de standaard instellingen van Azure te overnemen. Dit geldt voor alle klanten die momenteel server instellingen voor automatisch afstemmen in een niet-gedefinieerde status hebben.

@@ -2,18 +2,18 @@
 title: Gegevens van Azure Blockchain Workbench gebruiken in Microsoft Power BI
 description: Leer hoe u gegevens uit een SQL-database van Azure Blockchain Workbench laadt en weergeeft in Microsoft Power BI.
 ms.date: 04/22/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: sunri
-ms.openlocfilehash: 4245603fee5b3d24488426c3dc2d026a3c0d7848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a5e67a8416c57c1a0cb039733a93608a8919be6
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082523"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214227"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Gegevens van Azure Blockchain Workbench weergeven met Microsoft Power BI
 
-Micro soft Power BI biedt de mogelijkheid om eenvoudig krachtige rapporten te genereren van SQL DB-data bases met behulp van Power BI Desktop en vervolgens te publiceren naar [https://www.powerbi.com](https://www.powerbi.com).
+Micro soft Power BI biedt de mogelijkheid om eenvoudig krachtige rapporten te genereren van SQL DB-data bases met behulp van Power BI Desktop en vervolgens te publiceren naar [https://www.powerbi.com](https://www.powerbi.com) .
 
 Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding te maken met een SQL-database van Azure Blockchain Workbench, een rapport te maken en dit rapport te implementeren op powerbi.com.
 

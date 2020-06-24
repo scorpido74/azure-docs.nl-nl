@@ -7,17 +7,17 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0585c755e8dd9a6625a8259dc71ca521f156afb
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82130770"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704060"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problemen oplossen met verminderde beschikbaarheid in Azure Traffic Manager
 
@@ -35,7 +35,7 @@ Als in de status van uw Traffic Manager een **inactieve** status wordt weer gege
 * Een 30x beter worden-omleidings antwoord wordt behandeld als een fout, tenzij u dit als een geldige antwoord code hebt opgegeven in de [verwachte status codes](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) van uw Traffic Manager-profiel. Het omleidings doel wordt niet door Traffic Manager getest.
 * Voor HTTPs-tests worden certificaat fouten genegeerd.
 * De werkelijke inhoud van het pad naar de test is niet van belang, zolang een 200 wordt geretourneerd. Het zoeken naar een URL naar bepaalde statische inhoud, zoals '/favicon.ico ', is een gang bare techniek. Dynamische inhoud, zoals de ASP-pagina's, retourneert niet altijd 200, zelfs als de toepassing in orde is.
-* Een best practice bestaat uit het instellen van het probe-pad naar iets dat voldoende logica heeft om te bepalen of de site al dan niet actief is. In het vorige voor beeld, door het pad in te stellen op '/favicon.ico ', moet u alleen testen of W3wp. exe reageert. Deze test geeft mogelijk niet aan dat uw webtoepassing in orde is. Een betere optie is het instellen van een pad naar een iets zoals '/probe.aspx ' die logica heeft om de status van de site te bepalen. U kunt bijvoorbeeld prestatie meter items gebruiken om het CPU-gebruik te bepalen of het aantal mislukte aanvragen te meten. U kunt ook proberen om toegang te krijgen tot database bronnen of sessie status om ervoor te zorgen dat de webtoepassing werkt.
+* Een best practice bestaat uit het instellen van het probe-pad naar iets dat voldoende logica heeft om te bepalen of de site al dan niet actief is. In het vorige voor beeld, door het pad in te stellen op '/favicon.ico ', hoeft u alleen te testen dat w3wp.exe reageert. Deze test geeft mogelijk niet aan dat uw webtoepassing in orde is. Een betere optie is het instellen van een pad naar een iets zoals '/probe.aspx ' die logica heeft om de status van de site te bepalen. U kunt bijvoorbeeld prestatie meter items gebruiken om het CPU-gebruik te bepalen of het aantal mislukte aanvragen te meten. U kunt ook proberen om toegang te krijgen tot database bronnen of sessie status om ervoor te zorgen dat de webtoepassing werkt.
 * Als alle eind punten in een profiel worden gedegradeerd, worden alle eind punten door Traffic Manager als gezond beschouwd en wordt verkeer naar alle eind punten gerouteerd. Dit gedrag zorgt ervoor dat problemen met het mechanisme voor het zoeken niet leiden tot een volledige onderbreking van uw service.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -43,12 +43,12 @@ Als in de status van uw Traffic Manager een **inactieve** status wordt weer gege
 Als u een test fout wilt oplossen, hebt u een hulp programma nodig dat de HTTP-status code retourneert van de test-URL. Er zijn veel hulpprogram ma's beschikbaar die het onbewerkte HTTP-antwoord tonen.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [Ezelsoor](https://curl.haxx.se/)
+* [curl](https://curl.haxx.se/)
 * [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
 U kunt ook het tabblad netwerk van de F12-Hulpprogram Ma's voor fout opsporing in Internet Explorer gebruiken om de HTTP-antwoorden te bekijken.
 
-Voor dit voor beeld willen we het antwoord zien van onze test-URL: http\/:/watestsdp2008r2.cloudapp.net:80/probe. Het volgende Power shell-voor beeld illustreert het probleem.
+Voor dit voor beeld willen we het antwoord zien van onze test-URL: http: \/ /watestsdp2008r2.cloudapp.net:80/probe. Het volgende Power shell-voor beeld illustreert het probleem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription

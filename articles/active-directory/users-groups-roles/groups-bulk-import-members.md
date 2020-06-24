@@ -6,19 +6,19 @@ author: curtand
 ms.author: curtand
 manager: mtillman
 ms.date: 04/27/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679340"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84742009"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Groeps leden bulksgewijs toevoegen in Azure Active Directory
 
@@ -44,6 +44,7 @@ De rijen in een gedownloade CSV-sjabloon zijn als volgt:
 - De vereiste kolommen worden eerst weer gegeven.
 - Het is niet raadzaam om nieuwe kolommen toe te voegen aan de sjabloon. Alle extra kolommen die u toevoegt, worden genegeerd en worden niet verwerkt.
 - U wordt aangeraden de meest recente versie van de CSV-sjabloon zo vaak mogelijk te downloaden.
+- Voeg ten minste twee Upn's of object-Id's van gebruikers toe om het bestand te uploaden.
 
 ## <a name="to-bulk-import-group-members"></a>Groeps leden bulksgewijs importeren
 

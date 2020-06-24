@@ -6,21 +6,21 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742635"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213972"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>IDENTITEIT gebruiken voor het maken van surrogaat sleutels in de SQL-groep Synapse
 
-Aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
+In dit artikel vindt u aanbevelingen en voor beelden voor het gebruik van de IDENTITEITs eigenschap voor het maken van surrogaat sleutels voor tabellen in Synapse SQL-pool.
 
 ## <a name="what-is-a-surrogate-key"></a>Wat is een surrogaat sleutel?
 
@@ -77,7 +77,7 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-In het voor gaande voor beeld zijn er twee rijen gespreid over distributie 1. De eerste rij heeft de vervangende waarde 1 in kolom `C1`en de tweede rij heeft de vervangende waarde van 61. Beide waarden zijn gegenereerd door de IDENTITEITs eigenschap. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
+In het voor gaande voor beeld zijn er twee rijen gespreid over distributie 1. De eerste rij heeft de vervangende waarde 1 in kolom `C1` en de tweede rij heeft de vervangende waarde van 61. Beide waarden zijn gegenereerd door de IDENTITEITs eigenschap. De toewijzing van de waarden is echter niet aaneengesloten. Dit gedrag is standaard.
 
 ### <a name="skewed-data"></a>Scheefe gegevens
 
@@ -96,11 +96,11 @@ Als aan een van deze voor waarden wordt voldaan, wordt de kolom niet NULL gemaak
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen IDENTITEITs eigenschap opgeven in de kolom definitie van het `CREATE TABLE` onderdeel van de-instructie. U kunt de functie IDENTITY ook niet gebruiken in `SELECT` het deel van de CTAS. Als u een tabel wilt vullen, moet u `CREATE TABLE` gebruiken om de tabel te definiëren `INSERT..SELECT` , gevolgd door om deze te vullen.
+CREATE TABLE AS SELECT (CTAS) volgt hetzelfde SQL Server gedrag dat is gedocumenteerd voor SELECT.. Samen. U kunt echter geen IDENTITEITs eigenschap opgeven in de kolom definitie van het `CREATE TABLE` onderdeel van de-instructie. U kunt de functie IDENTITY ook niet gebruiken in het `SELECT` deel van de CTAS. Als u een tabel wilt vullen, moet u gebruiken `CREATE TABLE` om de tabel te definiëren, gevolgd door `INSERT..SELECT` om deze te vullen.
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Expliciet waarden invoegen in een IDENTITEITs kolom
 
-De SQL-groep `SET IDENTITY_INSERT <your table> ON|OFF` Synapse ondersteunt de syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
+De SQL-groep Synapse ondersteunt de `SET IDENTITY_INSERT <your table> ON|OFF` syntaxis. U kunt deze syntaxis gebruiken om expliciet waarden in te voegen in de IDENTITEITs kolom.
 
 Veel gegevens modelers, zoals het gebruik van vooraf gedefinieerde negatieve waarden voor bepaalde rijen in hun dimensies. Een voor beeld is de rij-1 of het onbekende lid.
 
@@ -158,7 +158,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Het is niet mogelijk om momenteel `CREATE TABLE AS SELECT` te gebruiken bij het laden van gegevens in een tabel met een identiteits kolom.
+> Het is niet mogelijk om momenteel te gebruiken `CREATE TABLE AS SELECT` bij het laden van gegevens in een tabel met een identiteits kolom.
 >
 
 Zie voor meer informatie over het laden van gegevens [ontwerpen extra heren, laden en transformeren (ELT) voor Synapse SQL pool](design-elt-data-loading.md) en [Aanbevolen procedures laden](guidance-for-loading-data.md).

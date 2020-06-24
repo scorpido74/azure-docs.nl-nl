@@ -4,18 +4,18 @@ description: Meer informatie over het uploaden van bron kaarten naar uw eigen op
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
-ms.date: 03/04/2020
-ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.openlocfilehash: d5f01bb3034ab060227230071a21284177840e83
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79474880"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249734"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>Ondersteuning van bron toewijzing voor Java script-toepassingen
 
 Application Insights ondersteunt het uploaden van bron kaarten naar uw eigen opslag account BLOB-container.
-Bron kaarten kunnen worden gebruikt voor het unminify van aanroep stacks op de pagina end-to-end trans actie Details. Uitzonde ringen die worden verzonden door de [Java script-SDK][ApplicationInsights-JS] of de [node. js-SDK][ApplicationInsights-Node.js] kunnen worden unminified met bron kaarten.
+Bron kaarten kunnen worden gebruikt voor het unminify van aanroep stacks op de pagina end-to-end trans actie Details. Uitzonde ringen die worden verzonden door de [Java script-SDK][ApplicationInsights-JS] of de [Node.js SDK][ApplicationInsights-Node.js] kunnen worden unminified met bron kaarten.
 
 ![Een aanroep stack Unminify door te koppelen met een opslag account](./media/source-map-support/details-unminify.gif)
 
@@ -24,14 +24,16 @@ Bron kaarten kunnen worden gebruikt voor het unminify van aanroep stacks op de p
 Als u al een bestaand opslag account of BLOB-container hebt, kunt u deze stap overs Laan.
 
 1. [Een nieuw opslagaccount maken][create storage account]
-2. [Maak een BLOB-container][create blob container] in uw opslag account. Stel het ' open bare toegangs niveau ' in `Private`om ervoor te zorgen dat uw bron kaarten niet openbaar toegankelijk zijn.
+2. [Maak een BLOB-container][create blob container] in uw opslag account. Stel het ' open bare toegangs niveau ' in om `Private` ervoor te zorgen dat uw bron kaarten niet openbaar toegankelijk zijn.
 
 > [!div class="mx-imgBorder"]
 >![Het toegangs niveau van de container moet worden ingesteld op privé](./media/source-map-support/container-access-level.png)
 
 ## <a name="push-your-source-maps-to-your-blob-container"></a>Uw bron kaarten naar uw BLOB-container pushen
 
-U moet uw continue implementatie pijplijn met uw opslag account integreren door deze zo te configureren dat uw bron kaarten automatisch naar de geconfigureerde BLOB-container worden geüpload. Upload uw bron kaarten niet naar een submap in de BLOB-container. momenteel wordt de bron map alleen opgehaald uit de hoofdmap.
+U moet uw continue implementatie pijplijn met uw opslag account integreren door deze zo te configureren dat uw bron kaarten automatisch naar de geconfigureerde BLOB-container worden geüpload.
+
+Bron kaarten kunnen worden geüpload naar uw Blob Storage-container met dezelfde mapstructuur die ze hebben gecompileerd & geïmplementeerd. Een veelvoorkomende use-case is het voor voegsel van een implementatiemap met de versie, bijvoorbeeld `1.2.3/static/js/main.js` . Wanneer unminifying via een Azure Blob-container `sourcemaps` wordt aangeroepen, wordt geprobeerd een bron toewijzing op te halen op `sourcemaps/1.2.3/static/js/main.js.map` .
 
 ### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Bron kaarten uploaden via Azure-pijp lijnen (aanbevolen)
 
@@ -74,8 +76,8 @@ Alle gebruikers op de portal die deze functie gebruiken, moeten ten minste worde
 ### <a name="source-map-not-found"></a>Bron toewijzing is niet gevonden
 
 1. Controleer of de bijbehorende bron toewijzing is geüpload naar de juiste BLOB-container
-2. Controleer of het bron toewijzings bestand de naam heeft nadat het Java script-bestand is toegewezen aan `.map`, met een achtervoegsel.
-    - Zoekt bijvoorbeeld `/static/js/main.4e2ca5fa.chunk.js` naar de blob met de naam`main.4e2ca5fa.chunk.js.map`
+2. Controleer of het bron toewijzings bestand de naam heeft nadat het Java script-bestand is toegewezen aan, met een achtervoegsel `.map` .
+    - Zoekt bijvoorbeeld naar `/static/js/main.4e2ca5fa.chunk.js` de blob met de naam`main.4e2ca5fa.chunk.js.map`
 3. Controleer de console van uw browser om te zien of er fouten worden geregistreerd. Neem deze op in een ondersteunings ticket.
 
 ## <a name="next-steps"></a>Volgende stappen

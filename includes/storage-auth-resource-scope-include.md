@@ -21,7 +21,7 @@ In de volgende lijst worden de niveaus beschreven waarmee u toegang tot Azure Bl
 
 - **Een afzonderlijke container.** In dit bereik is een roltoewijzing van toepassing op alle blobs in de container, evenals container eigenschappen en meta gegevens.
 - **Een afzonderlijke wachtrij.** In dit bereik geldt een roltoewijzing voor berichten in de wachtrij, evenals wachtrij-eigenschappen en meta gegevens.
-- **Het opslag account.** In dit bereik is een roltoewijzing van toepassing op alle containers en de bijbehorende blobs, of op alle wacht rijen en hun berichten.
+- **Het opslagaccount.** In dit bereik is een roltoewijzing van toepassing op alle containers en de bijbehorende blobs, of op alle wacht rijen en hun berichten.
 - **De resourcegroep.** In dit bereik is een roltoewijzing van toepassing op alle containers of wacht rijen in alle opslag accounts in de resource groep.
 - **Het abonnement.** In dit bereik is een roltoewijzing van toepassing op alle containers of wacht rijen in alle opslag accounts in alle resource groepen in het abonnement.
 

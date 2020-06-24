@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84655636"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249684"
 ---
 # <a name="monitor-copy-activity"></a>Kopieeractiviteit bewaken
 
@@ -58,8 +58,8 @@ De details van de gegevens van de Kopieer activiteit en prestatie kenmerken word
 | filesWritten | Het aantal bestanden dat is geschreven/doorgevoerd naar de op bestanden gebaseerde sink. | Int64-waarde (geen eenheid) |
 | sourcePeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot het bron gegevens archief is gemaakt tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
 | sinkPeakConnections | Het maximum aantal gelijktijdige verbindingen dat tot stand is gebracht met het sink-gegevens archief tijdens het uitvoeren van de Kopieer activiteit. | Int64-waarde (geen eenheid) |
-| rowsRead | Het aantal rijen dat is gelezen van de bron (niet van toepassing op een binaire kopie). | Int64-waarde (geen eenheid) |
-| rowsCopied | Het aantal rijen dat is gekopieerd naar de Sink (niet van toepassing op een binaire kopie). | Int64-waarde (geen eenheid) |
+| rowsRead | Het aantal rijen dat uit de bron is gelezen. Deze metrische waarde is niet van toepassing wanneer u bestanden kopieert zonder deze te parseren, bijvoorbeeld wanneer de bron-en Sink-gegevens sets het type binaire indeling hebben, of een ander indelings type met identieke instellingen. | Int64-waarde (geen eenheid) |
+| rowsCopied | Het aantal rijen dat naar de sink is gekopieerd. Deze metrische waarde is niet van toepassing wanneer u bestanden kopieert zonder deze te parseren, bijvoorbeeld wanneer de bron-en Sink-gegevens sets het type binaire indeling hebben, of een ander indelings type met identieke instellingen.  | Int64-waarde (geen eenheid) |
 | rowsSkipped | Aantal niet-compatibele rijen dat is overgeslagen. U kunt incompatibele rijen inschakelen door in te stellen op `enableSkipIncompatibleRow` waar. | Int64-waarde (geen eenheid) |
 | copyDuration | De duur van de Kopieer uitvoering. | Int32-waarde, in seconden |
 | doorvoer | Frequentie van gegevens overdracht. | Drijvende-komma getal, in KBps |

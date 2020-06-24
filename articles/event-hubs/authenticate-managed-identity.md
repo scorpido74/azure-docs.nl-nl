@@ -7,14 +7,14 @@ documentationcenter: ''
 author: spelluru
 manager: ''
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ebbc49e4828fe728cb1810c23b15251e0be2b1f3
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025183"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298834"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Een beheerde identiteit verifiëren met Azure Active Directory om toegang te krijgen tot Event Hubs bronnen
 Azure Event Hubs ondersteunt Azure Active Directory (Azure AD)-verificatie met [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md). Beheerde identiteiten voor Azure-resources kunnen toegang tot Event Hubs resources toestaan met behulp van Azure AD-referenties van toepassingen die worden uitgevoerd in azure Virtual Machines (Vm's), functie-apps, Virtual Machine Scale Sets en andere services. Door beheerde identiteiten voor Azure-resources te gebruiken in combi natie met Azure AD-verificatie kunt u voor komen dat referenties worden opgeslagen in uw toepassingen die in de cloud worden uitgevoerd.
@@ -24,10 +24,10 @@ In dit artikel wordt beschreven hoe u toegang kunt verlenen tot een Event Hub me
 ## <a name="enable-managed-identities-on-a-vm"></a>Beheerde identiteiten op een virtuele machine inschakelen
 Voordat u beheerde identiteiten voor Azure-resources kunt gebruiken om Event Hubs-resources van uw virtuele machine te autoriseren, moet u eerst beheerde identiteiten voor Azure-resources inschakelen op de VM. Zie een van de volgende artikelen voor meer informatie over het inschakelen van beheerde identiteiten voor Azure-resources:
 
-- [Azure Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure-portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager-sjabloon](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Client bibliotheken Azure Resource Manager](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Machtigingen verlenen aan een beheerde identiteit in azure AD
@@ -72,7 +72,7 @@ Als u een rol wilt toewijzen aan Event Hubs resources, gaat u naar die resource 
 Zodra u de rol hebt toegewezen, heeft de webtoepassing toegang tot de Event Hubs resources onder het gedefinieerde bereik. 
 
 ### <a name="test-the-web-application"></a>De webtoepassing testen
-1. Een Event Hubs naam ruimte en een Event Hub maken. 
+1. Een Event Hubs-naamruimte en een Event Hub maken. 
 2. De web-app implementeren in Azure. Zie de volgende sectie met tabbladen voor koppelingen naar de webtoepassing op GitHub. 
 3. Zorg ervoor dat SendReceive. aspx is ingesteld als het standaard document voor de web-app. 
 3. De **identiteit** voor de web-app inschakelen. 

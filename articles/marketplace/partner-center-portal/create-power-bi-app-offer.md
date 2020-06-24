@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 16b44b3a4496e98f8b6b643bf76aa5aa7ce593c6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 6ddf3db422a192b82b8d67e8e532a9ae0030d6f7
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849090"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212514"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Een Power BI-app maken voor Microsoft AppSource
 
@@ -26,7 +26,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
 3. Selecteer op de pagina overzicht **+ nieuwe aanbieding**  >  **Power bi service-app**.
 
-   ![Illustreert het navigatie menu.](./media/new-offer-pbi-app.png)
+   ![Illustreert het navigatie menu.](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -70,7 +70,7 @@ Wanneer u uw aanbieding naar Marketplace publiceert met partner centrum, moet u 
 
     - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) voor klant betrokkenheid
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-    - [SalesForce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
     > Als uw CRM-systeem niet hierboven wordt vermeld, gebruikt u [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) of [https-eind punt](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) om klant lead gegevens op te slaan. Exporteer de gegevens vervolgens naar uw CRM-systeem.
@@ -145,6 +145,24 @@ Marketplace-gegevens (zoals aanbiedings naam, beschrijving en installatie kopie�
 > [!NOTE]
 > De details van de aanbieding hoeven niet in het Engels te zijn als de beschrijving van de aanbieding begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook handig om een nuttige koppeling te bieden om inhoud te bieden in een andere taal dan die wordt gebruikt in de aanbieding.
 
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
+
+:::image type="content" source="media/example-power-bi-app.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Producten
+3. Categorieën
+4. Bedrijfstakken
+5. Ondersteunings adres (koppeling)
+6. Gebruiksvoorwaarden
+7. Privacybeleid
+8. Naam van aanbieding
+9. Samenvatting
+10. Beschrijving
+11. Scherm afbeeldingen/Video's
+
 ### <a name="name"></a>Name
 
 De naam die u hier opgeeft, wordt weer gegeven als de titel van uw aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd in het vak **aanbiedings alias** wanneer u de aanbieding hebt gemaakt. U kunt deze naam later wijzigen.
@@ -202,11 +220,11 @@ Geef ten minste één en Maxi maal drie gerelateerde marketing documenten op in 
 Bied logo's en installatie kopieën die u kunt gebruiken met uw aanbieding. Alle installatie kopieën moeten de PNG-indeling hebben. Vage afbeeldingen worden geweigerd.
 
 >[!NOTE]
->Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door https://upload.xboxlive.com Partner Center gebruikte service niet blokkeert.
+>Als u een probleem hebt met het uploaden van bestanden, moet u ervoor zorgen dat uw lokale netwerk de door `https://upload.xboxlive.com` Partner Center gebruikte service niet blokkeert.
 
 #### <a name="store-logos"></a>Winkel logo's
 
-Geef PNG-bestanden van het logo van uw aanbieding op in twee pixel grootten:
+Bied PNG-bestanden van het logo van uw aanbieding in twee pixel grootten:
 - **Klein** (48 x 48)
 - **Groot** (216 x 216)
 
@@ -214,11 +232,11 @@ Beide logo's zijn vereist en worden gebruikt op verschillende plaatsen in de Mar
 
 #### <a name="screenshots"></a>Schermopnamen
 
-Voeg minstens één en Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot zijn en de indeling. png.
+Voeg minstens één en Maxi maal vijf scherm opnamen toe die laten zien hoe uw aanbieding werkt. Elk moet 1280 x 720 pixels groot en in PNG-indeling zijn.
 
 #### <a name="videos-optional"></a>Video's (optioneel)
 
-Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en de miniatuur. PNG-afbeelding van de video in op 1280 x 720 pixels.
+Voeg Maxi maal vijf Video's toe die uw aanbieding aantonen. Voer de naam van de video, het webadres en de PNG-afbeelding van de video in op een grootte van 1280 x 720 pixels.
 
 #### <a name="additional-marketplace-listing-resources"></a>Aanvullende bronnen voor Marketplace-lijst
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019a03103122d35f6d4bf1b817ddc80f91f4c568
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4b0f0ed5a36af0890577fcc6fd097698c147c0d6
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220893"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298103"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Wat is er nieuw in Azure Active Directory?
 
@@ -40,6 +40,30 @@ Deze pagina wordt maandelijks bijgewerkt. Ga daarom regel matig opnieuw te werk.
 ---
 
 ## <a name="may-2020"></a>Mei 2020
+
+### <a name="retirement-of-properties-in-signins-riskyusers-and-riskdetections-apis"></a>Buiten gebruik stellen van eigenschappen in aanmeldingen-, riskyUsers-en riskDetections-Api's
+
+**Type:** Plan voor wijziging  
+**Service categorie:** Identiteits beveiliging  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
+
+Op dit moment worden opgesomde typen gebruikt om de eigenschap riskType in de riskDetections-API en riskyUserHistoryItem (in Preview) weer te geven. Opgesomde typen worden ook gebruikt voor de eigenschap riskEventTypes in de aanmeldingen-API. Deze eigenschappen worden weer gegeven als teken reeksen. 
+
+Klanten moeten overstappen op de eigenschap riskEventType in de API Beta riskDetections en riskyUserHistoryItem, en naar riskEventTypes_v2 eigenschap in de Beta aanmeldingen API van 9 september 2020. Op die datum wordt de huidige riskType-en riskEventTypes-eigenschappen buiten gebruik gesteld. Zie [wijzigingen in de eigenschappen van de risico gebeurtenis en api's voor identiteits beveiliging op Microsoft Graph](https://developer.microsoft.com/graph/blogs/changes-to-risk-event-properties-and-identity-protection-apis-on-microsoft-graph/)voor meer informatie.
+
+--- 
+
+### <a name="deprecation-of-riskeventtypes-property-in-signins-v10-api-on-microsoft-graph"></a>Afschaffing van de eigenschap riskEventTypes in de aanmeldingen v 1.0 API op Microsoft Graph
+
+**Type:** Plan voor wijziging  
+**Service categorie:** Rapporteren  
+**Product mogelijkheden:** Beveiliging van identiteits beveiliging &
+
+Opgesomde typen worden overgeschakeld naar teken reeks typen bij het weer geven van eigenschappen van risico gebeurtenissen in Microsoft Graph september 2020. Deze wijziging is niet alleen van invloed op de preview-Api's en is ook van invloed op de in-Production aanmeldingen-API.
+
+We hebben een nieuwe riskEventsTypes_v2-eigenschap (teken reeks) geïntroduceerd in de API van aanmeldingen v 1.0. De huidige riskEventTypes (enum)-eigenschap op 11 juni 2022 wordt buiten gebruik gesteld volgens ons Microsoft Graph afschaffing-beleid. Klanten moeten op 11 juni 2022 overstappen op de eigenschap riskEventTypes_v2 in de API van aanmeldingen v 1.0. Raadpleeg de [eigenschap riskEventTypes in aanmeldingen v 1.0 API op Microsoft Graph](https://developer.microsoft.com/graph/blogs/deprecation-of-riskeventtypes-property-in-signins-v1-0-api-on-microsoft-graph//)voor meer informatie.
+
+--- 
 
 ### <a name="upcoming-changes-to-mfa-email-notifications"></a>Aanstaande wijzigingen in MFA-e-mail meldingen
 
@@ -255,7 +279,7 @@ Verificatie van de uitgever (preview) helpt beheerders en eind gebruikers inzich
 
 **Type:** Gewijzigde functie **service categorie:** verificatie **product mogelijkheid:** ontwikkelaars ervaring
 
-Vanwege de moderne [Cookie beperkingen van derden, zoals Safari ITP](https://docs.microsoft.com/azure/active-directory/develop/reference-third-party-cookies-spas), moet Spas de autorisatie code stroom gebruiken in plaats van de impliciete stroom om SSO te onderhouden. MSAL. js v 2. x ondersteunt nu de autorisatie code stroom. Er zijn gerelateerde updates voor de Azure Portal zodat u uw beveiligd-wachtwoord verificatie kunt bijwerken met het type ' Spa ' en de auth-code stroom moet gebruiken. Raadpleeg voor meer informatie [Quick Start: gebruikers aanmelden en een toegangs token verkrijgen in een Java script Spa met behulp van de verificatie code stroom](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code).
+Vanwege de moderne [Cookie beperkingen van derden, zoals Safari ITP](https://docs.microsoft.com/azure/active-directory/develop/reference-third-party-cookies-spas), moet Spas de autorisatie code stroom gebruiken in plaats van de impliciete stroom om SSO te onderhouden. MSAL.js v 2. x ondersteunt nu de autorisatie code stroom. Er zijn gerelateerde updates voor de Azure Portal zodat u uw beveiligd-wachtwoord verificatie kunt bijwerken met het type ' Spa ' en de auth-code stroom moet gebruiken. Raadpleeg voor meer informatie [Quick Start: gebruikers aanmelden en een toegangs token verkrijgen in een Java script Spa met behulp van de verificatie code stroom](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code).
 
 ---
 

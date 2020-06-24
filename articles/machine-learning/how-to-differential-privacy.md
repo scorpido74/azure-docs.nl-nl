@@ -10,12 +10,12 @@ ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 05/17/2020
-ms.openlocfilehash: 65f395197256132b6b92b234932fd17ec5ba552c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b43fd25e77e07b7b64416d8784d47c14fed48ea7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433206"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981843"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning"></a>Differentiële privacy gebruiken in Azure Machine Learning
 
@@ -25,9 +25,12 @@ Meer informatie over het Toep assen van aanbevolen procedures voor privacybeleid
 
 Differentiële privacy is de Gold-Standard-definitie van privacy. Systemen die voldoen aan deze definitie van privacy, bieden sterke garanties tegen een breed scala aan gegevens herstel en het hernoemen van aanvallen, met inbegrip van aanvallen door aanvallers met informatie over de hulp. Meer informatie over hoe [differentiële privacy werkt](./concept-differential-privacy.md).
 
+> [!NOTE]
+> De naam van de Toolkit wordt gewijzigd en de nieuwe naam wordt in de komende weken geïntroduceerd. 
+
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
+- Als u geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure Machine Learning](https://aka.ms/AMLFree).
 - [Python 3](https://www.python.org/downloads/)
 
 ## <a name="install-whitenoise-packages"></a>WhiteNoise-pakketten installeren
@@ -149,7 +152,7 @@ U kunt de bibliotheek gebruiken voor het opstellen van complexere analyse grafie
 | Histogram     | Geometrisch  | MSS   |
 | Gemiddelde          | Laplace    | Digitaliseren   |
 | Quantiles     |            | Filteren     |
-| Som           |            | Toerekening |
+| Sum           |            | Toerekening |
 | Variantie/covariantie |      | Transformeren  |
 
 Raadpleeg de [Basic-notebook voor gegevens analyse](https://github.com/opendifferentialprivacy/whitenoise-samples/blob/master/analysis/basic_data_analysis.ipynb) voor meer informatie.

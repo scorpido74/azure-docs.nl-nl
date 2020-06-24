@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629405"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213989"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -120,13 +120,15 @@ Zie de prijs informatie voor [blobs](https://azure.microsoft.com/pricing/details
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Lees toegang tot de gegevens in de secundaire regio
 
-Geografisch redundante opslag (met GRS of GZRS) repliceert uw gegevens naar een andere fysieke locatie in de secundaire regio om te beschermen tegen regionale storingen. Deze gegevens zijn echter alleen beschikbaar als alleen-lezen als de klant of micro soft een failover initieert van de primaire naar de secundaire regio. Wanneer u lees toegang tot de secundaire regio inschakelt, kunnen de gegevens worden gelezen als de primaire regio niet beschikbaar is. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
+Geografisch redundante opslag (met GRS of GZRS) repliceert uw gegevens naar een andere fysieke locatie in de secundaire regio om te beschermen tegen regionale storingen. Deze gegevens zijn echter alleen beschikbaar als alleen-lezen als de klant of micro soft een failover initieert van de primaire naar de secundaire regio. Wanneer u lees toegang tot de secundaire regio inschakelt, zijn uw gegevens te allen tijde beschikbaar om te worden gelezen, met inbegrip van een situatie waarin de primaire regio niet beschikbaar is. Voor lees toegang tot de secundaire regio schakelt u geografisch redundante opslag met lees toegang (RA-GRS) of geo-zone-redundante opslag met lees toegang (RA-GZRS) in.
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uw toepassingen ontwerpen voor lees toegang tot de secundaire
 
-Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire regio, kunt u uw toepassingen zo ontwerpen dat de gegevens van de secundaire regio naadloos worden gelezen als de primaire regio om welke reden dan ook niet beschikbaar is. De secundaire regio is altijd beschikbaar voor lees toegang, zodat u uw toepassing kunt testen om er zeker van te zijn dat deze van de secundaire wordt gelezen in het geval van een storing. Zie [geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)voor meer informatie over het ontwerpen van uw toepassingen voor maximale Beschik baarheid.
+Als uw opslag account is geconfigureerd voor lees toegang tot de secundaire regio, kunt u uw toepassingen zo ontwerpen dat de gegevens van de secundaire regio naadloos worden gelezen als de primaire regio om welke reden dan ook niet beschikbaar is. 
 
-Wanneer lees toegang tot de secundaire is ingeschakeld, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net` , is het secundaire eind punt `myaccount-secondary.blob.core.windows.net` . De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
+De secundaire regio is beschikbaar voor lees toegang nadat u RA-GRS of RA-GZRS hebt ingeschakeld, zodat u de toepassing vooraf kunt testen om er zeker van te zijn dat deze in het geval van een storing op de secundaire manier kan worden gelezen. Zie [geo-redundantie gebruiken om Maxi maal beschik bare toepassingen te ontwerpen](geo-redundant-design.md)voor meer informatie over het ontwerpen van uw toepassingen voor maximale Beschik baarheid.
+
+Wanneer lees toegang tot de secundaire is ingeschakeld, kan uw toepassing worden gelezen vanuit het secundaire eind punt en van het primaire eind punt. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor Blob Storage bijvoorbeeld is `myaccount.blob.core.windows.net` , is het secundaire eind punt `myaccount-secondary.blob.core.windows.net` . De toegangs sleutels voor het account voor uw opslag account zijn hetzelfde voor de primaire en secundaire eind punten.
 
 ### <a name="check-the-last-sync-time-property"></a>De eigenschap Laatst gesynchroniseerd controleren
 
@@ -159,7 +161,7 @@ In de volgende tabel wordt aangegeven of uw gegevens duurzaam zijn en beschikbaa
 | Storings scenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Een knoop punt in een Data Center wordt niet meer beschikbaar                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                 |
-| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Ja                                  |
+| Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja<sup>1</sup>                                  | Yes                                  |
 | Er treedt een storing op de hele regio op in de primaire regio                                                                                     | Nee                              | Nee                               | Ja<sup>1</sup>                                  | Ja<sup>1</sup>                                  |
 | Lees toegang tot de secundaire regio is beschikbaar als de primaire regio niet beschikbaar is | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
 

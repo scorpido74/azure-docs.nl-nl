@@ -83,7 +83,7 @@ Windows 10 of Server 2016 voorbereiden voor IKEv2:
 
 1. Installeer de update.
 
-   | Besturingssysteemversie | Datum | Aantal/koppeling |
+   | Besturingssysteemversie | Date | Aantal/koppeling |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 versie 1607 | 17 januari 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 versie 1703 | 17 januari 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

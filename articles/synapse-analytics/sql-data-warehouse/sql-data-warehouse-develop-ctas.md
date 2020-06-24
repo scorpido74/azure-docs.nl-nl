@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
-ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6550ff9bc3a7cec3d9c50b6c60a02ef1af851f5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633553"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213479"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE ALS SELECTEREN (CTAS)
 
@@ -38,7 +38,7 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-SELECTEREN... IN kunt u de distributie methode of het index type niet wijzigen als onderdeel van de bewerking. U maakt `[dbo].[FactInternetSales_new]` met behulp van het standaard distributie type van ROUND_ROBIN en de standaard tabel structuur van een geclusterde column store-index.
+SELECTEREN... IN kunt u de distributie methode of het index type niet wijzigen als onderdeel van de bewerking. U maakt met `[dbo].[FactInternetSales_new]` behulp van het standaard distributie type van ROUND_ROBIN en de standaard tabel structuur van een GEclusterde column store-index.
 
 Met CTAS kunt u daarentegen zowel de distributie van de tabel gegevens als het tabel structuur type opgeven. Het vorige voor beeld converteren naar CTAS:
 
@@ -59,9 +59,9 @@ FROM    [dbo].[FactInternetSales];
 
 ## <a name="use-ctas-to-copy-a-table"></a>CTAS gebruiken om een tabel te kopiëren
 
-Een van de meest voorkomende toepassingen van CTAS is het maken van een kopie van een tabel, zodat de DDL kan worden gewijzigd. Stel dat u de tabel oorspronkelijk hebt gemaakt als `ROUND_ROBIN`en nu wilt wijzigen in een tabel die wordt gedistribueerd op basis van een kolom. CTAS is hoe u de kolom distributie wijzigt. U kunt CTAS ook gebruiken om partitionering, indexering of kolom typen te wijzigen.
+Een van de meest voorkomende toepassingen van CTAS is het maken van een kopie van een tabel, zodat de DDL kan worden gewijzigd. Stel dat u de tabel oorspronkelijk hebt gemaakt als `ROUND_ROBIN` en nu wilt wijzigen in een tabel die wordt gedistribueerd op basis van een kolom. CTAS is hoe u de kolom distributie wijzigt. U kunt CTAS ook gebruiken om partitionering, indexering of kolom typen te wijzigen.
 
-Stel dat u deze tabel hebt gemaakt met behulp van het standaard distributie `ROUND_ROBIN`type van en niet een distributie kolom opgeeft `CREATE TABLE`in de.
+Stel dat u deze tabel hebt gemaakt met behulp van het standaard distributie type van `ROUND_ROBIN` en niet een distributie kolom opgeeft in de `CREATE TABLE` .
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-Nu u een nieuwe kopie van deze tabel wilt maken, met een `Clustered Columnstore Index`, zodat u kunt profiteren van de prestaties van geclusterde column Store-tabellen. U wilt deze tabel ook distribueren op `ProductKey`, omdat u verwacht dat u deelneemt aan deze kolom en u wilt voor komen dat gegevens worden verplaatst tijdens het `ProductKey`samen voegen met. Ten slotte wilt u ook partities toevoegen op `OrderDateKey`, zodat u snel oude gegevens kunt verwijderen door oude partities neer te zetten. Dit is de CTAS-instructie, waarmee u uw oude tabel kopieert naar een nieuwe tabel.
+Nu u een nieuwe kopie van deze tabel wilt maken, met een `Clustered Columnstore Index` , zodat u kunt profiteren van de prestaties van geclusterde column Store-tabellen. U wilt deze tabel ook distribueren op `ProductKey` , omdat u verwacht dat u deelneemt aan deze kolom en u wilt voor komen dat gegevens worden verplaatst tijdens het samen voegen met `ProductKey` . Ten slotte wilt u ook partities toevoegen op `OrderDateKey` , zodat u snel oude gegevens kunt verwijderen door oude partities neer te zetten. Dit is de CTAS-instructie, waarmee u uw oude tabel kopieert naar een nieuwe tabel.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -127,7 +127,7 @@ U kunt CTAS ook gebruiken om een aantal van de hieronder vermelde niet-ondersteu
 
 * ANSI-samen voegingen voor UPDATEs
 * ANSI-samen voegingen bij verwijderen
-* Instructie MERGe
+* MERGE-instructie
 
 > [!TIP]
 > Probeer eerst ' CTAS '. Het oplossen van een probleem met behulp van CTAS is doorgaans een goede benadering, zelfs als u meer gegevens schrijft als resultaat.
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Synapse SQL ondersteunt geen ANSI-samen voegingen `FROM` in de component `UPDATE` van een-instructie, zodat u het vorige voor beeld niet kunt gebruiken zonder het te wijzigen.
+Synapse SQL ondersteunt geen ANSI-samen voegingen in de `FROM` component van een `UPDATE` -instructie, zodat u het vorige voor beeld niet kunt gebruiken zonder het te wijzigen.
 
 U kunt een combi natie van een CTAS en een impliciete koppeling gebruiken om het vorige voor beeld te vervangen:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Vervanging van ANSI-lidmaatschap voor Delete-instructies
 
-Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS `DELETE` , met name voor instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt doordat Synapse SQL geen ondersteuning biedt voor ANSI-samen `FROM` voegingen in `DELETE` de component van een-instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
+Soms is de beste benadering voor het verwijderen van gegevens het gebruik van CTAS, met name voor `DELETE` instructies die gebruikmaken van de syntaxis van de ANSI-samen voeging. Dit komt doordat Synapse SQL geen ondersteuning biedt voor ANSI-samen voegingen in de `FROM` component van een- `DELETE` instructie. In plaats van de gegevens te verwijderen, selecteert u de gegevens die u wilt blijven gebruiken.
 
 Hier volgt een voor beeld van een geconverteerde `DELETE` instructie:
 
@@ -234,7 +234,7 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 U kunt merge-instructies, ten minste een deel, vervangen door CTAS te gebruiken. U kunt de `INSERT` en de `UPDATE` in één instructie combi neren. Alle verwijderde records moeten worden beperkt van de `SELECT` instructie om de resultaten weg te laten.
 
-Het volgende voor beeld is voor `UPSERT`een:
+Het volgende voor beeld is voor een `UPSERT` :
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-De query zou perfect goed worden uitgevoerd. Het probleem treedt op wanneer u de partitie-switch probeert uit te voeren. De tabel definities komen niet overeen. Om ervoor te zorgen dat de tabel definities overeenkomen, wijzigt u `ISNULL` de CTAS om een functie toe te voegen om het kenmerk null-waarde van de kolom te behouden.
+De query zou perfect goed worden uitgevoerd. Het probleem treedt op wanneer u de partitie-switch probeert uit te voeren. De tabel definities komen niet overeen. Om ervoor te zorgen dat de tabel definities overeenkomen, wijzigt u de CTAS om een functie toe te voegen `ISNULL` om het kenmerk null-waarde van de kolom te behouden.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]

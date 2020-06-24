@@ -4,23 +4,23 @@ description: Verbinding maken met het virtuele bureau blad van Windows met behul
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 636a31cdb657ca95ea9ea0da6bb85caa61425e5a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614991"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213241"
 ---
 # <a name="connect-with-the-android-client"></a>Verbinding maken met de Android-client
 
 > Van toepassing op: Android 4,1 en hoger, Chromebooks met ChromeOS 53 of hoger.
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows. Raadpleeg [dit artikel](../connect-android.md)als u probeert Azure Resource Manager virtuele Windows-bureaublad objecten te beheren die zijn geïntroduceerd in de lente 2020-update.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten. Raadpleeg [dit artikel](../connect-android.md) als u Azure Resource Manager Windows Virtual Desktop-objecten wilt beheren die zijn geïntroduceerd in de update Lente 2020.
 
 >[!NOTE]
 > De mogelijkheid om toegang te krijgen tot virtuele bureau blad-resources van Windows vanaf de Android-client, is momenteel beschikbaar als preview-versie.
@@ -37,11 +37,11 @@ Abonneer u op de feed van uw beheerder om de lijst met beheerde resources weer t
 
 Abonneren op een feed:
 
-1. Tik **+** in het verbindings centrum en tik vervolgens op **externe bron invoer**.
+1. Tik in het verbindings centrum **+** en tik vervolgens op **externe bron invoer**.
 2. Voer de URL van de feed in het veld URL van de **feed** in. De feed-URL kan een URL of een e-mail adres zijn.
-   - Als u een URL gebruikt, gebruikt u de beheerder die u normaal gesp roken <https://rdweb.wvd.microsoft.com>hebt gekregen.
+   - Als u een URL gebruikt, gebruikt u de beheerder die u normaal gesp roken hebt gekregen <https://rdweb.wvd.microsoft.com> .
    - Als u e-mail wilt gebruiken, voert u uw e-mail adres in. De client zoekt naar een URL die is gekoppeld aan uw e-mail adres als uw beheerder de server op die manier heeft geconfigureerd.
-3. Tik op **volgende**.
+3. Tik op **VOLGENDE**.
 4. Geef uw referenties op wanneer u hierom wordt gevraagd.
    - Geef voor de **gebruikers naam**de gebruikers naam op met machtigingen voor toegang tot resources.
    - Geef bij **wacht woord**het wacht woord op dat is gekoppeld aan de gebruikers naam.

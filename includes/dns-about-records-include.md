@@ -13,9 +13,9 @@ ms.locfileid: "73832062"
 ---
 ### <a name="record-names"></a>Recordnamen
 
-In Azure DNS worden records opgegeven met behulp van relatieve namen. Een FQDN-domeinnaam (*Fully Qualified Domain Name*) bevat de zonenaam, terwijl een *relatieve* naam deze niet bevat. De relatieve record naam `www` in de zone `contoso.com` geeft bijvoorbeeld de volledig gekwalificeerde record naam. `www.contoso.com`
+In Azure DNS worden records opgegeven met behulp van relatieve namen. Een FQDN-domeinnaam (*Fully Qualified Domain Name*) bevat de zonenaam, terwijl een *relatieve* naam deze niet bevat. De relatieve record naam `www` in de zone `contoso.com` geeft bijvoorbeeld de volledig gekwalificeerde record naam `www.contoso.com` .
 
-Een *apexrecord* is een DNS-record in de hoofdmap (of *apex*) van een DNS-zone. In de DNS-zone `contoso.com`heeft een Apex-record bijvoorbeeld ook de volledig gekwalificeerde naam `contoso.com` (dit wordt soms een heet domein *naked* genoemd).  Op conventies wordt de relatieve naam\@' ' gebruikt om Apex-records weer te geven.
+Een *apexrecord* is een DNS-record in de hoofdmap (of *apex*) van een DNS-zone. In de DNS-zone `contoso.com` heeft een Apex-record bijvoorbeeld ook de volledig gekwalificeerde naam `contoso.com` (dit wordt soms een heet domein *naked* genoemd).  Op conventies wordt de relatieve naam ' \@ ' gebruikt om Apex-records weer te geven.
 
 ### <a name="record-types"></a>Recordtypen
 

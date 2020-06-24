@@ -2,14 +2,14 @@
 title: Azure Block Chain Service (ABS) bewaken
 description: De Azure Block Chain-Service bewaken via Azure Monitor
 ms.date: 01/08/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d5b3cb02f6e4cd0804dc7fb15a4eacc8370bb99
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76293246"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214040"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>De Azure Block Chain-Service bewaken via Azure Monitor  
 
@@ -89,7 +89,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Block Chain-pr
 | NodeLocation  | Azure-regio waar het block Chain-lid wordt geïmplementeerd.  |
 | BlockchainNodeName  | De naam van het knoop punt van het Azure Block Chain-service-lid waarop de bewerking wordt uitgevoerd.   |
 | EthMethod  | De methode, die wordt aangeroepen door het onderliggende Block Chain-protocol, kan in quorum worden eth_sendTransactions, eth_getBlockByNumber enz.  |
-| Agent  | De gebruikers agent die optreedt namens een gebruiker, zoals de webbrowser Mozilla, Edge, enzovoort. Voor beelden van de waarden zijn: ' Mozilla/5.0 (Linux x64) node. js/8.16.0 V8/6.2.414.77 '  |
+| Agent  | De gebruikers agent die optreedt namens een gebruiker, zoals de webbrowser Mozilla, Edge, enzovoort. Voor beelden van de waarden zijn: ' Mozilla/5.0 (Linux x64) node.js/8.16.0 V8/6.2.414.77 '  |
 | Code   | HTTP-fout codes. Normaal gesp roken 4XX en 5XX de fout voorwaarden.  |
 | NodeHost  | De DNS-naam van het knoop punt.   |
 | RequestMethodName | De HTTP-methode met de naam, de mogelijke waarden die hier worden weer gegeven, zijn voor het maken van leden, het ophalen van Details van het bestaande lid, verwijderen voor het lid verwijderen, PATCH voor het bijwerken van het lid.   |
@@ -115,7 +115,7 @@ De volgende tabel bevat de eigenschappen voor Azure Block Chain-toepassings Logb
 | NodeLocation  | Azure-regio waar het block Chain-lid wordt geïmplementeerd.  |
 | BlockchainNodeName  | De naam van het knoop punt van het Azure Block Chain-service-lid waarop de bewerking wordt uitgevoerd.   |
 | BlockchainMessage    | Dit veld bevat het block Chain-toepassings logboek dat de logboeken voor gegevens zonder opmaak vormt. Voor ABS-quorum zouden er quorum logboeken zijn. Het bevat informatie over het type logboek vermelding dat er informatie is, fout, waarschuwing en een teken reeks die meer informatie geven over de uitgevoerde actie.   |
-| TenantID    | De regiospecifieke Tenant van de Azure Block Chain-service. De indeling van dit veld is https://westlake-rp-prod. <region>. cloudapp.Azure.com waarbij de regio de Azure-regio van het geïmplementeerde lid specificeert.       |
+| TenantID    | De regiospecifieke Tenant van de Azure Block Chain-service. De indeling van dit veld is https://westlake-rp-prod . <region> .. cloudapp.azure.com waarbij regio de Azure-regio van het geïmplementeerde lid aangeeft.       |
 | SourceSystem   | Het systeem vult de logboeken in dit geval **Azure**.    |
 
 
@@ -131,7 +131,7 @@ Zie [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/a
 De volgende tabel bevat de lijst met block Chain-metrische gegevens die worden verzameld voor de resource van de Azure Block Chain service-lid.
 
 
-| Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving   |
+| Naam van metrische gegevens | Eenheid  |  Type aggregatie| Beschrijving   |
 |---|---|---|---|
 | Trans acties in behandeling   | Count  |  Average | Het aantal trans acties dat wacht om te worden ook niet gebruikt.   |
 | Verwerkte blokken   | Count  | Sum  |  Het aantal blokken dat in elk tijds interval wordt verwerkt. Op dit moment is de blok grootte 5 seconden. in een minuut worden 12 blokken en 60 blokken in vijf minuten in elk knoop punt verwerkt.   |
@@ -143,7 +143,7 @@ De volgende tabel bevat de lijst met block Chain-metrische gegevens die worden v
 De volgende tabel geeft een lijst van de verschillende metrische verbindings gegevens die worden verzameld voor de resource van de Azure Block Chain service-lid. Dit zijn de metrische gegevens van de NGINX-proxy.
 
 
-| Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving |
+| Naam van metrische gegevens | Eenheid  |  Type aggregatie| Beschrijving |
 |---|---|---|---|
 | Geaccepteerde verbindingen   | Count  |  Sum | Het totale aantal geaccepteerde client verbindingen.   |
 | Actieve verbindingen  | Count  | Average  |  Het huidige aantal actieve client verbindingen, inclusief wachtende verbindingen.    |
@@ -156,7 +156,7 @@ De volgende tabel geeft een lijst van de verschillende metrische verbindings geg
 De volgende tabel bevat de prestatie gegevens die worden verzameld voor elk van de knoop punten van de Azure Block Chain-lid-resource.  
 
 
-| Naam van meetwaarde | Eenheid  |  Aggregatietype| Beschrijving   |
+| Naam van metrische gegevens | Eenheid  |  Type aggregatie| Beschrijving   |
 |---|---|---|---|
 | Percentage CPU-gebruik   | Percentage  |  Max. | Het percentage van het CPU-gebruik.     |
 | I/o gelezen bytes   | Kilo bytes   | Sum  |  De som van i/o-Lees bewerkingen op alle knoop punten van de Block chain.      |

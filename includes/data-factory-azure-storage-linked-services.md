@@ -16,12 +16,12 @@ Met de **Azure Storage gekoppelde service** kunt u een Azure Storage-account kop
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **opslag** |Ja |
-| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Ja |
+| type |De eigenschap type moet worden ingesteld op: **opslag** |Yes |
+| Verbindings |Geef de gegevens op die nodig zijn om verbinding te maken met Azure Storage voor de Connections Tring-eigenschap. |Yes |
 
 Zie [toegangs sleutels voor opslag accounts beheren](../articles/storage/common/storage-account-keys-manage.md)voor meer informatie over het ophalen van toegangs sleutels voor opslag accounts.
 
-**Hierbij**  
+**Voorbeeld:**  
 
 ```json
 {
@@ -49,10 +49,10 @@ Met de gekoppelde Azure Storage SAS-service kunt u een Azure Storage account kop
 
 | Eigenschap | Beschrijving | Vereist |
 |:--- |:--- |:--- |
-| type |De eigenschap type moet worden ingesteld op: **azurestoragesas zijn** |Ja |
-| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table.  |Ja |
+| type |De eigenschap type moet worden ingesteld op: **azurestoragesas zijn** |Yes |
+| sasUri |Geef Shared Access Signature-URI op voor de Azure Storage resources, zoals blob, container of table.  |Yes |
 
-**Hierbij**
+**Voorbeeld:**
 
 ```json
 {

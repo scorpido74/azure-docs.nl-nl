@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6f2af87cf5cef1b5a80bc16d962fba579b4ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3684b9b87dce24ba7ac1a9b672f7fd6dd446ab46
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985861"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213904"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Tabel statistieken in Synapse SQL-pool
 
@@ -236,13 +236,13 @@ Als u een statistieken object met meerdere kolommen wilt maken, gebruikt u de vo
 > [!NOTE]
 > Het histogram dat wordt gebruikt om het aantal rijen in het query resultaat te schatten, is alleen beschikbaar voor de eerste kolom die wordt vermeld in de definitie van het statistieken-object.
 
-In dit voor beeld is het histogram voor *de\_product categorie*. Statistieken voor meerdere kolommen worden berekend voor *product\_categorie* - *en\_product sub_category*:
+In dit voor beeld is het histogram voor de *product \_ categorie*. Statistieken voor meerdere kolommen worden berekend voor *product \_ categorie* -en *product \_ sub_category*:
 
 ```sql
 CREATE STATISTICS stats_2cols ON table1 (product_category, product_sub_category) WHERE product_category > '2000101' AND product_category < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Omdat er een correlatie bestaat tussen *product\_categorie* en *product\_\_subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
+Omdat er een correlatie bestaat tussen *product \_ categorie* en *product \_ \_ subcategorie*, kan een statistieken object met meerdere kolommen nuttig zijn als deze kolommen tegelijkertijd worden gebruikt.
 
 ### <a name="create-statistics-on-all-columns-in-a-table"></a>Statistieken maken voor alle kolommen in een tabel
 
@@ -418,7 +418,7 @@ De instructie UPDATE STATISTICs is eenvoudig te gebruiken. Houd er rekening mee 
 > [!NOTE]
 > Wanneer alle statistieken voor een tabel worden bijgewerkt, voert SQL-pool een scan uit om een voor beeld van de tabel voor elk statistiek object te bekijken. Als de tabel groot is en veel kolommen en veel statistieken heeft, kan het efficiënter zijn om afzonderlijke statistieken bij te werken op basis van de behoefte.
 
-Zie [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een `UPDATE STATISTICS` implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor `CREATE STATISTICS` gaande procedure, maar het resultaat is hetzelfde.
+`UPDATE STATISTICS`Zie [tijdelijke tabellen](sql-data-warehouse-tables-temporary.md)voor een implementatie van een procedure. De implementatie methode wijkt enigszins af van de voor gaande `CREATE STATISTICS` procedure, maar het resultaat is hetzelfde.
 
 Zie [Statistieken bijwerken](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)voor de volledige syntaxis.
 
@@ -493,7 +493,7 @@ AND     st.[user_created] = 1
 
 DBCC SHOW_STATISTICS () toont de gegevens binnen een statistiek object. Deze gegevens zijn afkomstig uit drie delen:
 
-- Header
+- Koptekst
 - Dichtheids vector
 - Histogram
 
@@ -518,7 +518,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
 
 ### <a name="show-one-or-more-parts-of-dbcc-show_statistics"></a>Een of meer onderdelen van DBCC SHOW_STATISTICS () weer geven
 
-Als u alleen specifieke onderdelen wilt weer geven, gebruikt u de `WITH` -component en geeft u op welke onderdelen u wilt zien:
+Als u alleen specifieke onderdelen wilt weer geven, gebruikt u de- `WITH` component en geeft u op welke onderdelen u wilt zien:
 
 ```sql
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector

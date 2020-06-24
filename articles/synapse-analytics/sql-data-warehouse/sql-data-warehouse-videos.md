@@ -6,17 +6,17 @@ author: anumjs
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ac17579a1afedc3391b20f336ea9563b1c2d8f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0515827ab2d93c76ea91e95c2d53a44273b5633b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80350137"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213785"
 ---
 # <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure Synapse Analytics-SQL-groep Video's
 
@@ -33,6 +33,6 @@ Om aan de slag te gaan, selecteert u de onderstaande overzichts video voor meer 
 
 Aanvullende Video's waarin specifieke functies worden beschreven, kunnen worden weer gegeven op: 
 - [YouTube: geavanceerde analyses met Azure](https://www.youtube.com/playlist?list=PLLasX02E8BPClOvjNV9bXk3LUuf3nQiS2)
-- [Azure-Video's](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
+- [Azure-video's](https://azure.microsoft.com/resources/videos/index/?services=sql-data-warehouse)
 
 

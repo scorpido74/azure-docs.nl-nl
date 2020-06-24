@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 06/22/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ddb079051414168b125ce2e42e8badd55580f0c5
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201074"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212617"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Een token van Azure AD verkrijgen voor het machtigen van aanvragen van een client toepassing
 
@@ -58,11 +58,11 @@ Verleen vervolgens de machtigingen van uw toepassing om Azure Storage-Api's aan 
 
     ![Scherm opname met machtigingen voor opslag](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
-In het deel venster **API-machtigingen** ziet u nu dat uw geregistreerde Azure AD-toepassing toegang heeft tot zowel Microsoft Graph als de Azure Storage. Er worden automatisch machtigingen verleend aan Microsoft Graph wanneer u uw app voor het eerst registreert bij Azure AD.
+In het deel venster **API-machtigingen** ziet u nu dat uw geregistreerde Azure AD-toepassing toegang heeft tot zowel de Microsoft Graph als de Azure Storage-api's. Er worden automatisch machtigingen verleend aan Microsoft Graph wanneer u uw app voor het eerst registreert bij Azure AD.
 
 ![Scherm opname van het registreren van app-machtigingen](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
-## <a name="create-a-client-secret"></a>Een client geheim maken
+## <a name="create-a-client-secret"></a>Een clientgeheim maken
 
 De toepassing heeft een client geheim nodig om de identiteit ervan te bewijzen wanneer een token wordt aangevraagd. Voer de volgende stappen uit om het client geheim toe te voegen:
 
@@ -213,7 +213,7 @@ private AuthenticationProperties BuildAuthenticationPropertiesForIncrementalCons
 {
     AuthenticationProperties properties = new AuthenticationProperties();
 
-    // Set the scopes, including the scopes that ADAL.NET or MSAL.NET need for the Token cache.
+    // Set the scopes, including the scopes that MSAL.NET needs for the token cache.
     string[] additionalBuildInScopes = new string[] { "openid", "offline_access", "profile" };
     properties.SetParameter<ICollection<string>>(OpenIdConnectParameterNames.Scope,
                                                  scopes.Union(additionalBuildInScopes).ToList());
@@ -245,7 +245,7 @@ Als u de voorbeeld toepassing wilt uitvoeren, moet u deze eerst klonen of downlo
 
 ### <a name="provide-values-in-the-settings-file"></a>Waarden opgeven in het instellingen bestand
 
-Werk vervolgens als volgt het bestand *appSettings. json* bij met uw eigen waarden:
+Werk vervolgens de *appsettings.jsvoor* het bestand met uw eigen waarden als volgt bij:
 
 ```json
 {
@@ -284,8 +284,8 @@ CloudBlockBlob blob = new CloudBlockBlob(
 Als u het voor beeld wilt uitvoeren, moet u mogelijk de impliciete toekennings stroom voor uw app-registratie configureren. Volg deze stappen:
 
 1. Ga naar de registratie van uw app in de Azure Portal.
-1. Selecteer de **verificatie** -instelling in de sectie beheren.
-1. Schakel onder **Geavanceerde instellingen**in het gedeelte **impliciete toekenning** de selectie vakjes in om toegangs tokens en id-tokens in te scha kelen, zoals wordt weer gegeven in de volgende afbeelding:
+1. Selecteer de **verificatie** -instelling in de sectie **beheren** .
+1. Schakel in de sectie **impliciete toekenning** het selectie vakje in om id-tokens in te scha kelen, zoals wordt weer gegeven in de volgende afbeelding:
 
     ![Scherm afbeelding die laat zien hoe instellingen voor impliciete toekennings stroom worden ingeschakeld](media/storage-auth-aad-app/enable-implicit-grant-flow.png)
 
@@ -294,13 +294,13 @@ Als u het voor beeld wilt uitvoeren, moet u mogelijk de impliciete toekennings s
 Wanneer u het voor beeld uitvoert, is het mogelijk dat u de omleidings-URI die is opgegeven in de app-registratie, moet bijwerken om de *localhost* -poort die tijdens runtime is toegewezen, te gebruiken. Voer de volgende stappen uit om de omleidings-URI bij te werken om de toegewezen poort te gebruiken:
 
 1. Ga naar de registratie van uw app in de Azure Portal.
-1. Selecteer de **verificatie** -instelling in de sectie beheren.
+1. Selecteer de **verificatie** -instelling in de sectie **beheren** .
 1. Bewerk de poort onder **omleidings-uri's**, zoals wordt weer gegeven in de volgende afbeelding:
 
     ![Scherm opname van omleidings-Uri's voor app-registratie](media/storage-auth-aad-app/redirect-uri.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/)voor meer informatie over het micro soft-identiteits platform.
-- Zie [toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md)voor meer informatie over RBAC-rollen voor Azure Storage.
-- Voor meer informatie over het gebruik van beheerde identiteiten voor Azure-resources met Azure Storage raadpleegt [u toegang verifiëren tot blobs en wacht rijen met Azure Active Directory en beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md).
+- [Microsoft-identiteitsplatform](https://docs.microsoft.com/azure/active-directory/develop/)
+- [Toegangs rechten voor opslag gegevens beheren met RBAC](storage-auth-aad-rbac.md)
+- [Toegang tot blobs en wacht rijen verifiëren met Azure Active Directory en beheerde identiteiten voor Azure-resources](storage-auth-aad-msi.md)

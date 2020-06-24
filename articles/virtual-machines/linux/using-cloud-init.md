@@ -1,26 +1,19 @@
 ---
 title: Overzicht van Cloud-init-ondersteuning voor Linux-Vm's in azure
 description: Overzicht van Cloud-init-functies voor het configureren van een virtuele machine bij het inrichten van de tijd in Azure.
-services: virtual-machines-linux
-documentationcenter: ''
 author: danielsollondon
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.date: 05/19/2019
+ms.topic: how-to
+ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: 9e42229b08d7817b64c66c4ab23877c837339475
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: c16343b412cd9164df84ea140e9bc5368890cc3e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827315"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298970"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init-ondersteuning voor virtuele machines in azure
 In dit artikel wordt de ondersteuning beschreven die bestaat voor [Cloud-init](https://cloudinit.readthedocs.io) voor het configureren van een virtuele machine (VM) of schaal sets voor virtuele machines bij het inrichten van de tijd in Azure. Deze Cloud-init-configuraties worden uitgevoerd bij de eerste keer opstarten zodra de resources zijn ingericht door Azure.  
@@ -34,7 +27,7 @@ Azure ondersteunt twee inrichtings agenten [Cloud-init](https://cloudinit.readth
 
 Cloud-init werkt ook over distributies. U gebruikt bijvoorbeeld niet **apt-get install** of **yum install** om een pakket te installeren. In plaats daarvan kunt u een lijst definiëren met te installeren pakketten. Cloud-init maakt automatisch gebruik van het systeem eigen pakket beheer programma voor de distributie die u selecteert.
 
-We werken samen met onze goedgekeurde Linux distributie-partners om ervoor te zorgen dat installatie kopieën met Cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatie kopieën kunnen uw Cloud-init-implementaties en-configuraties naadloos werken met Vm's en virtuele-machine schaal sets. In eerste instantie werken we samen met de getekende Linux distributie-partners en upstream om Cloud-init-functies te garanderen met het besturings systeem op Azure, waarna de pakketten worden bijgewerkt en openbaar beschikbaar worden gesteld in de distributie-pakket opslagplaatsen. 
+We werken samen met onze goedgekeurde Linux distributie-partners om ervoor te zorgen dat installatie kopieën met Cloud-init beschikbaar zijn op de Azure Marketplace. Met deze installatiekopieën kunnen uw cloud-init-implementaties en -configuraties naadloos werken met VM's en virtuele-machineschaalsets. In eerste instantie werken we samen met de getekende Linux distributie-partners en upstream om Cloud-init-functies te garanderen met het besturings systeem op Azure, waarna de pakketten worden bijgewerkt en openbaar beschikbaar worden gesteld in de distributie-pakket opslagplaatsen. 
 
 Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde besturings systeem van Linux distributie op Azure, pakket ondersteuning en vervolgens de ondersteuning van afbeeldingen:
 * ' Cloud-init-pakket ondersteuning op Azure ' documenteert welke Cloud-init-pakketten worden ondersteund of in de preview-versie, zodat u deze pakketten kunt gebruiken met het besturings systeem in een aangepaste installatie kopie.
@@ -54,11 +47,11 @@ Er zijn twee fasen om Cloud-init beschikbaar te maken voor het geviseerde bestur
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ja | Ja, ondersteuning van pakket versie: *18.2-1. el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
-|RedHat 7,7 (gen1) |RHEL-BYOS | RHEL-lvm77 | 7.7.20200416 | updates zonder afbeeldingen in de vlucht, om het einde van mei mogelijk te volt ooien  | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1)|RHEL |7,7 | 7.7.2020051912 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 77-Gen2 | 7.7.2020051913 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1)|RHEL |7-LVM | 7.7.2020051921 | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (Gen2)|RHEL | 7lvm-Gen2 | 7.7.2020051922  | ja | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
+|RedHat 7,7 (gen1) |RHEL-BYOS | RHEL-lvm77 | 7.7.20200416 | ja  | Ja, ondersteuning van pakket versie: *18.5 -6. EL7*|
 |RedHat 8,1 (gen1) |RHEL |8,1-CI |8.1.2020042511 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020|
 |RedHat 8,1 (Gen2) |RHEL |81-CI-Gen2 |8.1.2020042524 | Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle RHEL 8,1-installatie kopieën Cloud-init ondersteunen, wordt dit 1 augustus 2020 verwijderd) | Nee, ETA voor volledige ondersteuning van juni 2020 |
 
@@ -68,7 +61,7 @@ RedHat: RHEL 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met
 
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle CentOS 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie: *18.5 -3. EL7. CentOS*|
+|Open Logic 7,7 |CentOS |7-CI |7.7.20190920 |Ja (Opmerking: dit is een voorbeeld afbeelding en zodra alle CentOS 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit 1 september 2020 verwijderd) | Ja, ondersteuning van pakket versie:`18.5-3.el7.centos`|
 
 * CentOS 7,7-installatie kopieën die worden gebruikt voor de Cloud-init, worden hier in juni 2020 bijgewerkt 
 * CentOS 7,8-installatie kopieën worden ingericht met Cloud-init.
@@ -80,18 +73,23 @@ RedHat: RHEL 7,8-en 8,2-installatie kopieën (gen1 en Gen2) worden ingericht met
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |Oracle 7,7 |Oracle-Linux |77-CI |7.7.01| Preview-afbeelding (Let op: dit is een voorbeeld afbeelding en zodra alle Oracle 7,7-installatie kopieën Cloud-init ondersteunen, wordt dit mid 2020 verwijderd, maar wordt de melding weer gegeven.) | Nee, in de preview-versie is *het pakket: 18.5-3.0.1. EL7*
 
-### <a name="suse-sles"></a>SuSE SLES
+### <a name="suse-sles"></a>SUSE SLES
 | Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|SUSE SLES 15 SP1 |SuSE |SLES-15-SP1-Basic |Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
-|SUSE SLES 15 SP1 |SuSE |SLES-15-SP1-Basic |Gen2-Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-Basic |Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
+|SUSE SLES 15 SP1 |SUSE |SLES-15-SP1-Basic |Gen2-Cloud-init-preview| Zie [SuSE Cloud-init blog](https://suse.com/c/clout-init-coming-to-suse-images-in-azure/) voor meer informatie | Nee, in de preview-versie. |
 
 
 ### <a name="debian"></a>Debian
-We werken momenteel aan de preview-versie van de ondersteuning en verwachten updates in juni 2020.
+| Uitgever/versie | Aanbieding | SKU | Versie | afbeelding Cloud-init gereed | Cloud-init-pakket ondersteuning op Azure|
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| Debian (gen1) |Debian-10 | 10-cloudinit |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
+| Debian (Gen2) |Debian-10 | 10-cloudinit-Gen2 |Cloud-init-preview| Ja (alleen preview-versie) | Nee, in de preview-versie. |
+
+
+
 
 Momenteel biedt Azure Stack ondersteuning voor het inrichten van installatie kopieën die zijn ingeschakeld voor Cloud-init.
-
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Wat is het verschil tussen Cloud-init en de Linux-agent (WALA)?
 WALA is een Azure-platformspecifieke agent die wordt gebruikt voor het inrichten en configureren van Vm's en het afhandelen van [Azure-extensies](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux). 
@@ -114,7 +112,8 @@ In het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
-De volgende stap is het maken van een bestand in uw huidige shell met de naam *Cloud-init. txt* en het plakken van de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
+
+De volgende stap is het maken van een bestand in uw huidige shell, met de naam *cloud-init.txt* en het plakken van de volgende configuratie. In dit voor beeld maakt u het bestand in het Cloud Shell niet op uw lokale computer. U kunt elke editor die u wilt gebruiken. Voer `sensible-editor cloud-init.txt` in voor het maken van het bestand en om een overzicht van beschikbare editors te zien. Kies #1 om de **nano** -editor te gebruiken. Controleer of het hele cloud-init-bestand correct is gekopieerd, met name de eerste regel:
 
 ```yaml
 #cloud-config
@@ -126,7 +125,7 @@ Druk op `ctrl-X` om het bestand te sluiten, typ `y` om het bestand op te slaan e
 
 De laatste stap bestaat uit het maken van een virtuele machine met de opdracht [AZ VM Create](/cli/azure/vm) . 
 
-In het volgende voor beeld wordt een VM gemaakt met de naam *centos74* en worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. In het volgende voor beeld wordt een VM gemaakt met de naam *centos74*:
+In het volgende voor beeld wordt een VM gemaakt met de naam *centos74* en worden er SSH-sleutels gemaakt, als deze nog niet bestaan op een standaard sleutel locatie. Als u een specifieke set sleutels wilt gebruiken, gebruikt u de optie `--ssh-key-value`.  Gebruik de `--custom-data`-parameter om door te geven in uw cloud-init-configuratiebestand. Geef het volledige pad naar *cloud-init.txt* op als u het bestand buiten uw huidige werkmap hebt opgeslagen. 
 
 ```azurecli-interactive 
 az vm create \
@@ -148,6 +147,10 @@ Zodra de VM is ingericht, wordt de Cloud-init uitgevoerd via alle modules en het
 Raadpleeg de [Cloud-init-documentatie](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) voor meer informatie over de Cloud-init-logboek registratie 
 
 ## <a name="next-steps"></a>Volgende stappen
+
+[Problemen met Cloud-init oplossen](cloud-init-troubleshooting.md).
+
+
 Raadpleeg de volgende documenten voor voor beelden van configuratie wijzigingen in de Cloud-init:
  
 - [Een extra Linux-gebruiker toevoegen aan een VM](cloudinit-add-user.md)

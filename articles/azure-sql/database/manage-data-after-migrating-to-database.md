@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 4c6904cfa2a7a3c3281da9a930fd59e8d511ac89
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322666"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249275"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nieuwe DBA in de Cloud: Azure SQL Database na migratie beheren
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -133,7 +133,7 @@ U kunt Firewall regels maken op server niveau of op database niveau. IP-firewall
 
 #### <a name="service-endpoints"></a>Service-eindpunten
 
-Standaard is uw SQL database geconfigureerd om Azure-Services toegang tot de server toe te staan. Dit betekent dat een virtuele machine in azure verbinding kan maken met uw data base. Deze pogingen moeten nog steeds worden geverifieerd. Als u echter niet wilt dat uw data base toegankelijk is voor Azure Ip's, kunt u ' Azure-Services toegang verlenen tot server ' uitschakelen. Daarnaast kunt u VNet- [service-eind punten](vnet-service-endpoint-rule-overview.md)configureren.
+Uw data base is standaard geconfigureerd voor toegang tot de server met Azure-Services. Dit betekent dat een virtuele machine in azure verbinding kan maken met uw data base. Deze pogingen moeten nog steeds worden geverifieerd. Als u echter niet wilt dat uw data base toegankelijk is voor Azure Ip's, kunt u ' Azure-Services toegang verlenen tot server ' uitschakelen. Daarnaast kunt u VNet- [service-eind punten](vnet-service-endpoint-rule-overview.md)configureren.
 
 Met Service-eind punten (SE) kunt u uw kritieke Azure-resources alleen beschikbaar maken voor uw eigen particuliere virtuele netwerk in Azure. Door dit te doen, kunt u de open bare toegang tot uw resources in wezen elimineren. Het verkeer tussen uw virtuele netwerk en Azure blijft in het Azure-backbone-netwerk. Zonder SE krijgt u pakket routering met geforceerde tunneling. Met uw virtuele netwerk wordt het Internet verkeer naar uw organisatie en het verkeer van de Azure-service afgedwongen om over dezelfde route te gaan. Met Service-eind punten kunt u dit optimaliseren omdat de pakketten direct van het virtuele netwerk naar de service in het backbone-netwerk van Azure worden getransporteerd.
 
@@ -170,7 +170,7 @@ Voor het beveiligen van uw gevoelige gegevens in-Flight en op rest, SQL Database
 |**Kenmerken**|**Altijd versleuteld**|**Transparante gegevensversleuteling**|
 |---|---|---|
 |**Versleutelings bereik**|End-to-end|At-rest-gegevens|
-|**De server kan toegang krijgen tot gevoelige gegevens**|Nee|Ja, omdat versleuteling voor de Data-at-rest is|
+|**De server kan toegang krijgen tot gevoelige gegevens**|No|Ja, omdat versleuteling voor de Data-at-rest is|
 |**Toegestane T-SQL-bewerkingen**|Gelijkheids vergelijking|Alle T-SQL-surface area is beschikbaar|
 |**App-wijzigingen die zijn vereist voor het gebruik van de functie**|Minimaal|Zeer mini maal|
 |**Granulatie van versleuteling**|Kolom niveau|databaseniveau|
@@ -285,7 +285,7 @@ Met [Azure monitor-logboeken](../../azure-monitor/insights/azure-sql.md) kunt u 
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Ik merkt prestatie problemen: Hoe verschilt mijn SQL Database-probleemoplossings methodologie van SQL Server
 
-Een belang rijk deel van de probleemoplossings technieken die u zou gebruiken voor het vaststellen van problemen met de prestaties van query's en data bases, blijft hetzelfde. Nadat alle dezelfde SQL database engine de Cloud heeft gebevoegdheden. De platform-Azure SQL Database heeft echter ingebouwde intelligentie. Het helpt u bij het oplossen van problemen met de prestaties en het eenvoudiger te diagnosticeren. Het kan ook enkele van deze corrigerende maat regelen uitvoeren namens u en in sommige gevallen, zodat deze automatisch worden opgelost.
+Een belang rijk deel van de probleemoplossings technieken die u zou gebruiken voor het vaststellen van problemen met de prestaties van query's en data bases, blijft hetzelfde. Nadat alle dezelfde data base-engine de Cloud heeft gebevoegdheden. De platform-Azure SQL Database heeft echter ingebouwde intelligentie. Het helpt u bij het oplossen van problemen met de prestaties en het eenvoudiger te diagnosticeren. Het kan ook enkele van deze corrigerende maat regelen uitvoeren namens u en in sommige gevallen, zodat deze automatisch worden opgelost.
 
 Uw aanpak voor het oplossen van problemen met prestaties kan aanzienlijk profiteren van intelligente functies als [query Performance Insight (QPI)](query-performance-insight-use.md) en [database Advisor](database-advisor-implement-performance-recommendations.md) in combi natie, waardoor het verschil in de methodologie in dat opzicht afwijkt: u hoeft niet langer te doen om de essentiële informatie te verfijnen die u kan helpen bij het oplossen van het probleem. Het platform doet de hard werk voor u. Een voor beeld van dat is QPI. Met QPI kunt u alles inzoomen op het query niveau en de historische trends bekijken en nagaan waar precies de query teruggedraaide. De Database Advisor biedt u aanbevelingen die u kunnen helpen bij het verbeteren van de algehele prestaties in algemene, zoals-ontbrekende indexen, het weghalen van indexen, het parameterizing van uw query's, enzovoort.
 

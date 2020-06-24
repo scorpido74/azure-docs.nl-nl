@@ -14,7 +14,7 @@ ms.locfileid: "66242124"
 ---
 Hier volgt een lijst met de ondersteunde opslag typen voor het Data Box-apparaat.
 
-| **Bestands indeling** | **Opmerkingen** |
+| **Bestandsindeling** | **Opmerkingen** |
 | --- | --- |
 | Azure-blok-blob | |
 | Azure-pagina-blob  | De gegevens moeten 512 bytes zijn uitgelijnd.|

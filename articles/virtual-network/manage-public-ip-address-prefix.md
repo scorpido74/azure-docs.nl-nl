@@ -8,17 +8,17 @@ author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 720496c56cdae69e3b7415ac4d4d05d5796fbff9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146373"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84703839"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Een voorvoegsel van een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -31,7 +31,7 @@ Meer informatie over een openbaar IP-adres voorvoegsel en hoe u er een kunt make
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 - Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, https://portal.azure.comopent u en meldt u zich aan met uw Azure-account.
+- Als u de portal gebruikt, opent https://portal.azure.com u en meldt u zich aan met uw Azure-account.
 - Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 - Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.41 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Als u Azure CLI 2.0 wilt installeren of upgraden, raadpleegt u [Azure CLI 2.0 installeren](/cli/azure/install-azure-cli). Als u de Azure CLI lokaal uitvoert, moet u ook uitvoeren `az login` om een verbinding te maken met Azure.
 
@@ -48,13 +48,13 @@ Voor voegsels voor open bare IP-adressen gelden kosten. Zie [prijzen](https://az
 
    |Instelling|Vereist?|Details|
    |---|---|---|
-   |Abonnement|Ja|Moet zich in hetzelfde [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
-   |Resourcegroep|Ja|Kan zich in dezelfde of verschillende [resource groepen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
-   |Naam|Ja|De naam moet uniek zijn binnen de resource groep die u selecteert.|
-   |Regio|Ja|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
-   |Voorvoegsel grootte|Ja| De grootte van het voor voegsel dat u nodig hebt. A/28 of 16 IP-adressen is de standaard waarde.
+   |Abonnement|Yes|Moet zich in hetzelfde [abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
+   |Resourcegroep|Yes|Kan zich in dezelfde of verschillende [resource groepen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bevinden als de resource waaraan u het open bare IP-adres wilt koppelen.|
+   |Name|Yes|De naam moet uniek zijn binnen de resource groep die u selecteert.|
+   |Regio|Yes|Moet zich in dezelfde [regio](https://azure.microsoft.com/regions)bevinden als de open bare IP-adressen waaraan u adressen uit het bereik toewijst.|
+   |Voorvoegsel grootte|Yes| De grootte van het voor voegsel dat u nodig hebt. A/28 of 16 IP-adressen is de standaard waarde.
 
-**Opdrachten**
+**Opdracht**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -71,9 +71,9 @@ Wanneer u een voor voegsel maakt, moet u vaste IP-adressen maken op basis van he
 
    |Instelling|Vereist?|Details|
    |---|---|---|
-   |Naam|Ja|De naam van het open bare IP-adres moet uniek zijn binnen de resource groep die u selecteert.|
-   |Time-out voor inactiviteit (minuten)|Nee|Hoe lang duurt het voordat een TCP-of HTTP-verbinding is geopend, zonder dat er wordt gebruikgemaakt van clients om Keep-Alive-berichten te verzenden. |
-   |DNS-naamlabel|Nee|Moet uniek zijn binnen de Azure-regio waarin u de naam hebt gemaakt (in alle abonnementen en alle klanten). Azure registreert automatisch de naam en het IP-adres in DNS zodat u verbinding kunt maken met een resource met de naam. Azure voegt een standaard-subnet, zoals *location.cloudapp.Azure.com* (waarbij locatie de locatie is die u hebt geselecteerd), toe aan de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Zie [Azure DNS gebruiken met een openbaar IP-adres van Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)voor meer informatie.|
+   |Name|Yes|De naam van het open bare IP-adres moet uniek zijn binnen de resource groep die u selecteert.|
+   |Time-out voor inactiviteit (minuten)|No|Hoe lang duurt het voordat een TCP-of HTTP-verbinding is geopend, zonder dat er wordt gebruikgemaakt van clients om Keep-Alive-berichten te verzenden. |
+   |DNS-naamlabel|No|Moet uniek zijn binnen de Azure-regio waarin u de naam hebt gemaakt (in alle abonnementen en alle klanten). Azure registreert automatisch de naam en het IP-adres in DNS zodat u verbinding kunt maken met een resource met de naam. Azure voegt een standaard-subnet, zoals *location.cloudapp.Azure.com* (waarbij locatie de locatie is die u hebt geselecteerd), toe aan de naam die u opgeeft, om de volledig gekwalificeerde DNS-naam te maken. Zie [Azure DNS gebruiken met een openbaar IP-adres van Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)voor meer informatie.|
 
 U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-prefix (CLI) en-PublicIpPrefix (PS) gebruiken om een open bare IP-adres bron te maken. 
 
@@ -90,7 +90,7 @@ U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-pref
    - **Weer gave**: in de sectie **overzicht** ziet u de belangrijkste instellingen voor het voor voegsel van het open bare IP-adres, zoals voor voegsel.
    - **Verwijderen**: als u het voor voegsel van het open bare IP-adres wilt verwijderen, selecteert u **verwijderen** in het gedeelte **overzicht** . Als adressen binnen het voor voegsel zijn gekoppeld aan resources met een openbaar IP-adres, moet u eerst de open bare IP-adres bronnen verwijderen. Zie [een openbaar IP-adres verwijderen](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
 
-**Opdrachten**
+**Opdracht**
 
 |Hulpprogramma|Opdracht|
 |---|---|
@@ -101,7 +101,7 @@ U kunt ook de CLI-en PS-opdrachten hieronder met de para meters---Public-IP-pref
 
 Als u taken wilt uitvoeren op open bare IP-adres voorvoegsels, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                                            | Naam                                                           |
+| Bewerking                                                            | Name                                                           |
 | ---------                                                         | -------------                                                  |
 | Micro soft. Network/publicIPPrefixes/lezen                           | Een voor voegsel van een openbaar IP-adres lezen                                |
 | Micro soft. Network/publicIPPrefixes/schrijven                          | Een voor voegsel voor een openbaar IP-adres maken of bijwerken                    |

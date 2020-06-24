@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267922"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704332"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Een controller module op uw StorSimple-apparaat vervangen
 ## <a name="overview"></a>Overzicht
@@ -31,7 +31,7 @@ In deze zelf studie wordt uitgelegd hoe u een of beide controller modules in een
 > Om beschadiging van uw StorSimple-apparaat te voor komen, moet u de controller niet uitwerpen totdat de Led's als een van de volgende worden weer gegeven:
 > 
 > * Alle lichten zijn uitgeschakeld.
-> * LED voor drie ![, groen vinkje](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png)en ![rood kruis pictogram](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) zijn knipperend en de LED 7 is **ingeschakeld**.
+> * LED voor drie, ![ groen vinkje ](./media/storsimple-controller-replacement/HCS_GreenCheckIcon.png) en ![ rood kruis pictogram ](./media/storsimple-controller-replacement/HCS_RedCrossIcon.png) zijn knipperend en de LED 7 is **ingeschakeld**.
 
 
 In de volgende tabel worden de ondersteunde scenario's voor het vervangen van een controller weer gegeven.
@@ -105,7 +105,7 @@ Voer de volgende stappen uit als een van de controllers in uw Microsoft Azure St
 > [!NOTE]
 > Als u het apparaat bewaakt via de seriële console, ziet u mogelijk meerdere opnieuw opstarten wanneer de controller wordt hersteld van de vervangings procedure. Wanneer het menu van de seriële console wordt weer gegeven, weet u zeker dat de vervanging is voltooid. Als het menu niet binnen twee uur na het starten van de vervanging van de controller wordt weer gegeven, neemt u [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
 >
-> Als u update 4 Start, kunt u ook de `Get-HCSControllerReplacementStatus` cmdlet in de Windows Power shell-interface van het apparaat gebruiken om de status van het vervangings proces van de controller te controleren.
+> Als u update 4 Start, kunt u ook de cmdlet `Get-HCSControllerReplacementStatus` in de Windows Power shell-interface van het apparaat gebruiken om de status van het vervangings proces van de controller te controleren.
 > 
 
 ## <a name="replace-both-controllers"></a>Beide controllers vervangen
@@ -195,7 +195,7 @@ Gebruik de volgende procedure om een door de fabriek geleverde controller module
    > [!NOTE]
    > Het kan tot vijf minuten duren voor de controller en de LED om te activeren.
   
-5. Als u wilt controleren of de vervanging is geslaagd, gaat u in het Azure Portal naar uw apparaat en vervolgens navigeert u naar de status van de**Hardware** **controleren** > en controleert u of de controller 0 en controller 1 in orde zijn (status is groen).
+5. Als u wilt controleren of de vervanging is geslaagd, gaat u in het Azure Portal naar uw apparaat en vervolgens navigeert u naar de status van de hardware **controleren**en controleert u of de  >  **Hardware health**controller 0 en controller 1 in orde zijn (status is groen).
 
 ## <a name="identify-the-active-controller-on-your-device"></a>De actieve controller op het apparaat identificeren
 Er zijn veel situaties, zoals het voor de eerste keer registreren van apparaten of het vervangen van de controller, waarvoor u de actieve controller op een StorSimple-apparaat moet zoeken. De actieve controller verwerkt alle firmware-en netwerk bewerkingen van de schijf. U kunt een van de volgende methoden gebruiken om de actieve controller te identificeren:
@@ -207,7 +207,7 @@ Er zijn veel situaties, zoals het voor de eerste keer registreren van apparaten 
 Elk van deze procedures wordt hierna beschreven.
 
 ### <a name="use-the-azure-portal-to-identify-the-active-controller"></a>De Azure Portal gebruiken om de actieve controller te identificeren
-Ga in het Azure Portal naar het apparaat en **Controleer** > vervolgens de status van de**Hardware**en schuif naar het gedeelte **controllers** . Hier kunt u controleren welke controller actief is.
+Ga in het Azure Portal naar het apparaat en **Controleer**vervolgens de status van de  >  **Hardware**en schuif naar het gedeelte **controllers** . Hier kunt u controleren welke controller actief is.
 
 ![Actieve controller in Azure Portal identificeren](./media/storsimple-controller-replacement/IC752072.png)
 
@@ -231,7 +231,7 @@ Als deze LED knippert, is de controller actief en de andere controller in de mod
 
 **Afbeelding 8** Terug van primaire behuizing met gegevens poorten en bewakings-Led's
 
-| Label | Beschrijving |
+| Label | Description |
 |:--- |:--- |
 | 1-6 |GEGEVENS 0 – 5 netwerk poorten |
 | 7 |Blauwe LED |

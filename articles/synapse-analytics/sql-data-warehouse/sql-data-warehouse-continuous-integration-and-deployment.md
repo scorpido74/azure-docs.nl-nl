@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: how-to
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 725e8165f8a7bdb654f61d7257867a2d0bf17110
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791286"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213564"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continue integratie en implementatie voor gegevens opslag
 
@@ -50,7 +50,7 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 
       ![Implementatie taak](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Implementatie taak")
 
-2. Als u een zelf-hostende agent gebruikt, moet u ervoor zorgen dat u de omgevings variabele hebt ingesteld om de juiste SqlPackage. exe te gebruiken voor SQL Data Warehouse. Het pad moet er ongeveer als volgt uitzien:
+2. Als u een zelf-hostende agent gebruikt, moet u ervoor zorgen dat u de omgevings variabele hebt ingesteld voor het gebruik van de juiste SqlPackage.exe voor SQL Data Warehouse. Het pad moet er ongeveer als volgt uitzien:
 
       ![Omgevings variabele](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Omgevings variabele")
 
@@ -63,4 +63,4 @@ Op dit moment hebt u een eenvoudige omgeving waar elke check-in voor de hoofd ve
 - [Synapse SQL pool MPP-architectuur](massively-parallel-processing-mpp-architecture.md) verkennen
 - Snel [een SQL-groep maken](create-data-warehouse-portal.md)
 - [Voorbeeld gegevens laden](load-data-from-azure-blob-storage-using-polybase.md)
-- [Video's](sql-data-warehouse-videos.md) verkennen
+- [Video's verkennen](sql-data-warehouse-videos.md)

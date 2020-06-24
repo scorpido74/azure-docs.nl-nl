@@ -5,19 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 06/22/2020
+ms.openlocfilehash: 363c003a915763a7ab1165c2e0d8f945bc3dd510
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634562"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213683"
 ---
 # <a name="logical-decoding"></a>Logische decodering
  
 Met [logische decodering in postgresql](https://www.postgresql.org/docs/current/logicaldecoding.html) kunt u gegevens wijzigingen streamen naar externe gebruikers. Logische decodering wordt populair gebruikt voor het streamen van gebeurtenissen en change data capture scenario's.
 
-Logische decodering maakt gebruik van een uitvoer-invoeg toepassing om het Write-Ahead logboek (WAL) van post gres te converteren naar een lees bare indeling. Azure Database for PostgreSQL biedt twee uitvoer-invoeg toepassingen: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) en [wal2json](https://github.com/eulerto/wal2json).
+Logische decodering maakt gebruik van een uitvoer-invoeg toepassing om het Write-Ahead logboek (WAL) van post gres te converteren naar een lees bare indeling. Azure Database for PostgreSQL biedt de uitvoer-invoeg toepassingen [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) en pgoutput. pgoutput wordt beschikbaar gesteld door post gres van post gres versie 10 en hoger.
+
+[Ga naar onze blog](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421)voor een overzicht van hoe post gres logische code ring werkt. 
 
 > [!NOTE]
 > Logische decodering is in open bare preview op Azure Database for PostgreSQL-één server.

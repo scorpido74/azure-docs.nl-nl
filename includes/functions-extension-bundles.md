@@ -13,7 +13,7 @@ ms.locfileid: "68639121"
 ---
 De eenvoudigste manier om bindings uitbreidingen te installeren is door [uitbreidings bundels](../articles/azure-functions/functions-bindings-register.md#extension-bundles)in te scha kelen. Wanneer u bundels inschakelt, wordt automatisch een vooraf gedefinieerde set uitbreidings pakketten geïnstalleerd.
 
-Als u uitbreidings bundels wilt inschakelen, opent u het bestand host. json en werkt u de inhoud bij zodat deze overeenkomt met de volgende code:
+Als u uitbreidings bundels wilt inschakelen, opent u de host.jsin het bestand en werkt u de inhoud bij zodat deze overeenkomt met de volgende code:
 
 ```json
 {

@@ -19,25 +19,25 @@ ms.locfileid: "75564707"
 
 Met uitzonde ring van HTTP-en timer-triggers, worden function-bindingen in runtime versie 2. x en hoger geïmplementeerd als uitbreidings pakketten. In versie 2. x en voorbij de Azure Functions runtime moet u de uitbrei dingen expliciet registreren voor de bindings typen die in uw functies worden gebruikt. De uitzonde ringen hierop zijn HTTP-bindingen en timer triggers, waarvoor geen uitbrei dingen zijn vereist.
 
-U kunt ervoor kiezen om bindings uitbreidingen afzonderlijk te installeren of u kunt een referentie voor een uitbreidings bundel toevoegen aan het JSON-project bestand van de host. Met uitbreidings bundels wordt de kans verwijderd om compatibiliteits problemen met het pakket op te lossen wanneer u meerdere bindings typen gebruikt. Het is de aanbevolen methode voor het registreren van bindings uitbreidingen. Extensie bundels verwijdert ook de vereiste van het installeren van de .NET Core 2. x SDK. 
+U kunt ervoor kiezen om bindings uitbreidingen afzonderlijk te installeren of u kunt een referentie voor een uitbreidings bundel toevoegen aan de host.jsvan het project bestand. Met uitbreidings bundels wordt de kans verwijderd om compatibiliteits problemen met het pakket op te lossen wanneer u meerdere bindings typen gebruikt. Het is de aanbevolen methode voor het registreren van bindings uitbreidingen. Extensie bundels verwijdert ook de vereiste van het installeren van de .NET Core 2. x SDK. 
 
 ### <a name="extension-bundles"></a>Uitbreidings bundels
 
 [!INCLUDE [Register extensions](functions-extension-bundles.md)]
 
-Zie [Azure functions bindings uitbreidingen registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)voor meer informatie. U moet uitbreidings bundels toevoegen aan de host. json voordat u bindingen toevoegt aan het bestand function. json.
+Zie [Azure functions bindings uitbreidingen registreren](../articles/azure-functions/functions-bindings-register.md#extension-bundles)voor meer informatie. U moet uitbreidings bundels toevoegen aan de host.jsop voordat u bindingen toevoegt aan het function.jsbestand.
 
 ### <a name="register-individual-extensions"></a>Afzonderlijke uitbrei dingen registreren
 
 Als u uitbrei dingen wilt installeren die zich niet in een bundel bevinden, kunt u hand matig afzonderlijke extensie pakketten voor specifieke bindingen registreren. 
 
 > [!NOTE]
-> Als u hand matig extensies wilt `func extensions install`registreren met, moet u de .net Core 2. x SDK hebben geïnstalleerd.
+> Als u hand matig extensies wilt registreren met `func extensions install` , moet u de .net Core 2. x SDK hebben geïnstalleerd.
 
-Nadat u het bestand *Function. json* hebt bijgewerkt met alle bindingen die uw functie nodig heeft, voert u de volgende opdracht uit in de projectmap.
+Voer de volgende opdracht uit in de projectmap nadat u uw *function.js* hebt bijgewerkt met alle bindingen die uw functie nodig heeft.
 
 ```bash
 func extensions install
 ```
 
-Met de opdracht leest u het bestand *Function. json* om te zien welke pakketten u nodig hebt, installeert u ze en bouwt u het project extensies opnieuw op. Er worden nieuwe bindingen aan de huidige versie toegevoegd, maar bestaande bindingen worden niet bijgewerkt. Gebruik de `--force` optie om bestaande bindingen bij te werken naar de meest recente versie bij het installeren van nieuwe.
+Met de opdracht leest u de *function.jsin* het bestand om te zien welke pakketten u nodig hebt, installeert u ze en bouwt u het project extensies opnieuw. Er worden nieuwe bindingen aan de huidige versie toegevoegd, maar bestaande bindingen worden niet bijgewerkt. Gebruik de `--force` optie om bestaande bindingen bij te werken naar de meest recente versie bij het installeren van nieuwe.

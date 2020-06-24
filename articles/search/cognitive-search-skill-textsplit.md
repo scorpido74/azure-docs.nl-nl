@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 558f7ef250c99d85cb957162b6d098e586bc0fc4
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/17/2020
+ms.openlocfilehash: 52aaeb01fef551eee350c6db662c2690ef7b3e78
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433254"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981945"
 ---
 # <a name="text-split-cognitive-skill"></a>Cognitieve vaardigheid van tekst splitsen
 
@@ -31,23 +31,23 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| textSplitMode      | ' Pagina's ' of ' zinnen ' | 
-| maximumPageLength | Als textSplitMode is ingesteld op ' pagina's ', verwijst dit naar de maximale pagina lengte, gemeten door `String.Length` . De minimum waarde is 300.  Als de textSplitMode is ingesteld op ' pagina's ', probeert het algoritme de tekst te splitsen in segmenten die de meeste grootte hebben ' maximumPageLength '. In dit geval is het algoritme het beste om de zin op een zin te verkorten, zodat de grootte van het segment iets kleiner is dan ' maximumPageLength '. | 
-| defaultLanguageCode   | Beschrijving Een van de volgende taal codes: `da, de, en, es, fi, fr, it, ko, pt` . De standaard waarde is Engels (en). Enkele dingen die u moet overwegen:<ul><li>Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, wordt de tekst door de gesplitste vaardigheid op teken grenzen afgebroken.</li><li>Het opgeven van een taal code is handig om te voor komen dat een woord in de helft wordt geknipt voor niet-spatie talen, zoals Chinees, Japans en Koreaans.</li><li>Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), moet de standaard waarde voor Engels (en) voldoende zijn. </li></ul>  |
+| `textSplitMode`    | ' Pagina's ' of ' zinnen ' | 
+| `maximumPageLength` | Als textSplitMode is ingesteld op ' pagina's ', verwijst dit naar de maximale pagina lengte, gemeten door `String.Length` . De minimum waarde is 300.  Als de textSplitMode is ingesteld op ' pagina's ', probeert het algoritme de tekst te splitsen in segmenten die de meeste grootte hebben ' maximumPageLength '. In dit geval is het algoritme het beste om de zin op een zin te verkorten, zodat de grootte van het segment iets kleiner is dan ' maximumPageLength '. | 
+| `defaultLanguageCode` | Beschrijving Een van de volgende taal codes: `da, de, en, es, fi, fr, it, ko, pt` . De standaard waarde is Engels (en). Enkele dingen die u moet overwegen:<ul><li>Als u een language code-CountryCode-indeling doorgeeft, wordt alleen het language code deel van de indeling gebruikt.</li><li>Als de taal zich niet in de vorige lijst bevindt, wordt de tekst door de gesplitste vaardigheid op teken grenzen afgebroken.</li><li>Het opgeven van een taal code is handig om te voor komen dat een woord in de helft wordt geknipt voor niet-spatie talen, zoals Chinees, Japans en Koreaans.</li><li>Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), moet de standaard waarde voor Engels (en) voldoende zijn. </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
 | Parameternaam       | Beschrijving      |
 |----------------------|------------------|
-| tekst  | De tekst die moet worden gesplitst in subtekenreeks. |
-| languageCode  | Beschrijving De taal code voor het document. Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), is het veilig om deze invoer te verwijderen.  |
+| `text`    | De tekst die moet worden gesplitst in subtekenreeks. |
+| `languageCode`    | Beschrijving De taal code voor het document. Als u de taal niet kent (dat wil zeggen dat u de tekst moet splitsen voor invoer in de [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), is het veilig om deze invoer te verwijderen.  |
 
 ## <a name="skill-outputs"></a>Vaardigheids uitvoer 
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| textItems | Een matrix met subtekenreeksen die zijn geëxtraheerd. |
+| `textItems`   | Een matrix met subtekenreeksen die zijn geëxtraheerd. |
 
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie

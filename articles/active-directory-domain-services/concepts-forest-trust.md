@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5c0878a5999f1d7d716d8caaf9f3fffa5e401dc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476432"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982345"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Hoe vertrouwens relaties werken voor bron-forests in Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Een forestvertrouwensrelatie kan alleen worden gemaakt tussen een forest-hoofd d
 
 In het volgende diagram ziet u twee afzonderlijke forest-vertrouwens relaties tussen drie AD DS forests in één organisatie.
 
-![Diagram van forest-vertrouwens relaties binnen één organisatie](./media/concepts-forest-trust/forest-trusts.png)
+![Diagram van forest-vertrouwens relaties binnen één organisatie](./media/concepts-forest-trust/forest-trusts-diagram.png)
 
 Deze voorbeeld configuratie biedt de volgende toegang:
 
@@ -162,7 +162,7 @@ Wanneer een werk station in het ene forest probeert toegang te krijgen tot gegev
 
 Het volgende diagram en de stappen bieden een gedetailleerde beschrijving van het Kerberos-verificatie proces dat wordt gebruikt wanneer computers met Windows proberen toegang te krijgen tot bronnen van een computer die zich in een ander forest bevindt.
 
-![Diagram van het Kerberos-proces via een forest-vertrouwens relatie](media/concepts-forest-trust/kerberos-over-forest-trust-process.png)
+![Diagram van het Kerberos-proces via een forest-vertrouwens relatie](media/concepts-forest-trust/kerberos-over-forest-trust-process-diagram.png)
 
 1. *Gebruiker1* meldt zich aan bij *Werkstation1* met behulp van referenties van het domein *Europe.tailspintoys.com* . De gebruiker probeert vervolgens toegang te krijgen tot een gedeelde bron op *FileServer1* die zich in het forest *USA.wingtiptoys.com* bevindt.
 
@@ -276,7 +276,7 @@ Beheerders kunnen *Active Directory domeinen en vertrouwens relaties*, *netdom* 
 
 Zie [Hoe kunnen forest-vertrouwens relaties werken in Azure AD DS?][concepts-trust] voor meer informatie over resource forests.
 
-Zie [een door azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een Azure AD DS beheerd domein met een resource-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein (preview-versie)][create-forest-trust].
+Zie [een door Azure AD DS beheerd domein maken en configureren][tutorial-create-advanced]om aan de slag te gaan met het maken van een beheerd domein met een bron-forest. U kunt vervolgens [een uitgaande forest-vertrouwens relatie maken met een on-premises domein (preview-versie)][create-forest-trust].
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

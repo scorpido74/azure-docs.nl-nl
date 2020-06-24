@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 04/24/2020
-ms.openlocfilehash: ede385670dec6629cc3e75a9d09c0ceb14362bdc
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/11/2020
+ms.openlocfilehash: 7d631698f7c00a838f28d55b6b26055e686d27db
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119387"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976996"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors voor Azure Logic Apps
 
@@ -58,7 +58,7 @@ Connectors zijn beschikbaar als ingebouwde triggers en acties of als beheerde co
   |||
 
   > [!IMPORTANT]
-  > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie voor meer informatie [beleid voor gegevens beveiliging en privacybeleid voor Google connectors in azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Als u de Gmail-connector wilt gebruiken, kunnen alleen zakelijke accounts van G-Suite deze connector gebruiken zonder beperkingen in Logic apps. Als u een Gmail-Consumer-account hebt, kunt u deze connector gebruiken met alleen specifieke door Google goedgekeurde Services, of u kunt [een Google-client-app maken die voor verificatie met uw Gmail-connector wordt gebruikt](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Zie [Beleid voor gegevensbeveiliging en privacybeleid voor Google-connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md) voor meer informatie.
 
 <a name="integration-service-environment"></a>
 
@@ -106,7 +106,7 @@ Logic Apps biedt ingebouwde acties voor het uitvoeren van uw eigen code in de we
 
 |   |   |   |   |
 |---|---|---|---|
-| [![API-pictogram ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Aanroepen van Azure functions die aangepaste code fragmenten (C# of node. js) uitvoeren vanuit uw Logic apps. | [![Inline API-pictogram ][inline-code-icon]<br> **Inline code**][inline-code-doc] | Voeg java script-code fragmenten toe en voer deze uit vanuit uw Logic apps. |
+| [![API-pictogram ][azure-functions-icon]<br> **Azure functions**][azure-functions-doc] | Azure functions aanroepen waarmee aangepaste code fragmenten (C# of Node.js) uit uw Logic apps worden uitgevoerd. | [![Inline API-pictogram ][inline-code-icon]<br> **Inline code**][inline-code-doc] | Voeg java script-code fragmenten toe en voer deze uit vanuit uw Logic apps. |
 |||||
 
 ### <a name="control-workflow"></a>Werk stroom beheren
@@ -243,6 +243,12 @@ Als u Api's wilt aanroepen waarmee aangepaste code wordt uitgevoerd of die niet 
 > Aangepaste connectors die zijn gemaakt in een ISE werken niet met de on-premises gegevens gateway. Deze connectors hebben echter rechtstreeks toegang tot on-premises gegevens bronnen die zijn verbonden met een virtueel Azure-netwerk dat als host fungeert voor de ISE. Logic apps in een ISE hebben daarom waarschijnlijk niet de gegevens gateway nodig bij het communiceren met deze resources.
 >
 > Zie [verbinding maken met virtuele Azure-netwerken vanuit Azure Logic apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)voor meer informatie over het maken van ISEs.
+
+<a name="block-connections"></a>
+
+## <a name="block-creating-connections"></a>Maken van verbindingen blok keren
+
+Als uw organisatie geen verbinding met specifieke bronnen kan maken met behulp van hun connectors in Azure Logic Apps, kunt u [de mogelijkheid blok keren om deze verbindingen](../logic-apps/block-connections-connectors.md) voor specifieke connectors in de werk stromen van logische apps te gebruiken met behulp van [Azure Policy](../governance/policy/overview.md). Zie voor meer informatie [blok keren verbindingen die zijn gemaakt door specifieke connectors in azure Logic apps](../logic-apps/block-connections-connectors.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -476,4 +482,3 @@ Als u Api's wilt aanroepen waarmee aangepaste code wordt uitgevoerd of die niet 
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "Berichten coderen die gebruikmaken van het X12-Protocol"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML-berichten transformeren"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML-berichten valideren"
-

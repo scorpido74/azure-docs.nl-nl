@@ -11,14 +11,14 @@ ms.author: larryfr
 author: blackmist
 ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 30b6412ed5a8462b1ce0d8351e9e86a16b2082da
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
+ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84670035"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84743504"
 ---
-# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eind punten bewaken en verzamelen
+# <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Gegevens van ML-webservice-eindpunten bewaken en verzamelen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In dit artikel leert u hoe u gegevens kunt verzamelen van en bewaakt modellen die zijn geïmplementeerd op web service-eind punten in azure Kubernetes service (AKS) of Azure Container Instances (ACI) door Azure-toepassing inzichten in te scha kelen via 
@@ -45,7 +45,7 @@ Naast het verzamelen van de uitvoer gegevens en het antwoord van een eind punt k
 ## <a name="web-service-metadata-and-response-data"></a>Meta gegevens en antwoord van de webservice
 
 > [!IMPORTANT]
-> Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden alleen de meest recente uitvoer van het model vastgelegd. 
+> Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet wordt bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd.
 
 Als u gegevens wilt vastleggen voor een aanvraag voor de webservice, voegt `print` u instructies toe aan uw score.py-bestand. Elke `print` instructie resulteert in één vermelding in de traceer tabel in Application Insights, onder het bericht `STDOUT` . De inhoud van de `print` instructie wordt opgenomen onder `customDimensions` en vervolgens `Contents` in de tracerings tabel. Als u een JSON-teken reeks afdrukt, produceert deze een hiërarchische gegevens structuur in de tracerings uitvoer onder `Contents` .
 
@@ -76,7 +76,7 @@ Als u aangepaste traceringen wilt registreren, volgt u het standaard implementat
 1. Als u gegevens wilt verzenden naar Application Insights tijdens de defactorion, werkt u het Score bestand bij door afdruk instructies toe te voegen. Om complexere informatie, zoals de gegevens van de aanvraag en het antwoord, te registreren in de vorm van een JSON-structuur. In het volgende voor beeld score.py-bestand wordt de tijd geregistreerd die het model heeft geïnitialiseerd, de invoer en uitvoer tijdens de afleiding en de tijd waarop fouten optreden:
 
     > [!IMPORTANT]
-    > Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden alleen de meest recente uitvoer van het model vastgelegd. Als de gegevens die u wilt vastleggen groter zijn dan 64 KB, moet u deze opslaan in Blob Storage met behulp van de gegevens in [gegevens verzamelen voor modellen in de productie omgeving](how-to-enable-data-collection.md).
+    > Met Azure-toepassing Insights worden alleen nettoladingen geregistreerd van Maxi maal 64 kB. Als deze limiet is bereikt, worden er mogelijk fouten weer geven, zoals onvoldoende geheugen of wordt er geen informatie vastgelegd. Als de gegevens die u wilt vastleggen groter zijn dan 64 KB, moet u deze opslaan in Blob Storage met behulp van de gegevens in [gegevens verzamelen voor modellen in de productie omgeving](how-to-enable-data-collection.md).
     
     ```python
     import pickle

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 51df588b1ccd41bf05d8851f00399b61292b0736
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84672762"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214095"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken
 
@@ -26,7 +26,7 @@ Voordat u begint, moet u [een commercieel Marketplace-account maken in Partner C
 2. Selecteer in het menu links de optie **commerciële Marketplace**-  >  **overzicht**.
 3. Selecteer op de pagina overzicht **+ nieuw aanbod**  >  **Dynamics 365 voor klant betrokkenheid & PowerApps**.
 
-    ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-cepa.png)
+    ![Illustreert het navigatie menu.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
 > Nadat een aanbieding is gepubliceerd, worden wijzigingen die in het partner centrum zijn aangebracht, alleen weer gegeven in de winkel wanneer u de aanbieding opnieuw publiceert. Zorg ervoor dat u altijd opnieuw publiceert nadat u wijzigingen hebt aangebracht.
@@ -60,7 +60,7 @@ Bied uw aanbod aan klanten gratis aan door een geldige URL op te geven (te begin
 
 #### <a name="free-trial-listing"></a>Gratis proef versie (lijst)
 
-Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (te beginnen met *http* of *https*), zodat deze een proef versie kan krijgen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
+Bied uw aanbieding aan klanten aan met een koppeling naar een gratis proef versie door een geldige URL op te geven (beginnend met `http` of `https` ), waar een proef versie kan worden verkregen.  Bijvoorbeeld `https://contoso.com/trial/my-app`. Gratis proef versies van aanbieding worden gemaakt, beheerd en geconfigureerd door uw service en er zijn geen abonnementen die door micro soft worden beheerd.
 
 > [!NOTE]
 > De tokens die uw toepassing via uw proef koppeling ontvangt, kunnen alleen worden gebruikt voor het verkrijgen van gebruikers gegevens via Azure Active Directory (Azure AD) om het maken van accounts in uw app te automatiseren. Micro soft-accounts worden niet ondersteund voor verificatie met behulp van dit token.
@@ -139,9 +139,24 @@ Geef hier Marketplace-Details op voor elke taal/markt, zoals aanbiedings naam, b
 > [!NOTE]
 > De inhoud van het aanbiedings aanbod (zoals de beschrijving, documenten, scherm afbeeldingen en gebruiks voorwaarden) is niet vereist voor het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="name"></a>Naam
+Hier volgt een voor beeld van hoe de aanbiedings gegevens worden weer gegeven in Microsoft AppSource (alle prijzen zijn bijvoorbeeld alleen bedoeld als voor beeld van de werkelijke kosten):
 
-De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
+:::image type="content" source="media/example-azure-marketplace-d365-customer-engagement.png" alt-text="Illustreert hoe deze aanbieding wordt weer gegeven in Microsoft AppSource.":::
+
+#### <a name="call-out-descriptions"></a>Beschrijvingen van aanroepen
+
+1. Logo
+2. Producten
+3. Categorieën
+4. Ondersteunings adres (koppeling)
+5. Gebruiksvoorwaarden adres (koppeling)
+6. Naam van aanbieding
+7. Beschrijving
+8. Scherm afbeeldingen/Video's
+
+### <a name="name"></a>Name
+
+De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld is vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
 ### <a name="short-description"></a>Korte beschrijving
 

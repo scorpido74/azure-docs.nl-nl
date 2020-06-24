@@ -6,17 +6,17 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6f697cf205af9bdfaadfe20e123bcf0b4935c90f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2ae3aa77383888c320ed58e03e73b2e306feeba
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829984"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213768"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problemen met Synapse SQL oplossen in azure Synapse Analytics
 
@@ -36,7 +36,7 @@ In dit artikel worden veelvoorkomende problemen met het oplossen van problemen i
 
 | Probleem                                                        | Oplossing                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Er ontbreken Azure AD-gebruikers in Visual Studio object Explorer           | Dit is een bekend probleem.  Als tijdelijke oplossing kunt u de gebruikers weer geven in [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Zie [verificatie voor Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
+| Er ontbreken Azure AD-gebruikers in Visual Studio object Explorer           | Dit is een bekend probleem.  Als tijdelijke oplossing kunt u de gebruikers weergeven in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Zie [verificatie voor Azure Synapse](sql-data-warehouse-authentication.md) voor meer informatie over het gebruik van Azure Active Directory met Synapse SQL-pool. |
 | Hand matige scripting, met behulp van de wizard scripting of het maken van verbinding via SSMS is traag, reageert niet of levert fouten op | Zorg ervoor dat gebruikers zijn gemaakt in de hoofd database. In script opties moet u er ook voor zorgen dat de engine Edition is ingesteld als ' Microsoft Azure SQL Data Warehouse Edition ' en het type engine is ' Microsoft Azure SQL Database '. |
 | Genereren van scripts mislukt in SSMS                               | Het genereren van een script voor de SQL-groep Synapse mislukt als de optie script voor afhankelijke objecten genereren is ingesteld op ' True '. Als tijdelijke oplossing moeten gebruikers hand matig naar **Hulpprogram ma's > opties->SQL Server-objectverkenner-> script genereren voor afhankelijke opties en ingesteld op ONWAAR** |
 
@@ -80,6 +80,6 @@ Als u meer informatie wilt over het vinden van oplossingen voor uw probleem, kun
 * [Functieverzoeken](https://feedback.azure.com/forums/307516-sql-data-warehouse)
 * [Video's](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Ondersteuningsticket maken](sql-data-warehouse-get-started-create-support-ticket.md)
-* [Micro soft Q&een vraag pagina](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
+* [Microsoft Q&A-vragenpagina](https://docs.microsoft.com/answers/topics/azure-synapse-analytics.html)
 * [Stack Overflow forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

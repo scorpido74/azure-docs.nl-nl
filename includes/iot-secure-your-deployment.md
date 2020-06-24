@@ -51,9 +51,9 @@ Elk IoT Hub heeft een [identiteits register](../articles/iot-hub/iot-hub-devguid
 
 [IOT hub ondersteunt protocollen zoals MQTT, AMQP en http](../articles//iot-hub/iot-hub-devguide-security.md). Elk van deze protocollen gebruikt beveiligings tokens van het IoT-apparaat om een andere IoT Hub:
 
-* AMQP: SASL PLAIN en AMQP beveiliging op basis van claims`{policyName}@sas.root.{iothubName}` (met IOT hub-tokens. `{deviceId}` met tokens in het bereik van het apparaat).
+* AMQP: SASL PLAIN en AMQP op claims gebaseerde beveiliging ( `{policyName}@sas.root.{iothubName}` met tokens van IOT-hub, `{deviceId}` met tokens van het bereik van het apparaat).
 
-* MQTT: Connect-pakket `{deviceId}` gebruikt als `{ClientId}`de `{IoThubhostname}/{deviceId}` , in het veld **username** en een SAS-token in het veld **wacht woord** .
+* MQTT: CONNECT-pakket gebruikt `{deviceId}` als de `{ClientId}` , `{IoThubhostname}/{deviceId}` in het veld **username** en een SAS-token in het veld **wacht woord** .
 
 * HTTP: er bevindt zich een geldig token in de header van de autorisatie aanvraag.
 
@@ -73,7 +73,7 @@ Inrichtings stroom op hoog niveau:
 
 ### <a name="root-certificate-on-device"></a>Basis certificaat op het apparaat
 
-Tijdens het tot stand brengen van een beveiligde TLS-verbinding met IoT Hub, verifieert het IoT-apparaat IoT Hub met behulp van een basis certificaat dat deel uitmaakt van de SDK van het apparaat. Het certificaat bevindt zich in de map\\c\\-certificaten onder de hoofdmap van de opslag plaats voor de C client-SDK. Hoewel deze basis certificaten lang worden bewaard, kunnen ze nog steeds verlopen of worden ingetrokken. Als het certificaat op het apparaat niet kan worden bijgewerkt, is het mogelijk dat het apparaat niet meer kan worden verbonden met de IoT Hub (of een andere Cloud service). Een manier om het basis certificaat bij te werken wanneer het IoT-apparaat effectief wordt geïmplementeerd, vermindert dit risico.
+Tijdens het tot stand brengen van een beveiligde TLS-verbinding met IoT Hub, verifieert het IoT-apparaat IoT Hub met behulp van een basis certificaat dat deel uitmaakt van de SDK van het apparaat. Het certificaat bevindt zich in de map \\ c- \\ certificaten onder de hoofdmap van de opslag plaats voor de C client-SDK. Hoewel deze basis certificaten lang worden bewaard, kunnen ze nog steeds verlopen of worden ingetrokken. Als het certificaat op het apparaat niet kan worden bijgewerkt, is het mogelijk dat het apparaat niet meer kan worden verbonden met de IoT Hub (of een andere Cloud service). Een manier om het basis certificaat bij te werken wanneer het IoT-apparaat effectief wordt geïmplementeerd, vermindert dit risico.
 
 ## <a name="securing-the-connection"></a>De verbinding beveiligen
 
@@ -91,7 +91,7 @@ Azure IoT Hub maakt definitie van [beleid voor toegangs beheer](../articles/iot-
 
 * **DeviceConnect**. Hiermee wordt toegang verleend aan aan het apparaat gerichte eind punten. Het geeft bijvoorbeeld toestemming om apparaat-naar-Cloud-berichten te verzenden en Cloud-naar-apparaat-berichten te ontvangen. Deze machtiging wordt gebruikt door apparaten.
 
-Er zijn twee manieren om **DeviceConnect** -machtigingen te verkrijgen met IOT hub met [beveiligings tokens](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): met behulp van een apparaat-id-sleutel of een gedeelde toegangs sleutel. Daarnaast is het belang rijk te weten dat alle functies die toegankelijk zijn vanaf apparaten, worden weer gegeven in het ontwerp `/devices/{deviceId}`van eind punten met voor voegsel.
+Er zijn twee manieren om **DeviceConnect** -machtigingen te verkrijgen met IOT hub met [beveiligings tokens](../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app): met behulp van een apparaat-id-sleutel of een gedeelde toegangs sleutel. Daarnaast is het belang rijk te weten dat alle functies die toegankelijk zijn vanaf apparaten, worden weer gegeven in het ontwerp van eind punten met voor voegsel `/devices/{deviceId}` .
 
 [Service onderdelen kunnen alleen beveiligings tokens genereren](../articles/iot-hub/iot-hub-devguide-security.md#use-security-tokens-from-service-components) met behulp van het beleid voor gedeelde toegang, waarbij de juiste machtigingen worden verleend.
 
@@ -103,7 +103,7 @@ Gegevens die worden opgenomen door Azure IoT Hub kunnen worden gebruikt door div
 
 * [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/): realtime stroom verwerking in de Cloud waarmee u snel een goedkope analyse oplossing kunt ontwikkelen en implementeren om realtime inzichten te verkrijgen op basis van apparaten, Sens oren, infra structuur en toepassingen. De gegevens van deze volledig beheerde service kunnen naar elk volume worden geschaald, terwijl toch hoge door Voer, lage latentie en tolerantie wordt bereikt.
 
-* [Azure-app Services](https://azure.microsoft.com/services/app-service/): een Cloud platform voor het bouwen van krachtige web-en mobiele apps die overal verbinding maken met gegevens. in de Cloud of on-premises. Bouw aantrekkelijke mobiele apps voor iOS, Android en Windows. Integreer met uw software als een service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit tot tien tallen Cloud Services en zakelijke toepassingen. Code in uw favoriete taal en IDE (.NET, node. js, PHP, python of Java) om sneller dan ooit web-apps en Api's te bouwen.
+* [Azure-app Services](https://azure.microsoft.com/services/app-service/): een Cloud platform voor het bouwen van krachtige web-en mobiele apps die overal verbinding maken met gegevens. in de Cloud of on-premises. Bouw aantrekkelijke mobiele apps voor iOS, Android en Windows. Integreer met uw software als een service (SaaS) en zakelijke toepassingen met out-of-the-box-connectiviteit tot tien tallen Cloud Services en zakelijke toepassingen. Code in uw favoriete taal en IDE (.NET, Node.js, PHP, python of Java) om sneller dan ooit web-apps en Api's te bouwen.
 
 * [Logic apps](https://azure.microsoft.com/services/app-service/logic/): de Logic apps functie van Azure app service helpt uw IOT-oplossing te integreren met uw bestaande line-of-Business-systemen en om werk stroom processen te automatiseren. Met Logic Apps kunnen ontwikkel aars werk stromen ontwerpen die beginnen met een trigger en vervolgens een reeks stappen uitvoeren: regels en acties die gebruikmaken van krachtige connectors om te integreren met uw bedrijfs processen. Logic Apps biedt kant-en-klare connectiviteit met een aanzienlijk ecosysteem van SaaS-, Cloud-en on-premises toepassingen.
 

@@ -4,27 +4,27 @@ description: Het beheer programma voor Windows virtueel bureau blad implementere
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d9aea1f56b742d87df769a3206f15024afdf87b3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a500ef44170f23c8acdf752393389a4af06a798
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983088"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85214176"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
 
 >[!IMPORTANT]
->Deze inhoud is van toepassing op de najaar 2019-release die geen ondersteuning biedt voor Azure Resource Manager virtueel-bureaublad objecten van Windows.
+>Deze inhoud is van toepassing op de update uit het najaar van 2019 die geen ondersteuning biedt voor Azure Resource Manager Windows Virtual Desktop-objecten.
 
 In dit artikel wordt uitgelegd hoe u het beheer programma implementeert met behulp van Power shell.
 
 ## <a name="important-considerations"></a>Belangrijke overwegingen
 
-Elk Azure Active Directory (Azure AD)-abonnement van de Tenant moet een eigen afzonderlijke implementatie van het beheer programma hebben. Dit hulp programma biedt geen ondersteuning voor B2B-scenario's (Business-to-Business) van Azure AD. 
+Elk Azure Active Directory (Azure AD)-abonnement van de Tenant moet een eigen afzonderlijke implementatie van het beheer programma hebben. Dit hulp programma biedt geen ondersteuning voor B2B-scenario's (Business-to-Business) van Azure AD.
 
 Dit beheer programma is een voor beeld. Micro soft zal belang rijke updates voor de beveiliging en kwaliteit bieden. [De bron code is beschikbaar in github](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy). Of u nu een klant of partner bent, we raden u aan het hulp programma aan te passen aan de behoeften van uw bedrijf.
 
@@ -44,7 +44,7 @@ Voordat u het beheer programma implementeert, hebt u een Azure Active Directory-
 
 Nadat u het beheer programma hebt geïmplementeerd en geconfigureerd, raden we u aan een gebruiker te vragen de beheer GEBRUIKERSINTERFACE te starten om ervoor te zorgen dat alles werkt. De gebruiker die de beheer GEBRUIKERSINTERFACE start, moet beschikken over een roltoewijzing waarmee ze de Windows Virtual Desktop-Tenant kunnen weer geven of bewerken.
 
-## <a name="set-up-powershell"></a>Power shell instellen
+## <a name="set-up-powershell"></a>PowerShell instellen
 
 Ga aan de slag door u aan te melden bij zowel de AZ-als Azure AD Power shell-modules. U kunt als volgt aanmelden:
 
@@ -93,7 +93,7 @@ Nu u de registratie van de Azure AD-app hebt voltooid, kunt u het beheer program
 ## <a name="deploy-the-management-tool"></a>Hulpprogramma voor beheer implementeren
 
 Voer de volgende Power shell-opdrachten uit om het beheer hulpprogramma te implementeren en dit te koppelen aan de service-principal die u zojuist hebt gemaakt:
-     
+
 ```powershell
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
@@ -120,7 +120,7 @@ Voer de volgende Power shell-opdrachten uit om de web-app-URL op te halen en in 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName
 $redirectUri = "https://" + $webApp.DefaultHostName + "/"
-Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri  
+Get-AzureADApplication -All $true | where { $_.AppId -match $servicePrincipalCredentials.UserName } | Set-AzureADApplication -ReplyUrls $redirectUri
 ```
 
 Nu u een omleidings-URI hebt toegevoegd, moet u de API-URL bijwerken zodat het beheer programma kan communiceren met de API-back-end-service.
@@ -143,12 +143,12 @@ De configuratie van de Azure AD-toepassing controleren en toestemming geven:
 2. Zoek in de zoek balk aan de bovenkant van de Azure Portal naar **app-registraties** en selecteer het item onder **Services**.
 3. Selecteer **alle toepassingen** en zoek de unieke app-naam die u hebt ingevoerd voor het Power shell-script in [een registratie voor een Azure Active Directory-app maken](#create-an-azure-active-directory-app-registration).
 4. Selecteer in het deel venster aan de linkerkant van de browser **verificatie** en zorg ervoor dat de omleidings-URI hetzelfde is als de web-app-URL voor het beheer programma, zoals wordt weer gegeven in de volgende afbeelding.
-   
-   [![De verificatie pagina met de ingevoerde omleidings-URI](../media/management-ui-redirect-uri-inline.png)](../media/management-ui-redirect-uri-expanded.png#lightbox)
+
+   [![De verificatie pagina met de ingevoerde omleidings-URI ](../media/management-ui-redirect-uri-inline.png)](../media/management-ui-redirect-uri-expanded.png#lightbox)
 
 5. Selecteer in het linkerdeel venster **API-machtigingen** om te bevestigen dat er machtigingen zijn toegevoegd. Als u een globale beheerder bent, selecteert u de knop **toestemming van `tenantname` beheerder verlenen voor** en volgt u de dialoog prompts om toestemming van de beheerder voor uw organisatie op te geven.
-    
-    [![De pagina](../media/management-ui-permissions-inline.png) API-machtigingen](../media/management-ui-permissions-expanded.png#lightbox)
+
+    [![De pagina ](../media/management-ui-permissions-inline.png) API-machtigingen](../media/management-ui-permissions-expanded.png#lightbox)
 
 U kunt nu beginnen met het beheer programma.
 
@@ -158,13 +158,13 @@ Nu u het beheer programma op elk gewenst moment hebt ingesteld, kunt u dit altij
 
 1. Open de URL van de web-app in een webbrowser. Als u de URL niet meer weet, kunt u zich aanmelden bij Azure, de app service vinden die u voor het beheer programma hebt geïmplementeerd en vervolgens de URL selecteren.
 2. Meld u aan met de referenties van uw Windows-virtueel bureau blad.
-   
+
    > [!NOTE]
    > Als u geen beheerder toestemming hebt gegeven tijdens het configureren van het beheer programma, moet elke gebruiker die zich aanmeldt een eigen toestemming van de gebruiker opgeven om het hulp programma te kunnen gebruiken.
 
 3. Wanneer u wordt gevraagd om een Tenant groep te kiezen, selecteert u **standaard Tenant groep** in de vervolg keuzelijst.
 4. Wanneer u **standaard Tenant groep**selecteert, wordt er een menu aan de linkerkant van het venster weer gegeven. Zoek in dit menu de naam van uw Tenant groep en selecteer deze.
-   
+
    > [!NOTE]
    > Als u een aangepaste Tenant groep hebt, voert u de naam hand matig in in plaats van te kiezen in de vervolg keuzelijst.
 

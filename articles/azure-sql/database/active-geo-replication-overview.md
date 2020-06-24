@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: 051187a7dde7bf0ee04f8323cdecba01760de13d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5449bb335232d3c7a6f2b97c5cce41a8bd2cf0f4
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046682"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249751"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>Actieve geo-replicatie-Azure SQL Database maken en gebruiken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -251,7 +251,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |FAILOVER of FORCE_FAILOVER_ALLOW_DATA_LOSS gebruiken om naar een secundaire data base te scha kelen die primair moet zijn om FAILOVER te initiëren |
 | [ALTER DATA BASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Gebruik secundaire verwijderen op de SERVER om een gegevens replicatie tussen een SQL Database en de opgegeven secundaire data base te beëindigen. |
 | [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Retourneert informatie over alle bestaande replicatie koppelingen voor elke Data Base op een server. |
-| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een opgegeven SQL database opgehaald. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Hiermee worden de laatste replicatie tijd, de laatste replicatie vertraging en andere informatie over de replicatie koppeling voor een bepaalde data base opgehaald. |
 | [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Hier wordt de status weer gegeven voor alle database bewerkingen, inclusief de status van de replicatie koppelingen. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |zorgt ervoor dat de toepassing wacht totdat alle doorgevoerde trans acties worden gerepliceerd en bevestigd door de actieve secundaire data base. |
 |  | |
@@ -268,7 +268,7 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Hiermee maakt u een secundaire database voor een bestaande database en wordt gegevensreplicatie gestart. |
 | [Set-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesecondary) |Hiermee wordt overgeschakeld op een secundaire database als primaire om de failover te initiëren. |
 | [Remove-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesecondary) |Hiermee wordt gegevensreplicatie tussen een SQL Database en de opgegeven secundaire database beëindigd. |
-| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Hiermee worden de geo-replicatie koppelingen tussen een Azure SQL Database en een resource groep of logische SQL-server opgehaald. |
+| [Get-AzSqlDatabaseReplicationLink](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasereplicationlink) |Hiermee haalt u de geo-replicatiekoppelingen tussen een Azure SQL Database en een resourcegroep of logische SQL Server op. |
 |  | |
 
 > [!IMPORTANT]
@@ -282,8 +282,8 @@ Zoals eerder besproken, kan actieve geo-replicatie ook programmatisch worden beh
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Retourneert de status tijdens het maken van een bewerking. |
 | [Secundaire Data Base als primair instellen (geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failover) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
 | [Secundaire Data Base als primair instellen (niet-geplande failover)](https://docs.microsoft.com/rest/api/sql/replicationlinks/failoverallowdataloss) |Hiermee wordt ingesteld welke secundaire data base primair is door een failover uit te geven van de huidige primaire data base. Deze bewerking kan leiden tot verlies van gegevens. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppeling ophalen](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Hiermee haalt u een specifieke replicatie koppeling voor een gegeven SQL database op in een geo-replicatie relatie. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
-| [Replicatie koppelingen-lijst op Data Base](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Hiermee haalt u alle replicatie koppelingen voor een bepaalde SQL database op in een geo-replicatie relatie. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. |
+| [Replicatie koppeling ophalen](https://docs.microsoft.com/rest/api/sql/replicationlinks/get) |Hiermee wordt een specifieke replicatie koppeling voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. **Deze optie wordt niet ondersteund voor SQL Managed instance.**|
+| [Replicatie koppelingen-lijst op Data Base](https://docs.microsoft.com/rest/api/sql/replicationlinks/listbydatabase) | Hiermee worden alle replicatie koppelingen voor een bepaalde data base in een geo-replicatie relatie opgehaald. Hiermee wordt de informatie opgehaald die zichtbaar is in de catalogus weergave sys. geo_replication_links. |
 | [Replicatie koppeling verwijderen](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Hiermee verwijdert u een database replicatie koppeling. Kan niet worden uitgevoerd tijdens failover. |
 |  | |
 

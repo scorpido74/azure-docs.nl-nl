@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59335c5c4ebd2688097539594f11ea349939eff
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276905"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298511"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions Premium-abonnement
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-In dit voor beeld vervangt `<RESOURCE_GROUP>` u door de resource groep `<PLAN_NAME>` en met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt `--is-linux` , neemt u de optie op.
+In dit voor beeld vervangt `<RESOURCE_GROUP>` u door de resource groep en `<PLAN_NAME>` met een naam voor uw abonnement dat uniek is in de resource groep. Geef een [ondersteund `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)op. Als u een Premium-abonnement wilt maken dat Linux ondersteunt, neemt u de `--is-linux` optie op.
 
 Met het plan dat u hebt gemaakt, kunt u [AZ functionapp Create](/cli/azure/functionapp#az-functionapp-create) gebruiken om uw functie-app te maken. In de portal worden zowel het abonnement als de app tegelijkertijd gemaakt. Zie [een functie-app maken in een Premium-abonnement](scripts/functions-cli-create-premium-plan.md)voor een voor beeld van een volledig Azure CLI-script.
 
@@ -61,11 +61,13 @@ Zie [uw functie-app integreren met een VNet](functions-create-vnet.md)voor meer 
 
 ### <a name="rapid-elastic-scale"></a>Snel elastisch schalen
 
-Er worden automatisch extra reken instanties toegevoegd voor uw app met dezelfde snelle schaal logica als het verbruiks abonnement.  Zie [functie schaal en hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie over de werking van schalen.
+Er worden automatisch extra reken instanties toegevoegd voor uw app met dezelfde snelle schaal logica als het verbruiks abonnement. Apps in hetzelfde App Service schema worden onafhankelijk van elkaar geschaald op basis van de behoeften van een afzonderlijke app. Functions-apps in hetzelfde App Service plan delen VM-resources zo nodig om de kosten te verlagen, indien mogelijk. Het aantal apps dat is gekoppeld aan een virtuele machine is afhankelijk van de footprint van elke app en de grootte van de virtuele machine.
+
+Zie [functie schaal en hosting](./functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie over de werking van schalen.
 
 ### <a name="longer-run-duration"></a>Langere duur van de uitvoering
 
-Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host. json-configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze niet-gebonden te maken voor apps voor Premium-abonnementen (gegarandeerd 60 minuten).
+Azure Functions in een verbruiks abonnement zijn beperkt tot 10 minuten voor één uitvoering.  In het Premium-abonnement wordt de uitvoerings duur standaard ingesteld op 30 minuten om overmatige uitvoeringen te voor komen. U kunt echter [de host.jsop de configuratie wijzigen](./functions-host-json.md#functiontimeout) om deze niet-gebonden te maken voor apps uit het Premium-abonnement (gegarandeerd 60 minuten).
 
 ## <a name="plan-and-sku-settings"></a>Plannings-en SKU-instellingen
 
@@ -97,7 +99,7 @@ Bij het maken of schalen van uw plan kunt u kiezen uit drie instantie grootten. 
 ### <a name="memory-utilization-considerations"></a>Overwegingen voor geheugen gebruik
 Als u een computer met meer geheugen gebruikt, betekent dat niet altijd dat de functie-app alle beschik bare geheugen zal gebruiken.
 
-Een Java script-functie-app is bijvoorbeeld beperkt door de standaard limiet voor geheugen in node. js. Als u deze limiet voor vaste geheugen wilt verhogen, voegt `languageWorkers:node:arguments` u de app- `--max-old-space-size=<max memory in MB>`instelling met de waarde.
+Een Java script-functie-app is bijvoorbeeld beperkt door de standaard limiet voor geheugen in Node.js. Als u deze limiet voor vaste geheugen wilt verhogen, voegt u de app-instelling `languageWorkers:node:arguments` met de waarde `--max-old-space-size=<max memory in MB>` .
 
 ## <a name="region-max-scale-out"></a>Schaal van regio Maxi maal
 
@@ -124,7 +126,7 @@ Bekijk de volledige regionale Beschik baarheid van functies hier: [Azure.com](ht
 |Korea - centraal| 100 | 20 |
 |VS - noord-centraal| 100 | 20 |
 |Europa - noord| 100 | 20 |
-|Noor wegen-Oost| 20 | 20 |
+|Noorwegen - oost| 20 | 20 |
 |VS - zuid-centraal| 100 | 20 |
 |India - zuid | 100 | Niet beschikbaar |
 |Azië - zuidoost| 100 | 20 |

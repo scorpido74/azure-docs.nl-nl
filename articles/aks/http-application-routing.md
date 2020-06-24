@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 6ffc9daaf1b87fc9fb6ebbb0f2787f07282afe5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56416b540072359169e4eb6da67f15588fc4daf4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632405"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298681"
 ---
 # <a name="http-application-routing"></a>Routering van HTTP-toepassing
 
@@ -38,24 +38,25 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addo
 ```
 
 > [!TIP]
-> Als u meerdere invoeg toepassingen wilt inschakelen, geeft u ze op als een door komma's gescheiden lijst. Als u bijvoorbeeld HTTP-toepassings Routering en-bewaking wilt inschakelen, gebruikt `--enable-addons http_application_routing,monitoring`u de indeling.
+> Als u meerdere invoeg toepassingen wilt inschakelen, geeft u ze op als een door komma's gescheiden lijst. Als u bijvoorbeeld HTTP-toepassings Routering en-bewaking wilt inschakelen, gebruikt u de indeling `--enable-addons http_application_routing,monitoring` .
 
-U kunt ook HTTP-route ring inschakelen op een bestaand AKS-cluster met behulp van de opdracht [AZ AKS Enable-addons][az-aks-enable-addons] . Als u HTTP-route ring wilt inschakelen op een bestaand `--addons` cluster, voegt u de para meter toe en geeft u *http_application_routing* op, zoals in het volgende voor beeld wordt getoond:
+U kunt ook HTTP-route ring inschakelen op een bestaand AKS-cluster met behulp van de opdracht [AZ AKS Enable-addons][az-aks-enable-addons] . Als u HTTP-route ring wilt inschakelen op een bestaand cluster, voegt u de `--addons` para meter toe en geeft u *http_application_routing* op, zoals in het volgende voor beeld wordt getoond:
 
 ```azurecli
 az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
 ```
 
-Nadat het cluster is geïmplementeerd of bijgewerkt, gebruikt u de opdracht [AZ AKS show][az-aks-show] om de naam van de DNS-zone op te halen. Deze naam is nodig om toepassingen te implementeren in het AKS-cluster.
+Nadat het cluster is geïmplementeerd of bijgewerkt, gebruikt u de opdracht [AZ AKS show][az-aks-show] om de naam van de DNS-zone op te halen. 
 
 ```azurecli
 az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 ```
 
-Resultaat
+Deze naam is nodig om toepassingen te implementeren in het AKS-cluster en wordt weer gegeven in de volgende voorbeeld uitvoer:
 
+```console
 9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
-
+```
 
 ## <a name="deploy-http-routing-portal"></a>HTTP-route ring implementeren: Portal
 
@@ -76,8 +77,7 @@ annotations:
   kubernetes.io/ingress.class: addon-http-application-routing
 ```
 
-Maak een bestand met de naam **samples-http-Application-Routing. yaml** en kopieer de volgende YAML. Update `<CLUSTER_SPECIFIC_DNS_ZONE>` op regel 43 met de naam van de DNS-zone die in de vorige stap van dit artikel is verzameld.
-
+Maak een bestand met de naam **samples-http-Application-Routing. yaml** en kopieer de volgende YAML. Update op regel 43 `<CLUSTER_SPECIFIC_DNS_ZONE>` met de naam van de DNS-zone die in de vorige stap van dit artikel is verzameld.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -136,6 +136,12 @@ spec:
 ```
 
 Gebruik de opdracht [kubectl Toep assen][kubectl-apply] om de resources te maken.
+
+```bash
+kubectl apply -f samples-http-application-routing.yaml
+```
+
+In het volgende voor beeld worden de gemaakte resources weer gegeven:
 
 ```bash
 $ kubectl apply -f samples-http-application-routing.yaml
@@ -262,7 +268,13 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 
 ## <a name="clean-up"></a>Opruimen
 
-Verwijder de gekoppelde Kubernetes-objecten die in dit artikel zijn gemaakt.
+Verwijder de gekoppelde Kubernetes-objecten die in dit artikel zijn gemaakt met behulp van `kubectl delete` .
+
+```bash
+kubectl delete -f samples-http-application-routing.yaml
+```
+
+In de voorbeeld uitvoer ziet u dat Kubernetes-objecten zijn verwijderd.
 
 ```bash
 $ kubectl delete -f samples-http-application-routing.yaml

@@ -6,19 +6,19 @@ author: mlee3gsd
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90e339ba8454dfdfc3f724ea12932a3e8e5912c2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633284"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85213343"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics gebruiken met Azure Synapse Analytics
+# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics met Azure Synapse Analytics gebruiken
 
 Azure Stream Analytics is een volledig beheerde service met lage latentie en een Maxi maal beschik bare, schaal bare complexe gebeurtenis verwerking via streaming-gegevens in de Cloud. Lees de [Inleiding tot Azure stream Analytics voor](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)meer informatie over de basis principes. U kunt vervolgens leren hoe u een end-to-end-oplossing maakt met Stream Analytics door de zelf studie [aan de slag met Azure stream Analytics](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) te volgen.
 
@@ -102,7 +102,7 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 Klik in de Azure Portal voor Stream Analytics taak op de naam van uw taak.  Klik op de knop ***testen*** in het deel venster ***uitvoer Details*** .
 
-![De knop testen op Details](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) van Outpout als de verbinding met de data base slaagt, wordt er een melding weer geven in de portal.
+![De knop testen op Details van Outpout ](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) als de verbinding met de data base slaagt, wordt er een melding weer geven in de portal.
 
 ### <a name="step-6"></a>Stap 6
 

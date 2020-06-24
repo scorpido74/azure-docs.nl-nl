@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: ee15c3c41ec2ddaa564011e8fb7d2c90472cc40f
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: aeb3273622b863f04c73561520efe3be6cc6fec2
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84466082"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804922"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Power shell gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2
 
@@ -83,13 +83,13 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 
-Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de- `New-AzDatalakeGen2FileSystem` cmdlet. 
+Een bestands systeem fungeert als een container voor uw bestanden. U kunt er een maken met behulp van de- `New-AzStorageContainer` cmdlet. 
 
 In dit voor beeld wordt een bestands systeem gemaakt met de naam `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
-New-AzDatalakeGen2FileSystem -Context $ctx -Name $filesystemName
+New-AzStorageContainer -Context $ctx -Name $filesystemName
 ```
 
 ## <a name="create-a-directory"></a>Een map maken
@@ -363,7 +363,7 @@ $Token = $Null
 do
 {
      $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
-     if($items.Length -le 0) { Break;}
+     if($items.Count -le 0) { Break;}
      $items | Update-AzDataLakeGen2Item -Acl $acl
      $Token = $items[$items.Count -1].ContinuationToken;
 }
@@ -411,7 +411,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 In de volgende tabel ziet u hoe de cmdlets die worden gebruikt voor Data Lake Storage Gen1 worden toegewezen aan de cmdlets voor Data Lake Storage Gen2.
 
-|Data Lake Storage Gen1-cmdlet| Data Lake Storage Gen2-cmdlet| Opmerkingen |
+|Data Lake Storage Gen1-cmdlet| Data Lake Storage Gen2-cmdlet| Notities |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Standaard worden met de cmdlet Get-AzDataLakeGen2ChildItem alleen de onderliggende items op het eerste niveau weer gegeven. Met de para meter-recursief worden onderliggende items recursief weer gegeven. |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|De uitvoer items van de cmdlet Get-AzDataLakeGen2Item hebben de volgende eigenschappen: ACL, eigenaar, groep, machtiging.|

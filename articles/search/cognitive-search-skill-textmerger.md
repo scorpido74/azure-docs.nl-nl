@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: f713eb71d375a3388c4b238656355595354b9806
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162341"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84982013"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Cognitieve vaardigheid van tekst samen voegen
 
@@ -31,8 +31,8 @@ Parameters zijn hoofdlettergevoelig.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| insertPreTag  | De teken reeks die voor elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt `""`u de waarde in op.  |
-| insertPostTag | De teken reeks die na elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt `""`u de waarde in op.  |
+| `insertPreTag`    | De teken reeks die voor elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt u de waarde in op `""` .  |
+| `insertPostTag`   | De teken reeks die na elke invoeging moet worden opgenomen. De standaardwaarde is `" "`. Als u de spatie wilt weglaten, stelt u de waarde in op `""` .  |
 
 
 ##  <a name="sample-input"></a>Voorbeeld invoer
@@ -55,7 +55,7 @@ Een JSON-document dat bruikbare invoer voor deze vaardigheid biedt, kan zijn:
 ```
 
 ##  <a name="sample-output"></a>Voorbeelduitvoer
-In dit voor beeld ziet u de uitvoer van de vorige invoer, *insertPreTag* ervan uitgaande dat de `" "`insertPreTag is ingesteld op en *insertPostTag* is ingesteld op `""`. 
+In dit voor beeld ziet u de uitvoer van de vorige invoer, ervan uitgaande dat de *insertPreTag* is ingesteld op `" "` en *insertPostTag* is ingesteld op `""` . 
 
 ```json
 {
@@ -108,18 +108,22 @@ In het volgende voor beeld wordt gebruikgemaakt van de OCR-vaardigheid voor het 
       "insertPostTag": " ",
       "inputs": [
         {
-          "name":"text", "source": "/document/content"
+          "name":"text", 
+          "source": "/document/content"
         },
         {
-          "name": "itemsToInsert", "source": "/document/normalized_images/*/text"
+          "name": "itemsToInsert", 
+          "source": "/document/normalized_images/*/text"
         },
         {
-          "name":"offsets", "source": "/document/normalized_images/*/contentOffset" 
+          "name":"offsets", 
+          "source": "/document/normalized_images/*/contentOffset" 
         }
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetName" : "merged_text"
+          "name": "mergedText", 
+          "targetName" : "merged_text"
         }
       ]
     }

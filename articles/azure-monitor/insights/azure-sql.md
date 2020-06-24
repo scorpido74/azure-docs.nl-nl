@@ -7,12 +7,12 @@ author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: 80c03661970ec218dd8b36664ecb67623068ac5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d1f8a30145cc0d61f110c0f47459a4f1db03325b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116553"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85249411"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database bewaken met behulp van Azure SQL-analyse (preview)
 
@@ -34,10 +34,10 @@ Azure SQL-analyse is een bewakings oplossing die alleen in de Cloud wordt onders
 | Verbonden bron | Ondersteund | Beschrijving |
 | --- | --- | --- |
 | [Diagnostische instellingen](../platform/diagnostic-settings.md) | **Ja** | Azure metrische en logboek gegevens worden rechtstreeks door Azure naar Azure Monitor logboeken verzonden. |
-| [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | Nee | Azure Monitor leest de gegevens van een opslag account niet. |
-| [Windows-agents](../platform/agent-windows.md) | Nee | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Linux-agents](../learn/quick-collect-linux-computer.md) | Nee | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
-| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | Nee | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
+| [Azure-opslag account](../platform/collect-azure-metrics-logs.md) | No | Azure Monitor leest de gegevens van een opslag account niet. |
+| [Windows-agents](../platform/agent-windows.md) | No | Directe Windows-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Linux-agents](../learn/quick-collect-linux-computer.md) | No | Direct Linux-agents worden niet gebruikt door Azure SQL-analyse. |
+| [Beheergroep System Center Operations Manager](../platform/om-agents.md) | No | Een directe verbinding van de Operations Manager agent naar Azure Monitor wordt niet gebruikt door Azure SQL-analyse. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL-analyse opties
 
@@ -48,9 +48,9 @@ De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee v
 | Resource per type | Perspectief dat alle bewaakte resources telt. | Ja | Ja |
 | Inzichten | Voorziet in een hiërarchisch inzoomen op de prestaties van Intelligent Insights. | Ja | Ja |
 | Fouten | Voorziet in hiërarchische inzoomen op SQL-fouten die zijn opgetreden in de data bases. | Ja | Ja |
-| Time-outs | Voorziet in hiërarchische inzoomen op SQL-time-outs die zijn opgetreden in de data bases. | Ja | Nee |
-| Blok keren | Voorziet in hiërarchische inzoomen op SQL-blok keringen die zijn opgetreden in de data bases. | Ja | Nee |
-| Data base wacht | Voorziet in hiërarchische inzoomen op het database niveau van SQL-wacht statistieken. Bevat samen vattingen van de totale wacht tijd en de wacht tijd per wacht type. |Ja | Nee |
+| Time-outs | Voorziet in hiërarchische inzoomen op SQL-time-outs die zijn opgetreden in de data bases. | Yes | Nee |
+| Blok keren | Voorziet in hiërarchische inzoomen op SQL-blok keringen die zijn opgetreden in de data bases. | Yes | Nee |
+| Data base wacht | Voorziet in hiërarchische inzoomen op het database niveau van SQL-wacht statistieken. Bevat samen vattingen van de totale wacht tijd en de wacht tijd per wacht type. |Yes | Nee |
 | Query duur | Biedt hiërarchische inzoomen op de query uitvoerings statistieken, zoals de query duur, het CPU-gebruik, het IO-gebruik van gegevens, het IO-gebruik van het logboek. | Ja | Ja |
 | Querywachttijden | Voorziet in hiërarchische inzoomen op de query wacht statistieken per wachten. | Ja | Ja |
 
@@ -58,11 +58,11 @@ De onderstaande tabel bevat een overzicht van de ondersteunde opties voor twee v
 
 Gebruik het proces beschreven in [Azure monitor oplossingen toevoegen van de Oplossingengalerie](../../azure-monitor/insights/solutions.md) om Azure SQL-analyse (preview) toe te voegen aan uw log Analytics-werk ruimte.
 
-### <a name="configure-azure-sql-databases-to-stream-diagnostics-telemetry"></a>Azure SQL-data bases configureren voor het streamen van de telemetrie diagnostische gegevens
+### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>Azure SQL Database voor het streamen van diagnostische gegevens configureren
 
 Zodra u Azure SQL-analyse oplossing hebt gemaakt in uw werk ruimte, moet u **elke resource configureren** die u wilt bewaken om de diagnostische telemetrie naar Azure SQL-analyse te streamen. Volg de gedetailleerde instructies op deze pagina:
 
-- Schakel Azure Diagnostics voor uw Azure SQL database in om de [telemetrie diagnostische gegevens naar Azure SQL-analyse te streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
+- Schakel Azure Diagnostics voor uw data base in om de [telemetrie diagnostische gegevens naar Azure SQL-analyse te streamen](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
 De bovenstaande pagina bevat ook instructies voor het inschakelen van ondersteuning voor het bewaken van meerdere Azure-abonnementen vanuit een enkele Azure SQL-analyse-werk ruimte als één glas venster.
 
