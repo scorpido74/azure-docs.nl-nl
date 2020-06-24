@@ -1,7 +1,7 @@
 ---
-title: Aangepaste opdrachten (preview)-spraak service
+title: 'Aangepaste opdrachten: spraak service'
 titleSuffix: Azure Cognitive Services
-description: Een overzicht van de functies, mogelijkheden en beperkingen voor aangepaste opdrachten (preview), een oplossing voor het maken van spraak toepassingen.
+description: Een overzicht van de functies, mogelijkheden en beperkingen voor aangepaste opdrachten, een oplossing voor het maken van spraak toepassingen.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,46 +10,49 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 3c02e823202aa848a4de94885276835899562e4b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9954e4fe739c055a00c2e3bc52b73200a7824a43
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266012"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299106"
 ---
-# <a name="what-is-custom-commands-preview"></a>Wat zijn aangepaste opdrachten (preview)?
+# <a name="what-is-custom-commands"></a>Wat zijn aangepaste opdrachten?
 
 Spraak toepassingen, zoals [spraak assistenten](voice-assistants.md) , Luis teren naar gebruikers en nemen een actie in antwoord, vaak gesp roken terug. Ze gebruiken [spraak-naar-tekst](speech-to-text.md) om de spraak van de gebruiker te transcriberen en vervolgens actie te ondernemen op het memorandum van natuurlijke taal van de tekst. Deze actie omvat vaak gesp roken uitvoer van de assistent die is gegenereerd met [tekst-naar-spraak](text-to-speech.md). Apparaten maken verbinding met assistenten met het object Speech SDK `DialogServiceConnector` .
 
-**Aangepaste opdrachten (preview)** is een gestroomlijnde oplossing voor het maken van spraak toepassingen. Het biedt een geïntegreerde ontwerp ervaring, een automatisch hosting model en relatief lagere complexiteit en andere opties, zoals [directe lijn spraak](direct-line-speech.md). Deze vereenvoudiging wordt echter geleverd met een lagere flexibiliteit. Aangepaste opdrachten (preview) zijn dus het meest geschikt voor het volt ooien van taken of voor scenario's met opdrachten en besturings elementen. Het is met name goed afgestemd op Internet of Things (IoT) en headless apparaten.
+Met **aangepaste opdrachten** kunt u eenvoudig geavanceerde spraak opdrachten maken die zijn geoptimaliseerd voor spraak-eerste interactie. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit, waarmee u zich kunt richten op het bouwen van de beste oplossing voor uw spraak-opdracht scenario's.
 
-Voor complexe conversatie-interacties en integratie met andere oplossingen, zoals de [Virtual assistent-oplossing en de ondernemings sjabloon,](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) wordt u geadviseerd om direct line speech te gebruiken.
+Aangepaste opdrachten zijn het meest geschikt voor het volt ooien van taken of voor het Toep assen van opdrachten en besturings elementen, met name voor Internet of Things IoT-apparaten (well-to-match), omgevings-en headless apparaten. Voor beelden hiervan zijn oplossingen voor horeca-, retail-en automobiel industrieën, zodat u de beste in de kamer opgeslagen spraak-ervaringen kunt bouwen voor uw gasten, de inventarisatie van uw winkel en de functionaliteit van het beheer binnen de auto kunt beheren terwijl u onderweg bent.
 
-Goede kandidaten voor aangepaste opdrachten (preview) hebben een vaste vocabulaire met goed gedefinieerde sets variabelen. Home Automation-taken, zoals het beheren van een thermo staat, zijn bijvoorbeeld ideaal.
+> [!TIP]
+> Bekijk onze voorbeeld demo's op onze landings pagina op [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
+
+Als u geïnteresseerd bent in het bouwen van complexe conversatie-apps, raden we u aan het bot Framework te proberen met behulp van de [Virtual assistent-oplossing](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). U kunt spraak toevoegen aan elke bot-Framework-bot met behulp van direct line speech.
+
+Goede kandidaten voor aangepaste opdrachten hebben een vaste vocabulaire met goed gedefinieerde sets variabelen. Home Automation-taken, zoals het beheren van een thermo staat, zijn bijvoorbeeld ideaal.
 
    ![Voor beelden van scenario's voor het volt ooien van taken](media/voice-assistants/task-completion-examples.png "voor beelden van taak voltooiing")
 
-## <a name="getting-started-with-custom-commands-preview"></a>Aan de slag met aangepaste opdrachten (preview-versie)
+## <a name="getting-started-with-custom-commands"></a>Aan de slag met aangepaste opdrachten
 
-De eerste stap voor het gebruik van aangepaste opdrachten (preview) om een spraak toepassing te maken, is door [een sleutel voor een spraak abonnement te verkrijgen](get-started.md) en de opbouw functie voor aangepaste opdrachten (preview) te openen in de [Speech Studio](https://speech.microsoft.com). Van daaruit kunt u een nieuwe toepassing voor aangepaste opdrachten (preview) maken en deze publiceren, waarna een toepassing op het apparaat kan communiceren met de spraak-SDK.
+Het doel van het maken van aangepaste opdrachten is het verminderen van uw cognitieve werk belasting voor meer informatie over de verschillende technologieën en focussen bij het bouwen van uw stem opdracht. Eerste stap voor het gebruik van aangepaste opdrachten voor <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">het maken van <span class="docon docon-navigate-external x-hidden-focus"></span> een Azure-spraak resource </a>. U kunt uw aangepaste opdrachten-app in het speech Studio ontwerpen en publiceren, waarna een toepassing op het apparaat kan communiceren met de spraak-SDK.
 
-   ![Ontwerp stroom voor aangepaste opdrachten (preview-versie)](media/voice-assistants/custom-commands-flow.png "De ontwerp stroom voor aangepaste opdrachten (preview-versie)")
+#### <a name="authoring-flow-for-custom-commands"></a>Ontwerp stroom voor aangepaste opdrachten
+   ![Ontwerp stroom voor aangepaste opdrachten](media/voice-assistants/custom-commands-flow.png "De aangepaste opdrachten stroom voor ontwerpen")
 
-We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren.
+Volg onze Snelstartgids om uw eerste aangepaste opdrachten voor app-code in minder dan 10 minuten te laten uitvoeren.
 
-* [Een aangepaste opdrachten (preview)-toepassing maken](quickstart-custom-speech-commands-create-new.md)
-* [Een aangepaste opdrachten (preview)-toepassing maken met para meters](quickstart-custom-speech-commands-create-parameters.md)
-* [Verbinding maken met een toepassing voor aangepaste opdrachten (preview) met de Speech SDK, C #](quickstart-custom-speech-commands-speech-sdk.md)
+* [Een spraakassistent maken met aangepaste opdrachten](quickstart-custom-commands-application.md)
 
-Wanneer u klaar bent met de Quick starts, kunt u onze How-Tos verkennen.
+Wanneer u klaar bent met de Snelstartgids, raadpleegt u onze hand leidingen voor gedetailleerde stappen voor het ontwerpen, ontwikkelen, opsporen, implementeren en integreren van een toepassing met aangepaste opdrachten.
 
-- [Validaties toevoegen aan aangepaste opdracht parameters](./how-to-custom-speech-commands-validations.md)
-- [Opdrachten op de client uitvoeren met de Speech SDK](./how-to-custom-speech-commands-fulfill-sdk.md)
-- [Een bevestiging toevoegen aan een aangepaste opdracht](./how-to-custom-speech-commands-confirmations.md)
-- [Een correctie met één stap toevoegen aan een aangepaste opdracht](./how-to-custom-speech-commands-one-step-correction.md)
+## <a name="building-voice-assistants-with-custom-commands"></a>Spraak assistenten bouwen met aangepaste opdrachten
+> [!VIDEO https://www.youtube.com/embed/1zr0umHGFyc]
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
-* [Ga naar de speech Studio om aangepaste opdrachten uit te proberen](https://speech.microsoft.com)
+* [Bekijk onze opslag plaats op GitHub voor voor beelden.](https://aka.ms/speech/cc-samples)
+* [Ga naar de speech Studio om aangepaste opdrachten uit te proberen](https://speech.microsoft.com/customcommands)
 * [De Speech SDK ophalen](speech-sdk.md)

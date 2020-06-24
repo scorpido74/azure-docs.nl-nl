@@ -10,41 +10,42 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 18a9de8a2eaa2364e89e831db8dab5cbbb061c10
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79369893"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299242"
 ---
 # <a name="what-is-a-voice-assistant"></a>Wat is een spraakassistent?
 
 Met spraak assistenten die gebruikmaken van de speech-service kunnen ontwikkel aars natuurlijke, menselijke-achtige gespreks interfaces maken voor hun toepassingen en ervaringen.
 
-De Voice Assistant-service biedt snelle, betrouw bare interactie tussen een apparaat en een assistent-implementatie die gebruikmaakt van (1) het directe lijn spraak kanaal van de bot-Framework of (2) de geïntegreerde service voor het uitvoeren van aangepaste opdrachten (preview) voor taak voltooiing.
-
-Toepassingen maken verbinding met de Voice Assistant-service met de speech Software Development Kit (SDK).
-
-   ![Conceptueel diagram van de service stroom van de Orchestrator-indeling voor spraak assistenten](media/voice-assistants/overview.png "De stroom van de Voice Assistant")
+De Voice Assistant-service biedt een snelle, betrouw bare interactie tussen een apparaat en een assistent-implementatie waarbij gebruik wordt gemaakt van (1) [directe-regel spraak](direct-line-speech.md) (via Azure bot service) voor het toevoegen van spraak mogelijkheden aan uw bots, of, (2) aangepaste opdrachten voor scenario's met spraak opdrachten.
 
 ## <a name="choosing-an-assistant-solution"></a>Een assistent-oplossing kiezen
 
-De eerste stap bij het maken van een spraak assistent is bepalen wat het moet doen. De speech-service biedt meerdere, complementaire oplossingen voor het bouwen van uw assistent-interacties. Of u de flexibiliteit en veelzijdigheid wilt hebben dat het directe- [lijn spraak](direct-line-speech.md) kanaal van het bot-Framework of de eenvoud van [aangepaste opdrachten (preview)](custom-commands.md) voor duidelijke scenario's is, en u kunt de juiste hulpprogram ma's downloaden om aan de slag te gaan.
+De eerste stap bij het maken van een spraak assistent is bepalen wat het moet doen. De speech-service biedt meerdere, complementaire oplossingen voor het bouwen van uw assistent-interacties. U kunt spraak-en uitspraak mogelijkheden toevoegen aan uw flexibele en veelzijdige bot die is gebouwd met behulp van Azure Bot Service met het [directe lijn spraak](direct-line-speech.md) kanaal of gebruikmaken van de eenvoud van het ontwerpen van een app met [aangepaste opdrachten](custom-commands.md) voor eenvoudige spraak opdrachten.
 
 | Als je wilt... | Bekijk vervolgens... | Bijvoorbeeld... |
 |-------------------|------------------|----------------|
-|Open-end-conversatie met robuuste integratie van vaardig heden en volledige implementatie beheer | Het [directe-lijn spraak](direct-line-speech.md) kanaal van het bot-Framework | <ul><li>"Ik moet naar Seattle gaan"</li><li>"Welk soort pizza kan ik best Ellen?"</li></ul>
-|Discussies over opdrachten en besturings elementen of taak gerichte uitwisseling met vereenvoudigd ontwerpen en hosten | [Aangepaste opdrachten (preview)](custom-commands.md) | <ul><li>"Het overhead licht inschakelen"</li><li>"Maak IT 5 graden warmer"</ul>
+|Open-end-conversatie met robuuste integratie van vaardig heden en volledige implementatie beheer | Azure Bot Service bot met [direct line speech](direct-line-speech.md) Channel | <ul><li>"Ik moet naar Seattle gaan"</li><li>"Welk soort pizza kan ik best Ellen?"</li></ul>
+|Spraak opdrachten of eenvoudige taak gerichte discussies met vereenvoudigd ontwerpen en hosten | [Aangepaste opdrachten](custom-commands.md) | <ul><li>"Het overhead licht inschakelen"</li><li>"Maak IT 5 graden warmer"</li><li>Andere [beschik bare](https://speech.microsoft.com/customcommands) voor beelden</li></ul>
 
 U wordt aangeraden [regel spraak direct](direct-line-speech.md) als de beste standaard keuze te gebruiken als u nog niet zeker weet wat uw assistent moet verwerken. Het biedt integratie met een uitgebreide set hulpprogram ma's en ontwerp hulpmiddelen, zoals de [Virtual assistent-oplossing en ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) en de [QnA Maker-service](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) voor het bouwen van algemene patronen en het gebruik van uw bestaande kennis bronnen.
 
-[Aangepaste opdrachten (preview-versie)](custom-commands.md) bieden een gestroomlijnde ontwerp-en hosting-ervaring die specifiek is afgestemd op de opdracht-en controle scenario's in natuurlijke taal.
+Met [aangepaste opdrachten](custom-commands.md) kunt u eenvoudig geavanceerde spraak opdrachten maken die zijn geoptimaliseerd voor spraak-eerste interactie. Het biedt een uniforme ontwerp-ervaring, een automatisch hosting model en relatief lagere complexiteit, waarmee u zich kunt richten op het bouwen van de beste oplossing voor uw spraak-opdracht scenario's.
 
    ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Vergelijking van assistent-oplossingen")
 
+
+## <a name="reference-architecture-for-building-a-voice-assistant-using-the-speech-sdk"></a>Referentie architectuur voor het bouwen van een spraak assistent met behulp van de Speech SDK
+
+   ![Conceptueel diagram van de service stroom van de Orchestrator-indeling voor spraak assistenten](media/voice-assistants/overview.png "De stroom van de Voice Assistant")
+
 ## <a name="core-features"></a>Kern functies
 
-Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrachten (preview)](custom-commands.md) kiest om uw assistent-interacties te maken, kunt u een uitgebreide set aanpassings functies gebruiken om uw assistent aan uw merk, product en persoonlijkheid aan te passen.
+Ongeacht of u [direct line speech](direct-line-speech.md) of [aangepaste opdrachten](custom-commands.md) kiest om uw assistent-interacties te maken, kunt u een uitgebreide set aanpassings functies gebruiken om uw assistent aan uw merk, product en persoonlijkheid aan te passen.
 
 | Categorie | Functies |
 |----------|----------|
@@ -56,38 +57,31 @@ Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrach
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstartgids | Platform | API-verwijzing |
-|------------|----------|---------------|
-| C#, UWP | Windows | [Bladeren](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Bladeren](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Bladeren](https://aka.ms/csspeech/javaref) |
+* [Snelstartgids: een aangepaste spraak-assistent maken met behulp van directe lijn spraak](quickstarts/voice-assistants.md)
+* [Snelstartgids: een app voor spraak opdrachten bouwen met aangepaste opdrachten](quickstart-custom-commands-application.md)
 
-## <a name="sample-code"></a>Voorbeeldcode
+## <a name="sample-code-and-tutorials"></a>Voorbeeld code en zelf studies
 
 Voorbeeld code voor het maken van een spraak-assistent is beschikbaar op GitHub. Deze voor beelden beslaan de client toepassing voor het maken van verbinding met uw helper in verschillende populaire programmeer talen.
 
-* [Voor beelden van Voice Assistant (SDK)](https://aka.ms/csspeech/samples)
-* [Zelf studie: spraak inschakelen voor uw assistent met de spraak-SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-
-## <a name="tutorial"></a>Zelfstudie
-
-Een zelf studie over hoe u [uw assistent stem kunt instellen met behulp van de Speech SDK en direct line speech Channel](tutorial-voice-enable-your-bot-speech-sdk.md).
+* [Voor beelden van Voice assistants op GitHub](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
+* [Zelf studie: spraak inschakelen voor uw assistent met behulp van Azure Bot Service met de C# Speech SDK](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Zelf studie: een toepassing voor aangepaste opdrachten maken met eenvoudige spraak opdrachten](how-to-custom-commands-create-application-with-simple-commands.md)
 
 ## <a name="customization"></a>Aanpassing
 
-Spraak assistenten die zijn gebouwd met behulp van de spraak service kunnen gebruikmaken van het volledige aanbod aan aanpassings opties voor [spraak naar tekst](speech-to-text.md), [tekst naar spraak](text-to-speech.md)en [aangepaste trefwoord selectie](speech-devices-sdk-create-kws.md).
+Spraak assistenten die zijn gemaakt met Azure speech Services kunnen gebruikmaken van het volledige aanbod aan aanpassings opties.
+
+* [Custom Speech](how-to-custom-speech.md)
+* [Aangepaste spraak](how-to-custom-voice.md)
+* [Aangepast trefwoord](custom-keyword-overview.md)
 
 > [!NOTE]
-> Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](supported-languages.md)).
-
-## <a name="reference-docs"></a>Referentie documenten
-
-* [Speech-SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+> Aanpassings opties variëren per taal/land instelling (Zie [ondersteunde talen](language-support.md)).
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Gratis een abonnements sleutel voor een spraak service ophalen](get-started.md)
-* [De Speech SDK ophalen](speech-sdk.md)
-* [Meer informatie over aangepaste opdrachten (preview-versie)](custom-commands.md)
+* [Meer informatie over aangepaste opdrachten](custom-commands.md)
 * [Meer informatie over direct line speech](direct-line-speech.md)
+* [De Speech SDK ophalen](speech-sdk.md)

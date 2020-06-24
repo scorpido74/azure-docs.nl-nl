@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.date: 06/18/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: 9b2091c7acd42d4c967ec5baef82d970344f9231
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 30e3f901d9feca07902e20c87f4fbf5b6979a11b
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85081575"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299480"
 ---
-# <a name="create-a-cognitive-services-resource-using-an-azure-resource-manager-template"></a>Een Cognitive Services resource maken met behulp van een Azure Resource Manager sjabloon
+# <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Snelstartgids: een Cognitive Services-resource maken met een ARM-sjabloon
 
 Gebruik dit artikel om een Cognitive Services resource te maken en te implementeren met behulp van een Azure Resource Manager-sjabloon (ARM). Met deze resource voor meerdere services kunt u:
 * Toegang tot meerdere Azure-Cognitive Services met één sleutel en een eind punt.
@@ -24,23 +24,24 @@ Gebruik dit artikel om een Cognitive Services resource te maken en te implemente
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Als uw omgeving voldoet aan de vereisten en u vertrouwd bent met het gebruik van ARM-sjablonen, selecteert u de knop **implementeren in azure** . De sjabloon wordt in de Azure Portal geopend.
 
-## <a name="prerequisites"></a>Vereisten 
+[![Implementeren in Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
 
-* Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/cognitive-services)
+## <a name="prerequisites"></a>Vereisten
 
-## <a name="create-a-cognitive-services-resource"></a>Een Cognitive Services-resource maken
+* Als u geen Azure-abonnement hebt, [maakt u er gratis een](https://azure.microsoft.com/free/cognitive-services).
 
-### <a name="review-the-template"></a>De sjabloon controleren
+## <a name="review-the-template"></a>De sjabloon controleren
 
-De sjabloon die in deze Quick Start wordt gebruikt, is afkomstig van [Azure Quick](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)start-sjablonen voor arm.
+De sjabloon die in deze quickstart wordt gebruikt, komt uit [Azure Quick Start-sjablonen](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/).
 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json" highlight="27-41":::
 
 Er is één Azure-resource gedefinieerd in de sjabloon:
 * [Micro soft. CognitiveServices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): maakt een Cognitive Services-resource.
 
-### <a name="deploy-the-template"></a>De sjabloon implementeren
+## <a name="deploy-the-template"></a>De sjabloon implementeren
 
 # <a name="azure-portal"></a>[Azure-portal](#tab/portal)
 
@@ -63,7 +64,6 @@ Er is één Azure-resource gedefinieerd in de sjabloon:
 
 3. Selecteer **Controleren en maken** en vervolgens **Maken**. Nadat de implementatie van de resource is voltooid, wordt de knop **Ga naar resource** gemarkeerd.
 
-    
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/CLI)
 
@@ -97,7 +97,7 @@ Wanneer de implementatie is voltooid, kunt u op de knop **naar resource gaan** k
 
 # <a name="azure-cli"></a>[Azure-CLI](#tab/CLI)
 
-Voer het volgende script uit met behulp van de Azure CLI en voer de naam in van de resource groep die u eerder hebt gemaakt. 
+Voer het volgende script uit met behulp van de Azure CLI en voer de naam in van de resource groep die u eerder hebt gemaakt.
 
 ```azurecli-interactive
 echo "Enter the resource group where the Cognitive Services resource exists:" &&
