@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 04/14/2020
+ms.date: 06/17/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 3f7e2a5c2dca13ac705d67e1491d88a2537a9064
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: ced9453982615485e25b56be9b7a36dc8f6ce988
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555776"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974667"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Een Azure Machine Learning model gebruiken dat is geïmplementeerd als een webservice
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,8 +128,16 @@ token, refresh_by = service.get_token()
 print(token)
 ```
 
+Als u de [Azure CLI en de uitbrei ding machine learning](reference-azure-machine-learning-cli.md)hebt, kunt u de volgende opdracht gebruiken om een token op te halen:
+
+```azurecli
+az ml service get-access-token -n <service-name>
+```
+
 > [!IMPORTANT]
-> U moet een nieuw token aanvragen na de tijd van de token `refresh_by` . 
+> Momenteel is de enige manier om het token op te halen met behulp van de Azure Machine Learning SDK of de Azure CLI machine learning-extensie.
+
+U moet een nieuw token aanvragen na de tijd van de token `refresh_by` . 
 
 ## <a name="request-data"></a>Gegevens opvragen
 

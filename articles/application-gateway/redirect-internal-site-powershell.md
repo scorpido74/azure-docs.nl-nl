@@ -5,15 +5,15 @@ description: Meer informatie over het maken van een toepassings gateway die inte
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: victorh
-ms.openlocfilehash: 56c7ddd6eda021c802eb256c62fcae680d573b69
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ab1cedf324c0391ce54773202b030b519c3e4766
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681360"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804264"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Een toepassings gateway met een interne omleiding maken met behulp van Azure PowerShell
 
@@ -22,13 +22,13 @@ U kunt Azure Power shell gebruiken voor het configureren van het [omleiden van w
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een toepassingsgateway maken
 > * Listeners en omleidings regel toevoegen
 > * Een schaalset voor virtuele machines maken met de back-end-groep
 > * Een CNAME-record in uw domein maken
 
-Als u nog geen abonnement voor Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -303,7 +303,7 @@ Wijzig het adres in uw andere domein, bijvoorbeeld: `https://www.contoso.org` u 
 In dit artikel hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Netwerk instellen
+> * Het netwerk instellen
 > * Een toepassingsgateway maken
 > * Listeners en omleidings regel toevoegen
 > * Een schaalset voor virtuele machines maken met de back-end-Pools

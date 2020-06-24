@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77530300"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84974837"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure cache voor redis Compute-resources met gereserveerde capaciteit
 
@@ -30,15 +30,15 @@ Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](http
 
 ## <a name="determine-the-right-cache-size-before-purchase"></a>De juiste cache grootte bepalen vóór de aankoop
 
-De grootte van de reserve ring moet worden gebaseerd op de totale reken tijd die wordt gebruikt door de bestaande of binnenkort geïmplementeerde cache binnen een bepaalde regio en met dezelfde servicelaag.
+De grootte van de reserve ring moet worden gebaseerd op de totale hoeveelheid geheugen die wordt gebruikt door de bestaande of binnenkort geïmplementeerde cache binnen een bepaalde regio en met dezelfde servicelaag.
 
-Stel dat u een algemeen doel, GEN5-32 vCore-cache en twee geoptimaliseerd voor geheugen, GEN5 – 16 vCore caches, uitvoert. Verder moet u in de volgende maand een extra algemeen doel, GEN5-32 vCore-database server en één geoptimaliseerd voor geheugen, GEN5-16 vCore-database server, implementeren. Stel dat u weet dat u deze resources ten minste één jaar nodig hebt. In dit geval moet u een 64 (2x32)-vCores aanschaffen, een reserve ring van 1 jaar voor een algemene doel einde van de data base-GEN5 en een 48 (2x16 + 16) vCore 1 jaar reserve ring voor single data base Optimized-GEN5
+Stel bijvoorbeeld dat u twee caches gebruikt, één bij 13 GB en de andere bij 26 GB. U hebt beide voor ten minste één jaar nodig. Stel dat u van plan bent om de bestaande 13 GB-caches voor een maand te schalen naar 26 GB om te voldoen aan de behoeften van uw seizoen en vervolgens terug te schalen. In dit geval kunt u 1 P1-cache en 1 P2-cache of 3 P1-caches aanschaffen met een reserve ring van één jaar om de besparingen te maximaliseren. U ontvangt korting op de totale hoeveelheid cache geheugen die u reserveert, onafhankelijk van de manier waarop deze hoeveelheid wordt toegewezen in uw caches.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Azure-cache kopen voor redis gereserveerde capaciteit
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
-2. Selecteer **alle services** > -**reserve ringen**.
+2. Selecteer **Alle services** > **Reserveringen**.
 3. Selecteer **toevoegen** en selecteer in het deel venster Inkoop reserveringen de optie **Azure-cache voor redis** om een nieuwe reserve ring voor uw caches te kopen.
 4. Vul de vereiste velden in. Bestaande of nieuwe data bases die overeenkomen met de kenmerken die u selecteert, komen in aanmerking voor de korting op gereserveerde capaciteit. Het werkelijke aantal van uw Azure-cache voor redis-instanties die de korting krijgen, is afhankelijk van het bereik en de geselecteerde hoeveelheid.
 
@@ -57,9 +57,9 @@ In de volgende tabel worden de vereiste velden beschreven.
 | Termijn | Eén jaar of drie jaar
 | Aantal | De hoeveelheid reken resources die in de Azure-cache worden gekocht voor gereserveerde capaciteits reservering redis. De hoeveelheid is een aantal caches in de geselecteerde Azure-regio en service tier die worden gereserveerd en de facturerings korting krijgt. Als u bijvoorbeeld werkt met of plant om een Azure-cache uit te voeren voor redis-servers met de totale cache capaciteit van 26 GB in de regio VS-Oost, geeft u het aantal op van 26 om het voor deel van alle caches te maximaliseren.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
+## <a name="cancel-exchange-or-refund-reservations"></a>Reserveringen annuleren, ruilen of terugbetalen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [self-service-uitwisseling en terugbetalingen voor Azure Reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund)voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
 ## <a name="cache-size-flexibility"></a>Flexibiliteit van cache grootte
 
@@ -77,7 +77,7 @@ De reserverings korting wordt automatisch toegepast op de Azure-cache voor redis
 
 * Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-    * [Wat zijn Azure Reservations?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+    * [Wat zijn Azure-reserveringen?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
     * [Azure-reserveringen beheren](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
     * [Korting op Azure-reserveringen begrijpen](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
     * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mysql)

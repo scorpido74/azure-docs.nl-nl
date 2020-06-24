@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 893c953562e0d150bd5e8110e5473fd24a2aff83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6924c324c60261fde9a815072ef001fefd868228
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176342"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84804790"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Door de klant beheerde sleutels configureren met Azure Key Vault met behulp van Azure CLI
 
@@ -92,7 +92,7 @@ Alleen 2048-bits RSA-en RSA-HSM-sleutels worden ondersteund met Azure Storage ve
 
 Azure Storage versleuteling maakt standaard gebruik van door micro soft beheerde sleutels. Configureer uw Azure Storage-account voor door de klant beheerde sleutels en geef de sleutel op die u wilt koppelen aan het opslag account.
 
-Voor het bijwerken van de versleutelings instellingen voor het opslag account roept u de [Update AZ Storage account](/cli/azure/storage/account#az-storage-account-update)aan, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel `Microsoft.Keyvault` deze in om door de klant beheerde sleutels voor het opslag account in te scha kelen. In het voor beeld worden ook query's uitgevoerd voor de sleutel kluis-URI en de nieuwste sleutel versie, beide waarden die nodig zijn om de sleutel te koppelen aan het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
+Voor het bijwerken van de versleutelings instellingen voor het opslag account roept u de [Update AZ Storage account](/cli/azure/storage/account#az-storage-account-update)aan, zoals wordt weer gegeven in het volgende voor beeld. Neem de `--encryption-key-source` para meter op en stel deze in om door `Microsoft.Keyvault` de klant beheerde sleutels voor het opslag account in te scha kelen. In het voor beeld worden ook query's uitgevoerd voor de sleutel kluis-URI en de nieuwste sleutel versie, beide waarden die nodig zijn om de sleutel te koppelen aan het opslag account. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -134,7 +134,7 @@ az keyvault delete-policy \
 
 ## <a name="disable-customer-managed-keys"></a>Door de klant beheerde sleutels uitschakelen
 
-Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw opslag account opnieuw versleuteld met door micro soft beheerde sleutels. Als u door de klant beheerde sleutels wilt uitschakelen, roept u [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan en stelt u de `--encryption-key-source parameter` in op `Microsoft.Storage`, zoals in het volgende voor beeld wordt weer gegeven. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden en de variabelen te gebruiken die in de voor gaande voor beelden zijn gedefinieerd.
+Wanneer u door de klant beheerde sleutels uitschakelt, wordt uw opslag account opnieuw versleuteld met door micro soft beheerde sleutels. Als u door de klant beheerde sleutels wilt uitschakelen, roept u [AZ Storage account update](/cli/azure/storage/account#az-storage-account-update) aan en stelt `--encryption-key-source parameter` u de in op `Microsoft.Storage` , zoals in het volgende voor beeld wordt weer gegeven. Vergeet niet om de waarden van de tijdelijke aanduidingen tussen vier Kante haken te vervangen door uw eigen waarden en de variabelen te gebruiken die in de voor gaande voor beelden zijn gedefinieerd.
 
 ```azurecli-interactive
 az storage account update
@@ -145,5 +145,5 @@ az storage account update
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage versleuteling voor Data-at-rest](storage-service-encryption.md) 
+- [Azure Storage-versleuteling voor inactieve gegevens](storage-service-encryption.md) 
 - [Wat is Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)?
